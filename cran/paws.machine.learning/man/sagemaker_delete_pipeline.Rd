@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_delete_pipeline}
 \alias{sagemaker_delete_pipeline}
-\title{Deletes a pipeline if there are no in-progress executions}
+\title{Deletes a pipeline if there are no running instances of the pipeline}
 \usage{
 sagemaker_delete_pipeline(PipelineName, ClientRequestToken)
 }
@@ -13,21 +13,9 @@ sagemaker_delete_pipeline(PipelineName, ClientRequestToken)
 idempotency of the operation. An idempotent operation completes no more
 than one time.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PipelineArn = "string"
-)
-}
-}
 \description{
-Deletes a pipeline if there are no in-progress executions.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_pipeline(
-  PipelineName = "string",
-  ClientRequestToken = "string"
-)
-}
-}
+Deletes a pipeline if there are no running instances of the pipeline. To delete a pipeline, you must stop all running instances of the pipeline using the \code{\link[=sagemaker_stop_pipeline_execution]{stop_pipeline_execution}} API. When you delete a pipeline, all instances of the pipeline are deleted.
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_pipeline.html} for full documentation.
+}
 \keyword{internal}

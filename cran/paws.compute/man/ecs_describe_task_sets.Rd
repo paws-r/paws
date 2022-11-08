@@ -4,7 +4,7 @@
 \alias{ecs_describe_task_sets}
 \title{Describes the task sets in the specified cluster and service}
 \usage{
-ecs_describe_task_sets(cluster, service, taskSets, include)
+ecs_describe_task_sets(cluster, service, taskSets = NULL, include = NULL)
 }
 \arguments{
 \item{cluster}{[required] The short name or full Amazon Resource Name (ARN) of the cluster that
@@ -17,109 +17,11 @@ the task sets exist in.}
 
 \item{include}{Specifies whether to see the resource tags for the task set. If \code{TAGS}
 is specified, the tags are included in the response. If this field is
-omitted, tags are not included in the response.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  taskSets = list(
-    list(
-      id = "string",
-      taskSetArn = "string",
-      serviceArn = "string",
-      clusterArn = "string",
-      startedBy = "string",
-      externalId = "string",
-      status = "string",
-      taskDefinition = "string",
-      computedDesiredCount = 123,
-      pendingCount = 123,
-      runningCount = 123,
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      updatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      launchType = "EC2"|"FARGATE",
-      capacityProviderStrategy = list(
-        list(
-          capacityProvider = "string",
-          weight = 123,
-          base = 123
-        )
-      ),
-      platformVersion = "string",
-      networkConfiguration = list(
-        awsvpcConfiguration = list(
-          subnets = list(
-            "string"
-          ),
-          securityGroups = list(
-            "string"
-          ),
-          assignPublicIp = "ENABLED"|"DISABLED"
-        )
-      ),
-      loadBalancers = list(
-        list(
-          targetGroupArn = "string",
-          loadBalancerName = "string",
-          containerName = "string",
-          containerPort = 123
-        )
-      ),
-      serviceRegistries = list(
-        list(
-          registryArn = "string",
-          port = 123,
-          containerName = "string",
-          containerPort = 123
-        )
-      ),
-      scale = list(
-        value = 123.0,
-        unit = "PERCENT"
-      ),
-      stabilityStatus = "STEADY_STATE"|"STABILIZING",
-      stabilityStatusAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      )
-    )
-  ),
-  failures = list(
-    list(
-      arn = "string",
-      reason = "string",
-      detail = "string"
-    )
-  )
-)
-}
+omitted, tags aren't included in the response.}
 }
 \description{
-Describes the task sets in the specified cluster and service. This is
-used when a service uses the \code{EXTERNAL} deployment controller type. For
-more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types}
-in the \emph{Amazon Elastic Container Service Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_task_sets(
-  cluster = "string",
-  service = "string",
-  taskSets = list(
-    "string"
-  ),
-  include = list(
-    "TAGS"
-  )
-)
-}
-}
+Describes the task sets in the specified cluster and service. This is used when a service uses the \code{EXTERNAL} deployment controller type. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS Deployment Types} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/ecs/describe_task_sets.html} for full documentation.
+}
 \keyword{internal}

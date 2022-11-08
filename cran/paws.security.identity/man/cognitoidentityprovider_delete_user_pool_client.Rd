@@ -11,18 +11,9 @@ cognitoidentityprovider_delete_user_pool_client(UserPoolId, ClientId)
 
 \item{ClientId}{[required] The app client ID of the app associated with the user pool.}
 }
-\value{
-An empty list.
-}
 \description{
 Allows the developer to delete the user pool client.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user_pool_client(
-  UserPoolId = "string",
-  ClientId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_pool_client.html} for full documentation.
+}
 \keyword{internal}

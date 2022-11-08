@@ -6,24 +6,11 @@ NULL
 #' Activates a partner event source that has been deactivated
 #'
 #' @description
-#' Activates a partner event source that has been deactivated. Once
-#' activated, your matching event bus will start receiving events from the
-#' event source.
+#' Activates a partner event source that has been deactivated. Once activated, your matching event bus will start receiving events from the event source.
 #'
-#' @usage
-#' eventbridge_activate_event_source(Name)
+#' See [https://paws-r.github.io/docs/eventbridge/activate_event_source.html](https://paws-r.github.io/docs/eventbridge/activate_event_source.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the partner event source to activate.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$activate_event_source(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -50,27 +37,9 @@ eventbridge_activate_event_source <- function(Name) {
 #' @description
 #' Cancels the specified replay.
 #'
-#' @usage
-#' eventbridge_cancel_replay(ReplayName)
+#' See [https://paws-r.github.io/docs/eventbridge/cancel_replay.html](https://paws-r.github.io/docs/eventbridge/cancel_replay.html) for full documentation.
 #'
 #' @param ReplayName &#91;required&#93; The name of the replay to cancel.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ReplayArn = "string",
-#'   State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
-#'   StateReason = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$cancel_replay(
-#'   ReplayName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -92,50 +61,57 @@ eventbridge_cancel_replay <- function(ReplayName) {
 }
 .eventbridge$operations$cancel_replay <- eventbridge_cancel_replay
 
+#' Creates an API destination, which is an HTTP invocation endpoint
+#' configured as a target for events
+#'
+#' @description
+#' Creates an API destination, which is an HTTP invocation endpoint configured as a target for events.
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/create_api_destination.html](https://paws-r.github.io/docs/eventbridge/create_api_destination.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name for the API destination to create.
+#' @param Description A description for the API destination to create.
+#' @param ConnectionArn &#91;required&#93; The ARN of the connection to use for the API destination. The
+#' destination endpoint must support the authorization type specified for
+#' the connection.
+#' @param InvocationEndpoint &#91;required&#93; The URL to the HTTP invocation endpoint for the API destination.
+#' @param HttpMethod &#91;required&#93; The method to use for the request to the HTTP invocation endpoint.
+#' @param InvocationRateLimitPerSecond The maximum number of requests per second to send to the HTTP invocation
+#' endpoint.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_create_api_destination
+eventbridge_create_api_destination <- function(Name, Description = NULL, ConnectionArn, InvocationEndpoint, HttpMethod, InvocationRateLimitPerSecond = NULL) {
+  op <- new_operation(
+    name = "CreateApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$create_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
+  output <- .eventbridge$create_api_destination_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$create_api_destination <- eventbridge_create_api_destination
+
 #' Creates an archive of events with the specified settings
 #'
 #' @description
-#' Creates an archive of events with the specified settings. When you
-#' create an archive, incoming events might not immediately start being
-#' sent to the archive. Allow a short period of time for changes to take
-#' effect. If you do not specify a pattern to filter events sent to the
-#' archive, all events are sent to the archive except replayed events.
-#' Replayed events are not sent to an archive.
+#' Creates an archive of events with the specified settings. When you create an archive, incoming events might not immediately start being sent to the archive. Allow a short period of time for changes to take effect. If you do not specify a pattern to filter events sent to the archive, all events are sent to the archive except replayed events. Replayed events are not sent to an archive.
 #'
-#' @usage
-#' eventbridge_create_archive(ArchiveName, EventSourceArn, Description,
-#'   EventPattern, RetentionDays)
+#' See [https://paws-r.github.io/docs/eventbridge/create_archive.html](https://paws-r.github.io/docs/eventbridge/create_archive.html) for full documentation.
 #'
 #' @param ArchiveName &#91;required&#93; The name for the archive to create.
-#' @param EventSourceArn &#91;required&#93; The ARN of the event source associated with the archive.
+#' @param EventSourceArn &#91;required&#93; The ARN of the event bus that sends events to the archive.
 #' @param Description A description for the archive.
 #' @param EventPattern An event pattern to use to filter events sent to the archive.
 #' @param RetentionDays The number of days to retain events for. Default value is 0. If set to
 #' 0, events are retained indefinitely
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ArchiveArn = "string",
-#'   State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'   StateReason = "string",
-#'   CreationTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_archive(
-#'   ArchiveName = "string",
-#'   EventSourceArn = "string",
-#'   Description = "string",
-#'   EventPattern = "string",
-#'   RetentionDays = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -157,16 +133,83 @@ eventbridge_create_archive <- function(ArchiveName, EventSourceArn, Description 
 }
 .eventbridge$operations$create_archive <- eventbridge_create_archive
 
+#' Creates a connection
+#'
+#' @description
+#' Creates a connection. A connection defines the authorization type and credentials to use for authorization with an API destination HTTP endpoint.
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/create_connection.html](https://paws-r.github.io/docs/eventbridge/create_connection.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name for the connection to create.
+#' @param Description A description for the connection to create.
+#' @param AuthorizationType &#91;required&#93; The type of authorization to use for the connection.
+#' @param AuthParameters &#91;required&#93; A `CreateConnectionAuthRequestParameters` object that contains the
+#' authorization parameters to use to authorize with the endpoint.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_create_connection
+eventbridge_create_connection <- function(Name, Description = NULL, AuthorizationType, AuthParameters) {
+  op <- new_operation(
+    name = "CreateConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$create_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
+  output <- .eventbridge$create_connection_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$create_connection <- eventbridge_create_connection
+
+#' Creates a global endpoint
+#'
+#' @description
+#' Creates a global endpoint. Global endpoints improve your application's availability by making it regional-fault tolerant. To do this, you define a primary and secondary Region with event buses in each Region. You also create a Amazon Route 53 health check that will tell EventBridge to route events to the secondary Region when an "unhealthy" state is encountered and events will be routed back to the primary Region when the health check reports a "healthy" state.
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/create_endpoint.html](https://paws-r.github.io/docs/eventbridge/create_endpoint.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the global endpoint. For example,
+#' `"Name":"us-east-2-custom_bus_A-endpoint"`.
+#' @param Description A description of the global endpoint.
+#' @param RoutingConfig &#91;required&#93; Configure the routing policy, including the health check and secondary
+#' Region..
+#' @param ReplicationConfig Enable or disable event replication.
+#' @param EventBuses &#91;required&#93; Define the event buses used.
+#' 
+#' The names of the event buses must be identical in each Region.
+#' @param RoleArn The ARN of the role used for replication.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_create_endpoint
+eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig, ReplicationConfig = NULL, EventBuses, RoleArn = NULL) {
+  op <- new_operation(
+    name = "CreateEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$create_endpoint_input(Name = Name, Description = Description, RoutingConfig = RoutingConfig, ReplicationConfig = ReplicationConfig, EventBuses = EventBuses, RoleArn = RoleArn)
+  output <- .eventbridge$create_endpoint_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$create_endpoint <- eventbridge_create_endpoint
+
 #' Creates a new event bus within your account
 #'
 #' @description
-#' Creates a new event bus within your account. This can be a custom event
-#' bus which you can use to receive events from your custom applications
-#' and services, or it can be a partner event bus which can be matched to a
-#' partner event source.
+#' Creates a new event bus within your account. This can be a custom event bus which you can use to receive events from your custom applications and services, or it can be a partner event bus which can be matched to a partner event source.
 #'
-#' @usage
-#' eventbridge_create_event_bus(Name, EventSourceName, Tags)
+#' See [https://paws-r.github.io/docs/eventbridge/create_event_bus.html](https://paws-r.github.io/docs/eventbridge/create_event_bus.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the new event bus.
 #' 
@@ -179,28 +222,6 @@ eventbridge_create_archive <- function(ArchiveName, EventSourceArn, Description 
 #' @param EventSourceName If you are creating a partner event bus, this specifies the partner
 #' event source that the new event bus will be matched with.
 #' @param Tags Tags to associate with the event bus.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventBusArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_event_bus(
-#'   Name = "string",
-#'   EventSourceName = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -225,59 +246,17 @@ eventbridge_create_event_bus <- function(Name, EventSourceName = NULL, Tags = NU
 #' Called by an SaaS partner to create a partner event source
 #'
 #' @description
-#' Called by an SaaS partner to create a partner event source. This
-#' operation is not used by AWS customers.
-#' 
-#' Each partner event source can be used by one AWS account to create a
-#' matching partner event bus in that AWS account. A SaaS partner must
-#' create one partner event source for each AWS account that wants to
-#' receive those event types.
-#' 
-#' A partner event source creates events based on resources within the SaaS
-#' partner's service or application.
-#' 
-#' An AWS account that creates a partner event bus that matches the partner
-#' event source can use that event bus to receive events from the partner,
-#' and then process them using AWS Events rules and targets.
-#' 
-#' Partner event source names follow this format:
-#' 
-#' ` partner_name/event_namespace/event_name `
-#' 
-#' *partner_name* is determined during partner registration and identifies
-#' the partner to AWS customers. *event_namespace* is determined by the
-#' partner and is a way for the partner to categorize their events.
-#' *event_name* is determined by the partner, and should uniquely identify
-#' an event-generating resource within the partner system. The combination
-#' of *event_namespace* and *event_name* should help AWS customers decide
-#' whether to create an event bus to receive these events.
+#' Called by an SaaS partner to create a partner event source. This operation is not used by Amazon Web Services customers.
 #'
-#' @usage
-#' eventbridge_create_partner_event_source(Name, Account)
+#' See [https://paws-r.github.io/docs/eventbridge/create_partner_event_source.html](https://paws-r.github.io/docs/eventbridge/create_partner_event_source.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the partner event source. This name must be unique and must
-#' be in the format ` partner_name/event_namespace/event_name `. The AWS
-#' account that wants to use this partner event source must create a
-#' partner event bus with a name that matches the name of the partner event
-#' source.
-#' @param Account &#91;required&#93; The AWS account ID that is permitted to create a matching partner event
-#' bus for this partner event source.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventSourceArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_partner_event_source(
-#'   Name = "string",
-#'   Account = "string"
-#' )
-#' ```
+#' be in the format ` partner_name/event_namespace/event_name `. The Amazon
+#' Web Services account that wants to use this partner event source must
+#' create a partner event bus with a name that matches the name of the
+#' partner event source.
+#' @param Account &#91;required&#93; The Amazon Web Services account ID that is permitted to create a
+#' matching partner event bus for this partner event source.
 #'
 #' @keywords internal
 #'
@@ -303,30 +282,11 @@ eventbridge_create_partner_event_source <- function(Name, Account) {
 #' specified partner event source
 #'
 #' @description
-#' You can use this operation to temporarily stop receiving events from the
-#' specified partner event source. The matching event bus is not deleted.
-#' 
-#' When you deactivate a partner event source, the source goes into PENDING
-#' state. If it remains in PENDING state for more than two weeks, it is
-#' deleted.
-#' 
-#' To activate a deactivated partner event source, use
-#' [`activate_event_source`][eventbridge_activate_event_source].
+#' You can use this operation to temporarily stop receiving events from the specified partner event source. The matching event bus is not deleted.
 #'
-#' @usage
-#' eventbridge_deactivate_event_source(Name)
+#' See [https://paws-r.github.io/docs/eventbridge/deactivate_event_source.html](https://paws-r.github.io/docs/eventbridge/deactivate_event_source.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the partner event source to deactivate.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deactivate_event_source(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -348,25 +308,72 @@ eventbridge_deactivate_event_source <- function(Name) {
 }
 .eventbridge$operations$deactivate_event_source <- eventbridge_deactivate_event_source
 
+#' Removes all authorization parameters from the connection
+#'
+#' @description
+#' Removes all authorization parameters from the connection. This lets you remove the secret from the connection so you can reuse it without having to create a new connection.
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/deauthorize_connection.html](https://paws-r.github.io/docs/eventbridge/deauthorize_connection.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the connection to remove authorization from.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_deauthorize_connection
+eventbridge_deauthorize_connection <- function(Name) {
+  op <- new_operation(
+    name = "DeauthorizeConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$deauthorize_connection_input(Name = Name)
+  output <- .eventbridge$deauthorize_connection_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$deauthorize_connection <- eventbridge_deauthorize_connection
+
+#' Deletes the specified API destination
+#'
+#' @description
+#' Deletes the specified API destination.
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/delete_api_destination.html](https://paws-r.github.io/docs/eventbridge/delete_api_destination.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the destination to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_delete_api_destination
+eventbridge_delete_api_destination <- function(Name) {
+  op <- new_operation(
+    name = "DeleteApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$delete_api_destination_input(Name = Name)
+  output <- .eventbridge$delete_api_destination_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$delete_api_destination <- eventbridge_delete_api_destination
+
 #' Deletes the specified archive
 #'
 #' @description
 #' Deletes the specified archive.
 #'
-#' @usage
-#' eventbridge_delete_archive(ArchiveName)
+#' See [https://paws-r.github.io/docs/eventbridge/delete_archive.html](https://paws-r.github.io/docs/eventbridge/delete_archive.html) for full documentation.
 #'
 #' @param ArchiveName &#91;required&#93; The name of the archive to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_archive(
-#'   ArchiveName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -388,27 +395,73 @@ eventbridge_delete_archive <- function(ArchiveName) {
 }
 .eventbridge$operations$delete_archive <- eventbridge_delete_archive
 
+#' Deletes a connection
+#'
+#' @description
+#' Deletes a connection.
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/delete_connection.html](https://paws-r.github.io/docs/eventbridge/delete_connection.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the connection to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_delete_connection
+eventbridge_delete_connection <- function(Name) {
+  op <- new_operation(
+    name = "DeleteConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$delete_connection_input(Name = Name)
+  output <- .eventbridge$delete_connection_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$delete_connection <- eventbridge_delete_connection
+
+#' Delete an existing global endpoint
+#'
+#' @description
+#' Delete an existing global endpoint. For more information about global endpoints, see [Making applications Regional-fault tolerant with global endpoints and event replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html) in the Amazon EventBridge User Guide.
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/delete_endpoint.html](https://paws-r.github.io/docs/eventbridge/delete_endpoint.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the endpoint you want to delete. For example,
+#' `"Name":"us-east-2-custom_bus_A-endpoint"`..
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_delete_endpoint
+eventbridge_delete_endpoint <- function(Name) {
+  op <- new_operation(
+    name = "DeleteEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$delete_endpoint_input(Name = Name)
+  output <- .eventbridge$delete_endpoint_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$delete_endpoint <- eventbridge_delete_endpoint
+
 #' Deletes the specified custom event bus or partner event bus
 #'
 #' @description
-#' Deletes the specified custom event bus or partner event bus. All rules
-#' associated with this event bus need to be deleted. You can't delete your
-#' account's default event bus.
+#' Deletes the specified custom event bus or partner event bus. All rules associated with this event bus need to be deleted. You can't delete your account's default event bus.
 #'
-#' @usage
-#' eventbridge_delete_event_bus(Name)
+#' See [https://paws-r.github.io/docs/eventbridge/delete_event_bus.html](https://paws-r.github.io/docs/eventbridge/delete_event_bus.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the event bus to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_event_bus(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -433,29 +486,13 @@ eventbridge_delete_event_bus <- function(Name) {
 #' This operation is used by SaaS partners to delete a partner event source
 #'
 #' @description
-#' This operation is used by SaaS partners to delete a partner event
-#' source. This operation is not used by AWS customers.
-#' 
-#' When you delete an event source, the status of the corresponding partner
-#' event bus in the AWS customer account becomes DELETED.
+#' This operation is used by SaaS partners to delete a partner event source. This operation is not used by Amazon Web Services customers.
 #'
-#' @usage
-#' eventbridge_delete_partner_event_source(Name, Account)
+#' See [https://paws-r.github.io/docs/eventbridge/delete_partner_event_source.html](https://paws-r.github.io/docs/eventbridge/delete_partner_event_source.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the event source to delete.
-#' @param Account &#91;required&#93; The AWS account ID of the AWS customer that the event source was created
-#' for.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_partner_event_source(
-#'   Name = "string",
-#'   Account = "string"
-#' )
-#' ```
+#' @param Account &#91;required&#93; The Amazon Web Services account ID of the Amazon Web Services customer
+#' that the event source was created for.
 #'
 #' @keywords internal
 #'
@@ -481,44 +518,19 @@ eventbridge_delete_partner_event_source <- function(Name, Account) {
 #'
 #' @description
 #' Deletes the specified rule.
-#' 
-#' Before you can delete the rule, you must remove all targets, using
-#' [`remove_targets`][eventbridge_remove_targets].
-#' 
-#' When you delete a rule, incoming events might continue to match to the
-#' deleted rule. Allow a short period of time for changes to take effect.
-#' 
-#' Managed rules are rules created and managed by another AWS service on
-#' your behalf. These rules are created by those other AWS services to
-#' support functionality in those services. You can delete these rules
-#' using the `Force` option, but you should do so only if you are sure the
-#' other service is not still using that rule.
 #'
-#' @usage
-#' eventbridge_delete_rule(Name, EventBusName, Force)
+#' See [https://paws-r.github.io/docs/eventbridge/delete_rule.html](https://paws-r.github.io/docs/eventbridge/delete_rule.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
-#' @param Force If this is a managed rule, created by an AWS service on your behalf, you
-#' must specify `Force` as `True` to delete the rule. This parameter is
-#' ignored for rules that are not managed rules. You can check whether a
-#' rule is a managed rule by using
+#' @param Force If this is a managed rule, created by an Amazon Web Services service on
+#' your behalf, you must specify `Force` as `True` to delete the rule. This
+#' parameter is ignored for rules that are not managed rules. You can check
+#' whether a rule is a managed rule by using
 #' [`describe_rule`][eventbridge_describe_rule] or
 #' [`list_rules`][eventbridge_list_rules] and checking the `ManagedBy`
 #' field of the response.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_rule(
-#'   Name = "string",
-#'   EventBusName = "string",
-#'   Force = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -540,42 +552,43 @@ eventbridge_delete_rule <- function(Name, EventBusName = NULL, Force = NULL) {
 }
 .eventbridge$operations$delete_rule <- eventbridge_delete_rule
 
+#' Retrieves details about an API destination
+#'
+#' @description
+#' Retrieves details about an API destination.
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/describe_api_destination.html](https://paws-r.github.io/docs/eventbridge/describe_api_destination.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the API destination to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_describe_api_destination
+eventbridge_describe_api_destination <- function(Name) {
+  op <- new_operation(
+    name = "DescribeApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$describe_api_destination_input(Name = Name)
+  output <- .eventbridge$describe_api_destination_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$describe_api_destination <- eventbridge_describe_api_destination
+
 #' Retrieves details about an archive
 #'
 #' @description
 #' Retrieves details about an archive.
 #'
-#' @usage
-#' eventbridge_describe_archive(ArchiveName)
+#' See [https://paws-r.github.io/docs/eventbridge/describe_archive.html](https://paws-r.github.io/docs/eventbridge/describe_archive.html) for full documentation.
 #'
 #' @param ArchiveName &#91;required&#93; The name of the archive to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ArchiveArn = "string",
-#'   ArchiveName = "string",
-#'   EventSourceArn = "string",
-#'   Description = "string",
-#'   EventPattern = "string",
-#'   State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'   StateReason = "string",
-#'   RetentionDays = 123,
-#'   SizeBytes = 123,
-#'   EventCount = 123,
-#'   CreationTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_archive(
-#'   ArchiveName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -597,43 +610,76 @@ eventbridge_describe_archive <- function(ArchiveName) {
 }
 .eventbridge$operations$describe_archive <- eventbridge_describe_archive
 
+#' Retrieves details about a connection
+#'
+#' @description
+#' Retrieves details about a connection.
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/describe_connection.html](https://paws-r.github.io/docs/eventbridge/describe_connection.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the connection to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_describe_connection
+eventbridge_describe_connection <- function(Name) {
+  op <- new_operation(
+    name = "DescribeConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$describe_connection_input(Name = Name)
+  output <- .eventbridge$describe_connection_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$describe_connection <- eventbridge_describe_connection
+
+#' Get the information about an existing global endpoint
+#'
+#' @description
+#' Get the information about an existing global endpoint. For more information about global endpoints, see [Making applications Regional-fault tolerant with global endpoints and event replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html) in the Amazon EventBridge User Guide..
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/describe_endpoint.html](https://paws-r.github.io/docs/eventbridge/describe_endpoint.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the endpoint you want to get information about. For example,
+#' `"Name":"us-east-2-custom_bus_A-endpoint"`.
+#' @param HomeRegion The primary Region of the endpoint you want to get information about.
+#' For example `"HomeRegion": "us-east-1"`.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_describe_endpoint
+eventbridge_describe_endpoint <- function(Name, HomeRegion = NULL) {
+  op <- new_operation(
+    name = "DescribeEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$describe_endpoint_input(Name = Name, HomeRegion = HomeRegion)
+  output <- .eventbridge$describe_endpoint_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$describe_endpoint <- eventbridge_describe_endpoint
+
 #' Displays details about an event bus in your account
 #'
 #' @description
-#' Displays details about an event bus in your account. This can include
-#' the external AWS accounts that are permitted to write events to your
-#' default event bus, and the associated policy. For custom event buses and
-#' partner event buses, it displays the name, ARN, policy, state, and
-#' creation time.
-#' 
-#' To enable your account to receive events from other accounts on its
-#' default event bus, use [`put_permission`][eventbridge_put_permission].
-#' 
-#' For more information about partner event buses, see
-#' [`create_event_bus`][eventbridge_create_event_bus].
+#' Displays details about an event bus in your account. This can include the external Amazon Web Services accounts that are permitted to write events to your default event bus, and the associated policy. For custom event buses and partner event buses, it displays the name, ARN, policy, state, and creation time.
 #'
-#' @usage
-#' eventbridge_describe_event_bus(Name)
+#' See [https://paws-r.github.io/docs/eventbridge/describe_event_bus.html](https://paws-r.github.io/docs/eventbridge/describe_event_bus.html) for full documentation.
 #'
 #' @param Name The name or ARN of the event bus to show details for. If you omit this,
 #' the default event bus is displayed.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string",
-#'   Arn = "string",
-#'   Policy = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_event_bus(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -659,37 +705,11 @@ eventbridge_describe_event_bus <- function(Name = NULL) {
 #' with your account
 #'
 #' @description
-#' This operation lists details about a partner event source that is shared
-#' with your account.
+#' This operation lists details about a partner event source that is shared with your account.
 #'
-#' @usage
-#' eventbridge_describe_event_source(Name)
+#' See [https://paws-r.github.io/docs/eventbridge/describe_event_source.html](https://paws-r.github.io/docs/eventbridge/describe_event_source.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the partner event source to display the details of.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   CreatedBy = "string",
-#'   CreationTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ExpirationTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Name = "string",
-#'   State = "PENDING"|"ACTIVE"|"DELETED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_event_source(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -715,32 +735,11 @@ eventbridge_describe_event_source <- function(Name) {
 #' event source that they have created
 #'
 #' @description
-#' An SaaS partner can use this operation to list details about a partner
-#' event source that they have created. AWS customers do not use this
-#' operation. Instead, AWS customers can use
-#' [`describe_event_source`][eventbridge_describe_event_source] to see
-#' details about a partner event source that is shared with them.
+#' An SaaS partner can use this operation to list details about a partner event source that they have created. Amazon Web Services customers do not use this operation. Instead, Amazon Web Services customers can use [`describe_event_source`][eventbridge_describe_event_source] to see details about a partner event source that is shared with them.
 #'
-#' @usage
-#' eventbridge_describe_partner_event_source(Name)
+#' See [https://paws-r.github.io/docs/eventbridge/describe_partner_event_source.html](https://paws-r.github.io/docs/eventbridge/describe_partner_event_source.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the event source to display.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_partner_event_source(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -765,64 +764,11 @@ eventbridge_describe_partner_event_source <- function(Name) {
 #' Retrieves details about a replay
 #'
 #' @description
-#' Retrieves details about a replay. Use
-#' [`describe_replay`][eventbridge_describe_replay] to determine the
-#' progress of a running replay. A replay processes events to replay based
-#' on the time in the event, and replays them using 1 minute intervals. If
-#' you use [`start_replay`][eventbridge_start_replay] and specify an
-#' `EventStartTime` and an `EventEndTime` that covers a 20 minute time
-#' range, the events are replayed from the first minute of that 20 minute
-#' range first. Then the events from the second minute are replayed. You
-#' can use [`describe_replay`][eventbridge_describe_replay] to determine
-#' the progress of a replay. The value returned for `EventLastReplayedTime`
-#' indicates the time within the specified time range associated with the
-#' last event replayed.
+#' Retrieves details about a replay. Use [`describe_replay`][eventbridge_describe_replay] to determine the progress of a running replay. A replay processes events to replay based on the time in the event, and replays them using 1 minute intervals. If you use [`start_replay`][eventbridge_start_replay] and specify an `EventStartTime` and an `EventEndTime` that covers a 20 minute time range, the events are replayed from the first minute of that 20 minute range first. Then the events from the second minute are replayed. You can use [`describe_replay`][eventbridge_describe_replay] to determine the progress of a replay. The value returned for `EventLastReplayedTime` indicates the time within the specified time range associated with the last event replayed.
 #'
-#' @usage
-#' eventbridge_describe_replay(ReplayName)
+#' See [https://paws-r.github.io/docs/eventbridge/describe_replay.html](https://paws-r.github.io/docs/eventbridge/describe_replay.html) for full documentation.
 #'
 #' @param ReplayName &#91;required&#93; The name of the replay to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ReplayName = "string",
-#'   ReplayArn = "string",
-#'   Description = "string",
-#'   State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
-#'   StateReason = "string",
-#'   EventSourceArn = "string",
-#'   Destination = list(
-#'     Arn = "string",
-#'     FilterArns = list(
-#'       "string"
-#'     )
-#'   ),
-#'   EventStartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EventEndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EventLastReplayedTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ReplayStartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   ReplayEndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_replay(
-#'   ReplayName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -848,42 +794,12 @@ eventbridge_describe_replay <- function(ReplayName) {
 #'
 #' @description
 #' Describes the specified rule.
-#' 
-#' DescribeRule does not list the targets of a rule. To see the targets
-#' associated with a rule, use
-#' [`list_targets_by_rule`][eventbridge_list_targets_by_rule].
 #'
-#' @usage
-#' eventbridge_describe_rule(Name, EventBusName)
+#' See [https://paws-r.github.io/docs/eventbridge/describe_rule.html](https://paws-r.github.io/docs/eventbridge/describe_rule.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string",
-#'   Arn = "string",
-#'   EventPattern = "string",
-#'   ScheduleExpression = "string",
-#'   State = "ENABLED"|"DISABLED",
-#'   Description = "string",
-#'   RoleArn = "string",
-#'   ManagedBy = "string",
-#'   EventBusName = "string",
-#'   CreatedBy = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_rule(
-#'   Name = "string",
-#'   EventBusName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -908,29 +824,13 @@ eventbridge_describe_rule <- function(Name, EventBusName = NULL) {
 #' Disables the specified rule
 #'
 #' @description
-#' Disables the specified rule. A disabled rule won't match any events, and
-#' won't self-trigger if it has a schedule expression.
-#' 
-#' When you disable a rule, incoming events might continue to match to the
-#' disabled rule. Allow a short period of time for changes to take effect.
+#' Disables the specified rule. A disabled rule won't match any events, and won't self-trigger if it has a schedule expression.
 #'
-#' @usage
-#' eventbridge_disable_rule(Name, EventBusName)
+#' See [https://paws-r.github.io/docs/eventbridge/disable_rule.html](https://paws-r.github.io/docs/eventbridge/disable_rule.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disable_rule(
-#'   Name = "string",
-#'   EventBusName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -955,30 +855,13 @@ eventbridge_disable_rule <- function(Name, EventBusName = NULL) {
 #' Enables the specified rule
 #'
 #' @description
-#' Enables the specified rule. If the rule does not exist, the operation
-#' fails.
-#' 
-#' When you enable a rule, incoming events might not immediately start
-#' matching to a newly enabled rule. Allow a short period of time for
-#' changes to take effect.
+#' Enables the specified rule. If the rule does not exist, the operation fails.
 #'
-#' @usage
-#' eventbridge_enable_rule(Name, EventBusName)
+#' See [https://paws-r.github.io/docs/eventbridge/enable_rule.html](https://paws-r.github.io/docs/eventbridge/enable_rule.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$enable_rule(
-#'   Name = "string",
-#'   EventBusName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1000,16 +883,46 @@ eventbridge_enable_rule <- function(Name, EventBusName = NULL) {
 }
 .eventbridge$operations$enable_rule <- eventbridge_enable_rule
 
+#' Retrieves a list of API destination in the account in the current Region
+#'
+#' @description
+#' Retrieves a list of API destination in the account in the current Region.
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/list_api_destinations.html](https://paws-r.github.io/docs/eventbridge/list_api_destinations.html) for full documentation.
+#'
+#' @param NamePrefix A name prefix to filter results returned. Only API destinations with a
+#' name that starts with the prefix are returned.
+#' @param ConnectionArn The ARN of the connection specified for the API destination.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
+#' @param Limit The maximum number of API destinations to include in the response.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_list_api_destinations
+eventbridge_list_api_destinations <- function(NamePrefix = NULL, ConnectionArn = NULL, NextToken = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListApiDestinations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$list_api_destinations_input(NamePrefix = NamePrefix, ConnectionArn = ConnectionArn, NextToken = NextToken, Limit = Limit)
+  output <- .eventbridge$list_api_destinations_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$list_api_destinations <- eventbridge_list_api_destinations
+
 #' Lists your archives
 #'
 #' @description
-#' Lists your archives. You can either list all the archives or you can
-#' provide a prefix to match to the archive names. Filter parameters are
-#' exclusive.
+#' Lists your archives. You can either list all the archives or you can provide a prefix to match to the archive names. Filter parameters are exclusive.
 #'
-#' @usage
-#' eventbridge_list_archives(NamePrefix, EventSourceArn, State, NextToken,
-#'   Limit)
+#' See [https://paws-r.github.io/docs/eventbridge/list_archives.html](https://paws-r.github.io/docs/eventbridge/list_archives.html) for full documentation.
 #'
 #' @param NamePrefix A name prefix to filter the archives returned. Only archives with name
 #' that match the prefix are returned.
@@ -1018,39 +931,6 @@ eventbridge_enable_rule <- function(Name, EventBusName = NULL) {
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit The maximum number of results to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Archives = list(
-#'     list(
-#'       ArchiveName = "string",
-#'       EventSourceArn = "string",
-#'       State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'       StateReason = "string",
-#'       RetentionDays = 123,
-#'       SizeBytes = 123,
-#'       EventCount = 123,
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_archives(
-#'   NamePrefix = "string",
-#'   EventSourceArn = "string",
-#'   State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1072,15 +952,86 @@ eventbridge_list_archives <- function(NamePrefix = NULL, EventSourceArn = NULL, 
 }
 .eventbridge$operations$list_archives <- eventbridge_list_archives
 
+#' Retrieves a list of connections from the account
+#'
+#' @description
+#' Retrieves a list of connections from the account.
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/list_connections.html](https://paws-r.github.io/docs/eventbridge/list_connections.html) for full documentation.
+#'
+#' @param NamePrefix A name prefix to filter results returned. Only connections with a name
+#' that starts with the prefix are returned.
+#' @param ConnectionState The state of the connection.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
+#' @param Limit The maximum number of connections to return.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_list_connections
+eventbridge_list_connections <- function(NamePrefix = NULL, ConnectionState = NULL, NextToken = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListConnections",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$list_connections_input(NamePrefix = NamePrefix, ConnectionState = ConnectionState, NextToken = NextToken, Limit = Limit)
+  output <- .eventbridge$list_connections_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$list_connections <- eventbridge_list_connections
+
+#' List the global endpoints associated with this account
+#'
+#' @description
+#' List the global endpoints associated with this account. For more information about global endpoints, see [Making applications Regional-fault tolerant with global endpoints and event replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html) in the Amazon EventBridge User Guide..
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/list_endpoints.html](https://paws-r.github.io/docs/eventbridge/list_endpoints.html) for full documentation.
+#'
+#' @param NamePrefix A value that will return a subset of the endpoints associated with this
+#' account. For example, `"NamePrefix": "ABC"` will return all endpoints
+#' with "ABC" in the name.
+#' @param HomeRegion The primary Region of the endpoints associated with this account. For
+#' example `"HomeRegion": "us-east-1"`.
+#' @param NextToken If `nextToken` is returned, there are more results available. The value
+#' of nextToken is a unique pagination token for each page. Make the call
+#' again using the returned token to retrieve the next page. Keep all other
+#' arguments unchanged. Each pagination token expires after 24 hours. Using
+#' an expired pagination token will return an HTTP 400 InvalidToken error.
+#' @param MaxResults The maximum number of results returned by the call.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_list_endpoints
+eventbridge_list_endpoints <- function(NamePrefix = NULL, HomeRegion = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListEndpoints",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$list_endpoints_input(NamePrefix = NamePrefix, HomeRegion = HomeRegion, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .eventbridge$list_endpoints_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$list_endpoints <- eventbridge_list_endpoints
+
 #' Lists all the event buses in your account, including the default event
 #' bus, custom event buses, and partner event buses
 #'
 #' @description
-#' Lists all the event buses in your account, including the default event
-#' bus, custom event buses, and partner event buses.
+#' Lists all the event buses in your account, including the default event bus, custom event buses, and partner event buses.
 #'
-#' @usage
-#' eventbridge_list_event_buses(NamePrefix, NextToken, Limit)
+#' See [https://paws-r.github.io/docs/eventbridge/list_event_buses.html](https://paws-r.github.io/docs/eventbridge/list_event_buses.html) for full documentation.
 #'
 #' @param NamePrefix Specifying this limits the results to only those event buses with names
 #' that start with the specified prefix.
@@ -1089,30 +1040,6 @@ eventbridge_list_archives <- function(NamePrefix = NULL, EventSourceArn = NULL, 
 #' @param Limit Specifying this limits the number of results returned by this operation.
 #' The operation also returns a NextToken which you can use in a subsequent
 #' operation to retrieve the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventBuses = list(
-#'     list(
-#'       Name = "string",
-#'       Arn = "string",
-#'       Policy = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_event_buses(
-#'   NamePrefix = "string",
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1135,15 +1062,12 @@ eventbridge_list_event_buses <- function(NamePrefix = NULL, NextToken = NULL, Li
 .eventbridge$operations$list_event_buses <- eventbridge_list_event_buses
 
 #' You can use this to see all the partner event sources that have been
-#' shared with your AWS account
+#' shared with your Amazon Web Services account
 #'
 #' @description
-#' You can use this to see all the partner event sources that have been
-#' shared with your AWS account. For more information about partner event
-#' sources, see [`create_event_bus`][eventbridge_create_event_bus].
+#' You can use this to see all the partner event sources that have been shared with your Amazon Web Services account. For more information about partner event sources, see [`create_event_bus`][eventbridge_create_event_bus].
 #'
-#' @usage
-#' eventbridge_list_event_sources(NamePrefix, NextToken, Limit)
+#' See [https://paws-r.github.io/docs/eventbridge/list_event_sources.html](https://paws-r.github.io/docs/eventbridge/list_event_sources.html) for full documentation.
 #'
 #' @param NamePrefix Specifying this limits the results to only those partner event sources
 #' with names that start with the specified prefix.
@@ -1152,37 +1076,6 @@ eventbridge_list_event_buses <- function(NamePrefix = NULL, NextToken = NULL, Li
 #' @param Limit Specifying this limits the number of results returned by this operation.
 #' The operation also returns a NextToken which you can use in a subsequent
 #' operation to retrieve the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventSources = list(
-#'     list(
-#'       Arn = "string",
-#'       CreatedBy = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ExpirationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Name = "string",
-#'       State = "PENDING"|"ACTIVE"|"DELETED"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_event_sources(
-#'   NamePrefix = "string",
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1204,17 +1097,14 @@ eventbridge_list_event_sources <- function(NamePrefix = NULL, NextToken = NULL, 
 }
 .eventbridge$operations$list_event_sources <- eventbridge_list_event_sources
 
-#' An SaaS partner can use this operation to display the AWS account ID
-#' that a particular partner event source name is associated with
+#' An SaaS partner can use this operation to display the Amazon Web
+#' Services account ID that a particular partner event source name is
+#' associated with
 #'
 #' @description
-#' An SaaS partner can use this operation to display the AWS account ID
-#' that a particular partner event source name is associated with. This
-#' operation is not used by AWS customers.
+#' An SaaS partner can use this operation to display the Amazon Web Services account ID that a particular partner event source name is associated with. This operation is not used by Amazon Web Services customers.
 #'
-#' @usage
-#' eventbridge_list_partner_event_source_accounts(EventSourceName,
-#'   NextToken, Limit)
+#' See [https://paws-r.github.io/docs/eventbridge/list_partner_event_source_accounts.html](https://paws-r.github.io/docs/eventbridge/list_partner_event_source_accounts.html) for full documentation.
 #'
 #' @param EventSourceName &#91;required&#93; The name of the partner event source to display account information
 #' about.
@@ -1223,35 +1113,6 @@ eventbridge_list_event_sources <- function(NamePrefix = NULL, NextToken = NULL, 
 #' @param Limit Specifying this limits the number of results returned by this operation.
 #' The operation also returns a NextToken which you can use in a subsequent
 #' operation to retrieve the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PartnerEventSourceAccounts = list(
-#'     list(
-#'       Account = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ExpirationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       State = "PENDING"|"ACTIVE"|"DELETED"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_partner_event_source_accounts(
-#'   EventSourceName = "string",
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1277,12 +1138,9 @@ eventbridge_list_partner_event_source_accounts <- function(EventSourceName, Next
 #' source names that they have created
 #'
 #' @description
-#' An SaaS partner can use this operation to list all the partner event
-#' source names that they have created. This operation is not used by AWS
-#' customers.
+#' An SaaS partner can use this operation to list all the partner event source names that they have created. This operation is not used by Amazon Web Services customers.
 #'
-#' @usage
-#' eventbridge_list_partner_event_sources(NamePrefix, NextToken, Limit)
+#' See [https://paws-r.github.io/docs/eventbridge/list_partner_event_sources.html](https://paws-r.github.io/docs/eventbridge/list_partner_event_sources.html) for full documentation.
 #'
 #' @param NamePrefix &#91;required&#93; If you specify this, the results are limited to only those partner event
 #' sources that start with the string you specify.
@@ -1291,29 +1149,6 @@ eventbridge_list_partner_event_source_accounts <- function(EventSourceName, Next
 #' @param Limit pecifying this limits the number of results returned by this operation.
 #' The operation also returns a NextToken which you can use in a subsequent
 #' operation to retrieve the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PartnerEventSources = list(
-#'     list(
-#'       Arn = "string",
-#'       Name = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_partner_event_sources(
-#'   NamePrefix = "string",
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1338,63 +1173,17 @@ eventbridge_list_partner_event_sources <- function(NamePrefix, NextToken = NULL,
 #' Lists your replays
 #'
 #' @description
-#' Lists your replays. You can either list all the replays or you can
-#' provide a prefix to match to the replay names. Filter parameters are
-#' exclusive.
+#' Lists your replays. You can either list all the replays or you can provide a prefix to match to the replay names. Filter parameters are exclusive.
 #'
-#' @usage
-#' eventbridge_list_replays(NamePrefix, State, EventSourceArn, NextToken,
-#'   Limit)
+#' See [https://paws-r.github.io/docs/eventbridge/list_replays.html](https://paws-r.github.io/docs/eventbridge/list_replays.html) for full documentation.
 #'
 #' @param NamePrefix A name prefix to filter the replays returned. Only replays with name
 #' that match the prefix are returned.
 #' @param State The state of the replay.
-#' @param EventSourceArn The ARN of the event source associated with the replay.
+#' @param EventSourceArn The ARN of the archive from which the events are replayed.
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit The maximum number of replays to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Replays = list(
-#'     list(
-#'       ReplayName = "string",
-#'       EventSourceArn = "string",
-#'       State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
-#'       StateReason = "string",
-#'       EventStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EventEndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EventLastReplayedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ReplayStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ReplayEndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_replays(
-#'   NamePrefix = "string",
-#'   State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
-#'   EventSourceArn = "string",
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1419,12 +1208,9 @@ eventbridge_list_replays <- function(NamePrefix = NULL, State = NULL, EventSourc
 #' Lists the rules for the specified target
 #'
 #' @description
-#' Lists the rules for the specified target. You can see which of the rules
-#' in Amazon EventBridge can invoke a specific target in your account.
+#' Lists the rules for the specified target. You can see which of the rules in Amazon EventBridge can invoke a specific target in your account.
 #'
-#' @usage
-#' eventbridge_list_rule_names_by_target(TargetArn, EventBusName,
-#'   NextToken, Limit)
+#' See [https://paws-r.github.io/docs/eventbridge/list_rule_names_by_target.html](https://paws-r.github.io/docs/eventbridge/list_rule_names_by_target.html) for full documentation.
 #'
 #' @param TargetArn &#91;required&#93; The Amazon Resource Name (ARN) of the target resource.
 #' @param EventBusName The name or ARN of the event bus to list rules for. If you omit this,
@@ -1432,27 +1218,6 @@ eventbridge_list_replays <- function(NamePrefix = NULL, State = NULL, EventSourc
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit The maximum number of results to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RuleNames = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_rule_names_by_target(
-#'   TargetArn = "string",
-#'   EventBusName = "string",
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1477,15 +1242,9 @@ eventbridge_list_rule_names_by_target <- function(TargetArn, EventBusName = NULL
 #' Lists your Amazon EventBridge rules
 #'
 #' @description
-#' Lists your Amazon EventBridge rules. You can either list all the rules
-#' or you can provide a prefix to match to the rule names.
-#' 
-#' ListRules does not list the targets of a rule. To see the targets
-#' associated with a rule, use
-#' [`list_targets_by_rule`][eventbridge_list_targets_by_rule].
+#' Lists your Amazon EventBridge rules. You can either list all the rules or you can provide a prefix to match to the rule names.
 #'
-#' @usage
-#' eventbridge_list_rules(NamePrefix, EventBusName, NextToken, Limit)
+#' See [https://paws-r.github.io/docs/eventbridge/list_rules.html](https://paws-r.github.io/docs/eventbridge/list_rules.html) for full documentation.
 #'
 #' @param NamePrefix The prefix matching the rule name.
 #' @param EventBusName The name or ARN of the event bus to list the rules for. If you omit
@@ -1493,37 +1252,6 @@ eventbridge_list_rule_names_by_target <- function(TargetArn, EventBusName = NULL
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit The maximum number of results to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Rules = list(
-#'     list(
-#'       Name = "string",
-#'       Arn = "string",
-#'       EventPattern = "string",
-#'       State = "ENABLED"|"DISABLED",
-#'       Description = "string",
-#'       ScheduleExpression = "string",
-#'       RoleArn = "string",
-#'       ManagedBy = "string",
-#'       EventBusName = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_rules(
-#'   NamePrefix = "string",
-#'   EventBusName = "string",
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1548,33 +1276,11 @@ eventbridge_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, NextT
 #' Displays the tags associated with an EventBridge resource
 #'
 #' @description
-#' Displays the tags associated with an EventBridge resource. In
-#' EventBridge, rules and event buses can be tagged.
+#' Displays the tags associated with an EventBridge resource. In EventBridge, rules and event buses can be tagged.
 #'
-#' @usage
-#' eventbridge_list_tags_for_resource(ResourceARN)
+#' See [https://paws-r.github.io/docs/eventbridge/list_tags_for_resource.html](https://paws-r.github.io/docs/eventbridge/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource for which you want to view tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceARN = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1601,8 +1307,7 @@ eventbridge_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Lists the targets assigned to the specified rule.
 #'
-#' @usage
-#' eventbridge_list_targets_by_rule(Rule, EventBusName, NextToken, Limit)
+#' See [https://paws-r.github.io/docs/eventbridge/list_targets_by_rule.html](https://paws-r.github.io/docs/eventbridge/list_targets_by_rule.html) for full documentation.
 #'
 #' @param Rule &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
@@ -1610,109 +1315,6 @@ eventbridge_list_tags_for_resource <- function(ResourceARN) {
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit The maximum number of results to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Targets = list(
-#'     list(
-#'       Id = "string",
-#'       Arn = "string",
-#'       RoleArn = "string",
-#'       Input = "string",
-#'       InputPath = "string",
-#'       InputTransformer = list(
-#'         InputPathsMap = list(
-#'           "string"
-#'         ),
-#'         InputTemplate = "string"
-#'       ),
-#'       KinesisParameters = list(
-#'         PartitionKeyPath = "string"
-#'       ),
-#'       RunCommandParameters = list(
-#'         RunCommandTargets = list(
-#'           list(
-#'             Key = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       EcsParameters = list(
-#'         TaskDefinitionArn = "string",
-#'         TaskCount = 123,
-#'         LaunchType = "EC2"|"FARGATE",
-#'         NetworkConfiguration = list(
-#'           awsvpcConfiguration = list(
-#'             Subnets = list(
-#'               "string"
-#'             ),
-#'             SecurityGroups = list(
-#'               "string"
-#'             ),
-#'             AssignPublicIp = "ENABLED"|"DISABLED"
-#'           )
-#'         ),
-#'         PlatformVersion = "string",
-#'         Group = "string"
-#'       ),
-#'       BatchParameters = list(
-#'         JobDefinition = "string",
-#'         JobName = "string",
-#'         ArrayProperties = list(
-#'           Size = 123
-#'         ),
-#'         RetryStrategy = list(
-#'           Attempts = 123
-#'         )
-#'       ),
-#'       SqsParameters = list(
-#'         MessageGroupId = "string"
-#'       ),
-#'       HttpParameters = list(
-#'         PathParameterValues = list(
-#'           "string"
-#'         ),
-#'         HeaderParameters = list(
-#'           "string"
-#'         ),
-#'         QueryStringParameters = list(
-#'           "string"
-#'         )
-#'       ),
-#'       RedshiftDataParameters = list(
-#'         SecretManagerArn = "string",
-#'         Database = "string",
-#'         DbUser = "string",
-#'         Sql = "string",
-#'         StatementName = "string",
-#'         WithEvent = TRUE|FALSE
-#'       ),
-#'       DeadLetterConfig = list(
-#'         Arn = "string"
-#'       ),
-#'       RetryPolicy = list(
-#'         MaximumRetryAttempts = 123,
-#'         MaximumEventAgeInSeconds = 123
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_targets_by_rule(
-#'   Rule = "string",
-#'   EventBusName = "string",
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1738,62 +1340,30 @@ eventbridge_list_targets_by_rule <- function(Rule, EventBusName = NULL, NextToke
 #' rules
 #'
 #' @description
-#' Sends custom events to Amazon EventBridge so that they can be matched to
-#' rules.
+#' Sends custom events to Amazon EventBridge so that they can be matched to rules.
 #'
-#' @usage
-#' eventbridge_put_events(Entries)
+#' See [https://paws-r.github.io/docs/eventbridge/put_events.html](https://paws-r.github.io/docs/eventbridge/put_events.html) for full documentation.
 #'
 #' @param Entries &#91;required&#93; The entry that defines an event in your system. You can specify several
 #' parameters for the entry such as the source and type of the event,
 #' resources associated with the event, and so on.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedEntryCount = 123,
-#'   Entries = list(
-#'     list(
-#'       EventId = "string",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_events(
-#'   Entries = list(
-#'     list(
-#'       Time = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Source = "string",
-#'       Resources = list(
-#'         "string"
-#'       ),
-#'       DetailType = "string",
-#'       Detail = "string",
-#'       EventBusName = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param EndpointId The URL subdomain of the endpoint. For example, if the URL for Endpoint
+#' is abcde.veo.endpoints.event.amazonaws.com, then the EndpointId is
+#' `abcde.veo`.
+#' 
+#' When using Java, you must include `auth-crt` on the class path.
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridge_put_events
-eventbridge_put_events <- function(Entries) {
+eventbridge_put_events <- function(Entries, EndpointId = NULL) {
   op <- new_operation(
     name = "PutEvents",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .eventbridge$put_events_input(Entries = Entries)
+  input <- .eventbridge$put_events_input(Entries = Entries, EndpointId = EndpointId)
   output <- .eventbridge$put_events_output()
   config <- get_config()
   svc <- .eventbridge$service(config)
@@ -1807,47 +1377,11 @@ eventbridge_put_events <- function(Entries) {
 #' event bus
 #'
 #' @description
-#' This is used by SaaS partners to write events to a customer's partner
-#' event bus. AWS customers do not use this operation.
+#' This is used by SaaS partners to write events to a customer's partner event bus. Amazon Web Services customers do not use this operation.
 #'
-#' @usage
-#' eventbridge_put_partner_events(Entries)
+#' See [https://paws-r.github.io/docs/eventbridge/put_partner_events.html](https://paws-r.github.io/docs/eventbridge/put_partner_events.html) for full documentation.
 #'
 #' @param Entries &#91;required&#93; The list of events to write to the event bus.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedEntryCount = 123,
-#'   Entries = list(
-#'     list(
-#'       EventId = "string",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_partner_events(
-#'   Entries = list(
-#'     list(
-#'       Time = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Source = "string",
-#'       Resources = list(
-#'         "string"
-#'       ),
-#'       DetailType = "string",
-#'       Detail = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1869,49 +1403,21 @@ eventbridge_put_partner_events <- function(Entries) {
 }
 .eventbridge$operations$put_partner_events <- eventbridge_put_partner_events
 
-#' Running PutPermission permits the specified AWS account or AWS
-#' organization to put events to the specified event bus
+#' Running PutPermission permits the specified Amazon Web Services account
+#' or Amazon Web Services organization to put events to the specified event
+#' bus
 #'
 #' @description
-#' Running [`put_permission`][eventbridge_put_permission] permits the
-#' specified AWS account or AWS organization to put events to the specified
-#' *event bus*. Amazon EventBridge (CloudWatch Events) rules in your
-#' account are triggered by these events arriving to an event bus in your
-#' account.
-#' 
-#' For another account to send events to your account, that external
-#' account must have an EventBridge rule with your account's event bus as a
-#' target.
-#' 
-#' To enable multiple AWS accounts to put events to your event bus, run
-#' [`put_permission`][eventbridge_put_permission] once for each of these
-#' accounts. Or, if all the accounts are members of the same AWS
-#' organization, you can run [`put_permission`][eventbridge_put_permission]
-#' once specifying `Principal` as "*" and specifying the AWS organization
-#' ID in `Condition`, to grant permissions to all accounts in that
-#' organization.
-#' 
-#' If you grant permissions using an organization, then accounts in that
-#' organization must specify a `RoleArn` with proper permissions when they
-#' use `PutTarget` to add your account's event bus as a target. For more
-#' information, see [Sending and Receiving Events Between AWS
-#' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
-#' in the *Amazon EventBridge User Guide*.
-#' 
-#' The permission policy on the default event bus cannot exceed 10 KB in
-#' size.
+#' Running [`put_permission`][eventbridge_put_permission] permits the specified Amazon Web Services account or Amazon Web Services organization to put events to the specified *event bus*. Amazon EventBridge (CloudWatch Events) rules in your account are triggered by these events arriving to an event bus in your account.
 #'
-#' @usage
-#' eventbridge_put_permission(EventBusName, Action, Principal, StatementId,
-#'   Condition, Policy)
+#' See [https://paws-r.github.io/docs/eventbridge/put_permission.html](https://paws-r.github.io/docs/eventbridge/put_permission.html) for full documentation.
 #'
 #' @param EventBusName The name of the event bus associated with the rule. If you omit this,
 #' the default event bus is used.
 #' @param Action The action that you are enabling the other account to perform.
-#' Currently, this must be `events:PutEvents`.
-#' @param Principal The 12-digit AWS account ID that you are permitting to put events to
-#' your default event bus. Specify "*" to permit any account to put events
-#' to your default event bus.
+#' @param Principal The 12-digit Amazon Web Services account ID that you are permitting to
+#' put events to your default event bus. Specify "*" to permit any account
+#' to put events to your default event bus.
 #' 
 #' If you specify "*" without specifying `Condition`, avoid creating rules
 #' that may match undesirable events. To create more secure rules, make
@@ -1922,41 +1428,24 @@ eventbridge_put_partner_events <- function(Entries) {
 #' permissions to. If you later want to revoke the permission for this
 #' external account, specify this `StatementId` when you run
 #' [`remove_permission`][eventbridge_remove_permission].
-#' @param Condition This parameter enables you to limit the permission to accounts that
-#' fulfill a certain condition, such as being a member of a certain AWS
-#' organization. For more information about AWS Organizations, see [What Is
-#' AWS
-#' Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
-#' in the *AWS Organizations User Guide*.
 #' 
-#' If you specify `Condition` with an AWS organization ID, and specify "*"
-#' as the value for `Principal`, you grant permission to all the accounts
-#' in the named organization.
+#' Each `StatementId` must be unique.
+#' @param Condition This parameter enables you to limit the permission to accounts that
+#' fulfill a certain condition, such as being a member of a certain Amazon
+#' Web Services organization. For more information about Amazon Web
+#' Services Organizations, see [What Is Amazon Web Services
+#' Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
+#' in the *Amazon Web Services Organizations User Guide*.
+#' 
+#' If you specify `Condition` with an Amazon Web Services organization ID,
+#' and specify "*" as the value for `Principal`, you grant permission to
+#' all the accounts in the named organization.
 #' 
 #' The `Condition` is a JSON string which must contain `Type`, `Key`, and
 #' `Value` fields.
 #' @param Policy A JSON string that describes the permission policy statement. You can
 #' include a `Policy` parameter in the request instead of using the
 #' `StatementId`, `Action`, `Principal`, or `Condition` parameters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_permission(
-#'   EventBusName = "string",
-#'   Action = "string",
-#'   Principal = "string",
-#'   StatementId = "string",
-#'   Condition = list(
-#'     Type = "string",
-#'     Key = "string",
-#'     Value = "string"
-#'   ),
-#'   Policy = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1981,114 +1470,28 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #' Creates or updates the specified rule
 #'
 #' @description
-#' Creates or updates the specified rule. Rules are enabled by default, or
-#' based on value of the state. You can disable a rule using
-#' [`disable_rule`][eventbridge_disable_rule].
-#' 
-#' A single rule watches for events from a single event bus. Events
-#' generated by AWS services go to your account's default event bus. Events
-#' generated by SaaS partner services or applications go to the matching
-#' partner event bus. If you have custom applications or services, you can
-#' specify whether their events go to your default event bus or a custom
-#' event bus that you have created. For more information, see
-#' [`create_event_bus`][eventbridge_create_event_bus].
-#' 
-#' If you are updating an existing rule, the rule is replaced with what you
-#' specify in this [`put_rule`][eventbridge_put_rule] command. If you omit
-#' arguments in [`put_rule`][eventbridge_put_rule], the old values for
-#' those arguments are not kept. Instead, they are replaced with null
-#' values.
-#' 
-#' When you create or update a rule, incoming events might not immediately
-#' start matching to new or updated rules. Allow a short period of time for
-#' changes to take effect.
-#' 
-#' A rule must contain at least an EventPattern or ScheduleExpression.
-#' Rules with EventPatterns are triggered when a matching event is
-#' observed. Rules with ScheduleExpressions self-trigger based on the given
-#' schedule. A rule can have both an EventPattern and a ScheduleExpression,
-#' in which case the rule triggers on matching events as well as on a
-#' schedule.
-#' 
-#' When you initially create a rule, you can optionally assign one or more
-#' tags to the rule. Tags can help you organize and categorize your
-#' resources. You can also use them to scope user permissions, by granting
-#' a user permission to access or change only rules with certain tag
-#' values. To use the [`put_rule`][eventbridge_put_rule] operation and
-#' assign tags, you must have both the `events:PutRule` and
-#' `events:TagResource` permissions.
-#' 
-#' If you are updating an existing rule, any tags you specify in the
-#' [`put_rule`][eventbridge_put_rule] operation are ignored. To update the
-#' tags of an existing rule, use [`tag_resource`][eventbridge_tag_resource]
-#' and [`untag_resource`][eventbridge_untag_resource].
-#' 
-#' Most services in AWS treat : or / as the same character in Amazon
-#' Resource Names (ARNs). However, EventBridge uses an exact match in event
-#' patterns and rules. Be sure to use the correct ARN characters when
-#' creating event patterns so that they match the ARN syntax in the event
-#' you want to match.
-#' 
-#' In EventBridge, it is possible to create rules that lead to infinite
-#' loops, where a rule is fired repeatedly. For example, a rule might
-#' detect that ACLs have changed on an S3 bucket, and trigger software to
-#' change them to the desired state. If the rule is not written carefully,
-#' the subsequent change to the ACLs fires the rule again, creating an
-#' infinite loop.
-#' 
-#' To prevent this, write the rules so that the triggered actions do not
-#' re-fire the same rule. For example, your rule could fire only if ACLs
-#' are found to be in a bad state, instead of after any change.
-#' 
-#' An infinite loop can quickly cause higher than expected charges. We
-#' recommend that you use budgeting, which alerts you when charges exceed
-#' your specified limit. For more information, see [Managing Your Costs
-#' with
-#' Budgets](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html).
+#' Creates or updates the specified rule. Rules are enabled by default, or based on value of the state. You can disable a rule using [`disable_rule`][eventbridge_disable_rule].
 #'
-#' @usage
-#' eventbridge_put_rule(Name, ScheduleExpression, EventPattern, State,
-#'   Description, RoleArn, Tags, EventBusName)
+#' See [https://paws-r.github.io/docs/eventbridge/put_rule.html](https://paws-r.github.io/docs/eventbridge/put_rule.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the rule that you are creating or updating.
 #' @param ScheduleExpression The scheduling expression. For example, "cron(0 20 * * ? *)" or
 #' "rate(5 minutes)".
-#' @param EventPattern The event pattern. For more information, see [Events and Event
-#' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html)
-#' in the *Amazon EventBridge User Guide*.
+#' @param EventPattern The event pattern. For more information, see [EventBridge event
+#' patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/) in
+#' the *Amazon EventBridge User Guide*.
 #' @param State Indicates whether the rule is enabled or disabled.
 #' @param Description A description of the rule.
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role associated with the rule.
+#' 
+#' If you're setting an event bus in another account as the target and that
+#' account granted permission to your account through an organization
+#' instead of directly by the account ID, you must specify a `RoleArn` with
+#' proper permissions in the `Target` structure, instead of here in this
+#' parameter.
 #' @param Tags The list of key-value pairs to associate with the rule.
 #' @param EventBusName The name or ARN of the event bus to associate with this rule. If you
 #' omit this, the default event bus is used.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RuleArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_rule(
-#'   Name = "string",
-#'   ScheduleExpression = "string",
-#'   EventPattern = "string",
-#'   State = "ENABLED"|"DISABLED",
-#'   Description = "string",
-#'   RoleArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   EventBusName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2114,243 +1517,14 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' if they are already associated with the rule
 #'
 #' @description
-#' Adds the specified targets to the specified rule, or updates the targets
-#' if they are already associated with the rule.
-#' 
-#' Targets are the resources that are invoked when a rule is triggered.
-#' 
-#' You can configure the following as targets for Events:
-#' 
-#' -   EC2 instances
-#' 
-#' -   SSM Run Command
-#' 
-#' -   SSM Automation
-#' 
-#' -   AWS Lambda functions
-#' 
-#' -   Data streams in Amazon Kinesis Data Streams
-#' 
-#' -   Data delivery streams in Amazon Kinesis Data Firehose
-#' 
-#' -   Amazon ECS tasks
-#' 
-#' -   AWS Step Functions state machines
-#' 
-#' -   AWS Batch jobs
-#' 
-#' -   AWS CodeBuild projects
-#' 
-#' -   Pipelines in AWS CodePipeline
-#' 
-#' -   Amazon Inspector assessment templates
-#' 
-#' -   Amazon SNS topics
-#' 
-#' -   Amazon SQS queues, including FIFO queues
-#' 
-#' -   The default event bus of another AWS account
-#' 
-#' -   Amazon API Gateway REST APIs
-#' 
-#' -   Redshift Clusters to invoke Data API ExecuteStatement on
-#' 
-#' Creating rules with built-in targets is supported only in the AWS
-#' Management Console. The built-in targets are
-#' `EC2 CreateSnapshot API call`, `EC2 RebootInstances API call`,
-#' `EC2 StopInstances API call`, and `EC2 TerminateInstances API call`.
-#' 
-#' For some target types, [`put_targets`][eventbridge_put_targets] provides
-#' target-specific parameters. If the target is a Kinesis data stream, you
-#' can optionally specify which shard the event goes to by using the
-#' `KinesisParameters` argument. To invoke a command on multiple EC2
-#' instances with one rule, you can use the `RunCommandParameters` field.
-#' 
-#' To be able to make API calls against the resources that you own, Amazon
-#' EventBridge (CloudWatch Events) needs the appropriate permissions. For
-#' AWS Lambda and Amazon SNS resources, EventBridge relies on
-#' resource-based policies. For EC2 instances, Kinesis data streams, AWS
-#' Step Functions state machines and API Gateway REST APIs, EventBridge
-#' relies on IAM roles that you specify in the `RoleARN` argument in
-#' [`put_targets`][eventbridge_put_targets]. For more information, see
-#' [Authentication and Access
-#' Control](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-iam.html)
-#' in the *Amazon EventBridge User Guide*.
-#' 
-#' If another AWS account is in the same region and has granted you
-#' permission (using [`put_permission`][eventbridge_put_permission]), you
-#' can send events to that account. Set that account's event bus as a
-#' target of the rules in your account. To send the matched events to the
-#' other account, specify that account's event bus as the `Arn` value when
-#' you run [`put_targets`][eventbridge_put_targets]. If your account sends
-#' events to another account, your account is charged for each sent event.
-#' Each event sent to another account is charged as a custom event. The
-#' account receiving the event is not charged. For more information, see
-#' [Amazon EventBridge (CloudWatch Events)
-#' Pricing](https://aws.amazon.com/eventbridge/pricing/).
-#' 
-#' `Input`, `InputPath`, and `InputTransformer` are not available with
-#' `PutTarget` if the target is an event bus of a different AWS account.
-#' 
-#' If you are setting the event bus of another account as the target, and
-#' that account granted permission to your account through an organization
-#' instead of directly by the account ID, then you must specify a `RoleArn`
-#' with proper permissions in the `Target` structure. For more information,
-#' see [Sending and Receiving Events Between AWS
-#' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
-#' in the *Amazon EventBridge User Guide*.
-#' 
-#' For more information about enabling cross-account events, see
-#' [`put_permission`][eventbridge_put_permission].
-#' 
-#' **Input**, **InputPath**, and **InputTransformer** are mutually
-#' exclusive and optional parameters of a target. When a rule is triggered
-#' due to a matched event:
-#' 
-#' -   If none of the following arguments are specified for a target, then
-#'     the entire event is passed to the target in JSON format (unless the
-#'     target is Amazon EC2 Run Command or Amazon ECS task, in which case
-#'     nothing from the event is passed to the target).
-#' 
-#' -   If **Input** is specified in the form of valid JSON, then the
-#'     matched event is overridden with this constant.
-#' 
-#' -   If **InputPath** is specified in the form of JSONPath (for example,
-#'     `$.detail`), then only the part of the event specified in the path
-#'     is passed to the target (for example, only the detail part of the
-#'     event is passed).
-#' 
-#' -   If **InputTransformer** is specified, then one or more specified
-#'     JSONPaths are extracted from the event and used as values in a
-#'     template that you specify as the input to the target.
-#' 
-#' When you specify `InputPath` or `InputTransformer`, you must use JSON
-#' dot notation, not bracket notation.
-#' 
-#' When you add targets to a rule and the associated rule triggers soon
-#' after, new or updated targets might not be immediately invoked. Allow a
-#' short period of time for changes to take effect.
-#' 
-#' This action can partially fail if too many requests are made at the same
-#' time. If that happens, `FailedEntryCount` is non-zero in the response
-#' and each entry in `FailedEntries` provides the ID of the failed target
-#' and the error code.
+#' Adds the specified targets to the specified rule, or updates the targets if they are already associated with the rule.
 #'
-#' @usage
-#' eventbridge_put_targets(Rule, EventBusName, Targets)
+#' See [https://paws-r.github.io/docs/eventbridge/put_targets.html](https://paws-r.github.io/docs/eventbridge/put_targets.html) for full documentation.
 #'
 #' @param Rule &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
 #' @param Targets &#91;required&#93; The targets to update or add to the rule.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedEntryCount = 123,
-#'   FailedEntries = list(
-#'     list(
-#'       TargetId = "string",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_targets(
-#'   Rule = "string",
-#'   EventBusName = "string",
-#'   Targets = list(
-#'     list(
-#'       Id = "string",
-#'       Arn = "string",
-#'       RoleArn = "string",
-#'       Input = "string",
-#'       InputPath = "string",
-#'       InputTransformer = list(
-#'         InputPathsMap = list(
-#'           "string"
-#'         ),
-#'         InputTemplate = "string"
-#'       ),
-#'       KinesisParameters = list(
-#'         PartitionKeyPath = "string"
-#'       ),
-#'       RunCommandParameters = list(
-#'         RunCommandTargets = list(
-#'           list(
-#'             Key = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       EcsParameters = list(
-#'         TaskDefinitionArn = "string",
-#'         TaskCount = 123,
-#'         LaunchType = "EC2"|"FARGATE",
-#'         NetworkConfiguration = list(
-#'           awsvpcConfiguration = list(
-#'             Subnets = list(
-#'               "string"
-#'             ),
-#'             SecurityGroups = list(
-#'               "string"
-#'             ),
-#'             AssignPublicIp = "ENABLED"|"DISABLED"
-#'           )
-#'         ),
-#'         PlatformVersion = "string",
-#'         Group = "string"
-#'       ),
-#'       BatchParameters = list(
-#'         JobDefinition = "string",
-#'         JobName = "string",
-#'         ArrayProperties = list(
-#'           Size = 123
-#'         ),
-#'         RetryStrategy = list(
-#'           Attempts = 123
-#'         )
-#'       ),
-#'       SqsParameters = list(
-#'         MessageGroupId = "string"
-#'       ),
-#'       HttpParameters = list(
-#'         PathParameterValues = list(
-#'           "string"
-#'         ),
-#'         HeaderParameters = list(
-#'           "string"
-#'         ),
-#'         QueryStringParameters = list(
-#'           "string"
-#'         )
-#'       ),
-#'       RedshiftDataParameters = list(
-#'         SecretManagerArn = "string",
-#'         Database = "string",
-#'         DbUser = "string",
-#'         Sql = "string",
-#'         StatementName = "string",
-#'         WithEvent = TRUE|FALSE
-#'       ),
-#'       DeadLetterConfig = list(
-#'         Arn = "string"
-#'       ),
-#'       RetryPolicy = list(
-#'         MaximumRetryAttempts = 123,
-#'         MaximumEventAgeInSeconds = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2372,39 +1546,19 @@ eventbridge_put_targets <- function(Rule, EventBusName = NULL, Targets) {
 }
 .eventbridge$operations$put_targets <- eventbridge_put_targets
 
-#' Revokes the permission of another AWS account to be able to put events
-#' to the specified event bus
+#' Revokes the permission of another Amazon Web Services account to be able
+#' to put events to the specified event bus
 #'
 #' @description
-#' Revokes the permission of another AWS account to be able to put events
-#' to the specified event bus. Specify the account to revoke by the
-#' `StatementId` value that you associated with the account when you
-#' granted it permission with
-#' [`put_permission`][eventbridge_put_permission]. You can find the
-#' `StatementId` by using
-#' [`describe_event_bus`][eventbridge_describe_event_bus].
+#' Revokes the permission of another Amazon Web Services account to be able to put events to the specified event bus. Specify the account to revoke by the `StatementId` value that you associated with the account when you granted it permission with [`put_permission`][eventbridge_put_permission]. You can find the `StatementId` by using [`describe_event_bus`][eventbridge_describe_event_bus].
 #'
-#' @usage
-#' eventbridge_remove_permission(StatementId, RemoveAllPermissions,
-#'   EventBusName)
+#' See [https://paws-r.github.io/docs/eventbridge/remove_permission.html](https://paws-r.github.io/docs/eventbridge/remove_permission.html) for full documentation.
 #'
 #' @param StatementId The statement ID corresponding to the account that is no longer allowed
 #' to put events to the default event bus.
 #' @param RemoveAllPermissions Specifies whether to remove all permissions.
 #' @param EventBusName The name of the event bus to revoke permissions for. If you omit this,
 #' the default event bus is used.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_permission(
-#'   StatementId = "string",
-#'   RemoveAllPermissions = TRUE|FALSE,
-#'   EventBusName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2429,59 +1583,21 @@ eventbridge_remove_permission <- function(StatementId = NULL, RemoveAllPermissio
 #' Removes the specified targets from the specified rule
 #'
 #' @description
-#' Removes the specified targets from the specified rule. When the rule is
-#' triggered, those targets are no longer be invoked.
-#' 
-#' When you remove a target, when the associated rule triggers, removed
-#' targets might continue to be invoked. Allow a short period of time for
-#' changes to take effect.
-#' 
-#' This action can partially fail if too many requests are made at the same
-#' time. If that happens, `FailedEntryCount` is non-zero in the response
-#' and each entry in `FailedEntries` provides the ID of the failed target
-#' and the error code.
+#' Removes the specified targets from the specified rule. When the rule is triggered, those targets are no longer be invoked.
 #'
-#' @usage
-#' eventbridge_remove_targets(Rule, EventBusName, Ids, Force)
+#' See [https://paws-r.github.io/docs/eventbridge/remove_targets.html](https://paws-r.github.io/docs/eventbridge/remove_targets.html) for full documentation.
 #'
 #' @param Rule &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
 #' @param Ids &#91;required&#93; The IDs of the targets to remove from the rule.
-#' @param Force If this is a managed rule, created by an AWS service on your behalf, you
-#' must specify `Force` as `True` to remove targets. This parameter is
-#' ignored for rules that are not managed rules. You can check whether a
-#' rule is a managed rule by using
+#' @param Force If this is a managed rule, created by an Amazon Web Services service on
+#' your behalf, you must specify `Force` as `True` to remove targets. This
+#' parameter is ignored for rules that are not managed rules. You can check
+#' whether a rule is a managed rule by using
 #' [`describe_rule`][eventbridge_describe_rule] or
 #' [`list_rules`][eventbridge_list_rules] and checking the `ManagedBy`
 #' field of the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedEntryCount = 123,
-#'   FailedEntries = list(
-#'     list(
-#'       TargetId = "string",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$remove_targets(
-#'   Rule = "string",
-#'   EventBusName = "string",
-#'   Ids = list(
-#'     "string"
-#'   ),
-#'   Force = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2506,21 +1622,9 @@ eventbridge_remove_targets <- function(Rule, EventBusName = NULL, Ids, Force = N
 #' Starts the specified replay
 #'
 #' @description
-#' Starts the specified replay. Events are not necessarily replayed in the
-#' exact same order that they were added to the archive. A replay processes
-#' events to replay based on the time in the event, and replays them using
-#' 1 minute intervals. If you specify an `EventStartTime` and an
-#' `EventEndTime` that covers a 20 minute time range, the events are
-#' replayed from the first minute of that 20 minute range first. Then the
-#' events from the second minute are replayed. You can use
-#' [`describe_replay`][eventbridge_describe_replay] to determine the
-#' progress of a replay. The value returned for `EventLastReplayedTime`
-#' indicates the time within the specified time range associated with the
-#' last event replayed.
+#' Starts the specified replay. Events are not necessarily replayed in the exact same order that they were added to the archive. A replay processes events to replay based on the time in the event, and replays them using 1 minute intervals. If you specify an `EventStartTime` and an `EventEndTime` that covers a 20 minute time range, the events are replayed from the first minute of that 20 minute range first. Then the events from the second minute are replayed. You can use [`describe_replay`][eventbridge_describe_replay] to determine the progress of a replay. The value returned for `EventLastReplayedTime` indicates the time within the specified time range associated with the last event replayed.
 #'
-#' @usage
-#' eventbridge_start_replay(ReplayName, Description, EventSourceArn,
-#'   EventStartTime, EventEndTime, Destination)
+#' See [https://paws-r.github.io/docs/eventbridge/start_replay.html](https://paws-r.github.io/docs/eventbridge/start_replay.html) for full documentation.
 #'
 #' @param ReplayName &#91;required&#93; The name of the replay to start.
 #' @param Description A description for the replay to start.
@@ -2531,40 +1635,6 @@ eventbridge_remove_targets <- function(Rule, EventBusName = NULL, Ids, Force = N
 #' occurred between the `EventStartTime` and `EventEndTime` are replayed.
 #' @param Destination &#91;required&#93; A `ReplayDestination` object that includes details about the destination
 #' for the replay.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ReplayArn = "string",
-#'   State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
-#'   StateReason = "string",
-#'   ReplayStartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_replay(
-#'   ReplayName = "string",
-#'   Description = "string",
-#'   EventSourceArn = "string",
-#'   EventStartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EventEndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Destination = list(
-#'     Arn = "string",
-#'     FilterArns = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2590,44 +1660,12 @@ eventbridge_start_replay <- function(ReplayName, Description = NULL, EventSource
 #' resource
 #'
 #' @description
-#' Assigns one or more tags (key-value pairs) to the specified EventBridge
-#' resource. Tags can help you organize and categorize your resources. You
-#' can also use them to scope user permissions by granting a user
-#' permission to access or change only resources with certain tag values.
-#' In EventBridge, rules and event buses can be tagged.
-#' 
-#' Tags don't have any semantic meaning to AWS and are interpreted strictly
-#' as strings of characters.
-#' 
-#' You can use the [`tag_resource`][eventbridge_tag_resource] action with a
-#' resource that already has tags. If you specify a new tag key, this tag
-#' is appended to the list of tags associated with the resource. If you
-#' specify a tag key that is already associated with the resource, the new
-#' tag value that you specify replaces the previous value for that tag.
-#' 
-#' You can associate as many as 50 tags with a resource.
+#' Assigns one or more tags (key-value pairs) to the specified EventBridge resource. Tags can help you organize and categorize your resources. You can also use them to scope user permissions by granting a user permission to access or change only resources with certain tag values. In EventBridge, rules and event buses can be tagged.
 #'
-#' @usage
-#' eventbridge_tag_resource(ResourceARN, Tags)
+#' See [https://paws-r.github.io/docs/eventbridge/tag_resource.html](https://paws-r.github.io/docs/eventbridge/tag_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource that you're adding tags to.
 #' @param Tags &#91;required&#93; The list of key-value pairs to associate with the resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceARN = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2653,36 +1691,30 @@ eventbridge_tag_resource <- function(ResourceARN, Tags) {
 #'
 #' @description
 #' Tests whether the specified event pattern matches the provided event.
-#' 
-#' Most services in AWS treat : or / as the same character in Amazon
-#' Resource Names (ARNs). However, EventBridge uses an exact match in event
-#' patterns and rules. Be sure to use the correct ARN characters when
-#' creating event patterns so that they match the ARN syntax in the event
-#' you want to match.
 #'
-#' @usage
-#' eventbridge_test_event_pattern(EventPattern, Event)
+#' See [https://paws-r.github.io/docs/eventbridge/test_event_pattern.html](https://paws-r.github.io/docs/eventbridge/test_event_pattern.html) for full documentation.
 #'
 #' @param EventPattern &#91;required&#93; The event pattern. For more information, see [Events and Event
 #' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html)
 #' in the *Amazon EventBridge User Guide*.
-#' @param Event &#91;required&#93; The event, in JSON format, to test against the event pattern.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Result = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$test_event_pattern(
-#'   EventPattern = "string",
-#'   Event = "string"
-#' )
-#' ```
+#' @param Event &#91;required&#93; The event, in JSON format, to test against the event pattern. The JSON
+#' must follow the format specified in [Amazon Web Services
+#' Events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html),
+#' and the following fields are mandatory:
+#' 
+#' -   `id`
+#' 
+#' -   `account`
+#' 
+#' -   `source`
+#' 
+#' -   `time`
+#' 
+#' -   `region`
+#' 
+#' -   `resources`
+#' 
+#' -   `detail-type`
 #'
 #' @keywords internal
 #'
@@ -2707,28 +1739,12 @@ eventbridge_test_event_pattern <- function(EventPattern, Event) {
 #' Removes one or more tags from the specified EventBridge resource
 #'
 #' @description
-#' Removes one or more tags from the specified EventBridge resource. In
-#' Amazon EventBridge (CloudWatch Events, rules and event buses can be
-#' tagged.
+#' Removes one or more tags from the specified EventBridge resource. In Amazon EventBridge (CloudWatch Events), rules and event buses can be tagged.
 #'
-#' @usage
-#' eventbridge_untag_resource(ResourceARN, TagKeys)
+#' See [https://paws-r.github.io/docs/eventbridge/untag_resource.html](https://paws-r.github.io/docs/eventbridge/untag_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the EventBridge resource from which you are removing tags.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceARN = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2750,42 +1766,52 @@ eventbridge_untag_resource <- function(ResourceARN, TagKeys) {
 }
 .eventbridge$operations$untag_resource <- eventbridge_untag_resource
 
+#' Updates an API destination
+#'
+#' @description
+#' Updates an API destination.
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/update_api_destination.html](https://paws-r.github.io/docs/eventbridge/update_api_destination.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the API destination to update.
+#' @param Description The name of the API destination to update.
+#' @param ConnectionArn The ARN of the connection to use for the API destination.
+#' @param InvocationEndpoint The URL to the endpoint to use for the API destination.
+#' @param HttpMethod The method to use for the API destination.
+#' @param InvocationRateLimitPerSecond The maximum number of invocations per second to send to the API
+#' destination.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_update_api_destination
+eventbridge_update_api_destination <- function(Name, Description = NULL, ConnectionArn = NULL, InvocationEndpoint = NULL, HttpMethod = NULL, InvocationRateLimitPerSecond = NULL) {
+  op <- new_operation(
+    name = "UpdateApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$update_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
+  output <- .eventbridge$update_api_destination_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$update_api_destination <- eventbridge_update_api_destination
+
 #' Updates the specified archive
 #'
 #' @description
 #' Updates the specified archive.
 #'
-#' @usage
-#' eventbridge_update_archive(ArchiveName, Description, EventPattern,
-#'   RetentionDays)
+#' See [https://paws-r.github.io/docs/eventbridge/update_archive.html](https://paws-r.github.io/docs/eventbridge/update_archive.html) for full documentation.
 #'
 #' @param ArchiveName &#91;required&#93; The name of the archive to update.
 #' @param Description The description for the archive.
 #' @param EventPattern The event pattern to use to filter events sent to the archive.
 #' @param RetentionDays The number of days to retain events in the archive.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ArchiveArn = "string",
-#'   State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'   StateReason = "string",
-#'   CreationTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_archive(
-#'   ArchiveName = "string",
-#'   Description = "string",
-#'   EventPattern = "string",
-#'   RetentionDays = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2806,3 +1832,70 @@ eventbridge_update_archive <- function(ArchiveName, Description = NULL, EventPat
   return(response)
 }
 .eventbridge$operations$update_archive <- eventbridge_update_archive
+
+#' Updates settings for a connection
+#'
+#' @description
+#' Updates settings for a connection.
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/update_connection.html](https://paws-r.github.io/docs/eventbridge/update_connection.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the connection to update.
+#' @param Description A description for the connection.
+#' @param AuthorizationType The type of authorization to use for the connection.
+#' @param AuthParameters The authorization parameters to use for the connection.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_update_connection
+eventbridge_update_connection <- function(Name, Description = NULL, AuthorizationType = NULL, AuthParameters = NULL) {
+  op <- new_operation(
+    name = "UpdateConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$update_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
+  output <- .eventbridge$update_connection_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$update_connection <- eventbridge_update_connection
+
+#' Update an existing endpoint
+#'
+#' @description
+#' Update an existing endpoint. For more information about global endpoints, see [Making applications Regional-fault tolerant with global endpoints and event replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html) in the Amazon EventBridge User Guide..
+#'
+#' See [https://paws-r.github.io/docs/eventbridge/update_endpoint.html](https://paws-r.github.io/docs/eventbridge/update_endpoint.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the endpoint you want to update.
+#' @param Description A description for the endpoint.
+#' @param RoutingConfig Configure the routing policy, including the health check and secondary
+#' Region..
+#' @param ReplicationConfig Whether event replication was enabled or disabled by this request.
+#' @param EventBuses Define event buses used for replication.
+#' @param RoleArn The ARN of the role used by event replication for this request.
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_update_endpoint
+eventbridge_update_endpoint <- function(Name, Description = NULL, RoutingConfig = NULL, ReplicationConfig = NULL, EventBuses = NULL, RoleArn = NULL) {
+  op <- new_operation(
+    name = "UpdateEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$update_endpoint_input(Name = Name, Description = Description, RoutingConfig = RoutingConfig, ReplicationConfig = ReplicationConfig, EventBuses = EventBuses, RoleArn = RoleArn)
+  output <- .eventbridge$update_endpoint_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$update_endpoint <- eventbridge_update_endpoint

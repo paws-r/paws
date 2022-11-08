@@ -2,16 +2,20 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_enable_metrics_collection}
 \alias{autoscaling_enable_metrics_collection}
-\title{Enables group metrics for the specified Auto Scaling group}
+\title{Enables group metrics collection for the specified Auto Scaling group}
 \usage{
-autoscaling_enable_metrics_collection(AutoScalingGroupName, Metrics,
-  Granularity)
+autoscaling_enable_metrics_collection(
+  AutoScalingGroupName,
+  Metrics = NULL,
+  Granularity
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{Metrics}{Specifies which group-level metrics to start collecting. You can specify
-one or more of the following metrics:
+\item{Metrics}{Identifies the metrics to enable.
+
+You can specify one or more of the following metrics:
 \itemize{
 \item \code{GroupMinSize}
 \item \code{GroupMaxSize}
@@ -21,51 +25,32 @@ one or more of the following metrics:
 \item \code{GroupStandbyInstances}
 \item \code{GroupTerminatingInstances}
 \item \code{GroupTotalInstances}
-}
-
-The instance weighting feature supports the following additional
-metrics:
-\itemize{
 \item \code{GroupInServiceCapacity}
 \item \code{GroupPendingCapacity}
 \item \code{GroupStandbyCapacity}
 \item \code{GroupTerminatingCapacity}
 \item \code{GroupTotalCapacity}
+\item \code{WarmPoolDesiredCapacity}
+\item \code{WarmPoolWarmedCapacity}
+\item \code{WarmPoolPendingCapacity}
+\item \code{WarmPoolTerminatingCapacity}
+\item \code{WarmPoolTotalCapacity}
+\item \code{GroupAndWarmPoolDesiredCapacity}
+\item \code{GroupAndWarmPoolTotalCapacity}
 }
 
-If you omit this parameter, all metrics are enabled.}
+If you specify \code{Granularity} and don't specify any metrics, all metrics
+are enabled.
 
-\item{Granularity}{[required] The granularity to associate with the metrics to collect. The only valid
-value is \verb{1Minute}.}
-}
-\value{
-An empty list.
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-cloudwatch-monitoring.html#as-group-metrics}{Auto Scaling group metrics}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
+
+\item{Granularity}{[required] The frequency at which Amazon EC2 Auto Scaling sends aggregated data to
+CloudWatch. The only valid value is \verb{1Minute}.}
 }
 \description{
-Enables group metrics for the specified Auto Scaling group. For more
-information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html}{Monitoring CloudWatch metrics for your Auto Scaling groups and instances}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_metrics_collection(
-  AutoScalingGroupName = "string",
-  Metrics = list(
-    "string"
-  ),
-  Granularity = "string"
-)
-}
-}
+Enables group metrics collection for the specified Auto Scaling group.
 
-\examples{
-\dontrun{
-# This example enables data collection for the specified Auto Scaling
-# group.
-svc$enable_metrics_collection(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  Granularity = "1Minute"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/enable_metrics_collection.html} for full documentation.
 }
 \keyword{internal}

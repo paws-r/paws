@@ -4,42 +4,24 @@
 \alias{glue_create_user_defined_function}
 \title{Creates a new function definition in the Data Catalog}
 \usage{
-glue_create_user_defined_function(CatalogId, DatabaseName,
-  FunctionInput)
+glue_create_user_defined_function(
+  CatalogId = NULL,
+  DatabaseName,
+  FunctionInput
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which to create the function. If none is
-provided, the AWS account ID is used by default.}
+provided, the Amazon Web Services account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database in which to create the function.}
 
 \item{FunctionInput}{[required] A \code{FunctionInput} object that defines the function to create in the Data
 Catalog.}
 }
-\value{
-An empty list.
-}
 \description{
 Creates a new function definition in the Data Catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$create_user_defined_function(
-  CatalogId = "string",
-  DatabaseName = "string",
-  FunctionInput = list(
-    FunctionName = "string",
-    ClassName = "string",
-    OwnerName = "string",
-    OwnerType = "USER"|"ROLE"|"GROUP",
-    ResourceUris = list(
-      list(
-        ResourceType = "JAR"|"FILE"|"ARCHIVE",
-        Uri = "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/create_user_defined_function.html} for full documentation.
+}
 \keyword{internal}

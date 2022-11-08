@@ -16,52 +16,9 @@ your account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  location = "string"
-)
-}
-}
 \description{
-This operation creates a new vault with the specified name. The name of
-the vault must be unique within a region for an AWS account. You can
-create up to 1,000 vaults per account. If you need to create more
-vaults, contact Amazon S3 Glacier.
+This operation creates a new vault with the specified name. The name of the vault must be unique within a region for an AWS account. You can create up to 1,000 vaults per account. If you need to create more vaults, contact Amazon S3 Glacier.
 
-You must use the following guidelines when naming a vault.
-\itemize{
-\item Names can be between 1 and 255 characters long.
-\item Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-'
-(hyphen), and '.' (period).
-}
-
-This operation is idempotent.
-
-An AWS account has full permission to perform all operations (actions).
-However, AWS Identity and Access Management (IAM) users don't have any
-permissions by default. You must grant them explicit permission to
-perform specific actions. For more information, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html}{Access Control Using AWS Identity and Access Management (IAM)}.
-
-For conceptual information and underlying REST API, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/creating-vaults.html}{Creating a Vault in Amazon Glacier}
-and \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-put.html}{Create Vault}
-in the \emph{Amazon Glacier Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_vault(
-  accountId = "string",
-  vaultName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example creates a new vault named my-vault.
-svc$create_vault(
-  accountId = "-",
-  vaultName = "my-vault"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/create_vault.html} for full documentation.
 }
 \keyword{internal}

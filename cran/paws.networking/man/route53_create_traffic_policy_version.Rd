@@ -4,7 +4,7 @@
 \alias{route53_create_traffic_policy_version}
 \title{Creates a new version of an existing traffic policy}
 \usage{
-route53_create_traffic_policy_version(Id, Document, Comment)
+route53_create_traffic_policy_version(Id, Document, Comment = NULL)
 }
 \arguments{
 \item{Id}{[required] The ID of the traffic policy for which you want to create a new version.}
@@ -19,37 +19,9 @@ request. For more information about the JSON format, see
 \code{\link[=route53_create_traffic_policy_version]{create_traffic_policy_version}}
 request, if any.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficPolicy = list(
-    Id = "string",
-    Version = 123,
-    Name = "string",
-    Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-    Document = "string",
-    Comment = "string"
-  ),
-  Location = "string"
-)
-}
-}
 \description{
-Creates a new version of an existing traffic policy. When you create a
-new version of a traffic policy, you specify the ID of the traffic
-policy that you want to update and a JSON-formatted document that
-describes the new version. You use traffic policies to create multiple
-DNS resource record sets for one domain name (such as example.com) or
-one subdomain name (such as www.example.com). You can create a maximum
-of 1000 versions of a traffic policy. If you reach the limit and need to
-create another version, you'll need to start a new traffic policy.
-}
-\section{Request syntax}{
-\preformatted{svc$create_traffic_policy_version(
-  Id = "string",
-  Document = "string",
-  Comment = "string"
-)
-}
-}
+Creates a new version of an existing traffic policy. When you create a new version of a traffic policy, you specify the ID of the traffic policy that you want to update and a JSON-formatted document that describes the new version. You use traffic policies to create multiple DNS resource record sets for one domain name (such as example.com) or one subdomain name (such as www.example.com). You can create a maximum of 1000 versions of a traffic policy. If you reach the limit and need to create another version, you'll need to start a new traffic policy.
 
+See \url{https://paws-r.github.io/docs/route53/create_traffic_policy_version.html} for full documentation.
+}
 \keyword{internal}

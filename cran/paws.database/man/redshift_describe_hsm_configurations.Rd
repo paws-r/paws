@@ -5,13 +5,18 @@
 \title{Returns information about the specified Amazon Redshift HSM
 configuration}
 \usage{
-redshift_describe_hsm_configurations(HsmConfigurationIdentifier,
-  MaxRecords, Marker, TagKeys, TagValues)
+redshift_describe_hsm_configurations(
+  HsmConfigurationIdentifier = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  TagKeys = NULL,
+  TagValues = NULL
+)
 }
 \arguments{
 \item{HsmConfigurationIdentifier}{The identifier of a specific Amazon Redshift HSM configuration to be
 described. If no identifier is specified, information is returned for
-all HSM configurations owned by your AWS customer account.}
+all HSM configurations owned by your Amazon Web Services account.}
 
 \item{MaxRecords}{The maximum number of response records to return in each call. If the
 number of remaining response records exceeds the specified \code{MaxRecords}
@@ -26,10 +31,10 @@ Constraints: minimum 20, maximum 100.}
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
 \code{\link[=redshift_describe_hsm_configurations]{describe_hsm_configurations}}
-request exceed the value specified in \code{MaxRecords}, AWS returns a value
-in the \code{Marker} field of the response. You can retrieve the next set of
-response records by providing the returned marker value in the \code{Marker}
-parameter and retrying the request.}
+request exceed the value specified in \code{MaxRecords}, Amazon Web Services
+returns a value in the \code{Marker} field of the response. You can retrieve
+the next set of response records by providing the returned marker value
+in the \code{Marker} parameter and retrying the request.}
 
 \item{TagKeys}{A tag key or keys for which you want to return all matching HSM
 configurations that are associated with the specified key or keys. For
@@ -47,54 +52,9 @@ these tag values in the request, Amazon Redshift returns a response with
 the HSM configurations that have either or both of these tag values
 associated with them.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  HsmConfigurations = list(
-    list(
-      HsmConfigurationIdentifier = "string",
-      Description = "string",
-      HsmIpAddress = "string",
-      HsmPartitionName = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns information about the specified Amazon Redshift HSM
-configuration. If no configuration ID is specified, returns information
-about all the HSM configurations owned by your AWS customer account.
+Returns information about the specified Amazon Redshift HSM configuration. If no configuration ID is specified, returns information about all the HSM configurations owned by your Amazon Web Services account.
 
-If you specify both tag keys and tag values in the same request, Amazon
-Redshift returns all HSM connections that match any combination of the
-specified keys and values. For example, if you have \code{owner} and
-\code{environment} for tag keys, and \code{admin} and \code{test} for tag values, all
-HSM connections that have any combination of those values are returned.
-
-If both tag keys and values are omitted from the request, HSM
-connections are returned regardless of whether they have tag keys or
-values associated with them.
+See \url{https://paws-r.github.io/docs/redshift/describe_hsm_configurations.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_hsm_configurations(
-  HsmConfigurationIdentifier = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

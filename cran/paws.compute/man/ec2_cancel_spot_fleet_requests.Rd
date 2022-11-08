@@ -4,8 +4,11 @@
 \alias{ec2_cancel_spot_fleet_requests}
 \title{Cancels the specified Spot Fleet requests}
 \usage{
-ec2_cancel_spot_fleet_requests(DryRun, SpotFleetRequestIds,
-  TerminateInstances)
+ec2_cancel_spot_fleet_requests(
+  DryRun = NULL,
+  SpotFleetRequestIds,
+  TerminateInstances
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -18,69 +21,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TerminateInstances}{[required] Indicates whether to terminate instances for a Spot Fleet request if it
 is canceled successfully.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SuccessfulFleetRequests = list(
-    list(
-      CurrentSpotFleetRequestState = "submitted"|"active"|"cancelled"|"failed"|"cancelled_running"|"cancelled_terminating"|"modifying",
-      PreviousSpotFleetRequestState = "submitted"|"active"|"cancelled"|"failed"|"cancelled_running"|"cancelled_terminating"|"modifying",
-      SpotFleetRequestId = "string"
-    )
-  ),
-  UnsuccessfulFleetRequests = list(
-    list(
-      Error = list(
-        Code = "fleetRequestIdDoesNotExist"|"fleetRequestIdMalformed"|"fleetRequestNotInCancellableState"|"unexpectedError",
-        Message = "string"
-      ),
-      SpotFleetRequestId = "string"
-    )
-  )
-)
-}
-}
 \description{
 Cancels the specified Spot Fleet requests.
 
-After you cancel a Spot Fleet request, the Spot Fleet launches no new
-Spot Instances. You must specify whether the Spot Fleet should also
-terminate its Spot Instances. If you terminate the instances, the Spot
-Fleet request enters the \code{cancelled_terminating} state. Otherwise, the
-Spot Fleet request enters the \code{cancelled_running} state and the
-instances continue to run until they are interrupted or you terminate
-them manually.
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_spot_fleet_requests(
-  DryRun = TRUE|FALSE,
-  SpotFleetRequestIds = list(
-    "string"
-  ),
-  TerminateInstances = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example cancels the specified Spot fleet request and terminates its
-# associated Spot Instances.
-svc$cancel_spot_fleet_requests(
-  SpotFleetRequestIds = list(
-    "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
-  ),
-  TerminateInstances = TRUE
-)
-
-# This example cancels the specified Spot fleet request without
-# terminating its associated Spot Instances.
-svc$cancel_spot_fleet_requests(
-  SpotFleetRequestIds = list(
-    "sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE"
-  ),
-  TerminateInstances = FALSE
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/cancel_spot_fleet_requests.html} for full documentation.
 }
 \keyword{internal}

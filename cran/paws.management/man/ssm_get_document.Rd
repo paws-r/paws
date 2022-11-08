@@ -2,12 +2,18 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_document}
 \alias{ssm_get_document}
-\title{Gets the contents of the specified Systems Manager document}
+\title{Gets the contents of the specified Amazon Web Services Systems Manager
+document (SSM document)}
 \usage{
-ssm_get_document(Name, VersionName, DocumentVersion, DocumentFormat)
+ssm_get_document(
+  Name,
+  VersionName = NULL,
+  DocumentVersion = NULL,
+  DocumentFormat = NULL
+)
 }
 \arguments{
-\item{Name}{[required] The name of the Systems Manager document.}
+\item{Name}{[required] The name of the SSM document.}
 
 \item{VersionName}{An optional field specifying the version of the artifact associated with
 the document. For example, "Release 12, Update 6". This value is unique
@@ -18,46 +24,9 @@ across all versions of a document and can't be changed.}
 \item{DocumentFormat}{Returns the document in the specified format. The document format can be
 either JSON or YAML. JSON is the default format.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string",
-  VersionName = "string",
-  DocumentVersion = "string",
-  Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
-  StatusInformation = "string",
-  Content = "string",
-  DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
-  DocumentFormat = "YAML"|"JSON"|"TEXT",
-  Requires = list(
-    list(
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  AttachmentsContent = list(
-    list(
-      Name = "string",
-      Size = 123,
-      Hash = "string",
-      HashType = "Sha256",
-      Url = "string"
-    )
-  ),
-  ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
-)
-}
-}
 \description{
-Gets the contents of the specified Systems Manager document.
-}
-\section{Request syntax}{
-\preformatted{svc$get_document(
-  Name = "string",
-  VersionName = "string",
-  DocumentVersion = "string",
-  DocumentFormat = "YAML"|"JSON"|"TEXT"
-)
-}
-}
+Gets the contents of the specified Amazon Web Services Systems Manager document (SSM document).
 
+See \url{https://paws-r.github.io/docs/ssm/get_document.html} for full documentation.
+}
 \keyword{internal}

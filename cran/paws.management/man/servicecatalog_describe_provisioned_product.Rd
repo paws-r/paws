@@ -4,7 +4,11 @@
 \alias{servicecatalog_describe_provisioned_product}
 \title{Gets information about the specified provisioned product}
 \usage{
-servicecatalog_describe_provisioned_product(AcceptLanguage, Id, Name)
+servicecatalog_describe_provisioned_product(
+  AcceptLanguage = NULL,
+  Id = NULL,
+  Name = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -26,44 +30,9 @@ but not both.
 If you do not provide a name or ID, or you provide both name and ID, an
 \code{InvalidParametersException} will occur.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProvisionedProductDetail = list(
-    Name = "string",
-    Arn = "string",
-    Type = "string",
-    Id = "string",
-    Status = "AVAILABLE"|"UNDER_CHANGE"|"TAINTED"|"ERROR"|"PLAN_IN_PROGRESS",
-    StatusMessage = "string",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    IdempotencyToken = "string",
-    LastRecordId = "string",
-    LastProvisioningRecordId = "string",
-    LastSuccessfulProvisioningRecordId = "string",
-    ProductId = "string",
-    ProvisioningArtifactId = "string",
-    LaunchRoleArn = "string"
-  ),
-  CloudWatchDashboards = list(
-    list(
-      Name = "string"
-    )
-  )
-)
-}
-}
 \description{
 Gets information about the specified provisioned product.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_provisioned_product(
-  AcceptLanguage = "string",
-  Id = "string",
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/describe_provisioned_product.html} for full documentation.
+}
 \keyword{internal}

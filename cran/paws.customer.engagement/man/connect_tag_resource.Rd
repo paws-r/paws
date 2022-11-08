@@ -12,26 +12,9 @@ connect_tag_resource(resourceArn, tags)
 \item{tags}{[required] One or more tags. For example, \{ "tags": \{"key1":"value1",
 "key2":"value2"\} \}.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds the specified tags to the specified resource.
 
-The supported resource types are users, routing profiles, quick
-connects, and contact flows.
-
-For sample policies that use tags, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html}{Amazon Connect Identity-Based Policy Examples}
-in the \emph{Amazon Connect Administrator Guide}.
+See \url{https://paws-r.github.io/docs/connect/tag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  resourceArn = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

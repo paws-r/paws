@@ -6,8 +6,11 @@
 be associated with a specified hosted zone because you've submitted one
 or more CreateVPCAssociationAuthorization requests}
 \usage{
-route53_list_vpc_association_authorizations(HostedZoneId, NextToken,
-  MaxResults)
+route53_list_vpc_association_authorizations(
+  HostedZoneId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{HostedZoneId}{[required] The ID of the hosted zone for which you want a list of VPCs that can be
@@ -24,36 +27,9 @@ request.}
 you want Amazon Route 53 to return. If you don't specify a value for
 \code{MaxResults}, Route 53 returns up to 50 VPCs per page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HostedZoneId = "string",
-  NextToken = "string",
-  VPCs = list(
-    list(
-      VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
-      VPCId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Gets a list of the VPCs that were created by other accounts and that can
-be associated with a specified hosted zone because you've submitted one
-or more
-\code{\link[=route53_create_vpc_association_authorization]{create_vpc_association_authorization}}
-requests.
+Gets a list of the VPCs that were created by other accounts and that can be associated with a specified hosted zone because you've submitted one or more \code{\link[=route53_create_vpc_association_authorization]{create_vpc_association_authorization}} requests.
 
-The response includes a \code{VPCs} element with a \code{VPC} child element for
-each VPC that can be associated with the hosted zone.
+See \url{https://paws-r.github.io/docs/route53/list_vpc_association_authorizations.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_vpc_association_authorizations(
-  HostedZoneId = "string",
-  NextToken = "string",
-  MaxResults = "string"
-)
-}
-}
-
 \keyword{internal}

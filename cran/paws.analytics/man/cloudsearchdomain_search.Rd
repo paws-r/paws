@@ -4,9 +4,22 @@
 \alias{cloudsearchdomain_search}
 \title{Retrieves a list of documents that match the specified search criteria}
 \usage{
-cloudsearchdomain_search(cursor, expr, facet, filterQuery, highlight,
-  partial, query, queryOptions, queryParser, return, size, sort, start,
-  stats)
+cloudsearchdomain_search(
+  cursor = NULL,
+  expr = NULL,
+  facet = NULL,
+  filterQuery = NULL,
+  highlight = NULL,
+  partial = NULL,
+  query,
+  queryOptions = NULL,
+  queryParser = NULL,
+  return = NULL,
+  size = NULL,
+  sort = NULL,
+  start = NULL,
+  stats = NULL
+)
 }
 \arguments{
 \item{cursor}{Retrieves a cursor value you can use to page through large result sets.
@@ -274,7 +287,7 @@ and use advanced options such as term boosting, \code{matchall}, and
 \code{near}. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-compound-queries.html}{Constructing Compound Queries}
 in the \emph{Amazon CloudSearch Developer Guide}.
 \item \code{lucene}: search using the Apache Lucene query parser syntax. For
-more information, see \href{http://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description}{Apache Lucene Query Parser Syntax}.
+more information, see \href{https://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description}{Apache Lucene Query Parser Syntax}.
 \item \code{dismax}: search using the simplified subset of the Apache Lucene
 query parser syntax defined by the DisMax query parser. For more
 information, see \href{https://cwiki.apache.org/confluence/display/solr/DisMaxQParserPlugin#Query_Syntax}{DisMax Query Parser Syntax}.
@@ -318,104 +331,9 @@ The fields are specified in JSON using the form:
 
 There are currently no options supported for statistics.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  status = list(
-    timems = 123,
-    rid = "string"
-  ),
-  hits = list(
-    found = 123,
-    start = 123,
-    cursor = "string",
-    hit = list(
-      list(
-        id = "string",
-        fields = list(
-          list(
-            "string"
-          )
-        ),
-        exprs = list(
-          "string"
-        ),
-        highlights = list(
-          "string"
-        )
-      )
-    )
-  ),
-  facets = list(
-    list(
-      buckets = list(
-        list(
-          value = "string",
-          count = 123
-        )
-      )
-    )
-  ),
-  stats = list(
-    list(
-      min = "string",
-      max = "string",
-      count = 123,
-      missing = 123,
-      sum = 123.0,
-      sumOfSquares = 123.0,
-      mean = "string",
-      stddev = 123.0
-    )
-  )
-)
-}
-}
 \description{
-Retrieves a list of documents that match the specified search criteria.
-How you specify the search criteria depends on which query parser you
-use. Amazon CloudSearch supports four query parsers:
-\itemize{
-\item \code{simple}: search all \code{text} and \code{text-array} fields for the
-specified string. Search for phrases, individual terms, and
-prefixes.
-\item \code{structured}: search specific fields, construct compound queries
-using Boolean operators, and use advanced features such as term
-boosting and proximity searching.
-\item \code{lucene}: specify search criteria using the Apache Lucene query
-parser syntax.
-\item \code{dismax}: specify search criteria using the simplified subset of the
-Apache Lucene query parser syntax defined by the DisMax query
-parser.
-}
+Retrieves a list of documents that match the specified search criteria. How you specify the search criteria depends on which query parser you use. Amazon CloudSearch supports four query parsers:
 
-For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html}{Searching Your Data}
-in the \emph{Amazon CloudSearch Developer Guide}.
-
-The endpoint for submitting \code{\link[=cloudsearchdomain_search]{search}}
-requests is domain-specific. You submit search requests to a domain's
-search endpoint. To get the search endpoint for your domain, use the
-Amazon CloudSearch configuration service \code{DescribeDomains} action. A
-domain's endpoints are also displayed on the domain dashboard in the
-Amazon CloudSearch console.
+See \url{https://paws-r.github.io/docs/cloudsearchdomain/search.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$search(
-  cursor = "string",
-  expr = "string",
-  facet = "string",
-  filterQuery = "string",
-  highlight = "string",
-  partial = TRUE|FALSE,
-  query = "string",
-  queryOptions = "string",
-  queryParser = "simple"|"structured"|"lucene"|"dismax",
-  return = "string",
-  size = 123,
-  sort = "string",
-  start = 123,
-  stats = "string"
-)
-}
-}
-
 \keyword{internal}

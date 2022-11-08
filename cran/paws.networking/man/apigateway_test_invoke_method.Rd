@@ -2,19 +2,27 @@
 % Please edit documentation in R/apigateway_operations.R
 \name{apigateway_test_invoke_method}
 \alias{apigateway_test_invoke_method}
-\title{Simulate the execution of a Method in your RestApi with headers,
+\title{Simulate the invocation of a Method in your RestApi with headers,
 parameters, and an incoming request body}
 \usage{
-apigateway_test_invoke_method(restApiId, resourceId, httpMethod,
-  pathWithQueryString, body, headers, multiValueHeaders,
-  clientCertificateId, stageVariables)
+apigateway_test_invoke_method(
+  restApiId,
+  resourceId,
+  httpMethod,
+  pathWithQueryString = NULL,
+  body = NULL,
+  headers = NULL,
+  multiValueHeaders = NULL,
+  clientCertificateId = NULL,
+  stageVariables = NULL
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] Specifies a test invoke method request's resource ID.}
+\item{resourceId}{[required] Specifies a test invoke method request's resource ID.}
 
-\item{httpMethod}{[required] [Required] Specifies a test invoke method request's HTTP method.}
+\item{httpMethod}{[required] Specifies a test invoke method request's HTTP method.}
 
 \item{pathWithQueryString}{The URI path, including query string, of the simulated invocation
 request. Use this to specify path parameters and query string
@@ -34,48 +42,9 @@ defined back-end endpoint.}
 \item{stageVariables}{A key-value map of stage variables to simulate an invocation on a
 deployed Stage.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  status = 123,
-  body = "string",
-  headers = list(
-    "string"
-  ),
-  multiValueHeaders = list(
-    list(
-      "string"
-    )
-  ),
-  log = "string",
-  latency = 123
-)
-}
-}
 \description{
-Simulate the execution of a Method in your RestApi with headers,
-parameters, and an incoming request body.
-}
-\section{Request syntax}{
-\preformatted{svc$test_invoke_method(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  pathWithQueryString = "string",
-  body = "string",
-  headers = list(
-    "string"
-  ),
-  multiValueHeaders = list(
-    list(
-      "string"
-    )
-  ),
-  clientCertificateId = "string",
-  stageVariables = list(
-    "string"
-  )
-)
-}
-}
+Simulate the invocation of a Method in your RestApi with headers, parameters, and an incoming request body.
 
+See \url{https://paws-r.github.io/docs/apigateway/test_invoke_method.html} for full documentation.
+}
 \keyword{internal}

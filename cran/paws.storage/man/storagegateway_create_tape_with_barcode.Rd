@@ -4,14 +4,22 @@
 \alias{storagegateway_create_tape_with_barcode}
 \title{Creates a virtual tape by using your own barcode}
 \usage{
-storagegateway_create_tape_with_barcode(GatewayARN, TapeSizeInBytes,
-  TapeBarcode, KMSEncrypted, KMSKey, PoolId, Worm, Tags)
+storagegateway_create_tape_with_barcode(
+  GatewayARN,
+  TapeSizeInBytes,
+  TapeBarcode,
+  KMSEncrypted = NULL,
+  KMSKey = NULL,
+  PoolId = NULL,
+  Worm = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) that represents the gateway to
 associate the virtual tape with. Use the
 \code{\link[=storagegateway_list_gateways]{list_gateways}} operation to return a
-list of gateways for your account and AWS Region.}
+list of gateways for your account and Amazon Web Services Region.}
 
 \item{TapeSizeInBytes}{[required] The size, in bytes, of the virtual tape that you want to create.
 
@@ -22,8 +30,8 @@ The size must be aligned by gigabyte (1024\emph{1024}1024 bytes).}
 Barcodes cannot be reused. This includes barcodes used for tapes that
 have been deleted.}
 
-\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own AWS
-KMS key, or \code{false} to use a key managed by Amazon S3. Optional.
+\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own KMS
+key, or \code{false} to use a key managed by Amazon S3. Optional.
 
 Valid Values: \code{true} | \code{false}}
 
@@ -36,9 +44,7 @@ is \code{true}. Optional.}
 tape in this pool is archived in the S3 storage class that is associated
 with the pool. When you use your backup application to eject the tape,
 the tape is archived directly into the storage class (S3 Glacier or S3
-Deep Archive) that corresponds to the pool.
-
-Valid Values: \code{GLACIER} | \code{DEEP_ARCHIVE}}
+Deep Archive) that corresponds to the pool.}
 
 \item{Worm}{Set to \code{TRUE} if the tape you are creating is to be configured as a
 write-once-read-many (WORM) tape.}
@@ -51,51 +57,9 @@ representable in UTF-8 format, and the following special characters: + -
 = . _ : / @. The maximum length of a tag's key is 128 characters, and
 the maximum length for a tag's value is 256.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TapeARN = "string"
-)
-}
-}
 \description{
-Creates a virtual tape by using your own barcode. You write data to the
-virtual tape and then archive the tape. A barcode is unique and cannot
-be reused if it has already been used on a tape. This applies to
-barcodes used on deleted tapes. This operation is only supported in the
-tape gateway type.
+Creates a virtual tape by using your own barcode. You write data to the virtual tape and then archive the tape. A barcode is unique and cannot be reused if it has already been used on a tape. This applies to barcodes used on deleted tapes. This operation is only supported in the tape gateway type.
 
-Cache storage must be allocated to the gateway before you can create a
-virtual tape. Use the \code{\link[=storagegateway_add_cache]{add_cache}} operation
-to add cache storage to a gateway.
-}
-\section{Request syntax}{
-\preformatted{svc$create_tape_with_barcode(
-  GatewayARN = "string",
-  TapeSizeInBytes = 123,
-  TapeBarcode = "string",
-  KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string",
-  PoolId = "string",
-  Worm = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# Creates a virtual tape by using your own barcode.
-svc$create_tape_with_barcode(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
-  TapeBarcode = "TEST12345",
-  TapeSizeInBytes = 107374182400
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/create_tape_with_barcode.html} for full documentation.
 }
 \keyword{internal}

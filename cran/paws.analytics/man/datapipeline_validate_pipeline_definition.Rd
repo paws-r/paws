@@ -5,8 +5,12 @@
 \title{Validates the specified pipeline definition to ensure that it is well
 formed and can be run without error}
 \usage{
-datapipeline_validate_pipeline_definition(pipelineId, pipelineObjects,
-  parameterObjects, parameterValues)
+datapipeline_validate_pipeline_definition(
+  pipelineId,
+  pipelineObjects,
+  parameterObjects = NULL,
+  parameterValues = NULL
+)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline.}
@@ -18,67 +22,9 @@ pipeline.}
 
 \item{parameterValues}{The parameter values used with the pipeline.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  validationErrors = list(
-    list(
-      id = "string",
-      errors = list(
-        "string"
-      )
-    )
-  ),
-  validationWarnings = list(
-    list(
-      id = "string",
-      warnings = list(
-        "string"
-      )
-    )
-  ),
-  errored = TRUE|FALSE
-)
-}
-}
 \description{
-Validates the specified pipeline definition to ensure that it is well
-formed and can be run without error.
-}
-\section{Request syntax}{
-\preformatted{svc$validate_pipeline_definition(
-  pipelineId = "string",
-  pipelineObjects = list(
-    list(
-      id = "string",
-      name = "string",
-      fields = list(
-        list(
-          key = "string",
-          stringValue = "string",
-          refValue = "string"
-        )
-      )
-    )
-  ),
-  parameterObjects = list(
-    list(
-      id = "string",
-      attributes = list(
-        list(
-          key = "string",
-          stringValue = "string"
-        )
-      )
-    )
-  ),
-  parameterValues = list(
-    list(
-      id = "string",
-      stringValue = "string"
-    )
-  )
-)
-}
-}
+Validates the specified pipeline definition to ensure that it is well formed and can be run without error.
 
+See \url{https://paws-r.github.io/docs/datapipeline/validate_pipeline_definition.html} for full documentation.
+}
 \keyword{internal}

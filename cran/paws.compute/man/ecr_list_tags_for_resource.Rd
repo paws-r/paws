@@ -11,25 +11,9 @@ ecr_list_tags_for_resource(resourceArn)
 list the tags. Currently, the only supported resource is an Amazon ECR
 repository.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 List the tags for an Amazon ECR resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  resourceArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ecr/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

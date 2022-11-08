@@ -4,7 +4,12 @@
 \alias{ec2_describe_public_ipv_4_pools}
 \title{Describes the specified IPv4 address pools}
 \usage{
-ec2_describe_public_ipv_4_pools(PoolIds, NextToken, MaxResults, Filters)
+ec2_describe_public_ipv_4_pools(
+  PoolIds = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{PoolIds}{The IDs of the address pools.}
@@ -17,65 +22,19 @@ value.}
 
 \item{Filters}{One or more filters.
 \itemize{
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PublicIpv4Pools = list(
-    list(
-      PoolId = "string",
-      Description = "string",
-      PoolAddressRanges = list(
-        list(
-          FirstAddress = "string",
-          LastAddress = "string",
-          AddressCount = 123,
-          AvailableAddressCount = 123
-        )
-      ),
-      TotalAddressCount = 123,
-      TotalAvailableAddressCount = 123,
-      NetworkBorderGroup = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the specified IPv4 address pools.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_public_ipv_4_pools(
-  PoolIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_public_ipv_4_pools.html} for full documentation.
+}
 \keyword{internal}

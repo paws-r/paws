@@ -3,15 +3,18 @@
 \name{rds_modify_certificates}
 \alias{rds_modify_certificates}
 \title{Override the system-default Secure Sockets Layer/Transport Layer
-Security (SSL/TLS) certificate for Amazon RDS for new DB instances
-temporarily, or remove the override}
+Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or
+remove the override}
 \usage{
-rds_modify_certificates(CertificateIdentifier, RemoveCustomerOverride)
+rds_modify_certificates(
+  CertificateIdentifier = NULL,
+  RemoveCustomerOverride = NULL
+)
 }
 \arguments{
 \item{CertificateIdentifier}{The new default certificate identifier to override the current one with.
 
-To determine the valid values, use the \code{describe-certificates} AWS CLI
+To determine the valid values, use the \code{describe-certificates} CLI
 command or the \code{\link[=rds_describe_certificates]{describe_certificates}} API
 operation.}
 
@@ -19,65 +22,9 @@ operation.}
 certificate. If the override is removed, the default certificate is the
 system default.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Certificate = list(
-    CertificateIdentifier = "string",
-    CertificateType = "string",
-    Thumbprint = "string",
-    ValidFrom = as.POSIXct(
-      "2015-01-01"
-    ),
-    ValidTill = as.POSIXct(
-      "2015-01-01"
-    ),
-    CertificateArn = "string",
-    CustomerOverride = TRUE|FALSE,
-    CustomerOverrideValidTill = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Override the system-default Secure Sockets Layer/Transport Layer
-Security (SSL/TLS) certificate for Amazon RDS for new DB instances
-temporarily, or remove the override.
+Override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or remove the override.
 
-By using this operation, you can specify an RDS-approved SSL/TLS
-certificate for new DB instances that is different from the default
-certificate provided by RDS. You can also use this operation to remove
-the override, so that new DB instances use the default certificate
-provided by RDS.
-
-You might need to override the default certificate in the following
-situations:
-\itemize{
-\item You already migrated your applications to support the latest
-certificate authority (CA) certificate, but the new CA certificate
-is not yet the RDS default CA certificate for the specified AWS
-Region.
-\item RDS has already moved to a new default CA certificate for the
-specified AWS Region, but you are still in the process of supporting
-the new CA certificate. In this case, you temporarily need
-additional time to finish your application changes.
+See \url{https://paws-r.github.io/docs/rds/modify_certificates.html} for full documentation.
 }
-
-For more information about rotating your SSL/TLS certificate for RDS DB
-engines, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html}{Rotating Your SSL/TLS Certificate}
-in the \emph{Amazon RDS User Guide}.
-
-For more information about rotating your SSL/TLS certificate for Aurora
-DB engines, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html}{Rotating Your SSL/TLS Certificate}
-in the \emph{Amazon Aurora User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_certificates(
-  CertificateIdentifier = "string",
-  RemoveCustomerOverride = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

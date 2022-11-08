@@ -9,17 +9,9 @@ emr_stop_notebook_execution(NotebookExecutionId)
 \arguments{
 \item{NotebookExecutionId}{[required] The unique identifier of the notebook execution.}
 }
-\value{
-An empty list.
-}
 \description{
 Stops a notebook execution.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_notebook_execution(
-  NotebookExecutionId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/emr/stop_notebook_execution.html} for full documentation.
+}
 \keyword{internal}

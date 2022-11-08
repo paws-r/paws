@@ -4,7 +4,7 @@
 \alias{dax_list_tags}
 \title{List all of the tags for a DAX cluster}
 \usage{
-dax_list_tags(ResourceName, NextToken)
+dax_list_tags(ResourceName, NextToken = NULL)
 }
 \arguments{
 \item{ResourceName}{[required] The name of the DAX resource to which the tags belong.}
@@ -13,28 +13,9 @@ dax_list_tags(ResourceName, NextToken)
 pagination of results from this action. If this parameter is specified,
 the response includes only results beyond the token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-List all of the tags for a DAX cluster. You can call
-\code{\link[=dax_list_tags]{list_tags}} up to 10 times per second, per account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags(
-  ResourceName = "string",
-  NextToken = "string"
-)
-}
-}
+List all of the tags for a DAX cluster. You can call \code{\link[=dax_list_tags]{list_tags}} up to 10 times per second, per account.
 
+See \url{https://paws-r.github.io/docs/dax/list_tags.html} for full documentation.
+}
 \keyword{internal}

@@ -4,10 +4,17 @@
 \alias{rds_describe_db_proxies}
 \title{Returns information about DB proxies}
 \usage{
-rds_describe_db_proxies(DBProxyName, Filters, Marker, MaxRecords)
+rds_describe_db_proxies(
+  DBProxyName = NULL,
+  Filters = NULL,
+  Marker = NULL,
+  MaxRecords = NULL
+)
 }
 \arguments{
-\item{DBProxyName}{The name of the DB proxy.}
+\item{DBProxyName}{The name of the DB proxy. If you omit this parameter, the output
+includes information about all DB proxies owned by your Amazon Web
+Services account ID.}
 
 \item{Filters}{This parameter is not currently supported.}
 
@@ -24,64 +31,9 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBProxies = list(
-    list(
-      DBProxyName = "string",
-      DBProxyArn = "string",
-      Status = "available"|"modifying"|"incompatible-network"|"insufficient-resource-limits"|"creating"|"deleting"|"suspended"|"suspending"|"reactivating",
-      EngineFamily = "string",
-      VpcSecurityGroupIds = list(
-        "string"
-      ),
-      VpcSubnetIds = list(
-        "string"
-      ),
-      Auth = list(
-        list(
-          Description = "string",
-          UserName = "string",
-          AuthScheme = "SECRETS",
-          SecretArn = "string",
-          IAMAuth = "DISABLED"|"REQUIRED"
-        )
-      ),
-      RoleArn = "string",
-      Endpoint = "string",
-      RequireTLS = TRUE|FALSE,
-      IdleClientTimeout = 123,
-      DebugLogging = TRUE|FALSE,
-      CreatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdatedDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
 Returns information about DB proxies.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_db_proxies(
-  DBProxyName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string",
-  MaxRecords = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/describe_db_proxies.html} for full documentation.
+}
 \keyword{internal}

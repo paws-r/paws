@@ -4,11 +4,16 @@
 \alias{cognitoidentityprovider_confirm_device}
 \title{Confirms tracking of the device}
 \usage{
-cognitoidentityprovider_confirm_device(AccessToken, DeviceKey,
-  DeviceSecretVerifierConfig, DeviceName)
+cognitoidentityprovider_confirm_device(
+  AccessToken,
+  DeviceKey,
+  DeviceSecretVerifierConfig = NULL,
+  DeviceName = NULL
+)
 }
 \arguments{
-\item{AccessToken}{[required] The access token.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose device
+you want to confirm.}
 
 \item{DeviceKey}{[required] The device key.}
 
@@ -16,27 +21,9 @@ cognitoidentityprovider_confirm_device(AccessToken, DeviceKey,
 
 \item{DeviceName}{The device name.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserConfirmationNecessary = TRUE|FALSE
-)
-}
-}
 \description{
-Confirms tracking of the device. This API call is the call that begins
-device tracking.
-}
-\section{Request syntax}{
-\preformatted{svc$confirm_device(
-  AccessToken = "string",
-  DeviceKey = "string",
-  DeviceSecretVerifierConfig = list(
-    PasswordVerifier = "string",
-    Salt = "string"
-  ),
-  DeviceName = "string"
-)
-}
-}
+Confirms tracking of the device. This API call is the call that begins device tracking.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/confirm_device.html} for full documentation.
+}
 \keyword{internal}

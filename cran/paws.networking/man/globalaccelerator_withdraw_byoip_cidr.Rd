@@ -10,39 +10,9 @@ globalaccelerator_withdraw_byoip_cidr(Cidr)
 \arguments{
 \item{Cidr}{[required] The address range, in CIDR notation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ByoipCidr = list(
-    Cidr = "string",
-    State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
-    Events = list(
-      list(
-        Message = "string",
-        Timestamp = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Stops advertising an address range that is provisioned as an address
-pool. You can perform this operation at most once every 10 seconds, even
-if you specify different address ranges each time.
+Stops advertising an address range that is provisioned as an address pool. You can perform this operation at most once every 10 seconds, even if you specify different address ranges each time.
 
-It can take a few minutes before traffic to the specified addresses
-stops routing to AWS because of propagation delays.
-
-For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html}{Bring Your Own IP Addresses (BYOIP)}
-in the \emph{AWS Global Accelerator Developer Guide}.
+See \url{https://paws-r.github.io/docs/globalaccelerator/withdraw_byoip_cidr.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$withdraw_byoip_cidr(
-  Cidr = "string"
-)
-}
-}
-
 \keyword{internal}

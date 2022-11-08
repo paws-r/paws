@@ -10,25 +10,9 @@ opsworks_unassign_instance(InstanceId)
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
 }
-\value{
-An empty list.
-}
 \description{
-Unassigns a registered instance from all layers that are using the
-instance. The instance remains in the stack as an unassigned instance,
-and can be assigned to another layer as needed. You cannot use this
-action with instances that were created with AWS OpsWorks Stacks.
+Unassigns a registered instance from all layers that are using the instance. The instance remains in the stack as an unassigned instance, and can be assigned to another layer as needed. You cannot use this action with instances that were created with AWS OpsWorks Stacks.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack or an attached policy that
-explicitly grants permissions. For more information about user
-permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/unassign_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$unassign_instance(
-  InstanceId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{cloudfront_delete_key_group}
 \title{Deletes a key group}
 \usage{
-cloudfront_delete_key_group(Id, IfMatch)
+cloudfront_delete_key_group(Id, IfMatch = NULL)
 }
 \arguments{
 \item{Id}{[required] The identifier of the key group that you are deleting. To get the
@@ -15,28 +15,9 @@ key group’s \code{ETag} value. To get the \code{ETag}, use
 \code{\link[=cloudfront_get_key_group]{get_key_group}} or
 \code{\link[=cloudfront_get_key_group_config]{get_key_group_config}}.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a key group.
 
-You cannot delete a key group that is referenced in a cache behavior.
-First update your distributions to remove the key group from all cache
-behaviors, then delete the key group.
-
-To delete a key group, you must provide the key group’s identifier and
-version. To get these values, use
-\code{\link[=cloudfront_list_key_groups]{list_key_groups}} followed by
-\code{\link[=cloudfront_get_key_group]{get_key_group}} or
-\code{\link[=cloudfront_get_key_group_config]{get_key_group_config}}.
+See \url{https://paws-r.github.io/docs/cloudfront/delete_key_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_key_group(
-  Id = "string",
-  IfMatch = "string"
-)
-}
-}
-
 \keyword{internal}

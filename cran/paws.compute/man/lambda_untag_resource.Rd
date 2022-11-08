@@ -11,35 +11,9 @@ lambda_untag_resource(Resource, TagKeys)
 
 \item{TagKeys}{[required] A list of tag keys to remove from the function.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes
-\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}
-from a function.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  Resource = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags} from a function.
 
-\examples{
-\dontrun{
-# The following example removes the tag with the key name DEPARTMENT tag
-# from the my-function Lambda function.
-svc$untag_resource(
-  Resource = "arn:aws:lambda:us-west-2:123456789012:function:my-function",
-  TagKeys = list(
-    "DEPARTMENT"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/untag_resource.html} for full documentation.
 }
 \keyword{internal}

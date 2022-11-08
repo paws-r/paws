@@ -4,8 +4,10 @@
 \alias{ses_delete_configuration_set_event_destination}
 \title{Deletes a configuration set event destination}
 \usage{
-ses_delete_configuration_set_event_destination(ConfigurationSetName,
-  EventDestinationName)
+ses_delete_configuration_set_event_destination(
+  ConfigurationSetName,
+  EventDestinationName
+)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set from which to delete the event
@@ -13,23 +15,9 @@ destination.}
 
 \item{EventDestinationName}{[required] The name of the event destination to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a configuration set event destination. Configuration set event
-destinations are associated with configuration sets, which enable you to
-publish email sending events. For information about using configuration
-sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
+Deletes a configuration set event destination. Configuration set event destinations are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html}{Amazon SES Developer Guide}.
 
-You can execute this operation no more than once per second.
+See \url{https://paws-r.github.io/docs/ses/delete_configuration_set_event_destination.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_configuration_set_event_destination(
-  ConfigurationSetName = "string",
-  EventDestinationName = "string"
-)
-}
-}
-
 \keyword{internal}

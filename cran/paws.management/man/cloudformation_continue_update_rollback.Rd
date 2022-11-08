@@ -2,11 +2,15 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_continue_update_rollback}
 \alias{cloudformation_continue_update_rollback}
-\title{For a specified stack that is in the UPDATE_ROLLBACK_FAILED state,
+\title{For a specified stack that's in the UPDATE_ROLLBACK_FAILED state,
 continues rolling it back to the UPDATE_ROLLBACK_COMPLETE state}
 \usage{
-cloudformation_continue_update_rollback(StackName, RoleARN,
-  ResourcesToSkip, ClientRequestToken)
+cloudformation_continue_update_rollback(
+  StackName,
+  RoleARN = NULL,
+  ResourcesToSkip = NULL,
+  ClientRequestToken = NULL
+)
 }
 \arguments{
 \item{StackName}{[required] The name or the unique ID of the stack that you want to continue rolling
@@ -17,34 +21,34 @@ using the \verb{AWS::CloudFormation::Stack} resource). Instead, use this
 operation on the parent stack (the stack that contains the
 \verb{AWS::CloudFormation::Stack} resource).}
 
-\item{RoleARN}{The Amazon Resource Name (ARN) of an AWS Identity and Access Management
-(IAM) role that AWS CloudFormation assumes to roll back the stack. AWS
+\item{RoleARN}{The Amazon Resource Name (ARN) of an Identity and Access Management
+(IAM) role that CloudFormation assumes to roll back the stack.
 CloudFormation uses the role's credentials to make calls on your behalf.
-AWS CloudFormation always uses this role for all future operations on
-the stack. As long as users have permission to operate on the stack, AWS
+CloudFormation always uses this role for all future operations on the
+stack. Provided that users have permission to operate on the stack,
 CloudFormation uses this role even if the users don't have permission to
-pass it. Ensure that the role grants least privilege.
+pass it. Ensure that the role grants least permission.
 
-If you don't specify a value, AWS CloudFormation uses the role that was
-previously associated with the stack. If no role is available, AWS
-CloudFormation uses a temporary session that is generated from your user
+If you don't specify a value, CloudFormation uses the role that was
+previously associated with the stack. If no role is available,
+CloudFormation uses a temporary session that's generated from your user
 credentials.}
 
-\item{ResourcesToSkip}{A list of the logical IDs of the resources that AWS CloudFormation skips
+\item{ResourcesToSkip}{A list of the logical IDs of the resources that CloudFormation skips
 during the continue update rollback operation. You can specify only
 resources that are in the \code{UPDATE_FAILED} state because a rollback
 failed. You can't specify resources that are in the \code{UPDATE_FAILED}
-state for other reasons, for example, because an update was cancelled.
-To check why a resource update failed, use the
+state for other reasons, for example, because an update was canceled. To
+check why a resource update failed, use the
 \code{\link[=cloudformation_describe_stack_resources]{describe_stack_resources}}
 action, and view the resource status reason.
 
-Specify this property to skip rolling back resources that AWS
-CloudFormation can't successfully roll back. We recommend that you
+Specify this property to skip rolling back resources that CloudFormation
+can't successfully roll back. We recommend that you
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed}{troubleshoot}
-resources before skipping them. AWS CloudFormation sets the status of
-the specified resources to \code{UPDATE_COMPLETE} and continues to roll back
-the stack. After the rollback is complete, the state of the skipped
+resources before skipping them. CloudFormation sets the status of the
+specified resources to \code{UPDATE_COMPLETE} and continues to roll back the
+stack. After the rollback is complete, the state of the skipped
 resources will be inconsistent with the state of the resources in the
 stack template. Before performing another stack update, you must update
 the stack or resources to be consistent with each other. If you don't,
@@ -69,41 +73,15 @@ rollback operation with nested stacks, see \href{https://docs.aws.amazon.com/AWS
 
 \item{ClientRequestToken}{A unique identifier for this
 \code{\link[=cloudformation_continue_update_rollback]{continue_update_rollback}}
-request. Specify this token if you plan to retry requests so that AWS
-CloudFormation knows that you're not attempting to continue the rollback
+request. Specify this token if you plan to retry requests so that
+CloudFormationknows that you're not attempting to continue the rollback
 to a stack with the same name. You might retry
 \code{\link[=cloudformation_continue_update_rollback]{continue_update_rollback}}
-requests to ensure that AWS CloudFormation successfully received them.}
-}
-\value{
-An empty list.
+requests to ensure that CloudFormation successfully received them.}
 }
 \description{
-For a specified stack that is in the \code{UPDATE_ROLLBACK_FAILED} state,
-continues rolling it back to the \code{UPDATE_ROLLBACK_COMPLETE} state.
-Depending on the cause of the failure, you can manually \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed}{fix the error}
-and continue the rollback. By continuing the rollback, you can return
-your stack to a working state (the \code{UPDATE_ROLLBACK_COMPLETE} state),
-and then try to update the stack again.
+For a specified stack that's in the \code{UPDATE_ROLLBACK_FAILED} state, continues rolling it back to the \code{UPDATE_ROLLBACK_COMPLETE} state. Depending on the cause of the failure, you can manually \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed}{fix the error} and continue the rollback. By continuing the rollback, you can return your stack to a working state (the \code{UPDATE_ROLLBACK_COMPLETE} state), and then try to update the stack again.
 
-A stack goes into the \code{UPDATE_ROLLBACK_FAILED} state when AWS
-CloudFormation cannot roll back all changes after a failed stack update.
-For example, you might have a stack that is rolling back to an old
-database instance that was deleted outside of AWS CloudFormation.
-Because AWS CloudFormation doesn't know the database was deleted, it
-assumes that the database instance still exists and attempts to roll
-back to it, causing the update rollback to fail.
+See \url{https://paws-r.github.io/docs/cloudformation/continue_update_rollback.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$continue_update_rollback(
-  StackName = "string",
-  RoleARN = "string",
-  ResourcesToSkip = list(
-    "string"
-  ),
-  ClientRequestToken = "string"
-)
-}
-}
-
 \keyword{internal}

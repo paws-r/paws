@@ -5,7 +5,10 @@
 \title{Lists the resource associations for the specified license configuration}
 \usage{
 licensemanager_list_associations_for_license_configuration(
-  LicenseConfigurationArn, MaxResults, NextToken)
+  LicenseConfigurationArn,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{LicenseConfigurationArn}{[required] Amazon Resource Name (ARN) of a license configuration.}
@@ -14,37 +17,9 @@ licensemanager_list_associations_for_license_configuration(
 
 \item{NextToken}{Token for the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LicenseConfigurationAssociations = list(
-    list(
-      ResourceArn = "string",
-      ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
-      ResourceOwnerId = "string",
-      AssociationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      AmiAssociationScope = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the resource associations for the specified license configuration.
 
-Resource associations need not consume licenses from a license
-configuration. For example, an AMI or a stopped instance might not
-consume a license (depending on the license rules).
+See \url{https://paws-r.github.io/docs/licensemanager/list_associations_for_license_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_associations_for_license_configuration(
-  LicenseConfigurationArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,17 +4,26 @@
 \alias{ec2_get_coip_pool_usage}
 \title{Describes the allocations from the specified customer-owned address pool}
 \usage{
-ec2_get_coip_pool_usage(PoolId, Filters, MaxResults, NextToken, DryRun)
+ec2_get_coip_pool_usage(
+  PoolId,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{PoolId}{[required] The ID of the address pool.}
 
-\item{Filters}{The filters. The following are the possible values:
+\item{Filters}{One or more filters.
 \itemize{
-\item \code{coip-address-usage.allocation-id}
-\item \code{coip-address-usage.aws-account-id}
-\item \code{coip-address-usage.aws-service}
-\item \code{coip-address-usage.co-ip}
+\item \code{coip-address-usage.allocation-id} - The allocation ID of the
+address.
+\item \code{coip-address-usage.aws-account-id} - The ID of the Amazon Web
+Services account that is using the customer-owned IP address.
+\item \code{coip-address-usage.aws-service} - The Amazon Web Services service
+that is using the customer-owned IP address.
+\item \code{coip-address-usage.co-ip} - The customer-owned IP address.
 }}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve
@@ -28,41 +37,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CoipPoolId = "string",
-  CoipAddressUsages = list(
-    list(
-      AllocationId = "string",
-      AwsAccountId = "string",
-      AwsService = "string",
-      CoIp = "string"
-    )
-  ),
-  LocalGatewayRouteTableId = "string"
-)
-}
-}
 \description{
-Describes the allocations from the specified customer-owned address
-pool.
-}
-\section{Request syntax}{
-\preformatted{svc$get_coip_pool_usage(
-  PoolId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes the allocations from the specified customer-owned address pool.
 
+See \url{https://paws-r.github.io/docs/ec2/get_coip_pool_usage.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Attaches an internet gateway or a virtual private gateway to a VPC,
 enabling connectivity between the internet and the VPC}
 \usage{
-ec2_attach_internet_gateway(DryRun, InternetGatewayId, VpcId)
+ec2_attach_internet_gateway(DryRun = NULL, InternetGatewayId, VpcId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -17,32 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcId}{[required] The ID of the VPC.}
 }
-\value{
-An empty list.
-}
 \description{
-Attaches an internet gateway or a virtual private gateway to a VPC,
-enabling connectivity between the internet and the VPC. For more
-information about your VPC and internet gateway, see the \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$attach_internet_gateway(
-  DryRun = TRUE|FALSE,
-  InternetGatewayId = "string",
-  VpcId = "string"
-)
-}
-}
+Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC. For more information about your VPC and internet gateway, see the \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Amazon Virtual Private Cloud User Guide}.
 
-\examples{
-\dontrun{
-# This example attaches the specified Internet gateway to the specified
-# VPC.
-svc$attach_internet_gateway(
-  InternetGatewayId = "igw-c0a643a9",
-  VpcId = "vpc-a01106c2"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/attach_internet_gateway.html} for full documentation.
 }
 \keyword{internal}

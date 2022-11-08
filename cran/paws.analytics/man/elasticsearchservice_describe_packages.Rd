@@ -4,7 +4,11 @@
 \alias{elasticsearchservice_describe_packages}
 \title{Describes all packages available to Amazon ES}
 \usage{
-elasticsearchservice_describe_packages(Filters, MaxResults, NextToken)
+elasticsearchservice_describe_packages(
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Filters}{Only returns packages that match the \code{DescribePackagesFilterList}
@@ -16,50 +20,9 @@ values.}
 non-null NextToken value. If provided, returns results for the next
 page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PackageDetailsList = list(
-    list(
-      PackageID = "string",
-      PackageName = "string",
-      PackageType = "TXT-DICTIONARY",
-      PackageDescription = "string",
-      PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
-      CreatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      AvailablePackageVersion = "string",
-      ErrorDetails = list(
-        ErrorType = "string",
-        ErrorMessage = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes all packages available to Amazon ES. Includes options for
-filtering, limiting the number of results, and pagination.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_packages(
-  Filters = list(
-    list(
-      Name = "PackageID"|"PackageName"|"PackageStatus",
-      Value = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Describes all packages available to Amazon ES. Includes options for filtering, limiting the number of results, and pagination.
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/describe_packages.html} for full documentation.
+}
 \keyword{internal}

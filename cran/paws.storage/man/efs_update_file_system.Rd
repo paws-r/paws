@@ -5,69 +5,29 @@
 \title{Updates the throughput mode or the amount of provisioned throughput of
 an existing file system}
 \usage{
-efs_update_file_system(FileSystemId, ThroughputMode,
-  ProvisionedThroughputInMibps)
+efs_update_file_system(
+  FileSystemId,
+  ThroughputMode = NULL,
+  ProvisionedThroughputInMibps = NULL
+)
 }
 \arguments{
 \item{FileSystemId}{[required] The ID of the file system that you want to update.}
 
-\item{ThroughputMode}{(Optional) The throughput mode that you want your file system to use. If
-you're not updating your throughput mode, you don't need to provide this
-value in your request. If you are changing the \code{ThroughputMode} to
-\code{provisioned}, you must also set a value for
-\code{ProvisionedThroughputInMibps}.}
+\item{ThroughputMode}{(Optional) Updates the file system's throughput mode. If you're not
+updating your throughput mode, you don't need to provide this value in
+your request. If you are changing the \code{ThroughputMode} to \code{provisioned},
+you must also set a value for \code{ProvisionedThroughputInMibps}.}
 
-\item{ProvisionedThroughputInMibps}{(Optional) The amount of throughput, in MiB/s, that you want to
-provision for your file system. Valid values are 1-1024. Required if
-\code{ThroughputMode} is changed to \code{provisioned} on update. If you're not
-updating the amount of provisioned throughput for your file system, you
-don't need to provide this value in your request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  OwnerId = "string",
-  CreationToken = "string",
-  FileSystemId = "string",
-  FileSystemArn = "string",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
-  Name = "string",
-  NumberOfMountTargets = 123,
-  SizeInBytes = list(
-    Value = 123,
-    Timestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ValueInIA = 123,
-    ValueInStandard = 123
-  ),
-  PerformanceMode = "generalPurpose"|"maxIO",
-  Encrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  ThroughputMode = "bursting"|"provisioned",
-  ProvisionedThroughputInMibps = 123.0,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
+\item{ProvisionedThroughputInMibps}{(Optional) Sets the amount of provisioned throughput, in MiB/s, for the
+file system. Valid values are 1-1024. If you are changing the throughput
+mode to provisioned, you must also provide the amount of provisioned
+throughput. Required if \code{ThroughputMode} is changed to \code{provisioned} on
+update.}
 }
 \description{
-Updates the throughput mode or the amount of provisioned throughput of
-an existing file system.
-}
-\section{Request syntax}{
-\preformatted{svc$update_file_system(
-  FileSystemId = "string",
-  ThroughputMode = "bursting"|"provisioned",
-  ProvisionedThroughputInMibps = 123.0
-)
-}
-}
+Updates the throughput mode or the amount of provisioned throughput of an existing file system.
 
+See \url{https://paws-r.github.io/docs/efs/update_file_system.html} for full documentation.
+}
 \keyword{internal}

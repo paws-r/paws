@@ -7,15 +7,9 @@ NULL
 #' input file from Amazon S3
 #'
 #' @description
-#' Creates a parallel data resource in Amazon Translate by importing an
-#' input file from Amazon S3. Parallel data files contain examples of
-#' source phrases and their translations from your translation memory. By
-#' adding parallel data, you can influence the style, tone, and word choice
-#' in your translation output.
+#' Creates a parallel data resource in Amazon Translate by importing an input file from Amazon S3. Parallel data files contain examples that show how you want segments of text to be translated. By adding parallel data, you can influence the style, tone, and word choice in your translation output.
 #'
-#' @usage
-#' translate_create_parallel_data(Name, Description, ParallelDataConfig,
-#'   EncryptionKey, ClientToken)
+#' See [https://paws-r.github.io/docs/translate/create_parallel_data.html](https://paws-r.github.io/docs/translate/create_parallel_data.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; A custom name for the parallel data resource in Amazon Translate. You
 #' must assign a name that is unique in the account and region.
@@ -24,32 +18,6 @@ NULL
 #' @param EncryptionKey 
 #' @param ClientToken &#91;required&#93; A unique identifier for the request. This token is automatically
 #' generated when you use Amazon Translate through an AWS SDK.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string",
-#'   Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_parallel_data(
-#'   Name = "string",
-#'   Description = "string",
-#'   ParallelDataConfig = list(
-#'     S3Uri = "string",
-#'     Format = "TSV"|"CSV"|"TMX"
-#'   ),
-#'   EncryptionKey = list(
-#'     Type = "KMS",
-#'     Id = "string"
-#'   ),
-#'   ClientToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -76,26 +44,9 @@ translate_create_parallel_data <- function(Name, Description = NULL, ParallelDat
 #' @description
 #' Deletes a parallel data resource in Amazon Translate.
 #'
-#' @usage
-#' translate_delete_parallel_data(Name)
+#' See [https://paws-r.github.io/docs/translate/delete_parallel_data.html](https://paws-r.github.io/docs/translate/delete_parallel_data.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parallel data resource that is being deleted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string",
-#'   Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_parallel_data(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -122,20 +73,9 @@ translate_delete_parallel_data <- function(Name) {
 #' @description
 #' A synchronous action that deletes a custom terminology.
 #'
-#' @usage
-#' translate_delete_terminology(Name)
+#' See [https://paws-r.github.io/docs/translate/delete_terminology.html](https://paws-r.github.io/docs/translate/delete_terminology.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the custom terminology being deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_terminology(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -157,70 +97,18 @@ translate_delete_terminology <- function(Name) {
 }
 .translate$operations$delete_terminology <- translate_delete_terminology
 
-#' Gets the properties associated with an asycnhronous batch translation
+#' Gets the properties associated with an asynchronous batch translation
 #' job including name, ID, status, source and target languages,
 #' input/output S3 buckets, and so on
 #'
 #' @description
-#' Gets the properties associated with an asycnhronous batch translation
-#' job including name, ID, status, source and target languages,
-#' input/output S3 buckets, and so on.
+#' Gets the properties associated with an asynchronous batch translation job including name, ID, status, source and target languages, input/output S3 buckets, and so on.
 #'
-#' @usage
-#' translate_describe_text_translation_job(JobId)
+#' See [https://paws-r.github.io/docs/translate/describe_text_translation_job.html](https://paws-r.github.io/docs/translate/describe_text_translation_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Translate generated for the job. The
 #' [`start_text_translation_job`][translate_start_text_translation_job]
 #' operation returns this identifier in its response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TextTranslationJobProperties = list(
-#'     JobId = "string",
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERROR"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     JobDetails = list(
-#'       TranslatedDocumentsCount = 123,
-#'       DocumentsWithErrorsCount = 123,
-#'       InputDocumentsCount = 123
-#'     ),
-#'     SourceLanguageCode = "string",
-#'     TargetLanguageCodes = list(
-#'       "string"
-#'     ),
-#'     TerminologyNames = list(
-#'       "string"
-#'     ),
-#'     ParallelDataNames = list(
-#'       "string"
-#'     ),
-#'     Message = "string",
-#'     SubmittedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InputDataConfig = list(
-#'       S3Uri = "string",
-#'       ContentType = "string"
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Uri = "string"
-#'     ),
-#'     DataAccessRoleArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_text_translation_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -247,69 +135,9 @@ translate_describe_text_translation_job <- function(JobId) {
 #' @description
 #' Provides information about a parallel data resource.
 #'
-#' @usage
-#' translate_get_parallel_data(Name)
+#' See [https://paws-r.github.io/docs/translate/get_parallel_data.html](https://paws-r.github.io/docs/translate/get_parallel_data.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parallel data resource that is being retrieved.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ParallelDataProperties = list(
-#'     Name = "string",
-#'     Arn = "string",
-#'     Description = "string",
-#'     Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
-#'     SourceLanguageCode = "string",
-#'     TargetLanguageCodes = list(
-#'       "string"
-#'     ),
-#'     ParallelDataConfig = list(
-#'       S3Uri = "string",
-#'       Format = "TSV"|"CSV"|"TMX"
-#'     ),
-#'     Message = "string",
-#'     ImportedDataSize = 123,
-#'     ImportedRecordCount = 123,
-#'     FailedRecordCount = 123,
-#'     SkippedRecordCount = 123,
-#'     EncryptionKey = list(
-#'       Type = "KMS",
-#'       Id = "string"
-#'     ),
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LatestUpdateAttemptStatus = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
-#'     LatestUpdateAttemptAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   DataLocation = list(
-#'     RepositoryType = "string",
-#'     Location = "string"
-#'   ),
-#'   AuxiliaryDataLocation = list(
-#'     RepositoryType = "string",
-#'     Location = "string"
-#'   ),
-#'   LatestUpdateAttemptAuxiliaryDataLocation = list(
-#'     RepositoryType = "string",
-#'     Location = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_parallel_data(
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -336,57 +164,24 @@ translate_get_parallel_data <- function(Name) {
 #' @description
 #' Retrieves a custom terminology.
 #'
-#' @usage
-#' translate_get_terminology(Name, TerminologyDataFormat)
+#' See [https://paws-r.github.io/docs/translate/get_terminology.html](https://paws-r.github.io/docs/translate/get_terminology.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the custom terminology being retrieved.
-#' @param TerminologyDataFormat &#91;required&#93; The data format of the custom terminology being retrieved, either CSV or
-#' TMX.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TerminologyProperties = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     Arn = "string",
-#'     SourceLanguageCode = "string",
-#'     TargetLanguageCodes = list(
-#'       "string"
-#'     ),
-#'     EncryptionKey = list(
-#'       Type = "KMS",
-#'       Id = "string"
-#'     ),
-#'     SizeBytes = 123,
-#'     TermCount = 123,
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   TerminologyDataLocation = list(
-#'     RepositoryType = "string",
-#'     Location = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_terminology(
-#'   Name = "string",
-#'   TerminologyDataFormat = "CSV"|"TMX"
-#' )
-#' ```
+#' @param TerminologyDataFormat The data format of the custom terminology being retrieved.
+#' 
+#' If you don't specify this parameter, Amazon Translate returns a file
+#' with the same format as the file that was imported to create the
+#' terminology.
+#' 
+#' If you specify this parameter when you retrieve a multi-directional
+#' terminology resource, you must specify the same format as the input file
+#' that was imported to create it. Otherwise, Amazon Translate throws an
+#' error.
 #'
 #' @keywords internal
 #'
 #' @rdname translate_get_terminology
-translate_get_terminology <- function(Name, TerminologyDataFormat) {
+translate_get_terminology <- function(Name, TerminologyDataFormat = NULL) {
   op <- new_operation(
     name = "GetTerminology",
     http_method = "POST",
@@ -403,25 +198,13 @@ translate_get_terminology <- function(Name, TerminologyDataFormat) {
 }
 .translate$operations$get_terminology <- translate_get_terminology
 
-#' Creates or updates a custom terminology, depending on whether or not one
+#' Creates or updates a custom terminology, depending on whether one
 #' already exists for the given terminology name
 #'
 #' @description
-#' Creates or updates a custom terminology, depending on whether or not one
-#' already exists for the given terminology name. Importing a terminology
-#' with the same name as an existing one will merge the terminologies based
-#' on the chosen merge strategy. Currently, the only supported merge
-#' strategy is OVERWRITE, and so the imported terminology will overwrite an
-#' existing terminology of the same name.
-#' 
-#' If you import a terminology that overwrites an existing one, the new
-#' terminology take up to 10 minutes to fully propagate and be available
-#' for use in a translation due to cache policies with the DataPlane
-#' service that performs the translations.
+#' Creates or updates a custom terminology, depending on whether one already exists for the given terminology name. Importing a terminology with the same name as an existing one will merge the terminologies based on the chosen merge strategy. The only supported merge strategy is OVERWRITE, where the imported terminology overwrites the existing terminology of the same name.
 #'
-#' @usage
-#' translate_import_terminology(Name, MergeStrategy, Description,
-#'   TerminologyData, EncryptionKey)
+#' See [https://paws-r.github.io/docs/translate/import_terminology.html](https://paws-r.github.io/docs/translate/import_terminology.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the custom terminology being imported.
 #' @param MergeStrategy &#91;required&#93; The merge strategy of the custom terminology being imported. Currently,
@@ -431,51 +214,6 @@ translate_get_terminology <- function(Name, TerminologyDataFormat) {
 #' @param Description The description of the custom terminology being imported.
 #' @param TerminologyData &#91;required&#93; The terminology data for the custom terminology being imported.
 #' @param EncryptionKey The encryption key for the custom terminology being imported.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TerminologyProperties = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     Arn = "string",
-#'     SourceLanguageCode = "string",
-#'     TargetLanguageCodes = list(
-#'       "string"
-#'     ),
-#'     EncryptionKey = list(
-#'       Type = "KMS",
-#'       Id = "string"
-#'     ),
-#'     SizeBytes = 123,
-#'     TermCount = 123,
-#'     CreatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$import_terminology(
-#'   Name = "string",
-#'   MergeStrategy = "OVERWRITE",
-#'   Description = "string",
-#'   TerminologyData = list(
-#'     File = raw,
-#'     Format = "CSV"|"TMX"
-#'   ),
-#'   EncryptionKey = list(
-#'     Type = "KMS",
-#'     Id = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -497,68 +235,50 @@ translate_import_terminology <- function(Name, MergeStrategy, Description = NULL
 }
 .translate$operations$import_terminology <- translate_import_terminology
 
+#' Provides a list of languages (RFC-5646 codes and names) that Amazon
+#' Translate supports
+#'
+#' @description
+#' Provides a list of languages (RFC-5646 codes and names) that Amazon Translate supports.
+#'
+#' See [https://paws-r.github.io/docs/translate/list_languages.html](https://paws-r.github.io/docs/translate/list_languages.html) for full documentation.
+#'
+#' @param DisplayLanguageCode The language code for the language to use to display the language names
+#' in the response. The language code is `en` by default.
+#' @param NextToken Include the NextToken value to fetch the next group of supported
+#' languages.
+#' @param MaxResults The maximum number of results to return in each response.
+#'
+#' @keywords internal
+#'
+#' @rdname translate_list_languages
+translate_list_languages <- function(DisplayLanguageCode = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListLanguages",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .translate$list_languages_input(DisplayLanguageCode = DisplayLanguageCode, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .translate$list_languages_output()
+  config <- get_config()
+  svc <- .translate$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.translate$operations$list_languages <- translate_list_languages
+
 #' Provides a list of your parallel data resources in Amazon Translate
 #'
 #' @description
 #' Provides a list of your parallel data resources in Amazon Translate.
 #'
-#' @usage
-#' translate_list_parallel_data(NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/translate/list_parallel_data.html](https://paws-r.github.io/docs/translate/list_parallel_data.html) for full documentation.
 #'
 #' @param NextToken A string that specifies the next page of results to return in a
 #' paginated response.
 #' @param MaxResults The maximum number of parallel data resources returned for each request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ParallelDataPropertiesList = list(
-#'     list(
-#'       Name = "string",
-#'       Arn = "string",
-#'       Description = "string",
-#'       Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
-#'       SourceLanguageCode = "string",
-#'       TargetLanguageCodes = list(
-#'         "string"
-#'       ),
-#'       ParallelDataConfig = list(
-#'         S3Uri = "string",
-#'         Format = "TSV"|"CSV"|"TMX"
-#'       ),
-#'       Message = "string",
-#'       ImportedDataSize = 123,
-#'       ImportedRecordCount = 123,
-#'       FailedRecordCount = 123,
-#'       SkippedRecordCount = 123,
-#'       EncryptionKey = list(
-#'         Type = "KMS",
-#'         Id = "string"
-#'       ),
-#'       CreatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LatestUpdateAttemptStatus = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
-#'       LatestUpdateAttemptAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_parallel_data(
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -585,51 +305,11 @@ translate_list_parallel_data <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Provides a list of custom terminologies associated with your account.
 #'
-#' @usage
-#' translate_list_terminologies(NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/translate/list_terminologies.html](https://paws-r.github.io/docs/translate/list_terminologies.html) for full documentation.
 #'
 #' @param NextToken If the result of the request to ListTerminologies was truncated, include
 #' the NextToken to fetch the next group of custom terminologies.
 #' @param MaxResults The maximum number of custom terminologies returned per list request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TerminologyPropertiesList = list(
-#'     list(
-#'       Name = "string",
-#'       Description = "string",
-#'       Arn = "string",
-#'       SourceLanguageCode = "string",
-#'       TargetLanguageCodes = list(
-#'         "string"
-#'       ),
-#'       EncryptionKey = list(
-#'         Type = "KMS",
-#'         Id = "string"
-#'       ),
-#'       SizeBytes = 123,
-#'       TermCount = 123,
-#'       CreatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_terminologies(
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -656,8 +336,7 @@ translate_list_terminologies <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Gets a list of the batch translation jobs that you have submitted.
 #'
-#' @usage
-#' translate_list_text_translation_jobs(Filter, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/translate/list_text_translation_jobs.html](https://paws-r.github.io/docs/translate/list_text_translation_jobs.html) for full documentation.
 #'
 #' @param Filter The parameters that specify which batch translation jobs to retrieve.
 #' Filters include job name, job status, and submission time. You can only
@@ -665,69 +344,6 @@ translate_list_terminologies <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param NextToken The token to request the next page of results.
 #' @param MaxResults The maximum number of results to return in each page. The default value
 #' is 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TextTranslationJobPropertiesList = list(
-#'     list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERROR"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'       JobDetails = list(
-#'         TranslatedDocumentsCount = 123,
-#'         DocumentsWithErrorsCount = 123,
-#'         InputDocumentsCount = 123
-#'       ),
-#'       SourceLanguageCode = "string",
-#'       TargetLanguageCodes = list(
-#'         "string"
-#'       ),
-#'       TerminologyNames = list(
-#'         "string"
-#'       ),
-#'       ParallelDataNames = list(
-#'         "string"
-#'       ),
-#'       Message = "string",
-#'       SubmittedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputDataConfig = list(
-#'         S3Uri = "string",
-#'         ContentType = "string"
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Uri = "string"
-#'       ),
-#'       DataAccessRoleArn = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_text_translation_jobs(
-#'   Filter = list(
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERROR"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     SubmittedBeforeTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmittedAfterTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -752,94 +368,66 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #' Starts an asynchronous batch translation job
 #'
 #' @description
-#' Starts an asynchronous batch translation job. Batch translation jobs can
-#' be used to translate large volumes of text across multiple documents at
-#' once. For more information, see async.
-#' 
-#' Batch translation jobs can be described with the
-#' [`describe_text_translation_job`][translate_describe_text_translation_job]
-#' operation, listed with the
-#' [`list_text_translation_jobs`][translate_list_text_translation_jobs]
-#' operation, and stopped with the
-#' [`stop_text_translation_job`][translate_stop_text_translation_job]
-#' operation.
-#' 
-#' Amazon Translate does not support batch translation of multiple source
-#' languages at once.
+#' Starts an asynchronous batch translation job. Batch translation jobs can be used to translate large volumes of text across multiple documents at once. For more information, see async.
 #'
-#' @usage
-#' translate_start_text_translation_job(JobName, InputDataConfig,
-#'   OutputDataConfig, DataAccessRoleArn, SourceLanguageCode,
-#'   TargetLanguageCodes, TerminologyNames, ParallelDataNames, ClientToken)
+#' See [https://paws-r.github.io/docs/translate/start_text_translation_job.html](https://paws-r.github.io/docs/translate/start_text_translation_job.html) for full documentation.
 #'
 #' @param JobName The name of the batch translation job to be performed.
-#' @param InputDataConfig &#91;required&#93; Specifies the format and S3 location of the input documents for the
+#' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input documents for the
 #' translation job.
 #' @param OutputDataConfig &#91;required&#93; Specifies the S3 folder to which your job output will be saved.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an AWS Identity Access and Management
 #' (IAM) role that grants Amazon Translate read access to your input data.
-#' For more nformation, see identity-and-access-management.
+#' For more information, see identity-and-access-management.
 #' @param SourceLanguageCode &#91;required&#93; The language code of the input language. For a list of language codes,
 #' see what-is-languages.
 #' 
 #' Amazon Translate does not automatically detect a source language during
 #' batch translation jobs.
 #' @param TargetLanguageCodes &#91;required&#93; The language code of the output language.
-#' @param TerminologyNames The name of the terminology to use in the batch translation job. For a
-#' list of available terminologies, use the
+#' @param TerminologyNames The name of a custom terminology resource to add to the translation job.
+#' This resource lists examples source terms and the desired translation
+#' for each term.
+#' 
+#' This parameter accepts only one custom terminology resource.
+#' 
+#' For a list of available custom terminology resources, use the
 #' [`list_terminologies`][translate_list_terminologies] operation.
-#' @param ParallelDataNames The names of the parallel data resources to use in the batch translation
-#' job. For a list of available parallel data resources, use the
+#' 
+#' For more information, see how-custom-terminology.
+#' @param ParallelDataNames The name of a parallel data resource to add to the translation job. This
+#' resource consists of examples that show how you want segments of text to
+#' be translated. When you add parallel data to a translation job, you
+#' create an *Active Custom Translation* job.
+#' 
+#' This parameter accepts only one parallel data resource.
+#' 
+#' Active Custom Translation jobs are priced at a higher rate than other
+#' jobs that don't use parallel data. For more information, see [Amazon
+#' Translate pricing](https://aws.amazon.com/translate/pricing/).
+#' 
+#' For a list of available parallel data resources, use the
 #' [`list_parallel_data`][translate_list_parallel_data] operation.
-#' @param ClientToken &#91;required&#93; A unique identifier for the request. This token is auto-generated when
-#' using the Amazon Translate SDK.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERROR"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_text_translation_job(
-#'   JobName = "string",
-#'   InputDataConfig = list(
-#'     S3Uri = "string",
-#'     ContentType = "string"
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Uri = "string"
-#'   ),
-#'   DataAccessRoleArn = "string",
-#'   SourceLanguageCode = "string",
-#'   TargetLanguageCodes = list(
-#'     "string"
-#'   ),
-#'   TerminologyNames = list(
-#'     "string"
-#'   ),
-#'   ParallelDataNames = list(
-#'     "string"
-#'   ),
-#'   ClientToken = "string"
-#' )
-#' ```
+#' 
+#' For more information, see customizing-translations-parallel-data.
+#' @param ClientToken &#91;required&#93; A unique identifier for the request. This token is generated for you
+#' when using the Amazon Translate SDK.
+#' @param Settings Settings to configure your translation output, including the option to
+#' mask profane words and phrases.
+#' [`start_text_translation_job`][translate_start_text_translation_job]
+#' does not support the formality setting.
 #'
 #' @keywords internal
 #'
 #' @rdname translate_start_text_translation_job
-translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig, OutputDataConfig, DataAccessRoleArn, SourceLanguageCode, TargetLanguageCodes, TerminologyNames = NULL, ParallelDataNames = NULL, ClientToken) {
+translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig, OutputDataConfig, DataAccessRoleArn, SourceLanguageCode, TargetLanguageCodes, TerminologyNames = NULL, ParallelDataNames = NULL, ClientToken, Settings = NULL) {
   op <- new_operation(
     name = "StartTextTranslationJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .translate$start_text_translation_job_input(JobName = JobName, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, SourceLanguageCode = SourceLanguageCode, TargetLanguageCodes = TargetLanguageCodes, TerminologyNames = TerminologyNames, ParallelDataNames = ParallelDataNames, ClientToken = ClientToken)
+  input <- .translate$start_text_translation_job_input(JobName = JobName, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, SourceLanguageCode = SourceLanguageCode, TargetLanguageCodes = TargetLanguageCodes, TerminologyNames = TerminologyNames, ParallelDataNames = ParallelDataNames, ClientToken = ClientToken, Settings = Settings)
   output <- .translate$start_text_translation_job_output()
   config <- get_config()
   svc <- .translate$service(config)
@@ -853,39 +441,10 @@ translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig
 #'
 #' @description
 #' Stops an asynchronous batch translation job that is in progress.
-#' 
-#' If the job's state is `IN_PROGRESS`, the job will be marked for
-#' termination and put into the `STOP_REQUESTED` state. If the job
-#' completes before it can be stopped, it is put into the `COMPLETED`
-#' state. Otherwise, the job is put into the `STOPPED` state.
-#' 
-#' Asynchronous batch translation jobs are started with the
-#' [`start_text_translation_job`][translate_start_text_translation_job]
-#' operation. You can use the
-#' [`describe_text_translation_job`][translate_describe_text_translation_job]
-#' or [`list_text_translation_jobs`][translate_list_text_translation_jobs]
-#' operations to get a batch translation job's `JobId`.
 #'
-#' @usage
-#' translate_stop_text_translation_job(JobId)
+#' See [https://paws-r.github.io/docs/translate/stop_text_translation_job.html](https://paws-r.github.io/docs/translate/stop_text_translation_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The job ID of the job to be stopped.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERROR"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_text_translation_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -910,13 +469,9 @@ translate_stop_text_translation_job <- function(JobId) {
 #' Translates input text from the source language to the target language
 #'
 #' @description
-#' Translates input text from the source language to the target language.
-#' For a list of available languages and language codes, see
-#' what-is-languages.
+#' Translates input text from the source language to the target language. For a list of available languages and language codes, see what-is-languages.
 #'
-#' @usage
-#' translate_translate_text(Text, TerminologyNames, SourceLanguageCode,
-#'   TargetLanguageCode)
+#' See [https://paws-r.github.io/docs/translate/translate_text.html](https://paws-r.github.io/docs/translate/translate_text.html) for full documentation.
 #'
 #' @param Text &#91;required&#93; The text to translate. The text string can be a maximum of 5,000 bytes
 #' long. Depending on your character set, this may be fewer than 5,000
@@ -932,55 +487,30 @@ translate_stop_text_translation_job <- function(JobId) {
 #' To have Amazon Translate determine the source language of your text, you
 #' can specify `auto` in the `SourceLanguageCode` field. If you specify
 #' `auto`, Amazon Translate will call [Amazon
-#' Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html)
+#' Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html)
 #' to determine the source language.
+#' 
+#' If you specify `auto`, you must send the
+#' [`translate_text`][translate_translate_text] request in a region that
+#' supports Amazon Comprehend. Otherwise, the request returns an error
+#' indicating that autodetect is not supported.
 #' @param TargetLanguageCode &#91;required&#93; The language code requested for the language of the target text. The
 #' language must be a language supported by Amazon Translate.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TranslatedText = "string",
-#'   SourceLanguageCode = "string",
-#'   TargetLanguageCode = "string",
-#'   AppliedTerminologies = list(
-#'     list(
-#'       Name = "string",
-#'       Terms = list(
-#'         list(
-#'           SourceText = "string",
-#'           TargetText = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$translate_text(
-#'   Text = "string",
-#'   TerminologyNames = list(
-#'     "string"
-#'   ),
-#'   SourceLanguageCode = "string",
-#'   TargetLanguageCode = "string"
-#' )
-#' ```
+#' @param Settings Settings to configure your translation output, including the option to
+#' set the formality level of the output text and the option to mask
+#' profane words and phrases.
 #'
 #' @keywords internal
 #'
 #' @rdname translate_translate_text
-translate_translate_text <- function(Text, TerminologyNames = NULL, SourceLanguageCode, TargetLanguageCode) {
+translate_translate_text <- function(Text, TerminologyNames = NULL, SourceLanguageCode, TargetLanguageCode, Settings = NULL) {
   op <- new_operation(
     name = "TranslateText",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .translate$translate_text_input(Text = Text, TerminologyNames = TerminologyNames, SourceLanguageCode = SourceLanguageCode, TargetLanguageCode = TargetLanguageCode)
+  input <- .translate$translate_text_input(Text = Text, TerminologyNames = TerminologyNames, SourceLanguageCode = SourceLanguageCode, TargetLanguageCode = TargetLanguageCode, Settings = Settings)
   output <- .translate$translate_text_output()
   config <- get_config()
   svc <- .translate$service(config)
@@ -994,44 +524,15 @@ translate_translate_text <- function(Text, TerminologyNames = NULL, SourceLangua
 #' input file from Amazon S3
 #'
 #' @description
-#' Updates a previously created parallel data resource by importing a new
-#' input file from Amazon S3.
+#' Updates a previously created parallel data resource by importing a new input file from Amazon S3.
 #'
-#' @usage
-#' translate_update_parallel_data(Name, Description, ParallelDataConfig,
-#'   ClientToken)
+#' See [https://paws-r.github.io/docs/translate/update_parallel_data.html](https://paws-r.github.io/docs/translate/update_parallel_data.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parallel data resource being updated.
 #' @param Description A custom description for the parallel data resource in Amazon Translate.
 #' @param ParallelDataConfig &#91;required&#93; Specifies the format and S3 location of the parallel data input file.
 #' @param ClientToken &#91;required&#93; A unique identifier for the request. This token is automatically
 #' generated when you use Amazon Translate through an AWS SDK.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string",
-#'   Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
-#'   LatestUpdateAttemptStatus = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED",
-#'   LatestUpdateAttemptAt = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_parallel_data(
-#'   Name = "string",
-#'   Description = "string",
-#'   ParallelDataConfig = list(
-#'     S3Uri = "string",
-#'     Format = "TSV"|"CSV"|"TMX"
-#'   ),
-#'   ClientToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

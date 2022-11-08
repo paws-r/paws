@@ -2,10 +2,9 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_attach_classic_link_vpc}
 \alias{ec2_attach_classic_link_vpc}
-\title{Links an EC2-Classic instance to a ClassicLink-enabled VPC through one
-or more of the VPC's security groups}
+\title{We are retiring EC2-Classic on August 15, 2022}
 \usage{
-ec2_attach_classic_link_vpc(DryRun, Groups, InstanceId, VpcId)
+ec2_attach_classic_link_vpc(DryRun = NULL, Groups, InstanceId, VpcId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -21,37 +20,9 @@ VPC.}
 
 \item{VpcId}{[required] The ID of a ClassicLink-enabled VPC.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Links an EC2-Classic instance to a ClassicLink-enabled VPC through one
-or more of the VPC's security groups. You cannot link an EC2-Classic
-instance to more than one VPC at a time. You can only link an instance
-that's in the \code{running} state. An instance is automatically unlinked
-from a VPC when it's stopped - you can link it to the VPC again when you
-restart it.
+We are retiring EC2-Classic on August 15, 2022. We recommend that you migrate from EC2-Classic to a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html}{Migrate from EC2-Classic to a VPC} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-After you've linked an instance, you cannot change the VPC security
-groups that are associated with it. To change the security groups, you
-must first unlink the instance, and then link it again.
-
-Linking your instance to a VPC is sometimes referred to as \emph{attaching}
-your instance.
+See \url{https://paws-r.github.io/docs/ec2/attach_classic_link_vpc.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$attach_classic_link_vpc(
-  DryRun = TRUE|FALSE,
-  Groups = list(
-    "string"
-  ),
-  InstanceId = "string",
-  VpcId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -2,10 +2,14 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_list_associations}
 \alias{ssm_list_associations}
-\title{Returns all State Manager associations in the current AWS account and
-Region}
+\title{Returns all State Manager associations in the current Amazon Web
+Services account and Amazon Web Services Region}
 \usage{
-ssm_list_associations(AssociationFilterList, MaxResults, NextToken)
+ssm_list_associations(
+  AssociationFilterList = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{AssociationFilterList}{One or more filters. Use a filter to return a more specific list of
@@ -13,8 +17,8 @@ results.
 
 Filtering associations using the \code{InstanceID} attribute only returns
 legacy associations created using the \code{InstanceID} attribute.
-Associations targeting the instance that are part of the Target
-Attributes \code{ResourceGroup} or \code{Tags} are not returned.}
+Associations targeting the managed node that are part of the Target
+Attributes \code{ResourceGroup} or \code{Tags} aren't returned.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -23,58 +27,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Associations = list(
-    list(
-      Name = "string",
-      InstanceId = "string",
-      AssociationId = "string",
-      AssociationVersion = "string",
-      DocumentVersion = "string",
-      Targets = list(
-        list(
-          Key = "string",
-          Values = list(
-            "string"
-          )
-        )
-      ),
-      LastExecutionDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Overview = list(
-        Status = "string",
-        DetailedStatus = "string",
-        AssociationStatusAggregatedCount = list(
-          123
-        )
-      ),
-      ScheduleExpression = "string",
-      AssociationName = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns all State Manager associations in the current AWS account and
-Region. You can limit the results to a specific State Manager
-association document or instance by specifying a filter.
-}
-\section{Request syntax}{
-\preformatted{svc$list_associations(
-  AssociationFilterList = list(
-    list(
-      key = "InstanceId"|"Name"|"AssociationId"|"AssociationStatusName"|"LastExecutedBefore"|"LastExecutedAfter"|"AssociationName"|"ResourceGroupName",
-      value = "string"
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns all State Manager associations in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results to a specific State Manager association document or managed node by specifying a filter. State Manager is a capability of Amazon Web Services Systems Manager.
 
+See \url{https://paws-r.github.io/docs/ssm/list_associations.html} for full documentation.
+}
 \keyword{internal}

@@ -8,31 +8,14 @@ change}
 connect_describe_instance_attribute(InstanceId, AttributeType)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{AttributeType}{[required] The type of attribute.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attribute = list(
-    AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA",
-    Value = "string"
-  )
-)
-}
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Describes the specified instance attribute.
+See \url{https://paws-r.github.io/docs/connect/describe_instance_attribute.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_instance_attribute(
-  InstanceId = "string",
-  AttributeType = "INBOUND_CALLS"|"OUTBOUND_CALLS"|"CONTACTFLOW_LOGS"|"CONTACT_LENS"|"AUTO_RESOLVE_BEST_VOICES"|"USE_CUSTOM_TTS_VOICES"|"EARLY_MEDIA"
-)
-}
-}
-
 \keyword{internal}

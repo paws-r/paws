@@ -5,8 +5,12 @@
 \title{Returns the description of a specific Amazon EFS access point if the
 AccessPointId is provided}
 \usage{
-efs_describe_access_points(MaxResults, NextToken, AccessPointId,
-  FileSystemId)
+efs_describe_access_points(
+  MaxResults = NULL,
+  NextToken = NULL,
+  AccessPointId = NULL,
+  FileSystemId = NULL
+)
 }
 \arguments{
 \item{MaxResults}{(Optional) When retrieving all access points for a file system, you can
@@ -23,62 +27,9 @@ mutually exclusive with \code{FileSystemId}.}
 \item{FileSystemId}{(Optional) If you provide a \code{FileSystemId}, EFS returns all access
 points for that file system; mutually exclusive with \code{AccessPointId}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccessPoints = list(
-    list(
-      ClientToken = "string",
-      Name = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      AccessPointId = "string",
-      AccessPointArn = "string",
-      FileSystemId = "string",
-      PosixUser = list(
-        Uid = 123,
-        Gid = 123,
-        SecondaryGids = list(
-          123
-        )
-      ),
-      RootDirectory = list(
-        Path = "string",
-        CreationInfo = list(
-          OwnerUid = 123,
-          OwnerGid = 123,
-          Permissions = "string"
-        )
-      ),
-      OwnerId = "string",
-      LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns the description of a specific Amazon EFS access point if the
-\code{AccessPointId} is provided. If you provide an EFS \code{FileSystemId}, it
-returns descriptions of all access points for that file system. You can
-provide either an \code{AccessPointId} or a \code{FileSystemId} in the request,
-but not both.
+Returns the description of a specific Amazon EFS access point if the \code{AccessPointId} is provided. If you provide an EFS \code{FileSystemId}, it returns descriptions of all access points for that file system. You can provide either an \code{AccessPointId} or a \code{FileSystemId} in the request, but not both.
 
-This operation requires permissions for the
-\code{elasticfilesystem:DescribeAccessPoints} action.
+See \url{https://paws-r.github.io/docs/efs/describe_access_points.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_access_points(
-  MaxResults = 123,
-  NextToken = "string",
-  AccessPointId = "string",
-  FileSystemId = "string"
-)
-}
-}
-
 \keyword{internal}

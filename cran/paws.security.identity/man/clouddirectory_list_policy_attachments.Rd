@@ -4,8 +4,13 @@
 \alias{clouddirectory_list_policy_attachments}
 \title{Returns all of the ObjectIdentifiers to which a given policy is attached}
 \usage{
-clouddirectory_list_policy_attachments(DirectoryArn, PolicyReference,
-  NextToken, MaxResults, ConsistencyLevel)
+clouddirectory_list_policy_attachments(
+  DirectoryArn,
+  PolicyReference,
+  NextToken = NULL,
+  MaxResults = NULL,
+  ConsistencyLevel = NULL
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
@@ -22,30 +27,9 @@ approximate number.}
 of an object is reflected in a subsequent read operation of that same
 object.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ObjectIdentifiers = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns all of the \code{ObjectIdentifiers} to which a given policy is
-attached.
-}
-\section{Request syntax}{
-\preformatted{svc$list_policy_attachments(
-  DirectoryArn = "string",
-  PolicyReference = list(
-    Selector = "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
-)
-}
-}
+Returns all of the \code{ObjectIdentifiers} to which a given policy is attached.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_policy_attachments.html} for full documentation.
+}
 \keyword{internal}

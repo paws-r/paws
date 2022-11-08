@@ -4,7 +4,12 @@
 \alias{ec2_describe_regions}
 \title{Describes the Regions that are enabled for your account, or all Regions}
 \usage{
-ec2_describe_regions(Filters, RegionNames, DryRun, AllRegions)
+ec2_describe_regions(
+  Filters = NULL,
+  RegionNames = NULL,
+  DryRun = NULL,
+  AllRegions = NULL
+)
 }
 \arguments{
 \item{Filters}{The filters.
@@ -27,51 +32,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{AllRegions}{Indicates whether to display all Regions, including Regions that are
 disabled for your account.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Regions = list(
-    list(
-      Endpoint = "string",
-      RegionName = "string",
-      OptInStatus = "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes the Regions that are enabled for your account, or all Regions.
 
-For a list of the Regions supported by Amazon EC2, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region}{Regions and Endpoints}.
-
-For information about enabling and disabling Regions for your account,
-see \href{https://docs.aws.amazon.com/general/latest/gr/rande-manage.html}{Managing AWS Regions}
-in the \emph{AWS General Reference}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_regions(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  RegionNames = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  AllRegions = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes all the regions that are available to you.
-svc$describe_regions()
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_regions.html} for full documentation.
 }
 \keyword{internal}

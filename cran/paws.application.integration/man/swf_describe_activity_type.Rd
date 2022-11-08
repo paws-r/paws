@@ -13,75 +13,9 @@ swf_describe_activity_type(domain, activityType)
 identified by the \code{name} and \code{version} that were supplied when the
 activity was registered.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  typeInfo = list(
-    activityType = list(
-      name = "string",
-      version = "string"
-    ),
-    status = "REGISTERED"|"DEPRECATED",
-    description = "string",
-    creationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    deprecationDate = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  configuration = list(
-    defaultTaskStartToCloseTimeout = "string",
-    defaultTaskHeartbeatTimeout = "string",
-    defaultTaskList = list(
-      name = "string"
-    ),
-    defaultTaskPriority = "string",
-    defaultTaskScheduleToStartTimeout = "string",
-    defaultTaskScheduleToCloseTimeout = "string"
-  )
-)
-}
-}
 \description{
-Returns information about the specified activity type. This includes
-configuration settings provided when the type was registered and other
-general information about the type.
+Returns information about the specified activity type. This includes configuration settings provided when the type was registered and other general information about the type.
 
-\strong{Access Control}
-
-You can use IAM policies to control this action's access to Amazon SWF
-resources as follows:
-\itemize{
-\item Use a \code{Resource} element with the domain name to limit the action to
-only specified domains.
-\item Use an \code{Action} element to allow or deny permission to call this
-action.
-\item Constrain the following parameters by using a \code{Condition} element
-with the appropriate keys.
-\itemize{
-\item \code{activityType.name}: String constraint. The key is
-\code{swf:activityType.name}.
-\item \code{activityType.version}: String constraint. The key is
-\code{swf:activityType.version}.
+See \url{https://paws-r.github.io/docs/swf/describe_activity_type.html} for full documentation.
 }
-}
-
-If the caller doesn't have sufficient permissions to invoke the action,
-or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
-to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
-in the \emph{Amazon SWF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_activity_type(
-  domain = "string",
-  activityType = list(
-    name = "string",
-    version = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

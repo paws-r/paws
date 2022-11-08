@@ -5,8 +5,11 @@
 \title{Retrieves a list of website authorization providers associated with a
 specified fleet}
 \usage{
-worklink_list_website_authorization_providers(FleetArn, NextToken,
-  MaxResults)
+worklink_list_website_authorization_providers(
+  FleetArn,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
@@ -16,33 +19,9 @@ this operation. If this value is null, it retrieves the first page.}
 
 \item{MaxResults}{The maximum number of results to be included in the next page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WebsiteAuthorizationProviders = list(
-    list(
-      AuthorizationProviderId = "string",
-      AuthorizationProviderType = "SAML",
-      DomainName = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a list of website authorization providers associated with a
-specified fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$list_website_authorization_providers(
-  FleetArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Retrieves a list of website authorization providers associated with a specified fleet.
 
+See \url{https://paws-r.github.io/docs/worklink/list_website_authorization_providers.html} for full documentation.
+}
 \keyword{internal}

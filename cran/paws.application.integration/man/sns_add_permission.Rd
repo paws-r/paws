@@ -3,7 +3,7 @@
 \name{sns_add_permission}
 \alias{sns_add_permission}
 \title{Adds a statement to a topic's access control policy, granting access for
-the specified AWS accounts to the specified actions}
+the specified Amazon Web Services accounts to the specified actions}
 \usage{
 sns_add_permission(TopicArn, Label, AWSAccountId, ActionName)
 }
@@ -12,34 +12,18 @@ sns_add_permission(TopicArn, Label, AWSAccountId, ActionName)
 
 \item{Label}{[required] A unique identifier for the new policy statement.}
 
-\item{AWSAccountId}{[required] The AWS account IDs of the users (principals) who will be given access
-to the specified actions. The users must have AWS accounts, but do not
-need to be signed up for this service.}
+\item{AWSAccountId}{[required] The Amazon Web Services account IDs of the users (principals) who will
+be given access to the specified actions. The users must have Amazon Web
+Services account, but do not need to be signed up for this service.}
 
 \item{ActionName}{[required] The action you want to allow for the specified principal(s).
 
 Valid values: Any Amazon SNS action name, for example
 \code{\link[=sns_publish]{publish}}.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds a statement to a topic's access control policy, granting access for
-the specified AWS accounts to the specified actions.
-}
-\section{Request syntax}{
-\preformatted{svc$add_permission(
-  TopicArn = "string",
-  Label = "string",
-  AWSAccountId = list(
-    "string"
-  ),
-  ActionName = list(
-    "string"
-  )
-)
-}
-}
+Adds a statement to a topic's access control policy, granting access for the specified Amazon Web Services accounts to the specified actions.
 
+See \url{https://paws-r.github.io/docs/sns/add_permission.html} for full documentation.
+}
 \keyword{internal}

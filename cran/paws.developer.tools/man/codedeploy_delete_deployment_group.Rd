@@ -12,26 +12,9 @@ or AWS account.}
 
 \item{deploymentGroupName}{[required] The name of a deployment group for the specified application.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  hooksNotCleanedUp = list(
-    list(
-      name = "string",
-      hook = "string"
-    )
-  )
-)
-}
-}
 \description{
 Deletes a deployment group.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_deployment_group(
-  applicationName = "string",
-  deploymentGroupName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/delete_deployment_group.html} for full documentation.
+}
 \keyword{internal}

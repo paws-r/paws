@@ -4,7 +4,7 @@
 \alias{athena_list_databases}
 \title{Lists the databases in the specified data catalog}
 \usage{
-athena_list_databases(CatalogName, NextToken, MaxResults)
+athena_list_databases(CatalogName, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{CatalogName}{[required] The name of the data catalog that contains the databases to return.}
@@ -16,31 +16,9 @@ previous page call.}
 
 \item{MaxResults}{Specifies the maximum number of results to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DatabaseList = list(
-    list(
-      Name = "string",
-      Description = "string",
-      Parameters = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the databases in the specified data catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$list_databases(
-  CatalogName = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/athena/list_databases.html} for full documentation.
+}
 \keyword{internal}

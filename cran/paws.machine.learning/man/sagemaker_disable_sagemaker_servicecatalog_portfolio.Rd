@@ -6,16 +6,9 @@
 \usage{
 sagemaker_disable_sagemaker_servicecatalog_portfolio()
 }
-\value{
-An empty list.
-}
 \description{
-Disables using Service Catalog in SageMaker. Service Catalog is used to
-create SageMaker projects.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_sagemaker_servicecatalog_portfolio()
-}
-}
+Disables using Service Catalog in SageMaker. Service Catalog is used to create SageMaker projects.
 
+See \url{https://paws-r.github.io/docs/sagemaker/disable_sagemaker_servicecatalog_portfolio.html} for full documentation.
+}
 \keyword{internal}

@@ -6,8 +6,16 @@
 between detected items such as key-value pairs, tables, and selection
 elements}
 \usage{
-textract_start_document_analysis(DocumentLocation, FeatureTypes,
-  ClientRequestToken, JobTag, NotificationChannel, OutputConfig, KMSKeyId)
+textract_start_document_analysis(
+  DocumentLocation,
+  FeatureTypes,
+  ClientRequestToken = NULL,
+  JobTag = NULL,
+  NotificationChannel = NULL,
+  OutputConfig = NULL,
+  KMSKeyId = NULL,
+  QueriesConfig = NULL
+)
 }
 \arguments{
 \item{DocumentLocation}{[required] The location of the document to be processed.}
@@ -43,61 +51,12 @@ Key ID or Key Alias format. When a KMS key is provided, the KMS key will
 be used for server-side encryption of the objects in the customer
 bucket. When this parameter is not enabled, the result will be encrypted
 server side,using SSE-S3.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string"
-)
-}
+
+\item{QueriesConfig}{}
 }
 \description{
-Starts the asynchronous analysis of an input document for relationships
-between detected items such as key-value pairs, tables, and selection
-elements.
+Starts the asynchronous analysis of an input document for relationships between detected items such as key-value pairs, tables, and selection elements.
 
-\code{\link[=textract_start_document_analysis]{start_document_analysis}} can
-analyze text in documents that are in JPEG, PNG, and PDF format. The
-documents are stored in an Amazon S3 bucket. Use DocumentLocation to
-specify the bucket name and file name of the document.
-
-\code{\link[=textract_start_document_analysis]{start_document_analysis}} returns a
-job identifier (\code{JobId}) that you use to get the results of the
-operation. When text analysis is finished, Amazon Textract publishes a
-completion status to the Amazon Simple Notification Service (Amazon SNS)
-topic that you specify in \code{NotificationChannel}. To get the results of
-the text analysis operation, first check that the status value published
-to the Amazon SNS topic is \code{SUCCEEDED}. If so, call
-\code{\link[=textract_get_document_analysis]{get_document_analysis}}, and pass the
-job identifier (\code{JobId}) from the initial call to
-\code{\link[=textract_start_document_analysis]{start_document_analysis}}.
-
-For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html}{Document Text Analysis}.
+See \url{https://paws-r.github.io/docs/textract/start_document_analysis.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_document_analysis(
-  DocumentLocation = list(
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  FeatureTypes = list(
-    "TABLES"|"FORMS"
-  ),
-  ClientRequestToken = "string",
-  JobTag = "string",
-  NotificationChannel = list(
-    SNSTopicArn = "string",
-    RoleArn = "string"
-  ),
-  OutputConfig = list(
-    S3Bucket = "string",
-    S3Prefix = "string"
-  ),
-  KMSKeyId = "string"
-)
-}
-}
-
 \keyword{internal}

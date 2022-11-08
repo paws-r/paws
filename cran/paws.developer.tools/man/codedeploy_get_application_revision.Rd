@@ -12,79 +12,9 @@ codedeploy_get_application_revision(applicationName, revision)
 \item{revision}{[required] Information about the application revision to get, including type and
 location.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  applicationName = "string",
-  revision = list(
-    revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-    s3Location = list(
-      bucket = "string",
-      key = "string",
-      bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-      version = "string",
-      eTag = "string"
-    ),
-    gitHubLocation = list(
-      repository = "string",
-      commitId = "string"
-    ),
-    string = list(
-      content = "string",
-      sha256 = "string"
-    ),
-    appSpecContent = list(
-      content = "string",
-      sha256 = "string"
-    )
-  ),
-  revisionInfo = list(
-    description = "string",
-    deploymentGroups = list(
-      "string"
-    ),
-    firstUsedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastUsedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    registerTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Gets information about an application revision.
-}
-\section{Request syntax}{
-\preformatted{svc$get_application_revision(
-  applicationName = "string",
-  revision = list(
-    revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-    s3Location = list(
-      bucket = "string",
-      key = "string",
-      bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-      version = "string",
-      eTag = "string"
-    ),
-    gitHubLocation = list(
-      repository = "string",
-      commitId = "string"
-    ),
-    string = list(
-      content = "string",
-      sha256 = "string"
-    ),
-    appSpecContent = list(
-      content = "string",
-      sha256 = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/get_application_revision.html} for full documentation.
+}
 \keyword{internal}

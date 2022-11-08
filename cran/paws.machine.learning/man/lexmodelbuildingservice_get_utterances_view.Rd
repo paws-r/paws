@@ -5,8 +5,7 @@
 \title{Use the GetUtterancesView operation to get information about the
 utterances that your users have made to your bot}
 \usage{
-lexmodelbuildingservice_get_utterances_view(botName, botVersions,
-  statusType)
+lexmodelbuildingservice_get_utterances_view(botName, botVersions, statusType)
 }
 \arguments{
 \item{botName}{[required] The name of the bot for which utterance information should be returned.}
@@ -17,71 +16,9 @@ returned. The limit is 5 versions per request.}
 \item{statusType}{[required] To return utterances that were recognized and handled, use \code{Detected}.
 To return utterances that were not recognized, use \code{Missed}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  botName = "string",
-  utterances = list(
-    list(
-      botVersion = "string",
-      utterances = list(
-        list(
-          utteranceString = "string",
-          count = 123,
-          distinctUsers = 123,
-          firstUtteredDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          lastUtteredDate = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Use the
-\code{\link[=lexmodelbuildingservice_get_utterances_view]{get_utterances_view}}
-operation to get information about the utterances that your users have
-made to your bot. You can use this list to tune the utterances that your
-bot responds to.
+Use the \code{\link[=lexmodelbuildingservice_get_utterances_view]{get_utterances_view}} operation to get information about the utterances that your users have made to your bot. You can use this list to tune the utterances that your bot responds to.
 
-For example, say that you have created a bot to order flowers. After
-your users have used your bot for a while, use the
-\code{\link[=lexmodelbuildingservice_get_utterances_view]{get_utterances_view}}
-operation to see the requests that they have made and whether they have
-been successful. You might find that the utterance "I want flowers" is
-not being recognized. You could add this utterance to the \code{OrderFlowers}
-intent so that your bot recognizes that utterance.
-
-After you publish a new version of a bot, you can get information about
-the old version and the new so that you can compare the performance
-across the two versions.
-
-Utterance statistics are generated once a day. Data is available for the
-last 15 days. You can request information for up to 5 versions of your
-bot in each request. Amazon Lex returns the most frequent utterances
-received by the bot in the last 15 days. The response contains
-information about a maximum of 100 utterances for each version.
-
-If you set \code{childDirected} field to true when you created your bot, or
-if you opted out of participating in improving Amazon Lex, utterances
-are not available.
-
-This operation requires permissions for the \code{lex:GetUtterancesView}
-action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_utterances_view.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_utterances_view(
-  botName = "string",
-  botVersions = list(
-    "string"
-  ),
-  statusType = "Detected"|"Missed"
-)
-}
-}
-
 \keyword{internal}

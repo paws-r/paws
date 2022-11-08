@@ -4,7 +4,13 @@
 \alias{ec2_describe_subnets}
 \title{Describes one or more of your subnets}
 \usage{
-ec2_describe_subnets(Filters, SubnetIds, DryRun, NextToken, MaxResults)
+ec2_describe_subnets(
+  Filters = NULL,
+  SubnetIds = NULL,
+  DryRun = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -20,23 +26,27 @@ specify must exactly match the subnet's CIDR block for information
 to be returned for the subnet. You can also use \code{cidr} or
 \code{cidrBlock} as the filter names.
 \item \verb{default-for-az} - Indicates whether this is the default subnet for
-the Availability Zone. You can also use \code{defaultForAz} as the filter
-name.
+the Availability Zone (\code{true} | \code{false}). You can also use
+\code{defaultForAz} as the filter name.
 \item \code{ipv6-cidr-block-association.ipv6-cidr-block} - An IPv6 CIDR block
 associated with the subnet.
 \item \code{ipv6-cidr-block-association.association-id} - An association ID for
 an IPv6 CIDR block associated with the subnet.
 \item \code{ipv6-cidr-block-association.state} - The state of an IPv6 CIDR
 block associated with the subnet.
-\item \code{owner-id} - The ID of the AWS account that owns the subnet.
+\item \code{ipv6-native} - Indicates whether this is an IPv6 only subnet
+(\code{true} | \code{false}).
+\item \code{outpost-arn} - The Amazon Resource Name (ARN) of the Outpost.
+\item \code{owner-id} - The ID of the Amazon Web Services account that owns the
+subnet.
 \item \code{state} - The state of the subnet (\code{pending} | \code{available}).
 \item \code{subnet-arn} - The Amazon Resource Name (ARN) of the subnet.
 \item \code{subnet-id} - The ID of the subnet.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -58,87 +68,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Subnets = list(
-    list(
-      AvailabilityZone = "string",
-      AvailabilityZoneId = "string",
-      AvailableIpAddressCount = 123,
-      CidrBlock = "string",
-      DefaultForAz = TRUE|FALSE,
-      MapPublicIpOnLaunch = TRUE|FALSE,
-      MapCustomerOwnedIpOnLaunch = TRUE|FALSE,
-      CustomerOwnedIpv4Pool = "string",
-      State = "pending"|"available",
-      SubnetId = "string",
-      VpcId = "string",
-      OwnerId = "string",
-      AssignIpv6AddressOnCreation = TRUE|FALSE,
-      Ipv6CidrBlockAssociationSet = list(
-        list(
-          AssociationId = "string",
-          Ipv6CidrBlock = "string",
-          Ipv6CidrBlockState = list(
-            State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
-            StatusMessage = "string"
-          )
-        )
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      SubnetArn = "string",
-      OutpostArn = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes one or more of your subnets.
 
-For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{Your VPC and Subnets}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_subnets(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  SubnetIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the subnets for the specified VPC.
-svc$describe_subnets(
-  Filters = list(
-    list(
-      Name = "vpc-id",
-      Values = list(
-        "vpc-a01106c2"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_subnets.html} for full documentation.
 }
 \keyword{internal}

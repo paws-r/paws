@@ -5,7 +5,12 @@
 \title{Describes the specified Elastic IP addresses or all of your Elastic IP
 addresses}
 \usage{
-ec2_describe_addresses(Filters, PublicIps, AllocationIds, DryRun)
+ec2_describe_addresses(
+  Filters = NULL,
+  PublicIps = NULL,
+  AllocationIds = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{Filters}{One or more filters. Filter names and values are case-sensitive.
@@ -17,18 +22,20 @@ ec2_describe_addresses(Filters, PublicIps, AllocationIds, DryRun)
 \item \code{instance-id} - The ID of the instance the address is associated
 with, if any.
 \item \code{network-border-group} - A unique set of Availability Zones, Local
-Zones, or Wavelength Zones from where AWS advertises IP addresses.
+Zones, or Wavelength Zones from where Amazon Web Services advertises
+IP addresses.
 \item \code{network-interface-id} - [EC2-VPC] The ID of the network interface
 that the address is associated with, if any.
-\item \code{network-interface-owner-id} - The AWS account ID of the owner.
+\item \code{network-interface-owner-id} - The Amazon Web Services account ID of
+the owner.
 \item \code{private-ip-address} - [EC2-VPC] The private IP address associated
 with the Elastic IP address.
 \item \code{public-ip} - The Elastic IP address, or the carrier IP address.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -45,94 +52,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Addresses = list(
-    list(
-      InstanceId = "string",
-      PublicIp = "string",
-      AllocationId = "string",
-      AssociationId = "string",
-      Domain = "vpc"|"standard",
-      NetworkInterfaceId = "string",
-      NetworkInterfaceOwnerId = "string",
-      PrivateIpAddress = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      PublicIpv4Pool = "string",
-      NetworkBorderGroup = "string",
-      CustomerOwnedIp = "string",
-      CustomerOwnedIpv4Pool = "string",
-      CarrierIp = "string"
-    )
-  )
-)
-}
-}
 \description{
-Describes the specified Elastic IP addresses or all of your Elastic IP
-addresses.
+Describes the specified Elastic IP addresses or all of your Elastic IP addresses.
 
-An Elastic IP address is for use in either the EC2-Classic platform or
-in a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_addresses(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  PublicIps = list(
-    "string"
-  ),
-  AllocationIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes your Elastic IP addresses.
-svc$describe_addresses()
-
-# This example describes your Elastic IP addresses for use with instances
-# in a VPC.
-svc$describe_addresses(
-  Filters = list(
-    list(
-      Name = "domain",
-      Values = list(
-        "vpc"
-      )
-    )
-  )
-)
-
-# This example describes your Elastic IP addresses for use with instances
-# in EC2-Classic.
-svc$describe_addresses(
-  Filters = list(
-    list(
-      Name = "domain",
-      Values = list(
-        "standard"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_addresses.html} for full documentation.
 }
 \keyword{internal}

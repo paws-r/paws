@@ -10,25 +10,9 @@ pinpoint_list_tags_for_resource(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TagsModel = list(
-    tags = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves all the tags (keys and values) that are associated with an
-application, campaign, message template, or segment.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string"
-)
-}
-}
+Retrieves all the tags (keys and values) that are associated with an application, campaign, message template, or segment.
 
+See \url{https://paws-r.github.io/docs/pinpoint/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

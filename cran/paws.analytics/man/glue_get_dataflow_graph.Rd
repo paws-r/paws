@@ -4,45 +4,14 @@
 \alias{glue_get_dataflow_graph}
 \title{Transforms a Python script into a directed acyclic graph (DAG)}
 \usage{
-glue_get_dataflow_graph(PythonScript)
+glue_get_dataflow_graph(PythonScript = NULL)
 }
 \arguments{
 \item{PythonScript}{The Python script to transform.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DagNodes = list(
-    list(
-      Id = "string",
-      NodeType = "string",
-      Args = list(
-        list(
-          Name = "string",
-          Value = "string",
-          Param = TRUE|FALSE
-        )
-      ),
-      LineNumber = 123
-    )
-  ),
-  DagEdges = list(
-    list(
-      Source = "string",
-      Target = "string",
-      TargetParameter = "string"
-    )
-  )
-)
-}
-}
 \description{
 Transforms a Python script into a directed acyclic graph (DAG).
-}
-\section{Request syntax}{
-\preformatted{svc$get_dataflow_graph(
-  PythonScript = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_dataflow_graph.html} for full documentation.
+}
 \keyword{internal}

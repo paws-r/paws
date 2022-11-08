@@ -6,9 +6,13 @@
 a VPC subnet endpoint that cannot receive traffic for a custom routing
 accelerator}
 \usage{
-globalaccelerator_deny_custom_routing_traffic(EndpointGroupArn,
-  EndpointId, DestinationAddresses, DestinationPorts,
-  DenyAllTrafficToEndpoint)
+globalaccelerator_deny_custom_routing_traffic(
+  EndpointGroupArn,
+  EndpointId,
+  DestinationAddresses = NULL,
+  DestinationPorts = NULL,
+  DenyAllTrafficToEndpoint = NULL
+)
 }
 \arguments{
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group.}
@@ -40,34 +44,9 @@ group.
 
 The default value is FALSE.}
 }
-\value{
-An empty list.
-}
 \description{
-Specify the Amazon EC2 instance (destination) IP addresses and ports for
-a VPC subnet endpoint that cannot receive traffic for a custom routing
-accelerator. You can deny traffic to all destinations in the VPC
-endpoint, or deny traffic to a specified list of destination IP
-addresses and ports. Note that you cannot specify IP addresses or ports
-outside of the range that you configured for the endpoint group.
+Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that cannot receive traffic for a custom routing accelerator. You can deny traffic to all destinations in the VPC endpoint, or deny traffic to a specified list of destination IP addresses and ports. Note that you cannot specify IP addresses or ports outside of the range that you configured for the endpoint group.
 
-After you make changes, you can verify that the updates are complete by
-checking the status of your accelerator: the status changes from
-IN_PROGRESS to DEPLOYED.
+See \url{https://paws-r.github.io/docs/globalaccelerator/deny_custom_routing_traffic.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$deny_custom_routing_traffic(
-  EndpointGroupArn = "string",
-  EndpointId = "string",
-  DestinationAddresses = list(
-    "string"
-  ),
-  DestinationPorts = list(
-    123
-  ),
-  DenyAllTrafficToEndpoint = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

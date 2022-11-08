@@ -7,37 +7,12 @@ NULL
 #' to enable cross-Region redirection
 #'
 #' @description
-#' Associates the specified connection alias with the specified directory
-#' to enable cross-Region redirection. For more information, see
-#' [Cross-Region Redirection for Amazon
-#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
-#' 
-#' Before performing this operation, call
-#' [DescribeConnectionAliases](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html)
-#' to make sure that the current state of the connection alias is
-#' `CREATED`.
+#' Associates the specified connection alias with the specified directory to enable cross-Region redirection. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
-#' @usage
-#' workspaces_associate_connection_alias(AliasId, ResourceId)
+#' See [https://paws-r.github.io/docs/workspaces/associate_connection_alias.html](https://paws-r.github.io/docs/workspaces/associate_connection_alias.html) for full documentation.
 #'
 #' @param AliasId &#91;required&#93; The identifier of the connection alias.
 #' @param ResourceId &#91;required&#93; The identifier of the directory to associate the connection alias with.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConnectionIdentifier = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_connection_alias(
-#'   AliasId = "string",
-#'   ResourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -63,27 +38,12 @@ workspaces_associate_connection_alias <- function(AliasId, ResourceId) {
 #' directory
 #'
 #' @description
-#' Associates the specified IP access control group with the specified
-#' directory.
+#' Associates the specified IP access control group with the specified directory.
 #'
-#' @usage
-#' workspaces_associate_ip_groups(DirectoryId, GroupIds)
+#' See [https://paws-r.github.io/docs/workspaces/associate_ip_groups.html](https://paws-r.github.io/docs/workspaces/associate_ip_groups.html) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param GroupIds &#91;required&#93; The identifiers of one or more IP access control groups.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_ip_groups(
-#'   DirectoryId = "string",
-#'   GroupIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -109,31 +69,11 @@ workspaces_associate_ip_groups <- function(DirectoryId, GroupIds) {
 #'
 #' @description
 #' Adds one or more rules to the specified IP access control group.
-#' 
-#' This action gives users permission to access their WorkSpaces from the
-#' CIDR address ranges specified in the rules.
 #'
-#' @usage
-#' workspaces_authorize_ip_rules(GroupId, UserRules)
+#' See [https://paws-r.github.io/docs/workspaces/authorize_ip_rules.html](https://paws-r.github.io/docs/workspaces/authorize_ip_rules.html) for full documentation.
 #'
 #' @param GroupId &#91;required&#93; The identifier of the group.
 #' @param UserRules &#91;required&#93; The rules to add to the group.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$authorize_ip_rules(
-#'   GroupId = "string",
-#'   UserRules = list(
-#'     list(
-#'       ipRule = "string",
-#'       ruleDesc = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -159,58 +99,15 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #' Region
 #'
 #' @description
-#' Copies the specified image from the specified Region to the current
-#' Region. For more information about copying images, see [Copy a Custom
-#' WorkSpaces
-#' Image](https://docs.aws.amazon.com/workspaces/latest/adminguide/copy-custom-image.html).
-#' 
-#' In the China (Ningxia) Region, you can copy images only within the same
-#' Region.
-#' 
-#' In the AWS GovCloud (US-West) Region, to copy images to and from other
-#' AWS Regions, contact AWS Support.
-#' 
-#' Before copying a shared image, be sure to verify that it has been shared
-#' from the correct AWS account. To determine if an image has been shared
-#' and to see the AWS account ID that owns an image, use the
-#' [DescribeWorkSpaceImages](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImages.html)
-#' and
-#' [`describe_workspace_image_permissions`][workspaces_describe_workspace_image_permissions]
-#' API operations.
+#' Copies the specified image from the specified Region to the current Region. For more information about copying images, see [Copy a Custom WorkSpaces Image](https://docs.aws.amazon.com/workspaces/latest/adminguide/copy-custom-image.html).
 #'
-#' @usage
-#' workspaces_copy_workspace_image(Name, Description, SourceImageId,
-#'   SourceRegion, Tags)
+#' See [https://paws-r.github.io/docs/workspaces/copy_workspace_image.html](https://paws-r.github.io/docs/workspaces/copy_workspace_image.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the image.
 #' @param Description A description of the image.
 #' @param SourceImageId &#91;required&#93; The identifier of the source image.
 #' @param SourceRegion &#91;required&#93; The identifier of the source Region.
 #' @param Tags The tags for the image.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ImageId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_workspace_image(
-#'   Name = "string",
-#'   Description = "string",
-#'   SourceImageId = "string",
-#'   SourceRegion = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -232,48 +129,54 @@ workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImag
 }
 .workspaces$operations$copy_workspace_image <- workspaces_copy_workspace_image
 
+#' Creates a client-add-in for Amazon Connect within a directory
+#'
+#' @description
+#' Creates a client-add-in for Amazon Connect within a directory. You can create only one Amazon Connect client add-in within a directory.
+#'
+#' See [https://paws-r.github.io/docs/workspaces/create_connect_client_add_in.html](https://paws-r.github.io/docs/workspaces/create_connect_client_add_in.html) for full documentation.
+#'
+#' @param ResourceId &#91;required&#93; The directory identifier for which to configure the client add-in.
+#' @param Name &#91;required&#93; The name of the client add-in.
+#' @param URL &#91;required&#93; The endpoint URL of the Amazon Connect client add-in.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_connect_client_add_in
+workspaces_create_connect_client_add_in <- function(ResourceId, Name, URL) {
+  op <- new_operation(
+    name = "CreateConnectClientAddIn",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$create_connect_client_add_in_input(ResourceId = ResourceId, Name = Name, URL = URL)
+  output <- .workspaces$create_connect_client_add_in_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_connect_client_add_in <- workspaces_create_connect_client_add_in
+
 #' Creates the specified connection alias for use with cross-Region
 #' redirection
 #'
 #' @description
-#' Creates the specified connection alias for use with cross-Region
-#' redirection. For more information, see [Cross-Region Redirection for
-#' Amazon
-#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
+#' Creates the specified connection alias for use with cross-Region redirection. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
-#' @usage
-#' workspaces_create_connection_alias(ConnectionString, Tags)
+#' See [https://paws-r.github.io/docs/workspaces/create_connection_alias.html](https://paws-r.github.io/docs/workspaces/create_connection_alias.html) for full documentation.
 #'
 #' @param ConnectionString &#91;required&#93; A connection string in the form of a fully qualified domain name (FQDN),
 #' such as `www.example.com`.
 #' 
 #' After you create a connection string, it is always associated to your
-#' AWS account. You cannot recreate the same connection string with a
-#' different account, even if you delete all instances of it from the
-#' original account. The connection string is globally reserved for your
-#' account.
+#' Amazon Web Services account. You cannot recreate the same connection
+#' string with a different account, even if you delete all instances of it
+#' from the original account. The connection string is globally reserved
+#' for your account.
 #' @param Tags The tags to associate with the connection alias.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AliasId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_connection_alias(
-#'   ConnectionString = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -299,56 +202,13 @@ workspaces_create_connection_alias <- function(ConnectionString, Tags = NULL) {
 #'
 #' @description
 #' Creates an IP access control group.
-#' 
-#' An IP access control group provides you with the ability to control the
-#' IP addresses from which users are allowed to access their WorkSpaces. To
-#' specify the CIDR address ranges, add rules to your IP access control
-#' group and then associate the group with your directory. You can add
-#' rules when you create the group or at any time using
-#' [`authorize_ip_rules`][workspaces_authorize_ip_rules].
-#' 
-#' There is a default IP access control group associated with your
-#' directory. If you don't associate an IP access control group with your
-#' directory, the default group is used. The default group includes a
-#' default rule that allows users to access their WorkSpaces from anywhere.
-#' You cannot modify the default IP access control group for your
-#' directory.
 #'
-#' @usage
-#' workspaces_create_ip_group(GroupName, GroupDesc, UserRules, Tags)
+#' See [https://paws-r.github.io/docs/workspaces/create_ip_group.html](https://paws-r.github.io/docs/workspaces/create_ip_group.html) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group.
 #' @param GroupDesc The description of the group.
 #' @param UserRules The rules to add to the group.
 #' @param Tags The tags. Each WorkSpaces resource can have a maximum of 50 tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GroupId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_ip_group(
-#'   GroupName = "string",
-#'   GroupDesc = "string",
-#'   UserRules = list(
-#'     list(
-#'       ipRule = "string",
-#'       ruleDesc = "string"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -375,29 +235,12 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
 #' @description
 #' Creates the specified tags for the specified WorkSpaces resource.
 #'
-#' @usage
-#' workspaces_create_tags(ResourceId, Tags)
+#' See [https://paws-r.github.io/docs/workspaces/create_tags.html](https://paws-r.github.io/docs/workspaces/create_tags.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the WorkSpaces resource. The supported resource types
 #' are WorkSpaces, registered directories, images, custom bundles, IP
 #' access control groups, and connection aliases.
 #' @param Tags &#91;required&#93; The tags. Each WorkSpaces resource can have a maximum of 50 tags.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_tags(
-#'   ResourceId = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -419,111 +262,124 @@ workspaces_create_tags <- function(ResourceId, Tags) {
 }
 .workspaces$operations$create_tags <- workspaces_create_tags
 
+#' Creates a new updated WorkSpace image based on the specified source
+#' image
+#'
+#' @description
+#' Creates a new updated WorkSpace image based on the specified source image. The new updated WorkSpace image has the latest drivers and other updates required by the Amazon WorkSpaces components.
+#'
+#' See [https://paws-r.github.io/docs/workspaces/create_updated_workspace_image.html](https://paws-r.github.io/docs/workspaces/create_updated_workspace_image.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the new updated WorkSpace image.
+#' @param Description &#91;required&#93; A description of whether updates for the WorkSpace image are available.
+#' @param SourceImageId &#91;required&#93; The identifier of the source WorkSpace image.
+#' @param Tags The tags that you want to add to the new updated WorkSpace image.
+#' 
+#' To add tags at the same time when you're creating the updated image, you
+#' must create an IAM policy that grants your IAM user permissions to use
+#' `workspaces:CreateTags`.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_updated_workspace_image
+workspaces_create_updated_workspace_image <- function(Name, Description, SourceImageId, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateUpdatedWorkspaceImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$create_updated_workspace_image_input(Name = Name, Description = Description, SourceImageId = SourceImageId, Tags = Tags)
+  output <- .workspaces$create_updated_workspace_image_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_updated_workspace_image <- workspaces_create_updated_workspace_image
+
+#' Creates the specified WorkSpace bundle
+#'
+#' @description
+#' Creates the specified WorkSpace bundle. For more information about creating WorkSpace bundles, see [Create a Custom WorkSpaces Image and Bundle](https://docs.aws.amazon.com/workspaces/latest/adminguide/create-custom-bundle.html).
+#'
+#' See [https://paws-r.github.io/docs/workspaces/create_workspace_bundle.html](https://paws-r.github.io/docs/workspaces/create_workspace_bundle.html) for full documentation.
+#'
+#' @param BundleName &#91;required&#93; The name of the bundle.
+#' @param BundleDescription &#91;required&#93; The description of the bundle.
+#' @param ImageId &#91;required&#93; The identifier of the image that is used to create the bundle.
+#' @param ComputeType &#91;required&#93; 
+#' @param UserStorage &#91;required&#93; 
+#' @param RootStorage 
+#' @param Tags The tags associated with the bundle.
+#' 
+#' To add tags at the same time when you're creating the bundle, you must
+#' create an IAM policy that grants your IAM user permissions to use
+#' `workspaces:CreateTags`.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_workspace_bundle
+workspaces_create_workspace_bundle <- function(BundleName, BundleDescription, ImageId, ComputeType, UserStorage, RootStorage = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateWorkspaceBundle",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$create_workspace_bundle_input(BundleName = BundleName, BundleDescription = BundleDescription, ImageId = ImageId, ComputeType = ComputeType, UserStorage = UserStorage, RootStorage = RootStorage, Tags = Tags)
+  output <- .workspaces$create_workspace_bundle_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_workspace_bundle <- workspaces_create_workspace_bundle
+
+#' Creates a new WorkSpace image from an existing WorkSpace
+#'
+#' @description
+#' Creates a new WorkSpace image from an existing WorkSpace.
+#'
+#' See [https://paws-r.github.io/docs/workspaces/create_workspace_image.html](https://paws-r.github.io/docs/workspaces/create_workspace_image.html) for full documentation.
+#'
+#' @param Name &#91;required&#93; The name of the new WorkSpace image.
+#' @param Description &#91;required&#93; The description of the new WorkSpace image.
+#' @param WorkspaceId &#91;required&#93; The identifier of the source WorkSpace
+#' @param Tags The tags that you want to add to the new WorkSpace image. To add tags
+#' when you're creating the image, you must create an IAM policy that
+#' grants your IAM user permission to use `workspaces:CreateTags`.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_workspace_image
+workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateWorkspaceImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$create_workspace_image_input(Name = Name, Description = Description, WorkspaceId = WorkspaceId, Tags = Tags)
+  output <- .workspaces$create_workspace_image_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_workspace_image <- workspaces_create_workspace_image
+
 #' Creates one or more WorkSpaces
 #'
 #' @description
 #' Creates one or more WorkSpaces.
-#' 
-#' This operation is asynchronous and returns before the WorkSpaces are
-#' created.
 #'
-#' @usage
-#' workspaces_create_workspaces(Workspaces)
+#' See [https://paws-r.github.io/docs/workspaces/create_workspaces.html](https://paws-r.github.io/docs/workspaces/create_workspaces.html) for full documentation.
 #'
 #' @param Workspaces &#91;required&#93; The WorkSpaces to create. You can specify up to 25 WorkSpaces.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedRequests = list(
-#'     list(
-#'       WorkspaceRequest = list(
-#'         DirectoryId = "string",
-#'         UserName = "string",
-#'         BundleId = "string",
-#'         VolumeEncryptionKey = "string",
-#'         UserVolumeEncryptionEnabled = TRUE|FALSE,
-#'         RootVolumeEncryptionEnabled = TRUE|FALSE,
-#'         WorkspaceProperties = list(
-#'           RunningMode = "AUTO_STOP"|"ALWAYS_ON",
-#'           RunningModeAutoStopTimeoutInMinutes = 123,
-#'           RootVolumeSizeGib = 123,
-#'           UserVolumeSizeGib = 123,
-#'           ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
-#'         ),
-#'         Tags = list(
-#'           list(
-#'             Key = "string",
-#'             Value = "string"
-#'           )
-#'         )
-#'       ),
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   ),
-#'   PendingRequests = list(
-#'     list(
-#'       WorkspaceId = "string",
-#'       DirectoryId = "string",
-#'       UserName = "string",
-#'       IpAddress = "string",
-#'       State = "PENDING"|"AVAILABLE"|"IMPAIRED"|"UNHEALTHY"|"REBOOTING"|"STARTING"|"REBUILDING"|"RESTORING"|"MAINTENANCE"|"ADMIN_MAINTENANCE"|"TERMINATING"|"TERMINATED"|"SUSPENDED"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR",
-#'       BundleId = "string",
-#'       SubnetId = "string",
-#'       ErrorMessage = "string",
-#'       ErrorCode = "string",
-#'       ComputerName = "string",
-#'       VolumeEncryptionKey = "string",
-#'       UserVolumeEncryptionEnabled = TRUE|FALSE,
-#'       RootVolumeEncryptionEnabled = TRUE|FALSE,
-#'       WorkspaceProperties = list(
-#'         RunningMode = "AUTO_STOP"|"ALWAYS_ON",
-#'         RunningModeAutoStopTimeoutInMinutes = 123,
-#'         RootVolumeSizeGib = 123,
-#'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
-#'       ),
-#'       ModificationStates = list(
-#'         list(
-#'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE",
-#'           State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_workspaces(
-#'   Workspaces = list(
-#'     list(
-#'       DirectoryId = "string",
-#'       UserName = "string",
-#'       BundleId = "string",
-#'       VolumeEncryptionKey = "string",
-#'       UserVolumeEncryptionEnabled = TRUE|FALSE,
-#'       RootVolumeEncryptionEnabled = TRUE|FALSE,
-#'       WorkspaceProperties = list(
-#'         RunningMode = "AUTO_STOP"|"ALWAYS_ON",
-#'         RunningModeAutoStopTimeoutInMinutes = 123,
-#'         RootVolumeSizeGib = 123,
-#'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
-#'       ),
-#'       Tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -545,40 +401,76 @@ workspaces_create_workspaces <- function(Workspaces) {
 }
 .workspaces$operations$create_workspaces <- workspaces_create_workspaces
 
+#' Deletes customized client branding
+#'
+#' @description
+#' Deletes customized client branding. Client branding allows you to customize your WorkSpace's client login portal. You can tailor your login portal company logo, the support email address, support link, link to reset password, and a custom message for users trying to sign in.
+#'
+#' See [https://paws-r.github.io/docs/workspaces/delete_client_branding.html](https://paws-r.github.io/docs/workspaces/delete_client_branding.html) for full documentation.
+#'
+#' @param ResourceId &#91;required&#93; The directory identifier of the WorkSpace for which you want to delete
+#' client branding.
+#' @param Platforms &#91;required&#93; The device type for which you want to delete client branding.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_delete_client_branding
+workspaces_delete_client_branding <- function(ResourceId, Platforms) {
+  op <- new_operation(
+    name = "DeleteClientBranding",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$delete_client_branding_input(ResourceId = ResourceId, Platforms = Platforms)
+  output <- .workspaces$delete_client_branding_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$delete_client_branding <- workspaces_delete_client_branding
+
+#' Deletes a client-add-in for Amazon Connect that is configured within a
+#' directory
+#'
+#' @description
+#' Deletes a client-add-in for Amazon Connect that is configured within a directory.
+#'
+#' See [https://paws-r.github.io/docs/workspaces/delete_connect_client_add_in.html](https://paws-r.github.io/docs/workspaces/delete_connect_client_add_in.html) for full documentation.
+#'
+#' @param AddInId &#91;required&#93; The identifier of the client add-in to delete.
+#' @param ResourceId &#91;required&#93; The directory identifier for which the client add-in is configured.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_delete_connect_client_add_in
+workspaces_delete_connect_client_add_in <- function(AddInId, ResourceId) {
+  op <- new_operation(
+    name = "DeleteConnectClientAddIn",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$delete_connect_client_add_in_input(AddInId = AddInId, ResourceId = ResourceId)
+  output <- .workspaces$delete_connect_client_add_in_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$delete_connect_client_add_in <- workspaces_delete_connect_client_add_in
+
 #' Deletes the specified connection alias
 #'
 #' @description
-#' Deletes the specified connection alias. For more information, see
-#' [Cross-Region Redirection for Amazon
-#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
-#' 
-#' **If you will no longer be using a fully qualified domain name (FQDN) as
-#' the registration code for your WorkSpaces users, you must take certain
-#' precautions to prevent potential security issues.** For more
-#' information, see [Security Considerations if You Stop Using Cross-Region
-#' Redirection](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html#cross-region-redirection-security-considerations).
-#' 
-#' To delete a connection alias that has been shared, the shared account
-#' must first disassociate the connection alias from any directories it has
-#' been associated with. Then you must unshare the connection alias from
-#' the account it has been shared with. You can delete a connection alias
-#' only after it is no longer shared with any accounts or associated with
-#' any directories.
+#' Deletes the specified connection alias. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
-#' @usage
-#' workspaces_delete_connection_alias(AliasId)
+#' See [https://paws-r.github.io/docs/workspaces/delete_connection_alias.html](https://paws-r.github.io/docs/workspaces/delete_connection_alias.html) for full documentation.
 #'
 #' @param AliasId &#91;required&#93; The identifier of the connection alias to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_connection_alias(
-#'   AliasId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -604,24 +496,10 @@ workspaces_delete_connection_alias <- function(AliasId) {
 #'
 #' @description
 #' Deletes the specified IP access control group.
-#' 
-#' You cannot delete an IP access control group that is associated with a
-#' directory.
 #'
-#' @usage
-#' workspaces_delete_ip_group(GroupId)
+#' See [https://paws-r.github.io/docs/workspaces/delete_ip_group.html](https://paws-r.github.io/docs/workspaces/delete_ip_group.html) for full documentation.
 #'
 #' @param GroupId &#91;required&#93; The identifier of the IP access control group.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_ip_group(
-#'   GroupId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -648,26 +526,12 @@ workspaces_delete_ip_group <- function(GroupId) {
 #' @description
 #' Deletes the specified tags from the specified WorkSpaces resource.
 #'
-#' @usage
-#' workspaces_delete_tags(ResourceId, TagKeys)
+#' See [https://paws-r.github.io/docs/workspaces/delete_tags.html](https://paws-r.github.io/docs/workspaces/delete_tags.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the WorkSpaces resource. The supported resource types
 #' are WorkSpaces, registered directories, images, custom bundles, IP
 #' access control groups, and connection aliases.
 #' @param TagKeys &#91;required&#93; The tag keys.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_tags(
-#'   ResourceId = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -689,27 +553,43 @@ workspaces_delete_tags <- function(ResourceId, TagKeys) {
 }
 .workspaces$operations$delete_tags <- workspaces_delete_tags
 
+#' Deletes the specified WorkSpace bundle
+#'
+#' @description
+#' Deletes the specified WorkSpace bundle. For more information about deleting WorkSpace bundles, see [Delete a Custom WorkSpaces Bundle or Image](https://docs.aws.amazon.com/workspaces/latest/adminguide/delete_bundle.html).
+#'
+#' See [https://paws-r.github.io/docs/workspaces/delete_workspace_bundle.html](https://paws-r.github.io/docs/workspaces/delete_workspace_bundle.html) for full documentation.
+#'
+#' @param BundleId The identifier of the bundle.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_delete_workspace_bundle
+workspaces_delete_workspace_bundle <- function(BundleId = NULL) {
+  op <- new_operation(
+    name = "DeleteWorkspaceBundle",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$delete_workspace_bundle_input(BundleId = BundleId)
+  output <- .workspaces$delete_workspace_bundle_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$delete_workspace_bundle <- workspaces_delete_workspace_bundle
+
 #' Deletes the specified image from your account
 #'
 #' @description
-#' Deletes the specified image from your account. To delete an image, you
-#' must first delete any bundles that are associated with the image and
-#' unshare the image if it is shared with other accounts.
+#' Deletes the specified image from your account. To delete an image, you must first delete any bundles that are associated with the image and unshare the image if it is shared with other accounts.
 #'
-#' @usage
-#' workspaces_delete_workspace_image(ImageId)
+#' See [https://paws-r.github.io/docs/workspaces/delete_workspace_image.html](https://paws-r.github.io/docs/workspaces/delete_workspace_image.html) for full documentation.
 #'
 #' @param ImageId &#91;required&#93; The identifier of the image.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_workspace_image(
-#'   ImageId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -734,40 +614,13 @@ workspaces_delete_workspace_image <- function(ImageId) {
 #' Deregisters the specified directory
 #'
 #' @description
-#' Deregisters the specified directory. This operation is asynchronous and
-#' returns before the WorkSpace directory is deregistered. If any
-#' WorkSpaces are registered to this directory, you must remove them before
-#' you can deregister the directory.
-#' 
-#' Simple AD and AD Connector are made available to you free of charge to
-#' use with WorkSpaces. If there are no WorkSpaces being used with your
-#' Simple AD or AD Connector directory for 30 consecutive days, this
-#' directory will be automatically deregistered for use with Amazon
-#' WorkSpaces, and you will be charged for this directory as per the [AWS
-#' Directory Services pricing
-#' terms](https://aws.amazon.com/directoryservice/pricing/).
-#' 
-#' To delete empty directories, see [Delete the Directory for Your
-#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/delete-workspaces-directory.html).
-#' If you delete your Simple AD or AD Connector directory, you can always
-#' create a new one when you want to start using WorkSpaces again.
+#' Deregisters the specified directory. This operation is asynchronous and returns before the WorkSpace directory is deregistered. If any WorkSpaces are registered to this directory, you must remove them before you can deregister the directory.
 #'
-#' @usage
-#' workspaces_deregister_workspace_directory(DirectoryId)
+#' See [https://paws-r.github.io/docs/workspaces/deregister_workspace_directory.html](https://paws-r.github.io/docs/workspaces/deregister_workspace_directory.html) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory. If any WorkSpaces are registered to
 #' this directory, you must remove them before you deregister the
 #' directory, or you will receive an OperationNotSupportedException error.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_workspace_directory(
-#'   DirectoryId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -793,25 +646,9 @@ workspaces_deregister_workspace_directory <- function(DirectoryId) {
 #' License (BYOL) for the specified account
 #'
 #' @description
-#' Retrieves a list that describes the configuration of Bring Your Own
-#' License (BYOL) for the specified account.
+#' Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for the specified account.
 #'
-#' @usage
-#' workspaces_describe_account()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DedicatedTenancySupport = "ENABLED"|"DISABLED",
-#'   DedicatedTenancyManagementCidrRange = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_account()
-#' ```
+#' See [https://paws-r.github.io/docs/workspaces/describe_account.html](https://paws-r.github.io/docs/workspaces/describe_account.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -837,41 +674,12 @@ workspaces_describe_account <- function() {
 #' Bring Your Own License (BYOL) for the specified account
 #'
 #' @description
-#' Retrieves a list that describes modifications to the configuration of
-#' Bring Your Own License (BYOL) for the specified account.
+#' Retrieves a list that describes modifications to the configuration of Bring Your Own License (BYOL) for the specified account.
 #'
-#' @usage
-#' workspaces_describe_account_modifications(NextToken)
+#' See [https://paws-r.github.io/docs/workspaces/describe_account_modifications.html](https://paws-r.github.io/docs/workspaces/describe_account_modifications.html) for full documentation.
 #'
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccountModifications = list(
-#'     list(
-#'       ModificationState = "PENDING"|"COMPLETED"|"FAILED",
-#'       DedicatedTenancySupport = "ENABLED"|"DISABLED",
-#'       DedicatedTenancyManagementCidrRange = "string",
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_account_modifications(
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -893,41 +701,45 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
 }
 .workspaces$operations$describe_account_modifications <- workspaces_describe_account_modifications
 
+#' Describes the specified client branding
+#'
+#' @description
+#' Describes the specified client branding. Client branding allows you to customize the log in page of various device types for your users. You can add your company logo, the support email address, support link, link to reset password, and a custom message for users trying to sign in.
+#'
+#' See [https://paws-r.github.io/docs/workspaces/describe_client_branding.html](https://paws-r.github.io/docs/workspaces/describe_client_branding.html) for full documentation.
+#'
+#' @param ResourceId &#91;required&#93; The directory identifier of the WorkSpace for which you want to view
+#' client branding information.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_client_branding
+workspaces_describe_client_branding <- function(ResourceId) {
+  op <- new_operation(
+    name = "DescribeClientBranding",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_client_branding_input(ResourceId = ResourceId)
+  output <- .workspaces$describe_client_branding_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_client_branding <- workspaces_describe_client_branding
+
 #' Retrieves a list that describes one or more specified Amazon WorkSpaces
 #' clients
 #'
 #' @description
-#' Retrieves a list that describes one or more specified Amazon WorkSpaces
-#' clients.
+#' Retrieves a list that describes one or more specified Amazon WorkSpaces clients.
 #'
-#' @usage
-#' workspaces_describe_client_properties(ResourceIds)
+#' See [https://paws-r.github.io/docs/workspaces/describe_client_properties.html](https://paws-r.github.io/docs/workspaces/describe_client_properties.html) for full documentation.
 #'
 #' @param ResourceIds &#91;required&#93; The resource identifier, in the form of directory IDs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ClientPropertiesList = list(
-#'     list(
-#'       ResourceId = "string",
-#'       ClientProperties = list(
-#'         ReconnectEnabled = "ENABLED"|"DISABLED"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_client_properties(
-#'   ResourceIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -949,47 +761,51 @@ workspaces_describe_client_properties <- function(ResourceIds) {
 }
 .workspaces$operations$describe_client_properties <- workspaces_describe_client_properties
 
-#' Describes the permissions that the owner of a connection alias has
-#' granted to another AWS account for the specified connection alias
+#' Retrieves a list of Amazon Connect client add-ins that have been created
 #'
 #' @description
-#' Describes the permissions that the owner of a connection alias has
-#' granted to another AWS account for the specified connection alias. For
-#' more information, see [Cross-Region Redirection for Amazon
-#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
+#' Retrieves a list of Amazon Connect client add-ins that have been created.
 #'
-#' @usage
-#' workspaces_describe_connection_alias_permissions(AliasId, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/workspaces/describe_connect_client_add_ins.html](https://paws-r.github.io/docs/workspaces/describe_connect_client_add_ins.html) for full documentation.
+#'
+#' @param ResourceId &#91;required&#93; The directory identifier for which the client add-in is configured.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated,
+#' provide this token to receive the next set of results.
+#' @param MaxResults The maximum number of items to return.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_connect_client_add_ins
+workspaces_describe_connect_client_add_ins <- function(ResourceId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeConnectClientAddIns",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_connect_client_add_ins_input(ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .workspaces$describe_connect_client_add_ins_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_connect_client_add_ins <- workspaces_describe_connect_client_add_ins
+
+#' Describes the permissions that the owner of a connection alias has
+#' granted to another Amazon Web Services account for the specified
+#' connection alias
+#'
+#' @description
+#' Describes the permissions that the owner of a connection alias has granted to another Amazon Web Services account for the specified connection alias. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
+#'
+#' See [https://paws-r.github.io/docs/workspaces/describe_connection_alias_permissions.html](https://paws-r.github.io/docs/workspaces/describe_connection_alias_permissions.html) for full documentation.
 #'
 #' @param AliasId &#91;required&#93; The identifier of the connection alias.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #' @param MaxResults The maximum number of results to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AliasId = "string",
-#'   ConnectionAliasPermissions = list(
-#'     list(
-#'       SharedAccountId = "string",
-#'       AllowAssociation = TRUE|FALSE
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_connection_alias_permissions(
-#'   AliasId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1015,56 +831,15 @@ workspaces_describe_connection_alias_permissions <- function(AliasId, NextToken 
 #' cross-Region redirection
 #'
 #' @description
-#' Retrieves a list that describes the connection aliases used for
-#' cross-Region redirection. For more information, see [Cross-Region
-#' Redirection for Amazon
-#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
+#' Retrieves a list that describes the connection aliases used for cross-Region redirection. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
-#' @usage
-#' workspaces_describe_connection_aliases(AliasIds, ResourceId, Limit,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/workspaces/describe_connection_aliases.html](https://paws-r.github.io/docs/workspaces/describe_connection_aliases.html) for full documentation.
 #'
 #' @param AliasIds The identifiers of the connection aliases to describe.
 #' @param ResourceId The identifier of the directory associated with the connection alias.
 #' @param Limit The maximum number of connection aliases to return.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConnectionAliases = list(
-#'     list(
-#'       ConnectionString = "string",
-#'       AliasId = "string",
-#'       State = "CREATING"|"CREATED"|"DELETING",
-#'       OwnerAccountId = "string",
-#'       Associations = list(
-#'         list(
-#'           AssociationStatus = "NOT_ASSOCIATED"|"ASSOCIATED_WITH_OWNER_ACCOUNT"|"ASSOCIATED_WITH_SHARED_ACCOUNT"|"PENDING_ASSOCIATION"|"PENDING_DISASSOCIATION",
-#'           AssociatedAccountId = "string",
-#'           ResourceId = "string",
-#'           ConnectionIdentifier = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_connection_aliases(
-#'   AliasIds = list(
-#'     "string"
-#'   ),
-#'   ResourceId = "string",
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1091,45 +866,12 @@ workspaces_describe_connection_aliases <- function(AliasIds = NULL, ResourceId =
 #' @description
 #' Describes one or more of your IP access control groups.
 #'
-#' @usage
-#' workspaces_describe_ip_groups(GroupIds, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/workspaces/describe_ip_groups.html](https://paws-r.github.io/docs/workspaces/describe_ip_groups.html) for full documentation.
 #'
 #' @param GroupIds The identifiers of one or more IP access control groups.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #' @param MaxResults The maximum number of items to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Result = list(
-#'     list(
-#'       groupId = "string",
-#'       groupName = "string",
-#'       groupDesc = "string",
-#'       userRules = list(
-#'         list(
-#'           ipRule = "string",
-#'           ruleDesc = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_ip_groups(
-#'   GroupIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1156,32 +898,11 @@ workspaces_describe_ip_groups <- function(GroupIds = NULL, NextToken = NULL, Max
 #' @description
 #' Describes the specified tags for the specified WorkSpaces resource.
 #'
-#' @usage
-#' workspaces_describe_tags(ResourceId)
+#' See [https://paws-r.github.io/docs/workspaces/describe_tags.html](https://paws-r.github.io/docs/workspaces/describe_tags.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the WorkSpaces resource. The supported resource types
 #' are WorkSpaces, registered directories, images, custom bundles, IP
 #' access control groups, and connection aliases.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_tags(
-#'   ResourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1207,62 +928,19 @@ workspaces_describe_tags <- function(ResourceId) {
 #'
 #' @description
 #' Retrieves a list that describes the available WorkSpace bundles.
-#' 
-#' You can filter the results using either bundle ID or owner, but not
-#' both.
 #'
-#' @usage
-#' workspaces_describe_workspace_bundles(BundleIds, Owner, NextToken)
+#' See [https://paws-r.github.io/docs/workspaces/describe_workspace_bundles.html](https://paws-r.github.io/docs/workspaces/describe_workspace_bundles.html) for full documentation.
 #'
 #' @param BundleIds The identifiers of the bundles. You cannot combine this parameter with
 #' any other filter.
 #' @param Owner The owner of the bundles. You cannot combine this parameter with any
 #' other filter.
 #' 
-#' Specify `AMAZON` to describe the bundles provided by AWS or null to
-#' describe the bundles that belong to your account.
+#' To describe the bundles provided by Amazon Web Services, specify
+#' `AMAZON`. To describe the bundles that belong to your account, don't
+#' specify a value.
 #' @param NextToken The token for the next set of results. (You received this token from a
 #' previous call.)
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Bundles = list(
-#'     list(
-#'       BundleId = "string",
-#'       Name = "string",
-#'       Owner = "string",
-#'       Description = "string",
-#'       ImageId = "string",
-#'       RootStorage = list(
-#'         Capacity = "string"
-#'       ),
-#'       UserStorage = list(
-#'         Capacity = "string"
-#'       ),
-#'       ComputeType = list(
-#'         Name = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
-#'       ),
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_workspace_bundles(
-#'   BundleIds = list(
-#'     "string"
-#'   ),
-#'   Owner = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1288,84 +966,15 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #' WorkSpaces
 #'
 #' @description
-#' Describes the available directories that are registered with Amazon
-#' WorkSpaces.
+#' Describes the available directories that are registered with Amazon WorkSpaces.
 #'
-#' @usage
-#' workspaces_describe_workspace_directories(DirectoryIds, Limit,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/workspaces/describe_workspace_directories.html](https://paws-r.github.io/docs/workspaces/describe_workspace_directories.html) for full documentation.
 #'
 #' @param DirectoryIds The identifiers of the directories. If the value is null, all
 #' directories are retrieved.
 #' @param Limit The maximum number of directories to return.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Directories = list(
-#'     list(
-#'       DirectoryId = "string",
-#'       Alias = "string",
-#'       DirectoryName = "string",
-#'       RegistrationCode = "string",
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       DnsIpAddresses = list(
-#'         "string"
-#'       ),
-#'       CustomerUserName = "string",
-#'       IamRoleId = "string",
-#'       DirectoryType = "SIMPLE_AD"|"AD_CONNECTOR",
-#'       WorkspaceSecurityGroupId = "string",
-#'       State = "REGISTERING"|"REGISTERED"|"DEREGISTERING"|"DEREGISTERED"|"ERROR",
-#'       WorkspaceCreationProperties = list(
-#'         EnableWorkDocs = TRUE|FALSE,
-#'         EnableInternetAccess = TRUE|FALSE,
-#'         DefaultOu = "string",
-#'         CustomSecurityGroupId = "string",
-#'         UserEnabledAsLocalAdministrator = TRUE|FALSE,
-#'         EnableMaintenanceMode = TRUE|FALSE
-#'       ),
-#'       ipGroupIds = list(
-#'         "string"
-#'       ),
-#'       WorkspaceAccessProperties = list(
-#'         DeviceTypeWindows = "ALLOW"|"DENY",
-#'         DeviceTypeOsx = "ALLOW"|"DENY",
-#'         DeviceTypeWeb = "ALLOW"|"DENY",
-#'         DeviceTypeIos = "ALLOW"|"DENY",
-#'         DeviceTypeAndroid = "ALLOW"|"DENY",
-#'         DeviceTypeChromeOs = "ALLOW"|"DENY",
-#'         DeviceTypeZeroClient = "ALLOW"|"DENY"
-#'       ),
-#'       Tenancy = "DEDICATED"|"SHARED",
-#'       SelfservicePermissions = list(
-#'         RestartWorkspace = "ENABLED"|"DISABLED",
-#'         IncreaseVolumeSize = "ENABLED"|"DISABLED",
-#'         ChangeComputeType = "ENABLED"|"DISABLED",
-#'         SwitchRunningMode = "ENABLED"|"DISABLED",
-#'         RebuildWorkspace = "ENABLED"|"DISABLED"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_workspace_directories(
-#'   DirectoryIds = list(
-#'     "string"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1388,43 +997,17 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit
 .workspaces$operations$describe_workspace_directories <- workspaces_describe_workspace_directories
 
 #' Describes the permissions that the owner of an image has granted to
-#' other AWS accounts for an image
+#' other Amazon Web Services accounts for an image
 #'
 #' @description
-#' Describes the permissions that the owner of an image has granted to
-#' other AWS accounts for an image.
+#' Describes the permissions that the owner of an image has granted to other Amazon Web Services accounts for an image.
 #'
-#' @usage
-#' workspaces_describe_workspace_image_permissions(ImageId, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/workspaces/describe_workspace_image_permissions.html](https://paws-r.github.io/docs/workspaces/describe_workspace_image_permissions.html) for full documentation.
 #'
 #' @param ImageId &#91;required&#93; The identifier of the image.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #' @param MaxResults The maximum number of items to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ImageId = "string",
-#'   ImagePermissions = list(
-#'     list(
-#'       SharedAccountId = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_workspace_image_permissions(
-#'   ImageId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1450,57 +1033,15 @@ workspaces_describe_workspace_image_permissions <- function(ImageId, NextToken =
 #' image identifiers are provided
 #'
 #' @description
-#' Retrieves a list that describes one or more specified images, if the
-#' image identifiers are provided. Otherwise, all images in the account are
-#' described.
+#' Retrieves a list that describes one or more specified images, if the image identifiers are provided. Otherwise, all images in the account are described.
 #'
-#' @usage
-#' workspaces_describe_workspace_images(ImageIds, ImageType, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/workspaces/describe_workspace_images.html](https://paws-r.github.io/docs/workspaces/describe_workspace_images.html) for full documentation.
 #'
 #' @param ImageIds The identifier of the image.
 #' @param ImageType The type (owned or shared) of the image.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #' @param MaxResults The maximum number of items to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Images = list(
-#'     list(
-#'       ImageId = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       OperatingSystem = list(
-#'         Type = "WINDOWS"|"LINUX"
-#'       ),
-#'       State = "AVAILABLE"|"PENDING"|"ERROR",
-#'       RequiredTenancy = "DEFAULT"|"DEDICATED",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string",
-#'       Created = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       OwnerAccountId = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_workspace_images(
-#'   ImageIds = list(
-#'     "string"
-#'   ),
-#'   ImageType = "OWNED"|"SHARED",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1527,38 +1068,9 @@ workspaces_describe_workspace_images <- function(ImageIds = NULL, ImageType = NU
 #' @description
 #' Describes the snapshots for the specified WorkSpace.
 #'
-#' @usage
-#' workspaces_describe_workspace_snapshots(WorkspaceId)
+#' See [https://paws-r.github.io/docs/workspaces/describe_workspace_snapshots.html](https://paws-r.github.io/docs/workspaces/describe_workspace_snapshots.html) for full documentation.
 #'
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RebuildSnapshots = list(
-#'     list(
-#'       SnapshotTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   RestoreSnapshots = list(
-#'     list(
-#'       SnapshotTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_workspace_snapshots(
-#'   WorkspaceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1584,13 +1096,8 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'
 #' @description
 #' Describes the specified WorkSpaces.
-#' 
-#' You can filter the results by using the bundle identifier, directory
-#' identifier, or owner, but you can specify only one filter at a time.
 #'
-#' @usage
-#' workspaces_describe_workspaces(WorkspaceIds, DirectoryId, UserName,
-#'   BundleId, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/workspaces/describe_workspaces.html](https://paws-r.github.io/docs/workspaces/describe_workspaces.html) for full documentation.
 #'
 #' @param WorkspaceIds The identifiers of the WorkSpaces. You cannot combine this parameter
 #' with any other filter.
@@ -1611,58 +1118,6 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #' @param Limit The maximum number of items to return.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Workspaces = list(
-#'     list(
-#'       WorkspaceId = "string",
-#'       DirectoryId = "string",
-#'       UserName = "string",
-#'       IpAddress = "string",
-#'       State = "PENDING"|"AVAILABLE"|"IMPAIRED"|"UNHEALTHY"|"REBOOTING"|"STARTING"|"REBUILDING"|"RESTORING"|"MAINTENANCE"|"ADMIN_MAINTENANCE"|"TERMINATING"|"TERMINATED"|"SUSPENDED"|"UPDATING"|"STOPPING"|"STOPPED"|"ERROR",
-#'       BundleId = "string",
-#'       SubnetId = "string",
-#'       ErrorMessage = "string",
-#'       ErrorCode = "string",
-#'       ComputerName = "string",
-#'       VolumeEncryptionKey = "string",
-#'       UserVolumeEncryptionEnabled = TRUE|FALSE,
-#'       RootVolumeEncryptionEnabled = TRUE|FALSE,
-#'       WorkspaceProperties = list(
-#'         RunningMode = "AUTO_STOP"|"ALWAYS_ON",
-#'         RunningModeAutoStopTimeoutInMinutes = 123,
-#'         RootVolumeSizeGib = 123,
-#'         UserVolumeSizeGib = 123,
-#'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
-#'       ),
-#'       ModificationStates = list(
-#'         list(
-#'           Resource = "ROOT_VOLUME"|"USER_VOLUME"|"COMPUTE_TYPE",
-#'           State = "UPDATE_INITIATED"|"UPDATE_IN_PROGRESS"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_workspaces(
-#'   WorkspaceIds = list(
-#'     "string"
-#'   ),
-#'   DirectoryId = "string",
-#'   UserName = "string",
-#'   BundleId = "string",
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1689,43 +1144,11 @@ workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NU
 #' @description
 #' Describes the connection status of the specified WorkSpaces.
 #'
-#' @usage
-#' workspaces_describe_workspaces_connection_status(WorkspaceIds,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/workspaces/describe_workspaces_connection_status.html](https://paws-r.github.io/docs/workspaces/describe_workspaces_connection_status.html) for full documentation.
 #'
 #' @param WorkspaceIds The identifiers of the WorkSpaces. You can specify up to 25 WorkSpaces.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   WorkspacesConnectionStatus = list(
-#'     list(
-#'       WorkspaceId = "string",
-#'       ConnectionState = "CONNECTED"|"DISCONNECTED"|"UNKNOWN",
-#'       ConnectionStateCheckTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastKnownUserConnectionTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_workspaces_connection_status(
-#'   WorkspaceIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1750,31 +1173,11 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
 #' Disassociates a connection alias from a directory
 #'
 #' @description
-#' Disassociates a connection alias from a directory. Disassociating a
-#' connection alias disables cross-Region redirection between two
-#' directories in different AWS Regions. For more information, see
-#' [Cross-Region Redirection for Amazon
-#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
-#' 
-#' Before performing this operation, call
-#' [DescribeConnectionAliases](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html)
-#' to make sure that the current state of the connection alias is
-#' `CREATED`.
+#' Disassociates a connection alias from a directory. Disassociating a connection alias disables cross-Region redirection between two directories in different Regions. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
-#' @usage
-#' workspaces_disassociate_connection_alias(AliasId)
+#' See [https://paws-r.github.io/docs/workspaces/disassociate_connection_alias.html](https://paws-r.github.io/docs/workspaces/disassociate_connection_alias.html) for full documentation.
 #'
 #' @param AliasId &#91;required&#93; The identifier of the connection alias to disassociate.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_connection_alias(
-#'   AliasId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1800,27 +1203,12 @@ workspaces_disassociate_connection_alias <- function(AliasId) {
 #' directory
 #'
 #' @description
-#' Disassociates the specified IP access control group from the specified
-#' directory.
+#' Disassociates the specified IP access control group from the specified directory.
 #'
-#' @usage
-#' workspaces_disassociate_ip_groups(DirectoryId, GroupIds)
+#' See [https://paws-r.github.io/docs/workspaces/disassociate_ip_groups.html](https://paws-r.github.io/docs/workspaces/disassociate_ip_groups.html) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param GroupIds &#91;required&#93; The identifiers of one or more IP access control groups.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_ip_groups(
-#'   DirectoryId = "string",
-#'   GroupIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1842,20 +1230,49 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 }
 .workspaces$operations$disassociate_ip_groups <- workspaces_disassociate_ip_groups
 
+#' Imports client branding
+#'
+#' @description
+#' Imports client branding. Client branding allows you to customize your WorkSpace's client login portal. You can tailor your login portal company logo, the support email address, support link, link to reset password, and a custom message for users trying to sign in.
+#'
+#' See [https://paws-r.github.io/docs/workspaces/import_client_branding.html](https://paws-r.github.io/docs/workspaces/import_client_branding.html) for full documentation.
+#'
+#' @param ResourceId &#91;required&#93; The directory identifier of the WorkSpace for which you want to import
+#' client branding.
+#' @param DeviceTypeWindows The branding information to import for Windows devices.
+#' @param DeviceTypeOsx The branding information to import for macOS devices.
+#' @param DeviceTypeAndroid The branding information to import for Android devices.
+#' @param DeviceTypeIos The branding information to import for iOS devices.
+#' @param DeviceTypeLinux The branding information to import for Linux devices.
+#' @param DeviceTypeWeb The branding information to import for web access.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_import_client_branding
+workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NULL, DeviceTypeOsx = NULL, DeviceTypeAndroid = NULL, DeviceTypeIos = NULL, DeviceTypeLinux = NULL, DeviceTypeWeb = NULL) {
+  op <- new_operation(
+    name = "ImportClientBranding",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$import_client_branding_input(ResourceId = ResourceId, DeviceTypeWindows = DeviceTypeWindows, DeviceTypeOsx = DeviceTypeOsx, DeviceTypeAndroid = DeviceTypeAndroid, DeviceTypeIos = DeviceTypeIos, DeviceTypeLinux = DeviceTypeLinux, DeviceTypeWeb = DeviceTypeWeb)
+  output <- .workspaces$import_client_branding_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$import_client_branding <- workspaces_import_client_branding
+
 #' Imports the specified Windows 10 Bring Your Own License (BYOL) image
 #' into Amazon WorkSpaces
 #'
 #' @description
-#' Imports the specified Windows 10 Bring Your Own License (BYOL) image
-#' into Amazon WorkSpaces. The image must be an already licensed Amazon EC2
-#' image that is in your AWS account, and you must own the image. For more
-#' information about creating BYOL images, see [Bring Your Own Windows
-#' Desktop
-#' Licenses](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
+#' Imports the specified Windows 10 Bring Your Own License (BYOL) image into Amazon WorkSpaces. The image must be an already licensed Amazon EC2 image that is in your Amazon Web Services account, and you must own the image. For more information about creating BYOL images, see [Bring Your Own Windows Desktop Licenses](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
 #'
-#' @usage
-#' workspaces_import_workspace_image(Ec2ImageId, IngestionProcess,
-#'   ImageName, ImageDescription, Tags, Applications)
+#' See [https://paws-r.github.io/docs/workspaces/import_workspace_image.html](https://paws-r.github.io/docs/workspaces/import_workspace_image.html) for full documentation.
 #'
 #' @param Ec2ImageId &#91;required&#93; The identifier of the EC2 image.
 #' @param IngestionProcess &#91;required&#93; The ingestion process to be used when importing the image, depending on
@@ -1877,33 +1294,6 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 #' 
 #' Although this parameter is an array, only one item is allowed at this
 #' time.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ImageId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$import_workspace_image(
-#'   Ec2ImageId = "string",
-#'   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO"|"BYOL_REGULAR_WSP",
-#'   ImageName = "string",
-#'   ImageDescription = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   Applications = list(
-#'     "Microsoft_Office_2016"|"Microsoft_Office_2019"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1930,22 +1320,9 @@ workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, Imag
 #' Bring Your Own License (BYOL)
 #'
 #' @description
-#' Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
-#' that you can use for the network management interface when you enable
-#' Bring Your Own License (BYOL).
-#' 
-#' This operation can be run only by AWS accounts that are enabled for
-#' BYOL. If your account isn't enabled for BYOL, you'll receive an
-#' `AccessDeniedException` error.
-#' 
-#' The management network interface is connected to a secure Amazon
-#' WorkSpaces management network. It is used for interactive streaming of
-#' the WorkSpace desktop to Amazon WorkSpaces clients, and to allow Amazon
-#' WorkSpaces to manage the WorkSpace.
+#' Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL).
 #'
-#' @usage
-#' workspaces_list_available_management_cidr_ranges(
-#'   ManagementCidrRangeConstraint, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/workspaces/list_available_management_cidr_ranges.html](https://paws-r.github.io/docs/workspaces/list_available_management_cidr_ranges.html) for full documentation.
 #'
 #' @param ManagementCidrRangeConstraint &#91;required&#93; The IP address range to search. Specify an IP address range that is
 #' compatible with your network and in CIDR notation (that is, specify the
@@ -1953,26 +1330,6 @@ workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, Imag
 #' @param MaxResults The maximum number of items to return.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ManagementCidrRanges = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_available_management_cidr_ranges(
-#'   ManagementCidrRangeConstraint = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1998,43 +1355,12 @@ workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRange
 #' another, while retaining the data on the user volume
 #'
 #' @description
-#' Migrates a WorkSpace from one operating system or bundle type to
-#' another, while retaining the data on the user volume.
-#' 
-#' The migration process recreates the WorkSpace by using a new root volume
-#' from the target bundle image and the user volume from the last available
-#' snapshot of the original WorkSpace. During migration, the original
-#' `D:\Users%USERNAME%` user profile folder is renamed to
-#' `D:\Users%USERNAME%MMddyyTHHmmss%.NotMigrated`. A new
-#' `D:\Users%USERNAME%\` folder is generated by the new OS. Certain files
-#' in the old user profile are moved to the new user profile.
-#' 
-#' For available migration scenarios, details about what happens during
-#' migration, and best practices, see [Migrate a
-#' WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/migrate-workspaces.html).
+#' Migrates a WorkSpace from one operating system or bundle type to another, while retaining the data on the user volume.
 #'
-#' @usage
-#' workspaces_migrate_workspace(SourceWorkspaceId, BundleId)
+#' See [https://paws-r.github.io/docs/workspaces/migrate_workspace.html](https://paws-r.github.io/docs/workspaces/migrate_workspace.html) for full documentation.
 #'
 #' @param SourceWorkspaceId &#91;required&#93; The identifier of the WorkSpace to migrate from.
 #' @param BundleId &#91;required&#93; The identifier of the target bundle type to migrate the WorkSpace to.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SourceWorkspaceId = "string",
-#'   TargetWorkspaceId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$migrate_workspace(
-#'   SourceWorkspaceId = "string",
-#'   BundleId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2060,12 +1386,9 @@ workspaces_migrate_workspace <- function(SourceWorkspaceId, BundleId) {
 #' specified account
 #'
 #' @description
-#' Modifies the configuration of Bring Your Own License (BYOL) for the
-#' specified account.
+#' Modifies the configuration of Bring Your Own License (BYOL) for the specified account.
 #'
-#' @usage
-#' workspaces_modify_account(DedicatedTenancySupport,
-#'   DedicatedTenancyManagementCidrRange)
+#' See [https://paws-r.github.io/docs/workspaces/modify_account.html](https://paws-r.github.io/docs/workspaces/modify_account.html) for full documentation.
 #'
 #' @param DedicatedTenancySupport The status of BYOL.
 #' @param DedicatedTenancyManagementCidrRange The IP address range, specified as an IPv4 CIDR block, for the
@@ -2075,17 +1398,6 @@ workspaces_migrate_workspace <- function(SourceWorkspaceId, BundleId) {
 #' example, 203.0.113.25/16). It must also be specified as available by the
 #' [`list_available_management_cidr_ranges`][workspaces_list_available_management_cidr_ranges]
 #' operation.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_account(
-#'   DedicatedTenancySupport = "ENABLED",
-#'   DedicatedTenancyManagementCidrRange = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2112,24 +1424,10 @@ workspaces_modify_account <- function(DedicatedTenancySupport = NULL, DedicatedT
 #' @description
 #' Modifies the properties of the specified Amazon WorkSpaces clients.
 #'
-#' @usage
-#' workspaces_modify_client_properties(ResourceId, ClientProperties)
+#' See [https://paws-r.github.io/docs/workspaces/modify_client_properties.html](https://paws-r.github.io/docs/workspaces/modify_client_properties.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The resource identifiers, in the form of directory IDs.
 #' @param ClientProperties &#91;required&#93; Information about the Amazon WorkSpaces client.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_client_properties(
-#'   ResourceId = "string",
-#'   ClientProperties = list(
-#'     ReconnectEnabled = "ENABLED"|"DISABLED"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2151,38 +1449,55 @@ workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
 }
 .workspaces$operations$modify_client_properties <- workspaces_modify_client_properties
 
+#' Modifies multiple properties related to SAML 2
+#'
+#' @description
+#' Modifies multiple properties related to SAML 2.0 authentication, including the enablement status, user access URL, and relay state parameter name that are used for configuring federation with an SAML 2.0 identity provider.
+#'
+#' See [https://paws-r.github.io/docs/workspaces/modify_saml_properties.html](https://paws-r.github.io/docs/workspaces/modify_saml_properties.html) for full documentation.
+#'
+#' @param ResourceId &#91;required&#93; The directory identifier for which you want to configure SAML
+#' properties.
+#' @param SamlProperties The properties for configuring SAML 2.0 authentication.
+#' @param PropertiesToDelete The SAML properties to delete as part of your request.
+#' 
+#' Specify one of the following options:
+#' 
+#' -   `SAML_PROPERTIES_USER_ACCESS_URL` to delete the user access URL.
+#' 
+#' -   `SAML_PROPERTIES_RELAY_STATE_PARAMETER_NAME` to delete the relay
+#'     state parameter name.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_modify_saml_properties
+workspaces_modify_saml_properties <- function(ResourceId, SamlProperties = NULL, PropertiesToDelete = NULL) {
+  op <- new_operation(
+    name = "ModifySamlProperties",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$modify_saml_properties_input(ResourceId = ResourceId, SamlProperties = SamlProperties, PropertiesToDelete = PropertiesToDelete)
+  output <- .workspaces$modify_saml_properties_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$modify_saml_properties <- workspaces_modify_saml_properties
+
 #' Modifies the self-service WorkSpace management capabilities for your
 #' users
 #'
 #' @description
-#' Modifies the self-service WorkSpace management capabilities for your
-#' users. For more information, see [Enable Self-Service WorkSpace
-#' Management Capabilities for Your
-#' Users](https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html).
+#' Modifies the self-service WorkSpace management capabilities for your users. For more information, see [Enable Self-Service WorkSpace Management Capabilities for Your Users](https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html).
 #'
-#' @usage
-#' workspaces_modify_selfservice_permissions(ResourceId,
-#'   SelfservicePermissions)
+#' See [https://paws-r.github.io/docs/workspaces/modify_selfservice_permissions.html](https://paws-r.github.io/docs/workspaces/modify_selfservice_permissions.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the directory.
 #' @param SelfservicePermissions &#91;required&#93; The permissions to enable or disable self-service capabilities.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_selfservice_permissions(
-#'   ResourceId = "string",
-#'   SelfservicePermissions = list(
-#'     RestartWorkspace = "ENABLED"|"DISABLED",
-#'     IncreaseVolumeSize = "ENABLED"|"DISABLED",
-#'     ChangeComputeType = "ENABLED"|"DISABLED",
-#'     SwitchRunningMode = "ENABLED"|"DISABLED",
-#'     RebuildWorkspace = "ENABLED"|"DISABLED"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2208,35 +1523,12 @@ workspaces_modify_selfservice_permissions <- function(ResourceId, SelfservicePer
 #' their WorkSpaces
 #'
 #' @description
-#' Specifies which devices and operating systems users can use to access
-#' their WorkSpaces. For more information, see [Control Device
-#' Access](https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access).
+#' Specifies which devices and operating systems users can use to access their WorkSpaces. For more information, see [Control Device Access](https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access).
 #'
-#' @usage
-#' workspaces_modify_workspace_access_properties(ResourceId,
-#'   WorkspaceAccessProperties)
+#' See [https://paws-r.github.io/docs/workspaces/modify_workspace_access_properties.html](https://paws-r.github.io/docs/workspaces/modify_workspace_access_properties.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the directory.
 #' @param WorkspaceAccessProperties &#91;required&#93; The device types and operating systems to enable or disable for access.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_workspace_access_properties(
-#'   ResourceId = "string",
-#'   WorkspaceAccessProperties = list(
-#'     DeviceTypeWindows = "ALLOW"|"DENY",
-#'     DeviceTypeOsx = "ALLOW"|"DENY",
-#'     DeviceTypeWeb = "ALLOW"|"DENY",
-#'     DeviceTypeIos = "ALLOW"|"DENY",
-#'     DeviceTypeAndroid = "ALLOW"|"DENY",
-#'     DeviceTypeChromeOs = "ALLOW"|"DENY",
-#'     DeviceTypeZeroClient = "ALLOW"|"DENY"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2263,30 +1555,10 @@ workspaces_modify_workspace_access_properties <- function(ResourceId, WorkspaceA
 #' @description
 #' Modify the default properties used to create WorkSpaces.
 #'
-#' @usage
-#' workspaces_modify_workspace_creation_properties(ResourceId,
-#'   WorkspaceCreationProperties)
+#' See [https://paws-r.github.io/docs/workspaces/modify_workspace_creation_properties.html](https://paws-r.github.io/docs/workspaces/modify_workspace_creation_properties.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the directory.
 #' @param WorkspaceCreationProperties &#91;required&#93; The default properties for creating WorkSpaces.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_workspace_creation_properties(
-#'   ResourceId = "string",
-#'   WorkspaceCreationProperties = list(
-#'     EnableWorkDocs = TRUE|FALSE,
-#'     EnableInternetAccess = TRUE|FALSE,
-#'     DefaultOu = "string",
-#'     CustomSecurityGroupId = "string",
-#'     UserEnabledAsLocalAdministrator = TRUE|FALSE,
-#'     EnableMaintenanceMode = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2311,32 +1583,12 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #' Modifies the specified WorkSpace properties
 #'
 #' @description
-#' Modifies the specified WorkSpace properties. For important information
-#' about how to modify the size of the root and user volumes, see [Modify a
-#' WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html).
+#' Modifies the specified WorkSpace properties. For important information about how to modify the size of the root and user volumes, see [Modify a WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html).
 #'
-#' @usage
-#' workspaces_modify_workspace_properties(WorkspaceId, WorkspaceProperties)
+#' See [https://paws-r.github.io/docs/workspaces/modify_workspace_properties.html](https://paws-r.github.io/docs/workspaces/modify_workspace_properties.html) for full documentation.
 #'
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
 #' @param WorkspaceProperties &#91;required&#93; The properties of the WorkSpace.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_workspace_properties(
-#'   WorkspaceId = "string",
-#'   WorkspaceProperties = list(
-#'     RunningMode = "AUTO_STOP"|"ALWAYS_ON",
-#'     RunningModeAutoStopTimeoutInMinutes = 123,
-#'     RootVolumeSizeGib = 123,
-#'     UserVolumeSizeGib = 123,
-#'     ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2362,29 +1614,11 @@ workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspacePropert
 #'
 #' @description
 #' Sets the state of the specified WorkSpace.
-#' 
-#' To maintain a WorkSpace without being interrupted, set the WorkSpace
-#' state to `ADMIN_MAINTENANCE`. WorkSpaces in this state do not respond to
-#' requests to reboot, stop, start, rebuild, or restore. An AutoStop
-#' WorkSpace in this state is not stopped. Users cannot log into a
-#' WorkSpace in the `ADMIN_MAINTENANCE` state.
 #'
-#' @usage
-#' workspaces_modify_workspace_state(WorkspaceId, WorkspaceState)
+#' See [https://paws-r.github.io/docs/workspaces/modify_workspace_state.html](https://paws-r.github.io/docs/workspaces/modify_workspace_state.html) for full documentation.
 #'
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
 #' @param WorkspaceState &#91;required&#93; The WorkSpace state.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_workspace_state(
-#'   WorkspaceId = "string",
-#'   WorkspaceState = "AVAILABLE"|"ADMIN_MAINTENANCE"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2410,42 +1644,10 @@ workspaces_modify_workspace_state <- function(WorkspaceId, WorkspaceState) {
 #'
 #' @description
 #' Reboots the specified WorkSpaces.
-#' 
-#' You cannot reboot a WorkSpace unless its state is `AVAILABLE` or
-#' `UNHEALTHY`.
-#' 
-#' This operation is asynchronous and returns before the WorkSpaces have
-#' rebooted.
 #'
-#' @usage
-#' workspaces_reboot_workspaces(RebootWorkspaceRequests)
+#' See [https://paws-r.github.io/docs/workspaces/reboot_workspaces.html](https://paws-r.github.io/docs/workspaces/reboot_workspaces.html) for full documentation.
 #'
 #' @param RebootWorkspaceRequests &#91;required&#93; The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedRequests = list(
-#'     list(
-#'       WorkspaceId = "string",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reboot_workspaces(
-#'   RebootWorkspaceRequests = list(
-#'     list(
-#'       WorkspaceId = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2471,46 +1673,10 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
 #'
 #' @description
 #' Rebuilds the specified WorkSpace.
-#' 
-#' You cannot rebuild a WorkSpace unless its state is `AVAILABLE`, `ERROR`,
-#' `UNHEALTHY`, `STOPPED`, or `REBOOTING`.
-#' 
-#' Rebuilding a WorkSpace is a potentially destructive action that can
-#' result in the loss of data. For more information, see [Rebuild a
-#' WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/rebuild-workspace.html).
-#' 
-#' This operation is asynchronous and returns before the WorkSpaces have
-#' been completely rebuilt.
 #'
-#' @usage
-#' workspaces_rebuild_workspaces(RebuildWorkspaceRequests)
+#' See [https://paws-r.github.io/docs/workspaces/rebuild_workspaces.html](https://paws-r.github.io/docs/workspaces/rebuild_workspaces.html) for full documentation.
 #'
 #' @param RebuildWorkspaceRequests &#91;required&#93; The WorkSpace to rebuild. You can specify a single WorkSpace.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedRequests = list(
-#'     list(
-#'       WorkspaceId = "string",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$rebuild_workspaces(
-#'   RebuildWorkspaceRequests = list(
-#'     list(
-#'       WorkspaceId = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2535,16 +1701,9 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' Registers the specified directory
 #'
 #' @description
-#' Registers the specified directory. This operation is asynchronous and
-#' returns before the WorkSpace directory is registered. If this is the
-#' first time you are registering a directory, you will need to create the
-#' workspaces_DefaultRole role before you can register a directory. For
-#' more information, see [Creating the workspaces_DefaultRole
-#' Role](https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role).
+#' Registers the specified directory. This operation is asynchronous and returns before the WorkSpace directory is registered. If this is the first time you are registering a directory, you will need to create the workspaces_DefaultRole role before you can register a directory. For more information, see [Creating the workspaces_DefaultRole Role](https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role).
 #'
-#' @usage
-#' workspaces_register_workspace_directory(DirectoryId, SubnetIds,
-#'   EnableWorkDocs, EnableSelfService, Tenancy, Tags)
+#' See [https://paws-r.github.io/docs/workspaces/register_workspace_directory.html](https://paws-r.github.io/docs/workspaces/register_workspace_directory.html) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory. You cannot register a directory if it
 #' does not have a status of Active. If the directory does not have a
@@ -2564,34 +1723,12 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' @param EnableSelfService Indicates whether self-service capabilities are enabled or disabled.
 #' @param Tenancy Indicates whether your WorkSpace directory is dedicated or shared. To
 #' use Bring Your Own License (BYOL) images, this value must be set to
-#' `DEDICATED` and your AWS account must be enabled for BYOL. If your
-#' account has not been enabled for BYOL, you will receive an
+#' `DEDICATED` and your Amazon Web Services account must be enabled for
+#' BYOL. If your account has not been enabled for BYOL, you will receive an
 #' InvalidParameterValuesException error. For more information about BYOL
 #' images, see [Bring Your Own Windows Desktop
 #' Images](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
 #' @param Tags The tags associated with the directory.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_workspace_directory(
-#'   DirectoryId = "string",
-#'   SubnetIds = list(
-#'     "string"
-#'   ),
-#'   EnableWorkDocs = TRUE|FALSE,
-#'   EnableSelfService = TRUE|FALSE,
-#'   Tenancy = "DEDICATED"|"SHARED",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2617,31 +1754,10 @@ workspaces_register_workspace_directory <- function(DirectoryId, SubnetIds = NUL
 #'
 #' @description
 #' Restores the specified WorkSpace to its last known healthy state.
-#' 
-#' You cannot restore a WorkSpace unless its state is ` AVAILABLE`,
-#' `ERROR`, `UNHEALTHY`, or `STOPPED`.
-#' 
-#' Restoring a WorkSpace is a potentially destructive action that can
-#' result in the loss of data. For more information, see [Restore a
-#' WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/restore-workspace.html).
-#' 
-#' This operation is asynchronous and returns before the WorkSpace is
-#' completely restored.
 #'
-#' @usage
-#' workspaces_restore_workspace(WorkspaceId)
+#' See [https://paws-r.github.io/docs/workspaces/restore_workspace.html](https://paws-r.github.io/docs/workspaces/restore_workspace.html) for full documentation.
 #'
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_workspace(
-#'   WorkspaceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2668,24 +1784,10 @@ workspaces_restore_workspace <- function(WorkspaceId) {
 #' @description
 #' Removes one or more rules from the specified IP access control group.
 #'
-#' @usage
-#' workspaces_revoke_ip_rules(GroupId, UserRules)
+#' See [https://paws-r.github.io/docs/workspaces/revoke_ip_rules.html](https://paws-r.github.io/docs/workspaces/revoke_ip_rules.html) for full documentation.
 #'
 #' @param GroupId &#91;required&#93; The identifier of the group.
 #' @param UserRules &#91;required&#93; The rules to remove from the group.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$revoke_ip_rules(
-#'   GroupId = "string",
-#'   UserRules = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2711,39 +1813,10 @@ workspaces_revoke_ip_rules <- function(GroupId, UserRules) {
 #'
 #' @description
 #' Starts the specified WorkSpaces.
-#' 
-#' You cannot start a WorkSpace unless it has a running mode of `AutoStop`
-#' and a state of `STOPPED`.
 #'
-#' @usage
-#' workspaces_start_workspaces(StartWorkspaceRequests)
+#' See [https://paws-r.github.io/docs/workspaces/start_workspaces.html](https://paws-r.github.io/docs/workspaces/start_workspaces.html) for full documentation.
 #'
 #' @param StartWorkspaceRequests &#91;required&#93; The WorkSpaces to start. You can specify up to 25 WorkSpaces.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedRequests = list(
-#'     list(
-#'       WorkspaceId = "string",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_workspaces(
-#'   StartWorkspaceRequests = list(
-#'     list(
-#'       WorkspaceId = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2769,39 +1842,10 @@ workspaces_start_workspaces <- function(StartWorkspaceRequests) {
 #'
 #' @description
 #' Stops the specified WorkSpaces.
-#' 
-#' You cannot stop a WorkSpace unless it has a running mode of `AutoStop`
-#' and a state of `AVAILABLE`, `IMPAIRED`, `UNHEALTHY`, or `ERROR`.
 #'
-#' @usage
-#' workspaces_stop_workspaces(StopWorkspaceRequests)
+#' See [https://paws-r.github.io/docs/workspaces/stop_workspaces.html](https://paws-r.github.io/docs/workspaces/stop_workspaces.html) for full documentation.
 #'
 #' @param StopWorkspaceRequests &#91;required&#93; The WorkSpaces to stop. You can specify up to 25 WorkSpaces.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedRequests = list(
-#'     list(
-#'       WorkspaceId = "string",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_workspaces(
-#'   StopWorkspaceRequests = list(
-#'     list(
-#'       WorkspaceId = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2827,65 +1871,10 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
 #'
 #' @description
 #' Terminates the specified WorkSpaces.
-#' 
-#' Terminating a WorkSpace is a permanent action and cannot be undone. The
-#' user's data is destroyed. If you need to archive any user data, contact
-#' AWS Support before terminating the WorkSpace.
-#' 
-#' You can terminate a WorkSpace that is in any state except `SUSPENDED`.
-#' 
-#' This operation is asynchronous and returns before the WorkSpaces have
-#' been completely terminated. After a WorkSpace is terminated, the
-#' `TERMINATED` state is returned only briefly before the WorkSpace
-#' directory metadata is cleaned up, so this state is rarely returned. To
-#' confirm that a WorkSpace is terminated, check for the WorkSpace ID by
-#' using
-#' [DescribeWorkSpaces](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaces.html).
-#' If the WorkSpace ID isn't returned, then the WorkSpace has been
-#' successfully terminated.
-#' 
-#' Simple AD and AD Connector are made available to you free of charge to
-#' use with WorkSpaces. If there are no WorkSpaces being used with your
-#' Simple AD or AD Connector directory for 30 consecutive days, this
-#' directory will be automatically deregistered for use with Amazon
-#' WorkSpaces, and you will be charged for this directory as per the [AWS
-#' Directory Services pricing
-#' terms](https://aws.amazon.com/directoryservice/pricing/).
-#' 
-#' To delete empty directories, see [Delete the Directory for Your
-#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/delete-workspaces-directory.html).
-#' If you delete your Simple AD or AD Connector directory, you can always
-#' create a new one when you want to start using WorkSpaces again.
 #'
-#' @usage
-#' workspaces_terminate_workspaces(TerminateWorkspaceRequests)
+#' See [https://paws-r.github.io/docs/workspaces/terminate_workspaces.html](https://paws-r.github.io/docs/workspaces/terminate_workspaces.html) for full documentation.
 #'
 #' @param TerminateWorkspaceRequests &#91;required&#93; The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedRequests = list(
-#'     list(
-#'       WorkspaceId = "string",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$terminate_workspaces(
-#'   TerminateWorkspaceRequests = list(
-#'     list(
-#'       WorkspaceId = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2907,53 +1896,51 @@ workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
 }
 .workspaces$operations$terminate_workspaces <- workspaces_terminate_workspaces
 
+#' Updates a Amazon Connect client add-in
+#'
+#' @description
+#' Updates a Amazon Connect client add-in. Use this action to update the name and endpoint URL of a Amazon Connect client add-in.
+#'
+#' See [https://paws-r.github.io/docs/workspaces/update_connect_client_add_in.html](https://paws-r.github.io/docs/workspaces/update_connect_client_add_in.html) for full documentation.
+#'
+#' @param AddInId &#91;required&#93; The identifier of the client add-in to update.
+#' @param ResourceId &#91;required&#93; The directory identifier for which the client add-in is configured.
+#' @param Name The name of the client add-in.
+#' @param URL The endpoint URL of the Amazon Connect client add-in.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_update_connect_client_add_in
+workspaces_update_connect_client_add_in <- function(AddInId, ResourceId, Name = NULL, URL = NULL) {
+  op <- new_operation(
+    name = "UpdateConnectClientAddIn",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$update_connect_client_add_in_input(AddInId = AddInId, ResourceId = ResourceId, Name = Name, URL = URL)
+  output <- .workspaces$update_connect_client_add_in_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$update_connect_client_add_in <- workspaces_update_connect_client_add_in
+
 #' Shares or unshares a connection alias with one account by specifying
 #' whether that account has permission to associate the connection alias
 #' with a directory
 #'
 #' @description
-#' Shares or unshares a connection alias with one account by specifying
-#' whether that account has permission to associate the connection alias
-#' with a directory. If the association permission is granted, the
-#' connection alias is shared with that account. If the association
-#' permission is revoked, the connection alias is unshared with the
-#' account. For more information, see [Cross-Region Redirection for Amazon
-#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
-#' 
-#' -   Before performing this operation, call
-#'     [DescribeConnectionAliases](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html)
-#'     to make sure that the current state of the connection alias is
-#'     `CREATED`.
-#' 
-#' -   To delete a connection alias that has been shared, the shared
-#'     account must first disassociate the connection alias from any
-#'     directories it has been associated with. Then you must unshare the
-#'     connection alias from the account it has been shared with. You can
-#'     delete a connection alias only after it is no longer shared with any
-#'     accounts or associated with any directories.
+#' Shares or unshares a connection alias with one account by specifying whether that account has permission to associate the connection alias with a directory. If the association permission is granted, the connection alias is shared with that account. If the association permission is revoked, the connection alias is unshared with the account. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
-#' @usage
-#' workspaces_update_connection_alias_permission(AliasId,
-#'   ConnectionAliasPermission)
+#' See [https://paws-r.github.io/docs/workspaces/update_connection_alias_permission.html](https://paws-r.github.io/docs/workspaces/update_connection_alias_permission.html) for full documentation.
 #'
 #' @param AliasId &#91;required&#93; The identifier of the connection alias that you want to update
 #' permissions for.
 #' @param ConnectionAliasPermission &#91;required&#93; Indicates whether to share or unshare the connection alias with the
-#' specified AWS account.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_connection_alias_permission(
-#'   AliasId = "string",
-#'   ConnectionAliasPermission = list(
-#'     SharedAccountId = "string",
-#'     AllowAssociation = TRUE|FALSE
-#'   )
-#' )
-#' ```
+#' specified Amazon Web Services account.
 #'
 #' @keywords internal
 #'
@@ -2979,30 +1966,12 @@ workspaces_update_connection_alias_permission <- function(AliasId, ConnectionAli
 #' the specified rules
 #'
 #' @description
-#' Replaces the current rules of the specified IP access control group with
-#' the specified rules.
+#' Replaces the current rules of the specified IP access control group with the specified rules.
 #'
-#' @usage
-#' workspaces_update_rules_of_ip_group(GroupId, UserRules)
+#' See [https://paws-r.github.io/docs/workspaces/update_rules_of_ip_group.html](https://paws-r.github.io/docs/workspaces/update_rules_of_ip_group.html) for full documentation.
 #'
 #' @param GroupId &#91;required&#93; The identifier of the group.
 #' @param UserRules &#91;required&#93; One or more rules.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_rules_of_ip_group(
-#'   GroupId = "string",
-#'   UserRules = list(
-#'     list(
-#'       ipRule = "string",
-#'       ruleDesc = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3024,60 +1993,53 @@ workspaces_update_rules_of_ip_group <- function(GroupId, UserRules) {
 }
 .workspaces$operations$update_rules_of_ip_group <- workspaces_update_rules_of_ip_group
 
-#' Shares or unshares an image with one account in the same AWS Region by
-#' specifying whether that account has permission to copy the image
+#' Updates a WorkSpace bundle with a new image
 #'
 #' @description
-#' Shares or unshares an image with one account in the same AWS Region by
-#' specifying whether that account has permission to copy the image. If the
-#' copy image permission is granted, the image is shared with that account.
-#' If the copy image permission is revoked, the image is unshared with the
-#' account.
-#' 
-#' After an image has been shared, the recipient account can copy the image
-#' to other AWS Regions as needed.
-#' 
-#' In the China (Ningxia) Region, you can copy images only within the same
-#' Region.
-#' 
-#' In the AWS GovCloud (US-West) Region, to copy images to and from other
-#' AWS Regions, contact AWS Support.
-#' 
-#' For more information about sharing images, see [Share or Unshare a
-#' Custom WorkSpaces
-#' Image](https://docs.aws.amazon.com/workspaces/latest/adminguide/share-custom-image.html).
-#' 
-#' -   To delete an image that has been shared, you must unshare the image
-#'     before you delete it.
-#' 
-#' -   Sharing Bring Your Own License (BYOL) images across AWS accounts
-#'     isn't supported at this time in the AWS GovCloud (US-West) Region.
-#'     To share BYOL images across accounts in the AWS GovCloud (US-West)
-#'     Region, contact AWS Support.
+#' Updates a WorkSpace bundle with a new image. For more information about updating WorkSpace bundles, see [Update a Custom WorkSpaces Bundle](https://docs.aws.amazon.com/workspaces/latest/adminguide/update-custom-bundle.html).
 #'
-#' @usage
-#' workspaces_update_workspace_image_permission(ImageId, AllowCopyImage,
-#'   SharedAccountId)
+#' See [https://paws-r.github.io/docs/workspaces/update_workspace_bundle.html](https://paws-r.github.io/docs/workspaces/update_workspace_bundle.html) for full documentation.
+#'
+#' @param BundleId The identifier of the bundle.
+#' @param ImageId The identifier of the image.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_update_workspace_bundle
+workspaces_update_workspace_bundle <- function(BundleId = NULL, ImageId = NULL) {
+  op <- new_operation(
+    name = "UpdateWorkspaceBundle",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$update_workspace_bundle_input(BundleId = BundleId, ImageId = ImageId)
+  output <- .workspaces$update_workspace_bundle_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$update_workspace_bundle <- workspaces_update_workspace_bundle
+
+#' Shares or unshares an image with one account in the same Amazon Web
+#' Services Region by specifying whether that account has permission to
+#' copy the image
+#'
+#' @description
+#' Shares or unshares an image with one account in the same Amazon Web Services Region by specifying whether that account has permission to copy the image. If the copy image permission is granted, the image is shared with that account. If the copy image permission is revoked, the image is unshared with the account.
+#'
+#' See [https://paws-r.github.io/docs/workspaces/update_workspace_image_permission.html](https://paws-r.github.io/docs/workspaces/update_workspace_image_permission.html) for full documentation.
 #'
 #' @param ImageId &#91;required&#93; The identifier of the image.
 #' @param AllowCopyImage &#91;required&#93; The permission to copy the image. This permission can be revoked only
 #' after an image has been shared.
-#' @param SharedAccountId &#91;required&#93; The identifier of the AWS account to share or unshare the image with.
+#' @param SharedAccountId &#91;required&#93; The identifier of the Amazon Web Services account to share or unshare
+#' the image with.
 #' 
 #' Before sharing the image, confirm that you are sharing to the correct
-#' AWS account ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_workspace_image_permission(
-#'   ImageId = "string",
-#'   AllowCopyImage = TRUE|FALSE,
-#'   SharedAccountId = "string"
-#' )
-#' ```
+#' Amazon Web Services account ID.
 #'
 #' @keywords internal
 #'

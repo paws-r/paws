@@ -9,17 +9,9 @@ globalaccelerator_delete_listener(ListenerArn)
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
 }
-\value{
-An empty list.
-}
 \description{
 Delete a listener from an accelerator.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_listener(
-  ListenerArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/delete_listener.html} for full documentation.
+}
 \keyword{internal}

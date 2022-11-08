@@ -5,7 +5,12 @@
 \title{Describes one or more VPC attachments}
 \usage{
 ec2_describe_transit_gateway_vpc_attachments(
-  TransitGatewayAttachmentIds, Filters, MaxResults, NextToken, DryRun)
+  TransitGatewayAttachmentIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayAttachmentIds}{The IDs of the attachments.}
@@ -32,60 +37,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayVpcAttachments = list(
-    list(
-      TransitGatewayAttachmentId = "string",
-      TransitGatewayId = "string",
-      VpcId = "string",
-      VpcOwnerId = "string",
-      State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
-      SubnetIds = list(
-        "string"
-      ),
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Options = list(
-        DnsSupport = "enable"|"disable",
-        Ipv6Support = "enable"|"disable",
-        ApplianceModeSupport = "enable"|"disable"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes one or more VPC attachments. By default, all VPC attachments
-are described. Alternatively, you can filter the results.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_transit_gateway_vpc_attachments(
-  TransitGatewayAttachmentIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes one or more VPC attachments. By default, all VPC attachments are described. Alternatively, you can filter the results.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_transit_gateway_vpc_attachments.html} for full documentation.
+}
 \keyword{internal}

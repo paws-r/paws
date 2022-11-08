@@ -4,7 +4,7 @@
 \alias{apigatewayv2_create_api_mapping}
 \title{Creates an API mapping}
 \usage{
-apigatewayv2_create_api_mapping(ApiId, ApiMappingKey, DomainName, Stage)
+apigatewayv2_create_api_mapping(ApiId, ApiMappingKey = NULL, DomainName, Stage)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -15,26 +15,9 @@ apigatewayv2_create_api_mapping(ApiId, ApiMappingKey, DomainName, Stage)
 
 \item{Stage}{[required] The API stage.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApiId = "string",
-  ApiMappingId = "string",
-  ApiMappingKey = "string",
-  Stage = "string"
-)
-}
-}
 \description{
 Creates an API mapping.
-}
-\section{Request syntax}{
-\preformatted{svc$create_api_mapping(
-  ApiId = "string",
-  ApiMappingKey = "string",
-  DomainName = "string",
-  Stage = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/create_api_mapping.html} for full documentation.
+}
 \keyword{internal}

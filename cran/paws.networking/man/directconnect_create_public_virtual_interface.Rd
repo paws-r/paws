@@ -4,98 +4,19 @@
 \alias{directconnect_create_public_virtual_interface}
 \title{Creates a public virtual interface}
 \usage{
-directconnect_create_public_virtual_interface(connectionId,
-  newPublicVirtualInterface)
+directconnect_create_public_virtual_interface(
+  connectionId,
+  newPublicVirtualInterface
+)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the connection.}
 
 \item{newPublicVirtualInterface}{[required] Information about the public virtual interface.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ownerAccount = "string",
-  virtualInterfaceId = "string",
-  location = "string",
-  connectionId = "string",
-  virtualInterfaceType = "string",
-  virtualInterfaceName = "string",
-  vlan = 123,
-  asn = 123,
-  amazonSideAsn = 123,
-  authKey = "string",
-  amazonAddress = "string",
-  customerAddress = "string",
-  addressFamily = "ipv4"|"ipv6",
-  virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-  customerRouterConfig = "string",
-  mtu = 123,
-  jumboFrameCapable = TRUE|FALSE,
-  virtualGatewayId = "string",
-  directConnectGatewayId = "string",
-  routeFilterPrefixes = list(
-    list(
-      cidr = "string"
-    )
-  ),
-  bgpPeers = list(
-    list(
-      bgpPeerId = "string",
-      asn = 123,
-      authKey = "string",
-      addressFamily = "ipv4"|"ipv6",
-      amazonAddress = "string",
-      customerAddress = "string",
-      bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
-      bgpStatus = "up"|"down"|"unknown",
-      awsDeviceV2 = "string"
-    )
-  ),
-  region = "string",
-  awsDeviceV2 = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates a public virtual interface. A virtual interface is the VLAN that
-transports AWS Direct Connect traffic. A public virtual interface
-supports sending traffic to public services of AWS such as Amazon S3.
+Creates a public virtual interface. A virtual interface is the VLAN that transports Direct Connect traffic. A public virtual interface supports sending traffic to public services of Amazon Web Services such as Amazon S3.
 
-When creating an IPv6 public virtual interface (\code{addressFamily} is
-\code{ipv6}), leave the \code{customer} and \code{amazon} address fields blank to use
-auto-assigned IPv6 space. Custom IPv6 addresses are not supported.
+See \url{https://paws-r.github.io/docs/directconnect/create_public_virtual_interface.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_public_virtual_interface(
-  connectionId = "string",
-  newPublicVirtualInterface = list(
-    virtualInterfaceName = "string",
-    vlan = 123,
-    asn = 123,
-    authKey = "string",
-    amazonAddress = "string",
-    customerAddress = "string",
-    addressFamily = "ipv4"|"ipv6",
-    routeFilterPrefixes = list(
-      list(
-        cidr = "string"
-      )
-    ),
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

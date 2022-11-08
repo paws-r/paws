@@ -14,6 +14,18 @@ NULL
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -25,10 +37,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -72,6 +88,8 @@ NULL
 #'  \link[=lexmodelbuildingservice_get_intent]{get_intent} \tab Returns information about an intent\cr
 #'  \link[=lexmodelbuildingservice_get_intents]{get_intents} \tab Returns intent information as follows:\cr
 #'  \link[=lexmodelbuildingservice_get_intent_versions]{get_intent_versions} \tab Gets information about all of the versions of an intent\cr
+#'  \link[=lexmodelbuildingservice_get_migration]{get_migration} \tab Provides details about an ongoing or complete migration from an Amazon Lex V1 bot to an Amazon Lex V2 bot\cr
+#'  \link[=lexmodelbuildingservice_get_migrations]{get_migrations} \tab Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2\cr
 #'  \link[=lexmodelbuildingservice_get_slot_type]{get_slot_type} \tab Returns information about a specific version of a slot type\cr
 #'  \link[=lexmodelbuildingservice_get_slot_types]{get_slot_types} \tab Returns slot type information as follows:\cr
 #'  \link[=lexmodelbuildingservice_get_slot_type_versions]{get_slot_type_versions} \tab Gets information about all versions of a slot type\cr
@@ -82,6 +100,7 @@ NULL
 #'  \link[=lexmodelbuildingservice_put_intent]{put_intent} \tab Creates an intent or replaces an existing intent\cr
 #'  \link[=lexmodelbuildingservice_put_slot_type]{put_slot_type} \tab Creates a custom slot type or replaces an existing custom slot type\cr
 #'  \link[=lexmodelbuildingservice_start_import]{start_import} \tab Starts a job to import a resource to Amazon Lex\cr
+#'  \link[=lexmodelbuildingservice_start_migration]{start_migration} \tab Starts migrating a bot from Amazon Lex V1 to Amazon Lex V2\cr
 #'  \link[=lexmodelbuildingservice_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 #'  \link[=lexmodelbuildingservice_untag_resource]{untag_resource} \tab Removes tags from a bot, bot alias or bot channel
 #' }

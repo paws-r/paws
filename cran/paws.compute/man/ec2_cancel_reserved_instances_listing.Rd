@@ -10,58 +10,9 @@ ec2_cancel_reserved_instances_listing(ReservedInstancesListingId)
 \arguments{
 \item{ReservedInstancesListingId}{[required] The ID of the Reserved Instance listing.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReservedInstancesListings = list(
-    list(
-      ClientToken = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      InstanceCounts = list(
-        list(
-          InstanceCount = 123,
-          State = "available"|"sold"|"cancelled"|"pending"
-        )
-      ),
-      PriceSchedules = list(
-        list(
-          Active = TRUE|FALSE,
-          CurrencyCode = "USD",
-          Price = 123.0,
-          Term = 123
-        )
-      ),
-      ReservedInstancesId = "string",
-      ReservedInstancesListingId = "string",
-      Status = "active"|"pending"|"cancelled"|"closed",
-      StatusMessage = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      UpdateDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Cancels the specified Reserved Instance listing in the Reserved Instance
-Marketplace.
+Cancels the specified Reserved Instance listing in the Reserved Instance Marketplace.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/cancel_reserved_instances_listing.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$cancel_reserved_instances_listing(
-  ReservedInstancesListingId = "string"
-)
-}
-}
-
 \keyword{internal}

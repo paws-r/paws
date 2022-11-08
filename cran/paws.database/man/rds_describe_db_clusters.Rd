@@ -2,10 +2,16 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_db_clusters}
 \alias{rds_describe_db_clusters}
-\title{Returns information about provisioned Aurora DB clusters}
+\title{Returns information about Amazon Aurora DB clusters and Multi-AZ DB
+clusters}
 \usage{
-rds_describe_db_clusters(DBClusterIdentifier, Filters, MaxRecords,
-  Marker, IncludeShared)
+rds_describe_db_clusters(
+  DBClusterIdentifier = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  IncludeShared = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{The user-supplied DB cluster identifier. If this parameter is specified,
@@ -21,9 +27,17 @@ Constraints:
 
 Supported filters:
 \itemize{
+\item \code{clone-group-id} - Accepts clone group identifiers. The results list
+only includes information about the DB clusters associated with
+these clone groups.
 \item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster
-Amazon Resource Names (ARNs). The results list will only include
+Amazon Resource Names (ARNs). The results list only includes
 information about the DB clusters identified by these ARNs.
+\item \code{domain} - Accepts Active Directory directory IDs. The results list
+only includes information about the DB clusters associated with
+these domains.
+\item \code{engine} - Accepts engine names. The results list only includes
+information about the DB clusters for these engines.
 }}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
@@ -41,170 +55,12 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 
 \item{IncludeShared}{Optional Boolean parameter that specifies whether the output includes
-information about clusters shared from other AWS accounts.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBClusters = list(
-    list(
-      AllocatedStorage = 123,
-      AvailabilityZones = list(
-        "string"
-      ),
-      BackupRetentionPeriod = 123,
-      CharacterSetName = "string",
-      DatabaseName = "string",
-      DBClusterIdentifier = "string",
-      DBClusterParameterGroup = "string",
-      DBSubnetGroup = "string",
-      Status = "string",
-      PercentProgress = "string",
-      EarliestRestorableTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Endpoint = "string",
-      ReaderEndpoint = "string",
-      CustomEndpoints = list(
-        "string"
-      ),
-      MultiAZ = TRUE|FALSE,
-      Engine = "string",
-      EngineVersion = "string",
-      LatestRestorableTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Port = 123,
-      MasterUsername = "string",
-      DBClusterOptionGroupMemberships = list(
-        list(
-          DBClusterOptionGroupName = "string",
-          Status = "string"
-        )
-      ),
-      PreferredBackupWindow = "string",
-      PreferredMaintenanceWindow = "string",
-      ReplicationSourceIdentifier = "string",
-      ReadReplicaIdentifiers = list(
-        "string"
-      ),
-      DBClusterMembers = list(
-        list(
-          DBInstanceIdentifier = "string",
-          IsClusterWriter = TRUE|FALSE,
-          DBClusterParameterGroupStatus = "string",
-          PromotionTier = 123
-        )
-      ),
-      VpcSecurityGroups = list(
-        list(
-          VpcSecurityGroupId = "string",
-          Status = "string"
-        )
-      ),
-      HostedZoneId = "string",
-      StorageEncrypted = TRUE|FALSE,
-      KmsKeyId = "string",
-      DbClusterResourceId = "string",
-      DBClusterArn = "string",
-      AssociatedRoles = list(
-        list(
-          RoleArn = "string",
-          Status = "string",
-          FeatureName = "string"
-        )
-      ),
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-      CloneGroupId = "string",
-      ClusterCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EarliestBacktrackTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      BacktrackWindow = 123,
-      BacktrackConsumedChangeRecords = 123,
-      EnabledCloudwatchLogsExports = list(
-        "string"
-      ),
-      Capacity = 123,
-      EngineMode = "string",
-      ScalingConfigurationInfo = list(
-        MinCapacity = 123,
-        MaxCapacity = 123,
-        AutoPause = TRUE|FALSE,
-        SecondsUntilAutoPause = 123,
-        TimeoutAction = "string"
-      ),
-      DeletionProtection = TRUE|FALSE,
-      HttpEndpointEnabled = TRUE|FALSE,
-      ActivityStreamMode = "sync"|"async",
-      ActivityStreamStatus = "stopped"|"starting"|"started"|"stopping",
-      ActivityStreamKmsKeyId = "string",
-      ActivityStreamKinesisStreamName = "string",
-      CopyTagsToSnapshot = TRUE|FALSE,
-      CrossAccountClone = TRUE|FALSE,
-      DomainMemberships = list(
-        list(
-          Domain = "string",
-          Status = "string",
-          FQDN = "string",
-          IAMRoleName = "string"
-        )
-      ),
-      TagList = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      GlobalWriteForwardingStatus = "enabled"|"disabled"|"enabling"|"disabling"|"unknown",
-      GlobalWriteForwardingRequested = TRUE|FALSE,
-      PendingModifiedValues = list(
-        PendingCloudwatchLogsExports = list(
-          LogTypesToEnable = list(
-            "string"
-          ),
-          LogTypesToDisable = list(
-            "string"
-          )
-        ),
-        DBClusterIdentifier = "string",
-        MasterUserPassword = "string",
-        IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-        EngineVersion = "string"
-      )
-    )
-  )
-)
-}
+information about clusters shared from other Amazon Web Services
+accounts.}
 }
 \description{
-Returns information about provisioned Aurora DB clusters. This API
-supports pagination.
+Returns information about Amazon Aurora DB clusters and Multi-AZ DB clusters. This API supports pagination.
 
-For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
-in the \emph{Amazon Aurora User Guide.}
-
-This operation can also return information for Amazon Neptune DB
-instances and Amazon DocumentDB instances.
+See \url{https://paws-r.github.io/docs/rds/describe_db_clusters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_db_clusters(
-  DBClusterIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string",
-  IncludeShared = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

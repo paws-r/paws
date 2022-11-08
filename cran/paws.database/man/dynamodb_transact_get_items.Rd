@@ -6,7 +6,7 @@
 multiple items from one or more tables (but not from indexes) in a
 single account and Region}
 \usage{
-dynamodb_transact_get_items(TransactItems, ReturnConsumedCapacity)
+dynamodb_transact_get_items(TransactItems, ReturnConsumedCapacity = NULL)
 }
 \arguments{
 \item{TransactItems}{[required] An ordered array of up to 25 \code{TransactGetItem} objects, each of which
@@ -16,131 +16,9 @@ contains a \code{Get} structure.}
 and a value of \code{NONE} prevents that information from being returned. No
 other value is valid.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConsumedCapacity = list(
-    list(
-      TableName = "string",
-      CapacityUnits = 123.0,
-      ReadCapacityUnits = 123.0,
-      WriteCapacityUnits = 123.0,
-      Table = list(
-        ReadCapacityUnits = 123.0,
-        WriteCapacityUnits = 123.0,
-        CapacityUnits = 123.0
-      ),
-      LocalSecondaryIndexes = list(
-        list(
-          ReadCapacityUnits = 123.0,
-          WriteCapacityUnits = 123.0,
-          CapacityUnits = 123.0
-        )
-      ),
-      GlobalSecondaryIndexes = list(
-        list(
-          ReadCapacityUnits = 123.0,
-          WriteCapacityUnits = 123.0,
-          CapacityUnits = 123.0
-        )
-      )
-    )
-  ),
-  Responses = list(
-    list(
-      Item = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-\code{\link[=dynamodb_transact_get_items]{transact_get_items}} is a synchronous
-operation that atomically retrieves multiple items from one or more
-tables (but not from indexes) in a single account and Region. A
-\code{\link[=dynamodb_transact_get_items]{transact_get_items}} call can contain up
-to 25 \code{TransactGetItem} objects, each of which contains a \code{Get}
-structure that specifies an item to retrieve from a table in the account
-and Region. A call to
-\code{\link[=dynamodb_transact_get_items]{transact_get_items}} cannot retrieve
-items from tables in more than one AWS account or Region. The aggregate
-size of the items in the transaction cannot exceed 4 MB.
+\code{\link[=dynamodb_transact_get_items]{transact_get_items}} is a synchronous operation that atomically retrieves multiple items from one or more tables (but not from indexes) in a single account and Region. A \code{\link[=dynamodb_transact_get_items]{transact_get_items}} call can contain up to 25 \code{TransactGetItem} objects, each of which contains a \code{Get} structure that specifies an item to retrieve from a table in the account and Region. A call to \code{\link[=dynamodb_transact_get_items]{transact_get_items}} cannot retrieve items from tables in more than one Amazon Web Services account or Region. The aggregate size of the items in the transaction cannot exceed 4 MB.
 
-DynamoDB rejects the entire
-\code{\link[=dynamodb_transact_get_items]{transact_get_items}} request if any of
-the following is true:
-\itemize{
-\item A conflicting operation is in the process of updating an item to be
-read.
-\item There is insufficient provisioned capacity for the transaction to be
-completed.
-\item There is a user error, such as an invalid data format.
-\item The aggregate size of the items in the transaction cannot exceed 4
-MB.
+See \url{https://paws-r.github.io/docs/dynamodb/transact_get_items.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$transact_get_items(
-  TransactItems = list(
-    list(
-      Get = list(
-        Key = list(
-          list(
-            S = "string",
-            N = "string",
-            B = raw,
-            SS = list(
-              "string"
-            ),
-            NS = list(
-              "string"
-            ),
-            BS = list(
-              raw
-            ),
-            M = list(
-              list()
-            ),
-            L = list(
-              list()
-            ),
-            NULL = TRUE|FALSE,
-            BOOL = TRUE|FALSE
-          )
-        ),
-        TableName = "string",
-        ProjectionExpression = "string",
-        ExpressionAttributeNames = list(
-          "string"
-        )
-      )
-    )
-  ),
-  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE"
-)
-}
-}
-
 \keyword{internal}

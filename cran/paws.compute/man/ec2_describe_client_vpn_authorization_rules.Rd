@@ -4,8 +4,13 @@
 \alias{ec2_describe_client_vpn_authorization_rules}
 \title{Describes the authorization rules for a specified Client VPN endpoint}
 \usage{
-ec2_describe_client_vpn_authorization_rules(ClientVpnEndpointId, DryRun,
-  NextToken, Filters, MaxResults)
+ec2_describe_client_vpn_authorization_rules(
+  ClientVpnEndpointId,
+  DryRun = NULL,
+  NextToken = NULL,
+  Filters = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -30,44 +35,9 @@ authorization rule grants access.
 page. The remaining results can be seen by sending another request with
 the nextToken value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AuthorizationRules = list(
-    list(
-      ClientVpnEndpointId = "string",
-      Description = "string",
-      GroupId = "string",
-      AccessAll = TRUE|FALSE,
-      DestinationCidr = "string",
-      Status = list(
-        Code = "authorizing"|"active"|"failed"|"revoking",
-        Message = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the authorization rules for a specified Client VPN endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_client_vpn_authorization_rules(
-  ClientVpnEndpointId = "string",
-  DryRun = TRUE|FALSE,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_client_vpn_authorization_rules.html} for full documentation.
+}
 \keyword{internal}

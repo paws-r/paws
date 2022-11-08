@@ -5,8 +5,12 @@
 \title{Executes a self-service action against a provisioned product}
 \usage{
 servicecatalog_execute_provisioned_product_service_action(
-  ProvisionedProductId, ServiceActionId, ExecuteToken, AcceptLanguage,
-  Parameters)
+  ProvisionedProductId,
+  ServiceActionId,
+  ExecuteToken,
+  AcceptLanguage = NULL,
+  Parameters = NULL
+)
 }
 \arguments{
 \item{ProvisionedProductId}{[required] The identifier of the provisioned product.}
@@ -29,57 +33,9 @@ If the parameters field is not provided, no additional parameters are
 passed and default values will be used for any special parameters such
 as \code{TARGET}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RecordDetail = list(
-    RecordId = "string",
-    ProvisionedProductName = "string",
-    Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    UpdatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ProvisionedProductType = "string",
-    RecordType = "string",
-    ProvisionedProductId = "string",
-    ProductId = "string",
-    ProvisioningArtifactId = "string",
-    PathId = "string",
-    RecordErrors = list(
-      list(
-        Code = "string",
-        Description = "string"
-      )
-    ),
-    RecordTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    LaunchRoleArn = "string"
-  )
-)
-}
-}
 \description{
 Executes a self-service action against a provisioned product.
-}
-\section{Request syntax}{
-\preformatted{svc$execute_provisioned_product_service_action(
-  ProvisionedProductId = "string",
-  ServiceActionId = "string",
-  ExecuteToken = "string",
-  AcceptLanguage = "string",
-  Parameters = list(
-    list(
-      "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/execute_provisioned_product_service_action.html} for full documentation.
+}
 \keyword{internal}

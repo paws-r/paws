@@ -9,20 +9,9 @@ appstream_delete_stack(Name)
 \arguments{
 \item{Name}{[required] The name of the stack.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified stack. After the stack is deleted, the application
-streaming environment provided by the stack is no longer available to
-users. Also, any reservations made for application streaming sessions
-for the stack are released.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_stack(
-  Name = "string"
-)
-}
-}
+Deletes the specified stack. After the stack is deleted, the application streaming environment provided by the stack is no longer available to users. Also, any reservations made for application streaming sessions for the stack are released.
 
+See \url{https://paws-r.github.io/docs/appstream/delete_stack.html} for full documentation.
+}
 \keyword{internal}

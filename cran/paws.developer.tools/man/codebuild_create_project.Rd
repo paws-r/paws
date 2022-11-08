@@ -4,11 +4,29 @@
 \alias{codebuild_create_project}
 \title{Creates a build project}
 \usage{
-codebuild_create_project(name, description, source, secondarySources,
-  sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
-  cache, environment, serviceRole, timeoutInMinutes,
-  queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-  logsConfig, fileSystemLocations, buildBatchConfig)
+codebuild_create_project(
+  name,
+  description = NULL,
+  source,
+  secondarySources = NULL,
+  sourceVersion = NULL,
+  secondarySourceVersions = NULL,
+  artifacts,
+  secondaryArtifacts = NULL,
+  cache = NULL,
+  environment,
+  serviceRole,
+  timeoutInMinutes = NULL,
+  queuedTimeoutInMinutes = NULL,
+  encryptionKey = NULL,
+  tags = NULL,
+  vpcConfig = NULL,
+  badgeEnabled = NULL,
+  logsConfig = NULL,
+  fileSystemLocations = NULL,
+  buildBatchConfig = NULL,
+  concurrentBuildLimit = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name of the build project.}
@@ -22,7 +40,7 @@ codebuild_create_project(name, description, source, secondarySources,
 \item{sourceVersion}{A version of the build input to be built for this project. If not
 specified, the latest version is used. If specified, it must be one of:
 \itemize{
-\item For AWS CodeCommit: the commit ID, branch, or Git tag to use.
+\item For CodeCommit: the commit ID, branch, or Git tag to use.
 \item For GitHub: the commit ID, pull request ID, branch name, or tag name
 that corresponds to the version of the source code you want to
 build. If a pull request ID is specified, it must use the format
@@ -33,15 +51,15 @@ the default branch's HEAD commit ID is used.
 corresponds to the version of the source code you want to build. If
 a branch name is specified, the branch's HEAD commit ID is used. If
 not specified, the default branch's HEAD commit ID is used.
-\item For Amazon Simple Storage Service (Amazon S3): the version ID of the
-object that represents the build input ZIP file to use.
+\item For Amazon S3: the version ID of the object that represents the
+build input ZIP file to use.
 }
 
 If \code{sourceVersion} is specified at the build level, then that version
 takes precedence over this \code{sourceVersion} (at the project level).
 
 For more information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html}{Source Version Sample with CodeBuild}
-in the \emph{AWS CodeBuild User Guide}.}
+in the \emph{CodeBuild User Guide}.}
 
 \item{secondarySourceVersions}{An array of \code{ProjectSourceVersion} objects. If \code{secondarySourceVersions}
 is specified at the build level, then they take precedence over these
@@ -56,19 +74,19 @@ later time.}
 
 \item{environment}{[required] Information about the build environment for the build project.}
 
-\item{serviceRole}{[required] The ARN of the AWS Identity and Access Management (IAM) role that
-enables AWS CodeBuild to interact with dependent AWS services on behalf
-of the AWS account.}
+\item{serviceRole}{[required] The ARN of the IAM role that enables CodeBuild to interact with
+dependent Amazon Web Services services on behalf of the Amazon Web
+Services account.}
 
-\item{timeoutInMinutes}{How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to wait
+\item{timeoutInMinutes}{How long, in minutes, from 5 to 480 (8 hours), for CodeBuild to wait
 before it times out any build that has not been marked as completed. The
 default is 60 minutes.}
 
 \item{queuedTimeoutInMinutes}{The number of minutes a build is allowed to be queued before it times
 out.}
 
-\item{encryptionKey}{The AWS Key Management Service (AWS KMS) customer master key (CMK) to be
-used for encrypting the build output artifacts.
+\item{encryptionKey}{The Key Management Service customer master key (CMK) to be used for
+encrypting the build output artifacts.
 
 You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
@@ -78,16 +96,16 @@ available, the CMK's alias (using the format \verb{alias/<alias-name>}).}
 
 \item{tags}{A list of tag key and value pairs associated with this build project.
 
-These tags are available for use by AWS services that support AWS
-CodeBuild build project tags.}
+These tags are available for use by Amazon Web Services services that
+support CodeBuild build project tags.}
 
-\item{vpcConfig}{VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.}
+\item{vpcConfig}{VpcConfig enables CodeBuild to access resources in an Amazon VPC.}
 
 \item{badgeEnabled}{Set this to true to generate a publicly accessible URL for your
 project's build badge.}
 
 \item{logsConfig}{Information about logs for the build project. These can be logs in
-Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.}
+CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.}
 
 \item{fileSystemLocations}{An array of \code{ProjectFileSystemLocation} objects for a CodeBuild build
 project. A \code{ProjectFileSystemLocation} object specifies the
@@ -96,356 +114,17 @@ file system created using Amazon Elastic File System.}
 
 \item{buildBatchConfig}{A ProjectBuildBatchConfig object that defines the batch build options
 for the project.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  project = list(
-    name = "string",
-    arn = "string",
-    description = "string",
-    source = list(
-      type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-      location = "string",
-      gitCloneDepth = 123,
-      gitSubmodulesConfig = list(
-        fetchSubmodules = TRUE|FALSE
-      ),
-      buildspec = "string",
-      auth = list(
-        type = "OAUTH",
-        resource = "string"
-      ),
-      reportBuildStatus = TRUE|FALSE,
-      buildStatusConfig = list(
-        context = "string",
-        targetUrl = "string"
-      ),
-      insecureSsl = TRUE|FALSE,
-      sourceIdentifier = "string"
-    ),
-    secondarySources = list(
-      list(
-        type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-        location = "string",
-        gitCloneDepth = 123,
-        gitSubmodulesConfig = list(
-          fetchSubmodules = TRUE|FALSE
-        ),
-        buildspec = "string",
-        auth = list(
-          type = "OAUTH",
-          resource = "string"
-        ),
-        reportBuildStatus = TRUE|FALSE,
-        buildStatusConfig = list(
-          context = "string",
-          targetUrl = "string"
-        ),
-        insecureSsl = TRUE|FALSE,
-        sourceIdentifier = "string"
-      )
-    ),
-    sourceVersion = "string",
-    secondarySourceVersions = list(
-      list(
-        sourceIdentifier = "string",
-        sourceVersion = "string"
-      )
-    ),
-    artifacts = list(
-      type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-      location = "string",
-      path = "string",
-      namespaceType = "NONE"|"BUILD_ID",
-      name = "string",
-      packaging = "NONE"|"ZIP",
-      overrideArtifactName = TRUE|FALSE,
-      encryptionDisabled = TRUE|FALSE,
-      artifactIdentifier = "string"
-    ),
-    secondaryArtifacts = list(
-      list(
-        type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-        location = "string",
-        path = "string",
-        namespaceType = "NONE"|"BUILD_ID",
-        name = "string",
-        packaging = "NONE"|"ZIP",
-        overrideArtifactName = TRUE|FALSE,
-        encryptionDisabled = TRUE|FALSE,
-        artifactIdentifier = "string"
-      )
-    ),
-    cache = list(
-      type = "NO_CACHE"|"S3"|"LOCAL",
-      location = "string",
-      modes = list(
-        "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-      )
-    ),
-    environment = list(
-      type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-      image = "string",
-      computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-      environmentVariables = list(
-        list(
-          name = "string",
-          value = "string",
-          type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-        )
-      ),
-      privilegedMode = TRUE|FALSE,
-      certificate = "string",
-      registryCredential = list(
-        credential = "string",
-        credentialProvider = "SECRETS_MANAGER"
-      ),
-      imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-    ),
-    serviceRole = "string",
-    timeoutInMinutes = 123,
-    queuedTimeoutInMinutes = 123,
-    encryptionKey = "string",
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    ),
-    created = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastModified = as.POSIXct(
-      "2015-01-01"
-    ),
-    webhook = list(
-      url = "string",
-      payloadUrl = "string",
-      secret = "string",
-      branchFilter = "string",
-      filterGroups = list(
-        list(
-          list(
-            type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
-            pattern = "string",
-            excludeMatchedPattern = TRUE|FALSE
-          )
-        )
-      ),
-      buildType = "BUILD"|"BUILD_BATCH",
-      lastModifiedSecret = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    vpcConfig = list(
-      vpcId = "string",
-      subnets = list(
-        "string"
-      ),
-      securityGroupIds = list(
-        "string"
-      )
-    ),
-    badge = list(
-      badgeEnabled = TRUE|FALSE,
-      badgeRequestUrl = "string"
-    ),
-    logsConfig = list(
-      cloudWatchLogs = list(
-        status = "ENABLED"|"DISABLED",
-        groupName = "string",
-        streamName = "string"
-      ),
-      s3Logs = list(
-        status = "ENABLED"|"DISABLED",
-        location = "string",
-        encryptionDisabled = TRUE|FALSE
-      )
-    ),
-    fileSystemLocations = list(
-      list(
-        type = "EFS",
-        location = "string",
-        mountPoint = "string",
-        identifier = "string",
-        mountOptions = "string"
-      )
-    ),
-    buildBatchConfig = list(
-      serviceRole = "string",
-      combineArtifacts = TRUE|FALSE,
-      restrictions = list(
-        maximumBuildsAllowed = 123,
-        computeTypesAllowed = list(
-          "string"
-        )
-      ),
-      timeoutInMins = 123
-    )
-  )
-)
-}
+
+\item{concurrentBuildLimit}{The maximum number of concurrent builds that are allowed for this
+project.
+
+New builds are only started if the current number of builds is less than
+or equal to this limit. If the current build count meets this limit, new
+builds are throttled and are not run.}
 }
 \description{
 Creates a build project.
-}
-\section{Request syntax}{
-\preformatted{svc$create_project(
-  name = "string",
-  description = "string",
-  source = list(
-    type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-    location = "string",
-    gitCloneDepth = 123,
-    gitSubmodulesConfig = list(
-      fetchSubmodules = TRUE|FALSE
-    ),
-    buildspec = "string",
-    auth = list(
-      type = "OAUTH",
-      resource = "string"
-    ),
-    reportBuildStatus = TRUE|FALSE,
-    buildStatusConfig = list(
-      context = "string",
-      targetUrl = "string"
-    ),
-    insecureSsl = TRUE|FALSE,
-    sourceIdentifier = "string"
-  ),
-  secondarySources = list(
-    list(
-      type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-      location = "string",
-      gitCloneDepth = 123,
-      gitSubmodulesConfig = list(
-        fetchSubmodules = TRUE|FALSE
-      ),
-      buildspec = "string",
-      auth = list(
-        type = "OAUTH",
-        resource = "string"
-      ),
-      reportBuildStatus = TRUE|FALSE,
-      buildStatusConfig = list(
-        context = "string",
-        targetUrl = "string"
-      ),
-      insecureSsl = TRUE|FALSE,
-      sourceIdentifier = "string"
-    )
-  ),
-  sourceVersion = "string",
-  secondarySourceVersions = list(
-    list(
-      sourceIdentifier = "string",
-      sourceVersion = "string"
-    )
-  ),
-  artifacts = list(
-    type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-    location = "string",
-    path = "string",
-    namespaceType = "NONE"|"BUILD_ID",
-    name = "string",
-    packaging = "NONE"|"ZIP",
-    overrideArtifactName = TRUE|FALSE,
-    encryptionDisabled = TRUE|FALSE,
-    artifactIdentifier = "string"
-  ),
-  secondaryArtifacts = list(
-    list(
-      type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-      location = "string",
-      path = "string",
-      namespaceType = "NONE"|"BUILD_ID",
-      name = "string",
-      packaging = "NONE"|"ZIP",
-      overrideArtifactName = TRUE|FALSE,
-      encryptionDisabled = TRUE|FALSE,
-      artifactIdentifier = "string"
-    )
-  ),
-  cache = list(
-    type = "NO_CACHE"|"S3"|"LOCAL",
-    location = "string",
-    modes = list(
-      "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-    )
-  ),
-  environment = list(
-    type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-    image = "string",
-    computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-    environmentVariables = list(
-      list(
-        name = "string",
-        value = "string",
-        type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-      )
-    ),
-    privilegedMode = TRUE|FALSE,
-    certificate = "string",
-    registryCredential = list(
-      credential = "string",
-      credentialProvider = "SECRETS_MANAGER"
-    ),
-    imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-  ),
-  serviceRole = "string",
-  timeoutInMinutes = 123,
-  queuedTimeoutInMinutes = 123,
-  encryptionKey = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  vpcConfig = list(
-    vpcId = "string",
-    subnets = list(
-      "string"
-    ),
-    securityGroupIds = list(
-      "string"
-    )
-  ),
-  badgeEnabled = TRUE|FALSE,
-  logsConfig = list(
-    cloudWatchLogs = list(
-      status = "ENABLED"|"DISABLED",
-      groupName = "string",
-      streamName = "string"
-    ),
-    s3Logs = list(
-      status = "ENABLED"|"DISABLED",
-      location = "string",
-      encryptionDisabled = TRUE|FALSE
-    )
-  ),
-  fileSystemLocations = list(
-    list(
-      type = "EFS",
-      location = "string",
-      mountPoint = "string",
-      identifier = "string",
-      mountOptions = "string"
-    )
-  ),
-  buildBatchConfig = list(
-    serviceRole = "string",
-    combineArtifacts = TRUE|FALSE,
-    restrictions = list(
-      maximumBuildsAllowed = 123,
-      computeTypesAllowed = list(
-        "string"
-      )
-    ),
-    timeoutInMins = 123
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/create_project.html} for full documentation.
+}
 \keyword{internal}

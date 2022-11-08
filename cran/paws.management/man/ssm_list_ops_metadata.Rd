@@ -2,10 +2,10 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_list_ops_metadata}
 \alias{ssm_list_ops_metadata}
-\title{Systems Manager calls this API action when displaying all Application
-Manager OpsMetadata objects or blobs}
+\title{Amazon Web Services Systems Manager calls this API operation when
+displaying all Application Manager OpsMetadata objects or blobs}
 \usage{
-ssm_list_ops_metadata(Filters, MaxResults, NextToken)
+ssm_list_ops_metadata(Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters to limit the number of OpsMetadata objects returned
@@ -18,43 +18,9 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OpsMetadataList = list(
-    list(
-      ResourceId = "string",
-      OpsMetadataArn = "string",
-      LastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedUser = "string",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Systems Manager calls this API action when displaying all Application
-Manager OpsMetadata objects or blobs.
-}
-\section{Request syntax}{
-\preformatted{svc$list_ops_metadata(
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Amazon Web Services Systems Manager calls this API operation when displaying all Application Manager OpsMetadata objects or blobs.
 
+See \url{https://paws-r.github.io/docs/ssm/list_ops_metadata.html} for full documentation.
+}
 \keyword{internal}

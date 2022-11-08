@@ -4,8 +4,11 @@
 \alias{codedeploy_register_application_revision}
 \title{Registers with AWS CodeDeploy a revision for the specified application}
 \usage{
-codedeploy_register_application_revision(applicationName, description,
-  revision)
+codedeploy_register_application_revision(
+  applicationName,
+  description = NULL,
+  revision
+)
 }
 \arguments{
 \item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user
@@ -16,40 +19,9 @@ or AWS account.}
 \item{revision}{[required] Information about the application revision to register, including type
 and location.}
 }
-\value{
-An empty list.
-}
 \description{
 Registers with AWS CodeDeploy a revision for the specified application.
-}
-\section{Request syntax}{
-\preformatted{svc$register_application_revision(
-  applicationName = "string",
-  description = "string",
-  revision = list(
-    revisionType = "S3"|"GitHub"|"String"|"AppSpecContent",
-    s3Location = list(
-      bucket = "string",
-      key = "string",
-      bundleType = "tar"|"tgz"|"zip"|"YAML"|"JSON",
-      version = "string",
-      eTag = "string"
-    ),
-    gitHubLocation = list(
-      repository = "string",
-      commitId = "string"
-    ),
-    string = list(
-      content = "string",
-      sha256 = "string"
-    ),
-    appSpecContent = list(
-      content = "string",
-      sha256 = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/register_application_revision.html} for full documentation.
+}
 \keyword{internal}

@@ -2,54 +2,63 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_head_object}
 \alias{s3_head_object}
-\title{The HEAD operation retrieves metadata from an object without returning
-the object itself}
+\title{The HEAD action retrieves metadata from an object without returning the
+object itself}
 \usage{
-s3_head_object(Bucket, IfMatch, IfModifiedSince, IfNoneMatch,
-  IfUnmodifiedSince, Key, Range, VersionId, SSECustomerAlgorithm,
-  SSECustomerKey, SSECustomerKeyMD5, RequestPayer, PartNumber,
-  ExpectedBucketOwner)
+s3_head_object(
+  Bucket,
+  IfMatch = NULL,
+  IfModifiedSince = NULL,
+  IfNoneMatch = NULL,
+  IfUnmodifiedSince = NULL,
+  Key,
+  Range = NULL,
+  VersionId = NULL,
+  SSECustomerAlgorithm = NULL,
+  SSECustomerKey = NULL,
+  SSECustomerKeyMD5 = NULL,
+  RequestPayer = NULL,
+  PartNumber = NULL,
+  ExpectedBucketOwner = NULL,
+  ChecksumMode = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the object.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see Using access
+points in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
-\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
-provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see Using
+Amazon S3 on Outposts in the \emph{Amazon S3 User Guide}.}
 
 \item{IfMatch}{Return the object only if its entity tag (ETag) is the same as the one
-specified, otherwise return a 412 (precondition failed).}
+specified; otherwise, return a 412 (precondition failed) error.}
 
-\item{IfModifiedSince}{Return the object only if it has been modified since the specified time,
-otherwise return a 304 (not modified).}
+\item{IfModifiedSince}{Return the object only if it has been modified since the specified time;
+otherwise, return a 304 (not modified) error.}
 
 \item{IfNoneMatch}{Return the object only if its entity tag (ETag) is different from the
-one specified, otherwise return a 304 (not modified).}
+one specified; otherwise, return a 304 (not modified) error.}
 
 \item{IfUnmodifiedSince}{Return the object only if it has not been modified since the specified
-time, otherwise return a 412 (precondition failed).}
+time; otherwise, return a 412 (precondition failed) error.}
 
 \item{Key}{[required] The object key.}
 
-\item{Range}{Downloads the specified range bytes of an object. For more information
-about the HTTP Range header, see
-\url{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35}.
-
-Amazon S3 doesn't support retrieving multiple ranges of data per \code{GET}
-request.}
+\item{Range}{Because \code{\link[=s3_head_object]{head_object}} returns only the metadata for an
+object, this parameter has no effect.}
 
 \item{VersionId}{VersionId used to reference a specific version of the object.}
 
@@ -73,156 +82,20 @@ that the encryption key was transmitted without error.}
 specified. Useful querying about the size of the part and the number of
 parts in this object.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DeleteMarker = TRUE|FALSE,
-  AcceptRanges = "string",
-  Expiration = "string",
-  Restore = "string",
-  ArchiveStatus = "ARCHIVE_ACCESS"|"DEEP_ARCHIVE_ACCESS",
-  LastModified = as.POSIXct(
-    "2015-01-01"
-  ),
-  ContentLength = 123,
-  ETag = "string",
-  MissingMeta = 123,
-  VersionId = "string",
-  CacheControl = "string",
-  ContentDisposition = "string",
-  ContentEncoding = "string",
-  ContentLanguage = "string",
-  ContentType = "string",
-  Expires = as.POSIXct(
-    "2015-01-01"
-  ),
-  WebsiteRedirectLocation = "string",
-  ServerSideEncryption = "AES256"|"aws:kms",
-  Metadata = list(
-    "string"
-  ),
-  SSECustomerAlgorithm = "string",
-  SSECustomerKeyMD5 = "string",
-  SSEKMSKeyId = "string",
-  BucketKeyEnabled = TRUE|FALSE,
-  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
-  RequestCharged = "requester",
-  ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA",
-  PartsCount = 123,
-  ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
-  ObjectLockRetainUntilDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  ObjectLockLegalHoldStatus = "ON"|"OFF"
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
+
+\item{ChecksumMode}{To retrieve the checksum, this parameter must be enabled.
+
+In addition, if you enable \code{ChecksumMode} and the object is encrypted
+with Amazon Web Services Key Management Service (Amazon Web Services
+KMS), you must have permission to use the \code{kms:Decrypt} action for the
+request to succeed.}
 }
 \description{
-The HEAD operation retrieves metadata from an object without returning
-the object itself. This operation is useful if you're only interested in
-an object's metadata. To use HEAD, you must have READ access to the
-object.
+The HEAD action retrieves metadata from an object without returning the object itself. This action is useful if you're only interested in an object's metadata. To use HEAD, you must have READ access to the object.
 
-A \code{HEAD} request has the same options as a \code{GET} operation on an object.
-The response is identical to the \code{GET} response except that there is no
-response body.
-
-If you encrypt an object by using server-side encryption with
-customer-provided encryption keys (SSE-C) when you store the object in
-Amazon S3, then when you retrieve the metadata from the object, you must
-use the following headers:
-\itemize{
-\item x-amz-server-side-encryption-customer-algorithm
-\item x-amz-server-side-encryption-customer-key
-\item x-amz-server-side-encryption-customer-key-MD5
-}
-
-For more information about SSE-C, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Server-Side Encryption (Using Customer-Provided Encryption Keys)}.
-
-Encryption request headers, like \code{x-amz-server-side-encryption}, should
-not be sent for GET requests if your object uses server-side encryption
-with CMKs stored in AWS KMS (SSE-KMS) or server-side encryption with
-Amazon S3–managed encryption keys (SSE-S3). If your object does use
-these types of keys, you’ll get an HTTP 400 BadRequest error.
-
-Request headers are limited to 8 KB in size. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonRequestHeaders.html}{Common Request Headers}.
-
-Consider the following when using request headers:
-\itemize{
-\item Consideration 1 – If both of the \code{If-Match} and
-\code{If-Unmodified-Since} headers are present in the request as follows:
-\itemize{
-\item \code{If-Match} condition evaluates to \code{true}, and;
-\item \code{If-Unmodified-Since} condition evaluates to \code{false};
-}
-
-Then Amazon S3 returns \verb{200 OK} and the data requested.
-\item Consideration 2 – If both of the \code{If-None-Match} and
-\code{If-Modified-Since} headers are present in the request as follows:
-\itemize{
-\item \code{If-None-Match} condition evaluates to \code{false}, and;
-\item \code{If-Modified-Since} condition evaluates to \code{true};
-}
-
-Then Amazon S3 returns the \verb{304 Not Modified} response code.
-}
-
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.
-
-\strong{Permissions}
-
-You need the \code{s3:GetObject} permission for this operation. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
-If the object you request does not exist, the error Amazon S3 returns
-depends on whether you also have the s3:ListBucket permission.
-\itemize{
-\item If you have the \code{s3:ListBucket} permission on the bucket, Amazon S3
-returns an HTTP status code 404 ("no such key") error.
-\item If you don’t have the \code{s3:ListBucket} permission, Amazon S3 returns
-an HTTP status code 403 ("access denied") error.
-}
-
-The following operation is related to \code{\link[=s3_head_object]{head_object}}:
-\itemize{
-\item \code{\link[=s3_get_object]{get_object}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$head_object(
-  Bucket = "string",
-  IfMatch = "string",
-  IfModifiedSince = as.POSIXct(
-    "2015-01-01"
-  ),
-  IfNoneMatch = "string",
-  IfUnmodifiedSince = as.POSIXct(
-    "2015-01-01"
-  ),
-  Key = "string",
-  Range = "string",
-  VersionId = "string",
-  SSECustomerAlgorithm = "string",
-  SSECustomerKey = raw,
-  SSECustomerKeyMD5 = "string",
-  RequestPayer = "requester",
-  PartNumber = 123,
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example retrieves an object metadata.
-svc$head_object(
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/head_object.html} for full documentation.
 }
 \keyword{internal}

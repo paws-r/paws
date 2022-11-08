@@ -4,8 +4,13 @@
 \alias{ec2_describe_network_interfaces}
 \title{Describes one or more of your network interfaces}
 \usage{
-ec2_describe_network_interfaces(Filters, DryRun, NetworkInterfaceIds,
-  NextToken, MaxResults)
+ec2_describe_network_interfaces(
+  Filters = NULL,
+  DryRun = NULL,
+  NetworkInterfaceIds = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -51,19 +56,26 @@ interface.
 network interface.
 \item \code{ipv6-addresses.ipv6-address} - An IPv6 address associated with the
 network interface.
+\item \code{interface-type} - The type of network interface
+(\code{api_gateway_managed} | \code{aws_codestar_connections_managed} |
+\code{branch} | \code{efa} | \code{gateway_load_balancer} |
+\code{gateway_load_balancer_endpoint} | \code{global_accelerator_managed} |
+\code{interface} | \code{iot_rules_managed} | \code{lambda} | \code{load_balancer} |
+\code{nat_gateway} | \code{network_load_balancer} | \code{quicksight} |
+\code{transit_gateway} | \code{trunk} | \code{vpc_endpoint}).
 \item \code{mac-address} - The MAC address of the network interface.
 \item \code{network-interface-id} - The ID of the network interface.
-\item \code{owner-id} - The AWS account ID of the network interface owner.
+\item \code{owner-id} - The Amazon Web Services account ID of the network
+interface owner.
 \item \code{private-ip-address} - The private IPv4 address or addresses of the
 network interface.
 \item \code{private-dns-name} - The private DNS name of the network interface
 (IPv4).
-\item \code{requester-id} - The ID of the entity that launched the instance on
-your behalf (for example, AWS Management Console, Auto Scaling, and
-so on).
+\item \code{requester-id} - The alias or Amazon Web Services account ID of the
+principal or service that created the network interface.
 \item \code{requester-managed} - Indicates whether the network interface is
-being managed by an AWS service (for example, AWS Management
-Console, Auto Scaling, and so on).
+being managed by an Amazon Web Service (for example, Amazon Web
+Services Management Console, Auto Scaling, and so on).
 \item \code{source-dest-check} - Indicates whether the network interface
 performs source/destination checking. A value of \code{true} means
 checking is enabled, and \code{false} means checking is disabled. The
@@ -74,11 +86,11 @@ interface is not attached to an instance, the status is \code{available};
 if a network interface is attached to an instance the status is
 \verb{in-use}.
 \item \code{subnet-id} - The ID of the subnet for the network interface.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -101,117 +113,9 @@ returns a token that you can specify in a subsequent call to get the
 next set of results. You cannot specify this parameter and the network
 interface IDs parameter in the same request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NetworkInterfaces = list(
-    list(
-      Association = list(
-        AllocationId = "string",
-        AssociationId = "string",
-        IpOwnerId = "string",
-        PublicDnsName = "string",
-        PublicIp = "string",
-        CustomerOwnedIp = "string",
-        CarrierIp = "string"
-      ),
-      Attachment = list(
-        AttachTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        AttachmentId = "string",
-        DeleteOnTermination = TRUE|FALSE,
-        DeviceIndex = 123,
-        NetworkCardIndex = 123,
-        InstanceId = "string",
-        InstanceOwnerId = "string",
-        Status = "attaching"|"attached"|"detaching"|"detached"
-      ),
-      AvailabilityZone = "string",
-      Description = "string",
-      Groups = list(
-        list(
-          GroupName = "string",
-          GroupId = "string"
-        )
-      ),
-      InterfaceType = "interface"|"natGateway"|"efa",
-      Ipv6Addresses = list(
-        list(
-          Ipv6Address = "string"
-        )
-      ),
-      MacAddress = "string",
-      NetworkInterfaceId = "string",
-      OutpostArn = "string",
-      OwnerId = "string",
-      PrivateDnsName = "string",
-      PrivateIpAddress = "string",
-      PrivateIpAddresses = list(
-        list(
-          Association = list(
-            AllocationId = "string",
-            AssociationId = "string",
-            IpOwnerId = "string",
-            PublicDnsName = "string",
-            PublicIp = "string",
-            CustomerOwnedIp = "string",
-            CarrierIp = "string"
-          ),
-          Primary = TRUE|FALSE,
-          PrivateDnsName = "string",
-          PrivateIpAddress = "string"
-        )
-      ),
-      RequesterId = "string",
-      RequesterManaged = TRUE|FALSE,
-      SourceDestCheck = TRUE|FALSE,
-      Status = "available"|"associated"|"attaching"|"in-use"|"detaching",
-      SubnetId = "string",
-      TagSet = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      VpcId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes one or more of your network interfaces.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_network_interfaces(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  NetworkInterfaceIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
-\examples{
-\dontrun{
-# 
-svc$describe_network_interfaces(
-  NetworkInterfaceIds = list(
-    "eni-e5aa89a3"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_network_interfaces.html} for full documentation.
 }
 \keyword{internal}

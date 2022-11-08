@@ -4,7 +4,7 @@
 \alias{autoscaling_describe_tags}
 \title{Describes the specified tags}
 \usage{
-autoscaling_describe_tags(Filters, NextToken, MaxRecords)
+autoscaling_describe_tags(Filters = NULL, NextToken = NULL, MaxRecords = NULL)
 }
 \arguments{
 \item{Filters}{One or more filters to scope the tags to return. The maximum number of
@@ -16,66 +16,9 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{50} and the maximum value is \code{100}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      ResourceId = "string",
-      ResourceType = "string",
-      Key = "string",
-      Value = "string",
-      PropagateAtLaunch = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the specified tags.
 
-You can use filters to limit the results. For example, you can query for
-the tags for a specific Auto Scaling group. You can specify multiple
-values for a filter. A tag must match at least one of the specified
-values for it to be included in the results.
-
-You can also specify multiple filters. The result includes information
-for a particular tag only if it matches all the filters. If there's no
-match, no special message is returned.
-
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html}{Tagging Auto Scaling groups and instances}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_tags(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxRecords = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the tags for the specified Auto Scaling group.
-svc$describe_tags(
-  Filters = list(
-    list(
-      Name = "auto-scaling-group",
-      Values = list(
-        "my-auto-scaling-group"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/describe_tags.html} for full documentation.
 }
 \keyword{internal}

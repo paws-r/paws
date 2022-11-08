@@ -4,10 +4,20 @@
 \alias{apigatewayv2_create_route}
 \title{Creates a Route for an API}
 \usage{
-apigatewayv2_create_route(ApiId, ApiKeyRequired, AuthorizationScopes,
-  AuthorizationType, AuthorizerId, ModelSelectionExpression,
-  OperationName, RequestModels, RequestParameters, RouteKey,
-  RouteResponseSelectionExpression, Target)
+apigatewayv2_create_route(
+  ApiId,
+  ApiKeyRequired = NULL,
+  AuthorizationScopes = NULL,
+  AuthorizationType = NULL,
+  AuthorizerId = NULL,
+  ModelSelectionExpression = NULL,
+  OperationName = NULL,
+  RequestModels = NULL,
+  RequestParameters = NULL,
+  RouteKey,
+  RouteResponseSelectionExpression = NULL,
+  Target = NULL
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -43,59 +53,9 @@ for WebSocket APIs.}
 
 \item{Target}{The target for the route.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApiGatewayManaged = TRUE|FALSE,
-  ApiKeyRequired = TRUE|FALSE,
-  AuthorizationScopes = list(
-    "string"
-  ),
-  AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
-  AuthorizerId = "string",
-  ModelSelectionExpression = "string",
-  OperationName = "string",
-  RequestModels = list(
-    "string"
-  ),
-  RequestParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteId = "string",
-  RouteKey = "string",
-  RouteResponseSelectionExpression = "string",
-  Target = "string"
-)
-}
-}
 \description{
 Creates a Route for an API.
-}
-\section{Request syntax}{
-\preformatted{svc$create_route(
-  ApiId = "string",
-  ApiKeyRequired = TRUE|FALSE,
-  AuthorizationScopes = list(
-    "string"
-  ),
-  AuthorizationType = "NONE"|"AWS_IAM"|"CUSTOM"|"JWT",
-  AuthorizerId = "string",
-  ModelSelectionExpression = "string",
-  OperationName = "string",
-  RequestModels = list(
-    "string"
-  ),
-  RequestParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteKey = "string",
-  RouteResponseSelectionExpression = "string",
-  Target = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/create_route.html} for full documentation.
+}
 \keyword{internal}

@@ -11,25 +11,9 @@ s3control_delete_storage_lens_configuration(ConfigId, AccountId)
 
 \item{AccountId}{[required] The account ID of the requester.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the Amazon S3 Storage Lens configuration. For more information
-about S3 Storage Lens, see Working with Amazon S3 Storage Lens in the
-\emph{Amazon Simple Storage Service Developer Guide}.
+Deletes the Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see Assessing your storage activity and usage with Amazon S3 Storage Lens in the \emph{Amazon S3 User Guide}.
 
-To use this action, you must have permission to perform the
-\code{s3:DeleteStorageLensConfiguration} action. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html#storage_lens_IAM}{Setting permissions to use Amazon S3 Storage Lens}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+See \url{https://paws-r.github.io/docs/s3control/delete_storage_lens_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_storage_lens_configuration(
-  ConfigId = "string",
-  AccountId = "string"
-)
-}
-}
-
 \keyword{internal}

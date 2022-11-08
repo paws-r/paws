@@ -2,26 +2,13 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_disassociate_from_master_account}
 \alias{securityhub_disassociate_from_master_account}
-\title{Disassociates the current Security Hub member account from the
-associated master account}
+\title{This method is deprecated}
 \usage{
 securityhub_disassociate_from_master_account()
 }
-\value{
-An empty list.
-}
 \description{
-Disassociates the current Security Hub member account from the
-associated master account.
+This method is deprecated. Instead, use \code{\link[=securityhub_disassociate_from_administrator_account]{disassociate_from_administrator_account}}.
 
-This operation is only used by accounts that are not part of an
-organization. For organization accounts, only the master account (the
-designated Security Hub administrator) can disassociate a member
-account.
+See \url{https://paws-r.github.io/docs/securityhub/disassociate_from_master_account.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disassociate_from_master_account()
-}
-}
-
 \keyword{internal}

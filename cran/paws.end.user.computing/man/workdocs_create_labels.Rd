@@ -5,7 +5,7 @@
 \title{Adds the specified list of labels to the given resource (a document or
 folder)}
 \usage{
-workdocs_create_labels(ResourceId, Labels, AuthenticationToken)
+workdocs_create_labels(ResourceId, Labels, AuthenticationToken = NULL)
 }
 \arguments{
 \item{ResourceId}{[required] The ID of the resource.}
@@ -15,22 +15,9 @@ workdocs_create_labels(ResourceId, Labels, AuthenticationToken)
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
 administrator credentials to access the API.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds the specified list of labels to the given resource (a document or
-folder)
-}
-\section{Request syntax}{
-\preformatted{svc$create_labels(
-  ResourceId = "string",
-  Labels = list(
-    "string"
-  ),
-  AuthenticationToken = "string"
-)
-}
-}
+Adds the specified list of labels to the given resource (a document or folder)
 
+See \url{https://paws-r.github.io/docs/workdocs/create_labels.html} for full documentation.
+}
 \keyword{internal}

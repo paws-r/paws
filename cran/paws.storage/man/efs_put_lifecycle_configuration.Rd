@@ -2,8 +2,8 @@
 % Please edit documentation in R/efs_operations.R
 \name{efs_put_lifecycle_configuration}
 \alias{efs_put_lifecycle_configuration}
-\title{Enables lifecycle management by creating a new LifecycleConfiguration
-object}
+\title{Use this action to manage EFS lifecycle management and intelligent
+tiering}
 \usage{
 efs_put_lifecycle_configuration(FileSystemId, LifecyclePolicies)
 }
@@ -12,80 +12,27 @@ efs_put_lifecycle_configuration(FileSystemId, LifecyclePolicies)
 \code{LifecycleConfiguration} object (String).}
 
 \item{LifecyclePolicies}{[required] An array of \code{LifecyclePolicy} objects that define the file system's
-\code{LifecycleConfiguration} object. A \code{LifecycleConfiguration} object tells
-lifecycle management when to transition files from the Standard storage
-class to the Infrequent Access storage class.}
+\code{LifecycleConfiguration} object. A \code{LifecycleConfiguration} object
+informs EFS lifecycle management and EFS Intelligent-Tiering of the
+following:
+\itemize{
+\item When to move files in the file system from primary storage to the IA
+storage class.
+\item When to move files that are in IA storage to primary storage.
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LifecyclePolicies = list(
-    list(
-      TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
-    )
-  )
-)
-}
+
+When using the \code{put-lifecycle-configuration} CLI command or the
+\code{\link[=efs_put_lifecycle_configuration]{put_lifecycle_configuration}} API
+action, Amazon EFS requires that each \code{LifecyclePolicy} object have only
+a single transition. This means that in a request body,
+\code{LifecyclePolicies} must be structured as an array of \code{LifecyclePolicy}
+objects, one object for each transition, \code{TransitionToIA},
+\code{TransitionToPrimaryStorageClass}. See the example requests in the
+following section for more information.}
 }
 \description{
-Enables lifecycle management by creating a new \code{LifecycleConfiguration}
-object. A \code{LifecycleConfiguration} object defines when files in an
-Amazon EFS file system are automatically transitioned to the lower-cost
-EFS Infrequent Access (IA) storage class. A \code{LifecycleConfiguration}
-applies to all files in a file system.
+Use this action to manage EFS lifecycle management and intelligent tiering. A \code{LifecycleConfiguration} consists of one or more \code{LifecyclePolicy} objects that define the following:
 
-Each Amazon EFS file system supports one lifecycle configuration, which
-applies to all files in the file system. If a \code{LifecycleConfiguration}
-object already exists for the specified file system, a
-\code{\link[=efs_put_lifecycle_configuration]{put_lifecycle_configuration}} call
-modifies the existing configuration. A
-\code{\link[=efs_put_lifecycle_configuration]{put_lifecycle_configuration}} call
-with an empty \code{LifecyclePolicies} array in the request body deletes any
-existing \code{LifecycleConfiguration} and disables lifecycle management.
-
-In the request, specify the following:
-\itemize{
-\item The ID for the file system for which you are enabling, disabling, or
-modifying lifecycle management.
-\item A \code{LifecyclePolicies} array of \code{LifecyclePolicy} objects that define
-when files are moved to the IA storage class. The array can contain
-only one \code{LifecyclePolicy} item.
-}
-
-This operation requires permissions for the
-\code{elasticfilesystem:PutLifecycleConfiguration} operation.
-
-To apply a \code{LifecycleConfiguration} object to an encrypted file system,
-you need the same AWS Key Management Service (AWS KMS) permissions as
-when you created the encrypted file system.
-}
-\section{Request syntax}{
-\preformatted{svc$put_lifecycle_configuration(
-  FileSystemId = "string",
-  LifecyclePolicies = list(
-    list(
-      TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation enables lifecycle management on a file system by creating
-# a new LifecycleConfiguration object. A LifecycleConfiguration object
-# defines when files in an Amazon EFS file system are automatically
-# transitioned to the lower-cost EFS Infrequent Access (IA) storage class.
-# A LifecycleConfiguration applies to all files in a file system.
-svc$put_lifecycle_configuration(
-  FileSystemId = "fs-01234567",
-  LifecyclePolicies = list(
-    list(
-      TransitionToIA = "AFTER_30_DAYS"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/efs/put_lifecycle_configuration.html} for full documentation.
 }
 \keyword{internal}

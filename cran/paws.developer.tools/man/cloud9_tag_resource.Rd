@@ -2,36 +2,19 @@
 % Please edit documentation in R/cloud9_operations.R
 \name{cloud9_tag_resource}
 \alias{cloud9_tag_resource}
-\title{Adds tags to an AWS Cloud9 development environment}
+\title{Adds tags to an Cloud9 development environment}
 \usage{
 cloud9_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the AWS Cloud9 development environment
-to add tags to.}
+\item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the Cloud9 development environment to
+add tags to.}
 
-\item{Tags}{[required] The list of tags to add to the given AWS Cloud9 development environment.}
-}
-\value{
-An empty list.
+\item{Tags}{[required] The list of tags to add to the given Cloud9 development environment.}
 }
 \description{
-Adds tags to an AWS Cloud9 development environment.
+Adds tags to an Cloud9 development environment.
 
-Tags that you add to an AWS Cloud9 environment by using this method will
-NOT be automatically propagated to underlying resources.
+See \url{https://paws-r.github.io/docs/cloud9/tag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceARN = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

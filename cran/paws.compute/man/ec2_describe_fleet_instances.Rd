@@ -4,8 +4,13 @@
 \alias{ec2_describe_fleet_instances}
 \title{Describes the running instances for the specified EC2 Fleet}
 \usage{
-ec2_describe_fleet_instances(DryRun, MaxResults, NextToken, FleetId,
-  Filters)
+ec2_describe_fleet_instances(
+  DryRun = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  FleetId,
+  Filters = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -27,40 +32,9 @@ value.}
 \item \code{instance-type} - The instance type.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ActiveInstances = list(
-    list(
-      InstanceId = "string",
-      InstanceType = "string",
-      SpotInstanceRequestId = "string",
-      InstanceHealth = "healthy"|"unhealthy"
-    )
-  ),
-  NextToken = "string",
-  FleetId = "string"
-)
-}
-}
 \description{
 Describes the running instances for the specified EC2 Fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_fleet_instances(
-  DryRun = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string",
-  FleetId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_fleet_instances.html} for full documentation.
+}
 \keyword{internal}

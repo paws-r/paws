@@ -4,7 +4,7 @@
 \alias{ec2_deregister_image}
 \title{Deregisters the specified AMI}
 \usage{
-ec2_deregister_image(ImageId, DryRun)
+ec2_deregister_image(ImageId, DryRun = NULL)
 }
 \arguments{
 \item{ImageId}{[required] The ID of the AMI.}
@@ -14,27 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
-Deregisters the specified AMI. After you deregister an AMI, it can't be
-used to launch new instances; however, it doesn't affect any instances
-that you've already launched from the AMI. You'll continue to incur
-usage costs for those instances until you terminate them.
+Deregisters the specified AMI. After you deregister an AMI, it can't be used to launch new instances.
 
-When you deregister an Amazon EBS-backed AMI, it doesn't affect the
-snapshot that was created for the root volume of the instance during the
-AMI creation process. When you deregister an instance store-backed AMI,
-it doesn't affect the files that you uploaded to Amazon S3 when you
-created the AMI.
+See \url{https://paws-r.github.io/docs/ec2/deregister_image.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$deregister_image(
-  ImageId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

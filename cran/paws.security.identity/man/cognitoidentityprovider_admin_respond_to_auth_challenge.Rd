@@ -4,9 +4,16 @@
 \alias{cognitoidentityprovider_admin_respond_to_auth_challenge}
 \title{Responds to an authentication challenge, as an administrator}
 \usage{
-cognitoidentityprovider_admin_respond_to_auth_challenge(UserPoolId,
-  ClientId, ChallengeName, ChallengeResponses, Session, AnalyticsMetadata,
-  ContextData, ClientMetadata)
+cognitoidentityprovider_admin_respond_to_auth_challenge(
+  UserPoolId,
+  ClientId,
+  ChallengeName,
+  ChallengeResponses = NULL,
+  Session = NULL,
+  AnalyticsMetadata = NULL,
+  ContextData = NULL,
+  ClientMetadata = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The ID of the Amazon Cognito user pool.}
@@ -24,29 +31,49 @@ is configured with client secret).
 \item \code{PASSWORD_VERIFIER}: \code{PASSWORD_CLAIM_SIGNATURE},
 \code{PASSWORD_CLAIM_SECRET_BLOCK}, \code{TIMESTAMP}, \code{USERNAME},
 \code{SECRET_HASH} (if app client is configured with client secret).
+
+\code{PASSWORD_VERIFIER} requires \code{DEVICE_KEY} when signing in with a
+remembered device.
 \item \code{ADMIN_NO_SRP_AUTH}: \code{PASSWORD}, \code{USERNAME}, \code{SECRET_HASH} (if app
 client is configured with client secret).
-\item \code{NEW_PASSWORD_REQUIRED}: \code{NEW_PASSWORD}, any other required
-attributes, \code{USERNAME}, \code{SECRET_HASH} (if app client is configured
-with client secret).
+\item \code{NEW_PASSWORD_REQUIRED}: \code{NEW_PASSWORD}, \code{USERNAME}, \code{SECRET_HASH}
+(if app client is configured with client secret). To set any
+required attributes that Amazon Cognito returned as
+\code{requiredAttributes} in the
+\code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}
+response, add a \code{userAttributes.attributename } parameter. This
+parameter can also set values for writable attributes that aren't
+required by your user pool.
+
+In a \code{NEW_PASSWORD_REQUIRED} challenge response, you can't modify a
+required attribute that already has a value. In
+\code{\link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge}},
+set a value for any keys that Amazon Cognito returned in the
+\code{requiredAttributes} parameter, then use the
+\code{\link[=cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes}}
+API operation to modify the value of any additional attributes.
+\item \code{MFA_SETUP} requires \code{USERNAME}, plus you must use the session value
+returned by
+\code{\link[=cognitoidentityprovider_verify_software_token]{verify_software_token}}
+in the \code{Session} parameter.
 }
 
 The value of the \code{USERNAME} attribute must be the user's actual
-username, not an alias (such as email address or phone number). To make
-this easier, the
+username, not an alias (such as an email address or phone number). To
+make this simpler, the
 \code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}
 response includes the actual username value in the
-\code{USERNAMEUSER_ID_FOR_SRP} attribute, even if you specified an alias in
-your call to
+\code{USERNAMEUSER_ID_FOR_SRP} attribute. This happens even if you specified
+an alias in your call to
 \code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}.}
 
-\item{Session}{The session which should be passed both ways in challenge-response calls
-to the service. If
+\item{Session}{The session that should be passed both ways in challenge-response calls
+to the service. If an
 \code{\link[=cognitoidentityprovider_initiate_auth]{initiate_auth}} or
 \code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}}
-API call determines that the caller needs to go through another
-challenge, they return a session with other challenge parameters. This
-session should be passed as it is to the next
+API call determines that the caller must pass another challenge, it
+returns a session with other challenge parameters. This session should
+be passed as it is to the next
 \code{\link[=cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge}}
 API call.}
 
@@ -54,97 +81,54 @@ API call.}
 \code{\link[=cognitoidentityprovider_admin_respond_to_auth_challenge]{admin_respond_to_auth_challenge}}
 calls.}
 
-\item{ContextData}{Contextual data such as the user's device fingerprint, IP address, or
-location used for evaluating the risk of an unexpected event by Amazon
-Cognito advanced security.}
+\item{ContextData}{Contextual data about your user session, such as the device fingerprint,
+IP address, or location. Amazon Cognito advanced security evaluates the
+risk of an authentication event based on the context that your app
+generates and passes to Amazon Cognito when it makes API requests.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
 
-You create custom workflows by assigning AWS Lambda functions to user
-pool triggers. When you use the AdminRespondToAuthChallenge API action,
-Amazon Cognito invokes any functions that are assigned to the following
-triggers: \emph{pre sign-up}, \emph{custom message}, \emph{post authentication}, \emph{user
-migration}, \emph{pre token generation}, \emph{define auth challenge}, \emph{create
-auth challenge}, and \emph{verify auth challenge response}. When Amazon
-Cognito invokes any of these functions, it passes a JSON payload, which
-the function receives as input. This payload contains a \code{clientMetadata}
-attribute, which provides the data that you assigned to the
-ClientMetadata parameter in your AdminRespondToAuthChallenge request. In
-your function code in AWS Lambda, you can process the \code{clientMetadata}
-value to enhance your workflow for your specific needs.
+You create custom workflows by assigning Lambda functions to user pool
+triggers. When you use the AdminRespondToAuthChallenge API action,
+Amazon Cognito invokes any functions that you have assigned to the
+following triggers:
+\itemize{
+\item pre sign-up
+\item custom message
+\item post authentication
+\item user migration
+\item pre token generation
+\item define auth challenge
+\item create auth challenge
+\item verify auth challenge response
+}
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing User Pool Workflows with Lambda Triggers}
+When Amazon Cognito invokes any of these functions, it passes a JSON
+payload, which the function receives as input. This payload contains a
+\code{clientMetadata} attribute that provides the data that you assigned to
+the ClientMetadata parameter in your AdminRespondToAuthChallenge
+request. In your function code in Lambda, you can process the
+\code{clientMetadata} value to enhance your workflow for your specific needs.
+
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-Take the following limitations into consideration when you use the
-ClientMetadata parameter:
+When you use the ClientMetadata parameter, remember that Amazon Cognito
+won't do the following:
 \itemize{
-\item Amazon Cognito does not store the ClientMetadata value. This data is
-available only to AWS Lambda triggers that are assigned to a user
-pool to support custom workflows. If your user pool configuration
-does not include triggers, the ClientMetadata parameter serves no
-purpose.
-\item Amazon Cognito does not validate the ClientMetadata value.
-\item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don't use it to provide sensitive information.
+\item Store the ClientMetadata value. This data is available only to
+Lambda triggers that are assigned to a user pool to support custom
+workflows. If your user pool configuration doesn't include triggers,
+the ClientMetadata parameter serves no purpose.
+\item Validate the ClientMetadata value.
+\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
+provide sensitive information.
 }}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
-  Session = "string",
-  ChallengeParameters = list(
-    "string"
-  ),
-  AuthenticationResult = list(
-    AccessToken = "string",
-    ExpiresIn = 123,
-    TokenType = "string",
-    RefreshToken = "string",
-    IdToken = "string",
-    NewDeviceMetadata = list(
-      DeviceKey = "string",
-      DeviceGroupKey = "string"
-    )
-  )
-)
-}
 }
 \description{
 Responds to an authentication challenge, as an administrator.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_respond_to_auth_challenge.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_respond_to_auth_challenge(
-  UserPoolId = "string",
-  ClientId = "string",
-  ChallengeName = "SMS_MFA"|"SOFTWARE_TOKEN_MFA"|"SELECT_MFA_TYPE"|"MFA_SETUP"|"PASSWORD_VERIFIER"|"CUSTOM_CHALLENGE"|"DEVICE_SRP_AUTH"|"DEVICE_PASSWORD_VERIFIER"|"ADMIN_NO_SRP_AUTH"|"NEW_PASSWORD_REQUIRED",
-  ChallengeResponses = list(
-    "string"
-  ),
-  Session = "string",
-  AnalyticsMetadata = list(
-    AnalyticsEndpointId = "string"
-  ),
-  ContextData = list(
-    IpAddress = "string",
-    ServerName = "string",
-    ServerPath = "string",
-    HttpHeaders = list(
-      list(
-        headerName = "string",
-        headerValue = "string"
-      )
-    ),
-    EncodedData = "string"
-  ),
-  ClientMetadata = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

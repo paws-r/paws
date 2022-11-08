@@ -4,7 +4,12 @@
 \alias{lambda_list_aliases}
 \title{Returns a list of aliases for a Lambda function}
 \usage{
-lambda_list_aliases(FunctionName, FunctionVersion, Marker, MaxItems)
+lambda_list_aliases(
+  FunctionName,
+  FunctionVersion = NULL,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -28,49 +33,9 @@ retrieve the next page of results.}
 
 \item{MaxItems}{Limit the number of aliases returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextMarker = "string",
-  Aliases = list(
-    list(
-      AliasArn = "string",
-      Name = "string",
-      FunctionVersion = "string",
-      Description = "string",
-      RoutingConfig = list(
-        AdditionalVersionWeights = list(
-          123.0
-        )
-      ),
-      RevisionId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of
-\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{aliases}
-for a Lambda function.
-}
-\section{Request syntax}{
-\preformatted{svc$list_aliases(
-  FunctionName = "string",
-  FunctionVersion = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+Returns a list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{aliases} for a Lambda function.
 
-\examples{
-\dontrun{
-# The following example returns a list of aliases for a function named
-# my-function.
-svc$list_aliases(
-  FunctionName = "my-function"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/list_aliases.html} for full documentation.
 }
 \keyword{internal}

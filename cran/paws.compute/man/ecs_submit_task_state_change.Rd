@@ -5,8 +5,18 @@
 \title{This action is only used by the Amazon ECS agent, and it is not intended
 for use outside of the agent}
 \usage{
-ecs_submit_task_state_change(cluster, task, status, reason, containers,
-  attachments, pullStartedAt, pullStoppedAt, executionStoppedAt)
+ecs_submit_task_state_change(
+  cluster = NULL,
+  task = NULL,
+  status = NULL,
+  reason = NULL,
+  containers = NULL,
+  attachments = NULL,
+  managedAgents = NULL,
+  pullStartedAt = NULL,
+  pullStoppedAt = NULL,
+  executionStoppedAt = NULL
+)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
@@ -18,69 +28,21 @@ hosts the task.}
 
 \item{reason}{The reason for the state change request.}
 
-\item{containers}{Any containers associated with the state change request.}
+\item{containers}{Any containers that's associated with the state change request.}
 
 \item{attachments}{Any attachments associated with the state change request.}
 
-\item{pullStartedAt}{The Unix timestamp for when the container image pull began.}
+\item{managedAgents}{The details for the managed agent that's associated with the task.}
 
-\item{pullStoppedAt}{The Unix timestamp for when the container image pull completed.}
+\item{pullStartedAt}{The Unix timestamp for the time when the container image pull started.}
 
-\item{executionStoppedAt}{The Unix timestamp for when the task execution stopped.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  acknowledgment = "string"
-)
-}
+\item{pullStoppedAt}{The Unix timestamp for the time when the container image pull completed.}
+
+\item{executionStoppedAt}{The Unix timestamp for the time when the task execution stopped.}
 }
 \description{
-This action is only used by the Amazon ECS agent, and it is not intended
-for use outside of the agent.
+This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 
-Sent to acknowledge that a task changed states.
+See \url{https://paws-r.github.io/docs/ecs/submit_task_state_change.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$submit_task_state_change(
-  cluster = "string",
-  task = "string",
-  status = "string",
-  reason = "string",
-  containers = list(
-    list(
-      containerName = "string",
-      imageDigest = "string",
-      runtimeId = "string",
-      exitCode = 123,
-      networkBindings = list(
-        list(
-          bindIP = "string",
-          containerPort = 123,
-          hostPort = 123,
-          protocol = "tcp"|"udp"
-        )
-      ),
-      reason = "string",
-      status = "string"
-    )
-  ),
-  attachments = list(
-    list(
-      attachmentArn = "string",
-      status = "string"
-    )
-  ),
-  pullStartedAt = as.POSIXct(
-    "2015-01-01"
-  ),
-  pullStoppedAt = as.POSIXct(
-    "2015-01-01"
-  ),
-  executionStoppedAt = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
-
 \keyword{internal}

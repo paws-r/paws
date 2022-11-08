@@ -2,31 +2,14 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_get_compliance_summary_by_config_rule}
 \alias{configservice_get_compliance_summary_by_config_rule}
-\title{Returns the number of AWS Config rules that are compliant and
-noncompliant, up to a maximum of 25 for each}
+\title{Returns the number of Config rules that are compliant and noncompliant,
+up to a maximum of 25 for each}
 \usage{
 configservice_get_compliance_summary_by_config_rule()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ComplianceSummary = list(
-    CompliantResourceCount = list(
-      CappedCount = 123,
-      CapExceeded = TRUE|FALSE
-    ),
-    NonCompliantResourceCount = list(
-      CappedCount = 123,
-      CapExceeded = TRUE|FALSE
-    ),
-    ComplianceSummaryTimestamp = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Returns the number of AWS Config rules that are compliant and
-noncompliant, up to a maximum of 25 for each.
+Returns the number of Config rules that are compliant and noncompliant, up to a maximum of 25 for each.
+
+See \url{https://paws-r.github.io/docs/configservice/get_compliance_summary_by_config_rule.html} for full documentation.
 }
 \keyword{internal}

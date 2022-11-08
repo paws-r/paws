@@ -11,25 +11,9 @@ codestar_tag_project(id, tags)
 
 \item{tags}{[required] The tags you want to add to the project.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Adds tags to a project.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_project(
-  id = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codestar/tag_project.html} for full documentation.
+}
 \keyword{internal}

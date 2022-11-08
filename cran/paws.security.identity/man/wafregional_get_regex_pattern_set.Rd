@@ -12,35 +12,9 @@ wafregional_get_regex_pattern_set(RegexPatternSetId)
 \code{\link[=wafregional_create_regex_pattern_set]{create_regex_pattern_set}} and
 by \code{\link[=wafregional_list_regex_pattern_sets]{list_regex_pattern_sets}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RegexPatternSet = list(
-    RegexPatternSetId = "string",
-    Name = "string",
-    RegexPatternStrings = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Returns the RegexPatternSet specified by \code{RegexPatternSetId}.
+See \url{https://paws-r.github.io/docs/wafregional/get_regex_pattern_set.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_regex_pattern_set(
-  RegexPatternSetId = "string"
-)
-}
-}
-
 \keyword{internal}

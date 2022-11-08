@@ -5,8 +5,14 @@
 \title{Updates the configuration of your Amazon Lightsail container service,
 such as its power, scale, and public domain names}
 \usage{
-lightsail_update_container_service(serviceName, power, scale,
-  isDisabled, publicDomainNames)
+lightsail_update_container_service(
+  serviceName,
+  power = NULL,
+  scale = NULL,
+  isDisabled = NULL,
+  publicDomainNames = NULL,
+  privateRegistryAccess = NULL
+)
 }
 \arguments{
 \item{serviceName}{[required] The name of the container service to update.}
@@ -52,126 +58,18 @@ container service.
 
 You can specify public domain names using a string to array map as shown
 in the example later on this page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  containerService = list(
-    containerServiceName = "string",
-    arn = "string",
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    location = list(
-      availabilityZone = "string",
-      regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-    ),
-    resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    ),
-    power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
-    powerId = "string",
-    state = "PENDING"|"READY"|"RUNNING"|"UPDATING"|"DELETING"|"DISABLED",
-    scale = 123,
-    currentDeployment = list(
-      version = 123,
-      state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-      containers = list(
-        list(
-          image = "string",
-          command = list(
-            "string"
-          ),
-          environment = list(
-            "string"
-          ),
-          ports = list(
-            "HTTP"|"HTTPS"|"TCP"|"UDP"
-          )
-        )
-      ),
-      publicEndpoint = list(
-        containerName = "string",
-        containerPort = 123,
-        healthCheck = list(
-          healthyThreshold = 123,
-          unhealthyThreshold = 123,
-          timeoutSeconds = 123,
-          intervalSeconds = 123,
-          path = "string",
-          successCodes = "string"
-        )
-      ),
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    nextDeployment = list(
-      version = 123,
-      state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-      containers = list(
-        list(
-          image = "string",
-          command = list(
-            "string"
-          ),
-          environment = list(
-            "string"
-          ),
-          ports = list(
-            "HTTP"|"HTTPS"|"TCP"|"UDP"
-          )
-        )
-      ),
-      publicEndpoint = list(
-        containerName = "string",
-        containerPort = 123,
-        healthCheck = list(
-          healthyThreshold = 123,
-          unhealthyThreshold = 123,
-          timeoutSeconds = 123,
-          intervalSeconds = 123,
-          path = "string",
-          successCodes = "string"
-        )
-      ),
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    isDisabled = TRUE|FALSE,
-    principalArn = "string",
-    privateDomainName = "string",
-    publicDomainNames = list(
-      list(
-        "string"
-      )
-    ),
-    url = "string"
-  )
-)
-}
+
+\item{privateRegistryAccess}{An object to describe the configuration for the container service to
+access private container image repositories, such as Amazon Elastic
+Container Registry (Amazon ECR) private repositories.
+
+For more information, see Configuring access to an Amazon ECR private
+repository for an Amazon Lightsail container service in the \emph{Amazon
+Lightsail Developer Guide}.}
 }
 \description{
-Updates the configuration of your Amazon Lightsail container service,
-such as its power, scale, and public domain names.
-}
-\section{Request syntax}{
-\preformatted{svc$update_container_service(
-  serviceName = "string",
-  power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
-  scale = 123,
-  isDisabled = TRUE|FALSE,
-  publicDomainNames = list(
-    list(
-      "string"
-    )
-  )
-)
-}
-}
+Updates the configuration of your Amazon Lightsail container service, such as its power, scale, and public domain names.
 
+See \url{https://paws-r.github.io/docs/lightsail/update_container_service.html} for full documentation.
+}
 \keyword{internal}

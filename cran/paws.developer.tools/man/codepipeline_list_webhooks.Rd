@@ -4,7 +4,7 @@
 \alias{codepipeline_list_webhooks}
 \title{Gets a listing of all the webhooks in this AWS Region for this account}
 \usage{
-codepipeline_list_webhooks(NextToken, MaxResults)
+codepipeline_list_webhooks(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The token that was returned from the previous ListWebhooks call, which
@@ -14,56 +14,9 @@ can be used to return the next set of webhooks in the list.}
 the remaining results, make another call with the returned nextToken
 value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  webhooks = list(
-    list(
-      definition = list(
-        name = "string",
-        targetPipeline = "string",
-        targetAction = "string",
-        filters = list(
-          list(
-            jsonPath = "string",
-            matchEquals = "string"
-          )
-        ),
-        authentication = "GITHUB_HMAC"|"IP"|"UNAUTHENTICATED",
-        authenticationConfiguration = list(
-          AllowedIPRange = "string",
-          SecretToken = "string"
-        )
-      ),
-      url = "string",
-      errorMessage = "string",
-      errorCode = "string",
-      lastTriggered = as.POSIXct(
-        "2015-01-01"
-      ),
-      arn = "string",
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Gets a listing of all the webhooks in this AWS Region for this account.
-The output lists all webhooks and includes the webhook URL and ARN and
-the configuration for each webhook.
-}
-\section{Request syntax}{
-\preformatted{svc$list_webhooks(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Gets a listing of all the webhooks in this AWS Region for this account. The output lists all webhooks and includes the webhook URL and ARN and the configuration for each webhook.
 
+See \url{https://paws-r.github.io/docs/codepipeline/list_webhooks.html} for full documentation.
+}
 \keyword{internal}

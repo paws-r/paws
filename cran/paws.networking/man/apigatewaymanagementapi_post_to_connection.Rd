@@ -11,18 +11,9 @@ apigatewaymanagementapi_post_to_connection(Data, ConnectionId)
 
 \item{ConnectionId}{[required] The identifier of the connection that a specific client is using.}
 }
-\value{
-An empty list.
-}
 \description{
 Sends the provided data to the specified connection.
-}
-\section{Request syntax}{
-\preformatted{svc$post_to_connection(
-  Data = raw,
-  ConnectionId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewaymanagementapi/post_to_connection.html} for full documentation.
+}
 \keyword{internal}

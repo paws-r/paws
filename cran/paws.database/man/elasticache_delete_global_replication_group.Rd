@@ -2,75 +2,22 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_delete_global_replication_group}
 \alias{elasticache_delete_global_replication_group}
-\title{Deleting a Global Datastore is a two-step process:}
+\title{Deleting a Global datastore is a two-step process:}
 \usage{
-elasticache_delete_global_replication_group(GlobalReplicationGroupId,
-  RetainPrimaryReplicationGroup)
+elasticache_delete_global_replication_group(
+  GlobalReplicationGroupId,
+  RetainPrimaryReplicationGroup
+)
 }
 \arguments{
-\item{GlobalReplicationGroupId}{[required] The name of the Global Datastore}
+\item{GlobalReplicationGroupId}{[required] The name of the Global datastore}
 
 \item{RetainPrimaryReplicationGroup}{[required] The primary replication group is retained as a standalone replication
 group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GlobalReplicationGroup = list(
-    GlobalReplicationGroupId = "string",
-    GlobalReplicationGroupDescription = "string",
-    Status = "string",
-    CacheNodeType = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    Members = list(
-      list(
-        ReplicationGroupId = "string",
-        ReplicationGroupRegion = "string",
-        Role = "string",
-        AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
-        Status = "string"
-      )
-    ),
-    ClusterEnabled = TRUE|FALSE,
-    GlobalNodeGroups = list(
-      list(
-        GlobalNodeGroupId = "string",
-        Slots = "string"
-      )
-    ),
-    AuthTokenEnabled = TRUE|FALSE,
-    TransitEncryptionEnabled = TRUE|FALSE,
-    AtRestEncryptionEnabled = TRUE|FALSE,
-    ARN = "string"
-  )
-)
-}
-}
 \description{
-Deleting a Global Datastore is a two-step process:
-\itemize{
-\item First, you must
-\code{\link[=elasticache_disassociate_global_replication_group]{disassociate_global_replication_group}}
-to remove the secondary clusters in the Global Datastore.
-\item Once the Global Datastore contains only the primary cluster, you can
-use DeleteGlobalReplicationGroup API to delete the Global Datastore
-while retainining the primary cluster using Retain…= true.
-}
+Deleting a Global datastore is a two-step process:
 
-Since the Global Datastore has only a primary cluster, you can delete
-the Global Datastore while retaining the primary by setting
-\code{RetainPrimaryCluster=true}.
-
-When you receive a successful response from this operation, Amazon
-ElastiCache immediately begins deleting the selected resources; you
-cannot cancel or revert this operation.
+See \url{https://paws-r.github.io/docs/elasticache/delete_global_replication_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_global_replication_group(
-  GlobalReplicationGroupId = "string",
-  RetainPrimaryReplicationGroup = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

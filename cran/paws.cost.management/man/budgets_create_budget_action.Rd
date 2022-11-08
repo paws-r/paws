@@ -4,9 +4,17 @@
 \alias{budgets_create_budget_action}
 \title{Creates a budget action}
 \usage{
-budgets_create_budget_action(AccountId, BudgetName, NotificationType,
-  ActionType, ActionThreshold, Definition, ExecutionRoleArn,
-  ApprovalModel, Subscribers)
+budgets_create_budget_action(
+  AccountId,
+  BudgetName,
+  NotificationType,
+  ActionType,
+  ActionThreshold,
+  Definition,
+  ExecutionRoleArn,
+  ApprovalModel,
+  Subscribers
+)
 }
 \arguments{
 \item{AccountId}{[required]}
@@ -30,64 +38,9 @@ must be in the same account.}
 
 \item{Subscribers}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountId = "string",
-  BudgetName = "string",
-  ActionId = "string"
-)
-}
-}
 \description{
 Creates a budget action.
-}
-\section{Request syntax}{
-\preformatted{svc$create_budget_action(
-  AccountId = "string",
-  BudgetName = "string",
-  NotificationType = "ACTUAL"|"FORECASTED",
-  ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
-  ActionThreshold = list(
-    ActionThresholdValue = 123.0,
-    ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-  ),
-  Definition = list(
-    IamActionDefinition = list(
-      PolicyArn = "string",
-      Roles = list(
-        "string"
-      ),
-      Groups = list(
-        "string"
-      ),
-      Users = list(
-        "string"
-      )
-    ),
-    ScpActionDefinition = list(
-      PolicyId = "string",
-      TargetIds = list(
-        "string"
-      )
-    ),
-    SsmActionDefinition = list(
-      ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-      Region = "string",
-      InstanceIds = list(
-        "string"
-      )
-    )
-  ),
-  ExecutionRoleArn = "string",
-  ApprovalModel = "AUTOMATIC"|"MANUAL",
-  Subscribers = list(
-    list(
-      SubscriptionType = "SNS"|"EMAIL",
-      Address = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/budgets/create_budget_action.html} for full documentation.
+}
 \keyword{internal}

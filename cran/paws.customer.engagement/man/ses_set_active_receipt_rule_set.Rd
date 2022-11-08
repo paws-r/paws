@@ -4,39 +4,15 @@
 \alias{ses_set_active_receipt_rule_set}
 \title{Sets the specified receipt rule set as the active receipt rule set}
 \usage{
-ses_set_active_receipt_rule_set(RuleSetName)
+ses_set_active_receipt_rule_set(RuleSetName = NULL)
 }
 \arguments{
 \item{RuleSetName}{The name of the receipt rule set to make active. Setting this value to
 null disables all email receiving.}
 }
-\value{
-An empty list.
-}
 \description{
 Sets the specified receipt rule set as the active receipt rule set.
 
-To disable your email-receiving through Amazon SES completely, you can
-call this API with RuleSetName set to null.
-
-For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$set_active_receipt_rule_set(
-  RuleSetName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example sets the active receipt rule set:
-svc$set_active_receipt_rule_set(
-  RuleSetName = "RuleSetToActivate"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/set_active_receipt_rule_set.html} for full documentation.
 }
 \keyword{internal}

@@ -24,61 +24,9 @@ one of the following values:
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG_POLICY}
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Root = list(
-    Id = "string",
-    Arn = "string",
-    Name = "string",
-    PolicyTypes = list(
-      list(
-        Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
-        Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Disables an organizational policy type in a root. A policy of a certain
-type can be attached to entities in a root only if that type is enabled
-in the root. After you perform this operation, you no longer can attach
-policies of the specified type to that root or to any organizational
-unit (OU) or account in that root. You can undo this by using the
-\code{\link[=organizations_enable_policy_type]{enable_policy_type}} operation.
+Disables an organizational policy type in a root. A policy of a certain type can be attached to entities in a root only if that type is enabled in the root. After you perform this operation, you no longer can attach policies of the specified type to that root or to any organizational unit (OU) or account in that root. You can undo this by using the \code{\link[=organizations_enable_policy_type]{enable_policy_type}} operation.
 
-This is an asynchronous request that AWS performs in the background. If
-you disable a policy type for a root, it still appears enabled for the
-organization if \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{all features}
-are enabled for the organization. AWS recommends that you first use
-\code{\link[=organizations_list_roots]{list_roots}} to see the status of policy
-types for a specified root, and then use this operation.
-
-This operation can be called only from the organization's management
-account.
-
-To view the status of available policy types in the organization, use
-\code{\link[=organizations_describe_organization]{describe_organization}}.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_policy_type(
-  RootId = "string",
-  PolicyType = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to disable the service control policy
-# (SCP) policy type in a root. The response shows that the PolicyTypes
-# response element no longer includes SERVICE_CONTROL_POLICY:/n/n
-svc$disable_policy_type(
-  PolicyType = "SERVICE_CONTROL_POLICY",
-  RootId = "r-examplerootid111"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/disable_policy_type.html} for full documentation.
 }
 \keyword{internal}

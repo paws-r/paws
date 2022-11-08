@@ -4,7 +4,7 @@
 \alias{emr_add_job_flow_steps}
 \title{AddJobFlowSteps adds new steps to a running cluster}
 \usage{
-emr_add_job_flow_steps(JobFlowId, Steps)
+emr_add_job_flow_steps(JobFlowId, Steps, ExecutionRoleArn = NULL)
 }
 \arguments{
 \item{JobFlowId}{[required] A string that uniquely identifies the job flow. This identifier is
@@ -12,65 +12,18 @@ returned by \code{\link[=emr_run_job_flow]{run_job_flow}} and can also be obtain
 from \code{\link[=emr_list_clusters]{list_clusters}}.}
 
 \item{Steps}{[required] A list of StepConfig to be executed by the job flow.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  StepIds = list(
-    "string"
-  )
-)
-}
+
+\item{ExecutionRoleArn}{The Amazon Resource Name (ARN) of the runtime role for a step on the
+cluster. The runtime role can be a cross-account IAM role. The runtime
+role ARN is a combination of account ID, role name, and role type using
+the following format: \code{arn:partition:service:region:account:resource}.
+
+For example, \verb{arn:aws:iam::1234567890:role/ReadOnly} is a correctly
+formatted runtime role ARN.}
 }
 \description{
-AddJobFlowSteps adds new steps to a running cluster. A maximum of 256
-steps are allowed in each job flow.
+AddJobFlowSteps adds new steps to a running cluster. A maximum of 256 steps are allowed in each job flow.
 
-If your cluster is long-running (such as a Hive data warehouse) or
-complex, you may require more than 256 steps to process your data. You
-can bypass the 256-step limitation in various ways, including using SSH
-to connect to the master node and submitting queries directly to the
-software running on the master node, such as Hive and Hadoop. For more
-information on how to do this, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html}{Add More than 256 Steps to a Cluster}
-in the \emph{Amazon EMR Management Guide}.
-
-A step specifies the location of a JAR file stored either on the master
-node of the cluster or in Amazon S3. Each step is performed by the main
-function of the main class of the JAR file. The main class can be
-specified either in the manifest of the JAR or by using the MainFunction
-parameter of the step.
-
-Amazon EMR executes each step in the order listed. For a step to be
-considered complete, the main function must exit with a zero exit code
-and all Hadoop jobs started while the step was running must have
-completed and run successfully.
-
-You can only add steps to a cluster that is in one of the following
-states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.
+See \url{https://paws-r.github.io/docs/emr/add_job_flow_steps.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_job_flow_steps(
-  JobFlowId = "string",
-  Steps = list(
-    list(
-      Name = "string",
-      ActionOnFailure = "TERMINATE_JOB_FLOW"|"TERMINATE_CLUSTER"|"CANCEL_AND_WAIT"|"CONTINUE",
-      HadoopJarStep = list(
-        Properties = list(
-          list(
-            Key = "string",
-            Value = "string"
-          )
-        ),
-        Jar = "string",
-        MainClass = "string",
-        Args = list(
-          "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

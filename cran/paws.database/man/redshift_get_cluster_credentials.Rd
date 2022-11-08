@@ -5,8 +5,14 @@
 \title{Returns a database user name and temporary password with temporary
 authorization to log on to an Amazon Redshift database}
 \usage{
-redshift_get_cluster_credentials(DbUser, DbName, ClusterIdentifier,
-  DurationSeconds, AutoCreate, DbGroups)
+redshift_get_cluster_credentials(
+  DbUser,
+  DbName = NULL,
+  ClusterIdentifier,
+  DurationSeconds = NULL,
+  AutoCreate = NULL,
+  DbGroups = NULL
+)
 }
 \arguments{
 \item{DbUser}{[required] The name of a database user. If a user name matching \code{DbUser} exists in
@@ -50,7 +56,7 @@ in the Amazon Redshift Database Developer Guide.
 }}
 
 \item{ClusterIdentifier}{[required] The unique identifier of the cluster that contains the database for
-which your are requesting credentials. This parameter is case sensitive.}
+which you are requesting credentials. This parameter is case sensitive.}
 
 \item{DurationSeconds}{The number of seconds until the returned temporary password expires.
 
@@ -78,54 +84,9 @@ period (dot), at symbol (@), or hyphen.
 in the Amazon Redshift Database Developer Guide.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DbUser = "string",
-  DbPassword = "string",
-  Expiration = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Returns a database user name and temporary password with temporary
-authorization to log on to an Amazon Redshift database. The action
-returns the database user name prefixed with \verb{IAM:} if \code{AutoCreate} is
-\code{False} or \verb{IAMA:} if \code{AutoCreate} is \code{True}. You can optionally specify
-one or more database user groups that the user will join at log on. By
-default, the temporary credentials expire in 900 seconds. You can
-optionally specify a duration between 900 seconds (15 minutes) and 3600
-seconds (60 minutes). For more information, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html}{Using IAM Authentication to Generate Database User Credentials}
-in the Amazon Redshift Cluster Management Guide.
+Returns a database user name and temporary password with temporary authorization to log on to an Amazon Redshift database. The action returns the database user name prefixed with \verb{IAM:} if \code{AutoCreate} is \code{False} or \verb{IAMA:} if \code{AutoCreate} is \code{True}. You can optionally specify one or more database user groups that the user will join at log on. By default, the temporary credentials expire in 900 seconds. You can optionally specify a duration between 900 seconds (15 minutes) and 3600 seconds (60 minutes). For more information, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html}{Using IAM Authentication to Generate Database User Credentials} in the Amazon Redshift Cluster Management Guide.
 
-The AWS Identity and Access Management (IAM)user or role that executes
-GetClusterCredentials must have an IAM policy attached that allows
-access to all necessary actions and resources. For more information
-about permissions, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html#redshift-policy-resources.getclustercredentials-resources}{Resource Policies for GetClusterCredentials}
-in the Amazon Redshift Cluster Management Guide.
-
-If the \code{DbGroups} parameter is specified, the IAM policy must allow the
-\code{redshift:JoinGroup} action with access to the listed \code{dbgroups}.
-
-In addition, if the \code{AutoCreate} parameter is set to \code{True}, then the
-policy must include the \code{redshift:CreateClusterUser} privilege.
-
-If the \code{DbName} parameter is specified, the IAM policy must allow access
-to the resource \code{dbname} for the specified database name.
+See \url{https://paws-r.github.io/docs/redshift/get_cluster_credentials.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_cluster_credentials(
-  DbUser = "string",
-  DbName = "string",
-  ClusterIdentifier = "string",
-  DurationSeconds = 123,
-  AutoCreate = TRUE|FALSE,
-  DbGroups = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

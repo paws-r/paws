@@ -11,23 +11,9 @@ route53domains_delete_tags_for_domain(DomainName, TagsToDelete)
 
 \item{TagsToDelete}{[required] A list of tag keys to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 This operation deletes the specified tags for a domain.
 
-All tag operations are eventually consistent; subsequent operations
-might not immediately represent all issued operations.
+See \url{https://paws-r.github.io/docs/route53domains/delete_tags_for_domain.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_tags_for_domain(
-  DomainName = "string",
-  TagsToDelete = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

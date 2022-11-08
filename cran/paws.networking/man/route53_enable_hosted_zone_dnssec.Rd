@@ -9,27 +9,9 @@ route53_enable_hosted_zone_dnssec(HostedZoneId)
 \arguments{
 \item{HostedZoneId}{[required] A unique string used to identify a hosted zone.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeInfo = list(
-    Id = "string",
-    Status = "PENDING"|"INSYNC",
-    SubmittedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    Comment = "string"
-  )
-)
-}
-}
 \description{
 Enables DNSSEC signing in a specific hosted zone.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_hosted_zone_dnssec(
-  HostedZoneId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/route53/enable_hosted_zone_dnssec.html} for full documentation.
+}
 \keyword{internal}

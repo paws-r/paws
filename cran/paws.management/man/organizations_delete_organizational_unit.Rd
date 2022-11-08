@@ -18,34 +18,9 @@ lowercase letters or digits (the ID of the root that contains the OU).
 This string is followed by a second "-" dash and from 8 to 32 additional
 lowercase letters or digits.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes an organizational unit (OU) from a root or another OU. You must
-first remove all accounts and child OUs from the OU that you want to
-delete.
+Deletes an organizational unit (OU) from a root or another OU. You must first remove all accounts and child OUs from the OU that you want to delete.
 
-This operation can be called only from the organization's management
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_organizational_unit(
-  OrganizationalUnitId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to delete an OU. The example assumes
-# that you previously removed all accounts and other OUs from the OU:
-# 
-# 
-svc$delete_organizational_unit(
-  OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/delete_organizational_unit.html} for full documentation.
 }
 \keyword{internal}

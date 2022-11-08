@@ -5,7 +5,7 @@
 \title{Returns the base-64 encoded contents of a specified file and its
 metadata}
 \usage{
-codecommit_get_file(repositoryName, commitSpecifier, filePath)
+codecommit_get_file(repositoryName, commitSpecifier = NULL, filePath)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository that contains the file.}
@@ -19,28 +19,9 @@ head commit is used.}
 extension of the file. For example, /examples/file.md is the fully
 qualified path to a file named file.md in a folder named examples.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  commitId = "string",
-  blobId = "string",
-  filePath = "string",
-  fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-  fileSize = 123,
-  fileContent = raw
-)
-}
-}
 \description{
-Returns the base-64 encoded contents of a specified file and its
-metadata.
-}
-\section{Request syntax}{
-\preformatted{svc$get_file(
-  repositoryName = "string",
-  commitSpecifier = "string",
-  filePath = "string"
-)
-}
-}
+Returns the base-64 encoded contents of a specified file and its metadata.
 
+See \url{https://paws-r.github.io/docs/codecommit/get_file.html} for full documentation.
+}
 \keyword{internal}

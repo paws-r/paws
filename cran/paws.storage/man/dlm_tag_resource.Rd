@@ -11,20 +11,9 @@ dlm_tag_resource(ResourceArn, Tags)
 
 \item{Tags}{[required] One or more tags.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds the specified tags to the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/dlm/tag_resource.html} for full documentation.
+}
 \keyword{internal}

@@ -4,64 +4,44 @@
 \alias{configservice_put_resource_config}
 \title{Records the configuration state for the resource provided in the request}
 \usage{
-configservice_put_resource_config(ResourceType, SchemaVersionId,
-  ResourceId, ResourceName, Configuration, Tags)
+configservice_put_resource_config(
+  ResourceType,
+  SchemaVersionId,
+  ResourceId,
+  ResourceName = NULL,
+  Configuration,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ResourceType}{[required] The type of the resource. The custom resource type must be registered
-with AWS CloudFormation.
+with CloudFormation.
 
-You cannot use the organization names “aws”, “amzn”, “amazon”, “alexa”,
+You cannot use the organization names “amzn”, “amazon”, “alexa”,
 “custom” with custom resource types. It is the first part of the
 ResourceType up to the first ::.}
 
-\item{SchemaVersionId}{[required] Version of the schema registered for the ResourceType in AWS
-CloudFormation.}
+\item{SchemaVersionId}{[required] Version of the schema registered for the ResourceType in CloudFormation.}
 
 \item{ResourceId}{[required] Unique identifier of the resource.}
 
 \item{ResourceName}{Name of the resource.}
 
 \item{Configuration}{[required] The configuration object of the resource in valid JSON format. It must
-match the schema registered with AWS CloudFormation.
+match the schema registered with CloudFormation.
 
 The configuration JSON must not exceed 64 KB.}
 
-\item{Tags}{Tags associated with the resource.}
-}
-\value{
-An empty list.
+\item{Tags}{Tags associated with the resource.
+
+This field is not to be confused with the Amazon Web Services-wide tag
+feature for Amazon Web Services resources. Tags for
+\code{\link[=configservice_put_resource_config]{put_resource_config}} are tags that
+you supply for the configuration items of your custom resources.}
 }
 \description{
-Records the configuration state for the resource provided in the
-request. The configuration state of a resource is represented in AWS
-Config as Configuration Items. Once this API records the configuration
-item, you can retrieve the list of configuration items for the custom
-resource type using existing AWS Config APIs.
+Records the configuration state for the resource provided in the request. The configuration state of a resource is represented in Config as Configuration Items. Once this API records the configuration item, you can retrieve the list of configuration items for the custom resource type using existing Config APIs.
 
-The custom resource type must be registered with AWS CloudFormation.
-This API accepts the configuration item registered with AWS
-CloudFormation.
-
-When you call this API, AWS Config only stores configuration state of
-the resource provided in the request. This API does not change or
-remediate the configuration of the resource.
-
-Write-only schema properites are not recorded as part of the published
-configuration item.
+See \url{https://paws-r.github.io/docs/configservice/put_resource_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_resource_config(
-  ResourceType = "string",
-  SchemaVersionId = "string",
-  ResourceId = "string",
-  ResourceName = "string",
-  Configuration = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

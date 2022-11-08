@@ -4,7 +4,7 @@
 \alias{servicecatalog_delete_service_action}
 \title{Deletes a self-service action}
 \usage{
-servicecatalog_delete_service_action(Id, AcceptLanguage)
+servicecatalog_delete_service_action(Id, AcceptLanguage = NULL)
 }
 \arguments{
 \item{Id}{[required] The self-service action identifier. For example, \code{act-fs7abcd89wxyz}.}
@@ -16,18 +16,9 @@ servicecatalog_delete_service_action(Id, AcceptLanguage)
 \item \code{zh} - Chinese
 }}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a self-service action.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_service_action(
-  Id = "string",
-  AcceptLanguage = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/delete_service_action.html} for full documentation.
+}
 \keyword{internal}

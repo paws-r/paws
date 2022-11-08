@@ -9,23 +9,9 @@ personalize_delete_dataset_group(datasetGroupArn)
 \arguments{
 \item{datasetGroupArn}{[required] The ARN of the dataset group to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a dataset group. Before you delete a dataset group, you must
-delete the following:
-\itemize{
-\item All associated event trackers.
-\item All associated solutions.
-\item All datasets in the dataset group.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$delete_dataset_group(
-  datasetGroupArn = "string"
-)
-}
-}
+Deletes a dataset group. Before you delete a dataset group, you must delete the following:
 
+See \url{https://paws-r.github.io/docs/personalize/delete_dataset_group.html} for full documentation.
+}
 \keyword{internal}

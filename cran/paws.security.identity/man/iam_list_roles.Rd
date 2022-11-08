@@ -4,7 +4,7 @@
 \alias{iam_list_roles}
 \title{Lists the IAM roles that have the specified path prefix}
 \usage{
-iam_list_roles(PathPrefix, Marker, MaxItems)
+iam_list_roles(PathPrefix = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{PathPrefix}{The path prefix for filtering the results. For example, the prefix
@@ -34,58 +34,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Roles = list(
-    list(
-      Path = "string",
-      RoleName = "string",
-      RoleId = "string",
-      Arn = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      AssumeRolePolicyDocument = "string",
-      Description = "string",
-      MaxSessionDuration = 123,
-      PermissionsBoundary = list(
-        PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-        PermissionsBoundaryArn = "string"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      RoleLastUsed = list(
-        LastUsedDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        Region = "string"
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Lists the IAM roles that have the specified path prefix. If there are
-none, the operation returns an empty list. For more information about
-roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with Roles}.
+Lists the IAM roles that have the specified path prefix. If there are none, the operation returns an empty list. For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with roles}.
 
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters.
+See \url{https://paws-r.github.io/docs/iam/list_roles.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_roles(
-  PathPrefix = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
 \keyword{internal}

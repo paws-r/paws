@@ -6,7 +6,10 @@
 API, which only supports SQL applications}
 \usage{
 kinesisanalytics_delete_application_reference_data_source(
-  ApplicationName, CurrentApplicationVersionId, ReferenceId)
+  ApplicationName,
+  CurrentApplicationVersionId,
+  ReferenceId
+)
 }
 \arguments{
 \item{ApplicationName}{[required] Name of an existing application.}
@@ -24,33 +27,9 @@ Amazon Kinesis Analytics assigns an ID. You can use the
 \code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation to get the reference ID.}
 }
-\value{
-An empty list.
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Deletes a reference data source configuration from the specified
-application configuration.
-
-If the application is running, Amazon Kinesis Analytics immediately
-removes the in-application table that you created using the
-\code{\link[=kinesisanalytics_add_application_reference_data_source]{add_application_reference_data_source}}
-operation.
-
-This operation requires permissions to perform the
-\code{kinesisanalytics.DeleteApplicationReferenceDataSource} action.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/delete_application_reference_data_source.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_application_reference_data_source(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  ReferenceId = "string"
-)
-}
-}
-
 \keyword{internal}

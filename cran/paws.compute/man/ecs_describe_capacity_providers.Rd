@@ -4,8 +4,12 @@
 \alias{ecs_describe_capacity_providers}
 \title{Describes one or more of your capacity providers}
 \usage{
-ecs_describe_capacity_providers(capacityProviders, include, maxResults,
-  nextToken)
+ecs_describe_capacity_providers(
+  capacityProviders = NULL,
+  include = NULL,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{capacityProviders}{The short name or full Amazon Resource Name (ARN) of one or more
@@ -14,7 +18,7 @@ an action.}
 
 \item{include}{Specifies whether or not you want to see the resource tags for the
 capacity provider. If \code{TAGS} is specified, the tags are included in the
-response. If this field is omitted, tags are not included in the
+response. If this field is omitted, tags aren't included in the
 response.}
 
 \item{maxResults}{The maximum number of account setting results returned by
@@ -40,60 +44,9 @@ This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  capacityProviders = list(
-    list(
-      capacityProviderArn = "string",
-      name = "string",
-      status = "ACTIVE"|"INACTIVE",
-      autoScalingGroupProvider = list(
-        autoScalingGroupArn = "string",
-        managedScaling = list(
-          status = "ENABLED"|"DISABLED",
-          targetCapacity = 123,
-          minimumScalingStepSize = 123,
-          maximumScalingStepSize = 123,
-          instanceWarmupPeriod = 123
-        ),
-        managedTerminationProtection = "ENABLED"|"DISABLED"
-      ),
-      updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
-      updateStatusReason = "string",
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      )
-    )
-  ),
-  failures = list(
-    list(
-      arn = "string",
-      reason = "string",
-      detail = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Describes one or more of your capacity providers.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_capacity_providers(
-  capacityProviders = list(
-    "string"
-  ),
-  include = list(
-    "TAGS"
-  ),
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ecs/describe_capacity_providers.html} for full documentation.
+}
 \keyword{internal}

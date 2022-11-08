@@ -2,7 +2,7 @@
 % Please edit documentation in R/acm_operations.R
 \name{acm_renew_certificate}
 \alias{acm_renew_certificate}
-\title{Renews an eligable ACM certificate}
+\title{Renews an eligible ACM certificate}
 \usage{
 acm_renew_certificate(CertificateArn)
 }
@@ -12,23 +12,11 @@ must be of the form:
 
 \code{arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012}
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
-}
-\value{
-An empty list.
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
 }
 \description{
-Renews an eligable ACM certificate. At this time, only exported private
-certificates can be renewed with this operation. In order to renew your
-ACM PCA certificates with ACM, you must first \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/}{grant the ACM service principal permission to do so}. For more
-information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/manual-renewal.html}{Testing Managed Renewal}
-in the ACM User Guide.
-}
-\section{Request syntax}{
-\preformatted{svc$renew_certificate(
-  CertificateArn = "string"
-)
-}
-}
+Renews an eligible ACM certificate. At this time, only exported private certificates can be renewed with this operation. In order to renew your ACM PCA certificates with ACM, you must first \href{https://docs.aws.amazon.com/privateca/latest/userguide/}{grant the ACM service principal permission to do so}. For more information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/}{Testing Managed Renewal} in the ACM User Guide.
 
+See \url{https://paws-r.github.io/docs/acm/renew_certificate.html} for full documentation.
+}
 \keyword{internal}

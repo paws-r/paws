@@ -5,8 +5,11 @@
 \title{Retrieves a list of provisioned concurrency configurations for a
 function}
 \usage{
-lambda_list_provisioned_concurrency_configs(FunctionName, Marker,
-  MaxItems)
+lambda_list_provisioned_concurrency_configs(
+  FunctionName,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -27,44 +30,9 @@ retrieve the next page of results.}
 
 \item{MaxItems}{Specify a number to limit the number of configurations returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProvisionedConcurrencyConfigs = list(
-    list(
-      FunctionArn = "string",
-      RequestedProvisionedConcurrentExecutions = 123,
-      AvailableProvisionedConcurrentExecutions = 123,
-      AllocatedProvisionedConcurrentExecutions = 123,
-      Status = "IN_PROGRESS"|"READY"|"FAILED",
-      StatusReason = "string",
-      LastModified = "string"
-    )
-  ),
-  NextMarker = "string"
-)
-}
-}
 \description{
-Retrieves a list of provisioned concurrency configurations for a
-function.
-}
-\section{Request syntax}{
-\preformatted{svc$list_provisioned_concurrency_configs(
-  FunctionName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+Retrieves a list of provisioned concurrency configurations for a function.
 
-\examples{
-\dontrun{
-# The following example returns a list of provisioned concurrency
-# configurations for a function named my-function.
-svc$list_provisioned_concurrency_configs(
-  FunctionName = "my-function"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/list_provisioned_concurrency_configs.html} for full documentation.
 }
 \keyword{internal}

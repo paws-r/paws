@@ -5,8 +5,12 @@
 \title{Adds one or more custom properties to the specified resource (a folder,
 document, or version)}
 \usage{
-workdocs_create_custom_metadata(AuthenticationToken, ResourceId,
-  VersionId, CustomMetadata)
+workdocs_create_custom_metadata(
+  AuthenticationToken = NULL,
+  ResourceId,
+  VersionId = NULL,
+  CustomMetadata
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -19,23 +23,9 @@ document version.}
 
 \item{CustomMetadata}{[required] Custom metadata in the form of name-value pairs.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds one or more custom properties to the specified resource (a folder,
-document, or version).
-}
-\section{Request syntax}{
-\preformatted{svc$create_custom_metadata(
-  AuthenticationToken = "string",
-  ResourceId = "string",
-  VersionId = "string",
-  CustomMetadata = list(
-    "string"
-  )
-)
-}
-}
+Adds one or more custom properties to the specified resource (a folder, document, or version).
 
+See \url{https://paws-r.github.io/docs/workdocs/create_custom_metadata.html} for full documentation.
+}
 \keyword{internal}

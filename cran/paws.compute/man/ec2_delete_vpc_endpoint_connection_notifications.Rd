@@ -4,8 +4,10 @@
 \alias{ec2_delete_vpc_endpoint_connection_notifications}
 \title{Deletes one or more VPC endpoint connection notifications}
 \usage{
-ec2_delete_vpc_endpoint_connection_notifications(DryRun,
-  ConnectionNotificationIds)
+ec2_delete_vpc_endpoint_connection_notifications(
+  DryRun = NULL,
+  ConnectionNotificationIds
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -15,31 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ConnectionNotificationIds}{[required] One or more notification IDs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Unsuccessful = list(
-    list(
-      Error = list(
-        Code = "string",
-        Message = "string"
-      ),
-      ResourceId = "string"
-    )
-  )
-)
-}
-}
 \description{
 Deletes one or more VPC endpoint connection notifications.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_vpc_endpoint_connection_notifications(
-  DryRun = TRUE|FALSE,
-  ConnectionNotificationIds = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/delete_vpc_endpoint_connection_notifications.html} for full documentation.
+}
 \keyword{internal}

@@ -8,6 +8,14 @@ test_that("list_document_classification_jobs", {
   expect_error(svc$list_document_classification_jobs(MaxResults = 20), NA)
 })
 
+test_that("list_document_classifier_summaries", {
+  expect_error(svc$list_document_classifier_summaries(), NA)
+})
+
+test_that("list_document_classifier_summaries", {
+  expect_error(svc$list_document_classifier_summaries(MaxResults = 20), NA)
+})
+
 test_that("list_document_classifiers", {
   expect_error(svc$list_document_classifiers(), NA)
 })
@@ -38,6 +46,14 @@ test_that("list_entities_detection_jobs", {
 
 test_that("list_entities_detection_jobs", {
   expect_error(svc$list_entities_detection_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_entity_recognizer_summaries", {
+  expect_error(svc$list_entity_recognizer_summaries(), NA)
+})
+
+test_that("list_entity_recognizer_summaries", {
+  expect_error(svc$list_entity_recognizer_summaries(MaxResults = 20), NA)
 })
 
 test_that("list_entity_recognizers", {
@@ -78,6 +94,14 @@ test_that("list_sentiment_detection_jobs", {
 
 test_that("list_sentiment_detection_jobs", {
   expect_error(svc$list_sentiment_detection_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_targeted_sentiment_detection_jobs", {
+  expect_error(svc$list_targeted_sentiment_detection_jobs(), NA)
+})
+
+test_that("list_targeted_sentiment_detection_jobs", {
+  expect_error(svc$list_targeted_sentiment_detection_jobs(MaxResults = 20), NA)
 })
 
 test_that("list_topics_detection_jobs", {

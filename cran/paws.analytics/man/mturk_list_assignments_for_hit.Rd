@@ -5,8 +5,12 @@
 \title{The ListAssignmentsForHIT operation retrieves completed assignments for
 a HIT}
 \usage{
-mturk_list_assignments_for_hit(HITId, NextToken, MaxResults,
-  AssignmentStatuses)
+mturk_list_assignments_for_hit(
+  HITId,
+  NextToken = NULL,
+  MaxResults = NULL,
+  AssignmentStatuses = NULL
+)
 }
 \arguments{
 \item{HITId}{[required] The ID of the HIT.}
@@ -17,75 +21,9 @@ mturk_list_assignments_for_hit(HITId, NextToken, MaxResults,
 
 \item{AssignmentStatuses}{The status of the assignments to return: Submitted | Approved | Rejected}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  NumResults = 123,
-  Assignments = list(
-    list(
-      AssignmentId = "string",
-      WorkerId = "string",
-      HITId = "string",
-      AssignmentStatus = "Submitted"|"Approved"|"Rejected",
-      AutoApprovalTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      AcceptTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      SubmitTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ApprovalTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      RejectionTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Deadline = as.POSIXct(
-        "2015-01-01"
-      ),
-      Answer = "string",
-      RequesterFeedback = "string"
-    )
-  )
-)
-}
-}
 \description{
-The \code{\link[=mturk_list_assignments_for_hit]{list_assignments_for_hit}}
-operation retrieves completed assignments for a HIT. You can use this
-operation to retrieve the results for a HIT.
+The \code{\link[=mturk_list_assignments_for_hit]{list_assignments_for_hit}} operation retrieves completed assignments for a HIT. You can use this operation to retrieve the results for a HIT.
 
-You can get assignments for a HIT at any time, even if the HIT is not
-yet Reviewable. If a HIT requested multiple assignments, and has
-received some results but has not yet become Reviewable, you can still
-retrieve the partial results with this operation.
-
-Use the AssignmentStatus parameter to control which set of assignments
-for a HIT are returned. The ListAssignmentsForHIT operation can return
-submitted assignments awaiting approval, or it can return assignments
-that have already been approved or rejected. You can set
-AssignmentStatus=Approved,Rejected to get assignments that have already
-been approved and rejected together in one result set.
-
-Only the Requester who created the HIT can retrieve the assignments for
-that HIT.
-
-Results are sorted and divided into numbered pages and the operation
-returns a single page of results. You can use the parameters of the
-operation to control sorting and pagination.
+See \url{https://paws-r.github.io/docs/mturk/list_assignments_for_hit.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_assignments_for_hit(
-  HITId = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  AssignmentStatuses = list(
-    "Submitted"|"Approved"|"Rejected"
-  )
-)
-}
-}
-
 \keyword{internal}

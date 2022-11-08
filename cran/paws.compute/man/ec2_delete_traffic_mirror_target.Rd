@@ -4,7 +4,7 @@
 \alias{ec2_delete_traffic_mirror_target}
 \title{Deletes the specified Traffic Mirror target}
 \usage{
-ec2_delete_traffic_mirror_target(TrafficMirrorTargetId, DryRun)
+ec2_delete_traffic_mirror_target(TrafficMirrorTargetId, DryRun = NULL)
 }
 \arguments{
 \item{TrafficMirrorTargetId}{[required] The ID of the Traffic Mirror target.}
@@ -14,24 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficMirrorTargetId = "string"
-)
-}
-}
 \description{
 Deletes the specified Traffic Mirror target.
 
-You cannot delete a Traffic Mirror target that is in use by a Traffic
-Mirror session.
+See \url{https://paws-r.github.io/docs/ec2/delete_traffic_mirror_target.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_traffic_mirror_target(
-  TrafficMirrorTargetId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

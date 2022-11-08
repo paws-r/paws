@@ -3,29 +3,39 @@
 #' @include wafv2_service.R
 NULL
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Associates a web ACL with a regional application resource, to protect
+#' the resource
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
-#' Associates a Web ACL with a regional application resource, to protect
+#' Associates a web ACL with a regional application resource, to protect
 #' the resource. A regional application can be an Application Load Balancer
-#' (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, or an
+#' Amazon Cognito user pool.
 #' 
-#' For AWS CloudFront, don't use this call. Instead, use your CloudFront
-#' distribution configuration. To associate a Web ACL, in the CloudFront
+#' For Amazon CloudFront, don't use this call. Instead, use your CloudFront
+#' distribution configuration. To associate a web ACL, in the CloudFront
 #' call `UpdateDistribution`, set the web ACL ID to the Amazon Resource
-#' Name (ARN) of the Web ACL. For information, see
+#' Name (ARN) of the web ACL. For information, see
 #' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html).
+#' 
+#' When you make changes to web ACLs or web ACL components, like rules and
+#' rule groups, WAF propagates the changes everywhere that the web ACL and
+#' its components are stored and used. Your changes are applied within
+#' seconds, but there might be a brief period of inconsistency when the
+#' changes have arrived in some places and not in others. So, for example,
+#' if you change a rule action setting, the action might be the old action
+#' in one area and the new action in another area. Or if you add an IP
+#' address to an IP set used in a blocking rule, the new address might
+#' briefly be blocked in one area while still allowed in another. This
+#' temporary inconsistency can occur when you first associate a web ACL
+#' with an Amazon Web Services resource and when you change a web ACL that
+#' is already associated with a resource. Generally, any inconsistencies of
+#' this type last only a few seconds.
 #'
 #' @usage
 #' wafv2_associate_web_acl(WebACLArn, ResourceArn)
 #'
-#' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the Web ACL that you want to associate
+#' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL that you want to associate
 #' with the resource.
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to associate with the web
 #' ACL.
@@ -35,11 +45,14 @@ NULL
 #' -   For an Application Load Balancer:
 #'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an API Gateway REST API:
+#' -   For an Amazon API Gateway REST API:
 #'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
 #' 
 #' -   For an AppSync GraphQL API:
 #'     `arn:aws:appsync:region:account-id:apis/GraphQLApiId `
+#' 
+#' -   For an Amazon Cognito user pool:
+#'     `arn:aws:cognito-idp:region:account-id:userpool/user-pool-id `
 #'
 #' @return
 #' An empty list.
@@ -72,34 +85,29 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 }
 .wafv2$operations$associate_web_acl <- wafv2_associate_web_acl
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Returns the web ACL capacity unit (WCU) requirements for a specified
+#' scope and set of rules
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Returns the web ACL capacity unit (WCU) requirements for a specified
 #' scope and set of rules. You can use this to check the capacity
 #' requirements for the rules you want to use in a RuleGroup or WebACL.
 #' 
-#' AWS WAF uses WCUs to calculate and control the operating resources that
-#' are used to run your rules, rule groups, and web ACLs. AWS WAF
-#' calculates capacity differently for each rule type, to reflect the
-#' relative cost of each rule. Simple rules that cost little to run use
-#' fewer WCUs than more complex rules that use more processing power. Rule
-#' group capacity is fixed at creation, which helps users plan their web
-#' ACL WCU usage when they use a rule group. The WCU limit for web ACLs is
-#' 1,500.
+#' WAF uses WCUs to calculate and control the operating resources that are
+#' used to run your rules, rule groups, and web ACLs. WAF calculates
+#' capacity differently for each rule type, to reflect the relative cost of
+#' each rule. Simple rules that cost little to run use fewer WCUs than more
+#' complex rules that use more processing power. Rule group capacity is
+#' fixed at creation, which helps users plan their web ACL WCU usage when
+#' they use a rule group. The WCU limit for web ACLs is 1,500.
 #'
 #' @usage
 #' wafv2_check_capacity(Scope, Rules)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -140,13 +148,52 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           ),
 #'           PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -162,15 +209,55 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
-#'           )
+#'           ),
+#'           SensitivityLevel = "LOW"|"HIGH"
 #'         ),
 #'         XssMatchStatement = list(
 #'           FieldToMatch = list(
@@ -183,13 +270,52 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
@@ -204,21 +330,60 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'           Size = 123,
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
 #'         GeoMatchStatement = list(
 #'           CountryCodes = list(
-#'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"|"XK"
 #'           ),
 #'           ForwardedIPConfig = list(
 #'             HeaderName = "string",
@@ -253,13 +418,52 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
@@ -288,26 +492,163 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'         ManagedRuleGroupStatement = list(
 #'           VendorName = "string",
 #'           Name = "string",
+#'           Version = "string",
 #'           ExcludedRules = list(
 #'             list(
 #'               Name = "string"
+#'             )
+#'           ),
+#'           ScopeDownStatement = list(),
+#'           ManagedRuleGroupConfigs = list(
+#'             list(
+#'               LoginPath = "string",
+#'               PayloadType = "JSON"|"FORM_ENCODED",
+#'               UsernameField = list(
+#'                 Identifier = "string"
+#'               ),
+#'               PasswordField = list(
+#'                 Identifier = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         LabelMatchStatement = list(
+#'           Scope = "LABEL"|"NAMESPACE",
+#'           Key = "string"
+#'         ),
+#'         RegexMatchStatement = list(
+#'           RegexString = "string",
+#'           FieldToMatch = list(
+#'             SingleHeader = list(
+#'               Name = "string"
+#'             ),
+#'             SingleQueryArgument = list(
+#'               Name = "string"
+#'             ),
+#'             AllQueryArguments = list(),
+#'             UriPath = list(),
+#'             QueryString = list(),
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
+#'           ),
+#'           TextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         )
 #'       ),
 #'       Action = list(
-#'         Block = list(),
-#'         Allow = list(),
-#'         Count = list()
+#'         Block = list(
+#'           CustomResponse = list(
+#'             ResponseCode = 123,
+#'             CustomResponseBodyKey = "string",
+#'             ResponseHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Allow = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Captcha = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       OverrideAction = list(
-#'         Count = list(),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         None = list()
+#'       ),
+#'       RuleLabels = list(
+#'         list(
+#'           Name = "string"
+#'         )
 #'       ),
 #'       VisibilityConfig = list(
 #'         SampledRequestsEnabled = TRUE|FALSE,
 #'         CloudWatchMetricsEnabled = TRUE|FALSE,
 #'         MetricName = "string"
+#'       ),
+#'       CaptchaConfig = list(
+#'         ImmunityTimeProperty = list(
+#'           ImmunityTime = 123
+#'         )
 #'       )
 #'     )
 #'   )
@@ -334,19 +675,14 @@ wafv2_check_capacity <- function(Scope, Rules) {
 }
 .wafv2$operations$check_capacity <- wafv2_check_capacity
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Creates an IPSet, which you use to identify web requests that originate
+#' from specific IP addresses or ranges of IP addresses
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Creates an IPSet, which you use to identify web requests that originate
 #' from specific IP addresses or ranges of IP addresses. For example, if
 #' you're receiving a lot of requests from a ranges of IP addresses, you
-#' can configure AWS WAF to block them using an IPSet that lists those IP
+#' can configure WAF to block them using an IPSet that lists those IP
 #' addresses.
 #'
 #' @usage
@@ -355,9 +691,10 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #'
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -366,36 +703,44 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Description A description of the IP set that helps with identification. You cannot
-#' change the description of an IP set after you create it.
-#' @param IPAddressVersion &#91;required&#93; Specify IPV4 or IPV6.
-#' @param Addresses &#91;required&#93; Contains an array of strings that specify one or more IP addresses or
+#' @param Description A description of the IP set that helps with identification.
+#' @param IPAddressVersion &#91;required&#93; The version of the IP addresses, either `IPV4` or `IPV6`.
+#' @param Addresses &#91;required&#93; Contains an array of strings that specifies zero or more IP addresses or
 #' blocks of IP addresses in Classless Inter-Domain Routing (CIDR)
-#' notation. AWS WAF supports all address ranges for IP versions IPv4 and
-#' IPv6.
+#' notation. WAF supports all IPv4 and IPv6 CIDR ranges except for /0.
 #' 
-#' Examples:
+#' Example address strings:
 #' 
-#' -   To configure AWS WAF to allow, block, or count requests that
-#'     originated from the IP address 192.0.2.44, specify `192.0.2.44/32`.
+#' -   To configure WAF to allow, block, or count requests that originated
+#'     from the IP address 192.0.2.44, specify `192.0.2.44/32`.
 #' 
-#' -   To configure AWS WAF to allow, block, or count requests that
-#'     originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify
+#' -   To configure WAF to allow, block, or count requests that originated
+#'     from IP addresses from 192.0.2.0 to 192.0.2.255, specify
 #'     `192.0.2.0/24`.
 #' 
-#' -   To configure AWS WAF to allow, block, or count requests that
-#'     originated from the IP address
-#'     1111:0000:0000:0000:0000:0000:0000:0111, specify
+#' -   To configure WAF to allow, block, or count requests that originated
+#'     from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify
 #'     `1111:0000:0000:0000:0000:0000:0000:0111/128`.
 #' 
-#' -   To configure AWS WAF to allow, block, or count requests that
-#'     originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000
-#'     to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
+#' -   To configure WAF to allow, block, or count requests that originated
+#'     from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to
+#'     1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
 #'     `1111:0000:0000:0000:0000:0000:0000:0000/64`.
 #' 
 #' For more information about CIDR notation, see the Wikipedia entry
 #' [Classless Inter-Domain
 #' Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+#' 
+#' Example JSON `Addresses` specifications:
+#' 
+#' -   Empty array: `"Addresses": []`
+#' 
+#' -   Array with one address: `"Addresses": ["192.0.2.44/32"]`
+#' 
+#' -   Array with three addresses:
+#'     `"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]`
+#' 
+#' -   INVALID specification: `"Addresses": [""]` INVALID
 #' @param Tags An array of key:value pairs to associate with the resource.
 #'
 #' @return
@@ -451,17 +796,13 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 }
 .wafv2$operations$create_ip_set <- wafv2_create_ip_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Creates a RegexPatternSet, which you reference in a
+#' RegexPatternSetReferenceStatement, to have WAF inspect a web request
+#' component for the specified patterns
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Creates a RegexPatternSet, which you reference in a
-#' RegexPatternSetReferenceStatement, to have AWS WAF inspect a web request
+#' RegexPatternSetReferenceStatement, to have WAF inspect a web request
 #' component for the specified patterns.
 #'
 #' @usage
@@ -470,9 +811,10 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #'
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -481,8 +823,7 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Description A description of the set that helps with identification. You cannot
-#' change the description of a set after you create it.
+#' @param Description A description of the set that helps with identification.
 #' @param RegularExpressionList &#91;required&#93; Array of regular expression strings.
 #' @param Tags An array of key:value pairs to associate with the resource.
 #'
@@ -540,15 +881,9 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 }
 .wafv2$operations$create_regex_pattern_set <- wafv2_create_regex_pattern_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Creates a RuleGroup per the specifications provided
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Creates a RuleGroup per the specifications provided.
 #' 
 #' A rule group defines a collection of rules to inspect and control web
@@ -559,13 +894,14 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'
 #' @usage
 #' wafv2_create_rule_group(Name, Scope, Capacity, Description, Rules,
-#'   VisibilityConfig, Tags)
+#'   VisibilityConfig, Tags, CustomResponseBodies)
 #'
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -578,26 +914,40 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' 
 #' When you create your own rule group, you define this, and you cannot
 #' change it after creation. When you add or modify the rules in a rule
-#' group, AWS WAF enforces this limit. You can check the capacity for a set
-#' of rules using [`check_capacity`][wafv2_check_capacity].
+#' group, WAF enforces this limit. You can check the capacity for a set of
+#' rules using [`check_capacity`][wafv2_check_capacity].
 #' 
-#' AWS WAF uses WCUs to calculate and control the operating resources that
-#' are used to run your rules, rule groups, and web ACLs. AWS WAF
-#' calculates capacity differently for each rule type, to reflect the
-#' relative cost of each rule. Simple rules that cost little to run use
-#' fewer WCUs than more complex rules that use more processing power. Rule
-#' group capacity is fixed at creation, which helps users plan their web
-#' ACL WCU usage when they use a rule group. The WCU limit for web ACLs is
-#' 1,500.
-#' @param Description A description of the rule group that helps with identification. You
-#' cannot change the description of a rule group after you create it.
+#' WAF uses WCUs to calculate and control the operating resources that are
+#' used to run your rules, rule groups, and web ACLs. WAF calculates
+#' capacity differently for each rule type, to reflect the relative cost of
+#' each rule. Simple rules that cost little to run use fewer WCUs than more
+#' complex rules that use more processing power. Rule group capacity is
+#' fixed at creation, which helps users plan their web ACL WCU usage when
+#' they use a rule group. The WCU limit for web ACLs is 1,500.
+#' @param Description A description of the rule group that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
 #' allow, block, or count. Each rule includes one top-level statement that
-#' AWS WAF uses to identify matching web requests, and parameters that
-#' govern how AWS WAF handles them.
+#' WAF uses to identify matching web requests, and parameters that govern
+#' how WAF handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
 #' @param Tags An array of key:value pairs to associate with the resource.
+#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
+#' with a block action, you can send a custom response to the web request.
+#' You define these for the rule group, and then use them in the rules that
+#' you define in the rule group.
+#' 
+#' For information about customizing web requests and responses, see
+#' [Customizing web requests and responses in
+#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
+#' in the [WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' 
+#' For information about the limits on count and size for custom request
+#' and response settings, see [WAF
+#' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
+#' in the [WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -637,13 +987,52 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           ),
 #'           PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -659,15 +1048,55 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
-#'           )
+#'           ),
+#'           SensitivityLevel = "LOW"|"HIGH"
 #'         ),
 #'         XssMatchStatement = list(
 #'           FieldToMatch = list(
@@ -680,13 +1109,52 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
@@ -701,21 +1169,60 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'           Size = 123,
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
 #'         GeoMatchStatement = list(
 #'           CountryCodes = list(
-#'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"|"XK"
 #'           ),
 #'           ForwardedIPConfig = list(
 #'             HeaderName = "string",
@@ -750,13 +1257,52 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
@@ -785,26 +1331,163 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'         ManagedRuleGroupStatement = list(
 #'           VendorName = "string",
 #'           Name = "string",
+#'           Version = "string",
 #'           ExcludedRules = list(
 #'             list(
 #'               Name = "string"
+#'             )
+#'           ),
+#'           ScopeDownStatement = list(),
+#'           ManagedRuleGroupConfigs = list(
+#'             list(
+#'               LoginPath = "string",
+#'               PayloadType = "JSON"|"FORM_ENCODED",
+#'               UsernameField = list(
+#'                 Identifier = "string"
+#'               ),
+#'               PasswordField = list(
+#'                 Identifier = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         LabelMatchStatement = list(
+#'           Scope = "LABEL"|"NAMESPACE",
+#'           Key = "string"
+#'         ),
+#'         RegexMatchStatement = list(
+#'           RegexString = "string",
+#'           FieldToMatch = list(
+#'             SingleHeader = list(
+#'               Name = "string"
+#'             ),
+#'             SingleQueryArgument = list(
+#'               Name = "string"
+#'             ),
+#'             AllQueryArguments = list(),
+#'             UriPath = list(),
+#'             QueryString = list(),
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
+#'           ),
+#'           TextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         )
 #'       ),
 #'       Action = list(
-#'         Block = list(),
-#'         Allow = list(),
-#'         Count = list()
+#'         Block = list(
+#'           CustomResponse = list(
+#'             ResponseCode = 123,
+#'             CustomResponseBodyKey = "string",
+#'             ResponseHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Allow = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Captcha = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       OverrideAction = list(
-#'         Count = list(),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         None = list()
+#'       ),
+#'       RuleLabels = list(
+#'         list(
+#'           Name = "string"
+#'         )
 #'       ),
 #'       VisibilityConfig = list(
 #'         SampledRequestsEnabled = TRUE|FALSE,
 #'         CloudWatchMetricsEnabled = TRUE|FALSE,
 #'         MetricName = "string"
+#'       ),
+#'       CaptchaConfig = list(
+#'         ImmunityTimeProperty = list(
+#'           ImmunityTime = 123
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -818,6 +1501,12 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   CustomResponseBodies = list(
+#'     list(
+#'       ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'       Content = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -825,14 +1514,14 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' @keywords internal
 #'
 #' @rdname wafv2_create_rule_group
-wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL) {
+wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL, CustomResponseBodies = NULL) {
   op <- new_operation(
     name = "CreateRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .wafv2$create_rule_group_input(Name = Name, Scope = Scope, Capacity = Capacity, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags)
+  input <- .wafv2$create_rule_group_input(Name = Name, Scope = Scope, Capacity = Capacity, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies)
   output <- .wafv2$create_rule_group_output()
   config <- get_config()
   svc <- .wafv2$service(config)
@@ -842,36 +1531,32 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 }
 .wafv2$operations$create_rule_group <- wafv2_create_rule_group
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Creates a WebACL per the specifications provided
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Creates a WebACL per the specifications provided.
 #' 
-#' A Web ACL defines a collection of rules to use to inspect and control
+#' A web ACL defines a collection of rules to use to inspect and control
 #' web requests. Each rule has an action defined (allow, block, or count)
-#' for requests that match the statement of the rule. In the Web ACL, you
+#' for requests that match the statement of the rule. In the web ACL, you
 #' assign a default action to take (allow, block) for any request that does
-#' not match any of the rules. The rules in a Web ACL can be a combination
+#' not match any of the rules. The rules in a web ACL can be a combination
 #' of the types Rule, RuleGroup, and managed rule group. You can associate
-#' a Web ACL with one or more AWS resources to protect. The resources can
-#' be Amazon CloudFront, an Amazon API Gateway REST API, an Application
-#' Load Balancer, or an AWS AppSync GraphQL API.
+#' a web ACL with one or more Amazon Web Services resources to protect. The
+#' resources can be an Amazon CloudFront distribution, an Amazon API
+#' Gateway REST API, an Application Load Balancer, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #'
 #' @usage
 #' wafv2_create_web_acl(Name, Scope, DefaultAction, Description, Rules,
-#'   VisibilityConfig, Tags)
+#'   VisibilityConfig, Tags, CustomResponseBodies, CaptchaConfig)
 #'
-#' @param Name &#91;required&#93; The name of the Web ACL. You cannot change the name of a Web ACL after
+#' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -882,15 +1567,33 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param DefaultAction &#91;required&#93; The action to perform if none of the `Rules` contained in the `WebACL`
 #' match.
-#' @param Description A description of the Web ACL that helps with identification. You cannot
-#' change the description of a Web ACL after you create it.
+#' @param Description A description of the web ACL that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
 #' allow, block, or count. Each rule includes one top-level statement that
-#' AWS WAF uses to identify matching web requests, and parameters that
-#' govern how AWS WAF handles them.
+#' WAF uses to identify matching web requests, and parameters that govern
+#' how WAF handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
 #' @param Tags An array of key:value pairs to associate with the resource.
+#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
+#' with a block action, you can send a custom response to the web request.
+#' You define these for the web ACL, and then use them in the rules and
+#' default actions that you define in the web ACL.
+#' 
+#' For information about customizing web requests and responses, see
+#' [Customizing web requests and responses in
+#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
+#' in the [WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' 
+#' For information about the limits on count and size for custom request
+#' and response settings, see [WAF
+#' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
+#' in the [WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' @param CaptchaConfig Specifies how WAF should handle `CAPTCHA` evaluations for rules that
+#' don't have their own `CaptchaConfig` settings. If you don't specify
+#' this, WAF uses its default settings for `CaptchaConfig`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -912,8 +1615,28 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'   Name = "string",
 #'   Scope = "CLOUDFRONT"|"REGIONAL",
 #'   DefaultAction = list(
-#'     Block = list(),
-#'     Allow = list()
+#'     Block = list(
+#'       CustomResponse = list(
+#'         ResponseCode = 123,
+#'         CustomResponseBodyKey = "string",
+#'         ResponseHeaders = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Allow = list(
+#'       CustomRequestHandling = list(
+#'         InsertHeaders = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   Description = "string",
 #'   Rules = list(
@@ -933,13 +1656,52 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           ),
 #'           PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -955,15 +1717,55 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
-#'           )
+#'           ),
+#'           SensitivityLevel = "LOW"|"HIGH"
 #'         ),
 #'         XssMatchStatement = list(
 #'           FieldToMatch = list(
@@ -976,13 +1778,52 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
@@ -997,21 +1838,60 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'           Size = 123,
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
 #'         GeoMatchStatement = list(
 #'           CountryCodes = list(
-#'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"|"XK"
 #'           ),
 #'           ForwardedIPConfig = list(
 #'             HeaderName = "string",
@@ -1046,13 +1926,52 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
@@ -1081,26 +2000,163 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'         ManagedRuleGroupStatement = list(
 #'           VendorName = "string",
 #'           Name = "string",
+#'           Version = "string",
 #'           ExcludedRules = list(
 #'             list(
 #'               Name = "string"
+#'             )
+#'           ),
+#'           ScopeDownStatement = list(),
+#'           ManagedRuleGroupConfigs = list(
+#'             list(
+#'               LoginPath = "string",
+#'               PayloadType = "JSON"|"FORM_ENCODED",
+#'               UsernameField = list(
+#'                 Identifier = "string"
+#'               ),
+#'               PasswordField = list(
+#'                 Identifier = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         LabelMatchStatement = list(
+#'           Scope = "LABEL"|"NAMESPACE",
+#'           Key = "string"
+#'         ),
+#'         RegexMatchStatement = list(
+#'           RegexString = "string",
+#'           FieldToMatch = list(
+#'             SingleHeader = list(
+#'               Name = "string"
+#'             ),
+#'             SingleQueryArgument = list(
+#'               Name = "string"
+#'             ),
+#'             AllQueryArguments = list(),
+#'             UriPath = list(),
+#'             QueryString = list(),
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
+#'           ),
+#'           TextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         )
 #'       ),
 #'       Action = list(
-#'         Block = list(),
-#'         Allow = list(),
-#'         Count = list()
+#'         Block = list(
+#'           CustomResponse = list(
+#'             ResponseCode = 123,
+#'             CustomResponseBodyKey = "string",
+#'             ResponseHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Allow = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Captcha = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       OverrideAction = list(
-#'         Count = list(),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         None = list()
+#'       ),
+#'       RuleLabels = list(
+#'         list(
+#'           Name = "string"
+#'         )
 #'       ),
 #'       VisibilityConfig = list(
 #'         SampledRequestsEnabled = TRUE|FALSE,
 #'         CloudWatchMetricsEnabled = TRUE|FALSE,
 #'         MetricName = "string"
+#'       ),
+#'       CaptchaConfig = list(
+#'         ImmunityTimeProperty = list(
+#'           ImmunityTime = 123
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1114,6 +2170,17 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   CustomResponseBodies = list(
+#'     list(
+#'       ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'       Content = "string"
+#'     )
+#'   ),
+#'   CaptchaConfig = list(
+#'     ImmunityTimeProperty = list(
+#'       ImmunityTime = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -1121,14 +2188,14 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' @keywords internal
 #'
 #' @rdname wafv2_create_web_acl
-wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL) {
+wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL) {
   op <- new_operation(
     name = "CreateWebACL",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags)
+  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig)
   output <- .wafv2$create_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config)
@@ -1138,11 +2205,11 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
 }
 .wafv2$operations$create_web_acl <- wafv2_create_web_acl
 
-#' Deletes all rule groups that are managed by AWS Firewall Manager for the
+#' Deletes all rule groups that are managed by Firewall Manager for the
 #' specified web ACL
 #'
 #' @description
-#' Deletes all rule groups that are managed by AWS Firewall Manager for the
+#' Deletes all rule groups that are managed by Firewall Manager for the
 #' specified web ACL.
 #' 
 #' You can only use this if `ManagedByFirewallManager` is false in the
@@ -1152,14 +2219,14 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
 #' wafv2_delete_firewall_manager_rule_groups(WebACLArn, WebACLLockToken)
 #'
 #' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL.
-#' @param WebACLLockToken &#91;required&#93; A token used for optimistic locking. AWS WAF returns a token to your get
-#' and list requests, to mark the state of the entity at the time of the
+#' @param WebACLLockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
+#' and `list` requests, to mark the state of the entity at the time of the
 #' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like update and delete. AWS WAF uses the
+#' provide the token to operations like `update` and `delete`. WAF uses the
 #' token to ensure that no changes have been made to the entity since you
 #' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another get, and
-#' use the new token returned by that operation.
+#' `WAFOptimisticLockException`. If this happens, perform another `get`,
+#' and use the new token returned by that operation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1197,15 +2264,9 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
 }
 .wafv2$operations$delete_firewall_manager_rule_groups <- wafv2_delete_firewall_manager_rule_groups
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Deletes the specified IPSet
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Deletes the specified IPSet.
 #'
 #' @usage
@@ -1213,9 +2274,10 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
 #'
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1227,14 +2289,14 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. AWS WAF returns a token to your get
-#' and list requests, to mark the state of the entity at the time of the
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
+#' and `list` requests, to mark the state of the entity at the time of the
 #' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like update and delete. AWS WAF uses the
+#' provide the token to operations like `update` and `delete`. WAF uses the
 #' token to ensure that no changes have been made to the entity since you
 #' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another get, and
-#' use the new token returned by that operation.
+#' `WAFOptimisticLockException`. If this happens, perform another `get`,
+#' and use the new token returned by that operation.
 #'
 #' @return
 #' An empty list.
@@ -1269,15 +2331,9 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
 }
 .wafv2$operations$delete_ip_set <- wafv2_delete_ip_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Deletes the LoggingConfiguration from the specified web ACL
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Deletes the LoggingConfiguration from the specified web ACL.
 #'
 #' @usage
@@ -1361,15 +2417,9 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
 }
 .wafv2$operations$delete_permission_policy <- wafv2_delete_permission_policy
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Deletes the specified RegexPatternSet
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Deletes the specified RegexPatternSet.
 #'
 #' @usage
@@ -1377,9 +2427,10 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
 #'
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1391,14 +2442,14 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. AWS WAF returns a token to your get
-#' and list requests, to mark the state of the entity at the time of the
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
+#' and `list` requests, to mark the state of the entity at the time of the
 #' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like update and delete. AWS WAF uses the
+#' provide the token to operations like `update` and `delete`. WAF uses the
 #' token to ensure that no changes have been made to the entity since you
 #' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another get, and
-#' use the new token returned by that operation.
+#' `WAFOptimisticLockException`. If this happens, perform another `get`,
+#' and use the new token returned by that operation.
 #'
 #' @return
 #' An empty list.
@@ -1433,15 +2484,9 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 }
 .wafv2$operations$delete_regex_pattern_set <- wafv2_delete_regex_pattern_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Deletes the specified RuleGroup
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Deletes the specified RuleGroup.
 #'
 #' @usage
@@ -1449,9 +2494,10 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 #'
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1463,14 +2509,14 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 #' @param Id &#91;required&#93; A unique identifier for the rule group. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. AWS WAF returns a token to your get
-#' and list requests, to mark the state of the entity at the time of the
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
+#' and `list` requests, to mark the state of the entity at the time of the
 #' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like update and delete. AWS WAF uses the
+#' provide the token to operations like `update` and `delete`. WAF uses the
 #' token to ensure that no changes have been made to the entity since you
 #' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another get, and
-#' use the new token returned by that operation.
+#' `WAFOptimisticLockException`. If this happens, perform another `get`,
+#' and use the new token returned by that operation.
 #'
 #' @return
 #' An empty list.
@@ -1505,28 +2551,45 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 }
 .wafv2$operations$delete_rule_group <- wafv2_delete_rule_group
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Deletes the specified WebACL
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Deletes the specified WebACL.
 #' 
 #' You can only use this if `ManagedByFirewallManager` is false in the
 #' specified WebACL.
+#' 
+#' Before deleting any web ACL, first disassociate it from all resources.
+#' 
+#' -   To retrieve a list of the resources that are associated with a web
+#'     ACL, use the following calls:
+#' 
+#'     -   For regional resources, call
+#'         [`list_resources_for_web_acl`][wafv2_list_resources_for_web_acl].
+#' 
+#'     -   For Amazon CloudFront distributions, use the CloudFront call
+#'         `ListDistributionsByWebACLId`. For information, see
+#'         [ListDistributionsByWebACLId](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListDistributionsByWebACLId.html).
+#' 
+#' -   To disassociate a resource from a web ACL, use the following calls:
+#' 
+#'     -   For regional resources, call
+#'         [`disassociate_web_acl`][wafv2_disassociate_web_acl].
+#' 
+#'     -   For Amazon CloudFront distributions, provide an empty web ACL ID
+#'         in the CloudFront call `UpdateDistribution`. For information,
+#'         see
+#'         [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html).
 #'
 #' @usage
 #' wafv2_delete_web_acl(Name, Scope, Id, LockToken)
 #'
-#' @param Name &#91;required&#93; The name of the Web ACL. You cannot change the name of a Web ACL after
+#' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1535,17 +2598,17 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; The unique identifier for the Web ACL. This ID is returned in the
+#' @param Id &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. AWS WAF returns a token to your get
-#' and list requests, to mark the state of the entity at the time of the
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
+#' and `list` requests, to mark the state of the entity at the time of the
 #' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like update and delete. AWS WAF uses the
+#' provide the token to operations like `update` and `delete`. WAF uses the
 #' token to ensure that no changes have been made to the entity since you
 #' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another get, and
-#' use the new token returned by that operation.
+#' `WAFOptimisticLockException`. If this happens, perform another `get`,
+#' and use the new token returned by that operation.
 #'
 #' @return
 #' An empty list.
@@ -1580,28 +2643,24 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 }
 .wafv2$operations$delete_web_acl <- wafv2_delete_web_acl
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Provides high-level information for a managed rule group, including
+#' descriptions of the rules
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Provides high-level information for a managed rule group, including
 #' descriptions of the rules.
 #'
 #' @usage
-#' wafv2_describe_managed_rule_group(VendorName, Name, Scope)
+#' wafv2_describe_managed_rule_group(VendorName, Name, Scope, VersionName)
 #'
 #' @param VendorName &#91;required&#93; The name of the managed rule group vendor. You use this, along with the
 #' rule group name, to identify the rule group.
 #' @param Name &#91;required&#93; The name of the managed rule group. You use this, along with the vendor
 #' name, to identify the rule group.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1610,20 +2669,75 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' @param VersionName The version of the rule group. You can only use a version that is not
+#' scheduled for expiration. If you don't provide this, WAF uses the
+#' vendor's default version.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   VersionName = "string",
+#'   SnsTopicArn = "string",
 #'   Capacity = 123,
 #'   Rules = list(
 #'     list(
 #'       Name = "string",
 #'       Action = list(
-#'         Block = list(),
-#'         Allow = list(),
-#'         Count = list()
+#'         Block = list(
+#'           CustomResponse = list(
+#'             ResponseCode = 123,
+#'             CustomResponseBodyKey = "string",
+#'             ResponseHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Allow = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Captcha = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
+#'     )
+#'   ),
+#'   LabelNamespace = "string",
+#'   AvailableLabels = list(
+#'     list(
+#'       Name = "string"
+#'     )
+#'   ),
+#'   ConsumedLabels = list(
+#'     list(
+#'       Name = "string"
 #'     )
 #'   )
 #' )
@@ -1634,21 +2748,22 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 #' svc$describe_managed_rule_group(
 #'   VendorName = "string",
 #'   Name = "string",
-#'   Scope = "CLOUDFRONT"|"REGIONAL"
+#'   Scope = "CLOUDFRONT"|"REGIONAL",
+#'   VersionName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_describe_managed_rule_group
-wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope) {
+wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionName = NULL) {
   op <- new_operation(
     name = "DescribeManagedRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .wafv2$describe_managed_rule_group_input(VendorName = VendorName, Name = Name, Scope = Scope)
+  input <- .wafv2$describe_managed_rule_group_input(VendorName = VendorName, Name = Name, Scope = Scope, VersionName = VersionName)
   output <- .wafv2$describe_managed_rule_group_output()
   config <- get_config()
   svc <- .wafv2$service(config)
@@ -1658,21 +2773,18 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope) {
 }
 .wafv2$operations$describe_managed_rule_group <- wafv2_describe_managed_rule_group
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Disassociates the specified regional application resource from any
+#' existing web ACL association
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' Disassociates the specified regional application resource from any
+#' existing web ACL association. A resource can have at most one web ACL
+#' association. A regional application can be an Application Load Balancer
+#' (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, or an
+#' Amazon Cognito user pool.
 #' 
-#' Disassociates a Web ACL from a regional application resource. A regional
-#' application can be an Application Load Balancer (ALB), an API Gateway
-#' REST API, or an AppSync GraphQL API.
-#' 
-#' For AWS CloudFront, don't use this call. Instead, use your CloudFront
-#' distribution configuration. To disassociate a Web ACL, provide an empty
+#' For Amazon CloudFront, don't use this call. Instead, use your CloudFront
+#' distribution configuration. To disassociate a web ACL, provide an empty
 #' web ACL ID in the CloudFront call `UpdateDistribution`. For information,
 #' see
 #' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html).
@@ -1688,11 +2800,14 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope) {
 #' -   For an Application Load Balancer:
 #'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an API Gateway REST API:
+#' -   For an Amazon API Gateway REST API:
 #'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
 #' 
 #' -   For an AppSync GraphQL API:
 #'     `arn:aws:appsync:region:account-id:apis/GraphQLApiId `
+#' 
+#' -   For an Amazon Cognito user pool:
+#'     `arn:aws:cognito-idp:region:account-id:userpool/user-pool-id `
 #'
 #' @return
 #' An empty list.
@@ -1724,15 +2839,65 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
 }
 .wafv2$operations$disassociate_web_acl <- wafv2_disassociate_web_acl
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Generates a presigned download URL for the specified release of the
+#' mobile SDK
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' Generates a presigned download URL for the specified release of the
+#' mobile SDK.
 #' 
+#' The mobile SDK is not generally available. Customers who have access to
+#' the mobile SDK can use it to establish and manage Security Token Service
+#' (STS) security tokens for use in HTTP(S) requests from a mobile device
+#' to WAF. For more information, see [WAF client application
+#' integration](https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html)
+#' in the *WAF Developer Guide*.
+#'
+#' @usage
+#' wafv2_generate_mobile_sdk_release_url(Platform, ReleaseVersion)
+#'
+#' @param Platform &#91;required&#93; The device platform.
+#' @param ReleaseVersion &#91;required&#93; The release version. For the latest available version, specify `LATEST`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Url = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$generate_mobile_sdk_release_url(
+#'   Platform = "IOS"|"ANDROID",
+#'   ReleaseVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_generate_mobile_sdk_release_url
+wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
+  op <- new_operation(
+    name = "GenerateMobileSdkReleaseUrl",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$generate_mobile_sdk_release_url_input(Platform = Platform, ReleaseVersion = ReleaseVersion)
+  output <- .wafv2$generate_mobile_sdk_release_url_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$generate_mobile_sdk_release_url <- wafv2_generate_mobile_sdk_release_url
+
+#' Retrieves the specified IPSet
+#'
+#' @description
 #' Retrieves the specified IPSet.
 #'
 #' @usage
@@ -1740,9 +2905,10 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
 #'
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1802,15 +2968,9 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 }
 .wafv2$operations$get_ip_set <- wafv2_get_ip_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Returns the LoggingConfiguration for the specified web ACL
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Returns the LoggingConfiguration for the specified web ACL.
 #'
 #' @usage
@@ -1839,11 +2999,69 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #'         AllQueryArguments = list(),
 #'         UriPath = list(),
 #'         QueryString = list(),
-#'         Body = list(),
-#'         Method = list()
+#'         Body = list(
+#'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         ),
+#'         Method = list(),
+#'         JsonBody = list(
+#'           MatchPattern = list(
+#'             All = list(),
+#'             IncludedPaths = list(
+#'               "string"
+#'             )
+#'           ),
+#'           MatchScope = "ALL"|"KEY"|"VALUE",
+#'           InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         ),
+#'         Headers = list(
+#'           MatchPattern = list(
+#'             All = list(),
+#'             IncludedHeaders = list(
+#'               "string"
+#'             ),
+#'             ExcludedHeaders = list(
+#'               "string"
+#'             )
+#'           ),
+#'           MatchScope = "ALL"|"KEY"|"VALUE",
+#'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         ),
+#'         Cookies = list(
+#'           MatchPattern = list(
+#'             All = list(),
+#'             IncludedCookies = list(
+#'               "string"
+#'             ),
+#'             ExcludedCookies = list(
+#'               "string"
+#'             )
+#'           ),
+#'           MatchScope = "ALL"|"KEY"|"VALUE",
+#'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         )
 #'       )
 #'     ),
-#'     ManagedByFirewallManager = TRUE|FALSE
+#'     ManagedByFirewallManager = TRUE|FALSE,
+#'     LoggingFilter = list(
+#'       Filters = list(
+#'         list(
+#'           Behavior = "KEEP"|"DROP",
+#'           Requirement = "MEETS_ALL"|"MEETS_ANY",
+#'           Conditions = list(
+#'             list(
+#'               ActionCondition = list(
+#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"EXCLUDED_AS_COUNT"
+#'               ),
+#'               LabelNameCondition = list(
+#'                 LabelName = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultBehavior = "KEEP"|"DROP"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1874,6 +3092,176 @@ wafv2_get_logging_configuration <- function(ResourceArn) {
   return(response)
 }
 .wafv2$operations$get_logging_configuration <- wafv2_get_logging_configuration
+
+#' Retrieves the specified managed rule set
+#'
+#' @description
+#' Retrieves the specified managed rule set.
+#' 
+#' This is intended for use only by vendors of managed rule sets. Vendors
+#' are Amazon Web Services and Amazon Web Services Marketplace sellers.
+#' 
+#' Vendors, you can use the managed rule set APIs to provide controlled
+#' rollout of your versioned managed rule group offerings for your
+#' customers. The APIs are
+#' [`list_managed_rule_sets`][wafv2_list_managed_rule_sets],
+#' [`get_managed_rule_set`][wafv2_get_managed_rule_set],
+#' [`put_managed_rule_set_versions`][wafv2_put_managed_rule_set_versions],
+#' and
+#' [`update_managed_rule_set_version_expiry_date`][wafv2_update_managed_rule_set_version_expiry_date].
+#'
+#' @usage
+#' wafv2_get_managed_rule_set(Name, Scope, Id)
+#'
+#' @param Name &#91;required&#93; The name of the managed rule set. You use this, along with the rule set
+#' ID, to identify the rule set.
+#' 
+#' This name is assigned to the corresponding managed rule group, which
+#' your customers can access and use.
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
+#' regional application. A regional application can be an Application Load
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
+#' 
+#' To work with CloudFront, you must also specify the Region US East (N.
+#' Virginia) as follows:
+#' 
+#' -   CLI - Specify the Region when you use the CloudFront scope:
+#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' 
+#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' @param Id &#91;required&#93; A unique identifier for the managed rule set. The ID is returned in the
+#' responses to commands like `list`. You provide it to operations like
+#' `get` and `update`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ManagedRuleSet = list(
+#'     Name = "string",
+#'     Id = "string",
+#'     ARN = "string",
+#'     Description = "string",
+#'     PublishedVersions = list(
+#'       list(
+#'         AssociatedRuleGroupArn = "string",
+#'         Capacity = 123,
+#'         ForecastedLifetime = 123,
+#'         PublishTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastUpdateTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         ExpiryTimestamp = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     RecommendedVersion = "string",
+#'     LabelNamespace = "string"
+#'   ),
+#'   LockToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_managed_rule_set(
+#'   Name = "string",
+#'   Scope = "CLOUDFRONT"|"REGIONAL",
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_get_managed_rule_set
+wafv2_get_managed_rule_set <- function(Name, Scope, Id) {
+  op <- new_operation(
+    name = "GetManagedRuleSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$get_managed_rule_set_input(Name = Name, Scope = Scope, Id = Id)
+  output <- .wafv2$get_managed_rule_set_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$get_managed_rule_set <- wafv2_get_managed_rule_set
+
+#' Retrieves information for the specified mobile SDK release, including
+#' release notes and tags
+#'
+#' @description
+#' Retrieves information for the specified mobile SDK release, including
+#' release notes and tags.
+#' 
+#' The mobile SDK is not generally available. Customers who have access to
+#' the mobile SDK can use it to establish and manage Security Token Service
+#' (STS) security tokens for use in HTTP(S) requests from a mobile device
+#' to WAF. For more information, see [WAF client application
+#' integration](https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html)
+#' in the *WAF Developer Guide*.
+#'
+#' @usage
+#' wafv2_get_mobile_sdk_release(Platform, ReleaseVersion)
+#'
+#' @param Platform &#91;required&#93; The device platform.
+#' @param ReleaseVersion &#91;required&#93; The release version. For the latest available version, specify `LATEST`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MobileSdkRelease = list(
+#'     ReleaseVersion = "string",
+#'     Timestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ReleaseNotes = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_mobile_sdk_release(
+#'   Platform = "IOS"|"ANDROID",
+#'   ReleaseVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_get_mobile_sdk_release
+wafv2_get_mobile_sdk_release <- function(Platform, ReleaseVersion) {
+  op <- new_operation(
+    name = "GetMobileSdkRelease",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$get_mobile_sdk_release_input(Platform = Platform, ReleaseVersion = ReleaseVersion)
+  output <- .wafv2$get_mobile_sdk_release_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$get_mobile_sdk_release <- wafv2_get_mobile_sdk_release
 
 #' Returns the IAM policy that is attached to the specified rule group
 #'
@@ -1923,27 +3311,36 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 }
 .wafv2$operations$get_permission_policy <- wafv2_get_permission_policy
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the keys that are currently blocked by a rate-based rule
+#' instance
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' Retrieves the keys that are currently blocked by a rate-based rule
+#' instance. The maximum number of managed keys that can be blocked for a
+#' single rate-based rule instance is 10,000. If more than 10,000 addresses
+#' exceed the rate limit, those with the highest rates are blocked.
 #' 
-#' Retrieves the keys that are currently blocked by a rate-based rule. The
-#' maximum number of managed keys that can be blocked for a single
-#' rate-based rule is 10,000. If more than 10,000 addresses exceed the rate
-#' limit, those with the highest rates are blocked.
+#' For a rate-based rule that you've defined inside a rule group, provide
+#' the name of the rule group reference statement in your request, in
+#' addition to the rate-based rule name and the web ACL name.
+#' 
+#' WAF monitors web requests and manages keys independently for each unique
+#' combination of web ACL, optional rule group, and rate-based rule. For
+#' example, if you define a rate-based rule inside a rule group, and then
+#' use the rule group in a web ACL, WAF monitors web requests and manages
+#' keys for that web ACL, rule group reference statement, and rate-based
+#' rule instance. If you use the same rule group in a second web ACL, WAF
+#' monitors web requests and manages keys for this second usage completely
+#' independent of your first.
 #'
 #' @usage
 #' wafv2_get_rate_based_statement_managed_keys(Scope, WebACLName, WebACLId,
-#'   RuleName)
+#'   RuleGroupRuleName, RuleName)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1952,12 +3349,18 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param WebACLName &#91;required&#93; The name of the Web ACL. You cannot change the name of a Web ACL after
+#' @param WebACLName &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
-#' @param WebACLId &#91;required&#93; The unique identifier for the Web ACL. This ID is returned in the
+#' @param WebACLId &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
-#' @param RuleName &#91;required&#93; The name of the rate-based rule to get the keys for.
+#' @param RuleGroupRuleName The name of the rule group reference statement in your web ACL. This is
+#' required only when you have the rate-based rule nested inside a rule
+#' group.
+#' @param RuleName &#91;required&#93; The name of the rate-based rule to get the keys for. If you have the
+#' rule defined inside a rule group that you're using in your web ACL, also
+#' provide the name of the rule group reference statement in the request
+#' parameter `RuleGroupRuleName`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1984,6 +3387,7 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 #'   Scope = "CLOUDFRONT"|"REGIONAL",
 #'   WebACLName = "string",
 #'   WebACLId = "string",
+#'   RuleGroupRuleName = "string",
 #'   RuleName = "string"
 #' )
 #' ```
@@ -1991,14 +3395,14 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafv2_get_rate_based_statement_managed_keys
-wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebACLId, RuleName) {
+wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebACLId, RuleGroupRuleName = NULL, RuleName) {
   op <- new_operation(
     name = "GetRateBasedStatementManagedKeys",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .wafv2$get_rate_based_statement_managed_keys_input(Scope = Scope, WebACLName = WebACLName, WebACLId = WebACLId, RuleName = RuleName)
+  input <- .wafv2$get_rate_based_statement_managed_keys_input(Scope = Scope, WebACLName = WebACLName, WebACLId = WebACLId, RuleGroupRuleName = RuleGroupRuleName, RuleName = RuleName)
   output <- .wafv2$get_rate_based_statement_managed_keys_output()
   config <- get_config()
   svc <- .wafv2$service(config)
@@ -2008,15 +3412,9 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 }
 .wafv2$operations$get_rate_based_statement_managed_keys <- wafv2_get_rate_based_statement_managed_keys
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the specified RegexPatternSet
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves the specified RegexPatternSet.
 #'
 #' @usage
@@ -2024,9 +3422,10 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 #'
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -2087,25 +3486,20 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 }
 .wafv2$operations$get_regex_pattern_set <- wafv2_get_regex_pattern_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the specified RuleGroup
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves the specified RuleGroup.
 #'
 #' @usage
-#' wafv2_get_rule_group(Name, Scope, Id)
+#' wafv2_get_rule_group(Name, Scope, Id, ARN)
 #'
-#' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
+#' @param Name The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -2114,9 +3508,10 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; A unique identifier for the rule group. This ID is returned in the
+#' @param Id A unique identifier for the rule group. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
+#' @param ARN The Amazon Resource Name (ARN) of the entity.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2145,13 +3540,52 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             ),
 #'             PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -2167,15 +3601,55 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
-#'             )
+#'             ),
+#'             SensitivityLevel = "LOW"|"HIGH"
 #'           ),
 #'           XssMatchStatement = list(
 #'             FieldToMatch = list(
@@ -2188,13 +3662,52 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             )
 #'           ),
@@ -2209,21 +3722,60 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'             Size = 123,
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             )
 #'           ),
 #'           GeoMatchStatement = list(
 #'             CountryCodes = list(
-#'               "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'               "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"|"XK"
 #'             ),
 #'             ForwardedIPConfig = list(
 #'               HeaderName = "string",
@@ -2258,13 +3810,52 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             )
 #'           ),
@@ -2293,26 +3884,163 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'           ManagedRuleGroupStatement = list(
 #'             VendorName = "string",
 #'             Name = "string",
+#'             Version = "string",
 #'             ExcludedRules = list(
 #'               list(
 #'                 Name = "string"
+#'               )
+#'             ),
+#'             ScopeDownStatement = list(),
+#'             ManagedRuleGroupConfigs = list(
+#'               list(
+#'                 LoginPath = "string",
+#'                 PayloadType = "JSON"|"FORM_ENCODED",
+#'                 UsernameField = list(
+#'                   Identifier = "string"
+#'                 ),
+#'                 PasswordField = list(
+#'                   Identifier = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           LabelMatchStatement = list(
+#'             Scope = "LABEL"|"NAMESPACE",
+#'             Key = "string"
+#'           ),
+#'           RegexMatchStatement = list(
+#'             RegexString = "string",
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             )
 #'           )
 #'         ),
 #'         Action = list(
-#'           Block = list(),
-#'           Allow = list(),
-#'           Count = list()
+#'           Block = list(
+#'             CustomResponse = list(
+#'               ResponseCode = 123,
+#'               CustomResponseBodyKey = "string",
+#'               ResponseHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Allow = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Captcha = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
+#'         ),
+#'         RuleLabels = list(
+#'           list(
+#'             Name = "string"
+#'           )
 #'         ),
 #'         VisibilityConfig = list(
 #'           SampledRequestsEnabled = TRUE|FALSE,
 #'           CloudWatchMetricsEnabled = TRUE|FALSE,
 #'           MetricName = "string"
+#'         ),
+#'         CaptchaConfig = list(
+#'           ImmunityTimeProperty = list(
+#'             ImmunityTime = 123
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -2320,6 +4048,23 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'       SampledRequestsEnabled = TRUE|FALSE,
 #'       CloudWatchMetricsEnabled = TRUE|FALSE,
 #'       MetricName = "string"
+#'     ),
+#'     LabelNamespace = "string",
+#'     CustomResponseBodies = list(
+#'       list(
+#'         ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'         Content = "string"
+#'       )
+#'     ),
+#'     AvailableLabels = list(
+#'       list(
+#'         Name = "string"
+#'       )
+#'     ),
+#'     ConsumedLabels = list(
+#'       list(
+#'         Name = "string"
+#'       )
 #'     )
 #'   ),
 #'   LockToken = "string"
@@ -2331,21 +4076,22 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #' svc$get_rule_group(
 #'   Name = "string",
 #'   Scope = "CLOUDFRONT"|"REGIONAL",
-#'   Id = "string"
+#'   Id = "string",
+#'   ARN = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_get_rule_group
-wafv2_get_rule_group <- function(Name, Scope, Id) {
+wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) {
   op <- new_operation(
     name = "GetRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .wafv2$get_rule_group_input(Name = Name, Scope = Scope, Id = Id)
+  input <- .wafv2$get_rule_group_input(Name = Name, Scope = Scope, Id = Id, ARN = ARN)
   output <- .wafv2$get_rule_group_output()
   config <- get_config()
   svc <- .wafv2$service(config)
@@ -2355,20 +4101,17 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 }
 .wafv2$operations$get_rule_group <- wafv2_get_rule_group
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Gets detailed information about a specified number of requests--a
+#' sample--that WAF randomly selects from among the first 5,000 requests
+#' that your Amazon Web Services resource received during a time range that
+#' you choose
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Gets detailed information about a specified number of requests--a
-#' sample--that AWS WAF randomly selects from among the first 5,000
-#' requests that your AWS resource received during a time range that you
-#' choose. You can specify a sample size of up to 500 requests, and you can
-#' specify any time range in the previous three hours.
+#' sample--that WAF randomly selects from among the first 5,000 requests
+#' that your Amazon Web Services resource received during a time range that
+#' you choose. You can specify a sample size of up to 500 requests, and you
+#' can specify any time range in the previous three hours.
 #' 
 #' [`get_sampled_requests`][wafv2_get_sampled_requests] returns a time
 #' range, which is usually the time range that you specified. However, if
@@ -2376,7 +4119,7 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 #' requests before the specified time range elapsed,
 #' [`get_sampled_requests`][wafv2_get_sampled_requests] returns an updated
 #' time range. This new time range indicates the actual period during which
-#' AWS WAF selected the requests in the sample.
+#' WAF selected the requests in the sample.
 #'
 #' @usage
 #' wafv2_get_sampled_requests(WebAclArn, RuleMetricName, Scope, TimeWindow,
@@ -2386,9 +4129,10 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 #' sample of requests.
 #' @param RuleMetricName &#91;required&#93; The metric name assigned to the `Rule` or `RuleGroup` for which you want
 #' a sample of requests.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -2402,12 +4146,13 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 #' a sample of requests. You must specify the times in Coordinated
 #' Universal Time (UTC) format. UTC format includes the special designator,
 #' `Z`. For example, `"2016-09-27T14:50Z"`. You can specify any time range
-#' in the previous three hours.
-#' @param MaxItems &#91;required&#93; The number of requests that you want AWS WAF to return from among the
-#' first 5,000 requests that your AWS resource received during the time
-#' range. If your resource received fewer requests than the value of
-#' `MaxItems`, [`get_sampled_requests`][wafv2_get_sampled_requests] returns
-#' information about all of them.
+#' in the previous three hours. If you specify a start time that's earlier
+#' than three hours ago, WAF sets it to three hours ago.
+#' @param MaxItems &#91;required&#93; The number of requests that you want WAF to return from among the first
+#' 5,000 requests that your Amazon Web Services resource received during
+#' the time range. If your resource received fewer requests than the value
+#' of `MaxItems`, [`get_sampled_requests`][wafv2_get_sampled_requests]
+#' returns information about all of them.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2433,7 +4178,24 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 #'         "2015-01-01"
 #'       ),
 #'       Action = "string",
-#'       RuleNameWithinRuleGroup = "string"
+#'       RuleNameWithinRuleGroup = "string",
+#'       RequestHeadersInserted = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ResponseCodeSent = 123,
+#'       Labels = list(
+#'         list(
+#'           Name = "string"
+#'         )
+#'       ),
+#'       CaptchaResponse = list(
+#'         ResponseCode = 123,
+#'         SolveTimestamp = 123,
+#'         FailureReason = "TOKEN_MISSING"|"TOKEN_EXPIRED"
+#'       )
 #'     )
 #'   ),
 #'   PopulationSize = 123,
@@ -2486,25 +4248,20 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 }
 .wafv2$operations$get_sampled_requests <- wafv2_get_sampled_requests
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the specified WebACL
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves the specified WebACL.
 #'
 #' @usage
 #' wafv2_get_web_acl(Name, Scope, Id)
 #'
-#' @param Name &#91;required&#93; The name of the Web ACL. You cannot change the name of a Web ACL after
+#' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -2513,7 +4270,7 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; The unique identifier for the Web ACL. This ID is returned in the
+#' @param Id &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
 #'
@@ -2526,8 +4283,28 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'     Id = "string",
 #'     ARN = "string",
 #'     DefaultAction = list(
-#'       Block = list(),
-#'       Allow = list()
+#'       Block = list(
+#'         CustomResponse = list(
+#'           ResponseCode = 123,
+#'           CustomResponseBodyKey = "string",
+#'           ResponseHeaders = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Allow = list(
+#'         CustomRequestHandling = list(
+#'           InsertHeaders = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     Description = "string",
 #'     Rules = list(
@@ -2547,13 +4324,52 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             ),
 #'             PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -2569,15 +4385,55 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
-#'             )
+#'             ),
+#'             SensitivityLevel = "LOW"|"HIGH"
 #'           ),
 #'           XssMatchStatement = list(
 #'             FieldToMatch = list(
@@ -2590,13 +4446,52 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             )
 #'           ),
@@ -2611,21 +4506,60 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'             Size = 123,
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             )
 #'           ),
 #'           GeoMatchStatement = list(
 #'             CountryCodes = list(
-#'               "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'               "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"|"XK"
 #'             ),
 #'             ForwardedIPConfig = list(
 #'               HeaderName = "string",
@@ -2660,13 +4594,52 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             )
 #'           ),
@@ -2695,26 +4668,163 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'           ManagedRuleGroupStatement = list(
 #'             VendorName = "string",
 #'             Name = "string",
+#'             Version = "string",
 #'             ExcludedRules = list(
 #'               list(
 #'                 Name = "string"
+#'               )
+#'             ),
+#'             ScopeDownStatement = list(),
+#'             ManagedRuleGroupConfigs = list(
+#'               list(
+#'                 LoginPath = "string",
+#'                 PayloadType = "JSON"|"FORM_ENCODED",
+#'                 UsernameField = list(
+#'                   Identifier = "string"
+#'                 ),
+#'                 PasswordField = list(
+#'                   Identifier = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           LabelMatchStatement = list(
+#'             Scope = "LABEL"|"NAMESPACE",
+#'             Key = "string"
+#'           ),
+#'           RegexMatchStatement = list(
+#'             RegexString = "string",
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             )
 #'           )
 #'         ),
 #'         Action = list(
-#'           Block = list(),
-#'           Allow = list(),
-#'           Count = list()
+#'           Block = list(
+#'             CustomResponse = list(
+#'               ResponseCode = 123,
+#'               CustomResponseBodyKey = "string",
+#'               ResponseHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Allow = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Captcha = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
+#'         ),
+#'         RuleLabels = list(
+#'           list(
+#'             Name = "string"
+#'           )
 #'         ),
 #'         VisibilityConfig = list(
 #'           SampledRequestsEnabled = TRUE|FALSE,
 #'           CloudWatchMetricsEnabled = TRUE|FALSE,
 #'           MetricName = "string"
+#'         ),
+#'         CaptchaConfig = list(
+#'           ImmunityTimeProperty = list(
+#'             ImmunityTime = 123
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -2732,9 +4842,443 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'           ManagedRuleGroupStatement = list(
 #'             VendorName = "string",
 #'             Name = "string",
+#'             Version = "string",
 #'             ExcludedRules = list(
 #'               list(
 #'                 Name = "string"
+#'               )
+#'             ),
+#'             ScopeDownStatement = list(
+#'               ByteMatchStatement = list(
+#'                 SearchString = raw,
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 ),
+#'                 PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+#'               ),
+#'               SqliMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 ),
+#'                 SensitivityLevel = "LOW"|"HIGH"
+#'               ),
+#'               XssMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               SizeConstraintStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+#'                 Size = 123,
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               GeoMatchStatement = list(
+#'                 CountryCodes = list(
+#'                   "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"|"XK"
+#'                 ),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               RuleGroupReferenceStatement = list(
+#'                 ARN = "string",
+#'                 ExcludedRules = list(
+#'                   list(
+#'                     Name = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               IPSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 IPSetForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH",
+#'                   Position = "FIRST"|"LAST"|"ANY"
+#'                 )
+#'               ),
+#'               RegexPatternSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               RateBasedStatement = list(
+#'                 Limit = 123,
+#'                 AggregateKeyType = "IP"|"FORWARDED_IP",
+#'                 ScopeDownStatement = list(),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               AndStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               OrStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               NotStatement = list(
+#'                 Statement = list()
+#'               ),
+#'               ManagedRuleGroupStatement = list(),
+#'               LabelMatchStatement = list(
+#'                 Scope = "LABEL"|"NAMESPACE",
+#'                 Key = "string"
+#'               ),
+#'               RegexMatchStatement = list(
+#'                 RegexString = "string",
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             ManagedRuleGroupConfigs = list(
+#'               list(
+#'                 LoginPath = "string",
+#'                 PayloadType = "JSON"|"FORM_ENCODED",
+#'                 UsernameField = list(
+#'                   Identifier = "string"
+#'                 ),
+#'                 PasswordField = list(
+#'                   Identifier = "string"
+#'                 )
 #'               )
 #'             )
 #'           ),
@@ -2748,7 +5292,16 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
 #'         ),
 #'         VisibilityConfig = list(
@@ -2766,9 +5319,443 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'           ManagedRuleGroupStatement = list(
 #'             VendorName = "string",
 #'             Name = "string",
+#'             Version = "string",
 #'             ExcludedRules = list(
 #'               list(
 #'                 Name = "string"
+#'               )
+#'             ),
+#'             ScopeDownStatement = list(
+#'               ByteMatchStatement = list(
+#'                 SearchString = raw,
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 ),
+#'                 PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+#'               ),
+#'               SqliMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 ),
+#'                 SensitivityLevel = "LOW"|"HIGH"
+#'               ),
+#'               XssMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               SizeConstraintStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+#'                 Size = 123,
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               GeoMatchStatement = list(
+#'                 CountryCodes = list(
+#'                   "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"|"XK"
+#'                 ),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               RuleGroupReferenceStatement = list(
+#'                 ARN = "string",
+#'                 ExcludedRules = list(
+#'                   list(
+#'                     Name = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               IPSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 IPSetForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH",
+#'                   Position = "FIRST"|"LAST"|"ANY"
+#'                 )
+#'               ),
+#'               RegexPatternSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               RateBasedStatement = list(
+#'                 Limit = 123,
+#'                 AggregateKeyType = "IP"|"FORWARDED_IP",
+#'                 ScopeDownStatement = list(),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               AndStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               OrStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               NotStatement = list(
+#'                 Statement = list()
+#'               ),
+#'               ManagedRuleGroupStatement = list(),
+#'               LabelMatchStatement = list(
+#'                 Scope = "LABEL"|"NAMESPACE",
+#'                 Key = "string"
+#'               ),
+#'               RegexMatchStatement = list(
+#'                 RegexString = "string",
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             ManagedRuleGroupConfigs = list(
+#'               list(
+#'                 LoginPath = "string",
+#'                 PayloadType = "JSON"|"FORM_ENCODED",
+#'                 UsernameField = list(
+#'                   Identifier = "string"
+#'                 ),
+#'                 PasswordField = list(
+#'                   Identifier = "string"
+#'                 )
 #'               )
 #'             )
 #'           ),
@@ -2782,7 +5769,16 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
 #'         ),
 #'         VisibilityConfig = list(
@@ -2792,9 +5788,22 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'         )
 #'       )
 #'     ),
-#'     ManagedByFirewallManager = TRUE|FALSE
+#'     ManagedByFirewallManager = TRUE|FALSE,
+#'     LabelNamespace = "string",
+#'     CustomResponseBodies = list(
+#'       list(
+#'         ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'         Content = "string"
+#'       )
+#'     ),
+#'     CaptchaConfig = list(
+#'       ImmunityTimeProperty = list(
+#'         ImmunityTime = 123
+#'       )
+#'     )
 #'   ),
-#'   LockToken = "string"
+#'   LockToken = "string",
+#'   ApplicationIntegrationURL = "string"
 #' )
 #' ```
 #'
@@ -2827,21 +5836,30 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 }
 .wafv2$operations$get_web_acl <- wafv2_get_web_acl
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the WebACL for the specified resource
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves the WebACL for the specified resource.
 #'
 #' @usage
 #' wafv2_get_web_acl_for_resource(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; The ARN (Amazon Resource Name) of the resource.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose web ACL you want to
+#' retrieve.
+#' 
+#' The ARN must be in one of the following formats:
+#' 
+#' -   For an Application Load Balancer:
+#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' 
+#' -   For an Amazon API Gateway REST API:
+#'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
+#' 
+#' -   For an AppSync GraphQL API:
+#'     `arn:aws:appsync:region:account-id:apis/GraphQLApiId `
+#' 
+#' -   For an Amazon Cognito user pool:
+#'     `arn:aws:cognito-idp:region:account-id:userpool/user-pool-id `
 #'
 #' @return
 #' A list with the following syntax:
@@ -2852,8 +5870,28 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'     Id = "string",
 #'     ARN = "string",
 #'     DefaultAction = list(
-#'       Block = list(),
-#'       Allow = list()
+#'       Block = list(
+#'         CustomResponse = list(
+#'           ResponseCode = 123,
+#'           CustomResponseBodyKey = "string",
+#'           ResponseHeaders = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Allow = list(
+#'         CustomRequestHandling = list(
+#'           InsertHeaders = list(
+#'             list(
+#'               Name = "string",
+#'               Value = "string"
+#'             )
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     Description = "string",
 #'     Rules = list(
@@ -2873,13 +5911,52 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             ),
 #'             PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -2895,15 +5972,55 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
-#'             )
+#'             ),
+#'             SensitivityLevel = "LOW"|"HIGH"
 #'           ),
 #'           XssMatchStatement = list(
 #'             FieldToMatch = list(
@@ -2916,13 +6033,52 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             )
 #'           ),
@@ -2937,21 +6093,60 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'             Size = 123,
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             )
 #'           ),
 #'           GeoMatchStatement = list(
 #'             CountryCodes = list(
-#'               "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'               "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"|"XK"
 #'             ),
 #'             ForwardedIPConfig = list(
 #'               HeaderName = "string",
@@ -2986,13 +6181,52 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               AllQueryArguments = list(),
 #'               UriPath = list(),
 #'               QueryString = list(),
-#'               Body = list(),
-#'               Method = list()
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
 #'             ),
 #'             TextTransformations = list(
 #'               list(
 #'                 Priority = 123,
-#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             )
 #'           ),
@@ -3021,26 +6255,163 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'           ManagedRuleGroupStatement = list(
 #'             VendorName = "string",
 #'             Name = "string",
+#'             Version = "string",
 #'             ExcludedRules = list(
 #'               list(
 #'                 Name = "string"
+#'               )
+#'             ),
+#'             ScopeDownStatement = list(),
+#'             ManagedRuleGroupConfigs = list(
+#'               list(
+#'                 LoginPath = "string",
+#'                 PayloadType = "JSON"|"FORM_ENCODED",
+#'                 UsernameField = list(
+#'                   Identifier = "string"
+#'                 ),
+#'                 PasswordField = list(
+#'                   Identifier = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           LabelMatchStatement = list(
+#'             Scope = "LABEL"|"NAMESPACE",
+#'             Key = "string"
+#'           ),
+#'           RegexMatchStatement = list(
+#'             RegexString = "string",
+#'             FieldToMatch = list(
+#'               SingleHeader = list(
+#'                 Name = "string"
+#'               ),
+#'               SingleQueryArgument = list(
+#'                 Name = "string"
+#'               ),
+#'               AllQueryArguments = list(),
+#'               UriPath = list(),
+#'               QueryString = list(),
+#'               Body = list(
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Method = list(),
+#'               JsonBody = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedPaths = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Headers = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedHeaders = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedHeaders = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               Cookies = list(
+#'                 MatchPattern = list(
+#'                   All = list(),
+#'                   IncludedCookies = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedCookies = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 MatchScope = "ALL"|"KEY"|"VALUE",
+#'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               )
+#'             ),
+#'             TextTransformations = list(
+#'               list(
+#'                 Priority = 123,
+#'                 Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'               )
 #'             )
 #'           )
 #'         ),
 #'         Action = list(
-#'           Block = list(),
-#'           Allow = list(),
-#'           Count = list()
+#'           Block = list(
+#'             CustomResponse = list(
+#'               ResponseCode = 123,
+#'               CustomResponseBodyKey = "string",
+#'               ResponseHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Allow = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           Captcha = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
+#'         ),
+#'         RuleLabels = list(
+#'           list(
+#'             Name = "string"
+#'           )
 #'         ),
 #'         VisibilityConfig = list(
 #'           SampledRequestsEnabled = TRUE|FALSE,
 #'           CloudWatchMetricsEnabled = TRUE|FALSE,
 #'           MetricName = "string"
+#'         ),
+#'         CaptchaConfig = list(
+#'           ImmunityTimeProperty = list(
+#'             ImmunityTime = 123
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -3058,9 +6429,443 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'           ManagedRuleGroupStatement = list(
 #'             VendorName = "string",
 #'             Name = "string",
+#'             Version = "string",
 #'             ExcludedRules = list(
 #'               list(
 #'                 Name = "string"
+#'               )
+#'             ),
+#'             ScopeDownStatement = list(
+#'               ByteMatchStatement = list(
+#'                 SearchString = raw,
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 ),
+#'                 PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+#'               ),
+#'               SqliMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 ),
+#'                 SensitivityLevel = "LOW"|"HIGH"
+#'               ),
+#'               XssMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               SizeConstraintStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+#'                 Size = 123,
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               GeoMatchStatement = list(
+#'                 CountryCodes = list(
+#'                   "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"|"XK"
+#'                 ),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               RuleGroupReferenceStatement = list(
+#'                 ARN = "string",
+#'                 ExcludedRules = list(
+#'                   list(
+#'                     Name = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               IPSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 IPSetForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH",
+#'                   Position = "FIRST"|"LAST"|"ANY"
+#'                 )
+#'               ),
+#'               RegexPatternSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               RateBasedStatement = list(
+#'                 Limit = 123,
+#'                 AggregateKeyType = "IP"|"FORWARDED_IP",
+#'                 ScopeDownStatement = list(),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               AndStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               OrStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               NotStatement = list(
+#'                 Statement = list()
+#'               ),
+#'               ManagedRuleGroupStatement = list(),
+#'               LabelMatchStatement = list(
+#'                 Scope = "LABEL"|"NAMESPACE",
+#'                 Key = "string"
+#'               ),
+#'               RegexMatchStatement = list(
+#'                 RegexString = "string",
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             ManagedRuleGroupConfigs = list(
+#'               list(
+#'                 LoginPath = "string",
+#'                 PayloadType = "JSON"|"FORM_ENCODED",
+#'                 UsernameField = list(
+#'                   Identifier = "string"
+#'                 ),
+#'                 PasswordField = list(
+#'                   Identifier = "string"
+#'                 )
 #'               )
 #'             )
 #'           ),
@@ -3074,7 +6879,16 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
 #'         ),
 #'         VisibilityConfig = list(
@@ -3092,9 +6906,443 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'           ManagedRuleGroupStatement = list(
 #'             VendorName = "string",
 #'             Name = "string",
+#'             Version = "string",
 #'             ExcludedRules = list(
 #'               list(
 #'                 Name = "string"
+#'               )
+#'             ),
+#'             ScopeDownStatement = list(
+#'               ByteMatchStatement = list(
+#'                 SearchString = raw,
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 ),
+#'                 PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
+#'               ),
+#'               SqliMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 ),
+#'                 SensitivityLevel = "LOW"|"HIGH"
+#'               ),
+#'               XssMatchStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               SizeConstraintStatement = list(
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
+#'                 Size = 123,
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               GeoMatchStatement = list(
+#'                 CountryCodes = list(
+#'                   "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"|"XK"
+#'                 ),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               RuleGroupReferenceStatement = list(
+#'                 ARN = "string",
+#'                 ExcludedRules = list(
+#'                   list(
+#'                     Name = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               IPSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 IPSetForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH",
+#'                   Position = "FIRST"|"LAST"|"ANY"
+#'                 )
+#'               ),
+#'               RegexPatternSetReferenceStatement = list(
+#'                 ARN = "string",
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               RateBasedStatement = list(
+#'                 Limit = 123,
+#'                 AggregateKeyType = "IP"|"FORWARDED_IP",
+#'                 ScopeDownStatement = list(),
+#'                 ForwardedIPConfig = list(
+#'                   HeaderName = "string",
+#'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 )
+#'               ),
+#'               AndStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               OrStatement = list(
+#'                 Statements = list(
+#'                   list()
+#'                 )
+#'               ),
+#'               NotStatement = list(
+#'                 Statement = list()
+#'               ),
+#'               ManagedRuleGroupStatement = list(),
+#'               LabelMatchStatement = list(
+#'                 Scope = "LABEL"|"NAMESPACE",
+#'                 Key = "string"
+#'               ),
+#'               RegexMatchStatement = list(
+#'                 RegexString = "string",
+#'                 FieldToMatch = list(
+#'                   SingleHeader = list(
+#'                     Name = "string"
+#'                   ),
+#'                   SingleQueryArgument = list(
+#'                     Name = "string"
+#'                   ),
+#'                   AllQueryArguments = list(),
+#'                   UriPath = list(),
+#'                   QueryString = list(),
+#'                   Body = list(
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Method = list(),
+#'                   JsonBody = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedPaths = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Headers = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedHeaders = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedHeaders = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   Cookies = list(
+#'                     MatchPattern = list(
+#'                       All = list(),
+#'                       IncludedCookies = list(
+#'                         "string"
+#'                       ),
+#'                       ExcludedCookies = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     MatchScope = "ALL"|"KEY"|"VALUE",
+#'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   )
+#'                 ),
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             ManagedRuleGroupConfigs = list(
+#'               list(
+#'                 LoginPath = "string",
+#'                 PayloadType = "JSON"|"FORM_ENCODED",
+#'                 UsernameField = list(
+#'                   Identifier = "string"
+#'                 ),
+#'                 PasswordField = list(
+#'                   Identifier = "string"
+#'                 )
 #'               )
 #'             )
 #'           ),
@@ -3108,7 +7356,16 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'           )
 #'         ),
 #'         OverrideAction = list(
-#'           Count = list(),
+#'           Count = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
 #'           None = list()
 #'         ),
 #'         VisibilityConfig = list(
@@ -3118,7 +7375,19 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'         )
 #'       )
 #'     ),
-#'     ManagedByFirewallManager = TRUE|FALSE
+#'     ManagedByFirewallManager = TRUE|FALSE,
+#'     LabelNamespace = "string",
+#'     CustomResponseBodies = list(
+#'       list(
+#'         ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'         Content = "string"
+#'       )
+#'     ),
+#'     CaptchaConfig = list(
+#'       ImmunityTimeProperty = list(
+#'         ImmunityTime = 123
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -3150,25 +7419,25 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 }
 .wafv2$operations$get_web_acl_for_resource <- wafv2_get_web_acl_for_resource
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Returns a list of the available versions for the specified managed rule
+#' group
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
-#' Retrieves an array of managed rule groups that are available for you to
-#' use. This list includes all AWS Managed Rules rule groups and the AWS
-#' Marketplace managed rule groups that you're subscribed to.
+#' Returns a list of the available versions for the specified managed rule
+#' group.
 #'
 #' @usage
-#' wafv2_list_available_managed_rule_groups(Scope, NextMarker, Limit)
+#' wafv2_list_available_managed_rule_group_versions(VendorName, Name,
+#'   Scope, NextMarker, Limit)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param VendorName &#91;required&#93; The name of the managed rule group vendor. You use this, along with the
+#' rule group name, to identify the rule group.
+#' @param Name &#91;required&#93; The name of the managed rule group. You use this, along with the vendor
+#' name, to identify the rule group.
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3178,14 +7447,94 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, AWS
-#' WAF returns a `NextMarker` value in the response. To retrieve the next
-#' batch of objects, provide the marker from the prior call in your next
-#' request.
-#' @param Limit The maximum number of objects that you want AWS WAF to return for this
-#' request. If more objects are available, in the response, AWS WAF
-#' provides a `NextMarker` value that you can use in a subsequent call to
-#' get the next batch of objects.
+#' of objects that are still available for retrieval exceeds the limit, WAF
+#' returns a `NextMarker` value in the response. To retrieve the next batch
+#' of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this
+#' request. If more objects are available, in the response, WAF provides a
+#' `NextMarker` value that you can use in a subsequent call to get the next
+#' batch of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   Versions = list(
+#'     list(
+#'       Name = "string",
+#'       LastUpdateTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   CurrentDefaultVersion = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_available_managed_rule_group_versions(
+#'   VendorName = "string",
+#'   Name = "string",
+#'   Scope = "CLOUDFRONT"|"REGIONAL",
+#'   NextMarker = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_list_available_managed_rule_group_versions
+wafv2_list_available_managed_rule_group_versions <- function(VendorName, Name, Scope, NextMarker = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListAvailableManagedRuleGroupVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$list_available_managed_rule_group_versions_input(VendorName = VendorName, Name = Name, Scope = Scope, NextMarker = NextMarker, Limit = Limit)
+  output <- .wafv2$list_available_managed_rule_group_versions_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$list_available_managed_rule_group_versions <- wafv2_list_available_managed_rule_group_versions
+
+#' Retrieves an array of managed rule groups that are available for you to
+#' use
+#'
+#' @description
+#' Retrieves an array of managed rule groups that are available for you to
+#' use. This list includes all Amazon Web Services Managed Rules rule
+#' groups and all of the Amazon Web Services Marketplace managed rule
+#' groups that you're subscribed to.
+#'
+#' @usage
+#' wafv2_list_available_managed_rule_groups(Scope, NextMarker, Limit)
+#'
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
+#' regional application. A regional application can be an Application Load
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
+#' 
+#' To work with CloudFront, you must also specify the Region US East (N.
+#' Virginia) as follows:
+#' 
+#' -   CLI - Specify the Region when you use the CloudFront scope:
+#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' 
+#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
+#' of objects that are still available for retrieval exceeds the limit, WAF
+#' returns a `NextMarker` value in the response. To retrieve the next batch
+#' of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this
+#' request. If more objects are available, in the response, WAF provides a
+#' `NextMarker` value that you can use in a subsequent call to get the next
+#' batch of objects.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3196,6 +7545,7 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #'     list(
 #'       VendorName = "string",
 #'       Name = "string",
+#'       VersioningSupported = TRUE|FALSE,
 #'       Description = "string"
 #'     )
 #'   )
@@ -3231,24 +7581,20 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
 }
 .wafv2$operations$list_available_managed_rule_groups <- wafv2_list_available_managed_rule_groups
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves an array of IPSetSummary objects for the IP sets that you
+#' manage
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves an array of IPSetSummary objects for the IP sets that you
 #' manage.
 #'
 #' @usage
 #' wafv2_list_ip_sets(Scope, NextMarker, Limit)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3258,14 +7604,13 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, AWS
-#' WAF returns a `NextMarker` value in the response. To retrieve the next
-#' batch of objects, provide the marker from the prior call in your next
-#' request.
-#' @param Limit The maximum number of objects that you want AWS WAF to return for this
-#' request. If more objects are available, in the response, AWS WAF
-#' provides a `NextMarker` value that you can use in a subsequent call to
-#' get the next batch of objects.
+#' of objects that are still available for retrieval exceeds the limit, WAF
+#' returns a `NextMarker` value in the response. To retrieve the next batch
+#' of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this
+#' request. If more objects are available, in the response, WAF provides a
+#' `NextMarker` value that you can use in a subsequent call to get the next
+#' batch of objects.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3313,23 +7658,18 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 }
 .wafv2$operations$list_ip_sets <- wafv2_list_ip_sets
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves an array of your LoggingConfiguration objects
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves an array of your LoggingConfiguration objects.
 #'
 #' @usage
 #' wafv2_list_logging_configurations(Scope, NextMarker, Limit)
 #'
-#' @param Scope Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3339,14 +7679,13 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, AWS
-#' WAF returns a `NextMarker` value in the response. To retrieve the next
-#' batch of objects, provide the marker from the prior call in your next
-#' request.
-#' @param Limit The maximum number of objects that you want AWS WAF to return for this
-#' request. If more objects are available, in the response, AWS WAF
-#' provides a `NextMarker` value that you can use in a subsequent call to
-#' get the next batch of objects.
+#' of objects that are still available for retrieval exceeds the limit, WAF
+#' returns a `NextMarker` value in the response. To retrieve the next batch
+#' of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this
+#' request. If more objects are available, in the response, WAF provides a
+#' `NextMarker` value that you can use in a subsequent call to get the next
+#' batch of objects.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3369,11 +7708,69 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'           AllQueryArguments = list(),
 #'           UriPath = list(),
 #'           QueryString = list(),
-#'           Body = list(),
-#'           Method = list()
+#'           Body = list(
+#'             OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'           ),
+#'           Method = list(),
+#'           JsonBody = list(
+#'             MatchPattern = list(
+#'               All = list(),
+#'               IncludedPaths = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             MatchScope = "ALL"|"KEY"|"VALUE",
+#'             InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'             OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'           ),
+#'           Headers = list(
+#'             MatchPattern = list(
+#'               All = list(),
+#'               IncludedHeaders = list(
+#'                 "string"
+#'               ),
+#'               ExcludedHeaders = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             MatchScope = "ALL"|"KEY"|"VALUE",
+#'             OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'           ),
+#'           Cookies = list(
+#'             MatchPattern = list(
+#'               All = list(),
+#'               IncludedCookies = list(
+#'                 "string"
+#'               ),
+#'               ExcludedCookies = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             MatchScope = "ALL"|"KEY"|"VALUE",
+#'             OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'           )
 #'         )
 #'       ),
-#'       ManagedByFirewallManager = TRUE|FALSE
+#'       ManagedByFirewallManager = TRUE|FALSE,
+#'       LoggingFilter = list(
+#'         Filters = list(
+#'           list(
+#'             Behavior = "KEEP"|"DROP",
+#'             Requirement = "MEETS_ALL"|"MEETS_ANY",
+#'             Conditions = list(
+#'               list(
+#'                 ActionCondition = list(
+#'                   Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"EXCLUDED_AS_COUNT"
+#'                 ),
+#'                 LabelNameCondition = list(
+#'                   LabelName = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         DefaultBehavior = "KEEP"|"DROP"
+#'       )
 #'     )
 #'   ),
 #'   NextMarker = "string"
@@ -3392,7 +7789,7 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafv2_list_logging_configurations
-wafv2_list_logging_configurations <- function(Scope = NULL, NextMarker = NULL, Limit = NULL) {
+wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListLoggingConfigurations",
     http_method = "POST",
@@ -3409,24 +7806,30 @@ wafv2_list_logging_configurations <- function(Scope = NULL, NextMarker = NULL, L
 }
 .wafv2$operations$list_logging_configurations <- wafv2_list_logging_configurations
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the managed rule sets that you own
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' Retrieves the managed rule sets that you own.
 #' 
-#' Retrieves an array of RegexPatternSetSummary objects for the regex
-#' pattern sets that you manage.
+#' This is intended for use only by vendors of managed rule sets. Vendors
+#' are Amazon Web Services and Amazon Web Services Marketplace sellers.
+#' 
+#' Vendors, you can use the managed rule set APIs to provide controlled
+#' rollout of your versioned managed rule group offerings for your
+#' customers. The APIs are
+#' [`list_managed_rule_sets`][wafv2_list_managed_rule_sets],
+#' [`get_managed_rule_set`][wafv2_get_managed_rule_set],
+#' [`put_managed_rule_set_versions`][wafv2_put_managed_rule_set_versions],
+#' and
+#' [`update_managed_rule_set_version_expiry_date`][wafv2_update_managed_rule_set_version_expiry_date].
 #'
 #' @usage
-#' wafv2_list_regex_pattern_sets(Scope, NextMarker, Limit)
+#' wafv2_list_managed_rule_sets(Scope, NextMarker, Limit)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3436,14 +7839,163 @@ wafv2_list_logging_configurations <- function(Scope = NULL, NextMarker = NULL, L
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, AWS
-#' WAF returns a `NextMarker` value in the response. To retrieve the next
-#' batch of objects, provide the marker from the prior call in your next
-#' request.
-#' @param Limit The maximum number of objects that you want AWS WAF to return for this
-#' request. If more objects are available, in the response, AWS WAF
-#' provides a `NextMarker` value that you can use in a subsequent call to
-#' get the next batch of objects.
+#' of objects that are still available for retrieval exceeds the limit, WAF
+#' returns a `NextMarker` value in the response. To retrieve the next batch
+#' of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this
+#' request. If more objects are available, in the response, WAF provides a
+#' `NextMarker` value that you can use in a subsequent call to get the next
+#' batch of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   ManagedRuleSets = list(
+#'     list(
+#'       Name = "string",
+#'       Id = "string",
+#'       Description = "string",
+#'       LockToken = "string",
+#'       ARN = "string",
+#'       LabelNamespace = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_managed_rule_sets(
+#'   Scope = "CLOUDFRONT"|"REGIONAL",
+#'   NextMarker = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_list_managed_rule_sets
+wafv2_list_managed_rule_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListManagedRuleSets",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$list_managed_rule_sets_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
+  output <- .wafv2$list_managed_rule_sets_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$list_managed_rule_sets <- wafv2_list_managed_rule_sets
+
+#' Retrieves a list of the available releases for the mobile SDK and the
+#' specified device platform
+#'
+#' @description
+#' Retrieves a list of the available releases for the mobile SDK and the
+#' specified device platform.
+#' 
+#' The mobile SDK is not generally available. Customers who have access to
+#' the mobile SDK can use it to establish and manage Security Token Service
+#' (STS) security tokens for use in HTTP(S) requests from a mobile device
+#' to WAF. For more information, see [WAF client application
+#' integration](https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html)
+#' in the *WAF Developer Guide*.
+#'
+#' @usage
+#' wafv2_list_mobile_sdk_releases(Platform, NextMarker, Limit)
+#'
+#' @param Platform &#91;required&#93; The device platform to retrieve the list for.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
+#' of objects that are still available for retrieval exceeds the limit, WAF
+#' returns a `NextMarker` value in the response. To retrieve the next batch
+#' of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this
+#' request. If more objects are available, in the response, WAF provides a
+#' `NextMarker` value that you can use in a subsequent call to get the next
+#' batch of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReleaseSummaries = list(
+#'     list(
+#'       ReleaseVersion = "string",
+#'       Timestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextMarker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_mobile_sdk_releases(
+#'   Platform = "IOS"|"ANDROID",
+#'   NextMarker = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_list_mobile_sdk_releases
+wafv2_list_mobile_sdk_releases <- function(Platform, NextMarker = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListMobileSdkReleases",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$list_mobile_sdk_releases_input(Platform = Platform, NextMarker = NextMarker, Limit = Limit)
+  output <- .wafv2$list_mobile_sdk_releases_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$list_mobile_sdk_releases <- wafv2_list_mobile_sdk_releases
+
+#' Retrieves an array of RegexPatternSetSummary objects for the regex
+#' pattern sets that you manage
+#'
+#' @description
+#' Retrieves an array of RegexPatternSetSummary objects for the regex
+#' pattern sets that you manage.
+#'
+#' @usage
+#' wafv2_list_regex_pattern_sets(Scope, NextMarker, Limit)
+#'
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
+#' regional application. A regional application can be an Application Load
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
+#' 
+#' To work with CloudFront, you must also specify the Region US East (N.
+#' Virginia) as follows:
+#' 
+#' -   CLI - Specify the Region when you use the CloudFront scope:
+#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' 
+#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
+#' of objects that are still available for retrieval exceeds the limit, WAF
+#' returns a `NextMarker` value in the response. To retrieve the next batch
+#' of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this
+#' request. If more objects are available, in the response, WAF provides a
+#' `NextMarker` value that you can use in a subsequent call to get the next
+#' batch of objects.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3491,27 +8043,23 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 }
 .wafv2$operations$list_regex_pattern_sets <- wafv2_list_regex_pattern_sets
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves an array of the Amazon Resource Names (ARNs) for the regional
+#' resources that are associated with the specified web ACL
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves an array of the Amazon Resource Names (ARNs) for the regional
 #' resources that are associated with the specified web ACL. If you want
-#' the list of AWS CloudFront resources, use the AWS CloudFront call
+#' the list of Amazon CloudFront resources, use the CloudFront call
 #' `ListDistributionsByWebACLId`.
 #'
 #' @usage
 #' wafv2_list_resources_for_web_acl(WebACLArn, ResourceType)
 #'
-#' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the Web ACL.
+#' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL.
 #' @param ResourceType Used for web ACLs that are scoped for regional applications. A regional
-#' application can be an Application Load Balancer (ALB), an API Gateway
-#' REST API, or an AppSync GraphQL API.
+#' application can be an Application Load Balancer (ALB), an Amazon API
+#' Gateway REST API, an AppSync GraphQL API, or an Amazon Cognito user
+#' pool.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3527,7 +8075,7 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 #' ```
 #' svc$list_resources_for_web_acl(
 #'   WebACLArn = "string",
-#'   ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"|"APPSYNC"
+#'   ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"|"APPSYNC"|"COGNITO_USER_POOL"
 #' )
 #' ```
 #'
@@ -3551,24 +8099,20 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
 }
 .wafv2$operations$list_resources_for_web_acl <- wafv2_list_resources_for_web_acl
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves an array of RuleGroupSummary objects for the rule groups that
+#' you manage
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves an array of RuleGroupSummary objects for the rule groups that
 #' you manage.
 #'
 #' @usage
 #' wafv2_list_rule_groups(Scope, NextMarker, Limit)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3578,14 +8122,13 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, AWS
-#' WAF returns a `NextMarker` value in the response. To retrieve the next
-#' batch of objects, provide the marker from the prior call in your next
-#' request.
-#' @param Limit The maximum number of objects that you want AWS WAF to return for this
-#' request. If more objects are available, in the response, AWS WAF
-#' provides a `NextMarker` value that you can use in a subsequent call to
-#' get the next batch of objects.
+#' of objects that are still available for retrieval exceeds the limit, WAF
+#' returns a `NextMarker` value in the response. To retrieve the next batch
+#' of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this
+#' request. If more objects are available, in the response, WAF provides a
+#' `NextMarker` value that you can use in a subsequent call to get the next
+#' batch of objects.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3633,38 +8176,31 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
 }
 .wafv2$operations$list_rule_groups <- wafv2_list_rule_groups
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves the TagInfoForResource for the specified resource
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves the TagInfoForResource for the specified resource. Tags are
 #' key:value pairs that you can use to categorize and manage your
 #' resources, for purposes like billing. For example, you might set the tag
 #' key to "customer" and the value to the customer name or ID. You can
-#' specify one or more tags to add to each AWS resource, up to 50 tags for
-#' a resource.
+#' specify one or more tags to add to each Amazon Web Services resource, up
+#' to 50 tags for a resource.
 #' 
-#' You can tag the AWS resources that you manage through AWS WAF: web ACLs,
-#' rule groups, IP sets, and regex pattern sets. You can't manage or view
-#' tags through the AWS WAF console.
+#' You can tag the Amazon Web Services resources that you manage through
+#' WAF: web ACLs, rule groups, IP sets, and regex pattern sets. You can't
+#' manage or view tags through the WAF console.
 #'
 #' @usage
 #' wafv2_list_tags_for_resource(NextMarker, Limit, ResourceARN)
 #'
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, AWS
-#' WAF returns a `NextMarker` value in the response. To retrieve the next
-#' batch of objects, provide the marker from the prior call in your next
-#' request.
-#' @param Limit The maximum number of objects that you want AWS WAF to return for this
-#' request. If more objects are available, in the response, AWS WAF
-#' provides a `NextMarker` value that you can use in a subsequent call to
-#' get the next batch of objects.
+#' of objects that are still available for retrieval exceeds the limit, WAF
+#' returns a `NextMarker` value in the response. To retrieve the next batch
+#' of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this
+#' request. If more objects are available, in the response, WAF provides a
+#' `NextMarker` value that you can use in a subsequent call to get the next
+#' batch of objects.
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
 #' @return
@@ -3713,24 +8249,20 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
 }
 .wafv2$operations$list_tags_for_resource <- wafv2_list_tags_for_resource
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Retrieves an array of WebACLSummary objects for the web ACLs that you
+#' manage
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Retrieves an array of WebACLSummary objects for the web ACLs that you
 #' manage.
 #'
 #' @usage
 #' wafv2_list_web_ac_ls(Scope, NextMarker, Limit)
 #'
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3740,14 +8272,13 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
-#' of objects that are still available for retrieval exceeds the limit, AWS
-#' WAF returns a `NextMarker` value in the response. To retrieve the next
-#' batch of objects, provide the marker from the prior call in your next
-#' request.
-#' @param Limit The maximum number of objects that you want AWS WAF to return for this
-#' request. If more objects are available, in the response, AWS WAF
-#' provides a `NextMarker` value that you can use in a subsequent call to
-#' get the next batch of objects.
+#' of objects that are still available for retrieval exceeds the limit, WAF
+#' returns a `NextMarker` value in the response. To retrieve the next batch
+#' of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this
+#' request. If more objects are available, in the response, WAF provides a
+#' `NextMarker` value that you can use in a subsequent call to get the next
+#' batch of objects.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3795,44 +8326,50 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 }
 .wafv2$operations$list_web_ac_ls <- wafv2_list_web_ac_ls
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Enables the specified LoggingConfiguration, to start logging from a web
+#' ACL, according to the configuration provided
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Enables the specified LoggingConfiguration, to start logging from a web
 #' ACL, according to the configuration provided.
 #' 
-#' You can access information about all traffic that AWS WAF inspects using
-#' the following steps:
+#' You can define one logging destination per web ACL.
 #' 
-#' 1.  Create an Amazon Kinesis Data Firehose.
+#' You can access information about the traffic that WAF inspects using the
+#' following steps:
 #' 
-#'     Create the data firehose with a PUT source and in the Region that
-#'     you are operating. If you are capturing logs for Amazon CloudFront,
-#'     always create the firehose in US East (N. Virginia).
+#' 1.  Create your logging destination. You can use an Amazon CloudWatch
+#'     Logs log group, an Amazon Simple Storage Service (Amazon S3) bucket,
+#'     or an Amazon Kinesis Data Firehose. For information about
+#'     configuring logging destinations and the permissions that are
+#'     required for each, see [Logging web ACL traffic
+#'     information](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html)
+#'     in the *WAF Developer Guide*.
 #' 
-#'     Give the data firehose a name that starts with the prefix
-#'     `aws-waf-logs-`. For example, `aws-waf-logs-us-east-2-analytics`.
-#' 
-#'     Do not create the data firehose using a `Kinesis stream` as your
-#'     source.
-#' 
-#' 2.  Associate that firehose to your web ACL using a
+#' 2.  Associate your logging destination to your web ACL using a
 #'     [`put_logging_configuration`][wafv2_put_logging_configuration]
 #'     request.
 #' 
 #' When you successfully enable logging using a
 #' [`put_logging_configuration`][wafv2_put_logging_configuration] request,
-#' AWS WAF will create a service linked role with the necessary permissions
-#' to write logs to the Amazon Kinesis Data Firehose. For more information,
-#' see [Logging Web ACL Traffic
-#' Information](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html)
-#' in the *AWS WAF Developer Guide*.
+#' WAF creates an additional role or policy that is required to write logs
+#' to the logging destination. For an Amazon CloudWatch Logs log group, WAF
+#' creates a resource policy on the log group. For an Amazon S3 bucket, WAF
+#' creates a bucket policy. For an Amazon Kinesis Data Firehose, WAF
+#' creates a service-linked role.
+#' 
+#' For additional information about web ACL logging, see [Logging web ACL
+#' traffic
+#' information](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html)
+#' in the *WAF Developer Guide*.
+#' 
+#' This operation completely replaces the mutable specifications that you
+#' already have for the logging configuration with the ones that you
+#' provide to this call. To modify the logging configuration, retrieve it
+#' by calling
+#' [`get_logging_configuration`][wafv2_get_logging_configuration], update
+#' the settings as needed, and then provide the complete logging
+#' configuration specification to this call.
 #'
 #' @usage
 #' wafv2_put_logging_configuration(LoggingConfiguration)
@@ -3859,11 +8396,69 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'         AllQueryArguments = list(),
 #'         UriPath = list(),
 #'         QueryString = list(),
-#'         Body = list(),
-#'         Method = list()
+#'         Body = list(
+#'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         ),
+#'         Method = list(),
+#'         JsonBody = list(
+#'           MatchPattern = list(
+#'             All = list(),
+#'             IncludedPaths = list(
+#'               "string"
+#'             )
+#'           ),
+#'           MatchScope = "ALL"|"KEY"|"VALUE",
+#'           InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         ),
+#'         Headers = list(
+#'           MatchPattern = list(
+#'             All = list(),
+#'             IncludedHeaders = list(
+#'               "string"
+#'             ),
+#'             ExcludedHeaders = list(
+#'               "string"
+#'             )
+#'           ),
+#'           MatchScope = "ALL"|"KEY"|"VALUE",
+#'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         ),
+#'         Cookies = list(
+#'           MatchPattern = list(
+#'             All = list(),
+#'             IncludedCookies = list(
+#'               "string"
+#'             ),
+#'             ExcludedCookies = list(
+#'               "string"
+#'             )
+#'           ),
+#'           MatchScope = "ALL"|"KEY"|"VALUE",
+#'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         )
 #'       )
 #'     ),
-#'     ManagedByFirewallManager = TRUE|FALSE
+#'     ManagedByFirewallManager = TRUE|FALSE,
+#'     LoggingFilter = list(
+#'       Filters = list(
+#'         list(
+#'           Behavior = "KEEP"|"DROP",
+#'           Requirement = "MEETS_ALL"|"MEETS_ANY",
+#'           Conditions = list(
+#'             list(
+#'               ActionCondition = list(
+#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"EXCLUDED_AS_COUNT"
+#'               ),
+#'               LabelNameCondition = list(
+#'                 LabelName = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultBehavior = "KEEP"|"DROP"
+#'     )
 #'   )
 #' )
 #' ```
@@ -3887,11 +8482,69 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'         AllQueryArguments = list(),
 #'         UriPath = list(),
 #'         QueryString = list(),
-#'         Body = list(),
-#'         Method = list()
+#'         Body = list(
+#'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         ),
+#'         Method = list(),
+#'         JsonBody = list(
+#'           MatchPattern = list(
+#'             All = list(),
+#'             IncludedPaths = list(
+#'               "string"
+#'             )
+#'           ),
+#'           MatchScope = "ALL"|"KEY"|"VALUE",
+#'           InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         ),
+#'         Headers = list(
+#'           MatchPattern = list(
+#'             All = list(),
+#'             IncludedHeaders = list(
+#'               "string"
+#'             ),
+#'             ExcludedHeaders = list(
+#'               "string"
+#'             )
+#'           ),
+#'           MatchScope = "ALL"|"KEY"|"VALUE",
+#'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         ),
+#'         Cookies = list(
+#'           MatchPattern = list(
+#'             All = list(),
+#'             IncludedCookies = list(
+#'               "string"
+#'             ),
+#'             ExcludedCookies = list(
+#'               "string"
+#'             )
+#'           ),
+#'           MatchScope = "ALL"|"KEY"|"VALUE",
+#'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         )
 #'       )
 #'     ),
-#'     ManagedByFirewallManager = TRUE|FALSE
+#'     ManagedByFirewallManager = TRUE|FALSE,
+#'     LoggingFilter = list(
+#'       Filters = list(
+#'         list(
+#'           Behavior = "KEEP"|"DROP",
+#'           Requirement = "MEETS_ALL"|"MEETS_ANY",
+#'           Conditions = list(
+#'             list(
+#'               ActionCondition = list(
+#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"EXCLUDED_AS_COUNT"
+#'               ),
+#'               LabelNameCondition = list(
+#'                 LabelName = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultBehavior = "KEEP"|"DROP"
+#'     )
 #'   )
 #' )
 #' ```
@@ -3916,6 +8569,120 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 }
 .wafv2$operations$put_logging_configuration <- wafv2_put_logging_configuration
 
+#' Defines the versions of your managed rule set that you are offering to
+#' the customers
+#'
+#' @description
+#' Defines the versions of your managed rule set that you are offering to
+#' the customers. Customers see your offerings as managed rule groups with
+#' versioning.
+#' 
+#' This is intended for use only by vendors of managed rule sets. Vendors
+#' are Amazon Web Services and Amazon Web Services Marketplace sellers.
+#' 
+#' Vendors, you can use the managed rule set APIs to provide controlled
+#' rollout of your versioned managed rule group offerings for your
+#' customers. The APIs are
+#' [`list_managed_rule_sets`][wafv2_list_managed_rule_sets],
+#' [`get_managed_rule_set`][wafv2_get_managed_rule_set],
+#' [`put_managed_rule_set_versions`][wafv2_put_managed_rule_set_versions],
+#' and
+#' [`update_managed_rule_set_version_expiry_date`][wafv2_update_managed_rule_set_version_expiry_date].
+#' 
+#' Customers retrieve their managed rule group list by calling
+#' [`list_available_managed_rule_groups`][wafv2_list_available_managed_rule_groups].
+#' The name that you provide here for your managed rule set is the name the
+#' customer sees for the corresponding managed rule group. Customers can
+#' retrieve the available versions for a managed rule group by calling
+#' [`list_available_managed_rule_group_versions`][wafv2_list_available_managed_rule_group_versions].
+#' You provide a rule group specification for each version. For each
+#' managed rule set, you must specify a version that you recommend using.
+#' 
+#' To initiate the expiration of a managed rule group version, use
+#' [`update_managed_rule_set_version_expiry_date`][wafv2_update_managed_rule_set_version_expiry_date].
+#'
+#' @usage
+#' wafv2_put_managed_rule_set_versions(Name, Scope, Id, LockToken,
+#'   RecommendedVersion, VersionsToPublish)
+#'
+#' @param Name &#91;required&#93; The name of the managed rule set. You use this, along with the rule set
+#' ID, to identify the rule set.
+#' 
+#' This name is assigned to the corresponding managed rule group, which
+#' your customers can access and use.
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
+#' regional application. A regional application can be an Application Load
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
+#' 
+#' To work with CloudFront, you must also specify the Region US East (N.
+#' Virginia) as follows:
+#' 
+#' -   CLI - Specify the Region when you use the CloudFront scope:
+#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' 
+#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' @param Id &#91;required&#93; A unique identifier for the managed rule set. The ID is returned in the
+#' responses to commands like `list`. You provide it to operations like
+#' `get` and `update`.
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
+#' and `list` requests, to mark the state of the entity at the time of the
+#' request. To make changes to the entity associated with the token, you
+#' provide the token to operations like `update` and `delete`. WAF uses the
+#' token to ensure that no changes have been made to the entity since you
+#' last retrieved it. If a change has been made, the update fails with a
+#' `WAFOptimisticLockException`. If this happens, perform another `get`,
+#' and use the new token returned by that operation.
+#' @param RecommendedVersion The version of the named managed rule group that you'd like your
+#' customers to choose, from among your version offerings.
+#' @param VersionsToPublish The versions of the named managed rule group that you want to offer to
+#' your customers.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextLockToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_managed_rule_set_versions(
+#'   Name = "string",
+#'   Scope = "CLOUDFRONT"|"REGIONAL",
+#'   Id = "string",
+#'   LockToken = "string",
+#'   RecommendedVersion = "string",
+#'   VersionsToPublish = list(
+#'     list(
+#'       AssociatedRuleGroupArn = "string",
+#'       ForecastedLifetime = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_put_managed_rule_set_versions
+wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, RecommendedVersion = NULL, VersionsToPublish = NULL) {
+  op <- new_operation(
+    name = "PutManagedRuleSetVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$put_managed_rule_set_versions_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken, RecommendedVersion = RecommendedVersion, VersionsToPublish = VersionsToPublish)
+  output <- .wafv2$put_managed_rule_set_versions_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$put_managed_rule_set_versions <- wafv2_put_managed_rule_set_versions
+
 #' Attaches an IAM policy to the specified resource
 #'
 #' @description
@@ -3930,7 +8697,7 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 #'     [`put_permission_policy`][wafv2_put_permission_policy] request.
 #' 
 #' -   The ARN in the request must be a valid WAF RuleGroup ARN and the
-#'     rule group must exist in the same region.
+#'     rule group must exist in the same Region.
 #' 
 #' -   The user making the request must be the owner of the rule group.
 #'
@@ -3952,8 +8719,9 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 #' -   `Effect` must specify `Allow`.
 #' 
 #' -   `Action` must specify `wafv2:CreateWebACL`, `wafv2:UpdateWebACL`,
-#'     and `wafv2:PutFirewallManagerRuleGroups`. AWS WAF rejects any extra
-#'     actions or wildcard actions in the policy.
+#'     and `wafv2:PutFirewallManagerRuleGroups` and may optionally specify
+#'     `wafv2:GetRuleGroup`. WAF rejects any extra actions or wildcard
+#'     actions in the policy.
 #' 
 #' -   The policy must not include a `Resource` parameter.
 #' 
@@ -3991,24 +8759,19 @@ wafv2_put_permission_policy <- function(ResourceArn, Policy) {
 }
 .wafv2$operations$put_permission_policy <- wafv2_put_permission_policy
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Associates tags with the specified Amazon Web Services resource
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' Associates tags with the specified Amazon Web Services resource. Tags
+#' are key:value pairs that you can use to categorize and manage your
+#' resources, for purposes like billing. For example, you might set the tag
+#' key to "customer" and the value to the customer name or ID. You can
+#' specify one or more tags to add to each Amazon Web Services resource, up
+#' to 50 tags for a resource.
 #' 
-#' Associates tags with the specified AWS resource. Tags are key:value
-#' pairs that you can use to categorize and manage your resources, for
-#' purposes like billing. For example, you might set the tag key to
-#' "customer" and the value to the customer name or ID. You can specify one
-#' or more tags to add to each AWS resource, up to 50 tags for a resource.
-#' 
-#' You can tag the AWS resources that you manage through AWS WAF: web ACLs,
-#' rule groups, IP sets, and regex pattern sets. You can't manage or view
-#' tags through the AWS WAF console.
+#' You can tag the Amazon Web Services resources that you manage through
+#' WAF: web ACLs, rule groups, IP sets, and regex pattern sets. You can't
+#' manage or view tags through the WAF console.
 #'
 #' @usage
 #' wafv2_tag_resource(ResourceARN, Tags)
@@ -4052,20 +8815,15 @@ wafv2_tag_resource <- function(ResourceARN, Tags) {
 }
 .wafv2$operations$tag_resource <- wafv2_tag_resource
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Disassociates tags from an Amazon Web Services resource
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
-#' Disassociates tags from an AWS resource. Tags are key:value pairs that
-#' you can associate with AWS resources. For example, the tag key might be
-#' "customer" and the tag value might be "companyA." You can specify one or
-#' more tags to add to each container. You can add up to 50 tags to each
-#' AWS resource.
+#' Disassociates tags from an Amazon Web Services resource. Tags are
+#' key:value pairs that you can associate with Amazon Web Services
+#' resources. For example, the tag key might be "customer" and the tag
+#' value might be "companyA." You can specify one or more tags to add to
+#' each container. You can add up to 50 tags to each Amazon Web Services
+#' resource.
 #'
 #' @usage
 #' wafv2_untag_resource(ResourceARN, TagKeys)
@@ -4106,25 +8864,40 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 }
 .wafv2$operations$untag_resource <- wafv2_untag_resource
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Updates the specified IPSet
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Updates the specified IPSet.
+#' 
+#' This operation completely replaces the mutable specifications that you
+#' already have for the IP set with the ones that you provide to this call.
+#' To modify the IP set, retrieve it by calling
+#' [`get_ip_set`][wafv2_get_ip_set], update the settings as needed, and
+#' then provide the complete IP set specification to this call.
+#' 
+#' When you make changes to web ACLs or web ACL components, like rules and
+#' rule groups, WAF propagates the changes everywhere that the web ACL and
+#' its components are stored and used. Your changes are applied within
+#' seconds, but there might be a brief period of inconsistency when the
+#' changes have arrived in some places and not in others. So, for example,
+#' if you change a rule action setting, the action might be the old action
+#' in one area and the new action in another area. Or if you add an IP
+#' address to an IP set used in a blocking rule, the new address might
+#' briefly be blocked in one area while still allowed in another. This
+#' temporary inconsistency can occur when you first associate a web ACL
+#' with an Amazon Web Services resource and when you change a web ACL that
+#' is already associated with a resource. Generally, any inconsistencies of
+#' this type last only a few seconds.
 #'
 #' @usage
 #' wafv2_update_ip_set(Name, Scope, Id, Description, Addresses, LockToken)
 #'
 #' @param Name &#91;required&#93; The name of the IP set. You cannot change the name of an `IPSet` after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4136,43 +8909,51 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
-#' @param Description A description of the IP set that helps with identification. You cannot
-#' change the description of an IP set after you create it.
-#' @param Addresses &#91;required&#93; Contains an array of strings that specify one or more IP addresses or
+#' @param Description A description of the IP set that helps with identification.
+#' @param Addresses &#91;required&#93; Contains an array of strings that specifies zero or more IP addresses or
 #' blocks of IP addresses in Classless Inter-Domain Routing (CIDR)
-#' notation. AWS WAF supports all address ranges for IP versions IPv4 and
-#' IPv6.
+#' notation. WAF supports all IPv4 and IPv6 CIDR ranges except for /0.
 #' 
-#' Examples:
+#' Example address strings:
 #' 
-#' -   To configure AWS WAF to allow, block, or count requests that
-#'     originated from the IP address 192.0.2.44, specify `192.0.2.44/32`.
+#' -   To configure WAF to allow, block, or count requests that originated
+#'     from the IP address 192.0.2.44, specify `192.0.2.44/32`.
 #' 
-#' -   To configure AWS WAF to allow, block, or count requests that
-#'     originated from IP addresses from 192.0.2.0 to 192.0.2.255, specify
+#' -   To configure WAF to allow, block, or count requests that originated
+#'     from IP addresses from 192.0.2.0 to 192.0.2.255, specify
 #'     `192.0.2.0/24`.
 #' 
-#' -   To configure AWS WAF to allow, block, or count requests that
-#'     originated from the IP address
-#'     1111:0000:0000:0000:0000:0000:0000:0111, specify
+#' -   To configure WAF to allow, block, or count requests that originated
+#'     from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify
 #'     `1111:0000:0000:0000:0000:0000:0000:0111/128`.
 #' 
-#' -   To configure AWS WAF to allow, block, or count requests that
-#'     originated from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000
-#'     to 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
+#' -   To configure WAF to allow, block, or count requests that originated
+#'     from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to
+#'     1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
 #'     `1111:0000:0000:0000:0000:0000:0000:0000/64`.
 #' 
 #' For more information about CIDR notation, see the Wikipedia entry
 #' [Classless Inter-Domain
 #' Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. AWS WAF returns a token to your get
-#' and list requests, to mark the state of the entity at the time of the
+#' 
+#' Example JSON `Addresses` specifications:
+#' 
+#' -   Empty array: `"Addresses": []`
+#' 
+#' -   Array with one address: `"Addresses": ["192.0.2.44/32"]`
+#' 
+#' -   Array with three addresses:
+#'     `"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]`
+#' 
+#' -   INVALID specification: `"Addresses": [""]` INVALID
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
+#' and `list` requests, to mark the state of the entity at the time of the
 #' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like update and delete. AWS WAF uses the
+#' provide the token to operations like `update` and `delete`. WAF uses the
 #' token to ensure that no changes have been made to the entity since you
 #' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another get, and
-#' use the new token returned by that operation.
+#' `WAFOptimisticLockException`. If this happens, perform another `get`,
+#' and use the new token returned by that operation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4216,16 +8997,137 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 }
 .wafv2$operations$update_ip_set <- wafv2_update_ip_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Updates the expiration information for your managed rule set
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' Updates the expiration information for your managed rule set. Use this
+#' to initiate the expiration of a managed rule group version. After you
+#' initiate expiration for a version, WAF excludes it from the response to
+#' [`list_available_managed_rule_group_versions`][wafv2_list_available_managed_rule_group_versions]
+#' for the managed rule group.
 #' 
+#' This is intended for use only by vendors of managed rule sets. Vendors
+#' are Amazon Web Services and Amazon Web Services Marketplace sellers.
+#' 
+#' Vendors, you can use the managed rule set APIs to provide controlled
+#' rollout of your versioned managed rule group offerings for your
+#' customers. The APIs are
+#' [`list_managed_rule_sets`][wafv2_list_managed_rule_sets],
+#' [`get_managed_rule_set`][wafv2_get_managed_rule_set],
+#' [`put_managed_rule_set_versions`][wafv2_put_managed_rule_set_versions],
+#' and
+#' [`update_managed_rule_set_version_expiry_date`][wafv2_update_managed_rule_set_version_expiry_date].
+#'
+#' @usage
+#' wafv2_update_managed_rule_set_version_expiry_date(Name, Scope, Id,
+#'   LockToken, VersionToExpire, ExpiryTimestamp)
+#'
+#' @param Name &#91;required&#93; The name of the managed rule set. You use this, along with the rule set
+#' ID, to identify the rule set.
+#' 
+#' This name is assigned to the corresponding managed rule group, which
+#' your customers can access and use.
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
+#' regional application. A regional application can be an Application Load
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
+#' 
+#' To work with CloudFront, you must also specify the Region US East (N.
+#' Virginia) as follows:
+#' 
+#' -   CLI - Specify the Region when you use the CloudFront scope:
+#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' 
+#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' @param Id &#91;required&#93; A unique identifier for the managed rule set. The ID is returned in the
+#' responses to commands like `list`. You provide it to operations like
+#' `get` and `update`.
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
+#' and `list` requests, to mark the state of the entity at the time of the
+#' request. To make changes to the entity associated with the token, you
+#' provide the token to operations like `update` and `delete`. WAF uses the
+#' token to ensure that no changes have been made to the entity since you
+#' last retrieved it. If a change has been made, the update fails with a
+#' `WAFOptimisticLockException`. If this happens, perform another `get`,
+#' and use the new token returned by that operation.
+#' @param VersionToExpire &#91;required&#93; The version that you want to remove from your list of offerings for the
+#' named managed rule group.
+#' @param ExpiryTimestamp &#91;required&#93; The time that you want the version to expire.
+#' 
+#' Times are in Coordinated Universal Time (UTC) format. UTC format
+#' includes the special designator, Z. For example, "2016-09-27T14:50Z".
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExpiringVersion = "string",
+#'   ExpiryTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NextLockToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_managed_rule_set_version_expiry_date(
+#'   Name = "string",
+#'   Scope = "CLOUDFRONT"|"REGIONAL",
+#'   Id = "string",
+#'   LockToken = "string",
+#'   VersionToExpire = "string",
+#'   ExpiryTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_update_managed_rule_set_version_expiry_date
+wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, LockToken, VersionToExpire, ExpiryTimestamp) {
+  op <- new_operation(
+    name = "UpdateManagedRuleSetVersionExpiryDate",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$update_managed_rule_set_version_expiry_date_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken, VersionToExpire = VersionToExpire, ExpiryTimestamp = ExpiryTimestamp)
+  output <- .wafv2$update_managed_rule_set_version_expiry_date_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$update_managed_rule_set_version_expiry_date <- wafv2_update_managed_rule_set_version_expiry_date
+
+#' Updates the specified RegexPatternSet
+#'
+#' @description
 #' Updates the specified RegexPatternSet.
+#' 
+#' This operation completely replaces the mutable specifications that you
+#' already have for the regex pattern set with the ones that you provide to
+#' this call. To modify the regex pattern set, retrieve it by calling
+#' [`get_regex_pattern_set`][wafv2_get_regex_pattern_set], update the
+#' settings as needed, and then provide the complete regex pattern set
+#' specification to this call.
+#' 
+#' When you make changes to web ACLs or web ACL components, like rules and
+#' rule groups, WAF propagates the changes everywhere that the web ACL and
+#' its components are stored and used. Your changes are applied within
+#' seconds, but there might be a brief period of inconsistency when the
+#' changes have arrived in some places and not in others. So, for example,
+#' if you change a rule action setting, the action might be the old action
+#' in one area and the new action in another area. Or if you add an IP
+#' address to an IP set used in a blocking rule, the new address might
+#' briefly be blocked in one area while still allowed in another. This
+#' temporary inconsistency can occur when you first associate a web ACL
+#' with an Amazon Web Services resource and when you change a web ACL that
+#' is already associated with a resource. Generally, any inconsistencies of
+#' this type last only a few seconds.
 #'
 #' @usage
 #' wafv2_update_regex_pattern_set(Name, Scope, Id, Description,
@@ -4233,9 +9135,10 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #'
 #' @param Name &#91;required&#93; The name of the set. You cannot change the name after you create the
 #' set.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4247,17 +9150,16 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
-#' @param Description A description of the set that helps with identification. You cannot
-#' change the description of a set after you create it.
+#' @param Description A description of the set that helps with identification.
 #' @param RegularExpressionList &#91;required&#93; 
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. AWS WAF returns a token to your get
-#' and list requests, to mark the state of the entity at the time of the
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
+#' and `list` requests, to mark the state of the entity at the time of the
 #' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like update and delete. AWS WAF uses the
+#' provide the token to operations like `update` and `delete`. WAF uses the
 #' token to ensure that no changes have been made to the entity since you
 #' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another get, and
-#' use the new token returned by that operation.
+#' `WAFOptimisticLockException`. If this happens, perform another `get`,
+#' and use the new token returned by that operation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4303,16 +9205,30 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 }
 .wafv2$operations$update_regex_pattern_set <- wafv2_update_regex_pattern_set
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Updates the specified RuleGroup
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#' 
 #' Updates the specified RuleGroup.
+#' 
+#' This operation completely replaces the mutable specifications that you
+#' already have for the rule group with the ones that you provide to this
+#' call. To modify the rule group, retrieve it by calling
+#' [`get_rule_group`][wafv2_get_rule_group], update the settings as needed,
+#' and then provide the complete rule group specification to this call.
+#' 
+#' When you make changes to web ACLs or web ACL components, like rules and
+#' rule groups, WAF propagates the changes everywhere that the web ACL and
+#' its components are stored and used. Your changes are applied within
+#' seconds, but there might be a brief period of inconsistency when the
+#' changes have arrived in some places and not in others. So, for example,
+#' if you change a rule action setting, the action might be the old action
+#' in one area and the new action in another area. Or if you add an IP
+#' address to an IP set used in a blocking rule, the new address might
+#' briefly be blocked in one area while still allowed in another. This
+#' temporary inconsistency can occur when you first associate a web ACL
+#' with an Amazon Web Services resource and when you change a web ACL that
+#' is already associated with a resource. Generally, any inconsistencies of
+#' this type last only a few seconds.
 #' 
 #' A rule group defines a collection of rules to inspect and control web
 #' requests that you can use in a WebACL. When you create a rule group, you
@@ -4322,13 +9238,14 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'
 #' @usage
 #' wafv2_update_rule_group(Name, Scope, Id, Description, Rules,
-#'   VisibilityConfig, LockToken)
+#'   VisibilityConfig, LockToken, CustomResponseBodies)
 #'
 #' @param Name &#91;required&#93; The name of the rule group. You cannot change the name of a rule group
 #' after you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4340,22 +9257,37 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' @param Id &#91;required&#93; A unique identifier for the rule group. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
-#' @param Description A description of the rule group that helps with identification. You
-#' cannot change the description of a rule group after you create it.
+#' @param Description A description of the rule group that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
 #' allow, block, or count. Each rule includes one top-level statement that
-#' AWS WAF uses to identify matching web requests, and parameters that
-#' govern how AWS WAF handles them.
+#' WAF uses to identify matching web requests, and parameters that govern
+#' how WAF handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. AWS WAF returns a token to your get
-#' and list requests, to mark the state of the entity at the time of the
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
+#' and `list` requests, to mark the state of the entity at the time of the
 #' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like update and delete. AWS WAF uses the
+#' provide the token to operations like `update` and `delete`. WAF uses the
 #' token to ensure that no changes have been made to the entity since you
 #' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another get, and
-#' use the new token returned by that operation.
+#' `WAFOptimisticLockException`. If this happens, perform another `get`,
+#' and use the new token returned by that operation.
+#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
+#' with a block action, you can send a custom response to the web request.
+#' You define these for the rule group, and then use them in the rules that
+#' you define in the rule group.
+#' 
+#' For information about customizing web requests and responses, see
+#' [Customizing web requests and responses in
+#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
+#' in the [WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' 
+#' For information about the limits on count and size for custom request
+#' and response settings, see [WAF
+#' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
+#' in the [WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -4389,13 +9321,52 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           ),
 #'           PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -4411,15 +9382,55 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
-#'           )
+#'           ),
+#'           SensitivityLevel = "LOW"|"HIGH"
 #'         ),
 #'         XssMatchStatement = list(
 #'           FieldToMatch = list(
@@ -4432,13 +9443,52 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
@@ -4453,21 +9503,60 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'           Size = 123,
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
 #'         GeoMatchStatement = list(
 #'           CountryCodes = list(
-#'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"|"XK"
 #'           ),
 #'           ForwardedIPConfig = list(
 #'             HeaderName = "string",
@@ -4502,13 +9591,52 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
@@ -4537,26 +9665,163 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'         ManagedRuleGroupStatement = list(
 #'           VendorName = "string",
 #'           Name = "string",
+#'           Version = "string",
 #'           ExcludedRules = list(
 #'             list(
 #'               Name = "string"
+#'             )
+#'           ),
+#'           ScopeDownStatement = list(),
+#'           ManagedRuleGroupConfigs = list(
+#'             list(
+#'               LoginPath = "string",
+#'               PayloadType = "JSON"|"FORM_ENCODED",
+#'               UsernameField = list(
+#'                 Identifier = "string"
+#'               ),
+#'               PasswordField = list(
+#'                 Identifier = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         LabelMatchStatement = list(
+#'           Scope = "LABEL"|"NAMESPACE",
+#'           Key = "string"
+#'         ),
+#'         RegexMatchStatement = list(
+#'           RegexString = "string",
+#'           FieldToMatch = list(
+#'             SingleHeader = list(
+#'               Name = "string"
+#'             ),
+#'             SingleQueryArgument = list(
+#'               Name = "string"
+#'             ),
+#'             AllQueryArguments = list(),
+#'             UriPath = list(),
+#'             QueryString = list(),
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
+#'           ),
+#'           TextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         )
 #'       ),
 #'       Action = list(
-#'         Block = list(),
-#'         Allow = list(),
-#'         Count = list()
+#'         Block = list(
+#'           CustomResponse = list(
+#'             ResponseCode = 123,
+#'             CustomResponseBodyKey = "string",
+#'             ResponseHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Allow = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Captcha = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       OverrideAction = list(
-#'         Count = list(),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         None = list()
+#'       ),
+#'       RuleLabels = list(
+#'         list(
+#'           Name = "string"
+#'         )
 #'       ),
 #'       VisibilityConfig = list(
 #'         SampledRequestsEnabled = TRUE|FALSE,
 #'         CloudWatchMetricsEnabled = TRUE|FALSE,
 #'         MetricName = "string"
+#'       ),
+#'       CaptchaConfig = list(
+#'         ImmunityTimeProperty = list(
+#'           ImmunityTime = 123
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -4565,21 +9830,27 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'     CloudWatchMetricsEnabled = TRUE|FALSE,
 #'     MetricName = "string"
 #'   ),
-#'   LockToken = "string"
+#'   LockToken = "string",
+#'   CustomResponseBodies = list(
+#'     list(
+#'       ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'       Content = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_update_rule_group
-wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules = NULL, VisibilityConfig, LockToken) {
+wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules = NULL, VisibilityConfig, LockToken, CustomResponseBodies = NULL) {
   op <- new_operation(
     name = "UpdateRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .wafv2$update_rule_group_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken)
+  input <- .wafv2$update_rule_group_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies)
   output <- .wafv2$update_rule_group_output()
   config <- get_config()
   svc <- .wafv2$service(config)
@@ -4589,36 +9860,54 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 }
 .wafv2$operations$update_rule_group <- wafv2_update_rule_group
 
-#' This is the latest version of AWS WAF, named AWS WAFV2, released in
-#' November, 2019
+#' Updates the specified WebACL
 #'
 #' @description
-#' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
-#' November, 2019. For information, including how to migrate your AWS WAF
-#' resources from the prior release, see the [AWS WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' Updates the specified WebACL. While updating a web ACL, WAF provides
+#' continuous coverage to the resources that you have associated with the
+#' web ACL.
 #' 
-#' Updates the specified WebACL.
+#' When you make changes to web ACLs or web ACL components, like rules and
+#' rule groups, WAF propagates the changes everywhere that the web ACL and
+#' its components are stored and used. Your changes are applied within
+#' seconds, but there might be a brief period of inconsistency when the
+#' changes have arrived in some places and not in others. So, for example,
+#' if you change a rule action setting, the action might be the old action
+#' in one area and the new action in another area. Or if you add an IP
+#' address to an IP set used in a blocking rule, the new address might
+#' briefly be blocked in one area while still allowed in another. This
+#' temporary inconsistency can occur when you first associate a web ACL
+#' with an Amazon Web Services resource and when you change a web ACL that
+#' is already associated with a resource. Generally, any inconsistencies of
+#' this type last only a few seconds.
 #' 
-#' A Web ACL defines a collection of rules to use to inspect and control
+#' This operation completely replaces the mutable specifications that you
+#' already have for the web ACL with the ones that you provide to this
+#' call. To modify the web ACL, retrieve it by calling
+#' [`get_web_acl`][wafv2_get_web_acl], update the settings as needed, and
+#' then provide the complete web ACL specification to this call.
+#' 
+#' A web ACL defines a collection of rules to use to inspect and control
 #' web requests. Each rule has an action defined (allow, block, or count)
-#' for requests that match the statement of the rule. In the Web ACL, you
+#' for requests that match the statement of the rule. In the web ACL, you
 #' assign a default action to take (allow, block) for any request that does
-#' not match any of the rules. The rules in a Web ACL can be a combination
+#' not match any of the rules. The rules in a web ACL can be a combination
 #' of the types Rule, RuleGroup, and managed rule group. You can associate
-#' a Web ACL with one or more AWS resources to protect. The resources can
-#' be Amazon CloudFront, an Amazon API Gateway REST API, an Application
-#' Load Balancer, or an AWS AppSync GraphQL API.
+#' a web ACL with one or more Amazon Web Services resources to protect. The
+#' resources can be an Amazon CloudFront distribution, an Amazon API
+#' Gateway REST API, an Application Load Balancer, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #'
 #' @usage
 #' wafv2_update_web_acl(Name, Scope, Id, DefaultAction, Description, Rules,
-#'   VisibilityConfig, LockToken)
+#'   VisibilityConfig, LockToken, CustomResponseBodies, CaptchaConfig)
 #'
-#' @param Name &#91;required&#93; The name of the Web ACL. You cannot change the name of a Web ACL after
+#' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
-#' @param Scope &#91;required&#93; Specifies whether this is for an AWS CloudFront distribution or for a
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
-#' Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' or an Amazon Cognito user pool.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4627,27 +9916,45 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'     `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
 #' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
-#' @param Id &#91;required&#93; The unique identifier for the Web ACL. This ID is returned in the
+#' @param Id &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
 #' @param DefaultAction &#91;required&#93; The action to perform if none of the `Rules` contained in the `WebACL`
 #' match.
-#' @param Description A description of the Web ACL that helps with identification. You cannot
-#' change the description of a Web ACL after you create it.
+#' @param Description A description of the web ACL that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
 #' allow, block, or count. Each rule includes one top-level statement that
-#' AWS WAF uses to identify matching web requests, and parameters that
-#' govern how AWS WAF handles them.
+#' WAF uses to identify matching web requests, and parameters that govern
+#' how WAF handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
-#' @param LockToken &#91;required&#93; A token used for optimistic locking. AWS WAF returns a token to your get
-#' and list requests, to mark the state of the entity at the time of the
+#' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
+#' and `list` requests, to mark the state of the entity at the time of the
 #' request. To make changes to the entity associated with the token, you
-#' provide the token to operations like update and delete. AWS WAF uses the
+#' provide the token to operations like `update` and `delete`. WAF uses the
 #' token to ensure that no changes have been made to the entity since you
 #' last retrieved it. If a change has been made, the update fails with a
-#' `WAFOptimisticLockException`. If this happens, perform another get, and
-#' use the new token returned by that operation.
+#' `WAFOptimisticLockException`. If this happens, perform another `get`,
+#' and use the new token returned by that operation.
+#' @param CustomResponseBodies A map of custom response keys and content bodies. When you create a rule
+#' with a block action, you can send a custom response to the web request.
+#' You define these for the web ACL, and then use them in the rules and
+#' default actions that you define in the web ACL.
+#' 
+#' For information about customizing web requests and responses, see
+#' [Customizing web requests and responses in
+#' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
+#' in the [WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' 
+#' For information about the limits on count and size for custom request
+#' and response settings, see [WAF
+#' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
+#' in the [WAF Developer
+#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' @param CaptchaConfig Specifies how WAF should handle `CAPTCHA` evaluations for rules that
+#' don't have their own `CaptchaConfig` settings. If you don't specify
+#' this, WAF uses its default settings for `CaptchaConfig`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4664,8 +9971,28 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'   Scope = "CLOUDFRONT"|"REGIONAL",
 #'   Id = "string",
 #'   DefaultAction = list(
-#'     Block = list(),
-#'     Allow = list()
+#'     Block = list(
+#'       CustomResponse = list(
+#'         ResponseCode = 123,
+#'         CustomResponseBodyKey = "string",
+#'         ResponseHeaders = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     Allow = list(
+#'       CustomRequestHandling = list(
+#'         InsertHeaders = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   Description = "string",
 #'   Rules = list(
@@ -4685,13 +10012,52 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           ),
 #'           PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
@@ -4707,15 +10073,55 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
-#'           )
+#'           ),
+#'           SensitivityLevel = "LOW"|"HIGH"
 #'         ),
 #'         XssMatchStatement = list(
 #'           FieldToMatch = list(
@@ -4728,13 +10134,52 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
@@ -4749,21 +10194,60 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
 #'           Size = 123,
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
 #'         GeoMatchStatement = list(
 #'           CountryCodes = list(
-#'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"
+#'             "AF"|"AX"|"AL"|"DZ"|"AS"|"AD"|"AO"|"AI"|"AQ"|"AG"|"AR"|"AM"|"AW"|"AU"|"AT"|"AZ"|"BS"|"BH"|"BD"|"BB"|"BY"|"BE"|"BZ"|"BJ"|"BM"|"BT"|"BO"|"BQ"|"BA"|"BW"|"BV"|"BR"|"IO"|"BN"|"BG"|"BF"|"BI"|"KH"|"CM"|"CA"|"CV"|"KY"|"CF"|"TD"|"CL"|"CN"|"CX"|"CC"|"CO"|"KM"|"CG"|"CD"|"CK"|"CR"|"CI"|"HR"|"CU"|"CW"|"CY"|"CZ"|"DK"|"DJ"|"DM"|"DO"|"EC"|"EG"|"SV"|"GQ"|"ER"|"EE"|"ET"|"FK"|"FO"|"FJ"|"FI"|"FR"|"GF"|"PF"|"TF"|"GA"|"GM"|"GE"|"DE"|"GH"|"GI"|"GR"|"GL"|"GD"|"GP"|"GU"|"GT"|"GG"|"GN"|"GW"|"GY"|"HT"|"HM"|"VA"|"HN"|"HK"|"HU"|"IS"|"IN"|"ID"|"IR"|"IQ"|"IE"|"IM"|"IL"|"IT"|"JM"|"JP"|"JE"|"JO"|"KZ"|"KE"|"KI"|"KP"|"KR"|"KW"|"KG"|"LA"|"LV"|"LB"|"LS"|"LR"|"LY"|"LI"|"LT"|"LU"|"MO"|"MK"|"MG"|"MW"|"MY"|"MV"|"ML"|"MT"|"MH"|"MQ"|"MR"|"MU"|"YT"|"MX"|"FM"|"MD"|"MC"|"MN"|"ME"|"MS"|"MA"|"MZ"|"MM"|"NA"|"NR"|"NP"|"NL"|"NC"|"NZ"|"NI"|"NE"|"NG"|"NU"|"NF"|"MP"|"NO"|"OM"|"PK"|"PW"|"PS"|"PA"|"PG"|"PY"|"PE"|"PH"|"PN"|"PL"|"PT"|"PR"|"QA"|"RE"|"RO"|"RU"|"RW"|"BL"|"SH"|"KN"|"LC"|"MF"|"PM"|"VC"|"WS"|"SM"|"ST"|"SA"|"SN"|"RS"|"SC"|"SL"|"SG"|"SX"|"SK"|"SI"|"SB"|"SO"|"ZA"|"GS"|"SS"|"ES"|"LK"|"SD"|"SR"|"SJ"|"SZ"|"SE"|"CH"|"SY"|"TW"|"TJ"|"TZ"|"TH"|"TL"|"TG"|"TK"|"TO"|"TT"|"TN"|"TR"|"TM"|"TC"|"TV"|"UG"|"UA"|"AE"|"GB"|"US"|"UM"|"UY"|"UZ"|"VU"|"VE"|"VN"|"VG"|"VI"|"WF"|"EH"|"YE"|"ZM"|"ZW"|"XK"
 #'           ),
 #'           ForwardedIPConfig = list(
 #'             HeaderName = "string",
@@ -4798,13 +10282,52 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             AllQueryArguments = list(),
 #'             UriPath = list(),
 #'             QueryString = list(),
-#'             Body = list(),
-#'             Method = list()
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
 #'           ),
 #'           TextTransformations = list(
 #'             list(
 #'               Priority = 123,
-#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         ),
@@ -4833,26 +10356,163 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'         ManagedRuleGroupStatement = list(
 #'           VendorName = "string",
 #'           Name = "string",
+#'           Version = "string",
 #'           ExcludedRules = list(
 #'             list(
 #'               Name = "string"
+#'             )
+#'           ),
+#'           ScopeDownStatement = list(),
+#'           ManagedRuleGroupConfigs = list(
+#'             list(
+#'               LoginPath = "string",
+#'               PayloadType = "JSON"|"FORM_ENCODED",
+#'               UsernameField = list(
+#'                 Identifier = "string"
+#'               ),
+#'               PasswordField = list(
+#'                 Identifier = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         LabelMatchStatement = list(
+#'           Scope = "LABEL"|"NAMESPACE",
+#'           Key = "string"
+#'         ),
+#'         RegexMatchStatement = list(
+#'           RegexString = "string",
+#'           FieldToMatch = list(
+#'             SingleHeader = list(
+#'               Name = "string"
+#'             ),
+#'             SingleQueryArgument = list(
+#'               Name = "string"
+#'             ),
+#'             AllQueryArguments = list(),
+#'             UriPath = list(),
+#'             QueryString = list(),
+#'             Body = list(
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Method = list(),
+#'             JsonBody = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedPaths = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               InvalidFallbackBehavior = "MATCH"|"NO_MATCH"|"EVALUATE_AS_STRING",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Headers = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedHeaders = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedHeaders = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             Cookies = list(
+#'               MatchPattern = list(
+#'                 All = list(),
+#'                 IncludedCookies = list(
+#'                   "string"
+#'                 ),
+#'                 ExcludedCookies = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               MatchScope = "ALL"|"KEY"|"VALUE",
+#'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             )
+#'           ),
+#'           TextTransformations = list(
+#'             list(
+#'               Priority = 123,
+#'               Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
 #'             )
 #'           )
 #'         )
 #'       ),
 #'       Action = list(
-#'         Block = list(),
-#'         Allow = list(),
-#'         Count = list()
+#'         Block = list(
+#'           CustomResponse = list(
+#'             ResponseCode = 123,
+#'             CustomResponseBodyKey = "string",
+#'             ResponseHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Allow = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Captcha = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       OverrideAction = list(
-#'         Count = list(),
+#'         Count = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
 #'         None = list()
+#'       ),
+#'       RuleLabels = list(
+#'         list(
+#'           Name = "string"
+#'         )
 #'       ),
 #'       VisibilityConfig = list(
 #'         SampledRequestsEnabled = TRUE|FALSE,
 #'         CloudWatchMetricsEnabled = TRUE|FALSE,
 #'         MetricName = "string"
+#'       ),
+#'       CaptchaConfig = list(
+#'         ImmunityTimeProperty = list(
+#'           ImmunityTime = 123
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -4861,21 +10521,32 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'     CloudWatchMetricsEnabled = TRUE|FALSE,
 #'     MetricName = "string"
 #'   ),
-#'   LockToken = "string"
+#'   LockToken = "string",
+#'   CustomResponseBodies = list(
+#'     list(
+#'       ContentType = "TEXT_PLAIN"|"TEXT_HTML"|"APPLICATION_JSON",
+#'       Content = "string"
+#'     )
+#'   ),
+#'   CaptchaConfig = list(
+#'     ImmunityTimeProperty = list(
+#'       ImmunityTime = 123
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname wafv2_update_web_acl
-wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, LockToken) {
+wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL) {
   op <- new_operation(
     name = "UpdateWebACL",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken)
+  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig)
   output <- .wafv2$update_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config)

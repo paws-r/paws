@@ -2,77 +2,77 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_list_resources}
 \alias{ram_list_resources}
-\title{Lists the resources that you added to a resource shares or the resources
+\title{Lists the resources that you added to a resource share or the resources
 that are shared with you}
 \usage{
-ram_list_resources(resourceOwner, principal, resourceType, resourceArns,
-  resourceShareArns, nextToken, maxResults)
+ram_list_resources(
+  resourceOwner,
+  principal = NULL,
+  resourceType = NULL,
+  resourceArns = NULL,
+  resourceShareArns = NULL,
+  nextToken = NULL,
+  maxResults = NULL,
+  resourceRegionScope = NULL
+)
 }
 \arguments{
-\item{resourceOwner}{[required] The type of owner.}
+\item{resourceOwner}{[required] Specifies that you want to list only the resource shares that match the
+following:
+\itemize{
+\item \strong{\code{SELF}} – resources that your account shares with other accounts
+\item \strong{\code{OTHER-ACCOUNTS}} – resources that other accounts share with your
+account
+}}
 
-\item{principal}{The principal.}
+\item{principal}{Specifies that you want to list only the resource shares that are
+associated with the specified principal.}
 
-\item{resourceType}{The resource type.
+\item{resourceType}{Specifies that you want to list only the resource shares that include
+resources of the specified resource type.
 
-Valid values: \code{codebuild:Project} | \code{codebuild:ReportGroup} |
-\code{ec2:CapacityReservation} | \code{ec2:DedicatedHost} | \code{ec2:Subnet} |
-\code{ec2:TrafficMirrorTarget} | \code{ec2:TransitGateway} |
-\code{imagebuilder:Component} | \code{imagebuilder:Image} |
-\code{imagebuilder:ImageRecipe} | \code{license-manager:LicenseConfiguration} I
-\code{resource-groups:Group} | \code{rds:Cluster} | \code{route53resolver:ResolverRule}}
+For valid values, query the
+\code{\link[=ram_list_resource_types]{list_resource_types}} operation.}
 
-\item{resourceArns}{The Amazon Resource Names (ARN) of the resources.}
+\item{resourceArns}{Specifies that you want to list only the resource shares that include
+resources with the specified \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
 
-\item{resourceShareArns}{The Amazon Resource Names (ARN) of the resource shares.}
+\item{resourceShareArns}{Specifies that you want to list only resources in the resource shares
+identified by the specified \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
 
-\item{nextToken}{The token for the next page of results.}
+\item{nextToken}{Specifies that you want to receive the next page of results. Valid only
+if you received a \code{NextToken} response in the previous request. If you
+did, it indicates that more output is available. Set this parameter to
+the value provided by the previous call's \code{NextToken} response to
+request the next page of results.}
 
-\item{maxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned \code{nextToken}
-value.}
+\item{maxResults}{Specifies the total number of results that you want included on each
+page of the response. If you do not include this parameter, it defaults
+to a value that is specific to the operation. If additional items exist
+beyond the number you specify, the \code{NextToken} response element is
+returned with a value (not null). Include the specified value as the
+\code{NextToken} request parameter in the next call to the operation to get
+the next part of the results. Note that the service might return fewer
+results than the maximum even when there are more results available. You
+should check \code{NextToken} after every operation to ensure that you
+receive all of the results.}
+
+\item{resourceRegionScope}{Specifies that you want the results to include only resources that have
+the specified scope.
+\itemize{
+\item \code{ALL} – the results include both global and regional resources or
+resource types.
+\item \code{GLOBAL} – the results include only global resources or resource
+types.
+\item \code{REGIONAL} – the results include only regional resources or resource
+types.
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  resources = list(
-    list(
-      arn = "string",
-      type = "string",
-      resourceShareArn = "string",
-      resourceGroupArn = "string",
-      status = "AVAILABLE"|"ZONAL_RESOURCE_INACCESSIBLE"|"LIMIT_EXCEEDED"|"UNAVAILABLE"|"PENDING",
-      statusMessage = "string",
-      creationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
+
+The default value is \code{ALL}.}
 }
 \description{
-Lists the resources that you added to a resource shares or the resources
-that are shared with you.
-}
-\section{Request syntax}{
-\preformatted{svc$list_resources(
-  resourceOwner = "SELF"|"OTHER-ACCOUNTS",
-  principal = "string",
-  resourceType = "string",
-  resourceArns = list(
-    "string"
-  ),
-  resourceShareArns = list(
-    "string"
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Lists the resources that you added to a resource share or the resources that are shared with you.
 
+See \url{https://paws-r.github.io/docs/ram/list_resources.html} for full documentation.
+}
 \keyword{internal}

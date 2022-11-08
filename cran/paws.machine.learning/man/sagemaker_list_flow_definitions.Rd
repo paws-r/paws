@@ -4,8 +4,13 @@
 \alias{sagemaker_list_flow_definitions}
 \title{Returns information about the flow definitions in your account}
 \usage{
-sagemaker_list_flow_definitions(CreationTimeAfter, CreationTimeBefore,
-  SortOrder, NextToken, MaxResults)
+sagemaker_list_flow_definitions(
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only flow definitions with a creation time greater
@@ -24,39 +29,9 @@ items is more than the value specified in \code{MaxResults}, then a
 \code{NextToken} will be provided in the output that you can use to resume
 pagination.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FlowDefinitionSummaries = list(
-    list(
-      FlowDefinitionName = "string",
-      FlowDefinitionArn = "string",
-      FlowDefinitionStatus = "Initializing"|"Active"|"Failed"|"Deleting",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      FailureReason = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns information about the flow definitions in your account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_flow_definitions(
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_flow_definitions.html} for full documentation.
+}
 \keyword{internal}

@@ -2,123 +2,40 @@
 % Please edit documentation in R/secretsmanager_operations.R
 \name{secretsmanager_list_secret_version_ids}
 \alias{secretsmanager_list_secret_version_ids}
-\title{Lists all of the versions attached to the specified secret}
+\title{Lists the versions of a secret}
 \usage{
-secretsmanager_list_secret_version_ids(SecretId, MaxResults, NextToken,
-  IncludeDeprecated)
+secretsmanager_list_secret_version_ids(
+  SecretId,
+  MaxResults = NULL,
+  NextToken = NULL,
+  IncludeDeprecated = NULL
+)
 }
 \arguments{
-\item{SecretId}{[required] The identifier for the secret containing the versions you want to list.
-You can specify either the Amazon Resource Name (ARN) or the friendly
-name of the secret.
+\item{SecretId}{[required] The ARN or name of the secret whose versions you want to list.
 
-If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too—for example, if you
-don’t include the final hyphen and six random characters that Secrets
-Manager adds at the end of the ARN when you created the secret. A
-partial ARN match can work as long as it uniquely matches only one
-secret. However, if your secret has a name that ends in a hyphen
-followed by six characters (before Secrets Manager adds the hyphen and
-six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you’re
-specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don’t create secret names
-ending with a hyphen followed by six characters.
+For an ARN, we recommend that you specify a complete ARN rather than a
+partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 
-If you specify an incomplete ARN without the random suffix, and instead
-provide the 'friendly name', you \emph{must} not include the random suffix.
-If you do include the random suffix added by Secrets Manager, you
-receive either a \emph{ResourceNotFoundException} or an
-\emph{AccessDeniedException} error, depending on your permissions.}
+\item{MaxResults}{The number of results to include in the response.
 
-\item{MaxResults}{(Optional) Limits the number of results you want to include in the
-response. If you don't include this parameter, it defaults to a value
-that's specific to the operation. If additional items exist beyond the
-maximum you specify, the \code{NextToken} response element is present and has
-a value (isn't null). Include that value as the \code{NextToken} request
-parameter in the next call to the operation to get the next part of the
-results. Note that Secrets Manager might return fewer results than the
-maximum even when there are more results available. You should check
-\code{NextToken} after every operation to ensure that you receive all of the
-results.}
+If there are more results available, in the response, Secrets Manager
+includes \code{NextToken}. To get the next results, call
+\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}
+again with the value from \code{NextToken}.}
 
-\item{NextToken}{(Optional) Use this parameter in a request if you receive a \code{NextToken}
-response in a previous request indicating there's more output available.
-In a subsequent call, set it to the value of the previous call
-\code{NextToken} response to indicate where the output should continue from.}
+\item{NextToken}{A token that indicates where the output should continue from, if a
+previous call did not show all results. To get the next results, call
+\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}
+again with this value.}
 
-\item{IncludeDeprecated}{(Optional) Specifies that you want the results to include versions that
-do not have any staging labels attached to them. Such versions are
-considered deprecated and are subject to deletion by Secrets Manager as
-needed.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Versions = list(
-    list(
-      VersionId = "string",
-      VersionStages = list(
-        "string"
-      ),
-      LastAccessedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreatedDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string",
-  ARN = "string",
-  Name = "string"
-)
-}
+\item{IncludeDeprecated}{Specifies whether to include versions of secrets that don't have any
+staging labels attached to them. Versions without staging labels are
+considered deprecated and are subject to deletion by Secrets Manager.}
 }
 \description{
-Lists all of the versions attached to the specified secret. The output
-does not include the \code{SecretString} or \code{SecretBinary} fields. By
-default, the list includes only versions that have at least one staging
-label in \code{VersionStage} attached.
+Lists the versions of a secret. Secrets Manager uses staging labels to indicate the different versions of a secret. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version}{Secrets Manager concepts: Versions}.
 
-Always check the \code{NextToken} response parameter when calling any of the
-\verb{List*} operations. These operations can occasionally return an empty or
-shorter than expected list of results even when there more results
-become available. When this happens, the \code{NextToken} response parameter
-contains a value to pass to the next call to the same API to request the
-next part of the list.
-
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item secretsmanager:ListSecretVersionIds
-}
-
-\strong{Related operations}
-\itemize{
-\item To list the secrets in an account, use
-\code{\link[=secretsmanager_list_secrets]{list_secrets}}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_secret_version_ids(
-  SecretId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  IncludeDeprecated = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to retrieve a list of all of the
-# versions of a secret, including those without any staging labels.
-svc$list_secret_version_ids(
-  IncludeDeprecated = TRUE,
-  SecretId = "MyTestDatabaseSecret"
-)
-}
-
+See \url{https://paws-r.github.io/docs/secretsmanager/list_secret_version_ids.html} for full documentation.
 }
 \keyword{internal}

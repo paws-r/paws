@@ -5,8 +5,10 @@
 \title{Deletes the specified application along with all associated versions and
 configurations}
 \usage{
-elasticbeanstalk_delete_application(ApplicationName,
-  TerminateEnvByForce)
+elasticbeanstalk_delete_application(
+  ApplicationName,
+  TerminateEnvByForce = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to delete.}
@@ -14,31 +16,9 @@ elasticbeanstalk_delete_application(ApplicationName,
 \item{TerminateEnvByForce}{When set to true, running environments will be terminated before
 deleting the application.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified application along with all associated versions and
-configurations. The application versions will not be deleted from your
-Amazon S3 bucket.
+Deletes the specified application along with all associated versions and configurations. The application versions will not be deleted from your Amazon S3 bucket.
 
-You cannot delete an application that has a running environment.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_application(
-  ApplicationName = "string",
-  TerminateEnvByForce = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation deletes an application named my-app:
-svc$delete_application(
-  ApplicationName = "my-app"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/delete_application.html} for full documentation.
 }
 \keyword{internal}

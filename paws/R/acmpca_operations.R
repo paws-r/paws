@@ -7,48 +7,67 @@ NULL
 #'
 #' @description
 #' Creates a root or subordinate private certificate authority (CA). You
-#' must specify the CA configuration, the certificate revocation list (CRL)
-#' configuration, the CA type, and an optional idempotency token to avoid
+#' must specify the CA configuration, an optional configuration for Online
+#' Certificate Status Protocol (OCSP) and/or a certificate revocation list
+#' (CRL), the CA type, and an optional idempotency token to avoid
 #' accidental creation of multiple CAs. The CA configuration specifies the
 #' name of the algorithm and key size to be used to create the CA private
 #' key, the type of signing algorithm that the CA uses, and X.500 subject
-#' information. The CRL configuration specifies the CRL expiration period
-#' in days (the validity period of the CRL), the Amazon S3 bucket that will
-#' contain the CRL, and a CNAME alias for the S3 bucket that is included in
-#' certificates issued by the CA. If successful, this action returns the
-#' Amazon Resource Name (ARN) of the CA.
+#' information. The OCSP configuration can optionally specify a custom URL
+#' for the OCSP responder. The CRL configuration specifies the CRL
+#' expiration period in days (the validity period of the CRL), the Amazon
+#' S3 bucket that will contain the CRL, and a CNAME alias for the S3 bucket
+#' that is included in certificates issued by the CA. If successful, this
+#' action returns the Amazon Resource Name (ARN) of the CA.
 #' 
-#' ACM Private CAA assets that are stored in Amazon S3 can be protected
-#' with encryption. For more information, see [Encrypting Your
-#' CRLs](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption).
+#' ACM Private CA assets that are stored in Amazon S3 can be protected with
+#' encryption. For more information, see [Encrypting Your
+#' CRLs](https://docs.aws.amazon.com/privateca/latest/userguide/#crl-encryption).
 #' 
 #' Both PCA and the IAM principal must have permission to write to the S3
 #' bucket that you specify. If the IAM principal making the call does not
 #' have permission to write to the bucket, then an exception is thrown. For
-#' more information, see [Configure Access to ACM Private
-#' CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/).
+#' more information, see [Access policies for CRLs in Amazon
+#' S3](https://docs.aws.amazon.com/privateca/latest/userguide/crl-planning.html#s3-policies).
 #'
 #' @usage
 #' acmpca_create_certificate_authority(CertificateAuthorityConfiguration,
 #'   RevocationConfiguration, CertificateAuthorityType, IdempotencyToken,
-#'   Tags)
+#'   KeyStorageSecurityStandard, Tags)
 #'
 #' @param CertificateAuthorityConfiguration &#91;required&#93; Name and bit size of the private key algorithm, the name of the signing
 #' algorithm, and X.500 certificate subject information.
-#' @param RevocationConfiguration Contains a Boolean value that you can use to enable a certification
-#' revocation list (CRL) for the CA, the name of the S3 bucket to which ACM
-#' Private CA will write the CRL, and an optional CNAME alias that you can
-#' use to hide the name of your bucket in the **CRL Distribution Points**
-#' extension of your CA certificate. For more information, see the
-#' [CrlConfiguration](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CrlConfiguration.html)
-#' structure.
+#' @param RevocationConfiguration Contains information to enable Online Certificate Status Protocol (OCSP)
+#' support, to enable a certificate revocation list (CRL), to enable both,
+#' or to enable neither. The default is for both certificate validation
+#' mechanisms to be disabled. For more information, see the
+#' OcspConfiguration and CrlConfiguration types.
 #' @param CertificateAuthorityType &#91;required&#93; The type of the certificate authority.
-#' @param IdempotencyToken Alphanumeric string that can be used to distinguish between calls to
-#' **CreateCertificateAuthority**. For a given token, ACM Private CA
-#' creates exactly one CA. If you issue a subsequent call using the same
-#' token, ACM Private CA returns the ARN of the existing CA and takes no
-#' further action. If you change the idempotency token across multiple
-#' calls, ACM Private CA creates a unique CA for each unique token.
+#' @param IdempotencyToken Custom string that can be used to distinguish between calls to the
+#' **CreateCertificateAuthority** action. Idempotency tokens for
+#' **CreateCertificateAuthority** time out after five minutes. Therefore,
+#' if you call **CreateCertificateAuthority** multiple times with the same
+#' idempotency token within five minutes, ACM Private CA recognizes that
+#' you are requesting only certificate authority and will issue only one.
+#' If you change the idempotency token for each call, PCA recognizes that
+#' you are requesting multiple certificate authorities.
+#' @param KeyStorageSecurityStandard Specifies a cryptographic key management compliance standard used for
+#' handling CA keys.
+#' 
+#' Default: FIPS_140_2_LEVEL_3_OR_HIGHER
+#' 
+#' *Note:* `FIPS_140_2_LEVEL_3_OR_HIGHER` is not supported in the following
+#' Regions:
+#' 
+#' -   ap-northeast-3
+#' 
+#' -   ap-southeast-3
+#' 
+#' When creating a CA in these Regions, you must provide
+#' `FIPS_140_2_LEVEL_2_OR_HIGHER` as the argument for
+#' `KeyStorageSecurityStandard`. Failure to do this results in an
+#' `InvalidArgsException` with the message, "A certificate authority cannot
+#' be created in this region with the specified security standard."
 #' @param Tags Key-value pairs that will be attached to the new private CA. You can
 #' associate up to 50 tags with a private CA. For information using tags
 #' with IAM to manage permissions, see [Controlling Access Using IAM
@@ -82,7 +101,13 @@ NULL
 #'       GivenName = "string",
 #'       Initials = "string",
 #'       Pseudonym = "string",
-#'       GenerationQualifier = "string"
+#'       GenerationQualifier = "string",
+#'       CustomAttributes = list(
+#'         list(
+#'           ObjectIdentifier = "string",
+#'           Value = "string"
+#'         )
+#'       )
 #'     ),
 #'     CsrExtensions = list(
 #'       KeyUsage = list(
@@ -123,7 +148,13 @@ NULL
 #'               GivenName = "string",
 #'               Initials = "string",
 #'               Pseudonym = "string",
-#'               GenerationQualifier = "string"
+#'               GenerationQualifier = "string",
+#'               CustomAttributes = list(
+#'                 list(
+#'                   ObjectIdentifier = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
 #'             ),
 #'             EdiPartyName = list(
 #'               PartyName = "string",
@@ -142,11 +173,17 @@ NULL
 #'       Enabled = TRUE|FALSE,
 #'       ExpirationInDays = 123,
 #'       CustomCname = "string",
-#'       S3BucketName = "string"
+#'       S3BucketName = "string",
+#'       S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'     ),
+#'     OcspConfiguration = list(
+#'       Enabled = TRUE|FALSE,
+#'       OcspCustomCname = "string"
 #'     )
 #'   ),
 #'   CertificateAuthorityType = "ROOT"|"SUBORDINATE",
 #'   IdempotencyToken = "string",
+#'   KeyStorageSecurityStandard = "FIPS_140_2_LEVEL_2_OR_HIGHER"|"FIPS_140_2_LEVEL_3_OR_HIGHER",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -159,14 +196,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname acmpca_create_certificate_authority
-acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguration, RevocationConfiguration = NULL, CertificateAuthorityType, IdempotencyToken = NULL, Tags = NULL) {
+acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguration, RevocationConfiguration = NULL, CertificateAuthorityType, IdempotencyToken = NULL, KeyStorageSecurityStandard = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCertificateAuthority",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .acmpca$create_certificate_authority_input(CertificateAuthorityConfiguration = CertificateAuthorityConfiguration, RevocationConfiguration = RevocationConfiguration, CertificateAuthorityType = CertificateAuthorityType, IdempotencyToken = IdempotencyToken, Tags = Tags)
+  input <- .acmpca$create_certificate_authority_input(CertificateAuthorityConfiguration = CertificateAuthorityConfiguration, RevocationConfiguration = RevocationConfiguration, CertificateAuthorityType = CertificateAuthorityType, IdempotencyToken = IdempotencyToken, KeyStorageSecurityStandard = KeyStorageSecurityStandard, Tags = Tags)
   output <- .acmpca$create_certificate_authority_output()
   config <- get_config()
   svc <- .acmpca$service(config)
@@ -189,12 +226,14 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
 #' Both PCA and the IAM principal must have permission to write to the S3
 #' bucket that you specify. If the IAM principal making the call does not
 #' have permission to write to the bucket, then an exception is thrown. For
-#' more information, see [Configure Access to ACM Private
-#' CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/).
+#' more information, see [Access policies for CRLs in Amazon
+#' S3](https://docs.aws.amazon.com/privateca/latest/userguide/crl-planning.html#s3-policies).
 #' 
-#' ACM Private CAA assets that are stored in Amazon S3 can be protected
-#' with encryption. For more information, see [Encrypting Your Audit
-#' Reports](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuditReport.html#audit-report-encryption).
+#' ACM Private CA assets that are stored in Amazon S3 can be protected with
+#' encryption. For more information, see [Encrypting Your Audit
+#' Reports](https://docs.aws.amazon.com/privateca/latest/userguide/PcaAuditReport.html#audit-report-encryption).
+#' 
+#' You can generate a maximum of one report every 30 minutes.
 #'
 #' @usage
 #' acmpca_create_certificate_authority_audit_report(
@@ -246,14 +285,14 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 }
 .acmpca$operations$create_certificate_authority_audit_report <- acmpca_create_certificate_authority_audit_report
 
-#' Grants one or more permissions on a private CA to the AWS Certificate
+#' Grants one or more permissions on a private CA to the Certificate
 #' Manager (ACM) service principal (acm
 #'
 #' @description
-#' Grants one or more permissions on a private CA to the AWS Certificate
+#' Grants one or more permissions on a private CA to the Certificate
 #' Manager (ACM) service principal (`acm.amazonaws.com`). These permissions
 #' allow ACM to issue and renew ACM certificates that reside in the same
-#' AWS account as the CA.
+#' Amazon Web Services account as the CA.
 #' 
 #' You can list current permissions with the
 #' [`list_permissions`][acmpca_list_permissions] action and revoke them
@@ -276,7 +315,7 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 #'     resource-based policy to enable cross-account issuance and renewals.
 #'     For more information, see [Using a Resource Based Policy with ACM
 #'     Private
-#'     CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html).
+#'     CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
 #'
 #' @usage
 #' acmpca_create_permission(CertificateAuthorityArn, Principal,
@@ -288,11 +327,12 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 #' action. This must have the following form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
-#' @param Principal &#91;required&#93; The AWS service or identity that receives the permission. At this time,
-#' the only valid principal is `acm.amazonaws.com`.
+#' @param Principal &#91;required&#93; The Amazon Web Services service or identity that receives the
+#' permission. At this time, the only valid principal is
+#' `acm.amazonaws.com`.
 #' @param SourceAccount The ID of the calling account.
-#' @param Actions &#91;required&#93; The actions that the specified AWS service principal can use. These
-#' include [`issue_certificate`][acmpca_issue_certificate],
+#' @param Actions &#91;required&#93; The actions that the specified Amazon Web Services service principal can
+#' use. These include [`issue_certificate`][acmpca_issue_certificate],
 #' [`get_certificate`][acmpca_get_certificate], and
 #' [`list_permissions`][acmpca_list_permissions].
 #'
@@ -411,16 +451,16 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
 }
 .acmpca$operations$delete_certificate_authority <- acmpca_delete_certificate_authority
 
-#' Revokes permissions on a private CA granted to the AWS Certificate
-#' Manager (ACM) service principal (acm
+#' Revokes permissions on a private CA granted to the Certificate Manager
+#' (ACM) service principal (acm
 #'
 #' @description
-#' Revokes permissions on a private CA granted to the AWS Certificate
-#' Manager (ACM) service principal (acm.amazonaws.com).
+#' Revokes permissions on a private CA granted to the Certificate Manager
+#' (ACM) service principal (acm.amazonaws.com).
 #' 
 #' These permissions allow ACM to issue and renew ACM certificates that
-#' reside in the same AWS account as the CA. If you revoke these
-#' permissions, ACM will no longer renew the affected certificates
+#' reside in the same Amazon Web Services account as the CA. If you revoke
+#' these permissions, ACM will no longer renew the affected certificates
 #' automatically.
 #' 
 #' Permissions can be granted with the
@@ -444,7 +484,7 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
 #'     resource-based policy to enable cross-account issuance and renewals.
 #'     For more information, see [Using a Resource Based Policy with ACM
 #'     Private
-#'     CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html).
+#'     CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
 #'
 #' @usage
 #' acmpca_delete_permission(CertificateAuthorityArn, Principal,
@@ -456,9 +496,10 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
 #' action. This must have the following form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `.
-#' @param Principal &#91;required&#93; The AWS service or identity that will have its CA permissions revoked.
-#' At this time, the only valid service principal is `acm.amazonaws.com`
-#' @param SourceAccount The AWS account that calls this action.
+#' @param Principal &#91;required&#93; The Amazon Web Services service or identity that will have its CA
+#' permissions revoked. At this time, the only valid service principal is
+#' `acm.amazonaws.com`
+#' @param SourceAccount The Amazon Web Services account that calls this action.
 #'
 #' @return
 #' An empty list.
@@ -499,26 +540,27 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' will remove any access that the policy has granted. If there is no
 #' policy attached to the private CA, this action will return successful.
 #' 
-#' If you delete a policy that was applied through AWS Resource Access
-#' Manager (RAM), the CA will be removed from all shares in which it was
-#' included.
+#' If you delete a policy that was applied through Amazon Web Services
+#' Resource Access Manager (RAM), the CA will be removed from all shares in
+#' which it was included.
 #' 
-#' The AWS Certificate Manager Service Linked Role that the policy supports
-#' is not affected when you delete the policy.
+#' The Certificate Manager Service Linked Role that the policy supports is
+#' not affected when you delete the policy.
 #' 
 #' The current policy can be shown with [`get_policy`][acmpca_get_policy]
 #' and updated with [`put_policy`][acmpca_put_policy].
 #' 
 #' **About Policies**
 #' 
-#' -   A policy grants access on a private CA to an AWS customer account,
-#'     to AWS Organizations, or to an AWS Organizations unit. Policies are
-#'     under the control of a CA administrator. For more information, see
-#'     [Using a Resource Based Policy with ACM Private
-#'     CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html).
+#' -   A policy grants access on a private CA to an Amazon Web Services
+#'     customer account, to Amazon Web Services Organizations, or to an
+#'     Amazon Web Services Organizations unit. Policies are under the
+#'     control of a CA administrator. For more information, see [Using a
+#'     Resource Based Policy with ACM Private
+#'     CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
 #' 
-#' -   A policy permits a user of AWS Certificate Manager (ACM) to issue
-#'     ACM certificates signed by a CA in another account.
+#' -   A policy permits a user of Certificate Manager (ACM) to issue ACM
+#'     certificates signed by a CA in another account.
 #' 
 #' -   For ACM to manage automatic renewal of these certificates, the ACM
 #'     user must configure a Service Linked Role (SLR). The SLR allows the
@@ -527,10 +569,10 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #'     information, see [Using a Service Linked Role with
 #'     ACM](https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html).
 #' 
-#' -   Updates made in AWS Resource Manager (RAM) are reflected in
-#'     policies. For more information, see [Attach a Policy for
-#'     Cross-Account
-#'     Access](https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-ram.html).
+#' -   Updates made in Amazon Web Services Resource Manager (RAM) are
+#'     reflected in policies. For more information, see [Attach a Policy
+#'     for Cross-Account
+#'     Access](https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html).
 #'
 #' @usage
 #' acmpca_delete_policy(ResourceArn)
@@ -594,9 +636,9 @@ acmpca_delete_policy <- function(ResourceArn) {
 #' -   `EXPIRED` - Your private CA certificate has expired.
 #' 
 #' -   `FAILED` - Your private CA has failed. Your CA can fail because of
-#'     problems such a network outage or backend AWS failure or other
-#'     errors. A failed CA can never return to the pending state. You must
-#'     create a new CA.
+#'     problems such a network outage or back-end Amazon Web Services
+#'     failure or other errors. A failed CA can never return to the pending
+#'     state. You must create a new CA.
 #' 
 #' -   `DELETED` - Your private CA is within the restoration period, after
 #'     which it is permanently deleted. The length of time remaining in the
@@ -651,7 +693,13 @@ acmpca_delete_policy <- function(ResourceArn) {
 #'         GivenName = "string",
 #'         Initials = "string",
 #'         Pseudonym = "string",
-#'         GenerationQualifier = "string"
+#'         GenerationQualifier = "string",
+#'         CustomAttributes = list(
+#'           list(
+#'             ObjectIdentifier = "string",
+#'             Value = "string"
+#'           )
+#'         )
 #'       ),
 #'       CsrExtensions = list(
 #'         KeyUsage = list(
@@ -692,7 +740,13 @@ acmpca_delete_policy <- function(ResourceArn) {
 #'                 GivenName = "string",
 #'                 Initials = "string",
 #'                 Pseudonym = "string",
-#'                 GenerationQualifier = "string"
+#'                 GenerationQualifier = "string",
+#'                 CustomAttributes = list(
+#'                   list(
+#'                     ObjectIdentifier = "string",
+#'                     Value = "string"
+#'                   )
+#'                 )
 #'               ),
 #'               EdiPartyName = list(
 #'                 PartyName = "string",
@@ -711,12 +765,18 @@ acmpca_delete_policy <- function(ResourceArn) {
 #'         Enabled = TRUE|FALSE,
 #'         ExpirationInDays = 123,
 #'         CustomCname = "string",
-#'         S3BucketName = "string"
+#'         S3BucketName = "string",
+#'         S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'       ),
+#'       OcspConfiguration = list(
+#'         Enabled = TRUE|FALSE,
+#'         OcspCustomCname = "string"
 #'       )
 #'     ),
 #'     RestorableUntil = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     KeyStorageSecurityStandard = "FIPS_140_2_LEVEL_2_OR_HIGHER"|"FIPS_140_2_LEVEL_3_OR_HIGHER"
 #'   )
 #' )
 #' ```
@@ -999,14 +1059,15 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 #' 
 #' **About Policies**
 #' 
-#' -   A policy grants access on a private CA to an AWS customer account,
-#'     to AWS Organizations, or to an AWS Organizations unit. Policies are
-#'     under the control of a CA administrator. For more information, see
-#'     [Using a Resource Based Policy with ACM Private
-#'     CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html).
+#' -   A policy grants access on a private CA to an Amazon Web Services
+#'     customer account, to Amazon Web Services Organizations, or to an
+#'     Amazon Web Services Organizations unit. Policies are under the
+#'     control of a CA administrator. For more information, see [Using a
+#'     Resource Based Policy with ACM Private
+#'     CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
 #' 
-#' -   A policy permits a user of AWS Certificate Manager (ACM) to issue
-#'     ACM certificates signed by a CA in another account.
+#' -   A policy permits a user of Certificate Manager (ACM) to issue ACM
+#'     certificates signed by a CA in another account.
 #' 
 #' -   For ACM to manage automatic renewal of these certificates, the ACM
 #'     user must configure a Service Linked Role (SLR). The SLR allows the
@@ -1015,10 +1076,10 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 #'     information, see [Using a Service Linked Role with
 #'     ACM](https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html).
 #' 
-#' -   Updates made in AWS Resource Manager (RAM) are reflected in
-#'     policies. For more information, see [Attach a Policy for
-#'     Cross-Account
-#'     Access](https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-ram.html).
+#' -   Updates made in Amazon Web Services Resource Manager (RAM) are
+#'     reflected in policies. For more information, see [Attach a Policy
+#'     for Cross-Account
+#'     Access](https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html).
 #'
 #' @usage
 #' acmpca_get_policy(ResourceArn)
@@ -1072,7 +1133,7 @@ acmpca_get_policy <- function(ResourceArn) {
 #' 
 #' 1.  In ACM Private CA, call the
 #'     [`create_certificate_authority`][acmpca_create_certificate_authority]
-#'     action to create the private CA that that you plan to back with the
+#'     action to create the private CA that you plan to back with the
 #'     imported certificate.
 #' 
 #' 2.  Call the
@@ -1095,7 +1156,7 @@ acmpca_get_policy <- function(ResourceArn) {
 #' -   Installing a subordinate CA certificate whose parent authority is
 #'     externally hosted.
 #' 
-#' The following addtitional requirements apply when you import a CA
+#' The following additional requirements apply when you import a CA
 #' certificate.
 #' 
 #' -   Only a self-signed certificate can be imported as a root CA.
@@ -1226,25 +1287,36 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' the ARNs of the certificates that you issue by using ACM Private CA.
 #'
 #' @usage
-#' acmpca_issue_certificate(CertificateAuthorityArn, Csr, SigningAlgorithm,
-#'   TemplateArn, Validity, IdempotencyToken)
+#' acmpca_issue_certificate(ApiPassthrough, CertificateAuthorityArn, Csr,
+#'   SigningAlgorithm, TemplateArn, Validity, ValidityNotBefore,
+#'   IdempotencyToken)
 #'
+#' @param ApiPassthrough Specifies X.509 certificate information to be included in the issued
+#' certificate. An `APIPassthrough` or `APICSRPassthrough` template variant
+#' must be selected, or else this parameter is ignored. For more
+#' information about using these templates, see [Understanding Certificate
+#' Templates](https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html).
+#' 
+#' If conflicting or duplicate certificate information is supplied during
+#' certificate issuance, ACM Private CA applies [order of operation
+#' rules](https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html#template-order-of-operations)
+#' to determine what information is used.
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
 #' [`create_certificate_authority`][acmpca_create_certificate_authority].
 #' This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
 #' @param Csr &#91;required&#93; The certificate signing request (CSR) for the certificate you want to
-#' issue. You can use the following OpenSSL command to create the CSR and a
-#' 2048 bit RSA private key.
+#' issue. As an example, you can use the following OpenSSL command to
+#' create the CSR and a 2048 bit RSA private key.
 #' 
 #' `openssl req -new -newkey rsa:2048 -days 365 -keyout private/test_cert_priv_key.pem -out csr/test_cert_.csr`
 #' 
-#' If you have a configuration file, you can use the following OpenSSL
+#' If you have a configuration file, you can then use the following OpenSSL
 #' command. The `usr_cert` block in the configuration file contains your
 #' X509 version 3 extensions.
 #' 
-#' `openssl req -new -config openssl_rsa.cnf -extensions usr_cert -newkey rsa:2048 -days -365 -keyout private/test_cert_priv_key.pem -out csr/test_cert_.csr`
+#' `openssl req -new -config openssl_rsa.cnf -extensions usr_cert -newkey rsa:2048 -days 365 -keyout private/test_cert_priv_key.pem -out csr/test_cert_.csr`
 #' 
 #' Note: A CSR must provide either a *subject name* or a *subject
 #' alternative name* or the request will be rejected.
@@ -1252,69 +1324,68 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' be issued.
 #' 
 #' This parameter should not be confused with the `SigningAlgorithm`
-#' parameter used to sign a CSR.
+#' parameter used to sign a CSR in the
+#' [`create_certificate_authority`][acmpca_create_certificate_authority]
+#' action.
+#' 
+#' The specified signing algorithm family (RSA or ECDSA) much match the
+#' algorithm family of the CA's secret key.
 #' @param TemplateArn Specifies a custom configuration template to use when issuing a
 #' certificate. If this parameter is not provided, ACM Private CA defaults
 #' to the `EndEntityCertificate/V1` template. For CA certificates, you
 #' should choose the shortest path length that meets your needs. The path
 #' length is indicated by the PathLen*N* portion of the ARN, where *N* is
 #' the [CA
-#' depth](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaTerms.html#terms-cadepth).
+#' depth](https://docs.aws.amazon.com/privateca/latest/userguide/PcaTerms.html#terms-cadepth).
 #' 
 #' Note: The CA depth configured on a subordinate CA certificate must not
 #' exceed the limit set by its parents in the CA hierarchy.
 #' 
-#' The following service-owned `TemplateArn` values are supported by ACM
-#' Private CA:
+#' For a list of `TemplateArn` values supported by ACM Private CA, see
+#' [Understanding Certificate
+#' Templates](https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html).
+#' @param Validity &#91;required&#93; Information describing the end of the validity period of the
+#' certificate. This parameter sets the “Not After” date for the
+#' certificate.
 #' 
-#' -   arn:aws:acm-pca:::template/CodeSigningCertificate/V1
+#' Certificate validity is the period of time during which a certificate is
+#' valid. Validity can be expressed as an explicit date and time when the
+#' certificate expires, or as a span of time after issuance, stated in
+#' days, months, or years. For more information, see
+#' [Validity](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5)
+#' in RFC 5280.
 #' 
-#' -   arn:aws:acm-pca:::template/CodeSigningCertificate_CSRPassthrough/V1
+#' This value is unaffected when `ValidityNotBefore` is also specified. For
+#' example, if `Validity` is set to 20 days in the future, the certificate
+#' will expire 20 days from issuance time regardless of the
+#' `ValidityNotBefore` value.
 #' 
-#' -   arn:aws:acm-pca:::template/EndEntityCertificate/V1
+#' The end of the validity period configured on a certificate must not
+#' exceed the limit set on its parents in the CA hierarchy.
+#' @param ValidityNotBefore Information describing the start of the validity period of the
+#' certificate. This parameter sets the “Not Before" date for the
+#' certificate.
 #' 
-#' -   arn:aws:acm-pca:::template/EndEntityCertificate_CSRPassthrough/V1
+#' By default, when issuing a certificate, ACM Private CA sets the "Not
+#' Before" date to the issuance time minus 60 minutes. This compensates for
+#' clock inconsistencies across computer systems. The `ValidityNotBefore`
+#' parameter can be used to customize the “Not Before” value.
 #' 
-#' -   arn:aws:acm-pca:::template/EndEntityClientAuthCertificate/V1
+#' Unlike the `Validity` parameter, the `ValidityNotBefore` parameter is
+#' optional.
 #' 
-#' -   arn:aws:acm-pca:::template/EndEntityClientAuthCertificate_CSRPassthrough/V1
-#' 
-#' -   arn:aws:acm-pca:::template/EndEntityServerAuthCertificate/V1
-#' 
-#' -   arn:aws:acm-pca:::template/EndEntityServerAuthCertificate_CSRPassthrough/V1
-#' 
-#' -   arn:aws:acm-pca:::template/OCSPSigningCertificate/V1
-#' 
-#' -   arn:aws:acm-pca:::template/OCSPSigningCertificate_CSRPassthrough/V1
-#' 
-#' -   arn:aws:acm-pca:::template/RootCACertificate/V1
-#' 
-#' -   arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen0/V1
-#' 
-#' -   arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen1/V1
-#' 
-#' -   arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen2/V1
-#' 
-#' -   arn:aws:acm-pca:::template/SubordinateCACertificate_PathLen3/V1
-#' 
-#' For more information, see [Using
-#' Templates](https://docs.aws.amazon.com/acm-pca/latest/userguide/UsingTemplates.html).
-#' @param Validity &#91;required&#93; Information describing the validity period of the certificate.
-#' 
-#' When issuing a certificate, ACM Private CA sets the "Not Before" date in
-#' the validity field to date and time minus 60 minutes. This is intended
-#' to compensate for time inconsistencies across systems of 60 minutes or
-#' less.
-#' 
-#' The validity period configured on a certificate must not exceed the
-#' limit set by its parents in the CA hierarchy.
-#' @param IdempotencyToken Custom string that can be used to distinguish between calls to the
-#' **IssueCertificate** action. Idempotency tokens time out after one hour.
-#' Therefore, if you call **IssueCertificate** multiple times with the same
-#' idempotency token within 5 minutes, ACM Private CA recognizes that you
-#' are requesting only one certificate and will issue only one. If you
-#' change the idempotency token for each call, PCA recognizes that you are
-#' requesting multiple certificates.
+#' The `ValidityNotBefore` value is expressed as an explicit date and time,
+#' using the `Validity` type value `ABSOLUTE`. For more information, see
+#' Validity in this API reference and
+#' [Validity](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5)
+#' in RFC 5280.
+#' @param IdempotencyToken Alphanumeric string that can be used to distinguish between calls to the
+#' **IssueCertificate** action. Idempotency tokens for **IssueCertificate**
+#' time out after one minute. Therefore, if you call **IssueCertificate**
+#' multiple times with the same idempotency token within one minute, ACM
+#' Private CA recognizes that you are requesting only one certificate and
+#' will issue only one. If you change the idempotency token for each call,
+#' PCA recognizes that you are requesting multiple certificates.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1327,11 +1398,117 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' @section Request syntax:
 #' ```
 #' svc$issue_certificate(
+#'   ApiPassthrough = list(
+#'     Extensions = list(
+#'       CertificatePolicies = list(
+#'         list(
+#'           CertPolicyId = "string",
+#'           PolicyQualifiers = list(
+#'             list(
+#'               PolicyQualifierId = "CPS",
+#'               Qualifier = list(
+#'                 CpsUri = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ExtendedKeyUsage = list(
+#'         list(
+#'           ExtendedKeyUsageType = "SERVER_AUTH"|"CLIENT_AUTH"|"CODE_SIGNING"|"EMAIL_PROTECTION"|"TIME_STAMPING"|"OCSP_SIGNING"|"SMART_CARD_LOGIN"|"DOCUMENT_SIGNING"|"CERTIFICATE_TRANSPARENCY",
+#'           ExtendedKeyUsageObjectIdentifier = "string"
+#'         )
+#'       ),
+#'       KeyUsage = list(
+#'         DigitalSignature = TRUE|FALSE,
+#'         NonRepudiation = TRUE|FALSE,
+#'         KeyEncipherment = TRUE|FALSE,
+#'         DataEncipherment = TRUE|FALSE,
+#'         KeyAgreement = TRUE|FALSE,
+#'         KeyCertSign = TRUE|FALSE,
+#'         CRLSign = TRUE|FALSE,
+#'         EncipherOnly = TRUE|FALSE,
+#'         DecipherOnly = TRUE|FALSE
+#'       ),
+#'       SubjectAlternativeNames = list(
+#'         list(
+#'           OtherName = list(
+#'             TypeId = "string",
+#'             Value = "string"
+#'           ),
+#'           Rfc822Name = "string",
+#'           DnsName = "string",
+#'           DirectoryName = list(
+#'             Country = "string",
+#'             Organization = "string",
+#'             OrganizationalUnit = "string",
+#'             DistinguishedNameQualifier = "string",
+#'             State = "string",
+#'             CommonName = "string",
+#'             SerialNumber = "string",
+#'             Locality = "string",
+#'             Title = "string",
+#'             Surname = "string",
+#'             GivenName = "string",
+#'             Initials = "string",
+#'             Pseudonym = "string",
+#'             GenerationQualifier = "string",
+#'             CustomAttributes = list(
+#'               list(
+#'                 ObjectIdentifier = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           ),
+#'           EdiPartyName = list(
+#'             PartyName = "string",
+#'             NameAssigner = "string"
+#'           ),
+#'           UniformResourceIdentifier = "string",
+#'           IpAddress = "string",
+#'           RegisteredId = "string"
+#'         )
+#'       ),
+#'       CustomExtensions = list(
+#'         list(
+#'           ObjectIdentifier = "string",
+#'           Value = "string",
+#'           Critical = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     Subject = list(
+#'       Country = "string",
+#'       Organization = "string",
+#'       OrganizationalUnit = "string",
+#'       DistinguishedNameQualifier = "string",
+#'       State = "string",
+#'       CommonName = "string",
+#'       SerialNumber = "string",
+#'       Locality = "string",
+#'       Title = "string",
+#'       Surname = "string",
+#'       GivenName = "string",
+#'       Initials = "string",
+#'       Pseudonym = "string",
+#'       GenerationQualifier = "string",
+#'       CustomAttributes = list(
+#'         list(
+#'           ObjectIdentifier = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   CertificateAuthorityArn = "string",
 #'   Csr = raw,
 #'   SigningAlgorithm = "SHA256WITHECDSA"|"SHA384WITHECDSA"|"SHA512WITHECDSA"|"SHA256WITHRSA"|"SHA384WITHRSA"|"SHA512WITHRSA",
 #'   TemplateArn = "string",
 #'   Validity = list(
+#'     Value = 123,
+#'     Type = "END_DATE"|"ABSOLUTE"|"DAYS"|"MONTHS"|"YEARS"
+#'   ),
+#'   ValidityNotBefore = list(
 #'     Value = 123,
 #'     Type = "END_DATE"|"ABSOLUTE"|"DAYS"|"MONTHS"|"YEARS"
 #'   ),
@@ -1342,14 +1519,14 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' @keywords internal
 #'
 #' @rdname acmpca_issue_certificate
-acmpca_issue_certificate <- function(CertificateAuthorityArn, Csr, SigningAlgorithm, TemplateArn = NULL, Validity, IdempotencyToken = NULL) {
+acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthorityArn, Csr, SigningAlgorithm, TemplateArn = NULL, Validity, ValidityNotBefore = NULL, IdempotencyToken = NULL) {
   op <- new_operation(
     name = "IssueCertificate",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .acmpca$issue_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, Csr = Csr, SigningAlgorithm = SigningAlgorithm, TemplateArn = TemplateArn, Validity = Validity, IdempotencyToken = IdempotencyToken)
+  input <- .acmpca$issue_certificate_input(ApiPassthrough = ApiPassthrough, CertificateAuthorityArn = CertificateAuthorityArn, Csr = Csr, SigningAlgorithm = SigningAlgorithm, TemplateArn = TemplateArn, Validity = Validity, ValidityNotBefore = ValidityNotBefore, IdempotencyToken = IdempotencyToken)
   output <- .acmpca$issue_certificate_output()
   config <- get_config()
   svc <- .acmpca$service(config)
@@ -1423,7 +1600,13 @@ acmpca_issue_certificate <- function(CertificateAuthorityArn, Csr, SigningAlgori
 #'           GivenName = "string",
 #'           Initials = "string",
 #'           Pseudonym = "string",
-#'           GenerationQualifier = "string"
+#'           GenerationQualifier = "string",
+#'           CustomAttributes = list(
+#'             list(
+#'               ObjectIdentifier = "string",
+#'               Value = "string"
+#'             )
+#'           )
 #'         ),
 #'         CsrExtensions = list(
 #'           KeyUsage = list(
@@ -1464,7 +1647,13 @@ acmpca_issue_certificate <- function(CertificateAuthorityArn, Csr, SigningAlgori
 #'                   GivenName = "string",
 #'                   Initials = "string",
 #'                   Pseudonym = "string",
-#'                   GenerationQualifier = "string"
+#'                   GenerationQualifier = "string",
+#'                   CustomAttributes = list(
+#'                     list(
+#'                       ObjectIdentifier = "string",
+#'                       Value = "string"
+#'                     )
+#'                   )
 #'                 ),
 #'                 EdiPartyName = list(
 #'                   PartyName = "string",
@@ -1483,12 +1672,18 @@ acmpca_issue_certificate <- function(CertificateAuthorityArn, Csr, SigningAlgori
 #'           Enabled = TRUE|FALSE,
 #'           ExpirationInDays = 123,
 #'           CustomCname = "string",
-#'           S3BucketName = "string"
+#'           S3BucketName = "string",
+#'           S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'         ),
+#'         OcspConfiguration = list(
+#'           Enabled = TRUE|FALSE,
+#'           OcspCustomCname = "string"
 #'         )
 #'       ),
 #'       RestorableUntil = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       KeyStorageSecurityStandard = "FIPS_140_2_LEVEL_2_OR_HIGHER"|"FIPS_140_2_LEVEL_3_OR_HIGHER"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1524,15 +1719,15 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
 }
 .acmpca$operations$list_certificate_authorities <- acmpca_list_certificate_authorities
 
-#' List all permissions on a private CA, if any, granted to the AWS
-#' Certificate Manager (ACM) service principal (acm
+#' List all permissions on a private CA, if any, granted to the Certificate
+#' Manager (ACM) service principal (acm
 #'
 #' @description
-#' List all permissions on a private CA, if any, granted to the AWS
-#' Certificate Manager (ACM) service principal (acm.amazonaws.com).
+#' List all permissions on a private CA, if any, granted to the Certificate
+#' Manager (ACM) service principal (acm.amazonaws.com).
 #' 
 #' These permissions allow ACM to issue and renew ACM certificates that
-#' reside in the same AWS account as the CA.
+#' reside in the same Amazon Web Services account as the CA.
 #' 
 #' Permissions can be granted with the
 #' [`create_permission`][acmpca_create_permission] action and revoked with
@@ -1555,7 +1750,7 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
 #'     resource-based policy to enable cross-account issuance and renewals.
 #'     For more information, see [Using a Resource Based Policy with ACM
 #'     Private
-#'     CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html).
+#'     CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
 #'
 #' @usage
 #' acmpca_list_permissions(CertificateAuthorityArn, NextToken, MaxResults)
@@ -1706,24 +1901,25 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
 #' @description
 #' Attaches a resource-based policy to a private CA.
 #' 
-#' A policy can also be applied by sharing a private CA through AWS
-#' Resource Access Manager (RAM). For more information, see [Attach a
-#' Policy for Cross-Account
-#' Access](https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-ram.html).
+#' A policy can also be applied by sharing a private CA through Amazon Web
+#' Services Resource Access Manager (RAM). For more information, see
+#' [Attach a Policy for Cross-Account
+#' Access](https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html).
 #' 
 #' The policy can be displayed with [`get_policy`][acmpca_get_policy] and
 #' removed with [`delete_policy`][acmpca_delete_policy].
 #' 
 #' **About Policies**
 #' 
-#' -   A policy grants access on a private CA to an AWS customer account,
-#'     to AWS Organizations, or to an AWS Organizations unit. Policies are
-#'     under the control of a CA administrator. For more information, see
-#'     [Using a Resource Based Policy with ACM Private
-#'     CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html).
+#' -   A policy grants access on a private CA to an Amazon Web Services
+#'     customer account, to Amazon Web Services Organizations, or to an
+#'     Amazon Web Services Organizations unit. Policies are under the
+#'     control of a CA administrator. For more information, see [Using a
+#'     Resource Based Policy with ACM Private
+#'     CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
 #' 
-#' -   A policy permits a user of AWS Certificate Manager (ACM) to issue
-#'     ACM certificates signed by a CA in another account.
+#' -   A policy permits a user of Certificate Manager (ACM) to issue ACM
+#'     certificates signed by a CA in another account.
 #' 
 #' -   For ACM to manage automatic renewal of these certificates, the ACM
 #'     user must configure a Service Linked Role (SLR). The SLR allows the
@@ -1732,10 +1928,10 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
 #'     information, see [Using a Service Linked Role with
 #'     ACM](https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html).
 #' 
-#' -   Updates made in AWS Resource Manager (RAM) are reflected in
-#'     policies. For more information, see [Attach a Policy for
-#'     Cross-Account
-#'     Access](https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-ram.html).
+#' -   Updates made in Amazon Web Services Resource Manager (RAM) are
+#'     reflected in policies. For more information, see [Attach a Policy
+#'     for Cross-Account
+#'     Access](https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html).
 #'
 #' @usage
 #' acmpca_put_policy(ResourceArn, Policy)
@@ -1744,7 +1940,7 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
 #' policy. The ARN of the CA can be found by calling the
 #' [`list_certificate_authorities`][acmpca_list_certificate_authorities]
 #' action.
-#' @param Policy &#91;required&#93; The path and filename of a JSON-formatted IAM policy to attach to the
+#' @param Policy &#91;required&#93; The path and file name of a JSON-formatted IAM policy to attach to the
 #' specified private CA resource. If this policy does not contain all
 #' required statements or if it includes any statement that is not allowed,
 #' the [`put_policy`][acmpca_put_policy] action returns an
@@ -1860,13 +2056,13 @@ acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
 #' CloudWatch, you can create alarms for the metrics `CRLGenerated` and
 #' `MisconfiguredCRLBucket`. For more information, see [Supported
 #' CloudWatch
-#' Metrics](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCloudWatch.html).
+#' Metrics](https://docs.aws.amazon.com/privateca/latest/userguide/PcaCloudWatch.html).
 #' 
 #' Both PCA and the IAM principal must have permission to write to the S3
 #' bucket that you specify. If the IAM principal making the call does not
 #' have permission to write to the bucket, then an exception is thrown. For
-#' more information, see [Configure Access to ACM Private
-#' CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/).
+#' more information, see [Access policies for CRLs in Amazon
+#' S3](https://docs.aws.amazon.com/privateca/latest/userguide/crl-planning.html#s3-policies).
 #' 
 #' ACM Private CA also writes revocation information to the audit report.
 #' For more information, see
@@ -1894,7 +2090,7 @@ acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
 #' 
 #' You can also copy the serial number from the console or use the
 #' [DescribeCertificate](https://docs.aws.amazon.com/acm/latest/APIReference/API_DescribeCertificate.html)
-#' action in the *AWS Certificate Manager API Reference*.
+#' action in the *Certificate Manager API Reference*.
 #' @param RevocationReason &#91;required&#93; Specifies why you revoked the certificate.
 #'
 #' @return
@@ -1933,13 +2129,13 @@ acmpca_revoke_certificate <- function(CertificateAuthorityArn, CertificateSerial
 #'
 #' @description
 #' Adds one or more tags to your private CA. Tags are labels that you can
-#' use to identify and organize your AWS resources. Each tag consists of a
-#' key and an optional value. You specify the private CA on input by its
-#' Amazon Resource Name (ARN). You specify the tag by using a key-value
-#' pair. You can apply a tag to just one private CA if you want to identify
-#' a specific characteristic of that CA, or you can apply the same tag to
-#' multiple private CAs if you want to filter for a common relationship
-#' among those CAs. To remove one or more tags, use the
+#' use to identify and organize your Amazon Web Services resources. Each
+#' tag consists of a key and an optional value. You specify the private CA
+#' on input by its Amazon Resource Name (ARN). You specify the tag by using
+#' a key-value pair. You can apply a tag to just one private CA if you want
+#' to identify a specific characteristic of that CA, or you can apply the
+#' same tag to multiple private CAs if you want to filter for a common
+#' relationship among those CAs. To remove one or more tags, use the
 #' [`untag_certificate_authority`][acmpca_untag_certificate_authority]
 #' action. Call the [`list_tags`][acmpca_list_tags] action to see what tags
 #' are associated with your CA.
@@ -2060,8 +2256,8 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' Both PCA and the IAM principal must have permission to write to the S3
 #' bucket that you specify. If the IAM principal making the call does not
 #' have permission to write to the bucket, then an exception is thrown. For
-#' more information, see [Configure Access to ACM Private
-#' CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/).
+#' more information, see [Access policies for CRLs in Amazon
+#' S3](https://docs.aws.amazon.com/privateca/latest/userguide/crl-planning.html#s3-policies).
 #'
 #' @usage
 #' acmpca_update_certificate_authority(CertificateAuthorityArn,
@@ -2071,7 +2267,11 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' to be revoked. This must be of the form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 `
-#' @param RevocationConfiguration Revocation information for your private CA.
+#' @param RevocationConfiguration Contains information to enable Online Certificate Status Protocol (OCSP)
+#' support, to enable a certificate revocation list (CRL), to enable both,
+#' or to enable neither. If this parameter is not supplied, existing
+#' capibilites remain unchanged. For more information, see the
+#' OcspConfiguration and CrlConfiguration types.
 #' @param Status Status of your private CA.
 #'
 #' @return
@@ -2086,7 +2286,12 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #'       Enabled = TRUE|FALSE,
 #'       ExpirationInDays = 123,
 #'       CustomCname = "string",
-#'       S3BucketName = "string"
+#'       S3BucketName = "string",
+#'       S3ObjectAcl = "PUBLIC_READ"|"BUCKET_OWNER_FULL_CONTROL"
+#'     ),
+#'     OcspConfiguration = list(
+#'       Enabled = TRUE|FALSE,
+#'       OcspCustomCname = "string"
 #'     )
 #'   ),
 #'   Status = "CREATING"|"PENDING_CERTIFICATE"|"ACTIVE"|"DELETED"|"DISABLED"|"EXPIRED"|"FAILED"

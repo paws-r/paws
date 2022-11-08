@@ -4,8 +4,14 @@
 \alias{guardduty_update_filter}
 \title{Updates the filter specified by the filter name}
 \usage{
-guardduty_update_filter(DetectorId, FilterName, Description, Action,
-  Rank, FindingCriteria)
+guardduty_update_filter(
+  DetectorId,
+  FilterName,
+  Description = NULL,
+  Action = NULL,
+  Rank = NULL,
+  FindingCriteria = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that specifies the GuardDuty service where
@@ -24,50 +30,9 @@ findings.}
 
 \item{FindingCriteria}{Represents the criteria to be used in the filter for querying findings.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string"
-)
-}
-}
 \description{
 Updates the filter specified by the filter name.
-}
-\section{Request syntax}{
-\preformatted{svc$update_filter(
-  DetectorId = "string",
-  FilterName = "string",
-  Description = "string",
-  Action = "NOOP"|"ARCHIVE",
-  Rank = 123,
-  FindingCriteria = list(
-    Criterion = list(
-      list(
-        Eq = list(
-          "string"
-        ),
-        Neq = list(
-          "string"
-        ),
-        Gt = 123,
-        Gte = 123,
-        Lt = 123,
-        Lte = 123,
-        Equals = list(
-          "string"
-        ),
-        NotEquals = list(
-          "string"
-        ),
-        GreaterThan = 123,
-        GreaterThanOrEqual = 123,
-        LessThan = 123,
-        LessThanOrEqual = 123
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/update_filter.html} for full documentation.
+}
 \keyword{internal}

@@ -1,10 +1,10 @@
 Package: paws.networking
 Title: 'Amazon Web Services' Networking & Content Delivery Services
-Version: 0.1.13
+Version: 0.1.14
 Authors@R: c(
-    person("David", "Kretch", , "david.kretch@gmail.com", role = c("aut")),
+    person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
-    person("Dyfan", "Jones", email = "dyfan.r.jones@gmail.com", role = "cre"),
+    person("Dyfan", "Jones", , "dyfan.r.jones@gmail.com", role = "cre"),
     person("Amazon.com, Inc.", role = "cph")
   )
 Description: Interface to 'Amazon Web Services' networking and content
@@ -20,7 +20,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Collate: 
     'apigateway_service.R'
     'apigateway_interfaces.R'
@@ -34,6 +34,9 @@ Collate:
     'appmesh_service.R'
     'appmesh_interfaces.R'
     'appmesh_operations.R'
+    'backupgateway_service.R'
+    'backupgateway_interfaces.R'
+    'backupgateway_operations.R'
     'cloudfront_service.R'
     'cloudfront_interfaces.R'
     'cloudfront_operations.R'
@@ -49,12 +52,27 @@ Collate:
     'globalaccelerator_service.R'
     'globalaccelerator_interfaces.R'
     'globalaccelerator_operations.R'
+    'networkfirewall_service.R'
+    'networkfirewall_interfaces.R'
+    'networkfirewall_operations.R'
+    'networkmanager_service.R'
+    'networkmanager_interfaces.R'
+    'networkmanager_operations.R'
     'route53_service.R'
     'route53_interfaces.R'
     'route53_operations.R'
     'route53domains_service.R'
     'route53domains_interfaces.R'
     'route53domains_operations.R'
+    'route53recoverycluster_service.R'
+    'route53recoverycluster_interfaces.R'
+    'route53recoverycluster_operations.R'
+    'route53recoverycontrolconfig_service.R'
+    'route53recoverycontrolconfig_interfaces.R'
+    'route53recoverycontrolconfig_operations.R'
+    'route53recoveryreadiness_service.R'
+    'route53recoveryreadiness_interfaces.R'
+    'route53recoveryreadiness_operations.R'
     'route53resolver_service.R'
     'route53resolver_interfaces.R'
     'route53resolver_operations.R'

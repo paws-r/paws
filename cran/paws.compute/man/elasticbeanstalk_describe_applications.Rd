@@ -4,69 +4,15 @@
 \alias{elasticbeanstalk_describe_applications}
 \title{Returns the descriptions of existing applications}
 \usage{
-elasticbeanstalk_describe_applications(ApplicationNames)
+elasticbeanstalk_describe_applications(ApplicationNames = NULL)
 }
 \arguments{
 \item{ApplicationNames}{If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to only include those with the specified names.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Applications = list(
-    list(
-      ApplicationArn = "string",
-      ApplicationName = "string",
-      Description = "string",
-      DateCreated = as.POSIXct(
-        "2015-01-01"
-      ),
-      DateUpdated = as.POSIXct(
-        "2015-01-01"
-      ),
-      Versions = list(
-        "string"
-      ),
-      ConfigurationTemplates = list(
-        "string"
-      ),
-      ResourceLifecycleConfig = list(
-        ServiceRole = "string",
-        VersionLifecycleConfig = list(
-          MaxCountRule = list(
-            Enabled = TRUE|FALSE,
-            MaxCount = 123,
-            DeleteSourceFromS3 = TRUE|FALSE
-          ),
-          MaxAgeRule = list(
-            Enabled = TRUE|FALSE,
-            MaxAgeInDays = 123,
-            DeleteSourceFromS3 = TRUE|FALSE
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Returns the descriptions of existing applications.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_applications(
-  ApplicationNames = list(
-    "string"
-  )
-)
-}
-}
 
-\examples{
-\dontrun{
-# The following operation retrieves information about applications in the
-# current region:
-svc$describe_applications()
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_applications.html} for full documentation.
 }
 \keyword{internal}

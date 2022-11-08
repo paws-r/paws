@@ -48,12 +48,36 @@ test_that("list_copy_jobs", {
   expect_error(svc$list_copy_jobs(MaxResults = 20), NA)
 })
 
+test_that("list_frameworks", {
+  expect_error(svc$list_frameworks(), NA)
+})
+
+test_that("list_frameworks", {
+  expect_error(svc$list_frameworks(MaxResults = 20), NA)
+})
+
 test_that("list_protected_resources", {
   expect_error(svc$list_protected_resources(), NA)
 })
 
 test_that("list_protected_resources", {
   expect_error(svc$list_protected_resources(MaxResults = 20), NA)
+})
+
+test_that("list_report_jobs", {
+  expect_error(svc$list_report_jobs(), NA)
+})
+
+test_that("list_report_jobs", {
+  expect_error(svc$list_report_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_report_plans", {
+  expect_error(svc$list_report_plans(), NA)
+})
+
+test_that("list_report_plans", {
+  expect_error(svc$list_report_plans(MaxResults = 20), NA)
 })
 
 test_that("list_restore_jobs", {

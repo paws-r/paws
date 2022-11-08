@@ -2,37 +2,18 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_describe_account_settings}
 \alias{quicksight_describe_account_settings}
-\title{Describes the settings that were used when your QuickSight subscription
-was first created in this AWS account}
+\title{Describes the settings that were used when your Amazon QuickSight
+subscription was first created in this Amazon Web Services account}
 \usage{
 quicksight_describe_account_settings(AwsAccountId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the AWS account that contains the settings that you want to
-list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountSettings = list(
-    AccountName = "string",
-    Edition = "STANDARD"|"ENTERPRISE",
-    DefaultNamespace = "string",
-    NotificationEmail = "string"
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that contains the settings
+that you want to list.}
 }
 \description{
-Describes the settings that were used when your QuickSight subscription
-was first created in this AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_account_settings(
-  AwsAccountId = "string"
-)
-}
-}
+Describes the settings that were used when your Amazon QuickSight subscription was first created in this Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/quicksight/describe_account_settings.html} for full documentation.
+}
 \keyword{internal}

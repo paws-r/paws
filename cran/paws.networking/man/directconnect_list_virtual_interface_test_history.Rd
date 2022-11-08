@@ -4,8 +4,14 @@
 \alias{directconnect_list_virtual_interface_test_history}
 \title{Lists the virtual interface failover test history}
 \usage{
-directconnect_list_virtual_interface_test_history(testId,
-  virtualInterfaceId, bgpPeers, status, maxResults, nextToken)
+directconnect_list_virtual_interface_test_history(
+  testId = NULL,
+  virtualInterfaceId = NULL,
+  bgpPeers = NULL,
+  status = NULL,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{testId}{The ID of the virtual interface failover test.}
@@ -26,45 +32,9 @@ returned.}
 
 \item{nextToken}{The token for the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualInterfaceTestHistory = list(
-    list(
-      testId = "string",
-      virtualInterfaceId = "string",
-      bgpPeers = list(
-        "string"
-      ),
-      status = "string",
-      ownerAccount = "string",
-      testDurationInMinutes = 123,
-      startTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      endTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists the virtual interface failover test history.
-}
-\section{Request syntax}{
-\preformatted{svc$list_virtual_interface_test_history(
-  testId = "string",
-  virtualInterfaceId = "string",
-  bgpPeers = list(
-    "string"
-  ),
-  status = "string",
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directconnect/list_virtual_interface_test_history.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,11 @@
 \alias{personalize_list_datasets}
 \title{Returns the list of datasets contained in the given dataset group}
 \usage{
-personalize_list_datasets(datasetGroupArn, nextToken, maxResults)
+personalize_list_datasets(
+  datasetGroupArn = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{datasetGroupArn}{The Amazon Resource Name (ARN) of the dataset group that contains the
@@ -16,39 +20,9 @@ getting the next set of dataset import jobs (if they exist).}
 
 \item{maxResults}{The maximum number of datasets to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  datasets = list(
-    list(
-      name = "string",
-      datasetArn = "string",
-      datasetType = "string",
-      status = "string",
-      creationDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns the list of datasets contained in the given dataset group. The
-response provides the properties for each dataset, including the Amazon
-Resource Name (ARN). For more information on datasets, see
-\code{\link[=personalize_create_dataset]{create_dataset}}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_datasets(
-  datasetGroupArn = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Returns the list of datasets contained in the given dataset group. The response provides the properties for each dataset, including the Amazon Resource Name (ARN). For more information on datasets, see \code{\link[=personalize_create_dataset]{create_dataset}}.
 
+See \url{https://paws-r.github.io/docs/personalize/list_datasets.html} for full documentation.
+}
 \keyword{internal}

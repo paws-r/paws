@@ -4,7 +4,7 @@
 \alias{codepipeline_start_pipeline_execution}
 \title{Starts the specified pipeline}
 \usage{
-codepipeline_start_pipeline_execution(name, clientRequestToken)
+codepipeline_start_pipeline_execution(name, clientRequestToken = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the pipeline to start.}
@@ -12,22 +12,9 @@ codepipeline_start_pipeline_execution(name, clientRequestToken)
 \item{clientRequestToken}{The system-generated unique ID used to identify a unique execution
 request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pipelineExecutionId = "string"
-)
-}
-}
 \description{
-Starts the specified pipeline. Specifically, it begins processing the
-latest commit to the source location specified as part of the pipeline.
-}
-\section{Request syntax}{
-\preformatted{svc$start_pipeline_execution(
-  name = "string",
-  clientRequestToken = "string"
-)
-}
-}
+Starts the specified pipeline. Specifically, it begins processing the latest commit to the source location specified as part of the pipeline.
 
+See \url{https://paws-r.github.io/docs/codepipeline/start_pipeline_execution.html} for full documentation.
+}
 \keyword{internal}

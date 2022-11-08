@@ -9,22 +9,9 @@ cloudwatchlogs_list_tags_log_group(logGroupName)
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Lists the tags for the specified log group.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_log_group(
-  logGroupName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/list_tags_log_group.html} for full documentation.
+}
 \keyword{internal}

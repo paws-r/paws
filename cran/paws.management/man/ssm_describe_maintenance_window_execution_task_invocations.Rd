@@ -6,7 +6,12 @@
 particular task run as part of a maintenance window execution}
 \usage{
 ssm_describe_maintenance_window_execution_task_invocations(
-  WindowExecutionId, TaskId, Filters, MaxResults, NextToken)
+  WindowExecutionId,
+  TaskId,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{WindowExecutionId}{[required] The ID of the maintenance window execution the task is part of.}
@@ -15,8 +20,9 @@ ssm_describe_maintenance_window_execution_task_invocations(
 be retrieved.}
 
 \item{Filters}{Optional filters used to scope down the returned task invocations. The
-supported filter key is STATUS with the corresponding values PENDING,
-IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.}
+supported filter key is \code{STATUS} with the corresponding values
+\code{PENDING}, \code{IN_PROGRESS}, \code{SUCCESS}, \code{FAILED}, \code{TIMED_OUT},
+\code{CANCELLING}, and \code{CANCELLED}.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -25,52 +31,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowExecutionTaskInvocationIdentities = list(
-    list(
-      WindowExecutionId = "string",
-      TaskExecutionId = "string",
-      InvocationId = "string",
-      ExecutionId = "string",
-      TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
-      Parameters = "string",
-      Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
-      StatusDetails = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      OwnerInformation = "string",
-      WindowTargetId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves the individual task executions (one per target) for a
-particular task run as part of a maintenance window execution.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_maintenance_window_execution_task_invocations(
-  WindowExecutionId = "string",
-  TaskId = "string",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Retrieves the individual task executions (one per target) for a particular task run as part of a maintenance window execution.
 
+See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_window_execution_task_invocations.html} for full documentation.
+}
 \keyword{internal}

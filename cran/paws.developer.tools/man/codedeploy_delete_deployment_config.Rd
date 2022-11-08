@@ -10,20 +10,9 @@ codedeploy_delete_deployment_config(deploymentConfigName)
 \item{deploymentConfigName}{[required] The name of a deployment configuration associated with the IAM user or
 AWS account.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a deployment configuration.
 
-A deployment configuration cannot be deleted if it is currently in use.
-Predefined configurations cannot be deleted.
+See \url{https://paws-r.github.io/docs/codedeploy/delete_deployment_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_deployment_config(
-  deploymentConfigName = "string"
-)
-}
-}
-
 \keyword{internal}

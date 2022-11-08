@@ -9,17 +9,9 @@ sagemaker_delete_project(ProjectName)
 \arguments{
 \item{ProjectName}{[required] The name of the project to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Delete the specified project.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_project(
-  ProjectName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_project.html} for full documentation.
+}
 \keyword{internal}

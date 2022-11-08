@@ -2,173 +2,27 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_get_violation_details}
 \alias{fms_get_violation_details}
-\title{Retrieves violations for a resource based on the specified AWS Firewall
-Manager policy and AWS account}
+\title{Retrieves violations for a resource based on the specified Firewall
+Manager policy and Amazon Web Services account}
 \usage{
-fms_get_violation_details(PolicyId, MemberAccount, ResourceId,
-  ResourceType)
+fms_get_violation_details(PolicyId, MemberAccount, ResourceId, ResourceType)
 }
 \arguments{
-\item{PolicyId}{[required] The ID of the AWS Firewall Manager policy that you want the details for.
+\item{PolicyId}{[required] The ID of the Firewall Manager policy that you want the details for.
 This currently only supports security group content audit policies.}
 
-\item{MemberAccount}{[required] The AWS account ID that you want the details for.}
+\item{MemberAccount}{[required] The Amazon Web Services account ID that you want the details for.}
 
 \item{ResourceId}{[required] The ID of the resource that has violations.}
 
-\item{ResourceType}{[required] The resource type. This is in the format shown in the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html}{AWS Resource Types Reference}.
+\item{ResourceType}{[required] The resource type. This is in the format shown in the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html}{Amazon Web Services Resource Types Reference}.
 Supported resource types are: \verb{AWS::EC2::Instance},
 \verb{AWS::EC2::NetworkInterface}, \verb{AWS::EC2::SecurityGroup},
 \verb{AWS::NetworkFirewall::FirewallPolicy}, and \verb{AWS::EC2::Subnet}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ViolationDetail = list(
-    PolicyId = "string",
-    MemberAccount = "string",
-    ResourceId = "string",
-    ResourceType = "string",
-    ResourceViolations = list(
-      list(
-        AwsVPCSecurityGroupViolation = list(
-          ViolationTarget = "string",
-          ViolationTargetDescription = "string",
-          PartialMatches = list(
-            list(
-              Reference = "string",
-              TargetViolationReasons = list(
-                "string"
-              )
-            )
-          ),
-          PossibleSecurityGroupRemediationActions = list(
-            list(
-              RemediationActionType = "REMOVE"|"MODIFY",
-              Description = "string",
-              RemediationResult = list(
-                IPV4Range = "string",
-                IPV6Range = "string",
-                PrefixListId = "string",
-                Protocol = "string",
-                FromPort = 123,
-                ToPort = 123
-              ),
-              IsDefaultAction = TRUE|FALSE
-            )
-          )
-        ),
-        AwsEc2NetworkInterfaceViolation = list(
-          ViolationTarget = "string",
-          ViolatingSecurityGroups = list(
-            "string"
-          )
-        ),
-        AwsEc2InstanceViolation = list(
-          ViolationTarget = "string",
-          AwsEc2NetworkInterfaceViolations = list(
-            list(
-              ViolationTarget = "string",
-              ViolatingSecurityGroups = list(
-                "string"
-              )
-            )
-          )
-        ),
-        NetworkFirewallMissingFirewallViolation = list(
-          ViolationTarget = "string",
-          VPC = "string",
-          AvailabilityZone = "string",
-          TargetViolationReason = "string"
-        ),
-        NetworkFirewallMissingSubnetViolation = list(
-          ViolationTarget = "string",
-          VPC = "string",
-          AvailabilityZone = "string",
-          TargetViolationReason = "string"
-        ),
-        NetworkFirewallMissingExpectedRTViolation = list(
-          ViolationTarget = "string",
-          VPC = "string",
-          AvailabilityZone = "string",
-          CurrentRouteTable = "string",
-          ExpectedRouteTable = "string"
-        ),
-        NetworkFirewallPolicyModifiedViolation = list(
-          ViolationTarget = "string",
-          CurrentPolicyDescription = list(
-            StatelessRuleGroups = list(
-              list(
-                RuleGroupName = "string",
-                ResourceId = "string",
-                Priority = 123
-              )
-            ),
-            StatelessDefaultActions = list(
-              "string"
-            ),
-            StatelessFragmentDefaultActions = list(
-              "string"
-            ),
-            StatelessCustomActions = list(
-              "string"
-            ),
-            StatefulRuleGroups = list(
-              list(
-                RuleGroupName = "string",
-                ResourceId = "string"
-              )
-            )
-          ),
-          ExpectedPolicyDescription = list(
-            StatelessRuleGroups = list(
-              list(
-                RuleGroupName = "string",
-                ResourceId = "string",
-                Priority = 123
-              )
-            ),
-            StatelessDefaultActions = list(
-              "string"
-            ),
-            StatelessFragmentDefaultActions = list(
-              "string"
-            ),
-            StatelessCustomActions = list(
-              "string"
-            ),
-            StatefulRuleGroups = list(
-              list(
-                RuleGroupName = "string",
-                ResourceId = "string"
-              )
-            )
-          )
-        )
-      )
-    ),
-    ResourceTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    ResourceDescription = "string"
-  )
-)
-}
-}
 \description{
-Retrieves violations for a resource based on the specified AWS Firewall
-Manager policy and AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$get_violation_details(
-  PolicyId = "string",
-  MemberAccount = "string",
-  ResourceId = "string",
-  ResourceType = "string"
-)
-}
-}
+Retrieves violations for a resource based on the specified Firewall Manager policy and Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/fms/get_violation_details.html} for full documentation.
+}
 \keyword{internal}

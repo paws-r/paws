@@ -4,8 +4,10 @@
 \alias{ec2_delete_egress_only_internet_gateway}
 \title{Deletes an egress-only internet gateway}
 \usage{
-ec2_delete_egress_only_internet_gateway(DryRun,
-  EgressOnlyInternetGatewayId)
+ec2_delete_egress_only_internet_gateway(
+  DryRun = NULL,
+  EgressOnlyInternetGatewayId
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -15,21 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{EgressOnlyInternetGatewayId}{[required] The ID of the egress-only internet gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReturnCode = TRUE|FALSE
-)
-}
-}
 \description{
 Deletes an egress-only internet gateway.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_egress_only_internet_gateway(
-  DryRun = TRUE|FALSE,
-  EgressOnlyInternetGatewayId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/delete_egress_only_internet_gateway.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,11 @@
 \title{Modifies the parameters of a cache parameter group to the engine or
 system default value}
 \usage{
-elasticache_reset_cache_parameter_group(CacheParameterGroupName,
-  ResetAllParameters, ParameterNameValues)
+elasticache_reset_cache_parameter_group(
+  CacheParameterGroupName,
+  ResetAllParameters = NULL,
+  ParameterNameValues = NULL
+)
 }
 \arguments{
 \item{CacheParameterGroupName}{[required] The name of the cache parameter group to reset.}
@@ -22,31 +25,9 @@ Valid values: \code{true} | \code{false}}
 \code{ResetAllParameters} is \code{false}, you must specify the name of at least
 one parameter to reset.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CacheParameterGroupName = "string"
-)
-}
-}
 \description{
-Modifies the parameters of a cache parameter group to the engine or
-system default value. You can reset specific parameters by submitting a
-list of parameter names. To reset the entire cache parameter group,
-specify the \code{ResetAllParameters} and \code{CacheParameterGroupName}
-parameters.
-}
-\section{Request syntax}{
-\preformatted{svc$reset_cache_parameter_group(
-  CacheParameterGroupName = "string",
-  ResetAllParameters = TRUE|FALSE,
-  ParameterNameValues = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string"
-    )
-  )
-)
-}
-}
+Modifies the parameters of a cache parameter group to the engine or system default value. You can reset specific parameters by submitting a list of parameter names. To reset the entire cache parameter group, specify the \code{ResetAllParameters} and \code{CacheParameterGroupName} parameters.
 
+See \url{https://paws-r.github.io/docs/elasticache/reset_cache_parameter_group.html} for full documentation.
+}
 \keyword{internal}

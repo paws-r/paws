@@ -4,7 +4,7 @@
 \alias{comprehend_list_endpoints}
 \title{Gets a list of all existing endpoints that you've created}
 \usage{
-comprehend_list_endpoints(Filter, NextToken, MaxResults)
+comprehend_list_endpoints(Filter = NULL, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{Filter}{Filters the endpoints that are returned. You can filter endpoints on
@@ -16,47 +16,9 @@ You can only set one filter at a time.}
 \item{MaxResults}{The maximum number of results to return in each page. The default is
 100.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EndpointPropertiesList = list(
-    list(
-      EndpointArn = "string",
-      Status = "CREATING"|"DELETING"|"FAILED"|"IN_SERVICE"|"UPDATING",
-      Message = "string",
-      ModelArn = "string",
-      DesiredInferenceUnits = 123,
-      CurrentInferenceUnits = 123,
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Gets a list of all existing endpoints that you've created.
-}
-\section{Request syntax}{
-\preformatted{svc$list_endpoints(
-  Filter = list(
-    ModelArn = "string",
-    Status = "CREATING"|"DELETING"|"FAILED"|"IN_SERVICE"|"UPDATING",
-    CreationTimeBefore = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreationTimeAfter = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Gets a list of all existing endpoints that you've created. For information about endpoints, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html}{Managing endpoints}.
 
+See \url{https://paws-r.github.io/docs/comprehend/list_endpoints.html} for full documentation.
+}
 \keyword{internal}

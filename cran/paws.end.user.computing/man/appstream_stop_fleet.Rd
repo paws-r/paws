@@ -9,17 +9,9 @@ appstream_stop_fleet(Name)
 \arguments{
 \item{Name}{[required] The name of the fleet.}
 }
-\value{
-An empty list.
-}
 \description{
 Stops the specified fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_fleet(
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/appstream/stop_fleet.html} for full documentation.
+}
 \keyword{internal}

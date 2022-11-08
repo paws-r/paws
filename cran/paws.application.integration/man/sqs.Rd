@@ -7,7 +7,19 @@
 sqs(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,36 +28,36 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Welcome to the \emph{Amazon Simple Queue Service API Reference}.
+Welcome to the \emph{Amazon SQS API Reference}.
 
-Amazon Simple Queue Service (Amazon SQS) is a reliable, highly-scalable
-hosted queue for storing messages as they travel between applications or
-microservices. Amazon SQS moves data between distributed application
-components and helps you decouple these components.
+Amazon SQS is a reliable, highly-scalable hosted queue for storing
+messages as they travel between applications or microservices. Amazon
+SQS moves data between distributed application components and helps you
+decouple these components.
 
 For information on the permissions you need to use this API, see
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.html}{Identity and access management}
-in the \emph{Amazon Simple Queue Service Developer Guide.}
+in the \emph{Amazon SQS Developer Guide.}
 
-You can use \href{https://aws.amazon.com/tools/#sdk}{AWS SDKs} to access
-Amazon SQS using your favorite programming language. The SDKs perform
-tasks such as the following automatically:
+You can use \href{https://aws.amazon.com/developer/tools/#sdk}{Amazon Web Services SDKs} to access Amazon SQS
+using your favorite programming language. The SDKs perform tasks such as
+the following automatically:
 \itemize{
 \item Cryptographically sign your service requests
 \item Retry requests
 \item Handle error responses
 }
 
-\strong{Additional Information}
+\strong{Additional information}
 \itemize{
 \item \href{https://aws.amazon.com/sqs/}{Amazon SQS Product Page}
-\item \emph{Amazon Simple Queue Service Developer Guide}
+\item \emph{Amazon SQS Developer Guide}
 \itemize{
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html}{Making API Requests}
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes}{Amazon SQS Message Attributes}
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Amazon SQS Dead-Letter Queues}
 }
-\item \href{https://docs.aws.amazon.com/cli/latest/reference/sqs/index.html}{Amazon SQS in the \emph{AWS CLI Command Reference}}
+\item \href{https://docs.aws.amazon.com/cli/latest/reference/sqs/index.html}{Amazon SQS in the \emph{Command Line Interface}}
 \item \emph{Amazon Web Services General Reference}
 \itemize{
 \item \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region}{Regions and Endpoints}
@@ -53,7 +65,9 @@ tasks such as the following automatically:
 }
 }
 \section{Service syntax}{
-\preformatted{svc <- sqs(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- sqs(
   config = list(
     credentials = list(
       creds = list(
@@ -61,13 +75,17 @@ tasks such as the following automatically:
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{

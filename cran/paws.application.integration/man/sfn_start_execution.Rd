@@ -4,7 +4,12 @@
 \alias{sfn_start_execution}
 \title{Starts a state machine execution}
 \usage{
-sfn_start_execution(stateMachineArn, name, input, traceHeader)
+sfn_start_execution(
+  stateMachineArn,
+  name = NULL,
+  input = NULL,
+  traceHeader = NULL
+)
 }
 \arguments{
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to execute.}
@@ -42,33 +47,9 @@ in UTF-8 encoding.}
 \item{traceHeader}{Passes the AWS X-Ray trace header. The trace header can also be passed
 in the request payload.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  executionArn = "string",
-  startDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
 Starts a state machine execution.
 
-\code{\link[=sfn_start_execution]{start_execution}} is idempotent. If
-\code{\link[=sfn_start_execution]{start_execution}} is called with the same name
-and input as a running execution, the call will succeed and return the
-same response as the original request. If the execution is closed or if
-the input is different, it will return a 400 \code{ExecutionAlreadyExists}
-error. Names can be reused after 90 days.
+See \url{https://paws-r.github.io/docs/sfn/start_execution.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_execution(
-  stateMachineArn = "string",
-  name = "string",
-  input = "string",
-  traceHeader = "string"
-)
-}
-}
-
 \keyword{internal}

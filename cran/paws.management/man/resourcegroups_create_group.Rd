@@ -4,8 +4,13 @@
 \alias{resourcegroups_create_group}
 \title{Creates a resource group with the specified name and description}
 \usage{
-resourcegroups_create_group(Name, Description, ResourceQuery, Tags,
-  Configuration)
+resourcegroups_create_group(
+  Name,
+  Description = NULL,
+  ResourceQuery = NULL,
+  Tags = NULL,
+  Configuration = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the group, which is the identifier of the group in other
@@ -34,92 +39,9 @@ details about the syntax of service configurations, see \href{https://docs.aws.a
 A resource group can contain either a \code{Configuration} or a
 \code{ResourceQuery}, but not both.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Group = list(
-    GroupArn = "string",
-    Name = "string",
-    Description = "string"
-  ),
-  ResourceQuery = list(
-    Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
-    Query = "string"
-  ),
-  Tags = list(
-    "string"
-  ),
-  GroupConfiguration = list(
-    Configuration = list(
-      list(
-        Type = "string",
-        Parameters = list(
-          list(
-            Name = "string",
-            Values = list(
-              "string"
-            )
-          )
-        )
-      )
-    ),
-    ProposedConfiguration = list(
-      list(
-        Type = "string",
-        Parameters = list(
-          list(
-            Name = "string",
-            Values = list(
-              "string"
-            )
-          )
-        )
-      )
-    ),
-    Status = "UPDATING"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
-    FailureReason = "string"
-  )
-)
-}
-}
 \description{
-Creates a resource group with the specified name and description. You
-can optionally include a resource query, or a service configuration. For
-more information about constructing a resource query, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}.
-For more information about service configurations, see \href{https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html}{Service configurations for resource groups}.
+Creates a resource group with the specified name and description. You can optionally include a resource query, or a service configuration. For more information about constructing a resource query, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}. For more information about service configurations, see \href{https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html}{Service configurations for resource groups}.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item \code{resource-groups:CreateGroup}
+See \url{https://paws-r.github.io/docs/resourcegroups/create_group.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$create_group(
-  Name = "string",
-  Description = "string",
-  ResourceQuery = list(
-    Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
-    Query = "string"
-  ),
-  Tags = list(
-    "string"
-  ),
-  Configuration = list(
-    list(
-      Type = "string",
-      Parameters = list(
-        list(
-          Name = "string",
-          Values = list(
-            "string"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,9 +4,17 @@
 \alias{cloudwatchlogs_filter_log_events}
 \title{Lists log events from the specified log group}
 \usage{
-cloudwatchlogs_filter_log_events(logGroupName, logStreamNames,
-  logStreamNamePrefix, startTime, endTime, filterPattern, nextToken,
-  limit, interleaved)
+cloudwatchlogs_filter_log_events(
+  logGroupName,
+  logStreamNames = NULL,
+  logStreamNamePrefix = NULL,
+  startTime = NULL,
+  endTime = NULL,
+  filterPattern = NULL,
+  nextToken = NULL,
+  limit = NULL,
+  interleaved = NULL
+)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group to search.}
@@ -27,10 +35,7 @@ an \code{InvalidParameterException} error.}
 
 \item{startTime}{The start of the time range, expressed as the number of milliseconds
 after Jan 1, 1970 00:00:00 UTC. Events with a timestamp before this time
-are not returned.
-
-If you omit \code{startTime} and \code{endTime} the most recent log events are
-retrieved, to up 1 MB or 10,000 log events.}
+are not returned.}
 
 \item{endTime}{The end of the time range, expressed as the number of milliseconds after
 Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time
@@ -55,58 +60,9 @@ those in the next log stream, and so on. The default is false.
 the value is assumed to be true. The response from this operation always
 interleaves events from multiple log streams within a log group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  events = list(
-    list(
-      logStreamName = "string",
-      timestamp = 123,
-      message = "string",
-      ingestionTime = 123,
-      eventId = "string"
-    )
-  ),
-  searchedLogStreams = list(
-    list(
-      logStreamName = "string",
-      searchedCompletely = TRUE|FALSE
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists log events from the specified log group. You can list all the log
-events or filter the results using a filter pattern, a time range, and
-the name of the log stream.
+Lists log events from the specified log group. You can list all the log events or filter the results using a filter pattern, a time range, and the name of the log stream.
 
-By default, this operation returns as many log events as can fit in 1 MB
-(up to 10,000 log events) or all the events found within the time range
-that you specify. If the results include a token, then there are more
-log events available, and you can get additional results by specifying
-the token in a subsequent call. This operation can return empty results
-while there are more log events available through the token.
-
-The returned log events are sorted by event timestamp, the timestamp
-when the event was ingested by CloudWatch Logs, and the ID of the
-\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} request.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/filter_log_events.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$filter_log_events(
-  logGroupName = "string",
-  logStreamNames = list(
-    "string"
-  ),
-  logStreamNamePrefix = "string",
-  startTime = 123,
-  endTime = 123,
-  filterPattern = "string",
-  nextToken = "string",
-  limit = 123,
-  interleaved = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

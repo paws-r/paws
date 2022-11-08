@@ -14,25 +14,9 @@ Value-only tags are not allowed.}
 
 \item{instanceNames}{[required] The names of the on-premises instances to which to add tags.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds tags to on-premises instances.
-}
-\section{Request syntax}{
-\preformatted{svc$add_tags_to_on_premises_instances(
-  tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  instanceNames = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/add_tags_to_on_premises_instances.html} for full documentation.
+}
 \keyword{internal}

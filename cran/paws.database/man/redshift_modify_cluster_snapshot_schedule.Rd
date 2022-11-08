@@ -4,8 +4,11 @@
 \alias{redshift_modify_cluster_snapshot_schedule}
 \title{Modifies a snapshot schedule for a cluster}
 \usage{
-redshift_modify_cluster_snapshot_schedule(ClusterIdentifier,
-  ScheduleIdentifier, DisassociateSchedule)
+redshift_modify_cluster_snapshot_schedule(
+  ClusterIdentifier,
+  ScheduleIdentifier = NULL,
+  DisassociateSchedule = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] A unique identifier for the cluster whose snapshot schedule you want to
@@ -17,19 +20,9 @@ associate with the cluster.}
 \item{DisassociateSchedule}{A boolean to indicate whether to remove the assoiciation between the
 cluster and the schedule.}
 }
-\value{
-An empty list.
-}
 \description{
 Modifies a snapshot schedule for a cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_cluster_snapshot_schedule(
-  ClusterIdentifier = "string",
-  ScheduleIdentifier = "string",
-  DisassociateSchedule = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/modify_cluster_snapshot_schedule.html} for full documentation.
+}
 \keyword{internal}

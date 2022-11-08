@@ -4,8 +4,11 @@
 \alias{apigatewayv2_get_integration_response}
 \title{Gets an IntegrationResponses}
 \usage{
-apigatewayv2_get_integration_response(ApiId, IntegrationId,
-  IntegrationResponseId)
+apigatewayv2_get_integration_response(
+  ApiId,
+  IntegrationId,
+  IntegrationResponseId
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -14,31 +17,9 @@ apigatewayv2_get_integration_response(ApiId, IntegrationId,
 
 \item{IntegrationResponseId}{[required] The integration response ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ContentHandlingStrategy = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-  IntegrationResponseId = "string",
-  IntegrationResponseKey = "string",
-  ResponseParameters = list(
-    "string"
-  ),
-  ResponseTemplates = list(
-    "string"
-  ),
-  TemplateSelectionExpression = "string"
-)
-}
-}
 \description{
 Gets an IntegrationResponses.
-}
-\section{Request syntax}{
-\preformatted{svc$get_integration_response(
-  ApiId = "string",
-  IntegrationId = "string",
-  IntegrationResponseId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_integration_response.html} for full documentation.
+}
 \keyword{internal}

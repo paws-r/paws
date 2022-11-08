@@ -2,23 +2,14 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_disassociate_admin_account}
 \alias{fms_disassociate_admin_account}
-\title{Disassociates the account that has been set as the AWS Firewall Manager
+\title{Disassociates the account that has been set as the Firewall Manager
 administrator account}
 \usage{
 fms_disassociate_admin_account()
 }
-\value{
-An empty list.
-}
 \description{
-Disassociates the account that has been set as the AWS Firewall Manager
-administrator account. To set a different account as the administrator
-account, you must submit an
-\code{\link[=fms_associate_admin_account]{associate_admin_account}} request.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_admin_account()
-}
-}
+Disassociates the account that has been set as the Firewall Manager administrator account. To set a different account as the administrator account, you must submit an \code{\link[=fms_associate_admin_account]{associate_admin_account}} request.
 
+See \url{https://paws-r.github.io/docs/fms/disassociate_admin_account.html} for full documentation.
+}
 \keyword{internal}

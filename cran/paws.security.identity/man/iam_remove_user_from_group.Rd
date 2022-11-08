@@ -19,29 +19,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-An empty list.
-}
 \description{
 Removes the specified user from the specified group.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_user_from_group(
-  GroupName = "string",
-  UserName = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# The following command removes the user named Bob from the IAM group
-# named Admins.
-svc$remove_user_from_group(
-  GroupName = "Admins",
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/remove_user_from_group.html} for full documentation.
 }
 \keyword{internal}

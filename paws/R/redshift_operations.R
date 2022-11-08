@@ -79,6 +79,140 @@ redshift_accept_reserved_node_exchange <- function(ReservedNodeId, TargetReserve
 }
 .redshift$operations$accept_reserved_node_exchange <- redshift_accept_reserved_node_exchange
 
+#' Adds a partner integration to a cluster
+#'
+#' @description
+#' Adds a partner integration to a cluster. This operation authorizes a
+#' partner to push status updates for the specified database. To complete
+#' the integration, you also set up the integration on the partner website.
+#'
+#' @usage
+#' redshift_add_partner(AccountId, ClusterIdentifier, DatabaseName,
+#'   PartnerName)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the cluster.
+#' @param ClusterIdentifier &#91;required&#93; The cluster identifier of the cluster that receives data from the
+#' partner.
+#' @param DatabaseName &#91;required&#93; The name of the database that receives data from the partner.
+#' @param PartnerName &#91;required&#93; The name of the partner that is authorized to send data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatabaseName = "string",
+#'   PartnerName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_partner(
+#'   AccountId = "string",
+#'   ClusterIdentifier = "string",
+#'   DatabaseName = "string",
+#'   PartnerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_add_partner
+redshift_add_partner <- function(AccountId, ClusterIdentifier, DatabaseName, PartnerName) {
+  op <- new_operation(
+    name = "AddPartner",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$add_partner_input(AccountId = AccountId, ClusterIdentifier = ClusterIdentifier, DatabaseName = DatabaseName, PartnerName = PartnerName)
+  output <- .redshift$add_partner_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$add_partner <- redshift_add_partner
+
+#' From a datashare consumer account, associates a datashare with the
+#' account (AssociateEntireAccount) or the specified namespace
+#' (ConsumerArn)
+#'
+#' @description
+#' From a datashare consumer account, associates a datashare with the
+#' account (AssociateEntireAccount) or the specified namespace
+#' (ConsumerArn). If you make this association, the consumer can consume
+#' the datashare.
+#'
+#' @usage
+#' redshift_associate_data_share_consumer(DataShareArn,
+#'   AssociateEntireAccount, ConsumerArn, ConsumerRegion)
+#'
+#' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare that the consumer is to
+#' use with the account or the namespace.
+#' @param AssociateEntireAccount A value that specifies whether the datashare is associated with the
+#' entire account.
+#' @param ConsumerArn The Amazon Resource Name (ARN) of the consumer that is associated with
+#' the datashare.
+#' @param ConsumerRegion From a datashare consumer account, associates a datashare with all
+#' existing and future namespaces in the specified Amazon Web Services
+#' Region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataShareArn = "string",
+#'   ProducerArn = "string",
+#'   AllowPubliclyAccessibleConsumers = TRUE|FALSE,
+#'   DataShareAssociations = list(
+#'     list(
+#'       ConsumerIdentifier = "string",
+#'       Status = "ACTIVE"|"PENDING_AUTHORIZATION"|"AUTHORIZED"|"DEAUTHORIZED"|"REJECTED"|"AVAILABLE",
+#'       ConsumerRegion = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusChangeDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   ManagedBy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_data_share_consumer(
+#'   DataShareArn = "string",
+#'   AssociateEntireAccount = TRUE|FALSE,
+#'   ConsumerArn = "string",
+#'   ConsumerRegion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_associate_data_share_consumer
+redshift_associate_data_share_consumer <- function(DataShareArn, AssociateEntireAccount = NULL, ConsumerArn = NULL, ConsumerRegion = NULL) {
+  op <- new_operation(
+    name = "AssociateDataShareConsumer",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$associate_data_share_consumer_input(DataShareArn = DataShareArn, AssociateEntireAccount = AssociateEntireAccount, ConsumerArn = ConsumerArn, ConsumerRegion = ConsumerRegion)
+  output <- .redshift$associate_data_share_consumer_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$associate_data_share_consumer <- redshift_associate_data_share_consumer
+
 #' Adds an inbound (ingress) rule to an Amazon Redshift security group
 #'
 #' @description
@@ -91,8 +225,8 @@ redshift_accept_reserved_node_exchange <- function(ReservedNodeId, TargetReserve
 #' 
 #' If you authorize access to an Amazon EC2 security group, specify
 #' *EC2SecurityGroupName* and *EC2SecurityGroupOwnerId*. The Amazon EC2
-#' security group and Amazon Redshift cluster must be in the same AWS
-#' Region.
+#' security group and Amazon Redshift cluster must be in the same Amazon
+#' Web Services Region.
 #' 
 #' If you authorize access to a CIDR/IP address range, specify *CIDRIP*.
 #' For an overview of CIDR blocks, see the Wikipedia article on [Classless
@@ -114,9 +248,9 @@ redshift_accept_reserved_node_exchange <- function(ReservedNodeId, TargetReserve
 #' @param ClusterSecurityGroupName &#91;required&#93; The name of the security group to which the ingress rule is added.
 #' @param CIDRIP The IP range to be added the Amazon Redshift security group.
 #' @param EC2SecurityGroupName The EC2 security group to be added the Amazon Redshift security group.
-#' @param EC2SecurityGroupOwnerId The AWS account number of the owner of the security group specified by
-#' the *EC2SecurityGroupName* parameter. The AWS Access Key ID is not an
-#' acceptable value.
+#' @param EC2SecurityGroupOwnerId The Amazon Web Services account number of the owner of the security
+#' group specified by the *EC2SecurityGroupName* parameter. The Amazon Web
+#' Services Access Key ID is not an acceptable value.
 #' 
 #' Example: `111122223333`
 #'
@@ -192,12 +326,145 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
 }
 .redshift$operations$authorize_cluster_security_group_ingress <- redshift_authorize_cluster_security_group_ingress
 
-#' Authorizes the specified AWS customer account to restore the specified
-#' snapshot
+#' From a data producer account, authorizes the sharing of a datashare with
+#' one or more consumer accounts or managing entities
 #'
 #' @description
-#' Authorizes the specified AWS customer account to restore the specified
-#' snapshot.
+#' From a data producer account, authorizes the sharing of a datashare with
+#' one or more consumer accounts or managing entities. To authorize a
+#' datashare for a data consumer, the producer account must have the
+#' correct access permissions.
+#'
+#' @usage
+#' redshift_authorize_data_share(DataShareArn, ConsumerIdentifier)
+#'
+#' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare that producers are to
+#' authorize sharing for.
+#' @param ConsumerIdentifier &#91;required&#93; The identifier of the data consumer that is authorized to access the
+#' datashare. This identifier is an Amazon Web Services account ID or a
+#' keyword, such as ADX.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataShareArn = "string",
+#'   ProducerArn = "string",
+#'   AllowPubliclyAccessibleConsumers = TRUE|FALSE,
+#'   DataShareAssociations = list(
+#'     list(
+#'       ConsumerIdentifier = "string",
+#'       Status = "ACTIVE"|"PENDING_AUTHORIZATION"|"AUTHORIZED"|"DEAUTHORIZED"|"REJECTED"|"AVAILABLE",
+#'       ConsumerRegion = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusChangeDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   ManagedBy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$authorize_data_share(
+#'   DataShareArn = "string",
+#'   ConsumerIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_authorize_data_share
+redshift_authorize_data_share <- function(DataShareArn, ConsumerIdentifier) {
+  op <- new_operation(
+    name = "AuthorizeDataShare",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$authorize_data_share_input(DataShareArn = DataShareArn, ConsumerIdentifier = ConsumerIdentifier)
+  output <- .redshift$authorize_data_share_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$authorize_data_share <- redshift_authorize_data_share
+
+#' Grants access to a cluster
+#'
+#' @description
+#' Grants access to a cluster.
+#'
+#' @usage
+#' redshift_authorize_endpoint_access(ClusterIdentifier, Account, VpcIds)
+#'
+#' @param ClusterIdentifier The cluster identifier of the cluster to grant access to.
+#' @param Account &#91;required&#93; The Amazon Web Services account ID to grant access to.
+#' @param VpcIds The virtual private cloud (VPC) identifiers to grant access to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Grantor = "string",
+#'   Grantee = "string",
+#'   ClusterIdentifier = "string",
+#'   AuthorizeTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ClusterStatus = "string",
+#'   Status = "Authorized"|"Revoking",
+#'   AllowedAllVPCs = TRUE|FALSE,
+#'   AllowedVPCs = list(
+#'     "string"
+#'   ),
+#'   EndpointCount = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$authorize_endpoint_access(
+#'   ClusterIdentifier = "string",
+#'   Account = "string",
+#'   VpcIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_authorize_endpoint_access
+redshift_authorize_endpoint_access <- function(ClusterIdentifier = NULL, Account, VpcIds = NULL) {
+  op <- new_operation(
+    name = "AuthorizeEndpointAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$authorize_endpoint_access_input(ClusterIdentifier = ClusterIdentifier, Account = Account, VpcIds = VpcIds)
+  output <- .redshift$authorize_endpoint_access_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$authorize_endpoint_access <- redshift_authorize_endpoint_access
+
+#' Authorizes the specified Amazon Web Services account to restore the
+#' specified snapshot
+#'
+#' @description
+#' Authorizes the specified Amazon Web Services account to restore the
+#' specified snapshot.
 #' 
 #' For more information about working with snapshots, go to [Amazon
 #' Redshift
@@ -205,18 +472,20 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
-#' redshift_authorize_snapshot_access(SnapshotIdentifier,
+#' redshift_authorize_snapshot_access(SnapshotIdentifier, SnapshotArn,
 #'   SnapshotClusterIdentifier, AccountWithRestoreAccess)
 #'
-#' @param SnapshotIdentifier &#91;required&#93; The identifier of the snapshot the account is authorized to restore.
+#' @param SnapshotIdentifier The identifier of the snapshot the account is authorized to restore.
+#' @param SnapshotArn The Amazon Resource Name (ARN) of the snapshot to authorize access to.
 #' @param SnapshotClusterIdentifier The identifier of the cluster the snapshot was created from. This
 #' parameter is required if your IAM user has a policy containing a
 #' snapshot resource element that specifies anything other than * for the
 #' cluster name.
-#' @param AccountWithRestoreAccess &#91;required&#93; The identifier of the AWS customer account authorized to restore the
-#' specified snapshot.
+#' @param AccountWithRestoreAccess &#91;required&#93; The identifier of the Amazon Web Services account authorized to restore
+#' the specified snapshot.
 #' 
-#' To share a snapshot with AWS support, specify amazon-redshift-support.
+#' To share a snapshot with Amazon Web Services Support, specify
+#' amazon-redshift-support.
 #'
 #' @return
 #' A list with the following syntax:
@@ -283,6 +552,7 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
 #' ```
 #' svc$authorize_snapshot_access(
 #'   SnapshotIdentifier = "string",
+#'   SnapshotArn = "string",
 #'   SnapshotClusterIdentifier = "string",
 #'   AccountWithRestoreAccess = "string"
 #' )
@@ -291,14 +561,14 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
 #' @keywords internal
 #'
 #' @rdname redshift_authorize_snapshot_access
-redshift_authorize_snapshot_access <- function(SnapshotIdentifier, SnapshotClusterIdentifier = NULL, AccountWithRestoreAccess) {
+redshift_authorize_snapshot_access <- function(SnapshotIdentifier = NULL, SnapshotArn = NULL, SnapshotClusterIdentifier = NULL, AccountWithRestoreAccess) {
   op <- new_operation(
     name = "AuthorizeSnapshotAccess",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$authorize_snapshot_access_input(SnapshotIdentifier = SnapshotIdentifier, SnapshotClusterIdentifier = SnapshotClusterIdentifier, AccountWithRestoreAccess = AccountWithRestoreAccess)
+  input <- .redshift$authorize_snapshot_access_input(SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotClusterIdentifier = SnapshotClusterIdentifier, AccountWithRestoreAccess = AccountWithRestoreAccess)
   output <- .redshift$authorize_snapshot_access_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -557,7 +827,8 @@ redshift_cancel_resize <- function(ClusterIdentifier) {
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
-#' -   Must be unique for the AWS account that is making the request.
+#' -   Must be unique for the Amazon Web Services account that is making
+#'     the request.
 #' @param ManualSnapshotRetentionPeriod The number of days that a manual snapshot is retained. If the value is
 #' -1, the manual snapshot is retained indefinitely.
 #' 
@@ -656,6 +927,56 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 }
 .redshift$operations$copy_cluster_snapshot <- redshift_copy_cluster_snapshot
 
+#' Creates an authentication profile with the specified parameters
+#'
+#' @description
+#' Creates an authentication profile with the specified parameters.
+#'
+#' @usage
+#' redshift_create_authentication_profile(AuthenticationProfileName,
+#'   AuthenticationProfileContent)
+#'
+#' @param AuthenticationProfileName &#91;required&#93; The name of the authentication profile to be created.
+#' @param AuthenticationProfileContent &#91;required&#93; The content of the authentication profile in JSON format. The maximum
+#' length of the JSON string is determined by a quota for your account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthenticationProfileName = "string",
+#'   AuthenticationProfileContent = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_authentication_profile(
+#'   AuthenticationProfileName = "string",
+#'   AuthenticationProfileContent = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_create_authentication_profile
+redshift_create_authentication_profile <- function(AuthenticationProfileName, AuthenticationProfileContent) {
+  op <- new_operation(
+    name = "CreateAuthenticationProfile",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$create_authentication_profile_input(AuthenticationProfileName = AuthenticationProfileName, AuthenticationProfileContent = AuthenticationProfileContent)
+  output <- .redshift$create_authentication_profile_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$create_authentication_profile <- redshift_create_authentication_profile
+
 #' Creates a new cluster with the specified parameters
 #'
 #' @description
@@ -678,7 +999,8 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #'   Encrypted, HsmClientCertificateIdentifier, HsmConfigurationIdentifier,
 #'   ElasticIp, Tags, KmsKeyId, EnhancedVpcRouting, AdditionalInfo, IamRoles,
 #'   MaintenanceTrackName, SnapshotScheduleIdentifier,
-#'   AvailabilityZoneRelocation)
+#'   AvailabilityZoneRelocation, AquaConfigurationStatus, DefaultIamRoleArn,
+#'   LoadSampleData)
 #'
 #' @param DBName The name of the first database to be created when the cluster is
 #' created.
@@ -715,7 +1037,8 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
-#' -   Must be unique for all clusters within an AWS account.
+#' -   Must be unique for all clusters within an Amazon Web Services
+#'     account.
 #' 
 #' Example: `myexamplecluster`
 #' @param ClusterType The type of the cluster. When cluster type is specified as
@@ -735,7 +1058,7 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' Valid Values: `ds2.xlarge` | `ds2.8xlarge` | `dc1.large` | `dc1.8xlarge`
 #' | `dc2.large` | `dc2.8xlarge` | `ra3.xlplus` | `ra3.4xlarge` |
 #' `ra3.16xlarge`
-#' @param MasterUsername &#91;required&#93; The user name associated with the master user account for the cluster
+#' @param MasterUsername &#91;required&#93; The user name associated with the admin user account for the cluster
 #' that is being created.
 #' 
 #' Constraints:
@@ -749,8 +1072,8 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #'     [Reserved
 #'     Words](https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
 #'     in the Amazon Redshift Database Developer Guide.
-#' @param MasterUserPassword &#91;required&#93; The password associated with the master user account for the cluster
-#' that is being created.
+#' @param MasterUserPassword &#91;required&#93; The password associated with the admin user account for the cluster that
+#' is being created.
 #' 
 #' Constraints:
 #' 
@@ -762,8 +1085,8 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' 
 #' -   Must contain one number.
 #' 
-#' -   Can be any printable ASCII character (ASCII code 33 to 126) except '
-#'     (single quote), " (double quote), \\, /, @@, or space.
+#' -   Can be any printable ASCII character (ASCII code 33-126) except `\'`
+#'     (single quote), `\"` (double quote), `\`, `/`, or `@@`.
 #' @param ClusterSecurityGroups A list of security groups to be associated with this cluster.
 #' 
 #' Default: The default cluster security group for Amazon Redshift.
@@ -819,6 +1142,9 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' is 0, automated snapshots are disabled. Even if automated snapshots are
 #' disabled, you can still create manual snapshots when you want with
 #' [`create_cluster_snapshot`][redshift_create_cluster_snapshot].
+#' 
+#' You can't disable automated snapshots for RA3 node types. Set the
+#' automated retention period from 1-35 days.
 #' 
 #' Default: `1`
 #' 
@@ -878,7 +1204,9 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' @param HsmConfigurationIdentifier Specifies the name of the HSM configuration that contains the
 #' information the Amazon Redshift cluster can use to retrieve and store
 #' keys in an HSM.
-#' @param ElasticIp The Elastic IP (EIP) address for the cluster.
+#' @param ElasticIp The Elastic IP (EIP) address for the cluster. You don't have to specify
+#' the EIP for a publicly accessible cluster with
+#' AvailabilityZoneRelocation turned on.
 #' 
 #' Constraints: The cluster must be provisioned in EC2-VPC and
 #' publicly-accessible through an Internet gateway. For more information
@@ -887,8 +1215,8 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' Cluster](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms)
 #' in the Amazon Redshift Cluster Management Guide.
 #' @param Tags A list of tag instances.
-#' @param KmsKeyId The AWS Key Management Service (KMS) key ID of the encryption key that
-#' you want to use to encrypt data in the cluster.
+#' @param KmsKeyId The Key Management Service (KMS) key ID of the encryption key that you
+#' want to use to encrypt data in the cluster.
 #' @param EnhancedVpcRouting An option that specifies whether to create the cluster with enhanced VPC
 #' routing enabled. To create a cluster that uses enhanced VPC routing, the
 #' cluster must be in a VPC. For more information, see [Enhanced VPC
@@ -899,18 +1227,34 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' 
 #' Default: false
 #' @param AdditionalInfo Reserved.
-#' @param IamRoles A list of AWS Identity and Access Management (IAM) roles that can be
-#' used by the cluster to access other AWS services. You must supply the
-#' IAM roles in their Amazon Resource Name (ARN) format. You can supply up
-#' to 10 IAM roles in a single request.
+#' @param IamRoles A list of Identity and Access Management (IAM) roles that can be used by
+#' the cluster to access other Amazon Web Services services. You must
+#' supply the IAM roles in their Amazon Resource Name (ARN) format.
 #' 
-#' A cluster can have up to 10 IAM roles associated with it at any time.
+#' The maximum number of IAM roles that you can associate is subject to a
+#' quota. For more information, go to [Quotas and
+#' limits](https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html)
+#' in the *Amazon Redshift Cluster Management Guide*.
 #' @param MaintenanceTrackName An optional parameter for the name of the maintenance track for the
 #' cluster. If you don't provide a maintenance track name, the cluster is
 #' assigned to the `current` track.
 #' @param SnapshotScheduleIdentifier A unique identifier for the snapshot schedule.
 #' @param AvailabilityZoneRelocation The option to enable relocation for an Amazon Redshift cluster between
 #' Availability Zones after the cluster is created.
+#' @param AquaConfigurationStatus The value represents how the cluster is configured to use AQUA (Advanced
+#' Query Accelerator) when it is created. Possible values include the
+#' following.
+#' 
+#' -   enabled - Use AQUA if it is available for the current Amazon Web
+#'     Services Region and Amazon Redshift node type.
+#' 
+#' -   disabled - Don't use AQUA.
+#' 
+#' -   auto - Amazon Redshift determines whether to use AQUA.
+#' @param DefaultIamRoleArn The Amazon Resource Name (ARN) for the IAM role that was set as default
+#' for the cluster when the cluster was created.
+#' @param LoadSampleData A flag that specifies whether to load sample data once the cluster is
+#' created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -929,7 +1273,16 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -1069,7 +1422,26 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -1118,21 +1490,24 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #'   ),
 #'   MaintenanceTrackName = "string",
 #'   SnapshotScheduleIdentifier = "string",
-#'   AvailabilityZoneRelocation = TRUE|FALSE
+#'   AvailabilityZoneRelocation = TRUE|FALSE,
+#'   AquaConfigurationStatus = "enabled"|"disabled"|"auto",
+#'   DefaultIamRoleArn = "string",
+#'   LoadSampleData = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_create_cluster
-redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterType = NULL, NodeType, MasterUsername, MasterUserPassword, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, AvailabilityZoneRelocation = NULL) {
+redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterType = NULL, NodeType, MasterUsername, MasterUserPassword, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, LoadSampleData = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$create_cluster_input(DBName = DBName, ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ClusterSubnetGroupName = ClusterSubnetGroupName, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, AvailabilityZoneRelocation = AvailabilityZoneRelocation)
+  input <- .redshift$create_cluster_input(DBName = DBName, ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ClusterSubnetGroupName = ClusterSubnetGroupName, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, LoadSampleData = LoadSampleData)
   output <- .redshift$create_cluster_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -1173,7 +1548,7 @@ redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterTyp
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
-#' -   Must be unique withing your AWS account.
+#' -   Must be unique withing your Amazon Web Services account.
 #' 
 #' This value is stored as a lower-case string.
 #' @param ParameterGroupFamily &#91;required&#93; The Amazon Redshift engine version to which the cluster parameter group
@@ -1182,10 +1557,11 @@ redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterTyp
 #' To get a list of valid parameter group family names, you can call
 #' [`describe_cluster_parameter_groups`][redshift_describe_cluster_parameter_groups].
 #' By default, Amazon Redshift returns a list of all the parameter groups
-#' that are owned by your AWS account, including the default parameter
-#' groups for each Amazon Redshift engine version. The parameter group
-#' family names associated with the default parameter groups provide you
-#' the valid values. For example, a valid family name is "redshift-1.0".
+#' that are owned by your Amazon Web Services account, including the
+#' default parameter groups for each Amazon Redshift engine version. The
+#' parameter group family names associated with the default parameter
+#' groups provide you the valid values. For example, a valid family name is
+#' "redshift-1.0".
 #' @param Description &#91;required&#93; A description of the parameter group.
 #' @param Tags A list of tag instances.
 #'
@@ -1266,8 +1642,8 @@ redshift_create_cluster_parameter_group <- function(ParameterGroupName, Paramete
 #' 
 #' -   Must not be "Default".
 #' 
-#' -   Must be unique for all security groups that are created by your AWS
-#'     account.
+#' -   Must be unique for all security groups that are created by your
+#'     Amazon Web Services account.
 #' 
 #' Example: `examplesecuritygroup`
 #' @param Description &#91;required&#93; A description for the security group.
@@ -1365,7 +1741,8 @@ redshift_create_cluster_security_group <- function(ClusterSecurityGroupName, Des
 #'   ManualSnapshotRetentionPeriod, Tags)
 #'
 #' @param SnapshotIdentifier &#91;required&#93; A unique identifier for the snapshot that you are requesting. This
-#' identifier must be unique for all snapshots within the AWS account.
+#' identifier must be unique for all snapshots within the Amazon Web
+#' Services account.
 #' 
 #' Constraints:
 #' 
@@ -1508,8 +1885,8 @@ redshift_create_cluster_snapshot <- function(SnapshotIdentifier, ClusterIdentifi
 #' 
 #' -   Must not be "Default".
 #' 
-#' -   Must be unique for all subnet groups that are created by your AWS
-#'     account.
+#' -   Must be unique for all subnet groups that are created by your Amazon
+#'     Web Services account.
 #' 
 #' Example: `examplesubnetgroup`
 #' @param Description &#91;required&#93; A description for the subnet group.
@@ -1587,6 +1964,96 @@ redshift_create_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 }
 .redshift$operations$create_cluster_subnet_group <- redshift_create_cluster_subnet_group
 
+#' Creates a Redshift-managed VPC endpoint
+#'
+#' @description
+#' Creates a Redshift-managed VPC endpoint.
+#'
+#' @usage
+#' redshift_create_endpoint_access(ClusterIdentifier, ResourceOwner,
+#'   EndpointName, SubnetGroupName, VpcSecurityGroupIds)
+#'
+#' @param ClusterIdentifier The cluster identifier of the cluster to access.
+#' @param ResourceOwner The Amazon Web Services account ID of the owner of the cluster. This is
+#' only required if the cluster is in another Amazon Web Services account.
+#' @param EndpointName &#91;required&#93; The Redshift-managed VPC endpoint name.
+#' 
+#' An endpoint name must contain 1-30 characters. Valid characters are A-Z,
+#' a-z, 0-9, and hyphen(-). The first character must be a letter. The name
+#' can't contain two consecutive hyphens or end with a hyphen.
+#' @param SubnetGroupName &#91;required&#93; The subnet group from which Amazon Redshift chooses the subnet to deploy
+#' the endpoint.
+#' @param VpcSecurityGroupIds The security group that defines the ports, protocols, and sources for
+#' inbound traffic that you are authorizing into your endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterIdentifier = "string",
+#'   ResourceOwner = "string",
+#'   SubnetGroupName = "string",
+#'   EndpointStatus = "string",
+#'   EndpointName = "string",
+#'   EndpointCreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Port = 123,
+#'   Address = "string",
+#'   VpcSecurityGroups = list(
+#'     list(
+#'       VpcSecurityGroupId = "string",
+#'       Status = "string"
+#'     )
+#'   ),
+#'   VpcEndpoint = list(
+#'     VpcEndpointId = "string",
+#'     VpcId = "string",
+#'     NetworkInterfaces = list(
+#'       list(
+#'         NetworkInterfaceId = "string",
+#'         SubnetId = "string",
+#'         PrivateIpAddress = "string",
+#'         AvailabilityZone = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_endpoint_access(
+#'   ClusterIdentifier = "string",
+#'   ResourceOwner = "string",
+#'   EndpointName = "string",
+#'   SubnetGroupName = "string",
+#'   VpcSecurityGroupIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_create_endpoint_access
+redshift_create_endpoint_access <- function(ClusterIdentifier = NULL, ResourceOwner = NULL, EndpointName, SubnetGroupName, VpcSecurityGroupIds = NULL) {
+  op <- new_operation(
+    name = "CreateEndpointAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$create_endpoint_access_input(ClusterIdentifier = ClusterIdentifier, ResourceOwner = ResourceOwner, EndpointName = EndpointName, SubnetGroupName = SubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds)
+  output <- .redshift$create_endpoint_access_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$create_endpoint_access <- redshift_create_endpoint_access
+
 #' Creates an Amazon Redshift event notification subscription
 #'
 #' @description
@@ -1609,11 +2076,11 @@ redshift_create_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #' = cluster and source identifier = my-cluster-1, notifications will be
 #' sent for all the cluster events for my-cluster-1. If you specify a
 #' source type but do not specify a source identifier, you will receive
-#' notice of the events for the objects of that type in your AWS account.
-#' If you do not specify either the SourceType nor the SourceIdentifier,
-#' you will be notified of events generated from all Amazon Redshift
-#' sources belonging to your AWS account. You must specify a source type if
-#' you specify a source ID.
+#' notice of the events for the objects of that type in your Amazon Web
+#' Services account. If you do not specify either the SourceType nor the
+#' SourceIdentifier, you will be notified of events generated from all
+#' Amazon Redshift sources belonging to your Amazon Web Services account.
+#' You must specify a source type if you specify a source ID.
 #'
 #' @usage
 #' redshift_create_event_subscription(SubscriptionName, SnsTopicArn,
@@ -1636,8 +2103,8 @@ redshift_create_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #' @param SourceType The type of source that will be generating the events. For example, if
 #' you want to be notified of events generated by a cluster, you would set
 #' this parameter to cluster. If this value is not specified, events are
-#' returned for all Amazon Redshift objects in your AWS account. You must
-#' specify a source type in order to specify source IDs.
+#' returned for all Amazon Redshift objects in your Amazon Web Services
+#' account. You must specify a source type in order to specify source IDs.
 #' 
 #' Valid values: cluster, cluster-parameter-group, cluster-security-group,
 #' cluster-snapshot, and scheduled-action.
@@ -1653,7 +2120,7 @@ redshift_create_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #' @param EventCategories Specifies the Amazon Redshift event categories to be published by the
 #' event notification subscription.
 #' 
-#' Values: configuration, management, monitoring, security
+#' Values: configuration, management, monitoring, security, pending
 #' @param Severity Specifies the Amazon Redshift event severity to be published by the
 #' event notification subscription.
 #' 
@@ -1750,8 +2217,8 @@ redshift_create_event_subscription <- function(SubscriptionName, SnsTopicArn, So
 #' Redshift HSM configuration that provides a cluster the information
 #' needed to store and use encryption keys in the HSM. For more
 #' information, go to [Hardware Security
-#' Modules](https://docs.aws.amazon.com/redshift/latest/mgmt/) in the
-#' Amazon Redshift Cluster Management Guide.
+#' Modules](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html#working-with-HSM)
+#' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
 #' redshift_create_hsm_client_certificate(HsmClientCertificateIdentifier,
@@ -1946,7 +2413,9 @@ redshift_create_hsm_configuration <- function(HsmConfigurationIdentifier, Descri
 #'       ClusterType = "string",
 #'       NodeType = "string",
 #'       NumberOfNodes = 123,
-#'       Classic = TRUE|FALSE
+#'       Classic = TRUE|FALSE,
+#'       ReservedNodeId = "string",
+#'       TargetReservedNodeOfferingId = "string"
 #'     ),
 #'     PauseCluster = list(
 #'       ClusterIdentifier = "string"
@@ -1983,7 +2452,9 @@ redshift_create_hsm_configuration <- function(HsmConfigurationIdentifier, Descri
 #'       ClusterType = "string",
 #'       NodeType = "string",
 #'       NumberOfNodes = 123,
-#'       Classic = TRUE|FALSE
+#'       Classic = TRUE|FALSE,
+#'       ReservedNodeId = "string",
+#'       TargetReservedNodeOfferingId = "string"
 #'     ),
 #'     PauseCluster = list(
 #'       ClusterIdentifier = "string"
@@ -2025,14 +2496,14 @@ redshift_create_scheduled_action <- function(ScheduledActionName, TargetAction, 
 }
 .redshift$operations$create_scheduled_action <- redshift_create_scheduled_action
 
-#' Creates a snapshot copy grant that permits Amazon Redshift to use a
-#' customer master key (CMK) from AWS Key Management Service (AWS KMS) to
-#' encrypt copied snapshots in a destination region
+#' Creates a snapshot copy grant that permits Amazon Redshift to use an
+#' encrypted symmetric key from Key Management Service (KMS) to encrypt
+#' copied snapshots in a destination region
 #'
 #' @description
-#' Creates a snapshot copy grant that permits Amazon Redshift to use a
-#' customer master key (CMK) from AWS Key Management Service (AWS KMS) to
-#' encrypt copied snapshots in a destination region.
+#' Creates a snapshot copy grant that permits Amazon Redshift to use an
+#' encrypted symmetric key from Key Management Service (KMS) to encrypt
+#' copied snapshots in a destination region.
 #' 
 #' For more information about managing snapshot copy grants, go to [Amazon
 #' Redshift Database
@@ -2044,7 +2515,7 @@ redshift_create_scheduled_action <- function(ScheduledActionName, TargetAction, 
 #'   Tags)
 #'
 #' @param SnapshotCopyGrantName &#91;required&#93; The name of the snapshot copy grant. This name must be unique in the
-#' region for the AWS account.
+#' region for the Amazon Web Services account.
 #' 
 #' Constraints:
 #' 
@@ -2056,8 +2527,9 @@ redshift_create_scheduled_action <- function(ScheduledActionName, TargetAction, 
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
-#' -   Must be unique for all clusters within an AWS account.
-#' @param KmsKeyId The unique identifier of the customer master key (CMK) to which to grant
+#' -   Must be unique for all clusters within an Amazon Web Services
+#'     account.
+#' @param KmsKeyId The unique identifier of the encrypted symmetric key to which to grant
 #' Amazon Redshift permission. If no key is specified, the default key is
 #' used.
 #' @param Tags A list of tag instances.
@@ -2279,7 +2751,8 @@ redshift_create_tags <- function(ResourceName, Tags) {
 #' @param LimitType &#91;required&#93; The type of limit. Depending on the feature type, this can be based on a
 #' time duration or data size. If `FeatureType` is `spectrum`, then
 #' `LimitType` must be `data-scanned`. If `FeatureType` is
-#' `concurrency-scaling`, then `LimitType` must be `time`.
+#' `concurrency-scaling`, then `LimitType` must be `time`. If `FeatureType`
+#' is `cross-region-datasharing`, then `LimitType` must be `data-scanned`.
 #' @param Amount &#91;required&#93; The limit amount. If time-based, this amount is in minutes. If
 #' data-based, this amount is in terabytes (TB). The value must be a
 #' positive number.
@@ -2296,7 +2769,7 @@ redshift_create_tags <- function(ResourceName, Tags) {
 #' list(
 #'   UsageLimitId = "string",
 #'   ClusterIdentifier = "string",
-#'   FeatureType = "spectrum"|"concurrency-scaling",
+#'   FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing",
 #'   LimitType = "time"|"data-scanned",
 #'   Amount = 123,
 #'   Period = "daily"|"weekly"|"monthly",
@@ -2314,7 +2787,7 @@ redshift_create_tags <- function(ResourceName, Tags) {
 #' ```
 #' svc$create_usage_limit(
 #'   ClusterIdentifier = "string",
-#'   FeatureType = "spectrum"|"concurrency-scaling",
+#'   FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing",
 #'   LimitType = "time"|"data-scanned",
 #'   Amount = 123,
 #'   Period = "daily"|"weekly"|"monthly",
@@ -2347,6 +2820,119 @@ redshift_create_usage_limit <- function(ClusterIdentifier, FeatureType, LimitTyp
   return(response)
 }
 .redshift$operations$create_usage_limit <- redshift_create_usage_limit
+
+#' From a datashare producer account, removes authorization from the
+#' specified datashare
+#'
+#' @description
+#' From a datashare producer account, removes authorization from the
+#' specified datashare.
+#'
+#' @usage
+#' redshift_deauthorize_data_share(DataShareArn, ConsumerIdentifier)
+#'
+#' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare to remove authorization
+#' from.
+#' @param ConsumerIdentifier &#91;required&#93; The identifier of the data consumer that is to have authorization
+#' removed from the datashare. This identifier is an Amazon Web Services
+#' account ID or a keyword, such as ADX.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataShareArn = "string",
+#'   ProducerArn = "string",
+#'   AllowPubliclyAccessibleConsumers = TRUE|FALSE,
+#'   DataShareAssociations = list(
+#'     list(
+#'       ConsumerIdentifier = "string",
+#'       Status = "ACTIVE"|"PENDING_AUTHORIZATION"|"AUTHORIZED"|"DEAUTHORIZED"|"REJECTED"|"AVAILABLE",
+#'       ConsumerRegion = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusChangeDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   ManagedBy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deauthorize_data_share(
+#'   DataShareArn = "string",
+#'   ConsumerIdentifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_deauthorize_data_share
+redshift_deauthorize_data_share <- function(DataShareArn, ConsumerIdentifier) {
+  op <- new_operation(
+    name = "DeauthorizeDataShare",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$deauthorize_data_share_input(DataShareArn = DataShareArn, ConsumerIdentifier = ConsumerIdentifier)
+  output <- .redshift$deauthorize_data_share_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$deauthorize_data_share <- redshift_deauthorize_data_share
+
+#' Deletes an authentication profile
+#'
+#' @description
+#' Deletes an authentication profile.
+#'
+#' @usage
+#' redshift_delete_authentication_profile(AuthenticationProfileName)
+#'
+#' @param AuthenticationProfileName &#91;required&#93; The name of the authentication profile to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthenticationProfileName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_authentication_profile(
+#'   AuthenticationProfileName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_delete_authentication_profile
+redshift_delete_authentication_profile <- function(AuthenticationProfileName) {
+  op <- new_operation(
+    name = "DeleteAuthenticationProfile",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$delete_authentication_profile_input(AuthenticationProfileName = AuthenticationProfileName)
+  output <- .redshift$delete_authentication_profile_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$delete_authentication_profile <- redshift_delete_authentication_profile
 
 #' Deletes a previously provisioned cluster without its final snapshot
 #' being created
@@ -2433,7 +3019,16 @@ redshift_create_usage_limit <- function(ClusterIdentifier, FeatureType, LimitTyp
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -2573,7 +3168,26 @@ redshift_create_usage_limit <- function(ClusterIdentifier, FeatureType, LimitTyp
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -2862,6 +3476,78 @@ redshift_delete_cluster_subnet_group <- function(ClusterSubnetGroupName) {
 }
 .redshift$operations$delete_cluster_subnet_group <- redshift_delete_cluster_subnet_group
 
+#' Deletes a Redshift-managed VPC endpoint
+#'
+#' @description
+#' Deletes a Redshift-managed VPC endpoint.
+#'
+#' @usage
+#' redshift_delete_endpoint_access(EndpointName)
+#'
+#' @param EndpointName &#91;required&#93; The Redshift-managed VPC endpoint to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterIdentifier = "string",
+#'   ResourceOwner = "string",
+#'   SubnetGroupName = "string",
+#'   EndpointStatus = "string",
+#'   EndpointName = "string",
+#'   EndpointCreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Port = 123,
+#'   Address = "string",
+#'   VpcSecurityGroups = list(
+#'     list(
+#'       VpcSecurityGroupId = "string",
+#'       Status = "string"
+#'     )
+#'   ),
+#'   VpcEndpoint = list(
+#'     VpcEndpointId = "string",
+#'     VpcId = "string",
+#'     NetworkInterfaces = list(
+#'       list(
+#'         NetworkInterfaceId = "string",
+#'         SubnetId = "string",
+#'         PrivateIpAddress = "string",
+#'         AvailabilityZone = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_endpoint_access(
+#'   EndpointName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_delete_endpoint_access
+redshift_delete_endpoint_access <- function(EndpointName) {
+  op <- new_operation(
+    name = "DeleteEndpointAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$delete_endpoint_access_input(EndpointName = EndpointName)
+  output <- .redshift$delete_endpoint_access_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$delete_endpoint_access <- redshift_delete_endpoint_access
+
 #' Deletes an Amazon Redshift event notification subscription
 #'
 #' @description
@@ -2982,6 +3668,61 @@ redshift_delete_hsm_configuration <- function(HsmConfigurationIdentifier) {
   return(response)
 }
 .redshift$operations$delete_hsm_configuration <- redshift_delete_hsm_configuration
+
+#' Deletes a partner integration from a cluster
+#'
+#' @description
+#' Deletes a partner integration from a cluster. Data can still flow to the
+#' cluster until the integration is deleted at the partner's website.
+#'
+#' @usage
+#' redshift_delete_partner(AccountId, ClusterIdentifier, DatabaseName,
+#'   PartnerName)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the cluster.
+#' @param ClusterIdentifier &#91;required&#93; The cluster identifier of the cluster that receives data from the
+#' partner.
+#' @param DatabaseName &#91;required&#93; The name of the database that receives data from the partner.
+#' @param PartnerName &#91;required&#93; The name of the partner that is authorized to send data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatabaseName = "string",
+#'   PartnerName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_partner(
+#'   AccountId = "string",
+#'   ClusterIdentifier = "string",
+#'   DatabaseName = "string",
+#'   PartnerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_delete_partner
+redshift_delete_partner <- function(AccountId, ClusterIdentifier, DatabaseName, PartnerName) {
+  op <- new_operation(
+    name = "DeletePartner",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$delete_partner_input(AccountId = AccountId, ClusterIdentifier = ClusterIdentifier, DatabaseName = DatabaseName, PartnerName = PartnerName)
+  output <- .redshift$delete_partner_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$delete_partner <- redshift_delete_partner
 
 #' Deletes a scheduled action
 #'
@@ -3245,6 +3986,57 @@ redshift_describe_account_attributes <- function(AttributeNames = NULL) {
 }
 .redshift$operations$describe_account_attributes <- redshift_describe_account_attributes
 
+#' Describes an authentication profile
+#'
+#' @description
+#' Describes an authentication profile.
+#'
+#' @usage
+#' redshift_describe_authentication_profiles(AuthenticationProfileName)
+#'
+#' @param AuthenticationProfileName The name of the authentication profile to describe. If not specified
+#' then all authentication profiles owned by the account are listed.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthenticationProfiles = list(
+#'     list(
+#'       AuthenticationProfileName = "string",
+#'       AuthenticationProfileContent = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_authentication_profiles(
+#'   AuthenticationProfileName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_authentication_profiles
+redshift_describe_authentication_profiles <- function(AuthenticationProfileName = NULL) {
+  op <- new_operation(
+    name = "DescribeAuthenticationProfiles",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$describe_authentication_profiles_input(AuthenticationProfileName = AuthenticationProfileName)
+  output <- .redshift$describe_authentication_profiles_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_authentication_profiles <- redshift_describe_authentication_profiles
+
 #' Returns an array of ClusterDbRevision objects
 #'
 #' @description
@@ -3376,10 +4168,10 @@ redshift_describe_cluster_db_revisions <- function(ClusterIdentifier = NULL, Max
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_cluster_parameter_groups`][redshift_describe_cluster_parameter_groups]
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #' @param TagKeys A tag key or keys for which you want to return all matching cluster
 #' parameter groups that are associated with the specified key or keys. For
 #' example, suppose that you have parameter groups that are tagged with
@@ -3495,10 +4287,10 @@ redshift_describe_cluster_parameter_groups <- function(ParameterGroupName = NULL
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_cluster_parameters`][redshift_describe_cluster_parameters]
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3594,10 +4386,10 @@ redshift_describe_cluster_parameters <- function(ParameterGroupName, Source = NU
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_cluster_security_groups`][redshift_describe_cluster_security_groups]
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #' 
 #' Constraints: You can specify either the **ClusterSecurityGroupName**
 #' parameter or the **Marker** parameter, but not both.
@@ -3701,9 +4493,9 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #' @description
 #' Returns one or more snapshot objects, which contain metadata about your
 #' cluster snapshots. By default, this operation returns information about
-#' all snapshots of all clusters that are owned by you AWS customer
-#' account. No information is returned for snapshots owned by inactive AWS
-#' customer accounts.
+#' all snapshots of all clusters that are owned by your Amazon Web Services
+#' account. No information is returned for snapshots owned by inactive
+#' Amazon Web Services accounts.
 #' 
 #' If you specify both tag keys and tag values in the same request, Amazon
 #' Redshift returns all snapshots that match any combination of the
@@ -3719,13 +4511,15 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #'
 #' @usage
 #' redshift_describe_cluster_snapshots(ClusterIdentifier,
-#'   SnapshotIdentifier, SnapshotType, StartTime, EndTime, MaxRecords,
-#'   Marker, OwnerAccount, TagKeys, TagValues, ClusterExists,
+#'   SnapshotIdentifier, SnapshotArn, SnapshotType, StartTime, EndTime,
+#'   MaxRecords, Marker, OwnerAccount, TagKeys, TagValues, ClusterExists,
 #'   SortingEntities)
 #'
 #' @param ClusterIdentifier The identifier of the cluster which generated the requested snapshots.
 #' @param SnapshotIdentifier The snapshot identifier of the snapshot about which to return
 #' information.
+#' @param SnapshotArn The Amazon Resource Name (ARN) of the snapshot associated with the
+#' message to describe cluster snapshots.
 #' @param SnapshotType The type of snapshots for which you are requesting information. By
 #' default, snapshots of all types are returned.
 #' 
@@ -3754,14 +4548,14 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_cluster_snapshots`][redshift_describe_cluster_snapshots]
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
-#' @param OwnerAccount The AWS customer account used to create or copy the snapshot. Use this
-#' field to filter the results to snapshots owned by a particular account.
-#' To describe snapshots you own, either specify your AWS customer account,
-#' or do not specify the parameter.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
+#' @param OwnerAccount The Amazon Web Services account used to create or copy the snapshot. Use
+#' this field to filter the results to snapshots owned by a particular
+#' account. To describe snapshots you own, either specify your Amazon Web
+#' Services account, or do not specify the parameter.
 #' @param TagKeys A tag key or keys for which you want to return all matching cluster
 #' snapshots that are associated with the specified key or keys. For
 #' example, suppose that you have snapshots that are tagged with keys
@@ -3863,6 +4657,7 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #' svc$describe_cluster_snapshots(
 #'   ClusterIdentifier = "string",
 #'   SnapshotIdentifier = "string",
+#'   SnapshotArn = "string",
 #'   SnapshotType = "string",
 #'   StartTime = as.POSIXct(
 #'     "2015-01-01"
@@ -3892,14 +4687,14 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #' @keywords internal
 #'
 #' @rdname redshift_describe_cluster_snapshots
-redshift_describe_cluster_snapshots <- function(ClusterIdentifier = NULL, SnapshotIdentifier = NULL, SnapshotType = NULL, StartTime = NULL, EndTime = NULL, MaxRecords = NULL, Marker = NULL, OwnerAccount = NULL, TagKeys = NULL, TagValues = NULL, ClusterExists = NULL, SortingEntities = NULL) {
+redshift_describe_cluster_snapshots <- function(ClusterIdentifier = NULL, SnapshotIdentifier = NULL, SnapshotArn = NULL, SnapshotType = NULL, StartTime = NULL, EndTime = NULL, MaxRecords = NULL, Marker = NULL, OwnerAccount = NULL, TagKeys = NULL, TagValues = NULL, ClusterExists = NULL, SortingEntities = NULL) {
   op <- new_operation(
     name = "DescribeClusterSnapshots",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$describe_cluster_snapshots_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotType = SnapshotType, StartTime = StartTime, EndTime = EndTime, MaxRecords = MaxRecords, Marker = Marker, OwnerAccount = OwnerAccount, TagKeys = TagKeys, TagValues = TagValues, ClusterExists = ClusterExists, SortingEntities = SortingEntities)
+  input <- .redshift$describe_cluster_snapshots_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotType = SnapshotType, StartTime = StartTime, EndTime = EndTime, MaxRecords = MaxRecords, Marker = Marker, OwnerAccount = OwnerAccount, TagKeys = TagKeys, TagValues = TagValues, ClusterExists = ClusterExists, SortingEntities = SortingEntities)
   output <- .redshift$describe_cluster_snapshots_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -3915,8 +4710,8 @@ redshift_describe_cluster_snapshots <- function(ClusterIdentifier = NULL, Snapsh
 #' @description
 #' Returns one or more cluster subnet group objects, which contain metadata
 #' about your cluster subnet groups. By default, this operation returns
-#' information about all cluster subnet groups that are defined in you AWS
-#' account.
+#' information about all cluster subnet groups that are defined in your
+#' Amazon Web Services account.
 #' 
 #' If you specify both tag keys and tag values in the same request, Amazon
 #' Redshift returns all subnet groups that match any combination of the
@@ -3945,10 +4740,10 @@ redshift_describe_cluster_snapshots <- function(ClusterIdentifier = NULL, Snapsh
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_cluster_subnet_groups`][redshift_describe_cluster_subnet_groups]
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #' @param TagKeys A tag key or keys for which you want to return all matching cluster
 #' subnet groups that are associated with the specified key or keys. For
 #' example, suppose that you have subnet groups that are tagged with keys
@@ -4146,10 +4941,10 @@ redshift_describe_cluster_tracks <- function(MaintenanceTrackName = NULL, MaxRec
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_cluster_versions`][redshift_describe_cluster_versions]
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4239,10 +5034,10 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_clusters`][redshift_describe_clusters] request exceed the
-#' value specified in `MaxRecords`, AWS returns a value in the `Marker`
-#' field of the response. You can retrieve the next set of response records
-#' by providing the returned marker value in the `Marker` parameter and
-#' retrying the request.
+#' value specified in `MaxRecords`, Amazon Web Services returns a value in
+#' the `Marker` field of the response. You can retrieve the next set of
+#' response records by providing the returned marker value in the `Marker`
+#' parameter and retrying the request.
 #' 
 #' Constraints: You can specify either the **ClusterIdentifier** parameter
 #' or the **Marker** parameter, but not both.
@@ -4278,7 +5073,16 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
 #'         Port = 123,
 #'         VpcEndpoints = list(
 #'           list(
-#'             VpcEndpointId = "string"
+#'             VpcEndpointId = "string",
+#'             VpcId = "string",
+#'             NetworkInterfaces = list(
+#'               list(
+#'                 NetworkInterfaceId = "string",
+#'                 SubnetId = "string",
+#'                 PrivateIpAddress = "string",
+#'                 AvailabilityZone = "string"
+#'               )
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -4418,7 +5222,26 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
 #'         AllowCancelResize = TRUE|FALSE
 #'       ),
 #'       AvailabilityZoneRelocationStatus = "string",
-#'       ClusterNamespaceArn = "string"
+#'       ClusterNamespaceArn = "string",
+#'       TotalStorageCapacityInMegaBytes = 123,
+#'       AquaConfiguration = list(
+#'         AquaStatus = "enabled"|"disabled"|"applying",
+#'         AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'       ),
+#'       DefaultIamRoleArn = "string",
+#'       ReservedNodeExchangeStatus = list(
+#'         ReservedNodeExchangeRequestId = "string",
+#'         Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'         RequestTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         SourceReservedNodeId = "string",
+#'         SourceReservedNodeType = "string",
+#'         SourceReservedNodeCount = 123,
+#'         TargetReservedNodeOfferingId = "string",
+#'         TargetReservedNodeType = "string",
+#'         TargetReservedNodeCount = 123
+#'       )
 #'     )
 #'   )
 #' )
@@ -4459,6 +5282,264 @@ redshift_describe_clusters <- function(ClusterIdentifier = NULL, MaxRecords = NU
 }
 .redshift$operations$describe_clusters <- redshift_describe_clusters
 
+#' Shows the status of any inbound or outbound datashares available in the
+#' specified account
+#'
+#' @description
+#' Shows the status of any inbound or outbound datashares available in the
+#' specified account.
+#'
+#' @usage
+#' redshift_describe_data_shares(DataShareArn, MaxRecords, Marker)
+#'
+#' @param DataShareArn The identifier of the datashare to describe details of.
+#' @param MaxRecords The maximum number of response records to return in each call. If the
+#' number of remaining response records exceeds the specified `MaxRecords`
+#' value, a value is returned in a `marker` field of the response. You can
+#' retrieve the next set of records by retrying the command with the
+#' returned marker value.
+#' @param Marker An optional parameter that specifies the starting point to return a set
+#' of response records. When the results of a
+#' [`describe_data_shares`][redshift_describe_data_shares] request exceed
+#' the value specified in `MaxRecords`, Amazon Web Services returns a value
+#' in the `Marker` field of the response. You can retrieve the next set of
+#' response records by providing the returned marker value in the `Marker`
+#' parameter and retrying the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataShares = list(
+#'     list(
+#'       DataShareArn = "string",
+#'       ProducerArn = "string",
+#'       AllowPubliclyAccessibleConsumers = TRUE|FALSE,
+#'       DataShareAssociations = list(
+#'         list(
+#'           ConsumerIdentifier = "string",
+#'           Status = "ACTIVE"|"PENDING_AUTHORIZATION"|"AUTHORIZED"|"DEAUTHORIZED"|"REJECTED"|"AVAILABLE",
+#'           ConsumerRegion = "string",
+#'           CreatedDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           StatusChangeDate = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       ManagedBy = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_data_shares(
+#'   DataShareArn = "string",
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_data_shares
+redshift_describe_data_shares <- function(DataShareArn = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeDataShares",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$describe_data_shares_input(DataShareArn = DataShareArn, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$describe_data_shares_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_data_shares <- redshift_describe_data_shares
+
+#' Returns a list of datashares where the account identifier being called
+#' is a consumer account identifier
+#'
+#' @description
+#' Returns a list of datashares where the account identifier being called
+#' is a consumer account identifier.
+#'
+#' @usage
+#' redshift_describe_data_shares_for_consumer(ConsumerArn, Status,
+#'   MaxRecords, Marker)
+#'
+#' @param ConsumerArn The Amazon Resource Name (ARN) of the consumer that returns in the list
+#' of datashares.
+#' @param Status An identifier giving the status of a datashare in the consumer cluster.
+#' If this field is specified, Amazon Redshift returns the list of
+#' datashares that have the specified status.
+#' @param MaxRecords The maximum number of response records to return in each call. If the
+#' number of remaining response records exceeds the specified `MaxRecords`
+#' value, a value is returned in a `marker` field of the response. You can
+#' retrieve the next set of records by retrying the command with the
+#' returned marker value.
+#' @param Marker An optional parameter that specifies the starting point to return a set
+#' of response records. When the results of a
+#' [`describe_data_shares_for_consumer`][redshift_describe_data_shares_for_consumer]
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataShares = list(
+#'     list(
+#'       DataShareArn = "string",
+#'       ProducerArn = "string",
+#'       AllowPubliclyAccessibleConsumers = TRUE|FALSE,
+#'       DataShareAssociations = list(
+#'         list(
+#'           ConsumerIdentifier = "string",
+#'           Status = "ACTIVE"|"PENDING_AUTHORIZATION"|"AUTHORIZED"|"DEAUTHORIZED"|"REJECTED"|"AVAILABLE",
+#'           ConsumerRegion = "string",
+#'           CreatedDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           StatusChangeDate = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       ManagedBy = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_data_shares_for_consumer(
+#'   ConsumerArn = "string",
+#'   Status = "ACTIVE"|"AVAILABLE",
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_data_shares_for_consumer
+redshift_describe_data_shares_for_consumer <- function(ConsumerArn = NULL, Status = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeDataSharesForConsumer",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$describe_data_shares_for_consumer_input(ConsumerArn = ConsumerArn, Status = Status, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$describe_data_shares_for_consumer_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_data_shares_for_consumer <- redshift_describe_data_shares_for_consumer
+
+#' Returns a list of datashares when the account identifier being called is
+#' a producer account identifier
+#'
+#' @description
+#' Returns a list of datashares when the account identifier being called is
+#' a producer account identifier.
+#'
+#' @usage
+#' redshift_describe_data_shares_for_producer(ProducerArn, Status,
+#'   MaxRecords, Marker)
+#'
+#' @param ProducerArn The Amazon Resource Name (ARN) of the producer that returns in the list
+#' of datashares.
+#' @param Status An identifier giving the status of a datashare in the producer. If this
+#' field is specified, Amazon Redshift returns the list of datashares that
+#' have the specified status.
+#' @param MaxRecords The maximum number of response records to return in each call. If the
+#' number of remaining response records exceeds the specified `MaxRecords`
+#' value, a value is returned in a `marker` field of the response. You can
+#' retrieve the next set of records by retrying the command with the
+#' returned marker value.
+#' @param Marker An optional parameter that specifies the starting point to return a set
+#' of response records. When the results of a
+#' [`describe_data_shares_for_producer`][redshift_describe_data_shares_for_producer]
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataShares = list(
+#'     list(
+#'       DataShareArn = "string",
+#'       ProducerArn = "string",
+#'       AllowPubliclyAccessibleConsumers = TRUE|FALSE,
+#'       DataShareAssociations = list(
+#'         list(
+#'           ConsumerIdentifier = "string",
+#'           Status = "ACTIVE"|"PENDING_AUTHORIZATION"|"AUTHORIZED"|"DEAUTHORIZED"|"REJECTED"|"AVAILABLE",
+#'           ConsumerRegion = "string",
+#'           CreatedDate = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           StatusChangeDate = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         )
+#'       ),
+#'       ManagedBy = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_data_shares_for_producer(
+#'   ProducerArn = "string",
+#'   Status = "ACTIVE"|"AUTHORIZED"|"PENDING_AUTHORIZATION"|"DEAUTHORIZED"|"REJECTED",
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_data_shares_for_producer
+redshift_describe_data_shares_for_producer <- function(ProducerArn = NULL, Status = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeDataSharesForProducer",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$describe_data_shares_for_producer_input(ProducerArn = ProducerArn, Status = Status, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$describe_data_shares_for_producer_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_data_shares_for_producer <- redshift_describe_data_shares_for_producer
+
 #' Returns a list of parameter settings for the specified parameter group
 #' family
 #'
@@ -4488,10 +5569,10 @@ redshift_describe_clusters <- function(ClusterIdentifier = NULL, MaxRecords = NU
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_default_cluster_parameters`][redshift_describe_default_cluster_parameters]
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4545,6 +5626,184 @@ redshift_describe_default_cluster_parameters <- function(ParameterGroupFamily, M
   return(response)
 }
 .redshift$operations$describe_default_cluster_parameters <- redshift_describe_default_cluster_parameters
+
+#' Describes a Redshift-managed VPC endpoint
+#'
+#' @description
+#' Describes a Redshift-managed VPC endpoint.
+#'
+#' @usage
+#' redshift_describe_endpoint_access(ClusterIdentifier, ResourceOwner,
+#'   EndpointName, VpcId, MaxRecords, Marker)
+#'
+#' @param ClusterIdentifier The cluster identifier associated with the described endpoint.
+#' @param ResourceOwner The Amazon Web Services account ID of the owner of the cluster.
+#' @param EndpointName The name of the endpoint to be described.
+#' @param VpcId The virtual private cloud (VPC) identifier with access to the cluster.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' called a `Marker` is included in the response so that the remaining
+#' results can be retrieved.
+#' @param Marker An optional pagination token provided by a previous
+#' [`describe_endpoint_access`][redshift_describe_endpoint_access] request.
+#' If this parameter is specified, the response includes only records
+#' beyond the marker, up to the value specified by the `MaxRecords`
+#' parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointAccessList = list(
+#'     list(
+#'       ClusterIdentifier = "string",
+#'       ResourceOwner = "string",
+#'       SubnetGroupName = "string",
+#'       EndpointStatus = "string",
+#'       EndpointName = "string",
+#'       EndpointCreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Port = 123,
+#'       Address = "string",
+#'       VpcSecurityGroups = list(
+#'         list(
+#'           VpcSecurityGroupId = "string",
+#'           Status = "string"
+#'         )
+#'       ),
+#'       VpcEndpoint = list(
+#'         VpcEndpointId = "string",
+#'         VpcId = "string",
+#'         NetworkInterfaces = list(
+#'           list(
+#'             NetworkInterfaceId = "string",
+#'             SubnetId = "string",
+#'             PrivateIpAddress = "string",
+#'             AvailabilityZone = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_endpoint_access(
+#'   ClusterIdentifier = "string",
+#'   ResourceOwner = "string",
+#'   EndpointName = "string",
+#'   VpcId = "string",
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_endpoint_access
+redshift_describe_endpoint_access <- function(ClusterIdentifier = NULL, ResourceOwner = NULL, EndpointName = NULL, VpcId = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeEndpointAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$describe_endpoint_access_input(ClusterIdentifier = ClusterIdentifier, ResourceOwner = ResourceOwner, EndpointName = EndpointName, VpcId = VpcId, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$describe_endpoint_access_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_endpoint_access <- redshift_describe_endpoint_access
+
+#' Describes an endpoint authorization
+#'
+#' @description
+#' Describes an endpoint authorization.
+#'
+#' @usage
+#' redshift_describe_endpoint_authorization(ClusterIdentifier, Account,
+#'   Grantee, MaxRecords, Marker)
+#'
+#' @param ClusterIdentifier The cluster identifier of the cluster to access.
+#' @param Account The AAmazon Web Services account ID of either the cluster owner
+#' (grantor) or grantee. If `Grantee` parameter is true, then the `Account`
+#' value is of the grantor.
+#' @param Grantee Indicates whether to check authorization from a grantor or grantee point
+#' of view. If true, Amazon Redshift returns endpoint authorizations that
+#' you've been granted. If false (default), checks authorization from a
+#' grantor point of view.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' called a `Marker` is included in the response so that the remaining
+#' results can be retrieved.
+#' @param Marker An optional pagination token provided by a previous
+#' [`describe_endpoint_authorization`][redshift_describe_endpoint_authorization]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by the `MaxRecords`
+#' parameter.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   EndpointAuthorizationList = list(
+#'     list(
+#'       Grantor = "string",
+#'       Grantee = "string",
+#'       ClusterIdentifier = "string",
+#'       AuthorizeTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ClusterStatus = "string",
+#'       Status = "Authorized"|"Revoking",
+#'       AllowedAllVPCs = TRUE|FALSE,
+#'       AllowedVPCs = list(
+#'         "string"
+#'       ),
+#'       EndpointCount = 123
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_endpoint_authorization(
+#'   ClusterIdentifier = "string",
+#'   Account = "string",
+#'   Grantee = TRUE|FALSE,
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_endpoint_authorization
+redshift_describe_endpoint_authorization <- function(ClusterIdentifier = NULL, Account = NULL, Grantee = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeEndpointAuthorization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$describe_endpoint_authorization_input(ClusterIdentifier = ClusterIdentifier, Account = Account, Grantee = Grantee, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$describe_endpoint_authorization_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_endpoint_authorization <- redshift_describe_endpoint_authorization
 
 #' Displays a list of event categories for all event source types, or for a
 #' specified source type
@@ -4649,10 +5908,10 @@ redshift_describe_event_categories <- function(SourceType = NULL) {
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a DescribeEventSubscriptions
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #' @param TagKeys A tag key or keys for which you want to return all matching event
 #' notification subscriptions that are associated with the specified key or
 #' keys. For example, suppose that you have subscriptions that are tagged
@@ -4814,10 +6073,10 @@ redshift_describe_event_subscriptions <- function(SubscriptionName = NULL, MaxRe
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_events`][redshift_describe_events] request exceed the value
-#' specified in `MaxRecords`, AWS returns a value in the `Marker` field of
-#' the response. You can retrieve the next set of response records by
-#' providing the returned marker value in the `Marker` parameter and
-#' retrying the request.
+#' specified in `MaxRecords`, Amazon Web Services returns a value in the
+#' `Marker` field of the response. You can retrieve the next set of
+#' response records by providing the returned marker value in the `Marker`
+#' parameter and retrying the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4884,7 +6143,7 @@ redshift_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL,
 #' @description
 #' Returns information about the specified HSM client certificate. If no
 #' certificate ID is specified, returns information about all the HSM
-#' certificates owned by your AWS customer account.
+#' certificates owned by your Amazon Web Services account.
 #' 
 #' If you specify both tag keys and tag values in the same request, Amazon
 #' Redshift returns all HSM client certificates that match any combination
@@ -4903,7 +6162,7 @@ redshift_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL,
 #'
 #' @param HsmClientCertificateIdentifier The identifier of a specific HSM client certificate for which you want
 #' information. If no identifier is specified, information is returned for
-#' all HSM client certificates owned by your AWS customer account.
+#' all HSM client certificates owned by your Amazon Web Services account.
 #' @param MaxRecords The maximum number of response records to return in each call. If the
 #' number of remaining response records exceeds the specified `MaxRecords`
 #' value, a value is returned in a `marker` field of the response. You can
@@ -4916,10 +6175,10 @@ redshift_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL,
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_hsm_client_certificates`][redshift_describe_hsm_client_certificates]
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #' @param TagKeys A tag key or keys for which you want to return all matching HSM client
 #' certificates that are associated with the specified key or keys. For
 #' example, suppose that you have HSM client certificates that are tagged
@@ -4996,7 +6255,8 @@ redshift_describe_hsm_client_certificates <- function(HsmClientCertificateIdenti
 #' @description
 #' Returns information about the specified Amazon Redshift HSM
 #' configuration. If no configuration ID is specified, returns information
-#' about all the HSM configurations owned by your AWS customer account.
+#' about all the HSM configurations owned by your Amazon Web Services
+#' account.
 #' 
 #' If you specify both tag keys and tag values in the same request, Amazon
 #' Redshift returns all HSM connections that match any combination of the
@@ -5014,7 +6274,7 @@ redshift_describe_hsm_client_certificates <- function(HsmClientCertificateIdenti
 #'
 #' @param HsmConfigurationIdentifier The identifier of a specific Amazon Redshift HSM configuration to be
 #' described. If no identifier is specified, information is returned for
-#' all HSM configurations owned by your AWS customer account.
+#' all HSM configurations owned by your Amazon Web Services account.
 #' @param MaxRecords The maximum number of response records to return in each call. If the
 #' number of remaining response records exceeds the specified `MaxRecords`
 #' value, a value is returned in a `marker` field of the response. You can
@@ -5027,10 +6287,10 @@ redshift_describe_hsm_client_certificates <- function(HsmClientCertificateIdenti
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_hsm_configurations`][redshift_describe_hsm_configurations]
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #' @param TagKeys A tag key or keys for which you want to return all matching HSM
 #' configurations that are associated with the specified key or keys. For
 #' example, suppose that you have HSM configurations that are tagged with
@@ -5130,7 +6390,11 @@ redshift_describe_hsm_configurations <- function(HsmConfigurationIdentifier = NU
 #'   LastFailureTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   LastFailureMessage = "string"
+#'   LastFailureMessage = "string",
+#'   LogDestinationType = "s3"|"cloudwatch",
+#'   LogExports = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -5170,8 +6434,8 @@ redshift_describe_logging_status <- function(ClusterIdentifier) {
 #'
 #' @usage
 #' redshift_describe_node_configuration_options(ActionType,
-#'   ClusterIdentifier, SnapshotIdentifier, OwnerAccount, Filters, Marker,
-#'   MaxRecords)
+#'   ClusterIdentifier, SnapshotIdentifier, SnapshotArn, OwnerAccount,
+#'   Filters, Marker, MaxRecords)
 #'
 #' @param ActionType &#91;required&#93; The action type to evaluate for possible node configurations. Specify
 #' "restore-cluster" to get configuration combinations based on an existing
@@ -5183,17 +6447,19 @@ redshift_describe_logging_status <- function(ClusterIdentifier) {
 #' configurations.
 #' @param SnapshotIdentifier The identifier of the snapshot to evaluate for possible node
 #' configurations.
-#' @param OwnerAccount The AWS customer account used to create or copy the snapshot. Required
-#' if you are restoring a snapshot you do not own, optional if you own the
-#' snapshot.
+#' @param SnapshotArn The Amazon Resource Name (ARN) of the snapshot associated with the
+#' message to describe node configuration.
+#' @param OwnerAccount The Amazon Web Services account used to create or copy the snapshot.
+#' Required if you are restoring a snapshot you do not own, optional if you
+#' own the snapshot.
 #' @param Filters A set of name, operator, and value items to filter the results.
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_node_configuration_options`][redshift_describe_node_configuration_options]
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #' @param MaxRecords The maximum number of response records to return in each call. If the
 #' number of remaining response records exceeds the specified `MaxRecords`
 #' value, a value is returned in a `marker` field of the response. You can
@@ -5226,6 +6492,7 @@ redshift_describe_logging_status <- function(ClusterIdentifier) {
 #'   ActionType = "restore-cluster"|"recommend-node-config"|"resize-cluster",
 #'   ClusterIdentifier = "string",
 #'   SnapshotIdentifier = "string",
+#'   SnapshotArn = "string",
 #'   OwnerAccount = "string",
 #'   Filters = list(
 #'     list(
@@ -5244,14 +6511,14 @@ redshift_describe_logging_status <- function(ClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_describe_node_configuration_options
-redshift_describe_node_configuration_options <- function(ActionType, ClusterIdentifier = NULL, SnapshotIdentifier = NULL, OwnerAccount = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
+redshift_describe_node_configuration_options <- function(ActionType, ClusterIdentifier = NULL, SnapshotIdentifier = NULL, SnapshotArn = NULL, OwnerAccount = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeNodeConfigurationOptions",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$describe_node_configuration_options_input(ActionType = ActionType, ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, OwnerAccount = OwnerAccount, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
+  input <- .redshift$describe_node_configuration_options_input(ActionType = ActionType, ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, OwnerAccount = OwnerAccount, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .redshift$describe_node_configuration_options_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -5266,12 +6533,13 @@ redshift_describe_node_configuration_options <- function(ActionType, ClusterIden
 #' @description
 #' Returns a list of orderable cluster options. Before you create a new
 #' cluster you can use this operation to find what options are available,
-#' such as the EC2 Availability Zones (AZ) in the specific AWS Region that
-#' you can specify, and the node types you can request. The node types
-#' differ by available storage, memory, CPU and price. With the cost
-#' involved you might want to obtain a list of cluster options in the
-#' specific region and specify values when creating a cluster. For more
-#' information about managing clusters, go to [Amazon Redshift
+#' such as the EC2 Availability Zones (AZ) in the specific Amazon Web
+#' Services Region that you can specify, and the node types you can
+#' request. The node types differ by available storage, memory, CPU and
+#' price. With the cost involved you might want to obtain a list of cluster
+#' options in the specific region and specify values when creating a
+#' cluster. For more information about managing clusters, go to [Amazon
+#' Redshift
 #' Clusters](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
@@ -5300,10 +6568,10 @@ redshift_describe_node_configuration_options <- function(ActionType, ClusterIden
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_orderable_cluster_options`][redshift_describe_orderable_cluster_options]
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5360,6 +6628,157 @@ redshift_describe_orderable_cluster_options <- function(ClusterVersion = NULL, N
 }
 .redshift$operations$describe_orderable_cluster_options <- redshift_describe_orderable_cluster_options
 
+#' Returns information about the partner integrations defined for a cluster
+#'
+#' @description
+#' Returns information about the partner integrations defined for a
+#' cluster.
+#'
+#' @usage
+#' redshift_describe_partners(AccountId, ClusterIdentifier, DatabaseName,
+#'   PartnerName)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the cluster.
+#' @param ClusterIdentifier &#91;required&#93; The cluster identifier of the cluster whose partner integration is being
+#' described.
+#' @param DatabaseName The name of the database whose partner integration is being described.
+#' If database name is not specified, then all databases in the cluster are
+#' described.
+#' @param PartnerName The name of the partner that is being described. If partner name is not
+#' specified, then all partner integrations are described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PartnerIntegrationInfoList = list(
+#'     list(
+#'       DatabaseName = "string",
+#'       PartnerName = "string",
+#'       Status = "Active"|"Inactive"|"RuntimeFailure"|"ConnectionFailure",
+#'       StatusMessage = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_partners(
+#'   AccountId = "string",
+#'   ClusterIdentifier = "string",
+#'   DatabaseName = "string",
+#'   PartnerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_partners
+redshift_describe_partners <- function(AccountId, ClusterIdentifier, DatabaseName = NULL, PartnerName = NULL) {
+  op <- new_operation(
+    name = "DescribePartners",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$describe_partners_input(AccountId = AccountId, ClusterIdentifier = ClusterIdentifier, DatabaseName = DatabaseName, PartnerName = PartnerName)
+  output <- .redshift$describe_partners_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_partners <- redshift_describe_partners
+
+#' Returns exchange status details and associated metadata for a
+#' reserved-node exchange
+#'
+#' @description
+#' Returns exchange status details and associated metadata for a
+#' reserved-node exchange. Statuses include such values as in progress and
+#' requested.
+#'
+#' @usage
+#' redshift_describe_reserved_node_exchange_status(ReservedNodeId,
+#'   ReservedNodeExchangeRequestId, MaxRecords, Marker)
+#'
+#' @param ReservedNodeId The identifier of the source reserved node in a reserved-node exchange
+#' request.
+#' @param ReservedNodeExchangeRequestId The identifier of the reserved-node exchange request.
+#' @param MaxRecords The maximum number of response records to return in each call. If the
+#' number of remaining response records exceeds the specified `MaxRecords`
+#' value, a value is returned in a `Marker` field of the response. You can
+#' retrieve the next set of records by retrying the command with the
+#' returned marker value.
+#' @param Marker An optional pagination token provided by a previous
+#' [`describe_reserved_node_exchange_status`][redshift_describe_reserved_node_exchange_status]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by the `MaxRecords`
+#' parameter. You can retrieve the next set of response records by
+#' providing the returned marker value in the `Marker` parameter and
+#' retrying the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReservedNodeExchangeStatusDetails = list(
+#'     list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_reserved_node_exchange_status(
+#'   ReservedNodeId = "string",
+#'   ReservedNodeExchangeRequestId = "string",
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_reserved_node_exchange_status
+redshift_describe_reserved_node_exchange_status <- function(ReservedNodeId = NULL, ReservedNodeExchangeRequestId = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeReservedNodeExchangeStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$describe_reserved_node_exchange_status_input(ReservedNodeId = ReservedNodeId, ReservedNodeExchangeRequestId = ReservedNodeExchangeRequestId, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$describe_reserved_node_exchange_status_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_reserved_node_exchange_status <- redshift_describe_reserved_node_exchange_status
+
 #' Returns a list of the available reserved node offerings by Amazon
 #' Redshift with their descriptions including the node type, the fixed and
 #' recurring costs of reserving the node and duration the node will be
@@ -5397,10 +6816,10 @@ redshift_describe_orderable_cluster_options <- function(ClusterVersion = NULL, N
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_reserved_node_offerings`][redshift_describe_reserved_node_offerings]
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5478,10 +6897,10 @@ redshift_describe_reserved_node_offerings <- function(ReservedNodeOfferingId = N
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_reserved_nodes`][redshift_describe_reserved_nodes] request
-#' exceed the value specified in `MaxRecords`, AWS returns a value in the
-#' `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' exceed the value specified in `MaxRecords`, Amazon Web Services returns
+#' a value in the `Marker` field of the response. You can retrieve the next
+#' set of response records by providing the returned marker value in the
+#' `Marker` parameter and retrying the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5564,8 +6983,8 @@ redshift_describe_reserved_nodes <- function(ReservedNodeId = NULL, MaxRecords =
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of a cluster whose resize progress you are
 #' requesting. This parameter is case-sensitive.
 #' 
-#' By default, resize operations for all clusters defined for an AWS
-#' account are returned.
+#' By default, resize operations for all clusters defined for an Amazon Web
+#' Services account are returned.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5645,10 +7064,10 @@ redshift_describe_resize <- function(ClusterIdentifier) {
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_scheduled_actions`][redshift_describe_scheduled_actions]
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #' @param MaxRecords The maximum number of response records to return in each call. If the
 #' number of remaining response records exceeds the specified `MaxRecords`
 #' value, a value is returned in a `marker` field of the response. You can
@@ -5673,7 +7092,9 @@ redshift_describe_resize <- function(ClusterIdentifier) {
 #'           ClusterType = "string",
 #'           NodeType = "string",
 #'           NumberOfNodes = 123,
-#'           Classic = TRUE|FALSE
+#'           Classic = TRUE|FALSE,
+#'           ReservedNodeId = "string",
+#'           TargetReservedNodeOfferingId = "string"
 #'         ),
 #'         PauseCluster = list(
 #'           ClusterIdentifier = "string"
@@ -5747,12 +7168,12 @@ redshift_describe_scheduled_actions <- function(ScheduledActionName = NULL, Targ
 }
 .redshift$operations$describe_scheduled_actions <- redshift_describe_scheduled_actions
 
-#' Returns a list of snapshot copy grants owned by the AWS account in the
-#' destination region
+#' Returns a list of snapshot copy grants owned by the Amazon Web Services
+#' account in the destination region
 #'
 #' @description
-#' Returns a list of snapshot copy grants owned by the AWS account in the
-#' destination region.
+#' Returns a list of snapshot copy grants owned by the Amazon Web Services
+#' account in the destination region.
 #' 
 #' For more information about managing snapshot copy grants, go to [Amazon
 #' Redshift Database
@@ -5775,10 +7196,10 @@ redshift_describe_scheduled_actions <- function(ScheduledActionName = NULL, Targ
 #' Constraints: minimum 20, maximum 100.
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a `DescribeSnapshotCopyGrant`
-#' request exceed the value specified in `MaxRecords`, AWS returns a value
-#' in the `Marker` field of the response. You can retrieve the next set of
-#' response records by providing the returned marker value in the `Marker`
-#' parameter and retrying the request.
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
 #' 
 #' Constraints: You can specify either the **SnapshotCopyGrantName**
 #' parameter or the **Marker** parameter, but not both.
@@ -6261,10 +7682,10 @@ redshift_describe_tags <- function(ResourceName = NULL, ResourceType = NULL, Max
 #' @param Marker An optional parameter that specifies the starting point to return a set
 #' of response records. When the results of a
 #' [`describe_usage_limits`][redshift_describe_usage_limits] request exceed
-#' the value specified in `MaxRecords`, AWS returns a value in the `Marker`
-#' field of the response. You can retrieve the next set of response records
-#' by providing the returned marker value in the `Marker` parameter and
-#' retrying the request.
+#' the value specified in `MaxRecords`, Amazon Web Services returns a value
+#' in the `Marker` field of the response. You can retrieve the next set of
+#' response records by providing the returned marker value in the `Marker`
+#' parameter and retrying the request.
 #' @param TagKeys A tag key or keys for which you want to return all matching usage limit
 #' objects that are associated with the specified key or keys. For example,
 #' suppose that you have parameter groups that are tagged with keys called
@@ -6287,7 +7708,7 @@ redshift_describe_tags <- function(ResourceName = NULL, ResourceType = NULL, Max
 #'     list(
 #'       UsageLimitId = "string",
 #'       ClusterIdentifier = "string",
-#'       FeatureType = "spectrum"|"concurrency-scaling",
+#'       FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing",
 #'       LimitType = "time"|"data-scanned",
 #'       Amount = 123,
 #'       Period = "daily"|"weekly"|"monthly",
@@ -6309,7 +7730,7 @@ redshift_describe_tags <- function(ResourceName = NULL, ResourceType = NULL, Max
 #' svc$describe_usage_limits(
 #'   UsageLimitId = "string",
 #'   ClusterIdentifier = "string",
-#'   FeatureType = "spectrum"|"concurrency-scaling",
+#'   FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing",
 #'   MaxRecords = 123,
 #'   Marker = "string",
 #'   TagKeys = list(
@@ -6368,7 +7789,11 @@ redshift_describe_usage_limits <- function(UsageLimitId = NULL, ClusterIdentifie
 #'   LastFailureTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   LastFailureMessage = "string"
+#'   LastFailureMessage = "string",
+#'   LogDestinationType = "s3"|"cloudwatch",
+#'   LogExports = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -6406,10 +7831,10 @@ redshift_disable_logging <- function(ClusterIdentifier) {
 #' Disables the automatic copying of snapshots from one region to another
 #' region for a specified cluster.
 #' 
-#' If your cluster and its snapshots are encrypted using a customer master
-#' key (CMK) from AWS KMS, use
+#' If your cluster and its snapshots are encrypted using an encrypted
+#' symmetric key from Key Management Service, use
 #' [`delete_snapshot_copy_grant`][redshift_delete_snapshot_copy_grant] to
-#' delete the grant that grants Amazon Redshift permission to the CMK in
+#' delete the grant that grants Amazon Redshift permission to the key in
 #' the destination region.
 #'
 #' @usage
@@ -6438,7 +7863,16 @@ redshift_disable_logging <- function(ClusterIdentifier) {
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -6578,7 +8012,26 @@ redshift_disable_logging <- function(ClusterIdentifier) {
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -6610,6 +8063,81 @@ redshift_disable_snapshot_copy <- function(ClusterIdentifier) {
 }
 .redshift$operations$disable_snapshot_copy <- redshift_disable_snapshot_copy
 
+#' From a datashare consumer account, remove association for the specified
+#' datashare
+#'
+#' @description
+#' From a datashare consumer account, remove association for the specified
+#' datashare.
+#'
+#' @usage
+#' redshift_disassociate_data_share_consumer(DataShareArn,
+#'   DisassociateEntireAccount, ConsumerArn, ConsumerRegion)
+#'
+#' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare to remove association
+#' for.
+#' @param DisassociateEntireAccount A value that specifies whether association for the datashare is removed
+#' from the entire account.
+#' @param ConsumerArn The Amazon Resource Name (ARN) of the consumer that association for the
+#' datashare is removed from.
+#' @param ConsumerRegion From a datashare consumer account, removes association of a datashare
+#' from all the existing and future namespaces in the specified Amazon Web
+#' Services Region.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataShareArn = "string",
+#'   ProducerArn = "string",
+#'   AllowPubliclyAccessibleConsumers = TRUE|FALSE,
+#'   DataShareAssociations = list(
+#'     list(
+#'       ConsumerIdentifier = "string",
+#'       Status = "ACTIVE"|"PENDING_AUTHORIZATION"|"AUTHORIZED"|"DEAUTHORIZED"|"REJECTED"|"AVAILABLE",
+#'       ConsumerRegion = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusChangeDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   ManagedBy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_data_share_consumer(
+#'   DataShareArn = "string",
+#'   DisassociateEntireAccount = TRUE|FALSE,
+#'   ConsumerArn = "string",
+#'   ConsumerRegion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_disassociate_data_share_consumer
+redshift_disassociate_data_share_consumer <- function(DataShareArn, DisassociateEntireAccount = NULL, ConsumerArn = NULL, ConsumerRegion = NULL) {
+  op <- new_operation(
+    name = "DisassociateDataShareConsumer",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$disassociate_data_share_consumer_input(DataShareArn = DataShareArn, DisassociateEntireAccount = DisassociateEntireAccount, ConsumerArn = ConsumerArn, ConsumerRegion = ConsumerRegion)
+  output <- .redshift$disassociate_data_share_consumer_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$disassociate_data_share_consumer <- redshift_disassociate_data_share_consumer
+
 #' Starts logging information, such as queries and connection attempts, for
 #' the specified Amazon Redshift cluster
 #'
@@ -6618,12 +8146,13 @@ redshift_disable_snapshot_copy <- function(ClusterIdentifier) {
 #' the specified Amazon Redshift cluster.
 #'
 #' @usage
-#' redshift_enable_logging(ClusterIdentifier, BucketName, S3KeyPrefix)
+#' redshift_enable_logging(ClusterIdentifier, BucketName, S3KeyPrefix,
+#'   LogDestinationType, LogExports)
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster on which logging is to be started.
 #' 
 #' Example: `examplecluster`
-#' @param BucketName &#91;required&#93; The name of an existing S3 bucket where the log files are to be stored.
+#' @param BucketName The name of an existing S3 bucket where the log files are to be stored.
 #' 
 #' Constraints:
 #' 
@@ -6649,6 +8178,10 @@ redshift_disable_snapshot_copy <- function(ClusterIdentifier) {
 #'     -   x5c
 #' 
 #'     -   x7f or larger
+#' @param LogDestinationType The log destination type. An enum with possible values of `s3` and
+#' `cloudwatch`.
+#' @param LogExports The collection of exported log types. Log types include the connection
+#' log, user log and user activity log.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6663,7 +8196,11 @@ redshift_disable_snapshot_copy <- function(ClusterIdentifier) {
 #'   LastFailureTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   LastFailureMessage = "string"
+#'   LastFailureMessage = "string",
+#'   LogDestinationType = "s3"|"cloudwatch",
+#'   LogExports = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -6672,21 +8209,25 @@ redshift_disable_snapshot_copy <- function(ClusterIdentifier) {
 #' svc$enable_logging(
 #'   ClusterIdentifier = "string",
 #'   BucketName = "string",
-#'   S3KeyPrefix = "string"
+#'   S3KeyPrefix = "string",
+#'   LogDestinationType = "s3"|"cloudwatch",
+#'   LogExports = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_enable_logging
-redshift_enable_logging <- function(ClusterIdentifier, BucketName, S3KeyPrefix = NULL) {
+redshift_enable_logging <- function(ClusterIdentifier, BucketName = NULL, S3KeyPrefix = NULL, LogDestinationType = NULL, LogExports = NULL) {
   op <- new_operation(
     name = "EnableLogging",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$enable_logging_input(ClusterIdentifier = ClusterIdentifier, BucketName = BucketName, S3KeyPrefix = S3KeyPrefix)
+  input <- .redshift$enable_logging_input(ClusterIdentifier = ClusterIdentifier, BucketName = BucketName, S3KeyPrefix = S3KeyPrefix, LogDestinationType = LogDestinationType, LogExports = LogExports)
   output <- .redshift$enable_logging_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -6711,10 +8252,11 @@ redshift_enable_logging <- function(ClusterIdentifier, BucketName, S3KeyPrefix =
 #' 
 #' Constraints: Must be the valid name of an existing cluster that does not
 #' already have cross-region snapshot copy enabled.
-#' @param DestinationRegion &#91;required&#93; The destination AWS Region that you want to copy snapshots to.
+#' @param DestinationRegion &#91;required&#93; The destination Amazon Web Services Region that you want to copy
+#' snapshots to.
 #' 
-#' Constraints: Must be the name of a valid AWS Region. For more
-#' information, see [Regions and
+#' Constraints: Must be the name of a valid Amazon Web Services Region. For
+#' more information, see [Regions and
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region)
 #' in the Amazon Web Services General Reference.
 #' @param RetentionPeriod The number of days to retain automated snapshots in the destination
@@ -6723,11 +8265,12 @@ redshift_enable_logging <- function(ClusterIdentifier, BucketName, S3KeyPrefix =
 #' Default: 7.
 #' 
 #' Constraints: Must be at least 1 and no more than 35.
-#' @param SnapshotCopyGrantName The name of the snapshot copy grant to use when snapshots of an AWS
-#' KMS-encrypted cluster are copied to the destination region.
+#' @param SnapshotCopyGrantName The name of the snapshot copy grant to use when snapshots of an Amazon
+#' Web Services KMS-encrypted cluster are copied to the destination region.
 #' @param ManualSnapshotRetentionPeriod The number of days to retain newly copied snapshots in the destination
-#' AWS Region after they are copied from the source AWS Region. If the
-#' value is -1, the manual snapshot is retained indefinitely.
+#' Amazon Web Services Region after they are copied from the source Amazon
+#' Web Services Region. If the value is -1, the manual snapshot is retained
+#' indefinitely.
 #' 
 #' The value must be either -1 or an integer between 1 and 3,653.
 #'
@@ -6748,7 +8291,16 @@ redshift_enable_logging <- function(ClusterIdentifier, BucketName, S3KeyPrefix =
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -6888,7 +8440,26 @@ redshift_enable_logging <- function(ClusterIdentifier, BucketName, S3KeyPrefix =
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -6940,7 +8511,7 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #' Credentials](https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html)
 #' in the Amazon Redshift Cluster Management Guide.
 #' 
-#' The AWS Identity and Access Management (IAM)user or role that executes
+#' The Identity and Access Management (IAM) user or role that runs
 #' GetClusterCredentials must have an IAM policy attached that allows
 #' access to all necessary actions and resources. For more information
 #' about permissions, see [Resource Policies for
@@ -6951,7 +8522,7 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #' `redshift:JoinGroup` action with access to the listed `dbgroups`.
 #' 
 #' In addition, if the `AutoCreate` parameter is set to `True`, then the
-#' policy must include the `redshift:CreateClusterUser` privilege.
+#' policy must include the `redshift:CreateClusterUser` permission.
 #' 
 #' If the `DbName` parameter is specified, the IAM policy must allow access
 #' to the resource `dbname` for the specified database name.
@@ -7008,7 +8579,7 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #'     Words](https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
 #'     in the Amazon Redshift Database Developer Guide.
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster that contains the database for
-#' which your are requesting credentials. This parameter is case sensitive.
+#' which you are requesting credentials. This parameter is case sensitive.
 #' @param DurationSeconds The number of seconds until the returned temporary password expires.
 #' 
 #' Constraint: minimum 900, maximum 3600.
@@ -7083,6 +8654,196 @@ redshift_get_cluster_credentials <- function(DbUser, DbName = NULL, ClusterIdent
 }
 .redshift$operations$get_cluster_credentials <- redshift_get_cluster_credentials
 
+#' Returns a database user name and temporary password with temporary
+#' authorization to log in to an Amazon Redshift database
+#'
+#' @description
+#' Returns a database user name and temporary password with temporary
+#' authorization to log in to an Amazon Redshift database. The database
+#' user is mapped 1:1 to the source Identity and Access Management (IAM)
+#' identity. For more information about IAM identities, see [IAM Identities
+#' (users, user groups, and
+#' roles)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html) in the
+#' Amazon Web Services Identity and Access Management User Guide.
+#' 
+#' The Identity and Access Management (IAM) identity that runs this
+#' operation must have an IAM policy attached that allows access to all
+#' necessary actions and resources. For more information about permissions,
+#' see [Using identity-based policies (IAM
+#' policies)](https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html)
+#' in the Amazon Redshift Cluster Management Guide.
+#'
+#' @usage
+#' redshift_get_cluster_credentials_with_iam(DbName, ClusterIdentifier,
+#'   DurationSeconds)
+#'
+#' @param DbName The name of the database for which you are requesting credentials. If
+#' the database name is specified, the IAM policy must allow access to the
+#' resource `dbname` for the specified database name. If the database name
+#' is not specified, access to all databases is allowed.
+#' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster that contains the database for
+#' which you are requesting credentials.
+#' @param DurationSeconds The number of seconds until the returned temporary password expires.
+#' 
+#' Range: 900-3600. Default: 900.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DbUser = "string",
+#'   DbPassword = "string",
+#'   Expiration = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NextRefreshTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_cluster_credentials_with_iam(
+#'   DbName = "string",
+#'   ClusterIdentifier = "string",
+#'   DurationSeconds = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_get_cluster_credentials_with_iam
+redshift_get_cluster_credentials_with_iam <- function(DbName = NULL, ClusterIdentifier, DurationSeconds = NULL) {
+  op <- new_operation(
+    name = "GetClusterCredentialsWithIAM",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$get_cluster_credentials_with_iam_input(DbName = DbName, ClusterIdentifier = ClusterIdentifier, DurationSeconds = DurationSeconds)
+  output <- .redshift$get_cluster_credentials_with_iam_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$get_cluster_credentials_with_iam <- redshift_get_cluster_credentials_with_iam
+
+#' Gets the configuration options for the reserved-node exchange
+#'
+#' @description
+#' Gets the configuration options for the reserved-node exchange. These
+#' options include information about the source reserved node and target
+#' reserved node offering. Details include the node type, the price, the
+#' node count, and the offering type.
+#'
+#' @usage
+#' redshift_get_reserved_node_exchange_configuration_options(ActionType,
+#'   ClusterIdentifier, SnapshotIdentifier, MaxRecords, Marker)
+#'
+#' @param ActionType &#91;required&#93; The action type of the reserved-node configuration. The action type can
+#' be an exchange initiated from either a snapshot or a resize.
+#' @param ClusterIdentifier The identifier for the cluster that is the source for a reserved-node
+#' exchange.
+#' @param SnapshotIdentifier The identifier for the snapshot that is the source for the reserved-node
+#' exchange.
+#' @param MaxRecords The maximum number of response records to return in each call. If the
+#' number of remaining response records exceeds the specified `MaxRecords`
+#' value, a value is returned in a `Marker` field of the response. You can
+#' retrieve the next set of records by retrying the command with the
+#' returned marker value.
+#' @param Marker An optional pagination token provided by a previous
+#' [`get_reserved_node_exchange_configuration_options`][redshift_get_reserved_node_exchange_configuration_options]
+#' request. If this parameter is specified, the response includes only
+#' records beyond the marker, up to the value specified by the `MaxRecords`
+#' parameter. You can retrieve the next set of response records by
+#' providing the returned marker value in the `Marker` parameter and
+#' retrying the request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   ReservedNodeConfigurationOptionList = list(
+#'     list(
+#'       SourceReservedNode = list(
+#'         ReservedNodeId = "string",
+#'         ReservedNodeOfferingId = "string",
+#'         NodeType = "string",
+#'         StartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Duration = 123,
+#'         FixedPrice = 123.0,
+#'         UsagePrice = 123.0,
+#'         CurrencyCode = "string",
+#'         NodeCount = 123,
+#'         State = "string",
+#'         OfferingType = "string",
+#'         RecurringCharges = list(
+#'           list(
+#'             RecurringChargeAmount = 123.0,
+#'             RecurringChargeFrequency = "string"
+#'           )
+#'         ),
+#'         ReservedNodeOfferingType = "Regular"|"Upgradable"
+#'       ),
+#'       TargetReservedNodeCount = 123,
+#'       TargetReservedNodeOffering = list(
+#'         ReservedNodeOfferingId = "string",
+#'         NodeType = "string",
+#'         Duration = 123,
+#'         FixedPrice = 123.0,
+#'         UsagePrice = 123.0,
+#'         CurrencyCode = "string",
+#'         OfferingType = "string",
+#'         RecurringCharges = list(
+#'           list(
+#'             RecurringChargeAmount = 123.0,
+#'             RecurringChargeFrequency = "string"
+#'           )
+#'         ),
+#'         ReservedNodeOfferingType = "Regular"|"Upgradable"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_reserved_node_exchange_configuration_options(
+#'   ActionType = "restore-cluster"|"resize-cluster",
+#'   ClusterIdentifier = "string",
+#'   SnapshotIdentifier = "string",
+#'   MaxRecords = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_get_reserved_node_exchange_configuration_options
+redshift_get_reserved_node_exchange_configuration_options <- function(ActionType, ClusterIdentifier = NULL, SnapshotIdentifier = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "GetReservedNodeExchangeConfigurationOptions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$get_reserved_node_exchange_configuration_options_input(ActionType = ActionType, ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$get_reserved_node_exchange_configuration_options_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$get_reserved_node_exchange_configuration_options <- redshift_get_reserved_node_exchange_configuration_options
+
 #' Returns an array of DC2 ReservedNodeOfferings that matches the payment
 #' type, term, and usage price of the given DC1 reserved node
 #'
@@ -7156,6 +8917,116 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 }
 .redshift$operations$get_reserved_node_exchange_offerings <- redshift_get_reserved_node_exchange_offerings
 
+#' Modifies whether a cluster can use AQUA (Advanced Query Accelerator)
+#'
+#' @description
+#' Modifies whether a cluster can use AQUA (Advanced Query Accelerator).
+#'
+#' @usage
+#' redshift_modify_aqua_configuration(ClusterIdentifier,
+#'   AquaConfigurationStatus)
+#'
+#' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster to be modified.
+#' @param AquaConfigurationStatus The new value of AQUA configuration status. Possible values include the
+#' following.
+#' 
+#' -   enabled - Use AQUA if it is available for the current Amazon Web
+#'     Services Region and Amazon Redshift node type.
+#' 
+#' -   disabled - Don't use AQUA.
+#' 
+#' -   auto - Amazon Redshift determines whether to use AQUA.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AquaConfiguration = list(
+#'     AquaStatus = "enabled"|"disabled"|"applying",
+#'     AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_aqua_configuration(
+#'   ClusterIdentifier = "string",
+#'   AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_modify_aqua_configuration
+redshift_modify_aqua_configuration <- function(ClusterIdentifier, AquaConfigurationStatus = NULL) {
+  op <- new_operation(
+    name = "ModifyAquaConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$modify_aqua_configuration_input(ClusterIdentifier = ClusterIdentifier, AquaConfigurationStatus = AquaConfigurationStatus)
+  output <- .redshift$modify_aqua_configuration_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$modify_aqua_configuration <- redshift_modify_aqua_configuration
+
+#' Modifies an authentication profile
+#'
+#' @description
+#' Modifies an authentication profile.
+#'
+#' @usage
+#' redshift_modify_authentication_profile(AuthenticationProfileName,
+#'   AuthenticationProfileContent)
+#'
+#' @param AuthenticationProfileName &#91;required&#93; The name of the authentication profile to replace.
+#' @param AuthenticationProfileContent &#91;required&#93; The new content of the authentication profile in JSON format. The
+#' maximum length of the JSON string is determined by a quota for your
+#' account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AuthenticationProfileName = "string",
+#'   AuthenticationProfileContent = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_authentication_profile(
+#'   AuthenticationProfileName = "string",
+#'   AuthenticationProfileContent = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_modify_authentication_profile
+redshift_modify_authentication_profile <- function(AuthenticationProfileName, AuthenticationProfileContent) {
+  op <- new_operation(
+    name = "ModifyAuthenticationProfile",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$modify_authentication_profile_input(AuthenticationProfileName = AuthenticationProfileName, AuthenticationProfileContent = AuthenticationProfileContent)
+  output <- .redshift$modify_authentication_profile_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$modify_authentication_profile <- redshift_modify_authentication_profile
+
 #' Modifies the settings for a cluster
 #'
 #' @description
@@ -7166,7 +9037,7 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' number of nodes and the node type even if one of the parameters does not
 #' change.
 #' 
-#' You can add another security or parameter group, or change the master
+#' You can add another security or parameter group, or change the admin
 #' user password. Resetting a cluster password or modifying the security
 #' groups associated with a cluster do not need a reboot. However,
 #' modifying a parameter group requires a reboot for parameters to take
@@ -7235,15 +9106,15 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' @param VpcSecurityGroupIds A list of virtual private cloud (VPC) security groups to be associated
 #' with the cluster. This change is asynchronously applied as soon as
 #' possible.
-#' @param MasterUserPassword The new password for the cluster master user. This change is
+#' @param MasterUserPassword The new password for the cluster admin user. This change is
 #' asynchronously applied as soon as possible. Between the time of the
 #' request and the completion of the request, the `MasterUserPassword`
 #' element exists in the `PendingModifiedValues` element of the operation
 #' response.
 #' 
 #' Operations never return the password, so this operation provides a way
-#' to regain access to the master user account for a cluster if the
-#' password is lost.
+#' to regain access to the admin user account for a cluster if the password
+#' is lost.
 #' 
 #' Default: Uses existing setting.
 #' 
@@ -7257,8 +9128,8 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' 
 #' -   Must contain one number.
 #' 
-#' -   Can be any printable ASCII character (ASCII code 33 to 126) except '
-#'     (single quote), " (double quote), \\, /, @@, or space.
+#' -   Can be any printable ASCII character (ASCII code 33-126) except `\'`
+#'     (single quote), `\"` (double quote), `\`, `/`, or `@@`.
 #' @param ClusterParameterGroupName The name of the cluster parameter group to apply to this cluster. This
 #' change is applied only after the cluster is rebooted. To reboot a
 #' cluster use [`reboot_cluster`][redshift_reboot_cluster].
@@ -7275,6 +9146,9 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' If you decrease the automated snapshot retention period from its current
 #' value, existing automated snapshots that fall outside of the new
 #' retention period will be immediately deleted.
+#' 
+#' You can't disable automated snapshots for RA3 node types. Set the
+#' automated retention period from 1-35 days.
 #' 
 #' Default: Uses existing setting.
 #' 
@@ -7336,7 +9210,8 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
-#' -   Must be unique for all clusters within an AWS account.
+#' -   Must be unique for all clusters within an Amazon Web Services
+#'     account.
 #' 
 #' Example: `examplecluster`
 #' @param PubliclyAccessible If `true`, the cluster can be accessed from a public network. Only
@@ -7370,8 +9245,8 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' `KmsKeyId`, we encrypt with the default key.
 #' 
 #' If the value is not encrypted (false), then the cluster is decrypted.
-#' @param KmsKeyId The AWS Key Management Service (KMS) key ID of the encryption key that
-#' you want to use to encrypt data in the cluster.
+#' @param KmsKeyId The Key Management Service (KMS) key ID of the encryption key that you
+#' want to use to encrypt data in the cluster.
 #' @param AvailabilityZoneRelocation The option to enable relocation for an Amazon Redshift cluster between
 #' Availability Zones after the cluster modification is complete.
 #' @param AvailabilityZone The option to initiate relocation for an Amazon Redshift cluster to the
@@ -7395,7 +9270,16 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -7535,7 +9419,26 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -7630,7 +9533,16 @@ redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -7770,7 +9682,26 @@ redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -7803,27 +9734,29 @@ redshift_modify_cluster_db_revision <- function(ClusterIdentifier, RevisionTarge
 }
 .redshift$operations$modify_cluster_db_revision <- redshift_modify_cluster_db_revision
 
-#' Modifies the list of AWS Identity and Access Management (IAM) roles that
-#' can be used by the cluster to access other AWS services
+#' Modifies the list of Identity and Access Management (IAM) roles that can
+#' be used by the cluster to access other Amazon Web Services services
 #'
 #' @description
-#' Modifies the list of AWS Identity and Access Management (IAM) roles that
-#' can be used by the cluster to access other AWS services.
+#' Modifies the list of Identity and Access Management (IAM) roles that can
+#' be used by the cluster to access other Amazon Web Services services.
 #' 
-#' A cluster can have up to 10 IAM roles associated at any time.
+#' The maximum number of IAM roles that you can associate is subject to a
+#' quota. For more information, go to [Quotas and
+#' limits](https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html)
+#' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
 #' redshift_modify_cluster_iam_roles(ClusterIdentifier, AddIamRoles,
-#'   RemoveIamRoles)
+#'   RemoveIamRoles, DefaultIamRoleArn)
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster for which you want to associate or
 #' disassociate IAM roles.
 #' @param AddIamRoles Zero or more IAM roles to associate with the cluster. The roles must be
-#' in their Amazon Resource Name (ARN) format. You can associate up to 10
-#' IAM roles with a single cluster in a single request.
+#' in their Amazon Resource Name (ARN) format.
 #' @param RemoveIamRoles Zero or more IAM roles in ARN format to disassociate from the cluster.
-#' You can disassociate up to 10 IAM roles from a single cluster in a
-#' single request.
+#' @param DefaultIamRoleArn The Amazon Resource Name (ARN) for the IAM role that was set as default
+#' for the cluster when the cluster was last modified.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7842,7 +9775,16 @@ redshift_modify_cluster_db_revision <- function(ClusterIdentifier, RevisionTarge
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -7982,7 +9924,26 @@ redshift_modify_cluster_db_revision <- function(ClusterIdentifier, RevisionTarge
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -7996,21 +9957,22 @@ redshift_modify_cluster_db_revision <- function(ClusterIdentifier, RevisionTarge
 #'   ),
 #'   RemoveIamRoles = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DefaultIamRoleArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_modify_cluster_iam_roles
-redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = NULL, RemoveIamRoles = NULL) {
+redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = NULL, RemoveIamRoles = NULL, DefaultIamRoleArn = NULL) {
   op <- new_operation(
     name = "ModifyClusterIamRoles",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$modify_cluster_iam_roles_input(ClusterIdentifier = ClusterIdentifier, AddIamRoles = AddIamRoles, RemoveIamRoles = RemoveIamRoles)
+  input <- .redshift$modify_cluster_iam_roles_input(ClusterIdentifier = ClusterIdentifier, AddIamRoles = AddIamRoles, RemoveIamRoles = RemoveIamRoles, DefaultIamRoleArn = DefaultIamRoleArn)
   output <- .redshift$modify_cluster_iam_roles_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -8058,7 +10020,16 @@ redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = N
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -8198,7 +10169,26 @@ redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = N
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -8242,7 +10232,8 @@ redshift_modify_cluster_maintenance <- function(ClusterIdentifier, DeferMaintena
 #' Modifies the parameters of a parameter group
 #'
 #' @description
-#' Modifies the parameters of a parameter group.
+#' Modifies the parameters of a parameter group. For the parameters
+#' parameter, it can't contain ASCII characters.
 #' 
 #' For more information about parameters and parameter groups, go to
 #' [Amazon Redshift Parameter
@@ -8554,6 +10545,83 @@ redshift_modify_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 }
 .redshift$operations$modify_cluster_subnet_group <- redshift_modify_cluster_subnet_group
 
+#' Modifies a Redshift-managed VPC endpoint
+#'
+#' @description
+#' Modifies a Redshift-managed VPC endpoint.
+#'
+#' @usage
+#' redshift_modify_endpoint_access(EndpointName, VpcSecurityGroupIds)
+#'
+#' @param EndpointName &#91;required&#93; The endpoint to be modified.
+#' @param VpcSecurityGroupIds The complete list of VPC security groups associated with the endpoint
+#' after the endpoint is modified.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ClusterIdentifier = "string",
+#'   ResourceOwner = "string",
+#'   SubnetGroupName = "string",
+#'   EndpointStatus = "string",
+#'   EndpointName = "string",
+#'   EndpointCreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Port = 123,
+#'   Address = "string",
+#'   VpcSecurityGroups = list(
+#'     list(
+#'       VpcSecurityGroupId = "string",
+#'       Status = "string"
+#'     )
+#'   ),
+#'   VpcEndpoint = list(
+#'     VpcEndpointId = "string",
+#'     VpcId = "string",
+#'     NetworkInterfaces = list(
+#'       list(
+#'         NetworkInterfaceId = "string",
+#'         SubnetId = "string",
+#'         PrivateIpAddress = "string",
+#'         AvailabilityZone = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_endpoint_access(
+#'   EndpointName = "string",
+#'   VpcSecurityGroupIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_modify_endpoint_access
+redshift_modify_endpoint_access <- function(EndpointName, VpcSecurityGroupIds = NULL) {
+  op <- new_operation(
+    name = "ModifyEndpointAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$modify_endpoint_access_input(EndpointName = EndpointName, VpcSecurityGroupIds = VpcSecurityGroupIds)
+  output <- .redshift$modify_endpoint_access_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$modify_endpoint_access <- redshift_modify_endpoint_access
+
 #' Modifies an existing Amazon Redshift event notification subscription
 #'
 #' @description
@@ -8570,8 +10638,8 @@ redshift_modify_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #' @param SourceType The type of source that will be generating the events. For example, if
 #' you want to be notified of events generated by a cluster, you would set
 #' this parameter to cluster. If this value is not specified, events are
-#' returned for all Amazon Redshift objects in your AWS account. You must
-#' specify a source type in order to specify source IDs.
+#' returned for all Amazon Redshift objects in your Amazon Web Services
+#' account. You must specify a source type in order to specify source IDs.
 #' 
 #' Valid values: cluster, cluster-parameter-group, cluster-security-group,
 #' cluster-snapshot, and scheduled-action.
@@ -8587,7 +10655,7 @@ redshift_modify_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #' @param EventCategories Specifies the Amazon Redshift event categories to be published by the
 #' event notification subscription.
 #' 
-#' Values: configuration, management, monitoring, security
+#' Values: configuration, management, monitoring, security, pending
 #' @param Severity Specifies the Amazon Redshift event severity to be published by the
 #' event notification subscription.
 #' 
@@ -8699,7 +10767,9 @@ redshift_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = N
 #'       ClusterType = "string",
 #'       NodeType = "string",
 #'       NumberOfNodes = 123,
-#'       Classic = TRUE|FALSE
+#'       Classic = TRUE|FALSE,
+#'       ReservedNodeId = "string",
+#'       TargetReservedNodeOfferingId = "string"
 #'     ),
 #'     PauseCluster = list(
 #'       ClusterIdentifier = "string"
@@ -8736,7 +10806,9 @@ redshift_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = N
 #'       ClusterType = "string",
 #'       NodeType = "string",
 #'       NumberOfNodes = 123,
-#'       Classic = TRUE|FALSE
+#'       Classic = TRUE|FALSE,
+#'       ReservedNodeId = "string",
+#'       TargetReservedNodeOfferingId = "string"
 #'     ),
 #'     PauseCluster = list(
 #'       ClusterIdentifier = "string"
@@ -8778,18 +10850,20 @@ redshift_modify_scheduled_action <- function(ScheduledActionName, TargetAction =
 }
 .redshift$operations$modify_scheduled_action <- redshift_modify_scheduled_action
 
-#' Modifies the number of days to retain snapshots in the destination AWS
-#' Region after they are copied from the source AWS Region
+#' Modifies the number of days to retain snapshots in the destination
+#' Amazon Web Services Region after they are copied from the source Amazon
+#' Web Services Region
 #'
 #' @description
-#' Modifies the number of days to retain snapshots in the destination AWS
-#' Region after they are copied from the source AWS Region. By default,
-#' this operation only changes the retention period of copied automated
-#' snapshots. The retention periods for both new and existing copied
-#' automated snapshots are updated with the new retention period. You can
-#' set the manual option to change only the retention periods of copied
-#' manual snapshots. If you set this option, only newly copied manual
-#' snapshots have the new retention period.
+#' Modifies the number of days to retain snapshots in the destination
+#' Amazon Web Services Region after they are copied from the source Amazon
+#' Web Services Region. By default, this operation only changes the
+#' retention period of copied automated snapshots. The retention periods
+#' for both new and existing copied automated snapshots are updated with
+#' the new retention period. You can set the manual option to change only
+#' the retention periods of copied manual snapshots. If you set this
+#' option, only newly copied manual snapshots have the new retention
+#' period.
 #'
 #' @usage
 #' redshift_modify_snapshot_copy_retention_period(ClusterIdentifier,
@@ -8797,20 +10871,22 @@ redshift_modify_scheduled_action <- function(ScheduledActionName, TargetAction =
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster for which you want to change the
 #' retention period for either automated or manual snapshots that are
-#' copied to a destination AWS Region.
+#' copied to a destination Amazon Web Services Region.
 #' 
 #' Constraints: Must be the valid name of an existing cluster that has
 #' cross-region snapshot copy enabled.
-#' @param RetentionPeriod &#91;required&#93; The number of days to retain automated snapshots in the destination AWS
-#' Region after they are copied from the source AWS Region.
+#' @param RetentionPeriod &#91;required&#93; The number of days to retain automated snapshots in the destination
+#' Amazon Web Services Region after they are copied from the source Amazon
+#' Web Services Region.
 #' 
 #' By default, this only changes the retention period of copied automated
 #' snapshots.
 #' 
 #' If you decrease the retention period for automated snapshots that are
-#' copied to a destination AWS Region, Amazon Redshift deletes any existing
-#' automated snapshots that were copied to the destination AWS Region and
-#' that fall outside of the new retention period.
+#' copied to a destination Amazon Web Services Region, Amazon Redshift
+#' deletes any existing automated snapshots that were copied to the
+#' destination Amazon Web Services Region and that fall outside of the new
+#' retention period.
 #' 
 #' Constraints: Must be at least 1 and no more than 35 for automated
 #' snapshots.
@@ -8843,7 +10919,16 @@ redshift_modify_scheduled_action <- function(ScheduledActionName, TargetAction =
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -8983,7 +11068,26 @@ redshift_modify_scheduled_action <- function(ScheduledActionName, TargetAction =
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -9113,7 +11217,7 @@ redshift_modify_snapshot_schedule <- function(ScheduleIdentifier, ScheduleDefini
 #' list(
 #'   UsageLimitId = "string",
 #'   ClusterIdentifier = "string",
-#'   FeatureType = "spectrum"|"concurrency-scaling",
+#'   FeatureType = "spectrum"|"concurrency-scaling"|"cross-region-datasharing",
 #'   LimitType = "time"|"data-scanned",
 #'   Amount = 123,
 #'   Period = "daily"|"weekly"|"monthly",
@@ -9183,7 +11287,16 @@ redshift_modify_usage_limit <- function(UsageLimitId, Amount = NULL, BreachActio
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -9323,7 +11436,26 @@ redshift_modify_usage_limit <- function(UsageLimitId, Amount = NULL, BreachActio
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -9472,7 +11604,16 @@ redshift_purchase_reserved_node_offering <- function(ReservedNodeOfferingId, Nod
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -9612,7 +11753,26 @@ redshift_purchase_reserved_node_offering <- function(ReservedNodeOfferingId, Nod
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -9643,6 +11803,67 @@ redshift_reboot_cluster <- function(ClusterIdentifier) {
   return(response)
 }
 .redshift$operations$reboot_cluster <- redshift_reboot_cluster
+
+#' From a datashare consumer account, rejects the specified datashare
+#'
+#' @description
+#' From a datashare consumer account, rejects the specified datashare.
+#'
+#' @usage
+#' redshift_reject_data_share(DataShareArn)
+#'
+#' @param DataShareArn &#91;required&#93; The Amazon Resource Name (ARN) of the datashare to reject.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataShareArn = "string",
+#'   ProducerArn = "string",
+#'   AllowPubliclyAccessibleConsumers = TRUE|FALSE,
+#'   DataShareAssociations = list(
+#'     list(
+#'       ConsumerIdentifier = "string",
+#'       Status = "ACTIVE"|"PENDING_AUTHORIZATION"|"AUTHORIZED"|"DEAUTHORIZED"|"REJECTED"|"AVAILABLE",
+#'       ConsumerRegion = "string",
+#'       CreatedDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       StatusChangeDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   ManagedBy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$reject_data_share(
+#'   DataShareArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_reject_data_share
+redshift_reject_data_share <- function(DataShareArn) {
+  op <- new_operation(
+    name = "RejectDataShare",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$reject_data_share_input(DataShareArn = DataShareArn)
+  output <- .redshift$reject_data_share_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$reject_data_share <- redshift_reject_data_share
 
 #' Sets one or more parameters of the specified parameter group to their
 #' default values and sets the source values of the parameters to
@@ -9756,7 +11977,7 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #'
 #' @usage
 #' redshift_resize_cluster(ClusterIdentifier, ClusterType, NodeType,
-#'   NumberOfNodes, Classic)
+#'   NumberOfNodes, Classic, ReservedNodeId, TargetReservedNodeOfferingId)
 #'
 #' @param ClusterIdentifier &#91;required&#93; The unique identifier for the cluster to resize.
 #' @param ClusterType The new cluster type for the specified cluster.
@@ -9767,6 +11988,8 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #' @param Classic A boolean value indicating whether the resize operation is using the
 #' classic resize process. If you don't provide this parameter or set the
 #' value to `false`, the resize type is elastic.
+#' @param ReservedNodeId The identifier of the reserved node.
+#' @param TargetReservedNodeOfferingId The identifier of the target reserved node offering.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9785,7 +12008,16 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -9925,7 +12157,26 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -9937,21 +12188,23 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #'   ClusterType = "string",
 #'   NodeType = "string",
 #'   NumberOfNodes = 123,
-#'   Classic = TRUE|FALSE
+#'   Classic = TRUE|FALSE,
+#'   ReservedNodeId = "string",
+#'   TargetReservedNodeOfferingId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_resize_cluster
-redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeType = NULL, NumberOfNodes = NULL, Classic = NULL) {
+redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeType = NULL, NumberOfNodes = NULL, Classic = NULL, ReservedNodeId = NULL, TargetReservedNodeOfferingId = NULL) {
   op <- new_operation(
     name = "ResizeCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$resize_cluster_input(ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, NumberOfNodes = NumberOfNodes, Classic = Classic)
+  input <- .redshift$resize_cluster_input(ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, NumberOfNodes = NumberOfNodes, Classic = Classic, ReservedNodeId = ReservedNodeId, TargetReservedNodeOfferingId = TargetReservedNodeOfferingId)
   output <- .redshift$resize_cluster_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -9984,15 +12237,16 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'
 #' @usage
 #' redshift_restore_from_cluster_snapshot(ClusterIdentifier,
-#'   SnapshotIdentifier, SnapshotClusterIdentifier, Port, AvailabilityZone,
-#'   AllowVersionUpgrade, ClusterSubnetGroupName, PubliclyAccessible,
-#'   OwnerAccount, HsmClientCertificateIdentifier,
+#'   SnapshotIdentifier, SnapshotArn, SnapshotClusterIdentifier, Port,
+#'   AvailabilityZone, AllowVersionUpgrade, ClusterSubnetGroupName,
+#'   PubliclyAccessible, OwnerAccount, HsmClientCertificateIdentifier,
 #'   HsmConfigurationIdentifier, ElasticIp, ClusterParameterGroupName,
 #'   ClusterSecurityGroups, VpcSecurityGroupIds, PreferredMaintenanceWindow,
 #'   AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod,
 #'   KmsKeyId, NodeType, EnhancedVpcRouting, AdditionalInfo, IamRoles,
 #'   MaintenanceTrackName, SnapshotScheduleIdentifier, NumberOfNodes,
-#'   AvailabilityZoneRelocation)
+#'   AvailabilityZoneRelocation, AquaConfigurationStatus, DefaultIamRoleArn,
+#'   ReservedNodeId, TargetReservedNodeOfferingId, Encrypted)
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the cluster that will be created from restoring the
 #' snapshot.
@@ -10007,11 +12261,14 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' 
 #' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
-#' -   Must be unique for all clusters within an AWS account.
-#' @param SnapshotIdentifier &#91;required&#93; The name of the snapshot from which to create the new cluster. This
+#' -   Must be unique for all clusters within an Amazon Web Services
+#'     account.
+#' @param SnapshotIdentifier The name of the snapshot from which to create the new cluster. This
 #' parameter isn't case sensitive.
 #' 
 #' Example: `my-snapshot-id`
+#' @param SnapshotArn The Amazon Resource Name (ARN) of the snapshot associated with the
+#' message to restore from a cluster.
 #' @param SnapshotClusterIdentifier The name of the cluster the source snapshot was created from. This
 #' parameter is required if your IAM user has a policy containing a
 #' snapshot resource element that specifies anything other than * for the
@@ -10035,15 +12292,17 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' A snapshot of cluster in VPC can be restored only in VPC. Therefore, you
 #' must provide subnet group name where you want the cluster restored.
 #' @param PubliclyAccessible If `true`, the cluster can be accessed from a public network.
-#' @param OwnerAccount The AWS customer account used to create or copy the snapshot. Required
-#' if you are restoring a snapshot you do not own, optional if you own the
-#' snapshot.
+#' @param OwnerAccount The Amazon Web Services account used to create or copy the snapshot.
+#' Required if you are restoring a snapshot you do not own, optional if you
+#' own the snapshot.
 #' @param HsmClientCertificateIdentifier Specifies the name of the HSM client certificate the Amazon Redshift
 #' cluster uses to retrieve the data encryption keys stored in an HSM.
 #' @param HsmConfigurationIdentifier Specifies the name of the HSM configuration that contains the
 #' information the Amazon Redshift cluster can use to retrieve and store
 #' keys in an HSM.
-#' @param ElasticIp The elastic IP (EIP) address for the cluster.
+#' @param ElasticIp The elastic IP (EIP) address for the cluster. You don't have to specify
+#' the EIP for a publicly accessible cluster with
+#' AvailabilityZoneRelocation turned on.
 #' @param ClusterParameterGroupName The name of the parameter group to be associated with this cluster.
 #' 
 #' Default: The default Amazon Redshift cluster parameter group. For
@@ -10088,6 +12347,9 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' disabled, you can still create manual snapshots when you want with
 #' [`create_cluster_snapshot`][redshift_create_cluster_snapshot].
 #' 
+#' You can't disable automated snapshots for RA3 node types. Set the
+#' automated retention period from 1-35 days.
+#' 
 #' Default: The value selected for the cluster from which the snapshot was
 #' taken.
 #' 
@@ -10097,9 +12359,13 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' the retention period of existing snapshots.
 #' 
 #' The value must be either -1 or an integer between 1 and 3,653.
-#' @param KmsKeyId The AWS Key Management Service (KMS) key ID of the encryption key that
-#' you want to use to encrypt data in the cluster that you restore from a
-#' shared snapshot.
+#' @param KmsKeyId The Key Management Service (KMS) key ID of the encryption key that
+#' encrypts data in the cluster restored from a shared snapshot. You can
+#' also provide the key ID when you restore from an unencrypted snapshot to
+#' an encrypted cluster in the same account. Additionally, you can specify
+#' a new KMS key ID when you restore from an encrypted snapshot in the same
+#' account in order to change it. In that case, the restored cluster is
+#' encrypted with the new KMS key ID.
 #' @param NodeType The node type that the restored cluster will be provisioned with.
 #' 
 #' Default: The node type of the cluster from which the snapshot was taken.
@@ -10124,12 +12390,14 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' 
 #' Default: false
 #' @param AdditionalInfo Reserved.
-#' @param IamRoles A list of AWS Identity and Access Management (IAM) roles that can be
-#' used by the cluster to access other AWS services. You must supply the
-#' IAM roles in their Amazon Resource Name (ARN) format. You can supply up
-#' to 10 IAM roles in a single request.
+#' @param IamRoles A list of Identity and Access Management (IAM) roles that can be used by
+#' the cluster to access other Amazon Web Services services. You must
+#' supply the IAM roles in their Amazon Resource Name (ARN) format.
 #' 
-#' A cluster can have up to 10 IAM roles associated at any time.
+#' The maximum number of IAM roles that you can associate is subject to a
+#' quota. For more information, go to [Quotas and
+#' limits](https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html)
+#' in the *Amazon Redshift Cluster Management Guide*.
 #' @param MaintenanceTrackName The name of the maintenance track for the restored cluster. When you
 #' take a snapshot, the snapshot inherits the `MaintenanceTrack` value from
 #' the cluster. The snapshot might be on a different track than the cluster
@@ -10141,6 +12409,23 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' @param NumberOfNodes The number of nodes specified when provisioning the restored cluster.
 #' @param AvailabilityZoneRelocation The option to enable relocation for an Amazon Redshift cluster between
 #' Availability Zones after the cluster is restored.
+#' @param AquaConfigurationStatus The value represents how the cluster is configured to use AQUA (Advanced
+#' Query Accelerator) after the cluster is restored. Possible values
+#' include the following.
+#' 
+#' -   enabled - Use AQUA if it is available for the current Amazon Web
+#'     Services Region and Amazon Redshift node type.
+#' 
+#' -   disabled - Don't use AQUA.
+#' 
+#' -   auto - Amazon Redshift determines whether to use AQUA.
+#' @param DefaultIamRoleArn The Amazon Resource Name (ARN) for the IAM role that was set as default
+#' for the cluster when the cluster was last modified while it was restored
+#' from a snapshot.
+#' @param ReservedNodeId The identifier of the target reserved node offering.
+#' @param TargetReservedNodeOfferingId The identifier of the target reserved node offering.
+#' @param Encrypted Enables support for restoring an unencrypted snapshot to a cluster
+#' encrypted with Key Management Service (KMS) and a customer managed key.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10159,7 +12444,16 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -10299,7 +12593,26 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -10309,6 +12622,7 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' svc$restore_from_cluster_snapshot(
 #'   ClusterIdentifier = "string",
 #'   SnapshotIdentifier = "string",
+#'   SnapshotArn = "string",
 #'   SnapshotClusterIdentifier = "string",
 #'   Port = 123,
 #'   AvailabilityZone = "string",
@@ -10339,21 +12653,26 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #'   MaintenanceTrackName = "string",
 #'   SnapshotScheduleIdentifier = "string",
 #'   NumberOfNodes = 123,
-#'   AvailabilityZoneRelocation = TRUE|FALSE
+#'   AvailabilityZoneRelocation = TRUE|FALSE,
+#'   AquaConfigurationStatus = "enabled"|"disabled"|"auto",
+#'   DefaultIamRoleArn = "string",
+#'   ReservedNodeId = "string",
+#'   TargetReservedNodeOfferingId = "string",
+#'   Encrypted = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_restore_from_cluster_snapshot
-redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier, SnapshotClusterIdentifier = NULL, Port = NULL, AvailabilityZone = NULL, AllowVersionUpgrade = NULL, ClusterSubnetGroupName = NULL, PubliclyAccessible = NULL, OwnerAccount = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, ClusterParameterGroupName = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, KmsKeyId = NULL, NodeType = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, NumberOfNodes = NULL, AvailabilityZoneRelocation = NULL) {
+redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier = NULL, SnapshotArn = NULL, SnapshotClusterIdentifier = NULL, Port = NULL, AvailabilityZone = NULL, AllowVersionUpgrade = NULL, ClusterSubnetGroupName = NULL, PubliclyAccessible = NULL, OwnerAccount = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, ClusterParameterGroupName = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, KmsKeyId = NULL, NodeType = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, NumberOfNodes = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, ReservedNodeId = NULL, TargetReservedNodeOfferingId = NULL, Encrypted = NULL) {
   op <- new_operation(
     name = "RestoreFromClusterSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$restore_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotClusterIdentifier = SnapshotClusterIdentifier, Port = Port, AvailabilityZone = AvailabilityZone, AllowVersionUpgrade = AllowVersionUpgrade, ClusterSubnetGroupName = ClusterSubnetGroupName, PubliclyAccessible = PubliclyAccessible, OwnerAccount = OwnerAccount, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, ClusterParameterGroupName = ClusterParameterGroupName, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, KmsKeyId = KmsKeyId, NodeType = NodeType, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, NumberOfNodes = NumberOfNodes, AvailabilityZoneRelocation = AvailabilityZoneRelocation)
+  input <- .redshift$restore_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotClusterIdentifier = SnapshotClusterIdentifier, Port = Port, AvailabilityZone = AvailabilityZone, AllowVersionUpgrade = AllowVersionUpgrade, ClusterSubnetGroupName = ClusterSubnetGroupName, PubliclyAccessible = PubliclyAccessible, OwnerAccount = OwnerAccount, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, ClusterParameterGroupName = ClusterParameterGroupName, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, KmsKeyId = KmsKeyId, NodeType = NodeType, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, NumberOfNodes = NumberOfNodes, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, ReservedNodeId = ReservedNodeId, TargetReservedNodeOfferingId = TargetReservedNodeOfferingId, Encrypted = Encrypted)
   output <- .redshift$restore_from_cluster_snapshot_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -10388,7 +12707,8 @@ redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotId
 #' @usage
 #' redshift_restore_table_from_cluster_snapshot(ClusterIdentifier,
 #'   SnapshotIdentifier, SourceDatabaseName, SourceSchemaName,
-#'   SourceTableName, TargetDatabaseName, TargetSchemaName, NewTableName)
+#'   SourceTableName, TargetDatabaseName, TargetSchemaName, NewTableName,
+#'   EnableCaseSensitiveIdentifier)
 #'
 #' @param ClusterIdentifier &#91;required&#93; The identifier of the Amazon Redshift cluster to restore the table to.
 #' @param SnapshotIdentifier &#91;required&#93; The identifier of the snapshot to restore the table from. This snapshot
@@ -10402,6 +12722,9 @@ redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotId
 #' @param TargetDatabaseName The name of the database to restore the table to.
 #' @param TargetSchemaName The name of the schema to restore the table to.
 #' @param NewTableName &#91;required&#93; The name of the table to create as a result of the current request.
+#' @param EnableCaseSensitiveIdentifier Indicates whether name identifiers for database, schema, and table are
+#' case sensitive. If `true`, the names are case sensitive. If `false`
+#' (default), the names are not case sensitive.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10438,21 +12761,22 @@ redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotId
 #'   SourceTableName = "string",
 #'   TargetDatabaseName = "string",
 #'   TargetSchemaName = "string",
-#'   NewTableName = "string"
+#'   NewTableName = "string",
+#'   EnableCaseSensitiveIdentifier = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_restore_table_from_cluster_snapshot
-redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier, SourceDatabaseName, SourceSchemaName = NULL, SourceTableName, TargetDatabaseName = NULL, TargetSchemaName = NULL, NewTableName) {
+redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier, SourceDatabaseName, SourceSchemaName = NULL, SourceTableName, TargetDatabaseName = NULL, TargetSchemaName = NULL, NewTableName, EnableCaseSensitiveIdentifier = NULL) {
   op <- new_operation(
     name = "RestoreTableFromClusterSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$restore_table_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SourceDatabaseName = SourceDatabaseName, SourceSchemaName = SourceSchemaName, SourceTableName = SourceTableName, TargetDatabaseName = TargetDatabaseName, TargetSchemaName = TargetSchemaName, NewTableName = NewTableName)
+  input <- .redshift$restore_table_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SourceDatabaseName = SourceDatabaseName, SourceSchemaName = SourceSchemaName, SourceTableName = SourceTableName, TargetDatabaseName = TargetDatabaseName, TargetSchemaName = TargetSchemaName, NewTableName = NewTableName, EnableCaseSensitiveIdentifier = EnableCaseSensitiveIdentifier)
   output <- .redshift$restore_table_from_cluster_snapshot_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -10489,7 +12813,16 @@ redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, Snap
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -10629,7 +12962,26 @@ redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, Snap
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -10686,11 +13038,11 @@ redshift_resume_cluster <- function(ClusterIdentifier) {
 #' @param EC2SecurityGroupName The name of the EC2 Security Group whose access is to be revoked. If
 #' `EC2SecurityGroupName` is specified, `EC2SecurityGroupOwnerId` must also
 #' be provided and `CIDRIP` cannot be provided.
-#' @param EC2SecurityGroupOwnerId The AWS account number of the owner of the security group specified in
-#' the `EC2SecurityGroupName` parameter. The AWS access key ID is not an
-#' acceptable value. If `EC2SecurityGroupOwnerId` is specified,
-#' `EC2SecurityGroupName` must also be provided. and `CIDRIP` cannot be
-#' provided.
+#' @param EC2SecurityGroupOwnerId The Amazon Web Services account number of the owner of the security
+#' group specified in the `EC2SecurityGroupName` parameter. The Amazon Web
+#' Services access key ID is not an acceptable value. If
+#' `EC2SecurityGroupOwnerId` is specified, `EC2SecurityGroupName` must also
+#' be provided. and `CIDRIP` cannot be provided.
 #' 
 #' Example: `111122223333`
 #'
@@ -10766,13 +13118,82 @@ redshift_revoke_cluster_security_group_ingress <- function(ClusterSecurityGroupN
 }
 .redshift$operations$revoke_cluster_security_group_ingress <- redshift_revoke_cluster_security_group_ingress
 
-#' Removes the ability of the specified AWS customer account to restore the
-#' specified snapshot
+#' Revokes access to a cluster
 #'
 #' @description
-#' Removes the ability of the specified AWS customer account to restore the
-#' specified snapshot. If the account is currently restoring the snapshot,
-#' the restore will run to completion.
+#' Revokes access to a cluster.
+#'
+#' @usage
+#' redshift_revoke_endpoint_access(ClusterIdentifier, Account, VpcIds,
+#'   Force)
+#'
+#' @param ClusterIdentifier The cluster to revoke access from.
+#' @param Account The Amazon Web Services account ID whose access is to be revoked.
+#' @param VpcIds The virtual private cloud (VPC) identifiers for which access is to be
+#' revoked.
+#' @param Force Indicates whether to force the revoke action. If true, the
+#' Redshift-managed VPC endpoints associated with the endpoint
+#' authorization are also deleted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Grantor = "string",
+#'   Grantee = "string",
+#'   ClusterIdentifier = "string",
+#'   AuthorizeTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ClusterStatus = "string",
+#'   Status = "Authorized"|"Revoking",
+#'   AllowedAllVPCs = TRUE|FALSE,
+#'   AllowedVPCs = list(
+#'     "string"
+#'   ),
+#'   EndpointCount = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$revoke_endpoint_access(
+#'   ClusterIdentifier = "string",
+#'   Account = "string",
+#'   VpcIds = list(
+#'     "string"
+#'   ),
+#'   Force = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_revoke_endpoint_access
+redshift_revoke_endpoint_access <- function(ClusterIdentifier = NULL, Account = NULL, VpcIds = NULL, Force = NULL) {
+  op <- new_operation(
+    name = "RevokeEndpointAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$revoke_endpoint_access_input(ClusterIdentifier = ClusterIdentifier, Account = Account, VpcIds = VpcIds, Force = Force)
+  output <- .redshift$revoke_endpoint_access_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$revoke_endpoint_access <- redshift_revoke_endpoint_access
+
+#' Removes the ability of the specified Amazon Web Services account to
+#' restore the specified snapshot
+#'
+#' @description
+#' Removes the ability of the specified Amazon Web Services account to
+#' restore the specified snapshot. If the account is currently restoring
+#' the snapshot, the restore will run to completion.
 #' 
 #' For more information about working with snapshots, go to [Amazon
 #' Redshift
@@ -10780,16 +13201,18 @@ redshift_revoke_cluster_security_group_ingress <- function(ClusterSecurityGroupN
 #' in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' @usage
-#' redshift_revoke_snapshot_access(SnapshotIdentifier,
+#' redshift_revoke_snapshot_access(SnapshotIdentifier, SnapshotArn,
 #'   SnapshotClusterIdentifier, AccountWithRestoreAccess)
 #'
-#' @param SnapshotIdentifier &#91;required&#93; The identifier of the snapshot that the account can no longer access.
+#' @param SnapshotIdentifier The identifier of the snapshot that the account can no longer access.
+#' @param SnapshotArn The Amazon Resource Name (ARN) of the snapshot associated with the
+#' message to revoke access.
 #' @param SnapshotClusterIdentifier The identifier of the cluster the snapshot was created from. This
 #' parameter is required if your IAM user has a policy containing a
 #' snapshot resource element that specifies anything other than * for the
 #' cluster name.
-#' @param AccountWithRestoreAccess &#91;required&#93; The identifier of the AWS customer account that can no longer restore
-#' the specified snapshot.
+#' @param AccountWithRestoreAccess &#91;required&#93; The identifier of the Amazon Web Services account that can no longer
+#' restore the specified snapshot.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10856,6 +13279,7 @@ redshift_revoke_cluster_security_group_ingress <- function(ClusterSecurityGroupN
 #' ```
 #' svc$revoke_snapshot_access(
 #'   SnapshotIdentifier = "string",
+#'   SnapshotArn = "string",
 #'   SnapshotClusterIdentifier = "string",
 #'   AccountWithRestoreAccess = "string"
 #' )
@@ -10864,14 +13288,14 @@ redshift_revoke_cluster_security_group_ingress <- function(ClusterSecurityGroupN
 #' @keywords internal
 #'
 #' @rdname redshift_revoke_snapshot_access
-redshift_revoke_snapshot_access <- function(SnapshotIdentifier, SnapshotClusterIdentifier = NULL, AccountWithRestoreAccess) {
+redshift_revoke_snapshot_access <- function(SnapshotIdentifier = NULL, SnapshotArn = NULL, SnapshotClusterIdentifier = NULL, AccountWithRestoreAccess) {
   op <- new_operation(
     name = "RevokeSnapshotAccess",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$revoke_snapshot_access_input(SnapshotIdentifier = SnapshotIdentifier, SnapshotClusterIdentifier = SnapshotClusterIdentifier, AccountWithRestoreAccess = AccountWithRestoreAccess)
+  input <- .redshift$revoke_snapshot_access_input(SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotClusterIdentifier = SnapshotClusterIdentifier, AccountWithRestoreAccess = AccountWithRestoreAccess)
   output <- .redshift$revoke_snapshot_access_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -10912,7 +13336,16 @@ redshift_revoke_snapshot_access <- function(SnapshotIdentifier, SnapshotClusterI
 #'       Port = 123,
 #'       VpcEndpoints = list(
 #'         list(
-#'           VpcEndpointId = "string"
+#'           VpcEndpointId = "string",
+#'           VpcId = "string",
+#'           NetworkInterfaces = list(
+#'             list(
+#'               NetworkInterfaceId = "string",
+#'               SubnetId = "string",
+#'               PrivateIpAddress = "string",
+#'               AvailabilityZone = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -11052,7 +13485,26 @@ redshift_revoke_snapshot_access <- function(SnapshotIdentifier, SnapshotClusterI
 #'       AllowCancelResize = TRUE|FALSE
 #'     ),
 #'     AvailabilityZoneRelocationStatus = "string",
-#'     ClusterNamespaceArn = "string"
+#'     ClusterNamespaceArn = "string",
+#'     TotalStorageCapacityInMegaBytes = 123,
+#'     AquaConfiguration = list(
+#'       AquaStatus = "enabled"|"disabled"|"applying",
+#'       AquaConfigurationStatus = "enabled"|"disabled"|"auto"
+#'     ),
+#'     DefaultIamRoleArn = "string",
+#'     ReservedNodeExchangeStatus = list(
+#'       ReservedNodeExchangeRequestId = "string",
+#'       Status = "REQUESTED"|"PENDING"|"IN_PROGRESS"|"RETRYING"|"SUCCEEDED"|"FAILED",
+#'       RequestTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       SourceReservedNodeId = "string",
+#'       SourceReservedNodeType = "string",
+#'       SourceReservedNodeCount = 123,
+#'       TargetReservedNodeOfferingId = "string",
+#'       TargetReservedNodeType = "string",
+#'       TargetReservedNodeCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -11083,3 +13535,62 @@ redshift_rotate_encryption_key <- function(ClusterIdentifier) {
   return(response)
 }
 .redshift$operations$rotate_encryption_key <- redshift_rotate_encryption_key
+
+#' Updates the status of a partner integration
+#'
+#' @description
+#' Updates the status of a partner integration.
+#'
+#' @usage
+#' redshift_update_partner_status(AccountId, ClusterIdentifier,
+#'   DatabaseName, PartnerName, Status, StatusMessage)
+#'
+#' @param AccountId &#91;required&#93; The Amazon Web Services account ID that owns the cluster.
+#' @param ClusterIdentifier &#91;required&#93; The cluster identifier of the cluster whose partner integration status
+#' is being updated.
+#' @param DatabaseName &#91;required&#93; The name of the database whose partner integration status is being
+#' updated.
+#' @param PartnerName &#91;required&#93; The name of the partner whose integration status is being updated.
+#' @param Status &#91;required&#93; The value of the updated status.
+#' @param StatusMessage The status message provided by the partner.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatabaseName = "string",
+#'   PartnerName = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_partner_status(
+#'   AccountId = "string",
+#'   ClusterIdentifier = "string",
+#'   DatabaseName = "string",
+#'   PartnerName = "string",
+#'   Status = "Active"|"Inactive"|"RuntimeFailure"|"ConnectionFailure",
+#'   StatusMessage = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_update_partner_status
+redshift_update_partner_status <- function(AccountId, ClusterIdentifier, DatabaseName, PartnerName, Status, StatusMessage = NULL) {
+  op <- new_operation(
+    name = "UpdatePartnerStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$update_partner_status_input(AccountId = AccountId, ClusterIdentifier = ClusterIdentifier, DatabaseName = DatabaseName, PartnerName = PartnerName, Status = Status, StatusMessage = StatusMessage)
+  output <- .redshift$update_partner_status_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$update_partner_status <- redshift_update_partner_status

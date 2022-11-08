@@ -5,8 +5,12 @@
 \title{Gets the celebrity recognition results for a Amazon Rekognition Video
 analysis started by StartCelebrityRecognition}
 \usage{
-rekognition_get_celebrity_recognition(JobId, MaxResults, NextToken,
-  SortBy)
+rekognition_get_celebrity_recognition(
+  JobId,
+  MaxResults = NULL,
+  NextToken = NULL,
+  SortBy = NULL
+)
 }
 \arguments{
 \item{JobId}{[required] Job identifier for the required celebrity recognition analysis. You can
@@ -26,171 +30,9 @@ retrieve the next set of celebrities.}
 \code{ID} to sort by the celebrity identifier, specify \code{TIMESTAMP} to sort by
 the time the celebrity was recognized.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
-  StatusMessage = "string",
-  VideoMetadata = list(
-    Codec = "string",
-    DurationMillis = 123,
-    Format = "string",
-    FrameRate = 123.0,
-    FrameHeight = 123,
-    FrameWidth = 123
-  ),
-  NextToken = "string",
-  Celebrities = list(
-    list(
-      Timestamp = 123,
-      Celebrity = list(
-        Urls = list(
-          "string"
-        ),
-        Name = "string",
-        Id = "string",
-        Confidence = 123.0,
-        BoundingBox = list(
-          Width = 123.0,
-          Height = 123.0,
-          Left = 123.0,
-          Top = 123.0
-        ),
-        Face = list(
-          BoundingBox = list(
-            Width = 123.0,
-            Height = 123.0,
-            Left = 123.0,
-            Top = 123.0
-          ),
-          AgeRange = list(
-            Low = 123,
-            High = 123
-          ),
-          Smile = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          Eyeglasses = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          Sunglasses = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          Gender = list(
-            Value = "Male"|"Female",
-            Confidence = 123.0
-          ),
-          Beard = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          Mustache = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          EyesOpen = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          MouthOpen = list(
-            Value = TRUE|FALSE,
-            Confidence = 123.0
-          ),
-          Emotions = list(
-            list(
-              Type = "HAPPY"|"SAD"|"ANGRY"|"CONFUSED"|"DISGUSTED"|"SURPRISED"|"CALM"|"UNKNOWN"|"FEAR",
-              Confidence = 123.0
-            )
-          ),
-          Landmarks = list(
-            list(
-              Type = "eyeLeft"|"eyeRight"|"nose"|"mouthLeft"|"mouthRight"|"leftEyeBrowLeft"|"leftEyeBrowRight"|"leftEyeBrowUp"|"rightEyeBrowLeft"|"rightEyeBrowRight"|"rightEyeBrowUp"|"leftEyeLeft"|"leftEyeRight"|"leftEyeUp"|"leftEyeDown"|"rightEyeLeft"|"rightEyeRight"|"rightEyeUp"|"rightEyeDown"|"noseLeft"|"noseRight"|"mouthUp"|"mouthDown"|"leftPupil"|"rightPupil"|"upperJawlineLeft"|"midJawlineLeft"|"chinBottom"|"midJawlineRight"|"upperJawlineRight",
-              X = 123.0,
-              Y = 123.0
-            )
-          ),
-          Pose = list(
-            Roll = 123.0,
-            Yaw = 123.0,
-            Pitch = 123.0
-          ),
-          Quality = list(
-            Brightness = 123.0,
-            Sharpness = 123.0
-          ),
-          Confidence = 123.0
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Gets the celebrity recognition results for a Amazon Rekognition Video
-analysis started by
-\code{\link[=rekognition_start_celebrity_recognition]{start_celebrity_recognition}}.
+Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by \code{\link[=rekognition_start_celebrity_recognition]{start_celebrity_recognition}}.
 
-Celebrity recognition in a video is an asynchronous operation. Analysis
-is started by a call to
-\code{\link[=rekognition_start_celebrity_recognition]{start_celebrity_recognition}}
-which returns a job identifier (\code{JobId}). When the celebrity recognition
-operation finishes, Amazon Rekognition Video publishes a completion
-status to the Amazon Simple Notification Service topic registered in the
-initial call to
-\code{\link[=rekognition_start_celebrity_recognition]{start_celebrity_recognition}}.
-To get the results of the celebrity recognition analysis, first check
-that the status value published to the Amazon SNS topic is \code{SUCCEEDED}.
-If so, call \code{GetCelebrityDetection} and pass the job identifier
-(\code{JobId}) from the initial call to \code{StartCelebrityDetection}.
-
-For more information, see Working With Stored Videos in the Amazon
-Rekognition Developer Guide.
-
-\code{\link[=rekognition_get_celebrity_recognition]{get_celebrity_recognition}}
-returns detected celebrities and the time(s) they are detected in an
-array (\code{Celebrities}) of CelebrityRecognition objects. Each
-\code{CelebrityRecognition} contains information about the celebrity in a
-CelebrityDetail object and the time, \code{Timestamp}, the celebrity was
-detected.
-
-\code{\link[=rekognition_get_celebrity_recognition]{get_celebrity_recognition}}
-only returns the default facial attributes (\code{BoundingBox}, \code{Confidence},
-\code{Landmarks}, \code{Pose}, and \code{Quality}). The other facial attributes listed
-in the \code{Face} object of the following response syntax are not returned.
-For more information, see FaceDetail in the Amazon Rekognition Developer
-Guide.
-
-By default, the \code{Celebrities} array is sorted by time (milliseconds from
-the start of the video). You can also sort the array by celebrity by
-specifying the value \code{ID} in the \code{SortBy} input parameter.
-
-The \code{CelebrityDetail} object includes the celebrity identifer and
-additional information urls. If you don't store the additional
-information urls, you can get them later by calling
-\code{\link[=rekognition_get_celebrity_info]{get_celebrity_info}} with the
-celebrity identifer.
-
-No information is returned for faces not recognized as celebrities.
-
-Use MaxResults parameter to limit the number of labels returned. If
-there are more results than specified in \code{MaxResults}, the value of
-\code{NextToken} in the operation response contains a pagination token for
-getting the next set of results. To get the next page of results, call
-\code{GetCelebrityDetection} and populate the \code{NextToken} request parameter
-with the token value returned from the previous call to
-\code{\link[=rekognition_get_celebrity_recognition]{get_celebrity_recognition}}.
+See \url{https://paws-r.github.io/docs/rekognition/get_celebrity_recognition.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_celebrity_recognition(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  SortBy = "ID"|"TIMESTAMP"
-)
-}
-}
-
 \keyword{internal}

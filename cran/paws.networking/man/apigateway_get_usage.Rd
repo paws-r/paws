@@ -4,52 +4,32 @@
 \alias{apigateway_get_usage}
 \title{Gets the usage data of a usage plan in a specified time interval}
 \usage{
-apigateway_get_usage(usagePlanId, keyId, startDate, endDate, position,
-  limit)
+apigateway_get_usage(
+  usagePlanId,
+  keyId = NULL,
+  startDate,
+  endDate,
+  position = NULL,
+  limit = NULL
+)
 }
 \arguments{
-\item{usagePlanId}{[required] [Required] The Id of the usage plan associated with the usage data.}
+\item{usagePlanId}{[required] The Id of the usage plan associated with the usage data.}
 
 \item{keyId}{The Id of the API key associated with the resultant usage data.}
 
-\item{startDate}{[required] [Required] The starting date (e.g., 2016-01-01) of the usage data.}
+\item{startDate}{[required] The starting date (e.g., 2016-01-01) of the usage data.}
 
-\item{endDate}{[required] [Required] The ending date (e.g., 2016-12-31) of the usage data.}
+\item{endDate}{[required] The ending date (e.g., 2016-12-31) of the usage data.}
 
 \item{position}{The current pagination position in the paged result set.}
 
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  usagePlanId = "string",
-  startDate = "string",
-  endDate = "string",
-  position = "string",
-  items = list(
-    list(
-      list(
-        123
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets the usage data of a usage plan in a specified time interval.
-}
-\section{Request syntax}{
-\preformatted{svc$get_usage(
-  usagePlanId = "string",
-  keyId = "string",
-  startDate = "string",
-  endDate = "string",
-  position = "string",
-  limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_usage.html} for full documentation.
+}
 \keyword{internal}

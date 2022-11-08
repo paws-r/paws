@@ -7,30 +7,43 @@ NULL
 #' @description
 #' Amazon GuardDuty is a continuous security monitoring service that
 #' analyzes and processes the following data sources: VPC Flow Logs, AWS
-#' CloudTrail event logs, and DNS logs. It uses threat intelligence feeds
-#' (such as lists of malicious IPs and domains) and machine learning to
-#' identify unexpected, potentially unauthorized, and malicious activity
-#' within your AWS environment. This can include issues like escalations of
-#' privileges, uses of exposed credentials, or communication with malicious
-#' IPs, URLs, or domains. For example, GuardDuty can detect compromised EC2
-#' instances that serve malware or mine bitcoin.
+#' CloudTrail management event logs, CloudTrail S3 data event logs, EKS
+#' audit logs, and DNS logs. It uses threat intelligence feeds (such as
+#' lists of malicious IPs and domains) and machine learning to identify
+#' unexpected, potentially unauthorized, and malicious activity within your
+#' Amazon Web Services environment. This can include issues like
+#' escalations of privileges, uses of exposed credentials, or communication
+#' with malicious IPs, URLs, or domains. For example, GuardDuty can detect
+#' compromised EC2 instances that serve malware or mine bitcoin.
 #' 
-#' GuardDuty also monitors AWS account access behavior for signs of
-#' compromise. Some examples of this are unauthorized infrastructure
-#' deployments such as EC2 instances deployed in a Region that has never
-#' been used, or unusual API calls like a password policy change to reduce
-#' password strength.
+#' GuardDuty also monitors Amazon Web Services account access behavior for
+#' signs of compromise. Some examples of this are unauthorized
+#' infrastructure deployments such as EC2 instances deployed in a Region
+#' that has never been used, or unusual API calls like a password policy
+#' change to reduce password strength.
 #' 
-#' GuardDuty informs you of the status of your AWS environment by producing
-#' security findings that you can view in the GuardDuty console or through
-#' Amazon CloudWatch events. For more information, see the *[Amazon
-#' GuardDuty User
-#' Guide](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html)*
-#' .
+#' GuardDuty informs you of the status of your Amazon Web Services
+#' environment by producing security findings that you can view in the
+#' GuardDuty console or through Amazon CloudWatch events. For more
+#' information, see the *<span
+#' href="https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html">Amazon
+#' GuardDuty User Guide</span>* .
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -42,10 +55,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -53,56 +70,62 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- guardduty()
-#' svc$accept_invitation(
+#' svc$accept_administrator_invitation(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=guardduty_accept_administrator_invitation]{accept_administrator_invitation} \tab Accepts the invitation to be a member account and get monitored by a GuardDuty administrator account that sent the invitation\cr
 #'  \link[=guardduty_accept_invitation]{accept_invitation} \tab Accepts the invitation to be monitored by a GuardDuty administrator account\cr
 #'  \link[=guardduty_archive_findings]{archive_findings} \tab Archives GuardDuty findings that are specified by the list of finding IDs\cr
 #'  \link[=guardduty_create_detector]{create_detector} \tab Creates a single Amazon GuardDuty detector\cr
 #'  \link[=guardduty_create_filter]{create_filter} \tab Creates a filter using the specified finding criteria\cr
 #'  \link[=guardduty_create_ip_set]{create_ip_set} \tab Creates a new IPSet, which is called a trusted IP list in the console user interface\cr
-#'  \link[=guardduty_create_members]{create_members} \tab Creates member accounts of the current AWS account by specifying a list of AWS account IDs\cr
+#'  \link[=guardduty_create_members]{create_members} \tab Creates member accounts of the current Amazon Web Services account by specifying a list of Amazon Web Services account IDs\cr
 #'  \link[=guardduty_create_publishing_destination]{create_publishing_destination} \tab Creates a publishing destination to export findings to\cr
 #'  \link[=guardduty_create_sample_findings]{create_sample_findings} \tab Generates example findings of types specified by the list of finding types\cr
 #'  \link[=guardduty_create_threat_intel_set]{create_threat_intel_set} \tab Creates a new ThreatIntelSet\cr
-#'  \link[=guardduty_decline_invitations]{decline_invitations} \tab Declines invitations sent to the current member account by AWS accounts specified by their account IDs\cr
+#'  \link[=guardduty_decline_invitations]{decline_invitations} \tab Declines invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs\cr
 #'  \link[=guardduty_delete_detector]{delete_detector} \tab Deletes an Amazon GuardDuty detector that is specified by the detector ID\cr
 #'  \link[=guardduty_delete_filter]{delete_filter} \tab Deletes the filter specified by the filter name\cr
-#'  \link[=guardduty_delete_invitations]{delete_invitations} \tab Deletes invitations sent to the current member account by AWS accounts specified by their account IDs\cr
+#'  \link[=guardduty_delete_invitations]{delete_invitations} \tab Deletes invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs\cr
 #'  \link[=guardduty_delete_ip_set]{delete_ip_set} \tab Deletes the IPSet specified by the ipSetId\cr
 #'  \link[=guardduty_delete_members]{delete_members} \tab Deletes GuardDuty member accounts (to the current GuardDuty administrator account) specified by the account IDs\cr
 #'  \link[=guardduty_delete_publishing_destination]{delete_publishing_destination} \tab Deletes the publishing definition with the specified destinationId\cr
 #'  \link[=guardduty_delete_threat_intel_set]{delete_threat_intel_set} \tab Deletes the ThreatIntelSet specified by the ThreatIntelSet ID\cr
+#'  \link[=guardduty_describe_malware_scans]{describe_malware_scans} \tab Returns a list of malware scans\cr
 #'  \link[=guardduty_describe_organization_configuration]{describe_organization_configuration} \tab Returns information about the account selected as the delegated administrator for GuardDuty\cr
 #'  \link[=guardduty_describe_publishing_destination]{describe_publishing_destination} \tab Returns information about the publishing destination specified by the provided destinationId\cr
-#'  \link[=guardduty_disable_organization_admin_account]{disable_organization_admin_account} \tab Disables an AWS account within the Organization as the GuardDuty delegated administrator\cr
+#'  \link[=guardduty_disable_organization_admin_account]{disable_organization_admin_account} \tab Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator\cr
+#'  \link[=guardduty_disassociate_from_administrator_account]{disassociate_from_administrator_account} \tab Disassociates the current GuardDuty member account from its administrator account\cr
 #'  \link[=guardduty_disassociate_from_master_account]{disassociate_from_master_account} \tab Disassociates the current GuardDuty member account from its administrator account\cr
 #'  \link[=guardduty_disassociate_members]{disassociate_members} \tab Disassociates GuardDuty member accounts (to the current GuardDuty administrator account) specified by the account IDs\cr
-#'  \link[=guardduty_enable_organization_admin_account]{enable_organization_admin_account} \tab Enables an AWS account within the organization as the GuardDuty delegated administrator\cr
+#'  \link[=guardduty_enable_organization_admin_account]{enable_organization_admin_account} \tab Enables an Amazon Web Services account within the organization as the GuardDuty delegated administrator\cr
+#'  \link[=guardduty_get_administrator_account]{get_administrator_account} \tab Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account\cr
 #'  \link[=guardduty_get_detector]{get_detector} \tab Retrieves an Amazon GuardDuty detector specified by the detectorId\cr
 #'  \link[=guardduty_get_filter]{get_filter} \tab Returns the details of the filter specified by the filter name\cr
 #'  \link[=guardduty_get_findings]{get_findings} \tab Describes Amazon GuardDuty findings specified by finding IDs\cr
 #'  \link[=guardduty_get_findings_statistics]{get_findings_statistics} \tab Lists Amazon GuardDuty findings statistics for the specified detector ID\cr
 #'  \link[=guardduty_get_invitations_count]{get_invitations_count} \tab Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation\cr
 #'  \link[=guardduty_get_ip_set]{get_ip_set} \tab Retrieves the IPSet specified by the ipSetId\cr
+#'  \link[=guardduty_get_malware_scan_settings]{get_malware_scan_settings} \tab Returns the details of the malware scan settings\cr
 #'  \link[=guardduty_get_master_account]{get_master_account} \tab Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account\cr
 #'  \link[=guardduty_get_member_detectors]{get_member_detectors} \tab Describes which data sources are enabled for the member account's detector\cr
 #'  \link[=guardduty_get_members]{get_members} \tab Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by the account IDs\cr
+#'  \link[=guardduty_get_remaining_free_trial_days]{get_remaining_free_trial_days} \tab Provides the number of days left for each data source used in the free trial period\cr
 #'  \link[=guardduty_get_threat_intel_set]{get_threat_intel_set} \tab Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID\cr
 #'  \link[=guardduty_get_usage_statistics]{get_usage_statistics} \tab Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID\cr
-#'  \link[=guardduty_invite_members]{invite_members} \tab Invites other AWS accounts (created as members of the current AWS account by CreateMembers) to enable GuardDuty, and allow the current AWS account to view and manage these accounts' findings on their behalf as the GuardDuty administrator account\cr
+#'  \link[=guardduty_invite_members]{invite_members} \tab Invites other Amazon Web Services accounts (created as members of the current Amazon Web Services account by CreateMembers) to enable GuardDuty, and allow the current Amazon Web Services account to view and manage these accounts' findings on their behalf as the GuardDuty administrator account\cr
 #'  \link[=guardduty_list_detectors]{list_detectors} \tab Lists detectorIds of all the existing Amazon GuardDuty detector resources\cr
 #'  \link[=guardduty_list_filters]{list_filters} \tab Returns a paginated list of the current filters\cr
 #'  \link[=guardduty_list_findings]{list_findings} \tab Lists Amazon GuardDuty findings for the specified detector ID\cr
-#'  \link[=guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current AWS account\cr
+#'  \link[=guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account\cr
 #'  \link[=guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID\cr
 #'  \link[=guardduty_list_members]{list_members} \tab Lists details about all member accounts for the current GuardDuty administrator account\cr
 #'  \link[=guardduty_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Lists the accounts configured as GuardDuty delegated administrators\cr
-#'  \link[=guardduty_list_publishing_destinations]{list_publishing_destinations} \tab Returns a list of publishing destinations associated with the specified dectectorId\cr
+#'  \link[=guardduty_list_publishing_destinations]{list_publishing_destinations} \tab Returns a list of publishing destinations associated with the specified detectorId\cr
 #'  \link[=guardduty_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for a resource\cr
 #'  \link[=guardduty_list_threat_intel_sets]{list_threat_intel_sets} \tab Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID\cr
 #'  \link[=guardduty_start_monitoring_members]{start_monitoring_members} \tab Turns on GuardDuty monitoring of the specified member accounts\cr
@@ -114,6 +137,7 @@ NULL
 #'  \link[=guardduty_update_filter]{update_filter} \tab Updates the filter specified by the filter name\cr
 #'  \link[=guardduty_update_findings_feedback]{update_findings_feedback} \tab Marks the specified GuardDuty findings as useful or not useful\cr
 #'  \link[=guardduty_update_ip_set]{update_ip_set} \tab Updates the IPSet specified by the IPSet ID\cr
+#'  \link[=guardduty_update_malware_scan_settings]{update_malware_scan_settings} \tab Updates the malware scan settings\cr
 #'  \link[=guardduty_update_member_detectors]{update_member_detectors} \tab Contains information on member accounts to be updated\cr
 #'  \link[=guardduty_update_organization_configuration]{update_organization_configuration} \tab Updates the delegated administrator account with the values provided\cr
 #'  \link[=guardduty_update_publishing_destination]{update_publishing_destination} \tab Updates information about the publishing destination specified by the destinationId\cr

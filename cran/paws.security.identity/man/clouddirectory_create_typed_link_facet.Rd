@@ -12,48 +12,9 @@ more information, see arns.}
 
 \item{Facet}{[required] Facet structure that is associated with the typed link facet.}
 }
-\value{
-An empty list.
-}
 \description{
 Creates a TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_typed_link_facet(
-  SchemaArn = "string",
-  Facet = list(
-    Name = "string",
-    Attributes = list(
-      list(
-        Name = "string",
-        Type = "STRING"|"BINARY"|"BOOLEAN"|"NUMBER"|"DATETIME"|"VARIANT",
-        DefaultValue = list(
-          StringValue = "string",
-          BinaryValue = raw,
-          BooleanValue = TRUE|FALSE,
-          NumberValue = "string",
-          DatetimeValue = as.POSIXct(
-            "2015-01-01"
-          )
-        ),
-        IsImmutable = TRUE|FALSE,
-        Rules = list(
-          list(
-            Type = "BINARY_LENGTH"|"NUMBER_COMPARISON"|"STRING_FROM_SET"|"STRING_LENGTH",
-            Parameters = list(
-              "string"
-            )
-          )
-        ),
-        RequiredBehavior = "REQUIRED_ALWAYS"|"NOT_REQUIRED"
-      )
-    ),
-    IdentityAttributeOrder = list(
-      "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/create_typed_link_facet.html} for full documentation.
+}
 \keyword{internal}

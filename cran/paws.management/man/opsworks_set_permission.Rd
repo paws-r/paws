@@ -4,7 +4,13 @@
 \alias{opsworks_set_permission}
 \title{Specifies a user's permissions}
 \usage{
-opsworks_set_permission(StackId, IamUserArn, AllowSsh, AllowSudo, Level)
+opsworks_set_permission(
+  StackId,
+  IamUserArn,
+  AllowSsh = NULL,
+  AllowSudo = NULL,
+  Level = NULL
+)
 }
 \arguments{
 \item{StackId}{[required] The stack ID.}
@@ -28,26 +34,9 @@ strings. You cannot set your own permissions level.
 For more information about the permissions associated with these levels,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.}
 }
-\value{
-An empty list.
-}
 \description{
 Specifies a user's permissions. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html}{Security and Permissions}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/set_permission.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$set_permission(
-  StackId = "string",
-  IamUserArn = "string",
-  AllowSsh = TRUE|FALSE,
-  AllowSudo = TRUE|FALSE,
-  Level = "string"
-)
-}
-}
-
 \keyword{internal}

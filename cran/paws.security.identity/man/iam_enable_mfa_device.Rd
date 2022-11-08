@@ -5,8 +5,12 @@
 \title{Enables the specified MFA device and associates it with the specified
 IAM user}
 \usage{
-iam_enable_mfa_device(UserName, SerialNumber, AuthenticationCode1,
-  AuthenticationCode2)
+iam_enable_mfa_device(
+  UserName,
+  SerialNumber,
+  AuthenticationCode1,
+  AuthenticationCode2
+)
 }
 \arguments{
 \item{UserName}{[required] The name of the IAM user for whom you want to enable the MFA device.
@@ -44,22 +48,9 @@ MFA device becomes out of sync. This happens because time-based one-time
 passwords (TOTP) expire after a short period of time. If this happens,
 you can \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html}{resync the device}.}
 }
-\value{
-An empty list.
-}
 \description{
-Enables the specified MFA device and associates it with the specified
-IAM user. When enabled, the MFA device is required for every subsequent
-login by the IAM user associated with the device.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_mfa_device(
-  UserName = "string",
-  SerialNumber = "string",
-  AuthenticationCode1 = "string",
-  AuthenticationCode2 = "string"
-)
-}
-}
+Enables the specified MFA device and associates it with the specified IAM user. When enabled, the MFA device is required for every subsequent login by the IAM user associated with the device.
 
+See \url{https://paws-r.github.io/docs/iam/enable_mfa_device.html} for full documentation.
+}
 \keyword{internal}

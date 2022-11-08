@@ -9,44 +9,9 @@ cloudsearch_delete_domain(DomainName)
 \arguments{
 \item{DomainName}{[required] The name of the domain you want to permanently delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DomainStatus = list(
-    DomainId = "string",
-    DomainName = "string",
-    ARN = "string",
-    Created = TRUE|FALSE,
-    Deleted = TRUE|FALSE,
-    DocService = list(
-      Endpoint = "string"
-    ),
-    SearchService = list(
-      Endpoint = "string"
-    ),
-    RequiresIndexDocuments = TRUE|FALSE,
-    Processing = TRUE|FALSE,
-    SearchInstanceType = "string",
-    SearchPartitionCount = 123,
-    SearchInstanceCount = 123,
-    Limits = list(
-      MaximumReplicationCount = 123,
-      MaximumPartitionCount = 123
-    )
-  )
-)
-}
-}
 \description{
-Permanently deletes a search domain and all of its data. Once a domain
-has been deleted, it cannot be recovered. For more information, see
-\href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html}{Deleting a Search Domain}
-in the \emph{Amazon CloudSearch Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_domain(
-  DomainName = "string"
-)
-}
-}
+Permanently deletes a search domain and all of its data. Once a domain has been deleted, it cannot be recovered. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html" target="_blank">Deleting a Search Domain</a> in the \emph{Amazon CloudSearch Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/cloudsearch/delete_domain.html} for full documentation.
+}
 \keyword{internal}

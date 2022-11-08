@@ -4,7 +4,12 @@
 \alias{ec2_describe_tags}
 \title{Describes the specified tags for your EC2 resources}
 \usage{
-ec2_describe_tags(DryRun, Filters, MaxResults, NextToken)
+ec2_describe_tags(
+  DryRun = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -25,9 +30,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 | \code{spot-instances-request} | \code{subnet} | \code{volume} | \code{vpc} |
 \code{vpc-endpoint} | \code{vpc-endpoint-service} | \code{vpc-peering-connection} |
 \code{vpn-connection} | \code{vpn-gateway}).
-\item \code{tag}:<key> - The key/value combination of the tag. For
-example, specify "tag:Owner" for the filter name and "TeamA" for the
-filter value to find resources with the tag "Owner=TeamA".
+\item \code{tag}:\<key\> - The key/value combination of the tag. For example,
+specify "tag:Owner" for the filter name and "TeamA" for the filter
+value to find resources with the tag "Owner=TeamA".
 \item \code{value} - The tag value.
 }}
 
@@ -37,57 +42,9 @@ call with the returned \code{NextToken} value.}
 
 \item{NextToken}{The token to retrieve the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      ResourceId = "string",
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes the specified tags for your EC2 resources.
 
-For more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_tags(
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the tags for the specified instance.
-svc$describe_tags(
-  Filters = list(
-    list(
-      Name = "resource-id",
-      Values = list(
-        "i-1234567890abcdef8"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_tags.html} for full documentation.
 }
 \keyword{internal}

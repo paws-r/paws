@@ -5,8 +5,12 @@
 \title{Stops sharing the specified portfolio with the specified account or
 organization node}
 \usage{
-servicecatalog_delete_portfolio_share(AcceptLanguage, PortfolioId,
-  AccountId, OrganizationNode)
+servicecatalog_delete_portfolio_share(
+  AcceptLanguage = NULL,
+  PortfolioId,
+  AccountId = NULL,
+  OrganizationNode = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,32 +26,9 @@ servicecatalog_delete_portfolio_share(AcceptLanguage, PortfolioId,
 
 \item{OrganizationNode}{The organization node to whom you are going to stop sharing.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PortfolioShareToken = "string"
-)
-}
-}
 \description{
-Stops sharing the specified portfolio with the specified account or
-organization node. Shares to an organization node can only be deleted by
-the management account of an organization or by a delegated
-administrator.
+Stops sharing the specified portfolio with the specified account or organization node. Shares to an organization node can only be deleted by the management account of an organization or by a delegated administrator.
 
-Note that if a delegated admin is de-registered, portfolio shares
-created from that account are removed.
+See \url{https://paws-r.github.io/docs/servicecatalog/delete_portfolio_share.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_portfolio_share(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  AccountId = "string",
-  OrganizationNode = list(
-    Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
-    Value = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

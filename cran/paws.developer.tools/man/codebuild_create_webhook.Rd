@@ -2,16 +2,20 @@
 % Please edit documentation in R/codebuild_operations.R
 \name{codebuild_create_webhook}
 \alias{codebuild_create_webhook}
-\title{For an existing AWS CodeBuild build project that has its source code
-stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
-start rebuilding the source code every time a code change is pushed to
-the repository}
+\title{For an existing CodeBuild build project that has its source code stored
+in a GitHub or Bitbucket repository, enables CodeBuild to start
+rebuilding the source code every time a code change is pushed to the
+repository}
 \usage{
-codebuild_create_webhook(projectName, branchFilter, filterGroups,
-  buildType)
+codebuild_create_webhook(
+  projectName,
+  branchFilter = NULL,
+  filterGroups = NULL,
+  buildType = NULL
+)
 }
 \arguments{
-\item{projectName}{[required] The name of the AWS CodeBuild project.}
+\item{projectName}{[required] The name of the CodeBuild project.}
 
 \item{branchFilter}{A regular expression used to determine which repository branches are
 built when a webhook is triggered. If the name of a branch matches the
@@ -30,61 +34,9 @@ filters must pass.}
 
 \item{buildType}{Specifies the type of build this webhook will trigger.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  webhook = list(
-    url = "string",
-    payloadUrl = "string",
-    secret = "string",
-    branchFilter = "string",
-    filterGroups = list(
-      list(
-        list(
-          type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
-          pattern = "string",
-          excludeMatchedPattern = TRUE|FALSE
-        )
-      )
-    ),
-    buildType = "BUILD"|"BUILD_BATCH",
-    lastModifiedSecret = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-For an existing AWS CodeBuild build project that has its source code
-stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
-start rebuilding the source code every time a code change is pushed to
-the repository.
+For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables CodeBuild to start rebuilding the source code every time a code change is pushed to the repository.
 
-If you enable webhooks for an AWS CodeBuild project, and the project is
-used as a build step in AWS CodePipeline, then two identical builds are
-created for each commit. One build is triggered through webhooks, and
-one through AWS CodePipeline. Because billing is on a per-build basis,
-you are billed for both builds. Therefore, if you are using AWS
-CodePipeline, we recommend that you disable webhooks in AWS CodeBuild.
-In the AWS CodeBuild console, clear the Webhook box. For more
-information, see step 5 in \href{https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console}{Change a Build Project's Settings}.
+See \url{https://paws-r.github.io/docs/codebuild/create_webhook.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_webhook(
-  projectName = "string",
-  branchFilter = "string",
-  filterGroups = list(
-    list(
-      list(
-        type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
-        pattern = "string",
-        excludeMatchedPattern = TRUE|FALSE
-      )
-    )
-  ),
-  buildType = "BUILD"|"BUILD_BATCH"
-)
-}
-}
-
 \keyword{internal}

@@ -6,8 +6,13 @@
 terminated within the last 60 minutes for the specified Client VPN
 endpoint}
 \usage{
-ec2_describe_client_vpn_connections(ClientVpnEndpointId, Filters,
-  NextToken, MaxResults, DryRun)
+ec2_describe_client_vpn_connections(
+  ClientVpnEndpointId,
+  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -30,56 +35,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Connections = list(
-    list(
-      ClientVpnEndpointId = "string",
-      Timestamp = "string",
-      ConnectionId = "string",
-      Username = "string",
-      ConnectionEstablishedTime = "string",
-      IngressBytes = "string",
-      EgressBytes = "string",
-      IngressPackets = "string",
-      EgressPackets = "string",
-      ClientIp = "string",
-      CommonName = "string",
-      Status = list(
-        Code = "active"|"failed-to-terminate"|"terminating"|"terminated",
-        Message = "string"
-      ),
-      ConnectionEndTime = "string",
-      PostureComplianceStatuses = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes active client connections and connections that have been
-terminated within the last 60 minutes for the specified Client VPN
-endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_client_vpn_connections(
-  ClientVpnEndpointId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes active client connections and connections that have been terminated within the last 60 minutes for the specified Client VPN endpoint.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_client_vpn_connections.html} for full documentation.
+}
 \keyword{internal}

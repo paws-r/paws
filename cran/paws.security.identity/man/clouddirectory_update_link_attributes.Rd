@@ -4,8 +4,11 @@
 \alias{clouddirectory_update_link_attributes}
 \title{Updates a given typed link’s attributes}
 \usage{
-clouddirectory_update_link_attributes(DirectoryArn, TypedLinkSpecifier,
-  AttributeUpdates)
+clouddirectory_update_link_attributes(
+  DirectoryArn,
+  TypedLinkSpecifier,
+  AttributeUpdates
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
@@ -16,66 +19,9 @@ where the updated typed link resides. For more information, see arns or
 
 \item{AttributeUpdates}{[required] The attributes update structure.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates a given typed link’s attributes. Attributes to be updated must
-not contribute to the typed link’s identity, as defined by its
-\code{IdentityAttributeOrder}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_link_attributes(
-  DirectoryArn = "string",
-  TypedLinkSpecifier = list(
-    TypedLinkFacet = list(
-      SchemaArn = "string",
-      TypedLinkName = "string"
-    ),
-    SourceObjectReference = list(
-      Selector = "string"
-    ),
-    TargetObjectReference = list(
-      Selector = "string"
-    ),
-    IdentityAttributeValues = list(
-      list(
-        AttributeName = "string",
-        Value = list(
-          StringValue = "string",
-          BinaryValue = raw,
-          BooleanValue = TRUE|FALSE,
-          NumberValue = "string",
-          DatetimeValue = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  ),
-  AttributeUpdates = list(
-    list(
-      AttributeKey = list(
-        SchemaArn = "string",
-        FacetName = "string",
-        Name = "string"
-      ),
-      AttributeAction = list(
-        AttributeActionType = "CREATE_OR_UPDATE"|"DELETE",
-        AttributeUpdateValue = list(
-          StringValue = "string",
-          BinaryValue = raw,
-          BooleanValue = TRUE|FALSE,
-          NumberValue = "string",
-          DatetimeValue = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
+Updates a given typed link’s attributes. Attributes to be updated must not contribute to the typed link’s identity, as defined by its \code{IdentityAttributeOrder}.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/update_link_attributes.html} for full documentation.
+}
 \keyword{internal}

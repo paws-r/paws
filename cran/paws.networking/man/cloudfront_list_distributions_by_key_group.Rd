@@ -5,7 +5,11 @@
 \title{Gets a list of distribution IDs for distributions that have a cache
 behavior that references the specified key group}
 \usage{
-cloudfront_list_distributions_by_key_group(Marker, MaxItems, KeyGroupId)
+cloudfront_list_distributions_by_key_group(
+  Marker = NULL,
+  MaxItems = NULL,
+  KeyGroupId
+)
 }
 \arguments{
 \item{Marker}{Use this field when paginating results to indicate where to begin in
@@ -19,39 +23,9 @@ page’s response.}
 \item{KeyGroupId}{[required] The ID of the key group whose associated distribution IDs you are
 listing.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DistributionIdList = list(
-    Marker = "string",
-    NextMarker = "string",
-    MaxItems = 123,
-    IsTruncated = TRUE|FALSE,
-    Quantity = 123,
-    Items = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
-Gets a list of distribution IDs for distributions that have a cache
-behavior that references the specified key group.
+Gets a list of distribution IDs for distributions that have a cache behavior that references the specified key group.
 
-You can optionally specify the maximum number of items to receive in the
-response. If the total number of items in the list exceeds the maximum
-that you specify, or the default maximum, the response is paginated. To
-get the next page of items, send a subsequent request that specifies the
-\code{NextMarker} value from the current response as the \code{Marker} value in
-the subsequent request.
+See \url{https://paws-r.github.io/docs/cloudfront/list_distributions_by_key_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_distributions_by_key_group(
-  Marker = "string",
-  MaxItems = "string",
-  KeyGroupId = "string"
-)
-}
-}
-
 \keyword{internal}

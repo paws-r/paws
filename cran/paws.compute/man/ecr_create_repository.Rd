@@ -4,10 +4,20 @@
 \alias{ecr_create_repository}
 \title{Creates a repository}
 \usage{
-ecr_create_repository(repositoryName, tags, imageTagMutability,
-  imageScanningConfiguration, encryptionConfiguration)
+ecr_create_repository(
+  registryId = NULL,
+  repositoryName,
+  tags = NULL,
+  imageTagMutability = NULL,
+  imageScanningConfiguration = NULL,
+  encryptionConfiguration = NULL
+)
 }
 \arguments{
+\item{registryId}{The Amazon Web Services account ID associated with the registry to
+create the repository. If you do not specify a registry, the default
+registry is assumed.}
+
 \item{repositoryName}{[required] The name to use for the repository. The repository name may be specified
 on its own (such as \code{nginx-web-app}) or it can be prepended with a
 namespace to group the repository into a category (such as
@@ -31,61 +41,9 @@ to the repository.}
 \item{encryptionConfiguration}{The encryption configuration for the repository. This determines how the
 contents of your repository are encrypted at rest.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  repository = list(
-    repositoryArn = "string",
-    registryId = "string",
-    repositoryName = "string",
-    repositoryUri = "string",
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    imageTagMutability = "MUTABLE"|"IMMUTABLE",
-    imageScanningConfiguration = list(
-      scanOnPush = TRUE|FALSE
-    ),
-    encryptionConfiguration = list(
-      encryptionType = "AES256"|"KMS",
-      kmsKey = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates a repository. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html}{Amazon ECR Repositories}
-in the \emph{Amazon Elastic Container Registry User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_repository(
-  repositoryName = "string",
-  tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  imageTagMutability = "MUTABLE"|"IMMUTABLE",
-  imageScanningConfiguration = list(
-    scanOnPush = TRUE|FALSE
-  ),
-  encryptionConfiguration = list(
-    encryptionType = "AES256"|"KMS",
-    kmsKey = "string"
-  )
-)
-}
-}
+Creates a repository. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html}{Amazon ECR repositories} in the \emph{Amazon Elastic Container Registry User Guide}.
 
-\examples{
-\dontrun{
-# This example creates a repository called nginx-web-app inside the
-# project-a namespace in the default registry for an account.
-svc$create_repository(
-  repositoryName = "project-a/nginx-web-app"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecr/create_repository.html} for full documentation.
 }
 \keyword{internal}

@@ -4,9 +4,17 @@
 \alias{budgets_update_budget_action}
 \title{Updates a budget action}
 \usage{
-budgets_update_budget_action(AccountId, BudgetName, ActionId,
-  NotificationType, ActionThreshold, Definition, ExecutionRoleArn,
-  ApprovalModel, Subscribers)
+budgets_update_budget_action(
+  AccountId,
+  BudgetName,
+  ActionId,
+  NotificationType = NULL,
+  ActionThreshold = NULL,
+  Definition = NULL,
+  ExecutionRoleArn = NULL,
+  ApprovalModel = NULL,
+  Subscribers = NULL
+)
 }
 \arguments{
 \item{AccountId}{[required]}
@@ -28,155 +36,9 @@ must be in the same account.}
 
 \item{Subscribers}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountId = "string",
-  BudgetName = "string",
-  OldAction = list(
-    ActionId = "string",
-    BudgetName = "string",
-    NotificationType = "ACTUAL"|"FORECASTED",
-    ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
-    ActionThreshold = list(
-      ActionThresholdValue = 123.0,
-      ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-    ),
-    Definition = list(
-      IamActionDefinition = list(
-        PolicyArn = "string",
-        Roles = list(
-          "string"
-        ),
-        Groups = list(
-          "string"
-        ),
-        Users = list(
-          "string"
-        )
-      ),
-      ScpActionDefinition = list(
-        PolicyId = "string",
-        TargetIds = list(
-          "string"
-        )
-      ),
-      SsmActionDefinition = list(
-        ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-        Region = "string",
-        InstanceIds = list(
-          "string"
-        )
-      )
-    ),
-    ExecutionRoleArn = "string",
-    ApprovalModel = "AUTOMATIC"|"MANUAL",
-    Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
-    Subscribers = list(
-      list(
-        SubscriptionType = "SNS"|"EMAIL",
-        Address = "string"
-      )
-    )
-  ),
-  NewAction = list(
-    ActionId = "string",
-    BudgetName = "string",
-    NotificationType = "ACTUAL"|"FORECASTED",
-    ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
-    ActionThreshold = list(
-      ActionThresholdValue = 123.0,
-      ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-    ),
-    Definition = list(
-      IamActionDefinition = list(
-        PolicyArn = "string",
-        Roles = list(
-          "string"
-        ),
-        Groups = list(
-          "string"
-        ),
-        Users = list(
-          "string"
-        )
-      ),
-      ScpActionDefinition = list(
-        PolicyId = "string",
-        TargetIds = list(
-          "string"
-        )
-      ),
-      SsmActionDefinition = list(
-        ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-        Region = "string",
-        InstanceIds = list(
-          "string"
-        )
-      )
-    ),
-    ExecutionRoleArn = "string",
-    ApprovalModel = "AUTOMATIC"|"MANUAL",
-    Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
-    Subscribers = list(
-      list(
-        SubscriptionType = "SNS"|"EMAIL",
-        Address = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Updates a budget action.
-}
-\section{Request syntax}{
-\preformatted{svc$update_budget_action(
-  AccountId = "string",
-  BudgetName = "string",
-  ActionId = "string",
-  NotificationType = "ACTUAL"|"FORECASTED",
-  ActionThreshold = list(
-    ActionThresholdValue = 123.0,
-    ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-  ),
-  Definition = list(
-    IamActionDefinition = list(
-      PolicyArn = "string",
-      Roles = list(
-        "string"
-      ),
-      Groups = list(
-        "string"
-      ),
-      Users = list(
-        "string"
-      )
-    ),
-    ScpActionDefinition = list(
-      PolicyId = "string",
-      TargetIds = list(
-        "string"
-      )
-    ),
-    SsmActionDefinition = list(
-      ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-      Region = "string",
-      InstanceIds = list(
-        "string"
-      )
-    )
-  ),
-  ExecutionRoleArn = "string",
-  ApprovalModel = "AUTOMATIC"|"MANUAL",
-  Subscribers = list(
-    list(
-      SubscriptionType = "SNS"|"EMAIL",
-      Address = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/budgets/update_budget_action.html} for full documentation.
+}
 \keyword{internal}

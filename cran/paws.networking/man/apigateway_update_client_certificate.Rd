@@ -4,49 +4,19 @@
 \alias{apigateway_update_client_certificate}
 \title{Changes information about an ClientCertificate resource}
 \usage{
-apigateway_update_client_certificate(clientCertificateId,
-  patchOperations)
-}
-\arguments{
-\item{clientCertificateId}{[required] [Required] The identifier of the ClientCertificate resource to be
-updated.}
-
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  clientCertificateId = "string",
-  description = "string",
-  pemEncodedCertificate = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  expirationDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  tags = list(
-    "string"
-  )
+apigateway_update_client_certificate(
+  clientCertificateId,
+  patchOperations = NULL
 )
 }
+\arguments{
+\item{clientCertificateId}{[required] The identifier of the ClientCertificate resource to be updated.}
+
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
 Changes information about an ClientCertificate resource.
-}
-\section{Request syntax}{
-\preformatted{svc$update_client_certificate(
-  clientCertificateId = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/update_client_certificate.html} for full documentation.
+}
 \keyword{internal}

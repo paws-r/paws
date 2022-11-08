@@ -11,53 +11,9 @@ inspector_describe_assessment_targets(assessmentTargetArns)
 \item{assessmentTargetArns}{[required] The ARNs that specifies the assessment targets that you want to
 describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  assessmentTargets = list(
-    list(
-      arn = "string",
-      name = "string",
-      resourceGroupArn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      updatedAt = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  failedItems = list(
-    list(
-      failureCode = "INVALID_ARN"|"DUPLICATE_ARN"|"ITEM_DOES_NOT_EXIST"|"ACCESS_DENIED"|"LIMIT_EXCEEDED"|"INTERNAL_ERROR",
-      retryable = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Describes the assessment targets that are specified by the ARNs of the
-assessment targets.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_assessment_targets(
-  assessmentTargetArns = list(
-    "string"
-  )
-)
-}
-}
+Describes the assessment targets that are specified by the ARNs of the assessment targets.
 
-\examples{
-\dontrun{
-# Describes the assessment targets that are specified by the ARNs of the
-# assessment targets.
-svc$describe_assessment_targets(
-  assessmentTargetArns = list(
-    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/describe_assessment_targets.html} for full documentation.
 }
 \keyword{internal}

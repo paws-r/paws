@@ -4,8 +4,15 @@
 \alias{cloudwatch_describe_alarms_for_metric}
 \title{Retrieves the alarms for the specified metric}
 \usage{
-cloudwatch_describe_alarms_for_metric(MetricName, Namespace, Statistic,
-  ExtendedStatistic, Dimensions, Period, Unit)
+cloudwatch_describe_alarms_for_metric(
+  MetricName,
+  Namespace,
+  Statistic = NULL,
+  ExtendedStatistic = NULL,
+  Dimensions = NULL,
+  Period = NULL,
+  Unit = NULL
+)
 }
 \arguments{
 \item{MetricName}{[required] The name of the metric.}
@@ -26,105 +33,9 @@ succeed.}
 
 \item{Unit}{The unit for the metric.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MetricAlarms = list(
-    list(
-      AlarmName = "string",
-      AlarmArn = "string",
-      AlarmDescription = "string",
-      AlarmConfigurationUpdatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ActionsEnabled = TRUE|FALSE,
-      OKActions = list(
-        "string"
-      ),
-      AlarmActions = list(
-        "string"
-      ),
-      InsufficientDataActions = list(
-        "string"
-      ),
-      StateValue = "OK"|"ALARM"|"INSUFFICIENT_DATA",
-      StateReason = "string",
-      StateReasonData = "string",
-      StateUpdatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      MetricName = "string",
-      Namespace = "string",
-      Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
-      ExtendedStatistic = "string",
-      Dimensions = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      Period = 123,
-      Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-      EvaluationPeriods = 123,
-      DatapointsToAlarm = 123,
-      Threshold = 123.0,
-      ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold"|"LessThanLowerOrGreaterThanUpperThreshold"|"LessThanLowerThreshold"|"GreaterThanUpperThreshold",
-      TreatMissingData = "string",
-      EvaluateLowSampleCountPercentile = "string",
-      Metrics = list(
-        list(
-          Id = "string",
-          MetricStat = list(
-            Metric = list(
-              Namespace = "string",
-              MetricName = "string",
-              Dimensions = list(
-                list(
-                  Name = "string",
-                  Value = "string"
-                )
-              )
-            ),
-            Period = 123,
-            Stat = "string",
-            Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-          ),
-          Expression = "string",
-          Label = "string",
-          ReturnData = TRUE|FALSE,
-          Period = 123
-        )
-      ),
-      ThresholdMetricId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves the alarms for the specified metric. To filter the results,
-specify a statistic, period, or unit.
+Retrieves the alarms for the specified metric. To filter the results, specify a statistic, period, or unit.
 
-This operation retrieves only standard alarms that are based on the
-specified metric. It does not return alarms based on math expressions
-that use the specified metric, or composite alarms that use the
-specified metric.
+See \url{https://paws-r.github.io/docs/cloudwatch/describe_alarms_for_metric.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_alarms_for_metric(
-  MetricName = "string",
-  Namespace = "string",
-  Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
-  ExtendedStatistic = "string",
-  Dimensions = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  Period = 123,
-  Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-)
-}
-}
-
 \keyword{internal}

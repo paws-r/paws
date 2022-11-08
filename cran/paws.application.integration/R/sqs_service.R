@@ -5,21 +5,22 @@ NULL
 #' Amazon Simple Queue Service
 #'
 #' @description
-#' Welcome to the *Amazon Simple Queue Service API Reference*.
+#' Welcome to the *Amazon SQS API Reference*.
 #' 
-#' Amazon Simple Queue Service (Amazon SQS) is a reliable, highly-scalable
-#' hosted queue for storing messages as they travel between applications or
-#' microservices. Amazon SQS moves data between distributed application
-#' components and helps you decouple these components.
+#' Amazon SQS is a reliable, highly-scalable hosted queue for storing
+#' messages as they travel between applications or microservices. Amazon
+#' SQS moves data between distributed application components and helps you
+#' decouple these components.
 #' 
 #' For information on the permissions you need to use this API, see
 #' [Identity and access
 #' management](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.html)
-#' in the *Amazon Simple Queue Service Developer Guide.*
+#' in the *Amazon SQS Developer Guide.*
 #' 
-#' You can use [AWS SDKs](https://aws.amazon.com/tools/#sdk) to access
-#' Amazon SQS using your favorite programming language. The SDKs perform
-#' tasks such as the following automatically:
+#' You can use [Amazon Web Services
+#' SDKs](https://aws.amazon.com/developer/tools/#sdk) to access Amazon SQS
+#' using your favorite programming language. The SDKs perform tasks such as
+#' the following automatically:
 #' 
 #' -   Cryptographically sign your service requests
 #' 
@@ -27,11 +28,11 @@ NULL
 #' 
 #' -   Handle error responses
 #' 
-#' **Additional Information**
+#' **Additional information**
 #' 
 #' -   [Amazon SQS Product Page](https://aws.amazon.com/sqs/)
 #' 
-#' -   *Amazon Simple Queue Service Developer Guide*
+#' -   *Amazon SQS Developer Guide*
 #' 
 #'     -   [Making API
 #'         Requests](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html)
@@ -42,8 +43,8 @@ NULL
 #'     -   [Amazon SQS Dead-Letter
 #'         Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #' 
-#' -   [Amazon SQS in the *AWS CLI Command
-#'     Reference*](https://docs.aws.amazon.com/cli/latest/reference/sqs/index.html)
+#' -   [Amazon SQS in the *Command Line
+#'     Interface*](https://docs.aws.amazon.com/cli/latest/reference/sqs/index.html)
 #' 
 #' -   *Amazon Web Services General Reference*
 #' 
@@ -53,6 +54,18 @@ NULL
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -64,10 +77,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```

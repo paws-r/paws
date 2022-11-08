@@ -4,8 +4,10 @@
 \alias{iam_delete_service_specific_credential}
 \title{Deletes the specified service-specific credential}
 \usage{
-iam_delete_service_specific_credential(UserName,
-  ServiceSpecificCredentialId)
+iam_delete_service_specific_credential(
+  UserName = NULL,
+  ServiceSpecificCredentialId
+)
 }
 \arguments{
 \item{UserName}{The name of the IAM user associated with the service-specific
@@ -23,18 +25,9 @@ this value by calling
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 that can consist of any upper or lowercased letter or digit.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified service-specific credential.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_service_specific_credential(
-  UserName = "string",
-  ServiceSpecificCredentialId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/iam/delete_service_specific_credential.html} for full documentation.
+}
 \keyword{internal}

@@ -5,9 +5,12 @@
 \title{Copies the specified automated cluster snapshot to a new manual cluster
 snapshot}
 \usage{
-redshift_copy_cluster_snapshot(SourceSnapshotIdentifier,
-  SourceSnapshotClusterIdentifier, TargetSnapshotIdentifier,
-  ManualSnapshotRetentionPeriod)
+redshift_copy_cluster_snapshot(
+  SourceSnapshotIdentifier,
+  SourceSnapshotClusterIdentifier = NULL,
+  TargetSnapshotIdentifier,
+  ManualSnapshotRetentionPeriod = NULL
+)
 }
 \arguments{
 \item{SourceSnapshotIdentifier}{[required] The identifier for the source snapshot.
@@ -36,7 +39,8 @@ Constraints:
 \item Must contain from 1 to 255 alphanumeric characters or hyphens.
 \item First character must be a letter.
 \item Cannot end with a hyphen or contain two consecutive hyphens.
-\item Must be unique for the AWS account that is making the request.
+\item Must be unique for the Amazon Web Services account that is making
+the request.
 }}
 
 \item{ManualSnapshotRetentionPeriod}{The number of days that a manual snapshot is retained. If the value is
@@ -46,88 +50,9 @@ The value must be either -1 or an integer between 1 and 3,653.
 
 The default value is -1.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Snapshot = list(
-    SnapshotIdentifier = "string",
-    ClusterIdentifier = "string",
-    SnapshotCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Status = "string",
-    Port = 123,
-    AvailabilityZone = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MasterUsername = "string",
-    ClusterVersion = "string",
-    EngineFullVersion = "string",
-    SnapshotType = "string",
-    NodeType = "string",
-    NumberOfNodes = 123,
-    DBName = "string",
-    VpcId = "string",
-    Encrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    EncryptedWithHSM = TRUE|FALSE,
-    AccountsWithRestoreAccess = list(
-      list(
-        AccountId = "string",
-        AccountAlias = "string"
-      )
-    ),
-    OwnerAccount = "string",
-    TotalBackupSizeInMegaBytes = 123.0,
-    ActualIncrementalBackupSizeInMegaBytes = 123.0,
-    BackupProgressInMegaBytes = 123.0,
-    CurrentBackupRateInMegaBytesPerSecond = 123.0,
-    EstimatedSecondsToCompletion = 123,
-    ElapsedTimeInSeconds = 123,
-    SourceRegion = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    RestorableNodeTypes = list(
-      "string"
-    ),
-    EnhancedVpcRouting = TRUE|FALSE,
-    MaintenanceTrackName = "string",
-    ManualSnapshotRetentionPeriod = 123,
-    ManualSnapshotRemainingDays = 123,
-    SnapshotRetentionStartTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Copies the specified automated cluster snapshot to a new manual cluster
-snapshot. The source must be an automated snapshot and it must be in the
-available state.
+Copies the specified automated cluster snapshot to a new manual cluster snapshot. The source must be an automated snapshot and it must be in the available state.
 
-When you delete a cluster, Amazon Redshift deletes any automated
-snapshots of the cluster. Also, when the retention period of the
-snapshot expires, Amazon Redshift automatically deletes it. If you want
-to keep an automated snapshot for a longer period, you can make a manual
-copy of the snapshot. Manual snapshots are retained until you delete
-them.
-
-For more information about working with snapshots, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/copy_cluster_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$copy_cluster_snapshot(
-  SourceSnapshotIdentifier = "string",
-  SourceSnapshotClusterIdentifier = "string",
-  TargetSnapshotIdentifier = "string",
-  ManualSnapshotRetentionPeriod = 123
-)
-}
-}
-
 \keyword{internal}

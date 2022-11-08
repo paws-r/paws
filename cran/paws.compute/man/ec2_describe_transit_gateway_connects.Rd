@@ -4,8 +4,13 @@
 \alias{ec2_describe_transit_gateway_connects}
 \title{Describes one or more Connect attachments}
 \usage{
-ec2_describe_transit_gateway_connects(TransitGatewayAttachmentIds,
-  Filters, MaxResults, NextToken, DryRun)
+ec2_describe_transit_gateway_connects(
+  TransitGatewayAttachmentIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayAttachmentIds}{The IDs of the attachments.}
@@ -34,53 +39,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayConnects = list(
-    list(
-      TransitGatewayAttachmentId = "string",
-      TransportTransitGatewayAttachmentId = "string",
-      TransitGatewayId = "string",
-      State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Options = list(
-        Protocol = "gre"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes one or more Connect attachments.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_transit_gateway_connects(
-  TransitGatewayAttachmentIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_transit_gateway_connects.html} for full documentation.
+}
 \keyword{internal}

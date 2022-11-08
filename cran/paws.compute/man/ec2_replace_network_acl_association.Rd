@@ -4,7 +4,7 @@
 \alias{ec2_replace_network_acl_association}
 \title{Changes which network ACL a subnet is associated with}
 \usage{
-ec2_replace_network_acl_association(AssociationId, DryRun, NetworkAclId)
+ec2_replace_network_acl_association(AssociationId, DryRun = NULL, NetworkAclId)
 }
 \arguments{
 \item{AssociationId}{[required] The ID of the current association between the original network ACL and
@@ -17,38 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkAclId}{[required] The ID of the new network ACL to associate with the subnet.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NewAssociationId = "string"
-)
-}
-}
 \description{
-Changes which network ACL a subnet is associated with. By default when
-you create a subnet, it's automatically associated with the default
-network ACL. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the \emph{Amazon
-Virtual Private Cloud User Guide}.
+Changes which network ACL a subnet is associated with. By default when you create a subnet, it's automatically associated with the default network ACL. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
-This is an idempotent operation.
-}
-\section{Request syntax}{
-\preformatted{svc$replace_network_acl_association(
-  AssociationId = "string",
-  DryRun = TRUE|FALSE,
-  NetworkAclId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example associates the specified network ACL with the subnet for
-# the specified network ACL association.
-svc$replace_network_acl_association(
-  AssociationId = "aclassoc-e5b95c8c",
-  NetworkAclId = "acl-5fb85d36"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/replace_network_acl_association.html} for full documentation.
 }
 \keyword{internal}

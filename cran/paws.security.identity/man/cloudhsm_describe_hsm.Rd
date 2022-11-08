@@ -4,7 +4,7 @@
 \alias{cloudhsm_describe_hsm}
 \title{This is documentation for AWS CloudHSM Classic}
 \usage{
-cloudhsm_describe_hsm(HsmArn, HsmSerialNumber)
+cloudhsm_describe_hsm(HsmArn = NULL, HsmSerialNumber = NULL)
 }
 \arguments{
 \item{HsmArn}{The ARN of the HSM. Either the \code{HsmArn} or the \code{SerialNumber} parameter
@@ -13,51 +13,9 @@ must be specified.}
 \item{HsmSerialNumber}{The serial number of the HSM. Either the \code{HsmArn} or the
 \code{HsmSerialNumber} parameter must be specified.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HsmArn = "string",
-  Status = "PENDING"|"RUNNING"|"UPDATING"|"SUSPENDED"|"TERMINATING"|"TERMINATED"|"DEGRADED",
-  StatusDetails = "string",
-  AvailabilityZone = "string",
-  EniId = "string",
-  EniIp = "string",
-  SubscriptionType = "PRODUCTION",
-  SubscriptionStartDate = "string",
-  SubscriptionEndDate = "string",
-  VpcId = "string",
-  SubnetId = "string",
-  IamRoleArn = "string",
-  SerialNumber = "string",
-  VendorName = "string",
-  HsmType = "string",
-  SoftwareVersion = "string",
-  SshPublicKey = "string",
-  SshKeyLastUpdated = "string",
-  ServerCertUri = "string",
-  ServerCertLastUpdated = "string",
-  Partitions = list(
-    "string"
-  )
-)
-}
-}
 \description{
-This is documentation for \strong{AWS CloudHSM Classic}. For more
-information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},
-and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
 
-\strong{For information about the current version of AWS CloudHSM}, see \href{https://aws.amazon.com/cloudhsm/}{AWS CloudHSM}, the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}, and the
-\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/}{AWS CloudHSM API Reference}.
-
-Retrieves information about an HSM. You can identify the HSM by its ARN
-or its serial number.
+See \url{https://paws-r.github.io/docs/cloudhsm/describe_hsm.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_hsm(
-  HsmArn = "string",
-  HsmSerialNumber = "string"
-)
-}
-}
-
 \keyword{internal}

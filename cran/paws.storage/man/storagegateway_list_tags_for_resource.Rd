@@ -4,7 +4,7 @@
 \alias{storagegateway_list_tags_for_resource}
 \title{Lists the tags that have been added to the specified resource}
 \usage{
-storagegateway_list_tags_for_resource(ResourceARN, Marker, Limit)
+storagegateway_list_tags_for_resource(ResourceARN, Marker = NULL, Limit = NULL)
 }
 \arguments{
 \item{ResourceARN}{[required] The Amazon Resource Name (ARN) of the resource for which you want to
@@ -16,41 +16,9 @@ the list of tags.}
 \item{Limit}{Specifies that the list of tags returned be limited to the specified
 number of items.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceARN = "string",
-  Marker = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists the tags that have been added to the specified resource. This
-operation is supported in storage gateways of all types.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceARN = "string",
-  Marker = "string",
-  Limit = 123
-)
-}
-}
+Lists the tags that have been added to the specified resource. This operation is supported in storage gateways of all types.
 
-\examples{
-\dontrun{
-# Lists the tags that have been added to the specified resource.
-svc$list_tags_for_resource(
-  Limit = 1L,
-  Marker = "1",
-  ResourceARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/list_tags_for_resource.html} for full documentation.
 }
 \keyword{internal}

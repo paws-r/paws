@@ -4,8 +4,11 @@
 \alias{autoscaling_set_desired_capacity}
 \title{Sets the size of the specified Auto Scaling group}
 \usage{
-autoscaling_set_desired_capacity(AutoScalingGroupName, DesiredCapacity,
-  HonorCooldown)
+autoscaling_set_desired_capacity(
+  AutoScalingGroupName,
+  DesiredCapacity,
+  HonorCooldown = NULL
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -18,39 +21,9 @@ to complete before initiating a scaling activity to set your Auto
 Scaling group to its new capacity. By default, Amazon EC2 Auto Scaling
 does not honor the cooldown period during manual scaling activities.}
 }
-\value{
-An empty list.
-}
 \description{
 Sets the size of the specified Auto Scaling group.
 
-If a scale-in activity occurs as a result of a new \code{DesiredCapacity}
-value that is lower than the current size of the group, the Auto Scaling
-group uses its termination policy to determine which instances to
-terminate.
-
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-manual-scaling.html}{Manual scaling}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$set_desired_capacity(
-  AutoScalingGroupName = "string",
-  DesiredCapacity = 123,
-  HonorCooldown = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example sets the desired capacity for the specified Auto Scaling
-# group.
-svc$set_desired_capacity(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  DesiredCapacity = 2L,
-  HonorCooldown = TRUE
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/set_desired_capacity.html} for full documentation.
 }
 \keyword{internal}

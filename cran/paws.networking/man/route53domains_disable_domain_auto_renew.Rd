@@ -10,18 +10,9 @@ route53domains_disable_domain_auto_renew(DomainName)
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to disable automatic renewal for.}
 }
-\value{
-An empty list.
-}
 \description{
-This operation disables automatic renewal of domain registration for the
-specified domain.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_domain_auto_renew(
-  DomainName = "string"
-)
-}
-}
+This operation disables automatic renewal of domain registration for the specified domain.
 
+See \url{https://paws-r.github.io/docs/route53domains/disable_domain_auto_renew.html} for full documentation.
+}
 \keyword{internal}

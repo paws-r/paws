@@ -10,44 +10,9 @@ ses_get_identity_mail_from_domain_attributes(Identities)
 \arguments{
 \item{Identities}{[required] A list of one or more identities.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MailFromDomainAttributes = list(
-    list(
-      MailFromDomain = "string",
-      MailFromDomainStatus = "Pending"|"Success"|"Failed"|"TemporaryFailure",
-      BehaviorOnMXFailure = "UseDefaultValue"|"RejectMessage"
-    )
-  )
-)
-}
-}
 \description{
-Returns the custom MAIL FROM attributes for a list of identities (email
-addresses : domains).
+Returns the custom MAIL FROM attributes for a list of identities (email addresses : domains).
 
-This operation is throttled at one request per second and can only get
-custom MAIL FROM attributes for up to 100 identities at a time.
-}
-\section{Request syntax}{
-\preformatted{svc$get_identity_mail_from_domain_attributes(
-  Identities = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns the custom MAIL FROM attributes for an
-# identity:
-svc$get_identity_mail_from_domain_attributes(
-  Identities = list(
-    "example.com"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/get_identity_mail_from_domain_attributes.html} for full documentation.
 }
 \keyword{internal}

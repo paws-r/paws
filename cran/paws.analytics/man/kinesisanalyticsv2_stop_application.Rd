@@ -4,7 +4,7 @@
 \alias{kinesisanalyticsv2_stop_application}
 \title{Stops the application from processing data}
 \usage{
-kinesisanalyticsv2_stop_application(ApplicationName, Force)
+kinesisanalyticsv2_stop_application(ApplicationName, Force = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the running application to stop.}
@@ -25,27 +25,9 @@ application.
 The application must be in the \code{STARTING}, \code{UPDATING}, \code{STOPPING},
 \code{AUTOSCALING}, or \code{RUNNING} status.}
 }
-\value{
-An empty list.
-}
 \description{
-Stops the application from processing data. You can stop an application
-only if it is in the running status, unless you set the \code{Force}
-parameter to \code{true}.
+Stops the application from processing data. You can stop an application only if it is in the running status, unless you set the \code{Force} parameter to \code{true}.
 
-You can use the
-\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
-operation to find the application status.
-
-Kinesis Data Analytics takes a snapshot when the application is stopped,
-unless \code{Force} is set to \code{true}.
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/stop_application.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$stop_application(
-  ApplicationName = "string",
-  Force = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

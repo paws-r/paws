@@ -13,19 +13,9 @@ directoryservice_disable_client_authentication(DirectoryId, Type)
 \item{Type}{[required] The type of client authentication to disable. Currently, only the
 parameter, \code{SmartCard} is supported.}
 }
-\value{
-An empty list.
-}
 \description{
-Disables alternative client authentication methods for the specified
-directory.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_client_authentication(
-  DirectoryId = "string",
-  Type = "SmartCard"
-)
-}
-}
+Disables alternative client authentication methods for the specified directory.
 
+See \url{https://paws-r.github.io/docs/directoryservice/disable_client_authentication.html} for full documentation.
+}
 \keyword{internal}

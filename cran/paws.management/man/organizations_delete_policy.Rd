@@ -16,35 +16,9 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase
 letters, digits, or the underscore character (_).}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified policy from your organization. Before you perform
-this operation, you must first detach the policy from all organizational
-units (OUs), roots, and accounts.
+Deletes the specified policy from your organization. Before you perform this operation, you must first detach the policy from all organizational units (OUs), roots, and accounts.
 
-This operation can be called only from the organization's management
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_policy(
-  PolicyId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to delete a policy from an organization.
-# The example assumes that you previously detached the policy from all
-# entities:
-# 
-# 
-svc$delete_policy(
-  PolicyId = "p-examplepolicyid111"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/delete_policy.html} for full documentation.
 }
 \keyword{internal}

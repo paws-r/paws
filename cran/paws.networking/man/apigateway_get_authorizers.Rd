@@ -4,51 +4,19 @@
 \alias{apigateway_get_authorizers}
 \title{Describe an existing Authorizers resource}
 \usage{
-apigateway_get_authorizers(restApiId, position, limit)
+apigateway_get_authorizers(restApiId, position = NULL, limit = NULL)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
 \item{position}{The current pagination position in the paged result set.}
 
 \item{limit}{The maximum number of returned results per page. The default value is 25
 and the maximum value is 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  position = "string",
-  items = list(
-    list(
-      id = "string",
-      name = "string",
-      type = "TOKEN"|"REQUEST"|"COGNITO_USER_POOLS",
-      providerARNs = list(
-        "string"
-      ),
-      authType = "string",
-      authorizerUri = "string",
-      authorizerCredentials = "string",
-      identitySource = "string",
-      identityValidationExpression = "string",
-      authorizerResultTtlInSeconds = 123
-    )
-  )
-)
-}
-}
 \description{
-Describe an existing Authorizers resource.<div class="seeAlso">
+Describe an existing Authorizers resource.
 
-
-\href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html}{AWS CLI}</div>
+See \url{https://paws-r.github.io/docs/apigateway/get_authorizers.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_authorizers(
-  restApiId = "string",
-  position = "string",
-  limit = 123
-)
-}
-}
-
 \keyword{internal}

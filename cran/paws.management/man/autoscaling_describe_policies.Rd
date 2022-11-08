@@ -2,21 +2,28 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_describe_policies}
 \alias{autoscaling_describe_policies}
-\title{Describes the policies for the specified Auto Scaling group}
+\title{Gets information about the scaling policies in the account and Region}
 \usage{
-autoscaling_describe_policies(AutoScalingGroupName, PolicyNames,
-  PolicyTypes, NextToken, MaxRecords)
+autoscaling_describe_policies(
+  AutoScalingGroupName = NULL,
+  PolicyNames = NULL,
+  PolicyTypes = NULL,
+  NextToken = NULL,
+  MaxRecords = NULL
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
 
-\item{PolicyNames}{The names of one or more policies. If you omit this parameter, all
+\item{PolicyNames}{The names of one or more policies. If you omit this property, all
 policies are described. If a group name is provided, the results are
-limited to that group. This list is limited to 50 items. If you specify
-an unknown policy name, it is ignored with no error.}
+limited to that group. If you specify an unknown policy name, it is
+ignored with no error.
+
+Array Members: Maximum number of 50 items.}
 
 \item{PolicyTypes}{One or more policy types. The valid values are \code{SimpleScaling},
-\code{StepScaling}, and \code{TargetTrackingScaling}.}
+\code{StepScaling}, \code{TargetTrackingScaling}, and \code{PredictiveScaling}.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
@@ -24,87 +31,9 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to be returned with each call. The default
 value is \code{50} and the maximum value is \code{100}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ScalingPolicies = list(
-    list(
-      AutoScalingGroupName = "string",
-      PolicyName = "string",
-      PolicyARN = "string",
-      PolicyType = "string",
-      AdjustmentType = "string",
-      MinAdjustmentStep = 123,
-      MinAdjustmentMagnitude = 123,
-      ScalingAdjustment = 123,
-      Cooldown = 123,
-      StepAdjustments = list(
-        list(
-          MetricIntervalLowerBound = 123.0,
-          MetricIntervalUpperBound = 123.0,
-          ScalingAdjustment = 123
-        )
-      ),
-      MetricAggregationType = "string",
-      EstimatedInstanceWarmup = 123,
-      Alarms = list(
-        list(
-          AlarmName = "string",
-          AlarmARN = "string"
-        )
-      ),
-      TargetTrackingConfiguration = list(
-        PredefinedMetricSpecification = list(
-          PredefinedMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"ALBRequestCountPerTarget",
-          ResourceLabel = "string"
-        ),
-        CustomizedMetricSpecification = list(
-          MetricName = "string",
-          Namespace = "string",
-          Dimensions = list(
-            list(
-              Name = "string",
-              Value = "string"
-            )
-          ),
-          Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-          Unit = "string"
-        ),
-        TargetValue = 123.0,
-        DisableScaleIn = TRUE|FALSE
-      ),
-      Enabled = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the policies for the specified Auto Scaling group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_policies(
-  AutoScalingGroupName = "string",
-  PolicyNames = list(
-    "string"
-  ),
-  PolicyTypes = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxRecords = 123
-)
-}
-}
+Gets information about the scaling policies in the account and Region.
 
-\examples{
-\dontrun{
-# This example describes the policies for the specified Auto Scaling
-# group.
-svc$describe_policies(
-  AutoScalingGroupName = "my-auto-scaling-group"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/describe_policies.html} for full documentation.
 }
 \keyword{internal}

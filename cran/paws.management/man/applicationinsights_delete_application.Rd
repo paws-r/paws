@@ -9,18 +9,9 @@ applicationinsights_delete_application(ResourceGroupName)
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes the specified application from monitoring. Does not delete the
-application.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_application(
-  ResourceGroupName = "string"
-)
-}
-}
+Removes the specified application from monitoring. Does not delete the application.
 
+See \url{https://paws-r.github.io/docs/applicationinsights/delete_application.html} for full documentation.
+}
 \keyword{internal}

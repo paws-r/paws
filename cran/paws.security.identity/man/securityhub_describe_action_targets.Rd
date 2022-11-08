@@ -5,8 +5,11 @@
 \title{Returns a list of the custom action targets in Security Hub in your
 account}
 \usage{
-securityhub_describe_action_targets(ActionTargetArns, NextToken,
-  MaxResults)
+securityhub_describe_action_targets(
+  ActionTargetArns = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{ActionTargetArns}{A list of custom action target ARNs for the custom action targets to
@@ -22,32 +25,9 @@ response.}
 
 \item{MaxResults}{The maximum number of results to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ActionTargets = list(
-    list(
-      ActionTargetArn = "string",
-      Name = "string",
-      Description = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of the custom action targets in Security Hub in your
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_action_targets(
-  ActionTargetArns = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns a list of the custom action targets in Security Hub in your account.
 
+See \url{https://paws-r.github.io/docs/securityhub/describe_action_targets.html} for full documentation.
+}
 \keyword{internal}

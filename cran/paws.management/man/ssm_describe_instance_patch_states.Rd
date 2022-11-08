@@ -2,66 +2,26 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_instance_patch_states}
 \alias{ssm_describe_instance_patch_states}
-\title{Retrieves the high-level patch state of one or more instances}
+\title{Retrieves the high-level patch state of one or more managed nodes}
 \usage{
-ssm_describe_instance_patch_states(InstanceIds, NextToken, MaxResults)
+ssm_describe_instance_patch_states(
+  InstanceIds,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{InstanceIds}{[required] The ID of the instance whose patch state information should be
+\item{InstanceIds}{[required] The ID of the managed node for which patch state information should be
 retrieved.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 
-\item{MaxResults}{The maximum number of instances to return (per page).}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  InstancePatchStates = list(
-    list(
-      InstanceId = "string",
-      PatchGroup = "string",
-      BaselineId = "string",
-      SnapshotId = "string",
-      InstallOverrideList = "string",
-      OwnerInformation = "string",
-      InstalledCount = 123,
-      InstalledOtherCount = 123,
-      InstalledPendingRebootCount = 123,
-      InstalledRejectedCount = 123,
-      MissingCount = 123,
-      FailedCount = 123,
-      UnreportedNotApplicableCount = 123,
-      NotApplicableCount = 123,
-      OperationStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      OperationEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Operation = "Scan"|"Install",
-      LastNoRebootInstallOperationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      RebootOption = "RebootIfNeeded"|"NoReboot"
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{The maximum number of managed nodes to return (per page).}
 }
 \description{
-Retrieves the high-level patch state of one or more instances.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_instance_patch_states(
-  InstanceIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Retrieves the high-level patch state of one or more managed nodes.
 
+See \url{https://paws-r.github.io/docs/ssm/describe_instance_patch_states.html} for full documentation.
+}
 \keyword{internal}

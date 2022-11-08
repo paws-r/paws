@@ -4,7 +4,7 @@
 \alias{codepipeline_get_pipeline}
 \title{Returns the metadata, structure, stages, and actions of a pipeline}
 \usage{
-codepipeline_get_pipeline(name, version)
+codepipeline_get_pipeline(name, version = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the pipeline for which you want to get information. Pipeline
@@ -13,94 +13,9 @@ names must be unique under an AWS user account.}
 \item{version}{The version number of the pipeline. If you do not specify a version,
 defaults to the current version.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pipeline = list(
-    name = "string",
-    roleArn = "string",
-    artifactStore = list(
-      type = "S3",
-      location = "string",
-      encryptionKey = list(
-        id = "string",
-        type = "KMS"
-      )
-    ),
-    artifactStores = list(
-      list(
-        type = "S3",
-        location = "string",
-        encryptionKey = list(
-          id = "string",
-          type = "KMS"
-        )
-      )
-    ),
-    stages = list(
-      list(
-        name = "string",
-        blockers = list(
-          list(
-            name = "string",
-            type = "Schedule"
-          )
-        ),
-        actions = list(
-          list(
-            name = "string",
-            actionTypeId = list(
-              category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-              owner = "AWS"|"ThirdParty"|"Custom",
-              provider = "string",
-              version = "string"
-            ),
-            runOrder = 123,
-            configuration = list(
-              "string"
-            ),
-            outputArtifacts = list(
-              list(
-                name = "string"
-              )
-            ),
-            inputArtifacts = list(
-              list(
-                name = "string"
-              )
-            ),
-            roleArn = "string",
-            region = "string",
-            namespace = "string"
-          )
-        )
-      )
-    ),
-    version = 123
-  ),
-  metadata = list(
-    pipelineArn = "string",
-    created = as.POSIXct(
-      "2015-01-01"
-    ),
-    updated = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Returns the metadata, structure, stages, and actions of a pipeline. Can
-be used to return the entire structure of a pipeline in JSON format,
-which can then be modified and used to update the pipeline structure
-with \code{\link[=codepipeline_update_pipeline]{update_pipeline}}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_pipeline(
-  name = "string",
-  version = 123
-)
-}
-}
+Returns the metadata, structure, stages, and actions of a pipeline. Can be used to return the entire structure of a pipeline in JSON format, which can then be modified and used to update the pipeline structure with \code{\link[=codepipeline_update_pipeline]{update_pipeline}}.
 
+See \url{https://paws-r.github.io/docs/codepipeline/get_pipeline.html} for full documentation.
+}
 \keyword{internal}

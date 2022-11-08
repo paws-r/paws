@@ -7,10 +7,10 @@
 kms_delete_imported_key_material(KeyId)
 }
 \arguments{
-\item{KeyId}{[required] Identifies the CMK from which you are deleting imported key material.
-The \code{Origin} of the CMK must be \code{EXTERNAL}.
+\item{KeyId}{[required] Identifies the KMS key from which you are deleting imported key
+material. The \code{Origin} of the KMS key must be \code{EXTERNAL}.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
@@ -19,58 +19,12 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use
+To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes key material that you previously imported. This operation makes
-the specified customer master key (CMK) unusable. For more information
-about importing key material into AWS KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
-in the \emph{AWS Key Management Service Developer Guide}.
+Deletes key material that you previously imported. This operation makes the specified KMS key unusable. For more information about importing key material into KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material} in the \emph{Key Management Service Developer Guide}.
 
-When the specified CMK is in the \code{PendingDeletion} state, this operation
-does not change the CMK's state. Otherwise, it changes the CMK's state
-to \code{PendingImport}.
-
-After you delete key material, you can use
-\code{\link[=kms_import_key_material]{import_key_material}} to reimport the same
-key material into the CMK.
-
-The CMK that you use for this operation must be in a compatible key
-state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
-a different AWS account.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:DeleteImportedKeyMaterial}
-(key policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}}
-\item \code{\link[=kms_import_key_material]{import_key_material}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$delete_imported_key_material(
-  KeyId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes the imported key material from the
-# specified customer master key (CMK).
-svc$delete_imported_key_material(
-  KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/delete_imported_key_material.html} for full documentation.
 }
 \keyword{internal}

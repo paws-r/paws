@@ -4,8 +4,12 @@
 \alias{servicecatalog_associate_principal_with_portfolio}
 \title{Associates the specified principal ARN with the specified portfolio}
 \usage{
-servicecatalog_associate_principal_with_portfolio(AcceptLanguage,
-  PortfolioId, PrincipalARN, PrincipalType)
+servicecatalog_associate_principal_with_portfolio(
+  AcceptLanguage = NULL,
+  PortfolioId,
+  PrincipalARN,
+  PrincipalType
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -21,20 +25,9 @@ servicecatalog_associate_principal_with_portfolio(AcceptLanguage,
 
 \item{PrincipalType}{[required] The principal type. The supported value is \code{IAM}.}
 }
-\value{
-An empty list.
-}
 \description{
 Associates the specified principal ARN with the specified portfolio.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_principal_with_portfolio(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  PrincipalARN = "string",
-  PrincipalType = "IAM"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/associate_principal_with_portfolio.html} for full documentation.
+}
 \keyword{internal}

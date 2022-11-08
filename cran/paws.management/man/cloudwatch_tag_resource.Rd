@@ -21,40 +21,9 @@ in the \emph{Amazon Web Services General Reference}.}
 
 \item{Tags}{[required] The list of key-value pairs to associate with the alarm.}
 }
-\value{
-An empty list.
-}
 \description{
-Assigns one or more tags (key-value pairs) to the specified CloudWatch
-resource. Currently, the only CloudWatch resources that can be tagged
-are alarms and Contributor Insights rules.
+Assigns one or more tags (key-value pairs) to the specified CloudWatch resource. Currently, the only CloudWatch resources that can be tagged are alarms and Contributor Insights rules.
 
-Tags can help you organize and categorize your resources. You can also
-use them to scope user permissions by granting a user permission to
-access or change only resources with certain tag values.
-
-Tags don't have any semantic meaning to AWS and are interpreted strictly
-as strings of characters.
-
-You can use the \code{\link[=cloudwatch_tag_resource]{tag_resource}} action with an
-alarm that already has tags. If you specify a new tag key for the alarm,
-this tag is appended to the list of tags associated with the alarm. If
-you specify a tag key that is already associated with the alarm, the new
-tag value that you specify replaces the previous value for that tag.
-
-You can associate as many as 50 tags with a CloudWatch resource.
+See \url{https://paws-r.github.io/docs/cloudwatch/tag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceARN = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

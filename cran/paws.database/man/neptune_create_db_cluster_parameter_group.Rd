@@ -4,8 +4,12 @@
 \alias{neptune_create_db_cluster_parameter_group}
 \title{Creates a new DB cluster parameter group}
 \usage{
-neptune_create_db_cluster_parameter_group(DBClusterParameterGroupName,
-  DBParameterGroupFamily, Description, Tags)
+neptune_create_db_cluster_parameter_group(
+  DBClusterParameterGroupName,
+  DBParameterGroupFamily,
+  Description,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group.
@@ -27,62 +31,9 @@ group family.}
 
 \item{Tags}{The tags to be assigned to the new DB cluster parameter group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterParameterGroup = list(
-    DBClusterParameterGroupName = "string",
-    DBParameterGroupFamily = "string",
-    Description = "string",
-    DBClusterParameterGroupArn = "string"
-  )
-)
-}
-}
 \description{
 Creates a new DB cluster parameter group.
 
-Parameters in a DB cluster parameter group apply to all of the instances
-in a DB cluster.
-
-A DB cluster parameter group is initially created with the default
-parameters for the database engine used by instances in the DB cluster.
-To provide custom values for any of the parameters, you must modify the
-group after creating it using
-\code{\link[=neptune_modify_db_cluster_parameter_group]{modify_db_cluster_parameter_group}}.
-Once you've created a DB cluster parameter group, you need to associate
-it with your DB cluster using
-\code{\link[=neptune_modify_db_cluster]{modify_db_cluster}}. When you associate a
-new DB cluster parameter group with a running DB cluster, you need to
-reboot the DB instances in the DB cluster without failover for the new
-DB cluster parameter group and associated settings to take effect.
-
-After you create a DB cluster parameter group, you should wait at least
-5 minutes before creating your first DB cluster that uses that DB
-cluster parameter group as the default parameter group. This allows
-Amazon Neptune to fully complete the create action before the DB cluster
-parameter group is used as the default for a new DB cluster. This is
-especially important for parameters that are critical when creating the
-default database for a DB cluster, such as the character set for the
-default database defined by the \code{character_set_database} parameter. You
-can use the \emph{Parameter Groups} option of the Amazon Neptune console or
-the
-\code{\link[=neptune_describe_db_cluster_parameters]{describe_db_cluster_parameters}}
-command to verify that your DB cluster parameter group has been created
-or modified.
+See \url{https://paws-r.github.io/docs/neptune/create_db_cluster_parameter_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_db_cluster_parameter_group(
-  DBClusterParameterGroupName = "string",
-  DBParameterGroupFamily = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

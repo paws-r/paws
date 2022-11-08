@@ -6,7 +6,10 @@
 repository}
 \usage{
 codecommit_list_associated_approval_rule_templates_for_repository(
-  repositoryName, nextToken, maxResults)
+  repositoryName,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository for which you want to list all associated
@@ -18,26 +21,9 @@ batch of the results.}
 \item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  approvalRuleTemplateNames = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists all approval rule templates that are associated with a specified
-repository.
-}
-\section{Request syntax}{
-\preformatted{svc$list_associated_approval_rule_templates_for_repository(
-  repositoryName = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Lists all approval rule templates that are associated with a specified repository.
 
+See \url{https://paws-r.github.io/docs/codecommit/list_associated_approval_rule_templates_for_repository.html} for full documentation.
+}
 \keyword{internal}

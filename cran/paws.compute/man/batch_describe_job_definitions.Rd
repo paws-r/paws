@@ -4,20 +4,27 @@
 \alias{batch_describe_job_definitions}
 \title{Describes a list of job definitions}
 \usage{
-batch_describe_job_definitions(jobDefinitions, maxResults,
-  jobDefinitionName, status, nextToken)
+batch_describe_job_definitions(
+  jobDefinitions = NULL,
+  maxResults = NULL,
+  jobDefinitionName = NULL,
+  status = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
-\item{jobDefinitions}{A list of up to 100 job definition names or full Amazon Resource Name
-(ARN) entries.}
+\item{jobDefinitions}{A list of up to 100 job definitions. Each entry in the list can either
+be an ARN in the format
+\verb{arn:aws:batch:$\{Region\}:$\{Account\}:job-definition/$\{JobDefinitionName\}:$\{Revision\}}
+or a short version using the form \verb{$\{JobDefinitionName\}:$\{Revision\}}.}
 
 \item{maxResults}{The maximum number of results returned by
 \code{\link[=batch_describe_job_definitions]{describe_job_definitions}} in
 paginated output. When this parameter is used,
 \code{\link[=batch_describe_job_definitions]{describe_job_definitions}} only
-returns \code{maxResults} results in a single page along with a \code{nextToken}
-response element. The remaining results of the initial request can be
-seen by sending another
+returns \code{maxResults} results in a single page and a \code{nextToken} response
+element. The remaining results of the initial request can be seen by
+sending another
 \code{\link[=batch_describe_job_definitions]{describe_job_definitions}} request
 with the returned \code{nextToken} value. This value can be between 1 and
 100. If this parameter isn't used, then
@@ -39,270 +46,9 @@ This token should be treated as an opaque identifier that's only used to
 retrieve the next items in a list and not for other programmatic
 purposes.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  jobDefinitions = list(
-    list(
-      jobDefinitionName = "string",
-      jobDefinitionArn = "string",
-      revision = 123,
-      status = "string",
-      type = "string",
-      parameters = list(
-        "string"
-      ),
-      retryStrategy = list(
-        attempts = 123,
-        evaluateOnExit = list(
-          list(
-            onStatusReason = "string",
-            onReason = "string",
-            onExitCode = "string",
-            action = "RETRY"|"EXIT"
-          )
-        )
-      ),
-      containerProperties = list(
-        image = "string",
-        vcpus = 123,
-        memory = 123,
-        command = list(
-          "string"
-        ),
-        jobRoleArn = "string",
-        executionRoleArn = "string",
-        volumes = list(
-          list(
-            host = list(
-              sourcePath = "string"
-            ),
-            name = "string"
-          )
-        ),
-        environment = list(
-          list(
-            name = "string",
-            value = "string"
-          )
-        ),
-        mountPoints = list(
-          list(
-            containerPath = "string",
-            readOnly = TRUE|FALSE,
-            sourceVolume = "string"
-          )
-        ),
-        readonlyRootFilesystem = TRUE|FALSE,
-        privileged = TRUE|FALSE,
-        ulimits = list(
-          list(
-            hardLimit = 123,
-            name = "string",
-            softLimit = 123
-          )
-        ),
-        user = "string",
-        instanceType = "string",
-        resourceRequirements = list(
-          list(
-            value = "string",
-            type = "GPU"|"VCPU"|"MEMORY"
-          )
-        ),
-        linuxParameters = list(
-          devices = list(
-            list(
-              hostPath = "string",
-              containerPath = "string",
-              permissions = list(
-                "READ"|"WRITE"|"MKNOD"
-              )
-            )
-          ),
-          initProcessEnabled = TRUE|FALSE,
-          sharedMemorySize = 123,
-          tmpfs = list(
-            list(
-              containerPath = "string",
-              size = 123,
-              mountOptions = list(
-                "string"
-              )
-            )
-          ),
-          maxSwap = 123,
-          swappiness = 123
-        ),
-        logConfiguration = list(
-          logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
-          options = list(
-            "string"
-          ),
-          secretOptions = list(
-            list(
-              name = "string",
-              valueFrom = "string"
-            )
-          )
-        ),
-        secrets = list(
-          list(
-            name = "string",
-            valueFrom = "string"
-          )
-        ),
-        networkConfiguration = list(
-          assignPublicIp = "ENABLED"|"DISABLED"
-        ),
-        fargatePlatformConfiguration = list(
-          platformVersion = "string"
-        )
-      ),
-      timeout = list(
-        attemptDurationSeconds = 123
-      ),
-      nodeProperties = list(
-        numNodes = 123,
-        mainNode = 123,
-        nodeRangeProperties = list(
-          list(
-            targetNodes = "string",
-            container = list(
-              image = "string",
-              vcpus = 123,
-              memory = 123,
-              command = list(
-                "string"
-              ),
-              jobRoleArn = "string",
-              executionRoleArn = "string",
-              volumes = list(
-                list(
-                  host = list(
-                    sourcePath = "string"
-                  ),
-                  name = "string"
-                )
-              ),
-              environment = list(
-                list(
-                  name = "string",
-                  value = "string"
-                )
-              ),
-              mountPoints = list(
-                list(
-                  containerPath = "string",
-                  readOnly = TRUE|FALSE,
-                  sourceVolume = "string"
-                )
-              ),
-              readonlyRootFilesystem = TRUE|FALSE,
-              privileged = TRUE|FALSE,
-              ulimits = list(
-                list(
-                  hardLimit = 123,
-                  name = "string",
-                  softLimit = 123
-                )
-              ),
-              user = "string",
-              instanceType = "string",
-              resourceRequirements = list(
-                list(
-                  value = "string",
-                  type = "GPU"|"VCPU"|"MEMORY"
-                )
-              ),
-              linuxParameters = list(
-                devices = list(
-                  list(
-                    hostPath = "string",
-                    containerPath = "string",
-                    permissions = list(
-                      "READ"|"WRITE"|"MKNOD"
-                    )
-                  )
-                ),
-                initProcessEnabled = TRUE|FALSE,
-                sharedMemorySize = 123,
-                tmpfs = list(
-                  list(
-                    containerPath = "string",
-                    size = 123,
-                    mountOptions = list(
-                      "string"
-                    )
-                  )
-                ),
-                maxSwap = 123,
-                swappiness = 123
-              ),
-              logConfiguration = list(
-                logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
-                options = list(
-                  "string"
-                ),
-                secretOptions = list(
-                  list(
-                    name = "string",
-                    valueFrom = "string"
-                  )
-                )
-              ),
-              secrets = list(
-                list(
-                  name = "string",
-                  valueFrom = "string"
-                )
-              ),
-              networkConfiguration = list(
-                assignPublicIp = "ENABLED"|"DISABLED"
-              ),
-              fargatePlatformConfiguration = list(
-                platformVersion = "string"
-              )
-            )
-          )
-        )
-      ),
-      tags = list(
-        "string"
-      ),
-      propagateTags = TRUE|FALSE,
-      platformCapabilities = list(
-        "EC2"|"FARGATE"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Describes a list of job definitions. You can specify a \code{status} (such as
-\code{ACTIVE}) to only return job definitions that match that status.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_job_definitions(
-  jobDefinitions = list(
-    "string"
-  ),
-  maxResults = 123,
-  jobDefinitionName = "string",
-  status = "string",
-  nextToken = "string"
-)
-}
-}
+Describes a list of job definitions. You can specify a \code{status} (such as \code{ACTIVE}) to only return job definitions that match that status.
 
-\examples{
-\dontrun{
-# This example describes all of your active job definitions.
-svc$describe_job_definitions(
-  status = "ACTIVE"
-)
-}
-
+See \url{https://paws-r.github.io/docs/batch/describe_job_definitions.html} for full documentation.
 }
 \keyword{internal}

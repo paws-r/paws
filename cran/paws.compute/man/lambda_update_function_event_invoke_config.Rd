@@ -5,8 +5,13 @@
 \title{Updates the configuration for asynchronous invocation for a function,
 version, or alias}
 \usage{
-lambda_update_function_event_invoke_config(FunctionName, Qualifier,
-  MaximumRetryAttempts, MaximumEventAgeInSeconds, DestinationConfig)
+lambda_update_function_event_invoke_config(
+  FunctionName,
+  Qualifier = NULL,
+  MaximumRetryAttempts = NULL,
+  MaximumEventAgeInSeconds = NULL,
+  DestinationConfig = NULL
+)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function, version, or alias.
@@ -42,63 +47,9 @@ processing.
 \item \strong{Event Bus} - The ARN of an Amazon EventBridge event bus.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LastModified = as.POSIXct(
-    "2015-01-01"
-  ),
-  FunctionArn = "string",
-  MaximumRetryAttempts = 123,
-  MaximumEventAgeInSeconds = 123,
-  DestinationConfig = list(
-    OnSuccess = list(
-      Destination = "string"
-    ),
-    OnFailure = list(
-      Destination = "string"
-    )
-  )
-)
-}
-}
 \description{
-Updates the configuration for asynchronous invocation for a function,
-version, or alias.
+Updates the configuration for asynchronous invocation for a function, version, or alias.
 
-To configure options for asynchronous invocation, use
-\code{\link[=lambda_put_function_event_invoke_config]{put_function_event_invoke_config}}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_function_event_invoke_config(
-  FunctionName = "string",
-  Qualifier = "string",
-  MaximumRetryAttempts = 123,
-  MaximumEventAgeInSeconds = 123,
-  DestinationConfig = list(
-    OnSuccess = list(
-      Destination = "string"
-    ),
-    OnFailure = list(
-      Destination = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example adds an on-failure destination to the existing
-# asynchronous invocation configuration for a function named my-function.
-svc$update_function_event_invoke_config(
-  DestinationConfig = list(
-    OnFailure = list(
-      Destination = "arn:aws:sqs:us-east-2:123456789012:destination"
-    )
-  ),
-  FunctionName = "my-function"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/update_function_event_invoke_config.html} for full documentation.
 }
 \keyword{internal}

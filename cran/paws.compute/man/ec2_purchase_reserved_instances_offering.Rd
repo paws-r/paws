@@ -4,8 +4,13 @@
 \alias{ec2_purchase_reserved_instances_offering}
 \title{Purchases a Reserved Instance for use with your account}
 \usage{
-ec2_purchase_reserved_instances_offering(InstanceCount,
-  ReservedInstancesOfferingId, DryRun, LimitPrice, PurchaseTime)
+ec2_purchase_reserved_instances_offering(
+  InstanceCount,
+  ReservedInstancesOfferingId,
+  DryRun = NULL,
+  LimitPrice = NULL,
+  PurchaseTime = NULL
+)
 }
 \arguments{
 \item{InstanceCount}{[required] The number of Reserved Instances to purchase.}
@@ -24,45 +29,9 @@ unexpected prices.}
 \item{PurchaseTime}{The time at which to purchase the Reserved Instance, in UTC format (for
 example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReservedInstancesId = "string"
-)
-}
-}
 \description{
-Purchases a Reserved Instance for use with your account. With Reserved
-Instances, you pay a lower hourly rate compared to On-Demand instance
-pricing.
+Purchases a Reserved Instance for use with your account. With Reserved Instances, you pay a lower hourly rate compared to On-Demand instance pricing.
 
-Use
-\code{\link[=ec2_describe_reserved_instances_offerings]{describe_reserved_instances_offerings}}
-to get a list of Reserved Instance offerings that match your
-specifications. After you've purchased a Reserved Instance, you can
-check for your new Reserved Instance with
-\code{\link[=ec2_describe_reserved_instances]{describe_reserved_instances}}.
-
-To queue a purchase for a future date and time, specify a purchase time.
-If you do not specify a purchase time, the default is the current time.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html}{Reserved Instances}
-and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/purchase_reserved_instances_offering.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$purchase_reserved_instances_offering(
-  InstanceCount = 123,
-  ReservedInstancesOfferingId = "string",
-  DryRun = TRUE|FALSE,
-  LimitPrice = list(
-    Amount = 123.0,
-    CurrencyCode = "USD"
-  ),
-  PurchaseTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
-
 \keyword{internal}

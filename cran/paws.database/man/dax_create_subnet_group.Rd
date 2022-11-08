@@ -4,7 +4,7 @@
 \alias{dax_create_subnet_group}
 \title{Creates a new subnet group}
 \usage{
-dax_create_subnet_group(SubnetGroupName, Description, SubnetIds)
+dax_create_subnet_group(SubnetGroupName, Description = NULL, SubnetIds)
 }
 \arguments{
 \item{SubnetGroupName}{[required] A name for the subnet group. This value is stored as a lowercase string.}
@@ -13,34 +13,9 @@ dax_create_subnet_group(SubnetGroupName, Description, SubnetIds)
 
 \item{SubnetIds}{[required] A list of VPC subnet IDs for the subnet group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SubnetGroup = list(
-    SubnetGroupName = "string",
-    Description = "string",
-    VpcId = "string",
-    Subnets = list(
-      list(
-        SubnetIdentifier = "string",
-        SubnetAvailabilityZone = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Creates a new subnet group.
-}
-\section{Request syntax}{
-\preformatted{svc$create_subnet_group(
-  SubnetGroupName = "string",
-  Description = "string",
-  SubnetIds = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/dax/create_subnet_group.html} for full documentation.
+}
 \keyword{internal}

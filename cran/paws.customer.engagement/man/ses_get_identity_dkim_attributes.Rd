@@ -10,63 +10,9 @@ ses_get_identity_dkim_attributes(Identities)
 \item{Identities}{[required] A list of one or more verified identities - email addresses, domains, or
 both.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DkimAttributes = list(
-    list(
-      DkimEnabled = TRUE|FALSE,
-      DkimVerificationStatus = "Pending"|"Success"|"Failed"|"TemporaryFailure"|"NotStarted",
-      DkimTokens = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns the current status of Easy DKIM signing for an entity. For
-domain name identities, this operation also returns the DKIM tokens that
-are required for Easy DKIM signing, and whether Amazon SES has
-successfully verified that these tokens have been published.
+Returns the current status of Easy DKIM signing for an entity. For domain name identities, this operation also returns the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES has successfully verified that these tokens have been published.
 
-This operation takes a list of identities as input and returns the
-following information for each:
-\itemize{
-\item Whether Easy DKIM signing is enabled or disabled.
-\item A set of DKIM tokens that represent the identity. If the identity is
-an email address, the tokens represent the domain of that address.
-\item Whether Amazon SES has successfully verified the DKIM tokens
-published in the domain's DNS. This information is only returned for
-domain name identities, not for email addresses.
-}
-
-This operation is throttled at one request per second and can only get
-DKIM attributes for up to 100 identities at a time.
-
-For more information about creating DNS records using DKIM tokens, go to
-the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/}{Amazon SES Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_identity_dkim_attributes(
-  Identities = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example retrieves the Amazon SES Easy DKIM attributes for
-# a list of identities:
-svc$get_identity_dkim_attributes(
-  Identities = list(
-    "example.com",
-    "user@example.com"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/get_identity_dkim_attributes.html} for full documentation.
 }
 \keyword{internal}

@@ -4,8 +4,13 @@
 \alias{guardduty_list_findings}
 \title{Lists Amazon GuardDuty findings for the specified detector ID}
 \usage{
-guardduty_list_findings(DetectorId, FindingCriteria, SortCriteria,
-  MaxResults, NextToken)
+guardduty_list_findings(
+  DetectorId,
+  FindingCriteria = NULL,
+  SortCriteria = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose
@@ -51,7 +56,6 @@ include:
 \item service.action.networkConnectionAction.connectionDirection
 \item service.action.networkConnectionAction.localPortDetails.port
 \item service.action.networkConnectionAction.protocol
-\item service.action.networkConnectionAction.remoteIpDetails.city.cityName
 \item service.action.networkConnectionAction.remoteIpDetails.country.countryName
 \item service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
 \item service.action.networkConnectionAction.remoteIpDetails.organization.asn
@@ -82,55 +86,9 @@ this parameter to null on your first call to the list action. For
 subsequent calls to the action, fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FindingIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists Amazon GuardDuty findings for the specified detector ID.
-}
-\section{Request syntax}{
-\preformatted{svc$list_findings(
-  DetectorId = "string",
-  FindingCriteria = list(
-    Criterion = list(
-      list(
-        Eq = list(
-          "string"
-        ),
-        Neq = list(
-          "string"
-        ),
-        Gt = 123,
-        Gte = 123,
-        Lt = 123,
-        Lte = 123,
-        Equals = list(
-          "string"
-        ),
-        NotEquals = list(
-          "string"
-        ),
-        GreaterThan = 123,
-        GreaterThanOrEqual = 123,
-        LessThan = 123,
-        LessThanOrEqual = 123
-      )
-    )
-  ),
-  SortCriteria = list(
-    AttributeName = "string",
-    OrderBy = "ASC"|"DESC"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/list_findings.html} for full documentation.
+}
 \keyword{internal}

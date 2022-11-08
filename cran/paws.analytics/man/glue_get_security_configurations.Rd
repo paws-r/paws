@@ -4,52 +4,16 @@
 \alias{glue_get_security_configurations}
 \title{Retrieves a list of all security configurations}
 \usage{
-glue_get_security_configurations(MaxResults, NextToken)
+glue_get_security_configurations(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to return.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SecurityConfigurations = list(
-    list(
-      Name = "string",
-      CreatedTimeStamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      EncryptionConfiguration = list(
-        S3Encryption = list(
-          list(
-            S3EncryptionMode = "DISABLED"|"SSE-KMS"|"SSE-S3",
-            KmsKeyArn = "string"
-          )
-        ),
-        CloudWatchEncryption = list(
-          CloudWatchEncryptionMode = "DISABLED"|"SSE-KMS",
-          KmsKeyArn = "string"
-        ),
-        JobBookmarksEncryption = list(
-          JobBookmarksEncryptionMode = "DISABLED"|"CSE-KMS",
-          KmsKeyArn = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves a list of all security configurations.
-}
-\section{Request syntax}{
-\preformatted{svc$get_security_configurations(
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_security_configurations.html} for full documentation.
+}
 \keyword{internal}

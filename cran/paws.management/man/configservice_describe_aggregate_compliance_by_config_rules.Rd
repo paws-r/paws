@@ -6,7 +6,11 @@
 resources for compliant and noncompliant rules}
 \usage{
 configservice_describe_aggregate_compliance_by_config_rules(
-  ConfigurationAggregatorName, Filters, Limit, NextToken)
+  ConfigurationAggregatorName,
+  Filters = NULL,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
@@ -14,51 +18,14 @@ configservice_describe_aggregate_compliance_by_config_rules(
 \item{Filters}{Filters the results by ConfigRuleComplianceFilters object.}
 
 \item{Limit}{The maximum number of evaluation results returned on each page. The
-default is maximum. If you specify 0, AWS Config uses the default.}
+default is maximum. If you specify 0, Config uses the default.}
 
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AggregateComplianceByConfigRules = list(
-    list(
-      ConfigRuleName = "string",
-      Compliance = list(
-        ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-        ComplianceContributorCount = list(
-          CappedCount = 123,
-          CapExceeded = TRUE|FALSE
-        )
-      ),
-      AccountId = "string",
-      AwsRegion = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of compliant and noncompliant rules with the number of
-resources for compliant and noncompliant rules.
+Returns a list of compliant and noncompliant rules with the number of resources for compliant and noncompliant rules. Does not display rules that do not have compliance results.
 
-The results can return an empty result page, but if you have a
-\code{nextToken}, the results are displayed on the next page.
+See \url{https://paws-r.github.io/docs/configservice/describe_aggregate_compliance_by_config_rules.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_aggregate_compliance_by_config_rules(
-  ConfigurationAggregatorName = "string",
-  Filters = list(
-    ConfigRuleName = "string",
-    ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-    AccountId = "string",
-    AwsRegion = "string"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

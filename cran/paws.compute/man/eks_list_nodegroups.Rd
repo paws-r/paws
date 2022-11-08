@@ -3,9 +3,9 @@
 \name{eks_list_nodegroups}
 \alias{eks_list_nodegroups}
 \title{Lists the Amazon EKS managed node groups associated with the specified
-cluster in your AWS account in the specified Region}
+cluster in your Amazon Web Services account in the specified Region}
 \usage{
-eks_list_nodegroups(clusterName, maxResults, nextToken)
+eks_list_nodegroups(clusterName, maxResults = NULL, nextToken = NULL)
 }
 \arguments{
 \item{clusterName}{[required] The name of the Amazon EKS cluster that you would like to list node
@@ -28,27 +28,9 @@ used and the results exceeded the value of that parameter. Pagination
 continues from the end of the previous results that returned the
 \code{nextToken} value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  nodegroups = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists the Amazon EKS managed node groups associated with the specified
-cluster in your AWS account in the specified Region. Self-managed node
-groups are not listed.
-}
-\section{Request syntax}{
-\preformatted{svc$list_nodegroups(
-  clusterName = "string",
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
+Lists the Amazon EKS managed node groups associated with the specified cluster in your Amazon Web Services account in the specified Region. Self-managed node groups are not listed.
 
+See \url{https://paws-r.github.io/docs/eks/list_nodegroups.html} for full documentation.
+}
 \keyword{internal}

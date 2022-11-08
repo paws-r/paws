@@ -5,8 +5,14 @@
 \title{Creates a connection notification for a specified VPC endpoint or VPC
 endpoint service}
 \usage{
-ec2_create_vpc_endpoint_connection_notification(DryRun, ServiceId,
-  VpcEndpointId, ConnectionNotificationArn, ConnectionEvents, ClientToken)
+ec2_create_vpc_endpoint_connection_notification(
+  DryRun = NULL,
+  ServiceId = NULL,
+  VpcEndpointId = NULL,
+  ConnectionNotificationArn,
+  ConnectionEvents,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -24,46 +30,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 values are \code{Accept}, \code{Connect}, \code{Delete}, and \code{Reject}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ConnectionNotification = list(
-    ConnectionNotificationId = "string",
-    ServiceId = "string",
-    VpcEndpointId = "string",
-    ConnectionNotificationType = "Topic",
-    ConnectionNotificationArn = "string",
-    ConnectionEvents = list(
-      "string"
-    ),
-    ConnectionNotificationState = "Enabled"|"Disabled"
-  ),
-  ClientToken = "string"
-)
-}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
 }
 \description{
-Creates a connection notification for a specified VPC endpoint or VPC
-endpoint service. A connection notification notifies you of specific
-endpoint events. You must create an SNS topic to receive notifications.
-For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html}{Create a Topic}
-in the \emph{Amazon Simple Notification Service Developer Guide}.
+Creates a connection notification for a specified VPC endpoint or VPC endpoint service. A connection notification notifies you of specific endpoint events. You must create an SNS topic to receive notifications. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html}{Create a Topic} in the \emph{Amazon Simple Notification Service Developer Guide}.
 
-You can create a connection notification for interface endpoints only.
+See \url{https://paws-r.github.io/docs/ec2/create_vpc_endpoint_connection_notification.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_vpc_endpoint_connection_notification(
-  DryRun = TRUE|FALSE,
-  ServiceId = "string",
-  VpcEndpointId = "string",
-  ConnectionNotificationArn = "string",
-  ConnectionEvents = list(
-    "string"
-  ),
-  ClientToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -3,6 +3,228 @@
 #' @include forecastservice_service.R
 NULL
 
+#' Creates an Amazon Forecast predictor
+#'
+#' @description
+#' Creates an Amazon Forecast predictor.
+#' 
+#' Amazon Forecast creates predictors with AutoPredictor, which involves
+#' applying the optimal combination of algorithms to each time series in
+#' your datasets. You can use
+#' [`create_auto_predictor`][forecastservice_create_auto_predictor] to
+#' create new predictors or upgrade/retrain existing predictors.
+#' 
+#' **Creating new predictors**
+#' 
+#' The following parameters are required when creating a new predictor:
+#' 
+#' -   `PredictorName` - A unique name for the predictor.
+#' 
+#' -   `DatasetGroupArn` - The ARN of the dataset group used to train the
+#'     predictor.
+#' 
+#' -   `ForecastFrequency` - The granularity of your forecasts (hourly,
+#'     daily, weekly, etc).
+#' 
+#' -   `ForecastHorizon` - The number of time-steps that the model
+#'     predicts. The forecast horizon is also called the prediction length.
+#' 
+#' When creating a new predictor, do not specify a value for
+#' `ReferencePredictorArn`.
+#' 
+#' **Upgrading and retraining predictors**
+#' 
+#' The following parameters are required when retraining or upgrading a
+#' predictor:
+#' 
+#' -   `PredictorName` - A unique name for the predictor.
+#' 
+#' -   `ReferencePredictorArn` - The ARN of the predictor to retrain or
+#'     upgrade.
+#' 
+#' When upgrading or retraining a predictor, only specify values for the
+#' `ReferencePredictorArn` and `PredictorName`.
+#'
+#' @usage
+#' forecastservice_create_auto_predictor(PredictorName, ForecastHorizon,
+#'   ForecastTypes, ForecastDimensions, ForecastFrequency, DataConfig,
+#'   EncryptionConfig, ReferencePredictorArn, OptimizationMetric,
+#'   ExplainPredictor, Tags, MonitorConfig, TimeAlignmentBoundary)
+#'
+#' @param PredictorName &#91;required&#93; A unique name for the predictor
+#' @param ForecastHorizon The number of time-steps that the model predicts. The forecast horizon
+#' is also called the prediction length.
+#' 
+#' The maximum forecast horizon is the lesser of 500 time-steps or 1/4 of
+#' the TARGET_TIME_SERIES dataset length. If you are retraining an existing
+#' AutoPredictor, then the maximum forecast horizon is the lesser of 500
+#' time-steps or 1/3 of the TARGET_TIME_SERIES dataset length.
+#' 
+#' If you are upgrading to an AutoPredictor or retraining an existing
+#' AutoPredictor, you cannot update the forecast horizon parameter. You can
+#' meet this requirement by providing longer time-series in the dataset.
+#' @param ForecastTypes The forecast types used to train a predictor. You can specify up to five
+#' forecast types. Forecast types can be quantiles from 0.01 to 0.99, by
+#' increments of 0.01 or higher. You can also specify the mean forecast
+#' with `mean`.
+#' @param ForecastDimensions An array of dimension (field) names that specify how to group the
+#' generated forecast.
+#' 
+#' For example, if you are generating forecasts for item sales across all
+#' your stores, and your dataset contains a `store_id` field, you would
+#' specify `store_id` as a dimension to group sales forecasts for each
+#' store.
+#' @param ForecastFrequency The frequency of predictions in a forecast.
+#' 
+#' Valid intervals are Y (Year), M (Month), W (Week), D (Day), H (Hour),
+#' 30min (30 minutes), 15min (15 minutes), 10min (10 minutes), 5min (5
+#' minutes), and 1min (1 minute). For example, "Y" indicates every year and
+#' "5min" indicates every five minutes.
+#' 
+#' The frequency must be greater than or equal to the TARGET_TIME_SERIES
+#' dataset frequency.
+#' 
+#' When a RELATED_TIME_SERIES dataset is provided, the frequency must be
+#' equal to the RELATED_TIME_SERIES dataset frequency.
+#' @param DataConfig The data configuration for your dataset group and any additional
+#' datasets.
+#' @param EncryptionConfig 
+#' @param ReferencePredictorArn The ARN of the predictor to retrain or upgrade. This parameter is only
+#' used when retraining or upgrading a predictor. When creating a new
+#' predictor, do not specify a value for this parameter.
+#' 
+#' When upgrading or retraining a predictor, only specify values for the
+#' `ReferencePredictorArn` and `PredictorName`. The value for
+#' `PredictorName` must be a unique predictor name.
+#' @param OptimizationMetric The accuracy metric used to optimize the predictor.
+#' @param ExplainPredictor Create an Explainability resource for the predictor.
+#' @param Tags Optional metadata to help you categorize and organize your predictors.
+#' Each tag consists of a key and an optional value, both of which you
+#' define. Tag keys and values are case sensitive.
+#' 
+#' The following restrictions apply to tags:
+#' 
+#' -   For each resource, each tag key must be unique and each tag key must
+#'     have one value.
+#' 
+#' -   Maximum number of tags per resource: 50.
+#' 
+#' -   Maximum key length: 128 Unicode characters in UTF-8.
+#' 
+#' -   Maximum value length: 256 Unicode characters in UTF-8.
+#' 
+#' -   Accepted characters: all letters and numbers, spaces representable
+#'     in UTF-8, and + - = . _ : / @@. If your tagging schema is used
+#'     across other services and resources, the character restrictions of
+#'     those services also apply.
+#' 
+#' -   Key prefixes cannot include any upper or lowercase combination of
+#'     `aws:` or `AWS:`. Values can have this prefix. If a tag value has
+#'     `aws` as its prefix but the key does not, Forecast considers it to
+#'     be a user tag and will count against the limit of 50 tags. Tags with
+#'     only the key prefix of `aws` do not count against your tags per
+#'     resource limit. You cannot edit or delete tag keys with this prefix.
+#' @param MonitorConfig The configuration details for predictor monitoring. Provide a name for
+#' the monitor resource to enable predictor monitoring.
+#' 
+#' Predictor monitoring allows you to see how your predictor's performance
+#' changes over time. For more information, see [Predictor
+#' Monitoring](https://docs.aws.amazon.com/forecast/latest/dg/predictor-monitoring.html).
+#' @param TimeAlignmentBoundary The time boundary Forecast uses to align and aggregate any data that
+#' doesn't align with your forecast frequency. Provide the unit of time and
+#' the time boundary as a key value pair. For more information on
+#' specifying a time boundary, see [Specifying a Time
+#' Boundary](https://docs.aws.amazon.com/forecast/latest/dg/data-aggregation.html#specifying-time-boundary).
+#' If you don't provide a time boundary, Forecast uses a set of [Default
+#' Time
+#' Boundaries](https://docs.aws.amazon.com/forecast/latest/dg/data-aggregation.html#default-time-boundaries).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PredictorArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_auto_predictor(
+#'   PredictorName = "string",
+#'   ForecastHorizon = 123,
+#'   ForecastTypes = list(
+#'     "string"
+#'   ),
+#'   ForecastDimensions = list(
+#'     "string"
+#'   ),
+#'   ForecastFrequency = "string",
+#'   DataConfig = list(
+#'     DatasetGroupArn = "string",
+#'     AttributeConfigs = list(
+#'       list(
+#'         AttributeName = "string",
+#'         Transformations = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     AdditionalDatasets = list(
+#'       list(
+#'         Name = "string",
+#'         Configuration = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   EncryptionConfig = list(
+#'     RoleArn = "string",
+#'     KMSKeyArn = "string"
+#'   ),
+#'   ReferencePredictorArn = "string",
+#'   OptimizationMetric = "WAPE"|"RMSE"|"AverageWeightedQuantileLoss"|"MASE"|"MAPE",
+#'   ExplainPredictor = TRUE|FALSE,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   MonitorConfig = list(
+#'     MonitorName = "string"
+#'   ),
+#'   TimeAlignmentBoundary = list(
+#'     Month = "JANUARY"|"FEBRUARY"|"MARCH"|"APRIL"|"MAY"|"JUNE"|"JULY"|"AUGUST"|"SEPTEMBER"|"OCTOBER"|"NOVEMBER"|"DECEMBER",
+#'     DayOfMonth = 123,
+#'     DayOfWeek = "MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY"|"SUNDAY",
+#'     Hour = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_create_auto_predictor
+forecastservice_create_auto_predictor <- function(PredictorName, ForecastHorizon = NULL, ForecastTypes = NULL, ForecastDimensions = NULL, ForecastFrequency = NULL, DataConfig = NULL, EncryptionConfig = NULL, ReferencePredictorArn = NULL, OptimizationMetric = NULL, ExplainPredictor = NULL, Tags = NULL, MonitorConfig = NULL, TimeAlignmentBoundary = NULL) {
+  op <- new_operation(
+    name = "CreateAutoPredictor",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$create_auto_predictor_input(PredictorName = PredictorName, ForecastHorizon = ForecastHorizon, ForecastTypes = ForecastTypes, ForecastDimensions = ForecastDimensions, ForecastFrequency = ForecastFrequency, DataConfig = DataConfig, EncryptionConfig = EncryptionConfig, ReferencePredictorArn = ReferencePredictorArn, OptimizationMetric = OptimizationMetric, ExplainPredictor = ExplainPredictor, Tags = Tags, MonitorConfig = MonitorConfig, TimeAlignmentBoundary = TimeAlignmentBoundary)
+  output <- .forecastservice$create_auto_predictor_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$create_auto_predictor <- forecastservice_create_auto_predictor
+
 #' Creates an Amazon Forecast dataset
 #'
 #' @description
@@ -10,22 +232,22 @@ NULL
 #' that you provide helps Forecast understand how to consume the data for
 #' model training. This includes the following:
 #' 
-#' -   *`DataFrequency`* - How frequently your historical time-series data
-#'     is collected.
+#' -   *DataFrequency* - How frequently your historical time-series data is
+#'     collected.
 #' 
-#' -   *`Domain`* and *`DatasetType`* - Each dataset has an associated
-#'     dataset domain and a type within the domain. Amazon Forecast
-#'     provides a list of predefined domains and types within each domain.
-#'     For each unique dataset domain and type within the domain, Amazon
-#'     Forecast requires your data to include a minimum set of predefined
-#'     fields.
+#' -   *Domain* and *DatasetType* - Each dataset has an associated dataset
+#'     domain and a type within the domain. Amazon Forecast provides a list
+#'     of predefined domains and types within each domain. For each unique
+#'     dataset domain and type within the domain, Amazon Forecast requires
+#'     your data to include a minimum set of predefined fields.
 #' 
-#' -   *`Schema`* - A schema specifies the fields in the dataset, including
+#' -   *Schema* - A schema specifies the fields in the dataset, including
 #'     the field name and data type.
 #' 
 #' After creating a dataset, you import your training data into it and add
 #' the dataset to a dataset group. You use the dataset group to create a
-#' predictor. For more information, see howitworks-datasets-groups.
+#' predictor. For more information, see [Importing
+#' datasets](https://docs.aws.amazon.com/forecast/latest/dg/howitworks-datasets-groups.html).
 #' 
 #' To get a list of all your datasets, use the
 #' [`list_datasets`][forecastservice_list_datasets] operation.
@@ -54,7 +276,8 @@ NULL
 #' example, if you choose the `RETAIL` domain and `TARGET_TIME_SERIES` as
 #' the `DatasetType`, Amazon Forecast requires `item_id`, `timestamp`, and
 #' `demand` fields to be present in your data. For more information, see
-#' howitworks-datasets-groups.
+#' [Importing
+#' datasets](https://docs.aws.amazon.com/forecast/latest/dg/howitworks-datasets-groups.html).
 #' @param DatasetType &#91;required&#93; The dataset type. Valid values depend on the chosen `Domain`.
 #' @param DataFrequency The frequency of data collection. This parameter is required for
 #' RELATED_TIME_SERIES datasets.
@@ -67,7 +290,8 @@ NULL
 #' match the fields in your data. The dataset `Domain` and `DatasetType`
 #' that you choose determine the minimum required fields in your training
 #' data. For information about the required fields for a specific dataset
-#' domain and type, see howitworks-domains-ds-types.
+#' domain and type, see [Dataset Domains and Dataset
+#' Types](https://docs.aws.amazon.com/forecast/latest/dg/howitworks-domains-ds-types.html).
 #' @param EncryptionConfig An AWS Key Management Service (KMS) key and the AWS Identity and Access
 #' Management (IAM) role that Amazon Forecast can assume to access the key.
 #' @param Tags The optional metadata that you apply to the dataset to help you
@@ -167,8 +391,8 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #' operation.
 #' 
 #' After creating a dataset group and adding datasets, you use the dataset
-#' group when you create a predictor. For more information, see
-#' howitworks-datasets-groups.
+#' group when you create a predictor. For more information, see [Dataset
+#' groups](https://docs.aws.amazon.com/forecast/latest/dg/howitworks-datasets-groups.html).
 #' 
 #' To get a list of all your datasets groups, use the
 #' [`list_dataset_groups`][forecastservice_list_dataset_groups] operation.
@@ -193,7 +417,8 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #' example, if you choose the `RETAIL` domain and `TARGET_TIME_SERIES` as
 #' the `DatasetType`, Amazon Forecast requires that `item_id`, `timestamp`,
 #' and `demand` fields are present in your data. For more information, see
-#' howitworks-datasets-groups.
+#' [Dataset
+#' groups](https://docs.aws.amazon.com/forecast/latest/dg/howitworks-datasets-groups.html).
 #' @param DatasetArns An array of Amazon Resource Names (ARNs) of the datasets that you want
 #' to include in the dataset group.
 #' @param Tags The optional metadata that you apply to the dataset group to help you
@@ -280,16 +505,18 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' (Amazon S3) bucket and the Amazon Resource Name (ARN) of the dataset
 #' that you want to import the data to.
 #' 
-#' You must specify a DataSource object that includes an AWS Identity and
-#' Access Management (IAM) role that Amazon Forecast can assume to access
-#' the data, as Amazon Forecast makes a copy of your data and processes it
-#' in an internal AWS system. For more information, see
-#' aws-forecast-iam-roles.
+#' You must specify a
+#' [DataSource](https://docs.aws.amazon.com/forecast/latest/dg/API_DataSource.html)
+#' object that includes an AWS Identity and Access Management (IAM) role
+#' that Amazon Forecast can assume to access the data, as Amazon Forecast
+#' makes a copy of your data and processes it in an internal AWS system.
+#' For more information, see [Set up
+#' permissions](https://docs.aws.amazon.com/forecast/latest/dg/aws-forecast-iam-roles.html).
 #' 
-#' The training data must be in CSV format. The delimiter must be a comma
-#' (,).
+#' The training data must be in CSV or Parquet format. The delimiter must
+#' be a comma (,).
 #' 
-#' You can specify the path to a specific CSV file, the S3 bucket, or to a
+#' You can specify the path to a specific file, the S3 bucket, or to a
 #' folder in the S3 bucket. For the latter two cases, Amazon Forecast
 #' imports all files up to the limit of 10,000 files.
 #' 
@@ -307,7 +534,7 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' @usage
 #' forecastservice_create_dataset_import_job(DatasetImportJobName,
 #'   DatasetArn, DataSource, TimestampFormat, TimeZone,
-#'   UseGeolocationForTimeZone, GeolocationFormat, Tags)
+#'   UseGeolocationForTimeZone, GeolocationFormat, Tags, Format)
 #'
 #' @param DatasetImportJobName &#91;required&#93; The name for the dataset import job. We recommend including the current
 #' timestamp in the name, for example, `20190721DatasetImport`. This can
@@ -343,7 +570,7 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' timestamps are normalized to a single time zone.
 #' 
 #' Refer to the [Joda-Time
-#' API](http://joda-time.sourceforge.net/timezones.html) for a complete
+#' API](https://joda-time.sourceforge.net/timezones.html) for a complete
 #' list of valid time zone names.
 #' @param UseGeolocationForTimeZone Automatically derive time zone information from the geolocation
 #' attribute. This option is ideal for datasets that contain timestamps in
@@ -386,6 +613,8 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #'     then Forecast considers it to be a user tag and will count against
 #'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
 #'     count against your tags per resource limit.
+#' @param Format The format of the imported data, CSV or PARQUET. The default value is
+#' CSV.
 #'
 #' @return
 #' A list with the following syntax:
@@ -416,21 +645,22 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   Format = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_dataset_import_job
-forecastservice_create_dataset_import_job <- function(DatasetImportJobName, DatasetArn, DataSource, TimestampFormat = NULL, TimeZone = NULL, UseGeolocationForTimeZone = NULL, GeolocationFormat = NULL, Tags = NULL) {
+forecastservice_create_dataset_import_job <- function(DatasetImportJobName, DatasetArn, DataSource, TimestampFormat = NULL, TimeZone = NULL, UseGeolocationForTimeZone = NULL, GeolocationFormat = NULL, Tags = NULL, Format = NULL) {
   op <- new_operation(
     name = "CreateDatasetImportJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_dataset_import_job_input(DatasetImportJobName = DatasetImportJobName, DatasetArn = DatasetArn, DataSource = DataSource, TimestampFormat = TimestampFormat, TimeZone = TimeZone, UseGeolocationForTimeZone = UseGeolocationForTimeZone, GeolocationFormat = GeolocationFormat, Tags = Tags)
+  input <- .forecastservice$create_dataset_import_job_input(DatasetImportJobName = DatasetImportJobName, DatasetArn = DatasetArn, DataSource = DataSource, TimestampFormat = TimestampFormat, TimeZone = TimeZone, UseGeolocationForTimeZone = UseGeolocationForTimeZone, GeolocationFormat = GeolocationFormat, Tags = Tags, Format = Format)
   output <- .forecastservice$create_dataset_import_job_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -439,6 +669,307 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
   return(response)
 }
 .forecastservice$operations$create_dataset_import_job <- forecastservice_create_dataset_import_job
+
+#' Explainability is only available for Forecasts and Predictors generated
+#' from an AutoPredictor (CreateAutoPredictor)
+#'
+#' @description
+#' Explainability is only available for Forecasts and Predictors generated
+#' from an AutoPredictor
+#' ([`create_auto_predictor`][forecastservice_create_auto_predictor])
+#' 
+#' Creates an Amazon Forecast Explainability.
+#' 
+#' Explainability helps you better understand how the attributes in your
+#' datasets impact forecast. Amazon Forecast uses a metric called Impact
+#' scores to quantify the relative impact of each attribute and determine
+#' whether they increase or decrease forecast values.
+#' 
+#' To enable Forecast Explainability, your predictor must include at least
+#' one of the following: related time series, item metadata, or additional
+#' datasets like Holidays and the Weather Index.
+#' 
+#' CreateExplainability accepts either a Predictor ARN or Forecast ARN. To
+#' receive aggregated Impact scores for all time series and time points in
+#' your datasets, provide a Predictor ARN. To receive Impact scores for
+#' specific time series and time points, provide a Forecast ARN.
+#' 
+#' **CreateExplainability with a Predictor ARN**
+#' 
+#' You can only have one Explainability resource per predictor. If you
+#' already enabled `ExplainPredictor` in
+#' [`create_auto_predictor`][forecastservice_create_auto_predictor], that
+#' predictor already has an Explainability resource.
+#' 
+#' The following parameters are required when providing a Predictor ARN:
+#' 
+#' -   `ExplainabilityName` - A unique name for the Explainability.
+#' 
+#' -   `ResourceArn` - The Arn of the predictor.
+#' 
+#' -   `TimePointGranularity` - Must be set to “ALL”.
+#' 
+#' -   `TimeSeriesGranularity` - Must be set to “ALL”.
+#' 
+#' Do not specify a value for the following parameters:
+#' 
+#' -   `DataSource` - Only valid when TimeSeriesGranularity is “SPECIFIC”.
+#' 
+#' -   `Schema` - Only valid when TimeSeriesGranularity is “SPECIFIC”.
+#' 
+#' -   `StartDateTime` - Only valid when TimePointGranularity is
+#'     “SPECIFIC”.
+#' 
+#' -   `EndDateTime` - Only valid when TimePointGranularity is “SPECIFIC”.
+#' 
+#' **CreateExplainability with a Forecast ARN**
+#' 
+#' You can specify a maximum of 50 time series and 500 time points.
+#' 
+#' The following parameters are required when providing a Predictor ARN:
+#' 
+#' -   `ExplainabilityName` - A unique name for the Explainability.
+#' 
+#' -   `ResourceArn` - The Arn of the forecast.
+#' 
+#' -   `TimePointGranularity` - Either “ALL” or “SPECIFIC”.
+#' 
+#' -   `TimeSeriesGranularity` - Either “ALL” or “SPECIFIC”.
+#' 
+#' If you set TimeSeriesGranularity to “SPECIFIC”, you must also provide
+#' the following:
+#' 
+#' -   `DataSource` - The S3 location of the CSV file specifying your time
+#'     series.
+#' 
+#' -   `Schema` - The Schema defines the attributes and attribute types
+#'     listed in the Data Source.
+#' 
+#' If you set TimePointGranularity to “SPECIFIC”, you must also provide the
+#' following:
+#' 
+#' -   `StartDateTime` - The first timestamp in the range of time points.
+#' 
+#' -   `EndDateTime` - The last timestamp in the range of time points.
+#'
+#' @usage
+#' forecastservice_create_explainability(ExplainabilityName, ResourceArn,
+#'   ExplainabilityConfig, DataSource, Schema, EnableVisualization,
+#'   StartDateTime, EndDateTime, Tags)
+#'
+#' @param ExplainabilityName &#91;required&#93; A unique name for the Explainability.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Predictor or Forecast used to
+#' create the Explainability.
+#' @param ExplainabilityConfig &#91;required&#93; The configuration settings that define the granularity of time series
+#' and time points for the Explainability.
+#' @param DataSource 
+#' @param Schema 
+#' @param EnableVisualization Create an Explainability visualization that is viewable within the AWS
+#' console.
+#' @param StartDateTime If `TimePointGranularity` is set to `SPECIFIC`, define the first point
+#' for the Explainability.
+#' 
+#' Use the following timestamp format: yyyy-MM-ddTHH:mm:ss (example:
+#' 2015-01-01T20:00:00)
+#' @param EndDateTime If `TimePointGranularity` is set to `SPECIFIC`, define the last time
+#' point for the Explainability.
+#' 
+#' Use the following timestamp format: yyyy-MM-ddTHH:mm:ss (example:
+#' 2015-01-01T20:00:00)
+#' @param Tags Optional metadata to help you categorize and organize your resources.
+#' Each tag consists of a key and an optional value, both of which you
+#' define. Tag keys and values are case sensitive.
+#' 
+#' The following restrictions apply to tags:
+#' 
+#' -   For each resource, each tag key must be unique and each tag key must
+#'     have one value.
+#' 
+#' -   Maximum number of tags per resource: 50.
+#' 
+#' -   Maximum key length: 128 Unicode characters in UTF-8.
+#' 
+#' -   Maximum value length: 256 Unicode characters in UTF-8.
+#' 
+#' -   Accepted characters: all letters and numbers, spaces representable
+#'     in UTF-8, and + - = . _ : / @@. If your tagging schema is used
+#'     across other services and resources, the character restrictions of
+#'     those services also apply.
+#' 
+#' -   Key prefixes cannot include any upper or lowercase combination of
+#'     `aws:` or `AWS:`. Values can have this prefix. If a tag value has
+#'     `aws` as its prefix but the key does not, Forecast considers it to
+#'     be a user tag and will count against the limit of 50 tags. Tags with
+#'     only the key prefix of `aws` do not count against your tags per
+#'     resource limit. You cannot edit or delete tag keys with this prefix.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExplainabilityArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_explainability(
+#'   ExplainabilityName = "string",
+#'   ResourceArn = "string",
+#'   ExplainabilityConfig = list(
+#'     TimeSeriesGranularity = "ALL"|"SPECIFIC",
+#'     TimePointGranularity = "ALL"|"SPECIFIC"
+#'   ),
+#'   DataSource = list(
+#'     S3Config = list(
+#'       Path = "string",
+#'       RoleArn = "string",
+#'       KMSKeyArn = "string"
+#'     )
+#'   ),
+#'   Schema = list(
+#'     Attributes = list(
+#'       list(
+#'         AttributeName = "string",
+#'         AttributeType = "string"|"integer"|"float"|"timestamp"|"geolocation"
+#'       )
+#'     )
+#'   ),
+#'   EnableVisualization = TRUE|FALSE,
+#'   StartDateTime = "string",
+#'   EndDateTime = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_create_explainability
+forecastservice_create_explainability <- function(ExplainabilityName, ResourceArn, ExplainabilityConfig, DataSource = NULL, Schema = NULL, EnableVisualization = NULL, StartDateTime = NULL, EndDateTime = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateExplainability",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$create_explainability_input(ExplainabilityName = ExplainabilityName, ResourceArn = ResourceArn, ExplainabilityConfig = ExplainabilityConfig, DataSource = DataSource, Schema = Schema, EnableVisualization = EnableVisualization, StartDateTime = StartDateTime, EndDateTime = EndDateTime, Tags = Tags)
+  output <- .forecastservice$create_explainability_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$create_explainability <- forecastservice_create_explainability
+
+#' Exports an Explainability resource created by the CreateExplainability
+#' operation
+#'
+#' @description
+#' Exports an Explainability resource created by the
+#' [`create_explainability`][forecastservice_create_explainability]
+#' operation. Exported files are exported to an Amazon Simple Storage
+#' Service (Amazon S3) bucket.
+#' 
+#' You must specify a DataDestination object that includes an Amazon S3
+#' bucket and an AWS Identity and Access Management (IAM) role that Amazon
+#' Forecast can assume to access the Amazon S3 bucket. For more
+#' information, see aws-forecast-iam-roles.
+#' 
+#' The `Status` of the export job must be `ACTIVE` before you can access
+#' the export in your Amazon S3 bucket. To get the status, use the
+#' [`describe_explainability_export`][forecastservice_describe_explainability_export]
+#' operation.
+#'
+#' @usage
+#' forecastservice_create_explainability_export(ExplainabilityExportName,
+#'   ExplainabilityArn, Destination, Tags, Format)
+#'
+#' @param ExplainabilityExportName &#91;required&#93; A unique name for the Explainability export.
+#' @param ExplainabilityArn &#91;required&#93; The Amazon Resource Name (ARN) of the Explainability to export.
+#' @param Destination &#91;required&#93; 
+#' @param Tags Optional metadata to help you categorize and organize your resources.
+#' Each tag consists of a key and an optional value, both of which you
+#' define. Tag keys and values are case sensitive.
+#' 
+#' The following restrictions apply to tags:
+#' 
+#' -   For each resource, each tag key must be unique and each tag key must
+#'     have one value.
+#' 
+#' -   Maximum number of tags per resource: 50.
+#' 
+#' -   Maximum key length: 128 Unicode characters in UTF-8.
+#' 
+#' -   Maximum value length: 256 Unicode characters in UTF-8.
+#' 
+#' -   Accepted characters: all letters and numbers, spaces representable
+#'     in UTF-8, and + - = . _ : / @@. If your tagging schema is used
+#'     across other services and resources, the character restrictions of
+#'     those services also apply.
+#' 
+#' -   Key prefixes cannot include any upper or lowercase combination of
+#'     `aws:` or `AWS:`. Values can have this prefix. If a tag value has
+#'     `aws` as its prefix but the key does not, Forecast considers it to
+#'     be a user tag and will count against the limit of 50 tags. Tags with
+#'     only the key prefix of `aws` do not count against your tags per
+#'     resource limit. You cannot edit or delete tag keys with this prefix.
+#' @param Format The format of the exported data, CSV or PARQUET.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExplainabilityExportArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_explainability_export(
+#'   ExplainabilityExportName = "string",
+#'   ExplainabilityArn = "string",
+#'   Destination = list(
+#'     S3Config = list(
+#'       Path = "string",
+#'       RoleArn = "string",
+#'       KMSKeyArn = "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   Format = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_create_explainability_export
+forecastservice_create_explainability_export <- function(ExplainabilityExportName, ExplainabilityArn, Destination, Tags = NULL, Format = NULL) {
+  op <- new_operation(
+    name = "CreateExplainabilityExport",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$create_explainability_export_input(ExplainabilityExportName = ExplainabilityExportName, ExplainabilityArn = ExplainabilityArn, Destination = Destination, Tags = Tags, Format = Format)
+  output <- .forecastservice$create_explainability_export_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$create_explainability_export <- forecastservice_create_explainability_export
 
 #' Creates a forecast for each item in the TARGET_TIME_SERIES dataset that
 #' was used to train the predictor
@@ -470,10 +1001,17 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #' export the forecast. Use the
 #' [`describe_forecast`][forecastservice_describe_forecast] operation to
 #' get the status.
+#' 
+#' By default, a forecast includes predictions for every item (`item_id`)
+#' in the dataset group that was used to train the predictor. However, you
+#' can use the `TimeSeriesSelector` object to generate a forecast on a
+#' subset of time series. Forecast creation is skipped for any time series
+#' that you specify that are not in the input dataset. The forecast export
+#' file will not contain these time series or their forecasted values.
 #'
 #' @usage
 #' forecastservice_create_forecast(ForecastName, PredictorArn,
-#'   ForecastTypes, Tags)
+#'   ForecastTypes, Tags, TimeSeriesSelector)
 #'
 #' @param ForecastName &#91;required&#93; A name for the forecast.
 #' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor to use to generate the
@@ -482,8 +1020,11 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #' currently specify up to 5 quantiles per forecast**. Accepted values
 #' include `0.01 to 0.99` (increments of .01 only) and `mean`. The mean
 #' forecast is different from the median (0.50) when the distribution is
-#' not symmetric (for example, Beta and Negative Binomial). The default
-#' value is `["0.1", "0.5", "0.9"]`.
+#' not symmetric (for example, Beta and Negative Binomial).
+#' 
+#' The default quantiles are the quantiles you specified during predictor
+#' creation. If you didn't specify quantiles, the default values are
+#' `["0.1", "0.5", "0.9"]`.
 #' @param Tags The optional metadata that you apply to the forecast to help you
 #' categorize and organize them. Each tag consists of a key and an optional
 #' value, both of which you define.
@@ -514,6 +1055,16 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #'     then Forecast considers it to be a user tag and will count against
 #'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
 #'     count against your tags per resource limit.
+#' @param TimeSeriesSelector Defines the set of time series that are used to create the forecasts in
+#' a `TimeSeriesIdentifiers` object.
+#' 
+#' The `TimeSeriesIdentifiers` object needs the following information:
+#' 
+#' -   `DataSource`
+#' 
+#' -   `Format`
+#' 
+#' -   `Schema`
 #'
 #' @return
 #' A list with the following syntax:
@@ -536,6 +1087,26 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   TimeSeriesSelector = list(
+#'     TimeSeriesIdentifiers = list(
+#'       DataSource = list(
+#'         S3Config = list(
+#'           Path = "string",
+#'           RoleArn = "string",
+#'           KMSKeyArn = "string"
+#'         )
+#'       ),
+#'       Schema = list(
+#'         Attributes = list(
+#'           list(
+#'             AttributeName = "string",
+#'             AttributeType = "string"|"integer"|"float"|"timestamp"|"geolocation"
+#'           )
+#'         )
+#'       ),
+#'       Format = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -543,14 +1114,14 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_forecast
-forecastservice_create_forecast <- function(ForecastName, PredictorArn, ForecastTypes = NULL, Tags = NULL) {
+forecastservice_create_forecast <- function(ForecastName, PredictorArn, ForecastTypes = NULL, Tags = NULL, TimeSeriesSelector = NULL) {
   op <- new_operation(
     name = "CreateForecast",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_forecast_input(ForecastName = ForecastName, PredictorArn = PredictorArn, ForecastTypes = ForecastTypes, Tags = Tags)
+  input <- .forecastservice$create_forecast_input(ForecastName = ForecastName, PredictorArn = PredictorArn, ForecastTypes = ForecastTypes, Tags = Tags, TimeSeriesSelector = TimeSeriesSelector)
   output <- .forecastservice$create_forecast_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -569,9 +1140,9 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name
 #' will match the following conventions:
 #' 
-#' &lt;ForecastExportJobName&gt;_&lt;ExportTimestamp&gt;_&lt;PartNumber&gt;
+#' \<ForecastExportJobName\>_\<ExportTimestamp\>_\<PartNumber\>
 #' 
-#' where the &lt;ExportTimestamp&gt; component is in Java SimpleDateFormat
+#' where the \<ExportTimestamp\> component is in Java SimpleDateFormat
 #' (yyyy-MM-ddTHH-mm-ssZ).
 #' 
 #' You must specify a DataDestination object that includes an AWS Identity
@@ -592,7 +1163,7 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #'
 #' @usage
 #' forecastservice_create_forecast_export_job(ForecastExportJobName,
-#'   ForecastArn, Destination, Tags)
+#'   ForecastArn, Destination, Tags, Format)
 #'
 #' @param ForecastExportJobName &#91;required&#93; The name for the forecast export job.
 #' @param ForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast that you want to export.
@@ -633,6 +1204,8 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #'     then Forecast considers it to be a user tag and will count against
 #'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
 #'     count against your tags per resource limit.
+#' @param Format The format of the exported data, CSV or PARQUET. The default value is
+#' CSV.
 #'
 #' @return
 #' A list with the following syntax:
@@ -659,21 +1232,22 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   Format = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_forecast_export_job
-forecastservice_create_forecast_export_job <- function(ForecastExportJobName, ForecastArn, Destination, Tags = NULL) {
+forecastservice_create_forecast_export_job <- function(ForecastExportJobName, ForecastArn, Destination, Tags = NULL, Format = NULL) {
   op <- new_operation(
     name = "CreateForecastExportJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_forecast_export_job_input(ForecastExportJobName = ForecastExportJobName, ForecastArn = ForecastArn, Destination = Destination, Tags = Tags)
+  input <- .forecastservice$create_forecast_export_job_input(ForecastExportJobName = ForecastExportJobName, ForecastArn = ForecastArn, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_forecast_export_job_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -683,9 +1257,74 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 }
 .forecastservice$operations$create_forecast_export_job <- forecastservice_create_forecast_export_job
 
-#' Creates an Amazon Forecast predictor
+#' Creates a predictor monitor resource for an existing auto predictor
 #'
 #' @description
+#' Creates a predictor monitor resource for an existing auto predictor.
+#' Predictor monitoring allows you to see how your predictor's performance
+#' changes over time. For more information, see [Predictor
+#' Monitoring](https://docs.aws.amazon.com/forecast/latest/dg/predictor-monitoring.html).
+#'
+#' @usage
+#' forecastservice_create_monitor(MonitorName, ResourceArn, Tags)
+#'
+#' @param MonitorName &#91;required&#93; The name of the monitor resource.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor to monitor.
+#' @param Tags A list of
+#' [tags](https://docs.aws.amazon.com/forecast/latest/dg/tagging-forecast-resources.html)
+#' to apply to the monitor resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MonitorArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_monitor(
+#'   MonitorName = "string",
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_create_monitor
+forecastservice_create_monitor <- function(MonitorName, ResourceArn, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateMonitor",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$create_monitor_input(MonitorName = MonitorName, ResourceArn = ResourceArn, Tags = Tags)
+  output <- .forecastservice$create_monitor_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$create_monitor <- forecastservice_create_monitor
+
+#' This operation creates a legacy predictor that does not include all the
+#' predictor functionalities provided by Amazon Forecast
+#'
+#' @description
+#' This operation creates a legacy predictor that does not include all the
+#' predictor functionalities provided by Amazon Forecast. To create a
+#' predictor that is compatible with all aspects of Forecast, use
+#' [`create_auto_predictor`][forecastservice_create_auto_predictor].
+#' 
 #' Creates an Amazon Forecast predictor.
 #' 
 #' In the request, provide a dataset group and either specify an algorithm
@@ -745,9 +1384,10 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #'
 #' @usage
 #' forecastservice_create_predictor(PredictorName, AlgorithmArn,
-#'   ForecastHorizon, ForecastTypes, PerformAutoML, PerformHPO,
-#'   TrainingParameters, EvaluationParameters, HPOConfig, InputDataConfig,
-#'   FeaturizationConfig, EncryptionConfig, Tags)
+#'   ForecastHorizon, ForecastTypes, PerformAutoML, AutoMLOverrideStrategy,
+#'   PerformHPO, TrainingParameters, EvaluationParameters, HPOConfig,
+#'   InputDataConfig, FeaturizationConfig, EncryptionConfig, Tags,
+#'   OptimizationMetric)
 #'
 #' @param PredictorName &#91;required&#93; A name for the predictor.
 #' @param AlgorithmArn The Amazon Resource Name (ARN) of the algorithm to use for model
@@ -792,6 +1432,15 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' Set `PerformAutoML` to `true` to have Amazon Forecast perform AutoML.
 #' This is a good option if you aren't sure which algorithm is suitable for
 #' your training data. In this case, `PerformHPO` must be false.
+#' @param AutoMLOverrideStrategy The `LatencyOptimized` AutoML override strategy is only available in
+#' private beta. Contact AWS Support or your account manager to learn more
+#' about access privileges.
+#' 
+#' Used to overide the default AutoML strategy, which is to optimize
+#' predictor accuracy. To apply an AutoML strategy that minimizes training
+#' time, use `LatencyOptimized`.
+#' 
+#' This parameter is only valid for predictors trained using AutoML.
 #' @param PerformHPO Whether to perform hyperparameter optimization (HPO). HPO finds optimal
 #' hyperparameter values for your training data. The process of performing
 #' HPO is known as running a hyperparameter tuning job.
@@ -861,6 +1510,7 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #'     then Forecast considers it to be a user tag and will count against
 #'     the limit of 50 tags. Tags with only the key prefix of `aws` do not
 #'     count against your tags per resource limit.
+#' @param OptimizationMetric The accuracy metric used to optimize the predictor.
 #'
 #' @return
 #' A list with the following syntax:
@@ -880,6 +1530,7 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #'     "string"
 #'   ),
 #'   PerformAutoML = TRUE|FALSE,
+#'   AutoMLOverrideStrategy = "LatencyOptimized"|"AccuracyOptimized",
 #'   PerformHPO = TRUE|FALSE,
 #'   TrainingParameters = list(
 #'     "string"
@@ -953,21 +1604,22 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   OptimizationMetric = "WAPE"|"RMSE"|"AverageWeightedQuantileLoss"|"MASE"|"MAPE"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_predictor
-forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL, ForecastHorizon, ForecastTypes = NULL, PerformAutoML = NULL, PerformHPO = NULL, TrainingParameters = NULL, EvaluationParameters = NULL, HPOConfig = NULL, InputDataConfig, FeaturizationConfig, EncryptionConfig = NULL, Tags = NULL) {
+forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL, ForecastHorizon, ForecastTypes = NULL, PerformAutoML = NULL, AutoMLOverrideStrategy = NULL, PerformHPO = NULL, TrainingParameters = NULL, EvaluationParameters = NULL, HPOConfig = NULL, InputDataConfig, FeaturizationConfig, EncryptionConfig = NULL, Tags = NULL, OptimizationMetric = NULL) {
   op <- new_operation(
     name = "CreatePredictor",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_predictor_input(PredictorName = PredictorName, AlgorithmArn = AlgorithmArn, ForecastHorizon = ForecastHorizon, ForecastTypes = ForecastTypes, PerformAutoML = PerformAutoML, PerformHPO = PerformHPO, TrainingParameters = TrainingParameters, EvaluationParameters = EvaluationParameters, HPOConfig = HPOConfig, InputDataConfig = InputDataConfig, FeaturizationConfig = FeaturizationConfig, EncryptionConfig = EncryptionConfig, Tags = Tags)
+  input <- .forecastservice$create_predictor_input(PredictorName = PredictorName, AlgorithmArn = AlgorithmArn, ForecastHorizon = ForecastHorizon, ForecastTypes = ForecastTypes, PerformAutoML = PerformAutoML, AutoMLOverrideStrategy = AutoMLOverrideStrategy, PerformHPO = PerformHPO, TrainingParameters = TrainingParameters, EvaluationParameters = EvaluationParameters, HPOConfig = HPOConfig, InputDataConfig = InputDataConfig, FeaturizationConfig = FeaturizationConfig, EncryptionConfig = EncryptionConfig, Tags = Tags, OptimizationMetric = OptimizationMetric)
   output <- .forecastservice$create_predictor_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -978,18 +1630,20 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 .forecastservice$operations$create_predictor <- forecastservice_create_predictor
 
 #' Exports backtest forecasts and accuracy metrics generated by the
-#' CreatePredictor operation
+#' CreateAutoPredictor or CreatePredictor operations
 #'
 #' @description
 #' Exports backtest forecasts and accuracy metrics generated by the
-#' [`create_predictor`][forecastservice_create_predictor] operation. Two
-#' folders containing CSV files are exported to your specified S3 bucket.
+#' [`create_auto_predictor`][forecastservice_create_auto_predictor] or
+#' [`create_predictor`][forecastservice_create_predictor] operations. Two
+#' folders containing CSV or Parquet files are exported to your specified
+#' S3 bucket.
 #' 
 #' The export file names will match the following conventions:
 #' 
 #' `<ExportJobName>_<ExportTimestamp>_<PartNumber>.csv`
 #' 
-#' The &lt;ExportTimestamp&gt; component is in Java SimpleDate format
+#' The \<ExportTimestamp\> component is in Java SimpleDate format
 #' (yyyy-MM-ddTHH-mm-ssZ).
 #' 
 #' You must specify a DataDestination object that includes an Amazon S3
@@ -1004,7 +1658,7 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #'
 #' @usage
 #' forecastservice_create_predictor_backtest_export_job(
-#'   PredictorBacktestExportJobName, PredictorArn, Destination, Tags)
+#'   PredictorBacktestExportJobName, PredictorArn, Destination, Tags, Format)
 #'
 #' @param PredictorBacktestExportJobName &#91;required&#93; The name for the backtest export job.
 #' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor that you want to export.
@@ -1035,6 +1689,8 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #'     be a user tag and will count against the limit of 50 tags. Tags with
 #'     only the key prefix of `aws` do not count against your tags per
 #'     resource limit. You cannot edit or delete tag keys with this prefix.
+#' @param Format The format of the exported data, CSV or PARQUET. The default value is
+#' CSV.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1061,21 +1717,22 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   Format = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_predictor_backtest_export_job
-forecastservice_create_predictor_backtest_export_job <- function(PredictorBacktestExportJobName, PredictorArn, Destination, Tags = NULL) {
+forecastservice_create_predictor_backtest_export_job <- function(PredictorBacktestExportJobName, PredictorArn, Destination, Tags = NULL, Format = NULL) {
   op <- new_operation(
     name = "CreatePredictorBacktestExportJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_predictor_backtest_export_job_input(PredictorBacktestExportJobName = PredictorBacktestExportJobName, PredictorArn = PredictorArn, Destination = Destination, Tags = Tags)
+  input <- .forecastservice$create_predictor_backtest_export_job_input(PredictorBacktestExportJobName = PredictorBacktestExportJobName, PredictorArn = PredictorArn, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_predictor_backtest_export_job_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -1097,6 +1754,7 @@ forecastservice_create_predictor_backtest_export_job <- function(PredictorBackte
 #' 
 #' Forecast does not automatically update any dataset groups that contain
 #' the deleted dataset. In order to update the dataset group, use the
+#' [`update_dataset_group`][forecastservice_update_dataset_group]
 #' operation, omitting the deleted dataset's ARN.
 #'
 #' @usage
@@ -1228,6 +1886,91 @@ forecastservice_delete_dataset_import_job <- function(DatasetImportJobArn) {
 }
 .forecastservice$operations$delete_dataset_import_job <- forecastservice_delete_dataset_import_job
 
+#' Deletes an Explainability resource
+#'
+#' @description
+#' Deletes an Explainability resource.
+#' 
+#' You can delete only predictor that have a status of `ACTIVE` or
+#' `CREATE_FAILED`. To get the status, use the
+#' [`describe_explainability`][forecastservice_describe_explainability]
+#' operation.
+#'
+#' @usage
+#' forecastservice_delete_explainability(ExplainabilityArn)
+#'
+#' @param ExplainabilityArn &#91;required&#93; The Amazon Resource Name (ARN) of the Explainability resource to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_explainability(
+#'   ExplainabilityArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_delete_explainability
+forecastservice_delete_explainability <- function(ExplainabilityArn) {
+  op <- new_operation(
+    name = "DeleteExplainability",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$delete_explainability_input(ExplainabilityArn = ExplainabilityArn)
+  output <- .forecastservice$delete_explainability_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$delete_explainability <- forecastservice_delete_explainability
+
+#' Deletes an Explainability export
+#'
+#' @description
+#' Deletes an Explainability export.
+#'
+#' @usage
+#' forecastservice_delete_explainability_export(ExplainabilityExportArn)
+#'
+#' @param ExplainabilityExportArn &#91;required&#93; The Amazon Resource Name (ARN) of the Explainability export to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_explainability_export(
+#'   ExplainabilityExportArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_delete_explainability_export
+forecastservice_delete_explainability_export <- function(ExplainabilityExportArn) {
+  op <- new_operation(
+    name = "DeleteExplainabilityExport",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$delete_explainability_export_input(ExplainabilityExportArn = ExplainabilityExportArn)
+  output <- .forecastservice$delete_explainability_export_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$delete_explainability_export <- forecastservice_delete_explainability_export
+
 #' Deletes a forecast created using the CreateForecast operation
 #'
 #' @description
@@ -1321,11 +2064,55 @@ forecastservice_delete_forecast_export_job <- function(ForecastExportJobArn) {
 }
 .forecastservice$operations$delete_forecast_export_job <- forecastservice_delete_forecast_export_job
 
-#' Deletes a predictor created using the CreatePredictor operation
+#' Deletes a monitor resource
+#'
+#' @description
+#' Deletes a monitor resource. You can only delete a monitor resource with
+#' a status of `ACTIVE`, `ACTIVE_STOPPED`, `CREATE_FAILED`, or
+#' `CREATE_STOPPED`.
+#'
+#' @usage
+#' forecastservice_delete_monitor(MonitorArn)
+#'
+#' @param MonitorArn &#91;required&#93; The Amazon Resource Name (ARN) of the monitor resource to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_monitor(
+#'   MonitorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_delete_monitor
+forecastservice_delete_monitor <- function(MonitorArn) {
+  op <- new_operation(
+    name = "DeleteMonitor",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$delete_monitor_input(MonitorArn = MonitorArn)
+  output <- .forecastservice$delete_monitor_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$delete_monitor <- forecastservice_delete_monitor
+
+#' Deletes a predictor created using the DescribePredictor or
+#' CreatePredictor operations
 #'
 #' @description
 #' Deletes a predictor created using the
-#' [`create_predictor`][forecastservice_create_predictor] operation. You
+#' [`describe_predictor`][forecastservice_describe_predictor] or
+#' [`create_predictor`][forecastservice_create_predictor] operations. You
 #' can delete only predictor that have a status of `ACTIVE` or
 #' `CREATE_FAILED`. To get the status, use the
 #' [`describe_predictor`][forecastservice_describe_predictor] operation.
@@ -1406,6 +2193,179 @@ forecastservice_delete_predictor_backtest_export_job <- function(PredictorBackte
   return(response)
 }
 .forecastservice$operations$delete_predictor_backtest_export_job <- forecastservice_delete_predictor_backtest_export_job
+
+#' Deletes an entire resource tree
+#'
+#' @description
+#' Deletes an entire resource tree. This operation will delete the parent
+#' resource and its child resources.
+#' 
+#' Child resources are resources that were created from another resource.
+#' For example, when a forecast is generated from a predictor, the forecast
+#' is the child resource and the predictor is the parent resource.
+#' 
+#' Amazon Forecast resources possess the following parent-child resource
+#' hierarchies:
+#' 
+#' -   **Dataset**: dataset import jobs
+#' 
+#' -   **Dataset Group**: predictors, predictor backtest export jobs,
+#'     forecasts, forecast export jobs
+#' 
+#' -   **Predictor**: predictor backtest export jobs, forecasts, forecast
+#'     export jobs
+#' 
+#' -   **Forecast**: forecast export jobs
+#' 
+#' [`delete_resource_tree`][forecastservice_delete_resource_tree] will only
+#' delete Amazon Forecast resources, and will not delete datasets or
+#' exported files stored in Amazon S3.
+#'
+#' @usage
+#' forecastservice_delete_resource_tree(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the parent resource to delete. All
+#' child resources of the parent resource will also be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_tree(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_delete_resource_tree
+forecastservice_delete_resource_tree <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeleteResourceTree",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$delete_resource_tree_input(ResourceArn = ResourceArn)
+  output <- .forecastservice$delete_resource_tree_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$delete_resource_tree <- forecastservice_delete_resource_tree
+
+#' Describes a predictor created using the CreateAutoPredictor operation
+#'
+#' @description
+#' Describes a predictor created using the CreateAutoPredictor operation.
+#'
+#' @usage
+#' forecastservice_describe_auto_predictor(PredictorArn)
+#'
+#' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PredictorArn = "string",
+#'   PredictorName = "string",
+#'   ForecastHorizon = 123,
+#'   ForecastTypes = list(
+#'     "string"
+#'   ),
+#'   ForecastFrequency = "string",
+#'   ForecastDimensions = list(
+#'     "string"
+#'   ),
+#'   DatasetImportJobArns = list(
+#'     "string"
+#'   ),
+#'   DataConfig = list(
+#'     DatasetGroupArn = "string",
+#'     AttributeConfigs = list(
+#'       list(
+#'         AttributeName = "string",
+#'         Transformations = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     AdditionalDatasets = list(
+#'       list(
+#'         Name = "string",
+#'         Configuration = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   EncryptionConfig = list(
+#'     RoleArn = "string",
+#'     KMSKeyArn = "string"
+#'   ),
+#'   ReferencePredictorSummary = list(
+#'     Arn = "string",
+#'     State = "Active"|"Deleted"
+#'   ),
+#'   EstimatedTimeRemainingInMinutes = 123,
+#'   Status = "string",
+#'   Message = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   OptimizationMetric = "WAPE"|"RMSE"|"AverageWeightedQuantileLoss"|"MASE"|"MAPE",
+#'   ExplainabilityInfo = list(
+#'     ExplainabilityArn = "string",
+#'     Status = "string"
+#'   ),
+#'   MonitorInfo = list(
+#'     MonitorArn = "string",
+#'     Status = "string"
+#'   ),
+#'   TimeAlignmentBoundary = list(
+#'     Month = "JANUARY"|"FEBRUARY"|"MARCH"|"APRIL"|"MAY"|"JUNE"|"JULY"|"AUGUST"|"SEPTEMBER"|"OCTOBER"|"NOVEMBER"|"DECEMBER",
+#'     DayOfMonth = 123,
+#'     DayOfWeek = "MONDAY"|"TUESDAY"|"WEDNESDAY"|"THURSDAY"|"FRIDAY"|"SATURDAY"|"SUNDAY",
+#'     Hour = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_auto_predictor(
+#'   PredictorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_describe_auto_predictor
+forecastservice_describe_auto_predictor <- function(PredictorArn) {
+  op <- new_operation(
+    name = "DescribeAutoPredictor",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$describe_auto_predictor_input(PredictorArn = PredictorArn)
+  output <- .forecastservice$describe_auto_predictor_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$describe_auto_predictor <- forecastservice_describe_auto_predictor
 
 #' Describes an Amazon Forecast dataset created using the CreateDataset
 #' operation
@@ -1605,6 +2565,7 @@ forecastservice_describe_dataset_group <- function(DatasetGroupArn) {
 #'       KMSKeyArn = "string"
 #'     )
 #'   ),
+#'   EstimatedTimeRemainingInMinutes = 123,
 #'   FieldStatistics = list(
 #'     list(
 #'       Count = 123,
@@ -1614,7 +2575,11 @@ forecastservice_describe_dataset_group <- function(DatasetGroupArn) {
 #'       Min = "string",
 #'       Max = "string",
 #'       Avg = 123.0,
-#'       Stddev = 123.0
+#'       Stddev = 123.0,
+#'       CountLong = 123,
+#'       CountDistinctLong = 123,
+#'       CountNullLong = 123,
+#'       CountNanLong = 123
 #'     )
 #'   ),
 #'   DataSize = 123.0,
@@ -1625,7 +2590,8 @@ forecastservice_describe_dataset_group <- function(DatasetGroupArn) {
 #'   ),
 #'   LastModificationTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   Format = "string"
 #' )
 #' ```
 #'
@@ -1655,6 +2621,153 @@ forecastservice_describe_dataset_import_job <- function(DatasetImportJobArn) {
   return(response)
 }
 .forecastservice$operations$describe_dataset_import_job <- forecastservice_describe_dataset_import_job
+
+#' Describes an Explainability resource created using the
+#' CreateExplainability operation
+#'
+#' @description
+#' Describes an Explainability resource created using the
+#' [`create_explainability`][forecastservice_create_explainability]
+#' operation.
+#'
+#' @usage
+#' forecastservice_describe_explainability(ExplainabilityArn)
+#'
+#' @param ExplainabilityArn &#91;required&#93; The Amazon Resource Name (ARN) of the Explaianability to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExplainabilityArn = "string",
+#'   ExplainabilityName = "string",
+#'   ResourceArn = "string",
+#'   ExplainabilityConfig = list(
+#'     TimeSeriesGranularity = "ALL"|"SPECIFIC",
+#'     TimePointGranularity = "ALL"|"SPECIFIC"
+#'   ),
+#'   EnableVisualization = TRUE|FALSE,
+#'   DataSource = list(
+#'     S3Config = list(
+#'       Path = "string",
+#'       RoleArn = "string",
+#'       KMSKeyArn = "string"
+#'     )
+#'   ),
+#'   Schema = list(
+#'     Attributes = list(
+#'       list(
+#'         AttributeName = "string",
+#'         AttributeType = "string"|"integer"|"float"|"timestamp"|"geolocation"
+#'       )
+#'     )
+#'   ),
+#'   StartDateTime = "string",
+#'   EndDateTime = "string",
+#'   EstimatedTimeRemainingInMinutes = 123,
+#'   Message = "string",
+#'   Status = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_explainability(
+#'   ExplainabilityArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_describe_explainability
+forecastservice_describe_explainability <- function(ExplainabilityArn) {
+  op <- new_operation(
+    name = "DescribeExplainability",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$describe_explainability_input(ExplainabilityArn = ExplainabilityArn)
+  output <- .forecastservice$describe_explainability_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$describe_explainability <- forecastservice_describe_explainability
+
+#' Describes an Explainability export created using the
+#' CreateExplainabilityExport operation
+#'
+#' @description
+#' Describes an Explainability export created using the
+#' [`create_explainability_export`][forecastservice_create_explainability_export]
+#' operation.
+#'
+#' @usage
+#' forecastservice_describe_explainability_export(ExplainabilityExportArn)
+#'
+#' @param ExplainabilityExportArn &#91;required&#93; The Amazon Resource Name (ARN) of the Explainability export.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExplainabilityExportArn = "string",
+#'   ExplainabilityExportName = "string",
+#'   ExplainabilityArn = "string",
+#'   Destination = list(
+#'     S3Config = list(
+#'       Path = "string",
+#'       RoleArn = "string",
+#'       KMSKeyArn = "string"
+#'     )
+#'   ),
+#'   Message = "string",
+#'   Status = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Format = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_explainability_export(
+#'   ExplainabilityExportArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_describe_explainability_export
+forecastservice_describe_explainability_export <- function(ExplainabilityExportArn) {
+  op <- new_operation(
+    name = "DescribeExplainabilityExport",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$describe_explainability_export_input(ExplainabilityExportArn = ExplainabilityExportArn)
+  output <- .forecastservice$describe_explainability_export_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$describe_explainability_export <- forecastservice_describe_explainability_export
 
 #' Describes a forecast created using the CreateForecast operation
 #'
@@ -1693,6 +2806,7 @@ forecastservice_describe_dataset_import_job <- function(DatasetImportJobArn) {
 #'   ),
 #'   PredictorArn = "string",
 #'   DatasetGroupArn = "string",
+#'   EstimatedTimeRemainingInMinutes = 123,
 #'   Status = "string",
 #'   Message = "string",
 #'   CreationTime = as.POSIXct(
@@ -1700,6 +2814,26 @@ forecastservice_describe_dataset_import_job <- function(DatasetImportJobArn) {
 #'   ),
 #'   LastModificationTime = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   TimeSeriesSelector = list(
+#'     TimeSeriesIdentifiers = list(
+#'       DataSource = list(
+#'         S3Config = list(
+#'           Path = "string",
+#'           RoleArn = "string",
+#'           KMSKeyArn = "string"
+#'         )
+#'       ),
+#'       Schema = list(
+#'         Attributes = list(
+#'           list(
+#'             AttributeName = "string",
+#'             AttributeType = "string"|"integer"|"float"|"timestamp"|"geolocation"
+#'           )
+#'         )
+#'       ),
+#'       Format = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1777,7 +2911,8 @@ forecastservice_describe_forecast <- function(ForecastArn) {
 #'   ),
 #'   LastModificationTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   Format = "string"
 #' )
 #' ```
 #'
@@ -1808,9 +2943,100 @@ forecastservice_describe_forecast_export_job <- function(ForecastExportJobArn) {
 }
 .forecastservice$operations$describe_forecast_export_job <- forecastservice_describe_forecast_export_job
 
-#' Describes a predictor created using the CreatePredictor operation
+#' Describes a monitor resource
 #'
 #' @description
+#' Describes a monitor resource. In addition to listing the properties
+#' provided in the [`create_monitor`][forecastservice_create_monitor]
+#' request, this operation lists the following properties:
+#' 
+#' -   `Baseline`
+#' 
+#' -   `CreationTime`
+#' 
+#' -   `LastEvaluationTime`
+#' 
+#' -   `LastEvaluationState`
+#' 
+#' -   `LastModificationTime`
+#' 
+#' -   `Message`
+#' 
+#' -   `Status`
+#'
+#' @usage
+#' forecastservice_describe_monitor(MonitorArn)
+#'
+#' @param MonitorArn &#91;required&#93; The Amazon Resource Name (ARN) of the monitor resource to describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MonitorName = "string",
+#'   MonitorArn = "string",
+#'   ResourceArn = "string",
+#'   Status = "string",
+#'   LastEvaluationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastEvaluationState = "string",
+#'   Baseline = list(
+#'     PredictorBaseline = list(
+#'       BaselineMetrics = list(
+#'         list(
+#'           Name = "string",
+#'           Value = 123.0
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Message = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModificationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EstimatedEvaluationTimeRemainingInMinutes = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_monitor(
+#'   MonitorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_describe_monitor
+forecastservice_describe_monitor <- function(MonitorArn) {
+  op <- new_operation(
+    name = "DescribeMonitor",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$describe_monitor_input(MonitorArn = MonitorArn)
+  output <- .forecastservice$describe_monitor_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$describe_monitor <- forecastservice_describe_monitor
+
+#' This operation is only valid for legacy predictors created with
+#' CreatePredictor
+#'
+#' @description
+#' This operation is only valid for legacy predictors created with
+#' CreatePredictor. If you are not using a legacy predictor, use
+#' [`describe_auto_predictor`][forecastservice_describe_auto_predictor].
+#' 
 #' Describes a predictor created using the
 #' [`create_predictor`][forecastservice_create_predictor] operation.
 #' 
@@ -1845,11 +3071,15 @@ forecastservice_describe_forecast_export_job <- function(ForecastExportJobArn) {
 #'   PredictorArn = "string",
 #'   PredictorName = "string",
 #'   AlgorithmArn = "string",
+#'   AutoMLAlgorithmArns = list(
+#'     "string"
+#'   ),
 #'   ForecastHorizon = 123,
 #'   ForecastTypes = list(
 #'     "string"
 #'   ),
 #'   PerformAutoML = TRUE|FALSE,
+#'   AutoMLOverrideStrategy = "LatencyOptimized"|"AccuracyOptimized",
 #'   PerformHPO = TRUE|FALSE,
 #'   TrainingParameters = list(
 #'     "string"
@@ -1937,10 +3167,9 @@ forecastservice_describe_forecast_export_job <- function(ForecastExportJobArn) {
 #'       )
 #'     )
 #'   ),
+#'   EstimatedTimeRemainingInMinutes = 123,
+#'   IsAutoPredictor = TRUE|FALSE,
 #'   DatasetImportJobArns = list(
-#'     "string"
-#'   ),
-#'   AutoMLAlgorithmArns = list(
 #'     "string"
 #'   ),
 #'   Status = "string",
@@ -1950,7 +3179,8 @@ forecastservice_describe_forecast_export_job <- function(ForecastExportJobArn) {
 #'   ),
 #'   LastModificationTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   OptimizationMetric = "WAPE"|"RMSE"|"AverageWeightedQuantileLoss"|"MASE"|"MAPE"
 #' )
 #' ```
 #'
@@ -2028,7 +3258,8 @@ forecastservice_describe_predictor <- function(PredictorArn) {
 #'   ),
 #'   LastModificationTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   Format = "string"
 #' )
 #' ```
 #'
@@ -2122,14 +3353,20 @@ forecastservice_describe_predictor_backtest_export_job <- function(PredictorBack
 #'               list(
 #'                 ForecastType = "string",
 #'                 WAPE = 123.0,
-#'                 RMSE = 123.0
+#'                 RMSE = 123.0,
+#'                 MASE = 123.0,
+#'                 MAPE = 123.0
 #'               )
-#'             )
+#'             ),
+#'             AverageWeightedQuantileLoss = 123.0
 #'           )
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   IsAutoPredictor = TRUE|FALSE,
+#'   AutoMLOverrideStrategy = "LatencyOptimized"|"AccuracyOptimized",
+#'   OptimizationMetric = "WAPE"|"RMSE"|"AverageWeightedQuantileLoss"|"MASE"|"MAPE"
 #' )
 #' ```
 #'
@@ -2239,7 +3476,8 @@ forecastservice_list_dataset_groups <- function(NextToken = NULL, MaxResults = N
 #' properties, including its Amazon Resource Name (ARN). You can retrieve
 #' the complete set of properties by using the ARN with the
 #' [`describe_dataset_import_job`][forecastservice_describe_dataset_import_job]
-#' operation. You can filter the list by providing an array of Filter
+#' operation. You can filter the list by providing an array of
+#' [Filter](https://docs.aws.amazon.com/forecast/latest/dg/API_Filter.html)
 #' objects.
 #'
 #' @usage
@@ -2403,6 +3641,205 @@ forecastservice_list_datasets <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .forecastservice$operations$list_datasets <- forecastservice_list_datasets
 
+#' Returns a list of Explainability resources created using the
+#' CreateExplainability operation
+#'
+#' @description
+#' Returns a list of Explainability resources created using the
+#' [`create_explainability`][forecastservice_create_explainability]
+#' operation. This operation returns a summary for each Explainability. You
+#' can filter the list using an array of Filter objects.
+#' 
+#' To retrieve the complete set of properties for a particular
+#' Explainability resource, use the ARN with the
+#' [`describe_explainability`][forecastservice_describe_explainability]
+#' operation.
+#'
+#' @usage
+#' forecastservice_list_explainabilities(NextToken, MaxResults, Filters)
+#'
+#' @param NextToken If the result of the previous request was truncated, the response
+#' includes a NextToken. To retrieve the next set of results, use the token
+#' in the next request. Tokens expire after 24 hours.
+#' @param MaxResults The number of items returned in the response.
+#' @param Filters An array of filters. For each filter, provide a condition and a match
+#' statement. The condition is either `IS` or `IS_NOT`, which specifies
+#' whether to include or exclude the resources that match the statement
+#' from the list. The match statement consists of a key and a value.
+#' 
+#' **Filter properties**
+#' 
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`.
+#' 
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `ResourceArn` and `Status`.
+#' 
+#' -   `Value` - The value to match.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Explainabilities = list(
+#'     list(
+#'       ExplainabilityArn = "string",
+#'       ExplainabilityName = "string",
+#'       ResourceArn = "string",
+#'       ExplainabilityConfig = list(
+#'         TimeSeriesGranularity = "ALL"|"SPECIFIC",
+#'         TimePointGranularity = "ALL"|"SPECIFIC"
+#'       ),
+#'       Status = "string",
+#'       Message = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_explainabilities(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Filters = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string",
+#'       Condition = "IS"|"IS_NOT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_list_explainabilities
+forecastservice_list_explainabilities <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListExplainabilities",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$list_explainabilities_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
+  output <- .forecastservice$list_explainabilities_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$list_explainabilities <- forecastservice_list_explainabilities
+
+#' Returns a list of Explainability exports created using the
+#' CreateExplainabilityExport operation
+#'
+#' @description
+#' Returns a list of Explainability exports created using the
+#' [`create_explainability_export`][forecastservice_create_explainability_export]
+#' operation. This operation returns a summary for each Explainability
+#' export. You can filter the list using an array of Filter objects.
+#' 
+#' To retrieve the complete set of properties for a particular
+#' Explainability export, use the ARN with the
+#' [`describe_explainability`][forecastservice_describe_explainability]
+#' operation.
+#'
+#' @usage
+#' forecastservice_list_explainability_exports(NextToken, MaxResults,
+#'   Filters)
+#'
+#' @param NextToken If the result of the previous request was truncated, the response
+#' includes a NextToken. To retrieve the next set of results, use the token
+#' in the next request. Tokens expire after 24 hours.
+#' @param MaxResults The number of items to return in the response.
+#' @param Filters An array of filters. For each filter, provide a condition and a match
+#' statement. The condition is either `IS` or `IS_NOT`, which specifies
+#' whether to include or exclude resources that match the statement from
+#' the list. The match statement consists of a key and a value.
+#' 
+#' **Filter properties**
+#' 
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`.
+#' 
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `ResourceArn` and `Status`.
+#' 
+#' -   `Value` - The value to match.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExplainabilityExports = list(
+#'     list(
+#'       ExplainabilityExportArn = "string",
+#'       ExplainabilityExportName = "string",
+#'       Destination = list(
+#'         S3Config = list(
+#'           Path = "string",
+#'           RoleArn = "string",
+#'           KMSKeyArn = "string"
+#'         )
+#'       ),
+#'       Status = "string",
+#'       Message = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_explainability_exports(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Filters = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string",
+#'       Condition = "IS"|"IS_NOT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_list_explainability_exports
+forecastservice_list_explainability_exports <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListExplainabilityExports",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$list_explainability_exports_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
+  output <- .forecastservice$list_explainability_exports_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$list_explainability_exports <- forecastservice_list_explainability_exports
+
 #' Returns a list of forecast export jobs created using the
 #' CreateForecastExportJob operation
 #'
@@ -2559,6 +3996,7 @@ forecastservice_list_forecast_export_jobs <- function(NextToken = NULL, MaxResul
 #'       ForecastArn = "string",
 #'       ForecastName = "string",
 #'       PredictorArn = "string",
+#'       CreatedUsingAutoPredictor = TRUE|FALSE,
 #'       DatasetGroupArn = "string",
 #'       Status = "string",
 #'       Message = "string",
@@ -2609,6 +4047,224 @@ forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, 
 }
 .forecastservice$operations$list_forecasts <- forecastservice_list_forecasts
 
+#' Returns a list of the monitoring evaluation results and predictor events
+#' collected by the monitor resource during different windows of time
+#'
+#' @description
+#' Returns a list of the monitoring evaluation results and predictor events
+#' collected by the monitor resource during different windows of time.
+#' 
+#' For information about monitoring see predictor-monitoring. For more
+#' information about retrieving monitoring results see [Viewing Monitoring
+#' Results](https://docs.aws.amazon.com/forecast/latest/dg/predictor-monitoring-results.html).
+#'
+#' @usage
+#' forecastservice_list_monitor_evaluations(NextToken, MaxResults,
+#'   MonitorArn, Filters)
+#'
+#' @param NextToken If the result of the previous request was truncated, the response
+#' includes a `NextToken`. To retrieve the next set of results, use the
+#' token in the next request. Tokens expire after 24 hours.
+#' @param MaxResults The maximum number of monitoring results to return.
+#' @param MonitorArn &#91;required&#93; The Amazon Resource Name (ARN) of the monitor resource to get results
+#' from.
+#' @param Filters An array of filters. For each filter, provide a condition and a match
+#' statement. The condition is either `IS` or `IS_NOT`, which specifies
+#' whether to include or exclude the resources that match the statement
+#' from the list. The match statement consists of a key and a value.
+#' 
+#' **Filter properties**
+#' 
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`.
+#' 
+#' -   `Key` - The name of the parameter to filter on. The only valid value
+#'     is `EvaluationState`.
+#' 
+#' -   `Value` - The value to match. Valid values are only `SUCCESS` or
+#'     `FAILURE`.
+#' 
+#' For example, to list only successful monitor evaluations, you would
+#' specify:
+#' 
+#' `"Filters": [ { "Condition": "IS", "Key": "EvaluationState", "Value": "SUCCESS" } ]`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   PredictorMonitorEvaluations = list(
+#'     list(
+#'       ResourceArn = "string",
+#'       MonitorArn = "string",
+#'       EvaluationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       EvaluationState = "string",
+#'       WindowStartDatetime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       WindowEndDatetime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       PredictorEvent = list(
+#'         Detail = "string",
+#'         Datetime = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       MonitorDataSource = list(
+#'         DatasetImportJobArn = "string",
+#'         ForecastArn = "string",
+#'         PredictorArn = "string"
+#'       ),
+#'       MetricResults = list(
+#'         list(
+#'           MetricName = "string",
+#'           MetricValue = 123.0
+#'         )
+#'       ),
+#'       NumItemsEvaluated = 123,
+#'       Message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_monitor_evaluations(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   MonitorArn = "string",
+#'   Filters = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string",
+#'       Condition = "IS"|"IS_NOT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_list_monitor_evaluations
+forecastservice_list_monitor_evaluations <- function(NextToken = NULL, MaxResults = NULL, MonitorArn, Filters = NULL) {
+  op <- new_operation(
+    name = "ListMonitorEvaluations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$list_monitor_evaluations_input(NextToken = NextToken, MaxResults = MaxResults, MonitorArn = MonitorArn, Filters = Filters)
+  output <- .forecastservice$list_monitor_evaluations_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$list_monitor_evaluations <- forecastservice_list_monitor_evaluations
+
+#' Returns a list of monitors created with the CreateMonitor operation and
+#' CreateAutoPredictor operation
+#'
+#' @description
+#' Returns a list of monitors created with the
+#' [`create_monitor`][forecastservice_create_monitor] operation and
+#' [`create_auto_predictor`][forecastservice_create_auto_predictor]
+#' operation. For each monitor resource, this operation returns of a
+#' summary of its properties, including its Amazon Resource Name (ARN). You
+#' can retrieve a complete set of properties of a monitor resource by
+#' specify the monitor's ARN in the
+#' [`describe_monitor`][forecastservice_describe_monitor] operation.
+#'
+#' @usage
+#' forecastservice_list_monitors(NextToken, MaxResults, Filters)
+#'
+#' @param NextToken If the result of the previous request was truncated, the response
+#' includes a `NextToken`. To retrieve the next set of results, use the
+#' token in the next request. Tokens expire after 24 hours.
+#' @param MaxResults The maximum number of monitors to include in the response.
+#' @param Filters An array of filters. For each filter, provide a condition and a match
+#' statement. The condition is either `IS` or `IS_NOT`, which specifies
+#' whether to include or exclude the resources that match the statement
+#' from the list. The match statement consists of a key and a value.
+#' 
+#' **Filter properties**
+#' 
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`.
+#' 
+#' -   `Key` - The name of the parameter to filter on. The only valid value
+#'     is `Status`.
+#' 
+#' -   `Value` - The value to match.
+#' 
+#' For example, to list all monitors who's status is ACTIVE, you would
+#' specify:
+#' 
+#' `"Filters": [ { "Condition": "IS", "Key": "Status", "Value": "ACTIVE" } ]`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Monitors = list(
+#'     list(
+#'       MonitorArn = "string",
+#'       MonitorName = "string",
+#'       ResourceArn = "string",
+#'       Status = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModificationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_monitors(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Filters = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string",
+#'       Condition = "IS"|"IS_NOT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_list_monitors
+forecastservice_list_monitors <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListMonitors",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$list_monitors_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
+  output <- .forecastservice$list_monitors_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$list_monitors <- forecastservice_list_monitors
+
 #' Returns a list of predictor backtest export jobs created using the
 #' CreatePredictorBacktestExportJob operation
 #'
@@ -2645,7 +4301,7 @@ forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, 
 #'     export jobs, specify `IS_NOT`.
 #' 
 #' -   `Key` - The name of the parameter to filter on. Valid values are
-#'     `PredictorBacktestExportJobArn` and `Status`.
+#'     `PredictorArn` and `Status`.
 #' 
 #' -   `Value` - The value to match.
 #'
@@ -2713,16 +4369,20 @@ forecastservice_list_predictor_backtest_export_jobs <- function(NextToken = NULL
 }
 .forecastservice$operations$list_predictor_backtest_export_jobs <- forecastservice_list_predictor_backtest_export_jobs
 
-#' Returns a list of predictors created using the CreatePredictor operation
+#' Returns a list of predictors created using the CreateAutoPredictor or
+#' CreatePredictor operations
 #'
 #' @description
 #' Returns a list of predictors created using the
-#' [`create_predictor`][forecastservice_create_predictor] operation. For
+#' [`create_auto_predictor`][forecastservice_create_auto_predictor] or
+#' [`create_predictor`][forecastservice_create_predictor] operations. For
 #' each predictor, this operation returns a summary of its properties,
-#' including its Amazon Resource Name (ARN). You can retrieve the complete
-#' set of properties by using the ARN with the
-#' [`describe_predictor`][forecastservice_describe_predictor] operation.
-#' You can filter the list using an array of Filter objects.
+#' including its Amazon Resource Name (ARN).
+#' 
+#' You can retrieve the complete set of properties by using the ARN with
+#' the [`describe_auto_predictor`][forecastservice_describe_auto_predictor]
+#' and [`describe_predictor`][forecastservice_describe_predictor]
+#' operations. You can filter the list using an array of Filter objects.
 #'
 #' @usage
 #' forecastservice_list_predictors(NextToken, MaxResults, Filters)
@@ -2762,6 +4422,11 @@ forecastservice_list_predictor_backtest_export_jobs <- function(NextToken = NULL
 #'       PredictorArn = "string",
 #'       PredictorName = "string",
 #'       DatasetGroupArn = "string",
+#'       IsAutoPredictor = TRUE|FALSE,
+#'       ReferencePredictorSummary = list(
+#'         Arn = "string",
+#'         State = "Active"|"Deleted"
+#'       ),
 #'       Status = "string",
 #'       Message = "string",
 #'       CreationTime = as.POSIXct(
@@ -2820,9 +4485,7 @@ forecastservice_list_predictors <- function(NextToken = NULL, MaxResults = NULL,
 #' forecastservice_list_tags_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
-#' list the tags. Currently, the supported resources are Forecast dataset
-#' groups, datasets, dataset import jobs, predictors, forecasts, and
-#' forecast export jobs.
+#' list the tags.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2864,6 +4527,109 @@ forecastservice_list_tags_for_resource <- function(ResourceArn) {
 }
 .forecastservice$operations$list_tags_for_resource <- forecastservice_list_tags_for_resource
 
+#' Resumes a stopped monitor resource
+#'
+#' @description
+#' Resumes a stopped monitor resource.
+#'
+#' @usage
+#' forecastservice_resume_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the monitor resource to resume.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$resume_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_resume_resource
+forecastservice_resume_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ResumeResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$resume_resource_input(ResourceArn = ResourceArn)
+  output <- .forecastservice$resume_resource_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$resume_resource <- forecastservice_resume_resource
+
+#' Stops a resource
+#'
+#' @description
+#' Stops a resource.
+#' 
+#' The resource undergoes the following states: `CREATE_STOPPING` and
+#' `CREATE_STOPPED`. You cannot resume a resource once it has been stopped.
+#' 
+#' This operation can be applied to the following resources (and their
+#' corresponding child resources):
+#' 
+#' -   Dataset Import Job
+#' 
+#' -   Predictor Job
+#' 
+#' -   Forecast Job
+#' 
+#' -   Forecast Export Job
+#' 
+#' -   Predictor Backtest Export Job
+#' 
+#' -   Explainability Job
+#' 
+#' -   Explainability Export Job
+#'
+#' @usage
+#' forecastservice_stop_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource to stop. The
+#' supported ARNs are `DatasetImportJobArn`, `PredictorArn`,
+#' `PredictorBacktestExportJobArn`, `ForecastArn`, `ForecastExportJobArn`,
+#' `ExplainabilityArn`, and `ExplainabilityExportArn`.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_stop_resource
+forecastservice_stop_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "StopResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$stop_resource_input(ResourceArn = ResourceArn)
+  output <- .forecastservice$stop_resource_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$stop_resource <- forecastservice_stop_resource
+
 #' Associates the specified tags to a resource with the specified
 #' resourceArn
 #'
@@ -2877,9 +4643,7 @@ forecastservice_list_tags_for_resource <- function(ResourceArn) {
 #' forecastservice_tag_resource(ResourceArn, Tags)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
-#' list the tags. Currently, the supported resources are Forecast dataset
-#' groups, datasets, dataset import jobs, predictors, forecasts, and
-#' forecast export jobs.
+#' list the tags.
 #' @param Tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
 #' 
 #' The following basic restrictions apply to tags:
@@ -2954,9 +4718,7 @@ forecastservice_tag_resource <- function(ResourceArn, Tags) {
 #' forecastservice_untag_resource(ResourceArn, TagKeys)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
-#' list the tags. Currently, the supported resources are Forecast dataset
-#' groups, datasets, dataset import jobs, predictors, forecasts, and
-#' forecast exports.
+#' list the tags.
 #' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
 #'
 #' @return

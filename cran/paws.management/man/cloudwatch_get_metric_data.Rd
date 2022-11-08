@@ -2,19 +2,24 @@
 % Please edit documentation in R/cloudwatch_operations.R
 \name{cloudwatch_get_metric_data}
 \alias{cloudwatch_get_metric_data}
-\title{You can use the GetMetricData API to retrieve as many as 500 different
-metrics in a single request, with a total of as many as 100,800 data
-points}
+\title{You can use the GetMetricData API to retrieve CloudWatch metric values}
 \usage{
-cloudwatch_get_metric_data(MetricDataQueries, StartTime, EndTime,
-  NextToken, ScanBy, MaxDatapoints)
+cloudwatch_get_metric_data(
+  MetricDataQueries,
+  StartTime,
+  EndTime,
+  NextToken = NULL,
+  ScanBy = NULL,
+  MaxDatapoints = NULL,
+  LabelOptions = NULL
+)
 }
 \arguments{
 \item{MetricDataQueries}{[required] The metric queries to be returned. A single
 \code{\link[=cloudwatch_get_metric_data]{get_metric_data}} call can include as many
 as 500 \code{MetricDataQuery} structures. Each of these structures can
-specify either a metric to retrieve, or a math expression to perform on
-retrieved data.}
+specify either a metric to retrieve, a Metrics Insights query, or a math
+expression to perform on retrieved data.}
 
 \item{StartTime}{[required] The time stamp indicating the earliest data to be returned.
 
@@ -70,123 +75,14 @@ paginates when the \code{MaxDatapoints} limit is reached.}
 
 \item{MaxDatapoints}{The maximum number of data points the request should return before
 paginating. If you omit this, the default of 100,800 is used.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  MetricDataResults = list(
-    list(
-      Id = "string",
-      Label = "string",
-      Timestamps = list(
-        as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      Values = list(
-        123.0
-      ),
-      StatusCode = "Complete"|"InternalError"|"PartialData",
-      Messages = list(
-        list(
-          Code = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string",
-  Messages = list(
-    list(
-      Code = "string",
-      Value = "string"
-    )
-  )
-)
-}
+
+\item{LabelOptions}{This structure includes the \code{Timezone} parameter, which you can use to
+specify your time zone so that the labels of returned data display the
+correct time for your time zone.}
 }
 \description{
-You can use the \code{\link[=cloudwatch_get_metric_data]{get_metric_data}} API to
-retrieve as many as 500 different metrics in a single request, with a
-total of as many as 100,800 data points. You can also optionally perform
-math expressions on the values of the returned statistics, to create new
-time series that represent new insights into your data. For example,
-using Lambda metrics, you could divide the Errors metric by the
-Invocations metric to get an error rate time series. For more
-information about metric math expressions, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax}{Metric Math Syntax and Functions}
-in the \emph{Amazon CloudWatch User Guide}.
+You can use the \code{\link[=cloudwatch_get_metric_data]{get_metric_data}} API to retrieve CloudWatch metric values. The operation can also include a CloudWatch Metrics Insights query, and one or more metric math functions.
 
-Calls to the \code{\link[=cloudwatch_get_metric_data]{get_metric_data}} API have a
-different pricing structure than calls to
-\code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}}. For more
-information about pricing, see \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
-
-Amazon CloudWatch retains metric data as follows:
-\itemize{
-\item Data points with a period of less than 60 seconds are available for
-3 hours. These data points are high-resolution metrics and are
-available only for custom metrics that have been defined with a
-\code{StorageResolution} of 1.
-\item Data points with a period of 60 seconds (1-minute) are available for
-15 days.
-\item Data points with a period of 300 seconds (5-minute) are available
-for 63 days.
-\item Data points with a period of 3600 seconds (1 hour) are available for
-455 days (15 months).
+See \url{https://paws-r.github.io/docs/cloudwatch/get_metric_data.html} for full documentation.
 }
-
-Data points that are initially published with a shorter period are
-aggregated together for long-term storage. For example, if you collect
-data using a period of 1 minute, the data remains available for 15 days
-with 1-minute resolution. After 15 days, this data is still available,
-but is aggregated and retrievable only with a resolution of 5 minutes.
-After 63 days, the data is further aggregated and is available with a
-resolution of 1 hour.
-
-If you omit \code{Unit} in your request, all data that was collected with any
-unit is returned, along with the corresponding units that were specified
-when the data was reported to CloudWatch. If you specify a unit, the
-operation returns only data that was collected with that unit specified.
-If you specify a unit that does not match the data collected, the
-results of the operation are null. CloudWatch does not perform unit
-conversions.
-}
-\section{Request syntax}{
-\preformatted{svc$get_metric_data(
-  MetricDataQueries = list(
-    list(
-      Id = "string",
-      MetricStat = list(
-        Metric = list(
-          Namespace = "string",
-          MetricName = "string",
-          Dimensions = list(
-            list(
-              Name = "string",
-              Value = "string"
-            )
-          )
-        ),
-        Period = 123,
-        Stat = "string",
-        Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-      ),
-      Expression = "string",
-      Label = "string",
-      ReturnData = TRUE|FALSE,
-      Period = 123
-    )
-  ),
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  NextToken = "string",
-  ScanBy = "TimestampDescending"|"TimestampAscending",
-  MaxDatapoints = 123
-)
-}
-}
-
 \keyword{internal}

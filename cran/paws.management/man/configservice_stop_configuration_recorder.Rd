@@ -2,8 +2,8 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_stop_configuration_recorder}
 \alias{configservice_stop_configuration_recorder}
-\title{Stops recording configurations of the AWS resources you have selected to
-record in your AWS account}
+\title{Stops recording configurations of the Amazon Web Services resources you
+have selected to record in your Amazon Web Services account}
 \usage{
 configservice_stop_configuration_recorder(ConfigurationRecorderName)
 }
@@ -11,18 +11,9 @@ configservice_stop_configuration_recorder(ConfigurationRecorderName)
 \item{ConfigurationRecorderName}{[required] The name of the recorder object that records each configuration change
 made to the resources.}
 }
-\value{
-An empty list.
-}
 \description{
-Stops recording configurations of the AWS resources you have selected to
-record in your AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_configuration_recorder(
-  ConfigurationRecorderName = "string"
-)
-}
-}
+Stops recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/configservice/stop_configuration_recorder.html} for full documentation.
+}
 \keyword{internal}

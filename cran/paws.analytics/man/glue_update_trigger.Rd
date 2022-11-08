@@ -11,85 +11,9 @@ glue_update_trigger(Name, TriggerUpdate)
 
 \item{TriggerUpdate}{[required] The new values with which to update the trigger.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Trigger = list(
-    Name = "string",
-    WorkflowName = "string",
-    Id = "string",
-    Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-    State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
-    Description = "string",
-    Schedule = "string",
-    Actions = list(
-      list(
-        JobName = "string",
-        Arguments = list(
-          "string"
-        ),
-        Timeout = 123,
-        SecurityConfiguration = "string",
-        NotificationProperty = list(
-          NotifyDelayAfter = 123
-        ),
-        CrawlerName = "string"
-      )
-    ),
-    Predicate = list(
-      Logical = "AND"|"ANY",
-      Conditions = list(
-        list(
-          LogicalOperator = "EQUALS",
-          JobName = "string",
-          State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-          CrawlerName = "string",
-          CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Updates a trigger definition.
-}
-\section{Request syntax}{
-\preformatted{svc$update_trigger(
-  Name = "string",
-  TriggerUpdate = list(
-    Name = "string",
-    Description = "string",
-    Schedule = "string",
-    Actions = list(
-      list(
-        JobName = "string",
-        Arguments = list(
-          "string"
-        ),
-        Timeout = 123,
-        SecurityConfiguration = "string",
-        NotificationProperty = list(
-          NotifyDelayAfter = 123
-        ),
-        CrawlerName = "string"
-      )
-    ),
-    Predicate = list(
-      Logical = "AND"|"ANY",
-      Conditions = list(
-        list(
-          LogicalOperator = "EQUALS",
-          JobName = "string",
-          State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-          CrawlerName = "string",
-          CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-        )
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/update_trigger.html} for full documentation.
+}
 \keyword{internal}

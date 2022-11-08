@@ -2,10 +2,9 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_create_login_profile}
 \alias{iam_create_login_profile}
-\title{Creates a password for the specified user, giving the user the ability
-to access AWS services through the AWS Management Console}
+\title{Creates a password for the specified IAM user}
 \usage{
-iam_create_login_profile(UserName, Password, PasswordResetRequired)
+iam_create_login_profile(UserName, Password, PasswordResetRequired = NULL)
 }
 \arguments{
 \item{UserName}{[required] The name of the IAM user to create a password for. The user must already
@@ -23,50 +22,16 @@ include almost any printable ASCII character from the space (\verb{\\u0020})
 through the end of the ASCII character range (\verb{\\u00FF}). You can also
 include the tab (\verb{\\u0009}), line feed (\verb{\\u000A}), and carriage return
 (\verb{\\u000D}) characters. Any of these characters are valid in a password.
-However, many tools, such as the AWS Management Console, might restrict
-the ability to type certain characters because they have special meaning
-within that tool.}
+However, many tools, such as the Amazon Web Services Management Console,
+might restrict the ability to type certain characters because they have
+special meaning within that tool.}
 
 \item{PasswordResetRequired}{Specifies whether the user is required to set a new password on next
 sign-in.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LoginProfile = list(
-    UserName = "string",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    PasswordResetRequired = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Creates a password for the specified user, giving the user the ability
-to access AWS services through the AWS Management Console. For more
-information about managing passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_login_profile(
-  UserName = "string",
-  Password = "string",
-  PasswordResetRequired = TRUE|FALSE
-)
-}
-}
+Creates a password for the specified IAM user. A password allows an IAM user to access Amazon Web Services services through the Amazon Web Services Management Console.
 
-\examples{
-\dontrun{
-# The following command changes IAM user Bob's password and sets the flag
-# that required Bob to change the password the next time he signs in.
-svc$create_login_profile(
-  Password = "h]6EszR\}vJ*m",
-  PasswordResetRequired = TRUE,
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/create_login_profile.html} for full documentation.
 }
 \keyword{internal}

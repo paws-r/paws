@@ -3,39 +3,21 @@
 \name{ssm_update_document_metadata}
 \alias{ssm_update_document_metadata}
 \title{Updates information related to approval reviews for a specific version
-of a document}
+of a change template in Change Manager}
 \usage{
-ssm_update_document_metadata(Name, DocumentVersion, DocumentReviews)
+ssm_update_document_metadata(Name, DocumentVersion = NULL, DocumentReviews)
 }
 \arguments{
-\item{Name}{[required] The name of the document for which a version is to be updated.}
+\item{Name}{[required] The name of the change template for which a version's metadata is to be
+updated.}
 
-\item{DocumentVersion}{The version of a document to update.}
+\item{DocumentVersion}{The version of a change template in which to update approval metadata.}
 
-\item{DocumentReviews}{[required] The document review details to update.}
-}
-\value{
-An empty list.
+\item{DocumentReviews}{[required] The change template review details to update.}
 }
 \description{
-Updates information related to approval reviews for a specific version
-of a document.
-}
-\section{Request syntax}{
-\preformatted{svc$update_document_metadata(
-  Name = "string",
-  DocumentVersion = "string",
-  DocumentReviews = list(
-    Action = "SendForReview"|"UpdateReview"|"Approve"|"Reject",
-    Comment = list(
-      list(
-        Type = "Comment",
-        Content = "string"
-      )
-    )
-  )
-)
-}
-}
+Updates information related to approval reviews for a specific version of a change template in Change Manager.
 
+See \url{https://paws-r.github.io/docs/ssm/update_document_metadata.html} for full documentation.
+}
 \keyword{internal}

@@ -10,18 +10,9 @@ cloudwatchlogs_delete_log_group(logGroupName)
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified log group and permanently deletes all the archived
-log events associated with the log group.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_log_group(
-  logGroupName = "string"
-)
-}
-}
+Deletes the specified log group and permanently deletes all the archived log events associated with the log group.
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/delete_log_group.html} for full documentation.
+}
 \keyword{internal}

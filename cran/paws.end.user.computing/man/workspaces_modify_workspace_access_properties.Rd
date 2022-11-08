@@ -5,35 +5,19 @@
 \title{Specifies which devices and operating systems users can use to access
 their WorkSpaces}
 \usage{
-workspaces_modify_workspace_access_properties(ResourceId,
-  WorkspaceAccessProperties)
+workspaces_modify_workspace_access_properties(
+  ResourceId,
+  WorkspaceAccessProperties
+)
 }
 \arguments{
 \item{ResourceId}{[required] The identifier of the directory.}
 
 \item{WorkspaceAccessProperties}{[required] The device types and operating systems to enable or disable for access.}
 }
-\value{
-An empty list.
-}
 \description{
-Specifies which devices and operating systems users can use to access
-their WorkSpaces. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access}{Control Device Access}.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_workspace_access_properties(
-  ResourceId = "string",
-  WorkspaceAccessProperties = list(
-    DeviceTypeWindows = "ALLOW"|"DENY",
-    DeviceTypeOsx = "ALLOW"|"DENY",
-    DeviceTypeWeb = "ALLOW"|"DENY",
-    DeviceTypeIos = "ALLOW"|"DENY",
-    DeviceTypeAndroid = "ALLOW"|"DENY",
-    DeviceTypeChromeOs = "ALLOW"|"DENY",
-    DeviceTypeZeroClient = "ALLOW"|"DENY"
-  )
-)
-}
-}
+Specifies which devices and operating systems users can use to access their WorkSpaces. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access}{Control Device Access}.
 
+See \url{https://paws-r.github.io/docs/workspaces/modify_workspace_access_properties.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,12 @@
 \title{Returns a summary of each of the portfolio shares that were created for
 the specified portfolio}
 \usage{
-servicecatalog_describe_portfolio_shares(PortfolioId, Type, PageToken,
-  PageSize)
+servicecatalog_describe_portfolio_shares(
+  PortfolioId,
+  Type,
+  PageToken = NULL,
+  PageSize = NULL
+)
 }
 \arguments{
 \item{PortfolioId}{[required] The unique identifier of the portfolio for which shares will be
@@ -31,38 +35,9 @@ results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextPageToken = "string",
-  PortfolioShareDetails = list(
-    list(
-      PrincipalId = "string",
-      Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ORGANIZATION_MEMBER_ACCOUNT",
-      Accepted = TRUE|FALSE,
-      ShareTagOptions = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Returns a summary of each of the portfolio shares that were created for
-the specified portfolio.
+Returns a summary of each of the portfolio shares that were created for the specified portfolio.
 
-You can use this API to determine which accounts or organizational nodes
-this portfolio have been shared, whether the recipient entity has
-imported the share, and whether TagOptions are included with the share.
-
-The \code{PortfolioId} and \code{Type} parameters are both required.
+See \url{https://paws-r.github.io/docs/servicecatalog/describe_portfolio_shares.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_portfolio_shares(
-  PortfolioId = "string",
-  Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ORGANIZATION_MEMBER_ACCOUNT",
-  PageToken = "string",
-  PageSize = 123
-)
-}
-}
-
 \keyword{internal}

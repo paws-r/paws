@@ -2,9 +2,15 @@
 % Please edit documentation in R/codebuild_operations.R
 \name{codebuild_list_reports}
 \alias{codebuild_list_reports}
-\title{Returns a list of ARNs for the reports in the current AWS account}
+\title{Returns a list of ARNs for the reports in the current Amazon Web
+Services account}
 \usage{
-codebuild_list_reports(sortOrder, nextToken, maxResults, filter)
+codebuild_list_reports(
+  sortOrder = NULL,
+  nextToken = NULL,
+  maxResults = NULL,
+  filter = NULL
+)
 }
 \arguments{
 \item{sortOrder}{Specifies the sort order for the list of returned reports. Valid values
@@ -30,28 +36,9 @@ The default value is 100.}
 
 \item{filter}{A \code{ReportFilter} object used to filter the returned reports.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  nextToken = "string",
-  reports = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns a list of ARNs for the reports in the current AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_reports(
-  sortOrder = "ASCENDING"|"DESCENDING",
-  nextToken = "string",
-  maxResults = 123,
-  filter = list(
-    status = "GENERATING"|"SUCCEEDED"|"FAILED"|"INCOMPLETE"|"DELETING"
-  )
-)
-}
-}
+Returns a list of ARNs for the reports in the current Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/codebuild/list_reports.html} for full documentation.
+}
 \keyword{internal}

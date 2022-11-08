@@ -4,61 +4,28 @@
 \alias{licensemanager_list_tokens}
 \title{Lists your tokens}
 \usage{
-licensemanager_list_tokens(TokenIds, Filters, NextToken, MaxResults)
+licensemanager_list_tokens(
+  TokenIds = NULL,
+  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{TokenIds}{Token IDs.}
 
 \item{Filters}{Filters to scope the results. The following filter is supported:
 \itemize{
-\item \code{licenseArns}
+\item \code{LicenseArns}
 }}
 
 \item{NextToken}{Token for the next set of results.}
 
 \item{MaxResults}{Maximum number of results to return in a single call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tokens = list(
-    list(
-      TokenId = "string",
-      TokenType = "string",
-      LicenseArn = "string",
-      ExpirationTime = "string",
-      TokenProperties = list(
-        "string"
-      ),
-      RoleArns = list(
-        "string"
-      ),
-      Status = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists your tokens.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tokens(
-  TokenIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/list_tokens.html} for full documentation.
+}
 \keyword{internal}

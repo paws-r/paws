@@ -4,7 +4,7 @@
 \alias{ec2_confirm_product_instance}
 \title{Determines whether a product code is associated with an instance}
 \usage{
-ec2_confirm_product_instance(InstanceId, ProductCode, DryRun)
+ec2_confirm_product_instance(InstanceId, ProductCode, DryRun = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance.}
@@ -16,37 +16,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OwnerId = "string",
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Determines whether a product code is associated with an instance. This
-action can only be used by the owner of the product code. It is useful
-when a product code owner must verify whether another user's instance is
-eligible for support.
-}
-\section{Request syntax}{
-\preformatted{svc$confirm_product_instance(
-  InstanceId = "string",
-  ProductCode = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Determines whether a product code is associated with an instance. This action can only be used by the owner of the product code. It is useful when a product code owner must verify whether another user's instance is eligible for support.
 
-\examples{
-\dontrun{
-# This example determines whether the specified product code is associated
-# with the specified instance.
-svc$confirm_product_instance(
-  InstanceId = "i-1234567890abcdef0",
-  ProductCode = "774F4FF8"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/confirm_product_instance.html} for full documentation.
 }
 \keyword{internal}

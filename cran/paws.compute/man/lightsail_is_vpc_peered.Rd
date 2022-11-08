@@ -6,18 +6,9 @@
 \usage{
 lightsail_is_vpc_peered()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  isPeered = TRUE|FALSE
-)
-}
-}
 \description{
 Returns a Boolean value indicating whether your Lightsail VPC is peered.
-}
-\section{Request syntax}{
-\preformatted{svc$is_vpc_peered()
-}
-}
 
+See \url{https://paws-r.github.io/docs/lightsail/is_vpc_peered.html} for full documentation.
+}
 \keyword{internal}

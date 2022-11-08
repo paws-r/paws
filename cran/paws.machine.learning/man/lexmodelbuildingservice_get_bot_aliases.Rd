@@ -4,8 +4,12 @@
 \alias{lexmodelbuildingservice_get_bot_aliases}
 \title{Returns a list of aliases for a specified Amazon Lex bot}
 \usage{
-lexmodelbuildingservice_get_bot_aliases(botName, nextToken, maxResults,
-  nameContains)
+lexmodelbuildingservice_get_bot_aliases(
+  botName,
+  nextToken = NULL,
+  maxResults = NULL,
+  nameContains = NULL
+)
 }
 \arguments{
 \item{botName}{[required] The name of the bot.}
@@ -22,52 +26,9 @@ pagination token in the next request.}
 part of its name matches the substring. For example, "xyz" matches both
 "xyzabc" and "abcxyz."}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BotAliases = list(
-    list(
-      name = "string",
-      description = "string",
-      botVersion = "string",
-      botName = "string",
-      lastUpdatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      createdDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      checksum = "string",
-      conversationLogs = list(
-        logSettings = list(
-          list(
-            logType = "AUDIO"|"TEXT",
-            destination = "CLOUDWATCH_LOGS"|"S3",
-            kmsKeyArn = "string",
-            resourceArn = "string",
-            resourcePrefix = "string"
-          )
-        ),
-        iamRoleArn = "string"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Returns a list of aliases for a specified Amazon Lex bot.
 
-This operation requires permissions for the \code{lex:GetBotAliases} action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_aliases.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_bot_aliases(
-  botName = "string",
-  nextToken = "string",
-  maxResults = 123,
-  nameContains = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -2,34 +2,13 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_get_master_account}
 \alias{securityhub_get_master_account}
-\title{Provides the details for the Security Hub master account for the current
-member account}
+\title{This method is deprecated}
 \usage{
 securityhub_get_master_account()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Master = list(
-    AccountId = "string",
-    InvitationId = "string",
-    InvitedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    MemberStatus = "string"
-  )
-)
-}
-}
 \description{
-Provides the details for the Security Hub master account for the current
-member account.
+This method is deprecated. Instead, use \code{\link[=securityhub_get_administrator_account]{get_administrator_account}}.
 
-Can be used by both member accounts that are in an organization and
-accounts that were invited manually.
+See \url{https://paws-r.github.io/docs/securityhub/get_master_account.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_master_account()
-}
-}
-
 \keyword{internal}

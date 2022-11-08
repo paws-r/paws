@@ -4,8 +4,14 @@
 \alias{apigatewayv2_create_route_response}
 \title{Creates a RouteResponse for a Route}
 \usage{
-apigatewayv2_create_route_response(ApiId, ModelSelectionExpression,
-  ResponseModels, ResponseParameters, RouteId, RouteResponseKey)
+apigatewayv2_create_route_response(
+  ApiId,
+  ModelSelectionExpression = NULL,
+  ResponseModels = NULL,
+  ResponseParameters = NULL,
+  RouteId,
+  RouteResponseKey
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -21,41 +27,9 @@ for WebSocket APIs.}
 
 \item{RouteResponseKey}{[required] The route response key.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ModelSelectionExpression = "string",
-  ResponseModels = list(
-    "string"
-  ),
-  ResponseParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteResponseId = "string",
-  RouteResponseKey = "string"
-)
-}
-}
 \description{
 Creates a RouteResponse for a Route.
-}
-\section{Request syntax}{
-\preformatted{svc$create_route_response(
-  ApiId = "string",
-  ModelSelectionExpression = "string",
-  ResponseModels = list(
-    "string"
-  ),
-  ResponseParameters = list(
-    list(
-      Required = TRUE|FALSE
-    )
-  ),
-  RouteId = "string",
-  RouteResponseKey = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/create_route_response.html} for full documentation.
+}
 \keyword{internal}

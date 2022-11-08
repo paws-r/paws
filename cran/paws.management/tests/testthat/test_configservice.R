@@ -72,6 +72,10 @@ test_that("describe_retention_configurations", {
   expect_error(svc$describe_retention_configurations(), NA)
 })
 
+test_that("list_conformance_pack_compliance_scores", {
+  expect_error(svc$list_conformance_pack_compliance_scores(), NA)
+})
+
 test_that("list_stored_queries", {
   expect_error(svc$list_stored_queries(), NA)
 })

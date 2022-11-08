@@ -2,11 +2,15 @@
 % Please edit documentation in R/codebuild_operations.R
 \name{codebuild_list_shared_report_groups}
 \alias{codebuild_list_shared_report_groups}
-\title{Gets a list of report groups that are shared with other AWS accounts or
-users}
+\title{Gets a list of report groups that are shared with other Amazon Web
+Services accounts or users}
 \usage{
-codebuild_list_shared_report_groups(sortOrder, sortBy, nextToken,
-  maxResults)
+codebuild_list_shared_report_groups(
+  sortOrder = NULL,
+  sortBy = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{sortOrder}{The order in which to list shared report groups. Valid values include:
@@ -16,7 +20,7 @@ codebuild_list_shared_report_groups(sortOrder, sortBy, nextToken,
 }}
 
 \item{sortBy}{The criterion to be used to list report groups shared with the current
-AWS account or user. Valid values include:
+Amazon Web Services account or user. Valid values include:
 \itemize{
 \item \code{ARN}: List based on the ARN.
 \item \code{MODIFIED_TIME}: List based on when information about the shared
@@ -35,27 +39,9 @@ no more next tokens are returned.}
 \code{nextToken} to iterate pages in the list of returned \code{ReportGroup}
 objects. The default value is 100.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  nextToken = "string",
-  reportGroups = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Gets a list of report groups that are shared with other AWS accounts or
-users.
-}
-\section{Request syntax}{
-\preformatted{svc$list_shared_report_groups(
-  sortOrder = "ASCENDING"|"DESCENDING",
-  sortBy = "ARN"|"MODIFIED_TIME",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Gets a list of report groups that are shared with other Amazon Web Services accounts or users.
 
+See \url{https://paws-r.github.io/docs/codebuild/list_shared_report_groups.html} for full documentation.
+}
 \keyword{internal}

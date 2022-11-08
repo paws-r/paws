@@ -12,32 +12,9 @@ delete.}
 
 \item{RuleName}{[required] The name of the receipt rule to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified receipt rule.
 
-For information about managing receipt rules, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_receipt_rule(
-  RuleSetName = "string",
-  RuleName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes a receipt rule:
-svc$delete_receipt_rule(
-  RuleName = "MyRule",
-  RuleSetName = "MyRuleSet"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/delete_receipt_rule.html} for full documentation.
 }
 \keyword{internal}

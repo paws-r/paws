@@ -4,10 +4,19 @@
 \alias{apigatewayv2_create_authorizer}
 \title{Creates an Authorizer for an API}
 \usage{
-apigatewayv2_create_authorizer(ApiId, AuthorizerCredentialsArn,
-  AuthorizerPayloadFormatVersion, AuthorizerResultTtlInSeconds,
-  AuthorizerType, AuthorizerUri, EnableSimpleResponses, IdentitySource,
-  IdentityValidationExpression, JwtConfiguration, Name)
+apigatewayv2_create_authorizer(
+  ApiId,
+  AuthorizerCredentialsArn = NULL,
+  AuthorizerPayloadFormatVersion = NULL,
+  AuthorizerResultTtlInSeconds = NULL,
+  AuthorizerType,
+  AuthorizerUri = NULL,
+  EnableSimpleResponses = NULL,
+  IdentitySource,
+  IdentityValidationExpression = NULL,
+  JwtConfiguration = NULL,
+  Name
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -79,54 +88,9 @@ authorizer type. Supported only for HTTP APIs.}
 
 \item{Name}{[required] The name of the authorizer.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AuthorizerCredentialsArn = "string",
-  AuthorizerId = "string",
-  AuthorizerPayloadFormatVersion = "string",
-  AuthorizerResultTtlInSeconds = 123,
-  AuthorizerType = "REQUEST"|"JWT",
-  AuthorizerUri = "string",
-  EnableSimpleResponses = TRUE|FALSE,
-  IdentitySource = list(
-    "string"
-  ),
-  IdentityValidationExpression = "string",
-  JwtConfiguration = list(
-    Audience = list(
-      "string"
-    ),
-    Issuer = "string"
-  ),
-  Name = "string"
-)
-}
-}
 \description{
 Creates an Authorizer for an API.
-}
-\section{Request syntax}{
-\preformatted{svc$create_authorizer(
-  ApiId = "string",
-  AuthorizerCredentialsArn = "string",
-  AuthorizerPayloadFormatVersion = "string",
-  AuthorizerResultTtlInSeconds = 123,
-  AuthorizerType = "REQUEST"|"JWT",
-  AuthorizerUri = "string",
-  EnableSimpleResponses = TRUE|FALSE,
-  IdentitySource = list(
-    "string"
-  ),
-  IdentityValidationExpression = "string",
-  JwtConfiguration = list(
-    Audience = list(
-      "string"
-    ),
-    Issuer = "string"
-  ),
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/create_authorizer.html} for full documentation.
+}
 \keyword{internal}

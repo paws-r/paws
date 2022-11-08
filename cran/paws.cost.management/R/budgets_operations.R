@@ -7,16 +7,8 @@ NULL
 #'
 #' @description
 #' Creates a budget and, if included, notifications and subscribers.
-#' 
-#' Only one of `BudgetLimit` or `PlannedBudgetLimits` can be present in the
-#' syntax at one time. Use the syntax that matches your case. The Request
-#' Syntax section shows the `BudgetLimit` syntax. For
-#' `PlannedBudgetLimits`, see the
-#' [Examples](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples)
-#' section.
 #'
-#' @usage
-#' budgets_create_budget(AccountId, Budget, NotificationsWithSubscribers)
+#' See [https://paws-r.github.io/docs/budgets/create_budget.html](https://paws-r.github.io/docs/budgets/create_budget.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget.
 #' @param Budget &#91;required&#93; The budget object that you want to create.
@@ -24,88 +16,7 @@ NULL
 #' have up to five notifications, and each notification can have one SNS
 #' subscriber and up to 10 email subscribers. If you include notifications
 #' and subscribers in your [`create_budget`][budgets_create_budget] call,
-#' AWS creates the notifications and subscribers for you.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_budget(
-#'   AccountId = "string",
-#'   Budget = list(
-#'     BudgetName = "string",
-#'     BudgetLimit = list(
-#'       Amount = "string",
-#'       Unit = "string"
-#'     ),
-#'     PlannedBudgetLimits = list(
-#'       list(
-#'         Amount = "string",
-#'         Unit = "string"
-#'       )
-#'     ),
-#'     CostFilters = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     CostTypes = list(
-#'       IncludeTax = TRUE|FALSE,
-#'       IncludeSubscription = TRUE|FALSE,
-#'       UseBlended = TRUE|FALSE,
-#'       IncludeRefund = TRUE|FALSE,
-#'       IncludeCredit = TRUE|FALSE,
-#'       IncludeUpfront = TRUE|FALSE,
-#'       IncludeRecurring = TRUE|FALSE,
-#'       IncludeOtherSubscription = TRUE|FALSE,
-#'       IncludeSupport = TRUE|FALSE,
-#'       IncludeDiscount = TRUE|FALSE,
-#'       UseAmortized = TRUE|FALSE
-#'     ),
-#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
-#'     TimePeriod = list(
-#'       Start = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       End = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     CalculatedSpend = list(
-#'       ActualSpend = list(
-#'         Amount = "string",
-#'         Unit = "string"
-#'       ),
-#'       ForecastedSpend = list(
-#'         Amount = "string",
-#'         Unit = "string"
-#'       )
-#'     ),
-#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
-#'     LastUpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NotificationsWithSubscribers = list(
-#'     list(
-#'       Notification = list(
-#'         NotificationType = "ACTUAL"|"FORECASTED",
-#'         ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-#'         Threshold = 123.0,
-#'         ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-#'         NotificationState = "OK"|"ALARM"
-#'       ),
-#'       Subscribers = list(
-#'         list(
-#'           SubscriptionType = "SNS"|"EMAIL",
-#'           Address = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
+#' Amazon Web Services creates the notifications and subscribers for you.
 #'
 #' @keywords internal
 #'
@@ -132,10 +43,7 @@ budgets_create_budget <- function(AccountId, Budget, NotificationsWithSubscriber
 #' @description
 #' Creates a budget action.
 #'
-#' @usage
-#' budgets_create_budget_action(AccountId, BudgetName, NotificationType,
-#'   ActionType, ActionThreshold, Definition, ExecutionRoleArn,
-#'   ApprovalModel, Subscribers)
+#' See [https://paws-r.github.io/docs/budgets/create_budget_action.html](https://paws-r.github.io/docs/budgets/create_budget_action.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
@@ -149,65 +57,6 @@ budgets_create_budget <- function(AccountId, Budget, NotificationsWithSubscriber
 #' must be in the same account.
 #' @param ApprovalModel &#91;required&#93; This specifies if the action needs manual or automatic approval.
 #' @param Subscribers &#91;required&#93; 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   ActionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_budget_action(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   NotificationType = "ACTUAL"|"FORECASTED",
-#'   ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
-#'   ActionThreshold = list(
-#'     ActionThresholdValue = 123.0,
-#'     ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-#'   ),
-#'   Definition = list(
-#'     IamActionDefinition = list(
-#'       PolicyArn = "string",
-#'       Roles = list(
-#'         "string"
-#'       ),
-#'       Groups = list(
-#'         "string"
-#'       ),
-#'       Users = list(
-#'         "string"
-#'       )
-#'     ),
-#'     ScpActionDefinition = list(
-#'       PolicyId = "string",
-#'       TargetIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     SsmActionDefinition = list(
-#'       ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-#'       Region = "string",
-#'       InstanceIds = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   ExecutionRoleArn = "string",
-#'   ApprovalModel = "AUTOMATIC"|"MANUAL",
-#'   Subscribers = list(
-#'     list(
-#'       SubscriptionType = "SNS"|"EMAIL",
-#'       Address = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -232,45 +81,18 @@ budgets_create_budget_action <- function(AccountId, BudgetName, NotificationType
 #' Creates a notification
 #'
 #' @description
-#' Creates a notification. You must create the budget before you create the
-#' associated notification.
+#' Creates a notification. You must create the budget before you create the associated notification.
 #'
-#' @usage
-#' budgets_create_notification(AccountId, BudgetName, Notification,
-#'   Subscribers)
+#' See [https://paws-r.github.io/docs/budgets/create_notification.html](https://paws-r.github.io/docs/budgets/create_notification.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want to
 #' create a notification for.
-#' @param BudgetName &#91;required&#93; The name of the budget that you want AWS to notify you about. Budget
-#' names must be unique within an account.
+#' @param BudgetName &#91;required&#93; The name of the budget that you want Amazon Web Services to notify you
+#' about. Budget names must be unique within an account.
 #' @param Notification &#91;required&#93; The notification that you want to create.
 #' @param Subscribers &#91;required&#93; A list of subscribers that you want to associate with the notification.
 #' Each notification can have one SNS subscriber and up to 10 email
 #' subscribers.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_notification(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   Notification = list(
-#'     NotificationType = "ACTUAL"|"FORECASTED",
-#'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-#'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-#'     NotificationState = "OK"|"ALARM"
-#'   ),
-#'   Subscribers = list(
-#'     list(
-#'       SubscriptionType = "SNS"|"EMAIL",
-#'       Address = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -295,12 +117,9 @@ budgets_create_notification <- function(AccountId, BudgetName, Notification, Sub
 #' Creates a subscriber
 #'
 #' @description
-#' Creates a subscriber. You must create the associated budget and
-#' notification before you create the subscriber.
+#' Creates a subscriber. You must create the associated budget and notification before you create the subscriber.
 #'
-#' @usage
-#' budgets_create_subscriber(AccountId, BudgetName, Notification,
-#'   Subscriber)
+#' See [https://paws-r.github.io/docs/budgets/create_subscriber.html](https://paws-r.github.io/docs/budgets/create_subscriber.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want to
 #' create a subscriber for.
@@ -308,28 +127,6 @@ budgets_create_notification <- function(AccountId, BudgetName, Notification, Sub
 #' be unique within an account.
 #' @param Notification &#91;required&#93; The notification that you want to create a subscriber for.
 #' @param Subscriber &#91;required&#93; The subscriber that you want to associate with a budget notification.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_subscriber(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   Notification = list(
-#'     NotificationType = "ACTUAL"|"FORECASTED",
-#'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-#'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-#'     NotificationState = "OK"|"ALARM"
-#'   ),
-#'   Subscriber = list(
-#'     SubscriptionType = "SNS"|"EMAIL",
-#'     Address = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -355,27 +152,12 @@ budgets_create_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #'
 #' @description
 #' Deletes a budget. You can delete your budget at any time.
-#' 
-#' Deleting a budget also deletes the notifications and subscribers that
-#' are associated with that budget.
 #'
-#' @usage
-#' budgets_delete_budget(AccountId, BudgetName)
+#' See [https://paws-r.github.io/docs/budgets/delete_budget.html](https://paws-r.github.io/docs/budgets/delete_budget.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want to
 #' delete.
 #' @param BudgetName &#91;required&#93; The name of the budget that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_budget(
-#'   AccountId = "string",
-#'   BudgetName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -402,76 +184,11 @@ budgets_delete_budget <- function(AccountId, BudgetName) {
 #' @description
 #' Deletes a budget action.
 #'
-#' @usage
-#' budgets_delete_budget_action(AccountId, BudgetName, ActionId)
+#' See [https://paws-r.github.io/docs/budgets/delete_budget_action.html](https://paws-r.github.io/docs/budgets/delete_budget_action.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
 #' @param ActionId &#91;required&#93; A system-generated universally unique identifier (UUID) for the action.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   Action = list(
-#'     ActionId = "string",
-#'     BudgetName = "string",
-#'     NotificationType = "ACTUAL"|"FORECASTED",
-#'     ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
-#'     ActionThreshold = list(
-#'       ActionThresholdValue = 123.0,
-#'       ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-#'     ),
-#'     Definition = list(
-#'       IamActionDefinition = list(
-#'         PolicyArn = "string",
-#'         Roles = list(
-#'           "string"
-#'         ),
-#'         Groups = list(
-#'           "string"
-#'         ),
-#'         Users = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ScpActionDefinition = list(
-#'         PolicyId = "string",
-#'         TargetIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       SsmActionDefinition = list(
-#'         ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-#'         Region = "string",
-#'         InstanceIds = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     ExecutionRoleArn = "string",
-#'     ApprovalModel = "AUTOMATIC"|"MANUAL",
-#'     Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
-#'     Subscribers = list(
-#'       list(
-#'         SubscriptionType = "SNS"|"EMAIL",
-#'         Address = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_budget_action(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   ActionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -497,35 +214,13 @@ budgets_delete_budget_action <- function(AccountId, BudgetName, ActionId) {
 #'
 #' @description
 #' Deletes a notification.
-#' 
-#' Deleting a notification also deletes the subscribers that are associated
-#' with the notification.
 #'
-#' @usage
-#' budgets_delete_notification(AccountId, BudgetName, Notification)
+#' See [https://paws-r.github.io/docs/budgets/delete_notification.html](https://paws-r.github.io/docs/budgets/delete_notification.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose notification
 #' you want to delete.
 #' @param BudgetName &#91;required&#93; The name of the budget whose notification you want to delete.
 #' @param Notification &#91;required&#93; The notification that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_notification(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   Notification = list(
-#'     NotificationType = "ACTUAL"|"FORECASTED",
-#'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-#'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-#'     NotificationState = "OK"|"ALARM"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -551,41 +246,14 @@ budgets_delete_notification <- function(AccountId, BudgetName, Notification) {
 #'
 #' @description
 #' Deletes a subscriber.
-#' 
-#' Deleting the last subscriber to a notification also deletes the
-#' notification.
 #'
-#' @usage
-#' budgets_delete_subscriber(AccountId, BudgetName, Notification,
-#'   Subscriber)
+#' See [https://paws-r.github.io/docs/budgets/delete_subscriber.html](https://paws-r.github.io/docs/budgets/delete_subscriber.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose subscriber you
 #' want to delete.
 #' @param BudgetName &#91;required&#93; The name of the budget whose subscriber you want to delete.
 #' @param Notification &#91;required&#93; The notification whose subscriber you want to delete.
 #' @param Subscriber &#91;required&#93; The subscriber that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_subscriber(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   Notification = list(
-#'     NotificationType = "ACTUAL"|"FORECASTED",
-#'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-#'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-#'     NotificationState = "OK"|"ALARM"
-#'   ),
-#'   Subscriber = list(
-#'     SubscriptionType = "SNS"|"EMAIL",
-#'     Address = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -611,87 +279,12 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #'
 #' @description
 #' Describes a budget.
-#' 
-#' The Request Syntax section shows the `BudgetLimit` syntax. For
-#' `PlannedBudgetLimits`, see the
-#' [Examples](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudget.html#API_DescribeBudget_Examples)
-#' section.
 #'
-#' @usage
-#' budgets_describe_budget(AccountId, BudgetName)
+#' See [https://paws-r.github.io/docs/budgets/describe_budget.html](https://paws-r.github.io/docs/budgets/describe_budget.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want a
 #' description of.
 #' @param BudgetName &#91;required&#93; The name of the budget that you want a description of.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Budget = list(
-#'     BudgetName = "string",
-#'     BudgetLimit = list(
-#'       Amount = "string",
-#'       Unit = "string"
-#'     ),
-#'     PlannedBudgetLimits = list(
-#'       list(
-#'         Amount = "string",
-#'         Unit = "string"
-#'       )
-#'     ),
-#'     CostFilters = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     CostTypes = list(
-#'       IncludeTax = TRUE|FALSE,
-#'       IncludeSubscription = TRUE|FALSE,
-#'       UseBlended = TRUE|FALSE,
-#'       IncludeRefund = TRUE|FALSE,
-#'       IncludeCredit = TRUE|FALSE,
-#'       IncludeUpfront = TRUE|FALSE,
-#'       IncludeRecurring = TRUE|FALSE,
-#'       IncludeOtherSubscription = TRUE|FALSE,
-#'       IncludeSupport = TRUE|FALSE,
-#'       IncludeDiscount = TRUE|FALSE,
-#'       UseAmortized = TRUE|FALSE
-#'     ),
-#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
-#'     TimePeriod = list(
-#'       Start = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       End = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     CalculatedSpend = list(
-#'       ActualSpend = list(
-#'         Amount = "string",
-#'         Unit = "string"
-#'       ),
-#'       ForecastedSpend = list(
-#'         Amount = "string",
-#'         Unit = "string"
-#'       )
-#'     ),
-#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
-#'     LastUpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_budget(
-#'   AccountId = "string",
-#'   BudgetName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -718,76 +311,11 @@ budgets_describe_budget <- function(AccountId, BudgetName) {
 #' @description
 #' Describes a budget action detail.
 #'
-#' @usage
-#' budgets_describe_budget_action(AccountId, BudgetName, ActionId)
+#' See [https://paws-r.github.io/docs/budgets/describe_budget_action.html](https://paws-r.github.io/docs/budgets/describe_budget_action.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
 #' @param ActionId &#91;required&#93; A system-generated universally unique identifier (UUID) for the action.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   Action = list(
-#'     ActionId = "string",
-#'     BudgetName = "string",
-#'     NotificationType = "ACTUAL"|"FORECASTED",
-#'     ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
-#'     ActionThreshold = list(
-#'       ActionThresholdValue = 123.0,
-#'       ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-#'     ),
-#'     Definition = list(
-#'       IamActionDefinition = list(
-#'         PolicyArn = "string",
-#'         Roles = list(
-#'           "string"
-#'         ),
-#'         Groups = list(
-#'           "string"
-#'         ),
-#'         Users = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ScpActionDefinition = list(
-#'         PolicyId = "string",
-#'         TargetIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       SsmActionDefinition = list(
-#'         ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-#'         Region = "string",
-#'         InstanceIds = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     ExecutionRoleArn = "string",
-#'     ApprovalModel = "AUTOMATIC"|"MANUAL",
-#'     Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
-#'     Subscribers = list(
-#'       list(
-#'         SubscriptionType = "SNS"|"EMAIL",
-#'         Address = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_budget_action(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   ActionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -814,9 +342,7 @@ budgets_describe_budget_action <- function(AccountId, BudgetName, ActionId) {
 #' @description
 #' Describes a budget action history detail.
 #'
-#' @usage
-#' budgets_describe_budget_action_histories(AccountId, BudgetName,
-#'   ActionId, TimePeriod, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/budgets/describe_budget_action_histories.html](https://paws-r.github.io/docs/budgets/describe_budget_action_histories.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
@@ -824,91 +350,6 @@ budgets_describe_budget_action <- function(AccountId, BudgetName, ActionId) {
 #' @param TimePeriod 
 #' @param MaxResults 
 #' @param NextToken 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ActionHistories = list(
-#'     list(
-#'       Timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
-#'       EventType = "SYSTEM"|"CREATE_ACTION"|"DELETE_ACTION"|"UPDATE_ACTION"|"EXECUTE_ACTION",
-#'       ActionHistoryDetails = list(
-#'         Message = "string",
-#'         Action = list(
-#'           ActionId = "string",
-#'           BudgetName = "string",
-#'           NotificationType = "ACTUAL"|"FORECASTED",
-#'           ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
-#'           ActionThreshold = list(
-#'             ActionThresholdValue = 123.0,
-#'             ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-#'           ),
-#'           Definition = list(
-#'             IamActionDefinition = list(
-#'               PolicyArn = "string",
-#'               Roles = list(
-#'                 "string"
-#'               ),
-#'               Groups = list(
-#'                 "string"
-#'               ),
-#'               Users = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             ScpActionDefinition = list(
-#'               PolicyId = "string",
-#'               TargetIds = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             SsmActionDefinition = list(
-#'               ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-#'               Region = "string",
-#'               InstanceIds = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           ExecutionRoleArn = "string",
-#'           ApprovalModel = "AUTOMATIC"|"MANUAL",
-#'           Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
-#'           Subscribers = list(
-#'             list(
-#'               SubscriptionType = "SNS"|"EMAIL",
-#'               Address = "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_budget_action_histories(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   ActionId = "string",
-#'   TimePeriod = list(
-#'     Start = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     End = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -935,78 +376,11 @@ budgets_describe_budget_action_histories <- function(AccountId, BudgetName, Acti
 #' @description
 #' Describes all of the budget actions for an account.
 #'
-#' @usage
-#' budgets_describe_budget_actions_for_account(AccountId, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/budgets/describe_budget_actions_for_account.html](https://paws-r.github.io/docs/budgets/describe_budget_actions_for_account.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param MaxResults 
 #' @param NextToken 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Actions = list(
-#'     list(
-#'       ActionId = "string",
-#'       BudgetName = "string",
-#'       NotificationType = "ACTUAL"|"FORECASTED",
-#'       ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
-#'       ActionThreshold = list(
-#'         ActionThresholdValue = 123.0,
-#'         ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-#'       ),
-#'       Definition = list(
-#'         IamActionDefinition = list(
-#'           PolicyArn = "string",
-#'           Roles = list(
-#'             "string"
-#'           ),
-#'           Groups = list(
-#'             "string"
-#'           ),
-#'           Users = list(
-#'             "string"
-#'           )
-#'         ),
-#'         ScpActionDefinition = list(
-#'           PolicyId = "string",
-#'           TargetIds = list(
-#'             "string"
-#'           )
-#'         ),
-#'         SsmActionDefinition = list(
-#'           ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-#'           Region = "string",
-#'           InstanceIds = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       ExecutionRoleArn = "string",
-#'       ApprovalModel = "AUTOMATIC"|"MANUAL",
-#'       Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
-#'       Subscribers = list(
-#'         list(
-#'           SubscriptionType = "SNS"|"EMAIL",
-#'           Address = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_budget_actions_for_account(
-#'   AccountId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1033,80 +407,12 @@ budgets_describe_budget_actions_for_account <- function(AccountId, MaxResults = 
 #' @description
 #' Describes all of the budget actions for a budget.
 #'
-#' @usage
-#' budgets_describe_budget_actions_for_budget(AccountId, BudgetName,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/budgets/describe_budget_actions_for_budget.html](https://paws-r.github.io/docs/budgets/describe_budget_actions_for_budget.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
 #' @param MaxResults 
 #' @param NextToken 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Actions = list(
-#'     list(
-#'       ActionId = "string",
-#'       BudgetName = "string",
-#'       NotificationType = "ACTUAL"|"FORECASTED",
-#'       ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
-#'       ActionThreshold = list(
-#'         ActionThresholdValue = 123.0,
-#'         ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-#'       ),
-#'       Definition = list(
-#'         IamActionDefinition = list(
-#'           PolicyArn = "string",
-#'           Roles = list(
-#'             "string"
-#'           ),
-#'           Groups = list(
-#'             "string"
-#'           ),
-#'           Users = list(
-#'             "string"
-#'           )
-#'         ),
-#'         ScpActionDefinition = list(
-#'           PolicyId = "string",
-#'           TargetIds = list(
-#'             "string"
-#'           )
-#'         ),
-#'         SsmActionDefinition = list(
-#'           ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-#'           Region = "string",
-#'           InstanceIds = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       ExecutionRoleArn = "string",
-#'       ApprovalModel = "AUTOMATIC"|"MANUAL",
-#'       Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
-#'       Subscribers = list(
-#'         list(
-#'           SubscriptionType = "SNS"|"EMAIL",
-#'           Address = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_budget_actions_for_budget(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1128,15 +434,45 @@ budgets_describe_budget_actions_for_budget <- function(AccountId, BudgetName, Ma
 }
 .budgets$operations$describe_budget_actions_for_budget <- budgets_describe_budget_actions_for_budget
 
+#' Lists the budget names and notifications that are associated with an
+#' account
+#'
+#' @description
+#' Lists the budget names and notifications that are associated with an account.
+#'
+#' See [https://paws-r.github.io/docs/budgets/describe_budget_notifications_for_account.html](https://paws-r.github.io/docs/budgets/describe_budget_notifications_for_account.html) for full documentation.
+#'
+#' @param AccountId &#91;required&#93; 
+#' @param MaxResults An integer that shows how many budget name entries a paginated response
+#' contains.
+#' @param NextToken 
+#'
+#' @keywords internal
+#'
+#' @rdname budgets_describe_budget_notifications_for_account
+budgets_describe_budget_notifications_for_account <- function(AccountId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeBudgetNotificationsForAccount",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .budgets$describe_budget_notifications_for_account_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .budgets$describe_budget_notifications_for_account_output()
+  config <- get_config()
+  svc <- .budgets$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.budgets$operations$describe_budget_notifications_for_account <- budgets_describe_budget_notifications_for_account
+
 #' Describes the history for DAILY, MONTHLY, and QUARTERLY budgets
 #'
 #' @description
-#' Describes the history for `DAILY`, `MONTHLY`, and `QUARTERLY` budgets.
-#' Budget history isn't available for `ANNUAL` budgets.
+#' Describes the history for `DAILY`, `MONTHLY`, and `QUARTERLY` budgets. Budget history isn't available for `ANNUAL` budgets.
 #'
-#' @usage
-#' budgets_describe_budget_performance_history(AccountId, BudgetName,
-#'   TimePeriod, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/budgets/describe_budget_performance_history.html](https://paws-r.github.io/docs/budgets/describe_budget_performance_history.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
@@ -1144,75 +480,6 @@ budgets_describe_budget_actions_for_budget <- function(AccountId, BudgetName, Ma
 #' specified time period.
 #' @param MaxResults 
 #' @param NextToken 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BudgetPerformanceHistory = list(
-#'     BudgetName = "string",
-#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
-#'     CostFilters = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     CostTypes = list(
-#'       IncludeTax = TRUE|FALSE,
-#'       IncludeSubscription = TRUE|FALSE,
-#'       UseBlended = TRUE|FALSE,
-#'       IncludeRefund = TRUE|FALSE,
-#'       IncludeCredit = TRUE|FALSE,
-#'       IncludeUpfront = TRUE|FALSE,
-#'       IncludeRecurring = TRUE|FALSE,
-#'       IncludeOtherSubscription = TRUE|FALSE,
-#'       IncludeSupport = TRUE|FALSE,
-#'       IncludeDiscount = TRUE|FALSE,
-#'       UseAmortized = TRUE|FALSE
-#'     ),
-#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
-#'     BudgetedAndActualAmountsList = list(
-#'       list(
-#'         BudgetedAmount = list(
-#'           Amount = "string",
-#'           Unit = "string"
-#'         ),
-#'         ActualAmount = list(
-#'           Amount = "string",
-#'           Unit = "string"
-#'         ),
-#'         TimePeriod = list(
-#'           Start = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           End = as.POSIXct(
-#'             "2015-01-01"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_budget_performance_history(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   TimePeriod = list(
-#'     Start = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     End = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1238,14 +505,8 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #'
 #' @description
 #' Lists the budgets that are associated with an account.
-#' 
-#' The Request Syntax section shows the `BudgetLimit` syntax. For
-#' `PlannedBudgetLimits`, see the
-#' [Examples](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgets.html#API_DescribeBudgets_Examples)
-#' section.
 #'
-#' @usage
-#' budgets_describe_budgets(AccountId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/budgets/describe_budgets.html](https://paws-r.github.io/docs/budgets/describe_budgets.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budgets that you want
 #' descriptions of.
@@ -1253,79 +514,6 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #' response contains. The maximum is 100.
 #' @param NextToken The pagination token that you include in your request to indicate the
 #' next set of results that you want to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Budgets = list(
-#'     list(
-#'       BudgetName = "string",
-#'       BudgetLimit = list(
-#'         Amount = "string",
-#'         Unit = "string"
-#'       ),
-#'       PlannedBudgetLimits = list(
-#'         list(
-#'           Amount = "string",
-#'           Unit = "string"
-#'         )
-#'       ),
-#'       CostFilters = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       CostTypes = list(
-#'         IncludeTax = TRUE|FALSE,
-#'         IncludeSubscription = TRUE|FALSE,
-#'         UseBlended = TRUE|FALSE,
-#'         IncludeRefund = TRUE|FALSE,
-#'         IncludeCredit = TRUE|FALSE,
-#'         IncludeUpfront = TRUE|FALSE,
-#'         IncludeRecurring = TRUE|FALSE,
-#'         IncludeOtherSubscription = TRUE|FALSE,
-#'         IncludeSupport = TRUE|FALSE,
-#'         IncludeDiscount = TRUE|FALSE,
-#'         UseAmortized = TRUE|FALSE
-#'       ),
-#'       TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
-#'       TimePeriod = list(
-#'         Start = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         End = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       CalculatedSpend = list(
-#'         ActualSpend = list(
-#'           Amount = "string",
-#'           Unit = "string"
-#'         ),
-#'         ForecastedSpend = list(
-#'           Amount = "string",
-#'           Unit = "string"
-#'         )
-#'       ),
-#'       BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_budgets(
-#'   AccountId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1352,9 +540,7 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
 #' @description
 #' Lists the notifications that are associated with a budget.
 #'
-#' @usage
-#' budgets_describe_notifications_for_budget(AccountId, BudgetName,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/budgets/describe_notifications_for_budget.html](https://paws-r.github.io/docs/budgets/describe_notifications_for_budget.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose notifications
 #' you want descriptions of.
@@ -1363,33 +549,6 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
 #' response contains. The maximum is 100.
 #' @param NextToken The pagination token that you include in your request to indicate the
 #' next set of results that you want to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Notifications = list(
-#'     list(
-#'       NotificationType = "ACTUAL"|"FORECASTED",
-#'       ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-#'       Threshold = 123.0,
-#'       ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-#'       NotificationState = "OK"|"ALARM"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_notifications_for_budget(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1416,9 +575,7 @@ budgets_describe_notifications_for_budget <- function(AccountId, BudgetName, Max
 #' @description
 #' Lists the subscribers that are associated with a notification.
 #'
-#' @usage
-#' budgets_describe_subscribers_for_notification(AccountId, BudgetName,
-#'   Notification, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/budgets/describe_subscribers_for_notification.html](https://paws-r.github.io/docs/budgets/describe_subscribers_for_notification.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose subscribers you
 #' want descriptions of.
@@ -1428,37 +585,6 @@ budgets_describe_notifications_for_budget <- function(AccountId, BudgetName, Max
 #' response contains. The maximum is 100.
 #' @param NextToken The pagination token that you include in your request to indicate the
 #' next set of results that you want to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Subscribers = list(
-#'     list(
-#'       SubscriptionType = "SNS"|"EMAIL",
-#'       Address = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_subscribers_for_notification(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   Notification = list(
-#'     NotificationType = "ACTUAL"|"FORECASTED",
-#'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-#'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-#'     NotificationState = "OK"|"ALARM"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1485,35 +611,12 @@ budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName,
 #' @description
 #' Executes a budget action.
 #'
-#' @usage
-#' budgets_execute_budget_action(AccountId, BudgetName, ActionId,
-#'   ExecutionType)
+#' See [https://paws-r.github.io/docs/budgets/execute_budget_action.html](https://paws-r.github.io/docs/budgets/execute_budget_action.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
 #' @param ActionId &#91;required&#93; A system-generated universally unique identifier (UUID) for the action.
 #' @param ExecutionType &#91;required&#93; The type of execution.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   ActionId = "string",
-#'   ExecutionType = "APPROVE_BUDGET_ACTION"|"RETRY_BUDGET_ACTION"|"REVERSE_BUDGET_ACTION"|"RESET_BUDGET_ACTION"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$execute_budget_action(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   ActionId = "string",
-#'   ExecutionType = "APPROVE_BUDGET_ACTION"|"RETRY_BUDGET_ACTION"|"REVERSE_BUDGET_ACTION"|"RESET_BUDGET_ACTION"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1538,88 +641,13 @@ budgets_execute_budget_action <- function(AccountId, BudgetName, ActionId, Execu
 #' Updates a budget
 #'
 #' @description
-#' Updates a budget. You can change every part of a budget except for the
-#' `budgetName` and the `calculatedSpend`. When you modify a budget, the
-#' `calculatedSpend` drops to zero until AWS has new usage data to use for
-#' forecasting.
-#' 
-#' Only one of `BudgetLimit` or `PlannedBudgetLimits` can be present in the
-#' syntax at one time. Use the syntax that matches your case. The Request
-#' Syntax section shows the `BudgetLimit` syntax. For
-#' `PlannedBudgetLimits`, see the
-#' [Examples](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudget.html#API_UpdateBudget_Examples)
-#' section.
+#' Updates a budget. You can change every part of a budget except for the `budgetName` and the `calculatedSpend`. When you modify a budget, the `calculatedSpend` drops to zero until Amazon Web Services has new usage data to use for forecasting.
 #'
-#' @usage
-#' budgets_update_budget(AccountId, NewBudget)
+#' See [https://paws-r.github.io/docs/budgets/update_budget.html](https://paws-r.github.io/docs/budgets/update_budget.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want to
 #' update.
 #' @param NewBudget &#91;required&#93; The budget that you want to update your budget to.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_budget(
-#'   AccountId = "string",
-#'   NewBudget = list(
-#'     BudgetName = "string",
-#'     BudgetLimit = list(
-#'       Amount = "string",
-#'       Unit = "string"
-#'     ),
-#'     PlannedBudgetLimits = list(
-#'       list(
-#'         Amount = "string",
-#'         Unit = "string"
-#'       )
-#'     ),
-#'     CostFilters = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     CostTypes = list(
-#'       IncludeTax = TRUE|FALSE,
-#'       IncludeSubscription = TRUE|FALSE,
-#'       UseBlended = TRUE|FALSE,
-#'       IncludeRefund = TRUE|FALSE,
-#'       IncludeCredit = TRUE|FALSE,
-#'       IncludeUpfront = TRUE|FALSE,
-#'       IncludeRecurring = TRUE|FALSE,
-#'       IncludeOtherSubscription = TRUE|FALSE,
-#'       IncludeSupport = TRUE|FALSE,
-#'       IncludeDiscount = TRUE|FALSE,
-#'       UseAmortized = TRUE|FALSE
-#'     ),
-#'     TimeUnit = "DAILY"|"MONTHLY"|"QUARTERLY"|"ANNUALLY",
-#'     TimePeriod = list(
-#'       Start = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       End = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     CalculatedSpend = list(
-#'       ActualSpend = list(
-#'         Amount = "string",
-#'         Unit = "string"
-#'       ),
-#'       ForecastedSpend = list(
-#'         Amount = "string",
-#'         Unit = "string"
-#'       )
-#'     ),
-#'     BudgetType = "USAGE"|"COST"|"RI_UTILIZATION"|"RI_COVERAGE"|"SAVINGS_PLANS_UTILIZATION"|"SAVINGS_PLANS_COVERAGE",
-#'     LastUpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1646,10 +674,7 @@ budgets_update_budget <- function(AccountId, NewBudget) {
 #' @description
 #' Updates a budget action.
 #'
-#' @usage
-#' budgets_update_budget_action(AccountId, BudgetName, ActionId,
-#'   NotificationType, ActionThreshold, Definition, ExecutionRoleArn,
-#'   ApprovalModel, Subscribers)
+#' See [https://paws-r.github.io/docs/budgets/update_budget_action.html](https://paws-r.github.io/docs/budgets/update_budget_action.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
@@ -1661,156 +686,6 @@ budgets_update_budget <- function(AccountId, NewBudget) {
 #' must be in the same account.
 #' @param ApprovalModel This specifies if the action needs manual or automatic approval.
 #' @param Subscribers 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   OldAction = list(
-#'     ActionId = "string",
-#'     BudgetName = "string",
-#'     NotificationType = "ACTUAL"|"FORECASTED",
-#'     ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
-#'     ActionThreshold = list(
-#'       ActionThresholdValue = 123.0,
-#'       ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-#'     ),
-#'     Definition = list(
-#'       IamActionDefinition = list(
-#'         PolicyArn = "string",
-#'         Roles = list(
-#'           "string"
-#'         ),
-#'         Groups = list(
-#'           "string"
-#'         ),
-#'         Users = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ScpActionDefinition = list(
-#'         PolicyId = "string",
-#'         TargetIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       SsmActionDefinition = list(
-#'         ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-#'         Region = "string",
-#'         InstanceIds = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     ExecutionRoleArn = "string",
-#'     ApprovalModel = "AUTOMATIC"|"MANUAL",
-#'     Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
-#'     Subscribers = list(
-#'       list(
-#'         SubscriptionType = "SNS"|"EMAIL",
-#'         Address = "string"
-#'       )
-#'     )
-#'   ),
-#'   NewAction = list(
-#'     ActionId = "string",
-#'     BudgetName = "string",
-#'     NotificationType = "ACTUAL"|"FORECASTED",
-#'     ActionType = "APPLY_IAM_POLICY"|"APPLY_SCP_POLICY"|"RUN_SSM_DOCUMENTS",
-#'     ActionThreshold = list(
-#'       ActionThresholdValue = 123.0,
-#'       ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-#'     ),
-#'     Definition = list(
-#'       IamActionDefinition = list(
-#'         PolicyArn = "string",
-#'         Roles = list(
-#'           "string"
-#'         ),
-#'         Groups = list(
-#'           "string"
-#'         ),
-#'         Users = list(
-#'           "string"
-#'         )
-#'       ),
-#'       ScpActionDefinition = list(
-#'         PolicyId = "string",
-#'         TargetIds = list(
-#'           "string"
-#'         )
-#'       ),
-#'       SsmActionDefinition = list(
-#'         ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-#'         Region = "string",
-#'         InstanceIds = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     ExecutionRoleArn = "string",
-#'     ApprovalModel = "AUTOMATIC"|"MANUAL",
-#'     Status = "STANDBY"|"PENDING"|"EXECUTION_IN_PROGRESS"|"EXECUTION_SUCCESS"|"EXECUTION_FAILURE"|"REVERSE_IN_PROGRESS"|"REVERSE_SUCCESS"|"REVERSE_FAILURE"|"RESET_IN_PROGRESS"|"RESET_FAILURE",
-#'     Subscribers = list(
-#'       list(
-#'         SubscriptionType = "SNS"|"EMAIL",
-#'         Address = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_budget_action(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   ActionId = "string",
-#'   NotificationType = "ACTUAL"|"FORECASTED",
-#'   ActionThreshold = list(
-#'     ActionThresholdValue = 123.0,
-#'     ActionThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE"
-#'   ),
-#'   Definition = list(
-#'     IamActionDefinition = list(
-#'       PolicyArn = "string",
-#'       Roles = list(
-#'         "string"
-#'       ),
-#'       Groups = list(
-#'         "string"
-#'       ),
-#'       Users = list(
-#'         "string"
-#'       )
-#'     ),
-#'     ScpActionDefinition = list(
-#'       PolicyId = "string",
-#'       TargetIds = list(
-#'         "string"
-#'       )
-#'     ),
-#'     SsmActionDefinition = list(
-#'       ActionSubType = "STOP_EC2_INSTANCES"|"STOP_RDS_INSTANCES",
-#'       Region = "string",
-#'       InstanceIds = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   ExecutionRoleArn = "string",
-#'   ApprovalModel = "AUTOMATIC"|"MANUAL",
-#'   Subscribers = list(
-#'     list(
-#'       SubscriptionType = "SNS"|"EMAIL",
-#'       Address = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1837,40 +712,13 @@ budgets_update_budget_action <- function(AccountId, BudgetName, ActionId, Notifi
 #' @description
 #' Updates a notification.
 #'
-#' @usage
-#' budgets_update_notification(AccountId, BudgetName, OldNotification,
-#'   NewNotification)
+#' See [https://paws-r.github.io/docs/budgets/update_notification.html](https://paws-r.github.io/docs/budgets/update_notification.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose notification
 #' you want to update.
 #' @param BudgetName &#91;required&#93; The name of the budget whose notification you want to update.
 #' @param OldNotification &#91;required&#93; The previous notification that is associated with a budget.
 #' @param NewNotification &#91;required&#93; The updated notification to be associated with a budget.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_notification(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   OldNotification = list(
-#'     NotificationType = "ACTUAL"|"FORECASTED",
-#'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-#'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-#'     NotificationState = "OK"|"ALARM"
-#'   ),
-#'   NewNotification = list(
-#'     NotificationType = "ACTUAL"|"FORECASTED",
-#'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-#'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-#'     NotificationState = "OK"|"ALARM"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1897,9 +745,7 @@ budgets_update_notification <- function(AccountId, BudgetName, OldNotification, 
 #' @description
 #' Updates a subscriber.
 #'
-#' @usage
-#' budgets_update_subscriber(AccountId, BudgetName, Notification,
-#'   OldSubscriber, NewSubscriber)
+#' See [https://paws-r.github.io/docs/budgets/update_subscriber.html](https://paws-r.github.io/docs/budgets/update_subscriber.html) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose subscriber you
 #' want to update.
@@ -1907,32 +753,6 @@ budgets_update_notification <- function(AccountId, BudgetName, OldNotification, 
 #' @param Notification &#91;required&#93; The notification whose subscriber you want to update.
 #' @param OldSubscriber &#91;required&#93; The previous subscriber that is associated with a budget notification.
 #' @param NewSubscriber &#91;required&#93; The updated subscriber that is associated with a budget notification.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_subscriber(
-#'   AccountId = "string",
-#'   BudgetName = "string",
-#'   Notification = list(
-#'     NotificationType = "ACTUAL"|"FORECASTED",
-#'     ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-#'     Threshold = 123.0,
-#'     ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-#'     NotificationState = "OK"|"ALARM"
-#'   ),
-#'   OldSubscriber = list(
-#'     SubscriptionType = "SNS"|"EMAIL",
-#'     Address = "string"
-#'   ),
-#'   NewSubscriber = list(
-#'     SubscriptionType = "SNS"|"EMAIL",
-#'     Address = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

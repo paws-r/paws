@@ -9,97 +9,9 @@ sagemaker_describe_data_quality_job_definition(JobDefinitionName)
 \arguments{
 \item{JobDefinitionName}{[required] The name of the data quality monitoring job definition to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobDefinitionArn = "string",
-  JobDefinitionName = "string",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  DataQualityBaselineConfig = list(
-    BaseliningJobName = "string",
-    ConstraintsResource = list(
-      S3Uri = "string"
-    ),
-    StatisticsResource = list(
-      S3Uri = "string"
-    )
-  ),
-  DataQualityAppSpecification = list(
-    ImageUri = "string",
-    ContainerEntrypoint = list(
-      "string"
-    ),
-    ContainerArguments = list(
-      "string"
-    ),
-    RecordPreprocessorSourceUri = "string",
-    PostAnalyticsProcessorSourceUri = "string",
-    Environment = list(
-      "string"
-    )
-  ),
-  DataQualityJobInput = list(
-    EndpointInput = list(
-      EndpointName = "string",
-      LocalPath = "string",
-      S3InputMode = "Pipe"|"File",
-      S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
-      FeaturesAttribute = "string",
-      InferenceAttribute = "string",
-      ProbabilityAttribute = "string",
-      ProbabilityThresholdAttribute = 123.0,
-      StartTimeOffset = "string",
-      EndTimeOffset = "string"
-    )
-  ),
-  DataQualityJobOutputConfig = list(
-    MonitoringOutputs = list(
-      list(
-        S3Output = list(
-          S3Uri = "string",
-          LocalPath = "string",
-          S3UploadMode = "Continuous"|"EndOfJob"
-        )
-      )
-    ),
-    KmsKeyId = "string"
-  ),
-  JobResources = list(
-    ClusterConfig = list(
-      InstanceCount = 123,
-      InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
-      VolumeSizeInGB = 123,
-      VolumeKmsKeyId = "string"
-    )
-  ),
-  NetworkConfig = list(
-    EnableInterContainerTrafficEncryption = TRUE|FALSE,
-    EnableNetworkIsolation = TRUE|FALSE,
-    VpcConfig = list(
-      SecurityGroupIds = list(
-        "string"
-      ),
-      Subnets = list(
-        "string"
-      )
-    )
-  ),
-  RoleArn = "string",
-  StoppingCondition = list(
-    MaxRuntimeInSeconds = 123
-  )
-)
-}
-}
 \description{
 Gets the details of a data quality monitoring job definition.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_data_quality_job_definition(
-  JobDefinitionName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_data_quality_job_definition.html} for full documentation.
+}
 \keyword{internal}

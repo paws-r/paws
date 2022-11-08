@@ -2,8 +2,9 @@
 % Please edit documentation in R/neptune_operations.R
 \name{neptune_start_db_cluster}
 \alias{neptune_start_db_cluster}
-\title{Starts an Amazon Neptune DB cluster that was stopped using the AWS
-console, the AWS CLI stop-db-cluster command, or the StopDBCluster API}
+\title{Starts an Amazon Neptune DB cluster that was stopped using the Amazon
+console, the Amazon CLI stop-db-cluster command, or the StopDBCluster
+API}
 \usage{
 neptune_start_db_cluster(DBClusterIdentifier)
 }
@@ -11,94 +12,9 @@ neptune_start_db_cluster(DBClusterIdentifier)
 \item{DBClusterIdentifier}{[required] The DB cluster identifier of the Neptune DB cluster to be started. This
 parameter is stored as a lowercase string.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AllocatedStorage = 123,
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    CharacterSetName = "string",
-    DatabaseName = "string",
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    DBClusterOptionGroupMemberships = list(
-      list(
-        DBClusterOptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    ReplicationSourceIdentifier = "string",
-    ReadReplicaIdentifiers = list(
-      "string"
-    ),
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string",
-        FeatureName = "string"
-      )
-    ),
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    CloneGroupId = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    DeletionProtection = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Starts an Amazon Neptune DB cluster that was stopped using the AWS
-console, the AWS CLI stop-db-cluster command, or the StopDBCluster API.
-}
-\section{Request syntax}{
-\preformatted{svc$start_db_cluster(
-  DBClusterIdentifier = "string"
-)
-}
-}
+Starts an Amazon Neptune DB cluster that was stopped using the Amazon console, the Amazon CLI stop-db-cluster command, or the StopDBCluster API.
 
+See \url{https://paws-r.github.io/docs/neptune/start_db_cluster.html} for full documentation.
+}
 \keyword{internal}

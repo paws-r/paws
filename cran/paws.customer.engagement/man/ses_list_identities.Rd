@@ -6,7 +6,7 @@
 domains) for your AWS account in the current AWS Region, regardless of
 verification status}
 \usage{
-ses_list_identities(IdentityType, NextToken, MaxItems)
+ses_list_identities(IdentityType = NULL, NextToken = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{IdentityType}{The type of the identities to list. Possible values are "EmailAddress"
@@ -18,41 +18,9 @@ listed.}
 \item{MaxItems}{The maximum number of identities per page. Possible values are 1-1000
 inclusive.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Identities = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list containing all of the identities (email addresses and
-domains) for your AWS account in the current AWS Region, regardless of
-verification status.
+Returns a list containing all of the identities (email addresses and domains) for your AWS account in the current AWS Region, regardless of verification status.
 
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$list_identities(
-  IdentityType = "EmailAddress"|"Domain",
-  NextToken = "string",
-  MaxItems = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example lists the email address identities that have been
-# submitted for verification with Amazon SES:
-svc$list_identities(
-  IdentityType = "EmailAddress",
-  MaxItems = 123L,
-  NextToken = ""
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/list_identities.html} for full documentation.
 }
 \keyword{internal}

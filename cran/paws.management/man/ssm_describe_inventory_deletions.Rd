@@ -4,11 +4,16 @@
 \alias{ssm_describe_inventory_deletions}
 \title{Describes a specific delete inventory operation}
 \usage{
-ssm_describe_inventory_deletions(DeletionId, NextToken, MaxResults)
+ssm_describe_inventory_deletions(
+  DeletionId = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{DeletionId}{Specify the delete inventory ID for which you want information. This ID
-was returned by the \code{\link[=ssm_delete_inventory]{delete_inventory}} action.}
+was returned by the \code{\link[=ssm_delete_inventory]{delete_inventory}}
+operation.}
 
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
@@ -17,47 +22,9 @@ results.}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InventoryDeletions = list(
-    list(
-      DeletionId = "string",
-      TypeName = "string",
-      DeletionStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastStatus = "InProgress"|"Complete",
-      LastStatusMessage = "string",
-      DeletionSummary = list(
-        TotalCount = 123,
-        RemainingCount = 123,
-        SummaryItems = list(
-          list(
-            Version = "string",
-            Count = 123,
-            RemainingCount = 123
-          )
-        )
-      ),
-      LastStatusUpdateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes a specific delete inventory operation.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_inventory_deletions(
-  DeletionId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/describe_inventory_deletions.html} for full documentation.
+}
 \keyword{internal}

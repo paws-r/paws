@@ -4,9 +4,18 @@
 \alias{sagemaker_list_labeling_jobs}
 \title{Gets a list of labeling jobs}
 \usage{
-sagemaker_list_labeling_jobs(CreationTimeAfter, CreationTimeBefore,
-  LastModifiedTimeAfter, LastModifiedTimeBefore, MaxResults, NextToken,
-  NameContains, SortBy, SortOrder, StatusEquals)
+sagemaker_list_labeling_jobs(
+  CreationTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  NameContains = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  StatusEquals = NULL
+)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only labeling jobs created after the specified
@@ -38,80 +47,9 @@ jobs whose name contains the specified string.}
 
 \item{StatusEquals}{A filter that retrieves only labeling jobs with a specific status.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LabelingJobSummaryList = list(
-    list(
-      LabelingJobName = "string",
-      LabelingJobArn = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LabelingJobStatus = "Initializing"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-      LabelCounters = list(
-        TotalLabeled = 123,
-        HumanLabeled = 123,
-        MachineLabeled = 123,
-        FailedNonRetryableError = 123,
-        Unlabeled = 123
-      ),
-      WorkteamArn = "string",
-      PreHumanTaskLambdaArn = "string",
-      AnnotationConsolidationLambdaArn = "string",
-      FailureReason = "string",
-      LabelingJobOutput = list(
-        OutputDatasetS3Uri = "string",
-        FinalActiveLearningModelArn = "string"
-      ),
-      InputConfig = list(
-        DataSource = list(
-          S3DataSource = list(
-            ManifestS3Uri = "string"
-          ),
-          SnsDataSource = list(
-            SnsTopicArn = "string"
-          )
-        ),
-        DataAttributes = list(
-          ContentClassifiers = list(
-            "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"
-          )
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets a list of labeling jobs.
-}
-\section{Request syntax}{
-\preformatted{svc$list_labeling_jobs(
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  NameContains = "string",
-  SortBy = "Name"|"CreationTime"|"Status",
-  SortOrder = "Ascending"|"Descending",
-  StatusEquals = "Initializing"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_labeling_jobs.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{codecommit_update_pull_request_approval_state}
 \title{Updates the state of a user's approval on a pull request}
 \usage{
-codecommit_update_pull_request_approval_state(pullRequestId, revisionId,
-  approvalState)
+codecommit_update_pull_request_approval_state(
+  pullRequestId,
+  revisionId,
+  approvalState
+)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request.}
@@ -14,20 +17,9 @@ codecommit_update_pull_request_approval_state(pullRequestId, revisionId,
 
 \item{approvalState}{[required] The approval state to associate with the user on the pull request.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the state of a user's approval on a pull request. The user is
-derived from the signed-in account when the request is made.
-}
-\section{Request syntax}{
-\preformatted{svc$update_pull_request_approval_state(
-  pullRequestId = "string",
-  revisionId = "string",
-  approvalState = "APPROVE"|"REVOKE"
-)
-}
-}
+Updates the state of a user's approval on a pull request. The user is derived from the signed-in account when the request is made.
 
+See \url{https://paws-r.github.io/docs/codecommit/update_pull_request_approval_state.html} for full documentation.
+}
 \keyword{internal}

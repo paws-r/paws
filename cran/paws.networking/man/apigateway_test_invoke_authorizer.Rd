@@ -5,83 +5,44 @@
 \title{Simulate the execution of an Authorizer in your RestApi with headers,
 parameters, and an incoming request body}
 \usage{
-apigateway_test_invoke_authorizer(restApiId, authorizerId, headers,
-  multiValueHeaders, pathWithQueryString, body, stageVariables,
-  additionalContext)
+apigateway_test_invoke_authorizer(
+  restApiId,
+  authorizerId,
+  headers = NULL,
+  multiValueHeaders = NULL,
+  pathWithQueryString = NULL,
+  body = NULL,
+  stageVariables = NULL,
+  additionalContext = NULL
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{authorizerId}{[required] [Required] Specifies a test invoke authorizer request's Authorizer ID.}
+\item{authorizerId}{[required] Specifies a test invoke authorizer request's Authorizer ID.}
 
-\item{headers}{[Required] A key-value map of headers to simulate an incoming
-invocation request. This is where the incoming authorization token, or
-identity source, should be specified.}
+\item{headers}{A key-value map of headers to simulate an incoming invocation request.
+This is where the incoming authorization token, or identity source,
+should be specified.}
 
-\item{multiValueHeaders}{[Optional] The headers as a map from string to list of values to
-simulate an incoming invocation request. This is where the incoming
-authorization token, or identity source, may be specified.}
+\item{multiValueHeaders}{The headers as a map from string to list of values to simulate an
+incoming invocation request. This is where the incoming authorization
+token, or identity source, may be specified.}
 
-\item{pathWithQueryString}{[Optional] The URI path, including query string, of the simulated
-invocation request. Use this to specify path parameters and query string
+\item{pathWithQueryString}{The URI path, including query string, of the simulated invocation
+request. Use this to specify path parameters and query string
 parameters.}
 
-\item{body}{[Optional] The simulated request body of an incoming invocation
-request.}
+\item{body}{The simulated request body of an incoming invocation request.}
 
 \item{stageVariables}{A key-value map of stage variables to simulate an invocation on a
 deployed Stage.}
 
-\item{additionalContext}{[Optional] A key-value map of additional context variables.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  clientStatus = 123,
-  log = "string",
-  latency = 123,
-  principalId = "string",
-  policy = "string",
-  authorization = list(
-    list(
-      "string"
-    )
-  ),
-  claims = list(
-    "string"
-  )
-)
-}
+\item{additionalContext}{A key-value map of additional context variables.}
 }
 \description{
-Simulate the execution of an Authorizer in your RestApi with headers,
-parameters, and an incoming request body.<div class="seeAlso">
+Simulate the execution of an Authorizer in your RestApi with headers, parameters, and an incoming request body.
 
-
-\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html}{Use Lambda Function as Authorizer}
-\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html}{Use Cognito User Pool as Authorizer}</div>
+See \url{https://paws-r.github.io/docs/apigateway/test_invoke_authorizer.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$test_invoke_authorizer(
-  restApiId = "string",
-  authorizerId = "string",
-  headers = list(
-    "string"
-  ),
-  multiValueHeaders = list(
-    list(
-      "string"
-    )
-  ),
-  pathWithQueryString = "string",
-  body = "string",
-  stageVariables = list(
-    "string"
-  ),
-  additionalContext = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

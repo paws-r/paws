@@ -3,13 +3,29 @@
 \name{cloudformation_update_stack_set}
 \alias{cloudformation_update_stack_set}
 \title{Updates the stack set, and associated stack instances in the specified
-accounts and Regions}
+accounts and Amazon Web Services Regions}
 \usage{
-cloudformation_update_stack_set(StackSetName, Description, TemplateBody,
-  TemplateURL, UsePreviousTemplate, Parameters, Capabilities, Tags,
-  OperationPreferences, AdministrationRoleARN, ExecutionRoleName,
-  DeploymentTargets, PermissionModel, AutoDeployment, OperationId,
-  Accounts, Regions)
+cloudformation_update_stack_set(
+  StackSetName,
+  Description = NULL,
+  TemplateBody = NULL,
+  TemplateURL = NULL,
+  UsePreviousTemplate = NULL,
+  Parameters = NULL,
+  Capabilities = NULL,
+  Tags = NULL,
+  OperationPreferences = NULL,
+  AdministrationRoleARN = NULL,
+  ExecutionRoleName = NULL,
+  DeploymentTargets = NULL,
+  PermissionModel = NULL,
+  AutoDeployment = NULL,
+  OperationId = NULL,
+  Accounts = NULL,
+  Regions = NULL,
+  CallAs = NULL,
+  ManagedExecution = NULL
+)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to update.}
@@ -19,15 +35,16 @@ cloudformation_update_stack_set(StackSetName, Description, TemplateBody,
 \item{TemplateBody}{The structure that contains the template body, with a minimum length of
 1 byte and a maximum length of 51,200 bytes. For more information, see
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the AWS CloudFormation User Guide.
+in the CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
 \code{TemplateBody} or \code{TemplateURL}—or set \code{UsePreviousTemplate} to true.}
 
 \item{TemplateURL}{The location of the file that contains the template body. The URL must
 point to a template (maximum size: 460,800 bytes) that is located in an
-Amazon S3 bucket. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the AWS CloudFormation User Guide.
+Amazon S3 bucket or a Systems Manager document. For more information,
+see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
+in the CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
 \code{TemplateBody} or \code{TemplateURL}—or set \code{UsePreviousTemplate} to true.}
@@ -41,16 +58,16 @@ Conditional: You must specify only one of the following parameters:
 \item{Parameters}{A list of input parameters for the stack set template.}
 
 \item{Capabilities}{In some cases, you must explicitly acknowledge that your stack template
-contains certain capabilities in order for AWS CloudFormation to update
-the stack set and its associated stack instances.
+contains certain capabilities in order for CloudFormation to update the
+stack set and its associated stack instances.
 \itemize{
 \item \code{CAPABILITY_IAM} and \code{CAPABILITY_NAMED_IAM}
 
 Some stack templates might include resources that can affect
-permissions in your AWS account; for example, by creating new AWS
-Identity and Access Management (IAM) users. For those stacks sets,
-you must explicitly acknowledge this by specifying one of these
-capabilities.
+permissions in your Amazon Web Services account; for example, by
+creating new Identity and Access Management (IAM) users. For those
+stacks sets, you must explicitly acknowledge this by specifying one
+of these capabilities.
 
 The following IAM resources require you to specify either the
 \code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
@@ -58,7 +75,7 @@ The following IAM resources require you to specify either the
 \item If you have IAM resources, you can specify either capability.
 \item If you have IAM resources with custom names, you \emph{must} specify
 \code{CAPABILITY_NAMED_IAM}.
-\item If you don't specify either of these capabilities, AWS
+\item If you don't specify either of these capabilities,
 CloudFormation returns an \code{InsufficientCapabilities} error.
 }
 
@@ -75,66 +92,67 @@ permissions if necessary.
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in CloudFormation Templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
-Some templates contain macros. If your stack template contains one
-or more macros, and you choose to update a stack directly from the
-processed template, without first reviewing the resulting changes in
-a change set, you must acknowledge this capability. For more
-information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using AWS CloudFormation Macros to Perform Custom Processing on Templates}.
+Some templates reference macros. If your stack set template
+references one or more macros, you must update the stack set
+directly from the processed template, without first reviewing the
+resulting changes in a change set. To update the stack set directly,
+you must acknowledge this capability. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using CloudFormation Macros to Perform Custom Processing on Templates}.
 
-Stack sets do not currently support macros in stack templates. (This
-includes the
+Stack sets with service-managed permissions do not currently support
+the use of macros in templates. (This includes the
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include}
 and
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
-transforms, which are macros hosted by AWS CloudFormation.) Even if
-you specify this capability, if you include a macro in your template
-the stack set operation will fail.
+transforms, which are macros hosted by CloudFormation.) Even if you
+specify this capability for a stack set with service-managed
+permissions, if you reference a macro in your template the stack set
+operation will fail.
 }}
 
 \item{Tags}{The key-value pairs to associate with this stack set and the stacks
-created from it. AWS CloudFormation also propagates these tags to
-supported resources that are created in the stacks. You can specify a
-maximum number of 50 tags.
+created from it. CloudFormation also propagates these tags to supported
+resources that are created in the stacks. You can specify a maximum
+number of 50 tags.
 
 If you specify tags for this parameter, those tags replace any list of
 tags that are currently associated with this stack set. This means:
 \itemize{
-\item If you don't specify this parameter, AWS CloudFormation doesn't
-modify the stack's tags.
+\item If you don't specify this parameter, CloudFormation doesn't modify
+the stack's tags.
 \item If you specify \emph{any} tags using this parameter, you must specify
 \emph{all} the tags that you want associated with this stack set, even
-tags you've specifed before (for example, when creating the stack
+tags you've specified before (for example, when creating the stack
 set or during a previous update of the stack set.). Any tags that
 you don't include in the updated list of tags are removed from the
 stack set, and therefore from the stacks and resources as well.
-\item If you specify an empty value, AWS CloudFormation removes all
-currently associated tags.
+\item If you specify an empty value, CloudFormation removes all currently
+associated tags.
 }
 
 If you specify new tags as part of an
-\code{\link[=cloudformation_update_stack_set]{update_stack_set}} action, AWS
+\code{\link[=cloudformation_update_stack_set]{update_stack_set}} action,
 CloudFormation checks to see if you have the required IAM permission to
 tag resources. If you omit tags that are currently associated with the
-stack set from the list of tags you specify, AWS CloudFormation assumes
-that you want to remove those tags from the stack set, and checks to see
-if you have permission to untag resources. If you don't have the
-necessary permission(s), the entire
+stack set from the list of tags you specify, CloudFormation assumes that
+you want to remove those tags from the stack set, and checks to see if
+you have permission to untag resources. If you don't have the necessary
+permission(s), the entire
 \code{\link[=cloudformation_update_stack_set]{update_stack_set}} action fails with
 an \verb{access denied} error, and the stack set is not updated.}
 
-\item{OperationPreferences}{Preferences for how AWS CloudFormation performs this stack set
-operation.}
+\item{OperationPreferences}{Preferences for how CloudFormation performs this stack set operation.}
 
-\item{AdministrationRoleARN}{The Amazon Resource Number (ARN) of the IAM role to use to update this
+\item{AdministrationRoleARN}{The Amazon Resource Name (ARN) of the IAM role to use to update this
 stack set.
 
 Specify an IAM role only if you are using customized administrator roles
 to control which users or groups can manage specific stack sets within
 the same administrator account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html}{Granting Permissions for Stack Set Operations}
-in the \emph{AWS CloudFormation User Guide}.
+in the \emph{CloudFormation User Guide}.
 
 If you specified a customized administrator role when you created the
 stack set, you must specify a customized administrator role, even if it
@@ -142,7 +160,7 @@ is the same customized administrator role used with this stack set
 previously.}
 
 \item{ExecutionRoleName}{The name of the IAM execution role to use to update the stack set. If
-you do not specify an execution role, AWS CloudFormation uses the
+you do not specify an execution role, CloudFormation uses the
 \code{AWSCloudFormationStackSetExecutionRole} role for the stack set
 operation.
 
@@ -150,26 +168,26 @@ Specify an IAM role only if you are using customized execution roles to
 control which stack resources users and groups can include in their
 stack sets.
 
-If you specify a customized execution role, AWS CloudFormation uses that
+If you specify a customized execution role, CloudFormation uses that
 role to update the stack. If you do not specify a customized execution
-role, AWS CloudFormation performs the update using the role previously
+role, CloudFormation performs the update using the role previously
 associated with the stack set, so long as you have permissions to
 perform operations on the stack set.}
 
-\item{DeploymentTargets}{[\code{Service-managed} permissions] The AWS Organizations accounts in
-which to update associated stack instances.
+\item{DeploymentTargets}{[Service-managed permissions] The Organizations accounts in which to
+update associated stack instances.
 
 To update all the stack instances associated with this stack set, do not
 specify \code{DeploymentTargets} or \code{Regions}.
 
 If the stack set update includes changes to the template (that is, if
-\code{TemplateBody} or \code{TemplateURL} is specified), or the \code{Parameters}, AWS
+\code{TemplateBody} or \code{TemplateURL} is specified), or the \code{Parameters},
 CloudFormation marks all stack instances with a status of \code{OUTDATED}
 prior to updating the stack instances in the specified accounts and
-Regions. If the stack set update does not include changes to the
-template or parameters, AWS CloudFormation updates the stack instances
-in the specified accounts and Regions, while leaving all other stack
-instances with their existing stack instance status.}
+Amazon Web Services Regions. If the stack set update doesn't include
+changes to the template or parameters, CloudFormation updates the stack
+instances in the specified accounts and Regions, while leaving all other
+stack instances with their existing stack instance status.}
 
 \item{PermissionModel}{Describes how the IAM roles required for stack set operations are
 created. You cannot modify \code{PermissionModel} if there are stack
@@ -179,136 +197,86 @@ instances associated with your stack set.
 and execution roles required to deploy to target accounts. For more
 information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html}{Grant Self-Managed Stack Set Permissions}.
 \item With \code{service-managed} permissions, StackSets automatically creates
-the IAM roles required to deploy to accounts managed by AWS
+the IAM roles required to deploy to accounts managed by
 Organizations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{Grant Service-Managed Stack Set Permissions}.
 }}
 
-\item{AutoDeployment}{[\code{Service-managed} permissions] Describes whether StackSets
-automatically deploys to AWS Organizations accounts that are added to a
+\item{AutoDeployment}{[Service-managed permissions] Describes whether StackSets
+automatically deploys to Organizations accounts that are added to a
 target organization or organizational unit (OU).
 
-If you specify \code{AutoDeployment}, do not specify \code{DeploymentTargets} or
+If you specify \code{AutoDeployment}, don't specify \code{DeploymentTargets} or
 \code{Regions}.}
 
 \item{OperationId}{The unique ID for this stack set operation.
 
 The operation ID also functions as an idempotency token, to ensure that
-AWS CloudFormation performs the stack set operation only once, even if
-you retry the request multiple times. You might retry stack set
-operation requests to ensure that AWS CloudFormation successfully
-received them.
+CloudFormation performs the stack set operation only once, even if you
+retry the request multiple times. You might retry stack set operation
+requests to ensure that CloudFormation successfully received them.
 
-If you don't specify an operation ID, AWS CloudFormation generates one
+If you don't specify an operation ID, CloudFormation generates one
 automatically.
 
 Repeating this stack set operation with a new operation ID retries all
 stack instances whose status is \code{OUTDATED}.}
 
-\item{Accounts}{[\code{Self-managed} permissions] The accounts in which to update
-associated stack instances. If you specify accounts, you must also
-specify the Regions in which to update stack set instances.
+\item{Accounts}{[Self-managed permissions] The accounts in which to update associated
+stack instances. If you specify accounts, you must also specify the
+Amazon Web Services Regions in which to update stack set instances.
+
+To update \emph{all} the stack instances associated with this stack set,
+don't specify the \code{Accounts} or \code{Regions} properties.
+
+If the stack set update includes changes to the template (that is, if
+the \code{TemplateBody} or \code{TemplateURL} properties are specified), or the
+\code{Parameters} property, CloudFormation marks all stack instances with a
+status of \code{OUTDATED} prior to updating the stack instances in the
+specified accounts and Amazon Web Services Regions. If the stack set
+update does not include changes to the template or parameters,
+CloudFormation updates the stack instances in the specified accounts and
+Amazon Web Services Regions, while leaving all other stack instances
+with their existing stack instance status.}
+
+\item{Regions}{The Amazon Web Services Regions in which to update associated stack
+instances. If you specify Regions, you must also specify accounts in
+which to update stack set instances.
 
 To update \emph{all} the stack instances associated with this stack set, do
 not specify the \code{Accounts} or \code{Regions} properties.
 
 If the stack set update includes changes to the template (that is, if
 the \code{TemplateBody} or \code{TemplateURL} properties are specified), or the
-\code{Parameters} property, AWS CloudFormation marks all stack instances with
-a status of \code{OUTDATED} prior to updating the stack instances in the
+\code{Parameters} property, CloudFormation marks all stack instances with a
+status of \code{OUTDATED} prior to updating the stack instances in the
 specified accounts and Regions. If the stack set update does not include
-changes to the template or parameters, AWS CloudFormation updates the
-stack instances in the specified accounts and Regions, while leaving all
-other stack instances with their existing stack instance status.}
+changes to the template or parameters, CloudFormation updates the stack
+instances in the specified accounts and Regions, while leaving all other
+stack instances with their existing stack instance status.}
 
-\item{Regions}{The Regions in which to update associated stack instances. If you
-specify Regions, you must also specify accounts in which to update stack
-set instances.
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
 
-To update \emph{all} the stack instances associated with this stack set, do
-not specify the \code{Accounts} or \code{Regions} properties.
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
 
-If the stack set update includes changes to the template (that is, if
-the \code{TemplateBody} or \code{TemplateURL} properties are specified), or the
-\code{Parameters} property, AWS CloudFormation marks all stack instances with
-a status of \code{OUTDATED} prior to updating the stack instances in the
-specified accounts and Regions. If the stack set update does not include
-changes to the template or parameters, AWS CloudFormation updates the
-stack instances in the specified accounts and Regions, while leaving all
-other stack instances with their existing stack instance status.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  OperationId = "string"
-)
-}
+Your Amazon Web Services account must be registered as a delegated
+administrator in the management account. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{CloudFormation User Guide}.
+}}
+
+\item{ManagedExecution}{Describes whether StackSets performs non-conflicting operations
+concurrently and queues conflicting operations.}
 }
 \description{
-Updates the stack set, and associated stack instances in the specified
-accounts and Regions.
+Updates the stack set, and associated stack instances in the specified accounts and Amazon Web Services Regions.
 
-Even if the stack set operation created by updating the stack set fails
-(completely or partially, below or above a specified failure tolerance),
-the stack set is updated with your changes. Subsequent
-\code{\link[=cloudformation_create_stack_instances]{create_stack_instances}} calls
-on the specified stack set use the updated stack set.
+See \url{https://paws-r.github.io/docs/cloudformation/update_stack_set.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_stack_set(
-  StackSetName = "string",
-  Description = "string",
-  TemplateBody = "string",
-  TemplateURL = "string",
-  UsePreviousTemplate = TRUE|FALSE,
-  Parameters = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  ),
-  Capabilities = list(
-    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  OperationPreferences = list(
-    RegionOrder = list(
-      "string"
-    ),
-    FailureToleranceCount = 123,
-    FailureTolerancePercentage = 123,
-    MaxConcurrentCount = 123,
-    MaxConcurrentPercentage = 123
-  ),
-  AdministrationRoleARN = "string",
-  ExecutionRoleName = "string",
-  DeploymentTargets = list(
-    Accounts = list(
-      "string"
-    ),
-    OrganizationalUnitIds = list(
-      "string"
-    )
-  ),
-  PermissionModel = "SERVICE_MANAGED"|"SELF_MANAGED",
-  AutoDeployment = list(
-    Enabled = TRUE|FALSE,
-    RetainStacksOnAccountRemoval = TRUE|FALSE
-  ),
-  OperationId = "string",
-  Accounts = list(
-    "string"
-  ),
-  Regions = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

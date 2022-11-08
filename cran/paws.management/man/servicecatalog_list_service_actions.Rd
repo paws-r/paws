@@ -4,7 +4,11 @@
 \alias{servicecatalog_list_service_actions}
 \title{Lists all self-service actions}
 \usage{
-servicecatalog_list_service_actions(AcceptLanguage, PageSize, PageToken)
+servicecatalog_list_service_actions(
+  AcceptLanguage = NULL,
+  PageSize = NULL,
+  PageToken = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -19,30 +23,9 @@ servicecatalog_list_service_actions(AcceptLanguage, PageSize, PageToken)
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceActionSummaries = list(
-    list(
-      Id = "string",
-      Name = "string",
-      Description = "string",
-      DefinitionType = "SSM_AUTOMATION"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
 Lists all self-service actions.
-}
-\section{Request syntax}{
-\preformatted{svc$list_service_actions(
-  AcceptLanguage = "string",
-  PageSize = 123,
-  PageToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_service_actions.html} for full documentation.
+}
 \keyword{internal}

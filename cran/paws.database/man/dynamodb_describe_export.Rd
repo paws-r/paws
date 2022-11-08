@@ -9,46 +9,9 @@ dynamodb_describe_export(ExportArn)
 \arguments{
 \item{ExportArn}{[required] The Amazon Resource Name (ARN) associated with the export.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExportDescription = list(
-    ExportArn = "string",
-    ExportStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ExportManifest = "string",
-    TableArn = "string",
-    TableId = "string",
-    ExportTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ClientToken = "string",
-    S3Bucket = "string",
-    S3BucketOwner = "string",
-    S3Prefix = "string",
-    S3SseAlgorithm = "AES256"|"KMS",
-    S3SseKmsKeyId = "string",
-    FailureCode = "string",
-    FailureMessage = "string",
-    ExportFormat = "DYNAMODB_JSON"|"ION",
-    BilledSizeBytes = 123,
-    ItemCount = 123
-  )
-)
-}
-}
 \description{
 Describes an existing table export.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_export(
-  ExportArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/dynamodb/describe_export.html} for full documentation.
+}
 \keyword{internal}

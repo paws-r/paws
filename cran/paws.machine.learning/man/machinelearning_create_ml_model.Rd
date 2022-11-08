@@ -5,8 +5,15 @@
 \title{Creates a new MLModel using the DataSource and the recipe as information
 sources}
 \usage{
-machinelearning_create_ml_model(MLModelId, MLModelName, MLModelType,
-  Parameters, TrainingDataSourceId, Recipe, RecipeUri)
+machinelearning_create_ml_model(
+  MLModelId,
+  MLModelName = NULL,
+  MLModelType,
+  Parameters = NULL,
+  TrainingDataSourceId,
+  Recipe = NULL,
+  RecipeUri = NULL
+)
 }
 \arguments{
 \item{MLModelId}{[required] A user-supplied ID that uniquely identifies the \code{MLModel}.}
@@ -75,52 +82,9 @@ that contains the \code{MLModel} recipe. You must specify either the recipe
 or its URI. If you don't specify a recipe or its URI, Amazon ML creates
 a default.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MLModelId = "string"
-)
-}
-}
 \description{
-Creates a new \code{MLModel} using the \code{DataSource} and the recipe as
-information sources.
+Creates a new \code{MLModel} using the \code{DataSource} and the recipe as information sources.
 
-An \code{MLModel} is nearly immutable. Users can update only the
-\code{MLModelName} and the \code{ScoreThreshold} in an \code{MLModel} without creating
-a new \code{MLModel}.
-
-\code{\link[=machinelearning_create_ml_model]{create_ml_model}} is an asynchronous
-operation. In response to
-\code{\link[=machinelearning_create_ml_model]{create_ml_model}}, Amazon Machine
-Learning (Amazon ML) immediately returns and sets the \code{MLModel} status
-to \code{PENDING}. After the \code{MLModel} has been created and ready is for use,
-Amazon ML sets the status to \code{COMPLETED}.
-
-You can use the \code{\link[=machinelearning_get_ml_model]{get_ml_model}} operation
-to check the progress of the \code{MLModel} during the creation operation.
-
-\code{\link[=machinelearning_create_ml_model]{create_ml_model}} requires a
-\code{DataSource} with computed statistics, which can be created by setting
-\code{ComputeStatistics} to \code{true} in
-\code{\link[=machinelearning_create_data_source_from_rds]{create_data_source_from_rds}},
-\code{\link[=machinelearning_create_data_source_from_s3]{create_data_source_from_s3}},
-or
-\code{\link[=machinelearning_create_data_source_from_redshift]{create_data_source_from_redshift}}
-operations.
+See \url{https://paws-r.github.io/docs/machinelearning/create_ml_model.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_ml_model(
-  MLModelId = "string",
-  MLModelName = "string",
-  MLModelType = "REGRESSION"|"BINARY"|"MULTICLASS",
-  Parameters = list(
-    "string"
-  ),
-  TrainingDataSourceId = "string",
-  Recipe = "string",
-  RecipeUri = "string"
-)
-}
-}
-
 \keyword{internal}

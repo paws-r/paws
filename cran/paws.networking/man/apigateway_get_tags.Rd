@@ -4,10 +4,10 @@
 \alias{apigateway_get_tags}
 \title{Gets the Tags collection for a given resource}
 \usage{
-apigateway_get_tags(resourceArn, position, limit)
+apigateway_get_tags(resourceArn, position = NULL, limit = NULL)
 }
 \arguments{
-\item{resourceArn}{[required] [Required] The ARN of a resource that can be tagged.}
+\item{resourceArn}{[required] The ARN of a resource that can be tagged.}
 
 \item{position}{(Not currently supported) The current pagination position in the paged
 result set.}
@@ -15,24 +15,9 @@ result set.}
 \item{limit}{(Not currently supported) The maximum number of returned results per
 page. The default value is 25 and the maximum value is 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Gets the Tags collection for a given resource.
-}
-\section{Request syntax}{
-\preformatted{svc$get_tags(
-  resourceArn = "string",
-  position = "string",
-  limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_tags.html} for full documentation.
+}
 \keyword{internal}

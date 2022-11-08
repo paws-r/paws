@@ -2,18 +2,25 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_encrypt}
 \alias{kms_encrypt}
-\title{Encrypts plaintext into ciphertext by using a customer master key (CMK)}
+\title{Encrypts plaintext of up to 4,096 bytes using a KMS key}
 \usage{
-kms_encrypt(KeyId, Plaintext, EncryptionContext, GrantTokens,
-  EncryptionAlgorithm)
+kms_encrypt(
+  KeyId,
+  Plaintext,
+  EncryptionContext = NULL,
+  GrantTokens = NULL,
+  EncryptionAlgorithm = NULL
+)
 }
 \arguments{
-\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] Identifies the KMS key to use in the encryption operation. The KMS key
+must have a \code{KeyUsage} of \code{ENCRYPT_DECRYPT}. To find the \code{KeyUsage} of a
+KMS key, use the \code{\link[=kms_describe_key]{describe_key}} operation.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}.
-To specify a CMK in a different AWS account, you must use the key ARN or
-alias ARN.
+To specify a KMS key, use its key ID, key ARN, alias name, or alias ARN.
+When using an alias name, prefix it with \code{"alias/"}. To specify a KMS
+key in a different Amazon Web Services account, you must use the key ARN
+or alias ARN.
 
 For example:
 \itemize{
@@ -24,7 +31,7 @@ For example:
 \item Alias ARN: \code{arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias}
 }
 
-To get the key ID and key ARN for a CMK, use
+To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}. To
 get the alias name and alias ARN, use
 \code{\link[=kms_list_aliases]{list_aliases}}.}
@@ -33,156 +40,41 @@ get the alias name and alias ARN, use
 
 \item{EncryptionContext}{Specifies the encryption context that will be used to encrypt the data.
 An encryption context is valid only for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}
-with a symmetric CMK. The standard asymmetric encryption algorithms that
-AWS KMS uses do not support an encryption context.
+with a symmetric encryption KMS key. The standard asymmetric encryption
+algorithms and HMAC algorithms that KMS uses do not support an
+encryption context.
 
 An \emph{encryption context} is a collection of non-secret key-value pairs
-that represents additional authenticated data. When you use an
-encryption context to encrypt data, you must specify the same (an exact
+that represent additional authenticated data. When you use an encryption
+context to encrypt data, you must specify the same (an exact
 case-sensitive match) encryption context to decrypt the data. An
-encryption context is optional when encrypting with a symmetric CMK, but
-it is highly recommended.
+encryption context is supported only on operations with symmetric
+encryption KMS keys. On operations with symmetric encryption KMS keys,
+an encryption context is optional, but it is strongly recommended.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
-in the \emph{AWS Key Management Service Developer Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context}
+in the \emph{Key Management Service Developer Guide}.}
 
 \item{GrantTokens}{A list of grant tokens.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
-in the \emph{AWS Key Management Service Developer Guide}.}
+Use a grant token when your permission to call this operation comes from
+a new grant that has not yet achieved \emph{eventual consistency}. For more
+information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
+and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token}{Using a grant token}
+in the \emph{Key Management Service Developer Guide}.}
 
-\item{EncryptionAlgorithm}{Specifies the encryption algorithm that AWS KMS will use to encrypt the
-plaintext message. The algorithm must be compatible with the CMK that
-you specify.
+\item{EncryptionAlgorithm}{Specifies the encryption algorithm that KMS will use to encrypt the
+plaintext message. The algorithm must be compatible with the KMS key
+that you specify.
 
-This parameter is required only for asymmetric CMKs. The default value,
-\code{SYMMETRIC_DEFAULT}, is the algorithm used for symmetric CMKs. If you
-are using an asymmetric CMK, we recommend RSAES_OAEP_SHA_256.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CiphertextBlob = raw,
-  KeyId = "string",
-  EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
-)
-}
+This parameter is required only for asymmetric KMS keys. The default
+value, \code{SYMMETRIC_DEFAULT}, is the algorithm used for symmetric
+encryption KMS keys. If you are using an asymmetric KMS key, we
+recommend RSAES_OAEP_SHA_256.}
 }
 \description{
-Encrypts plaintext into ciphertext by using a customer master key (CMK).
-The \code{\link[=kms_encrypt]{encrypt}} operation has two primary use cases:
-\itemize{
-\item You can encrypt small amounts of arbitrary data, such as a personal
-identifier or database password, or other sensitive information.
-\item You can use the \code{\link[=kms_encrypt]{encrypt}} operation to move encrypted
-data from one AWS Region to another. For example, in Region A,
-generate a data key and use the plaintext key to encrypt your data.
-Then, in Region A, use the \code{\link[=kms_encrypt]{encrypt}} operation to
-encrypt the plaintext data key under a CMK in Region B. Now, you can
-move the encrypted data and the encrypted data key to Region B. When
-necessary, you can decrypt the encrypted data key and the encrypted
-data entirely within in Region B.
-}
+Encrypts plaintext of up to 4,096 bytes using a KMS key. You can use a symmetric or asymmetric KMS key with a \code{KeyUsage} of \code{ENCRYPT_DECRYPT}.
 
-You don't need to use the \code{\link[=kms_encrypt]{encrypt}} operation to encrypt
-a data key. The \code{\link[=kms_generate_data_key]{generate_data_key}} and
-\code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}} operations return
-a plaintext data key and an encrypted copy of that data key.
-
-When you encrypt data, you must specify a symmetric or asymmetric CMK to
-use in the encryption operation. The CMK must have a \code{KeyUsage} value of
-\code{ENCRYPT_DECRYPT.} To find the \code{KeyUsage} of a CMK, use the
-\code{\link[=kms_describe_key]{describe_key}} operation.
-
-If you use a symmetric CMK, you can use an encryption context to add
-additional security to your encryption operation. If you specify an
-\code{EncryptionContext} when encrypting data, you must specify the same
-encryption context (a case-sensitive exact match) when decrypting the
-data. Otherwise, the request to decrypt fails with an
-\code{InvalidCiphertextException}. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-If you specify an asymmetric CMK, you must also specify the encryption
-algorithm. The algorithm must be compatible with the CMK type.
-
-When you use an asymmetric CMK to encrypt or reencrypt data, be sure to
-record the CMK and encryption algorithm that you choose. You will be
-required to provide the same CMK and encryption algorithm when you
-decrypt the data. If the CMK and algorithm do not match the values used
-to encrypt the data, the decrypt operation fails.
-
-You are not required to supply the CMK ID and encryption algorithm when
-you decrypt with symmetric CMKs because AWS KMS stores this information
-in the ciphertext blob. AWS KMS cannot store metadata in ciphertext
-generated with asymmetric keys. The standard format for asymmetric key
-ciphertext does not include configurable fields.
-
-The maximum size of the data that you can encrypt varies with the type
-of CMK and the encryption algorithm that you choose.
-\itemize{
-\item Symmetric CMKs
-\itemize{
-\item \code{SYMMETRIC_DEFAULT}: 4096 bytes
-}
-\item \code{RSA_2048}
-\itemize{
-\item \code{RSAES_OAEP_SHA_1}: 214 bytes
-\item \code{RSAES_OAEP_SHA_256}: 190 bytes
-}
-\item \code{RSA_3072}
-\itemize{
-\item \code{RSAES_OAEP_SHA_1}: 342 bytes
-\item \code{RSAES_OAEP_SHA_256}: 318 bytes
-}
-\item \code{RSA_4096}
-\itemize{
-\item \code{RSAES_OAEP_SHA_1}: 470 bytes
-\item \code{RSAES_OAEP_SHA_256}: 446 bytes
-}
-}
-
-The CMK that you use for this operation must be in a compatible key
-state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-\strong{Cross-account use}: Yes. To perform this operation with a CMK in a
-different AWS account, specify the key ARN or alias ARN in the value of
-the \code{KeyId} parameter.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:Encrypt}
-(key policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_decrypt]{decrypt}}
-\item \code{\link[=kms_generate_data_key]{generate_data_key}}
-\item \code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$encrypt(
-  KeyId = "string",
-  Plaintext = raw,
-  EncryptionContext = list(
-    "string"
-  ),
-  GrantTokens = list(
-    "string"
-  ),
-  EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example encrypts data with the specified customer master
-# key (CMK).
-svc$encrypt(
-  KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
-  Plaintext = "<binary data>"
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/encrypt.html} for full documentation.
 }
 \keyword{internal}

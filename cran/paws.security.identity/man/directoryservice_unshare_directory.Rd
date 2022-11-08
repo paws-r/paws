@@ -8,31 +8,15 @@ accounts}
 directoryservice_unshare_directory(DirectoryId, UnshareTarget)
 }
 \arguments{
-\item{DirectoryId}{[required] The identifier of the AWS Managed Microsoft AD directory that you want
-to stop sharing.}
+\item{DirectoryId}{[required] The identifier of the Managed Microsoft AD directory that you want to
+stop sharing.}
 
 \item{UnshareTarget}{[required] Identifier for the directory consumer account with whom the directory
 has to be unshared.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SharedDirectoryId = "string"
-)
-}
-}
 \description{
-Stops the directory sharing between the directory owner and consumer
-accounts.
-}
-\section{Request syntax}{
-\preformatted{svc$unshare_directory(
-  DirectoryId = "string",
-  UnshareTarget = list(
-    Id = "string",
-    Type = "ACCOUNT"
-  )
-)
-}
-}
+Stops the directory sharing between the directory owner and consumer accounts.
 
+See \url{https://paws-r.github.io/docs/directoryservice/unshare_directory.html} for full documentation.
+}
 \keyword{internal}

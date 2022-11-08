@@ -2,47 +2,18 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_put_inventory}
 \alias{ssm_put_inventory}
-\title{Bulk update custom inventory items on one more instance}
+\title{Bulk update custom inventory items on one or more managed nodes}
 \usage{
 ssm_put_inventory(InstanceId, Items)
 }
 \arguments{
-\item{InstanceId}{[required] An instance ID where you want to add or update inventory items.}
+\item{InstanceId}{[required] An managed node ID where you want to add or update inventory items.}
 
-\item{Items}{[required] The inventory items that you want to add or update on instances.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Message = "string"
-)
-}
+\item{Items}{[required] The inventory items that you want to add or update on managed nodes.}
 }
 \description{
-Bulk update custom inventory items on one more instance. The request
-adds an inventory item, if it doesn't already exist, or updates an
-inventory item, if it does exist.
-}
-\section{Request syntax}{
-\preformatted{svc$put_inventory(
-  InstanceId = "string",
-  Items = list(
-    list(
-      TypeName = "string",
-      SchemaVersion = "string",
-      CaptureTime = "string",
-      ContentHash = "string",
-      Content = list(
-        list(
-          "string"
-        )
-      ),
-      Context = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
+Bulk update custom inventory items on one or more managed nodes. The request adds an inventory item, if it doesn't already exist, or updates an inventory item, if it does exist.
 
+See \url{https://paws-r.github.io/docs/ssm/put_inventory.html} for full documentation.
+}
 \keyword{internal}

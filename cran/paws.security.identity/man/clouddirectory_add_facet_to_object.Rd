@@ -4,8 +4,12 @@
 \alias{clouddirectory_add_facet_to_object}
 \title{Adds a new Facet to an object}
 \usage{
-clouddirectory_add_facet_to_object(DirectoryArn, SchemaFacet,
-  ObjectAttributeList, ObjectReference)
+clouddirectory_add_facet_to_object(
+  DirectoryArn,
+  SchemaFacet,
+  ObjectAttributeList = NULL,
+  ObjectReference
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
@@ -18,43 +22,9 @@ SchemaFacet for details.}
 
 \item{ObjectReference}{[required] A reference to the object you are adding the specified facet to.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds a new Facet to an object. An object can have more than one facet
-applied on it.
-}
-\section{Request syntax}{
-\preformatted{svc$add_facet_to_object(
-  DirectoryArn = "string",
-  SchemaFacet = list(
-    SchemaArn = "string",
-    FacetName = "string"
-  ),
-  ObjectAttributeList = list(
-    list(
-      Key = list(
-        SchemaArn = "string",
-        FacetName = "string",
-        Name = "string"
-      ),
-      Value = list(
-        StringValue = "string",
-        BinaryValue = raw,
-        BooleanValue = TRUE|FALSE,
-        NumberValue = "string",
-        DatetimeValue = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  ),
-  ObjectReference = list(
-    Selector = "string"
-  )
-)
-}
-}
+Adds a new Facet to an object. An object can have more than one facet applied on it.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/add_facet_to_object.html} for full documentation.
+}
 \keyword{internal}

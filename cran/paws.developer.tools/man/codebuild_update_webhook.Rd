@@ -2,13 +2,18 @@
 % Please edit documentation in R/codebuild_operations.R
 \name{codebuild_update_webhook}
 \alias{codebuild_update_webhook}
-\title{Updates the webhook associated with an AWS CodeBuild build project}
+\title{Updates the webhook associated with an CodeBuild build project}
 \usage{
-codebuild_update_webhook(projectName, branchFilter, rotateSecret,
-  filterGroups, buildType)
+codebuild_update_webhook(
+  projectName,
+  branchFilter = NULL,
+  rotateSecret = NULL,
+  filterGroups = NULL,
+  buildType = NULL
+)
 }
 \arguments{
-\item{projectName}{[required] The name of the AWS CodeBuild project.}
+\item{projectName}{[required] The name of the CodeBuild project.}
 
 \item{branchFilter}{A regular expression used to determine which repository branches are
 built when a webhook is triggered. If the name of a branch matches the
@@ -27,52 +32,9 @@ one \code{EVENT} \code{WebhookFilter}.}
 
 \item{buildType}{Specifies the type of build this webhook will trigger.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  webhook = list(
-    url = "string",
-    payloadUrl = "string",
-    secret = "string",
-    branchFilter = "string",
-    filterGroups = list(
-      list(
-        list(
-          type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
-          pattern = "string",
-          excludeMatchedPattern = TRUE|FALSE
-        )
-      )
-    ),
-    buildType = "BUILD"|"BUILD_BATCH",
-    lastModifiedSecret = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Updates the webhook associated with an AWS CodeBuild build project.
+Updates the webhook associated with an CodeBuild build project.
 
-If you use Bitbucket for your repository, \code{rotateSecret} is ignored.
+See \url{https://paws-r.github.io/docs/codebuild/update_webhook.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_webhook(
-  projectName = "string",
-  branchFilter = "string",
-  rotateSecret = TRUE|FALSE,
-  filterGroups = list(
-    list(
-      list(
-        type = "EVENT"|"BASE_REF"|"HEAD_REF"|"ACTOR_ACCOUNT_ID"|"FILE_PATH"|"COMMIT_MESSAGE",
-        pattern = "string",
-        excludeMatchedPattern = TRUE|FALSE
-      )
-    )
-  ),
-  buildType = "BUILD"|"BUILD_BATCH"
-)
-}
-}
-
 \keyword{internal}

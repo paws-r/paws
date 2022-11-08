@@ -5,17 +5,19 @@ NULL
 #' AWS Cloud9
 #'
 #' @description
-#' AWS Cloud9 is a collection of tools that you can use to code, build,
-#' run, test, debug, and release software in the cloud.
+#' Cloud9
 #' 
-#' For more information about AWS Cloud9, see the [AWS Cloud9 User
+#' Cloud9 is a collection of tools that you can use to code, build, run,
+#' test, debug, and release software in the cloud.
+#' 
+#' For more information about Cloud9, see the [Cloud9 User
 #' Guide](https://docs.aws.amazon.com/cloud9/latest/user-guide/).
 #' 
-#' AWS Cloud9 supports these operations:
+#' Cloud9 supports these operations:
 #' 
 #' -   [`create_environment_ec2`][cloud9_create_environment_ec2]: Creates
-#'     an AWS Cloud9 development environment, launches an Amazon EC2
-#'     instance, and then connects from the instance to the environment.
+#'     an Cloud9 development environment, launches an Amazon EC2 instance,
+#'     and then connects from the instance to the environment.
 #' 
 #' -   [`create_environment_membership`][cloud9_create_environment_membership]:
 #'     Adds an environment member to an environment.
@@ -57,6 +59,18 @@ NULL
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -68,10 +82,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -86,25 +104,25 @@ NULL
 #'   description = "This is my demonstration environment.",
 #'   instanceType = "t2.micro",
 #'   ownerArn = "arn:aws:iam::123456789012:user/MyDemoUser",
-#'   subnetId = "subnet-1fab8aEX"
+#'   subnetId = "subnet-6300cd1b"
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=cloud9_create_environment_ec2]{create_environment_ec2} \tab Creates an AWS Cloud9 development environment, launches an Amazon Elastic Compute Cloud (Amazon EC2) instance, and then connects from the instance to the environment\cr
-#'  \link[=cloud9_create_environment_membership]{create_environment_membership} \tab Adds an environment member to an AWS Cloud9 development environment\cr
-#'  \link[=cloud9_delete_environment]{delete_environment} \tab Deletes an AWS Cloud9 development environment\cr
-#'  \link[=cloud9_delete_environment_membership]{delete_environment_membership} \tab Deletes an environment member from an AWS Cloud9 development environment\cr
-#'  \link[=cloud9_describe_environment_memberships]{describe_environment_memberships} \tab Gets information about environment members for an AWS Cloud9 development environment\cr
-#'  \link[=cloud9_describe_environments]{describe_environments} \tab Gets information about AWS Cloud9 development environments\cr
-#'  \link[=cloud9_describe_environment_status]{describe_environment_status} \tab Gets status information for an AWS Cloud9 development environment\cr
-#'  \link[=cloud9_list_environments]{list_environments} \tab Gets a list of AWS Cloud9 development environment identifiers\cr
-#'  \link[=cloud9_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of the tags associated with an AWS Cloud9 development environment\cr
-#'  \link[=cloud9_tag_resource]{tag_resource} \tab Adds tags to an AWS Cloud9 development environment\cr
-#'  \link[=cloud9_untag_resource]{untag_resource} \tab Removes tags from an AWS Cloud9 development environment\cr
-#'  \link[=cloud9_update_environment]{update_environment} \tab Changes the settings of an existing AWS Cloud9 development environment\cr
-#'  \link[=cloud9_update_environment_membership]{update_environment_membership} \tab Changes the settings of an existing environment member for an AWS Cloud9 development environment
+#'  \link[=cloud9_create_environment_ec2]{create_environment_ec2} \tab Creates an Cloud9 development environment, launches an Amazon Elastic Compute Cloud (Amazon EC2) instance, and then connects from the instance to the environment\cr
+#'  \link[=cloud9_create_environment_membership]{create_environment_membership} \tab Adds an environment member to an Cloud9 development environment\cr
+#'  \link[=cloud9_delete_environment]{delete_environment} \tab Deletes an Cloud9 development environment\cr
+#'  \link[=cloud9_delete_environment_membership]{delete_environment_membership} \tab Deletes an environment member from an Cloud9 development environment\cr
+#'  \link[=cloud9_describe_environment_memberships]{describe_environment_memberships} \tab Gets information about environment members for an Cloud9 development environment\cr
+#'  \link[=cloud9_describe_environments]{describe_environments} \tab Gets information about Cloud9 development environments\cr
+#'  \link[=cloud9_describe_environment_status]{describe_environment_status} \tab Gets status information for an Cloud9 development environment\cr
+#'  \link[=cloud9_list_environments]{list_environments} \tab Gets a list of Cloud9 development environment identifiers\cr
+#'  \link[=cloud9_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of the tags associated with an Cloud9 development environment\cr
+#'  \link[=cloud9_tag_resource]{tag_resource} \tab Adds tags to an Cloud9 development environment\cr
+#'  \link[=cloud9_untag_resource]{untag_resource} \tab Removes tags from an Cloud9 development environment\cr
+#'  \link[=cloud9_update_environment]{update_environment} \tab Changes the settings of an existing Cloud9 development environment\cr
+#'  \link[=cloud9_update_environment_membership]{update_environment_membership} \tab Changes the settings of an existing environment member for an Cloud9 development environment
 #' }
 #'
 #' @return

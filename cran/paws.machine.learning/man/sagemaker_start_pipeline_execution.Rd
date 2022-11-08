@@ -4,9 +4,14 @@
 \alias{sagemaker_start_pipeline_execution}
 \title{Starts a pipeline execution}
 \usage{
-sagemaker_start_pipeline_execution(PipelineName,
-  PipelineExecutionDisplayName, PipelineParameters,
-  PipelineExecutionDescription, ClientRequestToken)
+sagemaker_start_pipeline_execution(
+  PipelineName,
+  PipelineExecutionDisplayName = NULL,
+  PipelineParameters = NULL,
+  PipelineExecutionDescription = NULL,
+  ClientRequestToken,
+  ParallelismConfiguration = NULL
+)
 }
 \arguments{
 \item{PipelineName}{[required] The name of the pipeline.}
@@ -19,31 +24,14 @@ sagemaker_start_pipeline_execution(PipelineName,
 
 \item{ClientRequestToken}{[required] A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the operation. An idempotent operation completes no more
-than one time.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PipelineExecutionArn = "string"
-)
-}
+than once.}
+
+\item{ParallelismConfiguration}{This configuration, if specified, overrides the parallelism
+configuration of the parent pipeline for this specific run.}
 }
 \description{
 Starts a pipeline execution.
-}
-\section{Request syntax}{
-\preformatted{svc$start_pipeline_execution(
-  PipelineName = "string",
-  PipelineExecutionDisplayName = "string",
-  PipelineParameters = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  PipelineExecutionDescription = "string",
-  ClientRequestToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/start_pipeline_execution.html} for full documentation.
+}
 \keyword{internal}

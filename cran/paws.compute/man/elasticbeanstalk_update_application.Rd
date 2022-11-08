@@ -4,7 +4,7 @@
 \alias{elasticbeanstalk_update_application}
 \title{Updates the specified application to have the specified properties}
 \usage{
-elasticbeanstalk_update_application(ApplicationName, Description)
+elasticbeanstalk_update_application(ApplicationName, Description = NULL)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to update. If no such application is found,
@@ -16,66 +16,9 @@ elasticbeanstalk_update_application(ApplicationName, Description)
 Default: If not specified, AWS Elastic Beanstalk does not update the
 description.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Application = list(
-    ApplicationArn = "string",
-    ApplicationName = "string",
-    Description = "string",
-    DateCreated = as.POSIXct(
-      "2015-01-01"
-    ),
-    DateUpdated = as.POSIXct(
-      "2015-01-01"
-    ),
-    Versions = list(
-      "string"
-    ),
-    ConfigurationTemplates = list(
-      "string"
-    ),
-    ResourceLifecycleConfig = list(
-      ServiceRole = "string",
-      VersionLifecycleConfig = list(
-        MaxCountRule = list(
-          Enabled = TRUE|FALSE,
-          MaxCount = 123,
-          DeleteSourceFromS3 = TRUE|FALSE
-        ),
-        MaxAgeRule = list(
-          Enabled = TRUE|FALSE,
-          MaxAgeInDays = 123,
-          DeleteSourceFromS3 = TRUE|FALSE
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Updates the specified application to have the specified properties.
 
-If a property (for example, \code{description}) is not provided, the value
-remains unchanged. To clear these properties, specify an empty string.
-}
-\section{Request syntax}{
-\preformatted{svc$update_application(
-  ApplicationName = "string",
-  Description = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation updates the description of an application named
-# my-app:
-svc$update_application(
-  ApplicationName = "my-app",
-  Description = "my Elastic Beanstalk application"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/update_application.html} for full documentation.
 }
 \keyword{internal}

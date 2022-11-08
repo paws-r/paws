@@ -4,12 +4,28 @@
 \alias{docdb_create_db_cluster}
 \title{Creates a new Amazon DocumentDB cluster}
 \usage{
-docdb_create_db_cluster(AvailabilityZones, BackupRetentionPeriod,
-  DBClusterIdentifier, DBClusterParameterGroupName, VpcSecurityGroupIds,
-  DBSubnetGroupName, Engine, EngineVersion, Port, MasterUsername,
-  MasterUserPassword, PreferredBackupWindow, PreferredMaintenanceWindow,
-  Tags, StorageEncrypted, KmsKeyId, PreSignedUrl,
-  EnableCloudwatchLogsExports, DeletionProtection)
+docdb_create_db_cluster(
+  AvailabilityZones = NULL,
+  BackupRetentionPeriod = NULL,
+  DBClusterIdentifier,
+  DBClusterParameterGroupName = NULL,
+  VpcSecurityGroupIds = NULL,
+  DBSubnetGroupName = NULL,
+  Engine,
+  EngineVersion = NULL,
+  Port = NULL,
+  MasterUsername = NULL,
+  MasterUserPassword = NULL,
+  PreferredBackupWindow = NULL,
+  PreferredMaintenanceWindow = NULL,
+  Tags = NULL,
+  StorageEncrypted = NULL,
+  KmsKeyId = NULL,
+  PreSignedUrl = NULL,
+  EnableCloudwatchLogsExports = NULL,
+  DeletionProtection = NULL,
+  GlobalClusterIdentifier = NULL
+)
 }
 \arguments{
 \item{AvailabilityZones}{A list of Amazon EC2 Availability Zones that instances in the cluster
@@ -51,7 +67,7 @@ Example: \code{mySubnetgroup}}
 
 Valid values: \code{docdb}}
 
-\item{EngineVersion}{The version number of the database engine to use. The --engine-version
+\item{EngineVersion}{The version number of the database engine to use. The \code{--engine-version}
 will default to the latest major engine version. For production
 workloads, we recommend explicitly declaring this parameter with the
 intended major engine version.}
@@ -59,7 +75,7 @@ intended major engine version.}
 \item{Port}{The port number on which the instances in the cluster accept
 connections.}
 
-\item{MasterUsername}{[required] The name of the master user for the cluster.
+\item{MasterUsername}{The name of the master user for the cluster.
 
 Constraints:
 \itemize{
@@ -68,7 +84,7 @@ Constraints:
 \item Cannot be a reserved word for the chosen database engine.
 }}
 
-\item{MasterUserPassword}{[required] The password for the master database user. This password can contain any
+\item{MasterUserPassword}{The password for the master database user. This password can contain any
 printable ASCII character except forward slash (/), double quote ("), or
 the "at" symbol (@).
 
@@ -79,7 +95,7 @@ automated backups are enabled using the \code{BackupRetentionPeriod}
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region.
+block of time for each Amazon Web Services Region.
 
 Constraints:
 \itemize{
@@ -95,8 +111,8 @@ Universal Coordinated Time (UTC).
 Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
-week.
+block of time for each Amazon Web Services Region, occurring on a random
+day of the week.
 
 Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
@@ -106,13 +122,13 @@ Constraints: Minimum 30-minute window.}
 
 \item{StorageEncrypted}{Specifies whether the cluster is encrypted.}
 
-\item{KmsKeyId}{The AWS KMS key identifier for an encrypted cluster.
+\item{KmsKeyId}{The KMS key identifier for an encrypted cluster.
 
-The AWS KMS key identifier is the Amazon Resource Name (ARN) for the AWS
-KMS encryption key. If you are creating a cluster using the same AWS
-account that owns the AWS KMS encryption key that is used to encrypt the
-new cluster, you can use the AWS KMS key alias instead of the ARN for
-the AWS KMS encryption key.
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+encryption key. If you are creating a cluster using the same Amazon Web
+Services account that owns the KMS encryption key that is used to
+encrypt the new cluster, you can use the KMS key alias instead of the
+ARN for the KMS encryption key.
 
 If an encryption key is not specified in \code{KmsKeyId}:
 \itemize{
@@ -120,8 +136,9 @@ If an encryption key is not specified in \code{KmsKeyId}:
 uses your default encryption key.
 }
 
-AWS KMS creates the default encryption key for your AWS account. Your
-AWS account has a different default encryption key for each AWS Region.}
+KMS creates the default encryption key for your Amazon Web Services
+account. Your Amazon Web Services account has a different default
+encryption key for each Amazon Web Services Regions.}
 
 \item{PreSignedUrl}{Not currently supported.}
 
@@ -134,107 +151,12 @@ and \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/profiling
 is enabled, the cluster cannot be deleted unless it is modified and
 \code{DeletionProtection} is disabled. \code{DeletionProtection} protects clusters
 from being accidentally deleted.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string"
-      )
-    ),
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    DeletionProtection = TRUE|FALSE
-  )
-)
-}
+
+\item{GlobalClusterIdentifier}{The cluster identifier of the new global cluster.}
 }
 \description{
 Creates a new Amazon DocumentDB cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$create_db_cluster(
-  AvailabilityZones = list(
-    "string"
-  ),
-  BackupRetentionPeriod = 123,
-  DBClusterIdentifier = "string",
-  DBClusterParameterGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  DBSubnetGroupName = "string",
-  Engine = "string",
-  EngineVersion = "string",
-  Port = 123,
-  MasterUsername = "string",
-  MasterUserPassword = "string",
-  PreferredBackupWindow = "string",
-  PreferredMaintenanceWindow = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  StorageEncrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  PreSignedUrl = "string",
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  DeletionProtection = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/docdb/create_db_cluster.html} for full documentation.
+}
 \keyword{internal}

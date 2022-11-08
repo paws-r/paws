@@ -5,7 +5,7 @@
 \title{Cancels the specified Capacity Reservation, releases the reserved
 capacity, and changes the Capacity Reservation's state to cancelled}
 \usage{
-ec2_cancel_capacity_reservation(CapacityReservationId, DryRun)
+ec2_cancel_capacity_reservation(CapacityReservationId, DryRun = NULL)
 }
 \arguments{
 \item{CapacityReservationId}{[required] The ID of the Capacity Reservation to be cancelled.}
@@ -15,29 +15,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Cancels the specified Capacity Reservation, releases the reserved
-capacity, and changes the Capacity Reservation's state to \code{cancelled}.
+Cancels the specified Capacity Reservation, releases the reserved capacity, and changes the Capacity Reservation's state to \code{cancelled}.
 
-Instances running in the reserved capacity continue running until you
-stop them. Stopped instances that target the Capacity Reservation can no
-longer launch. Modify these instances to either target a different
-Capacity Reservation, launch On-Demand Instance capacity, or run in any
-open Capacity Reservation that has matching attributes and sufficient
-capacity.
+See \url{https://paws-r.github.io/docs/ec2/cancel_capacity_reservation.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$cancel_capacity_reservation(
-  CapacityReservationId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

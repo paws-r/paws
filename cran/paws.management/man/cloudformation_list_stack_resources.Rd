@@ -4,11 +4,11 @@
 \alias{cloudformation_list_stack_resources}
 \title{Returns descriptions of all resources of the specified stack}
 \usage{
-cloudformation_list_stack_resources(StackName, NextToken)
+cloudformation_list_stack_resources(StackName, NextToken = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name or the unique stack ID that is associated with the stack, which
-are not always interchangeable:
+aren't always interchangeable:
 \itemize{
 \item Running stacks: You can specify either the stack's name or its
 unique stack ID.
@@ -20,46 +20,9 @@ Default: There is no default value.}
 \item{NextToken}{A string that identifies the next page of stack resources that you want
 to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StackResourceSummaries = list(
-    list(
-      LogicalResourceId = "string",
-      PhysicalResourceId = "string",
-      ResourceType = "string",
-      LastUpdatedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE",
-      ResourceStatusReason = "string",
-      DriftInformation = list(
-        StackResourceDriftStatus = "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED",
-        LastCheckTimestamp = as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      ModuleInfo = list(
-        TypeHierarchy = "string",
-        LogicalIdHierarchy = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns descriptions of all resources of the specified stack.
 
-For deleted stacks, ListStackResources returns resource information for
-up to 90 days after the stack has been deleted.
+See \url{https://paws-r.github.io/docs/cloudformation/list_stack_resources.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_stack_resources(
-  StackName = "string",
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

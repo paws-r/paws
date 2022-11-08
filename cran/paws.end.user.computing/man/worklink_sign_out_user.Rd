@@ -11,19 +11,9 @@ worklink_sign_out_user(FleetArn, Username)
 
 \item{Username}{[required] The name of the user.}
 }
-\value{
-An empty list.
-}
 \description{
-Signs the user out from all of their devices. The user can sign in again
-if they have valid credentials.
-}
-\section{Request syntax}{
-\preformatted{svc$sign_out_user(
-  FleetArn = "string",
-  Username = "string"
-)
-}
-}
+Signs the user out from all of their devices. The user can sign in again if they have valid credentials.
 
+See \url{https://paws-r.github.io/docs/worklink/sign_out_user.html} for full documentation.
+}
 \keyword{internal}

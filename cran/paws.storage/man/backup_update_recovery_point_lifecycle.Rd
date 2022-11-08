@@ -4,71 +4,35 @@
 \alias{backup_update_recovery_point_lifecycle}
 \title{Sets the transition lifecycle of a recovery point}
 \usage{
-backup_update_recovery_point_lifecycle(BackupVaultName,
-  RecoveryPointArn, Lifecycle)
+backup_update_recovery_point_lifecycle(
+  BackupVaultName,
+  RecoveryPointArn,
+  Lifecycle = NULL
+)
 }
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens.}
+them and the Amazon Web Services Region where they are created. They
+consist of lowercase letters, numbers, and hyphens.}
 
 \item{RecoveryPointArn}{[required] An Amazon Resource Name (ARN) that uniquely identifies a recovery point;
 for example,
 \verb{arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45}.}
 
 \item{Lifecycle}{The lifecycle defines when a protected resource is transitioned to cold
-storage and when it expires. AWS Backup transitions and expires backups
+storage and when it expires. Backup transitions and expires backups
 automatically according to the lifecycle that you define.
 
 Backups transitioned to cold storage must be stored in cold storage for
-a minimum of 90 days. Therefore, the “expire after days” setting must be
-90 days greater than the “transition to cold after days” setting. The
+a minimum of 90 days. Therefore, the “retention” setting must be 90 days
+greater than the “transition to cold after days” setting. The
 “transition to cold after days” setting cannot be changed after a backup
 has been transitioned to cold.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupVaultArn = "string",
-  RecoveryPointArn = "string",
-  Lifecycle = list(
-    MoveToColdStorageAfterDays = 123,
-    DeleteAfterDays = 123
-  ),
-  CalculatedLifecycle = list(
-    MoveToColdStorageAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    DeleteAt = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
 }
 \description{
 Sets the transition lifecycle of a recovery point.
 
-The lifecycle defines when a protected resource is transitioned to cold
-storage and when it expires. AWS Backup transitions and expires backups
-automatically according to the lifecycle that you define.
-
-Backups transitioned to cold storage must be stored in cold storage for
-a minimum of 90 days. Therefore, the “expire after days” setting must be
-90 days greater than the “transition to cold after days” setting. The
-“transition to cold after days” setting cannot be changed after a backup
-has been transitioned to cold.
+See \url{https://paws-r.github.io/docs/backup/update_recovery_point_lifecycle.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_recovery_point_lifecycle(
-  BackupVaultName = "string",
-  RecoveryPointArn = "string",
-  Lifecycle = list(
-    MoveToColdStorageAfterDays = 123,
-    DeleteAfterDays = 123
-  )
-)
-}
-}
-
 \keyword{internal}

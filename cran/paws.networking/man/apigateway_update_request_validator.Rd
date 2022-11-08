@@ -4,43 +4,22 @@
 \alias{apigateway_update_request_validator}
 \title{Updates a RequestValidator of a given RestApi}
 \usage{
-apigateway_update_request_validator(restApiId, requestValidatorId,
-  patchOperations)
-}
-\arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
-
-\item{requestValidatorId}{[required] [Required] The identifier of RequestValidator to be updated.}
-
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  validateRequestBody = TRUE|FALSE,
-  validateRequestParameters = TRUE|FALSE
+apigateway_update_request_validator(
+  restApiId,
+  requestValidatorId,
+  patchOperations = NULL
 )
 }
+\arguments{
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
+
+\item{requestValidatorId}{[required] The identifier of RequestValidator to be updated.}
+
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
 Updates a RequestValidator of a given RestApi.
-}
-\section{Request syntax}{
-\preformatted{svc$update_request_validator(
-  restApiId = "string",
-  requestValidatorId = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/update_request_validator.html} for full documentation.
+}
 \keyword{internal}

@@ -6,53 +6,9 @@
 \usage{
 wafregional_get_change_token()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-When you want to create, update, or delete AWS WAF objects, get a change
-token and include the change token in the create, update, or delete
-request. Change tokens ensure that your application doesn't submit
-conflicting requests to AWS WAF.
-
-Each create, update, or delete request must use a unique change token.
-If your application submits a
-\code{\link[=wafregional_get_change_token]{get_change_token}} request and then
-submits a second \code{\link[=wafregional_get_change_token]{get_change_token}}
-request before submitting a create, update, or delete request, the
-second \code{\link[=wafregional_get_change_token]{get_change_token}} request
-returns the same value as the first
-\code{\link[=wafregional_get_change_token]{get_change_token}} request.
-
-When you use a change token in a create, update, or delete request, the
-status of the change token changes to \code{PENDING}, which indicates that
-AWS WAF is propagating the change to all AWS WAF servers. Use
-\code{\link[=wafregional_get_change_token_status]{get_change_token_status}} to
-determine the status of your change token.
-}
-\section{Request syntax}{
-\preformatted{svc$get_change_token()
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns a change token to use for a create, update
-# or delete operation.
-svc$get_change_token()
-}
-
+See \url{https://paws-r.github.io/docs/wafregional/get_change_token.html} for full documentation.
 }
 \keyword{internal}

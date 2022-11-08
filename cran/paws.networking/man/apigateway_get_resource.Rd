@@ -4,12 +4,12 @@
 \alias{apigateway_get_resource}
 \title{Lists information about a resource}
 \usage{
-apigateway_get_resource(restApiId, resourceId, embed)
+apigateway_get_resource(restApiId, resourceId, embed = NULL)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] The identifier for the Resource resource.}
+\item{resourceId}{[required] The identifier for the Resource resource.}
 
 \item{embed}{A query parameter to retrieve the specified resources embedded in the
 returned Resource representation in the response. This \code{embed} parameter
@@ -19,94 +19,9 @@ query parameter value must be a single-valued list and contain the
 \code{"methods"} string. For example,
 \code{GET /restapis/{restapi_id}/resources/{resource_id}?embed=methods}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  parentId = "string",
-  pathPart = "string",
-  path = "string",
-  resourceMethods = list(
-    list(
-      httpMethod = "string",
-      authorizationType = "string",
-      authorizerId = "string",
-      apiKeyRequired = TRUE|FALSE,
-      requestValidatorId = "string",
-      operationName = "string",
-      requestParameters = list(
-        TRUE|FALSE
-      ),
-      requestModels = list(
-        "string"
-      ),
-      methodResponses = list(
-        list(
-          statusCode = "string",
-          responseParameters = list(
-            TRUE|FALSE
-          ),
-          responseModels = list(
-            "string"
-          )
-        )
-      ),
-      methodIntegration = list(
-        type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-        httpMethod = "string",
-        uri = "string",
-        connectionType = "INTERNET"|"VPC_LINK",
-        connectionId = "string",
-        credentials = "string",
-        requestParameters = list(
-          "string"
-        ),
-        requestTemplates = list(
-          "string"
-        ),
-        passthroughBehavior = "string",
-        contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-        timeoutInMillis = 123,
-        cacheNamespace = "string",
-        cacheKeyParameters = list(
-          "string"
-        ),
-        integrationResponses = list(
-          list(
-            statusCode = "string",
-            selectionPattern = "string",
-            responseParameters = list(
-              "string"
-            ),
-            responseTemplates = list(
-              "string"
-            ),
-            contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-          )
-        ),
-        tlsConfig = list(
-          insecureSkipVerification = TRUE|FALSE
-        )
-      ),
-      authorizationScopes = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Lists information about a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$get_resource(
-  restApiId = "string",
-  resourceId = "string",
-  embed = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_resource.html} for full documentation.
+}
 \keyword{internal}

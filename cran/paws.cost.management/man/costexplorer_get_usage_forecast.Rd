@@ -6,15 +6,20 @@
 will use over the forecast time period that you select, based on your
 past usage}
 \usage{
-costexplorer_get_usage_forecast(TimePeriod, Metric, Granularity, Filter,
-  PredictionIntervalLevel)
+costexplorer_get_usage_forecast(
+  TimePeriod,
+  Metric,
+  Granularity,
+  Filter = NULL,
+  PredictionIntervalLevel = NULL
+)
 }
 \arguments{
 \item{TimePeriod}{[required] The start and end dates of the period that you want to retrieve usage
-forecast for. The start date is inclusive, but the end date is
-exclusive. For example, if \code{start} is \code{2017-01-01} and \code{end} is
-\code{2017-05-01}, then the cost and usage data is retrieved from
-\code{2017-01-01} up to and including \code{2017-04-30} but not including
+forecast for. The start date is included in the period, but the end date
+isn't included in the period. For example, if \code{start} is \code{2017-01-01}
+and \code{end} is \code{2017-05-01}, then the cost and usage data is retrieved
+from \code{2017-01-01} up to and including \code{2017-04-30} but not including
 \code{2017-05-01}. The start date must be equal to or later than the current
 date to avoid a validation error.}
 
@@ -34,87 +39,45 @@ following:
 The \code{\link[=costexplorer_get_usage_forecast]{get_usage_forecast}} operation
 supports only \code{DAILY} and \code{MONTHLY} granularities.}
 
-\item{Filter}{The filters that you want to use to filter your forecast. Cost Explorer
-API supports all of the Cost Explorer filters.}
+\item{Filter}{The filters that you want to use to filter your forecast. The
+\code{\link[=costexplorer_get_usage_forecast]{get_usage_forecast}} API supports
+filtering by the following dimensions:
+\itemize{
+\item \code{AZ}
+\item \code{INSTANCE_TYPE}
+\item \code{LINKED_ACCOUNT}
+\item \code{LINKED_ACCOUNT_NAME}
+\item \code{OPERATION}
+\item \code{PURCHASE_TYPE}
+\item \code{REGION}
+\item \code{SERVICE}
+\item \code{USAGE_TYPE}
+\item \code{USAGE_TYPE_GROUP}
+\item \code{RECORD_TYPE}
+\item \code{OPERATING_SYSTEM}
+\item \code{TENANCY}
+\item \code{SCOPE}
+\item \code{PLATFORM}
+\item \code{SUBSCRIPTION_ID}
+\item \code{LEGAL_ENTITY_NAME}
+\item \code{DEPLOYMENT_OPTION}
+\item \code{DATABASE_ENGINE}
+\item \code{INSTANCE_TYPE_FAMILY}
+\item \code{BILLING_ENTITY}
+\item \code{RESERVATION_ID}
+\item \code{SAVINGS_PLAN_ARN}
+}}
 
-\item{PredictionIntervalLevel}{Cost Explorer always returns the mean forecast as a single point. You
-can request a prediction interval around the mean by specifying a
-confidence level. The higher the confidence level, the more confident
-Cost Explorer is about the actual value falling in the prediction
-interval. Higher confidence levels result in wider prediction intervals.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Total = list(
-    Amount = "string",
-    Unit = "string"
-  ),
-  ForecastResultsByTime = list(
-    list(
-      TimePeriod = list(
-        Start = "string",
-        End = "string"
-      ),
-      MeanValue = "string",
-      PredictionIntervalLowerBound = "string",
-      PredictionIntervalUpperBound = "string"
-    )
-  )
-)
-}
+\item{PredictionIntervalLevel}{Amazon Web Services Cost Explorer always returns the mean forecast as a
+single point. You can request a prediction interval around the mean by
+specifying a confidence level. The higher the confidence level, the more
+confident Cost Explorer is about the actual value falling in the
+prediction interval. Higher confidence levels result in wider prediction
+intervals.}
 }
 \description{
-Retrieves a forecast for how much Amazon Web Services predicts that you
-will use over the forecast time period that you select, based on your
-past usage.
-}
-\section{Request syntax}{
-\preformatted{svc$get_usage_forecast(
-  TimePeriod = list(
-    Start = "string",
-    End = "string"
-  ),
-  Metric = "BLENDED_COST"|"UNBLENDED_COST"|"AMORTIZED_COST"|"NET_UNBLENDED_COST"|"NET_AMORTIZED_COST"|"USAGE_QUANTITY"|"NORMALIZED_USAGE_AMOUNT",
-  Granularity = "DAILY"|"MONTHLY"|"HOURLY",
-  Filter = list(
-    Or = list(
-      list()
-    ),
-    And = list(
-      list()
-    ),
-    Not = list(),
-    Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    Tags = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    CostCategories = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    )
-  ),
-  PredictionIntervalLevel = 123
-)
-}
-}
+Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage.
 
+See \url{https://paws-r.github.io/docs/costexplorer/get_usage_forecast.html} for full documentation.
+}
 \keyword{internal}

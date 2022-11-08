@@ -5,8 +5,16 @@
 \title{Lists available reserved DB instance offerings}
 \usage{
 rds_describe_reserved_db_instances_offerings(
-  ReservedDBInstancesOfferingId, DBInstanceClass, Duration,
-  ProductDescription, OfferingType, MultiAZ, Filters, MaxRecords, Marker)
+  ReservedDBInstancesOfferingId = NULL,
+  DBInstanceClass = NULL,
+  Duration = NULL,
+  ProductDescription = NULL,
+  OfferingType = NULL,
+  MultiAZ = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{ReservedDBInstancesOfferingId}{The offering identifier filter value. Specify this parameter to show
@@ -50,54 +58,9 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  ReservedDBInstancesOfferings = list(
-    list(
-      ReservedDBInstancesOfferingId = "string",
-      DBInstanceClass = "string",
-      Duration = 123,
-      FixedPrice = 123.0,
-      UsagePrice = 123.0,
-      CurrencyCode = "string",
-      ProductDescription = "string",
-      OfferingType = "string",
-      MultiAZ = TRUE|FALSE,
-      RecurringCharges = list(
-        list(
-          RecurringChargeAmount = 123.0,
-          RecurringChargeFrequency = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Lists available reserved DB instance offerings.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_reserved_db_instances_offerings(
-  ReservedDBInstancesOfferingId = "string",
-  DBInstanceClass = "string",
-  Duration = "string",
-  ProductDescription = "string",
-  OfferingType = "string",
-  MultiAZ = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/describe_reserved_db_instances_offerings.html} for full documentation.
+}
 \keyword{internal}

@@ -3,11 +3,11 @@
 \name{ssm_describe_activations}
 \alias{ssm_describe_activations}
 \title{Describes details about the activation, such as the date and time the
-activation was created, its expiration date, the IAM role assigned to
-the instances in the activation, and the number of instances registered
-by using this activation}
+activation was created, its expiration date, the Identity and Access
+Management (IAM) role assigned to the managed nodes in the activation,
+and the number of nodes registered by using this activation}
 \usage{
-ssm_describe_activations(Filters, MaxResults, NextToken)
+ssm_describe_activations(Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Filters}{A filter to view information about your activations.}
@@ -19,55 +19,9 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ActivationList = list(
-    list(
-      ActivationId = "string",
-      Description = "string",
-      DefaultInstanceName = "string",
-      IamRole = "string",
-      RegistrationLimit = 123,
-      RegistrationsCount = 123,
-      ExpirationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Expired = TRUE|FALSE,
-      CreatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes details about the activation, such as the date and time the
-activation was created, its expiration date, the IAM role assigned to
-the instances in the activation, and the number of instances registered
-by using this activation.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_activations(
-  Filters = list(
-    list(
-      FilterKey = "ActivationIds"|"DefaultInstanceName"|"IamRole",
-      FilterValues = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Describes details about the activation, such as the date and time the activation was created, its expiration date, the Identity and Access Management (IAM) role assigned to the managed nodes in the activation, and the number of nodes registered by using this activation.
 
+See \url{https://paws-r.github.io/docs/ssm/describe_activations.html} for full documentation.
+}
 \keyword{internal}

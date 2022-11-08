@@ -4,8 +4,13 @@
 \alias{ec2_modify_launch_template}
 \title{Modifies a launch template}
 \usage{
-ec2_modify_launch_template(DryRun, ClientToken, LaunchTemplateId,
-  LaunchTemplateName, DefaultVersion)
+ec2_modify_launch_template(
+  DryRun = NULL,
+  ClientToken = NULL,
+  LaunchTemplateId = NULL,
+  LaunchTemplateName = NULL,
+  DefaultVersion = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,64 +19,25 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.
+of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}.
 
 Constraint: Maximum 128 ASCII characters.}
 
-\item{LaunchTemplateId}{The ID of the launch template. You must specify either the launch
-template ID or launch template name in the request.}
+\item{LaunchTemplateId}{The ID of the launch template.
 
-\item{LaunchTemplateName}{The name of the launch template. You must specify either the launch
-template ID or launch template name in the request.}
+You must specify either the \code{LaunchTemplateId} or the
+\code{LaunchTemplateName}, but not both.}
+
+\item{LaunchTemplateName}{The name of the launch template.
+
+You must specify either the \code{LaunchTemplateName} or the
+\code{LaunchTemplateId}, but not both.}
 
 \item{DefaultVersion}{The version number of the launch template to set as the default version.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LaunchTemplate = list(
-    LaunchTemplateId = "string",
-    LaunchTemplateName = "string",
-    CreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreatedBy = "string",
-    DefaultVersionNumber = 123,
-    LatestVersionNumber = 123,
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Modifies a launch template. You can specify which version of the launch
-template to set as the default version. When launching an instance, the
-default version applies when a launch template version is not specified.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_launch_template(
-  DryRun = TRUE|FALSE,
-  ClientToken = "string",
-  LaunchTemplateId = "string",
-  LaunchTemplateName = "string",
-  DefaultVersion = "string"
-)
-}
-}
+Modifies a launch template. You can specify which version of the launch template to set as the default version. When launching an instance, the default version applies when a launch template version is not specified.
 
-\examples{
-\dontrun{
-# This example specifies version 2 as the default version of the specified
-# launch template.
-svc$modify_launch_template(
-  DefaultVersion = "2",
-  LaunchTemplateId = "lt-0abcd290751193123"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/modify_launch_template.html} for full documentation.
 }
 \keyword{internal}

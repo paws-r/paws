@@ -2,74 +2,81 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_list_principals}
 \alias{ram_list_principals}
-\title{Lists the principals that you have shared resources with or that have
-shared resources with you}
+\title{Lists the principals that you are sharing resources with or that are
+sharing resources with you}
 \usage{
-ram_list_principals(resourceOwner, resourceArn, principals,
-  resourceType, resourceShareArns, nextToken, maxResults)
+ram_list_principals(
+  resourceOwner,
+  resourceArn = NULL,
+  principals = NULL,
+  resourceType = NULL,
+  resourceShareArns = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
-\item{resourceOwner}{[required] The type of owner.}
+\item{resourceOwner}{[required] Specifies that you want to list information for only resource shares
+that match the following:
+\itemize{
+\item \strong{\code{SELF}} – principals that your account is sharing resources with
+\item \strong{\code{OTHER-ACCOUNTS}} – principals that are sharing resources with
+your account
+}}
 
-\item{resourceArn}{The Amazon Resource Name (ARN) of the resource.}
+\item{resourceArn}{Specifies that you want to list principal information for the resource
+share with the specified \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}.}
 
-\item{principals}{The principals.}
+\item{principals}{Specifies that you want to list information for only the listed
+principals.
 
-\item{resourceType}{The resource type.
-
-Valid values: \code{codebuild:Project} | \code{codebuild:ReportGroup} |
-\code{ec2:CapacityReservation} | \code{ec2:DedicatedHost} | \code{ec2:Subnet} |
-\code{ec2:TrafficMirrorTarget} | \code{ec2:TransitGateway} |
-\code{imagebuilder:Component} | \code{imagebuilder:Image} |
-\code{imagebuilder:ImageRecipe} | \code{license-manager:LicenseConfiguration} I
-\code{resource-groups:Group} | \code{rds:Cluster} | \code{route53resolver:ResolverRule}}
-
-\item{resourceShareArns}{The Amazon Resource Names (ARN) of the resource shares.}
-
-\item{nextToken}{The token for the next page of results.}
-
-\item{maxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned \code{nextToken}
-value.}
+You can include the following values:
+\itemize{
+\item An Amazon Web Services account ID, for example: \code{123456789012}
+\item An \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of an organization in Organizations, for example:
+\verb{organizations::123456789012:organization/o-exampleorgid}
+\item An ARN of an organizational unit (OU) in Organizations, for example:
+\verb{organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123}
+\item An ARN of an IAM role, for example:
+\verb{iam::123456789012:role/rolename}
+\item An ARN of an IAM user, for example: \verb{iam::123456789012user/username}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  principals = list(
-    list(
-      id = "string",
-      resourceShareArn = "string",
-      creationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      external = TRUE|FALSE
-    )
-  ),
-  nextToken = "string"
-)
-}
+
+Not all resource types can be shared with IAM roles and users. For more
+information, see \href{https://docs.aws.amazon.com/ram/latest/userguide/#permissions-rbp-supported-resource-types}{Sharing with IAM roles and users}
+in the \emph{Resource Access Manager User Guide}.}
+
+\item{resourceType}{Specifies that you want to list information for only principals
+associated with resource shares that include the specified resource
+type.
+
+For a list of valid values, query the
+\code{\link[=ram_list_resource_types]{list_resource_types}} operation.}
+
+\item{resourceShareArns}{Specifies that you want to list information for only principals
+associated with the resource shares specified by a list the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
+
+\item{nextToken}{Specifies that you want to receive the next page of results. Valid only
+if you received a \code{NextToken} response in the previous request. If you
+did, it indicates that more output is available. Set this parameter to
+the value provided by the previous call's \code{NextToken} response to
+request the next page of results.}
+
+\item{maxResults}{Specifies the total number of results that you want included on each
+page of the response. If you do not include this parameter, it defaults
+to a value that is specific to the operation. If additional items exist
+beyond the number you specify, the \code{NextToken} response element is
+returned with a value (not null). Include the specified value as the
+\code{NextToken} request parameter in the next call to the operation to get
+the next part of the results. Note that the service might return fewer
+results than the maximum even when there are more results available. You
+should check \code{NextToken} after every operation to ensure that you
+receive all of the results.}
 }
 \description{
-Lists the principals that you have shared resources with or that have
-shared resources with you.
-}
-\section{Request syntax}{
-\preformatted{svc$list_principals(
-  resourceOwner = "SELF"|"OTHER-ACCOUNTS",
-  resourceArn = "string",
-  principals = list(
-    "string"
-  ),
-  resourceType = "string",
-  resourceShareArns = list(
-    "string"
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Lists the principals that you are sharing resources with or that are sharing resources with you.
 
+See \url{https://paws-r.github.io/docs/ram/list_principals.html} for full documentation.
+}
 \keyword{internal}

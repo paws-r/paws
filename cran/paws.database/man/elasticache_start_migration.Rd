@@ -4,8 +4,7 @@
 \alias{elasticache_start_migration}
 \title{Start the migration of data}
 \usage{
-elasticache_start_migration(ReplicationGroupId,
-  CustomerNodeEndpointList)
+elasticache_start_migration(ReplicationGroupId, CustomerNodeEndpointList)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The ID of the replication group to which data should be migrated.}
@@ -13,108 +12,9 @@ elasticache_start_migration(ReplicationGroupId,
 \item{CustomerNodeEndpointList}{[required] List of endpoints from which data should be migrated. For Redis (cluster
 mode disabled), list should have only one element.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReplicationGroup = list(
-    ReplicationGroupId = "string",
-    Description = "string",
-    GlobalReplicationGroupInfo = list(
-      GlobalReplicationGroupId = "string",
-      GlobalReplicationGroupMemberRole = "string"
-    ),
-    Status = "string",
-    PendingModifiedValues = list(
-      PrimaryClusterId = "string",
-      AutomaticFailoverStatus = "enabled"|"disabled",
-      Resharding = list(
-        SlotMigration = list(
-          ProgressPercentage = 123.0
-        )
-      ),
-      AuthTokenStatus = "SETTING"|"ROTATING",
-      UserGroups = list(
-        UserGroupIdsToAdd = list(
-          "string"
-        ),
-        UserGroupIdsToRemove = list(
-          "string"
-        )
-      )
-    ),
-    MemberClusters = list(
-      "string"
-    ),
-    NodeGroups = list(
-      list(
-        NodeGroupId = "string",
-        Status = "string",
-        PrimaryEndpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        ReaderEndpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        Slots = "string",
-        NodeGroupMembers = list(
-          list(
-            CacheClusterId = "string",
-            CacheNodeId = "string",
-            ReadEndpoint = list(
-              Address = "string",
-              Port = 123
-            ),
-            PreferredAvailabilityZone = "string",
-            PreferredOutpostArn = "string",
-            CurrentRole = "string"
-          )
-        )
-      )
-    ),
-    SnapshottingClusterId = "string",
-    AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
-    MultiAZ = "enabled"|"disabled",
-    ConfigurationEndpoint = list(
-      Address = "string",
-      Port = 123
-    ),
-    SnapshotRetentionLimit = 123,
-    SnapshotWindow = "string",
-    ClusterEnabled = TRUE|FALSE,
-    CacheNodeType = "string",
-    AuthTokenEnabled = TRUE|FALSE,
-    AuthTokenLastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    TransitEncryptionEnabled = TRUE|FALSE,
-    AtRestEncryptionEnabled = TRUE|FALSE,
-    MemberClustersOutpostArns = list(
-      "string"
-    ),
-    KmsKeyId = "string",
-    ARN = "string",
-    UserGroupIds = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Start the migration of data.
-}
-\section{Request syntax}{
-\preformatted{svc$start_migration(
-  ReplicationGroupId = "string",
-  CustomerNodeEndpointList = list(
-    list(
-      Address = "string",
-      Port = 123
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticache/start_migration.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,12 @@
 \title{Updates the structure of an approval rule created specifically for a
 pull request}
 \usage{
-codecommit_update_pull_request_approval_rule_content(pullRequestId,
-  approvalRuleName, existingRuleContentSha256, newRuleContent)
+codecommit_update_pull_request_approval_rule_content(
+  pullRequestId,
+  approvalRuleName,
+  existingRuleContentSha256 = NULL,
+  newRuleContent
+)
 }
 \arguments{
 \item{pullRequestId}{[required] The system-generated ID of the pull request.}
@@ -48,41 +52,9 @@ qualified Amazon Resource Name (ARN) of the IAM user or role.
 For more information about IAM ARNs, wildcards, and formats, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
 in the \emph{IAM User Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  approvalRule = list(
-    approvalRuleId = "string",
-    approvalRuleName = "string",
-    approvalRuleContent = "string",
-    ruleContentSha256 = "string",
-    lastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    creationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastModifiedUser = "string",
-    originApprovalRuleTemplate = list(
-      approvalRuleTemplateId = "string",
-      approvalRuleTemplateName = "string"
-    )
-  )
-)
-}
-}
 \description{
-Updates the structure of an approval rule created specifically for a
-pull request. For example, you can change the number of required
-approvers and the approval pool for approvers.
-}
-\section{Request syntax}{
-\preformatted{svc$update_pull_request_approval_rule_content(
-  pullRequestId = "string",
-  approvalRuleName = "string",
-  existingRuleContentSha256 = "string",
-  newRuleContent = "string"
-)
-}
-}
+Updates the structure of an approval rule created specifically for a pull request. For example, you can change the number of required approvers and the approval pool for approvers.
 
+See \url{https://paws-r.github.io/docs/codecommit/update_pull_request_approval_rule_content.html} for full documentation.
+}
 \keyword{internal}

@@ -2,56 +2,33 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_quick_connects}
 \alias{connect_list_quick_connects}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Provides information about the quick connects for the specified Amazon
+Connect instance}
 \usage{
-connect_list_quick_connects(InstanceId, NextToken, MaxResults,
-  QuickConnectTypes)
+connect_list_quick_connects(
+  InstanceId,
+  NextToken = NULL,
+  MaxResults = NULL,
+  QuickConnectTypes = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
+\item{MaxResults}{The maximum number of results to return per page.}
 
 \item{QuickConnectTypes}{The type of quick connect. In the Amazon Connect console, when you
 create a quick connect, you are prompted to assign one of the following
 types: Agent (USER), External (PHONE_NUMBER), or Queue (QUEUE).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  QuickConnectSummaryList = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Name = "string",
-      QuickConnectType = "USER"|"QUEUE"|"PHONE_NUMBER"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+Provides information about the quick connects for the specified Amazon Connect instance.
 
-Provides information about the quick connects for the specified Amazon
-Connect instance.
+See \url{https://paws-r.github.io/docs/connect/list_quick_connects.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_quick_connects(
-  InstanceId = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  QuickConnectTypes = list(
-    "USER"|"QUEUE"|"PHONE_NUMBER"
-  )
-)
-}
-}
-
 \keyword{internal}

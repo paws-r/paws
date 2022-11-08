@@ -2,48 +2,41 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_integration_association}
 \alias{connect_create_integration_association}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Creates an Amazon Web Services resource association with an Amazon
+Connect instance}
 \usage{
-connect_create_integration_association(InstanceId, IntegrationType,
-  IntegrationArn, SourceApplicationUrl, SourceApplicationName, SourceType)
+connect_create_integration_association(
+  InstanceId,
+  IntegrationType,
+  IntegrationArn,
+  SourceApplicationUrl = NULL,
+  SourceApplicationName = NULL,
+  SourceType = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{IntegrationType}{[required] The type of information to be ingested.}
 
 \item{IntegrationArn}{[required] The Amazon Resource Name (ARN) of the integration.}
 
-\item{SourceApplicationUrl}{[required] The URL for the external application.}
+\item{SourceApplicationUrl}{The URL for the external application. This field is only required for
+the EVENT integration type.}
 
-\item{SourceApplicationName}{[required] The name of the external application.}
+\item{SourceApplicationName}{The name of the external application. This field is only required for
+the EVENT integration type.}
 
-\item{SourceType}{[required] The type of the data source.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  IntegrationAssociationId = "string",
-  IntegrationAssociationArn = "string"
-)
-}
+\item{SourceType}{The type of the data source. This field is only required for the EVENT
+integration type.}
+
+\item{Tags}{The tags used to organize, track, or control access for this resource.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+Creates an Amazon Web Services resource association with an Amazon Connect instance.
 
-Create an AppIntegration association with an Amazon Connect instance.
+See \url{https://paws-r.github.io/docs/connect/create_integration_association.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_integration_association(
-  InstanceId = "string",
-  IntegrationType = "EVENT",
-  IntegrationArn = "string",
-  SourceApplicationUrl = "string",
-  SourceApplicationName = "string",
-  SourceType = "SALESFORCE"|"ZENDESK"
-)
-}
-}
-
 \keyword{internal}

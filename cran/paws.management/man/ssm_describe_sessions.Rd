@@ -5,7 +5,12 @@
 \title{Retrieves a list of all active sessions (both connected and
 disconnected) or terminated sessions from the past 30 days}
 \usage{
-ssm_describe_sessions(State, MaxResults, NextToken, Filters)
+ssm_describe_sessions(
+  State,
+  MaxResults = NULL,
+  NextToken = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{State}{[required] The session status to retrieve a list of sessions for. For example,
@@ -21,49 +26,9 @@ from a previous call.)}
 \item{Filters}{One or more filters to limit the type of sessions returned by the
 request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Sessions = list(
-    list(
-      SessionId = "string",
-      Target = "string",
-      Status = "Connected"|"Connecting"|"Disconnected"|"Terminated"|"Terminating"|"Failed",
-      StartDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      DocumentName = "string",
-      Owner = "string",
-      Details = "string",
-      OutputUrl = list(
-        S3OutputUrl = "string",
-        CloudWatchOutputUrl = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a list of all active sessions (both connected and
-disconnected) or terminated sessions from the past 30 days.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_sessions(
-  State = "Active"|"History",
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      key = "InvokedAfter"|"InvokedBefore"|"Target"|"Owner"|"Status"|"SessionId",
-      value = "string"
-    )
-  )
-)
-}
-}
+Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30 days.
 
+See \url{https://paws-r.github.io/docs/ssm/describe_sessions.html} for full documentation.
+}
 \keyword{internal}

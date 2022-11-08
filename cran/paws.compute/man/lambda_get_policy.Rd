@@ -4,7 +4,7 @@
 \alias{lambda_get_policy}
 \title{Returns the resource-based IAM policy for a function, version, or alias}
 \usage{
-lambda_get_policy(FunctionName, Qualifier)
+lambda_get_policy(FunctionName, Qualifier = NULL)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function, version, or alias.
@@ -24,34 +24,9 @@ function name, it is limited to 64 characters in length.}
 
 \item{Qualifier}{Specify a version or alias to get the policy for that resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Policy = "string",
-  RevisionId = "string"
-)
-}
-}
 \description{
-Returns the \href{https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{resource-based IAM policy}
-for a function, version, or alias.
-}
-\section{Request syntax}{
-\preformatted{svc$get_policy(
-  FunctionName = "string",
-  Qualifier = "string"
-)
-}
-}
+Returns the \href{https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{resource-based IAM policy} for a function, version, or alias.
 
-\examples{
-\dontrun{
-# The following example returns the resource-based policy for version 1 of
-# a Lambda function named my-function.
-svc$get_policy(
-  FunctionName = "my-function",
-  Qualifier = "1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/get_policy.html} for full documentation.
 }
 \keyword{internal}

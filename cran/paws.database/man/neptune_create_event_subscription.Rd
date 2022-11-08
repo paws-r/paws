@@ -4,8 +4,15 @@
 \alias{neptune_create_event_subscription}
 \title{Creates an event notification subscription}
 \usage{
-neptune_create_event_subscription(SubscriptionName, SnsTopicArn,
-  SourceType, EventCategories, SourceIds, Enabled, Tags)
+neptune_create_event_subscription(
+  SubscriptionName,
+  SnsTopicArn,
+  SourceType = NULL,
+  EventCategories = NULL,
+  SourceIds = NULL,
+  Enabled = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{SubscriptionName}{[required] The name of the subscription.
@@ -52,70 +59,9 @@ be supplied.
 
 \item{Tags}{The tags to be applied to the new event subscription.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventSubscription = list(
-    CustomerAwsId = "string",
-    CustSubscriptionId = "string",
-    SnsTopicArn = "string",
-    Status = "string",
-    SubscriptionCreationTime = "string",
-    SourceType = "string",
-    SourceIdsList = list(
-      "string"
-    ),
-    EventCategoriesList = list(
-      "string"
-    ),
-    Enabled = TRUE|FALSE,
-    EventSubscriptionArn = "string"
-  )
-)
-}
-}
 \description{
-Creates an event notification subscription. This action requires a topic
-ARN (Amazon Resource Name) created by either the Neptune console, the
-SNS console, or the SNS API. To obtain an ARN with SNS, you must create
-a topic in Amazon SNS and subscribe to the topic. The ARN is displayed
-in the SNS console.
+Creates an event notification subscription. This action requires a topic ARN (Amazon Resource Name) created by either the Neptune console, the SNS console, or the SNS API. To obtain an ARN with SNS, you must create a topic in Amazon SNS and subscribe to the topic. The ARN is displayed in the SNS console.
 
-You can specify the type of source (SourceType) you want to be notified
-of, provide a list of Neptune sources (SourceIds) that triggers the
-events, and provide a list of event categories (EventCategories) for
-events you want to be notified of. For example, you can specify
-SourceType = db-instance, SourceIds = mydbinstance1, mydbinstance2 and
-EventCategories = Availability, Backup.
-
-If you specify both the SourceType and SourceIds, such as SourceType =
-db-instance and SourceIdentifier = myDBInstance1, you are notified of
-all the db-instance events for the specified source. If you specify a
-SourceType but do not specify a SourceIdentifier, you receive notice of
-the events for that source type for all your Neptune sources. If you do
-not specify either the SourceType nor the SourceIdentifier, you are
-notified of events generated from all Neptune sources belonging to your
-customer account.
+See \url{https://paws-r.github.io/docs/neptune/create_event_subscription.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_event_subscription(
-  SubscriptionName = "string",
-  SnsTopicArn = "string",
-  SourceType = "string",
-  EventCategories = list(
-    "string"
-  ),
-  SourceIds = list(
-    "string"
-  ),
-  Enabled = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

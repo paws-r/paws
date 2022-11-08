@@ -16,67 +16,9 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for handshake
 ID string requires "h-" followed by from 8 to 32 lowercase letters or
 digits.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Handshake = list(
-    Id = "string",
-    Arn = "string",
-    Parties = list(
-      list(
-        Id = "string",
-        Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
-      )
-    ),
-    State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
-    RequestedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ExpirationTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
-    Resources = list(
-      list(
-        Value = "string",
-        Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
-        Resources = list()
-      )
-    )
-  )
-)
-}
-}
 \description{
-Cancels a handshake. Canceling a handshake sets the handshake state to
-\code{CANCELED}.
+Cancels a handshake. Canceling a handshake sets the handshake state to \code{CANCELED}.
 
-This operation can be called only from the account that originated the
-handshake. The recipient of the handshake can't cancel it, but can use
-\code{\link[=organizations_decline_handshake]{decline_handshake}} instead. After a
-handshake is canceled, the recipient can no longer respond to that
-handshake.
-
-After you cancel a handshake, it continues to appear in the results of
-relevant APIs for only 30 days. After that, it's deleted.
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_handshake(
-  HandshakeId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Bill previously sent an invitation to Susan's account to join his
-# organization. He changes his mind and decides to cancel the invitation
-# before Susan accepts it. The following example shows Bill's
-# cancellation:
-# 
-svc$cancel_handshake(
-  HandshakeId = "h-examplehandshakeid111"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/cancel_handshake.html} for full documentation.
 }
 \keyword{internal}

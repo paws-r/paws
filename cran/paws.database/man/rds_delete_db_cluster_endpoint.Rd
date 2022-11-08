@@ -11,36 +11,9 @@ rds_delete_db_cluster_endpoint(DBClusterEndpointIdentifier)
 \item{DBClusterEndpointIdentifier}{[required] The identifier associated with the custom endpoint. This parameter is
 stored as a lowercase string.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterEndpointIdentifier = "string",
-  DBClusterIdentifier = "string",
-  DBClusterEndpointResourceIdentifier = "string",
-  Endpoint = "string",
-  Status = "string",
-  EndpointType = "string",
-  CustomEndpointType = "string",
-  StaticMembers = list(
-    "string"
-  ),
-  ExcludedMembers = list(
-    "string"
-  ),
-  DBClusterEndpointArn = "string"
-)
-}
-}
 \description{
-Deletes a custom endpoint and removes it from an Amazon Aurora DB
-cluster.
+Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster.
 
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/delete_db_cluster_endpoint.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_db_cluster_endpoint(
-  DBClusterEndpointIdentifier = "string"
-)
-}
-}
-
 \keyword{internal}

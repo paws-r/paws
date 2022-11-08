@@ -2,34 +2,26 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_associate_software_token}
 \alias{cognitoidentityprovider_associate_software_token}
-\title{Returns a unique generated shared secret key code for the user account}
+\title{Begins setup of time-based one-time password (TOTP) multi-factor
+authentication (MFA) for a user, with a unique private key that Amazon
+Cognito generates and returns in the API response}
 \usage{
-cognitoidentityprovider_associate_software_token(AccessToken, Session)
+cognitoidentityprovider_associate_software_token(
+  AccessToken = NULL,
+  Session = NULL
+)
 }
 \arguments{
-\item{AccessToken}{The access token.}
+\item{AccessToken}{A valid access token that Amazon Cognito issued to the user whose
+software token you want to generate.}
 
-\item{Session}{The session which should be passed both ways in challenge-response calls
+\item{Session}{The session that should be passed both ways in challenge-response calls
 to the service. This allows authentication of the user as part of the
 MFA setup process.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SecretCode = "string",
-  Session = "string"
-)
-}
-}
 \description{
-Returns a unique generated shared secret key code for the user account.
-The request takes an access token or a session string, but not both.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_software_token(
-  AccessToken = "string",
-  Session = "string"
-)
-}
-}
+Begins setup of time-based one-time password (TOTP) multi-factor authentication (MFA) for a user, with a unique private key that Amazon Cognito generates and returns in the API response. You can authorize an \code{\link[=cognitoidentityprovider_associate_software_token]{associate_software_token}} request with either the user's access token, or a session string from a challenge response that you received from Amazon Cognito.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/associate_software_token.html} for full documentation.
+}
 \keyword{internal}

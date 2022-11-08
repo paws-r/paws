@@ -4,8 +4,15 @@
 \alias{ec2_report_instance_status}
 \title{Submits feedback about the status of an instance}
 \usage{
-ec2_report_instance_status(Description, DryRun, EndTime, Instances,
-  ReasonCodes, StartTime, Status)
+ec2_report_instance_status(
+  Description = NULL,
+  DryRun = NULL,
+  EndTime = NULL,
+  Instances,
+  ReasonCodes,
+  StartTime = NULL,
+  Status
+)
 }
 \arguments{
 \item{Description}{Descriptive text about the health state of your instance.}
@@ -43,40 +50,9 @@ problems.
 
 \item{Status}{[required] The status of all instances listed.}
 }
-\value{
-An empty list.
-}
 \description{
-Submits feedback about the status of an instance. The instance must be
-in the \code{running} state. If your experience with the instance differs
-from the instance status returned by
-\code{\link[=ec2_describe_instance_status]{describe_instance_status}}, use
-\code{\link[=ec2_report_instance_status]{report_instance_status}} to report your
-experience with the instance. Amazon EC2 collects this information to
-improve the accuracy of status checks.
+Submits feedback about the status of an instance. The instance must be in the \code{running} state. If your experience with the instance differs from the instance status returned by \code{\link[=ec2_describe_instance_status]{describe_instance_status}}, use \code{\link[=ec2_report_instance_status]{report_instance_status}} to report your experience with the instance. Amazon EC2 collects this information to improve the accuracy of status checks.
 
-Use of this action does not change the value returned by
-\code{\link[=ec2_describe_instance_status]{describe_instance_status}}.
+See \url{https://paws-r.github.io/docs/ec2/report_instance_status.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$report_instance_status(
-  Description = "string",
-  DryRun = TRUE|FALSE,
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Instances = list(
-    "string"
-  ),
-  ReasonCodes = list(
-    "instance-stuck-in-state"|"unresponsive"|"not-accepting-credentials"|"password-not-available"|"performance-network"|"performance-instance-store"|"performance-ebs-volume"|"performance-other"|"other"
-  ),
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Status = "ok"|"impaired"
-)
-}
-}
-
 \keyword{internal}

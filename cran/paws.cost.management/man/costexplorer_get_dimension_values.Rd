@@ -5,14 +5,22 @@
 \title{Retrieves all available filter values for a specified filter over a
 period of time}
 \usage{
-costexplorer_get_dimension_values(SearchString, TimePeriod, Dimension,
-  Context, Filter, SortBy, MaxResults, NextPageToken)
+costexplorer_get_dimension_values(
+  SearchString = NULL,
+  TimePeriod,
+  Dimension,
+  Context = NULL,
+  Filter = NULL,
+  SortBy = NULL,
+  MaxResults = NULL,
+  NextPageToken = NULL
+)
 }
 \arguments{
 \item{SearchString}{The value that you want to search the filter values for.}
 
-\item{TimePeriod}{[required] The start and end dates for retrieving the dimension values. The start
-date is inclusive, but the end date is exclusive. For example, if
+\item{TimePeriod}{[required] The start date and end date for retrieving the dimension values. The
+start date is inclusive, but the end date is exclusive. For example, if
 \code{start} is \code{2017-01-01} and \code{end} is \code{2017-05-01}, then the cost and
 usage data is retrieved from \code{2017-01-01} up to and including
 \code{2017-04-30} but not including \code{2017-05-01}.}
@@ -34,35 +42,64 @@ If you set the context to \code{COST_AND_USAGE}, you can use the following
 dimensions for searching:
 \itemize{
 \item AZ - The Availability Zone. An example is \verb{us-east-1a}.
+\item BILLING_ENTITY - The Amazon Web Services seller that your account is
+with. Possible values are the following:
+
+\- Amazon Web Services(Amazon Web Services): The entity that sells
+Amazon Web Services.
+
+\- AISPL (Amazon Internet Services Pvt. Ltd.): The local Indian
+entity that's an acting reseller for Amazon Web Services in India.
+
+\- Amazon Web Services Marketplace: The entity that supports the
+sale of solutions that are built on Amazon Web Services by
+third-party software providers.
+\item CACHE_ENGINE - The Amazon ElastiCache operating system. Examples are
+Windows or Linux.
+\item DEPLOYMENT_OPTION - The scope of Amazon Relational Database Service
+deployments. Valid values are \code{SingleAZ} and \code{MultiAZ}.
 \item DATABASE_ENGINE - The Amazon Relational Database Service database.
 Examples are Aurora or MySQL.
 \item INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
 \code{m4.xlarge}.
+\item INSTANCE_TYPE_FAMILY - A family of instance types optimized to fit
+different use cases. Examples are \verb{Compute Optimized} (for example,
+\code{C4}, \code{C5}, \code{C6g}, and \code{C7g}), \verb{Memory Optimization} (for example,
+\code{R4}, \code{R5n}, \code{R5b}, and \code{R6g}).
+\item INVOICING_ENTITY - The name of the entity that issues the Amazon Web
+Services invoice.
 \item LEGAL_ENTITY_NAME - The name of the organization that sells you
-AWS services, such as Amazon Web Services.
+Amazon Web Services services, such as Amazon Web Services.
 \item LINKED_ACCOUNT - The description in the attribute map that includes
 the full name of the member account. The value field contains the
-AWS ID of the member account.
+Amazon Web Services ID of the member account.
 \item OPERATING_SYSTEM - The operating system. Examples are Windows or
 Linux.
 \item OPERATION - The action performed. Examples include \code{RunInstance} and
 \code{CreateBucket}.
 \item PLATFORM - The Amazon EC2 operating system. Examples are Windows or
 Linux.
-\item PURCHASE_TYPE - The reservation type of the purchase to which this
-usage is related. Examples include On-Demand Instances and Standard
+\item PURCHASE_TYPE - The reservation type of the purchase that this usage
+is related to. Examples include On-Demand Instances and Standard
 Reserved Instances.
-\item SERVICE - The AWS service such as Amazon DynamoDB.
-\item USAGE_TYPE - The type of usage. An example is
-DataTransfer-In-Bytes. The response for the
+\item RESERVATION_ID - The unique identifier for an Amazon Web Services
+Reservation Instance.
+\item SAVINGS_PLAN_ARN - The unique identifier for your Savings Plans.
+\item SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or
+Compute).
+\item SERVICE - The Amazon Web Services service such as Amazon DynamoDB.
+\item TENANCY - The tenancy of a resource. Examples are shared or
+dedicated.
+\item USAGE_TYPE - The type of usage. An example is DataTransfer-In-Bytes.
+The response for the
 \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}}
 operation includes a unit attribute. Examples include GB and Hrs.
-\item USAGE_TYPE_GROUP - The grouping of common usage types. An example
-is Amazon EC2: CloudWatch – Alarms. The response for this operation
+\item USAGE_TYPE_GROUP - The grouping of common usage types. An example is
+Amazon EC2: CloudWatch – Alarms. The response for this operation
 includes a unit attribute.
-\item REGION - The AWS Region.
-\item RECORD_TYPE - The different types of charges such as RI fees, usage
-costs, tax refunds, and credits.
+\item REGION - The Amazon Web Services Region.
+\item RECORD_TYPE - The different types of charges such as Reserved
+Instance (RI) fees, usage costs, tax refunds, and credits.
 \item RESOURCE_ID - The unique identifier of the resource. ResourceId is
 an opt-in feature only available for last 14 days for EC2-Compute
 Service.
@@ -72,18 +109,18 @@ If you set the context to \code{RESERVATIONS}, you can use the following
 dimensions for searching:
 \itemize{
 \item AZ - The Availability Zone. An example is \verb{us-east-1a}.
-\item CACHE_ENGINE - The Amazon ElastiCache operating system. Examples
-are Windows or Linux.
+\item CACHE_ENGINE - The Amazon ElastiCache operating system. Examples are
+Windows or Linux.
 \item DEPLOYMENT_OPTION - The scope of Amazon Relational Database Service
 deployments. Valid values are \code{SingleAZ} and \code{MultiAZ}.
 \item INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
 \code{m4.xlarge}.
 \item LINKED_ACCOUNT - The description in the attribute map that includes
 the full name of the member account. The value field contains the
-AWS ID of the member account.
+Amazon Web Services ID of the member account.
 \item PLATFORM - The Amazon EC2 operating system. Examples are Windows or
 Linux.
-\item REGION - The AWS Region.
+\item REGION - The Amazon Web Services Region.
 \item SCOPE (Utilization only) - The scope of a Reserved Instance (RI).
 Values are regional or a single Availability Zone.
 \item TAG (Coverage only) - The tags that are associated with a Reserved
@@ -95,21 +132,20 @@ dedicated.
 If you set the context to \code{SAVINGS_PLANS}, you can use the following
 dimensions for searching:
 \itemize{
-\item SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or
-Compute)
-\item PAYMENT_OPTION - Payment option for the given Savings Plans (for
+\item SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+\item PAYMENT_OPTION - The payment option for the given Savings Plans (for
 example, All Upfront)
-\item REGION - The AWS Region.
+\item REGION - The Amazon Web Services Region.
 \item INSTANCE_TYPE_FAMILY - The family of instances (For example, \code{m5})
 \item LINKED_ACCOUNT - The description in the attribute map that includes
 the full name of the member account. The value field contains the
-AWS ID of the member account.
-\item SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan
+Amazon Web Services ID of the member account.
+\item SAVINGS_PLAN_ARN - The unique identifier for your Savings Plans.
 }}
 
 \item{Filter}{}
 
-\item{SortBy}{The value by which you want to sort the data.
+\item{SortBy}{The value that you want to sort the data by.
 
 The key represents cost and usage metrics. The following values are
 supported:
@@ -123,97 +159,28 @@ supported:
 \item \code{NormalizedUsageAmount}
 }
 
-Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.
+The supported values for the \code{SortOrder} key are \code{ASCENDING} or
+\code{DESCENDING}.
 
 When you specify a \code{SortBy} paramater, the context must be
 \code{COST_AND_USAGE}. Further, when using \code{SortBy}, \code{NextPageToken} and
-\code{SearchString} are not supported.}
+\code{SearchString} aren't supported.}
 
 \item{MaxResults}{This field is only used when SortBy is provided in the request. The
-maximum number of objects that to be returned for this request. If
-MaxResults is not specified with SortBy, the request will return 1000
-results as the default value for this parameter.}
+maximum number of objects that are returned for this request. If
+MaxResults isn't specified with SortBy, the request returns 1000 results
+as the default value for this parameter.
 
-\item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
-when the response from a previous call has more results than the maximum
-page size.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DimensionValues = list(
-    list(
-      Value = "string",
-      Attributes = list(
-        "string"
-      )
-    )
-  ),
-  ReturnSize = 123,
-  TotalSize = 123,
-  NextPageToken = "string"
-)
-}
+For \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}},
+MaxResults has an upper limit of 1000.}
+
+\item{NextPageToken}{The token to retrieve the next set of results. Amazon Web Services
+provides the token when the response from a previous call has more
+results than the maximum page size.}
 }
 \description{
-Retrieves all available filter values for a specified filter over a
-period of time. You can search the dimension values for an arbitrary
-string.
-}
-\section{Request syntax}{
-\preformatted{svc$get_dimension_values(
-  SearchString = "string",
-  TimePeriod = list(
-    Start = "string",
-    End = "string"
-  ),
-  Dimension = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-  Context = "COST_AND_USAGE"|"RESERVATIONS"|"SAVINGS_PLANS",
-  Filter = list(
-    Or = list(
-      list()
-    ),
-    And = list(
-      list()
-    ),
-    Not = list(),
-    Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    Tags = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    CostCategories = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    )
-  ),
-  SortBy = list(
-    list(
-      Key = "string",
-      SortOrder = "ASCENDING"|"DESCENDING"
-    )
-  ),
-  MaxResults = 123,
-  NextPageToken = "string"
-)
-}
-}
+Retrieves all available filter values for a specified filter over a period of time. You can search the dimension values for an arbitrary string.
 
+See \url{https://paws-r.github.io/docs/costexplorer/get_dimension_values.html} for full documentation.
+}
 \keyword{internal}

@@ -7,19 +7,9 @@ to the current member account except the currently accepted invitation}
 \usage{
 guardduty_get_invitations_count()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InvitationsCount = 123
-)
-}
-}
 \description{
-Returns the count of all GuardDuty membership invitations that were sent
-to the current member account except the currently accepted invitation.
-}
-\section{Request syntax}{
-\preformatted{svc$get_invitations_count()
-}
-}
+Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation.
 
+See \url{https://paws-r.github.io/docs/guardduty/get_invitations_count.html} for full documentation.
+}
 \keyword{internal}

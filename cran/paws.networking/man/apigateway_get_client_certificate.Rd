@@ -7,34 +7,11 @@
 apigateway_get_client_certificate(clientCertificateId)
 }
 \arguments{
-\item{clientCertificateId}{[required] [Required] The identifier of the ClientCertificate resource to be
-described.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  clientCertificateId = "string",
-  description = "string",
-  pemEncodedCertificate = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  expirationDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  tags = list(
-    "string"
-  )
-)
-}
+\item{clientCertificateId}{[required] The identifier of the ClientCertificate resource to be described.}
 }
 \description{
 Gets information about the current ClientCertificate resource.
-}
-\section{Request syntax}{
-\preformatted{svc$get_client_certificate(
-  clientCertificateId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_client_certificate.html} for full documentation.
+}
 \keyword{internal}

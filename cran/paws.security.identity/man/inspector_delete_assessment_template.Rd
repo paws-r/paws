@@ -10,28 +10,9 @@ inspector_delete_assessment_template(assessmentTemplateArn)
 \arguments{
 \item{assessmentTemplateArn}{[required] The ARN that specifies the assessment template that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the assessment template that is specified by the ARN of the
-assessment template.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_assessment_template(
-  assessmentTemplateArn = "string"
-)
-}
-}
+Deletes the assessment template that is specified by the ARN of the assessment template.
 
-\examples{
-\dontrun{
-# Deletes the assessment template that is specified by the ARN of the
-# assessment template.
-svc$delete_assessment_template(
-  assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/delete_assessment_template.html} for full documentation.
 }
 \keyword{internal}

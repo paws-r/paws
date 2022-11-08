@@ -5,61 +5,16 @@
 \title{Describes the specified export instance tasks or all of your export
 instance tasks}
 \usage{
-ec2_describe_export_tasks(ExportTaskIds, Filters)
+ec2_describe_export_tasks(ExportTaskIds = NULL, Filters = NULL)
 }
 \arguments{
 \item{ExportTaskIds}{The export task IDs.}
 
 \item{Filters}{the filters for the export tasks.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExportTasks = list(
-    list(
-      Description = "string",
-      ExportTaskId = "string",
-      ExportToS3Task = list(
-        ContainerFormat = "ova",
-        DiskImageFormat = "VMDK"|"RAW"|"VHD",
-        S3Bucket = "string",
-        S3Key = "string"
-      ),
-      InstanceExportDetails = list(
-        InstanceId = "string",
-        TargetEnvironment = "citrix"|"vmware"|"microsoft"
-      ),
-      State = "active"|"cancelling"|"cancelled"|"completed",
-      StatusMessage = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes the specified export instance tasks or all of your export
-instance tasks.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_export_tasks(
-  ExportTaskIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
+Describes the specified export instance tasks or all of your export instance tasks.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_export_tasks.html} for full documentation.
+}
 \keyword{internal}

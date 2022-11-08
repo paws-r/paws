@@ -10,35 +10,9 @@ ses_verify_domain_identity(Domain)
 \arguments{
 \item{Domain}{[required] The domain to be verified.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VerificationToken = "string"
-)
-}
-}
 \description{
-Adds a domain to the list of identities for your Amazon SES account in
-the current AWS Region and attempts to verify it. For more information
-about verifying domains, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html}{Verifying Email Addresses and Domains}
-in the \emph{Amazon SES Developer Guide.}
+Adds a domain to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it. For more information about verifying domains, see \href{https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html}{Verifying Email Addresses and Domains} in the \emph{Amazon SES Developer Guide.}
 
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$verify_domain_identity(
-  Domain = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example starts the domain verification process with Amazon
-# SES:
-svc$verify_domain_identity(
-  Domain = "example.com"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/verify_domain_identity.html} for full documentation.
 }
 \keyword{internal}

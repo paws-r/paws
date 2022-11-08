@@ -4,7 +4,7 @@
 \alias{worklink_list_fleets}
 \title{Retrieves a list of fleets for the current account and Region}
 \usage{
-worklink_list_fleets(NextToken, MaxResults)
+worklink_list_fleets(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The pagination token used to retrieve the next page of results for this
@@ -12,39 +12,9 @@ operation. If this value is null, it retrieves the first page.}
 
 \item{MaxResults}{The maximum number of results to be included in the next page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FleetSummaryList = list(
-    list(
-      FleetArn = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      FleetName = "string",
-      DisplayName = "string",
-      CompanyCode = "string",
-      FleetStatus = "CREATING"|"ACTIVE"|"DELETING"|"DELETED"|"FAILED_TO_CREATE"|"FAILED_TO_DELETE",
-      Tags = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves a list of fleets for the current account and Region.
-}
-\section{Request syntax}{
-\preformatted{svc$list_fleets(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/list_fleets.html} for full documentation.
+}
 \keyword{internal}

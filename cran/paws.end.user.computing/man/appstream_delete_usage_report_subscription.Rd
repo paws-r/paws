@@ -6,15 +6,9 @@
 \usage{
 appstream_delete_usage_report_subscription()
 }
-\value{
-An empty list.
-}
 \description{
 Disables usage report generation.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_usage_report_subscription()
-}
-}
 
+See \url{https://paws-r.github.io/docs/appstream/delete_usage_report_subscription.html} for full documentation.
+}
 \keyword{internal}

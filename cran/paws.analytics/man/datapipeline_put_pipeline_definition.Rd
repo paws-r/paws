@@ -4,8 +4,12 @@
 \alias{datapipeline_put_pipeline_definition}
 \title{Adds tasks, schedules, and preconditions to the specified pipeline}
 \usage{
-datapipeline_put_pipeline_definition(pipelineId, pipelineObjects,
-  parameterObjects, parameterValues)
+datapipeline_put_pipeline_definition(
+  pipelineId,
+  pipelineObjects,
+  parameterObjects = NULL,
+  parameterValues = NULL
+)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline.}
@@ -17,87 +21,9 @@ existing pipeline definition.}
 
 \item{parameterValues}{The parameter values used with the pipeline.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  validationErrors = list(
-    list(
-      id = "string",
-      errors = list(
-        "string"
-      )
-    )
-  ),
-  validationWarnings = list(
-    list(
-      id = "string",
-      warnings = list(
-        "string"
-      )
-    )
-  ),
-  errored = TRUE|FALSE
-)
-}
-}
 \description{
-Adds tasks, schedules, and preconditions to the specified pipeline. You
-can use
-\code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}} to
-populate a new pipeline.
+Adds tasks, schedules, and preconditions to the specified pipeline. You can use \code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}} to populate a new pipeline.
 
-\code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}} also
-validates the configuration as it adds it to the pipeline. Changes to
-the pipeline are saved unless one of the following three validation
-errors exists in the pipeline.
-\enumerate{
-\item An object is missing a name or identifier field.
-\item A string or reference field is empty.
-\item The number of objects in the pipeline exceeds the maximum allowed
-objects.
-\item The pipeline is in a FINISHED state.
+See \url{https://paws-r.github.io/docs/datapipeline/put_pipeline_definition.html} for full documentation.
 }
-
-Pipeline object definitions are passed to the
-\code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}} action
-and returned by the
-\code{\link[=datapipeline_get_pipeline_definition]{get_pipeline_definition}}
-action.
-}
-\section{Request syntax}{
-\preformatted{svc$put_pipeline_definition(
-  pipelineId = "string",
-  pipelineObjects = list(
-    list(
-      id = "string",
-      name = "string",
-      fields = list(
-        list(
-          key = "string",
-          stringValue = "string",
-          refValue = "string"
-        )
-      )
-    )
-  ),
-  parameterObjects = list(
-    list(
-      id = "string",
-      attributes = list(
-        list(
-          key = "string",
-          stringValue = "string"
-        )
-      )
-    )
-  ),
-  parameterValues = list(
-    list(
-      id = "string",
-      stringValue = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

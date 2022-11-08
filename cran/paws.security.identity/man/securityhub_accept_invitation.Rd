@@ -2,36 +2,20 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_accept_invitation}
 \alias{securityhub_accept_invitation}
-\title{Accepts the invitation to be a member account and be monitored by the
-Security Hub master account that the invitation was sent from}
+\title{This method is deprecated}
 \usage{
 securityhub_accept_invitation(MasterId, InvitationId)
 }
 \arguments{
-\item{MasterId}{[required] The account ID of the Security Hub master account that sent the
+\item{MasterId}{[required] The account ID of the Security Hub administrator account that sent the
 invitation.}
 
-\item{InvitationId}{[required] The ID of the invitation sent from the Security Hub master account.}
-}
-\value{
-An empty list.
+\item{InvitationId}{[required] The identifier of the invitation sent from the Security Hub
+administrator account.}
 }
 \description{
-Accepts the invitation to be a member account and be monitored by the
-Security Hub master account that the invitation was sent from.
+This method is deprecated. Instead, use \code{\link[=securityhub_accept_administrator_invitation]{accept_administrator_invitation}}.
 
-This operation is only used by member accounts that are not added
-through Organizations.
-
-When the member account accepts the invitation, permission is granted to
-the master account to view findings generated in the member account.
+See \url{https://paws-r.github.io/docs/securityhub/accept_invitation.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$accept_invitation(
-  MasterId = "string",
-  InvitationId = "string"
-)
-}
-}
-
 \keyword{internal}

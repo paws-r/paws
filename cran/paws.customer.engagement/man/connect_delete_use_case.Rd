@@ -2,34 +2,21 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_delete_use_case}
 \alias{connect_delete_use_case}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Deletes a use case from an integration association}
 \usage{
 connect_delete_use_case(InstanceId, IntegrationAssociationId, UseCaseId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
-\item{IntegrationAssociationId}{[required] The identifier for the AppIntegration association.}
+\item{IntegrationAssociationId}{[required] The identifier for the integration association.}
 
 \item{UseCaseId}{[required] The identifier for the use case.}
 }
-\value{
-An empty list.
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+Deletes a use case from an integration association.
 
-Deletes a use case from an AppIntegration association.
+See \url{https://paws-r.github.io/docs/connect/delete_use_case.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_use_case(
-  InstanceId = "string",
-  IntegrationAssociationId = "string",
-  UseCaseId = "string"
-)
-}
-}
-
 \keyword{internal}

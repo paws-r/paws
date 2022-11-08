@@ -6,102 +6,33 @@ NULL
 #' Creates an EFS access point
 #'
 #' @description
-#' Creates an EFS access point. An access point is an application-specific
-#' view into an EFS file system that applies an operating system user and
-#' group, and a file system path, to any file system request made through
-#' the access point. The operating system user and group override any
-#' identity information provided by the NFS client. The file system path is
-#' exposed as the access point's root directory. Applications using the
-#' access point can only access data in its own directory and below. To
-#' learn more, see [Mounting a File System Using EFS Access
-#' Points](https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html).
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:CreateAccessPoint` action.
+#' Creates an EFS access point. An access point is an application-specific view into an EFS file system that applies an operating system user and group, and a file system path, to any file system request made through the access point. The operating system user and group override any identity information provided by the NFS client. The file system path is exposed as the access point's root directory. Applications using the access point can only access data in the application's own directory and any subdirectories. To learn more, see [Mounting a file system using EFS access points](https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html).
 #'
-#' @usage
-#' efs_create_access_point(ClientToken, Tags, FileSystemId, PosixUser,
-#'   RootDirectory)
+#' See [https://paws-r.github.io/docs/efs/create_access_point.html](https://paws-r.github.io/docs/efs/create_access_point.html) for full documentation.
 #'
 #' @param ClientToken &#91;required&#93; A string of up to 64 ASCII characters that Amazon EFS uses to ensure
 #' idempotent creation.
 #' @param Tags Creates tags associated with the access point. Each tag is a key-value
-#' pair.
+#' pair, each key must be unique. For more information, see [Tagging Amazon
+#' Web Services
+#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *Amazon Web Services General Reference Guide*.
 #' @param FileSystemId &#91;required&#93; The ID of the EFS file system that the access point provides access to.
 #' @param PosixUser The operating system user and group applied to all file system requests
 #' made using the access point.
 #' @param RootDirectory Specifies the directory on the Amazon EFS file system that the access
 #' point exposes as the root directory of your file system to NFS clients
 #' using the access point. The clients using the access point can only
-#' access the root directory and below. If the `RootDirectory` &gt; `Path`
+#' access the root directory and below. If the `RootDirectory` \> `Path`
 #' specified does not exist, EFS creates it and applies the `CreationInfo`
 #' settings when a client connects to an access point. When specifying a
-#' `RootDirectory`, you need to provide the `Path`, and the `CreationInfo`
-#' is optional.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ClientToken = "string",
-#'   Name = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   AccessPointId = "string",
-#'   AccessPointArn = "string",
-#'   FileSystemId = "string",
-#'   PosixUser = list(
-#'     Uid = 123,
-#'     Gid = 123,
-#'     SecondaryGids = list(
-#'       123
-#'     )
-#'   ),
-#'   RootDirectory = list(
-#'     Path = "string",
-#'     CreationInfo = list(
-#'       OwnerUid = 123,
-#'       OwnerGid = 123,
-#'       Permissions = "string"
-#'     )
-#'   ),
-#'   OwnerId = "string",
-#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_access_point(
-#'   ClientToken = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   FileSystemId = "string",
-#'   PosixUser = list(
-#'     Uid = 123,
-#'     Gid = 123,
-#'     SecondaryGids = list(
-#'       123
-#'     )
-#'   ),
-#'   RootDirectory = list(
-#'     Path = "string",
-#'     CreationInfo = list(
-#'       OwnerUid = 123,
-#'       OwnerGid = 123,
-#'       Permissions = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' `RootDirectory`, you must provide the `Path`, and the `CreationInfo`.
+#' 
+#' Amazon EFS creates a root directory only if you have provided the
+#' CreationInfo: OwnUid, OwnGID, and permissions for the directory. If you
+#' do not provide this information, Amazon EFS does not create the root
+#' directory. If the root directory does not exist, attempts to mount using
+#' the access point will fail.
 #'
 #' @keywords internal
 #'
@@ -126,64 +57,9 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' Creates a new, empty file system
 #'
 #' @description
-#' Creates a new, empty file system. The operation requires a creation
-#' token in the request that Amazon EFS uses to ensure idempotent creation
-#' (calling the operation with same creation token has no effect). If a
-#' file system does not currently exist that is owned by the caller's AWS
-#' account with the specified creation token, this operation does the
-#' following:
-#' 
-#' -   Creates a new, empty file system. The file system will have an
-#'     Amazon EFS assigned ID, and an initial lifecycle state `creating`.
-#' 
-#' -   Returns with the description of the created file system.
-#' 
-#' Otherwise, this operation returns a `FileSystemAlreadyExists` error with
-#' the ID of the existing file system.
-#' 
-#' For basic use cases, you can use a randomly generated UUID for the
-#' creation token.
-#' 
-#' The idempotent operation allows you to retry a
-#' [`create_file_system`][efs_create_file_system] call without risk of
-#' creating an extra file system. This can happen when an initial call
-#' fails in a way that leaves it uncertain whether or not a file system was
-#' actually created. An example might be that a transport level timeout
-#' occurred or your connection was reset. As long as you use the same
-#' creation token, if the initial call had succeeded in creating a file
-#' system, the client can learn of its existence from the
-#' `FileSystemAlreadyExists` error.
-#' 
-#' The [`create_file_system`][efs_create_file_system] call returns while
-#' the file system's lifecycle state is still `creating`. You can check the
-#' file system creation status by calling the
-#' [`describe_file_systems`][efs_describe_file_systems] operation, which
-#' among other things returns the file system state.
-#' 
-#' This operation also takes an optional `PerformanceMode` parameter that
-#' you choose for your file system. We recommend `generalPurpose`
-#' performance mode for most file systems. File systems using the `maxIO`
-#' performance mode can scale to higher levels of aggregate throughput and
-#' operations per second with a tradeoff of slightly higher latencies for
-#' most file operations. The performance mode can't be changed after the
-#' file system has been created. For more information, see [Amazon EFS:
-#' Performance
-#' Modes](https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html).
-#' 
-#' After the file system is fully created, Amazon EFS sets its lifecycle
-#' state to `available`, at which point you can create one or more mount
-#' targets for the file system in your VPC. For more information, see
-#' [`create_mount_target`][efs_create_mount_target]. You mount your Amazon
-#' EFS file system on an EC2 instances in your VPC by using the mount
-#' target. For more information, see [Amazon EFS: How it
-#' Works](https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html).
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:CreateFileSystem` action.
+#' Creates a new, empty file system. The operation requires a creation token in the request that Amazon EFS uses to ensure idempotent creation (calling the operation with same creation token has no effect). If a file system does not currently exist that is owned by the caller's Amazon Web Services account with the specified creation token, this operation does the following:
 #'
-#' @usage
-#' efs_create_file_system(CreationToken, PerformanceMode, Encrypted,
-#'   KmsKeyId, ThroughputMode, ProvisionedThroughputInMibps, Tags)
+#' See [https://paws-r.github.io/docs/efs/create_file_system.html](https://paws-r.github.io/docs/efs/create_file_system.html) for full documentation.
 #'
 #' @param CreationToken &#91;required&#93; A string of up to 64 ASCII characters. Amazon EFS uses this to ensure
 #' idempotent creation.
@@ -193,16 +69,19 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' operations per second with a tradeoff of slightly higher latencies for
 #' most file operations. The performance mode can't be changed after the
 #' file system has been created.
+#' 
+#' The `maxIO` mode is not supported on file systems using One Zone storage
+#' classes.
 #' @param Encrypted A Boolean value that, if true, creates an encrypted file system. When
-#' creating an encrypted file system, you have the option of specifying
-#' CreateFileSystemRequest$KmsKeyId for an existing AWS Key Management
-#' Service (AWS KMS) customer master key (CMK). If you don't specify a CMK,
-#' then the default CMK for Amazon EFS, `/aws/elasticfilesystem`, is used
-#' to protect the encrypted file system.
-#' @param KmsKeyId The ID of the AWS KMS CMK to be used to protect the encrypted file
-#' system. This parameter is only required if you want to use a nondefault
-#' CMK. If this parameter is not specified, the default CMK for Amazon EFS
-#' is used. This ID can be in one of the following formats:
+#' creating an encrypted file system, you have the option of specifying an
+#' existing Key Management Service key (KMS key). If you don't specify a
+#' KMS key, then the default KMS key for Amazon EFS,
+#' `/aws/elasticfilesystem`, is used to protect the encrypted file system.
+#' @param KmsKeyId The ID of the KMS key that you want to use to protect the encrypted file
+#' system. This parameter is required only if you want to use a non-default
+#' KMS key. If this parameter is not specified, the default KMS key for
+#' Amazon EFS is used. You can specify a KMS key ID using the following
+#' formats:
 #' 
 #' -   Key ID - A unique identifier of the key, for example
 #'     `1234abcd-12ab-34cd-56ef-1234567890ab`.
@@ -216,114 +95,71 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' -   Key alias ARN - An ARN for a key alias, for example
 #'     `arn:aws:kms:us-west-2:444455556666:alias/projectKey1`.
 #' 
-#' If `KmsKeyId` is specified, the CreateFileSystemRequest$Encrypted
-#' parameter must be set to true.
+#' If you use `KmsKeyId`, you must set the
+#' CreateFileSystemRequest$Encrypted parameter to true.
 #' 
-#' EFS accepts only symmetric CMKs. You cannot use asymmetric CMKs with EFS
-#' file systems.
-#' @param ThroughputMode The throughput mode for the file system to be created. There are two
-#' throughput modes to choose from for your file system: `bursting` and
+#' EFS accepts only symmetric KMS keys. You cannot use asymmetric KMS keys
+#' with Amazon EFS file systems.
+#' @param ThroughputMode Specifies the throughput mode for the file system, either `bursting` or
 #' `provisioned`. If you set `ThroughputMode` to `provisioned`, you must
-#' also set a value for `ProvisionedThroughPutInMibps`. You can decrease
-#' your file system's throughput in Provisioned Throughput mode or change
-#' between the throughput modes as long as it’s been more than 24 hours
-#' since the last decrease or throughput mode change. For more, see
-#' [Specifying Throughput with Provisioned
-#' Mode](https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput)
-#' in the *Amazon EFS User Guide.*
+#' also set a value for `ProvisionedThroughputInMibps`. After you create
+#' the file system, you can decrease your file system's throughput in
+#' Provisioned Throughput mode or change between the throughput modes, as
+#' long as it’s been more than 24 hours since the last decrease or
+#' throughput mode change. For more information, see [Specifying throughput
+#' with provisioned
+#' mode](https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput)
+#' in the *Amazon EFS User Guide*.
+#' 
+#' Default is `bursting`.
 #' @param ProvisionedThroughputInMibps The throughput, measured in MiB/s, that you want to provision for a file
 #' system that you're creating. Valid values are 1-1024. Required if
 #' `ThroughputMode` is set to `provisioned`. The upper limit for throughput
-#' is 1024 MiB/s. You can get this limit increased by contacting AWS
-#' Support. For more information, see [Amazon EFS Limits That You Can
-#' Increase](https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits)
-#' in the *Amazon EFS User Guide.*
-#' @param Tags A value that specifies to create one or more tags associated with the
-#' file system. Each tag is a user-defined key-value pair. Name your file
-#' system on creation by including a `"Key":"Name","Value":"{value}"`
-#' key-value pair.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OwnerId = "string",
-#'   CreationToken = "string",
-#'   FileSystemId = "string",
-#'   FileSystemArn = "string",
-#'   CreationTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
-#'   Name = "string",
-#'   NumberOfMountTargets = 123,
-#'   SizeInBytes = list(
-#'     Value = 123,
-#'     Timestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ValueInIA = 123,
-#'     ValueInStandard = 123
-#'   ),
-#'   PerformanceMode = "generalPurpose"|"maxIO",
-#'   Encrypted = TRUE|FALSE,
-#'   KmsKeyId = "string",
-#'   ThroughputMode = "bursting"|"provisioned",
-#'   ProvisionedThroughputInMibps = 123.0,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_file_system(
-#'   CreationToken = "string",
-#'   PerformanceMode = "generalPurpose"|"maxIO",
-#'   Encrypted = TRUE|FALSE,
-#'   KmsKeyId = "string",
-#'   ThroughputMode = "bursting"|"provisioned",
-#'   ProvisionedThroughputInMibps = 123.0,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation creates a new file system with the default generalpurpose
-#' # performance mode.
-#' svc$create_file_system(
-#'   CreationToken = "tokenstring",
-#'   PerformanceMode = "generalPurpose",
-#'   Tags = list(
-#'     list(
-#'       Key = "Name",
-#'       Value = "MyFileSystem"
-#'     )
-#'   )
-#' )
-#' }
+#' is 1024 MiB/s. To increase this limit, contact Amazon Web Services
+#' Support. For more information, see [Amazon EFS quotas that you can
+#' increase](https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits)
+#' in the *Amazon EFS User Guide*.
+#' @param AvailabilityZoneName Used to create a file system that uses One Zone storage classes. It
+#' specifies the Amazon Web Services Availability Zone in which to create
+#' the file system. Use the format `us-east-1a` to specify the Availability
+#' Zone. For more information about One Zone storage classes, see [Using
+#' EFS storage
+#' classes](https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html)
+#' in the *Amazon EFS User Guide*.
+#' 
+#' One Zone storage classes are not available in all Availability Zones in
+#' Amazon Web Services Regions where Amazon EFS is available.
+#' @param Backup Specifies whether automatic backups are enabled on the file system that
+#' you are creating. Set the value to `true` to enable automatic backups.
+#' If you are creating a file system that uses One Zone storage classes,
+#' automatic backups are enabled by default. For more information, see
+#' [Automatic
+#' backups](https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html#automatic-backups)
+#' in the *Amazon EFS User Guide*.
+#' 
+#' Default is `false`. However, if you specify an `AvailabilityZoneName`,
+#' the default is `true`.
+#' 
+#' Backup is not available in all Amazon Web Services Regions where Amazon
+#' EFS is available.
+#' @param Tags Use to create one or more tags associated with the file system. Each tag
+#' is a user-defined key-value pair. Name your file system on creation by
+#' including a `"Key":"Name","Value":"{value}"` key-value pair. Each key
+#' must be unique. For more information, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *Amazon Web Services General Reference Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname efs_create_file_system
-efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encrypted = NULL, KmsKeyId = NULL, ThroughputMode = NULL, ProvisionedThroughputInMibps = NULL, Tags = NULL) {
+efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encrypted = NULL, KmsKeyId = NULL, ThroughputMode = NULL, ProvisionedThroughputInMibps = NULL, AvailabilityZoneName = NULL, Backup = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateFileSystem",
     http_method = "POST",
     http_path = "/2015-02-01/file-systems",
     paginator = list()
   )
-  input <- .efs$create_file_system_input(CreationToken = CreationToken, PerformanceMode = PerformanceMode, Encrypted = Encrypted, KmsKeyId = KmsKeyId, ThroughputMode = ThroughputMode, ProvisionedThroughputInMibps = ProvisionedThroughputInMibps, Tags = Tags)
+  input <- .efs$create_file_system_input(CreationToken = CreationToken, PerformanceMode = PerformanceMode, Encrypted = Encrypted, KmsKeyId = KmsKeyId, ThroughputMode = ThroughputMode, ProvisionedThroughputInMibps = ProvisionedThroughputInMibps, AvailabilityZoneName = AvailabilityZoneName, Backup = Backup, Tags = Tags)
   output <- .efs$create_file_system_output()
   config <- get_config()
   svc <- .efs$service(config)
@@ -336,162 +172,17 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #' Creates a mount target for a file system
 #'
 #' @description
-#' Creates a mount target for a file system. You can then mount the file
-#' system on EC2 instances by using the mount target.
-#' 
-#' You can create one mount target in each Availability Zone in your VPC.
-#' All EC2 instances in a VPC within a given Availability Zone share a
-#' single mount target for a given file system. If you have multiple
-#' subnets in an Availability Zone, you create a mount target in one of the
-#' subnets. EC2 instances do not need to be in the same subnet as the mount
-#' target in order to access their file system. For more information, see
-#' [Amazon EFS: How it
-#' Works](https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html).
-#' 
-#' In the request, you also specify a file system ID for which you are
-#' creating the mount target and the file system's lifecycle state must be
-#' `available`. For more information, see
-#' [`describe_file_systems`][efs_describe_file_systems].
-#' 
-#' In the request, you also provide a subnet ID, which determines the
-#' following:
-#' 
-#' -   VPC in which Amazon EFS creates the mount target
-#' 
-#' -   Availability Zone in which Amazon EFS creates the mount target
-#' 
-#' -   IP address range from which Amazon EFS selects the IP address of the
-#'     mount target (if you don't specify an IP address in the request)
-#' 
-#' After creating the mount target, Amazon EFS returns a response that
-#' includes, a `MountTargetId` and an `IpAddress`. You use this IP address
-#' when mounting the file system in an EC2 instance. You can also use the
-#' mount target's DNS name when mounting the file system. The EC2 instance
-#' on which you mount the file system by using the mount target can resolve
-#' the mount target's DNS name to its IP address. For more information, see
-#' [How it Works: Implementation
-#' Overview](https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html#how-it-works-implementation).
-#' 
-#' Note that you can create mount targets for a file system in only one
-#' VPC, and there can be only one mount target per Availability Zone. That
-#' is, if the file system already has one or more mount targets created for
-#' it, the subnet specified in the request to add another mount target must
-#' meet the following requirements:
-#' 
-#' -   Must belong to the same VPC as the subnets of the existing mount
-#'     targets
-#' 
-#' -   Must not be in the same Availability Zone as any of the subnets of
-#'     the existing mount targets
-#' 
-#' If the request satisfies the requirements, Amazon EFS does the
-#' following:
-#' 
-#' -   Creates a new mount target in the specified subnet.
-#' 
-#' -   Also creates a new network interface in the subnet as follows:
-#' 
-#'     -   If the request provides an `IpAddress`, Amazon EFS assigns that
-#'         IP address to the network interface. Otherwise, Amazon EFS
-#'         assigns a free address in the subnet (in the same way that the
-#'         Amazon EC2 `CreateNetworkInterface` call does when a request
-#'         does not specify a primary private IP address).
-#' 
-#'     -   If the request provides `SecurityGroups`, this network interface
-#'         is associated with those security groups. Otherwise, it belongs
-#'         to the default security group for the subnet's VPC.
-#' 
-#'     -   Assigns the description
-#'         `Mount target fsmt-id for file system fs-id ` where ` fsmt-id `
-#'         is the mount target ID, and ` fs-id ` is the `FileSystemId`.
-#' 
-#'     -   Sets the `requesterManaged` property of the network interface to
-#'         `true`, and the `requesterId` value to `EFS`.
-#' 
-#'     Each Amazon EFS mount target has one corresponding requester-managed
-#'     EC2 network interface. After the network interface is created,
-#'     Amazon EFS sets the `NetworkInterfaceId` field in the mount target's
-#'     description to the network interface ID, and the `IpAddress` field
-#'     to its address. If network interface creation fails, the entire
-#'     [`create_mount_target`][efs_create_mount_target] operation fails.
-#' 
-#' The [`create_mount_target`][efs_create_mount_target] call returns only
-#' after creating the network interface, but while the mount target state
-#' is still `creating`, you can check the mount target creation status by
-#' calling the [`describe_mount_targets`][efs_describe_mount_targets]
-#' operation, which among other things returns the mount target state.
-#' 
-#' We recommend that you create a mount target in each of the Availability
-#' Zones. There are cost considerations for using a file system in an
-#' Availability Zone through a mount target created in another Availability
-#' Zone. For more information, see [Amazon
-#' EFS](https://aws.amazon.com/efs/). In addition, by always using a mount
-#' target local to the instance's Availability Zone, you eliminate a
-#' partial failure scenario. If the Availability Zone in which your mount
-#' target is created goes down, then you can't access your file system
-#' through that mount target.
-#' 
-#' This operation requires permissions for the following action on the file
-#' system:
-#' 
-#' -   `elasticfilesystem:CreateMountTarget`
-#' 
-#' This operation also requires permissions for the following Amazon EC2
-#' actions:
-#' 
-#' -   `ec2:DescribeSubnets`
-#' 
-#' -   `ec2:DescribeNetworkInterfaces`
-#' 
-#' -   `ec2:CreateNetworkInterface`
+#' Creates a mount target for a file system. You can then mount the file system on EC2 instances by using the mount target.
 #'
-#' @usage
-#' efs_create_mount_target(FileSystemId, SubnetId, IpAddress,
-#'   SecurityGroups)
+#' See [https://paws-r.github.io/docs/efs/create_mount_target.html](https://paws-r.github.io/docs/efs/create_mount_target.html) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system for which to create the mount target.
-#' @param SubnetId &#91;required&#93; The ID of the subnet to add the mount target in.
+#' @param SubnetId &#91;required&#93; The ID of the subnet to add the mount target in. For file systems that
+#' use One Zone storage classes, use the subnet that is associated with the
+#' file system's Availability Zone.
 #' @param IpAddress Valid IPv4 address within the address range of the specified subnet.
 #' @param SecurityGroups Up to five VPC security group IDs, of the form `sg-xxxxxxxx`. These must
 #' be for the same VPC as subnet specified.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OwnerId = "string",
-#'   MountTargetId = "string",
-#'   FileSystemId = "string",
-#'   SubnetId = "string",
-#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
-#'   IpAddress = "string",
-#'   NetworkInterfaceId = "string",
-#'   AvailabilityZoneId = "string",
-#'   AvailabilityZoneName = "string",
-#'   VpcId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_mount_target(
-#'   FileSystemId = "string",
-#'   SubnetId = "string",
-#'   IpAddress = "string",
-#'   SecurityGroups = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation creates a new mount target for an EFS file system.
-#' svc$create_mount_target(
-#'   FileSystemId = "fs-01234567",
-#'   SubnetId = "subnet-1234abcd"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -513,55 +204,50 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
 }
 .efs$operations$create_mount_target <- efs_create_mount_target
 
-#' Creates or overwrites tags associated with a file system
+#' Creates a replication configuration that replicates an existing EFS file
+#' system to a new, read-only file system
 #'
 #' @description
-#' Creates or overwrites tags associated with a file system. Each tag is a
-#' key-value pair. If a tag key specified in the request already exists on
-#' the file system, this operation overwrites its value with the value
-#' provided in the request. If you add the `Name` tag to your file system,
-#' Amazon EFS returns it in the response to the
-#' [`describe_file_systems`][efs_describe_file_systems] operation.
-#' 
-#' This operation requires permission for the
-#' `elasticfilesystem:CreateTags` action.
+#' Creates a replication configuration that replicates an existing EFS file system to a new, read-only file system. For more information, see [Amazon EFS replication](https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html) in the *Amazon EFS User Guide*. The replication configuration specifies the following:
 #'
-#' @usage
-#' efs_create_tags(FileSystemId, Tags)
+#' See [https://paws-r.github.io/docs/efs/create_replication_configuration.html](https://paws-r.github.io/docs/efs/create_replication_configuration.html) for full documentation.
+#'
+#' @param SourceFileSystemId &#91;required&#93; Specifies the Amazon EFS file system that you want to replicate. This
+#' file system cannot already be a source or destination file system in
+#' another replication configuration.
+#' @param Destinations &#91;required&#93; An array of destination configuration objects. Only one destination
+#' configuration object is supported.
+#'
+#' @keywords internal
+#'
+#' @rdname efs_create_replication_configuration
+efs_create_replication_configuration <- function(SourceFileSystemId, Destinations) {
+  op <- new_operation(
+    name = "CreateReplicationConfiguration",
+    http_method = "POST",
+    http_path = "/2015-02-01/file-systems/{SourceFileSystemId}/replication-configuration",
+    paginator = list()
+  )
+  input <- .efs$create_replication_configuration_input(SourceFileSystemId = SourceFileSystemId, Destinations = Destinations)
+  output <- .efs$create_replication_configuration_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$create_replication_configuration <- efs_create_replication_configuration
+
+#' DEPRECATED - CreateTags is deprecated and not maintained
+#'
+#' @description
+#' DEPRECATED - [`create_tags`][efs_create_tags] is deprecated and not maintained. To create tags for EFS resources, use the API action.
+#'
+#' See [https://paws-r.github.io/docs/efs/create_tags.html](https://paws-r.github.io/docs/efs/create_tags.html) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system whose tags you want to modify (String). This
 #' operation modifies the tags only, not the file system.
 #' @param Tags &#91;required&#93; An array of `Tag` objects to add. Each `Tag` object is a key-value pair.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_tags(
-#'   FileSystemId = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation creates a new tag for an EFS file system.
-#' svc$create_tags(
-#'   FileSystemId = "fs-01234567",
-#'   Tags = list(
-#'     list(
-#'       Key = "Name",
-#'       Value = "MyFileSystem"
-#'     )
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -586,28 +272,11 @@ efs_create_tags <- function(FileSystemId, Tags) {
 #' Deletes the specified access point
 #'
 #' @description
-#' Deletes the specified access point. After deletion is complete, new
-#' clients can no longer connect to the access points. Clients connected to
-#' the access point at the time of deletion will continue to function until
-#' they terminate their connection.
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:DeleteAccessPoint` action.
+#' Deletes the specified access point. After deletion is complete, new clients can no longer connect to the access points. Clients connected to the access point at the time of deletion will continue to function until they terminate their connection.
 #'
-#' @usage
-#' efs_delete_access_point(AccessPointId)
+#' See [https://paws-r.github.io/docs/efs/delete_access_point.html](https://paws-r.github.io/docs/efs/delete_access_point.html) for full documentation.
 #'
 #' @param AccessPointId &#91;required&#93; The ID of the access point that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_access_point(
-#'   AccessPointId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -632,49 +301,11 @@ efs_delete_access_point <- function(AccessPointId) {
 #' Deletes a file system, permanently severing access to its contents
 #'
 #' @description
-#' Deletes a file system, permanently severing access to its contents. Upon
-#' return, the file system no longer exists and you can't access any
-#' contents of the deleted file system.
-#' 
-#' You can't delete a file system that is in use. That is, if the file
-#' system has any mount targets, you must first delete them. For more
-#' information, see [`describe_mount_targets`][efs_describe_mount_targets]
-#' and [`delete_mount_target`][efs_delete_mount_target].
-#' 
-#' The [`delete_file_system`][efs_delete_file_system] call returns while
-#' the file system state is still `deleting`. You can check the file system
-#' deletion status by calling the
-#' [`describe_file_systems`][efs_describe_file_systems] operation, which
-#' returns a list of file systems in your account. If you pass file system
-#' ID or creation token for the deleted file system, the
-#' [`describe_file_systems`][efs_describe_file_systems] returns a
-#' `404 FileSystemNotFound` error.
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:DeleteFileSystem` action.
+#' Deletes a file system, permanently severing access to its contents. Upon return, the file system no longer exists and you can't access any contents of the deleted file system.
 #'
-#' @usage
-#' efs_delete_file_system(FileSystemId)
+#' See [https://paws-r.github.io/docs/efs/delete_file_system.html](https://paws-r.github.io/docs/efs/delete_file_system.html) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_file_system(
-#'   FileSystemId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation deletes an EFS file system.
-#' svc$delete_file_system(
-#'   FileSystemId = "fs-01234567"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -699,30 +330,12 @@ efs_delete_file_system <- function(FileSystemId) {
 #' Deletes the FileSystemPolicy for the specified file system
 #'
 #' @description
-#' Deletes the `FileSystemPolicy` for the specified file system. The
-#' default `FileSystemPolicy` goes into effect once the existing policy is
-#' deleted. For more information about the default file system policy, see
-#' [Using Resource-based Policies with
-#' EFS](https://docs.aws.amazon.com/efs/latest/ug/).
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:DeleteFileSystemPolicy` action.
+#' Deletes the `FileSystemPolicy` for the specified file system. The default `FileSystemPolicy` goes into effect once the existing policy is deleted. For more information about the default file system policy, see [Using Resource-based Policies with EFS](https://docs.aws.amazon.com/efs/latest/ug/).
 #'
-#' @usage
-#' efs_delete_file_system_policy(FileSystemId)
+#' See [https://paws-r.github.io/docs/efs/delete_file_system_policy.html](https://paws-r.github.io/docs/efs/delete_file_system_policy.html) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; Specifies the EFS file system for which to delete the
 #' `FileSystemPolicy`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_file_system_policy(
-#'   FileSystemId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -748,55 +361,10 @@ efs_delete_file_system_policy <- function(FileSystemId) {
 #'
 #' @description
 #' Deletes the specified mount target.
-#' 
-#' This operation forcibly breaks any mounts of the file system by using
-#' the mount target that is being deleted, which might disrupt instances or
-#' applications using those mounts. To avoid applications getting cut off
-#' abruptly, you might consider unmounting any mounts of the mount target,
-#' if feasible. The operation also deletes the associated network
-#' interface. Uncommitted writes might be lost, but breaking a mount target
-#' using this operation does not corrupt the file system itself. The file
-#' system you created remains. You can mount an EC2 instance in your VPC by
-#' using another mount target.
-#' 
-#' This operation requires permissions for the following action on the file
-#' system:
-#' 
-#' -   `elasticfilesystem:DeleteMountTarget`
-#' 
-#' The [`delete_mount_target`][efs_delete_mount_target] call returns while
-#' the mount target state is still `deleting`. You can check the mount
-#' target deletion by calling the
-#' [`describe_mount_targets`][efs_describe_mount_targets] operation, which
-#' returns a list of mount target descriptions for the given file system.
-#' 
-#' The operation also requires permissions for the following Amazon EC2
-#' action on the mount target's network interface:
-#' 
-#' -   `ec2:DeleteNetworkInterface`
 #'
-#' @usage
-#' efs_delete_mount_target(MountTargetId)
+#' See [https://paws-r.github.io/docs/efs/delete_mount_target.html](https://paws-r.github.io/docs/efs/delete_mount_target.html) for full documentation.
 #'
 #' @param MountTargetId &#91;required&#93; The ID of the mount target to delete (String).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_mount_target(
-#'   MountTargetId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation deletes a mount target.
-#' svc$delete_mount_target(
-#'   MountTargetId = "fsmt-12340abc"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -818,48 +386,44 @@ efs_delete_mount_target <- function(MountTargetId) {
 }
 .efs$operations$delete_mount_target <- efs_delete_mount_target
 
-#' Deletes the specified tags from a file system
+#' Deletes an existing replication configuration
 #'
 #' @description
-#' Deletes the specified tags from a file system. If the
-#' [`delete_tags`][efs_delete_tags] request includes a tag key that doesn't
-#' exist, Amazon EFS ignores it and doesn't cause an error. For more
-#' information about tags and related restrictions, see [Tag
-#' Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management User Guide*.
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:DeleteTags` action.
+#' Deletes an existing replication configuration. To delete a replication configuration, you must make the request from the Amazon Web Services Region in which the destination file system is located. Deleting a replication configuration ends the replication process. After a replication configuration is deleted, the destination file system is no longer read-only. You can write to the destination file system after its status becomes `Writeable`.
 #'
-#' @usage
-#' efs_delete_tags(FileSystemId, TagKeys)
+#' See [https://paws-r.github.io/docs/efs/delete_replication_configuration.html](https://paws-r.github.io/docs/efs/delete_replication_configuration.html) for full documentation.
+#'
+#' @param SourceFileSystemId &#91;required&#93; The ID of the source file system in the replication configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname efs_delete_replication_configuration
+efs_delete_replication_configuration <- function(SourceFileSystemId) {
+  op <- new_operation(
+    name = "DeleteReplicationConfiguration",
+    http_method = "DELETE",
+    http_path = "/2015-02-01/file-systems/{SourceFileSystemId}/replication-configuration",
+    paginator = list()
+  )
+  input <- .efs$delete_replication_configuration_input(SourceFileSystemId = SourceFileSystemId)
+  output <- .efs$delete_replication_configuration_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$delete_replication_configuration <- efs_delete_replication_configuration
+
+#' DEPRECATED - DeleteTags is deprecated and not maintained
+#'
+#' @description
+#' DEPRECATED - [`delete_tags`][efs_delete_tags] is deprecated and not maintained. To remove tags from EFS resources, use the API action.
+#'
+#' See [https://paws-r.github.io/docs/efs/delete_tags.html](https://paws-r.github.io/docs/efs/delete_tags.html) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system whose tags you want to delete (String).
 #' @param TagKeys &#91;required&#93; A list of tag keys to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_tags(
-#'   FileSystemId = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation deletes tags for an EFS file system.
-#' svc$delete_tags(
-#'   FileSystemId = "fs-01234567",
-#'   TagKeys = list(
-#'     "Name"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -885,18 +449,9 @@ efs_delete_tags <- function(FileSystemId, TagKeys) {
 #' AccessPointId is provided
 #'
 #' @description
-#' Returns the description of a specific Amazon EFS access point if the
-#' `AccessPointId` is provided. If you provide an EFS `FileSystemId`, it
-#' returns descriptions of all access points for that file system. You can
-#' provide either an `AccessPointId` or a `FileSystemId` in the request,
-#' but not both.
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:DescribeAccessPoints` action.
+#' Returns the description of a specific Amazon EFS access point if the `AccessPointId` is provided. If you provide an EFS `FileSystemId`, it returns descriptions of all access points for that file system. You can provide either an `AccessPointId` or a `FileSystemId` in the request, but not both.
 #'
-#' @usage
-#' efs_describe_access_points(MaxResults, NextToken, AccessPointId,
-#'   FileSystemId)
+#' See [https://paws-r.github.io/docs/efs/describe_access_points.html](https://paws-r.github.io/docs/efs/describe_access_points.html) for full documentation.
 #'
 #' @param MaxResults (Optional) When retrieving all access points for a file system, you can
 #' optionally specify the `MaxItems` parameter to limit the number of
@@ -908,56 +463,6 @@ efs_delete_tags <- function(FileSystemId, TagKeys) {
 #' mutually exclusive with `FileSystemId`.
 #' @param FileSystemId (Optional) If you provide a `FileSystemId`, EFS returns all access
 #' points for that file system; mutually exclusive with `AccessPointId`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccessPoints = list(
-#'     list(
-#'       ClientToken = "string",
-#'       Name = "string",
-#'       Tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       AccessPointId = "string",
-#'       AccessPointArn = "string",
-#'       FileSystemId = "string",
-#'       PosixUser = list(
-#'         Uid = 123,
-#'         Gid = 123,
-#'         SecondaryGids = list(
-#'           123
-#'         )
-#'       ),
-#'       RootDirectory = list(
-#'         Path = "string",
-#'         CreationInfo = list(
-#'           OwnerUid = 123,
-#'           OwnerGid = 123,
-#'           Permissions = "string"
-#'         )
-#'       ),
-#'       OwnerId = "string",
-#'       LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_access_points(
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   AccessPointId = "string",
-#'   FileSystemId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -979,32 +484,50 @@ efs_describe_access_points <- function(MaxResults = NULL, NextToken = NULL, Acce
 }
 .efs$operations$describe_access_points <- efs_describe_access_points
 
+#' Returns the account preferences settings for the Amazon Web Services
+#' account associated with the user making the request, in the current
+#' Amazon Web Services Region
+#'
+#' @description
+#' Returns the account preferences settings for the Amazon Web Services account associated with the user making the request, in the current Amazon Web Services Region. For more information, see [Managing Amazon EFS resource IDs](https://docs.aws.amazon.com/efs/latest/ug/).
+#'
+#' See [https://paws-r.github.io/docs/efs/describe_account_preferences.html](https://paws-r.github.io/docs/efs/describe_account_preferences.html) for full documentation.
+#'
+#' @param NextToken (Optional) You can use `NextToken` in a subsequent request to fetch the
+#' next page of Amazon Web Services account preferences if the response
+#' payload was paginated.
+#' @param MaxResults (Optional) When retrieving account preferences, you can optionally
+#' specify the `MaxItems` parameter to limit the number of objects returned
+#' in a response. The default value is 100.
+#'
+#' @keywords internal
+#'
+#' @rdname efs_describe_account_preferences
+efs_describe_account_preferences <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeAccountPreferences",
+    http_method = "GET",
+    http_path = "/2015-02-01/account-preferences",
+    paginator = list()
+  )
+  input <- .efs$describe_account_preferences_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .efs$describe_account_preferences_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$describe_account_preferences <- efs_describe_account_preferences
+
 #' Returns the backup policy for the specified EFS file system
 #'
 #' @description
 #' Returns the backup policy for the specified EFS file system.
 #'
-#' @usage
-#' efs_describe_backup_policy(FileSystemId)
+#' See [https://paws-r.github.io/docs/efs/describe_backup_policy.html](https://paws-r.github.io/docs/efs/describe_backup_policy.html) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; Specifies which EFS file system to retrieve the `BackupPolicy` for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BackupPolicy = list(
-#'     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_backup_policy(
-#'   FileSystemId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1030,30 +553,10 @@ efs_describe_backup_policy <- function(FileSystemId) {
 #'
 #' @description
 #' Returns the `FileSystemPolicy` for the specified EFS file system.
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:DescribeFileSystemPolicy` action.
 #'
-#' @usage
-#' efs_describe_file_system_policy(FileSystemId)
+#' See [https://paws-r.github.io/docs/efs/describe_file_system_policy.html](https://paws-r.github.io/docs/efs/describe_file_system_policy.html) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; Specifies which EFS file system to retrieve the `FileSystemPolicy` for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FileSystemId = "string",
-#'   Policy = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_file_system_policy(
-#'   FileSystemId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1079,37 +582,9 @@ efs_describe_file_system_policy <- function(FileSystemId) {
 #' the file system CreationToken or the FileSystemId is provided
 #'
 #' @description
-#' Returns the description of a specific Amazon EFS file system if either
-#' the file system `CreationToken` or the `FileSystemId` is provided.
-#' Otherwise, it returns descriptions of all file systems owned by the
-#' caller's AWS account in the AWS Region of the endpoint that you're
-#' calling.
-#' 
-#' When retrieving all file system descriptions, you can optionally specify
-#' the `MaxItems` parameter to limit the number of descriptions in a
-#' response. Currently, this number is automatically set to 10. If more
-#' file system descriptions remain, Amazon EFS returns a `NextMarker`, an
-#' opaque token, in the response. In this case, you should send a
-#' subsequent request with the `Marker` request parameter set to the value
-#' of `NextMarker`.
-#' 
-#' To retrieve a list of your file system descriptions, this operation is
-#' used in an iterative process, where
-#' [`describe_file_systems`][efs_describe_file_systems] is called first
-#' without the `Marker` and then the operation continues to call it with
-#' the `Marker` parameter set to the value of the `NextMarker` from the
-#' previous response until the response has no `NextMarker`.
-#' 
-#' The order of file systems returned in the response of one
-#' [`describe_file_systems`][efs_describe_file_systems] call and the order
-#' of file systems returned across the responses of a multi-call iteration
-#' is unspecified.
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:DescribeFileSystems` action.
+#' Returns the description of a specific Amazon EFS file system if either the file system `CreationToken` or the `FileSystemId` is provided. Otherwise, it returns descriptions of all file systems owned by the caller's Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 #'
-#' @usage
-#' efs_describe_file_systems(MaxItems, Marker, CreationToken, FileSystemId)
+#' See [https://paws-r.github.io/docs/efs/describe_file_systems.html](https://paws-r.github.io/docs/efs/describe_file_systems.html) for full documentation.
 #'
 #' @param MaxItems (Optional) Specifies the maximum number of file systems to return in the
 #' response (integer). This number is automatically set to 100. The
@@ -1124,64 +599,6 @@ efs_describe_file_system_policy <- function(FileSystemId) {
 #' EFS file system.
 #' @param FileSystemId (Optional) ID of the file system whose description you want to retrieve
 #' (String).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   FileSystems = list(
-#'     list(
-#'       OwnerId = "string",
-#'       CreationToken = "string",
-#'       FileSystemId = "string",
-#'       FileSystemArn = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
-#'       Name = "string",
-#'       NumberOfMountTargets = 123,
-#'       SizeInBytes = list(
-#'         Value = 123,
-#'         Timestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         ValueInIA = 123,
-#'         ValueInStandard = 123
-#'       ),
-#'       PerformanceMode = "generalPurpose"|"maxIO",
-#'       Encrypted = TRUE|FALSE,
-#'       KmsKeyId = "string",
-#'       ThroughputMode = "bursting"|"provisioned",
-#'       ProvisionedThroughputInMibps = 123.0,
-#'       Tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_file_systems(
-#'   MaxItems = 123,
-#'   Marker = "string",
-#'   CreationToken = "string",
-#'   FileSystemId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation describes all of the EFS file systems in an account.
-#' svc$describe_file_systems()
-#' }
 #'
 #' @keywords internal
 #'
@@ -1207,50 +624,12 @@ efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationTo
 #' Amazon EFS file system
 #'
 #' @description
-#' Returns the current `LifecycleConfiguration` object for the specified
-#' Amazon EFS file system. EFS lifecycle management uses the
-#' `LifecycleConfiguration` object to identify which files to move to the
-#' EFS Infrequent Access (IA) storage class. For a file system without a
-#' `LifecycleConfiguration` object, the call returns an empty array in the
-#' response.
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:DescribeLifecycleConfiguration` operation.
+#' Returns the current `LifecycleConfiguration` object for the specified Amazon EFS file system. EFS lifecycle management uses the `LifecycleConfiguration` object to identify which files to move to the EFS Infrequent Access (IA) storage class. For a file system without a `LifecycleConfiguration` object, the call returns an empty array in the response.
 #'
-#' @usage
-#' efs_describe_lifecycle_configuration(FileSystemId)
+#' See [https://paws-r.github.io/docs/efs/describe_lifecycle_configuration.html](https://paws-r.github.io/docs/efs/describe_lifecycle_configuration.html) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system whose `LifecycleConfiguration` object you want
 #' to retrieve (String).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LifecyclePolicies = list(
-#'     list(
-#'       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_lifecycle_configuration(
-#'   FileSystemId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation describes a file system's LifecycleConfiguration. EFS
-#' # lifecycle management uses the LifecycleConfiguration object to identify
-#' # which files to move to the EFS Infrequent Access (IA) storage class.
-#' svc$describe_lifecycle_configuration(
-#'   FileSystemId = "fs-01234567"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1275,49 +654,11 @@ efs_describe_lifecycle_configuration <- function(FileSystemId) {
 #' Returns the security groups currently in effect for a mount target
 #'
 #' @description
-#' Returns the security groups currently in effect for a mount target. This
-#' operation requires that the network interface of the mount target has
-#' been created and the lifecycle state of the mount target is not
-#' `deleted`.
-#' 
-#' This operation requires permissions for the following actions:
-#' 
-#' -   `elasticfilesystem:DescribeMountTargetSecurityGroups` action on the
-#'     mount target's file system.
-#' 
-#' -   `ec2:DescribeNetworkInterfaceAttribute` action on the mount target's
-#'     network interface.
+#' Returns the security groups currently in effect for a mount target. This operation requires that the network interface of the mount target has been created and the lifecycle state of the mount target is not `deleted`.
 #'
-#' @usage
-#' efs_describe_mount_target_security_groups(MountTargetId)
+#' See [https://paws-r.github.io/docs/efs/describe_mount_target_security_groups.html](https://paws-r.github.io/docs/efs/describe_mount_target_security_groups.html) for full documentation.
 #'
 #' @param MountTargetId &#91;required&#93; The ID of the mount target whose security groups you want to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SecurityGroups = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_mount_target_security_groups(
-#'   MountTargetId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation describes all of the security groups for a file system's
-#' # mount target.
-#' svc$describe_mount_target_security_groups(
-#'   MountTargetId = "fsmt-12340abc"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1343,19 +684,9 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
 #' mount target, for a file system
 #'
 #' @description
-#' Returns the descriptions of all the current mount targets, or a specific
-#' mount target, for a file system. When requesting all of the current
-#' mount targets, the order of mount targets returned in the response is
-#' unspecified.
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:DescribeMountTargets` action, on either the file
-#' system ID that you specify in `FileSystemId`, or on the file system of
-#' the mount target that you specify in `MountTargetId`.
+#' Returns the descriptions of all the current mount targets, or a specific mount target, for a file system. When requesting all of the current mount targets, the order of mount targets returned in the response is unspecified.
 #'
-#' @usage
-#' efs_describe_mount_targets(MaxItems, Marker, FileSystemId,
-#'   MountTargetId, AccessPointId)
+#' See [https://paws-r.github.io/docs/efs/describe_mount_targets.html](https://paws-r.github.io/docs/efs/describe_mount_targets.html) for full documentation.
 #'
 #' @param MaxItems (Optional) Maximum number of mount targets to return in the response.
 #' Currently, this number is automatically set to 10, and other values are
@@ -1377,48 +708,6 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
 #' `MountTargetId` is not included in your request. Accepts either an
 #' access point ID or ARN as input.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   MountTargets = list(
-#'     list(
-#'       OwnerId = "string",
-#'       MountTargetId = "string",
-#'       FileSystemId = "string",
-#'       SubnetId = "string",
-#'       LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
-#'       IpAddress = "string",
-#'       NetworkInterfaceId = "string",
-#'       AvailabilityZoneId = "string",
-#'       AvailabilityZoneName = "string",
-#'       VpcId = "string"
-#'     )
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_mount_targets(
-#'   MaxItems = 123,
-#'   Marker = "string",
-#'   FileSystemId = "string",
-#'   MountTargetId = "string",
-#'   AccessPointId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation describes all of a file system's mount targets.
-#' svc$describe_mount_targets(
-#'   FileSystemId = "fs-01234567"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname efs_describe_mount_targets
@@ -1439,19 +728,46 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
 }
 .efs$operations$describe_mount_targets <- efs_describe_mount_targets
 
-#' Returns the tags associated with a file system
+#' Retrieves the replication configuration for a specific file system
 #'
 #' @description
-#' Returns the tags associated with a file system. The order of tags
-#' returned in the response of one [`describe_tags`][efs_describe_tags]
-#' call and the order of tags returned across the responses of a
-#' multiple-call iteration (when using pagination) is unspecified.
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:DescribeTags` action.
+#' Retrieves the replication configuration for a specific file system. If a file system is not specified, all of the replication configurations for the Amazon Web Services account in an Amazon Web Services Region are retrieved.
 #'
-#' @usage
-#' efs_describe_tags(MaxItems, Marker, FileSystemId)
+#' See [https://paws-r.github.io/docs/efs/describe_replication_configurations.html](https://paws-r.github.io/docs/efs/describe_replication_configurations.html) for full documentation.
+#'
+#' @param FileSystemId You can retrieve the replication configuration for a specific file
+#' system by providing its file system ID.
+#' @param NextToken `NextToken` is present if the response is paginated. You can use
+#' `NextToken` in a subsequent request to fetch the next page of output.
+#' @param MaxResults (Optional) To limit the number of objects returned in a response, you
+#' can specify the `MaxItems` parameter. The default value is 100.
+#'
+#' @keywords internal
+#'
+#' @rdname efs_describe_replication_configurations
+efs_describe_replication_configurations <- function(FileSystemId = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeReplicationConfigurations",
+    http_method = "GET",
+    http_path = "/2015-02-01/file-systems/replication-configurations",
+    paginator = list()
+  )
+  input <- .efs$describe_replication_configurations_input(FileSystemId = FileSystemId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .efs$describe_replication_configurations_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$describe_replication_configurations <- efs_describe_replication_configurations
+
+#' DEPRECATED - The DescribeTags action is deprecated and not maintained
+#'
+#' @description
+#' DEPRECATED - The [`describe_tags`][efs_describe_tags] action is deprecated and not maintained. To view tags associated with EFS resources, use the [`list_tags_for_resource`][efs_list_tags_for_resource] API action.
+#'
+#' See [https://paws-r.github.io/docs/efs/describe_tags.html](https://paws-r.github.io/docs/efs/describe_tags.html) for full documentation.
 #'
 #' @param MaxItems (Optional) The maximum number of file system tags to return in the
 #' response. Currently, this number is automatically set to 100, and other
@@ -1461,38 +777,6 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
 #' [`describe_tags`][efs_describe_tags] operation (String). If present, it
 #' specifies to continue the list from where the previous call left off.
 #' @param FileSystemId &#91;required&#93; The ID of the file system whose tag set you want to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Marker = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextMarker = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_tags(
-#'   MaxItems = 123,
-#'   Marker = "string",
-#'   FileSystemId = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation describes all of a file system's tags.
-#' svc$describe_tags(
-#'   FileSystemId = "fs-01234567"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1517,45 +801,18 @@ efs_describe_tags <- function(MaxItems = NULL, Marker = NULL, FileSystemId) {
 #' Lists all tags for a top-level EFS resource
 #'
 #' @description
-#' Lists all tags for a top-level EFS resource. You must provide the ID of
-#' the resource that you want to retrieve the tags for.
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:DescribeAccessPoints` action.
+#' Lists all tags for a top-level EFS resource. You must provide the ID of the resource that you want to retrieve the tags for.
 #'
-#' @usage
-#' efs_list_tags_for_resource(ResourceId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/efs/list_tags_for_resource.html](https://paws-r.github.io/docs/efs/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; Specifies the EFS resource you want to retrieve tags for. You can
 #' retrieve tags for EFS file systems and access points using this API
 #' endpoint.
 #' @param MaxResults (Optional) Specifies the maximum number of tag objects to return in the
 #' response. The default value is 100.
-#' @param NextToken You can use `NextToken` in a subsequent request to fetch the next page
-#' of access point descriptions if the response payload was paginated.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
+#' @param NextToken (Optional) You can use `NextToken` in a subsequent request to fetch the
+#' next page of access point descriptions if the response payload was
+#' paginated.
 #'
 #' @keywords internal
 #'
@@ -1581,54 +838,11 @@ efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken 
 #'
 #' @description
 #' Modifies the set of security groups in effect for a mount target.
-#' 
-#' When you create a mount target, Amazon EFS also creates a new network
-#' interface. For more information, see
-#' [`create_mount_target`][efs_create_mount_target]. This operation
-#' replaces the security groups in effect for the network interface
-#' associated with a mount target, with the `SecurityGroups` provided in
-#' the request. This operation requires that the network interface of the
-#' mount target has been created and the lifecycle state of the mount
-#' target is not `deleted`.
-#' 
-#' The operation requires permissions for the following actions:
-#' 
-#' -   `elasticfilesystem:ModifyMountTargetSecurityGroups` action on the
-#'     mount target's file system.
-#' 
-#' -   `ec2:ModifyNetworkInterfaceAttribute` action on the mount target's
-#'     network interface.
 #'
-#' @usage
-#' efs_modify_mount_target_security_groups(MountTargetId, SecurityGroups)
+#' See [https://paws-r.github.io/docs/efs/modify_mount_target_security_groups.html](https://paws-r.github.io/docs/efs/modify_mount_target_security_groups.html) for full documentation.
 #'
 #' @param MountTargetId &#91;required&#93; The ID of the mount target whose security groups you want to modify.
 #' @param SecurityGroups An array of up to five VPC security group IDs.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_mount_target_security_groups(
-#'   MountTargetId = "string",
-#'   SecurityGroups = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation modifies the security groups associated with a mount
-#' # target for a file system.
-#' svc$modify_mount_target_security_groups(
-#'   MountTargetId = "fsmt-12340abc",
-#'   SecurityGroups = list(
-#'     "sg-abcd1234"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1650,38 +864,55 @@ efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroup
 }
 .efs$operations$modify_mount_target_security_groups <- efs_modify_mount_target_security_groups
 
+#' Use this operation to set the account preference in the current Amazon
+#' Web Services Region to use long 17 character (63 bit) or short 8
+#' character (32 bit) resource IDs for new EFS file system and mount target
+#' resources
+#'
+#' @description
+#' Use this operation to set the account preference in the current Amazon Web Services Region to use long 17 character (63 bit) or short 8 character (32 bit) resource IDs for new EFS file system and mount target resources. All existing resource IDs are not affected by any changes you make. You can set the ID preference during the opt-in period as EFS transitions to long resource IDs. For more information, see [Managing Amazon EFS resource IDs](https://docs.aws.amazon.com/efs/latest/ug/).
+#'
+#' See [https://paws-r.github.io/docs/efs/put_account_preferences.html](https://paws-r.github.io/docs/efs/put_account_preferences.html) for full documentation.
+#'
+#' @param ResourceIdType &#91;required&#93; Specifies the EFS resource ID preference to set for the user's Amazon
+#' Web Services account, in the current Amazon Web Services Region, either
+#' `LONG_ID` (17 characters), or `SHORT_ID` (8 characters).
+#' 
+#' Starting in October, 2021, you will receive an error when setting the
+#' account preference to `SHORT_ID`. Contact Amazon Web Services support if
+#' you receive an error and must use short IDs for file system and mount
+#' target resources.
+#'
+#' @keywords internal
+#'
+#' @rdname efs_put_account_preferences
+efs_put_account_preferences <- function(ResourceIdType) {
+  op <- new_operation(
+    name = "PutAccountPreferences",
+    http_method = "PUT",
+    http_path = "/2015-02-01/account-preferences",
+    paginator = list()
+  )
+  input <- .efs$put_account_preferences_input(ResourceIdType = ResourceIdType)
+  output <- .efs$put_account_preferences_output()
+  config <- get_config()
+  svc <- .efs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.efs$operations$put_account_preferences <- efs_put_account_preferences
+
 #' Updates the file system's backup policy
 #'
 #' @description
-#' Updates the file system's backup policy. Use this action to start or
-#' stop automatic backups of the file system.
+#' Updates the file system's backup policy. Use this action to start or stop automatic backups of the file system.
 #'
-#' @usage
-#' efs_put_backup_policy(FileSystemId, BackupPolicy)
+#' See [https://paws-r.github.io/docs/efs/put_backup_policy.html](https://paws-r.github.io/docs/efs/put_backup_policy.html) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; Specifies which EFS file system to update the backup policy for.
 #' @param BackupPolicy &#91;required&#93; The backup policy included in the
 #' [`put_backup_policy`][efs_put_backup_policy] request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BackupPolicy = list(
-#'     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_backup_policy(
-#'   FileSystemId = "string",
-#'   BackupPolicy = list(
-#'     Status = "ENABLED"|"ENABLING"|"DISABLED"|"DISABLING"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1706,56 +937,26 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
 #' Applies an Amazon EFS FileSystemPolicy to an Amazon EFS file system
 #'
 #' @description
-#' Applies an Amazon EFS `FileSystemPolicy` to an Amazon EFS file system. A
-#' file system policy is an IAM resource-based policy and can contain
-#' multiple policy statements. A file system always has exactly one file
-#' system policy, which can be the default policy or an explicit policy set
-#' or updated using this API operation. When an explicit policy is set, it
-#' overrides the default policy. For more information about the default
-#' file system policy, see [Default EFS File System
-#' Policy](https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy).
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:PutFileSystemPolicy` action.
+#' Applies an Amazon EFS `FileSystemPolicy` to an Amazon EFS file system. A file system policy is an IAM resource-based policy and can contain multiple policy statements. A file system always has exactly one file system policy, which can be the default policy or an explicit policy set or updated using this API operation. EFS file system policies have a 20,000 character limit. When an explicit policy is set, it overrides the default policy. For more information about the default file system policy, see [Default EFS File System Policy](https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy).
 #'
-#' @usage
-#' efs_put_file_system_policy(FileSystemId, Policy,
-#'   BypassPolicyLockoutSafetyCheck)
+#' See [https://paws-r.github.io/docs/efs/put_file_system_policy.html](https://paws-r.github.io/docs/efs/put_file_system_policy.html) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the EFS file system that you want to create or update the
 #' `FileSystemPolicy` for.
 #' @param Policy &#91;required&#93; The `FileSystemPolicy` that you're creating. Accepts a JSON formatted
-#' policy definition. To find out more about the elements that make up a
-#' file system policy, see [EFS Resource-based
+#' policy definition. EFS file system policies have a 20,000 character
+#' limit. To find out more about the elements that make up a file system
+#' policy, see [EFS Resource-based
 #' Policies](https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies).
-#' @param BypassPolicyLockoutSafetyCheck (Optional) A flag to indicate whether to bypass the `FileSystemPolicy`
-#' lockout safety check. The policy lockout safety check determines whether
-#' the policy in the request will prevent the principal making the request
-#' will be locked out from making future
-#' [`put_file_system_policy`][efs_put_file_system_policy] requests on the
+#' @param BypassPolicyLockoutSafetyCheck (Optional) A boolean that specifies whether or not to bypass the
+#' `FileSystemPolicy` lockout safety check. The lockout safety check
+#' determines whether the policy in the request will lock out, or prevent,
+#' the IAM principal that is making the request from making future
+#' [`put_file_system_policy`][efs_put_file_system_policy] requests on this
 #' file system. Set `BypassPolicyLockoutSafetyCheck` to `True` only when
-#' you intend to prevent the principal that is making the request from
-#' making a subsequent
-#' [`put_file_system_policy`][efs_put_file_system_policy] request on the
-#' file system. The default value is False.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FileSystemId = "string",
-#'   Policy = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_file_system_policy(
-#'   FileSystemId = "string",
-#'   Policy = "string",
-#'   BypassPolicyLockoutSafetyCheck = TRUE|FALSE
-#' )
-#' ```
+#' you intend to prevent the IAM principal that is making the request from
+#' making subsequent [`put_file_system_policy`][efs_put_file_system_policy]
+#' requests on this file system. The default value is `False`.
 #'
 #' @keywords internal
 #'
@@ -1777,91 +978,34 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 }
 .efs$operations$put_file_system_policy <- efs_put_file_system_policy
 
-#' Enables lifecycle management by creating a new LifecycleConfiguration
-#' object
+#' Use this action to manage EFS lifecycle management and intelligent
+#' tiering
 #'
 #' @description
-#' Enables lifecycle management by creating a new `LifecycleConfiguration`
-#' object. A `LifecycleConfiguration` object defines when files in an
-#' Amazon EFS file system are automatically transitioned to the lower-cost
-#' EFS Infrequent Access (IA) storage class. A `LifecycleConfiguration`
-#' applies to all files in a file system.
-#' 
-#' Each Amazon EFS file system supports one lifecycle configuration, which
-#' applies to all files in the file system. If a `LifecycleConfiguration`
-#' object already exists for the specified file system, a
-#' [`put_lifecycle_configuration`][efs_put_lifecycle_configuration] call
-#' modifies the existing configuration. A
-#' [`put_lifecycle_configuration`][efs_put_lifecycle_configuration] call
-#' with an empty `LifecyclePolicies` array in the request body deletes any
-#' existing `LifecycleConfiguration` and disables lifecycle management.
-#' 
-#' In the request, specify the following:
-#' 
-#' -   The ID for the file system for which you are enabling, disabling, or
-#'     modifying lifecycle management.
-#' 
-#' -   A `LifecyclePolicies` array of `LifecyclePolicy` objects that define
-#'     when files are moved to the IA storage class. The array can contain
-#'     only one `LifecyclePolicy` item.
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:PutLifecycleConfiguration` operation.
-#' 
-#' To apply a `LifecycleConfiguration` object to an encrypted file system,
-#' you need the same AWS Key Management Service (AWS KMS) permissions as
-#' when you created the encrypted file system.
+#' Use this action to manage EFS lifecycle management and intelligent tiering. A `LifecycleConfiguration` consists of one or more `LifecyclePolicy` objects that define the following:
 #'
-#' @usage
-#' efs_put_lifecycle_configuration(FileSystemId, LifecyclePolicies)
+#' See [https://paws-r.github.io/docs/efs/put_lifecycle_configuration.html](https://paws-r.github.io/docs/efs/put_lifecycle_configuration.html) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system for which you are creating the
 #' `LifecycleConfiguration` object (String).
 #' @param LifecyclePolicies &#91;required&#93; An array of `LifecyclePolicy` objects that define the file system's
-#' `LifecycleConfiguration` object. A `LifecycleConfiguration` object tells
-#' lifecycle management when to transition files from the Standard storage
-#' class to the Infrequent Access storage class.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LifecyclePolicies = list(
-#'     list(
-#'       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_lifecycle_configuration(
-#'   FileSystemId = "string",
-#'   LifecyclePolicies = list(
-#'     list(
-#'       TransitionToIA = "AFTER_7_DAYS"|"AFTER_14_DAYS"|"AFTER_30_DAYS"|"AFTER_60_DAYS"|"AFTER_90_DAYS"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation enables lifecycle management on a file system by creating
-#' # a new LifecycleConfiguration object. A LifecycleConfiguration object
-#' # defines when files in an Amazon EFS file system are automatically
-#' # transitioned to the lower-cost EFS Infrequent Access (IA) storage class.
-#' # A LifecycleConfiguration applies to all files in a file system.
-#' svc$put_lifecycle_configuration(
-#'   FileSystemId = "fs-01234567",
-#'   LifecyclePolicies = list(
-#'     list(
-#'       TransitionToIA = "AFTER_30_DAYS"
-#'     )
-#'   )
-#' )
-#' }
+#' `LifecycleConfiguration` object. A `LifecycleConfiguration` object
+#' informs EFS lifecycle management and EFS Intelligent-Tiering of the
+#' following:
+#' 
+#' -   When to move files in the file system from primary storage to the IA
+#'     storage class.
+#' 
+#' -   When to move files that are in IA storage to primary storage.
+#' 
+#' When using the `put-lifecycle-configuration` CLI command or the
+#' [`put_lifecycle_configuration`][efs_put_lifecycle_configuration] API
+#' action, Amazon EFS requires that each `LifecyclePolicy` object have only
+#' a single transition. This means that in a request body,
+#' `LifecyclePolicies` must be structured as an array of `LifecyclePolicy`
+#' objects, one object for each transition, `TransitionToIA`,
+#' `TransitionToPrimaryStorageClass`. See the example requests in the
+#' following section for more information.
 #'
 #' @keywords internal
 #'
@@ -1886,33 +1030,12 @@ efs_put_lifecycle_configuration <- function(FileSystemId, LifecyclePolicies) {
 #' Creates a tag for an EFS resource
 #'
 #' @description
-#' Creates a tag for an EFS resource. You can create tags for EFS file
-#' systems and access points using this API operation.
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:TagResource` action.
+#' Creates a tag for an EFS resource. You can create tags for EFS file systems and access points using this API operation.
 #'
-#' @usage
-#' efs_tag_resource(ResourceId, Tags)
+#' See [https://paws-r.github.io/docs/efs/tag_resource.html](https://paws-r.github.io/docs/efs/tag_resource.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID specifying the EFS resource that you want to create a tag for.
-#' @param Tags &#91;required&#93; 
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceId = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param Tags &#91;required&#93; An array of `Tag` objects to add. Each `Tag` object is a key-value pair.
 #'
 #' @keywords internal
 #'
@@ -1937,31 +1060,13 @@ efs_tag_resource <- function(ResourceId, Tags) {
 #' Removes tags from an EFS resource
 #'
 #' @description
-#' Removes tags from an EFS resource. You can remove tags from EFS file
-#' systems and access points using this API operation.
-#' 
-#' This operation requires permissions for the
-#' `elasticfilesystem:UntagResource` action.
+#' Removes tags from an EFS resource. You can remove tags from EFS file systems and access points using this API operation.
 #'
-#' @usage
-#' efs_untag_resource(ResourceId, TagKeys)
+#' See [https://paws-r.github.io/docs/efs/untag_resource.html](https://paws-r.github.io/docs/efs/untag_resource.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; Specifies the EFS resource that you want to remove tags from.
-#' @param TagKeys &#91;required&#93; The keys of the key:value tag pairs that you want to remove from the
+#' @param TagKeys &#91;required&#93; The keys of the key-value tag pairs that you want to remove from the
 #' specified EFS resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceId = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1987,69 +1092,20 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
 #' an existing file system
 #'
 #' @description
-#' Updates the throughput mode or the amount of provisioned throughput of
-#' an existing file system.
+#' Updates the throughput mode or the amount of provisioned throughput of an existing file system.
 #'
-#' @usage
-#' efs_update_file_system(FileSystemId, ThroughputMode,
-#'   ProvisionedThroughputInMibps)
+#' See [https://paws-r.github.io/docs/efs/update_file_system.html](https://paws-r.github.io/docs/efs/update_file_system.html) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system that you want to update.
-#' @param ThroughputMode (Optional) The throughput mode that you want your file system to use. If
-#' you're not updating your throughput mode, you don't need to provide this
-#' value in your request. If you are changing the `ThroughputMode` to
-#' `provisioned`, you must also set a value for
-#' `ProvisionedThroughputInMibps`.
-#' @param ProvisionedThroughputInMibps (Optional) The amount of throughput, in MiB/s, that you want to
-#' provision for your file system. Valid values are 1-1024. Required if
-#' `ThroughputMode` is changed to `provisioned` on update. If you're not
-#' updating the amount of provisioned throughput for your file system, you
-#' don't need to provide this value in your request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OwnerId = "string",
-#'   CreationToken = "string",
-#'   FileSystemId = "string",
-#'   FileSystemArn = "string",
-#'   CreationTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
-#'   Name = "string",
-#'   NumberOfMountTargets = 123,
-#'   SizeInBytes = list(
-#'     Value = 123,
-#'     Timestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ValueInIA = 123,
-#'     ValueInStandard = 123
-#'   ),
-#'   PerformanceMode = "generalPurpose"|"maxIO",
-#'   Encrypted = TRUE|FALSE,
-#'   KmsKeyId = "string",
-#'   ThroughputMode = "bursting"|"provisioned",
-#'   ProvisionedThroughputInMibps = 123.0,
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_file_system(
-#'   FileSystemId = "string",
-#'   ThroughputMode = "bursting"|"provisioned",
-#'   ProvisionedThroughputInMibps = 123.0
-#' )
-#' ```
+#' @param ThroughputMode (Optional) Updates the file system's throughput mode. If you're not
+#' updating your throughput mode, you don't need to provide this value in
+#' your request. If you are changing the `ThroughputMode` to `provisioned`,
+#' you must also set a value for `ProvisionedThroughputInMibps`.
+#' @param ProvisionedThroughputInMibps (Optional) Sets the amount of provisioned throughput, in MiB/s, for the
+#' file system. Valid values are 1-1024. If you are changing the throughput
+#' mode to provisioned, you must also provide the amount of provisioned
+#' throughput. Required if `ThroughputMode` is changed to `provisioned` on
+#' update.
 #'
 #' @keywords internal
 #'

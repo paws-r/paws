@@ -6,25 +6,9 @@
 \usage{
 backup_describe_region_settings()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceTypeOptInPreference = list(
-    TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Returns the current service opt-in settings for the Region. If
-service-opt-in is enabled for a service, AWS Backup tries to protect
-that service's resources in this Region, when the resource is included
-in an on-demand backup or scheduled backup plan. Otherwise, AWS Backup
-does not try to protect that service's resources in this Region, AWS
-Backup does not try to protect that service's resources in this Region.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_region_settings()
-}
-}
+Returns the current service opt-in settings for the Region. If service opt-in is enabled for a service, Backup tries to protect that service's resources in this Region, when the resource is included in an on-demand backup or scheduled backup plan. Otherwise, Backup does not try to protect that service's resources in this Region.
 
+See \url{https://paws-r.github.io/docs/backup/describe_region_settings.html} for full documentation.
+}
 \keyword{internal}

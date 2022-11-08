@@ -11,20 +11,9 @@ codestar_untag_project(id, tags)
 
 \item{tags}{[required] The tags to remove from the project.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes tags from a project.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_project(
-  id = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codestar/untag_project.html} for full documentation.
+}
 \keyword{internal}

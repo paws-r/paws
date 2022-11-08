@@ -4,7 +4,7 @@
 \alias{opsworks_describe_permissions}
 \title{Describes the permissions for a specified stack}
 \usage{
-opsworks_describe_permissions(IamUserArn, StackId)
+opsworks_describe_permissions(IamUserArn = NULL, StackId = NULL)
 }
 \arguments{
 \item{IamUserArn}{The user's IAM ARN. This can also be a federated user's ARN. For more
@@ -12,34 +12,9 @@ information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/Use
 
 \item{StackId}{The stack ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Permissions = list(
-    list(
-      StackId = "string",
-      IamUserArn = "string",
-      AllowSsh = TRUE|FALSE,
-      AllowSudo = TRUE|FALSE,
-      Level = "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes the permissions for a specified stack.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/describe_permissions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_permissions(
-  IamUserArn = "string",
-  StackId = "string"
-)
-}
-}
-
 \keyword{internal}

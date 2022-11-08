@@ -2,58 +2,20 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_delete_bucket_website}
 \alias{s3_delete_bucket_website}
-\title{This operation removes the website configuration for a bucket}
+\title{This action removes the website configuration for a bucket}
 \usage{
-s3_delete_bucket_website(Bucket, ExpectedBucketOwner)
+s3_delete_bucket_website(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name for which you want to remove the website configuration.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-An empty list.
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-This operation removes the website configuration for a bucket. Amazon S3
-returns a \verb{200 OK} response upon successfully deleting a website
-configuration on the specified bucket. You will get a \verb{200 OK} response
-if the website configuration you are trying to delete does not exist on
-the bucket. Amazon S3 returns a \code{404} response if the bucket specified
-in the request does not exist.
+This action removes the website configuration for a bucket. Amazon S3 returns a \verb{200 OK} response upon successfully deleting a website configuration on the specified bucket. You will get a \verb{200 OK} response if the website configuration you are trying to delete does not exist on the bucket. Amazon S3 returns a \code{404} response if the bucket specified in the request does not exist.
 
-This DELETE operation requires the \code{S3:DeleteBucketWebsite} permission.
-By default, only the bucket owner can delete the website configuration
-attached to a bucket. However, bucket owners can grant other users
-permission to delete the website configuration by writing a bucket
-policy granting them the \code{S3:DeleteBucketWebsite} permission.
-
-For more information about hosting websites, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
-
-The following operations are related to
-\code{\link[=s3_delete_bucket_website]{delete_bucket_website}}:
-\itemize{
-\item \code{\link[=s3_get_bucket_website]{get_bucket_website}}
-\item \code{\link[=s3_put_bucket_website]{put_bucket_website}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$delete_bucket_website(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes bucket website configuration.
-svc$delete_bucket_website(
-  Bucket = "examplebucket"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/delete_bucket_website.html} for full documentation.
 }
 \keyword{internal}

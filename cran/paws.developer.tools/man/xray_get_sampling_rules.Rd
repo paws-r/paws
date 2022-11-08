@@ -4,52 +4,14 @@
 \alias{xray_get_sampling_rules}
 \title{Retrieves all sampling rules}
 \usage{
-xray_get_sampling_rules(NextToken)
+xray_get_sampling_rules(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{Pagination token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SamplingRuleRecords = list(
-    list(
-      SamplingRule = list(
-        RuleName = "string",
-        RuleARN = "string",
-        ResourceARN = "string",
-        Priority = 123,
-        FixedRate = 123.0,
-        ReservoirSize = 123,
-        ServiceName = "string",
-        ServiceType = "string",
-        Host = "string",
-        HTTPMethod = "string",
-        URLPath = "string",
-        Version = 123,
-        Attributes = list(
-          "string"
-        )
-      ),
-      CreatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      ModifiedAt = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves all sampling rules.
-}
-\section{Request syntax}{
-\preformatted{svc$get_sampling_rules(
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/xray/get_sampling_rules.html} for full documentation.
+}
 \keyword{internal}

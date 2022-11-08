@@ -3,9 +3,13 @@
 \name{route53_list_hosted_zones}
 \alias{route53_list_hosted_zones}
 \title{Retrieves a list of the public and private hosted zones that are
-associated with the current AWS account}
+associated with the current Amazon Web Services account}
 \usage{
-route53_list_hosted_zones(Marker, MaxItems, DelegationSetId)
+route53_list_hosted_zones(
+  Marker = NULL,
+  MaxItems = NULL,
+  DelegationSetId = NULL
+)
 }
 \arguments{
 \item{Marker}{If the value of \code{IsTruncated} in the previous response was \code{true}, you
@@ -29,47 +33,9 @@ of \code{IsTruncated} in the response is \code{true}, and the value of
 hosted zones that are associated with a reusable delegation set, specify
 the ID of that reusable delegation set.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HostedZones = list(
-    list(
-      Id = "string",
-      Name = "string",
-      CallerReference = "string",
-      Config = list(
-        Comment = "string",
-        PrivateZone = TRUE|FALSE
-      ),
-      ResourceRecordSetCount = 123,
-      LinkedService = list(
-        ServicePrincipal = "string",
-        Description = "string"
-      )
-    )
-  ),
-  Marker = "string",
-  IsTruncated = TRUE|FALSE,
-  NextMarker = "string",
-  MaxItems = "string"
-)
-}
-}
 \description{
-Retrieves a list of the public and private hosted zones that are
-associated with the current AWS account. The response includes a
-\code{HostedZones} child element for each hosted zone.
+Retrieves a list of the public and private hosted zones that are associated with the current Amazon Web Services account. The response includes a \code{HostedZones} child element for each hosted zone.
 
-Amazon Route 53 returns a maximum of 100 items in each response. If you
-have a lot of hosted zones, you can use the \code{maxitems} parameter to list
-them in groups of up to 100.
+See \url{https://paws-r.github.io/docs/route53/list_hosted_zones.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_hosted_zones(
-  Marker = "string",
-  MaxItems = "string",
-  DelegationSetId = "string"
-)
-}
-}
-
 \keyword{internal}

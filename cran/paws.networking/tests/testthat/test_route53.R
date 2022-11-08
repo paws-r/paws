@@ -1,5 +1,13 @@
 svc <- paws::route53()
 
+test_that("list_cidr_collections", {
+  expect_error(svc$list_cidr_collections(), NA)
+})
+
+test_that("list_cidr_collections", {
+  expect_error(svc$list_cidr_collections(MaxResults = 20), NA)
+})
+
 test_that("list_geo_locations", {
   expect_error(svc$list_geo_locations(), NA)
 })

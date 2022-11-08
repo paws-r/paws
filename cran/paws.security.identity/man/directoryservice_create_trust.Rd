@@ -2,15 +2,21 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_create_trust}
 \alias{directoryservice_create_trust}
-\title{AWS Directory Service for Microsoft Active Directory allows you to
-configure trust relationships}
+\title{Directory Service for Microsoft Active Directory allows you to configure
+trust relationships}
 \usage{
-directoryservice_create_trust(DirectoryId, RemoteDomainName,
-  TrustPassword, TrustDirection, TrustType, ConditionalForwarderIpAddrs,
-  SelectiveAuth)
+directoryservice_create_trust(
+  DirectoryId,
+  RemoteDomainName,
+  TrustPassword,
+  TrustDirection,
+  TrustType = NULL,
+  ConditionalForwarderIpAddrs = NULL,
+  SelectiveAuth = NULL
+)
 }
 \arguments{
-\item{DirectoryId}{[required] The Directory ID of the AWS Managed Microsoft AD directory for which to
+\item{DirectoryId}{[required] The Directory ID of the Managed Microsoft AD directory for which to
 establish the trust relationship.}
 
 \item{RemoteDomainName}{[required] The Fully Qualified Domain Name (FQDN) of the external domain for which
@@ -28,38 +34,9 @@ RemoteDomainName.}
 
 \item{SelectiveAuth}{Optional parameter to enable selective authentication for the trust.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrustId = "string"
-)
-}
-}
 \description{
-AWS Directory Service for Microsoft Active Directory allows you to
-configure trust relationships. For example, you can establish a trust
-between your AWS Managed Microsoft AD directory, and your existing
-on-premises Microsoft Active Directory. This would allow you to provide
-users and groups access to resources in either domain, with a single set
-of credentials.
+Directory Service for Microsoft Active Directory allows you to configure trust relationships. For example, you can establish a trust between your Managed Microsoft AD directory, and your existing self-managed Microsoft Active Directory. This would allow you to provide users and groups access to resources in either domain, with a single set of credentials.
 
-This action initiates the creation of the AWS side of a trust
-relationship between an AWS Managed Microsoft AD directory and an
-external domain. You can create either a forest trust or an external
-trust.
+See \url{https://paws-r.github.io/docs/directoryservice/create_trust.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_trust(
-  DirectoryId = "string",
-  RemoteDomainName = "string",
-  TrustPassword = "string",
-  TrustDirection = "One-Way: Outgoing"|"One-Way: Incoming"|"Two-Way",
-  TrustType = "Forest"|"External",
-  ConditionalForwarderIpAddrs = list(
-    "string"
-  ),
-  SelectiveAuth = "Enabled"|"Disabled"
-)
-}
-}
-
 \keyword{internal}

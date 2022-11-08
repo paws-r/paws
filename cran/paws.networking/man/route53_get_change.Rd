@@ -12,35 +12,9 @@ the value that
 \code{\link[=route53_change_resource_record_sets]{change_resource_record_sets}}
 returned in the \code{Id} element when you submitted the request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeInfo = list(
-    Id = "string",
-    Status = "PENDING"|"INSYNC",
-    SubmittedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    Comment = "string"
-  )
-)
-}
-}
 \description{
-Returns the current status of a change batch request. The status is one
-of the following values:
-\itemize{
-\item \code{PENDING} indicates that the changes in this request have not
-propagated to all Amazon Route 53 DNS servers. This is the initial
-status of all change batch requests.
-\item \code{INSYNC} indicates that the changes have propagated to all Route 53
-DNS servers.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$get_change(
-  Id = "string"
-)
-}
-}
+Returns the current status of a change batch request. The status is one of the following values:
 
+See \url{https://paws-r.github.io/docs/route53/get_change.html} for full documentation.
+}
 \keyword{internal}

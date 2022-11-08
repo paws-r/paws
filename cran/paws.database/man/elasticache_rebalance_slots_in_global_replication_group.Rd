@@ -6,56 +6,18 @@
 in the cluster}
 \usage{
 elasticache_rebalance_slots_in_global_replication_group(
-  GlobalReplicationGroupId, ApplyImmediately)
+  GlobalReplicationGroupId,
+  ApplyImmediately
+)
 }
 \arguments{
-\item{GlobalReplicationGroupId}{[required] The name of the Global Datastore}
+\item{GlobalReplicationGroupId}{[required] The name of the Global datastore}
 
 \item{ApplyImmediately}{[required] If \code{True}, redistribution is applied immediately.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GlobalReplicationGroup = list(
-    GlobalReplicationGroupId = "string",
-    GlobalReplicationGroupDescription = "string",
-    Status = "string",
-    CacheNodeType = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    Members = list(
-      list(
-        ReplicationGroupId = "string",
-        ReplicationGroupRegion = "string",
-        Role = "string",
-        AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
-        Status = "string"
-      )
-    ),
-    ClusterEnabled = TRUE|FALSE,
-    GlobalNodeGroups = list(
-      list(
-        GlobalNodeGroupId = "string",
-        Slots = "string"
-      )
-    ),
-    AuthTokenEnabled = TRUE|FALSE,
-    TransitEncryptionEnabled = TRUE|FALSE,
-    AtRestEncryptionEnabled = TRUE|FALSE,
-    ARN = "string"
-  )
-)
-}
-}
 \description{
-Redistribute slots to ensure uniform distribution across existing shards
-in the cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$rebalance_slots_in_global_replication_group(
-  GlobalReplicationGroupId = "string",
-  ApplyImmediately = TRUE|FALSE
-)
-}
-}
+Redistribute slots to ensure uniform distribution across existing shards in the cluster.
 
+See \url{https://paws-r.github.io/docs/elasticache/rebalance_slots_in_global_replication_group.html} for full documentation.
+}
 \keyword{internal}

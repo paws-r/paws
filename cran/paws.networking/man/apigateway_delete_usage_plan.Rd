@@ -7,19 +7,11 @@
 apigateway_delete_usage_plan(usagePlanId)
 }
 \arguments{
-\item{usagePlanId}{[required] [Required] The Id of the to-be-deleted usage plan.}
-}
-\value{
-An empty list.
+\item{usagePlanId}{[required] The Id of the to-be-deleted usage plan.}
 }
 \description{
 Deletes a usage plan of a given plan Id.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_usage_plan(
-  usagePlanId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_usage_plan.html} for full documentation.
+}
 \keyword{internal}

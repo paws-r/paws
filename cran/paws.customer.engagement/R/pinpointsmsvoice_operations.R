@@ -6,23 +6,11 @@ NULL
 #' Create a new configuration set
 #'
 #' @description
-#' Create a new configuration set. After you create the configuration set,
-#' you can add one or more event destinations to it.
+#' Create a new configuration set. After you create the configuration set, you can add one or more event destinations to it.
 #'
-#' @usage
-#' pinpointsmsvoice_create_configuration_set(ConfigurationSetName)
+#' See [https://paws-r.github.io/docs/pinpointsmsvoice/create_configuration_set.html](https://paws-r.github.io/docs/pinpointsmsvoice/create_configuration_set.html) for full documentation.
 #'
 #' @param ConfigurationSetName The name that you want to give the configuration set.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_configuration_set(
-#'   ConfigurationSetName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -49,41 +37,11 @@ pinpointsmsvoice_create_configuration_set <- function(ConfigurationSetName = NUL
 #' @description
 #' Create a new event destination in a configuration set.
 #'
-#' @usage
-#' pinpointsmsvoice_create_configuration_set_event_destination(
-#'   ConfigurationSetName, EventDestination, EventDestinationName)
+#' See [https://paws-r.github.io/docs/pinpointsmsvoice/create_configuration_set_event_destination.html](https://paws-r.github.io/docs/pinpointsmsvoice/create_configuration_set_event_destination.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; ConfigurationSetName
 #' @param EventDestination 
 #' @param EventDestinationName A name that identifies the event destination.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_configuration_set_event_destination(
-#'   ConfigurationSetName = "string",
-#'   EventDestination = list(
-#'     CloudWatchLogsDestination = list(
-#'       IamRoleArn = "string",
-#'       LogGroupArn = "string"
-#'     ),
-#'     Enabled = TRUE|FALSE,
-#'     KinesisFirehoseDestination = list(
-#'       DeliveryStreamArn = "string",
-#'       IamRoleArn = "string"
-#'     ),
-#'     MatchingEventTypes = list(
-#'       "INITIATED_CALL"|"RINGING"|"ANSWERED"|"COMPLETED_CALL"|"BUSY"|"FAILED"|"NO_ANSWER"
-#'     ),
-#'     SnsDestination = list(
-#'       TopicArn = "string"
-#'     )
-#'   ),
-#'   EventDestinationName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -110,20 +68,9 @@ pinpointsmsvoice_create_configuration_set_event_destination <- function(Configur
 #' @description
 #' Deletes an existing configuration set.
 #'
-#' @usage
-#' pinpointsmsvoice_delete_configuration_set(ConfigurationSetName)
+#' See [https://paws-r.github.io/docs/pinpointsmsvoice/delete_configuration_set.html](https://paws-r.github.io/docs/pinpointsmsvoice/delete_configuration_set.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; ConfigurationSetName
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_configuration_set(
-#'   ConfigurationSetName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -150,23 +97,10 @@ pinpointsmsvoice_delete_configuration_set <- function(ConfigurationSetName) {
 #' @description
 #' Deletes an event destination in a configuration set.
 #'
-#' @usage
-#' pinpointsmsvoice_delete_configuration_set_event_destination(
-#'   ConfigurationSetName, EventDestinationName)
+#' See [https://paws-r.github.io/docs/pinpointsmsvoice/delete_configuration_set_event_destination.html](https://paws-r.github.io/docs/pinpointsmsvoice/delete_configuration_set_event_destination.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; ConfigurationSetName
 #' @param EventDestinationName &#91;required&#93; EventDestinationName
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_configuration_set_event_destination(
-#'   ConfigurationSetName = "string",
-#'   EventDestinationName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -193,49 +127,11 @@ pinpointsmsvoice_delete_configuration_set_event_destination <- function(Configur
 #' and the name of the event destination
 #'
 #' @description
-#' Obtain information about an event destination, including the types of
-#' events it reports, the Amazon Resource Name (ARN) of the destination,
-#' and the name of the event destination.
+#' Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination.
 #'
-#' @usage
-#' pinpointsmsvoice_get_configuration_set_event_destinations(
-#'   ConfigurationSetName)
+#' See [https://paws-r.github.io/docs/pinpointsmsvoice/get_configuration_set_event_destinations.html](https://paws-r.github.io/docs/pinpointsmsvoice/get_configuration_set_event_destinations.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; ConfigurationSetName
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventDestinations = list(
-#'     list(
-#'       CloudWatchLogsDestination = list(
-#'         IamRoleArn = "string",
-#'         LogGroupArn = "string"
-#'       ),
-#'       Enabled = TRUE|FALSE,
-#'       KinesisFirehoseDestination = list(
-#'         DeliveryStreamArn = "string",
-#'         IamRoleArn = "string"
-#'       ),
-#'       MatchingEventTypes = list(
-#'         "INITIATED_CALL"|"RINGING"|"ANSWERED"|"COMPLETED_CALL"|"BUSY"|"FAILED"|"NO_ANSWER"
-#'       ),
-#'       Name = "string",
-#'       SnsDestination = list(
-#'         TopicArn = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_configuration_set_event_destinations(
-#'   ConfigurationSetName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -261,35 +157,14 @@ pinpointsmsvoice_get_configuration_set_event_destinations <- function(Configurat
 #' account in the current region
 #'
 #' @description
-#' List all of the configuration sets associated with your Amazon Pinpoint
-#' account in the current region.
+#' List all of the configuration sets associated with your Amazon Pinpoint account in the current region.
 #'
-#' @usage
-#' pinpointsmsvoice_list_configuration_sets(NextToken, PageSize)
+#' See [https://paws-r.github.io/docs/pinpointsmsvoice/list_configuration_sets.html](https://paws-r.github.io/docs/pinpointsmsvoice/list_configuration_sets.html) for full documentation.
 #'
 #' @param NextToken A token returned from a previous call to the API that indicates the
 #' position in the list of results.
 #' @param PageSize Used to specify the number of items that should be returned in the
 #' response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigurationSets = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_configuration_sets(
-#'   NextToken = "string",
-#'   PageSize = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -316,9 +191,7 @@ pinpointsmsvoice_list_configuration_sets <- function(NextToken = NULL, PageSize 
 #' @description
 #' Create a new voice message and send it to a recipient's phone number.
 #'
-#' @usage
-#' pinpointsmsvoice_send_voice_message(CallerId, ConfigurationSetName,
-#'   Content, DestinationPhoneNumber, OriginationPhoneNumber)
+#' See [https://paws-r.github.io/docs/pinpointsmsvoice/send_voice_message.html](https://paws-r.github.io/docs/pinpointsmsvoice/send_voice_message.html) for full documentation.
 #'
 #' @param CallerId The phone number that appears on recipients' devices when they receive
 #' the message.
@@ -330,39 +203,6 @@ pinpointsmsvoice_list_configuration_sets <- function(NextToken = NULL, PageSize 
 #' message. This isn't necessarily the phone number that appears on
 #' recipients' devices when they receive the message, because you can
 #' specify a CallerId parameter in the request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_voice_message(
-#'   CallerId = "string",
-#'   ConfigurationSetName = "string",
-#'   Content = list(
-#'     CallInstructionsMessage = list(
-#'       Text = "string"
-#'     ),
-#'     PlainTextMessage = list(
-#'       LanguageCode = "string",
-#'       Text = "string",
-#'       VoiceId = "string"
-#'     ),
-#'     SSMLMessage = list(
-#'       LanguageCode = "string",
-#'       Text = "string",
-#'       VoiceId = "string"
-#'     )
-#'   ),
-#'   DestinationPhoneNumber = "string",
-#'   OriginationPhoneNumber = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -387,46 +227,13 @@ pinpointsmsvoice_send_voice_message <- function(CallerId = NULL, ConfigurationSe
 #' Update an event destination in a configuration set
 #'
 #' @description
-#' Update an event destination in a configuration set. An event destination
-#' is a location that you publish information about your voice calls to.
-#' For example, you can log an event to an Amazon CloudWatch destination
-#' when a call fails.
+#' Update an event destination in a configuration set. An event destination is a location that you publish information about your voice calls to. For example, you can log an event to an Amazon CloudWatch destination when a call fails.
 #'
-#' @usage
-#' pinpointsmsvoice_update_configuration_set_event_destination(
-#'   ConfigurationSetName, EventDestination, EventDestinationName)
+#' See [https://paws-r.github.io/docs/pinpointsmsvoice/update_configuration_set_event_destination.html](https://paws-r.github.io/docs/pinpointsmsvoice/update_configuration_set_event_destination.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; ConfigurationSetName
 #' @param EventDestination 
 #' @param EventDestinationName &#91;required&#93; EventDestinationName
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_configuration_set_event_destination(
-#'   ConfigurationSetName = "string",
-#'   EventDestination = list(
-#'     CloudWatchLogsDestination = list(
-#'       IamRoleArn = "string",
-#'       LogGroupArn = "string"
-#'     ),
-#'     Enabled = TRUE|FALSE,
-#'     KinesisFirehoseDestination = list(
-#'       DeliveryStreamArn = "string",
-#'       IamRoleArn = "string"
-#'     ),
-#'     MatchingEventTypes = list(
-#'       "INITIATED_CALL"|"RINGING"|"ANSWERED"|"COMPLETED_CALL"|"BUSY"|"FAILED"|"NO_ANSWER"
-#'     ),
-#'     SnsDestination = list(
-#'       TopicArn = "string"
-#'     )
-#'   ),
-#'   EventDestinationName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

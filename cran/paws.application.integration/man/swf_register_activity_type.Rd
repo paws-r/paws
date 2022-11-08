@@ -5,10 +5,18 @@
 \title{Registers a new activity type along with its configuration settings in
 the specified domain}
 \usage{
-swf_register_activity_type(domain, name, version, description,
-  defaultTaskStartToCloseTimeout, defaultTaskHeartbeatTimeout,
-  defaultTaskList, defaultTaskPriority, defaultTaskScheduleToStartTimeout,
-  defaultTaskScheduleToCloseTimeout)
+swf_register_activity_type(
+  domain,
+  name,
+  version,
+  description = NULL,
+  defaultTaskStartToCloseTimeout = NULL,
+  defaultTaskHeartbeatTimeout = NULL,
+  defaultTaskList = NULL,
+  defaultTaskPriority = NULL,
+  defaultTaskScheduleToStartTimeout = NULL,
+  defaultTaskScheduleToCloseTimeout = NULL
+)
 }
 \arguments{
 \item{domain}{[required] The name of the domain in which this activity is to be registered.}
@@ -64,7 +72,7 @@ Java's \code{Integer.MIN_VALUE} (-2147483648) to \code{Integer.MAX_VALUE}
 (2147483647). Higher numbers indicate higher priority.
 
 For more information about setting task priority, see \href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html}{Setting Task Priority}
-in the in the \emph{Amazon SWF Developer Guide}.}
+in the \emph{in the Amazon SWF Developer Guide.}.}
 
 \item{defaultTaskScheduleToStartTimeout}{If set, specifies the default maximum duration that a task of this
 activity type can wait before being assigned to a worker. This default
@@ -81,59 +89,9 @@ activity task using the \code{ScheduleActivityTask} Decision.
 The duration is specified in seconds, an integer greater than or equal
 to \code{0}. You can use \code{NONE} to specify unlimited duration.}
 }
-\value{
-An empty list.
-}
 \description{
-Registers a new \emph{activity type} along with its configuration settings in
-the specified domain.
+Registers a new \emph{activity type} along with its configuration settings in the specified domain.
 
-A \code{TypeAlreadyExists} fault is returned if the type already exists in
-the domain. You cannot change any configuration settings of the type
-after its registration, and it must be registered as a new version.
-
-\strong{Access Control}
-
-You can use IAM policies to control this action's access to Amazon SWF
-resources as follows:
-\itemize{
-\item Use a \code{Resource} element with the domain name to limit the action to
-only specified domains.
-\item Use an \code{Action} element to allow or deny permission to call this
-action.
-\item Constrain the following parameters by using a \code{Condition} element
-with the appropriate keys.
-\itemize{
-\item \code{defaultTaskList.name}: String constraint. The key is
-\code{swf:defaultTaskList.name}.
-\item \code{name}: String constraint. The key is \code{swf:name}.
-\item \code{version}: String constraint. The key is \code{swf:version}.
+See \url{https://paws-r.github.io/docs/swf/register_activity_type.html} for full documentation.
 }
-}
-
-If the caller doesn't have sufficient permissions to invoke the action,
-or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
-to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
-in the \emph{Amazon SWF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$register_activity_type(
-  domain = "string",
-  name = "string",
-  version = "string",
-  description = "string",
-  defaultTaskStartToCloseTimeout = "string",
-  defaultTaskHeartbeatTimeout = "string",
-  defaultTaskList = list(
-    name = "string"
-  ),
-  defaultTaskPriority = "string",
-  defaultTaskScheduleToStartTimeout = "string",
-  defaultTaskScheduleToCloseTimeout = "string"
-)
-}
-}
-
 \keyword{internal}

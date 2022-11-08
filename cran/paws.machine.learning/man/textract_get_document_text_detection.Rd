@@ -5,7 +5,11 @@
 \title{Gets the results for an Amazon Textract asynchronous operation that
 detects text in a document}
 \usage{
-textract_get_document_text_detection(JobId, MaxResults, NextToken)
+textract_get_document_text_detection(
+  JobId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{JobId}{[required] A unique identifier for the text detection job. The \code{JobId} is returned
@@ -23,113 +27,9 @@ to retrieve), Amazon Textract returns a pagination token in the
 response. You can use this pagination token to retrieve the next set of
 blocks.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DocumentMetadata = list(
-    Pages = 123
-  ),
-  JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"PARTIAL_SUCCESS",
-  NextToken = "string",
-  Blocks = list(
-    list(
-      BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT",
-      Confidence = 123.0,
-      Text = "string",
-      TextType = "HANDWRITING"|"PRINTED",
-      RowIndex = 123,
-      ColumnIndex = 123,
-      RowSpan = 123,
-      ColumnSpan = 123,
-      Geometry = list(
-        BoundingBox = list(
-          Width = 123.0,
-          Height = 123.0,
-          Left = 123.0,
-          Top = 123.0
-        ),
-        Polygon = list(
-          list(
-            X = 123.0,
-            Y = 123.0
-          )
-        )
-      ),
-      Id = "string",
-      Relationships = list(
-        list(
-          Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES",
-          Ids = list(
-            "string"
-          )
-        )
-      ),
-      EntityTypes = list(
-        "KEY"|"VALUE"
-      ),
-      SelectionStatus = "SELECTED"|"NOT_SELECTED",
-      Page = 123
-    )
-  ),
-  Warnings = list(
-    list(
-      ErrorCode = "string",
-      Pages = list(
-        123
-      )
-    )
-  ),
-  StatusMessage = "string",
-  DetectDocumentTextModelVersion = "string"
-)
-}
-}
 \description{
-Gets the results for an Amazon Textract asynchronous operation that
-detects text in a document. Amazon Textract can detect lines of text and
-the words that make up a line of text.
+Gets the results for an Amazon Textract asynchronous operation that detects text in a document. Amazon Textract can detect lines of text and the words that make up a line of text.
 
-You start asynchronous text detection by calling
-\code{\link[=textract_start_document_text_detection]{start_document_text_detection}},
-which returns a job identifier (\code{JobId}). When the text detection
-operation finishes, Amazon Textract publishes a completion status to the
-Amazon Simple Notification Service (Amazon SNS) topic that's registered
-in the initial call to
-\code{\link[=textract_start_document_text_detection]{start_document_text_detection}}.
-To get the results of the text-detection operation, first check that the
-status value published to the Amazon SNS topic is \code{SUCCEEDED}. If so,
-call
-\code{\link[=textract_get_document_text_detection]{get_document_text_detection}},
-and pass the job identifier (\code{JobId}) from the initial call to
-\code{\link[=textract_start_document_text_detection]{start_document_text_detection}}.
-
-\code{\link[=textract_get_document_text_detection]{get_document_text_detection}}
-returns an array of Block objects.
-
-Each document page has as an associated \code{Block} of type PAGE. Each PAGE
-\code{Block} object is the parent of LINE \code{Block} objects that represent the
-lines of detected text on a page. A LINE \code{Block} object is a parent for
-each word that makes up the line. Words are represented by \code{Block}
-objects of type WORD.
-
-Use the MaxResults parameter to limit the number of blocks that are
-returned. If there are more results than specified in \code{MaxResults}, the
-value of \code{NextToken} in the operation response contains a pagination
-token for getting the next set of results. To get the next page of
-results, call
-\code{\link[=textract_get_document_text_detection]{get_document_text_detection}},
-and populate the \code{NextToken} request parameter with the token value
-that's returned from the previous call to
-\code{\link[=textract_get_document_text_detection]{get_document_text_detection}}.
-
-For more information, see \href{https://docs.aws.amazon.com/textract/latest/dg/how-it-works-detecting.html}{Document Text Detection}.
+See \url{https://paws-r.github.io/docs/textract/get_document_text_detection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_document_text_detection(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

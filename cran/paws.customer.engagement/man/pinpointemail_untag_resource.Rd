@@ -19,20 +19,9 @@ parameter and argument for each additional tag to remove, separated by
 an ampersand. For example:
 \verb{/v1/email/tags?ResourceArn=ResourceArn&TagKeys=Key1&TagKeys=Key2}}
 }
-\value{
-An empty list.
-}
 \description{
 Remove one or more tags (keys and values) from a specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpointemail/untag_resource.html} for full documentation.
+}
 \keyword{internal}

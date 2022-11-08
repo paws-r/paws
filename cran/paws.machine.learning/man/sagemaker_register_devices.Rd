@@ -4,7 +4,7 @@
 \alias{sagemaker_register_devices}
 \title{Register devices}
 \usage{
-sagemaker_register_devices(DeviceFleetName, Devices, Tags)
+sagemaker_register_devices(DeviceFleetName, Devices, Tags = NULL)
 }
 \arguments{
 \item{DeviceFleetName}{[required] The name of the fleet.}
@@ -13,30 +13,9 @@ sagemaker_register_devices(DeviceFleetName, Devices, Tags)
 
 \item{Tags}{The tags associated with devices.}
 }
-\value{
-An empty list.
-}
 \description{
 Register devices.
-}
-\section{Request syntax}{
-\preformatted{svc$register_devices(
-  DeviceFleetName = "string",
-  Devices = list(
-    list(
-      DeviceName = "string",
-      Description = "string",
-      IotThingName = "string"
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/register_devices.html} for full documentation.
+}
 \keyword{internal}

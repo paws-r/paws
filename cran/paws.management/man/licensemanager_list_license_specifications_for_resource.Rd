@@ -4,8 +4,11 @@
 \alias{licensemanager_list_license_specifications_for_resource}
 \title{Describes the license configurations for the specified resource}
 \usage{
-licensemanager_list_license_specifications_for_resource(ResourceArn,
-  MaxResults, NextToken)
+licensemanager_list_license_specifications_for_resource(
+  ResourceArn,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ResourceArn}{[required] Amazon Resource Name (ARN) of a resource that has an associated license
@@ -15,28 +18,9 @@ configuration.}
 
 \item{NextToken}{Token for the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LicenseSpecifications = list(
-    list(
-      LicenseConfigurationArn = "string",
-      AmiAssociationScope = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the license configurations for the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_license_specifications_for_resource(
-  ResourceArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/list_license_specifications_for_resource.html} for full documentation.
+}
 \keyword{internal}

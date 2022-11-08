@@ -5,7 +5,11 @@
 \title{Updates the name and description of a custom action target in Security
 Hub}
 \usage{
-securityhub_update_action_target(ActionTargetArn, Name, Description)
+securityhub_update_action_target(
+  ActionTargetArn,
+  Name = NULL,
+  Description = NULL
+)
 }
 \arguments{
 \item{ActionTargetArn}{[required] The ARN of the custom action target to update.}
@@ -14,20 +18,9 @@ securityhub_update_action_target(ActionTargetArn, Name, Description)
 
 \item{Description}{The updated description for the custom action target.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the name and description of a custom action target in Security
-Hub.
-}
-\section{Request syntax}{
-\preformatted{svc$update_action_target(
-  ActionTargetArn = "string",
-  Name = "string",
-  Description = "string"
-)
-}
-}
+Updates the name and description of a custom action target in Security Hub.
 
+See \url{https://paws-r.github.io/docs/securityhub/update_action_target.html} for full documentation.
+}
 \keyword{internal}

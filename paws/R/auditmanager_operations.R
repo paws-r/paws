@@ -3,19 +3,19 @@
 #' @include auditmanager_service.R
 NULL
 
-#' Associates an evidence folder to the specified assessment report in AWS
-#' Audit Manager
+#' Associates an evidence folder to an assessment report in a Audit Manager
+#' assessment
 #'
 #' @description
-#' Associates an evidence folder to the specified assessment report in AWS
-#' Audit Manager.
+#' Associates an evidence folder to an assessment report in a Audit Manager
+#' assessment.
 #'
 #' @usage
 #' auditmanager_associate_assessment_report_evidence_folder(assessmentId,
 #'   evidenceFolderId)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
-#' @param evidenceFolderId &#91;required&#93; The identifier for the folder in which evidence is stored.
+#' @param assessmentId &#91;required&#93; The identifier for the assessment.
+#' @param evidenceFolderId &#91;required&#93; The identifier for the folder that the evidence is stored in.
 #'
 #' @return
 #' An empty list.
@@ -48,19 +48,19 @@ auditmanager_associate_assessment_report_evidence_folder <- function(assessmentI
 }
 .auditmanager$operations$associate_assessment_report_evidence_folder <- auditmanager_associate_assessment_report_evidence_folder
 
-#' Associates a list of evidence to an assessment report in an AWS Audit
+#' Associates a list of evidence to an assessment report in an Audit
 #' Manager assessment
 #'
 #' @description
-#' Associates a list of evidence to an assessment report in an AWS Audit
+#' Associates a list of evidence to an assessment report in an Audit
 #' Manager assessment.
 #'
 #' @usage
 #' auditmanager_batch_associate_assessment_report_evidence(assessmentId,
 #'   evidenceFolderId, evidenceIds)
 #'
-#' @param assessmentId &#91;required&#93; The unique identifier for the specified assessment.
-#' @param evidenceFolderId &#91;required&#93; The identifier for the folder in which the evidence is stored.
+#' @param assessmentId &#91;required&#93; The identifier for the assessment.
+#' @param evidenceFolderId &#91;required&#93; The identifier for the folder that the evidence is stored in.
 #' @param evidenceIds &#91;required&#93; The list of evidence identifiers.
 #'
 #' @return
@@ -111,19 +111,17 @@ auditmanager_batch_associate_assessment_report_evidence <- function(assessmentId
 }
 .auditmanager$operations$batch_associate_assessment_report_evidence <- auditmanager_batch_associate_assessment_report_evidence
 
-#' Create a batch of delegations for a specified assessment in AWS Audit
-#' Manager
+#' Creates a batch of delegations for an assessment in Audit Manager
 #'
 #' @description
-#' Create a batch of delegations for a specified assessment in AWS Audit
-#' Manager.
+#' Creates a batch of delegations for an assessment in Audit Manager.
 #'
 #' @usage
 #' auditmanager_batch_create_delegation_by_assessment(
 #'   createDelegationRequests, assessmentId)
 #'
-#' @param createDelegationRequests &#91;required&#93; The API request to batch create delegations in AWS Audit Manager.
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
+#' @param createDelegationRequests &#91;required&#93; The API request to batch create delegations in Audit Manager.
+#' @param assessmentId &#91;required&#93; The identifier for the assessment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -198,17 +196,17 @@ auditmanager_batch_create_delegation_by_assessment <- function(createDelegationR
 }
 .auditmanager$operations$batch_create_delegation_by_assessment <- auditmanager_batch_create_delegation_by_assessment
 
-#' Deletes the delegations in the specified AWS Audit Manager assessment
+#' Deletes a batch of delegations for an assessment in Audit Manager
 #'
 #' @description
-#' Deletes the delegations in the specified AWS Audit Manager assessment.
+#' Deletes a batch of delegations for an assessment in Audit Manager.
 #'
 #' @usage
 #' auditmanager_batch_delete_delegation_by_assessment(delegationIds,
 #'   assessmentId)
 #'
-#' @param delegationIds &#91;required&#93; The identifiers for the specified delegations.
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
+#' @param delegationIds &#91;required&#93; The identifiers for the delegations.
+#' @param assessmentId &#91;required&#93; The identifier for the assessment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -254,19 +252,19 @@ auditmanager_batch_delete_delegation_by_assessment <- function(delegationIds, as
 }
 .auditmanager$operations$batch_delete_delegation_by_assessment <- auditmanager_batch_delete_delegation_by_assessment
 
-#' Disassociates a list of evidence from the specified assessment report in
-#' AWS Audit Manager
+#' Disassociates a list of evidence from an assessment report in Audit
+#' Manager
 #'
 #' @description
-#' Disassociates a list of evidence from the specified assessment report in
-#' AWS Audit Manager.
+#' Disassociates a list of evidence from an assessment report in Audit
+#' Manager.
 #'
 #' @usage
 #' auditmanager_batch_disassociate_assessment_report_evidence(assessmentId,
 #'   evidenceFolderId, evidenceIds)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
-#' @param evidenceFolderId &#91;required&#93; The identifier for the folder in which evidence is stored.
+#' @param assessmentId &#91;required&#93; The identifier for the assessment.
+#' @param evidenceFolderId &#91;required&#93; The identifier for the folder that the evidence is stored in.
 #' @param evidenceIds &#91;required&#93; The list of evidence identifiers.
 #'
 #' @return
@@ -317,20 +315,20 @@ auditmanager_batch_disassociate_assessment_report_evidence <- function(assessmen
 }
 .auditmanager$operations$batch_disassociate_assessment_report_evidence <- auditmanager_batch_disassociate_assessment_report_evidence
 
-#' Uploads one or more pieces of evidence to the specified control in the
-#' assessment in AWS Audit Manager
+#' Uploads one or more pieces of evidence to a control in an Audit Manager
+#' assessment
 #'
 #' @description
-#' Uploads one or more pieces of evidence to the specified control in the
-#' assessment in AWS Audit Manager.
+#' Uploads one or more pieces of evidence to a control in an Audit Manager
+#' assessment.
 #'
 #' @usage
 #' auditmanager_batch_import_evidence_to_assessment_control(assessmentId,
 #'   controlSetId, controlId, manualEvidence)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
-#' @param controlSetId &#91;required&#93; The identifier for the specified control set.
-#' @param controlId &#91;required&#93; The identifier for the specified control.
+#' @param assessmentId &#91;required&#93; The identifier for the assessment.
+#' @param controlSetId &#91;required&#93; The identifier for the control set.
+#' @param controlId &#91;required&#93; The identifier for the control.
 #' @param manualEvidence &#91;required&#93; The list of manual evidence objects.
 #'
 #' @return
@@ -383,10 +381,10 @@ auditmanager_batch_import_evidence_to_assessment_control <- function(assessmentI
 }
 .auditmanager$operations$batch_import_evidence_to_assessment_control <- auditmanager_batch_import_evidence_to_assessment_control
 
-#' Creates an assessment in AWS Audit Manager
+#' Creates an assessment in Audit Manager
 #'
 #' @description
-#' Creates an assessment in AWS Audit Manager.
+#' Creates an assessment in Audit Manager.
 #'
 #' @usage
 #' auditmanager_create_assessment(name, description,
@@ -394,12 +392,13 @@ auditmanager_batch_import_evidence_to_assessment_control <- function(assessmentI
 #'
 #' @param name &#91;required&#93; The name of the assessment to be created.
 #' @param description The optional description of the assessment to be created.
-#' @param assessmentReportsDestination &#91;required&#93; The assessment report storage destination for the specified assessment
-#' that is being created.
+#' @param assessmentReportsDestination &#91;required&#93; The assessment report storage destination for the assessment that's
+#' being created.
 #' @param scope &#91;required&#93; 
-#' @param roles &#91;required&#93; The list of roles for the specified assessment.
-#' @param frameworkId &#91;required&#93; The identifier for the specified framework.
-#' @param tags The tags associated with the assessment.
+#' @param roles &#91;required&#93; The list of roles for the assessment.
+#' @param frameworkId &#91;required&#93; The identifier for the framework that the assessment will be created
+#' from.
+#' @param tags The tags that are associated with the assessment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -598,20 +597,21 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 }
 .auditmanager$operations$create_assessment <- auditmanager_create_assessment
 
-#' Creates a custom framework in AWS Audit Manager
+#' Creates a custom framework in Audit Manager
 #'
 #' @description
-#' Creates a custom framework in AWS Audit Manager.
+#' Creates a custom framework in Audit Manager.
 #'
 #' @usage
 #' auditmanager_create_assessment_framework(name, description,
-#'   complianceType, controlSets)
+#'   complianceType, controlSets, tags)
 #'
 #' @param name &#91;required&#93; The name of the new custom framework.
 #' @param description An optional description for the new custom framework.
 #' @param complianceType The compliance type that the new custom framework supports, such as CIS
 #' or HIPAA.
-#' @param controlSets &#91;required&#93; The control sets to be associated with the framework.
+#' @param controlSets &#91;required&#93; The control sets that are associated with the framework.
+#' @param tags The tags that are associated with the framework.
 #'
 #' @return
 #' A list with the following syntax:
@@ -678,7 +678,10 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #'       "2015-01-01"
 #'     ),
 #'     createdBy = "string",
-#'     lastUpdatedBy = "string"
+#'     lastUpdatedBy = "string",
+#'     tags = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -698,6 +701,9 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   tags = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -705,14 +711,14 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #' @keywords internal
 #'
 #' @rdname auditmanager_create_assessment_framework
-auditmanager_create_assessment_framework <- function(name, description = NULL, complianceType = NULL, controlSets) {
+auditmanager_create_assessment_framework <- function(name, description = NULL, complianceType = NULL, controlSets, tags = NULL) {
   op <- new_operation(
     name = "CreateAssessmentFramework",
     http_method = "POST",
     http_path = "/assessmentFrameworks",
     paginator = list()
   )
-  input <- .auditmanager$create_assessment_framework_input(name = name, description = description, complianceType = complianceType, controlSets = controlSets)
+  input <- .auditmanager$create_assessment_framework_input(name = name, description = description, complianceType = complianceType, controlSets = controlSets, tags = tags)
   output <- .auditmanager$create_assessment_framework_output()
   config <- get_config()
   svc <- .auditmanager$service(config)
@@ -732,7 +738,7 @@ auditmanager_create_assessment_framework <- function(name, description = NULL, c
 #'
 #' @param name &#91;required&#93; The name of the new assessment report.
 #' @param description The description of the assessment report.
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
+#' @param assessmentId &#91;required&#93; The identifier for the assessment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -783,10 +789,10 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
 }
 .auditmanager$operations$create_assessment_report <- auditmanager_create_assessment_report
 
-#' Creates a new custom control in AWS Audit Manager
+#' Creates a new custom control in Audit Manager
 #'
 #' @description
-#' Creates a new custom control in AWS Audit Manager.
+#' Creates a new custom control in Audit Manager.
 #'
 #' @usage
 #' auditmanager_create_control(name, description, testingInformation,
@@ -794,12 +800,11 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
 #'
 #' @param name &#91;required&#93; The name of the control.
 #' @param description The description of the control.
-#' @param testingInformation The steps to follow to determine if the control has been satisfied.
+#' @param testingInformation The steps to follow to determine if the control is satisfied.
 #' @param actionPlanTitle The title of the action plan for remediating the control.
-#' @param actionPlanInstructions The recommended actions to carry out if the control is not fulfilled.
-#' @param controlMappingSources &#91;required&#93; The data source that determines from where AWS Audit Manager collects
-#' evidence for the control.
-#' @param tags The tags associated with the control.
+#' @param actionPlanInstructions The recommended actions to carry out if the control isn't fulfilled.
+#' @param controlMappingSources &#91;required&#93; The data mapping sources for the control.
+#' @param tags The tags that are associated with the control.
 #'
 #' @return
 #' A list with the following syntax:
@@ -893,15 +898,15 @@ auditmanager_create_control <- function(name, description = NULL, testingInforma
 }
 .auditmanager$operations$create_control <- auditmanager_create_control
 
-#' Deletes an assessment in AWS Audit Manager
+#' Deletes an assessment in Audit Manager
 #'
 #' @description
-#' Deletes an assessment in AWS Audit Manager.
+#' Deletes an assessment in Audit Manager.
 #'
 #' @usage
 #' auditmanager_delete_assessment(assessmentId)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
+#' @param assessmentId &#91;required&#93; The identifier for the assessment.
 #'
 #' @return
 #' An empty list.
@@ -933,15 +938,15 @@ auditmanager_delete_assessment <- function(assessmentId) {
 }
 .auditmanager$operations$delete_assessment <- auditmanager_delete_assessment
 
-#' Deletes a custom framework in AWS Audit Manager
+#' Deletes a custom framework in Audit Manager
 #'
 #' @description
-#' Deletes a custom framework in AWS Audit Manager.
+#' Deletes a custom framework in Audit Manager.
 #'
 #' @usage
 #' auditmanager_delete_assessment_framework(frameworkId)
 #'
-#' @param frameworkId &#91;required&#93; The identifier for the specified framework.
+#' @param frameworkId &#91;required&#93; The identifier for the custom framework.
 #'
 #' @return
 #' An empty list.
@@ -973,15 +978,86 @@ auditmanager_delete_assessment_framework <- function(frameworkId) {
 }
 .auditmanager$operations$delete_assessment_framework <- auditmanager_delete_assessment_framework
 
-#' Deletes an assessment report from an assessment in AWS Audit Manager
+#' Deletes a share request for a custom framework in Audit Manager
 #'
 #' @description
-#' Deletes an assessment report from an assessment in AWS Audit Manager.
+#' Deletes a share request for a custom framework in Audit Manager.
+#'
+#' @usage
+#' auditmanager_delete_assessment_framework_share(requestId, requestType)
+#'
+#' @param requestId &#91;required&#93; The unique identifier for the share request to be deleted.
+#' @param requestType &#91;required&#93; Specifies whether the share request is a sent request or a received
+#' request.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_assessment_framework_share(
+#'   requestId = "string",
+#'   requestType = "SENT"|"RECEIVED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname auditmanager_delete_assessment_framework_share
+auditmanager_delete_assessment_framework_share <- function(requestId, requestType) {
+  op <- new_operation(
+    name = "DeleteAssessmentFrameworkShare",
+    http_method = "DELETE",
+    http_path = "/assessmentFrameworkShareRequests/{requestId}",
+    paginator = list()
+  )
+  input <- .auditmanager$delete_assessment_framework_share_input(requestId = requestId, requestType = requestType)
+  output <- .auditmanager$delete_assessment_framework_share_output()
+  config <- get_config()
+  svc <- .auditmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.auditmanager$operations$delete_assessment_framework_share <- auditmanager_delete_assessment_framework_share
+
+#' Deletes an assessment report in Audit Manager
+#'
+#' @description
+#' Deletes an assessment report in Audit Manager.
+#' 
+#' When you run the
+#' [`delete_assessment_report`][auditmanager_delete_assessment_report]
+#' operation, Audit Manager attempts to delete the following data:
+#' 
+#' 1.  The specified assessment report that’s stored in your S3 bucket
+#' 
+#' 2.  The associated metadata that’s stored in Audit Manager
+#' 
+#' If Audit Manager can’t access the assessment report in your S3 bucket,
+#' the report isn’t deleted. In this event, the
+#' [`delete_assessment_report`][auditmanager_delete_assessment_report]
+#' operation doesn’t fail. Instead, it proceeds to delete the associated
+#' metadata only. You must then delete the assessment report from the S3
+#' bucket yourself.
+#' 
+#' This scenario happens when Audit Manager receives a `403 (Forbidden)` or
+#' `404 (Not Found)` error from Amazon S3. To avoid this, make sure that
+#' your S3 bucket is available, and that you configured the correct
+#' permissions for Audit Manager to delete resources in your S3 bucket. For
+#' an example permissions policy that you can use, see [Assessment report
+#' destination
+#' permissions](https://docs.aws.amazon.com/audit-manager/latest/userguide/security_iam_id-based-policy-examples.html#full-administrator-access-assessment-report-destination)
+#' in the *Audit Manager User Guide*. For information about the issues that
+#' could cause a `403 (Forbidden)` or `404 (Not Found`) error from Amazon
+#' S3, see [List of Error
+#' Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList)
+#' in the *Amazon Simple Storage Service API Reference*.
 #'
 #' @usage
 #' auditmanager_delete_assessment_report(assessmentId, assessmentReportId)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
+#' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #' @param assessmentReportId &#91;required&#93; The unique identifier for the assessment report.
 #'
 #' @return
@@ -1015,15 +1091,15 @@ auditmanager_delete_assessment_report <- function(assessmentId, assessmentReport
 }
 .auditmanager$operations$delete_assessment_report <- auditmanager_delete_assessment_report
 
-#' Deletes a custom control in AWS Audit Manager
+#' Deletes a custom control in Audit Manager
 #'
 #' @description
-#' Deletes a custom control in AWS Audit Manager.
+#' Deletes a custom control in Audit Manager.
 #'
 #' @usage
 #' auditmanager_delete_control(controlId)
 #'
-#' @param controlId &#91;required&#93; The identifier for the specified control.
+#' @param controlId &#91;required&#93; The unique identifier for the control.
 #'
 #' @return
 #' An empty list.
@@ -1055,10 +1131,47 @@ auditmanager_delete_control <- function(controlId) {
 }
 .auditmanager$operations$delete_control <- auditmanager_delete_control
 
-#' Deregisters an account in AWS Audit Manager
+#' Deregisters an account in Audit Manager
 #'
 #' @description
-#' Deregisters an account in AWS Audit Manager.
+#' Deregisters an account in Audit Manager.
+#' 
+#' When you deregister your account from Audit Manager, your data isn’t
+#' deleted. If you want to delete your resource data, you must perform that
+#' task separately before you deregister your account. Either, you can do
+#' this in the Audit Manager console. Or, you can use one of the delete API
+#' operations that are provided by Audit Manager.
+#' 
+#' To delete your Audit Manager resource data, see the following
+#' instructions:
+#' 
+#' -   [`delete_assessment`][auditmanager_delete_assessment] (see also:
+#'     [Deleting an
+#'     assessment](https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-assessment.html)
+#'     in the *Audit Manager User Guide*)
+#' 
+#' -   [`delete_assessment_framework`][auditmanager_delete_assessment_framework]
+#'     (see also: [Deleting a custom
+#'     framework](https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-custom-framework.html)
+#'     in the *Audit Manager User Guide*)
+#' 
+#' -   [`delete_assessment_framework_share`][auditmanager_delete_assessment_framework_share]
+#'     (see also: [Deleting a share
+#'     request](https://docs.aws.amazon.com/audit-manager/latest/userguide/deleting-shared-framework-requests.html)
+#'     in the *Audit Manager User Guide*)
+#' 
+#' -   [`delete_assessment_report`][auditmanager_delete_assessment_report]
+#'     (see also: [Deleting an assessment
+#'     report](https://docs.aws.amazon.com/audit-manager/latest/userguide/generate-assessment-report.html#delete-assessment-report-steps)
+#'     in the *Audit Manager User Guide*)
+#' 
+#' -   [`delete_control`][auditmanager_delete_control] (see also: [Deleting
+#'     a custom
+#'     control](https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-controls.html)
+#'     in the *Audit Manager User Guide*)
+#' 
+#' At this time, Audit Manager doesn't provide an option to delete
+#' evidence. All available delete operations are listed above.
 #'
 #' @usage
 #' auditmanager_deregister_account()
@@ -1096,17 +1209,62 @@ auditmanager_deregister_account <- function() {
 }
 .auditmanager$operations$deregister_account <- auditmanager_deregister_account
 
-#' Deregisters the delegated AWS administrator account from the AWS
-#' organization
+#' Removes the specified Amazon Web Services account as a delegated
+#' administrator for Audit Manager
 #'
 #' @description
-#' Deregisters the delegated AWS administrator account from the AWS
-#' organization.
+#' Removes the specified Amazon Web Services account as a delegated
+#' administrator for Audit Manager.
+#' 
+#' When you remove a delegated administrator from your Audit Manager
+#' settings, you continue to have access to the evidence that you
+#' previously collected under that account. This is also the case when you
+#' deregister a delegated administrator from Organizations. However, Audit
+#' Manager will stop collecting and attaching evidence to that delegated
+#' administrator account moving forward.
+#' 
+#' When you deregister a delegated administrator account for Audit Manager,
+#' the data for that account isn’t deleted. If you want to delete resource
+#' data for a delegated administrator account, you must perform that task
+#' separately before you deregister the account. Either, you can do this in
+#' the Audit Manager console. Or, you can use one of the delete API
+#' operations that are provided by Audit Manager.
+#' 
+#' To delete your Audit Manager resource data, see the following
+#' instructions:
+#' 
+#' -   [`delete_assessment`][auditmanager_delete_assessment] (see also:
+#'     [Deleting an
+#'     assessment](https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-assessment.html)
+#'     in the *Audit Manager User Guide*)
+#' 
+#' -   [`delete_assessment_framework`][auditmanager_delete_assessment_framework]
+#'     (see also: [Deleting a custom
+#'     framework](https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-custom-framework.html)
+#'     in the *Audit Manager User Guide*)
+#' 
+#' -   [`delete_assessment_framework_share`][auditmanager_delete_assessment_framework_share]
+#'     (see also: [Deleting a share
+#'     request](https://docs.aws.amazon.com/audit-manager/latest/userguide/deleting-shared-framework-requests.html)
+#'     in the *Audit Manager User Guide*)
+#' 
+#' -   [`delete_assessment_report`][auditmanager_delete_assessment_report]
+#'     (see also: [Deleting an assessment
+#'     report](https://docs.aws.amazon.com/audit-manager/latest/userguide/generate-assessment-report.html#delete-assessment-report-steps)
+#'     in the *Audit Manager User Guide*)
+#' 
+#' -   [`delete_control`][auditmanager_delete_control] (see also: [Deleting
+#'     a custom
+#'     control](https://docs.aws.amazon.com/audit-manager/latest/userguide/delete-controls.html)
+#'     in the *Audit Manager User Guide*)
+#' 
+#' At this time, Audit Manager doesn't provide an option to delete
+#' evidence. All available delete operations are listed above.
 #'
 #' @usage
 #' auditmanager_deregister_organization_admin_account(adminAccountId)
 #'
-#' @param adminAccountId The identifier for the specified administrator account.
+#' @param adminAccountId The identifier for the administrator account.
 #'
 #' @return
 #' An empty list.
@@ -1139,18 +1297,18 @@ auditmanager_deregister_organization_admin_account <- function(adminAccountId = 
 .auditmanager$operations$deregister_organization_admin_account <- auditmanager_deregister_organization_admin_account
 
 #' Disassociates an evidence folder from the specified assessment report in
-#' AWS Audit Manager
+#' Audit Manager
 #'
 #' @description
 #' Disassociates an evidence folder from the specified assessment report in
-#' AWS Audit Manager.
+#' Audit Manager.
 #'
 #' @usage
 #' auditmanager_disassociate_assessment_report_evidence_folder(
 #'   assessmentId, evidenceFolderId)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
-#' @param evidenceFolderId &#91;required&#93; The identifier for the folder in which evidence is stored.
+#' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
+#' @param evidenceFolderId &#91;required&#93; The unique identifier for the folder that the evidence is stored in.
 #'
 #' @return
 #' An empty list.
@@ -1183,10 +1341,10 @@ auditmanager_disassociate_assessment_report_evidence_folder <- function(assessme
 }
 .auditmanager$operations$disassociate_assessment_report_evidence_folder <- auditmanager_disassociate_assessment_report_evidence_folder
 
-#' Returns the registration status of an account in AWS Audit Manager
+#' Returns the registration status of an account in Audit Manager
 #'
 #' @description
-#' Returns the registration status of an account in AWS Audit Manager.
+#' Returns the registration status of an account in Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_account_status()
@@ -1224,15 +1382,15 @@ auditmanager_get_account_status <- function() {
 }
 .auditmanager$operations$get_account_status <- auditmanager_get_account_status
 
-#' Returns an assessment from AWS Audit Manager
+#' Returns an assessment from Audit Manager
 #'
 #' @description
-#' Returns an assessment from AWS Audit Manager.
+#' Returns an assessment from Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_assessment(assessmentId)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
+#' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1371,6 +1529,10 @@ auditmanager_get_account_status <- function() {
 #'     tags = list(
 #'       "string"
 #'     )
+#'   ),
+#'   userRole = list(
+#'     roleType = "PROCESS_OWNER"|"RESOURCE_OWNER",
+#'     roleArn = "string"
 #'   )
 #' )
 #' ```
@@ -1402,15 +1564,15 @@ auditmanager_get_assessment <- function(assessmentId) {
 }
 .auditmanager$operations$get_assessment <- auditmanager_get_assessment
 
-#' Returns a framework from AWS Audit Manager
+#' Returns a framework from Audit Manager
 #'
 #' @description
-#' Returns a framework from AWS Audit Manager.
+#' Returns a framework from Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_assessment_framework(frameworkId)
 #'
-#' @param frameworkId &#91;required&#93; The identifier for the specified framework.
+#' @param frameworkId &#91;required&#93; The identifier for the framework.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1477,7 +1639,10 @@ auditmanager_get_assessment <- function(assessmentId) {
 #'       "2015-01-01"
 #'     ),
 #'     createdBy = "string",
-#'     lastUpdatedBy = "string"
+#'     lastUpdatedBy = "string",
+#'     tags = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1509,16 +1674,16 @@ auditmanager_get_assessment_framework <- function(frameworkId) {
 }
 .auditmanager$operations$get_assessment_framework <- auditmanager_get_assessment_framework
 
-#' Returns the URL of a specified assessment report in AWS Audit Manager
+#' Returns the URL of an assessment report in Audit Manager
 #'
 #' @description
-#' Returns the URL of a specified assessment report in AWS Audit Manager.
+#' Returns the URL of an assessment report in Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_assessment_report_url(assessmentReportId, assessmentId)
 #'
-#' @param assessmentReportId &#91;required&#93; The identifier for the assessment report.
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
+#' @param assessmentReportId &#91;required&#93; The unique identifier for the assessment report.
+#' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1559,20 +1724,20 @@ auditmanager_get_assessment_report_url <- function(assessmentReportId, assessmen
 }
 .auditmanager$operations$get_assessment_report_url <- auditmanager_get_assessment_report_url
 
-#' Returns a list of changelogs from AWS Audit Manager
+#' Returns a list of changelogs from Audit Manager
 #'
 #' @description
-#' Returns a list of changelogs from AWS Audit Manager.
+#' Returns a list of changelogs from Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_change_logs(assessmentId, controlSetId, controlId,
 #'   nextToken, maxResults)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
-#' @param controlSetId The identifier for the specified control set.
-#' @param controlId The identifier for the specified control.
-#' @param nextToken The pagination token used to fetch the next set of results.
-#' @param maxResults Represents the maximum number of results per page, or per API request
+#' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
+#' @param controlSetId The unique identifier for the control set.
+#' @param controlId The unique identifier for the control.
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
 #' call.
 #'
 #' @return
@@ -1625,15 +1790,15 @@ auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, cont
 }
 .auditmanager$operations$get_change_logs <- auditmanager_get_change_logs
 
-#' Returns a control from AWS Audit Manager
+#' Returns a control from Audit Manager
 #'
 #' @description
-#' Returns a control from AWS Audit Manager.
+#' Returns a control from Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_control(controlId)
 #'
-#' @param controlId &#91;required&#93; The identifier for the specified control.
+#' @param controlId &#91;required&#93; The identifier for the control.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1714,8 +1879,8 @@ auditmanager_get_control <- function(controlId) {
 #' @usage
 #' auditmanager_get_delegations(nextToken, maxResults)
 #'
-#' @param nextToken The pagination token used to fetch the next set of results.
-#' @param maxResults Represents the maximum number of results per page, or per API request
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
 #' call.
 #'
 #' @return
@@ -1767,19 +1932,19 @@ auditmanager_get_delegations <- function(nextToken = NULL, maxResults = NULL) {
 }
 .auditmanager$operations$get_delegations <- auditmanager_get_delegations
 
-#' Returns evidence from AWS Audit Manager
+#' Returns evidence from Audit Manager
 #'
 #' @description
-#' Returns evidence from AWS Audit Manager.
+#' Returns evidence from Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_evidence(assessmentId, controlSetId, evidenceFolderId,
 #'   evidenceId)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
-#' @param controlSetId &#91;required&#93; The identifier for the specified control set.
-#' @param evidenceFolderId &#91;required&#93; The identifier for the folder in which the evidence is stored.
-#' @param evidenceId &#91;required&#93; The identifier for the evidence.
+#' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
+#' @param controlSetId &#91;required&#93; The unique identifier for the control set.
+#' @param evidenceFolderId &#91;required&#93; The unique identifier for the folder that the evidence is stored in.
+#' @param evidenceId &#91;required&#93; The unique identifier for the evidence.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1844,22 +2009,20 @@ auditmanager_get_evidence <- function(assessmentId, controlSetId, evidenceFolder
 }
 .auditmanager$operations$get_evidence <- auditmanager_get_evidence
 
-#' Returns all evidence from a specified evidence folder in AWS Audit
-#' Manager
+#' Returns all evidence from a specified evidence folder in Audit Manager
 #'
 #' @description
-#' Returns all evidence from a specified evidence folder in AWS Audit
-#' Manager.
+#' Returns all evidence from a specified evidence folder in Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_evidence_by_evidence_folder(assessmentId, controlSetId,
 #'   evidenceFolderId, nextToken, maxResults)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
+#' @param assessmentId &#91;required&#93; The identifier for the assessment.
 #' @param controlSetId &#91;required&#93; The identifier for the control set.
-#' @param evidenceFolderId &#91;required&#93; The unique identifier for the folder in which the evidence is stored.
-#' @param nextToken The pagination token used to fetch the next set of results.
-#' @param maxResults Represents the maximum number of results per page, or per API request
+#' @param evidenceFolderId &#91;required&#93; The unique identifier for the folder that the evidence is stored in.
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
 #' call.
 #'
 #' @return
@@ -1929,20 +2092,20 @@ auditmanager_get_evidence_by_evidence_folder <- function(assessmentId, controlSe
 }
 .auditmanager$operations$get_evidence_by_evidence_folder <- auditmanager_get_evidence_by_evidence_folder
 
-#' Returns an evidence folder from the specified assessment in AWS Audit
+#' Returns an evidence folder from the specified assessment in Audit
 #' Manager
 #'
 #' @description
-#' Returns an evidence folder from the specified assessment in AWS Audit
+#' Returns an evidence folder from the specified assessment in Audit
 #' Manager.
 #'
 #' @usage
 #' auditmanager_get_evidence_folder(assessmentId, controlSetId,
 #'   evidenceFolderId)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
-#' @param controlSetId &#91;required&#93; The identifier for the specified control set.
-#' @param evidenceFolderId &#91;required&#93; The identifier for the folder in which the evidence is stored.
+#' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
+#' @param controlSetId &#91;required&#93; The unique identifier for the control set.
+#' @param evidenceFolderId &#91;required&#93; The unique identifier for the folder that the evidence is stored in.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2002,20 +2165,20 @@ auditmanager_get_evidence_folder <- function(assessmentId, controlSetId, evidenc
 }
 .auditmanager$operations$get_evidence_folder <- auditmanager_get_evidence_folder
 
-#' Returns the evidence folders from a specified assessment in AWS Audit
+#' Returns the evidence folders from a specified assessment in Audit
 #' Manager
 #'
 #' @description
-#' Returns the evidence folders from a specified assessment in AWS Audit
+#' Returns the evidence folders from a specified assessment in Audit
 #' Manager.
 #'
 #' @usage
 #' auditmanager_get_evidence_folders_by_assessment(assessmentId, nextToken,
 #'   maxResults)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
-#' @param nextToken The pagination token used to fetch the next set of results.
-#' @param maxResults Represents the maximum number of results per page, or per API request
+#' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
 #' call.
 #'
 #' @return
@@ -2079,22 +2242,22 @@ auditmanager_get_evidence_folders_by_assessment <- function(assessmentId, nextTo
 }
 .auditmanager$operations$get_evidence_folders_by_assessment <- auditmanager_get_evidence_folders_by_assessment
 
-#' Returns a list of evidence folders associated with a specified control
-#' of an assessment in AWS Audit Manager
+#' Returns a list of evidence folders that are associated with a specified
+#' control of an assessment in Audit Manager
 #'
 #' @description
-#' Returns a list of evidence folders associated with a specified control
-#' of an assessment in AWS Audit Manager.
+#' Returns a list of evidence folders that are associated with a specified
+#' control of an assessment in Audit Manager.
 #'
 #' @usage
 #' auditmanager_get_evidence_folders_by_assessment_control(assessmentId,
 #'   controlSetId, controlId, nextToken, maxResults)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
-#' @param controlSetId &#91;required&#93; The identifier for the specified control set.
-#' @param controlId &#91;required&#93; The identifier for the specified control.
-#' @param nextToken The pagination token used to fetch the next set of results.
-#' @param maxResults Represents the maximum number of results per page, or per API request
+#' @param assessmentId &#91;required&#93; The identifier for the assessment.
+#' @param controlSetId &#91;required&#93; The identifier for the control set.
+#' @param controlId &#91;required&#93; The identifier for the control.
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
 #' call.
 #'
 #' @return
@@ -2160,12 +2323,117 @@ auditmanager_get_evidence_folders_by_assessment_control <- function(assessmentId
 }
 .auditmanager$operations$get_evidence_folders_by_assessment_control <- auditmanager_get_evidence_folders_by_assessment_control
 
-#' Returns the name of the delegated AWS administrator account for the AWS
-#' organization
+#' Gets the latest analytics data for all your current active assessments
 #'
 #' @description
-#' Returns the name of the delegated AWS administrator account for the AWS
-#' organization.
+#' Gets the latest analytics data for all your current active assessments.
+#'
+#' @usage
+#' auditmanager_get_insights()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   insights = list(
+#'     activeAssessmentsCount = 123,
+#'     noncompliantEvidenceCount = 123,
+#'     compliantEvidenceCount = 123,
+#'     inconclusiveEvidenceCount = 123,
+#'     assessmentControlsCountByNoncompliantEvidence = 123,
+#'     totalAssessmentControlsCount = 123,
+#'     lastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_insights()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname auditmanager_get_insights
+auditmanager_get_insights <- function() {
+  op <- new_operation(
+    name = "GetInsights",
+    http_method = "GET",
+    http_path = "/insights",
+    paginator = list()
+  )
+  input <- .auditmanager$get_insights_input()
+  output <- .auditmanager$get_insights_output()
+  config <- get_config()
+  svc <- .auditmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.auditmanager$operations$get_insights <- auditmanager_get_insights
+
+#' Gets the latest analytics data for a specific active assessment
+#'
+#' @description
+#' Gets the latest analytics data for a specific active assessment.
+#'
+#' @usage
+#' auditmanager_get_insights_by_assessment(assessmentId)
+#'
+#' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   insights = list(
+#'     noncompliantEvidenceCount = 123,
+#'     compliantEvidenceCount = 123,
+#'     inconclusiveEvidenceCount = 123,
+#'     assessmentControlsCountByNoncompliantEvidence = 123,
+#'     totalAssessmentControlsCount = 123,
+#'     lastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_insights_by_assessment(
+#'   assessmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname auditmanager_get_insights_by_assessment
+auditmanager_get_insights_by_assessment <- function(assessmentId) {
+  op <- new_operation(
+    name = "GetInsightsByAssessment",
+    http_method = "GET",
+    http_path = "/insights/assessments/{assessmentId}",
+    paginator = list()
+  )
+  input <- .auditmanager$get_insights_by_assessment_input(assessmentId = assessmentId)
+  output <- .auditmanager$get_insights_by_assessment_output()
+  config <- get_config()
+  svc <- .auditmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.auditmanager$operations$get_insights_by_assessment <- auditmanager_get_insights_by_assessment
+
+#' Returns the name of the delegated Amazon Web Services administrator
+#' account for the organization
+#'
+#' @description
+#' Returns the name of the delegated Amazon Web Services administrator
+#' account for the organization.
 #'
 #' @usage
 #' auditmanager_get_organization_admin_account()
@@ -2204,10 +2472,11 @@ auditmanager_get_organization_admin_account <- function() {
 }
 .auditmanager$operations$get_organization_admin_account <- auditmanager_get_organization_admin_account
 
-#' Returns a list of the in-scope AWS services for the specified assessment
+#' Returns a list of the in-scope Amazon Web Services for the specified
+#' assessment
 #'
 #' @description
-#' Returns a list of the in-scope AWS services for the specified
+#' Returns a list of the in-scope Amazon Web Services for the specified
 #' assessment.
 #'
 #' @usage
@@ -2253,10 +2522,10 @@ auditmanager_get_services_in_scope <- function() {
 }
 .auditmanager$operations$get_services_in_scope <- auditmanager_get_services_in_scope
 
-#' Returns the settings for the specified AWS account
+#' Returns the settings for the specified Amazon Web Services account
 #'
 #' @description
-#' Returns the settings for the specified AWS account.
+#' Returns the settings for the specified Amazon Web Services account.
 #'
 #' @usage
 #' auditmanager_get_settings(attribute)
@@ -2312,20 +2581,176 @@ auditmanager_get_settings <- function(attribute) {
 }
 .auditmanager$operations$get_settings <- auditmanager_get_settings
 
-#' Returns a list of the frameworks available in the AWS Audit Manager
+#' Lists the latest analytics data for controls within a specific control
+#' domain and a specific active assessment
+#'
+#' @description
+#' Lists the latest analytics data for controls within a specific control
+#' domain and a specific active assessment.
+#' 
+#' Control insights are listed only if the control belongs to the control
+#' domain and assessment that was specified. Moreover, the control must
+#' have collected evidence on the `lastUpdated` date of
+#' `controlInsightsByAssessment`. If neither of these conditions are met,
+#' no data is listed for that control.
+#'
+#' @usage
+#' auditmanager_list_assessment_control_insights_by_control_domain(
+#'   controlDomainId, assessmentId, nextToken, maxResults)
+#'
+#' @param controlDomainId &#91;required&#93; The unique identifier for the control domain.
+#' @param assessmentId &#91;required&#93; The unique identifier for the active assessment.
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
+#' call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   controlInsightsByAssessment = list(
+#'     list(
+#'       name = "string",
+#'       id = "string",
+#'       evidenceInsights = list(
+#'         noncompliantEvidenceCount = 123,
+#'         compliantEvidenceCount = 123,
+#'         inconclusiveEvidenceCount = 123
+#'       ),
+#'       controlSetName = "string",
+#'       lastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_assessment_control_insights_by_control_domain(
+#'   controlDomainId = "string",
+#'   assessmentId = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname auditmanager_list_assessment_control_insights_by_control_domain
+auditmanager_list_assessment_control_insights_by_control_domain <- function(controlDomainId, assessmentId, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListAssessmentControlInsightsByControlDomain",
+    http_method = "GET",
+    http_path = "/insights/controls-by-assessment",
+    paginator = list()
+  )
+  input <- .auditmanager$list_assessment_control_insights_by_control_domain_input(controlDomainId = controlDomainId, assessmentId = assessmentId, nextToken = nextToken, maxResults = maxResults)
+  output <- .auditmanager$list_assessment_control_insights_by_control_domain_output()
+  config <- get_config()
+  svc <- .auditmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.auditmanager$operations$list_assessment_control_insights_by_control_domain <- auditmanager_list_assessment_control_insights_by_control_domain
+
+#' Returns a list of sent or received share requests for custom frameworks
+#' in Audit Manager
+#'
+#' @description
+#' Returns a list of sent or received share requests for custom frameworks
+#' in Audit Manager.
+#'
+#' @usage
+#' auditmanager_list_assessment_framework_share_requests(requestType,
+#'   nextToken, maxResults)
+#'
+#' @param requestType &#91;required&#93; Specifies whether the share request is a sent request or a received
+#' request.
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
+#' call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assessmentFrameworkShareRequests = list(
+#'     list(
+#'       id = "string",
+#'       frameworkId = "string",
+#'       frameworkName = "string",
+#'       frameworkDescription = "string",
+#'       status = "ACTIVE"|"REPLICATING"|"SHARED"|"EXPIRING"|"FAILED"|"EXPIRED"|"DECLINED"|"REVOKED",
+#'       sourceAccount = "string",
+#'       destinationAccount = "string",
+#'       destinationRegion = "string",
+#'       expirationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       creationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       comment = "string",
+#'       standardControlsCount = 123,
+#'       customControlsCount = 123,
+#'       complianceType = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_assessment_framework_share_requests(
+#'   requestType = "SENT"|"RECEIVED",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname auditmanager_list_assessment_framework_share_requests
+auditmanager_list_assessment_framework_share_requests <- function(requestType, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListAssessmentFrameworkShareRequests",
+    http_method = "GET",
+    http_path = "/assessmentFrameworkShareRequests",
+    paginator = list()
+  )
+  input <- .auditmanager$list_assessment_framework_share_requests_input(requestType = requestType, nextToken = nextToken, maxResults = maxResults)
+  output <- .auditmanager$list_assessment_framework_share_requests_output()
+  config <- get_config()
+  svc <- .auditmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.auditmanager$operations$list_assessment_framework_share_requests <- auditmanager_list_assessment_framework_share_requests
+
+#' Returns a list of the frameworks that are available in the Audit Manager
 #' framework library
 #'
 #' @description
-#' Returns a list of the frameworks available in the AWS Audit Manager
+#' Returns a list of the frameworks that are available in the Audit Manager
 #' framework library.
 #'
 #' @usage
 #' auditmanager_list_assessment_frameworks(frameworkType, nextToken,
 #'   maxResults)
 #'
-#' @param frameworkType &#91;required&#93; The type of framework, such as standard or custom.
-#' @param nextToken The pagination token used to fetch the next set of results.
-#' @param maxResults Represents the maximum number of results per page, or per API request
+#' @param frameworkType &#91;required&#93; The type of framework, such as a standard framework or a custom
+#' framework.
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
 #' call.
 #'
 #' @return
@@ -2334,6 +2759,7 @@ auditmanager_get_settings <- function(attribute) {
 #' list(
 #'   frameworkMetadataList = list(
 #'     list(
+#'       arn = "string",
 #'       id = "string",
 #'       type = "Standard"|"Custom",
 #'       name = "string",
@@ -2383,16 +2809,16 @@ auditmanager_list_assessment_frameworks <- function(frameworkType, nextToken = N
 }
 .auditmanager$operations$list_assessment_frameworks <- auditmanager_list_assessment_frameworks
 
-#' Returns a list of assessment reports created in AWS Audit Manager
+#' Returns a list of assessment reports created in Audit Manager
 #'
 #' @description
-#' Returns a list of assessment reports created in AWS Audit Manager.
+#' Returns a list of assessment reports created in Audit Manager.
 #'
 #' @usage
 #' auditmanager_list_assessment_reports(nextToken, maxResults)
 #'
-#' @param nextToken The pagination token used to fetch the next set of results.
-#' @param maxResults Represents the maximum number of results per page, or per API request
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
 #' call.
 #'
 #' @return
@@ -2445,16 +2871,17 @@ auditmanager_list_assessment_reports <- function(nextToken = NULL, maxResults = 
 }
 .auditmanager$operations$list_assessment_reports <- auditmanager_list_assessment_reports
 
-#' Returns a list of current and past assessments from AWS Audit Manager
+#' Returns a list of current and past assessments from Audit Manager
 #'
 #' @description
-#' Returns a list of current and past assessments from AWS Audit Manager.
+#' Returns a list of current and past assessments from Audit Manager.
 #'
 #' @usage
-#' auditmanager_list_assessments(nextToken, maxResults)
+#' auditmanager_list_assessments(status, nextToken, maxResults)
 #'
-#' @param nextToken The pagination token used to fetch the next set of results.
-#' @param maxResults Represents the maximum number of results per page, or per API request
+#' @param status The current status of the assessment.
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
 #' call.
 #'
 #' @return
@@ -2507,6 +2934,7 @@ auditmanager_list_assessment_reports <- function(nextToken = NULL, maxResults = 
 #' @section Request syntax:
 #' ```
 #' svc$list_assessments(
+#'   status = "ACTIVE"|"INACTIVE",
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -2515,14 +2943,14 @@ auditmanager_list_assessment_reports <- function(nextToken = NULL, maxResults = 
 #' @keywords internal
 #'
 #' @rdname auditmanager_list_assessments
-auditmanager_list_assessments <- function(nextToken = NULL, maxResults = NULL) {
+auditmanager_list_assessments <- function(status = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssessments",
     http_method = "GET",
     http_path = "/assessments",
     paginator = list()
   )
-  input <- .auditmanager$list_assessments_input(nextToken = nextToken, maxResults = maxResults)
+  input <- .auditmanager$list_assessments_input(status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessments_output()
   config <- get_config()
   svc <- .auditmanager$service(config)
@@ -2532,17 +2960,234 @@ auditmanager_list_assessments <- function(nextToken = NULL, maxResults = NULL) {
 }
 .auditmanager$operations$list_assessments <- auditmanager_list_assessments
 
-#' Returns a list of controls from AWS Audit Manager
+#' Lists the latest analytics data for control domains across all of your
+#' active assessments
 #'
 #' @description
-#' Returns a list of controls from AWS Audit Manager.
+#' Lists the latest analytics data for control domains across all of your
+#' active assessments.
+#' 
+#' A control domain is listed only if at least one of the controls within
+#' that domain collected evidence on the `lastUpdated` date of
+#' `controlDomainInsights`. If this condition isn’t met, no data is listed
+#' for that control domain.
+#'
+#' @usage
+#' auditmanager_list_control_domain_insights(nextToken, maxResults)
+#'
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
+#' call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   controlDomainInsights = list(
+#'     list(
+#'       name = "string",
+#'       id = "string",
+#'       controlsCountByNoncompliantEvidence = 123,
+#'       totalControlsCount = 123,
+#'       evidenceInsights = list(
+#'         noncompliantEvidenceCount = 123,
+#'         compliantEvidenceCount = 123,
+#'         inconclusiveEvidenceCount = 123
+#'       ),
+#'       lastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_control_domain_insights(
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname auditmanager_list_control_domain_insights
+auditmanager_list_control_domain_insights <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListControlDomainInsights",
+    http_method = "GET",
+    http_path = "/insights/control-domains",
+    paginator = list()
+  )
+  input <- .auditmanager$list_control_domain_insights_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .auditmanager$list_control_domain_insights_output()
+  config <- get_config()
+  svc <- .auditmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.auditmanager$operations$list_control_domain_insights <- auditmanager_list_control_domain_insights
+
+#' Lists analytics data for control domains within a specified active
+#' assessment
+#'
+#' @description
+#' Lists analytics data for control domains within a specified active
+#' assessment.
+#' 
+#' A control domain is listed only if at least one of the controls within
+#' that domain collected evidence on the `lastUpdated` date of
+#' `controlDomainInsights`. If this condition isn’t met, no data is listed
+#' for that domain.
+#'
+#' @usage
+#' auditmanager_list_control_domain_insights_by_assessment(assessmentId,
+#'   nextToken, maxResults)
+#'
+#' @param assessmentId &#91;required&#93; The unique identifier for the active assessment.
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
+#' call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   controlDomainInsights = list(
+#'     list(
+#'       name = "string",
+#'       id = "string",
+#'       controlsCountByNoncompliantEvidence = 123,
+#'       totalControlsCount = 123,
+#'       evidenceInsights = list(
+#'         noncompliantEvidenceCount = 123,
+#'         compliantEvidenceCount = 123,
+#'         inconclusiveEvidenceCount = 123
+#'       ),
+#'       lastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_control_domain_insights_by_assessment(
+#'   assessmentId = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname auditmanager_list_control_domain_insights_by_assessment
+auditmanager_list_control_domain_insights_by_assessment <- function(assessmentId, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListControlDomainInsightsByAssessment",
+    http_method = "GET",
+    http_path = "/insights/control-domains-by-assessment",
+    paginator = list()
+  )
+  input <- .auditmanager$list_control_domain_insights_by_assessment_input(assessmentId = assessmentId, nextToken = nextToken, maxResults = maxResults)
+  output <- .auditmanager$list_control_domain_insights_by_assessment_output()
+  config <- get_config()
+  svc <- .auditmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.auditmanager$operations$list_control_domain_insights_by_assessment <- auditmanager_list_control_domain_insights_by_assessment
+
+#' Lists the latest analytics data for controls within a specific control
+#' domain across all active assessments
+#'
+#' @description
+#' Lists the latest analytics data for controls within a specific control
+#' domain across all active assessments.
+#' 
+#' Control insights are listed only if the control belongs to the control
+#' domain that was specified and the control collected evidence on the
+#' `lastUpdated` date of `controlInsightsMetadata`. If neither of these
+#' conditions are met, no data is listed for that control.
+#'
+#' @usage
+#' auditmanager_list_control_insights_by_control_domain(controlDomainId,
+#'   nextToken, maxResults)
+#'
+#' @param controlDomainId &#91;required&#93; The unique identifier for the control domain.
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
+#' call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   controlInsightsMetadata = list(
+#'     list(
+#'       name = "string",
+#'       id = "string",
+#'       evidenceInsights = list(
+#'         noncompliantEvidenceCount = 123,
+#'         compliantEvidenceCount = 123,
+#'         inconclusiveEvidenceCount = 123
+#'       ),
+#'       lastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_control_insights_by_control_domain(
+#'   controlDomainId = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname auditmanager_list_control_insights_by_control_domain
+auditmanager_list_control_insights_by_control_domain <- function(controlDomainId, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListControlInsightsByControlDomain",
+    http_method = "GET",
+    http_path = "/insights/controls",
+    paginator = list()
+  )
+  input <- .auditmanager$list_control_insights_by_control_domain_input(controlDomainId = controlDomainId, nextToken = nextToken, maxResults = maxResults)
+  output <- .auditmanager$list_control_insights_by_control_domain_output()
+  config <- get_config()
+  svc <- .auditmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.auditmanager$operations$list_control_insights_by_control_domain <- auditmanager_list_control_insights_by_control_domain
+
+#' Returns a list of controls from Audit Manager
+#'
+#' @description
+#' Returns a list of controls from Audit Manager.
 #'
 #' @usage
 #' auditmanager_list_controls(controlType, nextToken, maxResults)
 #'
-#' @param controlType &#91;required&#93; The type of control, such as standard or custom.
-#' @param nextToken The pagination token used to fetch the next set of results.
-#' @param maxResults Represents the maximum number of results per page, or per API request
+#' @param controlType &#91;required&#93; The type of control, such as a standard control or a custom control.
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
 #' call.
 #'
 #' @return
@@ -2596,20 +3241,20 @@ auditmanager_list_controls <- function(controlType, nextToken = NULL, maxResults
 }
 .auditmanager$operations$list_controls <- auditmanager_list_controls
 
-#' Returns a list of keywords that pre-mapped to the specified control data
-#' source
+#' Returns a list of keywords that are pre-mapped to the specified control
+#' data source
 #'
 #' @description
-#' Returns a list of keywords that pre-mapped to the specified control data
-#' source.
+#' Returns a list of keywords that are pre-mapped to the specified control
+#' data source.
 #'
 #' @usage
 #' auditmanager_list_keywords_for_data_source(source, nextToken,
 #'   maxResults)
 #'
-#' @param source &#91;required&#93; The control mapping data source to which the keywords apply.
-#' @param nextToken The pagination token used to fetch the next set of results.
-#' @param maxResults Represents the maximum number of results per page, or per API request
+#' @param source &#91;required&#93; The control mapping data source that the keywords apply to.
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
 #' call.
 #'
 #' @return
@@ -2652,16 +3297,16 @@ auditmanager_list_keywords_for_data_source <- function(source, nextToken = NULL,
 }
 .auditmanager$operations$list_keywords_for_data_source <- auditmanager_list_keywords_for_data_source
 
-#' Returns a list of all AWS Audit Manager notifications
+#' Returns a list of all Audit Manager notifications
 #'
 #' @description
-#' Returns a list of all AWS Audit Manager notifications.
+#' Returns a list of all Audit Manager notifications.
 #'
 #' @usage
 #' auditmanager_list_notifications(nextToken, maxResults)
 #'
-#' @param nextToken The pagination token used to fetch the next set of results.
-#' @param maxResults Represents the maximum number of results per page, or per API request
+#' @param nextToken The pagination token that's used to fetch the next set of results.
+#' @param maxResults Represents the maximum number of results on a page or for an API request
 #' call.
 #'
 #' @return
@@ -2714,15 +3359,15 @@ auditmanager_list_notifications <- function(nextToken = NULL, maxResults = NULL)
 }
 .auditmanager$operations$list_notifications <- auditmanager_list_notifications
 
-#' Returns a list of tags for the specified resource in AWS Audit Manager
+#' Returns a list of tags for the specified resource in Audit Manager
 #'
 #' @description
-#' Returns a list of tags for the specified resource in AWS Audit Manager.
+#' Returns a list of tags for the specified resource in Audit Manager.
 #'
 #' @usage
 #' auditmanager_list_tags_for_resource(resourceArn)
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the specified resource.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2761,16 +3406,16 @@ auditmanager_list_tags_for_resource <- function(resourceArn) {
 }
 .auditmanager$operations$list_tags_for_resource <- auditmanager_list_tags_for_resource
 
-#' Enables AWS Audit Manager for the specified AWS account
+#' Enables Audit Manager for the specified Amazon Web Services account
 #'
 #' @description
-#' Enables AWS Audit Manager for the specified AWS account.
+#' Enables Audit Manager for the specified Amazon Web Services account.
 #'
 #' @usage
 #' auditmanager_register_account(kmsKey, delegatedAdminAccount)
 #'
-#' @param kmsKey The AWS KMS key details.
-#' @param delegatedAdminAccount The delegated administrator account for AWS Audit Manager.
+#' @param kmsKey The KMS key details.
+#' @param delegatedAdminAccount The delegated administrator account for Audit Manager.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2808,17 +3453,17 @@ auditmanager_register_account <- function(kmsKey = NULL, delegatedAdminAccount =
 }
 .auditmanager$operations$register_account <- auditmanager_register_account
 
-#' Enables an AWS account within the organization as the delegated
-#' administrator for AWS Audit Manager
+#' Enables an Amazon Web Services account within the organization as the
+#' delegated administrator for Audit Manager
 #'
 #' @description
-#' Enables an AWS account within the organization as the delegated
-#' administrator for AWS Audit Manager.
+#' Enables an Amazon Web Services account within the organization as the
+#' delegated administrator for Audit Manager.
 #'
 #' @usage
 #' auditmanager_register_organization_admin_account(adminAccountId)
 #'
-#' @param adminAccountId &#91;required&#93; The identifier for the specified delegated administrator account.
+#' @param adminAccountId &#91;required&#93; The identifier for the delegated administrator account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2856,16 +3501,133 @@ auditmanager_register_organization_admin_account <- function(adminAccountId) {
 }
 .auditmanager$operations$register_organization_admin_account <- auditmanager_register_organization_admin_account
 
-#' Tags the specified resource in AWS Audit Manager
+#' Creates a share request for a custom framework in Audit Manager
 #'
 #' @description
-#' Tags the specified resource in AWS Audit Manager.
+#' Creates a share request for a custom framework in Audit Manager.
+#' 
+#' The share request specifies a recipient and notifies them that a custom
+#' framework is available. Recipients have 120 days to accept or decline
+#' the request. If no action is taken, the share request expires.
+#' 
+#' When you create a share request, Audit Manager stores a snapshot of your
+#' custom framework in the US East (N. Virginia) Amazon Web Services
+#' Region. Audit Manager also stores a backup of the same snapshot in the
+#' US West (Oregon) Amazon Web Services Region.
+#' 
+#' Audit Manager deletes the snapshot and the backup snapshot when one of
+#' the following events occurs:
+#' 
+#' -   The sender revokes the share request.
+#' 
+#' -   The recipient declines the share request.
+#' 
+#' -   The recipient encounters an error and doesn't successfully accept
+#'     the share request.
+#' 
+#' -   The share request expires before the recipient responds to the
+#'     request.
+#' 
+#' When a sender [resends a share
+#' request](https://docs.aws.amazon.com/audit-manager/latest/userguide/framework-sharing.html#framework-sharing-resend),
+#' the snapshot is replaced with an updated version that corresponds with
+#' the latest version of the custom framework.
+#' 
+#' When a recipient accepts a share request, the snapshot is replicated
+#' into their Amazon Web Services account under the Amazon Web Services
+#' Region that was specified in the share request.
+#' 
+#' When you invoke the
+#' [`start_assessment_framework_share`][auditmanager_start_assessment_framework_share]
+#' API, you are about to share a custom framework with another Amazon Web
+#' Services account. You may not share a custom framework that is derived
+#' from a standard framework if the standard framework is designated as not
+#' eligible for sharing by Amazon Web Services, unless you have obtained
+#' permission to do so from the owner of the standard framework. To learn
+#' more about which standard frameworks are eligible for sharing, see
+#' [Framework sharing
+#' eligibility](https://docs.aws.amazon.com/audit-manager/latest/userguide/share-custom-framework-concepts-and-terminology.html#eligibility)
+#' in the *Audit Manager User Guide*.
+#'
+#' @usage
+#' auditmanager_start_assessment_framework_share(frameworkId,
+#'   destinationAccount, destinationRegion, comment)
+#'
+#' @param frameworkId &#91;required&#93; The unique identifier for the custom framework to be shared.
+#' @param destinationAccount &#91;required&#93; The Amazon Web Services account of the recipient.
+#' @param destinationRegion &#91;required&#93; The Amazon Web Services Region of the recipient.
+#' @param comment An optional comment from the sender about the share request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assessmentFrameworkShareRequest = list(
+#'     id = "string",
+#'     frameworkId = "string",
+#'     frameworkName = "string",
+#'     frameworkDescription = "string",
+#'     status = "ACTIVE"|"REPLICATING"|"SHARED"|"EXPIRING"|"FAILED"|"EXPIRED"|"DECLINED"|"REVOKED",
+#'     sourceAccount = "string",
+#'     destinationAccount = "string",
+#'     destinationRegion = "string",
+#'     expirationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     comment = "string",
+#'     standardControlsCount = 123,
+#'     customControlsCount = 123,
+#'     complianceType = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_assessment_framework_share(
+#'   frameworkId = "string",
+#'   destinationAccount = "string",
+#'   destinationRegion = "string",
+#'   comment = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname auditmanager_start_assessment_framework_share
+auditmanager_start_assessment_framework_share <- function(frameworkId, destinationAccount, destinationRegion, comment = NULL) {
+  op <- new_operation(
+    name = "StartAssessmentFrameworkShare",
+    http_method = "POST",
+    http_path = "/assessmentFrameworks/{frameworkId}/shareRequests",
+    paginator = list()
+  )
+  input <- .auditmanager$start_assessment_framework_share_input(frameworkId = frameworkId, destinationAccount = destinationAccount, destinationRegion = destinationRegion, comment = comment)
+  output <- .auditmanager$start_assessment_framework_share_output()
+  config <- get_config()
+  svc <- .auditmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.auditmanager$operations$start_assessment_framework_share <- auditmanager_start_assessment_framework_share
+
+#' Tags the specified resource in Audit Manager
+#'
+#' @description
+#' Tags the specified resource in Audit Manager.
 #'
 #' @usage
 #' auditmanager_tag_resource(resourceArn, tags)
 #'
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the specified resource.
-#' @param tags &#91;required&#93; The tags to be associated with the resource.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param tags &#91;required&#93; The tags that are associated with the resource.
 #'
 #' @return
 #' An empty list.
@@ -2900,10 +3662,10 @@ auditmanager_tag_resource <- function(resourceArn, tags) {
 }
 .auditmanager$operations$tag_resource <- auditmanager_tag_resource
 
-#' Removes a tag from a resource in AWS Audit Manager
+#' Removes a tag from a resource in Audit Manager
 #'
 #' @description
-#' Removes a tag from a resource in AWS Audit Manager.
+#' Removes a tag from a resource in Audit Manager.
 #'
 #' @usage
 #' auditmanager_untag_resource(resourceArn, tagKeys)
@@ -2944,22 +3706,22 @@ auditmanager_untag_resource <- function(resourceArn, tagKeys) {
 }
 .auditmanager$operations$untag_resource <- auditmanager_untag_resource
 
-#' Edits an AWS Audit Manager assessment
+#' Edits an Audit Manager assessment
 #'
 #' @description
-#' Edits an AWS Audit Manager assessment.
+#' Edits an Audit Manager assessment.
 #'
 #' @usage
 #' auditmanager_update_assessment(assessmentId, assessmentName,
 #'   assessmentDescription, scope, assessmentReportsDestination, roles)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
-#' @param assessmentName The name of the specified assessment to be updated.
-#' @param assessmentDescription The description of the specified assessment.
-#' @param scope &#91;required&#93; The scope of the specified assessment.
-#' @param assessmentReportsDestination The assessment report storage destination for the specified assessment
-#' that is being updated.
-#' @param roles The list of roles for the specified assessment.
+#' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
+#' @param assessmentName The name of the assessment to be updated.
+#' @param assessmentDescription The description of the assessment.
+#' @param scope &#91;required&#93; The scope of the assessment.
+#' @param assessmentReportsDestination The assessment report storage destination for the assessment that's
+#' being updated.
+#' @param roles The list of roles for the assessment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3155,20 +3917,20 @@ auditmanager_update_assessment <- function(assessmentId, assessmentName = NULL, 
 }
 .auditmanager$operations$update_assessment <- auditmanager_update_assessment
 
-#' Updates a control within an assessment in AWS Audit Manager
+#' Updates a control within an assessment in Audit Manager
 #'
 #' @description
-#' Updates a control within an assessment in AWS Audit Manager.
+#' Updates a control within an assessment in Audit Manager.
 #'
 #' @usage
 #' auditmanager_update_assessment_control(assessmentId, controlSetId,
 #'   controlId, controlStatus, commentBody)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
-#' @param controlSetId &#91;required&#93; The identifier for the specified control set.
-#' @param controlId &#91;required&#93; The identifier for the specified control.
-#' @param controlStatus The status of the specified control.
-#' @param commentBody The comment body text for the specified control.
+#' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
+#' @param controlSetId &#91;required&#93; The unique identifier for the control set.
+#' @param controlId &#91;required&#93; The unique identifier for the control.
+#' @param controlStatus The status of the control.
+#' @param commentBody The comment body text for the control.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3229,19 +3991,19 @@ auditmanager_update_assessment_control <- function(assessmentId, controlSetId, c
 }
 .auditmanager$operations$update_assessment_control <- auditmanager_update_assessment_control
 
-#' Updates the status of a control set in an AWS Audit Manager assessment
+#' Updates the status of a control set in an Audit Manager assessment
 #'
 #' @description
-#' Updates the status of a control set in an AWS Audit Manager assessment.
+#' Updates the status of a control set in an Audit Manager assessment.
 #'
 #' @usage
 #' auditmanager_update_assessment_control_set_status(assessmentId,
 #'   controlSetId, status, comment)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
-#' @param controlSetId &#91;required&#93; The identifier for the specified control set.
-#' @param status &#91;required&#93; The status of the control set that is being updated.
-#' @param comment &#91;required&#93; The comment related to the status update.
+#' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
+#' @param controlSetId &#91;required&#93; The unique identifier for the control set.
+#' @param status &#91;required&#93; The status of the control set that's being updated.
+#' @param comment &#91;required&#93; The comment that's related to the status update.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3335,21 +4097,21 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
 }
 .auditmanager$operations$update_assessment_control_set_status <- auditmanager_update_assessment_control_set_status
 
-#' Updates a custom framework in AWS Audit Manager
+#' Updates a custom framework in Audit Manager
 #'
 #' @description
-#' Updates a custom framework in AWS Audit Manager.
+#' Updates a custom framework in Audit Manager.
 #'
 #' @usage
 #' auditmanager_update_assessment_framework(frameworkId, name, description,
 #'   complianceType, controlSets)
 #'
-#' @param frameworkId &#91;required&#93; The identifier for the specified framework.
+#' @param frameworkId &#91;required&#93; The unique identifier for the framework.
 #' @param name &#91;required&#93; The name of the framework to be updated.
-#' @param description The description of the framework that is to be updated.
+#' @param description The description of the updated framework.
 #' @param complianceType The compliance type that the new custom framework supports, such as CIS
 #' or HIPAA.
-#' @param controlSets &#91;required&#93; The control sets associated with the framework.
+#' @param controlSets &#91;required&#93; The control sets that are associated with the framework.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3416,7 +4178,10 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
 #'       "2015-01-01"
 #'     ),
 #'     createdBy = "string",
-#'     lastUpdatedBy = "string"
+#'     lastUpdatedBy = "string",
+#'     tags = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -3462,16 +4227,89 @@ auditmanager_update_assessment_framework <- function(frameworkId, name, descript
 }
 .auditmanager$operations$update_assessment_framework <- auditmanager_update_assessment_framework
 
-#' Updates the status of an assessment in AWS Audit Manager
+#' Updates a share request for a custom framework in Audit Manager
 #'
 #' @description
-#' Updates the status of an assessment in AWS Audit Manager.
+#' Updates a share request for a custom framework in Audit Manager.
+#'
+#' @usage
+#' auditmanager_update_assessment_framework_share(requestId, requestType,
+#'   action)
+#'
+#' @param requestId &#91;required&#93; The unique identifier for the share request.
+#' @param requestType &#91;required&#93; Specifies whether the share request is a sent request or a received
+#' request.
+#' @param action &#91;required&#93; Specifies the update action for the share request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   assessmentFrameworkShareRequest = list(
+#'     id = "string",
+#'     frameworkId = "string",
+#'     frameworkName = "string",
+#'     frameworkDescription = "string",
+#'     status = "ACTIVE"|"REPLICATING"|"SHARED"|"EXPIRING"|"FAILED"|"EXPIRED"|"DECLINED"|"REVOKED",
+#'     sourceAccount = "string",
+#'     destinationAccount = "string",
+#'     destinationRegion = "string",
+#'     expirationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     creationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdated = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     comment = "string",
+#'     standardControlsCount = 123,
+#'     customControlsCount = 123,
+#'     complianceType = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_assessment_framework_share(
+#'   requestId = "string",
+#'   requestType = "SENT"|"RECEIVED",
+#'   action = "ACCEPT"|"DECLINE"|"REVOKE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname auditmanager_update_assessment_framework_share
+auditmanager_update_assessment_framework_share <- function(requestId, requestType, action) {
+  op <- new_operation(
+    name = "UpdateAssessmentFrameworkShare",
+    http_method = "PUT",
+    http_path = "/assessmentFrameworkShareRequests/{requestId}",
+    paginator = list()
+  )
+  input <- .auditmanager$update_assessment_framework_share_input(requestId = requestId, requestType = requestType, action = action)
+  output <- .auditmanager$update_assessment_framework_share_output()
+  config <- get_config()
+  svc <- .auditmanager$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.auditmanager$operations$update_assessment_framework_share <- auditmanager_update_assessment_framework_share
+
+#' Updates the status of an assessment in Audit Manager
+#'
+#' @description
+#' Updates the status of an assessment in Audit Manager.
 #'
 #' @usage
 #' auditmanager_update_assessment_status(assessmentId, status)
 #'
-#' @param assessmentId &#91;required&#93; The identifier for the specified assessment.
-#' @param status &#91;required&#93; The current status of the specified assessment.
+#' @param assessmentId &#91;required&#93; The unique identifier for the assessment.
+#' @param status &#91;required&#93; The current status of the assessment.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3642,24 +4480,23 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
 }
 .auditmanager$operations$update_assessment_status <- auditmanager_update_assessment_status
 
-#' Updates a custom control in AWS Audit Manager
+#' Updates a custom control in Audit Manager
 #'
 #' @description
-#' Updates a custom control in AWS Audit Manager.
+#' Updates a custom control in Audit Manager.
 #'
 #' @usage
 #' auditmanager_update_control(controlId, name, description,
 #'   testingInformation, actionPlanTitle, actionPlanInstructions,
 #'   controlMappingSources)
 #'
-#' @param controlId &#91;required&#93; The identifier for the specified control.
-#' @param name &#91;required&#93; The name of the control to be updated.
+#' @param controlId &#91;required&#93; The identifier for the control.
+#' @param name &#91;required&#93; The name of the updated control.
 #' @param description The optional description of the control.
-#' @param testingInformation The steps that to follow to determine if the control has been satisfied.
+#' @param testingInformation The steps that you should follow to determine if the control is met.
 #' @param actionPlanTitle The title of the action plan for remediating the control.
-#' @param actionPlanInstructions The recommended actions to carry out if the control is not fulfilled.
-#' @param controlMappingSources &#91;required&#93; The data source that determines from where AWS Audit Manager collects
-#' evidence for the control.
+#' @param actionPlanInstructions The recommended actions to carry out if the control isn't fulfilled.
+#' @param controlMappingSources &#91;required&#93; The data mapping sources for the control.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3752,20 +4589,20 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 }
 .auditmanager$operations$update_control <- auditmanager_update_control
 
-#' Updates AWS Audit Manager settings for the current user account
+#' Updates Audit Manager settings for the current user account
 #'
 #' @description
-#' Updates AWS Audit Manager settings for the current user account.
+#' Updates Audit Manager settings for the current user account.
 #'
 #' @usage
 #' auditmanager_update_settings(snsTopic,
 #'   defaultAssessmentReportsDestination, defaultProcessOwners, kmsKey)
 #'
-#' @param snsTopic The Amazon Simple Notification Service (Amazon SNS) topic to which AWS
-#' Audit Manager sends notifications.
+#' @param snsTopic The Amazon Simple Notification Service (Amazon SNS) topic that Audit
+#' Manager sends notifications to.
 #' @param defaultAssessmentReportsDestination The default storage destination for assessment reports.
 #' @param defaultProcessOwners A list of the default audit owners.
-#' @param kmsKey The AWS KMS key details.
+#' @param kmsKey The KMS key details.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3827,16 +4664,16 @@ auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentRepor
 }
 .auditmanager$operations$update_settings <- auditmanager_update_settings
 
-#' Validates the integrity of an assessment report in AWS Audit Manager
+#' Validates the integrity of an assessment report in Audit Manager
 #'
 #' @description
-#' Validates the integrity of an assessment report in AWS Audit Manager.
+#' Validates the integrity of an assessment report in Audit Manager.
 #'
 #' @usage
 #' auditmanager_validate_assessment_report_integrity(s3RelativePath)
 #'
-#' @param s3RelativePath &#91;required&#93; The relative path of the specified Amazon S3 bucket in which the
-#' assessment report is stored.
+#' @param s3RelativePath &#91;required&#93; The relative path of the Amazon S3 bucket that the assessment report is
+#' stored in.
 #'
 #' @return
 #' A list with the following syntax:

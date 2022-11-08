@@ -4,8 +4,13 @@
 \alias{ec2_revoke_client_vpn_ingress}
 \title{Removes an ingress authorization rule from a Client VPN endpoint}
 \usage{
-ec2_revoke_client_vpn_ingress(ClientVpnEndpointId, TargetNetworkCidr,
-  AccessGroupId, RevokeAllGroups, DryRun)
+ec2_revoke_client_vpn_ingress(
+  ClientVpnEndpointId,
+  TargetNetworkCidr,
+  AccessGroupId = NULL,
+  RevokeAllGroups = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint with which the authorization rule is
@@ -23,27 +28,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = list(
-    Code = "authorizing"|"active"|"failed"|"revoking",
-    Message = "string"
-  )
-)
-}
-}
 \description{
 Removes an ingress authorization rule from a Client VPN endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$revoke_client_vpn_ingress(
-  ClientVpnEndpointId = "string",
-  TargetNetworkCidr = "string",
-  AccessGroupId = "string",
-  RevokeAllGroups = TRUE|FALSE,
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/revoke_client_vpn_ingress.html} for full documentation.
+}
 \keyword{internal}

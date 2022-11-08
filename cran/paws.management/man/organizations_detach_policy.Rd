@@ -35,46 +35,9 @@ root that the OU is in). This string is followed by a second "-"
 dash and from 8 to 32 additional lowercase letters or digits.
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Detaches a policy from a target root, organizational unit (OU), or
-account.
+Detaches a policy from a target root, organizational unit (OU), or account.
 
-If the policy being detached is a service control policy (SCP), the
-changes to permissions for AWS Identity and Access Management (IAM)
-users and roles in affected accounts are immediate.
-
-Every root, OU, and account must have at least one SCP attached. If you
-want to replace the default \code{FullAWSAccess} policy with an SCP that
-limits the permissions that can be delegated, you must attach the
-replacement SCP before you can remove the default SCP. This is the
-authorization strategy of an "\href{https://docs.aws.amazon.com/organizations/latest/userguide/#orgs_policies_allowlist}{allow list}".
-If you instead attach a second SCP and leave the \code{FullAWSAccess} SCP
-still attached, and specify \code{"Effect": "Deny"} in the second SCP to
-override the \code{"Effect": "Allow"} in the \code{FullAWSAccess} policy (or any
-other attached SCP), you're using the authorization strategy of a "\href{https://docs.aws.amazon.com/organizations/latest/userguide/#orgs_policies_denylist}{deny list}".
-
-This operation can be called only from the organization's management
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$detach_policy(
-  PolicyId = "string",
-  TargetId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to detach a policy from an OU:/n/n
-svc$detach_policy(
-  PolicyId = "p-examplepolicyid111",
-  TargetId = "ou-examplerootid111-exampleouid111"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/detach_policy.html} for full documentation.
 }
 \keyword{internal}

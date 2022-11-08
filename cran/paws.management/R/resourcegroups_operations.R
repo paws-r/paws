@@ -6,24 +6,9 @@ NULL
 #' Creates a resource group with the specified name and description
 #'
 #' @description
-#' Creates a resource group with the specified name and description. You
-#' can optionally include a resource query, or a service configuration. For
-#' more information about constructing a resource query, see [Create a
-#' tag-based group in Resource
-#' Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
-#' For more information about service configurations, see [Service
-#' configurations for resource
-#' groups](https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:CreateGroup`
+#' Creates a resource group with the specified name and description. You can optionally include a resource query, or a service configuration. For more information about constructing a resource query, see [Create a tag-based group in Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag). For more information about service configurations, see [Service configurations for resource groups](https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
 #'
-#' @usage
-#' resourcegroups_create_group(Name, Description, ResourceQuery, Tags,
-#'   Configuration)
+#' See [https://paws-r.github.io/docs/resourcegroups/create_group.html](https://paws-r.github.io/docs/resourcegroups/create_group.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the group, which is the identifier of the group in other
 #' operations. You can't change the name of a resource group after you
@@ -51,83 +36,6 @@ NULL
 #' A resource group can contain either a `Configuration` or a
 #' `ResourceQuery`, but not both.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Group = list(
-#'     GroupArn = "string",
-#'     Name = "string",
-#'     Description = "string"
-#'   ),
-#'   ResourceQuery = list(
-#'     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
-#'     Query = "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   GroupConfiguration = list(
-#'     Configuration = list(
-#'       list(
-#'         Type = "string",
-#'         Parameters = list(
-#'           list(
-#'             Name = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     ProposedConfiguration = list(
-#'       list(
-#'         Type = "string",
-#'         Parameters = list(
-#'           list(
-#'             Name = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     Status = "UPDATING"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
-#'     FailureReason = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_group(
-#'   Name = "string",
-#'   Description = "string",
-#'   ResourceQuery = list(
-#'     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
-#'     Query = "string"
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   Configuration = list(
-#'     list(
-#'       Type = "string",
-#'       Parameters = list(
-#'         list(
-#'           Name = "string",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname resourcegroups_create_group
@@ -151,41 +59,12 @@ resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery 
 #' Deletes the specified resource group
 #'
 #' @description
-#' Deletes the specified resource group. Deleting a resource group does not
-#' delete any resources that are members of the group; it only deletes the
-#' group structure.
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:DeleteGroup`
+#' Deletes the specified resource group. Deleting a resource group does not delete any resources that are members of the group; it only deletes the group structure.
 #'
-#' @usage
-#' resourcegroups_delete_group(GroupName, Group)
+#' See [https://paws-r.github.io/docs/resourcegroups/delete_group.html](https://paws-r.github.io/docs/resourcegroups/delete_group.html) for full documentation.
 #'
 #' @param GroupName Deprecated - don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Group = list(
-#'     GroupArn = "string",
-#'     Name = "string",
-#'     Description = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_group(
-#'   GroupName = "string",
-#'   Group = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -211,38 +90,11 @@ resourcegroups_delete_group <- function(GroupName = NULL, Group = NULL) {
 #'
 #' @description
 #' Returns information about a specified resource group.
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:GetGroup`
 #'
-#' @usage
-#' resourcegroups_get_group(GroupName, Group)
+#' See [https://paws-r.github.io/docs/resourcegroups/get_group.html](https://paws-r.github.io/docs/resourcegroups/get_group.html) for full documentation.
 #'
 #' @param GroupName Deprecated - don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Group = list(
-#'     GroupArn = "string",
-#'     Name = "string",
-#'     Description = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_group(
-#'   GroupName = "string",
-#'   Group = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -268,65 +120,11 @@ resourcegroups_get_group <- function(GroupName = NULL, Group = NULL) {
 #' group
 #'
 #' @description
-#' Returns the service configuration associated with the specified resource
-#' group. For details about the service configuration syntax, see [Service
-#' configurations for resource
-#' groups](https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:GetGroupConfiguration`
+#' Returns the service configuration associated with the specified resource group. For details about the service configuration syntax, see [Service configurations for resource groups](https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
 #'
-#' @usage
-#' resourcegroups_get_group_configuration(Group)
+#' See [https://paws-r.github.io/docs/resourcegroups/get_group_configuration.html](https://paws-r.github.io/docs/resourcegroups/get_group_configuration.html) for full documentation.
 #'
 #' @param Group The name or the ARN of the resource group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GroupConfiguration = list(
-#'     Configuration = list(
-#'       list(
-#'         Type = "string",
-#'         Parameters = list(
-#'           list(
-#'             Name = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     ProposedConfiguration = list(
-#'       list(
-#'         Type = "string",
-#'         Parameters = list(
-#'           list(
-#'             Name = "string",
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     Status = "UPDATING"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
-#'     FailureReason = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_group_configuration(
-#'   Group = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -352,44 +150,12 @@ resourcegroups_get_group_configuration <- function(Group = NULL) {
 #' group
 #'
 #' @description
-#' Retrieves the resource query associated with the specified resource
-#' group. For more information about resource queries, see [Create a
-#' tag-based group in Resource
-#' Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:GetGroupQuery`
+#' Retrieves the resource query associated with the specified resource group. For more information about resource queries, see [Create a tag-based group in Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
 #'
-#' @usage
-#' resourcegroups_get_group_query(GroupName, Group)
+#' See [https://paws-r.github.io/docs/resourcegroups/get_group_query.html](https://paws-r.github.io/docs/resourcegroups/get_group_query.html) for full documentation.
 #'
 #' @param GroupName Don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to query.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GroupQuery = list(
-#'     GroupName = "string",
-#'     ResourceQuery = list(
-#'       Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
-#'       Query = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_group_query(
-#'   GroupName = "string",
-#'   Group = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -415,37 +181,11 @@ resourcegroups_get_group_query <- function(GroupName = NULL, Group = NULL) {
 #' specified by an ARN
 #'
 #' @description
-#' Returns a list of tags that are associated with a resource group,
-#' specified by an ARN.
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:GetTags`
+#' Returns a list of tags that are associated with a resource group, specified by an ARN.
 #'
-#' @usage
-#' resourcegroups_get_tags(Arn)
+#' See [https://paws-r.github.io/docs/resourcegroups/get_tags.html](https://paws-r.github.io/docs/resourcegroups/get_tags.html) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN of the resource group whose tags you want to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_tags(
-#'   Arn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -471,50 +211,11 @@ resourcegroups_get_tags <- function(Arn) {
 #'
 #' @description
 #' Adds the specified resources to the specified group.
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:GroupResources`
 #'
-#' @usage
-#' resourcegroups_group_resources(Group, ResourceArns)
+#' See [https://paws-r.github.io/docs/resourcegroups/group_resources.html](https://paws-r.github.io/docs/resourcegroups/group_resources.html) for full documentation.
 #'
 #' @param Group &#91;required&#93; The name or the ARN of the resource group to add resources to.
 #' @param ResourceArns &#91;required&#93; The list of ARNs for resources to be added to the group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Succeeded = list(
-#'     "string"
-#'   ),
-#'   Failed = list(
-#'     list(
-#'       ResourceArn = "string",
-#'       ErrorMessage = "string",
-#'       ErrorCode = "string"
-#'     )
-#'   ),
-#'   Pending = list(
-#'     list(
-#'       ResourceArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$group_resources(
-#'   Group = "string",
-#'   ResourceArns = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -540,21 +241,12 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
 #' resource group
 #'
 #' @description
-#' Returns a list of ARNs of the resources that are members of a specified
-#' resource group.
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:ListGroupResources`
+#' Returns a list of ARNs of the resources that are members of a specified resource group.
 #'
-#' @usage
-#' resourcegroups_list_group_resources(GroupName, Group, Filters,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/resourcegroups/list_group_resources.html](https://paws-r.github.io/docs/resourcegroups/list_group_resources.html) for full documentation.
 #'
-#' @param GroupName ***Deprecated - don't use this parameter. Use the `Group` request field
-#' instead.***
+#' @param GroupName *Deprecated - don't use this parameter. Use the Group request field
+#' instead.*
 #' @param Group The name or the ARN of the resource group
 #' @param Filters Filters, formatted as ResourceFilter objects, that you want to apply to
 #' a [`list_group_resources`][resourcegroups_list_group_resources]
@@ -600,55 +292,6 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
 #' provided by a previous call's `NextToken` response to indicate where the
 #' output should continue from.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Resources = list(
-#'     list(
-#'       Identifier = list(
-#'         ResourceArn = "string",
-#'         ResourceType = "string"
-#'       ),
-#'       Status = list(
-#'         Name = "PENDING"
-#'       )
-#'     )
-#'   ),
-#'   ResourceIdentifiers = list(
-#'     list(
-#'       ResourceArn = "string",
-#'       ResourceType = "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   QueryErrors = list(
-#'     list(
-#'       ErrorCode = "CLOUDFORMATION_STACK_INACTIVE"|"CLOUDFORMATION_STACK_NOT_EXISTING",
-#'       Message = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_group_resources(
-#'   GroupName = "string",
-#'   Group = "string",
-#'   Filters = list(
-#'     list(
-#'       Name = "resource-type",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname resourcegroups_list_group_resources
@@ -673,15 +316,8 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
 #'
 #' @description
 #' Returns a list of existing resource groups in your account.
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:ListGroups`
 #'
-#' @usage
-#' resourcegroups_list_groups(Filters, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/resourcegroups/list_groups.html](https://paws-r.github.io/docs/resourcegroups/list_groups.html) for full documentation.
 #'
 #' @param Filters Filters, formatted as GroupFilter objects, that you want to apply to a
 #' [`list_groups`][resourcegroups_list_groups] operation.
@@ -714,43 +350,6 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
 #' provided by a previous call's `NextToken` response to indicate where the
 #' output should continue from.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GroupIdentifiers = list(
-#'     list(
-#'       GroupName = "string",
-#'       GroupArn = "string"
-#'     )
-#'   ),
-#'   Groups = list(
-#'     list(
-#'       GroupArn = "string",
-#'       Name = "string",
-#'       Description = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_groups(
-#'   Filters = list(
-#'     list(
-#'       Name = "resource-type"|"configuration-type",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname resourcegroups_list_groups
@@ -774,19 +373,9 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' Attaches a service configuration to the specified group
 #'
 #' @description
-#' Attaches a service configuration to the specified group. This occurs
-#' asynchronously, and can take time to complete. You can use
-#' [`get_group_configuration`][resourcegroups_get_group_configuration] to
-#' check the status of the update.
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:PutGroupConfiguration`
+#' Attaches a service configuration to the specified group. This occurs asynchronously, and can take time to complete. You can use [`get_group_configuration`][resourcegroups_get_group_configuration] to check the status of the update.
 #'
-#' @usage
-#' resourcegroups_put_group_configuration(Group, Configuration)
+#' See [https://paws-r.github.io/docs/resourcegroups/put_group_configuration.html](https://paws-r.github.io/docs/resourcegroups/put_group_configuration.html) for full documentation.
 #'
 #' @param Group The name or ARN of the resource group with the configuration that you
 #' want to update.
@@ -801,29 +390,6 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' 
 #' A resource group can contain either a `Configuration` or a
 #' `ResourceQuery`, but not both.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_group_configuration(
-#'   Group = "string",
-#'   Configuration = list(
-#'     list(
-#'       Type = "string",
-#'       Parameters = list(
-#'         list(
-#'           Name = "string",
-#'           Values = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -849,18 +415,9 @@ resourcegroups_put_group_configuration <- function(Group = NULL, Configuration =
 #' query
 #'
 #' @description
-#' Returns a list of AWS resource identifiers that matches the specified
-#' query. The query uses the same format as a resource query in a
-#' CreateGroup or UpdateGroupQuery operation.
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:SearchResources`
+#' Returns a list of AWS resource identifiers that matches the specified query. The query uses the same format as a resource query in a CreateGroup or UpdateGroupQuery operation.
 #'
-#' @usage
-#' resourcegroups_search_resources(ResourceQuery, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/resourcegroups/search_resources.html](https://paws-r.github.io/docs/resourcegroups/search_resources.html) for full documentation.
 #'
 #' @param ResourceQuery &#91;required&#93; The search query, using the same formats that are supported for resource
 #' group definition. For more information, see
@@ -880,38 +437,6 @@ resourcegroups_put_group_configuration <- function(Group = NULL, Configuration =
 #' indicates that more output is available. Set this parameter to the value
 #' provided by a previous call's `NextToken` response to indicate where the
 #' output should continue from.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceIdentifiers = list(
-#'     list(
-#'       ResourceArn = "string",
-#'       ResourceType = "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   QueryErrors = list(
-#'     list(
-#'       ErrorCode = "CLOUDFORMATION_STACK_INACTIVE"|"CLOUDFORMATION_STACK_NOT_EXISTING",
-#'       Message = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$search_resources(
-#'   ResourceQuery = list(
-#'     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
-#'     Query = "string"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -936,48 +461,13 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
 #' Adds tags to a resource group with the specified ARN
 #'
 #' @description
-#' Adds tags to a resource group with the specified ARN. Existing tags on a
-#' resource group are not changed if they are not specified in the request
-#' parameters.
-#' 
-#' Do not store personally identifiable information (PII) or other
-#' confidential or sensitive information in tags. We use tags to provide
-#' you with billing and administration services. Tags are not intended to
-#' be used for private or sensitive data.
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:Tag`
+#' Adds tags to a resource group with the specified ARN. Existing tags on a resource group are not changed if they are not specified in the request parameters.
 #'
-#' @usage
-#' resourcegroups_tag(Arn, Tags)
+#' See [https://paws-r.github.io/docs/resourcegroups/tag.html](https://paws-r.github.io/docs/resourcegroups/tag.html) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN of the resource group to which to add tags.
 #' @param Tags &#91;required&#93; The tags to add to the specified resource group. A tag is a
 #' string-to-string map of key-value pairs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag(
-#'   Arn = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1003,51 +493,12 @@ resourcegroups_tag <- function(Arn, Tags) {
 #'
 #' @description
 #' Removes the specified resources from the specified group.
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:UngroupResources`
 #'
-#' @usage
-#' resourcegroups_ungroup_resources(Group, ResourceArns)
+#' See [https://paws-r.github.io/docs/resourcegroups/ungroup_resources.html](https://paws-r.github.io/docs/resourcegroups/ungroup_resources.html) for full documentation.
 #'
 #' @param Group &#91;required&#93; The name or the ARN of the resource group from which to remove the
 #' resources.
 #' @param ResourceArns &#91;required&#93; The ARNs of the resources to be removed from the group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Succeeded = list(
-#'     "string"
-#'   ),
-#'   Failed = list(
-#'     list(
-#'       ResourceArn = "string",
-#'       ErrorMessage = "string",
-#'       ErrorCode = "string"
-#'     )
-#'   ),
-#'   Pending = list(
-#'     list(
-#'       ResourceArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$ungroup_resources(
-#'   Group = "string",
-#'   ResourceArns = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1073,41 +524,13 @@ resourcegroups_ungroup_resources <- function(Group, ResourceArns) {
 #'
 #' @description
 #' Deletes tags from a specified resource group.
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:Untag`
 #'
-#' @usage
-#' resourcegroups_untag(Arn, Keys)
+#' See [https://paws-r.github.io/docs/resourcegroups/untag.html](https://paws-r.github.io/docs/resourcegroups/untag.html) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The ARN of the resource group from which to remove tags. The command
 #' removed both the specified keys and any values associated with those
 #' keys.
 #' @param Keys &#91;required&#93; The keys of the tags to be removed.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   Keys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag(
-#'   Arn = "string",
-#'   Keys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1132,44 +555,15 @@ resourcegroups_untag <- function(Arn, Keys) {
 #' Updates the description for an existing group
 #'
 #' @description
-#' Updates the description for an existing group. You cannot update the
-#' name of a resource group.
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:UpdateGroup`
+#' Updates the description for an existing group. You cannot update the name of a resource group.
 #'
-#' @usage
-#' resourcegroups_update_group(GroupName, Group, Description)
+#' See [https://paws-r.github.io/docs/resourcegroups/update_group.html](https://paws-r.github.io/docs/resourcegroups/update_group.html) for full documentation.
 #'
 #' @param GroupName Don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to modify.
 #' @param Description The new description that you want to update the resource group with.
 #' Descriptions can contain letters, numbers, hyphens, underscores,
 #' periods, and spaces.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Group = list(
-#'     GroupArn = "string",
-#'     Name = "string",
-#'     Description = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_group(
-#'   GroupName = "string",
-#'   Group = "string",
-#'   Description = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1194,18 +588,9 @@ resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Descript
 #' Updates the resource query of a group
 #'
 #' @description
-#' Updates the resource query of a group. For more information about
-#' resource queries, see [Create a tag-based group in Resource
-#' Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
-#' 
-#' **Minimum permissions**
-#' 
-#' To run this command, you must have the following permissions:
-#' 
-#' -   `resource-groups:UpdateGroupQuery`
+#' Updates the resource query of a group. For more information about resource queries, see [Create a tag-based group in Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
 #'
-#' @usage
-#' resourcegroups_update_group_query(GroupName, Group, ResourceQuery)
+#' See [https://paws-r.github.io/docs/resourcegroups/update_group_query.html](https://paws-r.github.io/docs/resourcegroups/update_group_query.html) for full documentation.
 #'
 #' @param GroupName Don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to query.
@@ -1214,32 +599,6 @@ resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Descript
 #' 
 #' A resource group can contain either a `Configuration` or a
 #' `ResourceQuery`, but not both.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GroupQuery = list(
-#'     GroupName = "string",
-#'     ResourceQuery = list(
-#'       Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
-#'       Query = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_group_query(
-#'   GroupName = "string",
-#'   Group = "string",
-#'   ResourceQuery = list(
-#'     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
-#'     Query = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

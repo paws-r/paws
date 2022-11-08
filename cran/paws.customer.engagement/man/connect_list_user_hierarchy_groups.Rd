@@ -5,44 +5,25 @@
 \title{Provides summary information about the hierarchy groups for the
 specified Amazon Connect instance}
 \usage{
-connect_list_user_hierarchy_groups(InstanceId, NextToken, MaxResults)
+connect_list_user_hierarchy_groups(
+  InstanceId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UserHierarchyGroupSummaryList = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Name = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-Provides summary information about the hierarchy groups for the
-specified Amazon Connect instance.
+Provides summary information about the hierarchy groups for the specified Amazon Connect instance.
 
-For more information about agent hierarchies, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/agent-hierarchy.html}{Set Up Agent Hierarchies}
-in the \emph{Amazon Connect Administrator Guide}.
+See \url{https://paws-r.github.io/docs/connect/list_user_hierarchy_groups.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_user_hierarchy_groups(
-  InstanceId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

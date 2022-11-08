@@ -9,27 +9,12 @@ efs_untag_resource(ResourceId, TagKeys)
 \arguments{
 \item{ResourceId}{[required] Specifies the EFS resource that you want to remove tags from.}
 
-\item{TagKeys}{[required] The keys of the key:value tag pairs that you want to remove from the
+\item{TagKeys}{[required] The keys of the key-value tag pairs that you want to remove from the
 specified EFS resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes tags from an EFS resource. You can remove tags from EFS file
-systems and access points using this API operation.
+Removes tags from an EFS resource. You can remove tags from EFS file systems and access points using this API operation.
 
-This operation requires permissions for the
-\code{elasticfilesystem:UntagResource} action.
+See \url{https://paws-r.github.io/docs/efs/untag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceId = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

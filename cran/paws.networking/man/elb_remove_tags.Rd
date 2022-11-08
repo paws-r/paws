@@ -12,40 +12,9 @@ balancer name.}
 
 \item{Tags}{[required] The list of tag keys to remove.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes one or more tags from the specified load balancer.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_tags(
-  LoadBalancerNames = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string"
-    )
-  )
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example removes the specified tag from the specified load balancer.
-svc$remove_tags(
-  LoadBalancerNames = list(
-    "my-load-balancer"
-  ),
-  Tags = list(
-    list(
-      Key = "project"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/remove_tags.html} for full documentation.
 }
 \keyword{internal}

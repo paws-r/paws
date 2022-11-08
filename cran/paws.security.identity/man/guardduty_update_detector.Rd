@@ -4,8 +4,12 @@
 \alias{guardduty_update_detector}
 \title{Updates the Amazon GuardDuty detector specified by the detectorId}
 \usage{
-guardduty_update_detector(DetectorId, Enable,
-  FindingPublishingFrequency, DataSources)
+guardduty_update_detector(
+  DetectorId,
+  Enable = NULL,
+  FindingPublishingFrequency = NULL,
+  DataSources = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector to update.}
@@ -17,24 +21,9 @@ as to CloudWatch Events.}
 
 \item{DataSources}{Describes which data sources will be updated.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the Amazon GuardDuty detector specified by the detectorId.
-}
-\section{Request syntax}{
-\preformatted{svc$update_detector(
-  DetectorId = "string",
-  Enable = TRUE|FALSE,
-  FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
-  DataSources = list(
-    S3Logs = list(
-      Enable = TRUE|FALSE
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/update_detector.html} for full documentation.
+}
 \keyword{internal}

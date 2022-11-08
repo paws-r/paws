@@ -9,20 +9,9 @@ glue_delete_workflow(Name)
 \arguments{
 \item{Name}{[required] Name of the workflow to be deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string"
-)
-}
-}
 \description{
 Deletes a workflow.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_workflow(
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/delete_workflow.html} for full documentation.
+}
 \keyword{internal}

@@ -8,29 +8,14 @@ change}
 connect_associate_lex_bot(InstanceId, LexBot)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
-\item{LexBot}{[required] The Amazon Lex box to associate with the instance.}
-}
-\value{
-An empty list.
+\item{LexBot}{[required] The Amazon Lex bot to associate with the instance.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Allows the specified Amazon Connect instance to access the specified
-Amazon Lex bot.
+See \url{https://paws-r.github.io/docs/connect/associate_lex_bot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_lex_bot(
-  InstanceId = "string",
-  LexBot = list(
-    Name = "string",
-    LexRegion = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

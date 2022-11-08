@@ -63,13 +63,13 @@ NULL
 
 .kms$create_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string")), Origin = structure(logical(0), tags = list(type = "string")), CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), BypassPolicyLockoutSafetyCheck = structure(logical(0), tags = list(type = "boolean")), Tags = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "This enum has been deprecated. Instead, use the KeySpec enum.")), KeySpec = structure(logical(0), tags = list(type = "string")), Origin = structure(logical(0), tags = list(type = "string")), CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), BypassPolicyLockoutSafetyCheck = structure(logical(0), tags = list(type = "boolean")), Tags = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiRegion = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .kms$create_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyMetadata = structure(list(AWSAccountId = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), Enabled = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), KeyState = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), ValidTo = structure(logical(0), tags = list(type = "timestamp")), Origin = structure(logical(0), tags = list(type = "string")), CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), CloudHsmClusterId = structure(logical(0), tags = list(type = "string")), ExpirationModel = structure(logical(0), tags = list(type = "string")), KeyManager = structure(logical(0), tags = list(type = "string")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(KeyMetadata = structure(list(AWSAccountId = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), Enabled = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), KeyState = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), ValidTo = structure(logical(0), tags = list(type = "timestamp")), Origin = structure(logical(0), tags = list(type = "string")), CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), CloudHsmClusterId = structure(logical(0), tags = list(type = "string")), ExpirationModel = structure(logical(0), tags = list(type = "string")), KeyManager = structure(logical(0), tags = list(type = "string")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "This enum has been deprecated. Instead, use the KeySpec enum.")), KeySpec = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MultiRegion = structure(logical(0), tags = list(type = "boolean")), MultiRegionConfiguration = structure(list(MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryKey = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReplicaKeys = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), PendingDeletionWindowInDays = structure(logical(0), tags = list(type = "integer")), MacAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -137,7 +137,7 @@ NULL
 
 .kms$describe_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyMetadata = structure(list(AWSAccountId = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), Enabled = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), KeyState = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), ValidTo = structure(logical(0), tags = list(type = "timestamp")), Origin = structure(logical(0), tags = list(type = "string")), CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), CloudHsmClusterId = structure(logical(0), tags = list(type = "string")), ExpirationModel = structure(logical(0), tags = list(type = "string")), KeyManager = structure(logical(0), tags = list(type = "string")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(KeyMetadata = structure(list(AWSAccountId = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), Enabled = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), KeyState = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), ValidTo = structure(logical(0), tags = list(type = "timestamp")), Origin = structure(logical(0), tags = list(type = "string")), CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), CloudHsmClusterId = structure(logical(0), tags = list(type = "string")), ExpirationModel = structure(logical(0), tags = list(type = "string")), KeyManager = structure(logical(0), tags = list(type = "string")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "This enum has been deprecated. Instead, use the KeySpec enum.")), KeySpec = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MultiRegion = structure(logical(0), tags = list(type = "boolean")), MultiRegionConfiguration = structure(list(MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryKey = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReplicaKeys = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), PendingDeletionWindowInDays = structure(logical(0), tags = list(type = "integer")), MacAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -253,6 +253,18 @@ NULL
   return(populate(args, shape))
 }
 
+.kms$generate_mac_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), KeyId = structure(logical(0), tags = list(type = "string")), MacAlgorithm = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kms$generate_mac_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Mac = structure(logical(0), tags = list(type = "blob")), MacAlgorithm = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .kms$generate_random_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NumberOfBytes = structure(logical(0), tags = list(type = "integer")), CustomKeyStoreId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -309,7 +321,7 @@ NULL
 
 .kms$get_public_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "blob")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "blob")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "This enum has been deprecated. Instead, use the KeySpec enum.")), KeySpec = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -339,7 +351,7 @@ NULL
 
 .kms$list_grants_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Limit = structure(logical(0), tags = list(type = "integer")), Marker = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), GrantId = structure(logical(0), tags = list(type = "string")), GranteePrincipal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -419,6 +431,18 @@ NULL
   return(populate(args, shape))
 }
 
+.kms$replicate_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), ReplicaRegion = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string")), BypassPolicyLockoutSafetyCheck = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kms$replicate_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReplicaKeyMetadata = structure(list(AWSAccountId = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), Enabled = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), KeyUsage = structure(logical(0), tags = list(type = "string")), KeyState = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), ValidTo = structure(logical(0), tags = list(type = "timestamp")), Origin = structure(logical(0), tags = list(type = "string")), CustomKeyStoreId = structure(logical(0), tags = list(type = "string")), CloudHsmClusterId = structure(logical(0), tags = list(type = "string")), ExpirationModel = structure(logical(0), tags = list(type = "string")), KeyManager = structure(logical(0), tags = list(type = "string")), CustomerMasterKeySpec = structure(logical(0), tags = list(type = "string", deprecated = TRUE, deprecatedMessage = "This enum has been deprecated. Instead, use the KeySpec enum.")), KeySpec = structure(logical(0), tags = list(type = "string")), EncryptionAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MultiRegion = structure(logical(0), tags = list(type = "boolean")), MultiRegionConfiguration = structure(list(MultiRegionKeyType = structure(logical(0), tags = list(type = "string")), PrimaryKey = structure(list(Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReplicaKeys = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), PendingDeletionWindowInDays = structure(logical(0), tags = list(type = "integer")), MacAlgorithms = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReplicaPolicy = structure(logical(0), tags = list(type = "string")), ReplicaTags = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), TagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .kms$retire_grant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GrantToken = structure(logical(0), tags = list(type = "string")), KeyId = structure(logical(0), tags = list(type = "string")), GrantId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -447,7 +471,7 @@ NULL
 
 .kms$schedule_key_deletion_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), DeletionDate = structure(logical(0), tags = list(type = "timestamp")), KeyState = structure(logical(0), tags = list(type = "string")), PendingWindowInDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -515,6 +539,16 @@ NULL
   list()
 }
 
+.kms$update_primary_region_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), PrimaryRegion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kms$update_primary_region_output <- function(...) {
+  list()
+}
+
 .kms$verify_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), MessageType = structure(logical(0), tags = list(type = "string")), Signature = structure(logical(0), tags = list(type = "blob")), SigningAlgorithm = structure(logical(0), tags = list(type = "string")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -524,5 +558,17 @@ NULL
 .kms$verify_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), SignatureValid = structure(logical(0), tags = list(type = "boolean")), SigningAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kms$verify_mac_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Message = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), KeyId = structure(logical(0), tags = list(type = "string")), MacAlgorithm = structure(logical(0), tags = list(type = "string")), Mac = structure(logical(0), tags = list(type = "blob")), GrantTokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.kms$verify_mac_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyId = structure(logical(0), tags = list(type = "string")), MacValid = structure(logical(0), tags = list(type = "boolean")), MacAlgorithm = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

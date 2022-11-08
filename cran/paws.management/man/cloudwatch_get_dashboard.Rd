@@ -9,28 +9,9 @@ cloudwatch_get_dashboard(DashboardName)
 \arguments{
 \item{DashboardName}{[required] The name of the dashboard to be described.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DashboardArn = "string",
-  DashboardBody = "string",
-  DashboardName = "string"
-)
-}
-}
 \description{
 Displays the details of the dashboard that you specify.
 
-To copy an existing dashboard, use
-\code{\link[=cloudwatch_get_dashboard]{get_dashboard}}, and then use the data
-returned within \code{DashboardBody} as the template for the new dashboard
-when you call \code{\link[=cloudwatch_put_dashboard]{put_dashboard}} to create the
-copy.
+See \url{https://paws-r.github.io/docs/cloudwatch/get_dashboard.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_dashboard(
-  DashboardName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,10 +4,21 @@
 \alias{servicecatalog_provision_product}
 \title{Provisions the specified product}
 \usage{
-servicecatalog_provision_product(AcceptLanguage, ProductId, ProductName,
-  ProvisioningArtifactId, ProvisioningArtifactName, PathId, PathName,
-  ProvisionedProductName, ProvisioningParameters, ProvisioningPreferences,
-  Tags, NotificationArns, ProvisionToken)
+servicecatalog_provision_product(
+  AcceptLanguage = NULL,
+  ProductId = NULL,
+  ProductName = NULL,
+  ProvisioningArtifactId = NULL,
+  ProvisioningArtifactName = NULL,
+  PathId = NULL,
+  PathName = NULL,
+  ProvisionedProductName,
+  ProvisioningParameters = NULL,
+  ProvisioningPreferences = NULL,
+  Tags = NULL,
+  NotificationArns = NULL,
+  ProvisionToken
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -52,95 +63,9 @@ stack-related events.}
 
 \item{ProvisionToken}{[required] An idempotency token that uniquely identifies the provisioning request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RecordDetail = list(
-    RecordId = "string",
-    ProvisionedProductName = "string",
-    Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    UpdatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ProvisionedProductType = "string",
-    RecordType = "string",
-    ProvisionedProductId = "string",
-    ProductId = "string",
-    ProvisioningArtifactId = "string",
-    PathId = "string",
-    RecordErrors = list(
-      list(
-        Code = "string",
-        Description = "string"
-      )
-    ),
-    RecordTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    LaunchRoleArn = "string"
-  )
-)
-}
-}
 \description{
 Provisions the specified product.
 
-A provisioned product is a resourced instance of a product. For example,
-provisioning a product based on a CloudFormation template launches a
-CloudFormation stack and its underlying resources. You can check the
-status of this request using
-\code{\link[=servicecatalog_describe_record]{describe_record}}.
-
-If the request contains a tag key with an empty list of values, there is
-a tag conflict for that key. Do not include conflicted keys as tags, or
-this causes the error "Parameter validation failed: Missing required
-parameter in Tags[\emph{N}]:\emph{Value}".
+See \url{https://paws-r.github.io/docs/servicecatalog/provision_product.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$provision_product(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  ProductName = "string",
-  ProvisioningArtifactId = "string",
-  ProvisioningArtifactName = "string",
-  PathId = "string",
-  PathName = "string",
-  ProvisionedProductName = "string",
-  ProvisioningParameters = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ProvisioningPreferences = list(
-    StackSetAccounts = list(
-      "string"
-    ),
-    StackSetRegions = list(
-      "string"
-    ),
-    StackSetFailureToleranceCount = 123,
-    StackSetFailureTolerancePercentage = 123,
-    StackSetMaxConcurrencyCount = 123,
-    StackSetMaxConcurrencyPercentage = 123
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NotificationArns = list(
-    "string"
-  ),
-  ProvisionToken = "string"
-)
-}
-}
-
 \keyword{internal}

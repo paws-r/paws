@@ -4,11 +4,11 @@
 \alias{glue_delete_table_version}
 \title{Deletes a specified version of a table}
 \usage{
-glue_delete_table_version(CatalogId, DatabaseName, TableName, VersionId)
+glue_delete_table_version(CatalogId = NULL, DatabaseName, TableName, VersionId)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the tables reside. If none is provided,
-the AWS account ID is used by default.}
+the Amazon Web Services account ID is used by default.}
 
 \item{DatabaseName}{[required] The database in the catalog in which the table resides. For Hive
 compatibility, this name is entirely lowercase.}
@@ -19,20 +19,9 @@ lowercase.}
 \item{VersionId}{[required] The ID of the table version to be deleted. A \code{VersionID} is a string
 representation of an integer. Each version is incremented by 1.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a specified version of a table.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_table_version(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  VersionId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/delete_table_version.html} for full documentation.
+}
 \keyword{internal}

@@ -9,28 +9,9 @@ glue_start_ml_evaluation_task_run(TransformId)
 \arguments{
 \item{TransformId}{[required] The unique identifier of the machine learning transform.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TaskRunId = "string"
-)
-}
-}
 \description{
 Starts a task to estimate the quality of the transform.
 
-When you provide label sets as examples of truth, AWS Glue machine
-learning uses some of those examples to learn from them. The rest of the
-labels are used as a test to estimate quality.
-
-Returns a unique identifier for the run. You can call
-\code{\link[=glue_get_ml_task_run]{get_ml_task_run}} to get more information about
-the stats of the \code{EvaluationTaskRun}.
+See \url{https://paws-r.github.io/docs/glue/start_ml_evaluation_task_run.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_ml_evaluation_task_run(
-  TransformId = "string"
-)
-}
-}
-
 \keyword{internal}

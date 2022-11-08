@@ -9,21 +9,9 @@ translate_delete_parallel_data(Name)
 \arguments{
 \item{Name}{[required] The name of the parallel data resource that is being deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string",
-  Status = "CREATING"|"UPDATING"|"ACTIVE"|"DELETING"|"FAILED"
-)
-}
-}
 \description{
 Deletes a parallel data resource in Amazon Translate.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_parallel_data(
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/translate/delete_parallel_data.html} for full documentation.
+}
 \keyword{internal}

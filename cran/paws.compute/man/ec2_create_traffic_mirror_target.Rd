@@ -4,9 +4,15 @@
 \alias{ec2_create_traffic_mirror_target}
 \title{Creates a target for your Traffic Mirror session}
 \usage{
-ec2_create_traffic_mirror_target(NetworkInterfaceId,
-  NetworkLoadBalancerArn, Description, TagSpecifications, DryRun,
-  ClientToken)
+ec2_create_traffic_mirror_target(
+  NetworkInterfaceId = NULL,
+  NetworkLoadBalancerArn = NULL,
+  Description = NULL,
+  TagSpecifications = NULL,
+  DryRun = NULL,
+  ClientToken = NULL,
+  GatewayLoadBalancerEndpointId = NULL
+)
 }
 \arguments{
 \item{NetworkInterfaceId}{The network interface ID that is associated with the target.}
@@ -24,62 +30,13 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficMirrorTarget = list(
-    TrafficMirrorTargetId = "string",
-    NetworkInterfaceId = "string",
-    NetworkLoadBalancerArn = "string",
-    Type = "network-interface"|"network-load-balancer",
-    Description = "string",
-    OwnerId = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  ),
-  ClientToken = "string"
-)
-}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
+
+\item{GatewayLoadBalancerEndpointId}{The ID of the Gateway Load Balancer endpoint.}
 }
 \description{
 Creates a target for your Traffic Mirror session.
 
-A Traffic Mirror target is the destination for mirrored traffic. The
-Traffic Mirror source and the Traffic Mirror target (monitoring
-appliances) can be in the same VPC, or in different VPCs connected via
-VPC peering or a transit gateway.
-
-A Traffic Mirror target can be a network interface, or a Network Load
-Balancer.
-
-To use the target in a Traffic Mirror session, use
-\code{\link[=ec2_create_traffic_mirror_session]{create_traffic_mirror_session}}.
+See \url{https://paws-r.github.io/docs/ec2/create_traffic_mirror_target.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_traffic_mirror_target(
-  NetworkInterfaceId = "string",
-  NetworkLoadBalancerArn = "string",
-  Description = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  ClientToken = "string"
-)
-}
-}
-
 \keyword{internal}

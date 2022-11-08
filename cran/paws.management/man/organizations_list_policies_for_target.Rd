@@ -5,8 +5,12 @@
 \title{Lists the policies that are directly attached to the specified target
 root, organizational unit (OU), or account}
 \usage{
-organizations_list_policies_for_target(TargetId, Filter, NextToken,
-  MaxResults)
+organizations_list_policies_for_target(
+  TargetId,
+  Filter,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{TargetId}{[required] The unique identifier (ID) of the root, organizational unit, or account
@@ -50,59 +54,9 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Policies = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Name = "string",
-      Description = "string",
-      Type = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
-      AwsManaged = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the policies that are directly attached to the specified target
-root, organizational unit (OU), or account. You must specify the policy
-type that you want included in the returned list.
+Lists the policies that are directly attached to the specified target root, organizational unit (OU), or account. You must specify the policy type that you want included in the returned list.
 
-Always check the \code{NextToken} response parameter for a \code{null} value when
-calling a \verb{List*} operation. These operations can occasionally return an
-empty set of results even when there are more results available. The
-\code{NextToken} response parameter value is \code{null} \emph{only} when there are no
-more results to display.
-
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
-}
-\section{Request syntax}{
-\preformatted{svc$list_policies_for_target(
-  TargetId = "string",
-  Filter = "SERVICE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to get a list of all service control
-# policies (SCPs) of the type specified by the Filter parameter, that are
-# directly attached to an account. The returned list does not include
-# policies that apply to the account because of inheritance from its
-# location in an OU hierarchy:/n/n
-svc$list_policies_for_target(
-  Filter = "SERVICE_CONTROL_POLICY",
-  TargetId = "444444444444"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/list_policies_for_target.html} for full documentation.
 }
 \keyword{internal}

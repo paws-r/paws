@@ -5,53 +5,20 @@
 \title{Returns the number of resources that are compliant and the number that
 are noncompliant}
 \usage{
-configservice_get_compliance_summary_by_resource_type(ResourceTypes)
+configservice_get_compliance_summary_by_resource_type(ResourceTypes = NULL)
 }
 \arguments{
 \item{ResourceTypes}{Specify one or more resource types to get the number of resources that
 are compliant and the number that are noncompliant for each resource
 type.
 
-For this request, you can specify an AWS resource type such as
-\verb{AWS::EC2::Instance}. You can specify that the resource type is an AWS
-account by specifying \verb{AWS::::Account}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ComplianceSummariesByResourceType = list(
-    list(
-      ResourceType = "string",
-      ComplianceSummary = list(
-        CompliantResourceCount = list(
-          CappedCount = 123,
-          CapExceeded = TRUE|FALSE
-        ),
-        NonCompliantResourceCount = list(
-          CappedCount = 123,
-          CapExceeded = TRUE|FALSE
-        ),
-        ComplianceSummaryTimestamp = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  )
-)
-}
+For this request, you can specify an Amazon Web Services resource type
+such as \verb{AWS::EC2::Instance}. You can specify that the resource type is
+an Amazon Web Services account by specifying \verb{AWS::::Account}.}
 }
 \description{
-Returns the number of resources that are compliant and the number that
-are noncompliant. You can specify one or more resource types to get
-these numbers for each resource type. The maximum number returned is
-100.
-}
-\section{Request syntax}{
-\preformatted{svc$get_compliance_summary_by_resource_type(
-  ResourceTypes = list(
-    "string"
-  )
-)
-}
-}
+Returns the number of resources that are compliant and the number that are noncompliant. You can specify one or more resource types to get these numbers for each resource type. The maximum number returned is 100.
 
+See \url{https://paws-r.github.io/docs/configservice/get_compliance_summary_by_resource_type.html} for full documentation.
+}
 \keyword{internal}

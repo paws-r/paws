@@ -2,58 +2,13 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_describe_subscription}
 \alias{shield_describe_subscription}
-\title{Provides details about the AWS Shield Advanced subscription for an
-account}
+\title{Provides details about the Shield Advanced subscription for an account}
 \usage{
 shield_describe_subscription()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Subscription = list(
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    TimeCommitmentInSeconds = 123,
-    AutoRenew = "ENABLED"|"DISABLED",
-    Limits = list(
-      list(
-        Type = "string",
-        Max = 123
-      )
-    ),
-    ProactiveEngagementStatus = "ENABLED"|"DISABLED"|"PENDING",
-    SubscriptionLimits = list(
-      ProtectionLimits = list(
-        ProtectedResourceTypeLimits = list(
-          list(
-            Type = "string",
-            Max = 123
-          )
-        )
-      ),
-      ProtectionGroupLimits = list(
-        MaxProtectionGroups = 123,
-        PatternTypeLimits = list(
-          ArbitraryPatternLimits = list(
-            MaxMembers = 123
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Provides details about the AWS Shield Advanced subscription for an
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_subscription()
-}
-}
+Provides details about the Shield Advanced subscription for an account.
 
+See \url{https://paws-r.github.io/docs/shield/describe_subscription.html} for full documentation.
+}
 \keyword{internal}

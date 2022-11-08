@@ -11,52 +11,9 @@ iam_update_role_description(RoleName, Description)
 
 \item{Description}{[required] The new description that you want to apply to the specified role.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Role = list(
-    Path = "string",
-    RoleName = "string",
-    RoleId = "string",
-    Arn = "string",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    AssumeRolePolicyDocument = "string",
-    Description = "string",
-    MaxSessionDuration = 123,
-    PermissionsBoundary = list(
-      PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-      PermissionsBoundaryArn = "string"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    RoleLastUsed = list(
-      LastUsedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Region = "string"
-    )
-  )
-)
-}
-}
 \description{
 Use \code{\link[=iam_update_role]{update_role}} instead.
 
-Modifies only the description of a role. This operation performs the
-same function as the \code{Description} parameter in the
-\code{\link[=iam_update_role]{update_role}} operation.
+See \url{https://paws-r.github.io/docs/iam/update_role_description.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_role_description(
-  RoleName = "string",
-  Description = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -5,8 +5,11 @@
 \title{Adds a provisioned concurrency configuration to a function's alias or
 version}
 \usage{
-lambda_put_provisioned_concurrency_config(FunctionName, Qualifier,
-  ProvisionedConcurrentExecutions)
+lambda_put_provisioned_concurrency_config(
+  FunctionName,
+  Qualifier,
+  ProvisionedConcurrentExecutions
+)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -27,40 +30,9 @@ the function name, it is limited to 64 characters in length.}
 \item{ProvisionedConcurrentExecutions}{[required] The amount of provisioned concurrency to allocate for the version or
 alias.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestedProvisionedConcurrentExecutions = 123,
-  AvailableProvisionedConcurrentExecutions = 123,
-  AllocatedProvisionedConcurrentExecutions = 123,
-  Status = "IN_PROGRESS"|"READY"|"FAILED",
-  StatusReason = "string",
-  LastModified = "string"
-)
-}
-}
 \description{
-Adds a provisioned concurrency configuration to a function's alias or
-version.
-}
-\section{Request syntax}{
-\preformatted{svc$put_provisioned_concurrency_config(
-  FunctionName = "string",
-  Qualifier = "string",
-  ProvisionedConcurrentExecutions = 123
-)
-}
-}
+Adds a provisioned concurrency configuration to a function's alias or version.
 
-\examples{
-\dontrun{
-# The following example allocates 100 provisioned concurrency for the BLUE
-# alias of the specified function.
-svc$put_provisioned_concurrency_config(
-  FunctionName = "my-function",
-  ProvisionedConcurrentExecutions = 100L,
-  Qualifier = "BLUE"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/put_provisioned_concurrency_config.html} for full documentation.
 }
 \keyword{internal}

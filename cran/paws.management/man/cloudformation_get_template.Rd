@@ -4,11 +4,15 @@
 \alias{cloudformation_get_template}
 \title{Returns the template body for a specified stack}
 \usage{
-cloudformation_get_template(StackName, ChangeSetName, TemplateStage)
+cloudformation_get_template(
+  StackName = NULL,
+  ChangeSetName = NULL,
+  TemplateStage = NULL
+)
 }
 \arguments{
-\item{StackName}{The name or the unique stack ID that is associated with the stack, which
-are not always interchangeable:
+\item{StackName}{The name or the unique stack ID that's associated with the stack, which
+aren't always interchangeable:
 \itemize{
 \item Running stacks: You can specify either the stack's name or its
 unique stack ID.
@@ -17,44 +21,22 @@ unique stack ID.
 
 Default: There is no default value.}
 
-\item{ChangeSetName}{The name or Amazon Resource Name (ARN) of a change set for which AWS
+\item{ChangeSetName}{The name or Amazon Resource Name (ARN) of a change set for which
 CloudFormation returns the associated template. If you specify a name,
 you must also specify the \code{StackName}.}
 
 \item{TemplateStage}{For templates that include transforms, the stage of the template that
-AWS CloudFormation returns. To get the user-submitted template, specify
-\code{Original}. To get the template after AWS CloudFormation has processed
-all transforms, specify \code{Processed}.
+CloudFormation returns. To get the user-submitted template, specify
+\code{Original}. To get the template after CloudFormation has processed all
+transforms, specify \code{Processed}.
 
 If the template doesn't include transforms, \code{Original} and \code{Processed}
-return the same template. By default, AWS CloudFormation specifies
-\code{Original}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplateBody = "string",
-  StagesAvailable = list(
-    "Original"|"Processed"
-  )
-)
-}
+return the same template. By default, CloudFormation specifies
+\code{Processed}.}
 }
 \description{
-Returns the template body for a specified stack. You can get the
-template for running or deleted stacks.
+Returns the template body for a specified stack. You can get the template for running or deleted stacks.
 
-For deleted stacks, GetTemplate returns the template for up to 90 days
-after the stack has been deleted.
-
-If the template does not exist, a \code{ValidationError} is returned.
+See \url{https://paws-r.github.io/docs/cloudformation/get_template.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_template(
-  StackName = "string",
-  ChangeSetName = "string",
-  TemplateStage = "Original"|"Processed"
-)
-}
-}
-
 \keyword{internal}

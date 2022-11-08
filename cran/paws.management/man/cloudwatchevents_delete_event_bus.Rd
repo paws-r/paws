@@ -9,19 +9,9 @@ cloudwatchevents_delete_event_bus(Name)
 \arguments{
 \item{Name}{[required] The name of the event bus to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified custom event bus or partner event bus. All rules
-associated with this event bus need to be deleted. You can't delete your
-account's default event bus.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_event_bus(
-  Name = "string"
-)
-}
-}
+Deletes the specified custom event bus or partner event bus. All rules associated with this event bus need to be deleted. You can't delete your account's default event bus.
 
+See \url{https://paws-r.github.io/docs/cloudwatchevents/delete_event_bus.html} for full documentation.
+}
 \keyword{internal}

@@ -4,53 +4,16 @@
 \alias{ecr_get_authorization_token}
 \title{Retrieves an authorization token}
 \usage{
-ecr_get_authorization_token(registryIds)
+ecr_get_authorization_token(registryIds = NULL)
 }
 \arguments{
-\item{registryIds}{A list of AWS account IDs that are associated with the registries for
-which to get AuthorizationData objects. If you do not specify a
-registry, the default registry is assumed.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  authorizationData = list(
-    list(
-      authorizationToken = "string",
-      expiresAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      proxyEndpoint = "string"
-    )
-  )
-)
-}
+\item{registryIds}{A list of Amazon Web Services account IDs that are associated with the
+registries for which to get AuthorizationData objects. If you do not
+specify a registry, the default registry is assumed.}
 }
 \description{
-Retrieves an authorization token. An authorization token represents your
-IAM authentication credentials and can be used to access any Amazon ECR
-registry that your IAM principal has access to. The authorization token
-is valid for 12 hours.
+Retrieves an authorization token. An authorization token represents your IAM authentication credentials and can be used to access any Amazon ECR registry that your IAM principal has access to. The authorization token is valid for 12 hours.
 
-The \code{authorizationToken} returned is a base64 encoded string that can be
-decoded and used in a \verb{docker login} command to authenticate to a
-registry. The AWS CLI offers an \code{get-login-password} command that
-simplifies the login process. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html#registry_auth}{Registry Authentication}
-in the \emph{Amazon Elastic Container Registry User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_authorization_token(
-  registryIds = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example gets an authorization token for your default registry.
-svc$get_authorization_token()
-}
-
+See \url{https://paws-r.github.io/docs/ecr/get_authorization_token.html} for full documentation.
 }
 \keyword{internal}

@@ -5,17 +5,22 @@
 \title{Creates or updates a scaling policy for an Application Auto Scaling
 scalable target}
 \usage{
-applicationautoscaling_put_scaling_policy(PolicyName, ServiceNamespace,
-  ResourceId, ScalableDimension, PolicyType,
-  StepScalingPolicyConfiguration,
-  TargetTrackingScalingPolicyConfiguration)
+applicationautoscaling_put_scaling_policy(
+  PolicyName,
+  ServiceNamespace,
+  ResourceId,
+  ScalableDimension,
+  PolicyType = NULL,
+  StepScalingPolicyConfiguration = NULL,
+  TargetTrackingScalingPolicyConfiguration = NULL
+)
 }
 \arguments{
 \item{PolicyName}{[required] The name of the scaling policy.}
 
-\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource. For a
-resource provided by your own application or service, use
-\code{custom-resource} instead.}
+\item{ServiceNamespace}{[required] The namespace of the Amazon Web Services service that provides the
+resource. For a resource provided by your own application or service,
+use \code{custom-resource} instead.}
 
 \item{ResourceId}{[required] The identifier of the resource associated with the scaling policy. This
 string consists of the resource type and unique identifier.
@@ -23,8 +28,8 @@ string consists of the resource type and unique identifier.
 \item ECS service - The resource type is \code{service} and the unique
 identifier is the cluster name and service name. Example:
 \code{service/default/sample-webapp}.
-\item Spot Fleet request - The resource type is \code{spot-fleet-request} and
-the unique identifier is the Spot Fleet request ID. Example:
+\item Spot Fleet - The resource type is \code{spot-fleet-request} and the
+unique identifier is the Spot Fleet request ID. Example:
 \verb{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
 \item EMR cluster - The resource type is \code{instancegroup} and the unique
 identifier is the cluster ID and instance group ID. Example:
@@ -38,8 +43,8 @@ the unique identifier is the index name. Example:
 \code{table/my-table/index/my-table-index}.
 \item Aurora DB cluster - The resource type is \code{cluster} and the unique
 identifier is the cluster name. Example: \code{cluster:my-db-cluster}.
-\item Amazon SageMaker endpoint variant - The resource type is \code{variant}
-and the unique identifier is the resource ID. Example:
+\item SageMaker endpoint variant - The resource type is \code{variant} and the
+unique identifier is the resource ID. Example:
 \code{endpoint/my-end-point/variant/KMeansClustering}.
 \item Custom resources are not supported with a resource type. This
 parameter must specify the \code{OutputValue} from the CloudFormation
@@ -63,6 +68,11 @@ identifier is the table name. Example:
 \item Amazon MSK cluster - The resource type and unique identifier are
 specified using the cluster ARN. Example:
 \verb{arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5}.
+\item Amazon ElastiCache replication group - The resource type is
+\code{replication-group} and the unique identifier is the replication
+group name. Example: \code{replication-group/mycluster}.
+\item Neptune cluster - The resource type is \code{cluster} and the unique
+identifier is the cluster name. Example: \code{cluster:mycluster}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension. This string consists of the service namespace,
@@ -70,10 +80,10 @@ resource type, and scaling property.
 \itemize{
 \item \code{ecs:service:DesiredCount} - The desired task count of an ECS
 service.
-\item \code{ec2:spot-fleet-request:TargetCapacity} - The target capacity of a
-Spot Fleet request.
 \item \code{elasticmapreduce:instancegroup:InstanceCount} - The instance count
 of an EMR Instance Group.
+\item \code{ec2:spot-fleet-request:TargetCapacity} - The target capacity of a
+Spot Fleet.
 \item \code{appstream:fleet:DesiredCapacity} - The desired capacity of an
 AppStream 2.0 fleet.
 \item \code{dynamodb:table:ReadCapacityUnits} - The provisioned read capacity
@@ -88,7 +98,7 @@ for a DynamoDB global secondary index.
 Aurora DB cluster. Available for Aurora MySQL-compatible edition and
 Aurora PostgreSQL-compatible edition.
 \item \code{sagemaker:variant:DesiredInstanceCount} - The number of EC2
-instances for an Amazon SageMaker model endpoint variant.
+instances for an SageMaker model endpoint variant.
 \item \code{custom-resource:ResourceType:Property} - The scalable dimension for
 a custom resource provided by your own application or service.
 \item \code{comprehend:document-classifier-endpoint:DesiredInferenceUnits} -
@@ -105,6 +115,12 @@ for an Amazon Keyspaces table.
 capacity for an Amazon Keyspaces table.
 \item \code{kafka:broker-storage:VolumeSize} - The provisioned volume size (in
 GiB) for brokers in an Amazon MSK cluster.
+\item \code{elasticache:replication-group:NodeGroups} - The number of node
+groups for an Amazon ElastiCache replication group.
+\item \code{elasticache:replication-group:Replicas} - The number of replicas
+per node group for an Amazon ElastiCache replication group.
+\item \code{neptune:cluster:ReadReplicaCount} - The count of read replicas in
+an Amazon Neptune DB cluster.
 }}
 
 \item{PolicyType}{The policy type. This parameter is required if you are creating a
@@ -115,10 +131,10 @@ The following policy types are supported:
 \code{TargetTrackingScaling}—Not supported for Amazon EMR
 
 \code{StepScaling}—Not supported for DynamoDB, Amazon Comprehend, Lambda,
-Amazon Keyspaces (for Apache Cassandra), or Amazon MSK.
+Amazon Keyspaces, Amazon MSK, Amazon ElastiCache, or Neptune.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target Tracking Scaling Policies}
-and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step Scaling Policies}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target tracking scaling policies}
+and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step scaling policies}
 in the \emph{Application Auto Scaling User Guide}.}
 
 \item{StepScalingPolicyConfiguration}{A step scaling policy.
@@ -132,123 +148,9 @@ customized metrics.
 This parameter is required if you are creating a policy and the policy
 type is \code{TargetTrackingScaling}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyARN = "string",
-  Alarms = list(
-    list(
-      AlarmName = "string",
-      AlarmARN = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates or updates a scaling policy for an Application Auto Scaling
-scalable target.
+Creates or updates a scaling policy for an Application Auto Scaling scalable target.
 
-Each scalable target is identified by a service namespace, resource ID,
-and scalable dimension. A scaling policy applies to the scalable target
-identified by those three attributes. You cannot create a scaling policy
-until you have registered the resource as a scalable target.
-
-Multiple scaling policies can be in force at the same time for the same
-scalable target. You can have one or more target tracking scaling
-policies, one or more step scaling policies, or both. However, there is
-a chance that multiple policies could conflict, instructing the scalable
-target to scale out or in at the same time. Application Auto Scaling
-gives precedence to the policy that provides the largest capacity for
-both scale out and scale in. For example, if one policy increases
-capacity by 3, another policy increases capacity by 200 percent, and the
-current capacity is 10, Application Auto Scaling uses the policy with
-the highest calculated capacity (200\% of 10 = 20) and scales out to 30.
-
-We recommend caution, however, when using target tracking scaling
-policies with step scaling policies because conflicts between these
-policies can cause undesirable behavior. For example, if the step
-scaling policy initiates a scale-in activity before the target tracking
-policy is ready to scale in, the scale-in activity will not be blocked.
-After the scale-in activity completes, the target tracking policy could
-instruct the scalable target to scale out again.
-
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html}{Target Tracking Scaling Policies}
-and \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html}{Step Scaling Policies}
-in the \emph{Application Auto Scaling User Guide}.
-
-If a scalable target is deregistered, the scalable target is no longer
-available to execute scaling policies. Any scaling policies that were
-specified for the scalable target are deleted.
-}
-\section{Request syntax}{
-\preformatted{svc$put_scaling_policy(
-  PolicyName = "string",
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
-  ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
-  PolicyType = "StepScaling"|"TargetTrackingScaling",
-  StepScalingPolicyConfiguration = list(
-    AdjustmentType = "ChangeInCapacity"|"PercentChangeInCapacity"|"ExactCapacity",
-    StepAdjustments = list(
-      list(
-        MetricIntervalLowerBound = 123.0,
-        MetricIntervalUpperBound = 123.0,
-        ScalingAdjustment = 123
-      )
-    ),
-    MinAdjustmentMagnitude = 123,
-    Cooldown = 123,
-    MetricAggregationType = "Average"|"Minimum"|"Maximum"
-  ),
-  TargetTrackingScalingPolicyConfiguration = list(
-    TargetValue = 123.0,
-    PredefinedMetricSpecification = list(
-      PredefinedMetricType = "DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut"|"SageMakerVariantInvocationsPerInstance"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"AppStreamAverageCapacityUtilization"|"ComprehendInferenceUtilization"|"LambdaProvisionedConcurrencyUtilization"|"CassandraReadCapacityUtilization"|"CassandraWriteCapacityUtilization"|"KafkaBrokerStorageUtilization",
-      ResourceLabel = "string"
-    ),
-    CustomizedMetricSpecification = list(
-      MetricName = "string",
-      Namespace = "string",
-      Dimensions = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-      Unit = "string"
-    ),
-    ScaleOutCooldown = 123,
-    ScaleInCooldown = 123,
-    DisableScaleIn = TRUE|FALSE
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example applies a target tracking scaling policy with a
-# predefined metric specification to an Amazon ECS service called web-app
-# in the default cluster. The policy keeps the average CPU utilization of
-# the service at 75 percent, with scale-out and scale-in cooldown periods
-# of 60 seconds.
-svc$put_scaling_policy(
-  PolicyName = "cpu75-target-tracking-scaling-policy",
-  PolicyType = "TargetTrackingScaling",
-  ResourceId = "service/default/web-app",
-  ScalableDimension = "ecs:service:DesiredCount",
-  ServiceNamespace = "ecs",
-  TargetTrackingScalingPolicyConfiguration = list(
-    PredefinedMetricSpecification = list(
-      PredefinedMetricType = "ECSServiceAverageCPUUtilization"
-    ),
-    ScaleInCooldown = 60L,
-    ScaleOutCooldown = 60L,
-    TargetValue = 75L
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/applicationautoscaling/put_scaling_policy.html} for full documentation.
 }
 \keyword{internal}

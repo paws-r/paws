@@ -17,7 +17,7 @@ NULL
 
 .personalizeruntime$get_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(campaignArn = structure(logical(0), tags = list(type = "string")), itemId = structure(logical(0), tags = list(type = "string")), userId = structure(logical(0), tags = list(type = "string")), numResults = structure(logical(0), tags = list(type = "integer")), context = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), filterArn = structure(logical(0), tags = list(type = "string")), filterValues = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(campaignArn = structure(logical(0), tags = list(type = "string")), itemId = structure(logical(0), tags = list(type = "string")), userId = structure(logical(0), tags = list(type = "string")), numResults = structure(logical(0), tags = list(type = "integer")), context = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), filterArn = structure(logical(0), tags = list(type = "string")), filterValues = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), recommenderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

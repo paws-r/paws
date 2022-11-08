@@ -4,8 +4,16 @@
 \alias{apigateway_create_api_key}
 \title{Create an ApiKey resource}
 \usage{
-apigateway_create_api_key(name, description, enabled,
-  generateDistinctId, value, stageKeys, customerId, tags)
+apigateway_create_api_key(
+  name = NULL,
+  description = NULL,
+  enabled = NULL,
+  generateDistinctId = NULL,
+  value = NULL,
+  stageKeys = NULL,
+  customerId = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{name}{The name of the ApiKey.}
@@ -30,54 +38,9 @@ SaaS Marketplace.}
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  value = "string",
-  name = "string",
-  customerId = "string",
-  description = "string",
-  enabled = TRUE|FALSE,
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  lastUpdatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  stageKeys = list(
-    "string"
-  ),
-  tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Create an ApiKey resource.<div class="seeAlso">
+Create an ApiKey resource.
 
-
-\href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html}{AWS CLI}</div>
+See \url{https://paws-r.github.io/docs/apigateway/create_api_key.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_api_key(
-  name = "string",
-  description = "string",
-  enabled = TRUE|FALSE,
-  generateDistinctId = TRUE|FALSE,
-  value = "string",
-  stageKeys = list(
-    list(
-      restApiId = "string",
-      stageName = "string"
-    )
-  ),
-  customerId = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

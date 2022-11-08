@@ -4,9 +4,18 @@
 \alias{storagegateway_create_cachedi_scsi_volume}
 \title{Creates a cached volume on a specified cached volume gateway}
 \usage{
-storagegateway_create_cachedi_scsi_volume(GatewayARN, VolumeSizeInBytes,
-  SnapshotId, TargetName, SourceVolumeARN, NetworkInterfaceId,
-  ClientToken, KMSEncrypted, KMSKey, Tags)
+storagegateway_create_cachedi_scsi_volume(
+  GatewayARN,
+  VolumeSizeInBytes,
+  SnapshotId = NULL,
+  TargetName,
+  SourceVolumeARN = NULL,
+  NetworkInterfaceId,
+  ClientToken,
+  KMSEncrypted = NULL,
+  KMSKey = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -45,8 +54,8 @@ Valid Values: A valid IP address.}
 request, use the same \code{ClientToken} you specified in the initial
 request.}
 
-\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own AWS
-KMS key, or \code{false} to use a key managed by Amazon S3. Optional.
+\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own KMS
+key, or \code{false} to use a key managed by Amazon S3. Optional.
 
 Valid Values: \code{true} | \code{false}}
 
@@ -59,76 +68,13 @@ is \code{true}. Optional.}
 is a key-value pair.
 
 Valid characters for key and value are letters, spaces, and numbers that
-you can represent in UTF-8 format, and the following special characters:
-\itemize{
-\item 
-\itemize{
-\item = . _ : / @. The maximum length of a tag's key is 128 characters,
-and the maximum length for a tag's value is 256 characters.
-}
-}}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  VolumeARN = "string",
-  TargetARN = "string"
-)
-}
+you can represent in UTF-8 format, and the following special
+characters: + - = . _ : / @. The maximum length of a tag's key is 128
+characters, and the maximum length for a tag's value is 256 characters.}
 }
 \description{
-Creates a cached volume on a specified cached volume gateway. This
-operation is only supported in the cached volume gateway type.
+Creates a cached volume on a specified cached volume gateway. This operation is only supported in the cached volume gateway type.
 
-Cache storage must be allocated to the gateway before you can create a
-cached volume. Use the \code{\link[=storagegateway_add_cache]{add_cache}} operation
-to add cache storage to a gateway.
-
-In the request, you must specify the gateway, size of the volume in
-bytes, the iSCSI target name, an IP address on which to expose the
-target, and a unique client token. In response, the gateway creates the
-volume and returns information about it. This information includes the
-volume Amazon Resource Name (ARN), its size, and the iSCSI target ARN
-that initiators can use to connect to the volume target.
-
-Optionally, you can provide the ARN for an existing volume as the
-\code{SourceVolumeARN} for this cached volume, which creates an exact copy of
-the existing volume’s latest recovery point. The \code{VolumeSizeInBytes}
-value must be equal to or larger than the size of the copied volume, in
-bytes.
-}
-\section{Request syntax}{
-\preformatted{svc$create_cachedi_scsi_volume(
-  GatewayARN = "string",
-  VolumeSizeInBytes = 123,
-  SnapshotId = "string",
-  TargetName = "string",
-  SourceVolumeARN = "string",
-  NetworkInterfaceId = "string",
-  ClientToken = "string",
-  KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# Creates a cached volume on a specified cached gateway.
-svc$create_cachedi_scsi_volume(
-  ClientToken = "cachedvol112233",
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
-  NetworkInterfaceId = "10.1.1.1",
-  SnapshotId = "snap-f47b7b94",
-  TargetName = "my-volume",
-  VolumeSizeInBytes = 536870912000
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/create_cachedi_scsi_volume.html} for full documentation.
 }
 \keyword{internal}

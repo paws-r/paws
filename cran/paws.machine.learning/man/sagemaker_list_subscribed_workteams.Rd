@@ -2,10 +2,14 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_list_subscribed_workteams}
 \alias{sagemaker_list_subscribed_workteams}
-\title{Gets a list of the work teams that you are subscribed to in the AWS
-Marketplace}
+\title{Gets a list of the work teams that you are subscribed to in the Amazon
+Web Services Marketplace}
 \usage{
-sagemaker_list_subscribed_workteams(NameContains, NextToken, MaxResults)
+sagemaker_list_subscribed_workteams(
+  NameContains = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{NameContains}{A string in the work team name. This filter returns only work teams
@@ -18,33 +22,9 @@ the next set of labeling jobs, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of work teams to return in each page of the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SubscribedWorkteams = list(
-    list(
-      WorkteamArn = "string",
-      MarketplaceTitle = "string",
-      SellerName = "string",
-      MarketplaceDescription = "string",
-      ListingId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Gets a list of the work teams that you are subscribed to in the AWS
-Marketplace. The list may be empty if no work team satisfies the filter
-specified in the \code{NameContains} parameter.
-}
-\section{Request syntax}{
-\preformatted{svc$list_subscribed_workteams(
-  NameContains = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Gets a list of the work teams that you are subscribed to in the Amazon Web Services Marketplace. The list may be empty if no work team satisfies the filter specified in the \code{NameContains} parameter.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_subscribed_workteams.html} for full documentation.
+}
 \keyword{internal}

@@ -10,69 +10,9 @@ codecommit_get_pull_request(pullRequestId)
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use
 \code{\link[=codecommit_list_pull_requests]{list_pull_requests}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pullRequest = list(
-    pullRequestId = "string",
-    title = "string",
-    description = "string",
-    lastActivityDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    creationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    pullRequestStatus = "OPEN"|"CLOSED",
-    authorArn = "string",
-    pullRequestTargets = list(
-      list(
-        repositoryName = "string",
-        sourceReference = "string",
-        destinationReference = "string",
-        destinationCommit = "string",
-        sourceCommit = "string",
-        mergeBase = "string",
-        mergeMetadata = list(
-          isMerged = TRUE|FALSE,
-          mergedBy = "string",
-          mergeCommitId = "string",
-          mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-        )
-      )
-    ),
-    clientRequestToken = "string",
-    revisionId = "string",
-    approvalRules = list(
-      list(
-        approvalRuleId = "string",
-        approvalRuleName = "string",
-        approvalRuleContent = "string",
-        ruleContentSha256 = "string",
-        lastModifiedDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        creationDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        lastModifiedUser = "string",
-        originApprovalRuleTemplate = list(
-          approvalRuleTemplateId = "string",
-          approvalRuleTemplateName = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets information about a pull request in a specified repository.
-}
-\section{Request syntax}{
-\preformatted{svc$get_pull_request(
-  pullRequestId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codecommit/get_pull_request.html} for full documentation.
+}
 \keyword{internal}

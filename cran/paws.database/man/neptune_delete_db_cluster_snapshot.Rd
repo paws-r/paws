@@ -12,50 +12,9 @@ neptune_delete_db_cluster_snapshot(DBClusterSnapshotIdentifier)
 Constraints: Must be the name of an existing DB cluster snapshot in the
 \code{available} state.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterSnapshot = list(
-    AvailabilityZones = list(
-      "string"
-    ),
-    DBClusterSnapshotIdentifier = "string",
-    DBClusterIdentifier = "string",
-    SnapshotCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Engine = "string",
-    AllocatedStorage = 123,
-    Status = "string",
-    Port = 123,
-    VpcId = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MasterUsername = "string",
-    EngineVersion = "string",
-    LicenseModel = "string",
-    SnapshotType = "string",
-    PercentProgress = 123,
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DBClusterSnapshotArn = "string",
-    SourceDBClusterSnapshotArn = "string",
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Deletes a DB cluster snapshot. If the snapshot is being copied, the copy
-operation is terminated.
+Deletes a DB cluster snapshot. If the snapshot is being copied, the copy operation is terminated.
 
-The DB cluster snapshot must be in the \code{available} state to be deleted.
+See \url{https://paws-r.github.io/docs/neptune/delete_db_cluster_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_db_cluster_snapshot(
-  DBClusterSnapshotIdentifier = "string"
-)
-}
-}
-
 \keyword{internal}

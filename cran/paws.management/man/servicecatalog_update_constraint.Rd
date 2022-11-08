@@ -4,8 +4,12 @@
 \alias{servicecatalog_update_constraint}
 \title{Updates the specified constraint}
 \usage{
-servicecatalog_update_constraint(AcceptLanguage, Id, Description,
-  Parameters)
+servicecatalog_update_constraint(
+  AcceptLanguage = NULL,
+  Id,
+  Description = NULL,
+  Parameters = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -86,32 +90,9 @@ stack set.
 Specify the \code{Rules} property. For more information, see \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html}{Template Constraint Rules}.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConstraintDetail = list(
-    ConstraintId = "string",
-    Type = "string",
-    Description = "string",
-    Owner = "string",
-    ProductId = "string",
-    PortfolioId = "string"
-  ),
-  ConstraintParameters = "string",
-  Status = "AVAILABLE"|"CREATING"|"FAILED"
-)
-}
-}
 \description{
 Updates the specified constraint.
-}
-\section{Request syntax}{
-\preformatted{svc$update_constraint(
-  AcceptLanguage = "string",
-  Id = "string",
-  Description = "string",
-  Parameters = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/update_constraint.html} for full documentation.
+}
 \keyword{internal}

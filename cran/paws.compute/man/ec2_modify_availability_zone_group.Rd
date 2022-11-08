@@ -5,42 +5,25 @@
 \title{Changes the opt-in status of the Local Zone and Wavelength Zone group
 for your account}
 \usage{
-ec2_modify_availability_zone_group(GroupName, OptInStatus, DryRun)
+ec2_modify_availability_zone_group(GroupName, OptInStatus, DryRun = NULL)
 }
 \arguments{
 \item{GroupName}{[required] The name of the Availability Zone group, Local Zone group, or Wavelength
 Zone group.}
 
 \item{OptInStatus}{[required] Indicates whether you are opted in to the Local Zone group or Wavelength
-Zone group. The only valid value is \verb{opted-in}. You must contact AWS
-Support to opt out of a Local Zone group, or Wavelength Zone group.}
+Zone group. The only valid value is \verb{opted-in}. You must contact Amazon
+Web Services Support to opt out of a Local Zone or Wavelength Zone
+group.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Changes the opt-in status of the Local Zone and Wavelength Zone group
-for your account.
+Changes the opt-in status of the Local Zone and Wavelength Zone group for your account.
 
-Use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html}{DescribeAvailabilityZones}
-to view the value for \code{GroupName}.
+See \url{https://paws-r.github.io/docs/ec2/modify_availability_zone_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_availability_zone_group(
-  GroupName = "string",
-  OptInStatus = "opted-in"|"not-opted-in",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

@@ -13,19 +13,9 @@ directoryservice_enable_ldaps(DirectoryId, Type)
 \item{Type}{[required] The type of LDAP security to enable. Currently only the value \code{Client}
 is supported.}
 }
-\value{
-An empty list.
-}
 \description{
-Activates the switch for the specific directory to always use LDAP
-secure calls.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_ldaps(
-  DirectoryId = "string",
-  Type = "Client"
-)
-}
-}
+Activates the switch for the specific directory to always use LDAP secure calls.
 
+See \url{https://paws-r.github.io/docs/directoryservice/enable_ldaps.html} for full documentation.
+}
 \keyword{internal}

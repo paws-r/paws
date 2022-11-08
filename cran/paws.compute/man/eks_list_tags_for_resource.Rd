@@ -11,31 +11,9 @@ eks_list_tags_for_resource(resourceArn)
 list the tags. Currently, the supported resources are Amazon EKS
 clusters and managed node groups.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 List the tags for an Amazon EKS resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  resourceArn = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example lists all of the tags for the `beta` cluster.
-svc$list_tags_for_resource(
-  resourceArn = "arn:aws:eks:us-west-2:012345678910:cluster/beta"
-)
-}
-
+See \url{https://paws-r.github.io/docs/eks/list_tags_for_resource.html} for full documentation.
 }
 \keyword{internal}

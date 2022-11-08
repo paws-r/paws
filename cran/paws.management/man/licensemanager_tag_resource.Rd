@@ -11,23 +11,9 @@ licensemanager_tag_resource(ResourceArn, Tags)
 
 \item{Tags}{[required] One or more tags.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds the specified tags to the specified license configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/tag_resource.html} for full documentation.
+}
 \keyword{internal}

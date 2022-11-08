@@ -9,22 +9,11 @@ cognitoidentityprovider_admin_delete_user(UserPoolId, Username)
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to delete the user.}
 
-\item{Username}{[required] The user name of the user you wish to delete.}
-}
-\value{
-An empty list.
+\item{Username}{[required] The user name of the user you want to delete.}
 }
 \description{
 Deletes a user as an administrator. Works on any user.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_delete_user.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_delete_user(
-  UserPoolId = "string",
-  Username = "string"
-)
-}
-}
-
 \keyword{internal}

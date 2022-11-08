@@ -4,8 +4,11 @@
 \alias{elasticache_modify_user_group}
 \title{Changes the list of users that belong to the user group}
 \usage{
-elasticache_modify_user_group(UserGroupId, UserIdsToAdd,
-  UserIdsToRemove)
+elasticache_modify_user_group(
+  UserGroupId,
+  UserIdsToAdd = NULL,
+  UserIdsToRemove = NULL
+)
 }
 \arguments{
 \item{UserGroupId}{[required] The ID of the user group.}
@@ -14,43 +17,9 @@ elasticache_modify_user_group(UserGroupId, UserIdsToAdd,
 
 \item{UserIdsToRemove}{The list of user IDs to remove from the user group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserGroupId = "string",
-  Status = "string",
-  Engine = "string",
-  UserIds = list(
-    "string"
-  ),
-  PendingChanges = list(
-    UserIdsToRemove = list(
-      "string"
-    ),
-    UserIdsToAdd = list(
-      "string"
-    )
-  ),
-  ReplicationGroups = list(
-    "string"
-  ),
-  ARN = "string"
-)
-}
-}
 \description{
 Changes the list of users that belong to the user group.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_user_group(
-  UserGroupId = "string",
-  UserIdsToAdd = list(
-    "string"
-  ),
-  UserIdsToRemove = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticache/modify_user_group.html} for full documentation.
+}
 \keyword{internal}

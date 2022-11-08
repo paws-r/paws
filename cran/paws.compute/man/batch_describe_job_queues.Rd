@@ -4,7 +4,11 @@
 \alias{batch_describe_job_queues}
 \title{Describes one or more of your job queues}
 \usage{
-batch_describe_job_queues(jobQueues, maxResults, nextToken)
+batch_describe_job_queues(
+  jobQueues = NULL,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{jobQueues}{A list of up to 100 queue names or full queue Amazon Resource Name (ARN)
@@ -14,7 +18,7 @@ entries.}
 \code{\link[=batch_describe_job_queues]{describe_job_queues}} in paginated output.
 When this parameter is used,
 \code{\link[=batch_describe_job_queues]{describe_job_queues}} only returns
-\code{maxResults} results in a single page along with a \code{nextToken} response
+\code{maxResults} results in a single page and a \code{nextToken} response
 element. The remaining results of the initial request can be seen by
 sending another \code{\link[=batch_describe_job_queues]{describe_job_queues}}
 request with the returned \code{nextToken} value. This value can be between 1
@@ -33,54 +37,9 @@ This token should be treated as an opaque identifier that's only used to
 retrieve the next items in a list and not for other programmatic
 purposes.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  jobQueues = list(
-    list(
-      jobQueueName = "string",
-      jobQueueArn = "string",
-      state = "ENABLED"|"DISABLED",
-      status = "CREATING"|"UPDATING"|"DELETING"|"DELETED"|"VALID"|"INVALID",
-      statusReason = "string",
-      priority = 123,
-      computeEnvironmentOrder = list(
-        list(
-          order = 123,
-          computeEnvironment = "string"
-        )
-      ),
-      tags = list(
-        "string"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Describes one or more of your job queues.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_job_queues(
-  jobQueues = list(
-    "string"
-  ),
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example describes the HighPriority job queue.
-svc$describe_job_queues(
-  jobQueues = list(
-    "HighPriority"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/batch/describe_job_queues.html} for full documentation.
 }
 \keyword{internal}

@@ -9,20 +9,9 @@ securityhub_delete_insight(InsightArn)
 \arguments{
 \item{InsightArn}{[required] The ARN of the insight to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InsightArn = "string"
-)
-}
-}
 \description{
 Deletes the insight specified by the \code{InsightArn}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_insight(
-  InsightArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/securityhub/delete_insight.html} for full documentation.
+}
 \keyword{internal}

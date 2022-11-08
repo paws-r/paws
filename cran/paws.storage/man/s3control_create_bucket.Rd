@@ -2,11 +2,20 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_create_bucket}
 \alias{s3control_create_bucket}
-\title{This API operation creates an Amazon S3 on Outposts bucket}
+\title{This action creates an Amazon S3 on Outposts bucket}
 \usage{
-s3control_create_bucket(ACL, Bucket, CreateBucketConfiguration,
-  GrantFullControl, GrantRead, GrantReadACP, GrantWrite, GrantWriteACP,
-  ObjectLockEnabledForBucket, OutpostId)
+s3control_create_bucket(
+  ACL = NULL,
+  Bucket,
+  CreateBucketConfiguration = NULL,
+  GrantFullControl = NULL,
+  GrantRead = NULL,
+  GrantReadACP = NULL,
+  GrantWrite = NULL,
+  GrantWriteACP = NULL,
+  ObjectLockEnabledForBucket = NULL,
+  OutpostId = NULL
+)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the bucket.
@@ -50,67 +59,9 @@ This is not supported by Amazon S3 on Outposts buckets.}
 
 This is required by Amazon S3 on Outposts buckets.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Location = "string",
-  BucketArn = "string"
-)
-}
-}
 \description{
-This API operation creates an Amazon S3 on Outposts bucket. To create an
-S3 bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{Create Bucket}
-in the \emph{Amazon Simple Storage Service API}.
+This action creates an Amazon S3 on Outposts bucket. To create an S3 bucket, see Create Bucket in the \emph{Amazon S3 API Reference}.
 
-Creates a new Outposts bucket. By creating the bucket, you become the
-bucket owner. To create an Outposts bucket, you must have S3 on
-Outposts. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in \emph{Amazon Simple Storage Service Developer Guide}.
-
-Not every string is an acceptable bucket name. For information on bucket
-naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html#bucketnamingrules}{Working with Amazon S3 Buckets}.
-
-S3 on Outposts buckets do not support
-\itemize{
-\item ACLs. Instead, configure access point policies to manage access to
-buckets.
-\item Public access.
-\item Object Lock
-\item Bucket Location constraint
+See \url{https://paws-r.github.io/docs/s3control/create_bucket.html} for full documentation.
 }
-
-For an example of the request syntax for Amazon S3 on Outposts that uses
-the S3 on Outposts endpoint hostname prefix and \code{x-amz-outpost-id} in
-your API request, see the
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html#API_control_CreateBucket_Examples}{Examples}
-section.
-
-The following actions are related to
-\code{\link[=s3control_create_bucket]{create_bucket}} for Amazon S3 on Outposts:
-\itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
-\item \code{\link[=s3control_get_bucket]{get_bucket}}
-\item \code{\link[=s3control_delete_bucket]{delete_bucket}}
-\item \code{\link[=s3control_create_access_point]{create_access_point}}
-\item \code{\link[=s3control_put_access_point_policy]{put_access_point_policy}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$create_bucket(
-  ACL = "private"|"public-read"|"public-read-write"|"authenticated-read",
-  Bucket = "string",
-  CreateBucketConfiguration = list(
-    LocationConstraint = "EU"|"eu-west-1"|"us-west-1"|"us-west-2"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"|"cn-north-1"|"eu-central-1"
-  ),
-  GrantFullControl = "string",
-  GrantRead = "string",
-  GrantReadACP = "string",
-  GrantWrite = "string",
-  GrantWriteACP = "string",
-  ObjectLockEnabledForBucket = TRUE|FALSE,
-  OutpostId = "string"
-)
-}
-}
-
 \keyword{internal}

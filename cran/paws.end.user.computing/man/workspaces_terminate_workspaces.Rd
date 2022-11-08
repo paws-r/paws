@@ -9,56 +9,9 @@ workspaces_terminate_workspaces(TerminateWorkspaceRequests)
 \arguments{
 \item{TerminateWorkspaceRequests}{[required] The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedRequests = list(
-    list(
-      WorkspaceId = "string",
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
 Terminates the specified WorkSpaces.
 
-Terminating a WorkSpace is a permanent action and cannot be undone. The
-user's data is destroyed. If you need to archive any user data, contact
-AWS Support before terminating the WorkSpace.
-
-You can terminate a WorkSpace that is in any state except \code{SUSPENDED}.
-
-This operation is asynchronous and returns before the WorkSpaces have
-been completely terminated. After a WorkSpace is terminated, the
-\code{TERMINATED} state is returned only briefly before the WorkSpace
-directory metadata is cleaned up, so this state is rarely returned. To
-confirm that a WorkSpace is terminated, check for the WorkSpace ID by
-using
-\href{https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaces.html}{DescribeWorkSpaces}.
-If the WorkSpace ID isn't returned, then the WorkSpace has been
-successfully terminated.
-
-Simple AD and AD Connector are made available to you free of charge to
-use with WorkSpaces. If there are no WorkSpaces being used with your
-Simple AD or AD Connector directory for 30 consecutive days, this
-directory will be automatically deregistered for use with Amazon
-WorkSpaces, and you will be charged for this directory as per the \href{https://aws.amazon.com/directoryservice/pricing/}{AWS Directory Services pricing terms}.
-
-To delete empty directories, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/delete-workspaces-directory.html}{Delete the Directory for Your WorkSpaces}.
-If you delete your Simple AD or AD Connector directory, you can always
-create a new one when you want to start using WorkSpaces again.
+See \url{https://paws-r.github.io/docs/workspaces/terminate_workspaces.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$terminate_workspaces(
-  TerminateWorkspaceRequests = list(
-    list(
-      WorkspaceId = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

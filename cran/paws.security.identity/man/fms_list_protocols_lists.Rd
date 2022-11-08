@@ -4,52 +4,29 @@
 \alias{fms_list_protocols_lists}
 \title{Returns an array of ProtocolsListDataSummary objects}
 \usage{
-fms_list_protocols_lists(DefaultLists, NextToken, MaxResults)
+fms_list_protocols_lists(DefaultLists = NULL, NextToken = NULL, MaxResults)
 }
 \arguments{
-\item{DefaultLists}{Specifies whether the lists to retrieve are default lists owned by AWS
+\item{DefaultLists}{Specifies whether the lists to retrieve are default lists owned by
 Firewall Manager.}
 
 \item{NextToken}{If you specify a value for \code{MaxResults} in your list request, and you
-have more objects than the maximum, AWS Firewall Manager returns this
-token in the response. For all but the first request, you provide the
-token returned by the prior request in the request parameters, to
-retrieve the next batch of objects.}
+have more objects than the maximum, Firewall Manager returns this token
+in the response. For all but the first request, you provide the token
+returned by the prior request in the request parameters, to retrieve the
+next batch of objects.}
 
-\item{MaxResults}{[required] The maximum number of objects that you want AWS Firewall Manager to
-return for this request. If more objects are available, in the response,
-AWS Firewall Manager provides a \code{NextToken} value that you can use in a
+\item{MaxResults}{[required] The maximum number of objects that you want Firewall Manager to return
+for this request. If more objects are available, in the response,
+Firewall Manager provides a \code{NextToken} value that you can use in a
 subsequent call to get the next batch of objects.
 
-If you don't specify this, AWS Firewall Manager returns all available
+If you don't specify this, Firewall Manager returns all available
 objects.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ProtocolsLists = list(
-    list(
-      ListArn = "string",
-      ListId = "string",
-      ListName = "string",
-      ProtocolsList = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
 }
 \description{
 Returns an array of \code{ProtocolsListDataSummary} objects.
-}
-\section{Request syntax}{
-\preformatted{svc$list_protocols_lists(
-  DefaultLists = TRUE|FALSE,
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/fms/list_protocols_lists.html} for full documentation.
+}
 \keyword{internal}

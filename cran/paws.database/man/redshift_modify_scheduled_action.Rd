@@ -4,9 +4,16 @@
 \alias{redshift_modify_scheduled_action}
 \title{Modifies a scheduled action}
 \usage{
-redshift_modify_scheduled_action(ScheduledActionName, TargetAction,
-  Schedule, IamRole, ScheduledActionDescription, StartTime, EndTime,
-  Enable)
+redshift_modify_scheduled_action(
+  ScheduledActionName,
+  TargetAction = NULL,
+  Schedule = NULL,
+  IamRole = NULL,
+  ScheduledActionDescription = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  Enable = NULL
+)
 }
 \arguments{
 \item{ScheduledActionName}{[required] The name of the scheduled action to modify.}
@@ -31,75 +38,9 @@ this parameter, see ScheduledAction.}
 \item{Enable}{A modified enable flag of the scheduled action. If true, the scheduled
 action is active. If false, the scheduled action is disabled.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ScheduledActionName = "string",
-  TargetAction = list(
-    ResizeCluster = list(
-      ClusterIdentifier = "string",
-      ClusterType = "string",
-      NodeType = "string",
-      NumberOfNodes = 123,
-      Classic = TRUE|FALSE
-    ),
-    PauseCluster = list(
-      ClusterIdentifier = "string"
-    ),
-    ResumeCluster = list(
-      ClusterIdentifier = "string"
-    )
-  ),
-  Schedule = "string",
-  IamRole = "string",
-  ScheduledActionDescription = "string",
-  State = "ACTIVE"|"DISABLED",
-  NextInvocations = list(
-    as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
 Modifies a scheduled action.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_scheduled_action(
-  ScheduledActionName = "string",
-  TargetAction = list(
-    ResizeCluster = list(
-      ClusterIdentifier = "string",
-      ClusterType = "string",
-      NodeType = "string",
-      NumberOfNodes = 123,
-      Classic = TRUE|FALSE
-    ),
-    PauseCluster = list(
-      ClusterIdentifier = "string"
-    ),
-    ResumeCluster = list(
-      ClusterIdentifier = "string"
-    )
-  ),
-  Schedule = "string",
-  IamRole = "string",
-  ScheduledActionDescription = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Enable = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/modify_scheduled_action.html} for full documentation.
+}
 \keyword{internal}

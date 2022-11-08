@@ -2,13 +2,17 @@
 % Please edit documentation in R/apigateway_operations.R
 \name{apigateway_create_request_validator}
 \alias{apigateway_create_request_validator}
-\title{Creates a ReqeustValidator of a given RestApi}
+\title{Creates a RequestValidator of a given RestApi}
 \usage{
-apigateway_create_request_validator(restApiId, name,
-  validateRequestBody, validateRequestParameters)
+apigateway_create_request_validator(
+  restApiId,
+  name = NULL,
+  validateRequestBody = NULL,
+  validateRequestParameters = NULL
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
 \item{name}{The name of the to-be-created RequestValidator.}
 
@@ -18,26 +22,9 @@ the configured model schema for the method (\code{true}) or not (\code{false}).}
 \item{validateRequestParameters}{A Boolean flag to indicate whether to validate request parameters,
 \code{true}, or not \code{false}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  validateRequestBody = TRUE|FALSE,
-  validateRequestParameters = TRUE|FALSE
-)
-}
-}
 \description{
-Creates a ReqeustValidator of a given RestApi.
-}
-\section{Request syntax}{
-\preformatted{svc$create_request_validator(
-  restApiId = "string",
-  name = "string",
-  validateRequestBody = TRUE|FALSE,
-  validateRequestParameters = TRUE|FALSE
-)
-}
-}
+Creates a RequestValidator of a given RestApi.
 
+See \url{https://paws-r.github.io/docs/apigateway/create_request_validator.html} for full documentation.
+}
 \keyword{internal}

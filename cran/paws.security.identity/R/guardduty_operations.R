@@ -3,33 +3,53 @@
 #' @include guardduty_service.R
 NULL
 
+#' Accepts the invitation to be a member account and get monitored by a
+#' GuardDuty administrator account that sent the invitation
+#'
+#' @description
+#' Accepts the invitation to be a member account and get monitored by a GuardDuty administrator account that sent the invitation.
+#'
+#' See [https://paws-r.github.io/docs/guardduty/accept_administrator_invitation.html](https://paws-r.github.io/docs/guardduty/accept_administrator_invitation.html) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
+#' @param AdministratorId &#91;required&#93; The account ID of the GuardDuty administrator account whose invitation
+#' you're accepting.
+#' @param InvitationId &#91;required&#93; The value that is used to validate the administrator account to the
+#' member account.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_accept_administrator_invitation
+guardduty_accept_administrator_invitation <- function(DetectorId, AdministratorId, InvitationId) {
+  op <- new_operation(
+    name = "AcceptAdministratorInvitation",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/administrator",
+    paginator = list()
+  )
+  input <- .guardduty$accept_administrator_invitation_input(DetectorId = DetectorId, AdministratorId = AdministratorId, InvitationId = InvitationId)
+  output <- .guardduty$accept_administrator_invitation_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$accept_administrator_invitation <- guardduty_accept_administrator_invitation
+
 #' Accepts the invitation to be monitored by a GuardDuty administrator
 #' account
 #'
 #' @description
-#' Accepts the invitation to be monitored by a GuardDuty administrator
-#' account.
+#' Accepts the invitation to be monitored by a GuardDuty administrator account.
 #'
-#' @usage
-#' guardduty_accept_invitation(DetectorId, MasterId, InvitationId)
+#' See [https://paws-r.github.io/docs/guardduty/accept_invitation.html](https://paws-r.github.io/docs/guardduty/accept_invitation.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
 #' @param MasterId &#91;required&#93; The account ID of the GuardDuty administrator account whose invitation
 #' you're accepting.
 #' @param InvitationId &#91;required&#93; The value that is used to validate the administrator account to the
 #' member account.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$accept_invitation(
-#'   DetectorId = "string",
-#'   MasterId = "string",
-#'   InvitationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -55,31 +75,13 @@ guardduty_accept_invitation <- function(DetectorId, MasterId, InvitationId) {
 #' IDs
 #'
 #' @description
-#' Archives GuardDuty findings that are specified by the list of finding
-#' IDs.
-#' 
-#' Only the administrator account can archive findings. Member accounts
-#' don't have permission to archive findings from their accounts.
+#' Archives GuardDuty findings that are specified by the list of finding IDs.
 #'
-#' @usage
-#' guardduty_archive_findings(DetectorId, FindingIds)
+#' See [https://paws-r.github.io/docs/guardduty/archive_findings.html](https://paws-r.github.io/docs/guardduty/archive_findings.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose
 #' findings you want to archive.
 #' @param FindingIds &#91;required&#93; The IDs of the findings that you want to archive.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$archive_findings(
-#'   DetectorId = "string",
-#'   FindingIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -104,46 +106,15 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #' Creates a single Amazon GuardDuty detector
 #'
 #' @description
-#' Creates a single Amazon GuardDuty detector. A detector is a resource
-#' that represents the GuardDuty service. To start using GuardDuty, you
-#' must create a detector in each Region where you enable the service. You
-#' can have only one detector per account per Region. All data sources are
-#' enabled in a new detector by default.
+#' Creates a single Amazon GuardDuty detector. A detector is a resource that represents the GuardDuty service. To start using GuardDuty, you must create a detector in each Region where you enable the service. You can have only one detector per account per Region. All data sources are enabled in a new detector by default.
 #'
-#' @usage
-#' guardduty_create_detector(Enable, ClientToken,
-#'   FindingPublishingFrequency, DataSources, Tags)
+#' See [https://paws-r.github.io/docs/guardduty/create_detector.html](https://paws-r.github.io/docs/guardduty/create_detector.html) for full documentation.
 #'
 #' @param Enable &#91;required&#93; A Boolean value that specifies whether the detector is to be enabled.
 #' @param ClientToken The idempotency token for the create request.
 #' @param FindingPublishingFrequency A value that specifies how frequently updated findings are exported.
 #' @param DataSources Describes which data sources will be enabled for the detector.
 #' @param Tags The tags to be added to a new detector resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DetectorId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_detector(
-#'   Enable = TRUE|FALSE,
-#'   ClientToken = "string",
-#'   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
-#'   DataSources = list(
-#'     S3Logs = list(
-#'       Enable = TRUE|FALSE
-#'     )
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -170,9 +141,7 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' @description
 #' Creates a filter using the specified finding criteria.
 #'
-#' @usage
-#' guardduty_create_filter(DetectorId, Name, Description, Action, Rank,
-#'   FindingCriteria, ClientToken, Tags)
+#' See [https://paws-r.github.io/docs/guardduty/create_filter.html](https://paws-r.github.io/docs/guardduty/create_filter.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector belonging to the GuardDuty account that you want
 #' to create a filter for.
@@ -243,6 +212,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.awsApiCallAction.errorCode
 #' 
+#' -   service.action.awsApiCallAction.userAgent
+#' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.city.cityName
 #' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.country.countryName
@@ -281,6 +252,16 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.additionalInfo.threatListName
 #' 
+#' -   resource.s3BucketDetails.publicAccess.effectivePermissions
+#' 
+#' -   resource.s3BucketDetails.name
+#' 
+#' -   resource.s3BucketDetails.tags.key
+#' 
+#' -   resource.s3BucketDetails.tags.value
+#' 
+#' -   resource.s3BucketDetails.type
+#' 
 #' -   service.archived
 #' 
 #'     When this attribute is set to TRUE, only archived findings are
@@ -300,55 +281,6 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #'     milliseconds.
 #' @param ClientToken The idempotency token for the create request.
 #' @param Tags The tags to be added to a new filter resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_filter(
-#'   DetectorId = "string",
-#'   Name = "string",
-#'   Description = "string",
-#'   Action = "NOOP"|"ARCHIVE",
-#'   Rank = 123,
-#'   FindingCriteria = list(
-#'     Criterion = list(
-#'       list(
-#'         Eq = list(
-#'           "string"
-#'         ),
-#'         Neq = list(
-#'           "string"
-#'         ),
-#'         Gt = 123,
-#'         Gte = 123,
-#'         Lt = 123,
-#'         Lte = 123,
-#'         Equals = list(
-#'           "string"
-#'         ),
-#'         NotEquals = list(
-#'           "string"
-#'         ),
-#'         GreaterThan = 123,
-#'         GreaterThanOrEqual = 123,
-#'         LessThan = 123,
-#'         LessThanOrEqual = 123
-#'       )
-#'     )
-#'   ),
-#'   ClientToken = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -374,15 +306,9 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' user interface
 #'
 #' @description
-#' Creates a new IPSet, which is called a trusted IP list in the console
-#' user interface. An IPSet is a list of IP addresses that are trusted for
-#' secure communication with AWS infrastructure and applications. GuardDuty
-#' doesn't generate findings for IP addresses that are included in IPSets.
-#' Only users from the administrator account can use this operation.
+#' Creates a new IPSet, which is called a trusted IP list in the console user interface. An IPSet is a list of IP addresses that are trusted for secure communication with Amazon Web Services infrastructure and applications. GuardDuty doesn't generate findings for IP addresses that are included in IPSets. Only users from the administrator account can use this operation.
 #'
-#' @usage
-#' guardduty_create_ip_set(DetectorId, Name, Format, Location, Activate,
-#'   ClientToken, Tags)
+#' See [https://paws-r.github.io/docs/guardduty/create_ip_set.html](https://paws-r.github.io/docs/guardduty/create_ip_set.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account that you want to
 #' create an IPSet for.
@@ -391,35 +317,11 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' Allowed characters are alphanumerics, spaces, hyphens (-), and
 #' underscores (_).
 #' @param Format &#91;required&#93; The format of the file that contains the IPSet.
-#' @param Location &#91;required&#93; The URI of the file that contains the IPSet. For example:
-#' https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
+#' @param Location &#91;required&#93; The URI of the file that contains the IPSet.
 #' @param Activate &#91;required&#93; A Boolean value that indicates whether GuardDuty is to start using the
 #' uploaded IPSet.
 #' @param ClientToken The idempotency token for the create request.
 #' @param Tags The tags to be added to a new IP set resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   IpSetId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_ip_set(
-#'   DetectorId = "string",
-#'   Name = "string",
-#'   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
-#'   Location = "string",
-#'   Activate = TRUE|FALSE,
-#'   ClientToken = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -441,58 +343,18 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
 }
 .guardduty$operations$create_ip_set <- guardduty_create_ip_set
 
-#' Creates member accounts of the current AWS account by specifying a list
-#' of AWS account IDs
+#' Creates member accounts of the current Amazon Web Services account by
+#' specifying a list of Amazon Web Services account IDs
 #'
 #' @description
-#' Creates member accounts of the current AWS account by specifying a list
-#' of AWS account IDs. This step is a prerequisite for managing the
-#' associated member accounts either by invitation or through an
-#' organization.
-#' 
-#' When using `Create Members` as an organizations delegated administrator
-#' this action will enable GuardDuty in the added member accounts, with the
-#' exception of the organization delegated administrator account, which
-#' must enable GuardDuty prior to being added as a member.
-#' 
-#' If you are adding accounts by invitation use this action after GuardDuty
-#' has been enabled in potential member accounts and before using
-#' [`Invite Members`](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html)
-#' .
+#' Creates member accounts of the current Amazon Web Services account by specifying a list of Amazon Web Services account IDs. This step is a prerequisite for managing the associated member accounts either by invitation or through an organization.
 #'
-#' @usage
-#' guardduty_create_members(DetectorId, AccountDetails)
+#' See [https://paws-r.github.io/docs/guardduty/create_members.html](https://paws-r.github.io/docs/guardduty/create_members.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account that you want to
 #' associate member accounts with.
 #' @param AccountDetails &#91;required&#93; A list of account ID and email address pairs of the accounts that you
 #' want to associate with the GuardDuty administrator account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UnprocessedAccounts = list(
-#'     list(
-#'       AccountId = "string",
-#'       Result = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_members(
-#'   DetectorId = "string",
-#'   AccountDetails = list(
-#'     list(
-#'       AccountId = "string",
-#'       Email = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -517,12 +379,9 @@ guardduty_create_members <- function(DetectorId, AccountDetails) {
 #' Creates a publishing destination to export findings to
 #'
 #' @description
-#' Creates a publishing destination to export findings to. The resource to
-#' export findings to must exist before you use this operation.
+#' Creates a publishing destination to export findings to. The resource to export findings to must exist before you use this operation.
 #'
-#' @usage
-#' guardduty_create_publishing_destination(DetectorId, DestinationType,
-#'   DestinationProperties, ClientToken)
+#' See [https://paws-r.github.io/docs/guardduty/create_publishing_destination.html](https://paws-r.github.io/docs/guardduty/create_publishing_destination.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the GuardDuty detector associated with the publishing
 #' destination.
@@ -531,27 +390,6 @@ guardduty_create_members <- function(DetectorId, AccountDetails) {
 #' @param DestinationProperties &#91;required&#93; The properties of the publishing destination, including the ARNs for the
 #' destination and the KMS key used for encryption.
 #' @param ClientToken The idempotency token for the request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DestinationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_publishing_destination(
-#'   DetectorId = "string",
-#'   DestinationType = "S3",
-#'   DestinationProperties = list(
-#'     DestinationArn = "string",
-#'     KmsKeyArn = "string"
-#'   ),
-#'   ClientToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -577,28 +415,12 @@ guardduty_create_publishing_destination <- function(DetectorId, DestinationType,
 #' types
 #'
 #' @description
-#' Generates example findings of types specified by the list of finding
-#' types. If 'NULL' is specified for `findingTypes`, the API generates
-#' example findings of all supported finding types.
+#' Generates example findings of types specified by the list of finding types. If 'NULL' is specified for `findingTypes`, the API generates example findings of all supported finding types.
 #'
-#' @usage
-#' guardduty_create_sample_findings(DetectorId, FindingTypes)
+#' See [https://paws-r.github.io/docs/guardduty/create_sample_findings.html](https://paws-r.github.io/docs/guardduty/create_sample_findings.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector to create sample findings for.
 #' @param FindingTypes The types of sample findings to generate.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_sample_findings(
-#'   DetectorId = "string",
-#'   FindingTypes = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -623,13 +445,9 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #' Creates a new ThreatIntelSet
 #'
 #' @description
-#' Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious
-#' IP addresses. GuardDuty generates findings based on ThreatIntelSets.
-#' Only users of the administrator account can use this operation.
+#' Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious IP addresses. GuardDuty generates findings based on ThreatIntelSets. Only users of the administrator account can use this operation.
 #'
-#' @usage
-#' guardduty_create_threat_intel_set(DetectorId, Name, Format, Location,
-#'   Activate, ClientToken, Tags)
+#' See [https://paws-r.github.io/docs/guardduty/create_threat_intel_set.html](https://paws-r.github.io/docs/guardduty/create_threat_intel_set.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account that you want to
 #' create a threatIntelSet for.
@@ -637,35 +455,11 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #' generated by activity that involves IP addresses included in this
 #' ThreatIntelSet.
 #' @param Format &#91;required&#93; The format of the file that contains the ThreatIntelSet.
-#' @param Location &#91;required&#93; The URI of the file that contains the ThreatIntelSet. For example:
-#' https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
+#' @param Location &#91;required&#93; The URI of the file that contains the ThreatIntelSet.
 #' @param Activate &#91;required&#93; A Boolean value that indicates whether GuardDuty is to start using the
 #' uploaded ThreatIntelSet.
 #' @param ClientToken The idempotency token for the create request.
 #' @param Tags The tags to be added to a new threat list resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ThreatIntelSetId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_threat_intel_set(
-#'   DetectorId = "string",
-#'   Name = "string",
-#'   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
-#'   Location = "string",
-#'   Activate = TRUE|FALSE,
-#'   ClientToken = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -687,40 +481,17 @@ guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location
 }
 .guardduty$operations$create_threat_intel_set <- guardduty_create_threat_intel_set
 
-#' Declines invitations sent to the current member account by AWS accounts
-#' specified by their account IDs
+#' Declines invitations sent to the current member account by Amazon Web
+#' Services accounts specified by their account IDs
 #'
 #' @description
-#' Declines invitations sent to the current member account by AWS accounts
-#' specified by their account IDs.
+#' Declines invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs.
 #'
-#' @usage
-#' guardduty_decline_invitations(AccountIds)
+#' See [https://paws-r.github.io/docs/guardduty/decline_invitations.html](https://paws-r.github.io/docs/guardduty/decline_invitations.html) for full documentation.
 #'
-#' @param AccountIds &#91;required&#93; A list of account IDs of the AWS accounts that sent invitations to the
-#' current member account that you want to decline invitations from.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UnprocessedAccounts = list(
-#'     list(
-#'       AccountId = "string",
-#'       Result = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$decline_invitations(
-#'   AccountIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param AccountIds &#91;required&#93; A list of account IDs of the Amazon Web Services accounts that sent
+#' invitations to the current member account that you want to decline
+#' invitations from.
 #'
 #' @keywords internal
 #'
@@ -746,23 +517,11 @@ guardduty_decline_invitations <- function(AccountIds) {
 #' ID
 #'
 #' @description
-#' Deletes an Amazon GuardDuty detector that is specified by the detector
-#' ID.
+#' Deletes an Amazon GuardDuty detector that is specified by the detector ID.
 #'
-#' @usage
-#' guardduty_delete_detector(DetectorId)
+#' See [https://paws-r.github.io/docs/guardduty/delete_detector.html](https://paws-r.github.io/docs/guardduty/delete_detector.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_detector(
-#'   DetectorId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -789,22 +548,10 @@ guardduty_delete_detector <- function(DetectorId) {
 #' @description
 #' Deletes the filter specified by the filter name.
 #'
-#' @usage
-#' guardduty_delete_filter(DetectorId, FilterName)
+#' See [https://paws-r.github.io/docs/guardduty/delete_filter.html](https://paws-r.github.io/docs/guardduty/delete_filter.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the filter is associated with.
 #' @param FilterName &#91;required&#93; The name of the filter that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_filter(
-#'   DetectorId = "string",
-#'   FilterName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -829,25 +576,12 @@ guardduty_delete_filter <- function(DetectorId, FilterName) {
 #' Deletes the IPSet specified by the ipSetId
 #'
 #' @description
-#' Deletes the IPSet specified by the `ipSetId`. IPSets are called trusted
-#' IP lists in the console user interface.
+#' Deletes the IPSet specified by the `ipSetId`. IPSets are called trusted IP lists in the console user interface.
 #'
-#' @usage
-#' guardduty_delete_ip_set(DetectorId, IpSetId)
+#' See [https://paws-r.github.io/docs/guardduty/delete_ip_set.html](https://paws-r.github.io/docs/guardduty/delete_ip_set.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the IPSet.
 #' @param IpSetId &#91;required&#93; The unique ID of the IPSet to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_ip_set(
-#'   DetectorId = "string",
-#'   IpSetId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -869,40 +603,17 @@ guardduty_delete_ip_set <- function(DetectorId, IpSetId) {
 }
 .guardduty$operations$delete_ip_set <- guardduty_delete_ip_set
 
-#' Deletes invitations sent to the current member account by AWS accounts
-#' specified by their account IDs
+#' Deletes invitations sent to the current member account by Amazon Web
+#' Services accounts specified by their account IDs
 #'
 #' @description
-#' Deletes invitations sent to the current member account by AWS accounts
-#' specified by their account IDs.
+#' Deletes invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs.
 #'
-#' @usage
-#' guardduty_delete_invitations(AccountIds)
+#' See [https://paws-r.github.io/docs/guardduty/delete_invitations.html](https://paws-r.github.io/docs/guardduty/delete_invitations.html) for full documentation.
 #'
-#' @param AccountIds &#91;required&#93; A list of account IDs of the AWS accounts that sent invitations to the
-#' current member account that you want to delete invitations from.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UnprocessedAccounts = list(
-#'     list(
-#'       AccountId = "string",
-#'       Result = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_invitations(
-#'   AccountIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param AccountIds &#91;required&#93; A list of account IDs of the Amazon Web Services accounts that sent
+#' invitations to the current member account that you want to delete
+#' invitations from.
 #'
 #' @keywords internal
 #'
@@ -928,39 +639,14 @@ guardduty_delete_invitations <- function(AccountIds) {
 #' administrator account) specified by the account IDs
 #'
 #' @description
-#' Deletes GuardDuty member accounts (to the current GuardDuty
-#' administrator account) specified by the account IDs.
+#' Deletes GuardDuty member accounts (to the current GuardDuty administrator account) specified by the account IDs.
 #'
-#' @usage
-#' guardduty_delete_members(DetectorId, AccountIds)
+#' See [https://paws-r.github.io/docs/guardduty/delete_members.html](https://paws-r.github.io/docs/guardduty/delete_members.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account whose members you
 #' want to delete.
 #' @param AccountIds &#91;required&#93; A list of account IDs of the GuardDuty member accounts that you want to
 #' delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UnprocessedAccounts = list(
-#'     list(
-#'       AccountId = "string",
-#'       Result = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_members(
-#'   DetectorId = "string",
-#'   AccountIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -987,23 +673,11 @@ guardduty_delete_members <- function(DetectorId, AccountIds) {
 #' @description
 #' Deletes the publishing definition with the specified `destinationId`.
 #'
-#' @usage
-#' guardduty_delete_publishing_destination(DetectorId, DestinationId)
+#' See [https://paws-r.github.io/docs/guardduty/delete_publishing_destination.html](https://paws-r.github.io/docs/guardduty/delete_publishing_destination.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the publishing destination
 #' to delete.
 #' @param DestinationId &#91;required&#93; The ID of the publishing destination to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_publishing_destination(
-#'   DetectorId = "string",
-#'   DestinationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1030,23 +704,11 @@ guardduty_delete_publishing_destination <- function(DetectorId, DestinationId) {
 #' @description
 #' Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
 #'
-#' @usage
-#' guardduty_delete_threat_intel_set(DetectorId, ThreatIntelSetId)
+#' See [https://paws-r.github.io/docs/guardduty/delete_threat_intel_set.html](https://paws-r.github.io/docs/guardduty/delete_threat_intel_set.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the threatIntelSet is associated
 #' with.
 #' @param ThreatIntelSetId &#91;required&#93; The unique ID of the threatIntelSet that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_threat_intel_set(
-#'   DetectorId = "string",
-#'   ThreatIntelSetId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1068,39 +730,55 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 }
 .guardduty$operations$delete_threat_intel_set <- guardduty_delete_threat_intel_set
 
+#' Returns a list of malware scans
+#'
+#' @description
+#' Returns a list of malware scans.
+#'
+#' See [https://paws-r.github.io/docs/guardduty/describe_malware_scans.html](https://paws-r.github.io/docs/guardduty/describe_malware_scans.html) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector that the request is associated with.
+#' @param NextToken You can use this parameter when paginating results. Set the value of
+#' this parameter to null on your first call to the list action. For
+#' subsequent calls to the action, fill nextToken in the request with the
+#' value of NextToken from the previous response to continue listing data.
+#' @param MaxResults You can use this parameter to indicate the maximum number of items that
+#' you want in the response. The default value is 50. The maximum value is
+#' 50.
+#' @param FilterCriteria Represents the criteria to be used in the filter for describing scan
+#' entries.
+#' @param SortCriteria Represents the criteria used for sorting scan entries.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_describe_malware_scans
+guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxResults = NULL, FilterCriteria = NULL, SortCriteria = NULL) {
+  op <- new_operation(
+    name = "DescribeMalwareScans",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/malware-scans",
+    paginator = list()
+  )
+  input <- .guardduty$describe_malware_scans_input(DetectorId = DetectorId, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
+  output <- .guardduty$describe_malware_scans_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$describe_malware_scans <- guardduty_describe_malware_scans
+
 #' Returns information about the account selected as the delegated
 #' administrator for GuardDuty
 #'
 #' @description
-#' Returns information about the account selected as the delegated
-#' administrator for GuardDuty.
+#' Returns information about the account selected as the delegated administrator for GuardDuty.
 #'
-#' @usage
-#' guardduty_describe_organization_configuration(DetectorId)
+#' See [https://paws-r.github.io/docs/guardduty/describe_organization_configuration.html](https://paws-r.github.io/docs/guardduty/describe_organization_configuration.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector to retrieve information about the delegated
 #' administrator from.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AutoEnable = TRUE|FALSE,
-#'   MemberAccountLimitReached = TRUE|FALSE,
-#'   DataSources = list(
-#'     S3Logs = list(
-#'       AutoEnable = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_organization_configuration(
-#'   DetectorId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1126,38 +804,13 @@ guardduty_describe_organization_configuration <- function(DetectorId) {
 #' provided destinationId
 #'
 #' @description
-#' Returns information about the publishing destination specified by the
-#' provided `destinationId`.
+#' Returns information about the publishing destination specified by the provided `destinationId`.
 #'
-#' @usage
-#' guardduty_describe_publishing_destination(DetectorId, DestinationId)
+#' See [https://paws-r.github.io/docs/guardduty/describe_publishing_destination.html](https://paws-r.github.io/docs/guardduty/describe_publishing_destination.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the publishing destination
 #' to retrieve.
 #' @param DestinationId &#91;required&#93; The ID of the publishing destination to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DestinationId = "string",
-#'   DestinationType = "S3",
-#'   Status = "PENDING_VERIFICATION"|"PUBLISHING"|"UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY"|"STOPPED",
-#'   PublishingFailureStartTimestamp = 123,
-#'   DestinationProperties = list(
-#'     DestinationArn = "string",
-#'     KmsKeyArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_publishing_destination(
-#'   DetectorId = "string",
-#'   DestinationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1179,28 +832,16 @@ guardduty_describe_publishing_destination <- function(DetectorId, DestinationId)
 }
 .guardduty$operations$describe_publishing_destination <- guardduty_describe_publishing_destination
 
-#' Disables an AWS account within the Organization as the GuardDuty
-#' delegated administrator
+#' Disables an Amazon Web Services account within the Organization as the
+#' GuardDuty delegated administrator
 #'
 #' @description
-#' Disables an AWS account within the Organization as the GuardDuty
-#' delegated administrator.
+#' Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator.
 #'
-#' @usage
-#' guardduty_disable_organization_admin_account(AdminAccountId)
+#' See [https://paws-r.github.io/docs/guardduty/disable_organization_admin_account.html](https://paws-r.github.io/docs/guardduty/disable_organization_admin_account.html) for full documentation.
 #'
-#' @param AdminAccountId &#91;required&#93; The AWS Account ID for the organizations account to be disabled as a
-#' GuardDuty delegated administrator.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disable_organization_admin_account(
-#'   AdminAccountId = "string"
-#' )
-#' ```
+#' @param AdminAccountId &#91;required&#93; The Amazon Web Services Account ID for the organizations account to be
+#' disabled as a GuardDuty delegated administrator.
 #'
 #' @keywords internal
 #'
@@ -1226,23 +867,41 @@ guardduty_disable_organization_admin_account <- function(AdminAccountId) {
 #' administrator account
 #'
 #' @description
-#' Disassociates the current GuardDuty member account from its
-#' administrator account.
+#' Disassociates the current GuardDuty member account from its administrator account.
 #'
-#' @usage
-#' guardduty_disassociate_from_master_account(DetectorId)
+#' See [https://paws-r.github.io/docs/guardduty/disassociate_from_administrator_account.html](https://paws-r.github.io/docs/guardduty/disassociate_from_administrator_account.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
 #'
-#' @return
-#' An empty list.
+#' @keywords internal
 #'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_from_master_account(
-#'   DetectorId = "string"
-#' )
-#' ```
+#' @rdname guardduty_disassociate_from_administrator_account
+guardduty_disassociate_from_administrator_account <- function(DetectorId) {
+  op <- new_operation(
+    name = "DisassociateFromAdministratorAccount",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/administrator/disassociate",
+    paginator = list()
+  )
+  input <- .guardduty$disassociate_from_administrator_account_input(DetectorId = DetectorId)
+  output <- .guardduty$disassociate_from_administrator_account_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$disassociate_from_administrator_account <- guardduty_disassociate_from_administrator_account
+
+#' Disassociates the current GuardDuty member account from its
+#' administrator account
+#'
+#' @description
+#' Disassociates the current GuardDuty member account from its administrator account.
+#'
+#' See [https://paws-r.github.io/docs/guardduty/disassociate_from_master_account.html](https://paws-r.github.io/docs/guardduty/disassociate_from_master_account.html) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
 #'
 #' @keywords internal
 #'
@@ -1268,39 +927,14 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
 #' administrator account) specified by the account IDs
 #'
 #' @description
-#' Disassociates GuardDuty member accounts (to the current GuardDuty
-#' administrator account) specified by the account IDs.
+#' Disassociates GuardDuty member accounts (to the current GuardDuty administrator account) specified by the account IDs.
 #'
-#' @usage
-#' guardduty_disassociate_members(DetectorId, AccountIds)
+#' See [https://paws-r.github.io/docs/guardduty/disassociate_members.html](https://paws-r.github.io/docs/guardduty/disassociate_members.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account whose members you
 #' want to disassociate from the administrator account.
 #' @param AccountIds &#91;required&#93; A list of account IDs of the GuardDuty member accounts that you want to
 #' disassociate from the administrator account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UnprocessedAccounts = list(
-#'     list(
-#'       AccountId = "string",
-#'       Result = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_members(
-#'   DetectorId = "string",
-#'   AccountIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1322,28 +956,16 @@ guardduty_disassociate_members <- function(DetectorId, AccountIds) {
 }
 .guardduty$operations$disassociate_members <- guardduty_disassociate_members
 
-#' Enables an AWS account within the organization as the GuardDuty
-#' delegated administrator
+#' Enables an Amazon Web Services account within the organization as the
+#' GuardDuty delegated administrator
 #'
 #' @description
-#' Enables an AWS account within the organization as the GuardDuty
-#' delegated administrator.
+#' Enables an Amazon Web Services account within the organization as the GuardDuty delegated administrator.
 #'
-#' @usage
-#' guardduty_enable_organization_admin_account(AdminAccountId)
+#' See [https://paws-r.github.io/docs/guardduty/enable_organization_admin_account.html](https://paws-r.github.io/docs/guardduty/enable_organization_admin_account.html) for full documentation.
 #'
-#' @param AdminAccountId &#91;required&#93; The AWS Account ID for the organization account to be enabled as a
-#' GuardDuty delegated administrator.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$enable_organization_admin_account(
-#'   AdminAccountId = "string"
-#' )
-#' ```
+#' @param AdminAccountId &#91;required&#93; The Amazon Web Services Account ID for the organization account to be
+#' enabled as a GuardDuty delegated administrator.
 #'
 #' @keywords internal
 #'
@@ -1365,51 +987,44 @@ guardduty_enable_organization_admin_account <- function(AdminAccountId) {
 }
 .guardduty$operations$enable_organization_admin_account <- guardduty_enable_organization_admin_account
 
+#' Provides the details for the GuardDuty administrator account associated
+#' with the current GuardDuty member account
+#'
+#' @description
+#' Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account.
+#'
+#' See [https://paws-r.github.io/docs/guardduty/get_administrator_account.html](https://paws-r.github.io/docs/guardduty/get_administrator_account.html) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_administrator_account
+guardduty_get_administrator_account <- function(DetectorId) {
+  op <- new_operation(
+    name = "GetAdministratorAccount",
+    http_method = "GET",
+    http_path = "/detector/{detectorId}/administrator",
+    paginator = list()
+  )
+  input <- .guardduty$get_administrator_account_input(DetectorId = DetectorId)
+  output <- .guardduty$get_administrator_account_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_administrator_account <- guardduty_get_administrator_account
+
 #' Retrieves an Amazon GuardDuty detector specified by the detectorId
 #'
 #' @description
 #' Retrieves an Amazon GuardDuty detector specified by the detectorId.
 #'
-#' @usage
-#' guardduty_get_detector(DetectorId)
+#' See [https://paws-r.github.io/docs/guardduty/get_detector.html](https://paws-r.github.io/docs/guardduty/get_detector.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that you want to get.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CreatedAt = "string",
-#'   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
-#'   ServiceRole = "string",
-#'   Status = "ENABLED"|"DISABLED",
-#'   UpdatedAt = "string",
-#'   DataSources = list(
-#'     CloudTrail = list(
-#'       Status = "ENABLED"|"DISABLED"
-#'     ),
-#'     DNSLogs = list(
-#'       Status = "ENABLED"|"DISABLED"
-#'     ),
-#'     FlowLogs = list(
-#'       Status = "ENABLED"|"DISABLED"
-#'     ),
-#'     S3Logs = list(
-#'       Status = "ENABLED"|"DISABLED"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_detector(
-#'   DetectorId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1436,59 +1051,10 @@ guardduty_get_detector <- function(DetectorId) {
 #' @description
 #' Returns the details of the filter specified by the filter name.
 #'
-#' @usage
-#' guardduty_get_filter(DetectorId, FilterName)
+#' See [https://paws-r.github.io/docs/guardduty/get_filter.html](https://paws-r.github.io/docs/guardduty/get_filter.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the filter is associated with.
 #' @param FilterName &#91;required&#93; The name of the filter you want to get.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string",
-#'   Description = "string",
-#'   Action = "NOOP"|"ARCHIVE",
-#'   Rank = 123,
-#'   FindingCriteria = list(
-#'     Criterion = list(
-#'       list(
-#'         Eq = list(
-#'           "string"
-#'         ),
-#'         Neq = list(
-#'           "string"
-#'         ),
-#'         Gt = 123,
-#'         Gte = 123,
-#'         Lt = 123,
-#'         Lte = 123,
-#'         Equals = list(
-#'           "string"
-#'         ),
-#'         NotEquals = list(
-#'           "string"
-#'         ),
-#'         GreaterThan = 123,
-#'         GreaterThanOrEqual = 123,
-#'         LessThan = 123,
-#'         LessThanOrEqual = 123
-#'       )
-#'     )
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_filter(
-#'   DetectorId = "string",
-#'   FilterName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1515,290 +1081,12 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #' @description
 #' Describes Amazon GuardDuty findings specified by finding IDs.
 #'
-#' @usage
-#' guardduty_get_findings(DetectorId, FindingIds, SortCriteria)
+#' See [https://paws-r.github.io/docs/guardduty/get_findings.html](https://paws-r.github.io/docs/guardduty/get_findings.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose
 #' findings you want to retrieve.
 #' @param FindingIds &#91;required&#93; The IDs of the findings that you want to retrieve.
 #' @param SortCriteria Represents the criteria used for sorting findings.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Findings = list(
-#'     list(
-#'       AccountId = "string",
-#'       Arn = "string",
-#'       Confidence = 123.0,
-#'       CreatedAt = "string",
-#'       Description = "string",
-#'       Id = "string",
-#'       Partition = "string",
-#'       Region = "string",
-#'       Resource = list(
-#'         AccessKeyDetails = list(
-#'           AccessKeyId = "string",
-#'           PrincipalId = "string",
-#'           UserName = "string",
-#'           UserType = "string"
-#'         ),
-#'         S3BucketDetails = list(
-#'           list(
-#'             Arn = "string",
-#'             Name = "string",
-#'             Type = "string",
-#'             CreatedAt = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             Owner = list(
-#'               Id = "string"
-#'             ),
-#'             Tags = list(
-#'               list(
-#'                 Key = "string",
-#'                 Value = "string"
-#'               )
-#'             ),
-#'             DefaultServerSideEncryption = list(
-#'               EncryptionType = "string",
-#'               KmsMasterKeyArn = "string"
-#'             ),
-#'             PublicAccess = list(
-#'               PermissionConfiguration = list(
-#'                 BucketLevelPermissions = list(
-#'                   AccessControlList = list(
-#'                     AllowsPublicReadAccess = TRUE|FALSE,
-#'                     AllowsPublicWriteAccess = TRUE|FALSE
-#'                   ),
-#'                   BucketPolicy = list(
-#'                     AllowsPublicReadAccess = TRUE|FALSE,
-#'                     AllowsPublicWriteAccess = TRUE|FALSE
-#'                   ),
-#'                   BlockPublicAccess = list(
-#'                     IgnorePublicAcls = TRUE|FALSE,
-#'                     RestrictPublicBuckets = TRUE|FALSE,
-#'                     BlockPublicAcls = TRUE|FALSE,
-#'                     BlockPublicPolicy = TRUE|FALSE
-#'                   )
-#'                 ),
-#'                 AccountLevelPermissions = list(
-#'                   BlockPublicAccess = list(
-#'                     IgnorePublicAcls = TRUE|FALSE,
-#'                     RestrictPublicBuckets = TRUE|FALSE,
-#'                     BlockPublicAcls = TRUE|FALSE,
-#'                     BlockPublicPolicy = TRUE|FALSE
-#'                   )
-#'                 )
-#'               ),
-#'               EffectivePermission = "string"
-#'             )
-#'           )
-#'         ),
-#'         InstanceDetails = list(
-#'           AvailabilityZone = "string",
-#'           IamInstanceProfile = list(
-#'             Arn = "string",
-#'             Id = "string"
-#'           ),
-#'           ImageDescription = "string",
-#'           ImageId = "string",
-#'           InstanceId = "string",
-#'           InstanceState = "string",
-#'           InstanceType = "string",
-#'           OutpostArn = "string",
-#'           LaunchTime = "string",
-#'           NetworkInterfaces = list(
-#'             list(
-#'               Ipv6Addresses = list(
-#'                 "string"
-#'               ),
-#'               NetworkInterfaceId = "string",
-#'               PrivateDnsName = "string",
-#'               PrivateIpAddress = "string",
-#'               PrivateIpAddresses = list(
-#'                 list(
-#'                   PrivateDnsName = "string",
-#'                   PrivateIpAddress = "string"
-#'                 )
-#'               ),
-#'               PublicDnsName = "string",
-#'               PublicIp = "string",
-#'               SecurityGroups = list(
-#'                 list(
-#'                   GroupId = "string",
-#'                   GroupName = "string"
-#'                 )
-#'               ),
-#'               SubnetId = "string",
-#'               VpcId = "string"
-#'             )
-#'           ),
-#'           Platform = "string",
-#'           ProductCodes = list(
-#'             list(
-#'               Code = "string",
-#'               ProductType = "string"
-#'             )
-#'           ),
-#'           Tags = list(
-#'             list(
-#'               Key = "string",
-#'               Value = "string"
-#'             )
-#'           )
-#'         ),
-#'         ResourceType = "string"
-#'       ),
-#'       SchemaVersion = "string",
-#'       Service = list(
-#'         Action = list(
-#'           ActionType = "string",
-#'           AwsApiCallAction = list(
-#'             Api = "string",
-#'             CallerType = "string",
-#'             DomainDetails = list(
-#'               Domain = "string"
-#'             ),
-#'             ErrorCode = "string",
-#'             RemoteIpDetails = list(
-#'               City = list(
-#'                 CityName = "string"
-#'               ),
-#'               Country = list(
-#'                 CountryCode = "string",
-#'                 CountryName = "string"
-#'               ),
-#'               GeoLocation = list(
-#'                 Lat = 123.0,
-#'                 Lon = 123.0
-#'               ),
-#'               IpAddressV4 = "string",
-#'               Organization = list(
-#'                 Asn = "string",
-#'                 AsnOrg = "string",
-#'                 Isp = "string",
-#'                 Org = "string"
-#'               )
-#'             ),
-#'             ServiceName = "string"
-#'           ),
-#'           DnsRequestAction = list(
-#'             Domain = "string"
-#'           ),
-#'           NetworkConnectionAction = list(
-#'             Blocked = TRUE|FALSE,
-#'             ConnectionDirection = "string",
-#'             LocalPortDetails = list(
-#'               Port = 123,
-#'               PortName = "string"
-#'             ),
-#'             Protocol = "string",
-#'             LocalIpDetails = list(
-#'               IpAddressV4 = "string"
-#'             ),
-#'             RemoteIpDetails = list(
-#'               City = list(
-#'                 CityName = "string"
-#'               ),
-#'               Country = list(
-#'                 CountryCode = "string",
-#'                 CountryName = "string"
-#'               ),
-#'               GeoLocation = list(
-#'                 Lat = 123.0,
-#'                 Lon = 123.0
-#'               ),
-#'               IpAddressV4 = "string",
-#'               Organization = list(
-#'                 Asn = "string",
-#'                 AsnOrg = "string",
-#'                 Isp = "string",
-#'                 Org = "string"
-#'               )
-#'             ),
-#'             RemotePortDetails = list(
-#'               Port = 123,
-#'               PortName = "string"
-#'             )
-#'           ),
-#'           PortProbeAction = list(
-#'             Blocked = TRUE|FALSE,
-#'             PortProbeDetails = list(
-#'               list(
-#'                 LocalPortDetails = list(
-#'                   Port = 123,
-#'                   PortName = "string"
-#'                 ),
-#'                 LocalIpDetails = list(
-#'                   IpAddressV4 = "string"
-#'                 ),
-#'                 RemoteIpDetails = list(
-#'                   City = list(
-#'                     CityName = "string"
-#'                   ),
-#'                   Country = list(
-#'                     CountryCode = "string",
-#'                     CountryName = "string"
-#'                   ),
-#'                   GeoLocation = list(
-#'                     Lat = 123.0,
-#'                     Lon = 123.0
-#'                   ),
-#'                   IpAddressV4 = "string",
-#'                   Organization = list(
-#'                     Asn = "string",
-#'                     AsnOrg = "string",
-#'                     Isp = "string",
-#'                     Org = "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         Evidence = list(
-#'           ThreatIntelligenceDetails = list(
-#'             list(
-#'               ThreatListName = "string",
-#'               ThreatNames = list(
-#'                 "string"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         Archived = TRUE|FALSE,
-#'         Count = 123,
-#'         DetectorId = "string",
-#'         EventFirstSeen = "string",
-#'         EventLastSeen = "string",
-#'         ResourceRole = "string",
-#'         ServiceName = "string",
-#'         UserFeedback = "string"
-#'       ),
-#'       Severity = 123.0,
-#'       Title = "string",
-#'       Type = "string",
-#'       UpdatedAt = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_findings(
-#'   DetectorId = "string",
-#'   FindingIds = list(
-#'     "string"
-#'   ),
-#'   SortCriteria = list(
-#'     AttributeName = "string",
-#'     OrderBy = "ASC"|"DESC"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1823,65 +1111,14 @@ guardduty_get_findings <- function(DetectorId, FindingIds, SortCriteria = NULL) 
 #' Lists Amazon GuardDuty findings statistics for the specified detector ID
 #'
 #' @description
-#' Lists Amazon GuardDuty findings statistics for the specified detector
-#' ID.
+#' Lists Amazon GuardDuty findings statistics for the specified detector ID.
 #'
-#' @usage
-#' guardduty_get_findings_statistics(DetectorId, FindingStatisticTypes,
-#'   FindingCriteria)
+#' See [https://paws-r.github.io/docs/guardduty/get_findings_statistics.html](https://paws-r.github.io/docs/guardduty/get_findings_statistics.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose
 #' findings' statistics you want to retrieve.
 #' @param FindingStatisticTypes &#91;required&#93; The types of finding statistics to retrieve.
 #' @param FindingCriteria Represents the criteria that is used for querying findings.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FindingStatistics = list(
-#'     CountBySeverity = list(
-#'       123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_findings_statistics(
-#'   DetectorId = "string",
-#'   FindingStatisticTypes = list(
-#'     "COUNT_BY_SEVERITY"
-#'   ),
-#'   FindingCriteria = list(
-#'     Criterion = list(
-#'       list(
-#'         Eq = list(
-#'           "string"
-#'         ),
-#'         Neq = list(
-#'           "string"
-#'         ),
-#'         Gt = 123,
-#'         Gte = 123,
-#'         Lt = 123,
-#'         Lte = 123,
-#'         Equals = list(
-#'           "string"
-#'         ),
-#'         NotEquals = list(
-#'           "string"
-#'         ),
-#'         GreaterThan = 123,
-#'         GreaterThanOrEqual = 123,
-#'         LessThan = 123,
-#'         LessThanOrEqual = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1908,33 +1145,10 @@ guardduty_get_findings_statistics <- function(DetectorId, FindingStatisticTypes,
 #' @description
 #' Retrieves the IPSet specified by the `ipSetId`.
 #'
-#' @usage
-#' guardduty_get_ip_set(DetectorId, IpSetId)
+#' See [https://paws-r.github.io/docs/guardduty/get_ip_set.html](https://paws-r.github.io/docs/guardduty/get_ip_set.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the IPSet is associated with.
 #' @param IpSetId &#91;required&#93; The unique ID of the IPSet to retrieve.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string",
-#'   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
-#'   Location = "string",
-#'   Status = "INACTIVE"|"ACTIVATING"|"ACTIVE"|"DEACTIVATING"|"ERROR"|"DELETE_PENDING"|"DELETED",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_ip_set(
-#'   DetectorId = "string",
-#'   IpSetId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1960,24 +1174,9 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
 #' to the current member account except the currently accepted invitation
 #'
 #' @description
-#' Returns the count of all GuardDuty membership invitations that were sent
-#' to the current member account except the currently accepted invitation.
+#' Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation.
 #'
-#' @usage
-#' guardduty_get_invitations_count()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InvitationsCount = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_invitations_count()
-#' ```
+#' See [https://paws-r.github.io/docs/guardduty/get_invitations_count.html](https://paws-r.github.io/docs/guardduty/get_invitations_count.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1999,37 +1198,44 @@ guardduty_get_invitations_count <- function() {
 }
 .guardduty$operations$get_invitations_count <- guardduty_get_invitations_count
 
+#' Returns the details of the malware scan settings
+#'
+#' @description
+#' Returns the details of the malware scan settings.
+#'
+#' See [https://paws-r.github.io/docs/guardduty/get_malware_scan_settings.html](https://paws-r.github.io/docs/guardduty/get_malware_scan_settings.html) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector that the scan setting is associated with.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_malware_scan_settings
+guardduty_get_malware_scan_settings <- function(DetectorId) {
+  op <- new_operation(
+    name = "GetMalwareScanSettings",
+    http_method = "GET",
+    http_path = "/detector/{detectorId}/malware-scan-settings",
+    paginator = list()
+  )
+  input <- .guardduty$get_malware_scan_settings_input(DetectorId = DetectorId)
+  output <- .guardduty$get_malware_scan_settings_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_malware_scan_settings <- guardduty_get_malware_scan_settings
+
 #' Provides the details for the GuardDuty administrator account associated
 #' with the current GuardDuty member account
 #'
 #' @description
-#' Provides the details for the GuardDuty administrator account associated
-#' with the current GuardDuty member account.
+#' Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account.
 #'
-#' @usage
-#' guardduty_get_master_account(DetectorId)
+#' See [https://paws-r.github.io/docs/guardduty/get_master_account.html](https://paws-r.github.io/docs/guardduty/get_master_account.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Master = list(
-#'     AccountId = "string",
-#'     InvitationId = "string",
-#'     RelationshipStatus = "string",
-#'     InvitedAt = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_master_account(
-#'   DetectorId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2055,56 +1261,12 @@ guardduty_get_master_account <- function(DetectorId) {
 #' detector
 #'
 #' @description
-#' Describes which data sources are enabled for the member account's
-#' detector.
+#' Describes which data sources are enabled for the member account's detector.
 #'
-#' @usage
-#' guardduty_get_member_detectors(DetectorId, AccountIds)
+#' See [https://paws-r.github.io/docs/guardduty/get_member_detectors.html](https://paws-r.github.io/docs/guardduty/get_member_detectors.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The detector ID for the administrator account.
 #' @param AccountIds &#91;required&#93; The account ID of the member account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MemberDataSourceConfigurations = list(
-#'     list(
-#'       AccountId = "string",
-#'       DataSources = list(
-#'         CloudTrail = list(
-#'           Status = "ENABLED"|"DISABLED"
-#'         ),
-#'         DNSLogs = list(
-#'           Status = "ENABLED"|"DISABLED"
-#'         ),
-#'         FlowLogs = list(
-#'           Status = "ENABLED"|"DISABLED"
-#'         ),
-#'         S3Logs = list(
-#'           Status = "ENABLED"|"DISABLED"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   UnprocessedAccounts = list(
-#'     list(
-#'       AccountId = "string",
-#'       Result = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_member_detectors(
-#'   DetectorId = "string",
-#'   AccountIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2130,50 +1292,14 @@ guardduty_get_member_detectors <- function(DetectorId, AccountIds) {
 #' administrator account) specified by the account IDs
 #'
 #' @description
-#' Retrieves GuardDuty member accounts (of the current GuardDuty
-#' administrator account) specified by the account IDs.
+#' Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by the account IDs.
 #'
-#' @usage
-#' guardduty_get_members(DetectorId, AccountIds)
+#' See [https://paws-r.github.io/docs/guardduty/get_members.html](https://paws-r.github.io/docs/guardduty/get_members.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account whose members you
 #' want to retrieve.
 #' @param AccountIds &#91;required&#93; A list of account IDs of the GuardDuty member accounts that you want to
 #' describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Members = list(
-#'     list(
-#'       AccountId = "string",
-#'       DetectorId = "string",
-#'       MasterId = "string",
-#'       Email = "string",
-#'       RelationshipStatus = "string",
-#'       InvitedAt = "string",
-#'       UpdatedAt = "string"
-#'     )
-#'   ),
-#'   UnprocessedAccounts = list(
-#'     list(
-#'       AccountId = "string",
-#'       Result = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_members(
-#'   DetectorId = "string",
-#'   AccountIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2195,39 +1321,47 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
 }
 .guardduty$operations$get_members <- guardduty_get_members
 
+#' Provides the number of days left for each data source used in the free
+#' trial period
+#'
+#' @description
+#' Provides the number of days left for each data source used in the free trial period.
+#'
+#' See [https://paws-r.github.io/docs/guardduty/get_remaining_free_trial_days.html](https://paws-r.github.io/docs/guardduty/get_remaining_free_trial_days.html) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
+#' @param AccountIds A list of account identifiers of the GuardDuty member account.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_remaining_free_trial_days
+guardduty_get_remaining_free_trial_days <- function(DetectorId, AccountIds = NULL) {
+  op <- new_operation(
+    name = "GetRemainingFreeTrialDays",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/freeTrial/daysRemaining",
+    paginator = list()
+  )
+  input <- .guardduty$get_remaining_free_trial_days_input(DetectorId = DetectorId, AccountIds = AccountIds)
+  output <- .guardduty$get_remaining_free_trial_days_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_remaining_free_trial_days <- guardduty_get_remaining_free_trial_days
+
 #' Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID
 #'
 #' @description
 #' Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID.
 #'
-#' @usage
-#' guardduty_get_threat_intel_set(DetectorId, ThreatIntelSetId)
+#' See [https://paws-r.github.io/docs/guardduty/get_threat_intel_set.html](https://paws-r.github.io/docs/guardduty/get_threat_intel_set.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the threatIntelSet is associated
 #' with.
 #' @param ThreatIntelSetId &#91;required&#93; The unique ID of the threatIntelSet that you want to get.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string",
-#'   Format = "TXT"|"STIX"|"OTX_CSV"|"ALIEN_VAULT"|"PROOF_POINT"|"FIRE_EYE",
-#'   Location = "string",
-#'   Status = "INACTIVE"|"ACTIVATING"|"ACTIVE"|"DEACTIVATING"|"ERROR"|"DELETE_PENDING"|"DELETED",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_threat_intel_set(
-#'   DetectorId = "string",
-#'   ThreatIntelSetId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2253,17 +1387,9 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' specified detector ID
 #'
 #' @description
-#' Lists Amazon GuardDuty usage statistics over the last 30 days for the
-#' specified detector ID. For newly enabled detectors or data sources the
-#' cost returned will include only the usage so far under 30 days, this may
-#' differ from the cost metrics in the console, which projects usage over
-#' 30 days to provide a monthly cost estimate. For more information see
-#' [Understanding How Usage Costs are
-#' Calculated](https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations).
+#' Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID. For newly enabled detectors or data sources, the cost returned will include only the usage so far under 30 days. This may differ from the cost metrics in the console, which project usage over 30 days to provide a monthly cost estimate. For more information, see [Understanding How Usage Costs are Calculated](https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations).
 #'
-#' @usage
-#' guardduty_get_usage_statistics(DetectorId, UsageStatisticType,
-#'   UsageCriteria, Unit, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/guardduty/get_usage_statistics.html](https://paws-r.github.io/docs/guardduty/get_usage_statistics.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose usage
 #' statistics you want to retrieve.
@@ -2276,74 +1402,6 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' Set the value of this parameter to null for the first request to a list
 #' action. For subsequent calls, use the NextToken value returned from the
 #' previous request to continue listing results after the first page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UsageStatistics = list(
-#'     SumByAccount = list(
-#'       list(
-#'         AccountId = "string",
-#'         Total = list(
-#'           Amount = "string",
-#'           Unit = "string"
-#'         )
-#'       )
-#'     ),
-#'     SumByDataSource = list(
-#'       list(
-#'         DataSource = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_LOGS",
-#'         Total = list(
-#'           Amount = "string",
-#'           Unit = "string"
-#'         )
-#'       )
-#'     ),
-#'     SumByResource = list(
-#'       list(
-#'         Resource = "string",
-#'         Total = list(
-#'           Amount = "string",
-#'           Unit = "string"
-#'         )
-#'       )
-#'     ),
-#'     TopResources = list(
-#'       list(
-#'         Resource = "string",
-#'         Total = list(
-#'           Amount = "string",
-#'           Unit = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_usage_statistics(
-#'   DetectorId = "string",
-#'   UsageStatisticType = "SUM_BY_ACCOUNT"|"SUM_BY_DATA_SOURCE"|"SUM_BY_RESOURCE"|"TOP_RESOURCES",
-#'   UsageCriteria = list(
-#'     AccountIds = list(
-#'       "string"
-#'     ),
-#'     DataSources = list(
-#'       "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_LOGS"
-#'     ),
-#'     Resources = list(
-#'       "string"
-#'     )
-#'   ),
-#'   Unit = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2365,20 +1423,16 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
 }
 .guardduty$operations$get_usage_statistics <- guardduty_get_usage_statistics
 
-#' Invites other AWS accounts (created as members of the current AWS
-#' account by CreateMembers) to enable GuardDuty, and allow the current AWS
-#' account to view and manage these accounts' findings on their behalf as
-#' the GuardDuty administrator account
+#' Invites other Amazon Web Services accounts (created as members of the
+#' current Amazon Web Services account by CreateMembers) to enable
+#' GuardDuty, and allow the current Amazon Web Services account to view and
+#' manage these accounts' findings on their behalf as the GuardDuty
+#' administrator account
 #'
 #' @description
-#' Invites other AWS accounts (created as members of the current AWS
-#' account by CreateMembers) to enable GuardDuty, and allow the current AWS
-#' account to view and manage these accounts' findings on their behalf as
-#' the GuardDuty administrator account.
+#' Invites other Amazon Web Services accounts (created as members of the current Amazon Web Services account by CreateMembers) to enable GuardDuty, and allow the current Amazon Web Services account to view and manage these accounts' findings on their behalf as the GuardDuty administrator account.
 #'
-#' @usage
-#' guardduty_invite_members(DetectorId, AccountIds,
-#'   DisableEmailNotification, Message)
+#' See [https://paws-r.github.io/docs/guardduty/invite_members.html](https://paws-r.github.io/docs/guardduty/invite_members.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account that you want to
 #' invite members with.
@@ -2389,31 +1443,6 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
 #' members.
 #' @param Message The invitation message that you want to send to the accounts that you're
 #' inviting to GuardDuty as members.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UnprocessedAccounts = list(
-#'     list(
-#'       AccountId = "string",
-#'       Result = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$invite_members(
-#'   DetectorId = "string",
-#'   AccountIds = list(
-#'     "string"
-#'   ),
-#'   DisableEmailNotification = TRUE|FALSE,
-#'   Message = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2439,11 +1468,9 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
 #' resources
 #'
 #' @description
-#' Lists detectorIds of all the existing Amazon GuardDuty detector
-#' resources.
+#' Lists detectorIds of all the existing Amazon GuardDuty detector resources.
 #'
-#' @usage
-#' guardduty_list_detectors(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/guardduty/list_detectors.html](https://paws-r.github.io/docs/guardduty/list_detectors.html) for full documentation.
 #'
 #' @param MaxResults You can use this parameter to indicate the maximum number of items that
 #' you want in the response. The default value is 50. The maximum value is
@@ -2452,25 +1479,6 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
 #' this parameter to null on your first call to the list action. For
 #' subsequent calls to the action, fill nextToken in the request with the
 #' value of NextToken from the previous response to continue listing data.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DetectorIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_detectors(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2497,8 +1505,7 @@ guardduty_list_detectors <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Returns a paginated list of the current filters.
 #'
-#' @usage
-#' guardduty_list_filters(DetectorId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/guardduty/list_filters.html](https://paws-r.github.io/docs/guardduty/list_filters.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the filter is associated with.
 #' @param MaxResults You can use this parameter to indicate the maximum number of items that
@@ -2508,26 +1515,6 @@ guardduty_list_detectors <- function(MaxResults = NULL, NextToken = NULL) {
 #' this parameter to null on your first call to the list action. For
 #' subsequent calls to the action, fill nextToken in the request with the
 #' value of NextToken from the previous response to continue listing data.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FilterNames = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_filters(
-#'   DetectorId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2554,9 +1541,7 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' @description
 #' Lists Amazon GuardDuty findings for the specified detector ID.
 #'
-#' @usage
-#' guardduty_list_findings(DetectorId, FindingCriteria, SortCriteria,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/guardduty/list_findings.html](https://paws-r.github.io/docs/guardduty/list_findings.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose
 #' findings you want to list.
@@ -2637,8 +1622,6 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' 
 #' -   service.action.networkConnectionAction.protocol
 #' 
-#' -   service.action.networkConnectionAction.remoteIpDetails.city.cityName
-#' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.country.countryName
 #' 
 #' -   service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
@@ -2675,56 +1658,6 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' subsequent calls to the action, fill nextToken in the request with the
 #' value of NextToken from the previous response to continue listing data.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FindingIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_findings(
-#'   DetectorId = "string",
-#'   FindingCriteria = list(
-#'     Criterion = list(
-#'       list(
-#'         Eq = list(
-#'           "string"
-#'         ),
-#'         Neq = list(
-#'           "string"
-#'         ),
-#'         Gt = 123,
-#'         Gte = 123,
-#'         Lt = 123,
-#'         Lte = 123,
-#'         Equals = list(
-#'           "string"
-#'         ),
-#'         NotEquals = list(
-#'           "string"
-#'         ),
-#'         GreaterThan = 123,
-#'         GreaterThanOrEqual = 123,
-#'         LessThan = 123,
-#'         LessThanOrEqual = 123
-#'       )
-#'     )
-#'   ),
-#'   SortCriteria = list(
-#'     AttributeName = "string",
-#'     OrderBy = "ASC"|"DESC"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname guardduty_list_findings
@@ -2748,12 +1681,9 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCrit
 #' Lists the IPSets of the GuardDuty service specified by the detector ID
 #'
 #' @description
-#' Lists the IPSets of the GuardDuty service specified by the detector ID.
-#' If you use this operation from a member account, the IPSets returned are
-#' the IPSets from the associated administrator account.
+#' Lists the IPSets of the GuardDuty service specified by the detector ID. If you use this operation from a member account, the IPSets returned are the IPSets from the associated administrator account.
 #'
-#' @usage
-#' guardduty_list_ip_sets(DetectorId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/guardduty/list_ip_sets.html](https://paws-r.github.io/docs/guardduty/list_ip_sets.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the IPSet is associated with.
 #' @param MaxResults You can use this parameter to indicate the maximum number of items you
@@ -2762,26 +1692,6 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCrit
 #' this parameter to null on your first call to the list action. For
 #' subsequent calls to the action, fill nextToken in the request with the
 #' value of NextToken from the previous response to continue listing data.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   IpSetIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_ip_sets(
-#'   DetectorId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2804,14 +1714,12 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
 .guardduty$operations$list_ip_sets <- guardduty_list_ip_sets
 
 #' Lists all GuardDuty membership invitations that were sent to the current
-#' AWS account
+#' Amazon Web Services account
 #'
 #' @description
-#' Lists all GuardDuty membership invitations that were sent to the current
-#' AWS account.
+#' Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account.
 #'
-#' @usage
-#' guardduty_list_invitations(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/guardduty/list_invitations.html](https://paws-r.github.io/docs/guardduty/list_invitations.html) for full documentation.
 #'
 #' @param MaxResults You can use this parameter to indicate the maximum number of items that
 #' you want in the response. The default value is 50. The maximum value is
@@ -2820,30 +1728,6 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' this parameter to null on your first call to the list action. For
 #' subsequent calls to the action, fill nextToken in the request with the
 #' value of NextToken from the previous response to continue listing data.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Invitations = list(
-#'     list(
-#'       AccountId = "string",
-#'       InvitationId = "string",
-#'       RelationshipStatus = "string",
-#'       InvitedAt = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_invitations(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2869,12 +1753,9 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' administrator account
 #'
 #' @description
-#' Lists details about all member accounts for the current GuardDuty
-#' administrator account.
+#' Lists details about all member accounts for the current GuardDuty administrator account.
 #'
-#' @usage
-#' guardduty_list_members(DetectorId, MaxResults, NextToken,
-#'   OnlyAssociated)
+#' See [https://paws-r.github.io/docs/guardduty/list_members.html](https://paws-r.github.io/docs/guardduty/list_members.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector the member is associated with.
 #' @param MaxResults You can use this parameter to indicate the maximum number of items you
@@ -2886,35 +1767,6 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param OnlyAssociated Specifies whether to only return associated members or to return all
 #' members (including members who haven't been invited yet or have been
 #' disassociated).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Members = list(
-#'     list(
-#'       AccountId = "string",
-#'       DetectorId = "string",
-#'       MasterId = "string",
-#'       Email = "string",
-#'       RelationshipStatus = "string",
-#'       InvitedAt = "string",
-#'       UpdatedAt = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_members(
-#'   DetectorId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string",
-#'   OnlyAssociated = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2941,36 +1793,13 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' @description
 #' Lists the accounts configured as GuardDuty delegated administrators.
 #'
-#' @usage
-#' guardduty_list_organization_admin_accounts(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/guardduty/list_organization_admin_accounts.html](https://paws-r.github.io/docs/guardduty/list_organization_admin_accounts.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return in the response.
 #' @param NextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request to a list
 #' action. For subsequent calls, use the `NextToken` value returned from
 #' the previous request to continue listing results after the first page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AdminAccounts = list(
-#'     list(
-#'       AdminAccountId = "string",
-#'       AdminStatus = "ENABLED"|"DISABLE_IN_PROGRESS"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_organization_admin_accounts(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2993,15 +1822,12 @@ guardduty_list_organization_admin_accounts <- function(MaxResults = NULL, NextTo
 .guardduty$operations$list_organization_admin_accounts <- guardduty_list_organization_admin_accounts
 
 #' Returns a list of publishing destinations associated with the specified
-#' dectectorId
+#' detectorId
 #'
 #' @description
-#' Returns a list of publishing destinations associated with the specified
-#' `dectectorId`.
+#' Returns a list of publishing destinations associated with the specified `detectorId`.
 #'
-#' @usage
-#' guardduty_list_publishing_destinations(DetectorId, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/guardduty/list_publishing_destinations.html](https://paws-r.github.io/docs/guardduty/list_publishing_destinations.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector to retrieve publishing destinations for.
 #' @param MaxResults The maximum number of results to return in the response.
@@ -3009,30 +1835,6 @@ guardduty_list_organization_admin_accounts <- function(MaxResults = NULL, NextTo
 #' Set the value of this parameter to null for the first request to a list
 #' action. For subsequent calls, use the `NextToken` value returned from
 #' the previous request to continue listing results after the first page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Destinations = list(
-#'     list(
-#'       DestinationId = "string",
-#'       DestinationType = "S3",
-#'       Status = "PENDING_VERIFICATION"|"PUBLISHING"|"UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY"|"STOPPED"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_publishing_destinations(
-#'   DetectorId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3057,32 +1859,11 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
 #' Lists tags for a resource
 #'
 #' @description
-#' Lists tags for a resource. Tagging is currently supported for detectors,
-#' finding filters, IP sets, and threat intel sets, with a limit of 50 tags
-#' per resource. When invoked, this operation returns all assigned tags for
-#' a given resource.
+#' Lists tags for a resource. Tagging is currently supported for detectors, finding filters, IP sets, and threat intel sets, with a limit of 50 tags per resource. When invoked, this operation returns all assigned tags for a given resource.
 #'
-#' @usage
-#' guardduty_list_tags_for_resource(ResourceArn)
+#' See [https://paws-r.github.io/docs/guardduty/list_tags_for_resource.html](https://paws-r.github.io/docs/guardduty/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the given GuardDuty resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3108,12 +1889,9 @@ guardduty_list_tags_for_resource <- function(ResourceArn) {
 #' detector ID
 #'
 #' @description
-#' Lists the ThreatIntelSets of the GuardDuty service specified by the
-#' detector ID. If you use this operation from a member account, the
-#' ThreatIntelSets associated with the administrator account are returned.
+#' Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID. If you use this operation from a member account, the ThreatIntelSets associated with the administrator account are returned.
 #'
-#' @usage
-#' guardduty_list_threat_intel_sets(DetectorId, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/guardduty/list_threat_intel_sets.html](https://paws-r.github.io/docs/guardduty/list_threat_intel_sets.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that the threatIntelSet is associated
 #' with.
@@ -3125,26 +1903,6 @@ guardduty_list_tags_for_resource <- function(ResourceArn) {
 #' For subsequent calls to the action, fill nextToken in the request with
 #' the value of NextToken from the previous response to continue listing
 #' data.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ThreatIntelSetIds = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_threat_intel_sets(
-#'   DetectorId = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3169,41 +1927,14 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
 #' Turns on GuardDuty monitoring of the specified member accounts
 #'
 #' @description
-#' Turns on GuardDuty monitoring of the specified member accounts. Use this
-#' operation to restart monitoring of accounts that you stopped monitoring
-#' with the [`stop_monitoring_members`][guardduty_stop_monitoring_members]
-#' operation.
+#' Turns on GuardDuty monitoring of the specified member accounts. Use this operation to restart monitoring of accounts that you stopped monitoring with the [`stop_monitoring_members`][guardduty_stop_monitoring_members] operation.
 #'
-#' @usage
-#' guardduty_start_monitoring_members(DetectorId, AccountIds)
+#' See [https://paws-r.github.io/docs/guardduty/start_monitoring_members.html](https://paws-r.github.io/docs/guardduty/start_monitoring_members.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty administrator account
 #' associated with the member accounts to monitor.
 #' @param AccountIds &#91;required&#93; A list of account IDs of the GuardDuty member accounts to start
 #' monitoring.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UnprocessedAccounts = list(
-#'     list(
-#'       AccountId = "string",
-#'       Result = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_monitoring_members(
-#'   DetectorId = "string",
-#'   AccountIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3228,39 +1959,13 @@ guardduty_start_monitoring_members <- function(DetectorId, AccountIds) {
 #' Stops GuardDuty monitoring for the specified member accounts
 #'
 #' @description
-#' Stops GuardDuty monitoring for the specified member accounts. Use the
-#' [`start_monitoring_members`][guardduty_start_monitoring_members]
-#' operation to restart monitoring for those accounts.
+#' Stops GuardDuty monitoring for the specified member accounts. Use the [`start_monitoring_members`][guardduty_start_monitoring_members] operation to restart monitoring for those accounts.
 #'
-#' @usage
-#' guardduty_stop_monitoring_members(DetectorId, AccountIds)
+#' See [https://paws-r.github.io/docs/guardduty/stop_monitoring_members.html](https://paws-r.github.io/docs/guardduty/stop_monitoring_members.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the GuardDuty
 #' administrator account that is monitoring member accounts.
 #' @param AccountIds &#91;required&#93; A list of account IDs for the member accounts to stop monitoring.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UnprocessedAccounts = list(
-#'     list(
-#'       AccountId = "string",
-#'       Result = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_monitoring_members(
-#'   DetectorId = "string",
-#'   AccountIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3287,25 +1992,11 @@ guardduty_stop_monitoring_members <- function(DetectorId, AccountIds) {
 #' @description
 #' Adds tags to a resource.
 #'
-#' @usage
-#' guardduty_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/guardduty/tag_resource.html](https://paws-r.github.io/docs/guardduty/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the GuardDuty resource to apply a tag
 #' to.
 #' @param Tags &#91;required&#93; The tags to be added to a resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3332,24 +2023,10 @@ guardduty_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Unarchives GuardDuty findings specified by the `findingIds`.
 #'
-#' @usage
-#' guardduty_unarchive_findings(DetectorId, FindingIds)
+#' See [https://paws-r.github.io/docs/guardduty/unarchive_findings.html](https://paws-r.github.io/docs/guardduty/unarchive_findings.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector associated with the findings to unarchive.
 #' @param FindingIds &#91;required&#93; The IDs of the findings to unarchive.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$unarchive_findings(
-#'   DetectorId = "string",
-#'   FindingIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3376,24 +2053,10 @@ guardduty_unarchive_findings <- function(DetectorId, FindingIds) {
 #' @description
 #' Removes tags from a resource.
 #'
-#' @usage
-#' guardduty_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/guardduty/untag_resource.html](https://paws-r.github.io/docs/guardduty/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the resource to remove tags from.
 #' @param TagKeys &#91;required&#93; The tag keys to remove from the resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3420,32 +2083,13 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the Amazon GuardDuty detector specified by the detectorId.
 #'
-#' @usage
-#' guardduty_update_detector(DetectorId, Enable,
-#'   FindingPublishingFrequency, DataSources)
+#' See [https://paws-r.github.io/docs/guardduty/update_detector.html](https://paws-r.github.io/docs/guardduty/update_detector.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector to update.
 #' @param Enable Specifies whether the detector is enabled or not enabled.
 #' @param FindingPublishingFrequency An enum value that specifies how frequently findings are exported, such
 #' as to CloudWatch Events.
 #' @param DataSources Describes which data sources will be updated.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_detector(
-#'   DetectorId = "string",
-#'   Enable = TRUE|FALSE,
-#'   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
-#'   DataSources = list(
-#'     S3Logs = list(
-#'       Enable = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3472,9 +2116,7 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' @description
 #' Updates the filter specified by the filter name.
 #'
-#' @usage
-#' guardduty_update_filter(DetectorId, FilterName, Description, Action,
-#'   Rank, FindingCriteria)
+#' See [https://paws-r.github.io/docs/guardduty/update_filter.html](https://paws-r.github.io/docs/guardduty/update_filter.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector that specifies the GuardDuty service where
 #' you want to update a filter.
@@ -3486,51 +2128,6 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' Also specifies the order in which this filter is applied to the
 #' findings.
 #' @param FindingCriteria Represents the criteria to be used in the filter for querying findings.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Name = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_filter(
-#'   DetectorId = "string",
-#'   FilterName = "string",
-#'   Description = "string",
-#'   Action = "NOOP"|"ARCHIVE",
-#'   Rank = 123,
-#'   FindingCriteria = list(
-#'     Criterion = list(
-#'       list(
-#'         Eq = list(
-#'           "string"
-#'         ),
-#'         Neq = list(
-#'           "string"
-#'         ),
-#'         Gt = 123,
-#'         Gte = 123,
-#'         Lt = 123,
-#'         Lte = 123,
-#'         Equals = list(
-#'           "string"
-#'         ),
-#'         NotEquals = list(
-#'           "string"
-#'         ),
-#'         GreaterThan = 123,
-#'         GreaterThanOrEqual = 123,
-#'         LessThan = 123,
-#'         LessThanOrEqual = 123
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3557,30 +2154,13 @@ guardduty_update_filter <- function(DetectorId, FilterName, Description = NULL, 
 #' @description
 #' Marks the specified GuardDuty findings as useful or not useful.
 #'
-#' @usage
-#' guardduty_update_findings_feedback(DetectorId, FindingIds, Feedback,
-#'   Comments)
+#' See [https://paws-r.github.io/docs/guardduty/update_findings_feedback.html](https://paws-r.github.io/docs/guardduty/update_findings_feedback.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector associated with the findings to update feedback
 #' for.
 #' @param FindingIds &#91;required&#93; The IDs of the findings that you want to mark as useful or not useful.
 #' @param Feedback &#91;required&#93; The feedback for the finding.
 #' @param Comments Additional feedback about the GuardDuty findings.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_findings_feedback(
-#'   DetectorId = "string",
-#'   FindingIds = list(
-#'     "string"
-#'   ),
-#'   Feedback = "USEFUL"|"NOT_USEFUL",
-#'   Comments = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3607,31 +2187,15 @@ guardduty_update_findings_feedback <- function(DetectorId, FindingIds, Feedback,
 #' @description
 #' Updates the IPSet specified by the IPSet ID.
 #'
-#' @usage
-#' guardduty_update_ip_set(DetectorId, IpSetId, Name, Location, Activate)
+#' See [https://paws-r.github.io/docs/guardduty/update_ip_set.html](https://paws-r.github.io/docs/guardduty/update_ip_set.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The detectorID that specifies the GuardDuty service whose IPSet you want
 #' to update.
 #' @param IpSetId &#91;required&#93; The unique ID that specifies the IPSet that you want to update.
 #' @param Name The unique ID that specifies the IPSet that you want to update.
-#' @param Location The updated URI of the file that contains the IPSet. For example:
-#' https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
+#' @param Location The updated URI of the file that contains the IPSet.
 #' @param Activate The updated Boolean value that specifies whether the IPSet is active or
 #' not.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_ip_set(
-#'   DetectorId = "string",
-#'   IpSetId = "string",
-#'   Name = "string",
-#'   Location = "string",
-#'   Activate = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3653,45 +2217,49 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
 }
 .guardduty$operations$update_ip_set <- guardduty_update_ip_set
 
+#' Updates the malware scan settings
+#'
+#' @description
+#' Updates the malware scan settings.
+#'
+#' See [https://paws-r.github.io/docs/guardduty/update_malware_scan_settings.html](https://paws-r.github.io/docs/guardduty/update_malware_scan_settings.html) for full documentation.
+#'
+#' @param DetectorId &#91;required&#93; The unique ID of the detector that specifies the GuardDuty service where
+#' you want to update scan settings.
+#' @param ScanResourceCriteria Represents the criteria to be used in the filter for selecting resources
+#' to scan.
+#' @param EbsSnapshotPreservation An enum value representing possible snapshot preservations.
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_update_malware_scan_settings
+guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCriteria = NULL, EbsSnapshotPreservation = NULL) {
+  op <- new_operation(
+    name = "UpdateMalwareScanSettings",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/malware-scan-settings",
+    paginator = list()
+  )
+  input <- .guardduty$update_malware_scan_settings_input(DetectorId = DetectorId, ScanResourceCriteria = ScanResourceCriteria, EbsSnapshotPreservation = EbsSnapshotPreservation)
+  output <- .guardduty$update_malware_scan_settings_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$update_malware_scan_settings <- guardduty_update_malware_scan_settings
+
 #' Contains information on member accounts to be updated
 #'
 #' @description
 #' Contains information on member accounts to be updated.
 #'
-#' @usage
-#' guardduty_update_member_detectors(DetectorId, AccountIds, DataSources)
+#' See [https://paws-r.github.io/docs/guardduty/update_member_detectors.html](https://paws-r.github.io/docs/guardduty/update_member_detectors.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The detector ID of the administrator account.
 #' @param AccountIds &#91;required&#93; A list of member account IDs to be updated.
 #' @param DataSources Describes which data sources will be updated.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UnprocessedAccounts = list(
-#'     list(
-#'       AccountId = "string",
-#'       Result = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_member_detectors(
-#'   DetectorId = "string",
-#'   AccountIds = list(
-#'     "string"
-#'   ),
-#'   DataSources = list(
-#'     S3Logs = list(
-#'       Enable = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3718,30 +2286,12 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #' @description
 #' Updates the delegated administrator account with the values provided.
 #'
-#' @usage
-#' guardduty_update_organization_configuration(DetectorId, AutoEnable,
-#'   DataSources)
+#' See [https://paws-r.github.io/docs/guardduty/update_organization_configuration.html](https://paws-r.github.io/docs/guardduty/update_organization_configuration.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector to update the delegated administrator for.
 #' @param AutoEnable &#91;required&#93; Indicates whether to automatically enable member accounts in the
 #' organization.
 #' @param DataSources Describes which data sources will be updated.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_organization_configuration(
-#'   DetectorId = "string",
-#'   AutoEnable = TRUE|FALSE,
-#'   DataSources = list(
-#'     S3Logs = list(
-#'       AutoEnable = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3767,33 +2317,15 @@ guardduty_update_organization_configuration <- function(DetectorId, AutoEnable, 
 #' destinationId
 #'
 #' @description
-#' Updates information about the publishing destination specified by the
-#' `destinationId`.
+#' Updates information about the publishing destination specified by the `destinationId`.
 #'
-#' @usage
-#' guardduty_update_publishing_destination(DetectorId, DestinationId,
-#'   DestinationProperties)
+#' See [https://paws-r.github.io/docs/guardduty/update_publishing_destination.html](https://paws-r.github.io/docs/guardduty/update_publishing_destination.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector associated with the publishing destinations to
 #' update.
 #' @param DestinationId &#91;required&#93; The ID of the publishing destination to update.
 #' @param DestinationProperties A `DestinationProperties` object that includes the `DestinationArn` and
 #' `KmsKeyArn` of the publishing destination.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_publishing_destination(
-#'   DetectorId = "string",
-#'   DestinationId = "string",
-#'   DestinationProperties = list(
-#'     DestinationArn = "string",
-#'     KmsKeyArn = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3820,9 +2352,7 @@ guardduty_update_publishing_destination <- function(DetectorId, DestinationId, D
 #' @description
 #' Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
 #'
-#' @usage
-#' guardduty_update_threat_intel_set(DetectorId, ThreatIntelSetId, Name,
-#'   Location, Activate)
+#' See [https://paws-r.github.io/docs/guardduty/update_threat_intel_set.html](https://paws-r.github.io/docs/guardduty/update_threat_intel_set.html) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The detectorID that specifies the GuardDuty service whose ThreatIntelSet
 #' you want to update.
@@ -3831,20 +2361,6 @@ guardduty_update_publishing_destination <- function(DetectorId, DestinationId, D
 #' @param Location The updated URI of the file that contains the ThreateIntelSet.
 #' @param Activate The updated Boolean value that specifies whether the ThreateIntelSet is
 #' active or not.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_threat_intel_set(
-#'   DetectorId = "string",
-#'   ThreatIntelSetId = "string",
-#'   Name = "string",
-#'   Location = "string",
-#'   Activate = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

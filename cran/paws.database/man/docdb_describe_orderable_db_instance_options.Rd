@@ -4,8 +4,16 @@
 \alias{docdb_describe_orderable_db_instance_options}
 \title{Returns a list of orderable instance options for the specified engine}
 \usage{
-docdb_describe_orderable_db_instance_options(Engine, EngineVersion,
-  DBInstanceClass, LicenseModel, Vpc, Filters, MaxRecords, Marker)
+docdb_describe_orderable_db_instance_options(
+  Engine,
+  EngineVersion = NULL,
+  DBInstanceClass = NULL,
+  LicenseModel = NULL,
+  Vpc = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{Engine}{[required] The name of the engine to retrieve instance options for.}
@@ -37,48 +45,9 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OrderableDBInstanceOptions = list(
-    list(
-      Engine = "string",
-      EngineVersion = "string",
-      DBInstanceClass = "string",
-      LicenseModel = "string",
-      AvailabilityZones = list(
-        list(
-          Name = "string"
-        )
-      ),
-      Vpc = TRUE|FALSE
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
 Returns a list of orderable instance options for the specified engine.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_orderable_db_instance_options(
-  Engine = "string",
-  EngineVersion = "string",
-  DBInstanceClass = "string",
-  LicenseModel = "string",
-  Vpc = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/docdb/describe_orderable_db_instance_options.html} for full documentation.
+}
 \keyword{internal}

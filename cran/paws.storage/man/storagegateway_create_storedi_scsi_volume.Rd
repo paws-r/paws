@@ -4,9 +4,17 @@
 \alias{storagegateway_create_storedi_scsi_volume}
 \title{Creates a volume on a specified gateway}
 \usage{
-storagegateway_create_storedi_scsi_volume(GatewayARN, DiskId,
-  SnapshotId, PreserveExistingData, TargetName, NetworkInterfaceId,
-  KMSEncrypted, KMSKey, Tags)
+storagegateway_create_storedi_scsi_volume(
+  GatewayARN,
+  DiskId,
+  SnapshotId = NULL,
+  PreserveExistingData,
+  TargetName,
+  NetworkInterfaceId,
+  KMSEncrypted = NULL,
+  KMSKey = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -15,14 +23,14 @@ storagegateway_create_storedi_scsi_volume(GatewayARN, DiskId,
 stored volume. Use \code{\link[=storagegateway_list_local_disks]{list_local_disks}}
 to list disk IDs for a gateway.}
 
-\item{SnapshotId}{The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the
-new stored volume. Specify this field if you want to create the iSCSI
-storage volume from a snapshot; otherwise, do not include this field. To
-list snapshots for your account use
+\item{SnapshotId}{The snapshot ID (e.g., "snap-1122aabb") of the snapshot to restore as
+the new stored volume. Specify this field if you want to create the
+iSCSI storage volume from a snapshot; otherwise, do not include this
+field. To list snapshots for your account use
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html}{DescribeSnapshots}
 in the \emph{Amazon Elastic Compute Cloud API Reference}.}
 
-\item{PreserveExistingData}{[required] Set to true \code{true} if you want to preserve the data on the local disk.
+\item{PreserveExistingData}{[required] Set to \code{true} if you want to preserve the data on the local disk.
 Otherwise, set to \code{false} to create an empty volume.
 
 Valid Values: \code{true} | \code{false}}
@@ -43,8 +51,8 @@ to get a list of the network interfaces available on a gateway.
 
 Valid Values: A valid IP address.}
 
-\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own AWS
-KMS key, or \code{false} to use a key managed by Amazon S3. Optional.
+\item{KMSEncrypted}{Set to \code{true} to use Amazon S3 server-side encryption with your own KMS
+key, or \code{false} to use a key managed by Amazon S3. Optional.
 
 Valid Values: \code{true} | \code{false}}
 
@@ -61,61 +69,9 @@ representable in UTF-8 format, and the following special characters: + -
 = . _ : / @. The maximum length of a tag's key is 128 characters, and
 the maximum length for a tag's value is 256.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VolumeARN = "string",
-  VolumeSizeInBytes = 123,
-  TargetARN = "string"
-)
-}
-}
 \description{
-Creates a volume on a specified gateway. This operation is only
-supported in the stored volume gateway type.
+Creates a volume on a specified gateway. This operation is only supported in the stored volume gateway type.
 
-The size of the volume to create is inferred from the disk size. You can
-choose to preserve existing data on the disk, create volume from an
-existing snapshot, or create an empty volume. If you choose to create an
-empty gateway volume, then any existing data on the disk is erased.
-
-In the request, you must specify the gateway and the disk information on
-which you are creating the volume. In response, the gateway creates the
-volume and returns volume information such as the volume Amazon Resource
-Name (ARN), its size, and the iSCSI target ARN that initiators can use
-to connect to the volume target.
-}
-\section{Request syntax}{
-\preformatted{svc$create_storedi_scsi_volume(
-  GatewayARN = "string",
-  DiskId = "string",
-  SnapshotId = "string",
-  PreserveExistingData = TRUE|FALSE,
-  TargetName = "string",
-  NetworkInterfaceId = "string",
-  KMSEncrypted = TRUE|FALSE,
-  KMSKey = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# Creates a stored volume on a specified stored gateway.
-svc$create_storedi_scsi_volume(
-  DiskId = "pci-0000:03:00.0-scsi-0:0:0:0",
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
-  NetworkInterfaceId = "10.1.1.1",
-  PreserveExistingData = TRUE,
-  SnapshotId = "snap-f47b7b94",
-  TargetName = "my-volume"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/create_storedi_scsi_volume.html} for full documentation.
 }
 \keyword{internal}

@@ -4,8 +4,14 @@
 \alias{backup_start_copy_job}
 \title{Starts a job to create a one-time copy of the specified resource}
 \usage{
-backup_start_copy_job(RecoveryPointArn, SourceBackupVaultName,
-  DestinationBackupVaultArn, IamRoleArn, IdempotencyToken, Lifecycle)
+backup_start_copy_job(
+  RecoveryPointArn,
+  SourceBackupVaultName,
+  DestinationBackupVaultArn,
+  IamRoleArn,
+  IdempotencyToken = NULL,
+  Lifecycle = NULL
+)
 }
 \arguments{
 \item{RecoveryPointArn}{[required] An ARN that uniquely identifies a recovery point to use for the copy
@@ -14,8 +20,8 @@ arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108
 
 \item{SourceBackupVaultName}{[required] The name of a logical source container where backups are stored. Backup
 vaults are identified by names that are unique to the account used to
-create them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens.}
+create them and the Amazon Web Services Region where they are created.
+They consist of lowercase letters, numbers, and hyphens.}
 
 \item{DestinationBackupVaultArn}{[required] An Amazon Resource Name (ARN) that uniquely identifies a destination
 backup vault to copy to; for example,
@@ -24,36 +30,16 @@ backup vault to copy to; for example,
 \item{IamRoleArn}{[required] Specifies the IAM role ARN used to copy the target recovery point; for
 example, \verb{arn:aws:iam::123456789012:role/S3Access}.}
 
-\item{IdempotencyToken}{A customer chosen string that can be used to distinguish between calls
-to \code{\link[=backup_start_copy_job]{start_copy_job}}.}
+\item{IdempotencyToken}{A customer-chosen string that you can use to distinguish between
+otherwise identical calls to \code{\link[=backup_start_copy_job]{start_copy_job}}.
+Retrying a successful request with the same idempotency token results in
+a success message with no action taken.}
 
 \item{Lifecycle}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CopyJobId = "string",
-  CreationDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
 Starts a job to create a one-time copy of the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$start_copy_job(
-  RecoveryPointArn = "string",
-  SourceBackupVaultName = "string",
-  DestinationBackupVaultArn = "string",
-  IamRoleArn = "string",
-  IdempotencyToken = "string",
-  Lifecycle = list(
-    MoveToColdStorageAfterDays = 123,
-    DeleteAfterDays = 123
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/backup/start_copy_job.html} for full documentation.
+}
 \keyword{internal}

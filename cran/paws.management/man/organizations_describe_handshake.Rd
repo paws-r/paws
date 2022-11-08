@@ -19,65 +19,9 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for handshake
 ID string requires "h-" followed by from 8 to 32 lowercase letters or
 digits.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Handshake = list(
-    Id = "string",
-    Arn = "string",
-    Parties = list(
-      list(
-        Id = "string",
-        Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
-      )
-    ),
-    State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
-    RequestedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ExpirationTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
-    Resources = list(
-      list(
-        Value = "string",
-        Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
-        Resources = list()
-      )
-    )
-  )
-)
-}
-}
 \description{
-Retrieves information about a previously requested handshake. The
-handshake ID comes from the response to the original
-\code{\link[=organizations_invite_account_to_organization]{invite_account_to_organization}}
-operation that generated the handshake.
+Retrieves information about a previously requested handshake. The handshake ID comes from the response to the original \code{\link[=organizations_invite_account_to_organization]{invite_account_to_organization}} operation that generated the handshake.
 
-You can access handshakes that are \code{ACCEPTED}, \code{DECLINED}, or \code{CANCELED}
-for only 30 days after they change to that state. They're then deleted
-and no longer accessible.
-
-This operation can be called from any account in the organization.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_handshake(
-  HandshakeId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows you how to request details about a
-# handshake. The handshake ID comes either from the original call to
-# "InviteAccountToOrganization", or from a call to
-# "ListHandshakesForAccount" or "ListHandshakesForOrganization":
-svc$describe_handshake(
-  HandshakeId = "h-examplehandshakeid111"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/describe_handshake.html} for full documentation.
 }
 \keyword{internal}

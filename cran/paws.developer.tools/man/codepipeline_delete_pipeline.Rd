@@ -9,17 +9,9 @@ codepipeline_delete_pipeline(name)
 \arguments{
 \item{name}{[required] The name of the pipeline to be deleted.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified pipeline.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_pipeline(
-  name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codepipeline/delete_pipeline.html} for full documentation.
+}
 \keyword{internal}

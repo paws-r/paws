@@ -13,20 +13,9 @@ list the tags. Currently, the supported resources are \code{ConfigRule},
 
 \item{TagKeys}{[required] The keys of the tags to be removed.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes specified tags from a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/configservice/untag_resource.html} for full documentation.
+}
 \keyword{internal}

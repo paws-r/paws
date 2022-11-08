@@ -5,8 +5,11 @@
 \title{Sets an Amazon Simple Notification Service (Amazon SNS) topic to use
 when delivering notifications}
 \usage{
-ses_set_identity_notification_topic(Identity, NotificationType,
-  SnsTopic)
+ses_set_identity_notification_topic(
+  Identity,
+  NotificationType,
+  SnsTopic = NULL
+)
 }
 \arguments{
 \item{Identity}{[required] The identity (email address or domain) that you want to set the Amazon
@@ -26,42 +29,9 @@ SNS topic.}
 is omitted from the request or a null value is passed, \code{SnsTopic} is
 cleared and publishing is disabled.}
 }
-\value{
-An empty list.
-}
 \description{
-Sets an Amazon Simple Notification Service (Amazon SNS) topic to use
-when delivering notifications. When you use this operation, you specify
-a verified identity, such as an email address or domain. When you send
-an email that uses the chosen identity in the Source field, Amazon SES
-sends notifications to the topic you specified. You can send bounce,
-complaint, or delivery notifications (or any combination of the three)
-to the Amazon SNS topic that you specify.
+Sets an Amazon Simple Notification Service (Amazon SNS) topic to use when delivering notifications. When you use this operation, you specify a verified identity, such as an email address or domain. When you send an email that uses the chosen identity in the Source field, Amazon SES sends notifications to the topic you specified. You can send bounce, complaint, or delivery notifications (or any combination of the three) to the Amazon SNS topic that you specify.
 
-You can execute this operation no more than once per second.
-
-For more information about feedback notification, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/}{Amazon SES Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$set_identity_notification_topic(
-  Identity = "string",
-  NotificationType = "Bounce"|"Complaint"|"Delivery",
-  SnsTopic = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example sets the Amazon SNS topic to which Amazon SES will
-# publish bounce, complaint, and/or delivery notifications for emails sent
-# with the specified identity as the Source:
-svc$set_identity_notification_topic(
-  Identity = "user@example.com",
-  NotificationType = "Bounce",
-  SnsTopic = "arn:aws:sns:us-west-2:111122223333:MyTopic"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/set_identity_notification_topic.html} for full documentation.
 }
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{ec2_modify_instance_capacity_reservation_attributes}
 \title{Modifies the Capacity Reservation settings for a stopped instance}
 \usage{
-ec2_modify_instance_capacity_reservation_attributes(InstanceId,
-  CapacityReservationSpecification, DryRun)
+ec2_modify_instance_capacity_reservation_attributes(
+  InstanceId,
+  CapacityReservationSpecification,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance to be modified.}
@@ -17,31 +20,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Modifies the Capacity Reservation settings for a stopped instance. Use
-this action to configure an instance to target a specific Capacity
-Reservation, run in any \code{open} Capacity Reservation with matching
-attributes, or run On-Demand Instance capacity.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_instance_capacity_reservation_attributes(
-  InstanceId = "string",
-  CapacityReservationSpecification = list(
-    CapacityReservationPreference = "open"|"none",
-    CapacityReservationTarget = list(
-      CapacityReservationId = "string",
-      CapacityReservationResourceGroupArn = "string"
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
+Modifies the Capacity Reservation settings for a stopped instance. Use this action to configure an instance to target a specific Capacity Reservation, run in any \code{open} Capacity Reservation with matching attributes, or run On-Demand Instance capacity.
 
+See \url{https://paws-r.github.io/docs/ec2/modify_instance_capacity_reservation_attributes.html} for full documentation.
+}
 \keyword{internal}

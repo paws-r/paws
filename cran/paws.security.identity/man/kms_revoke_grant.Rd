@@ -2,16 +2,17 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_revoke_grant}
 \alias{kms_revoke_grant}
-\title{Revokes the specified grant for the specified customer master key (CMK)}
+\title{Deletes the specified grant}
 \usage{
 kms_revoke_grant(KeyId, GrantId)
 }
 \arguments{
-\item{KeyId}{[required] A unique identifier for the customer master key associated with the
-grant.
+\item{KeyId}{[required] A unique identifier for the KMS key associated with the grant. To get
+the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{list_keys}}
+or \code{\link[=kms_describe_key]{describe_key}}.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To
-specify a CMK in a different AWS account, you must use the key ARN.
+Specify the key ID or key ARN of the KMS key. To specify a KMS key in a
+different Amazon Web Services account, you must use the key ARN.
 
 For example:
 \itemize{
@@ -20,50 +21,16 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use
+To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{GrantId}{[required] Identifier of the grant to be revoked.}
-}
-\value{
-An empty list.
+\item{GrantId}{[required] Identifies the grant to revoke. To get the grant ID, use
+\code{\link[=kms_create_grant]{create_grant}}, \code{\link[=kms_list_grants]{list_grants}}, or
+\code{\link[=kms_list_retirable_grants]{list_retirable_grants}}.}
 }
 \description{
-Revokes the specified grant for the specified customer master key (CMK).
-You can revoke a grant to actively deny operations that depend on it.
+Deletes the specified grant. You revoke a grant to terminate the permissions that the grant allows. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/#grant-delete}{Retiring and revoking grants} in the \emph{Key Management Service Developer Guide} .
 
-\strong{Cross-account use}: Yes. To perform this operation on a CMK in a
-different AWS account, specify the key ARN in the value of the \code{KeyId}
-parameter.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:RevokeGrant}
-(key policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_create_grant]{create_grant}}
-\item \code{\link[=kms_list_grants]{list_grants}}
-\item \code{\link[=kms_list_retirable_grants]{list_retirable_grants}}
-\item \code{\link[=kms_retire_grant]{retire_grant}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$revoke_grant(
-  KeyId = "string",
-  GrantId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example revokes a grant.
-svc$revoke_grant(
-  GrantId = "0c237476b39f8bc44e45212e08498fbe3151305030726c0590dd8d3e9f3d6a60",
-  KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/revoke_grant.html} for full documentation.
 }
 \keyword{internal}

@@ -4,8 +4,14 @@
 \alias{servicecatalog_create_service_action}
 \title{Creates a self-service action}
 \usage{
-servicecatalog_create_service_action(Name, DefinitionType, Definition,
-  Description, AcceptLanguage, IdempotencyToken)
+servicecatalog_create_service_action(
+  Name,
+  DefinitionType,
+  Definition,
+  Description = NULL,
+  AcceptLanguage = NULL,
+  IdempotencyToken
+)
 }
 \arguments{
 \item{Name}{[required] The self-service action name.}
@@ -59,37 +65,9 @@ For example: \verb{[\{\\"Name\\":\\"InstanceId\\",\\"Type\\":\\"TARGET\\"\}]} or
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceActionDetail = list(
-    ServiceActionSummary = list(
-      Id = "string",
-      Name = "string",
-      Description = "string",
-      DefinitionType = "SSM_AUTOMATION"
-    ),
-    Definition = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Creates a self-service action.
-}
-\section{Request syntax}{
-\preformatted{svc$create_service_action(
-  Name = "string",
-  DefinitionType = "SSM_AUTOMATION",
-  Definition = list(
-    "string"
-  ),
-  Description = "string",
-  AcceptLanguage = "string",
-  IdempotencyToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/create_service_action.html} for full documentation.
+}
 \keyword{internal}

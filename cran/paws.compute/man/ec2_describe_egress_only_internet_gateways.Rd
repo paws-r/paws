@@ -4,8 +4,13 @@
 \alias{ec2_describe_egress_only_internet_gateways}
 \title{Describes one or more of your egress-only internet gateways}
 \usage{
-ec2_describe_egress_only_internet_gateways(DryRun,
-  EgressOnlyInternetGatewayIds, MaxResults, NextToken, Filters)
+ec2_describe_egress_only_internet_gateways(
+  DryRun = NULL,
+  EgressOnlyInternetGatewayIds = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -23,60 +28,19 @@ value.}
 
 \item{Filters}{One or more filters.
 \itemize{
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EgressOnlyInternetGateways = list(
-    list(
-      Attachments = list(
-        list(
-          State = "attaching"|"attached"|"detaching"|"detached",
-          VpcId = "string"
-        )
-      ),
-      EgressOnlyInternetGatewayId = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes one or more of your egress-only internet gateways.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_egress_only_internet_gateways(
-  DryRun = TRUE|FALSE,
-  EgressOnlyInternetGatewayIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_egress_only_internet_gateways.html} for full documentation.
+}
 \keyword{internal}

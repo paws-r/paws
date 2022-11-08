@@ -9,26 +9,9 @@ workspaces_restore_workspace(WorkspaceId)
 \arguments{
 \item{WorkspaceId}{[required] The identifier of the WorkSpace.}
 }
-\value{
-An empty list.
-}
 \description{
 Restores the specified WorkSpace to its last known healthy state.
 
-You cannot restore a WorkSpace unless its state is \code{ AVAILABLE},
-\code{ERROR}, \code{UNHEALTHY}, or \code{STOPPED}.
-
-Restoring a WorkSpace is a potentially destructive action that can
-result in the loss of data. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/restore-workspace.html}{Restore a WorkSpace}.
-
-This operation is asynchronous and returns before the WorkSpace is
-completely restored.
+See \url{https://paws-r.github.io/docs/workspaces/restore_workspace.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$restore_workspace(
-  WorkspaceId = "string"
-)
-}
-}
-
 \keyword{internal}

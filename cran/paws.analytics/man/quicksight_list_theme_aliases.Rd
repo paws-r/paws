@@ -4,12 +4,16 @@
 \alias{quicksight_list_theme_aliases}
 \title{Lists all the aliases of a theme}
 \usage{
-quicksight_list_theme_aliases(AwsAccountId, ThemeId, NextToken,
-  MaxResults)
+quicksight_list_theme_aliases(
+  AwsAccountId,
+  ThemeId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme aliases that you're
-listing.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the theme
+aliases that you're listing.}
 
 \item{ThemeId}{[required] The ID for the theme.}
 
@@ -18,32 +22,9 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ThemeAliasList = list(
-    list(
-      Arn = "string",
-      AliasName = "string",
-      ThemeVersionNumber = 123
-    )
-  ),
-  Status = 123,
-  RequestId = "string",
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists all the aliases of a theme.
-}
-\section{Request syntax}{
-\preformatted{svc$list_theme_aliases(
-  AwsAccountId = "string",
-  ThemeId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/list_theme_aliases.html} for full documentation.
+}
 \keyword{internal}

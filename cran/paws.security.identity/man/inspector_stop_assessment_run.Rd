@@ -5,7 +5,7 @@
 \title{Stops the assessment run that is specified by the ARN of the assessment
 run}
 \usage{
-inspector_stop_assessment_run(assessmentRunArn, stopAction)
+inspector_stop_assessment_run(assessmentRunArn, stopAction = NULL)
 }
 \arguments{
 \item{assessmentRunArn}{[required] The ARN of the assessment run that you want to stop.}
@@ -16,29 +16,9 @@ agent from collecting data and begins the results evaluation and the
 findings generation process. SKIP_EVALUATION cancels the assessment run
 immediately, after which no findings are generated.}
 }
-\value{
-An empty list.
-}
 \description{
-Stops the assessment run that is specified by the ARN of the assessment
-run.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_assessment_run(
-  assessmentRunArn = "string",
-  stopAction = "START_EVALUATION"|"SKIP_EVALUATION"
-)
-}
-}
+Stops the assessment run that is specified by the ARN of the assessment run.
 
-\examples{
-\dontrun{
-# Stops the assessment run that is specified by the ARN of the assessment
-# run.
-svc$stop_assessment_run(
-  assessmentRunArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvg..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/stop_assessment_run.html} for full documentation.
 }
 \keyword{internal}

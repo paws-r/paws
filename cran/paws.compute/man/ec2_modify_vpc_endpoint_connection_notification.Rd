@@ -5,8 +5,12 @@
 \title{Modifies a connection notification for VPC endpoint or VPC endpoint
 service}
 \usage{
-ec2_modify_vpc_endpoint_connection_notification(DryRun,
-  ConnectionNotificationId, ConnectionNotificationArn, ConnectionEvents)
+ec2_modify_vpc_endpoint_connection_notification(
+  DryRun = NULL,
+  ConnectionNotificationId,
+  ConnectionNotificationArn = NULL,
+  ConnectionEvents = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -21,27 +25,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{ConnectionEvents}{One or more events for the endpoint. Valid values are \code{Accept},
 \code{Connect}, \code{Delete}, and \code{Reject}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReturnValue = TRUE|FALSE
-)
-}
-}
 \description{
-Modifies a connection notification for VPC endpoint or VPC endpoint
-service. You can change the SNS topic for the notification, or the
-events for which to be notified.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_vpc_endpoint_connection_notification(
-  DryRun = TRUE|FALSE,
-  ConnectionNotificationId = "string",
-  ConnectionNotificationArn = "string",
-  ConnectionEvents = list(
-    "string"
-  )
-)
-}
-}
+Modifies a connection notification for VPC endpoint or VPC endpoint service. You can change the SNS topic for the notification, or the events for which to be notified.
 
+See \url{https://paws-r.github.io/docs/ec2/modify_vpc_endpoint_connection_notification.html} for full documentation.
+}
 \keyword{internal}

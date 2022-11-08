@@ -6,37 +6,9 @@ NULL
 #' Retrieves a list of documents that match the specified search criteria
 #'
 #' @description
-#' Retrieves a list of documents that match the specified search criteria.
-#' How you specify the search criteria depends on which query parser you
-#' use. Amazon CloudSearch supports four query parsers:
-#' 
-#' -   `simple`: search all `text` and `text-array` fields for the
-#'     specified string. Search for phrases, individual terms, and
-#'     prefixes.
-#' -   `structured`: search specific fields, construct compound queries
-#'     using Boolean operators, and use advanced features such as term
-#'     boosting and proximity searching.
-#' -   `lucene`: specify search criteria using the Apache Lucene query
-#'     parser syntax.
-#' -   `dismax`: specify search criteria using the simplified subset of the
-#'     Apache Lucene query parser syntax defined by the DisMax query
-#'     parser.
-#' 
-#' For more information, see [Searching Your
-#' Data](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html)
-#' in the *Amazon CloudSearch Developer Guide*.
-#' 
-#' The endpoint for submitting [`search`][cloudsearchdomain_search]
-#' requests is domain-specific. You submit search requests to a domain's
-#' search endpoint. To get the search endpoint for your domain, use the
-#' Amazon CloudSearch configuration service `DescribeDomains` action. A
-#' domain's endpoints are also displayed on the domain dashboard in the
-#' Amazon CloudSearch console.
+#' Retrieves a list of documents that match the specified search criteria. How you specify the search criteria depends on which query parser you use. Amazon CloudSearch supports four query parsers:
 #'
-#' @usage
-#' cloudsearchdomain_search(cursor, expr, facet, filterQuery, highlight,
-#'   partial, query, queryOptions, queryParser, return, size, sort, start,
-#'   stats)
+#' See [https://paws-r.github.io/docs/cloudsearchdomain/search.html](https://paws-r.github.io/docs/cloudsearchdomain/search.html) for full documentation.
 #'
 #' @param cursor Retrieves a cursor value you can use to page through large result sets.
 #' Use the `size` parameter to control the number of hits to include in
@@ -305,7 +277,7 @@ NULL
 #'     in the *Amazon CloudSearch Developer Guide*.
 #' -   `lucene`: search using the Apache Lucene query parser syntax. For
 #'     more information, see [Apache Lucene Query Parser
-#'     Syntax](http://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description).
+#'     Syntax](https://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description).
 #' -   `dismax`: search using the simplified subset of the Apache Lucene
 #'     query parser syntax defined by the DisMax query parser. For more
 #'     information, see [DisMax Query Parser
@@ -346,80 +318,6 @@ NULL
 #' 
 #' There are currently no options supported for statistics.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   status = list(
-#'     timems = 123,
-#'     rid = "string"
-#'   ),
-#'   hits = list(
-#'     found = 123,
-#'     start = 123,
-#'     cursor = "string",
-#'     hit = list(
-#'       list(
-#'         id = "string",
-#'         fields = list(
-#'           list(
-#'             "string"
-#'           )
-#'         ),
-#'         exprs = list(
-#'           "string"
-#'         ),
-#'         highlights = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   facets = list(
-#'     list(
-#'       buckets = list(
-#'         list(
-#'           value = "string",
-#'           count = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   stats = list(
-#'     list(
-#'       min = "string",
-#'       max = "string",
-#'       count = 123,
-#'       missing = 123,
-#'       sum = 123.0,
-#'       sumOfSquares = 123.0,
-#'       mean = "string",
-#'       stddev = 123.0
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$search(
-#'   cursor = "string",
-#'   expr = "string",
-#'   facet = "string",
-#'   filterQuery = "string",
-#'   highlight = "string",
-#'   partial = TRUE|FALSE,
-#'   query = "string",
-#'   queryOptions = "string",
-#'   queryParser = "simple"|"structured"|"lucene"|"dismax",
-#'   return = "string",
-#'   size = 123,
-#'   sort = "string",
-#'   start = 123,
-#'   stats = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname cloudsearchdomain_search
@@ -443,63 +341,13 @@ cloudsearchdomain_search <- function(cursor = NULL, expr = NULL, facet = NULL, f
 #' Retrieves autocomplete suggestions for a partial query string
 #'
 #' @description
-#' Retrieves autocomplete suggestions for a partial query string. You can
-#' use suggestions enable you to display likely matches before users finish
-#' typing. In Amazon CloudSearch, suggestions are based on the contents of
-#' a particular text field. When you request suggestions, Amazon
-#' CloudSearch finds all of the documents whose values in the suggester
-#' field start with the specified query string. The beginning of the field
-#' must match the query string to be considered a match.
-#' 
-#' For more information about configuring suggesters and retrieving
-#' suggestions, see [Getting
-#' Suggestions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html)
-#' in the *Amazon CloudSearch Developer Guide*.
-#' 
-#' The endpoint for submitting [`suggest`][cloudsearchdomain_suggest]
-#' requests is domain-specific. You submit suggest requests to a domain's
-#' search endpoint. To get the search endpoint for your domain, use the
-#' Amazon CloudSearch configuration service `DescribeDomains` action. A
-#' domain's endpoints are also displayed on the domain dashboard in the
-#' Amazon CloudSearch console.
+#' Retrieves autocomplete suggestions for a partial query string. You can use suggestions enable you to display likely matches before users finish typing. In Amazon CloudSearch, suggestions are based on the contents of a particular text field. When you request suggestions, Amazon CloudSearch finds all of the documents whose values in the suggester field start with the specified query string. The beginning of the field must match the query string to be considered a match.
 #'
-#' @usage
-#' cloudsearchdomain_suggest(query, suggester, size)
+#' See [https://paws-r.github.io/docs/cloudsearchdomain/suggest.html](https://paws-r.github.io/docs/cloudsearchdomain/suggest.html) for full documentation.
 #'
 #' @param query &#91;required&#93; Specifies the string for which you want to get suggestions.
 #' @param suggester &#91;required&#93; Specifies the name of the suggester to use to find suggested matches.
 #' @param size Specifies the maximum number of suggestions to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   status = list(
-#'     timems = 123,
-#'     rid = "string"
-#'   ),
-#'   suggest = list(
-#'     query = "string",
-#'     found = 123,
-#'     suggestions = list(
-#'       list(
-#'         suggestion = "string",
-#'         score = 123,
-#'         id = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$suggest(
-#'   query = "string",
-#'   suggester = "string",
-#'   size = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -524,36 +372,9 @@ cloudsearchdomain_suggest <- function(query, suggester, size = NULL) {
 #' Posts a batch of documents to a search domain for indexing
 #'
 #' @description
-#' Posts a batch of documents to a search domain for indexing. A document
-#' batch is a collection of add and delete operations that represent the
-#' documents you want to add, update, or delete from your domain. Batches
-#' can be described in either JSON or XML. Each item that you want Amazon
-#' CloudSearch to return as a search result (such as a product) is
-#' represented as a document. Every document has a unique ID and one or
-#' more fields that contain the data that you want to search and return in
-#' results. Individual documents cannot contain more than 1 MB of data. The
-#' entire batch cannot exceed 5 MB. To get the best possible upload
-#' performance, group add and delete operations in batches that are close
-#' the 5 MB limit. Submitting a large volume of single-document batches can
-#' overload a domain's document service.
-#' 
-#' The endpoint for submitting
-#' [`upload_documents`][cloudsearchdomain_upload_documents] requests is
-#' domain-specific. To get the document endpoint for your domain, use the
-#' Amazon CloudSearch configuration service `DescribeDomains` action. A
-#' domain's endpoints are also displayed on the domain dashboard in the
-#' Amazon CloudSearch console.
-#' 
-#' For more information about formatting your data for Amazon CloudSearch,
-#' see [Preparing Your
-#' Data](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/preparing-data.html)
-#' in the *Amazon CloudSearch Developer Guide*. For more information about
-#' uploading data for indexing, see [Uploading
-#' Data](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/uploading-data.html)
-#' in the *Amazon CloudSearch Developer Guide*.
+#' Posts a batch of documents to a search domain for indexing. A document batch is a collection of add and delete operations that represent the documents you want to add, update, or delete from your domain. Batches can be described in either JSON or XML. Each item that you want Amazon CloudSearch to return as a search result (such as a product) is represented as a document. Every document has a unique ID and one or more fields that contain the data that you want to search and return in results. Individual documents cannot contain more than 1 MB of data. The entire batch cannot exceed 5 MB. To get the best possible upload performance, group add and delete operations in batches that are close the 5 MB limit. Submitting a large volume of single-document batches can overload a domain's document service.
 #'
-#' @usage
-#' cloudsearchdomain_upload_documents(documents, contentType)
+#' See [https://paws-r.github.io/docs/cloudsearchdomain/upload_documents.html](https://paws-r.github.io/docs/cloudsearchdomain/upload_documents.html) for full documentation.
 #'
 #' @param documents &#91;required&#93; A batch of documents formatted in JSON or HTML.
 #' @param contentType &#91;required&#93; The format of the batch you are uploading. Amazon CloudSearch supports
@@ -561,29 +382,6 @@ cloudsearchdomain_suggest <- function(query, suggester, size = NULL) {
 #' 
 #' -   application/json
 #' -   application/xml
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   status = "string",
-#'   adds = 123,
-#'   deletes = 123,
-#'   warnings = list(
-#'     list(
-#'       message = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$upload_documents(
-#'   documents = raw,
-#'   contentType = "application/json"|"application/xml"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

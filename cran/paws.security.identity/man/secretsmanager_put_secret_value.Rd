@@ -2,49 +2,39 @@
 % Please edit documentation in R/secretsmanager_operations.R
 \name{secretsmanager_put_secret_value}
 \alias{secretsmanager_put_secret_value}
-\title{Stores a new encrypted secret value in the specified secret}
+\title{Creates a new version with a new encrypted secret value and attaches it
+to the secret}
 \usage{
-secretsmanager_put_secret_value(SecretId, ClientRequestToken,
-  SecretBinary, SecretString, VersionStages)
+secretsmanager_put_secret_value(
+  SecretId,
+  ClientRequestToken = NULL,
+  SecretBinary = NULL,
+  SecretString = NULL,
+  VersionStages = NULL
+)
 }
 \arguments{
-\item{SecretId}{[required] Specifies the secret to which you want to add a new version. You can
-specify either the Amazon Resource Name (ARN) or the friendly name of
-the secret. The secret must already exist.
+\item{SecretId}{[required] The ARN or name of the secret to add a new version to.
 
-If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too—for example, if you
-don’t include the final hyphen and six random characters that Secrets
-Manager adds at the end of the ARN when you created the secret. A
-partial ARN match can work as long as it uniquely matches only one
-secret. However, if your secret has a name that ends in a hyphen
-followed by six characters (before Secrets Manager adds the hyphen and
-six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you’re
-specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don’t create secret names
-ending with a hyphen followed by six characters.
+For an ARN, we recommend that you specify a complete ARN rather than a
+partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.
 
-If you specify an incomplete ARN without the random suffix, and instead
-provide the 'friendly name', you \emph{must} not include the random suffix.
-If you do include the random suffix added by Secrets Manager, you
-receive either a \emph{ResourceNotFoundException} or an
-\emph{AccessDeniedException} error, depending on your permissions.}
+If the secret doesn't already exist, use
+\code{\link[=secretsmanager_create_secret]{create_secret}} instead.}
 
-\item{ClientRequestToken}{(Optional) Specifies a unique identifier for the new version of the
-secret.
+\item{ClientRequestToken}{A unique identifier for the new version of the secret.
 
-If you use the AWS CLI or one of the AWS SDK to call this operation,
-then you can leave this parameter empty. The CLI or SDK generates a
-random UUID for you and includes that in the request. If you don't use
-the SDK and instead generate a raw HTTP request to the Secrets Manager
-service endpoint, then you must generate a \code{ClientRequestToken} yourself
-for new versions and include that value in the request.
+If you use the Amazon Web Services CLI or one of the Amazon Web Services
+SDKs to call this operation, then you can leave this parameter empty
+because they generate a random UUID for you. If you don't use the SDK
+and instead generate a raw HTTP request to the Secrets Manager service
+endpoint, then you must generate a \code{ClientRequestToken} yourself for new
+versions and include that value in the request.
 
 This value helps ensure idempotency. Secrets Manager uses this value to
 prevent the accidental creation of duplicate versions if there are
-failures and retries during the Lambda rotation function's processing.
-We recommend that you generate a
+failures and retries during the Lambda rotation function processing. We
+recommend that you generate a
 \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
 value to ensure uniqueness within the specified secret.
 \itemize{
@@ -52,170 +42,49 @@ value to ensure uniqueness within the specified secret.
 version of the secret then a new version of the secret is created.
 \item If a version with this value already exists and that version's
 \code{SecretString} or \code{SecretBinary} values are the same as those in the
-request then the request is ignored (the operation is idempotent).
+request then the request is ignored. The operation is idempotent.
 \item If a version with this value already exists and the version of the
 \code{SecretString} and \code{SecretBinary} values are different from those in
-the request then the request fails because you cannot modify an
-existing secret version. You can only create new versions to store
-new secret values.
+the request, then the request fails because you can't modify a
+secret version. You can only create new versions to store new secret
+values.
 }
 
 This value becomes the \code{VersionId} of the new version.}
 
-\item{SecretBinary}{(Optional) Specifies binary data that you want to encrypt and store in
-the new version of the secret. To use this parameter in the command-line
-tools, we recommend that you store your binary data in a file and then
-use the appropriate technique for your tool to pass the contents of the
-file as a parameter. Either \code{SecretBinary} or \code{SecretString} must have a
-value, but not both. They cannot both be empty.
+\item{SecretBinary}{The binary data to encrypt and store in the new version of the secret.
+To use this parameter in the command-line tools, we recommend that you
+store your binary data in a file and then pass the contents of the file
+as a parameter.
 
-This parameter is not accessible if the secret using the Secrets Manager
-console.}
+You must include \code{SecretBinary} or \code{SecretString}, but not both.
 
-\item{SecretString}{(Optional) Specifies text data that you want to encrypt and store in
-this new version of the secret. Either \code{SecretString} or \code{SecretBinary}
-must have a value, but not both. They cannot both be empty.
+You can't access this value from the Secrets Manager console.}
 
-If you create this secret by using the Secrets Manager console then
-Secrets Manager puts the protected secret text in only the
-\code{SecretString} parameter. The Secrets Manager console stores the
-information as a JSON structure of key/value pairs that the default
-Lambda rotation function knows how to parse.
+\item{SecretString}{The text to encrypt and store in the new version of the secret.
 
-For storing multiple values, we recommend that you use a JSON text
-string argument and specify key/value pairs. For information on how to
-format a JSON parameter for the various command line tool environments,
-see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
-in the \emph{AWS CLI User Guide}.
+You must include \code{SecretBinary} or \code{SecretString}, but not both.
 
-For example:
+We recommend you create the secret string as JSON key/value pairs, as
+shown in the example.}
 
-\verb{[\{"username":"bob"\},\{"password":"abc123xyz456"\}]}
+\item{VersionStages}{A list of staging labels to attach to this version of the secret.
+Secrets Manager uses staging labels to track versions of a secret
+through the rotation process.
 
-If your command-line tool or SDK requires quotation marks around the
-parameter, you should use single quotes to avoid confusion with the
-double quotes required in the JSON text.}
+If you specify a staging label that's already associated with a
+different version of the same secret, then Secrets Manager removes the
+label from the other version and attaches it to this version. If you
+specify \code{AWSCURRENT}, and it is already attached to another version,
+then Secrets Manager also moves the staging label \code{AWSPREVIOUS} to the
+version that \code{AWSCURRENT} was removed from.
 
-\item{VersionStages}{(Optional) Specifies a list of staging labels that are attached to this
-version of the secret. These staging labels are used to track the
-versions through the rotation process by the Lambda rotation function.
-
-A staging label must be unique to a single version of the secret. If you
-specify a staging label that's already associated with a different
-version of the same secret then that staging label is automatically
-removed from the other version and attached to this version.
-
-If you do not specify a value for \code{VersionStages} then Secrets Manager
-automatically moves the staging label \code{AWSCURRENT} to this new version.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ARN = "string",
-  Name = "string",
-  VersionId = "string",
-  VersionStages = list(
-    "string"
-  )
-)
-}
+If you don't include \code{VersionStages}, then Secrets Manager automatically
+moves the staging label \code{AWSCURRENT} to this version.}
 }
 \description{
-Stores a new encrypted secret value in the specified secret. To do this,
-the operation creates a new version and attaches it to the secret. The
-version can contain a new \code{SecretString} value or a new \code{SecretBinary}
-value. You can also specify the staging labels that are initially
-attached to the new version.
+Creates a new version with a new encrypted secret value and attaches it to the secret. The version can contain a new \code{SecretString} value or a new \code{SecretBinary} value.
 
-The Secrets Manager console uses only the \code{SecretString} field. To add
-binary data to a secret with the \code{SecretBinary} field you must use the
-AWS CLI or one of the AWS SDKs.
-\itemize{
-\item If this operation creates the first version for the secret then
-Secrets Manager automatically attaches the staging label
-\code{AWSCURRENT} to the new version.
-\item If another version of this secret already exists, then this
-operation does not automatically move any staging labels other than
-those that you explicitly specify in the \code{VersionStages} parameter.
-\item If this operation moves the staging label \code{AWSCURRENT} from another
-version to this version (because you included it in the
-\code{StagingLabels} parameter) then Secrets Manager also automatically
-moves the staging label \code{AWSPREVIOUS} to the version that
-\code{AWSCURRENT} was removed from.
-\item This operation is idempotent. If a version with a \code{VersionId} with
-the same value as the \code{ClientRequestToken} parameter already exists
-and you specify the same secret data, the operation succeeds but
-does nothing. However, if the secret data is different, then the
-operation fails because you cannot modify an existing version; you
-can only create new ones.
-\item If you call an operation to encrypt or decrypt the \code{SecretString} or
-\code{SecretBinary} for a secret in the same account as the calling user
-and that secret doesn't specify a AWS KMS encryption key, Secrets
-Manager uses the account's default AWS managed customer master key
-(CMK) with the alias \code{aws/secretsmanager}. If this key doesn't
-already exist in your account then Secrets Manager creates it for
-you automatically. All users and roles in the same AWS account
-automatically have access to use the default CMK. Note that if an
-Secrets Manager API call results in AWS creating the account's
-AWS-managed CMK, it can result in a one-time significant delay in
-returning the result.
-\item If the secret resides in a different AWS account from the
-credentials calling an API that requires encryption or decryption of
-the secret value then you must create and use a custom AWS KMS CMK
-because you can't access the default CMK for the account using
-credentials from a different AWS account. Store the ARN of the CMK
-in the secret when you create the secret or when you update it by
-including it in the \code{KMSKeyId}. If you call an API that must encrypt
-or decrypt \code{SecretString} or \code{SecretBinary} using credentials from a
-different account then the AWS KMS key policy must grant
-cross-account access to that other account's user or role for both
-the kms:GenerateDataKey and kms:Decrypt operations.
-}
-
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item secretsmanager:PutSecretValue
-\item kms:GenerateDataKey - needed only if you use a customer-managed AWS
-KMS key to encrypt the secret. You do not need this permission to
-use the account's default AWS managed CMK for Secrets Manager.
-}
-
-\strong{Related operations}
-\itemize{
-\item To retrieve the encrypted value you store in the version of a
-secret, use \code{\link[=secretsmanager_get_secret_value]{get_secret_value}}.
-\item To create a secret, use
-\code{\link[=secretsmanager_create_secret]{create_secret}}.
-\item To get the details for a secret, use
-\code{\link[=secretsmanager_describe_secret]{describe_secret}}.
-\item To list the versions attached to a secret, use
-\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$put_secret_value(
-  SecretId = "string",
-  ClientRequestToken = "string",
-  SecretBinary = raw,
-  SecretString = "string",
-  VersionStages = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to create a new version of the secret.
-# Alternatively, you can use the update-secret command.
-svc$put_secret_value(
-  ClientRequestToken = "EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE",
-  SecretId = "MyTestDatabaseSecret",
-  SecretString = "{"username":"david","password":"BnQw!XDWgaEeT9XGTT29"}"
-)
-}
-
+See \url{https://paws-r.github.io/docs/secretsmanager/put_secret_value.html} for full documentation.
 }
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{ec2_delete_volume}
 \title{Deletes the specified EBS volume}
 \usage{
-ec2_delete_volume(VolumeId, DryRun)
+ec2_delete_volume(VolumeId, DryRun = NULL)
 }
 \arguments{
 \item{VolumeId}{[required] The ID of the volume.}
@@ -14,35 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified EBS volume. The volume must be in the \code{available}
-state (not attached to an instance).
+Deletes the specified EBS volume. The volume must be in the \code{available} state (not attached to an instance).
 
-The volume can remain in the \code{deleting} state for several minutes.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html}{Deleting an Amazon EBS volume}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_volume(
-  VolumeId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes an available volume with the volume ID of
-# `vol-049df61146c4d7901`. If the command succeeds, no output is
-# returned.
-svc$delete_volume(
-  VolumeId = "vol-049df61146c4d7901"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_volume.html} for full documentation.
 }
 \keyword{internal}

@@ -5,47 +5,24 @@
 \title{Returns the details of one or more retention configurations}
 \usage{
 configservice_describe_retention_configurations(
-  RetentionConfigurationNames, NextToken)
+  RetentionConfigurationNames = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{RetentionConfigurationNames}{A list of names of retention configurations for which you want details.
-If you do not specify a name, AWS Config returns details for all the
+If you do not specify a name, Config returns details for all the
 retention configurations for that account.
 
-Currently, AWS Config supports only one retention configuration per
-region in your account.}
+Currently, Config supports only one retention configuration per region
+in your account.}
 
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RetentionConfigurations = list(
-    list(
-      Name = "string",
-      RetentionPeriodInDays = 123
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns the details of one or more retention configurations. If the
-retention configuration name is not specified, this action returns the
-details for all the retention configurations for that account.
+Returns the details of one or more retention configurations. If the retention configuration name is not specified, this action returns the details for all the retention configurations for that account.
 
-Currently, AWS Config supports only one retention configuration per
-region in your account.
+See \url{https://paws-r.github.io/docs/configservice/describe_retention_configurations.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_retention_configurations(
-  RetentionConfigurationNames = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

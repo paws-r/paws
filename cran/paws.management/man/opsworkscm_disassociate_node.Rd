@@ -5,7 +5,7 @@
 \title{Disassociates a node from an AWS OpsWorks CM server, and removes the
 node from the server's managed nodes}
 \usage{
-opsworkscm_disassociate_node(ServerName, NodeName, EngineAttributes)
+opsworkscm_disassociate_node(ServerName, NodeName, EngineAttributes = NULL)
 }
 \arguments{
 \item{ServerName}{[required] The name of the server from which to disassociate the node.}
@@ -22,37 +22,9 @@ associated. By default only one organization named \code{default} can
 exist.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NodeAssociationStatusToken = "string"
-)
-}
-}
 \description{
-Disassociates a node from an AWS OpsWorks CM server, and removes the
-node from the server's managed nodes. After a node is disassociated, the
-node key pair is no longer valid for accessing the configuration
-manager's API. For more information about how to associate a node, see
-\code{\link[=opsworkscm_associate_node]{associate_node}}.
+Disassociates a node from an AWS OpsWorks CM server, and removes the node from the server's managed nodes. After a node is disassociated, the node key pair is no longer valid for accessing the configuration manager's API. For more information about how to associate a node, see \code{\link[=opsworkscm_associate_node]{associate_node}}.
 
-A node can can only be disassociated from a server that is in a
-\code{HEALTHY} state. Otherwise, an \code{InvalidStateException} is thrown. A
-\code{ResourceNotFoundException} is thrown when the server does not exist. A
-\code{ValidationException} is raised when parameters of the request are not
-valid.
+See \url{https://paws-r.github.io/docs/opsworkscm/disassociate_node.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disassociate_node(
-  ServerName = "string",
-  NodeName = "string",
-  EngineAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

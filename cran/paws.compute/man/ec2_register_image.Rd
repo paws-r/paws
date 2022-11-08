@@ -4,9 +4,24 @@
 \alias{ec2_register_image}
 \title{Registers an AMI}
 \usage{
-ec2_register_image(ImageLocation, Architecture, BlockDeviceMappings,
-  Description, DryRun, EnaSupport, KernelId, Name, BillingProducts,
-  RamdiskId, RootDeviceName, SriovNetSupport, VirtualizationType)
+ec2_register_image(
+  ImageLocation = NULL,
+  Architecture = NULL,
+  BlockDeviceMappings = NULL,
+  Description = NULL,
+  DryRun = NULL,
+  EnaSupport = NULL,
+  KernelId = NULL,
+  Name,
+  BillingProducts = NULL,
+  RamdiskId = NULL,
+  RootDeviceName = NULL,
+  SriovNetSupport = NULL,
+  VirtualizationType = NULL,
+  BootMode = NULL,
+  TpmSupport = NULL,
+  UefiData = NULL
+)
 }
 \arguments{
 \item{ImageLocation}{The full path to your AMI manifest in Amazon S3 storage. The specified
@@ -20,7 +35,16 @@ in the \emph{Amazon S3 Service Developer Guide}.}
 Default: For Amazon EBS-backed AMIs, \code{i386}. For instance store-backed
 AMIs, the architecture specified in the manifest file.}
 
-\item{BlockDeviceMappings}{The block device mapping entries.}
+\item{BlockDeviceMappings}{The block device mapping entries.
+
+If you specify an Amazon EBS volume using the ID of an Amazon EBS
+snapshot, you can't specify the encryption state of the volume.
+
+If you create an AMI on an Outpost, then all backing snapshots must be
+on the same Outpost or in the Region of that Outpost. AMIs on an Outpost
+that include local snapshots can be used to launch instances on the same
+Outpost only. For more information, \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami}{Amazon EBS local snapshots on Outposts}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{Description}{A description for your AMI.}
 
@@ -44,8 +68,8 @@ brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-),
 single quotes ('), at-signs (@), or underscores(_)}
 
 \item{BillingProducts}{The billing product codes. Your account must be authorized to specify
-billing product codes. Otherwise, you can use the AWS Marketplace to
-bill for the use of an AMI.}
+billing product codes. Otherwise, you can use the Amazon Web Services
+Marketplace to bill for the use of an AMI.}
 
 \item{RamdiskId}{The ID of the RAM disk.}
 
@@ -63,95 +87,25 @@ a PV AMI can make instances launched from the AMI unreachable.}
 \item{VirtualizationType}{The type of virtualization (\code{hvm} | \code{paravirtual}).
 
 Default: \code{paravirtual}}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ImageId = "string"
-)
-}
+
+\item{BootMode}{The boot mode of the AMI. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html}{Boot modes}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+
+\item{TpmSupport}{Set to \code{v2.0} to enable Trusted Platform Module (TPM) support. For more
+information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html}{NitroTPM}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+
+\item{UefiData}{Base64 representation of the non-volatile UEFI variable store. To
+retrieve the UEFI data, use the
+\code{\link[=ec2_get_instance_uefi_data]{get_instance_uefi_data}} command. You can
+inspect and modify the UEFI data by using the \href{https://github.com/awslabs/python-uefivars}{python-uefivars tool} on GitHub. For more
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/uefi-secure-boot.html}{UEFI Secure Boot}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 }
 \description{
-Registers an AMI. When you're creating an AMI, this is the final step
-you must complete before you can launch an instance from the AMI. For
-more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami}{Creating your own AMIs}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Registers an AMI. When you're creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami}{Creating your own AMIs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-For Amazon EBS-backed instances, \code{\link[=ec2_create_image]{create_image}}
-creates and registers the AMI in a single request, so you don't have to
-register the AMI yourself.
-
-You can also use \code{\link[=ec2_register_image]{register_image}} to create an
-Amazon EBS-backed Linux AMI from a snapshot of a root device volume. You
-specify the snapshot using the block device mapping. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot}{Launching a Linux instance from a backup}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-
-If any snapshots have AWS Marketplace product codes, they are copied to
-the new AMI.
-
-Windows and some Linux distributions, such as Red Hat Enterprise Linux
-(RHEL) and SUSE Linux Enterprise Server (SLES), use the EC2 billing
-product code associated with an AMI to verify the subscription status
-for package updates. To create a new AMI for operating systems that
-require a billing product code, instead of registering the AMI, do the
-following to preserve the billing product code association:
-\enumerate{
-\item Launch an instance from an existing AMI with that billing product
-code.
-\item Customize the instance.
-\item Create an AMI from the instance using
-\code{\link[=ec2_create_image]{create_image}}.
+See \url{https://paws-r.github.io/docs/ec2/register_image.html} for full documentation.
 }
-
-If you purchase a Reserved Instance to apply to an On-Demand Instance
-that was launched from an AMI with a billing product code, make sure
-that the Reserved Instance has the matching billing product code. If you
-purchase a Reserved Instance without the matching billing product code,
-the Reserved Instance will not be applied to the On-Demand Instance. For
-information about how to obtain the platform details and billing
-information of an AMI, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html}{Obtaining billing information}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-
-If needed, you can deregister an AMI at any time. Any modifications you
-make to an AMI backed by an instance store volume invalidates its
-registration. If you make changes to an image, deregister the previous
-image and register the new image.
-}
-\section{Request syntax}{
-\preformatted{svc$register_image(
-  ImageLocation = "string",
-  Architecture = "i386"|"x86_64"|"arm64",
-  BlockDeviceMappings = list(
-    list(
-      DeviceName = "string",
-      VirtualName = "string",
-      Ebs = list(
-        DeleteOnTermination = TRUE|FALSE,
-        Iops = 123,
-        SnapshotId = "string",
-        VolumeSize = 123,
-        VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
-        KmsKeyId = "string",
-        Throughput = 123,
-        Encrypted = TRUE|FALSE
-      ),
-      NoDevice = "string"
-    )
-  ),
-  Description = "string",
-  DryRun = TRUE|FALSE,
-  EnaSupport = TRUE|FALSE,
-  KernelId = "string",
-  Name = "string",
-  BillingProducts = list(
-    "string"
-  ),
-  RamdiskId = "string",
-  RootDeviceName = "string",
-  SriovNetSupport = "string",
-  VirtualizationType = "string"
-)
-}
-}
-
 \keyword{internal}

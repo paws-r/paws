@@ -3,15 +3,13 @@
 #' @include dlm_service.R
 NULL
 
-#' Creates a policy to manage the lifecycle of the specified AWS resources
+#' Creates a policy to manage the lifecycle of the specified Amazon Web
+#' Services resources
 #'
 #' @description
-#' Creates a policy to manage the lifecycle of the specified AWS resources.
-#' You can create up to 100 lifecycle policies.
+#' Creates a policy to manage the lifecycle of the specified Amazon Web Services resources. You can create up to 100 lifecycle policies.
 #'
-#' @usage
-#' dlm_create_lifecycle_policy(ExecutionRoleArn, Description, State,
-#'   PolicyDetails, Tags)
+#' See [https://paws-r.github.io/docs/dlm/create_lifecycle_policy.html](https://paws-r.github.io/docs/dlm/create_lifecycle_policy.html) for full documentation.
 #'
 #' @param ExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role used to run the
 #' operations specified by the lifecycle policy.
@@ -20,130 +18,6 @@ NULL
 #' @param State &#91;required&#93; The desired activation state of the lifecycle policy after creation.
 #' @param PolicyDetails &#91;required&#93; The configuration details of the lifecycle policy.
 #' @param Tags The tags to apply to the lifecycle policy during creation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PolicyId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_lifecycle_policy(
-#'   ExecutionRoleArn = "string",
-#'   Description = "string",
-#'   State = "ENABLED"|"DISABLED",
-#'   PolicyDetails = list(
-#'     PolicyType = "EBS_SNAPSHOT_MANAGEMENT"|"IMAGE_MANAGEMENT"|"EVENT_BASED_POLICY",
-#'     ResourceTypes = list(
-#'       "VOLUME"|"INSTANCE"
-#'     ),
-#'     TargetTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     Schedules = list(
-#'       list(
-#'         Name = "string",
-#'         CopyTags = TRUE|FALSE,
-#'         TagsToAdd = list(
-#'           list(
-#'             Key = "string",
-#'             Value = "string"
-#'           )
-#'         ),
-#'         VariableTags = list(
-#'           list(
-#'             Key = "string",
-#'             Value = "string"
-#'           )
-#'         ),
-#'         CreateRule = list(
-#'           Interval = 123,
-#'           IntervalUnit = "HOURS",
-#'           Times = list(
-#'             "string"
-#'           ),
-#'           CronExpression = "string"
-#'         ),
-#'         RetainRule = list(
-#'           Count = 123,
-#'           Interval = 123,
-#'           IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-#'         ),
-#'         FastRestoreRule = list(
-#'           Count = 123,
-#'           Interval = 123,
-#'           IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS",
-#'           AvailabilityZones = list(
-#'             "string"
-#'           )
-#'         ),
-#'         CrossRegionCopyRules = list(
-#'           list(
-#'             TargetRegion = "string",
-#'             Encrypted = TRUE|FALSE,
-#'             CmkArn = "string",
-#'             CopyTags = TRUE|FALSE,
-#'             RetainRule = list(
-#'               Interval = 123,
-#'               IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-#'             )
-#'           )
-#'         ),
-#'         ShareRules = list(
-#'           list(
-#'             TargetAccounts = list(
-#'               "string"
-#'             ),
-#'             UnshareInterval = 123,
-#'             UnshareIntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     Parameters = list(
-#'       ExcludeBootVolume = TRUE|FALSE,
-#'       NoReboot = TRUE|FALSE
-#'     ),
-#'     EventSource = list(
-#'       Type = "MANAGED_CWE",
-#'       Parameters = list(
-#'         EventType = "shareSnapshot",
-#'         SnapshotOwner = list(
-#'           "string"
-#'         ),
-#'         DescriptionRegex = "string"
-#'       )
-#'     ),
-#'     Actions = list(
-#'       list(
-#'         Name = "string",
-#'         CrossRegionCopy = list(
-#'           list(
-#'             Target = "string",
-#'             EncryptionConfiguration = list(
-#'               Encrypted = TRUE|FALSE,
-#'               CmkArn = "string"
-#'             ),
-#'             RetainRule = list(
-#'               Interval = 123,
-#'               IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -169,23 +43,11 @@ dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, Po
 #' operations that the policy specified
 #'
 #' @description
-#' Deletes the specified lifecycle policy and halts the automated
-#' operations that the policy specified.
+#' Deletes the specified lifecycle policy and halts the automated operations that the policy specified.
 #'
-#' @usage
-#' dlm_delete_lifecycle_policy(PolicyId)
+#' See [https://paws-r.github.io/docs/dlm/delete_lifecycle_policy.html](https://paws-r.github.io/docs/dlm/delete_lifecycle_policy.html) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The identifier of the lifecycle policy.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_lifecycle_policy(
-#'   PolicyId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -211,15 +73,9 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
 #' policies
 #'
 #' @description
-#' Gets summary information about all or the specified data lifecycle
-#' policies.
-#' 
-#' To get complete information about a policy, use
-#' [`get_lifecycle_policy`][dlm_get_lifecycle_policy].
+#' Gets summary information about all or the specified data lifecycle policies.
 #'
-#' @usage
-#' dlm_get_lifecycle_policies(PolicyIds, State, ResourceTypes, TargetTags,
-#'   TagsToAdd)
+#' See [https://paws-r.github.io/docs/dlm/get_lifecycle_policies.html](https://paws-r.github.io/docs/dlm/get_lifecycle_policies.html) for full documentation.
 #'
 #' @param PolicyIds The identifiers of the data lifecycle policies.
 #' @param State The activation state.
@@ -231,45 +87,8 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
 #' 
 #' Tags are strings in the format `key=value`.
 #' 
-#' These user-defined tags are added in addition to the AWS-added lifecycle
-#' tags.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Policies = list(
-#'     list(
-#'       PolicyId = "string",
-#'       Description = "string",
-#'       State = "ENABLED"|"DISABLED"|"ERROR",
-#'       Tags = list(
-#'         "string"
-#'       ),
-#'       PolicyType = "EBS_SNAPSHOT_MANAGEMENT"|"IMAGE_MANAGEMENT"|"EVENT_BASED_POLICY"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_lifecycle_policies(
-#'   PolicyIds = list(
-#'     "string"
-#'   ),
-#'   State = "ENABLED"|"DISABLED"|"ERROR",
-#'   ResourceTypes = list(
-#'     "VOLUME"|"INSTANCE"
-#'   ),
-#'   TargetTags = list(
-#'     "string"
-#'   ),
-#'   TagsToAdd = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' These user-defined tags are added in addition to the Amazon Web
+#' Services-added lifecycle tags.
 #'
 #' @keywords internal
 #'
@@ -296,145 +115,9 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #' @description
 #' Gets detailed information about the specified lifecycle policy.
 #'
-#' @usage
-#' dlm_get_lifecycle_policy(PolicyId)
+#' See [https://paws-r.github.io/docs/dlm/get_lifecycle_policy.html](https://paws-r.github.io/docs/dlm/get_lifecycle_policy.html) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The identifier of the lifecycle policy.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Policy = list(
-#'     PolicyId = "string",
-#'     Description = "string",
-#'     State = "ENABLED"|"DISABLED"|"ERROR",
-#'     StatusMessage = "string",
-#'     ExecutionRoleArn = "string",
-#'     DateCreated = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     DateModified = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PolicyDetails = list(
-#'       PolicyType = "EBS_SNAPSHOT_MANAGEMENT"|"IMAGE_MANAGEMENT"|"EVENT_BASED_POLICY",
-#'       ResourceTypes = list(
-#'         "VOLUME"|"INSTANCE"
-#'       ),
-#'       TargetTags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       Schedules = list(
-#'         list(
-#'           Name = "string",
-#'           CopyTags = TRUE|FALSE,
-#'           TagsToAdd = list(
-#'             list(
-#'               Key = "string",
-#'               Value = "string"
-#'             )
-#'           ),
-#'           VariableTags = list(
-#'             list(
-#'               Key = "string",
-#'               Value = "string"
-#'             )
-#'           ),
-#'           CreateRule = list(
-#'             Interval = 123,
-#'             IntervalUnit = "HOURS",
-#'             Times = list(
-#'               "string"
-#'             ),
-#'             CronExpression = "string"
-#'           ),
-#'           RetainRule = list(
-#'             Count = 123,
-#'             Interval = 123,
-#'             IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-#'           ),
-#'           FastRestoreRule = list(
-#'             Count = 123,
-#'             Interval = 123,
-#'             IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS",
-#'             AvailabilityZones = list(
-#'               "string"
-#'             )
-#'           ),
-#'           CrossRegionCopyRules = list(
-#'             list(
-#'               TargetRegion = "string",
-#'               Encrypted = TRUE|FALSE,
-#'               CmkArn = "string",
-#'               CopyTags = TRUE|FALSE,
-#'               RetainRule = list(
-#'                 Interval = 123,
-#'                 IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-#'               )
-#'             )
-#'           ),
-#'           ShareRules = list(
-#'             list(
-#'               TargetAccounts = list(
-#'                 "string"
-#'               ),
-#'               UnshareInterval = 123,
-#'               UnshareIntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Parameters = list(
-#'         ExcludeBootVolume = TRUE|FALSE,
-#'         NoReboot = TRUE|FALSE
-#'       ),
-#'       EventSource = list(
-#'         Type = "MANAGED_CWE",
-#'         Parameters = list(
-#'           EventType = "shareSnapshot",
-#'           SnapshotOwner = list(
-#'             "string"
-#'           ),
-#'           DescriptionRegex = "string"
-#'         )
-#'       ),
-#'       Actions = list(
-#'         list(
-#'           Name = "string",
-#'           CrossRegionCopy = list(
-#'             list(
-#'               Target = "string",
-#'               EncryptionConfiguration = list(
-#'                 Encrypted = TRUE|FALSE,
-#'                 CmkArn = "string"
-#'               ),
-#'               RetainRule = list(
-#'                 Interval = 123,
-#'                 IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     Tags = list(
-#'       "string"
-#'     ),
-#'     PolicyArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_lifecycle_policy(
-#'   PolicyId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -461,27 +144,9 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
 #' @description
 #' Lists the tags for the specified resource.
 #'
-#' @usage
-#' dlm_list_tags_for_resource(ResourceArn)
+#' See [https://paws-r.github.io/docs/dlm/list_tags_for_resource.html](https://paws-r.github.io/docs/dlm/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -508,24 +173,10 @@ dlm_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Adds the specified tags to the specified resource.
 #'
-#' @usage
-#' dlm_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/dlm/tag_resource.html](https://paws-r.github.io/docs/dlm/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; One or more tags.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -552,24 +203,10 @@ dlm_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes the specified tags from the specified resource.
 #'
-#' @usage
-#' dlm_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/dlm/untag_resource.html](https://paws-r.github.io/docs/dlm/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; The tag keys.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -596,9 +233,7 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the specified lifecycle policy.
 #'
-#' @usage
-#' dlm_update_lifecycle_policy(PolicyId, ExecutionRoleArn, State,
-#'   Description, PolicyDetails)
+#' See [https://paws-r.github.io/docs/dlm/update_lifecycle_policy.html](https://paws-r.github.io/docs/dlm/update_lifecycle_policy.html) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The identifier of the lifecycle policy.
 #' @param ExecutionRoleArn The Amazon Resource Name (ARN) of the IAM role used to run the
@@ -607,123 +242,6 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param Description A description of the lifecycle policy.
 #' @param PolicyDetails The configuration of the lifecycle policy. You cannot update the policy
 #' type or the resource type.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_lifecycle_policy(
-#'   PolicyId = "string",
-#'   ExecutionRoleArn = "string",
-#'   State = "ENABLED"|"DISABLED",
-#'   Description = "string",
-#'   PolicyDetails = list(
-#'     PolicyType = "EBS_SNAPSHOT_MANAGEMENT"|"IMAGE_MANAGEMENT"|"EVENT_BASED_POLICY",
-#'     ResourceTypes = list(
-#'       "VOLUME"|"INSTANCE"
-#'     ),
-#'     TargetTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     Schedules = list(
-#'       list(
-#'         Name = "string",
-#'         CopyTags = TRUE|FALSE,
-#'         TagsToAdd = list(
-#'           list(
-#'             Key = "string",
-#'             Value = "string"
-#'           )
-#'         ),
-#'         VariableTags = list(
-#'           list(
-#'             Key = "string",
-#'             Value = "string"
-#'           )
-#'         ),
-#'         CreateRule = list(
-#'           Interval = 123,
-#'           IntervalUnit = "HOURS",
-#'           Times = list(
-#'             "string"
-#'           ),
-#'           CronExpression = "string"
-#'         ),
-#'         RetainRule = list(
-#'           Count = 123,
-#'           Interval = 123,
-#'           IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-#'         ),
-#'         FastRestoreRule = list(
-#'           Count = 123,
-#'           Interval = 123,
-#'           IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS",
-#'           AvailabilityZones = list(
-#'             "string"
-#'           )
-#'         ),
-#'         CrossRegionCopyRules = list(
-#'           list(
-#'             TargetRegion = "string",
-#'             Encrypted = TRUE|FALSE,
-#'             CmkArn = "string",
-#'             CopyTags = TRUE|FALSE,
-#'             RetainRule = list(
-#'               Interval = 123,
-#'               IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-#'             )
-#'           )
-#'         ),
-#'         ShareRules = list(
-#'           list(
-#'             TargetAccounts = list(
-#'               "string"
-#'             ),
-#'             UnshareInterval = 123,
-#'             UnshareIntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     Parameters = list(
-#'       ExcludeBootVolume = TRUE|FALSE,
-#'       NoReboot = TRUE|FALSE
-#'     ),
-#'     EventSource = list(
-#'       Type = "MANAGED_CWE",
-#'       Parameters = list(
-#'         EventType = "shareSnapshot",
-#'         SnapshotOwner = list(
-#'           "string"
-#'         ),
-#'         DescriptionRegex = "string"
-#'       )
-#'     ),
-#'     Actions = list(
-#'       list(
-#'         Name = "string",
-#'         CrossRegionCopy = list(
-#'           list(
-#'             Target = "string",
-#'             EncryptionConfiguration = list(
-#'               Encrypted = TRUE|FALSE,
-#'               CmkArn = "string"
-#'             ),
-#'             RetainRule = list(
-#'               Interval = 123,
-#'               IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

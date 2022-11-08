@@ -7,33 +7,12 @@
 apigateway_get_vpc_link(vpcLinkId)
 }
 \arguments{
-\item{vpcLinkId}{[required] [Required] The identifier of the VpcLink. It is used in an Integration
-to reference this VpcLink.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  targetArns = list(
-    "string"
-  ),
-  status = "AVAILABLE"|"PENDING"|"DELETING"|"FAILED",
-  statusMessage = "string",
-  tags = list(
-    "string"
-  )
-)
-}
+\item{vpcLinkId}{[required] The identifier of the VpcLink. It is used in an Integration to reference
+this VpcLink.}
 }
 \description{
 Gets a specified VPC link under the caller's account in a region.
-}
-\section{Request syntax}{
-\preformatted{svc$get_vpc_link(
-  vpcLinkId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_vpc_link.html} for full documentation.
+}
 \keyword{internal}

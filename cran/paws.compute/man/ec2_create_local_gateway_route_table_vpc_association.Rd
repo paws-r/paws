@@ -6,7 +6,11 @@
 table}
 \usage{
 ec2_create_local_gateway_route_table_vpc_association(
-  LocalGatewayRouteTableId, VpcId, TagSpecifications, DryRun)
+  LocalGatewayRouteTableId,
+  VpcId,
+  TagSpecifications = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{LocalGatewayRouteTableId}{[required] The ID of the local gateway route table.}
@@ -20,48 +24,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LocalGatewayRouteTableVpcAssociation = list(
-    LocalGatewayRouteTableVpcAssociationId = "string",
-    LocalGatewayRouteTableId = "string",
-    LocalGatewayRouteTableArn = "string",
-    LocalGatewayId = "string",
-    VpcId = "string",
-    OwnerId = "string",
-    State = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Associates the specified VPC with the specified local gateway route
-table.
-}
-\section{Request syntax}{
-\preformatted{svc$create_local_gateway_route_table_vpc_association(
-  LocalGatewayRouteTableId = "string",
-  VpcId = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
+Associates the specified VPC with the specified local gateway route table.
 
+See \url{https://paws-r.github.io/docs/ec2/create_local_gateway_route_table_vpc_association.html} for full documentation.
+}
 \keyword{internal}

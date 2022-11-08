@@ -21,40 +21,9 @@ CloudWatch Container Insights for your clusters is affected.}
 \item{value}{[required] The account setting value for the specified principal ARN. Accepted
 values are \code{enabled} and \code{disabled}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  setting = list(
-    name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
-    value = "string",
-    principalArn = "string"
-  )
-)
-}
-}
 \description{
-Modifies an account setting for all IAM users on an account for whom no
-individual account setting has been specified. Account settings are set
-on a per-Region basis.
-}
-\section{Request syntax}{
-\preformatted{svc$put_account_setting_default(
-  name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights",
-  value = "string"
-)
-}
-}
+Modifies an account setting for all IAM users on an account for whom no individual account setting has been specified. Account settings are set on a per-Region basis.
 
-\examples{
-\dontrun{
-# This example modifies the default account setting for the specified
-# resource for all IAM users or roles on an account. These changes apply
-# to the entire AWS account, unless an IAM user or role explicitly
-# overrides these settings for themselves.
-svc$put_account_setting_default(
-  name = "serviceLongArnFormat",
-  value = "enabled"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecs/put_account_setting_default.html} for full documentation.
 }
 \keyword{internal}

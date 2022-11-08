@@ -4,7 +4,7 @@
 \alias{wafregional_create_rule}
 \title{This is AWS WAF Classic documentation}
 \usage{
-wafregional_create_rule(Name, MetricName, ChangeToken, Tags)
+wafregional_create_rule(Name, MetricName, ChangeToken, Tags = NULL)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the Rule. You can't change the name of
@@ -21,96 +21,9 @@ can't change the name of the metric after you create the \code{Rule}.}
 
 \item{Tags}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Rule = list(
-    RuleId = "string",
-    Name = "string",
-    MetricName = "string",
-    Predicates = list(
-      list(
-        Negated = TRUE|FALSE,
-        Type = "IPMatch"|"ByteMatch"|"SqlInjectionMatch"|"GeoMatch"|"SizeConstraint"|"XssMatch"|"RegexMatch",
-        DataId = "string"
-      )
-    )
-  ),
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Creates a \code{Rule}, which contains the \code{IPSet} objects, \code{ByteMatchSet}
-objects, and other predicates that identify the requests that you want
-to block. If you add more than one predicate to a \code{Rule}, a request must
-match all of the specifications to be allowed or blocked. For example,
-suppose that you add the following to a \code{Rule}:
-\itemize{
-\item An \code{IPSet} that matches the IP address \verb{192.0.2.44/32}
-\item A \code{ByteMatchSet} that matches \code{BadBot} in the \code{User-Agent} header
-}
-
-You then add the \code{Rule} to a \code{WebACL} and specify that you want to
-blocks requests that satisfy the \code{Rule}. For a request to be blocked, it
-must come from the IP address 192.0.2.44 \emph{and} the \code{User-Agent} header
-in the request must contain the value \code{BadBot}.
-
-To create and configure a \code{Rule}, perform the following steps:
-\enumerate{
-\item Create and update the predicates that you want to include in the
-\code{Rule}. For more information, see
-\code{\link[=wafregional_create_byte_match_set]{create_byte_match_set}},
-\code{\link[=wafregional_create_ip_set]{create_ip_set}}, and
-\code{\link[=wafregional_create_sql_injection_match_set]{create_sql_injection_match_set}}.
-\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
-change token that you provide in the \code{ChangeToken} parameter of a
-\code{\link[=wafregional_create_rule]{create_rule}} request.
-\item Submit a \code{\link[=wafregional_create_rule]{create_rule}} request.
-\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
-change token that you provide in the \code{ChangeToken} parameter of an
-\code{\link[=wafregional_update_rule]{update_rule}} request.
-\item Submit an \code{\link[=wafregional_update_rule]{update_rule}} request to
-specify the predicates that you want to include in the \code{Rule}.
-\item Create and update a \code{WebACL} that contains the \code{Rule}. For more
-information, see \code{\link[=wafregional_create_web_acl]{create_web_acl}}.
-}
-
-For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_rule(
-  Name = "string",
-  MetricName = "string",
-  ChangeToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example creates a rule named WAFByteHeaderRule.
-svc$create_rule(
-  ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-  MetricName = "WAFByteHeaderRule",
-  Name = "WAFByteHeaderRule"
-)
-}
-
+See \url{https://paws-r.github.io/docs/wafregional/create_rule.html} for full documentation.
 }
 \keyword{internal}

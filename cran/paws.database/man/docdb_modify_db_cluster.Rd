@@ -4,11 +4,21 @@
 \alias{docdb_modify_db_cluster}
 \title{Modifies a setting for an Amazon DocumentDB cluster}
 \usage{
-docdb_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
-  ApplyImmediately, BackupRetentionPeriod, DBClusterParameterGroupName,
-  VpcSecurityGroupIds, Port, MasterUserPassword, PreferredBackupWindow,
-  PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration,
-  EngineVersion, DeletionProtection)
+docdb_modify_db_cluster(
+  DBClusterIdentifier,
+  NewDBClusterIdentifier = NULL,
+  ApplyImmediately = NULL,
+  BackupRetentionPeriod = NULL,
+  DBClusterParameterGroupName = NULL,
+  VpcSecurityGroupIds = NULL,
+  Port = NULL,
+  MasterUserPassword = NULL,
+  PreferredBackupWindow = NULL,
+  PreferredMaintenanceWindow = NULL,
+  CloudwatchLogsExportConfiguration = NULL,
+  EngineVersion = NULL,
+  DeletionProtection = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The cluster identifier for the cluster that is being modified. This
@@ -79,7 +89,7 @@ automated backups are enabled, using the \code{BackupRetentionPeriod}
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region.
+block of time for each Amazon Web Services Region.
 
 Constraints:
 \itemize{
@@ -95,8 +105,8 @@ Universal Coordinated Time (UTC).
 Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
-week.
+block of time for each Amazon Web Services Region, occurring on a random
+day of the week.
 
 Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
@@ -108,109 +118,16 @@ Amazon CloudWatch Logs for a specific instance or cluster. The
 exported (or not exported) to CloudWatch Logs.}
 
 \item{EngineVersion}{The version number of the database engine to which you want to upgrade.
-Changing this parameter results in an outage. The change is applied
-during the next maintenance window unless the \code{ApplyImmediately}
-parameter is set to \code{true}.}
+Modifying engine version is not supported on Amazon DocumentDB.}
 
 \item{DeletionProtection}{Specifies whether this cluster can be deleted. If \code{DeletionProtection}
 is enabled, the cluster cannot be deleted unless it is modified and
 \code{DeletionProtection} is disabled. \code{DeletionProtection} protects clusters
 from being accidentally deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string"
-      )
-    ),
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    DeletionProtection = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Modifies a setting for an Amazon DocumentDB cluster. You can change one
-or more database configuration parameters by specifying these parameters
-and the new values in the request.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_db_cluster(
-  DBClusterIdentifier = "string",
-  NewDBClusterIdentifier = "string",
-  ApplyImmediately = TRUE|FALSE,
-  BackupRetentionPeriod = 123,
-  DBClusterParameterGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Port = 123,
-  MasterUserPassword = "string",
-  PreferredBackupWindow = "string",
-  PreferredMaintenanceWindow = "string",
-  CloudwatchLogsExportConfiguration = list(
-    EnableLogTypes = list(
-      "string"
-    ),
-    DisableLogTypes = list(
-      "string"
-    )
-  ),
-  EngineVersion = "string",
-  DeletionProtection = TRUE|FALSE
-)
-}
-}
+Modifies a setting for an Amazon DocumentDB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
 
+See \url{https://paws-r.github.io/docs/docdb/modify_db_cluster.html} for full documentation.
+}
 \keyword{internal}

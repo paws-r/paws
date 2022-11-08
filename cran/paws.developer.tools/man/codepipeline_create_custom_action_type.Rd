@@ -5,9 +5,16 @@
 \title{Creates a new custom action that can be used in all pipelines associated
 with the AWS account}
 \usage{
-codepipeline_create_custom_action_type(category, provider, version,
-  settings, configurationProperties, inputArtifactDetails,
-  outputArtifactDetails, tags)
+codepipeline_create_custom_action_type(
+  category,
+  provider,
+  version,
+  settings = NULL,
+  configurationProperties = NULL,
+  inputArtifactDetails,
+  outputArtifactDetails,
+  tags = NULL
+)
 }
 \arguments{
 \item{category}{[required] The category of the custom action, such as a build action or a test
@@ -33,92 +40,9 @@ required and not secret. For more information, see \href{https://docs.aws.amazon
 
 \item{tags}{The tags for the custom action.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  actionType = list(
-    id = list(
-      category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-      owner = "AWS"|"ThirdParty"|"Custom",
-      provider = "string",
-      version = "string"
-    ),
-    settings = list(
-      thirdPartyConfigurationUrl = "string",
-      entityUrlTemplate = "string",
-      executionUrlTemplate = "string",
-      revisionUrlTemplate = "string"
-    ),
-    actionConfigurationProperties = list(
-      list(
-        name = "string",
-        required = TRUE|FALSE,
-        key = TRUE|FALSE,
-        secret = TRUE|FALSE,
-        queryable = TRUE|FALSE,
-        description = "string",
-        type = "String"|"Number"|"Boolean"
-      )
-    ),
-    inputArtifactDetails = list(
-      minimumCount = 123,
-      maximumCount = 123
-    ),
-    outputArtifactDetails = list(
-      minimumCount = 123,
-      maximumCount = 123
-    )
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates a new custom action that can be used in all pipelines associated
-with the AWS account. Only used for custom actions.
-}
-\section{Request syntax}{
-\preformatted{svc$create_custom_action_type(
-  category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-  provider = "string",
-  version = "string",
-  settings = list(
-    thirdPartyConfigurationUrl = "string",
-    entityUrlTemplate = "string",
-    executionUrlTemplate = "string",
-    revisionUrlTemplate = "string"
-  ),
-  configurationProperties = list(
-    list(
-      name = "string",
-      required = TRUE|FALSE,
-      key = TRUE|FALSE,
-      secret = TRUE|FALSE,
-      queryable = TRUE|FALSE,
-      description = "string",
-      type = "String"|"Number"|"Boolean"
-    )
-  ),
-  inputArtifactDetails = list(
-    minimumCount = 123,
-    maximumCount = 123
-  ),
-  outputArtifactDetails = list(
-    minimumCount = 123,
-    maximumCount = 123
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
+Creates a new custom action that can be used in all pipelines associated with the AWS account. Only used for custom actions.
 
+See \url{https://paws-r.github.io/docs/codepipeline/create_custom_action_type.html} for full documentation.
+}
 \keyword{internal}

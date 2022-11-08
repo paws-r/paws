@@ -5,8 +5,11 @@
 \title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications}
 \usage{
-kinesisanalytics_add_application_output(ApplicationName,
-  CurrentApplicationVersionId, Output)
+kinesisanalytics_add_application_output(
+  ApplicationName,
+  CurrentApplicationVersionId,
+  Output
+)
 }
 \arguments{
 \item{ApplicationName}{[required] Name of the application to which you want to add the output
@@ -25,66 +28,9 @@ a destination (that is, an Amazon Kinesis stream, an Amazon Kinesis
 Firehose delivery stream, or an AWS Lambda function), and record the
 formation to use when writing to the destination.}
 }
-\value{
-An empty list.
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Adds an external destination to your Amazon Kinesis Analytics
-application.
-
-If you want Amazon Kinesis Analytics to deliver data from an
-in-application stream within your application to an external destination
-(such as an Amazon Kinesis stream, an Amazon Kinesis Firehose delivery
-stream, or an AWS Lambda function), you add the relevant configuration
-to your application using this operation. You can configure one or more
-outputs for your application. Each output configuration maps an
-in-application stream and an external destination.
-
-You can use one of the output configurations to deliver data from your
-in-application error stream to an external destination so that you can
-analyze the errors. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html}{Understanding Application Output (Destination)}.
-
-Any configuration update, including adding a streaming source using this
-operation, results in a new version of the application. You can use the
-\code{\link[=kinesisanalytics_describe_application]{describe_application}}
-operation to find the current application version.
-
-For the limits on the number of application inputs and outputs you can
-configure, see
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html}{Limits}.
-
-This operation requires permissions to perform the
-\code{kinesisanalytics:AddApplicationOutput} action.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/add_application_output.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_application_output(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  Output = list(
-    Name = "string",
-    KinesisStreamsOutput = list(
-      ResourceARN = "string",
-      RoleARN = "string"
-    ),
-    KinesisFirehoseOutput = list(
-      ResourceARN = "string",
-      RoleARN = "string"
-    ),
-    LambdaOutput = list(
-      ResourceARN = "string",
-      RoleARN = "string"
-    ),
-    DestinationSchema = list(
-      RecordFormatType = "JSON"|"CSV"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

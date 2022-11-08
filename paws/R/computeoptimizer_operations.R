@@ -3,6 +3,81 @@
 #' @include computeoptimizer_service.R
 NULL
 
+#' Deletes a recommendation preference, such as enhanced infrastructure
+#' metrics
+#'
+#' @description
+#' Deletes a recommendation preference, such as enhanced infrastructure
+#' metrics.
+#' 
+#' For more information, see [Activating enhanced infrastructure
+#' metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html)
+#' in the *Compute Optimizer User Guide*.
+#'
+#' @usage
+#' computeoptimizer_delete_recommendation_preferences(resourceType, scope,
+#'   recommendationPreferenceNames)
+#'
+#' @param resourceType &#91;required&#93; The target resource type of the recommendation preference to delete.
+#' 
+#' The `Ec2Instance` option encompasses standalone instances and instances
+#' that are part of Auto Scaling groups. The `AutoScalingGroup` option
+#' encompasses only instances that are part of an Auto Scaling group.
+#' 
+#' The valid values for this parameter are `Ec2Instance` and
+#' `AutoScalingGroup`.
+#' @param scope An object that describes the scope of the recommendation preference to
+#' delete.
+#' 
+#' You can delete recommendation preferences that are created at the
+#' organization level (for management accounts of an organization only),
+#' account level, and resource level. For more information, see [Activating
+#' enhanced infrastructure
+#' metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html)
+#' in the *Compute Optimizer User Guide*.
+#' @param recommendationPreferenceNames &#91;required&#93; The name of the recommendation preference to delete.
+#' 
+#' Enhanced infrastructure metrics (`EnhancedInfrastructureMetrics`) is the
+#' only feature that can be activated through preferences. Therefore, it is
+#' also the only recommendation preference that can be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_recommendation_preferences(
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable",
+#'   scope = list(
+#'     name = "Organization"|"AccountId"|"ResourceArn",
+#'     value = "string"
+#'   ),
+#'   recommendationPreferenceNames = list(
+#'     "EnhancedInfrastructureMetrics"|"InferredWorkloadTypes"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_delete_recommendation_preferences
+computeoptimizer_delete_recommendation_preferences <- function(resourceType, scope = NULL, recommendationPreferenceNames) {
+  op <- new_operation(
+    name = "DeleteRecommendationPreferences",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$delete_recommendation_preferences_input(resourceType = resourceType, scope = scope, recommendationPreferenceNames = recommendationPreferenceNames)
+  output <- .computeoptimizer$delete_recommendation_preferences_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$delete_recommendation_preferences <- computeoptimizer_delete_recommendation_preferences
+
 #' Describes recommendation export jobs created in the last seven days
 #'
 #' @description
@@ -30,13 +105,13 @@ NULL
 #' 
 #' All export jobs created in the last seven days are returned if this
 #' parameter is omitted.
-#' @param filters An array of objects that describe a filter to return a more specific
+#' @param filters An array of objects to specify a filter that returns a more specific
 #' list of export jobs.
 #' @param nextToken The token to advance to the next page of export jobs.
 #' @param maxResults The maximum number of export jobs to return with a single request.
 #' 
 #' To retrieve the remaining results, make another request with the
-#' returned `NextToken` value.
+#' returned `nextToken` value.
 #'
 #' @return
 #' A list with the following syntax:
@@ -52,7 +127,7 @@ NULL
 #'           metadataKey = "string"
 #'         )
 #'       ),
-#'       resourceType = "Ec2Instance"|"AutoScalingGroup",
+#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable",
 #'       status = "Queued"|"InProgress"|"Complete"|"Failed",
 #'       creationTimestamp = as.POSIXct(
 #'         "2015-01-01"
@@ -112,25 +187,25 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' Exports optimization recommendations for Auto Scaling groups.
 #' 
 #' Recommendations are exported in a comma-separated values (.csv) file,
-#' and its metadata in a JavaScript Object Notation (.json) file, to an
-#' existing Amazon Simple Storage Service (Amazon S3) bucket that you
+#' and its metadata in a JavaScript Object Notation (JSON) (.json) file, to
+#' an existing Amazon Simple Storage Service (Amazon S3) bucket that you
 #' specify. For more information, see [Exporting
 #' Recommendations](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html)
 #' in the *Compute Optimizer User Guide*.
 #' 
-#' You can have only one Auto Scaling group export job in progress per AWS
-#' Region.
+#' You can have only one Auto Scaling group export job in progress per
+#' Amazon Web Services Region.
 #'
 #' @usage
 #' computeoptimizer_export_auto_scaling_group_recommendations(accountIds,
 #'   filters, fieldsToExport, s3DestinationConfig, fileFormat,
-#'   includeMemberAccounts)
+#'   includeMemberAccounts, recommendationPreferences)
 #'
-#' @param accountIds The IDs of the AWS accounts for which to export Auto Scaling group
-#' recommendations.
+#' @param accountIds The IDs of the Amazon Web Services accounts for which to export Auto
+#' Scaling group recommendations.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to export
+#' parameter to specify the member account for which you want to export
 #' recommendations.
 #' 
 #' This parameter cannot be specified together with the include member
@@ -140,7 +215,7 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' this parameter, or the include member accounts parameter, is omitted.
 #' 
 #' You can specify multiple account IDs per request.
-#' @param filters An array of objects that describe a filter to export a more specific set
+#' @param filters An array of objects to specify a filter that exports a more specific set
 #' of Auto Scaling group recommendations.
 #' @param fieldsToExport The recommendations data to include in the export file. For more
 #' information about the fields that can be exported, see [Exported
@@ -152,13 +227,13 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' You must create the destination Amazon S3 bucket for your
 #' recommendations export before you create the export job. Compute
 #' Optimizer does not create the S3 bucket for you. After you create the S3
-#' bucket, ensure that it has the required permission policy to allow
+#' bucket, ensure that it has the required permissions policy to allow
 #' Compute Optimizer to write the export file to it. If you plan to specify
 #' an object prefix when you create the export job, you must include the
 #' object prefix in the policy that you add to the S3 bucket. For more
 #' information, see [Amazon S3 Bucket Policy for Compute
 #' Optimizer](https://docs.aws.amazon.com/compute-optimizer/latest/ug/create-s3-bucket-policy-for-compute-optimizer.html)
-#' in the *Compute Optimizer user guide*.
+#' in the *Compute Optimizer User Guide*.
 #' @param fileFormat The format of the export file.
 #' 
 #' The only export file format currently supported is `Csv`.
@@ -166,7 +241,141 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' accounts of the organization if your account is the management account
 #' of an organization.
 #' 
-#' The member accounts must also be opted in to Compute Optimizer.
+#' The member accounts must also be opted in to Compute Optimizer, and
+#' trusted access for Compute Optimizer must be enabled in the organization
+#' account. For more information, see [Compute Optimizer and Amazon Web
+#' Services Organizations trusted
+#' access](https://docs.aws.amazon.com/compute-optimizer/latest/ug/security-iam.html#trusted-service-access)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' Recommendations for member accounts of the organization are not included
+#' in the export file if this parameter is omitted.
+#' 
+#' This parameter cannot be specified together with the account IDs
+#' parameter. The parameters are mutually exclusive.
+#' 
+#' Recommendations for member accounts are not included in the export if
+#' this parameter, or the account IDs parameter, is omitted.
+#' @param recommendationPreferences An object to specify the preferences for the Auto Scaling group
+#' recommendations to export.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobId = "string",
+#'   s3Destination = list(
+#'     bucket = "string",
+#'     key = "string",
+#'     metadataKey = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$export_auto_scaling_group_recommendations(
+#'   accountIds = list(
+#'     "string"
+#'   ),
+#'   filters = list(
+#'     list(
+#'       name = "Finding"|"FindingReasonCodes"|"RecommendationSourceType",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   fieldsToExport = list(
+#'     "AccountId"|"AutoScalingGroupArn"|"AutoScalingGroupName"|"Finding"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEbsReadOpsPerSecondMaximum"|"UtilizationMetricsEbsWriteOpsPerSecondMaximum"|"UtilizationMetricsEbsReadBytesPerSecondMaximum"|"UtilizationMetricsEbsWriteBytesPerSecondMaximum"|"UtilizationMetricsDiskReadOpsPerSecondMaximum"|"UtilizationMetricsDiskWriteOpsPerSecondMaximum"|"UtilizationMetricsDiskReadBytesPerSecondMaximum"|"UtilizationMetricsDiskWriteBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkPacketsInPerSecondMaximum"|"UtilizationMetricsNetworkPacketsOutPerSecondMaximum"|"LookbackPeriodInDays"|"CurrentConfigurationInstanceType"|"CurrentConfigurationDesiredCapacity"|"CurrentConfigurationMinSize"|"CurrentConfigurationMaxSize"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsConfigurationInstanceType"|"RecommendationOptionsConfigurationDesiredCapacity"|"RecommendationOptionsConfigurationMinSize"|"RecommendationOptionsConfigurationMaxSize"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesInferredWorkloadTypes"|"InferredWorkloadTypes"|"RecommendationOptionsMigrationEffort"
+#'   ),
+#'   s3DestinationConfig = list(
+#'     bucket = "string",
+#'     keyPrefix = "string"
+#'   ),
+#'   fileFormat = "Csv",
+#'   includeMemberAccounts = TRUE|FALSE,
+#'   recommendationPreferences = list(
+#'     cpuVendorArchitectures = list(
+#'       "AWS_ARM64"|"CURRENT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_export_auto_scaling_group_recommendations
+computeoptimizer_export_auto_scaling_group_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL, recommendationPreferences = NULL) {
+  op <- new_operation(
+    name = "ExportAutoScalingGroupRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$export_auto_scaling_group_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts, recommendationPreferences = recommendationPreferences)
+  output <- .computeoptimizer$export_auto_scaling_group_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$export_auto_scaling_group_recommendations <- computeoptimizer_export_auto_scaling_group_recommendations
+
+#' Exports optimization recommendations for Amazon EBS volumes
+#'
+#' @description
+#' Exports optimization recommendations for Amazon EBS volumes.
+#' 
+#' Recommendations are exported in a comma-separated values (.csv) file,
+#' and its metadata in a JavaScript Object Notation (JSON) (.json) file, to
+#' an existing Amazon Simple Storage Service (Amazon S3) bucket that you
+#' specify. For more information, see [Exporting
+#' Recommendations](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' You can have only one Amazon EBS volume export job in progress per
+#' Amazon Web Services Region.
+#'
+#' @usage
+#' computeoptimizer_export_ebs_volume_recommendations(accountIds, filters,
+#'   fieldsToExport, s3DestinationConfig, fileFormat, includeMemberAccounts)
+#'
+#' @param accountIds The IDs of the Amazon Web Services accounts for which to export Amazon
+#' EBS volume recommendations.
+#' 
+#' If your account is the management account of an organization, use this
+#' parameter to specify the member account for which you want to export
+#' recommendations.
+#' 
+#' This parameter cannot be specified together with the include member
+#' accounts parameter. The parameters are mutually exclusive.
+#' 
+#' Recommendations for member accounts are not included in the export if
+#' this parameter, or the include member accounts parameter, is omitted.
+#' 
+#' You can specify multiple account IDs per request.
+#' @param filters An array of objects to specify a filter that exports a more specific set
+#' of Amazon EBS volume recommendations.
+#' @param fieldsToExport The recommendations data to include in the export file. For more
+#' information about the fields that can be exported, see [Exported
+#' files](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files)
+#' in the *Compute Optimizer User Guide*.
+#' @param s3DestinationConfig &#91;required&#93; 
+#' @param fileFormat The format of the export file.
+#' 
+#' The only export file format currently supported is `Csv`.
+#' @param includeMemberAccounts Indicates whether to include recommendations for resources in all member
+#' accounts of the organization if your account is the management account
+#' of an organization.
+#' 
+#' The member accounts must also be opted in to Compute Optimizer, and
+#' trusted access for Compute Optimizer must be enabled in the organization
+#' account. For more information, see [Compute Optimizer and Amazon Web
+#' Services Organizations trusted
+#' access](https://docs.aws.amazon.com/compute-optimizer/latest/ug/security-iam.html#trusted-service-access)
+#' in the *Compute Optimizer User Guide*.
 #' 
 #' Recommendations for member accounts of the organization are not included
 #' in the export file if this parameter is omitted.
@@ -192,20 +401,20 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #'
 #' @section Request syntax:
 #' ```
-#' svc$export_auto_scaling_group_recommendations(
+#' svc$export_ebs_volume_recommendations(
 #'   accountIds = list(
 #'     "string"
 #'   ),
 #'   filters = list(
 #'     list(
-#'       name = "Finding"|"RecommendationSourceType",
+#'       name = "Finding",
 #'       values = list(
 #'         "string"
 #'       )
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"AutoScalingGroupArn"|"AutoScalingGroupName"|"Finding"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEbsReadOpsPerSecondMaximum"|"UtilizationMetricsEbsWriteOpsPerSecondMaximum"|"UtilizationMetricsEbsReadBytesPerSecondMaximum"|"UtilizationMetricsEbsWriteBytesPerSecondMaximum"|"LookbackPeriodInDays"|"CurrentConfigurationInstanceType"|"CurrentConfigurationDesiredCapacity"|"CurrentConfigurationMinSize"|"CurrentConfigurationMaxSize"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsConfigurationInstanceType"|"RecommendationOptionsConfigurationDesiredCapacity"|"RecommendationOptionsConfigurationMinSize"|"RecommendationOptionsConfigurationMaxSize"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"LastRefreshTimestamp"
+#'     "AccountId"|"VolumeArn"|"Finding"|"UtilizationMetricsVolumeReadOpsPerSecondMaximum"|"UtilizationMetricsVolumeWriteOpsPerSecondMaximum"|"UtilizationMetricsVolumeReadBytesPerSecondMaximum"|"UtilizationMetricsVolumeWriteBytesPerSecondMaximum"|"LookbackPeriodInDays"|"CurrentConfigurationVolumeType"|"CurrentConfigurationVolumeBaselineIOPS"|"CurrentConfigurationVolumeBaselineThroughput"|"CurrentConfigurationVolumeBurstIOPS"|"CurrentConfigurationVolumeBurstThroughput"|"CurrentConfigurationVolumeSize"|"CurrentMonthlyPrice"|"RecommendationOptionsConfigurationVolumeType"|"RecommendationOptionsConfigurationVolumeBaselineIOPS"|"RecommendationOptionsConfigurationVolumeBaselineThroughput"|"RecommendationOptionsConfigurationVolumeBurstIOPS"|"RecommendationOptionsConfigurationVolumeBurstThroughput"|"RecommendationOptionsConfigurationVolumeSize"|"RecommendationOptionsMonthlyPrice"|"RecommendationOptionsPerformanceRisk"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -218,23 +427,23 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #'
 #' @keywords internal
 #'
-#' @rdname computeoptimizer_export_auto_scaling_group_recommendations
-computeoptimizer_export_auto_scaling_group_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL) {
+#' @rdname computeoptimizer_export_ebs_volume_recommendations
+computeoptimizer_export_ebs_volume_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL) {
   op <- new_operation(
-    name = "ExportAutoScalingGroupRecommendations",
+    name = "ExportEBSVolumeRecommendations",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .computeoptimizer$export_auto_scaling_group_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
-  output <- .computeoptimizer$export_auto_scaling_group_recommendations_output()
+  input <- .computeoptimizer$export_ebs_volume_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
+  output <- .computeoptimizer$export_ebs_volume_recommendations_output()
   config <- get_config()
   svc <- .computeoptimizer$service(config)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
-.computeoptimizer$operations$export_auto_scaling_group_recommendations <- computeoptimizer_export_auto_scaling_group_recommendations
+.computeoptimizer$operations$export_ebs_volume_recommendations <- computeoptimizer_export_ebs_volume_recommendations
 
 #' Exports optimization recommendations for Amazon EC2 instances
 #'
@@ -242,25 +451,25 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 #' Exports optimization recommendations for Amazon EC2 instances.
 #' 
 #' Recommendations are exported in a comma-separated values (.csv) file,
-#' and its metadata in a JavaScript Object Notation (.json) file, to an
-#' existing Amazon Simple Storage Service (Amazon S3) bucket that you
+#' and its metadata in a JavaScript Object Notation (JSON) (.json) file, to
+#' an existing Amazon Simple Storage Service (Amazon S3) bucket that you
 #' specify. For more information, see [Exporting
 #' Recommendations](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html)
 #' in the *Compute Optimizer User Guide*.
 #' 
-#' You can have only one Amazon EC2 instance export job in progress per AWS
-#' Region.
+#' You can have only one Amazon EC2 instance export job in progress per
+#' Amazon Web Services Region.
 #'
 #' @usage
 #' computeoptimizer_export_ec2_instance_recommendations(accountIds,
 #'   filters, fieldsToExport, s3DestinationConfig, fileFormat,
-#'   includeMemberAccounts)
+#'   includeMemberAccounts, recommendationPreferences)
 #'
-#' @param accountIds The IDs of the AWS accounts for which to export instance
+#' @param accountIds The IDs of the Amazon Web Services accounts for which to export instance
 #' recommendations.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to export
+#' parameter to specify the member account for which you want to export
 #' recommendations.
 #' 
 #' This parameter cannot be specified together with the include member
@@ -270,7 +479,7 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 #' this parameter, or the include member accounts parameter, is omitted.
 #' 
 #' You can specify multiple account IDs per request.
-#' @param filters An array of objects that describe a filter to export a more specific set
+#' @param filters An array of objects to specify a filter that exports a more specific set
 #' of instance recommendations.
 #' @param fieldsToExport The recommendations data to include in the export file. For more
 #' information about the fields that can be exported, see [Exported
@@ -282,13 +491,13 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 #' You must create the destination Amazon S3 bucket for your
 #' recommendations export before you create the export job. Compute
 #' Optimizer does not create the S3 bucket for you. After you create the S3
-#' bucket, ensure that it has the required permission policy to allow
+#' bucket, ensure that it has the required permissions policy to allow
 #' Compute Optimizer to write the export file to it. If you plan to specify
 #' an object prefix when you create the export job, you must include the
 #' object prefix in the policy that you add to the S3 bucket. For more
 #' information, see [Amazon S3 Bucket Policy for Compute
 #' Optimizer](https://docs.aws.amazon.com/compute-optimizer/latest/ug/create-s3-bucket-policy-for-compute-optimizer.html)
-#' in the *Compute Optimizer user guide*.
+#' in the *Compute Optimizer User Guide*.
 #' @param fileFormat The format of the export file.
 #' 
 #' The only export file format currently supported is `Csv`.
@@ -296,13 +505,20 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 #' accounts of the organization if your account is the management account
 #' of an organization.
 #' 
-#' The member accounts must also be opted in to Compute Optimizer.
+#' The member accounts must also be opted in to Compute Optimizer, and
+#' trusted access for Compute Optimizer must be enabled in the organization
+#' account. For more information, see [Compute Optimizer and Amazon Web
+#' Services Organizations trusted
+#' access](https://docs.aws.amazon.com/compute-optimizer/latest/ug/security-iam.html#trusted-service-access)
+#' in the *Compute Optimizer User Guide*.
 #' 
 #' Recommendations for member accounts of the organization are not included
 #' in the export file if this parameter is omitted.
 #' 
 #' Recommendations for member accounts are not included in the export if
 #' this parameter, or the account IDs parameter, is omitted.
+#' @param recommendationPreferences An object to specify the preferences for the Amazon EC2 instance
+#' recommendations to export.
 #'
 #' @return
 #' A list with the following syntax:
@@ -325,14 +541,142 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 #'   ),
 #'   filters = list(
 #'     list(
-#'       name = "Finding"|"RecommendationSourceType",
+#'       name = "Finding"|"FindingReasonCodes"|"RecommendationSourceType",
 #'       values = list(
 #'         "string"
 #'       )
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"InstanceArn"|"InstanceName"|"Finding"|"LookbackPeriodInDays"|"CurrentInstanceType"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEbsReadOpsPerSecondMaximum"|"UtilizationMetricsEbsWriteOpsPerSecondMaximum"|"UtilizationMetricsEbsReadBytesPerSecondMaximum"|"UtilizationMetricsEbsWriteBytesPerSecondMaximum"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsInstanceType"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationsSourcesRecommendationSourceArn"|"RecommendationsSourcesRecommendationSourceType"|"LastRefreshTimestamp"
+#'     "AccountId"|"InstanceArn"|"InstanceName"|"Finding"|"FindingReasonCodes"|"LookbackPeriodInDays"|"CurrentInstanceType"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEbsReadOpsPerSecondMaximum"|"UtilizationMetricsEbsWriteOpsPerSecondMaximum"|"UtilizationMetricsEbsReadBytesPerSecondMaximum"|"UtilizationMetricsEbsWriteBytesPerSecondMaximum"|"UtilizationMetricsDiskReadOpsPerSecondMaximum"|"UtilizationMetricsDiskWriteOpsPerSecondMaximum"|"UtilizationMetricsDiskReadBytesPerSecondMaximum"|"UtilizationMetricsDiskWriteBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkPacketsInPerSecondMaximum"|"UtilizationMetricsNetworkPacketsOutPerSecondMaximum"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsInstanceType"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPlatformDifferences"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationsSourcesRecommendationSourceArn"|"RecommendationsSourcesRecommendationSourceType"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesInferredWorkloadTypes"|"InferredWorkloadTypes"|"RecommendationOptionsMigrationEffort"
+#'   ),
+#'   s3DestinationConfig = list(
+#'     bucket = "string",
+#'     keyPrefix = "string"
+#'   ),
+#'   fileFormat = "Csv",
+#'   includeMemberAccounts = TRUE|FALSE,
+#'   recommendationPreferences = list(
+#'     cpuVendorArchitectures = list(
+#'       "AWS_ARM64"|"CURRENT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_export_ec2_instance_recommendations
+computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL, recommendationPreferences = NULL) {
+  op <- new_operation(
+    name = "ExportEC2InstanceRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$export_ec2_instance_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts, recommendationPreferences = recommendationPreferences)
+  output <- .computeoptimizer$export_ec2_instance_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$export_ec2_instance_recommendations <- computeoptimizer_export_ec2_instance_recommendations
+
+#' Exports optimization recommendations for Lambda functions
+#'
+#' @description
+#' Exports optimization recommendations for Lambda functions.
+#' 
+#' Recommendations are exported in a comma-separated values (.csv) file,
+#' and its metadata in a JavaScript Object Notation (JSON) (.json) file, to
+#' an existing Amazon Simple Storage Service (Amazon S3) bucket that you
+#' specify. For more information, see [Exporting
+#' Recommendations](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' You can have only one Lambda function export job in progress per Amazon
+#' Web Services Region.
+#'
+#' @usage
+#' computeoptimizer_export_lambda_function_recommendations(accountIds,
+#'   filters, fieldsToExport, s3DestinationConfig, fileFormat,
+#'   includeMemberAccounts)
+#'
+#' @param accountIds The IDs of the Amazon Web Services accounts for which to export Lambda
+#' function recommendations.
+#' 
+#' If your account is the management account of an organization, use this
+#' parameter to specify the member account for which you want to export
+#' recommendations.
+#' 
+#' This parameter cannot be specified together with the include member
+#' accounts parameter. The parameters are mutually exclusive.
+#' 
+#' Recommendations for member accounts are not included in the export if
+#' this parameter, or the include member accounts parameter, is omitted.
+#' 
+#' You can specify multiple account IDs per request.
+#' @param filters An array of objects to specify a filter that exports a more specific set
+#' of Lambda function recommendations.
+#' @param fieldsToExport The recommendations data to include in the export file. For more
+#' information about the fields that can be exported, see [Exported
+#' files](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files)
+#' in the *Compute Optimizer User Guide*.
+#' @param s3DestinationConfig &#91;required&#93; 
+#' @param fileFormat The format of the export file.
+#' 
+#' The only export file format currently supported is `Csv`.
+#' @param includeMemberAccounts Indicates whether to include recommendations for resources in all member
+#' accounts of the organization if your account is the management account
+#' of an organization.
+#' 
+#' The member accounts must also be opted in to Compute Optimizer, and
+#' trusted access for Compute Optimizer must be enabled in the organization
+#' account. For more information, see [Compute Optimizer and Amazon Web
+#' Services Organizations trusted
+#' access](https://docs.aws.amazon.com/compute-optimizer/latest/ug/security-iam.html#trusted-service-access)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' Recommendations for member accounts of the organization are not included
+#' in the export file if this parameter is omitted.
+#' 
+#' This parameter cannot be specified together with the account IDs
+#' parameter. The parameters are mutually exclusive.
+#' 
+#' Recommendations for member accounts are not included in the export if
+#' this parameter, or the account IDs parameter, is omitted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobId = "string",
+#'   s3Destination = list(
+#'     bucket = "string",
+#'     key = "string",
+#'     metadataKey = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$export_lambda_function_recommendations(
+#'   accountIds = list(
+#'     "string"
+#'   ),
+#'   filters = list(
+#'     list(
+#'       name = "Finding"|"FindingReasonCode",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   fieldsToExport = list(
+#'     "AccountId"|"FunctionArn"|"FunctionVersion"|"Finding"|"FindingReasonCodes"|"NumberOfInvocations"|"UtilizationMetricsDurationMaximum"|"UtilizationMetricsDurationAverage"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsMemoryAverage"|"LookbackPeriodInDays"|"CurrentConfigurationMemorySize"|"CurrentConfigurationTimeout"|"CurrentCostTotal"|"CurrentCostAverage"|"RecommendationOptionsConfigurationMemorySize"|"RecommendationOptionsCostLow"|"RecommendationOptionsCostHigh"|"RecommendationOptionsProjectedUtilizationMetricsDurationLowerBound"|"RecommendationOptionsProjectedUtilizationMetricsDurationUpperBound"|"RecommendationOptionsProjectedUtilizationMetricsDurationExpected"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -345,44 +689,45 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 #'
 #' @keywords internal
 #'
-#' @rdname computeoptimizer_export_ec2_instance_recommendations
-computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL) {
+#' @rdname computeoptimizer_export_lambda_function_recommendations
+computeoptimizer_export_lambda_function_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL) {
   op <- new_operation(
-    name = "ExportEC2InstanceRecommendations",
+    name = "ExportLambdaFunctionRecommendations",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .computeoptimizer$export_ec2_instance_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
-  output <- .computeoptimizer$export_ec2_instance_recommendations_output()
+  input <- .computeoptimizer$export_lambda_function_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
+  output <- .computeoptimizer$export_lambda_function_recommendations_output()
   config <- get_config()
   svc <- .computeoptimizer$service(config)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
-.computeoptimizer$operations$export_ec2_instance_recommendations <- computeoptimizer_export_ec2_instance_recommendations
+.computeoptimizer$operations$export_lambda_function_recommendations <- computeoptimizer_export_lambda_function_recommendations
 
 #' Returns Auto Scaling group recommendations
 #'
 #' @description
 #' Returns Auto Scaling group recommendations.
 #' 
-#' AWS Compute Optimizer generates recommendations for Amazon EC2 Auto
-#' Scaling groups that meet a specific set of requirements. For more
-#' information, see the [Supported resources and
+#' Compute Optimizer generates recommendations for Amazon EC2 Auto Scaling
+#' groups that meet a specific set of requirements. For more information,
+#' see the [Supported resources and
 #' requirements](https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html)
-#' in the *AWS Compute Optimizer User Guide*.
+#' in the *Compute Optimizer User Guide*.
 #'
 #' @usage
 #' computeoptimizer_get_auto_scaling_group_recommendations(accountIds,
-#'   autoScalingGroupArns, nextToken, maxResults, filters)
+#'   autoScalingGroupArns, nextToken, maxResults, filters,
+#'   recommendationPreferences)
 #'
-#' @param accountIds The IDs of the AWS accounts for which to return Auto Scaling group
-#' recommendations.
+#' @param accountIds The ID of the Amazon Web Services account for which to return Auto
+#' Scaling group recommendations.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to return
+#' parameter to specify the member account for which you want to return
 #' Auto Scaling group recommendations.
 #' 
 #' Only one account ID can be specified per request.
@@ -394,9 +739,11 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 #' a single request.
 #' 
 #' To retrieve the remaining results, make another request with the
-#' returned `NextToken` value.
-#' @param filters An array of objects that describe a filter that returns a more specific
+#' returned `nextToken` value.
+#' @param filters An array of objects to specify a filter that returns a more specific
 #' list of Auto Scaling group recommendations.
+#' @param recommendationPreferences An object to specify the preferences for the Auto Scaling group
+#' recommendations to return in the response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -411,7 +758,7 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 #'       finding = "Underprovisioned"|"Overprovisioned"|"Optimized"|"NotOptimized",
 #'       utilizationMetrics = list(
 #'         list(
-#'           name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND",
+#'           name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND"|"DISK_READ_OPS_PER_SECOND"|"DISK_WRITE_OPS_PER_SECOND"|"DISK_READ_BYTES_PER_SECOND"|"DISK_WRITE_BYTES_PER_SECOND"|"NETWORK_IN_BYTES_PER_SECOND"|"NETWORK_OUT_BYTES_PER_SECOND"|"NETWORK_PACKETS_IN_PER_SECOND"|"NETWORK_PACKETS_OUT_PER_SECOND",
 #'           statistic = "Maximum"|"Average",
 #'           value = 123.0
 #'         )
@@ -433,17 +780,36 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 #'           ),
 #'           projectedUtilizationMetrics = list(
 #'             list(
-#'               name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND",
+#'               name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND"|"DISK_READ_OPS_PER_SECOND"|"DISK_WRITE_OPS_PER_SECOND"|"DISK_READ_BYTES_PER_SECOND"|"DISK_WRITE_BYTES_PER_SECOND"|"NETWORK_IN_BYTES_PER_SECOND"|"NETWORK_OUT_BYTES_PER_SECOND"|"NETWORK_PACKETS_IN_PER_SECOND"|"NETWORK_PACKETS_OUT_PER_SECOND",
 #'               statistic = "Maximum"|"Average",
 #'               value = 123.0
 #'             )
 #'           ),
 #'           performanceRisk = 123.0,
-#'           rank = 123
+#'           rank = 123,
+#'           savingsOpportunity = list(
+#'             savingsOpportunityPercentage = 123.0,
+#'             estimatedMonthlySavings = list(
+#'               currency = "USD"|"CNY",
+#'               value = 123.0
+#'             )
+#'           ),
+#'           migrationEffort = "VeryLow"|"Low"|"Medium"|"High"
 #'         )
 #'       ),
 #'       lastRefreshTimestamp = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       currentPerformanceRisk = "VeryLow"|"Low"|"Medium"|"High",
+#'       effectiveRecommendationPreferences = list(
+#'         cpuVendorArchitectures = list(
+#'           "AWS_ARM64"|"CURRENT"
+#'         ),
+#'         enhancedInfrastructureMetrics = "Active"|"Inactive",
+#'         inferredWorkloadTypes = "Active"|"Inactive"
+#'       ),
+#'       inferredWorkloadTypes = list(
+#'         "AmazonEmr"|"ApacheCassandra"|"ApacheHadoop"|"Memcached"|"Nginx"|"PostgreSql"|"Redis"
 #'       )
 #'     )
 #'   ),
@@ -470,10 +836,15 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 #'   maxResults = 123,
 #'   filters = list(
 #'     list(
-#'       name = "Finding"|"RecommendationSourceType",
+#'       name = "Finding"|"FindingReasonCodes"|"RecommendationSourceType",
 #'       values = list(
 #'         "string"
 #'       )
+#'     )
+#'   ),
+#'   recommendationPreferences = list(
+#'     cpuVendorArchitectures = list(
+#'       "AWS_ARM64"|"CURRENT"
 #'     )
 #'   )
 #' )
@@ -482,14 +853,14 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_get_auto_scaling_group_recommendations
-computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds = NULL, autoScalingGroupArns = NULL, nextToken = NULL, maxResults = NULL, filters = NULL) {
+computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds = NULL, autoScalingGroupArns = NULL, nextToken = NULL, maxResults = NULL, filters = NULL, recommendationPreferences = NULL) {
   op <- new_operation(
     name = "GetAutoScalingGroupRecommendations",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .computeoptimizer$get_auto_scaling_group_recommendations_input(accountIds = accountIds, autoScalingGroupArns = autoScalingGroupArns, nextToken = nextToken, maxResults = maxResults, filters = filters)
+  input <- .computeoptimizer$get_auto_scaling_group_recommendations_input(accountIds = accountIds, autoScalingGroupArns = autoScalingGroupArns, nextToken = nextToken, maxResults = maxResults, filters = filters, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_auto_scaling_group_recommendations_output()
   config <- get_config()
   svc <- .computeoptimizer$service(config)
@@ -504,11 +875,11 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #' @description
 #' Returns Amazon Elastic Block Store (Amazon EBS) volume recommendations.
 #' 
-#' AWS Compute Optimizer generates recommendations for Amazon EBS volumes
-#' that meet a specific set of requirements. For more information, see the
+#' Compute Optimizer generates recommendations for Amazon EBS volumes that
+#' meet a specific set of requirements. For more information, see the
 #' [Supported resources and
 #' requirements](https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html)
-#' in the *AWS Compute Optimizer User Guide*.
+#' in the *Compute Optimizer User Guide*.
 #'
 #' @usage
 #' computeoptimizer_get_ebs_volume_recommendations(volumeArns, nextToken,
@@ -521,13 +892,14 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #' request.
 #' 
 #' To retrieve the remaining results, make another request with the
-#' returned `NextToken` value.
-#' @param filters An array of objects that describe a filter that returns a more specific
+#' returned `nextToken` value.
+#' @param filters An array of objects to specify a filter that returns a more specific
 #' list of volume recommendations.
-#' @param accountIds The IDs of the AWS accounts for which to return volume recommendations.
+#' @param accountIds The ID of the Amazon Web Services account for which to return volume
+#' recommendations.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to return
+#' parameter to specify the member account for which you want to return
 #' volume recommendations.
 #' 
 #' Only one account ID can be specified per request.
@@ -569,12 +941,20 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #'             volumeBurstThroughput = 123
 #'           ),
 #'           performanceRisk = 123.0,
-#'           rank = 123
+#'           rank = 123,
+#'           savingsOpportunity = list(
+#'             savingsOpportunityPercentage = 123.0,
+#'             estimatedMonthlySavings = list(
+#'               currency = "USD"|"CNY",
+#'               value = 123.0
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       lastRefreshTimestamp = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       currentPerformanceRisk = "VeryLow"|"Low"|"Medium"|"High"
 #'     )
 #'   ),
 #'   errors = list(
@@ -634,15 +1014,15 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #' @description
 #' Returns Amazon EC2 instance recommendations.
 #' 
-#' AWS Compute Optimizer generates recommendations for Amazon Elastic
-#' Compute Cloud (Amazon EC2) instances that meet a specific set of
-#' requirements. For more information, see the [Supported resources and
+#' Compute Optimizer generates recommendations for Amazon Elastic Compute
+#' Cloud (Amazon EC2) instances that meet a specific set of requirements.
+#' For more information, see the [Supported resources and
 #' requirements](https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html)
-#' in the *AWS Compute Optimizer User Guide*.
+#' in the *Compute Optimizer User Guide*.
 #'
 #' @usage
 #' computeoptimizer_get_ec2_instance_recommendations(instanceArns,
-#'   nextToken, maxResults, filters, accountIds)
+#'   nextToken, maxResults, filters, accountIds, recommendationPreferences)
 #'
 #' @param instanceArns The Amazon Resource Name (ARN) of the instances for which to return
 #' recommendations.
@@ -651,17 +1031,19 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #' request.
 #' 
 #' To retrieve the remaining results, make another request with the
-#' returned `NextToken` value.
-#' @param filters An array of objects that describe a filter that returns a more specific
+#' returned `nextToken` value.
+#' @param filters An array of objects to specify a filter that returns a more specific
 #' list of instance recommendations.
-#' @param accountIds The IDs of the AWS accounts for which to return instance
+#' @param accountIds The ID of the Amazon Web Services account for which to return instance
 #' recommendations.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to return
+#' parameter to specify the member account for which you want to return
 #' instance recommendations.
 #' 
 #' Only one account ID can be specified per request.
+#' @param recommendationPreferences An object to specify the preferences for the Amazon EC2 instance
+#' recommendations to return in the response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -675,9 +1057,12 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'       instanceName = "string",
 #'       currentInstanceType = "string",
 #'       finding = "Underprovisioned"|"Overprovisioned"|"Optimized"|"NotOptimized",
+#'       findingReasonCodes = list(
+#'         "CPUOverprovisioned"|"CPUUnderprovisioned"|"MemoryOverprovisioned"|"MemoryUnderprovisioned"|"EBSThroughputOverprovisioned"|"EBSThroughputUnderprovisioned"|"EBSIOPSOverprovisioned"|"EBSIOPSUnderprovisioned"|"NetworkBandwidthOverprovisioned"|"NetworkBandwidthUnderprovisioned"|"NetworkPPSOverprovisioned"|"NetworkPPSUnderprovisioned"|"DiskIOPSOverprovisioned"|"DiskIOPSUnderprovisioned"|"DiskThroughputOverprovisioned"|"DiskThroughputUnderprovisioned"
+#'       ),
 #'       utilizationMetrics = list(
 #'         list(
-#'           name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND",
+#'           name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND"|"DISK_READ_OPS_PER_SECOND"|"DISK_WRITE_OPS_PER_SECOND"|"DISK_READ_BYTES_PER_SECOND"|"DISK_WRITE_BYTES_PER_SECOND"|"NETWORK_IN_BYTES_PER_SECOND"|"NETWORK_OUT_BYTES_PER_SECOND"|"NETWORK_PACKETS_IN_PER_SECOND"|"NETWORK_PACKETS_OUT_PER_SECOND",
 #'           statistic = "Maximum"|"Average",
 #'           value = 123.0
 #'         )
@@ -688,13 +1073,24 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'           instanceType = "string",
 #'           projectedUtilizationMetrics = list(
 #'             list(
-#'               name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND",
+#'               name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND"|"DISK_READ_OPS_PER_SECOND"|"DISK_WRITE_OPS_PER_SECOND"|"DISK_READ_BYTES_PER_SECOND"|"DISK_WRITE_BYTES_PER_SECOND"|"NETWORK_IN_BYTES_PER_SECOND"|"NETWORK_OUT_BYTES_PER_SECOND"|"NETWORK_PACKETS_IN_PER_SECOND"|"NETWORK_PACKETS_OUT_PER_SECOND",
 #'               statistic = "Maximum"|"Average",
 #'               value = 123.0
 #'             )
 #'           ),
+#'           platformDifferences = list(
+#'             "Hypervisor"|"NetworkInterface"|"StorageInterface"|"InstanceStoreAvailability"|"VirtualizationType"|"Architecture"
+#'           ),
 #'           performanceRisk = 123.0,
-#'           rank = 123
+#'           rank = 123,
+#'           savingsOpportunity = list(
+#'             savingsOpportunityPercentage = 123.0,
+#'             estimatedMonthlySavings = list(
+#'               currency = "USD"|"CNY",
+#'               value = 123.0
+#'             )
+#'           ),
+#'           migrationEffort = "VeryLow"|"Low"|"Medium"|"High"
 #'         )
 #'       ),
 #'       recommendationSources = list(
@@ -705,6 +1101,17 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'       ),
 #'       lastRefreshTimestamp = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       currentPerformanceRisk = "VeryLow"|"Low"|"Medium"|"High",
+#'       effectiveRecommendationPreferences = list(
+#'         cpuVendorArchitectures = list(
+#'           "AWS_ARM64"|"CURRENT"
+#'         ),
+#'         enhancedInfrastructureMetrics = "Active"|"Inactive",
+#'         inferredWorkloadTypes = "Active"|"Inactive"
+#'       ),
+#'       inferredWorkloadTypes = list(
+#'         "AmazonEmr"|"ApacheCassandra"|"ApacheHadoop"|"Memcached"|"Nginx"|"PostgreSql"|"Redis"
 #'       )
 #'     )
 #'   ),
@@ -728,7 +1135,7 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'   maxResults = 123,
 #'   filters = list(
 #'     list(
-#'       name = "Finding"|"RecommendationSourceType",
+#'       name = "Finding"|"FindingReasonCodes"|"RecommendationSourceType",
 #'       values = list(
 #'         "string"
 #'       )
@@ -736,6 +1143,11 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'   ),
 #'   accountIds = list(
 #'     "string"
+#'   ),
+#'   recommendationPreferences = list(
+#'     cpuVendorArchitectures = list(
+#'       "AWS_ARM64"|"CURRENT"
+#'     )
 #'   )
 #' )
 #' ```
@@ -743,14 +1155,14 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_get_ec2_instance_recommendations
-computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NULL, nextToken = NULL, maxResults = NULL, filters = NULL, accountIds = NULL) {
+computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NULL, nextToken = NULL, maxResults = NULL, filters = NULL, accountIds = NULL, recommendationPreferences = NULL) {
   op <- new_operation(
     name = "GetEC2InstanceRecommendations",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .computeoptimizer$get_ec2_instance_recommendations_input(instanceArns = instanceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds)
+  input <- .computeoptimizer$get_ec2_instance_recommendations_input(instanceArns = instanceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_ec2_instance_recommendations_output()
   config <- get_config()
   svc <- .computeoptimizer$service(config)
@@ -776,14 +1188,16 @@ computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NUL
 #'
 #' @usage
 #' computeoptimizer_get_ec2_recommendation_projected_metrics(instanceArn,
-#'   stat, period, startTime, endTime)
+#'   stat, period, startTime, endTime, recommendationPreferences)
 #'
 #' @param instanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the instances for which to return
 #' recommendation projected metrics.
 #' @param stat &#91;required&#93; The statistic of the projected metrics.
 #' @param period &#91;required&#93; The granularity, in seconds, of the projected metrics data points.
-#' @param startTime &#91;required&#93; The time stamp of the first projected metrics data point to return.
-#' @param endTime &#91;required&#93; The time stamp of the last projected metrics data point to return.
+#' @param startTime &#91;required&#93; The timestamp of the first projected metrics data point to return.
+#' @param endTime &#91;required&#93; The timestamp of the last projected metrics data point to return.
+#' @param recommendationPreferences An object to specify the preferences for the Amazon EC2 recommendation
+#' projected metrics to return in the response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -795,7 +1209,7 @@ computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NUL
 #'       rank = 123,
 #'       projectedMetrics = list(
 #'         list(
-#'           name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND",
+#'           name = "Cpu"|"Memory"|"EBS_READ_OPS_PER_SECOND"|"EBS_WRITE_OPS_PER_SECOND"|"EBS_READ_BYTES_PER_SECOND"|"EBS_WRITE_BYTES_PER_SECOND"|"DISK_READ_OPS_PER_SECOND"|"DISK_WRITE_OPS_PER_SECOND"|"DISK_READ_BYTES_PER_SECOND"|"DISK_WRITE_BYTES_PER_SECOND"|"NETWORK_IN_BYTES_PER_SECOND"|"NETWORK_OUT_BYTES_PER_SECOND"|"NETWORK_PACKETS_IN_PER_SECOND"|"NETWORK_PACKETS_OUT_PER_SECOND",
 #'           timestamps = list(
 #'             as.POSIXct(
 #'               "2015-01-01"
@@ -822,6 +1236,11 @@ computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NUL
 #'   ),
 #'   endTime = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   recommendationPreferences = list(
+#'     cpuVendorArchitectures = list(
+#'       "AWS_ARM64"|"CURRENT"
+#'     )
 #'   )
 #' )
 #' ```
@@ -829,14 +1248,14 @@ computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NUL
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_get_ec2_recommendation_projected_metrics
-computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceArn, stat, period, startTime, endTime) {
+computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceArn, stat, period, startTime, endTime, recommendationPreferences = NULL) {
   op <- new_operation(
     name = "GetEC2RecommendationProjectedMetrics",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .computeoptimizer$get_ec2_recommendation_projected_metrics_input(instanceArn = instanceArn, stat = stat, period = period, startTime = startTime, endTime = endTime)
+  input <- .computeoptimizer$get_ec2_recommendation_projected_metrics_input(instanceArn = instanceArn, stat = stat, period = period, startTime = startTime, endTime = endTime, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_ec2_recommendation_projected_metrics_output()
   config <- get_config()
   svc <- .computeoptimizer$service(config)
@@ -846,16 +1265,74 @@ computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceAr
 }
 .computeoptimizer$operations$get_ec2_recommendation_projected_metrics <- computeoptimizer_get_ec2_recommendation_projected_metrics
 
-#' Returns the enrollment (opt in) status of an account to the AWS Compute
+#' Returns the recommendation preferences that are in effect for a given
+#' resource, such as enhanced infrastructure metrics
+#'
+#' @description
+#' Returns the recommendation preferences that are in effect for a given
+#' resource, such as enhanced infrastructure metrics. Considers all
+#' applicable preferences that you might have set at the resource, account,
+#' and organization level.
+#' 
+#' When you create a recommendation preference, you can set its status to
+#' `Active` or `Inactive`. Use this action to view the recommendation
+#' preferences that are in effect, or `Active`.
+#'
+#' @usage
+#' computeoptimizer_get_effective_recommendation_preferences(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to confirm
+#' effective recommendation preferences. Only EC2 instance and Auto Scaling
+#' group ARNs are currently supported.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   enhancedInfrastructureMetrics = "Active"|"Inactive"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_effective_recommendation_preferences(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_get_effective_recommendation_preferences
+computeoptimizer_get_effective_recommendation_preferences <- function(resourceArn) {
+  op <- new_operation(
+    name = "GetEffectiveRecommendationPreferences",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$get_effective_recommendation_preferences_input(resourceArn = resourceArn)
+  output <- .computeoptimizer$get_effective_recommendation_preferences_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$get_effective_recommendation_preferences <- computeoptimizer_get_effective_recommendation_preferences
+
+#' Returns the enrollment (opt in) status of an account to the Compute
 #' Optimizer service
 #'
 #' @description
-#' Returns the enrollment (opt in) status of an account to the AWS Compute
+#' Returns the enrollment (opt in) status of an account to the Compute
 #' Optimizer service.
 #' 
 #' If the account is the management account of an organization, this action
-#' also confirms the enrollment status of member accounts within the
-#' organization.
+#' also confirms the enrollment status of member accounts of the
+#' organization. Use the
+#' [`get_enrollment_statuses_for_organization`][computeoptimizer_get_enrollment_statuses_for_organization]
+#' action to get detailed information about the enrollment status of member
+#' accounts of an organization.
 #'
 #' @usage
 #' computeoptimizer_get_enrollment_status()
@@ -866,7 +1343,11 @@ computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceAr
 #' list(
 #'   status = "Active"|"Inactive"|"Pending"|"Failed",
 #'   statusReason = "string",
-#'   memberAccountsEnrolled = TRUE|FALSE
+#'   memberAccountsEnrolled = TRUE|FALSE,
+#'   lastUpdatedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   numberOfMemberAccountsOptedIn = 123
 #' )
 #' ```
 #'
@@ -895,16 +1376,95 @@ computeoptimizer_get_enrollment_status <- function() {
 }
 .computeoptimizer$operations$get_enrollment_status <- computeoptimizer_get_enrollment_status
 
-#' Returns AWS Lambda function recommendations
+#' Returns the Compute Optimizer enrollment (opt-in) status of organization
+#' member accounts, if your account is an organization management account
 #'
 #' @description
-#' Returns AWS Lambda function recommendations.
+#' Returns the Compute Optimizer enrollment (opt-in) status of organization
+#' member accounts, if your account is an organization management account.
 #' 
-#' AWS Compute Optimizer generates recommendations for functions that meet
-#' a specific set of requirements. For more information, see the [Supported
+#' To get the enrollment status of standalone accounts, use the
+#' [`get_enrollment_status`][computeoptimizer_get_enrollment_status]
+#' action.
+#'
+#' @usage
+#' computeoptimizer_get_enrollment_statuses_for_organization(filters,
+#'   nextToken, maxResults)
+#'
+#' @param filters An array of objects to specify a filter that returns a more specific
+#' list of account enrollment statuses.
+#' @param nextToken The token to advance to the next page of account enrollment statuses.
+#' @param maxResults The maximum number of account enrollment statuses to return with a
+#' single request. You can specify up to 100 statuses to return with each
+#' request.
+#' 
+#' To retrieve the remaining results, make another request with the
+#' returned `nextToken` value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   accountEnrollmentStatuses = list(
+#'     list(
+#'       accountId = "string",
+#'       status = "Active"|"Inactive"|"Pending"|"Failed",
+#'       statusReason = "string",
+#'       lastUpdatedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_enrollment_statuses_for_organization(
+#'   filters = list(
+#'     list(
+#'       name = "Status",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_get_enrollment_statuses_for_organization
+computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "GetEnrollmentStatusesForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$get_enrollment_statuses_for_organization_input(filters = filters, nextToken = nextToken, maxResults = maxResults)
+  output <- .computeoptimizer$get_enrollment_statuses_for_organization_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$get_enrollment_statuses_for_organization <- computeoptimizer_get_enrollment_statuses_for_organization
+
+#' Returns Lambda function recommendations
+#'
+#' @description
+#' Returns Lambda function recommendations.
+#' 
+#' Compute Optimizer generates recommendations for functions that meet a
+#' specific set of requirements. For more information, see the [Supported
 #' resources and
 #' requirements](https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html)
-#' in the *AWS Compute Optimizer User Guide*.
+#' in the *Compute Optimizer User Guide*.
 #'
 #' @usage
 #' computeoptimizer_get_lambda_function_recommendations(functionArns,
@@ -920,23 +1480,23 @@ computeoptimizer_get_enrollment_status <- function() {
 #' Optimizer will return recommendations for the specified function
 #' version. For more information about using function versions, see [Using
 #' versions](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html#versioning-versions-using)
-#' in the *AWS Lambda Developer Guide*.
-#' @param accountIds The IDs of the AWS accounts for which to return function
+#' in the *Lambda Developer Guide*.
+#' @param accountIds The ID of the Amazon Web Services account for which to return function
 #' recommendations.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to return
+#' parameter to specify the member account for which you want to return
 #' function recommendations.
 #' 
 #' Only one account ID can be specified per request.
-#' @param filters An array of objects that describe a filter that returns a more specific
+#' @param filters An array of objects to specify a filter that returns a more specific
 #' list of function recommendations.
 #' @param nextToken The token to advance to the next page of function recommendations.
 #' @param maxResults The maximum number of function recommendations to return with a single
 #' request.
 #' 
 #' To retrieve the remaining results, make another request with the
-#' returned `NextToken` value.
+#' returned `nextToken` value.
 #'
 #' @return
 #' A list with the following syntax:
@@ -975,9 +1535,17 @@ computeoptimizer_get_enrollment_status <- function() {
 #'               statistic = "LowerBound"|"UpperBound"|"Expected",
 #'               value = 123.0
 #'             )
+#'           ),
+#'           savingsOpportunity = list(
+#'             savingsOpportunityPercentage = 123.0,
+#'             estimatedMonthlySavings = list(
+#'               currency = "USD"|"CNY",
+#'               value = 123.0
+#'             )
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       currentPerformanceRisk = "VeryLow"|"Low"|"Medium"|"High"
 #'     )
 #'   )
 #' )
@@ -1025,25 +1593,131 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
 }
 .computeoptimizer$operations$get_lambda_function_recommendations <- computeoptimizer_get_lambda_function_recommendations
 
+#' Returns existing recommendation preferences, such as enhanced
+#' infrastructure metrics
+#'
+#' @description
+#' Returns existing recommendation preferences, such as enhanced
+#' infrastructure metrics.
+#' 
+#' Use the `scope` parameter to specify which preferences to return. You
+#' can specify to return preferences for an organization, a specific
+#' account ID, or a specific EC2 instance or Auto Scaling group Amazon
+#' Resource Name (ARN).
+#' 
+#' For more information, see [Activating enhanced infrastructure
+#' metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html)
+#' in the *Compute Optimizer User Guide*.
+#'
+#' @usage
+#' computeoptimizer_get_recommendation_preferences(resourceType, scope,
+#'   nextToken, maxResults)
+#'
+#' @param resourceType &#91;required&#93; The target resource type of the recommendation preference for which to
+#' return preferences.
+#' 
+#' The `Ec2Instance` option encompasses standalone instances and instances
+#' that are part of Auto Scaling groups. The `AutoScalingGroup` option
+#' encompasses only instances that are part of an Auto Scaling group.
+#' 
+#' The valid values for this parameter are `Ec2Instance` and
+#' `AutoScalingGroup`.
+#' @param scope An object that describes the scope of the recommendation preference to
+#' return.
+#' 
+#' You can return recommendation preferences that are created at the
+#' organization level (for management accounts of an organization only),
+#' account level, and resource level. For more information, see [Activating
+#' enhanced infrastructure
+#' metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html)
+#' in the *Compute Optimizer User Guide*.
+#' @param nextToken The token to advance to the next page of recommendation preferences.
+#' @param maxResults The maximum number of recommendation preferences to return with a single
+#' request.
+#' 
+#' To retrieve the remaining results, make another request with the
+#' returned `nextToken` value.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   recommendationPreferencesDetails = list(
+#'     list(
+#'       scope = list(
+#'         name = "Organization"|"AccountId"|"ResourceArn",
+#'         value = "string"
+#'       ),
+#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable",
+#'       enhancedInfrastructureMetrics = "Active"|"Inactive",
+#'       inferredWorkloadTypes = "Active"|"Inactive"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_recommendation_preferences(
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable",
+#'   scope = list(
+#'     name = "Organization"|"AccountId"|"ResourceArn",
+#'     value = "string"
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_get_recommendation_preferences
+computeoptimizer_get_recommendation_preferences <- function(resourceType, scope = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "GetRecommendationPreferences",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$get_recommendation_preferences_input(resourceType = resourceType, scope = scope, nextToken = nextToken, maxResults = maxResults)
+  output <- .computeoptimizer$get_recommendation_preferences_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$get_recommendation_preferences <- computeoptimizer_get_recommendation_preferences
+
 #' Returns the optimization findings for an account
 #'
 #' @description
 #' Returns the optimization findings for an account.
 #' 
-#' For example, it returns the number of Amazon EC2 instances in an account
-#' that are under-provisioned, over-provisioned, or optimized. It also
-#' returns the number of Auto Scaling groups in an account that are not
-#' optimized, or optimized.
+#' It returns the number of:
+#' 
+#' -   Amazon EC2 instances in an account that are `Underprovisioned`,
+#'     `Overprovisioned`, or `Optimized`.
+#' 
+#' -   Auto Scaling groups in an account that are `NotOptimized`, or
+#'     `Optimized`.
+#' 
+#' -   Amazon EBS volumes in an account that are `NotOptimized`, or
+#'     `Optimized`.
+#' 
+#' -   Lambda functions in an account that are `NotOptimized`, or
+#'     `Optimized`.
 #'
 #' @usage
 #' computeoptimizer_get_recommendation_summaries(accountIds, nextToken,
 #'   maxResults)
 #'
-#' @param accountIds The IDs of the AWS accounts for which to return recommendation
-#' summaries.
+#' @param accountIds The ID of the Amazon Web Services account for which to return
+#' recommendation summaries.
 #' 
 #' If your account is the management account of an organization, use this
-#' parameter to specify the member accounts for which you want to return
+#' parameter to specify the member account for which you want to return
 #' recommendation summaries.
 #' 
 #' Only one account ID can be specified per request.
@@ -1052,7 +1726,7 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
 #' request.
 #' 
 #' To retrieve the remaining results, make another request with the
-#' returned `NextToken` value.
+#' returned `nextToken` value.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1074,7 +1748,20 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
 #'         )
 #'       ),
 #'       recommendationResourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction",
-#'       accountId = "string"
+#'       accountId = "string",
+#'       savingsOpportunity = list(
+#'         savingsOpportunityPercentage = 123.0,
+#'         estimatedMonthlySavings = list(
+#'           currency = "USD"|"CNY",
+#'           value = 123.0
+#'         )
+#'       ),
+#'       currentPerformanceRiskRatings = list(
+#'         high = 123,
+#'         medium = 123,
+#'         low = 123,
+#'         veryLow = 123
+#'       )
 #'     )
 #'   )
 #' )
@@ -1111,25 +1798,153 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 }
 .computeoptimizer$operations$get_recommendation_summaries <- computeoptimizer_get_recommendation_summaries
 
-#' Updates the enrollment (opt in) status of an account to the AWS Compute
-#' Optimizer service
+#' Creates a new recommendation preference or updates an existing
+#' recommendation preference, such as enhanced infrastructure metrics
 #'
 #' @description
-#' Updates the enrollment (opt in) status of an account to the AWS Compute
-#' Optimizer service.
+#' Creates a new recommendation preference or updates an existing
+#' recommendation preference, such as enhanced infrastructure metrics.
+#' 
+#' For more information, see [Activating enhanced infrastructure
+#' metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html)
+#' in the *Compute Optimizer User Guide*.
+#'
+#' @usage
+#' computeoptimizer_put_recommendation_preferences(resourceType, scope,
+#'   enhancedInfrastructureMetrics, inferredWorkloadTypes)
+#'
+#' @param resourceType &#91;required&#93; The target resource type of the recommendation preference to create.
+#' 
+#' The `Ec2Instance` option encompasses standalone instances and instances
+#' that are part of Auto Scaling groups. The `AutoScalingGroup` option
+#' encompasses only instances that are part of an Auto Scaling group.
+#' 
+#' The valid values for this parameter are `Ec2Instance` and
+#' `AutoScalingGroup`.
+#' @param scope An object that describes the scope of the recommendation preference to
+#' create.
+#' 
+#' You can create recommendation preferences at the organization level (for
+#' management accounts of an organization only), account level, and
+#' resource level. For more information, see [Activating enhanced
+#' infrastructure
+#' metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' You cannot create recommendation preferences for Auto Scaling groups at
+#' the organization and account levels. You can create recommendation
+#' preferences for Auto Scaling groups only at the resource level by
+#' specifying a scope name of `ResourceArn` and a scope value of the Auto
+#' Scaling group Amazon Resource Name (ARN). This will configure the
+#' preference for all instances that are part of the specified Auto Scaling
+#' group. You also cannot create recommendation preferences at the resource
+#' level for instances that are part of an Auto Scaling group. You can
+#' create recommendation preferences at the resource level only for
+#' standalone instances.
+#' @param enhancedInfrastructureMetrics The status of the enhanced infrastructure metrics recommendation
+#' preference to create or update.
+#' 
+#' Specify the `Active` status to activate the preference, or specify
+#' `Inactive` to deactivate the preference.
+#' 
+#' For more information, see [Enhanced infrastructure
+#' metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html)
+#' in the *Compute Optimizer User Guide*.
+#' @param inferredWorkloadTypes The status of the inferred workload types recommendation preference to
+#' create or update.
+#' 
+#' The inferred workload type feature is active by default. To deactivate
+#' it, create a recommendation preference.
+#' 
+#' Specify the `Inactive` status to deactivate the feature, or specify
+#' `Active` to activate it.
+#' 
+#' For more information, see [Inferred workload
+#' types](https://docs.aws.amazon.com/compute-optimizer/latest/ug/) in the
+#' *Compute Optimizer User Guide*.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_recommendation_preferences(
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable",
+#'   scope = list(
+#'     name = "Organization"|"AccountId"|"ResourceArn",
+#'     value = "string"
+#'   ),
+#'   enhancedInfrastructureMetrics = "Active"|"Inactive",
+#'   inferredWorkloadTypes = "Active"|"Inactive"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_put_recommendation_preferences
+computeoptimizer_put_recommendation_preferences <- function(resourceType, scope = NULL, enhancedInfrastructureMetrics = NULL, inferredWorkloadTypes = NULL) {
+  op <- new_operation(
+    name = "PutRecommendationPreferences",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$put_recommendation_preferences_input(resourceType = resourceType, scope = scope, enhancedInfrastructureMetrics = enhancedInfrastructureMetrics, inferredWorkloadTypes = inferredWorkloadTypes)
+  output <- .computeoptimizer$put_recommendation_preferences_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$put_recommendation_preferences <- computeoptimizer_put_recommendation_preferences
+
+#' Updates the enrollment (opt in and opt out) status of an account to the
+#' Compute Optimizer service
+#'
+#' @description
+#' Updates the enrollment (opt in and opt out) status of an account to the
+#' Compute Optimizer service.
 #' 
 #' If the account is a management account of an organization, this action
-#' can also be used to enroll member accounts within the organization.
+#' can also be used to enroll member accounts of the organization.
+#' 
+#' You must have the appropriate permissions to opt in to Compute
+#' Optimizer, to view its recommendations, and to opt out. For more
+#' information, see [Controlling access with Amazon Web Services Identity
+#' and Access
+#' Management](https://docs.aws.amazon.com/compute-optimizer/latest/ug/security-iam.html)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' When you opt in, Compute Optimizer automatically creates a
+#' service-linked role in your account to access its data. For more
+#' information, see [Using Service-Linked Roles for Compute
+#' Optimizer](https://docs.aws.amazon.com/compute-optimizer/latest/ug/using-service-linked-roles.html)
+#' in the *Compute Optimizer User Guide*.
 #'
 #' @usage
 #' computeoptimizer_update_enrollment_status(status, includeMemberAccounts)
 #'
 #' @param status &#91;required&#93; The new enrollment status of the account.
 #' 
-#' Accepted options are `Active` or `Inactive`. You will get an error if
-#' `Pending` or `Failed` are specified.
+#' The following status options are available:
+#' 
+#' -   `Active` - Opts in your account to the Compute Optimizer service.
+#'     Compute Optimizer begins analyzing the configuration and utilization
+#'     metrics of your Amazon Web Services resources after you opt in. For
+#'     more information, see [Metrics analyzed by Compute
+#'     Optimizer](https://docs.aws.amazon.com/compute-optimizer/latest/ug/metrics.html)
+#'     in the *Compute Optimizer User Guide*.
+#' 
+#' -   `Inactive` - Opts out your account from the Compute Optimizer
+#'     service. Your account's recommendations and related metrics data
+#'     will be deleted from Compute Optimizer after you opt out.
+#' 
+#' The `Pending` and `Failed` options cannot be used to update the
+#' enrollment status of an account. They are returned in the response of a
+#' request to update the enrollment status of an account.
 #' @param includeMemberAccounts Indicates whether to enroll member accounts of the organization if the
-#' your account is the management account of an organization.
+#' account is the management account of an organization.
 #'
 #' @return
 #' A list with the following syntax:

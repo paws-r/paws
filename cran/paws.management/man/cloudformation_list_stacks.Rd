@@ -5,7 +5,7 @@
 \title{Returns the summary information for stacks whose status matches the
 specified StackStatusFilter}
 \usage{
-cloudformation_list_stacks(NextToken, StackStatusFilter)
+cloudformation_list_stacks(NextToken = NULL, StackStatusFilter = NULL)
 }
 \arguments{
 \item{NextToken}{A string that identifies the next page of stacks that you want to
@@ -16,53 +16,9 @@ to list only stacks with the specified status codes. For a complete list
 of stack status codes, see the \code{StackStatus} parameter of the Stack data
 type.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StackSummaries = list(
-    list(
-      StackId = "string",
-      StackName = "string",
-      TemplateDescription = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      DeletionTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      StackStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"REVIEW_IN_PROGRESS"|"IMPORT_IN_PROGRESS"|"IMPORT_COMPLETE"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE",
-      StackStatusReason = "string",
-      ParentId = "string",
-      RootId = "string",
-      DriftInformation = list(
-        StackDriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
-        LastCheckTimestamp = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns the summary information for stacks whose status matches the
-specified StackStatusFilter. Summary information for stacks that have
-been deleted is kept for 90 days after the stack is deleted. If no
-StackStatusFilter is specified, summary information for all stacks is
-returned (including existing stacks and stacks that have been deleted).
-}
-\section{Request syntax}{
-\preformatted{svc$list_stacks(
-  NextToken = "string",
-  StackStatusFilter = list(
-    "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_FAILED"|"ROLLBACK_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_ROLLBACK_IN_PROGRESS"|"UPDATE_ROLLBACK_FAILED"|"UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"|"UPDATE_ROLLBACK_COMPLETE"|"REVIEW_IN_PROGRESS"|"IMPORT_IN_PROGRESS"|"IMPORT_COMPLETE"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE"
-  )
-)
-}
-}
+Returns the summary information for stacks whose status matches the specified StackStatusFilter. Summary information for stacks that have been deleted is kept for 90 days after the stack is deleted. If no StackStatusFilter is specified, summary information for all stacks is returned (including existing stacks and stacks that have been deleted).
 
+See \url{https://paws-r.github.io/docs/cloudformation/list_stacks.html} for full documentation.
+}
 \keyword{internal}

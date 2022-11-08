@@ -2,11 +2,16 @@
 % Please edit documentation in R/acm_operations.R
 \name{acm_import_certificate}
 \alias{acm_import_certificate}
-\title{Imports a certificate into AWS Certificate Manager (ACM) to use with
-services that are integrated with ACM}
+\title{Imports a certificate into Amazon Web Services Certificate Manager (ACM)
+to use with services that are integrated with ACM}
 \usage{
-acm_import_certificate(CertificateArn, Certificate, PrivateKey,
-  CertificateChain, Tags)
+acm_import_certificate(
+  CertificateArn = NULL,
+  Certificate,
+  PrivateKey,
+  CertificateChain = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{CertificateArn}{The \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
@@ -23,75 +28,9 @@ this field.}
 
 Note: You cannot apply tags when reimporting a certificate.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CertificateArn = "string"
-)
-}
-}
 \description{
-Imports a certificate into AWS Certificate Manager (ACM) to use with
-services that are integrated with ACM. Note that \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html}{integrated services}
-allow only certificate types and keys they support to be associated with
-their resources. Further, their support differs depending on whether the
-certificate is imported into IAM or into ACM. For more information, see
-the documentation for each service. For more information about importing
-certificates into ACM, see \href{https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html}{Importing Certificates}
-in the \emph{AWS Certificate Manager User Guide}.
+Imports a certificate into Amazon Web Services Certificate Manager (ACM) to use with services that are integrated with ACM. Note that \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html}{integrated services} allow only certificate types and keys they support to be associated with their resources. Further, their support differs depending on whether the certificate is imported into IAM or into ACM. For more information, see the documentation for each service. For more information about importing certificates into ACM, see \href{https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html}{Importing Certificates} in the \emph{Amazon Web Services Certificate Manager User Guide}.
 
-ACM does not provide \href{https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html}{managed renewal}
-for certificates that you import.
-
-Note the following guidelines when importing third party certificates:
-\itemize{
-\item You must enter the private key that matches the certificate you are
-importing.
-\item The private key must be unencrypted. You cannot import a private key
-that is protected by a password or a passphrase.
-\item If the certificate you are importing is not self-signed, you must
-enter its certificate chain.
-\item If a certificate chain is included, the issuer must be the subject
-of one of the certificates in the chain.
-\item The certificate, private key, and certificate chain must be
-PEM-encoded.
-\item The current time must be between the \verb{Not Before} and \verb{Not After}
-certificate fields.
-\item The \code{Issuer} field must not be empty.
-\item The OCSP authority URL, if present, must not exceed 1000 characters.
-\item To import a new certificate, omit the \code{CertificateArn} argument.
-Include this argument only when you want to replace a previously
-imported certifica
-\item When you import a certificate by using the CLI, you must specify the
-certificate, the certificate chain, and the private key by their
-file names preceded by \verb{file://}. For example, you can specify a
-certificate saved in the \verb{C:\\temp} folder as
-\verb{file://C:\\temp\\certificate_to_import.pem}. If you are making an
-HTTP or HTTPS Query request, include these arguments as BLOBs.
-\item When you import a certificate by using an SDK, you must specify the
-certificate, the certificate chain, and the private key files in the
-manner required by the programming language you're using.
-\item The cryptographic algorithm of an imported certificate must match
-the algorithm of the signing CA. For example, if the signing CA key
-type is RSA, then the certificate key type must also be RSA.
+See \url{https://paws-r.github.io/docs/acm/import_certificate.html} for full documentation.
 }
-
-This operation returns the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
-of the imported certificate.
-}
-\section{Request syntax}{
-\preformatted{svc$import_certificate(
-  CertificateArn = "string",
-  Certificate = raw,
-  PrivateKey = raw,
-  CertificateChain = raw,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

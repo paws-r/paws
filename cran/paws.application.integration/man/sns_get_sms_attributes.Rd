@@ -2,9 +2,10 @@
 % Please edit documentation in R/sns_operations.R
 \name{sns_get_sms_attributes}
 \alias{sns_get_sms_attributes}
-\title{Returns the settings for sending SMS messages from your account}
+\title{Returns the settings for sending SMS messages from your Amazon Web
+Services account}
 \usage{
-sns_get_sms_attributes(attributes)
+sns_get_sms_attributes(attributes = NULL)
 }
 \arguments{
 \item{attributes}{A list of the individual attribute names, such as \code{MonthlySpendLimit},
@@ -15,27 +16,9 @@ For all attribute names, see
 
 If you don't use this parameter, Amazon SNS returns all SMS attributes.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  attributes = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns the settings for sending SMS messages from your account.
+Returns the settings for sending SMS messages from your Amazon Web Services account.
 
-These settings are set with the
-\code{\link[=sns_set_sms_attributes]{set_sms_attributes}} action.
+See \url{https://paws-r.github.io/docs/sns/get_sms_attributes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_sms_attributes(
-  attributes = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

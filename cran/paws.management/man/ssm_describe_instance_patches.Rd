@@ -2,63 +2,49 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_instance_patches}
 \alias{ssm_describe_instance_patches}
-\title{Retrieves information about the patches on the specified instance and
-their state relative to the patch baseline being used for the instance}
+\title{Retrieves information about the patches on the specified managed node
+and their state relative to the patch baseline being used for the node}
 \usage{
-ssm_describe_instance_patches(InstanceId, Filters, NextToken,
-  MaxResults)
+ssm_describe_instance_patches(
+  InstanceId,
+  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The ID of the instance whose patch state information should be
+\item{InstanceId}{[required] The ID of the managed node whose patch state information should be
 retrieved.}
 
-\item{Filters}{An array of structures. Each entry in the array is a structure
-containing a Key, Value combination. Valid values for Key are
-\code{Classification} | \code{KBId} | \code{Severity} | \code{State}.}
+\item{Filters}{Each element in the array is a structure containing a key-value pair.
+
+Supported keys for
+\code{\link[=ssm_describe_instance_patches]{describe_instance_patches}}include the
+following:
+\itemize{
+\item \strong{\code{Classification}}
+
+Sample values: \code{Security} | \code{SecurityUpdates}
+\item \strong{\code{KBId}}
+
+Sample values: \code{KB4480056} | \verb{java-1.7.0-openjdk.x86_64}
+\item \strong{\code{Severity}}
+
+Sample values: \code{Important} | \code{Medium} | \code{Low}
+\item \strong{\code{State}}
+
+Sample values: \code{Installed} | \code{InstalledOther} |
+\code{InstalledPendingReboot}
+}}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 
 \item{MaxResults}{The maximum number of patches to return (per page).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Patches = list(
-    list(
-      Title = "string",
-      KBId = "string",
-      Classification = "string",
-      Severity = "string",
-      State = "INSTALLED"|"INSTALLED_OTHER"|"INSTALLED_PENDING_REBOOT"|"INSTALLED_REJECTED"|"MISSING"|"NOT_APPLICABLE"|"FAILED",
-      InstalledTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CVEIds = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves information about the patches on the specified instance and
-their state relative to the patch baseline being used for the instance.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_instance_patches(
-  InstanceId = "string",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Retrieves information about the patches on the specified managed node and their state relative to the patch baseline being used for the node.
 
+See \url{https://paws-r.github.io/docs/ssm/describe_instance_patches.html} for full documentation.
+}
 \keyword{internal}

@@ -2,10 +2,10 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_get_ebs_default_kms_key_id}
 \alias{ec2_get_ebs_default_kms_key_id}
-\title{Describes the default customer master key (CMK) for EBS encryption by
-default for your account in this Region}
+\title{Describes the default KMS key for EBS encryption by default for your
+account in this Region}
 \usage{
-ec2_get_ebs_default_kms_key_id(DryRun)
+ec2_get_ebs_default_kms_key_id(DryRun = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -13,27 +13,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  KmsKeyId = "string"
-)
-}
-}
 \description{
-Describes the default customer master key (CMK) for EBS encryption by
-default for your account in this Region. You can change the default CMK
-for encryption by default using
-\code{\link[=ec2_modify_ebs_default_kms_key_id]{modify_ebs_default_kms_key_id}} or
-\code{\link[=ec2_reset_ebs_default_kms_key_id]{reset_ebs_default_kms_key_id}}.
+Describes the default KMS key for EBS encryption by default for your account in this Region. You can change the default KMS key for encryption by default using \code{\link[=ec2_modify_ebs_default_kms_key_id]{modify_ebs_default_kms_key_id}} or \code{\link[=ec2_reset_ebs_default_kms_key_id]{reset_ebs_default_kms_key_id}}.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/get_ebs_default_kms_key_id.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_ebs_default_kms_key_id(
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

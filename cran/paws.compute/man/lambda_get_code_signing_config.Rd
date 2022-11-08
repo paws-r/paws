@@ -9,33 +9,9 @@ lambda_get_code_signing_config(CodeSigningConfigArn)
 \arguments{
 \item{CodeSigningConfigArn}{[required] The The Amazon Resource Name (ARN) of the code signing configuration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CodeSigningConfig = list(
-    CodeSigningConfigId = "string",
-    CodeSigningConfigArn = "string",
-    Description = "string",
-    AllowedPublishers = list(
-      SigningProfileVersionArns = list(
-        "string"
-      )
-    ),
-    CodeSigningPolicies = list(
-      UntrustedArtifactOnDeployment = "Warn"|"Enforce"
-    ),
-    LastModified = "string"
-  )
-)
-}
-}
 \description{
 Returns information about the specified code signing configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$get_code_signing_config(
-  CodeSigningConfigArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/lambda/get_code_signing_config.html} for full documentation.
+}
 \keyword{internal}

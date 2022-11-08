@@ -12,38 +12,9 @@ glue_batch_stop_job_run(JobName, JobRunIds)
 \item{JobRunIds}{[required] A list of the \code{JobRunIds} that should be stopped for that job
 definition.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SuccessfulSubmissions = list(
-    list(
-      JobName = "string",
-      JobRunId = "string"
-    )
-  ),
-  Errors = list(
-    list(
-      JobName = "string",
-      JobRunId = "string",
-      ErrorDetail = list(
-        ErrorCode = "string",
-        ErrorMessage = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Stops one or more job runs for a specified job definition.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_stop_job_run(
-  JobName = "string",
-  JobRunIds = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/batch_stop_job_run.html} for full documentation.
+}
 \keyword{internal}

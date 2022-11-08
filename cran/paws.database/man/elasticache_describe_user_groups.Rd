@@ -4,7 +4,11 @@
 \alias{elasticache_describe_user_groups}
 \title{Returns a list of user groups}
 \usage{
-elasticache_describe_user_groups(UserGroupId, MaxRecords, Marker)
+elasticache_describe_user_groups(
+  UserGroupId = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{UserGroupId}{The ID of the user group.}
@@ -16,46 +20,11 @@ in the response so that the remaining results can be retrieved.}
 \item{Marker}{An optional marker returned from a prior request. Use this marker for
 pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
-the value specified by MaxRecords. >}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UserGroups = list(
-    list(
-      UserGroupId = "string",
-      Status = "string",
-      Engine = "string",
-      UserIds = list(
-        "string"
-      ),
-      PendingChanges = list(
-        UserIdsToRemove = list(
-          "string"
-        ),
-        UserIdsToAdd = list(
-          "string"
-        )
-      ),
-      ReplicationGroups = list(
-        "string"
-      ),
-      ARN = "string"
-    )
-  ),
-  Marker = "string"
-)
-}
+the value specified by MaxRecords. \>}
 }
 \description{
 Returns a list of user groups.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_user_groups(
-  UserGroupId = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticache/describe_user_groups.html} for full documentation.
+}
 \keyword{internal}

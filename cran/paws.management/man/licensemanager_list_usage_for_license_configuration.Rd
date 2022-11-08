@@ -6,7 +6,11 @@
 license consumption details by resource at a selected point in time}
 \usage{
 licensemanager_list_usage_for_license_configuration(
-  LicenseConfigurationArn, MaxResults, NextToken, Filters)
+  LicenseConfigurationArn,
+  MaxResults = NULL,
+  NextToken = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{LicenseConfigurationArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
@@ -27,45 +31,9 @@ are \code{EQUALS} | \code{NOT_EQUALS}.
 Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LicenseConfigurationUsageList = list(
-    list(
-      ResourceArn = "string",
-      ResourceType = "EC2_INSTANCE"|"EC2_HOST"|"EC2_AMI"|"RDS"|"SYSTEMS_MANAGER_MANAGED_INSTANCE",
-      ResourceStatus = "string",
-      ResourceOwnerId = "string",
-      AssociationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ConsumedLicenses = 123
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists all license usage records for a license configuration, displaying
-license consumption details by resource at a selected point in time. Use
-this action to audit the current license consumption for any license
-inventory and configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$list_usage_for_license_configuration(
-  LicenseConfigurationArn = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
+Lists all license usage records for a license configuration, displaying license consumption details by resource at a selected point in time. Use this action to audit the current license consumption for any license inventory and configuration.
 
+See \url{https://paws-r.github.io/docs/licensemanager/list_usage_for_license_configuration.html} for full documentation.
+}
 \keyword{internal}

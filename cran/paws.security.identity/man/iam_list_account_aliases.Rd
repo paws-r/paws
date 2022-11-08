@@ -2,10 +2,10 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_list_account_aliases}
 \alias{iam_list_account_aliases}
-\title{Lists the account alias associated with the AWS account (Note: you can
-have only one)}
+\title{Lists the account alias associated with the Amazon Web Services account
+(Note: you can have only one)}
 \usage{
-iam_list_account_aliases(Marker, MaxItems)
+iam_list_account_aliases(Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{Use this parameter only when paginating results and only after you
@@ -23,35 +23,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountAliases = list(
-    "string"
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Lists the account alias associated with the AWS account (Note: you can
-have only one). For information about using an AWS account alias, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html}{Using an Alias for Your AWS Account ID}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_account_aliases(
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+Lists the account alias associated with the Amazon Web Services account (Note: you can have only one). For information about using an Amazon Web Services account alias, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html}{Using an alias for your Amazon Web Services account ID} in the \emph{IAM User Guide}.
 
-\examples{
-\dontrun{
-# The following command lists the aliases for the current account.
-svc$list_account_aliases()
-}
-
+See \url{https://paws-r.github.io/docs/iam/list_account_aliases.html} for full documentation.
 }
 \keyword{internal}

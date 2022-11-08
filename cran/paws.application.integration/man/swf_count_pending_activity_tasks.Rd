@@ -12,48 +12,9 @@ swf_count_pending_activity_tasks(domain, taskList)
 
 \item{taskList}{[required] The name of the task list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  count = 123,
-  truncated = TRUE|FALSE
-)
-}
-}
 \description{
-Returns the estimated number of activity tasks in the specified task
-list. The count returned is an approximation and isn't guaranteed to be
-exact. If you specify a task list that no activity task was ever
-scheduled in then \code{0} is returned.
+Returns the estimated number of activity tasks in the specified task list. The count returned is an approximation and isn't guaranteed to be exact. If you specify a task list that no activity task was ever scheduled in then \code{0} is returned.
 
-\strong{Access Control}
-
-You can use IAM policies to control this action's access to Amazon SWF
-resources as follows:
-\itemize{
-\item Use a \code{Resource} element with the domain name to limit the action to
-only specified domains.
-\item Use an \code{Action} element to allow or deny permission to call this
-action.
-\item Constrain the \code{taskList.name} parameter by using a \code{Condition}
-element with the \code{swf:taskList.name} key to allow the action to
-access only certain task lists.
+See \url{https://paws-r.github.io/docs/swf/count_pending_activity_tasks.html} for full documentation.
 }
-
-If the caller doesn't have sufficient permissions to invoke the action,
-or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
-to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
-in the \emph{Amazon SWF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$count_pending_activity_tasks(
-  domain = "string",
-  taskList = list(
-    name = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

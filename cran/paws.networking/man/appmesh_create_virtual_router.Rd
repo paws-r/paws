@@ -4,8 +4,14 @@
 \alias{appmesh_create_virtual_router}
 \title{Creates a virtual router within a service mesh}
 \usage{
-appmesh_create_virtual_router(clientToken, meshName, meshOwner, spec,
-  tags, virtualRouterName)
+appmesh_create_virtual_router(
+  clientToken = NULL,
+  meshName,
+  meshOwner = NULL,
+  spec,
+  tags = NULL,
+  virtualRouterName
+)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -14,10 +20,10 @@ underscores are allowed.}
 
 \item{meshName}{[required] The name of the service mesh to create the virtual router in.}
 
-\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
-not your own, then the account that you specify must share the mesh with
-your account before you can create the resource in the service mesh. For
-more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
+\item{meshOwner}{The Amazon Web Services IAM account ID of the service mesh owner. If the
+account ID is not your own, then the account that you specify must share
+the mesh with your account before you can create the resource in the
+service mesh. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{spec}{[required] The virtual router specification to apply.}
 
@@ -29,77 +35,9 @@ length of 256 characters.}
 
 \item{virtualRouterName}{[required] The name to use for the virtual router.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualRouter = list(
-    meshName = "string",
-    metadata = list(
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      meshOwner = "string",
-      resourceOwner = "string",
-      uid = "string",
-      version = 123
-    ),
-    spec = list(
-      listeners = list(
-        list(
-          portMapping = list(
-            port = 123,
-            protocol = "http"|"tcp"|"http2"|"grpc"
-          )
-        )
-      )
-    ),
-    status = list(
-      status = "ACTIVE"|"INACTIVE"|"DELETED"
-    ),
-    virtualRouterName = "string"
-  )
-)
-}
-}
 \description{
 Creates a virtual router within a service mesh.
 
-Specify a \code{listener} for any inbound traffic that your virtual router
-receives. Create a virtual router for each protocol and port that you
-need to route. Virtual routers handle traffic for one or more virtual
-services within your mesh. After you create your virtual router, create
-and associate routes for your virtual router that direct incoming
-requests to different virtual nodes.
-
-For more information about virtual routers, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_routers.html}{Virtual routers}.
+See \url{https://paws-r.github.io/docs/appmesh/create_virtual_router.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_virtual_router(
-  clientToken = "string",
-  meshName = "string",
-  meshOwner = "string",
-  spec = list(
-    listeners = list(
-      list(
-        portMapping = list(
-          port = 123,
-          protocol = "http"|"tcp"|"http2"|"grpc"
-        )
-      )
-    )
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  virtualRouterName = "string"
-)
-}
-}
-
 \keyword{internal}

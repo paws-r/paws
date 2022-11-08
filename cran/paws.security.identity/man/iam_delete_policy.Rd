@@ -9,46 +9,12 @@ iam_delete_policy(PolicyArn)
 \arguments{
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to delete.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the \emph{AWS General Reference}.}
-}
-\value{
-An empty list.
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Deletes the specified managed policy.
 
-Before you can delete a managed policy, you must first detach the policy
-from all users, groups, and roles that it is attached to. In addition,
-you must delete all the policy's versions. The following steps describe
-the process for deleting a managed policy:
-\itemize{
-\item Detach the policy from all users, groups, and roles that the policy
-is attached to, using the
-\code{\link[=iam_detach_user_policy]{detach_user_policy}},
-\code{\link[=iam_detach_group_policy]{detach_group_policy}}, or
-\code{\link[=iam_detach_role_policy]{detach_role_policy}} API operations. To
-list all the users, groups, and roles that a policy is attached to,
-use \code{\link[=iam_list_entities_for_policy]{list_entities_for_policy}}.
-\item Delete all versions of the policy using
-\code{\link[=iam_delete_policy_version]{delete_policy_version}}. To list the
-policy's versions, use
-\code{\link[=iam_list_policy_versions]{list_policy_versions}}. You cannot use
-\code{\link[=iam_delete_policy_version]{delete_policy_version}} to delete the
-version that is marked as the default version. You delete the
-policy's default version in the next step of the process.
-\item Delete the policy (this automatically deletes the policy's default
-version) using this API.
+See \url{https://paws-r.github.io/docs/iam/delete_policy.html} for full documentation.
 }
-
-For information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_policy(
-  PolicyArn = "string"
-)
-}
-}
-
 \keyword{internal}

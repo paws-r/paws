@@ -4,36 +4,23 @@
 \alias{quicksight_update_dashboard_published_version}
 \title{Updates the published version of a dashboard}
 \usage{
-quicksight_update_dashboard_published_version(AwsAccountId, DashboardId,
-  VersionNumber)
+quicksight_update_dashboard_published_version(
+  AwsAccountId,
+  DashboardId,
+  VersionNumber
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the dashboard that you're
-updating.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the dashboard
+that you're updating.}
 
 \item{DashboardId}{[required] The ID for the dashboard.}
 
 \item{VersionNumber}{[required] The version number of the dashboard.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DashboardId = "string",
-  DashboardArn = "string",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Updates the published version of a dashboard.
-}
-\section{Request syntax}{
-\preformatted{svc$update_dashboard_published_version(
-  AwsAccountId = "string",
-  DashboardId = "string",
-  VersionNumber = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/update_dashboard_published_version.html} for full documentation.
+}
 \keyword{internal}

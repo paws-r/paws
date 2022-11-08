@@ -7,10 +7,10 @@ NULL
 #'
 #' @description
 #' Adds one or more tags to an ACM certificate. Tags are labels that you
-#' can use to identify and organize your AWS resources. Each tag consists
-#' of a `key` and an optional `value`. You specify the certificate on input
-#' by its Amazon Resource Name (ARN). You specify the tag by using a
-#' key-value pair.
+#' can use to identify and organize your Amazon Web Services resources.
+#' Each tag consists of a `key` and an optional `value`. You specify the
+#' certificate on input by its Amazon Resource Name (ARN). You specify the
+#' tag by using a key-value pair.
 #' 
 #' You can apply a tag to just one certificate if you want to identify a
 #' specific characteristic of that certificate, or you can apply the same
@@ -37,9 +37,8 @@ NULL
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs) and
-#' AWS Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' For more information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag. The tag value is optional.
 #'
 #' @return
@@ -86,11 +85,12 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #' displayed by calling the [`list_certificates`][acm_list_certificates]
 #' action or be retrieved by calling the
 #' [`get_certificate`][acm_get_certificate] action. The certificate will
-#' not be available for use by AWS services integrated with ACM.
+#' not be available for use by Amazon Web Services services integrated with
+#' ACM.
 #' 
-#' You cannot delete an ACM certificate that is being used by another AWS
-#' service. To delete a certificate that is in use, the certificate
-#' association must first be removed.
+#' You cannot delete an ACM certificate that is being used by another
+#' Amazon Web Services service. To delete a certificate that is in use, the
+#' certificate association must first be removed.
 #'
 #' @usage
 #' acm_delete_certificate(CertificateArn)
@@ -100,9 +100,8 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs) and
-#' AWS Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' For more information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #'
 #' @return
 #' An empty list.
@@ -147,9 +146,8 @@ acm_delete_certificate <- function(CertificateArn) {
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs) and
-#' AWS Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' For more information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -200,7 +198,7 @@ acm_delete_certificate <- function(CertificateArn) {
 #'     NotAfter = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     KeyAlgorithm = "RSA_2048"|"RSA_1024"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1",
+#'     KeyAlgorithm = "RSA_1024"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1",
 #'     SignatureAlgorithm = "string",
 #'     InUseBy = list(
 #'       "string"
@@ -342,6 +340,50 @@ acm_export_certificate <- function(CertificateArn, Passphrase) {
 }
 .acm$operations$export_certificate <- acm_export_certificate
 
+#' Returns the account configuration options associated with an Amazon Web
+#' Services account
+#'
+#' @description
+#' Returns the account configuration options associated with an Amazon Web
+#' Services account.
+#'
+#' @usage
+#' acm_get_account_configuration()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ExpiryEvents = list(
+#'     DaysBeforeExpiry = 123
+#'   )
+#' )
+#' ```
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname acm_get_account_configuration
+acm_get_account_configuration <- function() {
+  op <- new_operation(
+    name = "GetAccountConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .acm$get_account_configuration_input()
+  output <- .acm$get_account_configuration_output()
+  config <- get_config()
+  svc <- .acm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$get_account_configuration <- acm_get_account_configuration
+
 #' Retrieves an Amazon-issued certificate and its certificate chain
 #'
 #' @description
@@ -359,9 +401,8 @@ acm_export_certificate <- function(CertificateArn, Passphrase) {
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs) and
-#' AWS Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' For more information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -399,12 +440,12 @@ acm_get_certificate <- function(CertificateArn) {
 }
 .acm$operations$get_certificate <- acm_get_certificate
 
-#' Imports a certificate into AWS Certificate Manager (ACM) to use with
-#' services that are integrated with ACM
+#' Imports a certificate into Amazon Web Services Certificate Manager (ACM)
+#' to use with services that are integrated with ACM
 #'
 #' @description
-#' Imports a certificate into AWS Certificate Manager (ACM) to use with
-#' services that are integrated with ACM. Note that [integrated
+#' Imports a certificate into Amazon Web Services Certificate Manager (ACM)
+#' to use with services that are integrated with ACM. Note that [integrated
 #' services](https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html)
 #' allow only certificate types and keys they support to be associated with
 #' their resources. Further, their support differs depending on whether the
@@ -412,7 +453,7 @@ acm_get_certificate <- function(CertificateArn) {
 #' the documentation for each service. For more information about importing
 #' certificates into ACM, see [Importing
 #' Certificates](https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
-#' in the *AWS Certificate Manager User Guide*.
+#' in the *Amazon Web Services Certificate Manager User Guide*.
 #' 
 #' ACM does not provide [managed
 #' renewal](https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html)
@@ -425,6 +466,8 @@ acm_get_certificate <- function(CertificateArn) {
 #' 
 #' -   The private key must be unencrypted. You cannot import a private key
 #'     that is protected by a password or a passphrase.
+#' 
+#' -   The private key must be no larger than 5 KB (5,120 bytes).
 #' 
 #' -   If the certificate you are importing is not self-signed, you must
 #'     enter its certificate chain.
@@ -444,13 +487,13 @@ acm_get_certificate <- function(CertificateArn) {
 #' 
 #' -   To import a new certificate, omit the `CertificateArn` argument.
 #'     Include this argument only when you want to replace a previously
-#'     imported certifica
+#'     imported certificate.
 #' 
 #' -   When you import a certificate by using the CLI, you must specify the
 #'     certificate, the certificate chain, and the private key by their
-#'     file names preceded by `file://`. For example, you can specify a
+#'     file names preceded by `fileb://`. For example, you can specify a
 #'     certificate saved in the `C:\temp` folder as
-#'     `file://C:\temp\certificate_to_import.pem`. If you are making an
+#'     `fileb://C:\temp\certificate_to_import.pem`. If you are making an
 #'     HTTP or HTTPS Query request, include these arguments as BLOBs.
 #' 
 #' -   When you import a certificate by using an SDK, you must specify the
@@ -576,7 +619,7 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #'       "DIGITAL_SIGNATURE"|"NON_REPUDIATION"|"KEY_ENCIPHERMENT"|"DATA_ENCIPHERMENT"|"KEY_AGREEMENT"|"CERTIFICATE_SIGNING"|"CRL_SIGNING"|"ENCIPHER_ONLY"|"DECIPHER_ONLY"|"ANY"|"CUSTOM"
 #'     ),
 #'     keyTypes = list(
-#'       "RSA_2048"|"RSA_1024"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"
+#'       "RSA_1024"|"RSA_2048"|"RSA_3072"|"RSA_4096"|"EC_prime256v1"|"EC_secp384r1"|"EC_secp521r1"
 #'     )
 #'   ),
 #'   NextToken = "string",
@@ -623,9 +666,8 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs) and
-#' AWS Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' For more information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -667,6 +709,62 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
 }
 .acm$operations$list_tags_for_certificate <- acm_list_tags_for_certificate
 
+#' Adds or modifies account-level configurations in ACM
+#'
+#' @description
+#' Adds or modifies account-level configurations in ACM.
+#' 
+#' The supported configuration option is `DaysBeforeExpiry`. This option
+#' specifies the number of days prior to certificate expiration when ACM
+#' starts generating `EventBridge` events. ACM sends one event per day per
+#' certificate until the certificate expires. By default, accounts receive
+#' events starting 45 days before certificate expiration.
+#'
+#' @usage
+#' acm_put_account_configuration(ExpiryEvents, IdempotencyToken)
+#'
+#' @param ExpiryEvents Specifies expiration events associated with an account.
+#' @param IdempotencyToken &#91;required&#93; Customer-chosen string used to distinguish between calls to
+#' [`put_account_configuration`][acm_put_account_configuration].
+#' Idempotency tokens time out after one hour. If you call
+#' [`put_account_configuration`][acm_put_account_configuration] multiple
+#' times with the same unexpired idempotency token, ACM treats it as the
+#' same request and returns the original result. If you change the
+#' idempotency token for each call, ACM treats each call as a new request.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_account_configuration(
+#'   ExpiryEvents = list(
+#'     DaysBeforeExpiry = 123
+#'   ),
+#'   IdempotencyToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname acm_put_account_configuration
+acm_put_account_configuration <- function(ExpiryEvents = NULL, IdempotencyToken) {
+  op <- new_operation(
+    name = "PutAccountConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .acm$put_account_configuration_input(ExpiryEvents = ExpiryEvents, IdempotencyToken = IdempotencyToken)
+  output <- .acm$put_account_configuration_output()
+  config <- get_config()
+  svc <- .acm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.acm$operations$put_account_configuration <- acm_put_account_configuration
+
 #' Remove one or more tags from an ACM certificate
 #'
 #' @description
@@ -690,9 +788,8 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs) and
-#' AWS Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' For more information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag to remove.
 #'
 #' @return
@@ -731,17 +828,17 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 }
 .acm$operations$remove_tags_from_certificate <- acm_remove_tags_from_certificate
 
-#' Renews an eligable ACM certificate
+#' Renews an eligible ACM certificate
 #'
 #' @description
-#' Renews an eligable ACM certificate. At this time, only exported private
+#' Renews an eligible ACM certificate. At this time, only exported private
 #' certificates can be renewed with this operation. In order to renew your
 #' ACM PCA certificates with ACM, you must first [grant the ACM service
 #' principal permission to do
-#' so](https://docs.aws.amazon.com/acm-pca/latest/userguide/). For more
+#' so](https://docs.aws.amazon.com/privateca/latest/userguide/). For more
 #' information, see [Testing Managed
-#' Renewal](https://docs.aws.amazon.com/acm/latest/userguide/manual-renewal.html)
-#' in the ACM User Guide.
+#' Renewal](https://docs.aws.amazon.com/acm/latest/userguide/) in the ACM
+#' User Guide.
 #'
 #' @usage
 #' acm_renew_certificate(CertificateArn)
@@ -751,9 +848,8 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs) and
-#' AWS Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' For more information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #'
 #' @return
 #' An empty list.
@@ -785,13 +881,14 @@ acm_renew_certificate <- function(CertificateArn) {
 }
 .acm$operations$renew_certificate <- acm_renew_certificate
 
-#' Requests an ACM certificate for use with other AWS services
+#' Requests an ACM certificate for use with other Amazon Web Services
+#' services
 #'
 #' @description
-#' Requests an ACM certificate for use with other AWS services. To request
-#' an ACM certificate, you must specify a fully qualified domain name
-#' (FQDN) in the `DomainName` parameter. You can also specify additional
-#' FQDNs in the `SubjectAlternativeNames` parameter.
+#' Requests an ACM certificate for use with other Amazon Web Services
+#' services. To request an ACM certificate, you must specify a fully
+#' qualified domain name (FQDN) in the `DomainName` parameter. You can also
+#' specify additional FQDNs in the `SubjectAlternativeNames` parameter.
 #' 
 #' If you are requesting a private certificate, domain validation is not
 #' required. If you are requesting a public certificate, each domain name
@@ -802,6 +899,12 @@ acm_renew_certificate <- function(CertificateArn) {
 #' validation](https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html).
 #' We recommend that you use DNS validation. ACM issues public certificates
 #' after receiving approval from the domain owner.
+#' 
+#' ACM behavior differs from the
+#' [https://tools.ietf.org/html/rfc6125#appendix-B.2](https://www.rfc-editor.org/rfc/rfc6125#appendix-B.2)RFC
+#' 6125 specification of the certificate validation process. first checks
+#' for a subject alternative name, and, if it finds one, ignores the common
+#' name (CN)
 #'
 #' @usage
 #' acm_request_certificate(DomainName, ValidationMethod,
@@ -869,8 +972,9 @@ acm_renew_certificate <- function(CertificateArn) {
 #' that will be used to issue the certificate. If you do not provide an ARN
 #' and you are trying to request a private certificate, ACM will attempt to
 #' issue a public certificate. For more information about private CAs, see
-#' the [AWS Certificate Manager Private Certificate Authority
-#' (PCA)](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaWelcome.html)
+#' the [Amazon Web Services Certificate Manager Private Certificate
+#' Authority
+#' (PCA)](https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html)
 #' user guide. The ARN must have the following form:
 #' 
 #' `arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012`

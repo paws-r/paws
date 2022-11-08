@@ -7,39 +7,9 @@ current AWS Region}
 \usage{
 ses_list_receipt_filters()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Filters = list(
-    list(
-      Name = "string",
-      IpFilter = list(
-        Policy = "Block"|"Allow",
-        Cidr = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Lists the IP address filters associated with your AWS account in the
-current AWS Region.
+Lists the IP address filters associated with your AWS account in the current AWS Region.
 
-For information about managing IP address filters, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$list_receipt_filters()
-}
-}
-
-\examples{
-\dontrun{
-# The following example lists the IP address filters that are associated
-# with an AWS account:
-svc$list_receipt_filters()
-}
-
+See \url{https://paws-r.github.io/docs/ses/list_receipt_filters.html} for full documentation.
 }
 \keyword{internal}

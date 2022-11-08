@@ -3,62 +3,44 @@
 \name{cloudformation_describe_stack_instance}
 \alias{cloudformation_describe_stack_instance}
 \title{Returns the stack instance that's associated with the specified stack
-set, AWS account, and Region}
+set, Amazon Web Services account, and Region}
 \usage{
-cloudformation_describe_stack_instance(StackSetName,
-  StackInstanceAccount, StackInstanceRegion)
+cloudformation_describe_stack_instance(
+  StackSetName,
+  StackInstanceAccount,
+  StackInstanceRegion,
+  CallAs = NULL
+)
 }
 \arguments{
 \item{StackSetName}{[required] The name or the unique stack ID of the stack set that you want to get
 stack instance information for.}
 
-\item{StackInstanceAccount}{[required] The ID of an AWS account that's associated with this stack instance.}
+\item{StackInstanceAccount}{[required] The ID of an Amazon Web Services account that's associated with this
+stack instance.}
 
 \item{StackInstanceRegion}{[required] The name of a Region that's associated with this stack instance.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  StackInstance = list(
-    StackSetId = "string",
-    Region = "string",
-    Account = "string",
-    StackId = "string",
-    ParameterOverrides = list(
-      list(
-        ParameterKey = "string",
-        ParameterValue = "string",
-        UsePreviousValue = TRUE|FALSE,
-        ResolvedValue = "string"
-      )
-    ),
-    Status = "CURRENT"|"OUTDATED"|"INOPERABLE",
-    StackInstanceStatus = list(
-      DetailedStatus = "PENDING"|"RUNNING"|"SUCCEEDED"|"FAILED"|"CANCELLED"|"INOPERABLE"
-    ),
-    StatusReason = "string",
-    OrganizationalUnitId = "string",
-    DriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
-    LastDriftCheckTimestamp = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your Amazon Web Services account must be registered as a delegated
+administrator in the management account. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{CloudFormation User Guide}.
+}}
 }
 \description{
-Returns the stack instance that's associated with the specified stack
-set, AWS account, and Region.
+Returns the stack instance that's associated with the specified stack set, Amazon Web Services account, and Region.
 
-For a list of stack instances that are associated with a specific stack
-set, use \code{\link[=cloudformation_list_stack_instances]{list_stack_instances}}.
+See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_stack_instance(
-  StackSetName = "string",
-  StackInstanceAccount = "string",
-  StackInstanceRegion = "string"
-)
-}
-}
-
 \keyword{internal}

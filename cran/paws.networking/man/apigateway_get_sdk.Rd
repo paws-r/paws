@@ -4,16 +4,16 @@
 \alias{apigateway_get_sdk}
 \title{Generates a client SDK for a RestApi and Stage}
 \usage{
-apigateway_get_sdk(restApiId, stageName, sdkType, parameters)
+apigateway_get_sdk(restApiId, stageName, sdkType, parameters = NULL)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{stageName}{[required] [Required] The name of the Stage that the SDK will use.}
+\item{stageName}{[required] The name of the Stage that the SDK will use.}
 
-\item{sdkType}{[required] [Required] The language for the generated SDK. Currently \code{java},
-\code{javascript}, \code{android}, \code{objectivec} (for iOS), \code{swift} (for iOS), and
-\code{ruby} are supported.}
+\item{sdkType}{[required] The language for the generated SDK. Currently \code{java}, \code{javascript},
+\code{android}, \code{objectivec} (for iOS), \code{swift} (for iOS), and \code{ruby} are
+supported.}
 
 \item{parameters}{A string-to-string key-value map of query parameters \code{sdkType}-dependent
 properties of the SDK. For \code{sdkType} of \code{objectivec} or \code{swift}, a
@@ -22,27 +22,9 @@ parameters named \code{groupId}, \code{artifactId}, \code{artifactVersion}, and
 \code{invokerPackage} are required. For \code{sdkType} of \code{java}, parameters named
 \code{serviceName} and \code{javaPackageName} are required.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  contentType = "string",
-  contentDisposition = "string",
-  body = raw
-)
-}
-}
 \description{
 Generates a client SDK for a RestApi and Stage.
-}
-\section{Request syntax}{
-\preformatted{svc$get_sdk(
-  restApiId = "string",
-  stageName = "string",
-  sdkType = "string",
-  parameters = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_sdk.html} for full documentation.
+}
 \keyword{internal}

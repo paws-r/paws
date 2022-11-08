@@ -5,8 +5,13 @@
 \title{Returns information about comments made on the comparison between two
 commits}
 \usage{
-codecommit_get_comments_for_compared_commit(repositoryName,
-  beforeCommitId, afterCommitId, nextToken, maxResults)
+codecommit_get_comments_for_compared_commit(
+  repositoryName,
+  beforeCommitId = NULL,
+  afterCommitId,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where you want to compare commits.}
@@ -23,65 +28,9 @@ batch of the results.}
 \item{maxResults}{A non-zero, non-negative integer used to limit the number of returned
 results. The default is 100 comments, but you can configure up to 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  commentsForComparedCommitData = list(
-    list(
-      repositoryName = "string",
-      beforeCommitId = "string",
-      afterCommitId = "string",
-      beforeBlobId = "string",
-      afterBlobId = "string",
-      location = list(
-        filePath = "string",
-        filePosition = 123,
-        relativeFileVersion = "BEFORE"|"AFTER"
-      ),
-      comments = list(
-        list(
-          commentId = "string",
-          content = "string",
-          inReplyTo = "string",
-          creationDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          lastModifiedDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          authorArn = "string",
-          deleted = TRUE|FALSE,
-          clientRequestToken = "string",
-          callerReactions = list(
-            "string"
-          ),
-          reactionCounts = list(
-            123
-          )
-        )
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns information about comments made on the comparison between two
-commits.
+Returns information about comments made on the comparison between two commits.
 
-Reaction counts might include numbers from user identities who were
-deleted after the reaction was made. For a count of reactions from
-active identities, use GetCommentReactions.
+See \url{https://paws-r.github.io/docs/codecommit/get_comments_for_compared_commit.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_comments_for_compared_commit(
-  repositoryName = "string",
-  beforeCommitId = "string",
-  afterCommitId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
-
 \keyword{internal}

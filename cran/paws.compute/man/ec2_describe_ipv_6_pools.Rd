@@ -4,8 +4,13 @@
 \alias{ec2_describe_ipv_6_pools}
 \title{Describes your IPv6 address pools}
 \usage{
-ec2_describe_ipv_6_pools(PoolIds, NextToken, MaxResults, DryRun,
-  Filters)
+ec2_describe_ipv_6_pools(
+  PoolIds = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  DryRun = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{PoolIds}{The IDs of the IPv6 address pools.}
@@ -23,60 +28,19 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Filters}{One or more filters.
 \itemize{
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Ipv6Pools = list(
-    list(
-      PoolId = "string",
-      Description = "string",
-      PoolCidrBlocks = list(
-        list(
-          Cidr = "string"
-        )
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes your IPv6 address pools.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_ipv_6_pools(
-  PoolIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_ipv_6_pools.html} for full documentation.
+}
 \keyword{internal}

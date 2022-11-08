@@ -2,37 +2,19 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_delete_invitations}
 \alias{guardduty_delete_invitations}
-\title{Deletes invitations sent to the current member account by AWS accounts
-specified by their account IDs}
+\title{Deletes invitations sent to the current member account by Amazon Web
+Services accounts specified by their account IDs}
 \usage{
 guardduty_delete_invitations(AccountIds)
 }
 \arguments{
-\item{AccountIds}{[required] A list of account IDs of the AWS accounts that sent invitations to the
-current member account that you want to delete invitations from.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UnprocessedAccounts = list(
-    list(
-      AccountId = "string",
-      Result = "string"
-    )
-  )
-)
-}
+\item{AccountIds}{[required] A list of account IDs of the Amazon Web Services accounts that sent
+invitations to the current member account that you want to delete
+invitations from.}
 }
 \description{
-Deletes invitations sent to the current member account by AWS accounts
-specified by their account IDs.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_invitations(
-  AccountIds = list(
-    "string"
-  )
-)
-}
-}
+Deletes invitations sent to the current member account by Amazon Web Services accounts specified by their account IDs.
 
+See \url{https://paws-r.github.io/docs/guardduty/delete_invitations.html} for full documentation.
+}
 \keyword{internal}

@@ -9,55 +9,12 @@ connect_describe_user_hierarchy_group(HierarchyGroupId, InstanceId)
 \arguments{
 \item{HierarchyGroupId}{[required] The identifier of the hierarchy group.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  HierarchyGroup = list(
-    Id = "string",
-    Arn = "string",
-    Name = "string",
-    LevelId = "string",
-    HierarchyPath = list(
-      LevelOne = list(
-        Id = "string",
-        Arn = "string",
-        Name = "string"
-      ),
-      LevelTwo = list(
-        Id = "string",
-        Arn = "string",
-        Name = "string"
-      ),
-      LevelThree = list(
-        Id = "string",
-        Arn = "string",
-        Name = "string"
-      ),
-      LevelFour = list(
-        Id = "string",
-        Arn = "string",
-        Name = "string"
-      ),
-      LevelFive = list(
-        Id = "string",
-        Arn = "string",
-        Name = "string"
-      )
-    )
-  )
-)
-}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 }
 \description{
 Describes the specified hierarchy group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_user_hierarchy_group(
-  HierarchyGroupId = "string",
-  InstanceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/describe_user_hierarchy_group.html} for full documentation.
+}
 \keyword{internal}

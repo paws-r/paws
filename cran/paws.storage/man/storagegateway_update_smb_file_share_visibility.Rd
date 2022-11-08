@@ -2,33 +2,19 @@
 % Please edit documentation in R/storagegateway_operations.R
 \name{storagegateway_update_smb_file_share_visibility}
 \alias{storagegateway_update_smb_file_share_visibility}
-\title{Controls whether the shares on a gateway are visible in a net view or
-browse list}
+\title{Controls whether the shares on an S3 File Gateway are visible in a net
+view or browse list}
 \usage{
-storagegateway_update_smb_file_share_visibility(GatewayARN,
-  FileSharesVisible)
+storagegateway_update_smb_file_share_visibility(GatewayARN, FileSharesVisible)
 }
 \arguments{
 \item{GatewayARN}{[required]}
 
 \item{FileSharesVisible}{[required] The shares on this gateway appear when listing shares.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Controls whether the shares on a gateway are visible in a net view or
-browse list.
-}
-\section{Request syntax}{
-\preformatted{svc$update_smb_file_share_visibility(
-  GatewayARN = "string",
-  FileSharesVisible = TRUE|FALSE
-)
-}
-}
+Controls whether the shares on an S3 File Gateway are visible in a net view or browse list. The operation is only supported for S3 File Gateways.
 
+See \url{https://paws-r.github.io/docs/storagegateway/update_smb_file_share_visibility.html} for full documentation.
+}
 \keyword{internal}

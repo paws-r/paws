@@ -9,27 +9,9 @@ cloudfront_list_tags_for_resource(Resource)
 \arguments{
 \item{Resource}{[required] An ARN of a CloudFront resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    Items = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 List tags for a CloudFront resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  Resource = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

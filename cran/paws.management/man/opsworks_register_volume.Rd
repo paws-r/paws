@@ -4,37 +4,16 @@
 \alias{opsworks_register_volume}
 \title{Registers an Amazon EBS volume with a specified stack}
 \usage{
-opsworks_register_volume(Ec2VolumeId, StackId)
+opsworks_register_volume(Ec2VolumeId = NULL, StackId)
 }
 \arguments{
 \item{Ec2VolumeId}{The Amazon EBS volume ID.}
 
 \item{StackId}{[required] The stack ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VolumeId = "string"
-)
-}
-}
 \description{
-Registers an Amazon EBS volume with a specified stack. A volume can be
-registered with only one stack at a time. If the volume is already
-registered, you must first deregister it by calling
-\code{\link[=opsworks_deregister_volume]{deregister_volume}}. For more information,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
+Registers an Amazon EBS volume with a specified stack. A volume can be registered with only one stack at a time. If the volume is already registered, you must first deregister it by calling \code{\link[=opsworks_deregister_volume]{deregister_volume}}. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/register_volume.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$register_volume(
-  Ec2VolumeId = "string",
-  StackId = "string"
-)
-}
-}
-
 \keyword{internal}

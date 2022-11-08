@@ -5,11 +5,24 @@
 \title{The Scan operation returns one or more items and item attributes by
 accessing every item in a table or a secondary index}
 \usage{
-dynamodb_scan(TableName, IndexName, AttributesToGet, Limit, Select,
-  ScanFilter, ConditionalOperator, ExclusiveStartKey,
-  ReturnConsumedCapacity, TotalSegments, Segment, ProjectionExpression,
-  FilterExpression, ExpressionAttributeNames, ExpressionAttributeValues,
-  ConsistentRead)
+dynamodb_scan(
+  TableName,
+  IndexName = NULL,
+  AttributesToGet = NULL,
+  Limit = NULL,
+  Select = NULL,
+  ScanFilter = NULL,
+  ConditionalOperator = NULL,
+  ExclusiveStartKey = NULL,
+  ReturnConsumedCapacity = NULL,
+  TotalSegments = NULL,
+  Segment = NULL,
+  ProjectionExpression = NULL,
+  FilterExpression = NULL,
+  ExpressionAttributeNames = NULL,
+  ExpressionAttributeValues = NULL,
+  ConsistentRead = NULL
+)
 }
 \arguments{
 \item{TableName}{[required] The name of the table containing the requested items; or, if you provide
@@ -54,8 +67,9 @@ is equivalent to specifying \code{ALL_ATTRIBUTES}.
 \item \code{COUNT} - Returns the number of matching items, rather than the
 matching items themselves.
 \item \code{SPECIFIC_ATTRIBUTES} - Returns only the attributes listed in
-\code{AttributesToGet}. This return value is equivalent to specifying
-\code{AttributesToGet} without specifying any value for \code{Select}.
+\code{ProjectionExpression}. This return value is equivalent to
+specifying \code{ProjectionExpression} without specifying any value for
+\code{Select}.
 
 If you query or scan a local secondary index and request only
 attributes that are projected into that index, the operation reads
@@ -69,12 +83,13 @@ attributes that are projected into the index. Global secondary index
 queries cannot fetch attributes from the parent table.
 }
 
-If neither \code{Select} nor \code{AttributesToGet} are specified, DynamoDB
+If neither \code{Select} nor \code{ProjectionExpression} are specified, DynamoDB
 defaults to \code{ALL_ATTRIBUTES} when accessing a table, and
 \code{ALL_PROJECTED_ATTRIBUTES} when accessing an index. You cannot use both
-\code{Select} and \code{AttributesToGet} together in a single request, unless the
-value for \code{Select} is \code{SPECIFIC_ATTRIBUTES}. (This usage is equivalent
-to specifying \code{AttributesToGet} without any value for \code{Select}.)
+\code{Select} and \code{ProjectionExpression} together in a single request, unless
+the value for \code{Select} is \code{SPECIFIC_ATTRIBUTES}. (This usage is
+equivalent to specifying \code{ProjectionExpression} without any value for
+\code{Select}.)
 
 If you use the \code{ProjectionExpression} parameter, then the value for
 \code{Select} can only be \code{SPECIFIC_ATTRIBUTES}. Any other value for \code{Select}
@@ -157,7 +172,7 @@ A \code{FilterExpression} is applied after the items have already been read;
 the process of filtering does not consume any additional read capacity
 units.
 
-For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#FilteringResults}{Filter Expressions}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.FilterExpression}{Filter Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeNames}{One or more substitution tokens for attribute names in an expression.
@@ -171,7 +186,7 @@ name in an expression.
 misinterpreted in an expression.
 }
 
-Use the \strong{#} character in an expression to dereference an attribute
+Use the \strong{\#} character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 \itemize{
 \item \code{Percentile}
@@ -237,242 +252,9 @@ The \code{ConsistentRead} parameter is not supported on global secondary
 indexes. If you scan a global secondary index with \code{ConsistentRead} set
 to true, you will receive a \code{ValidationException}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Items = list(
-    list(
-      list(
-        S = "string",
-        N = "string",
-        B = raw,
-        SS = list(
-          "string"
-        ),
-        NS = list(
-          "string"
-        ),
-        BS = list(
-          raw
-        ),
-        M = list(
-          list()
-        ),
-        L = list(
-          list()
-        ),
-        NULL = TRUE|FALSE,
-        BOOL = TRUE|FALSE
-      )
-    )
-  ),
-  Count = 123,
-  ScannedCount = 123,
-  LastEvaluatedKey = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  ConsumedCapacity = list(
-    TableName = "string",
-    CapacityUnits = 123.0,
-    ReadCapacityUnits = 123.0,
-    WriteCapacityUnits = 123.0,
-    Table = list(
-      ReadCapacityUnits = 123.0,
-      WriteCapacityUnits = 123.0,
-      CapacityUnits = 123.0
-    ),
-    LocalSecondaryIndexes = list(
-      list(
-        ReadCapacityUnits = 123.0,
-        WriteCapacityUnits = 123.0,
-        CapacityUnits = 123.0
-      )
-    ),
-    GlobalSecondaryIndexes = list(
-      list(
-        ReadCapacityUnits = 123.0,
-        WriteCapacityUnits = 123.0,
-        CapacityUnits = 123.0
-      )
-    )
-  )
-)
-}
-}
 \description{
-The \code{\link[=dynamodb_scan]{scan}} operation returns one or more items and item
-attributes by accessing every item in a table or a secondary index. To
-have DynamoDB return fewer items, you can provide a \code{FilterExpression}
-operation.
+The \code{\link[=dynamodb_scan]{scan}} operation returns one or more items and item attributes by accessing every item in a table or a secondary index. To have DynamoDB return fewer items, you can provide a \code{FilterExpression} operation.
 
-If the total number of scanned items exceeds the maximum dataset size
-limit of 1 MB, the scan stops and results are returned to the user as a
-\code{LastEvaluatedKey} value to continue the scan in a subsequent operation.
-The results also include the number of items exceeding the limit. A scan
-can result in no table data meeting the filter criteria.
-
-A single \code{\link[=dynamodb_scan]{scan}} operation reads up to the maximum
-number of items set (if using the \code{Limit} parameter) or a maximum of 1
-MB of data and then apply any filtering to the results using
-\code{FilterExpression}. If \code{LastEvaluatedKey} is present in the response,
-you need to paginate the result set. For more information, see
-\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination}{Paginating the Results}
-in the \emph{Amazon DynamoDB Developer Guide}.
-
-\code{\link[=dynamodb_scan]{scan}} operations proceed sequentially; however, for
-faster performance on a large table or secondary index, applications can
-request a parallel \code{\link[=dynamodb_scan]{scan}} operation by providing the
-\code{Segment} and \code{TotalSegments} parameters. For more information, see
-\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan}{Parallel Scan}
-in the \emph{Amazon DynamoDB Developer Guide}.
-
-\code{\link[=dynamodb_scan]{scan}} uses eventually consistent reads when accessing
-the data in a table; therefore, the result set might not include the
-changes to data in the table immediately before the operation began. If
-you need a consistent copy of the data, as of the time that the
-\code{\link[=dynamodb_scan]{scan}} begins, you can set the \code{ConsistentRead}
-parameter to \code{true}.
-}
-\section{Request syntax}{
-\preformatted{svc$scan(
-  TableName = "string",
-  IndexName = "string",
-  AttributesToGet = list(
-    "string"
-  ),
-  Limit = 123,
-  Select = "ALL_ATTRIBUTES"|"ALL_PROJECTED_ATTRIBUTES"|"SPECIFIC_ATTRIBUTES"|"COUNT",
-  ScanFilter = list(
-    list(
-      AttributeValueList = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      ),
-      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
-    )
-  ),
-  ConditionalOperator = "AND"|"OR",
-  ExclusiveStartKey = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-  TotalSegments = 123,
-  Segment = 123,
-  ProjectionExpression = "string",
-  FilterExpression = "string",
-  ExpressionAttributeNames = list(
-    "string"
-  ),
-  ExpressionAttributeValues = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  ConsistentRead = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example scans the entire Music table, and then narrows the results
-# to songs by the artist "No One You Know". For each item, only the album
-# title and song title are returned.
-svc$scan(
-  ExpressionAttributeNames = list(
-    `#AT` = "AlbumTitle",
-    `#ST` = "SongTitle"
-  ),
-  ExpressionAttributeValues = list(
-    `:a` = list(
-      S = "No One You Know"
-    )
-  ),
-  FilterExpression = "Artist = :a",
-  ProjectionExpression = "#ST, #AT",
-  TableName = "Music"
-)
-}
-
+See \url{https://paws-r.github.io/docs/dynamodb/scan.html} for full documentation.
 }
 \keyword{internal}

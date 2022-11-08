@@ -5,8 +5,12 @@
 \title{Returns a description of virtual tape library (VTL) devices for the
 specified tape gateway}
 \usage{
-storagegateway_describe_vtl_devices(GatewayARN, VTLDeviceARNs, Marker,
-  Limit)
+storagegateway_describe_vtl_devices(
+  GatewayARN,
+  VTLDeviceARNs = NULL,
+  Marker = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -24,57 +28,9 @@ describing the VTL devices.}
 \item{Limit}{Specifies that the number of VTL devices described be limited to the
 specified number.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string",
-  VTLDevices = list(
-    list(
-      VTLDeviceARN = "string",
-      VTLDeviceType = "string",
-      VTLDeviceVendor = "string",
-      VTLDeviceProductIdentifier = "string",
-      DeviceiSCSIAttributes = list(
-        TargetARN = "string",
-        NetworkInterfaceId = "string",
-        NetworkInterfacePort = 123,
-        ChapEnabled = TRUE|FALSE
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Returns a description of virtual tape library (VTL) devices for the
-specified tape gateway. In the response, AWS Storage Gateway returns VTL
-device information.
+Returns a description of virtual tape library (VTL) devices for the specified tape gateway. In the response, Storage Gateway returns VTL device information.
 
-This operation is only supported in the tape gateway type.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_vtl_devices(
-  GatewayARN = "string",
-  VTLDeviceARNs = list(
-    "string"
-  ),
-  Marker = "string",
-  Limit = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# Returns a description of virtual tape library (VTL) devices for the
-# specified gateway.
-svc$describe_vtl_devices(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
-  Limit = 123L,
-  Marker = "1",
-  VTLDeviceARNs = list()
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/describe_vtl_devices.html} for full documentation.
 }
 \keyword{internal}

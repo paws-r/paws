@@ -4,8 +4,11 @@
 \alias{redshift_create_cluster_security_group}
 \title{Creates a new Amazon Redshift security group}
 \usage{
-redshift_create_cluster_security_group(ClusterSecurityGroupName,
-  Description, Tags)
+redshift_create_cluster_security_group(
+  ClusterSecurityGroupName,
+  Description,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ClusterSecurityGroupName}{[required] The name for the security group. Amazon Redshift stores the value as a
@@ -15,8 +18,8 @@ Constraints:
 \itemize{
 \item Must contain no more than 255 alphanumeric characters or hyphens.
 \item Must not be "Default".
-\item Must be unique for all security groups that are created by your AWS
-account.
+\item Must be unique for all security groups that are created by your
+Amazon Web Services account.
 }
 
 Example: \code{examplesecuritygroup}}
@@ -25,65 +28,9 @@ Example: \code{examplesecuritygroup}}
 
 \item{Tags}{A list of tag instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClusterSecurityGroup = list(
-    ClusterSecurityGroupName = "string",
-    Description = "string",
-    EC2SecurityGroups = list(
-      list(
-        Status = "string",
-        EC2SecurityGroupName = "string",
-        EC2SecurityGroupOwnerId = "string",
-        Tags = list(
-          list(
-            Key = "string",
-            Value = "string"
-          )
-        )
-      )
-    ),
-    IPRanges = list(
-      list(
-        Status = "string",
-        CIDRIP = "string",
-        Tags = list(
-          list(
-            Key = "string",
-            Value = "string"
-          )
-        )
-      )
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a new Amazon Redshift security group. You use security groups to
-control access to non-VPC clusters.
+Creates a new Amazon Redshift security group. You use security groups to control access to non-VPC clusters.
 
-For information about managing security groups, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Amazon Redshift Cluster Security Groups}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/create_cluster_security_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_cluster_security_group(
-  ClusterSecurityGroupName = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

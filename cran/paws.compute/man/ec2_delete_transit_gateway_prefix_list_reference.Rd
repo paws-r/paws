@@ -6,7 +6,10 @@
 gateway route table}
 \usage{
 ec2_delete_transit_gateway_prefix_list_reference(
-  TransitGatewayRouteTableId, PrefixListId, DryRun)
+  TransitGatewayRouteTableId,
+  PrefixListId,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the route table.}
@@ -18,34 +21,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayPrefixListReference = list(
-    TransitGatewayRouteTableId = "string",
-    PrefixListId = "string",
-    PrefixListOwnerId = "string",
-    State = "pending"|"available"|"modifying"|"deleting",
-    Blackhole = TRUE|FALSE,
-    TransitGatewayAttachment = list(
-      TransitGatewayAttachmentId = "string",
-      ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
-      ResourceId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Deletes a reference (route) to a prefix list in a specified transit
-gateway route table.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_transit_gateway_prefix_list_reference(
-  TransitGatewayRouteTableId = "string",
-  PrefixListId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Deletes a reference (route) to a prefix list in a specified transit gateway route table.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_transit_gateway_prefix_list_reference.html} for full documentation.
+}
 \keyword{internal}

@@ -11,22 +11,9 @@ cloudfront_untag_resource(Resource, TagKeys)
 
 \item{TagKeys}{[required] A complex type that contains zero or more \code{Tag} key elements.}
 }
-\value{
-An empty list.
-}
 \description{
 Remove tags from a CloudFront resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  Resource = "string",
-  TagKeys = list(
-    Items = list(
-      "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/untag_resource.html} for full documentation.
+}
 \keyword{internal}

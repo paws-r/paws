@@ -4,7 +4,7 @@
 \alias{ec2_describe_conversion_tasks}
 \title{Describes the specified conversion tasks or all your conversion tasks}
 \usage{
-ec2_describe_conversion_tasks(ConversionTaskIds, DryRun)
+ec2_describe_conversion_tasks(ConversionTaskIds = NULL, DryRun = NULL)
 }
 \arguments{
 \item{ConversionTaskIds}{The conversion task IDs.}
@@ -14,79 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConversionTasks = list(
-    list(
-      ConversionTaskId = "string",
-      ExpirationTime = "string",
-      ImportInstance = list(
-        Description = "string",
-        InstanceId = "string",
-        Platform = "Windows",
-        Volumes = list(
-          list(
-            AvailabilityZone = "string",
-            BytesConverted = 123,
-            Description = "string",
-            Image = list(
-              Checksum = "string",
-              Format = "VMDK"|"RAW"|"VHD",
-              ImportManifestUrl = "string",
-              Size = 123
-            ),
-            Status = "string",
-            StatusMessage = "string",
-            Volume = list(
-              Id = "string",
-              Size = 123
-            )
-          )
-        )
-      ),
-      ImportVolume = list(
-        AvailabilityZone = "string",
-        BytesConverted = 123,
-        Description = "string",
-        Image = list(
-          Checksum = "string",
-          Format = "VMDK"|"RAW"|"VHD",
-          ImportManifestUrl = "string",
-          Size = 123
-        ),
-        Volume = list(
-          Id = "string",
-          Size = 123
-        )
-      ),
-      State = "active"|"cancelling"|"cancelled"|"completed",
-      StatusMessage = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes the specified conversion tasks or all your conversion tasks.
-For more information, see the \href{https://docs.aws.amazon.com/vm-import/latest/userguide/}{VM Import/Export User Guide}.
+Describes the specified conversion tasks or all your conversion tasks. For more information, see the \href{https://docs.aws.amazon.com/vm-import/latest/userguide/}{VM Import/Export User Guide}.
 
-For information about the import manifest referenced by this API action,
-see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
+See \url{https://paws-r.github.io/docs/ec2/describe_conversion_tasks.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_conversion_tasks(
-  ConversionTaskIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

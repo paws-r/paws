@@ -4,7 +4,12 @@
 \alias{directconnect_update_lag}
 \title{Updates the attributes of the specified link aggregation group (LAG)}
 \usage{
-directconnect_update_lag(lagId, lagName, minimumLinks)
+directconnect_update_lag(
+  lagId,
+  lagName = NULL,
+  minimumLinks = NULL,
+  encryptionMode = NULL
+)
 }
 \arguments{
 \item{lagId}{[required] The ID of the LAG.}
@@ -13,85 +18,15 @@ directconnect_update_lag(lagId, lagName, minimumLinks)
 
 \item{minimumLinks}{The minimum number of physical connections that must be operational for
 the LAG itself to be operational.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  connectionsBandwidth = "string",
-  numberOfConnections = 123,
-  lagId = "string",
-  ownerAccount = "string",
-  lagName = "string",
-  lagState = "requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"unknown",
-  location = "string",
-  region = "string",
-  minimumLinks = 123,
-  awsDevice = "string",
-  awsDeviceV2 = "string",
-  connections = list(
-    list(
-      ownerAccount = "string",
-      connectionId = "string",
-      connectionName = "string",
-      connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-      region = "string",
-      location = "string",
-      bandwidth = "string",
-      vlan = 123,
-      partnerName = "string",
-      loaIssueTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lagId = "string",
-      awsDevice = "string",
-      jumboFrameCapable = TRUE|FALSE,
-      awsDeviceV2 = "string",
-      hasLogicalRedundancy = "unknown"|"yes"|"no",
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      ),
-      providerName = "string"
-    )
-  ),
-  allowsHostedConnections = TRUE|FALSE,
-  jumboFrameCapable = TRUE|FALSE,
-  hasLogicalRedundancy = "unknown"|"yes"|"no",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  providerName = "string"
-)
-}
+
+\item{encryptionMode}{The LAG MAC Security (MACsec) encryption mode.
+
+Amazon Web Services applies the value to all connections which are part
+of the LAG.}
 }
 \description{
 Updates the attributes of the specified link aggregation group (LAG).
 
-You can update the following attributes:
-\itemize{
-\item The name of the LAG.
-\item The value for the minimum number of connections that must be
-operational for the LAG itself to be operational.
+See \url{https://paws-r.github.io/docs/directconnect/update_lag.html} for full documentation.
 }
-
-When you create a LAG, the default value for the minimum number of
-operational connections is zero (0). If you update this value and the
-number of operational connections falls below the specified value, the
-LAG automatically goes down to avoid over-utilization of the remaining
-connections. Adjust this value with care, as it could force the LAG down
-if it is set higher than the current number of operational connections.
-}
-\section{Request syntax}{
-\preformatted{svc$update_lag(
-  lagId = "string",
-  lagName = "string",
-  minimumLinks = 123
-)
-}
-}
-
 \keyword{internal}

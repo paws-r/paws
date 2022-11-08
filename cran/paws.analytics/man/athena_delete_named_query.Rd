@@ -10,21 +10,9 @@ athena_delete_named_query(NamedQueryId)
 \arguments{
 \item{NamedQueryId}{[required] The unique ID of the query to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the named query if you have access to the workgroup in which the
-query was saved.
+Deletes the named query if you have access to the workgroup in which the query was saved.
 
-For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
-in the \emph{Amazon Athena User Guide}.
+See \url{https://paws-r.github.io/docs/athena/delete_named_query.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_named_query(
-  NamedQueryId = "string"
-)
-}
-}
-
 \keyword{internal}

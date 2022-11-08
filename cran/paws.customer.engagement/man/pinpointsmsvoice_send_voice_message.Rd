@@ -4,8 +4,13 @@
 \alias{pinpointsmsvoice_send_voice_message}
 \title{Create a new voice message and send it to a recipient's phone number}
 \usage{
-pinpointsmsvoice_send_voice_message(CallerId, ConfigurationSetName,
-  Content, DestinationPhoneNumber, OriginationPhoneNumber)
+pinpointsmsvoice_send_voice_message(
+  CallerId = NULL,
+  ConfigurationSetName = NULL,
+  Content = NULL,
+  DestinationPhoneNumber = NULL,
+  OriginationPhoneNumber = NULL
+)
 }
 \arguments{
 \item{CallerId}{The phone number that appears on recipients' devices when they receive
@@ -23,38 +28,9 @@ message. This isn't necessarily the phone number that appears on
 recipients' devices when they receive the message, because you can
 specify a CallerId parameter in the request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MessageId = "string"
-)
-}
-}
 \description{
 Create a new voice message and send it to a recipient's phone number.
-}
-\section{Request syntax}{
-\preformatted{svc$send_voice_message(
-  CallerId = "string",
-  ConfigurationSetName = "string",
-  Content = list(
-    CallInstructionsMessage = list(
-      Text = "string"
-    ),
-    PlainTextMessage = list(
-      LanguageCode = "string",
-      Text = "string",
-      VoiceId = "string"
-    ),
-    SSMLMessage = list(
-      LanguageCode = "string",
-      Text = "string",
-      VoiceId = "string"
-    )
-  ),
-  DestinationPhoneNumber = "string",
-  OriginationPhoneNumber = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpointsmsvoice/send_voice_message.html} for full documentation.
+}
 \keyword{internal}

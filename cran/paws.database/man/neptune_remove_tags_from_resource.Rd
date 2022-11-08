@@ -13,20 +13,9 @@ see \href{https://docs.aws.amazon.com/neptune/latest/userguide/#tagging.ARN.Cons
 
 \item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes metadata tags from an Amazon Neptune resource.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_tags_from_resource(
-  ResourceName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/neptune/remove_tags_from_resource.html} for full documentation.
+}
 \keyword{internal}

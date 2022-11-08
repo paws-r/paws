@@ -4,7 +4,7 @@
 \alias{cloudfront_delete_realtime_log_config}
 \title{Deletes a real-time log configuration}
 \usage{
-cloudfront_delete_realtime_log_config(Name, ARN)
+cloudfront_delete_realtime_log_config(Name = NULL, ARN = NULL)
 }
 \arguments{
 \item{Name}{The name of the real-time log configuration to delete.}
@@ -12,28 +12,9 @@ cloudfront_delete_realtime_log_config(Name, ARN)
 \item{ARN}{The Amazon Resource Name (ARN) of the real-time log configuration to
 delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a real-time log configuration.
 
-You cannot delete a real-time log configuration if it’s attached to a
-cache behavior. First update your distributions to remove the real-time
-log configuration from all cache behaviors, then delete the real-time
-log configuration.
-
-To delete a real-time log configuration, you can provide the
-configuration’s name or its Amazon Resource Name (ARN). You must provide
-at least one. If you provide both, CloudFront uses the name to identify
-the real-time log configuration to delete.
+See \url{https://paws-r.github.io/docs/cloudfront/delete_realtime_log_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_realtime_log_config(
-  Name = "string",
-  ARN = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -11,20 +11,9 @@ guardduty_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] The tag keys to remove from the resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes tags from a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/untag_resource.html} for full documentation.
+}
 \keyword{internal}

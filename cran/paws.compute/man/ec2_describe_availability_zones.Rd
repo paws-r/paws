@@ -5,8 +5,13 @@
 \title{Describes the Availability Zones, Local Zones, and Wavelength Zones that
 are available to you}
 \usage{
-ec2_describe_availability_zones(Filters, ZoneNames, ZoneIds,
-  AllAvailabilityZones, DryRun)
+ec2_describe_availability_zones(
+  Filters = NULL,
+  ZoneNames = NULL,
+  ZoneIds = NULL,
+  AllAvailabilityZones = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{Filters}{The filters.
@@ -28,8 +33,7 @@ calls.
 \item \code{region-name} - The name of the Region for the Zone (for example,
 \code{us-east-1}).
 \item \code{state} - The state of the Availability Zone, the Local Zone, or the
-Wavelength Zone (\code{available} | \code{information} | \code{impaired} |
-\code{unavailable}).
+Wavelength Zone (\code{available}).
 \item \code{zone-id} - The ID of the Availability Zone (for example,
 \code{use1-az1}), the Local Zone (for example, \code{usw2-lax1-az1}), or the
 Wavelength Zone (for example, \code{us-east-1-wl1-bos-wlz-1}).
@@ -55,67 +59,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AvailabilityZones = list(
-    list(
-      State = "available"|"information"|"impaired"|"unavailable",
-      OptInStatus = "opt-in-not-required"|"opted-in"|"not-opted-in",
-      Messages = list(
-        list(
-          Message = "string"
-        )
-      ),
-      RegionName = "string",
-      ZoneName = "string",
-      ZoneId = "string",
-      GroupName = "string",
-      NetworkBorderGroup = "string",
-      ZoneType = "string",
-      ParentZoneName = "string",
-      ParentZoneId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Describes the Availability Zones, Local Zones, and Wavelength Zones that
-are available to you. If there is an event impacting a zone, you can use
-this request to view the state and any provided messages for that zone.
+Describes the Availability Zones, Local Zones, and Wavelength Zones that are available to you. If there is an event impacting a zone, you can use this request to view the state and any provided messages for that zone.
 
-For more information about Availability Zones, Local Zones, and
-Wavelength Zones, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html}{Regions, Zones and Outposts}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_availability_zones(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ZoneNames = list(
-    "string"
-  ),
-  ZoneIds = list(
-    "string"
-  ),
-  AllAvailabilityZones = TRUE|FALSE,
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the Availability Zones that are available to you.
-# The response includes Availability Zones only for the current region.
-svc$describe_availability_zones()
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_availability_zones.html} for full documentation.
 }
 \keyword{internal}

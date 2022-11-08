@@ -4,8 +4,13 @@
 \alias{clouddirectory_create_object}
 \title{Creates an object in a Directory}
 \usage{
-clouddirectory_create_object(DirectoryArn, SchemaFacets,
-  ObjectAttributeList, ParentReference, LinkName)
+clouddirectory_create_object(
+  DirectoryArn,
+  SchemaFacets,
+  ObjectAttributeList = NULL,
+  ParentReference = NULL,
+  LinkName = NULL
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory in
@@ -22,52 +27,9 @@ attached.}
 
 \item{LinkName}{The name of link that is used to attach this object to a parent.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ObjectIdentifier = "string"
-)
-}
-}
 \description{
-Creates an object in a Directory. Additionally attaches the object to a
-parent, if a parent reference and \code{LinkName} is specified. An object is
-simply a collection of Facet attributes. You can also use this API call
-to create a policy object, if the facet from which you create the object
-is a policy facet.
-}
-\section{Request syntax}{
-\preformatted{svc$create_object(
-  DirectoryArn = "string",
-  SchemaFacets = list(
-    list(
-      SchemaArn = "string",
-      FacetName = "string"
-    )
-  ),
-  ObjectAttributeList = list(
-    list(
-      Key = list(
-        SchemaArn = "string",
-        FacetName = "string",
-        Name = "string"
-      ),
-      Value = list(
-        StringValue = "string",
-        BinaryValue = raw,
-        BooleanValue = TRUE|FALSE,
-        NumberValue = "string",
-        DatetimeValue = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  ),
-  ParentReference = list(
-    Selector = "string"
-  ),
-  LinkName = "string"
-)
-}
-}
+Creates an object in a Directory. Additionally attaches the object to a parent, if a parent reference and \code{LinkName} is specified. An object is simply a collection of Facet attributes. You can also use this API call to create a policy object, if the facet from which you create the object is a policy facet.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/create_object.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,11 @@
 \title{An SaaS partner can use this operation to list all the partner event
 source names that they have created}
 \usage{
-eventbridge_list_partner_event_sources(NamePrefix, NextToken, Limit)
+eventbridge_list_partner_event_sources(
+  NamePrefix,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{NamePrefix}{[required] If you specify this, the results are limited to only those partner event
@@ -18,30 +22,9 @@ retrieves the next set of results.}
 The operation also returns a NextToken which you can use in a subsequent
 operation to retrieve the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PartnerEventSources = list(
-    list(
-      Arn = "string",
-      Name = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-An SaaS partner can use this operation to list all the partner event
-source names that they have created. This operation is not used by AWS
-customers.
-}
-\section{Request syntax}{
-\preformatted{svc$list_partner_event_sources(
-  NamePrefix = "string",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+An SaaS partner can use this operation to list all the partner event source names that they have created. This operation is not used by Amazon Web Services customers.
 
+See \url{https://paws-r.github.io/docs/eventbridge/list_partner_event_sources.html} for full documentation.
+}
 \keyword{internal}

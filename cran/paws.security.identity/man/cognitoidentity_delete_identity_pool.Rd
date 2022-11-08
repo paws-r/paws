@@ -9,20 +9,9 @@ cognitoidentity_delete_identity_pool(IdentityPoolId)
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes an identity pool. Once a pool is deleted, users will not be able
-to authenticate with the pool.
+Deletes an identity pool. Once a pool is deleted, users will not be able to authenticate with the pool.
 
-You must use AWS Developer credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/delete_identity_pool.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_identity_pool(
-  IdentityPoolId = "string"
-)
-}
-}
-
 \keyword{internal}

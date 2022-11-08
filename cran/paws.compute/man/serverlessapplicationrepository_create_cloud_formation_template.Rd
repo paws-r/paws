@@ -5,7 +5,9 @@
 \title{Creates an AWS CloudFormation template}
 \usage{
 serverlessapplicationrepository_create_cloud_formation_template(
-  ApplicationId, SemanticVersion)
+  ApplicationId,
+  SemanticVersion = NULL
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -14,27 +16,9 @@ serverlessapplicationrepository_create_cloud_formation_template(
 
 \url{https://semver.org/}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationId = "string",
-  CreationTime = "string",
-  ExpirationTime = "string",
-  SemanticVersion = "string",
-  Status = "PREPARING"|"ACTIVE"|"EXPIRED",
-  TemplateId = "string",
-  TemplateUrl = "string"
-)
-}
-}
 \description{
 Creates an AWS CloudFormation template.
-}
-\section{Request syntax}{
-\preformatted{svc$create_cloud_formation_template(
-  ApplicationId = "string",
-  SemanticVersion = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/create_cloud_formation_template.html} for full documentation.
+}
 \keyword{internal}

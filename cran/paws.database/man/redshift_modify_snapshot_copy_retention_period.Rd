@@ -2,30 +2,36 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_modify_snapshot_copy_retention_period}
 \alias{redshift_modify_snapshot_copy_retention_period}
-\title{Modifies the number of days to retain snapshots in the destination AWS
-Region after they are copied from the source AWS Region}
+\title{Modifies the number of days to retain snapshots in the destination
+Amazon Web Services Region after they are copied from the source Amazon
+Web Services Region}
 \usage{
-redshift_modify_snapshot_copy_retention_period(ClusterIdentifier,
-  RetentionPeriod, Manual)
+redshift_modify_snapshot_copy_retention_period(
+  ClusterIdentifier,
+  RetentionPeriod,
+  Manual = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The unique identifier of the cluster for which you want to change the
 retention period for either automated or manual snapshots that are
-copied to a destination AWS Region.
+copied to a destination Amazon Web Services Region.
 
 Constraints: Must be the valid name of an existing cluster that has
 cross-region snapshot copy enabled.}
 
-\item{RetentionPeriod}{[required] The number of days to retain automated snapshots in the destination AWS
-Region after they are copied from the source AWS Region.
+\item{RetentionPeriod}{[required] The number of days to retain automated snapshots in the destination
+Amazon Web Services Region after they are copied from the source Amazon
+Web Services Region.
 
 By default, this only changes the retention period of copied automated
 snapshots.
 
 If you decrease the retention period for automated snapshots that are
-copied to a destination AWS Region, Amazon Redshift deletes any existing
-automated snapshots that were copied to the destination AWS Region and
-that fall outside of the new retention period.
+copied to a destination Amazon Web Services Region, Amazon Redshift
+deletes any existing automated snapshots that were copied to the
+destination Amazon Web Services Region and that fall outside of the new
+retention period.
 
 Constraints: Must be at least 1 and no more than 35 for automated
 snapshots.
@@ -42,183 +48,9 @@ Constraints: The number of days must be either -1 or an integer between
 \item{Manual}{Indicates whether to apply the snapshot retention period to newly copied
 manual snapshots instead of automated snapshots.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Cluster = list(
-    ClusterIdentifier = "string",
-    NodeType = "string",
-    ClusterStatus = "string",
-    ClusterAvailabilityStatus = "string",
-    ModifyStatus = "string",
-    MasterUsername = "string",
-    DBName = "string",
-    Endpoint = list(
-      Address = "string",
-      Port = 123,
-      VpcEndpoints = list(
-        list(
-          VpcEndpointId = "string"
-        )
-      )
-    ),
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    AutomatedSnapshotRetentionPeriod = 123,
-    ManualSnapshotRetentionPeriod = 123,
-    ClusterSecurityGroups = list(
-      list(
-        ClusterSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    ClusterParameterGroups = list(
-      list(
-        ParameterGroupName = "string",
-        ParameterApplyStatus = "string",
-        ClusterParameterStatusList = list(
-          list(
-            ParameterName = "string",
-            ParameterApplyStatus = "string",
-            ParameterApplyErrorDescription = "string"
-          )
-        )
-      )
-    ),
-    ClusterSubnetGroupName = "string",
-    VpcId = "string",
-    AvailabilityZone = "string",
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      MasterUserPassword = "string",
-      NodeType = "string",
-      NumberOfNodes = 123,
-      ClusterType = "string",
-      ClusterVersion = "string",
-      AutomatedSnapshotRetentionPeriod = 123,
-      ClusterIdentifier = "string",
-      PubliclyAccessible = TRUE|FALSE,
-      EnhancedVpcRouting = TRUE|FALSE,
-      MaintenanceTrackName = "string",
-      EncryptionType = "string"
-    ),
-    ClusterVersion = "string",
-    AllowVersionUpgrade = TRUE|FALSE,
-    NumberOfNodes = 123,
-    PubliclyAccessible = TRUE|FALSE,
-    Encrypted = TRUE|FALSE,
-    RestoreStatus = list(
-      Status = "string",
-      CurrentRestoreRateInMegaBytesPerSecond = 123.0,
-      SnapshotSizeInMegaBytes = 123,
-      ProgressInMegaBytes = 123,
-      ElapsedTimeInSeconds = 123,
-      EstimatedTimeToCompletionInSeconds = 123
-    ),
-    DataTransferProgress = list(
-      Status = "string",
-      CurrentRateInMegaBytesPerSecond = 123.0,
-      TotalDataInMegaBytes = 123,
-      DataTransferredInMegaBytes = 123,
-      EstimatedTimeToCompletionInSeconds = 123,
-      ElapsedTimeInSeconds = 123
-    ),
-    HsmStatus = list(
-      HsmClientCertificateIdentifier = "string",
-      HsmConfigurationIdentifier = "string",
-      Status = "string"
-    ),
-    ClusterSnapshotCopyStatus = list(
-      DestinationRegion = "string",
-      RetentionPeriod = 123,
-      ManualSnapshotRetentionPeriod = 123,
-      SnapshotCopyGrantName = "string"
-    ),
-    ClusterPublicKey = "string",
-    ClusterNodes = list(
-      list(
-        NodeRole = "string",
-        PrivateIPAddress = "string",
-        PublicIPAddress = "string"
-      )
-    ),
-    ElasticIpStatus = list(
-      ElasticIp = "string",
-      Status = "string"
-    ),
-    ClusterRevisionNumber = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    KmsKeyId = "string",
-    EnhancedVpcRouting = TRUE|FALSE,
-    IamRoles = list(
-      list(
-        IamRoleArn = "string",
-        ApplyStatus = "string"
-      )
-    ),
-    PendingActions = list(
-      "string"
-    ),
-    MaintenanceTrackName = "string",
-    ElasticResizeNumberOfNodeOptions = "string",
-    DeferredMaintenanceWindows = list(
-      list(
-        DeferMaintenanceIdentifier = "string",
-        DeferMaintenanceStartTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        DeferMaintenanceEndTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    SnapshotScheduleIdentifier = "string",
-    SnapshotScheduleState = "MODIFYING"|"ACTIVE"|"FAILED",
-    ExpectedNextSnapshotScheduleTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ExpectedNextSnapshotScheduleTimeStatus = "string",
-    NextMaintenanceWindowStartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ResizeInfo = list(
-      ResizeType = "string",
-      AllowCancelResize = TRUE|FALSE
-    ),
-    AvailabilityZoneRelocationStatus = "string",
-    ClusterNamespaceArn = "string"
-  )
-)
-}
-}
 \description{
-Modifies the number of days to retain snapshots in the destination AWS
-Region after they are copied from the source AWS Region. By default,
-this operation only changes the retention period of copied automated
-snapshots. The retention periods for both new and existing copied
-automated snapshots are updated with the new retention period. You can
-set the manual option to change only the retention periods of copied
-manual snapshots. If you set this option, only newly copied manual
-snapshots have the new retention period.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_snapshot_copy_retention_period(
-  ClusterIdentifier = "string",
-  RetentionPeriod = 123,
-  Manual = TRUE|FALSE
-)
-}
-}
+Modifies the number of days to retain snapshots in the destination Amazon Web Services Region after they are copied from the source Amazon Web Services Region. By default, this operation only changes the retention period of copied automated snapshots. The retention periods for both new and existing copied automated snapshots are updated with the new retention period. You can set the manual option to change only the retention periods of copied manual snapshots. If you set this option, only newly copied manual snapshots have the new retention period.
 
+See \url{https://paws-r.github.io/docs/redshift/modify_snapshot_copy_retention_period.html} for full documentation.
+}
 \keyword{internal}

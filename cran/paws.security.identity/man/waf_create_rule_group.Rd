@@ -4,7 +4,7 @@
 \alias{waf_create_rule_group}
 \title{This is AWS WAF Classic documentation}
 \usage{
-waf_create_rule_group(Name, MetricName, ChangeToken, Tags)
+waf_create_rule_group(Name, MetricName, ChangeToken, Tags = NULL)
 }
 \arguments{
 \item{Name}{[required] A friendly name or description of the RuleGroup. You can't change \code{Name}
@@ -22,56 +22,9 @@ create the \code{RuleGroup}.}
 
 \item{Tags}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RuleGroup = list(
-    RuleGroupId = "string",
-    Name = "string",
-    MetricName = "string"
-  ),
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Creates a \code{RuleGroup}. A rule group is a collection of predefined rules
-that you add to a web ACL. You use
-\code{\link[=waf_update_rule_group]{update_rule_group}} to add rules to the rule
-group.
-
-Rule groups are subject to the following limits:
-\itemize{
-\item Three rule groups per account. You can request an increase to this
-limit by contacting customer support.
-\item One rule group per web ACL.
-\item Ten rules per rule group.
+See \url{https://paws-r.github.io/docs/waf/create_rule_group.html} for full documentation.
 }
-
-For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_rule_group(
-  Name = "string",
-  MetricName = "string",
-  ChangeToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -7,25 +7,15 @@
 apigateway_delete_method(restApiId, resourceId, httpMethod)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] The Resource identifier for the Method resource.}
+\item{resourceId}{[required] The Resource identifier for the Method resource.}
 
-\item{httpMethod}{[required] [Required] The HTTP verb of the Method resource.}
-}
-\value{
-An empty list.
+\item{httpMethod}{[required] The HTTP verb of the Method resource.}
 }
 \description{
 Deletes an existing Method resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_method(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_method.html} for full documentation.
+}
 \keyword{internal}

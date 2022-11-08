@@ -2,56 +2,23 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_describe_lifecycle_hooks}
 \alias{autoscaling_describe_lifecycle_hooks}
-\title{Describes the lifecycle hooks for the specified Auto Scaling group}
+\title{Gets information about the lifecycle hooks for the specified Auto
+Scaling group}
 \usage{
-autoscaling_describe_lifecycle_hooks(AutoScalingGroupName,
-  LifecycleHookNames)
+autoscaling_describe_lifecycle_hooks(
+  AutoScalingGroupName,
+  LifecycleHookNames = NULL
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{LifecycleHookNames}{The names of one or more lifecycle hooks. If you omit this parameter,
-all lifecycle hooks are described.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  LifecycleHooks = list(
-    list(
-      LifecycleHookName = "string",
-      AutoScalingGroupName = "string",
-      LifecycleTransition = "string",
-      NotificationTargetARN = "string",
-      RoleARN = "string",
-      NotificationMetadata = "string",
-      HeartbeatTimeout = 123,
-      GlobalTimeout = 123,
-      DefaultResult = "string"
-    )
-  )
-)
-}
+\item{LifecycleHookNames}{The names of one or more lifecycle hooks. If you omit this property, all
+lifecycle hooks are described.}
 }
 \description{
-Describes the lifecycle hooks for the specified Auto Scaling group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_lifecycle_hooks(
-  AutoScalingGroupName = "string",
-  LifecycleHookNames = list(
-    "string"
-  )
-)
-}
-}
+Gets information about the lifecycle hooks for the specified Auto Scaling group.
 
-\examples{
-\dontrun{
-# This example describes the lifecycle hooks for the specified Auto
-# Scaling group.
-svc$describe_lifecycle_hooks(
-  AutoScalingGroupName = "my-auto-scaling-group"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/describe_lifecycle_hooks.html} for full documentation.
 }
 \keyword{internal}

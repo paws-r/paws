@@ -4,8 +4,15 @@
 \alias{servicecatalog_create_constraint}
 \title{Creates a constraint}
 \usage{
-servicecatalog_create_constraint(AcceptLanguage, PortfolioId, ProductId,
-  Parameters, Type, Description, IdempotencyToken)
+servicecatalog_create_constraint(
+  AcceptLanguage = NULL,
+  PortfolioId,
+  ProductId,
+  Parameters,
+  Type,
+  Description = NULL,
+  IdempotencyToken
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -101,37 +108,9 @@ Specify the \code{Rules} property. For more information, see \href{https://docs.
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConstraintDetail = list(
-    ConstraintId = "string",
-    Type = "string",
-    Description = "string",
-    Owner = "string",
-    ProductId = "string",
-    PortfolioId = "string"
-  ),
-  ConstraintParameters = "string",
-  Status = "AVAILABLE"|"CREATING"|"FAILED"
-)
-}
-}
 \description{
 Creates a constraint.
 
-A delegated admin is authorized to invoke this command.
+See \url{https://paws-r.github.io/docs/servicecatalog/create_constraint.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_constraint(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  ProductId = "string",
-  Parameters = "string",
-  Type = "string",
-  Description = "string",
-  IdempotencyToken = "string"
-)
-}
-}
-
 \keyword{internal}

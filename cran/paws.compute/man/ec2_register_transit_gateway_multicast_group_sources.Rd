@@ -6,8 +6,11 @@
 gateway multicast group}
 \usage{
 ec2_register_transit_gateway_multicast_group_sources(
-  TransitGatewayMulticastDomainId, GroupIpAddress, NetworkInterfaceIds,
-  DryRun)
+  TransitGatewayMulticastDomainId = NULL,
+  GroupIpAddress = NULL,
+  NetworkInterfaceIds = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayMulticastDomainId}{The ID of the transit gateway multicast domain.}
@@ -22,41 +25,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RegisteredMulticastGroupSources = list(
-    TransitGatewayMulticastDomainId = "string",
-    RegisteredNetworkInterfaceIds = list(
-      "string"
-    ),
-    GroupIpAddress = "string"
-  )
-)
-}
-}
 \description{
-Registers sources (network interfaces) with the specified transit
-gateway multicast group.
+Registers sources (network interfaces) with the specified transit gateway multicast group.
 
-A multicast source is a network interface attached to a supported
-instance that sends multicast traffic. For information about supported
-instances, see \href{https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-quotas.html#multicast-limits}{Multicast Considerations}
-in \emph{Amazon VPC Transit Gateways}.
-
-After you add the source, use
-\code{\link[=ec2_search_transit_gateway_multicast_groups]{search_transit_gateway_multicast_groups}}
-to verify that the source was added to the multicast group.
+See \url{https://paws-r.github.io/docs/ec2/register_transit_gateway_multicast_group_sources.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$register_transit_gateway_multicast_group_sources(
-  TransitGatewayMulticastDomainId = "string",
-  GroupIpAddress = "string",
-  NetworkInterfaceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

@@ -12,49 +12,9 @@ codecommit_batch_get_repositories(repositoryNames)
 The length constraint limit is for each string in the array. The array
 itself can be empty.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  repositories = list(
-    list(
-      accountId = "string",
-      repositoryId = "string",
-      repositoryName = "string",
-      repositoryDescription = "string",
-      defaultBranch = "string",
-      lastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      creationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      cloneUrlHttp = "string",
-      cloneUrlSsh = "string",
-      Arn = "string"
-    )
-  ),
-  repositoriesNotFound = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Returns information about one or more repositories.
 
-The description field for a repository accepts all HTML characters and
-all valid Unicode characters. Applications that do not HTML-encode the
-description and display it in a webpage can expose users to potentially
-malicious code. Make sure that you HTML-encode the description field in
-any application that uses this API to display the repository description
-on a webpage.
+See \url{https://paws-r.github.io/docs/codecommit/batch_get_repositories.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$batch_get_repositories(
-  repositoryNames = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

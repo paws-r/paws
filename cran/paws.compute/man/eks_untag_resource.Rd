@@ -13,20 +13,9 @@ managed node groups.}
 
 \item{tagKeys}{[required] The keys of the tags to be removed.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes specified tags from a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  resourceArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/eks/untag_resource.html} for full documentation.
+}
 \keyword{internal}

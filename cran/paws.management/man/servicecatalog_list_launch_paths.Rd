@@ -4,8 +4,12 @@
 \alias{servicecatalog_list_launch_paths}
 \title{Lists the paths to the specified product}
 \usage{
-servicecatalog_list_launch_paths(AcceptLanguage, ProductId, PageSize,
-  PageToken)
+servicecatalog_list_launch_paths(
+  AcceptLanguage = NULL,
+  ProductId,
+  PageSize = NULL,
+  PageToken = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,43 +26,9 @@ servicecatalog_list_launch_paths(AcceptLanguage, ProductId, PageSize,
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LaunchPathSummaries = list(
-    list(
-      Id = "string",
-      ConstraintSummaries = list(
-        list(
-          Type = "string",
-          Description = "string"
-        )
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      Name = "string"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
-Lists the paths to the specified product. A path is how the user has
-access to a specified product, and is necessary when provisioning a
-product. A path also determines the constraints put on the product.
-}
-\section{Request syntax}{
-\preformatted{svc$list_launch_paths(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  PageSize = 123,
-  PageToken = "string"
-)
-}
-}
+Lists the paths to the specified product. A path is how the user has access to a specified product, and is necessary when provisioning a product. A path also determines the constraints put on the product.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_launch_paths.html} for full documentation.
+}
 \keyword{internal}

@@ -4,83 +4,73 @@
 \alias{ram_create_resource_share}
 \title{Creates a resource share}
 \usage{
-ram_create_resource_share(name, resourceArns, principals, tags,
-  allowExternalPrincipals, clientToken, permissionArns)
+ram_create_resource_share(
+  name,
+  resourceArns = NULL,
+  principals = NULL,
+  tags = NULL,
+  allowExternalPrincipals = NULL,
+  clientToken = NULL,
+  permissionArns = NULL
+)
 }
 \arguments{
-\item{name}{[required] The name of the resource share.}
+\item{name}{[required] Specifies the name of the resource share.}
 
-\item{resourceArns}{The Amazon Resource Names (ARN) of the resources to associate with the
+\item{resourceArns}{Specifies a list of one or more ARNs of the resources to associate with
+the resource share.}
+
+\item{principals}{Specifies a list of one or more principals to associate with the
+resource share.
+
+You can include the following values:
+\itemize{
+\item An Amazon Web Services account ID, for example: \code{123456789012}
+\item An \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of an organization in Organizations, for example:
+\verb{organizations::123456789012:organization/o-exampleorgid}
+\item An ARN of an organizational unit (OU) in Organizations, for example:
+\verb{organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123}
+\item An ARN of an IAM role, for example:
+\verb{iam::123456789012:role/rolename}
+\item An ARN of an IAM user, for example: \verb{iam::123456789012user/username}
+}
+
+Not all resource types can be shared with IAM roles and users. For more
+information, see \href{https://docs.aws.amazon.com/ram/latest/userguide/#permissions-rbp-supported-resource-types}{Sharing with IAM roles and users}
+in the \emph{Resource Access Manager User Guide}.}
+
+\item{tags}{Specifies one or more tags to attach to the resource share itself. It
+doesn't attach the tags to the resources associated with the resource
+share.}
+
+\item{allowExternalPrincipals}{Specifies whether principals outside your organization in Organizations
+can be associated with a resource share. A value of \code{true} lets you
+share with individual Amazon Web Services accounts that are \emph{not} in
+your organization. A value of \code{false} only has meaning if your account
+is a member of an Amazon Web Services Organization. The default value is
+\code{true}.}
+
+\item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure
+the idempotency of the request. This lets you safely retry the request
+without accidentally performing the same operation a second time.
+Passing the same value to a later call to an operation requires that you
+also pass the same value for all other parameters. We recommend that you
+use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
+
+If you don't provide this value, then Amazon Web Services generates a
+random one for you.}
+
+\item{permissionArns}{Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+of the RAM permission to associate with the resource share. If you do
+not specify an ARN for the permission, RAM automatically attaches the
+default version of the permission for each resource type. You can
+associate only one permission with each resource type included in the
 resource share.}
-
-\item{principals}{The principals to associate with the resource share. The possible values
-are IDs of AWS accounts, the ARN of an OU or organization from AWS
-Organizations.}
-
-\item{tags}{One or more tags.}
-
-\item{allowExternalPrincipals}{Indicates whether principals outside your AWS organization can be
-associated with a resource share.}
-
-\item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
-
-\item{permissionArns}{The ARNs of the permissions to associate with the resource share. If you
-do not specify an ARN for the permission, AWS RAM automatically attaches
-the default version of the permission for each resource type.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  resourceShare = list(
-    resourceShareArn = "string",
-    name = "string",
-    owningAccountId = "string",
-    allowExternalPrincipals = TRUE|FALSE,
-    status = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED",
-    statusMessage = "string",
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    ),
-    creationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastUpdatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD"
-  ),
-  clientToken = "string"
-)
-}
 }
 \description{
-Creates a resource share.
-}
-\section{Request syntax}{
-\preformatted{svc$create_resource_share(
-  name = "string",
-  resourceArns = list(
-    "string"
-  ),
-  principals = list(
-    "string"
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  allowExternalPrincipals = TRUE|FALSE,
-  clientToken = "string",
-  permissionArns = list(
-    "string"
-  )
-)
-}
-}
+Creates a resource share. You can provide a list of the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)} for the resources that you want to share, a list of principals you want to share the resources with, and the permissions to grant those principals.
 
+See \url{https://paws-r.github.io/docs/ram/create_resource_share.html} for full documentation.
+}
 \keyword{internal}

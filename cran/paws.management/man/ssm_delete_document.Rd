@@ -2,10 +2,15 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_delete_document}
 \alias{ssm_delete_document}
-\title{Deletes the Systems Manager document and all instance associations to
-the document}
+\title{Deletes the Amazon Web Services Systems Manager document (SSM document)
+and all managed node associations to the document}
 \usage{
-ssm_delete_document(Name, DocumentVersion, VersionName, Force)
+ssm_delete_document(
+  Name,
+  DocumentVersion = NULL,
+  VersionName = NULL,
+  Force = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the document.}
@@ -19,28 +24,12 @@ provided, all versions of the document are deleted.}
 \item{Force}{Some SSM document types require that you specify a \code{Force} flag before
 you can delete the document. For example, you must specify a \code{Force}
 flag to delete a document of type \code{ApplicationConfigurationSchema}. You
-can restrict access to the \code{Force} flag in an AWS Identity and Access
+can restrict access to the \code{Force} flag in an Identity and Access
 Management (IAM) policy.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the Systems Manager document and all instance associations to
-the document.
+Deletes the Amazon Web Services Systems Manager document (SSM document) and all managed node associations to the document.
 
-Before you delete the document, we recommend that you use
-\code{\link[=ssm_delete_association]{delete_association}} to disassociate all
-instances that are associated with the document.
+See \url{https://paws-r.github.io/docs/ssm/delete_document.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_document(
-  Name = "string",
-  DocumentVersion = "string",
-  VersionName = "string",
-  Force = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

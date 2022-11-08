@@ -7,8 +7,11 @@ Redshift with their descriptions including the node type, the fixed and
 recurring costs of reserving the node and duration the node will be
 reserved for you}
 \usage{
-redshift_describe_reserved_node_offerings(ReservedNodeOfferingId,
-  MaxRecords, Marker)
+redshift_describe_reserved_node_offerings(
+  ReservedNodeOfferingId = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{ReservedNodeOfferingId}{The unique identifier for the offering.}
@@ -26,55 +29,14 @@ Constraints: minimum 20, maximum 100.}
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
 \code{\link[=redshift_describe_reserved_node_offerings]{describe_reserved_node_offerings}}
-request exceed the value specified in \code{MaxRecords}, AWS returns a value
-in the \code{Marker} field of the response. You can retrieve the next set of
-response records by providing the returned marker value in the \code{Marker}
-parameter and retrying the request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  ReservedNodeOfferings = list(
-    list(
-      ReservedNodeOfferingId = "string",
-      NodeType = "string",
-      Duration = 123,
-      FixedPrice = 123.0,
-      UsagePrice = 123.0,
-      CurrencyCode = "string",
-      OfferingType = "string",
-      RecurringCharges = list(
-        list(
-          RecurringChargeAmount = 123.0,
-          RecurringChargeFrequency = "string"
-        )
-      ),
-      ReservedNodeOfferingType = "Regular"|"Upgradable"
-    )
-  )
-)
-}
+request exceed the value specified in \code{MaxRecords}, Amazon Web Services
+returns a value in the \code{Marker} field of the response. You can retrieve
+the next set of response records by providing the returned marker value
+in the \code{Marker} parameter and retrying the request.}
 }
 \description{
-Returns a list of the available reserved node offerings by Amazon
-Redshift with their descriptions including the node type, the fixed and
-recurring costs of reserving the node and duration the node will be
-reserved for you. These descriptions help you determine which reserve
-node offering you want to purchase. You then use the unique offering ID
-in you call to
-\code{\link[=redshift_purchase_reserved_node_offering]{purchase_reserved_node_offering}}
-to reserve one or more nodes for your Amazon Redshift cluster.
+Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you. These descriptions help you determine which reserve node offering you want to purchase. You then use the unique offering ID in you call to \code{\link[=redshift_purchase_reserved_node_offering]{purchase_reserved_node_offering}} to reserve one or more nodes for your Amazon Redshift cluster.
 
-For more information about reserved node offerings, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html}{Purchasing Reserved Nodes}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/describe_reserved_node_offerings.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_reserved_node_offerings(
-  ReservedNodeOfferingId = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

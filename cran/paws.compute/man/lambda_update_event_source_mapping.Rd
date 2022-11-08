@@ -4,11 +4,22 @@
 \alias{lambda_update_event_source_mapping}
 \title{Updates an event source mapping}
 \usage{
-lambda_update_event_source_mapping(UUID, FunctionName, Enabled,
-  BatchSize, MaximumBatchingWindowInSeconds, DestinationConfig,
-  MaximumRecordAgeInSeconds, BisectBatchOnFunctionError,
-  MaximumRetryAttempts, ParallelizationFactor, SourceAccessConfigurations,
-  TumblingWindowInSeconds, FunctionResponseTypes)
+lambda_update_event_source_mapping(
+  UUID,
+  FunctionName = NULL,
+  Enabled = NULL,
+  BatchSize = NULL,
+  FilterCriteria = NULL,
+  MaximumBatchingWindowInSeconds = NULL,
+  DestinationConfig = NULL,
+  MaximumRecordAgeInSeconds = NULL,
+  BisectBatchOnFunctionError = NULL,
+  MaximumRetryAttempts = NULL,
+  ParallelizationFactor = NULL,
+  SourceAccessConfigurations = NULL,
+  TumblingWindowInSeconds = NULL,
+  FunctionResponseTypes = NULL
+)
 }
 \arguments{
 \item{UUID}{[required] The identifier of the event source mapping.}
@@ -28,167 +39,67 @@ lambda_update_event_source_mapping(UUID, FunctionName, Enabled,
 The length constraint applies only to the full ARN. If you specify only
 the function name, it's limited to 64 characters in length.}
 
-\item{Enabled}{If true, the event source mapping is active. Set to false to pause
-polling and invocation.}
+\item{Enabled}{When true, the event source mapping is active. When false, Lambda pauses
+polling and invocation.
 
-\item{BatchSize}{The maximum number of items to retrieve in a single batch.
+Default: True}
+
+\item{BatchSize}{The maximum number of records in each batch that Lambda pulls from your
+stream or queue and sends to your function. Lambda passes all of the
+records in the batch to the function in a single call, up to the payload
+limit for synchronous invocation (6 MB).
 \itemize{
 \item \strong{Amazon Kinesis} - Default 100. Max 10,000.
-\item \strong{Amazon DynamoDB Streams} - Default 100. Max 1,000.
+\item \strong{Amazon DynamoDB Streams} - Default 100. Max 10,000.
 \item \strong{Amazon Simple Queue Service} - Default 10. For standard queues
 the max is 10,000. For FIFO queues the max is 10.
 \item \strong{Amazon Managed Streaming for Apache Kafka} - Default 100. Max
 10,000.
 \item \strong{Self-Managed Apache Kafka} - Default 100. Max 10,000.
+\item \strong{Amazon MQ (ActiveMQ and RabbitMQ)} - Default 100. Max 10,000.
 }}
 
-\item{MaximumBatchingWindowInSeconds}{(Streams and SQS standard queues) The maximum amount of time to gather
-records before invoking the function, in seconds.}
+\item{FilterCriteria}{(Streams and Amazon SQS) An object that defines the filter criteria that
+determine whether Lambda should process an event. For more information,
+see \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html}{Lambda event filtering}.}
 
-\item{DestinationConfig}{(Streams) An Amazon SQS queue or Amazon SNS topic destination for
+\item{MaximumBatchingWindowInSeconds}{(Streams and Amazon SQS standard queues) The maximum amount of time, in
+seconds, that Lambda spends gathering records before invoking the
+function.
+
+Default: 0
+
+Related setting: When you set \code{BatchSize} to a value greater than 10,
+you must set \code{MaximumBatchingWindowInSeconds} to at least 1.}
+
+\item{DestinationConfig}{(Streams only) An Amazon SQS queue or Amazon SNS topic destination for
 discarded records.}
 
-\item{MaximumRecordAgeInSeconds}{(Streams) Discard records older than the specified age. The default
+\item{MaximumRecordAgeInSeconds}{(Streams only) Discard records older than the specified age. The default
 value is infinite (-1).}
 
-\item{BisectBatchOnFunctionError}{(Streams) If the function returns an error, split the batch in two and
-retry.}
+\item{BisectBatchOnFunctionError}{(Streams only) If the function returns an error, split the batch in two
+and retry.}
 
-\item{MaximumRetryAttempts}{(Streams) Discard records after the specified number of retries. The
-default value is infinite (-1). When set to infinite (-1), failed
+\item{MaximumRetryAttempts}{(Streams only) Discard records after the specified number of retries.
+The default value is infinite (-1). When set to infinite (-1), failed
 records will be retried until the record expires.}
 
-\item{ParallelizationFactor}{(Streams) The number of batches to process from each shard concurrently.}
+\item{ParallelizationFactor}{(Streams only) The number of batches to process from each shard
+concurrently.}
 
-\item{SourceAccessConfigurations}{An array of the authentication protocol, or the VPC components to secure
-your event source.}
+\item{SourceAccessConfigurations}{An array of authentication protocols or VPC components required to
+secure your event source.}
 
-\item{TumblingWindowInSeconds}{(Streams) The duration of a processing window in seconds. The range is
-between 1 second up to 15 minutes.}
+\item{TumblingWindowInSeconds}{(Streams only) The duration in seconds of a processing window. The range
+is between 1 second up to 900 seconds.}
 
-\item{FunctionResponseTypes}{(Streams) A list of current response type enums applied to the event
-source mapping.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UUID = "string",
-  StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
-  StartingPositionTimestamp = as.POSIXct(
-    "2015-01-01"
-  ),
-  BatchSize = 123,
-  MaximumBatchingWindowInSeconds = 123,
-  ParallelizationFactor = 123,
-  EventSourceArn = "string",
-  FunctionArn = "string",
-  LastModified = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastProcessingResult = "string",
-  State = "string",
-  StateTransitionReason = "string",
-  DestinationConfig = list(
-    OnSuccess = list(
-      Destination = "string"
-    ),
-    OnFailure = list(
-      Destination = "string"
-    )
-  ),
-  Topics = list(
-    "string"
-  ),
-  Queues = list(
-    "string"
-  ),
-  SourceAccessConfigurations = list(
-    list(
-      Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
-      URI = "string"
-    )
-  ),
-  SelfManagedEventSource = list(
-    Endpoints = list(
-      list(
-        "string"
-      )
-    )
-  ),
-  MaximumRecordAgeInSeconds = 123,
-  BisectBatchOnFunctionError = TRUE|FALSE,
-  MaximumRetryAttempts = 123,
-  TumblingWindowInSeconds = 123,
-  FunctionResponseTypes = list(
-    "ReportBatchItemFailures"
-  )
-)
-}
+\item{FunctionResponseTypes}{(Streams and Amazon SQS) A list of current response type enums applied
+to the event source mapping.}
 }
 \description{
-Updates an event source mapping. You can change the function that AWS
-Lambda invokes, or pause invocation and resume later from the same
-location.
+Updates an event source mapping. You can change the function that Lambda invokes, or pause invocation and resume later from the same location.
 
-The following error handling options are only available for stream
-sources (DynamoDB and Kinesis):
-\itemize{
-\item \code{BisectBatchOnFunctionError} - If the function returns an error,
-split the batch in two and retry.
-\item \code{DestinationConfig} - Send discarded records to an Amazon SQS queue
-or Amazon SNS topic.
-\item \code{MaximumRecordAgeInSeconds} - Discard records older than the
-specified age. The default value is infinite (-1). When set to
-infinite (-1), failed records are retried until the record expires
-\item \code{MaximumRetryAttempts} - Discard records after the specified number
-of retries. The default value is infinite (-1). When set to infinite
-(-1), failed records are retried until the record expires.
-\item \code{ParallelizationFactor} - Process multiple batches from each shard
-concurrently.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$update_event_source_mapping(
-  UUID = "string",
-  FunctionName = "string",
-  Enabled = TRUE|FALSE,
-  BatchSize = 123,
-  MaximumBatchingWindowInSeconds = 123,
-  DestinationConfig = list(
-    OnSuccess = list(
-      Destination = "string"
-    ),
-    OnFailure = list(
-      Destination = "string"
-    )
-  ),
-  MaximumRecordAgeInSeconds = 123,
-  BisectBatchOnFunctionError = TRUE|FALSE,
-  MaximumRetryAttempts = 123,
-  ParallelizationFactor = 123,
-  SourceAccessConfigurations = list(
-    list(
-      Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
-      URI = "string"
-    )
-  ),
-  TumblingWindowInSeconds = 123,
-  FunctionResponseTypes = list(
-    "ReportBatchItemFailures"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation updates a Lambda function event source mapping
-svc$update_event_source_mapping(
-  BatchSize = 123L,
-  Enabled = TRUE,
-  FunctionName = "myFunction",
-  UUID = "1234xCy789012"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/update_event_source_mapping.html} for full documentation.
 }
 \keyword{internal}

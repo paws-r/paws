@@ -8,9 +8,7 @@ NULL
 #' @description
 #' Accepts an offer to share the specified portfolio.
 #'
-#' @usage
-#' servicecatalog_accept_portfolio_share(AcceptLanguage, PortfolioId,
-#'   PortfolioShareType)
+#' See [https://paws-r.github.io/docs/servicecatalog/accept_portfolio_share.html](https://paws-r.github.io/docs/servicecatalog/accept_portfolio_share.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -33,18 +31,6 @@ NULL
 #' 
 #' For example,
 #' `aws servicecatalog accept-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS`
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$accept_portfolio_share(
-#'   AcceptLanguage = "string",
-#'   PortfolioId = "string",
-#'   PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -71,22 +57,10 @@ servicecatalog_accept_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @description
 #' Associates the specified budget with the specified resource.
 #'
-#' @usage
-#' servicecatalog_associate_budget_with_resource(BudgetName, ResourceId)
+#' See [https://paws-r.github.io/docs/servicecatalog/associate_budget_with_resource.html](https://paws-r.github.io/docs/servicecatalog/associate_budget_with_resource.html) for full documentation.
 #'
 #' @param BudgetName &#91;required&#93; The name of the budget you want to associate.
 #' @param ResourceId &#91;required&#93; The resource identifier. Either a portfolio-id or a product-id.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_budget_with_resource(
-#'   BudgetName = "string",
-#'   ResourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -113,9 +87,7 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' @description
 #' Associates the specified principal ARN with the specified portfolio.
 #'
-#' @usage
-#' servicecatalog_associate_principal_with_portfolio(AcceptLanguage,
-#'   PortfolioId, PrincipalARN, PrincipalType)
+#' See [https://paws-r.github.io/docs/servicecatalog/associate_principal_with_portfolio.html](https://paws-r.github.io/docs/servicecatalog/associate_principal_with_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -127,19 +99,6 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PrincipalARN &#91;required&#93; The ARN of the principal (IAM user, role, or group).
 #' @param PrincipalType &#91;required&#93; The principal type. The supported value is `IAM`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_principal_with_portfolio(
-#'   AcceptLanguage = "string",
-#'   PortfolioId = "string",
-#'   PrincipalARN = "string",
-#'   PrincipalType = "IAM"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -165,12 +124,8 @@ servicecatalog_associate_principal_with_portfolio <- function(AcceptLanguage = N
 #'
 #' @description
 #' Associates the specified product with the specified portfolio.
-#' 
-#' A delegated admin is authorized to invoke this command.
 #'
-#' @usage
-#' servicecatalog_associate_product_with_portfolio(AcceptLanguage,
-#'   ProductId, PortfolioId, SourcePortfolioId)
+#' See [https://paws-r.github.io/docs/servicecatalog/associate_product_with_portfolio.html](https://paws-r.github.io/docs/servicecatalog/associate_product_with_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -182,19 +137,6 @@ servicecatalog_associate_principal_with_portfolio <- function(AcceptLanguage = N
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param SourcePortfolioId The identifier of the source portfolio.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_product_with_portfolio(
-#'   AcceptLanguage = "string",
-#'   ProductId = "string",
-#'   PortfolioId = "string",
-#'   SourcePortfolioId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -221,9 +163,7 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
 #' @description
 #' Associates a self-service action with a provisioning artifact.
 #'
-#' @usage
-#' servicecatalog_associate_service_action_with_provisioning_artifact(
-#'   ProductId, ProvisioningArtifactId, ServiceActionId, AcceptLanguage)
+#' See [https://paws-r.github.io/docs/servicecatalog/associate_service_action_with_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/associate_service_action_with_provisioning_artifact.html) for full documentation.
 #'
 #' @param ProductId &#91;required&#93; The product identifier. For example, `prod-abcdzk7xy33qa`.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact. For example,
@@ -236,19 +176,6 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_service_action_with_provisioning_artifact(
-#'   ProductId = "string",
-#'   ProvisioningArtifactId = "string",
-#'   ServiceActionId = "string",
-#'   AcceptLanguage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -274,26 +201,12 @@ servicecatalog_associate_service_action_with_provisioning_artifact <- function(P
 #' product
 #'
 #' @description
-#' Associate the specified TagOption with the specified portfolio or
-#' product.
+#' Associate the specified TagOption with the specified portfolio or product.
 #'
-#' @usage
-#' servicecatalog_associate_tag_option_with_resource(ResourceId,
-#'   TagOptionId)
+#' See [https://paws-r.github.io/docs/servicecatalog/associate_tag_option_with_resource.html](https://paws-r.github.io/docs/servicecatalog/associate_tag_option_with_resource.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The resource identifier.
 #' @param TagOptionId &#91;required&#93; The TagOption identifier.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_tag_option_with_resource(
-#'   ResourceId = "string",
-#'   TagOptionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -320,9 +233,7 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
 #' @description
 #' Associates multiple self-service actions with provisioning artifacts.
 #'
-#' @usage
-#' servicecatalog_batch_associate_service_action_with_provisioning_artifact(
-#'   ServiceActionAssociations, AcceptLanguage)
+#' See [https://paws-r.github.io/docs/servicecatalog/batch_associate_service_action_with_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/batch_associate_service_action_with_provisioning_artifact.html) for full documentation.
 #'
 #' @param ServiceActionAssociations &#91;required&#93; One or more associations, each consisting of the Action ID, the Product
 #' ID, and the Provisioning Artifact ID.
@@ -333,36 +244,6 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedServiceActionAssociations = list(
-#'     list(
-#'       ServiceActionId = "string",
-#'       ProductId = "string",
-#'       ProvisioningArtifactId = "string",
-#'       ErrorCode = "DUPLICATE_RESOURCE"|"INTERNAL_FAILURE"|"LIMIT_EXCEEDED"|"RESOURCE_NOT_FOUND"|"THROTTLING",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_associate_service_action_with_provisioning_artifact(
-#'   ServiceActionAssociations = list(
-#'     list(
-#'       ServiceActionId = "string",
-#'       ProductId = "string",
-#'       ProvisioningArtifactId = "string"
-#'     )
-#'   ),
-#'   AcceptLanguage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -388,12 +269,9 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
 #' provisioning artifact
 #'
 #' @description
-#' Disassociates a batch of self-service actions from the specified
-#' provisioning artifact.
+#' Disassociates a batch of self-service actions from the specified provisioning artifact.
 #'
-#' @usage
-#' servicecatalog_batch_disassociate_service_action_from_provisioning_artifact(
-#'   ServiceActionAssociations, AcceptLanguage)
+#' See [https://paws-r.github.io/docs/servicecatalog/batch_disassociate_service_action_from_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/batch_disassociate_service_action_from_provisioning_artifact.html) for full documentation.
 #'
 #' @param ServiceActionAssociations &#91;required&#93; One or more associations, each consisting of the Action ID, the Product
 #' ID, and the Provisioning Artifact ID.
@@ -404,36 +282,6 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedServiceActionAssociations = list(
-#'     list(
-#'       ServiceActionId = "string",
-#'       ProductId = "string",
-#'       ProvisioningArtifactId = "string",
-#'       ErrorCode = "DUPLICATE_RESOURCE"|"INTERNAL_FAILURE"|"LIMIT_EXCEEDED"|"RESOURCE_NOT_FOUND"|"THROTTLING",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_disassociate_service_action_from_provisioning_artifact(
-#'   ServiceActionAssociations = list(
-#'     list(
-#'       ServiceActionId = "string",
-#'       ProductId = "string",
-#'       ProvisioningArtifactId = "string"
-#'     )
-#'   ),
-#'   AcceptLanguage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -459,20 +307,9 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
 #' new product
 #'
 #' @description
-#' Copies the specified source product to the specified target product or a
-#' new product.
-#' 
-#' You can copy a product to the same account or another account. You can
-#' copy a product to the same region or another region.
-#' 
-#' This operation is performed asynchronously. To track the progress of the
-#' operation, use
-#' [`describe_copy_product_status`][servicecatalog_describe_copy_product_status].
+#' Copies the specified source product to the specified target product or a new product.
 #'
-#' @usage
-#' servicecatalog_copy_product(AcceptLanguage, SourceProductArn,
-#'   TargetProductId, TargetProductName,
-#'   SourceProvisioningArtifactIdentifiers, CopyOptions, IdempotencyToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/copy_product.html](https://paws-r.github.io/docs/servicecatalog/copy_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -494,33 +331,6 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CopyProductToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_product(
-#'   AcceptLanguage = "string",
-#'   SourceProductArn = "string",
-#'   TargetProductId = "string",
-#'   TargetProductName = "string",
-#'   SourceProvisioningArtifactIdentifiers = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   CopyOptions = list(
-#'     "CopyTags"
-#'   ),
-#'   IdempotencyToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -546,12 +356,8 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #'
 #' @description
 #' Creates a constraint.
-#' 
-#' A delegated admin is authorized to invoke this command.
 #'
-#' @usage
-#' servicecatalog_create_constraint(AcceptLanguage, PortfolioId, ProductId,
-#'   Parameters, Type, Description, IdempotencyToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/create_constraint.html](https://paws-r.github.io/docs/servicecatalog/create_constraint.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -642,36 +448,6 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConstraintDetail = list(
-#'     ConstraintId = "string",
-#'     Type = "string",
-#'     Description = "string",
-#'     Owner = "string",
-#'     ProductId = "string",
-#'     PortfolioId = "string"
-#'   ),
-#'   ConstraintParameters = "string",
-#'   Status = "AVAILABLE"|"CREATING"|"FAILED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_constraint(
-#'   AcceptLanguage = "string",
-#'   PortfolioId = "string",
-#'   ProductId = "string",
-#'   Parameters = "string",
-#'   Type = "string",
-#'   Description = "string",
-#'   IdempotencyToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_constraint
@@ -696,12 +472,8 @@ servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId,
 #'
 #' @description
 #' Creates a portfolio.
-#' 
-#' A delegated admin is authorized to invoke this command.
 #'
-#' @usage
-#' servicecatalog_create_portfolio(AcceptLanguage, DisplayName,
-#'   Description, ProviderName, Tags, IdempotencyToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/create_portfolio.html](https://paws-r.github.io/docs/servicecatalog/create_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -717,46 +489,6 @@ servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId,
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PortfolioDetail = list(
-#'     Id = "string",
-#'     ARN = "string",
-#'     DisplayName = "string",
-#'     Description = "string",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProviderName = "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_portfolio(
-#'   AcceptLanguage = "string",
-#'   DisplayName = "string",
-#'   Description = "string",
-#'   ProviderName = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   IdempotencyToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -782,30 +514,9 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #' organization node
 #'
 #' @description
-#' Shares the specified portfolio with the specified account or
-#' organization node. Shares to an organization node can only be created by
-#' the management account of an organization or by a delegated
-#' administrator. You can share portfolios to an organization, an
-#' organizational unit, or a specific account.
-#' 
-#' Note that if a delegated admin is de-registered, they can no longer
-#' create portfolio shares.
-#' 
-#' `AWSOrganizationsAccess` must be enabled in order to create a portfolio
-#' share to an organization node.
-#' 
-#' You can't share a shared resource, including portfolios that contain a
-#' shared product.
-#' 
-#' If the portfolio share with the specified account or organization node
-#' already exists, this action will have no effect and will not return an
-#' error. To update an existing share, you must use the
-#' [`update_portfolio_share`][servicecatalog_update_portfolio_share] API
-#' instead.
+#' Shares the specified portfolio with the specified account or organization node. Shares to an organization node can only be created by the management account of an organization or by a delegated administrator. You can share portfolios to an organization, an organizational unit, or a specific account.
 #'
-#' @usage
-#' servicecatalog_create_portfolio_share(AcceptLanguage, PortfolioId,
-#'   AccountId, OrganizationNode, ShareTagOptions)
+#' See [https://paws-r.github.io/docs/servicecatalog/create_portfolio_share.html](https://paws-r.github.io/docs/servicecatalog/create_portfolio_share.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -824,28 +535,6 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #' `PortfolioShare` creation process.
 #' @param ShareTagOptions Enables or disables `TagOptions ` sharing when creating the portfolio
 #' share. If this flag is not provided, TagOptions sharing is disabled.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PortfolioShareToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_portfolio_share(
-#'   AcceptLanguage = "string",
-#'   PortfolioId = "string",
-#'   AccountId = "string",
-#'   OrganizationNode = list(
-#'     Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
-#'     Value = "string"
-#'   ),
-#'   ShareTagOptions = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -871,18 +560,8 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @description
 #' Creates a product.
-#' 
-#' A delegated admin is authorized to invoke this command.
-#' 
-#' The user or role that performs this operation must have the
-#' `cloudformation:GetTemplate` IAM policy permission. This policy
-#' permission is required when using the `ImportFromPhysicalId` template
-#' source in the information data section.
 #'
-#' @usage
-#' servicecatalog_create_product(AcceptLanguage, Name, Owner, Description,
-#'   Distributor, SupportDescription, SupportEmail, SupportUrl, ProductType,
-#'   Tags, ProvisioningArtifactParameters, IdempotencyToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/create_product.html](https://paws-r.github.io/docs/servicecatalog/create_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -907,81 +586,6 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProductViewDetail = list(
-#'     ProductViewSummary = list(
-#'       Id = "string",
-#'       ProductId = "string",
-#'       Name = "string",
-#'       Owner = "string",
-#'       ShortDescription = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-#'       Distributor = "string",
-#'       HasDefaultPath = TRUE|FALSE,
-#'       SupportEmail = "string",
-#'       SupportDescription = "string",
-#'       SupportUrl = "string"
-#'     ),
-#'     Status = "AVAILABLE"|"CREATING"|"FAILED",
-#'     ProductARN = "string",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   ProvisioningArtifactDetail = list(
-#'     Id = "string",
-#'     Name = "string",
-#'     Description = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Active = TRUE|FALSE,
-#'     Guidance = "DEFAULT"|"DEPRECATED"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_product(
-#'   AcceptLanguage = "string",
-#'   Name = "string",
-#'   Owner = "string",
-#'   Description = "string",
-#'   Distributor = "string",
-#'   SupportDescription = "string",
-#'   SupportEmail = "string",
-#'   SupportUrl = "string",
-#'   ProductType = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   ProvisioningArtifactParameters = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     Info = list(
-#'       "string"
-#'     ),
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-#'     DisableTemplateValidation = TRUE|FALSE
-#'   ),
-#'   IdempotencyToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_product
@@ -1005,23 +609,9 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' Creates a plan
 #'
 #' @description
-#' Creates a plan. A plan includes the list of resources to be created
-#' (when provisioning a new product) or modified (when updating a
-#' provisioned product) when the plan is executed.
-#' 
-#' You can create one plan per provisioned product. To create a plan for an
-#' existing provisioned product, the product status must be AVAILBLE or
-#' TAINTED.
-#' 
-#' To view the resource changes in the change set, use
-#' [`describe_provisioned_product_plan`][servicecatalog_describe_provisioned_product_plan].
-#' To create or modify the provisioned product, use
-#' [`execute_provisioned_product_plan`][servicecatalog_execute_provisioned_product_plan].
+#' Creates a plan. A plan includes the list of resources to be created (when provisioning a new product) or modified (when updating a provisioned product) when the plan is executed.
 #'
-#' @usage
-#' servicecatalog_create_provisioned_product_plan(AcceptLanguage, PlanName,
-#'   PlanType, NotificationArns, PathId, ProductId, ProvisionedProductName,
-#'   ProvisioningArtifactId, ProvisioningParameters, IdempotencyToken, Tags)
+#' See [https://paws-r.github.io/docs/servicecatalog/create_provisioned_product_plan.html](https://paws-r.github.io/docs/servicecatalog/create_provisioned_product_plan.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1054,48 +644,6 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' have a `RESOURCE_UPDATE` constraint with
 #' `TagUpdatesOnProvisionedProduct` set to `ALLOWED` to allow tag updates.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PlanName = "string",
-#'   PlanId = "string",
-#'   ProvisionProductId = "string",
-#'   ProvisionedProductName = "string",
-#'   ProvisioningArtifactId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_provisioned_product_plan(
-#'   AcceptLanguage = "string",
-#'   PlanName = "string",
-#'   PlanType = "CLOUDFORMATION",
-#'   NotificationArns = list(
-#'     "string"
-#'   ),
-#'   PathId = "string",
-#'   ProductId = "string",
-#'   ProvisionedProductName = "string",
-#'   ProvisioningArtifactId = "string",
-#'   ProvisioningParameters = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string",
-#'       UsePreviousValue = TRUE|FALSE
-#'     )
-#'   ),
-#'   IdempotencyToken = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_provisioned_product_plan
@@ -1120,20 +668,9 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' specified product
 #'
 #' @description
-#' Creates a provisioning artifact (also known as a version) for the
-#' specified product.
-#' 
-#' You cannot create a provisioning artifact for a product that was shared
-#' with you.
-#' 
-#' The user or role that performs this operation must have the
-#' `cloudformation:GetTemplate` IAM policy permission. This policy
-#' permission is required when using the `ImportFromPhysicalId` template
-#' source in the information data section.
+#' Creates a provisioning artifact (also known as a version) for the specified product.
 #'
-#' @usage
-#' servicecatalog_create_provisioning_artifact(AcceptLanguage, ProductId,
-#'   Parameters, IdempotencyToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/create_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/create_provisioning_artifact.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1147,46 +684,6 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProvisioningArtifactDetail = list(
-#'     Id = "string",
-#'     Name = "string",
-#'     Description = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Active = TRUE|FALSE,
-#'     Guidance = "DEFAULT"|"DEPRECATED"
-#'   ),
-#'   Info = list(
-#'     "string"
-#'   ),
-#'   Status = "AVAILABLE"|"CREATING"|"FAILED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_provisioning_artifact(
-#'   AcceptLanguage = "string",
-#'   ProductId = "string",
-#'   Parameters = list(
-#'     Name = "string",
-#'     Description = "string",
-#'     Info = list(
-#'       "string"
-#'     ),
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-#'     DisableTemplateValidation = TRUE|FALSE
-#'   ),
-#'   IdempotencyToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1213,9 +710,7 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @description
 #' Creates a self-service action.
 #'
-#' @usage
-#' servicecatalog_create_service_action(Name, DefinitionType, Definition,
-#'   Description, AcceptLanguage, IdempotencyToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/create_service_action.html](https://paws-r.github.io/docs/servicecatalog/create_service_action.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The self-service action name.
 #' @param DefinitionType &#91;required&#93; The service action definition type. For example, `SSM_AUTOMATION`.
@@ -1261,38 +756,6 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ServiceActionDetail = list(
-#'     ServiceActionSummary = list(
-#'       Id = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       DefinitionType = "SSM_AUTOMATION"
-#'     ),
-#'     Definition = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_service_action(
-#'   Name = "string",
-#'   DefinitionType = "SSM_AUTOMATION",
-#'   Definition = list(
-#'     "string"
-#'   ),
-#'   Description = "string",
-#'   AcceptLanguage = "string",
-#'   IdempotencyToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_service_action
@@ -1318,33 +781,10 @@ servicecatalog_create_service_action <- function(Name, DefinitionType, Definitio
 #' @description
 #' Creates a TagOption.
 #'
-#' @usage
-#' servicecatalog_create_tag_option(Key, Value)
+#' See [https://paws-r.github.io/docs/servicecatalog/create_tag_option.html](https://paws-r.github.io/docs/servicecatalog/create_tag_option.html) for full documentation.
 #'
 #' @param Key &#91;required&#93; The TagOption key.
 #' @param Value &#91;required&#93; The TagOption value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagOptionDetail = list(
-#'     Key = "string",
-#'     Value = "string",
-#'     Active = TRUE|FALSE,
-#'     Id = "string",
-#'     Owner = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_tag_option(
-#'   Key = "string",
-#'   Value = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1370,11 +810,8 @@ servicecatalog_create_tag_option <- function(Key, Value) {
 #'
 #' @description
 #' Deletes the specified constraint.
-#' 
-#' A delegated admin is authorized to invoke this command.
 #'
-#' @usage
-#' servicecatalog_delete_constraint(AcceptLanguage, Id)
+#' See [https://paws-r.github.io/docs/servicecatalog/delete_constraint.html](https://paws-r.github.io/docs/servicecatalog/delete_constraint.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1384,17 +821,6 @@ servicecatalog_create_tag_option <- function(Key, Value) {
 #' 
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The identifier of the constraint.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_constraint(
-#'   AcceptLanguage = "string",
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1420,14 +846,8 @@ servicecatalog_delete_constraint <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @description
 #' Deletes the specified portfolio.
-#' 
-#' You cannot delete a portfolio if it was shared with you or if it has
-#' associated products, users, constraints, or shared accounts.
-#' 
-#' A delegated admin is authorized to invoke this command.
 #'
-#' @usage
-#' servicecatalog_delete_portfolio(AcceptLanguage, Id)
+#' See [https://paws-r.github.io/docs/servicecatalog/delete_portfolio.html](https://paws-r.github.io/docs/servicecatalog/delete_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1437,17 +857,6 @@ servicecatalog_delete_constraint <- function(AcceptLanguage = NULL, Id) {
 #' 
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The portfolio identifier.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_portfolio(
-#'   AcceptLanguage = "string",
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1473,17 +882,9 @@ servicecatalog_delete_portfolio <- function(AcceptLanguage = NULL, Id) {
 #' organization node
 #'
 #' @description
-#' Stops sharing the specified portfolio with the specified account or
-#' organization node. Shares to an organization node can only be deleted by
-#' the management account of an organization or by a delegated
-#' administrator.
-#' 
-#' Note that if a delegated admin is de-registered, portfolio shares
-#' created from that account are removed.
+#' Stops sharing the specified portfolio with the specified account or organization node. Shares to an organization node can only be deleted by the management account of an organization or by a delegated administrator.
 #'
-#' @usage
-#' servicecatalog_delete_portfolio_share(AcceptLanguage, PortfolioId,
-#'   AccountId, OrganizationNode)
+#' See [https://paws-r.github.io/docs/servicecatalog/delete_portfolio_share.html](https://paws-r.github.io/docs/servicecatalog/delete_portfolio_share.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1495,27 +896,6 @@ servicecatalog_delete_portfolio <- function(AcceptLanguage = NULL, Id) {
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param AccountId The AWS account ID.
 #' @param OrganizationNode The organization node to whom you are going to stop sharing.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PortfolioShareToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_portfolio_share(
-#'   AcceptLanguage = "string",
-#'   PortfolioId = "string",
-#'   AccountId = "string",
-#'   OrganizationNode = list(
-#'     Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
-#'     Value = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1541,14 +921,8 @@ servicecatalog_delete_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @description
 #' Deletes the specified product.
-#' 
-#' You cannot delete a product if it was shared with you or is associated
-#' with a portfolio.
-#' 
-#' A delegated admin is authorized to invoke this command.
 #'
-#' @usage
-#' servicecatalog_delete_product(AcceptLanguage, Id)
+#' See [https://paws-r.github.io/docs/servicecatalog/delete_product.html](https://paws-r.github.io/docs/servicecatalog/delete_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1558,17 +932,6 @@ servicecatalog_delete_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' 
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The product identifier.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_product(
-#'   AcceptLanguage = "string",
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1595,9 +958,7 @@ servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
 #' @description
 #' Deletes the specified plan.
 #'
-#' @usage
-#' servicecatalog_delete_provisioned_product_plan(AcceptLanguage, PlanId,
-#'   IgnoreErrors)
+#' See [https://paws-r.github.io/docs/servicecatalog/delete_provisioned_product_plan.html](https://paws-r.github.io/docs/servicecatalog/delete_provisioned_product_plan.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1609,18 +970,6 @@ servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
 #' @param PlanId &#91;required&#93; The plan identifier.
 #' @param IgnoreErrors If set to true, AWS Service Catalog stops managing the specified
 #' provisioned product even if it cannot delete the underlying resources.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_provisioned_product_plan(
-#'   AcceptLanguage = "string",
-#'   PlanId = "string",
-#'   IgnoreErrors = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1646,17 +995,9 @@ servicecatalog_delete_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' for the specified product
 #'
 #' @description
-#' Deletes the specified provisioning artifact (also known as a version)
-#' for the specified product.
-#' 
-#' You cannot delete a provisioning artifact associated with a product that
-#' was shared with you. You cannot delete the last provisioning artifact
-#' for a product, because a product must have at least one provisioning
-#' artifact.
+#' Deletes the specified provisioning artifact (also known as a version) for the specified product.
 #'
-#' @usage
-#' servicecatalog_delete_provisioning_artifact(AcceptLanguage, ProductId,
-#'   ProvisioningArtifactId)
+#' See [https://paws-r.github.io/docs/servicecatalog/delete_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/delete_provisioning_artifact.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1667,18 +1008,6 @@ servicecatalog_delete_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_provisioning_artifact(
-#'   AcceptLanguage = "string",
-#'   ProductId = "string",
-#'   ProvisioningArtifactId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1705,8 +1034,7 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @description
 #' Deletes a self-service action.
 #'
-#' @usage
-#' servicecatalog_delete_service_action(Id, AcceptLanguage)
+#' See [https://paws-r.github.io/docs/servicecatalog/delete_service_action.html](https://paws-r.github.io/docs/servicecatalog/delete_service_action.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
@@ -1716,17 +1044,6 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_service_action(
-#'   Id = "string",
-#'   AcceptLanguage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1752,24 +1069,10 @@ servicecatalog_delete_service_action <- function(Id, AcceptLanguage = NULL) {
 #'
 #' @description
 #' Deletes the specified TagOption.
-#' 
-#' You cannot delete a TagOption if it is associated with a product or
-#' portfolio.
 #'
-#' @usage
-#' servicecatalog_delete_tag_option(Id)
+#' See [https://paws-r.github.io/docs/servicecatalog/delete_tag_option.html](https://paws-r.github.io/docs/servicecatalog/delete_tag_option.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The TagOption identifier.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_tag_option(
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1796,8 +1099,7 @@ servicecatalog_delete_tag_option <- function(Id) {
 #' @description
 #' Gets information about the specified constraint.
 #'
-#' @usage
-#' servicecatalog_describe_constraint(AcceptLanguage, Id)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_constraint.html](https://paws-r.github.io/docs/servicecatalog/describe_constraint.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1807,31 +1109,6 @@ servicecatalog_delete_tag_option <- function(Id) {
 #' 
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The identifier of the constraint.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConstraintDetail = list(
-#'     ConstraintId = "string",
-#'     Type = "string",
-#'     Description = "string",
-#'     Owner = "string",
-#'     ProductId = "string",
-#'     PortfolioId = "string"
-#'   ),
-#'   ConstraintParameters = "string",
-#'   Status = "AVAILABLE"|"CREATING"|"FAILED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_constraint(
-#'   AcceptLanguage = "string",
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1858,9 +1135,7 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
 #' @description
 #' Gets the status of the specified copy product operation.
 #'
-#' @usage
-#' servicecatalog_describe_copy_product_status(AcceptLanguage,
-#'   CopyProductToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_copy_product_status.html](https://paws-r.github.io/docs/servicecatalog/describe_copy_product_status.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1871,24 +1146,6 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
 #' -   `zh` - Chinese
 #' @param CopyProductToken &#91;required&#93; The token for the copy product operation. This token is returned by
 #' [`copy_product`][servicecatalog_copy_product].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CopyProductStatus = "SUCCEEDED"|"IN_PROGRESS"|"FAILED",
-#'   TargetProductId = "string",
-#'   StatusDetail = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_copy_product_status(
-#'   AcceptLanguage = "string",
-#'   CopyProductToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1914,11 +1171,8 @@ servicecatalog_describe_copy_product_status <- function(AcceptLanguage = NULL, C
 #'
 #' @description
 #' Gets information about the specified portfolio.
-#' 
-#' A delegated admin is authorized to invoke this command.
 #'
-#' @usage
-#' servicecatalog_describe_portfolio(AcceptLanguage, Id)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_portfolio.html](https://paws-r.github.io/docs/servicecatalog/describe_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1928,51 +1182,6 @@ servicecatalog_describe_copy_product_status <- function(AcceptLanguage = NULL, C
 #' 
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The portfolio identifier.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PortfolioDetail = list(
-#'     Id = "string",
-#'     ARN = "string",
-#'     DisplayName = "string",
-#'     Description = "string",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProviderName = "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   TagOptions = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string",
-#'       Active = TRUE|FALSE,
-#'       Id = "string",
-#'       Owner = "string"
-#'     )
-#'   ),
-#'   Budgets = list(
-#'     list(
-#'       BudgetName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_portfolio(
-#'   AcceptLanguage = "string",
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1997,47 +1206,12 @@ servicecatalog_describe_portfolio <- function(AcceptLanguage = NULL, Id) {
 #' Gets the status of the specified portfolio share operation
 #'
 #' @description
-#' Gets the status of the specified portfolio share operation. This API can
-#' only be called by the management account in the organization or by a
-#' delegated admin.
+#' Gets the status of the specified portfolio share operation. This API can only be called by the management account in the organization or by a delegated admin.
 #'
-#' @usage
-#' servicecatalog_describe_portfolio_share_status(PortfolioShareToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_portfolio_share_status.html](https://paws-r.github.io/docs/servicecatalog/describe_portfolio_share_status.html) for full documentation.
 #'
 #' @param PortfolioShareToken &#91;required&#93; The token for the portfolio share operation. This token is returned
 #' either by CreatePortfolioShare or by DeletePortfolioShare.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PortfolioShareToken = "string",
-#'   PortfolioId = "string",
-#'   OrganizationNodeValue = "string",
-#'   Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"ERROR",
-#'   ShareDetails = list(
-#'     SuccessfulShares = list(
-#'       "string"
-#'     ),
-#'     ShareErrors = list(
-#'       list(
-#'         Accounts = list(
-#'           "string"
-#'         ),
-#'         Message = "string",
-#'         Error = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_portfolio_share_status(
-#'   PortfolioShareToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2063,18 +1237,9 @@ servicecatalog_describe_portfolio_share_status <- function(PortfolioShareToken) 
 #' the specified portfolio
 #'
 #' @description
-#' Returns a summary of each of the portfolio shares that were created for
-#' the specified portfolio.
-#' 
-#' You can use this API to determine which accounts or organizational nodes
-#' this portfolio have been shared, whether the recipient entity has
-#' imported the share, and whether TagOptions are included with the share.
-#' 
-#' The `PortfolioId` and `Type` parameters are both required.
+#' Returns a summary of each of the portfolio shares that were created for the specified portfolio.
 #'
-#' @usage
-#' servicecatalog_describe_portfolio_shares(PortfolioId, Type, PageToken,
-#'   PageSize)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_portfolio_shares.html](https://paws-r.github.io/docs/servicecatalog/describe_portfolio_shares.html) for full documentation.
 #'
 #' @param PortfolioId &#91;required&#93; The unique identifier of the portfolio for which shares will be
 #' retrieved.
@@ -2094,32 +1259,6 @@ servicecatalog_describe_portfolio_share_status <- function(PortfolioShareToken) 
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextPageToken = "string",
-#'   PortfolioShareDetails = list(
-#'     list(
-#'       PrincipalId = "string",
-#'       Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ORGANIZATION_MEMBER_ACCOUNT",
-#'       Accepted = TRUE|FALSE,
-#'       ShareTagOptions = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_portfolio_shares(
-#'   PortfolioId = "string",
-#'   Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ORGANIZATION_MEMBER_ACCOUNT",
-#'   PageToken = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2146,8 +1285,7 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
 #' @description
 #' Gets information about the specified product.
 #'
-#' @usage
-#' servicecatalog_describe_product(AcceptLanguage, Id, Name)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_product.html](https://paws-r.github.io/docs/servicecatalog/describe_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2158,57 +1296,6 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
 #' -   `zh` - Chinese
 #' @param Id The product identifier.
 #' @param Name The product name.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProductViewSummary = list(
-#'     Id = "string",
-#'     ProductId = "string",
-#'     Name = "string",
-#'     Owner = "string",
-#'     ShortDescription = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-#'     Distributor = "string",
-#'     HasDefaultPath = TRUE|FALSE,
-#'     SupportEmail = "string",
-#'     SupportDescription = "string",
-#'     SupportUrl = "string"
-#'   ),
-#'   ProvisioningArtifacts = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Guidance = "DEFAULT"|"DEPRECATED"
-#'     )
-#'   ),
-#'   Budgets = list(
-#'     list(
-#'       BudgetName = "string"
-#'     )
-#'   ),
-#'   LaunchPaths = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_product(
-#'   AcceptLanguage = "string",
-#'   Id = "string",
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2233,12 +1320,9 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
 #' Gets information about the specified product
 #'
 #' @description
-#' Gets information about the specified product. This operation is run with
-#' administrator access.
+#' Gets information about the specified product. This operation is run with administrator access.
 #'
-#' @usage
-#' servicecatalog_describe_product_as_admin(AcceptLanguage, Id, Name,
-#'   SourcePortfolioId)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_product_as_admin.html](https://paws-r.github.io/docs/servicecatalog/describe_product_as_admin.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2257,76 +1341,6 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
 #' TagOptions sharing is enabled in the portfolio share, the API returns
 #' both local and shared TagOptions associated with the product. Otherwise
 #' only local TagOptions will be returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProductViewDetail = list(
-#'     ProductViewSummary = list(
-#'       Id = "string",
-#'       ProductId = "string",
-#'       Name = "string",
-#'       Owner = "string",
-#'       ShortDescription = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-#'       Distributor = "string",
-#'       HasDefaultPath = TRUE|FALSE,
-#'       SupportEmail = "string",
-#'       SupportDescription = "string",
-#'       SupportUrl = "string"
-#'     ),
-#'     Status = "AVAILABLE"|"CREATING"|"FAILED",
-#'     ProductARN = "string",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   ProvisioningArtifactSummaries = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ProvisioningArtifactMetadata = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   TagOptions = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string",
-#'       Active = TRUE|FALSE,
-#'       Id = "string",
-#'       Owner = "string"
-#'     )
-#'   ),
-#'   Budgets = list(
-#'     list(
-#'       BudgetName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_product_as_admin(
-#'   AcceptLanguage = "string",
-#'   Id = "string",
-#'   Name = "string",
-#'   SourcePortfolioId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2353,8 +1367,7 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id =
 #' @description
 #' Gets information about the specified product.
 #'
-#' @usage
-#' servicecatalog_describe_product_view(AcceptLanguage, Id)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_product_view.html](https://paws-r.github.io/docs/servicecatalog/describe_product_view.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2364,45 +1377,6 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id =
 #' 
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The product view identifier.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProductViewSummary = list(
-#'     Id = "string",
-#'     ProductId = "string",
-#'     Name = "string",
-#'     Owner = "string",
-#'     ShortDescription = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-#'     Distributor = "string",
-#'     HasDefaultPath = TRUE|FALSE,
-#'     SupportEmail = "string",
-#'     SupportDescription = "string",
-#'     SupportUrl = "string"
-#'   ),
-#'   ProvisioningArtifacts = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Guidance = "DEFAULT"|"DEPRECATED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_product_view(
-#'   AcceptLanguage = "string",
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2429,8 +1403,7 @@ servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
 #' @description
 #' Gets information about the specified provisioned product.
 #'
-#' @usage
-#' servicecatalog_describe_provisioned_product(AcceptLanguage, Id, Name)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/describe_provisioned_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2449,45 +1422,6 @@ servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
 #' 
 #' If you do not provide a name or ID, or you provide both name and ID, an
 #' `InvalidParametersException` will occur.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProvisionedProductDetail = list(
-#'     Name = "string",
-#'     Arn = "string",
-#'     Type = "string",
-#'     Id = "string",
-#'     Status = "AVAILABLE"|"UNDER_CHANGE"|"TAINTED"|"ERROR"|"PLAN_IN_PROGRESS",
-#'     StatusMessage = "string",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     IdempotencyToken = "string",
-#'     LastRecordId = "string",
-#'     LastProvisioningRecordId = "string",
-#'     LastSuccessfulProvisioningRecordId = "string",
-#'     ProductId = "string",
-#'     ProvisioningArtifactId = "string",
-#'     LaunchRoleArn = "string"
-#'   ),
-#'   CloudWatchDashboards = list(
-#'     list(
-#'       Name = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_provisioned_product(
-#'   AcceptLanguage = "string",
-#'   Id = "string",
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2514,9 +1448,7 @@ servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, I
 #' @description
 #' Gets information about the resource changes for the specified plan.
 #'
-#' @usage
-#' servicecatalog_describe_provisioned_product_plan(AcceptLanguage, PlanId,
-#'   PageSize, PageToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_provisioned_product_plan.html](https://paws-r.github.io/docs/servicecatalog/describe_provisioned_product_plan.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2529,81 +1461,6 @@ servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, I
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProvisionedProductPlanDetails = list(
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PathId = "string",
-#'     ProductId = "string",
-#'     PlanName = "string",
-#'     PlanId = "string",
-#'     ProvisionProductId = "string",
-#'     ProvisionProductName = "string",
-#'     PlanType = "CLOUDFORMATION",
-#'     ProvisioningArtifactId = "string",
-#'     Status = "CREATE_IN_PROGRESS"|"CREATE_SUCCESS"|"CREATE_FAILED"|"EXECUTE_IN_PROGRESS"|"EXECUTE_SUCCESS"|"EXECUTE_FAILED",
-#'     UpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     NotificationArns = list(
-#'       "string"
-#'     ),
-#'     ProvisioningParameters = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string",
-#'         UsePreviousValue = TRUE|FALSE
-#'       )
-#'     ),
-#'     Tags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     StatusMessage = "string"
-#'   ),
-#'   ResourceChanges = list(
-#'     list(
-#'       Action = "ADD"|"MODIFY"|"REMOVE",
-#'       LogicalResourceId = "string",
-#'       PhysicalResourceId = "string",
-#'       ResourceType = "string",
-#'       Replacement = "TRUE"|"FALSE"|"CONDITIONAL",
-#'       Scope = list(
-#'         "PROPERTIES"|"METADATA"|"CREATIONPOLICY"|"UPDATEPOLICY"|"DELETIONPOLICY"|"TAGS"
-#'       ),
-#'       Details = list(
-#'         list(
-#'           Target = list(
-#'             Attribute = "PROPERTIES"|"METADATA"|"CREATIONPOLICY"|"UPDATEPOLICY"|"DELETIONPOLICY"|"TAGS",
-#'             Name = "string",
-#'             RequiresRecreation = "NEVER"|"CONDITIONALLY"|"ALWAYS"
-#'           ),
-#'           Evaluation = "STATIC"|"DYNAMIC",
-#'           CausingEntity = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_provisioned_product_plan(
-#'   AcceptLanguage = "string",
-#'   PlanId = "string",
-#'   PageSize = 123,
-#'   PageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2629,13 +1486,9 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #' as a version) for the specified product
 #'
 #' @description
-#' Gets information about the specified provisioning artifact (also known
-#' as a version) for the specified product.
+#' Gets information about the specified provisioning artifact (also known as a version) for the specified product.
 #'
-#' @usage
-#' servicecatalog_describe_provisioning_artifact(AcceptLanguage,
-#'   ProvisioningArtifactId, ProductId, ProvisioningArtifactName,
-#'   ProductName, Verbose)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/describe_provisioning_artifact.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2649,40 +1502,6 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #' @param ProvisioningArtifactName The provisioning artifact name.
 #' @param ProductName The product name.
 #' @param Verbose Indicates whether a verbose level of detail is enabled.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProvisioningArtifactDetail = list(
-#'     Id = "string",
-#'     Name = "string",
-#'     Description = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Active = TRUE|FALSE,
-#'     Guidance = "DEFAULT"|"DEPRECATED"
-#'   ),
-#'   Info = list(
-#'     "string"
-#'   ),
-#'   Status = "AVAILABLE"|"CREATING"|"FAILED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_provisioning_artifact(
-#'   AcceptLanguage = "string",
-#'   ProvisioningArtifactId = "string",
-#'   ProductId = "string",
-#'   ProvisioningArtifactName = "string",
-#'   ProductName = "string",
-#'   Verbose = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2708,22 +1527,9 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #' specified product using the specified provisioning artifact
 #'
 #' @description
-#' Gets information about the configuration required to provision the
-#' specified product using the specified provisioning artifact.
-#' 
-#' If the output contains a TagOption key with an empty list of values,
-#' there is a TagOption conflict for that key. The end user cannot take
-#' action to fix the conflict, and launch is not blocked. In subsequent
-#' calls to [`provision_product`][servicecatalog_provision_product], do not
-#' include conflicted TagOption keys as tags, or this causes the error
-#' "Parameter validation failed: Missing required parameter in
-#' Tags\[*N*\]:*Value*". Tag the provisioned product with the value
-#' `sc-tagoption-conflict-portfolioId-productId`.
+#' Gets information about the configuration required to provision the specified product using the specified provisioning artifact.
 #'
-#' @usage
-#' servicecatalog_describe_provisioning_parameters(AcceptLanguage,
-#'   ProductId, ProductName, ProvisioningArtifactId,
-#'   ProvisioningArtifactName, PathId, PathName)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_provisioning_parameters.html](https://paws-r.github.io/docs/servicecatalog/describe_provisioning_parameters.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2745,80 +1551,6 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #' [`list_launch_paths`][servicecatalog_list_launch_paths]. You must
 #' provide the name or ID, but not both.
 #' @param PathName The name of the path. You must provide the name or ID, but not both.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProvisioningArtifactParameters = list(
-#'     list(
-#'       ParameterKey = "string",
-#'       DefaultValue = "string",
-#'       ParameterType = "string",
-#'       IsNoEcho = TRUE|FALSE,
-#'       Description = "string",
-#'       ParameterConstraints = list(
-#'         AllowedValues = list(
-#'           "string"
-#'         ),
-#'         AllowedPattern = "string",
-#'         ConstraintDescription = "string",
-#'         MaxLength = "string",
-#'         MinLength = "string",
-#'         MaxValue = "string",
-#'         MinValue = "string"
-#'       )
-#'     )
-#'   ),
-#'   ConstraintSummaries = list(
-#'     list(
-#'       Type = "string",
-#'       Description = "string"
-#'     )
-#'   ),
-#'   UsageInstructions = list(
-#'     list(
-#'       Type = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   TagOptions = list(
-#'     list(
-#'       Key = "string",
-#'       Values = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   ProvisioningArtifactPreferences = list(
-#'     StackSetAccounts = list(
-#'       "string"
-#'     ),
-#'     StackSetRegions = list(
-#'       "string"
-#'     )
-#'   ),
-#'   ProvisioningArtifactOutputs = list(
-#'     list(
-#'       Key = "string",
-#'       Description = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_provisioning_parameters(
-#'   AcceptLanguage = "string",
-#'   ProductId = "string",
-#'   ProductName = "string",
-#'   ProvisioningArtifactId = "string",
-#'   ProvisioningArtifactName = "string",
-#'   PathId = "string",
-#'   PathName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2844,23 +1576,8 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #'
 #' @description
 #' Gets information about the specified request operation.
-#' 
-#' Use this operation after calling a request operation (for example,
-#' [`provision_product`][servicecatalog_provision_product],
-#' [`terminate_provisioned_product`][servicecatalog_terminate_provisioned_product],
-#' or
-#' [`update_provisioned_product`][servicecatalog_update_provisioned_product]).
-#' 
-#' If a provisioned product was transferred to a new owner using
-#' [`update_provisioned_product_properties`][servicecatalog_update_provisioned_product_properties],
-#' the new owner will be able to describe all past records for that
-#' product. The previous owner will no longer be able to describe the
-#' records, but will be able to use
-#' [`list_record_history`][servicecatalog_list_record_history] to see the
-#' product's history from when he was the owner.
 #'
-#' @usage
-#' servicecatalog_describe_record(AcceptLanguage, Id, PageToken, PageSize)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_record.html](https://paws-r.github.io/docs/servicecatalog/describe_record.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2874,61 +1591,6 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RecordDetail = list(
-#'     RecordId = "string",
-#'     ProvisionedProductName = "string",
-#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     UpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProvisionedProductType = "string",
-#'     RecordType = "string",
-#'     ProvisionedProductId = "string",
-#'     ProductId = "string",
-#'     ProvisioningArtifactId = "string",
-#'     PathId = "string",
-#'     RecordErrors = list(
-#'       list(
-#'         Code = "string",
-#'         Description = "string"
-#'       )
-#'     ),
-#'     RecordTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     LaunchRoleArn = "string"
-#'   ),
-#'   RecordOutputs = list(
-#'     list(
-#'       OutputKey = "string",
-#'       OutputValue = "string",
-#'       Description = "string"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_record(
-#'   AcceptLanguage = "string",
-#'   Id = "string",
-#'   PageToken = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2955,8 +1617,7 @@ servicecatalog_describe_record <- function(AcceptLanguage = NULL, Id, PageToken 
 #' @description
 #' Describes a self-service action.
 #'
-#' @usage
-#' servicecatalog_describe_service_action(Id, AcceptLanguage)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_service_action.html](https://paws-r.github.io/docs/servicecatalog/describe_service_action.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The self-service action identifier.
 #' @param AcceptLanguage The language code.
@@ -2966,32 +1627,6 @@ servicecatalog_describe_record <- function(AcceptLanguage = NULL, Id, PageToken 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ServiceActionDetail = list(
-#'     ServiceActionSummary = list(
-#'       Id = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       DefinitionType = "SSM_AUTOMATION"
-#'     ),
-#'     Definition = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_service_action(
-#'   Id = "string",
-#'   AcceptLanguage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3018,13 +1653,9 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
 #' user
 #'
 #' @description
-#' Finds the default parameters for a specific self-service action on a
-#' specific provisioned product and returns a map of the results to the
-#' user.
+#' Finds the default parameters for a specific self-service action on a specific provisioned product and returns a map of the results to the user.
 #'
-#' @usage
-#' servicecatalog_describe_service_action_execution_parameters(
-#'   ProvisionedProductId, ServiceActionId, AcceptLanguage)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_service_action_execution_parameters.html](https://paws-r.github.io/docs/servicecatalog/describe_service_action_execution_parameters.html) for full documentation.
 #'
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier.
@@ -3035,31 +1666,6 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ServiceActionParameters = list(
-#'     list(
-#'       Name = "string",
-#'       Type = "string",
-#'       DefaultValues = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_service_action_execution_parameters(
-#'   ProvisionedProductId = "string",
-#'   ServiceActionId = "string",
-#'   AcceptLanguage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3086,31 +1692,9 @@ servicecatalog_describe_service_action_execution_parameters <- function(Provisio
 #' @description
 #' Gets information about the specified TagOption.
 #'
-#' @usage
-#' servicecatalog_describe_tag_option(Id)
+#' See [https://paws-r.github.io/docs/servicecatalog/describe_tag_option.html](https://paws-r.github.io/docs/servicecatalog/describe_tag_option.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The TagOption identifier.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagOptionDetail = list(
-#'     Key = "string",
-#'     Value = "string",
-#'     Active = TRUE|FALSE,
-#'     Id = "string",
-#'     Owner = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_tag_option(
-#'   Id = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3135,29 +1719,9 @@ servicecatalog_describe_tag_option <- function(Id) {
 #' Disable portfolio sharing through AWS Organizations feature
 #'
 #' @description
-#' Disable portfolio sharing through AWS Organizations feature. This
-#' feature will not delete your current shares but it will prevent you from
-#' creating new shares throughout your organization. Current shares will
-#' not be in sync with your organization structure if it changes after
-#' calling this API. This API can only be called by the management account
-#' in the organization.
-#' 
-#' This API can't be invoked if there are active delegated administrators
-#' in the organization.
-#' 
-#' Note that a delegated administrator is not authorized to invoke
-#' [`disable_aws_organizations_access`][servicecatalog_disable_aws_organizations_access].
+#' Disable portfolio sharing through AWS Organizations feature. This feature will not delete your current shares but it will prevent you from creating new shares throughout your organization. Current shares will not be in sync with your organization structure if it changes after calling this API. This API can only be called by the management account in the organization.
 #'
-#' @usage
-#' servicecatalog_disable_aws_organizations_access()
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disable_aws_organizations_access()
-#' ```
+#' See [https://paws-r.github.io/docs/servicecatalog/disable_aws_organizations_access.html](https://paws-r.github.io/docs/servicecatalog/disable_aws_organizations_access.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -3184,23 +1748,11 @@ servicecatalog_disable_aws_organizations_access <- function() {
 #' @description
 #' Disassociates the specified budget from the specified resource.
 #'
-#' @usage
-#' servicecatalog_disassociate_budget_from_resource(BudgetName, ResourceId)
+#' See [https://paws-r.github.io/docs/servicecatalog/disassociate_budget_from_resource.html](https://paws-r.github.io/docs/servicecatalog/disassociate_budget_from_resource.html) for full documentation.
 #'
 #' @param BudgetName &#91;required&#93; The name of the budget you want to disassociate.
 #' @param ResourceId &#91;required&#93; The resource identifier you want to disassociate from. Either a
 #' portfolio-id or a product-id.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_budget_from_resource(
-#'   BudgetName = "string",
-#'   ResourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3226,12 +1778,9 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #' portfolio
 #'
 #' @description
-#' Disassociates a previously associated principal ARN from a specified
-#' portfolio.
+#' Disassociates a previously associated principal ARN from a specified portfolio.
 #'
-#' @usage
-#' servicecatalog_disassociate_principal_from_portfolio(AcceptLanguage,
-#'   PortfolioId, PrincipalARN)
+#' See [https://paws-r.github.io/docs/servicecatalog/disassociate_principal_from_portfolio.html](https://paws-r.github.io/docs/servicecatalog/disassociate_principal_from_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3242,18 +1791,6 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PrincipalARN &#91;required&#93; The ARN of the principal (IAM user, role, or group).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_principal_from_portfolio(
-#'   AcceptLanguage = "string",
-#'   PortfolioId = "string",
-#'   PrincipalARN = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3279,12 +1816,8 @@ servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage 
 #'
 #' @description
 #' Disassociates the specified product from the specified portfolio.
-#' 
-#' A delegated admin is authorized to invoke this command.
 #'
-#' @usage
-#' servicecatalog_disassociate_product_from_portfolio(AcceptLanguage,
-#'   ProductId, PortfolioId)
+#' See [https://paws-r.github.io/docs/servicecatalog/disassociate_product_from_portfolio.html](https://paws-r.github.io/docs/servicecatalog/disassociate_product_from_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3295,18 +1828,6 @@ servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage 
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_product_from_portfolio(
-#'   AcceptLanguage = "string",
-#'   ProductId = "string",
-#'   PortfolioId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3332,12 +1853,9 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
 #' specified provisioning artifact
 #'
 #' @description
-#' Disassociates the specified self-service action association from the
-#' specified provisioning artifact.
+#' Disassociates the specified self-service action association from the specified provisioning artifact.
 #'
-#' @usage
-#' servicecatalog_disassociate_service_action_from_provisioning_artifact(
-#'   ProductId, ProvisioningArtifactId, ServiceActionId, AcceptLanguage)
+#' See [https://paws-r.github.io/docs/servicecatalog/disassociate_service_action_from_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/disassociate_service_action_from_provisioning_artifact.html) for full documentation.
 #'
 #' @param ProductId &#91;required&#93; The product identifier. For example, `prod-abcdzk7xy33qa`.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact. For example,
@@ -3350,19 +1868,6 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_service_action_from_provisioning_artifact(
-#'   ProductId = "string",
-#'   ProvisioningArtifactId = "string",
-#'   ServiceActionId = "string",
-#'   AcceptLanguage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3389,23 +1894,10 @@ servicecatalog_disassociate_service_action_from_provisioning_artifact <- functio
 #' @description
 #' Disassociates the specified TagOption from the specified resource.
 #'
-#' @usage
-#' servicecatalog_disassociate_tag_option_from_resource(ResourceId,
-#'   TagOptionId)
+#' See [https://paws-r.github.io/docs/servicecatalog/disassociate_tag_option_from_resource.html](https://paws-r.github.io/docs/servicecatalog/disassociate_tag_option_from_resource.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The resource identifier.
 #' @param TagOptionId &#91;required&#93; The TagOption identifier.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_tag_option_from_resource(
-#'   ResourceId = "string",
-#'   TagOptionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3430,28 +1922,9 @@ servicecatalog_disassociate_tag_option_from_resource <- function(ResourceId, Tag
 #' Enable portfolio sharing feature through AWS Organizations
 #'
 #' @description
-#' Enable portfolio sharing feature through AWS Organizations. This API
-#' will allow Service Catalog to receive updates on your organization in
-#' order to sync your shares with the current structure. This API can only
-#' be called by the management account in the organization.
-#' 
-#' By calling this API Service Catalog will make a call to
-#' organizations:EnableAWSServiceAccess on your behalf so that your shares
-#' can be in sync with any changes in your AWS Organizations structure.
-#' 
-#' Note that a delegated administrator is not authorized to invoke
-#' [`enable_aws_organizations_access`][servicecatalog_enable_aws_organizations_access].
+#' Enable portfolio sharing feature through AWS Organizations. This API will allow Service Catalog to receive updates on your organization in order to sync your shares with the current structure. This API can only be called by the management account in the organization.
 #'
-#' @usage
-#' servicecatalog_enable_aws_organizations_access()
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$enable_aws_organizations_access()
-#' ```
+#' See [https://paws-r.github.io/docs/servicecatalog/enable_aws_organizations_access.html](https://paws-r.github.io/docs/servicecatalog/enable_aws_organizations_access.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -3477,12 +1950,9 @@ servicecatalog_enable_aws_organizations_access <- function() {
 #' specified plan
 #'
 #' @description
-#' Provisions or modifies a product based on the resource changes for the
-#' specified plan.
+#' Provisions or modifies a product based on the resource changes for the specified plan.
 #'
-#' @usage
-#' servicecatalog_execute_provisioned_product_plan(AcceptLanguage, PlanId,
-#'   IdempotencyToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/execute_provisioned_product_plan.html](https://paws-r.github.io/docs/servicecatalog/execute_provisioned_product_plan.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3495,52 +1965,6 @@ servicecatalog_enable_aws_organizations_access <- function() {
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RecordDetail = list(
-#'     RecordId = "string",
-#'     ProvisionedProductName = "string",
-#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     UpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProvisionedProductType = "string",
-#'     RecordType = "string",
-#'     ProvisionedProductId = "string",
-#'     ProductId = "string",
-#'     ProvisioningArtifactId = "string",
-#'     PathId = "string",
-#'     RecordErrors = list(
-#'       list(
-#'         Code = "string",
-#'         Description = "string"
-#'       )
-#'     ),
-#'     RecordTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     LaunchRoleArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$execute_provisioned_product_plan(
-#'   AcceptLanguage = "string",
-#'   PlanId = "string",
-#'   IdempotencyToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3567,10 +1991,7 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #' @description
 #' Executes a self-service action against a provisioned product.
 #'
-#' @usage
-#' servicecatalog_execute_provisioned_product_service_action(
-#'   ProvisionedProductId, ServiceActionId, ExecuteToken, AcceptLanguage,
-#'   Parameters)
+#' See [https://paws-r.github.io/docs/servicecatalog/execute_provisioned_product_service_action.html](https://paws-r.github.io/docs/servicecatalog/execute_provisioned_product_service_action.html) for full documentation.
 #'
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
@@ -3588,58 +2009,6 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #' If the parameters field is not provided, no additional parameters are
 #' passed and default values will be used for any special parameters such
 #' as `TARGET`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RecordDetail = list(
-#'     RecordId = "string",
-#'     ProvisionedProductName = "string",
-#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     UpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProvisionedProductType = "string",
-#'     RecordType = "string",
-#'     ProvisionedProductId = "string",
-#'     ProductId = "string",
-#'     ProvisioningArtifactId = "string",
-#'     PathId = "string",
-#'     RecordErrors = list(
-#'       list(
-#'         Code = "string",
-#'         Description = "string"
-#'       )
-#'     ),
-#'     RecordTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     LaunchRoleArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$execute_provisioned_product_service_action(
-#'   ProvisionedProductId = "string",
-#'   ServiceActionId = "string",
-#'   ExecuteToken = "string",
-#'   AcceptLanguage = "string",
-#'   Parameters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3664,25 +2033,9 @@ servicecatalog_execute_provisioned_product_service_action <- function(Provisione
 #' Get the Access Status for AWS Organization portfolio share feature
 #'
 #' @description
-#' Get the Access Status for AWS Organization portfolio share feature. This
-#' API can only be called by the management account in the organization or
-#' by a delegated admin.
+#' Get the Access Status for AWS Organization portfolio share feature. This API can only be called by the management account in the organization or by a delegated admin.
 #'
-#' @usage
-#' servicecatalog_get_aws_organizations_access_status()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccessStatus = "ENABLED"|"UNDER_CHANGE"|"DISABLED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_aws_organizations_access_status()
-#' ```
+#' See [https://paws-r.github.io/docs/servicecatalog/get_aws_organizations_access_status.html](https://paws-r.github.io/docs/servicecatalog/get_aws_organizations_access_status.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -3709,14 +2062,9 @@ servicecatalog_get_aws_organizations_access_status <- function() {
 #' key/value pairs of those outputs
 #'
 #' @description
-#' This API takes either a `ProvisonedProductId` or a
-#' `ProvisionedProductName`, along with a list of one or more output keys,
-#' and responds with the key/value pairs of those outputs.
+#' This API takes either a `ProvisonedProductId` or a `ProvisionedProductName`, along with a list of one or more output keys, and responds with the key/value pairs of those outputs.
 #'
-#' @usage
-#' servicecatalog_get_provisioned_product_outputs(AcceptLanguage,
-#'   ProvisionedProductId, ProvisionedProductName, OutputKeys, PageSize,
-#'   PageToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/get_provisioned_product_outputs.html](https://paws-r.github.io/docs/servicecatalog/get_provisioned_product_outputs.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3734,35 +2082,6 @@ servicecatalog_get_aws_organizations_access_status <- function() {
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Outputs = list(
-#'     list(
-#'       OutputKey = "string",
-#'       OutputValue = "string",
-#'       Description = "string"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_provisioned_product_outputs(
-#'   AcceptLanguage = "string",
-#'   ProvisionedProductId = "string",
-#'   ProvisionedProductName = "string",
-#'   OutputKeys = list(
-#'     "string"
-#'   ),
-#'   PageSize = 123,
-#'   PageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3789,30 +2108,9 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 #' artifact
 #'
 #' @description
-#' Requests the import of a resource as a Service Catalog provisioned
-#' product that is associated to a Service Catalog product and provisioning
-#' artifact. Once imported, all supported Service Catalog governance
-#' actions are supported on the provisioned product.
-#' 
-#' Resource import only supports CloudFormation stack ARNs. CloudFormation
-#' StackSets and non-root nested stacks are not supported.
-#' 
-#' The CloudFormation stack must have one of the following statuses to be
-#' imported: `CREATE_COMPLETE`, `UPDATE_COMPLETE`,
-#' `UPDATE_ROLLBACK_COMPLETE`, `IMPORT_COMPLETE`,
-#' `IMPORT_ROLLBACK_COMPLETE`.
-#' 
-#' Import of the resource requires that the CloudFormation stack template
-#' matches the associated Service Catalog product provisioning artifact.
-#' 
-#' The user or role that performs this operation must have the
-#' `cloudformation:GetTemplate` and `cloudformation:DescribeStacks` IAM
-#' policy permissions.
+#' Requests the import of a resource as a Service Catalog provisioned product that is associated to a Service Catalog product and provisioning artifact. Once imported, all supported Service Catalog governance actions are supported on the provisioned product.
 #'
-#' @usage
-#' servicecatalog_import_as_provisioned_product(AcceptLanguage, ProductId,
-#'   ProvisioningArtifactId, ProvisionedProductName, PhysicalId,
-#'   IdempotencyToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/import_as_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/import_as_provisioned_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3831,55 +2129,6 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RecordDetail = list(
-#'     RecordId = "string",
-#'     ProvisionedProductName = "string",
-#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     UpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProvisionedProductType = "string",
-#'     RecordType = "string",
-#'     ProvisionedProductId = "string",
-#'     ProductId = "string",
-#'     ProvisioningArtifactId = "string",
-#'     PathId = "string",
-#'     RecordErrors = list(
-#'       list(
-#'         Code = "string",
-#'         Description = "string"
-#'       )
-#'     ),
-#'     RecordTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     LaunchRoleArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$import_as_provisioned_product(
-#'   AcceptLanguage = "string",
-#'   ProductId = "string",
-#'   ProvisioningArtifactId = "string",
-#'   ProvisionedProductName = "string",
-#'   PhysicalId = "string",
-#'   IdempotencyToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3901,14 +2150,13 @@ servicecatalog_import_as_provisioned_product <- function(AcceptLanguage = NULL, 
 }
 .servicecatalog$operations$import_as_provisioned_product <- servicecatalog_import_as_provisioned_product
 
-#' Lists all portfolios for which sharing was accepted by this account
+#' Lists all imported portfolios for which account-to-account shares were
+#' accepted by this account
 #'
 #' @description
-#' Lists all portfolios for which sharing was accepted by this account.
+#' Lists all imported portfolios for which account-to-account shares were accepted by this account. By specifying the `PortfolioShareType`, you can list portfolios for which organizational shares were accepted by this account.
 #'
-#' @usage
-#' servicecatalog_list_accepted_portfolio_shares(AcceptLanguage, PageToken,
-#'   PageSize, PortfolioShareType)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_accepted_portfolio_shares.html](https://paws-r.github.io/docs/servicecatalog/list_accepted_portfolio_shares.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3923,42 +2171,14 @@ servicecatalog_import_as_provisioned_product <- function(AcceptLanguage = NULL, 
 #' @param PortfolioShareType The type of shared portfolios to list. The default is to list imported
 #' portfolios.
 #' 
-#' -   `AWS_ORGANIZATIONS` - List portfolios shared by the management
-#'     account of your organization
+#' -   `AWS_ORGANIZATIONS` - List portfolios accepted and shared via
+#'     organizational sharing by the management account or delegated
+#'     administrator of your organization.
 #' 
-#' -   `AWS_SERVICECATALOG` - List default portfolios
+#' -   `AWS_SERVICECATALOG` - Deprecated type.
 #' 
-#' -   `IMPORTED` - List imported portfolios
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PortfolioDetails = list(
-#'     list(
-#'       Id = "string",
-#'       ARN = "string",
-#'       DisplayName = "string",
-#'       Description = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ProviderName = "string"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_accepted_portfolio_shares(
-#'   AcceptLanguage = "string",
-#'   PageToken = "string",
-#'   PageSize = 123,
-#'   PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
-#' )
-#' ```
+#' -   `IMPORTED` - List imported portfolios that have been accepted and
+#'     shared through account-to-account sharing.
 #'
 #' @keywords internal
 #'
@@ -3985,9 +2205,7 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
 #' @description
 #' Lists all the budgets associated to the specified resource.
 #'
-#' @usage
-#' servicecatalog_list_budgets_for_resource(AcceptLanguage, ResourceId,
-#'   PageSize, PageToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_budgets_for_resource.html](https://paws-r.github.io/docs/servicecatalog/list_budgets_for_resource.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -4000,29 +2218,6 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Budgets = list(
-#'     list(
-#'       BudgetName = "string"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_budgets_for_resource(
-#'   AcceptLanguage = "string",
-#'   ResourceId = "string",
-#'   PageSize = 123,
-#'   PageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4049,9 +2244,7 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
 #' @description
 #' Lists the constraints for the specified portfolio and product.
 #'
-#' @usage
-#' servicecatalog_list_constraints_for_portfolio(AcceptLanguage,
-#'   PortfolioId, ProductId, PageSize, PageToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_constraints_for_portfolio.html](https://paws-r.github.io/docs/servicecatalog/list_constraints_for_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -4065,35 +2258,6 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConstraintDetails = list(
-#'     list(
-#'       ConstraintId = "string",
-#'       Type = "string",
-#'       Description = "string",
-#'       Owner = "string",
-#'       ProductId = "string",
-#'       PortfolioId = "string"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_constraints_for_portfolio(
-#'   AcceptLanguage = "string",
-#'   PortfolioId = "string",
-#'   ProductId = "string",
-#'   PageSize = 123,
-#'   PageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4118,13 +2282,9 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
 #' Lists the paths to the specified product
 #'
 #' @description
-#' Lists the paths to the specified product. A path is how the user has
-#' access to a specified product, and is necessary when provisioning a
-#' product. A path also determines the constraints put on the product.
+#' Lists the paths to the specified product. A path is how the user has access to a specified product, and is necessary when provisioning a product. A path also determines the constraints put on the product.
 #'
-#' @usage
-#' servicecatalog_list_launch_paths(AcceptLanguage, ProductId, PageSize,
-#'   PageToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_launch_paths.html](https://paws-r.github.io/docs/servicecatalog/list_launch_paths.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -4137,42 +2297,6 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LaunchPathSummaries = list(
-#'     list(
-#'       Id = "string",
-#'       ConstraintSummaries = list(
-#'         list(
-#'           Type = "string",
-#'           Description = "string"
-#'         )
-#'       ),
-#'       Tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       Name = "string"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_launch_paths(
-#'   AcceptLanguage = "string",
-#'   ProductId = "string",
-#'   PageSize = 123,
-#'   PageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4197,16 +2321,9 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
 #' Lists the organization nodes that have access to the specified portfolio
 #'
 #' @description
-#' Lists the organization nodes that have access to the specified
-#' portfolio. This API can only be called by the management account in the
-#' organization or by a delegated admin.
-#' 
-#' If a delegated admin is de-registered, they can no longer perform this
-#' operation.
+#' Lists the organization nodes that have access to the specified portfolio. This API can only be called by the management account in the organization or by a delegated admin.
 #'
-#' @usage
-#' servicecatalog_list_organization_portfolio_access(AcceptLanguage,
-#'   PortfolioId, OrganizationNodeType, PageToken, PageSize)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_organization_portfolio_access.html](https://paws-r.github.io/docs/servicecatalog/list_organization_portfolio_access.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -4228,31 +2345,6 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OrganizationNodes = list(
-#'     list(
-#'       Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_organization_portfolio_access(
-#'   AcceptLanguage = "string",
-#'   PortfolioId = "string",
-#'   OrganizationNodeType = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
-#'   PageToken = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4278,14 +2370,8 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
 #'
 #' @description
 #' Lists the account IDs that have access to the specified portfolio.
-#' 
-#' A delegated admin can list the accounts that have access to the shared
-#' portfolio. Note that if a delegated admin is de-registered, they can no
-#' longer perform this operation.
 #'
-#' @usage
-#' servicecatalog_list_portfolio_access(AcceptLanguage, PortfolioId,
-#'   OrganizationParentId, PageToken, PageSize)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_portfolio_access.html](https://paws-r.github.io/docs/servicecatalog/list_portfolio_access.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -4301,28 +2387,6 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccountIds = list(
-#'     "string"
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_portfolio_access(
-#'   AcceptLanguage = "string",
-#'   PortfolioId = "string",
-#'   OrganizationParentId = "string",
-#'   PageToken = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4349,8 +2413,7 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
 #' @description
 #' Lists all portfolios in the catalog.
 #'
-#' @usage
-#' servicecatalog_list_portfolios(AcceptLanguage, PageToken, PageSize)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_portfolios.html](https://paws-r.github.io/docs/servicecatalog/list_portfolios.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -4362,35 +2425,6 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PortfolioDetails = list(
-#'     list(
-#'       Id = "string",
-#'       ARN = "string",
-#'       DisplayName = "string",
-#'       Description = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ProviderName = "string"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_portfolios(
-#'   AcceptLanguage = "string",
-#'   PageToken = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4417,9 +2451,7 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
 #' @description
 #' Lists all portfolios that the specified product is associated with.
 #'
-#' @usage
-#' servicecatalog_list_portfolios_for_product(AcceptLanguage, ProductId,
-#'   PageToken, PageSize)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_portfolios_for_product.html](https://paws-r.github.io/docs/servicecatalog/list_portfolios_for_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -4432,36 +2464,6 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PortfolioDetails = list(
-#'     list(
-#'       Id = "string",
-#'       ARN = "string",
-#'       DisplayName = "string",
-#'       Description = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ProviderName = "string"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_portfolios_for_product(
-#'   AcceptLanguage = "string",
-#'   ProductId = "string",
-#'   PageToken = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4488,9 +2490,7 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
 #' @description
 #' Lists all principal ARNs associated with the specified portfolio.
 #'
-#' @usage
-#' servicecatalog_list_principals_for_portfolio(AcceptLanguage,
-#'   PortfolioId, PageSize, PageToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_principals_for_portfolio.html](https://paws-r.github.io/docs/servicecatalog/list_principals_for_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -4503,30 +2503,6 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Principals = list(
-#'     list(
-#'       PrincipalARN = "string",
-#'       PrincipalType = "IAM"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_principals_for_portfolio(
-#'   AcceptLanguage = "string",
-#'   PortfolioId = "string",
-#'   PageSize = 123,
-#'   PageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4552,12 +2528,9 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
 #' which the user has access
 #'
 #' @description
-#' Lists the plans for the specified provisioned product or all plans to
-#' which the user has access.
+#' Lists the plans for the specified provisioned product or all plans to which the user has access.
 #'
-#' @usage
-#' servicecatalog_list_provisioned_product_plans(AcceptLanguage,
-#'   ProvisionProductId, PageSize, PageToken, AccessLevelFilter)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_provisioned_product_plans.html](https://paws-r.github.io/docs/servicecatalog/list_provisioned_product_plans.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -4571,38 +2544,6 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param AccessLevelFilter The access level to use to obtain results. The default is `User`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProvisionedProductPlans = list(
-#'     list(
-#'       PlanName = "string",
-#'       PlanId = "string",
-#'       ProvisionProductId = "string",
-#'       ProvisionProductName = "string",
-#'       PlanType = "CLOUDFORMATION",
-#'       ProvisioningArtifactId = "string"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_provisioned_product_plans(
-#'   AcceptLanguage = "string",
-#'   ProvisionProductId = "string",
-#'   PageSize = 123,
-#'   PageToken = "string",
-#'   AccessLevelFilter = list(
-#'     Key = "Account"|"Role"|"User",
-#'     Value = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4628,11 +2569,9 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
 #' specified product
 #'
 #' @description
-#' Lists all provisioning artifacts (also known as versions) for the
-#' specified product.
+#' Lists all provisioning artifacts (also known as versions) for the specified product.
 #'
-#' @usage
-#' servicecatalog_list_provisioning_artifacts(AcceptLanguage, ProductId)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_provisioning_artifacts.html](https://paws-r.github.io/docs/servicecatalog/list_provisioning_artifacts.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -4642,35 +2581,6 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
 #' 
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProvisioningArtifactDetails = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Active = TRUE|FALSE,
-#'       Guidance = "DEFAULT"|"DEPRECATED"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_provisioning_artifacts(
-#'   AcceptLanguage = "string",
-#'   ProductId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4696,12 +2606,9 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
 #' specified self-service action
 #'
 #' @description
-#' Lists all provisioning artifacts (also known as versions) for the
-#' specified self-service action.
+#' Lists all provisioning artifacts (also known as versions) for the specified self-service action.
 #'
-#' @usage
-#' servicecatalog_list_provisioning_artifacts_for_service_action(
-#'   ServiceActionId, PageSize, PageToken, AcceptLanguage)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_provisioning_artifacts_for_service_action.html](https://paws-r.github.io/docs/servicecatalog/list_provisioning_artifacts_for_service_action.html) for full documentation.
 #'
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param PageSize The maximum number of items to return with this call.
@@ -4714,50 +2621,6 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProvisioningArtifactViews = list(
-#'     list(
-#'       ProductViewSummary = list(
-#'         Id = "string",
-#'         ProductId = "string",
-#'         Name = "string",
-#'         Owner = "string",
-#'         ShortDescription = "string",
-#'         Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-#'         Distributor = "string",
-#'         HasDefaultPath = TRUE|FALSE,
-#'         SupportEmail = "string",
-#'         SupportDescription = "string",
-#'         SupportUrl = "string"
-#'       ),
-#'       ProvisioningArtifact = list(
-#'         Id = "string",
-#'         Name = "string",
-#'         Description = "string",
-#'         CreatedTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Guidance = "DEFAULT"|"DEPRECATED"
-#'       )
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_provisioning_artifacts_for_service_action(
-#'   ServiceActionId = "string",
-#'   PageSize = 123,
-#'   PageToken = "string",
-#'   AcceptLanguage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4784,9 +2647,7 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
 #' @description
 #' Lists the specified requests or all performed requests.
 #'
-#' @usage
-#' servicecatalog_list_record_history(AcceptLanguage, AccessLevelFilter,
-#'   SearchFilter, PageSize, PageToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_record_history.html](https://paws-r.github.io/docs/servicecatalog/list_record_history.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -4800,63 +2661,6 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RecordDetails = list(
-#'     list(
-#'       RecordId = "string",
-#'       ProvisionedProductName = "string",
-#'       Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       UpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ProvisionedProductType = "string",
-#'       RecordType = "string",
-#'       ProvisionedProductId = "string",
-#'       ProductId = "string",
-#'       ProvisioningArtifactId = "string",
-#'       PathId = "string",
-#'       RecordErrors = list(
-#'         list(
-#'           Code = "string",
-#'           Description = "string"
-#'         )
-#'       ),
-#'       RecordTags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       LaunchRoleArn = "string"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_record_history(
-#'   AcceptLanguage = "string",
-#'   AccessLevelFilter = list(
-#'     Key = "Account"|"Role"|"User",
-#'     Value = "string"
-#'   ),
-#'   SearchFilter = list(
-#'     Key = "string",
-#'     Value = "string"
-#'   ),
-#'   PageSize = 123,
-#'   PageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4883,9 +2687,7 @@ servicecatalog_list_record_history <- function(AcceptLanguage = NULL, AccessLeve
 #' @description
 #' Lists the resources associated with the specified TagOption.
 #'
-#' @usage
-#' servicecatalog_list_resources_for_tag_option(TagOptionId, ResourceType,
-#'   PageSize, PageToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_resources_for_tag_option.html](https://paws-r.github.io/docs/servicecatalog/list_resources_for_tag_option.html) for full documentation.
 #'
 #' @param TagOptionId &#91;required&#93; The TagOption identifier.
 #' @param ResourceType The resource type.
@@ -4896,35 +2698,6 @@ servicecatalog_list_record_history <- function(AcceptLanguage = NULL, AccessLeve
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceDetails = list(
-#'     list(
-#'       Id = "string",
-#'       ARN = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   PageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_resources_for_tag_option(
-#'   TagOptionId = "string",
-#'   ResourceType = "string",
-#'   PageSize = 123,
-#'   PageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4951,8 +2724,7 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
 #' @description
 #' Lists all self-service actions.
 #'
-#' @usage
-#' servicecatalog_list_service_actions(AcceptLanguage, PageSize, PageToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_service_actions.html](https://paws-r.github.io/docs/servicecatalog/list_service_actions.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -4964,31 +2736,6 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ServiceActionSummaries = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       DefinitionType = "SSM_AUTOMATION"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_service_actions(
-#'   AcceptLanguage = "string",
-#'   PageSize = 123,
-#'   PageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5014,12 +2761,9 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
 #' specified Product ID and Provisioning Artifact ID
 #'
 #' @description
-#' Returns a paginated list of self-service actions associated with the
-#' specified Product ID and Provisioning Artifact ID.
+#' Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID.
 #'
-#' @usage
-#' servicecatalog_list_service_actions_for_provisioning_artifact(ProductId,
-#'   ProvisioningArtifactId, PageSize, PageToken, AcceptLanguage)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_service_actions_for_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/list_service_actions_for_provisioning_artifact.html) for full documentation.
 #'
 #' @param ProductId &#91;required&#93; The product identifier. For example, `prod-abcdzk7xy33qa`.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact. For example,
@@ -5034,33 +2778,6 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ServiceActionSummaries = list(
-#'     list(
-#'       Id = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       DefinitionType = "SSM_AUTOMATION"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_service_actions_for_provisioning_artifact(
-#'   ProductId = "string",
-#'   ProvisioningArtifactId = "string",
-#'   PageSize = 123,
-#'   PageToken = "string",
-#'   AcceptLanguage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5086,14 +2803,9 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
 #' with the specified CFN_STACKSET type provisioned product
 #'
 #' @description
-#' Returns summary information about stack instances that are associated
-#' with the specified `CFN_STACKSET` type provisioned product. You can
-#' filter for stack instances that are associated with a specific AWS
-#' account name or region.
+#' Returns summary information about stack instances that are associated with the specified `CFN_STACKSET` type provisioned product. You can filter for stack instances that are associated with a specific AWS account name or region.
 #'
-#' @usage
-#' servicecatalog_list_stack_instances_for_provisioned_product(
-#'   AcceptLanguage, ProvisionedProductId, PageToken, PageSize)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_stack_instances_for_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/list_stack_instances_for_provisioned_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -5106,31 +2818,6 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   StackInstances = list(
-#'     list(
-#'       Account = "string",
-#'       Region = "string",
-#'       StackInstanceStatus = "CURRENT"|"OUTDATED"|"INOPERABLE"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_stack_instances_for_provisioned_product(
-#'   AcceptLanguage = "string",
-#'   ProvisionedProductId = "string",
-#'   PageToken = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5157,44 +2844,13 @@ servicecatalog_list_stack_instances_for_provisioned_product <- function(AcceptLa
 #' @description
 #' Lists the specified TagOptions or all TagOptions.
 #'
-#' @usage
-#' servicecatalog_list_tag_options(Filters, PageSize, PageToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/list_tag_options.html](https://paws-r.github.io/docs/servicecatalog/list_tag_options.html) for full documentation.
 #'
 #' @param Filters The search filters. If no search filters are specified, the output
 #' includes all TagOptions.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagOptionDetails = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string",
-#'       Active = TRUE|FALSE,
-#'       Id = "string",
-#'       Owner = "string"
-#'     )
-#'   ),
-#'   PageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tag_options(
-#'   Filters = list(
-#'     Key = "string",
-#'     Value = "string",
-#'     Active = TRUE|FALSE
-#'   ),
-#'   PageSize = 123,
-#'   PageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5220,23 +2876,8 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #'
 #' @description
 #' Provisions the specified product.
-#' 
-#' A provisioned product is a resourced instance of a product. For example,
-#' provisioning a product based on a CloudFormation template launches a
-#' CloudFormation stack and its underlying resources. You can check the
-#' status of this request using
-#' [`describe_record`][servicecatalog_describe_record].
-#' 
-#' If the request contains a tag key with an empty list of values, there is
-#' a tag conflict for that key. Do not include conflicted keys as tags, or
-#' this causes the error "Parameter validation failed: Missing required
-#' parameter in Tags\[*N*\]:*Value*".
 #'
-#' @usage
-#' servicecatalog_provision_product(AcceptLanguage, ProductId, ProductName,
-#'   ProvisioningArtifactId, ProvisioningArtifactName, PathId, PathName,
-#'   ProvisionedProductName, ProvisioningParameters, ProvisioningPreferences,
-#'   Tags, NotificationArns, ProvisionToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/provision_product.html](https://paws-r.github.io/docs/servicecatalog/provision_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -5269,85 +2910,6 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #' stack-related events.
 #' @param ProvisionToken &#91;required&#93; An idempotency token that uniquely identifies the provisioning request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RecordDetail = list(
-#'     RecordId = "string",
-#'     ProvisionedProductName = "string",
-#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     UpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProvisionedProductType = "string",
-#'     RecordType = "string",
-#'     ProvisionedProductId = "string",
-#'     ProductId = "string",
-#'     ProvisioningArtifactId = "string",
-#'     PathId = "string",
-#'     RecordErrors = list(
-#'       list(
-#'         Code = "string",
-#'         Description = "string"
-#'       )
-#'     ),
-#'     RecordTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     LaunchRoleArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$provision_product(
-#'   AcceptLanguage = "string",
-#'   ProductId = "string",
-#'   ProductName = "string",
-#'   ProvisioningArtifactId = "string",
-#'   ProvisioningArtifactName = "string",
-#'   PathId = "string",
-#'   PathName = "string",
-#'   ProvisionedProductName = "string",
-#'   ProvisioningParameters = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   ProvisioningPreferences = list(
-#'     StackSetAccounts = list(
-#'       "string"
-#'     ),
-#'     StackSetRegions = list(
-#'       "string"
-#'     ),
-#'     StackSetFailureToleranceCount = 123,
-#'     StackSetFailureTolerancePercentage = 123,
-#'     StackSetMaxConcurrencyCount = 123,
-#'     StackSetMaxConcurrencyPercentage = 123
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NotificationArns = list(
-#'     "string"
-#'   ),
-#'   ProvisionToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_provision_product
@@ -5373,9 +2935,7 @@ servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId = 
 #' @description
 #' Rejects an offer to share the specified portfolio.
 #'
-#' @usage
-#' servicecatalog_reject_portfolio_share(AcceptLanguage, PortfolioId,
-#'   PortfolioShareType)
+#' See [https://paws-r.github.io/docs/servicecatalog/reject_portfolio_share.html](https://paws-r.github.io/docs/servicecatalog/reject_portfolio_share.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -5398,18 +2958,6 @@ servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId = 
 #' 
 #' For example,
 #' `aws servicecatalog reject-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS`
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reject_portfolio_share(
-#'   AcceptLanguage = "string",
-#'   PortfolioId = "string",
-#'   PortfolioShareType = "IMPORTED"|"AWS_SERVICECATALOG"|"AWS_ORGANIZATIONS"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5435,13 +2983,8 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @description
 #' Lists the provisioned products that are available (not terminated).
-#' 
-#' To use additional filtering, see
-#' [`search_provisioned_products`][servicecatalog_search_provisioned_products].
 #'
-#' @usage
-#' servicecatalog_scan_provisioned_products(AcceptLanguage,
-#'   AccessLevelFilter, PageSize, PageToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/scan_provisioned_products.html](https://paws-r.github.io/docs/servicecatalog/scan_provisioned_products.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -5454,47 +2997,6 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProvisionedProducts = list(
-#'     list(
-#'       Name = "string",
-#'       Arn = "string",
-#'       Type = "string",
-#'       Id = "string",
-#'       Status = "AVAILABLE"|"UNDER_CHANGE"|"TAINTED"|"ERROR"|"PLAN_IN_PROGRESS",
-#'       StatusMessage = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       IdempotencyToken = "string",
-#'       LastRecordId = "string",
-#'       LastProvisioningRecordId = "string",
-#'       LastSuccessfulProvisioningRecordId = "string",
-#'       ProductId = "string",
-#'       ProvisioningArtifactId = "string",
-#'       LaunchRoleArn = "string"
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$scan_provisioned_products(
-#'   AcceptLanguage = "string",
-#'   AccessLevelFilter = list(
-#'     Key = "Account"|"Role"|"User",
-#'     Value = "string"
-#'   ),
-#'   PageSize = 123,
-#'   PageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5521,9 +3023,7 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
 #' @description
 #' Gets information about the products to which the caller has access.
 #'
-#' @usage
-#' servicecatalog_search_products(AcceptLanguage, Filters, PageSize,
-#'   SortBy, SortOrder, PageToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/search_products.html](https://paws-r.github.io/docs/servicecatalog/search_products.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -5539,53 +3039,6 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
 #' @param SortOrder The sort order. If no value is specified, the results are not sorted.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProductViewSummaries = list(
-#'     list(
-#'       Id = "string",
-#'       ProductId = "string",
-#'       Name = "string",
-#'       Owner = "string",
-#'       ShortDescription = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-#'       Distributor = "string",
-#'       HasDefaultPath = TRUE|FALSE,
-#'       SupportEmail = "string",
-#'       SupportDescription = "string",
-#'       SupportUrl = "string"
-#'     )
-#'   ),
-#'   ProductViewAggregations = list(
-#'     list(
-#'       list(
-#'         Value = "string",
-#'         ApproximateCount = 123
-#'       )
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$search_products(
-#'   AcceptLanguage = "string",
-#'   Filters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   PageSize = 123,
-#'   SortBy = "Title"|"VersionCount"|"CreationDate",
-#'   SortOrder = "ASCENDING"|"DESCENDING",
-#'   PageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5611,12 +3064,9 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #' products
 #'
 #' @description
-#' Gets information about the products for the specified portfolio or all
-#' products.
+#' Gets information about the products for the specified portfolio or all products.
 #'
-#' @usage
-#' servicecatalog_search_products_as_admin(AcceptLanguage, PortfolioId,
-#'   Filters, SortBy, SortOrder, PageToken, PageSize, ProductSource)
+#' See [https://paws-r.github.io/docs/servicecatalog/search_products_as_admin.html](https://paws-r.github.io/docs/servicecatalog/search_products_as_admin.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -5634,54 +3084,6 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param ProductSource Access level of the source of the product.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProductViewDetails = list(
-#'     list(
-#'       ProductViewSummary = list(
-#'         Id = "string",
-#'         ProductId = "string",
-#'         Name = "string",
-#'         Owner = "string",
-#'         ShortDescription = "string",
-#'         Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-#'         Distributor = "string",
-#'         HasDefaultPath = TRUE|FALSE,
-#'         SupportEmail = "string",
-#'         SupportDescription = "string",
-#'         SupportUrl = "string"
-#'       ),
-#'       Status = "AVAILABLE"|"CREATING"|"FAILED",
-#'       ProductARN = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$search_products_as_admin(
-#'   AcceptLanguage = "string",
-#'   PortfolioId = "string",
-#'   Filters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   SortBy = "Title"|"VersionCount"|"CreationDate",
-#'   SortOrder = "ASCENDING"|"DESCENDING",
-#'   PageToken = "string",
-#'   PageSize = 123,
-#'   ProductSource = "ACCOUNT"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5707,12 +3109,9 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #' criteria
 #'
 #' @description
-#' Gets information about the provisioned products that meet the specified
-#' criteria.
+#' Gets information about the provisioned products that meet the specified criteria.
 #'
-#' @usage
-#' servicecatalog_search_provisioned_products(AcceptLanguage,
-#'   AccessLevelFilter, Filters, SortBy, SortOrder, PageSize, PageToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/search_provisioned_products.html](https://paws-r.github.io/docs/servicecatalog/search_provisioned_products.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -5739,65 +3138,6 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProvisionedProducts = list(
-#'     list(
-#'       Name = "string",
-#'       Arn = "string",
-#'       Type = "string",
-#'       Id = "string",
-#'       Status = "AVAILABLE"|"UNDER_CHANGE"|"TAINTED"|"ERROR"|"PLAN_IN_PROGRESS",
-#'       StatusMessage = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       IdempotencyToken = "string",
-#'       LastRecordId = "string",
-#'       LastProvisioningRecordId = "string",
-#'       LastSuccessfulProvisioningRecordId = "string",
-#'       Tags = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       PhysicalId = "string",
-#'       ProductId = "string",
-#'       ProductName = "string",
-#'       ProvisioningArtifactId = "string",
-#'       ProvisioningArtifactName = "string",
-#'       UserArn = "string",
-#'       UserArnSession = "string"
-#'     )
-#'   ),
-#'   TotalResultsCount = 123,
-#'   NextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$search_provisioned_products(
-#'   AcceptLanguage = "string",
-#'   AccessLevelFilter = list(
-#'     Key = "Account"|"Role"|"User",
-#'     Value = "string"
-#'   ),
-#'   Filters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   SortBy = "string",
-#'   SortOrder = "ASCENDING"|"DESCENDING",
-#'   PageSize = 123,
-#'   PageToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_search_provisioned_products
@@ -5822,17 +3162,8 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
 #'
 #' @description
 #' Terminates the specified provisioned product.
-#' 
-#' This operation does not delete any records associated with the
-#' provisioned product.
-#' 
-#' You can check the status of this request using
-#' [`describe_record`][servicecatalog_describe_record].
 #'
-#' @usage
-#' servicecatalog_terminate_provisioned_product(ProvisionedProductName,
-#'   ProvisionedProductId, TerminateToken, IgnoreErrors, AcceptLanguage,
-#'   RetainPhysicalResources)
+#' See [https://paws-r.github.io/docs/servicecatalog/terminate_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/terminate_provisioned_product.html) for full documentation.
 #'
 #' @param ProvisionedProductName The name of the provisioned product. You cannot specify both
 #' `ProvisionedProductName` and `ProvisionedProductId`.
@@ -5857,55 +3188,6 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
 #' not remove the CloudFormation stack, stack set, or the underlying
 #' resources of the deleted provisioned product. The default value is
 #' false.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RecordDetail = list(
-#'     RecordId = "string",
-#'     ProvisionedProductName = "string",
-#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     UpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProvisionedProductType = "string",
-#'     RecordType = "string",
-#'     ProvisionedProductId = "string",
-#'     ProductId = "string",
-#'     ProvisioningArtifactId = "string",
-#'     PathId = "string",
-#'     RecordErrors = list(
-#'       list(
-#'         Code = "string",
-#'         Description = "string"
-#'       )
-#'     ),
-#'     RecordTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     LaunchRoleArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$terminate_provisioned_product(
-#'   ProvisionedProductName = "string",
-#'   ProvisionedProductId = "string",
-#'   TerminateToken = "string",
-#'   IgnoreErrors = TRUE|FALSE,
-#'   AcceptLanguage = "string",
-#'   RetainPhysicalResources = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5932,9 +3214,7 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' @description
 #' Updates the specified constraint.
 #'
-#' @usage
-#' servicecatalog_update_constraint(AcceptLanguage, Id, Description,
-#'   Parameters)
+#' See [https://paws-r.github.io/docs/servicecatalog/update_constraint.html](https://paws-r.github.io/docs/servicecatalog/update_constraint.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -6010,33 +3290,6 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' Constraint
 #' Rules](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConstraintDetail = list(
-#'     ConstraintId = "string",
-#'     Type = "string",
-#'     Description = "string",
-#'     Owner = "string",
-#'     ProductId = "string",
-#'     PortfolioId = "string"
-#'   ),
-#'   ConstraintParameters = "string",
-#'   Status = "AVAILABLE"|"CREATING"|"FAILED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_constraint(
-#'   AcceptLanguage = "string",
-#'   Id = "string",
-#'   Description = "string",
-#'   Parameters = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_constraint
@@ -6061,12 +3314,8 @@ servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Descript
 #'
 #' @description
 #' Updates the specified portfolio.
-#' 
-#' You cannot update a product that was shared with you.
 #'
-#' @usage
-#' servicecatalog_update_portfolio(AcceptLanguage, Id, DisplayName,
-#'   Description, ProviderName, AddTags, RemoveTags)
+#' See [https://paws-r.github.io/docs/servicecatalog/update_portfolio.html](https://paws-r.github.io/docs/servicecatalog/update_portfolio.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -6081,49 +3330,6 @@ servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Descript
 #' @param ProviderName The updated name of the portfolio provider.
 #' @param AddTags The tags to add.
 #' @param RemoveTags The tags to remove.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PortfolioDetail = list(
-#'     Id = "string",
-#'     ARN = "string",
-#'     DisplayName = "string",
-#'     Description = "string",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProviderName = "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_portfolio(
-#'   AcceptLanguage = "string",
-#'   Id = "string",
-#'   DisplayName = "string",
-#'   Description = "string",
-#'   ProviderName = "string",
-#'   AddTags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   RemoveTags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6148,30 +3354,9 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #' Updates the specified portfolio share
 #'
 #' @description
-#' Updates the specified portfolio share. You can use this API to enable or
-#' disable TagOptions sharing for an existing portfolio share.
-#' 
-#' The portfolio share cannot be updated if the
-#' [`create_portfolio_share`][servicecatalog_create_portfolio_share]
-#' operation is `IN_PROGRESS`, as the share is not available to recipient
-#' entities. In this case, you must wait for the portfolio share to be
-#' COMPLETED.
-#' 
-#' You must provide the `accountId` or organization node in the input, but
-#' not both.
-#' 
-#' If the portfolio is shared to both an external account and an
-#' organization node, and both shares need to be updated, you must invoke
-#' [`update_portfolio_share`][servicecatalog_update_portfolio_share]
-#' separately for each share type.
-#' 
-#' This API cannot be used for removing the portfolio share. You must use
-#' [`delete_portfolio_share`][servicecatalog_delete_portfolio_share] API
-#' for that action.
+#' Updates the specified portfolio share. You can use this API to enable or disable TagOptions sharing for an existing portfolio share.
 #'
-#' @usage
-#' servicecatalog_update_portfolio_share(AcceptLanguage, PortfolioId,
-#'   AccountId, OrganizationNode, ShareTagOptions)
+#' See [https://paws-r.github.io/docs/servicecatalog/update_portfolio_share.html](https://paws-r.github.io/docs/servicecatalog/update_portfolio_share.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -6188,29 +3373,6 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #' @param ShareTagOptions A flag to enable or disable TagOptions sharing for the portfolio share.
 #' If this field is not provided, the current state of TagOptions sharing
 #' on the portfolio share will not be modified.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PortfolioShareToken = "string",
-#'   Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"ERROR"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_portfolio_share(
-#'   AcceptLanguage = "string",
-#'   PortfolioId = "string",
-#'   AccountId = "string",
-#'   OrganizationNode = list(
-#'     Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
-#'     Value = "string"
-#'   ),
-#'   ShareTagOptions = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6237,10 +3399,7 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @description
 #' Updates the specified product.
 #'
-#' @usage
-#' servicecatalog_update_product(AcceptLanguage, Id, Name, Owner,
-#'   Description, Distributor, SupportDescription, SupportEmail, SupportUrl,
-#'   AddTags, RemoveTags)
+#' See [https://paws-r.github.io/docs/servicecatalog/update_product.html](https://paws-r.github.io/docs/servicecatalog/update_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -6259,63 +3418,6 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @param SupportUrl The updated support URL for the product.
 #' @param AddTags The tags to add to the product.
 #' @param RemoveTags The tags to remove from the product.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProductViewDetail = list(
-#'     ProductViewSummary = list(
-#'       Id = "string",
-#'       ProductId = "string",
-#'       Name = "string",
-#'       Owner = "string",
-#'       ShortDescription = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-#'       Distributor = "string",
-#'       HasDefaultPath = TRUE|FALSE,
-#'       SupportEmail = "string",
-#'       SupportDescription = "string",
-#'       SupportUrl = "string"
-#'     ),
-#'     Status = "AVAILABLE"|"CREATING"|"FAILED",
-#'     ProductARN = "string",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_product(
-#'   AcceptLanguage = "string",
-#'   Id = "string",
-#'   Name = "string",
-#'   Owner = "string",
-#'   Description = "string",
-#'   Distributor = "string",
-#'   SupportDescription = "string",
-#'   SupportEmail = "string",
-#'   SupportUrl = "string",
-#'   AddTags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   RemoveTags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6341,22 +3443,9 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #' product
 #'
 #' @description
-#' Requests updates to the configuration of the specified provisioned
-#' product.
-#' 
-#' If there are tags associated with the object, they cannot be updated or
-#' added. Depending on the specific updates requested, this operation can
-#' update with no interruption, with some interruption, or replace the
-#' provisioned product entirely.
-#' 
-#' You can check the status of this request using
-#' [`describe_record`][servicecatalog_describe_record].
+#' Requests updates to the configuration of the specified provisioned product.
 #'
-#' @usage
-#' servicecatalog_update_provisioned_product(AcceptLanguage,
-#'   ProvisionedProductName, ProvisionedProductId, ProductId, ProductName,
-#'   ProvisioningArtifactId, ProvisioningArtifactName, PathId, PathName,
-#'   ProvisioningParameters, ProvisioningPreferences, Tags, UpdateToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/update_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/update_provisioned_product.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -6388,85 +3477,6 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #' @param UpdateToken &#91;required&#93; The idempotency token that uniquely identifies the provisioning update
 #' request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RecordDetail = list(
-#'     RecordId = "string",
-#'     ProvisionedProductName = "string",
-#'     Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     UpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ProvisionedProductType = "string",
-#'     RecordType = "string",
-#'     ProvisionedProductId = "string",
-#'     ProductId = "string",
-#'     ProvisioningArtifactId = "string",
-#'     PathId = "string",
-#'     RecordErrors = list(
-#'       list(
-#'         Code = "string",
-#'         Description = "string"
-#'       )
-#'     ),
-#'     RecordTags = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     ),
-#'     LaunchRoleArn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_provisioned_product(
-#'   AcceptLanguage = "string",
-#'   ProvisionedProductName = "string",
-#'   ProvisionedProductId = "string",
-#'   ProductId = "string",
-#'   ProductName = "string",
-#'   ProvisioningArtifactId = "string",
-#'   ProvisioningArtifactName = "string",
-#'   PathId = "string",
-#'   PathName = "string",
-#'   ProvisioningParameters = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string",
-#'       UsePreviousValue = TRUE|FALSE
-#'     )
-#'   ),
-#'   ProvisioningPreferences = list(
-#'     StackSetAccounts = list(
-#'       "string"
-#'     ),
-#'     StackSetRegions = list(
-#'       "string"
-#'     ),
-#'     StackSetFailureToleranceCount = 123,
-#'     StackSetFailureTolerancePercentage = 123,
-#'     StackSetMaxConcurrencyCount = 123,
-#'     StackSetMaxConcurrencyPercentage = 123,
-#'     StackSetOperationType = "CREATE"|"UPDATE"|"DELETE"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   UpdateToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_provisioned_product
@@ -6492,9 +3502,7 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' @description
 #' Requests updates to the properties of the specified provisioned product.
 #'
-#' @usage
-#' servicecatalog_update_provisioned_product_properties(AcceptLanguage,
-#'   ProvisionedProductId, ProvisionedProductProperties, IdempotencyToken)
+#' See [https://paws-r.github.io/docs/servicecatalog/update_provisioned_product_properties.html](https://paws-r.github.io/docs/servicecatalog/update_provisioned_product_properties.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -6542,31 +3550,6 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' @param IdempotencyToken &#91;required&#93; The idempotency token that uniquely identifies the provisioning product
 #' update request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProvisionedProductId = "string",
-#'   ProvisionedProductProperties = list(
-#'     "string"
-#'   ),
-#'   RecordId = "string",
-#'   Status = "CREATED"|"IN_PROGRESS"|"IN_PROGRESS_IN_ERROR"|"SUCCEEDED"|"FAILED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_provisioned_product_properties(
-#'   AcceptLanguage = "string",
-#'   ProvisionedProductId = "string",
-#'   ProvisionedProductProperties = list(
-#'     "string"
-#'   ),
-#'   IdempotencyToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_provisioned_product_properties
@@ -6591,15 +3574,9 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #' for the specified product
 #'
 #' @description
-#' Updates the specified provisioning artifact (also known as a version)
-#' for the specified product.
-#' 
-#' You cannot update a provisioning artifact for a product that was shared
-#' with you.
+#' Updates the specified provisioning artifact (also known as a version) for the specified product.
 #'
-#' @usage
-#' servicecatalog_update_provisioning_artifact(AcceptLanguage, ProductId,
-#'   ProvisioningArtifactId, Name, Description, Active, Guidance)
+#' See [https://paws-r.github.io/docs/servicecatalog/update_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/update_provisioning_artifact.html) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -6627,41 +3604,6 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #' to a provisioned product of a deprecated version but cannot launch new
 #' provisioned products using a deprecated version.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProvisioningArtifactDetail = list(
-#'     Id = "string",
-#'     Name = "string",
-#'     Description = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Active = TRUE|FALSE,
-#'     Guidance = "DEFAULT"|"DEPRECATED"
-#'   ),
-#'   Info = list(
-#'     "string"
-#'   ),
-#'   Status = "AVAILABLE"|"CREATING"|"FAILED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_provisioning_artifact(
-#'   AcceptLanguage = "string",
-#'   ProductId = "string",
-#'   ProvisioningArtifactId = "string",
-#'   Name = "string",
-#'   Description = "string",
-#'   Active = TRUE|FALSE,
-#'   Guidance = "DEFAULT"|"DEPRECATED"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_provisioning_artifact
@@ -6687,9 +3629,7 @@ servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @description
 #' Updates a self-service action.
 #'
-#' @usage
-#' servicecatalog_update_service_action(Id, Name, Definition, Description,
-#'   AcceptLanguage)
+#' See [https://paws-r.github.io/docs/servicecatalog/update_service_action.html](https://paws-r.github.io/docs/servicecatalog/update_service_action.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The self-service action identifier.
 #' @param Name The self-service action name.
@@ -6702,37 +3642,6 @@ servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ServiceActionDetail = list(
-#'     ServiceActionSummary = list(
-#'       Id = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       DefinitionType = "SSM_AUTOMATION"
-#'     ),
-#'     Definition = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_service_action(
-#'   Id = "string",
-#'   Name = "string",
-#'   Definition = list(
-#'     "string"
-#'   ),
-#'   Description = "string",
-#'   AcceptLanguage = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6759,35 +3668,11 @@ servicecatalog_update_service_action <- function(Id, Name = NULL, Definition = N
 #' @description
 #' Updates the specified TagOption.
 #'
-#' @usage
-#' servicecatalog_update_tag_option(Id, Value, Active)
+#' See [https://paws-r.github.io/docs/servicecatalog/update_tag_option.html](https://paws-r.github.io/docs/servicecatalog/update_tag_option.html) for full documentation.
 #'
 #' @param Id &#91;required&#93; The TagOption identifier.
 #' @param Value The updated value.
 #' @param Active The updated active state.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagOptionDetail = list(
-#'     Key = "string",
-#'     Value = "string",
-#'     Active = TRUE|FALSE,
-#'     Id = "string",
-#'     Owner = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_tag_option(
-#'   Id = "string",
-#'   Value = "string",
-#'   Active = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

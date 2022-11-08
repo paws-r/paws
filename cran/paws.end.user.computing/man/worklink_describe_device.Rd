@@ -11,33 +11,9 @@ worklink_describe_device(FleetArn, DeviceId)
 
 \item{DeviceId}{[required] A unique identifier for a registered user's device.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = "ACTIVE"|"SIGNED_OUT",
-  Model = "string",
-  Manufacturer = "string",
-  OperatingSystem = "string",
-  OperatingSystemVersion = "string",
-  PatchLevel = "string",
-  FirstAccessedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastAccessedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Username = "string"
-)
-}
-}
 \description{
 Provides information about a user's device.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_device(
-  FleetArn = "string",
-  DeviceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/describe_device.html} for full documentation.
+}
 \keyword{internal}

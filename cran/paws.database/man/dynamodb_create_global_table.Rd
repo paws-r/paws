@@ -11,97 +11,9 @@ dynamodb_create_global_table(GlobalTableName, ReplicationGroup)
 
 \item{ReplicationGroup}{[required] The Regions where the global table needs to be created.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GlobalTableDescription = list(
-    ReplicationGroup = list(
-      list(
-        RegionName = "string",
-        ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-        ReplicaStatusDescription = "string",
-        ReplicaStatusPercentProgress = "string",
-        KMSMasterKeyId = "string",
-        ProvisionedThroughputOverride = list(
-          ReadCapacityUnits = 123
-        ),
-        GlobalSecondaryIndexes = list(
-          list(
-            IndexName = "string",
-            ProvisionedThroughputOverride = list(
-              ReadCapacityUnits = 123
-            )
-          )
-        ),
-        ReplicaInaccessibleDateTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    GlobalTableArn = "string",
-    CreationDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    GlobalTableStatus = "CREATING"|"ACTIVE"|"DELETING"|"UPDATING",
-    GlobalTableName = "string"
-  )
-)
-}
-}
 \description{
-Creates a global table from an existing table. A global table creates a
-replication relationship between two or more DynamoDB tables with the
-same table name in the provided Regions.
+Creates a global table from an existing table. A global table creates a replication relationship between two or more DynamoDB tables with the same table name in the provided Regions.
 
-This operation only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html}{Version 2017.11.29}
-of global tables.
-
-If you want to add a new replica table to a global table, each of the
-following conditions must be true:
-\itemize{
-\item The table must have the same primary key as all of the other
-replicas.
-\item The table must have the same name as all of the other replicas.
-\item The table must have DynamoDB Streams enabled, with the stream
-containing both the new and the old images of the item.
-\item None of the replica tables in the global table can contain any data.
+See \url{https://paws-r.github.io/docs/dynamodb/create_global_table.html} for full documentation.
 }
-
-If global secondary indexes are specified, then the following conditions
-must also be met:
-\itemize{
-\item The global secondary indexes must have the same name.
-\item The global secondary indexes must have the same hash key and sort
-key (if present).
-}
-
-If local secondary indexes are specified, then the following conditions
-must also be met:
-\itemize{
-\item The local secondary indexes must have the same name.
-\item The local secondary indexes must have the same hash key and sort key
-(if present).
-}
-
-Write capacity settings should be set consistently across your replica
-tables and secondary indexes. DynamoDB strongly recommends enabling auto
-scaling to manage the write capacity settings for all of your global
-tables replicas and indexes.
-
-If you prefer to manage write capacity settings manually, you should
-provision equal replicated write capacity units to your replica tables.
-You should also provision equal replicated write capacity units to
-matching secondary indexes across your global table.
-}
-\section{Request syntax}{
-\preformatted{svc$create_global_table(
-  GlobalTableName = "string",
-  ReplicationGroup = list(
-    list(
-      RegionName = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

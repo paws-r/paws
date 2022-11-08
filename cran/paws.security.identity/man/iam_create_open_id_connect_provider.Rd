@@ -5,23 +5,30 @@
 \title{Creates an IAM entity to describe an identity provider (IdP) that
 supports OpenID Connect (OIDC)}
 \usage{
-iam_create_open_id_connect_provider(Url, ClientIDList, ThumbprintList)
+iam_create_open_id_connect_provider(
+  Url,
+  ClientIDList = NULL,
+  ThumbprintList,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Url}{[required] The URL of the identity provider. The URL must begin with \verb{https://} and
 should correspond to the \code{iss} claim in the provider's OpenID Connect ID
 tokens. Per the OIDC standard, path components are allowed but query
 parameters are not. Typically the URL consists of only a hostname, like
-\verb{https://server.example.org} or \verb{https://example.com}.
+\verb{https://server.example.org} or \verb{https://example.com}. The URL should
+not contain a port number.
 
-You cannot register the same provider multiple times in a single AWS
-account. If you try to submit a URL that has already been used for an
-OpenID Connect provider in the AWS account, you will get an error.}
+You cannot register the same provider multiple times in a single Amazon
+Web Services account. If you try to submit a URL that has already been
+used for an OpenID Connect provider in the Amazon Web Services account,
+you will get an error.}
 
-\item{ClientIDList}{A list of client IDs (also known as audiences). When a mobile or web app
-registers with an OpenID Connect provider, they establish a value that
-identifies the application. (This is the value that's sent as the
-\code{client_id} parameter on OAuth requests.)
+\item{ClientIDList}{Provides a list of client IDs, also known as audiences. When a mobile or
+web app registers with an OpenID Connect provider, they establish a
+value that identifies the application. This is the value that's sent as
+the \code{client_id} parameter on OAuth requests.
 
 You can register multiple client IDs with the same provider. For
 example, you might have multiple applications that use the same OIDC
@@ -47,72 +54,24 @@ provider. For example, assume that the OIDC provider is
 \code{server.example.com} and the provider stores its keys at
 https://keys.server.example.com/openid-connect. In that case, the
 thumbprint string would be the hex-encoded SHA-1 hash value of the
-certificate used by https://keys.server.example.com.
+certificate used by \verb{https://keys.server.example.com.}
 
-For more information about obtaining the OIDC provider's thumbprint, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html}{Obtaining the Thumbprint for an OpenID Connect Provider}
+For more information about obtaining the OIDC provider thumbprint, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html}{Obtaining the thumbprint for an OpenID Connect provider}
 in the \emph{IAM User Guide}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  OpenIDConnectProviderArn = "string"
-)
-}
+
+\item{Tags}{A list of tags that you want to attach to the new IAM OpenID Connect
+(OIDC) provider. Each tag consists of a key name and an associated
+value. For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources}
+in the \emph{IAM User Guide}.
+
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
+created.}
 }
 \description{
-Creates an IAM entity to describe an identity provider (IdP) that
-supports \href{https://openid.net/connect/}{OpenID Connect (OIDC)}.
+Creates an IAM entity to describe an identity provider (IdP) that supports \href{https://openid.net/connect/}{OpenID Connect (OIDC)}.
 
-The OIDC provider that you create with this operation can be used as a
-principal in a role's trust policy. Such a policy establishes a trust
-relationship between AWS and the OIDC provider.
-
-When you create the IAM OIDC provider, you specify the following:
-\itemize{
-\item The URL of the OIDC identity provider (IdP) to trust
-\item A list of client IDs (also known as audiences) that identify the
-application or applications that are allowed to authenticate using
-the OIDC provider
-\item A list of thumbprints of one or more server certificates that the
-IdP uses
-}
-
-You get all of this information from the OIDC IdP that you want to use
-to access AWS.
-
-The trust for the OIDC provider is derived from the IAM provider that
-this operation creates. Therefore, it is best to limit access to the
-\code{\link[=iam_create_open_id_connect_provider]{create_open_id_connect_provider}}
-operation to highly privileged users.
-}
-\section{Request syntax}{
-\preformatted{svc$create_open_id_connect_provider(
-  Url = "string",
-  ClientIDList = list(
-    "string"
-  ),
-  ThumbprintList = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example defines a new OIDC provider in IAM with a client
-# ID of my-application-id and pointing at the server with a URL of
-# https://server.example.com.
-svc$create_open_id_connect_provider(
-  ClientIDList = list(
-    "my-application-id"
-  ),
-  ThumbprintList = list(
-    "3768084dfb3d2b68b7897bf5f565da8efEXAMPLE"
-  ),
-  Url = "https://server.example.com"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/create_open_id_connect_provider.html} for full documentation.
 }
 \keyword{internal}

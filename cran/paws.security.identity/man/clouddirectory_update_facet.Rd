@@ -4,8 +4,12 @@
 \alias{clouddirectory_update_facet}
 \title{Does the following:}
 \usage{
-clouddirectory_update_facet(SchemaArn, Name, AttributeUpdates,
-  ObjectType)
+clouddirectory_update_facet(
+  SchemaArn,
+  Name,
+  AttributeUpdates = NULL,
+  ObjectType = NULL
+)
 }
 \arguments{
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the Facet. For
@@ -20,58 +24,9 @@ update operation to perform.}
 \item{ObjectType}{The object type that is associated with the facet. See
 CreateFacetRequest$ObjectType for more details.}
 }
-\value{
-An empty list.
-}
 \description{
 Does the following:
-\enumerate{
-\item Adds new \code{Attributes}, \code{Rules}, or \code{ObjectTypes}.
-\item Updates existing \code{Attributes}, \code{Rules}, or \code{ObjectTypes}.
-\item Deletes existing \code{Attributes}, \code{Rules}, or \code{ObjectTypes}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$update_facet(
-  SchemaArn = "string",
-  Name = "string",
-  AttributeUpdates = list(
-    list(
-      Attribute = list(
-        Name = "string",
-        AttributeDefinition = list(
-          Type = "STRING"|"BINARY"|"BOOLEAN"|"NUMBER"|"DATETIME"|"VARIANT",
-          DefaultValue = list(
-            StringValue = "string",
-            BinaryValue = raw,
-            BooleanValue = TRUE|FALSE,
-            NumberValue = "string",
-            DatetimeValue = as.POSIXct(
-              "2015-01-01"
-            )
-          ),
-          IsImmutable = TRUE|FALSE,
-          Rules = list(
-            list(
-              Type = "BINARY_LENGTH"|"NUMBER_COMPARISON"|"STRING_FROM_SET"|"STRING_LENGTH",
-              Parameters = list(
-                "string"
-              )
-            )
-          )
-        ),
-        AttributeReference = list(
-          TargetFacetName = "string",
-          TargetAttributeName = "string"
-        ),
-        RequiredBehavior = "REQUIRED_ALWAYS"|"NOT_REQUIRED"
-      ),
-      Action = "CREATE_OR_UPDATE"|"DELETE"
-    )
-  ),
-  ObjectType = "NODE"|"LEAF_NODE"|"POLICY"|"INDEX"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/update_facet.html} for full documentation.
+}
 \keyword{internal}

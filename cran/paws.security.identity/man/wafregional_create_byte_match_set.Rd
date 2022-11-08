@@ -13,74 +13,9 @@ wafregional_create_byte_match_set(Name, ChangeToken)
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ByteMatchSet = list(
-    ByteMatchSetId = "string",
-    Name = "string",
-    ByteMatchTuples = list(
-      list(
-        FieldToMatch = list(
-          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-          Data = "string"
-        ),
-        TargetString = raw,
-        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-        PositionalConstraint = "EXACTLY"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CONTAINS_WORD"
-      )
-    )
-  ),
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Creates a \code{ByteMatchSet}. You then use
-\code{\link[=wafregional_update_byte_match_set]{update_byte_match_set}} to identify
-the part of a web request that you want AWS WAF to inspect, such as the
-values of the \code{User-Agent} header or the query string. For example, you
-can create a \code{ByteMatchSet} that matches any requests with \code{User-Agent}
-headers that contain the string \code{BadBot}. You can then configure AWS WAF
-to reject those requests.
-
-To create and configure a \code{ByteMatchSet}, perform the following steps:
-\enumerate{
-\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
-change token that you provide in the \code{ChangeToken} parameter of a
-\code{\link[=wafregional_create_byte_match_set]{create_byte_match_set}}
-request.
-\item Submit a
-\code{\link[=wafregional_create_byte_match_set]{create_byte_match_set}}
-request.
-\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
-change token that you provide in the \code{ChangeToken} parameter of an
-\code{\link[=wafregional_update_byte_match_set]{update_byte_match_set}}
-request.
-\item Submit an
-\code{\link[=wafregional_update_byte_match_set]{update_byte_match_set}} request
-to specify the part of the request that you want AWS WAF to inspect
-(for example, the header or the URI) and the value that you want AWS
-WAF to watch for.
+See \url{https://paws-r.github.io/docs/wafregional/create_byte_match_set.html} for full documentation.
 }
-
-For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_byte_match_set(
-  Name = "string",
-  ChangeToken = "string"
-)
-}
-}
-
 \keyword{internal}

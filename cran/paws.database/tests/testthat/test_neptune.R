@@ -44,6 +44,10 @@ test_that("describe_events", {
   expect_error(svc$describe_events(), NA)
 })
 
+test_that("describe_global_clusters", {
+  expect_error(svc$describe_global_clusters(), NA)
+})
+
 test_that("describe_pending_maintenance_actions", {
   expect_error(svc$describe_pending_maintenance_actions(), NA)
 })

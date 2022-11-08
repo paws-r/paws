@@ -2,11 +2,11 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_stop_activity_stream}
 \alias{rds_stop_activity_stream}
-\title{Stops a database activity stream that was started using the AWS console,
-the start-activity-stream AWS CLI command, or the StartActivityStream
-action}
+\title{Stops a database activity stream that was started using the Amazon Web
+Services console, the start-activity-stream CLI command, or the
+StartActivityStream action}
 \usage{
-rds_stop_activity_stream(ResourceArn, ApplyImmediately)
+rds_stop_activity_stream(ResourceArn, ApplyImmediately = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the DB cluster for the database
@@ -16,28 +16,9 @@ activity stream. For example,
 \item{ApplyImmediately}{Specifies whether or not the database activity stream is to stop as soon
 as possible, regardless of the maintenance window for the database.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  KmsKeyId = "string",
-  KinesisStreamName = "string",
-  Status = "stopped"|"starting"|"started"|"stopping"
-)
-}
-}
 \description{
-Stops a database activity stream that was started using the AWS console,
-the \code{start-activity-stream} AWS CLI command, or the
-\code{\link[=rds_start_activity_stream]{start_activity_stream}} action.
+Stops a database activity stream that was started using the Amazon Web Services console, the \code{start-activity-stream} CLI command, or the \code{\link[=rds_start_activity_stream]{start_activity_stream}} action.
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html}{Database Activity Streams}
-in the \emph{Amazon Aurora User Guide}.
+See \url{https://paws-r.github.io/docs/rds/stop_activity_stream.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$stop_activity_stream(
-  ResourceArn = "string",
-  ApplyImmediately = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

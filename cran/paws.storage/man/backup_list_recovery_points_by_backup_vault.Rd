@@ -5,15 +5,25 @@
 \title{Returns detailed information about the recovery points stored in a
 backup vault}
 \usage{
-backup_list_recovery_points_by_backup_vault(BackupVaultName, NextToken,
-  MaxResults, ByResourceArn, ByResourceType, ByBackupPlanId,
-  ByCreatedBefore, ByCreatedAfter)
+backup_list_recovery_points_by_backup_vault(
+  BackupVaultName,
+  NextToken = NULL,
+  MaxResults = NULL,
+  ByResourceArn = NULL,
+  ByResourceType = NULL,
+  ByBackupPlanId = NULL,
+  ByCreatedBefore = NULL,
+  ByCreatedAfter = NULL
+)
 }
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens.}
+them and the Amazon Web Services Region where they are created. They
+consist of lowercase letters, numbers, and hyphens.
+
+Backup vault name might not be available when a supported service
+creates the backup.}
 
 \item{NextToken}{The next item following a partial list of returned items. For example,
 if a request is made to return \code{maxResults} number of items, \code{NextToken}
@@ -35,74 +45,9 @@ timestamp.}
 \item{ByCreatedAfter}{Returns only recovery points that were created after the specified
 timestamp.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  RecoveryPoints = list(
-    list(
-      RecoveryPointArn = "string",
-      BackupVaultName = "string",
-      BackupVaultArn = "string",
-      SourceBackupVaultArn = "string",
-      ResourceArn = "string",
-      ResourceType = "string",
-      CreatedBy = list(
-        BackupPlanId = "string",
-        BackupPlanArn = "string",
-        BackupPlanVersion = "string",
-        BackupRuleId = "string"
-      ),
-      IamRoleArn = "string",
-      Status = "COMPLETED"|"PARTIAL"|"DELETING"|"EXPIRED",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      CompletionDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      BackupSizeInBytes = 123,
-      CalculatedLifecycle = list(
-        MoveToColdStorageAt = as.POSIXct(
-          "2015-01-01"
-        ),
-        DeleteAt = as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      Lifecycle = list(
-        MoveToColdStorageAfterDays = 123,
-        DeleteAfterDays = 123
-      ),
-      EncryptionKeyArn = "string",
-      IsEncrypted = TRUE|FALSE,
-      LastRestoreTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns detailed information about the recovery points stored in a
-backup vault.
-}
-\section{Request syntax}{
-\preformatted{svc$list_recovery_points_by_backup_vault(
-  BackupVaultName = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  ByResourceArn = "string",
-  ByResourceType = "string",
-  ByBackupPlanId = "string",
-  ByCreatedBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  ByCreatedAfter = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
+Returns detailed information about the recovery points stored in a backup vault.
 
+See \url{https://paws-r.github.io/docs/backup/list_recovery_points_by_backup_vault.html} for full documentation.
+}
 \keyword{internal}

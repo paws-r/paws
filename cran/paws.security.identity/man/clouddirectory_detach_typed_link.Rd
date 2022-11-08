@@ -12,44 +12,9 @@ the typed link.}
 
 \item{TypedLinkSpecifier}{[required] Used to accept a typed link specifier as input.}
 }
-\value{
-An empty list.
-}
 \description{
-Detaches a typed link from a specified source and target object. For
-more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
-}
-\section{Request syntax}{
-\preformatted{svc$detach_typed_link(
-  DirectoryArn = "string",
-  TypedLinkSpecifier = list(
-    TypedLinkFacet = list(
-      SchemaArn = "string",
-      TypedLinkName = "string"
-    ),
-    SourceObjectReference = list(
-      Selector = "string"
-    ),
-    TargetObjectReference = list(
-      Selector = "string"
-    ),
-    IdentityAttributeValues = list(
-      list(
-        AttributeName = "string",
-        Value = list(
-          StringValue = "string",
-          BinaryValue = raw,
-          BooleanValue = TRUE|FALSE,
-          NumberValue = "string",
-          DatetimeValue = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
+Detaches a typed link from a specified source and target object. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/detach_typed_link.html} for full documentation.
+}
 \keyword{internal}

@@ -11,61 +11,9 @@ lexmodelbuildingservice_get_slot_type(name, version)
 
 \item{version}{[required] The version of the slot type.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  name = "string",
-  description = "string",
-  enumerationValues = list(
-    list(
-      value = "string",
-      synonyms = list(
-        "string"
-      )
-    )
-  ),
-  lastUpdatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  version = "string",
-  checksum = "string",
-  valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
-  parentSlotTypeSignature = "string",
-  slotTypeConfigurations = list(
-    list(
-      regexConfiguration = list(
-        pattern = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns information about a specific version of a slot type. In addition
-to specifying the slot type name, you must specify the slot type
-version.
+Returns information about a specific version of a slot type. In addition to specifying the slot type name, you must specify the slot type version.
 
-This operation requires permissions for the \code{lex:GetSlotType} action.
-}
-\section{Request syntax}{
-\preformatted{svc$get_slot_type(
-  name = "string",
-  version = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example shows how to get information about a slot type.
-svc$get_slot_type(
-  version = "$LATEST",
-  name = "DocPizzaCrustType"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_slot_type.html} for full documentation.
 }
 \keyword{internal}

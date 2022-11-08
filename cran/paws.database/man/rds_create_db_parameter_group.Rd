@@ -4,8 +4,12 @@
 \alias{rds_create_db_parameter_group}
 \title{Creates a new DB parameter group}
 \usage{
-rds_create_db_parameter_group(DBParameterGroupName,
-  DBParameterGroupFamily, Description, Tags)
+rds_create_db_parameter_group(
+  DBParameterGroupName,
+  DBParameterGroupFamily,
+  Description,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DBParameterGroupName}{[required] The name of the DB parameter group.
@@ -24,65 +28,44 @@ associated with one and only one DB parameter group family, and can be
 applied only to a DB instance running a database engine and engine
 version compatible with that DB parameter group family.
 
-To list all of the available parameter group families, use the following
-command:
+To list all of the available parameter group families for a DB engine,
+use the following command:
 
-\verb{aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily"}
+\verb{aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily" --engine <engine>}
 
-The output contains duplicates.}
+For example, to list all of the available parameter group families for
+the MySQL DB engine, use the following command:
+
+\verb{aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily" --engine mysql}
+
+The output contains duplicates.
+
+The following are the valid DB engine values:
+\itemize{
+\item \code{aurora} (for MySQL 5.6-compatible Aurora)
+\item \code{aurora-mysql} (for MySQL 5.7-compatible and MySQL 8.0-compatible
+Aurora)
+\item \code{aurora-postgresql}
+\item \code{mariadb}
+\item \code{mysql}
+\item \code{oracle-ee}
+\item \code{oracle-ee-cdb}
+\item \code{oracle-se2}
+\item \code{oracle-se2-cdb}
+\item \code{postgres}
+\item \code{sqlserver-ee}
+\item \code{sqlserver-se}
+\item \code{sqlserver-ex}
+\item \code{sqlserver-web}
+}}
 
 \item{Description}{[required] The description for the DB parameter group.}
 
 \item{Tags}{Tags to assign to the DB parameter group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBParameterGroup = list(
-    DBParameterGroupName = "string",
-    DBParameterGroupFamily = "string",
-    Description = "string",
-    DBParameterGroupArn = "string"
-  )
-)
-}
-}
 \description{
 Creates a new DB parameter group.
 
-A DB parameter group is initially created with the default parameters
-for the database engine used by the DB instance. To provide custom
-values for any of the parameters, you must modify the group after
-creating it using \emph{ModifyDBParameterGroup}. Once you've created a DB
-parameter group, you need to associate it with your DB instance using
-\emph{ModifyDBInstance}. When you associate a new DB parameter group with a
-running DB instance, you need to reboot the DB instance without failover
-for the new DB parameter group and associated settings to take effect.
-
-After you create a DB parameter group, you should wait at least 5
-minutes before creating your first DB instance that uses that DB
-parameter group as the default parameter group. This allows Amazon RDS
-to fully complete the create action before the parameter group is used
-as the default for a new DB instance. This is especially important for
-parameters that are critical when creating the default database for a DB
-instance, such as the character set for the default database defined by
-the \code{character_set_database} parameter. You can use the \emph{Parameter
-Groups} option of the Amazon RDS console or the \emph{DescribeDBParameters}
-command to verify that your DB parameter group has been created or
-modified.
+See \url{https://paws-r.github.io/docs/rds/create_db_parameter_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_db_parameter_group(
-  DBParameterGroupName = "string",
-  DBParameterGroupFamily = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

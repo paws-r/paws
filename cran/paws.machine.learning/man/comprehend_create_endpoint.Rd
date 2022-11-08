@@ -3,10 +3,17 @@
 \name{comprehend_create_endpoint}
 \alias{comprehend_create_endpoint}
 \title{Creates a model-specific endpoint for synchronous inference for a
-previously trained custom model}
+previously trained custom model For information about endpoints, see
+Managing endpoints}
 \usage{
-comprehend_create_endpoint(EndpointName, ModelArn,
-  DesiredInferenceUnits, ClientRequestToken, Tags)
+comprehend_create_endpoint(
+  EndpointName,
+  ModelArn,
+  DesiredInferenceUnits,
+  ClientRequestToken = NULL,
+  Tags = NULL,
+  DataAccessRoleArn = NULL
+)
 }
 \arguments{
 \item{EndpointName}{[required] This is the descriptive suffix that becomes part of the \code{EndpointArn}
@@ -27,31 +34,14 @@ previous endpoint creation request, Amazon Comprehend will not return a
 pair that adds metadata to the endpoint. For example, a tag with "Sales"
 as the key might be added to an endpoint to indicate its use by the
 sales department.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  EndpointArn = "string"
-)
-}
+
+\item{DataAccessRoleArn}{The Amazon Resource Name (ARN) of the AWS identity and Access Management
+(IAM) role that grants Amazon Comprehend read access to trained custom
+models encrypted with a customer managed key (ModelKmsKeyId).}
 }
 \description{
-Creates a model-specific endpoint for synchronous inference for a
-previously trained custom model
-}
-\section{Request syntax}{
-\preformatted{svc$create_endpoint(
-  EndpointName = "string",
-  ModelArn = "string",
-  DesiredInferenceUnits = 123,
-  ClientRequestToken = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a model-specific endpoint for synchronous inference for a previously trained custom model For information about endpoints, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html}{Managing endpoints}.
 
+See \url{https://paws-r.github.io/docs/comprehend/create_endpoint.html} for full documentation.
+}
 \keyword{internal}

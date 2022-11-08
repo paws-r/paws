@@ -9,42 +9,9 @@ route53resolver_delete_resolver_endpoint(ResolverEndpointId)
 \arguments{
 \item{ResolverEndpointId}{[required] The ID of the Resolver endpoint that you want to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResolverEndpoint = list(
-    Id = "string",
-    CreatorRequestId = "string",
-    Arn = "string",
-    Name = "string",
-    SecurityGroupIds = list(
-      "string"
-    ),
-    Direction = "INBOUND"|"OUTBOUND",
-    IpAddressCount = 123,
-    HostVPCId = "string",
-    Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
-    StatusMessage = "string",
-    CreationTime = "string",
-    ModificationTime = "string"
-  )
-)
-}
-}
 \description{
-Deletes a Resolver endpoint. The effect of deleting a Resolver endpoint
-depends on whether it's an inbound or an outbound Resolver endpoint:
-\itemize{
-\item \strong{Inbound}: DNS queries from your network are no longer routed to
-the DNS service for the specified VPC.
-\item \strong{Outbound}: DNS queries from a VPC are no longer routed to your
-network.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$delete_resolver_endpoint(
-  ResolverEndpointId = "string"
-)
-}
-}
+Deletes a Resolver endpoint. The effect of deleting a Resolver endpoint depends on whether it's an inbound or an outbound Resolver endpoint:
 
+See \url{https://paws-r.github.io/docs/route53resolver/delete_resolver_endpoint.html} for full documentation.
+}
 \keyword{internal}

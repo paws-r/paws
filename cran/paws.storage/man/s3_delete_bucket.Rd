@@ -4,44 +4,18 @@
 \alias{s3_delete_bucket}
 \title{Deletes the S3 bucket}
 \usage{
-s3_delete_bucket(Bucket, ExpectedBucketOwner)
+s3_delete_bucket(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] Specifies the bucket being deleted.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-An empty list.
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Deletes the S3 bucket. All objects (including all object versions and
-delete markers) in the bucket must be deleted before the bucket itself
-can be deleted.
+Deletes the S3 bucket. All objects (including all object versions and delete markers) in the bucket must be deleted before the bucket itself can be deleted.
 
-\strong{Related Resources}
-\itemize{
-\item \code{\link[=s3_create_bucket]{create_bucket}}
-\item \code{\link[=s3_delete_object]{delete_object}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$delete_bucket(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes the specified bucket.
-svc$delete_bucket(
-  Bucket = "forrandall2"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/delete_bucket.html} for full documentation.
 }
 \keyword{internal}

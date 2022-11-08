@@ -24,35 +24,9 @@ If you specify a trail ARN, it must be in the format:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrailARN = "string",
-  InsightSelectors = list(
-    list(
-      InsightType = "ApiCallRateInsight"
-    )
-  )
-)
-}
-}
 \description{
-Describes the settings for the Insights event selectors that you
-configured for your trail.
-\code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} shows if
-CloudTrail Insights event logging is enabled on the trail, and if it is,
-which insight types are enabled. If you run
-\code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} on a trail
-that does not have Insights events enabled, the operation throws the
-exception \code{InsightNotEnabledException}
+Describes the settings for the Insights event selectors that you configured for your trail. \code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} shows if CloudTrail Insights event logging is enabled on the trail, and if it is, which insight types are enabled. If you run \code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} on a trail that does not have Insights events enabled, the operation throws the exception \code{InsightNotEnabledException}
 
-For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html}{Logging CloudTrail Insights Events for Trails}
-in the \emph{AWS CloudTrail User Guide}.
+See \url{https://paws-r.github.io/docs/cloudtrail/get_insight_selectors.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_insight_selectors(
-  TrailName = "string"
-)
-}
-}
-
 \keyword{internal}

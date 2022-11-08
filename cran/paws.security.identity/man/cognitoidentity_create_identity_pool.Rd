@@ -4,11 +4,17 @@
 \alias{cognitoidentity_create_identity_pool}
 \title{Creates a new identity pool}
 \usage{
-cognitoidentity_create_identity_pool(IdentityPoolName,
-  AllowUnauthenticatedIdentities, AllowClassicFlow,
-  SupportedLoginProviders, DeveloperProviderName,
-  OpenIdConnectProviderARNs, CognitoIdentityProviders, SamlProviderARNs,
-  IdentityPoolTags)
+cognitoidentity_create_identity_pool(
+  IdentityPoolName,
+  AllowUnauthenticatedIdentities,
+  AllowClassicFlow = NULL,
+  SupportedLoginProviders = NULL,
+  DeveloperProviderName = NULL,
+  OpenIdConnectProviderARNs = NULL,
+  CognitoIdentityProviders = NULL,
+  SamlProviderARNs = NULL,
+  IdentityPoolTags = NULL
+)
 }
 \arguments{
 \item{IdentityPoolName}{[required] A string that you provide.}
@@ -30,7 +36,7 @@ underscore (\verb{_}), and dash (\code{-}).
 Once you have set a developer provider name, you cannot change it.
 Please take care in setting this parameter.}
 
-\item{OpenIdConnectProviderARNs}{A list of OpendID Connect provider ARNs.}
+\item{OpenIdConnectProviderARNs}{The Amazon Resource Names (ARN) of the OpenID Connect providers.}
 
 \item{CognitoIdentityProviders}{An array of Amazon Cognito user pools and their client IDs.}
 
@@ -41,76 +47,9 @@ identity pool.}
 to identity pools to categorize and manage them in different ways, such
 as by purpose, owner, environment, or other criteria.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityPoolId = "string",
-  IdentityPoolName = "string",
-  AllowUnauthenticatedIdentities = TRUE|FALSE,
-  AllowClassicFlow = TRUE|FALSE,
-  SupportedLoginProviders = list(
-    "string"
-  ),
-  DeveloperProviderName = "string",
-  OpenIdConnectProviderARNs = list(
-    "string"
-  ),
-  CognitoIdentityProviders = list(
-    list(
-      ProviderName = "string",
-      ClientId = "string",
-      ServerSideTokenCheck = TRUE|FALSE
-    )
-  ),
-  SamlProviderARNs = list(
-    "string"
-  ),
-  IdentityPoolTags = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Creates a new identity pool. The identity pool is a store of user
-identity information that is specific to your AWS account. The keys for
-\code{SupportedLoginProviders} are as follows:
-\itemize{
-\item Facebook: \code{graph.facebook.com}
-\item Google: \code{accounts.google.com}
-\item Amazon: \code{www.amazon.com}
-\item Twitter: \code{api.twitter.com}
-\item Digits: \code{www.digits.com}
-}
+Creates a new identity pool. The identity pool is a store of user identity information that is specific to your AWS account. The keys for \code{SupportedLoginProviders} are as follows:
 
-You must use AWS Developer credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/create_identity_pool.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_identity_pool(
-  IdentityPoolName = "string",
-  AllowUnauthenticatedIdentities = TRUE|FALSE,
-  AllowClassicFlow = TRUE|FALSE,
-  SupportedLoginProviders = list(
-    "string"
-  ),
-  DeveloperProviderName = "string",
-  OpenIdConnectProviderARNs = list(
-    "string"
-  ),
-  CognitoIdentityProviders = list(
-    list(
-      ProviderName = "string",
-      ClientId = "string",
-      ServerSideTokenCheck = TRUE|FALSE
-    )
-  ),
-  SamlProviderARNs = list(
-    "string"
-  ),
-  IdentityPoolTags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

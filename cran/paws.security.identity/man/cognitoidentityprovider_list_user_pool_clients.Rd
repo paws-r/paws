@@ -4,8 +4,11 @@
 \alias{cognitoidentityprovider_list_user_pool_clients}
 \title{Lists the clients that have been created for the specified user pool}
 \usage{
-cognitoidentityprovider_list_user_pool_clients(UserPoolId, MaxResults,
-  NextToken)
+cognitoidentityprovider_list_user_pool_clients(
+  UserPoolId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to list user pool
@@ -18,29 +21,9 @@ listing the user pool clients.}
 operation, which can be used to return the next set of items in the
 list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserPoolClients = list(
-    list(
-      ClientId = "string",
-      UserPoolId = "string",
-      ClientName = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the clients that have been created for the specified user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$list_user_pool_clients(
-  UserPoolId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_user_pool_clients.html} for full documentation.
+}
 \keyword{internal}

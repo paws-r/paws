@@ -4,7 +4,12 @@
 \alias{codebuild_list_build_batches}
 \title{Retrieves the identifiers of your build batches in the current region}
 \usage{
-codebuild_list_build_batches(filter, maxResults, sortOrder, nextToken)
+codebuild_list_build_batches(
+  filter = NULL,
+  maxResults = NULL,
+  sortOrder = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{filter}{A \code{BuildBatchFilter} object that specifies the filters for the search.}
@@ -24,28 +29,9 @@ by identifier.
 next item to return. To return the beginning of the list, exclude this
 parameter.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ids = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Retrieves the identifiers of your build batches in the current region.
-}
-\section{Request syntax}{
-\preformatted{svc$list_build_batches(
-  filter = list(
-    status = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED"
-  ),
-  maxResults = 123,
-  sortOrder = "ASCENDING"|"DESCENDING",
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/list_build_batches.html} for full documentation.
+}
 \keyword{internal}

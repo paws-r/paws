@@ -4,31 +4,14 @@
 \alias{ssm_get_default_patch_baseline}
 \title{Retrieves the default patch baseline}
 \usage{
-ssm_get_default_patch_baseline(OperatingSystem)
+ssm_get_default_patch_baseline(OperatingSystem = NULL)
 }
 \arguments{
 \item{OperatingSystem}{Returns the default patch baseline for the specified operating system.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BaselineId = "string",
-  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
-)
-}
-}
 \description{
-Retrieves the default patch baseline. Note that Systems Manager supports
-creating multiple default patch baselines. For example, you can create a
-default patch baseline for each operating system.
+Retrieves the default patch baseline. Amazon Web Services Systems Manager supports creating multiple default patch baselines. For example, you can create a default patch baseline for each operating system.
 
-If you do not specify an operating system value, the default patch
-baseline for Windows is returned.
+See \url{https://paws-r.github.io/docs/ssm/get_default_patch_baseline.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_default_patch_baseline(
-  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS"
-)
-}
-}
-
 \keyword{internal}

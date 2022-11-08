@@ -5,7 +5,7 @@
 \title{Starts the assessment run specified by the ARN of the assessment
 template}
 \usage{
-inspector_start_assessment_run(assessmentTemplateArn, assessmentRunName)
+inspector_start_assessment_run(assessmentTemplateArn, assessmentRunName = NULL)
 }
 \arguments{
 \item{assessmentTemplateArn}{[required] The ARN of the assessment template of the assessment run that you want
@@ -15,35 +15,9 @@ to start.}
 for the assessment template whose ARN is used to start the assessment
 run.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  assessmentRunArn = "string"
-)
-}
-}
 \description{
-Starts the assessment run specified by the ARN of the assessment
-template. For this API to function properly, you must not exceed the
-limit of running up to 500 concurrent agents per AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$start_assessment_run(
-  assessmentTemplateArn = "string",
-  assessmentRunName = "string"
-)
-}
-}
+Starts the assessment run specified by the ARN of the assessment template. For this API to function properly, you must not exceed the limit of running up to 500 concurrent agents per AWS account.
 
-\examples{
-\dontrun{
-# Starts the assessment run specified by the ARN of the assessment
-# template. For this API to function properly, you must not exceed the
-# limit of running up to 500 concurrent agents per AWS account.
-svc$start_assessment_run(
-  assessmentRunName = "examplerun",
-  assessmentTemplateArn = "arn:aws:inspector:us-west-2:123456789012:target/..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/start_assessment_run.html} for full documentation.
 }
 \keyword{internal}

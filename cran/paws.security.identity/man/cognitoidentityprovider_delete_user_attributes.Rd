@@ -4,32 +4,21 @@
 \alias{cognitoidentityprovider_delete_user_attributes}
 \title{Deletes the attributes for a user}
 \usage{
-cognitoidentityprovider_delete_user_attributes(UserAttributeNames,
-  AccessToken)
+cognitoidentityprovider_delete_user_attributes(UserAttributeNames, AccessToken)
 }
 \arguments{
-\item{UserAttributeNames}{[required] An array of strings representing the user attribute names you wish to
+\item{UserAttributeNames}{[required] An array of strings representing the user attribute names you want to
 delete.
 
-For custom attributes, you must prepend the \verb{custom:} prefix to the
-attribute name.}
+For custom attributes, you must prependattach the \verb{custom:} prefix to
+the front of the attribute name.}
 
-\item{AccessToken}{[required] The access token used in the request to delete user attributes.}
-}
-\value{
-An empty list.
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose
+attributes you want to delete.}
 }
 \description{
 Deletes the attributes for a user.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user_attributes(
-  UserAttributeNames = list(
-    "string"
-  ),
-  AccessToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_attributes.html} for full documentation.
+}
 \keyword{internal}

@@ -2,82 +2,65 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_get_resource_shares}
 \alias{ram_get_resource_shares}
-\title{Gets the resource shares that you own or the resource shares that are
+\title{Retrieves details about the resource shares that you own or that are
 shared with you}
 \usage{
-ram_get_resource_shares(resourceShareArns, resourceShareStatus,
-  resourceOwner, name, tagFilters, nextToken, maxResults)
+ram_get_resource_shares(
+  resourceShareArns = NULL,
+  resourceShareStatus = NULL,
+  resourceOwner,
+  name = NULL,
+  tagFilters = NULL,
+  nextToken = NULL,
+  maxResults = NULL,
+  permissionArn = NULL
+)
 }
 \arguments{
-\item{resourceShareArns}{The Amazon Resource Names (ARN) of the resource shares.}
+\item{resourceShareArns}{Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+of individual resource shares that you want information about.}
 
-\item{resourceShareStatus}{The status of the resource share.}
+\item{resourceShareStatus}{Specifies that you want to retrieve details of only those resource
+shares that have this status.}
 
-\item{resourceOwner}{[required] The type of owner.}
+\item{resourceOwner}{[required] Specifies that you want to retrieve details of only those resource
+shares that match the following:
+\itemize{
+\item \strong{\code{SELF}} – resource shares that your account shares with other
+accounts
+\item \strong{\code{OTHER-ACCOUNTS}} – resource shares that other accounts share
+with your account
+}}
 
-\item{name}{The name of the resource share.}
+\item{name}{Specifies the name of an individual resource share that you want to
+retrieve details about.}
 
-\item{tagFilters}{One or more tag filters.}
+\item{tagFilters}{Specifies that you want to retrieve details of only those resource
+shares that match the specified tag keys and values.}
 
-\item{nextToken}{The token for the next page of results.}
+\item{nextToken}{Specifies that you want to receive the next page of results. Valid only
+if you received a \code{NextToken} response in the previous request. If you
+did, it indicates that more output is available. Set this parameter to
+the value provided by the previous call's \code{NextToken} response to
+request the next page of results.}
 
-\item{maxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned \code{nextToken}
-value.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  resourceShares = list(
-    list(
-      resourceShareArn = "string",
-      name = "string",
-      owningAccountId = "string",
-      allowExternalPrincipals = TRUE|FALSE,
-      status = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED",
-      statusMessage = "string",
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      ),
-      creationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD"
-    )
-  ),
-  nextToken = "string"
-)
-}
+\item{maxResults}{Specifies the total number of results that you want included on each
+page of the response. If you do not include this parameter, it defaults
+to a value that is specific to the operation. If additional items exist
+beyond the number you specify, the \code{NextToken} response element is
+returned with a value (not null). Include the specified value as the
+\code{NextToken} request parameter in the next call to the operation to get
+the next part of the results. Note that the service might return fewer
+results than the maximum even when there are more results available. You
+should check \code{NextToken} after every operation to ensure that you
+receive all of the results.}
+
+\item{permissionArn}{Specifies that you want to retrieve details of only those resource
+shares that use the RAM permission with this \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}.}
 }
 \description{
-Gets the resource shares that you own or the resource shares that are
-shared with you.
-}
-\section{Request syntax}{
-\preformatted{svc$get_resource_shares(
-  resourceShareArns = list(
-    "string"
-  ),
-  resourceShareStatus = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED",
-  resourceOwner = "SELF"|"OTHER-ACCOUNTS",
-  name = "string",
-  tagFilters = list(
-    list(
-      tagKey = "string",
-      tagValues = list(
-        "string"
-      )
-    )
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Retrieves details about the resource shares that you own or that are shared with you.
 
+See \url{https://paws-r.github.io/docs/ram/get_resource_shares.html} for full documentation.
+}
 \keyword{internal}

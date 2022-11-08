@@ -11,25 +11,9 @@ directoryservice_add_tags_to_resource(ResourceId, Tags)
 
 \item{Tags}{[required] The tags to be assigned to the directory.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds or overwrites one or more tags for the specified directory. Each
-directory can have a maximum of 50 tags. Each tag consists of a key and
-optional value. Tag keys must be unique to each resource.
-}
-\section{Request syntax}{
-\preformatted{svc$add_tags_to_resource(
-  ResourceId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Adds or overwrites one or more tags for the specified directory. Each directory can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique to each resource.
 
+See \url{https://paws-r.github.io/docs/directoryservice/add_tags_to_resource.html} for full documentation.
+}
 \keyword{internal}

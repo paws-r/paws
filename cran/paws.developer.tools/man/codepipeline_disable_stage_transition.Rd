@@ -5,8 +5,12 @@
 \title{Prevents artifacts in a pipeline from transitioning to the next stage in
 the pipeline}
 \usage{
-codepipeline_disable_stage_transition(pipelineName, stageName,
-  transitionType, reason)
+codepipeline_disable_stage_transition(
+  pipelineName,
+  stageName,
+  transitionType,
+  reason
+)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline in which you want to disable the flow of
@@ -24,21 +28,9 @@ processed by the actions in that stage (outbound).}
 for manual approval or manual tests. This message is displayed in the
 pipeline console UI.}
 }
-\value{
-An empty list.
-}
 \description{
-Prevents artifacts in a pipeline from transitioning to the next stage in
-the pipeline.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_stage_transition(
-  pipelineName = "string",
-  stageName = "string",
-  transitionType = "Inbound"|"Outbound",
-  reason = "string"
-)
-}
-}
+Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline.
 
+See \url{https://paws-r.github.io/docs/codepipeline/disable_stage_transition.html} for full documentation.
+}
 \keyword{internal}

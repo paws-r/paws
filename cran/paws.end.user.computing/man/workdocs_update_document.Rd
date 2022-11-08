@@ -4,8 +4,13 @@
 \alias{workdocs_update_document}
 \title{Updates the specified attributes of a document}
 \usage{
-workdocs_update_document(AuthenticationToken, DocumentId, Name,
-  ParentFolderId, ResourceState)
+workdocs_update_document(
+  AuthenticationToken = NULL,
+  DocumentId,
+  Name = NULL,
+  ParentFolderId = NULL,
+  ResourceState = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -20,22 +25,9 @@ administrator credentials to access the API.}
 \item{ResourceState}{The resource state of the document. Only ACTIVE and RECYCLED are
 supported.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the specified attributes of a document. The user must have
-access to both the document and its parent folder, if applicable.
-}
-\section{Request syntax}{
-\preformatted{svc$update_document(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  Name = "string",
-  ParentFolderId = "string",
-  ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED"
-)
-}
-}
+Updates the specified attributes of a document. The user must have access to both the document and its parent folder, if applicable.
 
+See \url{https://paws-r.github.io/docs/workdocs/update_document.html} for full documentation.
+}
 \keyword{internal}

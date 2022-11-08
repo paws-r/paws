@@ -4,8 +4,11 @@
 \alias{clouddirectory_get_object_information}
 \title{Retrieves metadata about an object}
 \usage{
-clouddirectory_get_object_information(DirectoryArn, ObjectReference,
-  ConsistencyLevel)
+clouddirectory_get_object_information(
+  DirectoryArn,
+  ObjectReference,
+  ConsistencyLevel = NULL
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory being retrieved.}
@@ -14,30 +17,9 @@ clouddirectory_get_object_information(DirectoryArn, ObjectReference,
 
 \item{ConsistencyLevel}{The consistency level at which to retrieve the object information.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaFacets = list(
-    list(
-      SchemaArn = "string",
-      FacetName = "string"
-    )
-  ),
-  ObjectIdentifier = "string"
-)
-}
-}
 \description{
 Retrieves metadata about an object.
-}
-\section{Request syntax}{
-\preformatted{svc$get_object_information(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  ),
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/get_object_information.html} for full documentation.
+}
 \keyword{internal}

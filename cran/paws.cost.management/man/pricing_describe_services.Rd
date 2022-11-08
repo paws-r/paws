@@ -5,8 +5,12 @@
 \title{Returns the metadata for one service or a list of the metadata for all
 services}
 \usage{
-pricing_describe_services(ServiceCode, FormatVersion, NextToken,
-  MaxResults)
+pricing_describe_services(
+  ServiceCode = NULL,
+  FormatVersion = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{ServiceCode}{The code for the service whose information you want to retrieve, such as
@@ -23,49 +27,9 @@ want to retrieve.}
 
 \item{MaxResults}{The maximum number of results that you want returned in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Services = list(
-    list(
-      ServiceCode = "string",
-      AttributeNames = list(
-        "string"
-      )
-    )
-  ),
-  FormatVersion = "string",
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns the metadata for one service or a list of the metadata for all
-services. Use this without a service code to get the service codes for
-all services. Use it with a service code, such as \code{AmazonEC2}, to get
-information specific to that service, such as the attribute names
-available for that service. For example, some of the attribute names
-available for EC2 are \code{volumeType}, \code{maxIopsVolume}, \code{operation},
-\code{locationType}, and \code{instanceCapacity10xlarge}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_services(
-  ServiceCode = "string",
-  FormatVersion = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns the metadata for one service or a list of the metadata for all services. Use this without a service code to get the service codes for all services. Use it with a service code, such as \code{AmazonEC2}, to get information specific to that service, such as the attribute names available for that service. For example, some of the attribute names available for EC2 are \code{volumeType}, \code{maxIopsVolume}, \code{operation}, \code{locationType}, and \code{instanceCapacity10xlarge}.
 
-\examples{
-\dontrun{
-#
-svc$describe_services(
-  FormatVersion = "aws_v1",
-  MaxResults = 1L,
-  ServiceCode = "AmazonEC2"
-)
-}
-
+See \url{https://paws-r.github.io/docs/pricing/describe_services.html} for full documentation.
 }
 \keyword{internal}

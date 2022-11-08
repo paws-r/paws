@@ -4,17 +4,45 @@
 \alias{rds_restore_db_instance_to_point_in_time}
 \title{Restores a DB instance to an arbitrary point in time}
 \usage{
-rds_restore_db_instance_to_point_in_time(SourceDBInstanceIdentifier,
-  TargetDBInstanceIdentifier, RestoreTime, UseLatestRestorableTime,
-  DBInstanceClass, Port, AvailabilityZone, DBSubnetGroupName, MultiAZ,
-  PubliclyAccessible, AutoMinorVersionUpgrade, LicenseModel, DBName,
-  Engine, Iops, OptionGroupName, CopyTagsToSnapshot, Tags, StorageType,
-  TdeCredentialArn, TdeCredentialPassword, VpcSecurityGroupIds, Domain,
-  DomainIAMRoleName, EnableIAMDatabaseAuthentication,
-  EnableCloudwatchLogsExports, ProcessorFeatures,
-  UseDefaultProcessorFeatures, DBParameterGroupName, DeletionProtection,
-  SourceDbiResourceId, MaxAllocatedStorage,
-  SourceDBInstanceAutomatedBackupsArn, EnableCustomerOwnedIp)
+rds_restore_db_instance_to_point_in_time(
+  SourceDBInstanceIdentifier = NULL,
+  TargetDBInstanceIdentifier,
+  RestoreTime = NULL,
+  UseLatestRestorableTime = NULL,
+  DBInstanceClass = NULL,
+  Port = NULL,
+  AvailabilityZone = NULL,
+  DBSubnetGroupName = NULL,
+  MultiAZ = NULL,
+  PubliclyAccessible = NULL,
+  AutoMinorVersionUpgrade = NULL,
+  LicenseModel = NULL,
+  DBName = NULL,
+  Engine = NULL,
+  Iops = NULL,
+  OptionGroupName = NULL,
+  CopyTagsToSnapshot = NULL,
+  Tags = NULL,
+  StorageType = NULL,
+  TdeCredentialArn = NULL,
+  TdeCredentialPassword = NULL,
+  VpcSecurityGroupIds = NULL,
+  Domain = NULL,
+  DomainIAMRoleName = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  EnableCloudwatchLogsExports = NULL,
+  ProcessorFeatures = NULL,
+  UseDefaultProcessorFeatures = NULL,
+  DBParameterGroupName = NULL,
+  DeletionProtection = NULL,
+  SourceDbiResourceId = NULL,
+  MaxAllocatedStorage = NULL,
+  SourceDBInstanceAutomatedBackupsArn = NULL,
+  EnableCustomerOwnedIp = NULL,
+  CustomIamInstanceProfile = NULL,
+  BackupTarget = NULL,
+  NetworkType = NULL
+)
 }
 \arguments{
 \item{SourceDBInstanceIdentifier}{The identifier of the source DB instance from which to restore.
@@ -55,10 +83,10 @@ Constraints: Can't be specified if the \code{RestoreTime} parameter is
 provided.}
 
 \item{DBInstanceClass}{The compute and memory capacity of the Amazon RDS DB instance, for
-example, \code{db.m4.large}. Not all DB instance classes are available in all
-AWS Regions, or for all database engines. For the full list of DB
-instance classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
-in the \emph{Amazon RDS User Guide.}
+example db.m4.large. Not all DB instance classes are available in all
+Amazon Web Services Regions, or for all database engines. For the full
+list of DB instance classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
+in the \emph{Amazon RDS User Guide}.
 
 Default: The same DBInstanceClass as the original DB instance.}
 
@@ -82,21 +110,24 @@ Example: \verb{us-east-1a}}
 Constraints: If supplied, must match the name of an existing
 DBSubnetGroup.
 
-Example: \code{mySubnetgroup}}
+Example: \code{mydbsubnetgroup}}
 
 \item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
+
+This setting doesn't apply to RDS Custom.
 
 Constraint: You can't specify the \code{AvailabilityZone} parameter if the DB
 instance is a Multi-AZ deployment.}
 
 \item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
 
-When the DB instance is publicly accessible, its DNS endpoint resolves
-to the private IP address from within the DB instance's VPC, and to the
-public IP address from outside of the DB instance's VPC. Access to the
-DB instance is ultimately controlled by the security group it uses, and
-that public access is not permitted if the security group assigned to
-the DB instance doesn't permit it.
+When the DB cluster is publicly accessible, its Domain Name System (DNS)
+endpoint resolves to the private IP address from within the DB cluster's
+virtual private cloud (VPC). It resolves to the public IP address from
+outside of the DB cluster's VPC. Access to the DB cluster is ultimately
+controlled by the security group it uses. That public access isn't
+permitted if the security group assigned to the DB cluster doesn't
+permit it.
 
 When the DB instance isn't publicly accessible, it is an internal DB
 instance with a DNS name that resolves to a private IP address.
@@ -105,9 +136,13 @@ For more information, see
 \code{\link[=rds_create_db_instance]{create_db_instance}}.}
 
 \item{AutoMinorVersionUpgrade}{A value that indicates whether minor version upgrades are applied
-automatically to the DB instance during the maintenance window.}
+automatically to the DB instance during the maintenance window.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{LicenseModel}{License model information for the restored DB instance.
+
+This setting doesn't apply to RDS Custom.
 
 Default: Same as source.
 
@@ -116,9 +151,12 @@ Valid values: \code{license-included} | \code{bring-your-own-license} |
 
 \item{DBName}{The database name for the restored DB instance.
 
-This parameter isn't used for the MySQL or MariaDB engines.}
+This parameter isn't supported for the MySQL or MariaDB engines. It also
+doesn't apply to RDS Custom.}
 
 \item{Engine}{The database engine to use for the new instance.
+
+This setting doesn't apply to RDS Custom.
 
 Default: The same as source
 
@@ -129,9 +167,9 @@ Valid Values:
 \item \code{mariadb}
 \item \code{mysql}
 \item \code{oracle-ee}
+\item \code{oracle-ee-cdb}
 \item \code{oracle-se2}
-\item \code{oracle-se1}
-\item \code{oracle-se}
+\item \code{oracle-se2-cdb}
 \item \code{postgres}
 \item \code{sqlserver-ee}
 \item \code{sqlserver-se}
@@ -153,7 +191,9 @@ supported.}
 
 Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, can't be removed from an option group, and that option group can't
-be removed from a DB instance once it is associated with a DB instance}
+be removed from a DB instance after it is associated with a DB instance
+
+This setting doesn't apply to RDS Custom.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
 instance to snapshots of the DB instance. By default, tags are not
@@ -171,10 +211,14 @@ parameter.
 Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}}
 
 \item{TdeCredentialArn}{The ARN from the key store with which to associate the instance for TDE
-encryption.}
+encryption.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{TdeCredentialPassword}{The password for the given ARN from the key store in order to access the
-device.}
+device.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with this DB instance.
 
@@ -182,19 +226,25 @@ Default: The default EC2 VPC security group for the DB subnet group's
 VPC.}
 
 \item{Domain}{Specify the Active Directory directory ID to restore the DB instance in.
-The domain must be created prior to this operation. Currently, only
-MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be
-created in an Active Directory Domain.
+Create the domain before running this command. Currently, you can create
+only the MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
+instances in an Active Directory Domain.
+
+This setting doesn't apply to RDS Custom.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication}
 in the \emph{Amazon RDS User Guide}.}
 
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
-Directory Service.}
+Directory Service.
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+This setting doesn't apply to RDS Custom.}
+
+\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts. By
+default, mapping isn't enabled.
+
+This setting doesn't apply to RDS Custom.
 
 For more information about IAM database authentication, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
 in the \emph{Amazon RDS User Guide.}}
@@ -202,18 +252,26 @@ in the \emph{Amazon RDS User Guide.}}
 \item{EnableCloudwatchLogsExports}{The list of logs that the restored DB instance is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
 used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
-in the \emph{Amazon RDS User Guide}.}
+in the \emph{Amazon RDS User Guide}.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
-instance class of the DB instance.}
+instance class of the DB instance.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{UseDefaultProcessorFeatures}{A value that indicates whether the DB instance class of the DB instance
-uses its default processor features.}
+uses its default processor features.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{DBParameterGroupName}{The name of the DB parameter group to associate with this DB instance.
 
 If you do not specify a value for \code{DBParameterGroupName}, then the
 default \code{DBParameterGroup} for the specified DB engine is used.
+
+This setting doesn't apply to RDS Custom.
 
 Constraints:
 \itemize{
@@ -225,17 +283,25 @@ Constraints:
 
 \item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
 enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection is disabled. For more
+enabled. By default, deletion protection isn't enabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
 \item{SourceDbiResourceId}{The resource ID of the source DB instance from which to restore.}
 
-\item{MaxAllocatedStorage}{The upper limit to which Amazon RDS can automatically scale the storage
-of the DB instance.}
+\item{MaxAllocatedStorage}{The upper limit in gibibytes (GiB) to which Amazon RDS can automatically
+scale the storage of the DB instance.
+
+For more information about this setting, including limitations that
+apply to it, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling}{Managing capacity automatically with Amazon RDS storage autoscaling}
+in the \emph{Amazon RDS User Guide}.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{SourceDBInstanceAutomatedBackupsArn}{The Amazon Resource Name (ARN) of the replicated automated backups from
 which to restore, for example,
-\code{arn:aws:rds:useast-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.}
+\code{arn:aws:rds:useast-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.
+
+This setting doesn't apply to RDS Custom.}
 
 \item{EnableCustomerOwnedIp}{A value that indicates whether to enable a customer-owned IP address
 (CoIP) for an RDS on Outposts DB instance.
@@ -245,273 +311,57 @@ Outpost subnets through your on-premises network. For some use cases, a
 CoIP can provide lower latency for connections to the DB instance from
 outside of its virtual private cloud (VPC) on your local network.
 
-For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on AWS Outposts}
+This setting doesn't apply to RDS Custom.
+
+For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
 in the \emph{Amazon RDS User Guide}.
 
-For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing}{Customer-owned IP addresses}
-in the \emph{AWS Outposts User Guide}.}
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing}{Customer-owned IP addresses}
+in the \emph{Amazon Web Services Outposts User Guide}.}
+
+\item{CustomIamInstanceProfile}{The instance profile associated with the underlying Amazon EC2 instance
+of an RDS Custom DB instance. The instance profile must meet the
+following requirements:
+\itemize{
+\item The profile must exist in your account.
+\item The profile must have an IAM role that Amazon EC2 has permissions to
+assume.
+\item The instance profile name and the associated IAM role name must
+start with the prefix \code{AWSRDSCustom}.
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBInstance = list(
-    DBInstanceIdentifier = "string",
-    DBInstanceClass = "string",
-    Engine = "string",
-    DBInstanceStatus = "string",
-    MasterUsername = "string",
-    DBName = "string",
-    Endpoint = list(
-      Address = "string",
-      Port = 123,
-      HostedZoneId = "string"
-    ),
-    AllocatedStorage = 123,
-    InstanceCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PreferredBackupWindow = "string",
-    BackupRetentionPeriod = 123,
-    DBSecurityGroups = list(
-      list(
-        DBSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    DBParameterGroups = list(
-      list(
-        DBParameterGroupName = "string",
-        ParameterApplyStatus = "string"
-      )
-    ),
-    AvailabilityZone = "string",
-    DBSubnetGroup = list(
-      DBSubnetGroupName = "string",
-      DBSubnetGroupDescription = "string",
-      VpcId = "string",
-      SubnetGroupStatus = "string",
-      Subnets = list(
-        list(
-          SubnetIdentifier = "string",
-          SubnetAvailabilityZone = list(
-            Name = "string"
-          ),
-          SubnetOutpost = list(
-            Arn = "string"
-          ),
-          SubnetStatus = "string"
-        )
-      ),
-      DBSubnetGroupArn = "string"
-    ),
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      DBInstanceClass = "string",
-      AllocatedStorage = 123,
-      MasterUserPassword = "string",
-      Port = 123,
-      BackupRetentionPeriod = 123,
-      MultiAZ = TRUE|FALSE,
-      EngineVersion = "string",
-      LicenseModel = "string",
-      Iops = 123,
-      DBInstanceIdentifier = "string",
-      StorageType = "string",
-      CACertificateIdentifier = "string",
-      DBSubnetGroupName = "string",
-      PendingCloudwatchLogsExports = list(
-        LogTypesToEnable = list(
-          "string"
-        ),
-        LogTypesToDisable = list(
-          "string"
-        )
-      ),
-      ProcessorFeatures = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-    ),
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MultiAZ = TRUE|FALSE,
-    EngineVersion = "string",
-    AutoMinorVersionUpgrade = TRUE|FALSE,
-    ReadReplicaSourceDBInstanceIdentifier = "string",
-    ReadReplicaDBInstanceIdentifiers = list(
-      "string"
-    ),
-    ReadReplicaDBClusterIdentifiers = list(
-      "string"
-    ),
-    ReplicaMode = "open-read-only"|"mounted",
-    LicenseModel = "string",
-    Iops = 123,
-    OptionGroupMemberships = list(
-      list(
-        OptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    CharacterSetName = "string",
-    NcharCharacterSetName = "string",
-    SecondaryAvailabilityZone = "string",
-    PubliclyAccessible = TRUE|FALSE,
-    StatusInfos = list(
-      list(
-        StatusType = "string",
-        Normal = TRUE|FALSE,
-        Status = "string",
-        Message = "string"
-      )
-    ),
-    StorageType = "string",
-    TdeCredentialArn = "string",
-    DbInstancePort = 123,
-    DBClusterIdentifier = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbiResourceId = "string",
-    CACertificateIdentifier = "string",
-    DomainMemberships = list(
-      list(
-        Domain = "string",
-        Status = "string",
-        FQDN = "string",
-        IAMRoleName = "string"
-      )
-    ),
-    CopyTagsToSnapshot = TRUE|FALSE,
-    MonitoringInterval = 123,
-    EnhancedMonitoringResourceArn = "string",
-    MonitoringRoleArn = "string",
-    PromotionTier = 123,
-    DBInstanceArn = "string",
-    Timezone = "string",
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    PerformanceInsightsEnabled = TRUE|FALSE,
-    PerformanceInsightsKMSKeyId = "string",
-    PerformanceInsightsRetentionPeriod = 123,
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    ProcessorFeatures = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    DeletionProtection = TRUE|FALSE,
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        FeatureName = "string",
-        Status = "string"
-      )
-    ),
-    ListenerEndpoint = list(
-      Address = "string",
-      Port = 123,
-      HostedZoneId = "string"
-    ),
-    MaxAllocatedStorage = 123,
-    TagList = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    DBInstanceAutomatedBackupsReplications = list(
-      list(
-        DBInstanceAutomatedBackupsArn = "string"
-      )
-    ),
-    CustomerOwnedIpEnabled = TRUE|FALSE
-  )
-)
+
+For the list of permissions required for the IAM role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc}{Configure IAM and your VPC}
+in the \emph{Amazon RDS User Guide}.
+
+This setting is required for RDS Custom.}
+
+\item{BackupTarget}{Specifies where automated backups and manual snapshots are stored for
+the restored DB instance.
+
+Possible values are \code{outposts} (Amazon Web Services Outposts) and
+\code{region} (Amazon Web Services Region). The default is \code{region}.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
+in the \emph{Amazon RDS User Guide}.}
+
+\item{NetworkType}{The network type of the DB instance.
+
+Valid values:
+\itemize{
+\item \code{IPV4}
+\item \code{DUAL}
 }
+
+The network type is determined by the \code{DBSubnetGroup} specified for the
+DB instance. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
+in the \emph{Amazon RDS User Guide.}}
 }
 \description{
-Restores a DB instance to an arbitrary point in time. You can restore to
-any point in time before the time identified by the LatestRestorableTime
-property. You can restore to a point up to the number of days specified
-by the BackupRetentionPeriod property.
+Restores a DB instance to an arbitrary point in time. You can restore to any point in time before the time identified by the LatestRestorableTime property. You can restore to a point up to the number of days specified by the BackupRetentionPeriod property.
 
-The target database is created with most of the original configuration,
-but in a system-selected Availability Zone, with the default security
-group, the default subnet group, and the default DB parameter group. By
-default, the new DB instance is created as a single-AZ deployment except
-when the instance is a SQL Server instance that has an option group that
-is associated with mirroring; in this case, the instance becomes a
-mirrored deployment and not a single-AZ deployment.
-
-This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-Aurora, use
-\code{\link[=rds_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time}}.
+See \url{https://paws-r.github.io/docs/rds/restore_db_instance_to_point_in_time.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$restore_db_instance_to_point_in_time(
-  SourceDBInstanceIdentifier = "string",
-  TargetDBInstanceIdentifier = "string",
-  RestoreTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  UseLatestRestorableTime = TRUE|FALSE,
-  DBInstanceClass = "string",
-  Port = 123,
-  AvailabilityZone = "string",
-  DBSubnetGroupName = "string",
-  MultiAZ = TRUE|FALSE,
-  PubliclyAccessible = TRUE|FALSE,
-  AutoMinorVersionUpgrade = TRUE|FALSE,
-  LicenseModel = "string",
-  DBName = "string",
-  Engine = "string",
-  Iops = 123,
-  OptionGroupName = "string",
-  CopyTagsToSnapshot = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  StorageType = "string",
-  TdeCredentialArn = "string",
-  TdeCredentialPassword = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Domain = "string",
-  DomainIAMRoleName = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  EnableCloudwatchLogsExports = list(
-    "string"
-  ),
-  ProcessorFeatures = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  UseDefaultProcessorFeatures = TRUE|FALSE,
-  DBParameterGroupName = "string",
-  DeletionProtection = TRUE|FALSE,
-  SourceDbiResourceId = "string",
-  MaxAllocatedStorage = 123,
-  SourceDBInstanceAutomatedBackupsArn = "string",
-  EnableCustomerOwnedIp = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

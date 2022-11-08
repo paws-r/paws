@@ -10,21 +10,9 @@ clouddirectory_get_applied_schema_version(SchemaArn)
 \arguments{
 \item{SchemaArn}{[required] The ARN of the applied schema.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AppliedSchemaArn = "string"
-)
-}
-}
 \description{
-Returns current applied schema version ARN, including the minor version
-in use.
-}
-\section{Request syntax}{
-\preformatted{svc$get_applied_schema_version(
-  SchemaArn = "string"
-)
-}
-}
+Returns current applied schema version ARN, including the minor version in use.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/get_applied_schema_version.html} for full documentation.
+}
 \keyword{internal}

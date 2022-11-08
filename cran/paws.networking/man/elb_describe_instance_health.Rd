@@ -5,54 +5,16 @@
 \title{Describes the state of the specified instances with respect to the
 specified load balancer}
 \usage{
-elb_describe_instance_health(LoadBalancerName, Instances)
+elb_describe_instance_health(LoadBalancerName, Instances = NULL)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
 
 \item{Instances}{The IDs of the instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceStates = list(
-    list(
-      InstanceId = "string",
-      State = "string",
-      ReasonCode = "string",
-      Description = "string"
-    )
-  )
-)
-}
-}
 \description{
-Describes the state of the specified instances with respect to the
-specified load balancer. If no instances are specified, the call
-describes the state of all instances that are currently registered with
-the load balancer. If instances are specified, their state is returned
-even if they are no longer registered with the load balancer. The state
-of terminated instances is not returned.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_instance_health(
-  LoadBalancerName = "string",
-  Instances = list(
-    list(
-      InstanceId = "string"
-    )
-  )
-)
-}
-}
+Describes the state of the specified instances with respect to the specified load balancer. If no instances are specified, the call describes the state of all instances that are currently registered with the load balancer. If instances are specified, their state is returned even if they are no longer registered with the load balancer. The state of terminated instances is not returned.
 
-\examples{
-\dontrun{
-# This example describes the health of the instances for the specified
-# load balancer.
-svc$describe_instance_health(
-  LoadBalancerName = "my-load-balancer"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/describe_instance_health.html} for full documentation.
 }
 \keyword{internal}

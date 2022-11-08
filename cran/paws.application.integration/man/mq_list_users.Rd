@@ -4,41 +4,20 @@
 \alias{mq_list_users}
 \title{Returns a list of all ActiveMQ users}
 \usage{
-mq_list_users(BrokerId, MaxResults, NextToken)
+mq_list_users(BrokerId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{BrokerId}{[required] The unique ID that Amazon MQ generates for the broker.}
 
-\item{MaxResults}{The maximum number of ActiveMQ users that can be returned per page (20
-by default). This value must be an integer from 5 to 100.}
+\item{MaxResults}{The maximum number of brokers that Amazon MQ can return per page (20 by
+default). This value must be an integer from 5 to 100.}
 
 \item{NextToken}{The token that specifies the next page of results Amazon MQ should
 return. To request the first page, leave nextToken empty.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BrokerId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  Users = list(
-    list(
-      PendingChange = "CREATE"|"UPDATE"|"DELETE",
-      Username = "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns a list of all ActiveMQ users.
-}
-\section{Request syntax}{
-\preformatted{svc$list_users(
-  BrokerId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/list_users.html} for full documentation.
+}
 \keyword{internal}

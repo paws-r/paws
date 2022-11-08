@@ -21,36 +21,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified inline policy that is embedded in the specified
-IAM role.
+Deletes the specified inline policy that is embedded in the specified IAM role.
 
-A role can also have managed policies attached to it. To detach a
-managed policy from a role, use
-\code{\link[=iam_detach_role_policy]{detach_role_policy}}. For more information
-about policies, refer to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_role_policy(
-  RoleName = "string",
-  PolicyName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command removes the policy named ExamplePolicy from the
-# role named Test-Role.
-svc$delete_role_policy(
-  PolicyName = "ExamplePolicy",
-  RoleName = "Test-Role"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/delete_role_policy.html} for full documentation.
 }
 \keyword{internal}

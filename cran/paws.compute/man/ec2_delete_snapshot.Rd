@@ -4,7 +4,7 @@
 \alias{ec2_delete_snapshot}
 \title{Deletes the specified snapshot}
 \usage{
-ec2_delete_snapshot(SnapshotId, DryRun)
+ec2_delete_snapshot(SnapshotId, DryRun = NULL)
 }
 \arguments{
 \item{SnapshotId}{[required] The ID of the EBS snapshot.}
@@ -14,44 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified snapshot.
 
-When you make periodic snapshots of a volume, the snapshots are
-incremental, and only the blocks on the device that have changed since
-your last snapshot are saved in the new snapshot. When you delete a
-snapshot, only the data not needed for any other snapshot is removed. So
-regardless of which prior snapshots have been deleted, all active
-snapshots will have access to all the information needed to restore the
-volume.
-
-You cannot delete a snapshot of the root device of an EBS volume used by
-a registered AMI. You must first de-register the AMI before you can
-delete the snapshot.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html}{Deleting an Amazon EBS snapshot}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_snapshot(
-  SnapshotId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes a snapshot with the snapshot ID of
-# `snap-1234567890abcdef0`. If the command succeeds, no output is
-# returned.
-svc$delete_snapshot(
-  SnapshotId = "snap-1234567890abcdef0"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_snapshot.html} for full documentation.
 }
 \keyword{internal}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloud9_operations.R
 \name{cloud9_delete_environment_membership}
 \alias{cloud9_delete_environment_membership}
-\title{Deletes an environment member from an AWS Cloud9 development environment}
+\title{Deletes an environment member from an Cloud9 development environment}
 \usage{
 cloud9_delete_environment_membership(environmentId, userArn)
 }
@@ -12,29 +12,9 @@ cloud9_delete_environment_membership(environmentId, userArn)
 \item{userArn}{[required] The Amazon Resource Name (ARN) of the environment member to delete from
 the environment.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes an environment member from an AWS Cloud9 development
-environment.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_environment_membership(
-  environmentId = "string",
-  userArn = "string"
-)
-}
-}
+Deletes an environment member from an Cloud9 development environment.
 
-\examples{
-\dontrun{
-# 
-svc$delete_environment_membership(
-  environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
-  userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"
-)
-}
-
+See \url{https://paws-r.github.io/docs/cloud9/delete_environment_membership.html} for full documentation.
 }
 \keyword{internal}

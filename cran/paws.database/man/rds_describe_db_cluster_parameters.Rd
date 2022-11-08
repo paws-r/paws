@@ -5,8 +5,13 @@
 \title{Returns the detailed parameter list for a particular DB cluster
 parameter group}
 \usage{
-rds_describe_db_cluster_parameters(DBClusterParameterGroupName, Source,
-  Filters, MaxRecords, Marker)
+rds_describe_db_cluster_parameters(
+  DBClusterParameterGroupName,
+  Source = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBClusterParameterGroupName}{[required] The name of a specific DB cluster parameter group to return parameter
@@ -37,54 +42,9 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Parameters = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string",
-      Description = "string",
-      Source = "string",
-      ApplyType = "string",
-      DataType = "string",
-      AllowedValues = "string",
-      IsModifiable = TRUE|FALSE,
-      MinimumEngineVersion = "string",
-      ApplyMethod = "immediate"|"pending-reboot",
-      SupportedEngineModes = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Returns the detailed parameter list for a particular DB cluster
-parameter group.
+Returns the detailed parameter list for a particular DB cluster parameter group.
 
-For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
-in the \emph{Amazon Aurora User Guide.}
-
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/describe_db_cluster_parameters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_db_cluster_parameters(
-  DBClusterParameterGroupName = "string",
-  Source = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

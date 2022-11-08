@@ -5,8 +5,12 @@
 \title{Describes reservations that are associated with Dedicated Hosts in your
 account}
 \usage{
-ec2_describe_host_reservations(Filter, HostReservationIdSet, MaxResults,
-  NextToken)
+ec2_describe_host_reservations(
+  Filter = NULL,
+  HostReservationIdSet = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Filter}{The filters.
@@ -16,11 +20,11 @@ ec2_describe_host_reservations(Filter, HostReservationIdSet, MaxResults,
 \code{PartialUpfront} | \code{AllUpfront}).
 \item \code{state} - The state of the reservation (\code{payment-pending} |
 \code{payment-failed} | \code{active} | \code{retired}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \verb{tag:<key>} - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -35,62 +39,9 @@ the returned \code{nextToken} value. This value can be between 5 and 500. If
 
 \item{NextToken}{The token to use to retrieve the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HostReservationSet = list(
-    list(
-      Count = 123,
-      CurrencyCode = "USD",
-      Duration = 123,
-      End = as.POSIXct(
-        "2015-01-01"
-      ),
-      HostIdSet = list(
-        "string"
-      ),
-      HostReservationId = "string",
-      HourlyPrice = "string",
-      InstanceFamily = "string",
-      OfferingId = "string",
-      PaymentOption = "AllUpfront"|"PartialUpfront"|"NoUpfront",
-      Start = as.POSIXct(
-        "2015-01-01"
-      ),
-      State = "payment-pending"|"payment-failed"|"active"|"retired",
-      UpfrontPrice = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes reservations that are associated with Dedicated Hosts in your
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_host_reservations(
-  Filter = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  HostReservationIdSet = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Describes reservations that are associated with Dedicated Hosts in your account.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_host_reservations.html} for full documentation.
+}
 \keyword{internal}

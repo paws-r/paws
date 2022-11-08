@@ -4,8 +4,13 @@
 \alias{cognitoidentityprovider_list_users}
 \title{Lists the users in the Amazon Cognito user pool}
 \usage{
-cognitoidentityprovider_list_users(UserPoolId, AttributesToGet, Limit,
-  PaginationToken, Filter)
+cognitoidentityprovider_list_users(
+  UserPoolId,
+  AttributesToGet = NULL,
+  Limit = NULL,
+  PaginationToken = NULL,
+  Filter = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool on which the search should be
@@ -54,57 +59,28 @@ You can only search for the following standard attributes:
 \item \code{sub}
 }
 
-Custom attributes are not searchable.
+Custom attributes aren't searchable.
+
+You can also list users with a client-side filter. The server-side
+filter matches no more than one attribute. For an advanced search, use a
+client-side filter with the \code{--query} parameter of the \code{list-users}
+action in the CLI. When you use a client-side filter, ListUsers returns
+a paginated list of zero or more users. You can receive multiple pages
+in a row with zero results. Repeat the query with each pagination token
+that is returned until you receive a null pagination token value, and
+then review the combined result.
+
+For more information about server-side and client-side filtering, see
+\href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html}{FilteringCLI output}
+in the \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html}{Command Line Interface User Guide}.
 
 For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-using-listusers-api}{Searching for Users Using the ListUsers API}
 and \href{https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manage-user-accounts.html#cognito-user-pools-searching-for-users-listusers-api-examples}{Examples of Using the ListUsers API}
 in the \emph{Amazon Cognito Developer Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Users = list(
-    list(
-      Username = "string",
-      Attributes = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      UserCreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UserLastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Enabled = TRUE|FALSE,
-      UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
-      MFAOptions = list(
-        list(
-          DeliveryMedium = "SMS"|"EMAIL",
-          AttributeName = "string"
-        )
-      )
-    )
-  ),
-  PaginationToken = "string"
-)
-}
-}
 \description{
 Lists the users in the Amazon Cognito user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$list_users(
-  UserPoolId = "string",
-  AttributesToGet = list(
-    "string"
-  ),
-  Limit = 123,
-  PaginationToken = "string",
-  Filter = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_users.html} for full documentation.
+}
 \keyword{internal}

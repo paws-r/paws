@@ -9,17 +9,9 @@ sagemaker_stop_auto_ml_job(AutoMLJobName)
 \arguments{
 \item{AutoMLJobName}{[required] The name of the object you are requesting.}
 }
-\value{
-An empty list.
-}
 \description{
 A method for forcing the termination of a running job.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_auto_ml_job(
-  AutoMLJobName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/stop_auto_ml_job.html} for full documentation.
+}
 \keyword{internal}

@@ -2,62 +2,24 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_associate_drt_role}
 \alias{shield_associate_drt_role}
-\title{Authorizes the DDoS Response Team (DRT), using the specified role, to
-access your AWS account to assist with DDoS attack mitigation during
-potential attacks}
+\title{Authorizes the Shield Response Team (SRT) using the specified role, to
+access your Amazon Web Services account to assist with DDoS attack
+mitigation during potential attacks}
 \usage{
 shield_associate_drt_role(RoleArn)
 }
 \arguments{
-\item{RoleArn}{[required] The Amazon Resource Name (ARN) of the role the DRT will use to access
-your AWS account.
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of the role the SRT will use to access
+your Amazon Web Services account.
 
 Prior to making the \code{\link[=shield_associate_drt_role]{associate_drt_role}}
 request, you must attach the AWSShieldDRTAccessPolicy managed policy to
 this role. For more information see Attaching and Detaching IAM
 Policies.}
 }
-\value{
-An empty list.
-}
 \description{
-Authorizes the DDoS Response Team (DRT), using the specified role, to
-access your AWS account to assist with DDoS attack mitigation during
-potential attacks. This enables the DRT to inspect your AWS WAF
-configuration and create or update AWS WAF rules and web ACLs.
+Authorizes the Shield Response Team (SRT) using the specified role, to access your Amazon Web Services account to assist with DDoS attack mitigation during potential attacks. This enables the SRT to inspect your WAF configuration and create or update WAF rules and web ACLs.
 
-You can associate only one \code{RoleArn} with your subscription. If you
-submit an \code{\link[=shield_associate_drt_role]{associate_drt_role}} request for
-an account that already has an associated role, the new \code{RoleArn} will
-replace the existing \code{RoleArn}.
-
-Prior to making the \code{\link[=shield_associate_drt_role]{associate_drt_role}}
-request, you must attach the AWSShieldDRTAccessPolicy managed policy to
-the role you will specify in the request. For more information see
-Attaching and Detaching IAM Policies. The role must also trust the
-service principal \code{ drt.shield.amazonaws.com}. For more information, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html}{IAM JSON Policy Elements: Principal}.
-
-The DRT will have access only to your AWS WAF and Shield resources. By
-submitting this request, you authorize the DRT to inspect your AWS WAF
-and Shield configuration and create and update AWS WAF rules and web
-ACLs on your behalf. The DRT takes these actions only if explicitly
-authorized by you.
-
-You must have the \code{iam:PassRole} permission to make an
-\code{\link[=shield_associate_drt_role]{associate_drt_role}} request. For more
-information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html}{Granting a User Permissions to Pass a Role to an AWS Service}.
-
-To use the services of the DRT and make an
-\code{\link[=shield_associate_drt_role]{associate_drt_role}} request, you must be
-subscribed to the \href{https://aws.amazon.com/premiumsupport/plans/business/}{Business Support plan} or the
-\href{https://aws.amazon.com/premiumsupport/plans/enterprise/}{Enterprise Support plan}.
+See \url{https://paws-r.github.io/docs/shield/associate_drt_role.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_drt_role(
-  RoleArn = "string"
-)
-}
-}
-
 \keyword{internal}

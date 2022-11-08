@@ -9,17 +9,9 @@ pinpointemail_delete_dedicated_ip_pool(PoolName)
 \arguments{
 \item{PoolName}{[required] The name of the dedicated IP pool that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Delete a dedicated IP pool.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_dedicated_ip_pool(
-  PoolName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpointemail/delete_dedicated_ip_pool.html} for full documentation.
+}
 \keyword{internal}

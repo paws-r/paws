@@ -7,22 +7,15 @@
 cognitoidentityprovider_delete_user_pool_domain(Domain, UserPoolId)
 }
 \arguments{
-\item{Domain}{[required] The domain string.}
+\item{Domain}{[required] The domain string. For custom domains, this is the fully-qualified
+domain name, such as \code{auth.example.com}. For Amazon Cognito prefix
+domains, this is the prefix alone, such as \code{auth}.}
 
 \item{UserPoolId}{[required] The user pool ID.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a domain for a user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user_pool_domain(
-  Domain = "string",
-  UserPoolId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_pool_domain.html} for full documentation.
+}
 \keyword{internal}

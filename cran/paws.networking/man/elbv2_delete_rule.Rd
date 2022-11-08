@@ -9,28 +9,9 @@ elbv2_delete_rule(RuleArn)
 \arguments{
 \item{RuleArn}{[required] The Amazon Resource Name (ARN) of the rule.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified rule.
 
-You can't delete the default rule.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_rule(
-  RuleArn = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes the specified rule.
-svc$delete_rule(
-  RuleArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listener-r..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/delete_rule.html} for full documentation.
 }
 \keyword{internal}

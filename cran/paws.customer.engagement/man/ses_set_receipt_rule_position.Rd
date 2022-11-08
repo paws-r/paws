@@ -4,7 +4,7 @@
 \alias{ses_set_receipt_rule_position}
 \title{Sets the position of the specified receipt rule in the receipt rule set}
 \usage{
-ses_set_receipt_rule_position(RuleSetName, RuleName, After)
+ses_set_receipt_rule_position(RuleSetName, RuleName, After = NULL)
 }
 \arguments{
 \item{RuleSetName}{[required] The name of the receipt rule set that contains the receipt rule to
@@ -15,35 +15,9 @@ reposition.}
 \item{After}{The name of the receipt rule after which to place the specified receipt
 rule.}
 }
-\value{
-An empty list.
-}
 \description{
 Sets the position of the specified receipt rule in the receipt rule set.
 
-For information about managing receipt rules, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$set_receipt_rule_position(
-  RuleSetName = "string",
-  RuleName = "string",
-  After = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example sets the position of a receipt rule in a receipt
-# rule set:
-svc$set_receipt_rule_position(
-  After = "PutRuleAfterThisRule",
-  RuleName = "RuleToReposition",
-  RuleSetName = "MyRuleSet"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/set_receipt_rule_position.html} for full documentation.
 }
 \keyword{internal}

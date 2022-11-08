@@ -4,302 +4,128 @@
 \alias{fsx_create_file_system}
 \title{Creates a new, empty Amazon FSx file system}
 \usage{
-fsx_create_file_system(ClientRequestToken, FileSystemType,
-  StorageCapacity, StorageType, SubnetIds, SecurityGroupIds, Tags,
-  KmsKeyId, WindowsConfiguration, LustreConfiguration)
+fsx_create_file_system(
+  ClientRequestToken = NULL,
+  FileSystemType,
+  StorageCapacity,
+  StorageType = NULL,
+  SubnetIds,
+  SecurityGroupIds = NULL,
+  Tags = NULL,
+  KmsKeyId = NULL,
+  WindowsConfiguration = NULL,
+  LustreConfiguration = NULL,
+  OntapConfiguration = NULL,
+  FileSystemTypeVersion = NULL,
+  OpenZFSConfiguration = NULL
+)
 }
 \arguments{
 \item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
 idempotent creation. This string is automatically filled on your behalf
-when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.}
+when you use the Command Line Interface (CLI) or an Amazon Web Services
+SDK.}
 
-\item{FileSystemType}{[required] The type of Amazon FSx file system to create, either \code{WINDOWS} or
-\code{LUSTRE}.}
+\item{FileSystemType}{[required] The type of Amazon FSx file system to create. Valid values are
+\code{WINDOWS}, \code{LUSTRE}, \code{ONTAP}, and \code{OPENZFS}.}
 
-\item{StorageCapacity}{[required] Sets the storage capacity of the file system that you're creating.
+\item{StorageCapacity}{[required] Sets the storage capacity of the file system that you're creating, in
+gibibytes (GiB).
 
-For Lustre file systems:
+\strong{FSx for Lustre file systems} - The amount of storage capacity that
+you can configure depends on the value that you set for \code{StorageType}
+and the Lustre \code{DeploymentType}, as follows:
 \itemize{
-\item For \code{SCRATCH_2} and \verb{PERSISTENT_1 SSD} deployment types, valid
-values are 1200 GiB, 2400 GiB, and increments of 2400 GiB.
-\item For \verb{PERSISTENT HDD} file systems, valid values are increments of
+\item For \code{SCRATCH_2}, \code{PERSISTENT_2} and \code{PERSISTENT_1} deployment types
+using SSD storage type, the valid values are 1200 GiB, 2400 GiB, and
+increments of 2400 GiB.
+\item For \code{PERSISTENT_1} HDD file systems, valid values are increments of
 6000 GiB for 12 MB/s/TiB file systems and increments of 1800 GiB for
 40 MB/s/TiB file systems.
 \item For \code{SCRATCH_1} deployment type, valid values are 1200 GiB, 2400
 GiB, and increments of 3600 GiB.
 }
 
-For Windows file systems:
+\strong{FSx for ONTAP file systems} - The amount of storage capacity that you
+can configure is from 1024 GiB up to 196,608 GiB (192 TiB).
+
+\strong{FSx for OpenZFS file systems} - The amount of storage capacity that
+you can configure is from 64 GiB up to 524,288 GiB (512 TiB).
+
+\strong{FSx for Windows File Server file systems} - The amount of storage
+capacity that you can configure depends on the value that you set for
+\code{StorageType} as follows:
 \itemize{
-\item If \code{StorageType=SSD}, valid values are 32 GiB - 65,536 GiB (64 TiB).
-\item If \code{StorageType=HDD}, valid values are 2000 GiB - 65,536 GiB (64
-TiB).
+\item For SSD storage, valid values are 32 GiB-65,536 GiB (64 TiB).
+\item For HDD storage, valid values are 2000 GiB-65,536 GiB (64 TiB).
 }}
 
-\item{StorageType}{Sets the storage type for the file system you're creating. Valid values
-are \code{SSD} and \code{HDD}.
+\item{StorageType}{Sets the storage type for the file system that you're creating. Valid
+values are \code{SSD} and \code{HDD}.
 \itemize{
 \item Set to \code{SSD} to use solid state drive storage. SSD is supported on
-all Windows and Lustre deployment types.
+all Windows, Lustre, ONTAP, and OpenZFS deployment types.
 \item Set to \code{HDD} to use hard disk drive storage. HDD is supported on
 \code{SINGLE_AZ_2} and \code{MULTI_AZ_1} Windows file system deployment types,
-and on \code{PERSISTENT} Lustre file system deployment types.
+and on \code{PERSISTENT_1} Lustre file system deployment types.
 }
 
-Default value is \code{SSD}. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options}{Storage Type Options}
-in the \emph{Amazon FSx for Windows User Guide} and \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options}{Multiple Storage Options}
-in the \emph{Amazon FSx for Lustre User Guide}.}
+Default value is \code{SSD}. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options}{Storage type options}
+in the \emph{FSx for Windows File Server User Guide} and \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options}{Multiple storage options}
+in the \emph{FSx for Lustre User Guide}.}
 
 \item{SubnetIds}{[required] Specifies the IDs of the subnets that the file system will be accessible
-from. For Windows \code{MULTI_AZ_1} file system deployment types, provide
+from. For Windows and ONTAP \code{MULTI_AZ_1} deployment types,provide
 exactly two subnet IDs, one for the preferred file server and one for
 the standby file server. You specify one of these subnets as the
-preferred subnet using the \code{WindowsConfiguration > PreferredSubnetID}
-property.
+preferred subnet using the \code{WindowsConfiguration > PreferredSubnetID} or
+\code{OntapConfiguration > PreferredSubnetID} properties. For more
+information about Multi-AZ file system configuration, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html}{Availability and durability: Single-AZ and Multi-AZ file systems}
+in the \emph{Amazon FSx for Windows User Guide} and \href{https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/}{Availability and durability} in the
+\emph{Amazon FSx for ONTAP User Guide}.
 
-For Windows \code{SINGLE_AZ_1} and \code{SINGLE_AZ_2} file system deployment types
-and Lustre file systems, provide exactly one subnet ID. The file server
-is launched in that subnet's Availability Zone.}
+For Windows \code{SINGLE_AZ_1} and \code{SINGLE_AZ_2} and all Lustre deployment
+types, provide exactly one subnet ID. The file server is launched in
+that subnet's Availability Zone.}
 
 \item{SecurityGroupIds}{A list of IDs specifying the security groups to apply to all network
 interfaces created for file system access. This list isn't returned in
 later requests to describe the file system.}
 
-\item{Tags}{The tags to apply to the file system being created. The key value of the
-\code{Name} tag appears in the console as the file system name.}
+\item{Tags}{The tags to apply to the file system that's being created. The key value
+of the \code{Name} tag appears in the console as the file system name.}
 
 \item{KmsKeyId}{}
 
-\item{WindowsConfiguration}{The Microsoft Windows configuration for the file system being created.}
+\item{WindowsConfiguration}{The Microsoft Windows configuration for the file system that's being
+created.}
 
 \item{LustreConfiguration}{}
+
+\item{OntapConfiguration}{}
+
+\item{FileSystemTypeVersion}{(Optional) For FSx for Lustre file systems, sets the Lustre version for
+the file system that you're creating. Valid values are \code{2.10} and
+\code{2.12}:
+\itemize{
+\item 2.10 is supported by the Scratch and Persistent_1 Lustre deployment
+types.
+\item 2.12 is supported by all Lustre deployment types. \code{2.12} is required
+when setting FSx for Lustre \code{DeploymentType} to \code{PERSISTENT_2}.
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FileSystem = list(
-    OwnerId = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    FileSystemId = "string",
-    FileSystemType = "WINDOWS"|"LUSTRE",
-    Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-    FailureDetails = list(
-      Message = "string"
-    ),
-    StorageCapacity = 123,
-    StorageType = "SSD"|"HDD",
-    VpcId = "string",
-    SubnetIds = list(
-      "string"
-    ),
-    NetworkInterfaceIds = list(
-      "string"
-    ),
-    DNSName = "string",
-    KmsKeyId = "string",
-    ResourceARN = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    WindowsConfiguration = list(
-      ActiveDirectoryId = "string",
-      SelfManagedActiveDirectoryConfiguration = list(
-        DomainName = "string",
-        OrganizationalUnitDistinguishedName = "string",
-        FileSystemAdministratorsGroup = "string",
-        UserName = "string",
-        DnsIps = list(
-          "string"
-        )
-      ),
-      DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-      RemoteAdministrationEndpoint = "string",
-      PreferredSubnetId = "string",
-      PreferredFileServerIp = "string",
-      ThroughputCapacity = 123,
-      MaintenanceOperationsInProgress = list(
-        "PATCHING"|"BACKING_UP"
-      ),
-      WeeklyMaintenanceStartTime = "string",
-      DailyAutomaticBackupStartTime = "string",
-      AutomaticBackupRetentionDays = 123,
-      CopyTagsToBackups = TRUE|FALSE,
-      Aliases = list(
-        list(
-          Name = "string",
-          Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
-        )
-      )
-    ),
-    LustreConfiguration = list(
-      WeeklyMaintenanceStartTime = "string",
-      DataRepositoryConfiguration = list(
-        Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING",
-        ImportPath = "string",
-        ExportPath = "string",
-        ImportedFileChunkSize = 123,
-        AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-        FailureDetails = list(
-          Message = "string"
-        )
-      ),
-      DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-      PerUnitStorageThroughput = 123,
-      MountName = "string",
-      DailyAutomaticBackupStartTime = "string",
-      AutomaticBackupRetentionDays = 123,
-      CopyTagsToBackups = TRUE|FALSE,
-      DriveCacheType = "NONE"|"READ"
-    ),
-    AdministrativeActions = list(
-      list(
-        AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION",
-        ProgressPercent = 123,
-        RequestTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
-        TargetFileSystemValues = list(),
-        FailureDetails = list(
-          Message = "string"
-        )
-      )
-    )
-  )
-)
-}
+
+Default value = \code{2.10}, except when \code{DeploymentType} is set to
+\code{PERSISTENT_2}, then the default is \code{2.12}.
+
+If you set \code{FileSystemTypeVersion} to \code{2.10} for a \code{PERSISTENT_2} Lustre
+deployment type, the \code{\link[=fsx_create_file_system]{create_file_system}}
+operation fails.}
+
+\item{OpenZFSConfiguration}{The OpenZFS configuration for the file system that's being created.}
 }
 \description{
-Creates a new, empty Amazon FSx file system.
+Creates a new, empty Amazon FSx file system. You can create the following supported Amazon FSx file systems using the \code{\link[=fsx_create_file_system]{create_file_system}} API operation:
 
-If a file system with the specified client request token exists and the
-parameters match, \code{\link[=fsx_create_file_system]{create_file_system}} returns
-the description of the existing file system. If a file system specified
-client request token exists and the parameters don't match, this call
-returns \code{IncompatibleParameterError}. If a file system with the
-specified client request token doesn't exist,
-\code{\link[=fsx_create_file_system]{create_file_system}} does the following:
-\itemize{
-\item Creates a new, empty Amazon FSx file system with an assigned ID, and
-an initial lifecycle state of \code{CREATING}.
-\item Returns the description of the file system.
-}
-
-This operation requires a client request token in the request that
-Amazon FSx uses to ensure idempotent creation. This means that calling
-the operation multiple times with the same client request token has no
-effect. By using the idempotent operation, you can retry a
-\code{\link[=fsx_create_file_system]{create_file_system}} operation without the
-risk of creating an extra file system. This approach can be useful when
-an initial call fails in a way that makes it unclear whether a file
-system was created. Examples are if a transport level timeout occurred,
-or your connection was reset. If you use the same client request token
-and the initial call created a file system, the client receives success
-as long as the parameters are the same.
-
-The \code{\link[=fsx_create_file_system]{create_file_system}} call returns while
-the file system's lifecycle state is still \code{CREATING}. You can check the
-file-system creation status by calling the
-\code{\link[=fsx_describe_file_systems]{describe_file_systems}} operation, which
-returns the file system state along with other information.
-}
-\section{Request syntax}{
-\preformatted{svc$create_file_system(
-  ClientRequestToken = "string",
-  FileSystemType = "WINDOWS"|"LUSTRE",
-  StorageCapacity = 123,
-  StorageType = "SSD"|"HDD",
-  SubnetIds = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  KmsKeyId = "string",
-  WindowsConfiguration = list(
-    ActiveDirectoryId = "string",
-    SelfManagedActiveDirectoryConfiguration = list(
-      DomainName = "string",
-      OrganizationalUnitDistinguishedName = "string",
-      FileSystemAdministratorsGroup = "string",
-      UserName = "string",
-      Password = "string",
-      DnsIps = list(
-        "string"
-      )
-    ),
-    DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
-    PreferredSubnetId = "string",
-    ThroughputCapacity = 123,
-    WeeklyMaintenanceStartTime = "string",
-    DailyAutomaticBackupStartTime = "string",
-    AutomaticBackupRetentionDays = 123,
-    CopyTagsToBackups = TRUE|FALSE,
-    Aliases = list(
-      "string"
-    )
-  ),
-  LustreConfiguration = list(
-    WeeklyMaintenanceStartTime = "string",
-    ImportPath = "string",
-    ExportPath = "string",
-    ImportedFileChunkSize = 123,
-    DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1",
-    AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED",
-    PerUnitStorageThroughput = 123,
-    DailyAutomaticBackupStartTime = "string",
-    AutomaticBackupRetentionDays = 123,
-    CopyTagsToBackups = TRUE|FALSE,
-    DriveCacheType = "NONE"|"READ"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation creates a new Amazon FSx for Windows File Server file
-# system.
-svc$create_file_system(
-  ClientRequestToken = "a8ca07e4-61ec-4399-99f4-19853801bcd5",
-  FileSystemType = "WINDOWS",
-  KmsKeyId = "arn:aws:kms:us-east-1:012345678912:key/1111abcd-2222-3333-4444-55556666eeff",
-  SecurityGroupIds = list(
-    "sg-edcd9784"
-  ),
-  StorageCapacity = 3200L,
-  StorageType = "HDD",
-  SubnetIds = list(
-    "subnet-1234abcd"
-  ),
-  Tags = list(
-    list(
-      Key = "Name",
-      Value = "MyFileSystem"
-    )
-  ),
-  WindowsConfiguration = list(
-    ActiveDirectoryId = "d-1234abcd12",
-    Aliases = list(
-      "accounting.corp.example.com"
-    ),
-    AutomaticBackupRetentionDays = 30L,
-    DailyAutomaticBackupStartTime = "05:00",
-    ThroughputCapacity = 32L,
-    WeeklyMaintenanceStartTime = "1:05:00"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/fsx/create_file_system.html} for full documentation.
 }
 \keyword{internal}

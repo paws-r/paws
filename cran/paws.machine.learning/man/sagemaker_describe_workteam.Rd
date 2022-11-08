@@ -9,54 +9,9 @@ sagemaker_describe_workteam(WorkteamName)
 \arguments{
 \item{WorkteamName}{[required] The name of the work team to return a description of.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Workteam = list(
-    WorkteamName = "string",
-    MemberDefinitions = list(
-      list(
-        CognitoMemberDefinition = list(
-          UserPool = "string",
-          UserGroup = "string",
-          ClientId = "string"
-        ),
-        OidcMemberDefinition = list(
-          Groups = list(
-            "string"
-          )
-        )
-      )
-    ),
-    WorkteamArn = "string",
-    WorkforceArn = "string",
-    ProductListingIds = list(
-      "string"
-    ),
-    Description = "string",
-    SubDomain = "string",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdatedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    NotificationConfiguration = list(
-      NotificationTopicArn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Gets information about a specific work team. You can see information
-such as the create date, the last updated date, membership information,
-and the work team's Amazon Resource Name (ARN).
-}
-\section{Request syntax}{
-\preformatted{svc$describe_workteam(
-  WorkteamName = "string"
-)
-}
-}
+Gets information about a specific work team. You can see information such as the create date, the last updated date, membership information, and the work team's Amazon Resource Name (ARN).
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_workteam.html} for full documentation.
+}
 \keyword{internal}

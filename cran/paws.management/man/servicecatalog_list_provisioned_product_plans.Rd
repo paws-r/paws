@@ -5,8 +5,13 @@
 \title{Lists the plans for the specified provisioned product or all plans to
 which the user has access}
 \usage{
-servicecatalog_list_provisioned_product_plans(AcceptLanguage,
-  ProvisionProductId, PageSize, PageToken, AccessLevelFilter)
+servicecatalog_list_provisioned_product_plans(
+  AcceptLanguage = NULL,
+  ProvisionProductId = NULL,
+  PageSize = NULL,
+  PageToken = NULL,
+  AccessLevelFilter = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -25,38 +30,9 @@ results, use null.}
 
 \item{AccessLevelFilter}{The access level to use to obtain results. The default is \code{User}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProvisionedProductPlans = list(
-    list(
-      PlanName = "string",
-      PlanId = "string",
-      ProvisionProductId = "string",
-      ProvisionProductName = "string",
-      PlanType = "CLOUDFORMATION",
-      ProvisioningArtifactId = "string"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
-Lists the plans for the specified provisioned product or all plans to
-which the user has access.
-}
-\section{Request syntax}{
-\preformatted{svc$list_provisioned_product_plans(
-  AcceptLanguage = "string",
-  ProvisionProductId = "string",
-  PageSize = 123,
-  PageToken = "string",
-  AccessLevelFilter = list(
-    Key = "Account"|"Role"|"User",
-    Value = "string"
-  )
-)
-}
-}
+Lists the plans for the specified provisioned product or all plans to which the user has access.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_provisioned_product_plans.html} for full documentation.
+}
 \keyword{internal}

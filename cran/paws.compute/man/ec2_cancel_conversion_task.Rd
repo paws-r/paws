@@ -4,7 +4,11 @@
 \alias{ec2_cancel_conversion_task}
 \title{Cancels an active conversion task}
 \usage{
-ec2_cancel_conversion_task(ConversionTaskId, DryRun, ReasonMessage)
+ec2_cancel_conversion_task(
+  ConversionTaskId,
+  DryRun = NULL,
+  ReasonMessage = NULL
+)
 }
 \arguments{
 \item{ConversionTaskId}{[required] The ID of the conversion task.}
@@ -16,25 +20,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ReasonMessage}{The reason for canceling the conversion task.}
 }
-\value{
-An empty list.
-}
 \description{
-Cancels an active conversion task. The task can be the import of an
-instance or volume. The action removes all artifacts of the conversion,
-including a partially uploaded volume or instance. If the conversion is
-complete or is in the process of transferring the final disk image, the
-command fails and returns an exception.
+Cancels an active conversion task. The task can be the import of an instance or volume. The action removes all artifacts of the conversion, including a partially uploaded volume or instance. If the conversion is complete or is in the process of transferring the final disk image, the command fails and returns an exception.
 
-For more information, see \href{http://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf}{Importing a Virtual Machine Using the Amazon EC2 CLI}.
+See \url{https://paws-r.github.io/docs/ec2/cancel_conversion_task.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$cancel_conversion_task(
-  ConversionTaskId = "string",
-  DryRun = TRUE|FALSE,
-  ReasonMessage = "string"
-)
-}
-}
-
 \keyword{internal}

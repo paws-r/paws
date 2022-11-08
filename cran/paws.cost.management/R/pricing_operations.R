@@ -7,17 +7,9 @@ NULL
 #' services
 #'
 #' @description
-#' Returns the metadata for one service or a list of the metadata for all
-#' services. Use this without a service code to get the service codes for
-#' all services. Use it with a service code, such as `AmazonEC2`, to get
-#' information specific to that service, such as the attribute names
-#' available for that service. For example, some of the attribute names
-#' available for EC2 are `volumeType`, `maxIopsVolume`, `operation`,
-#' `locationType`, and `instanceCapacity10xlarge`.
+#' Returns the metadata for one service or a list of the metadata for all services. Use this without a service code to get the service codes for all services. Use it with a service code, such as `AmazonEC2`, to get information specific to that service, such as the attribute names available for that service. For example, some of the attribute names available for EC2 are `volumeType`, `maxIopsVolume`, `operation`, `locationType`, and `instanceCapacity10xlarge`.
 #'
-#' @usage
-#' pricing_describe_services(ServiceCode, FormatVersion, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/pricing/describe_services.html](https://paws-r.github.io/docs/pricing/describe_services.html) for full documentation.
 #'
 #' @param ServiceCode The code for the service whose information you want to retrieve, such as
 #' `AmazonEC2`. You can use the `ServiceCode` to filter the results in a
@@ -29,43 +21,6 @@ NULL
 #' @param NextToken The pagination token that indicates the next set of results that you
 #' want to retrieve.
 #' @param MaxResults The maximum number of results that you want returned in the response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Services = list(
-#'     list(
-#'       ServiceCode = "string",
-#'       AttributeNames = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   FormatVersion = "string",
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_services(
-#'   ServiceCode = "string",
-#'   FormatVersion = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' #
-#' svc$describe_services(
-#'   FormatVersion = "aws_v1",
-#'   MaxResults = 1L,
-#'   ServiceCode = "AmazonEC2"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -90,16 +45,9 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
 #' Returns a list of attribute values
 #'
 #' @description
-#' Returns a list of attribute values. Attibutes are similar to the details
-#' in a Price List API offer file. For a list of available attributes, see
-#' [Offer File
-#' Definitions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs)
-#' in the [AWS Billing and Cost Management User
-#' Guide](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html).
+#' Returns a list of attribute values. Attributes are similar to the details in a Price List API offer file. For a list of available attributes, see [Offer File Definitions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs) in the [Billing and Cost Management User Guide](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html).
 #'
-#' @usage
-#' pricing_get_attribute_values(ServiceCode, AttributeName, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/pricing/get_attribute_values.html](https://paws-r.github.io/docs/pricing/get_attribute_values.html) for full documentation.
 #'
 #' @param ServiceCode &#91;required&#93; The service code for the service whose attributes you want to retrieve.
 #' For example, if you want the retrieve an EC2 attribute, use `AmazonEC2`.
@@ -108,40 +56,6 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
 #' @param NextToken The pagination token that indicates the next set of results that you
 #' want to retrieve.
 #' @param MaxResults The maximum number of results to return in response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AttributeValues = list(
-#'     list(
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_attribute_values(
-#'   ServiceCode = "string",
-#'   AttributeName = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation returns a list of values available for the given
-#' # attribute.
-#' svc$get_attribute_values(
-#'   AttributeName = "volumeType",
-#'   MaxResults = 2L,
-#'   ServiceCode = "AmazonEC2"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -168,11 +82,9 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #' @description
 #' Returns a list of all products that match the filter criteria.
 #'
-#' @usage
-#' pricing_get_products(ServiceCode, Filters, FormatVersion, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/pricing/get_products.html](https://paws-r.github.io/docs/pricing/get_products.html) for full documentation.
 #'
-#' @param ServiceCode The code for the service whose products you want to retrieve.
+#' @param ServiceCode &#91;required&#93; The code for the service whose products you want to retrieve.
 #' @param Filters The list of filters that limit the returned products. only products that
 #' match all filters are returned.
 #' @param FormatVersion The format version that you want the response to be in.
@@ -182,60 +94,10 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #' want to retrieve.
 #' @param MaxResults The maximum number of results to return in the response.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FormatVersion = "string",
-#'   PriceList = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_products(
-#'   ServiceCode = "string",
-#'   Filters = list(
-#'     list(
-#'       Type = "TERM_MATCH",
-#'       Field = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   FormatVersion = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This operation returns a list of products that match the given criteria.
-#' svc$get_products(
-#'   Filters = list(
-#'     list(
-#'       Field = "ServiceCode",
-#'       Type = "TERM_MATCH",
-#'       Value = "AmazonEC2"
-#'     ),
-#'     list(
-#'       Field = "volumeType",
-#'       Type = "TERM_MATCH",
-#'       Value = "Provisioned IOPS"
-#'     )
-#'   ),
-#'   FormatVersion = "aws_v1",
-#'   MaxResults = 1L
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname pricing_get_products
-pricing_get_products <- function(ServiceCode = NULL, Filters = NULL, FormatVersion = NULL, NextToken = NULL, MaxResults = NULL) {
+pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetProducts",
     http_method = "POST",

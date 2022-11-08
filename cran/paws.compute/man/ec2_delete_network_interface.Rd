@@ -4,7 +4,7 @@
 \alias{ec2_delete_network_interface}
 \title{Deletes the specified network interface}
 \usage{
-ec2_delete_network_interface(DryRun, NetworkInterfaceId)
+ec2_delete_network_interface(DryRun = NULL, NetworkInterfaceId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,28 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified network interface. You must detach the network
-interface before you can delete it.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_network_interface(
-  DryRun = TRUE|FALSE,
-  NetworkInterfaceId = "string"
-)
-}
-}
+Deletes the specified network interface. You must detach the network interface before you can delete it.
 
-\examples{
-\dontrun{
-# This example deletes the specified network interface.
-svc$delete_network_interface(
-  NetworkInterfaceId = "eni-e5aa89a3"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_network_interface.html} for full documentation.
 }
 \keyword{internal}

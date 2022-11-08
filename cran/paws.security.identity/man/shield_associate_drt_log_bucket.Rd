@@ -2,32 +2,18 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_associate_drt_log_bucket}
 \alias{shield_associate_drt_log_bucket}
-\title{Authorizes the DDoS Response Team (DRT) to access the specified Amazon
-S3 bucket containing your AWS WAF logs}
+\title{Authorizes the Shield Response Team (SRT) to access the specified Amazon
+S3 bucket containing log data such as Application Load Balancer access
+logs, CloudFront logs, or logs from third party sources}
 \usage{
 shield_associate_drt_log_bucket(LogBucket)
 }
 \arguments{
-\item{LogBucket}{[required] The Amazon S3 bucket that contains your AWS WAF logs.}
-}
-\value{
-An empty list.
+\item{LogBucket}{[required] The Amazon S3 bucket that contains the logs that you want to share.}
 }
 \description{
-Authorizes the DDoS Response Team (DRT) to access the specified Amazon
-S3 bucket containing your AWS WAF logs. You can associate up to 10
-Amazon S3 buckets with your subscription.
+Authorizes the Shield Response Team (SRT) to access the specified Amazon S3 bucket containing log data such as Application Load Balancer access logs, CloudFront logs, or logs from third party sources. You can associate up to 10 Amazon S3 buckets with your subscription.
 
-To use the services of the DRT and make an
-\code{\link[=shield_associate_drt_log_bucket]{associate_drt_log_bucket}} request,
-you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/plans/business/}{Business Support plan} or the
-\href{https://aws.amazon.com/premiumsupport/plans/enterprise/}{Enterprise Support plan}.
+See \url{https://paws-r.github.io/docs/shield/associate_drt_log_bucket.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_drt_log_bucket(
-  LogBucket = "string"
-)
-}
-}
-
 \keyword{internal}

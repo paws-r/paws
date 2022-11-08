@@ -4,8 +4,14 @@
 \alias{ec2_describe_fpga_images}
 \title{Describes the Amazon FPGA Images (AFIs) available to you}
 \usage{
-ec2_describe_fpga_images(DryRun, FpgaImageIds, Owners, Filters,
-  NextToken, MaxResults)
+ec2_describe_fpga_images(
+  DryRun = NULL,
+  FpgaImageIds = NULL,
+  Owners = NULL,
+  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -15,9 +21,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{FpgaImageIds}{The AFI IDs.}
 
-\item{Owners}{Filters the AFI by owner. Specify an AWS account ID, \code{self} (owner is
-the sender of the request), or an AWS owner alias (valid values are
-\code{amazon} | \code{aws-marketplace}).}
+\item{Owners}{Filters the AFI by owner. Specify an Amazon Web Services account ID,
+\code{self} (owner is the sender of the request), or an Amazon Web Services
+owner alias (valid values are \code{amazon} | \code{aws-marketplace}).}
 
 \item{Filters}{The filters.
 \itemize{
@@ -25,17 +31,17 @@ the sender of the request), or an AWS owner alias (valid values are
 \item \code{fpga-image-id} - The FPGA image identifier (AFI ID).
 \item \code{fpga-image-global-id} - The global FPGA image identifier (AGFI ID).
 \item \code{name} - The name of the AFI.
-\item \code{owner-id} - The AWS account ID of the AFI owner.
+\item \code{owner-id} - The Amazon Web Services account ID of the AFI owner.
 \item \code{product-code} - The product code.
-\item \code{shell-version} - The version of the AWS Shell that was used to
-create the bitstream.
+\item \code{shell-version} - The version of the Amazon Web Services Shell that
+was used to create the bitstream.
 \item \code{state} - The state of the AFI (\code{pending} | \code{failed} | \code{available} |
 \code{unavailable}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -46,79 +52,9 @@ regardless of the tag value.
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FpgaImages = list(
-    list(
-      FpgaImageId = "string",
-      FpgaImageGlobalId = "string",
-      Name = "string",
-      Description = "string",
-      ShellVersion = "string",
-      PciId = list(
-        DeviceId = "string",
-        VendorId = "string",
-        SubsystemId = "string",
-        SubsystemVendorId = "string"
-      ),
-      State = list(
-        Code = "pending"|"failed"|"available"|"unavailable",
-        Message = "string"
-      ),
-      CreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      OwnerId = "string",
-      OwnerAlias = "string",
-      ProductCodes = list(
-        list(
-          ProductCodeId = "string",
-          ProductCodeType = "devpay"|"marketplace"
-        )
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      Public = TRUE|FALSE,
-      DataRetentionSupport = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the Amazon FPGA Images (AFIs) available to you. These include
-public AFIs, private AFIs that you own, and AFIs owned by other AWS
-accounts for which you have load permissions.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_fpga_images(
-  DryRun = TRUE|FALSE,
-  FpgaImageIds = list(
-    "string"
-  ),
-  Owners = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Describes the Amazon FPGA Images (AFIs) available to you. These include public AFIs, private AFIs that you own, and AFIs owned by other Amazon Web Services accounts for which you have load permissions.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_fpga_images.html} for full documentation.
+}
 \keyword{internal}

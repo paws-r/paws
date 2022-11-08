@@ -2,8 +2,8 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_create_members}
 \alias{guardduty_create_members}
-\title{Creates member accounts of the current AWS account by specifying a list
-of AWS account IDs}
+\title{Creates member accounts of the current Amazon Web Services account by
+specifying a list of Amazon Web Services account IDs}
 \usage{
 guardduty_create_members(DetectorId, AccountDetails)
 }
@@ -14,44 +14,9 @@ associate member accounts with.}
 \item{AccountDetails}{[required] A list of account ID and email address pairs of the accounts that you
 want to associate with the GuardDuty administrator account.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UnprocessedAccounts = list(
-    list(
-      AccountId = "string",
-      Result = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates member accounts of the current AWS account by specifying a list
-of AWS account IDs. This step is a prerequisite for managing the
-associated member accounts either by invitation or through an
-organization.
+Creates member accounts of the current Amazon Web Services account by specifying a list of Amazon Web Services account IDs. This step is a prerequisite for managing the associated member accounts either by invitation or through an organization.
 
-When using \verb{Create Members} as an organizations delegated administrator
-this action will enable GuardDuty in the added member accounts, with the
-exception of the organization delegated administrator account, which
-must enable GuardDuty prior to being added as a member.
-
-If you are adding accounts by invitation use this action after GuardDuty
-has been enabled in potential member accounts and before using
-\href{https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html}{\verb{Invite Members}}
-.
+See \url{https://paws-r.github.io/docs/guardduty/create_members.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_members(
-  DetectorId = "string",
-  AccountDetails = list(
-    list(
-      AccountId = "string",
-      Email = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

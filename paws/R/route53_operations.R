@@ -3,18 +3,20 @@
 #' @include route53_service.R
 NULL
 
-#' Activates a key signing key (KSK) so that it can be used for signing by
+#' Activates a key-signing key (KSK) so that it can be used for signing by
 #' DNSSEC
 #'
 #' @description
-#' Activates a key signing key (KSK) so that it can be used for signing by
+#' Activates a key-signing key (KSK) so that it can be used for signing by
 #' DNSSEC. This operation changes the KSK status to `ACTIVE`.
 #'
 #' @usage
 #' route53_activate_key_signing_key(HostedZoneId, Name)
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
-#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
+#' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK). `Name` can include
+#' numbers, letters, and underscores (_). `Name` must be unique for each
+#' key-signing key in the same hosted zone.
 #'
 #' @return
 #' A list with the following syntax:
@@ -68,14 +70,30 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
 #' already exist. You can't convert a public hosted zone into a private
 #' hosted zone.
 #' 
-#' If you want to associate a VPC that was created by using one AWS account
-#' with a private hosted zone that was created by using a different
-#' account, the AWS account that created the private hosted zone must first
-#' submit a
+#' If you want to associate a VPC that was created by using one Amazon Web
+#' Services account with a private hosted zone that was created by using a
+#' different account, the Amazon Web Services account that created the
+#' private hosted zone must first submit a
 #' [`create_vpc_association_authorization`][route53_create_vpc_association_authorization]
 #' request. Then the account that created the VPC must submit an
 #' [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone]
 #' request.
+#' 
+#' When granting access, the hosted zone and the Amazon VPC must belong to
+#' the same partition. A partition is a group of Amazon Web Services
+#' Regions. Each Amazon Web Services account is scoped to one partition.
+#' 
+#' The following are the supported partitions:
+#' 
+#' -   `aws` - Amazon Web Services Regions
+#' 
+#' -   `aws-cn` - China Regions
+#' 
+#' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
+#' 
+#' For more information, see [Access
+#' Management](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' in the *Amazon Web Services General Reference*.
 #'
 #' @usage
 #' route53_associate_vpc_with_hosted_zone(HostedZoneId, VPC, Comment)
@@ -109,7 +127,7 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
 #' svc$associate_vpc_with_hosted_zone(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
 #'     VPCId = "string"
 #'   ),
 #'   Comment = "string"
@@ -149,6 +167,98 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
   return(response)
 }
 .route53$operations$associate_vpc_with_hosted_zone <- route53_associate_vpc_with_hosted_zone
+
+#' Creates, changes, or deletes CIDR blocks within a collection
+#'
+#' @description
+#' Creates, changes, or deletes CIDR blocks within a collection. Contains
+#' authoritative IP information mapping blocks to one or multiple
+#' locations.
+#' 
+#' A change request can update multiple locations in a collection at a
+#' time, which is helpful if you want to move one or more CIDR blocks from
+#' one location to another in one transaction, without downtime.
+#' 
+#' **Limits**
+#' 
+#' The max number of CIDR blocks included in the request is 1000. As a
+#' result, big updates require multiple API calls.
+#' 
+#' **PUT and DELETE_IF_EXISTS**
+#' 
+#' Use [`change_cidr_collection`][route53_change_cidr_collection] to
+#' perform the following actions:
+#' 
+#' -   `PUT`: Create a CIDR block within the specified collection.
+#' 
+#' -   ` DELETE_IF_EXISTS`: Delete an existing CIDR block from the
+#'     collection.
+#'
+#' @usage
+#' route53_change_cidr_collection(Id, CollectionVersion, Changes)
+#'
+#' @param Id &#91;required&#93; The UUID of the CIDR collection to update.
+#' @param CollectionVersion A sequential counter that Amazon Route 53 sets to 1 when you create a
+#' collection and increments it by 1 each time you update the collection.
+#' 
+#' We recommend that you use `ListCidrCollection` to get the current value
+#' of `CollectionVersion` for the collection that you want to update, and
+#' then include that value with the change request. This prevents Route 53
+#' from overwriting an intervening update:
+#' 
+#' -   If the value in the request matches the value of `CollectionVersion`
+#'     in the collection, Route 53 updates the collection.
+#' 
+#' -   If the value of `CollectionVersion` in the collection is greater
+#'     than the value in the request, the collection was changed after you
+#'     got the version number. Route 53 does not update the collection, and
+#'     it returns a `CidrCollectionVersionMismatch` error.
+#' @param Changes &#91;required&#93; Information about changes to a CIDR collection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$change_cidr_collection(
+#'   Id = "string",
+#'   CollectionVersion = 123,
+#'   Changes = list(
+#'     list(
+#'       LocationName = "string",
+#'       Action = "PUT"|"DELETE_IF_EXISTS",
+#'       CidrList = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53_change_cidr_collection
+route53_change_cidr_collection <- function(Id, CollectionVersion = NULL, Changes) {
+  op <- new_operation(
+    name = "ChangeCidrCollection",
+    http_method = "POST",
+    http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
+    paginator = list()
+  )
+  input <- .route53$change_cidr_collection_input(Id = Id, CollectionVersion = CollectionVersion, Changes = Changes)
+  output <- .route53$change_cidr_collection_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$change_cidr_collection <- route53_change_cidr_collection
 
 #' Creates, changes, or deletes a resource record set, which contains
 #' authoritative DNS information for a specified domain name or subdomain
@@ -198,10 +308,8 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' with one or more domain names (such as example.com) or subdomain names
 #' (such as www.example.com), in the same hosted zone or in multiple hosted
 #' zones. You can roll back the updates if the new configuration isn't
-#' performing as expected. For more information, see [Using Traffic Flow to
-#' Route DNS
-#' Traffic](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/traffic-flow.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' performing as expected. For more information, see Using Traffic Flow to
+#' Route DNS Traffic in the *Amazon Route 53 Developer Guide*.
 #' 
 #' **Create, Delete, and Upsert**
 #' 
@@ -213,9 +321,8 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' -   `DELETE`: Deletes an existing resource record set that has the
 #'     specified values.
 #' 
-#' -   `UPSERT`: If a resource record set does not already exist, AWS
-#'     creates it. If a resource set does exist, Route 53 updates it with
-#'     the values in the request.
+#' -   `UPSERT`: If a resource set exists Route 53 updates it with the
+#'     values in the request.
 #' 
 #' **Syntaxes for Creating, Updating, and Deleting Resource Record Sets**
 #' 
@@ -247,9 +354,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' 
 #' For information about the limits on a
 #' [`change_resource_record_sets`][route53_change_resource_record_sets]
-#' request, see
-#' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' request, see Limits in the *Amazon Route 53 Developer Guide*.
 #'
 #' @usage
 #' route53_change_resource_record_sets(HostedZoneId, ChangeBatch)
@@ -288,7 +393,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'           Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
 #'           SetIdentifier = "string",
 #'           Weight = 123,
-#'           Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"me-south-1"|"ap-south-1"|"af-south-1"|"eu-south-1",
+#'           Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"me-south-1"|"ap-south-1"|"af-south-1"|"eu-south-1",
 #'           GeoLocation = list(
 #'             ContinentCode = "string",
 #'             CountryCode = "string",
@@ -308,7 +413,11 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #'             EvaluateTargetHealth = TRUE|FALSE
 #'           ),
 #'           HealthCheckId = "string",
-#'           TrafficPolicyInstanceId = "string"
+#'           TrafficPolicyInstanceId = "string",
+#'           CidrRoutingConfig = list(
+#'             CollectionId = "string",
+#'             LocationName = "string"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -812,7 +921,7 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
 #' For information about using tags for cost allocation, see [Using Cost
 #' Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management User Guide*.
+#' in the *Billing and Cost Management User Guide*.
 #'
 #' @usage
 #' route53_change_tags_for_resource(ResourceType, ResourceId, AddTags,
@@ -897,14 +1006,70 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 }
 .route53$operations$change_tags_for_resource <- route53_change_tags_for_resource
 
+#' Creates a CIDR collection in the current Amazon Web Services account
+#'
+#' @description
+#' Creates a CIDR collection in the current Amazon Web Services account.
+#'
+#' @usage
+#' route53_create_cidr_collection(Name, CallerReference)
+#'
+#' @param Name &#91;required&#93; A unique identifier for the account that can be used to reference the
+#' collection from other API calls.
+#' @param CallerReference &#91;required&#93; A client-specific token that allows requests to be securely retried so
+#' that the intended outcome will only occur once, retries receive a
+#' similar response, and there are no additional edge cases to handle.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Collection = list(
+#'     Arn = "string",
+#'     Id = "string",
+#'     Name = "string",
+#'     Version = 123
+#'   ),
+#'   Location = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_cidr_collection(
+#'   Name = "string",
+#'   CallerReference = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53_create_cidr_collection
+route53_create_cidr_collection <- function(Name, CallerReference) {
+  op <- new_operation(
+    name = "CreateCidrCollection",
+    http_method = "POST",
+    http_path = "/2013-04-01/cidrcollection",
+    paginator = list()
+  )
+  input <- .route53$create_cidr_collection_input(Name = Name, CallerReference = CallerReference)
+  output <- .route53$create_cidr_collection_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$create_cidr_collection <- route53_create_cidr_collection
+
 #' Creates a new health check
 #'
 #' @description
 #' Creates a new health check.
 #' 
 #' For information about adding health checks to resource record sets, see
-#' [HealthCheckId](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ResourceRecordSet.html#Route53-Type-ResourceRecordSet-HealthCheckId)
-#' in [`change_resource_record_sets`][route53_change_resource_record_sets].
+#' HealthCheckId in
+#' [`change_resource_record_sets`][route53_change_resource_record_sets].
 #' 
 #' **ELB Load Balancers**
 #' 
@@ -933,9 +1098,8 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 #'     checks the status of the Amazon EC2 `StatusCheckFailed` metric, add
 #'     an alarm to the metric, and then create a health check that is based
 #'     on the state of the alarm. For information about creating CloudWatch
-#'     metrics and alarms by using the CloudWatch console, see the [Amazon
-#'     CloudWatch User
-#'     Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html).
+#'     metrics and alarms by using the CloudWatch console, see the Amazon
+#'     CloudWatch User Guide.
 #'
 #' @usage
 #' route53_create_health_check(CallerReference, HealthCheckConfig)
@@ -979,7 +1143,7 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 #'     HealthCheckConfig = list(
 #'       IPAddress = "string",
 #'       Port = 123,
-#'       Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
+#'       Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC"|"RECOVERY_CONTROL",
 #'       ResourcePath = "string",
 #'       FullyQualifiedDomainName = "string",
 #'       SearchString = "string",
@@ -997,10 +1161,11 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 #'         "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
 #'       ),
 #'       AlarmIdentifier = list(
-#'         Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
+#'         Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1",
 #'         Name = "string"
 #'       ),
-#'       InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
+#'       InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",
+#'       RoutingControlArn = "string"
 #'     ),
 #'     HealthCheckVersion = 123,
 #'     CloudWatchAlarmConfiguration = list(
@@ -1030,7 +1195,7 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 #'   HealthCheckConfig = list(
 #'     IPAddress = "string",
 #'     Port = 123,
-#'     Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
+#'     Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC"|"RECOVERY_CONTROL",
 #'     ResourcePath = "string",
 #'     FullyQualifiedDomainName = "string",
 #'     SearchString = "string",
@@ -1048,10 +1213,11 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 #'       "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
 #'     ),
 #'     AlarmIdentifier = list(
-#'       Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
+#'       Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1",
 #'       Name = "string"
 #'     ),
-#'     InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
+#'     InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",
+#'     RoutingControlArn = "string"
 #'   )
 #' )
 #' ```
@@ -1091,8 +1257,8 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' versa. Instead, you must create a new hosted zone with the same name and
 #' create new resource record sets.
 #' 
-#' For more information about charges for hosted zones, see [Amazon Route
-#' 53 Pricing](https://aws.amazon.com/route53/pricing/).
+#' For more information about charges for hosted zones, see Amazon Route 53
+#' Pricing.
 #' 
 #' Note the following:
 #' 
@@ -1101,41 +1267,58 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' 
 #' -   For public hosted zones, Route 53 automatically creates a default
 #'     SOA record and four NS records for the zone. For more information
-#'     about SOA and NS records, see [NS and SOA Records that Route 53
-#'     Creates for a Hosted
-#'     Zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html)
-#'     in the *Amazon Route 53 Developer Guide*.
+#'     about SOA and NS records, see NS and SOA Records that Route 53
+#'     Creates for a Hosted Zone in the *Amazon Route 53 Developer Guide*.
 #' 
 #'     If you want to use the same name servers for multiple public hosted
 #'     zones, you can optionally associate a reusable delegation set with
 #'     the hosted zone. See the `DelegationSetId` element.
 #' 
-#' -   If your domain is registered with a registrar other than Route 53,
+#' -   If your domain is registered with a registrar other than Route 53,
 #'     you must update the name servers with your registrar to make Route
 #'     53 the DNS service for the domain. For more information, see
-#'     [Migrating DNS Service for an Existing Domain to Amazon Route
-#'     53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/MigratingDNS.html)
-#'     in the *Amazon Route 53 Developer Guide*.
+#'     Migrating DNS Service for an Existing Domain to Amazon Route 53 in
+#'     the *Amazon Route 53 Developer Guide*.
 #' 
 #' When you submit a [`create_hosted_zone`][route53_create_hosted_zone]
 #' request, the initial status of the hosted zone is `PENDING`. For public
 #' hosted zones, this means that the NS and SOA records are not yet
-#' available on all Route 53 DNS servers. When the NS and SOA records are
+#' available on all Route 53 DNS servers. When the NS and SOA records are
 #' available, the status of the zone changes to `INSYNC`.
+#' 
+#' The [`create_hosted_zone`][route53_create_hosted_zone] request requires
+#' the caller to have an `ec2:DescribeVpcs` permission.
+#' 
+#' When creating private hosted zones, the Amazon VPC must belong to the
+#' same partition where the hosted zone is created. A partition is a group
+#' of Amazon Web Services Regions. Each Amazon Web Services account is
+#' scoped to one partition.
+#' 
+#' The following are the supported partitions:
+#' 
+#' -   `aws` - Amazon Web Services Regions
+#' 
+#' -   `aws-cn` - China Regions
+#' 
+#' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
+#' 
+#' For more information, see [Access
+#' Management](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' in the *Amazon Web Services General Reference*.
 #'
 #' @usage
 #' route53_create_hosted_zone(Name, VPC, CallerReference, HostedZoneConfig,
 #'   DelegationSetId)
 #'
 #' @param Name &#91;required&#93; The name of the domain. Specify a fully qualified domain name, for
-#' example, *www.example.com*. The trailing dot is optional; Amazon Route
-#' 53 assumes that the domain name is fully qualified. This means that
-#' Route 53 treats *www.example.com* (without a trailing dot) and
+#' example, *www.example.com*. The trailing dot is optional; Amazon
+#' Route 53 assumes that the domain name is fully qualified. This means
+#' that Route 53 treats *www.example.com* (without a trailing dot) and
 #' *www.example.com.* (with a trailing dot) as identical.
 #' 
 #' If you're creating a public hosted zone, this is the name you have
 #' registered with your DNS registrar. If your domain name is registered
-#' with a registrar other than Route 53, change the name servers for your
+#' with a registrar other than Route 53, change the name servers for your
 #' domain to the set of `NameServers` that
 #' [`create_hosted_zone`][route53_create_hosted_zone] returns in
 #' `DelegationSet`.
@@ -1143,7 +1326,10 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' about the Amazon VPC that you're associating with this hosted zone.
 #' 
 #' You can specify only one Amazon VPC when you create a private hosted
-#' zone. To associate additional Amazon VPCs with the hosted zone, use
+#' zone. If you are associating a VPC with a hosted zone with this request,
+#' the paramaters `VPCId` and `VPCRegion` are also required.
+#' 
+#' To associate additional Amazon VPCs with the hosted zone, use
 #' [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone]
 #' after you create a hosted zone.
 #' @param CallerReference &#91;required&#93; A unique string that identifies the request and that allows failed
@@ -1162,7 +1348,7 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' If you don't specify a comment or the `PrivateZone` element, omit
 #' `HostedZoneConfig` and the other elements.
 #' @param DelegationSetId If you want to associate a reusable delegation set with this hosted
-#' zone, the ID that Amazon Route 53 assigned to the reusable delegation
+#' zone, the ID that Amazon Route 53 assigned to the reusable delegation
 #' set when you created it. For more information about reusable delegation
 #' sets, see
 #' [`create_reusable_delegation_set`][route53_create_reusable_delegation_set].
@@ -1201,7 +1387,7 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #'     )
 #'   ),
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
 #'     VPCId = "string"
 #'   ),
 #'   Location = "string"
@@ -1213,7 +1399,7 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' svc$create_hosted_zone(
 #'   Name = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
 #'     VPCId = "string"
 #'   ),
 #'   CallerReference = "string",
@@ -1245,10 +1431,10 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 }
 .route53$operations$create_hosted_zone <- route53_create_hosted_zone
 
-#' Creates a new key signing key (KSK) associated with a hosted zone
+#' Creates a new key-signing key (KSK) associated with a hosted zone
 #'
 #' @description
-#' Creates a new key signing key (KSK) associated with a hosted zone. You
+#' Creates a new key-signing key (KSK) associated with a hosted zone. You
 #' can only have two KSKs per hosted zone.
 #'
 #' @usage
@@ -1257,13 +1443,13 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #'
 #' @param CallerReference &#91;required&#93; A unique string that identifies the request.
 #' @param HostedZoneId &#91;required&#93; The unique string (ID) used to identify a hosted zone.
-#' @param KeyManagementServiceArn &#91;required&#93; The Amazon resource name (ARN) for a customer managed key (CMK) in AWS
-#' Key Management Service (KMS). The `KeyManagementServiceArn` must be
-#' unique for each key signing key (KSK) in a single hosted zone. To see an
+#' @param KeyManagementServiceArn &#91;required&#93; The Amazon resource name (ARN) for a customer managed key in Key
+#' Management Service (KMS). The `KeyManagementServiceArn` must be unique
+#' for each key-signing key (KSK) in a single hosted zone. To see an
 #' example of `KeyManagementServiceArn` that grants the correct permissions
 #' for DNSSEC, scroll down to **Example**.
 #' 
-#' You must configure the CMK as follows:
+#' You must configure the customer managed customer managed key as follows:
 #' 
 #' ### Status
 #' 
@@ -1290,14 +1476,14 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' The key policy must also include the Amazon Route 53 service in the
 #' principal for your account. Specify the following:
 #' 
-#' -   `"Service": "api-service.dnssec.route53.aws.internal"`
+#' -   `"Service": "dnssec-route53.amazonaws.com"`
 #' 
-#' For more information about working with CMK in KMS, see [AWS Key
-#' Management Service
-#' concepts](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html).
-#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK). `Name`
-#' must be unique for each key signing key in the same hosted zone.
-#' @param Status &#91;required&#93; A string specifying the initial status of the key signing key (KSK). You
+#' For more information about working with a customer managed key in KMS,
+#' see Key Management Service concepts.
+#' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK). `Name` can include
+#' numbers, letters, and underscores (_). `Name` must be unique for each
+#' key-signing key in the same hosted zone.
+#' @param Status &#91;required&#93; A string specifying the initial status of the key-signing key (KSK). You
 #' can set the value to `ACTIVE` or `INACTIVE`.
 #'
 #' @return
@@ -1401,8 +1587,9 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' 
 #'     -   You must create the log group in the us-east-1 region.
 #' 
-#'     -   You must use the same AWS account to create the log group and
-#'         the hosted zone that you want to configure query logging for.
+#'     -   You must use the same Amazon Web Services account to create the
+#'         log group and the hosted zone that you want to configure query
+#'         logging for.
 #' 
 #'     -   When you create log groups for query logging, we recommend that
 #'         you use a consistent prefix, for example:
@@ -1410,12 +1597,12 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #'         `/aws/route53/hosted zone name `
 #' 
 #'         In the next step, you'll create a resource policy, which
-#'         controls access to one or more log groups and the associated AWS
-#'         resources, such as Route 53 hosted zones. There's a limit on the
-#'         number of resource policies that you can create, so we recommend
-#'         that you use a consistent prefix so you can use the same
-#'         resource policy for all the log groups that you create for query
-#'         logging.
+#'         controls access to one or more log groups and the associated
+#'         Amazon Web Services resources, such as Route 53 hosted zones.
+#'         There's a limit on the number of resource policies that you can
+#'         create, so we recommend that you use a consistent prefix so you
+#'         can use the same resource policy for all the log groups that you
+#'         create for query logging.
 #' 
 #' 2.  Create a CloudWatch Logs resource policy, and give it the
 #'     permissions that Route 53 needs to create log streams and to send
@@ -1427,9 +1614,26 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' 
 #'     `arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*`
 #' 
+#'     To avoid the confused deputy problem, a security issue where an
+#'     entity without a permission for an action can coerce a
+#'     more-privileged entity to perform it, you can optionally limit the
+#'     permissions that a service has to a resource in a resource-based
+#'     policy by supplying the following values:
+#' 
+#'     -   For `aws:SourceArn`, supply the hosted zone ARN used in creating
+#'         the query logging configuration. For example,
+#'         `aws:SourceArn: arn:aws:route53:::hostedzone/hosted zone ID`.
+#' 
+#'     -   For `aws:SourceAccount`, supply the account ID for the account
+#'         that creates the query logging configuration. For example,
+#'         `aws:SourceAccount:111111111111`.
+#' 
+#'     For more information, see The confused deputy problem in the *Amazon
+#'     Web Services IAM User Guide*.
+#' 
 #'     You can't use the CloudWatch console to create or edit a resource
-#'     policy. You must use the CloudWatch API, one of the AWS SDKs, or the
-#'     AWS CLI.
+#'     policy. You must use the CloudWatch API, one of the Amazon Web
+#'     Services SDKs, or the CLI.
 #' 
 #' ### Log Streams and Edge Locations
 #' 
@@ -1452,8 +1656,7 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' corresponds with the International Air Transport Association airport
 #' code for an airport near the edge location. (These abbreviations might
 #' change in the future.) For a list of edge locations, see "The Route 53
-#' Global Network" on the [Route 53 Product
-#' Details](https://aws.amazon.com/route53/features/) page.
+#' Global Network" on the Route 53 Product Details page.
 #' 
 #' ### Queries That Are Logged
 #' 
@@ -1466,17 +1669,13 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' resource record set, and depending on the TTL for that resource record
 #' set, query logs might contain information about only one query out of
 #' every several thousand queries that are submitted to DNS. For more
-#' information about how DNS works, see [Routing Internet Traffic to Your
-#' Website or Web
-#' Application](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' information about how DNS works, see Routing Internet Traffic to Your
+#' Website or Web Application in the *Amazon Route 53 Developer Guide*.
 #' 
 #' ### Log File Format
 #' 
 #' For a list of the values in each query log and the format of each value,
-#' see [Logging DNS
-#' Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' see Logging DNS Queries in the *Amazon Route 53 Developer Guide*.
 #' 
 #' ### Pricing
 #' 
@@ -1501,10 +1700,8 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' arn:aws:logs:*region*:*account-id*:log-group:*log_group_name*
 #' 
 #' To get the ARN for a log group, you can use the CloudWatch console, the
-#' [DescribeLogGroups](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html)
-#' API action, the
-#' [describe-log-groups](https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html)
-#' command, or the applicable command in one of the AWS SDKs.
+#' DescribeLogGroups API action, the describe-log-groups command, or the
+#' applicable command in one of the Amazon Web Services SDKs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1548,13 +1745,13 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
 .route53$operations$create_query_logging_config <- route53_create_query_logging_config
 
 #' Creates a delegation set (a group of four name servers) that can be
-#' reused by multiple hosted zones that were created by the same AWS
-#' account
+#' reused by multiple hosted zones that were created by the same Amazon Web
+#' Services account
 #'
 #' @description
 #' Creates a delegation set (a group of four name servers) that can be
-#' reused by multiple hosted zones that were created by the same AWS
-#' account.
+#' reused by multiple hosted zones that were created by the same Amazon Web
+#' Services account.
 #' 
 #' You can also create a reusable delegation set that uses the four name
 #' servers that are associated with an existing hosted zone. Specify the
@@ -1566,8 +1763,7 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
 #' zone.
 #' 
 #' For information about using a reusable delegation set to configure white
-#' label name servers, see [Configuring White Label Name
-#' Servers](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html).
+#' label name servers, see Configuring White Label Name Servers.
 #' 
 #' The process for migrating existing hosted zones to use a reusable
 #' delegation set is comparable to the process for configuring white label
@@ -1675,8 +1871,7 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
 #'
 #' @param Name &#91;required&#93; The name of the traffic policy.
 #' @param Document &#91;required&#93; The definition of this traffic policy in JSON format. For more
-#' information, see [Traffic Policy Document
-#' Format](https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html).
+#' information, see Traffic Policy Document Format.
 #' @param Comment (Optional) Any comments that you want to include about the traffic
 #' policy.
 #'
@@ -1876,12 +2071,13 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
 }
 .route53$operations$create_traffic_policy_version <- route53_create_traffic_policy_version
 
-#' Authorizes the AWS account that created a specified VPC to submit an
-#' AssociateVPCWithHostedZone request to associate the VPC with a specified
-#' hosted zone that was created by a different account
+#' Authorizes the Amazon Web Services account that created a specified VPC
+#' to submit an AssociateVPCWithHostedZone request to associate the VPC
+#' with a specified hosted zone that was created by a different account
 #'
 #' @description
-#' Authorizes the AWS account that created a specified VPC to submit an
+#' Authorizes the Amazon Web Services account that created a specified VPC
+#' to submit an
 #' [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone]
 #' request to associate the VPC with a specified hosted zone that was
 #' created by a different account. To submit a
@@ -1910,7 +2106,7 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
 #' list(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
 #'     VPCId = "string"
 #'   )
 #' )
@@ -1921,7 +2117,7 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
 #' svc$create_vpc_association_authorization(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
 #'     VPCId = "string"
 #'   )
 #' )
@@ -1947,18 +2143,18 @@ route53_create_vpc_association_authorization <- function(HostedZoneId, VPC) {
 }
 .route53$operations$create_vpc_association_authorization <- route53_create_vpc_association_authorization
 
-#' Deactivates a key signing key (KSK) so that it will not be used for
+#' Deactivates a key-signing key (KSK) so that it will not be used for
 #' signing by DNSSEC
 #'
 #' @description
-#' Deactivates a key signing key (KSK) so that it will not be used for
+#' Deactivates a key-signing key (KSK) so that it will not be used for
 #' signing by DNSSEC. This operation changes the KSK status to `INACTIVE`.
 #'
 #' @usage
 #' route53_deactivate_key_signing_key(HostedZoneId, Name)
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
-#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
+#' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK).
 #'
 #' @return
 #' A list with the following syntax:
@@ -2003,6 +2199,47 @@ route53_deactivate_key_signing_key <- function(HostedZoneId, Name) {
 }
 .route53$operations$deactivate_key_signing_key <- route53_deactivate_key_signing_key
 
+#' Deletes a CIDR collection in the current Amazon Web Services account
+#'
+#' @description
+#' Deletes a CIDR collection in the current Amazon Web Services account.
+#' The collection must be empty before it can be deleted.
+#'
+#' @usage
+#' route53_delete_cidr_collection(Id)
+#'
+#' @param Id &#91;required&#93; The UUID of the collection to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_cidr_collection(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53_delete_cidr_collection
+route53_delete_cidr_collection <- function(Id) {
+  op <- new_operation(
+    name = "DeleteCidrCollection",
+    http_method = "DELETE",
+    http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
+    paginator = list()
+  )
+  input <- .route53$delete_cidr_collection_input(Id = Id)
+  output <- .route53$delete_cidr_collection_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$delete_cidr_collection <- route53_delete_cidr_collection
+
 #' Deletes a health check
 #'
 #' @description
@@ -2013,14 +2250,12 @@ route53_deactivate_key_signing_key <- function(HostedZoneId, Name) {
 #' If you delete a health check and you don't update the associated
 #' resource record sets, the future status of the health check can't be
 #' predicted and may change. This will affect the routing of DNS queries
-#' for your DNS failover configuration. For more information, see
-#' [Replacing and Deleting Health
-#' Checks](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html#health-checks-deleting.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' for your DNS failover configuration. For more information, see Replacing
+#' and Deleting Health Checks in the *Amazon Route 53 Developer Guide*.
 #' 
-#' If you're using AWS Cloud Map and you configured Cloud Map to create a
-#' Route 53 health check when you register an instance, you can't use the
-#' Route 53 [`delete_health_check`][route53_delete_health_check] command to
+#' If you're using Cloud Map and you configured Cloud Map to create a Route
+#' 53 health check when you register an instance, you can't use the Route
+#' 53 [`delete_health_check`][route53_delete_health_check] command to
 #' delete the health check. The health check is deleted automatically when
 #' you deregister the instance; there can be a delay of several hours
 #' before the health check is deleted from Route 53.
@@ -2065,10 +2300,9 @@ route53_delete_health_check <- function(HealthCheckId) {
 #' @description
 #' Deletes a hosted zone.
 #' 
-#' If the hosted zone was created by another service, such as AWS Cloud
-#' Map, see [Deleting Public Hosted Zones That Were Created by Another
-#' Service](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html#delete-public-hosted-zone-created-by-another-service)
-#' in the *Amazon Route 53 Developer Guide* for information about how to
+#' If the hosted zone was created by another service, such as Cloud Map,
+#' see Deleting Public Hosted Zones That Were Created by Another Service in
+#' the *Amazon Route 53 Developer Guide* for information about how to
 #' delete it. (The process is the same for public and private hosted zones
 #' that were created by another service.)
 #' 
@@ -2089,19 +2323,18 @@ route53_delete_health_check <- function(HealthCheckId) {
 #' If you want to avoid the monthly charge for the hosted zone, you can
 #' transfer DNS service for the domain to a free DNS service. When you
 #' transfer DNS service, you have to update the name servers for the domain
-#' registration. If the domain is registered with Route 53, see
-#' [UpdateDomainNameservers](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_UpdateDomainNameservers.html)
-#' for information about how to replace Route 53 name servers with name
-#' servers for the new DNS service. If the domain is registered with
-#' another registrar, use the method provided by the registrar to update
-#' name servers for the domain registration. For more information, perform
-#' an internet search on "free DNS service."
+#' registration. If the domain is registered with Route 53, see
+#' UpdateDomainNameservers for information about how to replace Route 53
+#' name servers with name servers for the new DNS service. If the domain is
+#' registered with another registrar, use the method provided by the
+#' registrar to update name servers for the domain registration. For more
+#' information, perform an internet search on "free DNS service."
 #' 
 #' You can delete a hosted zone only if it contains only the default SOA
 #' record and NS resource record sets. If the hosted zone contains other
 #' resource record sets, you must delete them before you can delete the
 #' hosted zone. If you try to delete a hosted zone that contains other
-#' resource record sets, the request fails, and Route 53 returns a
+#' resource record sets, the request fails, and Route 53 returns a
 #' `HostedZoneNotEmpty` error. For information about deleting records from
 #' your hosted zone, see
 #' [`change_resource_record_sets`][route53_change_resource_record_sets].
@@ -2113,8 +2346,8 @@ route53_delete_health_check <- function(HealthCheckId) {
 #'     request information about the hosted zone.
 #' 
 #' -   Use the [`list_hosted_zones`][route53_list_hosted_zones] action to
-#'     get a list of the hosted zones associated with the current AWS
-#'     account.
+#'     get a list of the hosted zones associated with the current Amazon
+#'     Web Services account.
 #'
 #' @usage
 #' route53_delete_hosted_zone(Id)
@@ -2163,18 +2396,25 @@ route53_delete_hosted_zone <- function(Id) {
 }
 .route53$operations$delete_hosted_zone <- route53_delete_hosted_zone
 
-#' Deletes a key signing key (KSK)
+#' Deletes a key-signing key (KSK)
 #'
 #' @description
-#' Deletes a key signing key (KSK). Before you can delete a KSK, you must
-#' deactivate it. The KSK must be deactived before you can delete it
+#' Deletes a key-signing key (KSK). Before you can delete a KSK, you must
+#' deactivate it. The KSK must be deactivated before you can delete it
 #' regardless of whether the hosted zone is enabled for DNSSEC signing.
+#' 
+#' You can use
+#' [`deactivate_key_signing_key`][route53_deactivate_key_signing_key] to
+#' deactivate the key before you delete it.
+#' 
+#' Use [`get_dnssec`][route53_get_dnssec] to verify that the KSK is in an
+#' `INACTIVE` status.
 #'
 #' @usage
 #' route53_delete_key_signing_key(HostedZoneId, Name)
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
-#' @param Name &#91;required&#93; An alphanumeric string used to identify a key signing key (KSK).
+#' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK).
 #'
 #' @return
 #' A list with the following syntax:
@@ -2431,9 +2671,10 @@ route53_delete_traffic_policy_instance <- function(Id) {
 #' [`delete_vpc_association_authorization`][route53_delete_vpc_association_authorization]
 #' request.
 #' 
-#' Sending this request only prevents the AWS account that created the VPC
-#' from associating the VPC with the Amazon Route 53 hosted zone in the
-#' future. If the VPC is already associated with the hosted zone,
+#' Sending this request only prevents the Amazon Web Services account that
+#' created the VPC from associating the VPC with the Amazon Route 53 hosted
+#' zone in the future. If the VPC is already associated with the hosted
+#' zone,
 #' [`delete_vpc_association_authorization`][route53_delete_vpc_association_authorization]
 #' won't disassociate the VPC from the hosted zone. If you want to delete
 #' an existing association, use
@@ -2443,11 +2684,12 @@ route53_delete_traffic_policy_instance <- function(Id) {
 #' route53_delete_vpc_association_authorization(HostedZoneId, VPC)
 #'
 #' @param HostedZoneId &#91;required&#93; When removing authorization to associate a VPC that was created by one
-#' AWS account with a hosted zone that was created with a different AWS
-#' account, the ID of the hosted zone.
+#' Amazon Web Services account with a hosted zone that was created with a
+#' different Amazon Web Services account, the ID of the hosted zone.
 #' @param VPC &#91;required&#93; When removing authorization to associate a VPC that was created by one
-#' AWS account with a hosted zone that was created with a different AWS
-#' account, a complex type that includes the ID and region of the VPC.
+#' Amazon Web Services account with a hosted zone that was created with a
+#' different Amazon Web Services account, a complex type that includes the
+#' ID and region of the VPC.
 #'
 #' @return
 #' An empty list.
@@ -2457,7 +2699,7 @@ route53_delete_traffic_policy_instance <- function(Id) {
 #' svc$delete_vpc_association_authorization(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
 #'     VPCId = "string"
 #'   )
 #' )
@@ -2487,7 +2729,7 @@ route53_delete_vpc_association_authorization <- function(HostedZoneId, VPC) {
 #'
 #' @description
 #' Disables DNSSEC signing in a specific hosted zone. This action does not
-#' deactivate any key signing keys (KSKs) that are active in the hosted
+#' deactivate any key-signing keys (KSKs) that are active in the hosted
 #' zone.
 #'
 #' @usage
@@ -2554,7 +2796,7 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #'     request using either the account that created the hosted zone or the
 #'     account that created the Amazon VPC.
 #' 
-#' -   Some services, such as AWS Cloud Map and Amazon Elastic File System
+#' -   Some services, such as Cloud Map and Amazon Elastic File System
 #'     (Amazon EFS) automatically create hosted zones and associate VPCs
 #'     with the hosted zones. A service can create a hosted zone using your
 #'     account or using its own account. You can disassociate a VPC from a
@@ -2567,6 +2809,22 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone].
 #'     If the hosted zone has a value for `OwningService`, you can't use
 #'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone].
+#' 
+#' When revoking access, the hosted zone and the Amazon VPC must belong to
+#' the same partition. A partition is a group of Amazon Web Services
+#' Regions. Each Amazon Web Services account is scoped to one partition.
+#' 
+#' The following are the supported partitions:
+#' 
+#' -   `aws` - Amazon Web Services Regions
+#' 
+#' -   `aws-cn` - China Regions
+#' 
+#' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
+#' 
+#' For more information, see [Access
+#' Management](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' in the *Amazon Web Services General Reference*.
 #'
 #' @usage
 #' route53_disassociate_vpc_from_hosted_zone(HostedZoneId, VPC, Comment)
@@ -2597,7 +2855,7 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' svc$disassociate_vpc_from_hosted_zone(
 #'   HostedZoneId = "string",
 #'   VPC = list(
-#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'     VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
 #'     VPCId = "string"
 #'   ),
 #'   Comment = "string"
@@ -2683,13 +2941,12 @@ route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' Gets the specified limit for the current account, for example, the
 #' maximum number of health checks that you can create using the account.
 #' 
-#' For the default limit, see
-#' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
-#' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
-#' open a case.
+#' For the default limit, see Limits in the *Amazon Route 53 Developer
+#' Guide*. To request a higher limit, open a case.
 #' 
-#' You can also view account limits in AWS Trusted Advisor. Sign in to the
-#' AWS Management Console and open the Trusted Advisor console at
+#' You can also view account limits in Amazon Web Services Trusted Advisor.
+#' Sign in to the Amazon Web Services Management Console and open the
+#' Trusted Advisor console at
 #' https://console.aws.amazon.com/trustedadvisor/. Then choose **Service
 #' limits** in the navigation pane.
 #'
@@ -2698,21 +2955,21 @@ route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
 #'
 #' @param Type &#91;required&#93; The limit that you want to get. Valid values include the following:
 #' 
-#' -   **MAX_HEALTH_CHECKS_BY_OWNER**: The maximum number of health
-#'     checks that you can create using the current account.
+#' -   **MAX_HEALTH_CHECKS_BY_OWNER**: The maximum number of health checks
+#'     that you can create using the current account.
 #' 
-#' -   **MAX_HOSTED_ZONES_BY_OWNER**: The maximum number of hosted
-#'     zones that you can create using the current account.
+#' -   **MAX_HOSTED_ZONES_BY_OWNER**: The maximum number of hosted zones
+#'     that you can create using the current account.
 #' 
-#' -   **MAX_REUSABLE_DELEGATION_SETS_BY_OWNER**: The maximum number
-#'     of reusable delegation sets that you can create using the current
+#' -   **MAX_REUSABLE_DELEGATION_SETS_BY_OWNER**: The maximum number of
+#'     reusable delegation sets that you can create using the current
 #'     account.
 #' 
 #' -   **MAX_TRAFFIC_POLICIES_BY_OWNER**: The maximum number of traffic
 #'     policies that you can create using the current account.
 #' 
-#' -   **MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER**: The maximum number
-#'     of traffic policy instances that you can create using the current
+#' -   **MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER**: The maximum number of
+#'     traffic policy instances that you can create using the current
 #'     account. (Traffic policy instances are referred to as traffic flow
 #'     policy records in the Amazon Route 53 console.)
 #'
@@ -2818,16 +3075,18 @@ route53_get_change <- function(Id) {
 }
 .route53$operations$get_change <- route53_get_change
 
-#' GetCheckerIpRanges still works, but we recommend that you download
-#' ip-ranges
+#' Route 53 does not perform authorization for this API because it
+#' retrieves information that is already available to the public
 #'
 #' @description
+#' Route 53 does not perform authorization for this API because it
+#' retrieves information that is already available to the public.
+#' 
 #' [`get_checker_ip_ranges`][route53_get_checker_ip_ranges] still works,
 #' but we recommend that you download ip-ranges.json, which includes IP
-#' address ranges for all AWS services. For more information, see [IP
-#' Address Ranges of Amazon Route 53
-#' Servers](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' address ranges for all Amazon Web Services services. For more
+#' information, see IP Address Ranges of Amazon Route 53 Servers in the
+#' *Amazon Route 53 Developer Guide*.
 #'
 #' @usage
 #' route53_get_checker_ip_ranges()
@@ -2868,13 +3127,11 @@ route53_get_checker_ip_ranges <- function() {
 .route53$operations$get_checker_ip_ranges <- route53_get_checker_ip_ranges
 
 #' Returns information about DNSSEC for a specific hosted zone, including
-#' the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted
-#' zone
+#' the key-signing keys (KSKs) in the hosted zone
 #'
 #' @description
 #' Returns information about DNSSEC for a specific hosted zone, including
-#' the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted
-#' zone.
+#' the key-signing keys (KSKs) in the hosted zone.
 #'
 #' @usage
 #' route53_get_dnssec(HostedZoneId)
@@ -2950,6 +3207,9 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' Gets information about whether a specified geographic location is
 #' supported for Amazon Route 53 geolocation resource record sets.
 #' 
+#' Route 53 does not perform authorization for this API because it
+#' retrieves information that is already available to the public.
+#' 
 #' Use the following syntax to determine whether a continent is supported
 #' for geolocation:
 #' 
@@ -2986,15 +3246,12 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' 
 #' -   **SA**: South America
 #' @param CountryCode Amazon Route 53 uses the two-letter country codes that are specified in
-#' [ISO standard 3166-1
-#' alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-#' @param SubdivisionCode For `SubdivisionCode`, Amazon Route 53 supports only states of the
-#' United States. For a list of state abbreviations, see Appendix B:
+#' ISO standard 3166-1 alpha-2.
+#' @param SubdivisionCode The code for the subdivision, such as a particular state within the
+#' United States. For a list of US state abbreviations, see Appendix B:
 #' Two–Letter State and Possession Abbreviations on the United States
-#' Postal Service website.
-#' 
-#' If you specify `subdivisioncode`, you must also specify `US` for
-#' `CountryCode`.
+#' Postal Service website. For a list of all supported subdivision codes,
+#' use the [`list_geo_locations`][route53_list_geo_locations] API.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3067,7 +3324,7 @@ route53_get_geo_location <- function(ContinentCode = NULL, CountryCode = NULL, S
 #'     HealthCheckConfig = list(
 #'       IPAddress = "string",
 #'       Port = 123,
-#'       Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
+#'       Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC"|"RECOVERY_CONTROL",
 #'       ResourcePath = "string",
 #'       FullyQualifiedDomainName = "string",
 #'       SearchString = "string",
@@ -3085,10 +3342,11 @@ route53_get_geo_location <- function(ContinentCode = NULL, CountryCode = NULL, S
 #'         "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
 #'       ),
 #'       AlarmIdentifier = list(
-#'         Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
+#'         Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1",
 #'         Name = "string"
 #'       ),
-#'       InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
+#'       InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",
+#'       RoutingControlArn = "string"
 #'     ),
 #'     HealthCheckVersion = 123,
 #'     CloudWatchAlarmConfiguration = list(
@@ -3138,11 +3396,11 @@ route53_get_health_check <- function(HealthCheckId) {
 .route53$operations$get_health_check <- route53_get_health_check
 
 #' Retrieves the number of health checks that are associated with the
-#' current AWS account
+#' current Amazon Web Services account
 #'
 #' @description
 #' Retrieves the number of health checks that are associated with the
-#' current AWS account.
+#' current Amazon Web Services account.
 #'
 #' @usage
 #' route53_get_health_check_count()
@@ -3249,6 +3507,10 @@ route53_get_health_check_last_failure_reason <- function(HealthCheckId) {
 #'
 #' @description
 #' Gets status of a specified health check.
+#' 
+#' This API is intended for use during development to diagnose behavior. It
+#' doesn’t support production use-cases with high query rates that require
+#' immediate and actionable responses.
 #'
 #' @usage
 #' route53_get_health_check_status(HealthCheckId)
@@ -3348,7 +3610,7 @@ route53_get_health_check_status <- function(HealthCheckId) {
 #'   ),
 #'   VPCs = list(
 #'     list(
-#'       VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'       VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
 #'       VPCId = "string"
 #'     )
 #'   )
@@ -3392,11 +3654,11 @@ route53_get_hosted_zone <- function(Id) {
 .route53$operations$get_hosted_zone <- route53_get_hosted_zone
 
 #' Retrieves the number of hosted zones that are associated with the
-#' current AWS account
+#' current Amazon Web Services account
 #'
 #' @description
 #' Retrieves the number of hosted zones that are associated with the
-#' current AWS account.
+#' current Amazon Web Services account.
 #'
 #' @usage
 #' route53_get_hosted_zone_count()
@@ -3441,21 +3703,19 @@ route53_get_hosted_zone_count <- function() {
 #' Gets the specified limit for a specified hosted zone, for example, the
 #' maximum number of records that you can create in the hosted zone.
 #' 
-#' For the default limit, see
-#' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
-#' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
-#' open a case.
+#' For the default limit, see Limits in the *Amazon Route 53 Developer
+#' Guide*. To request a higher limit, open a case.
 #'
 #' @usage
 #' route53_get_hosted_zone_limit(Type, HostedZoneId)
 #'
 #' @param Type &#91;required&#93; The limit that you want to get. Valid values include the following:
 #' 
-#' -   **MAX_RRSETS_BY_ZONE**: The maximum number of records that you
-#'     can create in the specified hosted zone.
+#' -   **MAX_RRSETS_BY_ZONE**: The maximum number of records that you can
+#'     create in the specified hosted zone.
 #' 
-#' -   **MAX_VPCS_ASSOCIATED_BY_ZONE**: The maximum number of Amazon
-#'     VPCs that you can associate with the specified private hosted zone.
+#' -   **MAX_VPCS_ASSOCIATED_BY_ZONE**: The maximum number of Amazon VPCs
+#'     that you can associate with the specified private hosted zone.
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that you want to get a limit for.
 #'
 #' @return
@@ -3505,8 +3765,7 @@ route53_get_hosted_zone_limit <- function(Type, HostedZoneId) {
 #' 
 #' For more information about DNS query logs, see
 #' [`create_query_logging_config`][route53_create_query_logging_config] and
-#' [Logging DNS
-#' Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html).
+#' Logging DNS Queries.
 #'
 #' @usage
 #' route53_get_query_logging_config(Id)
@@ -3614,10 +3873,8 @@ route53_get_reusable_delegation_set <- function(Id) {
 #' Gets the maximum number of hosted zones that you can associate with the
 #' specified reusable delegation set.
 #' 
-#' For the default limit, see
-#' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
-#' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
-#' open a case.
+#' For the default limit, see Limits in the *Amazon Route 53 Developer
+#' Guide*. To request a higher limit, open a case.
 #'
 #' @usage
 #' route53_get_reusable_delegation_set_limit(Type, DelegationSetId)
@@ -3794,11 +4051,11 @@ route53_get_traffic_policy_instance <- function(Id) {
 .route53$operations$get_traffic_policy_instance <- route53_get_traffic_policy_instance
 
 #' Gets the number of traffic policy instances that are associated with the
-#' current AWS account
+#' current Amazon Web Services account
 #'
 #' @description
 #' Gets the number of traffic policy instances that are associated with the
-#' current AWS account.
+#' current Amazon Web Services account.
 #'
 #' @usage
 #' route53_get_traffic_policy_instance_count()
@@ -3836,6 +4093,187 @@ route53_get_traffic_policy_instance_count <- function() {
 }
 .route53$operations$get_traffic_policy_instance_count <- route53_get_traffic_policy_instance_count
 
+#' Returns a paginated list of location objects and their CIDR blocks
+#'
+#' @description
+#' Returns a paginated list of location objects and their CIDR blocks.
+#'
+#' @usage
+#' route53_list_cidr_blocks(CollectionId, LocationName, NextToken,
+#'   MaxResults)
+#'
+#' @param CollectionId &#91;required&#93; The UUID of the CIDR collection.
+#' @param LocationName The name of the CIDR collection location.
+#' @param NextToken An opaque pagination token to indicate where the service is to begin
+#' enumerating results.
+#' @param MaxResults Maximum number of results you want returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   CidrBlocks = list(
+#'     list(
+#'       CidrBlock = "string",
+#'       LocationName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_cidr_blocks(
+#'   CollectionId = "string",
+#'   LocationName = "string",
+#'   NextToken = "string",
+#'   MaxResults = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53_list_cidr_blocks
+route53_list_cidr_blocks <- function(CollectionId, LocationName = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCidrBlocks",
+    http_method = "GET",
+    http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}/cidrblocks",
+    paginator = list()
+  )
+  input <- .route53$list_cidr_blocks_input(CollectionId = CollectionId, LocationName = LocationName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .route53$list_cidr_blocks_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$list_cidr_blocks <- route53_list_cidr_blocks
+
+#' Returns a paginated list of CIDR collections in the Amazon Web Services
+#' account (metadata only)
+#'
+#' @description
+#' Returns a paginated list of CIDR collections in the Amazon Web Services
+#' account (metadata only).
+#'
+#' @usage
+#' route53_list_cidr_collections(NextToken, MaxResults)
+#'
+#' @param NextToken An opaque pagination token to indicate where the service is to begin
+#' enumerating results.
+#' 
+#' If no value is provided, the listing of results starts from the
+#' beginning.
+#' @param MaxResults The maximum number of CIDR collections to return in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   CidrCollections = list(
+#'     list(
+#'       Arn = "string",
+#'       Id = "string",
+#'       Name = "string",
+#'       Version = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_cidr_collections(
+#'   NextToken = "string",
+#'   MaxResults = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53_list_cidr_collections
+route53_list_cidr_collections <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCidrCollections",
+    http_method = "GET",
+    http_path = "/2013-04-01/cidrcollection",
+    paginator = list()
+  )
+  input <- .route53$list_cidr_collections_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .route53$list_cidr_collections_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$list_cidr_collections <- route53_list_cidr_collections
+
+#' Returns a paginated list of CIDR locations for the given collection
+#' (metadata only, does not include CIDR blocks)
+#'
+#' @description
+#' Returns a paginated list of CIDR locations for the given collection
+#' (metadata only, does not include CIDR blocks).
+#'
+#' @usage
+#' route53_list_cidr_locations(CollectionId, NextToken, MaxResults)
+#'
+#' @param CollectionId &#91;required&#93; The CIDR collection ID.
+#' @param NextToken An opaque pagination token to indicate where the service is to begin
+#' enumerating results.
+#' 
+#' If no value is provided, the listing of results starts from the
+#' beginning.
+#' @param MaxResults The maximum number of CIDR collection locations to return in the
+#' response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   CidrLocations = list(
+#'     list(
+#'       LocationName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_cidr_locations(
+#'   CollectionId = "string",
+#'   NextToken = "string",
+#'   MaxResults = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53_list_cidr_locations
+route53_list_cidr_locations <- function(CollectionId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCidrLocations",
+    http_method = "GET",
+    http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
+    paginator = list()
+  )
+  input <- .route53$list_cidr_locations_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .route53$list_cidr_locations_output()
+  config <- get_config()
+  svc <- .route53$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53$operations$list_cidr_locations <- route53_list_cidr_locations
+
 #' Retrieves a list of supported geographic locations
 #'
 #' @description
@@ -3846,9 +4284,11 @@ route53_get_traffic_policy_instance_count <- function() {
 #' provinces), the subdivisions for that country are listed in alphabetical
 #' order immediately after the corresponding country.
 #' 
-#' For a list of supported geolocation codes, see the
-#' [GeoLocation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_GeoLocation.html)
-#' data type.
+#' Route 53 does not perform authorization for this API because it
+#' retrieves information that is already available to the public.
+#' 
+#' For a list of supported geolocation codes, see the GeoLocation data
+#' type.
 #'
 #' @usage
 #' route53_list_geo_locations(StartContinentCode, StartCountryCode,
@@ -3935,11 +4375,11 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
 .route53$operations$list_geo_locations <- route53_list_geo_locations
 
 #' Retrieve a list of the health checks that are associated with the
-#' current AWS account
+#' current Amazon Web Services account
 #'
 #' @description
 #' Retrieve a list of the health checks that are associated with the
-#' current AWS account.
+#' current Amazon Web Services account.
 #'
 #' @usage
 #' route53_list_health_checks(Marker, MaxItems)
@@ -3975,7 +4415,7 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
 #'       HealthCheckConfig = list(
 #'         IPAddress = "string",
 #'         Port = 123,
-#'         Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
+#'         Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC"|"RECOVERY_CONTROL",
 #'         ResourcePath = "string",
 #'         FullyQualifiedDomainName = "string",
 #'         SearchString = "string",
@@ -3993,10 +4433,11 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
 #'           "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
 #'         ),
 #'         AlarmIdentifier = list(
-#'           Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
+#'           Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1",
 #'           Name = "string"
 #'         ),
-#'         InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
+#'         InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",
+#'         RoutingControlArn = "string"
 #'       ),
 #'       HealthCheckVersion = 123,
 #'       CloudWatchAlarmConfiguration = list(
@@ -4052,12 +4493,12 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
 .route53$operations$list_health_checks <- route53_list_health_checks
 
 #' Retrieves a list of the public and private hosted zones that are
-#' associated with the current AWS account
+#' associated with the current Amazon Web Services account
 #'
 #' @description
 #' Retrieves a list of the public and private hosted zones that are
-#' associated with the current AWS account. The response includes a
-#' `HostedZones` child element for each hosted zone.
+#' associated with the current Amazon Web Services account. The response
+#' includes a `HostedZones` child element for each hosted zone.
 #' 
 #' Amazon Route 53 returns a maximum of 100 items in each response. If you
 #' have a lot of hosted zones, you can use the `maxitems` parameter to list
@@ -4146,7 +4587,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' @description
 #' Retrieves a list of your hosted zones in lexicographic order. The
 #' response includes a `HostedZones` child element for each hosted zone
-#' created by the current AWS account.
+#' created by the current Amazon Web Services account.
 #' 
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name] sorts
 #' hosted zones by name with the labels reversed. For example:
@@ -4160,7 +4601,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name]
 #' alphabetizes the domain name using the escaped or Punycoded value, which
 #' is the format that Amazon Route 53 saves in its database. For example,
-#' to create a hosted zone for exämple.com, you specify ex\\344mple.com for
+#' to create a hosted zone for exämple.com, you specify ex\344mple.com for
 #' the domain name.
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name]
 #' alphabetizes it as:
@@ -4169,9 +4610,8 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' 
 #' The labels are reversed and alphabetized using the escaped value. For
 #' more information about valid domain name formats, including
-#' internationalized domain names, see [DNS Domain Name
-#' Format](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' internationalized domain names, see DNS Domain Name Format in the
+#' *Amazon Route 53 Developer Guide*.
 #' 
 #' Route 53 returns up to 100 items in each response. If you have a lot of
 #' hosted zones, use the `MaxItems` parameter to list them in groups of up
@@ -4187,7 +4627,8 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #'     produced the current response.
 #' 
 #' -   If the value of `IsTruncated` in the response is true, there are
-#'     more hosted zones associated with the current AWS account.
+#'     more hosted zones associated with the current Amazon Web Services
+#'     account.
 #' 
 #'     If `IsTruncated` is false, this response includes the last hosted
 #'     zone that is associated with the current account. The `NextDNSName`
@@ -4196,8 +4637,8 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' 
 #' -   The `NextDNSName` and `NextHostedZoneId` elements in the response
 #'     contain the domain name and the hosted zone ID of the next hosted
-#'     zone that is associated with the current AWS account. If you want to
-#'     list more hosted zones, make another call to
+#'     zone that is associated with the current Amazon Web Services
+#'     account. If you want to list more hosted zones, make another call to
 #'     [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name],
 #'     and specify the value of `NextDNSName` and `NextHostedZoneId` in the
 #'     `dnsname` and `hostedzoneid` parameters, respectively.
@@ -4210,10 +4651,10 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' include the `dnsname` parameter only if you want to specify the name of
 #' the first hosted zone in the response. If you don't include the
 #' `dnsname` parameter, Amazon Route 53 returns all of the hosted zones
-#' that were created by the current AWS account, in ASCII order. For
-#' subsequent requests, include both `dnsname` and `hostedzoneid`
-#' parameters. For `dnsname`, specify the value of `NextDNSName` from the
-#' previous response.
+#' that were created by the current Amazon Web Services account, in ASCII
+#' order. For subsequent requests, include both `dnsname` and
+#' `hostedzoneid` parameters. For `dnsname`, specify the value of
+#' `NextDNSName` from the previous response.
 #' @param HostedZoneId (Optional) For your first request to
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name], do not
 #' include the `hostedzoneid` parameter.
@@ -4291,31 +4732,48 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 .route53$operations$list_hosted_zones_by_name <- route53_list_hosted_zones_by_name
 
 #' Lists all the private hosted zones that a specified VPC is associated
-#' with, regardless of which AWS account or AWS service owns the hosted
-#' zones
+#' with, regardless of which Amazon Web Services account or Amazon Web
+#' Services service owns the hosted zones
 #'
 #' @description
 #' Lists all the private hosted zones that a specified VPC is associated
-#' with, regardless of which AWS account or AWS service owns the hosted
-#' zones. The `HostedZoneOwner` structure in the response contains one of
-#' the following values:
+#' with, regardless of which Amazon Web Services account or Amazon Web
+#' Services service owns the hosted zones. The `HostedZoneOwner` structure
+#' in the response contains one of the following values:
 #' 
 #' -   An `OwningAccount` element, which contains the account number of
-#'     either the current AWS account or another AWS account. Some
-#'     services, such as AWS Cloud Map, create hosted zones using the
-#'     current account.
+#'     either the current Amazon Web Services account or another Amazon Web
+#'     Services account. Some services, such as Cloud Map, create hosted
+#'     zones using the current account.
 #' 
-#' -   An `OwningService` element, which identifies the AWS service that
-#'     created and owns the hosted zone. For example, if a hosted zone was
-#'     created by Amazon Elastic File System (Amazon EFS), the value of
-#'     `Owner` is `efs.amazonaws.com`.
+#' -   An `OwningService` element, which identifies the Amazon Web Services
+#'     service that created and owns the hosted zone. For example, if a
+#'     hosted zone was created by Amazon Elastic File System (Amazon EFS),
+#'     the value of `Owner` is `efs.amazonaws.com`.
+#' 
+#' When listing private hosted zones, the hosted zone and the Amazon VPC
+#' must belong to the same partition where the hosted zones were created. A
+#' partition is a group of Amazon Web Services Regions. Each Amazon Web
+#' Services account is scoped to one partition.
+#' 
+#' The following are the supported partitions:
+#' 
+#' -   `aws` - Amazon Web Services Regions
+#' 
+#' -   `aws-cn` - China Regions
+#' 
+#' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
+#' 
+#' For more information, see [Access
+#' Management](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' in the *Amazon Web Services General Reference*.
 #'
 #' @usage
 #' route53_list_hosted_zones_by_vpc(VPCId, VPCRegion, MaxItems, NextToken)
 #'
 #' @param VPCId &#91;required&#93; The ID of the Amazon VPC that you want to list hosted zones for.
-#' @param VPCRegion &#91;required&#93; For the Amazon VPC that you specified for `VPCId`, the AWS Region that
-#' you created the VPC in.
+#' @param VPCRegion &#91;required&#93; For the Amazon VPC that you specified for `VPCId`, the Amazon Web
+#' Services Region that you created the VPC in.
 #' @param MaxItems (Optional) The maximum number of hosted zones that you want Amazon Route
 #' 53 to return. If the specified VPC is associated with more than
 #' `MaxItems` hosted zones, the response includes a `NextToken` element.
@@ -4355,7 +4813,7 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #' ```
 #' svc$list_hosted_zones_by_vpc(
 #'   VPCId = "string",
-#'   VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'   VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
 #'   MaxItems = "string",
 #'   NextToken = "string"
 #' )
@@ -4382,20 +4840,18 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 .route53$operations$list_hosted_zones_by_vpc <- route53_list_hosted_zones_by_vpc
 
 #' Lists the configurations for DNS query logging that are associated with
-#' the current AWS account or the configuration that is associated with a
-#' specified hosted zone
+#' the current Amazon Web Services account or the configuration that is
+#' associated with a specified hosted zone
 #'
 #' @description
 #' Lists the configurations for DNS query logging that are associated with
-#' the current AWS account or the configuration that is associated with a
-#' specified hosted zone.
+#' the current Amazon Web Services account or the configuration that is
+#' associated with a specified hosted zone.
 #' 
 #' For more information about DNS query logs, see
 #' [`create_query_logging_config`][route53_create_query_logging_config].
 #' Additional information, including the format of DNS query logs, appears
-#' in [Logging DNS
-#' Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' in Logging DNS Queries in the *Amazon Route 53 Developer Guide*.
 #'
 #' @usage
 #' route53_list_query_logging_configs(HostedZoneId, NextToken, MaxResults)
@@ -4406,10 +4862,10 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 #' If you don't specify a hosted zone ID,
 #' [`list_query_logging_configs`][route53_list_query_logging_configs]
 #' returns all of the configurations that are associated with the current
-#' AWS account.
-#' @param NextToken (Optional) If the current AWS account has more than `MaxResults` query
-#' logging configurations, use `NextToken` to get the second and subsequent
-#' pages of results.
+#' Amazon Web Services account.
+#' @param NextToken (Optional) If the current Amazon Web Services account has more than
+#' `MaxResults` query logging configurations, use `NextToken` to get the
+#' second and subsequent pages of results.
 #' 
 #' For the first
 #' [`list_query_logging_configs`][route53_list_query_logging_configs]
@@ -4420,10 +4876,9 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 #' request.
 #' @param MaxResults (Optional) The maximum number of query logging configurations that you
 #' want Amazon Route 53 to return in response to the current request. If
-#' the current AWS account has more than `MaxResults` configurations, use
-#' the value of
-#' [NextToken](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListQueryLoggingConfigs.html#API_ListQueryLoggingConfigs_RequestSyntax)
-#' in the response to get the next page of results.
+#' the current Amazon Web Services account has more than `MaxResults`
+#' configurations, use the value of NextToken in the response to get the
+#' next page of results.
 #' 
 #' If you don't specify a value for `MaxResults`, Route 53 returns up to
 #' 100 configurations.
@@ -4478,7 +4933,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #' Lists the resource record sets in a specified hosted zone.
 #' 
 #' [`list_resource_record_sets`][route53_list_resource_record_sets] returns
-#' up to 100 resource record sets at a time in ASCII order, beginning at a
+#' up to 300 resource record sets at a time in ASCII order, beginning at a
 #' position specified by the `name` and `type` elements.
 #' 
 #' **Sort order**
@@ -4609,7 +5064,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #'       Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
 #'       SetIdentifier = "string",
 #'       Weight = 123,
-#'       Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"me-south-1"|"ap-south-1"|"af-south-1"|"eu-south-1",
+#'       Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"me-south-1"|"ap-south-1"|"af-south-1"|"eu-south-1",
 #'       GeoLocation = list(
 #'         ContinentCode = "string",
 #'         CountryCode = "string",
@@ -4629,7 +5084,11 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #'         EvaluateTargetHealth = TRUE|FALSE
 #'       ),
 #'       HealthCheckId = "string",
-#'       TrafficPolicyInstanceId = "string"
+#'       TrafficPolicyInstanceId = "string",
+#'       CidrRoutingConfig = list(
+#'         CollectionId = "string",
+#'         LocationName = "string"
+#'       )
 #'     )
 #'   ),
 #'   IsTruncated = TRUE|FALSE,
@@ -4672,11 +5131,11 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
 .route53$operations$list_resource_record_sets <- route53_list_resource_record_sets
 
 #' Retrieves a list of the reusable delegation sets that are associated
-#' with the current AWS account
+#' with the current Amazon Web Services account
 #'
 #' @description
 #' Retrieves a list of the reusable delegation sets that are associated
-#' with the current AWS account.
+#' with the current Amazon Web Services account.
 #'
 #' @usage
 #' route53_list_reusable_delegation_sets(Marker, MaxItems)
@@ -4752,7 +5211,7 @@ route53_list_reusable_delegation_sets <- function(Marker = NULL, MaxItems = NULL
 #' For information about using tags for cost allocation, see [Using Cost
 #' Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management User Guide*.
+#' in the *Billing and Cost Management User Guide*.
 #'
 #' @usage
 #' route53_list_tags_for_resource(ResourceType, ResourceId)
@@ -4817,7 +5276,7 @@ route53_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #' For information about using tags for cost allocation, see [Using Cost
 #' Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management User Guide*.
+#' in the *Billing and Cost Management User Guide*.
 #'
 #' @usage
 #' route53_list_tags_for_resources(ResourceType, ResourceIds)
@@ -4880,12 +5339,12 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
 .route53$operations$list_tags_for_resources <- route53_list_tags_for_resources
 
 #' Gets information about the latest version for every traffic policy that
-#' is associated with the current AWS account
+#' is associated with the current Amazon Web Services account
 #'
 #' @description
 #' Gets information about the latest version for every traffic policy that
-#' is associated with the current AWS account. Policies are listed in the
-#' order that they were created in.
+#' is associated with the current Amazon Web Services account. Policies are
+#' listed in the order that they were created in.
 #' 
 #' For information about how of deleting a traffic policy affects the
 #' response from [`list_traffic_policies`][route53_list_traffic_policies],
@@ -4960,11 +5419,11 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
 .route53$operations$list_traffic_policies <- route53_list_traffic_policies
 
 #' Gets information about the traffic policy instances that you created by
-#' using the current AWS account
+#' using the current Amazon Web Services account
 #'
 #' @description
 #' Gets information about the traffic policy instances that you created by
-#' using the current AWS account.
+#' using the current Amazon Web Services account.
 #' 
 #' After you submit an
 #' [`update_traffic_policy_instance`][route53_update_traffic_policy_instance]
@@ -5443,7 +5902,7 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
 #'   NextToken = "string",
 #'   VPCs = list(
 #'     list(
-#'       VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
+#'       VPCRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-east-1"|"me-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-south-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"ca-central-1"|"cn-north-1"|"af-south-1"|"eu-south-1",
 #'       VPCId = "string"
 #'     )
 #'   )
@@ -5487,6 +5946,8 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' for a specified record name and type. You can optionally specify the IP
 #' address of a DNS resolver, an EDNS0 client subnet IP address, and a
 #' subnet mask.
+#' 
+#' This call only supports querying public hosted zones.
 #'
 #' @usage
 #' route53_test_dns_answer(HostedZoneId, RecordName, RecordType,
@@ -5499,8 +5960,8 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' @param RecordType &#91;required&#93; The type of the resource record set.
 #' @param ResolverIP If you want to simulate a request from a specific DNS resolver, specify
 #' the IP address for that resolver. If you omit this value,
-#' `TestDnsAnswer` uses the IP address of a DNS resolver in the AWS US East
-#' (N. Virginia) Region (`us-east-1`).
+#' `TestDnsAnswer` uses the IP address of a DNS resolver in the Amazon Web
+#' Services US East (N. Virginia) Region (`us-east-1`).
 #' @param EDNS0ClientSubnetIP If the resolver that you specified for resolverip supports EDNS0,
 #' specify the IPv4 or IPv6 address of a client in the applicable location,
 #' for example, `192.0.2.44` or `2001:db8:85a3::8a2e:370:7334`.
@@ -5572,10 +6033,9 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' Updates an existing health check. Note that some values can't be
 #' updated.
 #' 
-#' For more information about updating health checks, see [Creating,
-#' Updating, and Deleting Health
-#' Checks](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' For more information about updating health checks, see Creating,
+#' Updating, and Deleting Health Checks in the *Amazon Route 53 Developer
+#' Guide*.
 #'
 #' @usage
 #' route53_update_health_check(HealthCheckId, HealthCheckVersion,
@@ -5636,30 +6096,25 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #'     (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 #'     in the *Amazon EC2 User Guide for Linux Instances*
 #' 
-#' -   Windows: [Elastic IP Addresses
-#'     (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html)
-#'     in the *Amazon EC2 User Guide for Windows Instances*
+#' -   Windows: Elastic IP Addresses (EIP) in the *Amazon EC2 User Guide
+#'     for Windows Instances*
 #' 
 #' If a health check already has a value for `IPAddress`, you can change
 #' the value. However, you can't update an existing health check to add or
 #' remove the value of `IPAddress`.
 #' 
-#' For more information, see
-#' [FullyQualifiedDomainName](https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
+#' For more information, see FullyQualifiedDomainName.
 #' 
 #' Constraints: Route 53 can't check the health of endpoints for which the
 #' IP address is in local, private, non-routable, or multicast ranges. For
 #' more information about IP addresses for which you can't create health
 #' checks, see the following documents:
 #' 
-#' -   [RFC 5735, Special Use IPv4
-#'     Addresses](https://datatracker.ietf.org/doc/html/rfc5735)
+#' -   RFC 5735, Special Use IPv4 Addresses
 #' 
-#' -   [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
-#'     Space](https://datatracker.ietf.org/doc/html/rfc6598)
+#' -   RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space
 #' 
-#' -   [RFC 5156, Special-Use IPv6
-#'     Addresses](https://datatracker.ietf.org/doc/html/rfc5156)
+#' -   RFC 5156, Special-Use IPv6 Addresses
 #' @param Port The port on the endpoint that you want Amazon Route 53 to perform health
 #' checks on.
 #' 
@@ -5699,8 +6154,8 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #'     `FullyQualifiedDomainName` to the endpoint in the `Host` header.
 #' 
 #' -   If you specify another value for `Port` and any value except `TCP`
-#'     for `Type`, Route 53 passes *`FullyQualifiedDomainName`:`Port`* to
-#'     the endpoint in the `Host` header.
+#'     for `Type`, Route 53 passes *FullyQualifiedDomainName:Port* to the
+#'     endpoint in the `Host` header.
 #' 
 #' If you don't specify a value for `FullyQualifiedDomainName`, Route 53
 #' substitutes the value of `IPAddress` in the `Host` header in each of the
@@ -5746,10 +6201,9 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' `Type` when you update a health check.)
 #' @param FailureThreshold The number of consecutive health checks that an endpoint must pass or
 #' fail for Amazon Route 53 to change the current status of the endpoint
-#' from unhealthy to healthy or vice versa. For more information, see [How
-#' Amazon Route 53 Determines Whether an Endpoint Is
-#' Healthy](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
-#' in the *Amazon Route 53 Developer Guide*.
+#' from unhealthy to healthy or vice versa. For more information, see How
+#' Amazon Route 53 Determines Whether an Endpoint Is Healthy in the *Amazon
+#' Route 53 Developer Guide*.
 #' 
 #' If you don't specify a value for `FailureThreshold`, the default value
 #' is three health checks.
@@ -5772,11 +6226,10 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' health check to always be healthy. If you configured DNS failover, Route
 #' 53 continues to route traffic to the corresponding resources. If you
 #' want to stop routing traffic to a resource, change the value of
-#' [Inverted](https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-Inverted).
+#' Inverted.
 #' 
 #' Charges for a health check still apply when the health check is
-#' disabled. For more information, see [Amazon Route 53
-#' Pricing](https://aws.amazon.com/route53/pricing/).
+#' disabled. For more information, see Amazon Route 53 Pricing.
 #' @param HealthThreshold The number of child health checks that are associated with a
 #' `CALCULATED` health that Amazon Route 53 must consider healthy for the
 #' `CALCULATED` health check to be considered healthy. To specify the child
@@ -5829,29 +6282,24 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' 
 #' -   `Unhealthy`: Route 53 considers the health check to be unhealthy.
 #' 
-#' -   `LastKnownStatus`: Route 53 uses the status of the health check from
-#'     the last time CloudWatch had sufficient data to determine the alarm
-#'     state. For new health checks that have no last known status, the
-#'     default status for the health check is healthy.
+#' -   `LastKnownStatus`: By default, Route 53 uses the status of the
+#'     health check from the last time CloudWatch had sufficient data to
+#'     determine the alarm state. For new health checks that have no last
+#'     known status, the status for the health check is healthy.
 #' @param ResetElements A complex type that contains one `ResettableElementName` element for
 #' each element that you want to reset to the default value. Valid values
 #' for `ResettableElementName` include the following:
 #' 
-#' -   `ChildHealthChecks`: Amazon Route 53 resets
-#'     [ChildHealthChecks](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ChildHealthChecks)
-#'     to null.
+#' -   `ChildHealthChecks`: Amazon Route 53 resets ChildHealthChecks to
+#'     null.
 #' 
 #' -   `FullyQualifiedDomainName`: Route 53 resets
-#'     [FullyQualifiedDomainName](https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
-#'     to null.
+#'     FullyQualifiedDomainName. to null.
 #' 
-#' -   `Regions`: Route 53 resets the
-#'     [Regions](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-Regions)
-#'     list to the default set of regions.
+#' -   `Regions`: Route 53 resets the Regions list to the default set of
+#'     regions.
 #' 
-#' -   `ResourcePath`: Route 53 resets
-#'     [ResourcePath](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ResourcePath)
-#'     to null.
+#' -   `ResourcePath`: Route 53 resets ResourcePath to null.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5867,7 +6315,7 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #'     HealthCheckConfig = list(
 #'       IPAddress = "string",
 #'       Port = 123,
-#'       Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC",
+#'       Type = "HTTP"|"HTTPS"|"HTTP_STR_MATCH"|"HTTPS_STR_MATCH"|"TCP"|"CALCULATED"|"CLOUDWATCH_METRIC"|"RECOVERY_CONTROL",
 #'       ResourcePath = "string",
 #'       FullyQualifiedDomainName = "string",
 #'       SearchString = "string",
@@ -5885,10 +6333,11 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #'         "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
 #'       ),
 #'       AlarmIdentifier = list(
-#'         Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
+#'         Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1",
 #'         Name = "string"
 #'       ),
-#'       InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus"
+#'       InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",
+#'       RoutingControlArn = "string"
 #'     ),
 #'     HealthCheckVersion = 123,
 #'     CloudWatchAlarmConfiguration = list(
@@ -5932,7 +6381,7 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #'     "us-east-1"|"us-west-1"|"us-west-2"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"
 #'   ),
 #'   AlarmIdentifier = list(
-#'     Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-isob-east-1",
+#'     Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"ap-east-1"|"me-south-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-southeast-3"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-northwest-1"|"cn-north-1"|"af-south-1"|"eu-south-1"|"us-gov-west-1"|"us-gov-east-1"|"us-iso-east-1"|"us-iso-west-1"|"us-isob-east-1",
 #'     Name = "string"
 #'   ),
 #'   InsufficientDataHealthStatus = "Healthy"|"Unhealthy"|"LastKnownStatus",

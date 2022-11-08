@@ -4,7 +4,11 @@
 \alias{directoryservice_list_tags_for_resource}
 \title{Lists all tags on a directory}
 \usage{
-directoryservice_list_tags_for_resource(ResourceId, NextToken, Limit)
+directoryservice_list_tags_for_resource(
+  ResourceId,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{ResourceId}{[required] Identifier (ID) of the directory for which you want to retrieve tags.}
@@ -13,28 +17,9 @@ directoryservice_list_tags_for_resource(ResourceId, NextToken, Limit)
 
 \item{Limit}{Reserved for future use.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists all tags on a directory.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceId = "string",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{datapipeline_activate_pipeline}
 \title{Validates the specified pipeline and starts processing pipeline tasks}
 \usage{
-datapipeline_activate_pipeline(pipelineId, parameterValues,
-  startTimestamp)
+datapipeline_activate_pipeline(
+  pipelineId,
+  parameterValues = NULL,
+  startTimestamp = NULL
+)
 }
 \arguments{
 \item{pipelineId}{[required] The ID of the pipeline.}
@@ -15,34 +18,9 @@ datapipeline_activate_pipeline(pipelineId, parameterValues,
 \item{startTimestamp}{The date and time to resume the pipeline. By default, the pipeline
 resumes from the last completed execution.}
 }
-\value{
-An empty list.
-}
 \description{
-Validates the specified pipeline and starts processing pipeline tasks.
-If the pipeline does not pass validation, activation fails.
+Validates the specified pipeline and starts processing pipeline tasks. If the pipeline does not pass validation, activation fails.
 
-If you need to pause the pipeline to investigate an issue with a
-component, such as a data source or script, call
-\code{\link[=datapipeline_deactivate_pipeline]{deactivate_pipeline}}.
-
-To activate a finished pipeline, modify the end date for the pipeline
-and then activate it.
+See \url{https://paws-r.github.io/docs/datapipeline/activate_pipeline.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$activate_pipeline(
-  pipelineId = "string",
-  parameterValues = list(
-    list(
-      id = "string",
-      stringValue = "string"
-    )
-  ),
-  startTimestamp = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
-
 \keyword{internal}

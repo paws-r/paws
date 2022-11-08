@@ -9,30 +9,12 @@ backup_describe_backup_vault(BackupVaultName)
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupVaultName = "string",
-  BackupVaultArn = "string",
-  EncryptionKeyArn = "string",
-  CreationDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreatorRequestId = "string",
-  NumberOfRecoveryPoints = 123
-)
-}
+them and the Amazon Web Services Region where they are created. They
+consist of lowercase letters, numbers, and hyphens.}
 }
 \description{
 Returns metadata about a backup vault specified by its name.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_backup_vault(
-  BackupVaultName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/backup/describe_backup_vault.html} for full documentation.
+}
 \keyword{internal}

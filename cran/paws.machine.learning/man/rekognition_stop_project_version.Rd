@@ -13,22 +13,9 @@ delete.
 This operation requires permissions to perform the
 \code{rekognition:StopProjectVersion} action.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"
-)
-}
-}
 \description{
-Stops a running model. The operation might take a while to complete. To
-check the current status, call
-\code{\link[=rekognition_describe_project_versions]{describe_project_versions}}.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_project_version(
-  ProjectVersionArn = "string"
-)
-}
-}
+Stops a running model. The operation might take a while to complete. To check the current status, call \code{\link[=rekognition_describe_project_versions]{describe_project_versions}}.
 
+See \url{https://paws-r.github.io/docs/rekognition/stop_project_version.html} for full documentation.
+}
 \keyword{internal}

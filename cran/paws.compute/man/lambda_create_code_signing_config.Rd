@@ -4,8 +4,11 @@
 \alias{lambda_create_code_signing_config}
 \title{Creates a code signing configuration}
 \usage{
-lambda_create_code_signing_config(Description, AllowedPublishers,
-  CodeSigningPolicies)
+lambda_create_code_signing_config(
+  Description = NULL,
+  AllowedPublishers,
+  CodeSigningPolicies = NULL
+)
 }
 \arguments{
 \item{Description}{Descriptive name for this code signing configuration.}
@@ -15,43 +18,9 @@ lambda_create_code_signing_config(Description, AllowedPublishers,
 \item{CodeSigningPolicies}{The code signing policies define the actions to take if the validation
 checks fail.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CodeSigningConfig = list(
-    CodeSigningConfigId = "string",
-    CodeSigningConfigArn = "string",
-    Description = "string",
-    AllowedPublishers = list(
-      SigningProfileVersionArns = list(
-        "string"
-      )
-    ),
-    CodeSigningPolicies = list(
-      UntrustedArtifactOnDeployment = "Warn"|"Enforce"
-    ),
-    LastModified = "string"
-  )
-)
-}
-}
 \description{
-Creates a code signing configuration. A \href{https://docs.aws.amazon.com/lambda/latest/dg/}{code signing configuration} defines a
-list of allowed signing profiles and defines the code-signing validation
-policy (action to be taken if deployment validation checks fail).
-}
-\section{Request syntax}{
-\preformatted{svc$create_code_signing_config(
-  Description = "string",
-  AllowedPublishers = list(
-    SigningProfileVersionArns = list(
-      "string"
-    )
-  ),
-  CodeSigningPolicies = list(
-    UntrustedArtifactOnDeployment = "Warn"|"Enforce"
-  )
-)
-}
-}
+Creates a code signing configuration. A \href{https://docs.aws.amazon.com/lambda/latest/dg/}{code signing configuration} defines a list of allowed signing profiles and defines the code-signing validation policy (action to be taken if deployment validation checks fail).
 
+See \url{https://paws-r.github.io/docs/lambda/create_code_signing_config.html} for full documentation.
+}
 \keyword{internal}

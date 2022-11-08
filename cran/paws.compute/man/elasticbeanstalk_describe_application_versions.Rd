@@ -4,8 +4,12 @@
 \alias{elasticbeanstalk_describe_application_versions}
 \title{Retrieve a list of application versions}
 \usage{
-elasticbeanstalk_describe_application_versions(ApplicationName,
-  VersionLabels, MaxRecords, NextToken)
+elasticbeanstalk_describe_application_versions(
+  ApplicationName = NULL,
+  VersionLabels = NULL,
+  MaxRecords = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{Specify an application name to show only application versions for that
@@ -25,63 +29,9 @@ identical to the ones specified in the initial request.
 
 If no \code{NextToken} is specified, the first page is retrieved.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationVersions = list(
-    list(
-      ApplicationVersionArn = "string",
-      ApplicationName = "string",
-      Description = "string",
-      VersionLabel = "string",
-      SourceBuildInformation = list(
-        SourceType = "Git"|"Zip",
-        SourceRepository = "CodeCommit"|"S3",
-        SourceLocation = "string"
-      ),
-      BuildArn = "string",
-      SourceBundle = list(
-        S3Bucket = "string",
-        S3Key = "string"
-      ),
-      DateCreated = as.POSIXct(
-        "2015-01-01"
-      ),
-      DateUpdated = as.POSIXct(
-        "2015-01-01"
-      ),
-      Status = "Processed"|"Unprocessed"|"Failed"|"Processing"|"Building"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieve a list of application versions.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_application_versions(
-  ApplicationName = "string",
-  VersionLabels = list(
-    "string"
-  ),
-  MaxRecords = 123,
-  NextToken = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# The following operation retrieves information about an application
-# version labeled v2:
-svc$describe_application_versions(
-  ApplicationName = "my-app",
-  VersionLabels = list(
-    "v2"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_application_versions.html} for full documentation.
 }
 \keyword{internal}

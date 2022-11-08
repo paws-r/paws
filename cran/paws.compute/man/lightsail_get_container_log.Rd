@@ -5,8 +5,14 @@
 \title{Returns the log events of a container of your Amazon Lightsail container
 service}
 \usage{
-lightsail_get_container_log(serviceName, containerName, startTime,
-  endTime, filterPattern, pageToken)
+lightsail_get_container_log(
+  serviceName,
+  containerName,
+  startTime = NULL,
+  endTime = NULL,
+  filterPattern = NULL,
+  pageToken = NULL
+)
 }
 \arguments{
 \item{serviceName}{[required] The name of the container service for which to get a container log.}
@@ -65,46 +71,9 @@ To get a page token, perform an initial
 results are paginated, the response will return a next page token that
 you can specify as the page token in a subsequent request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  logEvents = list(
-    list(
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      message = "string"
-    )
-  ),
-  nextPageToken = "string"
-)
-}
-}
 \description{
-Returns the log events of a container of your Amazon Lightsail container
-service.
+Returns the log events of a container of your Amazon Lightsail container service.
 
-If your container service has more than one node (i.e., a scale greater
-than 1), then the log events that are returned for the specified
-container are merged from all nodes on your container service.
-
-Container logs are retained for a certain amount of time. For more
-information, see \href{https://docs.aws.amazon.com/general/latest/gr/lightsail.html}{Amazon Lightsail endpoints and quotas} in
-the \emph{AWS General Reference}.
+See \url{https://paws-r.github.io/docs/lightsail/get_container_log.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_container_log(
-  serviceName = "string",
-  containerName = "string",
-  startTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  endTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  filterPattern = "string",
-  pageToken = "string"
-)
-}
-}
-
 \keyword{internal}

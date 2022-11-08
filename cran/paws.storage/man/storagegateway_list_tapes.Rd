@@ -5,7 +5,7 @@
 \title{Lists virtual tapes in your virtual tape library (VTL) and your virtual
 tape shelf (VTS)}
 \usage{
-storagegateway_list_tapes(TapeARNs, Marker, Limit)
+storagegateway_list_tapes(TapeARNs = NULL, Marker = NULL, Limit = NULL)
 }
 \arguments{
 \item{TapeARNs}{}
@@ -16,51 +16,9 @@ of tapes.}
 \item{Limit}{An optional number limit for the tapes in the list returned by this
 call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TapeInfos = list(
-    list(
-      TapeARN = "string",
-      TapeBarcode = "string",
-      TapeSizeInBytes = 123,
-      TapeStatus = "string",
-      GatewayARN = "string",
-      PoolId = "string",
-      RetentionStartDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      PoolEntryDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Lists virtual tapes in your virtual tape library (VTL) and your virtual
-tape shelf (VTS). You specify the tapes to list by specifying one or
-more tape Amazon Resource Names (ARNs). If you don't specify a tape ARN,
-the operation lists all virtual tapes in both your VTL and VTS.
+Lists virtual tapes in your virtual tape library (VTL) and your virtual tape shelf (VTS). You specify the tapes to list by specifying one or more tape Amazon Resource Names (ARNs). If you don't specify a tape ARN, the operation lists all virtual tapes in both your VTL and VTS.
 
-This operation supports pagination. By default, the operation returns a
-maximum of up to 100 tapes. You can optionally specify the \code{Limit}
-parameter in the body to limit the number of tapes in the response. If
-the number of tapes returned in the response is truncated, the response
-includes a \code{Marker} element that you can use in your subsequent request
-to retrieve the next set of tapes. This operation is only supported in
-the tape gateway type.
+See \url{https://paws-r.github.io/docs/storagegateway/list_tapes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_tapes(
-  TapeARNs = list(
-    "string"
-  ),
-  Marker = "string",
-  Limit = 123
-)
-}
-}
-
 \keyword{internal}

@@ -5,51 +5,19 @@
 \title{Grants a temporary extension to the remaining quota of a usage plan
 associated with a specified API key}
 \usage{
-apigateway_update_usage(usagePlanId, keyId, patchOperations)
+apigateway_update_usage(usagePlanId, keyId, patchOperations = NULL)
 }
 \arguments{
-\item{usagePlanId}{[required] [Required] The Id of the usage plan associated with the usage data.}
+\item{usagePlanId}{[required] The Id of the usage plan associated with the usage data.}
 
-\item{keyId}{[required] [Required] The identifier of the API key associated with the usage
-plan in which a temporary extension is granted to the remaining quota.}
+\item{keyId}{[required] The identifier of the API key associated with the usage plan in which a
+temporary extension is granted to the remaining quota.}
 
-\item{patchOperations}{A list of update operations to be applied to the specified resource and
-in the order specified in this list.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  usagePlanId = "string",
-  startDate = "string",
-  endDate = "string",
-  position = "string",
-  items = list(
-    list(
-      list(
-        123
-      )
-    )
-  )
-)
-}
+\item{patchOperations}{For more information about supported patch operations, see \href{https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html}{Patch Operations}.}
 }
 \description{
-Grants a temporary extension to the remaining quota of a usage plan
-associated with a specified API key.
-}
-\section{Request syntax}{
-\preformatted{svc$update_usage(
-  usagePlanId = "string",
-  keyId = "string",
-  patchOperations = list(
-    list(
-      op = "add"|"remove"|"replace"|"move"|"copy"|"test",
-      path = "string",
-      value = "string",
-      from = "string"
-    )
-  )
-)
-}
-}
+Grants a temporary extension to the remaining quota of a usage plan associated with a specified API key.
 
+See \url{https://paws-r.github.io/docs/apigateway/update_usage.html} for full documentation.
+}
 \keyword{internal}

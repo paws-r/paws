@@ -6,7 +6,11 @@
 for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or
 backups}
 \usage{
-opsworkscm_list_tags_for_resource(ResourceArn, NextToken, MaxResults)
+opsworkscm_list_tags_for_resource(
+  ResourceArn,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Number (ARN) of an AWS OpsWorks for Chef Automate or
@@ -31,30 +35,9 @@ number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of tags that are applied to the specified AWS OpsWorks
-for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or
-backups.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns a list of tags that are applied to the specified AWS OpsWorks for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or backups.
 
+See \url{https://paws-r.github.io/docs/opsworkscm/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

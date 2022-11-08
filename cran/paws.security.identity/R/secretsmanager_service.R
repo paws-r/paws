@@ -5,13 +5,14 @@ NULL
 #' AWS Secrets Manager
 #'
 #' @description
-#' AWS Secrets Manager API Reference
+#' Amazon Web Services Secrets Manager
 #' 
-#' AWS Secrets Manager provides a service to enable you to store, manage,
-#' and retrieve, secrets.
+#' Amazon Web Services Secrets Manager provides a service to enable you to
+#' store, manage, and retrieve, secrets.
 #' 
 #' This guide provides descriptions of the Secrets Manager API. For more
-#' information about using this service, see the [AWS Secrets Manager User
+#' information about using this service, see the [Amazon Web Services
+#' Secrets Manager User
 #' Guide](https://docs.aws.amazon.com/secretsmanager/latest/userguide/).
 #' 
 #' **API Version**
@@ -19,66 +20,47 @@ NULL
 #' This version of the Secrets Manager API Reference documents the Secrets
 #' Manager API version 2017-10-17.
 #' 
-#' As an alternative to using the API, you can use one of the AWS SDKs,
-#' which consist of libraries and sample code for various programming
-#' languages and platforms such as Java, Ruby, .NET, iOS, and Android. The
-#' SDKs provide a convenient way to create programmatic access to AWS
-#' Secrets Manager. For example, the SDKs provide cryptographically signing
-#' requests, managing errors, and retrying requests automatically. For more
-#' information about the AWS SDKs, including downloading and installing
-#' them, see [Tools for Amazon Web
-#' Services](https://aws.amazon.com/tools/).
-#' 
-#' We recommend you use the AWS SDKs to make programmatic API calls to
-#' Secrets Manager. However, you also can use the Secrets Manager HTTP
-#' Query API to make direct calls to the Secrets Manager web service. To
-#' learn more about the Secrets Manager HTTP Query API, see [Making Query
-#' Requests](https://docs.aws.amazon.com/secretsmanager/latest/userguide/query-requests.html)
-#' in the *AWS Secrets Manager User Guide*.
-#' 
-#' Secrets Manager API supports GET and POST requests for all actions, and
-#' doesn't require you to use GET for some actions and POST for others.
-#' However, GET requests are subject to the limitation size of a URL.
-#' Therefore, for operations that require larger sizes, use a POST request.
-#' 
-#' **Support and Feedback for AWS Secrets Manager**
+#' **Support and Feedback for Amazon Web Services Secrets Manager**
 #' 
 #' We welcome your feedback. Send your comments to
 #' <awssecretsmanager-feedback@@amazon.com>, or post your feedback and
-#' questions in the [AWS Secrets Manager Discussion
-#' Forum](https://forums.aws.amazon.com/forum.jspa?forumID=296). For more
-#' information about the AWS Discussion Forums, see [Forums
-#' Help](https://forums.aws.amazon.com:443/help.jspa).
-#' 
-#' **How examples are presented**
-#' 
-#' The JSON that AWS Secrets Manager expects as your request parameters and
-#' the service returns as a response to HTTP query requests contain single,
-#' long strings without line breaks or white space formatting. The JSON
-#' shown in the examples displays the code formatted with both line breaks
-#' and white space to improve readability. When example input parameters
-#' can also cause long strings extending beyond the screen, you can insert
-#' line breaks to enhance readability. You should always submit the input
-#' as a single JSON text string.
+#' questions in the [Amazon Web Services Secrets Manager Discussion
+#' Forum](https://repost.aws/tags/TAJAqKRtZ5RY6XCoNAUTcVzQ?forumID=296).
+#' For more information about the Amazon Web Services Discussion Forums,
+#' see [Forums Help](https://repost.aws/forums?origin=help.jspa).
 #' 
 #' **Logging API Requests**
 #' 
-#' AWS Secrets Manager supports AWS CloudTrail, a service that records AWS
-#' API calls for your AWS account and delivers log files to an Amazon S3
-#' bucket. By using information that's collected by AWS CloudTrail, you can
-#' determine the requests successfully made to Secrets Manager, who made
-#' the request, when it was made, and so on. For more about AWS Secrets
-#' Manager and support for AWS CloudTrail, see [Logging AWS Secrets Manager
-#' Events with AWS
+#' Amazon Web Services Secrets Manager supports Amazon Web Services
+#' CloudTrail, a service that records Amazon Web Services API calls for
+#' your Amazon Web Services account and delivers log files to an Amazon S3
+#' bucket. By using information that's collected by Amazon Web Services
+#' CloudTrail, you can determine the requests successfully made to Secrets
+#' Manager, who made the request, when it was made, and so on. For more
+#' about Amazon Web Services Secrets Manager and support for Amazon Web
+#' Services CloudTrail, see [Logging Amazon Web Services Secrets Manager
+#' Events with Amazon Web Services
 #' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail)
-#' in the *AWS Secrets Manager User Guide*. To learn more about CloudTrail,
-#' including enabling it and find your log files, see the [AWS CloudTrail
-#' User
+#' in the *Amazon Web Services Secrets Manager User Guide*. To learn more
+#' about CloudTrail, including enabling it and find your log files, see the
+#' [Amazon Web Services CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html).
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -90,10 +72,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -112,25 +98,28 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=secretsmanager_cancel_rotate_secret]{cancel_rotate_secret} \tab Disables automatic scheduled rotation and cancels the rotation of a secret if currently in progress\cr
+#'  \link[=secretsmanager_cancel_rotate_secret]{cancel_rotate_secret} \tab Turns off automatic rotation, and if a rotation is currently in progress, cancels the rotation\cr
 #'  \link[=secretsmanager_create_secret]{create_secret} \tab Creates a new secret\cr
 #'  \link[=secretsmanager_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource-based permission policy attached to the secret\cr
-#'  \link[=secretsmanager_delete_secret]{delete_secret} \tab Deletes an entire secret and all of its versions\cr
+#'  \link[=secretsmanager_delete_secret]{delete_secret} \tab Deletes a secret and all of its versions\cr
 #'  \link[=secretsmanager_describe_secret]{describe_secret} \tab Retrieves the details of a secret\cr
-#'  \link[=secretsmanager_get_random_password]{get_random_password} \tab Generates a random password of the specified complexity\cr
-#'  \link[=secretsmanager_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the specified secret\cr
+#'  \link[=secretsmanager_get_random_password]{get_random_password} \tab Generates a random password\cr
+#'  \link[=secretsmanager_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the secret\cr
 #'  \link[=secretsmanager_get_secret_value]{get_secret_value} \tab Retrieves the contents of the encrypted fields SecretString or SecretBinary from the specified version of a secret, whichever contains content\cr
-#'  \link[=secretsmanager_list_secrets]{list_secrets} \tab Lists all of the secrets that are stored by Secrets Manager in the AWS account\cr
-#'  \link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids} \tab Lists all of the versions attached to the specified secret\cr
-#'  \link[=secretsmanager_put_resource_policy]{put_resource_policy} \tab Attaches the contents of the specified resource-based permission policy to a secret\cr
-#'  \link[=secretsmanager_put_secret_value]{put_secret_value} \tab Stores a new encrypted secret value in the specified secret\cr
+#'  \link[=secretsmanager_list_secrets]{list_secrets} \tab Lists the secrets that are stored by Secrets Manager in the Amazon Web Services account, not including secrets that are marked for deletion\cr
+#'  \link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids} \tab Lists the versions of a secret\cr
+#'  \link[=secretsmanager_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based permission policy to a secret\cr
+#'  \link[=secretsmanager_put_secret_value]{put_secret_value} \tab Creates a new version with a new encrypted secret value and attaches it to the secret\cr
+#'  \link[=secretsmanager_remove_regions_from_replication]{remove_regions_from_replication} \tab For a secret that is replicated to other Regions, deletes the secret replicas from the Regions you specify\cr
+#'  \link[=secretsmanager_replicate_secret_to_regions]{replicate_secret_to_regions} \tab Replicates the secret to a new Regions\cr
 #'  \link[=secretsmanager_restore_secret]{restore_secret} \tab Cancels the scheduled deletion of a secret by removing the DeletedDate time stamp\cr
-#'  \link[=secretsmanager_rotate_secret]{rotate_secret} \tab Configures and starts the asynchronous process of rotating this secret\cr
-#'  \link[=secretsmanager_tag_resource]{tag_resource} \tab Attaches one or more tags, each consisting of a key name and a value, to the specified secret\cr
-#'  \link[=secretsmanager_untag_resource]{untag_resource} \tab Removes one or more tags from the specified secret\cr
-#'  \link[=secretsmanager_update_secret]{update_secret} \tab Modifies many of the details of the specified secret\cr
+#'  \link[=secretsmanager_rotate_secret]{rotate_secret} \tab Configures and starts the asynchronous process of rotating the secret\cr
+#'  \link[=secretsmanager_stop_replication_to_replica]{stop_replication_to_replica} \tab Removes the link between the replica secret and the primary secret and promotes the replica to a primary secret in the replica Region\cr
+#'  \link[=secretsmanager_tag_resource]{tag_resource} \tab Attaches tags to a secret\cr
+#'  \link[=secretsmanager_untag_resource]{untag_resource} \tab Removes specific tags from a secret\cr
+#'  \link[=secretsmanager_update_secret]{update_secret} \tab Modifies the details of a secret, including metadata and the secret value\cr
 #'  \link[=secretsmanager_update_secret_version_stage]{update_secret_version_stage} \tab Modifies the staging labels attached to a version of a secret\cr
-#'  \link[=secretsmanager_validate_resource_policy]{validate_resource_policy} \tab Validates the JSON text of the resource-based policy document attached to the specified secret
+#'  \link[=secretsmanager_validate_resource_policy]{validate_resource_policy} \tab Validates that a resource policy does not grant a wide range of principals access to your secret
 #' }
 #'
 #' @return

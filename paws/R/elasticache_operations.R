@@ -3,20 +3,25 @@
 #' @include elasticache_service.R
 NULL
 
-#' Adds up to 50 cost allocation tags to the named resource
+#' A tag is a key-value pair where the key and value are case-sensitive
 #'
 #' @description
-#' Adds up to 50 cost allocation tags to the named resource. A cost
-#' allocation tag is a key-value pair where the key and value are
-#' case-sensitive. You can use cost allocation tags to categorize and track
-#' your AWS costs.
+#' A tag is a key-value pair where the key and value are case-sensitive.
+#' You can use tags to categorize and track all your ElastiCache resources,
+#' with the exception of global replication group. When you add or remove
+#' tags on replication groups, those actions will be replicated to all
+#' nodes in the replication group. For more information, see
+#' [Resource-level
+#' permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
 #' 
-#' When you apply tags to your ElastiCache resources, AWS generates a cost
-#' allocation report as a comma-separated value (CSV) file with your usage
-#' and costs aggregated by your tags. You can apply tags that represent
-#' business categories (such as cost centers, application names, or owners)
-#' to organize your costs across multiple services. For more information,
-#' see [Using Cost Allocation Tags in Amazon
+#' For example, you can use cost-allocation tags to your ElastiCache
+#' resources, Amazon generates a cost allocation report as a
+#' comma-separated value (CSV) file with your usage and costs aggregated by
+#' your tags. You can apply tags that represent business categories (such
+#' as cost centers, application names, or owners) to organize your costs
+#' across multiple services.
+#' 
+#' For more information, see [Using Cost Allocation Tags in Amazon
 #' ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html)
 #' in the *ElastiCache User Guide*.
 #'
@@ -30,10 +35,10 @@ NULL
 #' ElastiCache resources are *cluster* and *snapshot*.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
-#' AWS Service
+#' Amazon Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
-#' @param Tags &#91;required&#93; A list of cost allocation tags to be added to this resource. A tag is a
-#' key-value pair. A tag key must be accompanied by a tag value.
+#' @param Tags &#91;required&#93; A list of tags to be added to this resource. A tag is a key-value pair.
+#' A tag key must be accompanied by a tag value, although null is accepted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -98,9 +103,9 @@ elasticache_add_tags_to_resource <- function(ResourceName, Tags) {
 #' @param CacheSecurityGroupName &#91;required&#93; The cache security group that allows network ingress.
 #' @param EC2SecurityGroupName &#91;required&#93; The Amazon EC2 security group to be authorized for ingress to the cache
 #' security group.
-#' @param EC2SecurityGroupOwnerId &#91;required&#93; The AWS account number of the Amazon EC2 security group owner. Note that
-#' this is not the same thing as an AWS access key ID - you must provide a
-#' valid AWS account number for this parameter.
+#' @param EC2SecurityGroupOwnerId &#91;required&#93; The Amazon account number of the Amazon EC2 security group owner. Note
+#' that this is not the same thing as an Amazon access key ID - you must
+#' provide a valid Amazon account number for this parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -156,7 +161,7 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #' @description
 #' Apply the service update. For more information on service updates and
 #' applying them, see [Applying Service
-#' Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/applying-updates.html).
+#' Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/).
 #'
 #' @usage
 #' elasticache_batch_apply_update_action(ReplicationGroupIds,
@@ -228,7 +233,7 @@ elasticache_batch_apply_update_action <- function(ReplicationGroupIds = NULL, Ca
 #' @description
 #' Stop the service update. For more information on service updates and
 #' stopping them, see [Stopping Service
-#' Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/stopping-self-service-updates.html).
+#' Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/).
 #'
 #' @usage
 #' elasticache_batch_stop_update_action(ReplicationGroupIds,
@@ -336,6 +341,21 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds = NULL, Cac
 #'         UserGroupIdsToRemove = list(
 #'           "string"
 #'         )
+#'       ),
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
+#'         )
 #'       )
 #'     ),
 #'     MemberClusters = list(
@@ -393,7 +413,29 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds = NULL, Cac
 #'     ARN = "string",
 #'     UserGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     ReplicationGroupCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DataTiering = "enabled"|"disabled",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -509,7 +551,7 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 #'
 #' @usage
 #' elasticache_copy_snapshot(SourceSnapshotName, TargetSnapshotName,
-#'   TargetBucket, KmsKeyId)
+#'   TargetBucket, KmsKeyId, Tags)
 #'
 #' @param SourceSnapshotName &#91;required&#93; The name of an existing snapshot from which to make a copy.
 #' @param TargetSnapshotName &#91;required&#93; A name for the snapshot copy. ElastiCache does not permit overwriting a
@@ -525,9 +567,11 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 #' in the *Amazon ElastiCache User Guide*.
 #' 
 #' For more information, see [Exporting a
-#' Snapshot](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/)
+#' Snapshot](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
 #' in the *Amazon ElastiCache User Guide*.
 #' @param KmsKeyId The ID of the KMS key used to encrypt the target snapshot.
+#' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
+#' A tag key must be accompanied by a tag value, although null is accepted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -588,7 +632,8 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 #'       )
 #'     ),
 #'     KmsKeyId = "string",
-#'     ARN = "string"
+#'     ARN = "string",
+#'     DataTiering = "enabled"|"disabled"
 #'   )
 #' )
 #' ```
@@ -599,21 +644,27 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 #'   SourceSnapshotName = "string",
 #'   TargetSnapshotName = "string",
 #'   TargetBucket = "string",
-#'   KmsKeyId = "string"
+#'   KmsKeyId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname elasticache_copy_snapshot
-elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, TargetBucket = NULL, KmsKeyId = NULL) {
+elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, TargetBucket = NULL, KmsKeyId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CopySnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$copy_snapshot_input(SourceSnapshotName = SourceSnapshotName, TargetSnapshotName = TargetSnapshotName, TargetBucket = TargetBucket, KmsKeyId = KmsKeyId)
+  input <- .elasticache$copy_snapshot_input(SourceSnapshotName = SourceSnapshotName, TargetSnapshotName = TargetSnapshotName, TargetBucket = TargetBucket, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$copy_snapshot_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -640,7 +691,8 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'   SecurityGroupIds, Tags, SnapshotArns, SnapshotName,
 #'   PreferredMaintenanceWindow, Port, NotificationTopicArn,
 #'   AutoMinorVersionUpgrade, SnapshotRetentionLimit, SnapshotWindow,
-#'   AuthToken, OutpostMode, PreferredOutpostArn, PreferredOutpostArns)
+#'   AuthToken, OutpostMode, PreferredOutpostArn, PreferredOutpostArns,
+#'   LogDeliveryConfigurations, TransitEncryptionEnabled)
 #'
 #' @param CacheClusterId &#91;required&#93; The node group (shard) identifier. This parameter is stored as a
 #' lowercase string.
@@ -698,9 +750,9 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' @param NumCacheNodes The initial number of cache nodes that the cluster has.
 #' 
 #' For clusters running Redis, this value must be 1. For clusters running
-#' Memcached, this value must be between 1 and 20.
+#' Memcached, this value must be between 1 and 40.
 #' 
-#' If you need more than 20 nodes for your Memcached cluster, please fill
+#' If you need more than 40 nodes for your Memcached cluster, please fill
 #' out the ElastiCache Limit Increase Request form at
 #' http://aws.amazon.com/contact-us/elasticache-node-limit-request/.
 #' @param CacheNodeType The compute and memory capacity of the nodes in the node group (shard).
@@ -715,15 +767,13 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     -   Current generation:
 #' 
 #'         **M6g node types** (available only for Redis engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward).
-#' 
+#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
 #'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
 #'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
 #'         `cache.m6g.16xlarge`
 #' 
-#'         At this time, M6g node types are available in the following
-#'         regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-#'         eu-west-1 and ap-northeast-1.
+#'         For region availability, see [Supported Node
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
 #'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
@@ -732,13 +782,19 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
 #' 
+#'         **T4g node types** (available only for Redis engine version
+#'         5.0.6 onward and Memcached engine version 1.5.16 onward):
+#'         `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
+#' 
 #'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
 #'         `cache.t3.medium`
 #' 
 #'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
 #'         `cache.t2.medium`
 #' 
-#'     -   Previous generation: (not recommended)
+#'     -   Previous generation: (not recommended. Existing clusters are
+#'         still supported but creation of new clusters is not supported
+#'         for these types.)
 #' 
 #'         **T1 node types:** `cache.t1.micro`
 #' 
@@ -750,7 +806,9 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #' -   Compute optimized:
 #' 
-#'     -   Previous generation: (not recommended)
+#'     -   Previous generation: (not recommended. Existing clusters are
+#'         still supported but creation of new clusters is not supported
+#'         for these types.)
 #' 
 #'         **C1 node types:** `cache.c1.xlarge`
 #' 
@@ -765,9 +823,8 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
 #'         `cache.r6g.16xlarge`
 #' 
-#'         At this time, R6g node types are available in the following
-#'         regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-#'         eu-west-1 and ap-northeast-1.
+#'         For region availability, see [Supported Node
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
 #'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
@@ -777,7 +834,9 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'         `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
 #'         `cache.r4.16xlarge`
 #' 
-#'     -   Previous generation: (not recommended)
+#'     -   Previous generation: (not recommended. Existing clusters are
+#'         still supported but creation of new clusters is not supported
+#'         for these types.)
 #' 
 #'         **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
 #'         `cache.m2.4xlarge`
@@ -832,7 +891,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #' Use this parameter only when you are creating a cluster in an Amazon
 #' Virtual Private Cloud (Amazon VPC).
-#' @param Tags A list of cost allocation tags to be added to this resource.
+#' @param Tags A list of tags to be added to this resource.
 #' @param SnapshotArns A single-element string list containing an Amazon Resource Name (ARN)
 #' that uniquely identifies a Redis RDB snapshot file stored in Amazon S3.
 #' The snapshot file is used to populate the node group (shard). The Amazon
@@ -849,36 +908,15 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' @param PreferredMaintenanceWindow Specifies the weekly time range during which maintenance on the cluster
 #' is performed. It is specified as a range in the format
 #' ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
-#' is a 60 minute period. Valid values for `ddd` are:
-#' 
-#' Specifies the weekly time range during which maintenance on the cluster
-#' is performed. It is specified as a range in the format
-#' ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
 #' is a 60 minute period.
-#' 
-#' Valid values for `ddd` are:
-#' 
-#' -   `sun`
-#' 
-#' -   `mon`
-#' 
-#' -   `tue`
-#' 
-#' -   `wed`
-#' 
-#' -   `thu`
-#' 
-#' -   `fri`
-#' 
-#' -   `sat`
-#' 
-#' Example: `sun:23:00-mon:01:30`
 #' @param Port The port number on which each of the cache nodes accepts connections.
 #' @param NotificationTopicArn The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
 #' (SNS) topic to which notifications are sent.
 #' 
 #' The Amazon SNS topic owner must be the same as the cluster owner.
-#' @param AutoMinorVersionUpgrade This parameter is currently disabled.
+#' @param AutoMinorVersionUpgrade  If you are running Redis engine version 6.0 or later, set this
+#' parameter to yes if you want to opt-in to the next auto minor version
+#' upgrade campaign. This parameter is disabled for previous versions. 
 #' @param SnapshotRetentionLimit The number of days for which ElastiCache retains automatic snapshots
 #' before deleting them. For example, if you set `SnapshotRetentionLimit`
 #' to 5, a snapshot taken today is retained for 5 days before being
@@ -908,8 +946,8 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     length.
 #' 
 #' -   The only permitted printable special characters are !, &, \#, $, ^,
-#'     &lt;, &gt;, and -. Other printable special characters cannot be used
-#'     in the AUTH token.
+#'     \<, \>, and -. Other printable special characters cannot be used in
+#'     the AUTH token.
 #' 
 #' For more information, see AUTH password at
 #' http://redis.io/commands/AUTH.
@@ -917,6 +955,14 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' outpost or across multiple outposts.
 #' @param PreferredOutpostArn The outpost ARN in which the cache cluster is created.
 #' @param PreferredOutpostArns The outpost ARNs in which the cache cluster is created.
+#' @param LogDeliveryConfigurations Specifies the destination, format and type of the logs.
+#' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to true. You cannot
+#' modify the value of `TransitEncryptionEnabled` after the cluster is
+#' created. To enable in-transit encryption on a cluster you must set
+#' `TransitEncryptionEnabled` to true when you create a cluster.
+#' 
+#' **Required:** Only available when creating a cache cluster in an Amazon
+#' VPC using Memcached version `1.6.12` or later.
 #'
 #' @return
 #' A list with the following syntax:
@@ -947,7 +993,22 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'       ),
 #'       EngineVersion = "string",
 #'       CacheNodeType = "string",
-#'       AuthTokenStatus = "SETTING"|"ROTATING"
+#'       AuthTokenStatus = "SETTING"|"ROTATING",
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
+#'         )
+#'       )
 #'     ),
 #'     NotificationConfiguration = list(
 #'       TopicArn = "string",
@@ -1000,7 +1061,25 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     ),
 #'     TransitEncryptionEnabled = TRUE|FALSE,
 #'     AtRestEncryptionEnabled = TRUE|FALSE,
-#'     ARN = "string"
+#'     ARN = "string",
+#'     ReplicationGroupLogDeliveryEnabled = TRUE|FALSE,
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1048,21 +1127,38 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'   PreferredOutpostArn = "string",
 #'   PreferredOutpostArns = list(
 #'     "string"
-#'   )
+#'   ),
+#'   LogDeliveryConfigurations = list(
+#'     list(
+#'       LogType = "slow-log"|"engine-log",
+#'       DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'       DestinationDetails = list(
+#'         CloudWatchLogsDetails = list(
+#'           LogGroup = "string"
+#'         ),
+#'         KinesisFirehoseDetails = list(
+#'           DeliveryStream = "string"
+#'         )
+#'       ),
+#'       LogFormat = "text"|"json",
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   TransitEncryptionEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname elasticache_create_cache_cluster
-elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId = NULL, AZMode = NULL, PreferredAvailabilityZone = NULL, PreferredAvailabilityZones = NULL, NumCacheNodes = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, OutpostMode = NULL, PreferredOutpostArn = NULL, PreferredOutpostArns = NULL) {
+elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId = NULL, AZMode = NULL, PreferredAvailabilityZone = NULL, PreferredAvailabilityZones = NULL, NumCacheNodes = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, OutpostMode = NULL, PreferredOutpostArn = NULL, PreferredOutpostArns = NULL, LogDeliveryConfigurations = NULL, TransitEncryptionEnabled = NULL) {
   op <- new_operation(
     name = "CreateCacheCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$create_cache_cluster_input(CacheClusterId = CacheClusterId, ReplicationGroupId = ReplicationGroupId, AZMode = AZMode, PreferredAvailabilityZone = PreferredAvailabilityZone, PreferredAvailabilityZones = PreferredAvailabilityZones, NumCacheNodes = NumCacheNodes, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, OutpostMode = OutpostMode, PreferredOutpostArn = PreferredOutpostArn, PreferredOutpostArns = PreferredOutpostArns)
+  input <- .elasticache$create_cache_cluster_input(CacheClusterId = CacheClusterId, ReplicationGroupId = ReplicationGroupId, AZMode = AZMode, PreferredAvailabilityZone = PreferredAvailabilityZone, PreferredAvailabilityZones = PreferredAvailabilityZones, NumCacheNodes = NumCacheNodes, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, OutpostMode = OutpostMode, PreferredOutpostArn = PreferredOutpostArn, PreferredOutpostArns = PreferredOutpostArns, LogDeliveryConfigurations = LogDeliveryConfigurations, TransitEncryptionEnabled = TransitEncryptionEnabled)
   output <- .elasticache$create_cache_cluster_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -1094,7 +1190,7 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #'
 #' @usage
 #' elasticache_create_cache_parameter_group(CacheParameterGroupName,
-#'   CacheParameterGroupFamily, Description)
+#'   CacheParameterGroupFamily, Description, Tags)
 #'
 #' @param CacheParameterGroupName &#91;required&#93; A user-specified name for the cache parameter group.
 #' @param CacheParameterGroupFamily &#91;required&#93; The name of the cache parameter group family that the cache parameter
@@ -1102,8 +1198,10 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #' 
 #' Valid values are: `memcached1.4` | `memcached1.5` | `memcached1.6` |
 #' `redis2.6` | `redis2.8` | `redis3.2` | `redis4.0` | `redis5.0` |
-#' `redis6.x` |
+#' `redis6.x`
 #' @param Description &#91;required&#93; A user-specified description for the cache parameter group.
+#' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
+#' A tag key must be accompanied by a tag value, although null is accepted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1124,21 +1222,27 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #' svc$create_cache_parameter_group(
 #'   CacheParameterGroupName = "string",
 #'   CacheParameterGroupFamily = "string",
-#'   Description = "string"
+#'   Description = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname elasticache_create_cache_parameter_group
-elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, CacheParameterGroupFamily, Description) {
+elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, CacheParameterGroupFamily, Description, Tags = NULL) {
   op <- new_operation(
     name = "CreateCacheParameterGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$create_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, CacheParameterGroupFamily = CacheParameterGroupFamily, Description = Description)
+  input <- .elasticache$create_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, CacheParameterGroupFamily = CacheParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .elasticache$create_cache_parameter_group_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -1162,7 +1266,7 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
 #'
 #' @usage
 #' elasticache_create_cache_security_group(CacheSecurityGroupName,
-#'   Description)
+#'   Description, Tags)
 #'
 #' @param CacheSecurityGroupName &#91;required&#93; A name for the cache security group. This value is stored as a lowercase
 #' string.
@@ -1172,6 +1276,8 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
 #' 
 #' Example: `mysecuritygroup`
 #' @param Description &#91;required&#93; A description for the cache security group.
+#' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
+#' A tag key must be accompanied by a tag value, although null is accepted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1197,21 +1303,27 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
 #' ```
 #' svc$create_cache_security_group(
 #'   CacheSecurityGroupName = "string",
-#'   Description = "string"
+#'   Description = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname elasticache_create_cache_security_group
-elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Description) {
+elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Description, Tags = NULL) {
   op <- new_operation(
     name = "CreateCacheSecurityGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$create_cache_security_group_input(CacheSecurityGroupName = CacheSecurityGroupName, Description = Description)
+  input <- .elasticache$create_cache_security_group_input(CacheSecurityGroupName = CacheSecurityGroupName, Description = Description, Tags = Tags)
   output <- .elasticache$create_cache_security_group_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -1231,7 +1343,7 @@ elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Desc
 #'
 #' @usage
 #' elasticache_create_cache_subnet_group(CacheSubnetGroupName,
-#'   CacheSubnetGroupDescription, SubnetIds)
+#'   CacheSubnetGroupDescription, SubnetIds, Tags)
 #'
 #' @param CacheSubnetGroupName &#91;required&#93; A name for the cache subnet group. This value is stored as a lowercase
 #' string.
@@ -1242,6 +1354,8 @@ elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Desc
 #' Example: `mysubnetgroup`
 #' @param CacheSubnetGroupDescription &#91;required&#93; A description for the cache subnet group.
 #' @param SubnetIds &#91;required&#93; A list of VPC subnet IDs for the cache subnet group.
+#' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
+#' A tag key must be accompanied by a tag value, although null is accepted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1274,6 +1388,12 @@ elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Desc
 #'   CacheSubnetGroupDescription = "string",
 #'   SubnetIds = list(
 #'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1281,14 +1401,14 @@ elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Desc
 #' @keywords internal
 #'
 #' @rdname elasticache_create_cache_subnet_group
-elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSubnetGroupDescription, SubnetIds) {
+elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSubnetGroupDescription, SubnetIds, Tags = NULL) {
   op <- new_operation(
     name = "CreateCacheSubnetGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$create_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName, CacheSubnetGroupDescription = CacheSubnetGroupDescription, SubnetIds = SubnetIds)
+  input <- .elasticache$create_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName, CacheSubnetGroupDescription = CacheSubnetGroupDescription, SubnetIds = SubnetIds, Tags = Tags)
   output <- .elasticache$create_cache_subnet_group_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -1310,7 +1430,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' Datastore](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html).
 #' 
 #' -   The **GlobalReplicationGroupIdSuffix** is the name of the Global
-#'     Datastore.
+#'     datastore.
 #' 
 #' -   The **PrimaryReplicationGroupId** represents the name of the primary
 #'     cluster that accepts writes and will replicate updates to the
@@ -1321,19 +1441,19 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #'   GlobalReplicationGroupIdSuffix, GlobalReplicationGroupDescription,
 #'   PrimaryReplicationGroupId)
 #'
-#' @param GlobalReplicationGroupIdSuffix &#91;required&#93; The suffix name of a Global Datastore. Amazon ElastiCache automatically
-#' applies a prefix to the Global Datastore ID when it is created. Each AWS
-#' Region has its own prefix. For instance, a Global Datastore ID created
-#' in the US-West-1 region will begin with "dsdfu" along with the suffix
-#' name you provide. The suffix, combined with the auto-generated prefix,
-#' guarantees uniqueness of the Global Datastore name across multiple
-#' regions.
+#' @param GlobalReplicationGroupIdSuffix &#91;required&#93; The suffix name of a Global datastore. Amazon ElastiCache automatically
+#' applies a prefix to the Global datastore ID when it is created. Each
+#' Amazon Region has its own prefix. For instance, a Global datastore ID
+#' created in the US-West-1 region will begin with "dsdfu" along with the
+#' suffix name you provide. The suffix, combined with the auto-generated
+#' prefix, guarantees uniqueness of the Global datastore name across
+#' multiple regions.
 #' 
-#' For a full list of AWS Regions and their respective Global Datastore iD
-#' prefixes, see [Using the AWS CLI with Global
-#' Datastores](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastores-CLI.html)
+#' For a full list of Amazon Regions and their respective Global datastore
+#' iD prefixes, see [Using the Amazon CLI with Global
+#' datastores](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastores-CLI.html)
 #' .
-#' @param GlobalReplicationGroupDescription Provides details of the Global Datastore
+#' @param GlobalReplicationGroupDescription Provides details of the Global datastore
 #' @param PrimaryReplicationGroupId &#91;required&#93; The name of the primary cluster that accepts writes and will replicate
 #' updates to the secondary cluster.
 #'
@@ -1409,19 +1529,34 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' enabled) replication group.
 #' 
 #' This API can be used to create a standalone regional replication group
-#' or a secondary replication group associated with a Global Datastore.
+#' or a secondary replication group associated with a Global datastore.
 #' 
 #' A Redis (cluster mode disabled) replication group is a collection of
 #' clusters, where one of the clusters is a read/write primary and the
 #' others are read-only replicas. Writes to the primary are asynchronously
 #' propagated to the replicas.
 #' 
-#' A Redis (cluster mode enabled) replication group is a collection of 1 to
-#' 90 node groups (shards). Each node group (shard) has one read/write
-#' primary node and up to 5 read-only replica nodes. Writes to the primary
-#' are asynchronously propagated to the replicas. Redis (cluster mode
-#' enabled) replication groups partition the data across node groups
-#' (shards).
+#' A Redis cluster-mode enabled cluster is comprised of from 1 to 90 shards
+#' (API/CLI: node groups). Each shard has a primary node and up to 5
+#' read-only replica nodes. The configuration can range from 90 shards and
+#' 0 replicas to 15 shards and 5 replicas, which is the maximum number or
+#' replicas allowed.
+#' 
+#' The node or shard limit can be increased to a maximum of 500 per cluster
+#' if the Redis engine version is 5.0.6 or higher. For example, you can
+#' choose to configure a 500 node cluster that ranges between 83 shards
+#' (one primary and 5 replicas per shard) and 500 shards (single primary
+#' and no replicas). Make sure there are enough available IP addresses to
+#' accommodate the increase. Common pitfalls include the subnets in the
+#' subnet group have too small a CIDR range or the subnets are shared and
+#' heavily used by other clusters. For more information, see [Creating a
+#' Subnet
+#' Group](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.Creating.html).
+#' For versions below 5.0.6, the limit is 250 per cluster.
+#' 
+#' To request a limit increase, see [Amazon Service
+#' Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
+#' and choose the limit type **Nodes per cluster per instance type**.
 #' 
 #' When a Redis (cluster mode disabled) replication group has been
 #' successfully created, you can add one or more read replicas to it, up to
@@ -1445,7 +1580,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'   PreferredMaintenanceWindow, Port, NotificationTopicArn,
 #'   AutoMinorVersionUpgrade, SnapshotRetentionLimit, SnapshotWindow,
 #'   AuthToken, TransitEncryptionEnabled, AtRestEncryptionEnabled, KmsKeyId,
-#'   UserGroupIds)
+#'   UserGroupIds, LogDeliveryConfigurations, DataTieringEnabled)
 #'
 #' @param ReplicationGroupId &#91;required&#93; The replication group identifier. This parameter is stored as a
 #' lowercase string.
@@ -1458,7 +1593,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' -   A name cannot end with a hyphen or contain two consecutive hyphens.
 #' @param ReplicationGroupDescription &#91;required&#93; A user-created description for the replication group.
-#' @param GlobalReplicationGroupId The name of the Global Datastore
+#' @param GlobalReplicationGroupId The name of the Global datastore
 #' @param PrimaryClusterId The identifier of the cluster that serves as the primary for this
 #' replication group. This cluster must already exist and have a status of
 #' `available`.
@@ -1534,15 +1669,13 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'     -   Current generation:
 #' 
 #'         **M6g node types** (available only for Redis engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward).
-#' 
+#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
 #'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
 #'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
 #'         `cache.m6g.16xlarge`
 #' 
-#'         At this time, M6g node types are available in the following
-#'         regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-#'         eu-west-1 and ap-northeast-1.
+#'         For region availability, see [Supported Node
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
 #'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
@@ -1551,13 +1684,19 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
 #' 
+#'         **T4g node types** (available only for Redis engine version
+#'         5.0.6 onward and Memcached engine version 1.5.16 onward):
+#'         `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
+#' 
 #'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
 #'         `cache.t3.medium`
 #' 
 #'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
 #'         `cache.t2.medium`
 #' 
-#'     -   Previous generation: (not recommended)
+#'     -   Previous generation: (not recommended. Existing clusters are
+#'         still supported but creation of new clusters is not supported
+#'         for these types.)
 #' 
 #'         **T1 node types:** `cache.t1.micro`
 #' 
@@ -1569,9 +1708,22 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' -   Compute optimized:
 #' 
-#'     -   Previous generation: (not recommended)
+#'     -   Previous generation: (not recommended. Existing clusters are
+#'         still supported but creation of new clusters is not supported
+#'         for these types.)
 #' 
 #'         **C1 node types:** `cache.c1.xlarge`
+#' 
+#' -   Memory optimized with data tiering:
+#' 
+#'     -   Current generation:
+#' 
+#'         **R6gd node types** (available only for Redis engine version 6.2
+#'         onward).
+#' 
+#'         `cache.r6gd.xlarge`, `cache.r6gd.2xlarge`, `cache.r6gd.4xlarge`,
+#'         `cache.r6gd.8xlarge`, `cache.r6gd.12xlarge`,
+#'         `cache.r6gd.16xlarge`
 #' 
 #' -   Memory optimized:
 #' 
@@ -1584,9 +1736,8 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
 #'         `cache.r6g.16xlarge`
 #' 
-#'         At this time, R6g node types are available in the following
-#'         regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-#'         eu-west-1 and ap-northeast-1.
+#'         For region availability, see [Supported Node
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
 #'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
@@ -1596,7 +1747,9 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'         `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
 #'         `cache.r4.16xlarge`
 #' 
-#'     -   Previous generation: (not recommended)
+#'     -   Previous generation: (not recommended. Existing clusters are
+#'         still supported but creation of new clusters is not supported
+#'         for these types.)
 #' 
 #'         **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
 #'         `cache.m2.4xlarge`
@@ -1618,7 +1771,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' -   Redis configuration variables `appendonly` and `appendfsync` are not
 #'     supported on Redis version 2.8.22 and later.
 #' @param Engine The name of the cache engine to be used for the clusters in this
-#' replication group.
+#' replication group. Must be Redis.
 #' @param EngineVersion The version number of the cache engine to be used for the clusters in
 #' this replication group. To view the supported cache engine versions, use
 #' the
@@ -1635,10 +1788,6 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' @param CacheParameterGroupName The name of the parameter group to associate with this replication
 #' group. If this argument is omitted, the default cache parameter group
 #' for the specified engine is used.
-#' 
-#' If you are restoring to an engine version that is different than the
-#' original, you must specify the default version of that version. For
-#' example, `CacheParameterGroupName=default.redis4.0`.
 #' 
 #' If you are running Redis version 3.2.4 or later, only one node group
 #' (shard), and want to use a default parameter group, we recommend that
@@ -1662,10 +1811,11 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' Use this parameter only when you are creating a replication group in an
 #' Amazon Virtual Private Cloud (Amazon VPC).
-#' @param Tags A list of cost allocation tags to be added to this resource. Tags are
-#' comma-separated key,value pairs (e.g. Key=`myKey`, Value=`myKeyValue`.
-#' You can include multiple tags as shown following: Key=`myKey`,
-#' Value=`myKeyValue` Key=`mySecondKey`, Value=`mySecondKeyValue`.
+#' @param Tags A list of tags to be added to this resource. Tags are comma-separated
+#' key,value pairs (e.g. Key=`myKey`, Value=`myKeyValue`. You can include
+#' multiple tags as shown following: Key=`myKey`, Value=`myKeyValue`
+#' Key=`mySecondKey`, Value=`mySecondKeyValue`. Tags on replication groups
+#' will be replicated to all nodes.
 #' @param SnapshotArns A list of Amazon Resource Names (ARN) that uniquely identify the Redis
 #' RDB snapshot files stored in Amazon S3. The snapshot files are used to
 #' populate the new replication group. The Amazon S3 object name in the ARN
@@ -1712,7 +1862,9 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' (SNS) topic to which notifications are sent.
 #' 
 #' The Amazon SNS topic owner must be the same as the cluster owner.
-#' @param AutoMinorVersionUpgrade This parameter is currently disabled.
+#' @param AutoMinorVersionUpgrade  If you are running Redis engine version 6.0 or later, set this
+#' parameter to yes if you want to opt-in to the next auto minor version
+#' upgrade campaign. This parameter is disabled for previous versions. 
 #' @param SnapshotRetentionLimit The number of days for which ElastiCache retains automatic snapshots
 #' before deleting them. For example, if you set `SnapshotRetentionLimit`
 #' to 5, a snapshot that was taken today is retained for 5 days before
@@ -1743,8 +1895,8 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'     length.
 #' 
 #' -   The only permitted printable special characters are !, &, \#, $, ^,
-#'     &lt;, &gt;, and -. Other printable special characters cannot be used
-#'     in the AUTH token.
+#'     \<, \>, and -. Other printable special characters cannot be used in
+#'     the AUTH token.
 #' 
 #' For more information, see AUTH password at
 #' http://redis.io/commands/AUTH.
@@ -1780,7 +1932,12 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' Default: `false`
 #' @param KmsKeyId The ID of the KMS key used to encrypt the disk in the cluster.
-#' @param UserGroupIds The list of user groups to associate with the replication group.
+#' @param UserGroupIds The user group to associate with the replication group.
+#' @param LogDeliveryConfigurations Specifies the destination, format and type of the logs.
+#' @param DataTieringEnabled Enables data tiering. Data tiering is only supported for replication
+#' groups using the r6gd node type. This parameter must be set to true when
+#' using r6gd nodes. For more information, see [Data
+#' tiering](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/data-tiering.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1809,6 +1966,21 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'         ),
 #'         UserGroupIdsToRemove = list(
 #'           "string"
+#'         )
+#'       ),
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
 #'         )
 #'       )
 #'     ),
@@ -1867,7 +2039,29 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'     ARN = "string",
 #'     UserGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     ReplicationGroupCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DataTiering = "enabled"|"disabled",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1935,21 +2129,38 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'   KmsKeyId = "string",
 #'   UserGroupIds = list(
 #'     "string"
-#'   )
+#'   ),
+#'   LogDeliveryConfigurations = list(
+#'     list(
+#'       LogType = "slow-log"|"engine-log",
+#'       DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'       DestinationDetails = list(
+#'         CloudWatchLogsDetails = list(
+#'           LogGroup = "string"
+#'         ),
+#'         KinesisFirehoseDetails = list(
+#'           DeliveryStream = "string"
+#'         )
+#'       ),
+#'       LogFormat = "text"|"json",
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   DataTieringEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname elasticache_create_replication_group
-elasticache_create_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription, GlobalReplicationGroupId = NULL, PrimaryClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NumCacheClusters = NULL, PreferredCacheClusterAZs = NULL, NumNodeGroups = NULL, ReplicasPerNodeGroup = NULL, NodeGroupConfiguration = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, TransitEncryptionEnabled = NULL, AtRestEncryptionEnabled = NULL, KmsKeyId = NULL, UserGroupIds = NULL) {
+elasticache_create_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription, GlobalReplicationGroupId = NULL, PrimaryClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NumCacheClusters = NULL, PreferredCacheClusterAZs = NULL, NumNodeGroups = NULL, ReplicasPerNodeGroup = NULL, NodeGroupConfiguration = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, TransitEncryptionEnabled = NULL, AtRestEncryptionEnabled = NULL, KmsKeyId = NULL, UserGroupIds = NULL, LogDeliveryConfigurations = NULL, DataTieringEnabled = NULL) {
   op <- new_operation(
     name = "CreateReplicationGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$create_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryClusterId = PrimaryClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NumCacheClusters = NumCacheClusters, PreferredCacheClusterAZs = PreferredCacheClusterAZs, NumNodeGroups = NumNodeGroups, ReplicasPerNodeGroup = ReplicasPerNodeGroup, NodeGroupConfiguration = NodeGroupConfiguration, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, TransitEncryptionEnabled = TransitEncryptionEnabled, AtRestEncryptionEnabled = AtRestEncryptionEnabled, KmsKeyId = KmsKeyId, UserGroupIds = UserGroupIds)
+  input <- .elasticache$create_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryClusterId = PrimaryClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NumCacheClusters = NumCacheClusters, PreferredCacheClusterAZs = PreferredCacheClusterAZs, NumNodeGroups = NumNodeGroups, ReplicasPerNodeGroup = ReplicasPerNodeGroup, NodeGroupConfiguration = NodeGroupConfiguration, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, TransitEncryptionEnabled = TransitEncryptionEnabled, AtRestEncryptionEnabled = AtRestEncryptionEnabled, KmsKeyId = KmsKeyId, UserGroupIds = UserGroupIds, LogDeliveryConfigurations = LogDeliveryConfigurations, DataTieringEnabled = DataTieringEnabled)
   output <- .elasticache$create_replication_group_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -1970,7 +2181,7 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #'
 #' @usage
 #' elasticache_create_snapshot(ReplicationGroupId, CacheClusterId,
-#'   SnapshotName, KmsKeyId)
+#'   SnapshotName, KmsKeyId, Tags)
 #'
 #' @param ReplicationGroupId The identifier of an existing replication group. The snapshot is created
 #' from this replication group.
@@ -1978,6 +2189,8 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #' cluster.
 #' @param SnapshotName &#91;required&#93; A name for the snapshot being created.
 #' @param KmsKeyId The ID of the KMS key used to encrypt the snapshot.
+#' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
+#' A tag key must be accompanied by a tag value, although null is accepted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2038,7 +2251,8 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #'       )
 #'     ),
 #'     KmsKeyId = "string",
-#'     ARN = "string"
+#'     ARN = "string",
+#'     DataTiering = "enabled"|"disabled"
 #'   )
 #' )
 #' ```
@@ -2049,21 +2263,27 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #'   ReplicationGroupId = "string",
 #'   CacheClusterId = "string",
 #'   SnapshotName = "string",
-#'   KmsKeyId = "string"
+#'   KmsKeyId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname elasticache_create_snapshot
-elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterId = NULL, SnapshotName, KmsKeyId = NULL) {
+elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterId = NULL, SnapshotName, KmsKeyId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$create_snapshot_input(ReplicationGroupId = ReplicationGroupId, CacheClusterId = CacheClusterId, SnapshotName = SnapshotName, KmsKeyId = KmsKeyId)
+  input <- .elasticache$create_snapshot_input(ReplicationGroupId = ReplicationGroupId, CacheClusterId = CacheClusterId, SnapshotName = SnapshotName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$create_snapshot_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -2076,13 +2296,13 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #' For Redis engine version 6
 #'
 #' @description
-#' For Redis engine version 6.x onwards: Creates a Redis user. For more
+#' For Redis engine version 6.0 onwards: Creates a Redis user. For more
 #' information, see [Using Role Based Access Control
 #' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
 #'
 #' @usage
 #' elasticache_create_user(UserId, UserName, Engine, Passwords,
-#'   AccessString, NoPasswordRequired)
+#'   AccessString, NoPasswordRequired, Tags)
 #'
 #' @param UserId &#91;required&#93; The ID of the user.
 #' @param UserName &#91;required&#93; The username of the user.
@@ -2091,6 +2311,8 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #' each user.
 #' @param AccessString &#91;required&#93; Access permissions string used for this user.
 #' @param NoPasswordRequired Indicates a password is not required for this user.
+#' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
+#' A tag key must be accompanied by a tag value, although null is accepted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2100,6 +2322,7 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #'   UserName = "string",
 #'   Status = "string",
 #'   Engine = "string",
+#'   MinimumEngineVersion = "string",
 #'   AccessString = "string",
 #'   UserGroupIds = list(
 #'     "string"
@@ -2122,21 +2345,27 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #'     "string"
 #'   ),
 #'   AccessString = "string",
-#'   NoPasswordRequired = TRUE|FALSE
+#'   NoPasswordRequired = TRUE|FALSE,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname elasticache_create_user
-elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, AccessString, NoPasswordRequired = NULL) {
+elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, AccessString, NoPasswordRequired = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateUser",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$create_user_input(UserId = UserId, UserName = UserName, Engine = Engine, Passwords = Passwords, AccessString = AccessString, NoPasswordRequired = NoPasswordRequired)
+  input <- .elasticache$create_user_input(UserId = UserId, UserName = UserName, Engine = Engine, Passwords = Passwords, AccessString = AccessString, NoPasswordRequired = NoPasswordRequired, Tags = Tags)
   output <- .elasticache$create_user_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -2149,16 +2378,18 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
 #' For Redis engine version 6
 #'
 #' @description
-#' For Redis engine version 6.x onwards: Creates a Redis user group. For
+#' For Redis engine version 6.0 onwards: Creates a Redis user group. For
 #' more information, see [Using Role Based Access Control
 #' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html)
 #'
 #' @usage
-#' elasticache_create_user_group(UserGroupId, Engine, UserIds)
+#' elasticache_create_user_group(UserGroupId, Engine, UserIds, Tags)
 #'
 #' @param UserGroupId &#91;required&#93; The ID of the user group.
 #' @param Engine &#91;required&#93; The current supported value is Redis.
 #' @param UserIds The list of user IDs that belong to the user group.
+#' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
+#' A tag key must be accompanied by a tag value, although null is accepted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2170,6 +2401,7 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
 #'   UserIds = list(
 #'     "string"
 #'   ),
+#'   MinimumEngineVersion = "string",
 #'   PendingChanges = list(
 #'     UserIdsToRemove = list(
 #'       "string"
@@ -2192,6 +2424,12 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
 #'   Engine = "string",
 #'   UserIds = list(
 #'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -2199,14 +2437,14 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
 #' @keywords internal
 #'
 #' @rdname elasticache_create_user_group
-elasticache_create_user_group <- function(UserGroupId, Engine, UserIds = NULL) {
+elasticache_create_user_group <- function(UserGroupId, Engine, UserIds = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateUserGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$create_user_group_input(UserGroupId = UserGroupId, Engine = Engine, UserIds = UserIds)
+  input <- .elasticache$create_user_group_input(UserGroupId = UserGroupId, Engine = Engine, UserIds = UserIds, Tags = Tags)
   output <- .elasticache$create_user_group_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -2216,29 +2454,29 @@ elasticache_create_user_group <- function(UserGroupId, Engine, UserIds = NULL) {
 }
 .elasticache$operations$create_user_group <- elasticache_create_user_group
 
-#' Decreases the number of node groups in a Global Datastore
+#' Decreases the number of node groups in a Global datastore
 #'
 #' @description
-#' Decreases the number of node groups in a Global Datastore
+#' Decreases the number of node groups in a Global datastore
 #'
 #' @usage
 #' elasticache_decrease_node_groups_in_global_replication_group(
 #'   GlobalReplicationGroupId, NodeGroupCount, GlobalNodeGroupsToRemove,
 #'   GlobalNodeGroupsToRetain, ApplyImmediately)
 #'
-#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
 #' @param NodeGroupCount &#91;required&#93; The number of node groups (shards) that results from the modification of
 #' the shard configuration
 #' @param GlobalNodeGroupsToRemove If the value of NodeGroupCount is less than the current number of node
 #' groups (shards), then either NodeGroupsToRemove or NodeGroupsToRetain is
-#' required. NodeGroupsToRemove is a list of NodeGroupIds to remove from
-#' the cluster. ElastiCache for Redis will attempt to remove all node
-#' groups listed by NodeGroupsToRemove from the cluster.
+#' required. GlobalNodeGroupsToRemove is a list of NodeGroupIds to remove
+#' from the cluster. ElastiCache for Redis will attempt to remove all node
+#' groups listed by GlobalNodeGroupsToRemove from the cluster.
 #' @param GlobalNodeGroupsToRetain If the value of NodeGroupCount is less than the current number of node
 #' groups (shards), then either NodeGroupsToRemove or NodeGroupsToRetain is
-#' required. NodeGroupsToRemove is a list of NodeGroupIds to remove from
-#' the cluster. ElastiCache for Redis will attempt to remove all node
-#' groups listed by NodeGroupsToRemove from the cluster.
+#' required. GlobalNodeGroupsToRetain is a list of NodeGroupIds to retain
+#' from the cluster. ElastiCache for Redis will attempt to retain all node
+#' groups listed by GlobalNodeGroupsToRetain from the cluster.
 #' @param ApplyImmediately &#91;required&#93; Indicates that the shard reconfiguration process begins immediately. At
 #' present, the only permitted value for this parameter is true.
 #'
@@ -2382,6 +2620,21 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
 #'         UserGroupIdsToRemove = list(
 #'           "string"
 #'         )
+#'       ),
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
+#'         )
 #'       )
 #'     ),
 #'     MemberClusters = list(
@@ -2439,7 +2692,29 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
 #'     ARN = "string",
 #'     UserGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     ReplicationGroupCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DataTiering = "enabled"|"disabled",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2502,7 +2777,11 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #' 
 #' -   Redis (cluster mode enabled) clusters
 #' 
+#' -   Redis (cluster mode disabled) clusters
+#' 
 #' -   A cluster that is the last read replica of a replication group
+#' 
+#' -   A cluster that is the primary node of a replication group
 #' 
 #' -   A node group (shard) that has Multi-AZ mode enabled
 #' 
@@ -2549,7 +2828,22 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #'       ),
 #'       EngineVersion = "string",
 #'       CacheNodeType = "string",
-#'       AuthTokenStatus = "SETTING"|"ROTATING"
+#'       AuthTokenStatus = "SETTING"|"ROTATING",
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
+#'         )
+#'       )
 #'     ),
 #'     NotificationConfiguration = list(
 #'       TopicArn = "string",
@@ -2602,7 +2896,25 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #'     ),
 #'     TransitEncryptionEnabled = TRUE|FALSE,
 #'     AtRestEncryptionEnabled = TRUE|FALSE,
-#'     ARN = "string"
+#'     ARN = "string",
+#'     ReplicationGroupLogDeliveryEnabled = TRUE|FALSE,
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2639,7 +2951,8 @@ elasticache_delete_cache_cluster <- function(CacheClusterId, FinalSnapshotIdenti
 #'
 #' @description
 #' Deletes the specified cache parameter group. You cannot delete a cache
-#' parameter group if it is associated with any cache clusters.
+#' parameter group if it is associated with any cache clusters. You cannot
+#' delete the default cache parameter groups in your account.
 #'
 #' @usage
 #' elasticache_delete_cache_parameter_group(CacheParameterGroupName)
@@ -2729,8 +3042,8 @@ elasticache_delete_cache_security_group <- function(CacheSecurityGroupName) {
 #' @description
 #' Deletes a cache subnet group.
 #' 
-#' You cannot delete a cache subnet group if it is associated with any
-#' clusters.
+#' You cannot delete a default cache subnet group or one that is associated
+#' with any clusters.
 #'
 #' @usage
 #' elasticache_delete_cache_subnet_group(CacheSubnetGroupName)
@@ -2770,22 +3083,26 @@ elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
 }
 .elasticache$operations$delete_cache_subnet_group <- elasticache_delete_cache_subnet_group
 
-#' Deleting a Global Datastore is a two-step process:
+#' Deleting a Global datastore is a two-step process:
 #'
 #' @description
-#' Deleting a Global Datastore is a two-step process:
+#' Deleting a Global datastore is a two-step process:
 #' 
 #' -   First, you must
 #'     [`disassociate_global_replication_group`][elasticache_disassociate_global_replication_group]
-#'     to remove the secondary clusters in the Global Datastore.
+#'     to remove the secondary clusters in the Global datastore.
 #' 
-#' -   Once the Global Datastore contains only the primary cluster, you can
-#'     use DeleteGlobalReplicationGroup API to delete the Global Datastore
-#'     while retainining the primary cluster using Retain…= true.
+#' -   Once the Global datastore contains only the primary cluster, you can
+#'     use the
+#'     [`delete_global_replication_group`][elasticache_delete_global_replication_group]
+#'     API to delete the Global datastore while retainining the primary
+#'     cluster using `RetainPrimaryReplicationGroup=true`.
 #' 
 #' Since the Global Datastore has only a primary cluster, you can delete
 #' the Global Datastore while retaining the primary by setting
-#' `RetainPrimaryCluster=true`.
+#' `RetainPrimaryReplicationGroup=true`. The primary cluster is never
+#' deleted when deleting a Global Datastore. It can only be deleted when it
+#' no longer is associated with any Global Datastore.
 #' 
 #' When you receive a successful response from this operation, Amazon
 #' ElastiCache immediately begins deleting the selected resources; you
@@ -2795,7 +3112,7 @@ elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
 #' elasticache_delete_global_replication_group(GlobalReplicationGroupId,
 #'   RetainPrimaryReplicationGroup)
 #'
-#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
 #' @param RetainPrimaryReplicationGroup &#91;required&#93; The primary replication group is retained as a standalone replication
 #' group.
 #'
@@ -2919,6 +3236,21 @@ elasticache_delete_global_replication_group <- function(GlobalReplicationGroupId
 #'         UserGroupIdsToRemove = list(
 #'           "string"
 #'         )
+#'       ),
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
+#'         )
 #'       )
 #'     ),
 #'     MemberClusters = list(
@@ -2976,7 +3308,29 @@ elasticache_delete_global_replication_group <- function(GlobalReplicationGroupId
 #'     ARN = "string",
 #'     UserGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     ReplicationGroupCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DataTiering = "enabled"|"disabled",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -3083,7 +3437,8 @@ elasticache_delete_replication_group <- function(ReplicationGroupId, RetainPrima
 #'       )
 #'     ),
 #'     KmsKeyId = "string",
-#'     ARN = "string"
+#'     ARN = "string",
+#'     DataTiering = "enabled"|"disabled"
 #'   )
 #' )
 #' ```
@@ -3118,7 +3473,7 @@ elasticache_delete_snapshot <- function(SnapshotName) {
 #' For Redis engine version 6
 #'
 #' @description
-#' For Redis engine version 6.x onwards: Deletes a user. The user will be
+#' For Redis engine version 6.0 onwards: Deletes a user. The user will be
 #' removed from all user groups and in turn removed from all replication
 #' groups. For more information, see [Using Role Based Access Control
 #' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
@@ -3136,6 +3491,7 @@ elasticache_delete_snapshot <- function(SnapshotName) {
 #'   UserName = "string",
 #'   Status = "string",
 #'   Engine = "string",
+#'   MinimumEngineVersion = "string",
 #'   AccessString = "string",
 #'   UserGroupIds = list(
 #'     "string"
@@ -3178,8 +3534,8 @@ elasticache_delete_user <- function(UserId) {
 #' For Redis engine version 6
 #'
 #' @description
-#' For Redis engine version 6.x onwards: Deletes a ser group. The user
-#' group must first be disassociated from the replcation group before it
+#' For Redis engine version 6.0 onwards: Deletes a user group. The user
+#' group must first be disassociated from the replication group before it
 #' can be deleted. For more information, see [Using Role Based Access
 #' Control
 #' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
@@ -3199,6 +3555,7 @@ elasticache_delete_user <- function(UserId) {
 #'   UserIds = list(
 #'     "string"
 #'   ),
+#'   MinimumEngineVersion = "string",
 #'   PendingChanges = list(
 #'     UserIdsToRemove = list(
 #'       "string"
@@ -3326,7 +3683,22 @@ elasticache_delete_user_group <- function(UserGroupId) {
 #'         ),
 #'         EngineVersion = "string",
 #'         CacheNodeType = "string",
-#'         AuthTokenStatus = "SETTING"|"ROTATING"
+#'         AuthTokenStatus = "SETTING"|"ROTATING",
+#'         LogDeliveryConfigurations = list(
+#'           list(
+#'             LogType = "slow-log"|"engine-log",
+#'             DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'             DestinationDetails = list(
+#'               CloudWatchLogsDetails = list(
+#'                 LogGroup = "string"
+#'               ),
+#'               KinesisFirehoseDetails = list(
+#'                 DeliveryStream = "string"
+#'               )
+#'             ),
+#'             LogFormat = "text"|"json"
+#'           )
+#'         )
 #'       ),
 #'       NotificationConfiguration = list(
 #'         TopicArn = "string",
@@ -3379,7 +3751,25 @@ elasticache_delete_user_group <- function(UserGroupId) {
 #'       ),
 #'       TransitEncryptionEnabled = TRUE|FALSE,
 #'       AtRestEncryptionEnabled = TRUE|FALSE,
-#'       ARN = "string"
+#'       ARN = "string",
+#'       ReplicationGroupLogDeliveryEnabled = TRUE|FALSE,
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json",
+#'           Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'           Message = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -3434,7 +3824,7 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
 #' 
 #' Valid values are: `memcached1.4` | `memcached1.5` | `memcached1.6` |
 #' `redis2.6` | `redis2.8` | `redis3.2` | `redis4.0` | `redis5.0` |
-#' `redis6.x` |
+#' `redis6.x` | `redis6.2`
 #' 
 #' Constraints:
 #' 
@@ -3844,7 +4234,7 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
 #' 
 #' Valid values are: `memcached1.4` | `memcached1.5` | `memcached1.6` |
 #' `redis2.6` | `redis2.8` | `redis3.2` | `redis4.0` | `redis5.0` |
-#' `redis6.x` |
+#' `redis6.x` | `redis6.2`
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a marker is
 #' included in the response so that the remaining results can be retrieved.
@@ -4029,13 +4419,13 @@ elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NU
 #' @description
 #' Returns information about a particular global replication group. If no
 #' identifier is specified, returns information about all Global
-#' Datastores.
+#' datastores.
 #'
 #' @usage
 #' elasticache_describe_global_replication_groups(GlobalReplicationGroupId,
 #'   MaxRecords, Marker, ShowMemberInfo)
 #'
-#' @param GlobalReplicationGroupId The name of the Global Datastore
+#' @param GlobalReplicationGroupId The name of the Global datastore
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified MaxRecords value, a marker is included
 #' in the response so that the remaining results can be retrieved.
@@ -4043,7 +4433,7 @@ elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NU
 #' pagination of results from this operation. If this parameter is
 #' specified, the response includes only records beyond the marker, up to
 #' the value specified by `MaxRecords`.
-#' @param ShowMemberInfo Returns the list of members that comprise the Global Datastore.
+#' @param ShowMemberInfo Returns the list of members that comprise the Global datastore.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4174,6 +4564,21 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
 #'           UserGroupIdsToRemove = list(
 #'             "string"
 #'           )
+#'         ),
+#'         LogDeliveryConfigurations = list(
+#'           list(
+#'             LogType = "slow-log"|"engine-log",
+#'             DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'             DestinationDetails = list(
+#'               CloudWatchLogsDetails = list(
+#'                 LogGroup = "string"
+#'               ),
+#'               KinesisFirehoseDetails = list(
+#'                 DeliveryStream = "string"
+#'               )
+#'             ),
+#'             LogFormat = "text"|"json"
+#'           )
 #'         )
 #'       ),
 #'       MemberClusters = list(
@@ -4231,7 +4636,29 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
 #'       ARN = "string",
 #'       UserGroupIds = list(
 #'         "string"
-#'       )
+#'       ),
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json",
+#'           Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'           Message = "string"
+#'         )
+#'       ),
+#'       ReplicationGroupCreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DataTiering = "enabled"|"disabled",
+#'       AutoMinorVersionUpgrade = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -4294,16 +4721,14 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #' 
 #'     -   Current generation:
 #' 
-#'         **M6g node types** (available only for Redis engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward).
-#' 
+#'         **M6g node types:** (available only for Redis engine version
+#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
 #'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
 #'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
 #'         `cache.m6g.16xlarge`
 #' 
-#'         At this time, M6g node types are available in the following
-#'         regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-#'         eu-west-1 and ap-northeast-1.
+#'         For region availability, see [Supported Node
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
 #'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
@@ -4312,13 +4737,19 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
 #' 
+#'         **T4g node types** (available only for Redis engine version
+#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'         `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
+#' 
 #'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
 #'         `cache.t3.medium`
 #' 
 #'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
 #'         `cache.t2.medium`
 #' 
-#'     -   Previous generation: (not recommended)
+#'     -   Previous generation: (not recommended. Existing clusters are
+#'         still supported but creation of new clusters is not supported
+#'         for these types.)
 #' 
 #'         **T1 node types:** `cache.t1.micro`
 #' 
@@ -4330,9 +4761,22 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #' 
 #' -   Compute optimized:
 #' 
-#'     -   Previous generation: (not recommended)
+#'     -   Previous generation: (not recommended. Existing clusters are
+#'         still supported but creation of new clusters is not supported
+#'         for these types.)
 #' 
 #'         **C1 node types:** `cache.c1.xlarge`
+#' 
+#' -   Memory optimized with data tiering:
+#' 
+#'     -   Current generation:
+#' 
+#'         **R6gd node types** (available only for Redis engine version 6.2
+#'         onward).
+#' 
+#'         `cache.r6gd.xlarge`, `cache.r6gd.2xlarge`, `cache.r6gd.4xlarge`,
+#'         `cache.r6gd.8xlarge`, `cache.r6gd.12xlarge`,
+#'         `cache.r6gd.16xlarge`
 #' 
 #' -   Memory optimized:
 #' 
@@ -4345,9 +4789,8 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
 #'         `cache.r6g.16xlarge`
 #' 
-#'         At this time, R6g node types are available in the following
-#'         regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-#'         eu-west-1 and ap-northeast-1.
+#'         For region availability, see [Supported Node
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
 #'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
@@ -4357,7 +4800,9 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #'         `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
 #'         `cache.r4.16xlarge`
 #' 
-#'     -   Previous generation: (not recommended)
+#'     -   Previous generation: (not recommended. Existing clusters are
+#'         still supported but creation of new clusters is not supported
+#'         for these types.)
 #' 
 #'         **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
 #'         `cache.m2.4xlarge`
@@ -4494,16 +4939,14 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #' 
 #'     -   Current generation:
 #' 
-#'         **M6g node types** (available only for Redis engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward).
-#' 
+#'         **M6g node types:** (available only for Redis engine version
+#'         5.0.6 onward and for Memcached engine version 1.5.16 onward)
 #'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
 #'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
 #'         `cache.m6g.16xlarge`
 #' 
-#'         At this time, M6g node types are available in the following
-#'         regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-#'         eu-west-1 and ap-northeast-1.
+#'         For region availability, see [Supported Node
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
 #'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
@@ -4512,13 +4955,19 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
 #'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
 #' 
+#'         **T4g node types** (available only for Redis engine version
+#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'         `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
+#' 
 #'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
 #'         `cache.t3.medium`
 #' 
 #'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
 #'         `cache.t2.medium`
 #' 
-#'     -   Previous generation: (not recommended)
+#'     -   Previous generation: (not recommended. Existing clusters are
+#'         still supported but creation of new clusters is not supported
+#'         for these types.)
 #' 
 #'         **T1 node types:** `cache.t1.micro`
 #' 
@@ -4530,9 +4979,22 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #' 
 #' -   Compute optimized:
 #' 
-#'     -   Previous generation: (not recommended)
+#'     -   Previous generation: (not recommended. Existing clusters are
+#'         still supported but creation of new clusters is not supported
+#'         for these types.)
 #' 
 #'         **C1 node types:** `cache.c1.xlarge`
+#' 
+#' -   Memory optimized with data tiering:
+#' 
+#'     -   Current generation:
+#' 
+#'         **R6gd node types** (available only for Redis engine version 6.2
+#'         onward).
+#' 
+#'         `cache.r6gd.xlarge`, `cache.r6gd.2xlarge`, `cache.r6gd.4xlarge`,
+#'         `cache.r6gd.8xlarge`, `cache.r6gd.12xlarge`,
+#'         `cache.r6gd.16xlarge`
 #' 
 #' -   Memory optimized:
 #' 
@@ -4545,9 +5007,8 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
 #'         `cache.r6g.16xlarge`
 #' 
-#'         At this time, R6g node types are available in the following
-#'         regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-#'         eu-west-1 and ap-northeast-1.
+#'         For region availability, see [Supported Node
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
 #'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
@@ -4557,7 +5018,9 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #'         `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
 #'         `cache.r4.16xlarge`
 #' 
-#'     -   Previous generation: (not recommended)
+#'     -   Previous generation: (not recommended. Existing clusters are
+#'         still supported but creation of new clusters is not supported
+#'         for these types.)
 #' 
 #'         **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
 #'         `cache.m2.4xlarge`
@@ -4838,7 +5301,8 @@ elasticache_describe_service_updates <- function(ServiceUpdateName = NULL, Servi
 #'         )
 #'       ),
 #'       KmsKeyId = "string",
-#'       ARN = "string"
+#'       ARN = "string",
+#'       DataTiering = "enabled"|"disabled"
 #'     )
 #'   )
 #' )
@@ -5055,7 +5519,7 @@ elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, Replic
 #' @param Marker An optional marker returned from a prior request. Use this marker for
 #' pagination of results from this operation. If this parameter is
 #' specified, the response includes only records beyond the marker, up to
-#' the value specified by MaxRecords. &gt;
+#' the value specified by MaxRecords. \>
 #'
 #' @return
 #' A list with the following syntax:
@@ -5069,6 +5533,7 @@ elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, Replic
 #'       UserIds = list(
 #'         "string"
 #'       ),
+#'       MinimumEngineVersion = "string",
 #'       PendingChanges = list(
 #'         UserIdsToRemove = list(
 #'           "string"
@@ -5133,7 +5598,7 @@ elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NU
 #' @param Marker An optional marker returned from a prior request. Use this marker for
 #' pagination of results from this operation. If this parameter is
 #' specified, the response includes only records beyond the marker, up to
-#' the value specified by MaxRecords. &gt;
+#' the value specified by MaxRecords. \>
 #'
 #' @return
 #' A list with the following syntax:
@@ -5145,6 +5610,7 @@ elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NU
 #'       UserName = "string",
 #'       Status = "string",
 #'       Engine = "string",
+#'       MinimumEngineVersion = "string",
 #'       AccessString = "string",
 #'       UserGroupIds = list(
 #'         "string"
@@ -5198,24 +5664,24 @@ elasticache_describe_users <- function(Engine = NULL, UserId = NULL, Filters = N
 }
 .elasticache$operations$describe_users <- elasticache_describe_users
 
-#' Remove a secondary cluster from the Global Datastore using the Global
-#' Datastore name
+#' Remove a secondary cluster from the Global datastore using the Global
+#' datastore name
 #'
 #' @description
-#' Remove a secondary cluster from the Global Datastore using the Global
-#' Datastore name. The secondary cluster will no longer receive updates
+#' Remove a secondary cluster from the Global datastore using the Global
+#' datastore name. The secondary cluster will no longer receive updates
 #' from the primary cluster, but will remain as a standalone cluster in
-#' that AWS region.
+#' that Amazon region.
 #'
 #' @usage
 #' elasticache_disassociate_global_replication_group(
 #'   GlobalReplicationGroupId, ReplicationGroupId, ReplicationGroupRegion)
 #'
-#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
 #' @param ReplicationGroupId &#91;required&#93; The name of the secondary cluster you wish to remove from the Global
-#' Datastore
-#' @param ReplicationGroupRegion &#91;required&#93; The AWS region of secondary cluster you wish to remove from the Global
-#' Datastore
+#' datastore
+#' @param ReplicationGroupRegion &#91;required&#93; The Amazon region of secondary cluster you wish to remove from the
+#' Global datastore
 #'
 #' @return
 #' A list with the following syntax:
@@ -5292,8 +5758,8 @@ elasticache_disassociate_global_replication_group <- function(GlobalReplicationG
 #' elasticache_failover_global_replication_group(GlobalReplicationGroupId,
 #'   PrimaryRegion, PrimaryReplicationGroupId)
 #'
-#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
-#' @param PrimaryRegion &#91;required&#93; The AWS region of the primary cluster of the Global Datastore
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
+#' @param PrimaryRegion &#91;required&#93; The Amazon region of the primary cluster of the Global datastore
 #' @param PrimaryReplicationGroupId &#91;required&#93; The name of the primary replication group
 #'
 #' @return
@@ -5360,21 +5826,21 @@ elasticache_failover_global_replication_group <- function(GlobalReplicationGroup
 }
 .elasticache$operations$failover_global_replication_group <- elasticache_failover_global_replication_group
 
-#' Increase the number of node groups in the Global Datastore
+#' Increase the number of node groups in the Global datastore
 #'
 #' @description
-#' Increase the number of node groups in the Global Datastore
+#' Increase the number of node groups in the Global datastore
 #'
 #' @usage
 #' elasticache_increase_node_groups_in_global_replication_group(
 #'   GlobalReplicationGroupId, NodeGroupCount, RegionalConfigurations,
 #'   ApplyImmediately)
 #'
-#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
 #' @param NodeGroupCount &#91;required&#93; The number of node groups you wish to add
-#' @param RegionalConfigurations Describes the replication group IDs, the AWS regions where they are
+#' @param RegionalConfigurations Describes the replication group IDs, the Amazon regions where they are
 #' stored and the shard configuration for each that comprise the Global
-#' Datastore
+#' datastore
 #' @param ApplyImmediately &#91;required&#93; Indicates that the process begins immediately. At present, the only
 #' permitted value for this parameter is true.
 #'
@@ -5456,13 +5922,13 @@ elasticache_increase_node_groups_in_global_replication_group <- function(GlobalR
 }
 .elasticache$operations$increase_node_groups_in_global_replication_group <- elasticache_increase_node_groups_in_global_replication_group
 
-#' Dynamically increases the number of replics in a Redis (cluster mode
+#' Dynamically increases the number of replicas in a Redis (cluster mode
 #' disabled) replication group or the number of replica nodes in one or
 #' more node groups (shards) of a Redis (cluster mode enabled) replication
 #' group
 #'
 #' @description
-#' Dynamically increases the number of replics in a Redis (cluster mode
+#' Dynamically increases the number of replicas in a Redis (cluster mode
 #' disabled) replication group or the number of replica nodes in one or
 #' more node groups (shards) of a Redis (cluster mode enabled) replication
 #' group. This operation is performed with no cluster down time.
@@ -5511,6 +5977,21 @@ elasticache_increase_node_groups_in_global_replication_group <- function(GlobalR
 #'         ),
 #'         UserGroupIdsToRemove = list(
 #'           "string"
+#'         )
+#'       ),
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
 #'         )
 #'       )
 #'     ),
@@ -5569,7 +6050,29 @@ elasticache_increase_node_groups_in_global_replication_group <- function(GlobalR
 #'     ARN = "string",
 #'     UserGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     ReplicationGroupCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DataTiering = "enabled"|"disabled",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -5689,21 +6192,22 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 }
 .elasticache$operations$list_allowed_node_type_modifications <- elasticache_list_allowed_node_type_modifications
 
-#' Lists all cost allocation tags currently on the named resource
+#' Lists all tags currently on a named resource
 #'
 #' @description
-#' Lists all cost allocation tags currently on the named resource. A
-#' `cost allocation tag` is a key-value pair where the key is
-#' case-sensitive and the value is optional. You can use cost allocation
-#' tags to categorize and track your AWS costs.
+#' Lists all tags currently on a named resource.
+#' 
+#' A tag is a key-value pair where the key and value are case-sensitive.
+#' You can use tags to categorize and track all your ElastiCache resources,
+#' with the exception of global replication group. When you add or remove
+#' tags on replication groups, those actions will be replicated to all
+#' nodes in the replication group. For more information, see
+#' [Resource-level
+#' permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
 #' 
 #' If the cluster is not in the *available* state,
 #' [`list_tags_for_resource`][elasticache_list_tags_for_resource] returns
 #' an error.
-#' 
-#' You can have a maximum of 50 cost allocation tags on an ElastiCache
-#' resource. For more information, see [Monitoring Costs with
-#' Tags](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html).
 #'
 #' @usage
 #' elasticache_list_tags_for_resource(ResourceName)
@@ -5714,7 +6218,7 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 #' `arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot`.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
-#' AWS Service
+#' Amazon Web Services Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #'
 #' @return
@@ -5771,7 +6275,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #'   NotificationTopicArn, CacheParameterGroupName, NotificationTopicStatus,
 #'   ApplyImmediately, EngineVersion, AutoMinorVersionUpgrade,
 #'   SnapshotRetentionLimit, SnapshotWindow, CacheNodeType, AuthToken,
-#'   AuthTokenUpdateStrategy)
+#'   AuthTokenUpdateStrategy, LogDeliveryConfigurations)
 #'
 #' @param CacheClusterId &#91;required&#93; The cluster identifier. This value is stored as a lowercase string.
 #' @param NumCacheNodes The number of cache nodes that the cluster should have. If the value for
@@ -5786,7 +6290,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' parameter to provide the IDs of the specific cache nodes to remove.
 #' 
 #' For clusters running Redis, this value must be 1. For clusters running
-#' Memcached, this value must be between 1 and 20.
+#' Memcached, this value must be between 1 and 40.
 #' 
 #' Adding or removing Memcached cache nodes can be applied immediately or
 #' as a pending operation (see `ApplyImmediately`).
@@ -5834,7 +6338,9 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' existing Memcached nodes remain in their current Availability Zone.
 #' 
 #' Only newly created nodes are located in different Availability Zones.
-#' @param NewAvailabilityZones The list of Availability Zones where the new Memcached cache nodes are
+#' @param NewAvailabilityZones This option is only supported on Memcached clusters.
+#' 
+#' The list of Availability Zones where the new Memcached cache nodes are
 #' created.
 #' 
 #' This parameter is only valid when `NumCacheNodes` in the request is
@@ -5842,8 +6348,6 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' of cache nodes pending creation (which may be zero). The number of
 #' Availability Zones supplied in this list must match the cache nodes
 #' being added in this request.
-#' 
-#' This option is only supported on Memcached clusters.
 #' 
 #' Scenarios:
 #' 
@@ -5981,7 +6485,9 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' but you cannot downgrade to an earlier engine version. If you want to
 #' use an earlier engine version, you must delete the existing cluster and
 #' create it anew with the earlier engine version.
-#' @param AutoMinorVersionUpgrade This parameter is currently disabled.
+#' @param AutoMinorVersionUpgrade  If you are running Redis engine version 6.0 or later, set this
+#' parameter to yes if you want to opt-in to the next auto minor version
+#' upgrade campaign. This parameter is disabled for previous versions. 
 #' @param SnapshotRetentionLimit The number of days for which ElastiCache retains automatic cluster
 #' snapshots before deleting them. For example, if you set
 #' `SnapshotRetentionLimit` to 5, a snapshot that was taken today is
@@ -6014,6 +6520,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' 
 #' For more information, see [Authenticating Users with Redis
 #' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
+#' @param LogDeliveryConfigurations Specifies the destination, format and type of the logs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6044,7 +6551,22 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #'       ),
 #'       EngineVersion = "string",
 #'       CacheNodeType = "string",
-#'       AuthTokenStatus = "SETTING"|"ROTATING"
+#'       AuthTokenStatus = "SETTING"|"ROTATING",
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
+#'         )
+#'       )
 #'     ),
 #'     NotificationConfiguration = list(
 #'       TopicArn = "string",
@@ -6097,7 +6619,25 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #'     ),
 #'     TransitEncryptionEnabled = TRUE|FALSE,
 #'     AtRestEncryptionEnabled = TRUE|FALSE,
-#'     ARN = "string"
+#'     ARN = "string",
+#'     ReplicationGroupLogDeliveryEnabled = TRUE|FALSE,
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -6131,21 +6671,37 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #'   SnapshotWindow = "string",
 #'   CacheNodeType = "string",
 #'   AuthToken = "string",
-#'   AuthTokenUpdateStrategy = "SET"|"ROTATE"|"DELETE"
+#'   AuthTokenUpdateStrategy = "SET"|"ROTATE"|"DELETE",
+#'   LogDeliveryConfigurations = list(
+#'     list(
+#'       LogType = "slow-log"|"engine-log",
+#'       DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'       DestinationDetails = list(
+#'         CloudWatchLogsDetails = list(
+#'           LogGroup = "string"
+#'         ),
+#'         KinesisFirehoseDetails = list(
+#'           DeliveryStream = "string"
+#'         )
+#'       ),
+#'       LogFormat = "text"|"json",
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname elasticache_modify_cache_cluster
-elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NULL, CacheNodeIdsToRemove = NULL, AZMode = NULL, NewAvailabilityZones = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL) {
+elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NULL, CacheNodeIdsToRemove = NULL, AZMode = NULL, NewAvailabilityZones = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL, LogDeliveryConfigurations = NULL) {
   op <- new_operation(
     name = "ModifyCacheCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$modify_cache_cluster_input(CacheClusterId = CacheClusterId, NumCacheNodes = NumCacheNodes, CacheNodeIdsToRemove = CacheNodeIdsToRemove, AZMode = AZMode, NewAvailabilityZones = NewAvailabilityZones, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy)
+  input <- .elasticache$modify_cache_cluster_input(CacheClusterId = CacheClusterId, NumCacheNodes = NumCacheNodes, CacheNodeIdsToRemove = CacheNodeIdsToRemove, AZMode = AZMode, NewAvailabilityZones = NewAvailabilityZones, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, LogDeliveryConfigurations = LogDeliveryConfigurations)
   output <- .elasticache$modify_cache_cluster_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -6286,25 +6842,28 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 }
 .elasticache$operations$modify_cache_subnet_group <- elasticache_modify_cache_subnet_group
 
-#' Modifies the settings for a Global Datastore
+#' Modifies the settings for a Global datastore
 #'
 #' @description
-#' Modifies the settings for a Global Datastore.
+#' Modifies the settings for a Global datastore.
 #'
 #' @usage
 #' elasticache_modify_global_replication_group(GlobalReplicationGroupId,
-#'   ApplyImmediately, CacheNodeType, EngineVersion,
+#'   ApplyImmediately, CacheNodeType, EngineVersion, CacheParameterGroupName,
 #'   GlobalReplicationGroupDescription, AutomaticFailoverEnabled)
 #'
-#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
 #' @param ApplyImmediately &#91;required&#93; This parameter causes the modifications in this request and any pending
 #' modifications to be applied, asynchronously and as soon as possible.
 #' Modifications to Global Replication Groups cannot be requested to be
 #' applied in PreferredMaintenceWindow.
-#' @param CacheNodeType A valid cache node type that you want to scale this Global Datastore to.
+#' @param CacheNodeType A valid cache node type that you want to scale this Global datastore to.
 #' @param EngineVersion The upgraded version of the cache engine to be run on the clusters in
-#' the Global Datastore.
-#' @param GlobalReplicationGroupDescription A description of the Global Datastore
+#' the Global datastore.
+#' @param CacheParameterGroupName The name of the cache parameter group to use with the Global datastore.
+#' It must be compatible with the major engine version used by the Global
+#' datastore.
+#' @param GlobalReplicationGroupDescription A description of the Global datastore
 #' @param AutomaticFailoverEnabled Determines whether a read replica is automatically promoted to
 #' read/write primary if the existing primary encounters a failure.
 #'
@@ -6350,6 +6909,7 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #'   ApplyImmediately = TRUE|FALSE,
 #'   CacheNodeType = "string",
 #'   EngineVersion = "string",
+#'   CacheParameterGroupName = "string",
 #'   GlobalReplicationGroupDescription = "string",
 #'   AutomaticFailoverEnabled = TRUE|FALSE
 #' )
@@ -6358,14 +6918,14 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' @keywords internal
 #'
 #' @rdname elasticache_modify_global_replication_group
-elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId, ApplyImmediately, CacheNodeType = NULL, EngineVersion = NULL, GlobalReplicationGroupDescription = NULL, AutomaticFailoverEnabled = NULL) {
+elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId, ApplyImmediately, CacheNodeType = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, GlobalReplicationGroupDescription = NULL, AutomaticFailoverEnabled = NULL) {
   op <- new_operation(
     name = "ModifyGlobalReplicationGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$modify_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ApplyImmediately = ApplyImmediately, CacheNodeType = CacheNodeType, EngineVersion = EngineVersion, GlobalReplicationGroupDescription = GlobalReplicationGroupDescription, AutomaticFailoverEnabled = AutomaticFailoverEnabled)
+  input <- .elasticache$modify_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ApplyImmediately = ApplyImmediately, CacheNodeType = CacheNodeType, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, GlobalReplicationGroupDescription = GlobalReplicationGroupDescription, AutomaticFailoverEnabled = AutomaticFailoverEnabled)
   output <- .elasticache$modify_global_replication_group_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -6398,7 +6958,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #'   ApplyImmediately, EngineVersion, AutoMinorVersionUpgrade,
 #'   SnapshotRetentionLimit, SnapshotWindow, CacheNodeType, AuthToken,
 #'   AuthTokenUpdateStrategy, UserGroupIdsToAdd, UserGroupIdsToRemove,
-#'   RemoveUserGroups)
+#'   RemoveUserGroups, LogDeliveryConfigurations)
 #'
 #' @param ReplicationGroupId &#91;required&#93; The identifier of the replication group to modify.
 #' @param ReplicationGroupDescription A description for the replication group. Maximum length is 255
@@ -6414,9 +6974,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' read/write primary if the existing primary encounters a failure.
 #' 
 #' Valid values: `true` | `false`
-#' @param MultiAZEnabled A flag indicating if you have Multi-AZ enabled to enhance fault
-#' tolerance. For more information, see [Minimizing Downtime:
-#' Multi-AZ](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html).
+#' @param MultiAZEnabled A flag to indicate MultiAZ is enabled.
 #' @param NodeGroupId Deprecated. This parameter is not used.
 #' @param CacheSecurityGroupNames A list of cache security group names to authorize for the clusters in
 #' this replication group. This change is asynchronously applied as soon as
@@ -6488,7 +7046,9 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' but you cannot downgrade to an earlier engine version. If you want to
 #' use an earlier engine version, you must delete the existing replication
 #' group and create it anew with the earlier engine version.
-#' @param AutoMinorVersionUpgrade This parameter is currently disabled.
+#' @param AutoMinorVersionUpgrade  If you are running Redis engine version 6.0 or later, set this
+#' parameter to yes if you want to opt-in to the next auto minor version
+#' upgrade campaign. This parameter is disabled for previous versions. 
 #' @param SnapshotRetentionLimit The number of days for which ElastiCache retains automatic node group
 #' (shard) snapshots before deleting them. For example, if you set
 #' `SnapshotRetentionLimit` to 5, a snapshot that was taken today is
@@ -6528,10 +7088,12 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' For more information, see [Authenticating Users with Redis
 #' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
-#' @param UserGroupIdsToAdd A list of user group IDs.
-#' @param UserGroupIdsToRemove A list of users groups to remove, meaning the users in the group no
-#' longer can access thereplication group.
-#' @param RemoveUserGroups Removes the user groups that can access this replication group.
+#' @param UserGroupIdsToAdd The ID of the user group you are associating with the replication group.
+#' @param UserGroupIdsToRemove The ID of the user group to disassociate from the replication group,
+#' meaning the users in the group no longer can access the replication
+#' group.
+#' @param RemoveUserGroups Removes the user group associated with this replication group.
+#' @param LogDeliveryConfigurations Specifies the destination, format and type of the logs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6560,6 +7122,21 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #'         ),
 #'         UserGroupIdsToRemove = list(
 #'           "string"
+#'         )
+#'       ),
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
 #'         )
 #'       )
 #'     ),
@@ -6618,7 +7195,29 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #'     ARN = "string",
 #'     UserGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     ReplicationGroupCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DataTiering = "enabled"|"disabled",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -6657,21 +7256,37 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #'   UserGroupIdsToRemove = list(
 #'     "string"
 #'   ),
-#'   RemoveUserGroups = TRUE|FALSE
+#'   RemoveUserGroups = TRUE|FALSE,
+#'   LogDeliveryConfigurations = list(
+#'     list(
+#'       LogType = "slow-log"|"engine-log",
+#'       DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'       DestinationDetails = list(
+#'         CloudWatchLogsDetails = list(
+#'           LogGroup = "string"
+#'         ),
+#'         KinesisFirehoseDetails = list(
+#'           DeliveryStream = "string"
+#'         )
+#'       ),
+#'       LogFormat = "text"|"json",
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname elasticache_modify_replication_group
-elasticache_modify_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription = NULL, PrimaryClusterId = NULL, SnapshottingClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NodeGroupId = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL, UserGroupIdsToAdd = NULL, UserGroupIdsToRemove = NULL, RemoveUserGroups = NULL) {
+elasticache_modify_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription = NULL, PrimaryClusterId = NULL, SnapshottingClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NodeGroupId = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL, UserGroupIdsToAdd = NULL, UserGroupIdsToRemove = NULL, RemoveUserGroups = NULL, LogDeliveryConfigurations = NULL) {
   op <- new_operation(
     name = "ModifyReplicationGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$modify_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, PrimaryClusterId = PrimaryClusterId, SnapshottingClusterId = SnapshottingClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NodeGroupId = NodeGroupId, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, UserGroupIdsToAdd = UserGroupIdsToAdd, UserGroupIdsToRemove = UserGroupIdsToRemove, RemoveUserGroups = RemoveUserGroups)
+  input <- .elasticache$modify_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, PrimaryClusterId = PrimaryClusterId, SnapshottingClusterId = SnapshottingClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NodeGroupId = NodeGroupId, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, UserGroupIdsToAdd = UserGroupIdsToAdd, UserGroupIdsToRemove = UserGroupIdsToRemove, RemoveUserGroups = RemoveUserGroups, LogDeliveryConfigurations = LogDeliveryConfigurations)
   output <- .elasticache$modify_replication_group_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -6682,12 +7297,12 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
 .elasticache$operations$modify_replication_group <- elasticache_modify_replication_group
 
 #' Modifies a replication group's shards (node groups) by allowing you to
-#' add shards, remove shards, or rebalance the keyspaces among exisiting
+#' add shards, remove shards, or rebalance the keyspaces among existing
 #' shards
 #'
 #' @description
 #' Modifies a replication group's shards (node groups) by allowing you to
-#' add shards, remove shards, or rebalance the keyspaces among exisiting
+#' add shards, remove shards, or rebalance the keyspaces among existing
 #' shards.
 #'
 #' @usage
@@ -6754,6 +7369,21 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
 #'         UserGroupIdsToRemove = list(
 #'           "string"
 #'         )
+#'       ),
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
+#'         )
 #'       )
 #'     ),
 #'     MemberClusters = list(
@@ -6811,7 +7441,29 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
 #'     ARN = "string",
 #'     UserGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     ReplicationGroupCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DataTiering = "enabled"|"disabled",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -6882,6 +7534,7 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
 #'   UserName = "string",
 #'   Status = "string",
 #'   Engine = "string",
+#'   MinimumEngineVersion = "string",
 #'   AccessString = "string",
 #'   UserGroupIds = list(
 #'     "string"
@@ -6950,6 +7603,7 @@ elasticache_modify_user <- function(UserId, AccessString = NULL, AppendAccessStr
 #'   UserIds = list(
 #'     "string"
 #'   ),
+#'   MinimumEngineVersion = "string",
 #'   PendingChanges = list(
 #'     UserIdsToRemove = list(
 #'       "string"
@@ -7001,11 +7655,17 @@ elasticache_modify_user_group <- function(UserGroupId, UserIdsToAdd = NULL, User
 #' Allows you to purchase a reserved cache node offering
 #'
 #' @description
-#' Allows you to purchase a reserved cache node offering.
+#' Allows you to purchase a reserved cache node offering. Reserved nodes
+#' are not eligible for cancellation and are non-refundable. For more
+#' information, see [Managing Costs with Reserved
+#' Nodes](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/) for
+#' Redis or [Managing Costs with Reserved
+#' Nodes](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/) for
+#' Memcached.
 #'
 #' @usage
 #' elasticache_purchase_reserved_cache_nodes_offering(
-#'   ReservedCacheNodesOfferingId, ReservedCacheNodeId, CacheNodeCount)
+#'   ReservedCacheNodesOfferingId, ReservedCacheNodeId, CacheNodeCount, Tags)
 #'
 #' @param ReservedCacheNodesOfferingId &#91;required&#93; The ID of the reserved cache node offering to purchase.
 #' 
@@ -7020,6 +7680,8 @@ elasticache_modify_user_group <- function(UserGroupId, UserIdsToAdd = NULL, User
 #' @param CacheNodeCount The number of cache node instances to reserve.
 #' 
 #' Default: `1`
+#' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
+#' A tag key must be accompanied by a tag value, although null is accepted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7055,21 +7717,27 @@ elasticache_modify_user_group <- function(UserGroupId, UserIdsToAdd = NULL, User
 #' svc$purchase_reserved_cache_nodes_offering(
 #'   ReservedCacheNodesOfferingId = "string",
 #'   ReservedCacheNodeId = "string",
-#'   CacheNodeCount = 123
+#'   CacheNodeCount = 123,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname elasticache_purchase_reserved_cache_nodes_offering
-elasticache_purchase_reserved_cache_nodes_offering <- function(ReservedCacheNodesOfferingId, ReservedCacheNodeId = NULL, CacheNodeCount = NULL) {
+elasticache_purchase_reserved_cache_nodes_offering <- function(ReservedCacheNodesOfferingId, ReservedCacheNodeId = NULL, CacheNodeCount = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PurchaseReservedCacheNodesOffering",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elasticache$purchase_reserved_cache_nodes_offering_input(ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, ReservedCacheNodeId = ReservedCacheNodeId, CacheNodeCount = CacheNodeCount)
+  input <- .elasticache$purchase_reserved_cache_nodes_offering_input(ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, ReservedCacheNodeId = ReservedCacheNodeId, CacheNodeCount = CacheNodeCount, Tags = Tags)
   output <- .elasticache$purchase_reserved_cache_nodes_offering_output()
   config <- get_config()
   svc <- .elasticache$service(config)
@@ -7090,7 +7758,7 @@ elasticache_purchase_reserved_cache_nodes_offering <- function(ReservedCacheNode
 #' elasticache_rebalance_slots_in_global_replication_group(
 #'   GlobalReplicationGroupId, ApplyImmediately)
 #'
-#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global Datastore
+#' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
 #' @param ApplyImmediately &#91;required&#93; If `True`, redistribution is applied immediately.
 #'
 #' @return
@@ -7176,7 +7844,7 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
 #' 
 #' If you make changes to parameters that require a Redis (cluster mode
 #' enabled) cluster reboot for the changes to be applied, see [Rebooting a
-#' Cluster](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html)
+#' Cluster](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/nodes.rebooting.html)
 #' for an alternate process.
 #'
 #' @usage
@@ -7216,7 +7884,22 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
 #'       ),
 #'       EngineVersion = "string",
 #'       CacheNodeType = "string",
-#'       AuthTokenStatus = "SETTING"|"ROTATING"
+#'       AuthTokenStatus = "SETTING"|"ROTATING",
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
+#'         )
+#'       )
 #'     ),
 #'     NotificationConfiguration = list(
 #'       TopicArn = "string",
@@ -7269,7 +7952,25 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
 #'     ),
 #'     TransitEncryptionEnabled = TRUE|FALSE,
 #'     AtRestEncryptionEnabled = TRUE|FALSE,
-#'     ARN = "string"
+#'     ARN = "string",
+#'     ReplicationGroupLogDeliveryEnabled = TRUE|FALSE,
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -7308,7 +8009,13 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
 #'
 #' @description
 #' Removes the tags identified by the `TagKeys` list from the named
-#' resource.
+#' resource. A tag is a key-value pair where the key and value are
+#' case-sensitive. You can use tags to categorize and track all your
+#' ElastiCache resources, with the exception of global replication group.
+#' When you add or remove tags on replication groups, those actions will be
+#' replicated to all nodes in the replication group. For more information,
+#' see [Resource-level
+#' permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
 #'
 #' @usage
 #' elasticache_remove_tags_from_resource(ResourceName, TagKeys)
@@ -7319,7 +8026,7 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
 #' `arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot`.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
-#' AWS Service
+#' Amazon Service
 #' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 #' @param TagKeys &#91;required&#93; A list of `TagKeys` identifying the tags you want removed from the named
 #' resource.
@@ -7447,9 +8154,9 @@ elasticache_reset_cache_parameter_group <- function(CacheParameterGroupName, Res
 #'
 #' @param CacheSecurityGroupName &#91;required&#93; The name of the cache security group to revoke ingress from.
 #' @param EC2SecurityGroupName &#91;required&#93; The name of the Amazon EC2 security group to revoke access from.
-#' @param EC2SecurityGroupOwnerId &#91;required&#93; The AWS account number of the Amazon EC2 security group owner. Note that
-#' this is not the same thing as an AWS access key ID - you must provide a
-#' valid AWS account number for this parameter.
+#' @param EC2SecurityGroupOwnerId &#91;required&#93; The Amazon account number of the Amazon EC2 security group owner. Note
+#' that this is not the same thing as an Amazon access key ID - you must
+#' provide a valid Amazon account number for this parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7541,6 +8248,21 @@ elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupNa
 #'         UserGroupIdsToRemove = list(
 #'           "string"
 #'         )
+#'       ),
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
+#'         )
 #'       )
 #'     ),
 #'     MemberClusters = list(
@@ -7598,7 +8320,29 @@ elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupNa
 #'     ARN = "string",
 #'     UserGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     ReplicationGroupCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DataTiering = "enabled"|"disabled",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -7646,11 +8390,17 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #' (called shard in the console) in a replication group (called cluster in
 #' the console).
 #' 
+#' This API is designed for testing the behavior of your application in
+#' case of ElastiCache failover. It is not designed to be an operational
+#' tool for initiating a failover to overcome a problem you may have with
+#' the cluster. Moreover, in certain conditions such as large-scale
+#' operational events, Amazon may block this API.
+#' 
 #' **Note the following**
 #' 
 #' -   A customer can use this operation to test automatic failover on up
-#'     to 5 shards (called node groups in the ElastiCache API and AWS CLI)
-#'     in any rolling 24-hour period.
+#'     to 5 shards (called node groups in the ElastiCache API and
+#'     Amazon CLI) in any rolling 24-hour period.
 #' 
 #' -   If calling this operation on shards in different clusters (called
 #'     replication groups in the API and CLI), the calls can be made
@@ -7661,7 +8411,7 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #'     replacement must complete before a subsequent call can be made.
 #' 
 #' -   To determine whether the node replacement is complete you can check
-#'     Events using the Amazon ElastiCache console, the AWS CLI, or the
+#'     Events using the Amazon ElastiCache console, the Amazon CLI, or the
 #'     ElastiCache API. Look for the following automatic failover related
 #'     events, listed here in order of occurrance:
 #' 
@@ -7730,6 +8480,21 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #'         UserGroupIdsToRemove = list(
 #'           "string"
 #'         )
+#'       ),
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
+#'         )
 #'       )
 #'     ),
 #'     MemberClusters = list(
@@ -7787,7 +8552,29 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #'     ARN = "string",
 #'     UserGroupIds = list(
 #'       "string"
-#'     )
+#'     ),
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     ReplicationGroupCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DataTiering = "enabled"|"disabled",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE
 #'   )
 #' )
 #' ```

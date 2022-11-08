@@ -12,37 +12,9 @@ applicationinsights_describe_component(ResourceGroupName, ComponentName)
 
 \item{ComponentName}{[required] The name of the component.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationComponent = list(
-    ComponentName = "string",
-    ComponentRemarks = "string",
-    ResourceType = "string",
-    OsType = "WINDOWS"|"LINUX",
-    Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
-    Monitor = TRUE|FALSE,
-    DetectedWorkload = list(
-      list(
-        "string"
-      )
-    )
-  ),
-  ResourceList = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Describes a component and lists the resources that are grouped together
-in a component.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_component(
-  ResourceGroupName = "string",
-  ComponentName = "string"
-)
-}
-}
+Describes a component and lists the resources that are grouped together in a component.
 
+See \url{https://paws-r.github.io/docs/applicationinsights/describe_component.html} for full documentation.
+}
 \keyword{internal}

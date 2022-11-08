@@ -4,38 +4,15 @@
 \alias{elasticsearchservice_start_elasticsearch_service_software_update}
 \title{Schedules a service software update for an Amazon ES domain}
 \usage{
-elasticsearchservice_start_elasticsearch_service_software_update(
-  DomainName)
+elasticsearchservice_start_elasticsearch_service_software_update(DomainName)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to update to the latest service
 software.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceSoftwareOptions = list(
-    CurrentVersion = "string",
-    NewVersion = "string",
-    UpdateAvailable = TRUE|FALSE,
-    Cancellable = TRUE|FALSE,
-    UpdateStatus = "PENDING_UPDATE"|"IN_PROGRESS"|"COMPLETED"|"NOT_ELIGIBLE"|"ELIGIBLE",
-    Description = "string",
-    AutomatedUpdateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    OptionalDeployment = TRUE|FALSE
-  )
-)
-}
-}
 \description{
 Schedules a service software update for an Amazon ES domain.
-}
-\section{Request syntax}{
-\preformatted{svc$start_elasticsearch_service_software_update(
-  DomainName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/start_elasticsearch_service_software_update.html} for full documentation.
+}
 \keyword{internal}

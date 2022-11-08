@@ -4,7 +4,7 @@
 \alias{iam_list_mfa_devices}
 \title{Lists the MFA devices for an IAM user}
 \usage{
-iam_list_mfa_devices(UserName, Marker, MaxItems)
+iam_list_mfa_devices(UserName = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{UserName}{The name of the user whose MFA devices you want to list.
@@ -28,39 +28,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MFADevices = list(
-    list(
-      UserName = "string",
-      SerialNumber = "string",
-      EnableDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Lists the MFA devices for an IAM user. If the request includes a IAM
-user name, then this operation lists all the MFA devices associated with
-the specified user. If you do not specify a user name, IAM determines
-the user name implicitly based on the AWS access key ID signing the
-request for this API.
+Lists the MFA devices for an IAM user. If the request includes a IAM user name, then this operation lists all the MFA devices associated with the specified user. If you do not specify a user name, IAM determines the user name implicitly based on the Amazon Web Services access key ID signing the request for this operation.
 
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters.
+See \url{https://paws-r.github.io/docs/iam/list_mfa_devices.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_mfa_devices(
-  UserName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
 \keyword{internal}

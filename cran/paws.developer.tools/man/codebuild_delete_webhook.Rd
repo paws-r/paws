@@ -2,30 +2,18 @@
 % Please edit documentation in R/codebuild_operations.R
 \name{codebuild_delete_webhook}
 \alias{codebuild_delete_webhook}
-\title{For an existing AWS CodeBuild build project that has its source code
-stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
-rebuilding the source code every time a code change is pushed to the
-repository}
+\title{For an existing CodeBuild build project that has its source code stored
+in a GitHub or Bitbucket repository, stops CodeBuild from rebuilding the
+source code every time a code change is pushed to the repository}
 \usage{
 codebuild_delete_webhook(projectName)
 }
 \arguments{
-\item{projectName}{[required] The name of the AWS CodeBuild project.}
-}
-\value{
-An empty list.
+\item{projectName}{[required] The name of the CodeBuild project.}
 }
 \description{
-For an existing AWS CodeBuild build project that has its source code
-stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
-rebuilding the source code every time a code change is pushed to the
-repository.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_webhook(
-  projectName = "string"
-)
-}
-}
+For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, stops CodeBuild from rebuilding the source code every time a code change is pushed to the repository.
 
+See \url{https://paws-r.github.io/docs/codebuild/delete_webhook.html} for full documentation.
+}
 \keyword{internal}

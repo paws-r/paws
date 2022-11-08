@@ -4,7 +4,11 @@
 \alias{waf_list_activated_rules_in_rule_group}
 \title{This is AWS WAF Classic documentation}
 \usage{
-waf_list_activated_rules_in_rule_group(RuleGroupId, NextMarker, Limit)
+waf_list_activated_rules_in_rule_group(
+  RuleGroupId = NULL,
+  NextMarker = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{RuleGroupId}{The \code{RuleGroupId} of the RuleGroup for which you want to get a list of
@@ -23,49 +27,9 @@ for this request. If you have more \code{ActivatedRules} than the number that
 you specify for \code{Limit}, the response includes a \code{NextMarker} value that
 you can use to get another batch of \code{ActivatedRules}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextMarker = "string",
-  ActivatedRules = list(
-    list(
-      Priority = 123,
-      RuleId = "string",
-      Action = list(
-        Type = "BLOCK"|"ALLOW"|"COUNT"
-      ),
-      OverrideAction = list(
-        Type = "NONE"|"COUNT"
-      ),
-      Type = "REGULAR"|"RATE_BASED"|"GROUP",
-      ExcludedRules = list(
-        list(
-          RuleId = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Returns an array of ActivatedRule objects.
+See \url{https://paws-r.github.io/docs/waf/list_activated_rules_in_rule_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_activated_rules_in_rule_group(
-  RuleGroupId = "string",
-  NextMarker = "string",
-  Limit = 123
-)
-}
-}
-
 \keyword{internal}

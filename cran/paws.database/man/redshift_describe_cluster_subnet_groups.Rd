@@ -5,8 +5,13 @@
 \title{Returns one or more cluster subnet group objects, which contain metadata
 about your cluster subnet groups}
 \usage{
-redshift_describe_cluster_subnet_groups(ClusterSubnetGroupName,
-  MaxRecords, Marker, TagKeys, TagValues)
+redshift_describe_cluster_subnet_groups(
+  ClusterSubnetGroupName = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  TagKeys = NULL,
+  TagValues = NULL
+)
 }
 \arguments{
 \item{ClusterSubnetGroupName}{The name of the cluster subnet group for which information is requested.}
@@ -24,10 +29,10 @@ Constraints: minimum 20, maximum 100.}
 \item{Marker}{An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
 \code{\link[=redshift_describe_cluster_subnet_groups]{describe_cluster_subnet_groups}}
-request exceed the value specified in \code{MaxRecords}, AWS returns a value
-in the \code{Marker} field of the response. You can retrieve the next set of
-response records by providing the returned marker value in the \code{Marker}
-parameter and retrying the request.}
+request exceed the value specified in \code{MaxRecords}, Amazon Web Services
+returns a value in the \code{Marker} field of the response. You can retrieve
+the next set of response records by providing the returned marker value
+in the \code{Marker} parameter and retrying the request.}
 
 \item{TagKeys}{A tag key or keys for which you want to return all matching cluster
 subnet groups that are associated with the specified key or keys. For
@@ -44,69 +49,9 @@ values in the request, Amazon Redshift returns a response with the
 subnet groups that have either or both of these tag values associated
 with them.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  ClusterSubnetGroups = list(
-    list(
-      ClusterSubnetGroupName = "string",
-      Description = "string",
-      VpcId = "string",
-      SubnetGroupStatus = "string",
-      Subnets = list(
-        list(
-          SubnetIdentifier = "string",
-          SubnetAvailabilityZone = list(
-            Name = "string",
-            SupportedPlatforms = list(
-              list(
-                Name = "string"
-              )
-            )
-          ),
-          SubnetStatus = "string"
-        )
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns one or more cluster subnet group objects, which contain metadata
-about your cluster subnet groups. By default, this operation returns
-information about all cluster subnet groups that are defined in you AWS
-account.
+Returns one or more cluster subnet group objects, which contain metadata about your cluster subnet groups. By default, this operation returns information about all cluster subnet groups that are defined in your Amazon Web Services account.
 
-If you specify both tag keys and tag values in the same request, Amazon
-Redshift returns all subnet groups that match any combination of the
-specified keys and values. For example, if you have \code{owner} and
-\code{environment} for tag keys, and \code{admin} and \code{test} for tag values, all
-subnet groups that have any combination of those values are returned.
-
-If both tag keys and values are omitted from the request, subnet groups
-are returned regardless of whether they have tag keys or values
-associated with them.
+See \url{https://paws-r.github.io/docs/redshift/describe_cluster_subnet_groups.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_cluster_subnet_groups(
-  ClusterSubnetGroupName = "string",
-  MaxRecords = 123,
-  Marker = "string",
-  TagKeys = list(
-    "string"
-  ),
-  TagValues = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

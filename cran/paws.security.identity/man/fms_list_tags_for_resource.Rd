@@ -2,34 +2,19 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_list_tags_for_resource}
 \alias{fms_list_tags_for_resource}
-\title{Retrieves the list of tags for the specified AWS resource}
+\title{Retrieves the list of tags for the specified Amazon Web Services
+resource}
 \usage{
 fms_list_tags_for_resource(ResourceArn)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource to return tags for. The
-AWS Firewall Manager resources that support tagging are policies,
+Firewall Manager resources that support tagging are policies,
 applications lists, and protocols lists.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves the list of tags for the specified AWS resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string"
-)
-}
-}
+Retrieves the list of tags for the specified Amazon Web Services resource.
 
+See \url{https://paws-r.github.io/docs/fms/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

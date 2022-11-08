@@ -5,7 +5,7 @@
 \title{Gets the segment detection results of a Amazon Rekognition Video
 analysis started by StartSegmentDetection}
 \usage{
-rekognition_get_segment_detection(JobId, MaxResults, NextToken)
+rekognition_get_segment_detection(JobId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{JobId}{[required] Job identifier for the text detection operation for which you want
@@ -19,108 +19,9 @@ value you can specify is 1000.}
 token that you can use in the subsequent request to retrieve the next
 set of text.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
-  StatusMessage = "string",
-  VideoMetadata = list(
-    list(
-      Codec = "string",
-      DurationMillis = 123,
-      Format = "string",
-      FrameRate = 123.0,
-      FrameHeight = 123,
-      FrameWidth = 123
-    )
-  ),
-  AudioMetadata = list(
-    list(
-      Codec = "string",
-      DurationMillis = 123,
-      SampleRate = 123,
-      NumberOfChannels = 123
-    )
-  ),
-  NextToken = "string",
-  Segments = list(
-    list(
-      Type = "TECHNICAL_CUE"|"SHOT",
-      StartTimestampMillis = 123,
-      EndTimestampMillis = 123,
-      DurationMillis = 123,
-      StartTimecodeSMPTE = "string",
-      EndTimecodeSMPTE = "string",
-      DurationSMPTE = "string",
-      TechnicalCueSegment = list(
-        Type = "ColorBars"|"EndCredits"|"BlackFrames",
-        Confidence = 123.0
-      ),
-      ShotSegment = list(
-        Index = 123,
-        Confidence = 123.0
-      )
-    )
-  ),
-  SelectedSegmentTypes = list(
-    list(
-      Type = "TECHNICAL_CUE"|"SHOT",
-      ModelVersion = "string"
-    )
-  )
-)
-}
-}
 \description{
-Gets the segment detection results of a Amazon Rekognition Video
-analysis started by
-\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}.
+Gets the segment detection results of a Amazon Rekognition Video analysis started by \code{\link[=rekognition_start_segment_detection]{start_segment_detection}}.
 
-Segment detection with Amazon Rekognition Video is an asynchronous
-operation. You start segment detection by calling
-\code{\link[=rekognition_start_segment_detection]{start_segment_detection}} which
-returns a job identifier (\code{JobId}). When the segment detection operation
-finishes, Amazon Rekognition publishes a completion status to the Amazon
-Simple Notification Service topic registered in the initial call to
-\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}. To get
-the results of the segment detection operation, first check that the
-status value published to the Amazon SNS topic is \code{SUCCEEDED}. if so,
-call \code{\link[=rekognition_get_segment_detection]{get_segment_detection}} and
-pass the job identifier (\code{JobId}) from the initial call of
-\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}.
-
-\code{\link[=rekognition_get_segment_detection]{get_segment_detection}} returns
-detected segments in an array (\code{Segments}) of SegmentDetection objects.
-\code{Segments} is sorted by the segment types specified in the
-\code{SegmentTypes} input parameter of
-\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}. Each
-element of the array includes the detected segment, the precentage
-confidence in the acuracy of the detected segment, the type of the
-segment, and the frame in which the segment was detected.
-
-Use \code{SelectedSegmentTypes} to find out the type of segment detection
-requested in the call to
-\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}.
-
-Use the \code{MaxResults} parameter to limit the number of segment detections
-returned. If there are more results than specified in \code{MaxResults}, the
-value of \code{NextToken} in the operation response contains a pagination
-token for getting the next set of results. To get the next page of
-results, call
-\code{\link[=rekognition_get_segment_detection]{get_segment_detection}} and
-populate the \code{NextToken} request parameter with the token value returned
-from the previous call to
-\code{\link[=rekognition_get_segment_detection]{get_segment_detection}}.
-
-For more information, see Detecting Video Segments in Stored Video in
-the Amazon Rekognition Developer Guide.
+See \url{https://paws-r.github.io/docs/rekognition/get_segment_detection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_segment_detection(
-  JobId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

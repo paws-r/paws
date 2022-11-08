@@ -4,8 +4,11 @@
 \alias{applicationinsights_list_log_pattern_sets}
 \title{Lists the log pattern sets in the specific application}
 \usage{
-applicationinsights_list_log_pattern_sets(ResourceGroupName, MaxResults,
-  NextToken)
+applicationinsights_list_log_pattern_sets(
+  ResourceGroupName,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
@@ -16,26 +19,9 @@ value.}
 
 \item{NextToken}{The token to request the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceGroupName = "string",
-  LogPatternSets = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the log pattern sets in the specific application.
-}
-\section{Request syntax}{
-\preformatted{svc$list_log_pattern_sets(
-  ResourceGroupName = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/applicationinsights/list_log_pattern_sets.html} for full documentation.
+}
 \keyword{internal}

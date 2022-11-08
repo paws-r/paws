@@ -4,7 +4,11 @@
 \alias{servicediscovery_list_operations}
 \title{Lists operations that match the criteria that you specify}
 \usage{
-servicediscovery_list_operations(NextToken, MaxResults, Filters)
+servicediscovery_list_operations(
+  NextToken = NULL,
+  MaxResults = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{NextToken}{For the first \code{\link[=servicediscovery_list_operations]{list_operations}}
@@ -15,15 +19,15 @@ If the response contains \code{NextToken}, submit another
 next group of results. Specify the value of \code{NextToken} from the
 previous response in the next request.
 
-AWS Cloud Map gets \code{MaxResults} operations and then filters them based
-on the specified criteria. It's possible that no operations in the first
+Cloud Map gets \code{MaxResults} operations and then filters them based on
+the specified criteria. It's possible that no operations in the first
 \code{MaxResults} operations matched the specified criteria but that
 subsequent groups of \code{MaxResults} operations do contain operations that
 match the criteria.}
 
-\item{MaxResults}{The maximum number of items that you want AWS Cloud Map to return in the
+\item{MaxResults}{The maximum number of items that you want Cloud Map to return in the
 response to a \code{\link[=servicediscovery_list_operations]{list_operations}}
-request. If you don't specify a value for \code{MaxResults}, AWS Cloud Map
+request. If you don't specify a value for \code{MaxResults}, Cloud Map
 returns up to 100 operations.}
 
 \item{Filters}{A complex type that contains specifications for the operations that you
@@ -33,55 +37,9 @@ specified start date and end date.
 If you specify more than one filter, an operation must match all filters
 to be returned by \code{\link[=servicediscovery_list_operations]{list_operations}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Operations = list(
-    list(
-      Id = "string",
-      Status = "SUBMITTED"|"PENDING"|"SUCCESS"|"FAIL"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists operations that match the criteria that you specify.
-}
-\section{Request syntax}{
-\preformatted{svc$list_operations(
-  NextToken = "string",
-  MaxResults = 123,
-  Filters = list(
-    list(
-      Name = "NAMESPACE_ID"|"SERVICE_ID"|"STATUS"|"TYPE"|"UPDATE_DATE",
-      Values = list(
-        "string"
-      ),
-      Condition = "EQ"|"IN"|"BETWEEN"
-    )
-  )
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example gets the operations that have a STATUS of either PENDING or
-# SUCCESS.
-svc$list_operations(
-  Filters = list(
-    list(
-      Condition = "IN",
-      Name = "STATUS",
-      Values = list(
-        "PENDING",
-        "SUCCESS"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/list_operations.html} for full documentation.
 }
 \keyword{internal}

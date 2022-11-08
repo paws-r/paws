@@ -4,8 +4,12 @@
 \alias{docdb_create_db_cluster_parameter_group}
 \title{Creates a new cluster parameter group}
 \usage{
-docdb_create_db_cluster_parameter_group(DBClusterParameterGroupName,
-  DBParameterGroupFamily, Description, Tags)
+docdb_create_db_cluster_parameter_group(
+  DBClusterParameterGroupName,
+  DBParameterGroupFamily,
+  Description,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DBClusterParameterGroupName}{[required] The name of the cluster parameter group.
@@ -23,48 +27,9 @@ This value is stored as a lowercase string.}
 
 \item{Tags}{The tags to be assigned to the cluster parameter group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterParameterGroup = list(
-    DBClusterParameterGroupName = "string",
-    DBParameterGroupFamily = "string",
-    Description = "string",
-    DBClusterParameterGroupArn = "string"
-  )
-)
-}
-}
 \description{
 Creates a new cluster parameter group.
 
-Parameters in a cluster parameter group apply to all of the instances in
-a cluster.
-
-A cluster parameter group is initially created with the default
-parameters for the database engine used by instances in the cluster. In
-Amazon DocumentDB, you cannot make modifications directly to the
-\code{default.docdb3.6} cluster parameter group. If your Amazon DocumentDB
-cluster is using the default cluster parameter group and you want to
-modify a value in it, you must first \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/}{create a new parameter group} or
-\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/}{copy an existing parameter group},
-modify it, and then apply the modified parameter group to your cluster.
-For the new cluster parameter group and associated settings to take
-effect, you must then reboot the instances in the cluster without
-failover. For more information, see \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/}{Modifying Amazon DocumentDB Cluster Parameter Groups}.
+See \url{https://paws-r.github.io/docs/docdb/create_db_cluster_parameter_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_db_cluster_parameter_group(
-  DBClusterParameterGroupName = "string",
-  DBParameterGroupFamily = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

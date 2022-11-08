@@ -4,7 +4,7 @@
 \alias{apigatewayv2_get_deployments}
 \title{Gets the Deployments for an API}
 \usage{
-apigatewayv2_get_deployments(ApiId, MaxResults, NextToken)
+apigatewayv2_get_deployments(ApiId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -14,34 +14,9 @@ apigatewayv2_get_deployments(ApiId, MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Items = list(
-    list(
-      AutoDeployed = TRUE|FALSE,
-      CreatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      DeploymentId = "string",
-      DeploymentStatus = "PENDING"|"FAILED"|"DEPLOYED",
-      DeploymentStatusMessage = "string",
-      Description = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets the Deployments for an API.
-}
-\section{Request syntax}{
-\preformatted{svc$get_deployments(
-  ApiId = "string",
-  MaxResults = "string",
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_deployments.html} for full documentation.
+}
 \keyword{internal}

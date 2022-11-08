@@ -10,51 +10,9 @@ cloudfront_create_key_group(KeyGroupConfig)
 \arguments{
 \item{KeyGroupConfig}{[required] A key group configuration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  KeyGroup = list(
-    Id = "string",
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    KeyGroupConfig = list(
-      Name = "string",
-      Items = list(
-        "string"
-      ),
-      Comment = "string"
-    )
-  ),
-  Location = "string",
-  ETag = "string"
-)
-}
-}
 \description{
 Creates a key group that you can use with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{CloudFront signed URLs and signed cookies}.
 
-To create a key group, you must specify at least one public key for the
-key group. After you create a key group, you can reference it from one
-or more cache behaviors. When you reference a key group in a cache
-behavior, CloudFront requires signed URLs or signed cookies for all
-requests that match the cache behavior. The URLs or cookies must be
-signed with a private key whose corresponding public key is in the key
-group. The signed URL or cookie contains information about which public
-key CloudFront should use to verify the signature. For more information,
-see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{Serving private content}
-in the \emph{Amazon CloudFront Developer Guide}.
+See \url{https://paws-r.github.io/docs/cloudfront/create_key_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_key_group(
-  KeyGroupConfig = list(
-    Name = "string",
-    Items = list(
-      "string"
-    ),
-    Comment = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -2,61 +2,21 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_get_apps_list}
 \alias{fms_get_apps_list}
-\title{Returns information about the specified AWS Firewall Manager
-applications list}
+\title{Returns information about the specified Firewall Manager applications
+list}
 \usage{
-fms_get_apps_list(ListId, DefaultList)
+fms_get_apps_list(ListId, DefaultList = NULL)
 }
 \arguments{
-\item{ListId}{[required] The ID of the AWS Firewall Manager applications list that you want the
+\item{ListId}{[required] The ID of the Firewall Manager applications list that you want the
 details for.}
 
-\item{DefaultList}{Specifies whether the list to retrieve is a default list owned by AWS
+\item{DefaultList}{Specifies whether the list to retrieve is a default list owned by
 Firewall Manager.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AppsList = list(
-    ListId = "string",
-    ListName = "string",
-    ListUpdateToken = "string",
-    CreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    AppsList = list(
-      list(
-        AppName = "string",
-        Protocol = "string",
-        Port = 123
-      )
-    ),
-    PreviousAppsList = list(
-      list(
-        list(
-          AppName = "string",
-          Protocol = "string",
-          Port = 123
-        )
-      )
-    )
-  ),
-  AppsListArn = "string"
-)
-}
-}
 \description{
-Returns information about the specified AWS Firewall Manager
-applications list.
-}
-\section{Request syntax}{
-\preformatted{svc$get_apps_list(
-  ListId = "string",
-  DefaultList = TRUE|FALSE
-)
-}
-}
+Returns information about the specified Firewall Manager applications list.
 
+See \url{https://paws-r.github.io/docs/fms/get_apps_list.html} for full documentation.
+}
 \keyword{internal}

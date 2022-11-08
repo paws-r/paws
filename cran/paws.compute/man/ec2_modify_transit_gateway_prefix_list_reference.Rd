@@ -6,8 +6,12 @@
 gateway route table}
 \usage{
 ec2_modify_transit_gateway_prefix_list_reference(
-  TransitGatewayRouteTableId, PrefixListId, TransitGatewayAttachmentId,
-  Blackhole, DryRun)
+  TransitGatewayRouteTableId,
+  PrefixListId,
+  TransitGatewayAttachmentId = NULL,
+  Blackhole = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the transit gateway route table.}
@@ -23,36 +27,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayPrefixListReference = list(
-    TransitGatewayRouteTableId = "string",
-    PrefixListId = "string",
-    PrefixListOwnerId = "string",
-    State = "pending"|"available"|"modifying"|"deleting",
-    Blackhole = TRUE|FALSE,
-    TransitGatewayAttachment = list(
-      TransitGatewayAttachmentId = "string",
-      ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
-      ResourceId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Modifies a reference (route) to a prefix list in a specified transit
-gateway route table.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_transit_gateway_prefix_list_reference(
-  TransitGatewayRouteTableId = "string",
-  PrefixListId = "string",
-  TransitGatewayAttachmentId = "string",
-  Blackhole = TRUE|FALSE,
-  DryRun = TRUE|FALSE
-)
-}
-}
+Modifies a reference (route) to a prefix list in a specified transit gateway route table.
 
+See \url{https://paws-r.github.io/docs/ec2/modify_transit_gateway_prefix_list_reference.html} for full documentation.
+}
 \keyword{internal}

@@ -7,7 +7,19 @@
 macie(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -18,21 +30,19 @@ Operations section.
 \description{
 Amazon Macie Classic
 
-Amazon Macie Classic is a security service that uses machine learning to
-automatically discover, classify, and protect sensitive data in AWS.
-Macie Classic recognizes sensitive data such as personally identifiable
-information (PII) or intellectual property, and provides you with
-dashboards and alerts that give visibility into how this data is being
-accessed or moved. For more information, see the \href{https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html}{Amazon Macie Classic User Guide}.
+Amazon Macie Classic has been discontinued and is no longer available.
 
 A new Amazon Macie is now available with significant design improvements
-and additional features, at a lower price and in most AWS Regions. We
-encourage you to explore and use the new and improved features, and
-benefit from the reduced cost. To learn about features and pricing for
-the new Amazon Macie, see \href{https://aws.amazon.com/macie/}{Amazon Macie}.
+and additional features, at a lower price and in most Amazon Web
+Services Regions. We encourage you to take advantage of the new and
+improved features, and benefit from the reduced cost. To learn about
+features and pricing for the new Macie, see \href{https://aws.amazon.com/macie/}{Amazon Macie}. To learn how to use the new
+Macie, see the \href{https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html}{Amazon Macie User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- macie(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- macie(
   config = list(
     credentials = list(
       creds = list(
@@ -40,25 +50,29 @@ the new Amazon Macie, see \href{https://aws.amazon.com/macie/}{Amazon Macie}.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=macie_associate_member_account]{associate_member_account} \tab Associates a specified AWS account with Amazon Macie Classic as a member account\cr
-\link[=macie_associate_s3_resources]{associate_s3_resources} \tab Associates specified S3 resources with Amazon Macie Classic for monitoring and data classification\cr
-\link[=macie_disassociate_member_account]{disassociate_member_account} \tab Removes the specified member account from Amazon Macie Classic\cr
-\link[=macie_disassociate_s3_resources]{disassociate_s3_resources} \tab Removes specified S3 resources from being monitored by Amazon Macie Classic\cr
-\link[=macie_list_member_accounts]{list_member_accounts} \tab Lists all Amazon Macie Classic member accounts for the current Amazon Macie Classic master account\cr
-\link[=macie_list_s3_resources]{list_s3_resources} \tab Lists all the S3 resources associated with Amazon Macie Classic\cr
-\link[=macie_update_s3_resources]{update_s3_resources} \tab Updates the classification types for the specified S3 resources
+\link[=macie_associate_member_account]{associate_member_account} \tab (Discontinued) Associates a specified Amazon Web Services account with Amazon Macie Classic as a member account\cr
+\link[=macie_associate_s3_resources]{associate_s3_resources} \tab (Discontinued) Associates specified S3 resources with Amazon Macie Classic for monitoring and data classification\cr
+\link[=macie_disassociate_member_account]{disassociate_member_account} \tab (Discontinued) Removes the specified member account from Amazon Macie Classic\cr
+\link[=macie_disassociate_s3_resources]{disassociate_s3_resources} \tab (Discontinued) Removes specified S3 resources from being monitored by Amazon Macie Classic\cr
+\link[=macie_list_member_accounts]{list_member_accounts} \tab (Discontinued) Lists all Amazon Macie Classic member accounts for the current Macie Classic administrator account\cr
+\link[=macie_list_s3_resources]{list_s3_resources} \tab (Discontinued) Lists all the S3 resources associated with Amazon Macie Classic\cr
+\link[=macie_update_s3_resources]{update_s3_resources} \tab (Discontinued) Updates the classification types for the specified S3 resources
 }
 }
 

@@ -7,108 +7,14 @@
 secretsmanager_describe_secret(SecretId)
 }
 \arguments{
-\item{SecretId}{[required] The identifier of the secret whose details you want to retrieve. You can
-specify either the Amazon Resource Name (ARN) or the friendly name of
-the secret.
+\item{SecretId}{[required] The ARN or name of the secret.
 
-If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too—for example, if you
-don’t include the final hyphen and six random characters that Secrets
-Manager adds at the end of the ARN when you created the secret. A
-partial ARN match can work as long as it uniquely matches only one
-secret. However, if your secret has a name that ends in a hyphen
-followed by six characters (before Secrets Manager adds the hyphen and
-six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you’re
-specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don’t create secret names
-ending with a hyphen followed by six characters.
-
-If you specify an incomplete ARN without the random suffix, and instead
-provide the 'friendly name', you \emph{must} not include the random suffix.
-If you do include the random suffix added by Secrets Manager, you
-receive either a \emph{ResourceNotFoundException} or an
-\emph{AccessDeniedException} error, depending on your permissions.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ARN = "string",
-  Name = "string",
-  Description = "string",
-  KmsKeyId = "string",
-  RotationEnabled = TRUE|FALSE,
-  RotationLambdaARN = "string",
-  RotationRules = list(
-    AutomaticallyAfterDays = 123
-  ),
-  LastRotatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastChangedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastAccessedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  DeletedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  VersionIdsToStages = list(
-    list(
-      "string"
-    )
-  ),
-  OwningService = "string",
-  CreatedDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
+For an ARN, we recommend that you specify a complete ARN rather than a
+partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 }
 \description{
-Retrieves the details of a secret. It does not include the encrypted
-fields. Secrets Manager only returns fields populated with a value in
-the response.
+Retrieves the details of a secret. It does not include the encrypted secret value. Secrets Manager only returns fields that have a value in the response.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item secretsmanager:DescribeSecret
-}
-
-\strong{Related operations}
-\itemize{
-\item To create a secret, use
-\code{\link[=secretsmanager_create_secret]{create_secret}}.
-\item To modify a secret, use
-\code{\link[=secretsmanager_update_secret]{update_secret}}.
-\item To retrieve the encrypted secret information in a version of the
-secret, use \code{\link[=secretsmanager_get_secret_value]{get_secret_value}}.
-\item To list all of the secrets in the AWS account, use
-\code{\link[=secretsmanager_list_secrets]{list_secrets}}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$describe_secret(
-  SecretId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to get the details about a secret.
-svc$describe_secret(
-  SecretId = "MyTestDatabaseSecret"
-)
-}
-
+See \url{https://paws-r.github.io/docs/secretsmanager/describe_secret.html} for full documentation.
 }
 \keyword{internal}

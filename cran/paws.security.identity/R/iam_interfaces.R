@@ -109,13 +109,13 @@ NULL
 
 .iam$create_instance_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceProfileName = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(InstanceProfileName = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iam$create_instance_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceProfile = structure(list(Path = structure(logical(0), tags = list(type = "string")), InstanceProfileName = structure(logical(0), tags = list(type = "string")), InstanceProfileId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), Roles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleName = structure(logical(0), tags = list(type = "string")), RoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), AssumeRolePolicyDocument = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MaxSessionDuration = structure(logical(0), tags = list(type = "integer")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleLastUsed = structure(list(LastUsedDate = structure(logical(0), tags = list(type = "timestamp")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "CreateInstanceProfileResult"))
+  shape <- structure(list(InstanceProfile = structure(list(Path = structure(logical(0), tags = list(type = "string")), InstanceProfileName = structure(logical(0), tags = list(type = "string")), InstanceProfileId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), Roles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleName = structure(logical(0), tags = list(type = "string")), RoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), AssumeRolePolicyDocument = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MaxSessionDuration = structure(logical(0), tags = list(type = "integer")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleLastUsed = structure(list(LastUsedDate = structure(logical(0), tags = list(type = "timestamp")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "CreateInstanceProfileResult"))
   return(populate(args, shape))
 }
 
@@ -133,25 +133,25 @@ NULL
 
 .iam$create_open_id_connect_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Url = structure(logical(0), tags = list(type = "string")), ClientIDList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ThumbprintList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Url = structure(logical(0), tags = list(type = "string")), ClientIDList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ThumbprintList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iam$create_open_id_connect_provider_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OpenIDConnectProviderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "CreateOpenIDConnectProviderResult"))
+  shape <- structure(list(OpenIDConnectProviderArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "CreateOpenIDConnectProviderResult"))
   return(populate(args, shape))
 }
 
 .iam$create_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), PolicyDocument = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), PolicyDocument = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iam$create_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), DefaultVersionId = structure(logical(0), tags = list(type = "string")), AttachmentCount = structure(logical(0), tags = list(type = "integer")), PermissionsBoundaryUsageCount = structure(logical(0), tags = list(type = "integer")), IsAttachable = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "CreatePolicyResult"))
+  shape <- structure(list(Policy = structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), DefaultVersionId = structure(logical(0), tags = list(type = "string")), AttachmentCount = structure(logical(0), tags = list(type = "integer")), PermissionsBoundaryUsageCount = structure(logical(0), tags = list(type = "integer")), IsAttachable = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "CreatePolicyResult"))
   return(populate(args, shape))
 }
 
@@ -181,13 +181,13 @@ NULL
 
 .iam$create_saml_provider_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SAMLMetadataDocument = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(SAMLMetadataDocument = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iam$create_saml_provider_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SAMLProviderArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "CreateSAMLProviderResult"))
+  shape <- structure(list(SAMLProviderArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "CreateSAMLProviderResult"))
   return(populate(args, shape))
 }
 
@@ -229,13 +229,13 @@ NULL
 
 .iam$create_virtual_mfa_device_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Path = structure(logical(0), tags = list(type = "string")), VirtualMFADeviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Path = structure(logical(0), tags = list(type = "string")), VirtualMFADeviceName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iam$create_virtual_mfa_device_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VirtualMFADevice = structure(list(SerialNumber = structure(logical(0), tags = list(type = "string")), Base32StringSeed = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), QRCodePNG = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), User = structure(list(Path = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), PasswordLastUsed = structure(logical(0), tags = list(type = "timestamp")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EnableDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "CreateVirtualMFADeviceResult"))
+  shape <- structure(list(VirtualMFADevice = structure(list(SerialNumber = structure(logical(0), tags = list(type = "string")), Base32StringSeed = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), QRCodePNG = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), User = structure(list(Path = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), PasswordLastUsed = structure(logical(0), tags = list(type = "timestamp")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EnableDate = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "CreateVirtualMFADeviceResult"))
   return(populate(args, shape))
 }
 
@@ -573,7 +573,7 @@ NULL
 
 .iam$get_account_authorization_details_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(UserDetailList = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), UserPolicyList = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyDocument = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), GroupList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AttachedManagedPolicies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), GroupDetailList = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), GroupPolicyList = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyDocument = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachedManagedPolicies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleDetailList = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleName = structure(logical(0), tags = list(type = "string")), RoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), AssumeRolePolicyDocument = structure(logical(0), tags = list(type = "string")), InstanceProfileList = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), InstanceProfileName = structure(logical(0), tags = list(type = "string")), InstanceProfileId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), Roles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleName = structure(logical(0), tags = list(type = "string")), RoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), AssumeRolePolicyDocument = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MaxSessionDuration = structure(logical(0), tags = list(type = "integer")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleLastUsed = structure(list(LastUsedDate = structure(logical(0), tags = list(type = "timestamp")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RolePolicyList = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyDocument = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachedManagedPolicies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleLastUsed = structure(list(LastUsedDate = structure(logical(0), tags = list(type = "timestamp")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Policies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), DefaultVersionId = structure(logical(0), tags = list(type = "string")), AttachmentCount = structure(logical(0), tags = list(type = "integer")), PermissionsBoundaryUsageCount = structure(logical(0), tags = list(type = "integer")), IsAttachable = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), PolicyVersionList = structure(list(structure(list(Document = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), IsDefaultVersion = structure(logical(0), tags = list(type = "boolean")), CreateDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetAccountAuthorizationDetailsResult"))
+  shape <- structure(list(UserDetailList = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), UserPolicyList = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyDocument = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), GroupList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AttachedManagedPolicies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), GroupDetailList = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), GroupName = structure(logical(0), tags = list(type = "string")), GroupId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), GroupPolicyList = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyDocument = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachedManagedPolicies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleDetailList = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleName = structure(logical(0), tags = list(type = "string")), RoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), AssumeRolePolicyDocument = structure(logical(0), tags = list(type = "string")), InstanceProfileList = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), InstanceProfileName = structure(logical(0), tags = list(type = "string")), InstanceProfileId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), Roles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleName = structure(logical(0), tags = list(type = "string")), RoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), AssumeRolePolicyDocument = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MaxSessionDuration = structure(logical(0), tags = list(type = "integer")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleLastUsed = structure(list(LastUsedDate = structure(logical(0), tags = list(type = "timestamp")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), RolePolicyList = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyDocument = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), AttachedManagedPolicies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleLastUsed = structure(list(LastUsedDate = structure(logical(0), tags = list(type = "timestamp")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Policies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), DefaultVersionId = structure(logical(0), tags = list(type = "string")), AttachmentCount = structure(logical(0), tags = list(type = "integer")), PermissionsBoundaryUsageCount = structure(logical(0), tags = list(type = "integer")), IsAttachable = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), PolicyVersionList = structure(list(structure(list(Document = structure(logical(0), tags = list(type = "string")), VersionId = structure(logical(0), tags = list(type = "string")), IsDefaultVersion = structure(logical(0), tags = list(type = "boolean")), CreateDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetAccountAuthorizationDetailsResult"))
   return(populate(args, shape))
 }
 
@@ -663,7 +663,7 @@ NULL
 
 .iam$get_instance_profile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceProfile = structure(list(Path = structure(logical(0), tags = list(type = "string")), InstanceProfileName = structure(logical(0), tags = list(type = "string")), InstanceProfileId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), Roles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleName = structure(logical(0), tags = list(type = "string")), RoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), AssumeRolePolicyDocument = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MaxSessionDuration = structure(logical(0), tags = list(type = "integer")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleLastUsed = structure(list(LastUsedDate = structure(logical(0), tags = list(type = "timestamp")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "GetInstanceProfileResult"))
+  shape <- structure(list(InstanceProfile = structure(list(Path = structure(logical(0), tags = list(type = "string")), InstanceProfileName = structure(logical(0), tags = list(type = "string")), InstanceProfileId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), Roles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleName = structure(logical(0), tags = list(type = "string")), RoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), AssumeRolePolicyDocument = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MaxSessionDuration = structure(logical(0), tags = list(type = "integer")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleLastUsed = structure(list(LastUsedDate = structure(logical(0), tags = list(type = "timestamp")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "GetInstanceProfileResult"))
   return(populate(args, shape))
 }
 
@@ -687,7 +687,7 @@ NULL
 
 .iam$get_open_id_connect_provider_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Url = structure(logical(0), tags = list(type = "string")), ClientIDList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ThumbprintList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreateDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure", resultWrapper = "GetOpenIDConnectProviderResult"))
+  shape <- structure(list(Url = structure(logical(0), tags = list(type = "string")), ClientIDList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ThumbprintList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "GetOpenIDConnectProviderResult"))
   return(populate(args, shape))
 }
 
@@ -711,7 +711,7 @@ NULL
 
 .iam$get_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policy = structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), DefaultVersionId = structure(logical(0), tags = list(type = "string")), AttachmentCount = structure(logical(0), tags = list(type = "integer")), PermissionsBoundaryUsageCount = structure(logical(0), tags = list(type = "integer")), IsAttachable = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "GetPolicyResult"))
+  shape <- structure(list(Policy = structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), DefaultVersionId = structure(logical(0), tags = list(type = "string")), AttachmentCount = structure(logical(0), tags = list(type = "integer")), PermissionsBoundaryUsageCount = structure(logical(0), tags = list(type = "integer")), IsAttachable = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "GetPolicyResult"))
   return(populate(args, shape))
 }
 
@@ -759,7 +759,7 @@ NULL
 
 .iam$get_saml_provider_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SAMLMetadataDocument = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), ValidUntil = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure", resultWrapper = "GetSAMLProviderResult"))
+  shape <- structure(list(SAMLMetadataDocument = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), ValidUntil = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "GetSAMLProviderResult"))
   return(populate(args, shape))
 }
 
@@ -783,7 +783,7 @@ NULL
 
 .iam$get_server_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServerCertificate = structure(list(ServerCertificateMetadata = structure(list(Path = structure(logical(0), tags = list(type = "string")), ServerCertificateName = structure(logical(0), tags = list(type = "string")), ServerCertificateId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), UploadDate = structure(logical(0), tags = list(type = "timestamp")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), CertificateBody = structure(logical(0), tags = list(type = "string")), CertificateChain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "GetServerCertificateResult"))
+  shape <- structure(list(ServerCertificate = structure(list(ServerCertificateMetadata = structure(list(Path = structure(logical(0), tags = list(type = "string")), ServerCertificateName = structure(logical(0), tags = list(type = "string")), ServerCertificateId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), UploadDate = structure(logical(0), tags = list(type = "timestamp")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), CertificateBody = structure(logical(0), tags = list(type = "string")), CertificateChain = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "GetServerCertificateResult"))
   return(populate(args, shape))
 }
 
@@ -955,6 +955,18 @@ NULL
   return(populate(args, shape))
 }
 
+.iam$list_instance_profile_tags_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceProfileName = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$list_instance_profile_tags_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListInstanceProfileTagsResult"))
+  return(populate(args, shape))
+}
+
 .iam$list_instance_profiles_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PathPrefix = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -963,7 +975,7 @@ NULL
 
 .iam$list_instance_profiles_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceProfiles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), InstanceProfileName = structure(logical(0), tags = list(type = "string")), InstanceProfileId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), Roles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleName = structure(logical(0), tags = list(type = "string")), RoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), AssumeRolePolicyDocument = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MaxSessionDuration = structure(logical(0), tags = list(type = "integer")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleLastUsed = structure(list(LastUsedDate = structure(logical(0), tags = list(type = "timestamp")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListInstanceProfilesResult"))
+  shape <- structure(list(InstanceProfiles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), InstanceProfileName = structure(logical(0), tags = list(type = "string")), InstanceProfileId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), Roles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleName = structure(logical(0), tags = list(type = "string")), RoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), AssumeRolePolicyDocument = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MaxSessionDuration = structure(logical(0), tags = list(type = "integer")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleLastUsed = structure(list(LastUsedDate = structure(logical(0), tags = list(type = "timestamp")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListInstanceProfilesResult"))
   return(populate(args, shape))
 }
 
@@ -975,7 +987,19 @@ NULL
 
 .iam$list_instance_profiles_for_role_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(InstanceProfiles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), InstanceProfileName = structure(logical(0), tags = list(type = "string")), InstanceProfileId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), Roles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleName = structure(logical(0), tags = list(type = "string")), RoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), AssumeRolePolicyDocument = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MaxSessionDuration = structure(logical(0), tags = list(type = "integer")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleLastUsed = structure(list(LastUsedDate = structure(logical(0), tags = list(type = "timestamp")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListInstanceProfilesForRoleResult"))
+  shape <- structure(list(InstanceProfiles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), InstanceProfileName = structure(logical(0), tags = list(type = "string")), InstanceProfileId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), Roles = structure(list(structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleName = structure(logical(0), tags = list(type = "string")), RoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), AssumeRolePolicyDocument = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), MaxSessionDuration = structure(logical(0), tags = list(type = "integer")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RoleLastUsed = structure(list(LastUsedDate = structure(logical(0), tags = list(type = "timestamp")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListInstanceProfilesForRoleResult"))
+  return(populate(args, shape))
+}
+
+.iam$list_mfa_device_tags_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SerialNumber = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$list_mfa_device_tags_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListMFADeviceTagsResult"))
   return(populate(args, shape))
 }
 
@@ -988,6 +1012,18 @@ NULL
 .iam$list_mfa_devices_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(MFADevices = structure(list(structure(list(UserName = structure(logical(0), tags = list(type = "string")), SerialNumber = structure(logical(0), tags = list(type = "string")), EnableDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListMFADevicesResult"))
+  return(populate(args, shape))
+}
+
+.iam$list_open_id_connect_provider_tags_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OpenIDConnectProviderArn = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$list_open_id_connect_provider_tags_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListOpenIDConnectProviderTagsResult"))
   return(populate(args, shape))
 }
 
@@ -1011,7 +1047,7 @@ NULL
 
 .iam$list_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Policies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), DefaultVersionId = structure(logical(0), tags = list(type = "string")), AttachmentCount = structure(logical(0), tags = list(type = "integer")), PermissionsBoundaryUsageCount = structure(logical(0), tags = list(type = "integer")), IsAttachable = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListPoliciesResult"))
+  shape <- structure(list(Policies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), DefaultVersionId = structure(logical(0), tags = list(type = "string")), AttachmentCount = structure(logical(0), tags = list(type = "integer")), PermissionsBoundaryUsageCount = structure(logical(0), tags = list(type = "integer")), IsAttachable = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), UpdateDate = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListPoliciesResult"))
   return(populate(args, shape))
 }
 
@@ -1024,6 +1060,18 @@ NULL
 .iam$list_policies_granting_service_access_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PoliciesGrantingServiceAccess = structure(list(structure(list(ServiceNamespace = structure(logical(0), tags = list(type = "string")), Policies = structure(list(structure(list(PolicyName = structure(logical(0), tags = list(type = "string")), PolicyType = structure(logical(0), tags = list(type = "string")), PolicyArn = structure(logical(0), tags = list(type = "string")), EntityType = structure(logical(0), tags = list(type = "string")), EntityName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListPoliciesGrantingServiceAccessResult"))
+  return(populate(args, shape))
+}
+
+.iam$list_policy_tags_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PolicyArn = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$list_policy_tags_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListPolicyTagsResult"))
   return(populate(args, shape))
 }
 
@@ -1075,6 +1123,18 @@ NULL
   return(populate(args, shape))
 }
 
+.iam$list_saml_provider_tags_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SAMLProviderArn = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$list_saml_provider_tags_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListSAMLProviderTagsResult"))
+  return(populate(args, shape))
+}
+
 .iam$list_saml_providers_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
@@ -1096,6 +1156,18 @@ NULL
 .iam$list_ssh_public_keys_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(SSHPublicKeys = structure(list(structure(list(UserName = structure(logical(0), tags = list(type = "string")), SSHPublicKeyId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), UploadDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListSSHPublicKeysResult"))
+  return(populate(args, shape))
+}
+
+.iam$list_server_certificate_tags_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ServerCertificateName = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string")), MaxItems = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$list_server_certificate_tags_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListServerCertificateTagsResult"))
   return(populate(args, shape))
 }
 
@@ -1179,7 +1251,7 @@ NULL
 
 .iam$list_virtual_mfa_devices_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(VirtualMFADevices = structure(list(structure(list(SerialNumber = structure(logical(0), tags = list(type = "string")), Base32StringSeed = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), QRCodePNG = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), User = structure(list(Path = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), PasswordLastUsed = structure(logical(0), tags = list(type = "timestamp")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EnableDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListVirtualMFADevicesResult"))
+  shape <- structure(list(VirtualMFADevices = structure(list(structure(list(SerialNumber = structure(logical(0), tags = list(type = "string")), Base32StringSeed = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), QRCodePNG = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), User = structure(list(Path = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), UserId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), CreateDate = structure(logical(0), tags = list(type = "timestamp")), PasswordLastUsed = structure(logical(0), tags = list(type = "timestamp")), PermissionsBoundary = structure(list(PermissionsBoundaryType = structure(logical(0), tags = list(type = "string")), PermissionsBoundaryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), EnableDate = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), IsTruncated = structure(logical(0), tags = list(type = "boolean")), Marker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "ListVirtualMFADevicesResult"))
   return(populate(args, shape))
 }
 
@@ -1329,6 +1401,46 @@ NULL
   return(populate(args, shape))
 }
 
+.iam$tag_instance_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceProfileName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$tag_instance_profile_output <- function(...) {
+  list()
+}
+
+.iam$tag_mfa_device_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SerialNumber = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$tag_mfa_device_output <- function(...) {
+  list()
+}
+
+.iam$tag_open_id_connect_provider_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OpenIDConnectProviderArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$tag_open_id_connect_provider_output <- function(...) {
+  list()
+}
+
+.iam$tag_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PolicyArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$tag_policy_output <- function(...) {
+  list()
+}
+
 .iam$tag_role_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RoleName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -1336,6 +1448,26 @@ NULL
 }
 
 .iam$tag_role_output <- function(...) {
+  list()
+}
+
+.iam$tag_saml_provider_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SAMLProviderArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$tag_saml_provider_output <- function(...) {
+  list()
+}
+
+.iam$tag_server_certificate_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ServerCertificateName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$tag_server_certificate_output <- function(...) {
   list()
 }
 
@@ -1349,6 +1481,46 @@ NULL
   list()
 }
 
+.iam$untag_instance_profile_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstanceProfileName = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$untag_instance_profile_output <- function(...) {
+  list()
+}
+
+.iam$untag_mfa_device_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SerialNumber = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$untag_mfa_device_output <- function(...) {
+  list()
+}
+
+.iam$untag_open_id_connect_provider_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OpenIDConnectProviderArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$untag_open_id_connect_provider_output <- function(...) {
+  list()
+}
+
+.iam$untag_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PolicyArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$untag_policy_output <- function(...) {
+  list()
+}
+
 .iam$untag_role_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RoleName = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -1356,6 +1528,26 @@ NULL
 }
 
 .iam$untag_role_output <- function(...) {
+  list()
+}
+
+.iam$untag_saml_provider_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SAMLProviderArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$untag_saml_provider_output <- function(...) {
+  list()
+}
+
+.iam$untag_server_certificate_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ServerCertificateName = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.iam$untag_server_certificate_output <- function(...) {
   list()
 }
 
@@ -1529,13 +1721,13 @@ NULL
 
 .iam$upload_server_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Path = structure(logical(0), tags = list(type = "string")), ServerCertificateName = structure(logical(0), tags = list(type = "string")), CertificateBody = structure(logical(0), tags = list(type = "string")), PrivateKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CertificateChain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Path = structure(logical(0), tags = list(type = "string")), ServerCertificateName = structure(logical(0), tags = list(type = "string")), CertificateBody = structure(logical(0), tags = list(type = "string")), PrivateKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CertificateChain = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .iam$upload_server_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ServerCertificateMetadata = structure(list(Path = structure(logical(0), tags = list(type = "string")), ServerCertificateName = structure(logical(0), tags = list(type = "string")), ServerCertificateId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), UploadDate = structure(logical(0), tags = list(type = "timestamp")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure", resultWrapper = "UploadServerCertificateResult"))
+  shape <- structure(list(ServerCertificateMetadata = structure(list(Path = structure(logical(0), tags = list(type = "string")), ServerCertificateName = structure(logical(0), tags = list(type = "string")), ServerCertificateId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), UploadDate = structure(logical(0), tags = list(type = "timestamp")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "UploadServerCertificateResult"))
   return(populate(args, shape))
 }
 

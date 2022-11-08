@@ -6,18 +6,9 @@
 \usage{
 shield_get_subscription_state()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SubscriptionState = "ACTIVE"|"INACTIVE"
-)
-}
-}
 \description{
 Returns the \code{SubscriptionState}, either \code{Active} or \code{Inactive}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_subscription_state()
-}
-}
 
+See \url{https://paws-r.github.io/docs/shield/get_subscription_state.html} for full documentation.
+}
 \keyword{internal}

@@ -6,7 +6,10 @@
 quota request template}
 \usage{
 servicequotas_delete_service_quota_increase_request_from_template(
-  ServiceCode, QuotaCode, AwsRegion)
+  ServiceCode,
+  QuotaCode,
+  AwsRegion
+)
 }
 \arguments{
 \item{ServiceCode}{[required] The service identifier.}
@@ -15,20 +18,9 @@ servicequotas_delete_service_quota_increase_request_from_template(
 
 \item{AwsRegion}{[required] The AWS Region.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the quota increase request for the specified quota from your
-quota request template.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_service_quota_increase_request_from_template(
-  ServiceCode = "string",
-  QuotaCode = "string",
-  AwsRegion = "string"
-)
-}
-}
+Deletes the quota increase request for the specified quota from your quota request template.
 
+See \url{https://paws-r.github.io/docs/servicequotas/delete_service_quota_increase_request_from_template.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{eks_update_cluster_version}
 \title{Updates an Amazon EKS cluster to the specified Kubernetes version}
 \usage{
-eks_update_cluster_version(name, version, clientRequestToken)
+eks_update_cluster_version(name, version, clientRequestToken = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the Amazon EKS cluster to update.}
@@ -14,57 +14,9 @@ eks_update_cluster_version(name, version, clientRequestToken)
 \item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  update = list(
-    id = "string",
-    status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-    type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
-    params = list(
-      list(
-        type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
-        value = "string"
-      )
-    ),
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    errors = list(
-      list(
-        errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-        errorMessage = "string",
-        resourceIds = list(
-          "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Updates an Amazon EKS cluster to the specified Kubernetes version. Your
-cluster continues to function during the update. The response output
-includes an update ID that you can use to track the status of your
-cluster update with the \code{\link[=eks_describe_update]{describe_update}} API
-operation.
+Updates an Amazon EKS cluster to the specified Kubernetes version. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the \code{\link[=eks_describe_update]{describe_update}} API operation.
 
-Cluster updates are asynchronous, and they should finish within a few
-minutes. During an update, the cluster status moves to \code{UPDATING} (this
-status transition is eventually consistent). When the update is complete
-(either \code{Failed} or \code{Successful}), the cluster status moves to \code{Active}.
-
-If your cluster has managed node groups attached to it, all of your node
-groups’ Kubernetes versions must match the cluster’s Kubernetes version
-in order to update the cluster to a new Kubernetes version.
+See \url{https://paws-r.github.io/docs/eks/update_cluster_version.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_cluster_version(
-  name = "string",
-  version = "string",
-  clientRequestToken = "string"
-)
-}
-}
-
 \keyword{internal}

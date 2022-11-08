@@ -2,8 +2,7 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_disconnect_custom_key_store}
 \alias{kms_disconnect_custom_key_store}
-\title{Disconnects the custom key store from its associated AWS CloudHSM
-cluster}
+\title{Disconnects the custom key store from its associated CloudHSM cluster}
 \usage{
 kms_disconnect_custom_key_store(CustomKeyStoreId)
 }
@@ -13,55 +12,9 @@ ID of a custom key store, use the
 \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
 operation.}
 }
-\value{
-An empty list.
-}
 \description{
-Disconnects the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
-from its associated AWS CloudHSM cluster. While a custom key store is
-disconnected, you can manage the custom key store and its customer
-master keys (CMKs), but you cannot create or use CMKs in the custom key
-store. You can reconnect the custom key store at any time.
+Disconnects the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store} from its associated CloudHSM cluster. While a custom key store is disconnected, you can manage the custom key store and its KMS keys, but you cannot create or use KMS keys in the custom key store. You can reconnect the custom key store at any time.
 
-While a custom key store is disconnected, all attempts to create
-customer master keys (CMKs) in the custom key store or to use existing
-CMKs in \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}
-will fail. This action can prevent users from storing and accessing
-sensitive data.
-
-To find the connection state of a custom key store, use the
-\code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
-operation. To reconnect a custom key store, use the
-\code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}} operation.
-
-If the operation succeeds, it returns a JSON object with no properties.
-
-This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
-feature in AWS KMS, which combines the convenience and extensive
-integration of AWS KMS with the isolation and control of a single-tenant
-key store.
-
-\strong{Cross-account use}: No. You cannot perform this operation on a custom
-key store in a different AWS account.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:DisconnectCustomKeyStore}
-(IAM policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}}
-\item \code{\link[=kms_create_custom_key_store]{create_custom_key_store}}
-\item \code{\link[=kms_delete_custom_key_store]{delete_custom_key_store}}
-\item \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
-\item \code{\link[=kms_update_custom_key_store]{update_custom_key_store}}
+See \url{https://paws-r.github.io/docs/kms/disconnect_custom_key_store.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$disconnect_custom_key_store(
-  CustomKeyStoreId = "string"
-)
-}
-}
-
 \keyword{internal}

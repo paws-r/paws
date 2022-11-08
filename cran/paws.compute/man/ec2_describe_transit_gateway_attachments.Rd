@@ -4,8 +4,13 @@
 \alias{ec2_describe_transit_gateway_attachments}
 \title{Describes one or more attachments between resources and transit gateways}
 \usage{
-ec2_describe_transit_gateway_attachments(TransitGatewayAttachmentIds,
-  Filters, MaxResults, NextToken, DryRun)
+ec2_describe_transit_gateway_attachments(
+  TransitGatewayAttachmentIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayAttachmentIds}{The IDs of the attachments.}
@@ -17,8 +22,8 @@ ec2_describe_transit_gateway_attachments(TransitGatewayAttachmentIds,
 \item \code{association.transit-gateway-route-table-id} - The ID of the route
 table for the transit gateway.
 \item \code{resource-id} - The ID of the resource.
-\item \code{resource-owner-id} - The ID of the AWS account that owns the
-resource.
+\item \code{resource-owner-id} - The ID of the Amazon Web Services account that
+owns the resource.
 \item \code{resource-type} - The resource type. Valid values are \code{vpc} | \code{vpn}
 | \code{direct-connect-gateway} | \code{peering} | \code{connect}.
 \item \code{state} - The state of the attachment. Valid values are \code{available}
@@ -27,8 +32,8 @@ resource.
 | \code{rollingBack} | \code{rejected} | \code{rejecting}.
 \item \code{transit-gateway-attachment-id} - The ID of the attachment.
 \item \code{transit-gateway-id} - The ID of the transit gateway.
-\item \code{transit-gateway-owner-id} - The ID of the AWS account that owns the
-transit gateway.
+\item \code{transit-gateway-owner-id} - The ID of the Amazon Web Services
+account that owns the transit gateway.
 }}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve
@@ -42,60 +47,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayAttachments = list(
-    list(
-      TransitGatewayAttachmentId = "string",
-      TransitGatewayId = "string",
-      TransitGatewayOwnerId = "string",
-      ResourceOwnerId = "string",
-      ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
-      ResourceId = "string",
-      State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
-      Association = list(
-        TransitGatewayRouteTableId = "string",
-        State = "associating"|"associated"|"disassociating"|"disassociated"
-      ),
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes one or more attachments between resources and transit
-gateways. By default, all attachments are described. Alternatively, you
-can filter the results by attachment ID, attachment state, resource ID,
-or resource owner.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_transit_gateway_attachments(
-  TransitGatewayAttachmentIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes one or more attachments between resources and transit gateways. By default, all attachments are described. Alternatively, you can filter the results by attachment ID, attachment state, resource ID, or resource owner.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_transit_gateway_attachments.html} for full documentation.
+}
 \keyword{internal}

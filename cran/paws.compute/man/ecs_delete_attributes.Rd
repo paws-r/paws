@@ -4,7 +4,7 @@
 \alias{ecs_delete_attributes}
 \title{Deletes one or more custom attributes from an Amazon ECS resource}
 \usage{
-ecs_delete_attributes(cluster, attributes)
+ecs_delete_attributes(cluster = NULL, attributes)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
@@ -12,39 +12,14 @@ contains the resource to delete attributes. If you do not specify a
 cluster, the default cluster is assumed.}
 
 \item{attributes}{[required] The attributes to delete from your resource. You can specify up to 10
-attributes per request. For custom attributes, specify the attribute
-name and target ID, but do not specify the value. If you specify the
-target ID using the short form, you must also specify the target type.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  attributes = list(
-    list(
-      name = "string",
-      value = "string",
-      targetType = "container-instance",
-      targetId = "string"
-    )
-  )
-)
-}
+attributes for each request. For custom attributes, specify the
+attribute name and target ID, but don't specify the value. If you
+specify the target ID using the short form, you must also specify the
+target type.}
 }
 \description{
 Deletes one or more custom attributes from an Amazon ECS resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_attributes(
-  cluster = "string",
-  attributes = list(
-    list(
-      name = "string",
-      value = "string",
-      targetType = "container-instance",
-      targetId = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ecs/delete_attributes.html} for full documentation.
+}
 \keyword{internal}

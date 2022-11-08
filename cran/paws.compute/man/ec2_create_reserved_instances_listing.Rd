@@ -5,8 +5,12 @@
 \title{Creates a listing for Amazon EC2 Standard Reserved Instances to be sold
 in the Reserved Instance Marketplace}
 \usage{
-ec2_create_reserved_instances_listing(ClientToken, InstanceCount,
-  PriceSchedules, ReservedInstancesId)
+ec2_create_reserved_instances_listing(
+  ClientToken,
+  InstanceCount,
+  PriceSchedules,
+  ReservedInstancesId
+)
 }
 \arguments{
 \item{ClientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
@@ -23,90 +27,9 @@ month remaining in the Reserved Instance term.}
 
 \item{ReservedInstancesId}{[required] The ID of the active Standard Reserved Instance.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReservedInstancesListings = list(
-    list(
-      ClientToken = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      InstanceCounts = list(
-        list(
-          InstanceCount = 123,
-          State = "available"|"sold"|"cancelled"|"pending"
-        )
-      ),
-      PriceSchedules = list(
-        list(
-          Active = TRUE|FALSE,
-          CurrencyCode = "USD",
-          Price = 123.0,
-          Term = 123
-        )
-      ),
-      ReservedInstancesId = "string",
-      ReservedInstancesListingId = "string",
-      Status = "active"|"pending"|"cancelled"|"closed",
-      StatusMessage = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      UpdateDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a listing for Amazon EC2 Standard Reserved Instances to be sold
-in the Reserved Instance Marketplace. You can submit one Standard
-Reserved Instance listing at a time. To get a list of your Standard
-Reserved Instances, you can use the
-\code{\link[=ec2_describe_reserved_instances]{describe_reserved_instances}}
-operation.
+Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved Instance Marketplace. You can submit one Standard Reserved Instance listing at a time. To get a list of your Standard Reserved Instances, you can use the \code{\link[=ec2_describe_reserved_instances]{describe_reserved_instances}} operation.
 
-Only Standard Reserved Instances can be sold in the Reserved Instance
-Marketplace. Convertible Reserved Instances cannot be sold.
-
-The Reserved Instance Marketplace matches sellers who want to resell
-Standard Reserved Instance capacity that they no longer need with buyers
-who want to purchase additional capacity. Reserved Instances bought and
-sold through the Reserved Instance Marketplace work like any other
-Reserved Instances.
-
-To sell your Standard Reserved Instances, you must first register as a
-seller in the Reserved Instance Marketplace. After completing the
-registration process, you can create a Reserved Instance Marketplace
-listing of some or all of your Standard Reserved Instances, and specify
-the upfront price to receive for them. Your Standard Reserved Instance
-listings then become available for purchase. To view the details of your
-Standard Reserved Instance listing, you can use the
-\code{\link[=ec2_describe_reserved_instances_listings]{describe_reserved_instances_listings}}
-operation.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/create_reserved_instances_listing.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_reserved_instances_listing(
-  ClientToken = "string",
-  InstanceCount = 123,
-  PriceSchedules = list(
-    list(
-      CurrencyCode = "USD",
-      Price = 123.0,
-      Term = 123
-    )
-  ),
-  ReservedInstancesId = "string"
-)
-}
-}
-
 \keyword{internal}

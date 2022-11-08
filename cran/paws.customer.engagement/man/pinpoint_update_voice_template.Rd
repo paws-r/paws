@@ -5,8 +5,12 @@
 \title{Updates an existing message template for messages that are sent through
 the voice channel}
 \usage{
-pinpoint_update_voice_template(CreateNewVersion, TemplateName, Version,
-  VoiceTemplateRequest)
+pinpoint_update_voice_template(
+  CreateNewVersion = NULL,
+  TemplateName,
+  Version = NULL,
+  VoiceTemplateRequest
+)
 }
 \arguments{
 \item{CreateNewVersion}{Specifies whether to save the updates as a new version of the message
@@ -48,36 +52,9 @@ of the template.
 
 \item{VoiceTemplateRequest}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MessageBody = list(
-    Message = "string",
-    RequestID = "string"
-  )
-)
-}
-}
 \description{
-Updates an existing message template for messages that are sent through
-the voice channel.
-}
-\section{Request syntax}{
-\preformatted{svc$update_voice_template(
-  CreateNewVersion = TRUE|FALSE,
-  TemplateName = "string",
-  Version = "string",
-  VoiceTemplateRequest = list(
-    Body = "string",
-    DefaultSubstitutions = "string",
-    LanguageCode = "string",
-    tags = list(
-      "string"
-    ),
-    TemplateDescription = "string",
-    VoiceId = "string"
-  )
-)
-}
-}
+Updates an existing message template for messages that are sent through the voice channel.
 
+See \url{https://paws-r.github.io/docs/pinpoint/update_voice_template.html} for full documentation.
+}
 \keyword{internal}

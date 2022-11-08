@@ -22,42 +22,9 @@ the function name, it is limited to 64 characters in length.}
 
 \item{Name}{[required] The name of the alias.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AliasArn = "string",
-  Name = "string",
-  FunctionVersion = "string",
-  Description = "string",
-  RoutingConfig = list(
-    AdditionalVersionWeights = list(
-      123.0
-    )
-  ),
-  RevisionId = "string"
-)
-}
-}
 \description{
-Returns details about a Lambda function
-\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_alias(
-  FunctionName = "string",
-  Name = "string"
-)
-}
-}
+Returns details about a Lambda function \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.
 
-\examples{
-\dontrun{
-# The following example returns details about an alias named BLUE for a
-# function named my-function
-svc$get_alias(
-  FunctionName = "my-function",
-  Name = "BLUE"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/get_alias.html} for full documentation.
 }
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{cloudwatch_list_dashboards}
 \title{Returns a list of the dashboards for your account}
 \usage{
-cloudwatch_list_dashboards(DashboardNamePrefix, NextToken)
+cloudwatch_list_dashboards(DashboardNamePrefix = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DashboardNamePrefix}{If you specify this parameter, only the dashboards with names starting
@@ -14,40 +14,9 @@ valid characters are A-Z, a-z, 0-9, ".", "-", and "_".}
 \item{NextToken}{The token returned by a previous call to indicate that there is more
 data available.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DashboardEntries = list(
-    list(
-      DashboardName = "string",
-      DashboardArn = "string",
-      LastModified = as.POSIXct(
-        "2015-01-01"
-      ),
-      Size = 123
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of the dashboards for your account. If you include
-\code{DashboardNamePrefix}, only those dashboards with names starting with
-the prefix are listed. Otherwise, all dashboards in your account are
-listed.
+Returns a list of the dashboards for your account. If you include \code{DashboardNamePrefix}, only those dashboards with names starting with the prefix are listed. Otherwise, all dashboards in your account are listed.
 
-\code{\link[=cloudwatch_list_dashboards]{list_dashboards}} returns up to 1000
-results on one page. If there are more than 1000 dashboards, you can
-call \code{\link[=cloudwatch_list_dashboards]{list_dashboards}} again and include
-the value you received for \code{NextToken} in the first call, to receive the
-next 1000 results.
+See \url{https://paws-r.github.io/docs/cloudwatch/list_dashboards.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_dashboards(
-  DashboardNamePrefix = "string",
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

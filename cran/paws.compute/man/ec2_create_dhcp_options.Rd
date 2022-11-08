@@ -4,7 +4,11 @@
 \alias{ec2_create_dhcp_options}
 \title{Creates a set of DHCP options for your VPC}
 \usage{
-ec2_create_dhcp_options(DhcpConfigurations, TagSpecifications, DryRun)
+ec2_create_dhcp_options(
+  DhcpConfigurations,
+  TagSpecifications = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{DhcpConfigurations}{[required] A DHCP configuration option.}
@@ -16,115 +20,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DhcpOptions = list(
-    DhcpConfigurations = list(
-      list(
-        Key = "string",
-        Values = list(
-          list(
-            Value = "string"
-          )
-        )
-      )
-    ),
-    DhcpOptionsId = "string",
-    OwnerId = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a set of DHCP options for your VPC. After creating the set, you
-must associate it with the VPC, causing all existing and new instances
-that you launch in the VPC to use this set of DHCP options. The
-following are the individual DHCP options you can specify. For more
-information about the options, see \href{https://www.ietf.org/rfc/rfc2132.txt}{RFC 2132}.
-\itemize{
-\item \code{domain-name-servers} - The IP addresses of up to four domain name
-servers, or AmazonProvidedDNS. The default DHCP option set specifies
-AmazonProvidedDNS. If specifying more than one domain name server,
-specify the IP addresses in a single parameter, separated by commas.
-To have your instance receive a custom DNS hostname as specified in
-\code{domain-name}, you must set \code{domain-name-servers} to a custom DNS
-server.
-\item \code{domain-name} - If you're using AmazonProvidedDNS in \code{us-east-1},
-specify \code{ec2.internal}. If you're using AmazonProvidedDNS in another
-Region, specify \code{region.compute.internal} (for example,
-\verb{ap-northeast-1.compute.internal}). Otherwise, specify a domain name
-(for example, \code{ExampleCompany.com}). This value is used to complete
-unqualified DNS hostnames. \strong{Important}: Some Linux operating
-systems accept multiple domain names separated by spaces. However,
-Windows and other Linux operating systems treat the value as a
-single domain, which results in unexpected behavior. If your DHCP
-options set is associated with a VPC that has instances with
-multiple operating systems, specify only one domain name.
-\item \code{ntp-servers} - The IP addresses of up to four Network Time Protocol
-(NTP) servers.
-\item \code{netbios-name-servers} - The IP addresses of up to four NetBIOS name
-servers.
-\item \code{netbios-node-type} - The NetBIOS node type (1, 2, 4, or 8). We
-recommend that you specify 2 (broadcast and multicast are not
-currently supported). For more information about these node types,
-see \href{https://www.ietf.org/rfc/rfc2132.txt}{RFC 2132}.
-}
+Creates a set of DHCP options for your VPC. After creating the set, you must associate it with the VPC, causing all existing and new instances that you launch in the VPC to use this set of DHCP options. The following are the individual DHCP options you can specify. For more information about the options, see \href{https://www.ietf.org/rfc/rfc2132.txt}{RFC 2132}.
 
-Your VPC automatically starts out with a set of DHCP options that
-includes only a DNS server that we provide (AmazonProvidedDNS). If you
-create a set of options, and if your VPC has an internet gateway, make
-sure to set the \code{domain-name-servers} option either to
-\code{AmazonProvidedDNS} or to a domain name server of your choice. For more
-information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html}{DHCP Options Sets}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_dhcp_options(
-  DhcpConfigurations = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates a DHCP options set.
-svc$create_dhcp_options(
-  DhcpConfigurations = list(
-    list(
-      Key = "domain-name-servers",
-      Values = list(
-        "10.2.5.1",
-        "10.2.5.2"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/create_dhcp_options.html} for full documentation.
 }
 \keyword{internal}

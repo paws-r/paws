@@ -11,47 +11,9 @@ codedeploy_get_deployment_instance(deploymentId, instanceId)
 
 \item{instanceId}{[required] The unique ID of an instance in the deployment group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  instanceSummary = list(
-    deploymentId = "string",
-    instanceId = "string",
-    status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"|"Ready",
-    lastUpdatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    lifecycleEvents = list(
-      list(
-        lifecycleEventName = "string",
-        diagnostics = list(
-          errorCode = "Success"|"ScriptMissing"|"ScriptNotExecutable"|"ScriptTimedOut"|"ScriptFailed"|"UnknownError",
-          scriptName = "string",
-          message = "string",
-          logTail = "string"
-        ),
-        startTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        endTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        status = "Pending"|"InProgress"|"Succeeded"|"Failed"|"Skipped"|"Unknown"
-      )
-    ),
-    instanceType = "Blue"|"Green"
-  )
-)
-}
-}
 \description{
 Gets information about an instance as part of a deployment.
-}
-\section{Request syntax}{
-\preformatted{svc$get_deployment_instance(
-  deploymentId = "string",
-  instanceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/get_deployment_instance.html} for full documentation.
+}
 \keyword{internal}

@@ -2,50 +2,27 @@
 % Please edit documentation in R/organizations_operations.R
 \name{organizations_deregister_delegated_administrator}
 \alias{organizations_deregister_delegated_administrator}
-\title{Removes the specified member AWS account as a delegated administrator
-for the specified AWS service}
+\title{Removes the specified member Amazon Web Services account as a delegated
+administrator for the specified Amazon Web Services service}
 \usage{
-organizations_deregister_delegated_administrator(AccountId,
-  ServicePrincipal)
+organizations_deregister_delegated_administrator(AccountId, ServicePrincipal)
 }
 \arguments{
 \item{AccountId}{[required] The account ID number of the member account in the organization that you
 want to deregister as a delegated administrator.}
 
-\item{ServicePrincipal}{[required] The service principal name of an AWS service for which the account is a
-delegated administrator.
+\item{ServicePrincipal}{[required] The service principal name of an Amazon Web Services service for which
+the account is a delegated administrator.
 
 Delegated administrator privileges are revoked for only the specified
-AWS service from the member account. If the specified service is the
-only service for which the member account is a delegated administrator,
-the operation also revokes Organizations read action permissions.}
-}
-\value{
-An empty list.
+Amazon Web Services service from the member account. If the specified
+service is the only service for which the member account is a delegated
+administrator, the operation also revokes Organizations read action
+permissions.}
 }
 \description{
-Removes the specified member AWS account as a delegated administrator
-for the specified AWS service.
+Removes the specified member Amazon Web Services account as a delegated administrator for the specified Amazon Web Services service.
 
-Deregistering a delegated administrator can have unintended impacts on
-the functionality of the enabled AWS service. See the documentation for
-the enabled service before you deregister a delegated administrator so
-that you understand any potential impacts.
-
-You can run this action only for AWS services that support this feature.
-For a current list of services that support it, see the column \emph{Supports
-Delegated Administrator} in the table at \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html}{AWS Services that you can use with AWS Organizations}
-in the \emph{AWS Organizations User Guide.}
-
-This operation can be called only from the organization's management
-account.
+See \url{https://paws-r.github.io/docs/organizations/deregister_delegated_administrator.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$deregister_delegated_administrator(
-  AccountId = "string",
-  ServicePrincipal = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -2,14 +2,23 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_get_reservation_purchase_recommendation}
 \alias{costexplorer_get_reservation_purchase_recommendation}
-\title{Gets recommendations for which reservations to purchase}
+\title{Gets recommendations for reservation purchases}
 \usage{
-costexplorer_get_reservation_purchase_recommendation(AccountId, Service,
-  Filter, AccountScope, LookbackPeriodInDays, TermInYears, PaymentOption,
-  ServiceSpecification, PageSize, NextPageToken)
+costexplorer_get_reservation_purchase_recommendation(
+  AccountId = NULL,
+  Service,
+  Filter = NULL,
+  AccountScope = NULL,
+  LookbackPeriodInDays = NULL,
+  TermInYears = NULL,
+  PaymentOption = NULL,
+  ServiceSpecification = NULL,
+  PageSize = NULL,
+  NextPageToken = NULL
+)
 }
 \arguments{
-\item{AccountId}{The account ID that is associated with the recommendation.}
+\item{AccountId}{The account ID that's associated with the recommendation.}
 
 \item{Service}{[required] The specific service that you want recommendations for.}
 
@@ -21,8 +30,8 @@ member accounts if the value is set to \code{PAYER}. If the value is
 \code{LINKED}, recommendations are calculated for individual member accounts
 only.}
 
-\item{LookbackPeriodInDays}{The number of previous days that you want AWS to consider when it
-calculates your recommendations.}
+\item{LookbackPeriodInDays}{The number of previous days that you want Amazon Web Services to
+consider when it calculates your recommendations.}
 
 \item{TermInYears}{The reservation term that you want recommendations for.}
 
@@ -38,176 +47,9 @@ response object.}
 \item{NextPageToken}{The pagination token that indicates the next set of results that you
 want to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Metadata = list(
-    RecommendationId = "string",
-    GenerationTimestamp = "string"
-  ),
-  Recommendations = list(
-    list(
-      AccountScope = "PAYER"|"LINKED",
-      LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
-      TermInYears = "ONE_YEAR"|"THREE_YEARS",
-      PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
-      ServiceSpecification = list(
-        EC2Specification = list(
-          OfferingClass = "STANDARD"|"CONVERTIBLE"
-        )
-      ),
-      RecommendationDetails = list(
-        list(
-          AccountId = "string",
-          InstanceDetails = list(
-            EC2InstanceDetails = list(
-              Family = "string",
-              InstanceType = "string",
-              Region = "string",
-              AvailabilityZone = "string",
-              Platform = "string",
-              Tenancy = "string",
-              CurrentGeneration = TRUE|FALSE,
-              SizeFlexEligible = TRUE|FALSE
-            ),
-            RDSInstanceDetails = list(
-              Family = "string",
-              InstanceType = "string",
-              Region = "string",
-              DatabaseEngine = "string",
-              DatabaseEdition = "string",
-              DeploymentOption = "string",
-              LicenseModel = "string",
-              CurrentGeneration = TRUE|FALSE,
-              SizeFlexEligible = TRUE|FALSE
-            ),
-            RedshiftInstanceDetails = list(
-              Family = "string",
-              NodeType = "string",
-              Region = "string",
-              CurrentGeneration = TRUE|FALSE,
-              SizeFlexEligible = TRUE|FALSE
-            ),
-            ElastiCacheInstanceDetails = list(
-              Family = "string",
-              NodeType = "string",
-              Region = "string",
-              ProductDescription = "string",
-              CurrentGeneration = TRUE|FALSE,
-              SizeFlexEligible = TRUE|FALSE
-            ),
-            ESInstanceDetails = list(
-              InstanceClass = "string",
-              InstanceSize = "string",
-              Region = "string",
-              CurrentGeneration = TRUE|FALSE,
-              SizeFlexEligible = TRUE|FALSE
-            )
-          ),
-          RecommendedNumberOfInstancesToPurchase = "string",
-          RecommendedNormalizedUnitsToPurchase = "string",
-          MinimumNumberOfInstancesUsedPerHour = "string",
-          MinimumNormalizedUnitsUsedPerHour = "string",
-          MaximumNumberOfInstancesUsedPerHour = "string",
-          MaximumNormalizedUnitsUsedPerHour = "string",
-          AverageNumberOfInstancesUsedPerHour = "string",
-          AverageNormalizedUnitsUsedPerHour = "string",
-          AverageUtilization = "string",
-          EstimatedBreakEvenInMonths = "string",
-          CurrencyCode = "string",
-          EstimatedMonthlySavingsAmount = "string",
-          EstimatedMonthlySavingsPercentage = "string",
-          EstimatedMonthlyOnDemandCost = "string",
-          EstimatedReservationCostForLookbackPeriod = "string",
-          UpfrontCost = "string",
-          RecurringStandardMonthlyCost = "string"
-        )
-      ),
-      RecommendationSummary = list(
-        TotalEstimatedMonthlySavingsAmount = "string",
-        TotalEstimatedMonthlySavingsPercentage = "string",
-        CurrencyCode = "string"
-      )
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
-Gets recommendations for which reservations to purchase. These
-recommendations could help you reduce your costs. Reservations provide a
-discounted hourly rate (up to 75\%) compared to On-Demand pricing.
+Gets recommendations for reservation purchases. These recommendations might help you to reduce your costs. Reservations provide a discounted hourly rate (up to 75\%) compared to On-Demand pricing.
 
-AWS generates your recommendations by identifying your On-Demand usage
-during a specific time period and collecting your usage into categories
-that are eligible for a reservation. After AWS has these categories, it
-simulates every combination of reservations in each category of usage to
-identify the best number of each type of RI to purchase to maximize your
-estimated savings.
-
-For example, AWS automatically aggregates your Amazon EC2 Linux, shared
-tenancy, and c4 family usage in the US West (Oregon) Region and
-recommends that you buy size-flexible regional reservations to apply to
-the c4 family usage. AWS recommends the smallest size instance in an
-instance family. This makes it easier to purchase a size-flexible RI.
-AWS also shows the equal number of normalized units so that you can
-purchase any instance size that you want. For this example, your RI
-recommendation would be for \code{c4.large} because that is the smallest size
-instance in the c4 instance family.
+See \url{https://paws-r.github.io/docs/costexplorer/get_reservation_purchase_recommendation.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_reservation_purchase_recommendation(
-  AccountId = "string",
-  Service = "string",
-  Filter = list(
-    Or = list(
-      list()
-    ),
-    And = list(
-      list()
-    ),
-    Not = list(),
-    Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    Tags = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    CostCategories = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    )
-  ),
-  AccountScope = "PAYER"|"LINKED",
-  LookbackPeriodInDays = "SEVEN_DAYS"|"THIRTY_DAYS"|"SIXTY_DAYS",
-  TermInYears = "ONE_YEAR"|"THREE_YEARS",
-  PaymentOption = "NO_UPFRONT"|"PARTIAL_UPFRONT"|"ALL_UPFRONT"|"LIGHT_UTILIZATION"|"MEDIUM_UTILIZATION"|"HEAVY_UTILIZATION",
-  ServiceSpecification = list(
-    EC2Specification = list(
-      OfferingClass = "STANDARD"|"CONVERTIBLE"
-    )
-  ),
-  PageSize = 123,
-  NextPageToken = "string"
-)
-}
-}
-
 \keyword{internal}

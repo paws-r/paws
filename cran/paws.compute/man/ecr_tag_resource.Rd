@@ -14,25 +14,9 @@ Currently, the only supported resource is an Amazon ECR repository.}
 Tag keys can have a maximum character length of 128 characters, and tag
 values can have a maximum length of 256 characters.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds specified tags to a resource with the specified ARN. Existing tags
-on a resource are not changed if they are not specified in the request
-parameters.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  resourceArn = "string",
-  tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Adds specified tags to a resource with the specified ARN. Existing tags on a resource are not changed if they are not specified in the request parameters.
 
+See \url{https://paws-r.github.io/docs/ecr/tag_resource.html} for full documentation.
+}
 \keyword{internal}

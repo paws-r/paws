@@ -10,84 +10,9 @@ codepipeline_get_pipeline_state(name)
 \arguments{
 \item{name}{[required] The name of the pipeline about which you want to get information.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pipelineName = "string",
-  pipelineVersion = 123,
-  stageStates = list(
-    list(
-      stageName = "string",
-      inboundExecution = list(
-        pipelineExecutionId = "string",
-        status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded"
-      ),
-      inboundTransitionState = list(
-        enabled = TRUE|FALSE,
-        lastChangedBy = "string",
-        lastChangedAt = as.POSIXct(
-          "2015-01-01"
-        ),
-        disabledReason = "string"
-      ),
-      actionStates = list(
-        list(
-          actionName = "string",
-          currentRevision = list(
-            revisionId = "string",
-            revisionChangeId = "string",
-            created = as.POSIXct(
-              "2015-01-01"
-            )
-          ),
-          latestExecution = list(
-            actionExecutionId = "string",
-            status = "InProgress"|"Abandoned"|"Succeeded"|"Failed",
-            summary = "string",
-            lastStatusChange = as.POSIXct(
-              "2015-01-01"
-            ),
-            token = "string",
-            lastUpdatedBy = "string",
-            externalExecutionId = "string",
-            externalExecutionUrl = "string",
-            percentComplete = 123,
-            errorDetails = list(
-              code = "string",
-              message = "string"
-            )
-          ),
-          entityUrl = "string",
-          revisionUrl = "string"
-        )
-      ),
-      latestExecution = list(
-        pipelineExecutionId = "string",
-        status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded"
-      )
-    )
-  ),
-  created = as.POSIXct(
-    "2015-01-01"
-  ),
-  updated = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Returns information about the state of a pipeline, including the stages
-and actions.
+Returns information about the state of a pipeline, including the stages and actions.
 
-Values returned in the \code{revisionId} and \code{revisionUrl} fields indicate
-the source revision information, such as the commit ID, for the current
-state.
+See \url{https://paws-r.github.io/docs/codepipeline/get_pipeline_state.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_pipeline_state(
-  name = "string"
-)
-}
-}
-
 \keyword{internal}

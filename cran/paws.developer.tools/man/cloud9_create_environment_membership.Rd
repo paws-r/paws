@@ -2,10 +2,9 @@
 % Please edit documentation in R/cloud9_operations.R
 \name{cloud9_create_environment_membership}
 \alias{cloud9_create_environment_membership}
-\title{Adds an environment member to an AWS Cloud9 development environment}
+\title{Adds an environment member to an Cloud9 development environment}
 \usage{
-cloud9_create_environment_membership(environmentId, userArn,
-  permissions)
+cloud9_create_environment_membership(environmentId, userArn, permissions)
 }
 \arguments{
 \item{environmentId}{[required] The ID of the environment that contains the environment member you want
@@ -21,41 +20,9 @@ this environment member. Available values include:
 \item \code{read-write}: Has read-write access to the environment.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  membership = list(
-    permissions = "owner"|"read-write"|"read-only",
-    userId = "string",
-    userArn = "string",
-    environmentId = "string",
-    lastAccess = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Adds an environment member to an AWS Cloud9 development environment.
-}
-\section{Request syntax}{
-\preformatted{svc$create_environment_membership(
-  environmentId = "string",
-  userArn = "string",
-  permissions = "read-write"|"read-only"
-)
-}
-}
+Adds an environment member to an Cloud9 development environment.
 
-\examples{
-\dontrun{
-# 
-svc$create_environment_membership(
-  environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
-  permissions = "read-write",
-  userArn = "arn:aws:iam::123456789012:user/AnotherDemoUser"
-)
-}
-
+See \url{https://paws-r.github.io/docs/cloud9/create_environment_membership.html} for full documentation.
 }
 \keyword{internal}

@@ -13,21 +13,11 @@ directoryservice_enable_client_authentication(DirectoryId, Type)
 \item{Type}{[required] The type of client authentication to enable. Currently only the value
 \code{SmartCard} is supported. Smart card authentication in AD Connector
 requires that you enable Kerberos Constrained Delegation for the Service
-User to the LDAP service in the on-premises AD.}
-}
-\value{
-An empty list.
+User to the LDAP service in your self-managed AD.}
 }
 \description{
-Enables alternative client authentication methods for the specified
-directory.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_client_authentication(
-  DirectoryId = "string",
-  Type = "SmartCard"
-)
-}
-}
+Enables alternative client authentication methods for the specified directory.
 
+See \url{https://paws-r.github.io/docs/directoryservice/enable_client_authentication.html} for full documentation.
+}
 \keyword{internal}

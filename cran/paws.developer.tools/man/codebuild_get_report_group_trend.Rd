@@ -2,44 +2,81 @@
 % Please edit documentation in R/codebuild_operations.R
 \name{codebuild_get_report_group_trend}
 \alias{codebuild_get_report_group_trend}
-\title{Get report group trend}
+\title{Analyzes and accumulates test report values for the specified test
+reports}
 \usage{
-codebuild_get_report_group_trend(reportGroupArn, numOfReports,
-  trendField)
+codebuild_get_report_group_trend(
+  reportGroupArn,
+  numOfReports = NULL,
+  trendField
+)
 }
 \arguments{
-\item{reportGroupArn}{[required]}
+\item{reportGroupArn}{[required] The ARN of the report group that contains the reports to analyze.}
 
-\item{numOfReports}{}
+\item{numOfReports}{The number of reports to analyze. This operation always retrieves the
+most recent reports.
 
-\item{trendField}{[required]}
+If this parameter is omitted, the most recent 100 reports are analyzed.}
+
+\item{trendField}{[required] The test report value to accumulate. This must be one of the following
+values:
+\subsection{Test reports:}{
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  stats = list(
-    average = "string",
-    max = "string",
-    min = "string"
-  ),
-  rawData = list(
-    list(
-      reportArn = "string",
-      data = "string"
-    )
-  )
-)
+
+\subsection{DURATION}{
+
+Accumulate the test run times for the specified reports.
 }
+
+\subsection{PASS_RATE}{
+
+Accumulate the percentage of tests that passed for the specified test
+reports.
+}
+
+\subsection{TOTAL}{
+
+Accumulate the total number of tests for the specified test reports.
+}
+
+\subsection{Code coverage reports:}{
+}
+
+\subsection{BRANCH_COVERAGE}{
+
+Accumulate the branch coverage percentages for the specified test
+reports.
+}
+
+\subsection{BRANCHES_COVERED}{
+
+Accumulate the branches covered values for the specified test reports.
+}
+
+\subsection{BRANCHES_MISSED}{
+
+Accumulate the branches missed values for the specified test reports.
+}
+
+\subsection{LINE_COVERAGE}{
+
+Accumulate the line coverage percentages for the specified test reports.
+}
+
+\subsection{LINES_COVERED}{
+
+Accumulate the lines covered values for the specified test reports.
+}
+
+\subsection{LINES_MISSED}{
+
+Accumulate the lines not covered values for the specified test reports.
+}}
 }
 \description{
-Get report group trend
-}
-\section{Request syntax}{
-\preformatted{svc$get_report_group_trend(
-  reportGroupArn = "string",
-  numOfReports = 123,
-  trendField = "PASS_RATE"|"DURATION"|"TOTAL"|"LINE_COVERAGE"|"LINES_COVERED"|"LINES_MISSED"|"BRANCH_COVERAGE"|"BRANCHES_COVERED"|"BRANCHES_MISSED"
-)
-}
-}
+Analyzes and accumulates test report values for the specified test reports.
 
+See \url{https://paws-r.github.io/docs/codebuild/get_report_group_trend.html} for full documentation.
+}
 \keyword{internal}

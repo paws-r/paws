@@ -4,31 +4,19 @@
 \alias{connect_update_user_security_profiles}
 \title{Assigns the specified security profiles to the specified user}
 \usage{
-connect_update_user_security_profiles(SecurityProfileIds, UserId,
-  InstanceId)
+connect_update_user_security_profiles(SecurityProfileIds, UserId, InstanceId)
 }
 \arguments{
 \item{SecurityProfileIds}{[required] The identifiers of the security profiles for the user.}
 
 \item{UserId}{[required] The identifier of the user account.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-An empty list.
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 }
 \description{
 Assigns the specified security profiles to the specified user.
-}
-\section{Request syntax}{
-\preformatted{svc$update_user_security_profiles(
-  SecurityProfileIds = list(
-    "string"
-  ),
-  UserId = "string",
-  InstanceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/update_user_security_profiles.html} for full documentation.
+}
 \keyword{internal}

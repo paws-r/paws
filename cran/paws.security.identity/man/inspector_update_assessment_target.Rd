@@ -5,8 +5,11 @@
 \title{Updates the assessment target that is specified by the ARN of the
 assessment target}
 \usage{
-inspector_update_assessment_target(assessmentTargetArn,
-  assessmentTargetName, resourceGroupArn)
+inspector_update_assessment_target(
+  assessmentTargetArn,
+  assessmentTargetName,
+  resourceGroupArn = NULL
+)
 }
 \arguments{
 \item{assessmentTargetArn}{[required] The ARN of the assessment target that you want to update.}
@@ -16,35 +19,9 @@ inspector_update_assessment_target(assessmentTargetArn,
 \item{resourceGroupArn}{The ARN of the resource group that is used to specify the new resource
 group to associate with the assessment target.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the assessment target that is specified by the ARN of the
-assessment target.
+Updates the assessment target that is specified by the ARN of the assessment target.
 
-If resourceGroupArn is not specified, all EC2 instances in the current
-AWS account and region are included in the assessment target.
-}
-\section{Request syntax}{
-\preformatted{svc$update_assessment_target(
-  assessmentTargetArn = "string",
-  assessmentTargetName = "string",
-  resourceGroupArn = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Updates the assessment target that is specified by the ARN of the
-# assessment target.
-svc$update_assessment_target(
-  assessmentTargetArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX",
-  assessmentTargetName = "Example",
-  resourceGroupArn = "arn:aws:inspector:us-west-2:123456789012:resourcegroup/0-yNbgL5Pt"
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/update_assessment_target.html} for full documentation.
 }
 \keyword{internal}

@@ -9,10 +9,12 @@ NULL
 #' Creates a discoverer.
 #'
 #' @usage
-#' schemas_create_discoverer(Description, SourceArn, Tags)
+#' schemas_create_discoverer(Description, SourceArn, CrossAccount, Tags)
 #'
 #' @param Description A description for the discoverer.
 #' @param SourceArn &#91;required&#93; The ARN of the event bus.
+#' @param CrossAccount Support discovery of schemas in events sent to the bus from another
+#' account. (default: true).
 #' @param Tags Tags associated with the resource.
 #'
 #' @return
@@ -24,6 +26,7 @@ NULL
 #'   DiscovererId = "string",
 #'   SourceArn = "string",
 #'   State = "STARTED"|"STOPPED",
+#'   CrossAccount = TRUE|FALSE,
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -35,6 +38,7 @@ NULL
 #' svc$create_discoverer(
 #'   Description = "string",
 #'   SourceArn = "string",
+#'   CrossAccount = TRUE|FALSE,
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -44,14 +48,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname schemas_create_discoverer
-schemas_create_discoverer <- function(Description = NULL, SourceArn, Tags = NULL) {
+schemas_create_discoverer <- function(Description = NULL, SourceArn, CrossAccount = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDiscoverer",
     http_method = "POST",
     http_path = "/v1/discoverers",
     paginator = list()
   )
-  input <- .schemas$create_discoverer_input(Description = Description, SourceArn = SourceArn, Tags = Tags)
+  input <- .schemas$create_discoverer_input(Description = Description, SourceArn = SourceArn, CrossAccount = CrossAccount, Tags = Tags)
   output <- .schemas$create_discoverer_output()
   config <- get_config()
   svc <- .schemas$service(config)
@@ -474,6 +478,7 @@ schemas_describe_code_binding <- function(Language, RegistryName, SchemaName, Sc
 #'   DiscovererId = "string",
 #'   SourceArn = "string",
 #'   State = "STARTED"|"STOPPED",
+#'   CrossAccount = TRUE|FALSE,
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -852,6 +857,7 @@ schemas_get_resource_policy <- function(RegistryName = NULL) {
 #'       DiscovererId = "string",
 #'       SourceArn = "string",
 #'       State = "STARTED"|"STOPPED",
+#'       CrossAccount = TRUE|FALSE,
 #'       Tags = list(
 #'         "string"
 #'       )
@@ -1495,10 +1501,12 @@ schemas_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates the discoverer
 #'
 #' @usage
-#' schemas_update_discoverer(Description, DiscovererId)
+#' schemas_update_discoverer(Description, DiscovererId, CrossAccount)
 #'
 #' @param Description The description of the discoverer to update.
 #' @param DiscovererId &#91;required&#93; The ID of the discoverer.
+#' @param CrossAccount Support discovery of schemas in events sent to the bus from another
+#' account. (default: true)
 #'
 #' @return
 #' A list with the following syntax:
@@ -1509,6 +1517,7 @@ schemas_untag_resource <- function(ResourceArn, TagKeys) {
 #'   DiscovererId = "string",
 #'   SourceArn = "string",
 #'   State = "STARTED"|"STOPPED",
+#'   CrossAccount = TRUE|FALSE,
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -1519,21 +1528,22 @@ schemas_untag_resource <- function(ResourceArn, TagKeys) {
 #' ```
 #' svc$update_discoverer(
 #'   Description = "string",
-#'   DiscovererId = "string"
+#'   DiscovererId = "string",
+#'   CrossAccount = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname schemas_update_discoverer
-schemas_update_discoverer <- function(Description = NULL, DiscovererId) {
+schemas_update_discoverer <- function(Description = NULL, DiscovererId, CrossAccount = NULL) {
   op <- new_operation(
     name = "UpdateDiscoverer",
     http_method = "PUT",
     http_path = "/v1/discoverers/id/{discovererId}",
     paginator = list()
   )
-  input <- .schemas$update_discoverer_input(Description = Description, DiscovererId = DiscovererId)
+  input <- .schemas$update_discoverer_input(Description = Description, DiscovererId = DiscovererId, CrossAccount = CrossAccount)
   output <- .schemas$update_discoverer_output()
   config <- get_config()
   svc <- .schemas$service(config)

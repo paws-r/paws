@@ -4,56 +4,27 @@
 \alias{glue_batch_delete_table}
 \title{Deletes multiple tables at once}
 \usage{
-glue_batch_delete_table(CatalogId, DatabaseName, TablesToDelete)
+glue_batch_delete_table(
+  CatalogId = NULL,
+  DatabaseName,
+  TablesToDelete,
+  TransactionId = NULL
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the table resides. If none is provided,
-the AWS account ID is used by default.}
+the Amazon Web Services account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database in which the tables to delete reside.
 For Hive compatibility, this name is entirely lowercase.}
 
 \item{TablesToDelete}{[required] A list of the table to delete.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Errors = list(
-    list(
-      TableName = "string",
-      ErrorDetail = list(
-        ErrorCode = "string",
-        ErrorMessage = "string"
-      )
-    )
-  )
-)
-}
+
+\item{TransactionId}{The transaction ID at which to delete the table contents.}
 }
 \description{
 Deletes multiple tables at once.
 
-After completing this operation, you no longer have access to the table
-versions and partitions that belong to the deleted table. AWS Glue
-deletes these "orphaned" resources asynchronously in a timely manner, at
-the discretion of the service.
-
-To ensure the immediate deletion of all related resources, before
-calling \code{\link[=glue_batch_delete_table]{batch_delete_table}}, use
-\code{\link[=glue_delete_table_version]{delete_table_version}} or
-\code{\link[=glue_batch_delete_table_version]{batch_delete_table_version}}, and
-\code{\link[=glue_delete_partition]{delete_partition}} or
-\code{\link[=glue_batch_delete_partition]{batch_delete_partition}}, to delete any
-resources that belong to the table.
+See \url{https://paws-r.github.io/docs/glue/batch_delete_table.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$batch_delete_table(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TablesToDelete = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

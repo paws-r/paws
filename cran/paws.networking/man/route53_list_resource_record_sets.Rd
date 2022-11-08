@@ -4,8 +4,13 @@
 \alias{route53_list_resource_record_sets}
 \title{Lists the resource record sets in a specified hosted zone}
 \usage{
-route53_list_resource_record_sets(HostedZoneId, StartRecordName,
-  StartRecordType, StartRecordIdentifier, MaxItems)
+route53_list_resource_record_sets(
+  HostedZoneId,
+  StartRecordName = NULL,
+  StartRecordType = NULL,
+  StartRecordIdentifier = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{HostedZoneId}{[required] The ID of the hosted zone that contains the resource record sets that
@@ -53,132 +58,9 @@ in the response is \code{true}, and the values of the \code{NextRecordName} and
 \code{NextRecordType} elements in the response identify the first resource
 record set in the next group of \code{maxitems} resource record sets.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceRecordSets = list(
-    list(
-      Name = "string",
-      Type = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-      SetIdentifier = "string",
-      Weight = 123,
-      Region = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"ca-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"eu-north-1"|"sa-east-1"|"cn-north-1"|"cn-northwest-1"|"ap-east-1"|"me-south-1"|"ap-south-1"|"af-south-1"|"eu-south-1",
-      GeoLocation = list(
-        ContinentCode = "string",
-        CountryCode = "string",
-        SubdivisionCode = "string"
-      ),
-      Failover = "PRIMARY"|"SECONDARY",
-      MultiValueAnswer = TRUE|FALSE,
-      TTL = 123,
-      ResourceRecords = list(
-        list(
-          Value = "string"
-        )
-      ),
-      AliasTarget = list(
-        HostedZoneId = "string",
-        DNSName = "string",
-        EvaluateTargetHealth = TRUE|FALSE
-      ),
-      HealthCheckId = "string",
-      TrafficPolicyInstanceId = "string"
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  NextRecordName = "string",
-  NextRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-  NextRecordIdentifier = "string",
-  MaxItems = "string"
-)
-}
-}
 \description{
 Lists the resource record sets in a specified hosted zone.
 
-\code{\link[=route53_list_resource_record_sets]{list_resource_record_sets}} returns
-up to 100 resource record sets at a time in ASCII order, beginning at a
-position specified by the \code{name} and \code{type} elements.
-
-\strong{Sort order}
-
-\code{\link[=route53_list_resource_record_sets]{list_resource_record_sets}} sorts
-results first by DNS name with the labels reversed, for example:
-
-\code{com.example.www.}
-
-Note the trailing dot, which can change the sort order when the record
-name contains characters that appear before \code{.} (decimal 46) in the
-ASCII table. These characters include the following:
-\verb{! \\" # $ \% & \\' ( ) * + , -}
-
-When multiple records have the same DNS name,
-\code{\link[=route53_list_resource_record_sets]{list_resource_record_sets}} sorts
-results by the record type.
-
-\strong{Specifying where to start listing records}
-
-You can use the name and type elements to specify the resource record
-set that the list begins with:
-\subsection{If you do not specify Name or Type}{
-
-The results begin with the first resource record set that the hosted
-zone contains.
+See \url{https://paws-r.github.io/docs/route53/list_resource_record_sets.html} for full documentation.
 }
-
-\subsection{If you specify Name but not Type}{
-
-The results begin with the first resource record set in the list whose
-name is greater than or equal to \code{Name}.
-}
-
-\subsection{If you specify Type but not Name}{
-
-Amazon Route 53 returns the \code{InvalidInput} error.
-}
-
-\subsection{If you specify both Name and Type}{
-
-The results begin with the first resource record set in the list whose
-name is greater than or equal to \code{Name}, and whose type is greater than
-or equal to \code{Type}.
-
-\strong{Resource record sets that are PENDING}
-
-This action returns the most current version of the records. This
-includes records that are \code{PENDING}, and that are not yet available on
-all Route 53 DNS servers.
-
-\strong{Changing resource record sets}
-
-To ensure that you get an accurate listing of the resource record sets
-for a hosted zone at a point in time, do not submit a
-\code{\link[=route53_change_resource_record_sets]{change_resource_record_sets}}
-request while you're paging through the results of a
-\code{\link[=route53_list_resource_record_sets]{list_resource_record_sets}}
-request. If you do, some pages may display results without the latest
-changes while other pages display results with the latest changes.
-
-\strong{Displaying the next page of results}
-
-If a \code{\link[=route53_list_resource_record_sets]{list_resource_record_sets}}
-command returns more than one page of results, the value of
-\code{IsTruncated} is \code{true}. To display the next page of results, get the
-values of \code{NextRecordName}, \code{NextRecordType}, and \code{NextRecordIdentifier}
-(if any) from the response. Then submit another
-\code{\link[=route53_list_resource_record_sets]{list_resource_record_sets}}
-request, and specify those values for \code{StartRecordName},
-\code{StartRecordType}, and \code{StartRecordIdentifier}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_resource_record_sets(
-  HostedZoneId = "string",
-  StartRecordName = "string",
-  StartRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
-  StartRecordIdentifier = "string",
-  MaxItems = "string"
-)
-}
-}
-
 \keyword{internal}

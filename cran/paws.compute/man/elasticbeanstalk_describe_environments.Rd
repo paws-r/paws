@@ -4,9 +4,16 @@
 \alias{elasticbeanstalk_describe_environments}
 \title{Returns descriptions for existing environments}
 \usage{
-elasticbeanstalk_describe_environments(ApplicationName, VersionLabel,
-  EnvironmentIds, EnvironmentNames, IncludeDeleted, IncludedDeletedBackTo,
-  MaxRecords, NextToken)
+elasticbeanstalk_describe_environments(
+  ApplicationName = NULL,
+  VersionLabel = NULL,
+  EnvironmentIds = NULL,
+  EnvironmentNames = NULL,
+  IncludeDeleted = NULL,
+  IncludedDeletedBackTo = NULL,
+  MaxRecords = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{If specified, AWS Elastic Beanstalk restricts the returned descriptions
@@ -43,94 +50,9 @@ identical to the ones specified in the initial request.
 
 If no \code{NextToken} is specified, the first page is retrieved.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Environments = list(
-    list(
-      EnvironmentName = "string",
-      EnvironmentId = "string",
-      ApplicationName = "string",
-      VersionLabel = "string",
-      SolutionStackName = "string",
-      PlatformArn = "string",
-      TemplateName = "string",
-      Description = "string",
-      EndpointURL = "string",
-      CNAME = "string",
-      DateCreated = as.POSIXct(
-        "2015-01-01"
-      ),
-      DateUpdated = as.POSIXct(
-        "2015-01-01"
-      ),
-      Status = "Aborting"|"Launching"|"Updating"|"LinkingFrom"|"LinkingTo"|"Ready"|"Terminating"|"Terminated",
-      AbortableOperationInProgress = TRUE|FALSE,
-      Health = "Green"|"Yellow"|"Red"|"Grey",
-      HealthStatus = "NoData"|"Unknown"|"Pending"|"Ok"|"Info"|"Warning"|"Degraded"|"Severe"|"Suspended",
-      Resources = list(
-        LoadBalancer = list(
-          LoadBalancerName = "string",
-          Domain = "string",
-          Listeners = list(
-            list(
-              Protocol = "string",
-              Port = 123
-            )
-          )
-        )
-      ),
-      Tier = list(
-        Name = "string",
-        Type = "string",
-        Version = "string"
-      ),
-      EnvironmentLinks = list(
-        list(
-          LinkName = "string",
-          EnvironmentName = "string"
-        )
-      ),
-      EnvironmentArn = "string",
-      OperationsRole = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns descriptions for existing environments.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_environments(
-  ApplicationName = "string",
-  VersionLabel = "string",
-  EnvironmentIds = list(
-    "string"
-  ),
-  EnvironmentNames = list(
-    "string"
-  ),
-  IncludeDeleted = TRUE|FALSE,
-  IncludedDeletedBackTo = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxRecords = 123,
-  NextToken = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# The following operation retrieves information about an environment named
-# my-env:
-svc$describe_environments(
-  EnvironmentNames = list(
-    "my-env"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_environments.html} for full documentation.
 }
 \keyword{internal}

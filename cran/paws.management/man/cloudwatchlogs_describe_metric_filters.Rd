@@ -4,8 +4,14 @@
 \alias{cloudwatchlogs_describe_metric_filters}
 \title{Lists the specified metric filters}
 \usage{
-cloudwatchlogs_describe_metric_filters(logGroupName, filterNamePrefix,
-  nextToken, limit, metricName, metricNamespace)
+cloudwatchlogs_describe_metric_filters(
+  logGroupName = NULL,
+  filterNamePrefix = NULL,
+  nextToken = NULL,
+  limit = NULL,
+  metricName = NULL,
+  metricNamespace = NULL
+)
 }
 \arguments{
 \item{logGroupName}{The name of the log group.}
@@ -27,43 +33,9 @@ you include this parameter in your request, you must also include the
 include this parameter in your request, you must also include the
 \code{metricName} parameter.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  metricFilters = list(
-    list(
-      filterName = "string",
-      filterPattern = "string",
-      metricTransformations = list(
-        list(
-          metricName = "string",
-          metricNamespace = "string",
-          metricValue = "string",
-          defaultValue = 123.0
-        )
-      ),
-      creationTime = 123,
-      logGroupName = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists the specified metric filters. You can list all of the metric
-filters or filter the results by log name, prefix, metric name, or
-metric namespace. The results are ASCII-sorted by filter name.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_metric_filters(
-  logGroupName = "string",
-  filterNamePrefix = "string",
-  nextToken = "string",
-  limit = 123,
-  metricName = "string",
-  metricNamespace = "string"
-)
-}
-}
+Lists the specified metric filters. You can list all of the metric filters or filter the results by log name, prefix, metric name, or metric namespace. The results are ASCII-sorted by filter name.
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_metric_filters.html} for full documentation.
+}
 \keyword{internal}

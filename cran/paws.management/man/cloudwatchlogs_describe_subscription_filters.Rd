@@ -4,8 +4,12 @@
 \alias{cloudwatchlogs_describe_subscription_filters}
 \title{Lists the subscription filters for the specified log group}
 \usage{
-cloudwatchlogs_describe_subscription_filters(logGroupName,
-  filterNamePrefix, nextToken, limit)
+cloudwatchlogs_describe_subscription_filters(
+  logGroupName,
+  filterNamePrefix = NULL,
+  nextToken = NULL,
+  limit = NULL
+)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -19,36 +23,9 @@ from a previous call.)}
 \item{limit}{The maximum number of items returned. If you don't specify a value, the
 default is up to 50 items.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  subscriptionFilters = list(
-    list(
-      filterName = "string",
-      logGroupName = "string",
-      filterPattern = "string",
-      destinationArn = "string",
-      roleArn = "string",
-      distribution = "Random"|"ByLogStream",
-      creationTime = 123
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists the subscription filters for the specified log group. You can list
-all the subscription filters or filter the results by prefix. The
-results are ASCII-sorted by filter name.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_subscription_filters(
-  logGroupName = "string",
-  filterNamePrefix = "string",
-  nextToken = "string",
-  limit = 123
-)
-}
-}
+Lists the subscription filters for the specified log group. You can list all the subscription filters or filter the results by prefix. The results are ASCII-sorted by filter name.
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_subscription_filters.html} for full documentation.
+}
 \keyword{internal}

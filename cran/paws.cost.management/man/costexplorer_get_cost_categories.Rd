@@ -4,16 +4,23 @@
 \alias{costexplorer_get_cost_categories}
 \title{Retrieves an array of Cost Category names and values incurred cost}
 \usage{
-costexplorer_get_cost_categories(SearchString, TimePeriod,
-  CostCategoryName, Filter, SortBy, MaxResults, NextPageToken)
+costexplorer_get_cost_categories(
+  SearchString = NULL,
+  TimePeriod,
+  CostCategoryName = NULL,
+  Filter = NULL,
+  SortBy = NULL,
+  MaxResults = NULL,
+  NextPageToken = NULL
+)
 }
 \arguments{
 \item{SearchString}{The value that you want to search the filter values for.
 
-If you do not specify a \code{CostCategoryName}, \code{SearchString} will be used
-to filter Cost Category names that match the \code{SearchString} pattern. If
-you do specifiy a \code{CostCategoryName}, \code{SearchString} will be used to
-filter Cost Category values that match the \code{SearchString} pattern.}
+If you don't specify a \code{CostCategoryName}, \code{SearchString} is used to
+filter Cost Category names that match the \code{SearchString} pattern. If you
+specify a \code{CostCategoryName}, \code{SearchString} is used to filter Cost
+Category values that match the \code{SearchString} pattern.}
 
 \item{TimePeriod}{[required]}
 
@@ -21,9 +28,9 @@ filter Cost Category values that match the \code{SearchString} pattern.}
 
 \item{Filter}{}
 
-\item{SortBy}{The value by which you want to sort the data.
+\item{SortBy}{The value that you sort the data by.
 
-The key represents cost and usage metrics. The following values are
+The key represents the cost and usage metrics. The following values are
 supported:
 \itemize{
 \item \code{BlendedCost}
@@ -35,96 +42,30 @@ supported:
 \item \code{NormalizedUsageAmount}
 }
 
-Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.
+The supported key values for the \code{SortOrder} value are \code{ASCENDING} and
+\code{DESCENDING}.
 
-When using \code{SortBy}, \code{NextPageToken} and \code{SearchString} are not
-supported.}
+When you use the \code{SortBy} value, the \code{NextPageToken} and \code{SearchString}
+key values aren't supported.}
 
-\item{MaxResults}{This field is only used when \code{SortBy} is provided in the request.
+\item{MaxResults}{This field is only used when the \code{SortBy} value is provided in the
+request.
 
-The maximum number of objects that to be returned for this request. If
-\code{MaxResults} is not specified with \code{SortBy}, the request will return
-1000 results as the default value for this parameter.}
+The maximum number of objects that are returned for this request. If
+\code{MaxResults} isn't specified with the \code{SortBy} value, the request
+returns 1000 results as the default value for this parameter.
+
+For \code{\link[=costexplorer_get_cost_categories]{get_cost_categories}},
+MaxResults has an upper quota of 1000.}
 
 \item{NextPageToken}{If the number of objects that are still available for retrieval exceeds
-the limit, AWS returns a NextPageToken value in the response. To
-retrieve the next batch of objects, provide the NextPageToken from the
-prior call in your next request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  NextPageToken = "string",
-  CostCategoryNames = list(
-    "string"
-  ),
-  CostCategoryValues = list(
-    "string"
-  ),
-  ReturnSize = 123,
-  TotalSize = 123
-)
-}
+the quota, Amazon Web Services returns a NextPageToken value in the
+response. To retrieve the next batch of objects, provide the
+NextPageToken from the previous call in your next request.}
 }
 \description{
 Retrieves an array of Cost Category names and values incurred cost.
 
-If some Cost Category names and values are not associated with any cost,
-they will not be returned by this API.
+See \url{https://paws-r.github.io/docs/costexplorer/get_cost_categories.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_cost_categories(
-  SearchString = "string",
-  TimePeriod = list(
-    Start = "string",
-    End = "string"
-  ),
-  CostCategoryName = "string",
-  Filter = list(
-    Or = list(
-      list()
-    ),
-    And = list(
-      list()
-    ),
-    Not = list(),
-    Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    Tags = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    CostCategories = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    )
-  ),
-  SortBy = list(
-    list(
-      Key = "string",
-      SortOrder = "ASCENDING"|"DESCENDING"
-    )
-  ),
-  MaxResults = 123,
-  NextPageToken = "string"
-)
-}
-}
-
 \keyword{internal}

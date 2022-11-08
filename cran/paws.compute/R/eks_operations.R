@@ -3,25 +3,85 @@
 #' @include eks_service.R
 NULL
 
+#' Associate encryption configuration to an existing cluster
+#'
+#' @description
+#' Associate encryption configuration to an existing cluster.
+#'
+#' See [https://paws-r.github.io/docs/eks/associate_encryption_config.html](https://paws-r.github.io/docs/eks/associate_encryption_config.html) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster that you are associating with encryption
+#' configuration.
+#' @param encryptionConfig &#91;required&#93; The configuration you are using for encryption.
+#' @param clientRequestToken The client request token you are using with the encryption
+#' configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_associate_encryption_config
+eks_associate_encryption_config <- function(clusterName, encryptionConfig, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "AssociateEncryptionConfig",
+    http_method = "POST",
+    http_path = "/clusters/{name}/encryption-config/associate",
+    paginator = list()
+  )
+  input <- .eks$associate_encryption_config_input(clusterName = clusterName, encryptionConfig = encryptionConfig, clientRequestToken = clientRequestToken)
+  output <- .eks$associate_encryption_config_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$associate_encryption_config <- eks_associate_encryption_config
+
+#' Associate an identity provider configuration to a cluster
+#'
+#' @description
+#' Associate an identity provider configuration to a cluster.
+#'
+#' See [https://paws-r.github.io/docs/eks/associate_identity_provider_config.html](https://paws-r.github.io/docs/eks/associate_identity_provider_config.html) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster to associate the configuration to.
+#' @param oidc &#91;required&#93; An object that represents an OpenID Connect (OIDC) identity provider
+#' configuration.
+#' @param tags The metadata to apply to the configuration to assist with categorization
+#' and organization. Each tag consists of a key and an optional value. You
+#' define both.
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_associate_identity_provider_config
+eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NULL, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "AssociateIdentityProviderConfig",
+    http_method = "POST",
+    http_path = "/clusters/{name}/identity-provider-configs/associate",
+    paginator = list()
+  )
+  input <- .eks$associate_identity_provider_config_input(clusterName = clusterName, oidc = oidc, tags = tags, clientRequestToken = clientRequestToken)
+  output <- .eks$associate_identity_provider_config_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$associate_identity_provider_config <- eks_associate_identity_provider_config
+
 #' Creates an Amazon EKS add-on
 #'
 #' @description
 #' Creates an Amazon EKS add-on.
-#' 
-#' Amazon EKS add-ons help to automate the provisioning and lifecycle
-#' management of common operational software for Amazon EKS clusters.
-#' Amazon EKS add-ons can only be used with Amazon EKS clusters running
-#' version 1.18 with platform version `eks.3` or later because add-ons rely
-#' on the Server-side Apply Kubernetes feature, which is only available in
-#' Kubernetes 1.18 and later.
 #'
-#' @usage
-#' eks_create_addon(clusterName, addonName, addonVersion,
-#'   serviceAccountRoleArn, resolveConflicts, clientRequestToken, tags)
+#' See [https://paws-r.github.io/docs/eks/create_addon.html](https://paws-r.github.io/docs/eks/create_addon.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to create the add-on for.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
-#' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
+#' [`describe_addon_versions`](https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
 #' .
 #' @param addonVersion The version of the add-on. The version must match one of the versions
 #' returned by
@@ -45,58 +105,8 @@ NULL
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param tags The metadata to apply to the cluster to assist with categorization and
-#' organization. Each tag consists of a key and an optional value, both of
-#' which you define.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   addon = list(
-#'     addonName = "string",
-#'     clusterName = "string",
-#'     status = "CREATING"|"ACTIVE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETE_FAILED"|"DEGRADED",
-#'     addonVersion = "string",
-#'     health = list(
-#'       issues = list(
-#'         list(
-#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-#'           message = "string",
-#'           resourceIds = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     addonArn = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     modifiedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     serviceAccountRoleArn = "string",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_addon(
-#'   clusterName = "string",
-#'   addonName = "string",
-#'   addonVersion = "string",
-#'   serviceAccountRoleArn = "string",
-#'   resolveConflicts = "OVERWRITE"|"NONE",
-#'   clientRequestToken = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' organization. Each tag consists of a key and an optional value. You
+#' define both.
 #'
 #' @keywords internal
 #'
@@ -122,230 +132,44 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'
 #' @description
 #' Creates an Amazon EKS control plane.
-#' 
-#' The Amazon EKS control plane consists of control plane instances that
-#' run the Kubernetes software, such as `etcd` and the API server. The
-#' control plane runs in an account managed by AWS, and the Kubernetes API
-#' is exposed via the Amazon EKS API server endpoint. Each Amazon EKS
-#' cluster control plane is single-tenant and unique and runs on its own
-#' set of Amazon EC2 instances.
-#' 
-#' The cluster control plane is provisioned across multiple Availability
-#' Zones and fronted by an Elastic Load Balancing Network Load Balancer.
-#' Amazon EKS also provisions elastic network interfaces in your VPC
-#' subnets to provide connectivity from the control plane instances to the
-#' worker nodes (for example, to support `kubectl exec`, `logs`, and
-#' `proxy` data flows).
-#' 
-#' Amazon EKS worker nodes run in your AWS account and connect to your
-#' cluster's control plane via the Kubernetes API server endpoint and a
-#' certificate file that is created for your cluster.
-#' 
-#' You can use the `endpointPublicAccess` and `endpointPrivateAccess`
-#' parameters to enable or disable public and private access to your
-#' cluster's Kubernetes API server endpoint. By default, public access is
-#' enabled, and private access is disabled. For more information, see
-#' [Amazon EKS Cluster Endpoint Access
-#' Control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
-#' in the **Amazon EKS User Guide** .
-#' 
-#' You can use the `logging` parameter to enable or disable exporting the
-#' Kubernetes control plane logs for your cluster to CloudWatch Logs. By
-#' default, cluster control plane logs aren't exported to CloudWatch Logs.
-#' For more information, see [Amazon EKS Cluster Control Plane
-#' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-#' in the **Amazon EKS User Guide** .
-#' 
-#' CloudWatch Logs ingestion, archive storage, and data scanning rates
-#' apply to exported control plane logs. For more information, see [Amazon
-#' CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
-#' 
-#' Cluster creation typically takes between 10 and 15 minutes. After you
-#' create an Amazon EKS cluster, you must configure your Kubernetes tooling
-#' to communicate with the API server and launch worker nodes into your
-#' cluster. For more information, see [Managing Cluster
-#' Authentication](https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html)
-#' and [Launching Amazon EKS Worker
-#' Nodes](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)
-#' in the *Amazon EKS User Guide*.
 #'
-#' @usage
-#' eks_create_cluster(name, version, roleArn, resourcesVpcConfig,
-#'   kubernetesNetworkConfig, logging, clientRequestToken, tags,
-#'   encryptionConfig)
+#' See [https://paws-r.github.io/docs/eks/create_cluster.html](https://paws-r.github.io/docs/eks/create_cluster.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The unique name to give to your cluster.
 #' @param version The desired Kubernetes version for your cluster. If you don't specify a
 #' value here, the latest version available in Amazon EKS is used.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that provides permissions
-#' for the Kubernetes control plane to make calls to AWS API operations on
-#' your behalf. For more information, see [Amazon EKS Service IAM
+#' for the Kubernetes control plane to make calls to Amazon Web Services
+#' API operations on your behalf. For more information, see [Amazon EKS
+#' Service IAM
 #' Role](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
-#' in the **Amazon EKS User Guide** .
-#' @param resourcesVpcConfig &#91;required&#93; The VPC configuration used by the cluster control plane. Amazon EKS VPC
-#' resources have specific requirements to work properly with Kubernetes.
-#' For more information, see [Cluster VPC
+#' in the *Amazon EKS User Guide* .
+#' @param resourcesVpcConfig &#91;required&#93; The VPC configuration that's used by the cluster control plane. Amazon
+#' EKS VPC resources have specific requirements to work properly with
+#' Kubernetes. For more information, see [Cluster VPC
 #' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html)
 #' and [Cluster Security Group
 #' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
 #' in the *Amazon EKS User Guide*. You must specify at least two subnets.
-#' You can specify up to five security groups, but we recommend that you
-#' use a dedicated security group for your cluster control plane.
+#' You can specify up to five security groups. However, we recommend that
+#' you use a dedicated security group for your cluster control plane.
 #' @param kubernetesNetworkConfig The Kubernetes network configuration for the cluster.
 #' @param logging Enable or disable exporting the Kubernetes control plane logs for your
 #' cluster to CloudWatch Logs. By default, cluster control plane logs
 #' aren't exported to CloudWatch Logs. For more information, see [Amazon
-#' EKS Cluster Control Plane
-#' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-#' in the **Amazon EKS User Guide** .
+#' EKS Cluster control plane
+#' logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
+#' in the *Amazon EKS User Guide* .
 #' 
 #' CloudWatch Logs ingestion, archive storage, and data scanning rates
-#' apply to exported control plane logs. For more information, see [Amazon
-#' CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
+#' apply to exported control plane logs. For more information, see
+#' [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param tags The metadata to apply to the cluster to assist with categorization and
-#' organization. Each tag consists of a key and an optional value, both of
-#' which you define.
+#' organization. Each tag consists of a key and an optional value. You
+#' define both.
 #' @param encryptionConfig The encryption configuration for the cluster.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   cluster = list(
-#'     name = "string",
-#'     arn = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     version = "string",
-#'     endpoint = "string",
-#'     roleArn = "string",
-#'     resourcesVpcConfig = list(
-#'       subnetIds = list(
-#'         "string"
-#'       ),
-#'       securityGroupIds = list(
-#'         "string"
-#'       ),
-#'       clusterSecurityGroupId = "string",
-#'       vpcId = "string",
-#'       endpointPublicAccess = TRUE|FALSE,
-#'       endpointPrivateAccess = TRUE|FALSE,
-#'       publicAccessCidrs = list(
-#'         "string"
-#'       )
-#'     ),
-#'     kubernetesNetworkConfig = list(
-#'       serviceIpv4Cidr = "string"
-#'     ),
-#'     logging = list(
-#'       clusterLogging = list(
-#'         list(
-#'           types = list(
-#'             "api"|"audit"|"authenticator"|"controllerManager"|"scheduler"
-#'           ),
-#'           enabled = TRUE|FALSE
-#'         )
-#'       )
-#'     ),
-#'     identity = list(
-#'       oidc = list(
-#'         issuer = "string"
-#'       )
-#'     ),
-#'     status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING",
-#'     certificateAuthority = list(
-#'       data = "string"
-#'     ),
-#'     clientRequestToken = "string",
-#'     platformVersion = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     encryptionConfig = list(
-#'       list(
-#'         resources = list(
-#'           "string"
-#'         ),
-#'         provider = list(
-#'           keyArn = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_cluster(
-#'   name = "string",
-#'   version = "string",
-#'   roleArn = "string",
-#'   resourcesVpcConfig = list(
-#'     subnetIds = list(
-#'       "string"
-#'     ),
-#'     securityGroupIds = list(
-#'       "string"
-#'     ),
-#'     endpointPublicAccess = TRUE|FALSE,
-#'     endpointPrivateAccess = TRUE|FALSE,
-#'     publicAccessCidrs = list(
-#'       "string"
-#'     )
-#'   ),
-#'   kubernetesNetworkConfig = list(
-#'     serviceIpv4Cidr = "string"
-#'   ),
-#'   logging = list(
-#'     clusterLogging = list(
-#'       list(
-#'         types = list(
-#'           "api"|"audit"|"authenticator"|"controllerManager"|"scheduler"
-#'         ),
-#'         enabled = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   clientRequestToken = "string",
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   encryptionConfig = list(
-#'     list(
-#'       resources = list(
-#'         "string"
-#'       ),
-#'       provider = list(
-#'         keyArn = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates an Amazon EKS cluster called prod.
-#' svc$create_cluster(
-#'   version = "1.10",
-#'   name = "prod",
-#'   clientRequestToken = "1d2129a1-3d38-460a-9756-e5b91fddb951",
-#'   resourcesVpcConfig = list(
-#'     securityGroupIds = list(
-#'       "sg-6979fe18"
-#'     ),
-#'     subnetIds = list(
-#'       "subnet-6782e71e",
-#'       "subnet-e7e761ac"
-#'     )
-#'   ),
-#'   roleArn = "arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRole..."
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -367,50 +191,12 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 }
 .eks$operations$create_cluster <- eks_create_cluster
 
-#' Creates an AWS Fargate profile for your Amazon EKS cluster
+#' Creates an Fargate profile for your Amazon EKS cluster
 #'
 #' @description
-#' Creates an AWS Fargate profile for your Amazon EKS cluster. You must
-#' have at least one Fargate profile in a cluster to be able to run pods on
-#' Fargate.
-#' 
-#' The Fargate profile allows an administrator to declare which pods run on
-#' Fargate and specify which pods run on which Fargate profile. This
-#' declaration is done through the profile’s selectors. Each profile can
-#' have up to five selectors that contain a namespace and labels. A
-#' namespace is required for every selector. The label field consists of
-#' multiple optional key-value pairs. Pods that match the selectors are
-#' scheduled on Fargate. If a to-be-scheduled pod matches any of the
-#' selectors in the Fargate profile, then that pod is run on Fargate.
-#' 
-#' When you create a Fargate profile, you must specify a pod execution role
-#' to use with the pods that are scheduled with the profile. This role is
-#' added to the cluster's Kubernetes [Role Based Access
-#' Control](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
-#' (RBAC) for authorization so that the `kubelet` that is running on the
-#' Fargate infrastructure can register with your Amazon EKS cluster so that
-#' it can appear in your cluster as a node. The pod execution role also
-#' provides IAM permissions to the Fargate infrastructure to allow read
-#' access to Amazon ECR image repositories. For more information, see [Pod
-#' Execution
-#' Role](https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html)
-#' in the *Amazon EKS User Guide*.
-#' 
-#' Fargate profiles are immutable. However, you can create a new updated
-#' profile to replace an existing profile and then delete the original
-#' after the updated profile has finished creating.
-#' 
-#' If any Fargate profiles in a cluster are in the `DELETING` status, you
-#' must wait for that Fargate profile to finish deleting before you can
-#' create any other profiles in that cluster.
-#' 
-#' For more information, see [AWS Fargate
-#' Profile](https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html)
-#' in the *Amazon EKS User Guide*.
+#' Creates an Fargate profile for your Amazon EKS cluster. You must have at least one Fargate profile in a cluster to be able to run pods on Fargate.
 #'
-#' @usage
-#' eks_create_fargate_profile(fargateProfileName, clusterName,
-#'   podExecutionRoleArn, subnets, selectors, clientRequestToken, tags)
+#' See [https://paws-r.github.io/docs/eks/create_fargate_profile.html](https://paws-r.github.io/docs/eks/create_fargate_profile.html) for full documentation.
 #'
 #' @param fargateProfileName &#91;required&#93; The name of the Fargate profile.
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster to apply the Fargate profile to.
@@ -433,64 +219,9 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 #' idempotency of the request.
 #' @param tags The metadata to apply to the Fargate profile to assist with
 #' categorization and organization. Each tag consists of a key and an
-#' optional value, both of which you define. Fargate profile tags do not
-#' propagate to any other resources associated with the Fargate profile,
-#' such as the pods that are scheduled with it.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   fargateProfile = list(
-#'     fargateProfileName = "string",
-#'     fargateProfileArn = "string",
-#'     clusterName = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     podExecutionRoleArn = "string",
-#'     subnets = list(
-#'       "string"
-#'     ),
-#'     selectors = list(
-#'       list(
-#'         namespace = "string",
-#'         labels = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     status = "CREATING"|"ACTIVE"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_fargate_profile(
-#'   fargateProfileName = "string",
-#'   clusterName = "string",
-#'   podExecutionRoleArn = "string",
-#'   subnets = list(
-#'     "string"
-#'   ),
-#'   selectors = list(
-#'     list(
-#'       namespace = "string",
-#'       labels = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   clientRequestToken = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' optional value. You define both. Fargate profile tags do not propagate
+#' to any other resources associated with the Fargate profile, such as the
+#' pods that are scheduled with it.
 #'
 #' @keywords internal
 #'
@@ -512,29 +243,12 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 }
 .eks$operations$create_fargate_profile <- eks_create_fargate_profile
 
-#' Creates a managed worker node group for an Amazon EKS cluster
+#' Creates a managed node group for an Amazon EKS cluster
 #'
 #' @description
-#' Creates a managed worker node group for an Amazon EKS cluster. You can
-#' only create a node group for your cluster that is equal to the current
-#' Kubernetes version for the cluster. All node groups are created with the
-#' latest AMI release version for the respective minor Kubernetes version
-#' of the cluster, unless you deploy a custom AMI using a launch template.
-#' For more information about using launch templates, see [Launch template
-#' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html).
-#' 
-#' An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
-#' associated Amazon EC2 instances that are managed by AWS for an Amazon
-#' EKS cluster. Each node group uses a version of the Amazon EKS optimized
-#' Amazon Linux 2 AMI. For more information, see [Managed Node
-#' Groups](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
-#' in the *Amazon EKS User Guide*.
+#' Creates a managed node group for an Amazon EKS cluster. You can only create a node group for your cluster that is equal to the current Kubernetes version for the cluster. All node groups are created with the latest AMI release version for the respective minor Kubernetes version of the cluster, unless you deploy a custom AMI using a launch template. For more information about using launch templates, see [Launch template support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html).
 #'
-#' @usage
-#' eks_create_nodegroup(clusterName, nodegroupName, scalingConfig,
-#'   diskSize, subnets, instanceTypes, amiType, remoteAccess, nodeRole,
-#'   labels, tags, clientRequestToken, launchTemplate, capacityType, version,
-#'   releaseVersion)
+#' See [https://paws-r.github.io/docs/eks/create_nodegroup.html](https://paws-r.github.io/docs/eks/create_nodegroup.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to create the node group in.
 #' @param nodegroupName &#91;required&#93; The unique name to give your node group.
@@ -546,18 +260,15 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' information about using launch templates with Amazon EKS, see [Launch
 #' template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
-#' in the Amazon EKS User Guide.
+#' in the *Amazon EKS User Guide*.
 #' @param subnets &#91;required&#93; The subnets to use for the Auto Scaling group that is created for your
-#' node group. These subnets must have the tag key
-#' `kubernetes.io/cluster/CLUSTER_NAME` with a value of `shared`, where
-#' `CLUSTER_NAME` is replaced with the name of your cluster. If you specify
-#' `launchTemplate`, then don't specify
+#' node group. If you specify `launchTemplate`, then don't specify
 #' [`SubnetId`](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterface.html)
 #' in your launch template, or the node group deployment will fail. For
 #' more information about using launch templates with Amazon EKS, see
 #' [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
-#' in the Amazon EKS User Guide.
+#' in the *Amazon EKS User Guide*.
 #' @param instanceTypes Specify the instance types for a node group. If you specify a GPU
 #' instance type, be sure to specify `AL2_x86_64_GPU` with the `amiType`
 #' parameter. If you specify `launchTemplate`, then you can specify zero or
@@ -568,7 +279,9 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' launch template or for `instanceTypes`, then `t3.medium` is used, by
 #' default. If you specify `Spot` for `capacityType`, then we recommend
 #' specifying multiple values for `instanceTypes`. For more information,
-#' see Managed node group capacity types and [Launch template
+#' see [Managed node group capacity
+#' types](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html#managed-node-group-capacity-types)
+#' and [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 #' in the *Amazon EKS User Guide*.
 #' @param amiType The AMI type for your node group. GPU instance types should use the
@@ -580,41 +293,46 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' information about using launch templates with Amazon EKS, see [Launch
 #' template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
-#' in the Amazon EKS User Guide.
+#' in the *Amazon EKS User Guide*.
 #' @param remoteAccess The remote access (SSH) configuration to use with your node group. If
 #' you specify `launchTemplate`, then don't specify `remoteAccess`, or the
 #' node group deployment will fail. For more information about using launch
 #' templates with Amazon EKS, see [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
-#' in the Amazon EKS User Guide.
+#' in the *Amazon EKS User Guide*.
 #' @param nodeRole &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role to associate with your
 #' node group. The Amazon EKS worker node `kubelet` daemon makes calls to
-#' AWS APIs on your behalf. Worker nodes receive permissions for these API
-#' calls through an IAM instance profile and associated policies. Before
-#' you can launch worker nodes and register them into a cluster, you must
-#' create an IAM role for those worker nodes to use when they are launched.
-#' For more information, see [Amazon EKS Worker Node IAM
-#' Role](https://docs.aws.amazon.com/eks/latest/userguide/) in the **Amazon
-#' EKS User Guide** . If you specify `launchTemplate`, then don't specify
+#' Amazon Web Services APIs on your behalf. Nodes receive permissions for
+#' these API calls through an IAM instance profile and associated policies.
+#' Before you can launch nodes and register them into a cluster, you must
+#' create an IAM role for those nodes to use when they are launched. For
+#' more information, see [Amazon EKS node IAM
+#' role](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html)
+#' in the *Amazon EKS User Guide* . If you specify `launchTemplate`, then
+#' don't specify
 #' [`IamInstanceProfile`](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IamInstanceProfile.html)
 #' in your launch template, or the node group deployment will fail. For
 #' more information about using launch templates with Amazon EKS, see
 #' [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
-#' in the Amazon EKS User Guide.
+#' in the *Amazon EKS User Guide*.
 #' @param labels The Kubernetes labels to be applied to the nodes in the node group when
 #' they are created.
+#' @param taints The Kubernetes taints to be applied to the nodes in the node group. For
+#' more information, see [Node taints on managed node
+#' groups](https://docs.aws.amazon.com/eks/latest/userguide/node-taints-managed-node-groups.html).
 #' @param tags The metadata to apply to the node group to assist with categorization
-#' and organization. Each tag consists of a key and an optional value, both
-#' of which you define. Node group tags do not propagate to any other
-#' resources associated with the node group, such as the Amazon EC2
-#' instances or subnets.
+#' and organization. Each tag consists of a key and an optional value. You
+#' define both. Node group tags do not propagate to any other resources
+#' associated with the node group, such as the Amazon EC2 instances or
+#' subnets.
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param launchTemplate An object representing a node group's launch template specification. If
 #' specified, then do not specify `instanceTypes`, `diskSize`, or
 #' `remoteAccess` and make sure that the launch template meets the
 #' requirements in `launchTemplateSpecification`.
+#' @param updateConfig The node group update configuration.
 #' @param capacityType The capacity type for your node group.
 #' @param version The Kubernetes version to use for your managed nodes. By default, the
 #' Kubernetes version of the cluster is used, and this is the only accepted
@@ -623,7 +341,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' group deployment will fail. For more information about using launch
 #' templates with Amazon EKS, see [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
-#' in the Amazon EKS User Guide.
+#' in the *Amazon EKS User Guide*.
 #' @param releaseVersion The AMI version of the Amazon EKS optimized AMI to use with your node
 #' group. By default, the latest available AMI version for the node group's
 #' current Kubernetes version is used. For more information, see [Amazon
@@ -635,134 +353,19 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' information about using launch templates with Amazon EKS, see [Launch
 #' template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
-#' in the Amazon EKS User Guide.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nodegroup = list(
-#'     nodegroupName = "string",
-#'     nodegroupArn = "string",
-#'     clusterName = "string",
-#'     version = "string",
-#'     releaseVersion = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     modifiedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"|"DEGRADED",
-#'     capacityType = "ON_DEMAND"|"SPOT",
-#'     scalingConfig = list(
-#'       minSize = 123,
-#'       maxSize = 123,
-#'       desiredSize = 123
-#'     ),
-#'     instanceTypes = list(
-#'       "string"
-#'     ),
-#'     subnets = list(
-#'       "string"
-#'     ),
-#'     remoteAccess = list(
-#'       ec2SshKey = "string",
-#'       sourceSecurityGroups = list(
-#'         "string"
-#'       )
-#'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
-#'     nodeRole = "string",
-#'     labels = list(
-#'       "string"
-#'     ),
-#'     resources = list(
-#'       autoScalingGroups = list(
-#'         list(
-#'           name = "string"
-#'         )
-#'       ),
-#'       remoteAccessSecurityGroup = "string"
-#'     ),
-#'     diskSize = 123,
-#'     health = list(
-#'       issues = list(
-#'         list(
-#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable",
-#'           message = "string",
-#'           resourceIds = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     launchTemplate = list(
-#'       name = "string",
-#'       version = "string",
-#'       id = "string"
-#'     ),
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_nodegroup(
-#'   clusterName = "string",
-#'   nodegroupName = "string",
-#'   scalingConfig = list(
-#'     minSize = 123,
-#'     maxSize = 123,
-#'     desiredSize = 123
-#'   ),
-#'   diskSize = 123,
-#'   subnets = list(
-#'     "string"
-#'   ),
-#'   instanceTypes = list(
-#'     "string"
-#'   ),
-#'   amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
-#'   remoteAccess = list(
-#'     ec2SshKey = "string",
-#'     sourceSecurityGroups = list(
-#'       "string"
-#'     )
-#'   ),
-#'   nodeRole = "string",
-#'   labels = list(
-#'     "string"
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   clientRequestToken = "string",
-#'   launchTemplate = list(
-#'     name = "string",
-#'     version = "string",
-#'     id = "string"
-#'   ),
-#'   capacityType = "ON_DEMAND"|"SPOT",
-#'   version = "string",
-#'   releaseVersion = "string"
-#' )
-#' ```
+#' in the *Amazon EKS User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_create_nodegroup
-eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NULL, diskSize = NULL, subnets, instanceTypes = NULL, amiType = NULL, remoteAccess = NULL, nodeRole, labels = NULL, tags = NULL, clientRequestToken = NULL, launchTemplate = NULL, capacityType = NULL, version = NULL, releaseVersion = NULL) {
+eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NULL, diskSize = NULL, subnets, instanceTypes = NULL, amiType = NULL, remoteAccess = NULL, nodeRole, labels = NULL, taints = NULL, tags = NULL, clientRequestToken = NULL, launchTemplate = NULL, updateConfig = NULL, capacityType = NULL, version = NULL, releaseVersion = NULL) {
   op <- new_operation(
     name = "CreateNodegroup",
     http_method = "POST",
     http_path = "/clusters/{name}/node-groups",
     paginator = list()
   )
-  input <- .eks$create_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName, scalingConfig = scalingConfig, diskSize = diskSize, subnets = subnets, instanceTypes = instanceTypes, amiType = amiType, remoteAccess = remoteAccess, nodeRole = nodeRole, labels = labels, tags = tags, clientRequestToken = clientRequestToken, launchTemplate = launchTemplate, capacityType = capacityType, version = version, releaseVersion = releaseVersion)
+  input <- .eks$create_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName, scalingConfig = scalingConfig, diskSize = diskSize, subnets = subnets, instanceTypes = instanceTypes, amiType = amiType, remoteAccess = remoteAccess, nodeRole = nodeRole, labels = labels, taints = taints, tags = tags, clientRequestToken = clientRequestToken, launchTemplate = launchTemplate, updateConfig = updateConfig, capacityType = capacityType, version = version, releaseVersion = releaseVersion)
   output <- .eks$create_nodegroup_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -776,73 +379,28 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #'
 #' @description
 #' Delete an Amazon EKS add-on.
-#' 
-#' When you remove the add-on, it will also be deleted from the cluster.
-#' You can always manually start an add-on on the cluster using the
-#' Kubernetes API.
 #'
-#' @usage
-#' eks_delete_addon(clusterName, addonName)
+#' See [https://paws-r.github.io/docs/eks/delete_addon.html](https://paws-r.github.io/docs/eks/delete_addon.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster to delete the add-on from.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
 #' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   addon = list(
-#'     addonName = "string",
-#'     clusterName = "string",
-#'     status = "CREATING"|"ACTIVE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETE_FAILED"|"DEGRADED",
-#'     addonVersion = "string",
-#'     health = list(
-#'       issues = list(
-#'         list(
-#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-#'           message = "string",
-#'           resourceIds = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     addonArn = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     modifiedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     serviceAccountRoleArn = "string",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_addon(
-#'   clusterName = "string",
-#'   addonName = "string"
-#' )
-#' ```
+#' @param preserve Specifying this option preserves the add-on software on your cluster but
+#' Amazon EKS stops managing any settings for the add-on. If an IAM account
+#' is associated with the add-on, it is not removed.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_delete_addon
-eks_delete_addon <- function(clusterName, addonName) {
+eks_delete_addon <- function(clusterName, addonName, preserve = NULL) {
   op <- new_operation(
     name = "DeleteAddon",
     http_method = "DELETE",
     http_path = "/clusters/{name}/addons/{addonName}",
     paginator = list()
   )
-  input <- .eks$delete_addon_input(clusterName = clusterName, addonName = addonName)
+  input <- .eks$delete_addon_input(clusterName = clusterName, addonName = addonName, preserve = preserve)
   output <- .eks$delete_addon_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -856,109 +414,10 @@ eks_delete_addon <- function(clusterName, addonName) {
 #'
 #' @description
 #' Deletes the Amazon EKS cluster control plane.
-#' 
-#' If you have active services in your cluster that are associated with a
-#' load balancer, you must delete those services before deleting the
-#' cluster so that the load balancers are deleted properly. Otherwise, you
-#' can have orphaned resources in your VPC that prevent you from being able
-#' to delete the VPC. For more information, see [Deleting a
-#' Cluster](https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html)
-#' in the *Amazon EKS User Guide*.
-#' 
-#' If you have managed node groups or Fargate profiles attached to the
-#' cluster, you must delete them first. For more information, see
-#' [`delete_nodegroup`][eks_delete_nodegroup] and
-#' [`delete_fargate_profile`][eks_delete_fargate_profile].
 #'
-#' @usage
-#' eks_delete_cluster(name)
+#' See [https://paws-r.github.io/docs/eks/delete_cluster.html](https://paws-r.github.io/docs/eks/delete_cluster.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the cluster to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   cluster = list(
-#'     name = "string",
-#'     arn = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     version = "string",
-#'     endpoint = "string",
-#'     roleArn = "string",
-#'     resourcesVpcConfig = list(
-#'       subnetIds = list(
-#'         "string"
-#'       ),
-#'       securityGroupIds = list(
-#'         "string"
-#'       ),
-#'       clusterSecurityGroupId = "string",
-#'       vpcId = "string",
-#'       endpointPublicAccess = TRUE|FALSE,
-#'       endpointPrivateAccess = TRUE|FALSE,
-#'       publicAccessCidrs = list(
-#'         "string"
-#'       )
-#'     ),
-#'     kubernetesNetworkConfig = list(
-#'       serviceIpv4Cidr = "string"
-#'     ),
-#'     logging = list(
-#'       clusterLogging = list(
-#'         list(
-#'           types = list(
-#'             "api"|"audit"|"authenticator"|"controllerManager"|"scheduler"
-#'           ),
-#'           enabled = TRUE|FALSE
-#'         )
-#'       )
-#'     ),
-#'     identity = list(
-#'       oidc = list(
-#'         issuer = "string"
-#'       )
-#'     ),
-#'     status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING",
-#'     certificateAuthority = list(
-#'       data = "string"
-#'     ),
-#'     clientRequestToken = "string",
-#'     platformVersion = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     encryptionConfig = list(
-#'       list(
-#'         resources = list(
-#'           "string"
-#'         ),
-#'         provider = list(
-#'           keyArn = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_cluster(
-#'   name = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example command deletes a cluster named `devel` in your default
-#' # region.
-#' svc$delete_cluster(
-#'   name = "devel"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -980,66 +439,16 @@ eks_delete_cluster <- function(name) {
 }
 .eks$operations$delete_cluster <- eks_delete_cluster
 
-#' Deletes an AWS Fargate profile
+#' Deletes an Fargate profile
 #'
 #' @description
-#' Deletes an AWS Fargate profile.
-#' 
-#' When you delete a Fargate profile, any pods running on Fargate that were
-#' created with the profile are deleted. If those pods match another
-#' Fargate profile, then they are scheduled on Fargate with that profile.
-#' If they no longer match any Fargate profiles, then they are not
-#' scheduled on Fargate and they may remain in a pending state.
-#' 
-#' Only one Fargate profile in a cluster can be in the `DELETING` status at
-#' a time. You must wait for a Fargate profile to finish deleting before
-#' you can delete any other profiles in that cluster.
+#' Deletes an Fargate profile.
 #'
-#' @usage
-#' eks_delete_fargate_profile(clusterName, fargateProfileName)
+#' See [https://paws-r.github.io/docs/eks/delete_fargate_profile.html](https://paws-r.github.io/docs/eks/delete_fargate_profile.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the Fargate profile
 #' to delete.
 #' @param fargateProfileName &#91;required&#93; The name of the Fargate profile to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   fargateProfile = list(
-#'     fargateProfileName = "string",
-#'     fargateProfileArn = "string",
-#'     clusterName = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     podExecutionRoleArn = "string",
-#'     subnets = list(
-#'       "string"
-#'     ),
-#'     selectors = list(
-#'       list(
-#'         namespace = "string",
-#'         labels = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     status = "CREATING"|"ACTIVE"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_fargate_profile(
-#'   clusterName = "string",
-#'   fargateProfileName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1066,92 +475,11 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 #' @description
 #' Deletes an Amazon EKS node group for a cluster.
 #'
-#' @usage
-#' eks_delete_nodegroup(clusterName, nodegroupName)
+#' See [https://paws-r.github.io/docs/eks/delete_nodegroup.html](https://paws-r.github.io/docs/eks/delete_nodegroup.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that is associated with your node
 #' group.
 #' @param nodegroupName &#91;required&#93; The name of the node group to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nodegroup = list(
-#'     nodegroupName = "string",
-#'     nodegroupArn = "string",
-#'     clusterName = "string",
-#'     version = "string",
-#'     releaseVersion = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     modifiedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"|"DEGRADED",
-#'     capacityType = "ON_DEMAND"|"SPOT",
-#'     scalingConfig = list(
-#'       minSize = 123,
-#'       maxSize = 123,
-#'       desiredSize = 123
-#'     ),
-#'     instanceTypes = list(
-#'       "string"
-#'     ),
-#'     subnets = list(
-#'       "string"
-#'     ),
-#'     remoteAccess = list(
-#'       ec2SshKey = "string",
-#'       sourceSecurityGroups = list(
-#'         "string"
-#'       )
-#'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
-#'     nodeRole = "string",
-#'     labels = list(
-#'       "string"
-#'     ),
-#'     resources = list(
-#'       autoScalingGroups = list(
-#'         list(
-#'           name = "string"
-#'         )
-#'       ),
-#'       remoteAccessSecurityGroup = "string"
-#'     ),
-#'     diskSize = 123,
-#'     health = list(
-#'       issues = list(
-#'         list(
-#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable",
-#'           message = "string",
-#'           resourceIds = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     launchTemplate = list(
-#'       name = "string",
-#'       version = "string",
-#'       id = "string"
-#'     ),
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_nodegroup(
-#'   clusterName = "string",
-#'   nodegroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1173,61 +501,47 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
 }
 .eks$operations$delete_nodegroup <- eks_delete_nodegroup
 
+#' Deregisters a connected cluster to remove it from the Amazon EKS control
+#' plane
+#'
+#' @description
+#' Deregisters a connected cluster to remove it from the Amazon EKS control plane.
+#'
+#' See [https://paws-r.github.io/docs/eks/deregister_cluster.html](https://paws-r.github.io/docs/eks/deregister_cluster.html) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the connected cluster to deregister.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_deregister_cluster
+eks_deregister_cluster <- function(name) {
+  op <- new_operation(
+    name = "DeregisterCluster",
+    http_method = "DELETE",
+    http_path = "/cluster-registrations/{name}",
+    paginator = list()
+  )
+  input <- .eks$deregister_cluster_input(name = name)
+  output <- .eks$deregister_cluster_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$deregister_cluster <- eks_deregister_cluster
+
 #' Describes an Amazon EKS add-on
 #'
 #' @description
 #' Describes an Amazon EKS add-on.
 #'
-#' @usage
-#' eks_describe_addon(clusterName, addonName)
+#' See [https://paws-r.github.io/docs/eks/describe_addon.html](https://paws-r.github.io/docs/eks/describe_addon.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
 #' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   addon = list(
-#'     addonName = "string",
-#'     clusterName = "string",
-#'     status = "CREATING"|"ACTIVE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETE_FAILED"|"DEGRADED",
-#'     addonVersion = "string",
-#'     health = list(
-#'       issues = list(
-#'         list(
-#'           code = "AccessDenied"|"InternalFailure"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-#'           message = "string",
-#'           resourceIds = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     addonArn = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     modifiedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     serviceAccountRoleArn = "string",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_addon(
-#'   clusterName = "string",
-#'   addonName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1254,9 +568,7 @@ eks_describe_addon <- function(clusterName, addonName) {
 #' @description
 #' Describes the Kubernetes versions that the add-on can be used with.
 #'
-#' @usage
-#' eks_describe_addon_versions(kubernetesVersion, maxResults, nextToken,
-#'   addonName)
+#' See [https://paws-r.github.io/docs/eks/describe_addon_versions.html](https://paws-r.github.io/docs/eks/describe_addon_versions.html) for full documentation.
 #'
 #' @param kubernetesVersion The Kubernetes versions that the add-on can be used with.
 #' @param maxResults The maximum number of results to return.
@@ -1271,47 +583,6 @@ eks_describe_addon <- function(clusterName, addonName) {
 #' @param addonName The name of the add-on. The name must match one of the names returned by
 #' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
 #' .
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   addons = list(
-#'     list(
-#'       addonName = "string",
-#'       type = "string",
-#'       addonVersions = list(
-#'         list(
-#'           addonVersion = "string",
-#'           architecture = list(
-#'             "string"
-#'           ),
-#'           compatibilities = list(
-#'             list(
-#'               clusterVersion = "string",
-#'               platformVersions = list(
-#'                 "string"
-#'               ),
-#'               defaultVersion = TRUE|FALSE
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_addon_versions(
-#'   kubernetesVersion = "string",
-#'   maxResults = 123,
-#'   nextToken = "string",
-#'   addonName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1337,105 +608,10 @@ eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = N
 #'
 #' @description
 #' Returns descriptive information about an Amazon EKS cluster.
-#' 
-#' The API server endpoint and certificate authority data returned by this
-#' operation are required for `kubelet` and `kubectl` to communicate with
-#' your Kubernetes API server. For more information, see [Create a
-#' kubeconfig for Amazon
-#' EKS](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html).
-#' 
-#' The API server endpoint and certificate authority data aren't available
-#' until the cluster reaches the `ACTIVE` state.
 #'
-#' @usage
-#' eks_describe_cluster(name)
+#' See [https://paws-r.github.io/docs/eks/describe_cluster.html](https://paws-r.github.io/docs/eks/describe_cluster.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the cluster to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   cluster = list(
-#'     name = "string",
-#'     arn = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     version = "string",
-#'     endpoint = "string",
-#'     roleArn = "string",
-#'     resourcesVpcConfig = list(
-#'       subnetIds = list(
-#'         "string"
-#'       ),
-#'       securityGroupIds = list(
-#'         "string"
-#'       ),
-#'       clusterSecurityGroupId = "string",
-#'       vpcId = "string",
-#'       endpointPublicAccess = TRUE|FALSE,
-#'       endpointPrivateAccess = TRUE|FALSE,
-#'       publicAccessCidrs = list(
-#'         "string"
-#'       )
-#'     ),
-#'     kubernetesNetworkConfig = list(
-#'       serviceIpv4Cidr = "string"
-#'     ),
-#'     logging = list(
-#'       clusterLogging = list(
-#'         list(
-#'           types = list(
-#'             "api"|"audit"|"authenticator"|"controllerManager"|"scheduler"
-#'           ),
-#'           enabled = TRUE|FALSE
-#'         )
-#'       )
-#'     ),
-#'     identity = list(
-#'       oidc = list(
-#'         issuer = "string"
-#'       )
-#'     ),
-#'     status = "CREATING"|"ACTIVE"|"DELETING"|"FAILED"|"UPDATING",
-#'     certificateAuthority = list(
-#'       data = "string"
-#'     ),
-#'     clientRequestToken = "string",
-#'     platformVersion = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     encryptionConfig = list(
-#'       list(
-#'         resources = list(
-#'           "string"
-#'         ),
-#'         provider = list(
-#'           keyArn = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_cluster(
-#'   name = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example command provides a description of the specified cluster in
-#' # your default region.
-#' svc$describe_cluster(
-#'   name = "devel"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1457,55 +633,15 @@ eks_describe_cluster <- function(name) {
 }
 .eks$operations$describe_cluster <- eks_describe_cluster
 
-#' Returns descriptive information about an AWS Fargate profile
+#' Returns descriptive information about an Fargate profile
 #'
 #' @description
-#' Returns descriptive information about an AWS Fargate profile.
+#' Returns descriptive information about an Fargate profile.
 #'
-#' @usage
-#' eks_describe_fargate_profile(clusterName, fargateProfileName)
+#' See [https://paws-r.github.io/docs/eks/describe_fargate_profile.html](https://paws-r.github.io/docs/eks/describe_fargate_profile.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the Fargate profile.
 #' @param fargateProfileName &#91;required&#93; The name of the Fargate profile to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   fargateProfile = list(
-#'     fargateProfileName = "string",
-#'     fargateProfileArn = "string",
-#'     clusterName = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     podExecutionRoleArn = "string",
-#'     subnets = list(
-#'       "string"
-#'     ),
-#'     selectors = list(
-#'       list(
-#'         namespace = "string",
-#'         labels = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     status = "CREATING"|"ACTIVE"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_fargate_profile(
-#'   clusterName = "string",
-#'   fargateProfileName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1527,96 +663,46 @@ eks_describe_fargate_profile <- function(clusterName, fargateProfileName) {
 }
 .eks$operations$describe_fargate_profile <- eks_describe_fargate_profile
 
+#' Returns descriptive information about an identity provider configuration
+#'
+#' @description
+#' Returns descriptive information about an identity provider configuration.
+#'
+#' See [https://paws-r.github.io/docs/eks/describe_identity_provider_config.html](https://paws-r.github.io/docs/eks/describe_identity_provider_config.html) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The cluster name that the identity provider configuration is associated
+#' to.
+#' @param identityProviderConfig &#91;required&#93; An object that represents an identity provider configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_identity_provider_config
+eks_describe_identity_provider_config <- function(clusterName, identityProviderConfig) {
+  op <- new_operation(
+    name = "DescribeIdentityProviderConfig",
+    http_method = "POST",
+    http_path = "/clusters/{name}/identity-provider-configs/describe",
+    paginator = list()
+  )
+  input <- .eks$describe_identity_provider_config_input(clusterName = clusterName, identityProviderConfig = identityProviderConfig)
+  output <- .eks$describe_identity_provider_config_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_identity_provider_config <- eks_describe_identity_provider_config
+
 #' Returns descriptive information about an Amazon EKS node group
 #'
 #' @description
 #' Returns descriptive information about an Amazon EKS node group.
 #'
-#' @usage
-#' eks_describe_nodegroup(clusterName, nodegroupName)
+#' See [https://paws-r.github.io/docs/eks/describe_nodegroup.html](https://paws-r.github.io/docs/eks/describe_nodegroup.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster associated with the node group.
 #' @param nodegroupName &#91;required&#93; The name of the node group to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nodegroup = list(
-#'     nodegroupName = "string",
-#'     nodegroupArn = "string",
-#'     clusterName = "string",
-#'     version = "string",
-#'     releaseVersion = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     modifiedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     status = "CREATING"|"ACTIVE"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"|"DEGRADED",
-#'     capacityType = "ON_DEMAND"|"SPOT",
-#'     scalingConfig = list(
-#'       minSize = 123,
-#'       maxSize = 123,
-#'       desiredSize = 123
-#'     ),
-#'     instanceTypes = list(
-#'       "string"
-#'     ),
-#'     subnets = list(
-#'       "string"
-#'     ),
-#'     remoteAccess = list(
-#'       ec2SshKey = "string",
-#'       sourceSecurityGroups = list(
-#'         "string"
-#'       )
-#'     ),
-#'     amiType = "AL2_x86_64"|"AL2_x86_64_GPU"|"AL2_ARM_64",
-#'     nodeRole = "string",
-#'     labels = list(
-#'       "string"
-#'     ),
-#'     resources = list(
-#'       autoScalingGroups = list(
-#'         list(
-#'           name = "string"
-#'         )
-#'       ),
-#'       remoteAccessSecurityGroup = "string"
-#'     ),
-#'     diskSize = 123,
-#'     health = list(
-#'       issues = list(
-#'         list(
-#'           code = "AutoScalingGroupNotFound"|"AutoScalingGroupInvalidConfiguration"|"Ec2SecurityGroupNotFound"|"Ec2SecurityGroupDeletionFailure"|"Ec2LaunchTemplateNotFound"|"Ec2LaunchTemplateVersionMismatch"|"Ec2SubnetNotFound"|"Ec2SubnetInvalidConfiguration"|"IamInstanceProfileNotFound"|"IamLimitExceeded"|"IamNodeRoleNotFound"|"NodeCreationFailure"|"AsgInstanceLaunchFailures"|"InstanceLimitExceeded"|"InsufficientFreeAddresses"|"AccessDenied"|"InternalFailure"|"ClusterUnreachable",
-#'           message = "string",
-#'           resourceIds = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     launchTemplate = list(
-#'       name = "string",
-#'       version = "string",
-#'       id = "string"
-#'     ),
-#'     tags = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_nodegroup(
-#'   clusterName = "string",
-#'   nodegroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1639,65 +725,20 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
 .eks$operations$describe_nodegroup <- eks_describe_nodegroup
 
 #' Returns descriptive information about an update against your Amazon EKS
-#' cluster or associated managed node group
+#' cluster or associated managed node group or Amazon EKS add-on
 #'
 #' @description
-#' Returns descriptive information about an update against your Amazon EKS
-#' cluster or associated managed node group.
-#' 
-#' When the status of the update is `Succeeded`, the update is complete. If
-#' an update fails, the status is `Failed`, and an error detail explains
-#' the reason for the failure.
+#' Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group or Amazon EKS add-on.
 #'
-#' @usage
-#' eks_describe_update(name, updateId, nodegroupName, addonName)
+#' See [https://paws-r.github.io/docs/eks/describe_update.html](https://paws-r.github.io/docs/eks/describe_update.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster associated with the update.
 #' @param updateId &#91;required&#93; The ID of the update to describe.
-#' @param nodegroupName The name of the Amazon EKS node group associated with the update.
+#' @param nodegroupName The name of the Amazon EKS node group associated with the update. This
+#' parameter is required if the update is a node group update.
 #' @param addonName The name of the add-on. The name must match one of the names returned by
 #' [`list_addons`](https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html)
-#' .
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   update = list(
-#'     id = "string",
-#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
-#'     params = list(
-#'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
-#'         value = "string"
-#'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errors = list(
-#'       list(
-#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-#'         errorMessage = "string",
-#'         resourceIds = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_update(
-#'   name = "string",
-#'   updateId = "string",
-#'   nodegroupName = "string",
-#'   addonName = "string"
-#' )
-#' ```
+#' . This parameter is required if the update is an add-on update.
 #'
 #' @keywords internal
 #'
@@ -1719,13 +760,44 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName 
 }
 .eks$operations$describe_update <- eks_describe_update
 
+#' Disassociates an identity provider configuration from a cluster
+#'
+#' @description
+#' Disassociates an identity provider configuration from a cluster. If you disassociate an identity provider from your cluster, users included in the provider can no longer access the cluster. However, you can still access the cluster with Amazon Web Services IAM users.
+#'
+#' See [https://paws-r.github.io/docs/eks/disassociate_identity_provider_config.html](https://paws-r.github.io/docs/eks/disassociate_identity_provider_config.html) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The name of the cluster to disassociate an identity provider from.
+#' @param identityProviderConfig &#91;required&#93; An object that represents an identity provider configuration.
+#' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_disassociate_identity_provider_config
+eks_disassociate_identity_provider_config <- function(clusterName, identityProviderConfig, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "DisassociateIdentityProviderConfig",
+    http_method = "POST",
+    http_path = "/clusters/{name}/identity-provider-configs/disassociate",
+    paginator = list()
+  )
+  input <- .eks$disassociate_identity_provider_config_input(clusterName = clusterName, identityProviderConfig = identityProviderConfig, clientRequestToken = clientRequestToken)
+  output <- .eks$disassociate_identity_provider_config_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$disassociate_identity_provider_config <- eks_disassociate_identity_provider_config
+
 #' Lists the available add-ons
 #'
 #' @description
 #' Lists the available add-ons.
 #'
-#' @usage
-#' eks_list_addons(clusterName, maxResults, nextToken)
+#' See [https://paws-r.github.io/docs/eks/list_addons.html](https://paws-r.github.io/docs/eks/list_addons.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster.
 #' @param maxResults The maximum number of add-on results returned by `ListAddonsRequest` in
@@ -1744,26 +816,6 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   addons = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_addons(
-#'   clusterName = "string",
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1785,15 +837,13 @@ eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
 }
 .eks$operations$list_addons <- eks_list_addons
 
-#' Lists the Amazon EKS clusters in your AWS account in the specified
-#' Region
+#' Lists the Amazon EKS clusters in your Amazon Web Services account in the
+#' specified Region
 #'
 #' @description
-#' Lists the Amazon EKS clusters in your AWS account in the specified
-#' Region.
+#' Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Region.
 #'
-#' @usage
-#' eks_list_clusters(maxResults, nextToken)
+#' See [https://paws-r.github.io/docs/eks/list_clusters.html](https://paws-r.github.io/docs/eks/list_clusters.html) for full documentation.
 #'
 #' @param maxResults The maximum number of cluster results returned by
 #' [`list_clusters`][eks_list_clusters] in paginated output. When you use
@@ -1813,44 +863,21 @@ eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   clusters = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_clusters(
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example command lists all of your available clusters in your
-#' # default region.
-#' svc$list_clusters()
-#' }
+#' @param include Indicates whether external clusters are included in the returned list.
+#' Use '`all`' to return connected clusters, or blank to return only Amazon
+#' EKS clusters. '`all`' must be in lowercase otherwise an error occurs.
 #'
 #' @keywords internal
 #'
 #' @rdname eks_list_clusters
-eks_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
+eks_list_clusters <- function(maxResults = NULL, nextToken = NULL, include = NULL) {
   op <- new_operation(
     name = "ListClusters",
     http_method = "GET",
     http_path = "/clusters",
     paginator = list()
   )
-  input <- .eks$list_clusters_input(maxResults = maxResults, nextToken = nextToken)
+  input <- .eks$list_clusters_input(maxResults = maxResults, nextToken = nextToken, include = include)
   output <- .eks$list_clusters_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -1860,17 +887,15 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
 }
 .eks$operations$list_clusters <- eks_list_clusters
 
-#' Lists the AWS Fargate profiles associated with the specified cluster in
-#' your AWS account in the specified Region
+#' Lists the Fargate profiles associated with the specified cluster in your
+#' Amazon Web Services account in the specified Region
 #'
 #' @description
-#' Lists the AWS Fargate profiles associated with the specified cluster in
-#' your AWS account in the specified Region.
+#' Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services account in the specified Region.
 #'
-#' @usage
-#' eks_list_fargate_profiles(clusterName, maxResults, nextToken)
+#' See [https://paws-r.github.io/docs/eks/list_fargate_profiles.html](https://paws-r.github.io/docs/eks/list_fargate_profiles.html) for full documentation.
 #'
-#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that you would like to listFargate
+#' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that you would like to list Fargate
 #' profiles in.
 #' @param maxResults The maximum number of Fargate profile results returned by
 #' [`list_fargate_profiles`][eks_list_fargate_profiles] in paginated
@@ -1888,26 +913,6 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
 #' `maxResults` was used and the results exceeded the value of that
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   fargateProfileNames = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_fargate_profiles(
-#'   clusterName = "string",
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1929,16 +934,59 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
 }
 .eks$operations$list_fargate_profiles <- eks_list_fargate_profiles
 
-#' Lists the Amazon EKS managed node groups associated with the specified
-#' cluster in your AWS account in the specified Region
+#' A list of identity provider configurations
 #'
 #' @description
-#' Lists the Amazon EKS managed node groups associated with the specified
-#' cluster in your AWS account in the specified Region. Self-managed node
-#' groups are not listed.
+#' A list of identity provider configurations.
 #'
-#' @usage
-#' eks_list_nodegroups(clusterName, maxResults, nextToken)
+#' See [https://paws-r.github.io/docs/eks/list_identity_provider_configs.html](https://paws-r.github.io/docs/eks/list_identity_provider_configs.html) for full documentation.
+#'
+#' @param clusterName &#91;required&#93; The cluster name that you want to list identity provider configurations
+#' for.
+#' @param maxResults The maximum number of identity provider configurations returned by
+#' [`list_identity_provider_configs`][eks_list_identity_provider_configs]
+#' in paginated output. When you use this parameter,
+#' [`list_identity_provider_configs`][eks_list_identity_provider_configs]
+#' returns only `maxResults` results in a single page along with a
+#' `nextToken` response element. You can see the remaining results of the
+#' initial request by sending another
+#' [`list_identity_provider_configs`][eks_list_identity_provider_configs]
+#' request with the returned `nextToken` value. This value can be between 1
+#' and 100. If you don't use this parameter,
+#' [`list_identity_provider_configs`][eks_list_identity_provider_configs]
+#' returns up to 100 results and a `nextToken` value, if applicable.
+#' @param nextToken The `nextToken` value returned from a previous paginated
+#' `IdentityProviderConfigsRequest` where `maxResults` was used and the
+#' results exceeded the value of that parameter. Pagination continues from
+#' the end of the previous results that returned the `nextToken` value.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_identity_provider_configs
+eks_list_identity_provider_configs <- function(clusterName, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListIdentityProviderConfigs",
+    http_method = "GET",
+    http_path = "/clusters/{name}/identity-provider-configs",
+    paginator = list()
+  )
+  input <- .eks$list_identity_provider_configs_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
+  output <- .eks$list_identity_provider_configs_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_identity_provider_configs <- eks_list_identity_provider_configs
+
+#' Lists the Amazon EKS managed node groups associated with the specified
+#' cluster in your Amazon Web Services account in the specified Region
+#'
+#' @description
+#' Lists the Amazon EKS managed node groups associated with the specified cluster in your Amazon Web Services account in the specified Region. Self-managed node groups are not listed.
+#'
+#' See [https://paws-r.github.io/docs/eks/list_nodegroups.html](https://paws-r.github.io/docs/eks/list_nodegroups.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that you would like to list node
 #' groups in.
@@ -1957,26 +1005,6 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
 #' used and the results exceeded the value of that parameter. Pagination
 #' continues from the end of the previous results that returned the
 #' `nextToken` value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   nodegroups = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_nodegroups(
-#'   clusterName = "string",
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2003,37 +1031,11 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
 #' @description
 #' List the tags for an Amazon EKS resource.
 #'
-#' @usage
-#' eks_list_tags_for_resource(resourceArn)
+#' See [https://paws-r.github.io/docs/eks/list_tags_for_resource.html](https://paws-r.github.io/docs/eks/list_tags_for_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags. Currently, the supported resources are Amazon EKS
 #' clusters and managed node groups.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   resourceArn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example lists all of the tags for the `beta` cluster.
-#' svc$list_tags_for_resource(
-#'   resourceArn = "arn:aws:eks:us-west-2:012345678910:cluster/beta"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2056,14 +1058,12 @@ eks_list_tags_for_resource <- function(resourceArn) {
 .eks$operations$list_tags_for_resource <- eks_list_tags_for_resource
 
 #' Lists the updates associated with an Amazon EKS cluster or managed node
-#' group in your AWS account, in the specified Region
+#' group in your Amazon Web Services account, in the specified Region
 #'
 #' @description
-#' Lists the updates associated with an Amazon EKS cluster or managed node
-#' group in your AWS account, in the specified Region.
+#' Lists the updates associated with an Amazon EKS cluster or managed node group in your Amazon Web Services account, in the specified Region.
 #'
-#' @usage
-#' eks_list_updates(name, nodegroupName, addonName, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/eks/list_updates.html](https://paws-r.github.io/docs/eks/list_updates.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to list updates for.
 #' @param nodegroupName The name of the Amazon EKS managed node group to list updates for.
@@ -2082,28 +1082,6 @@ eks_list_tags_for_resource <- function(resourceArn) {
 #' returned `nextToken` value. This value can be between 1 and 100. If you
 #' don't use this parameter, [`list_updates`][eks_list_updates] returns up
 #' to 100 results and a `nextToken` value if applicable.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   updateIds = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_updates(
-#'   name = "string",
-#'   nodegroupName = "string",
-#'   addonName = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2125,39 +1103,55 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextT
 }
 .eks$operations$list_updates <- eks_list_updates
 
+#' Connects a Kubernetes cluster to the Amazon EKS control plane
+#'
+#' @description
+#' Connects a Kubernetes cluster to the Amazon EKS control plane.
+#'
+#' See [https://paws-r.github.io/docs/eks/register_cluster.html](https://paws-r.github.io/docs/eks/register_cluster.html) for full documentation.
+#'
+#' @param name &#91;required&#93; Define a unique name for this cluster for your Region.
+#' @param connectorConfig &#91;required&#93; The configuration settings required to connect the Kubernetes cluster to
+#' the Amazon EKS control plane.
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param tags The metadata that you apply to the cluster to assist with categorization
+#' and organization. Each tag consists of a key and an optional value, both
+#' of which you define. Cluster tags do not propagate to any other
+#' resources associated with the cluster.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_register_cluster
+eks_register_cluster <- function(name, connectorConfig, clientRequestToken = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "RegisterCluster",
+    http_method = "POST",
+    http_path = "/cluster-registrations",
+    paginator = list()
+  )
+  input <- .eks$register_cluster_input(name = name, connectorConfig = connectorConfig, clientRequestToken = clientRequestToken, tags = tags)
+  output <- .eks$register_cluster_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$register_cluster <- eks_register_cluster
+
 #' Associates the specified tags to a resource with the specified
 #' resourceArn
 #'
 #' @description
-#' Associates the specified tags to a resource with the specified
-#' `resourceArn`. If existing tags on a resource are not specified in the
-#' request parameters, they are not changed. When a resource is deleted,
-#' the tags associated with that resource are deleted as well. Tags that
-#' you create for Amazon EKS resources do not propagate to any other
-#' resources associated with the cluster. For example, if you tag a cluster
-#' with this operation, that tag does not automatically propagate to the
-#' subnets and worker nodes associated with the cluster.
+#' Associates the specified tags to a resource with the specified `resourceArn`. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well. Tags that you create for Amazon EKS resources do not propagate to any other resources associated with the cluster. For example, if you tag a cluster with this operation, that tag does not automatically propagate to the subnets and nodes associated with the cluster.
 #'
-#' @usage
-#' eks_tag_resource(resourceArn, tags)
+#' See [https://paws-r.github.io/docs/eks/tag_resource.html](https://paws-r.github.io/docs/eks/tag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which to add tags.
 #' Currently, the supported resources are Amazon EKS clusters and managed
 #' node groups.
 #' @param tags &#91;required&#93; The tags to add to the resource. A tag is an array of key-value pairs.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   resourceArn = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2184,26 +1178,12 @@ eks_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Deletes specified tags from a resource.
 #'
-#' @usage
-#' eks_untag_resource(resourceArn, tagKeys)
+#' See [https://paws-r.github.io/docs/eks/untag_resource.html](https://paws-r.github.io/docs/eks/untag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to delete
 #' tags. Currently, the supported resources are Amazon EKS clusters and
 #' managed node groups.
 #' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   resourceArn = "string",
-#'   tagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2230,9 +1210,7 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates an Amazon EKS add-on.
 #'
-#' @usage
-#' eks_update_addon(clusterName, addonName, addonVersion,
-#'   serviceAccountRoleArn, resolveConflicts, clientRequestToken)
+#' See [https://paws-r.github.io/docs/eks/update_addon.html](https://paws-r.github.io/docs/eks/update_addon.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the cluster.
 #' @param addonName &#91;required&#93; The name of the add-on. The name must match one of the names returned by
@@ -2260,48 +1238,6 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   update = list(
-#'     id = "string",
-#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
-#'     params = list(
-#'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
-#'         value = "string"
-#'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errors = list(
-#'       list(
-#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-#'         errorMessage = "string",
-#'         resourceIds = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_addon(
-#'   clusterName = "string",
-#'   addonName = "string",
-#'   addonVersion = "string",
-#'   serviceAccountRoleArn = "string",
-#'   resolveConflicts = "OVERWRITE"|"NONE",
-#'   clientRequestToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname eks_update_addon
@@ -2325,116 +1261,24 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' Updates an Amazon EKS cluster configuration
 #'
 #' @description
-#' Updates an Amazon EKS cluster configuration. Your cluster continues to
-#' function during the update. The response output includes an update ID
-#' that you can use to track the status of your cluster update with the
-#' [`describe_update`][eks_describe_update] API operation.
-#' 
-#' You can use this API operation to enable or disable exporting the
-#' Kubernetes control plane logs for your cluster to CloudWatch Logs. By
-#' default, cluster control plane logs aren't exported to CloudWatch Logs.
-#' For more information, see [Amazon EKS Cluster Control Plane
-#' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-#' in the **Amazon EKS User Guide** .
-#' 
-#' CloudWatch Logs ingestion, archive storage, and data scanning rates
-#' apply to exported control plane logs. For more information, see [Amazon
-#' CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
-#' 
-#' You can also use this API operation to enable or disable public and
-#' private access to your cluster's Kubernetes API server endpoint. By
-#' default, public access is enabled, and private access is disabled. For
-#' more information, see [Amazon EKS Cluster Endpoint Access
-#' Control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
-#' in the **Amazon EKS User Guide** .
-#' 
-#' At this time, you can not update the subnets or security group IDs for
-#' an existing cluster.
-#' 
-#' Cluster updates are asynchronous, and they should finish within a few
-#' minutes. During an update, the cluster status moves to `UPDATING` (this
-#' status transition is eventually consistent). When the update is complete
-#' (either `Failed` or `Successful`), the cluster status moves to `Active`.
+#' Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the [`describe_update`][eks_describe_update] API operation.
 #'
-#' @usage
-#' eks_update_cluster_config(name, resourcesVpcConfig, logging,
-#'   clientRequestToken)
+#' See [https://paws-r.github.io/docs/eks/update_cluster_config.html](https://paws-r.github.io/docs/eks/update_cluster_config.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
 #' @param resourcesVpcConfig 
 #' @param logging Enable or disable exporting the Kubernetes control plane logs for your
 #' cluster to CloudWatch Logs. By default, cluster control plane logs
 #' aren't exported to CloudWatch Logs. For more information, see [Amazon
-#' EKS Cluster Control Plane
-#' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-#' in the **Amazon EKS User Guide** .
+#' EKS cluster control plane
+#' logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
+#' in the *Amazon EKS User Guide* .
 #' 
 #' CloudWatch Logs ingestion, archive storage, and data scanning rates
-#' apply to exported control plane logs. For more information, see [Amazon
-#' CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
+#' apply to exported control plane logs. For more information, see
+#' [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   update = list(
-#'     id = "string",
-#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
-#'     params = list(
-#'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
-#'         value = "string"
-#'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errors = list(
-#'       list(
-#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-#'         errorMessage = "string",
-#'         resourceIds = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_cluster_config(
-#'   name = "string",
-#'   resourcesVpcConfig = list(
-#'     subnetIds = list(
-#'       "string"
-#'     ),
-#'     securityGroupIds = list(
-#'       "string"
-#'     ),
-#'     endpointPublicAccess = TRUE|FALSE,
-#'     endpointPrivateAccess = TRUE|FALSE,
-#'     publicAccessCidrs = list(
-#'       "string"
-#'     )
-#'   ),
-#'   logging = list(
-#'     clusterLogging = list(
-#'       list(
-#'         types = list(
-#'           "api"|"audit"|"authenticator"|"controllerManager"|"scheduler"
-#'         ),
-#'         enabled = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   clientRequestToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2459,67 +1303,14 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' Updates an Amazon EKS cluster to the specified Kubernetes version
 #'
 #' @description
-#' Updates an Amazon EKS cluster to the specified Kubernetes version. Your
-#' cluster continues to function during the update. The response output
-#' includes an update ID that you can use to track the status of your
-#' cluster update with the [`describe_update`][eks_describe_update] API
-#' operation.
-#' 
-#' Cluster updates are asynchronous, and they should finish within a few
-#' minutes. During an update, the cluster status moves to `UPDATING` (this
-#' status transition is eventually consistent). When the update is complete
-#' (either `Failed` or `Successful`), the cluster status moves to `Active`.
-#' 
-#' If your cluster has managed node groups attached to it, all of your node
-#' groups’ Kubernetes versions must match the cluster’s Kubernetes version
-#' in order to update the cluster to a new Kubernetes version.
+#' Updates an Amazon EKS cluster to the specified Kubernetes version. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the [`describe_update`][eks_describe_update] API operation.
 #'
-#' @usage
-#' eks_update_cluster_version(name, version, clientRequestToken)
+#' See [https://paws-r.github.io/docs/eks/update_cluster_version.html](https://paws-r.github.io/docs/eks/update_cluster_version.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
 #' @param version &#91;required&#93; The desired Kubernetes version following a successful update.
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   update = list(
-#'     id = "string",
-#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
-#'     params = list(
-#'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
-#'         value = "string"
-#'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errors = list(
-#'       list(
-#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-#'         errorMessage = "string",
-#'         resourceIds = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_cluster_version(
-#'   name = "string",
-#'   version = "string",
-#'   clientRequestToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2544,90 +1335,35 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
 #' Updates an Amazon EKS managed node group configuration
 #'
 #' @description
-#' Updates an Amazon EKS managed node group configuration. Your node group
-#' continues to function during the update. The response output includes an
-#' update ID that you can use to track the status of your node group update
-#' with the [`describe_update`][eks_describe_update] API operation.
-#' Currently you can update the Kubernetes labels for a node group or the
-#' scaling configuration.
+#' Updates an Amazon EKS managed node group configuration. Your node group continues to function during the update. The response output includes an update ID that you can use to track the status of your node group update with the [`describe_update`][eks_describe_update] API operation. Currently you can update the Kubernetes labels for a node group or the scaling configuration.
 #'
-#' @usage
-#' eks_update_nodegroup_config(clusterName, nodegroupName, labels,
-#'   scalingConfig, clientRequestToken)
+#' See [https://paws-r.github.io/docs/eks/update_nodegroup_config.html](https://paws-r.github.io/docs/eks/update_nodegroup_config.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that the managed node group resides
 #' in.
 #' @param nodegroupName &#91;required&#93; The name of the managed node group to update.
 #' @param labels The Kubernetes labels to be applied to the nodes in the node group after
 #' the update.
+#' @param taints The Kubernetes taints to be applied to the nodes in the node group after
+#' the update. For more information, see [Node taints on managed node
+#' groups](https://docs.aws.amazon.com/eks/latest/userguide/node-taints-managed-node-groups.html).
 #' @param scalingConfig The scaling configuration details for the Auto Scaling group after the
 #' update.
+#' @param updateConfig The node group update configuration.
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   update = list(
-#'     id = "string",
-#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
-#'     params = list(
-#'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
-#'         value = "string"
-#'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errors = list(
-#'       list(
-#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-#'         errorMessage = "string",
-#'         resourceIds = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_nodegroup_config(
-#'   clusterName = "string",
-#'   nodegroupName = "string",
-#'   labels = list(
-#'     addOrUpdateLabels = list(
-#'       "string"
-#'     ),
-#'     removeLabels = list(
-#'       "string"
-#'     )
-#'   ),
-#'   scalingConfig = list(
-#'     minSize = 123,
-#'     maxSize = 123,
-#'     desiredSize = 123
-#'   ),
-#'   clientRequestToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
 #' @rdname eks_update_nodegroup_config
-eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NULL, scalingConfig = NULL, clientRequestToken = NULL) {
+eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NULL, taints = NULL, scalingConfig = NULL, updateConfig = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "UpdateNodegroupConfig",
     http_method = "POST",
     http_path = "/clusters/{name}/node-groups/{nodegroupName}/update-config",
     paginator = list()
   )
-  input <- .eks$update_nodegroup_config_input(clusterName = clusterName, nodegroupName = nodegroupName, labels = labels, scalingConfig = scalingConfig, clientRequestToken = clientRequestToken)
+  input <- .eks$update_nodegroup_config_input(clusterName = clusterName, nodegroupName = nodegroupName, labels = labels, taints = taints, scalingConfig = scalingConfig, updateConfig = updateConfig, clientRequestToken = clientRequestToken)
   output <- .eks$update_nodegroup_config_output()
   config <- get_config()
   svc <- .eks$service(config)
@@ -2641,37 +1377,9 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' node group
 #'
 #' @description
-#' Updates the Kubernetes version or AMI version of an Amazon EKS managed
-#' node group.
-#' 
-#' You can update a node group using a launch template only if the node
-#' group was originally deployed with a launch template. If you need to
-#' update a custom AMI in a node group that was deployed with a launch
-#' template, then update your custom AMI, specify the new ID in a new
-#' version of the launch template, and then update the node group to the
-#' new version of the launch template.
-#' 
-#' If you update without a launch template, then you can update to the
-#' latest available AMI version of a node group's current Kubernetes
-#' version by not specifying a Kubernetes version in the request. You can
-#' update to the latest AMI version of your cluster's current Kubernetes
-#' version by specifying your cluster's Kubernetes version in the request.
-#' For more information, see [Amazon EKS optimized Amazon Linux 2 AMI
-#' versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
-#' in the *Amazon EKS User Guide*.
-#' 
-#' You cannot roll back a node group to an earlier Kubernetes version or
-#' AMI version.
-#' 
-#' When a node in a managed node group is terminated due to a scaling
-#' action or update, the pods in that node are drained first. Amazon EKS
-#' attempts to drain the nodes gracefully and will fail if it is unable to
-#' do so. You can `force` the update if Amazon EKS is unable to drain the
-#' nodes as a result of a pod disruption budget issue.
+#' Updates the Kubernetes version or AMI version of an Amazon EKS managed node group.
 #'
-#' @usage
-#' eks_update_nodegroup_version(clusterName, nodegroupName, version,
-#'   releaseVersion, launchTemplate, force, clientRequestToken)
+#' See [https://paws-r.github.io/docs/eks/update_nodegroup_version.html](https://paws-r.github.io/docs/eks/update_nodegroup_version.html) for full documentation.
 #'
 #' @param clusterName &#91;required&#93; The name of the Amazon EKS cluster that is associated with the managed
 #' node group to update.
@@ -2685,7 +1393,7 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' more information about using launch templates with Amazon EKS, see
 #' [Launch template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
-#' in the Amazon EKS User Guide.
+#' in the *Amazon EKS User Guide*.
 #' @param releaseVersion The AMI version of the Amazon EKS optimized AMI to use for the update.
 #' By default, the latest available AMI version for the node group's
 #' Kubernetes version is used. For more information, see [Amazon EKS
@@ -2697,7 +1405,7 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' information about using launch templates with Amazon EKS, see [Launch
 #' template
 #' support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
-#' in the Amazon EKS User Guide.
+#' in the *Amazon EKS User Guide*.
 #' @param launchTemplate An object representing a node group's launch template specification. You
 #' can only update a node group using a launch template if the node group
 #' was originally deployed with a launch template.
@@ -2707,53 +1415,6 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' terminate the old node whether or not any pods are running on the node.
 #' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   update = list(
-#'     id = "string",
-#'     status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-#'     type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
-#'     params = list(
-#'       list(
-#'         type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
-#'         value = "string"
-#'       )
-#'     ),
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errors = list(
-#'       list(
-#'         errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-#'         errorMessage = "string",
-#'         resourceIds = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_nodegroup_version(
-#'   clusterName = "string",
-#'   nodegroupName = "string",
-#'   version = "string",
-#'   releaseVersion = "string",
-#'   launchTemplate = list(
-#'     name = "string",
-#'     version = "string",
-#'     id = "string"
-#'   ),
-#'   force = TRUE|FALSE,
-#'   clientRequestToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

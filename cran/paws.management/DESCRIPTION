@@ -1,10 +1,10 @@
 Package: paws.management
 Title: 'Amazon Web Services' Management & Governance Services
-Version: 0.1.13
+Version: 0.1.14
 Authors@R: c(
-    person("David", "Kretch", , "david.kretch@gmail.com", role = c("aut")),
+    person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
-    person("Dyfan", "Jones", email = "dyfan.r.jones@gmail.com", role = "cre"),
+    person("Dyfan", "Jones", , "dyfan.r.jones@gmail.com", role = "cre"),
     person("Amazon.com, Inc.", role = "cph")
   )
 Description: Interface to 'Amazon Web Services' management and governance
@@ -20,14 +20,23 @@ Suggests:
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Collate: 
     'applicationautoscaling_service.R'
     'applicationautoscaling_interfaces.R'
     'applicationautoscaling_operations.R'
+    'applicationcostprofiler_service.R'
+    'applicationcostprofiler_interfaces.R'
+    'applicationcostprofiler_operations.R'
     'applicationinsights_service.R'
     'applicationinsights_interfaces.R'
     'applicationinsights_operations.R'
+    'appregistry_service.R'
+    'appregistry_interfaces.R'
+    'appregistry_operations.R'
+    'auditmanager_service.R'
+    'auditmanager_interfaces.R'
+    'auditmanager_operations.R'
     'autoscaling_service.R'
     'autoscaling_interfaces.R'
     'autoscaling_operations.R'
@@ -46,18 +55,33 @@ Collate:
     'cloudwatchevents_service.R'
     'cloudwatchevents_interfaces.R'
     'cloudwatchevents_operations.R'
+    'cloudwatchevidently_service.R'
+    'cloudwatchevidently_interfaces.R'
+    'cloudwatchevidently_operations.R'
     'cloudwatchlogs_service.R'
     'cloudwatchlogs_interfaces.R'
     'cloudwatchlogs_operations.R'
+    'cloudwatchrum_service.R'
+    'cloudwatchrum_interfaces.R'
+    'cloudwatchrum_operations.R'
     'configservice_service.R'
     'configservice_interfaces.R'
     'configservice_operations.R'
+    'finspace_service.R'
+    'finspace_interfaces.R'
+    'finspace_operations.R'
     'health_service.R'
     'health_interfaces.R'
     'health_operations.R'
     'licensemanager_service.R'
     'licensemanager_interfaces.R'
     'licensemanager_operations.R'
+    'licensemanagerusersubscriptions_service.R'
+    'licensemanagerusersubscriptions_interfaces.R'
+    'licensemanagerusersubscriptions_operations.R'
+    'managedgrafana_service.R'
+    'managedgrafana_interfaces.R'
+    'managedgrafana_operations.R'
     'opsworks_service.R'
     'opsworks_interfaces.R'
     'opsworks_operations.R'
@@ -70,6 +94,12 @@ Collate:
     'pi_service.R'
     'pi_interfaces.R'
     'pi_operations.R'
+    'prometheusservice_service.R'
+    'prometheusservice_interfaces.R'
+    'prometheusservice_operations.R'
+    'resiliencehub_service.R'
+    'resiliencehub_interfaces.R'
+    'resiliencehub_operations.R'
     'resourcegroups_service.R'
     'resourcegroups_interfaces.R'
     'resourcegroups_operations.R'
@@ -85,6 +115,15 @@ Collate:
     'ssm_service.R'
     'ssm_interfaces.R'
     'ssm_operations.R'
+    'ssmcontacts_service.R'
+    'ssmcontacts_interfaces.R'
+    'ssmcontacts_operations.R'
+    'ssmincidents_service.R'
+    'ssmincidents_interfaces.R'
+    'ssmincidents_operations.R'
     'support_service.R'
     'support_interfaces.R'
     'support_operations.R'
+    'synthetics_service.R'
+    'synthetics_interfaces.R'
+    'synthetics_operations.R'

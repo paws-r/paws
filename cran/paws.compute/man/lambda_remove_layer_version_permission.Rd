@@ -2,11 +2,15 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_remove_layer_version_permission}
 \alias{lambda_remove_layer_version_permission}
-\title{Removes a statement from the permissions policy for a version of an AWS
+\title{Removes a statement from the permissions policy for a version of an
 Lambda layer}
 \usage{
-lambda_remove_layer_version_permission(LayerName, VersionNumber,
-  StatementId, RevisionId)
+lambda_remove_layer_version_permission(
+  LayerName,
+  VersionNumber,
+  StatementId,
+  RevisionId = NULL
+)
 }
 \arguments{
 \item{LayerName}{[required] The name or Amazon Resource Name (ARN) of the layer.}
@@ -19,34 +23,9 @@ lambda_remove_layer_version_permission(LayerName, VersionNumber,
 this option to avoid modifying a policy that has changed since you last
 read it.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes a statement from the permissions policy for a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}.
-For more information, see
-\code{\link[=lambda_add_layer_version_permission]{add_layer_version_permission}}.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_layer_version_permission(
-  LayerName = "string",
-  VersionNumber = 123,
-  StatementId = "string",
-  RevisionId = "string"
-)
-}
-}
+Removes a statement from the permissions policy for a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{Lambda layer}. For more information, see \code{\link[=lambda_add_layer_version_permission]{add_layer_version_permission}}.
 
-\examples{
-\dontrun{
-# The following example deletes permission for an account to configure a
-# layer version.
-svc$remove_layer_version_permission(
-  LayerName = "my-layer",
-  StatementId = "xaccount",
-  VersionNumber = 1L
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/remove_layer_version_permission.html} for full documentation.
 }
 \keyword{internal}

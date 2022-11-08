@@ -2,34 +2,19 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_create_snapshot}
 \alias{directoryservice_create_snapshot}
-\title{Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS
-cloud}
+\title{Creates a snapshot of a Simple AD or Microsoft AD directory in the
+Amazon Web Services cloud}
 \usage{
-directoryservice_create_snapshot(DirectoryId, Name)
+directoryservice_create_snapshot(DirectoryId, Name = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory of which to take a snapshot.}
 
 \item{Name}{The descriptive name to apply to the snapshot.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SnapshotId = "string"
-)
-}
-}
 \description{
-Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS
-cloud.
+Creates a snapshot of a Simple AD or Microsoft AD directory in the Amazon Web Services cloud.
 
-You cannot take snapshots of AD Connector directories.
+See \url{https://paws-r.github.io/docs/directoryservice/create_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_snapshot(
-  DirectoryId = "string",
-  Name = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,10 +4,19 @@
 \alias{lightsail_put_alarm}
 \title{Creates or updates an alarm, and associates it with the specified metric}
 \usage{
-lightsail_put_alarm(alarmName, metricName, monitoredResourceName,
-  comparisonOperator, threshold, evaluationPeriods, datapointsToAlarm,
-  treatMissingData, contactProtocols, notificationTriggers,
-  notificationEnabled)
+lightsail_put_alarm(
+  alarmName,
+  metricName,
+  monitoredResourceName,
+  comparisonOperator,
+  threshold,
+  evaluationPeriods,
+  datapointsToAlarm = NULL,
+  treatMissingData = NULL,
+  contactProtocols = NULL,
+  notificationTriggers = NULL,
+  notificationEnabled = NULL
+)
 }
 \arguments{
 \item{alarmName}{[required] The name for the alarm. Specify the name of an existing alarm to update,
@@ -92,12 +101,12 @@ notifications are enabled for the alarm, and when the alarm is
 triggered.
 
 A notification is not sent if a contact protocol is not specified, if
-the specified contact protocol is not configured in the AWS Region, or
-if notifications are not enabled for the alarm using the
-\code{notificationEnabled} paramater.
+the specified contact protocol is not configured in the Amazon Web
+Services Region, or if notifications are not enabled for the alarm using
+the \code{notificationEnabled} paramater.
 
 Use the \code{\link[=lightsail_create_contact_method]{create_contact_method}}
-action to configure a contact protocol in an AWS Region.}
+action to configure a contact protocol in an Amazon Web Services Region.}
 
 \item{notificationTriggers}{The alarm states that trigger a notification.
 
@@ -131,71 +140,9 @@ parameter.}
 Notifications are enabled by default if you don't specify this
 parameter.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  operations = list(
-    list(
-      id = "string",
-      resourceName = "string",
-      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      location = list(
-        availabilityZone = "string",
-        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-      ),
-      isTerminal = TRUE|FALSE,
-      operationDetails = "string",
-      operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-      status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-      statusChangedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      errorCode = "string",
-      errorDetails = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates or updates an alarm, and associates it with the specified
-metric.
+Creates or updates an alarm, and associates it with the specified metric.
 
-An alarm is used to monitor a single metric for one of your resources.
-When a metric condition is met, the alarm can notify you by email, SMS
-text message, and a banner displayed on the Amazon Lightsail console.
-For more information, see Alarms in Amazon Lightsail.
-
-When this action creates an alarm, the alarm state is immediately set to
-\code{INSUFFICIENT_DATA}. The alarm is then evaluated and its state is set
-appropriately. Any actions associated with the new state are then
-executed.
-
-When you update an existing alarm, its state is left unchanged, but the
-update completely overwrites the previous configuration of the alarm.
-The alarm is then evaluated with the updated configuration.
+See \url{https://paws-r.github.io/docs/lightsail/put_alarm.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_alarm(
-  alarmName = "string",
-  metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System"|"ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount"|"DatabaseConnections"|"DiskQueueDepth"|"FreeStorageSpace"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"BurstCapacityTime"|"BurstCapacityPercentage",
-  monitoredResourceName = "string",
-  comparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
-  threshold = 123.0,
-  evaluationPeriods = 123,
-  datapointsToAlarm = 123,
-  treatMissingData = "breaching"|"notBreaching"|"ignore"|"missing",
-  contactProtocols = list(
-    "Email"|"SMS"
-  ),
-  notificationTriggers = list(
-    "OK"|"ALARM"|"INSUFFICIENT_DATA"
-  ),
-  notificationEnabled = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

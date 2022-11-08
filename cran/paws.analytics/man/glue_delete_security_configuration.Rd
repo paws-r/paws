@@ -9,17 +9,9 @@ glue_delete_security_configuration(Name)
 \arguments{
 \item{Name}{[required] The name of the security configuration to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a specified security configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_security_configuration(
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/delete_security_configuration.html} for full documentation.
+}
 \keyword{internal}

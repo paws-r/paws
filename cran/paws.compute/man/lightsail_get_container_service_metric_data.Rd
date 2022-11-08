@@ -5,8 +5,14 @@
 \title{Returns the data points of a specific metric of your Amazon Lightsail
 container service}
 \usage{
-lightsail_get_container_service_metric_data(serviceName, metricName,
-  startTime, endTime, period, statistics)
+lightsail_get_container_service_metric_data(
+  serviceName,
+  metricName,
+  startTime,
+  endTime,
+  period,
+  statistics
+)
 }
 \arguments{
 \item{serviceName}{[required] The name of the container service for which to get metric data.}
@@ -67,49 +73,9 @@ resources.
 statistical calculation.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  metricName = "CPUUtilization"|"MemoryUtilization",
-  metricData = list(
-    list(
-      average = 123.0,
-      maximum = 123.0,
-      minimum = 123.0,
-      sampleCount = 123.0,
-      sum = 123.0,
-      timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-    )
-  )
-)
-}
-}
 \description{
-Returns the data points of a specific metric of your Amazon Lightsail
-container service.
+Returns the data points of a specific metric of your Amazon Lightsail container service.
 
-Metrics report the utilization of your resources. Monitor and collect
-metric data regularly to maintain the reliability, availability, and
-performance of your resources.
+See \url{https://paws-r.github.io/docs/lightsail/get_container_service_metric_data.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_container_service_metric_data(
-  serviceName = "string",
-  metricName = "CPUUtilization"|"MemoryUtilization",
-  startTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  endTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  period = 123,
-  statistics = list(
-    "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
-  )
-)
-}
-}
-
 \keyword{internal}

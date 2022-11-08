@@ -2,38 +2,48 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_list_resource_types}
 \alias{ram_list_resource_types}
-\title{Lists the shareable resource types supported by AWS RAM}
+\title{Lists the resource types that can be shared by RAM}
 \usage{
-ram_list_resource_types(nextToken, maxResults)
+ram_list_resource_types(
+  nextToken = NULL,
+  maxResults = NULL,
+  resourceRegionScope = NULL
+)
 }
 \arguments{
-\item{nextToken}{The token for the next page of results.}
+\item{nextToken}{Specifies that you want to receive the next page of results. Valid only
+if you received a \code{NextToken} response in the previous request. If you
+did, it indicates that more output is available. Set this parameter to
+the value provided by the previous call's \code{NextToken} response to
+request the next page of results.}
 
-\item{maxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned \code{nextToken}
-value.}
+\item{maxResults}{Specifies the total number of results that you want included on each
+page of the response. If you do not include this parameter, it defaults
+to a value that is specific to the operation. If additional items exist
+beyond the number you specify, the \code{NextToken} response element is
+returned with a value (not null). Include the specified value as the
+\code{NextToken} request parameter in the next call to the operation to get
+the next part of the results. Note that the service might return fewer
+results than the maximum even when there are more results available. You
+should check \code{NextToken} after every operation to ensure that you
+receive all of the results.}
+
+\item{resourceRegionScope}{Specifies that you want the results to include only resources that have
+the specified scope.
+\itemize{
+\item \code{ALL} – the results include both global and regional resources or
+resource types.
+\item \code{GLOBAL} – the results include only global resources or resource
+types.
+\item \code{REGIONAL} – the results include only regional resources or resource
+types.
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  resourceTypes = list(
-    list(
-      resourceType = "string",
-      serviceName = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
+
+The default value is \code{ALL}.}
 }
 \description{
-Lists the shareable resource types supported by AWS RAM.
-}
-\section{Request syntax}{
-\preformatted{svc$list_resource_types(
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Lists the resource types that can be shared by RAM.
 
+See \url{https://paws-r.github.io/docs/ram/list_resource_types.html} for full documentation.
+}
 \keyword{internal}

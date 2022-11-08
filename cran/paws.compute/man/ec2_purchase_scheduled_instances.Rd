@@ -4,7 +4,11 @@
 \alias{ec2_purchase_scheduled_instances}
 \title{Purchases the Scheduled Instances with the specified schedule}
 \usage{
-ec2_purchase_scheduled_instances(ClientToken, DryRun, PurchaseRequests)
+ec2_purchase_scheduled_instances(
+  ClientToken = NULL,
+  DryRun = NULL,
+  PurchaseRequests
+)
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that ensures the idempotency of the
@@ -17,89 +21,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{PurchaseRequests}{[required] The purchase requests.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ScheduledInstanceSet = list(
-    list(
-      AvailabilityZone = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      HourlyPrice = "string",
-      InstanceCount = 123,
-      InstanceType = "string",
-      NetworkPlatform = "string",
-      NextSlotStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Platform = "string",
-      PreviousSlotEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Recurrence = list(
-        Frequency = "string",
-        Interval = 123,
-        OccurrenceDaySet = list(
-          123
-        ),
-        OccurrenceRelativeToEnd = TRUE|FALSE,
-        OccurrenceUnit = "string"
-      ),
-      ScheduledInstanceId = "string",
-      SlotDurationInHours = 123,
-      TermEndDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      TermStartDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      TotalScheduledInstanceHours = 123
-    )
-  )
-)
-}
-}
 \description{
 Purchases the Scheduled Instances with the specified schedule.
 
-Scheduled Instances enable you to purchase Amazon EC2 compute capacity
-by the hour for a one-year term. Before you can purchase a Scheduled
-Instance, you must call
-\code{\link[=ec2_describe_scheduled_instance_availability]{describe_scheduled_instance_availability}}
-to check for available schedules and obtain a purchase token. After you
-purchase a Scheduled Instance, you must call
-\code{\link[=ec2_run_scheduled_instances]{run_scheduled_instances}} during each
-scheduled time period.
-
-After you purchase a Scheduled Instance, you can't cancel, modify, or
-resell your purchase.
-}
-\section{Request syntax}{
-\preformatted{svc$purchase_scheduled_instances(
-  ClientToken = "string",
-  DryRun = TRUE|FALSE,
-  PurchaseRequests = list(
-    list(
-      InstanceCount = 123,
-      PurchaseToken = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example purchases a Scheduled Instance.
-svc$purchase_scheduled_instances(
-  PurchaseRequests = list(
-    list(
-      InstanceCount = 1L,
-      PurchaseToken = "eyJ2IjoiMSIsInMiOjEsImMiOi..."
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/purchase_scheduled_instances.html} for full documentation.
 }
 \keyword{internal}

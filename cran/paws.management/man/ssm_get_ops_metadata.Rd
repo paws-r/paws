@@ -5,7 +5,7 @@
 \title{View operational metadata related to an application in Application
 Manager}
 \usage{
-ssm_get_ops_metadata(OpsMetadataArn, MaxResults, NextToken)
+ssm_get_ops_metadata(OpsMetadataArn, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{OpsMetadataArn}{[required] The Amazon Resource Name (ARN) of an OpsMetadata Object to view.}
@@ -17,29 +17,9 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceId = "string",
-  Metadata = list(
-    list(
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-View operational metadata related to an application in Application
-Manager.
-}
-\section{Request syntax}{
-\preformatted{svc$get_ops_metadata(
-  OpsMetadataArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+View operational metadata related to an application in Application Manager.
 
+See \url{https://paws-r.github.io/docs/ssm/get_ops_metadata.html} for full documentation.
+}
 \keyword{internal}

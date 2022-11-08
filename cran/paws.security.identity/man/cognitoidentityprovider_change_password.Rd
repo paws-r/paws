@@ -4,29 +4,23 @@
 \alias{cognitoidentityprovider_change_password}
 \title{Changes the password for a specified user in a user pool}
 \usage{
-cognitoidentityprovider_change_password(PreviousPassword,
-  ProposedPassword, AccessToken)
+cognitoidentityprovider_change_password(
+  PreviousPassword,
+  ProposedPassword,
+  AccessToken
+)
 }
 \arguments{
 \item{PreviousPassword}{[required] The old password.}
 
 \item{ProposedPassword}{[required] The new password.}
 
-\item{AccessToken}{[required] The access token.}
-}
-\value{
-An empty list.
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose
+password you want to change.}
 }
 \description{
 Changes the password for a specified user in a user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$change_password(
-  PreviousPassword = "string",
-  ProposedPassword = "string",
-  AccessToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/change_password.html} for full documentation.
+}
 \keyword{internal}

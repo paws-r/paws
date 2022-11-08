@@ -14,33 +14,12 @@ ARNs by using the
 \code{\link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers}}
 operation.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the \emph{AWS General Reference}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Url = "string",
-  ClientIDList = list(
-    "string"
-  ),
-  ThumbprintList = list(
-    "string"
-  ),
-  CreateDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
-Returns information about the specified OpenID Connect (OIDC) provider
-resource object in IAM.
-}
-\section{Request syntax}{
-\preformatted{svc$get_open_id_connect_provider(
-  OpenIDConnectProviderArn = "string"
-)
-}
-}
+Returns information about the specified OpenID Connect (OIDC) provider resource object in IAM.
 
+See \url{https://paws-r.github.io/docs/iam/get_open_id_connect_provider.html} for full documentation.
+}
 \keyword{internal}

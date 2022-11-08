@@ -5,53 +5,18 @@
 \title{Returns the logging status of a bucket and the permissions users have to
 view and modify that status}
 \usage{
-s3_get_bucket_logging(Bucket, ExpectedBucketOwner)
+s3_get_bucket_logging(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name for which to get the logging information.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  LoggingEnabled = list(
-    TargetBucket = "string",
-    TargetGrants = list(
-      list(
-        Grantee = list(
-          DisplayName = "string",
-          EmailAddress = "string",
-          ID = "string",
-          Type = "CanonicalUser"|"AmazonCustomerByEmail"|"Group",
-          URI = "string"
-        ),
-        Permission = "FULL_CONTROL"|"READ"|"WRITE"
-      )
-    ),
-    TargetPrefix = "string"
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns the logging status of a bucket and the permissions users have to
-view and modify that status. To use GET, you must be the bucket owner.
+Returns the logging status of a bucket and the permissions users have to view and modify that status. To use GET, you must be the bucket owner.
 
-The following operations are related to
-\code{\link[=s3_get_bucket_logging]{get_bucket_logging}}:
-\itemize{
-\item \code{\link[=s3_create_bucket]{create_bucket}}
-\item \code{\link[=s3_put_bucket_logging]{put_bucket_logging}}
+See \url{https://paws-r.github.io/docs/s3/get_bucket_logging.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_bucket_logging(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -8,27 +8,15 @@ change}
 connect_disassociate_lambda_function(InstanceId, FunctionArn)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance..}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance..}
 
 \item{FunctionArn}{[required] The Amazon Resource Name (ARN) of the Lambda function being
 disassociated.}
 }
-\value{
-An empty list.
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Remove the Lambda function from the drop-down options available in the
-relevant contact flow blocks.
+See \url{https://paws-r.github.io/docs/connect/disassociate_lambda_function.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disassociate_lambda_function(
-  InstanceId = "string",
-  FunctionArn = "string"
-)
-}
-}
-
 \keyword{internal}

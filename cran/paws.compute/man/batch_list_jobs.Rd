@@ -2,10 +2,17 @@
 % Please edit documentation in R/batch_operations.R
 \name{batch_list_jobs}
 \alias{batch_list_jobs}
-\title{Returns a list of AWS Batch jobs}
+\title{Returns a list of Batch jobs}
 \usage{
-batch_list_jobs(jobQueue, arrayJobId, multiNodeJobId, jobStatus,
-  maxResults, nextToken)
+batch_list_jobs(
+  jobQueue = NULL,
+  arrayJobId = NULL,
+  multiNodeJobId = NULL,
+  jobStatus = NULL,
+  maxResults = NULL,
+  nextToken = NULL,
+  filters = NULL
+)
 }
 \arguments{
 \item{jobQueue}{The name or full Amazon Resource Name (ARN) of the job queue used to
@@ -18,14 +25,16 @@ parameter lists all child jobs from within the specified array.}
 parallel job ID with this parameter lists all nodes that are associated
 with the specified job.}
 
-\item{jobStatus}{The job status used to filter jobs in the specified queue. If you don't
-specify a status, only \code{RUNNING} jobs are returned.}
+\item{jobStatus}{The job status used to filter jobs in the specified queue. If the
+\code{filters} parameter is specified, the \code{jobStatus} parameter is ignored
+and jobs with any status are returned. If you don't specify a status,
+only \code{RUNNING} jobs are returned.}
 
 \item{maxResults}{The maximum number of results returned by \code{\link[=batch_list_jobs]{list_jobs}}
 in paginated output. When this parameter is used,
 \code{\link[=batch_list_jobs]{list_jobs}} only returns \code{maxResults} results in a
-single page along with a \code{nextToken} response element. The remaining
-results of the initial request can be seen by sending another
+single page and a \code{nextToken} response element. The remaining results of
+the initial request can be seen by sending another
 \code{\link[=batch_list_jobs]{list_jobs}} request with the returned \code{nextToken}
 value. This value can be between 1 and 100. If this parameter isn't
 used, then \code{\link[=batch_list_jobs]{list_jobs}} returns up to 100 results and
@@ -40,77 +49,58 @@ value. This value is \code{null} when there are no more results to return.
 This token should be treated as an opaque identifier that's only used to
 retrieve the next items in a list and not for other programmatic
 purposes.}
+
+\item{filters}{The filter to apply to the query. Only one filter can be used at a time.
+When the filter is used, \code{jobStatus} is ignored. The filter doesn't
+apply to child jobs in an array or multi-node parallel (MNP) jobs. The
+results are sorted by the \code{createdAt} field, with the most recent jobs
+being first.
+\subsection{JOB_NAME}{
+
+The value of the filter is a case-insensitive match for the job name. If
+the value ends with an asterisk (\emph{), the filter will match any job name
+that begins with the string before the '}'. This corresponds to the
+\code{jobName} value. For example, \code{test1} matches both \code{Test1} and \code{test1},
+and \verb{test1*} matches both \code{test1} and \code{Test10}. When the \code{JOB_NAME}
+filter is used, the results are grouped by the job name and version.
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  jobSummaryList = list(
-    list(
-      jobArn = "string",
-      jobId = "string",
-      jobName = "string",
-      createdAt = 123,
-      status = "SUBMITTED"|"PENDING"|"RUNNABLE"|"STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED",
-      statusReason = "string",
-      startedAt = 123,
-      stoppedAt = 123,
-      container = list(
-        exitCode = 123,
-        reason = "string"
-      ),
-      arrayProperties = list(
-        size = 123,
-        index = 123
-      ),
-      nodeProperties = list(
-        isMainNode = TRUE|FALSE,
-        numNodes = 123,
-        nodeIndex = 123
-      )
-    )
-  ),
-  nextToken = "string"
-)
+
+\subsection{JOB_DEFINITION}{
+
+The value for the filter is the name or Amazon Resource Name (ARN) of
+the job definition. This corresponds to the \code{jobDefinition} value. The
+value is case sensitive. When the value for the filter is the job
+definition name, the results include all the jobs that used any revision
+of that job definition name. If the value ends with an asterisk (\emph{),
+the filter will match any job definition name that begins with the
+string before the '}'. For example, \code{jd1} matches only \code{jd1}, and
+\verb{jd1*} matches both \code{jd1} and \code{jd1A}. The version of the job definition
+that's used doesn't affect the sort order. When the \code{JOB_DEFINITION}
+filter is used and the ARN is used (which is in the form
+\verb{arn:$\{Partition\}:batch:$\{Region\}:$\{Account\}:job-definition/$\{JobDefinitionName\}:$\{Revision\}}),
+the results include jobs that used the specified revision of the job
+definition. Asterisk (*) is not supported when the ARN is used.
 }
+
+\subsection{BEFORE_CREATED_AT}{
+
+The value for the filter is the time that's before the job was created.
+This corresponds to the \code{createdAt} value. The value is a string
+representation of the number of milliseconds since 00:00:00 UTC
+(midnight) on January 1, 1970.
+}
+
+\subsection{AFTER_CREATED_AT}{
+
+The value for the filter is the time that's after the job was created.
+This corresponds to the \code{createdAt} value. The value is a string
+representation of the number of milliseconds since 00:00:00 UTC
+(midnight) on January 1, 1970.
+}}
 }
 \description{
-Returns a list of AWS Batch jobs.
+Returns a list of Batch jobs.
 
-You must specify only one of the following items:
-\itemize{
-\item A job queue ID to return a list of jobs in that job queue
-\item A multi-node parallel job ID to return a list of that job's nodes
-\item An array job ID to return a list of that job's children
-}
-
-You can filter the results by job status with the \code{jobStatus} parameter.
-If you don't specify a status, only \code{RUNNING} jobs are returned.
-}
-\section{Request syntax}{
-\preformatted{svc$list_jobs(
-  jobQueue = "string",
-  arrayJobId = "string",
-  multiNodeJobId = "string",
-  jobStatus = "SUBMITTED"|"PENDING"|"RUNNABLE"|"STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED",
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example lists the running jobs in the HighPriority job queue.
-svc$list_jobs(
-  jobQueue = "HighPriority"
-)
-
-# This example lists jobs in the HighPriority job queue that are in the
-# SUBMITTED job status.
-svc$list_jobs(
-  jobQueue = "HighPriority",
-  jobStatus = "SUBMITTED"
-)
-}
-
+See \url{https://paws-r.github.io/docs/batch/list_jobs.html} for full documentation.
 }
 \keyword{internal}

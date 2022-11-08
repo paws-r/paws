@@ -93,9 +93,9 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 #'     enabled on a group with InsightsEnabled set to true.
 #' @param Tags A map that contains one or more tag keys and tag values to attach to an
 #' X-Ray group. For more information about ways to use tags, see [Tagging
-#' AWS
+#' Amazon Web Services
 #' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
-#' in the *AWS General Reference*.
+#' in the *Amazon Web Services General Reference*.
 #' 
 #' The following restrictions apply to tags:
 #' 
@@ -110,7 +110,8 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
-#' -   Don't use `aws:` as a prefix for keys; it's reserved for AWS use.
+#' -   Don't use `aws:` as a prefix for keys; it's reserved for Amazon Web
+#'     Services use.
 #'
 #' @return
 #' A list with the following syntax:
@@ -186,9 +187,9 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
 #' @param SamplingRule &#91;required&#93; The rule definition.
 #' @param Tags A map that contains one or more tag keys and tag values to attach to an
 #' X-Ray sampling rule. For more information about ways to use tags, see
-#' [Tagging AWS
+#' [Tagging Amazon Web Services
 #' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
-#' in the *AWS General Reference*.
+#' in the *Amazon Web Services General Reference*.
 #' 
 #' The following restrictions apply to tags:
 #' 
@@ -203,7 +204,8 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
-#' -   Don't use `aws:` as a prefix for keys; it's reserved for AWS use.
+#' -   Don't use `aws:` as a prefix for keys; it's reserved for Amazon Web
+#'     Services use.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1162,10 +1164,10 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
 #' Retrieves a document that describes services that process incoming
 #' requests, and downstream services that they call as a result. Root
 #' services process incoming requests and make calls to downstream
-#' services. Root services are applications that use the [AWS X-Ray
-#' SDK](https://docs.aws.amazon.com/xray/index.html). Downstream services
-#' can be other applications, AWS resources, HTTP web APIs, or SQL
-#' databases.
+#' services. Root services are applications that use the [Amazon Web
+#' Services X-Ray SDK](https://docs.aws.amazon.com/xray/index.html).
+#' Downstream services can be other applications, Amazon Web Services
+#' resources, HTTP web APIs, or SQL databases.
 #'
 #' @usage
 #' xray_get_service_graph(StartTime, EndTime, GroupName, GroupARN,
@@ -1587,7 +1589,7 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #' For a full list of indexed fields and keywords that you can use in
 #' filter expressions, see [Using Filter
 #' Expressions](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html)
-#' in the *AWS X-Ray Developer Guide*.
+#' in the *Amazon Web Services X-Ray Developer Guide*.
 #'
 #' @usage
 #' xray_get_trace_summaries(StartTime, EndTime, TimeRangeType, Sampling,
@@ -1827,12 +1829,12 @@ xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, S
 }
 .xray$operations$get_trace_summaries <- xray_get_trace_summaries
 
-#' Returns a list of tags that are applied to the specified AWS X-Ray group
-#' or sampling rule
+#' Returns a list of tags that are applied to the specified Amazon Web
+#' Services X-Ray group or sampling rule
 #'
 #' @description
-#' Returns a list of tags that are applied to the specified AWS X-Ray group
-#' or sampling rule.
+#' Returns a list of tags that are applied to the specified Amazon Web
+#' Services X-Ray group or sampling rule.
 #'
 #' @usage
 #' xray_list_tags_for_resource(ResourceARN, NextToken)
@@ -1892,13 +1894,13 @@ xray_list_tags_for_resource <- function(ResourceARN, NextToken = NULL) {
 #' @usage
 #' xray_put_encryption_config(KeyId, Type)
 #'
-#' @param KeyId An AWS KMS customer master key (CMK) in one of the following formats:
+#' @param KeyId An Amazon Web Services KMS key in one of the following formats:
 #' 
 #' -   **Alias** - The name of the key. For example, `alias/MyKey`.
 #' 
 #' -   **Key ID** - The KMS key ID of the key. For example,
-#'     `ae4aa6d49-a4d8-9df9-a475-4ff6d7898456`. AWS X-Ray does not support
-#'     asymmetric CMKs.
+#'     `ae4aa6d49-a4d8-9df9-a475-4ff6d7898456`. Amazon Web Services X-Ray
+#'     does not support asymmetric KMS keys.
 #' 
 #' -   **ARN** - The full Amazon Resource Name of the key ID or alias. For
 #'     example,
@@ -1949,10 +1951,10 @@ xray_put_encryption_config <- function(KeyId = NULL, Type) {
 }
 .xray$operations$put_encryption_config <- xray_put_encryption_config
 
-#' Used by the AWS X-Ray daemon to upload telemetry
+#' Used by the Amazon Web Services X-Ray daemon to upload telemetry
 #'
 #' @description
-#' Used by the AWS X-Ray daemon to upload telemetry.
+#' Used by the Amazon Web Services X-Ray daemon to upload telemetry.
 #'
 #' @usage
 #' xray_put_telemetry_records(TelemetryRecords, EC2InstanceId, Hostname,
@@ -2014,19 +2016,19 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
 }
 .xray$operations$put_telemetry_records <- xray_put_telemetry_records
 
-#' Uploads segment documents to AWS X-Ray
+#' Uploads segment documents to Amazon Web Services X-Ray
 #'
 #' @description
-#' Uploads segment documents to AWS X-Ray. The [X-Ray
+#' Uploads segment documents to Amazon Web Services X-Ray. The [X-Ray
 #' SDK](https://docs.aws.amazon.com/xray/index.html) generates segment
 #' documents and sends them to the X-Ray daemon, which uploads them in
 #' batches. A segment document can be a completed segment, an in-progress
 #' segment, or an array of subsegments.
 #' 
 #' Segments must include the following fields. For the full segment
-#' document schema, see [AWS X-Ray Segment
+#' document schema, see [Amazon Web Services X-Ray Segment
 #' Documents](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html)
-#' in the *AWS X-Ray Developer Guide*.
+#' in the *Amazon Web Services X-Ray Developer Guide*.
 #' 
 #' **Required segment document fields**
 #' 
@@ -2116,10 +2118,12 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 }
 .xray$operations$put_trace_segments <- xray_put_trace_segments
 
-#' Applies tags to an existing AWS X-Ray group or sampling rule
+#' Applies tags to an existing Amazon Web Services X-Ray group or sampling
+#' rule
 #'
 #' @description
-#' Applies tags to an existing AWS X-Ray group or sampling rule.
+#' Applies tags to an existing Amazon Web Services X-Ray group or sampling
+#' rule.
 #'
 #' @usage
 #' xray_tag_resource(ResourceARN, Tags)
@@ -2127,9 +2131,9 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Number (ARN) of an X-Ray group or sampling rule.
 #' @param Tags &#91;required&#93; A map that contains one or more tag keys and tag values to attach to an
 #' X-Ray group or sampling rule. For more information about ways to use
-#' tags, see [Tagging AWS
+#' tags, see [Tagging Amazon Web Services
 #' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
-#' in the *AWS General Reference*.
+#' in the *Amazon Web Services General Reference*.
 #' 
 #' The following restrictions apply to tags:
 #' 
@@ -2144,8 +2148,8 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 #' 
 #' -   Tag keys and values are case sensitive.
 #' 
-#' -   Don't use `aws:` as a prefix for keys; it's reserved for AWS use.
-#'     You cannot edit or delete system tags.
+#' -   Don't use `aws:` as a prefix for keys; it's reserved for Amazon Web
+#'     Services use. You cannot edit or delete system tags.
 #'
 #' @return
 #' An empty list.
@@ -2183,11 +2187,11 @@ xray_tag_resource <- function(ResourceARN, Tags) {
 }
 .xray$operations$tag_resource <- xray_tag_resource
 
-#' Removes tags from an AWS X-Ray group or sampling rule
+#' Removes tags from an Amazon Web Services X-Ray group or sampling rule
 #'
 #' @description
-#' Removes tags from an AWS X-Ray group or sampling rule. You cannot edit
-#' or delete system tags (those with an `aws:` prefix).
+#' Removes tags from an Amazon Web Services X-Ray group or sampling rule.
+#' You cannot edit or delete system tags (those with an `aws:` prefix).
 #'
 #' @usage
 #' xray_untag_resource(ResourceARN, TagKeys)

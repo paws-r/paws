@@ -2,81 +2,50 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_encryption}
 \alias{s3_put_bucket_encryption}
-\title{This operation uses the encryption subresource to configure default
+\title{This action uses the encryption subresource to configure default
 encryption and Amazon S3 Bucket Key for an existing bucket}
 \usage{
-s3_put_bucket_encryption(Bucket, ContentMD5,
-  ServerSideEncryptionConfiguration, ExpectedBucketOwner)
+s3_put_bucket_encryption(
+  Bucket,
+  ContentMD5 = NULL,
+  ChecksumAlgorithm = NULL,
+  ServerSideEncryptionConfiguration,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] Specifies default encryption for a bucket using server-side encryption
-with Amazon S3-managed keys (SSE-S3) or customer master keys stored in
-AWS KMS (SSE-KMS). For information about the Amazon S3 default
-encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+with Amazon S3-managed keys (SSE-S3) or customer managed keys (SSE-KMS).
+For information about the Amazon S3 default encryption feature, see
+Amazon S3 Default Bucket Encryption in the \emph{Amazon S3 User Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the server-side encryption
 configuration.
 
-For requests made using the AWS Command Line Interface (CLI) or AWS
-SDKs, this field is calculated automatically.}
+For requests made using the Amazon Web Services Command Line Interface
+(CLI) or Amazon Web Services SDKs, this field is calculated
+automatically.}
+
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+using the SDK. This header will not provide any additional functionality
+if not using the SDK. When sending this header, there must be a
+corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+Otherwise, Amazon S3 fails the request with the HTTP status code
+\verb{400 Bad Request}. For more information, see Checking object integrity
+in the \emph{Amazon S3 User Guide}.
+
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.}
 
 \item{ServerSideEncryptionConfiguration}{[required]}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-An empty list.
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-This operation uses the \code{encryption} subresource to configure default
-encryption and Amazon S3 Bucket Key for an existing bucket.
+This action uses the \code{encryption} subresource to configure default encryption and Amazon S3 Bucket Key for an existing bucket.
 
-Default encryption for a bucket can use server-side encryption with
-Amazon S3-managed keys (SSE-S3) or AWS KMS customer master keys
-(SSE-KMS). If you specify default encryption using SSE-KMS, you can also
-configure Amazon S3 Bucket Key. For information about default
-encryption, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 default bucket encryption}
-in the \emph{Amazon Simple Storage Service Developer Guide}. For more
-information about S3 Bucket Keys, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html}{Amazon S3 Bucket Keys}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-This operation requires AWS Signature Version 4. For more information,
-see Authenticating Requests (AWS Signature Version 4).
-
-To use this operation, you must have permissions to perform the
-\code{s3:PutEncryptionConfiguration} action. The bucket owner has this
-permission by default. The bucket owner can grant this permission to
-others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}
-in the Amazon Simple Storage Service Developer Guide.
-
-\strong{Related Resources}
-\itemize{
-\item \code{\link[=s3_get_bucket_encryption]{get_bucket_encryption}}
-\item \code{\link[=s3_delete_bucket_encryption]{delete_bucket_encryption}}
+See \url{https://paws-r.github.io/docs/s3/put_bucket_encryption.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$put_bucket_encryption(
-  Bucket = "string",
-  ContentMD5 = "string",
-  ServerSideEncryptionConfiguration = list(
-    Rules = list(
-      list(
-        ApplyServerSideEncryptionByDefault = list(
-          SSEAlgorithm = "AES256"|"aws:kms",
-          KMSMasterKeyID = "string"
-        ),
-        BucketKeyEnabled = TRUE|FALSE
-      )
-    )
-  ),
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

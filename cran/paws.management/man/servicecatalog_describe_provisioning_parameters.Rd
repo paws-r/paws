@@ -5,9 +5,15 @@
 \title{Gets information about the configuration required to provision the
 specified product using the specified provisioning artifact}
 \usage{
-servicecatalog_describe_provisioning_parameters(AcceptLanguage,
-  ProductId, ProductName, ProvisioningArtifactId,
-  ProvisioningArtifactName, PathId, PathName)
+servicecatalog_describe_provisioning_parameters(
+  AcceptLanguage = NULL,
+  ProductId = NULL,
+  ProductName = NULL,
+  ProvisioningArtifactId = NULL,
+  ProvisioningArtifactName = NULL,
+  PathId = NULL,
+  PathName = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -36,89 +42,9 @@ provide the name or ID, but not both.}
 
 \item{PathName}{The name of the path. You must provide the name or ID, but not both.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProvisioningArtifactParameters = list(
-    list(
-      ParameterKey = "string",
-      DefaultValue = "string",
-      ParameterType = "string",
-      IsNoEcho = TRUE|FALSE,
-      Description = "string",
-      ParameterConstraints = list(
-        AllowedValues = list(
-          "string"
-        ),
-        AllowedPattern = "string",
-        ConstraintDescription = "string",
-        MaxLength = "string",
-        MinLength = "string",
-        MaxValue = "string",
-        MinValue = "string"
-      )
-    )
-  ),
-  ConstraintSummaries = list(
-    list(
-      Type = "string",
-      Description = "string"
-    )
-  ),
-  UsageInstructions = list(
-    list(
-      Type = "string",
-      Value = "string"
-    )
-  ),
-  TagOptions = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ProvisioningArtifactPreferences = list(
-    StackSetAccounts = list(
-      "string"
-    ),
-    StackSetRegions = list(
-      "string"
-    )
-  ),
-  ProvisioningArtifactOutputs = list(
-    list(
-      Key = "string",
-      Description = "string"
-    )
-  )
-)
-}
-}
 \description{
-Gets information about the configuration required to provision the
-specified product using the specified provisioning artifact.
+Gets information about the configuration required to provision the specified product using the specified provisioning artifact.
 
-If the output contains a TagOption key with an empty list of values,
-there is a TagOption conflict for that key. The end user cannot take
-action to fix the conflict, and launch is not blocked. In subsequent
-calls to \code{\link[=servicecatalog_provision_product]{provision_product}}, do not
-include conflicted TagOption keys as tags, or this causes the error
-"Parameter validation failed: Missing required parameter in
-Tags[\emph{N}]:\emph{Value}". Tag the provisioned product with the value
-\code{sc-tagoption-conflict-portfolioId-productId}.
+See \url{https://paws-r.github.io/docs/servicecatalog/describe_provisioning_parameters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_provisioning_parameters(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  ProductName = "string",
-  ProvisioningArtifactId = "string",
-  ProvisioningArtifactName = "string",
-  PathId = "string",
-  PathName = "string"
-)
-}
-}
-
 \keyword{internal}

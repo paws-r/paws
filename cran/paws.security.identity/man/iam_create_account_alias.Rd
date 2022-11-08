@@ -2,7 +2,7 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_create_account_alias}
 \alias{iam_create_account_alias}
-\title{Creates an alias for your AWS account}
+\title{Creates an alias for your Amazon Web Services account}
 \usage{
 iam_create_account_alias(AccountAlias)
 }
@@ -13,29 +13,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of lowercase letters, digits, and dashes. You cannot start or
 finish with a dash, nor can you have two dashes in a row.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates an alias for your AWS account. For information about using an
-AWS account alias, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html}{Using an Alias for Your AWS Account ID}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_account_alias(
-  AccountAlias = "string"
-)
-}
-}
+Creates an alias for your Amazon Web Services account. For information about using an Amazon Web Services account alias, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html}{Using an alias for your Amazon Web Services account ID} in the \emph{IAM User Guide}.
 
-\examples{
-\dontrun{
-# The following command associates the alias examplecorp to your AWS
-# account.
-svc$create_account_alias(
-  AccountAlias = "examplecorp"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/create_account_alias.html} for full documentation.
 }
 \keyword{internal}

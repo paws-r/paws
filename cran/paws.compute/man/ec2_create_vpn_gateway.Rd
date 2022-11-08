@@ -4,8 +4,13 @@
 \alias{ec2_create_vpn_gateway}
 \title{Creates a virtual private gateway}
 \usage{
-ec2_create_vpn_gateway(AvailabilityZone, Type, TagSpecifications,
-  AmazonSideAsn, DryRun)
+ec2_create_vpn_gateway(
+  AvailabilityZone = NULL,
+  Type,
+  TagSpecifications = NULL,
+  AmazonSideAsn = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{AvailabilityZone}{The Availability Zone for the virtual private gateway.}
@@ -26,57 +31,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VpnGateway = list(
-    AvailabilityZone = "string",
-    State = "pending"|"available"|"deleting"|"deleted",
-    Type = "ipsec.1",
-    VpcAttachments = list(
-      list(
-        State = "attaching"|"attached"|"detaching"|"detached",
-        VpcId = "string"
-      )
-    ),
-    VpnGatewayId = "string",
-    AmazonSideAsn = 123,
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a virtual private gateway. A virtual private gateway is the
-endpoint on the VPC side of your VPN connection. You can create a
-virtual private gateway before creating the VPC itself.
+Creates a virtual private gateway. A virtual private gateway is the endpoint on the VPC side of your VPN connection. You can create a virtual private gateway before creating the VPC itself.
 
-For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
-\emph{AWS Site-to-Site VPN User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/create_vpn_gateway.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_vpn_gateway(
-  AvailabilityZone = "string",
-  Type = "ipsec.1",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  AmazonSideAsn = 123,
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

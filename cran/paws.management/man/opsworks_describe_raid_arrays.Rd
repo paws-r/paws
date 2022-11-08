@@ -4,7 +4,11 @@
 \alias{opsworks_describe_raid_arrays}
 \title{Describe an instance's RAID arrays}
 \usage{
-opsworks_describe_raid_arrays(InstanceId, StackId, RaidArrayIds)
+opsworks_describe_raid_arrays(
+  InstanceId = NULL,
+  StackId = NULL,
+  RaidArrayIds = NULL
+)
 }
 \arguments{
 \item{InstanceId}{The instance ID. If you use this parameter,
@@ -18,47 +22,9 @@ descriptions of the RAID arrays associated with the specified instance.}
 descriptions of the specified arrays. Otherwise, it returns a
 description of every array.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RaidArrays = list(
-    list(
-      RaidArrayId = "string",
-      InstanceId = "string",
-      Name = "string",
-      RaidLevel = 123,
-      NumberOfDisks = 123,
-      Size = 123,
-      Device = "string",
-      MountPoint = "string",
-      AvailabilityZone = "string",
-      CreatedAt = "string",
-      StackId = "string",
-      VolumeType = "string",
-      Iops = 123
-    )
-  )
-)
-}
-}
 \description{
 Describe an instance's RAID arrays.
 
-This call accepts only one resource-identifying parameter.
-
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information about
-user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/describe_raid_arrays.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_raid_arrays(
-  InstanceId = "string",
-  StackId = "string",
-  RaidArrayIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

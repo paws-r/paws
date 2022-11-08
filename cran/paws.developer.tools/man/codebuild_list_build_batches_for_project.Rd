@@ -4,8 +4,13 @@
 \alias{codebuild_list_build_batches_for_project}
 \title{Retrieves the identifiers of the build batches for a specific project}
 \usage{
-codebuild_list_build_batches_for_project(projectName, filter,
-  maxResults, sortOrder, nextToken)
+codebuild_list_build_batches_for_project(
+  projectName = NULL,
+  filter = NULL,
+  maxResults = NULL,
+  sortOrder = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{projectName}{The name of the project.}
@@ -27,29 +32,9 @@ by identifier.
 This specifies the next item to return. To return the beginning of the
 list, exclude this parameter.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ids = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Retrieves the identifiers of the build batches for a specific project.
-}
-\section{Request syntax}{
-\preformatted{svc$list_build_batches_for_project(
-  projectName = "string",
-  filter = list(
-    status = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED"
-  ),
-  maxResults = 123,
-  sortOrder = "ASCENDING"|"DESCENDING",
-  nextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/list_build_batches_for_project.html} for full documentation.
+}
 \keyword{internal}

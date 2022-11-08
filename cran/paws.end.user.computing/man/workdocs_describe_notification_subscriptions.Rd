@@ -4,8 +4,11 @@
 \alias{workdocs_describe_notification_subscriptions}
 \title{Lists the specified notification subscriptions}
 \usage{
-workdocs_describe_notification_subscriptions(OrganizationId, Marker,
-  Limit)
+workdocs_describe_notification_subscriptions(
+  OrganizationId,
+  Marker = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{OrganizationId}{[required] The ID of the organization.}
@@ -15,29 +18,9 @@ previous call.)}
 
 \item{Limit}{The maximum number of items to return with this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Subscriptions = list(
-    list(
-      SubscriptionId = "string",
-      EndPoint = "string",
-      Protocol = "HTTPS"
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
 Lists the specified notification subscriptions.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_notification_subscriptions(
-  OrganizationId = "string",
-  Marker = "string",
-  Limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workdocs/describe_notification_subscriptions.html} for full documentation.
+}
 \keyword{internal}

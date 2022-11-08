@@ -5,8 +5,15 @@
 \title{Creates an alias for the specified version of the bot or replaces an
 alias for the specified bot}
 \usage{
-lexmodelbuildingservice_put_bot_alias(name, description, botVersion,
-  botName, checksum, conversationLogs, tags)
+lexmodelbuildingservice_put_bot_alias(
+  name,
+  description = NULL,
+  botVersion,
+  botName,
+  checksum = NULL,
+  conversationLogs = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name of the alias. The name is \emph{not} case sensitive.}
@@ -36,74 +43,9 @@ create an alias, you can't use the
 update the tags on a bot alias. To update tags, use the
 \code{\link[=lexmodelbuildingservice_tag_resource]{tag_resource}} operation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  name = "string",
-  description = "string",
-  botVersion = "string",
-  botName = "string",
-  lastUpdatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  checksum = "string",
-  conversationLogs = list(
-    logSettings = list(
-      list(
-        logType = "AUDIO"|"TEXT",
-        destination = "CLOUDWATCH_LOGS"|"S3",
-        kmsKeyArn = "string",
-        resourceArn = "string",
-        resourcePrefix = "string"
-      )
-    ),
-    iamRoleArn = "string"
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates an alias for the specified version of the bot or replaces an
-alias for the specified bot. To change the version of the bot that the
-alias points to, replace the alias. For more information about aliases,
-see versioning-aliases.
+Creates an alias for the specified version of the bot or replaces an alias for the specified bot. To change the version of the bot that the alias points to, replace the alias. For more information about aliases, see versioning-aliases.
 
-This operation requires permissions for the \code{lex:PutBotAlias} action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/put_bot_alias.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_bot_alias(
-  name = "string",
-  description = "string",
-  botVersion = "string",
-  botName = "string",
-  checksum = "string",
-  conversationLogs = list(
-    logSettings = list(
-      list(
-        logType = "AUDIO"|"TEXT",
-        destination = "CLOUDWATCH_LOGS"|"S3",
-        kmsKeyArn = "string",
-        resourceArn = "string"
-      )
-    ),
-    iamRoleArn = "string"
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

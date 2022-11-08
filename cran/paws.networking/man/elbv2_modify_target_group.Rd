@@ -5,20 +5,30 @@
 \title{Modifies the health checks used when evaluating the health state of the
 targets in the specified target group}
 \usage{
-elbv2_modify_target_group(TargetGroupArn, HealthCheckProtocol,
-  HealthCheckPort, HealthCheckPath, HealthCheckEnabled,
-  HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds,
-  HealthyThresholdCount, UnhealthyThresholdCount, Matcher)
+elbv2_modify_target_group(
+  TargetGroupArn,
+  HealthCheckProtocol = NULL,
+  HealthCheckPort = NULL,
+  HealthCheckPath = NULL,
+  HealthCheckEnabled = NULL,
+  HealthCheckIntervalSeconds = NULL,
+  HealthCheckTimeoutSeconds = NULL,
+  HealthyThresholdCount = NULL,
+  UnhealthyThresholdCount = NULL,
+  Matcher = NULL
+)
 }
 \arguments{
 \item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 
 \item{HealthCheckProtocol}{The protocol the load balancer uses when performing health checks on
-targets. The TCP protocol is supported for health checks only if the
-protocol of the target group is TCP, TLS, UDP, or TCP_UDP. The GENEVE,
-TLS, UDP, and TCP_UDP protocols are not supported for health checks.
-
-With Network Load Balancers, you can't modify this setting.}
+targets. For Application Load Balancers, the default is HTTP. For
+Network Load Balancers and Gateway Load Balancers, the default is TCP.
+The TCP protocol is not supported for health checks if the protocol of
+the target group is HTTP or HTTPS. It is supported for health checks
+only if the protocol of the target group is TCP, TLS, UDP, or TCP_UDP.
+The GENEVE, TLS, UDP, and TCP_UDP protocols are not supported for health
+checks.}
 
 \item{HealthCheckPort}{The port the load balancer uses when performing health checks on
 targets.}
@@ -29,20 +39,17 @@ targets.
 [HTTP1 or HTTP2 protocol version] The ping path. The default is /.
 
 [GRPC protocol version] The path of a custom health check method with
-the format /package.service/method. The default is /AWS.ALB/healthcheck.}
+the format /package.service/method. The default is /Amazon Web
+Services.ALB/healthcheck.}
 
 \item{HealthCheckEnabled}{Indicates whether health checks are enabled.}
 
 \item{HealthCheckIntervalSeconds}{The approximate amount of time, in seconds, between health checks of an
 individual target. For TCP health checks, the supported values are 10 or
-30 seconds.
-
-With Network Load Balancers, you can't modify this setting.}
+30 seconds.}
 
 \item{HealthCheckTimeoutSeconds}{[HTTP/HTTPS health checks] The amount of time, in seconds, during
-which no response means a failed health check.
-
-With Network Load Balancers, you can't modify this setting.}
+which no response means a failed health check.}
 
 \item{HealthyThresholdCount}{The number of consecutive health checks successes required before
 considering an unhealthy target healthy.}
@@ -52,74 +59,11 @@ considering the target unhealthy. For target groups with a protocol of
 TCP or TLS, this value must be the same as the healthy threshold count.}
 
 \item{Matcher}{[HTTP/HTTPS health checks] The HTTP or gRPC codes to use when checking
-for a successful response from a target.
-
-With Network Load Balancers, you can't modify this setting.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TargetGroups = list(
-    list(
-      TargetGroupArn = "string",
-      TargetGroupName = "string",
-      Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-      Port = 123,
-      VpcId = "string",
-      HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-      HealthCheckPort = "string",
-      HealthCheckEnabled = TRUE|FALSE,
-      HealthCheckIntervalSeconds = 123,
-      HealthCheckTimeoutSeconds = 123,
-      HealthyThresholdCount = 123,
-      UnhealthyThresholdCount = 123,
-      HealthCheckPath = "string",
-      Matcher = list(
-        HttpCode = "string",
-        GrpcCode = "string"
-      ),
-      LoadBalancerArns = list(
-        "string"
-      ),
-      TargetType = "instance"|"ip"|"lambda",
-      ProtocolVersion = "string"
-    )
-  )
-)
-}
+for a successful response from a target.}
 }
 \description{
-Modifies the health checks used when evaluating the health state of the
-targets in the specified target group.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_target_group(
-  TargetGroupArn = "string",
-  HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-  HealthCheckPort = "string",
-  HealthCheckPath = "string",
-  HealthCheckEnabled = TRUE|FALSE,
-  HealthCheckIntervalSeconds = 123,
-  HealthCheckTimeoutSeconds = 123,
-  HealthyThresholdCount = 123,
-  UnhealthyThresholdCount = 123,
-  Matcher = list(
-    HttpCode = "string",
-    GrpcCode = "string"
-  )
-)
-}
-}
+Modifies the health checks used when evaluating the health state of the targets in the specified target group.
 
-\examples{
-\dontrun{
-# This example changes the configuration of the health checks used to
-# evaluate the health of the targets for the specified target group.
-svc$modify_target_group(
-  HealthCheckPort = "443",
-  HealthCheckProtocol = "HTTPS",
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/modify_target_group.html} for full documentation.
 }
 \keyword{internal}

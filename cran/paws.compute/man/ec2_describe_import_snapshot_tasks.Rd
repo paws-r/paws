@@ -4,8 +4,13 @@
 \alias{ec2_describe_import_snapshot_tasks}
 \title{Describes your import snapshot tasks}
 \usage{
-ec2_describe_import_snapshot_tasks(DryRun, Filters, ImportTaskIds,
-  MaxResults, NextToken)
+ec2_describe_import_snapshot_tasks(
+  DryRun = NULL,
+  Filters = NULL,
+  ImportTaskIds = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -23,61 +28,9 @@ value.}
 
 \item{NextToken}{A token that indicates the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ImportSnapshotTasks = list(
-    list(
-      Description = "string",
-      ImportTaskId = "string",
-      SnapshotTaskDetail = list(
-        Description = "string",
-        DiskImageSize = 123.0,
-        Encrypted = TRUE|FALSE,
-        Format = "string",
-        KmsKeyId = "string",
-        Progress = "string",
-        SnapshotId = "string",
-        Status = "string",
-        StatusMessage = "string",
-        Url = "string",
-        UserBucket = list(
-          S3Bucket = "string",
-          S3Key = "string"
-        )
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes your import snapshot tasks.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_import_snapshot_tasks(
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ImportTaskIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_import_snapshot_tasks.html} for full documentation.
+}
 \keyword{internal}

@@ -9,22 +9,9 @@ storagegateway_delete_automatic_tape_creation_policy(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Deletes the automatic tape creation policy of a gateway. If you delete
-this policy, new virtual tapes must be created manually. Use the Amazon
-Resource Name (ARN) of the gateway in your request to remove the policy.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_automatic_tape_creation_policy(
-  GatewayARN = "string"
-)
-}
-}
+Deletes the automatic tape creation policy of a gateway. If you delete this policy, new virtual tapes must be created manually. Use the Amazon Resource Name (ARN) of the gateway in your request to remove the policy.
 
+See \url{https://paws-r.github.io/docs/storagegateway/delete_automatic_tape_creation_policy.html} for full documentation.
+}
 \keyword{internal}

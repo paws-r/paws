@@ -4,42 +4,16 @@
 \alias{elasticbeanstalk_delete_configuration_template}
 \title{Deletes the specified configuration template}
 \usage{
-elasticbeanstalk_delete_configuration_template(ApplicationName,
-  TemplateName)
+elasticbeanstalk_delete_configuration_template(ApplicationName, TemplateName)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application to delete the configuration template from.}
 
 \item{TemplateName}{[required] The name of the configuration template to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified configuration template.
 
-When you launch an environment using a configuration template, the
-environment gets a copy of the template. You can delete or modify the
-environment's copy of the template without affecting the running
-environment.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_configuration_template(
-  ApplicationName = "string",
-  TemplateName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation deletes a configuration template named
-# my-template for an application named my-app:
-svc$delete_configuration_template(
-  ApplicationName = "my-app",
-  TemplateName = "my-template"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/delete_configuration_template.html} for full documentation.
 }
 \keyword{internal}

@@ -2,42 +2,14 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_get_account_settings}
 \alias{lambda_get_account_settings}
-\title{Retrieves details about your account's limits and usage in an AWS Region}
+\title{Retrieves details about your account's limits and usage in an Amazon Web
+Services Region}
 \usage{
 lambda_get_account_settings()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountLimit = list(
-    TotalCodeSize = 123,
-    CodeSizeUnzipped = 123,
-    CodeSizeZipped = 123,
-    ConcurrentExecutions = 123,
-    UnreservedConcurrentExecutions = 123
-  ),
-  AccountUsage = list(
-    TotalCodeSize = 123,
-    FunctionCount = 123
-  )
-)
-}
-}
 \description{
-Retrieves details about your account's
-\href{https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html}{limits}
-and usage in an AWS Region.
-}
-\section{Request syntax}{
-\preformatted{svc$get_account_settings()
-}
-}
+Retrieves details about your account's \href{https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html}{limits} and usage in an Amazon Web Services Region.
 
-\examples{
-\dontrun{
-# This operation takes no parameters and returns details about storage and
-# concurrency quotas in the current Region.
-svc$get_account_settings()
-}
-
+See \url{https://paws-r.github.io/docs/lambda/get_account_settings.html} for full documentation.
 }
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Creates a data feed for Spot Instances, enabling you to view Spot
 Instance usage logs}
 \usage{
-ec2_create_spot_datafeed_subscription(Bucket, DryRun, Prefix)
+ec2_create_spot_datafeed_subscription(Bucket, DryRun = NULL, Prefix = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The name of the Amazon S3 bucket in which to store the Spot Instance
@@ -19,44 +19,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Prefix}{The prefix for the data feed file names.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SpotDatafeedSubscription = list(
-    Bucket = "string",
-    Fault = list(
-      Code = "string",
-      Message = "string"
-    ),
-    OwnerId = "string",
-    Prefix = "string",
-    State = "Active"|"Inactive"
-  )
-)
-}
-}
 \description{
-Creates a data feed for Spot Instances, enabling you to view Spot
-Instance usage logs. You can create one data feed per AWS account. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance data feed}
-in the \emph{Amazon EC2 User Guide for Linux Instances}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_spot_datafeed_subscription(
-  Bucket = "string",
-  DryRun = TRUE|FALSE,
-  Prefix = "string"
-)
-}
-}
+Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs. You can create one data feed per Amazon Web Services account. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance data feed} in the \emph{Amazon EC2 User Guide for Linux Instances}.
 
-\examples{
-\dontrun{
-# This example creates a Spot Instance data feed for your AWS account.
-svc$create_spot_datafeed_subscription(
-  Bucket = "my-s3-bucket",
-  Prefix = "spotdata"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/create_spot_datafeed_subscription.html} for full documentation.
 }
 \keyword{internal}

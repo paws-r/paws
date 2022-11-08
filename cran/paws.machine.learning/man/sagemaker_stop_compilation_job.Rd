@@ -9,27 +9,9 @@ sagemaker_stop_compilation_job(CompilationJobName)
 \arguments{
 \item{CompilationJobName}{[required] The name of the model compilation job to stop.}
 }
-\value{
-An empty list.
-}
 \description{
 Stops a model compilation job.
 
-To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal.
-This gracefully shuts the job down. If the job hasn't stopped, it sends
-the SIGKILL signal.
-
-When it receives a
-\code{\link[=sagemaker_stop_compilation_job]{stop_compilation_job}} request, Amazon
-SageMaker changes the CompilationJobSummary$CompilationJobStatus of the
-job to \code{Stopping}. After Amazon SageMaker stops the job, it sets the
-CompilationJobSummary$CompilationJobStatus to \code{Stopped}.
+See \url{https://paws-r.github.io/docs/sagemaker/stop_compilation_job.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$stop_compilation_job(
-  CompilationJobName = "string"
-)
-}
-}
-
 \keyword{internal}

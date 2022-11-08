@@ -4,10 +4,17 @@
 \alias{licensemanager_update_license_configuration}
 \title{Modifies the attributes of an existing license configuration}
 \usage{
-licensemanager_update_license_configuration(LicenseConfigurationArn,
-  LicenseConfigurationStatus, LicenseRules, LicenseCount,
-  LicenseCountHardLimit, Name, Description, ProductInformationList,
-  DisassociateWhenNotFound)
+licensemanager_update_license_configuration(
+  LicenseConfigurationArn,
+  LicenseConfigurationStatus = NULL,
+  LicenseRules = NULL,
+  LicenseCount = NULL,
+  LicenseCountHardLimit = NULL,
+  Name = NULL,
+  Description = NULL,
+  ProductInformationList = NULL,
+  DisassociateWhenNotFound = NULL
+)
 }
 \arguments{
 \item{LicenseConfigurationArn}{[required] Amazon Resource Name (ARN) of the license configuration.}
@@ -29,40 +36,9 @@ license configuration is licenseAffinityToHost.}
 
 \item{DisassociateWhenNotFound}{When true, disassociates a resource when software is uninstalled.}
 }
-\value{
-An empty list.
-}
 \description{
 Modifies the attributes of an existing license configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$update_license_configuration(
-  LicenseConfigurationArn = "string",
-  LicenseConfigurationStatus = "AVAILABLE"|"DISABLED",
-  LicenseRules = list(
-    "string"
-  ),
-  LicenseCount = 123,
-  LicenseCountHardLimit = TRUE|FALSE,
-  Name = "string",
-  Description = "string",
-  ProductInformationList = list(
-    list(
-      ResourceType = "string",
-      ProductInformationFilterList = list(
-        list(
-          ProductInformationFilterName = "string",
-          ProductInformationFilterValue = list(
-            "string"
-          ),
-          ProductInformationFilterComparator = "string"
-        )
-      )
-    )
-  ),
-  DisassociateWhenNotFound = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/update_license_configuration.html} for full documentation.
+}
 \keyword{internal}

@@ -9,22 +9,9 @@ opsworks_reboot_instance(InstanceId)
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
 }
-\value{
-An empty list.
-}
 \description{
 Reboots a specified instance. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html}{Starting, Stopping, and Rebooting Instances}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/reboot_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$reboot_instance(
-  InstanceId = "string"
-)
-}
-}
-
 \keyword{internal}

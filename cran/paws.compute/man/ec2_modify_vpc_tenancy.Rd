@@ -4,7 +4,7 @@
 \alias{ec2_modify_vpc_tenancy}
 \title{Modifies the instance tenancy attribute of the specified VPC}
 \usage{
-ec2_modify_vpc_tenancy(VpcId, InstanceTenancy, DryRun)
+ec2_modify_vpc_tenancy(VpcId, InstanceTenancy, DryRun = NULL)
 }
 \arguments{
 \item{VpcId}{[required] The ID of the VPC.}
@@ -16,32 +16,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReturnValue = TRUE|FALSE
-)
-}
-}
 \description{
-Modifies the instance tenancy attribute of the specified VPC. You can
-change the instance tenancy attribute of a VPC to \code{default} only. You
-cannot change the instance tenancy attribute to \code{dedicated}.
+Modifies the instance tenancy attribute of the specified VPC. You can change the instance tenancy attribute of a VPC to \code{default} only. You cannot change the instance tenancy attribute to \code{dedicated}.
 
-After you modify the tenancy of the VPC, any new instances that you
-launch into the VPC have a tenancy of \code{default}, unless you specify
-otherwise during launch. The tenancy of any existing instances in the
-VPC is not affected.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html}{Dedicated Instances}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/modify_vpc_tenancy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_vpc_tenancy(
-  VpcId = "string",
-  InstanceTenancy = "default",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

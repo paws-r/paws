@@ -2,14 +2,19 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_trial}
 \alias{sagemaker_create_trial}
-\title{Creates an Amazon SageMaker trial}
+\title{Creates an SageMaker trial}
 \usage{
-sagemaker_create_trial(TrialName, DisplayName, ExperimentName,
-  MetadataProperties, Tags)
+sagemaker_create_trial(
+  TrialName,
+  DisplayName = NULL,
+  ExperimentName,
+  MetadataProperties = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{TrialName}{[required] The name of the trial. The name must be unique in your AWS account and
-is not case-sensitive.}
+\item{TrialName}{[required] The name of the trial. The name must be unique in your Amazon Web
+Services account and is not case-sensitive.}
 
 \item{DisplayName}{The name of the trial as displayed. The name doesn't need to be unique.
 If \code{DisplayName} isn't specified, \code{TrialName} is displayed.}
@@ -21,50 +26,9 @@ If \code{DisplayName} isn't specified, \code{TrialName} is displayed.}
 \item{Tags}{A list of tags to associate with the trial. You can use
 \code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrialArn = "string"
-)
-}
-}
 \description{
-Creates an Amazon SageMaker \emph{trial}. A trial is a set of steps called
-\emph{trial components} that produce a machine learning model. A trial is
-part of a single Amazon SageMaker \emph{experiment}.
+Creates an SageMaker \emph{trial}. A trial is a set of steps called \emph{trial components} that produce a machine learning model. A trial is part of a single SageMaker \emph{experiment}.
 
-When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK,
-all experiments, trials, and trial components are automatically tracked,
-logged, and indexed. When you use the AWS SDK for Python (Boto), you
-must use the logging APIs provided by the SDK.
-
-You can add tags to a trial and then use the
-\code{\link[=sagemaker_search]{search}} API to search for the tags.
-
-To get a list of all your trials, call the
-\code{\link[=sagemaker_list_trials]{list_trials}} API. To view a trial's
-properties, call the \code{\link[=sagemaker_describe_trial]{describe_trial}} API.
-To create a trial component, call the
-\code{\link[=sagemaker_create_trial_component]{create_trial_component}} API.
+See \url{https://paws-r.github.io/docs/sagemaker/create_trial.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_trial(
-  TrialName = "string",
-  DisplayName = "string",
-  ExperimentName = "string",
-  MetadataProperties = list(
-    CommitId = "string",
-    Repository = "string",
-    GeneratedBy = "string",
-    ProjectId = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

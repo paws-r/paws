@@ -6,24 +6,9 @@
 \usage{
 ses_list_verified_email_addresses()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VerifiedEmailAddresses = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Deprecated. Use the \code{\link[=ses_list_identities]{list_identities}} operation
-to list the email addresses and domains associated with your account.
-}
-\examples{
-\dontrun{
-# The following example lists all email addresses that have been submitted
-# for verification with Amazon SES:
-svc$list_verified_email_addresses()
-}
+Deprecated. Use the \code{\link[=ses_list_identities]{list_identities}} operation to list the email addresses and domains associated with your account.
 
+See \url{https://paws-r.github.io/docs/ses/list_verified_email_addresses.html} for full documentation.
 }
 \keyword{internal}

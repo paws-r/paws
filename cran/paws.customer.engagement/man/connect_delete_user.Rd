@@ -7,26 +7,14 @@
 connect_delete_user(InstanceId, UserId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{UserId}{[required] The identifier of the user.}
-}
-\value{
-An empty list.
 }
 \description{
 Deletes a user account from the specified Amazon Connect instance.
 
-For information about what happens to a user's data when their account
-is deleted, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/delete-users.html}{Delete Users from Your Amazon Connect Instance}
-in the \emph{Amazon Connect Administrator Guide}.
+See \url{https://paws-r.github.io/docs/connect/delete_user.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_user(
-  InstanceId = "string",
-  UserId = "string"
-)
-}
-}
-
 \keyword{internal}

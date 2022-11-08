@@ -2,51 +2,49 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_list_protection_groups}
 \alias{shield_list_protection_groups}
-\title{Retrieves the ProtectionGroup objects for the account}
+\title{Retrieves ProtectionGroup objects for the account}
 \usage{
-shield_list_protection_groups(NextToken, MaxResults)
+shield_list_protection_groups(
+  NextToken = NULL,
+  MaxResults = NULL,
+  InclusionFilters = NULL
+)
 }
 \arguments{
-\item{NextToken}{The next token value from a previous call to
-\code{\link[=shield_list_protection_groups]{list_protection_groups}}. Pass null if
-this is the first call.}
+\item{NextToken}{When you request a list of objects from Shield Advanced, if the response
+does not include all of the remaining available objects, Shield Advanced
+includes a \code{NextToken} value in the response. You can retrieve the next
+batch of objects by requesting the list again and providing the token
+that was returned by the prior call in your request.
 
-\item{MaxResults}{The maximum number of ProtectionGroup objects to return. If you leave
-this blank, Shield Advanced returns the first 20 results.
+You can indicate the maximum number of objects that you want Shield
+Advanced to return for a single call with the \code{MaxResults} setting.
+Shield Advanced will not return more than \code{MaxResults} objects, but may
+return fewer, even if more objects are still available.
 
-This is a maximum value. Shield Advanced might return the results in
-smaller batches. That is, the number of objects returned could be less
-than \code{MaxResults}, even if there are still more objects yet to return.
-If there are more objects to return, Shield Advanced returns a value in
-\code{NextToken} that you can use in your next request, to get the next batch
-of objects.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ProtectionGroups = list(
-    list(
-      ProtectionGroupId = "string",
-      Aggregation = "SUM"|"MEAN"|"MAX",
-      Pattern = "ALL"|"ARBITRARY"|"BY_RESOURCE_TYPE",
-      ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
-      Members = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
+Whenever more objects remain that Shield Advanced has not yet returned
+to you, the response will include a \code{NextToken} value.
+
+On your first call to a list operation, leave this setting empty.}
+
+\item{MaxResults}{The greatest number of objects that you want Shield Advanced to return
+to the list request. Shield Advanced might return fewer objects than you
+indicate in this setting, even if more objects are available. If there
+are more objects remaining, Shield Advanced will always also return a
+\code{NextToken} value in the response.
+
+The default setting is 20.}
+
+\item{InclusionFilters}{Narrows the set of protection groups that the call retrieves. You can
+retrieve a single protection group by its name and you can retrieve all
+protection groups that are configured with specific pattern or
+aggregation settings. You can provide up to one criteria per filter
+type. Shield Advanced returns the protection groups that exactly match
+all of the search criteria that you provide.}
 }
 \description{
-Retrieves the ProtectionGroup objects for the account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_protection_groups(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Retrieves ProtectionGroup objects for the account. You can retrieve all protection groups or you can provide filtering criteria and retrieve just the subset of protection groups that match the criteria.
 
+See \url{https://paws-r.github.io/docs/shield/list_protection_groups.html} for full documentation.
+}
 \keyword{internal}

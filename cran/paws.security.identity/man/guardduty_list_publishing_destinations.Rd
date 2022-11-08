@@ -3,10 +3,13 @@
 \name{guardduty_list_publishing_destinations}
 \alias{guardduty_list_publishing_destinations}
 \title{Returns a list of publishing destinations associated with the specified
-dectectorId}
+detectorId}
 \usage{
-guardduty_list_publishing_destinations(DetectorId, MaxResults,
-  NextToken)
+guardduty_list_publishing_destinations(
+  DetectorId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector to retrieve publishing destinations for.}
@@ -18,30 +21,9 @@ Set the value of this parameter to null for the first request to a list
 action. For subsequent calls, use the \code{NextToken} value returned from
 the previous request to continue listing results after the first page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Destinations = list(
-    list(
-      DestinationId = "string",
-      DestinationType = "S3",
-      Status = "PENDING_VERIFICATION"|"PUBLISHING"|"UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY"|"STOPPED"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of publishing destinations associated with the specified
-\code{dectectorId}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_publishing_destinations(
-  DetectorId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns a list of publishing destinations associated with the specified \code{detectorId}.
 
+See \url{https://paws-r.github.io/docs/guardduty/list_publishing_destinations.html} for full documentation.
+}
 \keyword{internal}

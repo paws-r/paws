@@ -10,8 +10,8 @@ iam_delete_policy_version(PolicyArn, VersionId)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy from which you want to
 delete a version.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the \emph{AWS General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.}
 
 \item{VersionId}{[required] The policy version to delete.
 
@@ -20,30 +20,12 @@ that consists of the lowercase letter 'v' followed by one or two digits,
 and optionally followed by a period '.' and a string of letters and
 digits.
 
-For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for managed policies}
 in the \emph{IAM User Guide}.}
-}
-\value{
-An empty list.
 }
 \description{
 Deletes the specified version from the specified managed policy.
 
-You cannot delete the default version from a policy using this API. To
-delete the default version from a policy, use
-\code{\link[=iam_delete_policy]{delete_policy}}. To find out which version of a
-policy is marked as the default version, use
-\code{\link[=iam_list_policy_versions]{list_policy_versions}}.
-
-For information about versions for managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
-in the \emph{IAM User Guide}.
+See \url{https://paws-r.github.io/docs/iam/delete_policy_version.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_policy_version(
-  PolicyArn = "string",
-  VersionId = "string"
-)
-}
-}
-
 \keyword{internal}

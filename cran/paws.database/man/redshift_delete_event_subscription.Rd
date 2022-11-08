@@ -10,17 +10,9 @@ redshift_delete_event_subscription(SubscriptionName)
 \item{SubscriptionName}{[required] The name of the Amazon Redshift event notification subscription to be
 deleted.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an Amazon Redshift event notification subscription.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_event_subscription(
-  SubscriptionName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/delete_event_subscription.html} for full documentation.
+}
 \keyword{internal}

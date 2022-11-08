@@ -10,19 +10,9 @@ glue_start_crawler(Name)
 \arguments{
 \item{Name}{[required] Name of the crawler to start.}
 }
-\value{
-An empty list.
-}
 \description{
-Starts a crawl using the specified crawler, regardless of what is
-scheduled. If the crawler is already running, returns a
-\href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-exceptions.html#aws-glue-api-exceptions-CrawlerRunningException}{CrawlerRunningException}.
-}
-\section{Request syntax}{
-\preformatted{svc$start_crawler(
-  Name = "string"
-)
-}
-}
+Starts a crawl using the specified crawler, regardless of what is scheduled. If the crawler is already running, returns a \href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-exceptions.html#aws-glue-api-exceptions-CrawlerRunningException}{CrawlerRunningException}.
 
+See \url{https://paws-r.github.io/docs/glue/start_crawler.html} for full documentation.
+}
 \keyword{internal}

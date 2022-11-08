@@ -4,7 +4,7 @@
 \alias{redshift_modify_usage_limit}
 \title{Modifies a usage limit in a cluster}
 \usage{
-redshift_modify_usage_limit(UsageLimitId, Amount, BreachAction)
+redshift_modify_usage_limit(UsageLimitId, Amount = NULL, BreachAction = NULL)
 }
 \arguments{
 \item{UsageLimitId}{[required] The identifier of the usage limit to modify.}
@@ -15,35 +15,9 @@ UsageLimit.}
 \item{BreachAction}{The new action that Amazon Redshift takes when the limit is reached. For
 more information about this parameter, see UsageLimit.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UsageLimitId = "string",
-  ClusterIdentifier = "string",
-  FeatureType = "spectrum"|"concurrency-scaling",
-  LimitType = "time"|"data-scanned",
-  Amount = 123,
-  Period = "daily"|"weekly"|"monthly",
-  BreachAction = "log"|"emit-metric"|"disable",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Modifies a usage limit in a cluster. You can't modify the feature type
-or period of a usage limit.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_usage_limit(
-  UsageLimitId = "string",
-  Amount = 123,
-  BreachAction = "log"|"emit-metric"|"disable"
-)
-}
-}
+Modifies a usage limit in a cluster. You can't modify the feature type or period of a usage limit.
 
+See \url{https://paws-r.github.io/docs/redshift/modify_usage_limit.html} for full documentation.
+}
 \keyword{internal}

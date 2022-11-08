@@ -11,10 +11,16 @@ NULL
 #' specific account.
 #'
 #' @usage
-#' macie2_accept_invitation(invitationId, masterAccount)
+#' macie2_accept_invitation(administratorAccountId, invitationId,
+#'   masterAccount)
 #'
+#' @param administratorAccountId The Amazon Web Services account ID for the account that sent the
+#' invitation.
 #' @param invitationId &#91;required&#93; The unique identifier for the invitation to accept.
-#' @param masterAccount &#91;required&#93; The AWS account ID for the account that sent the invitation.
+#' @param masterAccount (Deprecated) The Amazon Web Services account ID for the account that
+#' sent the invitation. This property has been replaced by the
+#' administratorAccountId property and is retained only for backward
+#' compatibility.
 #'
 #' @return
 #' An empty list.
@@ -22,6 +28,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$accept_invitation(
+#'   administratorAccountId = "string",
 #'   invitationId = "string",
 #'   masterAccount = "string"
 #' )
@@ -30,14 +37,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname macie2_accept_invitation
-macie2_accept_invitation <- function(invitationId, masterAccount) {
+macie2_accept_invitation <- function(administratorAccountId = NULL, invitationId, masterAccount = NULL) {
   op <- new_operation(
     name = "AcceptInvitation",
     http_method = "POST",
     http_path = "/invitations/accept",
     paginator = list()
   )
-  input <- .macie2$accept_invitation_input(invitationId = invitationId, masterAccount = masterAccount)
+  input <- .macie2$accept_invitation_input(administratorAccountId = administratorAccountId, invitationId = invitationId, masterAccount = masterAccount)
   output <- .macie2$accept_invitation_output()
   config <- get_config()
   svc <- .macie2$service(config)
@@ -55,8 +62,8 @@ macie2_accept_invitation <- function(invitationId, masterAccount) {
 #' @usage
 #' macie2_batch_get_custom_data_identifiers(ids)
 #'
-#' @param ids An array of strings that lists the unique identifiers for the custom
-#' data identifiers to retrieve information about.
+#' @param ids An array of custom data identifier IDs, one for each custom data
+#' identifier to retrieve information about.
 #'
 #' @return
 #' A list with the following syntax:
@@ -116,16 +123,25 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #'
 #' @usage
 #' macie2_create_classification_job(clientToken, customDataIdentifierIds,
-#'   description, initialRun, jobType, name, s3JobDefinition,
+#'   description, initialRun, jobType, managedDataIdentifierIds,
+#'   managedDataIdentifierSelector, name, s3JobDefinition,
 #'   samplingPercentage, scheduleFrequency, tags)
 #'
 #' @param clientToken &#91;required&#93; A unique, case-sensitive token that you provide to ensure the
 #' idempotency of the request.
-#' @param customDataIdentifierIds The custom data identifiers to use for data analysis and classification.
+#' @param customDataIdentifierIds An array of unique identifiers, one for each custom data identifier for
+#' the job to use when it analyzes data. To use only managed data
+#' identifiers, don't specify a value for this property and specify a value
+#' other than NONE for the managedDataIdentifierSelector property.
 #' @param description A custom description of the job. The description can contain as many as
 #' 200 characters.
-#' @param initialRun Specifies whether to analyze all existing, eligible objects immediately
-#' after the job is created.
+#' @param initialRun For a recurring job, specifies whether to analyze all existing, eligible
+#' objects immediately after the job is created (true). To analyze only
+#' those objects that are created or changed after you create the job and
+#' before the job's first scheduled run, set this value to false.
+#' 
+#' If you configure the job to run only once, don't specify a value for
+#' this property.
 #' @param jobType &#91;required&#93; The schedule for running the job. Valid values are:
 #' 
 #' -   ONE_TIME - Run the job only once. If you specify this value, don't
@@ -134,15 +150,45 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #' -   SCHEDULED - Run the job on a daily, weekly, or monthly basis. If you
 #'     specify this value, use the scheduleFrequency property to define the
 #'     recurrence pattern for the job.
+#' @param managedDataIdentifierIds An array of unique identifiers, one for each managed data identifier for
+#' the job to include (use) or exclude (not use) when it analyzes data.
+#' Inclusion or exclusion depends on the managed data identifier selection
+#' type that you specify for the job (managedDataIdentifierSelector).
+#' 
+#' To retrieve a list of valid values for this property, use the
+#' ListManagedDataIdentifiers operation.
+#' @param managedDataIdentifierSelector The selection type to apply when determining which managed data
+#' identifiers the job uses to analyze data. Valid values are:
+#' 
+#' -   ALL - Use all the managed data identifiers that Amazon Macie
+#'     provides. If you specify this value, don't specify any values for
+#'     the managedDataIdentifierIds property.
+#' 
+#' -   EXCLUDE - Use all the managed data identifiers that Macie provides
+#'     except the managed data identifiers specified by the
+#'     managedDataIdentifierIds property.
+#' 
+#' -   INCLUDE - Use only the managed data identifiers specified by the
+#'     managedDataIdentifierIds property.
+#' 
+#' -   NONE - Don't use any managed data identifiers. If you specify this
+#'     value, specify at least one custom data identifier for the job
+#'     (customDataIdentifierIds) and don't specify any values for the
+#'     managedDataIdentifierIds property.
+#' 
+#' If you don't specify a value for this property, the job uses all managed
+#' data identifiers. If you don't specify a value for this property or you
+#' specify ALL or EXCLUDE for a recurring job, the job also uses new
+#' managed data identifiers as they are released.
 #' @param name &#91;required&#93; A custom name for the job. The name can contain as many as 500
 #' characters.
 #' @param s3JobDefinition &#91;required&#93; The S3 buckets that contain the objects to analyze, and the scope of
 #' that analysis.
-#' @param samplingPercentage The sampling depth, as a percentage, to apply when processing objects.
-#' This value determines the percentage of eligible objects that the job
-#' analyzes. If this value is less than 100, Amazon Macie selects the
-#' objects to analyze at random, up to the specified percentage, and
-#' analyzes all the data in those objects.
+#' @param samplingPercentage The sampling depth, as a percentage, for the job to apply when
+#' processing objects. This value determines the percentage of eligible
+#' objects that the job analyzes. If this value is less than 100, Amazon
+#' Macie selects the objects to analyze at random, up to the specified
+#' percentage, and analyzes all the data in those objects.
 #' @param scheduleFrequency The recurrence pattern for running the job. To run the job only once,
 #' don't specify a value for this property and set the value for the
 #' jobType property to ONE_TIME.
@@ -172,6 +218,10 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #'   description = "string",
 #'   initialRun = TRUE|FALSE,
 #'   jobType = "ONE_TIME"|"SCHEDULED",
+#'   managedDataIdentifierIds = list(
+#'     "string"
+#'   ),
+#'   managedDataIdentifierSelector = "ALL"|"EXCLUDE"|"INCLUDE"|"NONE",
 #'   name = "string",
 #'   s3JobDefinition = list(
 #'     bucketDefinitions = list(
@@ -187,14 +237,14 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #'         and = list(
 #'           list(
 #'             simpleScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
-#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"OBJECT_KEY",
 #'               values = list(
 #'                 "string"
 #'               )
 #'             ),
 #'             tagScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
 #'               key = "string",
 #'               tagValues = list(
 #'                 list(
@@ -211,14 +261,14 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #'         and = list(
 #'           list(
 #'             simpleScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
-#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"OBJECT_KEY",
 #'               values = list(
 #'                 "string"
 #'               )
 #'             ),
 #'             tagScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
 #'               key = "string",
 #'               tagValues = list(
 #'                 list(
@@ -227,6 +277,52 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #'                 )
 #'               ),
 #'               target = "S3_OBJECT"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     bucketCriteria = list(
+#'       excludes = list(
+#'         and = list(
+#'           list(
+#'             simpleCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'               values = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             tagCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               tagValues = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       includes = list(
+#'         and = list(
+#'           list(
+#'             simpleCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'               values = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             tagCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               tagValues = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -252,14 +348,14 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #' @keywords internal
 #'
 #' @rdname macie2_create_classification_job
-macie2_create_classification_job <- function(clientToken, customDataIdentifierIds = NULL, description = NULL, initialRun = NULL, jobType, name, s3JobDefinition, samplingPercentage = NULL, scheduleFrequency = NULL, tags = NULL) {
+macie2_create_classification_job <- function(clientToken, customDataIdentifierIds = NULL, description = NULL, initialRun = NULL, jobType, managedDataIdentifierIds = NULL, managedDataIdentifierSelector = NULL, name, s3JobDefinition, samplingPercentage = NULL, scheduleFrequency = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateClassificationJob",
     http_method = "POST",
     http_path = "/jobs",
     paginator = list()
   )
-  input <- .macie2$create_classification_job_input(clientToken = clientToken, customDataIdentifierIds = customDataIdentifierIds, description = description, initialRun = initialRun, jobType = jobType, name = name, s3JobDefinition = s3JobDefinition, samplingPercentage = samplingPercentage, scheduleFrequency = scheduleFrequency, tags = tags)
+  input <- .macie2$create_classification_job_input(clientToken = clientToken, customDataIdentifierIds = customDataIdentifierIds, description = description, initialRun = initialRun, jobType = jobType, managedDataIdentifierIds = managedDataIdentifierIds, managedDataIdentifierSelector = managedDataIdentifierSelector, name = name, s3JobDefinition = s3JobDefinition, samplingPercentage = samplingPercentage, scheduleFrequency = scheduleFrequency, tags = tags)
   output <- .macie2$create_classification_job_output()
   config <- get_config()
   svc <- .macie2$service(config)
@@ -278,7 +374,8 @@ macie2_create_classification_job <- function(clientToken, customDataIdentifierId
 #'
 #' @usage
 #' macie2_create_custom_data_identifier(clientToken, description,
-#'   ignoreWords, keywords, maximumMatchDistance, name, regex, tags)
+#'   ignoreWords, keywords, maximumMatchDistance, name, regex,
+#'   severityLevels, tags)
 #'
 #' @param clientToken A unique, case-sensitive token that you provide to ensure the
 #' idempotency of the request.
@@ -287,31 +384,47 @@ macie2_create_classification_job <- function(clientToken, customDataIdentifierId
 #' 
 #' We strongly recommend that you avoid including any sensitive data in the
 #' description of a custom data identifier. Other users of your account
-#' might be able to see the identifier's description, depending on the
-#' actions that they're allowed to perform in Amazon Macie.
-#' @param ignoreWords An array that lists specific character sequences (ignore words) to
+#' might be able to see this description, depending on the actions that
+#' they're allowed to perform in Amazon Macie.
+#' @param ignoreWords An array that lists specific character sequences (*ignore words*) to
 #' exclude from the results. If the text matched by the regular expression
-#' is the same as any string in this array, Amazon Macie ignores it. The
-#' array can contain as many as 10 ignore words. Each ignore word can
-#' contain 4 - 90 characters. Ignore words are case sensitive.
-#' @param keywords An array that lists specific character sequences (keywords), one of
-#' which must be within proximity (maximumMatchDistance) of the regular
-#' expression to match. The array can contain as many as 50 keywords. Each
-#' keyword can contain 4 - 90 characters. Keywords aren't case sensitive.
-#' @param maximumMatchDistance The maximum number of characters that can exist between text that
-#' matches the regex pattern and the character sequences specified by the
-#' keywords array. Macie includes or excludes a result based on the
-#' proximity of a keyword to text that matches the regex pattern. The
-#' distance can be 1 - 300 characters. The default value is 50.
-#' @param name A custom name for the custom data identifier. The name can contain as
+#' contains any string in this array, Amazon Macie ignores it. The array
+#' can contain as many as 10 ignore words. Each ignore word can contain
+#' 4-90 UTF-8 characters. Ignore words are case sensitive.
+#' @param keywords An array that lists specific character sequences (*keywords*), one of
+#' which must precede and be within proximity (maximumMatchDistance) of the
+#' regular expression to match. The array can contain as many as 50
+#' keywords. Each keyword can contain 3-90 UTF-8 characters. Keywords
+#' aren't case sensitive.
+#' @param maximumMatchDistance The maximum number of characters that can exist between the end of at
+#' least one complete character sequence specified by the keywords array
+#' and the end of the text that matches the regex pattern. If a complete
+#' keyword precedes all the text that matches the pattern and the keyword
+#' is within the specified distance, Amazon Macie includes the result. The
+#' distance can be 1-300 characters. The default value is 50.
+#' @param name &#91;required&#93; A custom name for the custom data identifier. The name can contain as
 #' many as 128 characters.
 #' 
 #' We strongly recommend that you avoid including any sensitive data in the
 #' name of a custom data identifier. Other users of your account might be
-#' able to see the identifier's name, depending on the actions that they're
-#' allowed to perform in Amazon Macie.
-#' @param regex The regular expression (*regex*) that defines the pattern to match. The
+#' able to see this name, depending on the actions that they're allowed to
+#' perform in Amazon Macie.
+#' @param regex &#91;required&#93; The regular expression (*regex*) that defines the pattern to match. The
 #' expression can contain as many as 512 characters.
+#' @param severityLevels The severity to assign to findings that the custom data identifier
+#' produces, based on the number of occurrences of text that matches the
+#' custom data identifier's detection criteria. You can specify as many as
+#' three SeverityLevel objects in this array, one for each severity: LOW,
+#' MEDIUM, or HIGH. If you specify more than one, the occurrences
+#' thresholds must be in ascending order by severity, moving from LOW to
+#' HIGH. For example, 1 for LOW, 50 for MEDIUM, and 100 for HIGH. If an S3
+#' object contains fewer occurrences than the lowest specified threshold,
+#' Amazon Macie doesn't create a finding.
+#' 
+#' If you don't specify any values for this array, Macie creates findings
+#' for S3 objects that contain at least one occurrence of text that matches
+#' the detection criteria, and Macie assigns the MEDIUM severity to those
+#' findings.
 #' @param tags A map of key-value pairs that specifies the tags to associate with the
 #' custom data identifier.
 #' 
@@ -342,6 +455,12 @@ macie2_create_classification_job <- function(clientToken, customDataIdentifierId
 #'   maximumMatchDistance = 123,
 #'   name = "string",
 #'   regex = "string",
+#'   severityLevels = list(
+#'     list(
+#'       occurrencesThreshold = 123,
+#'       severity = "LOW"|"MEDIUM"|"HIGH"
+#'     )
+#'   ),
 #'   tags = list(
 #'     "string"
 #'   )
@@ -351,14 +470,14 @@ macie2_create_classification_job <- function(clientToken, customDataIdentifierId
 #' @keywords internal
 #'
 #' @rdname macie2_create_custom_data_identifier
-macie2_create_custom_data_identifier <- function(clientToken = NULL, description = NULL, ignoreWords = NULL, keywords = NULL, maximumMatchDistance = NULL, name = NULL, regex = NULL, tags = NULL) {
+macie2_create_custom_data_identifier <- function(clientToken = NULL, description = NULL, ignoreWords = NULL, keywords = NULL, maximumMatchDistance = NULL, name, regex, severityLevels = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCustomDataIdentifier",
     http_method = "POST",
     http_path = "/custom-data-identifiers",
     paginator = list()
   )
-  input <- .macie2$create_custom_data_identifier_input(clientToken = clientToken, description = description, ignoreWords = ignoreWords, keywords = keywords, maximumMatchDistance = maximumMatchDistance, name = name, regex = regex, tags = tags)
+  input <- .macie2$create_custom_data_identifier_input(clientToken = clientToken, description = description, ignoreWords = ignoreWords, keywords = keywords, maximumMatchDistance = maximumMatchDistance, name = name, regex = regex, severityLevels = severityLevels, tags = tags)
   output <- .macie2$create_custom_data_identifier_output()
   config <- get_config()
   svc <- .macie2$service(config)
@@ -390,16 +509,16 @@ macie2_create_custom_data_identifier <- function(clientToken = NULL, description
 #' 
 #' We strongly recommend that you avoid including any sensitive data in the
 #' description of a filter. Other users of your account might be able to
-#' see the filter's description, depending on the actions that they're
-#' allowed to perform in Amazon Macie.
+#' see this description, depending on the actions that they're allowed to
+#' perform in Amazon Macie.
 #' @param findingCriteria &#91;required&#93; The criteria to use to filter findings.
 #' @param name &#91;required&#93; A custom name for the filter. The name must contain at least 3
 #' characters and can contain as many as 64 characters.
 #' 
 #' We strongly recommend that you avoid including any sensitive data in the
-#' name of a filter. Other users of your account might be able to see the
-#' filter's name, depending on the actions that they're allowed to perform
-#' in Amazon Macie.
+#' name of a filter. Other users of your account might be able to see this
+#' name, depending on the actions that they're allowed to perform in Amazon
+#' Macie.
 #' @param position The position of the filter in the list of saved filters on the Amazon
 #' Macie console. This value also determines the order in which the filter
 #' is applied to findings, relative to other filters that are also applied
@@ -481,15 +600,15 @@ macie2_create_findings_filter <- function(action, clientToken = NULL, descriptio
 #' @usage
 #' macie2_create_invitations(accountIds, disableEmailNotification, message)
 #'
-#' @param accountIds &#91;required&#93; An array that lists AWS account IDs, one for each account to send the
-#' invitation to.
-#' @param disableEmailNotification Specifies whether to send an email notification to the root user of each
-#' account that the invitation will be sent to. This notification is in
-#' addition to an alert that the root user receives in AWS Personal Health
-#' Dashboard. To send an email notification to the root user of each
-#' account, set this value to true.
-#' @param message A custom message to include in the invitation. Amazon Macie adds this
-#' message to the standard content that it sends for an invitation.
+#' @param accountIds &#91;required&#93; An array that lists Amazon Web Services account IDs, one for each
+#' account to send the invitation to.
+#' @param disableEmailNotification Specifies whether to send the invitation as an email message. If this
+#' value is false, Amazon Macie sends the invitation (as an email message)
+#' to the email address that you specified for the recipient's account when
+#' you associated the account with your account. The default value is
+#' false.
+#' @param message Custom text to include in the email message that contains the
+#' invitation. The text can contain as many as 80 alphanumeric characters.
 #'
 #' @return
 #' A list with the following syntax:
@@ -536,15 +655,15 @@ macie2_create_invitations <- function(accountIds, disableEmailNotification = NUL
 }
 .macie2$operations$create_invitations <- macie2_create_invitations
 
-#' Associates an account with an Amazon Macie master account
+#' Associates an account with an Amazon Macie administrator account
 #'
 #' @description
-#' Associates an account with an Amazon Macie master account.
+#' Associates an account with an Amazon Macie administrator account.
 #'
 #' @usage
 #' macie2_create_member(account, tags)
 #'
-#' @param account &#91;required&#93; The details for the account to associate with the master account.
+#' @param account &#91;required&#93; The details of the account to associate with the administrator account.
 #' @param tags A map of key-value pairs that specifies the tags to associate with the
 #' account in Amazon Macie.
 #' 
@@ -601,9 +720,9 @@ macie2_create_member <- function(account, tags = NULL) {
 #' @usage
 #' macie2_create_sample_findings(findingTypes)
 #'
-#' @param findingTypes An array that lists one or more types of findings to include in the set
-#' of sample findings. Currently, the only supported value is
-#' Policy:IAMUser/S3BucketEncryptionDisabled.
+#' @param findingTypes An array of finding types, one for each type of sample finding to
+#' create. To create a sample of every type of finding that Amazon Macie
+#' supports, don't include this array in your request.
 #'
 #' @return
 #' An empty list.
@@ -647,8 +766,8 @@ macie2_create_sample_findings <- function(findingTypes = NULL) {
 #' @usage
 #' macie2_decline_invitations(accountIds)
 #'
-#' @param accountIds &#91;required&#93; An array that lists AWS account IDs, one for each account that sent an
-#' invitation to decline.
+#' @param accountIds &#91;required&#93; An array that lists Amazon Web Services account IDs, one for each
+#' account that sent an invitation to decline.
 #'
 #' @return
 #' A list with the following syntax:
@@ -785,8 +904,8 @@ macie2_delete_findings_filter <- function(id) {
 #' @usage
 #' macie2_delete_invitations(accountIds)
 #'
-#' @param accountIds &#91;required&#93; An array that lists AWS account IDs, one for each account that sent an
-#' invitation to delete.
+#' @param accountIds &#91;required&#93; An array that lists Amazon Web Services account IDs, one for each
+#' account that sent an invitation to delete.
 #'
 #' @return
 #' A list with the following syntax:
@@ -831,12 +950,12 @@ macie2_delete_invitations <- function(accountIds) {
 }
 .macie2$operations$delete_invitations <- macie2_delete_invitations
 
-#' Deletes the association between an Amazon Macie master account and an
-#' account
+#' Deletes the association between an Amazon Macie administrator account
+#' and an account
 #'
 #' @description
-#' Deletes the association between an Amazon Macie master account and an
-#' account.
+#' Deletes the association between an Amazon Macie administrator account
+#' and an account.
 #'
 #' @usage
 #' macie2_delete_member(id)
@@ -898,6 +1017,7 @@ macie2_delete_member <- function(id) {
 #'   buckets = list(
 #'     list(
 #'       accountId = "string",
+#'       allowsUnencryptedObjectUploads = "TRUE"|"FALSE"|"UNKNOWN",
 #'       bucketArn = "string",
 #'       bucketCreatedAt = as.POSIXct(
 #'         "2015-01-01"
@@ -905,6 +1025,8 @@ macie2_delete_member <- function(id) {
 #'       bucketName = "string",
 #'       classifiableObjectCount = 123,
 #'       classifiableSizeInBytes = 123,
+#'       errorCode = "ACCESS_DENIED",
+#'       errorMessage = "string",
 #'       jobDetails = list(
 #'         isDefinedInJob = "TRUE"|"FALSE"|"UNKNOWN",
 #'         isMonitoredByJob = "TRUE"|"FALSE"|"UNKNOWN",
@@ -921,7 +1043,8 @@ macie2_delete_member <- function(id) {
 #'         customerManaged = 123,
 #'         kmsManaged = 123,
 #'         s3Managed = 123,
-#'         unencrypted = 123
+#'         unencrypted = 123,
+#'         unknown = 123
 #'       ),
 #'       publicAccess = list(
 #'         effectivePermission = "PUBLIC"|"NOT_PUBLIC"|"UNKNOWN",
@@ -959,6 +1082,10 @@ macie2_delete_member <- function(id) {
 #'         replicationAccounts = list(
 #'           "string"
 #'         )
+#'       ),
+#'       serverSideEncryption = list(
+#'         kmsMasterKeyId = "string",
+#'         type = "NONE"|"AES256"|"aws:kms"
 #'       ),
 #'       sharedAccess = "EXTERNAL"|"INTERNAL"|"NOT_SHARED"|"UNKNOWN",
 #'       sizeInBytes = 123,
@@ -1066,6 +1193,10 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
 #'   lastRunTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   managedDataIdentifierIds = list(
+#'     "string"
+#'   ),
+#'   managedDataIdentifierSelector = "ALL"|"EXCLUDE"|"INCLUDE"|"NONE",
 #'   name = "string",
 #'   s3JobDefinition = list(
 #'     bucketDefinitions = list(
@@ -1081,14 +1212,14 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
 #'         and = list(
 #'           list(
 #'             simpleScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
-#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"OBJECT_KEY",
 #'               values = list(
 #'                 "string"
 #'               )
 #'             ),
 #'             tagScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
 #'               key = "string",
 #'               tagValues = list(
 #'                 list(
@@ -1105,14 +1236,14 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
 #'         and = list(
 #'           list(
 #'             simpleScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
-#'               key = "BUCKET_CREATION_DATE"|"OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"TAG",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "OBJECT_EXTENSION"|"OBJECT_LAST_MODIFIED_DATE"|"OBJECT_SIZE"|"OBJECT_KEY",
 #'               values = list(
 #'                 "string"
 #'               )
 #'             ),
 #'             tagScopeTerm = list(
-#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
 #'               key = "string",
 #'               tagValues = list(
 #'                 list(
@@ -1121,6 +1252,52 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
 #'                 )
 #'               ),
 #'               target = "S3_OBJECT"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     bucketCriteria = list(
+#'       excludes = list(
+#'         and = list(
+#'           list(
+#'             simpleCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'               values = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             tagCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               tagValues = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       includes = list(
+#'         and = list(
+#'           list(
+#'             simpleCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'               values = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             tagCriterion = list(
+#'               comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'               tagValues = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -1183,12 +1360,12 @@ macie2_describe_classification_job <- function(jobId) {
 }
 .macie2$operations$describe_classification_job <- macie2_describe_classification_job
 
-#' Retrieves the Amazon Macie configuration settings for an AWS
-#' organization
+#' Retrieves the Amazon Macie configuration settings for an organization in
+#' Organizations
 #'
 #' @description
-#' Retrieves the Amazon Macie configuration settings for an AWS
-#' organization.
+#' Retrieves the Amazon Macie configuration settings for an organization in
+#' Organizations.
 #'
 #' @usage
 #' macie2_describe_organization_configuration()
@@ -1227,11 +1404,11 @@ macie2_describe_organization_configuration <- function() {
 }
 .macie2$operations$describe_organization_configuration <- macie2_describe_organization_configuration
 
-#' Disables an Amazon Macie account and deletes Macie resources for the
+#' Disables Amazon Macie and deletes all settings and resources for a Macie
 #' account
 #'
 #' @description
-#' Disables an Amazon Macie account and deletes Macie resources for the
+#' Disables Amazon Macie and deletes all settings and resources for a Macie
 #' account.
 #'
 #' @usage
@@ -1266,16 +1443,17 @@ macie2_disable_macie <- function() {
 .macie2$operations$disable_macie <- macie2_disable_macie
 
 #' Disables an account as the delegated Amazon Macie administrator account
-#' for an AWS organization
+#' for an organization in Organizations
 #'
 #' @description
 #' Disables an account as the delegated Amazon Macie administrator account
-#' for an AWS organization.
+#' for an organization in Organizations.
 #'
 #' @usage
 #' macie2_disable_organization_admin_account(adminAccountId)
 #'
-#' @param adminAccountId &#91;required&#93; The AWS account ID of the delegated administrator account.
+#' @param adminAccountId &#91;required&#93; The Amazon Web Services account ID of the delegated Amazon Macie
+#' administrator account.
 #'
 #' @return
 #' An empty list.
@@ -1307,10 +1485,51 @@ macie2_disable_organization_admin_account <- function(adminAccountId) {
 }
 .macie2$operations$disable_organization_admin_account <- macie2_disable_organization_admin_account
 
-#' Disassociates a member account from its Amazon Macie master account
+#' Disassociates a member account from its Amazon Macie administrator
+#' account
 #'
 #' @description
-#' Disassociates a member account from its Amazon Macie master account.
+#' Disassociates a member account from its Amazon Macie administrator
+#' account.
+#'
+#' @usage
+#' macie2_disassociate_from_administrator_account()
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_from_administrator_account()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_disassociate_from_administrator_account
+macie2_disassociate_from_administrator_account <- function() {
+  op <- new_operation(
+    name = "DisassociateFromAdministratorAccount",
+    http_method = "POST",
+    http_path = "/administrator/disassociate",
+    paginator = list()
+  )
+  input <- .macie2$disassociate_from_administrator_account_input()
+  output <- .macie2$disassociate_from_administrator_account_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$disassociate_from_administrator_account <- macie2_disassociate_from_administrator_account
+
+#' (Deprecated) Disassociates a member account from its Amazon Macie
+#' administrator account
+#'
+#' @description
+#' (Deprecated) Disassociates a member account from its Amazon Macie
+#' administrator account. This operation has been replaced by the
+#' DisassociateFromAdministratorAccount operation.
 #'
 #' @usage
 #' macie2_disassociate_from_master_account()
@@ -1343,10 +1562,12 @@ macie2_disassociate_from_master_account <- function() {
 }
 .macie2$operations$disassociate_from_master_account <- macie2_disassociate_from_master_account
 
-#' Disassociates an Amazon Macie master account from a member account
+#' Disassociates an Amazon Macie administrator account from a member
+#' account
 #'
 #' @description
-#' Disassociates an Amazon Macie master account from a member account.
+#' Disassociates an Amazon Macie administrator account from a member
+#' account.
 #'
 #' @usage
 #' macie2_disassociate_member(id)
@@ -1397,10 +1618,10 @@ macie2_disassociate_member <- function(id) {
 #' @param clientToken A unique, case-sensitive token that you provide to ensure the
 #' idempotency of the request.
 #' @param findingPublishingFrequency Specifies how often to publish updates to policy findings for the
-#' account. This includes publishing updates to AWS Security Hub and Amazon
+#' account. This includes publishing updates to Security Hub and Amazon
 #' EventBridge (formerly called Amazon CloudWatch Events).
-#' @param status Specifies the status for the account. To enable Amazon Macie and start
-#' all Amazon Macie activities for the account, set this value to ENABLED.
+#' @param status Specifies the new status for the account. To enable Amazon Macie and
+#' start all Macie activities for the account, set this value to ENABLED.
 #'
 #' @return
 #' An empty list.
@@ -1435,17 +1656,17 @@ macie2_enable_macie <- function(clientToken = NULL, findingPublishingFrequency =
 .macie2$operations$enable_macie <- macie2_enable_macie
 
 #' Designates an account as the delegated Amazon Macie administrator
-#' account for an AWS organization
+#' account for an organization in Organizations
 #'
 #' @description
 #' Designates an account as the delegated Amazon Macie administrator
-#' account for an AWS organization.
+#' account for an organization in Organizations.
 #'
 #' @usage
 #' macie2_enable_organization_admin_account(adminAccountId, clientToken)
 #'
-#' @param adminAccountId &#91;required&#93; The AWS account ID for the account to designate as the delegated Amazon
-#' Macie administrator account for the organization.
+#' @param adminAccountId &#91;required&#93; The Amazon Web Services account ID for the account to designate as the
+#' delegated Amazon Macie administrator account for the organization.
 #' @param clientToken A unique, case-sensitive token that you provide to ensure the
 #' idempotency of the request.
 #'
@@ -1480,17 +1701,67 @@ macie2_enable_organization_admin_account <- function(adminAccountId, clientToken
 }
 .macie2$operations$enable_organization_admin_account <- macie2_enable_organization_admin_account
 
-#' Retrieves (queries) aggregated statistical data for all the S3 buckets
-#' that Amazon Macie monitors and analyzes
+#' Retrieves information about the Amazon Macie administrator account for
+#' an account
 #'
 #' @description
-#' Retrieves (queries) aggregated statistical data for all the S3 buckets
-#' that Amazon Macie monitors and analyzes.
+#' Retrieves information about the Amazon Macie administrator account for
+#' an account.
+#'
+#' @usage
+#' macie2_get_administrator_account()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   administrator = list(
+#'     accountId = "string",
+#'     invitationId = "string",
+#'     invitedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     relationshipStatus = "Enabled"|"Paused"|"Invited"|"Created"|"Removed"|"Resigned"|"EmailVerificationInProgress"|"EmailVerificationFailed"|"RegionDisabled"|"AccountSuspended"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_administrator_account()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_get_administrator_account
+macie2_get_administrator_account <- function() {
+  op <- new_operation(
+    name = "GetAdministratorAccount",
+    http_method = "GET",
+    http_path = "/administrator",
+    paginator = list()
+  )
+  input <- .macie2$get_administrator_account_input()
+  output <- .macie2$get_administrator_account_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$get_administrator_account <- macie2_get_administrator_account
+
+#' Retrieves (queries) aggregated statistical data about S3 buckets that
+#' Amazon Macie monitors and analyzes
+#'
+#' @description
+#' Retrieves (queries) aggregated statistical data about S3 buckets that
+#' Amazon Macie monitors and analyzes.
 #'
 #' @usage
 #' macie2_get_bucket_statistics(accountId)
 #'
-#' @param accountId The unique identifier for the AWS account.
+#' @param accountId The unique identifier for the Amazon Web Services account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1506,7 +1777,13 @@ macie2_enable_organization_admin_account <- function(adminAccountId, clientToken
 #'   bucketCountByEncryptionType = list(
 #'     kmsManaged = 123,
 #'     s3Managed = 123,
-#'     unencrypted = 123
+#'     unencrypted = 123,
+#'     unknown = 123
+#'   ),
+#'   bucketCountByObjectEncryptionRequirement = list(
+#'     allowsUnencryptedObjectUploads = 123,
+#'     deniesUnencryptedObjectUploads = 123,
+#'     unknown = 123
 #'   ),
 #'   bucketCountBySharedAccessType = list(
 #'     external = 123,
@@ -1642,6 +1919,12 @@ macie2_get_classification_export_configuration <- function() {
 #'   maximumMatchDistance = 123,
 #'   name = "string",
 #'   regex = "string",
+#'   severityLevels = list(
+#'     list(
+#'       occurrencesThreshold = 123,
+#'       severity = "LOW"|"MEDIUM"|"HIGH"
+#'     )
+#'   ),
 #'   tags = list(
 #'     "string"
 #'   )
@@ -1775,7 +2058,8 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
 #' macie2_get_findings(findingIds, sortCriteria)
 #'
 #' @param findingIds &#91;required&#93; An array of strings that lists the unique identifiers for the findings
-#' to retrieve.
+#' to retrieve. You can specify as many as 50 unique identifiers in this
+#' array.
 #' @param sortCriteria The criteria for sorting the results of the request.
 #'
 #' @return
@@ -1791,6 +2075,7 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
 #'         detailedResultsLocation = "string",
 #'         jobArn = "string",
 #'         jobId = "string",
+#'         originType = "SENSITIVE_DATA_DISCOVERY_JOB",
 #'         result = list(
 #'           additionalOccurrences = TRUE|FALSE,
 #'           customDataIdentifiers = list(
@@ -2026,6 +2311,7 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
 #'       region = "string",
 #'       resourcesAffected = list(
 #'         s3Bucket = list(
+#'           allowsUnencryptedObjectUploads = "TRUE"|"FALSE"|"UNKNOWN",
 #'           arn = "string",
 #'           createdAt = as.POSIXct(
 #'             "2015-01-01"
@@ -2222,6 +2508,52 @@ macie2_get_findings_filter <- function(id) {
 }
 .macie2$operations$get_findings_filter <- macie2_get_findings_filter
 
+#' Retrieves the configuration settings for publishing findings to Security
+#' Hub
+#'
+#' @description
+#' Retrieves the configuration settings for publishing findings to Security
+#' Hub.
+#'
+#' @usage
+#' macie2_get_findings_publication_configuration()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   securityHubConfiguration = list(
+#'     publishClassificationFindings = TRUE|FALSE,
+#'     publishPolicyFindings = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_findings_publication_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_get_findings_publication_configuration
+macie2_get_findings_publication_configuration <- function() {
+  op <- new_operation(
+    name = "GetFindingsPublicationConfiguration",
+    http_method = "GET",
+    http_path = "/findings-publication-configuration",
+    paginator = list()
+  )
+  input <- .macie2$get_findings_publication_configuration_input()
+  output <- .macie2$get_findings_publication_configuration_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$get_findings_publication_configuration <- macie2_get_findings_publication_configuration
+
 #' Retrieves the count of Amazon Macie membership invitations that were
 #' received by an account
 #'
@@ -2316,12 +2648,13 @@ macie2_get_macie_session <- function() {
 }
 .macie2$operations$get_macie_session <- macie2_get_macie_session
 
-#' Retrieves information about the Amazon Macie master account for an
-#' account
+#' (Deprecated) Retrieves information about the Amazon Macie administrator
+#' account for an account
 #'
 #' @description
-#' Retrieves information about the Amazon Macie master account for an
-#' account.
+#' (Deprecated) Retrieves information about the Amazon Macie administrator
+#' account for an account. This operation has been replaced by the
+#' GetAdministratorAccount operation.
 #'
 #' @usage
 #' macie2_get_master_account()
@@ -2366,12 +2699,12 @@ macie2_get_master_account <- function() {
 }
 .macie2$operations$get_master_account <- macie2_get_master_account
 
-#' Retrieves information about a member account that's associated with an
-#' Amazon Macie master account
+#' Retrieves information about an account that's associated with an Amazon
+#' Macie administrator account
 #'
 #' @description
-#' Retrieves information about a member account that's associated with an
-#' Amazon Macie master account.
+#' Retrieves information about an account that's associated with an Amazon
+#' Macie administrator account.
 #'
 #' @usage
 #' macie2_get_member(id)
@@ -2384,6 +2717,7 @@ macie2_get_master_account <- function() {
 #' ```
 #' list(
 #'   accountId = "string",
+#'   administratorAccountId = "string",
 #'   arn = "string",
 #'   email = "string",
 #'   invitedAt = as.POSIXct(
@@ -2427,6 +2761,155 @@ macie2_get_member <- function(id) {
 }
 .macie2$operations$get_member <- macie2_get_member
 
+#' Retrieves the status and configuration settings for retrieving
+#' (revealing) occurrences of sensitive data reported by findings
+#'
+#' @description
+#' Retrieves the status and configuration settings for retrieving
+#' (revealing) occurrences of sensitive data reported by findings.
+#'
+#' @usage
+#' macie2_get_reveal_configuration()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configuration = list(
+#'     kmsKeyId = "string",
+#'     status = "ENABLED"|"DISABLED"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_reveal_configuration()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_get_reveal_configuration
+macie2_get_reveal_configuration <- function() {
+  op <- new_operation(
+    name = "GetRevealConfiguration",
+    http_method = "GET",
+    http_path = "/reveal-configuration",
+    paginator = list()
+  )
+  input <- .macie2$get_reveal_configuration_input()
+  output <- .macie2$get_reveal_configuration_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$get_reveal_configuration <- macie2_get_reveal_configuration
+
+#' Retrieves (reveals) occurrences of sensitive data reported by a finding
+#'
+#' @description
+#' Retrieves (reveals) occurrences of sensitive data reported by a finding.
+#'
+#' @usage
+#' macie2_get_sensitive_data_occurrences(findingId)
+#'
+#' @param findingId &#91;required&#93; The unique identifier for the finding.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   error = "string",
+#'   sensitiveDataOccurrences = list(
+#'     list(
+#'       list(
+#'         value = "string"
+#'       )
+#'     )
+#'   ),
+#'   status = "SUCCESS"|"PROCESSING"|"ERROR"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_sensitive_data_occurrences(
+#'   findingId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_get_sensitive_data_occurrences
+macie2_get_sensitive_data_occurrences <- function(findingId) {
+  op <- new_operation(
+    name = "GetSensitiveDataOccurrences",
+    http_method = "GET",
+    http_path = "/findings/{findingId}/reveal",
+    paginator = list()
+  )
+  input <- .macie2$get_sensitive_data_occurrences_input(findingId = findingId)
+  output <- .macie2$get_sensitive_data_occurrences_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$get_sensitive_data_occurrences <- macie2_get_sensitive_data_occurrences
+
+#' Checks whether occurrences of sensitive data can be retrieved (revealed)
+#' for a finding
+#'
+#' @description
+#' Checks whether occurrences of sensitive data can be retrieved (revealed)
+#' for a finding.
+#'
+#' @usage
+#' macie2_get_sensitive_data_occurrences_availability(findingId)
+#'
+#' @param findingId &#91;required&#93; The unique identifier for the finding.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   code = "AVAILABLE"|"UNAVAILABLE",
+#'   reasons = list(
+#'     "OBJECT_EXCEEDS_SIZE_QUOTA"|"UNSUPPORTED_OBJECT_TYPE"|"UNSUPPORTED_FINDING_TYPE"|"INVALID_CLASSIFICATION_RESULT"|"OBJECT_UNAVAILABLE"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_sensitive_data_occurrences_availability(
+#'   findingId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_get_sensitive_data_occurrences_availability
+macie2_get_sensitive_data_occurrences_availability <- function(findingId) {
+  op <- new_operation(
+    name = "GetSensitiveDataOccurrencesAvailability",
+    http_method = "GET",
+    http_path = "/findings/{findingId}/reveal/availability",
+    paginator = list()
+  )
+  input <- .macie2$get_sensitive_data_occurrences_availability_input(findingId = findingId)
+  output <- .macie2$get_sensitive_data_occurrences_availability_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$get_sensitive_data_occurrences_availability <- macie2_get_sensitive_data_occurrences_availability
+
 #' Retrieves (queries) quotas and aggregated usage data for one or more
 #' accounts
 #'
@@ -2435,15 +2918,20 @@ macie2_get_member <- function(id) {
 #' accounts.
 #'
 #' @usage
-#' macie2_get_usage_statistics(filterBy, maxResults, nextToken, sortBy)
+#' macie2_get_usage_statistics(filterBy, maxResults, nextToken, sortBy,
+#'   timeRange)
 #'
 #' @param filterBy An array of objects, one for each condition to use to filter the query
-#' results. If the array contains more than one object, Amazon Macie uses
-#' an AND operator to join the conditions specified by the objects.
+#' results. If you specify more than one condition, Amazon Macie uses an
+#' AND operator to join the conditions.
 #' @param maxResults The maximum number of items to include in each page of the response.
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
 #' @param sortBy The criteria to use to sort the query results.
+#' @param timeRange The inclusive time period to query usage data for. Valid values are:
+#' MONTH_TO_DATE, for the current calendar month to date; and,
+#' PAST_30_DAYS, for the preceding 30 days. If you don't specify a value,
+#' Amazon Macie provides usage data for the preceding 30 days.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2469,7 +2957,8 @@ macie2_get_member <- function(id) {
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   timeRange = "MONTH_TO_DATE"|"PAST_30_DAYS"
 #' )
 #' ```
 #'
@@ -2490,21 +2979,22 @@ macie2_get_member <- function(id) {
 #'   sortBy = list(
 #'     key = "accountId"|"total"|"serviceLimitValue"|"freeTrialStartDate",
 #'     orderBy = "ASC"|"DESC"
-#'   )
+#'   ),
+#'   timeRange = "MONTH_TO_DATE"|"PAST_30_DAYS"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname macie2_get_usage_statistics
-macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL) {
+macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, timeRange = NULL) {
   op <- new_operation(
     name = "GetUsageStatistics",
     http_method = "POST",
     http_path = "/usage/statistics",
     paginator = list()
   )
-  input <- .macie2$get_usage_statistics_input(filterBy = filterBy, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy)
+  input <- .macie2$get_usage_statistics_input(filterBy = filterBy, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, timeRange = timeRange)
   output <- .macie2$get_usage_statistics_output()
   config <- get_config()
   svc <- .macie2$service(config)
@@ -2520,12 +3010,19 @@ macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, next
 #' Retrieves (queries) aggregated usage data for an account.
 #'
 #' @usage
-#' macie2_get_usage_totals()
+#' macie2_get_usage_totals(timeRange)
+#'
+#' @param timeRange The inclusive time period to retrieve the data for. Valid values are:
+#' MONTH_TO_DATE, for the current calendar month to date; and,
+#' PAST_30_DAYS, for the preceding 30 days. If you don't specify a value
+#' for this parameter, Amazon Macie provides aggregated usage data for the
+#' preceding 30 days.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   timeRange = "MONTH_TO_DATE"|"PAST_30_DAYS",
 #'   usageTotals = list(
 #'     list(
 #'       currency = "USD",
@@ -2538,20 +3035,22 @@ macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, next
 #'
 #' @section Request syntax:
 #' ```
-#' svc$get_usage_totals()
+#' svc$get_usage_totals(
+#'   timeRange = "string"
+#' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname macie2_get_usage_totals
-macie2_get_usage_totals <- function() {
+macie2_get_usage_totals <- function(timeRange = NULL) {
   op <- new_operation(
     name = "GetUsageTotals",
     http_method = "GET",
     http_path = "/usage",
     paginator = list()
   )
-  input <- .macie2$get_usage_totals_input()
+  input <- .macie2$get_usage_totals_input(timeRange = timeRange)
   output <- .macie2$get_usage_totals_output()
   config <- get_config()
   svc <- .macie2$service(config)
@@ -2608,6 +3107,52 @@ macie2_get_usage_totals <- function() {
 #'         jobPausedAt = as.POSIXct(
 #'           "2015-01-01"
 #'         )
+#'       ),
+#'       bucketCriteria = list(
+#'         excludes = list(
+#'           and = list(
+#'             list(
+#'               simpleCriterion = list(
+#'                 comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'                 key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'                 values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               tagCriterion = list(
+#'                 comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'                 tagValues = list(
+#'                   list(
+#'                     key = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         includes = list(
+#'           and = list(
+#'             list(
+#'               simpleCriterion = list(
+#'                 comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'                 key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'                 values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               tagCriterion = list(
+#'                 comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
+#'                 tagValues = list(
+#'                   list(
+#'                     key = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2621,7 +3166,7 @@ macie2_get_usage_totals <- function() {
 #'   filterCriteria = list(
 #'     excludes = list(
 #'       list(
-#'         comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'         comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
 #'         key = "jobType"|"jobStatus"|"createdAt"|"name",
 #'         values = list(
 #'           "string"
@@ -2630,7 +3175,7 @@ macie2_get_usage_totals <- function() {
 #'     ),
 #'     includes = list(
 #'       list(
-#'         comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS",
+#'         comparator = "EQ"|"GT"|"GTE"|"LT"|"LTE"|"NE"|"CONTAINS"|"STARTS_WITH",
 #'         key = "jobType"|"jobStatus"|"createdAt"|"name",
 #'         values = list(
 #'           "string"
@@ -2867,12 +3412,12 @@ macie2_list_findings_filters <- function(maxResults = NULL, nextToken = NULL) {
 }
 .macie2$operations$list_findings_filters <- macie2_list_findings_filters
 
-#' Retrieves information about all the Amazon Macie membership invitations
-#' that were received by an account
+#' Retrieves information about the Amazon Macie membership invitations that
+#' were received by an account
 #'
 #' @description
-#' Retrieves information about all the Amazon Macie membership invitations
-#' that were received by an account.
+#' Retrieves information about the Amazon Macie membership invitations that
+#' were received by an account.
 #'
 #' @usage
 #' macie2_list_invitations(maxResults, nextToken)
@@ -2928,12 +3473,66 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
 }
 .macie2$operations$list_invitations <- macie2_list_invitations
 
+#' Retrieves information about all the managed data identifiers that Amazon
+#' Macie currently provides
+#'
+#' @description
+#' Retrieves information about all the managed data identifiers that Amazon
+#' Macie currently provides.
+#'
+#' @usage
+#' macie2_list_managed_data_identifiers(nextToken)
+#'
+#' @param nextToken The nextToken string that specifies which page of results to return in a
+#' paginated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       category = "FINANCIAL_INFORMATION"|"PERSONAL_INFORMATION"|"CREDENTIALS"|"CUSTOM_IDENTIFIER",
+#'       id = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_managed_data_identifiers(
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_list_managed_data_identifiers
+macie2_list_managed_data_identifiers <- function(nextToken = NULL) {
+  op <- new_operation(
+    name = "ListManagedDataIdentifiers",
+    http_method = "POST",
+    http_path = "/managed-data-identifiers/list",
+    paginator = list()
+  )
+  input <- .macie2$list_managed_data_identifiers_input(nextToken = nextToken)
+  output <- .macie2$list_managed_data_identifiers_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$list_managed_data_identifiers <- macie2_list_managed_data_identifiers
+
 #' Retrieves information about the accounts that are associated with an
-#' Amazon Macie master account
+#' Amazon Macie administrator account
 #'
 #' @description
 #' Retrieves information about the accounts that are associated with an
-#' Amazon Macie master account.
+#' Amazon Macie administrator account.
 #'
 #' @usage
 #' macie2_list_members(maxResults, nextToken, onlyAssociated)
@@ -2943,9 +3542,9 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
 #' @param onlyAssociated Specifies which accounts to include in the response, based on the status
-#' of an account's relationship with the master account. By default, the
-#' response includes only current member accounts. To include all accounts,
-#' set the value for this parameter to false.
+#' of an account's relationship with the administrator account. By default,
+#' the response includes only current member accounts. To include all
+#' accounts, set this value to false.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2954,6 +3553,7 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
 #'   members = list(
 #'     list(
 #'       accountId = "string",
+#'       administratorAccountId = "string",
 #'       arn = "string",
 #'       email = "string",
 #'       invitedAt = as.POSIXct(
@@ -3003,11 +3603,11 @@ macie2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssocia
 .macie2$operations$list_members <- macie2_list_members
 
 #' Retrieves information about the delegated Amazon Macie administrator
-#' account for an AWS organization
+#' account for an organization in Organizations
 #'
 #' @description
 #' Retrieves information about the delegated Amazon Macie administrator
-#' account for an AWS organization.
+#' account for an organization in Organizations.
 #'
 #' @usage
 #' macie2_list_organization_admin_accounts(maxResults, nextToken)
@@ -3171,6 +3771,201 @@ macie2_put_classification_export_configuration <- function(configuration) {
 }
 .macie2$operations$put_classification_export_configuration <- macie2_put_classification_export_configuration
 
+#' Updates the configuration settings for publishing findings to Security
+#' Hub
+#'
+#' @description
+#' Updates the configuration settings for publishing findings to Security
+#' Hub.
+#'
+#' @usage
+#' macie2_put_findings_publication_configuration(clientToken,
+#'   securityHubConfiguration)
+#'
+#' @param clientToken A unique, case-sensitive token that you provide to ensure the
+#' idempotency of the request.
+#' @param securityHubConfiguration The configuration settings that determine which findings to publish to
+#' Security Hub.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_findings_publication_configuration(
+#'   clientToken = "string",
+#'   securityHubConfiguration = list(
+#'     publishClassificationFindings = TRUE|FALSE,
+#'     publishPolicyFindings = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_put_findings_publication_configuration
+macie2_put_findings_publication_configuration <- function(clientToken = NULL, securityHubConfiguration = NULL) {
+  op <- new_operation(
+    name = "PutFindingsPublicationConfiguration",
+    http_method = "PUT",
+    http_path = "/findings-publication-configuration",
+    paginator = list()
+  )
+  input <- .macie2$put_findings_publication_configuration_input(clientToken = clientToken, securityHubConfiguration = securityHubConfiguration)
+  output <- .macie2$put_findings_publication_configuration_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$put_findings_publication_configuration <- macie2_put_findings_publication_configuration
+
+#' Retrieves (queries) statistical data and other information about Amazon
+#' Web Services resources that Amazon Macie monitors and analyzes
+#'
+#' @description
+#' Retrieves (queries) statistical data and other information about Amazon
+#' Web Services resources that Amazon Macie monitors and analyzes.
+#'
+#' @usage
+#' macie2_search_resources(bucketCriteria, maxResults, nextToken,
+#'   sortCriteria)
+#'
+#' @param bucketCriteria The filter conditions that determine which S3 buckets to include or
+#' exclude from the query results.
+#' @param maxResults The maximum number of items to include in each page of the response. The
+#' default value is 50.
+#' @param nextToken The nextToken string that specifies which page of results to return in a
+#' paginated response.
+#' @param sortCriteria The criteria to use to sort the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   matchingResources = list(
+#'     list(
+#'       matchingBucket = list(
+#'         accountId = "string",
+#'         bucketName = "string",
+#'         classifiableObjectCount = 123,
+#'         classifiableSizeInBytes = 123,
+#'         errorCode = "ACCESS_DENIED",
+#'         errorMessage = "string",
+#'         jobDetails = list(
+#'           isDefinedInJob = "TRUE"|"FALSE"|"UNKNOWN",
+#'           isMonitoredByJob = "TRUE"|"FALSE"|"UNKNOWN",
+#'           lastJobId = "string",
+#'           lastJobRunTime = as.POSIXct(
+#'             "2015-01-01"
+#'           )
+#'         ),
+#'         objectCount = 123,
+#'         objectCountByEncryptionType = list(
+#'           customerManaged = 123,
+#'           kmsManaged = 123,
+#'           s3Managed = 123,
+#'           unencrypted = 123,
+#'           unknown = 123
+#'         ),
+#'         sizeInBytes = 123,
+#'         sizeInBytesCompressed = 123,
+#'         unclassifiableObjectCount = list(
+#'           fileType = 123,
+#'           storageClass = 123,
+#'           total = 123
+#'         ),
+#'         unclassifiableObjectSizeInBytes = list(
+#'           fileType = 123,
+#'           storageClass = 123,
+#'           total = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_resources(
+#'   bucketCriteria = list(
+#'     excludes = list(
+#'       and = list(
+#'         list(
+#'           simpleCriterion = list(
+#'             comparator = "EQ"|"NE",
+#'             key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'             values = list(
+#'               "string"
+#'             )
+#'           ),
+#'           tagCriterion = list(
+#'             comparator = "EQ"|"NE",
+#'             tagValues = list(
+#'               list(
+#'                 key = "string",
+#'                 value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     includes = list(
+#'       and = list(
+#'         list(
+#'           simpleCriterion = list(
+#'             comparator = "EQ"|"NE",
+#'             key = "ACCOUNT_ID"|"S3_BUCKET_NAME"|"S3_BUCKET_EFFECTIVE_PERMISSION"|"S3_BUCKET_SHARED_ACCESS",
+#'             values = list(
+#'               "string"
+#'             )
+#'           ),
+#'           tagCriterion = list(
+#'             comparator = "EQ"|"NE",
+#'             tagValues = list(
+#'               list(
+#'                 key = "string",
+#'                 value = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   sortCriteria = list(
+#'     attributeName = "ACCOUNT_ID"|"RESOURCE_NAME"|"S3_CLASSIFIABLE_OBJECT_COUNT"|"S3_CLASSIFIABLE_SIZE_IN_BYTES",
+#'     orderBy = "ASC"|"DESC"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_search_resources
+macie2_search_resources <- function(bucketCriteria = NULL, maxResults = NULL, nextToken = NULL, sortCriteria = NULL) {
+  op <- new_operation(
+    name = "SearchResources",
+    http_method = "POST",
+    http_path = "/datasources/search-resources",
+    paginator = list()
+  )
+  input <- .macie2$search_resources_input(bucketCriteria = bucketCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
+  output <- .macie2$search_resources_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$search_resources <- macie2_search_resources
+
 #' Adds or updates one or more tags (keys and values) that are associated
 #' with a classification job, custom data identifier, findings filter, or
 #' member account
@@ -3234,20 +4029,22 @@ macie2_tag_resource <- function(resourceArn, tags) {
 #' macie2_test_custom_data_identifier(ignoreWords, keywords,
 #'   maximumMatchDistance, regex, sampleText)
 #'
-#' @param ignoreWords An array that lists specific character sequences (ignore words) to
+#' @param ignoreWords An array that lists specific character sequences (*ignore words*) to
 #' exclude from the results. If the text matched by the regular expression
-#' is the same as any string in this array, Amazon Macie ignores it. The
-#' array can contain as many as 10 ignore words. Each ignore word can
-#' contain 4 - 90 characters. Ignore words are case sensitive.
-#' @param keywords An array that lists specific character sequences (keywords), one of
-#' which must be within proximity (maximumMatchDistance) of the regular
-#' expression to match. The array can contain as many as 50 keywords. Each
-#' keyword can contain 4 - 90 characters. Keywords aren't case sensitive.
-#' @param maximumMatchDistance The maximum number of characters that can exist between text that
-#' matches the regex pattern and the character sequences specified by the
-#' keywords array. Macie includes or excludes a result based on the
-#' proximity of a keyword to text that matches the regex pattern. The
-#' distance can be 1 - 300 characters. The default value is 50.
+#' contains any string in this array, Amazon Macie ignores it. The array
+#' can contain as many as 10 ignore words. Each ignore word can contain
+#' 4-90 UTF-8 characters. Ignore words are case sensitive.
+#' @param keywords An array that lists specific character sequences (*keywords*), one of
+#' which must precede and be within proximity (maximumMatchDistance) of the
+#' regular expression to match. The array can contain as many as 50
+#' keywords. Each keyword can contain 3-90 UTF-8 characters. Keywords
+#' aren't case sensitive.
+#' @param maximumMatchDistance The maximum number of characters that can exist between the end of at
+#' least one complete character sequence specified by the keywords array
+#' and the end of the text that matches the regex pattern. If a complete
+#' keyword precedes all the text that matches the pattern and the keyword
+#' is within the specified distance, Amazon Macie includes the result. The
+#' distance can be 1-300 characters. The default value is 50.
 #' @param regex &#91;required&#93; The regular expression (*regex*) that defines the pattern to match. The
 #' expression can contain as many as 512 characters.
 #' @param sampleText &#91;required&#93; The sample text to inspect by using the custom data identifier. The text
@@ -3308,9 +4105,9 @@ macie2_test_custom_data_identifier <- function(ignoreWords = NULL, keywords = NU
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the classification job, custom data
 #' identifier, findings filter, or member account.
-#' @param tagKeys &#91;required&#93; The key of the tag to remove from the resource. To remove multiple tags,
-#' append the tagKeys parameter and argument for each additional tag to
-#' remove, separated by an ampersand (&).
+#' @param tagKeys &#91;required&#93; One or more tags (keys) to remove from the resource. In an HTTP request
+#' to remove multiple tags, append the tagKeys parameter and argument for
+#' each tag to remove, and separate them with an ampersand (&).
 #'
 #' @return
 #' An empty list.
@@ -3374,9 +4171,9 @@ macie2_untag_resource <- function(resourceArn, tagKeys) {
 #'     other settings for the job.
 #' 
 #' -   USER_PAUSED - Pauses the job temporarily. This value is valid only
-#'     if the job's current status is IDLE or RUNNING. If you specify this
-#'     value and the job's current status is RUNNING, Macie immediately
-#'     begins to pause all processing tasks for the job.
+#'     if the job's current status is IDLE, PAUSED, or RUNNING. If you
+#'     specify this value and the job's current status is RUNNING, Macie
+#'     immediately begins to pause all processing tasks for the job.
 #' 
 #'     If you pause a one-time job and you don't resume it within 30 days,
 #'     the job expires and Macie cancels the job. If you pause a recurring
@@ -3423,7 +4220,7 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
 #'
 #' @usage
 #' macie2_update_findings_filter(action, description, findingCriteria, id,
-#'   name, position)
+#'   name, position, clientToken)
 #'
 #' @param action The action to perform on findings that meet the filter criteria
 #' (findingCriteria). Valid values are: ARCHIVE, suppress (automatically
@@ -3433,7 +4230,7 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
 #' as 512 characters.
 #' 
 #' We strongly recommend that you avoid including any sensitive data in the
-#' description of a filter. Other users might be able to see the filter's
+#' description of a filter. Other users might be able to see this
 #' description, depending on the actions that they're allowed to perform in
 #' Amazon Macie.
 #' @param findingCriteria The criteria to use to filter findings.
@@ -3443,13 +4240,14 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
 #' characters and can contain as many as 64 characters.
 #' 
 #' We strongly recommend that you avoid including any sensitive data in the
-#' name of a filter. Other users might be able to see the filter's name,
-#' depending on the actions that they're allowed to perform in Amazon
-#' Macie.
+#' name of a filter. Other users might be able to see this name, depending
+#' on the actions that they're allowed to perform in Amazon Macie.
 #' @param position The position of the filter in the list of saved filters on the Amazon
 #' Macie console. This value also determines the order in which the filter
 #' is applied to findings, relative to other filters that are also applied
 #' to the findings.
+#' @param clientToken A unique, case-sensitive token that you provide to ensure the
+#' idempotency of the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3486,21 +4284,22 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
 #'   ),
 #'   id = "string",
 #'   name = "string",
-#'   position = 123
+#'   position = 123,
+#'   clientToken = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname macie2_update_findings_filter
-macie2_update_findings_filter <- function(action = NULL, description = NULL, findingCriteria = NULL, id, name = NULL, position = NULL) {
+macie2_update_findings_filter <- function(action = NULL, description = NULL, findingCriteria = NULL, id, name = NULL, position = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateFindingsFilter",
     http_method = "PATCH",
     http_path = "/findingsfilters/{id}",
     paginator = list()
   )
-  input <- .macie2$update_findings_filter_input(action = action, description = description, findingCriteria = findingCriteria, id = id, name = name, position = position)
+  input <- .macie2$update_findings_filter_input(action = action, description = description, findingCriteria = findingCriteria, id = id, name = name, position = position, clientToken = clientToken)
   output <- .macie2$update_findings_filter_output()
   config <- get_config()
   svc <- .macie2$service(config)
@@ -3510,22 +4309,22 @@ macie2_update_findings_filter <- function(action = NULL, description = NULL, fin
 }
 .macie2$operations$update_findings_filter <- macie2_update_findings_filter
 
-#' Suspends or re-enables an Amazon Macie account, or updates the
-#' configuration settings for a Macie account
+#' Suspends or re-enables Amazon Macie, or updates the configuration
+#' settings for a Macie account
 #'
 #' @description
-#' Suspends or re-enables an Amazon Macie account, or updates the
-#' configuration settings for a Macie account.
+#' Suspends or re-enables Amazon Macie, or updates the configuration
+#' settings for a Macie account.
 #'
 #' @usage
 #' macie2_update_macie_session(findingPublishingFrequency, status)
 #'
 #' @param findingPublishingFrequency Specifies how often to publish updates to policy findings for the
-#' account. This includes publishing updates to AWS Security Hub and Amazon
+#' account. This includes publishing updates to Security Hub and Amazon
 #' EventBridge (formerly called Amazon CloudWatch Events).
-#' @param status Specifies whether to change the status of the account. Valid values are:
-#' ENABLED, resume all Amazon Macie activities for the account; and,
-#' PAUSED, suspend all Macie activities for the account.
+#' @param status Specifies a new status for the account. Valid values are: ENABLED,
+#' resume all Amazon Macie activities for the account; and, PAUSED, suspend
+#' all Macie activities for the account.
 #'
 #' @return
 #' An empty list.
@@ -3558,12 +4357,12 @@ macie2_update_macie_session <- function(findingPublishingFrequency = NULL, statu
 }
 .macie2$operations$update_macie_session <- macie2_update_macie_session
 
-#' Enables an Amazon Macie master account to suspend or re-enable a member
-#' account
+#' Enables an Amazon Macie administrator to suspend or re-enable Macie for
+#' a member account
 #'
 #' @description
-#' Enables an Amazon Macie master account to suspend or re-enable a member
-#' account.
+#' Enables an Amazon Macie administrator to suspend or re-enable Macie for
+#' a member account.
 #'
 #' @usage
 #' macie2_update_member_session(id, status)
@@ -3605,16 +4404,18 @@ macie2_update_member_session <- function(id, status) {
 }
 .macie2$operations$update_member_session <- macie2_update_member_session
 
-#' Updates the Amazon Macie configuration settings for an AWS organization
+#' Updates the Amazon Macie configuration settings for an organization in
+#' Organizations
 #'
 #' @description
-#' Updates the Amazon Macie configuration settings for an AWS organization.
+#' Updates the Amazon Macie configuration settings for an organization in
+#' Organizations.
 #'
 #' @usage
 #' macie2_update_organization_configuration(autoEnable)
 #'
-#' @param autoEnable &#91;required&#93; Specifies whether Amazon Macie is enabled automatically for each
-#' account, when the account is added to the AWS organization.
+#' @param autoEnable &#91;required&#93; Specifies whether to enable Amazon Macie automatically for an account
+#' when the account is added to the organization in Organizations.
 #'
 #' @return
 #' An empty list.
@@ -3645,3 +4446,57 @@ macie2_update_organization_configuration <- function(autoEnable) {
   return(response)
 }
 .macie2$operations$update_organization_configuration <- macie2_update_organization_configuration
+
+#' Updates the status and configuration settings for retrieving (revealing)
+#' occurrences of sensitive data reported by findings
+#'
+#' @description
+#' Updates the status and configuration settings for retrieving (revealing)
+#' occurrences of sensitive data reported by findings.
+#'
+#' @usage
+#' macie2_update_reveal_configuration(configuration)
+#'
+#' @param configuration &#91;required&#93; The new configuration settings and the status of the configuration for
+#' the account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   configuration = list(
+#'     kmsKeyId = "string",
+#'     status = "ENABLED"|"DISABLED"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_reveal_configuration(
+#'   configuration = list(
+#'     kmsKeyId = "string",
+#'     status = "ENABLED"|"DISABLED"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname macie2_update_reveal_configuration
+macie2_update_reveal_configuration <- function(configuration) {
+  op <- new_operation(
+    name = "UpdateRevealConfiguration",
+    http_method = "PUT",
+    http_path = "/reveal-configuration",
+    paginator = list()
+  )
+  input <- .macie2$update_reveal_configuration_input(configuration = configuration)
+  output <- .macie2$update_reveal_configuration_output()
+  config <- get_config()
+  svc <- .macie2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.macie2$operations$update_reveal_configuration <- macie2_update_reveal_configuration

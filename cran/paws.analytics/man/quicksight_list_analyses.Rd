@@ -2,50 +2,21 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_analyses}
 \alias{quicksight_list_analyses}
-\title{Lists Amazon QuickSight analyses that exist in the specified AWS account}
+\title{Lists Amazon QuickSight analyses that exist in the specified Amazon Web
+Services account}
 \usage{
-quicksight_list_analyses(AwsAccountId, NextToken, MaxResults)
+quicksight_list_analyses(AwsAccountId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the analyses.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the analyses.}
 
 \item{NextToken}{A pagination token that can be used in a subsequent request.}
 
 \item{MaxResults}{The maximum number of results to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AnalysisSummaryList = list(
-    list(
-      Arn = "string",
-      AnalysisId = "string",
-      Name = "string",
-      Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
-Lists Amazon QuickSight analyses that exist in the specified AWS
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_analyses(
-  AwsAccountId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists Amazon QuickSight analyses that exist in the specified Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/quicksight/list_analyses.html} for full documentation.
+}
 \keyword{internal}

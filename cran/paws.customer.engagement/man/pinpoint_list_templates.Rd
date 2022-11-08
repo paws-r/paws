@@ -5,7 +5,12 @@
 \title{Retrieves information about all the message templates that are
 associated with your Amazon Pinpoint account}
 \usage{
-pinpoint_list_templates(NextToken, PageSize, Prefix, TemplateType)
+pinpoint_list_templates(
+  NextToken = NULL,
+  PageSize = NULL,
+  Prefix = NULL,
+  TemplateType = NULL
+)
 }
 \arguments{
 \item{NextToken}{The string that specifies which page of results to return in a paginated
@@ -24,41 +29,9 @@ those templates whose names begin with the value that you specify.}
 are: EMAIL, PUSH, SMS, and VOICE. To include all types of templates in
 the results, don't include this parameter in your request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplatesResponse = list(
-    Item = list(
-      list(
-        Arn = "string",
-        CreationDate = "string",
-        DefaultSubstitutions = "string",
-        LastModifiedDate = "string",
-        tags = list(
-          "string"
-        ),
-        TemplateDescription = "string",
-        TemplateName = "string",
-        TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
-        Version = "string"
-      )
-    ),
-    NextToken = "string"
-  )
-)
-}
-}
 \description{
-Retrieves information about all the message templates that are
-associated with your Amazon Pinpoint account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_templates(
-  NextToken = "string",
-  PageSize = "string",
-  Prefix = "string",
-  TemplateType = "string"
-)
-}
-}
+Retrieves information about all the message templates that are associated with your Amazon Pinpoint account.
 
+See \url{https://paws-r.github.io/docs/pinpoint/list_templates.html} for full documentation.
+}
 \keyword{internal}

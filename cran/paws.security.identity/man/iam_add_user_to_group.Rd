@@ -19,29 +19,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-An empty list.
-}
 \description{
 Adds the specified user to the specified group.
-}
-\section{Request syntax}{
-\preformatted{svc$add_user_to_group(
-  GroupName = "string",
-  UserName = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# The following command adds an IAM user named Bob to the IAM group named
-# Admins:
-svc$add_user_to_group(
-  GroupName = "Admins",
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/add_user_to_group.html} for full documentation.
 }
 \keyword{internal}

@@ -9,18 +9,9 @@ worklink_delete_fleet(FleetArn)
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a fleet. Prevents users from accessing previously associated
-websites.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_fleet(
-  FleetArn = "string"
-)
-}
-}
+Deletes a fleet. Prevents users from accessing previously associated websites.
 
+See \url{https://paws-r.github.io/docs/worklink/delete_fleet.html} for full documentation.
+}
 \keyword{internal}

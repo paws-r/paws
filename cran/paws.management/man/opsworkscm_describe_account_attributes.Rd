@@ -6,26 +6,9 @@
 \usage{
 opsworkscm_describe_account_attributes()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    list(
-      Name = "string",
-      Maximum = 123,
-      Used = 123
-    )
-  )
-)
-}
-}
 \description{
 Describes your OpsWorks-CM account attributes.
 
-This operation is synchronous.
+See \url{https://paws-r.github.io/docs/opsworkscm/describe_account_attributes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_account_attributes()
-}
-}
-
 \keyword{internal}

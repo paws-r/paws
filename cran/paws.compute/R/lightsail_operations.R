@@ -8,47 +8,9 @@ NULL
 #' @description
 #' Allocates a static IP address.
 #'
-#' @usage
-#' lightsail_allocate_static_ip(staticIpName)
+#' See [https://paws-r.github.io/docs/lightsail/allocate_static_ip.html](https://paws-r.github.io/docs/lightsail/allocate_static_ip.html) for full documentation.
 #'
 #' @param staticIpName &#91;required&#93; The name of the static IP address.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$allocate_static_ip(
-#'   staticIpName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -74,24 +36,9 @@ lightsail_allocate_static_ip <- function(staticIpName) {
 #' delivery network (CDN) distribution
 #'
 #' @description
-#' Attaches an SSL/TLS certificate to your Amazon Lightsail content
-#' delivery network (CDN) distribution.
-#' 
-#' After the certificate is attached, your distribution accepts HTTPS
-#' traffic for all of the domains that are associated with the certificate.
-#' 
-#' Use the [`create_certificate`][lightsail_create_certificate] action to
-#' create a certificate that you can attach to your distribution.
-#' 
-#' Only certificates created in the `us-east-1` AWS Region can be attached
-#' to Lightsail distributions. Lightsail distributions are global resources
-#' that can reference an origin in any AWS Region, and distribute its
-#' content globally. However, all distributions are located in the
-#' `us-east-1` Region.
+#' Attaches an SSL/TLS certificate to your Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' @usage
-#' lightsail_attach_certificate_to_distribution(distributionName,
-#'   certificateName)
+#' See [https://paws-r.github.io/docs/lightsail/attach_certificate_to_distribution.html](https://paws-r.github.io/docs/lightsail/attach_certificate_to_distribution.html) for full documentation.
 #'
 #' @param distributionName &#91;required&#93; The name of the distribution that the certificate will be attached to.
 #' 
@@ -110,42 +57,6 @@ lightsail_allocate_static_ip <- function(staticIpName) {
 #' the domain name of the certificate. For example, your certificate name
 #' might be `WordPress-Blog-Certificate` and the domain name of the
 #' certificate might be `example.com`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$attach_certificate_to_distribution(
-#'   distributionName = "string",
-#'   certificateName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -171,59 +82,14 @@ lightsail_attach_certificate_to_distribution <- function(distributionName, certi
 #' and exposes it to the instance with the specified disk name
 #'
 #' @description
-#' Attaches a block storage disk to a running or stopped Lightsail instance
-#' and exposes it to the instance with the specified disk name.
-#' 
-#' The `attach disk` operation supports tag-based access control via
-#' resource tags applied to the resource identified by `disk name`. For
-#' more information, see the Lightsail Dev Guide.
+#' Attaches a block storage disk to a running or stopped Lightsail instance and exposes it to the instance with the specified disk name.
 #'
-#' @usage
-#' lightsail_attach_disk(diskName, instanceName, diskPath)
+#' See [https://paws-r.github.io/docs/lightsail/attach_disk.html](https://paws-r.github.io/docs/lightsail/attach_disk.html) for full documentation.
 #'
 #' @param diskName &#91;required&#93; The unique Lightsail disk name (e.g., `my-disk`).
 #' @param instanceName &#91;required&#93; The name of the Lightsail instance where you want to utilize the storage
 #' disk.
 #' @param diskPath &#91;required&#93; The disk path to expose to the instance (e.g., `/dev/xvdf`).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$attach_disk(
-#'   diskName = "string",
-#'   instanceName = "string",
-#'   diskPath = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -249,17 +115,8 @@ lightsail_attach_disk <- function(diskName, instanceName, diskPath) {
 #'
 #' @description
 #' Attaches one or more Lightsail instances to a load balancer.
-#' 
-#' After some time, the instances are attached to the load balancer and the
-#' health check status is available.
-#' 
-#' The `attach instances to load balancer` operation supports tag-based
-#' access control via resource tags applied to the resource identified by
-#' `load balancer name`. For more information, see the Lightsail Dev Guide.
 #'
-#' @usage
-#' lightsail_attach_instances_to_load_balancer(loadBalancerName,
-#'   instanceNames)
+#' See [https://paws-r.github.io/docs/lightsail/attach_instances_to_load_balancer.html](https://paws-r.github.io/docs/lightsail/attach_instances_to_load_balancer.html) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param instanceNames &#91;required&#93; An array of strings representing the instance name(s) you want to attach
@@ -271,46 +128,6 @@ lightsail_attach_disk <- function(diskName, instanceName, diskPath) {
 #' There are no additional limits on the number of instances you can attach
 #' to your load balancer, aside from the limit of Lightsail instances you
 #' can create in your account (20).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$attach_instances_to_load_balancer(
-#'   loadBalancerName = "string",
-#'   instanceNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -336,68 +153,13 @@ lightsail_attach_instances_to_load_balancer <- function(loadBalancerName, instan
 #' balancer
 #'
 #' @description
-#' Attaches a Transport Layer Security (TLS) certificate to your load
-#' balancer. TLS is just an updated, more secure version of Secure Socket
-#' Layer (SSL).
-#' 
-#' Once you create and validate your certificate, you can attach it to your
-#' load balancer. You can also use this API to rotate the certificates on
-#' your account. Use the
-#' [`attach_load_balancer_tls_certificate`][lightsail_attach_load_balancer_tls_certificate]
-#' action with the non-attached certificate, and it will replace the
-#' existing one and become the attached certificate.
-#' 
-#' The
-#' [`attach_load_balancer_tls_certificate`][lightsail_attach_load_balancer_tls_certificate]
-#' operation supports tag-based access control via resource tags applied to
-#' the resource identified by `load balancer name`. For more information,
-#' see the Lightsail Dev Guide.
+#' Attaches a Transport Layer Security (TLS) certificate to your load balancer. TLS is just an updated, more secure version of Secure Socket Layer (SSL).
 #'
-#' @usage
-#' lightsail_attach_load_balancer_tls_certificate(loadBalancerName,
-#'   certificateName)
+#' See [https://paws-r.github.io/docs/lightsail/attach_load_balancer_tls_certificate.html](https://paws-r.github.io/docs/lightsail/attach_load_balancer_tls_certificate.html) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer to which you want to associate the SSL/TLS
 #' certificate.
 #' @param certificateName &#91;required&#93; The name of your SSL/TLS certificate.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$attach_load_balancer_tls_certificate(
-#'   loadBalancerName = "string",
-#'   certificateName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -424,49 +186,10 @@ lightsail_attach_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' @description
 #' Attaches a static IP address to a specific Amazon Lightsail instance.
 #'
-#' @usage
-#' lightsail_attach_static_ip(staticIpName, instanceName)
+#' See [https://paws-r.github.io/docs/lightsail/attach_static_ip.html](https://paws-r.github.io/docs/lightsail/attach_static_ip.html) for full documentation.
 #'
 #' @param staticIpName &#91;required&#93; The name of the static IP.
 #' @param instanceName &#91;required&#93; The instance name to which you want to attach the static IP address.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$attach_static_ip(
-#'   staticIpName = "string",
-#'   instanceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -492,64 +215,11 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
 #'
 #' @description
 #' Closes ports for a specific Amazon Lightsail instance.
-#' 
-#' The
-#' [`close_instance_public_ports`][lightsail_close_instance_public_ports]
-#' action supports tag-based access control via resource tags applied to
-#' the resource identified by `instanceName`. For more information, see the
-#' Lightsail Dev Guide.
 #'
-#' @usage
-#' lightsail_close_instance_public_ports(portInfo, instanceName)
+#' See [https://paws-r.github.io/docs/lightsail/close_instance_public_ports.html](https://paws-r.github.io/docs/lightsail/close_instance_public_ports.html) for full documentation.
 #'
 #' @param portInfo &#91;required&#93; An object to describe the ports to close for the specified instance.
 #' @param instanceName &#91;required&#93; The name of the instance for which to close ports.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$close_instance_public_ports(
-#'   portInfo = list(
-#'     fromPort = 123,
-#'     toPort = 123,
-#'     protocol = "tcp"|"all"|"udp"|"icmp",
-#'     cidrs = list(
-#'       "string"
-#'     ),
-#'     cidrListAliases = list(
-#'       "string"
-#'     )
-#'   ),
-#'   instanceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -576,24 +246,9 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #' manual snapshot
 #'
 #' @description
-#' Copies a manual snapshot of an instance or disk as another manual
-#' snapshot, or copies an automatic snapshot of an instance or disk as a
-#' manual snapshot. This operation can also be used to copy a manual or
-#' automatic snapshot of an instance or a disk from one AWS Region to
-#' another in Amazon Lightsail.
-#' 
-#' When copying a *manual snapshot*, be sure to define the `source region`,
-#' `source snapshot name`, and `target snapshot name` parameters.
-#' 
-#' When copying an *automatic snapshot*, be sure to define the
-#' `source region`, `source resource name`, `target snapshot name`, and
-#' either the `restore date` or the `use latest restorable auto snapshot`
-#' parameters.
+#' Copies a manual snapshot of an instance or disk as another manual snapshot, or copies an automatic snapshot of an instance or disk as a manual snapshot. This operation can also be used to copy a manual or automatic snapshot of an instance or a disk from one Amazon Web Services Region to another in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_copy_snapshot(sourceSnapshotName, sourceResourceName,
-#'   restoreDate, useLatestRestorableAutoSnapshot, targetSnapshotName,
-#'   sourceRegion)
+#' See [https://paws-r.github.io/docs/lightsail/copy_snapshot.html](https://paws-r.github.io/docs/lightsail/copy_snapshot.html) for full documentation.
 #'
 #' @param sourceSnapshotName The name of the source manual snapshot to copy.
 #' 
@@ -607,7 +262,8 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #' Constraint:
 #' 
 #' -   Define this parameter only when copying an automatic snapshot as a
-#'     manual snapshot. For more information, see the Lightsail Dev Guide.
+#'     manual snapshot. For more information, see the Amazon Lightsail
+#'     Developer Guide.
 #' @param restoreDate The date of the source automatic snapshot to copy. Use the
 #' `get auto snapshots` operation to identify the dates of the available
 #' automatic snapshots.
@@ -622,7 +278,8 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #'     exclusive.
 #' 
 #' -   Define this parameter only when copying an automatic snapshot as a
-#'     manual snapshot. For more information, see the Lightsail Dev Guide.
+#'     manual snapshot. For more information, see the Amazon Lightsail
+#'     Developer Guide.
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot of the specified source instance or disk.
 #' 
@@ -633,51 +290,11 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #'     `restore date` parameters are mutually exclusive.
 #' 
 #' -   Define this parameter only when copying an automatic snapshot as a
-#'     manual snapshot. For more information, see the Lightsail Dev Guide.
+#'     manual snapshot. For more information, see the Amazon Lightsail
+#'     Developer Guide.
 #' @param targetSnapshotName &#91;required&#93; The name of the new manual snapshot to be created as a copy.
-#' @param sourceRegion &#91;required&#93; The AWS Region where the source manual or automatic snapshot is located.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_snapshot(
-#'   sourceSnapshotName = "string",
-#'   sourceResourceName = "string",
-#'   restoreDate = "string",
-#'   useLatestRestorableAutoSnapshot = TRUE|FALSE,
-#'   targetSnapshotName = "string",
-#'   sourceRegion = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#' )
-#' ```
+#' @param sourceRegion &#91;required&#93; The Amazon Web Services Region where the source manual or automatic
+#' snapshot is located.
 #'
 #' @keywords internal
 #'
@@ -699,26 +316,95 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 }
 .lightsail$operations$copy_snapshot <- lightsail_copy_snapshot
 
-#' Creates an SSL/TLS certificate for a Amazon Lightsail content delivery
-#' network (CDN) distribution
+#' Creates an Amazon Lightsail bucket
 #'
 #' @description
-#' Creates an SSL/TLS certificate for a Amazon Lightsail content delivery
-#' network (CDN) distribution.
-#' 
-#' After the certificate is created, use the
-#' [`attach_certificate_to_distribution`][lightsail_attach_certificate_to_distribution]
-#' action to attach the certificate to your distribution.
-#' 
-#' Only certificates created in the `us-east-1` AWS Region can be attached
-#' to Lightsail distributions. Lightsail distributions are global resources
-#' that can reference an origin in any AWS Region, and distribute its
-#' content globally. However, all distributions are located in the
-#' `us-east-1` Region.
+#' Creates an Amazon Lightsail bucket.
 #'
-#' @usage
-#' lightsail_create_certificate(certificateName, domainName,
-#'   subjectAlternativeNames, tags)
+#' See [https://paws-r.github.io/docs/lightsail/create_bucket.html](https://paws-r.github.io/docs/lightsail/create_bucket.html) for full documentation.
+#'
+#' @param bucketName &#91;required&#93; The name for the bucket.
+#' 
+#' For more information about bucket names, see Bucket naming rules in
+#' Amazon Lightsail in the *Amazon Lightsail Developer Guide*.
+#' @param bundleId &#91;required&#93; The ID of the bundle to use for the bucket.
+#' 
+#' A bucket bundle specifies the monthly cost, storage space, and data
+#' transfer quota for a bucket.
+#' 
+#' Use the [`get_bucket_bundles`][lightsail_get_bucket_bundles] action to
+#' get a list of bundle IDs that you can specify.
+#' 
+#' Use the [`update_bucket_bundle`][lightsail_update_bucket_bundle] action
+#' to change the bundle after the bucket is created.
+#' @param tags The tag keys and optional values to add to the bucket during creation.
+#' 
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag the
+#' bucket after it's created.
+#' @param enableObjectVersioning A Boolean value that indicates whether to enable versioning of objects
+#' in the bucket.
+#' 
+#' For more information about versioning, see Enabling and suspending
+#' object versioning in a bucket in Amazon Lightsail in the *Amazon
+#' Lightsail Developer Guide*.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_create_bucket
+lightsail_create_bucket <- function(bucketName, bundleId, tags = NULL, enableObjectVersioning = NULL) {
+  op <- new_operation(
+    name = "CreateBucket",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$create_bucket_input(bucketName = bucketName, bundleId = bundleId, tags = tags, enableObjectVersioning = enableObjectVersioning)
+  output <- .lightsail$create_bucket_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$create_bucket <- lightsail_create_bucket
+
+#' Creates a new access key for the specified Amazon Lightsail bucket
+#'
+#' @description
+#' Creates a new access key for the specified Amazon Lightsail bucket. Access keys consist of an access key ID and corresponding secret access key.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/create_bucket_access_key.html](https://paws-r.github.io/docs/lightsail/create_bucket_access_key.html) for full documentation.
+#'
+#' @param bucketName &#91;required&#93; The name of the bucket that the new access key will belong to, and grant
+#' access to.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_create_bucket_access_key
+lightsail_create_bucket_access_key <- function(bucketName) {
+  op <- new_operation(
+    name = "CreateBucketAccessKey",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$create_bucket_access_key_input(bucketName = bucketName)
+  output <- .lightsail$create_bucket_access_key_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$create_bucket_access_key <- lightsail_create_bucket_access_key
+
+#' Creates an SSL/TLS certificate for an Amazon Lightsail content delivery
+#' network (CDN) distribution and a container service
+#'
+#' @description
+#' Creates an SSL/TLS certificate for an Amazon Lightsail content delivery network (CDN) distribution and a container service.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/create_certificate.html](https://paws-r.github.io/docs/lightsail/create_certificate.html) for full documentation.
 #'
 #' @param certificateName &#91;required&#93; The name for the certificate.
 #' @param domainName &#91;required&#93; The domain name (e.g., `example.com`) for the certificate.
@@ -735,129 +421,6 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 #' 
 #' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
 #' resource after it's created.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   certificate = list(
-#'     certificateArn = "string",
-#'     certificateName = "string",
-#'     domainName = "string",
-#'     certificateDetail = list(
-#'       arn = "string",
-#'       name = "string",
-#'       domainName = "string",
-#'       status = "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED",
-#'       serialNumber = "string",
-#'       subjectAlternativeNames = list(
-#'         "string"
-#'       ),
-#'       domainValidationRecords = list(
-#'         list(
-#'           domainName = "string",
-#'           resourceRecord = list(
-#'             name = "string",
-#'             type = "string",
-#'             value = "string"
-#'           )
-#'         )
-#'       ),
-#'       requestFailureReason = "string",
-#'       inUseResourceCount = 123,
-#'       keyAlgorithm = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       issuedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       issuerCA = "string",
-#'       notBefore = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       notAfter = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       eligibleToRenew = "string",
-#'       renewalSummary = list(
-#'         domainValidationRecords = list(
-#'           list(
-#'             domainName = "string",
-#'             resourceRecord = list(
-#'               name = "string",
-#'               type = "string",
-#'               value = "string"
-#'             )
-#'           )
-#'         ),
-#'         renewalStatus = "PendingAutoRenewal"|"PendingValidation"|"Success"|"Failed",
-#'         renewalStatusReason = "string",
-#'         updatedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       revokedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       revocationReason = "string",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       supportCode = "string"
-#'     ),
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   ),
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_certificate(
-#'   certificateName = "string",
-#'   domainName = "string",
-#'   subjectAlternativeNames = list(
-#'     "string"
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -883,69 +446,14 @@ lightsail_create_certificate <- function(certificateName, domainName, subjectAlt
 #' instance from an exported Amazon Lightsail snapshot
 #'
 #' @description
-#' Creates an AWS CloudFormation stack, which creates a new Amazon EC2
-#' instance from an exported Amazon Lightsail snapshot. This operation
-#' results in a CloudFormation stack record that can be used to track the
-#' AWS CloudFormation stack created. Use the
-#' `get cloud formation stack records` operation to get a list of the
-#' CloudFormation stacks created.
-#' 
-#' Wait until after your new Amazon EC2 instance is created before running
-#' the `create cloud formation stack` operation again with the same export
-#' snapshot record.
+#' Creates an AWS CloudFormation stack, which creates a new Amazon EC2 instance from an exported Amazon Lightsail snapshot. This operation results in a CloudFormation stack record that can be used to track the AWS CloudFormation stack created. Use the `get cloud formation stack records` operation to get a list of the CloudFormation stacks created.
 #'
-#' @usage
-#' lightsail_create_cloud_formation_stack(instances)
+#' See [https://paws-r.github.io/docs/lightsail/create_cloud_formation_stack.html](https://paws-r.github.io/docs/lightsail/create_cloud_formation_stack.html) for full documentation.
 #'
 #' @param instances &#91;required&#93; An array of parameters that will be used to create the new Amazon EC2
 #' instance. You can only pass one instance entry at a time in this array.
 #' You will get an invalid parameter error if you pass more than one
 #' instance entry in this array.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_cloud_formation_stack(
-#'   instances = list(
-#'     list(
-#'       sourceName = "string",
-#'       instanceType = "string",
-#'       portInfoSource = "DEFAULT"|"INSTANCE"|"NONE"|"CLOSED",
-#'       userData = "string",
-#'       availabilityZone = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -971,21 +479,14 @@ lightsail_create_cloud_formation_stack <- function(instances) {
 #'
 #' @description
 #' Creates an email or SMS text message contact method.
-#' 
-#' A contact method is used to send you notifications about your Amazon
-#' Lightsail resources. You can add one email address and one mobile phone
-#' number contact method in each AWS Region. However, SMS text messaging is
-#' not supported in some AWS Regions, and SMS text messages cannot be sent
-#' to some countries/regions. For more information, see Notifications in
-#' Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_create_contact_method(protocol, contactEndpoint)
+#' See [https://paws-r.github.io/docs/lightsail/create_contact_method.html](https://paws-r.github.io/docs/lightsail/create_contact_method.html) for full documentation.
 #'
 #' @param protocol &#91;required&#93; The protocol of the contact method, such as `Email` or `SMS` (text
 #' messaging).
 #' 
-#' The `SMS` protocol is supported only in the following AWS Regions.
+#' The `SMS` protocol is supported only in the following Amazon Web
+#' Services Regions.
 #' 
 #' -   US East (N. Virginia) (`us-east-1`)
 #' 
@@ -1000,8 +501,8 @@ lightsail_create_cloud_formation_stack <- function(instances) {
 #' -   Asia Pacific (Sydney) (`ap-southeast-2`)
 #' 
 #' For a list of countries/regions where SMS text messages can be sent, and
-#' the latest AWS Regions where SMS text messaging is supported, see
-#' [Supported Regions and
+#' the latest Amazon Web Services Regions where SMS text messaging is
+#' supported, see [Supported Regions and
 #' Countries](https://docs.aws.amazon.com/sns/latest/dg/sns-supported-regions-countries.html)
 #' in the *Amazon SNS Developer Guide*.
 #' 
@@ -1017,44 +518,6 @@ lightsail_create_cloud_formation_stack <- function(instances) {
 #' and the country code. For example, a U.S. phone number in E.164 format
 #' would be specified as +1XXX5550100. For more information, see
 #' [E.164](https://en.wikipedia.org/wiki/E.164) on *Wikipedia*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_contact_method(
-#'   protocol = "Email"|"SMS",
-#'   contactEndpoint = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1080,14 +543,8 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #'
 #' @description
 #' Creates an Amazon Lightsail container service.
-#' 
-#' A Lightsail container service is a compute resource to which you can
-#' deploy containers. For more information, see Container services in
-#' Amazon Lightsail in the *Lightsail Dev Guide*.
 #'
-#' @usage
-#' lightsail_create_container_service(serviceName, power, scale, tags,
-#'   publicDomainNames, deployment)
+#' See [https://paws-r.github.io/docs/lightsail/create_container_service.html](https://paws-r.github.io/docs/lightsail/create_container_service.html) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name for the container service.
 #' 
@@ -1102,7 +559,8 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' 
 #' The following are the requirements for container service names:
 #' 
-#' -   Must be unique within each AWS Region in your Lightsail account.
+#' -   Must be unique within each Amazon Web Services Region in your
+#'     Lightsail account.
 #' 
 #' -   Must contain 1 to 63 characters.
 #' 
@@ -1129,10 +587,14 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' configured capacity. To determine the monthly price of your container
 #' service, multiply the base price of the `power` with the `scale` (the
 #' number of nodes) of the service.
-#' @param tags The tag keys and optional values for the container service.
+#' @param tags The tag keys and optional values to add to the container service during
+#' create.
 #' 
-#' For more information about tags in Lightsail, see the Lightsail Dev
-#' Guide.
+#' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
+#' resource after it's created.
+#' 
+#' For more information about tags in Lightsail, see the Amazon Lightsail
+#' Developer Guide.
 #' @param publicDomainNames The public domain names to use with the container service, such as
 #' `example.com` and `www.example.com`.
 #' 
@@ -1160,170 +622,25 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' specifies the container that will serve as the public endpoint of the
 #' deployment and its settings, such as the HTTP or HTTPS port to use, and
 #' the health check configuration.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   containerService = list(
-#'     containerServiceName = "string",
-#'     arn = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
-#'     powerId = "string",
-#'     state = "PENDING"|"READY"|"RUNNING"|"UPDATING"|"DELETING"|"DISABLED",
-#'     scale = 123,
-#'     currentDeployment = list(
-#'       version = 123,
-#'       state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-#'       containers = list(
-#'         list(
-#'           image = "string",
-#'           command = list(
-#'             "string"
-#'           ),
-#'           environment = list(
-#'             "string"
-#'           ),
-#'           ports = list(
-#'             "HTTP"|"HTTPS"|"TCP"|"UDP"
-#'           )
-#'         )
-#'       ),
-#'       publicEndpoint = list(
-#'         containerName = "string",
-#'         containerPort = 123,
-#'         healthCheck = list(
-#'           healthyThreshold = 123,
-#'           unhealthyThreshold = 123,
-#'           timeoutSeconds = 123,
-#'           intervalSeconds = 123,
-#'           path = "string",
-#'           successCodes = "string"
-#'         )
-#'       ),
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     nextDeployment = list(
-#'       version = 123,
-#'       state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-#'       containers = list(
-#'         list(
-#'           image = "string",
-#'           command = list(
-#'             "string"
-#'           ),
-#'           environment = list(
-#'             "string"
-#'           ),
-#'           ports = list(
-#'             "HTTP"|"HTTPS"|"TCP"|"UDP"
-#'           )
-#'         )
-#'       ),
-#'       publicEndpoint = list(
-#'         containerName = "string",
-#'         containerPort = 123,
-#'         healthCheck = list(
-#'           healthyThreshold = 123,
-#'           unhealthyThreshold = 123,
-#'           timeoutSeconds = 123,
-#'           intervalSeconds = 123,
-#'           path = "string",
-#'           successCodes = "string"
-#'         )
-#'       ),
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     isDisabled = TRUE|FALSE,
-#'     principalArn = "string",
-#'     privateDomainName = "string",
-#'     publicDomainNames = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     url = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_container_service(
-#'   serviceName = "string",
-#'   power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
-#'   scale = 123,
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   publicDomainNames = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   deployment = list(
-#'     containers = list(
-#'       list(
-#'         image = "string",
-#'         command = list(
-#'           "string"
-#'         ),
-#'         environment = list(
-#'           "string"
-#'         ),
-#'         ports = list(
-#'           "HTTP"|"HTTPS"|"TCP"|"UDP"
-#'         )
-#'       )
-#'     ),
-#'     publicEndpoint = list(
-#'       containerName = "string",
-#'       containerPort = 123,
-#'       healthCheck = list(
-#'         healthyThreshold = 123,
-#'         unhealthyThreshold = 123,
-#'         timeoutSeconds = 123,
-#'         intervalSeconds = 123,
-#'         path = "string",
-#'         successCodes = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
+#' @param privateRegistryAccess An object to describe the configuration for the container service to
+#' access private container image repositories, such as Amazon Elastic
+#' Container Registry (Amazon ECR) private repositories.
+#' 
+#' For more information, see Configuring access to an Amazon ECR private
+#' repository for an Amazon Lightsail container service in the *Amazon
+#' Lightsail Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_create_container_service
-lightsail_create_container_service <- function(serviceName, power, scale, tags = NULL, publicDomainNames = NULL, deployment = NULL) {
+lightsail_create_container_service <- function(serviceName, power, scale, tags = NULL, publicDomainNames = NULL, deployment = NULL, privateRegistryAccess = NULL) {
   op <- new_operation(
     name = "CreateContainerService",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$create_container_service_input(serviceName = serviceName, power = power, scale = scale, tags = tags, publicDomainNames = publicDomainNames, deployment = deployment)
+  input <- .lightsail$create_container_service_input(serviceName = serviceName, power = power, scale = scale, tags = tags, publicDomainNames = publicDomainNames, deployment = deployment, privateRegistryAccess = privateRegistryAccess)
   output <- .lightsail$create_container_service_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -1337,165 +654,14 @@ lightsail_create_container_service <- function(serviceName, power, scale, tags =
 #'
 #' @description
 #' Creates a deployment for your Amazon Lightsail container service.
-#' 
-#' A deployment specifies the containers that will be launched on the
-#' container service and their settings, such as the ports to open, the
-#' environment variables to apply, and the launch command to run. It also
-#' specifies the container that will serve as the public endpoint of the
-#' deployment and its settings, such as the HTTP or HTTPS port to use, and
-#' the health check configuration.
-#' 
-#' You can deploy containers to your container service using container
-#' images from a public registry like Docker Hub, or from your local
-#' machine. For more information, see Creating container images for your
-#' Amazon Lightsail container services in the *Lightsail Dev Guide*.
 #'
-#' @usage
-#' lightsail_create_container_service_deployment(serviceName, containers,
-#'   publicEndpoint)
+#' See [https://paws-r.github.io/docs/lightsail/create_container_service_deployment.html](https://paws-r.github.io/docs/lightsail/create_container_service_deployment.html) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to create the deployment.
 #' @param containers An object that describes the settings of the containers that will be
 #' launched on the container service.
 #' @param publicEndpoint An object that describes the settings of the public endpoint for the
 #' container service.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   containerService = list(
-#'     containerServiceName = "string",
-#'     arn = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
-#'     powerId = "string",
-#'     state = "PENDING"|"READY"|"RUNNING"|"UPDATING"|"DELETING"|"DISABLED",
-#'     scale = 123,
-#'     currentDeployment = list(
-#'       version = 123,
-#'       state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-#'       containers = list(
-#'         list(
-#'           image = "string",
-#'           command = list(
-#'             "string"
-#'           ),
-#'           environment = list(
-#'             "string"
-#'           ),
-#'           ports = list(
-#'             "HTTP"|"HTTPS"|"TCP"|"UDP"
-#'           )
-#'         )
-#'       ),
-#'       publicEndpoint = list(
-#'         containerName = "string",
-#'         containerPort = 123,
-#'         healthCheck = list(
-#'           healthyThreshold = 123,
-#'           unhealthyThreshold = 123,
-#'           timeoutSeconds = 123,
-#'           intervalSeconds = 123,
-#'           path = "string",
-#'           successCodes = "string"
-#'         )
-#'       ),
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     nextDeployment = list(
-#'       version = 123,
-#'       state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-#'       containers = list(
-#'         list(
-#'           image = "string",
-#'           command = list(
-#'             "string"
-#'           ),
-#'           environment = list(
-#'             "string"
-#'           ),
-#'           ports = list(
-#'             "HTTP"|"HTTPS"|"TCP"|"UDP"
-#'           )
-#'         )
-#'       ),
-#'       publicEndpoint = list(
-#'         containerName = "string",
-#'         containerPort = 123,
-#'         healthCheck = list(
-#'           healthyThreshold = 123,
-#'           unhealthyThreshold = 123,
-#'           timeoutSeconds = 123,
-#'           intervalSeconds = 123,
-#'           path = "string",
-#'           successCodes = "string"
-#'         )
-#'       ),
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     isDisabled = TRUE|FALSE,
-#'     principalArn = "string",
-#'     privateDomainName = "string",
-#'     publicDomainNames = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     url = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_container_service_deployment(
-#'   serviceName = "string",
-#'   containers = list(
-#'     list(
-#'       image = "string",
-#'       command = list(
-#'         "string"
-#'       ),
-#'       environment = list(
-#'         "string"
-#'       ),
-#'       ports = list(
-#'         "HTTP"|"HTTPS"|"TCP"|"UDP"
-#'       )
-#'     )
-#'   ),
-#'   publicEndpoint = list(
-#'     containerName = "string",
-#'     containerPort = 123,
-#'     healthCheck = list(
-#'       healthyThreshold = 123,
-#'       unhealthyThreshold = 123,
-#'       timeoutSeconds = 123,
-#'       intervalSeconds = 123,
-#'       path = "string",
-#'       successCodes = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1521,52 +687,9 @@ lightsail_create_container_service_deployment <- function(serviceName, container
 #' to the Docker process on your local machine
 #'
 #' @description
-#' Creates a temporary set of log in credentials that you can use to log in
-#' to the Docker process on your local machine. After you're logged in, you
-#' can use the native Docker commands to push your local container images
-#' to the container image registry of your Amazon Lightsail account so that
-#' you can use them with your Lightsail container service. The log in
-#' credentials expire 12 hours after they are created, at which point you
-#' will need to create a new set of log in credentials.
-#' 
-#' You can only push container images to the container service registry of
-#' your Lightsail account. You cannot pull container images perform any
-#' other container image management actions on the container service
-#' registry of your Lightsail account.
-#' 
-#' After you push your container images to the container image registry of
-#' your Lightsail account, use the
-#' [`register_container_image`][lightsail_register_container_image] action
-#' to register the pushed images to a specific Lightsail container service.
-#' 
-#' This action is not required if you install and use the Lightsail Control
-#' (lightsailctl) plugin to push container images to your Lightsail
-#' container service. For more information, see Pushing and managing
-#' container images on your Amazon Lightsail container services in the
-#' *Lightsail Dev Guide*.
+#' Creates a temporary set of log in credentials that you can use to log in to the Docker process on your local machine. After you're logged in, you can use the native Docker commands to push your local container images to the container image registry of your Amazon Lightsail account so that you can use them with your Lightsail container service. The log in credentials expire 12 hours after they are created, at which point you will need to create a new set of log in credentials.
 #'
-#' @usage
-#' lightsail_create_container_service_registry_login()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   registryLogin = list(
-#'     username = "string",
-#'     password = "string",
-#'     expiresAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     registry = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_container_service_registry_login()
-#' ```
+#' See [https://paws-r.github.io/docs/lightsail/create_container_service_registry_login.html](https://paws-r.github.io/docs/lightsail/create_container_service_registry_login.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1592,15 +715,9 @@ lightsail_create_container_service_registry_login <- function() {
 #' instance in the same Availability Zone (e
 #'
 #' @description
-#' Creates a block storage disk that can be attached to an Amazon Lightsail
-#' instance in the same Availability Zone (e.g., `us-east-2a`).
-#' 
-#' The `create disk` operation supports tag-based access control via
-#' request tags. For more information, see the Lightsail Dev Guide.
+#' Creates a block storage disk that can be attached to an Amazon Lightsail instance in the same Availability Zone (e.g., `us-east-2a`).
 #'
-#' @usage
-#' lightsail_create_disk(diskName, availabilityZone, sizeInGb, tags,
-#'   addOns)
+#' See [https://paws-r.github.io/docs/lightsail/create_disk.html](https://paws-r.github.io/docs/lightsail/create_disk.html) for full documentation.
 #'
 #' @param diskName &#91;required&#93; The unique Lightsail disk name (e.g., `my-disk`).
 #' @param availabilityZone &#91;required&#93; The Availability Zone where you want to create the disk (e.g.,
@@ -1616,59 +733,6 @@ lightsail_create_container_service_registry_login <- function() {
 #' resource after it's created.
 #' @param addOns An array of objects that represent the add-ons to enable for the new
 #' disk.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_disk(
-#'   diskName = "string",
-#'   availabilityZone = "string",
-#'   sizeInGb = 123,
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   addOns = list(
-#'     list(
-#'       addOnType = "AutoSnapshot",
-#'       autoSnapshotAddOnRequest = list(
-#'         snapshotTimeOfDay = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1694,19 +758,9 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' disk
 #'
 #' @description
-#' Creates a block storage disk from a manual or automatic snapshot of a
-#' disk. The resulting disk can be attached to an Amazon Lightsail instance
-#' in the same Availability Zone (e.g., `us-east-2a`).
-#' 
-#' The `create disk from snapshot` operation supports tag-based access
-#' control via request tags and resource tags applied to the resource
-#' identified by `disk snapshot name`. For more information, see the
-#' Lightsail Dev Guide.
+#' Creates a block storage disk from a manual or automatic snapshot of a disk. The resulting disk can be attached to an Amazon Lightsail instance in the same Availability Zone (e.g., `us-east-2a`).
 #'
-#' @usage
-#' lightsail_create_disk_from_snapshot(diskName, diskSnapshotName,
-#'   availabilityZone, sizeInGb, tags, addOns, sourceDiskName, restoreDate,
-#'   useLatestRestorableAutoSnapshot)
+#' See [https://paws-r.github.io/docs/lightsail/create_disk_from_snapshot.html](https://paws-r.github.io/docs/lightsail/create_disk_from_snapshot.html) for full documentation.
 #'
 #' @param diskName &#91;required&#93; The unique Lightsail disk name (e.g., `my-disk`).
 #' @param diskSnapshotName The name of the disk snapshot (e.g., `my-snapshot`) from which to create
@@ -1740,8 +794,8 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #'     `disk snapshot name` parameters are mutually exclusive.
 #' 
 #' -   Define this parameter only when creating a new disk from an
-#'     automatic snapshot. For more information, see the Lightsail Dev
-#'     Guide.
+#'     automatic snapshot. For more information, see the Amazon Lightsail
+#'     Developer Guide.
 #' @param restoreDate The date of the automatic snapshot to use for the new disk. Use the
 #' `get auto snapshots` operation to identify the dates of the available
 #' automatic snapshots.
@@ -1756,8 +810,8 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #'     exclusive.
 #' 
 #' -   Define this parameter only when creating a new disk from an
-#'     automatic snapshot. For more information, see the Lightsail Dev
-#'     Guide.
+#'     automatic snapshot. For more information, see the Amazon Lightsail
+#'     Developer Guide.
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot.
 #' 
@@ -1768,65 +822,8 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #'     `restore date` parameters are mutually exclusive.
 #' 
 #' -   Define this parameter only when creating a new disk from an
-#'     automatic snapshot. For more information, see the Lightsail Dev
-#'     Guide.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_disk_from_snapshot(
-#'   diskName = "string",
-#'   diskSnapshotName = "string",
-#'   availabilityZone = "string",
-#'   sizeInGb = 123,
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   addOns = list(
-#'     list(
-#'       addOnType = "AutoSnapshot",
-#'       autoSnapshotAddOnRequest = list(
-#'         snapshotTimeOfDay = "string"
-#'       )
-#'     )
-#'   ),
-#'   sourceDiskName = "string",
-#'   restoreDate = "string",
-#'   useLatestRestorableAutoSnapshot = TRUE|FALSE
-#' )
-#' ```
+#'     automatic snapshot. For more information, see the Amazon Lightsail
+#'     Developer Guide.
 #'
 #' @keywords internal
 #'
@@ -1851,37 +848,9 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
 #' Creates a snapshot of a block storage disk
 #'
 #' @description
-#' Creates a snapshot of a block storage disk. You can use snapshots for
-#' backups, to make copies of disks, and to save data before shutting down
-#' a Lightsail instance.
-#' 
-#' You can take a snapshot of an attached disk that is in use; however,
-#' snapshots only capture data that has been written to your disk at the
-#' time the snapshot command is issued. This may exclude any data that has
-#' been cached by any applications or the operating system. If you can
-#' pause any file systems on the disk long enough to take a snapshot, your
-#' snapshot should be complete. Nevertheless, if you cannot pause all file
-#' writes to the disk, you should unmount the disk from within the
-#' Lightsail instance, issue the create disk snapshot command, and then
-#' remount the disk to ensure a consistent and complete snapshot. You may
-#' remount and use your disk while the snapshot status is pending.
-#' 
-#' You can also use this operation to create a snapshot of an instance's
-#' system volume. You might want to do this, for example, to recover data
-#' from the system volume of a botched instance or to create a backup of
-#' the system volume like you would for a block storage disk. To create a
-#' snapshot of a system volume, just define the `instance name` parameter
-#' when issuing the snapshot command, and a snapshot of the defined
-#' instance's system volume will be created. After the snapshot is
-#' available, you can create a block storage disk from the snapshot and
-#' attach it to a running instance to access the data on the disk.
-#' 
-#' The `create disk snapshot` operation supports tag-based access control
-#' via request tags. For more information, see the Lightsail Dev Guide.
+#' Creates a snapshot of a block storage disk. You can use snapshots for backups, to make copies of disks, and to save data before shutting down a Lightsail instance.
 #'
-#' @usage
-#' lightsail_create_disk_snapshot(diskName, diskSnapshotName, instanceName,
-#'   tags)
+#' See [https://paws-r.github.io/docs/lightsail/create_disk_snapshot.html](https://paws-r.github.io/docs/lightsail/create_disk_snapshot.html) for full documentation.
 #'
 #' @param diskName The unique name of the source disk (e.g., `Disk-Virginia-1`).
 #' 
@@ -1901,51 +870,6 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
 #' 
 #' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
 #' resource after it's created.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_disk_snapshot(
-#'   diskName = "string",
-#'   diskSnapshotName = "string",
-#'   instanceName = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1971,20 +895,12 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #'
 #' @description
 #' Creates an Amazon Lightsail content delivery network (CDN) distribution.
-#' 
-#' A distribution is a globally distributed network of caching servers that
-#' improve the performance of your website or web application hosted on a
-#' Lightsail instance. For more information, see Content delivery networks
-#' in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_create_distribution(distributionName, origin,
-#'   defaultCacheBehavior, cacheBehaviorSettings, cacheBehaviors, bundleId,
-#'   tags)
+#' See [https://paws-r.github.io/docs/lightsail/create_distribution.html](https://paws-r.github.io/docs/lightsail/create_distribution.html) for full documentation.
 #'
 #' @param distributionName &#91;required&#93; The name for the distribution.
 #' @param origin &#91;required&#93; An object that describes the origin resource for the distribution, such
-#' as a Lightsail instance or load balancer.
+#' as a Lightsail instance, bucket, or load balancer.
 #' 
 #' The distribution pulls, caches, and serves content from the origin.
 #' @param defaultCacheBehavior &#91;required&#93; An object that describes the default cache behavior for the
@@ -2000,173 +916,29 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #' 
 #' Use the [`get_distribution_bundles`][lightsail_get_distribution_bundles]
 #' action to get a list of distribution bundle IDs that you can specify.
+#' @param ipAddressType The IP address type for the distribution.
+#' 
+#' The possible values are `ipv4` for IPv4 only, and `dualstack` for IPv4
+#' and IPv6.
+#' 
+#' The default value is `dualstack`.
 #' @param tags The tag keys and optional values to add to the distribution during
 #' create.
 #' 
 #' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
 #' resource after it's created.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   distribution = list(
-#'     name = "string",
-#'     arn = "string",
-#'     supportCode = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     alternativeDomainNames = list(
-#'       "string"
-#'     ),
-#'     status = "string",
-#'     isEnabled = TRUE|FALSE,
-#'     domainName = "string",
-#'     bundleId = "string",
-#'     certificateName = "string",
-#'     origin = list(
-#'       name = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2",
-#'       protocolPolicy = "http-only"|"https-only"
-#'     ),
-#'     originPublicDNS = "string",
-#'     defaultCacheBehavior = list(
-#'       behavior = "dont-cache"|"cache"
-#'     ),
-#'     cacheBehaviorSettings = list(
-#'       defaultTTL = 123,
-#'       minimumTTL = 123,
-#'       maximumTTL = 123,
-#'       allowedHTTPMethods = "string",
-#'       cachedHTTPMethods = "string",
-#'       forwardedCookies = list(
-#'         option = "none"|"allow-list"|"all",
-#'         cookiesAllowList = list(
-#'           "string"
-#'         )
-#'       ),
-#'       forwardedHeaders = list(
-#'         option = "none"|"allow-list"|"all",
-#'         headersAllowList = list(
-#'           "Accept"|"Accept-Charset"|"Accept-Datetime"|"Accept-Encoding"|"Accept-Language"|"Authorization"|"CloudFront-Forwarded-Proto"|"CloudFront-Is-Desktop-Viewer"|"CloudFront-Is-Mobile-Viewer"|"CloudFront-Is-SmartTV-Viewer"|"CloudFront-Is-Tablet-Viewer"|"CloudFront-Viewer-Country"|"Host"|"Origin"|"Referer"
-#'         )
-#'       ),
-#'       forwardedQueryStrings = list(
-#'         option = TRUE|FALSE,
-#'         queryStringsAllowList = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     cacheBehaviors = list(
-#'       list(
-#'         path = "string",
-#'         behavior = "dont-cache"|"cache"
-#'       )
-#'     ),
-#'     ableToUpdateBundle = TRUE|FALSE,
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   ),
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_distribution(
-#'   distributionName = "string",
-#'   origin = list(
-#'     name = "string",
-#'     regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2",
-#'     protocolPolicy = "http-only"|"https-only"
-#'   ),
-#'   defaultCacheBehavior = list(
-#'     behavior = "dont-cache"|"cache"
-#'   ),
-#'   cacheBehaviorSettings = list(
-#'     defaultTTL = 123,
-#'     minimumTTL = 123,
-#'     maximumTTL = 123,
-#'     allowedHTTPMethods = "string",
-#'     cachedHTTPMethods = "string",
-#'     forwardedCookies = list(
-#'       option = "none"|"allow-list"|"all",
-#'       cookiesAllowList = list(
-#'         "string"
-#'       )
-#'     ),
-#'     forwardedHeaders = list(
-#'       option = "none"|"allow-list"|"all",
-#'       headersAllowList = list(
-#'         "Accept"|"Accept-Charset"|"Accept-Datetime"|"Accept-Encoding"|"Accept-Language"|"Authorization"|"CloudFront-Forwarded-Proto"|"CloudFront-Is-Desktop-Viewer"|"CloudFront-Is-Mobile-Viewer"|"CloudFront-Is-SmartTV-Viewer"|"CloudFront-Is-Tablet-Viewer"|"CloudFront-Viewer-Country"|"Host"|"Origin"|"Referer"
-#'       )
-#'     ),
-#'     forwardedQueryStrings = list(
-#'       option = TRUE|FALSE,
-#'       queryStringsAllowList = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   cacheBehaviors = list(
-#'     list(
-#'       path = "string",
-#'       behavior = "dont-cache"|"cache"
-#'     )
-#'   ),
-#'   bundleId = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lightsail_create_distribution
-lightsail_create_distribution <- function(distributionName, origin, defaultCacheBehavior, cacheBehaviorSettings = NULL, cacheBehaviors = NULL, bundleId, tags = NULL) {
+lightsail_create_distribution <- function(distributionName, origin, defaultCacheBehavior, cacheBehaviorSettings = NULL, cacheBehaviors = NULL, bundleId, ipAddressType = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDistribution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$create_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, bundleId = bundleId, tags = tags)
+  input <- .lightsail$create_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, bundleId = bundleId, ipAddressType = ipAddressType, tags = tags)
   output <- .lightsail$create_distribution_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -2180,64 +952,19 @@ lightsail_create_distribution <- function(distributionName, origin, defaultCache
 #'
 #' @description
 #' Creates a domain resource for the specified domain (e.g., example.com).
-#' 
-#' The `create domain` operation supports tag-based access control via
-#' request tags. For more information, see the Lightsail Dev Guide.
 #'
-#' @usage
-#' lightsail_create_domain(domainName, tags)
+#' See [https://paws-r.github.io/docs/lightsail/create_domain.html](https://paws-r.github.io/docs/lightsail/create_domain.html) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name to manage (e.g., `example.com`).
 #' 
 #' You cannot register a new domain name using Lightsail. You must register
 #' a domain name using Amazon Route 53 or another domain name registrar. If
 #' you have already registered your domain, you can enter its name in this
-#' parameter to manage the DNS records for that domain.
+#' parameter to manage the DNS records for that domain using Lightsail.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
 #' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
 #' resource after it's created.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_domain(
-#'   domainName = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2265,67 +992,14 @@ lightsail_create_domain <- function(domainName, tags = NULL) {
 #' or text (TXT)
 #'
 #' @description
-#' Creates one of the following domain name system (DNS) records in a
-#' domain DNS zone: Address (A), canonical name (CNAME), mail exchanger
-#' (MX), name server (NS), start of authority (SOA), service locator (SRV),
-#' or text (TXT).
-#' 
-#' The `create domain entry` operation supports tag-based access control
-#' via resource tags applied to the resource identified by `domain name`.
-#' For more information, see the Lightsail Dev Guide.
+#' Creates one of the following domain name system (DNS) records in a domain DNS zone: Address (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT).
 #'
-#' @usage
-#' lightsail_create_domain_entry(domainName, domainEntry)
+#' See [https://paws-r.github.io/docs/lightsail/create_domain_entry.html](https://paws-r.github.io/docs/lightsail/create_domain_entry.html) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name (e.g., `example.com`) for which you want to create the
 #' domain entry.
 #' @param domainEntry &#91;required&#93; An array of key-value pairs containing information about the domain
 #' entry request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_domain_entry(
-#'   domainName = "string",
-#'   domainEntry = list(
-#'     id = "string",
-#'     name = "string",
-#'     target = "string",
-#'     isAlias = TRUE|FALSE,
-#'     type = "string",
-#'     options = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2350,17 +1024,9 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
 #' Creates a snapshot of a specific virtual private server, or instance
 #'
 #' @description
-#' Creates a snapshot of a specific virtual private server, or *instance*.
-#' You can use a snapshot to create a new instance that is based on that
-#' snapshot.
-#' 
-#' The `create instance snapshot` operation supports tag-based access
-#' control via request tags. For more information, see the Lightsail Dev
-#' Guide.
+#' Creates a snapshot of a specific virtual private server, or *instance*. You can use a snapshot to create a new instance that is based on that snapshot.
 #'
-#' @usage
-#' lightsail_create_instance_snapshot(instanceSnapshotName, instanceName,
-#'   tags)
+#' See [https://paws-r.github.io/docs/lightsail/create_instance_snapshot.html](https://paws-r.github.io/docs/lightsail/create_instance_snapshot.html) for full documentation.
 #'
 #' @param instanceSnapshotName &#91;required&#93; The name for your new snapshot.
 #' @param instanceName &#91;required&#93; The Lightsail instance on which to base your snapshot.
@@ -2368,50 +1034,6 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
 #' 
 #' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
 #' resource after it's created.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_instance_snapshot(
-#'   instanceSnapshotName = "string",
-#'   instanceName = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2437,14 +1059,8 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #'
 #' @description
 #' Creates one or more Amazon Lightsail instances.
-#' 
-#' The `create instances` operation supports tag-based access control via
-#' request tags. For more information, see the Lightsail Dev Guide.
 #'
-#' @usage
-#' lightsail_create_instances(instanceNames, availabilityZone,
-#'   customImageName, blueprintId, bundleId, userData, keyPairName, tags,
-#'   addOns)
+#' See [https://paws-r.github.io/docs/lightsail/create_instances.html](https://paws-r.github.io/docs/lightsail/create_instances.html) for full documentation.
 #'
 #' @param instanceNames &#91;required&#93; The names to use for your new Lightsail instances. Separate multiple
 #' values using quotation marks and commas, for example:
@@ -2476,7 +1092,7 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' Depending on the machine image you choose, the command to get software
 #' on your instance varies. Amazon Linux and CentOS use `yum`, Debian and
 #' Ubuntu use `apt-get`, and FreeBSD uses `pkg`. For a complete list, see
-#' the Dev Guide.
+#' the Amazon Lightsail Developer Guide.
 #' @param keyPairName The name of your key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
@@ -2484,77 +1100,24 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' resource after it's created.
 #' @param addOns An array of objects representing the add-ons to enable for the new
 #' instance.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_instances(
-#'   instanceNames = list(
-#'     "string"
-#'   ),
-#'   availabilityZone = "string",
-#'   customImageName = "string",
-#'   blueprintId = "string",
-#'   bundleId = "string",
-#'   userData = "string",
-#'   keyPairName = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   addOns = list(
-#'     list(
-#'       addOnType = "AutoSnapshot",
-#'       autoSnapshotAddOnRequest = list(
-#'         snapshotTimeOfDay = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
+#' @param ipAddressType The IP address type for the instance.
+#' 
+#' The possible values are `ipv4` for IPv4 only, and `dualstack` for IPv4
+#' and IPv6.
+#' 
+#' The default value is `dualstack`.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_create_instances
-lightsail_create_instances <- function(instanceNames, availabilityZone, customImageName = NULL, blueprintId, bundleId, userData = NULL, keyPairName = NULL, tags = NULL, addOns = NULL) {
+lightsail_create_instances <- function(instanceNames, availabilityZone, customImageName = NULL, blueprintId, bundleId, userData = NULL, keyPairName = NULL, tags = NULL, addOns = NULL, ipAddressType = NULL) {
   op <- new_operation(
     name = "CreateInstances",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$create_instances_input(instanceNames = instanceNames, availabilityZone = availabilityZone, customImageName = customImageName, blueprintId = blueprintId, bundleId = bundleId, userData = userData, keyPairName = keyPairName, tags = tags, addOns = addOns)
+  input <- .lightsail$create_instances_input(instanceNames = instanceNames, availabilityZone = availabilityZone, customImageName = customImageName, blueprintId = blueprintId, bundleId = bundleId, userData = userData, keyPairName = keyPairName, tags = tags, addOns = addOns, ipAddressType = ipAddressType)
   output <- .lightsail$create_instances_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -2568,19 +1131,9 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' an instance
 #'
 #' @description
-#' Creates one or more new instances from a manual or automatic snapshot of
-#' an instance.
-#' 
-#' The `create instances from snapshot` operation supports tag-based access
-#' control via request tags and resource tags applied to the resource
-#' identified by `instance snapshot name`. For more information, see the
-#' Lightsail Dev Guide.
+#' Creates one or more new instances from a manual or automatic snapshot of an instance.
 #'
-#' @usage
-#' lightsail_create_instances_from_snapshot(instanceNames,
-#'   attachedDiskMapping, availabilityZone, instanceSnapshotName, bundleId,
-#'   userData, keyPairName, tags, addOns, sourceInstanceName, restoreDate,
-#'   useLatestRestorableAutoSnapshot)
+#' See [https://paws-r.github.io/docs/lightsail/create_instances_from_snapshot.html](https://paws-r.github.io/docs/lightsail/create_instances_from_snapshot.html) for full documentation.
 #'
 #' @param instanceNames &#91;required&#93; The names for your new instances.
 #' @param attachedDiskMapping An object containing information about one or more disk mappings.
@@ -2607,7 +1160,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' Depending on the machine image you choose, the command to get software
 #' on your instance varies. Amazon Linux and CentOS use `yum`, Debian and
 #' Ubuntu use `apt-get`, and FreeBSD uses `pkg`. For a complete list, see
-#' the Dev Guide.
+#' the Amazon Lightsail Developer Guide.
 #' @param keyPairName The name for your key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
@@ -2615,6 +1168,12 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' resource after it's created.
 #' @param addOns An array of objects representing the add-ons to enable for the new
 #' instance.
+#' @param ipAddressType The IP address type for the instance.
+#' 
+#' The possible values are `ipv4` for IPv4 only, and `dualstack` for IPv4
+#' and IPv6.
+#' 
+#' The default value is `dualstack`.
 #' @param sourceInstanceName The name of the source instance from which the source automatic snapshot
 #' was created.
 #' 
@@ -2625,8 +1184,8 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #'     `instance snapshot name` parameters are mutually exclusive.
 #' 
 #' -   Define this parameter only when creating a new instance from an
-#'     automatic snapshot. For more information, see the Lightsail Dev
-#'     Guide.
+#'     automatic snapshot. For more information, see the Amazon Lightsail
+#'     Developer Guide.
 #' @param restoreDate The date of the automatic snapshot to use for the new instance. Use the
 #' `get auto snapshots` operation to identify the dates of the available
 #' automatic snapshots.
@@ -2641,8 +1200,8 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #'     exclusive.
 #' 
 #' -   Define this parameter only when creating a new instance from an
-#'     automatic snapshot. For more information, see the Lightsail Dev
-#'     Guide.
+#'     automatic snapshot. For more information, see the Amazon Lightsail
+#'     Developer Guide.
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot.
 #' 
@@ -2653,89 +1212,20 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #'     `restore date` parameters are mutually exclusive.
 #' 
 #' -   Define this parameter only when creating a new instance from an
-#'     automatic snapshot. For more information, see the Lightsail Dev
-#'     Guide.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_instances_from_snapshot(
-#'   instanceNames = list(
-#'     "string"
-#'   ),
-#'   attachedDiskMapping = list(
-#'     list(
-#'       list(
-#'         originalDiskPath = "string",
-#'         newDiskName = "string"
-#'       )
-#'     )
-#'   ),
-#'   availabilityZone = "string",
-#'   instanceSnapshotName = "string",
-#'   bundleId = "string",
-#'   userData = "string",
-#'   keyPairName = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   addOns = list(
-#'     list(
-#'       addOnType = "AutoSnapshot",
-#'       autoSnapshotAddOnRequest = list(
-#'         snapshotTimeOfDay = "string"
-#'       )
-#'     )
-#'   ),
-#'   sourceInstanceName = "string",
-#'   restoreDate = "string",
-#'   useLatestRestorableAutoSnapshot = TRUE|FALSE
-#' )
-#' ```
+#'     automatic snapshot. For more information, see the Amazon Lightsail
+#'     Developer Guide.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_create_instances_from_snapshot
-lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDiskMapping = NULL, availabilityZone, instanceSnapshotName = NULL, bundleId, userData = NULL, keyPairName = NULL, tags = NULL, addOns = NULL, sourceInstanceName = NULL, restoreDate = NULL, useLatestRestorableAutoSnapshot = NULL) {
+lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDiskMapping = NULL, availabilityZone, instanceSnapshotName = NULL, bundleId, userData = NULL, keyPairName = NULL, tags = NULL, addOns = NULL, ipAddressType = NULL, sourceInstanceName = NULL, restoreDate = NULL, useLatestRestorableAutoSnapshot = NULL) {
   op <- new_operation(
     name = "CreateInstancesFromSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$create_instances_from_snapshot_input(instanceNames = instanceNames, attachedDiskMapping = attachedDiskMapping, availabilityZone = availabilityZone, instanceSnapshotName = instanceSnapshotName, bundleId = bundleId, userData = userData, keyPairName = keyPairName, tags = tags, addOns = addOns, sourceInstanceName = sourceInstanceName, restoreDate = restoreDate, useLatestRestorableAutoSnapshot = useLatestRestorableAutoSnapshot)
+  input <- .lightsail$create_instances_from_snapshot_input(instanceNames = instanceNames, attachedDiskMapping = attachedDiskMapping, availabilityZone = availabilityZone, instanceSnapshotName = instanceSnapshotName, bundleId = bundleId, userData = userData, keyPairName = keyPairName, tags = tags, addOns = addOns, ipAddressType = ipAddressType, sourceInstanceName = sourceInstanceName, restoreDate = restoreDate, useLatestRestorableAutoSnapshot = useLatestRestorableAutoSnapshot)
   output <- .lightsail$create_instances_from_snapshot_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -2745,85 +1235,19 @@ lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDisk
 }
 .lightsail$operations$create_instances_from_snapshot <- lightsail_create_instances_from_snapshot
 
-#' Creates an SSH key pair
+#' Creates a custom SSH key pair that you can use with an Amazon Lightsail
+#' instance
 #'
 #' @description
-#' Creates an SSH key pair.
-#' 
-#' The `create key pair` operation supports tag-based access control via
-#' request tags. For more information, see the Lightsail Dev Guide.
+#' Creates a custom SSH key pair that you can use with an Amazon Lightsail instance.
 #'
-#' @usage
-#' lightsail_create_key_pair(keyPairName, tags)
+#' See [https://paws-r.github.io/docs/lightsail/create_key_pair.html](https://paws-r.github.io/docs/lightsail/create_key_pair.html) for full documentation.
 #'
 #' @param keyPairName &#91;required&#93; The name for your new key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
 #' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
 #' resource after it's created.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   keyPair = list(
-#'     name = "string",
-#'     arn = "string",
-#'     supportCode = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     fingerprint = "string"
-#'   ),
-#'   publicKeyBase64 = "string",
-#'   privateKeyBase64 = "string",
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_key_pair(
-#'   keyPairName = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2848,23 +1272,9 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' Creates a Lightsail load balancer
 #'
 #' @description
-#' Creates a Lightsail load balancer. To learn more about deciding whether
-#' to load balance your application, see Configure your Lightsail instances
-#' for load balancing. You can create up to 5 load balancers per AWS Region
-#' in your account.
-#' 
-#' When you create a load balancer, you can specify a unique name and port
-#' settings. To change additional load balancer settings, use the
-#' [`update_load_balancer_attribute`][lightsail_update_load_balancer_attribute]
-#' operation.
-#' 
-#' The `create load balancer` operation supports tag-based access control
-#' via request tags. For more information, see the Lightsail Dev Guide.
+#' Creates a Lightsail load balancer. To learn more about deciding whether to load balance your application, see Configure your Lightsail instances for load balancing. You can create up to 5 load balancers per AWS Region in your account.
 #'
-#' @usage
-#' lightsail_create_load_balancer(loadBalancerName, instancePort,
-#'   healthCheckPath, certificateName, certificateDomainName,
-#'   certificateAlternativeNames, tags)
+#' See [https://paws-r.github.io/docs/lightsail/create_load_balancer.html](https://paws-r.github.io/docs/lightsail/create_load_balancer.html) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of your load balancer.
 #' @param instancePort &#91;required&#93; The instance port where you're creating your load balancer.
@@ -2891,68 +1301,33 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' 
 #' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
 #' resource after it's created.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_load_balancer(
-#'   loadBalancerName = "string",
-#'   instancePort = 123,
-#'   healthCheckPath = "string",
-#'   certificateName = "string",
-#'   certificateDomainName = "string",
-#'   certificateAlternativeNames = list(
-#'     "string"
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param ipAddressType The IP address type for the load balancer.
+#' 
+#' The possible values are `ipv4` for IPv4 only, and `dualstack` for IPv4
+#' and IPv6.
+#' 
+#' The default value is `dualstack`.
+#' @param tlsPolicyName The name of the TLS policy to apply to the load balancer.
+#' 
+#' Use the
+#' [`get_load_balancer_tls_policies`][lightsail_get_load_balancer_tls_policies]
+#' action to get a list of TLS policy names that you can specify.
+#' 
+#' For more information about load balancer TLS policies, see Configuring
+#' TLS security policies on your Amazon Lightsail load balancers in the
+#' *Amazon Lightsail Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_create_load_balancer
-lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healthCheckPath = NULL, certificateName = NULL, certificateDomainName = NULL, certificateAlternativeNames = NULL, tags = NULL) {
+lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healthCheckPath = NULL, certificateName = NULL, certificateDomainName = NULL, certificateAlternativeNames = NULL, tags = NULL, ipAddressType = NULL, tlsPolicyName = NULL) {
   op <- new_operation(
     name = "CreateLoadBalancer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$create_load_balancer_input(loadBalancerName = loadBalancerName, instancePort = instancePort, healthCheckPath = healthCheckPath, certificateName = certificateName, certificateDomainName = certificateDomainName, certificateAlternativeNames = certificateAlternativeNames, tags = tags)
+  input <- .lightsail$create_load_balancer_input(loadBalancerName = loadBalancerName, instancePort = instancePort, healthCheckPath = healthCheckPath, certificateName = certificateName, certificateDomainName = certificateDomainName, certificateAlternativeNames = certificateAlternativeNames, tags = tags, ipAddressType = ipAddressType, tlsPolicyName = tlsPolicyName)
   output <- .lightsail$create_load_balancer_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -2962,24 +1337,12 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
 }
 .lightsail$operations$create_load_balancer <- lightsail_create_load_balancer
 
-#' Creates a Lightsail load balancer TLS certificate
+#' Creates an SSL/TLS certificate for an Amazon Lightsail load balancer
 #'
 #' @description
-#' Creates a Lightsail load balancer TLS certificate.
-#' 
-#' TLS is just an updated, more secure version of Secure Socket Layer
-#' (SSL).
-#' 
-#' The
-#' [`create_load_balancer_tls_certificate`][lightsail_create_load_balancer_tls_certificate]
-#' operation supports tag-based access control via resource tags applied to
-#' the resource identified by `load balancer name`. For more information,
-#' see the Lightsail Dev Guide.
+#' Creates an SSL/TLS certificate for an Amazon Lightsail load balancer.
 #'
-#' @usage
-#' lightsail_create_load_balancer_tls_certificate(loadBalancerName,
-#'   certificateName, certificateDomainName, certificateAlternativeNames,
-#'   tags)
+#' See [https://paws-r.github.io/docs/lightsail/create_load_balancer_tls_certificate.html](https://paws-r.github.io/docs/lightsail/create_load_balancer_tls_certificate.html) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The load balancer name where you want to create the SSL/TLS certificate.
 #' @param certificateName &#91;required&#93; The SSL/TLS certificate name.
@@ -2999,54 +1362,6 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
 #' 
 #' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
 #' resource after it's created.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_load_balancer_tls_certificate(
-#'   loadBalancerName = "string",
-#'   certificateName = "string",
-#'   certificateDomainName = "string",
-#'   certificateAlternativeNames = list(
-#'     "string"
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3072,19 +1387,10 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #'
 #' @description
 #' Creates a new database in Amazon Lightsail.
-#' 
-#' The `create relational database` operation supports tag-based access
-#' control via request tags. For more information, see the Lightsail Dev
-#' Guide.
 #'
-#' @usage
-#' lightsail_create_relational_database(relationalDatabaseName,
-#'   availabilityZone, relationalDatabaseBlueprintId,
-#'   relationalDatabaseBundleId, masterDatabaseName, masterUsername,
-#'   masterUserPassword, preferredBackupWindow, preferredMaintenanceWindow,
-#'   publiclyAccessible, tags)
+#' See [https://paws-r.github.io/docs/lightsail/create_relational_database.html](https://paws-r.github.io/docs/lightsail/create_relational_database.html) for full documentation.
 #'
-#' @param relationalDatabaseName &#91;required&#93; The name to use for your new database.
+#' @param relationalDatabaseName &#91;required&#93; The name to use for your new Lightsail database resource.
 #' 
 #' Constraints:
 #' 
@@ -3108,35 +1414,105 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #' You can get a list of database bundle IDs by using the
 #' `get relational database bundles` operation.
-#' @param masterDatabaseName &#91;required&#93; The name of the master database created when the Lightsail database
-#' resource is created.
+#' @param masterDatabaseName &#91;required&#93; The meaning of this parameter differs according to the database engine
+#' you use.
+#' 
+#' **MySQL**
+#' 
+#' The name of the database to create when the Lightsail database resource
+#' is created. If this parameter isn't specified, no database is created in
+#' the database resource.
 #' 
 #' Constraints:
 #' 
-#' -   Must contain from 1 to 64 alphanumeric characters.
+#' -   Must contain 1 to 64 letters or numbers.
 #' 
-#' -   Cannot be a word reserved by the specified database engine
-#' @param masterUsername &#91;required&#93; The master user name for your new database.
+#' -   Must begin with a letter. Subsequent characters can be letters,
+#'     underscores, or digits (0- 9).
+#' 
+#' -   Can't be a word reserved by the specified database engine.
+#' 
+#'     For more information about reserved words in MySQL, see the Keywords
+#'     and Reserved Words articles for [MySQL
+#'     5.6](https://dev.mysql.com/doc/refman/5.6/en/keywords.html), [MySQL
+#'     5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), and
+#'     [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
+#' 
+#' **PostgreSQL**
+#' 
+#' The name of the database to create when the Lightsail database resource
+#' is created. If this parameter isn't specified, a database named
+#' `postgres` is created in the database resource.
 #' 
 #' Constraints:
 #' 
-#' -   Master user name is required.
+#' -   Must contain 1 to 63 letters or numbers.
 #' 
-#' -   Must contain from 1 to 16 alphanumeric characters.
+#' -   Must begin with a letter. Subsequent characters can be letters,
+#'     underscores, or digits (0- 9).
 #' 
-#' -   The first character must be a letter.
+#' -   Can't be a word reserved by the specified database engine.
 #' 
-#' -   Cannot be a reserved word for the database engine you choose.
+#'     For more information about reserved words in PostgreSQL, see the SQL
+#'     Key Words articles for [PostgreSQL
+#'     9.6](https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html),
+#'     [PostgreSQL
+#'     10](https://www.postgresql.org/docs/10/sql-keywords-appendix.html),
+#'     [PostgreSQL
+#'     11](https://www.postgresql.org/docs/11/sql-keywords-appendix.html),
+#'     and [PostgreSQL
+#'     12](https://www.postgresql.org/docs/12/sql-keywords-appendix.html).
+#' @param masterUsername &#91;required&#93; The name for the master user.
+#' 
+#' **MySQL**
+#' 
+#' Constraints:
+#' 
+#' -   Required for MySQL.
+#' 
+#' -   Must be 1 to 16 letters or numbers. Can contain underscores.
+#' 
+#' -   First character must be a letter.
+#' 
+#' -   Can't be a reserved word for the chosen database engine.
 #' 
 #'     For more information about reserved words in MySQL 5.6 or 5.7, see
 #'     the Keywords and Reserved Words articles for [MySQL
-#'     5.6](https://dev.mysql.com/doc/refman/5.6/en/keywords.html) or
-#'     [MySQL 5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html)
-#'     respectively.
-#' @param masterUserPassword The password for the master user of your new database. The password can
-#' include any printable ASCII character except "/", """, or "@@".
+#'     5.6](https://dev.mysql.com/doc/refman/5.6/en/keywords.html), [MySQL
+#'     5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), or
+#'     [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
 #' 
-#' Constraints: Must contain 8 to 41 characters.
+#' **PostgreSQL**
+#' 
+#' Constraints:
+#' 
+#' -   Required for PostgreSQL.
+#' 
+#' -   Must be 1 to 63 letters or numbers. Can contain underscores.
+#' 
+#' -   First character must be a letter.
+#' 
+#' -   Can't be a reserved word for the chosen database engine.
+#' 
+#'     For more information about reserved words in MySQL 5.6 or 5.7, see
+#'     the Keywords and Reserved Words articles for [PostgreSQL
+#'     9.6](https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html),
+#'     [PostgreSQL
+#'     10](https://www.postgresql.org/docs/10/sql-keywords-appendix.html),
+#'     [PostgreSQL
+#'     11](https://www.postgresql.org/docs/11/sql-keywords-appendix.html),
+#'     and [PostgreSQL
+#'     12](https://www.postgresql.org/docs/12/sql-keywords-appendix.html).
+#' @param masterUserPassword The password for the master user. The password can include any printable
+#' ASCII character except "/", """, or "@@". It cannot contain spaces.
+#' 
+#' **MySQL**
+#' 
+#' Constraints: Must contain from 8 to 41 characters.
+#' 
+#' **PostgreSQL**
+#' 
+#' Constraints: Must contain from 8 to 128 characters.
 #' @param preferredBackupWindow The daily time range during which automated backups are created for your
 #' new database if automated backups are enabled.
 #' 
@@ -3187,58 +1563,6 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
 #' resource after it's created.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_relational_database(
-#'   relationalDatabaseName = "string",
-#'   availabilityZone = "string",
-#'   relationalDatabaseBlueprintId = "string",
-#'   relationalDatabaseBundleId = "string",
-#'   masterDatabaseName = "string",
-#'   masterUsername = "string",
-#'   masterUserPassword = "string",
-#'   preferredBackupWindow = "string",
-#'   preferredMaintenanceWindow = "string",
-#'   publiclyAccessible = TRUE|FALSE,
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lightsail_create_relational_database
@@ -3263,26 +1587,11 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
 #' Lightsail
 #'
 #' @description
-#' Creates a new database from an existing database snapshot in Amazon
-#' Lightsail.
-#' 
-#' You can create a new database from a snapshot in if something goes wrong
-#' with your original database, or to change it to a different plan, such
-#' as a high availability or standard plan.
-#' 
-#' The `create relational database from snapshot` operation supports
-#' tag-based access control via request tags and resource tags applied to
-#' the resource identified by relationalDatabaseSnapshotName. For more
-#' information, see the Lightsail Dev Guide.
+#' Creates a new database from an existing database snapshot in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_create_relational_database_from_snapshot(
-#'   relationalDatabaseName, availabilityZone, publiclyAccessible,
-#'   relationalDatabaseSnapshotName, relationalDatabaseBundleId,
-#'   sourceRelationalDatabaseName, restoreTime, useLatestRestorableTime,
-#'   tags)
+#' See [https://paws-r.github.io/docs/lightsail/create_relational_database_from_snapshot.html](https://paws-r.github.io/docs/lightsail/create_relational_database_from_snapshot.html) for full documentation.
 #'
-#' @param relationalDatabaseName &#91;required&#93; The name to use for your new database.
+#' @param relationalDatabaseName &#91;required&#93; The name to use for your new Lightsail database resource.
 #' 
 #' Constraints:
 #' 
@@ -3339,58 +1648,6 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
 #' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
 #' resource after it's created.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_relational_database_from_snapshot(
-#'   relationalDatabaseName = "string",
-#'   availabilityZone = "string",
-#'   publiclyAccessible = TRUE|FALSE,
-#'   relationalDatabaseSnapshotName = "string",
-#'   relationalDatabaseBundleId = "string",
-#'   sourceRelationalDatabaseName = "string",
-#'   restoreTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   useLatestRestorableTime = TRUE|FALSE,
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lightsail_create_relational_database_from_snapshot
@@ -3414,17 +1671,9 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
 #' Creates a snapshot of your database in Amazon Lightsail
 #'
 #' @description
-#' Creates a snapshot of your database in Amazon Lightsail. You can use
-#' snapshots for backups, to make copies of a database, and to save data
-#' before deleting a database.
-#' 
-#' The `create relational database snapshot` operation supports tag-based
-#' access control via request tags. For more information, see the Lightsail
-#' Dev Guide.
+#' Creates a snapshot of your database in Amazon Lightsail. You can use snapshots for backups, to make copies of a database, and to save data before deleting a database.
 #'
-#' @usage
-#' lightsail_create_relational_database_snapshot(relationalDatabaseName,
-#'   relationalDatabaseSnapshotName, tags)
+#' See [https://paws-r.github.io/docs/lightsail/create_relational_database_snapshot.html](https://paws-r.github.io/docs/lightsail/create_relational_database_snapshot.html) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of the database on which to base your new snapshot.
 #' @param relationalDatabaseSnapshotName &#91;required&#93; The name for your new database snapshot.
@@ -3438,50 +1687,6 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
 #' 
 #' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
 #' resource after it's created.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_relational_database_snapshot(
-#'   relationalDatabaseName = "string",
-#'   relationalDatabaseSnapshotName = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3507,53 +1712,10 @@ lightsail_create_relational_database_snapshot <- function(relationalDatabaseName
 #'
 #' @description
 #' Deletes an alarm.
-#' 
-#' An alarm is used to monitor a single metric for one of your resources.
-#' When a metric condition is met, the alarm can notify you by email, SMS
-#' text message, and a banner displayed on the Amazon Lightsail console.
-#' For more information, see Alarms in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_delete_alarm(alarmName)
+#' See [https://paws-r.github.io/docs/lightsail/delete_alarm.html](https://paws-r.github.io/docs/lightsail/delete_alarm.html) for full documentation.
 #'
 #' @param alarmName &#91;required&#93; The name of the alarm to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_alarm(
-#'   alarmName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3578,55 +1740,15 @@ lightsail_delete_alarm <- function(alarmName) {
 #' Deletes an automatic snapshot of an instance or disk
 #'
 #' @description
-#' Deletes an automatic snapshot of an instance or disk. For more
-#' information, see the Lightsail Dev Guide.
+#' Deletes an automatic snapshot of an instance or disk. For more information, see the Amazon Lightsail Developer Guide.
 #'
-#' @usage
-#' lightsail_delete_auto_snapshot(resourceName, date)
+#' See [https://paws-r.github.io/docs/lightsail/delete_auto_snapshot.html](https://paws-r.github.io/docs/lightsail/delete_auto_snapshot.html) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The name of the source instance or disk from which to delete the
 #' automatic snapshot.
 #' @param date &#91;required&#93; The date of the automatic snapshot to delete in `YYYY-MM-DD` format. Use
 #' the `get auto snapshots` operation to get the available automatic
 #' snapshots for a resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_auto_snapshot(
-#'   resourceName = "string",
-#'   date = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3648,62 +1770,101 @@ lightsail_delete_auto_snapshot <- function(resourceName, date) {
 }
 .lightsail$operations$delete_auto_snapshot <- lightsail_delete_auto_snapshot
 
+#' Deletes a Amazon Lightsail bucket
+#'
+#' @description
+#' Deletes a Amazon Lightsail bucket.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/delete_bucket.html](https://paws-r.github.io/docs/lightsail/delete_bucket.html) for full documentation.
+#'
+#' @param bucketName &#91;required&#93; The name of the bucket to delete.
+#' 
+#' Use the [`get_buckets`][lightsail_get_buckets] action to get a list of
+#' bucket names that you can specify.
+#' @param forceDelete A Boolean value that indicates whether to force delete the bucket.
+#' 
+#' You must force delete the bucket if it has one of the following
+#' conditions:
+#' 
+#' -   The bucket is the origin of a distribution.
+#' 
+#' -   The bucket has instances that were granted access to it using the
+#'     [`set_resource_access_for_bucket`][lightsail_set_resource_access_for_bucket]
+#'     action.
+#' 
+#' -   The bucket has objects.
+#' 
+#' -   The bucket has access keys.
+#' 
+#' Force deleting a bucket might impact other resources that rely on the
+#' bucket, such as instances, distributions, or software that use the
+#' issued access keys.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_delete_bucket
+lightsail_delete_bucket <- function(bucketName, forceDelete = NULL) {
+  op <- new_operation(
+    name = "DeleteBucket",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$delete_bucket_input(bucketName = bucketName, forceDelete = forceDelete)
+  output <- .lightsail$delete_bucket_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$delete_bucket <- lightsail_delete_bucket
+
+#' Deletes an access key for the specified Amazon Lightsail bucket
+#'
+#' @description
+#' Deletes an access key for the specified Amazon Lightsail bucket.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/delete_bucket_access_key.html](https://paws-r.github.io/docs/lightsail/delete_bucket_access_key.html) for full documentation.
+#'
+#' @param bucketName &#91;required&#93; The name of the bucket that the access key belongs to.
+#' @param accessKeyId &#91;required&#93; The ID of the access key to delete.
+#' 
+#' Use the [`get_bucket_access_keys`][lightsail_get_bucket_access_keys]
+#' action to get a list of access key IDs that you can specify.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_delete_bucket_access_key
+lightsail_delete_bucket_access_key <- function(bucketName, accessKeyId) {
+  op <- new_operation(
+    name = "DeleteBucketAccessKey",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$delete_bucket_access_key_input(bucketName = bucketName, accessKeyId = accessKeyId)
+  output <- .lightsail$delete_bucket_access_key_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$delete_bucket_access_key <- lightsail_delete_bucket_access_key
+
 #' Deletes an SSL/TLS certificate for your Amazon Lightsail content
 #' delivery network (CDN) distribution
 #'
 #' @description
-#' Deletes an SSL/TLS certificate for your Amazon Lightsail content
-#' delivery network (CDN) distribution.
-#' 
-#' Certificates that are currently attached to a distribution cannot be
-#' deleted. Use the
-#' [`detach_certificate_from_distribution`][lightsail_detach_certificate_from_distribution]
-#' action to detach a certificate from a distribution.
+#' Deletes an SSL/TLS certificate for your Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' @usage
-#' lightsail_delete_certificate(certificateName)
+#' See [https://paws-r.github.io/docs/lightsail/delete_certificate.html](https://paws-r.github.io/docs/lightsail/delete_certificate.html) for full documentation.
 #'
 #' @param certificateName &#91;required&#93; The name of the certificate to delete.
 #' 
 #' Use the [`get_certificates`][lightsail_get_certificates] action to get a
 #' list of certificate names that you can specify.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_certificate(
-#'   certificateName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3729,16 +1890,8 @@ lightsail_delete_certificate <- function(certificateName) {
 #'
 #' @description
 #' Deletes a contact method.
-#' 
-#' A contact method is used to send you notifications about your Amazon
-#' Lightsail resources. You can add one email address and one mobile phone
-#' number contact method in each AWS Region. However, SMS text messaging is
-#' not supported in some AWS Regions, and SMS text messages cannot be sent
-#' to some countries/regions. For more information, see Notifications in
-#' Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_delete_contact_method(protocol)
+#' See [https://paws-r.github.io/docs/lightsail/delete_contact_method.html](https://paws-r.github.io/docs/lightsail/delete_contact_method.html) for full documentation.
 #'
 #' @param protocol &#91;required&#93; The protocol that will be deleted, such as `Email` or `SMS` (text
 #' messaging).
@@ -3747,43 +1900,6 @@ lightsail_delete_certificate <- function(certificateName) {
 #' must run separate
 #' [`delete_contact_method`][lightsail_delete_contact_method] actions to
 #' delete each protocol.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_contact_method(
-#'   protocol = "Email"|"SMS"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3809,11 +1925,9 @@ lightsail_delete_contact_method <- function(protocol) {
 #' container service
 #'
 #' @description
-#' Deletes a container image that is registered to your Amazon Lightsail
-#' container service.
+#' Deletes a container image that is registered to your Amazon Lightsail container service.
 #'
-#' @usage
-#' lightsail_delete_container_image(serviceName, image)
+#' See [https://paws-r.github.io/docs/lightsail/delete_container_image.html](https://paws-r.github.io/docs/lightsail/delete_container_image.html) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to delete a registered
 #' container image.
@@ -3828,17 +1942,6 @@ lightsail_delete_contact_method <- function(protocol) {
 #' example, `:container-service-1.mystaticwebsite.1`. Container images
 #' sourced from a public registry like Docker Hub don't start with a colon.
 #' For example, `nginx:latest` or `nginx`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_container_image(
-#'   serviceName = "string",
-#'   image = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3865,20 +1968,9 @@ lightsail_delete_container_image <- function(serviceName, image) {
 #' @description
 #' Deletes your Amazon Lightsail container service.
 #'
-#' @usage
-#' lightsail_delete_container_service(serviceName)
+#' See [https://paws-r.github.io/docs/lightsail/delete_container_service.html](https://paws-r.github.io/docs/lightsail/delete_container_service.html) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_container_service(
-#'   serviceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3903,59 +1995,13 @@ lightsail_delete_container_service <- function(serviceName) {
 #' Deletes the specified block storage disk
 #'
 #' @description
-#' Deletes the specified block storage disk. The disk must be in the
-#' `available` state (not attached to a Lightsail instance).
-#' 
-#' The disk may remain in the `deleting` state for several minutes.
-#' 
-#' The `delete disk` operation supports tag-based access control via
-#' resource tags applied to the resource identified by `disk name`. For
-#' more information, see the Lightsail Dev Guide.
+#' Deletes the specified block storage disk. The disk must be in the `available` state (not attached to a Lightsail instance).
 #'
-#' @usage
-#' lightsail_delete_disk(diskName, forceDeleteAddOns)
+#' See [https://paws-r.github.io/docs/lightsail/delete_disk.html](https://paws-r.github.io/docs/lightsail/delete_disk.html) for full documentation.
 #'
 #' @param diskName &#91;required&#93; The unique name of the disk you want to delete (e.g., `my-disk`).
 #' @param forceDeleteAddOns A Boolean value to indicate whether to delete the enabled add-ons for
 #' the disk.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_disk(
-#'   diskName = "string",
-#'   forceDeleteAddOns = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3981,61 +2027,11 @@ lightsail_delete_disk <- function(diskName, forceDeleteAddOns = NULL) {
 #'
 #' @description
 #' Deletes the specified disk snapshot.
-#' 
-#' When you make periodic snapshots of a disk, the snapshots are
-#' incremental, and only the blocks on the device that have changed since
-#' your last snapshot are saved in the new snapshot. When you delete a
-#' snapshot, only the data not needed for any other snapshot is removed. So
-#' regardless of which prior snapshots have been deleted, all active
-#' snapshots will have access to all the information needed to restore the
-#' disk.
-#' 
-#' The `delete disk snapshot` operation supports tag-based access control
-#' via resource tags applied to the resource identified by
-#' `disk snapshot name`. For more information, see the Lightsail Dev Guide.
 #'
-#' @usage
-#' lightsail_delete_disk_snapshot(diskSnapshotName)
+#' See [https://paws-r.github.io/docs/lightsail/delete_disk_snapshot.html](https://paws-r.github.io/docs/lightsail/delete_disk_snapshot.html) for full documentation.
 #'
 #' @param diskSnapshotName &#91;required&#93; The name of the disk snapshot you want to delete (e.g.,
 #' `my-disk-snapshot`).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_disk_snapshot(
-#'   diskSnapshotName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4061,51 +2057,14 @@ lightsail_delete_disk_snapshot <- function(diskSnapshotName) {
 #' distribution
 #'
 #' @description
-#' Deletes your Amazon Lightsail content delivery network (CDN)
-#' distribution.
+#' Deletes your Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' @usage
-#' lightsail_delete_distribution(distributionName)
+#' See [https://paws-r.github.io/docs/lightsail/delete_distribution.html](https://paws-r.github.io/docs/lightsail/delete_distribution.html) for full documentation.
 #'
 #' @param distributionName The name of the distribution to delete.
 #' 
 #' Use the [`get_distributions`][lightsail_get_distributions] action to get
 #' a list of distribution names that you can specify.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_distribution(
-#'   distributionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4131,50 +2090,10 @@ lightsail_delete_distribution <- function(distributionName = NULL) {
 #'
 #' @description
 #' Deletes the specified domain recordset and all of its domain records.
-#' 
-#' The `delete domain` operation supports tag-based access control via
-#' resource tags applied to the resource identified by `domain name`. For
-#' more information, see the Lightsail Dev Guide.
 #'
-#' @usage
-#' lightsail_delete_domain(domainName)
+#' See [https://paws-r.github.io/docs/lightsail/delete_domain.html](https://paws-r.github.io/docs/lightsail/delete_domain.html) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The specific domain name to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_domain(
-#'   domainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4200,62 +2119,12 @@ lightsail_delete_domain <- function(domainName) {
 #'
 #' @description
 #' Deletes a specific domain entry.
-#' 
-#' The `delete domain entry` operation supports tag-based access control
-#' via resource tags applied to the resource identified by `domain name`.
-#' For more information, see the Lightsail Dev Guide.
 #'
-#' @usage
-#' lightsail_delete_domain_entry(domainName, domainEntry)
+#' See [https://paws-r.github.io/docs/lightsail/delete_domain_entry.html](https://paws-r.github.io/docs/lightsail/delete_domain_entry.html) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The name of the domain entry to delete.
 #' @param domainEntry &#91;required&#93; An array of key-value pairs containing information about your domain
 #' entries.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_domain_entry(
-#'   domainName = "string",
-#'   domainEntry = list(
-#'     id = "string",
-#'     name = "string",
-#'     target = "string",
-#'     isAlias = TRUE|FALSE,
-#'     type = "string",
-#'     options = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4281,55 +2150,12 @@ lightsail_delete_domain_entry <- function(domainName, domainEntry) {
 #'
 #' @description
 #' Deletes an Amazon Lightsail instance.
-#' 
-#' The `delete instance` operation supports tag-based access control via
-#' resource tags applied to the resource identified by `instance name`. For
-#' more information, see the Lightsail Dev Guide.
 #'
-#' @usage
-#' lightsail_delete_instance(instanceName, forceDeleteAddOns)
+#' See [https://paws-r.github.io/docs/lightsail/delete_instance.html](https://paws-r.github.io/docs/lightsail/delete_instance.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance to delete.
 #' @param forceDeleteAddOns A Boolean value to indicate whether to delete the enabled add-ons for
 #' the disk.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_instance(
-#'   instanceName = "string",
-#'   forceDeleteAddOns = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4355,53 +2181,10 @@ lightsail_delete_instance <- function(instanceName, forceDeleteAddOns = NULL) {
 #'
 #' @description
 #' Deletes a specific snapshot of a virtual private server (or *instance*).
-#' 
-#' The `delete instance snapshot` operation supports tag-based access
-#' control via resource tags applied to the resource identified by
-#' `instance snapshot name`. For more information, see the Lightsail Dev
-#' Guide.
 #'
-#' @usage
-#' lightsail_delete_instance_snapshot(instanceSnapshotName)
+#' See [https://paws-r.github.io/docs/lightsail/delete_instance_snapshot.html](https://paws-r.github.io/docs/lightsail/delete_instance_snapshot.html) for full documentation.
 #'
 #' @param instanceSnapshotName &#91;required&#93; The name of the snapshot to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_instance_snapshot(
-#'   instanceSnapshotName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4423,66 +2206,31 @@ lightsail_delete_instance_snapshot <- function(instanceSnapshotName) {
 }
 .lightsail$operations$delete_instance_snapshot <- lightsail_delete_instance_snapshot
 
-#' Deletes a specific SSH key pair
+#' Deletes the specified key pair by removing the public key from Amazon
+#' Lightsail
 #'
 #' @description
-#' Deletes a specific SSH key pair.
-#' 
-#' The `delete key pair` operation supports tag-based access control via
-#' resource tags applied to the resource identified by `key pair name`. For
-#' more information, see the Lightsail Dev Guide.
+#' Deletes the specified key pair by removing the public key from Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_delete_key_pair(keyPairName)
+#' See [https://paws-r.github.io/docs/lightsail/delete_key_pair.html](https://paws-r.github.io/docs/lightsail/delete_key_pair.html) for full documentation.
 #'
 #' @param keyPairName &#91;required&#93; The name of the key pair to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_key_pair(
-#'   keyPairName = "string"
-#' )
-#' ```
+#' @param expectedFingerprint The RSA fingerprint of the Lightsail default key pair to delete.
+#' 
+#' The `expectedFingerprint` parameter is required only when specifying to
+#' delete a Lightsail default key pair.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_key_pair
-lightsail_delete_key_pair <- function(keyPairName) {
+lightsail_delete_key_pair <- function(keyPairName, expectedFingerprint = NULL) {
   op <- new_operation(
     name = "DeleteKeyPair",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$delete_key_pair_input(keyPairName = keyPairName)
+  input <- .lightsail$delete_key_pair_input(keyPairName = keyPairName, expectedFingerprint = expectedFingerprint)
   output <- .lightsail$delete_key_pair_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -4496,59 +2244,12 @@ lightsail_delete_key_pair <- function(keyPairName) {
 #' browser-based SSH or RDP clients to authenticate an instance
 #'
 #' @description
-#' Deletes the known host key or certificate used by the Amazon Lightsail
-#' browser-based SSH or RDP clients to authenticate an instance. This
-#' operation enables the Lightsail browser-based SSH or RDP clients to
-#' connect to the instance after a host key mismatch.
-#' 
-#' Perform this operation only if you were expecting the host key or
-#' certificate mismatch or if you are familiar with the new host key or
-#' certificate on the instance. For more information, see Troubleshooting
-#' connection issues when using the Amazon Lightsail browser-based SSH or
-#' RDP client.
+#' Deletes the known host key or certificate used by the Amazon Lightsail browser-based SSH or RDP clients to authenticate an instance. This operation enables the Lightsail browser-based SSH or RDP clients to connect to the instance after a host key mismatch.
 #'
-#' @usage
-#' lightsail_delete_known_host_keys(instanceName)
+#' See [https://paws-r.github.io/docs/lightsail/delete_known_host_keys.html](https://paws-r.github.io/docs/lightsail/delete_known_host_keys.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance for which you want to reset the host key or
 #' certificate.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_known_host_keys(
-#'   instanceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4574,56 +2275,11 @@ lightsail_delete_known_host_keys <- function(instanceName) {
 #' certificates
 #'
 #' @description
-#' Deletes a Lightsail load balancer and all its associated SSL/TLS
-#' certificates. Once the load balancer is deleted, you will need to create
-#' a new load balancer, create a new certificate, and verify domain
-#' ownership again.
-#' 
-#' The `delete load balancer` operation supports tag-based access control
-#' via resource tags applied to the resource identified by
-#' `load balancer name`. For more information, see the Lightsail Dev Guide.
+#' Deletes a Lightsail load balancer and all its associated SSL/TLS certificates. Once the load balancer is deleted, you will need to create a new load balancer, create a new certificate, and verify domain ownership again.
 #'
-#' @usage
-#' lightsail_delete_load_balancer(loadBalancerName)
+#' See [https://paws-r.github.io/docs/lightsail/delete_load_balancer.html](https://paws-r.github.io/docs/lightsail/delete_load_balancer.html) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer you want to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_load_balancer(
-#'   loadBalancerName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4648,18 +2304,9 @@ lightsail_delete_load_balancer <- function(loadBalancerName) {
 #' Deletes an SSL/TLS certificate associated with a Lightsail load balancer
 #'
 #' @description
-#' Deletes an SSL/TLS certificate associated with a Lightsail load
-#' balancer.
-#' 
-#' The
-#' [`delete_load_balancer_tls_certificate`][lightsail_delete_load_balancer_tls_certificate]
-#' operation supports tag-based access control via resource tags applied to
-#' the resource identified by `load balancer name`. For more information,
-#' see the Lightsail Dev Guide.
+#' Deletes an SSL/TLS certificate associated with a Lightsail load balancer.
 #'
-#' @usage
-#' lightsail_delete_load_balancer_tls_certificate(loadBalancerName,
-#'   certificateName, force)
+#' See [https://paws-r.github.io/docs/lightsail/delete_load_balancer_tls_certificate.html](https://paws-r.github.io/docs/lightsail/delete_load_balancer_tls_certificate.html) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The load balancer name.
 #' @param certificateName &#91;required&#93; The SSL/TLS certificate name.
@@ -4669,45 +2316,6 @@ lightsail_delete_load_balancer <- function(loadBalancerName) {
 #' the primary and the backup. The `force` parameter is required when the
 #' primary SSL/TLS certificate is in use by an instance attached to the
 #' load balancer.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_load_balancer_tls_certificate(
-#'   loadBalancerName = "string",
-#'   certificateName = "string",
-#'   force = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4733,15 +2341,8 @@ lightsail_delete_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #'
 #' @description
 #' Deletes a database in Amazon Lightsail.
-#' 
-#' The `delete relational database` operation supports tag-based access
-#' control via resource tags applied to the resource identified by
-#' relationalDatabaseName. For more information, see the Lightsail Dev
-#' Guide.
 #'
-#' @usage
-#' lightsail_delete_relational_database(relationalDatabaseName,
-#'   skipFinalSnapshot, finalRelationalDatabaseSnapshotName)
+#' See [https://paws-r.github.io/docs/lightsail/delete_relational_database.html](https://paws-r.github.io/docs/lightsail/delete_relational_database.html) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of the database that you are deleting.
 #' @param skipFinalSnapshot Determines whether a final database snapshot is created before your
@@ -4764,45 +2365,6 @@ lightsail_delete_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' -   Must contain from 2 to 255 alphanumeric characters, or hyphens.
 #' 
 #' -   The first and last character must be a letter or number.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_relational_database(
-#'   relationalDatabaseName = "string",
-#'   skipFinalSnapshot = TRUE|FALSE,
-#'   finalRelationalDatabaseSnapshotName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4828,54 +2390,10 @@ lightsail_delete_relational_database <- function(relationalDatabaseName, skipFin
 #'
 #' @description
 #' Deletes a database snapshot in Amazon Lightsail.
-#' 
-#' The `delete relational database snapshot` operation supports tag-based
-#' access control via resource tags applied to the resource identified by
-#' relationalDatabaseName. For more information, see the Lightsail Dev
-#' Guide.
 #'
-#' @usage
-#' lightsail_delete_relational_database_snapshot(
-#'   relationalDatabaseSnapshotName)
+#' See [https://paws-r.github.io/docs/lightsail/delete_relational_database_snapshot.html](https://paws-r.github.io/docs/lightsail/delete_relational_database_snapshot.html) for full documentation.
 #'
 #' @param relationalDatabaseSnapshotName &#91;required&#93; The name of the database snapshot that you are deleting.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_relational_database_snapshot(
-#'   relationalDatabaseSnapshotName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4901,54 +2419,14 @@ lightsail_delete_relational_database_snapshot <- function(relationalDatabaseSnap
 #' delivery network (CDN) distribution
 #'
 #' @description
-#' Detaches an SSL/TLS certificate from your Amazon Lightsail content
-#' delivery network (CDN) distribution.
-#' 
-#' After the certificate is detached, your distribution stops accepting
-#' traffic for all of the domains that are associated with the certificate.
+#' Detaches an SSL/TLS certificate from your Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' @usage
-#' lightsail_detach_certificate_from_distribution(distributionName)
+#' See [https://paws-r.github.io/docs/lightsail/detach_certificate_from_distribution.html](https://paws-r.github.io/docs/lightsail/detach_certificate_from_distribution.html) for full documentation.
 #'
 #' @param distributionName &#91;required&#93; The name of the distribution from which to detach the certificate.
 #' 
 #' Use the [`get_distributions`][lightsail_get_distributions] action to get
 #' a list of distribution names that you can specify.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detach_certificate_from_distribution(
-#'   distributionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4973,56 +2451,12 @@ lightsail_detach_certificate_from_distribution <- function(distributionName) {
 #' Detaches a stopped block storage disk from a Lightsail instance
 #'
 #' @description
-#' Detaches a stopped block storage disk from a Lightsail instance. Make
-#' sure to unmount any file systems on the device within your operating
-#' system before stopping the instance and detaching the disk.
-#' 
-#' The `detach disk` operation supports tag-based access control via
-#' resource tags applied to the resource identified by `disk name`. For
-#' more information, see the Lightsail Dev Guide.
+#' Detaches a stopped block storage disk from a Lightsail instance. Make sure to unmount any file systems on the device within your operating system before stopping the instance and detaching the disk.
 #'
-#' @usage
-#' lightsail_detach_disk(diskName)
+#' See [https://paws-r.github.io/docs/lightsail/detach_disk.html](https://paws-r.github.io/docs/lightsail/detach_disk.html) for full documentation.
 #'
 #' @param diskName &#91;required&#93; The unique name of the disk you want to detach from your instance (e.g.,
 #' `my-disk`).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detach_disk(
-#'   diskName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5048,61 +2482,12 @@ lightsail_detach_disk <- function(diskName) {
 #'
 #' @description
 #' Detaches the specified instances from a Lightsail load balancer.
-#' 
-#' This operation waits until the instances are no longer needed before
-#' they are detached from the load balancer.
-#' 
-#' The `detach instances from load balancer` operation supports tag-based
-#' access control via resource tags applied to the resource identified by
-#' `load balancer name`. For more information, see the Lightsail Dev Guide.
 #'
-#' @usage
-#' lightsail_detach_instances_from_load_balancer(loadBalancerName,
-#'   instanceNames)
+#' See [https://paws-r.github.io/docs/lightsail/detach_instances_from_load_balancer.html](https://paws-r.github.io/docs/lightsail/detach_instances_from_load_balancer.html) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the Lightsail load balancer.
 #' @param instanceNames &#91;required&#93; An array of strings containing the names of the instances you want to
 #' detach from the load balancer.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detach_instances_from_load_balancer(
-#'   loadBalancerName = "string",
-#'   instanceNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5128,50 +2513,11 @@ lightsail_detach_instances_from_load_balancer <- function(loadBalancerName, inst
 #' attached
 #'
 #' @description
-#' Detaches a static IP from the Amazon Lightsail instance to which it is
-#' attached.
+#' Detaches a static IP from the Amazon Lightsail instance to which it is attached.
 #'
-#' @usage
-#' lightsail_detach_static_ip(staticIpName)
+#' See [https://paws-r.github.io/docs/lightsail/detach_static_ip.html](https://paws-r.github.io/docs/lightsail/detach_static_ip.html) for full documentation.
 #'
 #' @param staticIpName &#91;required&#93; The name of the static IP to detach from the instance.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detach_static_ip(
-#'   staticIpName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5196,52 +2542,12 @@ lightsail_detach_static_ip <- function(staticIpName) {
 #' Disables an add-on for an Amazon Lightsail resource
 #'
 #' @description
-#' Disables an add-on for an Amazon Lightsail resource. For more
-#' information, see the Lightsail Dev Guide.
+#' Disables an add-on for an Amazon Lightsail resource. For more information, see the Amazon Lightsail Developer Guide.
 #'
-#' @usage
-#' lightsail_disable_add_on(addOnType, resourceName)
+#' See [https://paws-r.github.io/docs/lightsail/disable_add_on.html](https://paws-r.github.io/docs/lightsail/disable_add_on.html) for full documentation.
 #'
 #' @param addOnType &#91;required&#93; The add-on type to disable.
 #' @param resourceName &#91;required&#93; The name of the source resource for which to disable the add-on.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disable_add_on(
-#'   addOnType = "AutoSnapshot",
-#'   resourceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5263,27 +2569,12 @@ lightsail_disable_add_on <- function(addOnType, resourceName) {
 }
 .lightsail$operations$disable_add_on <- lightsail_disable_add_on
 
-#' Downloads the default SSH key pair from the user's account
+#' Downloads the regional Amazon Lightsail default key pair
 #'
 #' @description
-#' Downloads the default SSH key pair from the user's account.
+#' Downloads the regional Amazon Lightsail default key pair.
 #'
-#' @usage
-#' lightsail_download_default_key_pair()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   publicKeyBase64 = "string",
-#'   privateKeyBase64 = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$download_default_key_pair()
-#' ```
+#' See [https://paws-r.github.io/docs/lightsail/download_default_key_pair.html](https://paws-r.github.io/docs/lightsail/download_default_key_pair.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -5308,58 +2599,13 @@ lightsail_download_default_key_pair <- function() {
 #' Enables or modifies an add-on for an Amazon Lightsail resource
 #'
 #' @description
-#' Enables or modifies an add-on for an Amazon Lightsail resource. For more
-#' information, see the Lightsail Dev Guide.
+#' Enables or modifies an add-on for an Amazon Lightsail resource. For more information, see the Amazon Lightsail Developer Guide.
 #'
-#' @usage
-#' lightsail_enable_add_on(resourceName, addOnRequest)
+#' See [https://paws-r.github.io/docs/lightsail/enable_add_on.html](https://paws-r.github.io/docs/lightsail/enable_add_on.html) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The name of the source resource for which to enable or modify the
 #' add-on.
 #' @param addOnRequest &#91;required&#93; An array of strings representing the add-on to enable or modify.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$enable_add_on(
-#'   resourceName = "string",
-#'   addOnRequest = list(
-#'     addOnType = "AutoSnapshot",
-#'     autoSnapshotAddOnRequest = list(
-#'       snapshotTimeOfDay = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5385,68 +2631,11 @@ lightsail_enable_add_on <- function(resourceName, addOnRequest) {
 #' Amazon Elastic Compute Cloud (Amazon EC2)
 #'
 #' @description
-#' Exports an Amazon Lightsail instance or block storage disk snapshot to
-#' Amazon Elastic Compute Cloud (Amazon EC2). This operation results in an
-#' export snapshot record that can be used with the
-#' `create cloud formation stack` operation to create new Amazon EC2
-#' instances.
-#' 
-#' Exported instance snapshots appear in Amazon EC2 as Amazon Machine
-#' Images (AMIs), and the instance system disk appears as an Amazon Elastic
-#' Block Store (Amazon EBS) volume. Exported disk snapshots appear in
-#' Amazon EC2 as Amazon EBS volumes. Snapshots are exported to the same
-#' Amazon Web Services Region in Amazon EC2 as the source Lightsail
-#' snapshot.
-#' 
-#' The `export snapshot` operation supports tag-based access control via
-#' resource tags applied to the resource identified by
-#' `source snapshot name`. For more information, see the Lightsail Dev
-#' Guide.
-#' 
-#' Use the `get instance snapshots` or `get disk snapshots` operations to
-#' get a list of snapshots that you can export to Amazon EC2.
+#' Exports an Amazon Lightsail instance or block storage disk snapshot to Amazon Elastic Compute Cloud (Amazon EC2). This operation results in an export snapshot record that can be used with the `create cloud formation stack` operation to create new Amazon EC2 instances.
 #'
-#' @usage
-#' lightsail_export_snapshot(sourceSnapshotName)
+#' See [https://paws-r.github.io/docs/lightsail/export_snapshot.html](https://paws-r.github.io/docs/lightsail/export_snapshot.html) for full documentation.
 #'
 #' @param sourceSnapshotName &#91;required&#93; The name of the instance or disk snapshot to be exported to Amazon EC2.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$export_snapshot(
-#'   sourceSnapshotName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5473,8 +2662,7 @@ lightsail_export_snapshot <- function(sourceSnapshotName) {
 #' @description
 #' Returns the names of all active (not deleted) resources.
 #'
-#' @usage
-#' lightsail_get_active_names(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_active_names.html](https://paws-r.github.io/docs/lightsail/get_active_names.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -5482,24 +2670,6 @@ lightsail_export_snapshot <- function(sourceSnapshotName) {
 #' [`get_active_names`][lightsail_get_active_names] request. If your
 #' results are paginated, the response will return a next page token that
 #' you can specify as the page token in a subsequent request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   activeNames = list(
-#'     "string"
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_active_names(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5524,18 +2694,9 @@ lightsail_get_active_names <- function(pageToken = NULL) {
 #' Returns information about the configured alarms
 #'
 #' @description
-#' Returns information about the configured alarms. Specify an alarm name
-#' in your request to return information about a specific alarm, or specify
-#' a monitored resource name to return information about all alarms for a
-#' specific resource.
-#' 
-#' An alarm is used to monitor a single metric for one of your resources.
-#' When a metric condition is met, the alarm can notify you by email, SMS
-#' text message, and a banner displayed on the Amazon Lightsail console.
-#' For more information, see Alarms in Amazon Lightsail.
+#' Returns information about the configured alarms. Specify an alarm name in your request to return information about a specific alarm, or specify a monitored resource name to return information about all alarms for a specific resource.
 #'
-#' @usage
-#' lightsail_get_alarms(alarmName, pageToken, monitoredResourceName)
+#' See [https://paws-r.github.io/docs/lightsail/get_alarms.html](https://paws-r.github.io/docs/lightsail/get_alarms.html) for full documentation.
 #'
 #' @param alarmName The name of the alarm.
 #' 
@@ -5550,60 +2711,6 @@ lightsail_get_active_names <- function(pageToken = NULL) {
 #' 
 #' Specify a monitored resource name to return information about all alarms
 #' for a specific resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   alarms = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       supportCode = "string",
-#'       monitoredResourceInfo = list(
-#'         arn = "string",
-#'         name = "string",
-#'         resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate"
-#'       ),
-#'       comparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
-#'       evaluationPeriods = 123,
-#'       period = 123,
-#'       threshold = 123.0,
-#'       datapointsToAlarm = 123,
-#'       treatMissingData = "breaching"|"notBreaching"|"ignore"|"missing",
-#'       statistic = "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount",
-#'       metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System"|"ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount"|"DatabaseConnections"|"DiskQueueDepth"|"FreeStorageSpace"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"BurstCapacityTime"|"BurstCapacityPercentage",
-#'       state = "OK"|"ALARM"|"INSUFFICIENT_DATA",
-#'       unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-#'       contactProtocols = list(
-#'         "Email"|"SMS"
-#'       ),
-#'       notificationTriggers = list(
-#'         "OK"|"ALARM"|"INSUFFICIENT_DATA"
-#'       ),
-#'       notificationEnabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_alarms(
-#'   alarmName = "string",
-#'   pageToken = "string",
-#'   monitoredResourceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5628,45 +2735,12 @@ lightsail_get_alarms <- function(alarmName = NULL, pageToken = NULL, monitoredRe
 #' Returns the available automatic snapshots for an instance or disk
 #'
 #' @description
-#' Returns the available automatic snapshots for an instance or disk. For
-#' more information, see the Lightsail Dev Guide.
+#' Returns the available automatic snapshots for an instance or disk. For more information, see the Amazon Lightsail Developer Guide.
 #'
-#' @usage
-#' lightsail_get_auto_snapshots(resourceName)
+#' See [https://paws-r.github.io/docs/lightsail/get_auto_snapshots.html](https://paws-r.github.io/docs/lightsail/get_auto_snapshots.html) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The name of the source instance or disk from which to get automatic
 #' snapshot information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   resourceName = "string",
-#'   resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'   autoSnapshots = list(
-#'     list(
-#'       date = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       status = "Success"|"Failed"|"InProgress"|"NotFound",
-#'       fromAttachedDisks = list(
-#'         list(
-#'           path = "string",
-#'           sizeInGb = 123
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_auto_snapshots(
-#'   resourceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5691,61 +2765,18 @@ lightsail_get_auto_snapshots <- function(resourceName) {
 #' Returns the list of available instance images, or blueprints
 #'
 #' @description
-#' Returns the list of available instance images, or *blueprints*. You can
-#' use a blueprint to create a new instance already running a specific
-#' operating system, as well as a preinstalled app or development stack.
-#' The software each instance is running depends on the blueprint image you
-#' choose.
-#' 
-#' Use active blueprints when creating new instances. Inactive blueprints
-#' are listed to support customers with existing instances and are not
-#' necessarily available to create new instances. Blueprints are marked
-#' inactive when they become outdated due to operating system updates or
-#' new application releases.
+#' Returns the list of available instance images, or *blueprints*. You can use a blueprint to create a new instance already running a specific operating system, as well as a preinstalled app or development stack. The software each instance is running depends on the blueprint image you choose.
 #'
-#' @usage
-#' lightsail_get_blueprints(includeInactive, pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_blueprints.html](https://paws-r.github.io/docs/lightsail/get_blueprints.html) for full documentation.
 #'
-#' @param includeInactive A Boolean value indicating whether to include inactive results in your
-#' request.
+#' @param includeInactive A Boolean value that indicates whether to include inactive (unavailable)
+#' blueprints in the response of your request.
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
 #' To get a page token, perform an initial
 #' [`get_blueprints`][lightsail_get_blueprints] request. If your results
 #' are paginated, the response will return a next page token that you can
 #' specify as the page token in a subsequent request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   blueprints = list(
-#'     list(
-#'       blueprintId = "string",
-#'       name = "string",
-#'       group = "string",
-#'       type = "os"|"app",
-#'       description = "string",
-#'       isActive = TRUE|FALSE,
-#'       minPower = 123,
-#'       version = "string",
-#'       versionCode = "string",
-#'       productUrl = "string",
-#'       licenseUrl = "string",
-#'       platform = "LINUX_UNIX"|"WINDOWS"
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_blueprints(
-#'   includeInactive = TRUE|FALSE,
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5767,56 +2798,213 @@ lightsail_get_blueprints <- function(includeInactive = NULL, pageToken = NULL) {
 }
 .lightsail$operations$get_blueprints <- lightsail_get_blueprints
 
-#' Returns the list of bundles that are available for purchase
+#' Returns the existing access key IDs for the specified Amazon Lightsail
+#' bucket
 #'
 #' @description
-#' Returns the list of bundles that are available for purchase. A bundle
-#' describes the specs for your virtual private server (or *instance*).
+#' Returns the existing access key IDs for the specified Amazon Lightsail bucket.
 #'
-#' @usage
-#' lightsail_get_bundles(includeInactive, pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_bucket_access_keys.html](https://paws-r.github.io/docs/lightsail/get_bucket_access_keys.html) for full documentation.
 #'
-#' @param includeInactive A Boolean value that indicates whether to include inactive bundle
-#' results in your request.
+#' @param bucketName &#91;required&#93; The name of the bucket for which to return access keys.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_bucket_access_keys
+lightsail_get_bucket_access_keys <- function(bucketName) {
+  op <- new_operation(
+    name = "GetBucketAccessKeys",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_bucket_access_keys_input(bucketName = bucketName)
+  output <- .lightsail$get_bucket_access_keys_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_bucket_access_keys <- lightsail_get_bucket_access_keys
+
+#' Returns the bundles that you can apply to a Amazon Lightsail bucket
+#'
+#' @description
+#' Returns the bundles that you can apply to a Amazon Lightsail bucket.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/get_bucket_bundles.html](https://paws-r.github.io/docs/lightsail/get_bucket_bundles.html) for full documentation.
+#'
+#' @param includeInactive A Boolean value that indicates whether to include inactive (unavailable)
+#' bundles in the response of your request.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_bucket_bundles
+lightsail_get_bucket_bundles <- function(includeInactive = NULL) {
+  op <- new_operation(
+    name = "GetBucketBundles",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_bucket_bundles_input(includeInactive = includeInactive)
+  output <- .lightsail$get_bucket_bundles_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_bucket_bundles <- lightsail_get_bucket_bundles
+
+#' Returns the data points of a specific metric for an Amazon Lightsail
+#' bucket
+#'
+#' @description
+#' Returns the data points of a specific metric for an Amazon Lightsail bucket.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/get_bucket_metric_data.html](https://paws-r.github.io/docs/lightsail/get_bucket_metric_data.html) for full documentation.
+#'
+#' @param bucketName &#91;required&#93; The name of the bucket for which to get metric data.
+#' @param metricName &#91;required&#93; The metric for which you want to return information.
+#' 
+#' Valid bucket metric names are listed below, along with the most useful
+#' statistics to include in your request, and the published unit value.
+#' 
+#' These bucket metrics are reported once per day.
+#' 
+#' -   **`BucketSizeBytes`** - The amount of data in bytes stored in a
+#'     bucket. This value is calculated by summing the size of all objects
+#'     in the bucket (including object versions), including the size of all
+#'     parts for all incomplete multipart uploads to the bucket.
+#' 
+#'     Statistics: The most useful statistic is `Maximum`.
+#' 
+#'     Unit: The published unit is `Bytes`.
+#' 
+#' -   **`NumberOfObjects`** - The total number of objects stored in a
+#'     bucket. This value is calculated by counting all objects in the
+#'     bucket (including object versions) and the total number of parts for
+#'     all incomplete multipart uploads to the bucket.
+#' 
+#'     Statistics: The most useful statistic is `Average`.
+#' 
+#'     Unit: The published unit is `Count`.
+#' @param startTime &#91;required&#93; The timestamp indicating the earliest data to be returned.
+#' @param endTime &#91;required&#93; The timestamp indicating the latest data to be returned.
+#' @param period &#91;required&#93; The granularity, in seconds, of the returned data points.
+#' 
+#' Bucket storage metrics are reported once per day. Therefore, you should
+#' specify a period of 86400 seconds, which is the number of seconds in a
+#' day.
+#' @param statistics &#91;required&#93; The statistic for the metric.
+#' 
+#' The following statistics are available:
+#' 
+#' -   `Minimum` - The lowest value observed during the specified period.
+#'     Use this value to determine low volumes of activity for your
+#'     application.
+#' 
+#' -   `Maximum` - The highest value observed during the specified period.
+#'     Use this value to determine high volumes of activity for your
+#'     application.
+#' 
+#' -   `Sum` - The sum of all values submitted for the matching metric. You
+#'     can use this statistic to determine the total volume of a metric.
+#' 
+#' -   `Average` - The value of `Sum` / `SampleCount` during the specified
+#'     period. By comparing this statistic with the `Minimum` and `Maximum`
+#'     values, you can determine the full scope of a metric and how close
+#'     the average use is to the `Minimum` and `Maximum` values. This
+#'     comparison helps you to know when to increase or decrease your
+#'     resources.
+#' 
+#' -   `SampleCount` - The count, or number, of data points used for the
+#'     statistical calculation.
+#' @param unit &#91;required&#93; The unit for the metric data request.
+#' 
+#' Valid units depend on the metric data being requested. For the valid
+#' units with each available metric, see the `metricName` parameter.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_bucket_metric_data
+lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, endTime, period, statistics, unit) {
+  op <- new_operation(
+    name = "GetBucketMetricData",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_bucket_metric_data_input(bucketName = bucketName, metricName = metricName, startTime = startTime, endTime = endTime, period = period, statistics = statistics, unit = unit)
+  output <- .lightsail$get_bucket_metric_data_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_bucket_metric_data <- lightsail_get_bucket_metric_data
+
+#' Returns information about one or more Amazon Lightsail buckets
+#'
+#' @description
+#' Returns information about one or more Amazon Lightsail buckets. The information returned includes the synchronization status of the Amazon Simple Storage Service (Amazon S3) account-level block public access feature for your Lightsail buckets.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/get_buckets.html](https://paws-r.github.io/docs/lightsail/get_buckets.html) for full documentation.
+#'
+#' @param bucketName The name of the bucket for which to return information.
+#' 
+#' When omitted, the response includes all of your buckets in the Amazon
+#' Web Services Region where the request is made.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial
+#' [`get_buckets`][lightsail_get_buckets] request. If your results are
+#' paginated, the response will return a next page token that you can
+#' specify as the page token in a subsequent request.
+#' @param includeConnectedResources A Boolean value that indicates whether to include Lightsail instances
+#' that were given access to the bucket using the
+#' [`set_resource_access_for_bucket`][lightsail_set_resource_access_for_bucket]
+#' action.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_buckets
+lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeConnectedResources = NULL) {
+  op <- new_operation(
+    name = "GetBuckets",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_buckets_input(bucketName = bucketName, pageToken = pageToken, includeConnectedResources = includeConnectedResources)
+  output <- .lightsail$get_buckets_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_buckets <- lightsail_get_buckets
+
+#' Returns the bundles that you can apply to an Amazon Lightsail instance
+#' when you create it
+#'
+#' @description
+#' Returns the bundles that you can apply to an Amazon Lightsail instance when you create it.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/get_bundles.html](https://paws-r.github.io/docs/lightsail/get_bundles.html) for full documentation.
+#'
+#' @param includeInactive A Boolean value that indicates whether to include inactive (unavailable)
+#' bundles in the response of your request.
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
 #' To get a page token, perform an initial
 #' [`get_bundles`][lightsail_get_bundles] request. If your results are
 #' paginated, the response will return a next page token that you can
 #' specify as the page token in a subsequent request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   bundles = list(
-#'     list(
-#'       price = 123.0,
-#'       cpuCount = 123,
-#'       diskSizeInGb = 123,
-#'       bundleId = "string",
-#'       instanceType = "string",
-#'       isActive = TRUE|FALSE,
-#'       name = "string",
-#'       power = 123,
-#'       ramSizeInGb = 123.0,
-#'       transferPerMonthInGb = 123,
-#'       supportedPlatforms = list(
-#'         "LINUX_UNIX"|"WINDOWS"
-#'       )
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_bundles(
-#'   includeInactive = TRUE|FALSE,
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5842,24 +3030,18 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL) {
 #' certificates
 #'
 #' @description
-#' Returns information about one or more Amazon Lightsail SSL/TLS
-#' certificates.
-#' 
-#' To get a summary of a certificate, ommit `includeCertificateDetails`
-#' from your request. The response will include only the certificate Amazon
-#' Resource Name (ARN), certificate name, domain name, and tags.
+#' Returns information about one or more Amazon Lightsail SSL/TLS certificates.
 #'
-#' @usage
-#' lightsail_get_certificates(certificateStatuses,
-#'   includeCertificateDetails, certificateName)
+#' See [https://paws-r.github.io/docs/lightsail/get_certificates.html](https://paws-r.github.io/docs/lightsail/get_certificates.html) for full documentation.
 #'
 #' @param certificateStatuses The status of the certificates for which to return information.
 #' 
 #' For example, specify `ISSUED` to return only certificates with an
 #' `ISSUED` status.
 #' 
-#' When omitted, the response includes all of your certificates in the AWS
-#' Region where the request is made, regardless of their current status.
+#' When omitted, the response includes all of your certificates in the
+#' Amazon Web Services Region where the request is made, regardless of
+#' their current status.
 #' @param includeCertificateDetails Indicates whether to include detailed information about the certificates
 #' in the response.
 #' 
@@ -5867,104 +3049,8 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL) {
 #' Resource Names (ARNs), domain names, and tags.
 #' @param certificateName The name for the certificate for which to return information.
 #' 
-#' When omitted, the response includes all of your certificates in the AWS
-#' Region where the request is made.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   certificates = list(
-#'     list(
-#'       certificateArn = "string",
-#'       certificateName = "string",
-#'       domainName = "string",
-#'       certificateDetail = list(
-#'         arn = "string",
-#'         name = "string",
-#'         domainName = "string",
-#'         status = "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED",
-#'         serialNumber = "string",
-#'         subjectAlternativeNames = list(
-#'           "string"
-#'         ),
-#'         domainValidationRecords = list(
-#'           list(
-#'             domainName = "string",
-#'             resourceRecord = list(
-#'               name = "string",
-#'               type = "string",
-#'               value = "string"
-#'             )
-#'           )
-#'         ),
-#'         requestFailureReason = "string",
-#'         inUseResourceCount = 123,
-#'         keyAlgorithm = "string",
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         issuedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         issuerCA = "string",
-#'         notBefore = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         notAfter = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         eligibleToRenew = "string",
-#'         renewalSummary = list(
-#'           domainValidationRecords = list(
-#'             list(
-#'               domainName = "string",
-#'               resourceRecord = list(
-#'                 name = "string",
-#'                 type = "string",
-#'                 value = "string"
-#'               )
-#'             )
-#'           ),
-#'           renewalStatus = "PendingAutoRenewal"|"PendingValidation"|"Success"|"Failed",
-#'           renewalStatusReason = "string",
-#'           updatedAt = as.POSIXct(
-#'             "2015-01-01"
-#'           )
-#'         ),
-#'         revokedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         revocationReason = "string",
-#'         tags = list(
-#'           list(
-#'             key = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         supportCode = "string"
-#'       ),
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_certificates(
-#'   certificateStatuses = list(
-#'     "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED"
-#'   ),
-#'   includeCertificateDetails = TRUE|FALSE,
-#'   certificateName = "string"
-#' )
-#' ```
+#' When omitted, the response includes all of your certificates in the
+#' Amazon Web Services Region where the request is made.
 #'
 #' @keywords internal
 #'
@@ -5990,14 +3076,9 @@ lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertif
 #' create cloud formation stack operation
 #'
 #' @description
-#' Returns the CloudFormation stack record created as a result of the
-#' `create cloud formation stack` operation.
-#' 
-#' An AWS CloudFormation stack is used to create a new Amazon EC2 instance
-#' from an exported Lightsail snapshot.
+#' Returns the CloudFormation stack record created as a result of the `create cloud formation stack` operation.
 #'
-#' @usage
-#' lightsail_get_cloud_formation_stack_records(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_cloud_formation_stack_records.html](https://paws-r.github.io/docs/lightsail/get_cloud_formation_stack_records.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -6005,47 +3086,6 @@ lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertif
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   cloudFormationStackRecords = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       state = "Started"|"Succeeded"|"Failed",
-#'       sourceInfo = list(
-#'         list(
-#'           resourceType = "ExportSnapshotRecord",
-#'           name = "string",
-#'           arn = "string"
-#'         )
-#'       ),
-#'       destinationInfo = list(
-#'         id = "string",
-#'         service = "string"
-#'       )
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_cloud_formation_stack_records(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6070,59 +3110,15 @@ lightsail_get_cloud_formation_stack_records <- function(pageToken = NULL) {
 #' Returns information about the configured contact methods
 #'
 #' @description
-#' Returns information about the configured contact methods. Specify a
-#' protocol in your request to return information about a specific contact
-#' method.
-#' 
-#' A contact method is used to send you notifications about your Amazon
-#' Lightsail resources. You can add one email address and one mobile phone
-#' number contact method in each AWS Region. However, SMS text messaging is
-#' not supported in some AWS Regions, and SMS text messages cannot be sent
-#' to some countries/regions. For more information, see Notifications in
-#' Amazon Lightsail.
+#' Returns information about the configured contact methods. Specify a protocol in your request to return information about a specific contact method.
 #'
-#' @usage
-#' lightsail_get_contact_methods(protocols)
+#' See [https://paws-r.github.io/docs/lightsail/get_contact_methods.html](https://paws-r.github.io/docs/lightsail/get_contact_methods.html) for full documentation.
 #'
 #' @param protocols The protocols used to send notifications, such as `Email`, or `SMS`
 #' (text messaging).
 #' 
 #' Specify a protocol in your request to return information about a
 #' specific contact method protocol.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   contactMethods = list(
-#'     list(
-#'       contactEndpoint = "string",
-#'       status = "PendingVerification"|"Valid"|"Invalid",
-#'       protocol = "Email"|"SMS",
-#'       name = "string",
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       supportCode = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_contact_methods(
-#'   protocols = list(
-#'     "Email"|"SMS"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6148,28 +3144,9 @@ lightsail_get_contact_methods <- function(protocols = NULL) {
 #' current version of the Lightsail Control (lightsailctl) plugin
 #'
 #' @description
-#' Returns information about Amazon Lightsail containers, such as the
-#' current version of the Lightsail Control (lightsailctl) plugin.
+#' Returns information about Amazon Lightsail containers, such as the current version of the Lightsail Control (lightsailctl) plugin.
 #'
-#' @usage
-#' lightsail_get_container_api_metadata()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   metadata = list(
-#'     list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_container_api_metadata()
-#' ```
+#' See [https://paws-r.github.io/docs/lightsail/get_container_api_metadata.html](https://paws-r.github.io/docs/lightsail/get_container_api_metadata.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -6195,42 +3172,12 @@ lightsail_get_container_api_metadata <- function() {
 #' Lightsail container service
 #'
 #' @description
-#' Returns the container images that are registered to your Amazon
-#' Lightsail container service.
-#' 
-#' If you created a deployment on your Lightsail container service that
-#' uses container images from a public registry like Docker Hub, those
-#' images are not returned as part of this action. Those images are not
-#' registered to your Lightsail container service.
+#' Returns the container images that are registered to your Amazon Lightsail container service.
 #'
-#' @usage
-#' lightsail_get_container_images(serviceName)
+#' See [https://paws-r.github.io/docs/lightsail/get_container_images.html](https://paws-r.github.io/docs/lightsail/get_container_images.html) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to return registered
 #' container images.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   containerImages = list(
-#'     list(
-#'       image = "string",
-#'       digest = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_container_images(
-#'   serviceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6256,21 +3203,9 @@ lightsail_get_container_images <- function(serviceName) {
 #' service
 #'
 #' @description
-#' Returns the log events of a container of your Amazon Lightsail container
-#' service.
-#' 
-#' If your container service has more than one node (i.e., a scale greater
-#' than 1), then the log events that are returned for the specified
-#' container are merged from all nodes on your container service.
-#' 
-#' Container logs are retained for a certain amount of time. For more
-#' information, see [Amazon Lightsail endpoints and
-#' quotas](https://docs.aws.amazon.com/general/latest/gr/lightsail.html) in
-#' the *AWS General Reference*.
+#' Returns the log events of a container of your Amazon Lightsail container service.
 #'
-#' @usage
-#' lightsail_get_container_log(serviceName, containerName, startTime,
-#'   endTime, filterPattern, pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_container_log.html](https://paws-r.github.io/docs/lightsail/get_container_log.html) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to get a container log.
 #' @param containerName &#91;required&#93; The name of the container that is either running or previously ran on
@@ -6326,38 +3261,6 @@ lightsail_get_container_images <- function(serviceName) {
 #' results are paginated, the response will return a next page token that
 #' you can specify as the page token in a subsequent request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   logEvents = list(
-#'     list(
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       message = "string"
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_container_log(
-#'   serviceName = "string",
-#'   containerName = "string",
-#'   startTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   endTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   filterPattern = "string",
-#'   pageToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lightsail_get_container_log
@@ -6382,72 +3285,10 @@ lightsail_get_container_log <- function(serviceName, containerName, startTime = 
 #'
 #' @description
 #' Returns the deployments for your Amazon Lightsail container service
-#' 
-#' A deployment specifies the settings, such as the ports and launch
-#' command, of containers that are deployed to your container service.
-#' 
-#' The deployments are ordered by version in ascending order. The newest
-#' version is listed at the top of the response.
-#' 
-#' A set number of deployments are kept before the oldest one is replaced
-#' with the newest one. For more information, see [Amazon Lightsail
-#' endpoints and
-#' quotas](https://docs.aws.amazon.com/general/latest/gr/lightsail.html) in
-#' the *AWS General Reference*.
 #'
-#' @usage
-#' lightsail_get_container_service_deployments(serviceName)
+#' See [https://paws-r.github.io/docs/lightsail/get_container_service_deployments.html](https://paws-r.github.io/docs/lightsail/get_container_service_deployments.html) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to return deployments.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deployments = list(
-#'     list(
-#'       version = 123,
-#'       state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-#'       containers = list(
-#'         list(
-#'           image = "string",
-#'           command = list(
-#'             "string"
-#'           ),
-#'           environment = list(
-#'             "string"
-#'           ),
-#'           ports = list(
-#'             "HTTP"|"HTTPS"|"TCP"|"UDP"
-#'           )
-#'         )
-#'       ),
-#'       publicEndpoint = list(
-#'         containerName = "string",
-#'         containerPort = 123,
-#'         healthCheck = list(
-#'           healthyThreshold = 123,
-#'           unhealthyThreshold = 123,
-#'           timeoutSeconds = 123,
-#'           intervalSeconds = 123,
-#'           path = "string",
-#'           successCodes = "string"
-#'         )
-#'       ),
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_container_service_deployments(
-#'   serviceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6473,16 +3314,9 @@ lightsail_get_container_service_deployments <- function(serviceName) {
 #' container service
 #'
 #' @description
-#' Returns the data points of a specific metric of your Amazon Lightsail
-#' container service.
-#' 
-#' Metrics report the utilization of your resources. Monitor and collect
-#' metric data regularly to maintain the reliability, availability, and
-#' performance of your resources.
+#' Returns the data points of a specific metric of your Amazon Lightsail container service.
 #'
-#' @usage
-#' lightsail_get_container_service_metric_data(serviceName, metricName,
-#'   startTime, endTime, period, statistics)
+#' See [https://paws-r.github.io/docs/lightsail/get_container_service_metric_data.html](https://paws-r.github.io/docs/lightsail/get_container_service_metric_data.html) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to get metric data.
 #' @param metricName &#91;required&#93; The metric for which you want to return information.
@@ -6540,45 +3374,6 @@ lightsail_get_container_service_deployments <- function(serviceName) {
 #' -   `SampleCount` - The count, or number, of data points used for the
 #'     statistical calculation.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   metricName = "CPUUtilization"|"MemoryUtilization",
-#'   metricData = list(
-#'     list(
-#'       average = 123.0,
-#'       maximum = 123.0,
-#'       minimum = 123.0,
-#'       sampleCount = 123.0,
-#'       sum = 123.0,
-#'       timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_container_service_metric_data(
-#'   serviceName = "string",
-#'   metricName = "CPUUtilization"|"MemoryUtilization",
-#'   startTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   endTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   period = 123,
-#'   statistics = list(
-#'     "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lightsail_get_container_service_metric_data
@@ -6603,36 +3398,9 @@ lightsail_get_container_service_metric_data <- function(serviceName, metricName,
 #' Lightsail container services
 #'
 #' @description
-#' Returns the list of powers that can be specified for your Amazon
-#' Lightsail container services.
-#' 
-#' The power specifies the amount of memory, the number of vCPUs, and the
-#' base price of the container service.
+#' Returns the list of powers that can be specified for your Amazon Lightsail container services.
 #'
-#' @usage
-#' lightsail_get_container_service_powers()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   powers = list(
-#'     list(
-#'       powerId = "string",
-#'       price = 123.0,
-#'       cpuCount = 123.0,
-#'       ramSizeInGb = 123.0,
-#'       name = "string",
-#'       isActive = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_container_service_powers()
-#' ```
+#' See [https://paws-r.github.io/docs/lightsail/get_container_service_powers.html](https://paws-r.github.io/docs/lightsail/get_container_service_powers.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -6658,129 +3426,14 @@ lightsail_get_container_service_powers <- function() {
 #' services
 #'
 #' @description
-#' Returns information about one or more of your Amazon Lightsail container
-#' services.
+#' Returns information about one or more of your Amazon Lightsail container services.
 #'
-#' @usage
-#' lightsail_get_container_services(serviceName)
+#' See [https://paws-r.github.io/docs/lightsail/get_container_services.html](https://paws-r.github.io/docs/lightsail/get_container_services.html) for full documentation.
 #'
 #' @param serviceName The name of the container service for which to return information.
 #' 
 #' When omitted, the response includes all of your container services in
-#' the AWS Region where the request is made.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   containerServices = list(
-#'     list(
-#'       containerServiceName = "string",
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
-#'       powerId = "string",
-#'       state = "PENDING"|"READY"|"RUNNING"|"UPDATING"|"DELETING"|"DISABLED",
-#'       scale = 123,
-#'       currentDeployment = list(
-#'         version = 123,
-#'         state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-#'         containers = list(
-#'           list(
-#'             image = "string",
-#'             command = list(
-#'               "string"
-#'             ),
-#'             environment = list(
-#'               "string"
-#'             ),
-#'             ports = list(
-#'               "HTTP"|"HTTPS"|"TCP"|"UDP"
-#'             )
-#'           )
-#'         ),
-#'         publicEndpoint = list(
-#'           containerName = "string",
-#'           containerPort = 123,
-#'           healthCheck = list(
-#'             healthyThreshold = 123,
-#'             unhealthyThreshold = 123,
-#'             timeoutSeconds = 123,
-#'             intervalSeconds = 123,
-#'             path = "string",
-#'             successCodes = "string"
-#'           )
-#'         ),
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       nextDeployment = list(
-#'         version = 123,
-#'         state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-#'         containers = list(
-#'           list(
-#'             image = "string",
-#'             command = list(
-#'               "string"
-#'             ),
-#'             environment = list(
-#'               "string"
-#'             ),
-#'             ports = list(
-#'               "HTTP"|"HTTPS"|"TCP"|"UDP"
-#'             )
-#'           )
-#'         ),
-#'         publicEndpoint = list(
-#'           containerName = "string",
-#'           containerPort = 123,
-#'           healthCheck = list(
-#'             healthyThreshold = 123,
-#'             unhealthyThreshold = 123,
-#'             timeoutSeconds = 123,
-#'             intervalSeconds = 123,
-#'             path = "string",
-#'             successCodes = "string"
-#'           )
-#'         ),
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       isDisabled = TRUE|FALSE,
-#'       principalArn = "string",
-#'       privateDomainName = "string",
-#'       publicDomainNames = list(
-#'         list(
-#'           "string"
-#'         )
-#'       ),
-#'       url = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_container_services(
-#'   serviceName = "string"
-#' )
-#' ```
+#' the Amazon Web Services Region where the request is made.
 #'
 #' @keywords internal
 #'
@@ -6807,60 +3460,9 @@ lightsail_get_container_services <- function(serviceName = NULL) {
 #' @description
 #' Returns information about a specific block storage disk.
 #'
-#' @usage
-#' lightsail_get_disk(diskName)
+#' See [https://paws-r.github.io/docs/lightsail/get_disk.html](https://paws-r.github.io/docs/lightsail/get_disk.html) for full documentation.
 #'
 #' @param diskName &#91;required&#93; The name of the disk (e.g., `my-disk`).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   disk = list(
-#'     name = "string",
-#'     arn = "string",
-#'     supportCode = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     addOns = list(
-#'       list(
-#'         name = "string",
-#'         status = "string",
-#'         snapshotTimeOfDay = "string",
-#'         nextSnapshotTimeOfDay = "string"
-#'       )
-#'     ),
-#'     sizeInGb = 123,
-#'     isSystemDisk = TRUE|FALSE,
-#'     iops = 123,
-#'     path = "string",
-#'     state = "pending"|"error"|"available"|"in-use"|"unknown",
-#'     attachedTo = "string",
-#'     isAttached = TRUE|FALSE,
-#'     attachmentState = "string",
-#'     gbInUse = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_disk(
-#'   diskName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6887,51 +3489,9 @@ lightsail_get_disk <- function(diskName) {
 #' @description
 #' Returns information about a specific block storage disk snapshot.
 #'
-#' @usage
-#' lightsail_get_disk_snapshot(diskSnapshotName)
+#' See [https://paws-r.github.io/docs/lightsail/get_disk_snapshot.html](https://paws-r.github.io/docs/lightsail/get_disk_snapshot.html) for full documentation.
 #'
 #' @param diskSnapshotName &#91;required&#93; The name of the disk snapshot (e.g., `my-disk-snapshot`).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   diskSnapshot = list(
-#'     name = "string",
-#'     arn = "string",
-#'     supportCode = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     sizeInGb = 123,
-#'     state = "pending"|"completed"|"error"|"unknown",
-#'     progress = "string",
-#'     fromDiskName = "string",
-#'     fromDiskArn = "string",
-#'     fromInstanceName = "string",
-#'     fromInstanceArn = "string",
-#'     isFromAutoSnapshot = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_disk_snapshot(
-#'   diskSnapshotName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6957,11 +3517,9 @@ lightsail_get_disk_snapshot <- function(diskSnapshotName) {
 #' account and region
 #'
 #' @description
-#' Returns information about all block storage disk snapshots in your AWS
-#' account and region.
+#' Returns information about all block storage disk snapshots in your AWS account and region.
 #'
-#' @usage
-#' lightsail_get_disk_snapshots(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_disk_snapshots.html](https://paws-r.github.io/docs/lightsail/get_disk_snapshots.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -6969,50 +3527,6 @@ lightsail_get_disk_snapshot <- function(diskSnapshotName) {
 #' [`get_disk_snapshots`][lightsail_get_disk_snapshots] request. If your
 #' results are paginated, the response will return a next page token that
 #' you can specify as the page token in a subsequent request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   diskSnapshots = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       supportCode = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       sizeInGb = 123,
-#'       state = "pending"|"completed"|"error"|"unknown",
-#'       progress = "string",
-#'       fromDiskName = "string",
-#'       fromDiskArn = "string",
-#'       fromInstanceName = "string",
-#'       fromInstanceArn = "string",
-#'       isFromAutoSnapshot = TRUE|FALSE
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_disk_snapshots(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7038,11 +3552,9 @@ lightsail_get_disk_snapshots <- function(pageToken = NULL) {
 #' and region
 #'
 #' @description
-#' Returns information about all block storage disks in your AWS account
-#' and region.
+#' Returns information about all block storage disks in your AWS account and region.
 #'
-#' @usage
-#' lightsail_get_disks(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_disks.html](https://paws-r.github.io/docs/lightsail/get_disks.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -7050,59 +3562,6 @@ lightsail_get_disk_snapshots <- function(pageToken = NULL) {
 #' [`get_disks`][lightsail_get_disks] request. If your results are
 #' paginated, the response will return a next page token that you can
 #' specify as the page token in a subsequent request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   disks = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       supportCode = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       addOns = list(
-#'         list(
-#'           name = "string",
-#'           status = "string",
-#'           snapshotTimeOfDay = "string",
-#'           nextSnapshotTimeOfDay = "string"
-#'         )
-#'       ),
-#'       sizeInGb = 123,
-#'       isSystemDisk = TRUE|FALSE,
-#'       iops = 123,
-#'       path = "string",
-#'       state = "pending"|"error"|"available"|"in-use"|"unknown",
-#'       attachedTo = "string",
-#'       isAttached = TRUE|FALSE,
-#'       attachmentState = "string",
-#'       gbInUse = 123
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_disks(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7124,39 +3583,13 @@ lightsail_get_disks <- function(pageToken = NULL) {
 }
 .lightsail$operations$get_disks <- lightsail_get_disks
 
-#' Returns the list bundles that can be applied to you Amazon Lightsail
-#' content delivery network (CDN) distributions
+#' Returns the bundles that can be applied to your Amazon Lightsail content
+#' delivery network (CDN) distributions
 #'
 #' @description
-#' Returns the list bundles that can be applied to you Amazon Lightsail
-#' content delivery network (CDN) distributions.
-#' 
-#' A distribution bundle specifies the monthly network transfer quota and
-#' monthly cost of your dsitribution.
+#' Returns the bundles that can be applied to your Amazon Lightsail content delivery network (CDN) distributions.
 #'
-#' @usage
-#' lightsail_get_distribution_bundles()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   bundles = list(
-#'     list(
-#'       bundleId = "string",
-#'       name = "string",
-#'       price = 123.0,
-#'       transferPerMonthInGb = 123,
-#'       isActive = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_distribution_bundles()
-#' ```
+#' See [https://paws-r.github.io/docs/lightsail/get_distribution_bundles.html](https://paws-r.github.io/docs/lightsail/get_distribution_bundles.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -7182,11 +3615,9 @@ lightsail_get_distribution_bundles <- function() {
 #' Amazon Lightsail content delivery network (CDN) distribution
 #'
 #' @description
-#' Returns the timestamp and status of the last cache reset of a specific
-#' Amazon Lightsail content delivery network (CDN) distribution.
+#' Returns the timestamp and status of the last cache reset of a specific Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' @usage
-#' lightsail_get_distribution_latest_cache_reset(distributionName)
+#' See [https://paws-r.github.io/docs/lightsail/get_distribution_latest_cache_reset.html](https://paws-r.github.io/docs/lightsail/get_distribution_latest_cache_reset.html) for full documentation.
 #'
 #' @param distributionName The name of the distribution for which to return the timestamp of the
 #' last cache reset.
@@ -7196,24 +3627,6 @@ lightsail_get_distribution_bundles <- function() {
 #' 
 #' When omitted, the response includes the latest cache reset timestamp of
 #' all your distributions.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   status = "string",
-#'   createTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_distribution_latest_cache_reset(
-#'   distributionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7239,16 +3652,9 @@ lightsail_get_distribution_latest_cache_reset <- function(distributionName = NUL
 #' content delivery network (CDN) distribution
 #'
 #' @description
-#' Returns the data points of a specific metric for an Amazon Lightsail
-#' content delivery network (CDN) distribution.
-#' 
-#' Metrics report the utilization of your resources, and the error counts
-#' generated by them. Monitor and collect metric data regularly to maintain
-#' the reliability, availability, and performance of your resources.
+#' Returns the data points of a specific metric for an Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' @usage
-#' lightsail_get_distribution_metric_data(distributionName, metricName,
-#'   startTime, endTime, period, unit, statistics)
+#' See [https://paws-r.github.io/docs/lightsail/get_distribution_metric_data.html](https://paws-r.github.io/docs/lightsail/get_distribution_metric_data.html) for full documentation.
 #'
 #' @param distributionName &#91;required&#93; The name of the distribution for which to get metric data.
 #' 
@@ -7366,46 +3772,6 @@ lightsail_get_distribution_latest_cache_reset <- function(distributionName = NUL
 #' -   `SampleCount` - The count, or number, of data points used for the
 #'     statistical calculation.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   metricName = "Requests"|"BytesDownloaded"|"BytesUploaded"|"TotalErrorRate"|"Http4xxErrorRate"|"Http5xxErrorRate",
-#'   metricData = list(
-#'     list(
-#'       average = 123.0,
-#'       maximum = 123.0,
-#'       minimum = 123.0,
-#'       sampleCount = 123.0,
-#'       sum = 123.0,
-#'       timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_distribution_metric_data(
-#'   distributionName = "string",
-#'   metricName = "Requests"|"BytesDownloaded"|"BytesUploaded"|"TotalErrorRate"|"Http4xxErrorRate"|"Http5xxErrorRate",
-#'   startTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   endTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   period = 123,
-#'   unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-#'   statistics = list(
-#'     "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lightsail_get_distribution_metric_data
@@ -7430,112 +3796,20 @@ lightsail_get_distribution_metric_data <- function(distributionName, metricName,
 #' delivery network (CDN) distributions
 #'
 #' @description
-#' Returns information about one or more of your Amazon Lightsail content
-#' delivery network (CDN) distributions.
+#' Returns information about one or more of your Amazon Lightsail content delivery network (CDN) distributions.
 #'
-#' @usage
-#' lightsail_get_distributions(distributionName, pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_distributions.html](https://paws-r.github.io/docs/lightsail/get_distributions.html) for full documentation.
 #'
 #' @param distributionName The name of the distribution for which to return information.
 #' 
-#' Use the [`get_distributions`][lightsail_get_distributions] action to get
-#' a list of distribution names that you can specify.
-#' 
-#' When omitted, the response includes all of your distributions in the AWS
-#' Region where the request is made.
+#' When omitted, the response includes all of your distributions in the
+#' Amazon Web Services Region where the request is made.
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
 #' To get a page token, perform an initial
 #' [`get_distributions`][lightsail_get_distributions] request. If your
 #' results are paginated, the response will return a next page token that
 #' you can specify as the page token in a subsequent request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   distributions = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       supportCode = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       alternativeDomainNames = list(
-#'         "string"
-#'       ),
-#'       status = "string",
-#'       isEnabled = TRUE|FALSE,
-#'       domainName = "string",
-#'       bundleId = "string",
-#'       certificateName = "string",
-#'       origin = list(
-#'         name = "string",
-#'         resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2",
-#'         protocolPolicy = "http-only"|"https-only"
-#'       ),
-#'       originPublicDNS = "string",
-#'       defaultCacheBehavior = list(
-#'         behavior = "dont-cache"|"cache"
-#'       ),
-#'       cacheBehaviorSettings = list(
-#'         defaultTTL = 123,
-#'         minimumTTL = 123,
-#'         maximumTTL = 123,
-#'         allowedHTTPMethods = "string",
-#'         cachedHTTPMethods = "string",
-#'         forwardedCookies = list(
-#'           option = "none"|"allow-list"|"all",
-#'           cookiesAllowList = list(
-#'             "string"
-#'           )
-#'         ),
-#'         forwardedHeaders = list(
-#'           option = "none"|"allow-list"|"all",
-#'           headersAllowList = list(
-#'             "Accept"|"Accept-Charset"|"Accept-Datetime"|"Accept-Encoding"|"Accept-Language"|"Authorization"|"CloudFront-Forwarded-Proto"|"CloudFront-Is-Desktop-Viewer"|"CloudFront-Is-Mobile-Viewer"|"CloudFront-Is-SmartTV-Viewer"|"CloudFront-Is-Tablet-Viewer"|"CloudFront-Viewer-Country"|"Host"|"Origin"|"Referer"
-#'           )
-#'         ),
-#'         forwardedQueryStrings = list(
-#'           option = TRUE|FALSE,
-#'           queryStringsAllowList = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       cacheBehaviors = list(
-#'         list(
-#'           path = "string",
-#'           behavior = "dont-cache"|"cache"
-#'         )
-#'       ),
-#'       ableToUpdateBundle = TRUE|FALSE,
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_distributions(
-#'   distributionName = "string",
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7562,55 +3836,9 @@ lightsail_get_distributions <- function(distributionName = NULL, pageToken = NUL
 #' @description
 #' Returns information about a specific domain recordset.
 #'
-#' @usage
-#' lightsail_get_domain(domainName)
+#' See [https://paws-r.github.io/docs/lightsail/get_domain.html](https://paws-r.github.io/docs/lightsail/get_domain.html) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name for which your want to return information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   domain = list(
-#'     name = "string",
-#'     arn = "string",
-#'     supportCode = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     domainEntries = list(
-#'       list(
-#'         id = "string",
-#'         name = "string",
-#'         target = "string",
-#'         isAlias = TRUE|FALSE,
-#'         type = "string",
-#'         options = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_domain(
-#'   domainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7637,8 +3865,7 @@ lightsail_get_domain <- function(domainName) {
 #' @description
 #' Returns a list of all domains in the user's account.
 #'
-#' @usage
-#' lightsail_get_domains(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_domains.html](https://paws-r.github.io/docs/lightsail/get_domains.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -7646,54 +3873,6 @@ lightsail_get_domain <- function(domainName) {
 #' [`get_domains`][lightsail_get_domains] request. If your results are
 #' paginated, the response will return a next page token that you can
 #' specify as the page token in a subsequent request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   domains = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       supportCode = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       domainEntries = list(
-#'         list(
-#'           id = "string",
-#'           name = "string",
-#'           target = "string",
-#'           isAlias = TRUE|FALSE,
-#'           type = "string",
-#'           options = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_domains(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7715,19 +3894,13 @@ lightsail_get_domains <- function(pageToken = NULL) {
 }
 .lightsail$operations$get_domains <- lightsail_get_domains
 
-#' Returns the export snapshot record created as a result of the export
+#' Returns all export snapshot records created as a result of the export
 #' snapshot operation
 #'
 #' @description
-#' Returns the export snapshot record created as a result of the
-#' `export snapshot` operation.
-#' 
-#' An export snapshot record can be used to create a new Amazon EC2
-#' instance and its related resources with the
-#' `create cloud formation stack` operation.
+#' Returns all export snapshot records created as a result of the `export snapshot` operation.
 #'
-#' @usage
-#' lightsail_get_export_snapshot_records(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_export_snapshot_records.html](https://paws-r.github.io/docs/lightsail/get_export_snapshot_records.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -7736,65 +3909,6 @@ lightsail_get_domains <- function(pageToken = NULL) {
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   exportSnapshotRecords = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       state = "Started"|"Succeeded"|"Failed",
-#'       sourceInfo = list(
-#'         resourceType = "InstanceSnapshot"|"DiskSnapshot",
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         name = "string",
-#'         arn = "string",
-#'         fromResourceName = "string",
-#'         fromResourceArn = "string",
-#'         instanceSnapshotInfo = list(
-#'           fromBundleId = "string",
-#'           fromBlueprintId = "string",
-#'           fromDiskInfo = list(
-#'             list(
-#'               name = "string",
-#'               path = "string",
-#'               sizeInGb = 123,
-#'               isSystemDisk = TRUE|FALSE
-#'             )
-#'           )
-#'         ),
-#'         diskSnapshotInfo = list(
-#'           sizeInGb = 123
-#'         )
-#'       ),
-#'       destinationInfo = list(
-#'         id = "string",
-#'         service = "string"
-#'       )
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_export_snapshot_records(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7820,131 +3934,11 @@ lightsail_get_export_snapshot_records <- function(pageToken = NULL) {
 #' a virtual private server
 #'
 #' @description
-#' Returns information about a specific Amazon Lightsail instance, which is
-#' a virtual private server.
+#' Returns information about a specific Amazon Lightsail instance, which is a virtual private server.
 #'
-#' @usage
-#' lightsail_get_instance(instanceName)
+#' See [https://paws-r.github.io/docs/lightsail/get_instance.html](https://paws-r.github.io/docs/lightsail/get_instance.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   instance = list(
-#'     name = "string",
-#'     arn = "string",
-#'     supportCode = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     blueprintId = "string",
-#'     blueprintName = "string",
-#'     bundleId = "string",
-#'     addOns = list(
-#'       list(
-#'         name = "string",
-#'         status = "string",
-#'         snapshotTimeOfDay = "string",
-#'         nextSnapshotTimeOfDay = "string"
-#'       )
-#'     ),
-#'     isStaticIp = TRUE|FALSE,
-#'     privateIpAddress = "string",
-#'     publicIpAddress = "string",
-#'     ipv6Address = "string",
-#'     hardware = list(
-#'       cpuCount = 123,
-#'       disks = list(
-#'         list(
-#'           name = "string",
-#'           arn = "string",
-#'           supportCode = "string",
-#'           createdAt = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           location = list(
-#'             availabilityZone = "string",
-#'             regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'           ),
-#'           resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'           tags = list(
-#'             list(
-#'               key = "string",
-#'               value = "string"
-#'             )
-#'           ),
-#'           addOns = list(
-#'             list(
-#'               name = "string",
-#'               status = "string",
-#'               snapshotTimeOfDay = "string",
-#'               nextSnapshotTimeOfDay = "string"
-#'             )
-#'           ),
-#'           sizeInGb = 123,
-#'           isSystemDisk = TRUE|FALSE,
-#'           iops = 123,
-#'           path = "string",
-#'           state = "pending"|"error"|"available"|"in-use"|"unknown",
-#'           attachedTo = "string",
-#'           isAttached = TRUE|FALSE,
-#'           attachmentState = "string",
-#'           gbInUse = 123
-#'         )
-#'       ),
-#'       ramSizeInGb = 123.0
-#'     ),
-#'     networking = list(
-#'       monthlyTransfer = list(
-#'         gbPerMonthAllocated = 123
-#'       ),
-#'       ports = list(
-#'         list(
-#'           fromPort = 123,
-#'           toPort = 123,
-#'           protocol = "tcp"|"all"|"udp"|"icmp",
-#'           accessFrom = "string",
-#'           accessType = "Public"|"Private",
-#'           commonName = "string",
-#'           accessDirection = "inbound"|"outbound",
-#'           cidrs = list(
-#'             "string"
-#'           ),
-#'           cidrListAliases = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     state = list(
-#'       code = 123,
-#'       name = "string"
-#'     ),
-#'     username = "string",
-#'     sshKeyName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_instance(
-#'   instanceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7970,66 +3964,12 @@ lightsail_get_instance <- function(instanceName) {
 #' private server, or instance
 #'
 #' @description
-#' Returns temporary SSH keys you can use to connect to a specific virtual
-#' private server, or *instance*.
-#' 
-#' The `get instance access details` operation supports tag-based access
-#' control via resource tags applied to the resource identified by
-#' `instance name`. For more information, see the Lightsail Dev Guide.
+#' Returns temporary SSH keys you can use to connect to a specific virtual private server, or *instance*.
 #'
-#' @usage
-#' lightsail_get_instance_access_details(instanceName, protocol)
+#' See [https://paws-r.github.io/docs/lightsail/get_instance_access_details.html](https://paws-r.github.io/docs/lightsail/get_instance_access_details.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance to access.
 #' @param protocol The protocol to use to connect to your instance. Defaults to `ssh`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   accessDetails = list(
-#'     certKey = "string",
-#'     expiresAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     ipAddress = "string",
-#'     password = "string",
-#'     passwordData = list(
-#'       ciphertext = "string",
-#'       keyPairName = "string"
-#'     ),
-#'     privateKey = "string",
-#'     protocol = "ssh"|"rdp",
-#'     instanceName = "string",
-#'     username = "string",
-#'     hostKeys = list(
-#'       list(
-#'         algorithm = "string",
-#'         publicKey = "string",
-#'         witnessedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         fingerprintSHA1 = "string",
-#'         fingerprintSHA256 = "string",
-#'         notValidBefore = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         notValidAfter = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_instance_access_details(
-#'   instanceName = "string",
-#'   protocol = "ssh"|"rdp"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8055,16 +3995,9 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #' metric, given an instance name
 #'
 #' @description
-#' Returns the data points for the specified Amazon Lightsail instance
-#' metric, given an instance name.
-#' 
-#' Metrics report the utilization of your resources, and the error counts
-#' generated by them. Monitor and collect metric data regularly to maintain
-#' the reliability, availability, and performance of your resources.
+#' Returns the data points for the specified Amazon Lightsail instance metric, given an instance name.
 #'
-#' @usage
-#' lightsail_get_instance_metric_data(instanceName, metricName, period,
-#'   startTime, endTime, unit, statistics)
+#' See [https://paws-r.github.io/docs/lightsail/get_instance_metric_data.html](https://paws-r.github.io/docs/lightsail/get_instance_metric_data.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance for which you want to get metrics data.
 #' @param metricName &#91;required&#93; The metric for which you want to return information.
@@ -8200,46 +4133,6 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #' -   `SampleCount` - The count, or number, of data points used for the
 #'     statistical calculation.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System"|"BurstCapacityTime"|"BurstCapacityPercentage",
-#'   metricData = list(
-#'     list(
-#'       average = 123.0,
-#'       maximum = 123.0,
-#'       minimum = 123.0,
-#'       sampleCount = 123.0,
-#'       sum = 123.0,
-#'       timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_instance_metric_data(
-#'   instanceName = "string",
-#'   metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System"|"BurstCapacityTime"|"BurstCapacityPercentage",
-#'   period = 123,
-#'   startTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   endTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-#'   statistics = list(
-#'     "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lightsail_get_instance_metric_data
@@ -8265,42 +4158,11 @@ lightsail_get_instance_metric_data <- function(instanceName, metricName, period,
 #' the ports, and the protocol
 #'
 #' @description
-#' Returns the firewall port states for a specific Amazon Lightsail
-#' instance, the IP addresses allowed to connect to the instance through
-#' the ports, and the protocol.
+#' Returns the firewall port states for a specific Amazon Lightsail instance, the IP addresses allowed to connect to the instance through the ports, and the protocol.
 #'
-#' @usage
-#' lightsail_get_instance_port_states(instanceName)
+#' See [https://paws-r.github.io/docs/lightsail/get_instance_port_states.html](https://paws-r.github.io/docs/lightsail/get_instance_port_states.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance for which to return firewall port states.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   portStates = list(
-#'     list(
-#'       fromPort = 123,
-#'       toPort = 123,
-#'       protocol = "tcp"|"all"|"udp"|"icmp",
-#'       state = "open"|"closed",
-#'       cidrs = list(
-#'         "string"
-#'       ),
-#'       cidrListAliases = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_instance_port_states(
-#'   instanceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8327,89 +4189,9 @@ lightsail_get_instance_port_states <- function(instanceName) {
 #' @description
 #' Returns information about a specific instance snapshot.
 #'
-#' @usage
-#' lightsail_get_instance_snapshot(instanceSnapshotName)
+#' See [https://paws-r.github.io/docs/lightsail/get_instance_snapshot.html](https://paws-r.github.io/docs/lightsail/get_instance_snapshot.html) for full documentation.
 #'
 #' @param instanceSnapshotName &#91;required&#93; The name of the snapshot for which you are requesting information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   instanceSnapshot = list(
-#'     name = "string",
-#'     arn = "string",
-#'     supportCode = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     state = "pending"|"error"|"available",
-#'     progress = "string",
-#'     fromAttachedDisks = list(
-#'       list(
-#'         name = "string",
-#'         arn = "string",
-#'         supportCode = "string",
-#'         createdAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         location = list(
-#'           availabilityZone = "string",
-#'           regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'         ),
-#'         resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'         tags = list(
-#'           list(
-#'             key = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         addOns = list(
-#'           list(
-#'             name = "string",
-#'             status = "string",
-#'             snapshotTimeOfDay = "string",
-#'             nextSnapshotTimeOfDay = "string"
-#'           )
-#'         ),
-#'         sizeInGb = 123,
-#'         isSystemDisk = TRUE|FALSE,
-#'         iops = 123,
-#'         path = "string",
-#'         state = "pending"|"error"|"available"|"in-use"|"unknown",
-#'         attachedTo = "string",
-#'         isAttached = TRUE|FALSE,
-#'         attachmentState = "string",
-#'         gbInUse = 123
-#'       )
-#'     ),
-#'     fromInstanceName = "string",
-#'     fromInstanceArn = "string",
-#'     fromBlueprintId = "string",
-#'     fromBundleId = "string",
-#'     isFromAutoSnapshot = TRUE|FALSE,
-#'     sizeInGb = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_instance_snapshot(
-#'   instanceSnapshotName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8436,8 +4218,7 @@ lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
 #' @description
 #' Returns all instance snapshots for the user's account.
 #'
-#' @usage
-#' lightsail_get_instance_snapshots(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_instance_snapshots.html](https://paws-r.github.io/docs/lightsail/get_instance_snapshots.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -8445,88 +4226,6 @@ lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
 #' [`get_instance_snapshots`][lightsail_get_instance_snapshots] request. If
 #' your results are paginated, the response will return a next page token
 #' that you can specify as the page token in a subsequent request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   instanceSnapshots = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       supportCode = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       state = "pending"|"error"|"available",
-#'       progress = "string",
-#'       fromAttachedDisks = list(
-#'         list(
-#'           name = "string",
-#'           arn = "string",
-#'           supportCode = "string",
-#'           createdAt = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           location = list(
-#'             availabilityZone = "string",
-#'             regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'           ),
-#'           resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'           tags = list(
-#'             list(
-#'               key = "string",
-#'               value = "string"
-#'             )
-#'           ),
-#'           addOns = list(
-#'             list(
-#'               name = "string",
-#'               status = "string",
-#'               snapshotTimeOfDay = "string",
-#'               nextSnapshotTimeOfDay = "string"
-#'             )
-#'           ),
-#'           sizeInGb = 123,
-#'           isSystemDisk = TRUE|FALSE,
-#'           iops = 123,
-#'           path = "string",
-#'           state = "pending"|"error"|"available"|"in-use"|"unknown",
-#'           attachedTo = "string",
-#'           isAttached = TRUE|FALSE,
-#'           attachmentState = "string",
-#'           gbInUse = 123
-#'         )
-#'       ),
-#'       fromInstanceName = "string",
-#'       fromInstanceArn = "string",
-#'       fromBlueprintId = "string",
-#'       fromBundleId = "string",
-#'       isFromAutoSnapshot = TRUE|FALSE,
-#'       sizeInGb = 123
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_instance_snapshots(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8551,31 +4250,11 @@ lightsail_get_instance_snapshots <- function(pageToken = NULL) {
 #' Returns the state of a specific instance
 #'
 #' @description
-#' Returns the state of a specific instance. Works on one instance at a
-#' time.
+#' Returns the state of a specific instance. Works on one instance at a time.
 #'
-#' @usage
-#' lightsail_get_instance_state(instanceName)
+#' See [https://paws-r.github.io/docs/lightsail/get_instance_state.html](https://paws-r.github.io/docs/lightsail/get_instance_state.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance to get state information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   state = list(
-#'     code = 123,
-#'     name = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_instance_state(
-#'   instanceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8601,11 +4280,9 @@ lightsail_get_instance_state <- function(instanceName) {
 #' or instances
 #'
 #' @description
-#' Returns information about all Amazon Lightsail virtual private servers,
-#' or *instances*.
+#' Returns information about all Amazon Lightsail virtual private servers, or *instances*.
 #'
-#' @usage
-#' lightsail_get_instances(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_instances.html](https://paws-r.github.io/docs/lightsail/get_instances.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -8613,127 +4290,6 @@ lightsail_get_instance_state <- function(instanceName) {
 #' [`get_instances`][lightsail_get_instances] request. If your results are
 #' paginated, the response will return a next page token that you can
 #' specify as the page token in a subsequent request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   instances = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       supportCode = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       blueprintId = "string",
-#'       blueprintName = "string",
-#'       bundleId = "string",
-#'       addOns = list(
-#'         list(
-#'           name = "string",
-#'           status = "string",
-#'           snapshotTimeOfDay = "string",
-#'           nextSnapshotTimeOfDay = "string"
-#'         )
-#'       ),
-#'       isStaticIp = TRUE|FALSE,
-#'       privateIpAddress = "string",
-#'       publicIpAddress = "string",
-#'       ipv6Address = "string",
-#'       hardware = list(
-#'         cpuCount = 123,
-#'         disks = list(
-#'           list(
-#'             name = "string",
-#'             arn = "string",
-#'             supportCode = "string",
-#'             createdAt = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             location = list(
-#'               availabilityZone = "string",
-#'               regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'             ),
-#'             resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'             tags = list(
-#'               list(
-#'                 key = "string",
-#'                 value = "string"
-#'               )
-#'             ),
-#'             addOns = list(
-#'               list(
-#'                 name = "string",
-#'                 status = "string",
-#'                 snapshotTimeOfDay = "string",
-#'                 nextSnapshotTimeOfDay = "string"
-#'               )
-#'             ),
-#'             sizeInGb = 123,
-#'             isSystemDisk = TRUE|FALSE,
-#'             iops = 123,
-#'             path = "string",
-#'             state = "pending"|"error"|"available"|"in-use"|"unknown",
-#'             attachedTo = "string",
-#'             isAttached = TRUE|FALSE,
-#'             attachmentState = "string",
-#'             gbInUse = 123
-#'           )
-#'         ),
-#'         ramSizeInGb = 123.0
-#'       ),
-#'       networking = list(
-#'         monthlyTransfer = list(
-#'           gbPerMonthAllocated = 123
-#'         ),
-#'         ports = list(
-#'           list(
-#'             fromPort = 123,
-#'             toPort = 123,
-#'             protocol = "tcp"|"all"|"udp"|"icmp",
-#'             accessFrom = "string",
-#'             accessType = "Public"|"Private",
-#'             commonName = "string",
-#'             accessDirection = "inbound"|"outbound",
-#'             cidrs = list(
-#'               "string"
-#'             ),
-#'             cidrListAliases = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       state = list(
-#'         code = 123,
-#'         name = "string"
-#'       ),
-#'       username = "string",
-#'       sshKeyName = "string"
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_instances(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8760,44 +4316,9 @@ lightsail_get_instances <- function(pageToken = NULL) {
 #' @description
 #' Returns information about a specific key pair.
 #'
-#' @usage
-#' lightsail_get_key_pair(keyPairName)
+#' See [https://paws-r.github.io/docs/lightsail/get_key_pair.html](https://paws-r.github.io/docs/lightsail/get_key_pair.html) for full documentation.
 #'
 #' @param keyPairName &#91;required&#93; The name of the key pair for which you are requesting information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   keyPair = list(
-#'     name = "string",
-#'     arn = "string",
-#'     supportCode = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     fingerprint = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_key_pair(
-#'   keyPairName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8824,8 +4345,7 @@ lightsail_get_key_pair <- function(keyPairName) {
 #' @description
 #' Returns information about all key pairs in the user's account.
 #'
-#' @usage
-#' lightsail_get_key_pairs(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_key_pairs.html](https://paws-r.github.io/docs/lightsail/get_key_pairs.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -8833,55 +4353,20 @@ lightsail_get_key_pair <- function(keyPairName) {
 #' [`get_key_pairs`][lightsail_get_key_pairs] request. If your results are
 #' paginated, the response will return a next page token that you can
 #' specify as the page token in a subsequent request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   keyPairs = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       supportCode = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       fingerprint = "string"
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_key_pairs(
-#'   pageToken = "string"
-#' )
-#' ```
+#' @param includeDefaultKeyPair A Boolean value that indicates whether to include the default key pair
+#' in the response of your request.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_get_key_pairs
-lightsail_get_key_pairs <- function(pageToken = NULL) {
+lightsail_get_key_pairs <- function(pageToken = NULL, includeDefaultKeyPair = NULL) {
   op <- new_operation(
     name = "GetKeyPairs",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$get_key_pairs_input(pageToken = pageToken)
+  input <- .lightsail$get_key_pairs_input(pageToken = pageToken, includeDefaultKeyPair = includeDefaultKeyPair)
   output <- .lightsail$get_key_pairs_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -8896,67 +4381,9 @@ lightsail_get_key_pairs <- function(pageToken = NULL) {
 #' @description
 #' Returns information about the specified Lightsail load balancer.
 #'
-#' @usage
-#' lightsail_get_load_balancer(loadBalancerName)
+#' See [https://paws-r.github.io/docs/lightsail/get_load_balancer.html](https://paws-r.github.io/docs/lightsail/get_load_balancer.html) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   loadBalancer = list(
-#'     name = "string",
-#'     arn = "string",
-#'     supportCode = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     dnsName = "string",
-#'     state = "active"|"provisioning"|"active_impaired"|"failed"|"unknown",
-#'     protocol = "HTTP_HTTPS"|"HTTP",
-#'     publicPorts = list(
-#'       123
-#'     ),
-#'     healthCheckPath = "string",
-#'     instancePort = 123,
-#'     instanceHealthSummary = list(
-#'       list(
-#'         instanceName = "string",
-#'         instanceHealth = "initial"|"healthy"|"unhealthy"|"unused"|"draining"|"unavailable",
-#'         instanceHealthReason = "Lb.RegistrationInProgress"|"Lb.InitialHealthChecking"|"Lb.InternalError"|"Instance.ResponseCodeMismatch"|"Instance.Timeout"|"Instance.FailedHealthChecks"|"Instance.NotRegistered"|"Instance.NotInUse"|"Instance.DeregistrationInProgress"|"Instance.InvalidState"|"Instance.IpUnusable"
-#'       )
-#'     ),
-#'     tlsCertificateSummaries = list(
-#'       list(
-#'         name = "string",
-#'         isAttached = TRUE|FALSE
-#'       )
-#'     ),
-#'     configurationOptions = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_load_balancer(
-#'   loadBalancerName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8982,16 +4409,9 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
 #' balancer
 #'
 #' @description
-#' Returns information about health metrics for your Lightsail load
-#' balancer.
-#' 
-#' Metrics report the utilization of your resources, and the error counts
-#' generated by them. Monitor and collect metric data regularly to maintain
-#' the reliability, availability, and performance of your resources.
+#' Returns information about health metrics for your Lightsail load balancer.
 #'
-#' @usage
-#' lightsail_get_load_balancer_metric_data(loadBalancerName, metricName,
-#'   period, startTime, endTime, unit, statistics)
+#' See [https://paws-r.github.io/docs/lightsail/get_load_balancer_metric_data.html](https://paws-r.github.io/docs/lightsail/get_load_balancer_metric_data.html) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param metricName &#91;required&#93; The metric for which you want to return information.
@@ -9140,46 +4560,6 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
 #' -   `SampleCount` - The count, or number, of data points used for the
 #'     statistical calculation.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   metricName = "ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount",
-#'   metricData = list(
-#'     list(
-#'       average = 123.0,
-#'       maximum = 123.0,
-#'       minimum = 123.0,
-#'       sampleCount = 123.0,
-#'       sum = 123.0,
-#'       timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_load_balancer_metric_data(
-#'   loadBalancerName = "string",
-#'   metricName = "ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount",
-#'   period = 123,
-#'   startTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   endTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-#'   statistics = list(
-#'     "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lightsail_get_load_balancer_metric_data
@@ -9204,99 +4584,12 @@ lightsail_get_load_balancer_metric_data <- function(loadBalancerName, metricName
 #' the specified Lightsail load balancer
 #'
 #' @description
-#' Returns information about the TLS certificates that are associated with
-#' the specified Lightsail load balancer.
-#' 
-#' TLS is just an updated, more secure version of Secure Socket Layer
-#' (SSL).
-#' 
-#' You can have a maximum of 2 certificates associated with a Lightsail
-#' load balancer. One is active and the other is inactive.
+#' Returns information about the TLS certificates that are associated with the specified Lightsail load balancer.
 #'
-#' @usage
-#' lightsail_get_load_balancer_tls_certificates(loadBalancerName)
+#' See [https://paws-r.github.io/docs/lightsail/get_load_balancer_tls_certificates.html](https://paws-r.github.io/docs/lightsail/get_load_balancer_tls_certificates.html) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer you associated with your SSL/TLS
 #' certificate.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tlsCertificates = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       supportCode = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       loadBalancerName = "string",
-#'       isAttached = TRUE|FALSE,
-#'       status = "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED"|"UNKNOWN",
-#'       domainName = "string",
-#'       domainValidationRecords = list(
-#'         list(
-#'           name = "string",
-#'           type = "string",
-#'           value = "string",
-#'           validationStatus = "PENDING_VALIDATION"|"FAILED"|"SUCCESS",
-#'           domainName = "string"
-#'         )
-#'       ),
-#'       failureReason = "NO_AVAILABLE_CONTACTS"|"ADDITIONAL_VERIFICATION_REQUIRED"|"DOMAIN_NOT_ALLOWED"|"INVALID_PUBLIC_DOMAIN"|"OTHER",
-#'       issuedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       issuer = "string",
-#'       keyAlgorithm = "string",
-#'       notAfter = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       notBefore = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       renewalSummary = list(
-#'         renewalStatus = "PENDING_AUTO_RENEWAL"|"PENDING_VALIDATION"|"SUCCESS"|"FAILED",
-#'         domainValidationOptions = list(
-#'           list(
-#'             domainName = "string",
-#'             validationStatus = "PENDING_VALIDATION"|"FAILED"|"SUCCESS"
-#'           )
-#'         )
-#'       ),
-#'       revocationReason = "UNSPECIFIED"|"KEY_COMPROMISE"|"CA_COMPROMISE"|"AFFILIATION_CHANGED"|"SUPERCEDED"|"CESSATION_OF_OPERATION"|"CERTIFICATE_HOLD"|"REMOVE_FROM_CRL"|"PRIVILEGE_WITHDRAWN"|"A_A_COMPROMISE",
-#'       revokedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       serial = "string",
-#'       signatureAlgorithm = "string",
-#'       subject = "string",
-#'       subjectAlternativeNames = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_load_balancer_tls_certificates(
-#'   loadBalancerName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9318,13 +4611,48 @@ lightsail_get_load_balancer_tls_certificates <- function(loadBalancerName) {
 }
 .lightsail$operations$get_load_balancer_tls_certificates <- lightsail_get_load_balancer_tls_certificates
 
+#' Returns a list of TLS security policies that you can apply to Lightsail
+#' load balancers
+#'
+#' @description
+#' Returns a list of TLS security policies that you can apply to Lightsail load balancers.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/get_load_balancer_tls_policies.html](https://paws-r.github.io/docs/lightsail/get_load_balancer_tls_policies.html) for full documentation.
+#'
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial
+#' [`get_load_balancer_tls_policies`][lightsail_get_load_balancer_tls_policies]
+#' request. If your results are paginated, the response will return a next
+#' page token that you can specify as the page token in a subsequent
+#' request.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_load_balancer_tls_policies
+lightsail_get_load_balancer_tls_policies <- function(pageToken = NULL) {
+  op <- new_operation(
+    name = "GetLoadBalancerTlsPolicies",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_load_balancer_tls_policies_input(pageToken = pageToken)
+  output <- .lightsail$get_load_balancer_tls_policies_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_load_balancer_tls_policies <- lightsail_get_load_balancer_tls_policies
+
 #' Returns information about all load balancers in an account
 #'
 #' @description
 #' Returns information about all load balancers in an account.
 #'
-#' @usage
-#' lightsail_get_load_balancers(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_load_balancers.html](https://paws-r.github.io/docs/lightsail/get_load_balancers.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -9332,66 +4660,6 @@ lightsail_get_load_balancer_tls_certificates <- function(loadBalancerName) {
 #' [`get_load_balancers`][lightsail_get_load_balancers] request. If your
 #' results are paginated, the response will return a next page token that
 #' you can specify as the page token in a subsequent request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   loadBalancers = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       supportCode = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       dnsName = "string",
-#'       state = "active"|"provisioning"|"active_impaired"|"failed"|"unknown",
-#'       protocol = "HTTP_HTTPS"|"HTTP",
-#'       publicPorts = list(
-#'         123
-#'       ),
-#'       healthCheckPath = "string",
-#'       instancePort = 123,
-#'       instanceHealthSummary = list(
-#'         list(
-#'           instanceName = "string",
-#'           instanceHealth = "initial"|"healthy"|"unhealthy"|"unused"|"draining"|"unavailable",
-#'           instanceHealthReason = "Lb.RegistrationInProgress"|"Lb.InitialHealthChecking"|"Lb.InternalError"|"Instance.ResponseCodeMismatch"|"Instance.Timeout"|"Instance.FailedHealthChecks"|"Instance.NotRegistered"|"Instance.NotInUse"|"Instance.DeregistrationInProgress"|"Instance.InvalidState"|"Instance.IpUnusable"
-#'         )
-#'       ),
-#'       tlsCertificateSummaries = list(
-#'         list(
-#'           name = "string",
-#'           isAttached = TRUE|FALSE
-#'         )
-#'       ),
-#'       configurationOptions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_load_balancers(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9416,49 +4684,11 @@ lightsail_get_load_balancers <- function(pageToken = NULL) {
 #' Returns information about a specific operation
 #'
 #' @description
-#' Returns information about a specific operation. Operations include
-#' events such as when you create an instance, allocate a static IP, attach
-#' a static IP, and so on.
+#' Returns information about a specific operation. Operations include events such as when you create an instance, allocate a static IP, attach a static IP, and so on.
 #'
-#' @usage
-#' lightsail_get_operation(operationId)
+#' See [https://paws-r.github.io/docs/lightsail/get_operation.html](https://paws-r.github.io/docs/lightsail/get_operation.html) for full documentation.
 #'
 #' @param operationId &#91;required&#93; A GUID used to identify the operation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_operation(
-#'   operationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9484,14 +4714,8 @@ lightsail_get_operation <- function(operationId) {
 #'
 #' @description
 #' Returns information about all operations.
-#' 
-#' Results are returned from oldest to newest, up to a maximum of 200.
-#' Results can be paged by making each subsequent call to
-#' [`get_operations`][lightsail_get_operations] use the maximum (last)
-#' `statusChangedAt` value from the previous request.
 #'
-#' @usage
-#' lightsail_get_operations(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_operations.html](https://paws-r.github.io/docs/lightsail/get_operations.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -9499,44 +4723,6 @@ lightsail_get_operation <- function(operationId) {
 #' [`get_operations`][lightsail_get_operations] request. If your results
 #' are paginated, the response will return a next page token that you can
 #' specify as the page token in a subsequent request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_operations(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9561,11 +4747,9 @@ lightsail_get_operations <- function(pageToken = NULL) {
 #' Gets operations for a specific resource (e
 #'
 #' @description
-#' Gets operations for a specific resource (e.g., an instance or a static
-#' IP).
+#' Gets operations for a specific resource (e.g., an instance or a static IP).
 #'
-#' @usage
-#' lightsail_get_operations_for_resource(resourceName, pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_operations_for_resource.html](https://paws-r.github.io/docs/lightsail/get_operations_for_resource.html) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The name of the resource for which you are requesting information.
 #' @param pageToken The token to advance to the next page of results from your request.
@@ -9575,46 +4759,6 @@ lightsail_get_operations <- function(pageToken = NULL) {
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   ),
-#'   nextPageCount = "string",
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_operations_for_resource(
-#'   resourceName = "string",
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9639,13 +4783,9 @@ lightsail_get_operations_for_resource <- function(resourceName, pageToken = NULL
 #' Returns a list of all valid regions for Amazon Lightsail
 #'
 #' @description
-#' Returns a list of all valid regions for Amazon Lightsail. Use the
-#' `include availability zones` parameter to also return the Availability
-#' Zones in a region.
+#' Returns a list of all valid regions for Amazon Lightsail. Use the `include availability zones` parameter to also return the Availability Zones in a region.
 #'
-#' @usage
-#' lightsail_get_regions(includeAvailabilityZones,
-#'   includeRelationalDatabaseAvailabilityZones)
+#' See [https://paws-r.github.io/docs/lightsail/get_regions.html](https://paws-r.github.io/docs/lightsail/get_regions.html) for full documentation.
 #'
 #' @param includeAvailabilityZones A Boolean value indicating whether to also include Availability Zones in
 #' your get regions request. Availability Zones are indicated with a
@@ -9653,41 +4793,6 @@ lightsail_get_operations_for_resource <- function(resourceName, pageToken = NULL
 #' @param includeRelationalDatabaseAvailabilityZones A Boolean value indicating whether to also include Availability Zones
 #' for databases in your get regions request. Availability Zones are
 #' indicated with a letter (e.g., `us-east-2a`).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   regions = list(
-#'     list(
-#'       continentCode = "string",
-#'       description = "string",
-#'       displayName = "string",
-#'       name = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2",
-#'       availabilityZones = list(
-#'         list(
-#'           zoneName = "string",
-#'           state = "string"
-#'         )
-#'       ),
-#'       relationalDatabaseAvailabilityZones = list(
-#'         list(
-#'           zoneName = "string",
-#'           state = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_regions(
-#'   includeAvailabilityZones = TRUE|FALSE,
-#'   includeRelationalDatabaseAvailabilityZones = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9714,83 +4819,9 @@ lightsail_get_regions <- function(includeAvailabilityZones = NULL, includeRelati
 #' @description
 #' Returns information about a specific database in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_get_relational_database(relationalDatabaseName)
+#' See [https://paws-r.github.io/docs/lightsail/get_relational_database.html](https://paws-r.github.io/docs/lightsail/get_relational_database.html) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of the database that you are looking up.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   relationalDatabase = list(
-#'     name = "string",
-#'     arn = "string",
-#'     supportCode = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     relationalDatabaseBlueprintId = "string",
-#'     relationalDatabaseBundleId = "string",
-#'     masterDatabaseName = "string",
-#'     hardware = list(
-#'       cpuCount = 123,
-#'       diskSizeInGb = 123,
-#'       ramSizeInGb = 123.0
-#'     ),
-#'     state = "string",
-#'     secondaryAvailabilityZone = "string",
-#'     backupRetentionEnabled = TRUE|FALSE,
-#'     pendingModifiedValues = list(
-#'       masterUserPassword = "string",
-#'       engineVersion = "string",
-#'       backupRetentionEnabled = TRUE|FALSE
-#'     ),
-#'     engine = "string",
-#'     engineVersion = "string",
-#'     latestRestorableTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     masterUsername = "string",
-#'     parameterApplyStatus = "string",
-#'     preferredBackupWindow = "string",
-#'     preferredMaintenanceWindow = "string",
-#'     publiclyAccessible = TRUE|FALSE,
-#'     masterEndpoint = list(
-#'       port = 123,
-#'       address = "string"
-#'     ),
-#'     pendingMaintenanceActions = list(
-#'       list(
-#'         action = "string",
-#'         description = "string",
-#'         currentApplyDate = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     ),
-#'     caCertificateIdentifier = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_relational_database(
-#'   relationalDatabaseName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9815,14 +4846,9 @@ lightsail_get_relational_database <- function(relationalDatabaseName) {
 #' Returns a list of available database blueprints in Amazon Lightsail
 #'
 #' @description
-#' Returns a list of available database blueprints in Amazon Lightsail. A
-#' blueprint describes the major engine version of a database.
-#' 
-#' You can use a blueprint ID to create a new database that runs a specific
-#' database engine.
+#' Returns a list of available database blueprints in Amazon Lightsail. A blueprint describes the major engine version of a database.
 #'
-#' @usage
-#' lightsail_get_relational_database_blueprints(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_blueprints.html](https://paws-r.github.io/docs/lightsail/get_relational_database_blueprints.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -9831,31 +4857,6 @@ lightsail_get_relational_database <- function(relationalDatabaseName) {
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   blueprints = list(
-#'     list(
-#'       blueprintId = "string",
-#'       engine = "mysql",
-#'       engineVersion = "string",
-#'       engineDescription = "string",
-#'       engineVersionDescription = "string",
-#'       isEngineDefault = TRUE|FALSE
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_relational_database_blueprints(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -9880,14 +4881,9 @@ lightsail_get_relational_database_blueprints <- function(pageToken = NULL) {
 #' Returns the list of bundles that are available in Amazon Lightsail
 #'
 #' @description
-#' Returns the list of bundles that are available in Amazon Lightsail. A
-#' bundle describes the performance specifications for a database.
-#' 
-#' You can use a bundle ID to create a new database with explicit
-#' performance specifications.
+#' Returns the list of bundles that are available in Amazon Lightsail. A bundle describes the performance specifications for a database.
 #'
-#' @usage
-#' lightsail_get_relational_database_bundles(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_bundles.html](https://paws-r.github.io/docs/lightsail/get_relational_database_bundles.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -9896,46 +4892,20 @@ lightsail_get_relational_database_blueprints <- function(pageToken = NULL) {
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   bundles = list(
-#'     list(
-#'       bundleId = "string",
-#'       name = "string",
-#'       price = 123.0,
-#'       ramSizeInGb = 123.0,
-#'       diskSizeInGb = 123,
-#'       transferPerMonthInGb = 123,
-#'       cpuCount = 123,
-#'       isEncrypted = TRUE|FALSE,
-#'       isActive = TRUE|FALSE
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_relational_database_bundles(
-#'   pageToken = "string"
-#' )
-#' ```
+#' @param includeInactive A Boolean value that indicates whether to include inactive (unavailable)
+#' bundles in the response of your request.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database_bundles
-lightsail_get_relational_database_bundles <- function(pageToken = NULL) {
+lightsail_get_relational_database_bundles <- function(pageToken = NULL, includeInactive = NULL) {
   op <- new_operation(
     name = "GetRelationalDatabaseBundles",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$get_relational_database_bundles_input(pageToken = pageToken)
+  input <- .lightsail$get_relational_database_bundles_input(pageToken = pageToken, includeInactive = includeInactive)
   output <- .lightsail$get_relational_database_bundles_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -9950,9 +4920,7 @@ lightsail_get_relational_database_bundles <- function(pageToken = NULL) {
 #' @description
 #' Returns a list of events for a specific database in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_get_relational_database_events(relationalDatabaseName,
-#'   durationInMinutes, pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_events.html](https://paws-r.github.io/docs/lightsail/get_relational_database_events.html) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of the database from which to get events.
 #' @param durationInMinutes The number of minutes in the past from which to retrieve events. For
@@ -9968,35 +4936,6 @@ lightsail_get_relational_database_bundles <- function(pageToken = NULL) {
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   relationalDatabaseEvents = list(
-#'     list(
-#'       resource = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       message = "string",
-#'       eventCategories = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_relational_database_events(
-#'   relationalDatabaseName = "string",
-#'   durationInMinutes = 123,
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10023,9 +4962,7 @@ lightsail_get_relational_database_events <- function(relationalDatabaseName, dur
 #' @description
 #' Returns a list of log events for a database in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_get_relational_database_log_events(relationalDatabaseName,
-#'   logStreamName, startTime, endTime, startFromHead, pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_log_events.html](https://paws-r.github.io/docs/lightsail/get_relational_database_log_events.html) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database for which to get log events.
 #' @param logStreamName &#91;required&#93; The name of the log stream.
@@ -10067,39 +5004,6 @@ lightsail_get_relational_database_events <- function(relationalDatabaseName, dur
 #' forward token and/or next backward token that you can specify as the
 #' page token in a subsequent request.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   resourceLogEvents = list(
-#'     list(
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       message = "string"
-#'     )
-#'   ),
-#'   nextBackwardToken = "string",
-#'   nextForwardToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_relational_database_log_events(
-#'   relationalDatabaseName = "string",
-#'   logStreamName = "string",
-#'   startTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   endTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   startFromHead = TRUE|FALSE,
-#'   pageToken = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database_log_events
@@ -10124,30 +5028,11 @@ lightsail_get_relational_database_log_events <- function(relationalDatabaseName,
 #' Amazon Lightsail
 #'
 #' @description
-#' Returns a list of available log streams for a specific database in
-#' Amazon Lightsail.
+#' Returns a list of available log streams for a specific database in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_get_relational_database_log_streams(relationalDatabaseName)
+#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_log_streams.html](https://paws-r.github.io/docs/lightsail/get_relational_database_log_streams.html) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database for which to get log streams.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   logStreams = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_relational_database_log_streams(
-#'   relationalDatabaseName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10173,17 +5058,9 @@ lightsail_get_relational_database_log_streams <- function(relationalDatabaseName
 #' password for a Lightsail database
 #'
 #' @description
-#' Returns the current, previous, or pending versions of the master user
-#' password for a Lightsail database.
-#' 
-#' The
-#' [`get_relational_database_master_user_password`][lightsail_get_relational_database_master_user_password]
-#' operation supports tag-based access control via resource tags applied to
-#' the resource identified by relationalDatabaseName.
+#' Returns the current, previous, or pending versions of the master user password for a Lightsail database.
 #'
-#' @usage
-#' lightsail_get_relational_database_master_user_password(
-#'   relationalDatabaseName, passwordVersion)
+#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_master_user_password.html](https://paws-r.github.io/docs/lightsail/get_relational_database_master_user_password.html) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database for which to get the master user password.
 #' @param passwordVersion The password version to return.
@@ -10195,25 +5072,6 @@ lightsail_get_relational_database_log_streams <- function(relationalDatabaseName
 #' available.
 #' 
 #' Default: `CURRENT`
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   masterUserPassword = "string",
-#'   createdAt = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_relational_database_master_user_password(
-#'   relationalDatabaseName = "string",
-#'   passwordVersion = "CURRENT"|"PREVIOUS"|"PENDING"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10239,16 +5097,9 @@ lightsail_get_relational_database_master_user_password <- function(relationalDat
 #' Lightsail
 #'
 #' @description
-#' Returns the data points of the specified metric for a database in Amazon
-#' Lightsail.
-#' 
-#' Metrics report the utilization of your resources, and the error counts
-#' generated by them. Monitor and collect metric data regularly to maintain
-#' the reliability, availability, and performance of your resources.
+#' Returns the data points of the specified metric for a database in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_get_relational_database_metric_data(relationalDatabaseName,
-#'   metricName, period, startTime, endTime, unit, statistics)
+#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_metric_data.html](https://paws-r.github.io/docs/lightsail/get_relational_database_metric_data.html) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database from which to get metric data.
 #' @param metricName &#91;required&#93; The metric for which you want to return information.
@@ -10354,46 +5205,6 @@ lightsail_get_relational_database_master_user_password <- function(relationalDat
 #' -   `SampleCount` - The count, or number, of data points used for the
 #'     statistical calculation.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   metricName = "CPUUtilization"|"DatabaseConnections"|"DiskQueueDepth"|"FreeStorageSpace"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput",
-#'   metricData = list(
-#'     list(
-#'       average = 123.0,
-#'       maximum = 123.0,
-#'       minimum = 123.0,
-#'       sampleCount = 123.0,
-#'       sum = 123.0,
-#'       timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_relational_database_metric_data(
-#'   relationalDatabaseName = "string",
-#'   metricName = "CPUUtilization"|"DatabaseConnections"|"DiskQueueDepth"|"FreeStorageSpace"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput",
-#'   period = 123,
-#'   startTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   endTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-#'   statistics = list(
-#'     "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database_metric_data
@@ -10418,17 +5229,9 @@ lightsail_get_relational_database_metric_data <- function(relationalDatabaseName
 #' software, or engine, for a specific database in Amazon Lightsail
 #'
 #' @description
-#' Returns all of the runtime parameters offered by the underlying database
-#' software, or engine, for a specific database in Amazon Lightsail.
-#' 
-#' In addition to the parameter names and values, this operation returns
-#' other information about each parameter. This information includes
-#' whether changes require a reboot, whether the parameter is modifiable,
-#' the allowed values, and the data types.
+#' Returns all of the runtime parameters offered by the underlying database software, or engine, for a specific database in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_get_relational_database_parameters(relationalDatabaseName,
-#'   pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_parameters.html](https://paws-r.github.io/docs/lightsail/get_relational_database_parameters.html) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database for which to get parameters.
 #' @param pageToken The token to advance to the next page of results from your request.
@@ -10438,34 +5241,6 @@ lightsail_get_relational_database_metric_data <- function(relationalDatabaseName
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   parameters = list(
-#'     list(
-#'       allowedValues = "string",
-#'       applyMethod = "string",
-#'       applyType = "string",
-#'       dataType = "string",
-#'       description = "string",
-#'       isModifiable = TRUE|FALSE,
-#'       parameterName = "string",
-#'       parameterValue = "string"
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_relational_database_parameters(
-#'   relationalDatabaseName = "string",
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10491,55 +5266,11 @@ lightsail_get_relational_database_parameters <- function(relationalDatabaseName,
 #' Lightsail
 #'
 #' @description
-#' Returns information about a specific database snapshot in Amazon
-#' Lightsail.
+#' Returns information about a specific database snapshot in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_get_relational_database_snapshot(
-#'   relationalDatabaseSnapshotName)
+#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_snapshot.html](https://paws-r.github.io/docs/lightsail/get_relational_database_snapshot.html) for full documentation.
 #'
 #' @param relationalDatabaseSnapshotName &#91;required&#93; The name of the database snapshot for which to get information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   relationalDatabaseSnapshot = list(
-#'     name = "string",
-#'     arn = "string",
-#'     supportCode = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     engine = "string",
-#'     engineVersion = "string",
-#'     sizeInGb = 123,
-#'     state = "string",
-#'     fromRelationalDatabaseName = "string",
-#'     fromRelationalDatabaseArn = "string",
-#'     fromRelationalDatabaseBundleId = "string",
-#'     fromRelationalDatabaseBlueprintId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_relational_database_snapshot(
-#'   relationalDatabaseSnapshotName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10565,11 +5296,9 @@ lightsail_get_relational_database_snapshot <- function(relationalDatabaseSnapsho
 #' Lightsail
 #'
 #' @description
-#' Returns information about all of your database snapshots in Amazon
-#' Lightsail.
+#' Returns information about all of your database snapshots in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_get_relational_database_snapshots(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_snapshots.html](https://paws-r.github.io/docs/lightsail/get_relational_database_snapshots.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -10578,50 +5307,6 @@ lightsail_get_relational_database_snapshot <- function(relationalDatabaseSnapsho
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   relationalDatabaseSnapshots = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       supportCode = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       engine = "string",
-#'       engineVersion = "string",
-#'       sizeInGb = 123,
-#'       state = "string",
-#'       fromRelationalDatabaseName = "string",
-#'       fromRelationalDatabaseArn = "string",
-#'       fromRelationalDatabaseBundleId = "string",
-#'       fromRelationalDatabaseBlueprintId = "string"
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_relational_database_snapshots(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10648,8 +5333,7 @@ lightsail_get_relational_database_snapshots <- function(pageToken = NULL) {
 #' @description
 #' Returns information about all of your databases in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_get_relational_databases(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_relational_databases.html](https://paws-r.github.io/docs/lightsail/get_relational_databases.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -10658,82 +5342,6 @@ lightsail_get_relational_database_snapshots <- function(pageToken = NULL) {
 #' request. If your results are paginated, the response will return a next
 #' page token that you can specify as the page token in a subsequent
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   relationalDatabases = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       supportCode = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       ),
-#'       relationalDatabaseBlueprintId = "string",
-#'       relationalDatabaseBundleId = "string",
-#'       masterDatabaseName = "string",
-#'       hardware = list(
-#'         cpuCount = 123,
-#'         diskSizeInGb = 123,
-#'         ramSizeInGb = 123.0
-#'       ),
-#'       state = "string",
-#'       secondaryAvailabilityZone = "string",
-#'       backupRetentionEnabled = TRUE|FALSE,
-#'       pendingModifiedValues = list(
-#'         masterUserPassword = "string",
-#'         engineVersion = "string",
-#'         backupRetentionEnabled = TRUE|FALSE
-#'       ),
-#'       engine = "string",
-#'       engineVersion = "string",
-#'       latestRestorableTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       masterUsername = "string",
-#'       parameterApplyStatus = "string",
-#'       preferredBackupWindow = "string",
-#'       preferredMaintenanceWindow = "string",
-#'       publiclyAccessible = TRUE|FALSE,
-#'       masterEndpoint = list(
-#'         port = 123,
-#'         address = "string"
-#'       ),
-#'       pendingMaintenanceActions = list(
-#'         list(
-#'           action = "string",
-#'           description = "string",
-#'           currentApplyDate = as.POSIXct(
-#'             "2015-01-01"
-#'           )
-#'         )
-#'       ),
-#'       caCertificateIdentifier = "string"
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_relational_databases(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10755,45 +5363,14 @@ lightsail_get_relational_databases <- function(pageToken = NULL) {
 }
 .lightsail$operations$get_relational_databases <- lightsail_get_relational_databases
 
-#' Returns information about a specific static IP
+#' Returns information about an Amazon Lightsail static IP
 #'
 #' @description
-#' Returns information about a specific static IP.
+#' Returns information about an Amazon Lightsail static IP.
 #'
-#' @usage
-#' lightsail_get_static_ip(staticIpName)
+#' See [https://paws-r.github.io/docs/lightsail/get_static_ip.html](https://paws-r.github.io/docs/lightsail/get_static_ip.html) for full documentation.
 #'
 #' @param staticIpName &#91;required&#93; The name of the static IP in Lightsail.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   staticIp = list(
-#'     name = "string",
-#'     arn = "string",
-#'     supportCode = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     ipAddress = "string",
-#'     attachedTo = "string",
-#'     isAttached = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_static_ip(
-#'   staticIpName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10820,8 +5397,7 @@ lightsail_get_static_ip <- function(staticIpName) {
 #' @description
 #' Returns information about all static IPs in the user's account.
 #'
-#' @usage
-#' lightsail_get_static_ips(pageToken)
+#' See [https://paws-r.github.io/docs/lightsail/get_static_ips.html](https://paws-r.github.io/docs/lightsail/get_static_ips.html) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -10829,39 +5405,6 @@ lightsail_get_static_ip <- function(staticIpName) {
 #' [`get_static_ips`][lightsail_get_static_ips] request. If your results
 #' are paginated, the response will return a next page token that you can
 #' specify as the page token in a subsequent request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   staticIps = list(
-#'     list(
-#'       name = "string",
-#'       arn = "string",
-#'       supportCode = "string",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       ipAddress = "string",
-#'       attachedTo = "string",
-#'       isAttached = TRUE|FALSE
-#'     )
-#'   ),
-#'   nextPageToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_static_ips(
-#'   pageToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10888,47 +5431,10 @@ lightsail_get_static_ips <- function(pageToken = NULL) {
 #' @description
 #' Imports a public SSH key from a specific key pair.
 #'
-#' @usage
-#' lightsail_import_key_pair(keyPairName, publicKeyBase64)
+#' See [https://paws-r.github.io/docs/lightsail/import_key_pair.html](https://paws-r.github.io/docs/lightsail/import_key_pair.html) for full documentation.
 #'
 #' @param keyPairName &#91;required&#93; The name of the key pair for which you want to import the public key.
 #' @param publicKeyBase64 &#91;required&#93; A base64-encoded public key of the `ssh-rsa` type.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$import_key_pair(
-#'   keyPairName = "string",
-#'   publicKeyBase64 = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -10955,21 +5461,7 @@ lightsail_import_key_pair <- function(keyPairName, publicKeyBase64) {
 #' @description
 #' Returns a Boolean value indicating whether your Lightsail VPC is peered.
 #'
-#' @usage
-#' lightsail_is_vpc_peered()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   isPeered = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$is_vpc_peered()
-#' ```
+#' See [https://paws-r.github.io/docs/lightsail/is_vpc_peered.html](https://paws-r.github.io/docs/lightsail/is_vpc_peered.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -10996,66 +5488,12 @@ lightsail_is_vpc_peered <- function() {
 #' the protocol
 #'
 #' @description
-#' Opens ports for a specific Amazon Lightsail instance, and specifies the
-#' IP addresses allowed to connect to the instance through the ports, and
-#' the protocol.
-#' 
-#' The [`open_instance_public_ports`][lightsail_open_instance_public_ports]
-#' action supports tag-based access control via resource tags applied to
-#' the resource identified by `instanceName`. For more information, see the
-#' Lightsail Dev Guide.
+#' Opens ports for a specific Amazon Lightsail instance, and specifies the IP addresses allowed to connect to the instance through the ports, and the protocol.
 #'
-#' @usage
-#' lightsail_open_instance_public_ports(portInfo, instanceName)
+#' See [https://paws-r.github.io/docs/lightsail/open_instance_public_ports.html](https://paws-r.github.io/docs/lightsail/open_instance_public_ports.html) for full documentation.
 #'
 #' @param portInfo &#91;required&#93; An object to describe the ports to open for the specified instance.
 #' @param instanceName &#91;required&#93; The name of the instance for which to open ports.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$open_instance_public_ports(
-#'   portInfo = list(
-#'     fromPort = 123,
-#'     toPort = 123,
-#'     protocol = "tcp"|"all"|"udp"|"icmp",
-#'     cidrs = list(
-#'       "string"
-#'     ),
-#'     cidrListAliases = list(
-#'       "string"
-#'     )
-#'   ),
-#'   instanceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11077,46 +5515,12 @@ lightsail_open_instance_public_ports <- function(portInfo, instanceName) {
 }
 .lightsail$operations$open_instance_public_ports <- lightsail_open_instance_public_ports
 
-#' Tries to peer the Lightsail VPC with the user's default VPC
+#' Peers the Lightsail VPC with the user's default VPC
 #'
 #' @description
-#' Tries to peer the Lightsail VPC with the user's default VPC.
+#' Peers the Lightsail VPC with the user's default VPC.
 #'
-#' @usage
-#' lightsail_peer_vpc()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$peer_vpc()
-#' ```
+#' See [https://paws-r.github.io/docs/lightsail/peer_vpc.html](https://paws-r.github.io/docs/lightsail/peer_vpc.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -11141,28 +5545,9 @@ lightsail_peer_vpc <- function() {
 #' Creates or updates an alarm, and associates it with the specified metric
 #'
 #' @description
-#' Creates or updates an alarm, and associates it with the specified
-#' metric.
-#' 
-#' An alarm is used to monitor a single metric for one of your resources.
-#' When a metric condition is met, the alarm can notify you by email, SMS
-#' text message, and a banner displayed on the Amazon Lightsail console.
-#' For more information, see Alarms in Amazon Lightsail.
-#' 
-#' When this action creates an alarm, the alarm state is immediately set to
-#' `INSUFFICIENT_DATA`. The alarm is then evaluated and its state is set
-#' appropriately. Any actions associated with the new state are then
-#' executed.
-#' 
-#' When you update an existing alarm, its state is left unchanged, but the
-#' update completely overwrites the previous configuration of the alarm.
-#' The alarm is then evaluated with the updated configuration.
+#' Creates or updates an alarm, and associates it with the specified metric.
 #'
-#' @usage
-#' lightsail_put_alarm(alarmName, metricName, monitoredResourceName,
-#'   comparisonOperator, threshold, evaluationPeriods, datapointsToAlarm,
-#'   treatMissingData, contactProtocols, notificationTriggers,
-#'   notificationEnabled)
+#' See [https://paws-r.github.io/docs/lightsail/put_alarm.html](https://paws-r.github.io/docs/lightsail/put_alarm.html) for full documentation.
 #'
 #' @param alarmName &#91;required&#93; The name for the alarm. Specify the name of an existing alarm to update,
 #' and overwrite the previous configuration of the alarm.
@@ -11241,12 +5626,12 @@ lightsail_peer_vpc <- function() {
 #' triggered.
 #' 
 #' A notification is not sent if a contact protocol is not specified, if
-#' the specified contact protocol is not configured in the AWS Region, or
-#' if notifications are not enabled for the alarm using the
-#' `notificationEnabled` paramater.
+#' the specified contact protocol is not configured in the Amazon Web
+#' Services Region, or if notifications are not enabled for the alarm using
+#' the `notificationEnabled` paramater.
 #' 
 #' Use the [`create_contact_method`][lightsail_create_contact_method]
-#' action to configure a contact protocol in an AWS Region.
+#' action to configure a contact protocol in an Amazon Web Services Region.
 #' @param notificationTriggers The alarm states that trigger a notification.
 #' 
 #' An alarm has the following possible states:
@@ -11279,57 +5664,6 @@ lightsail_peer_vpc <- function() {
 #' Notifications are enabled by default if you don't specify this
 #' parameter.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_alarm(
-#'   alarmName = "string",
-#'   metricName = "CPUUtilization"|"NetworkIn"|"NetworkOut"|"StatusCheckFailed"|"StatusCheckFailed_Instance"|"StatusCheckFailed_System"|"ClientTLSNegotiationErrorCount"|"HealthyHostCount"|"UnhealthyHostCount"|"HTTPCode_LB_4XX_Count"|"HTTPCode_LB_5XX_Count"|"HTTPCode_Instance_2XX_Count"|"HTTPCode_Instance_3XX_Count"|"HTTPCode_Instance_4XX_Count"|"HTTPCode_Instance_5XX_Count"|"InstanceResponseTime"|"RejectedConnectionCount"|"RequestCount"|"DatabaseConnections"|"DiskQueueDepth"|"FreeStorageSpace"|"NetworkReceiveThroughput"|"NetworkTransmitThroughput"|"BurstCapacityTime"|"BurstCapacityPercentage",
-#'   monitoredResourceName = "string",
-#'   comparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold",
-#'   threshold = 123.0,
-#'   evaluationPeriods = 123,
-#'   datapointsToAlarm = 123,
-#'   treatMissingData = "breaching"|"notBreaching"|"ignore"|"missing",
-#'   contactProtocols = list(
-#'     "Email"|"SMS"
-#'   ),
-#'   notificationTriggers = list(
-#'     "OK"|"ALARM"|"INSUFFICIENT_DATA"
-#'   ),
-#'   notificationEnabled = TRUE|FALSE
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lightsail_put_alarm
@@ -11355,75 +5689,13 @@ lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, co
 #' the protocol
 #'
 #' @description
-#' Opens ports for a specific Amazon Lightsail instance, and specifies the
-#' IP addresses allowed to connect to the instance through the ports, and
-#' the protocol. This action also closes all currently open ports that are
-#' not included in the request. Include all of the ports and the protocols
-#' you want to open in your
-#' [`put_instance_public_ports`][lightsail_put_instance_public_ports]request.
-#' Or use the
-#' [`open_instance_public_ports`][lightsail_open_instance_public_ports]
-#' action to open ports without closing currently open ports.
-#' 
-#' The [`put_instance_public_ports`][lightsail_put_instance_public_ports]
-#' action supports tag-based access control via resource tags applied to
-#' the resource identified by `instanceName`. For more information, see the
-#' Lightsail Dev Guide.
+#' Opens ports for a specific Amazon Lightsail instance, and specifies the IP addresses allowed to connect to the instance through the ports, and the protocol. This action also closes all currently open ports that are not included in the request. Include all of the ports and the protocols you want to open in your [`put_instance_public_ports`][lightsail_put_instance_public_ports]request. Or use the [`open_instance_public_ports`][lightsail_open_instance_public_ports] action to open ports without closing currently open ports.
 #'
-#' @usage
-#' lightsail_put_instance_public_ports(portInfos, instanceName)
+#' See [https://paws-r.github.io/docs/lightsail/put_instance_public_ports.html](https://paws-r.github.io/docs/lightsail/put_instance_public_ports.html) for full documentation.
 #'
 #' @param portInfos &#91;required&#93; An array of objects to describe the ports to open for the specified
 #' instance.
 #' @param instanceName &#91;required&#93; The name of the instance for which to open ports.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_instance_public_ports(
-#'   portInfos = list(
-#'     list(
-#'       fromPort = 123,
-#'       toPort = 123,
-#'       protocol = "tcp"|"all"|"udp"|"icmp",
-#'       cidrs = list(
-#'         "string"
-#'       ),
-#'       cidrListAliases = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   instanceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11449,52 +5721,10 @@ lightsail_put_instance_public_ports <- function(portInfos, instanceName) {
 #'
 #' @description
 #' Restarts a specific instance.
-#' 
-#' The `reboot instance` operation supports tag-based access control via
-#' resource tags applied to the resource identified by `instance name`. For
-#' more information, see the Lightsail Dev Guide.
 #'
-#' @usage
-#' lightsail_reboot_instance(instanceName)
+#' See [https://paws-r.github.io/docs/lightsail/reboot_instance.html](https://paws-r.github.io/docs/lightsail/reboot_instance.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance to reboot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reboot_instance(
-#'   instanceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11520,53 +5750,10 @@ lightsail_reboot_instance <- function(instanceName) {
 #'
 #' @description
 #' Restarts a specific database in Amazon Lightsail.
-#' 
-#' The `reboot relational database` operation supports tag-based access
-#' control via resource tags applied to the resource identified by
-#' relationalDatabaseName. For more information, see the Lightsail Dev
-#' Guide.
 #'
-#' @usage
-#' lightsail_reboot_relational_database(relationalDatabaseName)
+#' See [https://paws-r.github.io/docs/lightsail/reboot_relational_database.html](https://paws-r.github.io/docs/lightsail/reboot_relational_database.html) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database to reboot.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reboot_relational_database(
-#'   relationalDatabaseName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11592,15 +5779,8 @@ lightsail_reboot_relational_database <- function(relationalDatabaseName) {
 #'
 #' @description
 #' Registers a container image to your Amazon Lightsail container service.
-#' 
-#' This action is not required if you install and use the Lightsail Control
-#' (lightsailctl) plugin to push container images to your Lightsail
-#' container service. For more information, see Pushing and managing
-#' container images on your Amazon Lightsail container services in the
-#' *Lightsail Dev Guide*.
 #'
-#' @usage
-#' lightsail_register_container_image(serviceName, label, digest)
+#' See [https://paws-r.github.io/docs/lightsail/register_container_image.html](https://paws-r.github.io/docs/lightsail/register_container_image.html) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to register a container
 #' image.
@@ -11630,29 +5810,6 @@ lightsail_reboot_relational_database <- function(relationalDatabaseName) {
 #' version number will be `3`, and so on.
 #' @param digest &#91;required&#93; The digest of the container image to be registered.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   containerImage = list(
-#'     image = "string",
-#'     digest = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_container_image(
-#'   serviceName = "string",
-#'   label = "string",
-#'   digest = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lightsail_register_container_image
@@ -11678,47 +5835,9 @@ lightsail_register_container_image <- function(serviceName, label, digest) {
 #' @description
 #' Deletes a specific static IP from your account.
 #'
-#' @usage
-#' lightsail_release_static_ip(staticIpName)
+#' See [https://paws-r.github.io/docs/lightsail/release_static_ip.html](https://paws-r.github.io/docs/lightsail/release_static_ip.html) for full documentation.
 #'
 #' @param staticIpName &#91;required&#93; The name of the static IP to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$release_static_ip(
-#'   staticIpName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11744,58 +5863,14 @@ lightsail_release_static_ip <- function(staticIpName) {
 #' delivery network (CDN) distribution
 #'
 #' @description
-#' Deletes currently cached content from your Amazon Lightsail content
-#' delivery network (CDN) distribution.
-#' 
-#' After resetting the cache, the next time a content request is made, your
-#' distribution pulls, serves, and caches it from the origin.
+#' Deletes currently cached content from your Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' @usage
-#' lightsail_reset_distribution_cache(distributionName)
+#' See [https://paws-r.github.io/docs/lightsail/reset_distribution_cache.html](https://paws-r.github.io/docs/lightsail/reset_distribution_cache.html) for full documentation.
 #'
 #' @param distributionName The name of the distribution for which to reset cache.
 #' 
 #' Use the [`get_distributions`][lightsail_get_distributions] action to get
 #' a list of distribution names that you can specify.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   status = "string",
-#'   createTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reset_distribution_cache(
-#'   distributionName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11821,64 +5896,11 @@ lightsail_reset_distribution_cache <- function(distributionName = NULL) {
 #' owned by the requester
 #'
 #' @description
-#' Sends a verification request to an email contact method to ensure it's
-#' owned by the requester. SMS contact methods don't need to be verified.
-#' 
-#' A contact method is used to send you notifications about your Amazon
-#' Lightsail resources. You can add one email address and one mobile phone
-#' number contact method in each AWS Region. However, SMS text messaging is
-#' not supported in some AWS Regions, and SMS text messages cannot be sent
-#' to some countries/regions. For more information, see Notifications in
-#' Amazon Lightsail.
-#' 
-#' A verification request is sent to the contact method when you initially
-#' create it. Use this action to send another verification request if a
-#' previous verification request was deleted, or has expired.
-#' 
-#' Notifications are not sent to an email contact method until after it is
-#' verified, and confirmed as valid.
+#' Sends a verification request to an email contact method to ensure it's owned by the requester. SMS contact methods don't need to be verified.
 #'
-#' @usage
-#' lightsail_send_contact_method_verification(protocol)
+#' See [https://paws-r.github.io/docs/lightsail/send_contact_method_verification.html](https://paws-r.github.io/docs/lightsail/send_contact_method_verification.html) for full documentation.
 #'
 #' @param protocol &#91;required&#93; The protocol to verify, such as `Email` or `SMS` (text messaging).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_contact_method_verification(
-#'   protocol = "Email"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11900,62 +5922,96 @@ lightsail_send_contact_method_verification <- function(protocol) {
 }
 .lightsail$operations$send_contact_method_verification <- lightsail_send_contact_method_verification
 
+#' Sets the IP address type for an Amazon Lightsail resource
+#'
+#' @description
+#' Sets the IP address type for an Amazon Lightsail resource.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/set_ip_address_type.html](https://paws-r.github.io/docs/lightsail/set_ip_address_type.html) for full documentation.
+#'
+#' @param resourceType &#91;required&#93; The resource type.
+#' 
+#' The possible values are `Distribution`, `Instance`, and `LoadBalancer`.
+#' 
+#' Distribution-related APIs are available only in the N. Virginia
+#' (`us-east-1`) Amazon Web Services Region. Set your Amazon Web Services
+#' Region configuration to `us-east-1` to create, view, or edit
+#' distributions.
+#' @param resourceName &#91;required&#93; The name of the resource for which to set the IP address type.
+#' @param ipAddressType &#91;required&#93; The IP address type to set for the specified resource.
+#' 
+#' The possible values are `ipv4` for IPv4 only, and `dualstack` for IPv4
+#' and IPv6.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_set_ip_address_type
+lightsail_set_ip_address_type <- function(resourceType, resourceName, ipAddressType) {
+  op <- new_operation(
+    name = "SetIpAddressType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$set_ip_address_type_input(resourceType = resourceType, resourceName = resourceName, ipAddressType = ipAddressType)
+  output <- .lightsail$set_ip_address_type_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$set_ip_address_type <- lightsail_set_ip_address_type
+
+#' Sets the Amazon Lightsail resources that can access the specified
+#' Lightsail bucket
+#'
+#' @description
+#' Sets the Amazon Lightsail resources that can access the specified Lightsail bucket.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/set_resource_access_for_bucket.html](https://paws-r.github.io/docs/lightsail/set_resource_access_for_bucket.html) for full documentation.
+#'
+#' @param resourceName &#91;required&#93; The name of the Lightsail instance for which to set bucket access. The
+#' instance must be in a running or stopped state.
+#' @param bucketName &#91;required&#93; The name of the bucket for which to set access to another Lightsail
+#' resource.
+#' @param access &#91;required&#93; The access setting.
+#' 
+#' The following access settings are available:
+#' 
+#' -   `allow` - Allows access to the bucket and its objects.
+#' 
+#' -   `deny` - Denies access to the bucket and its objects. Use this
+#'     setting to remove access for a resource previously set to `allow`.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_set_resource_access_for_bucket
+lightsail_set_resource_access_for_bucket <- function(resourceName, bucketName, access) {
+  op <- new_operation(
+    name = "SetResourceAccessForBucket",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$set_resource_access_for_bucket_input(resourceName = resourceName, bucketName = bucketName, access = access)
+  output <- .lightsail$set_resource_access_for_bucket_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$set_resource_access_for_bucket <- lightsail_set_resource_access_for_bucket
+
 #' Starts a specific Amazon Lightsail instance from a stopped state
 #'
 #' @description
-#' Starts a specific Amazon Lightsail instance from a stopped state. To
-#' restart an instance, use the `reboot instance` operation.
-#' 
-#' When you start a stopped instance, Lightsail assigns a new public IP
-#' address to the instance. To use the same IP address after stopping and
-#' starting an instance, create a static IP address and attach it to the
-#' instance. For more information, see the Lightsail Dev Guide.
-#' 
-#' The `start instance` operation supports tag-based access control via
-#' resource tags applied to the resource identified by `instance name`. For
-#' more information, see the Lightsail Dev Guide.
+#' Starts a specific Amazon Lightsail instance from a stopped state. To restart an instance, use the `reboot instance` operation.
 #'
-#' @usage
-#' lightsail_start_instance(instanceName)
+#' See [https://paws-r.github.io/docs/lightsail/start_instance.html](https://paws-r.github.io/docs/lightsail/start_instance.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance (a virtual private server) to start.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_instance(
-#'   instanceName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -11980,55 +6036,11 @@ lightsail_start_instance <- function(instanceName) {
 #' Starts a specific database from a stopped state in Amazon Lightsail
 #'
 #' @description
-#' Starts a specific database from a stopped state in Amazon Lightsail. To
-#' restart a database, use the `reboot relational database` operation.
-#' 
-#' The `start relational database` operation supports tag-based access
-#' control via resource tags applied to the resource identified by
-#' relationalDatabaseName. For more information, see the Lightsail Dev
-#' Guide.
+#' Starts a specific database from a stopped state in Amazon Lightsail. To restart a database, use the `reboot relational database` operation.
 #'
-#' @usage
-#' lightsail_start_relational_database(relationalDatabaseName)
+#' See [https://paws-r.github.io/docs/lightsail/start_relational_database.html](https://paws-r.github.io/docs/lightsail/start_relational_database.html) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database to start.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_relational_database(
-#'   relationalDatabaseName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12054,18 +6066,8 @@ lightsail_start_relational_database <- function(relationalDatabaseName) {
 #'
 #' @description
 #' Stops a specific Amazon Lightsail instance that is currently running.
-#' 
-#' When you start a stopped instance, Lightsail assigns a new public IP
-#' address to the instance. To use the same IP address after stopping and
-#' starting an instance, create a static IP address and attach it to the
-#' instance. For more information, see the Lightsail Dev Guide.
-#' 
-#' The `stop instance` operation supports tag-based access control via
-#' resource tags applied to the resource identified by `instance name`. For
-#' more information, see the Lightsail Dev Guide.
 #'
-#' @usage
-#' lightsail_stop_instance(instanceName, force)
+#' See [https://paws-r.github.io/docs/lightsail/stop_instance.html](https://paws-r.github.io/docs/lightsail/stop_instance.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance (a virtual private server) to stop.
 #' @param force When set to `True`, forces a Lightsail instance that is stuck in a
@@ -12074,44 +6076,6 @@ lightsail_start_relational_database <- function(relationalDatabaseName) {
 #' Only use the `force` parameter if your instance is stuck in the
 #' `stopping` state. In any other state, your instance should stop normally
 #' without adding this parameter to your API request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_instance(
-#'   instanceName = "string",
-#'   force = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12137,57 +6101,12 @@ lightsail_stop_instance <- function(instanceName, force = NULL) {
 #'
 #' @description
 #' Stops a specific database that is currently running in Amazon Lightsail.
-#' 
-#' The `stop relational database` operation supports tag-based access
-#' control via resource tags applied to the resource identified by
-#' relationalDatabaseName. For more information, see the Lightsail Dev
-#' Guide.
 #'
-#' @usage
-#' lightsail_stop_relational_database(relationalDatabaseName,
-#'   relationalDatabaseSnapshotName)
+#' See [https://paws-r.github.io/docs/lightsail/stop_relational_database.html](https://paws-r.github.io/docs/lightsail/stop_relational_database.html) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database to stop.
 #' @param relationalDatabaseSnapshotName The name of your new database snapshot to be created before stopping
 #' your database.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_relational_database(
-#'   relationalDatabaseName = "string",
-#'   relationalDatabaseSnapshotName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12212,66 +6131,14 @@ lightsail_stop_relational_database <- function(relationalDatabaseName, relationa
 #' Adds one or more tags to the specified Amazon Lightsail resource
 #'
 #' @description
-#' Adds one or more tags to the specified Amazon Lightsail resource. Each
-#' resource can have a maximum of 50 tags. Each tag consists of a key and
-#' an optional value. Tag keys must be unique per resource. For more
-#' information about tags, see the Lightsail Dev Guide.
-#' 
-#' The `tag resource` operation supports tag-based access control via
-#' request tags and resource tags applied to the resource identified by
-#' `resource name`. For more information, see the Lightsail Dev Guide.
+#' Adds one or more tags to the specified Amazon Lightsail resource. Each resource can have a maximum of 50 tags. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see the Amazon Lightsail Developer Guide.
 #'
-#' @usage
-#' lightsail_tag_resource(resourceName, resourceArn, tags)
+#' See [https://paws-r.github.io/docs/lightsail/tag_resource.html](https://paws-r.github.io/docs/lightsail/tag_resource.html) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The name of the resource to which you are adding tags.
 #' @param resourceArn The Amazon Resource Name (ARN) of the resource to which you want to add
 #' a tag.
 #' @param tags &#91;required&#93; The tag key and optional value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   resourceName = "string",
-#'   resourceArn = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12296,18 +6163,9 @@ lightsail_tag_resource <- function(resourceName, resourceArn = NULL, tags) {
 #' Tests an alarm by displaying a banner on the Amazon Lightsail console
 #'
 #' @description
-#' Tests an alarm by displaying a banner on the Amazon Lightsail console.
-#' If a notification trigger is configured for the specified alarm, the
-#' test also sends a notification to the notification protocol (`Email`
-#' and/or `SMS`) configured for the alarm.
-#' 
-#' An alarm is used to monitor a single metric for one of your resources.
-#' When a metric condition is met, the alarm can notify you by email, SMS
-#' text message, and a banner displayed on the Amazon Lightsail console.
-#' For more information, see Alarms in Amazon Lightsail.
+#' Tests an alarm by displaying a banner on the Amazon Lightsail console. If a notification trigger is configured for the specified alarm, the test also sends a notification to the notification protocol (`Email` and/or `SMS`) configured for the alarm.
 #'
-#' @usage
-#' lightsail_test_alarm(alarmName, state)
+#' See [https://paws-r.github.io/docs/lightsail/test_alarm.html](https://paws-r.github.io/docs/lightsail/test_alarm.html) for full documentation.
 #'
 #' @param alarmName &#91;required&#93; The name of the alarm to test.
 #' @param state &#91;required&#93; The alarm state to test.
@@ -12321,44 +6179,6 @@ lightsail_tag_resource <- function(resourceName, resourceArn = NULL, tags) {
 #'     determine the alarm state.
 #' 
 #' -   `OK` - The metric is within the defined threshold.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$test_alarm(
-#'   alarmName = "string",
-#'   state = "OK"|"ALARM"|"INSUFFICIENT_DATA"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12380,46 +6200,12 @@ lightsail_test_alarm <- function(alarmName, state) {
 }
 .lightsail$operations$test_alarm <- lightsail_test_alarm
 
-#' Attempts to unpeer the Lightsail VPC from the user's default VPC
+#' Unpeers the Lightsail VPC from the user's default VPC
 #'
 #' @description
-#' Attempts to unpeer the Lightsail VPC from the user's default VPC.
+#' Unpeers the Lightsail VPC from the user's default VPC.
 #'
-#' @usage
-#' lightsail_unpeer_vpc()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$unpeer_vpc()
-#' ```
+#' See [https://paws-r.github.io/docs/lightsail/unpeer_vpc.html](https://paws-r.github.io/docs/lightsail/unpeer_vpc.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -12445,61 +6231,14 @@ lightsail_unpeer_vpc <- function() {
 #' specified Amazon Lightsail resource
 #'
 #' @description
-#' Deletes the specified set of tag keys and their values from the
-#' specified Amazon Lightsail resource.
-#' 
-#' The `untag resource` operation supports tag-based access control via
-#' request tags and resource tags applied to the resource identified by
-#' `resource name`. For more information, see the Lightsail Dev Guide.
+#' Deletes the specified set of tag keys and their values from the specified Amazon Lightsail resource.
 #'
-#' @usage
-#' lightsail_untag_resource(resourceName, resourceArn, tagKeys)
+#' See [https://paws-r.github.io/docs/lightsail/untag_resource.html](https://paws-r.github.io/docs/lightsail/untag_resource.html) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The name of the resource from which you are removing a tag.
 #' @param resourceArn The Amazon Resource Name (ARN) of the resource from which you want to
 #' remove a tag.
 #' @param tagKeys &#91;required&#93; The tag keys to delete from the specified resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   resourceName = "string",
-#'   resourceArn = "string",
-#'   tagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12521,16 +6260,93 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 }
 .lightsail$operations$untag_resource <- lightsail_untag_resource
 
+#' Updates an existing Amazon Lightsail bucket
+#'
+#' @description
+#' Updates an existing Amazon Lightsail bucket.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/update_bucket.html](https://paws-r.github.io/docs/lightsail/update_bucket.html) for full documentation.
+#'
+#' @param bucketName &#91;required&#93; The name of the bucket to update.
+#' @param accessRules An object that sets the public accessibility of objects in the specified
+#' bucket.
+#' @param versioning Specifies whether to enable or suspend versioning of objects in the
+#' bucket.
+#' 
+#' The following options can be specified:
+#' 
+#' -   `Enabled` - Enables versioning of objects in the specified bucket.
+#' 
+#' -   `Suspended` - Suspends versioning of objects in the specified
+#'     bucket. Existing object versions are retained.
+#' @param readonlyAccessAccounts An array of strings to specify the Amazon Web Services account IDs that
+#' can access the bucket.
+#' 
+#' You can give a maximum of 10 Amazon Web Services accounts access to a
+#' bucket.
+#' @param accessLogConfig An object that describes the access log configuration for the bucket.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_update_bucket
+lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning = NULL, readonlyAccessAccounts = NULL, accessLogConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateBucket",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$update_bucket_input(bucketName = bucketName, accessRules = accessRules, versioning = versioning, readonlyAccessAccounts = readonlyAccessAccounts, accessLogConfig = accessLogConfig)
+  output <- .lightsail$update_bucket_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$update_bucket <- lightsail_update_bucket
+
+#' Updates the bundle, or storage plan, of an existing Amazon Lightsail
+#' bucket
+#'
+#' @description
+#' Updates the bundle, or storage plan, of an existing Amazon Lightsail bucket.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/update_bucket_bundle.html](https://paws-r.github.io/docs/lightsail/update_bucket_bundle.html) for full documentation.
+#'
+#' @param bucketName &#91;required&#93; The name of the bucket for which to update the bundle.
+#' @param bundleId &#91;required&#93; The ID of the new bundle to apply to the bucket.
+#' 
+#' Use the [`get_bucket_bundles`][lightsail_get_bucket_bundles] action to
+#' get a list of bundle IDs that you can specify.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_update_bucket_bundle
+lightsail_update_bucket_bundle <- function(bucketName, bundleId) {
+  op <- new_operation(
+    name = "UpdateBucketBundle",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$update_bucket_bundle_input(bucketName = bucketName, bundleId = bundleId)
+  output <- .lightsail$update_bucket_bundle_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$update_bucket_bundle <- lightsail_update_bucket_bundle
+
 #' Updates the configuration of your Amazon Lightsail container service,
 #' such as its power, scale, and public domain names
 #'
 #' @description
-#' Updates the configuration of your Amazon Lightsail container service,
-#' such as its power, scale, and public domain names.
+#' Updates the configuration of your Amazon Lightsail container service, such as its power, scale, and public domain names.
 #'
-#' @usage
-#' lightsail_update_container_service(serviceName, power, scale,
-#'   isDisabled, publicDomainNames)
+#' See [https://paws-r.github.io/docs/lightsail/update_container_service.html](https://paws-r.github.io/docs/lightsail/update_container_service.html) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service to update.
 #' @param power The power for the container service.
@@ -12571,137 +6387,25 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #' 
 #' You can specify public domain names using a string to array map as shown
 #' in the example later on this page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   containerService = list(
-#'     containerServiceName = "string",
-#'     arn = "string",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
-#'     powerId = "string",
-#'     state = "PENDING"|"READY"|"RUNNING"|"UPDATING"|"DELETING"|"DISABLED",
-#'     scale = 123,
-#'     currentDeployment = list(
-#'       version = 123,
-#'       state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-#'       containers = list(
-#'         list(
-#'           image = "string",
-#'           command = list(
-#'             "string"
-#'           ),
-#'           environment = list(
-#'             "string"
-#'           ),
-#'           ports = list(
-#'             "HTTP"|"HTTPS"|"TCP"|"UDP"
-#'           )
-#'         )
-#'       ),
-#'       publicEndpoint = list(
-#'         containerName = "string",
-#'         containerPort = 123,
-#'         healthCheck = list(
-#'           healthyThreshold = 123,
-#'           unhealthyThreshold = 123,
-#'           timeoutSeconds = 123,
-#'           intervalSeconds = 123,
-#'           path = "string",
-#'           successCodes = "string"
-#'         )
-#'       ),
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     nextDeployment = list(
-#'       version = 123,
-#'       state = "ACTIVATING"|"ACTIVE"|"INACTIVE"|"FAILED",
-#'       containers = list(
-#'         list(
-#'           image = "string",
-#'           command = list(
-#'             "string"
-#'           ),
-#'           environment = list(
-#'             "string"
-#'           ),
-#'           ports = list(
-#'             "HTTP"|"HTTPS"|"TCP"|"UDP"
-#'           )
-#'         )
-#'       ),
-#'       publicEndpoint = list(
-#'         containerName = "string",
-#'         containerPort = 123,
-#'         healthCheck = list(
-#'           healthyThreshold = 123,
-#'           unhealthyThreshold = 123,
-#'           timeoutSeconds = 123,
-#'           intervalSeconds = 123,
-#'           path = "string",
-#'           successCodes = "string"
-#'         )
-#'       ),
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     ),
-#'     isDisabled = TRUE|FALSE,
-#'     principalArn = "string",
-#'     privateDomainName = "string",
-#'     publicDomainNames = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     url = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_container_service(
-#'   serviceName = "string",
-#'   power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
-#'   scale = 123,
-#'   isDisabled = TRUE|FALSE,
-#'   publicDomainNames = list(
-#'     list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param privateRegistryAccess An object to describe the configuration for the container service to
+#' access private container image repositories, such as Amazon Elastic
+#' Container Registry (Amazon ECR) private repositories.
+#' 
+#' For more information, see Configuring access to an Amazon ECR private
+#' repository for an Amazon Lightsail container service in the *Amazon
+#' Lightsail Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_update_container_service
-lightsail_update_container_service <- function(serviceName, power = NULL, scale = NULL, isDisabled = NULL, publicDomainNames = NULL) {
+lightsail_update_container_service <- function(serviceName, power = NULL, scale = NULL, isDisabled = NULL, publicDomainNames = NULL, privateRegistryAccess = NULL) {
   op <- new_operation(
     name = "UpdateContainerService",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$update_container_service_input(serviceName = serviceName, power = power, scale = scale, isDisabled = isDisabled, publicDomainNames = publicDomainNames)
+  input <- .lightsail$update_container_service_input(serviceName = serviceName, power = power, scale = scale, isDisabled = isDisabled, publicDomainNames = publicDomainNames, privateRegistryAccess = privateRegistryAccess)
   output <- .lightsail$update_container_service_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -12715,22 +6419,16 @@ lightsail_update_container_service <- function(serviceName, power = NULL, scale 
 #' distribution
 #'
 #' @description
-#' Updates an existing Amazon Lightsail content delivery network (CDN)
-#' distribution.
-#' 
-#' Use this action to update the configuration of your existing
-#' distribution
+#' Updates an existing Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' @usage
-#' lightsail_update_distribution(distributionName, origin,
-#'   defaultCacheBehavior, cacheBehaviorSettings, cacheBehaviors, isEnabled)
+#' See [https://paws-r.github.io/docs/lightsail/update_distribution.html](https://paws-r.github.io/docs/lightsail/update_distribution.html) for full documentation.
 #'
 #' @param distributionName &#91;required&#93; The name of the distribution to update.
 #' 
 #' Use the [`get_distributions`][lightsail_get_distributions] action to get
 #' a list of distribution names that you can specify.
 #' @param origin An object that describes the origin resource for the distribution, such
-#' as a Lightsail instance or load balancer.
+#' as a Lightsail instance, bucket, or load balancer.
 #' 
 #' The distribution pulls, caches, and serves content from the origin.
 #' @param defaultCacheBehavior An object that describes the default cache behavior for the
@@ -12744,81 +6442,6 @@ lightsail_update_container_service <- function(serviceName, power = NULL, scale 
 #' @param cacheBehaviors An array of objects that describe the per-path cache behavior for the
 #' distribution.
 #' @param isEnabled Indicates whether to enable the distribution.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_distribution(
-#'   distributionName = "string",
-#'   origin = list(
-#'     name = "string",
-#'     regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2",
-#'     protocolPolicy = "http-only"|"https-only"
-#'   ),
-#'   defaultCacheBehavior = list(
-#'     behavior = "dont-cache"|"cache"
-#'   ),
-#'   cacheBehaviorSettings = list(
-#'     defaultTTL = 123,
-#'     minimumTTL = 123,
-#'     maximumTTL = 123,
-#'     allowedHTTPMethods = "string",
-#'     cachedHTTPMethods = "string",
-#'     forwardedCookies = list(
-#'       option = "none"|"allow-list"|"all",
-#'       cookiesAllowList = list(
-#'         "string"
-#'       )
-#'     ),
-#'     forwardedHeaders = list(
-#'       option = "none"|"allow-list"|"all",
-#'       headersAllowList = list(
-#'         "Accept"|"Accept-Charset"|"Accept-Datetime"|"Accept-Encoding"|"Accept-Language"|"Authorization"|"CloudFront-Forwarded-Proto"|"CloudFront-Is-Desktop-Viewer"|"CloudFront-Is-Mobile-Viewer"|"CloudFront-Is-SmartTV-Viewer"|"CloudFront-Is-Tablet-Viewer"|"CloudFront-Viewer-Country"|"Host"|"Origin"|"Referer"
-#'       )
-#'     ),
-#'     forwardedQueryStrings = list(
-#'       option = TRUE|FALSE,
-#'       queryStringsAllowList = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   cacheBehaviors = list(
-#'     list(
-#'       path = "string",
-#'       behavior = "dont-cache"|"cache"
-#'     )
-#'   ),
-#'   isEnabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12844,24 +6467,9 @@ lightsail_update_distribution <- function(distributionName, origin = NULL, defau
 #' (CDN) distribution
 #'
 #' @description
-#' Updates the bundle of your Amazon Lightsail content delivery network
-#' (CDN) distribution.
-#' 
-#' A distribution bundle specifies the monthly network transfer quota and
-#' monthly cost of your dsitribution.
-#' 
-#' Update your distribution's bundle if your distribution is going over its
-#' monthly network transfer quota and is incurring an overage fee.
-#' 
-#' You can update your distribution's bundle only one time within your
-#' monthly AWS billing cycle. To determine if you can update your
-#' distribution's bundle, use the
-#' [`get_distributions`][lightsail_get_distributions] action. The
-#' `ableToUpdateBundle` parameter in the result will indicate whether you
-#' can currently update your distribution's bundle.
+#' Updates the bundle of your Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' @usage
-#' lightsail_update_distribution_bundle(distributionName, bundleId)
+#' See [https://paws-r.github.io/docs/lightsail/update_distribution_bundle.html](https://paws-r.github.io/docs/lightsail/update_distribution_bundle.html) for full documentation.
 #'
 #' @param distributionName The name of the distribution for which to update the bundle.
 #' 
@@ -12871,42 +6479,6 @@ lightsail_update_distribution <- function(distributionName, origin = NULL, defau
 #' 
 #' Use the [`get_distribution_bundles`][lightsail_get_distribution_bundles]
 #' action to get a list of distribution bundle IDs that you can specify.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operation = list(
-#'     id = "string",
-#'     resourceName = "string",
-#'     resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'     createdAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     location = list(
-#'       availabilityZone = "string",
-#'       regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'     ),
-#'     isTerminal = TRUE|FALSE,
-#'     operationDetails = "string",
-#'     operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'     status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'     statusChangedAt = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     errorCode = "string",
-#'     errorDetails = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_distribution_bundle(
-#'   distributionName = "string",
-#'   bundleId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -12932,64 +6504,12 @@ lightsail_update_distribution_bundle <- function(distributionName = NULL, bundle
 #'
 #' @description
 #' Updates a domain recordset after it is created.
-#' 
-#' The `update domain entry` operation supports tag-based access control
-#' via resource tags applied to the resource identified by `domain name`.
-#' For more information, see the Lightsail Dev Guide.
 #'
-#' @usage
-#' lightsail_update_domain_entry(domainName, domainEntry)
+#' See [https://paws-r.github.io/docs/lightsail/update_domain_entry.html](https://paws-r.github.io/docs/lightsail/update_domain_entry.html) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The name of the domain recordset to update.
 #' @param domainEntry &#91;required&#93; An array of key-value pairs containing information about the domain
 #' entry.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_domain_entry(
-#'   domainName = "string",
-#'   domainEntry = list(
-#'     id = "string",
-#'     name = "string",
-#'     target = "string",
-#'     isAlias = TRUE|FALSE,
-#'     type = "string",
-#'     options = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -13014,60 +6534,44 @@ lightsail_update_domain_entry <- function(domainName, domainEntry) {
 #' Updates the specified attribute for a load balancer
 #'
 #' @description
-#' Updates the specified attribute for a load balancer. You can only update
-#' one attribute at a time.
-#' 
-#' The `update load balancer attribute` operation supports tag-based access
-#' control via resource tags applied to the resource identified by
-#' `load balancer name`. For more information, see the Lightsail Dev Guide.
+#' Updates the specified attribute for a load balancer. You can only update one attribute at a time.
 #'
-#' @usage
-#' lightsail_update_load_balancer_attribute(loadBalancerName,
-#'   attributeName, attributeValue)
+#' See [https://paws-r.github.io/docs/lightsail/update_load_balancer_attribute.html](https://paws-r.github.io/docs/lightsail/update_load_balancer_attribute.html) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer that you want to modify (e.g.,
 #' `my-load-balancer`.
-#' @param attributeName &#91;required&#93; The name of the attribute you want to update. Valid values are below.
+#' @param attributeName &#91;required&#93; The name of the attribute you want to update.
 #' @param attributeValue &#91;required&#93; The value that you want to specify for the attribute name.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_load_balancer_attribute(
-#'   loadBalancerName = "string",
-#'   attributeName = "HealthCheckPath"|"SessionStickinessEnabled"|"SessionStickiness_LB_CookieDurationSeconds",
-#'   attributeValue = "string"
-#' )
-#' ```
+#' 
+#' The following values are supported depending on what you specify for the
+#' `attributeName` request parameter:
+#' 
+#' -   If you specify `HealthCheckPath` for the `attributeName` request
+#'     parameter, then the `attributeValue` request parameter must be the
+#'     path to ping on the target (for example, `/weather/us/wa/seattle`).
+#' 
+#' -   If you specify `SessionStickinessEnabled` for the `attributeName`
+#'     request parameter, then the `attributeValue` request parameter must
+#'     be `true` to activate session stickiness or `false` to deactivate
+#'     session stickiness.
+#' 
+#' -   If you specify `SessionStickiness_LB_CookieDurationSeconds` for the
+#'     `attributeName` request parameter, then the `attributeValue` request
+#'     parameter must be an interger that represents the cookie duration in
+#'     seconds.
+#' 
+#' -   If you specify `HttpsRedirectionEnabled` for the `attributeName`
+#'     request parameter, then the `attributeValue` request parameter must
+#'     be `true` to activate HTTP to HTTPS redirection or `false` to
+#'     deactivate HTTP to HTTPS redirection.
+#' 
+#' -   If you specify `TlsPolicyName` for the `attributeName` request
+#'     parameter, then the `attributeValue` request parameter must be the
+#'     name of the TLS policy.
+#' 
+#'     Use the
+#'     [`get_load_balancer_tls_policies`][lightsail_get_load_balancer_tls_policies]
+#'     action to get a list of TLS policy names that you can specify.
 #'
 #' @keywords internal
 #'
@@ -13093,30 +6597,21 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #' Lightsail
 #'
 #' @description
-#' Allows the update of one or more attributes of a database in Amazon
-#' Lightsail.
-#' 
-#' Updates are applied immediately, or in cases where the updates could
-#' result in an outage, are applied during the database's predefined
-#' maintenance window.
-#' 
-#' The `update relational database` operation supports tag-based access
-#' control via resource tags applied to the resource identified by
-#' relationalDatabaseName. For more information, see the Lightsail Dev
-#' Guide.
+#' Allows the update of one or more attributes of a database in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_update_relational_database(relationalDatabaseName,
-#'   masterUserPassword, rotateMasterUserPassword, preferredBackupWindow,
-#'   preferredMaintenanceWindow, enableBackupRetention,
-#'   disableBackupRetention, publiclyAccessible, applyImmediately,
-#'   caCertificateIdentifier)
+#' See [https://paws-r.github.io/docs/lightsail/update_relational_database.html](https://paws-r.github.io/docs/lightsail/update_relational_database.html) for full documentation.
 #'
-#' @param relationalDatabaseName &#91;required&#93; The name of your database to update.
-#' @param masterUserPassword The password for the master user of your database. The password can
-#' include any printable ASCII character except "/", """, or "@@".
+#' @param relationalDatabaseName &#91;required&#93; The name of your Lightsail database resource to update.
+#' @param masterUserPassword The password for the master user. The password can include any printable
+#' ASCII character except "/", """, or "@@".
 #' 
-#' Constraints: Must contain 8 to 41 characters.
+#' My**SQL**
+#' 
+#' Constraints: Must contain from 8 to 41 characters.
+#' 
+#' **PostgreSQL**
+#' 
+#' Constraints: Must contain from 8 to 128 characters.
 #' @param rotateMasterUserPassword When `true`, the master user password is changed to a new strong
 #' password generated by Lightsail.
 #' 
@@ -13178,52 +6673,6 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #' Default: `false`
 #' @param caCertificateIdentifier Indicates the certificate that needs to be associated with the database.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_relational_database(
-#'   relationalDatabaseName = "string",
-#'   masterUserPassword = "string",
-#'   rotateMasterUserPassword = TRUE|FALSE,
-#'   preferredBackupWindow = "string",
-#'   preferredMaintenanceWindow = "string",
-#'   enableBackupRetention = TRUE|FALSE,
-#'   disableBackupRetention = TRUE|FALSE,
-#'   publiclyAccessible = TRUE|FALSE,
-#'   applyImmediately = TRUE|FALSE,
-#'   caCertificateIdentifier = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname lightsail_update_relational_database
@@ -13248,77 +6697,12 @@ lightsail_update_relational_database <- function(relationalDatabaseName, masterU
 #' Lightsail
 #'
 #' @description
-#' Allows the update of one or more parameters of a database in Amazon
-#' Lightsail.
-#' 
-#' Parameter updates don't cause outages; therefore, their application is
-#' not subject to the preferred maintenance window. However, there are two
-#' ways in which parameter updates are applied: `dynamic` or
-#' `pending-reboot`. Parameters marked with a `dynamic` apply type are
-#' applied immediately. Parameters marked with a `pending-reboot` apply
-#' type are applied only after the database is rebooted using the
-#' `reboot relational database` operation.
-#' 
-#' The `update relational database parameters` operation supports tag-based
-#' access control via resource tags applied to the resource identified by
-#' relationalDatabaseName. For more information, see the Lightsail Dev
-#' Guide.
+#' Allows the update of one or more parameters of a database in Amazon Lightsail.
 #'
-#' @usage
-#' lightsail_update_relational_database_parameters(relationalDatabaseName,
-#'   parameters)
+#' See [https://paws-r.github.io/docs/lightsail/update_relational_database_parameters.html](https://paws-r.github.io/docs/lightsail/update_relational_database_parameters.html) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database for which to update parameters.
 #' @param parameters &#91;required&#93; The database parameters to update.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   operations = list(
-#'     list(
-#'       id = "string",
-#'       resourceName = "string",
-#'       resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-#'       createdAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       location = list(
-#'         availabilityZone = "string",
-#'         regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-#'       ),
-#'       isTerminal = TRUE|FALSE,
-#'       operationDetails = "string",
-#'       operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-#'       status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-#'       statusChangedAt = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       errorCode = "string",
-#'       errorDetails = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_relational_database_parameters(
-#'   relationalDatabaseName = "string",
-#'   parameters = list(
-#'     list(
-#'       allowedValues = "string",
-#'       applyMethod = "string",
-#'       applyType = "string",
-#'       dataType = "string",
-#'       description = "string",
-#'       isModifiable = TRUE|FALSE,
-#'       parameterName = "string",
-#'       parameterValue = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

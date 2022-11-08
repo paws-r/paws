@@ -11,22 +11,9 @@ ssm_deregister_task_from_maintenance_window(WindowId, WindowTaskId)
 
 \item{WindowTaskId}{[required] The ID of the task to remove from the maintenance window.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowId = "string",
-  WindowTaskId = "string"
-)
-}
-}
 \description{
 Removes a task from a maintenance window.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_task_from_maintenance_window(
-  WindowId = "string",
-  WindowTaskId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/deregister_task_from_maintenance_window.html} for full documentation.
+}
 \keyword{internal}

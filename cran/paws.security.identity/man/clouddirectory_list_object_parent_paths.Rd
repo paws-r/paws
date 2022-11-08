@@ -5,8 +5,12 @@
 \title{Retrieves all available parent paths for any object type such as node,
 leaf node, policy node, and index node objects}
 \usage{
-clouddirectory_list_object_parent_paths(DirectoryArn, ObjectReference,
-  NextToken, MaxResults)
+clouddirectory_list_object_parent_paths(
+  DirectoryArn,
+  ObjectReference,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory to which the parent path applies.}
@@ -18,43 +22,9 @@ clouddirectory_list_object_parent_paths(DirectoryArn, ObjectReference,
 \item{MaxResults}{The maximum number of items to be retrieved in a single call. This is an
 approximate number.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PathToObjectIdentifiersList = list(
-    list(
-      Path = "string",
-      ObjectIdentifiers = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves all available parent paths for any object type such as node,
-leaf node, policy node, and index node objects. For more information
-about objects, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html}{Directory Structure}.
+Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html}{Directory Structure}.
 
-Use this API to evaluate all parents for an object. The call returns all
-objects from the root of the directory up to the requested object. The
-API returns the number of paths based on user-defined \code{MaxResults}, in
-case there are multiple paths to the parent. The order of the paths and
-nodes returned is consistent among multiple API calls unless the objects
-are deleted or moved. Paths not leading to the directory root are
-ignored from the target object.
+See \url{https://paws-r.github.io/docs/clouddirectory/list_object_parent_paths.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_object_parent_paths(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

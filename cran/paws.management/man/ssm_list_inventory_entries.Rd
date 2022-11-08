@@ -4,11 +4,16 @@
 \alias{ssm_list_inventory_entries}
 \title{A list of inventory items returned by the request}
 \usage{
-ssm_list_inventory_entries(InstanceId, TypeName, Filters, NextToken,
-  MaxResults)
+ssm_list_inventory_entries(
+  InstanceId,
+  TypeName,
+  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The instance ID for which you want inventory information.}
+\item{InstanceId}{[required] The managed node ID for which you want inventory information.}
 
 \item{TypeName}{[required] The type of inventory item for which you want information.}
 
@@ -22,41 +27,9 @@ from a previous call.)}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TypeName = "string",
-  InstanceId = "string",
-  SchemaVersion = "string",
-  CaptureTime = "string",
-  Entries = list(
-    list(
-      "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 A list of inventory items returned by the request.
-}
-\section{Request syntax}{
-\preformatted{svc$list_inventory_entries(
-  InstanceId = "string",
-  TypeName = "string",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/list_inventory_entries.html} for full documentation.
+}
 \keyword{internal}

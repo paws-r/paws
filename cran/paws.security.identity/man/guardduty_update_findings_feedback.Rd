@@ -4,8 +4,12 @@
 \alias{guardduty_update_findings_feedback}
 \title{Marks the specified GuardDuty findings as useful or not useful}
 \usage{
-guardduty_update_findings_feedback(DetectorId, FindingIds, Feedback,
-  Comments)
+guardduty_update_findings_feedback(
+  DetectorId,
+  FindingIds,
+  Feedback,
+  Comments = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector associated with the findings to update feedback
@@ -17,22 +21,9 @@ for.}
 
 \item{Comments}{Additional feedback about the GuardDuty findings.}
 }
-\value{
-An empty list.
-}
 \description{
 Marks the specified GuardDuty findings as useful or not useful.
-}
-\section{Request syntax}{
-\preformatted{svc$update_findings_feedback(
-  DetectorId = "string",
-  FindingIds = list(
-    "string"
-  ),
-  Feedback = "USEFUL"|"NOT_USEFUL",
-  Comments = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/update_findings_feedback.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Creates a default VPC with a size /16 IPv4 CIDR block and a default
 subnet in each Availability Zone}
 \usage{
-ec2_create_default_vpc(DryRun)
+ec2_create_default_vpc(DryRun = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -13,69 +13,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Vpc = list(
-    CidrBlock = "string",
-    DhcpOptionsId = "string",
-    State = "pending"|"available",
-    VpcId = "string",
-    OwnerId = "string",
-    InstanceTenancy = "default"|"dedicated"|"host",
-    Ipv6CidrBlockAssociationSet = list(
-      list(
-        AssociationId = "string",
-        Ipv6CidrBlock = "string",
-        Ipv6CidrBlockState = list(
-          State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
-          StatusMessage = "string"
-        ),
-        NetworkBorderGroup = "string",
-        Ipv6Pool = "string"
-      )
-    ),
-    CidrBlockAssociationSet = list(
-      list(
-        AssociationId = "string",
-        CidrBlock = "string",
-        CidrBlockState = list(
-          State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
-          StatusMessage = "string"
-        )
-      )
-    ),
-    IsDefault = TRUE|FALSE,
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a default VPC with a size \verb{/16} IPv4 CIDR block and a default
-subnet in each Availability Zone. For more information about the
-components of a default VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html}{Default VPC and Default Subnets}
-in the \emph{Amazon Virtual Private Cloud User Guide}. You cannot specify the
-components of the default VPC yourself.
+Creates a default VPC with a size \verb{/16} IPv4 CIDR block and a default subnet in each Availability Zone. For more information about the components of a default VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html}{Default VPC and default subnets} in the \emph{Amazon Virtual Private Cloud User Guide}. You cannot specify the components of the default VPC yourself.
 
-If you deleted your previous default VPC, you can create a default VPC.
-You cannot have more than one default VPC per Region.
-
-If your account supports EC2-Classic, you cannot use this action to
-create a default VPC in a Region that supports EC2-Classic. If you want
-a default VPC in a Region that supports EC2-Classic, see "I really want
-a default VPC for my existing EC2 account. Is that possible?" in the
-\href{https://aws.amazon.com/vpc/faqs/#Default_VPCs}{Default VPCs FAQ}.
+See \url{https://paws-r.github.io/docs/ec2/create_default_vpc.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_default_vpc(
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

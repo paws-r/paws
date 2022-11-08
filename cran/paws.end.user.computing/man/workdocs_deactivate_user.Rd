@@ -5,7 +5,7 @@
 \title{Deactivates the specified user, which revokes the user's access to
 Amazon WorkDocs}
 \usage{
-workdocs_deactivate_user(UserId, AuthenticationToken)
+workdocs_deactivate_user(UserId, AuthenticationToken = NULL)
 }
 \arguments{
 \item{UserId}{[required] The ID of the user.}
@@ -13,19 +13,9 @@ workdocs_deactivate_user(UserId, AuthenticationToken)
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
 administrator credentials to access the API.}
 }
-\value{
-An empty list.
-}
 \description{
-Deactivates the specified user, which revokes the user's access to
-Amazon WorkDocs.
-}
-\section{Request syntax}{
-\preformatted{svc$deactivate_user(
-  UserId = "string",
-  AuthenticationToken = "string"
-)
-}
-}
+Deactivates the specified user, which revokes the user's access to Amazon WorkDocs.
 
+See \url{https://paws-r.github.io/docs/workdocs/deactivate_user.html} for full documentation.
+}
 \keyword{internal}

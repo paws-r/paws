@@ -4,8 +4,13 @@
 \alias{elasticache_copy_snapshot}
 \title{Makes a copy of an existing snapshot}
 \usage{
-elasticache_copy_snapshot(SourceSnapshotName, TargetSnapshotName,
-  TargetBucket, KmsKeyId)
+elasticache_copy_snapshot(
+  SourceSnapshotName,
+  TargetSnapshotName,
+  TargetBucket = NULL,
+  KmsKeyId = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{SourceSnapshotName}{[required] The name of an existing snapshot from which to make a copy.}
@@ -22,146 +27,17 @@ ElastiCache has the needed permissions to this S3 bucket. For more
 information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
 in the \emph{Amazon ElastiCache User Guide}.
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/}{Exporting a Snapshot}
+For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html}{Exporting a Snapshot}
 in the \emph{Amazon ElastiCache User Guide}.}
 
 \item{KmsKeyId}{The ID of the KMS key used to encrypt the target snapshot.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Snapshot = list(
-    SnapshotName = "string",
-    ReplicationGroupId = "string",
-    ReplicationGroupDescription = "string",
-    CacheClusterId = "string",
-    SnapshotStatus = "string",
-    SnapshotSource = "string",
-    CacheNodeType = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    NumCacheNodes = 123,
-    PreferredAvailabilityZone = "string",
-    PreferredOutpostArn = "string",
-    CacheClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PreferredMaintenanceWindow = "string",
-    TopicArn = "string",
-    Port = 123,
-    CacheParameterGroupName = "string",
-    CacheSubnetGroupName = "string",
-    VpcId = "string",
-    AutoMinorVersionUpgrade = TRUE|FALSE,
-    SnapshotRetentionLimit = 123,
-    SnapshotWindow = "string",
-    NumNodeGroups = 123,
-    AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
-    NodeSnapshots = list(
-      list(
-        CacheClusterId = "string",
-        NodeGroupId = "string",
-        CacheNodeId = "string",
-        NodeGroupConfiguration = list(
-          NodeGroupId = "string",
-          Slots = "string",
-          ReplicaCount = 123,
-          PrimaryAvailabilityZone = "string",
-          ReplicaAvailabilityZones = list(
-            "string"
-          ),
-          PrimaryOutpostArn = "string",
-          ReplicaOutpostArns = list(
-            "string"
-          )
-        ),
-        CacheSize = "string",
-        CacheNodeCreateTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        SnapshotCreateTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    KmsKeyId = "string",
-    ARN = "string"
-  )
-)
-}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \description{
 Makes a copy of an existing snapshot.
 
-This operation is valid for Redis only.
-
-Users or groups that have permissions to use the
-\code{\link[=elasticache_copy_snapshot]{copy_snapshot}} operation can create their
-own Amazon S3 buckets and copy snapshots to it. To control access to
-your snapshots, use an IAM policy to control who has the ability to use
-the \code{\link[=elasticache_copy_snapshot]{copy_snapshot}} operation. For more
-information about using IAM to control the use of ElastiCache
-operations, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html}{Exporting Snapshots}
-and \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.html}{Authentication & Access Control}.
-
-You could receive the following error messages.
-
-\strong{Error Messages}
-\itemize{
-\item \strong{Error Message:} The S3 bucket \%s is outside of the region.
-
-\strong{Solution:} Create an Amazon S3 bucket in the same region as your
-snapshot. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket}{Step 1: Create an Amazon S3 Bucket}
-in the ElastiCache User Guide.
-\item \strong{Error Message:} The S3 bucket \%s does not exist.
-
-\strong{Solution:} Create an Amazon S3 bucket in the same region as your
-snapshot. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket}{Step 1: Create an Amazon S3 Bucket}
-in the ElastiCache User Guide.
-\item \strong{Error Message:} The S3 bucket \%s is not owned by the
-authenticated user.
-
-\strong{Solution:} Create an Amazon S3 bucket in the same region as your
-snapshot. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket}{Step 1: Create an Amazon S3 Bucket}
-in the ElastiCache User Guide.
-\item \strong{Error Message:} The authenticated user does not have sufficient
-permissions to perform the desired activity.
-
-\strong{Solution:} Contact your system administrator to get the needed
-permissions.
-\item \strong{Error Message:} The S3 bucket \%s already contains an object with
-key \%s.
-
-\strong{Solution:} Give the \code{TargetSnapshotName} a new and unique value.
-If exporting a snapshot, you could alternatively create a new Amazon
-S3 bucket and use this same value for \code{TargetSnapshotName}.
-\item \strong{Error Message:} ElastiCache has not been granted READ permissions
-\%s on the S3 Bucket.
-
-\strong{Solution:} Add List and Read permissions on the bucket. For more
-information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
-in the ElastiCache User Guide.
-\item \strong{Error Message:} ElastiCache has not been granted WRITE
-permissions \%s on the S3 Bucket.
-
-\strong{Solution:} Add Upload/Delete permissions on the bucket. For more
-information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
-in the ElastiCache User Guide.
-\item \strong{Error Message:} ElastiCache has not been granted READ_ACP
-permissions \%s on the S3 Bucket.
-
-\strong{Solution:} Add View Permissions on the bucket. For more
-information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
-in the ElastiCache User Guide.
+See \url{https://paws-r.github.io/docs/elasticache/copy_snapshot.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$copy_snapshot(
-  SourceSnapshotName = "string",
-  TargetSnapshotName = "string",
-  TargetBucket = "string",
-  KmsKeyId = "string"
-)
-}
-}
-
 \keyword{internal}

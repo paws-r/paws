@@ -10,17 +10,9 @@ codedeploy_delete_application(applicationName)
 \item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user
 or AWS account.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an application.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_application(
-  applicationName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/delete_application.html} for full documentation.
+}
 \keyword{internal}

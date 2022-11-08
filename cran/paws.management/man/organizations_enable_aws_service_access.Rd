@@ -2,46 +2,19 @@
 % Please edit documentation in R/organizations_operations.R
 \name{organizations_enable_aws_service_access}
 \alias{organizations_enable_aws_service_access}
-\title{Enables the integration of an AWS service (the service that is specified
-by ServicePrincipal) with AWS Organizations}
+\title{Enables the integration of an Amazon Web Services service (the service
+that is specified by ServicePrincipal) with Organizations}
 \usage{
 organizations_enable_aws_service_access(ServicePrincipal)
 }
 \arguments{
-\item{ServicePrincipal}{[required] The service principal name of the AWS service for which you want to
-enable integration with your organization. This is typically in the form
-of a URL, such as \code{ service-abbreviation.amazonaws.com}.}
-}
-\value{
-An empty list.
+\item{ServicePrincipal}{[required] The service principal name of the Amazon Web Services service for which
+you want to enable integration with your organization. This is typically
+in the form of a URL, such as \code{ service-abbreviation.amazonaws.com}.}
 }
 \description{
-Enables the integration of an AWS service (the service that is specified
-by \code{ServicePrincipal}) with AWS Organizations. When you enable
-integration, you allow the specified service to create a \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{service-linked role}
-in all the accounts in your organization. This allows the service to
-perform operations on your behalf in your organization and its accounts.
+Enables the integration of an Amazon Web Services service (the service that is specified by \code{ServicePrincipal}) with Organizations. When you enable integration, you allow the specified service to create a \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{service-linked role} in all the accounts in your organization. This allows the service to perform operations on your behalf in your organization and its accounts.
 
-We recommend that you enable integration between AWS Organizations and
-the specified AWS service by using the console or commands that are
-provided by the specified service. Doing so ensures that the service is
-aware that it can create the resources that are required for the
-integration. How the service creates those resources in the
-organization's accounts depends on that service. For more information,
-see the documentation for the other AWS service.
-
-For more information about enabling services to integrate with AWS
-Organizations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
-in the \emph{AWS Organizations User Guide.}
-
-This operation can be called only from the organization's management
-account and only if the organization has \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{enabled all features}.
+See \url{https://paws-r.github.io/docs/organizations/enable_aws_service_access.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$enable_aws_service_access(
-  ServicePrincipal = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,77 +4,16 @@
 \alias{mturk_list_hi_ts}
 \title{The ListHITs operation returns all of a Requester's HITs}
 \usage{
-mturk_list_hi_ts(NextToken, MaxResults)
+mturk_list_hi_ts(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{Pagination token}
 
 \item{MaxResults}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  NumResults = 123,
-  HITs = list(
-    list(
-      HITId = "string",
-      HITTypeId = "string",
-      HITGroupId = "string",
-      HITLayoutId = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Title = "string",
-      Description = "string",
-      Question = "string",
-      Keywords = "string",
-      HITStatus = "Assignable"|"Unassignable"|"Reviewable"|"Reviewing"|"Disposed",
-      MaxAssignments = 123,
-      Reward = "string",
-      AutoApprovalDelayInSeconds = 123,
-      Expiration = as.POSIXct(
-        "2015-01-01"
-      ),
-      AssignmentDurationInSeconds = 123,
-      RequesterAnnotation = "string",
-      QualificationRequirements = list(
-        list(
-          QualificationTypeId = "string",
-          Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
-          IntegerValues = list(
-            123
-          ),
-          LocaleValues = list(
-            list(
-              Country = "string",
-              Subdivision = "string"
-            )
-          ),
-          RequiredToPreview = TRUE|FALSE,
-          ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
-        )
-      ),
-      HITReviewStatus = "NotReviewed"|"MarkedForReview"|"ReviewedAppropriate"|"ReviewedInappropriate",
-      NumberOfAssignmentsPending = 123,
-      NumberOfAssignmentsAvailable = 123,
-      NumberOfAssignmentsCompleted = 123
-    )
-  )
-)
-}
-}
 \description{
-The \code{\link[=mturk_list_hi_ts]{list_hi_ts}} operation returns all of a
-Requester's HITs. The operation returns HITs of any status, except for
-HITs that have been deleted of with the DeleteHIT operation or that have
-been auto-deleted.
-}
-\section{Request syntax}{
-\preformatted{svc$list_hi_ts(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+The \code{\link[=mturk_list_hi_ts]{list_hi_ts}} operation returns all of a Requester's HITs. The operation returns HITs of any status, except for HITs that have been deleted of with the DeleteHIT operation or that have been auto-deleted.
 
+See \url{https://paws-r.github.io/docs/mturk/list_hi_ts.html} for full documentation.
+}
 \keyword{internal}

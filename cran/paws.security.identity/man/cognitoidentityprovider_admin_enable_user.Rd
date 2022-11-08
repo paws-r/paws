@@ -9,22 +9,11 @@ cognitoidentityprovider_admin_enable_user(UserPoolId, Username)
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to enable the user.}
 
-\item{Username}{[required] The user name of the user you wish to enable.}
-}
-\value{
-An empty list.
+\item{Username}{[required] The user name of the user you want to enable.}
 }
 \description{
 Enables the specified user as an administrator. Works on any user.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_enable_user.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_enable_user(
-  UserPoolId = "string",
-  Username = "string"
-)
-}
-}
-
 \keyword{internal}

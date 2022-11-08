@@ -6,8 +6,13 @@
 jobs that a hyperparameter tuning job launched}
 \usage{
 sagemaker_list_training_jobs_for_hyper_parameter_tuning_job(
-  HyperParameterTuningJobName, NextToken, MaxResults, StatusEquals,
-  SortBy, SortOrder)
+  HyperParameterTuningJobName,
+  NextToken = NULL,
+  MaxResults = NULL,
+  StatusEquals = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{HyperParameterTuningJobName}{[required] The name of the tuning job whose training jobs you want to list.}
@@ -28,54 +33,9 @@ jobs that did not return an objective metric are not listed.}
 
 \item{SortOrder}{The sort order for results. The default is \code{Ascending}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrainingJobSummaries = list(
-    list(
-      TrainingJobDefinitionName = "string",
-      TrainingJobName = "string",
-      TrainingJobArn = "string",
-      TuningJobName = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TrainingStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TrainingEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TrainingJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-      TunedHyperParameters = list(
-        "string"
-      ),
-      FailureReason = "string",
-      FinalHyperParameterTuningJobObjectiveMetric = list(
-        Type = "Maximize"|"Minimize",
-        MetricName = "string",
-        Value = 123.0
-      ),
-      ObjectiveStatus = "Succeeded"|"Pending"|"Failed"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Gets a list of TrainingJobSummary objects that describe the training
-jobs that a hyperparameter tuning job launched.
-}
-\section{Request syntax}{
-\preformatted{svc$list_training_jobs_for_hyper_parameter_tuning_job(
-  HyperParameterTuningJobName = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-  SortBy = "Name"|"CreationTime"|"Status"|"FinalObjectiveMetricValue",
-  SortOrder = "Ascending"|"Descending"
-)
-}
-}
+Gets a list of TrainingJobSummary objects that describe the training jobs that a hyperparameter tuning job launched.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_training_jobs_for_hyper_parameter_tuning_job.html} for full documentation.
+}
 \keyword{internal}

@@ -7,25 +7,15 @@
 apigateway_delete_base_path_mapping(domainName, basePath)
 }
 \arguments{
-\item{domainName}{[required] [Required] The domain name of the BasePathMapping resource to delete.}
+\item{domainName}{[required] The domain name of the BasePathMapping resource to delete.}
 
-\item{basePath}{[required] [Required] The base path name of the BasePathMapping resource to
-delete.
+\item{basePath}{[required] The base path name of the BasePathMapping resource to delete.
 
 To specify an empty base path, set this parameter to \code{'(none)'}.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the BasePathMapping resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_base_path_mapping(
-  domainName = "string",
-  basePath = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_base_path_mapping.html} for full documentation.
+}
 \keyword{internal}

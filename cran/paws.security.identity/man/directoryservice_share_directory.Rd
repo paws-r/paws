@@ -2,15 +2,20 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_share_directory}
 \alias{directoryservice_share_directory}
-\title{Shares a specified directory (DirectoryId) in your AWS account
-(directory owner) with another AWS account (directory consumer)}
+\title{Shares a specified directory (DirectoryId) in your Amazon Web Services
+account (directory owner) with another Amazon Web Services account
+(directory consumer)}
 \usage{
-directoryservice_share_directory(DirectoryId, ShareNotes, ShareTarget,
-  ShareMethod)
+directoryservice_share_directory(
+  DirectoryId,
+  ShareNotes = NULL,
+  ShareTarget,
+  ShareMethod
+)
 }
 \arguments{
-\item{DirectoryId}{[required] Identifier of the AWS Managed Microsoft AD directory that you want to
-share with other AWS accounts.}
+\item{DirectoryId}{[required] Identifier of the Managed Microsoft AD directory that you want to share
+with other Amazon Web Services accounts.}
 
 \item{ShareNotes}{A directory share request that is sent by the directory owner to the
 directory consumer. The request includes a typed message to help the
@@ -21,48 +26,13 @@ the share invitation.}
 to be shared.}
 
 \item{ShareMethod}{[required] The method used when sharing a directory to determine whether the
-directory should be shared within your AWS organization
-(\code{ORGANIZATIONS}) or with any AWS account by sending a directory sharing
-request (\code{HANDSHAKE}).}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  SharedDirectoryId = "string"
-)
-}
+directory should be shared within your Amazon Web Services organization
+(\code{ORGANIZATIONS}) or with any Amazon Web Services account by sending a
+directory sharing request (\code{HANDSHAKE}).}
 }
 \description{
-Shares a specified directory (\code{DirectoryId}) in your AWS account
-(directory owner) with another AWS account (directory consumer). With
-this operation you can use your directory from any AWS account and from
-any Amazon VPC within an AWS Region.
+Shares a specified directory (\code{DirectoryId}) in your Amazon Web Services account (directory owner) with another Amazon Web Services account (directory consumer). With this operation you can use your directory from any Amazon Web Services account and from any Amazon VPC within an Amazon Web Services Region.
 
-When you share your AWS Managed Microsoft AD directory, AWS Directory
-Service creates a shared directory in the directory consumer account.
-This shared directory contains the metadata to provide access to the
-directory within the directory owner account. The shared directory is
-visible in all VPCs in the directory consumer account.
-
-The \code{ShareMethod} parameter determines whether the specified directory
-can be shared between AWS accounts inside the same AWS organization
-(\code{ORGANIZATIONS}). It also determines whether you can share the
-directory with any other AWS account either inside or outside of the
-organization (\code{HANDSHAKE}).
-
-The \code{ShareNotes} parameter is only used when \code{HANDSHAKE} is called,
-which sends a directory sharing request to the directory consumer.
+See \url{https://paws-r.github.io/docs/directoryservice/share_directory.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$share_directory(
-  DirectoryId = "string",
-  ShareNotes = "string",
-  ShareTarget = list(
-    Id = "string",
-    Type = "ACCOUNT"
-  ),
-  ShareMethod = "ORGANIZATIONS"|"HANDSHAKE"
-)
-}
-}
-
 \keyword{internal}

@@ -5,8 +5,14 @@
 \title{Lists available reserved cache node offerings}
 \usage{
 elasticache_describe_reserved_cache_nodes_offerings(
-  ReservedCacheNodesOfferingId, CacheNodeType, Duration,
-  ProductDescription, OfferingType, MaxRecords, Marker)
+  ReservedCacheNodesOfferingId = NULL,
+  CacheNodeType = NULL,
+  Duration = NULL,
+  ProductDescription = NULL,
+  OfferingType = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{ReservedCacheNodesOfferingId}{The offering identifier filter value. Use this parameter to show only
@@ -27,16 +33,13 @@ previous generation counterparts.
 \itemize{
 \item Current generation:
 
-\strong{M6g node types} (available only for Redis engine version
-5.0.6 onward and for Memcached engine version 1.5.16 onward).
-
+\strong{M6g node types:} (available only for Redis engine version
+5.0.6 onward and for Memcached engine version 1.5.16 onward)
 \code{cache.m6g.large}, \code{cache.m6g.xlarge}, \code{cache.m6g.2xlarge},
 \code{cache.m6g.4xlarge}, \code{cache.m6g.8xlarge}, \code{cache.m6g.12xlarge},
 \code{cache.m6g.16xlarge}
 
-At this time, M6g node types are available in the following
-regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-eu-west-1 and ap-northeast-1.
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{M5 node types:} \code{cache.m5.large}, \code{cache.m5.xlarge},
 \code{cache.m5.2xlarge}, \code{cache.m5.4xlarge}, \code{cache.m5.12xlarge},
@@ -45,12 +48,18 @@ eu-west-1 and ap-northeast-1.
 \strong{M4 node types:} \code{cache.m4.large}, \code{cache.m4.xlarge},
 \code{cache.m4.2xlarge}, \code{cache.m4.4xlarge}, \code{cache.m4.10xlarge}
 
+\strong{T4g node types} (available only for Redis engine version
+5.0.6 onward and for Memcached engine version 1.5.16 onward):
+\code{cache.t4g.micro}, \code{cache.t4g.small}, \code{cache.t4g.medium}
+
 \strong{T3 node types:} \code{cache.t3.micro}, \code{cache.t3.small},
 \code{cache.t3.medium}
 
 \strong{T2 node types:} \code{cache.t2.micro}, \code{cache.t2.small},
 \code{cache.t2.medium}
-\item Previous generation: (not recommended)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{T1 node types:} \code{cache.t1.micro}
 
@@ -62,9 +71,22 @@ eu-west-1 and ap-northeast-1.
 }
 \item Compute optimized:
 \itemize{
-\item Previous generation: (not recommended)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{C1 node types:} \code{cache.c1.xlarge}
+}
+\item Memory optimized with data tiering:
+\itemize{
+\item Current generation:
+
+\strong{R6gd node types} (available only for Redis engine version 6.2
+onward).
+
+\code{cache.r6gd.xlarge}, \code{cache.r6gd.2xlarge}, \code{cache.r6gd.4xlarge},
+\code{cache.r6gd.8xlarge}, \code{cache.r6gd.12xlarge},
+\code{cache.r6gd.16xlarge}
 }
 \item Memory optimized:
 \itemize{
@@ -77,9 +99,7 @@ eu-west-1 and ap-northeast-1.
 \code{cache.r6g.4xlarge}, \code{cache.r6g.8xlarge}, \code{cache.r6g.12xlarge},
 \code{cache.r6g.16xlarge}
 
-At this time, R6g node types are available in the following
-regions: us-east-1, us-west-2, us-east-2, eu-central-1,
-eu-west-1 and ap-northeast-1.
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{R5 node types:} \code{cache.r5.large}, \code{cache.r5.xlarge},
 \code{cache.r5.2xlarge}, \code{cache.r5.4xlarge}, \code{cache.r5.12xlarge},
@@ -88,7 +108,9 @@ eu-west-1 and ap-northeast-1.
 \strong{R4 node types:} \code{cache.r4.large}, \code{cache.r4.xlarge},
 \code{cache.r4.2xlarge}, \code{cache.r4.4xlarge}, \code{cache.r4.8xlarge},
 \code{cache.r4.16xlarge}
-\item Previous generation: (not recommended)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{M2 node types:} \code{cache.m2.xlarge}, \code{cache.m2.2xlarge},
 \code{cache.m2.4xlarge}
@@ -137,43 +159,9 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  ReservedCacheNodesOfferings = list(
-    list(
-      ReservedCacheNodesOfferingId = "string",
-      CacheNodeType = "string",
-      Duration = 123,
-      FixedPrice = 123.0,
-      UsagePrice = 123.0,
-      ProductDescription = "string",
-      OfferingType = "string",
-      RecurringCharges = list(
-        list(
-          RecurringChargeAmount = 123.0,
-          RecurringChargeFrequency = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Lists available reserved cache node offerings.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_reserved_cache_nodes_offerings(
-  ReservedCacheNodesOfferingId = "string",
-  CacheNodeType = "string",
-  Duration = "string",
-  ProductDescription = "string",
-  OfferingType = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticache/describe_reserved_cache_nodes_offerings.html} for full documentation.
+}
 \keyword{internal}

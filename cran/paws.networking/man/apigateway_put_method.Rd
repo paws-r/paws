@@ -4,22 +4,31 @@
 \alias{apigateway_put_method}
 \title{Add a method to an existing Resource resource}
 \usage{
-apigateway_put_method(restApiId, resourceId, httpMethod,
-  authorizationType, authorizerId, apiKeyRequired, operationName,
-  requestParameters, requestModels, requestValidatorId,
-  authorizationScopes)
+apigateway_put_method(
+  restApiId,
+  resourceId,
+  httpMethod,
+  authorizationType,
+  authorizerId = NULL,
+  apiKeyRequired = NULL,
+  operationName = NULL,
+  requestParameters = NULL,
+  requestModels = NULL,
+  requestValidatorId = NULL,
+  authorizationScopes = NULL
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] The Resource identifier for the new Method resource.}
+\item{resourceId}{[required] The Resource identifier for the new Method resource.}
 
-\item{httpMethod}{[required] [Required] Specifies the method request's HTTP method type.}
+\item{httpMethod}{[required] Specifies the method request's HTTP method type.}
 
-\item{authorizationType}{[required] [Required] The method's authorization type. Valid values are \code{NONE}
-for open access, \code{AWS_IAM} for using AWS IAM permissions, \code{CUSTOM} for
-using a custom authorizer, or \code{COGNITO_USER_POOLS} for using a Cognito
-user pool.}
+\item{authorizationType}{[required] The method's authorization type. Valid values are \code{NONE} for open
+access, \code{AWS_IAM} for using AWS IAM permissions, \code{CUSTOM} for using a
+custom authorizer, or \code{COGNITO_USER_POOLS} for using a Cognito user
+pool.}
 
 \item{authorizerId}{Specifies the identifier of an Authorizer to use on this Method, if the
 type is CUSTOM or COGNITO_USER_POOLS. The authorizer identifier is
@@ -56,98 +65,9 @@ claimed scope in the access token. Otherwise, the invocation is not
 authorized. When the method scope is configured, the client must provide
 an access token instead of an identity token for authorization purposes.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  httpMethod = "string",
-  authorizationType = "string",
-  authorizerId = "string",
-  apiKeyRequired = TRUE|FALSE,
-  requestValidatorId = "string",
-  operationName = "string",
-  requestParameters = list(
-    TRUE|FALSE
-  ),
-  requestModels = list(
-    "string"
-  ),
-  methodResponses = list(
-    list(
-      statusCode = "string",
-      responseParameters = list(
-        TRUE|FALSE
-      ),
-      responseModels = list(
-        "string"
-      )
-    )
-  ),
-  methodIntegration = list(
-    type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-    httpMethod = "string",
-    uri = "string",
-    connectionType = "INTERNET"|"VPC_LINK",
-    connectionId = "string",
-    credentials = "string",
-    requestParameters = list(
-      "string"
-    ),
-    requestTemplates = list(
-      "string"
-    ),
-    passthroughBehavior = "string",
-    contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-    timeoutInMillis = 123,
-    cacheNamespace = "string",
-    cacheKeyParameters = list(
-      "string"
-    ),
-    integrationResponses = list(
-      list(
-        statusCode = "string",
-        selectionPattern = "string",
-        responseParameters = list(
-          "string"
-        ),
-        responseTemplates = list(
-          "string"
-        ),
-        contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-      )
-    ),
-    tlsConfig = list(
-      insecureSkipVerification = TRUE|FALSE
-    )
-  ),
-  authorizationScopes = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Add a method to an existing Resource resource.
-}
-\section{Request syntax}{
-\preformatted{svc$put_method(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  authorizationType = "string",
-  authorizerId = "string",
-  apiKeyRequired = TRUE|FALSE,
-  operationName = "string",
-  requestParameters = list(
-    TRUE|FALSE
-  ),
-  requestModels = list(
-    "string"
-  ),
-  requestValidatorId = "string",
-  authorizationScopes = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/put_method.html} for full documentation.
+}
 \keyword{internal}

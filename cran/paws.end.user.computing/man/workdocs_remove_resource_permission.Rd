@@ -5,8 +5,12 @@
 \title{Removes the permission for the specified principal from the specified
 resource}
 \usage{
-workdocs_remove_resource_permission(AuthenticationToken, ResourceId,
-  PrincipalId, PrincipalType)
+workdocs_remove_resource_permission(
+  AuthenticationToken = NULL,
+  ResourceId,
+  PrincipalId,
+  PrincipalType = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -18,21 +22,9 @@ administrator credentials to access the API.}
 
 \item{PrincipalType}{The principal type of the resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes the permission for the specified principal from the specified
-resource.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_resource_permission(
-  AuthenticationToken = "string",
-  ResourceId = "string",
-  PrincipalId = "string",
-  PrincipalType = "USER"|"GROUP"|"INVITE"|"ANONYMOUS"|"ORGANIZATION"
-)
-}
-}
+Removes the permission for the specified principal from the specified resource.
 
+See \url{https://paws-r.github.io/docs/workdocs/remove_resource_permission.html} for full documentation.
+}
 \keyword{internal}

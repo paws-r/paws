@@ -4,19 +4,49 @@
 \alias{s3_copy_object}
 \title{Creates a copy of an object that is already stored in Amazon S3}
 \usage{
-s3_copy_object(ACL, Bucket, CacheControl, ContentDisposition,
-  ContentEncoding, ContentLanguage, ContentType, CopySource,
-  CopySourceIfMatch, CopySourceIfModifiedSince, CopySourceIfNoneMatch,
-  CopySourceIfUnmodifiedSince, Expires, GrantFullControl, GrantRead,
-  GrantReadACP, GrantWriteACP, Key, Metadata, MetadataDirective,
-  TaggingDirective, ServerSideEncryption, StorageClass,
-  WebsiteRedirectLocation, SSECustomerAlgorithm, SSECustomerKey,
-  SSECustomerKeyMD5, SSEKMSKeyId, SSEKMSEncryptionContext,
-  BucketKeyEnabled, CopySourceSSECustomerAlgorithm,
-  CopySourceSSECustomerKey, CopySourceSSECustomerKeyMD5, RequestPayer,
-  Tagging, ObjectLockMode, ObjectLockRetainUntilDate,
-  ObjectLockLegalHoldStatus, ExpectedBucketOwner,
-  ExpectedSourceBucketOwner)
+s3_copy_object(
+  ACL = NULL,
+  Bucket,
+  CacheControl = NULL,
+  ChecksumAlgorithm = NULL,
+  ContentDisposition = NULL,
+  ContentEncoding = NULL,
+  ContentLanguage = NULL,
+  ContentType = NULL,
+  CopySource,
+  CopySourceIfMatch = NULL,
+  CopySourceIfModifiedSince = NULL,
+  CopySourceIfNoneMatch = NULL,
+  CopySourceIfUnmodifiedSince = NULL,
+  Expires = NULL,
+  GrantFullControl = NULL,
+  GrantRead = NULL,
+  GrantReadACP = NULL,
+  GrantWriteACP = NULL,
+  Key,
+  Metadata = NULL,
+  MetadataDirective = NULL,
+  TaggingDirective = NULL,
+  ServerSideEncryption = NULL,
+  StorageClass = NULL,
+  WebsiteRedirectLocation = NULL,
+  SSECustomerAlgorithm = NULL,
+  SSECustomerKey = NULL,
+  SSECustomerKeyMD5 = NULL,
+  SSEKMSKeyId = NULL,
+  SSEKMSEncryptionContext = NULL,
+  BucketKeyEnabled = NULL,
+  CopySourceSSECustomerAlgorithm = NULL,
+  CopySourceSSECustomerKey = NULL,
+  CopySourceSSECustomerKeyMD5 = NULL,
+  RequestPayer = NULL,
+  Tagging = NULL,
+  ObjectLockMode = NULL,
+  ObjectLockRetainUntilDate = NULL,
+  ObjectLockLegalHoldStatus = NULL,
+  ExpectedBucketOwner = NULL,
+  ExpectedSourceBucketOwner = NULL
+)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the object.
@@ -25,24 +55,28 @@ This action is not supported by Amazon S3 on Outposts.}
 
 \item{Bucket}{[required] The name of the destination bucket.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see Using access
+points in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
-\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
-provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see Using
+Amazon S3 on Outposts in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Specifies caching behavior along the request/reply chain.}
+
+\item{ChecksumAlgorithm}{Indicates the algorithm you want Amazon S3 to use to create the checksum
+for the object. For more information, see Checking object integrity in
+the \emph{Amazon S3 User Guide}.}
 
 \item{ContentDisposition}{Specifies presentational information for the object.}
 
@@ -56,14 +90,14 @@ referenced by the Content-Type header field.}
 
 \item{CopySource}{[required] Specifies the source object for the copy operation. You specify the
 value in one of two formats, depending on whether you want to access the
-source object through an \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{access point}:
+source object through an access point:
 \itemize{
 \item For objects not accessed through an access point, specify the name
 of the source bucket and the key of the source object, separated by
 a slash (/). For example, to copy the object \code{reports/january.pdf}
 from the bucket \code{awsexamplebucket}, use
-\code{awsexamplebucket/reports/january.pdf}. The value must be URL
-encoded.
+\code{awsexamplebucket/reports/january.pdf}. The value must be
+URL-encoded.
 \item For objects accessed through access points, specify the Amazon
 Resource Name (ARN) of the object as accessed through the access
 point, in the format
@@ -75,7 +109,8 @@ point \code{my-access-point} owned by account \code{123456789012} in Region
 The value must be URL encoded.
 
 Amazon S3 supports copy operations using access points only when the
-source and destination buckets are in the same AWS Region.
+source and destination buckets are in the same Amazon Web Services
+Region.
 
 Alternatively, for objects accessed through Amazon S3 on Outposts,
 specify the ARN of the object as accessed in the format
@@ -84,7 +119,7 @@ For example, to copy the object \code{reports/january.pdf} through
 outpost \code{my-outpost} owned by account \code{123456789012} in Region
 \code{us-west-2}, use the URL encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/object/reports/january.pdf}.
-The value must be URL encoded.
+The value must be URL-encoded.
 }
 
 To copy a specific version of an object, append
@@ -138,8 +173,8 @@ Amazon S3 (for example, AES256, aws:kms).}
 created objects. The STANDARD storage class provides high durability and
 high availability. Depending on performance needs, you can specify a
 different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-Storage Class. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{Storage Classes}
-in the \emph{Amazon S3 Service Developer Guide}.}
+Storage Class. For more information, see Storage Classes in the \emph{Amazon
+S3 User Guide}.}
 
 \item{WebsiteRedirectLocation}{If the bucket is configured as a website, redirects requests for this
 object to another object in the same bucket or to an external URL.
@@ -158,22 +193,24 @@ appropriate for use with the algorithm specified in the
 1321. Amazon S3 uses this header for a message integrity check to ensure
 that the encryption key was transmitted without error.}
 
-\item{SSEKMSKeyId}{Specifies the AWS KMS key ID to use for object encryption. All GET and
-PUT requests for an object protected by AWS KMS will fail if not made
-via SSL or using SigV4. For information about configuring using any of
-the officially supported AWS SDKs and AWS CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version}{Specifying the Signature Version in Request Authentication}
-in the \emph{Amazon S3 Developer Guide}.}
+\item{SSEKMSKeyId}{Specifies the Amazon Web Services KMS key ID to use for object
+encryption. All GET and PUT requests for an object protected by Amazon
+Web Services KMS will fail if not made via SSL or using SigV4. For
+information about configuring using any of the officially supported
+Amazon Web Services SDKs and Amazon Web Services CLI, see Specifying the
+Signature Version in Request Authentication in the \emph{Amazon S3 User
+Guide}.}
 
-\item{SSEKMSEncryptionContext}{Specifies the AWS KMS Encryption Context to use for object encryption.
-The value of this header is a base64-encoded UTF-8 string holding JSON
-with the encryption context key-value pairs.}
+\item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context to use for
+object encryption. The value of this header is a base64-encoded UTF-8
+string holding JSON with the encryption context key-value pairs.}
 
 \item{BucketKeyEnabled}{Specifies whether Amazon S3 should use an S3 Bucket Key for object
 encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
 this header to \code{true} causes Amazon S3 to use an S3 Bucket Key for
 object encryption with SSE-KMS.
 
-Specifying this header with a COPY operation doesn’t affect bucket-level
+Specifying this header with a COPY action doesn’t affect bucket-level
 settings for S3 Bucket Key.}
 
 \item{CopySourceSSECustomerAlgorithm}{Specifies the algorithm to use when decrypting the source object (for
@@ -198,251 +235,19 @@ URL Query parameters.}
 \item{ObjectLockRetainUntilDate}{The date and time when you want the copied object's Object Lock to
 expire.}
 
-\item{ObjectLockLegalHoldStatus}{Specifies whether you want to apply a Legal Hold to the copied object.}
+\item{ObjectLockLegalHoldStatus}{Specifies whether you want to apply a legal hold to the copied object.}
 
-\item{ExpectedBucketOwner}{The account id of the expected destination bucket owner. If the
-destination bucket is owned by a different account, the request will
-fail with an HTTP \verb{403 (Access Denied)} error.}
+\item{ExpectedBucketOwner}{The account ID of the expected destination bucket owner. If the
+destination bucket is owned by a different account, the request fails
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 
-\item{ExpectedSourceBucketOwner}{The account id of the expected source bucket owner. If the source bucket
-is owned by a different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CopyObjectResult = list(
-    ETag = "string",
-    LastModified = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  Expiration = "string",
-  CopySourceVersionId = "string",
-  VersionId = "string",
-  ServerSideEncryption = "AES256"|"aws:kms",
-  SSECustomerAlgorithm = "string",
-  SSECustomerKeyMD5 = "string",
-  SSEKMSKeyId = "string",
-  SSEKMSEncryptionContext = "string",
-  BucketKeyEnabled = TRUE|FALSE,
-  RequestCharged = "requester"
-)
-}
+\item{ExpectedSourceBucketOwner}{The account ID of the expected source bucket owner. If the source bucket
+is owned by a different account, the request fails with the HTTP status
+code \verb{403 Forbidden} (access denied).}
 }
 \description{
 Creates a copy of an object that is already stored in Amazon S3.
 
-You can store individual objects of up to 5 TB in Amazon S3. You create
-a copy of your object up to 5 GB in size in a single atomic operation
-using this API. However, to copy an object greater than 5 GB, you must
-use the multipart upload Upload Part - Copy API. For more information,
-see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/CopyingObjectsMPUapi.html}{Copy Object Using the REST Multipart Upload API}.
-
-All copy requests must be authenticated. Additionally, you must have
-\emph{read} access to the source object and \emph{write} access to the destination
-bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html}{REST Authentication}.
-Both the Region that you want to copy the object from and the Region
-that you want to copy the object to must be enabled for your account.
-
-A copy request might return an error when Amazon S3 receives the copy
-request or while Amazon S3 is copying the files. If the error occurs
-before the copy operation starts, you receive a standard Amazon S3
-error. If the error occurs during the copy operation, the error response
-is embedded in the \verb{200 OK} response. This means that a \verb{200 OK}
-response can contain either a success or an error. Design your
-application to parse the contents of the response and handle it
-appropriately.
-
-If the copy is successful, you receive a response with information about
-the copied object.
-
-If the request is an HTTP 1.1 request, the response is chunk encoded. If
-it were not, it would not contain the content-length, and you would need
-to read the entire body.
-
-The copy request charge is based on the storage class and Region that
-you specify for the destination object. For pricing information, see
-\href{https://aws.amazon.com/s3/pricing/}{Amazon S3 pricing}.
-
-Amazon S3 transfer acceleration does not support cross-Region copies. If
-you request a cross-Region copy using a transfer acceleration endpoint,
-you get a 400 \verb{Bad Request} error. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html}{Transfer Acceleration}.
-
-\strong{Metadata}
-
-When copying an object, you can preserve all metadata (default) or
-specify new metadata. However, the ACL is not preserved and is set to
-private for the user making the request. To override the default ACL
-setting, specify a new ACL when generating a copy request. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Using ACLs}.
-
-To specify whether you want the object metadata copied from the source
-object or replaced with metadata provided in the request, you can
-optionally add the \code{x-amz-metadata-directive} header. When you grant
-permissions, you can use the \code{s3:x-amz-metadata-directive} condition key
-to enforce certain metadata behavior when objects are uploaded. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/amazon-s3-policy-keys.html}{Specifying Conditions in a Policy}
-in the \emph{Amazon S3 Developer Guide}. For a complete list of Amazon
-S3-specific condition keys, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/list_amazons3.html}{Actions, Resources, and Condition Keys for Amazon S3}.
-
-\strong{\verb{x-amz-copy-source-if} Headers}
-
-To only copy an object under certain conditions, such as whether the
-\code{Etag} matches or whether the object was modified before or after a
-specified date, use the following request parameters:
-\itemize{
-\item \verb{x-amz-copy-source-if-match}
-\item \verb{x-amz-copy-source-if-none-match}
-\item \verb{x-amz-copy-source-if-unmodified-since}
-\item \verb{x-amz-copy-source-if-modified-since}
-}
-
-If both the \verb{x-amz-copy-source-if-match} and
-\verb{x-amz-copy-source-if-unmodified-since} headers are present in the
-request and evaluate as follows, Amazon S3 returns \verb{200 OK} and copies
-the data:
-\itemize{
-\item \verb{x-amz-copy-source-if-match} condition evaluates to true
-\item \verb{x-amz-copy-source-if-unmodified-since} condition evaluates to false
-}
-
-If both the \verb{x-amz-copy-source-if-none-match} and
-\verb{x-amz-copy-source-if-modified-since} headers are present in the request
-and evaluate as follows, Amazon S3 returns the \verb{412 Precondition Failed}
-response code:
-\itemize{
-\item \verb{x-amz-copy-source-if-none-match} condition evaluates to false
-\item \verb{x-amz-copy-source-if-modified-since} condition evaluates to true
-}
-
-All headers with the \verb{x-amz-} prefix, including \code{x-amz-copy-source},
-must be signed.
-
-\strong{Server-side encryption}
-
-When you perform a CopyObject operation, you can optionally use the
-appropriate encryption-related headers to encrypt the object using
-server-side encryption with AWS managed encryption keys (SSE-S3 or
-SSE-KMS) or a customer-provided encryption key. With server-side
-encryption, Amazon S3 encrypts your data as it writes it to disks in its
-data centers and decrypts the data when you access it. For more
-information about server-side encryption, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html}{Using Server-Side Encryption}.
-
-If a target object uses SSE-KMS, you can enable an S3 Bucket Key for the
-object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html}{Amazon S3 Bucket Keys}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-\strong{Access Control List (ACL)-Specific Request Headers}
-
-When copying an object, you can optionally use headers to grant
-ACL-based permissions. By default, all objects are private. Only the
-owner has full access control. When adding a new object, you can grant
-permissions to individual AWS accounts or to predefined groups defined
-by Amazon S3. These permissions are then added to the ACL on the object.
-For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Access Control List (ACL) Overview}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/managing-acls.html}{Managing ACLs Using the REST API}.
-
-\strong{Storage Class Options}
-
-You can use the \code{\link[=s3_copy_object]{copy_object}} operation to change the
-storage class of an object that is already stored in Amazon S3 using the
-\code{StorageClass} parameter. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{Storage Classes}
-in the \emph{Amazon S3 Service Developer Guide}.
-
-\strong{Versioning}
-
-By default, \code{x-amz-copy-source} identifies the current version of an
-object to copy. If the current version is a delete marker, Amazon S3
-behaves as if the object was deleted. To copy a different version, use
-the \code{versionId} subresource.
-
-If you enable versioning on the target bucket, Amazon S3 generates a
-unique version ID for the object being copied. This version ID is
-different from the version ID of the source object. Amazon S3 returns
-the version ID of the copied object in the \code{x-amz-version-id} response
-header in the response.
-
-If you do not enable versioning or suspend it on the target bucket, the
-version ID that Amazon S3 generates is always null.
-
-If the source object's storage class is GLACIER, you must restore a copy
-of this object before you can use it as a source object for the copy
-operation. For more information, see
-\code{\link[=s3_restore_object]{restore_object}}.
-
-The following operations are related to \code{\link[=s3_copy_object]{copy_object}}:
-\itemize{
-\item \code{\link[=s3_put_object]{put_object}}
-\item \code{\link[=s3_get_object]{get_object}}
-}
-
-For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/copy-object.html}{Copying Objects}.
-}
-\section{Request syntax}{
-\preformatted{svc$copy_object(
-  ACL = "private"|"public-read"|"public-read-write"|"authenticated-read"|"aws-exec-read"|"bucket-owner-read"|"bucket-owner-full-control",
-  Bucket = "string",
-  CacheControl = "string",
-  ContentDisposition = "string",
-  ContentEncoding = "string",
-  ContentLanguage = "string",
-  ContentType = "string",
-  CopySource = "string",
-  CopySourceIfMatch = "string",
-  CopySourceIfModifiedSince = as.POSIXct(
-    "2015-01-01"
-  ),
-  CopySourceIfNoneMatch = "string",
-  CopySourceIfUnmodifiedSince = as.POSIXct(
-    "2015-01-01"
-  ),
-  Expires = as.POSIXct(
-    "2015-01-01"
-  ),
-  GrantFullControl = "string",
-  GrantRead = "string",
-  GrantReadACP = "string",
-  GrantWriteACP = "string",
-  Key = "string",
-  Metadata = list(
-    "string"
-  ),
-  MetadataDirective = "COPY"|"REPLACE",
-  TaggingDirective = "COPY"|"REPLACE",
-  ServerSideEncryption = "AES256"|"aws:kms",
-  StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
-  WebsiteRedirectLocation = "string",
-  SSECustomerAlgorithm = "string",
-  SSECustomerKey = raw,
-  SSECustomerKeyMD5 = "string",
-  SSEKMSKeyId = "string",
-  SSEKMSEncryptionContext = "string",
-  BucketKeyEnabled = TRUE|FALSE,
-  CopySourceSSECustomerAlgorithm = "string",
-  CopySourceSSECustomerKey = raw,
-  CopySourceSSECustomerKeyMD5 = "string",
-  RequestPayer = "requester",
-  Tagging = "string",
-  ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
-  ObjectLockRetainUntilDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  ObjectLockLegalHoldStatus = "ON"|"OFF",
-  ExpectedBucketOwner = "string",
-  ExpectedSourceBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example copies an object from one bucket to another.
-svc$copy_object(
-  Bucket = "destinationbucket",
-  CopySource = "/sourcebucket/HappyFacejpg",
-  Key = "HappyFaceCopyjpg"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/copy_object.html} for full documentation.
 }
 \keyword{internal}

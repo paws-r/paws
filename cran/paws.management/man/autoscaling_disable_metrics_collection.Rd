@@ -2,14 +2,16 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_disable_metrics_collection}
 \alias{autoscaling_disable_metrics_collection}
-\title{Disables group metrics for the specified Auto Scaling group}
+\title{Disables group metrics collection for the specified Auto Scaling group}
 \usage{
-autoscaling_disable_metrics_collection(AutoScalingGroupName, Metrics)
+autoscaling_disable_metrics_collection(AutoScalingGroupName, Metrics = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
-\item{Metrics}{Specifies one or more of the following metrics:
+\item{Metrics}{Identifies the metrics to disable.
+
+You can specify one or more of the following metrics:
 \itemize{
 \item \code{GroupMinSize}
 \item \code{GroupMaxSize}
@@ -24,37 +26,23 @@ autoscaling_disable_metrics_collection(AutoScalingGroupName, Metrics)
 \item \code{GroupStandbyCapacity}
 \item \code{GroupTerminatingCapacity}
 \item \code{GroupTotalCapacity}
+\item \code{WarmPoolDesiredCapacity}
+\item \code{WarmPoolWarmedCapacity}
+\item \code{WarmPoolPendingCapacity}
+\item \code{WarmPoolTerminatingCapacity}
+\item \code{WarmPoolTotalCapacity}
+\item \code{GroupAndWarmPoolDesiredCapacity}
+\item \code{GroupAndWarmPoolTotalCapacity}
 }
 
-If you omit this parameter, all metrics are disabled.}
-}
-\value{
-An empty list.
+If you omit this property, all metrics are disabled.
+
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-cloudwatch-monitoring.html#as-group-metrics}{Auto Scaling group metrics}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
-Disables group metrics for the specified Auto Scaling group.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_metrics_collection(
-  AutoScalingGroupName = "string",
-  Metrics = list(
-    "string"
-  )
-)
-}
-}
+Disables group metrics collection for the specified Auto Scaling group.
 
-\examples{
-\dontrun{
-# This example disables collecting data for the GroupDesiredCapacity
-# metric for the specified Auto Scaling group.
-svc$disable_metrics_collection(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  Metrics = list(
-    "GroupDesiredCapacity"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/disable_metrics_collection.html} for full documentation.
 }
 \keyword{internal}

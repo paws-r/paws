@@ -15,51 +15,9 @@ shortened SHA IDs.}
 
 \item{repositoryName}{[required] The name of the repository that contains the commits.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  commits = list(
-    list(
-      commitId = "string",
-      treeId = "string",
-      parents = list(
-        "string"
-      ),
-      message = "string",
-      author = list(
-        name = "string",
-        email = "string",
-        date = "string"
-      ),
-      committer = list(
-        name = "string",
-        email = "string",
-        date = "string"
-      ),
-      additionalData = "string"
-    )
-  ),
-  errors = list(
-    list(
-      commitId = "string",
-      errorCode = "string",
-      errorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns information about the contents of one or more commits in a
-repository.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_get_commits(
-  commitIds = list(
-    "string"
-  ),
-  repositoryName = "string"
-)
-}
-}
+Returns information about the contents of one or more commits in a repository.
 
+See \url{https://paws-r.github.io/docs/codecommit/batch_get_commits.html} for full documentation.
+}
 \keyword{internal}

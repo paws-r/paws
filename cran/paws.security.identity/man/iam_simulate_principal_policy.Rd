@@ -3,13 +3,23 @@
 \name{iam_simulate_principal_policy}
 \alias{iam_simulate_principal_policy}
 \title{Simulate how a set of IAM policies attached to an IAM entity works with
-a list of API operations and AWS resources to determine the policies'
-effective permissions}
+a list of API operations and Amazon Web Services resources to determine
+the policies' effective permissions}
 \usage{
-iam_simulate_principal_policy(PolicySourceArn, PolicyInputList,
-  PermissionsBoundaryPolicyInputList, ActionNames, ResourceArns,
-  ResourcePolicy, ResourceOwner, CallerArn, ContextEntries,
-  ResourceHandlingOption, MaxItems, Marker)
+iam_simulate_principal_policy(
+  PolicySourceArn,
+  PolicyInputList = NULL,
+  PermissionsBoundaryPolicyInputList = NULL,
+  ActionNames,
+  ResourceArns = NULL,
+  ResourcePolicy = NULL,
+  ResourceOwner = NULL,
+  CallerArn = NULL,
+  ContextEntries = NULL,
+  ResourceHandlingOption = NULL,
+  MaxItems = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{PolicySourceArn}{[required] The Amazon Resource Name (ARN) of a user, group, or role whose policies
@@ -18,8 +28,12 @@ role, the simulation includes all policies that are associated with that
 entity. If you specify a user, the simulation also includes all policies
 that are attached to any groups the user belongs to.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the \emph{AWS General Reference}.}
+The maximum length of the policy document that you can pass in this
+operation, including whitespace, is listed below. To view the maximum
+character counts of a managed policy with no whitespaces, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-quotas-entity-length}{IAM and STS character quotas}.
+
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.}
 
 \item{PolicyInputList}{An optional list of additional policy documents to include in the
 simulation. Each document is specified as a string containing the
@@ -45,10 +59,14 @@ effect at a time. For example, if a permissions boundary is attached to
 an entity and you pass in a different permissions boundary policy using
 this parameter, then the new permissions boundary policy is used for the
 simulation. For more information about permissions boundaries, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html}{Permissions Boundaries for IAM Entities}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html}{Permissions boundaries for IAM entities}
 in the \emph{IAM User Guide}. The policy input is specified as a string
 containing the complete, valid JSON text of a permissions boundary
 policy.
+
+The maximum length of the policy document that you can pass in this
+operation, including whitespace, is listed below. To view the maximum
+character counts of a managed policy with no whitespaces, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-quotas-entity-length}{IAM and STS character quotas}.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
 validate this parameter is a string of characters consisting of the
@@ -66,24 +84,30 @@ carriage return (\verb{\\u000D})
 operation is evaluated for each resource. Each operation must include
 the service identifier, such as \code{iam:CreateUser}.}
 
-\item{ResourceArns}{A list of ARNs of AWS resources to include in the simulation. If this
-parameter is not provided, then the value defaults to \code{*} (all
-resources). Each API in the \code{ActionNames} parameter is evaluated for
-each resource in this list. The simulation determines the access result
-(allowed or denied) of each combination and reports it in the response.
+\item{ResourceArns}{A list of ARNs of Amazon Web Services resources to include in the
+simulation. If this parameter is not provided, then the value defaults
+to \code{*} (all resources). Each API in the \code{ActionNames} parameter is
+evaluated for each resource in this list. The simulation determines the
+access result (allowed or denied) of each combination and reports it in
+the response. You can simulate resources that don't exist in your
+account.
 
 The simulation does not automatically retrieve policies for the
 specified resources. If you want to include a resource policy in the
 simulation, then you must include the policy as a string in the
 \code{ResourcePolicy} parameter.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the \emph{AWS General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.}
 
 \item{ResourcePolicy}{A resource-based policy to include in the simulation provided as a
 string. Each resource in the simulation is treated as if it had this
 policy attached. You can include only one resource-based policy in a
 simulation.
+
+The maximum length of the policy document that you can pass in this
+operation, including whitespace, is listed below. To view the maximum
+character counts of a managed policy with no whitespaces, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-quotas-entity-length}{IAM and STS character quotas}.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
 validate this parameter is a string of characters consisting of the
@@ -97,16 +121,16 @@ character set (through \verb{\\u00FF})
 carriage return (\verb{\\u000D})
 }}
 
-\item{ResourceOwner}{An AWS account ID that specifies the owner of any simulated resource
-that does not identify its owner in the resource ARN. Examples of
-resource ARNs include an S3 bucket or object. If \code{ResourceOwner} is
-specified, it is also used as the account owner of any \code{ResourcePolicy}
-included in the simulation. If the \code{ResourceOwner} parameter is not
-specified, then the owner of the resources and the resource policy
-defaults to the account of the identity provided in \code{CallerArn}. This
-parameter is required only if you specify a resource-based policy and
-account that owns the resource is different from the account that owns
-the simulated calling user \code{CallerArn}.}
+\item{ResourceOwner}{An Amazon Web Services account ID that specifies the owner of any
+simulated resource that does not identify its owner in the resource ARN.
+Examples of resource ARNs include an S3 bucket or object. If
+\code{ResourceOwner} is specified, it is also used as the account owner of
+any \code{ResourcePolicy} included in the simulation. If the \code{ResourceOwner}
+parameter is not specified, then the owner of the resources and the
+resource policy defaults to the account of the identity provided in
+\code{CallerArn}. This parameter is required only if you specify a
+resource-based policy and account that owns the resource is different
+from the account that owns the simulated calling user \code{CallerArn}.}
 
 \item{CallerArn}{The ARN of the IAM user that you want to specify as the simulated caller
 of the API operations. If you do not specify a \code{CallerArn}, it defaults
@@ -124,8 +148,8 @@ of an assumed role, federated user, or a service principal.
 that the resource-based policy's \code{Principal} element has a value to use
 in evaluating the policy.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the \emph{AWS General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.}
 
 \item{ContextEntries}{A list of context keys and corresponding values for the simulation to
 use. Whenever a context key is evaluated in one of the simulated IAM
@@ -145,7 +169,7 @@ security group resources. If your scenario includes an EBS volume, then
 you must specify that volume as a resource. If the EC2 scenario includes
 VPC, then you must supply the network interface resource. If it includes
 an IP subnet, then you must specify the subnet resource. For more
-information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html}{Supported Platforms}
+information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html}{Supported platforms}
 in the \emph{Amazon EC2 User Guide}.
 \itemize{
 \item \strong{EC2-Classic-InstanceStore}
@@ -183,141 +207,9 @@ receive a response indicating that the results are truncated. Set it to
 the value of the \code{Marker} element in the response that you received to
 indicate where the next call should start.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EvaluationResults = list(
-    list(
-      EvalActionName = "string",
-      EvalResourceName = "string",
-      EvalDecision = "allowed"|"explicitDeny"|"implicitDeny",
-      MatchedStatements = list(
-        list(
-          SourcePolicyId = "string",
-          SourcePolicyType = "user"|"group"|"role"|"aws-managed"|"user-managed"|"resource"|"none",
-          StartPosition = list(
-            Line = 123,
-            Column = 123
-          ),
-          EndPosition = list(
-            Line = 123,
-            Column = 123
-          )
-        )
-      ),
-      MissingContextValues = list(
-        "string"
-      ),
-      OrganizationsDecisionDetail = list(
-        AllowedByOrganizations = TRUE|FALSE
-      ),
-      PermissionsBoundaryDecisionDetail = list(
-        AllowedByPermissionsBoundary = TRUE|FALSE
-      ),
-      EvalDecisionDetails = list(
-        "allowed"|"explicitDeny"|"implicitDeny"
-      ),
-      ResourceSpecificResults = list(
-        list(
-          EvalResourceName = "string",
-          EvalResourceDecision = "allowed"|"explicitDeny"|"implicitDeny",
-          MatchedStatements = list(
-            list(
-              SourcePolicyId = "string",
-              SourcePolicyType = "user"|"group"|"role"|"aws-managed"|"user-managed"|"resource"|"none",
-              StartPosition = list(
-                Line = 123,
-                Column = 123
-              ),
-              EndPosition = list(
-                Line = 123,
-                Column = 123
-              )
-            )
-          ),
-          MissingContextValues = list(
-            "string"
-          ),
-          EvalDecisionDetails = list(
-            "allowed"|"explicitDeny"|"implicitDeny"
-          ),
-          PermissionsBoundaryDecisionDetail = list(
-            AllowedByPermissionsBoundary = TRUE|FALSE
-          )
-        )
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Simulate how a set of IAM policies attached to an IAM entity works with
-a list of API operations and AWS resources to determine the policies'
-effective permissions. The entity can be an IAM user, group, or role. If
-you specify a user, then the simulation also includes all of the
-policies that are attached to groups that the user belongs to.
+Simulate how a set of IAM policies attached to an IAM entity works with a list of API operations and Amazon Web Services resources to determine the policies' effective permissions. The entity can be an IAM user, group, or role. If you specify a user, then the simulation also includes all of the policies that are attached to groups that the user belongs to. You can simulate resources that don't exist in your account.
 
-You can optionally include a list of one or more additional policies
-specified as strings to include in the simulation. If you want to
-simulate only policies specified as strings, use
-\code{\link[=iam_simulate_custom_policy]{simulate_custom_policy}} instead.
-
-You can also optionally include one resource-based policy to be
-evaluated with each of the resources included in the simulation.
-
-The simulation does not perform the API operations; it only checks the
-authorization to determine if the simulated policies allow or deny the
-operations.
-
-\strong{Note:} This API discloses information about the permissions granted
-to other users. If you do not want users to see other user's
-permissions, then consider allowing them to use
-\code{\link[=iam_simulate_custom_policy]{simulate_custom_policy}} instead.
-
-Context keys are variables maintained by AWS and its services that
-provide details about the context of an API query request. You can use
-the \code{Condition} element of an IAM policy to evaluate context keys. To
-get the list of context keys that the policies require for correct
-simulation, use
-\code{\link[=iam_get_context_keys_for_principal_policy]{get_context_keys_for_principal_policy}}.
-
-If the output is long, you can use the \code{MaxItems} and \code{Marker}
-parameters to paginate the results.
+See \url{https://paws-r.github.io/docs/iam/simulate_principal_policy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$simulate_principal_policy(
-  PolicySourceArn = "string",
-  PolicyInputList = list(
-    "string"
-  ),
-  PermissionsBoundaryPolicyInputList = list(
-    "string"
-  ),
-  ActionNames = list(
-    "string"
-  ),
-  ResourceArns = list(
-    "string"
-  ),
-  ResourcePolicy = "string",
-  ResourceOwner = "string",
-  CallerArn = "string",
-  ContextEntries = list(
-    list(
-      ContextKeyName = "string",
-      ContextKeyValues = list(
-        "string"
-      ),
-      ContextKeyType = "string"|"stringList"|"numeric"|"numericList"|"boolean"|"booleanList"|"ip"|"ipList"|"binary"|"binaryList"|"date"|"dateList"
-    )
-  ),
-  ResourceHandlingOption = "string",
-  MaxItems = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

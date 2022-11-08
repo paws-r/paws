@@ -4,15 +4,24 @@
 \alias{dynamodb_export_table_to_point_in_time}
 \title{Exports table data to an S3 bucket}
 \usage{
-dynamodb_export_table_to_point_in_time(TableArn, ExportTime,
-  ClientToken, S3Bucket, S3BucketOwner, S3Prefix, S3SseAlgorithm,
-  S3SseKmsKeyId, ExportFormat)
+dynamodb_export_table_to_point_in_time(
+  TableArn,
+  ExportTime = NULL,
+  ClientToken = NULL,
+  S3Bucket,
+  S3BucketOwner = NULL,
+  S3Prefix = NULL,
+  S3SseAlgorithm = NULL,
+  S3SseKmsKeyId = NULL,
+  ExportFormat = NULL
+)
 }
 \arguments{
 \item{TableArn}{[required] The Amazon Resource Name (ARN) associated with the table to export.}
 
-\item{ExportTime}{Time in the past from which to export table data. The table export will
-be a snapshot of the table's state at this point in time.}
+\item{ExportTime}{Time in the past from which to export table data, counted in seconds
+from the start of the Unix epoch. The table export will be a snapshot of
+the table's state at this point in time.}
 
 \item{ClientToken}{Providing a \code{ClientToken} makes the call to
 \code{ExportTableToPointInTimeInput} idempotent, meaning that multiple
@@ -30,8 +39,8 @@ parameters within the 8-hour idempotency window, DynamoDB returns an
 
 \item{S3Bucket}{[required] The name of the Amazon S3 bucket to export the snapshot to.}
 
-\item{S3BucketOwner}{The ID of the AWS account that owns the bucket the export will be stored
-in.}
+\item{S3BucketOwner}{The ID of the Amazon Web Services account that owns the bucket the
+export will be stored in.}
 
 \item{S3Prefix}{The Amazon S3 bucket prefix to use as the file name and path of the
 exported snapshot.}
@@ -40,67 +49,18 @@ exported snapshot.}
 Valid values for \code{S3SseAlgorithm} are:
 \itemize{
 \item \code{AES256} - server-side encryption with Amazon S3 managed keys
-\item \code{KMS} - server-side encryption with AWS KMS managed keys
+\item \code{KMS} - server-side encryption with KMS managed keys
 }}
 
-\item{S3SseKmsKeyId}{The ID of the AWS KMS managed key used to encrypt the S3 bucket where
-export data will be stored (if applicable).}
+\item{S3SseKmsKeyId}{The ID of the KMS managed key used to encrypt the S3 bucket where export
+data will be stored (if applicable).}
 
 \item{ExportFormat}{The format for the exported data. Valid values for \code{ExportFormat} are
 \code{DYNAMODB_JSON} or \code{ION}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExportDescription = list(
-    ExportArn = "string",
-    ExportStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ExportManifest = "string",
-    TableArn = "string",
-    TableId = "string",
-    ExportTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ClientToken = "string",
-    S3Bucket = "string",
-    S3BucketOwner = "string",
-    S3Prefix = "string",
-    S3SseAlgorithm = "AES256"|"KMS",
-    S3SseKmsKeyId = "string",
-    FailureCode = "string",
-    FailureMessage = "string",
-    ExportFormat = "DYNAMODB_JSON"|"ION",
-    BilledSizeBytes = 123,
-    ItemCount = 123
-  )
-)
-}
-}
 \description{
-Exports table data to an S3 bucket. The table must have point in time
-recovery enabled, and you can export data from any time within the point
-in time recovery window.
-}
-\section{Request syntax}{
-\preformatted{svc$export_table_to_point_in_time(
-  TableArn = "string",
-  ExportTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  ClientToken = "string",
-  S3Bucket = "string",
-  S3BucketOwner = "string",
-  S3Prefix = "string",
-  S3SseAlgorithm = "AES256"|"KMS",
-  S3SseKmsKeyId = "string",
-  ExportFormat = "DYNAMODB_JSON"|"ION"
-)
-}
-}
+Exports table data to an S3 bucket. The table must have point in time recovery enabled, and you can export data from any time within the point in time recovery window.
 
+See \url{https://paws-r.github.io/docs/dynamodb/export_table_to_point_in_time.html} for full documentation.
+}
 \keyword{internal}

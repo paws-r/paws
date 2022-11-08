@@ -15,21 +15,9 @@ provide a value of blank or null. You can also provide the value of
 none. For information about emoji reaction values supported in AWS
 CodeCommit, see the \href{https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-commit-comment.html#emoji-reaction-table}{AWS CodeCommit User Guide}.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds or updates a reaction to a specified comment for the user whose
-identity is used to make the request. You can only add or update a
-reaction for yourself. You cannot add, modify, or delete a reaction for
-another user.
-}
-\section{Request syntax}{
-\preformatted{svc$put_comment_reaction(
-  commentId = "string",
-  reactionValue = "string"
-)
-}
-}
+Adds or updates a reaction to a specified comment for the user whose identity is used to make the request. You can only add or update a reaction for yourself. You cannot add, modify, or delete a reaction for another user.
 
+See \url{https://paws-r.github.io/docs/codecommit/put_comment_reaction.html} for full documentation.
+}
 \keyword{internal}

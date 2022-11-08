@@ -4,9 +4,18 @@
 \alias{connect_create_user}
 \title{Creates a user account for the specified Amazon Connect instance}
 \usage{
-connect_create_user(Username, Password, IdentityInfo, PhoneConfig,
-  DirectoryUserId, SecurityProfileIds, RoutingProfileId, HierarchyGroupId,
-  InstanceId, Tags)
+connect_create_user(
+  Username,
+  Password = NULL,
+  IdentityInfo = NULL,
+  PhoneConfig,
+  DirectoryUserId = NULL,
+  SecurityProfileIds,
+  RoutingProfileId,
+  HierarchyGroupId = NULL,
+  InstanceId,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Username}{[required] The user name for the account. For instances not using SAML for identity
@@ -40,51 +49,14 @@ management and include this parameter, an error is returned.}
 
 \item{HierarchyGroupId}{The identifier of the hierarchy group for the user.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{Tags}{One or more tags.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UserId = "string",
-  UserArn = "string"
-)
-}
 }
 \description{
 Creates a user account for the specified Amazon Connect instance.
 
-For information about how to create user accounts using the Amazon
-Connect console, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/user-management.html}{Add Users}
-in the \emph{Amazon Connect Administrator Guide}.
+See \url{https://paws-r.github.io/docs/connect/create_user.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_user(
-  Username = "string",
-  Password = "string",
-  IdentityInfo = list(
-    FirstName = "string",
-    LastName = "string",
-    Email = "string"
-  ),
-  PhoneConfig = list(
-    PhoneType = "SOFT_PHONE"|"DESK_PHONE",
-    AutoAccept = TRUE|FALSE,
-    AfterContactWorkTimeLimit = 123,
-    DeskPhoneNumber = "string"
-  ),
-  DirectoryUserId = "string",
-  SecurityProfileIds = list(
-    "string"
-  ),
-  RoutingProfileId = "string",
-  HierarchyGroupId = "string",
-  InstanceId = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

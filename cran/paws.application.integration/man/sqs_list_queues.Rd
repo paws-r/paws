@@ -4,7 +4,7 @@
 \alias{sqs_list_queues}
 \title{Returns a list of your queues in the current region}
 \usage{
-sqs_list_queues(QueueNamePrefix, NextToken, MaxResults)
+sqs_list_queues(QueueNamePrefix = NULL, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{QueueNamePrefix}{A string to use for filtering the list results. Only those queues whose
@@ -18,40 +18,9 @@ Queue URLs and names are case-sensitive.}
 to 1000. You must set \code{MaxResults} to receive a value for \code{NextToken} in
 the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  QueueUrls = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of your queues in the current region. The response
-includes a maximum of 1,000 results. If you specify a value for the
-optional \code{QueueNamePrefix} parameter, only queues with a name that
-begins with the specified value are returned.
+Returns a list of your queues in the current region. The response includes a maximum of 1,000 results. If you specify a value for the optional \code{QueueNamePrefix} parameter, only queues with a name that begins with the specified value are returned.
 
-The \code{listQueues} methods supports pagination. Set parameter \code{MaxResults}
-in the request to specify the maximum number of results to be returned
-in the response. If you do not set \code{MaxResults}, the response includes a
-maximum of 1,000 results. If you set \code{MaxResults} and there are
-additional results to display, the response includes a value for
-\code{NextToken}. Use \code{NextToken} as a parameter in your next request to
-\code{listQueues} to receive the next page of results.
-
-Cross-account permissions don't apply to this action. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+See \url{https://paws-r.github.io/docs/sqs/list_queues.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_queues(
-  QueueNamePrefix = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

@@ -9,41 +9,9 @@ cognitoidentity_get_identity_pool_roles(IdentityPoolId)
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityPoolId = "string",
-  Roles = list(
-    "string"
-  ),
-  RoleMappings = list(
-    list(
-      Type = "Token"|"Rules",
-      AmbiguousRoleResolution = "AuthenticatedRole"|"Deny",
-      RulesConfiguration = list(
-        Rules = list(
-          list(
-            Claim = "string",
-            MatchType = "Equals"|"Contains"|"StartsWith"|"NotEqual",
-            Value = "string",
-            RoleARN = "string"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets the roles for an identity pool.
 
-You must use AWS Developer credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/get_identity_pool_roles.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_identity_pool_roles(
-  IdentityPoolId = "string"
-)
-}
-}
-
 \keyword{internal}

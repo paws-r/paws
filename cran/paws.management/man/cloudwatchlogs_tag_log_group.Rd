@@ -11,27 +11,9 @@ cloudwatchlogs_tag_log_group(logGroupName, tags)
 
 \item{tags}{[required] The key-value pairs to use for the tags.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds or updates the specified tags for the specified log group.
 
-To list the tags for a log group, use
-\code{\link[=cloudwatchlogs_list_tags_log_group]{list_tags_log_group}}. To remove
-tags, use \code{\link[=cloudwatchlogs_untag_log_group]{untag_log_group}}.
-
-For more information about tags, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#log-group-tagging}{Tag Log Groups in Amazon CloudWatch Logs}
-in the \emph{Amazon CloudWatch Logs User Guide}.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/tag_log_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$tag_log_group(
-  logGroupName = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

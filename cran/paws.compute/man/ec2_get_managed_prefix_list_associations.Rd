@@ -5,8 +5,12 @@
 \title{Gets information about the resources that are associated with the
 specified managed prefix list}
 \usage{
-ec2_get_managed_prefix_list_associations(DryRun, PrefixListId,
-  MaxResults, NextToken)
+ec2_get_managed_prefix_list_associations(
+  DryRun = NULL,
+  PrefixListId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -22,30 +26,9 @@ value.}
 
 \item{NextToken}{The token for the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PrefixListAssociations = list(
-    list(
-      ResourceId = "string",
-      ResourceOwner = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Gets information about the resources that are associated with the
-specified managed prefix list.
-}
-\section{Request syntax}{
-\preformatted{svc$get_managed_prefix_list_associations(
-  DryRun = TRUE|FALSE,
-  PrefixListId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Gets information about the resources that are associated with the specified managed prefix list.
 
+See \url{https://paws-r.github.io/docs/ec2/get_managed_prefix_list_associations.html} for full documentation.
+}
 \keyword{internal}

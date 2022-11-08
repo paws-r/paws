@@ -16,21 +16,9 @@ GetActivityTaskOutput$taskToken.}
 \item{output}{[required] The JSON output of the task. Length constraints apply to the payload
 size, and are expressed as bytes in UTF-8 encoding.}
 }
-\value{
-An empty list.
-}
 \description{
-Used by activity workers and task states using the
-\href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback}
-pattern to report that the task identified by the \code{taskToken} completed
-successfully.
-}
-\section{Request syntax}{
-\preformatted{svc$send_task_success(
-  taskToken = "string",
-  output = "string"
-)
-}
-}
+Used by activity workers and task states using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback} pattern to report that the task identified by the \code{taskToken} completed successfully.
 
+See \url{https://paws-r.github.io/docs/sfn/send_task_success.html} for full documentation.
+}
 \keyword{internal}

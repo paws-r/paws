@@ -2,11 +2,15 @@
 % Please edit documentation in R/acmpca_operations.R
 \name{acmpca_create_permission}
 \alias{acmpca_create_permission}
-\title{Grants one or more permissions on a private CA to the AWS Certificate
+\title{Grants one or more permissions on a private CA to the Certificate
 Manager (ACM) service principal (acm}
 \usage{
-acmpca_create_permission(CertificateAuthorityArn, Principal,
-  SourceAccount, Actions)
+acmpca_create_permission(
+  CertificateAuthorityArn,
+  Principal,
+  SourceAccount = NULL,
+  Actions
+)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) of the CA that grants the permissions.
@@ -16,55 +20,20 @@ action. This must have the following form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }.}
 
-\item{Principal}{[required] The AWS service or identity that receives the permission. At this time,
-the only valid principal is \code{acm.amazonaws.com}.}
+\item{Principal}{[required] The Amazon Web Services service or identity that receives the
+permission. At this time, the only valid principal is
+\code{acm.amazonaws.com}.}
 
 \item{SourceAccount}{The ID of the calling account.}
 
-\item{Actions}{[required] The actions that the specified AWS service principal can use. These
-include \code{\link[=acmpca_issue_certificate]{issue_certificate}},
+\item{Actions}{[required] The actions that the specified Amazon Web Services service principal can
+use. These include \code{\link[=acmpca_issue_certificate]{issue_certificate}},
 \code{\link[=acmpca_get_certificate]{get_certificate}}, and
 \code{\link[=acmpca_list_permissions]{list_permissions}}.}
 }
-\value{
-An empty list.
-}
 \description{
-Grants one or more permissions on a private CA to the AWS Certificate
-Manager (ACM) service principal (\code{acm.amazonaws.com}). These permissions
-allow ACM to issue and renew ACM certificates that reside in the same
-AWS account as the CA.
+Grants one or more permissions on a private CA to the Certificate Manager (ACM) service principal (\code{acm.amazonaws.com}). These permissions allow ACM to issue and renew ACM certificates that reside in the same Amazon Web Services account as the CA.
 
-You can list current permissions with the
-\code{\link[=acmpca_list_permissions]{list_permissions}} action and revoke them
-with the \code{\link[=acmpca_delete_permission]{delete_permission}} action.
-
-\strong{About Permissions}
-\itemize{
-\item If the private CA and the certificates it issues reside in the same
-account, you can use \code{\link[=acmpca_create_permission]{create_permission}}
-to grant permissions for ACM to carry out automatic certificate
-renewals.
-\item For automatic certificate renewal to succeed, the ACM service
-principal needs permissions to create, retrieve, and list
-certificates.
-\item If the private CA and the ACM certificates reside in different
-accounts, then permissions cannot be used to enable automatic
-renewals. Instead, the ACM certificate owner must set up a
-resource-based policy to enable cross-account issuance and renewals.
-For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html}{Using a Resource Based Policy with ACM Private CA}.
+See \url{https://paws-r.github.io/docs/acmpca/create_permission.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$create_permission(
-  CertificateAuthorityArn = "string",
-  Principal = "string",
-  SourceAccount = "string",
-  Actions = list(
-    "IssueCertificate"|"GetCertificate"|"ListPermissions"
-  )
-)
-}
-}
-
 \keyword{internal}

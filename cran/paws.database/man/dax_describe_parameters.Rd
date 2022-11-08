@@ -4,8 +4,12 @@
 \alias{dax_describe_parameters}
 \title{Returns the detailed parameter list for a particular parameter group}
 \usage{
-dax_describe_parameters(ParameterGroupName, Source, MaxResults,
-  NextToken)
+dax_describe_parameters(
+  ParameterGroupName,
+  Source = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ParameterGroupName}{[required] The name of the parameter group.}
@@ -24,42 +28,9 @@ pagination of results from this action. If this parameter is specified,
 the response includes only results beyond the token, up to the value
 specified by \code{MaxResults}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  Parameters = list(
-    list(
-      ParameterName = "string",
-      ParameterType = "DEFAULT"|"NODE_TYPE_SPECIFIC",
-      ParameterValue = "string",
-      NodeTypeSpecificValues = list(
-        list(
-          NodeType = "string",
-          Value = "string"
-        )
-      ),
-      Description = "string",
-      Source = "string",
-      DataType = "string",
-      AllowedValues = "string",
-      IsModifiable = "TRUE"|"FALSE"|"CONDITIONAL",
-      ChangeType = "IMMEDIATE"|"REQUIRES_REBOOT"
-    )
-  )
-)
-}
-}
 \description{
 Returns the detailed parameter list for a particular parameter group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_parameters(
-  ParameterGroupName = "string",
-  Source = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/dax/describe_parameters.html} for full documentation.
+}
 \keyword{internal}

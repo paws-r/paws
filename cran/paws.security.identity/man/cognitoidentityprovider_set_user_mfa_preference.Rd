@@ -3,47 +3,25 @@
 \name{cognitoidentityprovider_set_user_mfa_preference}
 \alias{cognitoidentityprovider_set_user_mfa_preference}
 \title{Set the user's multi-factor authentication (MFA) method preference,
-including which MFA factors are enabled and if any are preferred}
+including which MFA factors are activated and if any are preferred}
 \usage{
-cognitoidentityprovider_set_user_mfa_preference(SMSMfaSettings,
-  SoftwareTokenMfaSettings, AccessToken)
+cognitoidentityprovider_set_user_mfa_preference(
+  SMSMfaSettings = NULL,
+  SoftwareTokenMfaSettings = NULL,
+  AccessToken
+)
 }
 \arguments{
 \item{SMSMfaSettings}{The SMS text message multi-factor authentication (MFA) settings.}
 
-\item{SoftwareTokenMfaSettings}{The time-based one-time password software token MFA settings.}
+\item{SoftwareTokenMfaSettings}{The time-based one-time password (TOTP) software token MFA settings.}
 
-\item{AccessToken}{[required] The access token for the user.}
-}
-\value{
-An empty list.
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose MFA
+preference you want to set.}
 }
 \description{
-Set the user's multi-factor authentication (MFA) method preference,
-including which MFA factors are enabled and if any are preferred. Only
-one factor can be set as preferred. The preferred MFA factor will be
-used to authenticate a user if multiple factors are enabled. If multiple
-options are enabled and no preference is set, a challenge to choose an
-MFA option will be returned during sign in. If an MFA type is enabled
-for a user, the user will be prompted for MFA during all sign in
-attempts, unless device tracking is turned on and the device has been
-trusted. If you would like MFA to be applied selectively based on the
-assessed risk level of sign in attempts, disable MFA for users and turn
-on Adaptive Authentication for the user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$set_user_mfa_preference(
-  SMSMfaSettings = list(
-    Enabled = TRUE|FALSE,
-    PreferredMfa = TRUE|FALSE
-  ),
-  SoftwareTokenMfaSettings = list(
-    Enabled = TRUE|FALSE,
-    PreferredMfa = TRUE|FALSE
-  ),
-  AccessToken = "string"
-)
-}
-}
+Set the user's multi-factor authentication (MFA) method preference, including which MFA factors are activated and if any are preferred. Only one factor can be set as preferred. The preferred MFA factor will be used to authenticate a user if multiple factors are activated. If multiple options are activated and no preference is set, a challenge to choose an MFA option will be returned during sign-in. If an MFA type is activated for a user, the user will be prompted for MFA during all sign-in attempts unless device tracking is turned on and the device has been trusted. If you want MFA to be applied selectively based on the assessed risk level of sign-in attempts, deactivate MFA for users and turn on Adaptive Authentication for the user pool.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/set_user_mfa_preference.html} for full documentation.
+}
 \keyword{internal}

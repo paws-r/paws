@@ -9,24 +9,9 @@ securityhub_enable_import_findings_for_product(ProductArn)
 \arguments{
 \item{ProductArn}{[required] The ARN of the product to enable the integration for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProductSubscriptionArn = "string"
-)
-}
-}
 \description{
-Enables the integration of a partner product with Security Hub.
-Integrated products send findings to Security Hub.
+Enables the integration of a partner product with Security Hub. Integrated products send findings to Security Hub.
 
-When you enable a product integration, a permissions policy that grants
-permission for the product to send findings to Security Hub is applied.
+See \url{https://paws-r.github.io/docs/securityhub/enable_import_findings_for_product.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$enable_import_findings_for_product(
-  ProductArn = "string"
-)
-}
-}
-
 \keyword{internal}

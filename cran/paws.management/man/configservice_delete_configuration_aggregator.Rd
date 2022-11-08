@@ -5,24 +5,14 @@
 \title{Deletes the specified configuration aggregator and the aggregated data
 associated with the aggregator}
 \usage{
-configservice_delete_configuration_aggregator(
-  ConfigurationAggregatorName)
+configservice_delete_configuration_aggregator(ConfigurationAggregatorName)
 }
 \arguments{
 \item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified configuration aggregator and the aggregated data
-associated with the aggregator.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_configuration_aggregator(
-  ConfigurationAggregatorName = "string"
-)
-}
-}
+Deletes the specified configuration aggregator and the aggregated data associated with the aggregator.
 
+See \url{https://paws-r.github.io/docs/configservice/delete_configuration_aggregator.html} for full documentation.
+}
 \keyword{internal}

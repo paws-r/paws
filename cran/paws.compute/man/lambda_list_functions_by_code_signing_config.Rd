@@ -4,8 +4,11 @@
 \alias{lambda_list_functions_by_code_signing_config}
 \title{List the functions that use the specified code signing configuration}
 \usage{
-lambda_list_functions_by_code_signing_config(CodeSigningConfigArn,
-  Marker, MaxItems)
+lambda_list_functions_by_code_signing_config(
+  CodeSigningConfigArn,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{CodeSigningConfigArn}{[required] The The Amazon Resource Name (ARN) of the code signing configuration.}
@@ -15,27 +18,9 @@ retrieve the next page of results.}
 
 \item{MaxItems}{Maximum number of items to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextMarker = "string",
-  FunctionArns = list(
-    "string"
-  )
-)
-}
-}
 \description{
-List the functions that use the specified code signing configuration.
-You can use this method prior to deleting a code signing configuration,
-to verify that no functions are using it.
-}
-\section{Request syntax}{
-\preformatted{svc$list_functions_by_code_signing_config(
-  CodeSigningConfigArn = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+List the functions that use the specified code signing configuration. You can use this method prior to deleting a code signing configuration, to verify that no functions are using it.
 
+See \url{https://paws-r.github.io/docs/lambda/list_functions_by_code_signing_config.html} for full documentation.
+}
 \keyword{internal}

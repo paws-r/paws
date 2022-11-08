@@ -9,31 +9,9 @@ ssm_get_maintenance_window_execution(WindowExecutionId)
 \arguments{
 \item{WindowExecutionId}{[required] The ID of the maintenance window execution that includes the task.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowExecutionId = "string",
-  TaskIds = list(
-    "string"
-  ),
-  Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
-  StatusDetails = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
 Retrieves details about a specific a maintenance window execution.
-}
-\section{Request syntax}{
-\preformatted{svc$get_maintenance_window_execution(
-  WindowExecutionId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/get_maintenance_window_execution.html} for full documentation.
+}
 \keyword{internal}

@@ -2,66 +2,23 @@
 % Please edit documentation in R/support_operations.R
 \name{support_describe_services}
 \alias{support_describe_services}
-\title{Returns the current list of AWS services and a list of service
-categories for each service}
+\title{Returns the current list of Amazon Web Services services and a list of
+service categories for each service}
 \usage{
-support_describe_services(serviceCodeList, language)
+support_describe_services(serviceCodeList = NULL, language = NULL)
 }
 \arguments{
-\item{serviceCodeList}{A JSON-formatted list of service codes available for AWS services.}
+\item{serviceCodeList}{A JSON-formatted list of service codes available for Amazon Web Services
+services.}
 
-\item{language}{The ISO 639-1 code for the language in which AWS provides support. AWS
-Support currently supports English ("en") and Japanese ("ja"). Language
-parameters must be passed explicitly for operations that take them.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  services = list(
-    list(
-      code = "string",
-      name = "string",
-      categories = list(
-        list(
-          code = "string",
-          name = "string"
-        )
-      )
-    )
-  )
-)
-}
+\item{language}{The ISO 639-1 code for the language in which Amazon Web Services
+provides support. Amazon Web Services Support currently supports English
+("en") and Japanese ("ja"). Language parameters must be passed
+explicitly for operations that take them.}
 }
 \description{
-Returns the current list of AWS services and a list of service
-categories for each service. You then use service names and categories
-in your \code{\link[=support_create_case]{create_case}} requests. Each AWS service
-has its own set of categories.
+Returns the current list of Amazon Web Services services and a list of service categories for each service. You then use service names and categories in your \code{\link[=support_create_case]{create_case}} requests. Each Amazon Web Services service has its own set of categories.
 
-The service codes and category codes correspond to the values that
-appear in the \strong{Service} and \strong{Category} lists on the AWS Support
-Center Create Case page. The values in those fields don't necessarily
-match the service codes and categories returned by the
-\code{\link[=support_describe_services]{describe_services}} operation. Always use
-the service codes and categories that the
-\code{\link[=support_describe_services]{describe_services}} operation returns, so
-that you have the most recent set of service and category codes.
-\itemize{
-\item You must have a Business or Enterprise support plan to use the AWS
-Support API.
-\item If you call the AWS Support API from an account that does not have a
-Business or Enterprise support plan, the
-\code{SubscriptionRequiredException} error message appears. For
-information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{AWS Support}.
+See \url{https://paws-r.github.io/docs/support/describe_services.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$describe_services(
-  serviceCodeList = list(
-    "string"
-  ),
-  language = "string"
-)
-}
-}
-
 \keyword{internal}

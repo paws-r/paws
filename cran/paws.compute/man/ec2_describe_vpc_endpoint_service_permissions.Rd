@@ -5,8 +5,13 @@
 \title{Describes the principals (service consumers) that are permitted to
 discover your VPC endpoint service}
 \usage{
-ec2_describe_vpc_endpoint_service_permissions(DryRun, ServiceId,
-  Filters, MaxResults, NextToken)
+ec2_describe_vpc_endpoint_service_permissions(
+  DryRun = NULL,
+  ServiceId,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -31,38 +36,9 @@ can be between 5 and 1,000; if \code{MaxResults} is given a value larger than
 
 \item{NextToken}{The token to retrieve the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AllowedPrincipals = list(
-    list(
-      PrincipalType = "All"|"Service"|"OrganizationUnit"|"Account"|"User"|"Role",
-      Principal = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the principals (service consumers) that are permitted to
-discover your VPC endpoint service.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_vpc_endpoint_service_permissions(
-  DryRun = TRUE|FALSE,
-  ServiceId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Describes the principals (service consumers) that are permitted to discover your VPC endpoint service.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_vpc_endpoint_service_permissions.html} for full documentation.
+}
 \keyword{internal}

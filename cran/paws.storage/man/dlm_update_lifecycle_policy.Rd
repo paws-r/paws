@@ -4,8 +4,13 @@
 \alias{dlm_update_lifecycle_policy}
 \title{Updates the specified lifecycle policy}
 \usage{
-dlm_update_lifecycle_policy(PolicyId, ExecutionRoleArn, State,
-  Description, PolicyDetails)
+dlm_update_lifecycle_policy(
+  PolicyId,
+  ExecutionRoleArn = NULL,
+  State = NULL,
+  Description = NULL,
+  PolicyDetails = NULL
+)
 }
 \arguments{
 \item{PolicyId}{[required] The identifier of the lifecycle policy.}
@@ -20,124 +25,9 @@ operations specified by the lifecycle policy.}
 \item{PolicyDetails}{The configuration of the lifecycle policy. You cannot update the policy
 type or the resource type.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the specified lifecycle policy.
-}
-\section{Request syntax}{
-\preformatted{svc$update_lifecycle_policy(
-  PolicyId = "string",
-  ExecutionRoleArn = "string",
-  State = "ENABLED"|"DISABLED",
-  Description = "string",
-  PolicyDetails = list(
-    PolicyType = "EBS_SNAPSHOT_MANAGEMENT"|"IMAGE_MANAGEMENT"|"EVENT_BASED_POLICY",
-    ResourceTypes = list(
-      "VOLUME"|"INSTANCE"
-    ),
-    TargetTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    Schedules = list(
-      list(
-        Name = "string",
-        CopyTags = TRUE|FALSE,
-        TagsToAdd = list(
-          list(
-            Key = "string",
-            Value = "string"
-          )
-        ),
-        VariableTags = list(
-          list(
-            Key = "string",
-            Value = "string"
-          )
-        ),
-        CreateRule = list(
-          Interval = 123,
-          IntervalUnit = "HOURS",
-          Times = list(
-            "string"
-          ),
-          CronExpression = "string"
-        ),
-        RetainRule = list(
-          Count = 123,
-          Interval = 123,
-          IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-        ),
-        FastRestoreRule = list(
-          Count = 123,
-          Interval = 123,
-          IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS",
-          AvailabilityZones = list(
-            "string"
-          )
-        ),
-        CrossRegionCopyRules = list(
-          list(
-            TargetRegion = "string",
-            Encrypted = TRUE|FALSE,
-            CmkArn = "string",
-            CopyTags = TRUE|FALSE,
-            RetainRule = list(
-              Interval = 123,
-              IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-            )
-          )
-        ),
-        ShareRules = list(
-          list(
-            TargetAccounts = list(
-              "string"
-            ),
-            UnshareInterval = 123,
-            UnshareIntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-          )
-        )
-      )
-    ),
-    Parameters = list(
-      ExcludeBootVolume = TRUE|FALSE,
-      NoReboot = TRUE|FALSE
-    ),
-    EventSource = list(
-      Type = "MANAGED_CWE",
-      Parameters = list(
-        EventType = "shareSnapshot",
-        SnapshotOwner = list(
-          "string"
-        ),
-        DescriptionRegex = "string"
-      )
-    ),
-    Actions = list(
-      list(
-        Name = "string",
-        CrossRegionCopy = list(
-          list(
-            Target = "string",
-            EncryptionConfiguration = list(
-              Encrypted = TRUE|FALSE,
-              CmkArn = "string"
-            ),
-            RetainRule = list(
-              Interval = 123,
-              IntervalUnit = "DAYS"|"WEEKS"|"MONTHS"|"YEARS"
-            )
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/dlm/update_lifecycle_policy.html} for full documentation.
+}
 \keyword{internal}

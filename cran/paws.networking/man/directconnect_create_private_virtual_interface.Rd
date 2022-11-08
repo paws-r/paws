@@ -4,107 +4,19 @@
 \alias{directconnect_create_private_virtual_interface}
 \title{Creates a private virtual interface}
 \usage{
-directconnect_create_private_virtual_interface(connectionId,
-  newPrivateVirtualInterface)
+directconnect_create_private_virtual_interface(
+  connectionId,
+  newPrivateVirtualInterface
+)
 }
 \arguments{
 \item{connectionId}{[required] The ID of the connection.}
 
 \item{newPrivateVirtualInterface}{[required] Information about the private virtual interface.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ownerAccount = "string",
-  virtualInterfaceId = "string",
-  location = "string",
-  connectionId = "string",
-  virtualInterfaceType = "string",
-  virtualInterfaceName = "string",
-  vlan = 123,
-  asn = 123,
-  amazonSideAsn = 123,
-  authKey = "string",
-  amazonAddress = "string",
-  customerAddress = "string",
-  addressFamily = "ipv4"|"ipv6",
-  virtualInterfaceState = "confirming"|"verifying"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-  customerRouterConfig = "string",
-  mtu = 123,
-  jumboFrameCapable = TRUE|FALSE,
-  virtualGatewayId = "string",
-  directConnectGatewayId = "string",
-  routeFilterPrefixes = list(
-    list(
-      cidr = "string"
-    )
-  ),
-  bgpPeers = list(
-    list(
-      bgpPeerId = "string",
-      asn = 123,
-      authKey = "string",
-      addressFamily = "ipv4"|"ipv6",
-      amazonAddress = "string",
-      customerAddress = "string",
-      bgpPeerState = "verifying"|"pending"|"available"|"deleting"|"deleted",
-      bgpStatus = "up"|"down"|"unknown",
-      awsDeviceV2 = "string"
-    )
-  ),
-  region = "string",
-  awsDeviceV2 = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates a private virtual interface. A virtual interface is the VLAN
-that transports AWS Direct Connect traffic. A private virtual interface
-can be connected to either a Direct Connect gateway or a Virtual Private
-Gateway (VGW). Connecting the private virtual interface to a Direct
-Connect gateway enables the possibility for connecting to multiple VPCs,
-including VPCs in different AWS Regions. Connecting the private virtual
-interface to a VGW only provides access to a single VPC within the same
-Region.
+Creates a private virtual interface. A virtual interface is the VLAN that transports Direct Connect traffic. A private virtual interface can be connected to either a Direct Connect gateway or a Virtual Private Gateway (VGW). Connecting the private virtual interface to a Direct Connect gateway enables the possibility for connecting to multiple VPCs, including VPCs in different Amazon Web Services Regions. Connecting the private virtual interface to a VGW only provides access to a single VPC within the same Region.
 
-Setting the MTU of a virtual interface to 9001 (jumbo frames) can cause
-an update to the underlying physical connection if it wasn't updated to
-support jumbo frames. Updating the connection disrupts network
-connectivity for all virtual interfaces associated with the connection
-for up to 30 seconds. To check whether your connection supports jumbo
-frames, call
-\code{\link[=directconnect_describe_connections]{describe_connections}}. To check
-whether your virtual interface supports jumbo frames, call
-\code{\link[=directconnect_describe_virtual_interfaces]{describe_virtual_interfaces}}.
+See \url{https://paws-r.github.io/docs/directconnect/create_private_virtual_interface.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_private_virtual_interface(
-  connectionId = "string",
-  newPrivateVirtualInterface = list(
-    virtualInterfaceName = "string",
-    vlan = 123,
-    asn = 123,
-    mtu = 123,
-    authKey = "string",
-    amazonAddress = "string",
-    customerAddress = "string",
-    addressFamily = "ipv4"|"ipv6",
-    virtualGatewayId = "string",
-    directConnectGatewayId = "string",
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

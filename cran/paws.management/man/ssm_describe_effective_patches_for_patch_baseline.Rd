@@ -5,8 +5,11 @@
 \title{Retrieves the current effective patches (the patch and the approval
 state) for the specified patch baseline}
 \usage{
-ssm_describe_effective_patches_for_patch_baseline(BaselineId,
-  MaxResults, NextToken)
+ssm_describe_effective_patches_for_patch_baseline(
+  BaselineId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{BaselineId}{[required] The ID of the patch baseline to retrieve the effective patches for.}
@@ -16,68 +19,9 @@ ssm_describe_effective_patches_for_patch_baseline(BaselineId,
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EffectivePatches = list(
-    list(
-      Patch = list(
-        Id = "string",
-        ReleaseDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        Title = "string",
-        Description = "string",
-        ContentUrl = "string",
-        Vendor = "string",
-        ProductFamily = "string",
-        Product = "string",
-        Classification = "string",
-        MsrcSeverity = "string",
-        KbNumber = "string",
-        MsrcNumber = "string",
-        Language = "string",
-        AdvisoryIds = list(
-          "string"
-        ),
-        BugzillaIds = list(
-          "string"
-        ),
-        CVEIds = list(
-          "string"
-        ),
-        Name = "string",
-        Epoch = 123,
-        Version = "string",
-        Release = "string",
-        Arch = "string",
-        Severity = "string",
-        Repository = "string"
-      ),
-      PatchStatus = list(
-        DeploymentStatus = "APPROVED"|"PENDING_APPROVAL"|"EXPLICIT_APPROVED"|"EXPLICIT_REJECTED",
-        ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-        ApprovalDate = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves the current effective patches (the patch and the approval
-state) for the specified patch baseline. Note that this API applies only
-to Windows patch baselines.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_effective_patches_for_patch_baseline(
-  BaselineId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline. Applies to patch baselines for Windows only.
 
+See \url{https://paws-r.github.io/docs/ssm/describe_effective_patches_for_patch_baseline.html} for full documentation.
+}
 \keyword{internal}

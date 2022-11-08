@@ -12,54 +12,9 @@ elb_configure_health_check(LoadBalancerName, HealthCheck)
 
 \item{HealthCheck}{[required] The configuration information.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HealthCheck = list(
-    Target = "string",
-    Interval = 123,
-    Timeout = 123,
-    UnhealthyThreshold = 123,
-    HealthyThreshold = 123
-  )
-)
-}
-}
 \description{
-Specifies the health check settings to use when evaluating the health
-state of your EC2 instances.
+Specifies the health check settings to use when evaluating the health state of your EC2 instances.
 
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-healthchecks.html}{Configure Health Checks for Your Load Balancer}
-in the \emph{Classic Load Balancers Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$configure_health_check(
-  LoadBalancerName = "string",
-  HealthCheck = list(
-    Target = "string",
-    Interval = 123,
-    Timeout = 123,
-    UnhealthyThreshold = 123,
-    HealthyThreshold = 123
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example specifies the health check settings used to evaluate the
-# health of your backend EC2 instances.
-svc$configure_health_check(
-  HealthCheck = list(
-    HealthyThreshold = 2L,
-    Interval = 30L,
-    Target = "HTTP:80/png",
-    Timeout = 3L,
-    UnhealthyThreshold = 2L
-  ),
-  LoadBalancerName = "my-load-balancer"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/configure_health_check.html} for full documentation.
 }
 \keyword{internal}

@@ -5,7 +5,9 @@
 \title{Gets the specified AWS CloudFormation template}
 \usage{
 serverlessapplicationrepository_get_cloud_formation_template(
-  ApplicationId, TemplateId)
+  ApplicationId,
+  TemplateId
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -15,27 +17,9 @@ serverlessapplicationrepository_get_cloud_formation_template(
 Pattern:
 [0-9a-fA-F]\{8\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{12\}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationId = "string",
-  CreationTime = "string",
-  ExpirationTime = "string",
-  SemanticVersion = "string",
-  Status = "PREPARING"|"ACTIVE"|"EXPIRED",
-  TemplateId = "string",
-  TemplateUrl = "string"
-)
-}
-}
 \description{
 Gets the specified AWS CloudFormation template.
-}
-\section{Request syntax}{
-\preformatted{svc$get_cloud_formation_template(
-  ApplicationId = "string",
-  TemplateId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/get_cloud_formation_template.html} for full documentation.
+}
 \keyword{internal}

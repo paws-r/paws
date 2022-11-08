@@ -4,8 +4,10 @@
 \alias{workspaces_describe_workspaces_connection_status}
 \title{Describes the connection status of the specified WorkSpaces}
 \usage{
-workspaces_describe_workspaces_connection_status(WorkspaceIds,
-  NextToken)
+workspaces_describe_workspaces_connection_status(
+  WorkspaceIds = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{WorkspaceIds}{The identifiers of the WorkSpaces. You can specify up to 25 WorkSpaces.}
@@ -13,35 +15,9 @@ workspaces_describe_workspaces_connection_status(WorkspaceIds,
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated,
 provide this token to receive the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WorkspacesConnectionStatus = list(
-    list(
-      WorkspaceId = "string",
-      ConnectionState = "CONNECTED"|"DISCONNECTED"|"UNKNOWN",
-      ConnectionStateCheckTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastKnownUserConnectionTimestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the connection status of the specified WorkSpaces.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_workspaces_connection_status(
-  WorkspaceIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workspaces/describe_workspaces_connection_status.html} for full documentation.
+}
 \keyword{internal}

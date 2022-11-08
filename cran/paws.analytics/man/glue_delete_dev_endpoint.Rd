@@ -9,17 +9,9 @@ glue_delete_dev_endpoint(EndpointName)
 \arguments{
 \item{EndpointName}{[required] The name of the \code{DevEndpoint}.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a specified development endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_dev_endpoint(
-  EndpointName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/delete_dev_endpoint.html} for full documentation.
+}
 \keyword{internal}

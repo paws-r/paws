@@ -7,82 +7,18 @@
 ssm_get_patch_baseline(BaselineId)
 }
 \arguments{
-\item{BaselineId}{[required] The ID of the patch baseline to retrieve.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  BaselineId = "string",
-  Name = "string",
-  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
-  GlobalFilters = list(
-    PatchFilters = list(
-      list(
-        Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
-        Values = list(
-          "string"
-        )
-      )
-    )
-  ),
-  ApprovalRules = list(
-    PatchRules = list(
-      list(
-        PatchFilterGroup = list(
-          PatchFilters = list(
-            list(
-              Key = "ARCH"|"ADVISORY_ID"|"BUGZILLA_ID"|"PATCH_SET"|"PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"CVE_ID"|"EPOCH"|"MSRC_SEVERITY"|"NAME"|"PATCH_ID"|"SECTION"|"PRIORITY"|"REPOSITORY"|"RELEASE"|"SEVERITY"|"SECURITY"|"VERSION",
-              Values = list(
-                "string"
-              )
-            )
-          )
-        ),
-        ComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-        ApproveAfterDays = 123,
-        ApproveUntilDate = "string",
-        EnableNonSecurity = TRUE|FALSE
-      )
-    )
-  ),
-  ApprovedPatches = list(
-    "string"
-  ),
-  ApprovedPatchesComplianceLevel = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-  ApprovedPatchesEnableNonSecurity = TRUE|FALSE,
-  RejectedPatches = list(
-    "string"
-  ),
-  RejectedPatchesAction = "ALLOW_AS_DEPENDENCY"|"BLOCK",
-  PatchGroups = list(
-    "string"
-  ),
-  CreatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  ModifiedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  Description = "string",
-  Sources = list(
-    list(
-      Name = "string",
-      Products = list(
-        "string"
-      ),
-      Configuration = "string"
-    )
-  )
-)
-}
+\item{BaselineId}{[required] The ID of the patch baseline to retrieve.
+
+To retrieve information about an Amazon Web Services managed patch
+baseline, specify the full Amazon Resource Name (ARN) of the baseline.
+For example, for the baseline \code{AWS-AmazonLinuxDefaultPatchBaseline},
+specify
+\verb{arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0e392de35e7c563b7}
+instead of \verb{pb-0e392de35e7c563b7}.}
 }
 \description{
 Retrieves information about a patch baseline.
-}
-\section{Request syntax}{
-\preformatted{svc$get_patch_baseline(
-  BaselineId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/get_patch_baseline.html} for full documentation.
+}
 \keyword{internal}

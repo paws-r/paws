@@ -4,8 +4,11 @@
 \alias{lightsail_get_relational_database_events}
 \title{Returns a list of events for a specific database in Amazon Lightsail}
 \usage{
-lightsail_get_relational_database_events(relationalDatabaseName,
-  durationInMinutes, pageToken)
+lightsail_get_relational_database_events(
+  relationalDatabaseName,
+  durationInMinutes = NULL,
+  pageToken = NULL
+)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of the database from which to get events.}
@@ -25,34 +28,9 @@ request. If your results are paginated, the response will return a next
 page token that you can specify as the page token in a subsequent
 request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  relationalDatabaseEvents = list(
-    list(
-      resource = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      message = "string",
-      eventCategories = list(
-        "string"
-      )
-    )
-  ),
-  nextPageToken = "string"
-)
-}
-}
 \description{
 Returns a list of events for a specific database in Amazon Lightsail.
-}
-\section{Request syntax}{
-\preformatted{svc$get_relational_database_events(
-  relationalDatabaseName = "string",
-  durationInMinutes = 123,
-  pageToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/lightsail/get_relational_database_events.html} for full documentation.
+}
 \keyword{internal}

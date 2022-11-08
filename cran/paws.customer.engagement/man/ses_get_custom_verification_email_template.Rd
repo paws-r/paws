@@ -11,32 +11,9 @@ ses_get_custom_verification_email_template(TemplateName)
 \item{TemplateName}{[required] The name of the custom verification email template that you want to
 retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplateName = "string",
-  FromEmailAddress = "string",
-  TemplateSubject = "string",
-  TemplateContent = "string",
-  SuccessRedirectionURL = "string",
-  FailureRedirectionURL = "string"
-)
-}
-}
 \description{
-Returns the custom email verification template for the template name you
-specify.
+Returns the custom email verification template for the template name you specify.
 
-For more information about custom verification email templates, see
-\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html}{Using Custom Verification Email Templates}
-in the \emph{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
+See \url{https://paws-r.github.io/docs/ses/get_custom_verification_email_template.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_custom_verification_email_template(
-  TemplateName = "string"
-)
-}
-}
-
 \keyword{internal}

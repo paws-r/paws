@@ -9,34 +9,9 @@ sagemaker_describe_device_fleet(DeviceFleetName)
 \arguments{
 \item{DeviceFleetName}{[required] The name of the fleet.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeviceFleetName = "string",
-  DeviceFleetArn = "string",
-  OutputConfig = list(
-    S3OutputLocation = "string",
-    KmsKeyId = "string"
-  ),
-  Description = "string",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  RoleArn = "string",
-  IotRoleAlias = "string"
-)
-}
-}
 \description{
 A description of the fleet the device belongs to.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_device_fleet(
-  DeviceFleetName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_device_fleet.html} for full documentation.
+}
 \keyword{internal}

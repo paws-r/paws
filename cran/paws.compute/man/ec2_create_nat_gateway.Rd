@@ -2,18 +2,25 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_create_nat_gateway}
 \alias{ec2_create_nat_gateway}
-\title{Creates a NAT gateway in the specified public subnet}
+\title{Creates a NAT gateway in the specified subnet}
 \usage{
-ec2_create_nat_gateway(AllocationId, ClientToken, DryRun, SubnetId,
-  TagSpecifications)
+ec2_create_nat_gateway(
+  AllocationId = NULL,
+  ClientToken = NULL,
+  DryRun = NULL,
+  SubnetId,
+  TagSpecifications = NULL,
+  ConnectivityType = NULL
+)
 }
 \arguments{
-\item{AllocationId}{[required] The allocation ID of an Elastic IP address to associate with the NAT
-gateway. If the Elastic IP address is associated with another resource,
-you must first disassociate it.}
+\item{AllocationId}{[Public NAT gateways only] The allocation ID of an Elastic IP address
+to associate with the NAT gateway. You cannot specify an Elastic IP
+address with a private NAT gateway. If the Elastic IP address is
+associated with another resource, you must first disassociate it.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.
 
 Constraint: Maximum 64 ASCII characters.}
 
@@ -25,92 +32,13 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{SubnetId}{[required] The subnet in which to create the NAT gateway.}
 
 \item{TagSpecifications}{The tags to assign to the NAT gateway.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ClientToken = "string",
-  NatGateway = list(
-    CreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    DeleteTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    FailureCode = "string",
-    FailureMessage = "string",
-    NatGatewayAddresses = list(
-      list(
-        AllocationId = "string",
-        NetworkInterfaceId = "string",
-        PrivateIp = "string",
-        PublicIp = "string"
-      )
-    ),
-    NatGatewayId = "string",
-    ProvisionedBandwidth = list(
-      ProvisionTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Provisioned = "string",
-      RequestTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Requested = "string",
-      Status = "string"
-    ),
-    State = "pending"|"failed"|"available"|"deleting"|"deleted",
-    SubnetId = "string",
-    VpcId = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
+
+\item{ConnectivityType}{Indicates whether the NAT gateway supports public or private
+connectivity. The default is public connectivity.}
 }
 \description{
-Creates a NAT gateway in the specified public subnet. This action
-creates a network interface in the specified subnet with a private IP
-address from the IP address range of the subnet. Internet-bound traffic
-from a private subnet can be routed to the NAT gateway, therefore
-enabling instances in the private subnet to connect to the internet. For
-more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html}{NAT Gateways}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_nat_gateway(
-  AllocationId = "string",
-  ClientToken = "string",
-  DryRun = TRUE|FALSE,
-  SubnetId = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
+Creates a NAT gateway in the specified subnet. This action creates a network interface in the specified subnet with a private IP address from the IP address range of the subnet. You can create either a public NAT gateway or a private NAT gateway.
 
-\examples{
-\dontrun{
-# This example creates a NAT gateway in subnet subnet-1a2b3c4d and
-# associates an Elastic IP address with the allocation ID
-# eipalloc-37fc1a52 with the NAT gateway.
-svc$create_nat_gateway(
-  AllocationId = "eipalloc-37fc1a52",
-  SubnetId = "subnet-1a2b3c4d"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/create_nat_gateway.html} for full documentation.
 }
 \keyword{internal}

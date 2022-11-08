@@ -4,31 +4,18 @@
 \alias{ssm_cancel_command}
 \title{Attempts to cancel the command specified by the Command ID}
 \usage{
-ssm_cancel_command(CommandId, InstanceIds)
+ssm_cancel_command(CommandId, InstanceIds = NULL)
 }
 \arguments{
 \item{CommandId}{[required] The ID of the command you want to cancel.}
 
-\item{InstanceIds}{(Optional) A list of instance IDs on which you want to cancel the
-command. If not provided, the command is canceled on every instance on
-which it was requested.}
-}
-\value{
-An empty list.
+\item{InstanceIds}{(Optional) A list of managed node IDs on which you want to cancel the
+command. If not provided, the command is canceled on every node on which
+it was requested.}
 }
 \description{
-Attempts to cancel the command specified by the Command ID. There is no
-guarantee that the command will be terminated and the underlying process
-stopped.
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_command(
-  CommandId = "string",
-  InstanceIds = list(
-    "string"
-  )
-)
-}
-}
+Attempts to cancel the command specified by the Command ID. There is no guarantee that the command will be terminated and the underlying process stopped.
 
+See \url{https://paws-r.github.io/docs/ssm/cancel_command.html} for full documentation.
+}
 \keyword{internal}

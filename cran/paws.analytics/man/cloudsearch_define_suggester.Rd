@@ -11,53 +11,9 @@ cloudsearch_define_suggester(DomainName, Suggester)
 
 \item{Suggester}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Suggester = list(
-    Options = list(
-      SuggesterName = "string",
-      DocumentSuggesterOptions = list(
-        SourceField = "string",
-        FuzzyMatching = "none"|"low"|"high",
-        SortExpression = "string"
-      )
-    ),
-    Status = list(
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateVersion = 123,
-      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-      PendingDeletion = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Configures a suggester for a domain. A suggester enables you to display
-possible matches before users finish typing their queries. When you
-configure a suggester, you must specify the name of the text field you
-want to search for possible matches and a unique name for the suggester.
-For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions}
-in the \emph{Amazon CloudSearch Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$define_suggester(
-  DomainName = "string",
-  Suggester = list(
-    SuggesterName = "string",
-    DocumentSuggesterOptions = list(
-      SourceField = "string",
-      FuzzyMatching = "none"|"low"|"high",
-      SortExpression = "string"
-    )
-  )
-)
-}
-}
+Configures a suggester for a domain. A suggester enables you to display possible matches before users finish typing their queries. When you configure a suggester, you must specify the name of the text field you want to search for possible matches and a unique name for the suggester. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the \emph{Amazon CloudSearch Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/cloudsearch/define_suggester.html} for full documentation.
+}
 \keyword{internal}

@@ -12,44 +12,9 @@ resources.}
 
 \item{ResourceArns}{[required] The ARNs of the resources to be removed from the group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Succeeded = list(
-    "string"
-  ),
-  Failed = list(
-    list(
-      ResourceArn = "string",
-      ErrorMessage = "string",
-      ErrorCode = "string"
-    )
-  ),
-  Pending = list(
-    list(
-      ResourceArn = "string"
-    )
-  )
-)
-}
-}
 \description{
 Removes the specified resources from the specified group.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item \code{resource-groups:UngroupResources}
+See \url{https://paws-r.github.io/docs/resourcegroups/ungroup_resources.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$ungroup_resources(
-  Group = "string",
-  ResourceArns = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

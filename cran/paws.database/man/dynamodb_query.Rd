@@ -2,13 +2,28 @@
 % Please edit documentation in R/dynamodb_operations.R
 \name{dynamodb_query}
 \alias{dynamodb_query}
-\title{The Query operation finds items based on primary key values}
+\title{You must provide the name of the partition key attribute and a single
+value for that attribute}
 \usage{
-dynamodb_query(TableName, IndexName, Select, AttributesToGet, Limit,
-  ConsistentRead, KeyConditions, QueryFilter, ConditionalOperator,
-  ScanIndexForward, ExclusiveStartKey, ReturnConsumedCapacity,
-  ProjectionExpression, FilterExpression, KeyConditionExpression,
-  ExpressionAttributeNames, ExpressionAttributeValues)
+dynamodb_query(
+  TableName,
+  IndexName = NULL,
+  Select = NULL,
+  AttributesToGet = NULL,
+  Limit = NULL,
+  ConsistentRead = NULL,
+  KeyConditions = NULL,
+  QueryFilter = NULL,
+  ConditionalOperator = NULL,
+  ScanIndexForward = NULL,
+  ExclusiveStartKey = NULL,
+  ReturnConsumedCapacity = NULL,
+  ProjectionExpression = NULL,
+  FilterExpression = NULL,
+  KeyConditionExpression = NULL,
+  ExpressionAttributeNames = NULL,
+  ExpressionAttributeValues = NULL
+)
 }
 \arguments{
 \item{TableName}{[required] The name of the table containing the requested items.}
@@ -35,8 +50,9 @@ is equivalent to specifying \code{ALL_ATTRIBUTES}.
 \item \code{COUNT} - Returns the number of matching items, rather than the
 matching items themselves.
 \item \code{SPECIFIC_ATTRIBUTES} - Returns only the attributes listed in
-\code{AttributesToGet}. This return value is equivalent to specifying
-\code{AttributesToGet} without specifying any value for \code{Select}.
+\code{ProjectionExpression}. This return value is equivalent to
+specifying \code{ProjectionExpression} without specifying any value for
+\code{Select}.
 
 If you query or scan a local secondary index and request only
 attributes that are projected into that index, the operation will
@@ -50,12 +66,13 @@ attributes that are projected into the index. Global secondary index
 queries cannot fetch attributes from the parent table.
 }
 
-If neither \code{Select} nor \code{AttributesToGet} are specified, DynamoDB
+If neither \code{Select} nor \code{ProjectionExpression} are specified, DynamoDB
 defaults to \code{ALL_ATTRIBUTES} when accessing a table, and
 \code{ALL_PROJECTED_ATTRIBUTES} when accessing an index. You cannot use both
-\code{Select} and \code{AttributesToGet} together in a single request, unless the
-value for \code{Select} is \code{SPECIFIC_ATTRIBUTES}. (This usage is equivalent
-to specifying \code{AttributesToGet} without any value for \code{Select}.)
+\code{Select} and \code{ProjectionExpression} together in a single request, unless
+the value for \code{Select} is \code{SPECIFIC_ATTRIBUTES}. (This usage is
+equivalent to specifying \code{ProjectionExpression} without any value for
+\code{Select}.)
 
 If you use the \code{ProjectionExpression} parameter, then the value for
 \code{Select} can only be \code{SPECIFIC_ATTRIBUTES}. Any other value for \code{Select}
@@ -149,7 +166,7 @@ A \code{FilterExpression} is applied after the items have already been read;
 the process of filtering does not consume any additional read capacity
 units.
 
-For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#FilteringResults}{Filter Expressions}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.FilterExpression}{Filter Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{KeyConditionExpression}{The condition that specifies the key values for items to be retrieved by
@@ -234,7 +251,7 @@ name in an expression.
 misinterpreted in an expression.
 }
 
-Use the \strong{#} character in an expression to dereference an attribute
+Use the \strong{\#} character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 \itemize{
 \item \code{Percentile}
@@ -280,292 +297,9 @@ You could then use these values in an expression, such as this:
 For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html}{Specifying Conditions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Items = list(
-    list(
-      list(
-        S = "string",
-        N = "string",
-        B = raw,
-        SS = list(
-          "string"
-        ),
-        NS = list(
-          "string"
-        ),
-        BS = list(
-          raw
-        ),
-        M = list(
-          list()
-        ),
-        L = list(
-          list()
-        ),
-        NULL = TRUE|FALSE,
-        BOOL = TRUE|FALSE
-      )
-    )
-  ),
-  Count = 123,
-  ScannedCount = 123,
-  LastEvaluatedKey = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  ConsumedCapacity = list(
-    TableName = "string",
-    CapacityUnits = 123.0,
-    ReadCapacityUnits = 123.0,
-    WriteCapacityUnits = 123.0,
-    Table = list(
-      ReadCapacityUnits = 123.0,
-      WriteCapacityUnits = 123.0,
-      CapacityUnits = 123.0
-    ),
-    LocalSecondaryIndexes = list(
-      list(
-        ReadCapacityUnits = 123.0,
-        WriteCapacityUnits = 123.0,
-        CapacityUnits = 123.0
-      )
-    ),
-    GlobalSecondaryIndexes = list(
-      list(
-        ReadCapacityUnits = 123.0,
-        WriteCapacityUnits = 123.0,
-        CapacityUnits = 123.0
-      )
-    )
-  )
-)
-}
-}
 \description{
-The \code{\link[=dynamodb_query]{query}} operation finds items based on primary key
-values. You can query any table or secondary index that has a composite
-primary key (a partition key and a sort key).
+You must provide the name of the partition key attribute and a single value for that attribute. \code{\link[=dynamodb_query]{query}} returns all items with that partition key value. Optionally, you can provide a sort key attribute and use a comparison operator to refine the search results.
 
-Use the \code{KeyConditionExpression} parameter to provide a specific value
-for the partition key. The \code{\link[=dynamodb_query]{query}} operation will
-return all of the items from the table or index with that partition key
-value. You can optionally narrow the scope of the
-\code{\link[=dynamodb_query]{query}} operation by specifying a sort key value and a
-comparison operator in \code{KeyConditionExpression}. To further refine the
-\code{\link[=dynamodb_query]{query}} results, you can optionally provide a
-\code{FilterExpression}. A \code{FilterExpression} determines which items within
-the results should be returned to you. All of the other results are
-discarded.
-
-A \code{\link[=dynamodb_query]{query}} operation always returns a result set. If no
-matching items are found, the result set will be empty. Queries that do
-not return results consume the minimum number of read capacity units for
-that type of read operation.
-
-DynamoDB calculates the number of read capacity units consumed based on
-item size, not on the amount of data that is returned to an application.
-The number of capacity units consumed will be the same whether you
-request all of the attributes (the default behavior) or just some of
-them (using a projection expression). The number will also be the same
-whether or not you use a \code{FilterExpression}.
-
-\code{\link[=dynamodb_query]{query}} results are always sorted by the sort key
-value. If the data type of the sort key is Number, the results are
-returned in numeric order; otherwise, the results are returned in order
-of UTF-8 bytes. By default, the sort order is ascending. To reverse the
-order, set the \code{ScanIndexForward} parameter to false.
-
-A single \code{\link[=dynamodb_query]{query}} operation will read up to the maximum
-number of items set (if using the \code{Limit} parameter) or a maximum of 1
-MB of data and then apply any filtering to the results using
-\code{FilterExpression}. If \code{LastEvaluatedKey} is present in the response,
-you will need to paginate the result set. For more information, see
-\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination}{Paginating the Results}
-in the \emph{Amazon DynamoDB Developer Guide}.
-
-\code{FilterExpression} is applied after a \code{\link[=dynamodb_query]{query}}
-finishes, but before the results are returned. A \code{FilterExpression}
-cannot contain partition key or sort key attributes. You need to specify
-those attributes in the \code{KeyConditionExpression}.
-
-A \code{\link[=dynamodb_query]{query}} operation can return an empty result set and
-a \code{LastEvaluatedKey} if all the items read for the page of results are
-filtered out.
-
-You can query a table, a local secondary index, or a global secondary
-index. For a query on a table or on a local secondary index, you can set
-the \code{ConsistentRead} parameter to \code{true} and obtain a strongly
-consistent result. Global secondary indexes support eventually
-consistent reads only, so do not specify \code{ConsistentRead} when querying
-a global secondary index.
-}
-\section{Request syntax}{
-\preformatted{svc$query(
-  TableName = "string",
-  IndexName = "string",
-  Select = "ALL_ATTRIBUTES"|"ALL_PROJECTED_ATTRIBUTES"|"SPECIFIC_ATTRIBUTES"|"COUNT",
-  AttributesToGet = list(
-    "string"
-  ),
-  Limit = 123,
-  ConsistentRead = TRUE|FALSE,
-  KeyConditions = list(
-    list(
-      AttributeValueList = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      ),
-      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
-    )
-  ),
-  QueryFilter = list(
-    list(
-      AttributeValueList = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      ),
-      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH"
-    )
-  ),
-  ConditionalOperator = "AND"|"OR",
-  ScanIndexForward = TRUE|FALSE,
-  ExclusiveStartKey = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-  ProjectionExpression = "string",
-  FilterExpression = "string",
-  KeyConditionExpression = "string",
-  ExpressionAttributeNames = list(
-    "string"
-  ),
-  ExpressionAttributeValues = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example queries items in the Music table. The table has a partition
-# key and sort key (Artist and SongTitle), but this query only specifies
-# the partition key value. It returns song titles by the artist named "No
-# One You Know".
-svc$query(
-  ExpressionAttributeValues = list(
-    `:v1` = list(
-      S = "No One You Know"
-    )
-  ),
-  KeyConditionExpression = "Artist = :v1",
-  ProjectionExpression = "SongTitle",
-  TableName = "Music"
-)
-}
-
+See \url{https://paws-r.github.io/docs/dynamodb/query.html} for full documentation.
 }
 \keyword{internal}

@@ -15,29 +15,9 @@ glue_resume_workflow_run(Name, RunId, NodeIds)
 \item{NodeIds}{[required] A list of the node IDs for the nodes you want to restart. The nodes that
 are to be restarted must have a run attempt in the original run.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RunId = "string",
-  NodeIds = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Restarts selected nodes of a previous partially completed workflow run
-and resumes the workflow run. The selected nodes and all nodes that are
-downstream from the selected nodes are run.
-}
-\section{Request syntax}{
-\preformatted{svc$resume_workflow_run(
-  Name = "string",
-  RunId = "string",
-  NodeIds = list(
-    "string"
-  )
-)
-}
-}
+Restarts selected nodes of a previous partially completed workflow run and resumes the workflow run. The selected nodes and all nodes that are downstream from the selected nodes are run.
 
+See \url{https://paws-r.github.io/docs/glue/resume_workflow_run.html} for full documentation.
+}
 \keyword{internal}

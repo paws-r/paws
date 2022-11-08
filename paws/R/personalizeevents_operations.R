@@ -6,8 +6,8 @@ NULL
 #' Records user interaction event data
 #'
 #' @description
-#' Records user interaction event data. For more information see
-#' event-record-api.
+#' Records user interaction event data. For more information see [Recording
+#' Events](https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html).
 #'
 #' @usage
 #' personalizeevents_put_events(trackingId, userId, sessionId, eventList)
@@ -19,8 +19,9 @@ NULL
 #' @param sessionId &#91;required&#93; The session ID associated with the user's visit. Your application
 #' generates the sessionId when a user first visits your website or uses
 #' your application. Amazon Personalize uses the sessionId to associate
-#' events with the user before they log in. For more information see
-#' event-record-api.
+#' events with the user before they log in. For more information, see
+#' [Recording
+#' Events](https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html).
 #' @param eventList &#91;required&#93; A list of event data from the session.
 #'
 #' @return
@@ -75,12 +76,13 @@ personalizeevents_put_events <- function(trackingId, userId = NULL, sessionId, e
 #'
 #' @description
 #' Adds one or more items to an Items dataset. For more information see
-#' importing-items.
+#' [Importing Items
+#' Incrementally](https://docs.aws.amazon.com/personalize/latest/dg/importing-items.html).
 #'
 #' @usage
 #' personalizeevents_put_items(datasetArn, items)
 #'
-#' @param datasetArn &#91;required&#93; The Amazon Resource Number (ARN) of the Items dataset you are adding the
+#' @param datasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the Items dataset you are adding the
 #' item or items to.
 #' @param items &#91;required&#93; A list of item data.
 #'
@@ -124,12 +126,13 @@ personalizeevents_put_items <- function(datasetArn, items) {
 #'
 #' @description
 #' Adds one or more users to a Users dataset. For more information see
-#' importing-users.
+#' [Importing Users
+#' Incrementally](https://docs.aws.amazon.com/personalize/latest/dg/importing-users.html).
 #'
 #' @usage
 #' personalizeevents_put_users(datasetArn, users)
 #'
-#' @param datasetArn &#91;required&#93; The Amazon Resource Number (ARN) of the Users dataset you are adding the
+#' @param datasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the Users dataset you are adding the
 #' user or users to.
 #' @param users &#91;required&#93; A list of user data.
 #'

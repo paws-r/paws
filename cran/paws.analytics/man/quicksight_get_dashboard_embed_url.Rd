@@ -2,18 +2,28 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_get_dashboard_embed_url}
 \alias{quicksight_get_dashboard_embed_url}
-\title{Generates a session URL and authorization code that you can use to embed
-an Amazon QuickSight read-only dashboard in your web server code}
+\title{Generates a temporary session URL and authorization code(bearer token)
+that you can use to embed an Amazon QuickSight read-only dashboard in
+your website or application}
 \usage{
-quicksight_get_dashboard_embed_url(AwsAccountId, DashboardId,
-  IdentityType, SessionLifetimeInMinutes, UndoRedoDisabled, ResetDisabled,
-  StatePersistenceEnabled, UserArn, Namespace, AdditionalDashboardIds)
+quicksight_get_dashboard_embed_url(
+  AwsAccountId,
+  DashboardId,
+  IdentityType,
+  SessionLifetimeInMinutes = NULL,
+  UndoRedoDisabled = NULL,
+  ResetDisabled = NULL,
+  StatePersistenceEnabled = NULL,
+  UserArn = NULL,
+  Namespace = NULL,
+  AdditionalDashboardIds = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the AWS account that contains the dashboard that you're
-embedding.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that contains the dashboard
+that you're embedding.}
 
-\item{DashboardId}{[required] The ID for the dashboard, also added to the AWS Identity and Access
+\item{DashboardId}{[required] The ID for the dashboard, also added to the Identity and Access
 Management (IAM) policy.}
 
 \item{IdentityType}{[required] The authentication method that the user uses to sign in.}
@@ -29,12 +39,12 @@ which enables the reset button.}
 
 \item{StatePersistenceEnabled}{Adds persistence of state for the user session in an embedded dashboard.
 Persistence applies to the sheet and the parameter settings. These are
-control settings that the dashboard subscriber (QuickSight reader)
-chooses while viewing the dashboard. If this is set to \code{TRUE}, the
-settings are the same when the subscriber reopens the same dashboard
-URL. The state is stored in QuickSight, not in a browser cookie. If this
-is set to FALSE, the state of the user session is not persisted. The
-default is \code{FALSE}.}
+control settings that the dashboard subscriber (Amazon QuickSight
+reader) chooses while viewing the dashboard. If this is set to \code{TRUE},
+the settings are the same when the subscriber reopens the same dashboard
+URL. The state is stored in Amazon QuickSight, not in a browser cookie.
+If this is set to FALSE, the state of the user session is not persisted.
+The default is \code{FALSE}.}
 
 \item{UserArn}{The Amazon QuickSight user's Amazon Resource Name (ARN), for use with
 \code{QUICKSIGHT} identity type. You can use this for any Amazon QuickSight
@@ -51,60 +61,20 @@ federation.
 Omit this parameter for users in the third group – IAM users and IAM
 role-based sessions.}
 
-\item{Namespace}{The QuickSight namespace that contains the dashboard IDs in this
-request. If you're not using a custom namespace, set this to
-"\code{default}".}
+\item{Namespace}{The Amazon QuickSight namespace that contains the dashboard IDs in this
+request. If you're not using a custom namespace, set
+\code{Namespace = default}.}
 
-\item{AdditionalDashboardIds}{A list of one or more dashboard IDs that you want to add to a session
-that includes anonymous users. The \code{IdentityType} parameter must be set
-to \code{ANONYMOUS} for this to work, because other identity types
-authenticate as QuickSight or IAM users. For example, if you set
+\item{AdditionalDashboardIds}{A list of one or more dashboard IDs that you want anonymous users to
+have tempporary access to. Currently, the \code{IdentityType} parameter must
+be set to \code{ANONYMOUS} because other identity types authenticate as
+Amazon QuickSight or IAM users. For example, if you set
 "\verb{--dashboard-id dash_id1 --dashboard-id dash_id2 dash_id3 identity-type ANONYMOUS}",
 the session can access all three dashboards.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EmbedUrl = "string",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
-Generates a session URL and authorization code that you can use to embed
-an Amazon QuickSight read-only dashboard in your web server code. Before
-you use this command, make sure that you have configured the dashboards
-and permissions.
+Generates a temporary session URL and authorization code(bearer token) that you can use to embed an Amazon QuickSight read-only dashboard in your website or application. Before you use this command, make sure that you have configured the dashboards and permissions.
 
-Currently, you can use \code{GetDashboardEmbedURL} only from the server, not
-from the user's browser. The following rules apply to the combination of
-URL and authorization code:
-\itemize{
-\item They must be used together.
-\item They can be used one time only.
-\item They are valid for 5 minutes after you run this command.
-\item The resulting user session is valid for 10 hours.
+See \url{https://paws-r.github.io/docs/quicksight/get_dashboard_embed_url.html} for full documentation.
 }
-
-For more information, see \href{https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html}{Embedded Analytics}
-in the \emph{Amazon QuickSight User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_dashboard_embed_url(
-  AwsAccountId = "string",
-  DashboardId = "string",
-  IdentityType = "IAM"|"QUICKSIGHT"|"ANONYMOUS",
-  SessionLifetimeInMinutes = 123,
-  UndoRedoDisabled = TRUE|FALSE,
-  ResetDisabled = TRUE|FALSE,
-  StatePersistenceEnabled = TRUE|FALSE,
-  UserArn = "string",
-  Namespace = "string",
-  AdditionalDashboardIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

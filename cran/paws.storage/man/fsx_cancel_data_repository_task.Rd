@@ -10,29 +10,9 @@ fsx_cancel_data_repository_task(TaskId)
 \arguments{
 \item{TaskId}{[required] Specifies the data repository task to cancel.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Lifecycle = "PENDING"|"EXECUTING"|"FAILED"|"SUCCEEDED"|"CANCELED"|"CANCELING",
-  TaskId = "string"
-)
-}
-}
 \description{
-Cancels an existing Amazon FSx for Lustre data repository task if that
-task is in either the \code{PENDING} or \code{EXECUTING} state. When you cancel a
-task, Amazon FSx does the following.
-\itemize{
-\item Any files that FSx has already exported are not reverted.
-\item FSx continues to export any files that are "in-flight" when the
-cancel operation is received.
-\item FSx does not export any files that have not yet been exported.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_data_repository_task(
-  TaskId = "string"
-)
-}
-}
+Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the \code{PENDING} or \code{EXECUTING} state. When you cancel a task, Amazon FSx does the following.
 
+See \url{https://paws-r.github.io/docs/fsx/cancel_data_repository_task.html} for full documentation.
+}
 \keyword{internal}

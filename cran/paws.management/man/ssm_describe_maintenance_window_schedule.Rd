@@ -4,16 +4,22 @@
 \alias{ssm_describe_maintenance_window_schedule}
 \title{Retrieves information about upcoming executions of a maintenance window}
 \usage{
-ssm_describe_maintenance_window_schedule(WindowId, Targets,
-  ResourceType, Filters, MaxResults, NextToken)
+ssm_describe_maintenance_window_schedule(
+  WindowId = NULL,
+  Targets = NULL,
+  ResourceType = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{WindowId}{The ID of the maintenance window to retrieve information about.}
 
-\item{Targets}{The instance ID or key/value pair to retrieve information about.}
+\item{Targets}{The managed node ID or key-value pair to retrieve information about.}
 
 \item{ResourceType}{The type of resource you want to retrieve information about. For
-example, "INSTANCE".}
+example, \code{INSTANCE}.}
 
 \item{Filters}{Filters used to limit the range of results. For example, you can limit
 maintenance window executions to only those scheduled before or after a
@@ -26,46 +32,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ScheduledWindowExecutions = list(
-    list(
-      WindowId = "string",
-      Name = "string",
-      ExecutionTime = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves information about upcoming executions of a maintenance window.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_maintenance_window_schedule(
-  WindowId = "string",
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ResourceType = "INSTANCE"|"RESOURCE_GROUP",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_window_schedule.html} for full documentation.
+}
 \keyword{internal}

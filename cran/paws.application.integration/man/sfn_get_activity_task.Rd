@@ -5,7 +5,7 @@
 \title{Used by workers to retrieve a task (with the specified activity ARN)
 which has been scheduled for execution by a running state machine}
 \usage{
-sfn_get_activity_task(activityArn, workerName)
+sfn_get_activity_task(activityArn, workerName = NULL)
 }
 \arguments{
 \item{activityArn}{[required] The Amazon Resource Name (ARN) of the activity to retrieve tasks from
@@ -16,36 +16,9 @@ sfn_get_activity_task(activityArn, workerName)
 the task is assigned to. This name is used when it is logged in the
 execution history.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  taskToken = "string",
-  input = "string"
-)
-}
-}
 \description{
-Used by workers to retrieve a task (with the specified activity ARN)
-which has been scheduled for execution by a running state machine. This
-initiates a long poll, where the service holds the HTTP connection open
-and responds as soon as a task becomes available (i.e. an execution of a
-task of this type is needed.) The maximum time the service holds on to
-the request before responding is 60 seconds. If no task is available
-within 60 seconds, the poll returns a \code{taskToken} with a null string.
+Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine. This initiates a long poll, where the service holds the HTTP connection open and responds as soon as a task becomes available (i.e. an execution of a task of this type is needed.) The maximum time the service holds on to the request before responding is 60 seconds. If no task is available within 60 seconds, the poll returns a \code{taskToken} with a null string.
 
-Workers should set their client side socket timeout to at least 65
-seconds (5 seconds higher than the maximum time the service may hold the
-poll request).
-
-Polling with \code{\link[=sfn_get_activity_task]{get_activity_task}} can cause
-latency in some implementations. See \href{https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html}{Avoid Latency When Polling for Activity Tasks}
-in the Step Functions Developer Guide.
+See \url{https://paws-r.github.io/docs/sfn/get_activity_task.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_activity_task(
-  activityArn = "string",
-  workerName = "string"
-)
-}
-}
-
 \keyword{internal}

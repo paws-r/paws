@@ -13,32 +13,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified role. The role must not have any policies
-attached. For more information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with Roles}.
+Deletes the specified role. The role must not have any policies attached. For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with roles}.
 
-Make sure that you do not have any Amazon EC2 instances running with the
-role you are about to delete. Deleting a role or instance profile that
-is associated with a running instance will break any applications
-running on the instance.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_role(
-  RoleName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command removes the role named Test-Role.
-svc$delete_role(
-  RoleName = "Test-Role"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/delete_role.html} for full documentation.
 }
 \keyword{internal}

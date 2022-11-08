@@ -5,51 +5,24 @@
 \title{To get the description of a registered consumer, provide the ARN of the
 consumer}
 \usage{
-kinesis_describe_stream_consumer(StreamARN, ConsumerName, ConsumerARN)
+kinesis_describe_stream_consumer(
+  StreamARN = NULL,
+  ConsumerName = NULL,
+  ConsumerARN = NULL
+)
 }
 \arguments{
 \item{StreamARN}{The ARN of the Kinesis data stream that the consumer is registered with.
-For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
+For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.}
 
 \item{ConsumerName}{The name that you gave to the consumer.}
 
 \item{ConsumerARN}{The ARN returned by Kinesis Data Streams when you registered the
 consumer.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConsumerDescription = list(
-    ConsumerName = "string",
-    ConsumerARN = "string",
-    ConsumerStatus = "CREATING"|"DELETING"|"ACTIVE",
-    ConsumerCreationTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    StreamARN = "string"
-  )
-)
-}
-}
 \description{
-To get the description of a registered consumer, provide the ARN of the
-consumer. Alternatively, you can provide the ARN of the data stream and
-the name you gave the consumer when you registered it. You may also
-provide all three parameters, as long as they don't conflict with each
-other. If you don't know the name or ARN of the consumer that you want
-to describe, you can use the
-\code{\link[=kinesis_list_stream_consumers]{list_stream_consumers}} operation to
-get a list of the descriptions of all the consumers that are currently
-registered with a given data stream.
+To get the description of a registered consumer, provide the ARN of the consumer. Alternatively, you can provide the ARN of the data stream and the name you gave the consumer when you registered it. You may also provide all three parameters, as long as they don't conflict with each other. If you don't know the name or ARN of the consumer that you want to describe, you can use the \code{\link[=kinesis_list_stream_consumers]{list_stream_consumers}} operation to get a list of the descriptions of all the consumers that are currently registered with a given data stream.
 
-This operation has a limit of 20 transactions per second per stream.
+See \url{https://paws-r.github.io/docs/kinesis/describe_stream_consumer.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_stream_consumer(
-  StreamARN = "string",
-  ConsumerName = "string",
-  ConsumerARN = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -2,16 +2,16 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_get_parameters_for_import}
 \alias{kms_get_parameters_for_import}
-\title{Returns the items you need to import key material into a symmetric,
-customer managed customer master key (CMK)}
+\title{Returns the items you need to import key material into a symmetric
+encryption KMS key}
 \usage{
 kms_get_parameters_for_import(KeyId, WrappingAlgorithm, WrappingKeySpec)
 }
 \arguments{
-\item{KeyId}{[required] The identifier of the symmetric CMK into which you will import key
-material. The \code{Origin} of the CMK must be \code{EXTERNAL}.
+\item{KeyId}{[required] The identifier of the symmetric encryption KMS key into which you will
+import key material. The \code{Origin} of the KMS key must be \code{EXTERNAL}.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
@@ -20,91 +20,20 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use
+To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
 \item{WrappingAlgorithm}{[required] The algorithm you will use to encrypt the key material before importing
 it with \code{\link[=kms_import_key_material]{import_key_material}}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the Key Material}
-in the \emph{AWS Key Management Service Developer Guide}.}
+in the \emph{Key Management Service Developer Guide}.}
 
 \item{WrappingKeySpec}{[required] The type of wrapping key (public key) to return in the response. Only
 2048-bit RSA public keys are supported.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  KeyId = "string",
-  ImportToken = raw,
-  PublicKey = raw,
-  ParametersValidTo = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Returns the items you need to import key material into a symmetric,
-customer managed customer master key (CMK). For more information about
-importing key material into AWS KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
-in the \emph{AWS Key Management Service Developer Guide}.
+Returns the items you need to import key material into a symmetric encryption KMS key. For more information about importing key material into KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing key material} in the \emph{Key Management Service Developer Guide}.
 
-This operation returns a public key and an import token. Use the public
-key to encrypt the symmetric key material. Store the import token to
-send with a subsequent \code{\link[=kms_import_key_material]{import_key_material}}
-request.
-
-You must specify the key ID of the symmetric CMK into which you will
-import key material. This CMK's \code{Origin} must be \code{EXTERNAL}. You must
-also specify the wrapping algorithm and type of wrapping key (public
-key) that you will use to encrypt the key material. You cannot perform
-this operation on an asymmetric CMK or on any CMK in a different AWS
-account.
-
-To import key material, you must use the public key and import token
-from the same response. These items are valid for 24 hours. The
-expiration date and time appear in the
-\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} response.
-You cannot use an expired token in an
-\code{\link[=kms_import_key_material]{import_key_material}} request. If your key
-and token expire, send another
-\code{\link[=kms_get_parameters_for_import]{get_parameters_for_import}} request.
-
-The CMK that you use for this operation must be in a compatible key
-state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
-a different AWS account.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GetParametersForImport}
-(key policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_import_key_material]{import_key_material}}
-\item \code{\link[=kms_delete_imported_key_material]{delete_imported_key_material}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$get_parameters_for_import(
-  KeyId = "string",
-  WrappingAlgorithm = "RSAES_PKCS1_V1_5"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256",
-  WrappingKeySpec = "RSA_2048"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example retrieves the public key and import token for the
-# specified CMK.
-svc$get_parameters_for_import(
-  KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
-  WrappingAlgorithm = "RSAES_OAEP_SHA_1",
-  WrappingKeySpec = "RSA_2048"
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/get_parameters_for_import.html} for full documentation.
 }
 \keyword{internal}

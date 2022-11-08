@@ -15,6 +15,30 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudtrail$cancel_query_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventDataStore = structure(logical(0), tags = list(type = "string")), QueryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$cancel_query_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(QueryId = structure(logical(0), tags = list(type = "string")), QueryStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$create_event_data_store_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), AdvancedEventSelectors = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), FieldSelectors = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotStartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiRegionEnabled = structure(logical(0), tags = list(type = "boolean")), OrganizationEnabled = structure(logical(0), tags = list(type = "boolean")), RetentionPeriod = structure(logical(0), tags = list(type = "integer")), TerminationProtectionEnabled = structure(logical(0), tags = list(type = "boolean")), TagsList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$create_event_data_store_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventDataStoreArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AdvancedEventSelectors = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), FieldSelectors = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotStartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiRegionEnabled = structure(logical(0), tags = list(type = "boolean")), OrganizationEnabled = structure(logical(0), tags = list(type = "boolean")), RetentionPeriod = structure(logical(0), tags = list(type = "integer")), TerminationProtectionEnabled = structure(logical(0), tags = list(type = "boolean")), TagsList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudtrail$create_trail_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyPrefix = structure(logical(0), tags = list(type = "string")), SnsTopicName = structure(logical(0), tags = list(type = "string")), IncludeGlobalServiceEvents = structure(logical(0), tags = list(type = "boolean")), IsMultiRegionTrail = structure(logical(0), tags = list(type = "boolean")), EnableLogFileValidation = structure(logical(0), tags = list(type = "boolean")), CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), CloudWatchLogsRoleArn = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), IsOrganizationTrail = structure(logical(0), tags = list(type = "boolean")), TagsList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -24,6 +48,18 @@ NULL
 .cloudtrail$create_trail_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyPrefix = structure(logical(0), tags = list(type = "string")), SnsTopicName = structure(logical(0), tags = list(deprecated = TRUE, type = "string")), SnsTopicARN = structure(logical(0), tags = list(type = "string")), IncludeGlobalServiceEvents = structure(logical(0), tags = list(type = "boolean")), IsMultiRegionTrail = structure(logical(0), tags = list(type = "boolean")), TrailARN = structure(logical(0), tags = list(type = "string")), LogFileValidationEnabled = structure(logical(0), tags = list(type = "boolean")), CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), CloudWatchLogsRoleArn = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), IsOrganizationTrail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$delete_event_data_store_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventDataStore = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$delete_event_data_store_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -39,6 +75,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudtrail$describe_query_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventDataStore = structure(logical(0), tags = list(type = "string")), QueryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$describe_query_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(QueryId = structure(logical(0), tags = list(type = "string")), QueryString = structure(logical(0), tags = list(type = "string")), QueryStatus = structure(logical(0), tags = list(type = "string")), QueryStatistics = structure(list(EventsMatched = structure(logical(0), tags = list(type = "long")), EventsScanned = structure(logical(0), tags = list(type = "long")), BytesScanned = structure(logical(0), tags = list(type = "long")), ExecutionTimeInMillis = structure(logical(0), tags = list(type = "integer")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudtrail$describe_trails_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(trailNameList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), includeShadowTrails = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
@@ -48,6 +96,18 @@ NULL
 .cloudtrail$describe_trails_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(trailList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3KeyPrefix = structure(logical(0), tags = list(type = "string")), SnsTopicName = structure(logical(0), tags = list(deprecated = TRUE, type = "string")), SnsTopicARN = structure(logical(0), tags = list(type = "string")), IncludeGlobalServiceEvents = structure(logical(0), tags = list(type = "boolean")), IsMultiRegionTrail = structure(logical(0), tags = list(type = "boolean")), HomeRegion = structure(logical(0), tags = list(type = "string")), TrailARN = structure(logical(0), tags = list(type = "string")), LogFileValidationEnabled = structure(logical(0), tags = list(type = "boolean")), CloudWatchLogsLogGroupArn = structure(logical(0), tags = list(type = "string")), CloudWatchLogsRoleArn = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), HasCustomEventSelectors = structure(logical(0), tags = list(type = "boolean")), HasInsightSelectors = structure(logical(0), tags = list(type = "boolean")), IsOrganizationTrail = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$get_event_data_store_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventDataStore = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$get_event_data_store_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventDataStoreArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AdvancedEventSelectors = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), FieldSelectors = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotStartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiRegionEnabled = structure(logical(0), tags = list(type = "boolean")), OrganizationEnabled = structure(logical(0), tags = list(type = "boolean")), RetentionPeriod = structure(logical(0), tags = list(type = "integer")), TerminationProtectionEnabled = structure(logical(0), tags = list(type = "boolean")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -75,6 +135,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudtrail$get_query_results_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventDataStore = structure(logical(0), tags = list(type = "string")), QueryId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxQueryResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$get_query_results_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(QueryStatus = structure(logical(0), tags = list(type = "string")), QueryStatistics = structure(list(ResultsCount = structure(logical(0), tags = list(type = "integer")), TotalResultsCount = structure(logical(0), tags = list(type = "integer")), BytesScanned = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), QueryResultRows = structure(list(structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "list"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudtrail$get_trail_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -99,6 +171,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudtrail$list_event_data_stores_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$list_event_data_stores_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventDataStores = structure(list(structure(list(EventDataStoreArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TerminationProtectionEnabled = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "TerminationProtectionEnabled is no longer returned by ListEventDataStores", type = "boolean")), Status = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Status is no longer returned by ListEventDataStores", type = "string")), AdvancedEventSelectors = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), FieldSelectors = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotStartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "AdvancedEventSelectors is no longer returned by ListEventDataStores", type = "list")), MultiRegionEnabled = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "MultiRegionEnabled is no longer returned by ListEventDataStores", type = "boolean")), OrganizationEnabled = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "OrganizationEnabled is no longer returned by ListEventDataStores", type = "boolean")), RetentionPeriod = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "RetentionPeriod is no longer returned by ListEventDataStores", type = "integer")), CreatedTimestamp = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "CreatedTimestamp is no longer returned by ListEventDataStores", type = "timestamp")), UpdatedTimestamp = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "UpdatedTimestamp is no longer returned by ListEventDataStores", type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudtrail$list_public_keys_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -108,6 +192,18 @@ NULL
 .cloudtrail$list_public_keys_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PublicKeyList = structure(list(structure(list(Value = structure(logical(0), tags = list(type = "blob")), ValidityStartTime = structure(logical(0), tags = list(type = "timestamp")), ValidityEndTime = structure(logical(0), tags = list(type = "timestamp")), Fingerprint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$list_queries_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventDataStore = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), QueryStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$list_queries_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Queries = structure(list(structure(list(QueryId = structure(logical(0), tags = list(type = "string")), QueryStatus = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -183,6 +279,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudtrail$restore_event_data_store_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventDataStore = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$restore_event_data_store_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventDataStoreArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AdvancedEventSelectors = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), FieldSelectors = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotStartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiRegionEnabled = structure(logical(0), tags = list(type = "boolean")), OrganizationEnabled = structure(logical(0), tags = list(type = "boolean")), RetentionPeriod = structure(logical(0), tags = list(type = "integer")), TerminationProtectionEnabled = structure(logical(0), tags = list(type = "boolean")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudtrail$start_logging_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -195,6 +303,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudtrail$start_query_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(QueryStatement = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$start_query_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(QueryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudtrail$stop_logging_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -204,6 +324,18 @@ NULL
 .cloudtrail$stop_logging_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$update_event_data_store_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventDataStore = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), AdvancedEventSelectors = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), FieldSelectors = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotStartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiRegionEnabled = structure(logical(0), tags = list(type = "boolean")), OrganizationEnabled = structure(logical(0), tags = list(type = "boolean")), RetentionPeriod = structure(logical(0), tags = list(type = "integer")), TerminationProtectionEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudtrail$update_event_data_store_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EventDataStoreArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), AdvancedEventSelectors = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), FieldSelectors = structure(list(structure(list(Field = structure(logical(0), tags = list(type = "string")), Equals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), StartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), EndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEquals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotStartsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotEndsWith = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiRegionEnabled = structure(logical(0), tags = list(type = "boolean")), OrganizationEnabled = structure(logical(0), tags = list(type = "boolean")), RetentionPeriod = structure(logical(0), tags = list(type = "integer")), TerminationProtectionEnabled = structure(logical(0), tags = list(type = "boolean")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), UpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

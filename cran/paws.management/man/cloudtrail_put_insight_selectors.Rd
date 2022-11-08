@@ -12,38 +12,12 @@ cloudtrail_put_insight_selectors(TrailName, InsightSelectors)
 Insights selectors.}
 
 \item{InsightSelectors}{[required] A JSON string that contains the insight types you want to log on a
-trail. In this release, only \code{ApiCallRateInsight} is supported as an
-insight type.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TrailARN = "string",
-  InsightSelectors = list(
-    list(
-      InsightType = "ApiCallRateInsight"
-    )
-  )
-)
-}
+trail. \code{ApiCallRateInsight} and \code{ApiErrorRateInsight} are valid insight
+types.}
 }
 \description{
-Lets you enable Insights event logging by specifying the Insights
-selectors that you want to enable on an existing trail. You also use
-\code{\link[=cloudtrail_put_insight_selectors]{put_insight_selectors}} to turn off
-Insights event logging, by passing an empty list of insight types. In
-this release, only \code{ApiCallRateInsight} is supported as an Insights
-selector.
-}
-\section{Request syntax}{
-\preformatted{svc$put_insight_selectors(
-  TrailName = "string",
-  InsightSelectors = list(
-    list(
-      InsightType = "ApiCallRateInsight"
-    )
-  )
-)
-}
-}
+Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail. You also use \code{\link[=cloudtrail_put_insight_selectors]{put_insight_selectors}} to turn off Insights event logging, by passing an empty list of insight types. The valid Insights event types in this release are \code{ApiErrorRateInsight} and \code{ApiCallRateInsight}.
 
+See \url{https://paws-r.github.io/docs/cloudtrail/put_insight_selectors.html} for full documentation.
+}
 \keyword{internal}

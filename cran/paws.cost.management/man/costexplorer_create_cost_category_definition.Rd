@@ -4,7 +4,14 @@
 \alias{costexplorer_create_cost_category_definition}
 \title{Creates a new Cost Category with the requested name and rules}
 \usage{
-costexplorer_create_cost_category_definition(Name, RuleVersion, Rules)
+costexplorer_create_cost_category_definition(
+  Name,
+  RuleVersion,
+  Rules,
+  DefaultValue = NULL,
+  SplitChargeRules = NULL,
+  ResourceTags = NULL
+)
 }
 \arguments{
 \item{Name}{[required]}
@@ -14,64 +21,36 @@ costexplorer_create_cost_category_definition(Name, RuleVersion, Rules)
 \item{Rules}{[required] The Cost Category rules used to categorize costs. For more information,
 see
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html}{CostCategoryRule}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CostCategoryArn = "string",
-  EffectiveStart = "string"
-)
-}
+
+\item{DefaultValue}{}
+
+\item{SplitChargeRules}{The split charge rules used to allocate your charges between your Cost
+Category values.}
+
+\item{ResourceTags}{An optional list of tags to associate with the specified
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategory.html}{\code{CostCategory}}
+. You can use resource tags to control access to your \verb{cost category}
+using IAM policies.
+
+Each tag consists of a key and a value, and each key must be unique for
+the resource. The following restrictions apply to resource tags:
+\itemize{
+\item Although the maximum number of array members is 200, you can assign
+a maximum of 50 user-tags to one resource. The remaining are
+reserved for Amazon Web Services use
+\item The maximum length of a key is 128 characters
+\item The maximum length of a value is 256 characters
+\item Keys and values can only contain alphanumeric characters, spaces,
+and any of the following: \verb{_.:/=+@-}
+\item Keys and values are case sensitive
+\item Keys and values are trimmed for any leading or trailing whitespaces
+\item Don’t use \verb{aws:} as a prefix for your keys. This prefix is reserved
+for Amazon Web Services use
+}}
 }
 \description{
 Creates a new Cost Category with the requested name and rules.
-}
-\section{Request syntax}{
-\preformatted{svc$create_cost_category_definition(
-  Name = "string",
-  RuleVersion = "CostCategoryExpression.v1",
-  Rules = list(
-    list(
-      Value = "string",
-      Rule = list(
-        Or = list(
-          list()
-        ),
-        And = list(
-          list()
-        ),
-        Not = list(),
-        Dimensions = list(
-          Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-          Values = list(
-            "string"
-          ),
-          MatchOptions = list(
-            "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-          )
-        ),
-        Tags = list(
-          Key = "string",
-          Values = list(
-            "string"
-          ),
-          MatchOptions = list(
-            "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-          )
-        ),
-        CostCategories = list(
-          Key = "string",
-          Values = list(
-            "string"
-          ),
-          MatchOptions = list(
-            "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/costexplorer/create_cost_category_definition.html} for full documentation.
+}
 \keyword{internal}

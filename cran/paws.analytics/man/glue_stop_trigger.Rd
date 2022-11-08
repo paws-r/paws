@@ -9,20 +9,9 @@ glue_stop_trigger(Name)
 \arguments{
 \item{Name}{[required] The name of the trigger to stop.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string"
-)
-}
-}
 \description{
 Stops a specified trigger.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_trigger(
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/stop_trigger.html} for full documentation.
+}
 \keyword{internal}

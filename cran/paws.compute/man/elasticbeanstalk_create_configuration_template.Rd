@@ -5,9 +5,17 @@
 \title{Creates an AWS Elastic Beanstalk configuration template, associated with
 a specific Elastic Beanstalk application}
 \usage{
-elasticbeanstalk_create_configuration_template(ApplicationName,
-  TemplateName, SolutionStackName, PlatformArn, SourceConfiguration,
-  EnvironmentId, Description, OptionSettings, Tags)
+elasticbeanstalk_create_configuration_template(
+  ApplicationName,
+  TemplateName,
+  SolutionStackName = NULL,
+  PlatformArn = NULL,
+  SourceConfiguration = NULL,
+  EnvironmentId = NULL,
+  Description = NULL,
+  OptionSettings = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the Elastic Beanstalk application to associate with this
@@ -67,89 +75,9 @@ in the \emph{AWS Elastic Beanstalk Developer Guide}.}
 
 \item{Tags}{Specifies the tags applied to the configuration template.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SolutionStackName = "string",
-  PlatformArn = "string",
-  ApplicationName = "string",
-  TemplateName = "string",
-  Description = "string",
-  EnvironmentName = "string",
-  DeploymentStatus = "deployed"|"pending"|"failed",
-  DateCreated = as.POSIXct(
-    "2015-01-01"
-  ),
-  DateUpdated = as.POSIXct(
-    "2015-01-01"
-  ),
-  OptionSettings = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates an AWS Elastic Beanstalk configuration template, associated with
-a specific Elastic Beanstalk application. You define application
-configuration settings in a configuration template. You can then use the
-configuration template to deploy different versions of the application
-with the same configuration settings.
+Creates an AWS Elastic Beanstalk configuration template, associated with a specific Elastic Beanstalk application. You define application configuration settings in a configuration template. You can then use the configuration template to deploy different versions of the application with the same configuration settings.
 
-Templates aren't associated with any environment. The \code{EnvironmentName}
-response element is always \code{null}.
-
-Related Topics
-\itemize{
-\item \code{\link[=elasticbeanstalk_describe_configuration_options]{describe_configuration_options}}
-\item \code{\link[=elasticbeanstalk_describe_configuration_settings]{describe_configuration_settings}}
-\item \code{\link[=elasticbeanstalk_list_available_solution_stacks]{list_available_solution_stacks}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$create_configuration_template(
-  ApplicationName = "string",
-  TemplateName = "string",
-  SolutionStackName = "string",
-  PlatformArn = "string",
-  SourceConfiguration = list(
-    ApplicationName = "string",
-    TemplateName = "string"
-  ),
-  EnvironmentId = "string",
-  Description = "string",
-  OptionSettings = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string",
-      Value = "string"
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation creates a configuration template named my-app-v1
-# from the settings applied to an environment with the id e-rpqsewtp2j:
-svc$create_configuration_template(
-  ApplicationName = "my-app",
-  EnvironmentId = "e-rpqsewtp2j",
-  TemplateName = "my-app-v1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/create_configuration_template.html} for full documentation.
 }
 \keyword{internal}

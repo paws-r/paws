@@ -2,7 +2,7 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_untag_resource}
 \alias{directconnect_untag_resource}
-\title{Removes one or more tags from the specified AWS Direct Connect resource}
+\title{Removes one or more tags from the specified Direct Connect resource}
 \usage{
 directconnect_untag_resource(resourceArn, tagKeys)
 }
@@ -11,20 +11,9 @@ directconnect_untag_resource(resourceArn, tagKeys)
 
 \item{tagKeys}{[required] The tag keys of the tags to remove.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes one or more tags from the specified AWS Direct Connect resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  resourceArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes one or more tags from the specified Direct Connect resource.
 
+See \url{https://paws-r.github.io/docs/directconnect/untag_resource.html} for full documentation.
+}
 \keyword{internal}

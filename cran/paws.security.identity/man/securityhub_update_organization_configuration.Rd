@@ -4,7 +4,10 @@
 \alias{securityhub_update_organization_configuration}
 \title{Used to update the configuration related to Organizations}
 \usage{
-securityhub_update_organization_configuration(AutoEnable)
+securityhub_update_organization_configuration(
+  AutoEnable,
+  AutoEnableStandards = NULL
+)
 }
 \arguments{
 \item{AutoEnable}{[required] Whether to automatically enable Security Hub for new accounts in the
@@ -15,19 +18,19 @@ automatically.
 
 To automatically enable Security Hub for new accounts, set this to
 \code{true}.}
-}
-\value{
-An empty list.
+
+\item{AutoEnableStandards}{Whether to automatically enable Security Hub \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-enable-disable.html}{default standards}
+for new member accounts in the organization.
+
+By default, this parameter is equal to \code{DEFAULT}, and new member
+accounts are automatically enabled with default Security Hub standards.
+
+To opt out of enabling default standards for new member accounts, set
+this parameter equal to \code{NONE}.}
 }
 \description{
-Used to update the configuration related to Organizations. Can only be
-called from a Security Hub administrator account.
-}
-\section{Request syntax}{
-\preformatted{svc$update_organization_configuration(
-  AutoEnable = TRUE|FALSE
-)
-}
-}
+Used to update the configuration related to Organizations. Can only be called from a Security Hub administrator account.
 
+See \url{https://paws-r.github.io/docs/securityhub/update_organization_configuration.html} for full documentation.
+}
 \keyword{internal}

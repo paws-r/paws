@@ -12,21 +12,9 @@ configservice_delete_resource_config(ResourceType, ResourceId)
 
 \item{ResourceId}{[required] Unique identifier of the resource.}
 }
-\value{
-An empty list.
-}
 \description{
-Records the configuration state for a custom resource that has been
-deleted. This API records a new ConfigurationItem with a ResourceDeleted
-status. You can retrieve the ConfigurationItems recorded for this
-resource in your AWS Config History.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_resource_config(
-  ResourceType = "string",
-  ResourceId = "string"
-)
-}
-}
+Records the configuration state for a custom resource that has been deleted. This API records a new ConfigurationItem with a ResourceDeleted status. You can retrieve the ConfigurationItems recorded for this resource in your Config History.
 
+See \url{https://paws-r.github.io/docs/configservice/delete_resource_config.html} for full documentation.
+}
 \keyword{internal}

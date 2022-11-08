@@ -9,44 +9,9 @@ elbv2_describe_target_group_attributes(TargetGroupArn)
 \arguments{
 \item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes the attributes for the specified target group.
 
-For more information, see the following:
-\itemize{
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes}{Target group attributes}
-in the \emph{Application Load Balancers Guide}
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes}{Target group attributes}
-in the \emph{Network Load Balancers Guide}
-\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html#target-group-attributes}{Target group attributes}
-in the \emph{Gateway Load Balancers Guide}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$describe_target_group_attributes(
-  TargetGroupArn = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the attributes of the specified target group.
-svc$describe_target_group_attributes(
-  TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/describe_target_group_attributes.html} for full documentation.
 }
 \keyword{internal}

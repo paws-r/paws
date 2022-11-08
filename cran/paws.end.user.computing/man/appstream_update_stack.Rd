@@ -4,10 +4,21 @@
 \alias{appstream_update_stack}
 \title{Updates the specified fields for the specified stack}
 \usage{
-appstream_update_stack(DisplayName, Description, Name,
-  StorageConnectors, DeleteStorageConnectors, RedirectURL, FeedbackURL,
-  AttributesToDelete, UserSettings, ApplicationSettings, AccessEndpoints,
-  EmbedHostDomains)
+appstream_update_stack(
+  DisplayName = NULL,
+  Description = NULL,
+  Name,
+  StorageConnectors = NULL,
+  DeleteStorageConnectors = NULL,
+  RedirectURL = NULL,
+  FeedbackURL = NULL,
+  AttributesToDelete = NULL,
+  UserSettings = NULL,
+  ApplicationSettings = NULL,
+  AccessEndpoints = NULL,
+  EmbedHostDomains = NULL,
+  StreamingExperienceSettings = NULL
+)
 }
 \arguments{
 \item{DisplayName}{The stack name to display.}
@@ -42,102 +53,13 @@ endpoints.}
 \item{EmbedHostDomains}{The domains where AppStream 2.0 streaming sessions can be embedded in an
 iframe. You must approve the domains that you want to host embedded
 AppStream 2.0 streaming sessions.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Stack = list(
-    Arn = "string",
-    Name = "string",
-    Description = "string",
-    DisplayName = "string",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    StorageConnectors = list(
-      list(
-        ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
-        ResourceIdentifier = "string",
-        Domains = list(
-          "string"
-        )
-      )
-    ),
-    RedirectURL = "string",
-    FeedbackURL = "string",
-    StackErrors = list(
-      list(
-        ErrorCode = "STORAGE_CONNECTOR_ERROR"|"INTERNAL_SERVICE_ERROR",
-        ErrorMessage = "string"
-      )
-    ),
-    UserSettings = list(
-      list(
-        Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
-        Permission = "ENABLED"|"DISABLED"
-      )
-    ),
-    ApplicationSettings = list(
-      Enabled = TRUE|FALSE,
-      SettingsGroup = "string",
-      S3BucketName = "string"
-    ),
-    AccessEndpoints = list(
-      list(
-        EndpointType = "STREAMING",
-        VpceId = "string"
-      )
-    ),
-    EmbedHostDomains = list(
-      "string"
-    )
-  )
-)
-}
+
+\item{StreamingExperienceSettings}{The streaming protocol you want your stack to prefer. This can be UDP or
+TCP. Currently, UDP is only supported in the Windows native client.}
 }
 \description{
 Updates the specified fields for the specified stack.
-}
-\section{Request syntax}{
-\preformatted{svc$update_stack(
-  DisplayName = "string",
-  Description = "string",
-  Name = "string",
-  StorageConnectors = list(
-    list(
-      ConnectorType = "HOMEFOLDERS"|"GOOGLE_DRIVE"|"ONE_DRIVE",
-      ResourceIdentifier = "string",
-      Domains = list(
-        "string"
-      )
-    )
-  ),
-  DeleteStorageConnectors = TRUE|FALSE,
-  RedirectURL = "string",
-  FeedbackURL = "string",
-  AttributesToDelete = list(
-    "STORAGE_CONNECTORS"|"STORAGE_CONNECTOR_HOMEFOLDERS"|"STORAGE_CONNECTOR_GOOGLE_DRIVE"|"STORAGE_CONNECTOR_ONE_DRIVE"|"REDIRECT_URL"|"FEEDBACK_URL"|"THEME_NAME"|"USER_SETTINGS"|"EMBED_HOST_DOMAINS"|"IAM_ROLE_ARN"|"ACCESS_ENDPOINTS"
-  ),
-  UserSettings = list(
-    list(
-      Action = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"|"CLIPBOARD_COPY_TO_LOCAL_DEVICE"|"FILE_UPLOAD"|"FILE_DOWNLOAD"|"PRINTING_TO_LOCAL_DEVICE",
-      Permission = "ENABLED"|"DISABLED"
-    )
-  ),
-  ApplicationSettings = list(
-    Enabled = TRUE|FALSE,
-    SettingsGroup = "string"
-  ),
-  AccessEndpoints = list(
-    list(
-      EndpointType = "STREAMING",
-      VpceId = "string"
-    )
-  ),
-  EmbedHostDomains = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/appstream/update_stack.html} for full documentation.
+}
 \keyword{internal}

@@ -13,24 +13,9 @@ findings you want to archive.}
 
 \item{FindingIds}{[required] The IDs of the findings that you want to archive.}
 }
-\value{
-An empty list.
-}
 \description{
-Archives GuardDuty findings that are specified by the list of finding
-IDs.
+Archives GuardDuty findings that are specified by the list of finding IDs.
 
-Only the administrator account can archive findings. Member accounts
-don't have permission to archive findings from their accounts.
+See \url{https://paws-r.github.io/docs/guardduty/archive_findings.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$archive_findings(
-  DetectorId = "string",
-  FindingIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

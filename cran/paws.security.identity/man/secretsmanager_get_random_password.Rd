@@ -2,97 +2,49 @@
 % Please edit documentation in R/secretsmanager_operations.R
 \name{secretsmanager_get_random_password}
 \alias{secretsmanager_get_random_password}
-\title{Generates a random password of the specified complexity}
+\title{Generates a random password}
 \usage{
-secretsmanager_get_random_password(PasswordLength, ExcludeCharacters,
-  ExcludeNumbers, ExcludePunctuation, ExcludeUppercase, ExcludeLowercase,
-  IncludeSpace, RequireEachIncludedType)
+secretsmanager_get_random_password(
+  PasswordLength = NULL,
+  ExcludeCharacters = NULL,
+  ExcludeNumbers = NULL,
+  ExcludePunctuation = NULL,
+  ExcludeUppercase = NULL,
+  ExcludeLowercase = NULL,
+  IncludeSpace = NULL,
+  RequireEachIncludedType = NULL
+)
 }
 \arguments{
-\item{PasswordLength}{The desired length of the generated password. The default value if you
-do not include this parameter is 32 characters.}
+\item{PasswordLength}{The length of the password. If you don't include this parameter, the
+default length is 32 characters.}
 
-\item{ExcludeCharacters}{A string that includes characters that should not be included in the
-generated password. The default is that all characters from the included
-sets can be used.}
+\item{ExcludeCharacters}{A string of the characters that you don't want in the password.}
 
-\item{ExcludeNumbers}{Specifies that the generated password should not include digits. The
-default if you do not include this switch parameter is that digits can
-be included.}
+\item{ExcludeNumbers}{Specifies whether to exclude numbers from the password. If you don't
+include this switch, the password can contain numbers.}
 
-\item{ExcludePunctuation}{Specifies that the generated password should not include punctuation
-characters. The default if you do not include this switch parameter is
-that punctuation characters can be included.
+\item{ExcludePunctuation}{Specifies whether to exclude the following punctuation characters from
+the password:
+\verb{! \\" # $ \% & \\' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _ \\` \{ | \} ~}.
+If you don't include this switch, the password can contain punctuation.}
 
-The following are the punctuation characters that \emph{can} be included in
-the generated password if you don't explicitly exclude them with
-\code{ExcludeCharacters} or \code{ExcludePunctuation}:
+\item{ExcludeUppercase}{Specifies whether to exclude uppercase letters from the password. If you
+don't include this switch, the password can contain uppercase letters.}
 
-\verb{! \\" # $ \% & \\' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _ \\` \{ | \} ~}}
+\item{ExcludeLowercase}{Specifies whether to exclude lowercase letters from the password. If you
+don't include this switch, the password can contain lowercase letters.}
 
-\item{ExcludeUppercase}{Specifies that the generated password should not include uppercase
-letters. The default if you do not include this switch parameter is that
-uppercase letters can be included.}
+\item{IncludeSpace}{Specifies whether to include the space character. If you include this
+switch, the password can contain space characters.}
 
-\item{ExcludeLowercase}{Specifies that the generated password should not include lowercase
-letters. The default if you do not include this switch parameter is that
-lowercase letters can be included.}
-
-\item{IncludeSpace}{Specifies that the generated password can include the space character.
-The default if you do not include this switch parameter is that the
-space character is not included.}
-
-\item{RequireEachIncludedType}{A boolean value that specifies whether the generated password must
-include at least one of every allowed character type. The default value
-is \code{True} and the operation requires at least one of every character
-type.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  RandomPassword = "string"
-)
-}
+\item{RequireEachIncludedType}{Specifies whether to include at least one upper and lowercase letter,
+one number, and one punctuation. If you don't include this switch, the
+password contains at least one of every character type.}
 }
 \description{
-Generates a random password of the specified complexity. This operation
-is intended for use in the Lambda rotation function. Per best practice,
-we recommend that you specify the maximum length and include every
-character type that the system you are generating a password for can
-support.
+Generates a random password. We recommend that you specify the maximum length and include every character type that the system you are generating a password for can support.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item secretsmanager:GetRandomPassword
-}
-}
-\section{Request syntax}{
-\preformatted{svc$get_random_password(
-  PasswordLength = 123,
-  ExcludeCharacters = "string",
-  ExcludeNumbers = TRUE|FALSE,
-  ExcludePunctuation = TRUE|FALSE,
-  ExcludeUppercase = TRUE|FALSE,
-  ExcludeLowercase = TRUE|FALSE,
-  IncludeSpace = TRUE|FALSE,
-  RequireEachIncludedType = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to request a randomly generated
-# password. This example includes the optional flags to require spaces and
-# at least one character of each included type. It specifies a length of
-# 20 characters.
-svc$get_random_password(
-  IncludeSpace = TRUE,
-  PasswordLength = 20L,
-  RequireEachIncludedType = TRUE
-)
-}
-
+See \url{https://paws-r.github.io/docs/secretsmanager/get_random_password.html} for full documentation.
 }
 \keyword{internal}

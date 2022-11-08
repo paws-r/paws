@@ -4,7 +4,7 @@
 \alias{cloudfront_delete_cache_policy}
 \title{Deletes a cache policy}
 \usage{
-cloudfront_delete_cache_policy(Id, IfMatch)
+cloudfront_delete_cache_policy(Id, IfMatch = NULL)
 }
 \arguments{
 \item{Id}{[required] The unique identifier for the cache policy that you are deleting. To get
@@ -17,27 +17,9 @@ the cache policy’s \code{ETag} value, which you can get using
 \code{\link[=cloudfront_get_cache_policy]{get_cache_policy}}, or
 \code{\link[=cloudfront_get_cache_policy_config]{get_cache_policy_config}}.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a cache policy.
 
-You cannot delete a cache policy if it’s attached to a cache behavior.
-First update your distributions to remove the cache policy from all
-cache behaviors, then delete the cache policy.
-
-To delete a cache policy, you must provide the policy’s identifier and
-version. To get these values, you can use
-\code{\link[=cloudfront_list_cache_policies]{list_cache_policies}} or
-\code{\link[=cloudfront_get_cache_policy]{get_cache_policy}}.
+See \url{https://paws-r.github.io/docs/cloudfront/delete_cache_policy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_cache_policy(
-  Id = "string",
-  IfMatch = "string"
-)
-}
-}
-
 \keyword{internal}

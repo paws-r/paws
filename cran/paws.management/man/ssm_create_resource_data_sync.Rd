@@ -5,8 +5,12 @@
 \title{A resource data sync helps you view data from multiple sources in a
 single location}
 \usage{
-ssm_create_resource_data_sync(SyncName, S3Destination, SyncType,
-  SyncSource)
+ssm_create_resource_data_sync(
+  SyncName,
+  S3Destination = NULL,
+  SyncType = NULL,
+  SyncSource = NULL
+)
 }
 \arguments{
 \item{SyncName}{[required] A name for the configuration.}
@@ -18,76 +22,17 @@ if the \code{SyncType} value is SyncToDestination.}
 synchronizes data to an S3 bucket for Inventory. If you specify
 \code{SyncToDestination}, you must provide a value for \code{S3Destination}.
 Specify \code{SyncFromSource} to synchronize data from a single account and
-multiple Regions, or multiple AWS accounts and Regions, as listed in AWS
-Organizations for Explorer. If you specify \code{SyncFromSource}, you must
-provide a value for \code{SyncSource}. The default value is
-\code{SyncToDestination}.}
+multiple Regions, or multiple Amazon Web Services accounts and Amazon
+Web Services Regions, as listed in Organizations for Explorer. If you
+specify \code{SyncFromSource}, you must provide a value for \code{SyncSource}. The
+default value is \code{SyncToDestination}.}
 
 \item{SyncSource}{Specify information about the data sources to synchronize. This
 parameter is required if the \code{SyncType} value is SyncFromSource.}
 }
-\value{
-An empty list.
-}
 \description{
-A resource data sync helps you view data from multiple sources in a
-single location. Systems Manager offers two types of resource data sync:
-\code{SyncToDestination} and \code{SyncFromSource}.
+A resource data sync helps you view data from multiple sources in a single location. Amazon Web Services Systems Manager offers two types of resource data sync: \code{SyncToDestination} and \code{SyncFromSource}.
 
-You can configure Systems Manager Inventory to use the
-\code{SyncToDestination} type to synchronize Inventory data from multiple AWS
-Regions to a single S3 bucket. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html}{Configuring Resource Data Sync for Inventory}
-in the \emph{AWS Systems Manager User Guide}.
-
-You can configure Systems Manager Explorer to use the \code{SyncFromSource}
-type to synchronize operational work items (OpsItems) and operational
-data (OpsData) from multiple AWS Regions to a single S3 bucket. This
-type can synchronize OpsItems and OpsData from multiple AWS accounts and
-Regions or \code{EntireOrganization} by using AWS Organizations. For more
-information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/Explorer-resource-data-sync.html}{Setting up Systems Manager Explorer to display data from multiple accounts and Regions}
-in the \emph{AWS Systems Manager User Guide}.
-
-A resource data sync is an asynchronous operation that returns
-immediately. After a successful initial sync is completed, the system
-continuously syncs data. To check the status of a sync, use the
-\code{\link[=ssm_list_resource_data_sync]{list_resource_data_sync}}.
-
-By default, data is not encrypted in Amazon S3. We strongly recommend
-that you enable encryption in Amazon S3 to ensure secure data storage.
-We also recommend that you secure access to the Amazon S3 bucket by
-creating a restrictive bucket policy.
+See \url{https://paws-r.github.io/docs/ssm/create_resource_data_sync.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_resource_data_sync(
-  SyncName = "string",
-  S3Destination = list(
-    BucketName = "string",
-    Prefix = "string",
-    SyncFormat = "JsonSerDe",
-    Region = "string",
-    AWSKMSKeyARN = "string",
-    DestinationDataSharing = list(
-      DestinationDataSharingType = "string"
-    )
-  ),
-  SyncType = "string",
-  SyncSource = list(
-    SourceType = "string",
-    AwsOrganizationsSource = list(
-      OrganizationSourceType = "string",
-      OrganizationalUnits = list(
-        list(
-          OrganizationalUnitId = "string"
-        )
-      )
-    ),
-    SourceRegions = list(
-      "string"
-    ),
-    IncludeFutureRegions = TRUE|FALSE
-  )
-)
-}
-}
-
 \keyword{internal}

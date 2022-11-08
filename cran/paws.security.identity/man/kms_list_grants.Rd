@@ -2,14 +2,20 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_list_grants}
 \alias{kms_list_grants}
-\title{Gets a list of all grants for the specified customer master key (CMK)}
+\title{Gets a list of all grants for the specified KMS key}
 \usage{
-kms_list_grants(Limit, Marker, KeyId)
+kms_list_grants(
+  Limit = NULL,
+  Marker = NULL,
+  KeyId,
+  GrantId = NULL,
+  GranteePrincipal = NULL
+)
 }
 \arguments{
 \item{Limit}{Use this parameter to specify the maximum number of items to return.
-When this value is present, AWS KMS does not return more than the
-specified number of items, but it might return fewer.
+When this value is present, KMS does not return more than the specified
+number of items, but it might return fewer.
 
 This value is optional. If you include a value, it must be between 1 and
 100, inclusive. If you do not include a value, it defaults to 50.}
@@ -18,10 +24,11 @@ This value is optional. If you include a value, it must be between 1 and
 with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 
-\item{KeyId}{[required] A unique identifier for the customer master key (CMK).
+\item{KeyId}{[required] Returns only grants for the specified KMS key. This parameter is
+required.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To
-specify a CMK in a different AWS account, you must use the key ARN.
+Specify the key ID or key ARN of the KMS key. To specify a KMS key in a
+different Amazon Web Services account, you must use the key ARN.
 
 For example:
 \itemize{
@@ -30,81 +37,18 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use
+To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Grants = list(
-    list(
-      KeyId = "string",
-      GrantId = "string",
-      Name = "string",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      GranteePrincipal = "string",
-      RetiringPrincipal = "string",
-      IssuingAccount = "string",
-      Operations = list(
-        "Decrypt"|"Encrypt"|"GenerateDataKey"|"GenerateDataKeyWithoutPlaintext"|"ReEncryptFrom"|"ReEncryptTo"|"Sign"|"Verify"|"GetPublicKey"|"CreateGrant"|"RetireGrant"|"DescribeKey"|"GenerateDataKeyPair"|"GenerateDataKeyPairWithoutPlaintext"
-      ),
-      Constraints = list(
-        EncryptionContextSubset = list(
-          "string"
-        ),
-        EncryptionContextEquals = list(
-          "string"
-        )
-      )
-    )
-  ),
-  NextMarker = "string",
-  Truncated = TRUE|FALSE
-)
-}
+
+\item{GrantId}{Returns only the grant with the specified grant ID. The grant ID
+uniquely identifies the grant.}
+
+\item{GranteePrincipal}{Returns only grants where the specified principal is the grantee
+principal for the grant.}
 }
 \description{
-Gets a list of all grants for the specified customer master key (CMK).
+Gets a list of all grants for the specified KMS key.
 
-The \code{GranteePrincipal} field in the \code{\link[=kms_list_grants]{list_grants}}
-response usually contains the user or role designated as the grantee
-principal in the grant. However, when the grantee principal in the grant
-is an AWS service, the \code{GranteePrincipal} field contains the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#principal-services}{service principal},
-which might represent several different grantee principals.
-
-\strong{Cross-account use}: Yes. To perform this operation on a CMK in a
-different AWS account, specify the key ARN in the value of the \code{KeyId}
-parameter.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ListGrants}
-(key policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_create_grant]{create_grant}}
-\item \code{\link[=kms_list_retirable_grants]{list_retirable_grants}}
-\item \code{\link[=kms_retire_grant]{retire_grant}}
-\item \code{\link[=kms_revoke_grant]{revoke_grant}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_grants(
-  Limit = 123,
-  Marker = "string",
-  KeyId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example lists grants for the specified CMK.
-svc$list_grants(
-  KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/list_grants.html} for full documentation.
 }
 \keyword{internal}

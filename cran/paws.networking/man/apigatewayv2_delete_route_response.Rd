@@ -13,19 +13,9 @@ apigatewayv2_delete_route_response(ApiId, RouteId, RouteResponseId)
 
 \item{RouteResponseId}{[required] The route response ID.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a RouteResponse.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_route_response(
-  ApiId = "string",
-  RouteId = "string",
-  RouteResponseId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_route_response.html} for full documentation.
+}
 \keyword{internal}

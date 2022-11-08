@@ -4,7 +4,7 @@
 \alias{sns_list_subscriptions_by_topic}
 \title{Returns a list of the subscriptions to a specific topic}
 \usage{
-sns_list_subscriptions_by_topic(TopicArn, NextToken)
+sns_list_subscriptions_by_topic(TopicArn, NextToken = NULL)
 }
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic for which you wish to find subscriptions.}
@@ -13,37 +13,9 @@ sns_list_subscriptions_by_topic(TopicArn, NextToken)
 \code{\link[=sns_list_subscriptions_by_topic]{list_subscriptions_by_topic}}
 request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Subscriptions = list(
-    list(
-      SubscriptionArn = "string",
-      Owner = "string",
-      Protocol = "string",
-      Endpoint = "string",
-      TopicArn = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of the subscriptions to a specific topic. Each call
-returns a limited list of subscriptions, up to 100. If there are more
-subscriptions, a \code{NextToken} is also returned. Use the \code{NextToken}
-parameter in a new
-\code{\link[=sns_list_subscriptions_by_topic]{list_subscriptions_by_topic}} call to
-get further results.
+Returns a list of the subscriptions to a specific topic. Each call returns a limited list of subscriptions, up to 100. If there are more subscriptions, a \code{NextToken} is also returned. Use the \code{NextToken} parameter in a new \code{\link[=sns_list_subscriptions_by_topic]{list_subscriptions_by_topic}} call to get further results.
 
-This action is throttled at 30 transactions per second (TPS).
+See \url{https://paws-r.github.io/docs/sns/list_subscriptions_by_topic.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_subscriptions_by_topic(
-  TopicArn = "string",
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

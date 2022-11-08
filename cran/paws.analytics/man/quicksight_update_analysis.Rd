@@ -4,18 +4,24 @@
 \alias{quicksight_update_analysis}
 \title{Updates an analysis in Amazon QuickSight}
 \usage{
-quicksight_update_analysis(AwsAccountId, AnalysisId, Name, Parameters,
-  SourceEntity, ThemeArn)
+quicksight_update_analysis(
+  AwsAccountId,
+  AnalysisId,
+  Name,
+  Parameters = NULL,
+  SourceEntity,
+  ThemeArn = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the analysis that you're
-updating.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the analysis
+that you're updating.}
 
 \item{AnalysisId}{[required] The ID for the analysis that you're updating. This ID displays in the
 URL of the analysis.}
 
 \item{Name}{[required] A descriptive name for the analysis that you're updating. This name
-displays for the analysis in the QuickSight console.}
+displays for the analysis in the Amazon QuickSight console.}
 
 \item{Parameters}{The parameter names and override values that you want to use. An
 analysis can have any parameter type, and some parameters might accept
@@ -26,77 +32,12 @@ metadata structure contains details that describe a source template and
 one or more datasets.}
 
 \item{ThemeArn}{The Amazon Resource Name (ARN) for the theme to apply to the analysis
-that you're creating. To see the theme in the QuickSight console, make
-sure that you have access to it.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  AnalysisId = "string",
-  UpdateStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-  Status = 123,
-  RequestId = "string"
-)
-}
+that you're creating. To see the theme in the Amazon QuickSight console,
+make sure that you have access to it.}
 }
 \description{
 Updates an analysis in Amazon QuickSight
-}
-\section{Request syntax}{
-\preformatted{svc$update_analysis(
-  AwsAccountId = "string",
-  AnalysisId = "string",
-  Name = "string",
-  Parameters = list(
-    StringParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          "string"
-        )
-      )
-    ),
-    IntegerParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          123
-        )
-      )
-    ),
-    DecimalParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          123.0
-        )
-      )
-    ),
-    DateTimeParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  ),
-  SourceEntity = list(
-    SourceTemplate = list(
-      DataSetReferences = list(
-        list(
-          DataSetPlaceholder = "string",
-          DataSetArn = "string"
-        )
-      ),
-      Arn = "string"
-    )
-  ),
-  ThemeArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/update_analysis.html} for full documentation.
+}
 \keyword{internal}

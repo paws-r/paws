@@ -5,9 +5,15 @@
 \title{Returns the number of closed workflow executions within the given domain
 that meet the specified filtering criteria}
 \usage{
-swf_count_closed_workflow_executions(domain, startTimeFilter,
-  closeTimeFilter, executionFilter, typeFilter, tagFilter,
-  closeStatusFilter)
+swf_count_closed_workflow_executions(
+  domain,
+  startTimeFilter = NULL,
+  closeTimeFilter = NULL,
+  executionFilter = NULL,
+  typeFilter = NULL,
+  tagFilter = NULL,
+  closeStatusFilter = NULL
+)
 }
 \arguments{
 \item{domain}{[required] The name of the domain containing the workflow executions to count.}
@@ -49,82 +55,9 @@ specified as \code{CLOSED}.
 \code{closeStatusFilter}, \code{executionFilter}, \code{typeFilter} and \code{tagFilter} are
 mutually exclusive. You can specify at most one of these in a request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  count = 123,
-  truncated = TRUE|FALSE
-)
-}
-}
 \description{
-Returns the number of closed workflow executions within the given domain
-that meet the specified filtering criteria.
+Returns the number of closed workflow executions within the given domain that meet the specified filtering criteria.
 
-This operation is eventually consistent. The results are best effort and
-may not exactly reflect recent updates and changes.
-
-\strong{Access Control}
-
-You can use IAM policies to control this action's access to Amazon SWF
-resources as follows:
-\itemize{
-\item Use a \code{Resource} element with the domain name to limit the action to
-only specified domains.
-\item Use an \code{Action} element to allow or deny permission to call this
-action.
-\item Constrain the following parameters by using a \code{Condition} element
-with the appropriate keys.
-\itemize{
-\item \code{tagFilter.tag}: String constraint. The key is
-\code{swf:tagFilter.tag}.
-\item \code{typeFilter.name}: String constraint. The key is
-\code{swf:typeFilter.name}.
-\item \code{typeFilter.version}: String constraint. The key is
-\code{swf:typeFilter.version}.
+See \url{https://paws-r.github.io/docs/swf/count_closed_workflow_executions.html} for full documentation.
 }
-}
-
-If the caller doesn't have sufficient permissions to invoke the action,
-or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
-to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
-in the \emph{Amazon SWF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$count_closed_workflow_executions(
-  domain = "string",
-  startTimeFilter = list(
-    oldestDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    latestDate = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  closeTimeFilter = list(
-    oldestDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    latestDate = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  executionFilter = list(
-    workflowId = "string"
-  ),
-  typeFilter = list(
-    name = "string",
-    version = "string"
-  ),
-  tagFilter = list(
-    tag = "string"
-  ),
-  closeStatusFilter = list(
-    status = "COMPLETED"|"FAILED"|"CANCELED"|"TERMINATED"|"CONTINUED_AS_NEW"|"TIMED_OUT"
-  )
-)
-}
-}
-
 \keyword{internal}

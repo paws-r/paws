@@ -5,7 +5,7 @@
 \title{List all field-level encryption configurations that have been created in
 CloudFront for this account}
 \usage{
-cloudfront_list_field_level_encryption_configs(Marker, MaxItems)
+cloudfront_list_field_level_encryption_configs(Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{Marker}{Use this when paginating results to indicate where to begin in your list
@@ -17,60 +17,9 @@ response (which is also the ID of the last configuration on that page).}
 \item{MaxItems}{The maximum number of field-level encryption configurations you want in
 the response body.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FieldLevelEncryptionList = list(
-    NextMarker = "string",
-    MaxItems = 123,
-    Quantity = 123,
-    Items = list(
-      list(
-        Id = "string",
-        LastModifiedTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        Comment = "string",
-        QueryArgProfileConfig = list(
-          ForwardWhenQueryArgProfileIsUnknown = TRUE|FALSE,
-          QueryArgProfiles = list(
-            Quantity = 123,
-            Items = list(
-              list(
-                QueryArg = "string",
-                ProfileId = "string"
-              )
-            )
-          )
-        ),
-        ContentTypeProfileConfig = list(
-          ForwardWhenContentTypeIsUnknown = TRUE|FALSE,
-          ContentTypeProfiles = list(
-            Quantity = 123,
-            Items = list(
-              list(
-                Format = "URLEncoded",
-                ProfileId = "string",
-                ContentType = "string"
-              )
-            )
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-List all field-level encryption configurations that have been created in
-CloudFront for this account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_field_level_encryption_configs(
-  Marker = "string",
-  MaxItems = "string"
-)
-}
-}
+List all field-level encryption configurations that have been created in CloudFront for this account.
 
+See \url{https://paws-r.github.io/docs/cloudfront/list_field_level_encryption_configs.html} for full documentation.
+}
 \keyword{internal}

@@ -40,6 +40,14 @@ test_that("list_enabled_products_for_import", {
   expect_error(svc$list_enabled_products_for_import(MaxResults = 20), NA)
 })
 
+test_that("list_finding_aggregators", {
+  expect_error(svc$list_finding_aggregators(), NA)
+})
+
+test_that("list_finding_aggregators", {
+  expect_error(svc$list_finding_aggregators(MaxResults = 20), NA)
+})
+
 test_that("list_invitations", {
   expect_error(svc$list_invitations(), NA)
 })

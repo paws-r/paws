@@ -4,54 +4,34 @@
 \alias{efs_put_file_system_policy}
 \title{Applies an Amazon EFS FileSystemPolicy to an Amazon EFS file system}
 \usage{
-efs_put_file_system_policy(FileSystemId, Policy,
-  BypassPolicyLockoutSafetyCheck)
+efs_put_file_system_policy(
+  FileSystemId,
+  Policy,
+  BypassPolicyLockoutSafetyCheck = NULL
+)
 }
 \arguments{
 \item{FileSystemId}{[required] The ID of the EFS file system that you want to create or update the
 \code{FileSystemPolicy} for.}
 
 \item{Policy}{[required] The \code{FileSystemPolicy} that you're creating. Accepts a JSON formatted
-policy definition. To find out more about the elements that make up a
-file system policy, see \href{https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies}{EFS Resource-based Policies}.}
+policy definition. EFS file system policies have a 20,000 character
+limit. To find out more about the elements that make up a file system
+policy, see \href{https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies}{EFS Resource-based Policies}.}
 
-\item{BypassPolicyLockoutSafetyCheck}{(Optional) A flag to indicate whether to bypass the \code{FileSystemPolicy}
-lockout safety check. The policy lockout safety check determines whether
-the policy in the request will prevent the principal making the request
-will be locked out from making future
-\code{\link[=efs_put_file_system_policy]{put_file_system_policy}} requests on the
+\item{BypassPolicyLockoutSafetyCheck}{(Optional) A boolean that specifies whether or not to bypass the
+\code{FileSystemPolicy} lockout safety check. The lockout safety check
+determines whether the policy in the request will lock out, or prevent,
+the IAM principal that is making the request from making future
+\code{\link[=efs_put_file_system_policy]{put_file_system_policy}} requests on this
 file system. Set \code{BypassPolicyLockoutSafetyCheck} to \code{True} only when
-you intend to prevent the principal that is making the request from
-making a subsequent
-\code{\link[=efs_put_file_system_policy]{put_file_system_policy}} request on the
-file system. The default value is False.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  FileSystemId = "string",
-  Policy = "string"
-)
-}
+you intend to prevent the IAM principal that is making the request from
+making subsequent \code{\link[=efs_put_file_system_policy]{put_file_system_policy}}
+requests on this file system. The default value is \code{False}.}
 }
 \description{
-Applies an Amazon EFS \code{FileSystemPolicy} to an Amazon EFS file system. A
-file system policy is an IAM resource-based policy and can contain
-multiple policy statements. A file system always has exactly one file
-system policy, which can be the default policy or an explicit policy set
-or updated using this API operation. When an explicit policy is set, it
-overrides the default policy. For more information about the default
-file system policy, see \href{https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy}{Default EFS File System Policy}.
+Applies an Amazon EFS \code{FileSystemPolicy} to an Amazon EFS file system. A file system policy is an IAM resource-based policy and can contain multiple policy statements. A file system always has exactly one file system policy, which can be the default policy or an explicit policy set or updated using this API operation. EFS file system policies have a 20,000 character limit. When an explicit policy is set, it overrides the default policy. For more information about the default file system policy, see \href{https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy}{Default EFS File System Policy}.
 
-This operation requires permissions for the
-\code{elasticfilesystem:PutFileSystemPolicy} action.
+See \url{https://paws-r.github.io/docs/efs/put_file_system_policy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_file_system_policy(
-  FileSystemId = "string",
-  Policy = "string",
-  BypassPolicyLockoutSafetyCheck = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

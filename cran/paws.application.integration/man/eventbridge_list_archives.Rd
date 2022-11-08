@@ -4,8 +4,13 @@
 \alias{eventbridge_list_archives}
 \title{Lists your archives}
 \usage{
-eventbridge_list_archives(NamePrefix, EventSourceArn, State, NextToken,
-  Limit)
+eventbridge_list_archives(
+  NamePrefix = NULL,
+  EventSourceArn = NULL,
+  State = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{NamePrefix}{A name prefix to filter the archives returned. Only archives with name
@@ -20,40 +25,9 @@ results.}
 
 \item{Limit}{The maximum number of results to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Archives = list(
-    list(
-      ArchiveName = "string",
-      EventSourceArn = "string",
-      State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
-      StateReason = "string",
-      RetentionDays = 123,
-      SizeBytes = 123,
-      EventCount = 123,
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists your archives. You can either list all the archives or you can
-provide a prefix to match to the archive names. Filter parameters are
-exclusive.
-}
-\section{Request syntax}{
-\preformatted{svc$list_archives(
-  NamePrefix = "string",
-  EventSourceArn = "string",
-  State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+Lists your archives. You can either list all the archives or you can provide a prefix to match to the archive names. Filter parameters are exclusive.
 
+See \url{https://paws-r.github.io/docs/eventbridge/list_archives.html} for full documentation.
+}
 \keyword{internal}

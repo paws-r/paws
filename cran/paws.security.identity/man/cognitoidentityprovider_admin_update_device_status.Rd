@@ -4,8 +4,12 @@
 \alias{cognitoidentityprovider_admin_update_device_status}
 \title{Updates the device status as an administrator}
 \usage{
-cognitoidentityprovider_admin_update_device_status(UserPoolId, Username,
-  DeviceKey, DeviceRememberedStatus)
+cognitoidentityprovider_admin_update_device_status(
+  UserPoolId,
+  Username,
+  DeviceKey,
+  DeviceRememberedStatus = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -16,22 +20,9 @@ cognitoidentityprovider_admin_update_device_status(UserPoolId, Username,
 
 \item{DeviceRememberedStatus}{The status indicating whether a device has been remembered or not.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the device status as an administrator.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_update_device_status.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_update_device_status(
-  UserPoolId = "string",
-  Username = "string",
-  DeviceKey = "string",
-  DeviceRememberedStatus = "remembered"|"not_remembered"
-)
-}
-}
-
 \keyword{internal}

@@ -3,13 +3,18 @@
 \name{quicksight_get_session_embed_url}
 \alias{quicksight_get_session_embed_url}
 \title{Generates a session URL and authorization code that you can use to embed
-the Amazon QuickSight console in your web server code}
+the Amazon Amazon QuickSight console in your web server code}
 \usage{
-quicksight_get_session_embed_url(AwsAccountId, EntryPoint,
-  SessionLifetimeInMinutes, UserArn)
+quicksight_get_session_embed_url(
+  AwsAccountId,
+  EntryPoint = NULL,
+  SessionLifetimeInMinutes = NULL,
+  UserArn = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID for the AWS account associated with your QuickSight subscription.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account associated with your Amazon
+QuickSight subscription.}
 
 \item{EntryPoint}{The URL you use to access the embedded session. The entry point URL is
 constrained to the following paths:
@@ -19,9 +24,9 @@ constrained to the following paths:
 \item \verb{/start/dashboards}
 \item \verb{/start/favorites}
 \item \verb{/dashboards/DashboardId } - where \code{DashboardId} is the actual ID
-key from the QuickSight console URL of the dashboard
+key from the Amazon QuickSight console URL of the dashboard
 \item \verb{/analyses/AnalysisId } - where \code{AnalysisId} is the actual ID key
-from the QuickSight console URL of the analysis
+from the Amazon QuickSight console URL of the analysis
 }}
 
 \item{SessionLifetimeInMinutes}{How many minutes the session is valid. The session lifetime must be
@@ -34,7 +39,7 @@ need to be authenticated as one of the following:
 \enumerate{
 \item Active Directory (AD) users or group members
 \item Invited nonfederated users
-\item AWS Identity and Access Management (IAM) users and IAM role-based
+\item Identity and Access Management (IAM) users and IAM role-based
 sessions authenticated through Federated Single Sign-On using SAML,
 OpenID Connect, or IAM federation
 }
@@ -42,40 +47,9 @@ OpenID Connect, or IAM federation
 Omit this parameter for users in the third group, IAM users and IAM
 role-based sessions.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EmbedUrl = "string",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
-Generates a session URL and authorization code that you can use to embed
-the Amazon QuickSight console in your web server code. Use
-\code{\link[=quicksight_get_session_embed_url]{get_session_embed_url}} where you
-want to provide an authoring portal that allows users to create data
-sources, datasets, analyses, and dashboards. The users who access an
-embedded QuickSight console need belong to the author or admin security
-cohort. If you want to restrict permissions to some of these features,
-add a custom permissions profile to the user with the
-\code{\link[=quicksight_update_user]{update_user}} API operation. Use
-\code{\link[=quicksight_register_user]{register_user}} API operation to add a new
-user with a custom permission profile attached. For more information,
-see the following sections in the \emph{Amazon QuickSight User Guide}:
-\itemize{
-\item \href{https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html}{Embedding the Amazon QuickSight Console}
-\item \href{https://docs.aws.amazon.com/quicksight/latest/user/customizing-permissions-to-the-quicksight-console.html}{Customizing Access to the Amazon QuickSight Console}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$get_session_embed_url(
-  AwsAccountId = "string",
-  EntryPoint = "string",
-  SessionLifetimeInMinutes = 123,
-  UserArn = "string"
-)
-}
-}
+Generates a session URL and authorization code that you can use to embed the Amazon Amazon QuickSight console in your web server code. Use \code{\link[=quicksight_get_session_embed_url]{get_session_embed_url}} where you want to provide an authoring portal that allows users to create data sources, datasets, analyses, and dashboards. The users who access an embedded Amazon QuickSight console need belong to the author or admin security cohort. If you want to restrict permissions to some of these features, add a custom permissions profile to the user with the \code{\link[=quicksight_update_user]{update_user}} API operation. Use \code{\link[=quicksight_register_user]{register_user}} API operation to add a new user with a custom permission profile attached. For more information, see the following sections in the \emph{Amazon QuickSight User Guide}:
 
+See \url{https://paws-r.github.io/docs/quicksight/get_session_embed_url.html} for full documentation.
+}
 \keyword{internal}

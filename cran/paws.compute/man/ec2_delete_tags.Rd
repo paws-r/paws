@@ -4,7 +4,7 @@
 \alias{ec2_delete_tags}
 \title{Deletes the specified set of tags from the specified set of resources}
 \usage{
-ec2_delete_tags(DryRun, Resources, Tags)
+ec2_delete_tags(DryRun = NULL, Resources, Tags = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -24,50 +24,14 @@ tag key with an empty string as the tag value, we delete the tag only if
 its value is an empty string.
 
 If you omit this parameter, we delete all user-defined tags for the
-specified resources. We do not delete AWS-generated tags (tags that have
-the \verb{aws:} prefix).}
-}
-\value{
-An empty list.
+specified resources. We do not delete Amazon Web Services-generated tags
+(tags that have the \verb{aws:} prefix).
+
+Constraints: Up to 1000 tags.}
 }
 \description{
 Deletes the specified set of tags from the specified set of resources.
 
-To list the current tags, use \code{\link[=ec2_describe_tags]{describe_tags}}. For
-more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_tags(
-  DryRun = TRUE|FALSE,
-  Resources = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes the tag Stack=test from the specified image.
-svc$delete_tags(
-  Resources = list(
-    "ami-78a54011"
-  ),
-  Tags = list(
-    list(
-      Key = "Stack",
-      Value = "test"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_tags.html} for full documentation.
 }
 \keyword{internal}

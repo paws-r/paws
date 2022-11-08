@@ -5,7 +5,12 @@
 \title{Describes your transit gateway peering attachments}
 \usage{
 ec2_describe_transit_gateway_peering_attachments(
-  TransitGatewayAttachmentIds, Filters, MaxResults, NextToken, DryRun)
+  TransitGatewayAttachmentIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayAttachmentIds}{One or more IDs of the transit gateway peering attachments.}
@@ -14,18 +19,18 @@ ec2_describe_transit_gateway_peering_attachments(
 \itemize{
 \item \code{transit-gateway-attachment-id} - The ID of the transit gateway
 attachment.
-\item \code{local-owner-id} - The ID of your AWS account.
-\item \code{remote-owner-id} - The ID of the AWS account in the remote Region
-that owns the transit gateway.
+\item \code{local-owner-id} - The ID of your Amazon Web Services account.
+\item \code{remote-owner-id} - The ID of the Amazon Web Services account in the
+remote Region that owns the transit gateway.
 \item \code{state} - The state of the peering attachment. Valid values are
 \code{available} | \code{deleted} | \code{deleting} | \code{failed} | \code{failing} |
 \code{initiatingRequest} | \code{modifying} | \code{pendingAcceptance} | \code{pending}
 | \code{rollingBack} | \code{rejected} | \code{rejecting}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources that have a tag with a specific key,
 regardless of the tag value.
@@ -43,62 +48,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayPeeringAttachments = list(
-    list(
-      TransitGatewayAttachmentId = "string",
-      RequesterTgwInfo = list(
-        TransitGatewayId = "string",
-        OwnerId = "string",
-        Region = "string"
-      ),
-      AccepterTgwInfo = list(
-        TransitGatewayId = "string",
-        OwnerId = "string",
-        Region = "string"
-      ),
-      Status = list(
-        Code = "string",
-        Message = "string"
-      ),
-      State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes your transit gateway peering attachments.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_transit_gateway_peering_attachments(
-  TransitGatewayAttachmentIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_transit_gateway_peering_attachments.html} for full documentation.
+}
 \keyword{internal}

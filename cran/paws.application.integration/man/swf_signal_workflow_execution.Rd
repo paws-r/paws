@@ -6,8 +6,13 @@
 history and creates a decision task for the workflow execution
 identified by the given domain, workflowId and runId}
 \usage{
-swf_signal_workflow_execution(domain, workflowId, runId, signalName,
-  input)
+swf_signal_workflow_execution(
+  domain,
+  workflowId,
+  runId = NULL,
+  signalName,
+  input = NULL
+)
 }
 \arguments{
 \item{domain}{[required] The name of the domain containing the workflow execution to signal.}
@@ -22,51 +27,9 @@ workflow.}
 \item{input}{Data to attach to the \code{WorkflowExecutionSignaled} event in the target
 workflow execution's history.}
 }
-\value{
-An empty list.
-}
 \description{
-Records a \code{WorkflowExecutionSignaled} event in the workflow execution
-history and creates a decision task for the workflow execution
-identified by the given domain, workflowId and runId. The event is
-recorded with the specified user defined signalName and input (if
-provided).
+Records a \code{WorkflowExecutionSignaled} event in the workflow execution history and creates a decision task for the workflow execution identified by the given domain, workflowId and runId. The event is recorded with the specified user defined signalName and input (if provided).
 
-If a runId isn't specified, then the \code{WorkflowExecutionSignaled} event
-is recorded in the history of the current open workflow with the
-matching workflowId in the domain.
-
-If the specified workflow execution isn't open, this method fails with
-\code{UnknownResource}.
-
-\strong{Access Control}
-
-You can use IAM policies to control this action's access to Amazon SWF
-resources as follows:
-\itemize{
-\item Use a \code{Resource} element with the domain name to limit the action to
-only specified domains.
-\item Use an \code{Action} element to allow or deny permission to call this
-action.
-\item You cannot use an IAM policy to constrain this action's parameters.
+See \url{https://paws-r.github.io/docs/swf/signal_workflow_execution.html} for full documentation.
 }
-
-If the caller doesn't have sufficient permissions to invoke the action,
-or the parameter values fall outside the specified constraints, the
-action fails. The associated event attribute's \code{cause} parameter is set
-to \code{OPERATION_NOT_PERMITTED}. For details and example IAM policies, see
-\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html}{Using IAM to Manage Access to Amazon SWF Workflows}
-in the \emph{Amazon SWF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$signal_workflow_execution(
-  domain = "string",
-  workflowId = "string",
-  runId = "string",
-  signalName = "string",
-  input = "string"
-)
-}
-}
-
 \keyword{internal}

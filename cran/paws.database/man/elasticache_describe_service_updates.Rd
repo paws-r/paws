@@ -4,8 +4,12 @@
 \alias{elasticache_describe_service_updates}
 \title{Returns details of the service updates}
 \usage{
-elasticache_describe_service_updates(ServiceUpdateName,
-  ServiceUpdateStatus, MaxRecords, Marker)
+elasticache_describe_service_updates(
+  ServiceUpdateName = NULL,
+  ServiceUpdateStatus = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{ServiceUpdateName}{The unique ID of the service update}
@@ -19,47 +23,9 @@ pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  ServiceUpdates = list(
-    list(
-      ServiceUpdateName = "string",
-      ServiceUpdateReleaseDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      ServiceUpdateEndDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      ServiceUpdateSeverity = "critical"|"important"|"medium"|"low",
-      ServiceUpdateRecommendedApplyByDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      ServiceUpdateStatus = "available"|"cancelled"|"expired",
-      ServiceUpdateDescription = "string",
-      ServiceUpdateType = "security-update",
-      Engine = "string",
-      EngineVersion = "string",
-      AutoUpdateAfterRecommendedApplyByDate = TRUE|FALSE,
-      EstimatedUpdateTime = "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns details of the service updates
-}
-\section{Request syntax}{
-\preformatted{svc$describe_service_updates(
-  ServiceUpdateName = "string",
-  ServiceUpdateStatus = list(
-    "available"|"cancelled"|"expired"
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticache/describe_service_updates.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,12 @@
 \title{Returns the default engine and system parameter information for the
 cluster database engine}
 \usage{
-rds_describe_engine_default_cluster_parameters(DBParameterGroupFamily,
-  Filters, MaxRecords, Marker)
+rds_describe_engine_default_cluster_parameters(
+  DBParameterGroupFamily,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBParameterGroupFamily}{[required] The name of the DB cluster parameter group family to return engine
@@ -28,54 +32,9 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EngineDefaults = list(
-    DBParameterGroupFamily = "string",
-    Marker = "string",
-    Parameters = list(
-      list(
-        ParameterName = "string",
-        ParameterValue = "string",
-        Description = "string",
-        Source = "string",
-        ApplyType = "string",
-        DataType = "string",
-        AllowedValues = "string",
-        IsModifiable = TRUE|FALSE,
-        MinimumEngineVersion = "string",
-        ApplyMethod = "immediate"|"pending-reboot",
-        SupportedEngineModes = list(
-          "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns the default engine and system parameter information for the
-cluster database engine.
+Returns the default engine and system parameter information for the cluster database engine.
 
-For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
-in the \emph{Amazon Aurora User Guide.}
+See \url{https://paws-r.github.io/docs/rds/describe_engine_default_cluster_parameters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_engine_default_cluster_parameters(
-  DBParameterGroupFamily = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

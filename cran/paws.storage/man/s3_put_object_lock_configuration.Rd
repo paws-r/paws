@@ -4,8 +4,15 @@
 \alias{s3_put_object_lock_configuration}
 \title{Places an Object Lock configuration on the specified bucket}
 \usage{
-s3_put_object_lock_configuration(Bucket, ObjectLockConfiguration,
-  RequestPayer, Token, ContentMD5, ExpectedBucketOwner)
+s3_put_object_lock_configuration(
+  Bucket,
+  ObjectLockConfiguration = NULL,
+  RequestPayer = NULL,
+  Token = NULL,
+  ContentMD5 = NULL,
+  ChecksumAlgorithm = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The bucket whose Object Lock configuration you want to create or
@@ -20,51 +27,28 @@ bucket.}
 
 \item{ContentMD5}{The MD5 hash for the request body.
 
-For requests made using the AWS Command Line Interface (CLI) or AWS
-SDKs, this field is calculated automatically.}
+For requests made using the Amazon Web Services Command Line Interface
+(CLI) or Amazon Web Services SDKs, this field is calculated
+automatically.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestCharged = "requester"
-)
-}
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+using the SDK. This header will not provide any additional functionality
+if not using the SDK. When sending this header, there must be a
+corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+Otherwise, Amazon S3 fails the request with the HTTP status code
+\verb{400 Bad Request}. For more information, see Checking object integrity
+in the \emph{Amazon S3 User Guide}.
+
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.}
+
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Places an Object Lock configuration on the specified bucket. The rule
-specified in the Object Lock configuration will be applied by default to
-every new object placed in the specified bucket.
+Places an Object Lock configuration on the specified bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see Locking Objects.
 
-\code{DefaultRetention} requires either Days or Years. You can't specify both
-at the same time.
-
-\strong{Related Resources}
-\itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}
+See \url{https://paws-r.github.io/docs/s3/put_object_lock_configuration.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$put_object_lock_configuration(
-  Bucket = "string",
-  ObjectLockConfiguration = list(
-    ObjectLockEnabled = "Enabled",
-    Rule = list(
-      DefaultRetention = list(
-        Mode = "GOVERNANCE"|"COMPLIANCE",
-        Days = 123,
-        Years = 123
-      )
-    )
-  ),
-  RequestPayer = "requester",
-  Token = "string",
-  ContentMD5 = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

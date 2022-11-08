@@ -4,42 +4,16 @@
 \alias{storagegateway_set_local_console_password}
 \title{Sets the password for your VM local console}
 \usage{
-storagegateway_set_local_console_password(GatewayARN,
-  LocalConsolePassword)
+storagegateway_set_local_console_password(GatewayARN, LocalConsolePassword)
 }
 \arguments{
 \item{GatewayARN}{[required]}
 
 \item{LocalConsolePassword}{[required] The password you want to set for your VM local console.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Sets the password for your VM local console. When you log in to the
-local console for the first time, you log in to the VM with the default
-credentials. We recommend that you set a new password. You don't need to
-know the default password to set a new password.
-}
-\section{Request syntax}{
-\preformatted{svc$set_local_console_password(
-  GatewayARN = "string",
-  LocalConsolePassword = "string"
-)
-}
-}
+Sets the password for your VM local console. When you log in to the local console for the first time, you log in to the VM with the default credentials. We recommend that you set a new password. You don't need to know the default password to set a new password.
 
-\examples{
-\dontrun{
-# Sets the password for your VM local console.
-svc$set_local_console_password(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B",
-  LocalConsolePassword = "PassWordMustBeAtLeast6Chars."
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/set_local_console_password.html} for full documentation.
 }
 \keyword{internal}

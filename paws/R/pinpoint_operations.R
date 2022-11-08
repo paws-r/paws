@@ -23,7 +23,8 @@ NULL
 #'     Name = "string",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     CreationDate = "string"
 #'   )
 #' )
 #' ```
@@ -84,7 +85,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'         CustomDeliveryConfiguration = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           )
 #'         ),
 #'         Id = "string",
@@ -171,7 +172,77 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
+#'           ),
+#'           InAppMessage = list(
+#'             Body = "string",
+#'             Content = list(
+#'               list(
+#'                 BackgroundColor = "string",
+#'                 BodyConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Body = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 HeaderConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Header = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 ImageUrl = "string",
+#'                 PrimaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 ),
+#'                 SecondaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             CustomConfig = list(
+#'               "string"
+#'             ),
+#'             Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -180,7 +251,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -201,7 +272,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'             ),
 #'             FilterType = "SYSTEM"|"ENDPOINT"
 #'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'           IsLocalTime = TRUE|FALSE,
 #'           QuietTime = list(
 #'             End = "string",
@@ -242,7 +313,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'     CustomDeliveryConfiguration = list(
 #'       DeliveryUri = "string",
 #'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'       )
 #'     ),
 #'     DefaultState = list(
@@ -262,7 +333,8 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'       Daily = 123,
 #'       MaximumDuration = 123,
 #'       MessagesPerSecond = 123,
-#'       Total = 123
+#'       Total = 123,
+#'       Session = 123
 #'     ),
 #'     MessageConfiguration = list(
 #'       ADMMessage = list(
@@ -347,7 +419,77 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
+#'       ),
+#'       InAppMessage = list(
+#'         Body = "string",
+#'         Content = list(
+#'           list(
+#'             BackgroundColor = "string",
+#'             BodyConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Body = "string",
+#'               TextColor = "string"
+#'             ),
+#'             HeaderConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Header = "string",
+#'               TextColor = "string"
+#'             ),
+#'             ImageUrl = "string",
+#'             PrimaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             ),
+#'             SecondaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         CustomConfig = list(
+#'           "string"
+#'         ),
+#'         Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -357,7 +499,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -378,7 +520,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'         ),
 #'         FilterType = "SYSTEM"|"ENDPOINT"
 #'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'       IsLocalTime = TRUE|FALSE,
 #'       QuietTime = list(
 #'         End = "string",
@@ -415,7 +557,8 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'     ),
 #'     TreatmentDescription = "string",
 #'     TreatmentName = "string",
-#'     Version = 123
+#'     Version = 123,
+#'     Priority = 123
 #'   )
 #' )
 #' ```
@@ -430,7 +573,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'         CustomDeliveryConfiguration = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           )
 #'         ),
 #'         MessageConfiguration = list(
@@ -516,7 +659,77 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
+#'           ),
+#'           InAppMessage = list(
+#'             Body = "string",
+#'             Content = list(
+#'               list(
+#'                 BackgroundColor = "string",
+#'                 BodyConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Body = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 HeaderConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Header = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 ImageUrl = "string",
+#'                 PrimaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 ),
+#'                 SecondaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             CustomConfig = list(
+#'               "string"
+#'             ),
+#'             Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -525,7 +738,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -546,7 +759,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'             ),
 #'             FilterType = "SYSTEM"|"ENDPOINT"
 #'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'           IsLocalTime = TRUE|FALSE,
 #'           QuietTime = list(
 #'             End = "string",
@@ -581,7 +794,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'     CustomDeliveryConfiguration = list(
 #'       DeliveryUri = "string",
 #'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'       )
 #'     ),
 #'     Description = "string",
@@ -596,7 +809,8 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'       Daily = 123,
 #'       MaximumDuration = 123,
 #'       MessagesPerSecond = 123,
-#'       Total = 123
+#'       Total = 123,
+#'       Session = 123
 #'     ),
 #'     MessageConfiguration = list(
 #'       ADMMessage = list(
@@ -681,7 +895,77 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
+#'       ),
+#'       InAppMessage = list(
+#'         Body = "string",
+#'         Content = list(
+#'           list(
+#'             BackgroundColor = "string",
+#'             BodyConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Body = "string",
+#'               TextColor = "string"
+#'             ),
+#'             HeaderConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Header = "string",
+#'               TextColor = "string"
+#'             ),
+#'             ImageUrl = "string",
+#'             PrimaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             ),
+#'             SecondaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         CustomConfig = list(
+#'           "string"
+#'         ),
+#'         Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -691,7 +975,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -712,7 +996,7 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'         ),
 #'         FilterType = "SYSTEM"|"ENDPOINT"
 #'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'       IsLocalTime = TRUE|FALSE,
 #'       QuietTime = list(
 #'         End = "string",
@@ -745,7 +1029,8 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #'       )
 #'     ),
 #'     TreatmentDescription = "string",
-#'     TreatmentName = "string"
+#'     TreatmentName = "string",
+#'     Priority = 123
 #'   )
 #' )
 #' ```
@@ -992,6 +1277,131 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 }
 .pinpoint$operations$create_import_job <- pinpoint_create_import_job
 
+#' Creates a new message template for messages using the in-app message
+#' channel
+#'
+#' @description
+#' Creates a new message template for messages using the in-app message
+#' channel.
+#'
+#' @usage
+#' pinpoint_create_in_app_template(InAppTemplateRequest, TemplateName)
+#'
+#' @param InAppTemplateRequest &#91;required&#93; 
+#' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
+#' alphanumeric character and can contain a maximum of 128 characters. The
+#' characters can be alphanumeric characters, underscores (_), or hyphens
+#' (-). Template names are case sensitive.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TemplateCreateMessageBody = list(
+#'     Arn = "string",
+#'     Message = "string",
+#'     RequestID = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_in_app_template(
+#'   InAppTemplateRequest = list(
+#'     Content = list(
+#'       list(
+#'         BackgroundColor = "string",
+#'         BodyConfig = list(
+#'           Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'           Body = "string",
+#'           TextColor = "string"
+#'         ),
+#'         HeaderConfig = list(
+#'           Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'           Header = "string",
+#'           TextColor = "string"
+#'         ),
+#'         ImageUrl = "string",
+#'         PrimaryBtn = list(
+#'           Android = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           ),
+#'           DefaultConfig = list(
+#'             BackgroundColor = "string",
+#'             BorderRadius = 123,
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string",
+#'             Text = "string",
+#'             TextColor = "string"
+#'           ),
+#'           IOS = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           ),
+#'           Web = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           )
+#'         ),
+#'         SecondaryBtn = list(
+#'           Android = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           ),
+#'           DefaultConfig = list(
+#'             BackgroundColor = "string",
+#'             BorderRadius = 123,
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string",
+#'             Text = "string",
+#'             TextColor = "string"
+#'           ),
+#'           IOS = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           ),
+#'           Web = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CustomConfig = list(
+#'       "string"
+#'     ),
+#'     Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     TemplateDescription = "string"
+#'   ),
+#'   TemplateName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_create_in_app_template
+pinpoint_create_in_app_template <- function(InAppTemplateRequest, TemplateName) {
+  op <- new_operation(
+    name = "CreateInAppTemplate",
+    http_method = "POST",
+    http_path = "/v1/templates/{template-name}/inapp",
+    paginator = list()
+  )
+  input <- .pinpoint$create_in_app_template_input(InAppTemplateRequest = InAppTemplateRequest, TemplateName = TemplateName)
+  output <- .pinpoint$create_in_app_template_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$create_in_app_template <- pinpoint_create_in_app_template
+
 #' Creates a journey for an application
 #'
 #' @description
@@ -1014,7 +1424,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'         CUSTOM = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           ),
 #'           MessageConfig = list(
 #'             Data = "string"
@@ -1031,7 +1441,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -1058,7 +1468,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1131,7 +1541,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1170,7 +1580,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -1197,7 +1607,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1270,7 +1680,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1306,7 +1716,10 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -1318,6 +1731,9 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'             WaitFor = "string",
 #'             WaitUntil = "string"
 #'           )
+#'         ),
+#'         ContactCenter = list(
+#'           NextActivity = "string"
 #'         )
 #'       )
 #'     ),
@@ -1328,7 +1744,8 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -1354,7 +1771,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -1381,9 +1798,95 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
 #'     tags = list(
 #'       "string"
+#'     ),
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE,
+#'     JourneyChannelSettings = list(
+#'       ConnectCampaignArn = "string",
+#'       ConnectCampaignExecutionRoleArn = "string"
+#'     ),
+#'     SendingSchedule = TRUE|FALSE,
+#'     OpenHours = list(
+#'       EMAIL = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ClosedDays = list(
+#'       EMAIL = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -1399,7 +1902,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'         CUSTOM = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           ),
 #'           MessageConfig = list(
 #'             Data = "string"
@@ -1416,7 +1919,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -1443,7 +1946,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1516,7 +2019,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1555,7 +2058,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -1582,7 +2085,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1655,7 +2158,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -1691,7 +2194,10 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -1703,6 +2209,9 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'             WaitFor = "string",
 #'             WaitUntil = "string"
 #'           )
+#'         ),
+#'         ContactCenter = list(
+#'           NextActivity = "string"
 #'         )
 #'       )
 #'     ),
@@ -1711,7 +2220,8 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -1737,7 +2247,7 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -1764,7 +2274,93 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE,
+#'     JourneyChannelSettings = list(
+#'       ConnectCampaignArn = "string",
+#'       ConnectCampaignExecutionRoleArn = "string"
+#'     ),
+#'     SendingSchedule = TRUE|FALSE,
+#'     OpenHours = list(
+#'       EMAIL = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ClosedDays = list(
+#'       EMAIL = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2002,7 +2598,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -2075,7 +2671,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -2102,7 +2698,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -2175,7 +2771,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -2212,7 +2808,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -2285,7 +2881,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -2300,7 +2896,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -2373,7 +2969,7 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -2873,7 +3469,8 @@ pinpoint_delete_apns_voip_sandbox_channel <- function(ApplicationId) {
 #'     Name = "string",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     CreationDate = "string"
 #'   )
 #' )
 #' ```
@@ -2987,7 +3584,7 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'         CustomDeliveryConfiguration = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           )
 #'         ),
 #'         Id = "string",
@@ -3074,7 +3671,77 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
+#'           ),
+#'           InAppMessage = list(
+#'             Body = "string",
+#'             Content = list(
+#'               list(
+#'                 BackgroundColor = "string",
+#'                 BodyConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Body = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 HeaderConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Header = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 ImageUrl = "string",
+#'                 PrimaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 ),
+#'                 SecondaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             CustomConfig = list(
+#'               "string"
+#'             ),
+#'             Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -3083,7 +3750,7 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -3104,7 +3771,7 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'             ),
 #'             FilterType = "SYSTEM"|"ENDPOINT"
 #'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'           IsLocalTime = TRUE|FALSE,
 #'           QuietTime = list(
 #'             End = "string",
@@ -3145,7 +3812,7 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'     CustomDeliveryConfiguration = list(
 #'       DeliveryUri = "string",
 #'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'       )
 #'     ),
 #'     DefaultState = list(
@@ -3165,7 +3832,8 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'       Daily = 123,
 #'       MaximumDuration = 123,
 #'       MessagesPerSecond = 123,
-#'       Total = 123
+#'       Total = 123,
+#'       Session = 123
 #'     ),
 #'     MessageConfiguration = list(
 #'       ADMMessage = list(
@@ -3250,7 +3918,77 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
+#'       ),
+#'       InAppMessage = list(
+#'         Body = "string",
+#'         Content = list(
+#'           list(
+#'             BackgroundColor = "string",
+#'             BodyConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Body = "string",
+#'               TextColor = "string"
+#'             ),
+#'             HeaderConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Header = "string",
+#'               TextColor = "string"
+#'             ),
+#'             ImageUrl = "string",
+#'             PrimaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             ),
+#'             SecondaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         CustomConfig = list(
+#'           "string"
+#'         ),
+#'         Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -3260,7 +3998,7 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -3281,7 +4019,7 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'         ),
 #'         FilterType = "SYSTEM"|"ENDPOINT"
 #'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'       IsLocalTime = TRUE|FALSE,
 #'       QuietTime = list(
 #'         End = "string",
@@ -3318,7 +4056,8 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #'     ),
 #'     TreatmentDescription = "string",
 #'     TreatmentName = "string",
-#'     Version = 123
+#'     Version = 123,
+#'     Priority = 123
 #'   )
 #' )
 #' ```
@@ -3515,7 +4254,7 @@ pinpoint_delete_email_template <- function(TemplateName, Version = NULL) {
 #'         "string"
 #'       )
 #'     ),
-#'     ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'     ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP",
 #'     CohortId = "string",
 #'     CreationDate = "string",
 #'     Demographic = list(
@@ -3697,6 +4436,82 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 }
 .pinpoint$operations$delete_gcm_channel <- pinpoint_delete_gcm_channel
 
+#' Deletes a message template for messages sent using the in-app message
+#' channel
+#'
+#' @description
+#' Deletes a message template for messages sent using the in-app message
+#' channel.
+#'
+#' @usage
+#' pinpoint_delete_in_app_template(TemplateName, Version)
+#'
+#' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
+#' alphanumeric character and can contain a maximum of 128 characters. The
+#' characters can be alphanumeric characters, underscores (_), or hyphens
+#' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier for an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier for the latest existing version of the template.
+#' This restriction helps ensure that race conditions don't occur.
+#' 
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn't used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageBody = list(
+#'     Message = "string",
+#'     RequestID = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_in_app_template(
+#'   TemplateName = "string",
+#'   Version = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_delete_in_app_template
+pinpoint_delete_in_app_template <- function(TemplateName, Version = NULL) {
+  op <- new_operation(
+    name = "DeleteInAppTemplate",
+    http_method = "DELETE",
+    http_path = "/v1/templates/{template-name}/inapp",
+    paginator = list()
+  )
+  input <- .pinpoint$delete_in_app_template_input(TemplateName = TemplateName, Version = Version)
+  output <- .pinpoint$delete_in_app_template_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$delete_in_app_template <- pinpoint_delete_in_app_template
+
 #' Deletes a journey from an application
 #'
 #' @description
@@ -3719,7 +4534,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'         CUSTOM = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           ),
 #'           MessageConfig = list(
 #'             Data = "string"
@@ -3736,7 +4551,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -3763,7 +4578,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -3836,7 +4651,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -3875,7 +4690,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -3902,7 +4717,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -3975,7 +4790,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -4011,7 +4826,10 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -4023,6 +4841,9 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'             WaitFor = "string",
 #'             WaitUntil = "string"
 #'           )
+#'         ),
+#'         ContactCenter = list(
+#'           NextActivity = "string"
 #'         )
 #'       )
 #'     ),
@@ -4033,7 +4854,8 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -4059,7 +4881,7 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -4086,9 +4908,95 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
 #'     tags = list(
 #'       "string"
+#'     ),
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE,
+#'     JourneyChannelSettings = list(
+#'       ConnectCampaignArn = "string",
+#'       ConnectCampaignExecutionRoleArn = "string"
+#'     ),
+#'     SendingSchedule = TRUE|FALSE,
+#'     OpenHours = list(
+#'       EMAIL = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ClosedDays = list(
+#'       EMAIL = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -4283,7 +5191,7 @@ pinpoint_delete_recommender_configuration <- function(RecommenderId) {
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -4356,7 +5264,7 @@ pinpoint_delete_recommender_configuration <- function(RecommenderId) {
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -4383,7 +5291,7 @@ pinpoint_delete_recommender_configuration <- function(RecommenderId) {
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -4456,7 +5364,7 @@ pinpoint_delete_recommender_configuration <- function(RecommenderId) {
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -4678,7 +5586,7 @@ pinpoint_delete_sms_template <- function(TemplateName, Version = NULL) {
 #'             "string"
 #'           )
 #'         ),
-#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP",
 #'         CohortId = "string",
 #'         CreationDate = "string",
 #'         Demographic = list(
@@ -5208,7 +6116,8 @@ pinpoint_get_apns_voip_sandbox_channel <- function(ApplicationId) {
 #'     Name = "string",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     CreationDate = "string"
 #'   )
 #' )
 #' ```
@@ -5377,7 +6286,8 @@ pinpoint_get_application_date_range_kpi <- function(ApplicationId, EndTime = NUL
 #'       Daily = 123,
 #'       MaximumDuration = 123,
 #'       MessagesPerSecond = 123,
-#'       Total = 123
+#'       Total = 123,
+#'       Session = 123
 #'     ),
 #'     QuietTime = list(
 #'       End = "string",
@@ -5442,7 +6352,8 @@ pinpoint_get_application_settings <- function(ApplicationId) {
 #'         Name = "string",
 #'         tags = list(
 #'           "string"
-#'         )
+#'         ),
+#'         CreationDate = "string"
 #'       )
 #'     ),
 #'     NextToken = "string"
@@ -5562,7 +6473,7 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'         CustomDeliveryConfiguration = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           )
 #'         ),
 #'         Id = "string",
@@ -5649,7 +6560,77 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
+#'           ),
+#'           InAppMessage = list(
+#'             Body = "string",
+#'             Content = list(
+#'               list(
+#'                 BackgroundColor = "string",
+#'                 BodyConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Body = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 HeaderConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Header = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 ImageUrl = "string",
+#'                 PrimaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 ),
+#'                 SecondaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             CustomConfig = list(
+#'               "string"
+#'             ),
+#'             Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -5658,7 +6639,7 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -5679,7 +6660,7 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'             ),
 #'             FilterType = "SYSTEM"|"ENDPOINT"
 #'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'           IsLocalTime = TRUE|FALSE,
 #'           QuietTime = list(
 #'             End = "string",
@@ -5720,7 +6701,7 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'     CustomDeliveryConfiguration = list(
 #'       DeliveryUri = "string",
 #'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'       )
 #'     ),
 #'     DefaultState = list(
@@ -5740,7 +6721,8 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'       Daily = 123,
 #'       MaximumDuration = 123,
 #'       MessagesPerSecond = 123,
-#'       Total = 123
+#'       Total = 123,
+#'       Session = 123
 #'     ),
 #'     MessageConfiguration = list(
 #'       ADMMessage = list(
@@ -5825,7 +6807,77 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
+#'       ),
+#'       InAppMessage = list(
+#'         Body = "string",
+#'         Content = list(
+#'           list(
+#'             BackgroundColor = "string",
+#'             BodyConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Body = "string",
+#'               TextColor = "string"
+#'             ),
+#'             HeaderConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Header = "string",
+#'               TextColor = "string"
+#'             ),
+#'             ImageUrl = "string",
+#'             PrimaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             ),
+#'             SecondaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         CustomConfig = list(
+#'           "string"
+#'         ),
+#'         Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -5835,7 +6887,7 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -5856,7 +6908,7 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'         ),
 #'         FilterType = "SYSTEM"|"ENDPOINT"
 #'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'       IsLocalTime = TRUE|FALSE,
 #'       QuietTime = list(
 #'         End = "string",
@@ -5893,7 +6945,8 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #'     ),
 #'     TreatmentDescription = "string",
 #'     TreatmentName = "string",
-#'     Version = 123
+#'     Version = 123,
+#'     Priority = 123
 #'   )
 #' )
 #' ```
@@ -6139,7 +7192,7 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'         CustomDeliveryConfiguration = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           )
 #'         ),
 #'         Id = "string",
@@ -6226,7 +7279,77 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
+#'           ),
+#'           InAppMessage = list(
+#'             Body = "string",
+#'             Content = list(
+#'               list(
+#'                 BackgroundColor = "string",
+#'                 BodyConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Body = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 HeaderConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Header = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 ImageUrl = "string",
+#'                 PrimaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 ),
+#'                 SecondaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             CustomConfig = list(
+#'               "string"
+#'             ),
+#'             Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -6235,7 +7358,7 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -6256,7 +7379,7 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'             ),
 #'             FilterType = "SYSTEM"|"ENDPOINT"
 #'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'           IsLocalTime = TRUE|FALSE,
 #'           QuietTime = list(
 #'             End = "string",
@@ -6297,7 +7420,7 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'     CustomDeliveryConfiguration = list(
 #'       DeliveryUri = "string",
 #'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'       )
 #'     ),
 #'     DefaultState = list(
@@ -6317,7 +7440,8 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'       Daily = 123,
 #'       MaximumDuration = 123,
 #'       MessagesPerSecond = 123,
-#'       Total = 123
+#'       Total = 123,
+#'       Session = 123
 #'     ),
 #'     MessageConfiguration = list(
 #'       ADMMessage = list(
@@ -6402,7 +7526,77 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
+#'       ),
+#'       InAppMessage = list(
+#'         Body = "string",
+#'         Content = list(
+#'           list(
+#'             BackgroundColor = "string",
+#'             BodyConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Body = "string",
+#'               TextColor = "string"
+#'             ),
+#'             HeaderConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Header = "string",
+#'               TextColor = "string"
+#'             ),
+#'             ImageUrl = "string",
+#'             PrimaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             ),
+#'             SecondaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         CustomConfig = list(
+#'           "string"
+#'         ),
+#'         Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -6412,7 +7606,7 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -6433,7 +7627,7 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'         ),
 #'         FilterType = "SYSTEM"|"ENDPOINT"
 #'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'       IsLocalTime = TRUE|FALSE,
 #'       QuietTime = list(
 #'         End = "string",
@@ -6470,7 +7664,8 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #'     ),
 #'     TreatmentDescription = "string",
 #'     TreatmentName = "string",
-#'     Version = 123
+#'     Version = 123,
+#'     Priority = 123
 #'   )
 #' )
 #' ```
@@ -6536,7 +7731,7 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'             CustomDeliveryConfiguration = list(
 #'               DeliveryUri = "string",
 #'               EndpointTypes = list(
-#'                 "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'                 "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'               )
 #'             ),
 #'             Id = "string",
@@ -6623,7 +7818,77 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'               SMSMessage = list(
 #'                 Body = "string",
 #'                 MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'                 SenderId = "string"
+#'                 OriginationNumber = "string",
+#'                 SenderId = "string",
+#'                 EntityId = "string",
+#'                 TemplateId = "string"
+#'               ),
+#'               InAppMessage = list(
+#'                 Body = "string",
+#'                 Content = list(
+#'                   list(
+#'                     BackgroundColor = "string",
+#'                     BodyConfig = list(
+#'                       Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                       Body = "string",
+#'                       TextColor = "string"
+#'                     ),
+#'                     HeaderConfig = list(
+#'                       Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                       Header = "string",
+#'                       TextColor = "string"
+#'                     ),
+#'                     ImageUrl = "string",
+#'                     PrimaryBtn = list(
+#'                       Android = list(
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string"
+#'                       ),
+#'                       DefaultConfig = list(
+#'                         BackgroundColor = "string",
+#'                         BorderRadius = 123,
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string",
+#'                         Text = "string",
+#'                         TextColor = "string"
+#'                       ),
+#'                       IOS = list(
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string"
+#'                       ),
+#'                       Web = list(
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string"
+#'                       )
+#'                     ),
+#'                     SecondaryBtn = list(
+#'                       Android = list(
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string"
+#'                       ),
+#'                       DefaultConfig = list(
+#'                         BackgroundColor = "string",
+#'                         BorderRadius = 123,
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string",
+#'                         Text = "string",
+#'                         TextColor = "string"
+#'                       ),
+#'                       IOS = list(
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string"
+#'                       ),
+#'                       Web = list(
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 CustomConfig = list(
+#'                   "string"
+#'                 ),
+#'                 Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'               )
 #'             ),
 #'             Schedule = list(
@@ -6632,7 +7897,7 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'                 Dimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -6653,7 +7918,7 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'                 ),
 #'                 FilterType = "SYSTEM"|"ENDPOINT"
 #'               ),
-#'               Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'               Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'               IsLocalTime = TRUE|FALSE,
 #'               QuietTime = list(
 #'                 End = "string",
@@ -6694,7 +7959,7 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'         CustomDeliveryConfiguration = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           )
 #'         ),
 #'         DefaultState = list(
@@ -6714,7 +7979,8 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'           Daily = 123,
 #'           MaximumDuration = 123,
 #'           MessagesPerSecond = 123,
-#'           Total = 123
+#'           Total = 123,
+#'           Session = 123
 #'         ),
 #'         MessageConfiguration = list(
 #'           ADMMessage = list(
@@ -6799,7 +8065,77 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
+#'           ),
+#'           InAppMessage = list(
+#'             Body = "string",
+#'             Content = list(
+#'               list(
+#'                 BackgroundColor = "string",
+#'                 BodyConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Body = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 HeaderConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Header = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 ImageUrl = "string",
+#'                 PrimaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 ),
+#'                 SecondaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             CustomConfig = list(
+#'               "string"
+#'             ),
+#'             Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'           )
 #'         ),
 #'         Name = "string",
@@ -6809,7 +8145,7 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -6830,7 +8166,7 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'             ),
 #'             FilterType = "SYSTEM"|"ENDPOINT"
 #'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'           IsLocalTime = TRUE|FALSE,
 #'           QuietTime = list(
 #'             End = "string",
@@ -6867,7 +8203,8 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #'         ),
 #'         TreatmentDescription = "string",
 #'         TreatmentName = "string",
-#'         Version = 123
+#'         Version = 123,
+#'         Priority = 123
 #'       )
 #'     ),
 #'     NextToken = "string"
@@ -6935,7 +8272,7 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'             CustomDeliveryConfiguration = list(
 #'               DeliveryUri = "string",
 #'               EndpointTypes = list(
-#'                 "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'                 "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'               )
 #'             ),
 #'             Id = "string",
@@ -7022,7 +8359,77 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'               SMSMessage = list(
 #'                 Body = "string",
 #'                 MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'                 SenderId = "string"
+#'                 OriginationNumber = "string",
+#'                 SenderId = "string",
+#'                 EntityId = "string",
+#'                 TemplateId = "string"
+#'               ),
+#'               InAppMessage = list(
+#'                 Body = "string",
+#'                 Content = list(
+#'                   list(
+#'                     BackgroundColor = "string",
+#'                     BodyConfig = list(
+#'                       Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                       Body = "string",
+#'                       TextColor = "string"
+#'                     ),
+#'                     HeaderConfig = list(
+#'                       Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                       Header = "string",
+#'                       TextColor = "string"
+#'                     ),
+#'                     ImageUrl = "string",
+#'                     PrimaryBtn = list(
+#'                       Android = list(
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string"
+#'                       ),
+#'                       DefaultConfig = list(
+#'                         BackgroundColor = "string",
+#'                         BorderRadius = 123,
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string",
+#'                         Text = "string",
+#'                         TextColor = "string"
+#'                       ),
+#'                       IOS = list(
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string"
+#'                       ),
+#'                       Web = list(
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string"
+#'                       )
+#'                     ),
+#'                     SecondaryBtn = list(
+#'                       Android = list(
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string"
+#'                       ),
+#'                       DefaultConfig = list(
+#'                         BackgroundColor = "string",
+#'                         BorderRadius = 123,
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string",
+#'                         Text = "string",
+#'                         TextColor = "string"
+#'                       ),
+#'                       IOS = list(
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string"
+#'                       ),
+#'                       Web = list(
+#'                         ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                         Link = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 CustomConfig = list(
+#'                   "string"
+#'                 ),
+#'                 Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'               )
 #'             ),
 #'             Schedule = list(
@@ -7031,7 +8438,7 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'                 Dimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -7052,7 +8459,7 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'                 ),
 #'                 FilterType = "SYSTEM"|"ENDPOINT"
 #'               ),
-#'               Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'               Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'               IsLocalTime = TRUE|FALSE,
 #'               QuietTime = list(
 #'                 End = "string",
@@ -7093,7 +8500,7 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'         CustomDeliveryConfiguration = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           )
 #'         ),
 #'         DefaultState = list(
@@ -7113,7 +8520,8 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'           Daily = 123,
 #'           MaximumDuration = 123,
 #'           MessagesPerSecond = 123,
-#'           Total = 123
+#'           Total = 123,
+#'           Session = 123
 #'         ),
 #'         MessageConfiguration = list(
 #'           ADMMessage = list(
@@ -7198,7 +8606,77 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
+#'           ),
+#'           InAppMessage = list(
+#'             Body = "string",
+#'             Content = list(
+#'               list(
+#'                 BackgroundColor = "string",
+#'                 BodyConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Body = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 HeaderConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Header = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 ImageUrl = "string",
+#'                 PrimaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 ),
+#'                 SecondaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             CustomConfig = list(
+#'               "string"
+#'             ),
+#'             Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'           )
 #'         ),
 #'         Name = "string",
@@ -7208,7 +8686,7 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -7229,7 +8707,7 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'             ),
 #'             FilterType = "SYSTEM"|"ENDPOINT"
 #'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'           IsLocalTime = TRUE|FALSE,
 #'           QuietTime = list(
 #'             End = "string",
@@ -7266,7 +8744,8 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #'         ),
 #'         TreatmentDescription = "string",
 #'         TreatmentName = "string",
-#'         Version = 123
+#'         Version = 123,
+#'         Priority = 123
 #'       )
 #'     ),
 #'     NextToken = "string"
@@ -7483,7 +8962,7 @@ pinpoint_get_email_channel <- function(ApplicationId) {
 #'     ),
 #'     TemplateDescription = "string",
 #'     TemplateName = "string",
-#'     TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
+#'     TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH"|"INAPP",
 #'     TextPart = "string",
 #'     Version = "string"
 #'   )
@@ -7544,7 +9023,7 @@ pinpoint_get_email_template <- function(TemplateName, Version = NULL) {
 #'         "string"
 #'       )
 #'     ),
-#'     ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'     ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP",
 #'     CohortId = "string",
 #'     CreationDate = "string",
 #'     Demographic = list(
@@ -8039,6 +9518,311 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 }
 .pinpoint$operations$get_import_jobs <- pinpoint_get_import_jobs
 
+#' Retrieves the in-app messages targeted for the provided endpoint ID
+#'
+#' @description
+#' Retrieves the in-app messages targeted for the provided endpoint ID.
+#'
+#' @usage
+#' pinpoint_get_in_app_messages(ApplicationId, EndpointId)
+#'
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param EndpointId &#91;required&#93; The unique identifier for the endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InAppMessagesResponse = list(
+#'     InAppMessageCampaigns = list(
+#'       list(
+#'         CampaignId = "string",
+#'         DailyCap = 123,
+#'         InAppMessage = list(
+#'           Content = list(
+#'             list(
+#'               BackgroundColor = "string",
+#'               BodyConfig = list(
+#'                 Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                 Body = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               HeaderConfig = list(
+#'                 Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                 Header = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               ImageUrl = "string",
+#'               PrimaryBtn = list(
+#'                 Android = list(
+#'                   ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                   Link = "string"
+#'                 ),
+#'                 DefaultConfig = list(
+#'                   BackgroundColor = "string",
+#'                   BorderRadius = 123,
+#'                   ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                   Link = "string",
+#'                   Text = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 IOS = list(
+#'                   ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                   Link = "string"
+#'                 ),
+#'                 Web = list(
+#'                   ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                   Link = "string"
+#'                 )
+#'               ),
+#'               SecondaryBtn = list(
+#'                 Android = list(
+#'                   ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                   Link = "string"
+#'                 ),
+#'                 DefaultConfig = list(
+#'                   BackgroundColor = "string",
+#'                   BorderRadius = 123,
+#'                   ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                   Link = "string",
+#'                   Text = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 IOS = list(
+#'                   ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                   Link = "string"
+#'                 ),
+#'                 Web = list(
+#'                   ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                   Link = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           CustomConfig = list(
+#'             "string"
+#'           ),
+#'           Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
+#'         ),
+#'         Priority = 123,
+#'         Schedule = list(
+#'           EndDate = "string",
+#'           EventFilter = list(
+#'             Dimensions = list(
+#'               Attributes = list(
+#'                 list(
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
+#'                   Values = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               EventType = list(
+#'                 DimensionType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               Metrics = list(
+#'                 list(
+#'                   ComparisonOperator = "string",
+#'                   Value = 123.0
+#'                 )
+#'               )
+#'             ),
+#'             FilterType = "SYSTEM"|"ENDPOINT"
+#'           ),
+#'           QuietTime = list(
+#'             End = "string",
+#'             Start = "string"
+#'           )
+#'         ),
+#'         SessionCap = 123,
+#'         TotalCap = 123,
+#'         TreatmentId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_in_app_messages(
+#'   ApplicationId = "string",
+#'   EndpointId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_get_in_app_messages
+pinpoint_get_in_app_messages <- function(ApplicationId, EndpointId) {
+  op <- new_operation(
+    name = "GetInAppMessages",
+    http_method = "GET",
+    http_path = "/v1/apps/{application-id}/endpoints/{endpoint-id}/inappmessages",
+    paginator = list()
+  )
+  input <- .pinpoint$get_in_app_messages_input(ApplicationId = ApplicationId, EndpointId = EndpointId)
+  output <- .pinpoint$get_in_app_messages_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$get_in_app_messages <- pinpoint_get_in_app_messages
+
+#' Retrieves the content and settings of a message template for messages
+#' sent through the in-app channel
+#'
+#' @description
+#' Retrieves the content and settings of a message template for messages
+#' sent through the in-app channel.
+#'
+#' @usage
+#' pinpoint_get_in_app_template(TemplateName, Version)
+#'
+#' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
+#' alphanumeric character and can contain a maximum of 128 characters. The
+#' characters can be alphanumeric characters, underscores (_), or hyphens
+#' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier for an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier for the latest existing version of the template.
+#' This restriction helps ensure that race conditions don't occur.
+#' 
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn't used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InAppTemplateResponse = list(
+#'     Arn = "string",
+#'     Content = list(
+#'       list(
+#'         BackgroundColor = "string",
+#'         BodyConfig = list(
+#'           Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'           Body = "string",
+#'           TextColor = "string"
+#'         ),
+#'         HeaderConfig = list(
+#'           Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'           Header = "string",
+#'           TextColor = "string"
+#'         ),
+#'         ImageUrl = "string",
+#'         PrimaryBtn = list(
+#'           Android = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           ),
+#'           DefaultConfig = list(
+#'             BackgroundColor = "string",
+#'             BorderRadius = 123,
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string",
+#'             Text = "string",
+#'             TextColor = "string"
+#'           ),
+#'           IOS = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           ),
+#'           Web = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           )
+#'         ),
+#'         SecondaryBtn = list(
+#'           Android = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           ),
+#'           DefaultConfig = list(
+#'             BackgroundColor = "string",
+#'             BorderRadius = 123,
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string",
+#'             Text = "string",
+#'             TextColor = "string"
+#'           ),
+#'           IOS = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           ),
+#'           Web = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CreationDate = "string",
+#'     CustomConfig = list(
+#'       "string"
+#'     ),
+#'     LastModifiedDate = "string",
+#'     Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     TemplateDescription = "string",
+#'     TemplateName = "string",
+#'     TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH"|"INAPP",
+#'     Version = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_in_app_template(
+#'   TemplateName = "string",
+#'   Version = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_get_in_app_template
+pinpoint_get_in_app_template <- function(TemplateName, Version = NULL) {
+  op <- new_operation(
+    name = "GetInAppTemplate",
+    http_method = "GET",
+    http_path = "/v1/templates/{template-name}/inapp",
+    paginator = list()
+  )
+  input <- .pinpoint$get_in_app_template_input(TemplateName = TemplateName, Version = Version)
+  output <- .pinpoint$get_in_app_template_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$get_in_app_template <- pinpoint_get_in_app_template
+
 #' Retrieves information about the status, configuration, and other
 #' settings for a journey
 #'
@@ -8063,7 +9847,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'         CUSTOM = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           ),
 #'           MessageConfig = list(
 #'             Data = "string"
@@ -8080,7 +9864,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -8107,7 +9891,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -8180,7 +9964,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -8219,7 +10003,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -8246,7 +10030,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -8319,7 +10103,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -8355,7 +10139,10 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -8367,6 +10154,9 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'             WaitFor = "string",
 #'             WaitUntil = "string"
 #'           )
+#'         ),
+#'         ContactCenter = list(
+#'           NextActivity = "string"
 #'         )
 #'       )
 #'     ),
@@ -8377,7 +10167,8 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -8403,7 +10194,7 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -8430,9 +10221,95 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
 #'     tags = list(
 #'       "string"
+#'     ),
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE,
+#'     JourneyChannelSettings = list(
+#'       ConnectCampaignArn = "string",
+#'       ConnectCampaignExecutionRoleArn = "string"
+#'     ),
+#'     SendingSchedule = TRUE|FALSE,
+#'     OpenHours = list(
+#'       EMAIL = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ClosedDays = list(
+#'       EMAIL = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -8816,7 +10693,7 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
 #'     ),
 #'     TemplateDescription = "string",
 #'     TemplateName = "string",
-#'     TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
+#'     TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH"|"INAPP",
 #'     Version = "string"
 #'   )
 #' )
@@ -9011,7 +10888,7 @@ pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NUL
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -9084,7 +10961,7 @@ pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NUL
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -9111,7 +10988,7 @@ pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NUL
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -9184,7 +11061,7 @@ pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NUL
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -9441,7 +11318,7 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -9514,7 +11391,7 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -9541,7 +11418,7 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -9614,7 +11491,7 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -9706,7 +11583,7 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -9779,7 +11656,7 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #'           ),
 #'           UserAttributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -9806,7 +11683,7 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #'                 list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -9879,7 +11756,7 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -9972,7 +11849,7 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -10045,7 +11922,7 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #'           ),
 #'           UserAttributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -10072,7 +11949,7 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #'                 list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -10145,7 +12022,7 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -10322,7 +12199,7 @@ pinpoint_get_sms_channel <- function(ApplicationId) {
 #'     ),
 #'     TemplateDescription = "string",
 #'     TemplateName = "string",
-#'     TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
+#'     TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH"|"INAPP",
 #'     Version = "string"
 #'   )
 #' )
@@ -10384,7 +12261,7 @@ pinpoint_get_sms_template <- function(TemplateName, Version = NULL) {
 #'             "string"
 #'           )
 #'         ),
-#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP",
 #'         CohortId = "string",
 #'         CreationDate = "string",
 #'         Demographic = list(
@@ -10567,7 +12444,7 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
 #'     ),
 #'     TemplateDescription = "string",
 #'     TemplateName = "string",
-#'     TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
+#'     TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH"|"INAPP",
 #'     Version = "string",
 #'     VoiceId = "string"
 #'   )
@@ -10632,7 +12509,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'             CUSTOM = list(
 #'               DeliveryUri = "string",
 #'               EndpointTypes = list(
-#'                 "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'                 "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'               ),
 #'               MessageConfig = list(
 #'                 Data = "string"
@@ -10649,7 +12526,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'                       Dimensions = list(
 #'                         Attributes = list(
 #'                           list(
-#'                             AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                             AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                             Values = list(
 #'                               "string"
 #'                             )
@@ -10676,7 +12553,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'                     SegmentDimensions = list(
 #'                       Attributes = list(
 #'                         list(
-#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                           Values = list(
 #'                             "string"
 #'                           )
@@ -10749,7 +12626,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'                       ),
 #'                       UserAttributes = list(
 #'                         list(
-#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                           Values = list(
 #'                             "string"
 #'                           )
@@ -10788,7 +12665,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'                       Dimensions = list(
 #'                         Attributes = list(
 #'                           list(
-#'                             AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                             AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                             Values = list(
 #'                               "string"
 #'                             )
@@ -10815,7 +12692,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'                     SegmentDimensions = list(
 #'                       Attributes = list(
 #'                         list(
-#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                           Values = list(
 #'                             "string"
 #'                           )
@@ -10888,7 +12765,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'                       ),
 #'                       UserAttributes = list(
 #'                         list(
-#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                           Values = list(
 #'                             "string"
 #'                           )
@@ -10924,7 +12801,10 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'             SMS = list(
 #'               MessageConfig = list(
 #'                 MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'                 SenderId = "string"
+#'                 OriginationNumber = "string",
+#'                 SenderId = "string",
+#'                 EntityId = "string",
+#'                 TemplateId = "string"
 #'               ),
 #'               NextActivity = "string",
 #'               TemplateName = "string",
@@ -10936,6 +12816,9 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'                 WaitFor = "string",
 #'                 WaitUntil = "string"
 #'               )
+#'             ),
+#'             ContactCenter = list(
+#'               NextActivity = "string"
 #'             )
 #'           )
 #'         ),
@@ -10946,7 +12829,8 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'         Limits = list(
 #'           DailyCap = 123,
 #'           EndpointReentryCap = 123,
-#'           MessagesPerSecond = 123
+#'           MessagesPerSecond = 123,
+#'           EndpointReentryInterval = "string"
 #'         ),
 #'         LocalTime = TRUE|FALSE,
 #'         Name = "string",
@@ -10972,7 +12856,7 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'               Dimensions = list(
 #'                 Attributes = list(
 #'                   list(
-#'                     AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                     AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                     Values = list(
 #'                       "string"
 #'                     )
@@ -10999,9 +12883,95 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #'             SegmentId = "string"
 #'           )
 #'         ),
-#'         State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
+#'         State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
 #'         tags = list(
 #'           "string"
+#'         ),
+#'         WaitForQuietTime = TRUE|FALSE,
+#'         RefreshOnSegmentUpdate = TRUE|FALSE,
+#'         JourneyChannelSettings = list(
+#'           ConnectCampaignArn = "string",
+#'           ConnectCampaignExecutionRoleArn = "string"
+#'         ),
+#'         SendingSchedule = TRUE|FALSE,
+#'         OpenHours = list(
+#'           EMAIL = list(
+#'             list(
+#'               list(
+#'                 StartTime = "string",
+#'                 EndTime = "string"
+#'               )
+#'             )
+#'           ),
+#'           SMS = list(
+#'             list(
+#'               list(
+#'                 StartTime = "string",
+#'                 EndTime = "string"
+#'               )
+#'             )
+#'           ),
+#'           PUSH = list(
+#'             list(
+#'               list(
+#'                 StartTime = "string",
+#'                 EndTime = "string"
+#'               )
+#'             )
+#'           ),
+#'           VOICE = list(
+#'             list(
+#'               list(
+#'                 StartTime = "string",
+#'                 EndTime = "string"
+#'               )
+#'             )
+#'           ),
+#'           CUSTOM = list(
+#'             list(
+#'               list(
+#'                 StartTime = "string",
+#'                 EndTime = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         ClosedDays = list(
+#'           EMAIL = list(
+#'             list(
+#'               Name = "string",
+#'               StartDateTime = "string",
+#'               EndDateTime = "string"
+#'             )
+#'           ),
+#'           SMS = list(
+#'             list(
+#'               Name = "string",
+#'               StartDateTime = "string",
+#'               EndDateTime = "string"
+#'             )
+#'           ),
+#'           PUSH = list(
+#'             list(
+#'               Name = "string",
+#'               StartDateTime = "string",
+#'               EndDateTime = "string"
+#'             )
+#'           ),
+#'           VOICE = list(
+#'             list(
+#'               Name = "string",
+#'               StartDateTime = "string",
+#'               EndDateTime = "string"
+#'             )
+#'           ),
+#'           CUSTOM = list(
+#'             list(
+#'               Name = "string",
+#'               StartDateTime = "string",
+#'               EndDateTime = "string"
+#'             )
+#'           )
 #'         )
 #'       )
 #'     ),
@@ -11206,7 +13176,7 @@ pinpoint_list_template_versions <- function(NextToken = NULL, PageSize = NULL, T
 #'         ),
 #'         TemplateDescription = "string",
 #'         TemplateName = "string",
-#'         TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
+#'         TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH"|"INAPP",
 #'         Version = "string"
 #'       )
 #'     ),
@@ -11419,7 +13389,7 @@ pinpoint_put_event_stream <- function(ApplicationId, WriteEventStream) {
 #'               "string"
 #'             )
 #'           ),
-#'           ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'           ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP",
 #'           Demographic = list(
 #'             AppVersion = "string",
 #'             Locale = "string",
@@ -11628,7 +13598,7 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 #'     Addresses = list(
 #'       list(
 #'         BodyOverride = "string",
-#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP",
 #'         Context = list(
 #'           "string"
 #'         ),
@@ -11821,7 +13791,9 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 #'           list(
 #'             "string"
 #'           )
-#'         )
+#'         ),
+#'         EntityId = "string",
+#'         TemplateId = "string"
 #'       ),
 #'       VoiceMessage = list(
 #'         Body = "string",
@@ -11877,6 +13849,88 @@ pinpoint_send_messages <- function(ApplicationId, MessageRequest) {
   return(response)
 }
 .pinpoint$operations$send_messages <- pinpoint_send_messages
+
+#' Send an OTP message
+#'
+#' @description
+#' Send an OTP message
+#'
+#' @usage
+#' pinpoint_send_otp_message(ApplicationId,
+#'   SendOTPMessageRequestParameters)
+#'
+#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param SendOTPMessageRequestParameters &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageResponse = list(
+#'     ApplicationId = "string",
+#'     EndpointResult = list(
+#'       list(
+#'         Address = "string",
+#'         DeliveryStatus = "SUCCESSFUL"|"THROTTLED"|"TEMPORARY_FAILURE"|"PERMANENT_FAILURE"|"UNKNOWN_FAILURE"|"OPT_OUT"|"DUPLICATE",
+#'         MessageId = "string",
+#'         StatusCode = 123,
+#'         StatusMessage = "string",
+#'         UpdatedToken = "string"
+#'       )
+#'     ),
+#'     RequestId = "string",
+#'     Result = list(
+#'       list(
+#'         DeliveryStatus = "SUCCESSFUL"|"THROTTLED"|"TEMPORARY_FAILURE"|"PERMANENT_FAILURE"|"UNKNOWN_FAILURE"|"OPT_OUT"|"DUPLICATE",
+#'         MessageId = "string",
+#'         StatusCode = 123,
+#'         StatusMessage = "string",
+#'         UpdatedToken = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_otp_message(
+#'   ApplicationId = "string",
+#'   SendOTPMessageRequestParameters = list(
+#'     AllowedAttempts = 123,
+#'     BrandName = "string",
+#'     Channel = "string",
+#'     CodeLength = 123,
+#'     DestinationIdentity = "string",
+#'     EntityId = "string",
+#'     Language = "string",
+#'     OriginationIdentity = "string",
+#'     ReferenceId = "string",
+#'     TemplateId = "string",
+#'     ValidityPeriod = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_send_otp_message
+pinpoint_send_otp_message <- function(ApplicationId, SendOTPMessageRequestParameters) {
+  op <- new_operation(
+    name = "SendOTPMessage",
+    http_method = "POST",
+    http_path = "/v1/apps/{application-id}/otp",
+    paginator = list()
+  )
+  input <- .pinpoint$send_otp_message_input(ApplicationId = ApplicationId, SendOTPMessageRequestParameters = SendOTPMessageRequestParameters)
+  output <- .pinpoint$send_otp_message_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$send_otp_message <- pinpoint_send_otp_message
 
 #' Creates and sends a message to a list of users
 #'
@@ -12083,7 +14137,9 @@ pinpoint_send_messages <- function(ApplicationId, MessageRequest) {
 #'           list(
 #'             "string"
 #'           )
-#'         )
+#'         ),
+#'         EntityId = "string",
+#'         TemplateId = "string"
 #'       ),
 #'       VoiceMessage = list(
 #'         Body = "string",
@@ -12635,7 +14691,8 @@ pinpoint_update_apns_voip_sandbox_channel <- function(APNSVoipSandboxChannelRequ
 #'       Daily = 123,
 #'       MaximumDuration = 123,
 #'       MessagesPerSecond = 123,
-#'       Total = 123
+#'       Total = 123,
+#'       Session = 123
 #'     ),
 #'     QuietTime = list(
 #'       End = "string",
@@ -12661,7 +14718,8 @@ pinpoint_update_apns_voip_sandbox_channel <- function(APNSVoipSandboxChannelRequ
 #'       Daily = 123,
 #'       MaximumDuration = 123,
 #'       MessagesPerSecond = 123,
-#'       Total = 123
+#'       Total = 123,
+#'       Session = 123
 #'     ),
 #'     QuietTime = list(
 #'       End = "string",
@@ -12781,7 +14839,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'         CustomDeliveryConfiguration = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           )
 #'         ),
 #'         Id = "string",
@@ -12868,7 +14926,77 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
+#'           ),
+#'           InAppMessage = list(
+#'             Body = "string",
+#'             Content = list(
+#'               list(
+#'                 BackgroundColor = "string",
+#'                 BodyConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Body = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 HeaderConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Header = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 ImageUrl = "string",
+#'                 PrimaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 ),
+#'                 SecondaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             CustomConfig = list(
+#'               "string"
+#'             ),
+#'             Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -12877,7 +15005,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -12898,7 +15026,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'             ),
 #'             FilterType = "SYSTEM"|"ENDPOINT"
 #'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'           IsLocalTime = TRUE|FALSE,
 #'           QuietTime = list(
 #'             End = "string",
@@ -12939,7 +15067,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'     CustomDeliveryConfiguration = list(
 #'       DeliveryUri = "string",
 #'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'       )
 #'     ),
 #'     DefaultState = list(
@@ -12959,7 +15087,8 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'       Daily = 123,
 #'       MaximumDuration = 123,
 #'       MessagesPerSecond = 123,
-#'       Total = 123
+#'       Total = 123,
+#'       Session = 123
 #'     ),
 #'     MessageConfiguration = list(
 #'       ADMMessage = list(
@@ -13044,7 +15173,77 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
+#'       ),
+#'       InAppMessage = list(
+#'         Body = "string",
+#'         Content = list(
+#'           list(
+#'             BackgroundColor = "string",
+#'             BodyConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Body = "string",
+#'               TextColor = "string"
+#'             ),
+#'             HeaderConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Header = "string",
+#'               TextColor = "string"
+#'             ),
+#'             ImageUrl = "string",
+#'             PrimaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             ),
+#'             SecondaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         CustomConfig = list(
+#'           "string"
+#'         ),
+#'         Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -13054,7 +15253,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -13075,7 +15274,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'         ),
 #'         FilterType = "SYSTEM"|"ENDPOINT"
 #'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'       IsLocalTime = TRUE|FALSE,
 #'       QuietTime = list(
 #'         End = "string",
@@ -13112,7 +15311,8 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'     ),
 #'     TreatmentDescription = "string",
 #'     TreatmentName = "string",
-#'     Version = 123
+#'     Version = 123,
+#'     Priority = 123
 #'   )
 #' )
 #' ```
@@ -13128,7 +15328,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'         CustomDeliveryConfiguration = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           )
 #'         ),
 #'         MessageConfiguration = list(
@@ -13214,7 +15414,77 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'           SMSMessage = list(
 #'             Body = "string",
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
+#'           ),
+#'           InAppMessage = list(
+#'             Body = "string",
+#'             Content = list(
+#'               list(
+#'                 BackgroundColor = "string",
+#'                 BodyConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Body = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 HeaderConfig = list(
+#'                   Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'                   Header = "string",
+#'                   TextColor = "string"
+#'                 ),
+#'                 ImageUrl = "string",
+#'                 PrimaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 ),
+#'                 SecondaryBtn = list(
+#'                   Android = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   DefaultConfig = list(
+#'                     BackgroundColor = "string",
+#'                     BorderRadius = 123,
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string",
+#'                     Text = "string",
+#'                     TextColor = "string"
+#'                   ),
+#'                   IOS = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   ),
+#'                   Web = list(
+#'                     ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                     Link = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             CustomConfig = list(
+#'               "string"
+#'             ),
+#'             Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'           )
 #'         ),
 #'         Schedule = list(
@@ -13223,7 +15493,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'             Dimensions = list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -13244,7 +15514,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'             ),
 #'             FilterType = "SYSTEM"|"ENDPOINT"
 #'           ),
-#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'           Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'           IsLocalTime = TRUE|FALSE,
 #'           QuietTime = list(
 #'             End = "string",
@@ -13279,7 +15549,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'     CustomDeliveryConfiguration = list(
 #'       DeliveryUri = "string",
 #'       EndpointTypes = list(
-#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'         "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'       )
 #'     ),
 #'     Description = "string",
@@ -13294,7 +15564,8 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'       Daily = 123,
 #'       MaximumDuration = 123,
 #'       MessagesPerSecond = 123,
-#'       Total = 123
+#'       Total = 123,
+#'       Session = 123
 #'     ),
 #'     MessageConfiguration = list(
 #'       ADMMessage = list(
@@ -13379,7 +15650,77 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'       SMSMessage = list(
 #'         Body = "string",
 #'         MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'         SenderId = "string"
+#'         OriginationNumber = "string",
+#'         SenderId = "string",
+#'         EntityId = "string",
+#'         TemplateId = "string"
+#'       ),
+#'       InAppMessage = list(
+#'         Body = "string",
+#'         Content = list(
+#'           list(
+#'             BackgroundColor = "string",
+#'             BodyConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Body = "string",
+#'               TextColor = "string"
+#'             ),
+#'             HeaderConfig = list(
+#'               Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'               Header = "string",
+#'               TextColor = "string"
+#'             ),
+#'             ImageUrl = "string",
+#'             PrimaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             ),
+#'             SecondaryBtn = list(
+#'               Android = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               DefaultConfig = list(
+#'                 BackgroundColor = "string",
+#'                 BorderRadius = 123,
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string",
+#'                 Text = "string",
+#'                 TextColor = "string"
+#'               ),
+#'               IOS = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               ),
+#'               Web = list(
+#'                 ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'                 Link = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         CustomConfig = list(
+#'           "string"
+#'         ),
+#'         Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL"
 #'       )
 #'     ),
 #'     Name = "string",
@@ -13389,7 +15730,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'         Dimensions = list(
 #'           Attributes = list(
 #'             list(
-#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'               AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'               Values = list(
 #'                 "string"
 #'               )
@@ -13410,7 +15751,7 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'         ),
 #'         FilterType = "SYSTEM"|"ENDPOINT"
 #'       ),
-#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT",
+#'       Frequency = "ONCE"|"HOURLY"|"DAILY"|"WEEKLY"|"MONTHLY"|"EVENT"|"IN_APP_EVENT",
 #'       IsLocalTime = TRUE|FALSE,
 #'       QuietTime = list(
 #'         End = "string",
@@ -13443,7 +15784,8 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #'       )
 #'     ),
 #'     TreatmentDescription = "string",
-#'     TreatmentName = "string"
+#'     TreatmentName = "string",
+#'     Priority = 123
 #'   )
 #' )
 #' ```
@@ -13680,7 +16022,7 @@ pinpoint_update_email_template <- function(CreateNewVersion = NULL, EmailTemplat
 #'         "string"
 #'       )
 #'     ),
-#'     ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'     ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP",
 #'     Demographic = list(
 #'       AppVersion = "string",
 #'       Locale = "string",
@@ -13781,7 +16123,7 @@ pinpoint_update_endpoint <- function(ApplicationId, EndpointId, EndpointRequest)
 #'             "string"
 #'           )
 #'         ),
-#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
+#'         ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP",
 #'         Demographic = list(
 #'           AppVersion = "string",
 #'           Locale = "string",
@@ -13907,6 +16249,164 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 }
 .pinpoint$operations$update_gcm_channel <- pinpoint_update_gcm_channel
 
+#' Updates an existing message template for messages sent through the
+#' in-app message channel
+#'
+#' @description
+#' Updates an existing message template for messages sent through the
+#' in-app message channel.
+#'
+#' @usage
+#' pinpoint_update_in_app_template(CreateNewVersion, InAppTemplateRequest,
+#'   TemplateName, Version)
+#'
+#' @param CreateNewVersion Specifies whether to save the updates as a new version of the message
+#' template. Valid values are: true, save the updates as a new version;
+#' and, false, save the updates to (overwrite) the latest existing version
+#' of the template.
+#' 
+#' If you don't specify a value for this parameter, Amazon Pinpoint saves
+#' the updates to (overwrites) the latest existing version of the template.
+#' If you specify a value of true for this parameter, don't specify a value
+#' for the version parameter. Otherwise, an error will occur.
+#' @param InAppTemplateRequest &#91;required&#93; 
+#' @param TemplateName &#91;required&#93; The name of the message template. A template name must start with an
+#' alphanumeric character and can contain a maximum of 128 characters. The
+#' characters can be alphanumeric characters, underscores (_), or hyphens
+#' (-). Template names are case sensitive.
+#' @param Version The unique identifier for the version of the message template to update,
+#' retrieve information about, or delete. To retrieve identifiers and other
+#' information for all the versions of a template, use the Template
+#' Versions resource.
+#' 
+#' If specified, this value must match the identifier for an existing
+#' template version. If specified for an update operation, this value must
+#' match the identifier for the latest existing version of the template.
+#' This restriction helps ensure that race conditions don't occur.
+#' 
+#' If you don't specify a value for this parameter, Amazon Pinpoint does
+#' the following:
+#' 
+#' -   For a get operation, retrieves information about the active version
+#'     of the template.
+#' 
+#' -   For an update operation, saves the updates to (overwrites) the
+#'     latest existing version of the template, if the create-new-version
+#'     parameter isn't used or is set to false.
+#' 
+#' -   For a delete operation, deletes the template, including all versions
+#'     of the template.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MessageBody = list(
+#'     Message = "string",
+#'     RequestID = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_in_app_template(
+#'   CreateNewVersion = TRUE|FALSE,
+#'   InAppTemplateRequest = list(
+#'     Content = list(
+#'       list(
+#'         BackgroundColor = "string",
+#'         BodyConfig = list(
+#'           Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'           Body = "string",
+#'           TextColor = "string"
+#'         ),
+#'         HeaderConfig = list(
+#'           Alignment = "LEFT"|"CENTER"|"RIGHT",
+#'           Header = "string",
+#'           TextColor = "string"
+#'         ),
+#'         ImageUrl = "string",
+#'         PrimaryBtn = list(
+#'           Android = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           ),
+#'           DefaultConfig = list(
+#'             BackgroundColor = "string",
+#'             BorderRadius = 123,
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string",
+#'             Text = "string",
+#'             TextColor = "string"
+#'           ),
+#'           IOS = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           ),
+#'           Web = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           )
+#'         ),
+#'         SecondaryBtn = list(
+#'           Android = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           ),
+#'           DefaultConfig = list(
+#'             BackgroundColor = "string",
+#'             BorderRadius = 123,
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string",
+#'             Text = "string",
+#'             TextColor = "string"
+#'           ),
+#'           IOS = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           ),
+#'           Web = list(
+#'             ButtonAction = "LINK"|"DEEP_LINK"|"CLOSE",
+#'             Link = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CustomConfig = list(
+#'       "string"
+#'     ),
+#'     Layout = "BOTTOM_BANNER"|"TOP_BANNER"|"OVERLAYS"|"MOBILE_FEED"|"MIDDLE_BANNER"|"CAROUSEL",
+#'     tags = list(
+#'       "string"
+#'     ),
+#'     TemplateDescription = "string"
+#'   ),
+#'   TemplateName = "string",
+#'   Version = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_update_in_app_template
+pinpoint_update_in_app_template <- function(CreateNewVersion = NULL, InAppTemplateRequest, TemplateName, Version = NULL) {
+  op <- new_operation(
+    name = "UpdateInAppTemplate",
+    http_method = "PUT",
+    http_path = "/v1/templates/{template-name}/inapp",
+    paginator = list()
+  )
+  input <- .pinpoint$update_in_app_template_input(CreateNewVersion = CreateNewVersion, InAppTemplateRequest = InAppTemplateRequest, TemplateName = TemplateName, Version = Version)
+  output <- .pinpoint$update_in_app_template_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$update_in_app_template <- pinpoint_update_in_app_template
+
 #' Updates the configuration and other settings for a journey
 #'
 #' @description
@@ -13930,7 +16430,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'         CUSTOM = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           ),
 #'           MessageConfig = list(
 #'             Data = "string"
@@ -13947,7 +16447,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -13974,7 +16474,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14047,7 +16547,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14086,7 +16586,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -14113,7 +16613,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14186,7 +16686,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14222,7 +16722,10 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -14234,6 +16737,9 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'             WaitFor = "string",
 #'             WaitUntil = "string"
 #'           )
+#'         ),
+#'         ContactCenter = list(
+#'           NextActivity = "string"
 #'         )
 #'       )
 #'     ),
@@ -14244,7 +16750,8 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -14270,7 +16777,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -14297,9 +16804,95 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
 #'     tags = list(
 #'       "string"
+#'     ),
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE,
+#'     JourneyChannelSettings = list(
+#'       ConnectCampaignArn = "string",
+#'       ConnectCampaignExecutionRoleArn = "string"
+#'     ),
+#'     SendingSchedule = TRUE|FALSE,
+#'     OpenHours = list(
+#'       EMAIL = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ClosedDays = list(
+#'       EMAIL = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -14316,7 +16909,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'         CUSTOM = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           ),
 #'           MessageConfig = list(
 #'             Data = "string"
@@ -14333,7 +16926,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -14360,7 +16953,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14433,7 +17026,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14472,7 +17065,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -14499,7 +17092,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14572,7 +17165,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14608,7 +17201,10 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -14620,6 +17216,9 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'             WaitFor = "string",
 #'             WaitUntil = "string"
 #'           )
+#'         ),
+#'         ContactCenter = list(
+#'           NextActivity = "string"
 #'         )
 #'       )
 #'     ),
@@ -14628,7 +17227,8 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -14654,7 +17254,7 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -14681,7 +17281,93 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE,
+#'     JourneyChannelSettings = list(
+#'       ConnectCampaignArn = "string",
+#'       ConnectCampaignExecutionRoleArn = "string"
+#'     ),
+#'     SendingSchedule = TRUE|FALSE,
+#'     OpenHours = list(
+#'       EMAIL = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ClosedDays = list(
+#'       EMAIL = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -14730,7 +17416,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'         CUSTOM = list(
 #'           DeliveryUri = "string",
 #'           EndpointTypes = list(
-#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"
+#'             "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM"|"IN_APP"
 #'           ),
 #'           MessageConfig = list(
 #'             Data = "string"
@@ -14747,7 +17433,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -14774,7 +17460,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14847,7 +17533,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14886,7 +17572,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'                   Dimensions = list(
 #'                     Attributes = list(
 #'                       list(
-#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                         AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                         Values = list(
 #'                           "string"
 #'                         )
@@ -14913,7 +17599,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'                 SegmentDimensions = list(
 #'                   Attributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -14986,7 +17672,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'                   ),
 #'                   UserAttributes = list(
 #'                     list(
-#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                       AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                       Values = list(
 #'                         "string"
 #'                       )
@@ -15022,7 +17708,10 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'         SMS = list(
 #'           MessageConfig = list(
 #'             MessageType = "TRANSACTIONAL"|"PROMOTIONAL",
-#'             SenderId = "string"
+#'             OriginationNumber = "string",
+#'             SenderId = "string",
+#'             EntityId = "string",
+#'             TemplateId = "string"
 #'           ),
 #'           NextActivity = "string",
 #'           TemplateName = "string",
@@ -15034,6 +17723,9 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'             WaitFor = "string",
 #'             WaitUntil = "string"
 #'           )
+#'         ),
+#'         ContactCenter = list(
+#'           NextActivity = "string"
 #'         )
 #'       )
 #'     ),
@@ -15044,7 +17736,8 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'     Limits = list(
 #'       DailyCap = 123,
 #'       EndpointReentryCap = 123,
-#'       MessagesPerSecond = 123
+#'       MessagesPerSecond = 123,
+#'       EndpointReentryInterval = "string"
 #'     ),
 #'     LocalTime = TRUE|FALSE,
 #'     Name = "string",
@@ -15070,7 +17763,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'           Dimensions = list(
 #'             Attributes = list(
 #'               list(
-#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                 Values = list(
 #'                   "string"
 #'                 )
@@ -15097,9 +17790,95 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'         SegmentId = "string"
 #'       )
 #'     ),
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED",
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED",
 #'     tags = list(
 #'       "string"
+#'     ),
+#'     WaitForQuietTime = TRUE|FALSE,
+#'     RefreshOnSegmentUpdate = TRUE|FALSE,
+#'     JourneyChannelSettings = list(
+#'       ConnectCampaignArn = "string",
+#'       ConnectCampaignExecutionRoleArn = "string"
+#'     ),
+#'     SendingSchedule = TRUE|FALSE,
+#'     OpenHours = list(
+#'       EMAIL = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           list(
+#'             StartTime = "string",
+#'             EndTime = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ClosedDays = list(
+#'       EMAIL = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       SMS = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       PUSH = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       VOICE = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       ),
+#'       CUSTOM = list(
+#'         list(
+#'           Name = "string",
+#'           StartDateTime = "string",
+#'           EndDateTime = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -15111,7 +17890,7 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #'   ApplicationId = "string",
 #'   JourneyId = "string",
 #'   JourneyStateRequest = list(
-#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"
+#'     State = "DRAFT"|"ACTIVE"|"COMPLETED"|"CANCELLED"|"CLOSED"|"PAUSED"
 #'   )
 #' )
 #' ```
@@ -15386,7 +18165,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -15459,7 +18238,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -15486,7 +18265,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -15559,7 +18338,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -15597,7 +18376,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'     Dimensions = list(
 #'       Attributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -15670,7 +18449,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'       ),
 #'       UserAttributes = list(
 #'         list(
-#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'           AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'           Values = list(
 #'             "string"
 #'           )
@@ -15685,7 +18464,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'             list(
 #'               Attributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -15758,7 +18537,7 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #'               ),
 #'               UserAttributes = list(
 #'                 list(
-#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                   AttributeType = "INCLUSIVE"|"EXCLUSIVE"|"CONTAINS"|"BEFORE"|"AFTER"|"ON"|"BETWEEN",
 #'                   Values = list(
 #'                     "string"
 #'                   )
@@ -16191,3 +18970,57 @@ pinpoint_update_voice_template <- function(CreateNewVersion = NULL, TemplateName
   return(response)
 }
 .pinpoint$operations$update_voice_template <- pinpoint_update_voice_template
+
+#' Verify an OTP
+#'
+#' @description
+#' Verify an OTP
+#'
+#' @usage
+#' pinpoint_verify_otp_message(ApplicationId,
+#'   VerifyOTPMessageRequestParameters)
+#'
+#' @param ApplicationId &#91;required&#93; The unique ID of your Amazon Pinpoint application.
+#' @param VerifyOTPMessageRequestParameters &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   VerificationResponse = list(
+#'     Valid = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$verify_otp_message(
+#'   ApplicationId = "string",
+#'   VerifyOTPMessageRequestParameters = list(
+#'     DestinationIdentity = "string",
+#'     Otp = "string",
+#'     ReferenceId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_verify_otp_message
+pinpoint_verify_otp_message <- function(ApplicationId, VerifyOTPMessageRequestParameters) {
+  op <- new_operation(
+    name = "VerifyOTPMessage",
+    http_method = "POST",
+    http_path = "/v1/apps/{application-id}/verify-otp",
+    paginator = list()
+  )
+  input <- .pinpoint$verify_otp_message_input(ApplicationId = ApplicationId, VerifyOTPMessageRequestParameters = VerifyOTPMessageRequestParameters)
+  output <- .pinpoint$verify_otp_message_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$verify_otp_message <- pinpoint_verify_otp_message

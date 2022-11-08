@@ -4,12 +4,17 @@
 \alias{s3control_create_access_point}
 \title{Creates an access point and associates it with the specified bucket}
 \usage{
-s3control_create_access_point(AccountId, Name, Bucket, VpcConfiguration,
-  PublicAccessBlockConfiguration)
+s3control_create_access_point(
+  AccountId,
+  Name,
+  Bucket,
+  VpcConfiguration = NULL,
+  PublicAccessBlockConfiguration = NULL
+)
 }
 \arguments{
-\item{AccountId}{[required] The AWS account ID for the owner of the bucket for which you want to
-create an access point.}
+\item{AccountId}{[required] The Amazon Web Services account ID for the owner of the bucket for which
+you want to create an access point.}
 
 \item{Name}{[required] The name you want to assign to this access point.}
 
@@ -19,8 +24,9 @@ with.
 For using this parameter with Amazon S3 on Outposts with the REST API,
 you must specify the name and the x-amz-outpost-id as well.
 
-For using this parameter with S3 on Outposts with the AWS SDK and CLI,
-you must specify the ARN of the bucket accessed in the format
+For using this parameter with S3 on Outposts with the Amazon Web
+Services SDK and CLI, you must specify the ARN of the bucket accessed in
+the format
 \verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/bucket/<my-bucket-name>}.
 For example, to access the bucket \code{reports} through outpost \code{my-outpost}
 owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
@@ -34,66 +40,12 @@ point to requests from the specified virtual private cloud (VPC).
 This is required for creating an access point for Amazon S3 on Outposts
 buckets.}
 
-\item{PublicAccessBlockConfiguration}{}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AccessPointArn = "string"
-)
-}
+\item{PublicAccessBlockConfiguration}{The \code{PublicAccessBlock} configuration that you want to apply to the
+access point.}
 }
 \description{
-Creates an access point and associates it with the specified bucket. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing Data Access with Amazon S3 Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+Creates an access point and associates it with the specified bucket. For more information, see Managing Data Access with Amazon S3 Access Points in the \emph{Amazon S3 User Guide}.
 
-\strong{Using this action with Amazon S3 on Outposts}
-
-This action:
-\itemize{
-\item Requires a virtual private cloud (VPC) configuration as S3 on
-Outposts only supports VPC style access points.
-\item Does not support ACL on S3 on Outposts buckets.
-\item Does not support Public Access on S3 on Outposts buckets.
-\item Does not support object lock for S3 on Outposts buckets.
+See \url{https://paws-r.github.io/docs/s3control/create_access_point.html} for full documentation.
 }
-
-For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide} .
-
-All Amazon S3 on Outposts REST API requests for this action require an
-additional parameter of \code{x-amz-outpost-id} to be passed with the request
-and an S3 on Outposts endpoint hostname prefix instead of \code{s3-control}.
-For an example of the request syntax for Amazon S3 on Outposts that uses
-the S3 on Outposts endpoint hostname prefix and the \code{x-amz-outpost-id}
-derived using the access point ARN, see the
-\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessPoint.html#API_control_CreateAccessPoint_Examples}{Examples}
-section.
-
-The following actions are related to
-\code{\link[=s3control_create_access_point]{create_access_point}}:
-\itemize{
-\item \code{\link[=s3control_get_access_point]{get_access_point}}
-\item \code{\link[=s3control_delete_access_point]{delete_access_point}}
-\item \code{\link[=s3control_list_access_points]{list_access_points}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$create_access_point(
-  AccountId = "string",
-  Name = "string",
-  Bucket = "string",
-  VpcConfiguration = list(
-    VpcId = "string"
-  ),
-  PublicAccessBlockConfiguration = list(
-    BlockPublicAcls = TRUE|FALSE,
-    IgnorePublicAcls = TRUE|FALSE,
-    BlockPublicPolicy = TRUE|FALSE,
-    RestrictPublicBuckets = TRUE|FALSE
-  )
-)
-}
-}
-
 \keyword{internal}

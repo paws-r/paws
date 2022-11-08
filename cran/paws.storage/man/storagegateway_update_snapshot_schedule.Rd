@@ -4,8 +4,13 @@
 \alias{storagegateway_update_snapshot_schedule}
 \title{Updates a snapshot schedule configured for a gateway volume}
 \usage{
-storagegateway_update_snapshot_schedule(VolumeARN, StartAt,
-  RecurrenceInHours, Description, Tags)
+storagegateway_update_snapshot_schedule(
+  VolumeARN,
+  StartAt,
+  RecurrenceInHours,
+  Description = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{VolumeARN}{[required] The Amazon Resource Name (ARN) of the volume. Use the
@@ -29,52 +34,9 @@ representable in UTF-8 format, and the following special characters: + -
 = . _ : / @. The maximum length of a tag's key is 128 characters, and
 the maximum length for a tag's value is 256.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VolumeARN = "string"
-)
-}
-}
 \description{
-Updates a snapshot schedule configured for a gateway volume. This
-operation is only supported in the cached volume and stored volume
-gateway types.
+Updates a snapshot schedule configured for a gateway volume. This operation is only supported in the cached volume and stored volume gateway types.
 
-The default snapshot schedule for volume is once every 24 hours,
-starting at the creation time of the volume. You can use this API to
-change the snapshot schedule configured for the volume.
-
-In the request you must identify the gateway volume whose snapshot
-schedule you want to update, and the schedule information, including
-when you want the snapshot to begin on a day and the frequency (in
-hours) of snapshots.
-}
-\section{Request syntax}{
-\preformatted{svc$update_snapshot_schedule(
-  VolumeARN = "string",
-  StartAt = 123,
-  RecurrenceInHours = 123,
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# Updates a snapshot schedule configured for a gateway volume.
-svc$update_snapshot_schedule(
-  Description = "Hourly snapshot",
-  RecurrenceInHours = 1L,
-  StartAt = 0L,
-  VolumeARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/update_snapshot_schedule.html} for full documentation.
 }
 \keyword{internal}

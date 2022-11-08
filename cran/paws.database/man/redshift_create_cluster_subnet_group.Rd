@@ -4,8 +4,12 @@
 \alias{redshift_create_cluster_subnet_group}
 \title{Creates a new Amazon Redshift subnet group}
 \usage{
-redshift_create_cluster_subnet_group(ClusterSubnetGroupName,
-  Description, SubnetIds, Tags)
+redshift_create_cluster_subnet_group(
+  ClusterSubnetGroupName,
+  Description,
+  SubnetIds,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ClusterSubnetGroupName}{[required] The name for the subnet group. Amazon Redshift stores the value as a
@@ -15,8 +19,8 @@ Constraints:
 \itemize{
 \item Must contain no more than 255 alphanumeric characters or hyphens.
 \item Must not be "Default".
-\item Must be unique for all subnet groups that are created by your AWS
-account.
+\item Must be unique for all subnet groups that are created by your Amazon
+Web Services account.
 }
 
 Example: \code{examplesubnetgroup}}
@@ -28,60 +32,9 @@ single request.}
 
 \item{Tags}{A list of tag instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClusterSubnetGroup = list(
-    ClusterSubnetGroupName = "string",
-    Description = "string",
-    VpcId = "string",
-    SubnetGroupStatus = "string",
-    Subnets = list(
-      list(
-        SubnetIdentifier = "string",
-        SubnetAvailabilityZone = list(
-          Name = "string",
-          SupportedPlatforms = list(
-            list(
-              Name = "string"
-            )
-          )
-        ),
-        SubnetStatus = "string"
-      )
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a new Amazon Redshift subnet group. You must provide a list of
-one or more subnets in your existing Amazon Virtual Private Cloud
-(Amazon VPC) when creating Amazon Redshift subnet group.
+Creates a new Amazon Redshift subnet group. You must provide a list of one or more subnets in your existing Amazon Virtual Private Cloud (Amazon VPC) when creating Amazon Redshift subnet group.
 
-For information about subnet groups, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-cluster-subnet-groups.html}{Amazon Redshift Cluster Subnet Groups}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/create_cluster_subnet_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_cluster_subnet_group(
-  ClusterSubnetGroupName = "string",
-  Description = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

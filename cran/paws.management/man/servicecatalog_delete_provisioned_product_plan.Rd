@@ -4,8 +4,11 @@
 \alias{servicecatalog_delete_provisioned_product_plan}
 \title{Deletes the specified plan}
 \usage{
-servicecatalog_delete_provisioned_product_plan(AcceptLanguage, PlanId,
-  IgnoreErrors)
+servicecatalog_delete_provisioned_product_plan(
+  AcceptLanguage = NULL,
+  PlanId,
+  IgnoreErrors = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -20,19 +23,9 @@ servicecatalog_delete_provisioned_product_plan(AcceptLanguage, PlanId,
 \item{IgnoreErrors}{If set to true, AWS Service Catalog stops managing the specified
 provisioned product even if it cannot delete the underlying resources.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified plan.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_provisioned_product_plan(
-  AcceptLanguage = "string",
-  PlanId = "string",
-  IgnoreErrors = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/delete_provisioned_product_plan.html} for full documentation.
+}
 \keyword{internal}

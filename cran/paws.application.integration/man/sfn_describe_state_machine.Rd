@@ -9,45 +9,9 @@ sfn_describe_state_machine(stateMachineArn)
 \arguments{
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  stateMachineArn = "string",
-  name = "string",
-  status = "ACTIVE"|"DELETING",
-  definition = "string",
-  roleArn = "string",
-  type = "STANDARD"|"EXPRESS",
-  creationDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  loggingConfiguration = list(
-    level = "ALL"|"ERROR"|"FATAL"|"OFF",
-    includeExecutionData = TRUE|FALSE,
-    destinations = list(
-      list(
-        cloudWatchLogsLogGroup = list(
-          logGroupArn = "string"
-        )
-      )
-    )
-  ),
-  tracingConfiguration = list(
-    enabled = TRUE|FALSE
-  )
-)
-}
-}
 \description{
 Describes a state machine.
 
-This operation is eventually consistent. The results are best effort and
-may not reflect very recent updates and changes.
+See \url{https://paws-r.github.io/docs/sfn/describe_state_machine.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_state_machine(
-  stateMachineArn = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,40 +4,49 @@
 \alias{cognitoidentityprovider_admin_create_user}
 \title{Creates a new user in the specified user pool}
 \usage{
-cognitoidentityprovider_admin_create_user(UserPoolId, Username,
-  UserAttributes, ValidationData, TemporaryPassword, ForceAliasCreation,
-  MessageAction, DesiredDeliveryMediums, ClientMetadata)
+cognitoidentityprovider_admin_create_user(
+  UserPoolId,
+  Username,
+  UserAttributes = NULL,
+  ValidationData = NULL,
+  TemporaryPassword = NULL,
+  ForceAliasCreation = NULL,
+  MessageAction = NULL,
+  DesiredDeliveryMediums = NULL,
+  ClientMetadata = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where the user will be created.}
 
 \item{Username}{[required] The username for the user. Must be unique within the user pool. Must be
 a UTF-8 string between 1 and 128 characters. After the user is created,
-the username cannot be changed.}
+the username can't be changed.}
 
 \item{UserAttributes}{An array of name-value pairs that contain user attributes and attribute
 values to be set for the user to be created. You can create a user
 without specifying any attributes other than \code{Username}. However, any
 attributes that you specify as required (when creating a user pool or in
-the \strong{Attributes} tab of the console) must be supplied either by you
-(in your call to
-\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}) or by
-the user (when he or she signs up in response to your welcome message).
+the \strong{Attributes} tab of the console) either you should supply (in your
+call to
+\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}) or the
+user should supply (when they sign up in response to your welcome
+message).
 
 For custom attributes, you must prepend the \verb{custom:} prefix to the
 attribute name.
 
 To send a message inviting the user to sign up, you must specify the
-user's email address or phone number. This can be done in your call to
+user's email address or phone number. You can do this in your call to
 AdminCreateUser or in the \strong{Users} tab of the Amazon Cognito console
 for managing your user pools.
 
 In your call to
 \code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}, you
 can set the \code{email_verified} attribute to \code{True}, and you can set the
-\code{phone_number_verified} attribute to \code{True}. (You can also do this by
+\code{phone_number_verified} attribute to \code{True}. You can also do this by
 calling
-\code{\link[=cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes}}.)
+\code{\link[=cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes}}.
 \itemize{
 \item \strong{email}: The email address of the user to whom the message that
 contains the code and username will be sent. Required if the
@@ -60,16 +69,16 @@ trigger for the user pool as described in the Amazon Cognito Developer
 Guide. The Lambda trigger receives the validation data and uses it in
 the validation process.
 
-The user's validation data is not persisted.}
+The user's validation data isn't persisted.}
 
 \item{TemporaryPassword}{The user's temporary password. This password must conform to the
 password policy that you specified when you created the user pool.
 
 The temporary password is valid only once. To complete the Admin Create
 User flow, the user must enter the temporary password in the sign-in
-page along with a new password to be used in all future sign-ins.
+page, along with a new password to be used in all future sign-ins.
 
-This parameter is not required. If you do not specify a value, Amazon
+This parameter isn't required. If you don't specify a value, Amazon
 Cognito generates one for you.
 
 The temporary password can only be used until the user account
@@ -78,7 +87,7 @@ reset the account after that time limit, you must call
 \code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}} again,
 specifying \code{"RESEND"} for the \code{MessageAction} parameter.}
 
-\item{ForceAliasCreation}{This parameter is only used if the \code{phone_number_verified} or
+\item{ForceAliasCreation}{This parameter is used only if the \code{phone_number_verified} or
 \code{email_verified} attribute is set to \code{True}. Otherwise, it is ignored.
 
 If this parameter is set to \code{True} and the phone number or email address
@@ -91,120 +100,46 @@ If this parameter is set to \code{False}, the API throws an
 \code{AliasExistsException} error if the alias already exists. The default
 value is \code{False}.}
 
-\item{MessageAction}{Set to \code{"RESEND"} to resend the invitation message to a user that
-already exists and reset the expiration limit on the user's account. Set
-to \code{"SUPPRESS"} to suppress sending the message. Only one value can be
-specified.}
+\item{MessageAction}{Set to \code{RESEND} to resend the invitation message to a user that already
+exists and reset the expiration limit on the user's account. Set to
+\code{SUPPRESS} to suppress sending the message. You can specify only one
+value.}
 
 \item{DesiredDeliveryMediums}{Specify \code{"EMAIL"} if email will be used to send the welcome message.
 Specify \code{"SMS"} if the phone number will be used. The default value is
-\code{"SMS"}. More than one value can be specified.}
+\code{"SMS"}. You can specify more than one value.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
 
-You create custom workflows by assigning AWS Lambda functions to user
-pool triggers. When you use the AdminCreateUser API action, Amazon
-Cognito invokes the function that is assigned to the \emph{pre sign-up}
-trigger. When Amazon Cognito invokes this function, it passes a JSON
-payload, which the function receives as input. This payload contains a
-\code{clientMetadata} attribute, which provides the data that you assigned to
-the ClientMetadata parameter in your AdminCreateUser request. In your
-function code in AWS Lambda, you can process the \code{clientMetadata} value
-to enhance your workflow for your specific needs.
+You create custom workflows by assigning Lambda functions to user pool
+triggers. When you use the AdminCreateUser API action, Amazon Cognito
+invokes the function that is assigned to the \emph{pre sign-up} trigger. When
+Amazon Cognito invokes this function, it passes a JSON payload, which
+the function receives as input. This payload contains a \code{clientMetadata}
+attribute, which provides the data that you assigned to the
+ClientMetadata parameter in your AdminCreateUser request. In your
+function code in Lambda, you can process the \code{clientMetadata} value to
+enhance your workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing User Pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-Take the following limitations into consideration when you use the
-ClientMetadata parameter:
+When you use the ClientMetadata parameter, remember that Amazon Cognito
+won't do the following:
 \itemize{
-\item Amazon Cognito does not store the ClientMetadata value. This data is
-available only to AWS Lambda triggers that are assigned to a user
-pool to support custom workflows. If your user pool configuration
-does not include triggers, the ClientMetadata parameter serves no
-purpose.
-\item Amazon Cognito does not validate the ClientMetadata value.
-\item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don't use it to provide sensitive information.
+\item Store the ClientMetadata value. This data is available only to
+Lambda triggers that are assigned to a user pool to support custom
+workflows. If your user pool configuration doesn't include triggers,
+the ClientMetadata parameter serves no purpose.
+\item Validate the ClientMetadata value.
+\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
+provide sensitive information.
 }}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  User = list(
-    Username = "string",
-    Attributes = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    UserCreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    UserLastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    Enabled = TRUE|FALSE,
-    UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
-    MFAOptions = list(
-      list(
-        DeliveryMedium = "SMS"|"EMAIL",
-        AttributeName = "string"
-      )
-    )
-  )
-)
-}
 }
 \description{
 Creates a new user in the specified user pool.
 
-If \code{MessageAction} is not set, the default is to send a welcome message
-via email or phone (SMS).
-
-This message is based on a template that you configured in your call to
-create or update a user pool. This template includes your custom sign-up
-instructions and placeholders for user name and temporary password.
-
-Alternatively, you can call
-\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}} with
-“SUPPRESS” for the \code{MessageAction} parameter, and Amazon Cognito will
-not send any email.
-
-In either case, the user will be in the \code{FORCE_CHANGE_PASSWORD} state
-until they sign in and change their password.
-
-\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}
-requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_create_user.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_create_user(
-  UserPoolId = "string",
-  Username = "string",
-  UserAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ValidationData = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  TemporaryPassword = "string",
-  ForceAliasCreation = TRUE|FALSE,
-  MessageAction = "RESEND"|"SUPPRESS",
-  DesiredDeliveryMediums = list(
-    "SMS"|"EMAIL"
-  ),
-  ClientMetadata = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

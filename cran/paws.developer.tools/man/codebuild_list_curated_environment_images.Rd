@@ -2,40 +2,13 @@
 % Please edit documentation in R/codebuild_operations.R
 \name{codebuild_list_curated_environment_images}
 \alias{codebuild_list_curated_environment_images}
-\title{Gets information about Docker images that are managed by AWS CodeBuild}
+\title{Gets information about Docker images that are managed by CodeBuild}
 \usage{
 codebuild_list_curated_environment_images()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  platforms = list(
-    list(
-      platform = "DEBIAN"|"AMAZON_LINUX"|"UBUNTU"|"WINDOWS_SERVER",
-      languages = list(
-        list(
-          language = "JAVA"|"PYTHON"|"NODE_JS"|"RUBY"|"GOLANG"|"DOCKER"|"ANDROID"|"DOTNET"|"BASE"|"PHP",
-          images = list(
-            list(
-              name = "string",
-              description = "string",
-              versions = list(
-                "string"
-              )
-            )
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Gets information about Docker images that are managed by AWS CodeBuild.
-}
-\section{Request syntax}{
-\preformatted{svc$list_curated_environment_images()
-}
-}
+Gets information about Docker images that are managed by CodeBuild.
 
+See \url{https://paws-r.github.io/docs/codebuild/list_curated_environment_images.html} for full documentation.
+}
 \keyword{internal}

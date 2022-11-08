@@ -2,18 +2,34 @@
 % Please edit documentation in R/batch_operations.R
 \name{batch_create_job_queue}
 \alias{batch_create_job_queue}
-\title{Creates an AWS Batch job queue}
+\title{Creates an Batch job queue}
 \usage{
-batch_create_job_queue(jobQueueName, state, priority,
-  computeEnvironmentOrder, tags)
+batch_create_job_queue(
+  jobQueueName,
+  state = NULL,
+  schedulingPolicyArn = NULL,
+  priority,
+  computeEnvironmentOrder,
+  tags = NULL
+)
 }
 \arguments{
-\item{jobQueueName}{[required] The name of the job queue. Up to 128 letters (uppercase and lowercase),
-numbers, and underscores are allowed.}
+\item{jobQueueName}{[required] The name of the job queue. It can be up to 128 letters long. It can
+contain uppercase and lowercase letters, numbers, hyphens (-), and
+underscores (_).}
 
 \item{state}{The state of the job queue. If the job queue state is \code{ENABLED}, it is
 able to accept jobs. If the job queue state is \code{DISABLED}, new jobs
 can't be added to the queue, but jobs already in the queue can finish.}
+
+\item{schedulingPolicyArn}{The Amazon Resource Name (ARN) of the fair share scheduling policy. If
+this parameter is specified, the job queue uses a fair share scheduling
+policy. If this parameter isn't specified, the job queue uses a first
+in, first out (FIFO) scheduling policy. After a job queue is created,
+you can replace but can't remove the fair share scheduling policy. The
+format is \code{aws:Partition:batch:Region:Account:scheduling-policy/Name }.
+An example is
+\code{aws:aws:batch:us-west-2:012345678910:scheduling-policy/MySchedulingPolicy}.}
 
 \item{priority}{[required] The priority of the job queue. Job queues with a higher priority (or a
 higher integer value for the \code{priority} parameter) are evaluated first
@@ -22,11 +38,11 @@ determined in descending order. For example, a job queue with a priority
 value of \code{10} is given scheduling preference over a job queue with a
 priority value of \code{1}. All of the compute environments must be either
 EC2 (\code{EC2} or \code{SPOT}) or Fargate (\code{FARGATE} or \code{FARGATE_SPOT}); EC2 and
-Fargate compute environments cannot be mixed.}
+Fargate compute environments can't be mixed.}
 
 \item{computeEnvironmentOrder}{[required] The set of compute environments mapped to a job queue and their order
 relative to each other. The job scheduler uses this parameter to
-determine which compute environment should run a specific job. Compute
+determine which compute environment runs a specific job. Compute
 environments must be in the \code{VALID} state before you can associate them
 with a job queue. You can associate up to three compute environments
 with a job queue. All of the compute environments must be either EC2
@@ -34,85 +50,17 @@ with a job queue. All of the compute environments must be either EC2
 Fargate compute environments can't be mixed.
 
 All compute environments that are associated with a job queue must share
-the same architecture. AWS Batch doesn't support mixing compute
-environment architecture types in a single job queue.}
+the same architecture. Batch doesn't support mixing compute environment
+architecture types in a single job queue.}
 
 \item{tags}{The tags that you apply to the job queue to help you categorize and
 organize your resources. Each tag consists of a key and an optional
-value. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html}{Tagging your AWS Batch resources}
-in \emph{AWS Batch User Guide}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  jobQueueName = "string",
-  jobQueueArn = "string"
-)
-}
+value. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html}{Tagging your Batch resources}
+in \emph{Batch User Guide}.}
 }
 \description{
-Creates an AWS Batch job queue. When you create a job queue, you
-associate one or more compute environments to the queue and assign an
-order of preference for the compute environments.
+Creates an Batch job queue. When you create a job queue, you associate one or more compute environments to the queue and assign an order of preference for the compute environments.
 
-You also set a priority to the job queue that determines the order in
-which the AWS Batch scheduler places jobs onto its associated compute
-environments. For example, if a compute environment is associated with
-more than one job queue, the job queue with a higher priority is given
-preference for scheduling jobs to that compute environment.
-}
-\section{Request syntax}{
-\preformatted{svc$create_job_queue(
-  jobQueueName = "string",
-  state = "ENABLED"|"DISABLED",
-  priority = 123,
-  computeEnvironmentOrder = list(
-    list(
-      order = 123,
-      computeEnvironment = "string"
-    )
-  ),
-  tags = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates a job queue called LowPriority that uses the M4Spot
-# compute environment.
-svc$create_job_queue(
-  computeEnvironmentOrder = list(
-    list(
-      computeEnvironment = "M4Spot",
-      order = 1L
-    )
-  ),
-  jobQueueName = "LowPriority",
-  priority = 1L,
-  state = "ENABLED"
-)
-
-# This example creates a job queue called HighPriority that uses the
-# C4OnDemand compute environment with an order of 1 and the M4Spot compute
-# environment with an order of 2.
-svc$create_job_queue(
-  computeEnvironmentOrder = list(
-    list(
-      computeEnvironment = "C4OnDemand",
-      order = 1L
-    ),
-    list(
-      computeEnvironment = "M4Spot",
-      order = 2L
-    )
-  ),
-  jobQueueName = "HighPriority",
-  priority = 10L,
-  state = "ENABLED"
-)
-}
-
+See \url{https://paws-r.github.io/docs/batch/create_job_queue.html} for full documentation.
 }
 \keyword{internal}

@@ -2,97 +2,33 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_revoke_snapshot_access}
 \alias{redshift_revoke_snapshot_access}
-\title{Removes the ability of the specified AWS customer account to restore the
-specified snapshot}
+\title{Removes the ability of the specified Amazon Web Services account to
+restore the specified snapshot}
 \usage{
-redshift_revoke_snapshot_access(SnapshotIdentifier,
-  SnapshotClusterIdentifier, AccountWithRestoreAccess)
+redshift_revoke_snapshot_access(
+  SnapshotIdentifier = NULL,
+  SnapshotArn = NULL,
+  SnapshotClusterIdentifier = NULL,
+  AccountWithRestoreAccess
+)
 }
 \arguments{
-\item{SnapshotIdentifier}{[required] The identifier of the snapshot that the account can no longer access.}
+\item{SnapshotIdentifier}{The identifier of the snapshot that the account can no longer access.}
+
+\item{SnapshotArn}{The Amazon Resource Name (ARN) of the snapshot associated with the
+message to revoke access.}
 
 \item{SnapshotClusterIdentifier}{The identifier of the cluster the snapshot was created from. This
 parameter is required if your IAM user has a policy containing a
 snapshot resource element that specifies anything other than * for the
 cluster name.}
 
-\item{AccountWithRestoreAccess}{[required] The identifier of the AWS customer account that can no longer restore
-the specified snapshot.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Snapshot = list(
-    SnapshotIdentifier = "string",
-    ClusterIdentifier = "string",
-    SnapshotCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Status = "string",
-    Port = 123,
-    AvailabilityZone = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MasterUsername = "string",
-    ClusterVersion = "string",
-    EngineFullVersion = "string",
-    SnapshotType = "string",
-    NodeType = "string",
-    NumberOfNodes = 123,
-    DBName = "string",
-    VpcId = "string",
-    Encrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    EncryptedWithHSM = TRUE|FALSE,
-    AccountsWithRestoreAccess = list(
-      list(
-        AccountId = "string",
-        AccountAlias = "string"
-      )
-    ),
-    OwnerAccount = "string",
-    TotalBackupSizeInMegaBytes = 123.0,
-    ActualIncrementalBackupSizeInMegaBytes = 123.0,
-    BackupProgressInMegaBytes = 123.0,
-    CurrentBackupRateInMegaBytesPerSecond = 123.0,
-    EstimatedSecondsToCompletion = 123,
-    ElapsedTimeInSeconds = 123,
-    SourceRegion = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    RestorableNodeTypes = list(
-      "string"
-    ),
-    EnhancedVpcRouting = TRUE|FALSE,
-    MaintenanceTrackName = "string",
-    ManualSnapshotRetentionPeriod = 123,
-    ManualSnapshotRemainingDays = 123,
-    SnapshotRetentionStartTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
+\item{AccountWithRestoreAccess}{[required] The identifier of the Amazon Web Services account that can no longer
+restore the specified snapshot.}
 }
 \description{
-Removes the ability of the specified AWS customer account to restore the
-specified snapshot. If the account is currently restoring the snapshot,
-the restore will run to completion.
+Removes the ability of the specified Amazon Web Services account to restore the specified snapshot. If the account is currently restoring the snapshot, the restore will run to completion.
 
-For more information about working with snapshots, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/revoke_snapshot_access.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$revoke_snapshot_access(
-  SnapshotIdentifier = "string",
-  SnapshotClusterIdentifier = "string",
-  AccountWithRestoreAccess = "string"
-)
-}
-}
-
 \keyword{internal}

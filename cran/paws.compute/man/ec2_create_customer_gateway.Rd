@@ -2,18 +2,27 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_create_customer_gateway}
 \alias{ec2_create_customer_gateway}
-\title{Provides information to AWS about your VPN customer gateway device}
+\title{Provides information to Amazon Web Services about your customer gateway
+device}
 \usage{
-ec2_create_customer_gateway(BgpAsn, PublicIp, CertificateArn, Type,
-  TagSpecifications, DeviceName, DryRun)
+ec2_create_customer_gateway(
+  BgpAsn,
+  PublicIp = NULL,
+  CertificateArn = NULL,
+  Type,
+  TagSpecifications = NULL,
+  DeviceName = NULL,
+  IpAddress = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{BgpAsn}{[required] For devices that support BGP, the customer gateway's BGP ASN.
 
 Default: 65000}
 
-\item{PublicIp}{The Internet-routable IP address for the customer gateway's outside
-interface. The address must be static.}
+\item{PublicIp}{\emph{This member has been deprecated.} The Internet-routable IP address for
+the customer gateway's outside interface. The address must be static.}
 
 \item{CertificateArn}{The Amazon Resource Name (ARN) for the customer gateway certificate.}
 
@@ -26,94 +35,17 @@ interface. The address must be static.}
 
 Length Constraints: Up to 255 characters.}
 
+\item{IpAddress}{IPv4 address for the customer gateway device's outside interface. The
+address must be static.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CustomerGateway = list(
-    BgpAsn = "string",
-    CustomerGatewayId = "string",
-    IpAddress = "string",
-    CertificateArn = "string",
-    State = "string",
-    Type = "string",
-    DeviceName = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Provides information to AWS about your VPN customer gateway device. The
-customer gateway is the appliance at your end of the VPN connection.
-(The device on the AWS side of the VPN connection is the virtual private
-gateway.) You must provide the internet-routable IP address of the
-customer gateway's external interface. The IP address must be static and
-can be behind a device performing network address translation (NAT).
+Provides information to Amazon Web Services about your customer gateway device. The customer gateway device is the appliance at your end of the VPN connection. You must provide the IP address of the customer gateway device’s external interface. The IP address must be static and can be behind a device performing network address translation (NAT).
 
-For devices that use Border Gateway Protocol (BGP), you can also provide
-the device's BGP Autonomous System Number (ASN). You can use an existing
-ASN assigned to your network. If you don't have an ASN already, you can
-use a private ASN (in the 64512 - 65534 range).
-
-Amazon EC2 supports all 4-byte ASN numbers in the range of 1 -
-2147483647, with the exception of the following:
-\itemize{
-\item 7224 - reserved in the \code{us-east-1} Region
-\item 9059 - reserved in the \code{eu-west-1} Region
-\item 17943 - reserved in the \code{ap-southeast-1} Region
-\item 10124 - reserved in the \code{ap-northeast-1} Region
-}
-
-For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
-\emph{AWS Site-to-Site VPN User Guide}.
-
-To create more than one customer gateway with the same VPN type, IP
-address, and BGP ASN, specify a unique device name for each customer
-gateway. Identical requests return information about the existing
-customer gateway and do not create new customer gateways.
-}
-\section{Request syntax}{
-\preformatted{svc$create_customer_gateway(
-  BgpAsn = 123,
-  PublicIp = "string",
-  CertificateArn = "string",
-  Type = "ipsec.1",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DeviceName = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates a customer gateway with the specified IP address
-# for its outside interface.
-svc$create_customer_gateway(
-  BgpAsn = 65534L,
-  PublicIp = "12.1.2.3",
-  Type = "ipsec.1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/create_customer_gateway.html} for full documentation.
 }
 \keyword{internal}

@@ -4,8 +4,13 @@
 \alias{ec2_describe_traffic_mirror_targets}
 \title{Information about one or more Traffic Mirror targets}
 \usage{
-ec2_describe_traffic_mirror_targets(TrafficMirrorTargetIds, DryRun,
-  Filters, MaxResults, NextToken)
+ec2_describe_traffic_mirror_targets(
+  TrafficMirrorTargetIds = NULL,
+  DryRun = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{TrafficMirrorTargetIds}{The ID of the Traffic Mirror targets.}
@@ -33,49 +38,9 @@ value.}
 
 \item{NextToken}{The token for the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficMirrorTargets = list(
-    list(
-      TrafficMirrorTargetId = "string",
-      NetworkInterfaceId = "string",
-      NetworkLoadBalancerArn = "string",
-      Type = "network-interface"|"network-load-balancer",
-      Description = "string",
-      OwnerId = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Information about one or more Traffic Mirror targets.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_traffic_mirror_targets(
-  TrafficMirrorTargetIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_traffic_mirror_targets.html} for full documentation.
+}
 \keyword{internal}

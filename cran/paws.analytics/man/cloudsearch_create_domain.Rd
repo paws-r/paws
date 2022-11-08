@@ -12,42 +12,9 @@ cloudsearch_create_domain(DomainName)
 a letter or number and be at least 3 and no more than 28 characters
 long.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DomainStatus = list(
-    DomainId = "string",
-    DomainName = "string",
-    ARN = "string",
-    Created = TRUE|FALSE,
-    Deleted = TRUE|FALSE,
-    DocService = list(
-      Endpoint = "string"
-    ),
-    SearchService = list(
-      Endpoint = "string"
-    ),
-    RequiresIndexDocuments = TRUE|FALSE,
-    Processing = TRUE|FALSE,
-    SearchInstanceType = "string",
-    SearchPartitionCount = 123,
-    SearchInstanceCount = 123,
-    Limits = list(
-      MaximumReplicationCount = 123,
-      MaximumPartitionCount = 123
-    )
-  )
-)
-}
-}
 \description{
-Creates a new search domain. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html}{Creating a Search Domain}
-in the \emph{Amazon CloudSearch Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_domain(
-  DomainName = "string"
-)
-}
-}
+Creates a new search domain. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html" target="_blank">Creating a Search Domain</a> in the \emph{Amazon CloudSearch Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/cloudsearch/create_domain.html} for full documentation.
+}
 \keyword{internal}

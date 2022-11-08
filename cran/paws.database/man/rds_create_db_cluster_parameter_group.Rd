@@ -4,15 +4,19 @@
 \alias{rds_create_db_cluster_parameter_group}
 \title{Creates a new DB cluster parameter group}
 \usage{
-rds_create_db_cluster_parameter_group(DBClusterParameterGroupName,
-  DBParameterGroupFamily, Description, Tags)
+rds_create_db_cluster_parameter_group(
+  DBClusterParameterGroupName,
+  DBParameterGroupFamily,
+  Description,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group.
 
 Constraints:
 \itemize{
-\item Must match the name of an existing DB cluster parameter group.
+\item Must not match the name of an existing DB cluster parameter group.
 }
 
 This value is stored as a lowercase string.}
@@ -25,76 +29,49 @@ group family.
 
 \strong{Aurora MySQL}
 
-Example: \code{aurora5.6}, \code{aurora-mysql5.7}
+Example: \code{aurora5.6}, \code{aurora-mysql5.7}, \code{aurora-mysql8.0}
 
 \strong{Aurora PostgreSQL}
 
-Example: \code{aurora-postgresql9.6}}
+Example: \code{aurora-postgresql9.6}
+
+\strong{RDS for MySQL}
+
+Example: \code{mysql8.0}
+
+\strong{RDS for PostgreSQL}
+
+Example: \code{postgres12}
+
+To list all of the available parameter group families for a DB engine,
+use the following command:
+
+\verb{aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily" --engine <engine>}
+
+For example, to list all of the available parameter group families for
+the Aurora PostgreSQL DB engine, use the following command:
+
+\verb{aws rds describe-db-engine-versions --query "DBEngineVersions[].DBParameterGroupFamily" --engine aurora-postgresql}
+
+The output contains duplicates.
+
+The following are the valid DB engine values:
+\itemize{
+\item \code{aurora} (for MySQL 5.6-compatible Aurora)
+\item \code{aurora-mysql} (for MySQL 5.7-compatible and MySQL 8.0-compatible
+Aurora)
+\item \code{aurora-postgresql}
+\item \code{mysql}
+\item \code{postgres}
+}}
 
 \item{Description}{[required] The description for the DB cluster parameter group.}
 
 \item{Tags}{Tags to assign to the DB cluster parameter group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterParameterGroup = list(
-    DBClusterParameterGroupName = "string",
-    DBParameterGroupFamily = "string",
-    Description = "string",
-    DBClusterParameterGroupArn = "string"
-  )
-)
-}
-}
 \description{
 Creates a new DB cluster parameter group.
 
-Parameters in a DB cluster parameter group apply to all of the instances
-in a DB cluster.
-
-A DB cluster parameter group is initially created with the default
-parameters for the database engine used by instances in the DB cluster.
-To provide custom values for any of the parameters, you must modify the
-group after creating it using
-\code{\link[=rds_modify_db_cluster_parameter_group]{modify_db_cluster_parameter_group}}.
-Once you've created a DB cluster parameter group, you need to associate
-it with your DB cluster using
-\code{\link[=rds_modify_db_cluster]{modify_db_cluster}}. When you associate a new
-DB cluster parameter group with a running DB cluster, you need to reboot
-the DB instances in the DB cluster without failover for the new DB
-cluster parameter group and associated settings to take effect.
-
-After you create a DB cluster parameter group, you should wait at least
-5 minutes before creating your first DB cluster that uses that DB
-cluster parameter group as the default parameter group. This allows
-Amazon RDS to fully complete the create action before the DB cluster
-parameter group is used as the default for a new DB cluster. This is
-especially important for parameters that are critical when creating the
-default database for a DB cluster, such as the character set for the
-default database defined by the \code{character_set_database} parameter. You
-can use the \emph{Parameter Groups} option of the Amazon RDS console or the
-\code{\link[=rds_describe_db_cluster_parameters]{describe_db_cluster_parameters}}
-action to verify that your DB cluster parameter group has been created
-or modified.
-
-For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
-in the \emph{Amazon Aurora User Guide.}
-
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/create_db_cluster_parameter_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_db_cluster_parameter_group(
-  DBClusterParameterGroupName = "string",
-  DBParameterGroupFamily = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

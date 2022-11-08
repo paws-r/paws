@@ -4,8 +4,11 @@
 \alias{storagegateway_assign_tape_pool}
 \title{Assigns a tape to a tape pool for archiving}
 \usage{
-storagegateway_assign_tape_pool(TapeARN, PoolId,
-  BypassGovernanceRetention)
+storagegateway_assign_tape_pool(
+  TapeARN,
+  PoolId,
+  BypassGovernanceRetention = NULL
+)
 }
 \arguments{
 \item{TapeARN}{[required] The unique Amazon Resource Name (ARN) of the virtual tape that you want
@@ -15,9 +18,7 @@ to add to the tape pool.}
 tape in this pool is archived in the S3 storage class that is associated
 with the pool. When you use your backup application to eject the tape,
 the tape is archived directly into the storage class (S3 Glacier or S3
-Glacier Deep Archive) that corresponds to the pool.
-
-Valid Values: \code{GLACIER} | \code{DEEP_ARCHIVE}}
+Glacier Deep Archive) that corresponds to the pool.}
 
 \item{BypassGovernanceRetention}{Set permissions to bypass governance retention. If the lock type of the
 archived tape is \code{Governance}, the tape's archived age is not older than
@@ -28,28 +29,9 @@ calls from the console.
 
 Valid values: \code{TRUE} | \code{FALSE}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TapeARN = "string"
-)
-}
-}
 \description{
-Assigns a tape to a tape pool for archiving. The tape assigned to a pool
-is archived in the S3 storage class that is associated with the pool.
-When you use your backup application to eject the tape, the tape is
-archived directly into the S3 storage class (S3 Glacier or S3 Glacier
-Deep Archive) that corresponds to the pool.
+Assigns a tape to a tape pool for archiving. The tape assigned to a pool is archived in the S3 storage class that is associated with the pool. When you use your backup application to eject the tape, the tape is archived directly into the S3 storage class (S3 Glacier or S3 Glacier Deep Archive) that corresponds to the pool.
 
-Valid Values: \code{GLACIER} | \code{DEEP_ARCHIVE}
+See \url{https://paws-r.github.io/docs/storagegateway/assign_tape_pool.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$assign_tape_pool(
-  TapeARN = "string",
-  PoolId = "string",
-  BypassGovernanceRetention = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

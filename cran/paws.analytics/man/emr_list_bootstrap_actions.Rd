@@ -5,38 +5,16 @@
 \title{Provides information about the bootstrap actions associated with a
 cluster}
 \usage{
-emr_list_bootstrap_actions(ClusterId, Marker)
+emr_list_bootstrap_actions(ClusterId, Marker = NULL)
 }
 \arguments{
 \item{ClusterId}{[required] The cluster identifier for the bootstrap actions to list.}
 
 \item{Marker}{The pagination token that indicates the next set of results to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BootstrapActions = list(
-    list(
-      Name = "string",
-      ScriptPath = "string",
-      Args = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Provides information about the bootstrap actions associated with a
-cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$list_bootstrap_actions(
-  ClusterId = "string",
-  Marker = "string"
-)
-}
-}
+Provides information about the bootstrap actions associated with a cluster.
 
+See \url{https://paws-r.github.io/docs/emr/list_bootstrap_actions.html} for full documentation.
+}
 \keyword{internal}

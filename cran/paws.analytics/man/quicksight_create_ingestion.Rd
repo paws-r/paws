@@ -2,42 +2,27 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_ingestion}
 \alias{quicksight_create_ingestion}
-\title{Creates and starts a new SPICE ingestion on a dataset}
+\title{Creates and starts a new SPICE ingestion for a dataset}
 \usage{
-quicksight_create_ingestion(DataSetId, IngestionId, AwsAccountId)
+quicksight_create_ingestion(
+  DataSetId,
+  IngestionId,
+  AwsAccountId,
+  IngestionType = NULL
+)
 }
 \arguments{
 \item{DataSetId}{[required] The ID of the dataset used in the ingestion.}
 
 \item{IngestionId}{[required] An ID for the ingestion.}
 
-\item{AwsAccountId}{[required] The AWS account ID.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  IngestionId = "string",
-  IngestionStatus = "INITIALIZED"|"QUEUED"|"RUNNING"|"FAILED"|"COMPLETED"|"CANCELLED",
-  RequestId = "string",
-  Status = 123
-)
-}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID.}
+
+\item{IngestionType}{The type of ingestion that you want to create.}
 }
 \description{
-Creates and starts a new SPICE ingestion on a dataset
+Creates and starts a new SPICE ingestion for a dataset. You can manually refresh datasets in an Enterprise edition account 32 times in a 24-hour period. You can manually refresh datasets in a Standard edition account 8 times in a 24-hour period. Each 24-hour period is measured starting 24 hours before the current date and time.
 
-Any ingestions operating on tagged datasets inherit the same tags
-automatically for use in access control. For an example, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/iam-ec2-resource-tags/}{How do I create an IAM policy to control access to Amazon EC2 resources using tags?}
-in the AWS Knowledge Center. Tags are visible on the tagged dataset, but
-not on the ingestion resource.
+See \url{https://paws-r.github.io/docs/quicksight/create_ingestion.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_ingestion(
-  DataSetId = "string",
-  IngestionId = "string",
-  AwsAccountId = "string"
-)
-}
-}
-
 \keyword{internal}

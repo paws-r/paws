@@ -15,30 +15,9 @@ underscores (_), or dashes (-).
 \item Contain less than 64 characters.
 }}
 }
-\value{
-An empty list.
-}
 \description{
 Creates an empty receipt rule set.
 
-For information about setting up receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$create_receipt_rule_set(
-  RuleSetName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example creates an empty receipt rule set:
-svc$create_receipt_rule_set(
-  RuleSetName = "MyRuleSet"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/create_receipt_rule_set.html} for full documentation.
 }
 \keyword{internal}

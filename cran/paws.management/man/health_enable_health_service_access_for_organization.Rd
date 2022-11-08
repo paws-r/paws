@@ -2,21 +2,13 @@
 % Please edit documentation in R/health_operations.R
 \name{health_enable_health_service_access_for_organization}
 \alias{health_enable_health_service_access_for_organization}
-\title{Calling this operation enables AWS Health to work with AWS Organizations}
+\title{Enables Health to work with Organizations}
 \usage{
 health_enable_health_service_access_for_organization()
 }
-\value{
-An empty list.
-}
 \description{
-Calling this operation enables AWS Health to work with AWS
-Organizations. This applies a service-linked role (SLR) to the master
-account in the organization. To call this operation, you must sign in as
-an IAM user, assume an IAM role, or sign in as the root user (not
-recommended) in the organization's master account.
+Enables Health to work with Organizations. You can use the organizational view feature to aggregate events from all Amazon Web Services accounts in your organization in a centralized location.
 
-For more information, see \href{https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html}{Aggregating AWS Health events}
-in the \emph{AWS Health User Guide}.
+See \url{https://paws-r.github.io/docs/health/enable_health_service_access_for_organization.html} for full documentation.
 }
 \keyword{internal}

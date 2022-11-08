@@ -4,7 +4,7 @@
 \alias{guardduty_list_ip_sets}
 \title{Lists the IPSets of the GuardDuty service specified by the detector ID}
 \usage{
-guardduty_list_ip_sets(DetectorId, MaxResults, NextToken)
+guardduty_list_ip_sets(DetectorId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector that the IPSet is associated with.}
@@ -17,27 +17,9 @@ this parameter to null on your first call to the list action. For
 subsequent calls to the action, fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IpSetIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the IPSets of the GuardDuty service specified by the detector ID.
-If you use this operation from a member account, the IPSets returned are
-the IPSets from the associated administrator account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_ip_sets(
-  DetectorId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Lists the IPSets of the GuardDuty service specified by the detector ID. If you use this operation from a member account, the IPSets returned are the IPSets from the associated administrator account.
 
+See \url{https://paws-r.github.io/docs/guardduty/list_ip_sets.html} for full documentation.
+}
 \keyword{internal}

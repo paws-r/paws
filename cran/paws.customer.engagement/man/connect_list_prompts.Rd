@@ -5,7 +5,7 @@
 \title{Provides information about the prompts for the specified Amazon Connect
 instance}
 \usage{
-connect_list_prompts(InstanceId, NextToken, MaxResults)
+connect_list_prompts(InstanceId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
@@ -16,30 +16,9 @@ results.}
 
 \item{MaxResults}{The maximum number of results to return per page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PromptSummaryList = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Name = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Provides information about the prompts for the specified Amazon Connect
-instance.
-}
-\section{Request syntax}{
-\preformatted{svc$list_prompts(
-  InstanceId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Provides information about the prompts for the specified Amazon Connect instance.
 
+See \url{https://paws-r.github.io/docs/connect/list_prompts.html} for full documentation.
+}
 \keyword{internal}

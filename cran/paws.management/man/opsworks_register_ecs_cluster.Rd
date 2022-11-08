@@ -11,28 +11,9 @@ opsworks_register_ecs_cluster(EcsClusterArn, StackId)
 
 \item{StackId}{[required] The stack ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EcsClusterArn = "string"
-)
-}
-}
 \description{
-Registers a specified Amazon ECS cluster with a stack. You can register
-only one cluster with a stack. A cluster can be registered with only one
-stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html}{Resource Management}.
+Registers a specified Amazon ECS cluster with a stack. You can register only one cluster with a stack. A cluster can be registered with only one stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html}{Resource Management}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/register_ecs_cluster.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$register_ecs_cluster(
-  EcsClusterArn = "string",
-  StackId = "string"
-)
-}
-}
-
 \keyword{internal}

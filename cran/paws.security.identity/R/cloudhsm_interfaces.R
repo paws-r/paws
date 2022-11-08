@@ -29,7 +29,7 @@ NULL
 
 .cloudhsm$create_hsm_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SubnetId = structure(logical(0), tags = list(locationName = "SubnetId", type = "string")), SshKey = structure(logical(0), tags = list(locationName = "SshKey", type = "string")), EniIp = structure(logical(0), tags = list(locationName = "EniIp", type = "string")), IamRoleArn = structure(logical(0), tags = list(locationName = "IamRoleArn", type = "string")), ExternalId = structure(logical(0), tags = list(locationName = "ExternalId", type = "string")), SubscriptionType = structure(logical(0), tags = list(locationName = "SubscriptionType", type = "string")), ClientToken = structure(logical(0), tags = list(locationName = "ClientToken", type = "string")), SyslogIp = structure(logical(0), tags = list(locationName = "SyslogIp", type = "string"))), tags = list(type = "structure", locationName = "CreateHsmRequest"))
+  shape <- structure(list(SubnetId = structure(logical(0), tags = list(type = "string")), SshKey = structure(logical(0), tags = list(type = "string")), EniIp = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), ExternalId = structure(logical(0), tags = list(type = "string")), SubscriptionType = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(type = "string")), SyslogIp = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -65,7 +65,7 @@ NULL
 
 .cloudhsm$delete_hsm_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HsmArn = structure(logical(0), tags = list(locationName = "HsmArn", type = "string"))), tags = list(type = "structure", locationName = "DeleteHsmRequest"))
+  shape <- structure(list(HsmArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -209,7 +209,7 @@ NULL
 
 .cloudhsm$modify_hsm_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(HsmArn = structure(logical(0), tags = list(locationName = "HsmArn", type = "string")), SubnetId = structure(logical(0), tags = list(locationName = "SubnetId", type = "string")), EniIp = structure(logical(0), tags = list(locationName = "EniIp", type = "string")), IamRoleArn = structure(logical(0), tags = list(locationName = "IamRoleArn", type = "string")), ExternalId = structure(logical(0), tags = list(locationName = "ExternalId", type = "string")), SyslogIp = structure(logical(0), tags = list(locationName = "SyslogIp", type = "string"))), tags = list(type = "structure", locationName = "ModifyHsmRequest"))
+  shape <- structure(list(HsmArn = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), EniIp = structure(logical(0), tags = list(type = "string")), IamRoleArn = structure(logical(0), tags = list(type = "string")), ExternalId = structure(logical(0), tags = list(type = "string")), SyslogIp = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

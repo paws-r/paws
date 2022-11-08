@@ -4,10 +4,19 @@
 \alias{sagemaker_update_trial_component}
 \title{Updates one or more properties of a trial component}
 \usage{
-sagemaker_update_trial_component(TrialComponentName, DisplayName,
-  Status, StartTime, EndTime, Parameters, ParametersToRemove,
-  InputArtifacts, InputArtifactsToRemove, OutputArtifacts,
-  OutputArtifactsToRemove)
+sagemaker_update_trial_component(
+  TrialComponentName,
+  DisplayName = NULL,
+  Status = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  Parameters = NULL,
+  ParametersToRemove = NULL,
+  InputArtifacts = NULL,
+  InputArtifactsToRemove = NULL,
+  OutputArtifacts = NULL,
+  OutputArtifactsToRemove = NULL
+)
 }
 \arguments{
 \item{TrialComponentName}{[required] The name of the component to update.}
@@ -37,58 +46,9 @@ artifacts.}
 
 \item{OutputArtifactsToRemove}{The output artifacts to remove from the component.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrialComponentArn = "string"
-)
-}
-}
 \description{
 Updates one or more properties of a trial component.
-}
-\section{Request syntax}{
-\preformatted{svc$update_trial_component(
-  TrialComponentName = "string",
-  DisplayName = "string",
-  Status = list(
-    PrimaryStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-    Message = "string"
-  ),
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Parameters = list(
-    list(
-      StringValue = "string",
-      NumberValue = 123.0
-    )
-  ),
-  ParametersToRemove = list(
-    "string"
-  ),
-  InputArtifacts = list(
-    list(
-      MediaType = "string",
-      Value = "string"
-    )
-  ),
-  InputArtifactsToRemove = list(
-    "string"
-  ),
-  OutputArtifacts = list(
-    list(
-      MediaType = "string",
-      Value = "string"
-    )
-  ),
-  OutputArtifactsToRemove = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_trial_component.html} for full documentation.
+}
 \keyword{internal}

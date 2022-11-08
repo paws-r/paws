@@ -14,40 +14,9 @@ want to retrieve.}
 \item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts that you want to
 describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Members = list(
-    list(
-      AccountId = "string",
-      DetectorId = "string",
-      MasterId = "string",
-      Email = "string",
-      RelationshipStatus = "string",
-      InvitedAt = "string",
-      UpdatedAt = "string"
-    )
-  ),
-  UnprocessedAccounts = list(
-    list(
-      AccountId = "string",
-      Result = "string"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves GuardDuty member accounts (of the current GuardDuty
-administrator account) specified by the account IDs.
-}
-\section{Request syntax}{
-\preformatted{svc$get_members(
-  DetectorId = "string",
-  AccountIds = list(
-    "string"
-  )
-)
-}
-}
+Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by the account IDs.
 
+See \url{https://paws-r.github.io/docs/guardduty/get_members.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{organizations_list_accounts}
 \title{Lists all the accounts in the organization}
 \usage{
-organizations_list_accounts(NextToken, MaxResults)
+organizations_list_accounts(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{The parameter for receiving additional results if you receive a
@@ -24,55 +24,9 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Accounts = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Email = "string",
-      Name = "string",
-      Status = "ACTIVE"|"SUSPENDED",
-      JoinedMethod = "INVITED"|"CREATED",
-      JoinedTimestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists all the accounts in the organization. To request only the accounts
-in a specified root or organizational unit (OU), use the
-\code{\link[=organizations_list_accounts_for_parent]{list_accounts_for_parent}}
-operation instead.
+Lists all the accounts in the organization. To request only the accounts in a specified root or organizational unit (OU), use the \code{\link[=organizations_list_accounts_for_parent]{list_accounts_for_parent}} operation instead.
 
-Always check the \code{NextToken} response parameter for a \code{null} value when
-calling a \verb{List*} operation. These operations can occasionally return an
-empty set of results even when there are more results available. The
-\code{NextToken} response parameter value is \code{null} \emph{only} when there are no
-more results to display.
-
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
-}
-\section{Request syntax}{
-\preformatted{svc$list_accounts(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows you how to request a list of the accounts in
-# an organization:
-svc$list_accounts()
-}
-
+See \url{https://paws-r.github.io/docs/organizations/list_accounts.html} for full documentation.
 }
 \keyword{internal}

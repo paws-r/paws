@@ -2,11 +2,19 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_list_restore_jobs}
 \alias{backup_list_restore_jobs}
-\title{Returns a list of jobs that AWS Backup initiated to restore a saved
-resource, including metadata about the recovery process}
+\title{Returns a list of jobs that Backup initiated to restore a saved
+resource, including details about the recovery process}
 \usage{
-backup_list_restore_jobs(NextToken, MaxResults, ByAccountId,
-  ByCreatedBefore, ByCreatedAfter, ByStatus)
+backup_list_restore_jobs(
+  NextToken = NULL,
+  MaxResults = NULL,
+  ByAccountId = NULL,
+  ByCreatedBefore = NULL,
+  ByCreatedAfter = NULL,
+  ByStatus = NULL,
+  ByCompleteBefore = NULL,
+  ByCompleteAfter = NULL
+)
 }
 \arguments{
 \item{NextToken}{The next item following a partial list of returned items. For example,
@@ -24,52 +32,16 @@ associated with the specified account ID.}
 \item{ByCreatedAfter}{Returns only restore jobs that were created after the specified date.}
 
 \item{ByStatus}{Returns only restore jobs associated with the specified job status.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  RestoreJobs = list(
-    list(
-      AccountId = "string",
-      RestoreJobId = "string",
-      RecoveryPointArn = "string",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      CompletionDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Status = "PENDING"|"RUNNING"|"COMPLETED"|"ABORTED"|"FAILED",
-      StatusMessage = "string",
-      PercentDone = "string",
-      BackupSizeInBytes = 123,
-      IamRoleArn = "string",
-      ExpectedCompletionTimeMinutes = 123,
-      CreatedResourceArn = "string",
-      ResourceType = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
+
+\item{ByCompleteBefore}{Returns only copy jobs completed before a date expressed in Unix format
+and Coordinated Universal Time (UTC).}
+
+\item{ByCompleteAfter}{Returns only copy jobs completed after a date expressed in Unix format
+and Coordinated Universal Time (UTC).}
 }
 \description{
-Returns a list of jobs that AWS Backup initiated to restore a saved
-resource, including metadata about the recovery process.
-}
-\section{Request syntax}{
-\preformatted{svc$list_restore_jobs(
-  NextToken = "string",
-  MaxResults = 123,
-  ByAccountId = "string",
-  ByCreatedBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  ByCreatedAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  ByStatus = "PENDING"|"RUNNING"|"COMPLETED"|"ABORTED"|"FAILED"
-)
-}
-}
+Returns a list of jobs that Backup initiated to restore a saved resource, including details about the recovery process.
 
+See \url{https://paws-r.github.io/docs/backup/list_restore_jobs.html} for full documentation.
+}
 \keyword{internal}

@@ -4,32 +4,14 @@
 \alias{kafka_get_compatible_kafka_versions}
 \title{Gets the Apache Kafka versions to which you can update the MSK cluster}
 \usage{
-kafka_get_compatible_kafka_versions(ClusterArn)
+kafka_get_compatible_kafka_versions(ClusterArn = NULL)
 }
 \arguments{
 \item{ClusterArn}{The Amazon Resource Name (ARN) of the cluster check.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CompatibleKafkaVersions = list(
-    list(
-      SourceVersion = "string",
-      TargetVersions = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets the Apache Kafka versions to which you can update the MSK cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$get_compatible_kafka_versions(
-  ClusterArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kafka/get_compatible_kafka_versions.html} for full documentation.
+}
 \keyword{internal}

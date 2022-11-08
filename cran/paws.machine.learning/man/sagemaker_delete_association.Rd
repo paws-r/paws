@@ -11,22 +11,9 @@ sagemaker_delete_association(SourceArn, DestinationArn)
 
 \item{DestinationArn}{[required] The Amazon Resource Name (ARN) of the destination.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SourceArn = "string",
-  DestinationArn = "string"
-)
-}
-}
 \description{
 Deletes an association.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_association(
-  SourceArn = "string",
-  DestinationArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_association.html} for full documentation.
+}
 \keyword{internal}

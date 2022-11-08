@@ -2,11 +2,15 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_certificates}
 \alias{rds_describe_certificates}
-\title{Lists the set of CA certificates provided by Amazon RDS for this AWS
-account}
+\title{Lists the set of CA certificates provided by Amazon RDS for this Amazon
+Web Services account}
 \usage{
-rds_describe_certificates(CertificateIdentifier, Filters, MaxRecords,
-  Marker)
+rds_describe_certificates(
+  CertificateIdentifier = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{CertificateIdentifier}{The user-supplied certificate identifier. If this parameter is
@@ -34,49 +38,9 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Certificates = list(
-    list(
-      CertificateIdentifier = "string",
-      CertificateType = "string",
-      Thumbprint = "string",
-      ValidFrom = as.POSIXct(
-        "2015-01-01"
-      ),
-      ValidTill = as.POSIXct(
-        "2015-01-01"
-      ),
-      CertificateArn = "string",
-      CustomerOverride = TRUE|FALSE,
-      CustomerOverrideValidTill = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Lists the set of CA certificates provided by Amazon RDS for this AWS
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_certificates(
-  CertificateIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Lists the set of CA certificates provided by Amazon RDS for this Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/rds/describe_certificates.html} for full documentation.
+}
 \keyword{internal}

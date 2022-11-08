@@ -4,11 +4,19 @@
 \alias{applicationinsights_create_application}
 \title{Adds an application that is created from a resource group}
 \usage{
-applicationinsights_create_application(ResourceGroupName,
-  OpsCenterEnabled, CWEMonitorEnabled, OpsItemSNSTopicArn, Tags)
+applicationinsights_create_application(
+  ResourceGroupName = NULL,
+  OpsCenterEnabled = NULL,
+  CWEMonitorEnabled = NULL,
+  OpsItemSNSTopicArn = NULL,
+  Tags = NULL,
+  AutoConfigEnabled = NULL,
+  AutoCreate = NULL,
+  GroupingType = NULL
+)
 }
 \arguments{
-\item{ResourceGroupName}{[required] The name of the resource group.}
+\item{ResourceGroupName}{The name of the resource group.}
 
 \item{OpsCenterEnabled}{When set to \code{true}, creates opsItems for any problems detected on an
 application.}
@@ -24,37 +32,20 @@ opsItem.}
 \item{Tags}{List of tags to add to the application. tag key (\code{Key}) and an
 associated tag value (\code{Value}). The maximum length of a tag key is 128
 characters. The maximum length of a tag value is 256 characters.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationInfo = list(
-    ResourceGroupName = "string",
-    LifeCycle = "string",
-    OpsItemSNSTopicArn = "string",
-    OpsCenterEnabled = TRUE|FALSE,
-    CWEMonitorEnabled = TRUE|FALSE,
-    Remarks = "string"
-  )
-)
-}
+
+\item{AutoConfigEnabled}{Indicates whether Application Insights automatically configures
+unmonitored resources in the resource group.}
+
+\item{AutoCreate}{Configures all of the resources in the resource group by applying the
+recommended configurations.}
+
+\item{GroupingType}{Application Insights can create applications based on a resource group
+or on an account. To create an account-based application using all of
+the resources in the account, set this parameter to \code{ACCOUNT_BASED}.}
 }
 \description{
 Adds an application that is created from a resource group.
-}
-\section{Request syntax}{
-\preformatted{svc$create_application(
-  ResourceGroupName = "string",
-  OpsCenterEnabled = TRUE|FALSE,
-  CWEMonitorEnabled = TRUE|FALSE,
-  OpsItemSNSTopicArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/applicationinsights/create_application.html} for full documentation.
+}
 \keyword{internal}

@@ -6,7 +6,10 @@
 quota request template}
 \usage{
 servicequotas_get_service_quota_increase_request_from_template(
-  ServiceCode, QuotaCode, AwsRegion)
+  ServiceCode,
+  QuotaCode,
+  AwsRegion
+)
 }
 \arguments{
 \item{ServiceCode}{[required] The service identifier.}
@@ -15,32 +18,9 @@ servicequotas_get_service_quota_increase_request_from_template(
 
 \item{AwsRegion}{[required] The AWS Region.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceQuotaIncreaseRequestInTemplate = list(
-    ServiceCode = "string",
-    ServiceName = "string",
-    QuotaCode = "string",
-    QuotaName = "string",
-    DesiredValue = 123.0,
-    AwsRegion = "string",
-    Unit = "string",
-    GlobalQuota = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Retrieves information about the specified quota increase request in your
-quota request template.
-}
-\section{Request syntax}{
-\preformatted{svc$get_service_quota_increase_request_from_template(
-  ServiceCode = "string",
-  QuotaCode = "string",
-  AwsRegion = "string"
-)
-}
-}
+Retrieves information about the specified quota increase request in your quota request template.
 
+See \url{https://paws-r.github.io/docs/servicequotas/get_service_quota_increase_request_from_template.html} for full documentation.
+}
 \keyword{internal}

@@ -2,23 +2,15 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_delete_notification_channel}
 \alias{fms_delete_notification_channel}
-\title{Deletes an AWS Firewall Manager association with the IAM role and the
-Amazon Simple Notification Service (SNS) topic that is used to record
-AWS Firewall Manager SNS logs}
+\title{Deletes an Firewall Manager association with the IAM role and the Amazon
+Simple Notification Service (SNS) topic that is used to record Firewall
+Manager SNS logs}
 \usage{
 fms_delete_notification_channel()
 }
-\value{
-An empty list.
-}
 \description{
-Deletes an AWS Firewall Manager association with the IAM role and the
-Amazon Simple Notification Service (SNS) topic that is used to record
-AWS Firewall Manager SNS logs.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_notification_channel()
-}
-}
+Deletes an Firewall Manager association with the IAM role and the Amazon Simple Notification Service (SNS) topic that is used to record Firewall Manager SNS logs.
 
+See \url{https://paws-r.github.io/docs/fms/delete_notification_channel.html} for full documentation.
+}
 \keyword{internal}

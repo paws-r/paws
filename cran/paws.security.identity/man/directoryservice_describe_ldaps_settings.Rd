@@ -4,8 +4,12 @@
 \alias{directoryservice_describe_ldaps_settings}
 \title{Describes the status of LDAP security for the specified directory}
 \usage{
-directoryservice_describe_ldaps_settings(DirectoryId, Type, NextToken,
-  Limit)
+directoryservice_describe_ldaps_settings(
+  DirectoryId,
+  Type = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory.}
@@ -17,32 +21,9 @@ is supported.}
 
 \item{Limit}{Specifies the number of items that should be displayed on one page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LDAPSSettingsInfo = list(
-    list(
-      LDAPSStatus = "Enabling"|"Enabled"|"EnableFailed"|"Disabled",
-      LDAPSStatusReason = "string",
-      LastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the status of LDAP security for the specified directory.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_ldaps_settings(
-  DirectoryId = "string",
-  Type = "Client",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/describe_ldaps_settings.html} for full documentation.
+}
 \keyword{internal}

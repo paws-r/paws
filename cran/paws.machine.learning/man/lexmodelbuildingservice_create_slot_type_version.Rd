@@ -5,7 +5,7 @@
 \title{Creates a new version of a slot type based on the $LATEST version of the
 specified slot type}
 \usage{
-lexmodelbuildingservice_create_slot_type_version(name, checksum)
+lexmodelbuildingservice_create_slot_type_version(name, checksum = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the slot type that you want to create a new version for. The
@@ -18,64 +18,9 @@ type has a different checksum, Amazon Lex returns a
 version. If you don't specify a checksum, Amazon Lex publishes the
 \verb{$LATEST} version.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  name = "string",
-  description = "string",
-  enumerationValues = list(
-    list(
-      value = "string",
-      synonyms = list(
-        "string"
-      )
-    )
-  ),
-  lastUpdatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  version = "string",
-  checksum = "string",
-  valueSelectionStrategy = "ORIGINAL_VALUE"|"TOP_RESOLUTION",
-  parentSlotTypeSignature = "string",
-  slotTypeConfigurations = list(
-    list(
-      regexConfiguration = list(
-        pattern = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a new version of a slot type based on the \verb{$LATEST} version of
-the specified slot type. If the \verb{$LATEST} version of this resource has
-not changed since the last version that you created, Amazon Lex doesn't
-create a new version. It returns the last version that you created.
+Creates a new version of a slot type based on the \verb{$LATEST} version of the specified slot type. If the \verb{$LATEST} version of this resource has not changed since the last version that you created, Amazon Lex doesn't create a new version. It returns the last version that you created.
 
-You can update only the \verb{$LATEST} version of a slot type. You can't
-update the numbered versions that you create with the
-\code{\link[=lexmodelbuildingservice_create_slot_type_version]{create_slot_type_version}}
-operation.
-
-When you create a version of a slot type, Amazon Lex sets the version to
-\enumerate{
-\item Subsequent versions increment by 1. For more information, see
-versioning-intro.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/create_slot_type_version.html} for full documentation.
 }
-
-This operation requires permissions for the \code{lex:CreateSlotTypeVersion}
-action.
-}
-\section{Request syntax}{
-\preformatted{svc$create_slot_type_version(
-  name = "string",
-  checksum = "string"
-)
-}
-}
-
 \keyword{internal}

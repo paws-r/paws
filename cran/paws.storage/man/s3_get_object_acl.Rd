@@ -4,20 +4,25 @@
 \alias{s3_get_object_acl}
 \title{Returns the access control list (ACL) of an object}
 \usage{
-s3_get_object_acl(Bucket, Key, VersionId, RequestPayer,
-  ExpectedBucketOwner)
+s3_get_object_acl(
+  Bucket,
+  Key,
+  VersionId = NULL,
+  RequestPayer = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name that contains the object for which to get the ACL
 information.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see Using access
+points in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] The key of the object for which to get the ACL information.}
 
@@ -25,71 +30,13 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Owner = list(
-    DisplayName = "string",
-    ID = "string"
-  ),
-  Grants = list(
-    list(
-      Grantee = list(
-        DisplayName = "string",
-        EmailAddress = "string",
-        ID = "string",
-        Type = "CanonicalUser"|"AmazonCustomerByEmail"|"Group",
-        URI = "string"
-      ),
-      Permission = "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
-    )
-  ),
-  RequestCharged = "requester"
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns the access control list (ACL) of an object. To use this
-operation, you must have \code{READ_ACP} access to the object.
+Returns the access control list (ACL) of an object. To use this operation, you must have \code{s3:GetObjectAcl} permissions or \code{READ_ACP} access to the object. For more information, see Mapping of ACL permissions and access policy permissions in the \emph{Amazon S3 User Guide}
 
-This action is not supported by Amazon S3 on Outposts.
-
-\strong{Versioning}
-
-By default, GET returns ACL information about the current version of an
-object. To return ACL information about a different version, use the
-versionId subresource.
-
-The following operations are related to
-\code{\link[=s3_get_object_acl]{get_object_acl}}:
-\itemize{
-\item \code{\link[=s3_get_object]{get_object}}
-\item \code{\link[=s3_delete_object]{delete_object}}
-\item \code{\link[=s3_put_object]{put_object}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$get_object_acl(
-  Bucket = "string",
-  Key = "string",
-  VersionId = "string",
-  RequestPayer = "requester",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example retrieves access control list (ACL) of an object.
-svc$get_object_acl(
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/get_object_acl.html} for full documentation.
 }
 \keyword{internal}

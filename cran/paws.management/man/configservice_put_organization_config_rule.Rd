@@ -2,107 +2,49 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_put_organization_config_rule}
 \alias{configservice_put_organization_config_rule}
-\title{Adds or updates organization config rule for your entire organization
-evaluating whether your AWS resources comply with your desired
+\title{Adds or updates an Config rule for your entire organization to evaluate
+if your Amazon Web Services resources comply with your desired
 configurations}
 \usage{
-configservice_put_organization_config_rule(OrganizationConfigRuleName,
-  OrganizationManagedRuleMetadata, OrganizationCustomRuleMetadata,
-  ExcludedAccounts)
+configservice_put_organization_config_rule(
+  OrganizationConfigRuleName,
+  OrganizationManagedRuleMetadata = NULL,
+  OrganizationCustomRuleMetadata = NULL,
+  ExcludedAccounts = NULL,
+  OrganizationCustomPolicyRuleMetadata = NULL
+)
 }
 \arguments{
-\item{OrganizationConfigRuleName}{[required] The name that you assign to an organization config rule.}
+\item{OrganizationConfigRuleName}{[required] The name that you assign to an organization Config rule.}
 
-\item{OrganizationManagedRuleMetadata}{An \code{OrganizationManagedRuleMetadata} object.}
+\item{OrganizationManagedRuleMetadata}{An \code{OrganizationManagedRuleMetadata} object. This object specifies
+organization managed rule metadata such as resource type and ID of
+Amazon Web Services resource along with the rule identifier. It also
+provides the frequency with which you want Config to run evaluations for
+the rule if the trigger type is periodic.}
 
-\item{OrganizationCustomRuleMetadata}{An \code{OrganizationCustomRuleMetadata} object.}
+\item{OrganizationCustomRuleMetadata}{An \code{OrganizationCustomRuleMetadata} object. This object specifies
+organization custom rule metadata such as resource type, resource ID of
+Amazon Web Services resource, Lambda function ARN, and organization
+trigger types that trigger Config to evaluate your Amazon Web Services
+resources against a rule. It also provides the frequency with which you
+want Config to run evaluations for the rule if the trigger type is
+periodic.}
 
 \item{ExcludedAccounts}{A comma-separated list of accounts that you want to exclude from an
-organization config rule.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  OrganizationConfigRuleArn = "string"
-)
-}
+organization Config rule.}
+
+\item{OrganizationCustomPolicyRuleMetadata}{An \code{OrganizationCustomPolicyRuleMetadata} object. This object specifies
+metadata for your organization's Config Custom Policy rule. The metadata
+includes the runtime system in use, which accounts have debug logging
+enabled, and other custom rule metadata, such as resource type, resource
+ID of Amazon Web Services resource, and organization trigger types that
+initiate Config to evaluate Amazon Web Services resources against a
+rule.}
 }
 \description{
-Adds or updates organization config rule for your entire organization
-evaluating whether your AWS resources comply with your desired
-configurations.
+Adds or updates an Config rule for your entire organization to evaluate if your Amazon Web Services resources comply with your desired configurations. For information on how many organization Config rules you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the \emph{Config Developer Guide}.
 
-Only a master account and a delegated administrator can create or update
-an organization config rule. When calling this API with a delegated
-administrator, you must ensure AWS Organizations
-\code{ListDelegatedAdministrator} permissions are added.
-
-This API enables organization service access through the
-\code{EnableAWSServiceAccess} action and creates a service linked role
-\code{AWSServiceRoleForConfigMultiAccountSetup} in the master or delegated
-administrator account of your organization. The service linked role is
-created only when the role does not exist in the caller account. AWS
-Config verifies the existence of role with \code{GetRole} action.
-
-To use this API with delegated administrator, register a delegated
-administrator by calling AWS Organization
-\code{register-delegated-administrator} for
-\code{config-multiaccountsetup.amazonaws.com}.
-
-You can use this action to create both custom AWS Config rules and AWS
-managed Config rules. If you are adding a new custom AWS Config rule,
-you must first create AWS Lambda function in the master account or a
-delegated administrator that the rule invokes to evaluate your
-resources. When you use the
-\code{\link[=configservice_put_organization_config_rule]{put_organization_config_rule}}
-action to add the rule to AWS Config, you must specify the Amazon
-Resource Name (ARN) that AWS Lambda assigns to the function. If you are
-adding an AWS managed Config rule, specify the rule's identifier for the
-\code{RuleIdentifier} key.
-
-The maximum number of organization config rules that AWS Config supports
-is 150 and 3 delegated administrator per organization.
-
-Prerequisite: Ensure you call \code{EnableAllFeatures} API to enable all
-features in an organization.
-
-Specify either \code{OrganizationCustomRuleMetadata} or
-\code{OrganizationManagedRuleMetadata}.
+See \url{https://paws-r.github.io/docs/configservice/put_organization_config_rule.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_organization_config_rule(
-  OrganizationConfigRuleName = "string",
-  OrganizationManagedRuleMetadata = list(
-    Description = "string",
-    RuleIdentifier = "string",
-    InputParameters = "string",
-    MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
-    ResourceTypesScope = list(
-      "string"
-    ),
-    ResourceIdScope = "string",
-    TagKeyScope = "string",
-    TagValueScope = "string"
-  ),
-  OrganizationCustomRuleMetadata = list(
-    Description = "string",
-    LambdaFunctionArn = "string",
-    OrganizationConfigRuleTriggerTypes = list(
-      "ConfigurationItemChangeNotification"|"OversizedConfigurationItemChangeNotification"|"ScheduledNotification"
-    ),
-    InputParameters = "string",
-    MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
-    ResourceTypesScope = list(
-      "string"
-    ),
-    ResourceIdScope = "string",
-    TagKeyScope = "string",
-    TagValueScope = "string"
-  ),
-  ExcludedAccounts = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

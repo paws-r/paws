@@ -3,21 +3,24 @@
 \name{ecs_list_task_definition_families}
 \alias{ecs_list_task_definition_families}
 \title{Returns a list of task definition families that are registered to your
-account (which may include task definition families that no longer have
-any ACTIVE task definition revisions)}
+account}
 \usage{
-ecs_list_task_definition_families(familyPrefix, status, nextToken,
-  maxResults)
+ecs_list_task_definition_families(
+  familyPrefix = NULL,
+  status = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
-\item{familyPrefix}{The \code{familyPrefix} is a string that is used to filter the results of
+\item{familyPrefix}{The \code{familyPrefix} is a string that's used to filter the results of
 \code{\link[=ecs_list_task_definition_families]{list_task_definition_families}}. If
 you specify a \code{familyPrefix}, only task definition family names that
 begin with the \code{familyPrefix} string are returned.}
 
-\item{status}{The task definition family status with which to filter the
+\item{status}{The task definition family status to filter the
 \code{\link[=ecs_list_task_definition_families]{list_task_definition_families}}
-results. By default, both \code{ACTIVE} and \code{INACTIVE} task definition
+results with. By default, both \code{ACTIVE} and \code{INACTIVE} task definition
 families are listed. If this parameter is set to \code{ACTIVE}, only task
 definition families that have an \code{ACTIVE} task definition revision are
 returned. If this parameter is set to \code{INACTIVE}, only task definition
@@ -35,58 +38,22 @@ This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
-\item{maxResults}{The maximum number of task definition family results returned by
-\code{\link[=ecs_list_task_definition_families]{list_task_definition_families}} in
-paginated output. When this parameter is used,
+\item{maxResults}{The maximum number of task definition family results that
+\code{\link[=ecs_list_task_definition_families]{list_task_definition_families}}
+returned in paginated output. When this parameter is used,
 \code{\link[=ecs_list_task_definitions]{list_task_definitions}} only returns
 \code{maxResults} results in a single page along with a \code{nextToken} response
 element. The remaining results of the initial request can be seen by
 sending another
 \code{\link[=ecs_list_task_definition_families]{list_task_definition_families}}
 request with the returned \code{nextToken} value. This value can be between 1
-and 100. If this parameter is not used, then
+and 100. If this parameter isn't used, then
 \code{\link[=ecs_list_task_definition_families]{list_task_definition_families}}
 returns up to 100 results and a \code{nextToken} value if applicable.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  families = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns a list of task definition families that are registered to your
-account (which may include task definition families that no longer have
-any \code{ACTIVE} task definition revisions).
+Returns a list of task definition families that are registered to your account. This list includes task definition families that no longer have any \code{ACTIVE} task definition revisions.
 
-You can filter out task definition families that do not contain any
-\code{ACTIVE} task definition revisions by setting the \code{status} parameter to
-\code{ACTIVE}. You can also filter the results with the \code{familyPrefix}
-parameter.
-}
-\section{Request syntax}{
-\preformatted{svc$list_task_definition_families(
-  familyPrefix = "string",
-  status = "ACTIVE"|"INACTIVE"|"ALL",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example lists all of your registered task definition families.
-svc$list_task_definition_families()
-
-# This example lists the task definition revisions that start with "hpcc".
-svc$list_task_definition_families(
-  familyPrefix = "hpcc"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecs/list_task_definition_families.html} for full documentation.
 }
 \keyword{internal}

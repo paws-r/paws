@@ -3,31 +3,13 @@
 \name{autoscaling_describe_account_limits}
 \alias{autoscaling_describe_account_limits}
 \title{Describes the current Amazon EC2 Auto Scaling resource quotas for your
-AWS account}
+account}
 \usage{
 autoscaling_describe_account_limits()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MaxNumberOfAutoScalingGroups = 123,
-  MaxNumberOfLaunchConfigurations = 123,
-  NumberOfAutoScalingGroups = 123,
-  NumberOfLaunchConfigurations = 123
-)
-}
-}
 \description{
-Describes the current Amazon EC2 Auto Scaling resource quotas for your
-AWS account.
+Describes the current Amazon EC2 Auto Scaling resource quotas for your account.
 
-For information about requesting an increase, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling service quotas}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-}
-\examples{
-\dontrun{
-# This example describes the Auto Scaling limits for your AWS account.
-svc$describe_account_limits()
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/describe_account_limits.html} for full documentation.
 }
 \keyword{internal}

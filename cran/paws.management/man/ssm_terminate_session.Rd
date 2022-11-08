@@ -3,29 +3,16 @@
 \name{ssm_terminate_session}
 \alias{ssm_terminate_session}
 \title{Permanently ends a session and closes the data connection between the
-Session Manager client and SSM Agent on the instance}
+Session Manager client and SSM Agent on the managed node}
 \usage{
 ssm_terminate_session(SessionId)
 }
 \arguments{
 \item{SessionId}{[required] The ID of the session to terminate.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SessionId = "string"
-)
-}
-}
 \description{
-Permanently ends a session and closes the data connection between the
-Session Manager client and SSM Agent on the instance. A terminated
-session cannot be resumed.
-}
-\section{Request syntax}{
-\preformatted{svc$terminate_session(
-  SessionId = "string"
-)
-}
-}
+Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the managed node. A terminated session can't be resumed.
 
+See \url{https://paws-r.github.io/docs/ssm/terminate_session.html} for full documentation.
+}
 \keyword{internal}

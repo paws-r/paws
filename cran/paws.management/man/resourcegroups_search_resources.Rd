@@ -5,7 +5,11 @@
 \title{Returns a list of AWS resource identifiers that matches the specified
 query}
 \usage{
-resourcegroups_search_resources(ResourceQuery, MaxResults, NextToken)
+resourcegroups_search_resources(
+  ResourceQuery,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ResourceQuery}{[required] The search query, using the same formats that are supported for resource
@@ -29,46 +33,9 @@ indicates that more output is available. Set this parameter to the value
 provided by a previous call's \code{NextToken} response to indicate where the
 output should continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceIdentifiers = list(
-    list(
-      ResourceArn = "string",
-      ResourceType = "string"
-    )
-  ),
-  NextToken = "string",
-  QueryErrors = list(
-    list(
-      ErrorCode = "CLOUDFORMATION_STACK_INACTIVE"|"CLOUDFORMATION_STACK_NOT_EXISTING",
-      Message = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of AWS resource identifiers that matches the specified
-query. The query uses the same format as a resource query in a
-CreateGroup or UpdateGroupQuery operation.
+Returns a list of AWS resource identifiers that matches the specified query. The query uses the same format as a resource query in a CreateGroup or UpdateGroupQuery operation.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item \code{resource-groups:SearchResources}
+See \url{https://paws-r.github.io/docs/resourcegroups/search_resources.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$search_resources(
-  ResourceQuery = list(
-    Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
-    Query = "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

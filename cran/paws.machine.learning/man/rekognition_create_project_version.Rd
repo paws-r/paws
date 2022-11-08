@@ -4,8 +4,15 @@
 \alias{rekognition_create_project_version}
 \title{Creates a new version of a model and begins training}
 \usage{
-rekognition_create_project_version(ProjectArn, VersionName,
-  OutputConfig, TrainingData, TestingData)
+rekognition_create_project_version(
+  ProjectArn,
+  VersionName,
+  OutputConfig,
+  TrainingData = NULL,
+  TestingData = NULL,
+  Tags = NULL,
+  KmsKeyId = NULL
+)
 }
 \arguments{
 \item{ProjectArn}{[required] The ARN of the Amazon Rekognition Custom Labels project that manages the
@@ -13,76 +20,43 @@ model that you want to train.}
 
 \item{VersionName}{[required] A name for the version of the model. This value must be unique.}
 
-\item{OutputConfig}{[required] The Amazon S3 location to store the results of training.}
+\item{OutputConfig}{[required] The Amazon S3 bucket location to store the results of training. The S3
+bucket can be in any AWS account as long as the caller has
+\code{s3:PutObject} permissions on the S3 bucket.}
 
-\item{TrainingData}{[required] The dataset to use for training.}
+\item{TrainingData}{Specifies an external manifest that the services uses to train the
+model. If you specify \code{TrainingData} you must also specify
+\code{TestingData}. The project must not have any associated datasets.}
 
-\item{TestingData}{[required] The dataset to use for testing.}
+\item{TestingData}{Specifies an external manifest that the service uses to test the model.
+If you specify \code{TestingData} you must also specify \code{TrainingData}. The
+project must not have any associated datasets.}
+
+\item{Tags}{A set of tags (key-value pairs) that you want to attach to the model.}
+
+\item{KmsKeyId}{The identifier for your AWS Key Management Service key (AWS KMS key).
+You can supply the Amazon Resource Name (ARN) of your KMS key, the ID of
+your KMS key, an alias for your KMS key, or an alias ARN. The key is
+used to encrypt training and test images copied into the service for
+model training. Your source images are unaffected. The key is also used
+to encrypt training results and manifest files written to the output
+Amazon S3 bucket (\code{OutputConfig}).
+
+If you choose to use your own KMS key, you need the following
+permissions on the KMS key.
+\itemize{
+\item kms:CreateGrant
+\item kms:DescribeKey
+\item kms:GenerateDataKey
+\item kms:Decrypt
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProjectVersionArn = "string"
-)
-}
+
+If you don't specify a value for \code{KmsKeyId}, images copied into the
+service are encrypted using a key that AWS owns and manages.}
 }
 \description{
-Creates a new version of a model and begins training. Models are managed
-as part of an Amazon Rekognition Custom Labels project. You can specify
-one training dataset and one testing dataset. The response from
-\code{\link[=rekognition_create_project_version]{create_project_version}} is an
-Amazon Resource Name (ARN) for the version of the model.
+Creates a new version of a model and begins training. Models are managed as part of an Amazon Rekognition Custom Labels project. The response from \code{\link[=rekognition_create_project_version]{create_project_version}} is an Amazon Resource Name (ARN) for the version of the model.
 
-Training takes a while to complete. You can get the current status by
-calling
-\code{\link[=rekognition_describe_project_versions]{describe_project_versions}}.
-
-Once training has successfully completed, call
-\code{\link[=rekognition_describe_project_versions]{describe_project_versions}} to
-get the training results and evaluate the model.
-
-After evaluating the model, you start the model by calling
-\code{\link[=rekognition_start_project_version]{start_project_version}}.
-
-This operation requires permissions to perform the
-\code{rekognition:CreateProjectVersion} action.
+See \url{https://paws-r.github.io/docs/rekognition/create_project_version.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_project_version(
-  ProjectArn = "string",
-  VersionName = "string",
-  OutputConfig = list(
-    S3Bucket = "string",
-    S3KeyPrefix = "string"
-  ),
-  TrainingData = list(
-    Assets = list(
-      list(
-        GroundTruthManifest = list(
-          S3Object = list(
-            Bucket = "string",
-            Name = "string",
-            Version = "string"
-          )
-        )
-      )
-    )
-  ),
-  TestingData = list(
-    Assets = list(
-      list(
-        GroundTruthManifest = list(
-          S3Object = list(
-            Bucket = "string",
-            Name = "string",
-            Version = "string"
-          )
-        )
-      )
-    ),
-    AutoCreate = TRUE|FALSE
-  )
-)
-}
-}
-
 \keyword{internal}

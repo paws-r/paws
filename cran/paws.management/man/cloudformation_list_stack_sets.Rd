@@ -5,10 +5,15 @@
 \title{Returns summary information about stack sets that are associated with
 the user}
 \usage{
-cloudformation_list_stack_sets(NextToken, MaxResults, Status)
+cloudformation_list_stack_sets(
+  NextToken = NULL,
+  MaxResults = NULL,
+  Status = NULL,
+  CallAs = NULL
+)
 }
 \arguments{
-\item{NextToken}{If the previous paginated request didn't return all of the remaining
+\item{NextToken}{If the previous paginated request didn't return all the remaining
 results, the response object's \code{NextToken} parameter value is set to a
 token. To retrieve the next set of results, call
 \code{\link[=cloudformation_list_stack_sets]{list_stack_sets}} again and assign
@@ -23,41 +28,27 @@ parameter to get the next set of results.}
 
 \item{Status}{The status of the stack sets that you want to get summary information
 about.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Summaries = list(
-    list(
-      StackSetName = "string",
-      StackSetId = "string",
-      Description = "string",
-      Status = "ACTIVE"|"DELETED",
-      AutoDeployment = list(
-        Enabled = TRUE|FALSE,
-        RetainStacksOnAccountRemoval = TRUE|FALSE
-      ),
-      PermissionModel = "SERVICE_MANAGED"|"SELF_MANAGED",
-      DriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
-      LastDriftCheckTimestamp = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the management account or as a delegated
+administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your Amazon Web Services account must be registered as a delegated
+administrator in the management account. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{CloudFormation User Guide}.
+}}
 }
 \description{
-Returns summary information about stack sets that are associated with
-the user.
-}
-\section{Request syntax}{
-\preformatted{svc$list_stack_sets(
-  NextToken = "string",
-  MaxResults = 123,
-  Status = "ACTIVE"|"DELETED"
-)
-}
-}
+Returns summary information about stack sets that are associated with the user.
 
+See \url{https://paws-r.github.io/docs/cloudformation/list_stack_sets.html} for full documentation.
+}
 \keyword{internal}

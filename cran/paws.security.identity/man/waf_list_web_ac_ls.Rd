@@ -4,7 +4,7 @@
 \alias{waf_list_web_ac_ls}
 \title{This is AWS WAF Classic documentation}
 \usage{
-waf_list_web_ac_ls(NextMarker, Limit)
+waf_list_web_ac_ls(NextMarker = NULL, Limit = NULL)
 }
 \arguments{
 \item{NextMarker}{If you specify a value for \code{Limit} and you have more \code{WebACL} objects
@@ -20,45 +20,9 @@ for this request. If you have more \code{WebACL} objects than the number that
 you specify for \code{Limit}, the response includes a \code{NextMarker} value that
 you can use to get another batch of \code{WebACL} objects.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextMarker = "string",
-  WebACLs = list(
-    list(
-      WebACLId = "string",
-      Name = "string"
-    )
-  )
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Returns an array of WebACLSummary objects in the response.
-}
-\section{Request syntax}{
-\preformatted{svc$list_web_ac_ls(
-  NextMarker = "string",
-  Limit = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns an array of up to 100 web ACLs.
-svc$list_web_ac_ls(
-  Limit = 100L
-)
-}
-
+See \url{https://paws-r.github.io/docs/waf/list_web_ac_ls.html} for full documentation.
 }
 \keyword{internal}

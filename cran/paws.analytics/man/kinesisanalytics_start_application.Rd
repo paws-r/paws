@@ -15,47 +15,9 @@ consuming. Amazon Kinesis Analytics starts reading the streaming source
 associated with the input. You can also specify where in the streaming
 source you want Amazon Kinesis Analytics to start reading.}
 }
-\value{
-An empty list.
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Starts the specified Amazon Kinesis Analytics application. After
-creating an application, you must exclusively call this operation to
-start your application.
-
-After the application starts, it begins consuming the input data,
-processes it, and writes the output to the configured destination.
-
-The application status must be \code{READY} for you to start an application.
-You can get the application status in the console or using the
-\code{\link[=kinesisanalytics_describe_application]{describe_application}}
-operation.
-
-After you start the application, you can stop the application from
-processing the input by calling the
-\code{\link[=kinesisanalytics_stop_application]{stop_application}} operation.
-
-This operation requires permissions to perform the
-\code{kinesisanalytics:StartApplication} action.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/start_application.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_application(
-  ApplicationName = "string",
-  InputConfigurations = list(
-    list(
-      Id = "string",
-      InputStartingPositionConfiguration = list(
-        InputStartingPosition = "NOW"|"TRIM_HORIZON"|"LAST_STOPPED_POINT"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

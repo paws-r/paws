@@ -11,33 +11,9 @@ elb_delete_load_balancer_listeners(LoadBalancerName, LoadBalancerPorts)
 
 \item{LoadBalancerPorts}{[required] The client port numbers of the listeners.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified listeners from the specified load balancer.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_load_balancer_listeners(
-  LoadBalancerName = "string",
-  LoadBalancerPorts = list(
-    123
-  )
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example deletes the listener for the specified port from the
-# specified load balancer.
-svc$delete_load_balancer_listeners(
-  LoadBalancerName = "my-load-balancer",
-  LoadBalancerPorts = list(
-    80L
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/delete_load_balancer_listeners.html} for full documentation.
 }
 \keyword{internal}

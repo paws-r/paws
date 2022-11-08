@@ -2,60 +2,38 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_update_resource_share}
 \alias{ram_update_resource_share}
-\title{Updates the specified resource share that you own}
+\title{Modifies some of the properties of the specified resource share}
 \usage{
-ram_update_resource_share(resourceShareArn, name,
-  allowExternalPrincipals, clientToken)
+ram_update_resource_share(
+  resourceShareArn,
+  name = NULL,
+  allowExternalPrincipals = NULL,
+  clientToken = NULL
+)
 }
 \arguments{
-\item{resourceShareArn}{[required] The Amazon Resource Name (ARN) of the resource share.}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of the resource share that you want to modify.}
 
-\item{name}{The name of the resource share.}
+\item{name}{If specified, the new name that you want to attach to the resource
+share.}
 
-\item{allowExternalPrincipals}{Indicates whether principals outside your AWS organization can be
-associated with a resource share.}
+\item{allowExternalPrincipals}{Specifies whether principals outside your organization in Organizations
+can be associated with a resource share.}
 
-\item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  resourceShare = list(
-    resourceShareArn = "string",
-    name = "string",
-    owningAccountId = "string",
-    allowExternalPrincipals = TRUE|FALSE,
-    status = "PENDING"|"ACTIVE"|"FAILED"|"DELETING"|"DELETED",
-    statusMessage = "string",
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    ),
-    creationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastUpdatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    featureSet = "CREATED_FROM_POLICY"|"PROMOTING_TO_STANDARD"|"STANDARD"
-  ),
-  clientToken = "string"
-)
-}
+\item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure
+the idempotency of the request. This lets you safely retry the request
+without accidentally performing the same operation a second time.
+Passing the same value to a later call to an operation requires that you
+also pass the same value for all other parameters. We recommend that you
+use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
+
+If you don't provide this value, then Amazon Web Services generates a
+random one for you.}
 }
 \description{
-Updates the specified resource share that you own.
-}
-\section{Request syntax}{
-\preformatted{svc$update_resource_share(
-  resourceShareArn = "string",
-  name = "string",
-  allowExternalPrincipals = TRUE|FALSE,
-  clientToken = "string"
-)
-}
-}
+Modifies some of the properties of the specified resource share.
 
+See \url{https://paws-r.github.io/docs/ram/update_resource_share.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,13 @@
 \alias{ec2_describe_internet_gateways}
 \title{Describes one or more of your internet gateways}
 \usage{
-ec2_describe_internet_gateways(Filters, DryRun, InternetGatewayIds,
-  NextToken, MaxResults)
+ec2_describe_internet_gateways(
+  Filters = NULL,
+  DryRun = NULL,
+  InternetGatewayIds = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filters}{One or more filters.
@@ -15,13 +20,13 @@ gateway and the VPC (\code{available}). Present only if a VPC is
 attached.
 \item \code{attachment.vpc-id} - The ID of an attached VPC.
 \item \code{internet-gateway-id} - The ID of the Internet gateway.
-\item \code{owner-id} - The ID of the AWS account that owns the internet
-gateway.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{owner-id} - The ID of the Amazon Web Services account that owns the
+internet gateway.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -42,67 +47,9 @@ Default: Describes all your internet gateways.}
 the remaining results, make another call with the returned \code{nextToken}
 value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InternetGateways = list(
-    list(
-      Attachments = list(
-        list(
-          State = "attaching"|"attached"|"detaching"|"detached",
-          VpcId = "string"
-        )
-      ),
-      InternetGatewayId = "string",
-      OwnerId = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes one or more of your internet gateways.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_internet_gateways(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  InternetGatewayIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example describes the Internet gateway for the specified VPC.
-svc$describe_internet_gateways(
-  Filters = list(
-    list(
-      Name = "attachment.vpc-id",
-      Values = list(
-        "vpc-a01106c2"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_internet_gateways.html} for full documentation.
 }
 \keyword{internal}

@@ -4,7 +4,11 @@
 \alias{lexmodelbuildingservice_get_bot_versions}
 \title{Gets information about all of the versions of a bot}
 \usage{
-lexmodelbuildingservice_get_bot_versions(name, nextToken, maxResults)
+lexmodelbuildingservice_get_bot_versions(
+  name,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name of the bot for which versions should be returned.}
@@ -17,48 +21,9 @@ pagination token in the next request.}
 \item{maxResults}{The maximum number of bot versions to return in the response. The
 default is 10.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  bots = list(
-    list(
-      name = "string",
-      description = "string",
-      status = "BUILDING"|"READY"|"READY_BASIC_TESTING"|"FAILED"|"NOT_BUILT",
-      lastUpdatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      createdDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      version = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Gets information about all of the versions of a bot.
 
-The \code{\link[=lexmodelbuildingservice_get_bot_versions]{get_bot_versions}}
-operation returns a \code{BotMetadata} object for each version of a bot. For
-example, if a bot has three numbered versions, the
-\code{\link[=lexmodelbuildingservice_get_bot_versions]{get_bot_versions}} operation
-returns four \code{BotMetadata} objects in the response, one for each
-numbered version and one for the \verb{$LATEST} version.
-
-The \code{\link[=lexmodelbuildingservice_get_bot_versions]{get_bot_versions}}
-operation always returns at least one version, the \verb{$LATEST} version.
-
-This operation requires permissions for the \code{lex:GetBotVersions} action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_versions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_bot_versions(
-  name = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,13 @@
 \alias{rekognition_start_text_detection}
 \title{Starts asynchronous detection of text in a stored video}
 \usage{
-rekognition_start_text_detection(Video, ClientRequestToken,
-  NotificationChannel, JobTag, Filters)
+rekognition_start_text_detection(
+  Video,
+  ClientRequestToken = NULL,
+  NotificationChannel = NULL,
+  JobTag = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{Video}{[required]}
@@ -25,63 +30,9 @@ group related jobs and identify them in the completion notification.}
 \item{Filters}{Optional parameters that let you set criteria the text must meet to be
 included in your response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string"
-)
-}
-}
 \description{
 Starts asynchronous detection of text in a stored video.
 
-Amazon Rekognition Video can detect text in a video stored in an Amazon
-S3 bucket. Use Video to specify the bucket name and the filename of the
-video. \code{\link[=rekognition_start_text_detection]{start_text_detection}}
-returns a job identifier (\code{JobId}) which you use to get the results of
-the operation. When text detection is finished, Amazon Rekognition Video
-publishes a completion status to the Amazon Simple Notification Service
-topic that you specify in \code{NotificationChannel}.
-
-To get the results of the text detection operation, first check that the
-status value published to the Amazon SNS topic is \code{SUCCEEDED}. if so,
-call \code{\link[=rekognition_get_text_detection]{get_text_detection}} and pass the
-job identifier (\code{JobId}) from the initial call to
-\code{\link[=rekognition_start_text_detection]{start_text_detection}}.
+See \url{https://paws-r.github.io/docs/rekognition/start_text_detection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_text_detection(
-  Video = list(
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  ClientRequestToken = "string",
-  NotificationChannel = list(
-    SNSTopicArn = "string",
-    RoleArn = "string"
-  ),
-  JobTag = "string",
-  Filters = list(
-    WordFilter = list(
-      MinConfidence = 123.0,
-      MinBoundingBoxHeight = 123.0,
-      MinBoundingBoxWidth = 123.0
-    ),
-    RegionsOfInterest = list(
-      list(
-        BoundingBox = list(
-          Width = 123.0,
-          Height = 123.0,
-          Left = 123.0,
-          Top = 123.0
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

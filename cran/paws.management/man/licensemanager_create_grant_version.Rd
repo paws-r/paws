@@ -4,8 +4,15 @@
 \alias{licensemanager_create_grant_version}
 \title{Creates a new version of the specified grant}
 \usage{
-licensemanager_create_grant_version(ClientToken, GrantArn, GrantName,
-  AllowedOperations, Status, SourceVersion)
+licensemanager_create_grant_version(
+  ClientToken,
+  GrantArn,
+  GrantName = NULL,
+  AllowedOperations = NULL,
+  Status = NULL,
+  StatusReason = NULL,
+  SourceVersion = NULL
+)
 }
 \arguments{
 \item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
@@ -19,31 +26,13 @@ idempotency of the request.}
 
 \item{Status}{Grant status.}
 
+\item{StatusReason}{Grant status reason.}
+
 \item{SourceVersion}{Current version of the grant.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  GrantArn = "string",
-  Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-  Version = "string"
-)
-}
 }
 \description{
 Creates a new version of the specified grant.
-}
-\section{Request syntax}{
-\preformatted{svc$create_grant_version(
-  ClientToken = "string",
-  GrantArn = "string",
-  GrantName = "string",
-  AllowedOperations = list(
-    "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
-  ),
-  Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-  SourceVersion = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/create_grant_version.html} for full documentation.
+}
 \keyword{internal}

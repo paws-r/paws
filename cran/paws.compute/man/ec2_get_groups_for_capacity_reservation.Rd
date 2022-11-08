@@ -4,8 +4,12 @@
 \alias{ec2_get_groups_for_capacity_reservation}
 \title{Lists the resource groups to which a Capacity Reservation has been added}
 \usage{
-ec2_get_groups_for_capacity_reservation(CapacityReservationId,
-  NextToken, MaxResults, DryRun)
+ec2_get_groups_for_capacity_reservation(
+  CapacityReservationId,
+  NextToken = NULL,
+  MaxResults = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{CapacityReservationId}{[required] The ID of the Capacity Reservation.}
@@ -22,30 +26,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  CapacityReservationGroups = list(
-    list(
-      GroupArn = "string",
-      OwnerId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists the resource groups to which a Capacity Reservation has been
-added.
-}
-\section{Request syntax}{
-\preformatted{svc$get_groups_for_capacity_reservation(
-  CapacityReservationId = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  DryRun = TRUE|FALSE
-)
-}
-}
+Lists the resource groups to which a Capacity Reservation has been added.
 
+See \url{https://paws-r.github.io/docs/ec2/get_groups_for_capacity_reservation.html} for full documentation.
+}
 \keyword{internal}

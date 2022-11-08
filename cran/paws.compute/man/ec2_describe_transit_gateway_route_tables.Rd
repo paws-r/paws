@@ -4,8 +4,13 @@
 \alias{ec2_describe_transit_gateway_route_tables}
 \title{Describes one or more transit gateway route tables}
 \usage{
-ec2_describe_transit_gateway_route_tables(TransitGatewayRouteTableIds,
-  Filters, MaxResults, NextToken, DryRun)
+ec2_describe_transit_gateway_route_tables(
+  TransitGatewayRouteTableIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayRouteTableIds}{The IDs of the transit gateway route tables.}
@@ -36,53 +41,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayRouteTables = list(
-    list(
-      TransitGatewayRouteTableId = "string",
-      TransitGatewayId = "string",
-      State = "pending"|"available"|"deleting"|"deleted",
-      DefaultAssociationRouteTable = TRUE|FALSE,
-      DefaultPropagationRouteTable = TRUE|FALSE,
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes one or more transit gateway route tables. By default, all
-transit gateway route tables are described. Alternatively, you can
-filter the results.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_transit_gateway_route_tables(
-  TransitGatewayRouteTableIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes one or more transit gateway route tables. By default, all transit gateway route tables are described. Alternatively, you can filter the results.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_transit_gateway_route_tables.html} for full documentation.
+}
 \keyword{internal}

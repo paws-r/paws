@@ -7,41 +7,14 @@
 connect_describe_routing_profile(InstanceId, RoutingProfileId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{RoutingProfileId}{[required] The identifier of the routing profile.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RoutingProfile = list(
-    InstanceId = "string",
-    Name = "string",
-    RoutingProfileArn = "string",
-    RoutingProfileId = "string",
-    Description = "string",
-    MediaConcurrencies = list(
-      list(
-        Channel = "VOICE"|"CHAT"|"TASK",
-        Concurrency = 123
-      )
-    ),
-    DefaultOutboundQueueId = "string",
-    Tags = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes the specified routing profile.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_routing_profile(
-  InstanceId = "string",
-  RoutingProfileId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/describe_routing_profile.html} for full documentation.
+}
 \keyword{internal}

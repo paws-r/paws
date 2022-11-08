@@ -5,8 +5,14 @@
 \title{Resends the confirmation (for confirmation of registration) to a
 specific user in the user pool}
 \usage{
-cognitoidentityprovider_resend_confirmation_code(ClientId, SecretHash,
-  UserContextData, Username, AnalyticsMetadata, ClientMetadata)
+cognitoidentityprovider_resend_confirmation_code(
+  ClientId,
+  SecretHash = NULL,
+  UserContextData = NULL,
+  Username,
+  AnalyticsMetadata = NULL,
+  ClientMetadata = NULL
+)
 }
 \arguments{
 \item{ClientId}{[required] The ID of the client associated with the user pool.}
@@ -15,76 +21,50 @@ cognitoidentityprovider_resend_confirmation_code(ClientId, SecretHash,
 secret key of a user pool client and username plus the client ID in the
 message.}
 
-\item{UserContextData}{Contextual data such as the user's device fingerprint, IP address, or
-location used for evaluating the risk of an unexpected event by Amazon
-Cognito advanced security.}
+\item{UserContextData}{Contextual data about your user session, such as the device fingerprint,
+IP address, or location. Amazon Cognito advanced security evaluates the
+risk of an authentication event based on the context that your app
+generates and passes to Amazon Cognito when it makes API requests.}
 
-\item{Username}{[required] The user name of the user to whom you wish to resend a confirmation
-code.}
+\item{Username}{[required] The \code{username} attribute of the user to whom you want to resend a
+confirmation code.}
 
-\item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata for collecting metrics for
+\item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata that contributes to your metrics
+for
 \code{\link[=cognitoidentityprovider_resend_confirmation_code]{resend_confirmation_code}}
 calls.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
 
-You create custom workflows by assigning AWS Lambda functions to user
-pool triggers. When you use the ResendConfirmationCode API action,
-Amazon Cognito invokes the function that is assigned to the \emph{custom
-message} trigger. When Amazon Cognito invokes this function, it passes a
-JSON payload, which the function receives as input. This payload
-contains a \code{clientMetadata} attribute, which provides the data that you
-assigned to the ClientMetadata parameter in your ResendConfirmationCode
-request. In your function code in AWS Lambda, you can process the
-\code{clientMetadata} value to enhance your workflow for your specific needs.
+You create custom workflows by assigning Lambda functions to user pool
+triggers. When you use the ResendConfirmationCode API action, Amazon
+Cognito invokes the function that is assigned to the \emph{custom message}
+trigger. When Amazon Cognito invokes this function, it passes a JSON
+payload, which the function receives as input. This payload contains a
+\code{clientMetadata} attribute, which provides the data that you assigned to
+the ClientMetadata parameter in your ResendConfirmationCode request. In
+your function code in Lambda, you can process the \code{clientMetadata} value
+to enhance your workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing User Pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-Take the following limitations into consideration when you use the
-ClientMetadata parameter:
+When you use the ClientMetadata parameter, remember that Amazon Cognito
+won't do the following:
 \itemize{
-\item Amazon Cognito does not store the ClientMetadata value. This data is
-available only to AWS Lambda triggers that are assigned to a user
-pool to support custom workflows. If your user pool configuration
-does not include triggers, the ClientMetadata parameter serves no
-purpose.
-\item Amazon Cognito does not validate the ClientMetadata value.
-\item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don't use it to provide sensitive information.
+\item Store the ClientMetadata value. This data is available only to
+Lambda triggers that are assigned to a user pool to support custom
+workflows. If your user pool configuration doesn't include triggers,
+the ClientMetadata parameter serves no purpose.
+\item Validate the ClientMetadata value.
+\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
+provide sensitive information.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CodeDeliveryDetails = list(
-    Destination = "string",
-    DeliveryMedium = "SMS"|"EMAIL",
-    AttributeName = "string"
-  )
-)
-}
-}
 \description{
-Resends the confirmation (for confirmation of registration) to a
-specific user in the user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$resend_confirmation_code(
-  ClientId = "string",
-  SecretHash = "string",
-  UserContextData = list(
-    EncodedData = "string"
-  ),
-  Username = "string",
-  AnalyticsMetadata = list(
-    AnalyticsEndpointId = "string"
-  ),
-  ClientMetadata = list(
-    "string"
-  )
-)
-}
-}
+Resends the confirmation (for confirmation of registration) to a specific user in the user pool.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/resend_confirmation_code.html} for full documentation.
+}
 \keyword{internal}

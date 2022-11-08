@@ -11,27 +11,9 @@ worklink_describe_domain(FleetArn, DomainName)
 
 \item{DomainName}{[required] The name of the domain.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DomainName = "string",
-  DisplayName = "string",
-  CreatedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  DomainStatus = "PENDING_VALIDATION"|"ASSOCIATING"|"ACTIVE"|"INACTIVE"|"DISASSOCIATING"|"DISASSOCIATED"|"FAILED_TO_ASSOCIATE"|"FAILED_TO_DISASSOCIATE",
-  AcmCertificateArn = "string"
-)
-}
-}
 \description{
 Provides information about the domain.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_domain(
-  FleetArn = "string",
-  DomainName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/describe_domain.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{ec2_delete_subnet}
 \title{Deletes the specified subnet}
 \usage{
-ec2_delete_subnet(SubnetId, DryRun)
+ec2_delete_subnet(SubnetId, DryRun = NULL)
 }
 \arguments{
 \item{SubnetId}{[required] The ID of the subnet.}
@@ -14,28 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified subnet. You must terminate all running instances
-in the subnet before you can delete the subnet.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_subnet(
-  SubnetId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Deletes the specified subnet. You must terminate all running instances in the subnet before you can delete the subnet.
 
-\examples{
-\dontrun{
-# This example deletes the specified subnet.
-svc$delete_subnet(
-  SubnetId = "subnet-9d4a7b6c"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_subnet.html} for full documentation.
 }
 \keyword{internal}

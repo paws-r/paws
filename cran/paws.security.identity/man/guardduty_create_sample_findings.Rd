@@ -5,29 +5,16 @@
 \title{Generates example findings of types specified by the list of finding
 types}
 \usage{
-guardduty_create_sample_findings(DetectorId, FindingTypes)
+guardduty_create_sample_findings(DetectorId, FindingTypes = NULL)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector to create sample findings for.}
 
 \item{FindingTypes}{The types of sample findings to generate.}
 }
-\value{
-An empty list.
-}
 \description{
-Generates example findings of types specified by the list of finding
-types. If 'NULL' is specified for \code{findingTypes}, the API generates
-example findings of all supported finding types.
-}
-\section{Request syntax}{
-\preformatted{svc$create_sample_findings(
-  DetectorId = "string",
-  FindingTypes = list(
-    "string"
-  )
-)
-}
-}
+Generates example findings of types specified by the list of finding types. If 'NULL' is specified for \code{findingTypes}, the API generates example findings of all supported finding types.
 
+See \url{https://paws-r.github.io/docs/guardduty/create_sample_findings.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,19 @@
 \alias{ssm_put_parameter}
 \title{Add a parameter to the system}
 \usage{
-ssm_put_parameter(Name, Description, Value, Type, KeyId, Overwrite,
-  AllowedPattern, Tags, Tier, Policies, DataType)
+ssm_put_parameter(
+  Name,
+  Description = NULL,
+  Value,
+  Type = NULL,
+  KeyId = NULL,
+  Overwrite = NULL,
+  AllowedPattern = NULL,
+  Tags = NULL,
+  Tier = NULL,
+  Policies = NULL,
+  DataType = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The fully qualified name of the parameter that you want to add to the
@@ -17,32 +28,34 @@ parameter. For example: \verb{/Dev/DBServer/MySQL/db-string13}
 Naming Constraints:
 \itemize{
 \item Parameter names are case sensitive.
-\item A parameter name must be unique within an AWS Region
-\item A parameter name can't be prefixed with "aws" or "ssm"
+\item A parameter name must be unique within an Amazon Web Services Region
+\item A parameter name can't be prefixed with "\code{aws}" or "\code{ssm}"
 (case-insensitive).
 \item Parameter names can include only the following symbols and letters:
-\verb{a-zA-Z0-9_.-/}
+\verb{a-zA-Z0-9_.-}
+
+In addition, the slash character ( / ) is used to delineate
+hierarchies in parameter names. For example:
+\verb{/Dev/Production/East/Project-ABC/MyParameter}
 \item A parameter name can't include spaces.
 \item Parameter hierarchies are limited to a maximum depth of fifteen
 levels.
 }
 
 For additional information about valid values for parameter names, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{About requirements and constraints for parameter names} in
-the \emph{AWS Systems Manager User Guide}.
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html}{Creating Systems Manager parameters}
+in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-The maximum length constraint listed below includes capacity for
-additional system attributes that are not part of the name. The maximum
-length for a parameter name, including the full length of the parameter
-ARN, is 1011 characters. For example, the length of the following
-parameter name is 65 characters, not 20 characters:
-
-\code{arn:aws:ssm:us-east-2:111122223333:parameter/ExampleParameterName}}
+The maximum length constraint of 2048 characters listed below includes
+1037 characters reserved for internal use by Systems Manager. The
+maximum length for a parameter name that you create is 1011 characters.
+This includes the characters in the ARN that precede the name you
+specify, such as \verb{arn:aws:ssm:us-east-2:111122223333:parameter/}.}
 
 \item{Description}{Information about the parameter that you want to add to the system.
 Optional but recommended.
 
-Do not enter personally identifiable information in this field.}
+Don't enter personally identifiable information in this field.}
 
 \item{Value}{[required] The parameter value that you want to add to the system. Standard
 parameters have a value limit of 4 KB. Advanced parameters have a value
@@ -54,46 +67,43 @@ parameter value.}
 
 \item{Type}{The type of parameter that you want to add to the system.
 
-\code{SecureString} is not currently supported for AWS CloudFormation
-templates.
+\code{SecureString} isn't currently supported for CloudFormation templates.
 
 Items in a \code{StringList} must be separated by a comma (,). You can't use
 other punctuation or special character to escape items in the list. If
 you have a parameter value that requires a comma, then use the \code{String}
 data type.
 
-Specifying a parameter type is not required when updating a parameter.
+Specifying a parameter type isn't required when updating a parameter.
 You must specify a parameter type when creating a parameter.}
 
-\item{KeyId}{The KMS Key ID that you want to use to encrypt a parameter. Either the
-default AWS Key Management Service (AWS KMS) key automatically assigned
-to your AWS account or a custom key. Required for parameters that use
-the \code{SecureString} data type.
+\item{KeyId}{The Key Management Service (KMS) ID that you want to use to encrypt a
+parameter. Either the default KMS key automatically assigned to your
+Amazon Web Services account or a custom key. Required for parameters
+that use the \code{SecureString} data type.
 
 If you don't specify a key ID, the system uses the default key
-associated with your AWS account.
+associated with your Amazon Web Services account.
 \itemize{
-\item To use your default AWS KMS key, choose the \code{SecureString} data
-type, and do \emph{not} specify the \verb{Key ID} when you create the
-parameter. The system automatically populates \verb{Key ID} with your
-default KMS key.
+\item To use your default KMS key, choose the \code{SecureString} data type,
+and do \emph{not} specify the \verb{Key ID} when you create the parameter. The
+system automatically populates \verb{Key ID} with your default KMS key.
 \item To use a custom KMS key, choose the \code{SecureString} data type with
 the \verb{Key ID} parameter.
 }}
 
-\item{Overwrite}{Overwrite an existing parameter. If not specified, will default to
-"false".}
+\item{Overwrite}{Overwrite an existing parameter. The default value is \code{false}.}
 
 \item{AllowedPattern}{A regular expression used to validate the parameter value. For example,
 for String types with values restricted to numbers, you can specify the
-following: AllowedPattern=^\\d+$}
+following: AllowedPattern=^\d+$}
 
 \item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
 categorize a resource in different ways, such as by purpose, owner, or
 environment. For example, you might want to tag a Systems Manager
 parameter to identify the type of resource to which it applies, the
 environment, or the type of configuration data referenced by the
-parameter. In this case, you could specify the following key name/value
+parameter. In this case, you could specify the following key-value
 pairs:
 \itemize{
 \item \verb{Key=Resource,Value=S3bucket}
@@ -102,21 +112,22 @@ pairs:
 }
 
 To add tags to an existing Systems Manager parameter, use the
-\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} action.}
+\code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} operation.}
 
 \item{Tier}{The parameter tier to assign to a parameter.
 
 Parameter Store offers a standard tier and an advanced tier for
 parameters. Standard parameters have a content size limit of 4 KB and
 can't be configured to use parameter policies. You can create a maximum
-of 10,000 standard parameters for each Region in an AWS account.
-Standard parameters are offered at no additional cost.
+of 10,000 standard parameters for each Region in an Amazon Web Services
+account. Standard parameters are offered at no additional cost.
 
 Advanced parameters have a content size limit of 8 KB and can be
 configured to use parameter policies. You can create a maximum of
-100,000 advanced parameters for each Region in an AWS account. Advanced
-parameters incur a charge. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html}{Standard and advanced parameter tiers}
-in the \emph{AWS Systems Manager User Guide}.
+100,000 advanced parameters for each Region in an Amazon Web Services
+account. Advanced parameters incur a charge. For more information, see
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html}{Standard and advanced parameter tiers}
+in the \emph{Amazon Web Services Systems Manager User Guide}.
 
 You can change a standard parameter to an advanced parameter any time.
 But you can't revert an advanced parameter to a standard parameter.
@@ -135,7 +146,7 @@ it as a new standard parameter.
 In \code{\link[=ssm_put_parameter]{put_parameter}} requests, you can specify the
 tier to create the parameter in. Whenever you specify a tier in the
 request, Parameter Store creates or updates the parameter according to
-that request. However, if you do not specify a tier in a request,
+that request. However, if you don't specify a tier in a request,
 Parameter Store assigns the tier based on the current Parameter Store
 default tier configuration.
 
@@ -163,82 +174,58 @@ Options that require an advanced parameter include the following:
 \itemize{
 \item The content size of the parameter is more than 4 KB.
 \item The parameter uses a parameter policy.
-\item More than 10,000 parameters already exist in your AWS account in the
-current Region.
+\item More than 10,000 parameters already exist in your Amazon Web
+Services account in the current Amazon Web Services Region.
 }
 
 For more information about configuring the default tier option, see
 \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Specifying a default parameter tier} in
-the \emph{AWS Systems Manager User Guide}.}
+the \emph{Amazon Web Services Systems Manager User Guide}.}
 
-\item{Policies}{One or more policies to apply to a parameter. This action takes a JSON
-array. Parameter Store supports the following policy types:
+\item{Policies}{One or more policies to apply to a parameter. This operation takes a
+JSON array. Parameter Store, a capability of Amazon Web Services Systems
+Manager supports the following policy types:
 
 Expiration: This policy deletes the parameter after it expires. When you
 create the policy, you specify the expiration date. You can update the
 expiration date and time by updating the policy. Updating the
-\emph{parameter} does not affect the expiration date and time. When the
+\emph{parameter} doesn't affect the expiration date and time. When the
 expiration time is reached, Parameter Store deletes the parameter.
 
-ExpirationNotification: This policy triggers an event in Amazon
+ExpirationNotification: This policy initiates an event in Amazon
 CloudWatch Events that notifies you about the expiration. By using this
 policy, you can receive notification before or after the expiration time
 is reached, in units of days or hours.
 
-NoChangeNotification: This policy triggers a CloudWatch event if a
-parameter has not been modified for a specified period of time. This
+NoChangeNotification: This policy initiates a CloudWatch Events event if
+a parameter hasn't been modified for a specified period of time. This
 policy type is useful when, for example, a secret needs to be changed
-within a period of time, but it has not been changed.
+within a period of time, but it hasn't been changed.
 
 All existing policies are preserved until you send new policies or an
 empty policy. For more information about parameter policies, see
 \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html}{Assigning parameter policies}.}
 
 \item{DataType}{The data type for a \code{String} parameter. Supported data types include
-plain text and Amazon Machine Image IDs.
+plain text and Amazon Machine Image (AMI) IDs.
 
 \strong{The following data type values are supported.}
 \itemize{
 \item \code{text}
 \item \code{aws:ec2:image}
+\item \code{aws:ssm:integration}
 }
 
-When you create a \code{String} parameter and specify \code{aws:ec2:image},
-Systems Manager validates the parameter value is in the required format,
-such as \verb{ami-12345abcdeEXAMPLE}, and that the specified AMI is available
-in your AWS account. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html}{Native parameter support for Amazon Machine Image IDs}
-in the \emph{AWS Systems Manager User Guide}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Version = 123,
-  Tier = "Standard"|"Advanced"|"Intelligent-Tiering"
-)
-}
+When you create a \code{String} parameter and specify \code{aws:ec2:image}, Amazon
+Web Services Systems Manager validates the parameter value is in the
+required format, such as \verb{ami-12345abcdeEXAMPLE}, and that the specified
+AMI is available in your Amazon Web Services account. For more
+information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html}{Native parameter support for Amazon Machine Image (AMI) IDs}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 }
 \description{
 Add a parameter to the system.
-}
-\section{Request syntax}{
-\preformatted{svc$put_parameter(
-  Name = "string",
-  Description = "string",
-  Value = "string",
-  Type = "String"|"StringList"|"SecureString",
-  KeyId = "string",
-  Overwrite = TRUE|FALSE,
-  AllowedPattern = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  Tier = "Standard"|"Advanced"|"Intelligent-Tiering",
-  Policies = "string",
-  DataType = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/put_parameter.html} for full documentation.
+}
 \keyword{internal}

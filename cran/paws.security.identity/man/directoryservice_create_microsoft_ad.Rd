@@ -2,15 +2,22 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_create_microsoft_ad}
 \alias{directoryservice_create_microsoft_ad}
-\title{Creates a Microsoft AD directory in the AWS Cloud}
+\title{Creates a Microsoft AD directory in the Amazon Web Services Cloud}
 \usage{
-directoryservice_create_microsoft_ad(Name, ShortName, Password,
-  Description, VpcSettings, Edition, Tags)
+directoryservice_create_microsoft_ad(
+  Name,
+  ShortName = NULL,
+  Password,
+  Description = NULL,
+  VpcSettings,
+  Edition = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{Name}{[required] The fully qualified domain name for the AWS Managed Microsoft AD
-directory, such as \code{corp.example.com}. This name will resolve inside
-your VPC only. It does not need to be publicly resolvable.}
+\item{Name}{[required] The fully qualified domain name for the Managed Microsoft AD directory,
+such as \code{corp.example.com}. This name will resolve inside your VPC only.
+It does not need to be publicly resolvable.}
 
 \item{ShortName}{The NetBIOS name for your domain, such as \code{CORP}. If you don't specify a
 NetBIOS name, it will default to the first part of your directory DNS.
@@ -22,55 +29,22 @@ If you need to change the password for the administrator account, you
 can use the
 \code{\link[=directoryservice_reset_user_password]{reset_user_password}} API call.}
 
-\item{Description}{A description for the directory. This label will appear on the AWS
-console \verb{Directory Details} page after the directory is created.}
+\item{Description}{A description for the directory. This label will appear on the Amazon
+Web Services console \verb{Directory Details} page after the directory is
+created.}
 
 \item{VpcSettings}{[required] Contains VPC information for the
 \code{\link[=directoryservice_create_directory]{create_directory}} or
 \code{\link[=directoryservice_create_microsoft_ad]{create_microsoft_ad}} operation.}
 
-\item{Edition}{AWS Managed Microsoft AD is available in two editions: \code{Standard} and
+\item{Edition}{Managed Microsoft AD is available in two editions: \code{Standard} and
 \code{Enterprise}. \code{Enterprise} is the default.}
 
-\item{Tags}{The tags to be assigned to the AWS Managed Microsoft AD directory.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DirectoryId = "string"
-)
-}
+\item{Tags}{The tags to be assigned to the Managed Microsoft AD directory.}
 }
 \description{
-Creates a Microsoft AD directory in the AWS Cloud. For more information,
-see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html}{AWS Managed Microsoft AD}
-in the \emph{AWS Directory Service Admin Guide}.
+Creates a Microsoft AD directory in the Amazon Web Services Cloud. For more information, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html}{Managed Microsoft AD} in the \emph{Directory Service Admin Guide}.
 
-Before you call \emph{CreateMicrosoftAD}, ensure that all of the required
-permissions have been explicitly granted through a policy. For details
-about what permissions are required to run the \emph{CreateMicrosoftAD}
-operation, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
+See \url{https://paws-r.github.io/docs/directoryservice/create_microsoft_ad.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_microsoft_ad(
-  Name = "string",
-  ShortName = "string",
-  Password = "string",
-  Description = "string",
-  VpcSettings = list(
-    VpcId = "string",
-    SubnetIds = list(
-      "string"
-    )
-  ),
-  Edition = "Enterprise"|"Standard",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,7 +4,11 @@
 \alias{personalize_list_filters}
 \title{Lists all filters that belong to a given dataset group}
 \usage{
-personalize_list_filters(datasetGroupArn, nextToken, maxResults)
+personalize_list_filters(
+  datasetGroupArn = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{datasetGroupArn}{The ARN of the dataset group that contains the filters.}
@@ -15,37 +19,9 @@ filters (if they exist).}
 
 \item{maxResults}{The maximum number of filters to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Filters = list(
-    list(
-      name = "string",
-      filterArn = "string",
-      creationDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      datasetGroupArn = "string",
-      failureReason = "string",
-      status = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists all filters that belong to a given dataset group.
-}
-\section{Request syntax}{
-\preformatted{svc$list_filters(
-  datasetGroupArn = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/personalize/list_filters.html} for full documentation.
+}
 \keyword{internal}

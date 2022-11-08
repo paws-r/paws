@@ -34,50 +34,9 @@ root that the OU is in). This string is followed by a second "-"
 dash and from 8 to 32 additional lowercase letters or digits.
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Attaches a policy to a root, an organizational unit (OU), or an
-individual account. How the policy affects accounts depends on the type
-of policy. Refer to the \emph{AWS Organizations User Guide} for information
-about each policy type:
-\itemize{
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES_OPT_OUT_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE_CONTROL_POLICY}
-\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG_POLICY}
-}
+Attaches a policy to a root, an organizational unit (OU), or an individual account. How the policy affects accounts depends on the type of policy. Refer to the \emph{Organizations User Guide} for information about each policy type:
 
-This operation can be called only from the organization's management
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$attach_policy(
-  PolicyId = "string",
-  TargetId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to attach a service control policy (SCP)
-# to an OU:
-# 
-svc$attach_policy(
-  PolicyId = "p-examplepolicyid111",
-  TargetId = "ou-examplerootid111-exampleouid111"
-)
-
-# The following example shows how to attach a service control policy (SCP)
-# to an account:
-# 
-svc$attach_policy(
-  PolicyId = "p-examplepolicyid111",
-  TargetId = "333333333333"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/attach_policy.html} for full documentation.
 }
 \keyword{internal}

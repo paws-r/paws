@@ -10,24 +10,9 @@ globalaccelerator_describe_accelerator_attributes(AcceleratorArn)
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator with the attributes
 that you want to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AcceleratorAttributes = list(
-    FlowLogsEnabled = TRUE|FALSE,
-    FlowLogsS3Bucket = "string",
-    FlowLogsS3Prefix = "string"
-  )
-)
-}
-}
 \description{
 Describe the attributes of an accelerator.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_accelerator_attributes(
-  AcceleratorArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/describe_accelerator_attributes.html} for full documentation.
+}
 \keyword{internal}

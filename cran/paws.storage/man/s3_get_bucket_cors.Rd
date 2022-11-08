@@ -2,71 +2,21 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_cors}
 \alias{s3_get_bucket_cors}
-\title{Returns the cors configuration information set for the bucket}
+\title{Returns the Cross-Origin Resource Sharing (CORS) configuration
+information set for the bucket}
 \usage{
-s3_get_bucket_cors(Bucket, ExpectedBucketOwner)
+s3_get_bucket_cors(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name for which to get the cors configuration.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CORSRules = list(
-    list(
-      AllowedHeaders = list(
-        "string"
-      ),
-      AllowedMethods = list(
-        "string"
-      ),
-      AllowedOrigins = list(
-        "string"
-      ),
-      ExposeHeaders = list(
-        "string"
-      ),
-      MaxAgeSeconds = 123
-    )
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns the cors configuration information set for the bucket.
+Returns the Cross-Origin Resource Sharing (CORS) configuration information set for the bucket.
 
-To use this operation, you must have permission to perform the
-s3:GetBucketCORS action. By default, the bucket owner has this
-permission and can grant it to others.
-
-For more information about cors, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html}{Enabling Cross-Origin Resource Sharing}.
-
-The following operations are related to
-\code{\link[=s3_get_bucket_cors]{get_bucket_cors}}:
-\itemize{
-\item \code{\link[=s3_put_bucket_cors]{put_bucket_cors}}
-\item \code{\link[=s3_delete_bucket_cors]{delete_bucket_cors}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$get_bucket_cors(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns cross-origin resource sharing (CORS)
-# configuration set on a bucket.
-svc$get_bucket_cors(
-  Bucket = "examplebucket"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/get_bucket_cors.html} for full documentation.
 }
 \keyword{internal}

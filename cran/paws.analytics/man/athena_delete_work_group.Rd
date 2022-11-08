@@ -4,27 +4,17 @@
 \alias{athena_delete_work_group}
 \title{Deletes the workgroup with the specified name}
 \usage{
-athena_delete_work_group(WorkGroup, RecursiveDeleteOption)
+athena_delete_work_group(WorkGroup, RecursiveDeleteOption = NULL)
 }
 \arguments{
 \item{WorkGroup}{[required] The unique name of the workgroup to delete.}
 
 \item{RecursiveDeleteOption}{The option to delete the workgroup and its contents even if the
-workgroup contains any named queries.}
-}
-\value{
-An empty list.
+workgroup contains any named queries or query executions.}
 }
 \description{
-Deletes the workgroup with the specified name. The primary workgroup
-cannot be deleted.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_work_group(
-  WorkGroup = "string",
-  RecursiveDeleteOption = TRUE|FALSE
-)
-}
-}
+Deletes the workgroup with the specified name. The primary workgroup cannot be deleted.
 
+See \url{https://paws-r.github.io/docs/athena/delete_work_group.html} for full documentation.
+}
 \keyword{internal}

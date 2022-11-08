@@ -3,30 +3,37 @@
 \name{cloudformation_delete_stack_instances}
 \alias{cloudformation_delete_stack_instances}
 \title{Deletes stack instances for the specified accounts, in the specified
-Regions}
+Amazon Web Services Regions}
 \usage{
-cloudformation_delete_stack_instances(StackSetName, Accounts,
-  DeploymentTargets, Regions, OperationPreferences, RetainStacks,
-  OperationId)
+cloudformation_delete_stack_instances(
+  StackSetName,
+  Accounts = NULL,
+  DeploymentTargets = NULL,
+  Regions,
+  OperationPreferences = NULL,
+  RetainStacks,
+  OperationId = NULL,
+  CallAs = NULL
+)
 }
 \arguments{
 \item{StackSetName}{[required] The name or unique ID of the stack set that you want to delete stack
 instances for.}
 
-\item{Accounts}{[\code{Self-managed} permissions] The names of the AWS accounts that you
-want to delete stack instances for.
+\item{Accounts}{[Self-managed permissions] The names of the Amazon Web Services
+accounts that you want to delete stack instances for.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
-\item{DeploymentTargets}{[\code{Service-managed} permissions] The AWS Organizations accounts from
-which to delete stack instances.
+\item{DeploymentTargets}{[Service-managed permissions] The Organizations accounts from which to
+delete stack instances.
 
 You can specify \code{Accounts} or \code{DeploymentTargets}, but not both.}
 
-\item{Regions}{[required] The Regions where you want to delete stack set instances.}
+\item{Regions}{[required] The Amazon Web Services Regions where you want to delete stack set
+instances.}
 
-\item{OperationPreferences}{Preferences for how AWS CloudFormation performs this stack set
-operation.}
+\item{OperationPreferences}{Preferences for how CloudFormation performs this stack set operation.}
 
 \item{RetainStacks}{[required] Removes the stack instances from the specified stack set, but doesn't
 delete the stacks. You can't reassociate a retained stack or add an
@@ -40,53 +47,33 @@ If you don't specify an operation ID, the SDK generates one
 automatically.
 
 The operation ID also functions as an idempotency token, to ensure that
-AWS CloudFormation performs the stack set operation only once, even if
-you retry the request multiple times. You can retry stack set operation
-requests to ensure that AWS CloudFormation successfully received them.
+CloudFormation performs the stack set operation only once, even if you
+retry the request multiple times. You can retry stack set operation
+requests to ensure that CloudFormation successfully received them.
 
 Repeating this stack set operation with a new operation ID retries all
 stack instances whose status is \code{OUTDATED}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  OperationId = "string"
-)
-}
+
+\item{CallAs}{[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, \code{SELF} is specified. Use \code{SELF} for stack sets with
+self-managed permissions.
+\itemize{
+\item If you are signed in to the management account, specify \code{SELF}.
+\item If you are signed in to a delegated administrator account, specify
+\code{DELEGATED_ADMIN}.
+
+Your Amazon Web Services account must be registered as a delegated
+administrator in the management account. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html}{Register a delegated administrator}
+in the \emph{CloudFormation User Guide}.
+}}
 }
 \description{
-Deletes stack instances for the specified accounts, in the specified
-Regions.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_stack_instances(
-  StackSetName = "string",
-  Accounts = list(
-    "string"
-  ),
-  DeploymentTargets = list(
-    Accounts = list(
-      "string"
-    ),
-    OrganizationalUnitIds = list(
-      "string"
-    )
-  ),
-  Regions = list(
-    "string"
-  ),
-  OperationPreferences = list(
-    RegionOrder = list(
-      "string"
-    ),
-    FailureToleranceCount = 123,
-    FailureTolerancePercentage = 123,
-    MaxConcurrentCount = 123,
-    MaxConcurrentPercentage = 123
-  ),
-  RetainStacks = TRUE|FALSE,
-  OperationId = "string"
-)
-}
-}
+Deletes stack instances for the specified accounts, in the specified Amazon Web Services Regions.
 
+See \url{https://paws-r.github.io/docs/cloudformation/delete_stack_instances.html} for full documentation.
+}
 \keyword{internal}

@@ -13,39 +13,9 @@ machinelearning_predict(MLModelId, Record, PredictEndpoint)
 
 \item{PredictEndpoint}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Prediction = list(
-    predictedLabel = "string",
-    predictedValue = 123.0,
-    predictedScores = list(
-      123.0
-    ),
-    details = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
-Generates a prediction for the observation using the specified
-\verb{ML Model}.
+Generates a prediction for the observation using the specified \verb{ML Model}.
 
-Note
-
-Not all response parameters will be populated. Whether a response
-parameter is populated depends on the type of model requested.
+See \url{https://paws-r.github.io/docs/machinelearning/predict.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$predict(
-  MLModelId = "string",
-  Record = list(
-    "string"
-  ),
-  PredictEndpoint = "string"
-)
-}
-}
-
 \keyword{internal}

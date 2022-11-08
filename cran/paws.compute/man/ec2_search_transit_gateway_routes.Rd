@@ -4,8 +4,12 @@
 \alias{ec2_search_transit_gateway_routes}
 \title{Searches for routes in the specified transit gateway route table}
 \usage{
-ec2_search_transit_gateway_routes(TransitGatewayRouteTableId, Filters,
-  MaxResults, DryRun)
+ec2_search_transit_gateway_routes(
+  TransitGatewayRouteTableId,
+  Filters,
+  MaxResults = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the transit gateway route table.}
@@ -42,45 +46,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Routes = list(
-    list(
-      DestinationCidrBlock = "string",
-      PrefixListId = "string",
-      TransitGatewayAttachments = list(
-        list(
-          ResourceId = "string",
-          TransitGatewayAttachmentId = "string",
-          ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering"
-        )
-      ),
-      Type = "static"|"propagated",
-      State = "pending"|"active"|"blackhole"|"deleting"|"deleted"
-    )
-  ),
-  AdditionalRoutesAvailable = TRUE|FALSE
-)
-}
-}
 \description{
 Searches for routes in the specified transit gateway route table.
-}
-\section{Request syntax}{
-\preformatted{svc$search_transit_gateway_routes(
-  TransitGatewayRouteTableId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/search_transit_gateway_routes.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{ec2_create_carrier_gateway}
 \title{Creates a carrier gateway}
 \usage{
-ec2_create_carrier_gateway(VpcId, TagSpecifications, DryRun,
-  ClientToken)
+ec2_create_carrier_gateway(
+  VpcId,
+  TagSpecifications = NULL,
+  DryRun = NULL,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{VpcId}{[required] The ID of the VPC to associate with the carrier gateway.}
@@ -18,48 +22,11 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CarrierGateway = list(
-    CarrierGatewayId = "string",
-    VpcId = "string",
-    State = "pending"|"available"|"deleting"|"deleted",
-    OwnerId = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
 }
 \description{
-Creates a carrier gateway. For more information about carrier gateways,
-see \href{https://docs.aws.amazon.com/wavelength/latest/developerguide/how-wavelengths-work.html#wavelength-carrier-gateway}{Carrier gateways}
-in the \emph{AWS Wavelength Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_carrier_gateway(
-  VpcId = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  ClientToken = "string"
-)
-}
-}
+Creates a carrier gateway. For more information about carrier gateways, see \href{https://docs.aws.amazon.com/wavelength/latest/developerguide/how-wavelengths-work.html#wavelength-carrier-gateway}{Carrier gateways} in the \emph{Amazon Web Services Wavelength Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/ec2/create_carrier_gateway.html} for full documentation.
+}
 \keyword{internal}

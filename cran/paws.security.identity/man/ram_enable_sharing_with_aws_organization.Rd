@@ -2,24 +2,13 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_enable_sharing_with_aws_organization}
 \alias{ram_enable_sharing_with_aws_organization}
-\title{Enables resource sharing within your AWS Organization}
+\title{Enables resource sharing within your organization in Organizations}
 \usage{
 ram_enable_sharing_with_aws_organization()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  returnValue = TRUE|FALSE
-)
-}
-}
 \description{
-Enables resource sharing within your AWS Organization.
+Enables resource sharing within your organization in Organizations. Calling this operation enables RAM to retrieve information about the organization and its structure. This lets you share resources with all of the accounts in an organization by specifying the organization's ID, or all of the accounts in an organizational unit (OU) by specifying the OU's ID. Until you enable sharing within the organization, you can specify only individual Amazon Web Services accounts, or for supported resource types, IAM users and roles.
 
-The caller must be the master account for the AWS Organization.
+See \url{https://paws-r.github.io/docs/ram/enable_sharing_with_aws_organization.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$enable_sharing_with_aws_organization()
-}
-}
-
 \keyword{internal}

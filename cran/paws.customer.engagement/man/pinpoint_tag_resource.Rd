@@ -12,23 +12,9 @@ pinpoint_tag_resource(ResourceArn, TagsModel)
 
 \item{TagsModel}{[required]}
 }
-\value{
-An empty list.
-}
 \description{
-Adds one or more tags (keys and values) to an application, campaign,
-message template, or segment.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  TagsModel = list(
-    tags = list(
-      "string"
-    )
-  )
-)
-}
-}
+Adds one or more tags (keys and values) to an application, campaign, message template, or segment.
 
+See \url{https://paws-r.github.io/docs/pinpoint/tag_resource.html} for full documentation.
+}
 \keyword{internal}

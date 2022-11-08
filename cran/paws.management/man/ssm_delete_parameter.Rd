@@ -9,17 +9,9 @@ ssm_delete_parameter(Name)
 \arguments{
 \item{Name}{[required] The name of the parameter to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Delete a parameter from the system.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_parameter(
-  Name = "string"
-)
-}
-}
+Delete a parameter from the system. After deleting a parameter, wait for at least 30 seconds to create a parameter with the same name.
 
+See \url{https://paws-r.github.io/docs/ssm/delete_parameter.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{route53resolver_list_tags_for_resource}
 \title{Lists the tags that you associated with the specified resource}
 \usage{
-route53resolver_list_tags_for_resource(ResourceArn, MaxResults,
-  NextToken)
+route53resolver_list_tags_for_resource(
+  ResourceArn,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) for the resource that you want to list
@@ -25,28 +28,9 @@ If you have more than \code{MaxResults} tags, you can submit another
 request to get the next group of tags for the resource. In the next
 request, specify the value of \code{NextToken} from the previous response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the tags that you associated with the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/route53resolver/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

@@ -12,21 +12,9 @@ tags. For example, \code{arn:aws:redshift:us-east-2:123456789:cluster:t1}.}
 
 \item{TagKeys}{[required] The tag key that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes tags from a resource. You must provide the ARN of the resource
-from which you want to delete the tag or tags.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_tags(
-  ResourceName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Deletes tags from a resource. You must provide the ARN of the resource from which you want to delete the tag or tags.
 
+See \url{https://paws-r.github.io/docs/redshift/delete_tags.html} for full documentation.
+}
 \keyword{internal}

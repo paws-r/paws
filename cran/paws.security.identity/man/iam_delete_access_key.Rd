@@ -4,7 +4,7 @@
 \alias{iam_delete_access_key}
 \title{Deletes the access key pair associated with the specified IAM user}
 \usage{
-iam_delete_access_key(UserName, AccessKeyId)
+iam_delete_access_key(UserName = NULL, AccessKeyId)
 }
 \arguments{
 \item{UserName}{The name of the user whose access key pair you want to delete.
@@ -19,35 +19,9 @@ to delete.
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 that can consist of any upper or lowercased letter or digit.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the access key pair associated with the specified IAM user.
 
-If you do not specify a user name, IAM determines the user name
-implicitly based on the AWS access key ID signing the request. This
-operation works for access keys under the AWS account. Consequently, you
-can use this operation to manage AWS account root user credentials even
-if the AWS account has no associated users.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_access_key(
-  UserName = "string",
-  AccessKeyId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command deletes one access key (access key ID and secret
-# access key) assigned to the IAM user named Bob.
-svc$delete_access_key(
-  AccessKeyId = "AKIDPMS9RO4H3FEXAMPLE",
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/delete_access_key.html} for full documentation.
 }
 \keyword{internal}

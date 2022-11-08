@@ -4,7 +4,11 @@
 \alias{lexmodelbuildingservice_get_intents}
 \title{Returns intent information as follows:}
 \usage{
-lexmodelbuildingservice_get_intents(nextToken, maxResults, nameContains)
+lexmodelbuildingservice_get_intents(
+  nextToken = NULL,
+  maxResults = NULL,
+  nameContains = NULL
+)
 }
 \arguments{
 \item{nextToken}{A pagination token that fetches the next page of intents. If the
@@ -19,54 +23,9 @@ pagination token in the next request.}
 part of its name matches the substring. For example, "xyz" matches both
 "xyzabc" and "abcxyz."}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  intents = list(
-    list(
-      name = "string",
-      description = "string",
-      lastUpdatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      createdDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      version = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Returns intent information as follows:
-\itemize{
-\item If you specify the \code{nameContains} field, returns the \verb{$LATEST}
-version of all intents that contain the specified string.
-\item If you don't specify the \code{nameContains} field, returns information
-about the \verb{$LATEST} version of all intents.
-}
 
-The operation requires permission for the \code{lex:GetIntents} action.
-}
-\section{Request syntax}{
-\preformatted{svc$get_intents(
-  nextToken = "string",
-  maxResults = 123,
-  nameContains = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example shows how to get a list of all of the intents in your
-# account.
-svc$get_intents(
-  maxResults = 10L,
-  nextToken = ""
-)
-}
-
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_intents.html} for full documentation.
 }
 \keyword{internal}

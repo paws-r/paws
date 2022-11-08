@@ -5,8 +5,15 @@
 \title{Retrieves IDs and annotations for traces available for a specified time
 frame using an optional filter}
 \usage{
-xray_get_trace_summaries(StartTime, EndTime, TimeRangeType, Sampling,
-  SamplingStrategy, FilterExpression, NextToken)
+xray_get_trace_summaries(
+  StartTime,
+  EndTime,
+  TimeRangeType = NULL,
+  Sampling = NULL,
+  SamplingStrategy = NULL,
+  FilterExpression = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{StartTime}{[required] The start of the time frame for which to retrieve traces.}
@@ -27,225 +34,9 @@ requests that meet certain requirements.}
 \item{NextToken}{Specify the pagination token returned by a previous request to retrieve
 the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TraceSummaries = list(
-    list(
-      Id = "string",
-      Duration = 123.0,
-      ResponseTime = 123.0,
-      HasFault = TRUE|FALSE,
-      HasError = TRUE|FALSE,
-      HasThrottle = TRUE|FALSE,
-      IsPartial = TRUE|FALSE,
-      Http = list(
-        HttpURL = "string",
-        HttpStatus = 123,
-        HttpMethod = "string",
-        UserAgent = "string",
-        ClientIp = "string"
-      ),
-      Annotations = list(
-        list(
-          list(
-            AnnotationValue = list(
-              NumberValue = 123.0,
-              BooleanValue = TRUE|FALSE,
-              StringValue = "string"
-            ),
-            ServiceIds = list(
-              list(
-                Name = "string",
-                Names = list(
-                  "string"
-                ),
-                AccountId = "string",
-                Type = "string"
-              )
-            )
-          )
-        )
-      ),
-      Users = list(
-        list(
-          UserName = "string",
-          ServiceIds = list(
-            list(
-              Name = "string",
-              Names = list(
-                "string"
-              ),
-              AccountId = "string",
-              Type = "string"
-            )
-          )
-        )
-      ),
-      ServiceIds = list(
-        list(
-          Name = "string",
-          Names = list(
-            "string"
-          ),
-          AccountId = "string",
-          Type = "string"
-        )
-      ),
-      ResourceARNs = list(
-        list(
-          ARN = "string"
-        )
-      ),
-      InstanceIds = list(
-        list(
-          Id = "string"
-        )
-      ),
-      AvailabilityZones = list(
-        list(
-          Name = "string"
-        )
-      ),
-      EntryPoint = list(
-        Name = "string",
-        Names = list(
-          "string"
-        ),
-        AccountId = "string",
-        Type = "string"
-      ),
-      FaultRootCauses = list(
-        list(
-          Services = list(
-            list(
-              Name = "string",
-              Names = list(
-                "string"
-              ),
-              Type = "string",
-              AccountId = "string",
-              EntityPath = list(
-                list(
-                  Name = "string",
-                  Exceptions = list(
-                    list(
-                      Name = "string",
-                      Message = "string"
-                    )
-                  ),
-                  Remote = TRUE|FALSE
-                )
-              ),
-              Inferred = TRUE|FALSE
-            )
-          ),
-          ClientImpacting = TRUE|FALSE
-        )
-      ),
-      ErrorRootCauses = list(
-        list(
-          Services = list(
-            list(
-              Name = "string",
-              Names = list(
-                "string"
-              ),
-              Type = "string",
-              AccountId = "string",
-              EntityPath = list(
-                list(
-                  Name = "string",
-                  Exceptions = list(
-                    list(
-                      Name = "string",
-                      Message = "string"
-                    )
-                  ),
-                  Remote = TRUE|FALSE
-                )
-              ),
-              Inferred = TRUE|FALSE
-            )
-          ),
-          ClientImpacting = TRUE|FALSE
-        )
-      ),
-      ResponseTimeRootCauses = list(
-        list(
-          Services = list(
-            list(
-              Name = "string",
-              Names = list(
-                "string"
-              ),
-              Type = "string",
-              AccountId = "string",
-              EntityPath = list(
-                list(
-                  Name = "string",
-                  Coverage = 123.0,
-                  Remote = TRUE|FALSE
-                )
-              ),
-              Inferred = TRUE|FALSE
-            )
-          ),
-          ClientImpacting = TRUE|FALSE
-        )
-      ),
-      Revision = 123,
-      MatchedEventTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  ApproximateTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  TracesProcessedCount = 123,
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves IDs and annotations for traces available for a specified time
-frame using an optional filter. To get the full traces, pass the trace
-IDs to \code{\link[=xray_batch_get_traces]{batch_get_traces}}.
+Retrieves IDs and annotations for traces available for a specified time frame using an optional filter. To get the full traces, pass the trace IDs to \code{\link[=xray_batch_get_traces]{batch_get_traces}}.
 
-A filter expression can target traced requests that hit specific service
-nodes or edges, have errors, or come from a known user. For example, the
-following filter expression targets traces that pass through
-\code{api.example.com}:
-
-\code{service("api.example.com")}
-
-This filter expression finds traces that have an annotation named
-\code{account} with the value \code{12345}:
-
-\code{annotation.account = "12345"}
-
-For a full list of indexed fields and keywords that you can use in
-filter expressions, see \href{https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html}{Using Filter Expressions}
-in the \emph{AWS X-Ray Developer Guide}.
+See \url{https://paws-r.github.io/docs/xray/get_trace_summaries.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_trace_summaries(
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  TimeRangeType = "TraceId"|"Event",
-  Sampling = TRUE|FALSE,
-  SamplingStrategy = list(
-    Name = "PartialScan"|"FixedRate",
-    Value = 123.0
-  ),
-  FilterExpression = "string",
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

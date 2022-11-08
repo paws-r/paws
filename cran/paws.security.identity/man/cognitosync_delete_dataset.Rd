@@ -18,40 +18,9 @@ Cognito. GUID generation is unique within a region.}
 \item{DatasetName}{[required] A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9,
 '_' (underscore), '-' (dash), and '.' (dot).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Dataset = list(
-    IdentityId = "string",
-    DatasetName = "string",
-    CreationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastModifiedBy = "string",
-    DataStorage = 123,
-    NumRecords = 123
-  )
-)
-}
-}
 \description{
-Deletes the specific dataset. The dataset will be deleted permanently,
-and the action can't be undone. Datasets that this dataset was merged
-with will no longer report the merge. Any subsequent operation on this
-dataset will result in a ResourceNotFoundException.
+Deletes the specific dataset. The dataset will be deleted permanently, and the action can't be undone. Datasets that this dataset was merged with will no longer report the merge. Any subsequent operation on this dataset will result in a ResourceNotFoundException.
 
-This API can be called with temporary user credentials provided by
-Cognito Identity or with developer credentials.
+See \url{https://paws-r.github.io/docs/cognitosync/delete_dataset.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_dataset(
-  IdentityPoolId = "string",
-  IdentityId = "string",
-  DatasetName = "string"
-)
-}
-}
-
 \keyword{internal}

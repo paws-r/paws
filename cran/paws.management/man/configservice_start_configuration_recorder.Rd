@@ -2,8 +2,8 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_start_configuration_recorder}
 \alias{configservice_start_configuration_recorder}
-\title{Starts recording configurations of the AWS resources you have selected
-to record in your AWS account}
+\title{Starts recording configurations of the Amazon Web Services resources you
+have selected to record in your Amazon Web Services account}
 \usage{
 configservice_start_configuration_recorder(ConfigurationRecorderName)
 }
@@ -11,21 +11,9 @@ configservice_start_configuration_recorder(ConfigurationRecorderName)
 \item{ConfigurationRecorderName}{[required] The name of the recorder object that records each configuration change
 made to the resources.}
 }
-\value{
-An empty list.
-}
 \description{
-Starts recording configurations of the AWS resources you have selected
-to record in your AWS account.
+Starts recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account.
 
-You must have created at least one delivery channel to successfully
-start the configuration recorder.
+See \url{https://paws-r.github.io/docs/configservice/start_configuration_recorder.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_configuration_recorder(
-  ConfigurationRecorderName = "string"
-)
-}
-}
-
 \keyword{internal}

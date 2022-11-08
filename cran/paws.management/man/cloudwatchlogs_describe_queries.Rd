@@ -5,8 +5,12 @@
 \title{Returns a list of CloudWatch Logs Insights queries that are scheduled,
 executing, or have been executed recently in this account}
 \usage{
-cloudwatchlogs_describe_queries(logGroupName, status, maxResults,
-  nextToken)
+cloudwatchlogs_describe_queries(
+  logGroupName = NULL,
+  status = NULL,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{logGroupName}{Limits the returned queries to only those for the specified log group.}
@@ -19,35 +23,9 @@ and \code{Scheduled}.}
 
 \item{nextToken}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  queries = list(
-    list(
-      queryId = "string",
-      queryString = "string",
-      status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled",
-      createTime = 123,
-      logGroupName = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns a list of CloudWatch Logs Insights queries that are scheduled,
-executing, or have been executed recently in this account. You can
-request all queries or limit it to queries of a specific log group or
-queries with a certain status.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_queries(
-  logGroupName = "string",
-  status = "Scheduled"|"Running"|"Complete"|"Failed"|"Cancelled",
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
+Returns a list of CloudWatch Logs Insights queries that are scheduled, executing, or have been executed recently in this account. You can request all queries or limit it to queries of a specific log group or queries with a certain status.
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_queries.html} for full documentation.
+}
 \keyword{internal}

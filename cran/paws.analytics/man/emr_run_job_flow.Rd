@@ -4,13 +4,37 @@
 \alias{emr_run_job_flow}
 \title{RunJobFlow creates and starts running a new cluster (job flow)}
 \usage{
-emr_run_job_flow(Name, LogUri, LogEncryptionKmsKeyId, AdditionalInfo,
-  AmiVersion, ReleaseLabel, Instances, Steps, BootstrapActions,
-  SupportedProducts, NewSupportedProducts, Applications, Configurations,
-  VisibleToAllUsers, JobFlowRole, ServiceRole, Tags,
-  SecurityConfiguration, AutoScalingRole, ScaleDownBehavior, CustomAmiId,
-  EbsRootVolumeSize, RepoUpgradeOnBoot, KerberosAttributes,
-  StepConcurrencyLevel, ManagedScalingPolicy, PlacementGroupConfigs)
+emr_run_job_flow(
+  Name,
+  LogUri = NULL,
+  LogEncryptionKmsKeyId = NULL,
+  AdditionalInfo = NULL,
+  AmiVersion = NULL,
+  ReleaseLabel = NULL,
+  Instances,
+  Steps = NULL,
+  BootstrapActions = NULL,
+  SupportedProducts = NULL,
+  NewSupportedProducts = NULL,
+  Applications = NULL,
+  Configurations = NULL,
+  VisibleToAllUsers = NULL,
+  JobFlowRole = NULL,
+  ServiceRole = NULL,
+  Tags = NULL,
+  SecurityConfiguration = NULL,
+  AutoScalingRole = NULL,
+  ScaleDownBehavior = NULL,
+  CustomAmiId = NULL,
+  EbsRootVolumeSize = NULL,
+  RepoUpgradeOnBoot = NULL,
+  KerberosAttributes = NULL,
+  StepConcurrencyLevel = NULL,
+  ManagedScalingPolicy = NULL,
+  PlacementGroupConfigs = NULL,
+  AutoTerminationPolicy = NULL,
+  OSReleaseLabel = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the job flow.}
@@ -18,10 +42,9 @@ emr_run_job_flow(Name, LogUri, LogEncryptionKmsKeyId, AdditionalInfo,
 \item{LogUri}{The location in Amazon S3 to write the log files of the job flow. If a
 value is not provided, logs are not created.}
 
-\item{LogEncryptionKmsKeyId}{The AWS KMS customer master key (CMK) used for encrypting log files. If
-a value is not provided, the logs remain encrypted by AES-256. This
-attribute is only available with Amazon EMR version 5.30.0 and later,
-excluding Amazon EMR 6.0.0.}
+\item{LogEncryptionKmsKeyId}{The KMS key used for encrypting log files. If a value is not provided,
+the logs remain encrypted by AES-256. This attribute is only available
+with Amazon EMR version 5.30.0 and later, excluding Amazon EMR 6.0.0.}
 
 \item{AdditionalInfo}{A JSON string for selecting additional features.}
 
@@ -72,7 +95,7 @@ Supported values are:
 "--edition,m5" - launch the job flow using MapR M3 or M5 Edition
 respectively.
 \item "mapr-m7" - launch the cluster using MapR M7 Edition.
-\item "hunk" - launch the cluster with the Hunk Big Data Analtics
+\item "hunk" - launch the cluster with the Hunk Big Data Analytics
 Platform.
 \item "hue"- launch the cluster with Hue installed.
 \item "spark" - launch the cluster with Apache Spark installed.
@@ -83,23 +106,34 @@ installed.
 \item{Applications}{Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of
 applications for Amazon EMR to install and configure when launching the
 cluster. For a list of applications available for each Amazon EMR
-release version, see the \href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/}{Amazon EMR Release Guide}.}
+release version, see the \href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/}{Amazon EMRRelease Guide}.}
 
 \item{Configurations}{For Amazon EMR releases 4.0 and later. The list of configurations
 supplied for the EMR cluster you are creating.}
 
-\item{VisibleToAllUsers}{A value of \code{true} indicates that all IAM users in the AWS account can
-perform cluster actions if they have the proper IAM policy permissions.
-This is the default. A value of \code{false} indicates that only the IAM user
-who created the cluster can perform actions.}
+\item{VisibleToAllUsers}{The VisibleToAllUsers parameter is no longer supported. By default, the
+value is set to \code{true}. Setting it to \code{false} now has no effect.
+
+Set this value to \code{true} so that IAM principals in the Amazon Web
+Services account associated with the cluster can perform EMR actions on
+the cluster that their IAM policies allow. This value defaults to \code{true}
+for clusters created using the EMR API or the CLI
+\href{https://docs.aws.amazon.com/cli/latest/reference/emr/create-cluster.html}{create-cluster}
+command.
+
+When set to \code{false}, only the IAM principal that created the cluster and
+the Amazon Web Services account root user can perform EMR actions for
+the cluster, regardless of the IAM permissions policies attached to
+other IAM principals. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/security_iam_emr-with-iam.html#security_set_visible_to_all_users}{Understanding the EMR Cluster VisibleToAllUsers Setting}
+in the \emph{Amazon EMRManagement Guide}.}
 
 \item{JobFlowRole}{Also called instance profile and EC2 role. An IAM role for an EMR
 cluster. The EC2 instances of the cluster assume this role. The default
 role is \code{EMR_EC2_DefaultRole}. In order to use the default role, you
 must have already created it using the CLI or console.}
 
-\item{ServiceRole}{The IAM role that will be assumed by the Amazon EMR service to access
-AWS resources on your behalf.}
+\item{ServiceRole}{The IAM role that Amazon EMR assumes in order to access Amazon Web
+Services resources on your behalf.}
 
 \item{Tags}{A list of tags to associate with a cluster and propagate to Amazon EC2
 instances.}
@@ -159,303 +193,16 @@ default value is \code{1}. The maximum value is \code{256}.}
 \item{ManagedScalingPolicy}{The specified managed scaling policy for an Amazon EMR cluster.}
 
 \item{PlacementGroupConfigs}{The specified placement group configuration for an Amazon EMR cluster.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  JobFlowId = "string",
-  ClusterArn = "string"
-)
-}
+
+\item{AutoTerminationPolicy}{}
+
+\item{OSReleaseLabel}{Specifies a particular Amazon Linux release for all nodes in a cluster
+launch RunJobFlow request. If a release is not specified, Amazon EMR
+uses the latest validated Amazon Linux release for cluster launch.}
 }
 \description{
-RunJobFlow creates and starts running a new cluster (job flow). The
-cluster runs the steps specified. After the steps complete, the cluster
-stops and the HDFS partition is lost. To prevent loss of data, configure
-the last step of the job flow to store results in Amazon S3. If the
-JobFlowInstancesConfig \code{KeepJobFlowAliveWhenNoSteps} parameter is set to
-\code{TRUE}, the cluster transitions to the WAITING state rather than
-shutting down after the steps have completed.
+RunJobFlow creates and starts running a new cluster (job flow). The cluster runs the steps specified. After the steps complete, the cluster stops and the HDFS partition is lost. To prevent loss of data, configure the last step of the job flow to store results in Amazon S3. If the JobFlowInstancesConfig \code{KeepJobFlowAliveWhenNoSteps} parameter is set to \code{TRUE}, the cluster transitions to the WAITING state rather than shutting down after the steps have completed.
 
-For additional protection, you can set the JobFlowInstancesConfig
-\code{TerminationProtected} parameter to \code{TRUE} to lock the cluster and
-prevent it from being terminated by API call, user intervention, or in
-the event of a job flow error.
-
-A maximum of 256 steps are allowed in each job flow.
-
-If your cluster is long-running (such as a Hive data warehouse) or
-complex, you may require more than 256 steps to process your data. You
-can bypass the 256-step limitation in various ways, including using the
-SSH shell to connect to the master node and submitting queries directly
-to the software running on the master node, such as Hive and Hadoop. For
-more information on how to do this, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/AddMoreThan256Steps.html}{Add More than 256 Steps to a Cluster}
-in the \emph{Amazon EMR Management Guide}.
-
-For long running clusters, we recommend that you periodically store your
-results.
-
-The instance fleets configuration is available only in Amazon EMR
-versions 4.8.0 and later, excluding 5.0.x versions. The RunJobFlow
-request can contain InstanceFleets parameters or InstanceGroups
-parameters, but not both.
+See \url{https://paws-r.github.io/docs/emr/run_job_flow.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$run_job_flow(
-  Name = "string",
-  LogUri = "string",
-  LogEncryptionKmsKeyId = "string",
-  AdditionalInfo = "string",
-  AmiVersion = "string",
-  ReleaseLabel = "string",
-  Instances = list(
-    MasterInstanceType = "string",
-    SlaveInstanceType = "string",
-    InstanceCount = 123,
-    InstanceGroups = list(
-      list(
-        Name = "string",
-        Market = "ON_DEMAND"|"SPOT",
-        InstanceRole = "MASTER"|"CORE"|"TASK",
-        BidPrice = "string",
-        InstanceType = "string",
-        InstanceCount = 123,
-        Configurations = list(
-          list(
-            Classification = "string",
-            Configurations = list(),
-            Properties = list(
-              "string"
-            )
-          )
-        ),
-        EbsConfiguration = list(
-          EbsBlockDeviceConfigs = list(
-            list(
-              VolumeSpecification = list(
-                VolumeType = "string",
-                Iops = 123,
-                SizeInGB = 123
-              ),
-              VolumesPerInstance = 123
-            )
-          ),
-          EbsOptimized = TRUE|FALSE
-        ),
-        AutoScalingPolicy = list(
-          Constraints = list(
-            MinCapacity = 123,
-            MaxCapacity = 123
-          ),
-          Rules = list(
-            list(
-              Name = "string",
-              Description = "string",
-              Action = list(
-                Market = "ON_DEMAND"|"SPOT",
-                SimpleScalingPolicyConfiguration = list(
-                  AdjustmentType = "CHANGE_IN_CAPACITY"|"PERCENT_CHANGE_IN_CAPACITY"|"EXACT_CAPACITY",
-                  ScalingAdjustment = 123,
-                  CoolDown = 123
-                )
-              ),
-              Trigger = list(
-                CloudWatchAlarmDefinition = list(
-                  ComparisonOperator = "GREATER_THAN_OR_EQUAL"|"GREATER_THAN"|"LESS_THAN"|"LESS_THAN_OR_EQUAL",
-                  EvaluationPeriods = 123,
-                  MetricName = "string",
-                  Namespace = "string",
-                  Period = 123,
-                  Statistic = "SAMPLE_COUNT"|"AVERAGE"|"SUM"|"MINIMUM"|"MAXIMUM",
-                  Threshold = 123.0,
-                  Unit = "NONE"|"SECONDS"|"MICRO_SECONDS"|"MILLI_SECONDS"|"BYTES"|"KILO_BYTES"|"MEGA_BYTES"|"GIGA_BYTES"|"TERA_BYTES"|"BITS"|"KILO_BITS"|"MEGA_BITS"|"GIGA_BITS"|"TERA_BITS"|"PERCENT"|"COUNT"|"BYTES_PER_SECOND"|"KILO_BYTES_PER_SECOND"|"MEGA_BYTES_PER_SECOND"|"GIGA_BYTES_PER_SECOND"|"TERA_BYTES_PER_SECOND"|"BITS_PER_SECOND"|"KILO_BITS_PER_SECOND"|"MEGA_BITS_PER_SECOND"|"GIGA_BITS_PER_SECOND"|"TERA_BITS_PER_SECOND"|"COUNT_PER_SECOND",
-                  Dimensions = list(
-                    list(
-                      Key = "string",
-                      Value = "string"
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    ),
-    InstanceFleets = list(
-      list(
-        Name = "string",
-        InstanceFleetType = "MASTER"|"CORE"|"TASK",
-        TargetOnDemandCapacity = 123,
-        TargetSpotCapacity = 123,
-        InstanceTypeConfigs = list(
-          list(
-            InstanceType = "string",
-            WeightedCapacity = 123,
-            BidPrice = "string",
-            BidPriceAsPercentageOfOnDemandPrice = 123.0,
-            EbsConfiguration = list(
-              EbsBlockDeviceConfigs = list(
-                list(
-                  VolumeSpecification = list(
-                    VolumeType = "string",
-                    Iops = 123,
-                    SizeInGB = 123
-                  ),
-                  VolumesPerInstance = 123
-                )
-              ),
-              EbsOptimized = TRUE|FALSE
-            ),
-            Configurations = list(
-              list(
-                Classification = "string",
-                Configurations = list(),
-                Properties = list(
-                  "string"
-                )
-              )
-            )
-          )
-        ),
-        LaunchSpecifications = list(
-          SpotSpecification = list(
-            TimeoutDurationMinutes = 123,
-            TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
-            BlockDurationMinutes = 123,
-            AllocationStrategy = "capacity-optimized"
-          ),
-          OnDemandSpecification = list(
-            AllocationStrategy = "lowest-price"
-          )
-        )
-      )
-    ),
-    Ec2KeyName = "string",
-    Placement = list(
-      AvailabilityZone = "string",
-      AvailabilityZones = list(
-        "string"
-      )
-    ),
-    KeepJobFlowAliveWhenNoSteps = TRUE|FALSE,
-    TerminationProtected = TRUE|FALSE,
-    HadoopVersion = "string",
-    Ec2SubnetId = "string",
-    Ec2SubnetIds = list(
-      "string"
-    ),
-    EmrManagedMasterSecurityGroup = "string",
-    EmrManagedSlaveSecurityGroup = "string",
-    ServiceAccessSecurityGroup = "string",
-    AdditionalMasterSecurityGroups = list(
-      "string"
-    ),
-    AdditionalSlaveSecurityGroups = list(
-      "string"
-    )
-  ),
-  Steps = list(
-    list(
-      Name = "string",
-      ActionOnFailure = "TERMINATE_JOB_FLOW"|"TERMINATE_CLUSTER"|"CANCEL_AND_WAIT"|"CONTINUE",
-      HadoopJarStep = list(
-        Properties = list(
-          list(
-            Key = "string",
-            Value = "string"
-          )
-        ),
-        Jar = "string",
-        MainClass = "string",
-        Args = list(
-          "string"
-        )
-      )
-    )
-  ),
-  BootstrapActions = list(
-    list(
-      Name = "string",
-      ScriptBootstrapAction = list(
-        Path = "string",
-        Args = list(
-          "string"
-        )
-      )
-    )
-  ),
-  SupportedProducts = list(
-    "string"
-  ),
-  NewSupportedProducts = list(
-    list(
-      Name = "string",
-      Args = list(
-        "string"
-      )
-    )
-  ),
-  Applications = list(
-    list(
-      Name = "string",
-      Version = "string",
-      Args = list(
-        "string"
-      ),
-      AdditionalInfo = list(
-        "string"
-      )
-    )
-  ),
-  Configurations = list(
-    list(
-      Classification = "string",
-      Configurations = list(),
-      Properties = list(
-        "string"
-      )
-    )
-  ),
-  VisibleToAllUsers = TRUE|FALSE,
-  JobFlowRole = "string",
-  ServiceRole = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  SecurityConfiguration = "string",
-  AutoScalingRole = "string",
-  ScaleDownBehavior = "TERMINATE_AT_INSTANCE_HOUR"|"TERMINATE_AT_TASK_COMPLETION",
-  CustomAmiId = "string",
-  EbsRootVolumeSize = 123,
-  RepoUpgradeOnBoot = "SECURITY"|"NONE",
-  KerberosAttributes = list(
-    Realm = "string",
-    KdcAdminPassword = "string",
-    CrossRealmTrustPrincipalPassword = "string",
-    ADDomainJoinUser = "string",
-    ADDomainJoinPassword = "string"
-  ),
-  StepConcurrencyLevel = 123,
-  ManagedScalingPolicy = list(
-    ComputeLimits = list(
-      UnitType = "InstanceFleetUnits"|"Instances"|"VCPU",
-      MinimumCapacityUnits = 123,
-      MaximumCapacityUnits = 123,
-      MaximumOnDemandCapacityUnits = 123,
-      MaximumCoreCapacityUnits = 123
-    )
-  ),
-  PlacementGroupConfigs = list(
-    list(
-      InstanceRole = "MASTER"|"CORE"|"TASK",
-      PlacementStrategy = "SPREAD"|"PARTITION"|"CLUSTER"|"NONE"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

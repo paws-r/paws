@@ -4,9 +4,13 @@
 \alias{codecommit_get_merge_commit}
 \title{Returns information about a specified merge commit}
 \usage{
-codecommit_get_merge_commit(repositoryName, sourceCommitSpecifier,
-  destinationCommitSpecifier, conflictDetailLevel,
-  conflictResolutionStrategy)
+codecommit_get_merge_commit(
+  repositoryName,
+  sourceCommitSpecifier,
+  destinationCommitSpecifier,
+  conflictDetailLevel = NULL,
+  conflictResolutionStrategy = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository that contains the merge commit about which
@@ -29,27 +33,9 @@ attempt automatically merging two versions of a file. The default is
 NONE, which requires any conflicts to be resolved manually before the
 merge operation is successful.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  sourceCommitId = "string",
-  destinationCommitId = "string",
-  baseCommitId = "string",
-  mergedCommitId = "string"
-)
-}
-}
 \description{
 Returns information about a specified merge commit.
-}
-\section{Request syntax}{
-\preformatted{svc$get_merge_commit(
-  repositoryName = "string",
-  sourceCommitSpecifier = "string",
-  destinationCommitSpecifier = "string",
-  conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-  conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codecommit/get_merge_commit.html} for full documentation.
+}
 \keyword{internal}

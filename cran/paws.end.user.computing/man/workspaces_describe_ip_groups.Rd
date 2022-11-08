@@ -4,7 +4,11 @@
 \alias{workspaces_describe_ip_groups}
 \title{Describes one or more of your IP access control groups}
 \usage{
-workspaces_describe_ip_groups(GroupIds, NextToken, MaxResults)
+workspaces_describe_ip_groups(
+  GroupIds = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{GroupIds}{The identifiers of one or more IP access control groups.}
@@ -14,37 +18,9 @@ provide this token to receive the next set of results.}
 
 \item{MaxResults}{The maximum number of items to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Result = list(
-    list(
-      groupId = "string",
-      groupName = "string",
-      groupDesc = "string",
-      userRules = list(
-        list(
-          ipRule = "string",
-          ruleDesc = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes one or more of your IP access control groups.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_ip_groups(
-  GroupIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workspaces/describe_ip_groups.html} for full documentation.
+}
 \keyword{internal}

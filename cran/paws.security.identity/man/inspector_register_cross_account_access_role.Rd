@@ -11,29 +11,9 @@ inspector_register_cross_account_access_role(roleArn)
 \item{roleArn}{[required] The ARN of the IAM role that grants Amazon Inspector access to AWS
 Services needed to perform security assessments.}
 }
-\value{
-An empty list.
-}
 \description{
-Registers the IAM role that grants Amazon Inspector access to AWS
-Services needed to perform security assessments.
-}
-\section{Request syntax}{
-\preformatted{svc$register_cross_account_access_role(
-  roleArn = "string"
-)
-}
-}
+Registers the IAM role that grants Amazon Inspector access to AWS Services needed to perform security assessments.
 
-\examples{
-\dontrun{
-# Registers the IAM role that Amazon Inspector uses to list your EC2
-# instances at the start of the assessment run or when you call the
-# PreviewAgents action.
-svc$register_cross_account_access_role(
-  roleArn = "arn:aws:iam::123456789012:role/inspector"
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/register_cross_account_access_role.html} for full documentation.
 }
 \keyword{internal}

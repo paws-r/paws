@@ -14,48 +14,9 @@ metadata to return.}
 
 \item{TableName}{[required] The name of the table for which metadata is returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TableMetadata = list(
-    Name = "string",
-    CreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastAccessTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    TableType = "string",
-    Columns = list(
-      list(
-        Name = "string",
-        Type = "string",
-        Comment = "string"
-      )
-    ),
-    PartitionKeys = list(
-      list(
-        Name = "string",
-        Type = "string",
-        Comment = "string"
-      )
-    ),
-    Parameters = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns table metadata for the specified catalog, database, and table.
-}
-\section{Request syntax}{
-\preformatted{svc$get_table_metadata(
-  CatalogName = "string",
-  DatabaseName = "string",
-  TableName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/athena/get_table_metadata.html} for full documentation.
+}
 \keyword{internal}

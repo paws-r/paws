@@ -4,8 +4,14 @@
 \alias{rekognition_start_segment_detection}
 \title{Starts asynchronous detection of segment detection in a stored video}
 \usage{
-rekognition_start_segment_detection(Video, ClientRequestToken,
-  NotificationChannel, JobTag, Filters, SegmentTypes)
+rekognition_start_segment_detection(
+  Video,
+  ClientRequestToken = NULL,
+  NotificationChannel = NULL,
+  JobTag = NULL,
+  Filters = NULL,
+  SegmentTypes
+)
 }
 \arguments{
 \item{Video}{[required]}
@@ -18,7 +24,9 @@ prevent the same job from being accidently started more than once.}
 
 \item{NotificationChannel}{The ARN of the Amazon SNS topic to which you want Amazon Rekognition
 Video to publish the completion status of the segment detection
-operation.}
+operation. Note that the Amazon SNS topic must have a topic name that
+begins with \emph{AmazonRekognition} if you are using the
+AmazonRekognitionServiceRole permissions policy to access the topic.}
 
 \item{JobTag}{An identifier you specify that's returned in the completion notification
 that's published to your Amazon Simple Notification Service topic. For
@@ -30,67 +38,9 @@ the completion notification.}
 \item{SegmentTypes}{[required] An array of segment types to detect in the video. Valid values are
 TECHNICAL_CUE and SHOT.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string"
-)
-}
-}
 \description{
 Starts asynchronous detection of segment detection in a stored video.
 
-Amazon Rekognition Video can detect segments in a video stored in an
-Amazon S3 bucket. Use Video to specify the bucket name and the filename
-of the video.
-\code{\link[=rekognition_start_segment_detection]{start_segment_detection}} returns
-a job identifier (\code{JobId}) which you use to get the results of the
-operation. When segment detection is finished, Amazon Rekognition Video
-publishes a completion status to the Amazon Simple Notification Service
-topic that you specify in \code{NotificationChannel}.
-
-You can use the \code{Filters} (StartSegmentDetectionFilters) input parameter
-to specify the minimum detection confidence returned in the response.
-Within \code{Filters}, use \code{ShotFilter} (StartShotDetectionFilter) to filter
-detected shots. Use \code{TechnicalCueFilter}
-(StartTechnicalCueDetectionFilter) to filter technical cues.
-
-To get the results of the segment detection operation, first check that
-the status value published to the Amazon SNS topic is \code{SUCCEEDED}. if
-so, call \code{\link[=rekognition_get_segment_detection]{get_segment_detection}}
-and pass the job identifier (\code{JobId}) from the initial call to
-\code{\link[=rekognition_start_segment_detection]{start_segment_detection}}.
-
-For more information, see Detecting Video Segments in Stored Video in
-the Amazon Rekognition Developer Guide.
+See \url{https://paws-r.github.io/docs/rekognition/start_segment_detection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_segment_detection(
-  Video = list(
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  ClientRequestToken = "string",
-  NotificationChannel = list(
-    SNSTopicArn = "string",
-    RoleArn = "string"
-  ),
-  JobTag = "string",
-  Filters = list(
-    TechnicalCueFilter = list(
-      MinSegmentConfidence = 123.0
-    ),
-    ShotFilter = list(
-      MinSegmentConfidence = 123.0
-    )
-  ),
-  SegmentTypes = list(
-    "TECHNICAL_CUE"|"SHOT"
-  )
-)
-}
-}
-
 \keyword{internal}

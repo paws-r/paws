@@ -3,41 +3,20 @@
 \name{organizations_register_delegated_administrator}
 \alias{organizations_register_delegated_administrator}
 \title{Enables the specified member account to administer the Organizations
-features of the specified AWS service}
+features of the specified Amazon Web Services service}
 \usage{
-organizations_register_delegated_administrator(AccountId,
-  ServicePrincipal)
+organizations_register_delegated_administrator(AccountId, ServicePrincipal)
 }
 \arguments{
 \item{AccountId}{[required] The account ID number of the member account in the organization to
 register as a delegated administrator.}
 
-\item{ServicePrincipal}{[required] The service principal of the AWS service for which you want to make the
-member account a delegated administrator.}
-}
-\value{
-An empty list.
+\item{ServicePrincipal}{[required] The service principal of the Amazon Web Services service for which you
+want to make the member account a delegated administrator.}
 }
 \description{
-Enables the specified member account to administer the Organizations
-features of the specified AWS service. It grants read-only access to AWS
-Organizations service data. The account still requires IAM permissions
-to access and administer the AWS service.
+Enables the specified member account to administer the Organizations features of the specified Amazon Web Services service. It grants read-only access to Organizations service data. The account still requires IAM permissions to access and administer the Amazon Web Services service.
 
-You can run this action only for AWS services that support this feature.
-For a current list of services that support it, see the column \emph{Supports
-Delegated Administrator} in the table at \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services_list.html}{AWS Services that you can use with AWS Organizations}
-in the \emph{AWS Organizations User Guide.}
-
-This operation can be called only from the organization's management
-account.
+See \url{https://paws-r.github.io/docs/organizations/register_delegated_administrator.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$register_delegated_administrator(
-  AccountId = "string",
-  ServicePrincipal = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -7,52 +7,13 @@
 comprehendmedical_describe_entities_detection_v2_job(JobId)
 }
 \arguments{
-\item{JobId}{[required] The identifier that Amazon Comprehend Medical generated for the job. The
+\item{JobId}{[required] The identifier that Comprehend Medical; generated for the job. The
 \code{\link[=comprehendmedical_start_entities_detection_v2_job]{start_entities_detection_v2_job}}
 operation returns this identifier in its response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ComprehendMedicalAsyncJobProperties = list(
-    JobId = "string",
-    JobName = "string",
-    JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-    Message = "string",
-    SubmitTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ExpirationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    InputDataConfig = list(
-      S3Bucket = "string",
-      S3Key = "string"
-    ),
-    OutputDataConfig = list(
-      S3Bucket = "string",
-      S3Key = "string"
-    ),
-    LanguageCode = "en",
-    DataAccessRoleArn = "string",
-    ManifestFilePath = "string",
-    KMSKey = "string",
-    ModelVersion = "string"
-  )
-)
-}
-}
 \description{
-Gets the properties associated with a medical entities detection job.
-Use this operation to get the status of a detection job.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_entities_detection_v2_job(
-  JobId = "string"
-)
-}
-}
+Gets the properties associated with a medical entities detection job. Use this operation to get the status of a detection job.
 
+See \url{https://paws-r.github.io/docs/comprehendmedical/describe_entities_detection_v2_job.html} for full documentation.
+}
 \keyword{internal}

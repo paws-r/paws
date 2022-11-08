@@ -9,46 +9,9 @@ storagegateway_describe_working_storage(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string",
-  DiskIds = list(
-    "string"
-  ),
-  WorkingStorageUsedInBytes = 123,
-  WorkingStorageAllocatedInBytes = 123
-)
-}
-}
 \description{
-Returns information about the working storage of a gateway. This
-operation is only supported in the stored volumes gateway type. This
-operation is deprecated in cached volumes API version (20120630). Use
-DescribeUploadBuffer instead.
+Returns information about the working storage of a gateway. This operation is only supported in the stored volumes gateway type. This operation is deprecated in cached volumes API version (20120630). Use DescribeUploadBuffer instead.
 
-Working storage is also referred to as upload buffer. You can also use
-the DescribeUploadBuffer operation to add upload buffer to a stored
-volume gateway.
-
-The response includes disk IDs that are configured as working storage,
-and it includes the amount of working storage allocated and used.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_working_storage(
-  GatewayARN = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation is supported only for the gateway-stored volume
-# architecture. This operation is deprecated in cached-volumes API version
-# (20120630). Use DescribeUploadBuffer instead.
-svc$describe_working_storage(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/describe_working_storage.html} for full documentation.
 }
 \keyword{internal}

@@ -2,65 +2,17 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_start_config_rules_evaluation}
 \alias{configservice_start_config_rules_evaluation}
-\title{Runs an on-demand evaluation for the specified AWS Config rules against
-the last known configuration state of the resources}
+\title{Runs an on-demand evaluation for the specified Config rules against the
+last known configuration state of the resources}
 \usage{
-configservice_start_config_rules_evaluation(ConfigRuleNames)
+configservice_start_config_rules_evaluation(ConfigRuleNames = NULL)
 }
 \arguments{
-\item{ConfigRuleNames}{The list of names of AWS Config rules that you want to run evaluations
-for.}
-}
-\value{
-An empty list.
+\item{ConfigRuleNames}{The list of names of Config rules that you want to run evaluations for.}
 }
 \description{
-Runs an on-demand evaluation for the specified AWS Config rules against
-the last known configuration state of the resources. Use
-\code{\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation}}
-when you want to test that a rule you updated is working as expected.
-\code{\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation}}
-does not re-record the latest configuration state for your resources. It
-re-runs an evaluation against the last known state of your resources.
+Runs an on-demand evaluation for the specified Config rules against the last known configuration state of the resources. Use \code{\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation}} when you want to test that a rule you updated is working as expected. \code{\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation}} does not re-record the latest configuration state for your resources. It re-runs an evaluation against the last known state of your resources.
 
-You can specify up to 25 AWS Config rules per request.
-
-An existing
-\code{\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation}}
-call for the specified rules must complete before you can call the API
-again. If you chose to have AWS Config stream to an Amazon SNS topic,
-you will receive a \code{ConfigRuleEvaluationStarted} notification when the
-evaluation starts.
-
-You don't need to call the
-\code{\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation}}
-API to run an evaluation for a new rule. When you create a rule, AWS
-Config evaluates your resources against the rule automatically.
-
-The
-\code{\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation}}
-API is useful if you want to run on-demand evaluations, such as the
-following example:
-\enumerate{
-\item You have a custom rule that evaluates your IAM resources every 24
-hours.
-\item You update your Lambda function to add additional conditions to your
-rule.
-\item Instead of waiting for the next periodic evaluation, you call the
-\code{\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation}}
-API.
-\item AWS Config invokes your Lambda function and evaluates your IAM
-resources.
-\item Your custom rule will still run periodic evaluations every 24 hours.
+See \url{https://paws-r.github.io/docs/configservice/start_config_rules_evaluation.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$start_config_rules_evaluation(
-  ConfigRuleNames = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

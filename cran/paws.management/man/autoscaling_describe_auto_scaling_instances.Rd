@@ -2,15 +2,21 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_describe_auto_scaling_instances}
 \alias{autoscaling_describe_auto_scaling_instances}
-\title{Describes one or more Auto Scaling instances}
+\title{Gets information about the Auto Scaling instances in the account and
+Region}
 \usage{
-autoscaling_describe_auto_scaling_instances(InstanceIds, MaxRecords,
-  NextToken)
+autoscaling_describe_auto_scaling_instances(
+  InstanceIds = NULL,
+  MaxRecords = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{InstanceIds}{The IDs of the instances. You can specify up to \code{MaxRecords} IDs. If you
-omit this parameter, all Auto Scaling instances are described. If you
-specify an ID that does not exist, it is ignored with no error.}
+\item{InstanceIds}{The IDs of the instances. If you omit this property, all Auto Scaling
+instances are described. If you specify an ID that does not exist, it is
+ignored with no error.
+
+Array Members: Maximum number of 50 items.}
 
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{50} and the maximum value is \code{50}.}
@@ -18,53 +24,9 @@ is \code{50} and the maximum value is \code{50}.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AutoScalingInstances = list(
-    list(
-      InstanceId = "string",
-      InstanceType = "string",
-      AutoScalingGroupName = "string",
-      AvailabilityZone = "string",
-      LifecycleState = "string",
-      HealthStatus = "string",
-      LaunchConfigurationName = "string",
-      LaunchTemplate = list(
-        LaunchTemplateId = "string",
-        LaunchTemplateName = "string",
-        Version = "string"
-      ),
-      ProtectedFromScaleIn = TRUE|FALSE,
-      WeightedCapacity = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes one or more Auto Scaling instances.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_auto_scaling_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  MaxRecords = 123,
-  NextToken = "string"
-)
-}
-}
+Gets information about the Auto Scaling instances in the account and Region.
 
-\examples{
-\dontrun{
-# This example describes the specified Auto Scaling instance.
-svc$describe_auto_scaling_instances(
-  InstanceIds = list(
-    "i-4ba0837f"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/describe_auto_scaling_instances.html} for full documentation.
 }
 \keyword{internal}

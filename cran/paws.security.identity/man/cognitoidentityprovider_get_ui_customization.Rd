@@ -2,47 +2,19 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_get_ui_customization}
 \alias{cognitoidentityprovider_get_ui_customization}
-\title{Gets the UI Customization information for a particular app client's app
-UI, if there is something set}
+\title{Gets the user interface (UI) Customization information for a particular
+app client's app UI, if any such information exists for the client}
 \usage{
-cognitoidentityprovider_get_ui_customization(UserPoolId, ClientId)
+cognitoidentityprovider_get_ui_customization(UserPoolId, ClientId = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
 
 \item{ClientId}{The client ID for the client app.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UICustomization = list(
-    UserPoolId = "string",
-    ClientId = "string",
-    ImageUrl = "string",
-    CSS = "string",
-    CSSVersion = "string",
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreationDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Gets the UI Customization information for a particular app client's app
-UI, if there is something set. If nothing is set for the particular
-client, but there is an existing pool level customization (app
-\code{clientId} will be \code{ALL}), then that is returned. If nothing is present,
-then an empty shape is returned.
-}
-\section{Request syntax}{
-\preformatted{svc$get_ui_customization(
-  UserPoolId = "string",
-  ClientId = "string"
-)
-}
-}
+Gets the user interface (UI) Customization information for a particular app client's app UI, if any such information exists for the client. If nothing is set for the particular client, but there is an existing pool level customization (the app \code{clientId} is \code{ALL}), then that information is returned. If nothing is present, then an empty shape is returned.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/get_ui_customization.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Updates the bundle of your Amazon Lightsail content delivery network
 (CDN) distribution}
 \usage{
-lightsail_update_distribution_bundle(distributionName, bundleId)
+lightsail_update_distribution_bundle(distributionName = NULL, bundleId = NULL)
 }
 \arguments{
 \item{distributionName}{The name of the distribution for which to update the bundle.
@@ -18,55 +18,9 @@ a list of distribution names that you can specify.}
 Use the \code{\link[=lightsail_get_distribution_bundles]{get_distribution_bundles}}
 action to get a list of distribution bundle IDs that you can specify.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  operation = list(
-    id = "string",
-    resourceName = "string",
-    resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    location = list(
-      availabilityZone = "string",
-      regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-    ),
-    isTerminal = TRUE|FALSE,
-    operationDetails = "string",
-    operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-    status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-    statusChangedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    errorCode = "string",
-    errorDetails = "string"
-  )
-)
-}
-}
 \description{
-Updates the bundle of your Amazon Lightsail content delivery network
-(CDN) distribution.
+Updates the bundle of your Amazon Lightsail content delivery network (CDN) distribution.
 
-A distribution bundle specifies the monthly network transfer quota and
-monthly cost of your dsitribution.
-
-Update your distribution's bundle if your distribution is going over its
-monthly network transfer quota and is incurring an overage fee.
-
-You can update your distribution's bundle only one time within your
-monthly AWS billing cycle. To determine if you can update your
-distribution's bundle, use the
-\code{\link[=lightsail_get_distributions]{get_distributions}} action. The
-\code{ableToUpdateBundle} parameter in the result will indicate whether you
-can currently update your distribution's bundle.
+See \url{https://paws-r.github.io/docs/lightsail/update_distribution_bundle.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_distribution_bundle(
-  distributionName = "string",
-  bundleId = "string"
-)
-}
-}
-
 \keyword{internal}

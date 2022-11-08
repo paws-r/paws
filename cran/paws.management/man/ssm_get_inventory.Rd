@@ -4,8 +4,13 @@
 \alias{ssm_get_inventory}
 \title{Query inventory information}
 \usage{
-ssm_get_inventory(Filters, Aggregators, ResultAttributes, NextToken,
-  MaxResults)
+ssm_get_inventory(
+  Filters = NULL,
+  Aggregators = NULL,
+  ResultAttributes = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filters}{One or more filters. Use a filter to return a more specific list of
@@ -14,7 +19,7 @@ results.}
 \item{Aggregators}{Returns counts of inventory types based on one or more expressions. For
 example, if you aggregate by using an expression that uses the
 \code{AWS:InstanceInformation.PlatformType} type, you can see a count of how
-many Windows and Linux instances exist in your inventoried fleet.}
+many Windows and Linux managed nodes exist in your inventoried fleet.}
 
 \item{ResultAttributes}{The list of inventory item types to return.}
 
@@ -25,73 +30,9 @@ from a previous call.)}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Entities = list(
-    list(
-      Id = "string",
-      Data = list(
-        list(
-          TypeName = "string",
-          SchemaVersion = "string",
-          CaptureTime = "string",
-          ContentHash = "string",
-          Content = list(
-            list(
-              "string"
-            )
-          )
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Query inventory information.
-}
-\section{Request syntax}{
-\preformatted{svc$get_inventory(
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
-    )
-  ),
-  Aggregators = list(
-    list(
-      Expression = "string",
-      Aggregators = list(),
-      Groups = list(
-        list(
-          Name = "string",
-          Filters = list(
-            list(
-              Key = "string",
-              Values = list(
-                "string"
-              ),
-              Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
-            )
-          )
-        )
-      )
-    )
-  ),
-  ResultAttributes = list(
-    list(
-      TypeName = "string"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Query inventory information. This includes managed node status, such as \code{Stopped} or \code{Terminated}.
 
+See \url{https://paws-r.github.io/docs/ssm/get_inventory.html} for full documentation.
+}
 \keyword{internal}

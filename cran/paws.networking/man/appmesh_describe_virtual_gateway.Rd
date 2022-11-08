@@ -4,125 +4,25 @@
 \alias{appmesh_describe_virtual_gateway}
 \title{Describes an existing virtual gateway}
 \usage{
-appmesh_describe_virtual_gateway(meshName, meshOwner,
-  virtualGatewayName)
+appmesh_describe_virtual_gateway(
+  meshName,
+  meshOwner = NULL,
+  virtualGatewayName
+)
 }
 \arguments{
 \item{meshName}{[required] The name of the service mesh that the gateway route resides in.}
 
-\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
-not your own, then it's the ID of the account that shared the mesh with
-your account. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
+\item{meshOwner}{The Amazon Web Services IAM account ID of the service mesh owner. If the
+account ID is not your own, then it's the ID of the account that shared
+the mesh with your account. For more information about mesh sharing, see
+\href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{virtualGatewayName}{[required] The name of the virtual gateway to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualGateway = list(
-    meshName = "string",
-    metadata = list(
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      meshOwner = "string",
-      resourceOwner = "string",
-      uid = "string",
-      version = 123
-    ),
-    spec = list(
-      backendDefaults = list(
-        clientPolicy = list(
-          tls = list(
-            enforce = TRUE|FALSE,
-            ports = list(
-              123
-            ),
-            validation = list(
-              trust = list(
-                acm = list(
-                  certificateAuthorityArns = list(
-                    "string"
-                  )
-                ),
-                file = list(
-                  certificateChain = "string"
-                )
-              )
-            )
-          )
-        )
-      ),
-      listeners = list(
-        list(
-          connectionPool = list(
-            grpc = list(
-              maxRequests = 123
-            ),
-            http = list(
-              maxConnections = 123,
-              maxPendingRequests = 123
-            ),
-            http2 = list(
-              maxRequests = 123
-            )
-          ),
-          healthCheck = list(
-            healthyThreshold = 123,
-            intervalMillis = 123,
-            path = "string",
-            port = 123,
-            protocol = "http"|"http2"|"grpc",
-            timeoutMillis = 123,
-            unhealthyThreshold = 123
-          ),
-          portMapping = list(
-            port = 123,
-            protocol = "http"|"http2"|"grpc"
-          ),
-          tls = list(
-            certificate = list(
-              acm = list(
-                certificateArn = "string"
-              ),
-              file = list(
-                certificateChain = "string",
-                privateKey = "string"
-              )
-            ),
-            mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-          )
-        )
-      ),
-      logging = list(
-        accessLog = list(
-          file = list(
-            path = "string"
-          )
-        )
-      )
-    ),
-    status = list(
-      status = "ACTIVE"|"INACTIVE"|"DELETED"
-    ),
-    virtualGatewayName = "string"
-  )
-)
-}
-}
 \description{
 Describes an existing virtual gateway.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_virtual_gateway(
-  meshName = "string",
-  meshOwner = "string",
-  virtualGatewayName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/appmesh/describe_virtual_gateway.html} for full documentation.
+}
 \keyword{internal}

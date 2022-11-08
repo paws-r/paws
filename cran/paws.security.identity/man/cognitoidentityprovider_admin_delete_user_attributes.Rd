@@ -4,8 +4,11 @@
 \alias{cognitoidentityprovider_admin_delete_user_attributes}
 \title{Deletes the user attributes in a user pool as an administrator}
 \usage{
-cognitoidentityprovider_admin_delete_user_attributes(UserPoolId,
-  Username, UserAttributeNames)
+cognitoidentityprovider_admin_delete_user_attributes(
+  UserPoolId,
+  Username,
+  UserAttributeNames
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to delete user
@@ -14,30 +17,15 @@ attributes.}
 \item{Username}{[required] The user name of the user from which you would like to delete
 attributes.}
 
-\item{UserAttributeNames}{[required] An array of strings representing the user attribute names you wish to
+\item{UserAttributeNames}{[required] An array of strings representing the user attribute names you want to
 delete.
 
 For custom attributes, you must prepend the \verb{custom:} prefix to the
 attribute name.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the user attributes in a user pool as an administrator. Works on
-any user.
+Deletes the user attributes in a user pool as an administrator. Works on any user.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_delete_user_attributes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_delete_user_attributes(
-  UserPoolId = "string",
-  Username = "string",
-  UserAttributeNames = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

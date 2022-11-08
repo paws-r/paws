@@ -4,7 +4,7 @@
 \alias{opsworks_list_tags}
 \title{Returns a list of tags that are applied to the specified stack or layer}
 \usage{
-opsworks_list_tags(ResourceArn, MaxResults, NextToken)
+opsworks_list_tags(ResourceArn, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] The stack or layer's Amazon Resource Number (ARN).}
@@ -15,25 +15,9 @@ parameter to a \code{ListTagsRequest} call.}
 \item{NextToken}{Do not use. A validation exception occurs if you add a \code{NextToken}
 parameter to a \code{ListTagsRequest} call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns a list of tags that are applied to the specified stack or layer.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags(
-  ResourceArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/opsworks/list_tags.html} for full documentation.
+}
 \keyword{internal}

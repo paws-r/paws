@@ -5,8 +5,11 @@
 \title{Disables fast snapshot restores for the specified snapshots in the
 specified Availability Zones}
 \usage{
-ec2_disable_fast_snapshot_restores(AvailabilityZones, SourceSnapshotIds,
-  DryRun)
+ec2_disable_fast_snapshot_restores(
+  AvailabilityZones,
+  SourceSnapshotIds,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{AvailabilityZones}{[required] One or more Availability Zones. For example, \verb{us-east-2a}.}
@@ -18,65 +21,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Successful = list(
-    list(
-      SnapshotId = "string",
-      AvailabilityZone = "string",
-      State = "enabling"|"optimizing"|"enabled"|"disabling"|"disabled",
-      StateTransitionReason = "string",
-      OwnerId = "string",
-      OwnerAlias = "string",
-      EnablingTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      OptimizingTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EnabledTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      DisablingTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      DisabledTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  Unsuccessful = list(
-    list(
-      SnapshotId = "string",
-      FastSnapshotRestoreStateErrors = list(
-        list(
-          AvailabilityZone = "string",
-          Error = list(
-            Code = "string",
-            Message = "string"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Disables fast snapshot restores for the specified snapshots in the
-specified Availability Zones.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_fast_snapshot_restores(
-  AvailabilityZones = list(
-    "string"
-  ),
-  SourceSnapshotIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
+Disables fast snapshot restores for the specified snapshots in the specified Availability Zones.
 
+See \url{https://paws-r.github.io/docs/ec2/disable_fast_snapshot_restores.html} for full documentation.
+}
 \keyword{internal}

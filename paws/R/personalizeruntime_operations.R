@@ -102,22 +102,29 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' Returns a list of recommended items
 #'
 #' @description
-#' Returns a list of recommended items. The required input depends on the
-#' recipe type used to create the solution backing the campaign, as
-#' follows:
+#' Returns a list of recommended items. For campaigns, the campaign's
+#' Amazon Resource Name (ARN) is required and the required user and item
+#' input depends on the recipe type used to create the solution backing the
+#' campaign as follows:
+#' 
+#' -   USER_PERSONALIZATION - `userId` required, `itemId` not used
 #' 
 #' -   RELATED_ITEMS - `itemId` required, `userId` not used
 #' 
-#' -   USER_PERSONALIZATION - `itemId` optional, `userId` required
-#' 
 #' Campaigns that are backed by a solution created using a recipe of type
 #' PERSONALIZED_RANKING use the API.
+#' 
+#' For recommenders, the recommender's ARN is required and the required
+#' item and user input depends on the use case (domain-based recipe)
+#' backing the recommender. For information on use case requirements see
+#' [Choosing recommender use
+#' cases](https://docs.aws.amazon.com/personalize/latest/dg/domain-use-cases.html).
 #'
 #' @usage
 #' personalizeruntime_get_recommendations(campaignArn, itemId, userId,
-#'   numResults, context, filterArn, filterValues)
+#'   numResults, context, filterArn, filterValues, recommenderArn)
 #'
-#' @param campaignArn &#91;required&#93; The Amazon Resource Name (ARN) of the campaign to use for getting
+#' @param campaignArn The Amazon Resource Name (ARN) of the campaign to use for getting
 #' recommendations.
 #' @param itemId The item ID to provide recommendations for.
 #' 
@@ -149,6 +156,9 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' 
 #' For more information, see [Filtering
 #' Recommendations](https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
+#' @param recommenderArn The Amazon Resource Name (ARN) of the recommender to use to get
+#' recommendations. Provide a recommender ARN if you created a Domain
+#' dataset group with a recommender for a domain use case.
 #'
 #' @return
 #' A list with the following syntax:
@@ -177,21 +187,22 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #'   filterArn = "string",
 #'   filterValues = list(
 #'     "string"
-#'   )
+#'   ),
+#'   recommenderArn = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname personalizeruntime_get_recommendations
-personalizeruntime_get_recommendations <- function(campaignArn, itemId = NULL, userId = NULL, numResults = NULL, context = NULL, filterArn = NULL, filterValues = NULL) {
+personalizeruntime_get_recommendations <- function(campaignArn = NULL, itemId = NULL, userId = NULL, numResults = NULL, context = NULL, filterArn = NULL, filterValues = NULL, recommenderArn = NULL) {
   op <- new_operation(
     name = "GetRecommendations",
     http_method = "POST",
     http_path = "/recommendations",
     paginator = list()
   )
-  input <- .personalizeruntime$get_recommendations_input(campaignArn = campaignArn, itemId = itemId, userId = userId, numResults = numResults, context = context, filterArn = filterArn, filterValues = filterValues)
+  input <- .personalizeruntime$get_recommendations_input(campaignArn = campaignArn, itemId = itemId, userId = userId, numResults = numResults, context = context, filterArn = filterArn, filterValues = filterValues, recommenderArn = recommenderArn)
   output <- .personalizeruntime$get_recommendations_output()
   config <- get_config()
   svc <- .personalizeruntime$service(config)

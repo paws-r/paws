@@ -5,8 +5,7 @@
 \title{Sends a signal to the specified resource with a success or failure
 status}
 \usage{
-cloudformation_signal_resource(StackName, LogicalResourceId, UniqueId,
-  Status)
+cloudformation_signal_resource(StackName, LogicalResourceId, UniqueId, Status)
 }
 \arguments{
 \item{StackName}{[required] The stack name or unique stack ID that includes the resource that you
@@ -21,29 +20,12 @@ unique ID. If you send multiple signals to a single resource (such as
 signaling a wait condition), each signal requires a different unique ID.}
 
 \item{Status}{[required] The status of the signal, which is either success or failure. A failure
-signal causes AWS CloudFormation to immediately fail the stack creation
-or update.}
-}
-\value{
-An empty list.
+signal causes CloudFormation to immediately fail the stack creation or
+update.}
 }
 \description{
-Sends a signal to the specified resource with a success or failure
-status. You can use the SignalResource API in conjunction with a
-creation policy or update policy. AWS CloudFormation doesn't proceed
-with a stack creation or update until resources receive the required
-number of signals or the timeout period is exceeded. The SignalResource
-API is useful in cases where you want to send signals from anywhere
-other than an Amazon EC2 instance.
-}
-\section{Request syntax}{
-\preformatted{svc$signal_resource(
-  StackName = "string",
-  LogicalResourceId = "string",
-  UniqueId = "string",
-  Status = "SUCCESS"|"FAILURE"
-)
-}
-}
+Sends a signal to the specified resource with a success or failure status. You can use the \code{\link[=cloudformation_signal_resource]{signal_resource}} operation in conjunction with a creation policy or update policy. CloudFormation doesn't proceed with a stack creation or update until resources receive the required number of signals or the timeout period is exceeded. The \code{\link[=cloudformation_signal_resource]{signal_resource}} operation is useful in cases where you want to send signals from anywhere other than an Amazon EC2 instance.
 
+See \url{https://paws-r.github.io/docs/cloudformation/signal_resource.html} for full documentation.
+}
 \keyword{internal}

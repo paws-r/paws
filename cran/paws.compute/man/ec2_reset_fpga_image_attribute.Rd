@@ -5,7 +5,7 @@
 \title{Resets the specified attribute of the specified Amazon FPGA Image (AFI)
 to its default value}
 \usage{
-ec2_reset_fpga_image_attribute(DryRun, FpgaImageId, Attribute)
+ec2_reset_fpga_image_attribute(DryRun = NULL, FpgaImageId, Attribute = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -17,23 +17,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Attribute}{The attribute.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Resets the specified attribute of the specified Amazon FPGA Image (AFI)
-to its default value. You can only reset the load permission attribute.
-}
-\section{Request syntax}{
-\preformatted{svc$reset_fpga_image_attribute(
-  DryRun = TRUE|FALSE,
-  FpgaImageId = "string",
-  Attribute = "loadPermission"
-)
-}
-}
+Resets the specified attribute of the specified Amazon FPGA Image (AFI) to its default value. You can only reset the load permission attribute.
 
+See \url{https://paws-r.github.io/docs/ec2/reset_fpga_image_attribute.html} for full documentation.
+}
 \keyword{internal}

@@ -4,72 +4,14 @@
 \alias{configservice_describe_delivery_channel_status}
 \title{Returns the current status of the specified delivery channel}
 \usage{
-configservice_describe_delivery_channel_status(DeliveryChannelNames)
+configservice_describe_delivery_channel_status(DeliveryChannelNames = NULL)
 }
 \arguments{
 \item{DeliveryChannelNames}{A list of delivery channel names.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeliveryChannelsStatus = list(
-    list(
-      name = "string",
-      configSnapshotDeliveryInfo = list(
-        lastStatus = "Success"|"Failure"|"Not_Applicable",
-        lastErrorCode = "string",
-        lastErrorMessage = "string",
-        lastAttemptTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        lastSuccessfulTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        nextDeliveryTime = as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      configHistoryDeliveryInfo = list(
-        lastStatus = "Success"|"Failure"|"Not_Applicable",
-        lastErrorCode = "string",
-        lastErrorMessage = "string",
-        lastAttemptTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        lastSuccessfulTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        nextDeliveryTime = as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      configStreamDeliveryInfo = list(
-        lastStatus = "Success"|"Failure"|"Not_Applicable",
-        lastErrorCode = "string",
-        lastErrorMessage = "string",
-        lastStatusChangeTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns the current status of the specified delivery channel. If a
-delivery channel is not specified, this action returns the current
-status of all delivery channels associated with the account.
+Returns the current status of the specified delivery channel. If a delivery channel is not specified, this action returns the current status of all delivery channels associated with the account.
 
-Currently, you can specify only one delivery channel per region in your
-account.
+See \url{https://paws-r.github.io/docs/configservice/describe_delivery_channel_status.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_delivery_channel_status(
-  DeliveryChannelNames = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

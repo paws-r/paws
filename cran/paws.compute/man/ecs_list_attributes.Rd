@@ -5,76 +5,51 @@
 \title{Lists the attributes for Amazon ECS resources within a specified target
 type and cluster}
 \usage{
-ecs_list_attributes(cluster, targetType, attributeName, attributeValue,
-  nextToken, maxResults)
+ecs_list_attributes(
+  cluster = NULL,
+  targetType,
+  attributeName = NULL,
+  attributeValue = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster to list
 attributes. If you do not specify a cluster, the default cluster is
 assumed.}
 
-\item{targetType}{[required] The type of the target with which to list attributes.}
+\item{targetType}{[required] The type of the target to list attributes with.}
 
-\item{attributeName}{The name of the attribute with which to filter the results.}
+\item{attributeName}{The name of the attribute to filter the results with.}
 
-\item{attributeValue}{The value of the attribute with which to filter results. You must also
-specify an attribute name to use this parameter.}
+\item{attributeValue}{The value of the attribute to filter results with. You must also specify
+an attribute name to use this parameter.}
 
 \item{nextToken}{The \code{nextToken} value returned from a
 \code{\link[=ecs_list_attributes]{list_attributes}} request indicating that more
-results are available to fulfill the request and further calls will be
-needed. If \code{maxResults} was provided, it is possible the number of
+results are available to fulfill the request and further calls are
+needed. If \code{maxResults} was provided, it's possible the number of
 results to be fewer than \code{maxResults}.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
-\item{maxResults}{The maximum number of cluster results returned by
-\code{\link[=ecs_list_attributes]{list_attributes}} in paginated output. When this
-parameter is used, \code{\link[=ecs_list_attributes]{list_attributes}} only returns
-\code{maxResults} results in a single page along with a \code{nextToken} response
-element. The remaining results of the initial request can be seen by
-sending another \code{\link[=ecs_list_attributes]{list_attributes}} request with
-the returned \code{nextToken} value. This value can be between 1 and 100. If
-this parameter is not used, then
-\code{\link[=ecs_list_attributes]{list_attributes}} returns up to 100 results and a
-\code{nextToken} value if applicable.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  attributes = list(
-    list(
-      name = "string",
-      value = "string",
-      targetType = "container-instance",
-      targetId = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
+\item{maxResults}{The maximum number of cluster results that
+\code{\link[=ecs_list_attributes]{list_attributes}} returned in paginated output.
+When this parameter is used, \code{\link[=ecs_list_attributes]{list_attributes}}
+only returns \code{maxResults} results in a single page along with a
+\code{nextToken} response element. The remaining results of the initial
+request can be seen by sending another
+\code{\link[=ecs_list_attributes]{list_attributes}} request with the returned
+\code{nextToken} value. This value can be between 1 and 100. If this
+parameter isn't used, then \code{\link[=ecs_list_attributes]{list_attributes}}
+returns up to 100 results and a \code{nextToken} value if applicable.}
 }
 \description{
-Lists the attributes for Amazon ECS resources within a specified target
-type and cluster. When you specify a target type and cluster,
-\code{\link[=ecs_list_attributes]{list_attributes}} returns a list of attribute
-objects, one for each attribute on each resource. You can filter the
-list of results to a single attribute name to only return results that
-have that name. You can also filter the results by attribute name and
-value, for example, to see which container instances in a cluster are
-running a Linux AMI (\code{ecs.os-type=linux}).
-}
-\section{Request syntax}{
-\preformatted{svc$list_attributes(
-  cluster = "string",
-  targetType = "container-instance",
-  attributeName = "string",
-  attributeValue = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Lists the attributes for Amazon ECS resources within a specified target type and cluster. When you specify a target type and cluster, \code{\link[=ecs_list_attributes]{list_attributes}} returns a list of attribute objects, one for each attribute on each resource. You can filter the list of results to a single attribute name to only return results that have that name. You can also filter the results by attribute name and value. You can do this, for example, to see which container instances in a cluster are running a Linux AMI (\code{ecs.os-type=linux}).
 
+See \url{https://paws-r.github.io/docs/ecs/list_attributes.html} for full documentation.
+}
 \keyword{internal}

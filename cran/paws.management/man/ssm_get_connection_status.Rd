@@ -2,32 +2,18 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_connection_status}
 \alias{ssm_get_connection_status}
-\title{Retrieves the Session Manager connection status for an instance to
+\title{Retrieves the Session Manager connection status for a managed node to
 determine whether it is running and ready to receive Session Manager
 connections}
 \usage{
 ssm_get_connection_status(Target)
 }
 \arguments{
-\item{Target}{[required] The ID of the instance.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Target = "string",
-  Status = "Connected"|"NotConnected"
-)
-}
+\item{Target}{[required] The managed node ID.}
 }
 \description{
-Retrieves the Session Manager connection status for an instance to
-determine whether it is running and ready to receive Session Manager
-connections.
-}
-\section{Request syntax}{
-\preformatted{svc$get_connection_status(
-  Target = "string"
-)
-}
-}
+Retrieves the Session Manager connection status for a managed node to determine whether it is running and ready to receive Session Manager connections.
 
+See \url{https://paws-r.github.io/docs/ssm/get_connection_status.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{servicecatalog_describe_product_as_admin}
 \title{Gets information about the specified product}
 \usage{
-servicecatalog_describe_product_as_admin(AcceptLanguage, Id, Name,
-  SourcePortfolioId)
+servicecatalog_describe_product_as_admin(
+  AcceptLanguage = NULL,
+  Id = NULL,
+  Name = NULL,
+  SourcePortfolioId = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -28,76 +32,9 @@ TagOptions sharing is enabled in the portfolio share, the API returns
 both local and shared TagOptions associated with the product. Otherwise
 only local TagOptions will be returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProductViewDetail = list(
-    ProductViewSummary = list(
-      Id = "string",
-      ProductId = "string",
-      Name = "string",
-      Owner = "string",
-      ShortDescription = "string",
-      Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-      Distributor = "string",
-      HasDefaultPath = TRUE|FALSE,
-      SupportEmail = "string",
-      SupportDescription = "string",
-      SupportUrl = "string"
-    ),
-    Status = "AVAILABLE"|"CREATING"|"FAILED",
-    ProductARN = "string",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  ProvisioningArtifactSummaries = list(
-    list(
-      Id = "string",
-      Name = "string",
-      Description = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ProvisioningArtifactMetadata = list(
-        "string"
-      )
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  TagOptions = list(
-    list(
-      Key = "string",
-      Value = "string",
-      Active = TRUE|FALSE,
-      Id = "string",
-      Owner = "string"
-    )
-  ),
-  Budgets = list(
-    list(
-      BudgetName = "string"
-    )
-  )
-)
-}
-}
 \description{
-Gets information about the specified product. This operation is run with
-administrator access.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_product_as_admin(
-  AcceptLanguage = "string",
-  Id = "string",
-  Name = "string",
-  SourcePortfolioId = "string"
-)
-}
-}
+Gets information about the specified product. This operation is run with administrator access.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/describe_product_as_admin.html} for full documentation.
+}
 \keyword{internal}

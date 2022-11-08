@@ -7,20 +7,12 @@
 securityhub_disable_organization_admin_account(AdminAccountId)
 }
 \arguments{
-\item{AdminAccountId}{[required] The AWS account identifier of the Security Hub administrator account.}
-}
-\value{
-An empty list.
+\item{AdminAccountId}{[required] The Amazon Web Services account identifier of the Security Hub
+administrator account.}
 }
 \description{
-Disables a Security Hub administrator account. Can only be called by the
-organization management account.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_organization_admin_account(
-  AdminAccountId = "string"
-)
-}
-}
+Disables a Security Hub administrator account. Can only be called by the organization management account.
 
+See \url{https://paws-r.github.io/docs/securityhub/disable_organization_admin_account.html} for full documentation.
+}
 \keyword{internal}

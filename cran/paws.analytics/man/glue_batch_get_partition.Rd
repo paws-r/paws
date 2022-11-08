@@ -4,12 +4,16 @@
 \alias{glue_batch_get_partition}
 \title{Retrieves partitions in a batch request}
 \usage{
-glue_batch_get_partition(CatalogId, DatabaseName, TableName,
-  PartitionsToGet)
+glue_batch_get_partition(
+  CatalogId = NULL,
+  DatabaseName,
+  TableName,
+  PartitionsToGet
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog where the partitions in question reside. If
-none is supplied, the AWS account ID is used by default.}
+none is supplied, the Amazon Web Services account ID is used by default.}
 
 \item{DatabaseName}{[required] The name of the catalog database where the partitions reside.}
 
@@ -17,114 +21,9 @@ none is supplied, the AWS account ID is used by default.}
 
 \item{PartitionsToGet}{[required] A list of partition values identifying the partitions to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Partitions = list(
-    list(
-      Values = list(
-        "string"
-      ),
-      DatabaseName = "string",
-      TableName = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastAccessTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      StorageDescriptor = list(
-        Columns = list(
-          list(
-            Name = "string",
-            Type = "string",
-            Comment = "string",
-            Parameters = list(
-              "string"
-            )
-          )
-        ),
-        Location = "string",
-        InputFormat = "string",
-        OutputFormat = "string",
-        Compressed = TRUE|FALSE,
-        NumberOfBuckets = 123,
-        SerdeInfo = list(
-          Name = "string",
-          SerializationLibrary = "string",
-          Parameters = list(
-            "string"
-          )
-        ),
-        BucketColumns = list(
-          "string"
-        ),
-        SortColumns = list(
-          list(
-            Column = "string",
-            SortOrder = 123
-          )
-        ),
-        Parameters = list(
-          "string"
-        ),
-        SkewedInfo = list(
-          SkewedColumnNames = list(
-            "string"
-          ),
-          SkewedColumnValues = list(
-            "string"
-          ),
-          SkewedColumnValueLocationMaps = list(
-            "string"
-          )
-        ),
-        StoredAsSubDirectories = TRUE|FALSE,
-        SchemaReference = list(
-          SchemaId = list(
-            SchemaArn = "string",
-            SchemaName = "string",
-            RegistryName = "string"
-          ),
-          SchemaVersionId = "string",
-          SchemaVersionNumber = 123
-        )
-      ),
-      Parameters = list(
-        "string"
-      ),
-      LastAnalyzedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CatalogId = "string"
-    )
-  ),
-  UnprocessedKeys = list(
-    list(
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Retrieves partitions in a batch request.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_get_partition(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  PartitionsToGet = list(
-    list(
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/batch_get_partition.html} for full documentation.
+}
 \keyword{internal}

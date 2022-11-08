@@ -12,37 +12,13 @@ tags that you want to remove. This must be of the form:
 
 \code{arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012}
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
 
 \item{Tags}{[required] The key-value pair that defines the tag to remove.}
 }
-\value{
-An empty list.
-}
 \description{
-Remove one or more tags from an ACM certificate. A tag consists of a
-key-value pair. If you do not specify the value portion of the tag when
-calling this function, the tag will be removed regardless of value. If
-you specify a value, the tag is removed only if it is associated with
-the specified value.
+Remove one or more tags from an ACM certificate. A tag consists of a key-value pair. If you do not specify the value portion of the tag when calling this function, the tag will be removed regardless of value. If you specify a value, the tag is removed only if it is associated with the specified value.
 
-To add tags to a certificate, use the
-\code{\link[=acm_add_tags_to_certificate]{add_tags_to_certificate}} action. To view
-all of the tags that have been applied to a specific ACM certificate,
-use the \code{\link[=acm_list_tags_for_certificate]{list_tags_for_certificate}}
-action.
+See \url{https://paws-r.github.io/docs/acm/remove_tags_from_certificate.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$remove_tags_from_certificate(
-  CertificateArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

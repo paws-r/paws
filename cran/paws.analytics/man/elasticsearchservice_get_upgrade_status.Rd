@@ -10,23 +10,9 @@ elasticsearchservice_get_upgrade_status(DomainName)
 \arguments{
 \item{DomainName}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UpgradeStep = "PRE_UPGRADE_CHECK"|"SNAPSHOT"|"UPGRADE",
-  StepStatus = "IN_PROGRESS"|"SUCCEEDED"|"SUCCEEDED_WITH_ISSUES"|"FAILED",
-  UpgradeName = "string"
-)
-}
-}
 \description{
-Retrieves the latest status of the last upgrade or upgrade eligibility
-check that was performed on the domain.
-}
-\section{Request syntax}{
-\preformatted{svc$get_upgrade_status(
-  DomainName = "string"
-)
-}
-}
+Retrieves the latest status of the last upgrade or upgrade eligibility check that was performed on the domain.
 
+See \url{https://paws-r.github.io/docs/elasticsearchservice/get_upgrade_status.html} for full documentation.
+}
 \keyword{internal}

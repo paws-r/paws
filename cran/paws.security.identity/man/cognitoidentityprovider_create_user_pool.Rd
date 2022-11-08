@@ -5,14 +5,30 @@
 \title{Creates a new Amazon Cognito user pool and sets the password policy for
 the pool}
 \usage{
-cognitoidentityprovider_create_user_pool(PoolName, Policies,
-  LambdaConfig, AutoVerifiedAttributes, AliasAttributes,
-  UsernameAttributes, SmsVerificationMessage, EmailVerificationMessage,
-  EmailVerificationSubject, VerificationMessageTemplate,
-  SmsAuthenticationMessage, MfaConfiguration, DeviceConfiguration,
-  EmailConfiguration, SmsConfiguration, UserPoolTags,
-  AdminCreateUserConfig, Schema, UserPoolAddOns, UsernameConfiguration,
-  AccountRecoverySetting)
+cognitoidentityprovider_create_user_pool(
+  PoolName,
+  Policies = NULL,
+  LambdaConfig = NULL,
+  AutoVerifiedAttributes = NULL,
+  AliasAttributes = NULL,
+  UsernameAttributes = NULL,
+  SmsVerificationMessage = NULL,
+  EmailVerificationMessage = NULL,
+  EmailVerificationSubject = NULL,
+  VerificationMessageTemplate = NULL,
+  SmsAuthenticationMessage = NULL,
+  MfaConfiguration = NULL,
+  UserAttributeUpdateSettings = NULL,
+  DeviceConfiguration = NULL,
+  EmailConfiguration = NULL,
+  SmsConfiguration = NULL,
+  UserPoolTags = NULL,
+  AdminCreateUserConfig = NULL,
+  Schema = NULL,
+  UserPoolAddOns = NULL,
+  UsernameConfiguration = NULL,
+  AccountRecoverySetting = NULL
+)
 }
 \arguments{
 \item{PoolName}{[required] A string used to name the user pool.}
@@ -22,15 +38,15 @@ cognitoidentityprovider_create_user_pool(PoolName, Policies,
 \item{LambdaConfig}{The Lambda trigger configuration information for the new user pool.
 
 In a push model, event sources (such as Amazon S3 and custom
-applications) need permission to invoke a function. So you will need to
-make an extra call to add permission for these event sources to invoke
-your Lambda function.
+applications) need permission to invoke a function. So you must make an
+extra call to add permission for these event sources to invoke your
+Lambda function.
 
 For more information on using the Lambda API to add permission, see
 \href{https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html}{AddPermission}
 .
 
-For adding permission using the AWS CLI, see
+For adding permission using the CLI, see
 \href{https://docs.aws.amazon.com/cli/latest/reference/lambda/add-permission.html}{add-permission}
 .}
 
@@ -40,18 +56,18 @@ For adding permission using the AWS CLI, see
 \item{AliasAttributes}{Attributes supported as an alias for this user pool. Possible values:
 \strong{phone_number}, \strong{email}, or \strong{preferred_username}.}
 
-\item{UsernameAttributes}{Specifies whether email addresses or phone numbers can be specified as
-usernames when a user signs up.}
+\item{UsernameAttributes}{Specifies whether a user can use an email address or phone number as a
+username when they sign up.}
 
 \item{SmsVerificationMessage}{A string representing the SMS verification message.}
 
 \item{EmailVerificationMessage}{A string representing the email verification message.
-EmailVerificationMessage is allowed only if
+\code{EmailVerificationMessage} is allowed only if
 \href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount}{EmailSendingAccount}
 is DEVELOPER.}
 
 \item{EmailVerificationSubject}{A string representing the email verification subject.
-EmailVerificationSubject is allowed only if
+\code{EmailVerificationSubject} is allowed only if
 \href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount}{EmailSendingAccount}
 is DEVELOPER.}
 
@@ -62,11 +78,29 @@ app requests permission to access the user's information.}
 
 \item{MfaConfiguration}{Specifies MFA configuration details.}
 
-\item{DeviceConfiguration}{The device configuration.}
+\item{UserAttributeUpdateSettings}{The settings for updates to user attributes. These settings include the
+property \code{AttributesRequireVerificationBeforeUpdate}, a user-pool
+setting that tells Amazon Cognito how to handle changes to the value of
+your users' email address and phone number attributes. For more
+information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-email-phone-verification.html#user-pool-settings-verifications-verify-attribute-updates}{Verifying updates to email addresses and phone numbers}.}
 
-\item{EmailConfiguration}{The email configuration.}
+\item{DeviceConfiguration}{The device-remembering configuration for a user pool. A null value
+indicates that you have deactivated device remembering in your user
+pool.
 
-\item{SmsConfiguration}{The SMS configuration.}
+When you provide a value for any \code{DeviceConfiguration} field, you
+activate the Amazon Cognito device-remembering feature.}
+
+\item{EmailConfiguration}{The email configuration of your user pool. The email configuration type
+sets your preferred sending method, Amazon Web Services Region, and
+sender for messages from your user pool.}
+
+\item{SmsConfiguration}{The SMS configuration with the settings that your Amazon Cognito user
+pool must use to send an SMS message from your Amazon Web Services
+account through Amazon Simple Notification Service. To send SMS messages
+with Amazon SNS in the Amazon Web Services Region that you want, the
+Amazon Cognito user pool uses an Identity and Access Management (IAM)
+role in your Amazon Web Services account.}
 
 \item{UserPoolTags}{The tag keys and values to assign to the user pool. A tag is a label
 that you can use to categorize and manage user pools in different ways,
@@ -79,278 +113,28 @@ requests.}
 \item{Schema}{An array of schema attributes for the new user pool. These attributes
 can be standard or custom attributes.}
 
-\item{UserPoolAddOns}{Used to enable advanced security risk detection. Set the key
+\item{UserPoolAddOns}{Enables advanced security risk detection. Set the key
 \code{AdvancedSecurityMode} to the value "AUDIT".}
 
-\item{UsernameConfiguration}{You can choose to set case sensitivity on the username input for the
-selected sign-in option. For example, when this is set to \code{False}, users
-will be able to sign in using either "username" or "Username". This
-configuration is immutable once it has been set. For more information,
-see
+\item{UsernameConfiguration}{Case sensitivity on the username input for the selected sign-in option.
+For example, when case sensitivity is set to \code{False}, users can sign in
+using either "username" or "Username". This configuration is immutable
+once it has been set. For more information, see
 \href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UsernameConfigurationType.html}{UsernameConfigurationType}.}
 
-\item{AccountRecoverySetting}{Use this setting to define which verified available method a user can
-use to recover their password when they call
-\code{\link[=cognitoidentityprovider_forgot_password]{forgot_password}}. It allows
-you to define a preferred method when a user has more than one method
-available. With this setting, SMS does not qualify for a valid password
-recovery mechanism if the user also has SMS MFA enabled. In the absence
-of this setting, Cognito uses the legacy behavior to determine the
-recovery method where SMS is preferred over email.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UserPool = list(
-    Id = "string",
-    Name = "string",
-    Policies = list(
-      PasswordPolicy = list(
-        MinimumLength = 123,
-        RequireUppercase = TRUE|FALSE,
-        RequireLowercase = TRUE|FALSE,
-        RequireNumbers = TRUE|FALSE,
-        RequireSymbols = TRUE|FALSE,
-        TemporaryPasswordValidityDays = 123
-      )
-    ),
-    LambdaConfig = list(
-      PreSignUp = "string",
-      CustomMessage = "string",
-      PostConfirmation = "string",
-      PreAuthentication = "string",
-      PostAuthentication = "string",
-      DefineAuthChallenge = "string",
-      CreateAuthChallenge = "string",
-      VerifyAuthChallengeResponse = "string",
-      PreTokenGeneration = "string",
-      UserMigration = "string",
-      CustomSMSSender = list(
-        LambdaVersion = "V1_0",
-        LambdaArn = "string"
-      ),
-      CustomEmailSender = list(
-        LambdaVersion = "V1_0",
-        LambdaArn = "string"
-      ),
-      KMSKeyID = "string"
-    ),
-    Status = "Enabled"|"Disabled",
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    SchemaAttributes = list(
-      list(
-        Name = "string",
-        AttributeDataType = "String"|"Number"|"DateTime"|"Boolean",
-        DeveloperOnlyAttribute = TRUE|FALSE,
-        Mutable = TRUE|FALSE,
-        Required = TRUE|FALSE,
-        NumberAttributeConstraints = list(
-          MinValue = "string",
-          MaxValue = "string"
-        ),
-        StringAttributeConstraints = list(
-          MinLength = "string",
-          MaxLength = "string"
-        )
-      )
-    ),
-    AutoVerifiedAttributes = list(
-      "phone_number"|"email"
-    ),
-    AliasAttributes = list(
-      "phone_number"|"email"|"preferred_username"
-    ),
-    UsernameAttributes = list(
-      "phone_number"|"email"
-    ),
-    SmsVerificationMessage = "string",
-    EmailVerificationMessage = "string",
-    EmailVerificationSubject = "string",
-    VerificationMessageTemplate = list(
-      SmsMessage = "string",
-      EmailMessage = "string",
-      EmailSubject = "string",
-      EmailMessageByLink = "string",
-      EmailSubjectByLink = "string",
-      DefaultEmailOption = "CONFIRM_WITH_LINK"|"CONFIRM_WITH_CODE"
-    ),
-    SmsAuthenticationMessage = "string",
-    MfaConfiguration = "OFF"|"ON"|"OPTIONAL",
-    DeviceConfiguration = list(
-      ChallengeRequiredOnNewDevice = TRUE|FALSE,
-      DeviceOnlyRememberedOnUserPrompt = TRUE|FALSE
-    ),
-    EstimatedNumberOfUsers = 123,
-    EmailConfiguration = list(
-      SourceArn = "string",
-      ReplyToEmailAddress = "string",
-      EmailSendingAccount = "COGNITO_DEFAULT"|"DEVELOPER",
-      From = "string",
-      ConfigurationSet = "string"
-    ),
-    SmsConfiguration = list(
-      SnsCallerArn = "string",
-      ExternalId = "string"
-    ),
-    UserPoolTags = list(
-      "string"
-    ),
-    SmsConfigurationFailure = "string",
-    EmailConfigurationFailure = "string",
-    Domain = "string",
-    CustomDomain = "string",
-    AdminCreateUserConfig = list(
-      AllowAdminCreateUserOnly = TRUE|FALSE,
-      UnusedAccountValidityDays = 123,
-      InviteMessageTemplate = list(
-        SMSMessage = "string",
-        EmailMessage = "string",
-        EmailSubject = "string"
-      )
-    ),
-    UserPoolAddOns = list(
-      AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
-    ),
-    UsernameConfiguration = list(
-      CaseSensitive = TRUE|FALSE
-    ),
-    Arn = "string",
-    AccountRecoverySetting = list(
-      RecoveryMechanisms = list(
-        list(
-          Priority = 123,
-          Name = "verified_email"|"verified_phone_number"|"admin_only"
-        )
-      )
-    )
-  )
-)
-}
+\item{AccountRecoverySetting}{The available verified method a user can use to recover their password
+when they call
+\code{\link[=cognitoidentityprovider_forgot_password]{forgot_password}}. You can
+use this setting to define a preferred method when a user has more than
+one method available. With this setting, SMS doesn't qualify for a valid
+password recovery mechanism if the user also has SMS multi-factor
+authentication (MFA) activated. In the absence of this setting, Amazon
+Cognito uses the legacy behavior to determine the recovery method where
+SMS is preferred through email.}
 }
 \description{
-Creates a new Amazon Cognito user pool and sets the password policy for
-the pool.
-}
-\section{Request syntax}{
-\preformatted{svc$create_user_pool(
-  PoolName = "string",
-  Policies = list(
-    PasswordPolicy = list(
-      MinimumLength = 123,
-      RequireUppercase = TRUE|FALSE,
-      RequireLowercase = TRUE|FALSE,
-      RequireNumbers = TRUE|FALSE,
-      RequireSymbols = TRUE|FALSE,
-      TemporaryPasswordValidityDays = 123
-    )
-  ),
-  LambdaConfig = list(
-    PreSignUp = "string",
-    CustomMessage = "string",
-    PostConfirmation = "string",
-    PreAuthentication = "string",
-    PostAuthentication = "string",
-    DefineAuthChallenge = "string",
-    CreateAuthChallenge = "string",
-    VerifyAuthChallengeResponse = "string",
-    PreTokenGeneration = "string",
-    UserMigration = "string",
-    CustomSMSSender = list(
-      LambdaVersion = "V1_0",
-      LambdaArn = "string"
-    ),
-    CustomEmailSender = list(
-      LambdaVersion = "V1_0",
-      LambdaArn = "string"
-    ),
-    KMSKeyID = "string"
-  ),
-  AutoVerifiedAttributes = list(
-    "phone_number"|"email"
-  ),
-  AliasAttributes = list(
-    "phone_number"|"email"|"preferred_username"
-  ),
-  UsernameAttributes = list(
-    "phone_number"|"email"
-  ),
-  SmsVerificationMessage = "string",
-  EmailVerificationMessage = "string",
-  EmailVerificationSubject = "string",
-  VerificationMessageTemplate = list(
-    SmsMessage = "string",
-    EmailMessage = "string",
-    EmailSubject = "string",
-    EmailMessageByLink = "string",
-    EmailSubjectByLink = "string",
-    DefaultEmailOption = "CONFIRM_WITH_LINK"|"CONFIRM_WITH_CODE"
-  ),
-  SmsAuthenticationMessage = "string",
-  MfaConfiguration = "OFF"|"ON"|"OPTIONAL",
-  DeviceConfiguration = list(
-    ChallengeRequiredOnNewDevice = TRUE|FALSE,
-    DeviceOnlyRememberedOnUserPrompt = TRUE|FALSE
-  ),
-  EmailConfiguration = list(
-    SourceArn = "string",
-    ReplyToEmailAddress = "string",
-    EmailSendingAccount = "COGNITO_DEFAULT"|"DEVELOPER",
-    From = "string",
-    ConfigurationSet = "string"
-  ),
-  SmsConfiguration = list(
-    SnsCallerArn = "string",
-    ExternalId = "string"
-  ),
-  UserPoolTags = list(
-    "string"
-  ),
-  AdminCreateUserConfig = list(
-    AllowAdminCreateUserOnly = TRUE|FALSE,
-    UnusedAccountValidityDays = 123,
-    InviteMessageTemplate = list(
-      SMSMessage = "string",
-      EmailMessage = "string",
-      EmailSubject = "string"
-    )
-  ),
-  Schema = list(
-    list(
-      Name = "string",
-      AttributeDataType = "String"|"Number"|"DateTime"|"Boolean",
-      DeveloperOnlyAttribute = TRUE|FALSE,
-      Mutable = TRUE|FALSE,
-      Required = TRUE|FALSE,
-      NumberAttributeConstraints = list(
-        MinValue = "string",
-        MaxValue = "string"
-      ),
-      StringAttributeConstraints = list(
-        MinLength = "string",
-        MaxLength = "string"
-      )
-    )
-  ),
-  UserPoolAddOns = list(
-    AdvancedSecurityMode = "OFF"|"AUDIT"|"ENFORCED"
-  ),
-  UsernameConfiguration = list(
-    CaseSensitive = TRUE|FALSE
-  ),
-  AccountRecoverySetting = list(
-    RecoveryMechanisms = list(
-      list(
-        Priority = 123,
-        Name = "verified_email"|"verified_phone_number"|"admin_only"
-      )
-    )
-  )
-)
-}
-}
+Creates a new Amazon Cognito user pool and sets the password policy for the pool.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/create_user_pool.html} for full documentation.
+}
 \keyword{internal}

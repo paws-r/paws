@@ -10,6 +10,13 @@ NULL
 #' Creates an association between a geofence collection and a tracker
 #' resource. This allows the tracker resource to communicate location data
 #' to the linked geofence collection.
+#' 
+#' You can associate up to five geofence collections to each tracker
+#' resource.
+#' 
+#' Currently not supported — Cross-account configurations, such as creating
+#' associations between a tracker resource in one account and a geofence
+#' collection in another account.
 #'
 #' @usage
 #' locationservice_associate_tracker_consumer(ConsumerArn, TrackerName)
@@ -19,7 +26,7 @@ NULL
 #' across all AWS.
 #' 
 #' -   Format example:
-#'     `arn:partition:service:region:account-id:resource-type:resource-id`
+#'     `arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer`
 #' @param TrackerName &#91;required&#93; The name of the tracker resource to be associated with a geofence
 #' collection.
 #'
@@ -54,13 +61,75 @@ locationservice_associate_tracker_consumer <- function(ConsumerArn, TrackerName)
 }
 .locationservice$operations$associate_tracker_consumer <- locationservice_associate_tracker_consumer
 
+#' Deletes the position history of one or more devices from a tracker
+#' resource
+#'
+#' @description
+#' Deletes the position history of one or more devices from a tracker
+#' resource.
+#'
+#' @usage
+#' locationservice_batch_delete_device_position_history(DeviceIds,
+#'   TrackerName)
+#'
+#' @param DeviceIds &#91;required&#93; Devices whose position history you want to delete.
+#' 
+#' -   For example, for two devices: `“DeviceIds” : [DeviceId1,DeviceId2]`
+#' @param TrackerName &#91;required&#93; The name of the tracker resource to delete the device position history
+#' from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Errors = list(
+#'     list(
+#'       DeviceId = "string",
+#'       Error = list(
+#'         Code = "AccessDeniedError"|"ConflictError"|"InternalServerError"|"ResourceNotFoundError"|"ThrottlingError"|"ValidationError",
+#'         Message = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_delete_device_position_history(
+#'   DeviceIds = list(
+#'     "string"
+#'   ),
+#'   TrackerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_batch_delete_device_position_history
+locationservice_batch_delete_device_position_history <- function(DeviceIds, TrackerName) {
+  op <- new_operation(
+    name = "BatchDeleteDevicePositionHistory",
+    http_method = "POST",
+    http_path = "/tracking/v0/trackers/{TrackerName}/delete-positions",
+    paginator = list()
+  )
+  input <- .locationservice$batch_delete_device_position_history_input(DeviceIds = DeviceIds, TrackerName = TrackerName)
+  output <- .locationservice$batch_delete_device_position_history_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$batch_delete_device_position_history <- locationservice_batch_delete_device_position_history
+
 #' Deletes a batch of geofences from a geofence collection
 #'
 #' @description
 #' Deletes a batch of geofences from a geofence collection.
 #' 
-#' This action deletes the resource permanently. You can't undo this
-#' action.
+#' This operation deletes the resource permanently.
 #'
 #' @usage
 #' locationservice_batch_delete_geofence(CollectionName, GeofenceIds)
@@ -114,11 +183,32 @@ locationservice_batch_delete_geofence <- function(CollectionName, GeofenceIds) {
 }
 .locationservice$operations$batch_delete_geofence <- locationservice_batch_delete_geofence
 
-#' Used in geofence monitoring
+#' Evaluates device positions against the geofence geometries from a given
+#' geofence collection
 #'
 #' @description
-#' Used in geofence monitoring. Evaluates device positions against the
-#' position of geofences in a given geofence collection.
+#' Evaluates device positions against the geofence geometries from a given
+#' geofence collection.
+#' 
+#' This operation always returns an empty response because geofences are
+#' asynchronously evaluated. The evaluation determines if the device has
+#' entered or exited a geofenced area, and then publishes one of the
+#' following events to Amazon EventBridge:
+#' 
+#' -   `ENTER` if Amazon Location determines that the tracked device has
+#'     entered a geofenced area.
+#' 
+#' -   `EXIT` if Amazon Location determines that the tracked device has
+#'     exited a geofenced area.
+#' 
+#' The last geofence that a device was observed within is tracked for 30
+#' days after the most recent device position update.
+#' 
+#' Geofence evaluation uses the given device position. It does not account
+#' for the optional `Accuracy` of a `DevicePositionUpdate`.
+#' 
+#' The `DeviceID` is used as a string to represent the device. You do not
+#' need to have a `Tracker` associated with the `DeviceID`.
 #'
 #' @usage
 #' locationservice_batch_evaluate_geofences(CollectionName,
@@ -154,9 +244,15 @@ locationservice_batch_delete_geofence <- function(CollectionName, GeofenceIds) {
 #'   CollectionName = "string",
 #'   DevicePositionUpdates = list(
 #'     list(
+#'       Accuracy = list(
+#'         Horizontal = 123.0
+#'       ),
 #'       DeviceId = "string",
 #'       Position = list(
 #'         123.0
+#'       ),
+#'       PositionProperties = list(
+#'         "string"
 #'       ),
 #'       SampleTime = as.POSIXct(
 #'         "2015-01-01"
@@ -186,12 +282,10 @@ locationservice_batch_evaluate_geofences <- function(CollectionName, DevicePosit
 }
 .locationservice$operations$batch_evaluate_geofences <- locationservice_batch_evaluate_geofences
 
-#' A batch request to retrieve device positions
+#' Lists the latest device positions for requested devices
 #'
 #' @description
-#' A batch request to retrieve device positions.
-#' 
-#' The response will return the device positions from the last 24 hours.
+#' Lists the latest device positions for requested devices.
 #'
 #' @usage
 #' locationservice_batch_get_device_position(DeviceIds, TrackerName)
@@ -208,9 +302,15 @@ locationservice_batch_evaluate_geofences <- function(CollectionName, DevicePosit
 #' list(
 #'   DevicePositions = list(
 #'     list(
+#'       Accuracy = list(
+#'         Horizontal = 123.0
+#'       ),
 #'       DeviceId = "string",
 #'       Position = list(
 #'         123.0
+#'       ),
+#'       PositionProperties = list(
+#'         "string"
 #'       ),
 #'       ReceivedTime = as.POSIXct(
 #'         "2015-01-01"
@@ -262,10 +362,14 @@ locationservice_batch_get_device_position <- function(DeviceIds, TrackerName) {
 }
 .locationservice$operations$batch_get_device_position <- locationservice_batch_get_device_position
 
-#' A batch request for storing geofences into a given geofence collection
+#' A batch request for storing geofence geometries into a given geofence
+#' collection, or updates the geometry of an existing geofence if a
+#' geofence ID is included in the request
 #'
 #' @description
-#' A batch request for storing geofences into a given geofence collection.
+#' A batch request for storing geofence geometries into a given geofence
+#' collection, or updates the geometry of an existing geofence if a
+#' geofence ID is included in the request.
 #'
 #' @usage
 #' locationservice_batch_put_geofence(CollectionName, Entries)
@@ -308,6 +412,12 @@ locationservice_batch_get_device_position <- function(DeviceIds, TrackerName) {
 #'     list(
 #'       GeofenceId = "string",
 #'       Geometry = list(
+#'         Circle = list(
+#'           Center = list(
+#'             123.0
+#'           ),
+#'           Radius = 123.0
+#'         ),
 #'         Polygon = list(
 #'           list(
 #'             list(
@@ -341,15 +451,35 @@ locationservice_batch_put_geofence <- function(CollectionName, Entries) {
 }
 .locationservice$operations$batch_put_geofence <- locationservice_batch_put_geofence
 
-#' Uploads a position update for one or more devices to a tracker resource
+#' Uploads position update data for one or more devices to a tracker
+#' resource
 #'
 #' @description
-#' Uploads a position update for one or more devices to a tracker resource.
-#' The data is used for API queries requesting the device position and
-#' position history.
+#' Uploads position update data for one or more devices to a tracker
+#' resource. Amazon Location uses the data when it reports the last known
+#' device position and position history. Amazon Location retains location
+#' data for 30 days.
 #' 
-#' Limitation — Location data is sampled at a fixed rate of 1 position per
-#' 30 second interval, and retained for 1 year before it is deleted.
+#' Position updates are handled based on the `PositionFiltering` property
+#' of the tracker. When `PositionFiltering` is set to `TimeBased`, updates
+#' are evaluated against linked geofence collections, and location data is
+#' stored at a maximum of one position per 30 second interval. If your
+#' update frequency is more often than every 30 seconds, only one update
+#' per 30 seconds is stored for each unique device ID.
+#' 
+#' When `PositionFiltering` is set to `DistanceBased` filtering, location
+#' data is stored and evaluated against linked geofence collections only if
+#' the device has moved more than 30 m (98.4 ft).
+#' 
+#' When `PositionFiltering` is set to `AccuracyBased` filtering, location
+#' data is stored and evaluated against linked geofence collections only if
+#' the device has moved more than the measured accuracy. For example, if
+#' two consecutive updates from a device have a horizontal accuracy of 5 m
+#' and 10 m, the second update is neither stored or evaluated if the device
+#' has moved less than 15 m. If `PositionFiltering` is set to
+#' `AccuracyBased` filtering, Amazon Location uses the default value
+#' `{ "Horizontal": 0}` when accuracy is not provided on a
+#' `DevicePositionUpdate`.
 #'
 #' @usage
 #' locationservice_batch_update_device_position(TrackerName, Updates)
@@ -382,9 +512,15 @@ locationservice_batch_put_geofence <- function(CollectionName, Entries) {
 #'   TrackerName = "string",
 #'   Updates = list(
 #'     list(
+#'       Accuracy = list(
+#'         Horizontal = 123.0
+#'       ),
 #'       DeviceId = "string",
 #'       Position = list(
 #'         123.0
+#'       ),
+#'       PositionProperties = list(
+#'         "string"
 #'       ),
 #'       SampleTime = as.POSIXct(
 #'         "2015-01-01"
@@ -414,6 +550,484 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 }
 .locationservice$operations$batch_update_device_position <- locationservice_batch_update_device_position
 
+#' Calculates a route given the following required parameters:
+#' DeparturePosition and DestinationPosition
+#'
+#' @description
+#' [Calculates a
+#' route](https://docs.aws.amazon.com/location/latest/developerguide/calculate-route.html)
+#' given the following required parameters: `DeparturePosition` and
+#' `DestinationPosition`. Requires that you first [create a route
+#' calculator
+#' resource](https://docs.aws.amazon.com/location/latest/APIReference/API_CreateRouteCalculator.html).
+#' 
+#' By default, a request that doesn't specify a departure time uses the
+#' best time of day to travel with the best traffic conditions when
+#' calculating the route.
+#' 
+#' Additional options include:
+#' 
+#' -   [Specifying a departure
+#'     time](https://docs.aws.amazon.com/location/latest/developerguide/departure-time.html)
+#'     using either `DepartureTime` or `DepartNow`. This calculates a route
+#'     based on predictive traffic data at the given time.
+#' 
+#'     You can't specify both `DepartureTime` and `DepartNow` in a single
+#'     request. Specifying both parameters returns a validation error.
+#' 
+#' -   [Specifying a travel
+#'     mode](https://docs.aws.amazon.com/location/latest/developerguide/travel-mode.html)
+#'     using TravelMode sets the transportation mode used to calculate the
+#'     routes. This also lets you specify additional route preferences in
+#'     `CarModeOptions` if traveling by `Car`, or `TruckModeOptions` if
+#'     traveling by `Truck`.
+#' 
+#'     If you specify `walking` for the travel mode and your data provider
+#'     is Esri, the start and destination must be within 40km.
+#'
+#' @usage
+#' locationservice_calculate_route(CalculatorName, CarModeOptions,
+#'   DepartNow, DeparturePosition, DepartureTime, DestinationPosition,
+#'   DistanceUnit, IncludeLegGeometry, TravelMode, TruckModeOptions,
+#'   WaypointPositions)
+#'
+#' @param CalculatorName &#91;required&#93; The name of the route calculator resource that you want to use to
+#' calculate the route.
+#' @param CarModeOptions Specifies route preferences when traveling by `Car`, such as avoiding
+#' routes that use ferries or tolls.
+#' 
+#' Requirements: `TravelMode` must be specified as `Car`.
+#' @param DepartNow Sets the time of departure as the current time. Uses the current time to
+#' calculate a route. Otherwise, the best time of day to travel with the
+#' best traffic conditions is used to calculate the route.
+#' 
+#' Default Value: `false`
+#' 
+#' Valid Values: `false` | `true`
+#' @param DeparturePosition &#91;required&#93; The start position for the route. Defined in [World Geodetic System (WGS
+#' 84)](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84)
+#' format: `[longitude, latitude]`.
+#' 
+#' -   For example, `[-123.115, 49.285]`
+#' 
+#' If you specify a departure that's not located on a road, Amazon Location
+#' [moves the position to the nearest
+#' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
+#' If Esri is the provider for your route calculator, specifying a route
+#' that is longer than 400 km returns a `400 RoutesValidationException`
+#' error.
+#' 
+#' Valid Values: `[-180 to 180,-90 to 90]`
+#' @param DepartureTime Specifies the desired time of departure. Uses the given time to
+#' calculate the route. Otherwise, the best time of day to travel with the
+#' best traffic conditions is used to calculate the route.
+#' 
+#' Setting a departure time in the past returns a `400 ValidationException`
+#' error.
+#' 
+#' -   In [ISO
+#'     8601](https://www.iso.org/iso-8601-date-and-time-format.html)
+#'     format: `YYYY-MM-DDThh:mm:ss.sssZ`. For example,
+#'     `2020–07-2T12:15:20.000Z+01:00`
+#' @param DestinationPosition &#91;required&#93; The finish position for the route. Defined in [World Geodetic System
+#' (WGS 84)](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84)
+#' format: `[longitude, latitude]`.
+#' 
+#' -   For example, `[-122.339, 47.615]`
+#' 
+#' If you specify a destination that's not located on a road, Amazon
+#' Location [moves the position to the nearest
+#' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
+#' 
+#' Valid Values: `[-180 to 180,-90 to 90]`
+#' @param DistanceUnit Set the unit system to specify the distance.
+#' 
+#' Default Value: `Kilometers`
+#' @param IncludeLegGeometry Set to include the geometry details in the result for each path between
+#' a pair of positions.
+#' 
+#' Default Value: `false`
+#' 
+#' Valid Values: `false` | `true`
+#' @param TravelMode Specifies the mode of transport when calculating a route. Used in
+#' estimating the speed of travel and road compatibility. You can choose
+#' `Car`, `Truck`, or `Walking` as options for the `TravelMode`.
+#' 
+#' The `TravelMode` you specify also determines how you specify route
+#' preferences:
+#' 
+#' -   If traveling by `Car` use the `CarModeOptions` parameter.
+#' 
+#' -   If traveling by `Truck` use the `TruckModeOptions` parameter.
+#' 
+#' Default Value: `Car`
+#' @param TruckModeOptions Specifies route preferences when traveling by `Truck`, such as avoiding
+#' routes that use ferries or tolls, and truck specifications to consider
+#' when choosing an optimal road.
+#' 
+#' Requirements: `TravelMode` must be specified as `Truck`.
+#' @param WaypointPositions Specifies an ordered list of up to 23 intermediate positions to include
+#' along a route between the departure position and destination position.
+#' 
+#' -   For example, from the `DeparturePosition` `[-123.115, 49.285]`, the
+#'     route follows the order that the waypoint positions are given
+#'     `[[-122.757, 49.0021],[-122.349, 47.620]]`
+#' 
+#' If you specify a waypoint position that's not located on a road, Amazon
+#' Location [moves the position to the nearest
+#' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
+#' 
+#' Specifying more than 23 waypoints returns a `400 ValidationException`
+#' error.
+#' 
+#' If Esri is the provider for your route calculator, specifying a route
+#' that is longer than 400 km returns a `400 RoutesValidationException`
+#' error.
+#' 
+#' Valid Values: `[-180 to 180,-90 to 90]`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Legs = list(
+#'     list(
+#'       Distance = 123.0,
+#'       DurationSeconds = 123.0,
+#'       EndPosition = list(
+#'         123.0
+#'       ),
+#'       Geometry = list(
+#'         LineString = list(
+#'           list(
+#'             123.0
+#'           )
+#'         )
+#'       ),
+#'       StartPosition = list(
+#'         123.0
+#'       ),
+#'       Steps = list(
+#'         list(
+#'           Distance = 123.0,
+#'           DurationSeconds = 123.0,
+#'           EndPosition = list(
+#'             123.0
+#'           ),
+#'           GeometryOffset = 123,
+#'           StartPosition = list(
+#'             123.0
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Summary = list(
+#'     DataSource = "string",
+#'     Distance = 123.0,
+#'     DistanceUnit = "Kilometers"|"Miles",
+#'     DurationSeconds = 123.0,
+#'     RouteBBox = list(
+#'       123.0
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$calculate_route(
+#'   CalculatorName = "string",
+#'   CarModeOptions = list(
+#'     AvoidFerries = TRUE|FALSE,
+#'     AvoidTolls = TRUE|FALSE
+#'   ),
+#'   DepartNow = TRUE|FALSE,
+#'   DeparturePosition = list(
+#'     123.0
+#'   ),
+#'   DepartureTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DestinationPosition = list(
+#'     123.0
+#'   ),
+#'   DistanceUnit = "Kilometers"|"Miles",
+#'   IncludeLegGeometry = TRUE|FALSE,
+#'   TravelMode = "Car"|"Truck"|"Walking",
+#'   TruckModeOptions = list(
+#'     AvoidFerries = TRUE|FALSE,
+#'     AvoidTolls = TRUE|FALSE,
+#'     Dimensions = list(
+#'       Height = 123.0,
+#'       Length = 123.0,
+#'       Unit = "Meters"|"Feet",
+#'       Width = 123.0
+#'     ),
+#'     Weight = list(
+#'       Total = 123.0,
+#'       Unit = "Kilograms"|"Pounds"
+#'     )
+#'   ),
+#'   WaypointPositions = list(
+#'     list(
+#'       123.0
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_calculate_route
+locationservice_calculate_route <- function(CalculatorName, CarModeOptions = NULL, DepartNow = NULL, DeparturePosition, DepartureTime = NULL, DestinationPosition, DistanceUnit = NULL, IncludeLegGeometry = NULL, TravelMode = NULL, TruckModeOptions = NULL, WaypointPositions = NULL) {
+  op <- new_operation(
+    name = "CalculateRoute",
+    http_method = "POST",
+    http_path = "/routes/v0/calculators/{CalculatorName}/calculate/route",
+    paginator = list()
+  )
+  input <- .locationservice$calculate_route_input(CalculatorName = CalculatorName, CarModeOptions = CarModeOptions, DepartNow = DepartNow, DeparturePosition = DeparturePosition, DepartureTime = DepartureTime, DestinationPosition = DestinationPosition, DistanceUnit = DistanceUnit, IncludeLegGeometry = IncludeLegGeometry, TravelMode = TravelMode, TruckModeOptions = TruckModeOptions, WaypointPositions = WaypointPositions)
+  output <- .locationservice$calculate_route_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$calculate_route <- locationservice_calculate_route
+
+#' Calculates a route matrix given the following required parameters:
+#' DeparturePositions and DestinationPositions
+#'
+#' @description
+#' [Calculates a route
+#' matrix](https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html)
+#' given the following required parameters: `DeparturePositions` and
+#' `DestinationPositions`.
+#' [`calculate_route_matrix`][locationservice_calculate_route_matrix]
+#' calculates routes and returns the travel time and travel distance from
+#' each departure position to each destination position in the request. For
+#' example, given departure positions A and B, and destination positions X
+#' and Y,
+#' [`calculate_route_matrix`][locationservice_calculate_route_matrix] will
+#' return time and distance for routes from A to X, A to Y, B to X, and B
+#' to Y (in that order). The number of results returned (and routes
+#' calculated) will be the number of `DeparturePositions` times the number
+#' of `DestinationPositions`.
+#' 
+#' Your account is charged for each route calculated, not the number of
+#' requests.
+#' 
+#' Requires that you first [create a route calculator
+#' resource](https://docs.aws.amazon.com/location/latest/APIReference/API_CreateRouteCalculator.html).
+#' 
+#' By default, a request that doesn't specify a departure time uses the
+#' best time of day to travel with the best traffic conditions when
+#' calculating routes.
+#' 
+#' Additional options include:
+#' 
+#' -   [Specifying a departure
+#'     time](https://docs.aws.amazon.com/location/latest/developerguide/departure-time.html)
+#'     using either `DepartureTime` or `DepartNow`. This calculates routes
+#'     based on predictive traffic data at the given time.
+#' 
+#'     You can't specify both `DepartureTime` and `DepartNow` in a single
+#'     request. Specifying both parameters returns a validation error.
+#' 
+#' -   [Specifying a travel
+#'     mode](https://docs.aws.amazon.com/location/latest/developerguide/travel-mode.html)
+#'     using TravelMode sets the transportation mode used to calculate the
+#'     routes. This also lets you specify additional route preferences in
+#'     `CarModeOptions` if traveling by `Car`, or `TruckModeOptions` if
+#'     traveling by `Truck`.
+#'
+#' @usage
+#' locationservice_calculate_route_matrix(CalculatorName, CarModeOptions,
+#'   DepartNow, DeparturePositions, DepartureTime, DestinationPositions,
+#'   DistanceUnit, TravelMode, TruckModeOptions)
+#'
+#' @param CalculatorName &#91;required&#93; The name of the route calculator resource that you want to use to
+#' calculate the route matrix.
+#' @param CarModeOptions Specifies route preferences when traveling by `Car`, such as avoiding
+#' routes that use ferries or tolls.
+#' 
+#' Requirements: `TravelMode` must be specified as `Car`.
+#' @param DepartNow Sets the time of departure as the current time. Uses the current time to
+#' calculate the route matrix. You can't set both `DepartureTime` and
+#' `DepartNow`. If neither is set, the best time of day to travel with the
+#' best traffic conditions is used to calculate the route matrix.
+#' 
+#' Default Value: `false`
+#' 
+#' Valid Values: `false` | `true`
+#' @param DeparturePositions &#91;required&#93; The list of departure (origin) positions for the route matrix. An array
+#' of points, each of which is itself a 2-value array defined in [WGS
+#' 84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) format:
+#' `[longitude, latitude]`. For example, `[-123.115, 49.285]`.
+#' 
+#' Depending on the data provider selected in the route calculator resource
+#' there may be additional restrictions on the inputs you can choose. See
+#' [Position
+#' restrictions](https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html#matrix-routing-position-limits)
+#' in the *Amazon Location Service Developer Guide*.
+#' 
+#' For route calculators that use Esri as the data provider, if you specify
+#' a departure that's not located on a road, Amazon Location [moves the
+#' position to the nearest
+#' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
+#' The snapped value is available in the result in
+#' `SnappedDeparturePositions`.
+#' 
+#' Valid Values: `[-180 to 180,-90 to 90]`
+#' @param DepartureTime Specifies the desired time of departure. Uses the given time to
+#' calculate the route matrix. You can't set both `DepartureTime` and
+#' `DepartNow`. If neither is set, the best time of day to travel with the
+#' best traffic conditions is used to calculate the route matrix.
+#' 
+#' Setting a departure time in the past returns a `400 ValidationException`
+#' error.
+#' 
+#' -   In [ISO
+#'     8601](https://www.iso.org/iso-8601-date-and-time-format.html)
+#'     format: `YYYY-MM-DDThh:mm:ss.sssZ`. For example,
+#'     `2020–07-2T12:15:20.000Z+01:00`
+#' @param DestinationPositions &#91;required&#93; The list of destination positions for the route matrix. An array of
+#' points, each of which is itself a 2-value array defined in [WGS
+#' 84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) format:
+#' `[longitude, latitude]`. For example, `[-122.339, 47.615]`
+#' 
+#' Depending on the data provider selected in the route calculator resource
+#' there may be additional restrictions on the inputs you can choose. See
+#' [Position
+#' restrictions](https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html#matrix-routing-position-limits)
+#' in the *Amazon Location Service Developer Guide*.
+#' 
+#' For route calculators that use Esri as the data provider, if you specify
+#' a destination that's not located on a road, Amazon Location [moves the
+#' position to the nearest
+#' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
+#' The snapped value is available in the result in
+#' `SnappedDestinationPositions`.
+#' 
+#' Valid Values: `[-180 to 180,-90 to 90]`
+#' @param DistanceUnit Set the unit system to specify the distance.
+#' 
+#' Default Value: `Kilometers`
+#' @param TravelMode Specifies the mode of transport when calculating a route. Used in
+#' estimating the speed of travel and road compatibility.
+#' 
+#' The `TravelMode` you specify also determines how you specify route
+#' preferences:
+#' 
+#' -   If traveling by `Car` use the `CarModeOptions` parameter.
+#' 
+#' -   If traveling by `Truck` use the `TruckModeOptions` parameter.
+#' 
+#' Default Value: `Car`
+#' @param TruckModeOptions Specifies route preferences when traveling by `Truck`, such as avoiding
+#' routes that use ferries or tolls, and truck specifications to consider
+#' when choosing an optimal road.
+#' 
+#' Requirements: `TravelMode` must be specified as `Truck`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RouteMatrix = list(
+#'     list(
+#'       list(
+#'         Distance = 123.0,
+#'         DurationSeconds = 123.0,
+#'         Error = list(
+#'           Code = "RouteNotFound"|"RouteTooLong"|"PositionsNotFound"|"DestinationPositionNotFound"|"DeparturePositionNotFound"|"OtherValidationError",
+#'           Message = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   SnappedDeparturePositions = list(
+#'     list(
+#'       123.0
+#'     )
+#'   ),
+#'   SnappedDestinationPositions = list(
+#'     list(
+#'       123.0
+#'     )
+#'   ),
+#'   Summary = list(
+#'     DataSource = "string",
+#'     DistanceUnit = "Kilometers"|"Miles",
+#'     ErrorCount = 123,
+#'     RouteCount = 123
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$calculate_route_matrix(
+#'   CalculatorName = "string",
+#'   CarModeOptions = list(
+#'     AvoidFerries = TRUE|FALSE,
+#'     AvoidTolls = TRUE|FALSE
+#'   ),
+#'   DepartNow = TRUE|FALSE,
+#'   DeparturePositions = list(
+#'     list(
+#'       123.0
+#'     )
+#'   ),
+#'   DepartureTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DestinationPositions = list(
+#'     list(
+#'       123.0
+#'     )
+#'   ),
+#'   DistanceUnit = "Kilometers"|"Miles",
+#'   TravelMode = "Car"|"Truck"|"Walking",
+#'   TruckModeOptions = list(
+#'     AvoidFerries = TRUE|FALSE,
+#'     AvoidTolls = TRUE|FALSE,
+#'     Dimensions = list(
+#'       Height = 123.0,
+#'       Length = 123.0,
+#'       Unit = "Meters"|"Feet",
+#'       Width = 123.0
+#'     ),
+#'     Weight = list(
+#'       Total = 123.0,
+#'       Unit = "Kilograms"|"Pounds"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_calculate_route_matrix
+locationservice_calculate_route_matrix <- function(CalculatorName, CarModeOptions = NULL, DepartNow = NULL, DeparturePositions, DepartureTime = NULL, DestinationPositions, DistanceUnit = NULL, TravelMode = NULL, TruckModeOptions = NULL) {
+  op <- new_operation(
+    name = "CalculateRouteMatrix",
+    http_method = "POST",
+    http_path = "/routes/v0/calculators/{CalculatorName}/calculate/route-matrix",
+    paginator = list()
+  )
+  input <- .locationservice$calculate_route_matrix_input(CalculatorName = CalculatorName, CarModeOptions = CarModeOptions, DepartNow = DepartNow, DeparturePositions = DeparturePositions, DepartureTime = DepartureTime, DestinationPositions = DestinationPositions, DistanceUnit = DistanceUnit, TravelMode = TravelMode, TruckModeOptions = TruckModeOptions)
+  output <- .locationservice$calculate_route_matrix_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$calculate_route_matrix <- locationservice_calculate_route_matrix
+
 #' Creates a geofence collection, which manages and stores geofences
 #'
 #' @description
@@ -421,34 +1035,45 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #'
 #' @usage
 #' locationservice_create_geofence_collection(CollectionName, Description,
-#'   PricingPlan)
+#'   KmsKeyId, PricingPlan, PricingPlanDataSource, Tags)
 #'
 #' @param CollectionName &#91;required&#93; A custom name for the geofence collection.
 #' 
 #' Requirements:
 #' 
-#' -   Contain only alphanumeric characters (A–Z, a–z, 0-9), hyphens (-),
-#'     and underscores (_).
+#' -   Contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-),
+#'     periods (.), and underscores (_).
 #' 
 #' -   Must be a unique geofence collection name.
 #' 
 #' -   No spaces allowed. For example, `ExampleGeofenceCollection`.
 #' @param Description An optional description for the geofence collection.
-#' @param PricingPlan &#91;required&#93; Specifies the pricing plan for your geofence collection. There's three
-#' pricing plan options:
+#' @param KmsKeyId A key identifier for an [AWS KMS customer managed
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).
+#' Enter a key ID, key ARN, alias name, or alias ARN.
+#' @param PricingPlan No longer used. If included, the only allowed value is
+#' `RequestBasedUsage`.
+#' @param PricingPlanDataSource This parameter is no longer used.
+#' @param Tags Applies one or more tags to the geofence collection. A tag is a
+#' key-value pair helps manage, identify, search, and filter your resources
+#' by labelling them.
 #' 
-#' -   `RequestBasedUsage` — Selects the "Request-Based Usage" pricing
-#'     plan.
+#' Format: `"key" : "value"`
 #' 
-#' -   `MobileAssetTracking` — Selects the "Mobile Asset Tracking" pricing
-#'     plan.
+#' Restrictions:
 #' 
-#' -   `MobileAssetManagement` — Selects the "Mobile Asset Management"
-#'     pricing plan.
+#' -   Maximum 50 tags per resource
 #' 
-#' For additional details and restrictions on each pricing plan option, see
-#' the [Amazon Location Service pricing
-#' page](https://aws.amazon.com/location/pricing/).
+#' -   Each resource tag must be unique with a maximum of one value.
+#' 
+#' -   Maximum key length: 128 Unicode characters in UTF-8
+#' 
+#' -   Maximum value length: 256 Unicode characters in UTF-8
+#' 
+#' -   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
+#'     characters: + - = . _ : / @@.
+#' 
+#' -   Cannot use "aws:" as a prefix for a key.
 #'
 #' @return
 #' A list with the following syntax:
@@ -467,21 +1092,26 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' svc$create_geofence_collection(
 #'   CollectionName = "string",
 #'   Description = "string",
-#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement"
+#'   KmsKeyId = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   PricingPlanDataSource = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname locationservice_create_geofence_collection
-locationservice_create_geofence_collection <- function(CollectionName, Description = NULL, PricingPlan) {
+locationservice_create_geofence_collection <- function(CollectionName, Description = NULL, KmsKeyId = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateGeofenceCollection",
     http_method = "POST",
     http_path = "/geofencing/v0/collections",
     paginator = list()
   )
-  input <- .locationservice$create_geofence_collection_input(CollectionName = CollectionName, Description = Description, PricingPlan = PricingPlan)
+  input <- .locationservice$create_geofence_collection_input(CollectionName = CollectionName, Description = Description, KmsKeyId = KmsKeyId, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, Tags = Tags)
   output <- .locationservice$create_geofence_collection_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -498,15 +1128,14 @@ locationservice_create_geofence_collection <- function(CollectionName, Descripti
 #' Creates a map resource in your AWS account, which provides map tiles of
 #' different styles sourced from global location data providers.
 #' 
-#' By using Maps, you agree that AWS may transmit your API queries to your
-#' selected third party provider for processing, which may be outside the
-#' AWS region you are currently using. For more information, see the [AWS
-#' Service Terms](https://aws.amazon.com/service-terms/) for Amazon
-#' Location Service.
+#' If your application is tracking or routing assets you use in your
+#' business, such as delivery vehicles or employees, you may only use HERE
+#' as your geolocation provider. See section 82 of the [AWS service
+#' terms](https://aws.amazon.com/service-terms/) for more details.
 #'
 #' @usage
 #' locationservice_create_map(Configuration, Description, MapName,
-#'   PricingPlan)
+#'   PricingPlan, Tags)
 #'
 #' @param Configuration &#91;required&#93; Specifies the map style selected from an available data provider.
 #' @param Description An optional description for the map resource.
@@ -515,26 +1144,33 @@ locationservice_create_geofence_collection <- function(CollectionName, Descripti
 #' Requirements:
 #' 
 #' -   Must contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens
-#'     (-), and underscores (_).
+#'     (-), periods (.), and underscores (_).
 #' 
 #' -   Must be a unique map resource name.
 #' 
 #' -   No spaces allowed. For example, `ExampleMap`.
-#' @param PricingPlan &#91;required&#93; Specifies the pricing plan for your map resource. There's three pricing
-#' plan options:
+#' @param PricingPlan No longer used. If included, the only allowed value is
+#' `RequestBasedUsage`.
+#' @param Tags Applies one or more tags to the map resource. A tag is a key-value pair
+#' helps manage, identify, search, and filter your resources by labelling
+#' them.
 #' 
-#' -   `RequestBasedUsage` — Selects the "Request-Based Usage" pricing
-#'     plan.
+#' Format: `"key" : "value"`
 #' 
-#' -   `MobileAssetTracking` — Selects the "Mobile Asset Tracking" pricing
-#'     plan.
+#' Restrictions:
 #' 
-#' -   `MobileAssetManagement` — Selects the "Mobile Asset Management"
-#'     pricing plan.
+#' -   Maximum 50 tags per resource
 #' 
-#' For additional details and restrictions on each pricing plan option, see
-#' the [Amazon Location Service pricing
-#' page](https://aws.amazon.com/location/pricing/).
+#' -   Each resource tag must be unique with a maximum of one value.
+#' 
+#' -   Maximum key length: 128 Unicode characters in UTF-8
+#' 
+#' -   Maximum value length: 256 Unicode characters in UTF-8
+#' 
+#' -   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
+#'     characters: + - = . _ : / @@.
+#' 
+#' -   Cannot use "aws:" as a prefix for a key.
 #'
 #' @return
 #' A list with the following syntax:
@@ -556,21 +1192,24 @@ locationservice_create_geofence_collection <- function(CollectionName, Descripti
 #'   ),
 #'   Description = "string",
 #'   MapName = "string",
-#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement"
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname locationservice_create_map
-locationservice_create_map <- function(Configuration, Description = NULL, MapName, PricingPlan) {
+locationservice_create_map <- function(Configuration, Description = NULL, MapName, PricingPlan = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateMap",
     http_method = "POST",
     http_path = "/maps/v0/maps",
     paginator = list()
   )
-  input <- .locationservice$create_map_input(Configuration = Configuration, Description = Description, MapName = MapName, PricingPlan = PricingPlan)
+  input <- .locationservice$create_map_input(Configuration = Configuration, Description = Description, MapName = MapName, PricingPlan = PricingPlan, Tags = Tags)
   output <- .locationservice$create_map_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -580,56 +1219,89 @@ locationservice_create_map <- function(Configuration, Description = NULL, MapNam
 }
 .locationservice$operations$create_map <- locationservice_create_map
 
-#' Creates a Place index resource in your AWS account, which supports
-#' Places functions with geospatial data sourced from your chosen data
-#' provider
+#' Creates a place index resource in your AWS account
 #'
 #' @description
-#' Creates a Place index resource in your AWS account, which supports
-#' Places functions with geospatial data sourced from your chosen data
-#' provider.
+#' Creates a place index resource in your AWS account. Use a place index
+#' resource to geocode addresses and other text queries by using the
+#' [`search_place_index_for_text`][locationservice_search_place_index_for_text]
+#' operation, and reverse geocode coordinates by using the
+#' [`search_place_index_for_position`][locationservice_search_place_index_for_position]
+#' operation, and enable autosuggestions by using the
+#' [`search_place_index_for_suggestions`][locationservice_search_place_index_for_suggestions]
+#' operation.
 #' 
-#' By using Places, you agree that AWS may transmit your API queries to
-#' your selected third party provider for processing, which may be outside
-#' the AWS region you are currently using.
-#' 
-#' Because of licensing limitations, you may not use HERE to store results
-#' for locations in Japan. For more information, see the [AWS Service
-#' Terms](https://aws.amazon.com/service-terms/) for Amazon Location
-#' Service.
+#' If your application is tracking or routing assets you use in your
+#' business, such as delivery vehicles or employees, you may only use HERE
+#' as your geolocation provider. See section 82 of the [AWS service
+#' terms](https://aws.amazon.com/service-terms/) for more details.
 #'
 #' @usage
 #' locationservice_create_place_index(DataSource, DataSourceConfiguration,
-#'   Description, IndexName, PricingPlan)
+#'   Description, IndexName, PricingPlan, Tags)
 #'
-#' @param DataSource &#91;required&#93; Specifies the data provider of geospatial data.
-#' @param DataSourceConfiguration Specifies the data storage option for requesting Places.
-#' @param Description The optional description for the Place index resource.
-#' @param IndexName &#91;required&#93; The name of the Place index resource.
+#' @param DataSource &#91;required&#93; Specifies the geospatial data provider for the new place index.
+#' 
+#' This field is case-sensitive. Enter the valid values as shown. For
+#' example, entering `HERE` returns an error.
+#' 
+#' Valid values include:
+#' 
+#' -   `Esri` – For additional information about
+#'     [Esri](https://docs.aws.amazon.com/location/latest/developerguide/esri.html)'s
+#'     coverage in your region of interest, see [Esri details on geocoding
+#'     coverage](https://developers.arcgis.com/rest/geocode/api-reference/geocode-coverage.htm).
+#' 
+#' -   `Here` – For additional information about [HERE
+#'     Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)'
+#'     coverage in your region of interest, see HERE details on goecoding
+#'     coverage.
+#' 
+#'     If you specify HERE Technologies (`Here`) as the data provider, you
+#'     may not [store
+#'     results](https://docs.aws.amazon.com/location/latest/APIReference/API_DataSourceConfiguration.html)
+#'     for locations in Japan. For more information, see the [AWS Service
+#'     Terms](https://aws.amazon.com/service-terms/) for Amazon Location
+#'     Service.
+#' 
+#' For additional information , see [Data
+#' providers](https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html)
+#' on the *Amazon Location Service Developer Guide*.
+#' @param DataSourceConfiguration Specifies the data storage option requesting Places.
+#' @param Description The optional description for the place index resource.
+#' @param IndexName &#91;required&#93; The name of the place index resource.
 #' 
 #' Requirements:
 #' 
-#' -   Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-)
-#'     and underscores (_) ).
+#' -   Contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-),
+#'     periods (.), and underscores (_).
 #' 
-#' -   Must be a unique Place index resource name.
+#' -   Must be a unique place index resource name.
 #' 
 #' -   No spaces allowed. For example, `ExamplePlaceIndex`.
-#' @param PricingPlan &#91;required&#93; Specifies the pricing plan for your Place index resource. There's three
-#' pricing plan options:
+#' @param PricingPlan No longer used. If included, the only allowed value is
+#' `RequestBasedUsage`.
+#' @param Tags Applies one or more tags to the place index resource. A tag is a
+#' key-value pair that helps you manage, identify, search, and filter your
+#' resources.
 #' 
-#' -   `RequestBasedUsage` — Selects the "Request-Based Usage" pricing
-#'     plan.
+#' Format: `"key" : "value"`
 #' 
-#' -   `MobileAssetTracking` — Selects the "Mobile Asset Tracking" pricing
-#'     plan.
+#' Restrictions:
 #' 
-#' -   `MobileAssetManagement` — Selects the "Mobile Asset Management"
-#'     pricing plan.
+#' -   Maximum 50 tags per resource.
 #' 
-#' For additional details and restrictions on each pricing plan option, see
-#' the [Amazon Location Service pricing
-#' page](https://aws.amazon.com/location/pricing/).
+#' -   Each tag key must be unique and must have exactly one associated
+#'     value.
+#' 
+#' -   Maximum key length: 128 Unicode characters in UTF-8.
+#' 
+#' -   Maximum value length: 256 Unicode characters in UTF-8.
+#' 
+#' -   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
+#'     characters: + - = . _ : / @@
+#' 
+#' -   Cannot use "aws:" as a prefix for a key.
 #'
 #' @return
 #' A list with the following syntax:
@@ -652,21 +1324,24 @@ locationservice_create_map <- function(Configuration, Description = NULL, MapNam
 #'   ),
 #'   Description = "string",
 #'   IndexName = "string",
-#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement"
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname locationservice_create_place_index
-locationservice_create_place_index <- function(DataSource, DataSourceConfiguration = NULL, Description = NULL, IndexName, PricingPlan) {
+locationservice_create_place_index <- function(DataSource, DataSourceConfiguration = NULL, Description = NULL, IndexName, PricingPlan = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePlaceIndex",
     http_method = "POST",
     http_path = "/places/v0/indexes",
     paginator = list()
   )
-  input <- .locationservice$create_place_index_input(DataSource = DataSource, DataSourceConfiguration = DataSourceConfiguration, Description = Description, IndexName = IndexName, PricingPlan = PricingPlan)
+  input <- .locationservice$create_place_index_input(DataSource = DataSource, DataSourceConfiguration = DataSourceConfiguration, Description = Description, IndexName = IndexName, PricingPlan = PricingPlan, Tags = Tags)
   output <- .locationservice$create_place_index_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -676,6 +1351,128 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 }
 .locationservice$operations$create_place_index <- locationservice_create_place_index
 
+#' Creates a route calculator resource in your AWS account
+#'
+#' @description
+#' Creates a route calculator resource in your AWS account.
+#' 
+#' You can send requests to a route calculator resource to estimate travel
+#' time, distance, and get directions. A route calculator sources traffic
+#' and road network data from your chosen data provider.
+#' 
+#' If your application is tracking or routing assets you use in your
+#' business, such as delivery vehicles or employees, you may only use HERE
+#' as your geolocation provider. See section 82 of the [AWS service
+#' terms](https://aws.amazon.com/service-terms/) for more details.
+#'
+#' @usage
+#' locationservice_create_route_calculator(CalculatorName, DataSource,
+#'   Description, PricingPlan, Tags)
+#'
+#' @param CalculatorName &#91;required&#93; The name of the route calculator resource.
+#' 
+#' Requirements:
+#' 
+#' -   Can use alphanumeric characters (A–Z, a–z, 0–9) , hyphens (-),
+#'     periods (.), and underscores (_).
+#' 
+#' -   Must be a unique Route calculator resource name.
+#' 
+#' -   No spaces allowed. For example, `ExampleRouteCalculator`.
+#' @param DataSource &#91;required&#93; Specifies the data provider of traffic and road network data.
+#' 
+#' This field is case-sensitive. Enter the valid values as shown. For
+#' example, entering `HERE` returns an error. Route calculators that use
+#' Esri as a data source only calculate routes that are shorter than 400
+#' km.
+#' 
+#' Valid values include:
+#' 
+#' -   `Esri` – For additional information about
+#'     [Esri](https://docs.aws.amazon.com/location/latest/developerguide/esri.html)'s
+#'     coverage in your region of interest, see [Esri details on street
+#'     networks and traffic
+#'     coverage](https://doc.arcgis.com/en/arcgis-online/reference/network-coverage.htm).
+#' 
+#' -   `Here` – For additional information about [HERE
+#'     Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)'
+#'     coverage in your region of interest, see HERE car routing coverage
+#'     and HERE truck routing coverage.
+#' 
+#' For additional information , see [Data
+#' providers](https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html)
+#' on the *Amazon Location Service Developer Guide*.
+#' @param Description The optional description for the route calculator resource.
+#' @param PricingPlan No longer used. If included, the only allowed value is
+#' `RequestBasedUsage`.
+#' @param Tags Applies one or more tags to the route calculator resource. A tag is a
+#' key-value pair helps manage, identify, search, and filter your resources
+#' by labelling them.
+#' 
+#' -   For example: \{ `"tag1" : "value1"`, `"tag2" : "value2"`\}
+#' 
+#' Format: `"key" : "value"`
+#' 
+#' Restrictions:
+#' 
+#' -   Maximum 50 tags per resource
+#' 
+#' -   Each resource tag must be unique with a maximum of one value.
+#' 
+#' -   Maximum key length: 128 Unicode characters in UTF-8
+#' 
+#' -   Maximum value length: 256 Unicode characters in UTF-8
+#' 
+#' -   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
+#'     characters: + - = . _ : / @@.
+#' 
+#' -   Cannot use "aws:" as a prefix for a key.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CalculatorArn = "string",
+#'   CalculatorName = "string",
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_route_calculator(
+#'   CalculatorName = "string",
+#'   DataSource = "string",
+#'   Description = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_create_route_calculator
+locationservice_create_route_calculator <- function(CalculatorName, DataSource, Description = NULL, PricingPlan = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateRouteCalculator",
+    http_method = "POST",
+    http_path = "/routes/v0/calculators",
+    paginator = list()
+  )
+  input <- .locationservice$create_route_calculator_input(CalculatorName = CalculatorName, DataSource = DataSource, Description = Description, PricingPlan = PricingPlan, Tags = Tags)
+  output <- .locationservice$create_route_calculator_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$create_route_calculator <- locationservice_create_route_calculator
+
 #' Creates a tracker resource in your AWS account, which lets you retrieve
 #' current and historical location of devices
 #'
@@ -684,30 +1481,71 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' current and historical location of devices.
 #'
 #' @usage
-#' locationservice_create_tracker(Description, PricingPlan, TrackerName)
+#' locationservice_create_tracker(Description, KmsKeyId, PositionFiltering,
+#'   PricingPlan, PricingPlanDataSource, Tags, TrackerName)
 #'
 #' @param Description An optional description for the tracker resource.
-#' @param PricingPlan &#91;required&#93; Specifies the pricing plan for your tracker resource. There's three
-#' pricing plan options:
+#' @param KmsKeyId A key identifier for an [AWS KMS customer managed
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).
+#' Enter a key ID, key ARN, alias name, or alias ARN.
+#' @param PositionFiltering Specifies the position filtering for the tracker resource.
 #' 
-#' -   `RequestBasedUsage` — Selects the "Request-Based Usage" pricing
-#'     plan.
+#' Valid values:
 #' 
-#' -   `MobileAssetTracking` — Selects the "Mobile Asset Tracking" pricing
-#'     plan.
+#' -   `TimeBased` - Location updates are evaluated against linked geofence
+#'     collections, but not every location update is stored. If your update
+#'     frequency is more often than 30 seconds, only one update per 30
+#'     seconds is stored for each unique device ID.
 #' 
-#' -   `MobileAssetManagement` — Selects the "Mobile Asset Management"
-#'     pricing plan.
+#' -   `DistanceBased` - If the device has moved less than 30 m (98.4 ft),
+#'     location updates are ignored. Location updates within this area are
+#'     neither evaluated against linked geofence collections, nor stored.
+#'     This helps control costs by reducing the number of geofence
+#'     evaluations and historical device positions to paginate through.
+#'     Distance-based filtering can also reduce the effects of GPS noise
+#'     when displaying device trajectories on a map.
 #' 
-#' For additional details and restrictions on each pricing plan option, see
-#' the [Amazon Location Service pricing
-#' page](https://aws.amazon.com/location/pricing/).
+#' -   `AccuracyBased` - If the device has moved less than the measured
+#'     accuracy, location updates are ignored. For example, if two
+#'     consecutive updates from a device have a horizontal accuracy of 5 m
+#'     and 10 m, the second update is ignored if the device has moved less
+#'     than 15 m. Ignored location updates are neither evaluated against
+#'     linked geofence collections, nor stored. This can reduce the effects
+#'     of GPS noise when displaying device trajectories on a map, and can
+#'     help control your costs by reducing the number of geofence
+#'     evaluations.
+#' 
+#' This field is optional. If not specified, the default value is
+#' `TimeBased`.
+#' @param PricingPlan No longer used. If included, the only allowed value is
+#' `RequestBasedUsage`.
+#' @param PricingPlanDataSource This parameter is no longer used.
+#' @param Tags Applies one or more tags to the tracker resource. A tag is a key-value
+#' pair helps manage, identify, search, and filter your resources by
+#' labelling them.
+#' 
+#' Format: `"key" : "value"`
+#' 
+#' Restrictions:
+#' 
+#' -   Maximum 50 tags per resource
+#' 
+#' -   Each resource tag must be unique with a maximum of one value.
+#' 
+#' -   Maximum key length: 128 Unicode characters in UTF-8
+#' 
+#' -   Maximum value length: 256 Unicode characters in UTF-8
+#' 
+#' -   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
+#'     characters: + - = . _ : / @@.
+#' 
+#' -   Cannot use "aws:" as a prefix for a key.
 #' @param TrackerName &#91;required&#93; The name for the tracker resource.
 #' 
 #' Requirements:
 #' 
-#' -   Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-)
-#'     and underscores (_).
+#' -   Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-),
+#'     periods (.), and underscores (_).
 #' 
 #' -   Must be a unique tracker resource name.
 #' 
@@ -729,7 +1567,13 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' ```
 #' svc$create_tracker(
 #'   Description = "string",
+#'   KmsKeyId = "string",
+#'   PositionFiltering = "TimeBased"|"DistanceBased"|"AccuracyBased",
 #'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   PricingPlanDataSource = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
 #'   TrackerName = "string"
 #' )
 #' ```
@@ -737,14 +1581,14 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' @keywords internal
 #'
 #' @rdname locationservice_create_tracker
-locationservice_create_tracker <- function(Description = NULL, PricingPlan, TrackerName) {
+locationservice_create_tracker <- function(Description = NULL, KmsKeyId = NULL, PositionFiltering = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, Tags = NULL, TrackerName) {
   op <- new_operation(
     name = "CreateTracker",
     http_method = "POST",
     http_path = "/tracking/v0/trackers",
     paginator = list()
   )
-  input <- .locationservice$create_tracker_input(Description = Description, PricingPlan = PricingPlan, TrackerName = TrackerName)
+  input <- .locationservice$create_tracker_input(Description = Description, KmsKeyId = KmsKeyId, PositionFiltering = PositionFiltering, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, Tags = Tags, TrackerName = TrackerName)
   output <- .locationservice$create_tracker_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -759,9 +1603,9 @@ locationservice_create_tracker <- function(Description = NULL, PricingPlan, Trac
 #' @description
 #' Deletes a geofence collection from your AWS account.
 #' 
-#' This action deletes the resource permanently. You can't undo this
-#' action. If the geofence collection is the target of a tracker resource,
-#' the devices will no longer be monitored.
+#' This operation deletes the resource permanently. If the geofence
+#' collection is the target of a tracker resource, the devices will no
+#' longer be monitored.
 #'
 #' @usage
 #' locationservice_delete_geofence_collection(CollectionName)
@@ -803,9 +1647,8 @@ locationservice_delete_geofence_collection <- function(CollectionName) {
 #' @description
 #' Deletes a map resource from your AWS account.
 #' 
-#' This action deletes the resource permanently. You cannot undo this
-#' action. If the map is being used in an application, the map may not
-#' render.
+#' This operation deletes the resource permanently. If the map is being
+#' used in an application, the map may not render.
 #'
 #' @usage
 #' locationservice_delete_map(MapName)
@@ -842,18 +1685,17 @@ locationservice_delete_map <- function(MapName) {
 }
 .locationservice$operations$delete_map <- locationservice_delete_map
 
-#' Deletes a Place index resource from your AWS account
+#' Deletes a place index resource from your AWS account
 #'
 #' @description
-#' Deletes a Place index resource from your AWS account.
+#' Deletes a place index resource from your AWS account.
 #' 
-#' This action deletes the resource permanently. You cannot undo this
-#' action.
+#' This operation deletes the resource permanently.
 #'
 #' @usage
 #' locationservice_delete_place_index(IndexName)
 #'
-#' @param IndexName &#91;required&#93; The name of the Place index resource to be deleted.
+#' @param IndexName &#91;required&#93; The name of the place index resource to be deleted.
 #'
 #' @return
 #' An empty list.
@@ -885,15 +1727,56 @@ locationservice_delete_place_index <- function(IndexName) {
 }
 .locationservice$operations$delete_place_index <- locationservice_delete_place_index
 
+#' Deletes a route calculator resource from your AWS account
+#'
+#' @description
+#' Deletes a route calculator resource from your AWS account.
+#' 
+#' This operation deletes the resource permanently.
+#'
+#' @usage
+#' locationservice_delete_route_calculator(CalculatorName)
+#'
+#' @param CalculatorName &#91;required&#93; The name of the route calculator resource to be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_route_calculator(
+#'   CalculatorName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_delete_route_calculator
+locationservice_delete_route_calculator <- function(CalculatorName) {
+  op <- new_operation(
+    name = "DeleteRouteCalculator",
+    http_method = "DELETE",
+    http_path = "/routes/v0/calculators/{CalculatorName}",
+    paginator = list()
+  )
+  input <- .locationservice$delete_route_calculator_input(CalculatorName = CalculatorName)
+  output <- .locationservice$delete_route_calculator_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$delete_route_calculator <- locationservice_delete_route_calculator
+
 #' Deletes a tracker resource from your AWS account
 #'
 #' @description
 #' Deletes a tracker resource from your AWS account.
 #' 
-#' This action deletes the resource permanently. You can't undo this
-#' action. If the tracker resource is in use, you may encounter an error.
-#' Make sure that the target resource is not a dependency for your
-#' applications.
+#' This operation deletes the resource permanently. If the tracker resource
+#' is in use, you may encounter an error. Make sure that the target
+#' resource isn't a dependency for your applications.
 #'
 #' @usage
 #' locationservice_delete_tracker(TrackerName)
@@ -950,6 +1833,12 @@ locationservice_delete_tracker <- function(TrackerName) {
 #'     "2015-01-01"
 #'   ),
 #'   Description = "string",
+#'   KmsKeyId = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   PricingPlanDataSource = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
 #'   UpdateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -1007,6 +1896,10 @@ locationservice_describe_geofence_collection <- function(CollectionName) {
 #'   Description = "string",
 #'   MapArn = "string",
 #'   MapName = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   Tags = list(
+#'     "string"
+#'   ),
 #'   UpdateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -1040,15 +1933,15 @@ locationservice_describe_map <- function(MapName) {
 }
 .locationservice$operations$describe_map <- locationservice_describe_map
 
-#' Retrieves the Place index resource details
+#' Retrieves the place index resource details
 #'
 #' @description
-#' Retrieves the Place index resource details.
+#' Retrieves the place index resource details.
 #'
 #' @usage
 #' locationservice_describe_place_index(IndexName)
 #'
-#' @param IndexName &#91;required&#93; The name of the Place index resource.
+#' @param IndexName &#91;required&#93; The name of the place index resource.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1064,6 +1957,10 @@ locationservice_describe_map <- function(MapName) {
 #'   Description = "string",
 #'   IndexArn = "string",
 #'   IndexName = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   Tags = list(
+#'     "string"
+#'   ),
 #'   UpdateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -1097,6 +1994,64 @@ locationservice_describe_place_index <- function(IndexName) {
 }
 .locationservice$operations$describe_place_index <- locationservice_describe_place_index
 
+#' Retrieves the route calculator resource details
+#'
+#' @description
+#' Retrieves the route calculator resource details.
+#'
+#' @usage
+#' locationservice_describe_route_calculator(CalculatorName)
+#'
+#' @param CalculatorName &#91;required&#93; The name of the route calculator resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CalculatorArn = "string",
+#'   CalculatorName = "string",
+#'   CreateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   DataSource = "string",
+#'   Description = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   Tags = list(
+#'     "string"
+#'   ),
+#'   UpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_route_calculator(
+#'   CalculatorName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_describe_route_calculator
+locationservice_describe_route_calculator <- function(CalculatorName) {
+  op <- new_operation(
+    name = "DescribeRouteCalculator",
+    http_method = "GET",
+    http_path = "/routes/v0/calculators/{CalculatorName}",
+    paginator = list()
+  )
+  input <- .locationservice$describe_route_calculator_input(CalculatorName = CalculatorName)
+  output <- .locationservice$describe_route_calculator_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$describe_route_calculator <- locationservice_describe_route_calculator
+
 #' Retrieves the tracker resource details
 #'
 #' @description
@@ -1115,6 +2070,13 @@ locationservice_describe_place_index <- function(IndexName) {
 #'     "2015-01-01"
 #'   ),
 #'   Description = "string",
+#'   KmsKeyId = "string",
+#'   PositionFiltering = "TimeBased"|"DistanceBased"|"AccuracyBased",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   PricingPlanDataSource = "string",
+#'   Tags = list(
+#'     "string"
+#'   ),
 #'   TrackerArn = "string",
 #'   TrackerName = "string",
 #'   UpdateTime = as.POSIXct(
@@ -1150,11 +2112,11 @@ locationservice_describe_tracker <- function(TrackerName) {
 }
 .locationservice$operations$describe_tracker <- locationservice_describe_tracker
 
-#' Removes the association bewteen a tracker resource and a geofence
+#' Removes the association between a tracker resource and a geofence
 #' collection
 #'
 #' @description
-#' Removes the association bewteen a tracker resource and a geofence
+#' Removes the association between a tracker resource and a geofence
 #' collection.
 #' 
 #' Once you unlink a tracker resource from a geofence collection, the
@@ -1169,7 +2131,7 @@ locationservice_describe_tracker <- function(TrackerName) {
 #' resource across all AWS.
 #' 
 #' -   Format example:
-#'     `arn:partition:service:region:account-id:resource-type:resource-id`
+#'     `arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer`
 #' @param TrackerName &#91;required&#93; The name of the tracker resource to be dissociated from the consumer.
 #'
 #' @return
@@ -1203,26 +2165,32 @@ locationservice_disassociate_tracker_consumer <- function(ConsumerArn, TrackerNa
 }
 .locationservice$operations$disassociate_tracker_consumer <- locationservice_disassociate_tracker_consumer
 
-#' Retrieves the latest device position
+#' Retrieves a device's most recent position according to its sample time
 #'
 #' @description
-#' Retrieves the latest device position.
+#' Retrieves a device's most recent position according to its sample time.
 #' 
-#' Limitation — Device positions are deleted after one year.
+#' Device positions are deleted after 30 days.
 #'
 #' @usage
 #' locationservice_get_device_position(DeviceId, TrackerName)
 #'
-#' @param DeviceId &#91;required&#93; The device whose position you want to retreieve.
+#' @param DeviceId &#91;required&#93; The device whose position you want to retrieve.
 #' @param TrackerName &#91;required&#93; The tracker resource receiving the position update.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   Accuracy = list(
+#'     Horizontal = 123.0
+#'   ),
 #'   DeviceId = "string",
 #'   Position = list(
 #'     123.0
+#'   ),
+#'   PositionProperties = list(
+#'     "string"
 #'   ),
 #'   ReceivedTime = as.POSIXct(
 #'     "2015-01-01"
@@ -1268,29 +2236,39 @@ locationservice_get_device_position <- function(DeviceId, TrackerName) {
 #' Retrieves the device position history from a tracker resource within a
 #' specified range of time.
 #' 
-#' Limitation — Device positions are deleted after one year.
+#' Device positions are deleted after 30 days.
 #'
 #' @usage
 #' locationservice_get_device_position_history(DeviceId, EndTimeExclusive,
-#'   NextToken, StartTimeInclusive, TrackerName)
+#'   MaxResults, NextToken, StartTimeInclusive, TrackerName)
 #'
 #' @param DeviceId &#91;required&#93; The device whose position history you want to retrieve.
 #' @param EndTimeExclusive Specify the end time for the position history in [ISO
 #' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
-#' `YYYY-MM-DDThh:mm:ss.sssZ`.
+#' `YYYY-MM-DDThh:mm:ss.sssZ`. By default, the value will be the time that
+#' the request is made.
 #' 
-#' -   The given time for `EndTimeExclusive` must be after the time for
+#' Requirement:
+#' 
+#' -   The time specified for `EndTimeExclusive` must be after the time for
 #'     `StartTimeInclusive`.
+#' @param MaxResults An optional limit for the number of device positions returned in a
+#' single call.
+#' 
+#' Default value: `100`
 #' @param NextToken The pagination token specifying which page of results to return in the
 #' response. If no token is provided, the default page is the first page.
 #' 
 #' Default value: `null`
 #' @param StartTimeInclusive Specify the start time for the position history in [ISO
 #' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
-#' `YYYY-MM-DDThh:mm:ss.sssZ`.
+#' `YYYY-MM-DDThh:mm:ss.sssZ`. By default, the value will be 24 hours prior
+#' to the time that the request is made.
 #' 
-#' -   The given time for `EndTimeExclusive` must be after the time for
-#'     `StartTimeInclusive`.
+#' Requirement:
+#' 
+#' -   The time specified for `StartTimeInclusive` must be before
+#'     `EndTimeExclusive`.
 #' @param TrackerName &#91;required&#93; The tracker resource receiving the request for the device position
 #' history.
 #'
@@ -1300,9 +2278,15 @@ locationservice_get_device_position <- function(DeviceId, TrackerName) {
 #' list(
 #'   DevicePositions = list(
 #'     list(
+#'       Accuracy = list(
+#'         Horizontal = 123.0
+#'       ),
 #'       DeviceId = "string",
 #'       Position = list(
 #'         123.0
+#'       ),
+#'       PositionProperties = list(
+#'         "string"
 #'       ),
 #'       ReceivedTime = as.POSIXct(
 #'         "2015-01-01"
@@ -1323,6 +2307,7 @@ locationservice_get_device_position <- function(DeviceId, TrackerName) {
 #'   EndTimeExclusive = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
+#'   MaxResults = 123,
 #'   NextToken = "string",
 #'   StartTimeInclusive = as.POSIXct(
 #'     "2015-01-01"
@@ -1334,14 +2319,14 @@ locationservice_get_device_position <- function(DeviceId, TrackerName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_get_device_position_history
-locationservice_get_device_position_history <- function(DeviceId, EndTimeExclusive = NULL, NextToken = NULL, StartTimeInclusive = NULL, TrackerName) {
+locationservice_get_device_position_history <- function(DeviceId, EndTimeExclusive = NULL, MaxResults = NULL, NextToken = NULL, StartTimeInclusive = NULL, TrackerName) {
   op <- new_operation(
     name = "GetDevicePositionHistory",
     http_method = "POST",
     http_path = "/tracking/v0/trackers/{TrackerName}/devices/{DeviceId}/list-positions",
     paginator = list()
   )
-  input <- .locationservice$get_device_position_history_input(DeviceId = DeviceId, EndTimeExclusive = EndTimeExclusive, NextToken = NextToken, StartTimeInclusive = StartTimeInclusive, TrackerName = TrackerName)
+  input <- .locationservice$get_device_position_history_input(DeviceId = DeviceId, EndTimeExclusive = EndTimeExclusive, MaxResults = MaxResults, NextToken = NextToken, StartTimeInclusive = StartTimeInclusive, TrackerName = TrackerName)
   output <- .locationservice$get_device_position_history_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -1371,6 +2356,12 @@ locationservice_get_device_position_history <- function(DeviceId, EndTimeExclusi
 #'   ),
 #'   GeofenceId = "string",
 #'   Geometry = list(
+#'     Circle = list(
+#'       Center = list(
+#'         123.0
+#'       ),
+#'       Radius = 123.0
+#'     ),
 #'     Polygon = list(
 #'       list(
 #'         list(
@@ -1423,9 +2414,38 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #' locationservice_get_map_glyphs(FontStack, FontUnicodeRange, MapName)
 #'
 #' @param FontStack &#91;required&#93; A comma-separated list of fonts to load glyphs from in order of
-#' preference.. For example, `Noto Sans, Arial Unicode`.
+#' preference. For example, `Noto Sans Regular, Arial Unicode`.
+#' 
+#' Valid fonts stacks for
+#' [Esri](https://docs.aws.amazon.com/location/latest/developerguide/esri.html)
+#' styles:
+#' 
+#' -   VectorEsriDarkGrayCanvas – `Ubuntu Medium Italic` | `Ubuntu Medium`
+#'     | `Ubuntu Italic` | `Ubuntu Regular` | `Ubuntu Bold`
+#' 
+#' -   VectorEsriLightGrayCanvas – `Ubuntu Italic` | `Ubuntu Regular` |
+#'     `Ubuntu Light` | `Ubuntu Bold`
+#' 
+#' -   VectorEsriTopographic – `Noto Sans Italic` | `Noto Sans Regular` |
+#'     `Noto Sans Bold` | `Noto Serif Regular` |
+#'     `Roboto Condensed Light Italic`
+#' 
+#' -   VectorEsriStreets – `Arial Regular` | `Arial Italic` | `Arial Bold`
+#' 
+#' -   VectorEsriNavigation – `Arial Regular` | `Arial Italic` |
+#'     `Arial Bold`
+#' 
+#' Valid font stacks for [HERE
+#' Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)
+#' styles:
+#' 
+#' -   VectorHereContrast – `Fira GO Regular` | `Fira GO Bold`
+#' 
+#' -   VectorHereExplore, VectorHereExploreTruck – `Firo GO Italic` |
+#'     `Fira GO Map` | `Fira GO Map Bold` | `Noto Sans CJK JP Bold` |
+#'     `Noto Sans CJK JP Light` | `Noto Sans CJK JP Regular`
 #' @param FontUnicodeRange &#91;required&#93; A Unicode range of characters to download glyphs for. Each response will
-#' contain 256 characters. For example, 0-255 includes all characters from
+#' contain 256 characters. For example, 0–255 includes all characters from
 #' range `U+0000` to `00FF`. Must be aligned to multiples of 256.
 #' @param MapName &#91;required&#93; The map resource associated with the glyph ﬁle.
 #'
@@ -1584,7 +2604,7 @@ locationservice_get_map_style_descriptor <- function(MapName) {
 #'
 #' @description
 #' Retrieves a vector data tile from the map resource. Map tiles are used
-#' by clients to render a map. They are addressed using a grid arrangement
+#' by clients to render a map. they're addressed using a grid arrangement
 #' with an X coordinate, Y coordinate, and Z (zoom) level.
 #' 
 #' The origin (0, 0) is the top left of the map. Increasing the zoom level
@@ -1639,6 +2659,78 @@ locationservice_get_map_tile <- function(MapName, X, Y, Z) {
 }
 .locationservice$operations$get_map_tile <- locationservice_get_map_tile
 
+#' A batch request to retrieve all device positions
+#'
+#' @description
+#' A batch request to retrieve all device positions.
+#'
+#' @usage
+#' locationservice_list_device_positions(MaxResults, NextToken,
+#'   TrackerName)
+#'
+#' @param MaxResults An optional limit for the number of entries returned in a single call.
+#' 
+#' Default value: `100`
+#' @param NextToken The pagination token specifying which page of results to return in the
+#' response. If no token is provided, the default page is the first page.
+#' 
+#' Default value: `null`
+#' @param TrackerName &#91;required&#93; The tracker resource containing the requested devices.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entries = list(
+#'     list(
+#'       Accuracy = list(
+#'         Horizontal = 123.0
+#'       ),
+#'       DeviceId = "string",
+#'       Position = list(
+#'         123.0
+#'       ),
+#'       PositionProperties = list(
+#'         "string"
+#'       ),
+#'       SampleTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_device_positions(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   TrackerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_list_device_positions
+locationservice_list_device_positions <- function(MaxResults = NULL, NextToken = NULL, TrackerName) {
+  op <- new_operation(
+    name = "ListDevicePositions",
+    http_method = "POST",
+    http_path = "/tracking/v0/trackers/{TrackerName}/list-positions",
+    paginator = list()
+  )
+  input <- .locationservice$list_device_positions_input(MaxResults = MaxResults, NextToken = NextToken, TrackerName = TrackerName)
+  output <- .locationservice$list_device_positions_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$list_device_positions <- locationservice_list_device_positions
+
 #' Lists geofence collections in your AWS account
 #'
 #' @description
@@ -1666,6 +2758,8 @@ locationservice_get_map_tile <- function(MapName, X, Y, Z) {
 #'         "2015-01-01"
 #'       ),
 #'       Description = "string",
+#'       PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'       PricingPlanDataSource = "string",
 #'       UpdateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -1709,9 +2803,12 @@ locationservice_list_geofence_collections <- function(MaxResults = NULL, NextTok
 #' Lists geofences stored in a given geofence collection.
 #'
 #' @usage
-#' locationservice_list_geofences(CollectionName, NextToken)
+#' locationservice_list_geofences(CollectionName, MaxResults, NextToken)
 #'
 #' @param CollectionName &#91;required&#93; The name of the geofence collection storing the list of geofences.
+#' @param MaxResults An optional limit for the number of geofences returned in a single call.
+#' 
+#' Default value: `100`
 #' @param NextToken The pagination token specifying which page of results to return in the
 #' response. If no token is provided, the default page is the first page.
 #' 
@@ -1728,6 +2825,12 @@ locationservice_list_geofence_collections <- function(MaxResults = NULL, NextTok
 #'       ),
 #'       GeofenceId = "string",
 #'       Geometry = list(
+#'         Circle = list(
+#'           Center = list(
+#'             123.0
+#'           ),
+#'           Radius = 123.0
+#'         ),
 #'         Polygon = list(
 #'           list(
 #'             list(
@@ -1750,6 +2853,7 @@ locationservice_list_geofence_collections <- function(MaxResults = NULL, NextTok
 #' ```
 #' svc$list_geofences(
 #'   CollectionName = "string",
+#'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
 #' ```
@@ -1757,14 +2861,14 @@ locationservice_list_geofence_collections <- function(MaxResults = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname locationservice_list_geofences
-locationservice_list_geofences <- function(CollectionName, NextToken = NULL) {
+locationservice_list_geofences <- function(CollectionName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListGeofences",
     http_method = "POST",
     http_path = "/geofencing/v0/collections/{CollectionName}/list-geofences",
     paginator = list()
   )
-  input <- .locationservice$list_geofences_input(CollectionName = CollectionName, NextToken = NextToken)
+  input <- .locationservice$list_geofences_input(CollectionName = CollectionName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_geofences_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -1802,6 +2906,7 @@ locationservice_list_geofences <- function(CollectionName, NextToken = NULL) {
 #'       DataSource = "string",
 #'       Description = "string",
 #'       MapName = "string",
+#'       PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
 #'       UpdateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -1839,10 +2944,10 @@ locationservice_list_maps <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .locationservice$operations$list_maps <- locationservice_list_maps
 
-#' Lists Place index resources in your AWS account
+#' Lists place index resources in your AWS account
 #'
 #' @description
-#' Lists Place index resources in your AWS account.
+#' Lists place index resources in your AWS account.
 #'
 #' @usage
 #' locationservice_list_place_indexes(MaxResults, NextToken)
@@ -1868,6 +2973,7 @@ locationservice_list_maps <- function(MaxResults = NULL, NextToken = NULL) {
 #'       DataSource = "string",
 #'       Description = "string",
 #'       IndexName = "string",
+#'       PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
 #'       UpdateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -1904,6 +3010,125 @@ locationservice_list_place_indexes <- function(MaxResults = NULL, NextToken = NU
   return(response)
 }
 .locationservice$operations$list_place_indexes <- locationservice_list_place_indexes
+
+#' Lists route calculator resources in your AWS account
+#'
+#' @description
+#' Lists route calculator resources in your AWS account.
+#'
+#' @usage
+#' locationservice_list_route_calculators(MaxResults, NextToken)
+#'
+#' @param MaxResults An optional maximum number of results returned in a single call.
+#' 
+#' Default Value: `100`
+#' @param NextToken The pagination token specifying which page of results to return in the
+#' response. If no token is provided, the default page is the first page.
+#' 
+#' Default Value: `null`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Entries = list(
+#'     list(
+#'       CalculatorName = "string",
+#'       CreateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       DataSource = "string",
+#'       Description = "string",
+#'       PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'       UpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_route_calculators(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_list_route_calculators
+locationservice_list_route_calculators <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListRouteCalculators",
+    http_method = "POST",
+    http_path = "/routes/v0/list-calculators",
+    paginator = list()
+  )
+  input <- .locationservice$list_route_calculators_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .locationservice$list_route_calculators_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$list_route_calculators <- locationservice_list_route_calculators
+
+#' Returns a list of tags that are applied to the specified Amazon Location
+#' resource
+#'
+#' @description
+#' Returns a list of tags that are applied to the specified Amazon Location
+#' resource.
+#'
+#' @usage
+#' locationservice_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags you want to
+#' retrieve.
+#' 
+#' -   Format example:
+#'     `arn:aws:geo:region:account-id:resourcetype/ExampleResource`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_list_tags_for_resource
+locationservice_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .locationservice$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .locationservice$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$list_tags_for_resource <- locationservice_list_tags_for_resource
 
 #' Lists geofence collections currently associated to the given tracker
 #' resource
@@ -1992,6 +3217,8 @@ locationservice_list_tracker_consumers <- function(MaxResults = NULL, NextToken 
 #'         "2015-01-01"
 #'       ),
 #'       Description = "string",
+#'       PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'       PricingPlanDataSource = "string",
 #'       TrackerName = "string",
 #'       UpdateTime = as.POSIXct(
 #'         "2015-01-01"
@@ -2030,13 +3257,13 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .locationservice$operations$list_trackers <- locationservice_list_trackers
 
-#' Stores a geofence to a given geofence collection, or updates the
-#' geometry of an existing geofence if a geofence ID is included in the
+#' Stores a geofence geometry in a given geofence collection, or updates
+#' the geometry of an existing geofence if a geofence ID is included in the
 #' request
 #'
 #' @description
-#' Stores a geofence to a given geofence collection, or updates the
-#' geometry of an existing geofence if a geofence ID is included in the
+#' Stores a geofence geometry in a given geofence collection, or updates
+#' the geometry of an existing geofence if a geofence ID is included in the
 #' request.
 #'
 #' @usage
@@ -2044,7 +3271,13 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @param CollectionName &#91;required&#93; The geofence collection to store the geofence in.
 #' @param GeofenceId &#91;required&#93; An identifier for the geofence. For example, `ExampleGeofence-1`.
-#' @param Geometry &#91;required&#93; Contains the polygon details to specify the position of the geofence.
+#' @param Geometry &#91;required&#93; Contains the details to specify the position of the geofence. Can be
+#' either a polygon or a circle. Including both will return a validation
+#' error.
+#' 
+#' Each [geofence
+#' polygon](https://docs.aws.amazon.com/location/latest/APIReference/API_GeofenceGeometry.html)
+#' can have a maximum of 1,000 vertices.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2066,6 +3299,12 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 #'   CollectionName = "string",
 #'   GeofenceId = "string",
 #'   Geometry = list(
+#'     Circle = list(
+#'       Center = list(
+#'         123.0
+#'       ),
+#'       Radius = 123.0
+#'     ),
 #'     Polygon = list(
 #'       list(
 #'         list(
@@ -2103,32 +3342,43 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #' Reverse geocodes a given coordinate and returns a legible address.
 #' Allows you to search for Places or points of interest near a given
 #' position.
-#' 
-#' By using Places, you agree that AWS may transmit your API queries to
-#' your selected third party provider for processing, which may be outside
-#' the AWS region you are currently using.
-#' 
-#' Because of licensing limitations, you may not use HERE to store results
-#' for locations in Japan. For more information, see the [AWS Service
-#' Terms](https://aws.amazon.com/service-terms/) for Amazon Location
-#' Service.
 #'
 #' @usage
-#' locationservice_search_place_index_for_position(IndexName, MaxResults,
-#'   Position)
+#' locationservice_search_place_index_for_position(IndexName, Language,
+#'   MaxResults, Position)
 #'
-#' @param IndexName &#91;required&#93; The name of the Place index resource you want to use for the search.
-#' @param MaxResults An optional paramer. The maximum number of results returned per request.
+#' @param IndexName &#91;required&#93; The name of the place index resource you want to use for the search.
+#' @param Language The preferred language used to return results. The value must be a valid
+#' [BCP
+#' 47](https://datatracker.ietf.org/doc/search?rfcs=on&activedrafts=on&name=bcp47)
+#' language tag, for example, `en` for English.
+#' 
+#' This setting affects the languages used in the results, but not the
+#' results themselves. If no language is specified, or not supported for a
+#' particular result, the partner automatically chooses a language for the
+#' result.
+#' 
+#' For an example, we'll use the Greek language. You search for a location
+#' around Athens, Greece, with the `language` parameter set to `en`. The
+#' `city` in the results will most likely be returned as `Athens`.
+#' 
+#' If you set the `language` parameter to `el`, for Greek, then the `city`
+#' in the results will more likely be returned as `Αθήνα`.
+#' 
+#' If the data provider does not have a value for Greek, the result will be
+#' in a language that the provider does support.
+#' @param MaxResults An optional parameter. The maximum number of results returned per
+#' request.
 #' 
 #' Default value: `50`
-#' @param Position &#91;required&#93; Specifies a coordinate for the query defined by a longitude, and
-#' latitude.
+#' @param Position &#91;required&#93; Specifies the longitude and latitude of the position to query.
 #' 
-#' -   The first position is the X coordinate, or longitude.
+#' This parameter must contain a pair of numbers. The first number
+#' represents the X coordinate, or longitude; the second number represents
+#' the Y coordinate, or latitude.
 #' 
-#' -   The second position is the Y coordinate, or latitude.
-#' 
-#' For example, `position=xLongitude&position=yLatitude` .
+#' For example, `[-123.1174, 49.2847]` represents a position with longitude
+#' `-123.1174` and latitude `49.2847`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2136,6 +3386,7 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #' list(
 #'   Results = list(
 #'     list(
+#'       Distance = 123.0,
 #'       Place = list(
 #'         AddressNumber = "string",
 #'         Country = "string",
@@ -2144,18 +3395,24 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #'             123.0
 #'           )
 #'         ),
+#'         Interpolated = TRUE|FALSE,
 #'         Label = "string",
 #'         Municipality = "string",
 #'         Neighborhood = "string",
 #'         PostalCode = "string",
 #'         Region = "string",
 #'         Street = "string",
-#'         SubRegion = "string"
+#'         SubRegion = "string",
+#'         TimeZone = list(
+#'           Name = "string",
+#'           Offset = 123
+#'         )
 #'       )
 #'     )
 #'   ),
 #'   Summary = list(
 #'     DataSource = "string",
+#'     Language = "string",
 #'     MaxResults = 123,
 #'     Position = list(
 #'       123.0
@@ -2168,6 +3425,7 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #' ```
 #' svc$search_place_index_for_position(
 #'   IndexName = "string",
+#'   Language = "string",
 #'   MaxResults = 123,
 #'   Position = list(
 #'     123.0
@@ -2178,14 +3436,14 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #' @keywords internal
 #'
 #' @rdname locationservice_search_place_index_for_position
-locationservice_search_place_index_for_position <- function(IndexName, MaxResults = NULL, Position) {
+locationservice_search_place_index_for_position <- function(IndexName, Language = NULL, MaxResults = NULL, Position) {
   op <- new_operation(
     name = "SearchPlaceIndexForPosition",
     http_method = "POST",
     http_path = "/places/v0/indexes/{IndexName}/search/position",
     paginator = list()
   )
-  input <- .locationservice$search_place_index_for_position_input(IndexName = IndexName, MaxResults = MaxResults, Position = Position)
+  input <- .locationservice$search_place_index_for_position_input(IndexName = IndexName, Language = Language, MaxResults = MaxResults, Position = Position)
   output <- .locationservice$search_place_index_for_position_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -2195,78 +3453,87 @@ locationservice_search_place_index_for_position <- function(IndexName, MaxResult
 }
 .locationservice$operations$search_place_index_for_position <- locationservice_search_place_index_for_position
 
-#' Geocodes free-form text, such as an address, name, city, or region to
-#' allow you to search for Places or points of interest
+#' Generates suggestions for addresses and points of interest based on
+#' partial or misspelled free-form text
 #'
 #' @description
-#' Geocodes free-form text, such as an address, name, city, or region to
-#' allow you to search for Places or points of interest.
+#' Generates suggestions for addresses and points of interest based on
+#' partial or misspelled free-form text. This operation is also known as
+#' autocomplete, autosuggest, or fuzzy matching.
 #' 
-#' Includes the option to apply additional parameters to narrow your list
-#' of results.
+#' Optional parameters let you narrow your search results by bounding box
+#' or country, or bias your search toward a specific position on the globe.
 #' 
-#' You can search for places near a given position using `BiasPosition`, or
-#' filter results within a bounding box using `FilterBBox`. Providing both
-#' parameters simultaneously returns an error.
-#' 
-#' By using Places, you agree that AWS may transmit your API queries to
-#' your selected third party provider for processing, which may be outside
-#' the AWS region you are currently using.
-#' 
-#' Also, when using HERE as your data provider, you may not (a) use HERE
-#' Places for Asset Management, or (b) select the `Storage` option for the
-#' `IntendedUse` parameter when requesting Places in Japan. For more
-#' information, see the [AWS Service
-#' Terms](https://aws.amazon.com/service-terms/) for Amazon Location
-#' Service.
+#' You can search for suggested place names near a specified position by
+#' using `BiasPosition`, or filter results within a bounding box by using
+#' `FilterBBox`. These parameters are mutually exclusive; using both
+#' `BiasPosition` and `FilterBBox` in the same command returns an error.
 #'
 #' @usage
-#' locationservice_search_place_index_for_text(BiasPosition, FilterBBox,
-#'   FilterCountries, IndexName, MaxResults, Text)
+#' locationservice_search_place_index_for_suggestions(BiasPosition,
+#'   FilterBBox, FilterCountries, IndexName, Language, MaxResults, Text)
 #'
-#' @param BiasPosition Searches for results closest to the given position. An optional
-#' parameter defined by longitude, and latitude.
+#' @param BiasPosition An optional parameter that indicates a preference for place suggestions
+#' that are closer to a specified position.
 #' 
-#' -   The first `bias` position is the X coordinate, or longitude.
+#' If provided, this parameter must contain a pair of numbers. The first
+#' number represents the X coordinate, or longitude; the second number
+#' represents the Y coordinate, or latitude.
 #' 
-#' -   The second `bias` position is the Y coordinate, or latitude.
+#' For example, `[-123.1174, 49.2847]` represents the position with
+#' longitude `-123.1174` and latitude `49.2847`.
 #' 
-#' For example, `bias=xLongitude&bias=yLatitude`.
-#' @param FilterBBox Filters the results by returning only Places within the provided
-#' bounding box. An optional parameter.
+#' `BiasPosition` and `FilterBBox` are mutually exclusive. Specifying both
+#' options results in an error.
+#' @param FilterBBox An optional parameter that limits the search results by returning only
+#' suggestions within a specified bounding box.
 #' 
-#' The first 2 `bbox` parameters describe the lower southwest corner:
+#' If provided, this parameter must contain a total of four consecutive
+#' numbers in two pairs. The first pair of numbers represents the X and Y
+#' coordinates (longitude and latitude, respectively) of the southwest
+#' corner of the bounding box; the second pair of numbers represents the X
+#' and Y coordinates (longitude and latitude, respectively) of the
+#' northeast corner of the bounding box.
 #' 
-#' -   The first `bbox` position is the X coordinate or longitude of the
-#'     lower southwest corner.
+#' For example, `[-12.7935, -37.4835, -12.0684, -36.9542]` represents a
+#' bounding box where the southwest corner has longitude `-12.7935` and
+#' latitude `-37.4835`, and the northeast corner has longitude `-12.0684`
+#' and latitude `-36.9542`.
 #' 
-#' -   The second `bbox` position is the Y coordinate or latitude of the
-#'     lower southwest corner.
-#' 
-#' For example, `bbox=xLongitudeSW&bbox=yLatitudeSW`.
-#' 
-#' The next `bbox` parameters describe the upper northeast corner:
-#' 
-#' -   The third `bbox` position is the X coordinate, or longitude of the
-#'     upper northeast corner.
-#' 
-#' -   The fourth `bbox` position is the Y coordinate, or longitude of the
-#'     upper northeast corner.
-#' 
-#' For example, `bbox=xLongitudeNE&bbox=yLatitudeNE`
-#' @param FilterCountries Limits the search to the given a list of countries/regions. An optional
-#' parameter.
+#' `FilterBBox` and `BiasPosition` are mutually exclusive. Specifying both
+#' options results in an error.
+#' @param FilterCountries An optional parameter that limits the search results by returning only
+#' suggestions within the provided list of countries.
 #' 
 #' -   Use the [ISO 3166](https://www.iso.org/iso-3166-country-codes.html)
 #'     3-digit country code. For example, Australia uses three upper-case
 #'     characters: `AUS`.
-#' @param IndexName &#91;required&#93; The name of the Place index resource you want to use for the search.
+#' @param IndexName &#91;required&#93; The name of the place index resource you want to use for the search.
+#' @param Language The preferred language used to return results. The value must be a valid
+#' [BCP
+#' 47](https://datatracker.ietf.org/doc/search?rfcs=on&activedrafts=on&name=bcp47)
+#' language tag, for example, `en` for English.
+#' 
+#' This setting affects the languages used in the results. If no language
+#' is specified, or not supported for a particular result, the partner
+#' automatically chooses a language for the result.
+#' 
+#' For an example, we'll use the Greek language. You search for
+#' `Athens, Gr` to get suggestions with the `language` parameter set to
+#' `en`. The results found will most likely be returned as
+#' `Athens, Greece`.
+#' 
+#' If you set the `language` parameter to `el`, for Greek, then the result
+#' found will more likely be returned as `Αθήνα, Ελλάδα`.
+#' 
+#' If the data provider does not have a value for Greek, the result will be
+#' in a language that the provider does support.
 #' @param MaxResults An optional parameter. The maximum number of results returned per
 #' request.
 #' 
-#' The default: `50`
-#' @param Text &#91;required&#93; The address, name, city, or region to be used in the search. In
-#' free-form text format. For example, `123 Any Street`.
+#' The default: `5`
+#' @param Text &#91;required&#93; The free-form partial text to use to generate place suggestions. For
+#' example, `eiffel tow`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2274,22 +3541,7 @@ locationservice_search_place_index_for_position <- function(IndexName, MaxResult
 #' list(
 #'   Results = list(
 #'     list(
-#'       Place = list(
-#'         AddressNumber = "string",
-#'         Country = "string",
-#'         Geometry = list(
-#'           Point = list(
-#'             123.0
-#'           )
-#'         ),
-#'         Label = "string",
-#'         Municipality = "string",
-#'         Neighborhood = "string",
-#'         PostalCode = "string",
-#'         Region = "string",
-#'         Street = "string",
-#'         SubRegion = "string"
-#'       )
+#'       Text = "string"
 #'     )
 #'   ),
 #'   Summary = list(
@@ -2303,6 +3555,178 @@ locationservice_search_place_index_for_position <- function(IndexName, MaxResult
 #'     FilterCountries = list(
 #'       "string"
 #'     ),
+#'     Language = "string",
+#'     MaxResults = 123,
+#'     Text = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$search_place_index_for_suggestions(
+#'   BiasPosition = list(
+#'     123.0
+#'   ),
+#'   FilterBBox = list(
+#'     123.0
+#'   ),
+#'   FilterCountries = list(
+#'     "string"
+#'   ),
+#'   IndexName = "string",
+#'   Language = "string",
+#'   MaxResults = 123,
+#'   Text = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_search_place_index_for_suggestions
+locationservice_search_place_index_for_suggestions <- function(BiasPosition = NULL, FilterBBox = NULL, FilterCountries = NULL, IndexName, Language = NULL, MaxResults = NULL, Text) {
+  op <- new_operation(
+    name = "SearchPlaceIndexForSuggestions",
+    http_method = "POST",
+    http_path = "/places/v0/indexes/{IndexName}/search/suggestions",
+    paginator = list()
+  )
+  input <- .locationservice$search_place_index_for_suggestions_input(BiasPosition = BiasPosition, FilterBBox = FilterBBox, FilterCountries = FilterCountries, IndexName = IndexName, Language = Language, MaxResults = MaxResults, Text = Text)
+  output <- .locationservice$search_place_index_for_suggestions_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$search_place_index_for_suggestions <- locationservice_search_place_index_for_suggestions
+
+#' Geocodes free-form text, such as an address, name, city, or region to
+#' allow you to search for Places or points of interest
+#'
+#' @description
+#' Geocodes free-form text, such as an address, name, city, or region to
+#' allow you to search for Places or points of interest.
+#' 
+#' Optional parameters let you narrow your search results by bounding box
+#' or country, or bias your search toward a specific position on the globe.
+#' 
+#' You can search for places near a given position using `BiasPosition`, or
+#' filter results within a bounding box using `FilterBBox`. Providing both
+#' parameters simultaneously returns an error.
+#' 
+#' Search results are returned in order of highest to lowest relevance.
+#'
+#' @usage
+#' locationservice_search_place_index_for_text(BiasPosition, FilterBBox,
+#'   FilterCountries, IndexName, Language, MaxResults, Text)
+#'
+#' @param BiasPosition An optional parameter that indicates a preference for places that are
+#' closer to a specified position.
+#' 
+#' If provided, this parameter must contain a pair of numbers. The first
+#' number represents the X coordinate, or longitude; the second number
+#' represents the Y coordinate, or latitude.
+#' 
+#' For example, `[-123.1174, 49.2847]` represents the position with
+#' longitude `-123.1174` and latitude `49.2847`.
+#' 
+#' `BiasPosition` and `FilterBBox` are mutually exclusive. Specifying both
+#' options results in an error.
+#' @param FilterBBox An optional parameter that limits the search results by returning only
+#' places that are within the provided bounding box.
+#' 
+#' If provided, this parameter must contain a total of four consecutive
+#' numbers in two pairs. The first pair of numbers represents the X and Y
+#' coordinates (longitude and latitude, respectively) of the southwest
+#' corner of the bounding box; the second pair of numbers represents the X
+#' and Y coordinates (longitude and latitude, respectively) of the
+#' northeast corner of the bounding box.
+#' 
+#' For example, `[-12.7935, -37.4835, -12.0684, -36.9542]` represents a
+#' bounding box where the southwest corner has longitude `-12.7935` and
+#' latitude `-37.4835`, and the northeast corner has longitude `-12.0684`
+#' and latitude `-36.9542`.
+#' 
+#' `FilterBBox` and `BiasPosition` are mutually exclusive. Specifying both
+#' options results in an error.
+#' @param FilterCountries An optional parameter that limits the search results by returning only
+#' places that are in a specified list of countries.
+#' 
+#' -   Valid values include [ISO
+#'     3166](https://www.iso.org/iso-3166-country-codes.html) 3-digit
+#'     country codes. For example, Australia uses three upper-case
+#'     characters: `AUS`.
+#' @param IndexName &#91;required&#93; The name of the place index resource you want to use for the search.
+#' @param Language The preferred language used to return results. The value must be a valid
+#' [BCP
+#' 47](https://datatracker.ietf.org/doc/search?rfcs=on&activedrafts=on&name=bcp47)
+#' language tag, for example, `en` for English.
+#' 
+#' This setting affects the languages used in the results, but not the
+#' results themselves. If no language is specified, or not supported for a
+#' particular result, the partner automatically chooses a language for the
+#' result.
+#' 
+#' For an example, we'll use the Greek language. You search for
+#' `Athens, Greece`, with the `language` parameter set to `en`. The result
+#' found will most likely be returned as `Athens`.
+#' 
+#' If you set the `language` parameter to `el`, for Greek, then the result
+#' found will more likely be returned as `Αθήνα`.
+#' 
+#' If the data provider does not have a value for Greek, the result will be
+#' in a language that the provider does support.
+#' @param MaxResults An optional parameter. The maximum number of results returned per
+#' request.
+#' 
+#' The default: `50`
+#' @param Text &#91;required&#93; The address, name, city, or region to be used in the search in free-form
+#' text format. For example, `123 Any Street`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     list(
+#'       Distance = 123.0,
+#'       Place = list(
+#'         AddressNumber = "string",
+#'         Country = "string",
+#'         Geometry = list(
+#'           Point = list(
+#'             123.0
+#'           )
+#'         ),
+#'         Interpolated = TRUE|FALSE,
+#'         Label = "string",
+#'         Municipality = "string",
+#'         Neighborhood = "string",
+#'         PostalCode = "string",
+#'         Region = "string",
+#'         Street = "string",
+#'         SubRegion = "string",
+#'         TimeZone = list(
+#'           Name = "string",
+#'           Offset = 123
+#'         )
+#'       ),
+#'       Relevance = 123.0
+#'     )
+#'   ),
+#'   Summary = list(
+#'     BiasPosition = list(
+#'       123.0
+#'     ),
+#'     DataSource = "string",
+#'     FilterBBox = list(
+#'       123.0
+#'     ),
+#'     FilterCountries = list(
+#'       "string"
+#'     ),
+#'     Language = "string",
 #'     MaxResults = 123,
 #'     ResultBBox = list(
 #'       123.0
@@ -2325,6 +3749,7 @@ locationservice_search_place_index_for_position <- function(IndexName, MaxResult
 #'     "string"
 #'   ),
 #'   IndexName = "string",
+#'   Language = "string",
 #'   MaxResults = 123,
 #'   Text = "string"
 #' )
@@ -2333,14 +3758,14 @@ locationservice_search_place_index_for_position <- function(IndexName, MaxResult
 #' @keywords internal
 #'
 #' @rdname locationservice_search_place_index_for_text
-locationservice_search_place_index_for_text <- function(BiasPosition = NULL, FilterBBox = NULL, FilterCountries = NULL, IndexName, MaxResults = NULL, Text) {
+locationservice_search_place_index_for_text <- function(BiasPosition = NULL, FilterBBox = NULL, FilterCountries = NULL, IndexName, Language = NULL, MaxResults = NULL, Text) {
   op <- new_operation(
     name = "SearchPlaceIndexForText",
     http_method = "POST",
     http_path = "/places/v0/indexes/{IndexName}/search/text",
     paginator = list()
   )
-  input <- .locationservice$search_place_index_for_text_input(BiasPosition = BiasPosition, FilterBBox = FilterBBox, FilterCountries = FilterCountries, IndexName = IndexName, MaxResults = MaxResults, Text = Text)
+  input <- .locationservice$search_place_index_for_text_input(BiasPosition = BiasPosition, FilterBBox = FilterBBox, FilterCountries = FilterCountries, IndexName = IndexName, Language = Language, MaxResults = MaxResults, Text = Text)
   output <- .locationservice$search_place_index_for_text_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -2349,3 +3774,431 @@ locationservice_search_place_index_for_text <- function(BiasPosition = NULL, Fil
   return(response)
 }
 .locationservice$operations$search_place_index_for_text <- locationservice_search_place_index_for_text
+
+#' Assigns one or more tags (key-value pairs) to the specified Amazon
+#' Location Service resource
+#'
+#' @description
+#' Assigns one or more tags (key-value pairs) to the specified Amazon
+#' Location Service resource.
+#' 
+#'      <p>Tags can help you organize and categorize your resources. You can also use them to scope user permissions, by granting a user permission to access or change only resources with certain tag values.</p> <p>You can use the <code>TagResource</code> operation with an Amazon Location Service resource that already has tags. If you specify a new tag key for the resource, this tag is appended to the tags already associated with the resource. If you specify a tag key that\'s already associated with the resource, the new tag value that you specify replaces the previous value for that tag. </p> <p>You can associate up to 50 tags with a resource.</p> 
+#'
+#' @usage
+#' locationservice_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags you want to
+#' update.
+#' 
+#' -   Format example:
+#'     `arn:aws:geo:region:account-id:resourcetype/ExampleResource`
+#' @param Tags &#91;required&#93; Applies one or more tags to specific resource. A tag is a key-value pair
+#' that helps you manage, identify, search, and filter your resources.
+#' 
+#' Format: `"key" : "value"`
+#' 
+#' Restrictions:
+#' 
+#' -   Maximum 50 tags per resource.
+#' 
+#' -   Each tag key must be unique and must have exactly one associated
+#'     value.
+#' 
+#' -   Maximum key length: 128 Unicode characters in UTF-8.
+#' 
+#' -   Maximum value length: 256 Unicode characters in UTF-8.
+#' 
+#' -   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
+#'     characters: + - = . _ : / @@
+#' 
+#' -   Cannot use "aws:" as a prefix for a key.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_tag_resource
+locationservice_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .locationservice$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .locationservice$tag_resource_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$tag_resource <- locationservice_tag_resource
+
+#' Removes one or more tags from the specified Amazon Location resource
+#'
+#' @description
+#' Removes one or more tags from the specified Amazon Location resource.
+#'
+#' @usage
+#' locationservice_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which you want to
+#' remove tags.
+#' 
+#' -   Format example:
+#'     `arn:aws:geo:region:account-id:resourcetype/ExampleResource`
+#' @param TagKeys &#91;required&#93; The list of tag keys to remove from the specified resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_untag_resource
+locationservice_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .locationservice$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .locationservice$untag_resource_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$untag_resource <- locationservice_untag_resource
+
+#' Updates the specified properties of a given geofence collection
+#'
+#' @description
+#' Updates the specified properties of a given geofence collection.
+#'
+#' @usage
+#' locationservice_update_geofence_collection(CollectionName, Description,
+#'   PricingPlan, PricingPlanDataSource)
+#'
+#' @param CollectionName &#91;required&#93; The name of the geofence collection to update.
+#' @param Description Updates the description for the geofence collection.
+#' @param PricingPlan No longer used. If included, the only allowed value is
+#' `RequestBasedUsage`.
+#' @param PricingPlanDataSource This parameter is no longer used.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CollectionArn = "string",
+#'   CollectionName = "string",
+#'   UpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_geofence_collection(
+#'   CollectionName = "string",
+#'   Description = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   PricingPlanDataSource = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_update_geofence_collection
+locationservice_update_geofence_collection <- function(CollectionName, Description = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL) {
+  op <- new_operation(
+    name = "UpdateGeofenceCollection",
+    http_method = "PATCH",
+    http_path = "/geofencing/v0/collections/{CollectionName}",
+    paginator = list()
+  )
+  input <- .locationservice$update_geofence_collection_input(CollectionName = CollectionName, Description = Description, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource)
+  output <- .locationservice$update_geofence_collection_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$update_geofence_collection <- locationservice_update_geofence_collection
+
+#' Updates the specified properties of a given map resource
+#'
+#' @description
+#' Updates the specified properties of a given map resource.
+#'
+#' @usage
+#' locationservice_update_map(Description, MapName, PricingPlan)
+#'
+#' @param Description Updates the description for the map resource.
+#' @param MapName &#91;required&#93; The name of the map resource to update.
+#' @param PricingPlan No longer used. If included, the only allowed value is
+#' `RequestBasedUsage`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MapArn = "string",
+#'   MapName = "string",
+#'   UpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_map(
+#'   Description = "string",
+#'   MapName = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_update_map
+locationservice_update_map <- function(Description = NULL, MapName, PricingPlan = NULL) {
+  op <- new_operation(
+    name = "UpdateMap",
+    http_method = "PATCH",
+    http_path = "/maps/v0/maps/{MapName}",
+    paginator = list()
+  )
+  input <- .locationservice$update_map_input(Description = Description, MapName = MapName, PricingPlan = PricingPlan)
+  output <- .locationservice$update_map_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$update_map <- locationservice_update_map
+
+#' Updates the specified properties of a given place index resource
+#'
+#' @description
+#' Updates the specified properties of a given place index resource.
+#'
+#' @usage
+#' locationservice_update_place_index(DataSourceConfiguration, Description,
+#'   IndexName, PricingPlan)
+#'
+#' @param DataSourceConfiguration Updates the data storage option for the place index resource.
+#' @param Description Updates the description for the place index resource.
+#' @param IndexName &#91;required&#93; The name of the place index resource to update.
+#' @param PricingPlan No longer used. If included, the only allowed value is
+#' `RequestBasedUsage`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IndexArn = "string",
+#'   IndexName = "string",
+#'   UpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_place_index(
+#'   DataSourceConfiguration = list(
+#'     IntendedUse = "SingleUse"|"Storage"
+#'   ),
+#'   Description = "string",
+#'   IndexName = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_update_place_index
+locationservice_update_place_index <- function(DataSourceConfiguration = NULL, Description = NULL, IndexName, PricingPlan = NULL) {
+  op <- new_operation(
+    name = "UpdatePlaceIndex",
+    http_method = "PATCH",
+    http_path = "/places/v0/indexes/{IndexName}",
+    paginator = list()
+  )
+  input <- .locationservice$update_place_index_input(DataSourceConfiguration = DataSourceConfiguration, Description = Description, IndexName = IndexName, PricingPlan = PricingPlan)
+  output <- .locationservice$update_place_index_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$update_place_index <- locationservice_update_place_index
+
+#' Updates the specified properties for a given route calculator resource
+#'
+#' @description
+#' Updates the specified properties for a given route calculator resource.
+#'
+#' @usage
+#' locationservice_update_route_calculator(CalculatorName, Description,
+#'   PricingPlan)
+#'
+#' @param CalculatorName &#91;required&#93; The name of the route calculator resource to update.
+#' @param Description Updates the description for the route calculator resource.
+#' @param PricingPlan No longer used. If included, the only allowed value is
+#' `RequestBasedUsage`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CalculatorArn = "string",
+#'   CalculatorName = "string",
+#'   UpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_route_calculator(
+#'   CalculatorName = "string",
+#'   Description = "string",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_update_route_calculator
+locationservice_update_route_calculator <- function(CalculatorName, Description = NULL, PricingPlan = NULL) {
+  op <- new_operation(
+    name = "UpdateRouteCalculator",
+    http_method = "PATCH",
+    http_path = "/routes/v0/calculators/{CalculatorName}",
+    paginator = list()
+  )
+  input <- .locationservice$update_route_calculator_input(CalculatorName = CalculatorName, Description = Description, PricingPlan = PricingPlan)
+  output <- .locationservice$update_route_calculator_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$update_route_calculator <- locationservice_update_route_calculator
+
+#' Updates the specified properties of a given tracker resource
+#'
+#' @description
+#' Updates the specified properties of a given tracker resource.
+#'
+#' @usage
+#' locationservice_update_tracker(Description, PositionFiltering,
+#'   PricingPlan, PricingPlanDataSource, TrackerName)
+#'
+#' @param Description Updates the description for the tracker resource.
+#' @param PositionFiltering Updates the position filtering for the tracker resource.
+#' 
+#' Valid values:
+#' 
+#' -   `TimeBased` - Location updates are evaluated against linked geofence
+#'     collections, but not every location update is stored. If your update
+#'     frequency is more often than 30 seconds, only one update per 30
+#'     seconds is stored for each unique device ID.
+#' 
+#' -   `DistanceBased` - If the device has moved less than 30 m (98.4 ft),
+#'     location updates are ignored. Location updates within this distance
+#'     are neither evaluated against linked geofence collections, nor
+#'     stored. This helps control costs by reducing the number of geofence
+#'     evaluations and historical device positions to paginate through.
+#'     Distance-based filtering can also reduce the effects of GPS noise
+#'     when displaying device trajectories on a map.
+#' 
+#' -   `AccuracyBased` - If the device has moved less than the measured
+#'     accuracy, location updates are ignored. For example, if two
+#'     consecutive updates from a device have a horizontal accuracy of 5 m
+#'     and 10 m, the second update is ignored if the device has moved less
+#'     than 15 m. Ignored location updates are neither evaluated against
+#'     linked geofence collections, nor stored. This helps educe the
+#'     effects of GPS noise when displaying device trajectories on a map,
+#'     and can help control costs by reducing the number of geofence
+#'     evaluations.
+#' @param PricingPlan No longer used. If included, the only allowed value is
+#' `RequestBasedUsage`.
+#' @param PricingPlanDataSource This parameter is no longer used.
+#' @param TrackerName &#91;required&#93; The name of the tracker resource to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrackerArn = "string",
+#'   TrackerName = "string",
+#'   UpdateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_tracker(
+#'   Description = "string",
+#'   PositionFiltering = "TimeBased"|"DistanceBased"|"AccuracyBased",
+#'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
+#'   PricingPlanDataSource = "string",
+#'   TrackerName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname locationservice_update_tracker
+locationservice_update_tracker <- function(Description = NULL, PositionFiltering = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, TrackerName) {
+  op <- new_operation(
+    name = "UpdateTracker",
+    http_method = "PATCH",
+    http_path = "/tracking/v0/trackers/{TrackerName}",
+    paginator = list()
+  )
+  input <- .locationservice$update_tracker_input(Description = Description, PositionFiltering = PositionFiltering, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, TrackerName = TrackerName)
+  output <- .locationservice$update_tracker_output()
+  config <- get_config()
+  svc <- .locationservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.locationservice$operations$update_tracker <- locationservice_update_tracker

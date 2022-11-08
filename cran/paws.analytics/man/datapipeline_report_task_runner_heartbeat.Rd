@@ -5,8 +5,11 @@
 \title{Task runners call ReportTaskRunnerHeartbeat every 15 minutes to indicate
 that they are operational}
 \usage{
-datapipeline_report_task_runner_heartbeat(taskrunnerId, workerGroup,
-  hostname)
+datapipeline_report_task_runner_heartbeat(
+  taskrunnerId,
+  workerGroup = NULL,
+  hostname = NULL
+)
 }
 \arguments{
 \item{taskrunnerId}{[required] The ID of the task runner. This value should be unique across your AWS
@@ -24,27 +27,9 @@ be an exact, case-sensitive, match.}
 
 \item{hostname}{The public DNS name of the task runner.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  terminate = TRUE|FALSE
-)
-}
-}
 \description{
-Task runners call
-\code{\link[=datapipeline_report_task_runner_heartbeat]{report_task_runner_heartbeat}}
-every 15 minutes to indicate that they are operational. If the AWS Data
-Pipeline Task Runner is launched on a resource managed by AWS Data
-Pipeline, the web service can use this call to detect when the task
-runner application has failed and restart a new instance.
-}
-\section{Request syntax}{
-\preformatted{svc$report_task_runner_heartbeat(
-  taskrunnerId = "string",
-  workerGroup = "string",
-  hostname = "string"
-)
-}
-}
+Task runners call \code{\link[=datapipeline_report_task_runner_heartbeat]{report_task_runner_heartbeat}} every 15 minutes to indicate that they are operational. If the AWS Data Pipeline Task Runner is launched on a resource managed by AWS Data Pipeline, the web service can use this call to detect when the task runner application has failed and restart a new instance.
 
+See \url{https://paws-r.github.io/docs/datapipeline/report_task_runner_heartbeat.html} for full documentation.
+}
 \keyword{internal}

@@ -7,33 +7,9 @@ version first and then in reverse chronological order}
 \usage{
 elasticbeanstalk_list_available_solution_stacks()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SolutionStacks = list(
-    "string"
-  ),
-  SolutionStackDetails = list(
-    list(
-      SolutionStackName = "string",
-      PermittedFileTypes = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of the available solution stack names, with the public
-version first and then in reverse chronological order.
-}
-\examples{
-\dontrun{
-# The following operation lists solution stacks for all currently
-# available platform configurations and any that you have used in the
-# past:
-svc$list_available_solution_stacks()
-}
+Returns a list of the available solution stack names, with the public version first and then in reverse chronological order.
 
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/list_available_solution_stacks.html} for full documentation.
 }
 \keyword{internal}

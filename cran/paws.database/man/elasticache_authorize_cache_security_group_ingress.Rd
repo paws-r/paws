@@ -5,7 +5,10 @@
 \title{Allows network ingress to a cache security group}
 \usage{
 elasticache_authorize_cache_security_group_ingress(
-  CacheSecurityGroupName, EC2SecurityGroupName, EC2SecurityGroupOwnerId)
+  CacheSecurityGroupName,
+  EC2SecurityGroupName,
+  EC2SecurityGroupOwnerId
+)
 }
 \arguments{
 \item{CacheSecurityGroupName}{[required] The cache security group that allows network ingress.}
@@ -13,43 +16,13 @@ elasticache_authorize_cache_security_group_ingress(
 \item{EC2SecurityGroupName}{[required] The Amazon EC2 security group to be authorized for ingress to the cache
 security group.}
 
-\item{EC2SecurityGroupOwnerId}{[required] The AWS account number of the Amazon EC2 security group owner. Note that
-this is not the same thing as an AWS access key ID - you must provide a
-valid AWS account number for this parameter.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CacheSecurityGroup = list(
-    OwnerId = "string",
-    CacheSecurityGroupName = "string",
-    Description = "string",
-    EC2SecurityGroups = list(
-      list(
-        Status = "string",
-        EC2SecurityGroupName = "string",
-        EC2SecurityGroupOwnerId = "string"
-      )
-    ),
-    ARN = "string"
-  )
-)
-}
+\item{EC2SecurityGroupOwnerId}{[required] The Amazon account number of the Amazon EC2 security group owner. Note
+that this is not the same thing as an Amazon access key ID - you must
+provide a valid Amazon account number for this parameter.}
 }
 \description{
-Allows network ingress to a cache security group. Applications using
-ElastiCache must be running on Amazon EC2, and Amazon EC2 security
-groups are used as the authorization mechanism.
+Allows network ingress to a cache security group. Applications using ElastiCache must be running on Amazon EC2, and Amazon EC2 security groups are used as the authorization mechanism.
 
-You cannot authorize ingress from an Amazon EC2 security group in one
-region to an ElastiCache cluster in another region.
+See \url{https://paws-r.github.io/docs/elasticache/authorize_cache_security_group_ingress.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$authorize_cache_security_group_ingress(
-  CacheSecurityGroupName = "string",
-  EC2SecurityGroupName = "string",
-  EC2SecurityGroupOwnerId = "string"
-)
-}
-}
-
 \keyword{internal}

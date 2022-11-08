@@ -4,8 +4,7 @@
 \alias{cognitoidentityprovider_admin_forget_device}
 \title{Forgets the device, as an administrator}
 \usage{
-cognitoidentityprovider_admin_forget_device(UserPoolId, Username,
-  DeviceKey)
+cognitoidentityprovider_admin_forget_device(UserPoolId, Username, DeviceKey)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -14,21 +13,9 @@ cognitoidentityprovider_admin_forget_device(UserPoolId, Username,
 
 \item{DeviceKey}{[required] The device key.}
 }
-\value{
-An empty list.
-}
 \description{
 Forgets the device, as an administrator.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_forget_device.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_forget_device(
-  UserPoolId = "string",
-  Username = "string",
-  DeviceKey = "string"
-)
-}
-}
-
 \keyword{internal}

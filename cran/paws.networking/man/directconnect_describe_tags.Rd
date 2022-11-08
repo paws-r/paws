@@ -2,7 +2,7 @@
 % Please edit documentation in R/directconnect_operations.R
 \name{directconnect_describe_tags}
 \alias{directconnect_describe_tags}
-\title{Describes the tags associated with the specified AWS Direct Connect
+\title{Describes the tags associated with the specified Direct Connect
 resources}
 \usage{
 directconnect_describe_tags(resourceArns)
@@ -10,33 +10,9 @@ directconnect_describe_tags(resourceArns)
 \arguments{
 \item{resourceArns}{[required] The Amazon Resource Names (ARNs) of the resources.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  resourceTags = list(
-    list(
-      resourceArn = "string",
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes the tags associated with the specified AWS Direct Connect
-resources.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_tags(
-  resourceArns = list(
-    "string"
-  )
-)
-}
-}
+Describes the tags associated with the specified Direct Connect resources.
 
+See \url{https://paws-r.github.io/docs/directconnect/describe_tags.html} for full documentation.
+}
 \keyword{internal}

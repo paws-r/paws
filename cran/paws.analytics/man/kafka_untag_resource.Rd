@@ -24,21 +24,9 @@ digits, white space, and the following special characters: _ . /
 = + - @.
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Removes the tags associated with the keys that are provided in the
-query.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes the tags associated with the keys that are provided in the query.
 
+See \url{https://paws-r.github.io/docs/kafka/untag_resource.html} for full documentation.
+}
 \keyword{internal}

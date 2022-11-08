@@ -4,8 +4,14 @@
 \alias{clouddirectory_list_index}
 \title{Lists objects attached to the specified index}
 \usage{
-clouddirectory_list_index(DirectoryArn, RangesOnIndexedValues,
-  IndexReference, MaxResults, NextToken, ConsistencyLevel)
+clouddirectory_list_index(
+  DirectoryArn,
+  RangesOnIndexedValues = NULL,
+  IndexReference,
+  MaxResults = NULL,
+  NextToken = NULL,
+  ConsistencyLevel = NULL
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory that the index exists in.}
@@ -21,80 +27,9 @@ index during a request. For more information, see \href{https://docs.aws.amazon.
 
 \item{ConsistencyLevel}{The consistency level to execute the request at.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IndexAttachments = list(
-    list(
-      IndexedAttributes = list(
-        list(
-          Key = list(
-            SchemaArn = "string",
-            FacetName = "string",
-            Name = "string"
-          ),
-          Value = list(
-            StringValue = "string",
-            BinaryValue = raw,
-            BooleanValue = TRUE|FALSE,
-            NumberValue = "string",
-            DatetimeValue = as.POSIXct(
-              "2015-01-01"
-            )
-          )
-        )
-      ),
-      ObjectIdentifier = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists objects attached to the specified index.
-}
-\section{Request syntax}{
-\preformatted{svc$list_index(
-  DirectoryArn = "string",
-  RangesOnIndexedValues = list(
-    list(
-      AttributeKey = list(
-        SchemaArn = "string",
-        FacetName = "string",
-        Name = "string"
-      ),
-      Range = list(
-        StartMode = "FIRST"|"LAST"|"LAST_BEFORE_MISSING_VALUES"|"INCLUSIVE"|"EXCLUSIVE",
-        StartValue = list(
-          StringValue = "string",
-          BinaryValue = raw,
-          BooleanValue = TRUE|FALSE,
-          NumberValue = "string",
-          DatetimeValue = as.POSIXct(
-            "2015-01-01"
-          )
-        ),
-        EndMode = "FIRST"|"LAST"|"LAST_BEFORE_MISSING_VALUES"|"INCLUSIVE"|"EXCLUSIVE",
-        EndValue = list(
-          StringValue = "string",
-          BinaryValue = raw,
-          BooleanValue = TRUE|FALSE,
-          NumberValue = "string",
-          DatetimeValue = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  ),
-  IndexReference = list(
-    Selector = "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_index.html} for full documentation.
+}
 \keyword{internal}

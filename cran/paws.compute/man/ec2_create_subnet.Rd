@@ -4,16 +4,26 @@
 \alias{ec2_create_subnet}
 \title{Creates a subnet in a specified VPC}
 \usage{
-ec2_create_subnet(TagSpecifications, AvailabilityZone,
-  AvailabilityZoneId, CidrBlock, Ipv6CidrBlock, OutpostArn, VpcId, DryRun)
+ec2_create_subnet(
+  TagSpecifications = NULL,
+  AvailabilityZone = NULL,
+  AvailabilityZoneId = NULL,
+  CidrBlock = NULL,
+  Ipv6CidrBlock = NULL,
+  OutpostArn = NULL,
+  VpcId,
+  DryRun = NULL,
+  Ipv6Native = NULL
+)
 }
 \arguments{
 \item{TagSpecifications}{The tags to assign to the subnet.}
 
 \item{AvailabilityZone}{The Availability Zone or Local Zone for the subnet.
 
-Default: AWS selects one for you. If you create more than one subnet in
-your VPC, we do not necessarily select a different zone for each subnet.
+Default: Amazon Web Services selects one for you. If you create more
+than one subnet in your VPC, we do not necessarily select a different
+zone for each subnet.
 
 To create a subnet in a Local Zone, set this value to the Local Zone ID,
 for example \verb{us-west-2-lax-1a}. For information about the Regions that
@@ -25,13 +35,17 @@ Zone for the Outpost and specify the Outpost ARN.}
 
 \item{AvailabilityZoneId}{The AZ ID or the Local Zone ID of the subnet.}
 
-\item{CidrBlock}{[required] The IPv4 network range for the subnet, in CIDR notation. For example,
+\item{CidrBlock}{The IPv4 network range for the subnet, in CIDR notation. For example,
 \verb{10.0.0.0/24}. We modify the specified CIDR block to its canonical form;
 for example, if you specify \verb{100.68.0.18/18}, we modify it to
-\verb{100.68.0.0/18}.}
+\verb{100.68.0.0/18}.
+
+This parameter is not supported for an IPv6 only subnet.}
 
 \item{Ipv6CidrBlock}{The IPv6 network range for the subnet, in CIDR notation. The subnet size
-must use a /64 prefix length.}
+must use a /64 prefix length.
+
+This parameter is required for an IPv6 only subnet.}
 
 \item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost. If you specify an Outpost
 ARN, you must also specify the Availability Zone of the Outpost subnet.}
@@ -42,105 +56,12 @@ ARN, you must also specify the Availability Zone of the Outpost subnet.}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Subnet = list(
-    AvailabilityZone = "string",
-    AvailabilityZoneId = "string",
-    AvailableIpAddressCount = 123,
-    CidrBlock = "string",
-    DefaultForAz = TRUE|FALSE,
-    MapPublicIpOnLaunch = TRUE|FALSE,
-    MapCustomerOwnedIpOnLaunch = TRUE|FALSE,
-    CustomerOwnedIpv4Pool = "string",
-    State = "pending"|"available",
-    SubnetId = "string",
-    VpcId = "string",
-    OwnerId = "string",
-    AssignIpv6AddressOnCreation = TRUE|FALSE,
-    Ipv6CidrBlockAssociationSet = list(
-      list(
-        AssociationId = "string",
-        Ipv6CidrBlock = "string",
-        Ipv6CidrBlockState = list(
-          State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
-          StatusMessage = "string"
-        )
-      )
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    SubnetArn = "string",
-    OutpostArn = "string"
-  )
-)
-}
+
+\item{Ipv6Native}{Indicates whether to create an IPv6 only subnet.}
 }
 \description{
 Creates a subnet in a specified VPC.
 
-You must specify an IPv4 CIDR block for the subnet. After you create a
-subnet, you can't change its CIDR block. The allowed block size is
-between a /16 netmask (65,536 IP addresses) and /28 netmask (16 IP
-addresses). The CIDR block must not overlap with the CIDR block of an
-existing subnet in the VPC.
-
-If you've associated an IPv6 CIDR block with your VPC, you can create a
-subnet with an IPv6 CIDR block that uses a /64 prefix length.
-
-AWS reserves both the first four and the last IPv4 address in each
-subnet's CIDR block. They're not available for use.
-
-If you add more than one subnet to a VPC, they're set up in a star
-topology with a logical router in the middle.
-
-When you stop an instance in a subnet, it retains its private IPv4
-address. It's therefore possible to have a subnet with no running
-instances (they're all stopped), but no remaining IP addresses
-available.
-
-For more information about subnets, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{Your VPC and Subnets}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_subnet(
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  AvailabilityZone = "string",
-  AvailabilityZoneId = "string",
-  CidrBlock = "string",
-  Ipv6CidrBlock = "string",
-  OutpostArn = "string",
-  VpcId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates a subnet in the specified VPC with the specified
-# CIDR block. We recommend that you let us select an Availability Zone for
-# you.
-svc$create_subnet(
-  CidrBlock = "10.0.1.0/24",
-  VpcId = "vpc-a01106c2"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/create_subnet.html} for full documentation.
 }
 \keyword{internal}

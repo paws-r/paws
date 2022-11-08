@@ -2,7 +2,7 @@
 % Please edit documentation in R/route53_operations.R
 \name{route53_activate_key_signing_key}
 \alias{route53_activate_key_signing_key}
-\title{Activates a key signing key (KSK) so that it can be used for signing by
+\title{Activates a key-signing key (KSK) so that it can be used for signing by
 DNSSEC}
 \usage{
 route53_activate_key_signing_key(HostedZoneId, Name)
@@ -10,31 +10,13 @@ route53_activate_key_signing_key(HostedZoneId, Name)
 \arguments{
 \item{HostedZoneId}{[required] A unique string used to identify a hosted zone.}
 
-\item{Name}{[required] An alphanumeric string used to identify a key signing key (KSK).}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeInfo = list(
-    Id = "string",
-    Status = "PENDING"|"INSYNC",
-    SubmittedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    Comment = "string"
-  )
-)
-}
+\item{Name}{[required] A string used to identify a key-signing key (KSK). \code{Name} can include
+numbers, letters, and underscores (_). \code{Name} must be unique for each
+key-signing key in the same hosted zone.}
 }
 \description{
-Activates a key signing key (KSK) so that it can be used for signing by
-DNSSEC. This operation changes the KSK status to \code{ACTIVE}.
-}
-\section{Request syntax}{
-\preformatted{svc$activate_key_signing_key(
-  HostedZoneId = "string",
-  Name = "string"
-)
-}
-}
+Activates a key-signing key (KSK) so that it can be used for signing by DNSSEC. This operation changes the KSK status to \code{ACTIVE}.
 
+See \url{https://paws-r.github.io/docs/route53/activate_key_signing_key.html} for full documentation.
+}
 \keyword{internal}

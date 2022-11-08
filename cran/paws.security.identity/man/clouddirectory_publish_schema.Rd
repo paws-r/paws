@@ -5,8 +5,12 @@
 \title{Publishes a development schema with a major version and a recommended
 minor version}
 \usage{
-clouddirectory_publish_schema(DevelopmentSchemaArn, Version,
-  MinorVersion, Name)
+clouddirectory_publish_schema(
+  DevelopmentSchemaArn,
+  Version,
+  MinorVersion = NULL,
+  Name = NULL
+)
 }
 \arguments{
 \item{DevelopmentSchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the development
@@ -22,24 +26,9 @@ associated with them.}
 \item{Name}{The new name under which the schema will be published. If this is not
 provided, the development schema is considered.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PublishedSchemaArn = "string"
-)
-}
-}
 \description{
-Publishes a development schema with a major version and a recommended
-minor version.
-}
-\section{Request syntax}{
-\preformatted{svc$publish_schema(
-  DevelopmentSchemaArn = "string",
-  Version = "string",
-  MinorVersion = "string",
-  Name = "string"
-)
-}
-}
+Publishes a development schema with a major version and a recommended minor version.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/publish_schema.html} for full documentation.
+}
 \keyword{internal}

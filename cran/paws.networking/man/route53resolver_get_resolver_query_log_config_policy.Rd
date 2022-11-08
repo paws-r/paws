@@ -10,22 +10,9 @@ route53resolver_get_resolver_query_log_config_policy(Arn)
 \item{Arn}{[required] The ARN of the query logging configuration that you want to get the
 query logging policy for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResolverQueryLogConfigPolicy = "string"
-)
-}
-}
 \description{
-Gets information about a query logging policy. A query logging policy
-specifies the Resolver query logging operations and resources that you
-want to allow another AWS account to be able to use.
-}
-\section{Request syntax}{
-\preformatted{svc$get_resolver_query_log_config_policy(
-  Arn = "string"
-)
-}
-}
+Gets information about a query logging policy. A query logging policy specifies the Resolver query logging operations and resources that you want to allow another Amazon Web Services account to be able to use.
 
+See \url{https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config_policy.html} for full documentation.
+}
 \keyword{internal}

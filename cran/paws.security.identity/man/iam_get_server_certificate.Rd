@@ -15,41 +15,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServerCertificate = list(
-    ServerCertificateMetadata = list(
-      Path = "string",
-      ServerCertificateName = "string",
-      ServerCertificateId = "string",
-      Arn = "string",
-      UploadDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Expiration = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    CertificateBody = "string",
-    CertificateChain = "string"
-  )
-)
-}
-}
 \description{
-Retrieves information about the specified server certificate stored in
-IAM.
+Retrieves information about the specified server certificate stored in IAM.
 
-For more information about working with server certificates, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
-in the \emph{IAM User Guide}. This topic includes a list of AWS services that
-can use the server certificates that you manage with IAM.
+See \url{https://paws-r.github.io/docs/iam/get_server_certificate.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_server_certificate(
-  ServerCertificateName = "string"
-)
-}
-}
-
 \keyword{internal}

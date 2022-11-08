@@ -5,8 +5,14 @@
 \title{Lists the INFO, WARN, and ERROR events for periodic configuration
 updates performed by Application Insights}
 \usage{
-applicationinsights_list_configuration_history(ResourceGroupName,
-  StartTime, EndTime, EventStatus, MaxResults, NextToken)
+applicationinsights_list_configuration_history(
+  ResourceGroupName = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  EventStatus = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ResourceGroupName}{Resource group to which the application belongs.}
@@ -38,50 +44,9 @@ of that parameter. Pagination continues from the end of the previous
 results that returned the \code{NextToken} value. This value is \code{null} when
 there are no more results to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventList = list(
-    list(
-      MonitoredResourceARN = "string",
-      EventStatus = "INFO"|"WARN"|"ERROR",
-      EventResourceType = "CLOUDWATCH_ALARM"|"CLOUDWATCH_LOG"|"CLOUDFORMATION"|"SSM_ASSOCIATION",
-      EventTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EventDetail = "string",
-      EventResourceName = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the INFO, WARN, and ERROR events for periodic configuration
-updates performed by Application Insights. Examples of events
-represented are:
-\itemize{
-\item INFO: creating a new alarm or updating an alarm threshold.
-\item WARN: alarm not created due to insufficient data points used to
-predict thresholds.
-\item ERROR: alarm not created due to permission errors or exceeding
-quotas.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_configuration_history(
-  ResourceGroupName = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EventStatus = "INFO"|"WARN"|"ERROR",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Lists the INFO, WARN, and ERROR events for periodic configuration updates performed by Application Insights. Examples of events represented are:
 
+See \url{https://paws-r.github.io/docs/applicationinsights/list_configuration_history.html} for full documentation.
+}
 \keyword{internal}

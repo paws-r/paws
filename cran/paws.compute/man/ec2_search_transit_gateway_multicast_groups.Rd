@@ -6,7 +6,12 @@
 group membership information}
 \usage{
 ec2_search_transit_gateway_multicast_groups(
-  TransitGatewayMulticastDomainId, Filters, MaxResults, NextToken, DryRun)
+  TransitGatewayMulticastDomainId = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayMulticastDomainId}{The ID of the transit gateway multicast domain.}
@@ -24,8 +29,6 @@ group.
 \item \code{resource-type} - The type of resource. Valid values are \code{vpc} |
 \code{vpn} | \code{direct-connect-gateway} | \code{tgw-peering}.
 \item \code{source-type} - The source type. Valid values are \code{igmp} | \code{static}.
-\item \code{state} - The state of the subnet association. Valid values are
-\code{associated} | \code{associated} | \code{disassociated} | \code{disassociating}.
 \item \code{subnet-id} - The ID of the subnet.
 \item \code{transit-gateway-attachment-id} - The id of the transit gateway
 attachment.
@@ -42,47 +45,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MulticastGroups = list(
-    list(
-      GroupIpAddress = "string",
-      TransitGatewayAttachmentId = "string",
-      SubnetId = "string",
-      ResourceId = "string",
-      ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
-      ResourceOwnerId = "string",
-      NetworkInterfaceId = "string",
-      GroupMember = TRUE|FALSE,
-      GroupSource = TRUE|FALSE,
-      MemberType = "static"|"igmp",
-      SourceType = "static"|"igmp"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Searches one or more transit gateway multicast groups and returns the
-group membership information.
-}
-\section{Request syntax}{
-\preformatted{svc$search_transit_gateway_multicast_groups(
-  TransitGatewayMulticastDomainId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Searches one or more transit gateway multicast groups and returns the group membership information.
 
+See \url{https://paws-r.github.io/docs/ec2/search_transit_gateway_multicast_groups.html} for full documentation.
+}
 \keyword{internal}

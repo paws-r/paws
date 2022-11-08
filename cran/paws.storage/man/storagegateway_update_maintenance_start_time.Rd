@@ -5,8 +5,13 @@
 \title{Updates a gateway's weekly maintenance start time information, including
 day and time of the week}
 \usage{
-storagegateway_update_maintenance_start_time(GatewayARN, HourOfDay,
-  MinuteOfHour, DayOfWeek, DayOfMonth)
+storagegateway_update_maintenance_start_time(
+  GatewayARN,
+  HourOfDay,
+  MinuteOfHour,
+  DayOfWeek = NULL,
+  DayOfMonth = NULL
+)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -27,40 +32,9 @@ and 6 Saturday.}
 as an ordinal number from 1 to 28, where 1 represents the first day of
 the month and 28 represents the last day of the month.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Updates a gateway's weekly maintenance start time information, including
-day and time of the week. The maintenance time is the time in your
-gateway's time zone.
-}
-\section{Request syntax}{
-\preformatted{svc$update_maintenance_start_time(
-  GatewayARN = "string",
-  HourOfDay = 123,
-  MinuteOfHour = 123,
-  DayOfWeek = 123,
-  DayOfMonth = 123
-)
-}
-}
+Updates a gateway's weekly maintenance start time information, including day and time of the week. The maintenance time is the time in your gateway's time zone.
 
-\examples{
-\dontrun{
-# Updates a gateway's weekly maintenance start time information, including
-# day and time of the week. The maintenance time is in your gateway's time
-# zone.
-svc$update_maintenance_start_time(
-  DayOfWeek = 2L,
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
-  HourOfDay = 0L,
-  MinuteOfHour = 30L
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/update_maintenance_start_time.html} for full documentation.
 }
 \keyword{internal}

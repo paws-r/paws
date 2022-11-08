@@ -11,26 +11,12 @@ connect_update_user_phone_config(PhoneConfig, UserId, InstanceId)
 
 \item{UserId}{[required] The identifier of the user account.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-An empty list.
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 }
 \description{
 Updates the phone configuration settings for the specified user.
-}
-\section{Request syntax}{
-\preformatted{svc$update_user_phone_config(
-  PhoneConfig = list(
-    PhoneType = "SOFT_PHONE"|"DESK_PHONE",
-    AutoAccept = TRUE|FALSE,
-    AfterContactWorkTimeLimit = 123,
-    DeskPhoneNumber = "string"
-  ),
-  UserId = "string",
-  InstanceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/update_user_phone_config.html} for full documentation.
+}
 \keyword{internal}

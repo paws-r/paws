@@ -12,19 +12,9 @@ apigatewayv2_delete_access_log_settings(ApiId, StageName)
 \item{StageName}{[required] The stage name. Stage names can only contain alphanumeric characters,
 hyphens, and underscores. Maximum length is 128 characters.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the AccessLogSettings for a Stage. To disable access logging for
-a Stage, delete its AccessLogSettings.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_access_log_settings(
-  ApiId = "string",
-  StageName = "string"
-)
-}
-}
+Deletes the AccessLogSettings for a Stage. To disable access logging for a Stage, delete its AccessLogSettings.
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_access_log_settings.html} for full documentation.
+}
 \keyword{internal}

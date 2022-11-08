@@ -9,24 +9,9 @@ lightsail_get_instance_state(instanceName)
 \arguments{
 \item{instanceName}{[required] The name of the instance to get state information about.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  state = list(
-    code = 123,
-    name = "string"
-  )
-)
-}
-}
 \description{
-Returns the state of a specific instance. Works on one instance at a
-time.
-}
-\section{Request syntax}{
-\preformatted{svc$get_instance_state(
-  instanceName = "string"
-)
-}
-}
+Returns the state of a specific instance. Works on one instance at a time.
 
+See \url{https://paws-r.github.io/docs/lightsail/get_instance_state.html} for full documentation.
+}
 \keyword{internal}

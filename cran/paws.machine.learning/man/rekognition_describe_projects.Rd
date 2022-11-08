@@ -2,10 +2,13 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_describe_projects}
 \alias{rekognition_describe_projects}
-\title{Lists and gets information about your Amazon Rekognition Custom Labels
-projects}
+\title{Gets information about your Amazon Rekognition Custom Labels projects}
 \usage{
-rekognition_describe_projects(NextToken, MaxResults)
+rekognition_describe_projects(
+  NextToken = NULL,
+  MaxResults = NULL,
+  ProjectNames = NULL
+)
 }
 \arguments{
 \item{NextToken}{If the previous response was incomplete (because there is more results
@@ -16,35 +19,14 @@ next set of results.}
 \item{MaxResults}{The maximum number of results to return per paginated call. The largest
 value you can specify is 100. If you specify a value greater than 100, a
 ValidationException error occurs. The default value is 100.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ProjectDescriptions = list(
-    list(
-      ProjectArn = "string",
-      CreationTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      Status = "CREATING"|"CREATED"|"DELETING"
-    )
-  ),
-  NextToken = "string"
-)
-}
+
+\item{ProjectNames}{A list of the projects that you want Amazon Rekognition Custom Labels to
+describe. If you don't specify a value, the response includes
+descriptions for all the projects in your AWS account.}
 }
 \description{
-Lists and gets information about your Amazon Rekognition Custom Labels
-projects.
+Gets information about your Amazon Rekognition Custom Labels projects.
 
-This operation requires permissions to perform the
-\code{rekognition:DescribeProjects} action.
+See \url{https://paws-r.github.io/docs/rekognition/describe_projects.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_projects(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

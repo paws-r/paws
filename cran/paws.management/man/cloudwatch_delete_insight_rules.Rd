@@ -11,33 +11,9 @@ cloudwatch_delete_insight_rules(RuleNames)
 of your rules, use
 \code{\link[=cloudwatch_describe_insight_rules]{describe_insight_rules}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Failures = list(
-    list(
-      FailureResource = "string",
-      ExceptionType = "string",
-      FailureCode = "string",
-      FailureDescription = "string"
-    )
-  )
-)
-}
-}
 \description{
 Permanently deletes the specified Contributor Insights rules.
 
-If you create a rule, delete it, and then re-create it with the same
-name, historical data from the first time the rule was created might not
-be available.
+See \url{https://paws-r.github.io/docs/cloudwatch/delete_insight_rules.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_insight_rules(
-  RuleNames = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

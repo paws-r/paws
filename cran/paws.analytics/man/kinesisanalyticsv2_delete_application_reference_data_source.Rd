@@ -6,7 +6,10 @@
 SQL-based Kinesis Data Analytics application's configuration}
 \usage{
 kinesisanalyticsv2_delete_application_reference_data_source(
-  ApplicationName, CurrentApplicationVersionId, ReferenceId)
+  ApplicationName,
+  CurrentApplicationVersionId,
+  ReferenceId
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application.}
@@ -24,29 +27,9 @@ Kinesis Data Analytics assigns an ID. You can use the
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation to get the reference ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationARN = "string",
-  ApplicationVersionId = 123
-)
-}
-}
 \description{
-Deletes a reference data source configuration from the specified
-SQL-based Kinesis Data Analytics application's configuration.
+Deletes a reference data source configuration from the specified SQL-based Kinesis Data Analytics application's configuration.
 
-If the application is running, Kinesis Data Analytics immediately
-removes the in-application table that you created using the
-\code{\link[=kinesisanalyticsv2_add_application_reference_data_source]{add_application_reference_data_source}}
-operation.
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_reference_data_source.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_application_reference_data_source(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  ReferenceId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,15 @@
 \alias{elbv2_modify_listener}
 \title{Replaces the specified properties of the specified listener}
 \usage{
-elbv2_modify_listener(ListenerArn, Port, Protocol, SslPolicy,
-  Certificates, DefaultActions, AlpnPolicy)
+elbv2_modify_listener(
+  ListenerArn,
+  Port = NULL,
+  Protocol = NULL,
+  SslPolicy = NULL,
+  Certificates = NULL,
+  DefaultActions = NULL,
+  AlpnPolicy = NULL
+)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
@@ -46,205 +53,9 @@ possible values:
 For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies}{ALPN policies}
 in the \emph{Network Load Balancers Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Listeners = list(
-    list(
-      ListenerArn = "string",
-      LoadBalancerArn = "string",
-      Port = 123,
-      Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-      Certificates = list(
-        list(
-          CertificateArn = "string",
-          IsDefault = TRUE|FALSE
-        )
-      ),
-      SslPolicy = "string",
-      DefaultActions = list(
-        list(
-          Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-          TargetGroupArn = "string",
-          AuthenticateOidcConfig = list(
-            Issuer = "string",
-            AuthorizationEndpoint = "string",
-            TokenEndpoint = "string",
-            UserInfoEndpoint = "string",
-            ClientId = "string",
-            ClientSecret = "string",
-            SessionCookieName = "string",
-            Scope = "string",
-            SessionTimeout = 123,
-            AuthenticationRequestExtraParams = list(
-              "string"
-            ),
-            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-            UseExistingClientSecret = TRUE|FALSE
-          ),
-          AuthenticateCognitoConfig = list(
-            UserPoolArn = "string",
-            UserPoolClientId = "string",
-            UserPoolDomain = "string",
-            SessionCookieName = "string",
-            Scope = "string",
-            SessionTimeout = 123,
-            AuthenticationRequestExtraParams = list(
-              "string"
-            ),
-            OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-          ),
-          Order = 123,
-          RedirectConfig = list(
-            Protocol = "string",
-            Port = "string",
-            Host = "string",
-            Path = "string",
-            Query = "string",
-            StatusCode = "HTTP_301"|"HTTP_302"
-          ),
-          FixedResponseConfig = list(
-            MessageBody = "string",
-            StatusCode = "string",
-            ContentType = "string"
-          ),
-          ForwardConfig = list(
-            TargetGroups = list(
-              list(
-                TargetGroupArn = "string",
-                Weight = 123
-              )
-            ),
-            TargetGroupStickinessConfig = list(
-              Enabled = TRUE|FALSE,
-              DurationSeconds = 123
-            )
-          )
-        )
-      ),
-      AlpnPolicy = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Replaces the specified properties of the specified listener. Any
-properties that you do not specify remain unchanged.
+Replaces the specified properties of the specified listener. Any properties that you do not specify remain unchanged.
 
-Changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes
-the security policy and default certificate properties. If you change
-the protocol from HTTP to HTTPS, or from TCP to TLS, you must add the
-security policy and default certificate properties.
-
-To add an item to a list, remove an item from a list, or update an item
-in a list, you must provide the entire list. For example, to add an
-action, specify a list with the current actions plus the new action.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_listener(
-  ListenerArn = "string",
-  Port = 123,
-  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-  SslPolicy = "string",
-  Certificates = list(
-    list(
-      CertificateArn = "string",
-      IsDefault = TRUE|FALSE
-    )
-  ),
-  DefaultActions = list(
-    list(
-      Type = "forward"|"authenticate-oidc"|"authenticate-cognito"|"redirect"|"fixed-response",
-      TargetGroupArn = "string",
-      AuthenticateOidcConfig = list(
-        Issuer = "string",
-        AuthorizationEndpoint = "string",
-        TokenEndpoint = "string",
-        UserInfoEndpoint = "string",
-        ClientId = "string",
-        ClientSecret = "string",
-        SessionCookieName = "string",
-        Scope = "string",
-        SessionTimeout = 123,
-        AuthenticationRequestExtraParams = list(
-          "string"
-        ),
-        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate",
-        UseExistingClientSecret = TRUE|FALSE
-      ),
-      AuthenticateCognitoConfig = list(
-        UserPoolArn = "string",
-        UserPoolClientId = "string",
-        UserPoolDomain = "string",
-        SessionCookieName = "string",
-        Scope = "string",
-        SessionTimeout = 123,
-        AuthenticationRequestExtraParams = list(
-          "string"
-        ),
-        OnUnauthenticatedRequest = "deny"|"allow"|"authenticate"
-      ),
-      Order = 123,
-      RedirectConfig = list(
-        Protocol = "string",
-        Port = "string",
-        Host = "string",
-        Path = "string",
-        Query = "string",
-        StatusCode = "HTTP_301"|"HTTP_302"
-      ),
-      FixedResponseConfig = list(
-        MessageBody = "string",
-        StatusCode = "string",
-        ContentType = "string"
-      ),
-      ForwardConfig = list(
-        TargetGroups = list(
-          list(
-            TargetGroupArn = "string",
-            Weight = 123
-          )
-        ),
-        TargetGroupStickinessConfig = list(
-          Enabled = TRUE|FALSE,
-          DurationSeconds = 123
-        )
-      )
-    )
-  ),
-  AlpnPolicy = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example changes the default action for the specified listener.
-svc$modify_listener(
-  DefaultActions = list(
-    list(
-      TargetGroupArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012...",
-      Type = "forward"
-    )
-  ),
-  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen..."
-)
-
-# This example changes the server certificate for the specified HTTPS
-# listener.
-svc$modify_listener(
-  Certificates = list(
-    list(
-      CertificateArn = "arn:aws:iam::123456789012:server-certificate/my-new-server-cert"
-    )
-  ),
-  ListenerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:listen..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/modify_listener.html} for full documentation.
 }
 \keyword{internal}

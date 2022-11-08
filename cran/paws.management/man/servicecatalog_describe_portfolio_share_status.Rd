@@ -10,39 +10,9 @@ servicecatalog_describe_portfolio_share_status(PortfolioShareToken)
 \item{PortfolioShareToken}{[required] The token for the portfolio share operation. This token is returned
 either by CreatePortfolioShare or by DeletePortfolioShare.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PortfolioShareToken = "string",
-  PortfolioId = "string",
-  OrganizationNodeValue = "string",
-  Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"ERROR",
-  ShareDetails = list(
-    SuccessfulShares = list(
-      "string"
-    ),
-    ShareErrors = list(
-      list(
-        Accounts = list(
-          "string"
-        ),
-        Message = "string",
-        Error = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Gets the status of the specified portfolio share operation. This API can
-only be called by the management account in the organization or by a
-delegated admin.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_portfolio_share_status(
-  PortfolioShareToken = "string"
-)
-}
-}
+Gets the status of the specified portfolio share operation. This API can only be called by the management account in the organization or by a delegated admin.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/describe_portfolio_share_status.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,10 @@
 \alias{ec2_delete_transit_gateway_route_table}
 \title{Deletes the specified transit gateway route table}
 \usage{
-ec2_delete_transit_gateway_route_table(TransitGatewayRouteTableId,
-  DryRun)
+ec2_delete_transit_gateway_route_table(
+  TransitGatewayRouteTableId,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the transit gateway route table.}
@@ -15,38 +17,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayRouteTable = list(
-    TransitGatewayRouteTableId = "string",
-    TransitGatewayId = "string",
-    State = "pending"|"available"|"deleting"|"deleted",
-    DefaultAssociationRouteTable = TRUE|FALSE,
-    DefaultPropagationRouteTable = TRUE|FALSE,
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Deletes the specified transit gateway route table. You must disassociate
-the route table from any transit gateway route tables before you can
-delete it.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_transit_gateway_route_table(
-  TransitGatewayRouteTableId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Deletes the specified transit gateway route table. You must disassociate the route table from any transit gateway route tables before you can delete it.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_transit_gateway_route_table.html} for full documentation.
+}
 \keyword{internal}

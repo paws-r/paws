@@ -14,71 +14,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceProfile = list(
-    Path = "string",
-    InstanceProfileName = "string",
-    InstanceProfileId = "string",
-    Arn = "string",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    Roles = list(
-      list(
-        Path = "string",
-        RoleName = "string",
-        RoleId = "string",
-        Arn = "string",
-        CreateDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        AssumeRolePolicyDocument = "string",
-        Description = "string",
-        MaxSessionDuration = 123,
-        PermissionsBoundary = list(
-          PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-          PermissionsBoundaryArn = "string"
-        ),
-        Tags = list(
-          list(
-            Key = "string",
-            Value = "string"
-          )
-        ),
-        RoleLastUsed = list(
-          LastUsedDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          Region = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Retrieves information about the specified instance profile, including
-the instance profile's path, GUID, ARN, and role. For more information
-about instance profiles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_instance_profile(
-  InstanceProfileName = "string"
-)
-}
-}
+Retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role. For more information about instance profiles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About instance profiles} in the \emph{IAM User Guide}.
 
-\examples{
-\dontrun{
-# The following command gets information about the instance profile named
-# ExampleInstanceProfile.
-svc$get_instance_profile(
-  InstanceProfileName = "ExampleInstanceProfile"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/get_instance_profile.html} for full documentation.
 }
 \keyword{internal}

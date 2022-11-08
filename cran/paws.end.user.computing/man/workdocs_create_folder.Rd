@@ -4,7 +4,7 @@
 \alias{workdocs_create_folder}
 \title{Creates a folder with the specified name and parent folder}
 \usage{
-workdocs_create_folder(AuthenticationToken, Name, ParentFolderId)
+workdocs_create_folder(AuthenticationToken = NULL, Name = NULL, ParentFolderId)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -14,40 +14,9 @@ administrator credentials to access the API.}
 
 \item{ParentFolderId}{[required] The ID of the parent folder.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Metadata = list(
-    Id = "string",
-    Name = "string",
-    CreatorId = "string",
-    ParentFolderId = "string",
-    CreatedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ModifiedTimestamp = as.POSIXct(
-      "2015-01-01"
-    ),
-    ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED",
-    Signature = "string",
-    Labels = list(
-      "string"
-    ),
-    Size = 123,
-    LatestVersionSize = 123
-  )
-)
-}
-}
 \description{
 Creates a folder with the specified name and parent folder.
-}
-\section{Request syntax}{
-\preformatted{svc$create_folder(
-  AuthenticationToken = "string",
-  Name = "string",
-  ParentFolderId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workdocs/create_folder.html} for full documentation.
+}
 \keyword{internal}

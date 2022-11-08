@@ -4,7 +4,7 @@
 \alias{cloudtrail_list_trails}
 \title{Lists trails that are in the current account}
 \usage{
-cloudtrail_list_trails(NextToken)
+cloudtrail_list_trails(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{The token to use to get the next page of results after a previous API
@@ -13,27 +13,9 @@ specified in the the original call. For example, if the original call
 specified an AttributeKey of 'Username' with a value of 'root', the call
 with NextToken should include those same parameters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Trails = list(
-    list(
-      TrailARN = "string",
-      Name = "string",
-      HomeRegion = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists trails that are in the current account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_trails(
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudtrail/list_trails.html} for full documentation.
+}
 \keyword{internal}

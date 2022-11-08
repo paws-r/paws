@@ -4,13 +4,17 @@
 \alias{ssm_list_resource_data_sync}
 \title{Lists your resource data sync configurations}
 \usage{
-ssm_list_resource_data_sync(SyncType, NextToken, MaxResults)
+ssm_list_resource_data_sync(
+  SyncType = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{SyncType}{View a list of resource data syncs according to the sync type. Specify
 \code{SyncToDestination} to view resource data syncs that synchronize data to
 an Amazon S3 bucket. Specify \code{SyncFromSource} to view resource data
-syncs from AWS Organizations or from multiple AWS Regions.}
+syncs from Organizations or from multiple Amazon Web Services Regions.}
 
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
@@ -19,79 +23,9 @@ results.}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceDataSyncItems = list(
-    list(
-      SyncName = "string",
-      SyncType = "string",
-      SyncSource = list(
-        SourceType = "string",
-        AwsOrganizationsSource = list(
-          OrganizationSourceType = "string",
-          OrganizationalUnits = list(
-            list(
-              OrganizationalUnitId = "string"
-            )
-          )
-        ),
-        SourceRegions = list(
-          "string"
-        ),
-        IncludeFutureRegions = TRUE|FALSE,
-        State = "string"
-      ),
-      S3Destination = list(
-        BucketName = "string",
-        Prefix = "string",
-        SyncFormat = "JsonSerDe",
-        Region = "string",
-        AWSKMSKeyARN = "string",
-        DestinationDataSharing = list(
-          DestinationDataSharingType = "string"
-        )
-      ),
-      LastSyncTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastSuccessfulSyncTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      SyncLastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastStatus = "Successful"|"Failed"|"InProgress",
-      SyncCreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastSyncStatusMessage = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists your resource data sync configurations. Includes information about
-the last time a sync attempted to start, the last sync status, and the
-last time a sync successfully completed.
+Lists your resource data sync configurations. Includes information about the last time a sync attempted to start, the last sync status, and the last time a sync successfully completed.
 
-The number of sync configurations might be too large to return using a
-single call to \code{\link[=ssm_list_resource_data_sync]{list_resource_data_sync}}.
-You can limit the number of sync configurations returned by using the
-\code{MaxResults} parameter. To determine whether there are more sync
-configurations to list, check the value of \code{NextToken} in the output. If
-there are more sync configurations to list, you can request them by
-specifying the \code{NextToken} returned in the call to the parameter of a
-subsequent call.
+See \url{https://paws-r.github.io/docs/ssm/list_resource_data_sync.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_resource_data_sync(
-  SyncType = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

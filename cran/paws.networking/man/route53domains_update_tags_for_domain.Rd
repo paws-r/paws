@@ -4,7 +4,7 @@
 \alias{route53domains_update_tags_for_domain}
 \title{This operation adds or updates tags for a specified domain}
 \usage{
-route53domains_update_tags_for_domain(DomainName, TagsToUpdate)
+route53domains_update_tags_for_domain(DomainName, TagsToUpdate = NULL)
 }
 \arguments{
 \item{DomainName}{[required] The domain for which you want to add or update tags.}
@@ -13,26 +13,9 @@ route53domains_update_tags_for_domain(DomainName, TagsToUpdate)
 specify a key that already exists, the corresponding value will be
 replaced.}
 }
-\value{
-An empty list.
-}
 \description{
 This operation adds or updates tags for a specified domain.
 
-All tag operations are eventually consistent; subsequent operations
-might not immediately represent all issued operations.
+See \url{https://paws-r.github.io/docs/route53domains/update_tags_for_domain.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_tags_for_domain(
-  DomainName = "string",
-  TagsToUpdate = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{organizations_update_organizational_unit}
 \title{Renames the specified organizational unit (OU)}
 \usage{
-organizations_update_organizational_unit(OrganizationalUnitId, Name)
+organizations_update_organizational_unit(OrganizationalUnitId, Name = NULL)
 }
 \arguments{
 \item{OrganizationalUnitId}{[required] The unique identifier (ID) of the OU that you want to rename. You can
@@ -24,41 +24,9 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
 validate this parameter is a string of any of the characters in the
 ASCII character range.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OrganizationalUnit = list(
-    Id = "string",
-    Arn = "string",
-    Name = "string"
-  )
-)
-}
-}
 \description{
-Renames the specified organizational unit (OU). The ID and ARN don't
-change. The child OUs and accounts remain in place, and any attached
-policies of the OU remain attached.
+Renames the specified organizational unit (OU). The ID and ARN don't change. The child OUs and accounts remain in place, and any attached policies of the OU remain attached.
 
-This operation can be called only from the organization's management
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$update_organizational_unit(
-  OrganizationalUnitId = "string",
-  Name = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to rename an OU. The output confirms the
-# new name:/n/n
-svc$update_organizational_unit(
-  Name = "AccountingOU",
-  OrganizationalUnitId = "ou-examplerootid111-exampleouid111"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/update_organizational_unit.html} for full documentation.
 }
 \keyword{internal}

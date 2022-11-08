@@ -5,8 +5,12 @@
 \title{Returns a list of resources (for example, instances) that have at least
 one pending maintenance action}
 \usage{
-docdb_describe_pending_maintenance_actions(ResourceIdentifier, Filters,
-  Marker, MaxRecords)
+docdb_describe_pending_maintenance_actions(
+  ResourceIdentifier = NULL,
+  Filters = NULL,
+  Marker = NULL,
+  MaxRecords = NULL
+)
 }
 \arguments{
 \item{ResourceIdentifier}{The ARN of a resource to return pending maintenance actions for.}
@@ -37,52 +41,9 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PendingMaintenanceActions = list(
-    list(
-      ResourceIdentifier = "string",
-      PendingMaintenanceActionDetails = list(
-        list(
-          Action = "string",
-          AutoAppliedAfterDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          ForcedApplyDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          OptInStatus = "string",
-          CurrentApplyDate = as.POSIXct(
-            "2015-01-01"
-          ),
-          Description = "string"
-        )
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Returns a list of resources (for example, instances) that have at least
-one pending maintenance action.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_pending_maintenance_actions(
-  ResourceIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string",
-  MaxRecords = 123
-)
-}
-}
+Returns a list of resources (for example, instances) that have at least one pending maintenance action.
 
+See \url{https://paws-r.github.io/docs/docdb/describe_pending_maintenance_actions.html} for full documentation.
+}
 \keyword{internal}

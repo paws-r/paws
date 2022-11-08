@@ -10,32 +10,9 @@ clouddirectory_create_schema(Name)
 \item{Name}{[required] The name that is associated with the schema. This is unique to each
 account and in each region.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaArn = "string"
-)
-}
-}
 \description{
-Creates a new schema in a development state. A schema can exist in three
-phases:
-\itemize{
-\item \emph{Development:} This is a mutable phase of the schema. All new
-schemas are in the development phase. Once the schema is finalized,
-it can be published.
-\item \emph{Published:} Published schemas are immutable and have a version
-associated with them.
-\item \emph{Applied:} Applied schemas are mutable in a way that allows you to
-add new schema facets. You can also add new, nonrequired attributes
-to existing schema facets. You can apply only published schemas to
-directories.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$create_schema(
-  Name = "string"
-)
-}
-}
+Creates a new schema in a development state. A schema can exist in three phases:
 
+See \url{https://paws-r.github.io/docs/clouddirectory/create_schema.html} for full documentation.
+}
 \keyword{internal}

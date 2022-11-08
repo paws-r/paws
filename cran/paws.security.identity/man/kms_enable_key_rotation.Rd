@@ -2,17 +2,22 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_enable_key_rotation}
 \alias{kms_enable_key_rotation}
-\title{Enables automatic rotation of the key material for the specified
-symmetric customer master key (CMK)}
+\title{Enables automatic rotation of the key material of the specified
+symmetric encryption KMS key}
 \usage{
 kms_enable_key_rotation(KeyId)
 }
 \arguments{
-\item{KeyId}{[required] Identifies a symmetric customer master key (CMK). You cannot enable
-automatic rotation of asymmetric CMKs, CMKs with imported key material,
-or CMKs in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
+\item{KeyId}{[required] Identifies a symmetric encryption KMS key. You cannot enable or disable
+automatic rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{asymmetric KMS keys},
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html}{HMAC KMS keys},
+KMS keys with \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material},
+or KMS keys in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
+The key rotation status of these KMS keys is always \code{false}. To enable
+or disable automatic rotation of a set of related \href{https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-manage.html#multi-region-rotate}{multi-Region keys},
+set the property on the primary key.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the KMS key.
 
 For example:
 \itemize{
@@ -21,51 +26,12 @@ For example:
 \verb{arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}
 }
 
-To get the key ID and key ARN for a CMK, use
+To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 }
-\value{
-An empty list.
-}
 \description{
-Enables \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material}
-for the specified symmetric customer master key (CMK).
+Enables \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material} of the specified symmetric encryption KMS key.
 
-You cannot enable automatic rotation of asymmetric CMKs, CMKs with
-imported key material, or CMKs in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
-
-The CMK that you use for this operation must be in a compatible key
-state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
-a different AWS account.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:EnableKeyRotation}
-(key policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_disable_key_rotation]{disable_key_rotation}}
-\item \code{\link[=kms_get_key_rotation_status]{get_key_rotation_status}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$enable_key_rotation(
-  KeyId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example enables automatic annual rotation of the key
-# material for the specified CMK.
-svc$enable_key_rotation(
-  KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
-)
-}
-
+See \url{https://paws-r.github.io/docs/kms/enable_key_rotation.html} for full documentation.
 }
 \keyword{internal}

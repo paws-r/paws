@@ -4,8 +4,12 @@
 \alias{servicecatalog_list_principals_for_portfolio}
 \title{Lists all principal ARNs associated with the specified portfolio}
 \usage{
-servicecatalog_list_principals_for_portfolio(AcceptLanguage,
-  PortfolioId, PageSize, PageToken)
+servicecatalog_list_principals_for_portfolio(
+  AcceptLanguage = NULL,
+  PortfolioId,
+  PageSize = NULL,
+  PageToken = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,29 +26,9 @@ servicecatalog_list_principals_for_portfolio(AcceptLanguage,
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Principals = list(
-    list(
-      PrincipalARN = "string",
-      PrincipalType = "IAM"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
 Lists all principal ARNs associated with the specified portfolio.
-}
-\section{Request syntax}{
-\preformatted{svc$list_principals_for_portfolio(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  PageSize = 123,
-  PageToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_principals_for_portfolio.html} for full documentation.
+}
 \keyword{internal}

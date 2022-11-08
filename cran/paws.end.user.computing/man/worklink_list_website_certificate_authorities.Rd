@@ -5,8 +5,11 @@
 \title{Retrieves a list of certificate authorities added for the current
 account and Region}
 \usage{
-worklink_list_website_certificate_authorities(FleetArn, MaxResults,
-  NextToken)
+worklink_list_website_certificate_authorities(
+  FleetArn,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
@@ -16,32 +19,9 @@ worklink_list_website_certificate_authorities(FleetArn, MaxResults,
 \item{NextToken}{The pagination token used to retrieve the next page of results for this
 operation. If this value is null, it retrieves the first page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WebsiteCertificateAuthorities = list(
-    list(
-      WebsiteCaId = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      DisplayName = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a list of certificate authorities added for the current
-account and Region.
-}
-\section{Request syntax}{
-\preformatted{svc$list_website_certificate_authorities(
-  FleetArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Retrieves a list of certificate authorities added for the current account and Region.
 
+See \url{https://paws-r.github.io/docs/worklink/list_website_certificate_authorities.html} for full documentation.
+}
 \keyword{internal}

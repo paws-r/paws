@@ -6,10 +6,18 @@
 merge of two commit specifiers using the squash or three-way merge
 strategy}
 \usage{
-codecommit_batch_describe_merge_conflicts(repositoryName,
-  destinationCommitSpecifier, sourceCommitSpecifier, mergeOption,
-  maxMergeHunks, maxConflictFiles, filePaths, conflictDetailLevel,
-  conflictResolutionStrategy, nextToken)
+codecommit_batch_describe_merge_conflicts(
+  repositoryName,
+  destinationCommitSpecifier,
+  sourceCommitSpecifier,
+  mergeOption,
+  maxMergeHunks = NULL,
+  maxConflictFiles = NULL,
+  filePaths = NULL,
+  conflictDetailLevel = NULL,
+  conflictResolutionStrategy = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository that contains the merge conflicts you want to
@@ -44,98 +52,9 @@ merge operation is successful.}
 \item{nextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  conflicts = list(
-    list(
-      conflictMetadata = list(
-        filePath = "string",
-        fileSizes = list(
-          source = 123,
-          destination = 123,
-          base = 123
-        ),
-        fileModes = list(
-          source = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-          destination = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-          base = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-        ),
-        objectTypes = list(
-          source = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
-          destination = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
-          base = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK"
-        ),
-        numberOfConflicts = 123,
-        isBinaryFile = list(
-          source = TRUE|FALSE,
-          destination = TRUE|FALSE,
-          base = TRUE|FALSE
-        ),
-        contentConflict = TRUE|FALSE,
-        fileModeConflict = TRUE|FALSE,
-        objectTypeConflict = TRUE|FALSE,
-        mergeOperations = list(
-          source = "A"|"M"|"D",
-          destination = "A"|"M"|"D"
-        )
-      ),
-      mergeHunks = list(
-        list(
-          isConflict = TRUE|FALSE,
-          source = list(
-            startLine = 123,
-            endLine = 123,
-            hunkContent = "string"
-          ),
-          destination = list(
-            startLine = 123,
-            endLine = 123,
-            hunkContent = "string"
-          ),
-          base = list(
-            startLine = 123,
-            endLine = 123,
-            hunkContent = "string"
-          )
-        )
-      )
-    )
-  ),
-  nextToken = "string",
-  errors = list(
-    list(
-      filePath = "string",
-      exceptionName = "string",
-      message = "string"
-    )
-  ),
-  destinationCommitId = "string",
-  sourceCommitId = "string",
-  baseCommitId = "string"
-)
-}
-}
 \description{
-Returns information about one or more merge conflicts in the attempted
-merge of two commit specifiers using the squash or three-way merge
-strategy.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_describe_merge_conflicts(
-  repositoryName = "string",
-  destinationCommitSpecifier = "string",
-  sourceCommitSpecifier = "string",
-  mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE",
-  maxMergeHunks = 123,
-  maxConflictFiles = 123,
-  filePaths = list(
-    "string"
-  ),
-  conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-  conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
-  nextToken = "string"
-)
-}
-}
+Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy.
 
+See \url{https://paws-r.github.io/docs/codecommit/batch_describe_merge_conflicts.html} for full documentation.
+}
 \keyword{internal}

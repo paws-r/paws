@@ -5,7 +5,11 @@
 \title{Returns an array containing metadata of the resources associated with
 the target backup plan}
 \usage{
-backup_list_backup_selections(BackupPlanId, NextToken, MaxResults)
+backup_list_backup_selections(
+  BackupPlanId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{BackupPlanId}{[required] Uniquely identifies a backup plan.}
@@ -17,35 +21,9 @@ pointed to by the next token.}
 
 \item{MaxResults}{The maximum number of items to be returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  BackupSelectionsList = list(
-    list(
-      SelectionId = "string",
-      SelectionName = "string",
-      BackupPlanId = "string",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreatorRequestId = "string",
-      IamRoleArn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns an array containing metadata of the resources associated with
-the target backup plan.
-}
-\section{Request syntax}{
-\preformatted{svc$list_backup_selections(
-  BackupPlanId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns an array containing metadata of the resources associated with the target backup plan.
 
+See \url{https://paws-r.github.io/docs/backup/list_backup_selections.html} for full documentation.
+}
 \keyword{internal}

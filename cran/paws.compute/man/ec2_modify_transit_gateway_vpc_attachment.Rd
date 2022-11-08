@@ -4,8 +4,13 @@
 \alias{ec2_modify_transit_gateway_vpc_attachment}
 \title{Modifies the specified VPC attachment}
 \usage{
-ec2_modify_transit_gateway_vpc_attachment(TransitGatewayAttachmentId,
-  AddSubnetIds, RemoveSubnetIds, Options, DryRun)
+ec2_modify_transit_gateway_vpc_attachment(
+  TransitGatewayAttachmentId,
+  AddSubnetIds = NULL,
+  RemoveSubnetIds = NULL,
+  Options = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayAttachmentId}{[required] The ID of the attachment.}
@@ -15,64 +20,16 @@ subnet per Availability Zone.}
 
 \item{RemoveSubnetIds}{The IDs of one or more subnets to remove.}
 
-\item{Options}{The new VPC attachment options.
-
-You cannot modify the IPv6 options.}
+\item{Options}{The new VPC attachment options.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayVpcAttachment = list(
-    TransitGatewayAttachmentId = "string",
-    TransitGatewayId = "string",
-    VpcId = "string",
-    VpcOwnerId = "string",
-    State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
-    SubnetIds = list(
-      "string"
-    ),
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Options = list(
-      DnsSupport = "enable"|"disable",
-      Ipv6Support = "enable"|"disable",
-      ApplianceModeSupport = "enable"|"disable"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Modifies the specified VPC attachment.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_transit_gateway_vpc_attachment(
-  TransitGatewayAttachmentId = "string",
-  AddSubnetIds = list(
-    "string"
-  ),
-  RemoveSubnetIds = list(
-    "string"
-  ),
-  Options = list(
-    DnsSupport = "enable"|"disable",
-    Ipv6Support = "enable"|"disable",
-    ApplianceModeSupport = "enable"|"disable"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/modify_transit_gateway_vpc_attachment.html} for full documentation.
+}
 \keyword{internal}

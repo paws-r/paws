@@ -4,8 +4,13 @@
 \alias{personalize_create_dataset}
 \title{Creates an empty dataset and adds it to the specified dataset group}
 \usage{
-personalize_create_dataset(name, schemaArn, datasetGroupArn,
-  datasetType)
+personalize_create_dataset(
+  name,
+  schemaArn,
+  datasetGroupArn,
+  datasetType,
+  tags = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name for the dataset.}
@@ -24,55 +29,12 @@ One of the following (case insensitive) values:
 \item Items
 \item Users
 }}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  datasetArn = "string"
-)
-}
+
+\item{tags}{A list of tags to apply to the dataset.}
 }
 \description{
-Creates an empty dataset and adds it to the specified dataset group. Use
-\code{\link[=personalize_create_dataset_import_job]{create_dataset_import_job}} to
-import your training data to a dataset.
+Creates an empty dataset and adds it to the specified dataset group. Use \code{\link[=personalize_create_dataset_import_job]{create_dataset_import_job}} to import your training data to a dataset.
 
-There are three types of datasets:
-\itemize{
-\item Interactions
-\item Items
-\item Users
+See \url{https://paws-r.github.io/docs/personalize/create_dataset.html} for full documentation.
 }
-
-Each dataset type has an associated schema with required field types.
-Only the \code{Interactions} dataset is required in order to train a model
-(also referred to as creating a solution).
-
-A dataset can be in one of the following states:
-\itemize{
-\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
-FAILED
-\item DELETE PENDING > DELETE IN_PROGRESS
-}
-
-To get the status of the dataset, call
-\code{\link[=personalize_describe_dataset]{describe_dataset}}.
-
-\strong{Related APIs}
-\itemize{
-\item \code{\link[=personalize_create_dataset_group]{create_dataset_group}}
-\item \code{\link[=personalize_list_datasets]{list_datasets}}
-\item \code{\link[=personalize_describe_dataset]{describe_dataset}}
-\item \code{\link[=personalize_delete_dataset]{delete_dataset}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$create_dataset(
-  name = "string",
-  schemaArn = "string",
-  datasetGroupArn = "string",
-  datasetType = "string"
-)
-}
-}
-
 \keyword{internal}

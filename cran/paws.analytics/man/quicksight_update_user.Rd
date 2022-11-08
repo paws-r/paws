@@ -4,14 +4,25 @@
 \alias{quicksight_update_user}
 \title{Updates an Amazon QuickSight user}
 \usage{
-quicksight_update_user(UserName, AwsAccountId, Namespace, Email, Role,
-  CustomPermissionsName, UnapplyCustomPermissions)
+quicksight_update_user(
+  UserName,
+  AwsAccountId,
+  Namespace,
+  Email,
+  Role,
+  CustomPermissionsName = NULL,
+  UnapplyCustomPermissions = NULL,
+  ExternalLoginFederationProviderType = NULL,
+  CustomFederationProviderUrl = NULL,
+  ExternalLoginId = NULL
+)
 }
 \arguments{
 \item{UserName}{[required] The Amazon QuickSight user name that you want to update.}
 
-\item{AwsAccountId}{[required] The ID for the AWS account that the user is in. Currently, you use the
-ID for the AWS account that contains your Amazon QuickSight account.}
+\item{AwsAccountId}{[required] The ID for the Amazon Web Services account that the user is in.
+Currently, you use the ID for the Amazon Web Services account that
+contains your Amazon QuickSight account.}
 
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 
@@ -27,8 +38,8 @@ and dashboards.
 QuickSight settings.
 }
 
-The name of the QuickSight role is invisible to the user except for the
-console screens dealing with permissions.}
+The name of the Amazon QuickSight role is invisible to the user except
+for the console screens dealing with permissions.}
 
 \item{CustomPermissionsName}{(Enterprise edition only) The name of the custom permissions profile
 that you want to assign to this user. Customized permissions allows you
@@ -43,55 +54,52 @@ operations:
 
 A set of custom permissions includes any combination of these
 restrictions. Currently, you need to create the profile names for custom
-permission sets by using the QuickSight console. Then, you use the
-\code{\link[=quicksight_register_user]{register_user}} API operation to assign the
-named set of permissions to a QuickSight user.
+permission sets by using the Amazon QuickSight console. Then, you use
+the \code{\link[=quicksight_register_user]{register_user}} API operation to assign
+the named set of permissions to a Amazon QuickSight user.
 
-QuickSight custom permissions are applied through IAM policies.
+Amazon QuickSight custom permissions are applied through IAM policies.
 Therefore, they override the permissions typically granted by assigning
-QuickSight users to one of the default security cohorts in QuickSight
-(admin, author, reader).
+Amazon QuickSight users to one of the default security cohorts in Amazon
+QuickSight (admin, author, reader).
 
-This feature is available only to QuickSight Enterprise edition
-subscriptions that use SAML 2.0-Based Federation for Single Sign-On
-(SSO).}
+This feature is available only to Amazon QuickSight Enterprise edition
+subscriptions.}
 
 \item{UnapplyCustomPermissions}{A flag that you use to indicate that you want to remove all custom
 permissions from this user. Using this parameter resets the user to the
 state it was in before a custom permissions profile was applied. This
 parameter defaults to NULL and it doesn't accept any other value.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  User = list(
-    Arn = "string",
-    UserName = "string",
-    Email = "string",
-    Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
-    IdentityType = "IAM"|"QUICKSIGHT",
-    Active = TRUE|FALSE,
-    PrincipalId = "string",
-    CustomPermissionsName = "string"
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
+
+\item{ExternalLoginFederationProviderType}{The type of supported external login provider that provides identity to
+let a user federate into Amazon QuickSight with an associated Identity
+and Access Management(IAM) role. The type of supported external login
+provider can be one of the following.
+\itemize{
+\item \code{COGNITO}: Amazon Cognito. The provider URL is
+cognito-identity.amazonaws.com. When choosing the \code{COGNITO} provider
+type, don’t use the "CustomFederationProviderUrl" parameter which is
+only needed when the external provider is custom.
+\item \code{CUSTOM_OIDC}: Custom OpenID Connect (OIDC) provider. When choosing
+\code{CUSTOM_OIDC} type, use the \code{CustomFederationProviderUrl} parameter
+to provide the custom OIDC provider URL.
+\item \code{NONE}: This clears all the previously saved external login
+information for a user. Use the
+\code{\link[=quicksight_describe_user]{describe_user}} API operation to check
+the external login information.
+}}
+
+\item{CustomFederationProviderUrl}{The URL of the custom OpenID Connect (OIDC) provider that provides
+identity to let a user federate into Amazon QuickSight with an
+associated Identity and Access Management(IAM) role. This parameter
+should only be used when \code{ExternalLoginFederationProviderType} parameter
+is set to \code{CUSTOM_OIDC}.}
+
+\item{ExternalLoginId}{The identity ID for a user in the external login provider.}
 }
 \description{
 Updates an Amazon QuickSight user.
-}
-\section{Request syntax}{
-\preformatted{svc$update_user(
-  UserName = "string",
-  AwsAccountId = "string",
-  Namespace = "string",
-  Email = "string",
-  Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
-  CustomPermissionsName = "string",
-  UnapplyCustomPermissions = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/update_user.html} for full documentation.
+}
 \keyword{internal}

@@ -2,25 +2,32 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_describe_scheduled_actions}
 \alias{autoscaling_describe_scheduled_actions}
-\title{Describes the actions scheduled for your Auto Scaling group that haven't
-run or that have not reached their end time}
+\title{Gets information about the scheduled actions that haven't run or that
+have not reached their end time}
 \usage{
-autoscaling_describe_scheduled_actions(AutoScalingGroupName,
-  ScheduledActionNames, StartTime, EndTime, NextToken, MaxRecords)
+autoscaling_describe_scheduled_actions(
+  AutoScalingGroupName = NULL,
+  ScheduledActionNames = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  NextToken = NULL,
+  MaxRecords = NULL
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
 
-\item{ScheduledActionNames}{The names of one or more scheduled actions. You can specify up to 50
-actions. If you omit this parameter, all scheduled actions are
-described. If you specify an unknown scheduled action, it is ignored
-with no error.}
+\item{ScheduledActionNames}{The names of one or more scheduled actions. If you omit this property,
+all scheduled actions are described. If you specify an unknown scheduled
+action, it is ignored with no error.
+
+Array Members: Maximum number of 50 actions.}
 
 \item{StartTime}{The earliest scheduled start time to return. If scheduled action names
-are provided, this parameter is ignored.}
+are provided, this property is ignored.}
 
 \item{EndTime}{The latest scheduled start time to return. If scheduled action names are
-provided, this parameter is ignored.}
+provided, this property is ignored.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
@@ -28,65 +35,9 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{50} and the maximum value is \code{100}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ScheduledUpdateGroupActions = list(
-    list(
-      AutoScalingGroupName = "string",
-      ScheduledActionName = "string",
-      ScheduledActionARN = "string",
-      Time = as.POSIXct(
-        "2015-01-01"
-      ),
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Recurrence = "string",
-      MinSize = 123,
-      MaxSize = 123,
-      DesiredCapacity = 123
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the actions scheduled for your Auto Scaling group that haven't
-run or that have not reached their end time. To describe the actions
-that have already run, call the
-\code{\link[=autoscaling_describe_scaling_activities]{describe_scaling_activities}}
-API.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_scheduled_actions(
-  AutoScalingGroupName = "string",
-  ScheduledActionNames = list(
-    "string"
-  ),
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  NextToken = "string",
-  MaxRecords = 123
-)
-}
-}
+Gets information about the scheduled actions that haven't run or that have not reached their end time.
 
-\examples{
-\dontrun{
-# This example describes the scheduled actions for the specified Auto
-# Scaling group.
-svc$describe_scheduled_actions(
-  AutoScalingGroupName = "my-auto-scaling-group"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/describe_scheduled_actions.html} for full documentation.
 }
 \keyword{internal}

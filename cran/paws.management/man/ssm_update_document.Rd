@@ -4,121 +4,51 @@
 \alias{ssm_update_document}
 \title{Updates one or more values for an SSM document}
 \usage{
-ssm_update_document(Content, Attachments, Name, VersionName,
-  DocumentVersion, DocumentFormat, TargetType)
+ssm_update_document(
+  Content,
+  Attachments = NULL,
+  Name,
+  DisplayName = NULL,
+  VersionName = NULL,
+  DocumentVersion = NULL,
+  DocumentFormat = NULL,
+  TargetType = NULL
+)
 }
 \arguments{
 \item{Content}{[required] A valid JSON or YAML string.}
 
-\item{Attachments}{A list of key and value pairs that describe attachments to a version of
-a document.}
+\item{Attachments}{A list of key-value pairs that describe attachments to a version of a
+document.}
 
-\item{Name}{[required] The name of the document that you want to update.}
+\item{Name}{[required] The name of the SSM document that you want to update.}
+
+\item{DisplayName}{The friendly name of the SSM document that you want to update. This
+value can differ for each version of the document. If you don't specify
+a value for this parameter in your request, the existing value is
+applied to the new document version.}
 
 \item{VersionName}{An optional field specifying the version of the artifact you are
 updating with the document. For example, "Release 12, Update 6". This
-value is unique across all versions of a document, and cannot be
-changed.}
+value is unique across all versions of a document, and can't be changed.}
 
-\item{DocumentVersion}{(Required) The latest version of the document that you want to update.
-The latest document version can be specified using the $LATEST variable
-or by the version number. Updating a previous version of a document is
-not supported.}
+\item{DocumentVersion}{The version of the document that you want to update. Currently, Systems
+Manager supports updating only the latest version of the document. You
+can specify the version number of the latest version or use the
+\verb{$LATEST} variable.
+
+If you change a document version for a State Manager association,
+Systems Manager immediately runs the association unless you previously
+specifed the \code{apply-only-at-cron-interval} parameter.}
 
 \item{DocumentFormat}{Specify the document format for the new document version. Systems
 Manager supports JSON and YAML documents. JSON is the default format.}
 
 \item{TargetType}{Specify a new target type for the document.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DocumentDescription = list(
-    Sha1 = "string",
-    Hash = "string",
-    HashType = "Sha256"|"Sha1",
-    Name = "string",
-    VersionName = "string",
-    Owner = "string",
-    CreatedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    Status = "Creating"|"Active"|"Updating"|"Deleting"|"Failed",
-    StatusInformation = "string",
-    DocumentVersion = "string",
-    Description = "string",
-    Parameters = list(
-      list(
-        Name = "string",
-        Type = "String"|"StringList",
-        Description = "string",
-        DefaultValue = "string"
-      )
-    ),
-    PlatformTypes = list(
-      "Windows"|"Linux"
-    ),
-    DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
-    SchemaVersion = "string",
-    LatestVersion = "string",
-    DefaultVersion = "string",
-    DocumentFormat = "YAML"|"JSON"|"TEXT",
-    TargetType = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    AttachmentsInformation = list(
-      list(
-        Name = "string"
-      )
-    ),
-    Requires = list(
-      list(
-        Name = "string",
-        Version = "string"
-      )
-    ),
-    Author = "string",
-    ReviewInformation = list(
-      list(
-        ReviewedTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        Status = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED",
-        Reviewer = "string"
-      )
-    ),
-    ApprovedVersion = "string",
-    PendingReviewVersion = "string",
-    ReviewStatus = "APPROVED"|"NOT_REVIEWED"|"PENDING"|"REJECTED"
-  )
-)
-}
-}
 \description{
 Updates one or more values for an SSM document.
-}
-\section{Request syntax}{
-\preformatted{svc$update_document(
-  Content = "string",
-  Attachments = list(
-    list(
-      Key = "SourceUrl"|"S3FileUrl"|"AttachmentReference",
-      Values = list(
-        "string"
-      ),
-      Name = "string"
-    )
-  ),
-  Name = "string",
-  VersionName = "string",
-  DocumentVersion = "string",
-  DocumentFormat = "YAML"|"JSON"|"TEXT",
-  TargetType = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/update_document.html} for full documentation.
+}
 \keyword{internal}

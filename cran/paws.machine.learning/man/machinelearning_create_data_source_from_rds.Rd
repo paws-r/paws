@@ -5,8 +5,13 @@
 \title{Creates a DataSource object from an Amazon Relational Database Service
 (Amazon RDS)}
 \usage{
-machinelearning_create_data_source_from_rds(DataSourceId,
-  DataSourceName, RDSData, RoleARN, ComputeStatistics)
+machinelearning_create_data_source_from_rds(
+  DataSourceId,
+  DataSourceName = NULL,
+  RDSData,
+  RoleARN,
+  ComputeStatistics = NULL
+)
 }
 \arguments{
 \item{DataSourceId}{[required] A user-supplied ID that uniquely identifies the \code{DataSource}. Typically,
@@ -62,66 +67,9 @@ the statistics internally during \code{MLModel} training. This parameter must
 be set to \code{true} if the \code{DataSource} needs to be used for \code{MLModel}
 training.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DataSourceId = "string"
-)
-}
-}
 \description{
-Creates a \code{DataSource} object from an \href{https://aws.amazon.com/rds/}{Amazon Relational Database Service} (Amazon RDS). A \code{DataSource}
-references data that can be used to perform
-\code{\link[=machinelearning_create_ml_model]{create_ml_model}},
-\code{\link[=machinelearning_create_evaluation]{create_evaluation}}, or
-\code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}}
-operations.
+Creates a \code{DataSource} object from an \href{https://aws.amazon.com/rds/}{Amazon Relational Database Service} (Amazon RDS). A \code{DataSource} references data that can be used to perform \code{\link[=machinelearning_create_ml_model]{create_ml_model}}, \code{\link[=machinelearning_create_evaluation]{create_evaluation}}, or \code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}} operations.
 
-\code{\link[=machinelearning_create_data_source_from_rds]{create_data_source_from_rds}}
-is an asynchronous operation. In response to
-\code{\link[=machinelearning_create_data_source_from_rds]{create_data_source_from_rds}},
-Amazon Machine Learning (Amazon ML) immediately returns and sets the
-\code{DataSource} status to \code{PENDING}. After the \code{DataSource} is created and
-ready for use, Amazon ML sets the \code{Status} parameter to \code{COMPLETED}.
-\code{DataSource} in the \code{COMPLETED} or \code{PENDING} state can be used only to
-perform \verb{>CreateMLModel}>,
-\code{\link[=machinelearning_create_evaluation]{create_evaluation}}, or
-\code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}}
-operations.
-
-If Amazon ML cannot accept the input source, it sets the \code{Status}
-parameter to \code{FAILED} and includes an error message in the \code{Message}
-attribute of the \code{\link[=machinelearning_get_data_source]{get_data_source}}
-operation response.
+See \url{https://paws-r.github.io/docs/machinelearning/create_data_source_from_rds.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_data_source_from_rds(
-  DataSourceId = "string",
-  DataSourceName = "string",
-  RDSData = list(
-    DatabaseInformation = list(
-      InstanceIdentifier = "string",
-      DatabaseName = "string"
-    ),
-    SelectSqlQuery = "string",
-    DatabaseCredentials = list(
-      Username = "string",
-      Password = "string"
-    ),
-    S3StagingLocation = "string",
-    DataRearrangement = "string",
-    DataSchema = "string",
-    DataSchemaUri = "string",
-    ResourceRole = "string",
-    ServiceRole = "string",
-    SubnetId = "string",
-    SecurityGroupIds = list(
-      "string"
-    )
-  ),
-  RoleARN = "string",
-  ComputeStatistics = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

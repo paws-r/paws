@@ -9,27 +9,14 @@ codebuild_put_resource_policy(policy, resourceArn)
 \arguments{
 \item{policy}{[required] A JSON-formatted resource policy. For more information, see \href{https://docs.aws.amazon.com/codebuild/latest/userguide/project-sharing.html#project-sharing-share}{Sharing a Project}
 and \href{https://docs.aws.amazon.com/codebuild/latest/userguide/report-groups-sharing.html#report-groups-sharing-share}{Sharing a Report Group}
-in the \emph{AWS CodeBuild User Guide}.}
+in the \emph{CodeBuild User Guide}.}
 
 \item{resourceArn}{[required] The ARN of the \code{Project} or \code{ReportGroup} resource you want to associate
 with a resource policy.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  resourceArn = "string"
-)
-}
-}
 \description{
-Stores a resource policy for the ARN of a \code{Project} or \code{ReportGroup}
-object.
-}
-\section{Request syntax}{
-\preformatted{svc$put_resource_policy(
-  policy = "string",
-  resourceArn = "string"
-)
-}
-}
+Stores a resource policy for the ARN of a \code{Project} or \code{ReportGroup} object.
 
+See \url{https://paws-r.github.io/docs/codebuild/put_resource_policy.html} for full documentation.
+}
 \keyword{internal}

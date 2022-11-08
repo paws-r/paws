@@ -11,50 +11,9 @@ ec2_associate_iam_instance_profile(IamInstanceProfile, InstanceId)
 
 \item{InstanceId}{[required] The ID of the instance.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IamInstanceProfileAssociation = list(
-    AssociationId = "string",
-    InstanceId = "string",
-    IamInstanceProfile = list(
-      Arn = "string",
-      Id = "string"
-    ),
-    State = "associating"|"associated"|"disassociating"|"disassociated",
-    Timestamp = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Associates an IAM instance profile with a running or stopped instance.
-You cannot associate more than one IAM instance profile with an
-instance.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_iam_instance_profile(
-  IamInstanceProfile = list(
-    Arn = "string",
-    Name = "string"
-  ),
-  InstanceId = "string"
-)
-}
-}
+Associates an IAM instance profile with a running or stopped instance. You cannot associate more than one IAM instance profile with an instance.
 
-\examples{
-\dontrun{
-# This example associates an IAM instance profile named admin-role with
-# the specified instance.
-svc$associate_iam_instance_profile(
-  IamInstanceProfile = list(
-    Name = "admin-role"
-  ),
-  InstanceId = "i-123456789abcde123"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/associate_iam_instance_profile.html} for full documentation.
 }
 \keyword{internal}

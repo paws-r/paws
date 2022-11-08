@@ -5,7 +5,7 @@
 \title{Lists summary information about the instances that you registered by
 using a specified service}
 \usage{
-servicediscovery_list_instances(ServiceId, NextToken, MaxResults)
+servicediscovery_list_instances(ServiceId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ServiceId}{[required] The ID of the service that you want to list instances for.}
@@ -18,45 +18,14 @@ can submit another \code{\link[=servicediscovery_list_instances]{list_instances}
 request to get the next group of results. Specify the value of
 \code{NextToken} from the previous response in the next request.}
 
-\item{MaxResults}{The maximum number of instances that you want AWS Cloud Map to return in
-the response to a \code{\link[=servicediscovery_list_instances]{list_instances}}
-request. If you don't specify a value for \code{MaxResults}, AWS Cloud Map
+\item{MaxResults}{The maximum number of instances that you want Cloud Map to return in the
+response to a \code{\link[=servicediscovery_list_instances]{list_instances}}
+request. If you don't specify a value for \code{MaxResults}, Cloud Map
 returns up to 100 instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Instances = list(
-    list(
-      Id = "string",
-      Attributes = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists summary information about the instances that you registered by
-using a specified service.
-}
-\section{Request syntax}{
-\preformatted{svc$list_instances(
-  ServiceId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists summary information about the instances that you registered by using a specified service.
 
-\examples{
-\dontrun{
-# Example: List service instances
-svc$list_instances(
-  ServiceId = "srv-qzpwvt2tfqcegapy"
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/list_instances.html} for full documentation.
 }
 \keyword{internal}

@@ -9,17 +9,9 @@ cognitoidentityprovider_delete_user_pool(UserPoolId)
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified Amazon Cognito user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user_pool(
-  UserPoolId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_pool.html} for full documentation.
+}
 \keyword{internal}

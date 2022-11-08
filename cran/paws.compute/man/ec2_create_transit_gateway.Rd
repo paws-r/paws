@@ -4,8 +4,12 @@
 \alias{ec2_create_transit_gateway}
 \title{Creates a transit gateway}
 \usage{
-ec2_create_transit_gateway(Description, Options, TagSpecifications,
-  DryRun)
+ec2_create_transit_gateway(
+  Description = NULL,
+  Options = NULL,
+  TagSpecifications = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{Description}{A description of the transit gateway.}
@@ -19,100 +23,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGateway = list(
-    TransitGatewayId = "string",
-    TransitGatewayArn = "string",
-    State = "pending"|"available"|"modifying"|"deleting"|"deleted",
-    OwnerId = "string",
-    Description = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Options = list(
-      AmazonSideAsn = 123,
-      TransitGatewayCidrBlocks = list(
-        "string"
-      ),
-      AutoAcceptSharedAttachments = "enable"|"disable",
-      DefaultRouteTableAssociation = "enable"|"disable",
-      AssociationDefaultRouteTableId = "string",
-      DefaultRouteTablePropagation = "enable"|"disable",
-      PropagationDefaultRouteTableId = "string",
-      VpnEcmpSupport = "enable"|"disable",
-      DnsSupport = "enable"|"disable",
-      MulticastSupport = "enable"|"disable"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Creates a transit gateway.
 
-You can use a transit gateway to interconnect your virtual private
-clouds (VPC) and on-premises networks. After the transit gateway enters
-the \code{available} state, you can attach your VPCs and VPN connections to
-the transit gateway.
-
-To attach your VPCs, use
-\code{\link[=ec2_create_transit_gateway_vpc_attachment]{create_transit_gateway_vpc_attachment}}.
-
-To attach a VPN connection, use
-\code{\link[=ec2_create_customer_gateway]{create_customer_gateway}} to create a
-customer gateway and specify the ID of the customer gateway and the ID
-of the transit gateway in a call to
-\code{\link[=ec2_create_vpn_connection]{create_vpn_connection}}.
-
-When you create a transit gateway, we create a default transit gateway
-route table and use it as the default association route table and the
-default propagation route table. You can use
-\code{\link[=ec2_create_transit_gateway_route_table]{create_transit_gateway_route_table}}
-to create additional transit gateway route tables. If you disable
-automatic route propagation, we do not create a default transit gateway
-route table. You can use
-\code{\link[=ec2_enable_transit_gateway_route_table_propagation]{enable_transit_gateway_route_table_propagation}}
-to propagate routes from a resource attachment to a transit gateway
-route table. If you disable automatic associations, you can use
-\code{\link[=ec2_associate_transit_gateway_route_table]{associate_transit_gateway_route_table}}
-to associate a resource attachment with a transit gateway route table.
+See \url{https://paws-r.github.io/docs/ec2/create_transit_gateway.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_transit_gateway(
-  Description = "string",
-  Options = list(
-    AmazonSideAsn = 123,
-    AutoAcceptSharedAttachments = "enable"|"disable",
-    DefaultRouteTableAssociation = "enable"|"disable",
-    DefaultRouteTablePropagation = "enable"|"disable",
-    VpnEcmpSupport = "enable"|"disable",
-    DnsSupport = "enable"|"disable",
-    MulticastSupport = "enable"|"disable",
-    TransitGatewayCidrBlocks = list(
-      "string"
-    )
-  ),
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

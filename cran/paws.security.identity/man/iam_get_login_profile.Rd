@@ -2,8 +2,7 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_get_login_profile}
 \alias{iam_get_login_profile}
-\title{Retrieves the user name and password-creation date for the specified IAM
-user}
+\title{Retrieves the user name for the specified IAM user}
 \usage{
 iam_get_login_profile(UserName)
 }
@@ -14,38 +13,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LoginProfile = list(
-    UserName = "string",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    PasswordResetRequired = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Retrieves the user name and password-creation date for the specified IAM
-user. If the user has not been assigned a password, the operation
-returns a 404 (\code{NoSuchEntity}) error.
-}
-\section{Request syntax}{
-\preformatted{svc$get_login_profile(
-  UserName = "string"
-)
-}
-}
+Retrieves the user name for the specified IAM user. A login profile is created when you create a password for the user to access the Amazon Web Services Management Console. If the user does not exist or does not have a password, the operation returns a 404 (\code{NoSuchEntity}) error.
 
-\examples{
-\dontrun{
-# The following command gets information about the password for the IAM
-# user named Anika.
-svc$get_login_profile(
-  UserName = "Anika"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/get_login_profile.html} for full documentation.
 }
 \keyword{internal}

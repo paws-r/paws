@@ -2,32 +2,17 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_verify_trust}
 \alias{directoryservice_verify_trust}
-\title{AWS Directory Service for Microsoft Active Directory allows you to
-configure and verify trust relationships}
+\title{Directory Service for Microsoft Active Directory allows you to configure
+and verify trust relationships}
 \usage{
 directoryservice_verify_trust(TrustId)
 }
 \arguments{
 \item{TrustId}{[required] The unique Trust ID of the trust relationship to verify.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrustId = "string"
-)
-}
-}
 \description{
-AWS Directory Service for Microsoft Active Directory allows you to
-configure and verify trust relationships.
+Directory Service for Microsoft Active Directory allows you to configure and verify trust relationships.
 
-This action verifies a trust relationship between your AWS Managed
-Microsoft AD directory and an external domain.
+See \url{https://paws-r.github.io/docs/directoryservice/verify_trust.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$verify_trust(
-  TrustId = "string"
-)
-}
-}
-
 \keyword{internal}

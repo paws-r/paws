@@ -9,77 +9,9 @@ sagemaker_describe_transform_job(TransformJobName)
 \arguments{
 \item{TransformJobName}{[required] The name of the transform job that you want to view details of.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransformJobName = "string",
-  TransformJobArn = "string",
-  TransformJobStatus = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-  FailureReason = "string",
-  ModelName = "string",
-  MaxConcurrentTransforms = 123,
-  ModelClientConfig = list(
-    InvocationsTimeoutInSeconds = 123,
-    InvocationsMaxRetries = 123
-  ),
-  MaxPayloadInMB = 123,
-  BatchStrategy = "MultiRecord"|"SingleRecord",
-  Environment = list(
-    "string"
-  ),
-  TransformInput = list(
-    DataSource = list(
-      S3DataSource = list(
-        S3DataType = "ManifestFile"|"S3Prefix"|"AugmentedManifestFile",
-        S3Uri = "string"
-      )
-    ),
-    ContentType = "string",
-    CompressionType = "None"|"Gzip",
-    SplitType = "None"|"Line"|"RecordIO"|"TFRecord"
-  ),
-  TransformOutput = list(
-    S3OutputPath = "string",
-    Accept = "string",
-    AssembleWith = "None"|"Line",
-    KmsKeyId = "string"
-  ),
-  TransformResources = list(
-    InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge",
-    InstanceCount = 123,
-    VolumeKmsKeyId = "string"
-  ),
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  TransformStartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  TransformEndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LabelingJobArn = "string",
-  AutoMLJobArn = "string",
-  DataProcessing = list(
-    InputFilter = "string",
-    OutputFilter = "string",
-    JoinSource = "Input"|"None"
-  ),
-  ExperimentConfig = list(
-    ExperimentName = "string",
-    TrialName = "string",
-    TrialComponentDisplayName = "string"
-  )
-)
-}
-}
 \description{
 Returns information about a transform job.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_transform_job(
-  TransformJobName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_transform_job.html} for full documentation.
+}
 \keyword{internal}

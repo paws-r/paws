@@ -7,11 +7,9 @@ NULL
 #' received by the job worker
 #'
 #' @description
-#' Returns information about a specified job and whether that job has been
-#' received by the job worker. Used for custom actions only.
+#' Returns information about a specified job and whether that job has been received by the job worker. Used for custom actions only.
 #'
-#' @usage
-#' codepipeline_acknowledge_job(jobId, nonce)
+#' See [https://paws-r.github.io/docs/codepipeline/acknowledge_job.html](https://paws-r.github.io/docs/codepipeline/acknowledge_job.html) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job for which you want to confirm
 #' receipt.
@@ -19,22 +17,6 @@ NULL
 #' that the job is being worked on by only one job worker. Get this number
 #' from the response of the [`poll_for_jobs`][codepipeline_poll_for_jobs]
 #' request that returned this job.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   status = "Created"|"Queued"|"Dispatched"|"InProgress"|"TimedOut"|"Succeeded"|"Failed"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$acknowledge_job(
-#'   jobId = "string",
-#'   nonce = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -59,11 +41,9 @@ codepipeline_acknowledge_job <- function(jobId, nonce) {
 #' Confirms a job worker has received the specified job
 #'
 #' @description
-#' Confirms a job worker has received the specified job. Used for partner
-#' actions only.
+#' Confirms a job worker has received the specified job. Used for partner actions only.
 #'
-#' @usage
-#' codepipeline_acknowledge_third_party_job(jobId, nonce, clientToken)
+#' See [https://paws-r.github.io/docs/codepipeline/acknowledge_third_party_job.html](https://paws-r.github.io/docs/codepipeline/acknowledge_third_party_job.html) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job.
 #' @param nonce &#91;required&#93; A system-generated random number that AWS CodePipeline uses to ensure
@@ -74,23 +54,6 @@ codepipeline_acknowledge_job <- function(jobId, nonce) {
 #' @param clientToken &#91;required&#93; The clientToken portion of the clientId and clientToken pair used to
 #' verify that the calling entity is allowed access to the job and its
 #' details.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   status = "Created"|"Queued"|"Dispatched"|"InProgress"|"TimedOut"|"Succeeded"|"Failed"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$acknowledge_third_party_job(
-#'   jobId = "string",
-#'   nonce = "string",
-#'   clientToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -116,13 +79,9 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' with the AWS account
 #'
 #' @description
-#' Creates a new custom action that can be used in all pipelines associated
-#' with the AWS account. Only used for custom actions.
+#' Creates a new custom action that can be used in all pipelines associated with the AWS account. Only used for custom actions.
 #'
-#' @usage
-#' codepipeline_create_custom_action_type(category, provider, version,
-#'   settings, configurationProperties, inputArtifactDetails,
-#'   outputArtifactDetails, tags)
+#' See [https://paws-r.github.io/docs/codepipeline/create_custom_action_type.html](https://paws-r.github.io/docs/codepipeline/create_custom_action_type.html) for full documentation.
 #'
 #' @param category &#91;required&#93; The category of the custom action, such as a build action or a test
 #' action.
@@ -141,92 +100,6 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' @param inputArtifactDetails &#91;required&#93; The details of the input artifact for the action, such as its commit ID.
 #' @param outputArtifactDetails &#91;required&#93; The details of the output artifact of the action, such as its commit ID.
 #' @param tags The tags for the custom action.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   actionType = list(
-#'     id = list(
-#'       category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'       owner = "AWS"|"ThirdParty"|"Custom",
-#'       provider = "string",
-#'       version = "string"
-#'     ),
-#'     settings = list(
-#'       thirdPartyConfigurationUrl = "string",
-#'       entityUrlTemplate = "string",
-#'       executionUrlTemplate = "string",
-#'       revisionUrlTemplate = "string"
-#'     ),
-#'     actionConfigurationProperties = list(
-#'       list(
-#'         name = "string",
-#'         required = TRUE|FALSE,
-#'         key = TRUE|FALSE,
-#'         secret = TRUE|FALSE,
-#'         queryable = TRUE|FALSE,
-#'         description = "string",
-#'         type = "String"|"Number"|"Boolean"
-#'       )
-#'     ),
-#'     inputArtifactDetails = list(
-#'       minimumCount = 123,
-#'       maximumCount = 123
-#'     ),
-#'     outputArtifactDetails = list(
-#'       minimumCount = 123,
-#'       maximumCount = 123
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_custom_action_type(
-#'   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'   provider = "string",
-#'   version = "string",
-#'   settings = list(
-#'     thirdPartyConfigurationUrl = "string",
-#'     entityUrlTemplate = "string",
-#'     executionUrlTemplate = "string",
-#'     revisionUrlTemplate = "string"
-#'   ),
-#'   configurationProperties = list(
-#'     list(
-#'       name = "string",
-#'       required = TRUE|FALSE,
-#'       key = TRUE|FALSE,
-#'       secret = TRUE|FALSE,
-#'       queryable = TRUE|FALSE,
-#'       description = "string",
-#'       type = "String"|"Number"|"Boolean"
-#'     )
-#'   ),
-#'   inputArtifactDetails = list(
-#'     minimumCount = 123,
-#'     maximumCount = 123
-#'   ),
-#'   outputArtifactDetails = list(
-#'     minimumCount = 123,
-#'     maximumCount = 123
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -252,167 +125,12 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'
 #' @description
 #' Creates a pipeline.
-#' 
-#' In the pipeline structure, you must include either `artifactStore` or
-#' `artifactStores` in your pipeline, but you cannot use both. If you
-#' create a cross-region action in your pipeline, you must use
-#' `artifactStores`.
 #'
-#' @usage
-#' codepipeline_create_pipeline(pipeline, tags)
+#' See [https://paws-r.github.io/docs/codepipeline/create_pipeline.html](https://paws-r.github.io/docs/codepipeline/create_pipeline.html) for full documentation.
 #'
 #' @param pipeline &#91;required&#93; Represents the structure of actions and stages to be performed in the
 #' pipeline.
 #' @param tags The tags for the pipeline.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pipeline = list(
-#'     name = "string",
-#'     roleArn = "string",
-#'     artifactStore = list(
-#'       type = "S3",
-#'       location = "string",
-#'       encryptionKey = list(
-#'         id = "string",
-#'         type = "KMS"
-#'       )
-#'     ),
-#'     artifactStores = list(
-#'       list(
-#'         type = "S3",
-#'         location = "string",
-#'         encryptionKey = list(
-#'           id = "string",
-#'           type = "KMS"
-#'         )
-#'       )
-#'     ),
-#'     stages = list(
-#'       list(
-#'         name = "string",
-#'         blockers = list(
-#'           list(
-#'             name = "string",
-#'             type = "Schedule"
-#'           )
-#'         ),
-#'         actions = list(
-#'           list(
-#'             name = "string",
-#'             actionTypeId = list(
-#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'               owner = "AWS"|"ThirdParty"|"Custom",
-#'               provider = "string",
-#'               version = "string"
-#'             ),
-#'             runOrder = 123,
-#'             configuration = list(
-#'               "string"
-#'             ),
-#'             outputArtifacts = list(
-#'               list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             inputArtifacts = list(
-#'               list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             roleArn = "string",
-#'             region = "string",
-#'             namespace = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     version = 123
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_pipeline(
-#'   pipeline = list(
-#'     name = "string",
-#'     roleArn = "string",
-#'     artifactStore = list(
-#'       type = "S3",
-#'       location = "string",
-#'       encryptionKey = list(
-#'         id = "string",
-#'         type = "KMS"
-#'       )
-#'     ),
-#'     artifactStores = list(
-#'       list(
-#'         type = "S3",
-#'         location = "string",
-#'         encryptionKey = list(
-#'           id = "string",
-#'           type = "KMS"
-#'         )
-#'       )
-#'     ),
-#'     stages = list(
-#'       list(
-#'         name = "string",
-#'         blockers = list(
-#'           list(
-#'             name = "string",
-#'             type = "Schedule"
-#'           )
-#'         ),
-#'         actions = list(
-#'           list(
-#'             name = "string",
-#'             actionTypeId = list(
-#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'               owner = "AWS"|"ThirdParty"|"Custom",
-#'               provider = "string",
-#'               version = "string"
-#'             ),
-#'             runOrder = 123,
-#'             configuration = list(
-#'               "string"
-#'             ),
-#'             outputArtifacts = list(
-#'               list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             inputArtifacts = list(
-#'               list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             roleArn = "string",
-#'             region = "string",
-#'             namespace = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     version = 123
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -437,37 +155,15 @@ codepipeline_create_pipeline <- function(pipeline, tags = NULL) {
 #' Marks a custom action as deleted
 #'
 #' @description
-#' Marks a custom action as deleted.
-#' [`poll_for_jobs`][codepipeline_poll_for_jobs] for the custom action
-#' fails after the action is marked for deletion. Used for custom actions
-#' only.
-#' 
-#' To re-create a custom action after it has been deleted you must use a
-#' string in the version field that has never been used before. This string
-#' can be an incremented version number, for example. To restore a deleted
-#' custom action, use a JSON file that is identical to the deleted action,
-#' including the original string in the version field.
+#' Marks a custom action as deleted. [`poll_for_jobs`][codepipeline_poll_for_jobs] for the custom action fails after the action is marked for deletion. Used for custom actions only.
 #'
-#' @usage
-#' codepipeline_delete_custom_action_type(category, provider, version)
+#' See [https://paws-r.github.io/docs/codepipeline/delete_custom_action_type.html](https://paws-r.github.io/docs/codepipeline/delete_custom_action_type.html) for full documentation.
 #'
 #' @param category &#91;required&#93; The category of the custom action that you want to delete, such as
 #' source or deploy.
 #' @param provider &#91;required&#93; The provider of the service used in the custom action, such as AWS
 #' CodeDeploy.
 #' @param version &#91;required&#93; The version of the custom action to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_custom_action_type(
-#'   category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'   provider = "string",
-#'   version = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -494,20 +190,9 @@ codepipeline_delete_custom_action_type <- function(category, provider, version) 
 #' @description
 #' Deletes the specified pipeline.
 #'
-#' @usage
-#' codepipeline_delete_pipeline(name)
+#' See [https://paws-r.github.io/docs/codepipeline/delete_pipeline.html](https://paws-r.github.io/docs/codepipeline/delete_pipeline.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the pipeline to be deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_pipeline(
-#'   name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -532,26 +217,11 @@ codepipeline_delete_pipeline <- function(name) {
 #' Deletes a previously created webhook by name
 #'
 #' @description
-#' Deletes a previously created webhook by name. Deleting the webhook stops
-#' AWS CodePipeline from starting a pipeline every time an external event
-#' occurs. The API returns successfully when trying to delete a webhook
-#' that is already deleted. If a deleted webhook is re-created by calling
-#' PutWebhook with the same name, it will have a different URL.
+#' Deletes a previously created webhook by name. Deleting the webhook stops AWS CodePipeline from starting a pipeline every time an external event occurs. The API returns successfully when trying to delete a webhook that is already deleted. If a deleted webhook is re-created by calling PutWebhook with the same name, it will have a different URL.
 #'
-#' @usage
-#' codepipeline_delete_webhook(name)
+#' See [https://paws-r.github.io/docs/codepipeline/delete_webhook.html](https://paws-r.github.io/docs/codepipeline/delete_webhook.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the webhook you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_webhook(
-#'   name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -577,24 +247,11 @@ codepipeline_delete_webhook <- function(name) {
 #' CodePipeline and the external tool with events to be detected
 #'
 #' @description
-#' Removes the connection between the webhook that was created by
-#' CodePipeline and the external tool with events to be detected. Currently
-#' supported only for webhooks that target an action type of GitHub.
+#' Removes the connection between the webhook that was created by CodePipeline and the external tool with events to be detected. Currently supported only for webhooks that target an action type of GitHub.
 #'
-#' @usage
-#' codepipeline_deregister_webhook_with_third_party(webhookName)
+#' See [https://paws-r.github.io/docs/codepipeline/deregister_webhook_with_third_party.html](https://paws-r.github.io/docs/codepipeline/deregister_webhook_with_third_party.html) for full documentation.
 #'
 #' @param webhookName The name of the webhook you want to deregister.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_webhook_with_third_party(
-#'   webhookName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -620,12 +277,9 @@ codepipeline_deregister_webhook_with_third_party <- function(webhookName = NULL)
 #' the pipeline
 #'
 #' @description
-#' Prevents artifacts in a pipeline from transitioning to the next stage in
-#' the pipeline.
+#' Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline.
 #'
-#' @usage
-#' codepipeline_disable_stage_transition(pipelineName, stageName,
-#'   transitionType, reason)
+#' See [https://paws-r.github.io/docs/codepipeline/disable_stage_transition.html](https://paws-r.github.io/docs/codepipeline/disable_stage_transition.html) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline in which you want to disable the flow of
 #' artifacts from one stage to another.
@@ -638,19 +292,6 @@ codepipeline_deregister_webhook_with_third_party <- function(webhookName = NULL)
 #' @param reason &#91;required&#93; The reason given to the user that a stage is disabled, such as waiting
 #' for manual approval or manual tests. This message is displayed in the
 #' pipeline console UI.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disable_stage_transition(
-#'   pipelineName = "string",
-#'   stageName = "string",
-#'   transitionType = "Inbound"|"Outbound",
-#'   reason = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -677,9 +318,7 @@ codepipeline_disable_stage_transition <- function(pipelineName, stageName, trans
 #' @description
 #' Enables artifacts in a pipeline to transition to a stage in a pipeline.
 #'
-#' @usage
-#' codepipeline_enable_stage_transition(pipelineName, stageName,
-#'   transitionType)
+#' See [https://paws-r.github.io/docs/codepipeline/enable_stage_transition.html](https://paws-r.github.io/docs/codepipeline/enable_stage_transition.html) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline in which you want to enable the flow of
 #' artifacts from one stage to another.
@@ -690,18 +329,6 @@ codepipeline_disable_stage_transition <- function(pipelineName, stageName, trans
 #' processed by the actions in that stage (inbound) or whether already
 #' processed artifacts are allowed to transition to the next stage
 #' (outbound).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$enable_stage_transition(
-#'   pipelineName = "string",
-#'   stageName = "string",
-#'   transitionType = "Inbound"|"Outbound"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -723,99 +350,63 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 }
 .codepipeline$operations$enable_stage_transition <- codepipeline_enable_stage_transition
 
+#' Returns information about an action type created for an external
+#' provider, where the action is to be used by customers of the external
+#' provider
+#'
+#' @description
+#' Returns information about an action type created for an external provider, where the action is to be used by customers of the external provider. The action can be created with any supported integration model.
+#'
+#' See [https://paws-r.github.io/docs/codepipeline/get_action_type.html](https://paws-r.github.io/docs/codepipeline/get_action_type.html) for full documentation.
+#'
+#' @param category &#91;required&#93; Defines what kind of action can be taken in the stage. The following are
+#' the valid values:
+#' 
+#' -   `Source`
+#' 
+#' -   `Build`
+#' 
+#' -   `Test`
+#' 
+#' -   `Deploy`
+#' 
+#' -   `Approval`
+#' 
+#' -   `Invoke`
+#' @param owner &#91;required&#93; The creator of an action type that was created with any supported
+#' integration model. There are two valid values: `AWS` and `ThirdParty`.
+#' @param provider &#91;required&#93; The provider of the action type being called. The provider name is
+#' specified when the action type is created.
+#' @param version &#91;required&#93; A string that describes the action type version.
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_get_action_type
+codepipeline_get_action_type <- function(category, owner, provider, version) {
+  op <- new_operation(
+    name = "GetActionType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codepipeline$get_action_type_input(category = category, owner = owner, provider = provider, version = version)
+  output <- .codepipeline$get_action_type_output()
+  config <- get_config()
+  svc <- .codepipeline$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$get_action_type <- codepipeline_get_action_type
+
 #' Returns information about a job
 #'
 #' @description
 #' Returns information about a job. Used for custom actions only.
-#' 
-#' When this API is called, AWS CodePipeline returns temporary credentials
-#' for the S3 bucket used to store artifacts for the pipeline, if the
-#' action requires access to that S3 bucket for input or output artifacts.
-#' This API also returns any secret values defined for the action.
 #'
-#' @usage
-#' codepipeline_get_job_details(jobId)
+#' See [https://paws-r.github.io/docs/codepipeline/get_job_details.html](https://paws-r.github.io/docs/codepipeline/get_job_details.html) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID for the job.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   jobDetails = list(
-#'     id = "string",
-#'     data = list(
-#'       actionTypeId = list(
-#'         category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'         owner = "AWS"|"ThirdParty"|"Custom",
-#'         provider = "string",
-#'         version = "string"
-#'       ),
-#'       actionConfiguration = list(
-#'         configuration = list(
-#'           "string"
-#'         )
-#'       ),
-#'       pipelineContext = list(
-#'         pipelineName = "string",
-#'         stage = list(
-#'           name = "string"
-#'         ),
-#'         action = list(
-#'           name = "string",
-#'           actionExecutionId = "string"
-#'         ),
-#'         pipelineArn = "string",
-#'         pipelineExecutionId = "string"
-#'       ),
-#'       inputArtifacts = list(
-#'         list(
-#'           name = "string",
-#'           revision = "string",
-#'           location = list(
-#'             type = "S3",
-#'             s3Location = list(
-#'               bucketName = "string",
-#'               objectKey = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       outputArtifacts = list(
-#'         list(
-#'           name = "string",
-#'           revision = "string",
-#'           location = list(
-#'             type = "S3",
-#'             s3Location = list(
-#'               bucketName = "string",
-#'               objectKey = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       artifactCredentials = list(
-#'         accessKeyId = "string",
-#'         secretAccessKey = "string",
-#'         sessionToken = "string"
-#'       ),
-#'       continuationToken = "string",
-#'       encryptionKey = list(
-#'         id = "string",
-#'         type = "KMS"
-#'       )
-#'     ),
-#'     accountId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_job_details(
-#'   jobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -840,104 +431,14 @@ codepipeline_get_job_details <- function(jobId) {
 #' Returns the metadata, structure, stages, and actions of a pipeline
 #'
 #' @description
-#' Returns the metadata, structure, stages, and actions of a pipeline. Can
-#' be used to return the entire structure of a pipeline in JSON format,
-#' which can then be modified and used to update the pipeline structure
-#' with [`update_pipeline`][codepipeline_update_pipeline].
+#' Returns the metadata, structure, stages, and actions of a pipeline. Can be used to return the entire structure of a pipeline in JSON format, which can then be modified and used to update the pipeline structure with [`update_pipeline`][codepipeline_update_pipeline].
 #'
-#' @usage
-#' codepipeline_get_pipeline(name, version)
+#' See [https://paws-r.github.io/docs/codepipeline/get_pipeline.html](https://paws-r.github.io/docs/codepipeline/get_pipeline.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the pipeline for which you want to get information. Pipeline
 #' names must be unique under an AWS user account.
 #' @param version The version number of the pipeline. If you do not specify a version,
 #' defaults to the current version.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pipeline = list(
-#'     name = "string",
-#'     roleArn = "string",
-#'     artifactStore = list(
-#'       type = "S3",
-#'       location = "string",
-#'       encryptionKey = list(
-#'         id = "string",
-#'         type = "KMS"
-#'       )
-#'     ),
-#'     artifactStores = list(
-#'       list(
-#'         type = "S3",
-#'         location = "string",
-#'         encryptionKey = list(
-#'           id = "string",
-#'           type = "KMS"
-#'         )
-#'       )
-#'     ),
-#'     stages = list(
-#'       list(
-#'         name = "string",
-#'         blockers = list(
-#'           list(
-#'             name = "string",
-#'             type = "Schedule"
-#'           )
-#'         ),
-#'         actions = list(
-#'           list(
-#'             name = "string",
-#'             actionTypeId = list(
-#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'               owner = "AWS"|"ThirdParty"|"Custom",
-#'               provider = "string",
-#'               version = "string"
-#'             ),
-#'             runOrder = 123,
-#'             configuration = list(
-#'               "string"
-#'             ),
-#'             outputArtifacts = list(
-#'               list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             inputArtifacts = list(
-#'               list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             roleArn = "string",
-#'             region = "string",
-#'             namespace = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     version = 123
-#'   ),
-#'   metadata = list(
-#'     pipelineArn = "string",
-#'     created = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     updated = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_pipeline(
-#'   name = "string",
-#'   version = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -964,50 +465,13 @@ codepipeline_get_pipeline <- function(name, version = NULL) {
 #' status of the pipeline
 #'
 #' @description
-#' Returns information about an execution of a pipeline, including details
-#' about artifacts, the pipeline execution ID, and the name, version, and
-#' status of the pipeline.
+#' Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline.
 #'
-#' @usage
-#' codepipeline_get_pipeline_execution(pipelineName, pipelineExecutionId)
+#' See [https://paws-r.github.io/docs/codepipeline/get_pipeline_execution.html](https://paws-r.github.io/docs/codepipeline/get_pipeline_execution.html) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline about which you want to get execution details.
 #' @param pipelineExecutionId &#91;required&#93; The ID of the pipeline execution about which you want to get execution
 #' details.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pipelineExecution = list(
-#'     pipelineName = "string",
-#'     pipelineVersion = 123,
-#'     pipelineExecutionId = "string",
-#'     status = "Cancelled"|"InProgress"|"Stopped"|"Stopping"|"Succeeded"|"Superseded"|"Failed",
-#'     statusSummary = "string",
-#'     artifactRevisions = list(
-#'       list(
-#'         name = "string",
-#'         revisionId = "string",
-#'         revisionChangeIdentifier = "string",
-#'         revisionSummary = "string",
-#'         created = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         revisionUrl = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_pipeline_execution(
-#'   pipelineName = "string",
-#'   pipelineExecutionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1033,91 +497,11 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #' and actions
 #'
 #' @description
-#' Returns information about the state of a pipeline, including the stages
-#' and actions.
-#' 
-#' Values returned in the `revisionId` and `revisionUrl` fields indicate
-#' the source revision information, such as the commit ID, for the current
-#' state.
+#' Returns information about the state of a pipeline, including the stages and actions.
 #'
-#' @usage
-#' codepipeline_get_pipeline_state(name)
+#' See [https://paws-r.github.io/docs/codepipeline/get_pipeline_state.html](https://paws-r.github.io/docs/codepipeline/get_pipeline_state.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the pipeline about which you want to get information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pipelineName = "string",
-#'   pipelineVersion = 123,
-#'   stageStates = list(
-#'     list(
-#'       stageName = "string",
-#'       inboundExecution = list(
-#'         pipelineExecutionId = "string",
-#'         status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded"
-#'       ),
-#'       inboundTransitionState = list(
-#'         enabled = TRUE|FALSE,
-#'         lastChangedBy = "string",
-#'         lastChangedAt = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         disabledReason = "string"
-#'       ),
-#'       actionStates = list(
-#'         list(
-#'           actionName = "string",
-#'           currentRevision = list(
-#'             revisionId = "string",
-#'             revisionChangeId = "string",
-#'             created = as.POSIXct(
-#'               "2015-01-01"
-#'             )
-#'           ),
-#'           latestExecution = list(
-#'             actionExecutionId = "string",
-#'             status = "InProgress"|"Abandoned"|"Succeeded"|"Failed",
-#'             summary = "string",
-#'             lastStatusChange = as.POSIXct(
-#'               "2015-01-01"
-#'             ),
-#'             token = "string",
-#'             lastUpdatedBy = "string",
-#'             externalExecutionId = "string",
-#'             externalExecutionUrl = "string",
-#'             percentComplete = 123,
-#'             errorDetails = list(
-#'               code = "string",
-#'               message = "string"
-#'             )
-#'           ),
-#'           entityUrl = "string",
-#'           revisionUrl = "string"
-#'         )
-#'       ),
-#'       latestExecution = list(
-#'         pipelineExecutionId = "string",
-#'         status = "Cancelled"|"InProgress"|"Failed"|"Stopped"|"Stopping"|"Succeeded"
-#'       )
-#'     )
-#'   ),
-#'   created = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   updated = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_pipeline_state(
-#'   name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1142,101 +526,14 @@ codepipeline_get_pipeline_state <- function(name) {
 #' Requests the details of a job for a third party action
 #'
 #' @description
-#' Requests the details of a job for a third party action. Used for partner
-#' actions only.
-#' 
-#' When this API is called, AWS CodePipeline returns temporary credentials
-#' for the S3 bucket used to store artifacts for the pipeline, if the
-#' action requires access to that S3 bucket for input or output artifacts.
-#' This API also returns any secret values defined for the action.
+#' Requests the details of a job for a third party action. Used for partner actions only.
 #'
-#' @usage
-#' codepipeline_get_third_party_job_details(jobId, clientToken)
+#' See [https://paws-r.github.io/docs/codepipeline/get_third_party_job_details.html](https://paws-r.github.io/docs/codepipeline/get_third_party_job_details.html) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID used for identifying the job.
 #' @param clientToken &#91;required&#93; The clientToken portion of the clientId and clientToken pair used to
 #' verify that the calling entity is allowed access to the job and its
 #' details.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   jobDetails = list(
-#'     id = "string",
-#'     data = list(
-#'       actionTypeId = list(
-#'         category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'         owner = "AWS"|"ThirdParty"|"Custom",
-#'         provider = "string",
-#'         version = "string"
-#'       ),
-#'       actionConfiguration = list(
-#'         configuration = list(
-#'           "string"
-#'         )
-#'       ),
-#'       pipelineContext = list(
-#'         pipelineName = "string",
-#'         stage = list(
-#'           name = "string"
-#'         ),
-#'         action = list(
-#'           name = "string",
-#'           actionExecutionId = "string"
-#'         ),
-#'         pipelineArn = "string",
-#'         pipelineExecutionId = "string"
-#'       ),
-#'       inputArtifacts = list(
-#'         list(
-#'           name = "string",
-#'           revision = "string",
-#'           location = list(
-#'             type = "S3",
-#'             s3Location = list(
-#'               bucketName = "string",
-#'               objectKey = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       outputArtifacts = list(
-#'         list(
-#'           name = "string",
-#'           revision = "string",
-#'           location = list(
-#'             type = "S3",
-#'             s3Location = list(
-#'               bucketName = "string",
-#'               objectKey = "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       artifactCredentials = list(
-#'         accessKeyId = "string",
-#'         secretAccessKey = "string",
-#'         sessionToken = "string"
-#'       ),
-#'       continuationToken = "string",
-#'       encryptionKey = list(
-#'         id = "string",
-#'         type = "KMS"
-#'       )
-#'     ),
-#'     nonce = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_third_party_job_details(
-#'   jobId = "string",
-#'   clientToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1263,9 +560,7 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 #' @description
 #' Lists the action executions that have occurred in a pipeline.
 #'
-#' @usage
-#' codepipeline_list_action_executions(pipelineName, filter, maxResults,
-#'   nextToken)
+#' See [https://paws-r.github.io/docs/codepipeline/list_action_executions.html](https://paws-r.github.io/docs/codepipeline/list_action_executions.html) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline for which you want to list action execution
 #' history.
@@ -1281,87 +576,6 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 #' [`list_action_executions`][codepipeline_list_action_executions] call,
 #' which can be used to return the next set of action executions in the
 #' list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   actionExecutionDetails = list(
-#'     list(
-#'       pipelineExecutionId = "string",
-#'       actionExecutionId = "string",
-#'       pipelineVersion = 123,
-#'       stageName = "string",
-#'       actionName = "string",
-#'       startTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       status = "InProgress"|"Abandoned"|"Succeeded"|"Failed",
-#'       input = list(
-#'         actionTypeId = list(
-#'           category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'           owner = "AWS"|"ThirdParty"|"Custom",
-#'           provider = "string",
-#'           version = "string"
-#'         ),
-#'         configuration = list(
-#'           "string"
-#'         ),
-#'         resolvedConfiguration = list(
-#'           "string"
-#'         ),
-#'         roleArn = "string",
-#'         region = "string",
-#'         inputArtifacts = list(
-#'           list(
-#'             name = "string",
-#'             s3location = list(
-#'               bucket = "string",
-#'               key = "string"
-#'             )
-#'           )
-#'         ),
-#'         namespace = "string"
-#'       ),
-#'       output = list(
-#'         outputArtifacts = list(
-#'           list(
-#'             name = "string",
-#'             s3location = list(
-#'               bucket = "string",
-#'               key = "string"
-#'             )
-#'           )
-#'         ),
-#'         executionResult = list(
-#'           externalExecutionId = "string",
-#'           externalExecutionSummary = "string",
-#'           externalExecutionUrl = "string"
-#'         ),
-#'         outputVariables = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_action_executions(
-#'   pipelineName = "string",
-#'   filter = list(
-#'     pipelineExecutionId = "string"
-#'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1387,79 +601,27 @@ codepipeline_list_action_executions <- function(pipelineName, filter = NULL, max
 #' account
 #'
 #' @description
-#' Gets a summary of all AWS CodePipeline action types associated with your
-#' account.
+#' Gets a summary of all AWS CodePipeline action types associated with your account.
 #'
-#' @usage
-#' codepipeline_list_action_types(actionOwnerFilter, nextToken)
+#' See [https://paws-r.github.io/docs/codepipeline/list_action_types.html](https://paws-r.github.io/docs/codepipeline/list_action_types.html) for full documentation.
 #'
 #' @param actionOwnerFilter Filters the list of action types to those created by a specified entity.
 #' @param nextToken An identifier that was returned from the previous list action types
 #' call, which can be used to return the next set of action types in the
 #' list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   actionTypes = list(
-#'     list(
-#'       id = list(
-#'         category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'         owner = "AWS"|"ThirdParty"|"Custom",
-#'         provider = "string",
-#'         version = "string"
-#'       ),
-#'       settings = list(
-#'         thirdPartyConfigurationUrl = "string",
-#'         entityUrlTemplate = "string",
-#'         executionUrlTemplate = "string",
-#'         revisionUrlTemplate = "string"
-#'       ),
-#'       actionConfigurationProperties = list(
-#'         list(
-#'           name = "string",
-#'           required = TRUE|FALSE,
-#'           key = TRUE|FALSE,
-#'           secret = TRUE|FALSE,
-#'           queryable = TRUE|FALSE,
-#'           description = "string",
-#'           type = "String"|"Number"|"Boolean"
-#'         )
-#'       ),
-#'       inputArtifactDetails = list(
-#'         minimumCount = 123,
-#'         maximumCount = 123
-#'       ),
-#'       outputArtifactDetails = list(
-#'         minimumCount = 123,
-#'         maximumCount = 123
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_action_types(
-#'   actionOwnerFilter = "AWS"|"ThirdParty"|"Custom",
-#'   nextToken = "string"
-#' )
-#' ```
+#' @param regionFilter The Region to filter on for the list of action types.
 #'
 #' @keywords internal
 #'
 #' @rdname codepipeline_list_action_types
-codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken = NULL) {
+codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken = NULL, regionFilter = NULL) {
   op <- new_operation(
     name = "ListActionTypes",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codepipeline$list_action_types_input(actionOwnerFilter = actionOwnerFilter, nextToken = nextToken)
+  input <- .codepipeline$list_action_types_input(actionOwnerFilter = actionOwnerFilter, nextToken = nextToken, regionFilter = regionFilter)
   output <- .codepipeline$list_action_types_output()
   config <- get_config()
   svc <- .codepipeline$service(config)
@@ -1474,9 +636,7 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #' @description
 #' Gets a summary of the most recent executions for a pipeline.
 #'
-#' @usage
-#' codepipeline_list_pipeline_executions(pipelineName, maxResults,
-#'   nextToken)
+#' See [https://paws-r.github.io/docs/codepipeline/list_pipeline_executions.html](https://paws-r.github.io/docs/codepipeline/list_pipeline_executions.html) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline for which you want to get execution summary
 #' information.
@@ -1488,50 +648,6 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #' [`list_pipeline_executions`][codepipeline_list_pipeline_executions]
 #' call, which can be used to return the next set of pipeline executions in
 #' the list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pipelineExecutionSummaries = list(
-#'     list(
-#'       pipelineExecutionId = "string",
-#'       status = "Cancelled"|"InProgress"|"Stopped"|"Stopping"|"Succeeded"|"Superseded"|"Failed",
-#'       startTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastUpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       sourceRevisions = list(
-#'         list(
-#'           actionName = "string",
-#'           revisionId = "string",
-#'           revisionSummary = "string",
-#'           revisionUrl = "string"
-#'         )
-#'       ),
-#'       trigger = list(
-#'         triggerType = "CreatePipeline"|"StartPipelineExecution"|"PollForSourceChanges"|"Webhook"|"CloudWatchEvent"|"PutActionRevision",
-#'         triggerDetail = "string"
-#'       ),
-#'       stopTrigger = list(
-#'         reason = "string"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_pipeline_executions(
-#'   pipelineName = "string",
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1558,50 +674,26 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
 #' @description
 #' Gets a summary of all of the pipelines associated with your account.
 #'
-#' @usage
-#' codepipeline_list_pipelines(nextToken)
+#' See [https://paws-r.github.io/docs/codepipeline/list_pipelines.html](https://paws-r.github.io/docs/codepipeline/list_pipelines.html) for full documentation.
 #'
 #' @param nextToken An identifier that was returned from the previous list pipelines call.
 #' It can be used to return the next set of pipelines in the list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pipelines = list(
-#'     list(
-#'       name = "string",
-#'       version = 123,
-#'       created = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       updated = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_pipelines(
-#'   nextToken = "string"
-#' )
-#' ```
+#' @param maxResults The maximum number of pipelines to return in a single call. To retrieve
+#' the remaining pipelines, make another call with the returned nextToken
+#' value. The minimum value you can specify is 1. The maximum accepted
+#' value is 1000.
 #'
 #' @keywords internal
 #'
 #' @rdname codepipeline_list_pipelines
-codepipeline_list_pipelines <- function(nextToken = NULL) {
+codepipeline_list_pipelines <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListPipelines",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codepipeline$list_pipelines_input(nextToken = nextToken)
+  input <- .codepipeline$list_pipelines_input(nextToken = nextToken, maxResults = maxResults)
   output <- .codepipeline$list_pipelines_output()
   config <- get_config()
   svc <- .codepipeline$service(config)
@@ -1615,40 +707,15 @@ codepipeline_list_pipelines <- function(nextToken = NULL) {
 #' resource
 #'
 #' @description
-#' Gets the set of key-value pairs (metadata) that are used to manage the
-#' resource.
+#' Gets the set of key-value pairs (metadata) that are used to manage the resource.
 #'
-#' @usage
-#' codepipeline_list_tags_for_resource(resourceArn, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codepipeline/list_tags_for_resource.html](https://paws-r.github.io/docs/codepipeline/list_tags_for_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get tags for.
 #' @param nextToken The token that was returned from the previous API call, which would be
 #' used to return the next page of the list. The ListTagsforResource call
 #' lists all available tags in one call and does not use pagination.
 #' @param maxResults The maximum number of results to return in a single call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   resourceArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1673,67 +740,15 @@ codepipeline_list_tags_for_resource <- function(resourceArn, nextToken = NULL, m
 #' Gets a listing of all the webhooks in this AWS Region for this account
 #'
 #' @description
-#' Gets a listing of all the webhooks in this AWS Region for this account.
-#' The output lists all webhooks and includes the webhook URL and ARN and
-#' the configuration for each webhook.
+#' Gets a listing of all the webhooks in this AWS Region for this account. The output lists all webhooks and includes the webhook URL and ARN and the configuration for each webhook.
 #'
-#' @usage
-#' codepipeline_list_webhooks(NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/codepipeline/list_webhooks.html](https://paws-r.github.io/docs/codepipeline/list_webhooks.html) for full documentation.
 #'
 #' @param NextToken The token that was returned from the previous ListWebhooks call, which
 #' can be used to return the next set of webhooks in the list.
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned nextToken
 #' value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   webhooks = list(
-#'     list(
-#'       definition = list(
-#'         name = "string",
-#'         targetPipeline = "string",
-#'         targetAction = "string",
-#'         filters = list(
-#'           list(
-#'             jsonPath = "string",
-#'             matchEquals = "string"
-#'           )
-#'         ),
-#'         authentication = "GITHUB_HMAC"|"IP"|"UNAUTHENTICATED",
-#'         authenticationConfiguration = list(
-#'           AllowedIPRange = "string",
-#'           SecretToken = "string"
-#'         )
-#'       ),
-#'       url = "string",
-#'       errorMessage = "string",
-#'       errorCode = "string",
-#'       lastTriggered = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       arn = "string",
-#'       tags = list(
-#'         list(
-#'           key = "string",
-#'           value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_webhooks(
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1758,19 +773,9 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 #' Returns information about any jobs for AWS CodePipeline to act on
 #'
 #' @description
-#' Returns information about any jobs for AWS CodePipeline to act on.
-#' [`poll_for_jobs`][codepipeline_poll_for_jobs] is valid only for action
-#' types with "Custom" in the owner field. If the action type contains
-#' "AWS" or "ThirdParty" in the owner field, the
-#' [`poll_for_jobs`][codepipeline_poll_for_jobs] action returns an error.
-#' 
-#' When this API is called, AWS CodePipeline returns temporary credentials
-#' for the S3 bucket used to store artifacts for the pipeline, if the
-#' action requires access to that S3 bucket for input or output artifacts.
-#' This API also returns any secret values defined for the action.
+#' Returns information about any jobs for AWS CodePipeline to act on. [`poll_for_jobs`][codepipeline_poll_for_jobs] is valid only for action types with "Custom" in the owner field. If the action type contains "AWS" or "ThirdParty" in the owner field, the [`poll_for_jobs`][codepipeline_poll_for_jobs] action returns an error.
 #'
-#' @usage
-#' codepipeline_poll_for_jobs(actionTypeId, maxBatchSize, queryParam)
+#' See [https://paws-r.github.io/docs/codepipeline/poll_for_jobs.html](https://paws-r.github.io/docs/codepipeline/poll_for_jobs.html) for full documentation.
 #'
 #' @param actionTypeId &#91;required&#93; Represents information about an action type.
 #' @param maxBatchSize The maximum number of jobs to return in a poll for jobs call.
@@ -1779,97 +784,6 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 #' with a queryable property, you must supply that property as a key in the
 #' map. Only jobs whose action configuration matches the mapped value are
 #' returned.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   jobs = list(
-#'     list(
-#'       id = "string",
-#'       data = list(
-#'         actionTypeId = list(
-#'           category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'           owner = "AWS"|"ThirdParty"|"Custom",
-#'           provider = "string",
-#'           version = "string"
-#'         ),
-#'         actionConfiguration = list(
-#'           configuration = list(
-#'             "string"
-#'           )
-#'         ),
-#'         pipelineContext = list(
-#'           pipelineName = "string",
-#'           stage = list(
-#'             name = "string"
-#'           ),
-#'           action = list(
-#'             name = "string",
-#'             actionExecutionId = "string"
-#'           ),
-#'           pipelineArn = "string",
-#'           pipelineExecutionId = "string"
-#'         ),
-#'         inputArtifacts = list(
-#'           list(
-#'             name = "string",
-#'             revision = "string",
-#'             location = list(
-#'               type = "S3",
-#'               s3Location = list(
-#'                 bucketName = "string",
-#'                 objectKey = "string"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         outputArtifacts = list(
-#'           list(
-#'             name = "string",
-#'             revision = "string",
-#'             location = list(
-#'               type = "S3",
-#'               s3Location = list(
-#'                 bucketName = "string",
-#'                 objectKey = "string"
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         artifactCredentials = list(
-#'           accessKeyId = "string",
-#'           secretAccessKey = "string",
-#'           sessionToken = "string"
-#'         ),
-#'         continuationToken = "string",
-#'         encryptionKey = list(
-#'           id = "string",
-#'           type = "KMS"
-#'         )
-#'       ),
-#'       nonce = "string",
-#'       accountId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$poll_for_jobs(
-#'   actionTypeId = list(
-#'     category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'     owner = "AWS"|"ThirdParty"|"Custom",
-#'     provider = "string",
-#'     version = "string"
-#'   ),
-#'   maxBatchSize = 123,
-#'   queryParam = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1895,44 +809,12 @@ codepipeline_poll_for_jobs <- function(actionTypeId, maxBatchSize = NULL, queryP
 #' act on
 #'
 #' @description
-#' Determines whether there are any third party jobs for a job worker to
-#' act on. Used for partner actions only.
-#' 
-#' When this API is called, AWS CodePipeline returns temporary credentials
-#' for the S3 bucket used to store artifacts for the pipeline, if the
-#' action requires access to that S3 bucket for input or output artifacts.
+#' Determines whether there are any third party jobs for a job worker to act on. Used for partner actions only.
 #'
-#' @usage
-#' codepipeline_poll_for_third_party_jobs(actionTypeId, maxBatchSize)
+#' See [https://paws-r.github.io/docs/codepipeline/poll_for_third_party_jobs.html](https://paws-r.github.io/docs/codepipeline/poll_for_third_party_jobs.html) for full documentation.
 #'
 #' @param actionTypeId &#91;required&#93; Represents information about an action type.
 #' @param maxBatchSize The maximum number of jobs to return in a poll for jobs call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   jobs = list(
-#'     list(
-#'       clientId = "string",
-#'       jobId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$poll_for_third_party_jobs(
-#'   actionTypeId = list(
-#'     category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'     owner = "AWS"|"ThirdParty"|"Custom",
-#'     provider = "string",
-#'     version = "string"
-#'   ),
-#'   maxBatchSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1957,12 +839,9 @@ codepipeline_poll_for_third_party_jobs <- function(actionTypeId, maxBatchSize = 
 #' Provides information to AWS CodePipeline about new revisions to a source
 #'
 #' @description
-#' Provides information to AWS CodePipeline about new revisions to a
-#' source.
+#' Provides information to AWS CodePipeline about new revisions to a source.
 #'
-#' @usage
-#' codepipeline_put_action_revision(pipelineName, stageName, actionName,
-#'   actionRevision)
+#' See [https://paws-r.github.io/docs/codepipeline/put_action_revision.html](https://paws-r.github.io/docs/codepipeline/put_action_revision.html) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline that starts processing the revision to the
 #' source.
@@ -1970,31 +849,6 @@ codepipeline_poll_for_third_party_jobs <- function(actionTypeId, maxBatchSize = 
 #' revision.
 #' @param actionName &#91;required&#93; The name of the action that processes the revision.
 #' @param actionRevision &#91;required&#93; Represents information about the version (or revision) of an action.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   newRevision = TRUE|FALSE,
-#'   pipelineExecutionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_action_revision(
-#'   pipelineName = "string",
-#'   stageName = "string",
-#'   actionName = "string",
-#'   actionRevision = list(
-#'     revisionId = "string",
-#'     revisionChangeId = "string",
-#'     created = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2019,12 +873,9 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
 #' Provides the response to a manual approval request to AWS CodePipeline
 #'
 #' @description
-#' Provides the response to a manual approval request to AWS CodePipeline.
-#' Valid responses include Approved and Rejected.
+#' Provides the response to a manual approval request to AWS CodePipeline. Valid responses include Approved and Rejected.
 #'
-#' @usage
-#' codepipeline_put_approval_result(pipelineName, stageName, actionName,
-#'   result, token)
+#' See [https://paws-r.github.io/docs/codepipeline/put_approval_result.html](https://paws-r.github.io/docs/codepipeline/put_approval_result.html) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline that contains the action.
 #' @param stageName &#91;required&#93; The name of the stage that contains the action.
@@ -2035,30 +886,6 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
 #' [`get_pipeline_state`][codepipeline_get_pipeline_state] action. It is
 #' used to validate that the approval request corresponding to this token
 #' is still valid.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   approvedAt = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_approval_result(
-#'   pipelineName = "string",
-#'   stageName = "string",
-#'   actionName = "string",
-#'   result = list(
-#'     summary = "string",
-#'     status = "Approved"|"Rejected"
-#'   ),
-#'   token = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2084,30 +911,13 @@ codepipeline_put_approval_result <- function(pipelineName, stageName, actionName
 #' worker
 #'
 #' @description
-#' Represents the failure of a job as returned to the pipeline by a job
-#' worker. Used for custom actions only.
+#' Represents the failure of a job as returned to the pipeline by a job worker. Used for custom actions only.
 #'
-#' @usage
-#' codepipeline_put_job_failure_result(jobId, failureDetails)
+#' See [https://paws-r.github.io/docs/codepipeline/put_job_failure_result.html](https://paws-r.github.io/docs/codepipeline/put_job_failure_result.html) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job that failed. This is the same
 #' ID returned from [`poll_for_jobs`][codepipeline_poll_for_jobs].
 #' @param failureDetails &#91;required&#93; The details about the failure of a job.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_job_failure_result(
-#'   jobId = "string",
-#'   failureDetails = list(
-#'     type = "JobFailed"|"ConfigurationError"|"PermissionError"|"RevisionOutOfSync"|"RevisionUnavailable"|"SystemUnavailable",
-#'     message = "string",
-#'     externalExecutionId = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2133,12 +943,9 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
 #' worker
 #'
 #' @description
-#' Represents the success of a job as returned to the pipeline by a job
-#' worker. Used for custom actions only.
+#' Represents the success of a job as returned to the pipeline by a job worker. Used for custom actions only.
 #'
-#' @usage
-#' codepipeline_put_job_success_result(jobId, currentRevision,
-#'   continuationToken, executionDetails, outputVariables)
+#' See [https://paws-r.github.io/docs/codepipeline/put_job_success_result.html](https://paws-r.github.io/docs/codepipeline/put_job_success_result.html) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The unique system-generated ID of the job that succeeded. This is the
 #' same ID returned from [`poll_for_jobs`][codepipeline_poll_for_jobs].
@@ -2155,33 +962,6 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
 #' @param outputVariables Key-value pairs produced as output by a job worker that can be made
 #' available to a downstream action configuration. `outputVariables` can be
 #' included only when there is no continuation token on the request.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_job_success_result(
-#'   jobId = "string",
-#'   currentRevision = list(
-#'     revision = "string",
-#'     changeIdentifier = "string",
-#'     created = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     revisionSummary = "string"
-#'   ),
-#'   continuationToken = "string",
-#'   executionDetails = list(
-#'     summary = "string",
-#'     externalExecutionId = "string",
-#'     percentComplete = 123
-#'   ),
-#'   outputVariables = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2207,12 +987,9 @@ codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, c
 #' by a job worker
 #'
 #' @description
-#' Represents the failure of a third party job as returned to the pipeline
-#' by a job worker. Used for partner actions only.
+#' Represents the failure of a third party job as returned to the pipeline by a job worker. Used for partner actions only.
 #'
-#' @usage
-#' codepipeline_put_third_party_job_failure_result(jobId, clientToken,
-#'   failureDetails)
+#' See [https://paws-r.github.io/docs/codepipeline/put_third_party_job_failure_result.html](https://paws-r.github.io/docs/codepipeline/put_third_party_job_failure_result.html) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The ID of the job that failed. This is the same ID returned from
 #' [`poll_for_third_party_jobs`][codepipeline_poll_for_third_party_jobs].
@@ -2220,22 +997,6 @@ codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, c
 #' verify that the calling entity is allowed access to the job and its
 #' details.
 #' @param failureDetails &#91;required&#93; Represents information about failure details.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_third_party_job_failure_result(
-#'   jobId = "string",
-#'   clientToken = "string",
-#'   failureDetails = list(
-#'     type = "JobFailed"|"ConfigurationError"|"PermissionError"|"RevisionOutOfSync"|"RevisionUnavailable"|"SystemUnavailable",
-#'     message = "string",
-#'     externalExecutionId = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2261,12 +1022,9 @@ codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, 
 #' by a job worker
 #'
 #' @description
-#' Represents the success of a third party job as returned to the pipeline
-#' by a job worker. Used for partner actions only.
+#' Represents the success of a third party job as returned to the pipeline by a job worker. Used for partner actions only.
 #'
-#' @usage
-#' codepipeline_put_third_party_job_success_result(jobId, clientToken,
-#'   currentRevision, continuationToken, executionDetails)
+#' See [https://paws-r.github.io/docs/codepipeline/put_third_party_job_success_result.html](https://paws-r.github.io/docs/codepipeline/put_third_party_job_success_result.html) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The ID of the job that successfully completed. This is the same ID
 #' returned from
@@ -2283,31 +1041,6 @@ codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, 
 #' continuation token should be supplied.
 #' @param executionDetails The details of the actions taken and results produced on an artifact as
 #' it passes through stages in the pipeline.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_third_party_job_success_result(
-#'   jobId = "string",
-#'   clientToken = "string",
-#'   currentRevision = list(
-#'     revision = "string",
-#'     changeIdentifier = "string",
-#'     created = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     revisionSummary = "string"
-#'   ),
-#'   continuationToken = "string",
-#'   executionDetails = list(
-#'     summary = "string",
-#'     externalExecutionId = "string",
-#'     percentComplete = 123
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2333,18 +1066,9 @@ codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, 
 #' CodePipeline
 #'
 #' @description
-#' Defines a webhook and returns a unique webhook URL generated by
-#' CodePipeline. This URL can be supplied to third party source hosting
-#' providers to call every time there's a code change. When CodePipeline
-#' receives a POST request on this URL, the pipeline defined in the webhook
-#' is started as long as the POST request satisfied the authentication and
-#' filtering requirements supplied when defining the webhook.
-#' RegisterWebhookWithThirdParty and DeregisterWebhookWithThirdParty APIs
-#' can be used to automatically configure supported third parties to call
-#' the generated webhook URL.
+#' Defines a webhook and returns a unique webhook URL generated by CodePipeline. This URL can be supplied to third party source hosting providers to call every time there's a code change. When CodePipeline receives a POST request on this URL, the pipeline defined in the webhook is started as long as the POST request satisfied the authentication and filtering requirements supplied when defining the webhook. RegisterWebhookWithThirdParty and DeregisterWebhookWithThirdParty APIs can be used to automatically configure supported third parties to call the generated webhook URL.
 #'
-#' @usage
-#' codepipeline_put_webhook(webhook, tags)
+#' See [https://paws-r.github.io/docs/codepipeline/put_webhook.html](https://paws-r.github.io/docs/codepipeline/put_webhook.html) for full documentation.
 #'
 #' @param webhook &#91;required&#93; The detail provided in an input file to create the webhook, such as the
 #' webhook name, the pipeline name, and the action name. Give the webhook a
@@ -2352,72 +1076,6 @@ codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, 
 #' the pipeline and action it targets so that you can easily recognize what
 #' it's used for later.
 #' @param tags The tags for the webhook.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   webhook = list(
-#'     definition = list(
-#'       name = "string",
-#'       targetPipeline = "string",
-#'       targetAction = "string",
-#'       filters = list(
-#'         list(
-#'           jsonPath = "string",
-#'           matchEquals = "string"
-#'         )
-#'       ),
-#'       authentication = "GITHUB_HMAC"|"IP"|"UNAUTHENTICATED",
-#'       authenticationConfiguration = list(
-#'         AllowedIPRange = "string",
-#'         SecretToken = "string"
-#'       )
-#'     ),
-#'     url = "string",
-#'     errorMessage = "string",
-#'     errorCode = "string",
-#'     lastTriggered = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     arn = "string",
-#'     tags = list(
-#'       list(
-#'         key = "string",
-#'         value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_webhook(
-#'   webhook = list(
-#'     name = "string",
-#'     targetPipeline = "string",
-#'     targetAction = "string",
-#'     filters = list(
-#'       list(
-#'         jsonPath = "string",
-#'         matchEquals = "string"
-#'       )
-#'     ),
-#'     authentication = "GITHUB_HMAC"|"IP"|"UNAUTHENTICATED",
-#'     authenticationConfiguration = list(
-#'       AllowedIPRange = "string",
-#'       SecretToken = "string"
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2443,24 +1101,12 @@ codepipeline_put_webhook <- function(webhook, tags = NULL) {
 #' external tool with events to be detected
 #'
 #' @description
-#' Configures a connection between the webhook that was created and the
-#' external tool with events to be detected.
+#' Configures a connection between the webhook that was created and the external tool with events to be detected.
 #'
-#' @usage
-#' codepipeline_register_webhook_with_third_party(webhookName)
+#' See [https://paws-r.github.io/docs/codepipeline/register_webhook_with_third_party.html](https://paws-r.github.io/docs/codepipeline/register_webhook_with_third_party.html) for full documentation.
 #'
 #' @param webhookName The name of an existing webhook created with PutWebhook to register with
 #' a supported third party.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_webhook_with_third_party(
-#'   webhookName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2486,14 +1132,9 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 #' stage
 #'
 #' @description
-#' Resumes the pipeline execution by retrying the last failed actions in a
-#' stage. You can retry a stage immediately if any of the actions in the
-#' stage fail. When you retry, all actions that are still in progress
-#' continue working, and failed actions are triggered again.
+#' Resumes the pipeline execution by retrying the last failed actions in a stage. You can retry a stage immediately if any of the actions in the stage fail. When you retry, all actions that are still in progress continue working, and failed actions are triggered again.
 #'
-#' @usage
-#' codepipeline_retry_stage_execution(pipelineName, stageName,
-#'   pipelineExecutionId, retryMode)
+#' See [https://paws-r.github.io/docs/codepipeline/retry_stage_execution.html](https://paws-r.github.io/docs/codepipeline/retry_stage_execution.html) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline that contains the failed stage.
 #' @param stageName &#91;required&#93; The name of the failed stage to be retried.
@@ -2502,24 +1143,6 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 #' retrieve the current pipelineExecutionId of the failed stage
 #' @param retryMode &#91;required&#93; The scope of the retry attempt. Currently, the only supported value is
 #' FAILED_ACTIONS.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pipelineExecutionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$retry_stage_execution(
-#'   pipelineName = "string",
-#'   stageName = "string",
-#'   pipelineExecutionId = "string",
-#'   retryMode = "FAILED_ACTIONS"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2544,31 +1167,13 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #' Starts the specified pipeline
 #'
 #' @description
-#' Starts the specified pipeline. Specifically, it begins processing the
-#' latest commit to the source location specified as part of the pipeline.
+#' Starts the specified pipeline. Specifically, it begins processing the latest commit to the source location specified as part of the pipeline.
 #'
-#' @usage
-#' codepipeline_start_pipeline_execution(name, clientRequestToken)
+#' See [https://paws-r.github.io/docs/codepipeline/start_pipeline_execution.html](https://paws-r.github.io/docs/codepipeline/start_pipeline_execution.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the pipeline to start.
 #' @param clientRequestToken The system-generated unique ID used to identify a unique execution
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pipelineExecutionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_pipeline_execution(
-#'   name = "string",
-#'   clientRequestToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2593,16 +1198,9 @@ codepipeline_start_pipeline_execution <- function(name, clientRequestToken = NUL
 #' Stops the specified pipeline execution
 #'
 #' @description
-#' Stops the specified pipeline execution. You choose to either stop the
-#' pipeline execution by completing in-progress actions without starting
-#' subsequent actions, or by abandoning in-progress actions. While
-#' completing or abandoning in-progress actions, the pipeline execution is
-#' in a `Stopping` state. After all in-progress actions are completed or
-#' abandoned, the pipeline execution is in a `Stopped` state.
+#' Stops the specified pipeline execution. You choose to either stop the pipeline execution by completing in-progress actions without starting subsequent actions, or by abandoning in-progress actions. While completing or abandoning in-progress actions, the pipeline execution is in a `Stopping` state. After all in-progress actions are completed or abandoned, the pipeline execution is in a `Stopped` state.
 #'
-#' @usage
-#' codepipeline_stop_pipeline_execution(pipelineName, pipelineExecutionId,
-#'   abandon, reason)
+#' See [https://paws-r.github.io/docs/codepipeline/stop_pipeline_execution.html](https://paws-r.github.io/docs/codepipeline/stop_pipeline_execution.html) for full documentation.
 #'
 #' @param pipelineName &#91;required&#93; The name of the pipeline to stop.
 #' @param pipelineExecutionId &#91;required&#93; The ID of the pipeline execution to be stopped in the current stage. Use
@@ -2614,24 +1212,6 @@ codepipeline_start_pipeline_execution <- function(name, clientRequestToken = NUL
 #' This option can lead to failed or out-of-sequence tasks.
 #' @param reason Use this option to enter comments, such as the reason the pipeline was
 #' stopped.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pipelineExecutionId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_pipeline_execution(
-#'   pipelineName = "string",
-#'   pipelineExecutionId = "string",
-#'   abandon = TRUE|FALSE,
-#'   reason = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2656,30 +1236,12 @@ codepipeline_stop_pipeline_execution <- function(pipelineName, pipelineExecution
 #' Adds to or modifies the tags of the given resource
 #'
 #' @description
-#' Adds to or modifies the tags of the given resource. Tags are metadata
-#' that can be used to manage a resource.
+#' Adds to or modifies the tags of the given resource. Tags are metadata that can be used to manage a resource.
 #'
-#' @usage
-#' codepipeline_tag_resource(resourceArn, tags)
+#' See [https://paws-r.github.io/docs/codepipeline/tag_resource.html](https://paws-r.github.io/docs/codepipeline/tag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource you want to add tags to.
 #' @param tags &#91;required&#93; The tags you want to modify or add to the resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   resourceArn = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2706,24 +1268,10 @@ codepipeline_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes tags from an AWS resource.
 #'
-#' @usage
-#' codepipeline_untag_resource(resourceArn, tagKeys)
+#' See [https://paws-r.github.io/docs/codepipeline/untag_resource.html](https://paws-r.github.io/docs/codepipeline/untag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove tags from.
 #' @param tagKeys &#91;required&#93; The list of keys for the tags to be removed from the resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   resourceArn = "string",
-#'   tagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2745,156 +1293,45 @@ codepipeline_untag_resource <- function(resourceArn, tagKeys) {
 }
 .codepipeline$operations$untag_resource <- codepipeline_untag_resource
 
+#' Updates an action type that was created with any supported integration
+#' model, where the action type is to be used by customers of the action
+#' type provider
+#'
+#' @description
+#' Updates an action type that was created with any supported integration model, where the action type is to be used by customers of the action type provider. Use a JSON file with the action definition and [`update_action_type`][codepipeline_update_action_type] to provide the full structure.
+#'
+#' See [https://paws-r.github.io/docs/codepipeline/update_action_type.html](https://paws-r.github.io/docs/codepipeline/update_action_type.html) for full documentation.
+#'
+#' @param actionType &#91;required&#93; The action type definition for the action type to be updated.
+#'
+#' @keywords internal
+#'
+#' @rdname codepipeline_update_action_type
+codepipeline_update_action_type <- function(actionType) {
+  op <- new_operation(
+    name = "UpdateActionType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .codepipeline$update_action_type_input(actionType = actionType)
+  output <- .codepipeline$update_action_type_output()
+  config <- get_config()
+  svc <- .codepipeline$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codepipeline$operations$update_action_type <- codepipeline_update_action_type
+
 #' Updates a specified pipeline with edits or changes to its structure
 #'
 #' @description
-#' Updates a specified pipeline with edits or changes to its structure. Use
-#' a JSON file with the pipeline structure and
-#' [`update_pipeline`][codepipeline_update_pipeline] to provide the full
-#' structure of the pipeline. Updating the pipeline increases the version
-#' number of the pipeline by 1.
+#' Updates a specified pipeline with edits or changes to its structure. Use a JSON file with the pipeline structure and [`update_pipeline`][codepipeline_update_pipeline] to provide the full structure of the pipeline. Updating the pipeline increases the version number of the pipeline by 1.
 #'
-#' @usage
-#' codepipeline_update_pipeline(pipeline)
+#' See [https://paws-r.github.io/docs/codepipeline/update_pipeline.html](https://paws-r.github.io/docs/codepipeline/update_pipeline.html) for full documentation.
 #'
 #' @param pipeline &#91;required&#93; The name of the pipeline to be updated.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pipeline = list(
-#'     name = "string",
-#'     roleArn = "string",
-#'     artifactStore = list(
-#'       type = "S3",
-#'       location = "string",
-#'       encryptionKey = list(
-#'         id = "string",
-#'         type = "KMS"
-#'       )
-#'     ),
-#'     artifactStores = list(
-#'       list(
-#'         type = "S3",
-#'         location = "string",
-#'         encryptionKey = list(
-#'           id = "string",
-#'           type = "KMS"
-#'         )
-#'       )
-#'     ),
-#'     stages = list(
-#'       list(
-#'         name = "string",
-#'         blockers = list(
-#'           list(
-#'             name = "string",
-#'             type = "Schedule"
-#'           )
-#'         ),
-#'         actions = list(
-#'           list(
-#'             name = "string",
-#'             actionTypeId = list(
-#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'               owner = "AWS"|"ThirdParty"|"Custom",
-#'               provider = "string",
-#'               version = "string"
-#'             ),
-#'             runOrder = 123,
-#'             configuration = list(
-#'               "string"
-#'             ),
-#'             outputArtifacts = list(
-#'               list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             inputArtifacts = list(
-#'               list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             roleArn = "string",
-#'             region = "string",
-#'             namespace = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     version = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_pipeline(
-#'   pipeline = list(
-#'     name = "string",
-#'     roleArn = "string",
-#'     artifactStore = list(
-#'       type = "S3",
-#'       location = "string",
-#'       encryptionKey = list(
-#'         id = "string",
-#'         type = "KMS"
-#'       )
-#'     ),
-#'     artifactStores = list(
-#'       list(
-#'         type = "S3",
-#'         location = "string",
-#'         encryptionKey = list(
-#'           id = "string",
-#'           type = "KMS"
-#'         )
-#'       )
-#'     ),
-#'     stages = list(
-#'       list(
-#'         name = "string",
-#'         blockers = list(
-#'           list(
-#'             name = "string",
-#'             type = "Schedule"
-#'           )
-#'         ),
-#'         actions = list(
-#'           list(
-#'             name = "string",
-#'             actionTypeId = list(
-#'               category = "Source"|"Build"|"Deploy"|"Test"|"Invoke"|"Approval",
-#'               owner = "AWS"|"ThirdParty"|"Custom",
-#'               provider = "string",
-#'               version = "string"
-#'             ),
-#'             runOrder = 123,
-#'             configuration = list(
-#'               "string"
-#'             ),
-#'             outputArtifacts = list(
-#'               list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             inputArtifacts = list(
-#'               list(
-#'                 name = "string"
-#'               )
-#'             ),
-#'             roleArn = "string",
-#'             region = "string",
-#'             namespace = "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     version = 123
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

@@ -4,7 +4,7 @@
 \alias{iam_list_groups}
 \title{Lists the IAM groups that have the specified path prefix}
 \usage{
-iam_list_groups(PathPrefix, Marker, MaxItems)
+iam_list_groups(PathPrefix = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{PathPrefix}{The path prefix for filtering the results. For example, the prefix
@@ -34,44 +34,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Groups = list(
-    list(
-      Path = "string",
-      GroupName = "string",
-      GroupId = "string",
-      Arn = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
 Lists the IAM groups that have the specified path prefix.
 
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters.
-}
-\section{Request syntax}{
-\preformatted{svc$list_groups(
-  PathPrefix = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command lists the IAM groups in the current account:
-svc$list_groups()
-}
-
+See \url{https://paws-r.github.io/docs/iam/list_groups.html} for full documentation.
 }
 \keyword{internal}

@@ -12,34 +12,9 @@ tags for.}
 
 \item{TagKeys}{[required] The tag keys to remove from the specified resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes one or more tags from the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceARN = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example removes the "Department" and "Project" tags from a
-# resource.
-svc$untag_resource(
-  ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/...",
-  TagKeys = list(
-    "Project",
-    "Department"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/untag_resource.html} for full documentation.
 }
 \keyword{internal}

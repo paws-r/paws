@@ -2,10 +2,16 @@
 % Please edit documentation in R/dynamodb_operations.R
 \name{dynamodb_list_backups}
 \alias{dynamodb_list_backups}
-\title{List backups associated with an AWS account}
+\title{List backups associated with an Amazon Web Services account}
 \usage{
-dynamodb_list_backups(TableName, Limit, TimeRangeLowerBound,
-  TimeRangeUpperBound, ExclusiveStartBackupArn, BackupType)
+dynamodb_list_backups(
+  TableName = NULL,
+  Limit = NULL,
+  TimeRangeLowerBound = NULL,
+  TimeRangeUpperBound = NULL,
+  ExclusiveStartBackupArn = NULL,
+  BackupType = NULL
+)
 }
 \arguments{
 \item{TableName}{The backups from the table specified by \code{TableName} are listed.}
@@ -29,63 +35,15 @@ next page of results.}
 
 Where \code{BackupType} can be:
 \itemize{
-\item \code{USER} - On-demand backup created by you.
+\item \code{USER} - On-demand backup created by you. (The default setting if no
+other backup types are specified.)
 \item \code{SYSTEM} - On-demand backup automatically created by DynamoDB.
 \item \code{ALL} - All types of on-demand backups (USER and SYSTEM).
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupSummaries = list(
-    list(
-      TableName = "string",
-      TableId = "string",
-      TableArn = "string",
-      BackupArn = "string",
-      BackupName = "string",
-      BackupCreationDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      BackupExpiryDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      BackupStatus = "CREATING"|"DELETED"|"AVAILABLE",
-      BackupType = "USER"|"SYSTEM"|"AWS_BACKUP",
-      BackupSizeBytes = 123
-    )
-  ),
-  LastEvaluatedBackupArn = "string"
-)
-}
-}
 \description{
-List backups associated with an AWS account. To list backups for a given
-table, specify \code{TableName}. \code{\link[=dynamodb_list_backups]{list_backups}}
-returns a paginated list of results with at most 1 MB worth of items in
-a page. You can also specify a maximum number of entries to be returned
-in a page.
+List backups associated with an Amazon Web Services account. To list backups for a given table, specify \code{TableName}. \code{\link[=dynamodb_list_backups]{list_backups}} returns a paginated list of results with at most 1 MB worth of items in a page. You can also specify a maximum number of entries to be returned in a page.
 
-In the request, start time is inclusive, but end time is exclusive. Note
-that these boundaries are for the time at which the original backup was
-requested.
-
-You can call \code{\link[=dynamodb_list_backups]{list_backups}} a maximum of five
-times per second.
+See \url{https://paws-r.github.io/docs/dynamodb/list_backups.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_backups(
-  TableName = "string",
-  Limit = 123,
-  TimeRangeLowerBound = as.POSIXct(
-    "2015-01-01"
-  ),
-  TimeRangeUpperBound = as.POSIXct(
-    "2015-01-01"
-  ),
-  ExclusiveStartBackupArn = "string",
-  BackupType = "USER"|"SYSTEM"|"AWS_BACKUP"|"ALL"
-)
-}
-}
-
 \keyword{internal}

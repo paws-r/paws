@@ -5,7 +5,7 @@
 \title{Describes the default credit option for CPU usage of a burstable
 performance instance family}
 \usage{
-ec2_get_default_credit_specification(DryRun, InstanceFamily)
+ec2_get_default_credit_specification(DryRun = NULL, InstanceFamily)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -15,28 +15,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{InstanceFamily}{[required] The instance family.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceFamilyCreditSpecification = list(
-    InstanceFamily = "t2"|"t3"|"t3a"|"t4g",
-    CpuCredits = "string"
-  )
-)
-}
-}
 \description{
-Describes the default credit option for CPU usage of a burstable
-performance instance family.
+Describes the default credit option for CPU usage of a burstable performance instance family.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable performance instances}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/get_default_credit_specification.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_default_credit_specification(
-  DryRun = TRUE|FALSE,
-  InstanceFamily = "t2"|"t3"|"t3a"|"t4g"
-)
-}
-}
-
 \keyword{internal}

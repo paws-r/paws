@@ -2,11 +2,21 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_revoke_security_group_ingress}
 \alias{ec2_revoke_security_group_ingress}
-\title{Removes the specified ingress rules from a security group}
+\title{Removes the specified inbound (ingress) rules from a security group}
 \usage{
-ec2_revoke_security_group_ingress(CidrIp, FromPort, GroupId, GroupName,
-  IpPermissions, IpProtocol, SourceSecurityGroupName,
-  SourceSecurityGroupOwnerId, ToPort, DryRun)
+ec2_revoke_security_group_ingress(
+  CidrIp = NULL,
+  FromPort = NULL,
+  GroupId = NULL,
+  GroupName = NULL,
+  IpPermissions = NULL,
+  IpProtocol = NULL,
+  SourceSecurityGroupName = NULL,
+  SourceSecurityGroupOwnerId = NULL,
+  ToPort = NULL,
+  DryRun = NULL,
+  SecurityGroupRuleIds = NULL
+)
 }
 \arguments{
 \item{CidrIp}{The CIDR IP address range. You can't specify this parameter when
@@ -36,12 +46,12 @@ IP protocol, and the end of the port range. For EC2-VPC, the source
 security group must be in the same VPC. To revoke a specific rule for an
 IP protocol and port range, use a set of IP permissions instead.}
 
-\item{SourceSecurityGroupOwnerId}{[EC2-Classic] The AWS account ID of the source security group, if the
-source security group is in a different account. You can't specify this
-parameter in combination with the following parameters: the CIDR IP
-address range, the IP protocol, the start of the port range, and the end
-of the port range. To revoke a specific rule for an IP protocol and port
-range, use a set of IP permissions instead.}
+\item{SourceSecurityGroupOwnerId}{[EC2-Classic] The Amazon Web Services account ID of the source
+security group, if the source security group is in a different account.
+You can't specify this parameter in combination with the following
+parameters: the CIDR IP address range, the IP protocol, the start of the
+port range, and the end of the port range. To revoke a specific rule for
+an IP protocol and port range, use a set of IP permissions instead.}
 
 \item{ToPort}{The end of port range for the TCP and UDP protocols, or an ICMP code
 number. For the ICMP code number, use \code{-1} to specify all ICMP codes for
@@ -51,121 +61,12 @@ the ICMP type.}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE,
-  UnknownIpPermissions = list(
-    list(
-      FromPort = 123,
-      IpProtocol = "string",
-      IpRanges = list(
-        list(
-          CidrIp = "string",
-          Description = "string"
-        )
-      ),
-      Ipv6Ranges = list(
-        list(
-          CidrIpv6 = "string",
-          Description = "string"
-        )
-      ),
-      PrefixListIds = list(
-        list(
-          Description = "string",
-          PrefixListId = "string"
-        )
-      ),
-      ToPort = 123,
-      UserIdGroupPairs = list(
-        list(
-          Description = "string",
-          GroupId = "string",
-          GroupName = "string",
-          PeeringStatus = "string",
-          UserId = "string",
-          VpcId = "string",
-          VpcPeeringConnectionId = "string"
-        )
-      )
-    )
-  )
-)
-}
+
+\item{SecurityGroupRuleIds}{The IDs of the security group rules.}
 }
 \description{
-Removes the specified ingress rules from a security group. To remove a
-rule, the values that you specify (for example, ports) must match the
-existing rule's values exactly.
+Removes the specified inbound (ingress) rules from a security group.
 
-[EC2-Classic , default VPC] If the values you specify do not match the
-existing rule's values, no error is returned, and the output describes
-the security group rules that were not revoked.
-
-AWS recommends that you use
-\code{\link[=ec2_describe_security_groups]{describe_security_groups}} to verify
-that the rule has been removed.
-
-Each rule consists of the protocol and the CIDR range or source security
-group. For the TCP and UDP protocols, you must also specify the
-destination port or range of ports. For the ICMP protocol, you must also
-specify the ICMP type and code. If the security group rule has a
-description, you do not have to specify the description to revoke the
-rule.
-
-Rule changes are propagated to instances within the security group as
-quickly as possible. However, a small delay might occur.
+See \url{https://paws-r.github.io/docs/ec2/revoke_security_group_ingress.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$revoke_security_group_ingress(
-  CidrIp = "string",
-  FromPort = 123,
-  GroupId = "string",
-  GroupName = "string",
-  IpPermissions = list(
-    list(
-      FromPort = 123,
-      IpProtocol = "string",
-      IpRanges = list(
-        list(
-          CidrIp = "string",
-          Description = "string"
-        )
-      ),
-      Ipv6Ranges = list(
-        list(
-          CidrIpv6 = "string",
-          Description = "string"
-        )
-      ),
-      PrefixListIds = list(
-        list(
-          Description = "string",
-          PrefixListId = "string"
-        )
-      ),
-      ToPort = 123,
-      UserIdGroupPairs = list(
-        list(
-          Description = "string",
-          GroupId = "string",
-          GroupName = "string",
-          PeeringStatus = "string",
-          UserId = "string",
-          VpcId = "string",
-          VpcPeeringConnectionId = "string"
-        )
-      )
-    )
-  ),
-  IpProtocol = "string",
-  SourceSecurityGroupName = "string",
-  SourceSecurityGroupOwnerId = "string",
-  ToPort = 123,
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

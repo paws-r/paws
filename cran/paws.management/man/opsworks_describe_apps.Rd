@@ -4,7 +4,7 @@
 \alias{opsworks_describe_apps}
 \title{Requests a description of a specified set of apps}
 \usage{
-opsworks_describe_apps(StackId, AppIds)
+opsworks_describe_apps(StackId = NULL, AppIds = NULL)
 }
 \arguments{
 \item{StackId}{The app stack ID. If you use this parameter,
@@ -16,74 +16,9 @@ parameter, \code{\link[=opsworks_describe_apps]{describe_apps}} returns a
 description of the specified apps. Otherwise, it returns a description
 of every app.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Apps = list(
-    list(
-      AppId = "string",
-      StackId = "string",
-      Shortname = "string",
-      Name = "string",
-      Description = "string",
-      DataSources = list(
-        list(
-          Type = "string",
-          Arn = "string",
-          DatabaseName = "string"
-        )
-      ),
-      Type = "aws-flow-ruby"|"java"|"rails"|"php"|"nodejs"|"static"|"other",
-      AppSource = list(
-        Type = "git"|"svn"|"archive"|"s3",
-        Url = "string",
-        Username = "string",
-        Password = "string",
-        SshKey = "string",
-        Revision = "string"
-      ),
-      Domains = list(
-        "string"
-      ),
-      EnableSsl = TRUE|FALSE,
-      SslConfiguration = list(
-        Certificate = "string",
-        PrivateKey = "string",
-        Chain = "string"
-      ),
-      Attributes = list(
-        "string"
-      ),
-      CreatedAt = "string",
-      Environment = list(
-        list(
-          Key = "string",
-          Value = "string",
-          Secure = TRUE|FALSE
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Requests a description of a specified set of apps.
 
-This call accepts only one resource-identifying parameter.
-
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information about
-user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/describe_apps.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_apps(
-  StackId = "string",
-  AppIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

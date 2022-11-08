@@ -12,26 +12,9 @@ remove tags from. An ARN uniquely identifies a resource.}
 
 \item{TagKeys}{[required] The tag key pairs that you want to remove from the specified resources.}
 }
-\value{
-An empty list.
-}
 \description{
-Remove tags from a Global Accelerator resource. When you specify a tag
-key, the action removes both that key and its associated value. The
-operation succeeds even if you attempt to remove tags from an
-accelerator that was already removed.
+Remove tags from a Global Accelerator resource. When you specify a tag key, the action removes both that key and its associated value. The operation succeeds even if you attempt to remove tags from an accelerator that was already removed.
 
-For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html}{Tagging in AWS Global Accelerator}
-in the \emph{AWS Global Accelerator Developer Guide}.
+See \url{https://paws-r.github.io/docs/globalaccelerator/untag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{glue_get_triggers}
 \title{Gets all the triggers associated with a job}
 \usage{
-glue_get_triggers(NextToken, DependentJobName, MaxResults)
+glue_get_triggers(NextToken = NULL, DependentJobName = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{A continuation token, if this is a continuation call.}
@@ -15,59 +15,9 @@ returned.}
 
 \item{MaxResults}{The maximum size of the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Triggers = list(
-    list(
-      Name = "string",
-      WorkflowName = "string",
-      Id = "string",
-      Type = "SCHEDULED"|"CONDITIONAL"|"ON_DEMAND",
-      State = "CREATING"|"CREATED"|"ACTIVATING"|"ACTIVATED"|"DEACTIVATING"|"DEACTIVATED"|"DELETING"|"UPDATING",
-      Description = "string",
-      Schedule = "string",
-      Actions = list(
-        list(
-          JobName = "string",
-          Arguments = list(
-            "string"
-          ),
-          Timeout = 123,
-          SecurityConfiguration = "string",
-          NotificationProperty = list(
-            NotifyDelayAfter = 123
-          ),
-          CrawlerName = "string"
-        )
-      ),
-      Predicate = list(
-        Logical = "AND"|"ANY",
-        Conditions = list(
-          list(
-            LogicalOperator = "EQUALS",
-            JobName = "string",
-            State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED"|"SUCCEEDED"|"FAILED"|"TIMEOUT",
-            CrawlerName = "string",
-            CrawlState = "RUNNING"|"CANCELLING"|"CANCELLED"|"SUCCEEDED"|"FAILED"
-          )
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets all the triggers associated with a job.
-}
-\section{Request syntax}{
-\preformatted{svc$get_triggers(
-  NextToken = "string",
-  DependentJobName = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_triggers.html} for full documentation.
+}
 \keyword{internal}

@@ -7,7 +7,9 @@ approval rules based on the template are not automatically created when
 pull requests are created in the specified repository}
 \usage{
 codecommit_disassociate_approval_rule_template_from_repository(
-  approvalRuleTemplateName, repositoryName)
+  approvalRuleTemplateName,
+  repositoryName
+)
 }
 \arguments{
 \item{approvalRuleTemplateName}{[required] The name of the approval rule template to disassociate from a specified
@@ -15,22 +17,9 @@ repository.}
 
 \item{repositoryName}{[required] The name of the repository you want to disassociate from the template.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes the association between a template and a repository so that
-approval rules based on the template are not automatically created when
-pull requests are created in the specified repository. This does not
-delete any approval rules previously created for pull requests through
-the template association.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_approval_rule_template_from_repository(
-  approvalRuleTemplateName = "string",
-  repositoryName = "string"
-)
-}
-}
+Removes the association between a template and a repository so that approval rules based on the template are not automatically created when pull requests are created in the specified repository. This does not delete any approval rules previously created for pull requests through the template association.
 
+See \url{https://paws-r.github.io/docs/codecommit/disassociate_approval_rule_template_from_repository.html} for full documentation.
+}
 \keyword{internal}

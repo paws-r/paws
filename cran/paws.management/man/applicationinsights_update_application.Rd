@@ -4,8 +4,14 @@
 \alias{applicationinsights_update_application}
 \title{Updates the application}
 \usage{
-applicationinsights_update_application(ResourceGroupName,
-  OpsCenterEnabled, CWEMonitorEnabled, OpsItemSNSTopicArn, RemoveSNSTopic)
+applicationinsights_update_application(
+  ResourceGroupName,
+  OpsCenterEnabled = NULL,
+  CWEMonitorEnabled = NULL,
+  OpsItemSNSTopicArn = NULL,
+  RemoveSNSTopic = NULL,
+  AutoConfigEnabled = NULL
+)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
@@ -23,32 +29,12 @@ opsItem.}
 
 \item{RemoveSNSTopic}{Disassociates the SNS topic from the opsItem created for detected
 problems.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationInfo = list(
-    ResourceGroupName = "string",
-    LifeCycle = "string",
-    OpsItemSNSTopicArn = "string",
-    OpsCenterEnabled = TRUE|FALSE,
-    CWEMonitorEnabled = TRUE|FALSE,
-    Remarks = "string"
-  )
-)
-}
+
+\item{AutoConfigEnabled}{Turns auto-configuration on or off.}
 }
 \description{
 Updates the application.
-}
-\section{Request syntax}{
-\preformatted{svc$update_application(
-  ResourceGroupName = "string",
-  OpsCenterEnabled = TRUE|FALSE,
-  CWEMonitorEnabled = TRUE|FALSE,
-  OpsItemSNSTopicArn = "string",
-  RemoveSNSTopic = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/applicationinsights/update_application.html} for full documentation.
+}
 \keyword{internal}

@@ -6,24 +6,9 @@
 \usage{
 licensemanager_get_service_settings()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  S3BucketArn = "string",
-  SnsTopicArn = "string",
-  OrganizationConfiguration = list(
-    EnableIntegration = TRUE|FALSE
-  ),
-  EnableCrossAccountsDiscovery = TRUE|FALSE,
-  LicenseManagerResourceShareArn = "string"
-)
-}
-}
 \description{
 Gets the License Manager settings for the current Region.
-}
-\section{Request syntax}{
-\preformatted{svc$get_service_settings()
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/get_service_settings.html} for full documentation.
+}
 \keyword{internal}

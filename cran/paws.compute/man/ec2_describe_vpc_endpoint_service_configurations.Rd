@@ -5,8 +5,13 @@
 \title{Describes the VPC endpoint service configurations in your account (your
 services)}
 \usage{
-ec2_describe_vpc_endpoint_service_configurations(DryRun, ServiceIds,
-  Filters, MaxResults, NextToken)
+ec2_describe_vpc_endpoint_service_configurations(
+  DryRun = NULL,
+  ServiceIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -22,11 +27,13 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item \code{service-id} - The ID of the service.
 \item \code{service-state} - The state of the service (\code{Pending} | \code{Available}
 | \code{Deleting} | \code{Deleted} | \code{Failed}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{supported-ip-address-types} - The IP address type (\code{ipv4} |
+\code{ipv6}).
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -40,73 +47,9 @@ can be between 5 and 1,000; if \code{MaxResults} is given a value larger than
 
 \item{NextToken}{The token to retrieve the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceConfigurations = list(
-    list(
-      ServiceType = list(
-        list(
-          ServiceType = "Interface"|"Gateway"|"GatewayLoadBalancer"
-        )
-      ),
-      ServiceId = "string",
-      ServiceName = "string",
-      ServiceState = "Pending"|"Available"|"Deleting"|"Deleted"|"Failed",
-      AvailabilityZones = list(
-        "string"
-      ),
-      AcceptanceRequired = TRUE|FALSE,
-      ManagesVpcEndpoints = TRUE|FALSE,
-      NetworkLoadBalancerArns = list(
-        "string"
-      ),
-      GatewayLoadBalancerArns = list(
-        "string"
-      ),
-      BaseEndpointDnsNames = list(
-        "string"
-      ),
-      PrivateDnsName = "string",
-      PrivateDnsNameConfiguration = list(
-        State = "pendingVerification"|"verified"|"failed",
-        Type = "string",
-        Value = "string",
-        Name = "string"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the VPC endpoint service configurations in your account (your
-services).
-}
-\section{Request syntax}{
-\preformatted{svc$describe_vpc_endpoint_service_configurations(
-  DryRun = TRUE|FALSE,
-  ServiceIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Describes the VPC endpoint service configurations in your account (your services).
 
+See \url{https://paws-r.github.io/docs/ec2/describe_vpc_endpoint_service_configurations.html} for full documentation.
+}
 \keyword{internal}

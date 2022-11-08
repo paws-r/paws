@@ -4,9 +4,19 @@
 \alias{licensemanager_create_license}
 \title{Creates a license}
 \usage{
-licensemanager_create_license(LicenseName, ProductName, ProductSKU,
-  Issuer, HomeRegion, Validity, Entitlements, Beneficiary,
-  ConsumptionConfiguration, LicenseMetadata, ClientToken)
+licensemanager_create_license(
+  LicenseName,
+  ProductName,
+  ProductSKU,
+  Issuer,
+  HomeRegion,
+  Validity,
+  Entitlements,
+  Beneficiary,
+  ConsumptionConfiguration,
+  LicenseMetadata = NULL,
+  ClientToken
+)
 }
 \arguments{
 \item{LicenseName}{[required] License name.}
@@ -35,61 +45,9 @@ a borrow configuration for workloads with offline usage.}
 \item{ClientToken}{[required] Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LicenseArn = "string",
-  Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
-  Version = "string"
-)
-}
-}
 \description{
 Creates a license.
-}
-\section{Request syntax}{
-\preformatted{svc$create_license(
-  LicenseName = "string",
-  ProductName = "string",
-  ProductSKU = "string",
-  Issuer = list(
-    Name = "string",
-    SignKey = "string"
-  ),
-  HomeRegion = "string",
-  Validity = list(
-    Begin = "string",
-    End = "string"
-  ),
-  Entitlements = list(
-    list(
-      Name = "string",
-      Value = "string",
-      MaxCount = 123,
-      Overage = TRUE|FALSE,
-      Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
-      AllowCheckIn = TRUE|FALSE
-    )
-  ),
-  Beneficiary = "string",
-  ConsumptionConfiguration = list(
-    RenewType = "None"|"Weekly"|"Monthly",
-    ProvisionalConfiguration = list(
-      MaxTimeToLiveInMinutes = 123
-    ),
-    BorrowConfiguration = list(
-      AllowEarlyCheckIn = TRUE|FALSE,
-      MaxTimeToLiveInMinutes = 123
-    )
-  ),
-  LicenseMetadata = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ClientToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/create_license.html} for full documentation.
+}
 \keyword{internal}

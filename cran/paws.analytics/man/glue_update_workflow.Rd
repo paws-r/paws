@@ -4,8 +4,12 @@
 \alias{glue_update_workflow}
 \title{Updates an existing workflow}
 \usage{
-glue_update_workflow(Name, Description, DefaultRunProperties,
-  MaxConcurrentRuns)
+glue_update_workflow(
+  Name,
+  Description = NULL,
+  DefaultRunProperties = NULL,
+  MaxConcurrentRuns = NULL
+)
 }
 \arguments{
 \item{Name}{[required] Name of the workflow to be updated.}
@@ -21,25 +25,9 @@ number of concurrent runs of any of the component jobs. If you leave
 this parameter blank, there is no limit to the number of concurrent
 workflow runs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string"
-)
-}
-}
 \description{
 Updates an existing workflow.
-}
-\section{Request syntax}{
-\preformatted{svc$update_workflow(
-  Name = "string",
-  Description = "string",
-  DefaultRunProperties = list(
-    "string"
-  ),
-  MaxConcurrentRuns = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/update_workflow.html} for full documentation.
+}
 \keyword{internal}

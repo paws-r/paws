@@ -5,12 +5,30 @@
 \title{Creates or updates an alarm and associates it with the specified metric,
 metric math expression, or anomaly detection model}
 \usage{
-cloudwatch_put_metric_alarm(AlarmName, AlarmDescription, ActionsEnabled,
-  OKActions, AlarmActions, InsufficientDataActions, MetricName, Namespace,
-  Statistic, ExtendedStatistic, Dimensions, Period, Unit,
-  EvaluationPeriods, DatapointsToAlarm, Threshold, ComparisonOperator,
-  TreatMissingData, EvaluateLowSampleCountPercentile, Metrics, Tags,
-  ThresholdMetricId)
+cloudwatch_put_metric_alarm(
+  AlarmName,
+  AlarmDescription = NULL,
+  ActionsEnabled = NULL,
+  OKActions = NULL,
+  AlarmActions = NULL,
+  InsufficientDataActions = NULL,
+  MetricName = NULL,
+  Namespace = NULL,
+  Statistic = NULL,
+  ExtendedStatistic = NULL,
+  Dimensions = NULL,
+  Period = NULL,
+  Unit = NULL,
+  EvaluationPeriods,
+  DatapointsToAlarm = NULL,
+  Threshold = NULL,
+  ComparisonOperator,
+  TreatMissingData = NULL,
+  EvaluateLowSampleCountPercentile = NULL,
+  Metrics = NULL,
+  Tags = NULL,
+  ThresholdMetricId = NULL
+)
 }
 \arguments{
 \item{AlarmName}{[required] The name for the alarm. This name must be unique within the Region.}
@@ -36,7 +54,9 @@ Valid Values (for use with IAM roles):
 |
 \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
 |
-\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0}}
+\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0}
+|
+\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Recover/1.0}}
 
 \item{AlarmActions}{The actions to execute when this alarm transitions to the \code{ALARM} state
 from any other state. Each action is specified as an Amazon Resource
@@ -48,14 +68,17 @@ Valid Values: \code{arn:aws:automate:region:ec2:stop} |
 \code{arn:aws:automate:region:ec2:reboot} |
 \code{arn:aws:sns:region:account-id:sns-topic-name } |
 \code{arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
-| \code{arn:aws:ssm:region:account-id:opsitem:severity }
+| \code{arn:aws:ssm:region:account-id:opsitem:severity } |
+\code{arn:aws:ssm-incidents::account-id:response-plan:response-plan-name }
 
 Valid Values (for use with IAM roles):
 \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0}
 |
 \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
 |
-\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0}}
+\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0}
+|
+\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Recover/1.0}}
 
 \item{InsufficientDataActions}{The actions to execute when this alarm transitions to the
 \code{INSUFFICIENT_DATA} state from any other state. Each action is specified
@@ -137,7 +160,7 @@ intended.
 
 However, if the metric is published with multiple types of units and you
 don't specify a unit, the alarm's behavior is not defined and it behaves
-predictably.
+unpredictably.
 
 We recommend omitting \code{Unit} so that you don't inadvertently specify an
 incorrect unit that is not published for this metric. Doing so causes
@@ -175,7 +198,12 @@ for alarms based on anomaly detection models.}
 \code{TreatMissingData} is omitted, the default behavior of \code{missing} is
 used. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data}{Configuring How CloudWatch Alarms Treats Missing Data}.
 
-Valid Values: \code{breaching | notBreaching | ignore | missing}}
+Valid Values: \code{breaching | notBreaching | ignore | missing}
+
+Alarms that evaluate metrics in the \code{AWS/DynamoDB} namespace always
+\code{ignore} missing data even if you choose a different option for
+\code{TreatMissingData}. When an \code{AWS/DynamoDB} metric has missing data,
+alarms that evaluate that metric remain in their current state.}
 
 \item{EvaluateLowSampleCountPercentile}{Used only for alarms based on percentiles. If you specify \code{ignore}, the
 alarm state does not change during periods with too few data points to
@@ -225,104 +253,9 @@ Model Alarm} example on this page.
 
 If your alarm uses this parameter, it cannot have Auto Scaling actions.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates or updates an alarm and associates it with the specified metric,
-metric math expression, or anomaly detection model.
+Creates or updates an alarm and associates it with the specified metric, metric math expression, or anomaly detection model.
 
-Alarms based on anomaly detection models cannot have Auto Scaling
-actions.
-
-When this operation creates an alarm, the alarm state is immediately set
-to \code{INSUFFICIENT_DATA}. The alarm is then evaluated and its state is set
-appropriately. Any actions associated with the new state are then
-executed.
-
-When you update an existing alarm, its state is left unchanged, but the
-update completely overwrites the previous configuration of the alarm.
-
-If you are an IAM user, you must have Amazon EC2 permissions for some
-alarm operations:
-\itemize{
-\item The \code{iam:CreateServiceLinkedRole} for all alarms with EC2 actions
-\item The \code{iam:CreateServiceLinkedRole} to create an alarm with Systems
-Manager OpsItem actions.
+See \url{https://paws-r.github.io/docs/cloudwatch/put_metric_alarm.html} for full documentation.
 }
-
-The first time you create an alarm in the AWS Management Console, the
-CLI, or by using the PutMetricAlarm API, CloudWatch creates the
-necessary service-linked rolea for you. The service-linked roles are
-called \code{AWSServiceRoleForCloudWatchEvents} and
-\code{AWSServiceRoleForCloudWatchAlarms_ActionSSM}. For more information, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{AWS service-linked role}.
-}
-\section{Request syntax}{
-\preformatted{svc$put_metric_alarm(
-  AlarmName = "string",
-  AlarmDescription = "string",
-  ActionsEnabled = TRUE|FALSE,
-  OKActions = list(
-    "string"
-  ),
-  AlarmActions = list(
-    "string"
-  ),
-  InsufficientDataActions = list(
-    "string"
-  ),
-  MetricName = "string",
-  Namespace = "string",
-  Statistic = "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum",
-  ExtendedStatistic = "string",
-  Dimensions = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  Period = 123,
-  Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-  EvaluationPeriods = 123,
-  DatapointsToAlarm = 123,
-  Threshold = 123.0,
-  ComparisonOperator = "GreaterThanOrEqualToThreshold"|"GreaterThanThreshold"|"LessThanThreshold"|"LessThanOrEqualToThreshold"|"LessThanLowerOrGreaterThanUpperThreshold"|"LessThanLowerThreshold"|"GreaterThanUpperThreshold",
-  TreatMissingData = "string",
-  EvaluateLowSampleCountPercentile = "string",
-  Metrics = list(
-    list(
-      Id = "string",
-      MetricStat = list(
-        Metric = list(
-          Namespace = "string",
-          MetricName = "string",
-          Dimensions = list(
-            list(
-              Name = "string",
-              Value = "string"
-            )
-          )
-        ),
-        Period = 123,
-        Stat = "string",
-        Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-      ),
-      Expression = "string",
-      Label = "string",
-      ReturnData = TRUE|FALSE,
-      Period = 123
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ThresholdMetricId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -5,7 +5,11 @@
 \title{Lists the account creation requests that match the specified status that
 is currently being tracked for the organization}
 \usage{
-organizations_list_create_account_status(States, NextToken, MaxResults)
+organizations_list_create_account_status(
+  States = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{States}{A list of one or more states that you want included in the response. If
@@ -28,71 +32,9 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CreateAccountStatuses = list(
-    list(
-      Id = "string",
-      AccountName = "string",
-      State = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
-      RequestedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      CompletedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      AccountId = "string",
-      GovCloudAccountId = "string",
-      FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the account creation requests that match the specified status that
-is currently being tracked for the organization.
+Lists the account creation requests that match the specified status that is currently being tracked for the organization.
 
-Always check the \code{NextToken} response parameter for a \code{null} value when
-calling a \verb{List*} operation. These operations can occasionally return an
-empty set of results even when there are more results available. The
-\code{NextToken} response parameter value is \code{null} \emph{only} when there are no
-more results to display.
-
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
-}
-\section{Request syntax}{
-\preformatted{svc$list_create_account_status(
-  States = list(
-    "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows a user requesting a list of only the
-# completed account creation requests made for the current organization:
-svc$list_create_account_status(
-  States = list(
-    "SUCCEEDED"
-  )
-)
-
-# The following example shows a user requesting a list of only the
-# in-progress account creation requests made for the current organization:
-svc$list_create_account_status(
-  States = list(
-    "IN_PROGRESS"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/list_create_account_status.html} for full documentation.
 }
 \keyword{internal}

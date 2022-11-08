@@ -4,57 +4,19 @@
 \alias{serverlessapplicationrepository_put_application_policy}
 \title{Sets the permission policy for an application}
 \usage{
-serverlessapplicationrepository_put_application_policy(ApplicationId,
-  Statements)
+serverlessapplicationrepository_put_application_policy(
+  ApplicationId,
+  Statements
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
 
 \item{Statements}{[required] An array of policy statements applied to the application.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Statements = list(
-    list(
-      Actions = list(
-        "string"
-      ),
-      PrincipalOrgIDs = list(
-        "string"
-      ),
-      Principals = list(
-        "string"
-      ),
-      StatementId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Sets the permission policy for an application. For the list of actions
-supported for this operation, see \href{https://docs.aws.amazon.com/serverlessrepo/latest/devguide/security_iam_resource-based-policy-examples.html#application-permissions}{Application Permissions}
-.
-}
-\section{Request syntax}{
-\preformatted{svc$put_application_policy(
-  ApplicationId = "string",
-  Statements = list(
-    list(
-      Actions = list(
-        "string"
-      ),
-      PrincipalOrgIDs = list(
-        "string"
-      ),
-      Principals = list(
-        "string"
-      ),
-      StatementId = "string"
-    )
-  )
-)
-}
-}
+Sets the permission policy for an application. For the list of actions supported for this operation, see \href{https://docs.aws.amazon.com/serverlessrepo/latest/devguide/security_iam_resource-based-policy-examples.html#application-permissions}{Application Permissions} .
 
+See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/put_application_policy.html} for full documentation.
+}
 \keyword{internal}

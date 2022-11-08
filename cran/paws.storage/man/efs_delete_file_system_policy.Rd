@@ -10,23 +10,9 @@ efs_delete_file_system_policy(FileSystemId)
 \item{FileSystemId}{[required] Specifies the EFS file system for which to delete the
 \code{FileSystemPolicy}.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the \code{FileSystemPolicy} for the specified file system. The
-default \code{FileSystemPolicy} goes into effect once the existing policy is
-deleted. For more information about the default file system policy, see
-\href{https://docs.aws.amazon.com/efs/latest/ug/}{Using Resource-based Policies with EFS}.
+Deletes the \code{FileSystemPolicy} for the specified file system. The default \code{FileSystemPolicy} goes into effect once the existing policy is deleted. For more information about the default file system policy, see \href{https://docs.aws.amazon.com/efs/latest/ug/}{Using Resource-based Policies with EFS}.
 
-This operation requires permissions for the
-\code{elasticfilesystem:DeleteFileSystemPolicy} action.
+See \url{https://paws-r.github.io/docs/efs/delete_file_system_policy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_file_system_policy(
-  FileSystemId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{cloudhsm_create_luna_client}
 \title{This is documentation for AWS CloudHSM Classic}
 \usage{
-cloudhsm_create_luna_client(Label, Certificate)
+cloudhsm_create_luna_client(Label = NULL, Certificate)
 }
 \arguments{
 \item{Label}{The label for the client.}
@@ -12,28 +12,9 @@ cloudhsm_create_luna_client(Label, Certificate)
 \item{Certificate}{[required] The contents of a Base64-Encoded X.509 v3 certificate to be installed on
 the HSMs used by this client.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClientArn = "string"
-)
-}
-}
 \description{
-This is documentation for \strong{AWS CloudHSM Classic}. For more
-information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},
-and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
 
-\strong{For information about the current version of AWS CloudHSM}, see \href{https://aws.amazon.com/cloudhsm/}{AWS CloudHSM}, the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}, and the
-\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/}{AWS CloudHSM API Reference}.
-
-Creates an HSM client.
+See \url{https://paws-r.github.io/docs/cloudhsm/create_luna_client.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_luna_client(
-  Label = "string",
-  Certificate = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -9,103 +9,15 @@ cloudwatch_put_metric_data(Namespace, MetricData)
 \arguments{
 \item{Namespace}{[required] The namespace for the metric data.
 
-To avoid conflicts with AWS service namespaces, you should not specify a
-namespace that begins with \verb{AWS/}}
+To avoid conflicts with Amazon Web Services service namespaces, you
+should not specify a namespace that begins with \verb{AWS/}}
 
-\item{MetricData}{[required] The data for the metric. The array can include no more than 20 metrics
+\item{MetricData}{[required] The data for the metric. The array can include no more than 1000 metrics
 per call.}
 }
-\value{
-An empty list.
-}
 \description{
-Publishes metric data points to Amazon CloudWatch. CloudWatch associates
-the data points with the specified metric. If the specified metric does
-not exist, CloudWatch creates the metric. When CloudWatch creates a
-metric, it can take up to fifteen minutes for the metric to appear in
-calls to \code{\link[=cloudwatch_list_metrics]{list_metrics}}.
+Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to \code{\link[=cloudwatch_list_metrics]{list_metrics}}.
 
-You can publish either individual data points in the \code{Value} field, or
-arrays of values and the number of times each value occurred during the
-period by using the \code{Values} and \code{Counts} fields in the \code{MetricDatum}
-structure. Using the \code{Values} and \code{Counts} method enables you to publish
-up to 150 values per metric with one
-\code{\link[=cloudwatch_put_metric_data]{put_metric_data}} request, and supports
-retrieving percentile statistics on this data.
-
-Each \code{\link[=cloudwatch_put_metric_data]{put_metric_data}} request is limited
-to 40 KB in size for HTTP POST requests. You can send a payload
-compressed by gzip. Each request is also limited to no more than 20
-different metrics.
-
-Although the \code{Value} parameter accepts numbers of type \code{Double},
-CloudWatch rejects values that are either too small or too large. Values
-must be in the range of -2^360 to 2^360. In addition, special values
-(for example, NaN, +Infinity, -Infinity) are not supported.
-
-You can use up to 10 dimensions per metric to further clarify what data
-the metric collects. Each dimension consists of a Name and Value pair.
-For more information about specifying dimensions, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html}{Publishing Metrics}
-in the \emph{Amazon CloudWatch User Guide}.
-
-You specify the time stamp to be associated with each data point. You
-can specify time stamps that are as much as two weeks before the current
-date, and as much as 2 hours after the current day and time.
-
-Data points with time stamps from 24 hours ago or longer can take at
-least 48 hours to become available for
-\code{\link[=cloudwatch_get_metric_data]{get_metric_data}} or
-\code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}} from the
-time they are submitted. Data points with time stamps between 3 and 24
-hours ago can take as much as 2 hours to become available for for
-\code{\link[=cloudwatch_get_metric_data]{get_metric_data}} or
-\code{\link[=cloudwatch_get_metric_statistics]{get_metric_statistics}}.
-
-CloudWatch needs raw data points to calculate percentile statistics. If
-you publish data using a statistic set instead, you can only retrieve
-percentile statistics for this data if one of the following conditions
-is true:
-\itemize{
-\item The \code{SampleCount} value of the statistic set is 1 and \code{Min}, \code{Max},
-and \code{Sum} are all equal.
-\item The \code{Min} and \code{Max} are equal, and \code{Sum} is equal to \code{Min}
-multiplied by \code{SampleCount}.
+See \url{https://paws-r.github.io/docs/cloudwatch/put_metric_data.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$put_metric_data(
-  Namespace = "string",
-  MetricData = list(
-    list(
-      MetricName = "string",
-      Dimensions = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      Value = 123.0,
-      StatisticValues = list(
-        SampleCount = 123.0,
-        Sum = 123.0,
-        Minimum = 123.0,
-        Maximum = 123.0
-      ),
-      Values = list(
-        123.0
-      ),
-      Counts = list(
-        123.0
-      ),
-      Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-      StorageResolution = 123
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

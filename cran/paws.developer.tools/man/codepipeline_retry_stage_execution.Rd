@@ -5,8 +5,12 @@
 \title{Resumes the pipeline execution by retrying the last failed actions in a
 stage}
 \usage{
-codepipeline_retry_stage_execution(pipelineName, stageName,
-  pipelineExecutionId, retryMode)
+codepipeline_retry_stage_execution(
+  pipelineName,
+  stageName,
+  pipelineExecutionId,
+  retryMode
+)
 }
 \arguments{
 \item{pipelineName}{[required] The name of the pipeline that contains the failed stage.}
@@ -20,26 +24,9 @@ retrieve the current pipelineExecutionId of the failed stage}
 \item{retryMode}{[required] The scope of the retry attempt. Currently, the only supported value is
 FAILED_ACTIONS.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  pipelineExecutionId = "string"
-)
-}
-}
 \description{
-Resumes the pipeline execution by retrying the last failed actions in a
-stage. You can retry a stage immediately if any of the actions in the
-stage fail. When you retry, all actions that are still in progress
-continue working, and failed actions are triggered again.
-}
-\section{Request syntax}{
-\preformatted{svc$retry_stage_execution(
-  pipelineName = "string",
-  stageName = "string",
-  pipelineExecutionId = "string",
-  retryMode = "FAILED_ACTIONS"
-)
-}
-}
+Resumes the pipeline execution by retrying the last failed actions in a stage. You can retry a stage immediately if any of the actions in the stage fail. When you retry, all actions that are still in progress continue working, and failed actions are triggered again.
 
+See \url{https://paws-r.github.io/docs/codepipeline/retry_stage_execution.html} for full documentation.
+}
 \keyword{internal}

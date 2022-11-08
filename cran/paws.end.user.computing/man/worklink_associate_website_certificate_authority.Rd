@@ -6,8 +6,11 @@
 obtain TLS certificates used by associated websites within the company
 network}
 \usage{
-worklink_associate_website_certificate_authority(FleetArn, Certificate,
-  DisplayName)
+worklink_associate_website_certificate_authority(
+  FleetArn,
+  Certificate,
+  DisplayName = NULL
+)
 }
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
@@ -16,24 +19,9 @@ worklink_associate_website_certificate_authority(FleetArn, Certificate,
 
 \item{DisplayName}{The certificate name to display.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WebsiteCaId = "string"
-)
-}
-}
 \description{
-Imports the root certificate of a certificate authority (CA) used to
-obtain TLS certificates used by associated websites within the company
-network.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_website_certificate_authority(
-  FleetArn = "string",
-  Certificate = "string",
-  DisplayName = "string"
-)
-}
-}
+Imports the root certificate of a certificate authority (CA) used to obtain TLS certificates used by associated websites within the company network.
 
+See \url{https://paws-r.github.io/docs/worklink/associate_website_certificate_authority.html} for full documentation.
+}
 \keyword{internal}

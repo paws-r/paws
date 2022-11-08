@@ -5,7 +5,7 @@
 \title{Disables EBS encryption by default for your account in the current
 Region}
 \usage{
-ec2_disable_ebs_encryption_by_default(DryRun)
+ec2_disable_ebs_encryption_by_default(DryRun = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -13,30 +13,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EbsEncryptionByDefault = TRUE|FALSE
-)
-}
-}
 \description{
-Disables EBS encryption by default for your account in the current
-Region.
+Disables EBS encryption by default for your account in the current Region.
 
-After you disable encryption by default, you can still create encrypted
-volumes by enabling encryption when you create each volume.
-
-Disabling encryption by default does not change the encryption status of
-your existing volumes.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/disable_ebs_encryption_by_default.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disable_ebs_encryption_by_default(
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

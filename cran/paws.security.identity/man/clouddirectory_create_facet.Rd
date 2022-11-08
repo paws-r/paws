@@ -4,8 +4,13 @@
 \alias{clouddirectory_create_facet}
 \title{Creates a new Facet in a schema}
 \usage{
-clouddirectory_create_facet(SchemaArn, Name, Attributes, ObjectType,
-  FacetStyle)
+clouddirectory_create_facet(
+  SchemaArn,
+  Name,
+  Attributes = NULL,
+  ObjectType = NULL,
+  FacetStyle = NULL
+)
 }
 \arguments{
 \item{SchemaArn}{[required] The schema ARN in which the new Facet will be created. For more
@@ -31,52 +36,9 @@ more information, see
 defined in the schema. For dynamic facets, attributes can be defined
 during data plane operations.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates a new Facet in a schema. Facet creation is allowed only in
-development or applied schemas.
-}
-\section{Request syntax}{
-\preformatted{svc$create_facet(
-  SchemaArn = "string",
-  Name = "string",
-  Attributes = list(
-    list(
-      Name = "string",
-      AttributeDefinition = list(
-        Type = "STRING"|"BINARY"|"BOOLEAN"|"NUMBER"|"DATETIME"|"VARIANT",
-        DefaultValue = list(
-          StringValue = "string",
-          BinaryValue = raw,
-          BooleanValue = TRUE|FALSE,
-          NumberValue = "string",
-          DatetimeValue = as.POSIXct(
-            "2015-01-01"
-          )
-        ),
-        IsImmutable = TRUE|FALSE,
-        Rules = list(
-          list(
-            Type = "BINARY_LENGTH"|"NUMBER_COMPARISON"|"STRING_FROM_SET"|"STRING_LENGTH",
-            Parameters = list(
-              "string"
-            )
-          )
-        )
-      ),
-      AttributeReference = list(
-        TargetFacetName = "string",
-        TargetAttributeName = "string"
-      ),
-      RequiredBehavior = "REQUIRED_ALWAYS"|"NOT_REQUIRED"
-    )
-  ),
-  ObjectType = "NODE"|"LEAF_NODE"|"POLICY"|"INDEX",
-  FacetStyle = "STATIC"|"DYNAMIC"
-)
-}
-}
+Creates a new Facet in a schema. Facet creation is allowed only in development or applied schemas.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/create_facet.html} for full documentation.
+}
 \keyword{internal}

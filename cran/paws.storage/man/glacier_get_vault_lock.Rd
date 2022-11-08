@@ -16,57 +16,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Policy = "string",
-  State = "string",
-  ExpirationDate = "string",
-  CreationDate = "string"
-)
-}
-}
 \description{
-This operation retrieves the following attributes from the \code{lock-policy}
-subresource set on the specified vault:
-\itemize{
-\item The vault lock policy set on the vault.
-\item The state of the vault lock, which is either \code{InProgess} or
-\code{Locked}.
-\item When the lock ID expires. The lock ID is used to complete the vault
-locking process.
-\item When the vault lock was initiated and put into the \code{InProgress}
-state.
-}
+This operation retrieves the following attributes from the \code{lock-policy} subresource set on the specified vault:
 
-A vault lock is put into the \code{InProgress} state by calling
-\code{\link[=glacier_initiate_vault_lock]{initiate_vault_lock}}. A vault lock is
-put into the \code{Locked} state by calling
-\code{\link[=glacier_complete_vault_lock]{complete_vault_lock}}. You can abort the
-vault locking process by calling
-\code{\link[=glacier_abort_vault_lock]{abort_vault_lock}}. For more information
-about the vault locking process, \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
-
-If there is no vault lock policy set on the vault, the operation returns
-a \verb{404 Not found} error. For more information about vault lock policies,
-\href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html}{Amazon Glacier Access Control with Vault Lock Policies}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_vault_lock(
-  accountId = "string",
-  vaultName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The example retrieves the attributes from the lock-policy subresource
-# set on the vault named examplevault.
-svc$get_vault_lock(
-  accountId = "-",
-  vaultName = "examplevault"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/get_vault_lock.html} for full documentation.
 }
 \keyword{internal}

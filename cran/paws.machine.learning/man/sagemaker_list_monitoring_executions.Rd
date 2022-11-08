@@ -4,11 +4,23 @@
 \alias{sagemaker_list_monitoring_executions}
 \title{Returns list of all monitoring job executions}
 \usage{
-sagemaker_list_monitoring_executions(MonitoringScheduleName,
-  EndpointName, SortBy, SortOrder, NextToken, MaxResults,
-  ScheduledTimeBefore, ScheduledTimeAfter, CreationTimeBefore,
-  CreationTimeAfter, LastModifiedTimeBefore, LastModifiedTimeAfter,
-  StatusEquals, MonitoringJobDefinitionName, MonitoringTypeEquals)
+sagemaker_list_monitoring_executions(
+  MonitoringScheduleName = NULL,
+  EndpointName = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  ScheduledTimeBefore = NULL,
+  ScheduledTimeAfter = NULL,
+  CreationTimeBefore = NULL,
+  CreationTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  StatusEquals = NULL,
+  MonitoringJobDefinitionName = NULL,
+  MonitoringTypeEquals = NULL
+)
 }
 \arguments{
 \item{MonitoringScheduleName}{Name of a specific schedule to fetch jobs for.}
@@ -47,66 +59,9 @@ definitions.}
 \item{MonitoringTypeEquals}{A filter that returns only the monitoring job runs of the specified
 monitoring type.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MonitoringExecutionSummaries = list(
-    list(
-      MonitoringScheduleName = "string",
-      ScheduledTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      MonitoringExecutionStatus = "Pending"|"Completed"|"CompletedWithViolations"|"InProgress"|"Failed"|"Stopping"|"Stopped",
-      ProcessingJobArn = "string",
-      EndpointName = "string",
-      FailureReason = "string",
-      MonitoringJobDefinitionName = "string",
-      MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns list of all monitoring job executions.
-}
-\section{Request syntax}{
-\preformatted{svc$list_monitoring_executions(
-  MonitoringScheduleName = "string",
-  EndpointName = "string",
-  SortBy = "CreationTime"|"ScheduledTime"|"Status",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123,
-  ScheduledTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  ScheduledTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  StatusEquals = "Pending"|"Completed"|"CompletedWithViolations"|"InProgress"|"Failed"|"Stopping"|"Stopped",
-  MonitoringJobDefinitionName = "string",
-  MonitoringTypeEquals = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_monitoring_executions.html} for full documentation.
+}
 \keyword{internal}

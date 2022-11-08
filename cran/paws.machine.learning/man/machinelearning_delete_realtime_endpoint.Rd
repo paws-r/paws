@@ -9,28 +9,9 @@ machinelearning_delete_realtime_endpoint(MLModelId)
 \arguments{
 \item{MLModelId}{[required] The ID assigned to the \code{MLModel} during creation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MLModelId = "string",
-  RealtimeEndpointInfo = list(
-    PeakRequestsPerSecond = 123,
-    CreatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndpointUrl = "string",
-    EndpointStatus = "NONE"|"READY"|"UPDATING"|"FAILED"
-  )
-)
-}
-}
 \description{
 Deletes a real time endpoint of an \code{MLModel}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_realtime_endpoint(
-  MLModelId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/machinelearning/delete_realtime_endpoint.html} for full documentation.
+}
 \keyword{internal}

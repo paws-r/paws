@@ -4,28 +4,36 @@
 \alias{s3_put_object_tagging}
 \title{Sets the supplied tag-set to an object that already exists in a bucket}
 \usage{
-s3_put_object_tagging(Bucket, Key, VersionId, ContentMD5, Tagging,
-  ExpectedBucketOwner)
+s3_put_object_tagging(
+  Bucket,
+  Key,
+  VersionId = NULL,
+  ContentMD5 = NULL,
+  ChecksumAlgorithm = NULL,
+  Tagging,
+  ExpectedBucketOwner = NULL,
+  RequestPayer = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name containing the object.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see Using access
+points in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
-\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
-provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see Using
+Amazon S3 on Outposts in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Name of the object key.}
 
@@ -33,115 +41,32 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{ContentMD5}{The MD5 hash for the request body.
 
-For requests made using the AWS Command Line Interface (CLI) or AWS
-SDKs, this field is calculated automatically.}
+For requests made using the Amazon Web Services Command Line Interface
+(CLI) or Amazon Web Services SDKs, this field is calculated
+automatically.}
+
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+using the SDK. This header will not provide any additional functionality
+if not using the SDK. When sending this header, there must be a
+corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+Otherwise, Amazon S3 fails the request with the HTTP status code
+\verb{400 Bad Request}. For more information, see Checking object integrity
+in the \emph{Amazon S3 User Guide}.
+
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.}
 
 \item{Tagging}{[required] Container for the \code{TagSet} and \code{Tag} elements}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  VersionId = "string"
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
+
+\item{RequestPayer}{}
 }
 \description{
 Sets the supplied tag-set to an object that already exists in a bucket.
 
-A tag is a key-value pair. You can associate tags with an object by
-sending a PUT request against the tagging subresource that is associated
-with the object. You can retrieve tags by sending a GET request. For
-more information, see \code{\link[=s3_get_object_tagging]{get_object_tagging}}.
-
-For tagging-related restrictions related to characters and encodings,
-see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html}{Tag Restrictions}.
-Note that Amazon S3 limits the maximum number of tags to 10 tags per
-object.
-
-To use this operation, you must have permission to perform the
-\code{s3:PutObjectTagging} action. By default, the bucket owner has this
-permission and can grant this permission to others.
-
-To put tags of any other version, use the \code{versionId} query parameter.
-You also need permission for the \code{s3:PutObjectVersionTagging} action.
-
-For information about the Amazon S3 object tagging feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html}{Object Tagging}.
-
-\strong{Special Errors}
-\itemize{
-\item 
-\itemize{
-\item \emph{Code: InvalidTagError}
-\item \emph{Cause: The tag provided was not a valid tag. This error can
-occur if the tag did not pass input validation. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html}{Object Tagging}.}
-}
-\item 
-\itemize{
-\item \emph{Code: MalformedXMLError}
-\item \emph{Cause: The XML provided does not match the schema.}
-}
-\item 
-\itemize{
-\item \emph{Code: OperationAbortedError}
-\item \emph{Cause: A conflicting conditional operation is currently in
-progress against this resource. Please try again.}
-}
-\item 
-\itemize{
-\item \emph{Code: InternalError}
-\item \emph{Cause: The service was unable to apply the provided tag to the
-object.}
-}
-}
-
-\strong{Related Resources}
-\itemize{
-\item \code{\link[=s3_get_object_tagging]{get_object_tagging}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$put_object_tagging(
-  Bucket = "string",
-  Key = "string",
-  VersionId = "string",
-  ContentMD5 = "string",
-  Tagging = list(
-    TagSet = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  ),
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example adds tags to an existing object.
-svc$put_object_tagging(
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg",
-  Tagging = list(
-    TagSet = list(
-      list(
-        Key = "Key3",
-        Value = "Value3"
-      ),
-      list(
-        Key = "Key4",
-        Value = "Value4"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/put_object_tagging.html} for full documentation.
 }
 \keyword{internal}

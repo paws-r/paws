@@ -4,8 +4,16 @@
 \alias{guardduty_create_filter}
 \title{Creates a filter using the specified finding criteria}
 \usage{
-guardduty_create_filter(DetectorId, Name, Description, Action, Rank,
-  FindingCriteria, ClientToken, Tags)
+guardduty_create_filter(
+  DetectorId,
+  Name,
+  Description = NULL,
+  Action = NULL,
+  Rank = NULL,
+  FindingCriteria,
+  ClientToken = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector belonging to the GuardDuty account that you want
@@ -55,6 +63,7 @@ You can only use the following attributes to query findings:
 \item service.action.awsApiCallAction.api
 \item service.action.awsApiCallAction.callerType
 \item service.action.awsApiCallAction.errorCode
+\item service.action.awsApiCallAction.userAgent
 \item service.action.awsApiCallAction.remoteIpDetails.city.cityName
 \item service.action.awsApiCallAction.remoteIpDetails.country.countryName
 \item service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
@@ -74,6 +83,11 @@ You can only use the following attributes to query findings:
 \item service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
 \item service.action.networkConnectionAction.remotePortDetails.port
 \item service.additionalInfo.threatListName
+\item resource.s3BucketDetails.publicAccess.effectivePermissions
+\item resource.s3BucketDetails.name
+\item resource.s3BucketDetails.tags.key
+\item resource.s3BucketDetails.tags.value
+\item resource.s3BucketDetails.type
 \item service.archived
 
 When this attribute is set to TRUE, only archived findings are
@@ -93,54 +107,9 @@ milliseconds.
 
 \item{Tags}{The tags to be added to a new filter resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string"
-)
-}
-}
 \description{
 Creates a filter using the specified finding criteria.
-}
-\section{Request syntax}{
-\preformatted{svc$create_filter(
-  DetectorId = "string",
-  Name = "string",
-  Description = "string",
-  Action = "NOOP"|"ARCHIVE",
-  Rank = 123,
-  FindingCriteria = list(
-    Criterion = list(
-      list(
-        Eq = list(
-          "string"
-        ),
-        Neq = list(
-          "string"
-        ),
-        Gt = 123,
-        Gte = 123,
-        Lt = 123,
-        Lte = 123,
-        Equals = list(
-          "string"
-        ),
-        NotEquals = list(
-          "string"
-        ),
-        GreaterThan = 123,
-        GreaterThanOrEqual = 123,
-        LessThan = 123,
-        LessThanOrEqual = 123
-      )
-    )
-  ),
-  ClientToken = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/create_filter.html} for full documentation.
+}
 \keyword{internal}

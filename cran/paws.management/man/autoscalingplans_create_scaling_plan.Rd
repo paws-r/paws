@@ -4,8 +4,11 @@
 \alias{autoscalingplans_create_scaling_plan}
 \title{Creates a scaling plan}
 \usage{
-autoscalingplans_create_scaling_plan(ScalingPlanName, ApplicationSource,
-  ScalingInstructions)
+autoscalingplans_create_scaling_plan(
+  ScalingPlanName,
+  ApplicationSource,
+  ScalingInstructions
+)
 }
 \arguments{
 \item{ScalingPlanName}{[required] The name of the scaling plan. Names cannot contain vertical bars,
@@ -24,87 +27,9 @@ For more information, see
 \href{https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html}{ScalingInstruction}
 in the \emph{AWS Auto Scaling API Reference}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ScalingPlanVersion = 123
-)
-}
-}
 \description{
 Creates a scaling plan.
-}
-\section{Request syntax}{
-\preformatted{svc$create_scaling_plan(
-  ScalingPlanName = "string",
-  ApplicationSource = list(
-    CloudFormationStackARN = "string",
-    TagFilters = list(
-      list(
-        Key = "string",
-        Values = list(
-          "string"
-        )
-      )
-    )
-  ),
-  ScalingInstructions = list(
-    list(
-      ServiceNamespace = "autoscaling"|"ecs"|"ec2"|"rds"|"dynamodb",
-      ResourceId = "string",
-      ScalableDimension = "autoscaling:autoScalingGroup:DesiredCapacity"|"ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"rds:cluster:ReadReplicaCount"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits",
-      MinCapacity = 123,
-      MaxCapacity = 123,
-      TargetTrackingConfigurations = list(
-        list(
-          PredefinedScalingMetricSpecification = list(
-            PredefinedScalingMetricType = "ASGAverageCPUUtilization"|"ASGAverageNetworkIn"|"ASGAverageNetworkOut"|"DynamoDBReadCapacityUtilization"|"DynamoDBWriteCapacityUtilization"|"ECSServiceAverageCPUUtilization"|"ECSServiceAverageMemoryUtilization"|"ALBRequestCountPerTarget"|"RDSReaderAverageCPUUtilization"|"RDSReaderAverageDatabaseConnections"|"EC2SpotFleetRequestAverageCPUUtilization"|"EC2SpotFleetRequestAverageNetworkIn"|"EC2SpotFleetRequestAverageNetworkOut",
-            ResourceLabel = "string"
-          ),
-          CustomizedScalingMetricSpecification = list(
-            MetricName = "string",
-            Namespace = "string",
-            Dimensions = list(
-              list(
-                Name = "string",
-                Value = "string"
-              )
-            ),
-            Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-            Unit = "string"
-          ),
-          TargetValue = 123.0,
-          DisableScaleIn = TRUE|FALSE,
-          ScaleOutCooldown = 123,
-          ScaleInCooldown = 123,
-          EstimatedInstanceWarmup = 123
-        )
-      ),
-      PredefinedLoadMetricSpecification = list(
-        PredefinedLoadMetricType = "ASGTotalCPUUtilization"|"ASGTotalNetworkIn"|"ASGTotalNetworkOut"|"ALBTargetGroupRequestCount",
-        ResourceLabel = "string"
-      ),
-      CustomizedLoadMetricSpecification = list(
-        MetricName = "string",
-        Namespace = "string",
-        Dimensions = list(
-          list(
-            Name = "string",
-            Value = "string"
-          )
-        ),
-        Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-        Unit = "string"
-      ),
-      ScheduledActionBufferTime = 123,
-      PredictiveScalingMaxCapacityBehavior = "SetForecastCapacityToMaxCapacity"|"SetMaxCapacityToForecastCapacity"|"SetMaxCapacityAboveForecastCapacity",
-      PredictiveScalingMaxCapacityBuffer = 123,
-      PredictiveScalingMode = "ForecastAndScale"|"ForecastOnly",
-      ScalingPolicyUpdateBehavior = "KeepExternalPolicies"|"ReplaceExternalPolicies",
-      DisableDynamicScaling = TRUE|FALSE
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/autoscalingplans/create_scaling_plan.html} for full documentation.
+}
 \keyword{internal}

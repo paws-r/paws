@@ -4,8 +4,13 @@
 \alias{elbv2_describe_target_groups}
 \title{Describes the specified target groups or all of your target groups}
 \usage{
-elbv2_describe_target_groups(LoadBalancerArn, TargetGroupArns, Names,
-  Marker, PageSize)
+elbv2_describe_target_groups(
+  LoadBalancerArn = NULL,
+  TargetGroupArns = NULL,
+  Names = NULL,
+  Marker = NULL,
+  PageSize = NULL
+)
 }
 \arguments{
 \item{LoadBalancerArn}{The Amazon Resource Name (ARN) of the load balancer.}
@@ -19,69 +24,9 @@ previous call.)}
 
 \item{PageSize}{The maximum number of results to return with this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TargetGroups = list(
-    list(
-      TargetGroupArn = "string",
-      TargetGroupName = "string",
-      Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-      Port = 123,
-      VpcId = "string",
-      HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
-      HealthCheckPort = "string",
-      HealthCheckEnabled = TRUE|FALSE,
-      HealthCheckIntervalSeconds = 123,
-      HealthCheckTimeoutSeconds = 123,
-      HealthyThresholdCount = 123,
-      UnhealthyThresholdCount = 123,
-      HealthCheckPath = "string",
-      Matcher = list(
-        HttpCode = "string",
-        GrpcCode = "string"
-      ),
-      LoadBalancerArns = list(
-        "string"
-      ),
-      TargetType = "instance"|"ip"|"lambda",
-      ProtocolVersion = "string"
-    )
-  ),
-  NextMarker = "string"
-)
-}
-}
 \description{
-Describes the specified target groups or all of your target groups. By
-default, all target groups are described. Alternatively, you can specify
-one of the following to filter the results: the ARN of the load
-balancer, the names of one or more target groups, or the ARNs of one or
-more target groups.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_target_groups(
-  LoadBalancerArn = "string",
-  TargetGroupArns = list(
-    "string"
-  ),
-  Names = list(
-    "string"
-  ),
-  Marker = "string",
-  PageSize = 123
-)
-}
-}
+Describes the specified target groups or all of your target groups. By default, all target groups are described. Alternatively, you can specify one of the following to filter the results: the ARN of the load balancer, the names of one or more target groups, or the ARNs of one or more target groups.
 
-\examples{
-\dontrun{
-# This example describes the specified target group.
-svc$describe_target_groups(
-  TargetGroupArns = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-tar..."
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/describe_target_groups.html} for full documentation.
 }
 \keyword{internal}

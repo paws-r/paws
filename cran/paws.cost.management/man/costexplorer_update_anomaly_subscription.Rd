@@ -4,50 +4,32 @@
 \alias{costexplorer_update_anomaly_subscription}
 \title{Updates an existing cost anomaly monitor subscription}
 \usage{
-costexplorer_update_anomaly_subscription(SubscriptionArn, Threshold,
-  Frequency, MonitorArnList, Subscribers, SubscriptionName)
+costexplorer_update_anomaly_subscription(
+  SubscriptionArn,
+  Threshold = NULL,
+  Frequency = NULL,
+  MonitorArnList = NULL,
+  Subscribers = NULL,
+  SubscriptionName = NULL
+)
 }
 \arguments{
 \item{SubscriptionArn}{[required] A cost anomaly subscription Amazon Resource Name (ARN).}
 
 \item{Threshold}{The update to the threshold value for receiving notifications.}
 
-\item{Frequency}{The update to the frequency value at which subscribers will receive
+\item{Frequency}{The update to the frequency value that subscribers receive
 notifications.}
 
 \item{MonitorArnList}{A list of cost anomaly monitor ARNs.}
 
 \item{Subscribers}{The update to the subscriber list.}
 
-\item{SubscriptionName}{The subscription's new name.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  SubscriptionArn = "string"
-)
-}
+\item{SubscriptionName}{The new name of the subscription.}
 }
 \description{
 Updates an existing cost anomaly monitor subscription.
-}
-\section{Request syntax}{
-\preformatted{svc$update_anomaly_subscription(
-  SubscriptionArn = "string",
-  Threshold = 123.0,
-  Frequency = "DAILY"|"IMMEDIATE"|"WEEKLY",
-  MonitorArnList = list(
-    "string"
-  ),
-  Subscribers = list(
-    list(
-      Address = "string",
-      Type = "EMAIL"|"SNS",
-      Status = "CONFIRMED"|"DECLINED"
-    )
-  ),
-  SubscriptionName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/costexplorer/update_anomaly_subscription.html} for full documentation.
+}
 \keyword{internal}

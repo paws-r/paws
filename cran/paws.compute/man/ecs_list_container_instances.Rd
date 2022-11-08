@@ -4,8 +4,13 @@
 \alias{ecs_list_container_instances}
 \title{Returns a list of container instances in a specified cluster}
 \usage{
-ecs_list_container_instances(cluster, filter, nextToken, maxResults,
-  status)
+ecs_list_container_instances(
+  cluster = NULL,
+  filter = NULL,
+  nextToken = NULL,
+  maxResults = NULL,
+  status = NULL
+)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
@@ -21,23 +26,23 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 \item{nextToken}{The \code{nextToken} value returned from a
 \code{\link[=ecs_list_container_instances]{list_container_instances}} request
 indicating that more results are available to fulfill the request and
-further calls will be needed. If \code{maxResults} was provided, it is
-possible the number of results to be fewer than \code{maxResults}.
+further calls are needed. If \code{maxResults} was provided, it's possible
+the number of results to be fewer than \code{maxResults}.
 
 This token should be treated as an opaque identifier that is only used
 to retrieve the next items in a list and not for other programmatic
 purposes.}
 
-\item{maxResults}{The maximum number of container instance results returned by
-\code{\link[=ecs_list_container_instances]{list_container_instances}} in paginated
-output. When this parameter is used,
+\item{maxResults}{The maximum number of container instance results that
+\code{\link[=ecs_list_container_instances]{list_container_instances}} returned in
+paginated output. When this parameter is used,
 \code{\link[=ecs_list_container_instances]{list_container_instances}} only returns
 \code{maxResults} results in a single page along with a \code{nextToken} response
 element. The remaining results of the initial request can be seen by
 sending another
 \code{\link[=ecs_list_container_instances]{list_container_instances}} request with
 the returned \code{nextToken} value. This value can be between 1 and 100. If
-this parameter is not used, then
+this parameter isn't used, then
 \code{\link[=ecs_list_container_instances]{list_container_instances}} returns up to
 100 results and a \code{nextToken} value if applicable.}
 
@@ -45,45 +50,12 @@ this parameter is not used, then
 the \code{DRAINING} status, the results include only container instances that
 have been set to \code{DRAINING} using
 \code{\link[=ecs_update_container_instances_state]{update_container_instances_state}}.
-If you do not specify this parameter, the default is to include
-container instances set to all states other than \code{INACTIVE}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  containerInstanceArns = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
+If you don't specify this parameter, the default is to include container
+instances set to all states other than \code{INACTIVE}.}
 }
 \description{
-Returns a list of container instances in a specified cluster. You can
-filter the results of a
-\code{\link[=ecs_list_container_instances]{list_container_instances}} operation
-with cluster query language statements inside the \code{filter} parameter.
-For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language}
-in the \emph{Amazon Elastic Container Service Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_container_instances(
-  cluster = "string",
-  filter = "string",
-  nextToken = "string",
-  maxResults = 123,
-  status = "ACTIVE"|"DRAINING"|"REGISTERING"|"DEREGISTERING"|"REGISTRATION_FAILED"
-)
-}
-}
+Returns a list of container instances in a specified cluster. You can filter the results of a \code{\link[=ecs_list_container_instances]{list_container_instances}} operation with cluster query language statements inside the \code{filter} parameter. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html}{Cluster Query Language} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-\examples{
-\dontrun{
-# This example lists all of your available container instances in the
-# specified cluster in your default region.
-svc$list_container_instances(
-  cluster = "default"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecs/list_container_instances.html} for full documentation.
 }
 \keyword{internal}

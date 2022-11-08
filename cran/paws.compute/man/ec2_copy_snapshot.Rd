@@ -5,11 +5,31 @@
 \title{Copies a point-in-time snapshot of an EBS volume and stores it in Amazon
 S3}
 \usage{
-ec2_copy_snapshot(Description, DestinationRegion, Encrypted, KmsKeyId,
-  PresignedUrl, SourceRegion, SourceSnapshotId, TagSpecifications, DryRun)
+ec2_copy_snapshot(
+  Description = NULL,
+  DestinationOutpostArn = NULL,
+  DestinationRegion = NULL,
+  Encrypted = NULL,
+  KmsKeyId = NULL,
+  PresignedUrl = NULL,
+  SourceRegion,
+  SourceSnapshotId,
+  TagSpecifications = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{Description}{A description for the EBS snapshot.}
+
+\item{DestinationOutpostArn}{The Amazon Resource Name (ARN) of the Outpost to which to copy the
+snapshot. Only specify this parameter when copying a snapshot from an
+Amazon Web Services Region to an Outpost. The snapshot must be in the
+Region for the destination Outpost. You cannot copy a snapshot from an
+Outpost to a Region, from one Outpost to another, or within the same
+Outpost.
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#copy-snapshots}{Copy snapshots from an Amazon Web Services Region to an Outpost}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{DestinationRegion}{The destination Region to use in the \code{PresignedUrl} parameter of a
 snapshot copy operation. This parameter is only valid for specifying the
@@ -17,8 +37,8 @@ destination Region in a \code{PresignedUrl} parameter, where it is required.
 
 The snapshot copy is sent to the regional endpoint that you sent the
 HTTP request to (for example, \verb{ec2.us-east-1.amazonaws.com}). With the
-AWS CLI, this is specified using the \code{--region} parameter or the default
-Region in your AWS configuration file.}
+CLI, this is specified using the \code{--region} parameter or the default
+Region in your Amazon Web Services configuration file.}
 
 \item{Encrypted}{To encrypt a copy of an unencrypted snapshot if encryption by default is
 not enabled, enable encryption using this parameter. Otherwise, omit
@@ -27,12 +47,12 @@ parameter and encryption by default is not enabled. You cannot set this
 parameter to false. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
-\item{KmsKeyId}{The identifier of the AWS Key Management Service (AWS KMS) customer
-master key (CMK) to use for Amazon EBS encryption. If this parameter is
-not specified, your AWS managed CMK for EBS is used. If \code{KmsKeyId} is
-specified, the encrypted state must be \code{true}.
+\item{KmsKeyId}{The identifier of the Key Management Service (KMS) KMS key to use for
+Amazon EBS encryption. If this parameter is not specified, your KMS key
+for Amazon EBS is used. If \code{KmsKeyId} is specified, the encrypted state
+must be \code{true}.
 
-You can specify the CMK using any of the following:
+You can specify the KMS key using any of the following:
 \itemize{
 \item Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
 \item Key alias. For example, alias/ExampleAlias.
@@ -42,9 +62,9 @@ arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
 arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
 }
 
-AWS authenticates the CMK asynchronously. Therefore, if you specify an
-ID, alias, or ARN that is not valid, the action can appear to complete,
-but eventually fails.}
+Amazon Web Services authenticates the KMS key asynchronously. Therefore,
+if you specify an ID, alias, or ARN that is not valid, the action can
+appear to complete, but eventually fails.}
 
 \item{PresignedUrl}{When you copy an encrypted source snapshot using the Amazon EC2 Query
 API, you must supply a pre-signed URL. This parameter is optional for
@@ -53,9 +73,10 @@ unencrypted snapshots. For more information, see \href{https://docs.aws.amazon.c
 The \code{PresignedUrl} should use the snapshot source endpoint, the
 \code{\link[=ec2_copy_snapshot]{copy_snapshot}} action, and include the
 \code{SourceRegion}, \code{SourceSnapshotId}, and \code{DestinationRegion} parameters.
-The \code{PresignedUrl} must be signed using AWS Signature Version 4. Because
-EBS snapshots are stored in Amazon S3, the signing algorithm for this
-parameter uses the same logic that is described in \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
+The \code{PresignedUrl} must be signed using Amazon Web Services Signature
+Version 4. Because EBS snapshots are stored in Amazon S3, the signing
+algorithm for this parameter uses the same logic that is described in
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)}
 in the \emph{Amazon Simple Storage Service API Reference}. An invalid or
 improperly signed \code{PresignedUrl} will cause the copy operation to fail
 asynchronously, and the snapshot will move to an \code{error} state.}
@@ -71,77 +92,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SnapshotId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Copies a point-in-time snapshot of an EBS volume and stores it in Amazon
-S3. You can copy the snapshot within the same Region or from one Region
-to another. You can use the snapshot to create EBS volumes or Amazon
-Machine Images (AMIs).
+Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3. You can copy a snapshot within the same Region, from one Region to another, or from a Region to an Outpost. You can't copy a snapshot from an Outpost to a Region, from one Outpost to another, or within the same Outpost.
 
-Copies of encrypted EBS snapshots remain encrypted. Copies of
-unencrypted snapshots remain unencrypted, unless you enable encryption
-for the snapshot copy operation. By default, encrypted snapshot copies
-use the default AWS Key Management Service (AWS KMS) customer master key
-(CMK); however, you can specify a different CMK.
-
-To copy an encrypted snapshot that has been shared from another account,
-you must have permissions for the CMK used to encrypt the snapshot.
-
-Snapshots created by copying another snapshot have an arbitrary volume
-ID that should not be used for any purpose.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html}{Copying an Amazon EBS snapshot}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$copy_snapshot(
-  Description = "string",
-  DestinationRegion = "string",
-  Encrypted = TRUE|FALSE,
-  KmsKeyId = "string",
-  PresignedUrl = "string",
-  SourceRegion = "string",
-  SourceSnapshotId = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example copies a snapshot with the snapshot ID of
-# `snap-066877671789bd71b` from the `us-west-2` region to the
-# `us-east-1` region and adds a short description to identify the
-# snapshot.
-svc$copy_snapshot(
-  Description = "This is my copied snapshot.",
-  DestinationRegion = "us-east-1",
-  SourceRegion = "us-west-2",
-  SourceSnapshotId = "snap-066877671789bd71b"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/copy_snapshot.html} for full documentation.
 }
 \keyword{internal}

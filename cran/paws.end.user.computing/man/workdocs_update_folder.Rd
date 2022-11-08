@@ -4,8 +4,13 @@
 \alias{workdocs_update_folder}
 \title{Updates the specified attributes of the specified folder}
 \usage{
-workdocs_update_folder(AuthenticationToken, FolderId, Name,
-  ParentFolderId, ResourceState)
+workdocs_update_folder(
+  AuthenticationToken = NULL,
+  FolderId,
+  Name = NULL,
+  ParentFolderId = NULL,
+  ResourceState = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -20,22 +25,9 @@ administrator credentials to access the API.}
 \item{ResourceState}{The resource state of the folder. Only ACTIVE and RECYCLED are accepted
 values from the API.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the specified attributes of the specified folder. The user must
-have access to both the folder and its parent folder, if applicable.
-}
-\section{Request syntax}{
-\preformatted{svc$update_folder(
-  AuthenticationToken = "string",
-  FolderId = "string",
-  Name = "string",
-  ParentFolderId = "string",
-  ResourceState = "ACTIVE"|"RESTORING"|"RECYCLING"|"RECYCLED"
-)
-}
-}
+Updates the specified attributes of the specified folder. The user must have access to both the folder and its parent folder, if applicable.
 
+See \url{https://paws-r.github.io/docs/workdocs/update_folder.html} for full documentation.
+}
 \keyword{internal}

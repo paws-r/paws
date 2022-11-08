@@ -4,44 +4,16 @@
 \alias{cognitosync_list_identity_pool_usage}
 \title{Gets a list of identity pools registered with Cognito}
 \usage{
-cognitosync_list_identity_pool_usage(NextToken, MaxResults)
+cognitosync_list_identity_pool_usage(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{A pagination token for obtaining the next page of results.}
 
 \item{MaxResults}{The maximum number of results to be returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityPoolUsages = list(
-    list(
-      IdentityPoolId = "string",
-      SyncSessionsCount = 123,
-      DataStorage = 123,
-      LastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  MaxResults = 123,
-  Count = 123,
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets a list of identity pools registered with Cognito.
 
-ListIdentityPoolUsage can only be called with developer credentials. You
-cannot make this API call with the temporary user credentials provided
-by Cognito Identity.
+See \url{https://paws-r.github.io/docs/cognitosync/list_identity_pool_usage.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_identity_pool_usage(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

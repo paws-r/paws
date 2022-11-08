@@ -4,12 +4,16 @@
 \alias{quicksight_create_theme_alias}
 \title{Creates a theme alias for a theme}
 \usage{
-quicksight_create_theme_alias(AwsAccountId, ThemeId, AliasName,
-  ThemeVersionNumber)
+quicksight_create_theme_alias(
+  AwsAccountId,
+  ThemeId,
+  AliasName,
+  ThemeVersionNumber
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme for the new theme
-alias.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the theme for
+the new theme alias.}
 
 \item{ThemeId}{[required] An ID for the theme alias.}
 
@@ -19,29 +23,9 @@ are reserved by Amazon QuickSight.}
 
 \item{ThemeVersionNumber}{[required] The version number of the theme.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ThemeAlias = list(
-    Arn = "string",
-    AliasName = "string",
-    ThemeVersionNumber = 123
-  ),
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Creates a theme alias for a theme.
-}
-\section{Request syntax}{
-\preformatted{svc$create_theme_alias(
-  AwsAccountId = "string",
-  ThemeId = "string",
-  AliasName = "string",
-  ThemeVersionNumber = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/create_theme_alias.html} for full documentation.
+}
 \keyword{internal}

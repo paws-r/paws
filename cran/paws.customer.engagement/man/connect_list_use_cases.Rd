@@ -2,14 +2,18 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_use_cases}
 \alias{connect_list_use_cases}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Lists the use cases for the integration association}
 \usage{
-connect_list_use_cases(InstanceId, IntegrationAssociationId, NextToken,
-  MaxResults)
+connect_list_use_cases(
+  InstanceId,
+  IntegrationAssociationId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{IntegrationAssociationId}{[required] The identifier for the integration association.}
 
@@ -17,35 +21,11 @@ connect_list_use_cases(InstanceId, IntegrationAssociationId, NextToken,
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UseCaseSummaryList = list(
-    list(
-      UseCaseId = "string",
-      UseCaseArn = "string",
-      UseCaseType = "RULES_EVALUATION"
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+Lists the use cases for the integration association.
 
-List the use cases.
+See \url{https://paws-r.github.io/docs/connect/list_use_cases.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_use_cases(
-  InstanceId = "string",
-  IntegrationAssociationId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

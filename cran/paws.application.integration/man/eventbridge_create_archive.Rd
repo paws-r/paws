@@ -4,13 +4,18 @@
 \alias{eventbridge_create_archive}
 \title{Creates an archive of events with the specified settings}
 \usage{
-eventbridge_create_archive(ArchiveName, EventSourceArn, Description,
-  EventPattern, RetentionDays)
+eventbridge_create_archive(
+  ArchiveName,
+  EventSourceArn,
+  Description = NULL,
+  EventPattern = NULL,
+  RetentionDays = NULL
+)
 }
 \arguments{
 \item{ArchiveName}{[required] The name for the archive to create.}
 
-\item{EventSourceArn}{[required] The ARN of the event source associated with the archive.}
+\item{EventSourceArn}{[required] The ARN of the event bus that sends events to the archive.}
 
 \item{Description}{A description for the archive.}
 
@@ -19,34 +24,9 @@ eventbridge_create_archive(ArchiveName, EventSourceArn, Description,
 \item{RetentionDays}{The number of days to retain events for. Default value is 0. If set to
 0, events are retained indefinitely}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ArchiveArn = "string",
-  State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
-  StateReason = "string",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Creates an archive of events with the specified settings. When you
-create an archive, incoming events might not immediately start being
-sent to the archive. Allow a short period of time for changes to take
-effect. If you do not specify a pattern to filter events sent to the
-archive, all events are sent to the archive except replayed events.
-Replayed events are not sent to an archive.
-}
-\section{Request syntax}{
-\preformatted{svc$create_archive(
-  ArchiveName = "string",
-  EventSourceArn = "string",
-  Description = "string",
-  EventPattern = "string",
-  RetentionDays = 123
-)
-}
-}
+Creates an archive of events with the specified settings. When you create an archive, incoming events might not immediately start being sent to the archive. Allow a short period of time for changes to take effect. If you do not specify a pattern to filter events sent to the archive, all events are sent to the archive except replayed events. Replayed events are not sent to an archive.
 
+See \url{https://paws-r.github.io/docs/eventbridge/create_archive.html} for full documentation.
+}
 \keyword{internal}

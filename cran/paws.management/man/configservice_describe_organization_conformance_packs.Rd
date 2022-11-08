@@ -5,63 +5,24 @@
 \title{Returns a list of organization conformance packs}
 \usage{
 configservice_describe_organization_conformance_packs(
-  OrganizationConformancePackNames, Limit, NextToken)
+  OrganizationConformancePackNames = NULL,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{OrganizationConformancePackNames}{The name that you assign to an organization conformance pack.}
 
 \item{Limit}{The maximum number of organization config packs returned on each page.
-If you do no specify a number, AWS Config uses the default. The default
-is 100.}
+If you do no specify a number, Config uses the default. The default is
+100.}
 
 \item{NextToken}{The nextToken string returned on a previous page that you use to get the
 next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OrganizationConformancePacks = list(
-    list(
-      OrganizationConformancePackName = "string",
-      OrganizationConformancePackArn = "string",
-      DeliveryS3Bucket = "string",
-      DeliveryS3KeyPrefix = "string",
-      ConformancePackInputParameters = list(
-        list(
-          ParameterName = "string",
-          ParameterValue = "string"
-        )
-      ),
-      ExcludedAccounts = list(
-        "string"
-      ),
-      LastUpdateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns a list of organization conformance packs.
 
-When you specify the limit and the next token, you receive a paginated
-response.
-
-Limit and next token are not applicable if you specify organization
-conformance packs names. They are only applicable, when you request all
-the organization conformance packs.
+See \url{https://paws-r.github.io/docs/configservice/describe_organization_conformance_packs.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_organization_conformance_packs(
-  OrganizationConformancePackNames = list(
-    "string"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,38 +4,20 @@
 \alias{glue_put_data_catalog_encryption_settings}
 \title{Sets the security configuration for a specified catalog}
 \usage{
-glue_put_data_catalog_encryption_settings(CatalogId,
-  DataCatalogEncryptionSettings)
+glue_put_data_catalog_encryption_settings(
+  CatalogId = NULL,
+  DataCatalogEncryptionSettings
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog to set the security configuration for. If
-none is provided, the AWS account ID is used by default.}
+none is provided, the Amazon Web Services account ID is used by default.}
 
 \item{DataCatalogEncryptionSettings}{[required] The security configuration to set.}
 }
-\value{
-An empty list.
-}
 \description{
-Sets the security configuration for a specified catalog. After the
-configuration has been set, the specified encryption is applied to every
-catalog write thereafter.
-}
-\section{Request syntax}{
-\preformatted{svc$put_data_catalog_encryption_settings(
-  CatalogId = "string",
-  DataCatalogEncryptionSettings = list(
-    EncryptionAtRest = list(
-      CatalogEncryptionMode = "DISABLED"|"SSE-KMS",
-      SseAwsKmsKeyId = "string"
-    ),
-    ConnectionPasswordEncryption = list(
-      ReturnConnectionPasswordEncrypted = TRUE|FALSE,
-      AwsKmsKeyId = "string"
-    )
-  )
-)
-}
-}
+Sets the security configuration for a specified catalog. After the configuration has been set, the specified encryption is applied to every catalog write thereafter.
 
+See \url{https://paws-r.github.io/docs/glue/put_data_catalog_encryption_settings.html} for full documentation.
+}
 \keyword{internal}

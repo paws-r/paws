@@ -516,6 +516,13 @@ appregistry_disassociate_resource <- function(application, resourceType, resourc
 #'   associatedResourceCount = 123,
 #'   tags = list(
 #'     "string"
+#'   ),
+#'   integrations = list(
+#'     resourceGroup = list(
+#'       state = "CREATING"|"CREATE_COMPLETE"|"CREATE_FAILED"|"UPDATING"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+#'       arn = "string",
+#'       errorMessage = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -546,6 +553,68 @@ appregistry_get_application <- function(application) {
   return(response)
 }
 .appregistry$operations$get_application <- appregistry_get_application
+
+#' Gets the resource associated with the application
+#'
+#' @description
+#' Gets the resource associated with the application.
+#'
+#' @usage
+#' appregistry_get_associated_resource(application, resourceType, resource)
+#'
+#' @param application &#91;required&#93; The name or ID of the application.
+#' @param resourceType &#91;required&#93; The type of resource associated with the application.
+#' @param resource &#91;required&#93; The name or ID of the resource associated with the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   resource = list(
+#'     name = "string",
+#'     arn = "string",
+#'     associationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     integrations = list(
+#'       resourceGroup = list(
+#'         state = "CREATING"|"CREATE_COMPLETE"|"CREATE_FAILED"|"UPDATING"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
+#'         arn = "string",
+#'         errorMessage = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_associated_resource(
+#'   application = "string",
+#'   resourceType = "CFN_STACK",
+#'   resource = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appregistry_get_associated_resource
+appregistry_get_associated_resource <- function(application, resourceType, resource) {
+  op <- new_operation(
+    name = "GetAssociatedResource",
+    http_method = "GET",
+    http_path = "/applications/{application}/resources/{resourceType}/{resource}",
+    paginator = list()
+  )
+  input <- .appregistry$get_associated_resource_input(application = application, resourceType = resourceType, resource = resource)
+  output <- .appregistry$get_associated_resource_output()
+  config <- get_config()
+  svc <- .appregistry$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appregistry$operations$get_associated_resource <- appregistry_get_associated_resource
 
 #' Retrieves an attribute group, either by its name or its ID
 #'
@@ -850,6 +919,67 @@ appregistry_list_attribute_groups <- function(nextToken = NULL, maxResults = NUL
 }
 .appregistry$operations$list_attribute_groups <- appregistry_list_attribute_groups
 
+#' Lists the details of all attribute groups associated with a specific
+#' application
+#'
+#' @description
+#' Lists the details of all attribute groups associated with a specific
+#' application. The results display in pages.
+#'
+#' @usage
+#' appregistry_list_attribute_groups_for_application(application,
+#'   nextToken, maxResults)
+#'
+#' @param application &#91;required&#93; The name or ID of the application.
+#' @param nextToken This token retrieves the next page of results after a previous API call.
+#' @param maxResults The upper bound of the number of results to return. The value cannot
+#' exceed 25. If you omit this parameter, it defaults to 25. This value is
+#' optional.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   attributeGroupsDetails = list(
+#'     list(
+#'       id = "string",
+#'       arn = "string",
+#'       name = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_attribute_groups_for_application(
+#'   application = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname appregistry_list_attribute_groups_for_application
+appregistry_list_attribute_groups_for_application <- function(application, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListAttributeGroupsForApplication",
+    http_method = "GET",
+    http_path = "/applications/{application}/attribute-group-details",
+    paginator = list()
+  )
+  input <- .appregistry$list_attribute_groups_for_application_input(application = application, nextToken = nextToken, maxResults = maxResults)
+  output <- .appregistry$list_attribute_groups_for_application_output()
+  config <- get_config()
+  svc <- .appregistry$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.appregistry$operations$list_attribute_groups_for_application <- appregistry_list_attribute_groups_for_application
+
 #' Lists all of the tags on the resource
 #'
 #' @description
@@ -897,22 +1027,23 @@ appregistry_list_tags_for_resource <- function(resourceArn) {
 }
 .appregistry$operations$list_tags_for_resource <- appregistry_list_tags_for_resource
 
-#' Syncs the resource with what is currently recorded in App registry
+#' Syncs the resource with current AppRegistry records
 #'
 #' @description
-#' Syncs the resource with what is currently recorded in App registry.
-#' Specifically, the resource’s App registry system tags are synced with
-#' its associated application. The resource is removed if it is not
-#' associated with the application. The caller must have permissions to
-#' read and update the resource.
+#' Syncs the resource with current AppRegistry records.
+#' 
+#' Specifically, the resource’s AppRegistry system tags sync with its
+#' associated application. We remove the resource's AppRegistry system tags
+#' if it does not associate with the application. The caller must have
+#' permissions to read and update the resource.
 #'
 #' @usage
 #' appregistry_sync_resource(resourceType, resource)
 #'
 #' @param resourceType &#91;required&#93; The type of resource of which the application will be associated.
 #' @param resource &#91;required&#93; An entity you can work with and specify with a name or ID. Examples
-#' include an Amazon EC2 instance, an AWS CloudFormation stack, or an
-#' Amazon S3 bucket.
+#' include an Amazon EC2 instance, an Amazon Web Services CloudFormation
+#' stack, or an Amazon S3 bucket.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1057,8 +1188,9 @@ appregistry_untag_resource <- function(resourceArn, tagKeys) {
 #' appregistry_update_application(application, name, description)
 #'
 #' @param application &#91;required&#93; The name or ID of the application that will be updated.
-#' @param name The new name of the application. The name must be unique in the region
-#' in which you are updating the application.
+#' @param name Deprecated: The new name of the application. The name must be unique in
+#' the region in which you are updating the application. Please do not use
+#' this field as we have stopped supporting name updates.
 #' @param description The new description of the application.
 #'
 #' @return
@@ -1123,8 +1255,9 @@ appregistry_update_application <- function(application, name = NULL, description
 #'
 #' @param attributeGroup &#91;required&#93; The name or ID of the attribute group that holds the attributes to
 #' describe the application.
-#' @param name The new name of the attribute group. The name must be unique in the
-#' region in which you are updating the attribute group.
+#' @param name Deprecated: The new name of the attribute group. The name must be unique
+#' in the region in which you are updating the attribute group. Please do
+#' not use this field as we have stopped supporting name updates.
 #' @param description The description of the attribute group that the user provides.
 #' @param attributes A JSON string in the form of nested key-value pairs that represent the
 #' attributes in the group and describes an application and its components.

@@ -4,9 +4,17 @@
 \alias{elasticbeanstalk_create_application_version}
 \title{Creates an application version for the specified application}
 \usage{
-elasticbeanstalk_create_application_version(ApplicationName,
-  VersionLabel, Description, SourceBuildInformation, SourceBundle,
-  BuildConfiguration, AutoCreateApplication, Process, Tags)
+elasticbeanstalk_create_application_version(
+  ApplicationName,
+  VersionLabel,
+  Description = NULL,
+  SourceBuildInformation = NULL,
+  SourceBundle = NULL,
+  BuildConfiguration = NULL,
+  AutoCreateApplication = NULL,
+  Process = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application. If no application is found with this name,
@@ -57,105 +65,9 @@ server or Docker configuration.}
 Elastic Beanstalk applies these tags only to the application version.
 Environments that use the application version don't inherit the tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationVersion = list(
-    ApplicationVersionArn = "string",
-    ApplicationName = "string",
-    Description = "string",
-    VersionLabel = "string",
-    SourceBuildInformation = list(
-      SourceType = "Git"|"Zip",
-      SourceRepository = "CodeCommit"|"S3",
-      SourceLocation = "string"
-    ),
-    BuildArn = "string",
-    SourceBundle = list(
-      S3Bucket = "string",
-      S3Key = "string"
-    ),
-    DateCreated = as.POSIXct(
-      "2015-01-01"
-    ),
-    DateUpdated = as.POSIXct(
-      "2015-01-01"
-    ),
-    Status = "Processed"|"Unprocessed"|"Failed"|"Processing"|"Building"
-  )
-)
-}
-}
 \description{
-Creates an application version for the specified application. You can
-create an application version from a source bundle in Amazon S3, a
-commit in AWS CodeCommit, or the output of an AWS CodeBuild build as
-follows:
+Creates an application version for the specified application. You can create an application version from a source bundle in Amazon S3, a commit in AWS CodeCommit, or the output of an AWS CodeBuild build as follows:
 
-Specify a commit in an AWS CodeCommit repository with
-\code{SourceBuildInformation}.
-
-Specify a build in an AWS CodeBuild with \code{SourceBuildInformation} and
-\code{BuildConfiguration}.
-
-Specify a source bundle in S3 with \code{SourceBundle}
-
-Omit both \code{SourceBuildInformation} and \code{SourceBundle} to use the default
-sample application.
-
-After you create an application version with a specified Amazon S3
-bucket and key location, you can't change that Amazon S3 location. If
-you change the Amazon S3 location, you receive an exception when you
-attempt to launch an environment from the application version.
-}
-\section{Request syntax}{
-\preformatted{svc$create_application_version(
-  ApplicationName = "string",
-  VersionLabel = "string",
-  Description = "string",
-  SourceBuildInformation = list(
-    SourceType = "Git"|"Zip",
-    SourceRepository = "CodeCommit"|"S3",
-    SourceLocation = "string"
-  ),
-  SourceBundle = list(
-    S3Bucket = "string",
-    S3Key = "string"
-  ),
-  BuildConfiguration = list(
-    ArtifactName = "string",
-    CodeBuildServiceRole = "string",
-    ComputeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE",
-    Image = "string",
-    TimeoutInMinutes = 123
-  ),
-  AutoCreateApplication = TRUE|FALSE,
-  Process = TRUE|FALSE,
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation creates a new version (v1) of an application
-# named my-app:
-svc$create_application_version(
-  ApplicationName = "my-app",
-  AutoCreateApplication = TRUE,
-  Description = "my-app-v1",
-  Process = TRUE,
-  SourceBundle = list(
-    S3Bucket = "my-bucket",
-    S3Key = "sample.war"
-  ),
-  VersionLabel = "v1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/create_application_version.html} for full documentation.
 }
 \keyword{internal}

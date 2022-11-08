@@ -4,7 +4,7 @@
 \alias{storagegateway_list_tape_pools}
 \title{Lists custom tape pools}
 \usage{
-storagegateway_list_tape_pools(PoolARNs, Marker, Limit)
+storagegateway_list_tape_pools(PoolARNs = NULL, Marker = NULL, Limit = NULL)
 }
 \arguments{
 \item{PoolARNs}{The Amazon Resource Name (ARN) of each of the custom tape pools you want
@@ -17,43 +17,9 @@ of tape pools.}
 \item{Limit}{An optional number limit for the tape pools in the list returned by this
 call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PoolInfos = list(
-    list(
-      PoolARN = "string",
-      PoolName = "string",
-      StorageClass = "DEEP_ARCHIVE"|"GLACIER",
-      RetentionLockType = "COMPLIANCE"|"GOVERNANCE"|"NONE",
-      RetentionLockTimeInDays = 123,
-      PoolStatus = "ACTIVE"|"DELETED"
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Lists custom tape pools. You specify custom tape pools to list by
-specifying one or more custom tape pool Amazon Resource Names (ARNs). If
-you don't specify a custom tape pool ARN, the operation lists all custom
-tape pools.
+Lists custom tape pools. You specify custom tape pools to list by specifying one or more custom tape pool Amazon Resource Names (ARNs). If you don't specify a custom tape pool ARN, the operation lists all custom tape pools.
 
-This operation supports pagination. You can optionally specify the
-\code{Limit} parameter in the body to limit the number of tape pools in the
-response. If the number of tape pools returned in the response is
-truncated, the response includes a \code{Marker} element that you can use in
-your subsequent request to retrieve the next set of tape pools.
+See \url{https://paws-r.github.io/docs/storagegateway/list_tape_pools.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_tape_pools(
-  PoolARNs = list(
-    "string"
-  ),
-  Marker = "string",
-  Limit = 123
-)
-}
-}
-
 \keyword{internal}

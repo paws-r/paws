@@ -4,7 +4,7 @@
 \alias{worklink_update_domain_metadata}
 \title{Updates domain metadata, such as DisplayName}
 \usage{
-worklink_update_domain_metadata(FleetArn, DomainName, DisplayName)
+worklink_update_domain_metadata(FleetArn, DomainName, DisplayName = NULL)
 }
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
@@ -13,19 +13,9 @@ worklink_update_domain_metadata(FleetArn, DomainName, DisplayName)
 
 \item{DisplayName}{The name to display.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates domain metadata, such as DisplayName.
-}
-\section{Request syntax}{
-\preformatted{svc$update_domain_metadata(
-  FleetArn = "string",
-  DomainName = "string",
-  DisplayName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/update_domain_metadata.html} for full documentation.
+}
 \keyword{internal}

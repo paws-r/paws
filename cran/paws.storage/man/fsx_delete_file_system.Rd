@@ -2,106 +2,34 @@
 % Please edit documentation in R/fsx_operations.R
 \name{fsx_delete_file_system}
 \alias{fsx_delete_file_system}
-\title{Deletes a file system, deleting its contents}
+\title{Deletes a file system}
 \usage{
-fsx_delete_file_system(FileSystemId, ClientRequestToken,
-  WindowsConfiguration, LustreConfiguration)
+fsx_delete_file_system(
+  FileSystemId,
+  ClientRequestToken = NULL,
+  WindowsConfiguration = NULL,
+  LustreConfiguration = NULL,
+  OpenZFSConfiguration = NULL
+)
 }
 \arguments{
-\item{FileSystemId}{[required] The ID of the file system you want to delete.}
+\item{FileSystemId}{[required] The ID of the file system that you want to delete.}
 
 \item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
-idempotent deletion. This is automatically filled on your behalf when
-using the AWS CLI or SDK.}
+idempotent deletion. This token is automatically filled on your behalf
+when using the Command Line Interface (CLI) or an Amazon Web Services
+SDK.}
 
 \item{WindowsConfiguration}{}
 
 \item{LustreConfiguration}{}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  FileSystemId = "string",
-  Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING",
-  WindowsResponse = list(
-    FinalBackupId = "string",
-    FinalBackupTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  ),
-  LustreResponse = list(
-    FinalBackupId = "string",
-    FinalBackupTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
+
+\item{OpenZFSConfiguration}{The configuration object for the OpenZFS file system used in the
+\code{\link[=fsx_delete_file_system]{delete_file_system}} operation.}
 }
 \description{
-Deletes a file system, deleting its contents. After deletion, the file
-system no longer exists, and its data is gone. Any existing automatic
-backups will also be deleted.
+Deletes a file system. After deletion, the file system no longer exists, and its data is gone. Any existing automatic backups and snapshots are also deleted.
 
-By default, when you delete an Amazon FSx for Windows File Server file
-system, a final backup is created upon deletion. This final backup is
-not subject to the file system's retention policy, and must be manually
-deleted.
-
-The \code{\link[=fsx_delete_file_system]{delete_file_system}} action returns while
-the file system has the \code{DELETING} status. You can check the file system
-deletion status by calling the
-\code{\link[=fsx_describe_file_systems]{describe_file_systems}} action, which
-returns a list of file systems in your account. If you pass the file
-system ID for a deleted file system, the
-\code{\link[=fsx_describe_file_systems]{describe_file_systems}} returns a
-\code{FileSystemNotFound} error.
-
-Deleting an Amazon FSx for Lustre file system will fail with a 400
-BadRequest if a data repository task is in a \code{PENDING} or \code{EXECUTING}
-state.
-
-The data in a deleted file system is also deleted and can't be recovered
-by any means.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_file_system(
-  FileSystemId = "string",
-  ClientRequestToken = "string",
-  WindowsConfiguration = list(
-    SkipFinalBackup = TRUE|FALSE,
-    FinalBackupTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  ),
-  LustreConfiguration = list(
-    SkipFinalBackup = TRUE|FALSE,
-    FinalBackupTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation deletes an Amazon FSx file system.
-svc$delete_file_system(
-  FileSystemId = "fs-0498eed5fe91001ec"
-)
-}
-
+See \url{https://paws-r.github.io/docs/fsx/delete_file_system.html} for full documentation.
 }
 \keyword{internal}

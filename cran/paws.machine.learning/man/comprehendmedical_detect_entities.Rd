@@ -11,86 +11,9 @@ comprehendmedical_detect_entities(Text)
 entities. Each string must contain fewer than 20,000 bytes of
 characters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Entities = list(
-    list(
-      Id = 123,
-      BeginOffset = 123,
-      EndOffset = 123,
-      Score = 123.0,
-      Text = "string",
-      Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-      Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
-      Traits = list(
-        list(
-          Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
-          Score = 123.0
-        )
-      ),
-      Attributes = list(
-        list(
-          Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
-          Score = 123.0,
-          RelationshipScore = 123.0,
-          RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
-          Id = 123,
-          BeginOffset = 123,
-          EndOffset = 123,
-          Text = "string",
-          Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-          Traits = list(
-            list(
-              Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
-              Score = 123.0
-            )
-          )
-        )
-      )
-    )
-  ),
-  UnmappedAttributes = list(
-    list(
-      Type = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-      Attribute = list(
-        Type = "NAME"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"GENERIC_NAME"|"BRAND_NAME"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_NAME"|"TEST_VALUE"|"TEST_UNITS"|"PROCEDURE_NAME"|"TREATMENT_NAME"|"DATE"|"AGE"|"CONTACT_POINT"|"EMAIL"|"IDENTIFIER"|"URL"|"ADDRESS"|"PROFESSION"|"SYSTEM_ORGAN_SITE"|"DIRECTION"|"QUALITY"|"QUANTITY"|"TIME_EXPRESSION"|"TIME_TO_MEDICATION_NAME"|"TIME_TO_DX_NAME"|"TIME_TO_TEST_NAME"|"TIME_TO_PROCEDURE_NAME"|"TIME_TO_TREATMENT_NAME",
-        Score = 123.0,
-        RelationshipScore = 123.0,
-        RelationshipType = "EVERY"|"WITH_DOSAGE"|"ADMINISTERED_VIA"|"FOR"|"NEGATIVE"|"OVERLAP"|"DOSAGE"|"ROUTE_OR_MODE"|"FORM"|"FREQUENCY"|"DURATION"|"STRENGTH"|"RATE"|"ACUITY"|"TEST_VALUE"|"TEST_UNITS"|"DIRECTION"|"SYSTEM_ORGAN_SITE",
-        Id = 123,
-        BeginOffset = 123,
-        EndOffset = 123,
-        Text = "string",
-        Category = "MEDICATION"|"MEDICAL_CONDITION"|"PROTECTED_HEALTH_INFORMATION"|"TEST_TREATMENT_PROCEDURE"|"ANATOMY"|"TIME_EXPRESSION",
-        Traits = list(
-          list(
-            Name = "SIGN"|"SYMPTOM"|"DIAGNOSIS"|"NEGATION",
-            Score = 123.0
-          )
-        )
-      )
-    )
-  ),
-  PaginationToken = "string",
-  ModelVersion = "string"
-)
-}
-}
 \description{
-The \code{\link[=comprehendmedical_detect_entities]{detect_entities}} operation is
-deprecated. You should use the
-\code{\link[=comprehendmedical_detect_entities_v2]{detect_entities_v2}} operation
-instead.
+The \code{\link[=comprehendmedical_detect_entities]{detect_entities}} operation is deprecated. You should use the \code{\link[=comprehendmedical_detect_entities_v2]{detect_entities_v2}} operation instead.
 
-Inspects the clinical text for a variety of medical entities and returns
-specific information about them such as entity category, location, and
-confidence score on that information .
+See \url{https://paws-r.github.io/docs/comprehendmedical/detect_entities.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$detect_entities(
-  Text = "string"
-)
-}
-}
-
 \keyword{internal}

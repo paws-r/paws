@@ -548,13 +548,19 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
 #' To run this command, you must have the following permissions:
 #' 
 #' -   `resource-groups:ListGroupResources`
+#' 
+#' -   `cloudformation:DescribeStacks`
+#' 
+#' -   `cloudformation:ListStackResources`
+#' 
+#' -   `tag:GetResources`
 #'
 #' @usage
 #' resourcegroups_list_group_resources(GroupName, Group, Filters,
 #'   MaxResults, NextToken)
 #'
-#' @param GroupName ***Deprecated - don't use this parameter. Use the `Group` request field
-#' instead.***
+#' @param GroupName *Deprecated - don't use this parameter. Use the Group request field
+#' instead.*
 #' @param Group The name or the ARN of the resource group
 #' @param Filters Filters, formatted as ResourceFilter objects, that you want to apply to
 #' a [`list_group_resources`][resourcegroups_list_group_resources]
@@ -858,6 +864,12 @@ resourcegroups_put_group_configuration <- function(Group = NULL, Configuration =
 #' To run this command, you must have the following permissions:
 #' 
 #' -   `resource-groups:SearchResources`
+#' 
+#' -   `cloudformation:DescribeStacks`
+#' 
+#' -   `cloudformation:ListStackResources`
+#' 
+#' -   `tag:GetResources`
 #'
 #' @usage
 #' resourcegroups_search_resources(ResourceQuery, MaxResults, NextToken)

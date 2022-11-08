@@ -5,7 +5,7 @@
 \title{Retrieves the configuration for asynchronous invocation for a function,
 version, or alias}
 \usage{
-lambda_get_function_event_invoke_config(FunctionName, Qualifier)
+lambda_get_function_event_invoke_config(FunctionName, Qualifier = NULL)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function, version, or alias.
@@ -25,49 +25,9 @@ function name, it is limited to 64 characters in length.}
 
 \item{Qualifier}{A version number or alias name.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LastModified = as.POSIXct(
-    "2015-01-01"
-  ),
-  FunctionArn = "string",
-  MaximumRetryAttempts = 123,
-  MaximumEventAgeInSeconds = 123,
-  DestinationConfig = list(
-    OnSuccess = list(
-      Destination = "string"
-    ),
-    OnFailure = list(
-      Destination = "string"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves the configuration for asynchronous invocation for a function,
-version, or alias.
+Retrieves the configuration for asynchronous invocation for a function, version, or alias.
 
-To configure options for asynchronous invocation, use
-\code{\link[=lambda_put_function_event_invoke_config]{put_function_event_invoke_config}}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_function_event_invoke_config(
-  FunctionName = "string",
-  Qualifier = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns the asynchronous invocation configuration
-# for the BLUE alias of a function named my-function.
-svc$get_function_event_invoke_config(
-  FunctionName = "my-function",
-  Qualifier = "BLUE"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/get_function_event_invoke_config.html} for full documentation.
 }
 \keyword{internal}

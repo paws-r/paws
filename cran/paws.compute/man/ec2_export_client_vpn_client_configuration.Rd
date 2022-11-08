@@ -5,7 +5,7 @@
 \title{Downloads the contents of the Client VPN endpoint configuration file for
 the specified Client VPN endpoint}
 \usage{
-ec2_export_client_vpn_client_configuration(ClientVpnEndpointId, DryRun)
+ec2_export_client_vpn_client_configuration(ClientVpnEndpointId, DryRun = NULL)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint.}
@@ -15,24 +15,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClientConfiguration = "string"
-)
-}
-}
 \description{
-Downloads the contents of the Client VPN endpoint configuration file for
-the specified Client VPN endpoint. The Client VPN endpoint configuration
-file includes the Client VPN endpoint and certificate information
-clients need to establish a connection with the Client VPN endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$export_client_vpn_client_configuration(
-  ClientVpnEndpointId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN endpoint. The Client VPN endpoint configuration file includes the Client VPN endpoint and certificate information clients need to establish a connection with the Client VPN endpoint.
 
+See \url{https://paws-r.github.io/docs/ec2/export_client_vpn_client_configuration.html} for full documentation.
+}
 \keyword{internal}

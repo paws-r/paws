@@ -2,10 +2,10 @@
 % Please edit documentation in R/storagegateway_operations.R
 \name{storagegateway_list_file_shares}
 \alias{storagegateway_list_file_shares}
-\title{Gets a list of the file shares for a specific file gateway, or the list
-of file shares that belong to the calling user account}
+\title{Gets a list of the file shares for a specific S3 File Gateway, or the
+list of file shares that belong to the calling user account}
 \usage{
-storagegateway_list_file_shares(GatewayARN, Limit, Marker)
+storagegateway_list_file_shares(GatewayARN = NULL, Limit = NULL, Marker = NULL)
 }
 \arguments{
 \item{GatewayARN}{The Amazon Resource Name (ARN) of the gateway whose file shares you want
@@ -19,34 +19,9 @@ must be an integer with a value greater than zero. Optional.}
 operation. If present, \code{Marker} specifies where to continue the list
 from after a previous call to ListFileShares. Optional.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  NextMarker = "string",
-  FileShareInfoList = list(
-    list(
-      FileShareType = "NFS"|"SMB",
-      FileShareARN = "string",
-      FileShareId = "string",
-      FileShareStatus = "string",
-      GatewayARN = "string"
-    )
-  )
-)
-}
-}
 \description{
-Gets a list of the file shares for a specific file gateway, or the list
-of file shares that belong to the calling user account. This operation
-is only supported for file gateways.
-}
-\section{Request syntax}{
-\preformatted{svc$list_file_shares(
-  GatewayARN = "string",
-  Limit = 123,
-  Marker = "string"
-)
-}
-}
+Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that belong to the calling user account. This operation is only supported for S3 File Gateways.
 
+See \url{https://paws-r.github.io/docs/storagegateway/list_file_shares.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,7 @@
 \alias{storagegateway_update_smb_security_strategy}
 \title{Updates the SMB security strategy on a file gateway}
 \usage{
-storagegateway_update_smb_security_strategy(GatewayARN,
-  SMBSecurityStrategy)
+storagegateway_update_smb_security_strategy(GatewayARN, SMBSecurityStrategy)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -15,7 +14,7 @@ storagegateway_update_smb_security_strategy(GatewayARN,
 ClientSpecified: if you use this option, requests are established based
 on what is negotiated by the client. This option is recommended when you
 want to maximize compatibility across different clients in your
-environment.
+environment. Supported only in S3 File Gateway.
 
 MandatorySigning: if you use this option, file gateway only allows
 connections from SMBv2 or SMBv3 clients that have signing enabled. This
@@ -28,26 +27,9 @@ is highly recommended for environments that handle sensitive data. This
 option works with SMB clients on Microsoft Windows 8, Windows Server
 2012 or newer.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string"
-)
-}
-}
 \description{
-Updates the SMB security strategy on a file gateway. This action is only
-supported in file gateways.
+Updates the SMB security strategy on a file gateway. This action is only supported in file gateways.
 
-This API is called Security level in the User Guide.
-
-A higher security level can affect performance of the gateway.
+See \url{https://paws-r.github.io/docs/storagegateway/update_smb_security_strategy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_smb_security_strategy(
-  GatewayARN = "string",
-  SMBSecurityStrategy = "ClientSpecified"|"MandatorySigning"|"MandatoryEncryption"
-)
-}
-}
-
 \keyword{internal}

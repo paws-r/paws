@@ -4,43 +4,16 @@
 \alias{route53resolver_update_resolver_endpoint}
 \title{Updates the name of an inbound or an outbound Resolver endpoint}
 \usage{
-route53resolver_update_resolver_endpoint(ResolverEndpointId, Name)
+route53resolver_update_resolver_endpoint(ResolverEndpointId, Name = NULL)
 }
 \arguments{
 \item{ResolverEndpointId}{[required] The ID of the Resolver endpoint that you want to update.}
 
 \item{Name}{The name of the Resolver endpoint that you want to update.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResolverEndpoint = list(
-    Id = "string",
-    CreatorRequestId = "string",
-    Arn = "string",
-    Name = "string",
-    SecurityGroupIds = list(
-      "string"
-    ),
-    Direction = "INBOUND"|"OUTBOUND",
-    IpAddressCount = 123,
-    HostVPCId = "string",
-    Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
-    StatusMessage = "string",
-    CreationTime = "string",
-    ModificationTime = "string"
-  )
-)
-}
-}
 \description{
 Updates the name of an inbound or an outbound Resolver endpoint.
-}
-\section{Request syntax}{
-\preformatted{svc$update_resolver_endpoint(
-  ResolverEndpointId = "string",
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/route53resolver/update_resolver_endpoint.html} for full documentation.
+}
 \keyword{internal}

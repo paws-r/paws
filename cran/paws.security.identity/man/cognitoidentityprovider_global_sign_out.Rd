@@ -7,22 +7,12 @@
 cognitoidentityprovider_global_sign_out(AccessToken)
 }
 \arguments{
-\item{AccessToken}{[required] The access token.}
-}
-\value{
-An empty list.
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user who you want
+to sign out.}
 }
 \description{
-Signs out users from all devices. It also invalidates all refresh tokens
-issued to a user. The user's current access and Id tokens remain valid
-until their expiry. Access and Id tokens expire one hour after they are
-issued.
-}
-\section{Request syntax}{
-\preformatted{svc$global_sign_out(
-  AccessToken = "string"
-)
-}
-}
+Signs out users from all devices. It also invalidates all refresh tokens that Amazon Cognito has issued to a user. The user's current access and ID tokens remain valid until their expiry. By default, access and ID tokens expire one hour after Amazon Cognito issues them. A user can still use a hosted UI cookie to retrieve new tokens for the duration of the cookie validity period of 1 hour.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/global_sign_out.html} for full documentation.
+}
 \keyword{internal}

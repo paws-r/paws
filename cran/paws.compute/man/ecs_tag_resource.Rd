@@ -8,7 +8,7 @@ resourceArn}
 ecs_tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource to which to add tags.
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource to add tags to.
 Currently, the supported resources are Amazon ECS capacity providers,
 tasks, services, task definitions, clusters, and container instances.}
 
@@ -28,47 +28,15 @@ numbers, and spaces representable in UTF-8, and the following
 characters: + - = . _ : / @.
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
-such as a prefix for either keys or values as it is reserved for AWS
-use. You cannot edit or delete tag keys or values with this prefix.
-Tags with this prefix do not count against your tags per resource
-limit.
+such as a prefix for either keys or values as it is reserved for
+Amazon Web Services use. You cannot edit or delete tag keys or
+values with this prefix. Tags with this prefix do not count against
+your tags per resource limit.
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Associates the specified tags to a resource with the specified
-\code{resourceArn}. If existing tags on a resource are not specified in the
-request parameters, they are not changed. When a resource is deleted,
-the tags associated with that resource are deleted as well.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  resourceArn = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
+Associates the specified tags to a resource with the specified \code{resourceArn}. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags that are associated with that resource are deleted as well.
 
-\examples{
-\dontrun{
-# This example tags the 'dev' cluster with key 'team' and value 'dev'.
-svc$tag_resource(
-  resourceArn = "arn:aws:ecs:region:aws_account_id:cluster/dev",
-  tags = list(
-    list(
-      key = "team",
-      value = "dev"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecs/tag_resource.html} for full documentation.
 }
 \keyword{internal}

@@ -4,8 +4,14 @@
 \alias{glue_query_schema_version_metadata}
 \title{Queries for the schema version metadata information}
 \usage{
-glue_query_schema_version_metadata(SchemaId, SchemaVersionNumber,
-  SchemaVersionId, MetadataList, MaxResults, NextToken)
+glue_query_schema_version_metadata(
+  SchemaId = NULL,
+  SchemaVersionNumber = NULL,
+  SchemaVersionId = NULL,
+  MetadataList = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{SchemaId}{A wrapper structure that may contain the schema name and Amazon Resource
@@ -23,44 +29,9 @@ supplied, this will be defaulted to 25 per page.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MetadataInfoMap = list(
-    list(
-      MetadataValue = "string",
-      CreatedTime = "string"
-    )
-  ),
-  SchemaVersionId = "string",
-  NextToken = "string"
-)
-}
-}
 \description{
 Queries for the schema version metadata information.
-}
-\section{Request syntax}{
-\preformatted{svc$query_schema_version_metadata(
-  SchemaId = list(
-    SchemaArn = "string",
-    SchemaName = "string",
-    RegistryName = "string"
-  ),
-  SchemaVersionNumber = list(
-    LatestVersion = TRUE|FALSE,
-    VersionNumber = 123
-  ),
-  SchemaVersionId = "string",
-  MetadataList = list(
-    list(
-      MetadataKey = "string",
-      MetadataValue = "string"
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/query_schema_version_metadata.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{sagemaker_update_user_profile}
 \title{Updates a user profile}
 \usage{
-sagemaker_update_user_profile(DomainId, UserProfileName, UserSettings)
+sagemaker_update_user_profile(DomainId, UserProfileName, UserSettings = NULL)
 }
 \arguments{
 \item{DomainId}{[required] The domain ID.}
@@ -13,60 +13,9 @@ sagemaker_update_user_profile(DomainId, UserProfileName, UserSettings)
 
 \item{UserSettings}{A collection of settings.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserProfileArn = "string"
-)
-}
-}
 \description{
 Updates a user profile.
-}
-\section{Request syntax}{
-\preformatted{svc$update_user_profile(
-  DomainId = "string",
-  UserProfileName = "string",
-  UserSettings = list(
-    ExecutionRole = "string",
-    SecurityGroups = list(
-      "string"
-    ),
-    SharingSettings = list(
-      NotebookOutputOption = "Allowed"|"Disabled",
-      S3OutputPath = "string",
-      S3KmsKeyId = "string"
-    ),
-    JupyterServerAppSettings = list(
-      DefaultResourceSpec = list(
-        SageMakerImageArn = "string",
-        SageMakerImageVersionArn = "string",
-        InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
-      )
-    ),
-    KernelGatewayAppSettings = list(
-      DefaultResourceSpec = list(
-        SageMakerImageArn = "string",
-        SageMakerImageVersionArn = "string",
-        InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
-      ),
-      CustomImages = list(
-        list(
-          ImageName = "string",
-          ImageVersionNumber = 123,
-          AppImageConfigName = "string"
-        )
-      )
-    ),
-    TensorBoardAppSettings = list(
-      DefaultResourceSpec = list(
-        SageMakerImageArn = "string",
-        SageMakerImageVersionArn = "string",
-        InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_user_profile.html} for full documentation.
+}
 \keyword{internal}

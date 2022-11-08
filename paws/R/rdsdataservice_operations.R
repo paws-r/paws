@@ -16,6 +16,18 @@ NULL
 #' If a call isn't part of a transaction because it doesn't include the
 #' `transactionID` parameter, changes that result from the call are
 #' committed automatically.
+#' 
+#' There isn't a fixed upper limit on the number of parameter sets.
+#' However, the maximum size of the HTTP request submitted through the Data
+#' API is 4 MiB. If the request exceeds this limit, the Data API returns an
+#' error and doesn't process the request. This 4-MiB limit includes the
+#' size of the HTTP headers and the JSON notation in the request. Thus, the
+#' number of parameter sets that you can include depends on a combination
+#' of factors, such as the size of the SQL statement and the size of each
+#' parameter set.
+#' 
+#' The response size limit is 1 MiB. If the call returns more than 1 MiB of
+#' response data, the call is terminated.
 #'
 #' @usage
 #' rdsdataservice_batch_execute_statement(database, parameterSets,
@@ -38,8 +50,13 @@ NULL
 #' Array parameters are not supported.
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
 #' @param schema The name of the database schema.
-#' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.
-#' @param sql &#91;required&#93; The SQL statement to run.
+#' @param secretArn &#91;required&#93; The ARN of the secret that enables access to the DB cluster. Enter the
+#' database user name and password for the credentials in the secret.
+#' 
+#' For information about creating the secret, see [Create a database
+#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html).
+#' @param sql &#91;required&#93; The SQL statement to run. Don't include a semicolon (;) at the end of
+#' the SQL statement.
 #' @param transactionId The identifier of a transaction that was started by using the
 #' [`begin_transaction`][rdsdataservice_begin_transaction] operation.
 #' Specify the transaction ID of the transaction that you want to include
@@ -94,7 +111,7 @@ NULL
 #'     list(
 #'       list(
 #'         name = "string",
-#'         typeHint = "DATE"|"DECIMAL"|"TIME"|"TIMESTAMP",
+#'         typeHint = "JSON"|"UUID"|"TIMESTAMP"|"DATE"|"TIME"|"DECIMAL",
 #'         value = list(
 #'           arrayValue = list(
 #'             arrayValues = list(
@@ -271,7 +288,11 @@ rdsdataservice_commit_transaction <- function(resourceArn, secretArn, transactio
 #'   dbClusterOrInstanceArn, schema, sqlStatements)
 #'
 #' @param awsSecretStoreArn &#91;required&#93; The Amazon Resource Name (ARN) of the secret that enables access to the
-#' DB cluster.
+#' DB cluster. Enter the database user name and password for the
+#' credentials in the secret.
+#' 
+#' For information about creating the secret, see [Create a database
+#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html).
 #' @param database The name of the database.
 #' @param dbClusterOrInstanceArn &#91;required&#93; The ARN of the Aurora Serverless DB cluster.
 #' @param schema The name of the database schema.
@@ -380,13 +401,13 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #' `transactionID` parameter, changes that result from the call are
 #' committed automatically.
 #' 
-#' The response size limit is 1 MB. If the call returns more than 1 MB of
-#' response data, the call is terminated.
+#' If the binary response data from the database is more than 1 MB, the
+#' call is terminated.
 #'
 #' @usage
 #' rdsdataservice_execute_statement(continueAfterTimeout, database,
-#'   includeResultMetadata, parameters, resourceArn, resultSetOptions,
-#'   schema, secretArn, sql, transactionId)
+#'   formatRecordsAs, includeResultMetadata, parameters, resourceArn,
+#'   resultSetOptions, schema, secretArn, sql, transactionId)
 #'
 #' @param continueAfterTimeout A value that indicates whether to continue running the statement after
 #' the call times out. By default, the statement stops running when the
@@ -397,6 +418,16 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #' finished running, it can result in errors and possibly corrupted data
 #' structures.
 #' @param database The name of the database.
+#' @param formatRecordsAs A value that indicates whether to format the result set as a single JSON
+#' string. This parameter only applies to `SELECT` statements and is
+#' ignored for other types of statements. Allowed values are `NONE` and
+#' `JSON`. The default value is `NONE`. The result is returned in the
+#' `formattedRecords` field.
+#' 
+#' For usage information about the JSON format for result sets, see [Using
+#' the Data
+#' API](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
+#' in the *Amazon Aurora User Guide*.
 #' @param includeResultMetadata A value that indicates whether to include metadata in the results.
 #' @param parameters The parameters for the SQL statement.
 #' 
@@ -404,7 +435,13 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
 #' @param resultSetOptions Options that control how the result set is returned.
 #' @param schema The name of the database schema.
-#' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.
+#' 
+#' Currently, the `schema` parameter isn't supported.
+#' @param secretArn &#91;required&#93; The ARN of the secret that enables access to the DB cluster. Enter the
+#' database user name and password for the credentials in the secret.
+#' 
+#' For information about creating the secret, see [Create a database
+#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html).
 #' @param sql &#91;required&#93; The SQL statement to run.
 #' @param transactionId The identifier of a transaction that was started by using the
 #' [`begin_transaction`][rdsdataservice_begin_transaction] operation.
@@ -436,6 +473,7 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #'       typeName = "string"
 #'     )
 #'   ),
+#'   formattedRecords = "string",
 #'   generatedFields = list(
 #'     list(
 #'       arrayValue = list(
@@ -501,11 +539,12 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #' svc$execute_statement(
 #'   continueAfterTimeout = TRUE|FALSE,
 #'   database = "string",
+#'   formatRecordsAs = "NONE"|"JSON",
 #'   includeResultMetadata = TRUE|FALSE,
 #'   parameters = list(
 #'     list(
 #'       name = "string",
-#'       typeHint = "DATE"|"DECIMAL"|"TIME"|"TIMESTAMP",
+#'       typeHint = "JSON"|"UUID"|"TIMESTAMP"|"DATE"|"TIME"|"DECIMAL",
 #'       value = list(
 #'         arrayValue = list(
 #'           arrayValues = list(
@@ -535,7 +574,8 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #'   ),
 #'   resourceArn = "string",
 #'   resultSetOptions = list(
-#'     decimalReturnType = "DOUBLE_OR_LONG"|"STRING"
+#'     decimalReturnType = "STRING"|"DOUBLE_OR_LONG",
+#'     longReturnType = "STRING"|"LONG"
 #'   ),
 #'   schema = "string",
 #'   secretArn = "string",
@@ -547,14 +587,14 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #' @keywords internal
 #'
 #' @rdname rdsdataservice_execute_statement
-rdsdataservice_execute_statement <- function(continueAfterTimeout = NULL, database = NULL, includeResultMetadata = NULL, parameters = NULL, resourceArn, resultSetOptions = NULL, schema = NULL, secretArn, sql, transactionId = NULL) {
+rdsdataservice_execute_statement <- function(continueAfterTimeout = NULL, database = NULL, formatRecordsAs = NULL, includeResultMetadata = NULL, parameters = NULL, resourceArn, resultSetOptions = NULL, schema = NULL, secretArn, sql, transactionId = NULL) {
   op <- new_operation(
     name = "ExecuteStatement",
     http_method = "POST",
     http_path = "/Execute",
     paginator = list()
   )
-  input <- .rdsdataservice$execute_statement_input(continueAfterTimeout = continueAfterTimeout, database = database, includeResultMetadata = includeResultMetadata, parameters = parameters, resourceArn = resourceArn, resultSetOptions = resultSetOptions, schema = schema, secretArn = secretArn, sql = sql, transactionId = transactionId)
+  input <- .rdsdataservice$execute_statement_input(continueAfterTimeout = continueAfterTimeout, database = database, formatRecordsAs = formatRecordsAs, includeResultMetadata = includeResultMetadata, parameters = parameters, resourceArn = resourceArn, resultSetOptions = resultSetOptions, schema = schema, secretArn = secretArn, sql = sql, transactionId = transactionId)
   output <- .rdsdataservice$execute_statement_output()
   config <- get_config()
   svc <- .rdsdataservice$service(config)

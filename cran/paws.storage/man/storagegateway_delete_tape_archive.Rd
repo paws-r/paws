@@ -4,7 +4,7 @@
 \alias{storagegateway_delete_tape_archive}
 \title{Deletes the specified virtual tape from the virtual tape shelf (VTS)}
 \usage{
-storagegateway_delete_tape_archive(TapeARN, BypassGovernanceRetention)
+storagegateway_delete_tape_archive(TapeARN, BypassGovernanceRetention = NULL)
 }
 \arguments{
 \item{TapeARN}{[required] The Amazon Resource Name (ARN) of the virtual tape to delete from the
@@ -15,31 +15,9 @@ with tape retention lock. Only archived tapes with tape retention lock
 set to \code{governance} can be deleted. Archived tapes with tape retention
 lock set to \code{compliance} can't be deleted.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TapeARN = "string"
-)
-}
-}
 \description{
-Deletes the specified virtual tape from the virtual tape shelf (VTS).
-This operation is only supported in the tape gateway type.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_tape_archive(
-  TapeARN = "string",
-  BypassGovernanceRetention = TRUE|FALSE
-)
-}
-}
+Deletes the specified virtual tape from the virtual tape shelf (VTS). This operation is only supported in the tape gateway type.
 
-\examples{
-\dontrun{
-# Deletes the specified virtual tape from the virtual tape shelf (VTS).
-svc$delete_tape_archive(
-  TapeARN = "arn:aws:storagegateway:us-east-1:204469490176:tape/TEST05A2A0"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/delete_tape_archive.html} for full documentation.
 }
 \keyword{internal}

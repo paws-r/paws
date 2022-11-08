@@ -10,27 +10,9 @@ pinpoint_delete_event_stream(ApplicationId)
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventStream = list(
-    ApplicationId = "string",
-    DestinationStreamArn = "string",
-    ExternalId = "string",
-    LastModifiedDate = "string",
-    LastUpdatedBy = "string",
-    RoleArn = "string"
-  )
-)
-}
-}
 \description{
 Deletes the event stream for an application.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_event_stream(
-  ApplicationId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpoint/delete_event_stream.html} for full documentation.
+}
 \keyword{internal}

@@ -4,9 +4,17 @@
 \alias{lexruntimeservice_post_content}
 \title{Sends user input (text or speech) to Amazon Lex}
 \usage{
-lexruntimeservice_post_content(botName, botAlias, userId,
-  sessionAttributes, requestAttributes, contentType, accept, inputStream,
-  activeContexts)
+lexruntimeservice_post_content(
+  botName,
+  botAlias,
+  userId,
+  sessionAttributes = NULL,
+  requestAttributes = NULL,
+  contentType,
+  accept = NULL,
+  inputStream,
+  activeContexts = NULL
+)
 }
 \arguments{
 \item{botName}{[required] Name of the Amazon Lex bot.}
@@ -43,7 +51,7 @@ application. The value must be a JSON serialized and base64 encoded map
 with string keys and values. The total size of the \code{sessionAttributes}
 and \code{requestAttributes} headers is limited to 12 KB.
 
-For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs}{Setting Session Attributes}.}
+For more information, see Setting Session Attributes.}
 
 \item{requestAttributes}{You pass this value as the \code{x-amz-lex-request-attributes} HTTP header.
 
@@ -55,7 +63,7 @@ and \code{sessionAttributes} headers is limited to 12 KB.
 The namespace \verb{x-amz-lex:} is reserved for special attributes. Don't
 create any request attributes with the prefix \verb{x-amz-lex:}.
 
-For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs}{Setting Request Attributes}.}
+For more information, see Setting Request Attributes.}
 
 \item{contentType}{[required] You pass this value as the \code{Content-Type} HTTP header.
 
@@ -120,94 +128,9 @@ If you don't specify a list of contexts, Amazon Lex will use the current
 list of contexts for the session. If you specify an empty list, all
 contexts for the session are cleared.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  contentType = "string",
-  intentName = "string",
-  nluIntentConfidence = "string",
-  alternativeIntents = "string",
-  slots = "string",
-  sessionAttributes = "string",
-  sentimentResponse = "string",
-  message = "string",
-  messageFormat = "PlainText"|"CustomPayload"|"SSML"|"Composite",
-  dialogState = "ElicitIntent"|"ConfirmIntent"|"ElicitSlot"|"Fulfilled"|"ReadyForFulfillment"|"Failed",
-  slotToElicit = "string",
-  inputTranscript = "string",
-  audioStream = raw,
-  botVersion = "string",
-  sessionId = "string",
-  activeContexts = "string"
-)
-}
-}
 \description{
-Sends user input (text or speech) to Amazon Lex. Clients use this API to
-send text and audio requests to Amazon Lex at runtime. Amazon Lex
-interprets the user input using the machine learning model that it built
-for the bot.
+Sends user input (text or speech) to Amazon Lex. Clients use this API to send text and audio requests to Amazon Lex at runtime. Amazon Lex interprets the user input using the machine learning model that it built for the bot.
 
-The \code{\link[=lexruntimeservice_post_content]{post_content}} operation supports
-audio input at 8kHz and 16kHz. You can use 8kHz audio to achieve higher
-speech recognition accuracy in telephone audio applications.
-
-In response, Amazon Lex returns the next message to convey to the user.
-Consider the following example messages:
-\itemize{
-\item For a user input "I would like a pizza," Amazon Lex might return a
-response with a message eliciting slot data (for example,
-\code{PizzaSize}): "What size pizza would you like?".
-\item After the user provides all of the pizza order information, Amazon
-Lex might return a response with a message to get user confirmation:
-"Order the pizza?".
-\item After the user replies "Yes" to the confirmation prompt, Amazon Lex
-might return a conclusion statement: "Thank you, your cheese pizza
-has been ordered.".
+See \url{https://paws-r.github.io/docs/lexruntimeservice/post_content.html} for full documentation.
 }
-
-Not all Amazon Lex messages require a response from the user. For
-example, conclusion statements do not require a response. Some messages
-require only a yes or no response. In addition to the \code{message}, Amazon
-Lex provides additional context about the message in the response that
-you can use to enhance client behavior, such as displaying the
-appropriate client user interface. Consider the following examples:
-\itemize{
-\item If the message is to elicit slot data, Amazon Lex returns the
-following context information:
-\itemize{
-\item \code{x-amz-lex-dialog-state} header set to \code{ElicitSlot}
-\item \code{x-amz-lex-intent-name} header set to the intent name in the
-current context
-\item \code{x-amz-lex-slot-to-elicit} header set to the slot name for which
-the \code{message} is eliciting information
-\item \code{x-amz-lex-slots} header set to a map of slots configured for
-the intent with their current values
-}
-\item If the message is a confirmation prompt, the
-\code{x-amz-lex-dialog-state} header is set to \code{Confirmation} and the
-\code{x-amz-lex-slot-to-elicit} header is omitted.
-\item If the message is a clarification prompt configured for the intent,
-indicating that the user intent is not understood, the
-\code{x-amz-dialog-state} header is set to \code{ElicitIntent} and the
-\code{x-amz-slot-to-elicit} header is omitted.
-}
-
-In addition, Amazon Lex also returns your application-specific
-\code{sessionAttributes}. For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html}{Managing Conversation Context}.
-}
-\section{Request syntax}{
-\preformatted{svc$post_content(
-  botName = "string",
-  botAlias = "string",
-  userId = "string",
-  sessionAttributes = "string",
-  requestAttributes = "string",
-  contentType = "string",
-  accept = "string",
-  inputStream = raw,
-  activeContexts = "string"
-)
-}
-}
-
 \keyword{internal}

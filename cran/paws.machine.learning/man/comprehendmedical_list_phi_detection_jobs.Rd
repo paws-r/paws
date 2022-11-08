@@ -5,7 +5,11 @@
 \title{Gets a list of protected health information (PHI) detection jobs that
 you have submitted}
 \usage{
-comprehendmedical_list_phi_detection_jobs(Filter, NextToken, MaxResults)
+comprehendmedical_list_phi_detection_jobs(
+  Filter = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filter}{Filters the jobs that are returned. You can filter jobs based on their
@@ -17,62 +21,9 @@ only set one filter at a time.}
 \item{MaxResults}{The maximum number of results to return in each page. The default is
 100.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ComprehendMedicalAsyncJobPropertiesList = list(
-    list(
-      JobId = "string",
-      JobName = "string",
-      JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-      Message = "string",
-      SubmitTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ExpirationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      InputDataConfig = list(
-        S3Bucket = "string",
-        S3Key = "string"
-      ),
-      OutputDataConfig = list(
-        S3Bucket = "string",
-        S3Key = "string"
-      ),
-      LanguageCode = "en",
-      DataAccessRoleArn = "string",
-      ManifestFilePath = "string",
-      KMSKey = "string",
-      ModelVersion = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Gets a list of protected health information (PHI) detection jobs that
-you have submitted.
-}
-\section{Request syntax}{
-\preformatted{svc$list_phi_detection_jobs(
-  Filter = list(
-    JobName = "string",
-    JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"PARTIAL_SUCCESS"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-    SubmitTimeBefore = as.POSIXct(
-      "2015-01-01"
-    ),
-    SubmitTimeAfter = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Gets a list of protected health information (PHI) detection jobs that you have submitted.
 
+See \url{https://paws-r.github.io/docs/comprehendmedical/list_phi_detection_jobs.html} for full documentation.
+}
 \keyword{internal}

@@ -3,7 +3,8 @@
 \name{iam_delete_login_profile}
 \alias{iam_delete_login_profile}
 \title{Deletes the password for the specified IAM user, which terminates the
-user's ability to access AWS services through the AWS Management Console}
+user's ability to access Amazon Web Services services through the Amazon
+Web Services Management Console}
 \usage{
 iam_delete_login_profile(UserName)
 }
@@ -14,35 +15,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the password for the specified IAM user, which terminates the
-user's ability to access AWS services through the AWS Management
-Console.
+Deletes the password for the specified IAM user, which terminates the user's ability to access Amazon Web Services services through the Amazon Web Services Management Console.
 
-Deleting a user's password does not prevent a user from accessing AWS
-through the command line interface or the API. To prevent all user
-access, you must also either make any access keys inactive or delete
-them. For more information about making keys inactive or deleting them,
-see \code{\link[=iam_update_access_key]{update_access_key}} and
-\code{\link[=iam_delete_access_key]{delete_access_key}}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_login_profile(
-  UserName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command deletes the password for the IAM user named Bob.
-svc$delete_login_profile(
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/delete_login_profile.html} for full documentation.
 }
 \keyword{internal}

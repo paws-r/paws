@@ -4,8 +4,12 @@
 \alias{pinpointemail_create_deliverability_test_report}
 \title{Create a new predictive inbox placement test}
 \usage{
-pinpointemail_create_deliverability_test_report(ReportName,
-  FromEmailAddress, Content, Tags)
+pinpointemail_create_deliverability_test_report(
+  ReportName = NULL,
+  FromEmailAddress,
+  Content,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ReportName}{A unique name that helps you to identify the predictive inbox placement
@@ -20,62 +24,9 @@ predictive inbox placement test.}
 \item{Tags}{An array of objects that define the tags (keys and values) that you want
 to associate with the predictive inbox placement test.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReportId = "string",
-  DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
-)
-}
-}
 \description{
-Create a new predictive inbox placement test. Predictive inbox placement
-tests can help you predict how your messages will be handled by various
-email providers around the world. When you perform a predictive inbox
-placement test, you provide a sample message that contains the content
-that you plan to send to your customers. Amazon Pinpoint then sends that
-message to special email addresses spread across several major email
-providers. After about 24 hours, the test is complete, and you can use
-the
-\code{\link[=pinpointemail_get_deliverability_test_report]{get_deliverability_test_report}}
-operation to view the results of the test.
-}
-\section{Request syntax}{
-\preformatted{svc$create_deliverability_test_report(
-  ReportName = "string",
-  FromEmailAddress = "string",
-  Content = list(
-    Simple = list(
-      Subject = list(
-        Data = "string",
-        Charset = "string"
-      ),
-      Body = list(
-        Text = list(
-          Data = "string",
-          Charset = "string"
-        ),
-        Html = list(
-          Data = "string",
-          Charset = "string"
-        )
-      )
-    ),
-    Raw = list(
-      Data = raw
-    ),
-    Template = list(
-      TemplateArn = "string",
-      TemplateData = "string"
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Create a new predictive inbox placement test. Predictive inbox placement tests can help you predict how your messages will be handled by various email providers around the world. When you perform a predictive inbox placement test, you provide a sample message that contains the content that you plan to send to your customers. Amazon Pinpoint then sends that message to special email addresses spread across several major email providers. After about 24 hours, the test is complete, and you can use the \code{\link[=pinpointemail_get_deliverability_test_report]{get_deliverability_test_report}} operation to view the results of the test.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/create_deliverability_test_report.html} for full documentation.
+}
 \keyword{internal}

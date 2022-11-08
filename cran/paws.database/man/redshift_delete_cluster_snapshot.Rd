@@ -4,8 +4,10 @@
 \alias{redshift_delete_cluster_snapshot}
 \title{Deletes the specified manual snapshot}
 \usage{
-redshift_delete_cluster_snapshot(SnapshotIdentifier,
-  SnapshotClusterIdentifier)
+redshift_delete_cluster_snapshot(
+  SnapshotIdentifier,
+  SnapshotClusterIdentifier = NULL
+)
 }
 \arguments{
 \item{SnapshotIdentifier}{[required] The unique identifier of the manual snapshot to be deleted.
@@ -20,83 +22,9 @@ cluster name.
 
 Constraints: Must be the name of valid cluster.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Snapshot = list(
-    SnapshotIdentifier = "string",
-    ClusterIdentifier = "string",
-    SnapshotCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Status = "string",
-    Port = 123,
-    AvailabilityZone = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MasterUsername = "string",
-    ClusterVersion = "string",
-    EngineFullVersion = "string",
-    SnapshotType = "string",
-    NodeType = "string",
-    NumberOfNodes = 123,
-    DBName = "string",
-    VpcId = "string",
-    Encrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    EncryptedWithHSM = TRUE|FALSE,
-    AccountsWithRestoreAccess = list(
-      list(
-        AccountId = "string",
-        AccountAlias = "string"
-      )
-    ),
-    OwnerAccount = "string",
-    TotalBackupSizeInMegaBytes = 123.0,
-    ActualIncrementalBackupSizeInMegaBytes = 123.0,
-    BackupProgressInMegaBytes = 123.0,
-    CurrentBackupRateInMegaBytesPerSecond = 123.0,
-    EstimatedSecondsToCompletion = 123,
-    ElapsedTimeInSeconds = 123,
-    SourceRegion = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    RestorableNodeTypes = list(
-      "string"
-    ),
-    EnhancedVpcRouting = TRUE|FALSE,
-    MaintenanceTrackName = "string",
-    ManualSnapshotRetentionPeriod = 123,
-    ManualSnapshotRemainingDays = 123,
-    SnapshotRetentionStartTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Deletes the specified manual snapshot. The snapshot must be in the
-\code{available} state, with no other users authorized to access the
-snapshot.
+Deletes the specified manual snapshot. The snapshot must be in the \code{available} state, with no other users authorized to access the snapshot.
 
-Unlike automated snapshots, manual snapshots are retained even after you
-delete your cluster. Amazon Redshift does not delete your manual
-snapshots. You must delete manual snapshot explicitly to avoid getting
-charged. If other accounts are authorized to access the snapshot, you
-must revoke all of the authorizations before you can delete the
-snapshot.
+See \url{https://paws-r.github.io/docs/redshift/delete_cluster_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_cluster_snapshot(
-  SnapshotIdentifier = "string",
-  SnapshotClusterIdentifier = "string"
-)
-}
-}
-
 \keyword{internal}

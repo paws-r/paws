@@ -4,55 +4,18 @@
 \alias{cloudformation_describe_stack_drift_detection_status}
 \title{Returns information about a stack drift detection operation}
 \usage{
-cloudformation_describe_stack_drift_detection_status(
-  StackDriftDetectionId)
+cloudformation_describe_stack_drift_detection_status(StackDriftDetectionId)
 }
 \arguments{
 \item{StackDriftDetectionId}{[required] The ID of the drift detection results of this operation.
 
-AWS CloudFormation generates new results, with a new drift detection ID,
+CloudFormation generates new results, with a new drift detection ID,
 each time this operation is run. However, the number of drift results
-AWS CloudFormation retains for any given stack, and for how long, may
-vary.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  StackId = "string",
-  StackDriftDetectionId = "string",
-  StackDriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
-  DetectionStatus = "DETECTION_IN_PROGRESS"|"DETECTION_FAILED"|"DETECTION_COMPLETE",
-  DetectionStatusReason = "string",
-  DriftedStackResourceCount = 123,
-  Timestamp = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
+CloudFormation retains for any given stack, and for how long, may vary.}
 }
 \description{
-Returns information about a stack drift detection operation. A stack
-drift detection operation detects whether a stack's actual configuration
-differs, or has \emph{drifted}, from it's expected configuration, as defined
-in the stack template and any values specified as template parameters. A
-stack is considered to have drifted if one or more of its resources have
-drifted. For more information on stack and resource drift, see
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html}{Detecting Unregulated Configuration Changes to Stacks and Resources}.
+Returns information about a stack drift detection operation. A stack drift detection operation detects whether a stack's actual configuration differs, or has \emph{drifted}, from it's expected configuration, as defined in the stack template and any values specified as template parameters. A stack is considered to have drifted if one or more of its resources have drifted. For more information about stack and resource drift, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html}{Detecting Unregulated Configuration Changes to Stacks and Resources}.
 
-Use \code{\link[=cloudformation_detect_stack_drift]{detect_stack_drift}} to
-initiate a stack drift detection operation.
-\code{\link[=cloudformation_detect_stack_drift]{detect_stack_drift}} returns a
-\code{StackDriftDetectionId} you can use to monitor the progress of the
-operation using
-\code{\link[=cloudformation_describe_stack_drift_detection_status]{describe_stack_drift_detection_status}}.
-Once the drift detection operation has completed, use
-\code{\link[=cloudformation_describe_stack_resource_drifts]{describe_stack_resource_drifts}}
-to return drift information about the stack and its resources.
+See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_drift_detection_status.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_stack_drift_detection_status(
-  StackDriftDetectionId = "string"
-)
-}
-}
-
 \keyword{internal}

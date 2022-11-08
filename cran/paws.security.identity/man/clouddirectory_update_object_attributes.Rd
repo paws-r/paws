@@ -4,8 +4,11 @@
 \alias{clouddirectory_update_object_attributes}
 \title{Updates a given object's attributes}
 \usage{
-clouddirectory_update_object_attributes(DirectoryArn, ObjectReference,
-  AttributeUpdates)
+clouddirectory_update_object_attributes(
+  DirectoryArn,
+  ObjectReference,
+  AttributeUpdates
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) that is associated with the Directory
@@ -15,44 +18,9 @@ where the object resides. For more information, see arns.}
 
 \item{AttributeUpdates}{[required] The attributes update structure.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ObjectIdentifier = "string"
-)
-}
-}
 \description{
 Updates a given object's attributes.
-}
-\section{Request syntax}{
-\preformatted{svc$update_object_attributes(
-  DirectoryArn = "string",
-  ObjectReference = list(
-    Selector = "string"
-  ),
-  AttributeUpdates = list(
-    list(
-      ObjectAttributeKey = list(
-        SchemaArn = "string",
-        FacetName = "string",
-        Name = "string"
-      ),
-      ObjectAttributeAction = list(
-        ObjectAttributeActionType = "CREATE_OR_UPDATE"|"DELETE",
-        ObjectAttributeUpdateValue = list(
-          StringValue = "string",
-          BinaryValue = raw,
-          BooleanValue = TRUE|FALSE,
-          NumberValue = "string",
-          DatetimeValue = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/update_object_attributes.html} for full documentation.
+}
 \keyword{internal}

@@ -10,18 +10,9 @@ globalaccelerator_delete_custom_routing_endpoint_group(EndpointGroupArn)
 \arguments{
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Delete an endpoint group from a listener for a custom routing
-accelerator.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_custom_routing_endpoint_group(
-  EndpointGroupArn = "string"
-)
-}
-}
+Delete an endpoint group from a listener for a custom routing accelerator.
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/delete_custom_routing_endpoint_group.html} for full documentation.
+}
 \keyword{internal}

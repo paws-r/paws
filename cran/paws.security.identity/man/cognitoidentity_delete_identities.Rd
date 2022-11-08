@@ -9,30 +9,9 @@ cognitoidentity_delete_identities(IdentityIdsToDelete)
 \arguments{
 \item{IdentityIdsToDelete}{[required] A list of 1-60 identities that you want to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UnprocessedIdentityIds = list(
-    list(
-      IdentityId = "string",
-      ErrorCode = "AccessDenied"|"InternalServerError"
-    )
-  )
-)
-}
-}
 \description{
-Deletes identities from an identity pool. You can specify a list of 1-60
-identities that you want to delete.
+Deletes identities from an identity pool. You can specify a list of 1-60 identities that you want to delete.
 
-You must use AWS Developer credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/delete_identities.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_identities(
-  IdentityIdsToDelete = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{ec2_disassociate_client_vpn_target_network}
 \title{Disassociates a target network from the specified Client VPN endpoint}
 \usage{
-ec2_disassociate_client_vpn_target_network(ClientVpnEndpointId,
-  AssociationId, DryRun)
+ec2_disassociate_client_vpn_target_network(
+  ClientVpnEndpointId,
+  AssociationId,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint from which to disassociate the target
@@ -18,34 +21,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AssociationId = "string",
-  Status = list(
-    Code = "associating"|"associated"|"association-failed"|"disassociating"|"disassociated",
-    Message = "string"
-  )
-)
-}
-}
 \description{
-Disassociates a target network from the specified Client VPN endpoint.
-When you disassociate the last target network from a Client VPN, the
-following happens:
-\itemize{
-\item The route that was automatically added for the VPC is deleted
-\item All active client connections are terminated
-\item New client connections are disallowed
-\item The Client VPN endpoint's status changes to \code{pending-associate}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_client_vpn_target_network(
-  ClientVpnEndpointId = "string",
-  AssociationId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Disassociates a target network from the specified Client VPN endpoint. When you disassociate the last target network from a Client VPN, the following happens:
 
+See \url{https://paws-r.github.io/docs/ec2/disassociate_client_vpn_target_network.html} for full documentation.
+}
 \keyword{internal}

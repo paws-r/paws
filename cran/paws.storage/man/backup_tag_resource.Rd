@@ -12,23 +12,12 @@ backup_tag_resource(ResourceArn, Tags)
 depends on the type of the tagged resource.}
 
 \item{Tags}{[required] Key-value pairs that are used to help organize your resources. You can
-assign your own metadata to the resources you create.}
-}
-\value{
-An empty list.
+assign your own metadata to the resources you create. For clarity, this
+is the structure to assign tags: \verb{[\{"Key":"string","Value":"string"\}]}.}
 }
 \description{
-Assigns a set of key-value pairs to a recovery point, backup plan, or
-backup vault identified by an Amazon Resource Name (ARN).
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
+Assigns a set of key-value pairs to a recovery point, backup plan, or backup vault identified by an Amazon Resource Name (ARN).
 
+See \url{https://paws-r.github.io/docs/backup/tag_resource.html} for full documentation.
+}
 \keyword{internal}

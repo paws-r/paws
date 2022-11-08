@@ -6,18 +6,9 @@
 \usage{
 servicequotas_disassociate_service_quota_template()
 }
-\value{
-An empty list.
-}
 \description{
-Disables your quota request template. After a template is disabled, the
-quota increase requests in the template are not applied to new accounts
-in your organization. Disabling a quota request template does not apply
-its quota increase requests.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_service_quota_template()
-}
-}
+Disables your quota request template. After a template is disabled, the quota increase requests in the template are not applied to new accounts in your organization. Disabling a quota request template does not apply its quota increase requests.
 
+See \url{https://paws-r.github.io/docs/servicequotas/disassociate_service_quota_template.html} for full documentation.
+}
 \keyword{internal}

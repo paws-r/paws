@@ -4,59 +4,25 @@
 \alias{ecr_batch_check_layer_availability}
 \title{Checks the availability of one or more image layers in a repository}
 \usage{
-ecr_batch_check_layer_availability(registryId, repositoryName,
-  layerDigests)
+ecr_batch_check_layer_availability(
+  registryId = NULL,
+  repositoryName,
+  layerDigests
+)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the image
-layers to check. If you do not specify a registry, the default registry
-is assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the image layers to check. If you do not specify a registry,
+the default registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository that is associated with the image layers to
 check.}
 
 \item{layerDigests}{[required] The digests of the image layers to check.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  layers = list(
-    list(
-      layerDigest = "string",
-      layerAvailability = "AVAILABLE"|"UNAVAILABLE",
-      layerSize = 123,
-      mediaType = "string"
-    )
-  ),
-  failures = list(
-    list(
-      layerDigest = "string",
-      failureCode = "InvalidLayerDigest"|"MissingLayerDigest",
-      failureReason = "string"
-    )
-  )
-)
-}
-}
 \description{
 Checks the availability of one or more image layers in a repository.
 
-When an image is pushed to a repository, each image layer is checked to
-verify if it has been uploaded before. If it has been uploaded, then the
-image layer is skipped.
-
-This operation is used by the Amazon ECR proxy and is not generally used
-by customers for pulling and pushing images. In most cases, you should
-use the \code{docker} CLI to pull, tag, and push images.
+See \url{https://paws-r.github.io/docs/ecr/batch_check_layer_availability.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$batch_check_layer_availability(
-  registryId = "string",
-  repositoryName = "string",
-  layerDigests = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

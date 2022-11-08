@@ -4,8 +4,13 @@
 \alias{applicationinsights_create_log_pattern}
 \title{Adds an log pattern to a LogPatternSet}
 \usage{
-applicationinsights_create_log_pattern(ResourceGroupName,
-  PatternSetName, PatternName, Pattern, Rank)
+applicationinsights_create_log_pattern(
+  ResourceGroupName,
+  PatternSetName,
+  PatternName,
+  Pattern,
+  Rank
+)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
@@ -29,30 +34,9 @@ rank. And a \code{High} severity pattern translates to a \verb{250,000} rank. Ra
 values less than \code{1} or greater than \verb{1,000,000} are reserved for
 AWS-provided patterns.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LogPattern = list(
-    PatternSetName = "string",
-    PatternName = "string",
-    Pattern = "string",
-    Rank = 123
-  ),
-  ResourceGroupName = "string"
-)
-}
-}
 \description{
 Adds an log pattern to a \code{LogPatternSet}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_log_pattern(
-  ResourceGroupName = "string",
-  PatternSetName = "string",
-  PatternName = "string",
-  Pattern = "string",
-  Rank = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/applicationinsights/create_log_pattern.html} for full documentation.
+}
 \keyword{internal}

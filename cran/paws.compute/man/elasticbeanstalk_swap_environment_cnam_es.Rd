@@ -4,9 +4,12 @@
 \alias{elasticbeanstalk_swap_environment_cnam_es}
 \title{Swaps the CNAMEs of two environments}
 \usage{
-elasticbeanstalk_swap_environment_cnam_es(SourceEnvironmentId,
-  SourceEnvironmentName, DestinationEnvironmentId,
-  DestinationEnvironmentName)
+elasticbeanstalk_swap_environment_cnam_es(
+  SourceEnvironmentId = NULL,
+  SourceEnvironmentName = NULL,
+  DestinationEnvironmentId = NULL,
+  DestinationEnvironmentName = NULL
+)
 }
 \arguments{
 \item{SourceEnvironmentId}{The ID of the source environment.
@@ -35,31 +38,9 @@ the \code{DestinationEnvironmentName}. You may also specify both. You must
 specify the \code{SourceEnvironmentName} with the
 \code{DestinationEnvironmentName}.}
 }
-\value{
-An empty list.
-}
 \description{
 Swaps the CNAMEs of two environments.
-}
-\section{Request syntax}{
-\preformatted{svc$swap_environment_cnam_es(
-  SourceEnvironmentId = "string",
-  SourceEnvironmentName = "string",
-  DestinationEnvironmentId = "string",
-  DestinationEnvironmentName = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# The following operation swaps the assigned subdomains of two
-# environments:
-svc$swap_environment_cnam_es(
-  DestinationEnvironmentName = "my-env-green",
-  SourceEnvironmentName = "my-env-blue"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/swap_environment_cnam_es.html} for full documentation.
 }
 \keyword{internal}

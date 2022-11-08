@@ -4,7 +4,7 @@
 \alias{opsworks_grant_access}
 \title{This action can be used only with Windows stacks}
 \usage{
-opsworks_grant_access(InstanceId, ValidForInMinutes)
+opsworks_grant_access(InstanceId, ValidForInMinutes = NULL)
 }
 \arguments{
 \item{InstanceId}{[required] The instance's AWS OpsWorks Stacks ID.}
@@ -14,28 +14,9 @@ expires at the end of this period, the user will no longer be able to
 use the credentials to log in. If the user is logged in at the time, he
 or she automatically will be logged out.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemporaryCredential = list(
-    Username = "string",
-    Password = "string",
-    ValidForInMinutes = 123,
-    InstanceId = "string"
-  )
-)
-}
-}
 \description{
 This action can be used only with Windows stacks.
 
-Grants RDP access to a Windows instance for a specified time period.
+See \url{https://paws-r.github.io/docs/opsworks/grant_access.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$grant_access(
-  InstanceId = "string",
-  ValidForInMinutes = 123
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,14 @@
 \alias{sagemaker_list_experiments}
 \title{Lists all the experiments in your account}
 \usage{
-sagemaker_list_experiments(CreatedAfter, CreatedBefore, SortBy,
-  SortOrder, NextToken, MaxResults)
+sagemaker_list_experiments(
+  CreatedAfter = NULL,
+  CreatedBefore = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{CreatedAfter}{A filter that returns only experiments created after the specified time.}
@@ -24,48 +30,9 @@ getting the next set of experiments.}
 \item{MaxResults}{The maximum number of experiments to return in the response. The default
 value is 10.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExperimentSummaries = list(
-    list(
-      ExperimentArn = "string",
-      ExperimentName = "string",
-      DisplayName = "string",
-      ExperimentSource = list(
-        SourceArn = "string",
-        SourceType = "string"
-      ),
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists all the experiments in your account. The list can be filtered to
-show only experiments that were created in a specific time range. The
-list can be sorted by experiment name or creation time.
-}
-\section{Request syntax}{
-\preformatted{svc$list_experiments(
-  CreatedAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreatedBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  SortBy = "Name"|"CreationTime",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists all the experiments in your account. The list can be filtered to show only experiments that were created in a specific time range. The list can be sorted by experiment name or creation time.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_experiments.html} for full documentation.
+}
 \keyword{internal}

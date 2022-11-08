@@ -4,31 +4,16 @@
 \alias{opsworks_update_elastic_ip}
 \title{Updates a registered Elastic IP address's name}
 \usage{
-opsworks_update_elastic_ip(ElasticIp, Name)
+opsworks_update_elastic_ip(ElasticIp, Name = NULL)
 }
 \arguments{
 \item{ElasticIp}{[required] The IP address for which you want to update the name.}
 
 \item{Name}{The new name.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates a registered Elastic IP address's name. For more information,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
+Updates a registered Elastic IP address's name. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/update_elastic_ip.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_elastic_ip(
-  ElasticIp = "string",
-  Name = "string"
-)
-}
-}
-
 \keyword{internal}

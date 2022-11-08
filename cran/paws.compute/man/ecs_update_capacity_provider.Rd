@@ -7,58 +7,14 @@
 ecs_update_capacity_provider(name, autoScalingGroupProvider)
 }
 \arguments{
-\item{name}{[required] An object representing the parameters to update for the Auto Scaling
-group capacity provider.}
+\item{name}{[required] The name of the capacity provider to update.}
 
-\item{autoScalingGroupProvider}{[required] The name of the capacity provider to update.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  capacityProvider = list(
-    capacityProviderArn = "string",
-    name = "string",
-    status = "ACTIVE"|"INACTIVE",
-    autoScalingGroupProvider = list(
-      autoScalingGroupArn = "string",
-      managedScaling = list(
-        status = "ENABLED"|"DISABLED",
-        targetCapacity = 123,
-        minimumScalingStepSize = 123,
-        maximumScalingStepSize = 123,
-        instanceWarmupPeriod = 123
-      ),
-      managedTerminationProtection = "ENABLED"|"DISABLED"
-    ),
-    updateStatus = "DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_COMPLETE"|"UPDATE_FAILED",
-    updateStatusReason = "string",
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    )
-  )
-)
-}
+\item{autoScalingGroupProvider}{[required] An object that represent the parameters to update for the Auto Scaling
+group capacity provider.}
 }
 \description{
 Modifies the parameters for a capacity provider.
-}
-\section{Request syntax}{
-\preformatted{svc$update_capacity_provider(
-  name = "string",
-  autoScalingGroupProvider = list(
-    managedScaling = list(
-      status = "ENABLED"|"DISABLED",
-      targetCapacity = 123,
-      minimumScalingStepSize = 123,
-      maximumScalingStepSize = 123,
-      instanceWarmupPeriod = 123
-    ),
-    managedTerminationProtection = "ENABLED"|"DISABLED"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ecs/update_capacity_provider.html} for full documentation.
+}
 \keyword{internal}

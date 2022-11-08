@@ -9,22 +9,9 @@ licensemanager_accept_grant(GrantArn)
 \arguments{
 \item{GrantArn}{[required] Amazon Resource Name (ARN) of the grant.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GrantArn = "string",
-  Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-  Version = "string"
-)
-}
-}
 \description{
 Accepts the specified grant.
-}
-\section{Request syntax}{
-\preformatted{svc$accept_grant(
-  GrantArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/accept_grant.html} for full documentation.
+}
 \keyword{internal}

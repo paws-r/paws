@@ -2,27 +2,14 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_disassociate_drt_role}
 \alias{shield_disassociate_drt_role}
-\title{Removes the DDoS Response Team's (DRT) access to your AWS account}
+\title{Removes the Shield Response Team's (SRT) access to your Amazon Web
+Services account}
 \usage{
 shield_disassociate_drt_role()
 }
-\value{
-An empty list.
-}
 \description{
-Removes the DDoS Response Team's (DRT) access to your AWS account.
+Removes the Shield Response Team's (SRT) access to your Amazon Web Services account.
 
-To make a \code{\link[=shield_disassociate_drt_role]{disassociate_drt_role}}
-request, you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/plans/business/}{Business Support plan} or the
-\href{https://aws.amazon.com/premiumsupport/plans/enterprise/}{Enterprise Support plan}. However,
-if you are not subscribed to one of these support plans, but had been
-previously and had granted the DRT access to your account, you can
-submit a \code{\link[=shield_disassociate_drt_role]{disassociate_drt_role}} request
-to remove this access.
+See \url{https://paws-r.github.io/docs/shield/disassociate_drt_role.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disassociate_drt_role()
-}
-}
-
 \keyword{internal}

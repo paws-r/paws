@@ -7,37 +7,14 @@
 quicksight_describe_data_source_permissions(AwsAccountId, DataSourceId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID.}
 
-\item{DataSourceId}{[required] The ID of the data source. This ID is unique per AWS Region for each AWS
-account.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DataSourceArn = "string",
-  DataSourceId = "string",
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
+\item{DataSourceId}{[required] The ID of the data source. This ID is unique per Amazon Web Services
+Region for each Amazon Web Services account.}
 }
 \description{
 Describes the resource permissions for a data source.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_data_source_permissions(
-  AwsAccountId = "string",
-  DataSourceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/describe_data_source_permissions.html} for full documentation.
+}
 \keyword{internal}

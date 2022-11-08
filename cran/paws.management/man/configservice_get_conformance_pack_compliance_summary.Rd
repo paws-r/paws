@@ -6,7 +6,10 @@
 cumulative compliance results of all the rules in that conformance pack}
 \usage{
 configservice_get_conformance_pack_compliance_summary(
-  ConformancePackNames, Limit, NextToken)
+  ConformancePackNames,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ConformancePackNames}{[required] Names of conformance packs.}
@@ -16,31 +19,9 @@ configservice_get_conformance_pack_compliance_summary(
 \item{NextToken}{The nextToken string returned on a previous page that you use to get the
 next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConformancePackComplianceSummaryList = list(
-    list(
-      ConformancePackName = "string",
-      ConformancePackComplianceStatus = "COMPLIANT"|"NON_COMPLIANT"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns compliance details for the conformance pack based on the
-cumulative compliance results of all the rules in that conformance pack.
-}
-\section{Request syntax}{
-\preformatted{svc$get_conformance_pack_compliance_summary(
-  ConformancePackNames = list(
-    "string"
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
+Returns compliance details for the conformance pack based on the cumulative compliance results of all the rules in that conformance pack.
 
+See \url{https://paws-r.github.io/docs/configservice/get_conformance_pack_compliance_summary.html} for full documentation.
+}
 \keyword{internal}

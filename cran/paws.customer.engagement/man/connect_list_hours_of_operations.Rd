@@ -5,44 +5,25 @@
 \title{Provides information about the hours of operation for the specified
 Amazon Connect instance}
 \usage{
-connect_list_hours_of_operations(InstanceId, NextToken, MaxResults)
+connect_list_hours_of_operations(
+  InstanceId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  HoursOfOperationSummaryList = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Name = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-Provides information about the hours of operation for the specified
-Amazon Connect instance.
+Provides information about the hours of operation for the specified Amazon Connect instance.
 
-For more information about hours of operation, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/set-hours-operation.html}{Set the Hours of Operation for a Queue}
-in the \emph{Amazon Connect Administrator Guide}.
+See \url{https://paws-r.github.io/docs/connect/list_hours_of_operations.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_hours_of_operations(
-  InstanceId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

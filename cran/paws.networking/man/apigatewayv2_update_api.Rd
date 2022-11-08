@@ -4,10 +4,20 @@
 \alias{apigatewayv2_update_api}
 \title{Updates an Api resource}
 \usage{
-apigatewayv2_update_api(ApiId, ApiKeySelectionExpression,
-  CorsConfiguration, CredentialsArn, Description, DisableSchemaValidation,
-  DisableExecuteApiEndpoint, Name, RouteKey, RouteSelectionExpression,
-  Target, Version)
+apigatewayv2_update_api(
+  ApiId,
+  ApiKeySelectionExpression = NULL,
+  CorsConfiguration = NULL,
+  CredentialsArn = NULL,
+  Description = NULL,
+  DisableSchemaValidation = NULL,
+  DisableExecuteApiEndpoint = NULL,
+  Name = NULL,
+  RouteKey = NULL,
+  RouteSelectionExpression = NULL,
+  Target = NULL,
+  Version = NULL
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -60,84 +70,9 @@ remove it from an API. Supported only for HTTP APIs.}
 
 \item{Version}{A version identifier for the API.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApiEndpoint = "string",
-  ApiGatewayManaged = TRUE|FALSE,
-  ApiId = "string",
-  ApiKeySelectionExpression = "string",
-  CorsConfiguration = list(
-    AllowCredentials = TRUE|FALSE,
-    AllowHeaders = list(
-      "string"
-    ),
-    AllowMethods = list(
-      "string"
-    ),
-    AllowOrigins = list(
-      "string"
-    ),
-    ExposeHeaders = list(
-      "string"
-    ),
-    MaxAge = 123
-  ),
-  CreatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  Description = "string",
-  DisableSchemaValidation = TRUE|FALSE,
-  DisableExecuteApiEndpoint = TRUE|FALSE,
-  ImportInfo = list(
-    "string"
-  ),
-  Name = "string",
-  ProtocolType = "WEBSOCKET"|"HTTP",
-  RouteSelectionExpression = "string",
-  Tags = list(
-    "string"
-  ),
-  Version = "string",
-  Warnings = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Updates an Api resource.
-}
-\section{Request syntax}{
-\preformatted{svc$update_api(
-  ApiId = "string",
-  ApiKeySelectionExpression = "string",
-  CorsConfiguration = list(
-    AllowCredentials = TRUE|FALSE,
-    AllowHeaders = list(
-      "string"
-    ),
-    AllowMethods = list(
-      "string"
-    ),
-    AllowOrigins = list(
-      "string"
-    ),
-    ExposeHeaders = list(
-      "string"
-    ),
-    MaxAge = 123
-  ),
-  CredentialsArn = "string",
-  Description = "string",
-  DisableSchemaValidation = TRUE|FALSE,
-  DisableExecuteApiEndpoint = TRUE|FALSE,
-  Name = "string",
-  RouteKey = "string",
-  RouteSelectionExpression = "string",
-  Target = "string",
-  Version = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/update_api.html} for full documentation.
+}
 \keyword{internal}

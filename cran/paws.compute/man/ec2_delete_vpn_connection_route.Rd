@@ -12,21 +12,9 @@ ec2_delete_vpn_connection_route(DestinationCidrBlock, VpnConnectionId)
 
 \item{VpnConnectionId}{[required] The ID of the VPN connection.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified static route associated with a VPN connection
-between an existing virtual private gateway and a VPN customer gateway.
-The static route allows traffic to be routed from the virtual private
-gateway to the VPN customer gateway.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_vpn_connection_route(
-  DestinationCidrBlock = "string",
-  VpnConnectionId = "string"
-)
-}
-}
+Deletes the specified static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway. The static route allows traffic to be routed from the virtual private gateway to the VPN customer gateway.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_vpn_connection_route.html} for full documentation.
+}
 \keyword{internal}

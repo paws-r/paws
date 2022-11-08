@@ -4,7 +4,11 @@
 \alias{cloudsearch_describe_suggesters}
 \title{Gets the suggesters configured for a domain}
 \usage{
-cloudsearch_describe_suggesters(DomainName, SuggesterNames, Deployed)
+cloudsearch_describe_suggesters(
+  DomainName,
+  SuggesterNames = NULL,
+  Deployed = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required] The name of the domain you want to describe.}
@@ -14,52 +18,9 @@ cloudsearch_describe_suggesters(DomainName, SuggesterNames, Deployed)
 \item{Deployed}{Whether to display the deployed configuration (\code{true}) or include any
 pending changes (\code{false}). Defaults to \code{false}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Suggesters = list(
-    list(
-      Options = list(
-        SuggesterName = "string",
-        DocumentSuggesterOptions = list(
-          SourceField = "string",
-          FuzzyMatching = "none"|"low"|"high",
-          SortExpression = "string"
-        )
-      ),
-      Status = list(
-        CreationDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        UpdateDate = as.POSIXct(
-          "2015-01-01"
-        ),
-        UpdateVersion = 123,
-        State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-        PendingDeletion = TRUE|FALSE
-      )
-    )
-  )
-)
-}
-}
 \description{
-Gets the suggesters configured for a domain. A suggester enables you to
-display possible matches before users finish typing their queries. Can
-be limited to specific suggesters by name. By default, shows all
-suggesters and includes any pending changes to the configuration. Set
-the \code{Deployed} option to \code{true} to show the active configuration and
-exclude pending changes. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions}
-in the \emph{Amazon CloudSearch Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_suggesters(
-  DomainName = "string",
-  SuggesterNames = list(
-    "string"
-  ),
-  Deployed = TRUE|FALSE
-)
-}
-}
+Gets the suggesters configured for a domain. A suggester enables you to display possible matches before users finish typing their queries. Can be limited to specific suggesters by name. By default, shows all suggesters and includes any pending changes to the configuration. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the \emph{Amazon CloudSearch Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/cloudsearch/describe_suggesters.html} for full documentation.
+}
 \keyword{internal}

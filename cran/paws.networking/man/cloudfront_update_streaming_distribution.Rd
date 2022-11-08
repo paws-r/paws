@@ -4,8 +4,11 @@
 \alias{cloudfront_update_streaming_distribution}
 \title{Update a streaming distribution}
 \usage{
-cloudfront_update_streaming_distribution(StreamingDistributionConfig,
-  Id, IfMatch)
+cloudfront_update_streaming_distribution(
+  StreamingDistributionConfig,
+  Id,
+  IfMatch = NULL
+)
 }
 \arguments{
 \item{StreamingDistributionConfig}{[required] The streaming distribution's configuration information.}
@@ -15,101 +18,9 @@ cloudfront_update_streaming_distribution(StreamingDistributionConfig,
 \item{IfMatch}{The value of the \code{ETag} header that you received when retrieving the
 streaming distribution's configuration. For example: \code{E2QWRUHAPOMQZL}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StreamingDistribution = list(
-    Id = "string",
-    ARN = "string",
-    Status = "string",
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    DomainName = "string",
-    ActiveTrustedSigners = list(
-      Enabled = TRUE|FALSE,
-      Quantity = 123,
-      Items = list(
-        list(
-          AwsAccountNumber = "string",
-          KeyPairIds = list(
-            Quantity = 123,
-            Items = list(
-              "string"
-            )
-          )
-        )
-      )
-    ),
-    StreamingDistributionConfig = list(
-      CallerReference = "string",
-      S3Origin = list(
-        DomainName = "string",
-        OriginAccessIdentity = "string"
-      ),
-      Aliases = list(
-        Quantity = 123,
-        Items = list(
-          "string"
-        )
-      ),
-      Comment = "string",
-      Logging = list(
-        Enabled = TRUE|FALSE,
-        Bucket = "string",
-        Prefix = "string"
-      ),
-      TrustedSigners = list(
-        Enabled = TRUE|FALSE,
-        Quantity = 123,
-        Items = list(
-          "string"
-        )
-      ),
-      PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
-      Enabled = TRUE|FALSE
-    )
-  ),
-  ETag = "string"
-)
-}
-}
 \description{
 Update a streaming distribution.
-}
-\section{Request syntax}{
-\preformatted{svc$update_streaming_distribution(
-  StreamingDistributionConfig = list(
-    CallerReference = "string",
-    S3Origin = list(
-      DomainName = "string",
-      OriginAccessIdentity = "string"
-    ),
-    Aliases = list(
-      Quantity = 123,
-      Items = list(
-        "string"
-      )
-    ),
-    Comment = "string",
-    Logging = list(
-      Enabled = TRUE|FALSE,
-      Bucket = "string",
-      Prefix = "string"
-    ),
-    TrustedSigners = list(
-      Enabled = TRUE|FALSE,
-      Quantity = 123,
-      Items = list(
-        "string"
-      )
-    ),
-    PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
-    Enabled = TRUE|FALSE
-  ),
-  Id = "string",
-  IfMatch = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/update_streaming_distribution.html} for full documentation.
+}
 \keyword{internal}

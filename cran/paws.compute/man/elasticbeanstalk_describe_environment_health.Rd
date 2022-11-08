@@ -5,8 +5,11 @@
 \title{Returns information about the overall health of the specified
 environment}
 \usage{
-elasticbeanstalk_describe_environment_health(EnvironmentName,
-  EnvironmentId, AttributeNames)
+elasticbeanstalk_describe_environment_health(
+  EnvironmentName = NULL,
+  EnvironmentId = NULL,
+  AttributeNames = NULL
+)
 }
 \arguments{
 \item{EnvironmentName}{Specify the environment by name.
@@ -21,78 +24,9 @@ You must specify either this or an EnvironmentName, or both.}
 to \code{All}. If no attribute names are specified, returns the name of the
 environment.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EnvironmentName = "string",
-  HealthStatus = "string",
-  Status = "Green"|"Yellow"|"Red"|"Grey",
-  Color = "string",
-  Causes = list(
-    "string"
-  ),
-  ApplicationMetrics = list(
-    Duration = 123,
-    RequestCount = 123,
-    StatusCodes = list(
-      Status2xx = 123,
-      Status3xx = 123,
-      Status4xx = 123,
-      Status5xx = 123
-    ),
-    Latency = list(
-      P999 = 123.0,
-      P99 = 123.0,
-      P95 = 123.0,
-      P90 = 123.0,
-      P85 = 123.0,
-      P75 = 123.0,
-      P50 = 123.0,
-      P10 = 123.0
-    )
-  ),
-  InstancesHealth = list(
-    NoData = 123,
-    Unknown = 123,
-    Pending = 123,
-    Ok = 123,
-    Info = 123,
-    Warning = 123,
-    Degraded = 123,
-    Severe = 123
-  ),
-  RefreshedAt = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Returns information about the overall health of the specified
-environment. The \strong{DescribeEnvironmentHealth} operation is only
-available with AWS Elastic Beanstalk Enhanced Health.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_environment_health(
-  EnvironmentName = "string",
-  EnvironmentId = "string",
-  AttributeNames = list(
-    "Status"|"Color"|"Causes"|"ApplicationMetrics"|"InstancesHealth"|"All"|"HealthStatus"|"RefreshedAt"
-  )
-)
-}
-}
+Returns information about the overall health of the specified environment. The \strong{DescribeEnvironmentHealth} operation is only available with AWS Elastic Beanstalk Enhanced Health.
 
-\examples{
-\dontrun{
-# The following operation retrieves overall health information for an
-# environment named my-env:
-svc$describe_environment_health(
-  AttributeNames = list(
-    "All"
-  ),
-  EnvironmentName = "my-env"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_environment_health.html} for full documentation.
 }
 \keyword{internal}

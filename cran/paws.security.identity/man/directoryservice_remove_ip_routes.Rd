@@ -12,20 +12,9 @@ addresses.}
 
 \item{CidrIps}{[required] IP address blocks that you want to remove.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes IP address blocks from a directory.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_ip_routes(
-  DirectoryId = "string",
-  CidrIps = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/remove_ip_routes.html} for full documentation.
+}
 \keyword{internal}

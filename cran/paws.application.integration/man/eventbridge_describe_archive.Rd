@@ -9,32 +9,9 @@ eventbridge_describe_archive(ArchiveName)
 \arguments{
 \item{ArchiveName}{[required] The name of the archive to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ArchiveArn = "string",
-  ArchiveName = "string",
-  EventSourceArn = "string",
-  Description = "string",
-  EventPattern = "string",
-  State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
-  StateReason = "string",
-  RetentionDays = 123,
-  SizeBytes = 123,
-  EventCount = 123,
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
 Retrieves details about an archive.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_archive(
-  ArchiveName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/eventbridge/describe_archive.html} for full documentation.
+}
 \keyword{internal}

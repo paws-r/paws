@@ -4,44 +4,33 @@
 \alias{rekognition_start_project_version}
 \title{Starts the running of the version of a model}
 \usage{
-rekognition_start_project_version(ProjectVersionArn, MinInferenceUnits)
+rekognition_start_project_version(
+  ProjectVersionArn,
+  MinInferenceUnits,
+  MaxInferenceUnits = NULL
+)
 }
 \arguments{
 \item{ProjectVersionArn}{[required] The Amazon Resource Name(ARN) of the model version that you want to
 start.}
 
 \item{MinInferenceUnits}{[required] The minimum number of inference units to use. A single inference unit
-represents 1 hour of processing and can support up to 5 Transaction Pers
-Second (TPS). Use a higher number to increase the TPS throughput of your
-model. You are charged for the number of inference units that you use.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"
-)
-}
+represents 1 hour of processing.
+
+For information about the number of transactions per second (TPS) that
+an inference unit can support, see \emph{Running a trained Amazon Rekognition
+Custom Labels model} in the Amazon Rekognition Custom Labels Guide.
+
+Use a higher number to increase the TPS throughput of your model. You
+are charged for the number of inference units that you use.}
+
+\item{MaxInferenceUnits}{The maximum number of inference units to use for auto-scaling the model.
+If you don't specify a value, Amazon Rekognition Custom Labels doesn't
+auto-scale the model.}
 }
 \description{
-Starts the running of the version of a model. Starting a model takes a
-while to complete. To check the current state of the model, use
-\code{\link[=rekognition_describe_project_versions]{describe_project_versions}}.
+Starts the running of the version of a model. Starting a model takes a while to complete. To check the current state of the model, use \code{\link[=rekognition_describe_project_versions]{describe_project_versions}}.
 
-Once the model is running, you can detect custom labels in new images by
-calling \code{\link[=rekognition_detect_custom_labels]{detect_custom_labels}}.
-
-You are charged for the amount of time that the model is running. To
-stop a running model, call
-\code{\link[=rekognition_stop_project_version]{stop_project_version}}.
-
-This operation requires permissions to perform the
-\code{rekognition:StartProjectVersion} action.
+See \url{https://paws-r.github.io/docs/rekognition/start_project_version.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_project_version(
-  ProjectVersionArn = "string",
-  MinInferenceUnits = 123
-)
-}
-}
-
 \keyword{internal}

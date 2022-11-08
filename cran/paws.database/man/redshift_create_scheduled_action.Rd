@@ -4,9 +4,16 @@
 \alias{redshift_create_scheduled_action}
 \title{Creates a scheduled action}
 \usage{
-redshift_create_scheduled_action(ScheduledActionName, TargetAction,
-  Schedule, IamRole, ScheduledActionDescription, StartTime, EndTime,
-  Enable)
+redshift_create_scheduled_action(
+  ScheduledActionName,
+  TargetAction,
+  Schedule,
+  IamRole,
+  ScheduledActionDescription = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  Enable = NULL
+)
 }
 \arguments{
 \item{ScheduledActionName}{[required] The name of the scheduled action. The name must be unique within an
@@ -36,78 +43,9 @@ parameter, see ScheduledAction.}
 not trigger. For more information about \code{state} of the scheduled action,
 see ScheduledAction.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ScheduledActionName = "string",
-  TargetAction = list(
-    ResizeCluster = list(
-      ClusterIdentifier = "string",
-      ClusterType = "string",
-      NodeType = "string",
-      NumberOfNodes = 123,
-      Classic = TRUE|FALSE
-    ),
-    PauseCluster = list(
-      ClusterIdentifier = "string"
-    ),
-    ResumeCluster = list(
-      ClusterIdentifier = "string"
-    )
-  ),
-  Schedule = "string",
-  IamRole = "string",
-  ScheduledActionDescription = "string",
-  State = "ACTIVE"|"DISABLED",
-  NextInvocations = list(
-    as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Creates a scheduled action. A scheduled action contains a schedule and
-an Amazon Redshift API action. For example, you can create a schedule of
-when to run the \code{\link[=redshift_resize_cluster]{resize_cluster}} API
-operation.
-}
-\section{Request syntax}{
-\preformatted{svc$create_scheduled_action(
-  ScheduledActionName = "string",
-  TargetAction = list(
-    ResizeCluster = list(
-      ClusterIdentifier = "string",
-      ClusterType = "string",
-      NodeType = "string",
-      NumberOfNodes = 123,
-      Classic = TRUE|FALSE
-    ),
-    PauseCluster = list(
-      ClusterIdentifier = "string"
-    ),
-    ResumeCluster = list(
-      ClusterIdentifier = "string"
-    )
-  ),
-  Schedule = "string",
-  IamRole = "string",
-  ScheduledActionDescription = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Enable = TRUE|FALSE
-)
-}
-}
+Creates a scheduled action. A scheduled action contains a schedule and an Amazon Redshift API action. For example, you can create a schedule of when to run the \code{\link[=redshift_resize_cluster]{resize_cluster}} API operation.
 
+See \url{https://paws-r.github.io/docs/redshift/create_scheduled_action.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,12 @@
 \alias{opsworks_describe_ecs_clusters}
 \title{Describes Amazon ECS clusters that are registered with a stack}
 \usage{
-opsworks_describe_ecs_clusters(EcsClusterArns, StackId, NextToken,
-  MaxResults)
+opsworks_describe_ecs_clusters(
+  EcsClusterArns = NULL,
+  StackId = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{EcsClusterArns}{A list of ARNs, one for each cluster to be described.}
@@ -27,44 +31,9 @@ number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EcsClusters = list(
-    list(
-      EcsClusterArn = "string",
-      EcsClusterName = "string",
-      StackId = "string",
-      RegisteredAt = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes Amazon ECS clusters that are registered with a stack. If you
-specify only a stack ID, you can use the \code{MaxResults} and \code{NextToken}
-parameters to paginate the response. However, AWS OpsWorks Stacks
-currently supports only one cluster per layer, so the result set has a
-maximum of one element.
+Describes Amazon ECS clusters that are registered with a stack. If you specify only a stack ID, you can use the \code{MaxResults} and \code{NextToken} parameters to paginate the response. However, AWS OpsWorks Stacks currently supports only one cluster per layer, so the result set has a maximum of one element.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Show, Deploy, or Manage permissions level for the stack or an attached
-policy that explicitly grants permission. For more information about
-user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
-
-This call accepts only one resource-identifying parameter.
+See \url{https://paws-r.github.io/docs/opsworks/describe_ecs_clusters.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_ecs_clusters(
-  EcsClusterArns = list(
-    "string"
-  ),
-  StackId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

@@ -2,54 +2,38 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_start_session}
 \alias{ssm_start_session}
-\title{Initiates a connection to a target (for example, an instance) for a
+\title{Initiates a connection to a target (for example, a managed node) for a
 Session Manager session}
 \usage{
-ssm_start_session(Target, DocumentName, Parameters)
+ssm_start_session(
+  Target,
+  DocumentName = NULL,
+  Reason = NULL,
+  Parameters = NULL
+)
 }
 \arguments{
-\item{Target}{[required] The instance to connect to for the session.}
+\item{Target}{[required] The managed node to connect to for the session.}
 
-\item{DocumentName}{The name of the SSM document to define the parameters and plugin
-settings for the session. For example, \code{SSM-SessionManagerRunShell}. You
-can call the \code{\link[=ssm_get_document]{get_document}} API to verify the
-document exists before attempting to start a session. If no document
-name is provided, a shell to the instance is launched by default.}
+\item{DocumentName}{The name of the SSM document you want to use to define the type of
+session, input parameters, or preferences for the session. For example,
+\code{SSM-SessionManagerRunShell}. You can call the
+\code{\link[=ssm_get_document]{get_document}} API to verify the document exists
+before attempting to start a session. If no document name is provided, a
+shell to the managed node is launched by default. For more information,
+see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html}{Start a session}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
-\item{Parameters}{Reserved for future use.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  SessionId = "string",
-  TokenValue = "string",
-  StreamUrl = "string"
-)
-}
+\item{Reason}{The reason for connecting to the instance. This value is included in the
+details for the Amazon CloudWatch Events event created when you start
+the session.}
+
+\item{Parameters}{The values you want to specify for the parameters defined in the Session
+document.}
 }
 \description{
-Initiates a connection to a target (for example, an instance) for a
-Session Manager session. Returns a URL and token that can be used to
-open a WebSocket connection for sending input and receiving outputs.
+Initiates a connection to a target (for example, a managed node) for a Session Manager session. Returns a URL and token that can be used to open a WebSocket connection for sending input and receiving outputs.
 
-AWS CLI usage: \code{start-session} is an interactive command that requires
-the Session Manager plugin to be installed on the client machine making
-the call. For information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html}{Install the Session Manager plugin for the AWS CLI}
-in the \emph{AWS Systems Manager User Guide}.
-
-AWS Tools for PowerShell usage: Start-SSMSession is not currently
-supported by AWS Tools for PowerShell on Windows local machines.
+See \url{https://paws-r.github.io/docs/ssm/start_session.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_session(
-  Target = "string",
-  DocumentName = "string",
-  Parameters = list(
-    list(
-      "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

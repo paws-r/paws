@@ -16,22 +16,9 @@ that the job is being worked on by only one job worker. Get this number
 from the response of the \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}}
 request that returned this job.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  status = "Created"|"Queued"|"Dispatched"|"InProgress"|"TimedOut"|"Succeeded"|"Failed"
-)
-}
-}
 \description{
-Returns information about a specified job and whether that job has been
-received by the job worker. Used for custom actions only.
-}
-\section{Request syntax}{
-\preformatted{svc$acknowledge_job(
-  jobId = "string",
-  nonce = "string"
-)
-}
-}
+Returns information about a specified job and whether that job has been received by the job worker. Used for custom actions only.
 
+See \url{https://paws-r.github.io/docs/codepipeline/acknowledge_job.html} for full documentation.
+}
 \keyword{internal}

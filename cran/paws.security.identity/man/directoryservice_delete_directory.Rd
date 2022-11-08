@@ -2,33 +2,16 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_delete_directory}
 \alias{directoryservice_delete_directory}
-\title{Deletes an AWS Directory Service directory}
+\title{Deletes an Directory Service directory}
 \usage{
 directoryservice_delete_directory(DirectoryId)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DirectoryId = "string"
-)
-}
-}
 \description{
-Deletes an AWS Directory Service directory.
+Deletes an Directory Service directory.
 
-Before you call \code{\link[=directoryservice_delete_directory]{delete_directory}},
-ensure that all of the required permissions have been explicitly granted
-through a policy. For details about what permissions are required to run
-the \code{\link[=directoryservice_delete_directory]{delete_directory}} operation,
-see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
+See \url{https://paws-r.github.io/docs/directoryservice/delete_directory.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_directory(
-  DirectoryId = "string"
-)
-}
-}
-
 \keyword{internal}

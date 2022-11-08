@@ -4,7 +4,7 @@
 \alias{eventbridge_enable_rule}
 \title{Enables the specified rule}
 \usage{
-eventbridge_enable_rule(Name, EventBusName)
+eventbridge_enable_rule(Name, EventBusName = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the rule.}
@@ -12,23 +12,9 @@ eventbridge_enable_rule(Name, EventBusName)
 \item{EventBusName}{The name or ARN of the event bus associated with the rule. If you omit
 this, the default event bus is used.}
 }
-\value{
-An empty list.
-}
 \description{
-Enables the specified rule. If the rule does not exist, the operation
-fails.
+Enables the specified rule. If the rule does not exist, the operation fails.
 
-When you enable a rule, incoming events might not immediately start
-matching to a newly enabled rule. Allow a short period of time for
-changes to take effect.
+See \url{https://paws-r.github.io/docs/eventbridge/enable_rule.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$enable_rule(
-  Name = "string",
-  EventBusName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -5,9 +5,18 @@
 \title{Used by Security Hub customers to update information about their
 investigation into a finding}
 \usage{
-securityhub_batch_update_findings(FindingIdentifiers, Note, Severity,
-  VerificationState, Confidence, Criticality, Types, UserDefinedFields,
-  Workflow, RelatedFindings)
+securityhub_batch_update_findings(
+  FindingIdentifiers,
+  Note = NULL,
+  Severity = NULL,
+  VerificationState = NULL,
+  Confidence = NULL,
+  Criticality = NULL,
+  Types = NULL,
+  UserDefinedFields = NULL,
+  Workflow = NULL,
+  RelatedFindings = NULL
+)
 }
 \arguments{
 \item{FindingIdentifiers}{[required] The list of findings to update.
@@ -68,95 +77,9 @@ finding.}
 
 \item{RelatedFindings}{A list of findings that are related to the updated findings.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProcessedFindings = list(
-    list(
-      Id = "string",
-      ProductArn = "string"
-    )
-  ),
-  UnprocessedFindings = list(
-    list(
-      FindingIdentifier = list(
-        Id = "string",
-        ProductArn = "string"
-      ),
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Used by Security Hub customers to update information about their
-investigation into a finding. Requested by master accounts or member
-accounts. Master accounts can update findings for their account and
-their member accounts. Member accounts can update findings for their
-account.
+Used by Security Hub customers to update information about their investigation into a finding. Requested by administrator accounts or member accounts. Administrator accounts can update findings for their account and their member accounts. Member accounts can update findings for their account.
 
-Updates from
-\code{\link[=securityhub_batch_update_findings]{batch_update_findings}} do not
-affect the value of \code{UpdatedAt} for a finding.
-
-Master and member accounts can use
-\code{\link[=securityhub_batch_update_findings]{batch_update_findings}} to update
-the following finding fields and objects.
-\itemize{
-\item \code{Confidence}
-\item \code{Criticality}
-\item \code{Note}
-\item \code{RelatedFindings}
-\item \code{Severity}
-\item \code{Types}
-\item \code{UserDefinedFields}
-\item \code{VerificationState}
-\item \code{Workflow}
+See \url{https://paws-r.github.io/docs/securityhub/batch_update_findings.html} for full documentation.
 }
-
-You can configure IAM policies to restrict access to fields and field
-values. For example, you might not want member accounts to be able to
-suppress findings or change the finding severity. See \href{https://docs.aws.amazon.com/securityhub/latest/userguide/finding-update-batchupdatefindings.html#batchupdatefindings-configure-access}{Configuring access to BatchUpdateFindings}
-in the \emph{AWS Security Hub User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_update_findings(
-  FindingIdentifiers = list(
-    list(
-      Id = "string",
-      ProductArn = "string"
-    )
-  ),
-  Note = list(
-    Text = "string",
-    UpdatedBy = "string"
-  ),
-  Severity = list(
-    Normalized = 123,
-    Product = 123.0,
-    Label = "INFORMATIONAL"|"LOW"|"MEDIUM"|"HIGH"|"CRITICAL"
-  ),
-  VerificationState = "UNKNOWN"|"TRUE_POSITIVE"|"FALSE_POSITIVE"|"BENIGN_POSITIVE",
-  Confidence = 123,
-  Criticality = 123,
-  Types = list(
-    "string"
-  ),
-  UserDefinedFields = list(
-    "string"
-  ),
-  Workflow = list(
-    Status = "NEW"|"NOTIFIED"|"RESOLVED"|"SUPPRESSED"
-  ),
-  RelatedFindings = list(
-    list(
-      ProductArn = "string",
-      Id = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

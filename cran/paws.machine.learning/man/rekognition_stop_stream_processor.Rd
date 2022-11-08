@@ -11,18 +11,9 @@ rekognition_stop_stream_processor(Name)
 \item{Name}{[required] The name of a stream processor created by
 \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.}
 }
-\value{
-An empty list.
-}
 \description{
-Stops a running stream processor that was created by
-\code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_stream_processor(
-  Name = "string"
-)
-}
-}
+Stops a running stream processor that was created by \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
 
+See \url{https://paws-r.github.io/docs/rekognition/stop_stream_processor.html} for full documentation.
+}
 \keyword{internal}

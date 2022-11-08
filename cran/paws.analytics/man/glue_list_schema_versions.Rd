@@ -5,7 +5,7 @@
 \title{Returns a list of schema versions that you have created, with minimal
 information}
 \usage{
-glue_list_schema_versions(SchemaId, MaxResults, NextToken)
+glue_list_schema_versions(SchemaId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{SchemaId}{[required] This is a wrapper structure to contain schema identity fields. The
@@ -23,38 +23,9 @@ supplied, this will be defaulted to 25 per page.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Schemas = list(
-    list(
-      SchemaArn = "string",
-      SchemaVersionId = "string",
-      VersionNumber = 123,
-      Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING",
-      CreatedTime = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a list of schema versions that you have created, with minimal
-information. Schema versions in Deleted status will not be included in
-the results. Empty results will be returned if there are no schema
-versions available.
-}
-\section{Request syntax}{
-\preformatted{svc$list_schema_versions(
-  SchemaId = list(
-    SchemaArn = "string",
-    SchemaName = "string",
-    RegistryName = "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Returns a list of schema versions that you have created, with minimal information. Schema versions in Deleted status will not be included in the results. Empty results will be returned if there are no schema versions available.
 
+See \url{https://paws-r.github.io/docs/glue/list_schema_versions.html} for full documentation.
+}
 \keyword{internal}

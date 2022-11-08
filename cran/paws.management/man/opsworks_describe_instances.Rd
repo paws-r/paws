@@ -4,7 +4,7 @@
 \alias{opsworks_describe_instances}
 \title{Requests a description of a set of instances}
 \usage{
-opsworks_describe_instances(StackId, LayerId, InstanceIds)
+opsworks_describe_instances(StackId = NULL, LayerId = NULL, InstanceIds = NULL)
 }
 \arguments{
 \item{StackId}{A stack ID. If you use this parameter,
@@ -20,96 +20,9 @@ of the instances associated with the specified layer.}
 description of the specified instances. Otherwise, it returns a
 description of every instance.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Instances = list(
-    list(
-      AgentVersion = "string",
-      AmiId = "string",
-      Architecture = "x86_64"|"i386",
-      Arn = "string",
-      AutoScalingType = "load"|"timer",
-      AvailabilityZone = "string",
-      BlockDeviceMappings = list(
-        list(
-          DeviceName = "string",
-          NoDevice = "string",
-          VirtualName = "string",
-          Ebs = list(
-            SnapshotId = "string",
-            Iops = 123,
-            VolumeSize = 123,
-            VolumeType = "gp2"|"io1"|"standard",
-            DeleteOnTermination = TRUE|FALSE
-          )
-        )
-      ),
-      CreatedAt = "string",
-      EbsOptimized = TRUE|FALSE,
-      Ec2InstanceId = "string",
-      EcsClusterArn = "string",
-      EcsContainerInstanceArn = "string",
-      ElasticIp = "string",
-      Hostname = "string",
-      InfrastructureClass = "string",
-      InstallUpdatesOnBoot = TRUE|FALSE,
-      InstanceId = "string",
-      InstanceProfileArn = "string",
-      InstanceType = "string",
-      LastServiceErrorId = "string",
-      LayerIds = list(
-        "string"
-      ),
-      Os = "string",
-      Platform = "string",
-      PrivateDns = "string",
-      PrivateIp = "string",
-      PublicDns = "string",
-      PublicIp = "string",
-      RegisteredBy = "string",
-      ReportedAgentVersion = "string",
-      ReportedOs = list(
-        Family = "string",
-        Name = "string",
-        Version = "string"
-      ),
-      RootDeviceType = "ebs"|"instance-store",
-      RootDeviceVolumeId = "string",
-      SecurityGroupIds = list(
-        "string"
-      ),
-      SshHostDsaKeyFingerprint = "string",
-      SshHostRsaKeyFingerprint = "string",
-      SshKeyName = "string",
-      StackId = "string",
-      Status = "string",
-      SubnetId = "string",
-      Tenancy = "string",
-      VirtualizationType = "paravirtual"|"hvm"
-    )
-  )
-)
-}
-}
 \description{
 Requests a description of a set of instances.
 
-This call accepts only one resource-identifying parameter.
-
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information about
-user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/describe_instances.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_instances(
-  StackId = "string",
-  LayerId = "string",
-  InstanceIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,14 @@
 \alias{ec2_describe_instance_status}
 \title{Describes the status of the specified instances or all of your instances}
 \usage{
-ec2_describe_instance_status(Filters, InstanceIds, MaxResults,
-  NextToken, DryRun, IncludeAllInstances)
+ec2_describe_instance_status(
+  Filters = NULL,
+  InstanceIds = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL,
+  IncludeAllInstances = NULL
+)
 }
 \arguments{
 \item{Filters}{The filters.
@@ -68,116 +74,9 @@ includes the health status for running instances only.
 
 Default: \code{false}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceStatuses = list(
-    list(
-      AvailabilityZone = "string",
-      OutpostArn = "string",
-      Events = list(
-        list(
-          InstanceEventId = "string",
-          Code = "instance-reboot"|"system-reboot"|"system-maintenance"|"instance-retirement"|"instance-stop",
-          Description = "string",
-          NotAfter = as.POSIXct(
-            "2015-01-01"
-          ),
-          NotBefore = as.POSIXct(
-            "2015-01-01"
-          ),
-          NotBeforeDeadline = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      ),
-      InstanceId = "string",
-      InstanceState = list(
-        Code = 123,
-        Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
-      ),
-      InstanceStatus = list(
-        Details = list(
-          list(
-            ImpairedSince = as.POSIXct(
-              "2015-01-01"
-            ),
-            Name = "reachability",
-            Status = "passed"|"failed"|"insufficient-data"|"initializing"
-          )
-        ),
-        Status = "ok"|"impaired"|"insufficient-data"|"not-applicable"|"initializing"
-      ),
-      SystemStatus = list(
-        Details = list(
-          list(
-            ImpairedSince = as.POSIXct(
-              "2015-01-01"
-            ),
-            Name = "reachability",
-            Status = "passed"|"failed"|"insufficient-data"|"initializing"
-          )
-        ),
-        Status = "ok"|"impaired"|"insufficient-data"|"not-applicable"|"initializing"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the status of the specified instances or all of your
-instances. By default, only running instances are described, unless you
-specifically indicate to return the status of all instances.
+Describes the status of the specified instances or all of your instances. By default, only running instances are described, unless you specifically indicate to return the status of all instances.
 
-Instance status includes the following components:
-\itemize{
-\item \strong{Status checks} - Amazon EC2 performs status checks on running EC2
-instances to identify hardware and software issues. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html}{Status checks for your instances}
-and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html}{Troubleshooting instances with failed status checks}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-\item \strong{Scheduled events} - Amazon EC2 can schedule events (such as
-reboot, stop, or terminate) for your instances related to hardware
-issues, software updates, or system maintenance. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-instances-status-check_sched.html}{Scheduled events for your instances}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-\item \strong{Instance state} - You can manage your instances from the moment
-you launch them through their termination. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html}{Instance lifecycle}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$describe_instance_status(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  InstanceIds = list(
-    "string"
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE,
-  IncludeAllInstances = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the current status of the specified instance.
-svc$describe_instance_status(
-  InstanceIds = list(
-    "i-1234567890abcdef0"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_instance_status.html} for full documentation.
 }
 \keyword{internal}

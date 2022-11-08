@@ -5,8 +5,13 @@
 \title{Return a list of inventory type names for the account, or return a list
 of attribute names for a specific Inventory item type}
 \usage{
-ssm_get_inventory_schema(TypeName, NextToken, MaxResults, Aggregator,
-  SubType)
+ssm_get_inventory_schema(
+  TypeName = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  Aggregator = NULL,
+  SubType = NULL
+)
 }
 \arguments{
 \item{TypeName}{The type of inventory item to return.}
@@ -25,38 +30,9 @@ aggregation based on the \code{PlatformName}, \code{PlatformType}, and
 
 \item{SubType}{Returns the sub-type schema for a specified inventory type.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Schemas = list(
-    list(
-      TypeName = "string",
-      Version = "string",
-      Attributes = list(
-        list(
-          Name = "string",
-          DataType = "string"|"number"
-        )
-      ),
-      DisplayName = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Return a list of inventory type names for the account, or return a list
-of attribute names for a specific Inventory item type.
-}
-\section{Request syntax}{
-\preformatted{svc$get_inventory_schema(
-  TypeName = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  Aggregator = TRUE|FALSE,
-  SubType = TRUE|FALSE
-)
-}
-}
+Return a list of inventory type names for the account, or return a list of attribute names for a specific Inventory item type.
 
+See \url{https://paws-r.github.io/docs/ssm/get_inventory_schema.html} for full documentation.
+}
 \keyword{internal}

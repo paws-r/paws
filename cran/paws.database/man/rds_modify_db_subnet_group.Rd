@@ -4,8 +4,11 @@
 \alias{rds_modify_db_subnet_group}
 \title{Modifies an existing DB subnet group}
 \usage{
-rds_modify_db_subnet_group(DBSubnetGroupName, DBSubnetGroupDescription,
-  SubnetIds)
+rds_modify_db_subnet_group(
+  DBSubnetGroupName,
+  DBSubnetGroupDescription = NULL,
+  SubnetIds
+)
 }
 \arguments{
 \item{DBSubnetGroupName}{[required] The name for the DB subnet group. This value is stored as a lowercase
@@ -14,49 +17,15 @@ string. You can't modify the default subnet group.
 Constraints: Must match the name of an existing DBSubnetGroup. Must not
 be default.
 
-Example: \code{mySubnetgroup}}
+Example: \code{mydbsubnetgroup}}
 
 \item{DBSubnetGroupDescription}{The description for the DB subnet group.}
 
 \item{SubnetIds}{[required] The EC2 subnet IDs for the DB subnet group.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBSubnetGroup = list(
-    DBSubnetGroupName = "string",
-    DBSubnetGroupDescription = "string",
-    VpcId = "string",
-    SubnetGroupStatus = "string",
-    Subnets = list(
-      list(
-        SubnetIdentifier = "string",
-        SubnetAvailabilityZone = list(
-          Name = "string"
-        ),
-        SubnetOutpost = list(
-          Arn = "string"
-        ),
-        SubnetStatus = "string"
-      )
-    ),
-    DBSubnetGroupArn = "string"
-  )
-)
-}
-}
 \description{
-Modifies an existing DB subnet group. DB subnet groups must contain at
-least one subnet in at least two AZs in the AWS Region.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_db_subnet_group(
-  DBSubnetGroupName = "string",
-  DBSubnetGroupDescription = "string",
-  SubnetIds = list(
-    "string"
-  )
-)
-}
-}
+Modifies an existing DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the Amazon Web Services Region.
 
+See \url{https://paws-r.github.io/docs/rds/modify_db_subnet_group.html} for full documentation.
+}
 \keyword{internal}

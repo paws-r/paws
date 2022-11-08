@@ -4,7 +4,12 @@
 \alias{s3_get_object_torrent}
 \title{Returns torrent files from a bucket}
 \usage{
-s3_get_object_torrent(Bucket, Key, RequestPayer, ExpectedBucketOwner)
+s3_get_object_torrent(
+  Bucket,
+  Key,
+  RequestPayer = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the object for which to get the
@@ -14,54 +19,13 @@ torrent files.}
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Body = raw,
-  RequestCharged = "requester"
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns torrent files from a bucket. BitTorrent can save you bandwidth
-when you're distributing large files. For more information about
-BitTorrent, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html}{Using BitTorrent with Amazon S3}.
+Returns torrent files from a bucket. BitTorrent can save you bandwidth when you're distributing large files. For more information about BitTorrent, see Using BitTorrent with Amazon S3.
 
-You can get torrent only for objects that are less than 5 GB in size,
-and that are not encrypted using server-side encryption with a
-customer-provided encryption key.
-
-To use GET, you must have READ access to the object.
-
-This action is not supported by Amazon S3 on Outposts.
-
-The following operation is related to
-\code{\link[=s3_get_object_torrent]{get_object_torrent}}:
-\itemize{
-\item \code{\link[=s3_get_object]{get_object}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$get_object_torrent(
-  Bucket = "string",
-  Key = "string",
-  RequestPayer = "requester",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example retrieves torrent files of an object.
-svc$get_object_torrent(
-  Bucket = "examplebucket",
-  Key = "HappyFace.jpg"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/get_object_torrent.html} for full documentation.
 }
 \keyword{internal}

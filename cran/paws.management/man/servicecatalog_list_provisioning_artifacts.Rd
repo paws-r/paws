@@ -5,7 +5,7 @@
 \title{Lists all provisioning artifacts (also known as versions) for the
 specified product}
 \usage{
-servicecatalog_list_provisioning_artifacts(AcceptLanguage, ProductId)
+servicecatalog_list_provisioning_artifacts(AcceptLanguage = NULL, ProductId)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -17,35 +17,9 @@ servicecatalog_list_provisioning_artifacts(AcceptLanguage, ProductId)
 
 \item{ProductId}{[required] The product identifier.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProvisioningArtifactDetails = list(
-    list(
-      Id = "string",
-      Name = "string",
-      Description = "string",
-      Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Active = TRUE|FALSE,
-      Guidance = "DEFAULT"|"DEPRECATED"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
-Lists all provisioning artifacts (also known as versions) for the
-specified product.
-}
-\section{Request syntax}{
-\preformatted{svc$list_provisioning_artifacts(
-  AcceptLanguage = "string",
-  ProductId = "string"
-)
-}
-}
+Lists all provisioning artifacts (also known as versions) for the specified product.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_provisioning_artifacts.html} for full documentation.
+}
 \keyword{internal}

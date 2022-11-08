@@ -4,7 +4,7 @@
 \alias{shield_update_subscription}
 \title{Updates the details of an existing subscription}
 \usage{
-shield_update_subscription(AutoRenew)
+shield_update_subscription(AutoRenew = NULL)
 }
 \arguments{
 \item{AutoRenew}{When you initally create a subscription, \code{AutoRenew} is set to
@@ -15,18 +15,9 @@ request. If the \code{\link[=shield_update_subscription]{update_subscription}}
 request does not included a value for \code{AutoRenew}, the existing value
 for \code{AutoRenew} remains unchanged.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the details of an existing subscription. Only enter values for
-parameters you want to change. Empty parameters are not updated.
-}
-\section{Request syntax}{
-\preformatted{svc$update_subscription(
-  AutoRenew = "ENABLED"|"DISABLED"
-)
-}
-}
+Updates the details of an existing subscription. Only enter values for parameters you want to change. Empty parameters are not updated.
 
+See \url{https://paws-r.github.io/docs/shield/update_subscription.html} for full documentation.
+}
 \keyword{internal}

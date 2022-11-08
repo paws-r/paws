@@ -4,9 +4,18 @@
 \alias{ec2_replace_network_acl_entry}
 \title{Replaces an entry (rule) in a network ACL}
 \usage{
-ec2_replace_network_acl_entry(CidrBlock, DryRun, Egress, IcmpTypeCode,
-  Ipv6CidrBlock, NetworkAclId, PortRange, Protocol, RuleAction,
-  RuleNumber)
+ec2_replace_network_acl_entry(
+  CidrBlock = NULL,
+  DryRun = NULL,
+  Egress,
+  IcmpTypeCode = NULL,
+  Ipv6CidrBlock = NULL,
+  NetworkAclId,
+  PortRange = NULL,
+  Protocol,
+  RuleAction,
+  RuleNumber
+)
 }
 \arguments{
 \item{CidrBlock}{The IPv4 network range to allow or deny, in CIDR notation (for example
@@ -45,54 +54,9 @@ type and code.}
 
 \item{RuleNumber}{[required] The rule number of the entry to replace.}
 }
-\value{
-An empty list.
-}
 \description{
-Replaces an entry (rule) in a network ACL. For more information, see
-\href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the
-\emph{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$replace_network_acl_entry(
-  CidrBlock = "string",
-  DryRun = TRUE|FALSE,
-  Egress = TRUE|FALSE,
-  IcmpTypeCode = list(
-    Code = 123,
-    Type = 123
-  ),
-  Ipv6CidrBlock = "string",
-  NetworkAclId = "string",
-  PortRange = list(
-    From = 123,
-    To = 123
-  ),
-  Protocol = "string",
-  RuleAction = "allow"|"deny",
-  RuleNumber = 123
-)
-}
-}
+Replaces an entry (rule) in a network ACL. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
-\examples{
-\dontrun{
-# This example replaces an entry for the specified network ACL. The new
-# rule 100 allows ingress traffic from 203.0.113.12/24 on UDP port 53
-# (DNS) into any associated subnet.
-svc$replace_network_acl_entry(
-  CidrBlock = "203.0.113.12/24",
-  Egress = FALSE,
-  NetworkAclId = "acl-5fb85d36",
-  PortRange = list(
-    From = 53L,
-    To = 53L
-  ),
-  Protocol = "17",
-  RuleAction = "allow",
-  RuleNumber = 100L
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/replace_network_acl_entry.html} for full documentation.
 }
 \keyword{internal}

@@ -11,18 +11,9 @@ worklink_restore_domain_access(FleetArn, DomainName)
 
 \item{DomainName}{[required] The name of the domain.}
 }
-\value{
-An empty list.
-}
 \description{
 Moves a domain to ACTIVE status if it was in the INACTIVE status.
-}
-\section{Request syntax}{
-\preformatted{svc$restore_domain_access(
-  FleetArn = "string",
-  DomainName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/restore_domain_access.html} for full documentation.
+}
 \keyword{internal}

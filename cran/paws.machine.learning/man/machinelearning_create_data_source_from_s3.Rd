@@ -4,8 +4,12 @@
 \alias{machinelearning_create_data_source_from_s3}
 \title{Creates a DataSource object}
 \usage{
-machinelearning_create_data_source_from_s3(DataSourceId, DataSourceName,
-  DataSpec, ComputeStatistics)
+machinelearning_create_data_source_from_s3(
+  DataSourceId,
+  DataSourceName = NULL,
+  DataSpec,
+  ComputeStatistics = NULL
+)
 }
 \arguments{
 \item{DataSourceId}{[required] A user-supplied identifier that uniquely identifies the \code{DataSource}.}
@@ -31,67 +35,9 @@ the statistics internally during \code{MLModel} training. This parameter must
 be set to \code{true} if the \code{DataSource} needs to be used for \code{MLModel}
 training.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DataSourceId = "string"
-)
-}
-}
 \description{
-Creates a \code{DataSource} object. A \code{DataSource} references data that can
-be used to perform \code{\link[=machinelearning_create_ml_model]{create_ml_model}},
-\code{\link[=machinelearning_create_evaluation]{create_evaluation}}, or
-\code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}}
-operations.
+Creates a \code{DataSource} object. A \code{DataSource} references data that can be used to perform \code{\link[=machinelearning_create_ml_model]{create_ml_model}}, \code{\link[=machinelearning_create_evaluation]{create_evaluation}}, or \code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}} operations.
 
-\code{\link[=machinelearning_create_data_source_from_s3]{create_data_source_from_s3}}
-is an asynchronous operation. In response to
-\code{\link[=machinelearning_create_data_source_from_s3]{create_data_source_from_s3}},
-Amazon Machine Learning (Amazon ML) immediately returns and sets the
-\code{DataSource} status to \code{PENDING}. After the \code{DataSource} has been
-created and is ready for use, Amazon ML sets the \code{Status} parameter to
-\code{COMPLETED}. \code{DataSource} in the \code{COMPLETED} or \code{PENDING} state can be
-used to perform only
-\code{\link[=machinelearning_create_ml_model]{create_ml_model}},
-\code{\link[=machinelearning_create_evaluation]{create_evaluation}} or
-\code{\link[=machinelearning_create_batch_prediction]{create_batch_prediction}}
-operations.
-
-If Amazon ML can't accept the input source, it sets the \code{Status}
-parameter to \code{FAILED} and includes an error message in the \code{Message}
-attribute of the \code{\link[=machinelearning_get_data_source]{get_data_source}}
-operation response.
-
-The observation data used in a \code{DataSource} should be ready to use; that
-is, it should have a consistent structure, and missing data values
-should be kept to a minimum. The observation data must reside in one or
-more .csv files in an Amazon Simple Storage Service (Amazon S3)
-location, along with a schema that describes the data items by name and
-type. The same schema must be used for all of the data files referenced
-by the \code{DataSource}.
-
-After the \code{DataSource} has been created, it's ready to use in
-evaluations and batch predictions. If you plan to use the \code{DataSource}
-to train an \code{MLModel}, the \code{DataSource} also needs a recipe. A recipe
-describes how each input variable will be used in training an \code{MLModel}.
-Will the variable be included or excluded from training? Will the
-variable be manipulated; for example, will it be combined with another
-variable or will it be split apart into word combinations? The recipe
-provides answers to these questions.
+See \url{https://paws-r.github.io/docs/machinelearning/create_data_source_from_s3.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_data_source_from_s3(
-  DataSourceId = "string",
-  DataSourceName = "string",
-  DataSpec = list(
-    DataLocationS3 = "string",
-    DataRearrangement = "string",
-    DataSchema = "string",
-    DataSchemaLocationS3 = "string"
-  ),
-  ComputeStatistics = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

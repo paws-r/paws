@@ -9,19 +9,9 @@ cloudwatchlogs_cancel_export_task(taskId)
 \arguments{
 \item{taskId}{[required] The ID of the export task.}
 }
-\value{
-An empty list.
-}
 \description{
 Cancels the specified export task.
 
-The task must be in the \code{PENDING} or \code{RUNNING} state.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/cancel_export_task.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$cancel_export_task(
-  taskId = "string"
-)
-}
-}
-
 \keyword{internal}

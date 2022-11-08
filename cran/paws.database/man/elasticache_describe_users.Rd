@@ -4,7 +4,13 @@
 \alias{elasticache_describe_users}
 \title{Returns a list of users}
 \usage{
-elasticache_describe_users(Engine, UserId, Filters, MaxRecords, Marker)
+elasticache_describe_users(
+  Engine = NULL,
+  UserId = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{Engine}{The Redis engine.}
@@ -20,50 +26,11 @@ in the response so that the remaining results can be retrieved.}
 \item{Marker}{An optional marker returned from a prior request. Use this marker for
 pagination of results from this operation. If this parameter is
 specified, the response includes only records beyond the marker, up to
-the value specified by MaxRecords. >}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Users = list(
-    list(
-      UserId = "string",
-      UserName = "string",
-      Status = "string",
-      Engine = "string",
-      AccessString = "string",
-      UserGroupIds = list(
-        "string"
-      ),
-      Authentication = list(
-        Type = "password"|"no-password",
-        PasswordCount = 123
-      ),
-      ARN = "string"
-    )
-  ),
-  Marker = "string"
-)
-}
+the value specified by MaxRecords. \>}
 }
 \description{
 Returns a list of users.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_users(
-  Engine = "string",
-  UserId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticache/describe_users.html} for full documentation.
+}
 \keyword{internal}

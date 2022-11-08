@@ -4,13 +4,18 @@
 \alias{ec2_describe_network_insights_paths}
 \title{Describes one or more of your paths}
 \usage{
-ec2_describe_network_insights_paths(NetworkInsightsPathIds, Filters,
-  MaxResults, DryRun, NextToken)
+ec2_describe_network_insights_paths(
+  NetworkInsightsPathIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  DryRun = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{NetworkInsightsPathIds}{The IDs of the paths.}
 
-\item{Filters}{The filters. The following are possible values:
+\item{Filters}{The filters. The following are the possible values:
 \itemize{
 \item Destination - The ID of the resource.
 \item DestinationPort - The destination port.
@@ -30,54 +35,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NextToken}{The token for the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NetworkInsightsPaths = list(
-    list(
-      NetworkInsightsPathId = "string",
-      NetworkInsightsPathArn = "string",
-      CreatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Source = "string",
-      Destination = "string",
-      SourceIp = "string",
-      DestinationIp = "string",
-      Protocol = "tcp"|"udp",
-      DestinationPort = 123,
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes one or more of your paths.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_network_insights_paths(
-  NetworkInsightsPathIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  DryRun = TRUE|FALSE,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_network_insights_paths.html} for full documentation.
+}
 \keyword{internal}

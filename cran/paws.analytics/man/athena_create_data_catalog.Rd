@@ -5,15 +5,23 @@
 \title{Creates (registers) a data catalog with the specified name and
 properties}
 \usage{
-athena_create_data_catalog(Name, Type, Description, Parameters, Tags)
+athena_create_data_catalog(
+  Name,
+  Type,
+  Description = NULL,
+  Parameters = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the data catalog to create. The catalog name must be unique
-for the AWS account and can use a maximum of 128 alphanumeric,
-underscore, at sign, or hyphen characters.}
+for the Amazon Web Services account and can use a maximum of 127
+alphanumeric, underscore, at sign, or hyphen characters. The remainder
+of the length constraint of 256 is reserved for use by Athena.}
 
 \item{Type}{[required] The type of data catalog to create: \code{LAMBDA} for a federated catalog,
-\code{GLUE} for AWS Glue Catalog, or \code{HIVE} for an external hive metastore.}
+\code{HIVE} for an external hive metastore, or \code{GLUE} for an Glue Data
+Catalog.}
 
 \item{Description}{A description of the data catalog to be created.}
 
@@ -40,36 +48,29 @@ Lambda function.
 
 \verb{function=lambda_arn }
 }
-\item The \code{GLUE} type has no parameters.
+\item The \code{GLUE} type takes a catalog ID parameter and is required. The
+\code{catalog_id} is the account ID of the Amazon Web Services account
+to which the Glue Data Catalog belongs.
+
+\code{catalog-id=catalog_id }
+\itemize{
+\item The \code{GLUE} data catalog type also applies to the default
+\code{AwsDataCatalog} that already exists in your account, of which
+you can have only one and cannot modify.
+\item Queries that specify a Glue Data Catalog other than the default
+\code{AwsDataCatalog} must be run on Athena engine version 2.
+\item In Regions where Athena engine version 2 is not available,
+creating new Glue data catalogs results in an \code{INVALID_INPUT}
+error.
+}
 }}
 
 \item{Tags}{A list of comma separated tags to add to the data catalog that is
 created.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates (registers) a data catalog with the specified name and
-properties. Catalogs created are visible to all users of the same AWS
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$create_data_catalog(
-  Name = "string",
-  Type = "LAMBDA"|"GLUE"|"HIVE",
-  Description = "string",
-  Parameters = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates (registers) a data catalog with the specified name and properties. Catalogs created are visible to all users of the same Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/athena/create_data_catalog.html} for full documentation.
+}
 \keyword{internal}

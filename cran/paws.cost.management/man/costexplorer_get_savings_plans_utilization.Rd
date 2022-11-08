@@ -5,8 +5,12 @@
 \title{Retrieves the Savings Plans utilization for your account across date
 ranges with daily or monthly granularity}
 \usage{
-costexplorer_get_savings_plans_utilization(TimePeriod, Granularity,
-  Filter, SortBy)
+costexplorer_get_savings_plans_utilization(
+  TimePeriod,
+  Granularity = NULL,
+  Filter = NULL,
+  SortBy = NULL
+)
 }
 \arguments{
 \item{TimePeriod}{[required] The time period that you want the usage and costs for. The \code{Start} date
@@ -38,7 +42,7 @@ uses the same
 object as the other operations, but only \code{AND} is supported among each
 dimension.}
 
-\item{SortBy}{The value by which you want to sort the data.
+\item{SortBy}{The value that you want to sort the data by.
 
 The following values are supported for \code{Key}:
 \itemize{
@@ -49,112 +53,11 @@ The following values are supported for \code{Key}:
 \item \code{NetSavings}
 }
 
-Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  SavingsPlansUtilizationsByTime = list(
-    list(
-      TimePeriod = list(
-        Start = "string",
-        End = "string"
-      ),
-      Utilization = list(
-        TotalCommitment = "string",
-        UsedCommitment = "string",
-        UnusedCommitment = "string",
-        UtilizationPercentage = "string"
-      ),
-      Savings = list(
-        NetSavings = "string",
-        OnDemandCostEquivalent = "string"
-      ),
-      AmortizedCommitment = list(
-        AmortizedRecurringCommitment = "string",
-        AmortizedUpfrontCommitment = "string",
-        TotalAmortizedCommitment = "string"
-      )
-    )
-  ),
-  Total = list(
-    Utilization = list(
-      TotalCommitment = "string",
-      UsedCommitment = "string",
-      UnusedCommitment = "string",
-      UtilizationPercentage = "string"
-    ),
-    Savings = list(
-      NetSavings = "string",
-      OnDemandCostEquivalent = "string"
-    ),
-    AmortizedCommitment = list(
-      AmortizedRecurringCommitment = "string",
-      AmortizedUpfrontCommitment = "string",
-      TotalAmortizedCommitment = "string"
-    )
-  )
-)
-}
+The supported values for \code{SortOrder} are \code{ASCENDING} and \code{DESCENDING}.}
 }
 \description{
-Retrieves the Savings Plans utilization for your account across date
-ranges with daily or monthly granularity. Management account in an
-organization have access to member accounts. You can use
-\code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} in
-\code{SAVINGS_PLANS} to determine the possible dimension values.
+Retrieves the Savings Plans utilization for your account across date ranges with daily or monthly granularity. Management account in an organization have access to member accounts. You can use \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} in \code{SAVINGS_PLANS} to determine the possible dimension values.
 
-You cannot group by any dimension values for
-\code{\link[=costexplorer_get_savings_plans_utilization]{get_savings_plans_utilization}}.
+See \url{https://paws-r.github.io/docs/costexplorer/get_savings_plans_utilization.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_savings_plans_utilization(
-  TimePeriod = list(
-    Start = "string",
-    End = "string"
-  ),
-  Granularity = "DAILY"|"MONTHLY"|"HOURLY",
-  Filter = list(
-    Or = list(
-      list()
-    ),
-    And = list(
-      list()
-    ),
-    Not = list(),
-    Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    Tags = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    ),
-    CostCategories = list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      MatchOptions = list(
-        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-      )
-    )
-  ),
-  SortBy = list(
-    Key = "string",
-    SortOrder = "ASCENDING"|"DESCENDING"
-  )
-)
-}
-}
-
 \keyword{internal}

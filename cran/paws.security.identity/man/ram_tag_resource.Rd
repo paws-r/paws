@@ -2,32 +2,21 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_tag_resource}
 \alias{ram_tag_resource}
-\title{Adds the specified tags to the specified resource share that you own}
+\title{Adds the specified tag keys and values to the specified resource share}
 \usage{
 ram_tag_resource(resourceShareArn, tags)
 }
 \arguments{
-\item{resourceShareArn}{[required] The Amazon Resource Name (ARN) of the resource share.}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of the resource share that you want to add tags to.}
 
-\item{tags}{[required] One or more tags.}
-}
-\value{
-An empty list.
+\item{tags}{[required] A list of one or more tag key and value pairs. The tag key must be
+present and not be an empty string. The tag value must be present but
+can be an empty string.}
 }
 \description{
-Adds the specified tags to the specified resource share that you own.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  resourceShareArn = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
+Adds the specified tag keys and values to the specified resource share. The tags are attached only to the resource share, not to the resources that are in the resource share.
 
+See \url{https://paws-r.github.io/docs/ram/tag_resource.html} for full documentation.
+}
 \keyword{internal}

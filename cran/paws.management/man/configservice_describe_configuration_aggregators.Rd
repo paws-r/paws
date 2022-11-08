@@ -5,7 +5,10 @@
 \title{Returns the details of one or more configuration aggregators}
 \usage{
 configservice_describe_configuration_aggregators(
-  ConfigurationAggregatorNames, NextToken, Limit)
+  ConfigurationAggregatorNames = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{ConfigurationAggregatorNames}{The name of the configuration aggregators.}
@@ -14,60 +17,11 @@ configservice_describe_configuration_aggregators(
 the next page of results in a paginated response.}
 
 \item{Limit}{The maximum number of configuration aggregators returned on each page.
-The default is maximum. If you specify 0, AWS Config uses the default.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ConfigurationAggregators = list(
-    list(
-      ConfigurationAggregatorName = "string",
-      ConfigurationAggregatorArn = "string",
-      AccountAggregationSources = list(
-        list(
-          AccountIds = list(
-            "string"
-          ),
-          AllAwsRegions = TRUE|FALSE,
-          AwsRegions = list(
-            "string"
-          )
-        )
-      ),
-      OrganizationAggregationSource = list(
-        RoleArn = "string",
-        AwsRegions = list(
-          "string"
-        ),
-        AllAwsRegions = TRUE|FALSE
-      ),
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreatedBy = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
+The default is maximum. If you specify 0, Config uses the default.}
 }
 \description{
-Returns the details of one or more configuration aggregators. If the
-configuration aggregator is not specified, this action returns the
-details for all the configuration aggregators associated with the
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_configuration_aggregators(
-  ConfigurationAggregatorNames = list(
-    "string"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
+Returns the details of one or more configuration aggregators. If the configuration aggregator is not specified, this action returns the details for all the configuration aggregators associated with the account.
 
+See \url{https://paws-r.github.io/docs/configservice/describe_configuration_aggregators.html} for full documentation.
+}
 \keyword{internal}

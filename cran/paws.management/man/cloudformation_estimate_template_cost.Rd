@@ -4,53 +4,34 @@
 \alias{cloudformation_estimate_template_cost}
 \title{Returns the estimated monthly cost of a template}
 \usage{
-cloudformation_estimate_template_cost(TemplateBody, TemplateURL,
-  Parameters)
+cloudformation_estimate_template_cost(
+  TemplateBody = NULL,
+  TemplateURL = NULL,
+  Parameters = NULL
+)
 }
 \arguments{
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. (For more information, go to
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the AWS CloudFormation User Guide.)
+in the CloudFormation User Guide.)
 
 Conditional: You must pass \code{TemplateBody} or \code{TemplateURL}. If both are
 passed, only \code{TemplateBody} is used.}
 
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
-template that is located in an Amazon S3 bucket. For more information,
-go to \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the AWS CloudFormation User Guide.
+template that's located in an Amazon S3 bucket or a Systems Manager
+document. For more information, go to \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
+in the CloudFormation User Guide.
 
 Conditional: You must pass \code{TemplateURL} or \code{TemplateBody}. If both are
 passed, only \code{TemplateBody} is used.}
 
 \item{Parameters}{A list of \code{Parameter} structures that specify input parameters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Url = "string"
-)
-}
-}
 \description{
-Returns the estimated monthly cost of a template. The return value is an
-AWS Simple Monthly Calculator URL with a query string that describes the
-resources required to run the template.
-}
-\section{Request syntax}{
-\preformatted{svc$estimate_template_cost(
-  TemplateBody = "string",
-  TemplateURL = "string",
-  Parameters = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  )
-)
-}
-}
+Returns the estimated monthly cost of a template. The return value is an Amazon Web Services Simple Monthly Calculator URL with a query string that describes the resources required to run the template.
 
+See \url{https://paws-r.github.io/docs/cloudformation/estimate_template_cost.html} for full documentation.
+}
 \keyword{internal}

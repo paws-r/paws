@@ -4,8 +4,12 @@
 \alias{rds_describe_db_instances}
 \title{Returns information about provisioned RDS instances}
 \usage{
-rds_describe_db_instances(DBInstanceIdentifier, Filters, MaxRecords,
-  Marker)
+rds_describe_db_instances(
+  DBInstanceIdentifier = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBInstanceIdentifier}{The user-supplied instance identifier. If this parameter is specified,
@@ -22,19 +26,19 @@ Constraints:
 Supported filters:
 \itemize{
 \item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster
-Amazon Resource Names (ARNs). The results list will only include
+Amazon Resource Names (ARNs). The results list only includes
 information about the DB instances associated with the DB clusters
 identified by these ARNs.
 \item \code{db-instance-id} - Accepts DB instance identifiers and DB instance
-Amazon Resource Names (ARNs). The results list will only include
+Amazon Resource Names (ARNs). The results list only includes
 information about the DB instances identified by these ARNs.
 \item \code{dbi-resource-id} - Accepts DB instance resource identifiers. The
 results list will only include information about the DB instances
 identified by these DB instance resource identifiers.
 \item \code{domain} - Accepts Active Directory directory IDs. The results list
-will only include information about the DB instances associated with
+only includes information about the DB instances associated with
 these domains.
-\item \code{engine} - Accepts engine names. The results list will only include
+\item \code{engine} - Accepts engine names. The results list only includes
 information about the DB instances for these engines.
 }}
 
@@ -52,220 +56,9 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBInstances = list(
-    list(
-      DBInstanceIdentifier = "string",
-      DBInstanceClass = "string",
-      Engine = "string",
-      DBInstanceStatus = "string",
-      MasterUsername = "string",
-      DBName = "string",
-      Endpoint = list(
-        Address = "string",
-        Port = 123,
-        HostedZoneId = "string"
-      ),
-      AllocatedStorage = 123,
-      InstanceCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      PreferredBackupWindow = "string",
-      BackupRetentionPeriod = 123,
-      DBSecurityGroups = list(
-        list(
-          DBSecurityGroupName = "string",
-          Status = "string"
-        )
-      ),
-      VpcSecurityGroups = list(
-        list(
-          VpcSecurityGroupId = "string",
-          Status = "string"
-        )
-      ),
-      DBParameterGroups = list(
-        list(
-          DBParameterGroupName = "string",
-          ParameterApplyStatus = "string"
-        )
-      ),
-      AvailabilityZone = "string",
-      DBSubnetGroup = list(
-        DBSubnetGroupName = "string",
-        DBSubnetGroupDescription = "string",
-        VpcId = "string",
-        SubnetGroupStatus = "string",
-        Subnets = list(
-          list(
-            SubnetIdentifier = "string",
-            SubnetAvailabilityZone = list(
-              Name = "string"
-            ),
-            SubnetOutpost = list(
-              Arn = "string"
-            ),
-            SubnetStatus = "string"
-          )
-        ),
-        DBSubnetGroupArn = "string"
-      ),
-      PreferredMaintenanceWindow = "string",
-      PendingModifiedValues = list(
-        DBInstanceClass = "string",
-        AllocatedStorage = 123,
-        MasterUserPassword = "string",
-        Port = 123,
-        BackupRetentionPeriod = 123,
-        MultiAZ = TRUE|FALSE,
-        EngineVersion = "string",
-        LicenseModel = "string",
-        Iops = 123,
-        DBInstanceIdentifier = "string",
-        StorageType = "string",
-        CACertificateIdentifier = "string",
-        DBSubnetGroupName = "string",
-        PendingCloudwatchLogsExports = list(
-          LogTypesToEnable = list(
-            "string"
-          ),
-          LogTypesToDisable = list(
-            "string"
-          )
-        ),
-        ProcessorFeatures = list(
-          list(
-            Name = "string",
-            Value = "string"
-          )
-        ),
-        IAMDatabaseAuthenticationEnabled = TRUE|FALSE
-      ),
-      LatestRestorableTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      MultiAZ = TRUE|FALSE,
-      EngineVersion = "string",
-      AutoMinorVersionUpgrade = TRUE|FALSE,
-      ReadReplicaSourceDBInstanceIdentifier = "string",
-      ReadReplicaDBInstanceIdentifiers = list(
-        "string"
-      ),
-      ReadReplicaDBClusterIdentifiers = list(
-        "string"
-      ),
-      ReplicaMode = "open-read-only"|"mounted",
-      LicenseModel = "string",
-      Iops = 123,
-      OptionGroupMemberships = list(
-        list(
-          OptionGroupName = "string",
-          Status = "string"
-        )
-      ),
-      CharacterSetName = "string",
-      NcharCharacterSetName = "string",
-      SecondaryAvailabilityZone = "string",
-      PubliclyAccessible = TRUE|FALSE,
-      StatusInfos = list(
-        list(
-          StatusType = "string",
-          Normal = TRUE|FALSE,
-          Status = "string",
-          Message = "string"
-        )
-      ),
-      StorageType = "string",
-      TdeCredentialArn = "string",
-      DbInstancePort = 123,
-      DBClusterIdentifier = "string",
-      StorageEncrypted = TRUE|FALSE,
-      KmsKeyId = "string",
-      DbiResourceId = "string",
-      CACertificateIdentifier = "string",
-      DomainMemberships = list(
-        list(
-          Domain = "string",
-          Status = "string",
-          FQDN = "string",
-          IAMRoleName = "string"
-        )
-      ),
-      CopyTagsToSnapshot = TRUE|FALSE,
-      MonitoringInterval = 123,
-      EnhancedMonitoringResourceArn = "string",
-      MonitoringRoleArn = "string",
-      PromotionTier = 123,
-      DBInstanceArn = "string",
-      Timezone = "string",
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-      PerformanceInsightsEnabled = TRUE|FALSE,
-      PerformanceInsightsKMSKeyId = "string",
-      PerformanceInsightsRetentionPeriod = 123,
-      EnabledCloudwatchLogsExports = list(
-        "string"
-      ),
-      ProcessorFeatures = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      DeletionProtection = TRUE|FALSE,
-      AssociatedRoles = list(
-        list(
-          RoleArn = "string",
-          FeatureName = "string",
-          Status = "string"
-        )
-      ),
-      ListenerEndpoint = list(
-        Address = "string",
-        Port = 123,
-        HostedZoneId = "string"
-      ),
-      MaxAllocatedStorage = 123,
-      TagList = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      DBInstanceAutomatedBackupsReplications = list(
-        list(
-          DBInstanceAutomatedBackupsArn = "string"
-        )
-      ),
-      CustomerOwnedIpEnabled = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Returns information about provisioned RDS instances. This API supports
-pagination.
+Returns information about provisioned RDS instances. This API supports pagination.
 
-This operation can also return information for Amazon Neptune DB
-instances and Amazon DocumentDB instances.
+See \url{https://paws-r.github.io/docs/rds/describe_db_instances.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_db_instances(
-  DBInstanceIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

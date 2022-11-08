@@ -4,7 +4,7 @@
 \alias{ec2_delete_vpc_endpoints}
 \title{Deletes one or more specified VPC endpoints}
 \usage{
-ec2_delete_vpc_endpoints(DryRun, VpcEndpointIds)
+ec2_delete_vpc_endpoints(DryRun = NULL, VpcEndpointIds)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,36 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcEndpointIds}{[required] One or more VPC endpoint IDs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Unsuccessful = list(
-    list(
-      Error = list(
-        Code = "string",
-        Message = "string"
-      ),
-      ResourceId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Deletes one or more specified VPC endpoints. Deleting a gateway endpoint
-also deletes the endpoint routes in the route tables that were
-associated with the endpoint. Deleting an interface endpoint or a
-Gateway Load Balancer endpoint deletes the endpoint network interfaces.
-Gateway Load Balancer endpoints can only be deleted if the routes that
-are associated with the endpoint are deleted.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_vpc_endpoints(
-  DryRun = TRUE|FALSE,
-  VpcEndpointIds = list(
-    "string"
-  )
-)
-}
-}
+Deletes one or more specified VPC endpoints. You can delete any of the following types of VPC endpoints.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_vpc_endpoints.html} for full documentation.
+}
 \keyword{internal}

@@ -5,14 +5,22 @@
 \title{Creates or updates a scheduled action for an Application Auto Scaling
 scalable target}
 \usage{
-applicationautoscaling_put_scheduled_action(ServiceNamespace, Schedule,
-  ScheduledActionName, ResourceId, ScalableDimension, StartTime, EndTime,
-  ScalableTargetAction)
+applicationautoscaling_put_scheduled_action(
+  ServiceNamespace,
+  Schedule = NULL,
+  Timezone = NULL,
+  ScheduledActionName,
+  ResourceId,
+  ScalableDimension,
+  StartTime = NULL,
+  EndTime = NULL,
+  ScalableTargetAction = NULL
+)
 }
 \arguments{
-\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource. For a
-resource provided by your own application or service, use
-\code{custom-resource} instead.}
+\item{ServiceNamespace}{[required] The namespace of the Amazon Web Services service that provides the
+resource. For a resource provided by your own application or service,
+use \code{custom-resource} instead.}
 
 \item{Schedule}{The schedule for this action. The following formats are supported:
 \itemize{
@@ -21,18 +29,30 @@ resource provided by your own application or service, use
 \item Cron expressions - "\code{cron(fields)}"
 }
 
-At expressions are useful for one-time schedules. Specify the time in
-UTC.
+At expressions are useful for one-time schedules. Cron expressions are
+useful for scheduled actions that run periodically at a specified date
+and time, and rate expressions are useful for scheduled actions that run
+at a regular interval.
+
+At and cron expressions use Universal Coordinated Time (UTC) by default.
+
+The cron format consists of six fields separated by white spaces:
+[Minutes] [Hours] [Day_of_Month] [Month] [Day_of_Week]
+[Year].
 
 For rate expressions, \emph{value} is a positive integer and \emph{unit} is
 \code{minute} | \code{minutes} | \code{hour} | \code{hours} | \code{day} | \code{days}.
 
-For cron expressions, \emph{fields} is a cron expression. The supported cron
-format consists of six fields separated by white spaces: [Minutes]
-[Hours] [Day_of_Month] [Month] [Day_of_Week] [Year].
-
-For more information and examples, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html}{Scheduled Scaling}
+For more information and examples, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/examples-scheduled-actions.html}{Example scheduled actions for Application Auto Scaling}
 in the \emph{Application Auto Scaling User Guide}.}
+
+\item{Timezone}{Specifies the time zone used when setting a scheduled action by using an
+at or cron expression. If a time zone is not provided, UTC is used by
+default.
+
+Valid values are the canonical names of the IANA time zones supported by
+Joda-Time (such as \code{Etc/GMT+9} or \code{Pacific/Tahiti}). For more
+information, see \url{https://www.joda.org/joda-time/timezones.html}.}
 
 \item{ScheduledActionName}{[required] The name of the scheduled action. This name must be unique among all
 other scheduled actions on the specified scalable target.}
@@ -43,8 +63,8 @@ This string consists of the resource type and unique identifier.
 \item ECS service - The resource type is \code{service} and the unique
 identifier is the cluster name and service name. Example:
 \code{service/default/sample-webapp}.
-\item Spot Fleet request - The resource type is \code{spot-fleet-request} and
-the unique identifier is the Spot Fleet request ID. Example:
+\item Spot Fleet - The resource type is \code{spot-fleet-request} and the
+unique identifier is the Spot Fleet request ID. Example:
 \verb{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
 \item EMR cluster - The resource type is \code{instancegroup} and the unique
 identifier is the cluster ID and instance group ID. Example:
@@ -58,8 +78,8 @@ the unique identifier is the index name. Example:
 \code{table/my-table/index/my-table-index}.
 \item Aurora DB cluster - The resource type is \code{cluster} and the unique
 identifier is the cluster name. Example: \code{cluster:my-db-cluster}.
-\item Amazon SageMaker endpoint variant - The resource type is \code{variant}
-and the unique identifier is the resource ID. Example:
+\item SageMaker endpoint variant - The resource type is \code{variant} and the
+unique identifier is the resource ID. Example:
 \code{endpoint/my-end-point/variant/KMeansClustering}.
 \item Custom resources are not supported with a resource type. This
 parameter must specify the \code{OutputValue} from the CloudFormation
@@ -83,6 +103,11 @@ identifier is the table name. Example:
 \item Amazon MSK cluster - The resource type and unique identifier are
 specified using the cluster ARN. Example:
 \verb{arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5}.
+\item Amazon ElastiCache replication group - The resource type is
+\code{replication-group} and the unique identifier is the replication
+group name. Example: \code{replication-group/mycluster}.
+\item Neptune cluster - The resource type is \code{cluster} and the unique
+identifier is the cluster name. Example: \code{cluster:mycluster}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension. This string consists of the service namespace,
@@ -90,10 +115,10 @@ resource type, and scaling property.
 \itemize{
 \item \code{ecs:service:DesiredCount} - The desired task count of an ECS
 service.
-\item \code{ec2:spot-fleet-request:TargetCapacity} - The target capacity of a
-Spot Fleet request.
 \item \code{elasticmapreduce:instancegroup:InstanceCount} - The instance count
 of an EMR Instance Group.
+\item \code{ec2:spot-fleet-request:TargetCapacity} - The target capacity of a
+Spot Fleet.
 \item \code{appstream:fleet:DesiredCapacity} - The desired capacity of an
 AppStream 2.0 fleet.
 \item \code{dynamodb:table:ReadCapacityUnits} - The provisioned read capacity
@@ -108,7 +133,7 @@ for a DynamoDB global secondary index.
 Aurora DB cluster. Available for Aurora MySQL-compatible edition and
 Aurora PostgreSQL-compatible edition.
 \item \code{sagemaker:variant:DesiredInstanceCount} - The number of EC2
-instances for an Amazon SageMaker model endpoint variant.
+instances for an SageMaker model endpoint variant.
 \item \code{custom-resource:ResourceType:Property} - The scalable dimension for
 a custom resource provided by your own application or service.
 \item \code{comprehend:document-classifier-endpoint:DesiredInferenceUnits} -
@@ -125,11 +150,17 @@ for an Amazon Keyspaces table.
 capacity for an Amazon Keyspaces table.
 \item \code{kafka:broker-storage:VolumeSize} - The provisioned volume size (in
 GiB) for brokers in an Amazon MSK cluster.
+\item \code{elasticache:replication-group:NodeGroups} - The number of node
+groups for an Amazon ElastiCache replication group.
+\item \code{elasticache:replication-group:Replicas} - The number of replicas
+per node group for an Amazon ElastiCache replication group.
+\item \code{neptune:cluster:ReadReplicaCount} - The count of read replicas in
+an Amazon Neptune DB cluster.
 }}
 
-\item{StartTime}{The date and time for this scheduled action to start.}
+\item{StartTime}{The date and time for this scheduled action to start, in UTC.}
 
-\item{EndTime}{The date and time for the recurring schedule to end.}
+\item{EndTime}{The date and time for the recurring schedule to end, in UTC.}
 
 \item{ScalableTargetAction}{The new minimum and maximum capacity. You can set both values or just
 one. At the scheduled time, if the current capacity is below the minimum
@@ -137,53 +168,9 @@ capacity, Application Auto Scaling scales out to the minimum capacity.
 If the current capacity is above the maximum capacity, Application Auto
 Scaling scales in to the maximum capacity.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates or updates a scheduled action for an Application Auto Scaling
-scalable target.
+Creates or updates a scheduled action for an Application Auto Scaling scalable target.
 
-Each scalable target is identified by a service namespace, resource ID,
-and scalable dimension. A scheduled action applies to the scalable
-target identified by those three attributes. You cannot create a
-scheduled action until you have registered the resource as a scalable
-target.
-
-When start and end times are specified with a recurring schedule using a
-cron expression or rates, they form the boundaries of when the recurring
-action starts and stops.
-
-To update a scheduled action, specify the parameters that you want to
-change. If you don't specify start and end times, the old values are
-deleted.
-
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html}{Scheduled Scaling}
-in the \emph{Application Auto Scaling User Guide}.
-
-If a scalable target is deregistered, the scalable target is no longer
-available to run scheduled actions. Any scheduled actions that were
-specified for the scalable target are deleted.
+See \url{https://paws-r.github.io/docs/applicationautoscaling/put_scheduled_action.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_scheduled_action(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
-  Schedule = "string",
-  ScheduledActionName = "string",
-  ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  ScalableTargetAction = list(
-    MinCapacity = 123,
-    MaxCapacity = 123
-  )
-)
-}
-}
-
 \keyword{internal}

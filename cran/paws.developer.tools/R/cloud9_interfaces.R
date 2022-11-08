@@ -5,7 +5,7 @@ NULL
 
 .cloud9$create_environment_ec2_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientRequestToken = structure(logical(0), tags = list(type = "string")), instanceType = structure(logical(0), tags = list(type = "string")), subnetId = structure(logical(0), tags = list(type = "string")), automaticStopTimeMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), ownerArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), connectionType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), clientRequestToken = structure(logical(0), tags = list(type = "string")), instanceType = structure(logical(0), tags = list(type = "string")), subnetId = structure(logical(0), tags = list(type = "string")), imageId = structure(logical(0), tags = list(type = "string")), automaticStopTimeMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), ownerArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list", sensitive = TRUE)), connectionType = structure(logical(0), tags = list(type = "string")), dryRun = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -83,7 +83,7 @@ NULL
 
 .cloud9$describe_environments_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environments = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string")), connectionType = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), ownerArn = structure(logical(0), tags = list(type = "string")), lifecycle = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string")), failureResource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(environments = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string")), connectionType = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), ownerArn = structure(logical(0), tags = list(type = "string")), lifecycle = structure(list(status = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string")), failureResource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), managedCredentialsStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -107,13 +107,13 @@ NULL
 
 .cloud9$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloud9$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -125,7 +125,7 @@ NULL
 
 .cloud9$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -137,7 +137,7 @@ NULL
 
 .cloud9$update_environment_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(environmentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(environmentId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), managedCredentialsAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

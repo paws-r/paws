@@ -18,24 +18,9 @@ spaces. You can also include any of the following characters: _+=,.@-}
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 that can consist of any upper or lowercased letter or digit.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified SSH public key.
 
-The SSH public key deleted by this operation is used only for
-authenticating the associated IAM user to an AWS CodeCommit repository.
-For more information about using SSH keys to authenticate to an AWS
-CodeCommit repository, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html}{Set up AWS CodeCommit for SSH Connections}
-in the \emph{AWS CodeCommit User Guide}.
+See \url{https://paws-r.github.io/docs/iam/delete_ssh_public_key.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_ssh_public_key(
-  UserName = "string",
-  SSHPublicKeyId = "string"
-)
-}
-}
-
 \keyword{internal}

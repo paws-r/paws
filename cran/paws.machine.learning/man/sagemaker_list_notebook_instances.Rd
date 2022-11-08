@@ -2,14 +2,24 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_list_notebook_instances}
 \alias{sagemaker_list_notebook_instances}
-\title{Returns a list of the Amazon SageMaker notebook instances in the
-requester's account in an AWS Region}
+\title{Returns a list of the SageMaker notebook instances in the requester's
+account in an Amazon Web Services Region}
 \usage{
-sagemaker_list_notebook_instances(NextToken, MaxResults, SortBy,
-  SortOrder, NameContains, CreationTimeBefore, CreationTimeAfter,
-  LastModifiedTimeBefore, LastModifiedTimeAfter, StatusEquals,
-  NotebookInstanceLifecycleConfigNameContains,
-  DefaultCodeRepositoryContains, AdditionalCodeRepositoryEquals)
+sagemaker_list_notebook_instances(
+  NextToken = NULL,
+  MaxResults = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NameContains = NULL,
+  CreationTimeBefore = NULL,
+  CreationTimeAfter = NULL,
+  LastModifiedTimeBefore = NULL,
+  LastModifiedTimeAfter = NULL,
+  StatusEquals = NULL,
+  NotebookInstanceLifecycleConfigNameContains = NULL,
+  DefaultCodeRepositoryContains = NULL,
+  AdditionalCodeRepositoryEquals = NULL
+)
 }
 \arguments{
 \item{NextToken}{If the previous call to the
@@ -59,61 +69,9 @@ string.}
 \item{AdditionalCodeRepositoryEquals}{A filter that returns only notebook instances with associated with the
 specified git repository.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  NotebookInstances = list(
-    list(
-      NotebookInstanceName = "string",
-      NotebookInstanceArn = "string",
-      NotebookInstanceStatus = "Pending"|"InService"|"Stopping"|"Stopped"|"Failed"|"Deleting"|"Updating",
-      Url = "string",
-      InstanceType = "ml.t2.medium"|"ml.t2.large"|"ml.t2.xlarge"|"ml.t2.2xlarge"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5d.xlarge"|"ml.c5d.2xlarge"|"ml.c5d.4xlarge"|"ml.c5d.9xlarge"|"ml.c5d.18xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      NotebookInstanceLifecycleConfigName = "string",
-      DefaultCodeRepository = "string",
-      AdditionalCodeRepositories = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of the Amazon SageMaker notebook instances in the
-requester's account in an AWS Region.
-}
-\section{Request syntax}{
-\preformatted{svc$list_notebook_instances(
-  NextToken = "string",
-  MaxResults = 123,
-  SortBy = "Name"|"CreationTime"|"Status",
-  SortOrder = "Ascending"|"Descending",
-  NameContains = "string",
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  StatusEquals = "Pending"|"InService"|"Stopping"|"Stopped"|"Failed"|"Deleting"|"Updating",
-  NotebookInstanceLifecycleConfigNameContains = "string",
-  DefaultCodeRepositoryContains = "string",
-  AdditionalCodeRepositoryEquals = "string"
-)
-}
-}
+Returns a list of the SageMaker notebook instances in the requester's account in an Amazon Web Services Region.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_notebook_instances.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,11 @@
 \alias{opsworks_describe_commands}
 \title{Describes the results of specified commands}
 \usage{
-opsworks_describe_commands(DeploymentId, InstanceId, CommandIds)
+opsworks_describe_commands(
+  DeploymentId = NULL,
+  InstanceId = NULL,
+  CommandIds = NULL
+)
 }
 \arguments{
 \item{DeploymentId}{The deployment ID. If you include this parameter,
@@ -20,44 +24,9 @@ of the commands associated with the specified instance.}
 of the specified commands. Otherwise, it returns a description of every
 command.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Commands = list(
-    list(
-      CommandId = "string",
-      InstanceId = "string",
-      DeploymentId = "string",
-      CreatedAt = "string",
-      AcknowledgedAt = "string",
-      CompletedAt = "string",
-      Status = "string",
-      ExitCode = 123,
-      LogUrl = "string",
-      Type = "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes the results of specified commands.
 
-This call accepts only one resource-identifying parameter.
-
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information about
-user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/describe_commands.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_commands(
-  DeploymentId = "string",
-  InstanceId = "string",
-  CommandIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

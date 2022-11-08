@@ -6,18 +6,9 @@
 \usage{
 servicequotas_get_association_for_service_quota_template()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceQuotaTemplateAssociationStatus = "ASSOCIATED"|"DISASSOCIATED"
-)
-}
-}
 \description{
 Retrieves the status of the association for the quota request template.
-}
-\section{Request syntax}{
-\preformatted{svc$get_association_for_service_quota_template()
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicequotas/get_association_for_service_quota_template.html} for full documentation.
+}
 \keyword{internal}

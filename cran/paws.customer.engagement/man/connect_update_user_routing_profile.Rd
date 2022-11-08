@@ -4,29 +4,19 @@
 \alias{connect_update_user_routing_profile}
 \title{Assigns the specified routing profile to the specified user}
 \usage{
-connect_update_user_routing_profile(RoutingProfileId, UserId,
-  InstanceId)
+connect_update_user_routing_profile(RoutingProfileId, UserId, InstanceId)
 }
 \arguments{
 \item{RoutingProfileId}{[required] The identifier of the routing profile for the user.}
 
 \item{UserId}{[required] The identifier of the user account.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
-}
-\value{
-An empty list.
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 }
 \description{
 Assigns the specified routing profile to the specified user.
-}
-\section{Request syntax}{
-\preformatted{svc$update_user_routing_profile(
-  RoutingProfileId = "string",
-  UserId = "string",
-  InstanceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/update_user_routing_profile.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,12 @@
 \title{Lists the status of one or more table restore requests made using the
 RestoreTableFromClusterSnapshot API action}
 \usage{
-redshift_describe_table_restore_status(ClusterIdentifier,
-  TableRestoreRequestId, MaxRecords, Marker)
+redshift_describe_table_restore_status(
+  ClusterIdentifier = NULL,
+  TableRestoreRequestId = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{The Amazon Redshift cluster that the table is being restored to.}
@@ -27,51 +31,9 @@ request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by the \code{MaxRecords}
 parameter.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TableRestoreStatusDetails = list(
-    list(
-      TableRestoreRequestId = "string",
-      Status = "PENDING"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"CANCELED",
-      Message = "string",
-      RequestTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ProgressInMegaBytes = 123,
-      TotalDataInMegaBytes = 123,
-      ClusterIdentifier = "string",
-      SnapshotIdentifier = "string",
-      SourceDatabaseName = "string",
-      SourceSchemaName = "string",
-      SourceTableName = "string",
-      TargetDatabaseName = "string",
-      TargetSchemaName = "string",
-      NewTableName = "string"
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Lists the status of one or more table restore requests made using the
-\code{\link[=redshift_restore_table_from_cluster_snapshot]{restore_table_from_cluster_snapshot}}
-API action. If you don't specify a value for the \code{TableRestoreRequestId}
-parameter, then
-\code{\link[=redshift_describe_table_restore_status]{describe_table_restore_status}}
-returns the status of all table restore requests ordered by the date and
-time of the request in ascending order. Otherwise
-\code{\link[=redshift_describe_table_restore_status]{describe_table_restore_status}}
-returns the status of the table specified by \code{TableRestoreRequestId}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_table_restore_status(
-  ClusterIdentifier = "string",
-  TableRestoreRequestId = "string",
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Lists the status of one or more table restore requests made using the \code{\link[=redshift_restore_table_from_cluster_snapshot]{restore_table_from_cluster_snapshot}} API action. If you don't specify a value for the \code{TableRestoreRequestId} parameter, then \code{\link[=redshift_describe_table_restore_status]{describe_table_restore_status}} returns the status of all table restore requests ordered by the date and time of the request in ascending order. Otherwise \code{\link[=redshift_describe_table_restore_status]{describe_table_restore_status}} returns the status of the table specified by \code{TableRestoreRequestId}.
 
+See \url{https://paws-r.github.io/docs/redshift/describe_table_restore_status.html} for full documentation.
+}
 \keyword{internal}

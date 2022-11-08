@@ -5,8 +5,10 @@
 \title{Enables additional CloudWatch metrics for the specified CloudFront
 distribution}
 \usage{
-cloudfront_create_monitoring_subscription(DistributionId,
-  MonitoringSubscription)
+cloudfront_create_monitoring_subscription(
+  DistributionId,
+  MonitoringSubscription
+)
 }
 \arguments{
 \item{DistributionId}{[required] The ID of the distribution that you are enabling metrics for.}
@@ -15,33 +17,9 @@ cloudfront_create_monitoring_subscription(DistributionId,
 whether additional CloudWatch metrics are enabled for a given CloudFront
 distribution.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MonitoringSubscription = list(
-    RealtimeMetricsSubscriptionConfig = list(
-      RealtimeMetricsSubscriptionStatus = "Enabled"|"Disabled"
-    )
-  )
-)
-}
-}
 \description{
-Enables additional CloudWatch metrics for the specified CloudFront
-distribution. The additional metrics incur an additional cost.
+Enables additional CloudWatch metrics for the specified CloudFront distribution. The additional metrics incur an additional cost.
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/viewing-cloudfront-metrics.html#monitoring-console.distributions-additional}{Viewing additional CloudFront distribution metrics}
-in the \emph{Amazon CloudFront Developer Guide}.
+See \url{https://paws-r.github.io/docs/cloudfront/create_monitoring_subscription.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_monitoring_subscription(
-  DistributionId = "string",
-  MonitoringSubscription = list(
-    RealtimeMetricsSubscriptionConfig = list(
-      RealtimeMetricsSubscriptionStatus = "Enabled"|"Disabled"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

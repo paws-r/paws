@@ -12,24 +12,9 @@ supports rebooting one broker at a time.}
 
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) of the cluster to be updated.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClusterArn = "string",
-  ClusterOperationArn = "string"
-)
-}
-}
 \description{
 Reboots brokers.
-}
-\section{Request syntax}{
-\preformatted{svc$reboot_broker(
-  BrokerIds = list(
-    "string"
-  ),
-  ClusterArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kafka/reboot_broker.html} for full documentation.
+}
 \keyword{internal}

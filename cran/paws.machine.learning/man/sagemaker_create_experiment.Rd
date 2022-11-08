@@ -4,12 +4,16 @@
 \alias{sagemaker_create_experiment}
 \title{Creates an SageMaker experiment}
 \usage{
-sagemaker_create_experiment(ExperimentName, DisplayName, Description,
-  Tags)
+sagemaker_create_experiment(
+  ExperimentName,
+  DisplayName = NULL,
+  Description = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{ExperimentName}{[required] The name of the experiment. The name must be unique in your AWS account
-and is not case-sensitive.}
+\item{ExperimentName}{[required] The name of the experiment. The name must be unique in your Amazon Web
+Services account and is not case-sensitive.}
 
 \item{DisplayName}{The name of the experiment as displayed. The name doesn't need to be
 unique. If you don't specify \code{DisplayName}, the value in
@@ -20,57 +24,9 @@ unique. If you don't specify \code{DisplayName}, the value in
 \item{Tags}{A list of tags to associate with the experiment. You can use
 \code{\link[=sagemaker_search]{search}} API to search on the tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExperimentArn = "string"
-)
-}
-}
 \description{
-Creates an SageMaker \emph{experiment}. An experiment is a collection of
-\emph{trials} that are observed, compared and evaluated as a group. A trial
-is a set of steps, called \emph{trial components}, that produce a machine
-learning model.
+Creates an SageMaker \emph{experiment}. An experiment is a collection of \emph{trials} that are observed, compared and evaluated as a group. A trial is a set of steps, called \emph{trial components}, that produce a machine learning model.
 
-The goal of an experiment is to determine the components that produce
-the best model. Multiple trials are performed, each one isolating and
-measuring the impact of a change to one or more inputs, while keeping
-the remaining inputs constant.
-
-When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK,
-all experiments, trials, and trial components are automatically tracked,
-logged, and indexed. When you use the AWS SDK for Python (Boto), you
-must use the logging APIs provided by the SDK.
-
-You can add tags to experiments, trials, trial components and then use
-the \code{\link[=sagemaker_search]{search}} API to search for the tags.
-
-To add a description to an experiment, specify the optional
-\code{Description} parameter. To add a description later, or to change the
-description, call the \code{\link[=sagemaker_update_experiment]{update_experiment}}
-API.
-
-To get a list of all your experiments, call the
-\code{\link[=sagemaker_list_experiments]{list_experiments}} API. To view an
-experiment's properties, call the
-\code{\link[=sagemaker_describe_experiment]{describe_experiment}} API. To get a
-list of all the trials associated with an experiment, call the
-\code{\link[=sagemaker_list_trials]{list_trials}} API. To create a trial call the
-\code{\link[=sagemaker_create_trial]{create_trial}} API.
+See \url{https://paws-r.github.io/docs/sagemaker/create_experiment.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_experiment(
-  ExperimentName = "string",
-  DisplayName = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

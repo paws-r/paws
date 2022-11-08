@@ -4,8 +4,12 @@
 \alias{clouddirectory_update_typed_link_facet}
 \title{Updates a TypedLinkFacet}
 \usage{
-clouddirectory_update_typed_link_facet(SchemaArn, Name,
-  AttributeUpdates, IdentityAttributeOrder)
+clouddirectory_update_typed_link_facet(
+  SchemaArn,
+  Name,
+  AttributeUpdates,
+  IdentityAttributeOrder
+)
 }
 \arguments{
 \item{SchemaArn}{[required] The Amazon Resource Name (ARN) that is associated with the schema. For
@@ -25,49 +29,9 @@ of the attributes on the typed link facet, not the order in which they
 are supplied to any API calls. For more information about identity
 attributes, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates a TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_typed_link_facet(
-  SchemaArn = "string",
-  Name = "string",
-  AttributeUpdates = list(
-    list(
-      Attribute = list(
-        Name = "string",
-        Type = "STRING"|"BINARY"|"BOOLEAN"|"NUMBER"|"DATETIME"|"VARIANT",
-        DefaultValue = list(
-          StringValue = "string",
-          BinaryValue = raw,
-          BooleanValue = TRUE|FALSE,
-          NumberValue = "string",
-          DatetimeValue = as.POSIXct(
-            "2015-01-01"
-          )
-        ),
-        IsImmutable = TRUE|FALSE,
-        Rules = list(
-          list(
-            Type = "BINARY_LENGTH"|"NUMBER_COMPARISON"|"STRING_FROM_SET"|"STRING_LENGTH",
-            Parameters = list(
-              "string"
-            )
-          )
-        ),
-        RequiredBehavior = "REQUIRED_ALWAYS"|"NOT_REQUIRED"
-      ),
-      Action = "CREATE_OR_UPDATE"|"DELETE"
-    )
-  ),
-  IdentityAttributeOrder = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/update_typed_link_facet.html} for full documentation.
+}
 \keyword{internal}

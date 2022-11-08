@@ -12,42 +12,9 @@ wafregional_get_regex_match_set(RegexMatchSetId)
 \code{\link[=wafregional_create_regex_match_set]{create_regex_match_set}} and by
 \code{\link[=wafregional_list_regex_match_sets]{list_regex_match_sets}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RegexMatchSet = list(
-    RegexMatchSetId = "string",
-    Name = "string",
-    RegexMatchTuples = list(
-      list(
-        FieldToMatch = list(
-          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-          Data = "string"
-        ),
-        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-        RegexPatternSetId = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Returns the RegexMatchSet specified by \code{RegexMatchSetId}.
+See \url{https://paws-r.github.io/docs/wafregional/get_regex_match_set.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_regex_match_set(
-  RegexMatchSetId = "string"
-)
-}
-}
-
 \keyword{internal}

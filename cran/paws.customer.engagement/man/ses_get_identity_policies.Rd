@@ -20,50 +20,9 @@ maximum of 20 policies at a time. If you do not know the names of the
 policies that are attached to the identity, you can use
 \code{\link[=ses_list_identity_policies]{list_identity_policies}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Policies = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns the requested sending authorization policies for the given
-identity (an email address or a domain). The policies are returned as a
-map of policy names to policy contents. You can retrieve a maximum of 20
-policies at a time.
+Returns the requested sending authorization policies for the given identity (an email address or a domain). The policies are returned as a map of policy names to policy contents. You can retrieve a maximum of 20 policies at a time.
 
-This API is for the identity owner only. If you have not verified the
-identity, this API will return an error.
-
-Sending authorization is a feature that enables an identity owner to
-authorize other senders to use its identities. For information about
-using sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$get_identity_policies(
-  Identity = "string",
-  PolicyNames = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns a sending authorization policy for an
-# identity:
-svc$get_identity_policies(
-  Identity = "example.com",
-  PolicyNames = list(
-    "MyPolicy"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/get_identity_policies.html} for full documentation.
 }
 \keyword{internal}

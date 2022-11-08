@@ -14,27 +14,9 @@ tokens.}
 
 \item{LoginsToRemove}{[required] Provider names to unlink from this identity.}
 }
-\value{
-An empty list.
-}
 \description{
-Unlinks a federated identity from an existing account. Unlinked logins
-will be considered new identities next time they are seen. Removing the
-last linked login will make this identity inaccessible.
+Unlinks a federated identity from an existing account. Unlinked logins will be considered new identities next time they are seen. Removing the last linked login will make this identity inaccessible.
 
-This is a public API. You do not need any credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/unlink_identity.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$unlink_identity(
-  IdentityId = "string",
-  Logins = list(
-    "string"
-  ),
-  LoginsToRemove = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

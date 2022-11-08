@@ -5,9 +5,23 @@
 \title{Creates a new crawler with specified targets, role, configuration, and
 optional schedule}
 \usage{
-glue_create_crawler(Name, Role, DatabaseName, Description, Targets,
-  Schedule, Classifiers, TablePrefix, SchemaChangePolicy, RecrawlPolicy,
-  LineageConfiguration, Configuration, CrawlerSecurityConfiguration, Tags)
+glue_create_crawler(
+  Name,
+  Role,
+  DatabaseName = NULL,
+  Description = NULL,
+  Targets,
+  Schedule = NULL,
+  Classifiers = NULL,
+  TablePrefix = NULL,
+  SchemaChangePolicy = NULL,
+  RecrawlPolicy = NULL,
+  LineageConfiguration = NULL,
+  LakeFormationConfiguration = NULL,
+  Configuration = NULL,
+  CrawlerSecurityConfiguration = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Name}{[required] Name of the new crawler.}
@@ -15,7 +29,7 @@ glue_create_crawler(Name, Role, DatabaseName, Description, Targets,
 \item{Role}{[required] The IAM role or Amazon Resource Name (ARN) of an IAM role used by the
 new crawler to access customer resources.}
 
-\item{DatabaseName}{The AWS Glue database where results are written, such as:
+\item{DatabaseName}{The Glue database where results are written, such as:
 \verb{arn:aws:daylight:us-east-1::database/sometable/*}.}
 
 \item{Description}{A description of the new crawler.}
@@ -40,6 +54,8 @@ crawl only folders that were added since the last crawler run.}
 
 \item{LineageConfiguration}{Specifies data lineage configuration settings for the crawler.}
 
+\item{LakeFormationConfiguration}{Specifies Lake Formation configuration settings for the crawler.}
+
 \item{Configuration}{Crawler configuration information. This versioned JSON string allows
 users to specify aspects of a crawler's behavior. For more information,
 see \href{https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Configuring a Crawler}.}
@@ -48,89 +64,13 @@ see \href{https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}
 crawler.}
 
 \item{Tags}{The tags to use with this crawler request. You may use tags to limit
-access to the crawler. For more information about tags in AWS Glue, see
-\href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
+access to the crawler. For more information about tags in Glue, see
+\href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{Amazon Web Services Tags in Glue} in
 the developer guide.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates a new crawler with specified targets, role, configuration, and
-optional schedule. At least one crawl target must be specified, in the
-\code{s3Targets} field, the \code{jdbcTargets} field, or the \code{DynamoDBTargets}
-field.
-}
-\section{Request syntax}{
-\preformatted{svc$create_crawler(
-  Name = "string",
-  Role = "string",
-  DatabaseName = "string",
-  Description = "string",
-  Targets = list(
-    S3Targets = list(
-      list(
-        Path = "string",
-        Exclusions = list(
-          "string"
-        ),
-        ConnectionName = "string"
-      )
-    ),
-    JdbcTargets = list(
-      list(
-        ConnectionName = "string",
-        Path = "string",
-        Exclusions = list(
-          "string"
-        )
-      )
-    ),
-    MongoDBTargets = list(
-      list(
-        ConnectionName = "string",
-        Path = "string",
-        ScanAll = TRUE|FALSE
-      )
-    ),
-    DynamoDBTargets = list(
-      list(
-        Path = "string",
-        scanAll = TRUE|FALSE,
-        scanRate = 123.0
-      )
-    ),
-    CatalogTargets = list(
-      list(
-        DatabaseName = "string",
-        Tables = list(
-          "string"
-        )
-      )
-    )
-  ),
-  Schedule = "string",
-  Classifiers = list(
-    "string"
-  ),
-  TablePrefix = "string",
-  SchemaChangePolicy = list(
-    UpdateBehavior = "LOG"|"UPDATE_IN_DATABASE",
-    DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
-  ),
-  RecrawlPolicy = list(
-    RecrawlBehavior = "CRAWL_EVERYTHING"|"CRAWL_NEW_FOLDERS_ONLY"
-  ),
-  LineageConfiguration = list(
-    CrawlerLineageSettings = "ENABLE"|"DISABLE"
-  ),
-  Configuration = "string",
-  CrawlerSecurityConfiguration = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
+Creates a new crawler with specified targets, role, configuration, and optional schedule. At least one crawl target must be specified, in the \code{s3Targets} field, the \code{jdbcTargets} field, or the \code{DynamoDBTargets} field.
 
+See \url{https://paws-r.github.io/docs/glue/create_crawler.html} for full documentation.
+}
 \keyword{internal}

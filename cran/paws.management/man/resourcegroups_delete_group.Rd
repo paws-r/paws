@@ -4,41 +4,16 @@
 \alias{resourcegroups_delete_group}
 \title{Deletes the specified resource group}
 \usage{
-resourcegroups_delete_group(GroupName, Group)
+resourcegroups_delete_group(GroupName = NULL, Group = NULL)
 }
 \arguments{
 \item{GroupName}{Deprecated - don't use this parameter. Use \code{Group} instead.}
 
 \item{Group}{The name or the ARN of the resource group to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Group = list(
-    GroupArn = "string",
-    Name = "string",
-    Description = "string"
-  )
-)
-}
-}
 \description{
-Deletes the specified resource group. Deleting a resource group does not
-delete any resources that are members of the group; it only deletes the
-group structure.
+Deletes the specified resource group. Deleting a resource group does not delete any resources that are members of the group; it only deletes the group structure.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item \code{resource-groups:DeleteGroup}
+See \url{https://paws-r.github.io/docs/resourcegroups/delete_group.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$delete_group(
-  GroupName = "string",
-  Group = "string"
-)
-}
-}
-
 \keyword{internal}

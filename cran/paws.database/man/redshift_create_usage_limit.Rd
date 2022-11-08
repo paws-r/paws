@@ -5,8 +5,15 @@
 \title{Creates a usage limit for a specified Amazon Redshift feature on a
 cluster}
 \usage{
-redshift_create_usage_limit(ClusterIdentifier, FeatureType, LimitType,
-  Amount, Period, BreachAction, Tags)
+redshift_create_usage_limit(
+  ClusterIdentifier,
+  FeatureType,
+  LimitType,
+  Amount,
+  Period = NULL,
+  BreachAction = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the cluster that you want to limit usage.}
@@ -16,7 +23,8 @@ redshift_create_usage_limit(ClusterIdentifier, FeatureType, LimitType,
 \item{LimitType}{[required] The type of limit. Depending on the feature type, this can be based on a
 time duration or data size. If \code{FeatureType} is \code{spectrum}, then
 \code{LimitType} must be \code{data-scanned}. If \code{FeatureType} is
-\code{concurrency-scaling}, then \code{LimitType} must be \code{time}.}
+\code{concurrency-scaling}, then \code{LimitType} must be \code{time}. If \code{FeatureType}
+is \code{cross-region-datasharing}, then \code{LimitType} must be \code{data-scanned}.}
 
 \item{Amount}{[required] The limit amount. If time-based, this amount is in minutes. If
 data-based, this amount is in terabytes (TB). The value must be a
@@ -31,45 +39,9 @@ UsageLimit.}
 
 \item{Tags}{A list of tag instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UsageLimitId = "string",
-  ClusterIdentifier = "string",
-  FeatureType = "spectrum"|"concurrency-scaling",
-  LimitType = "time"|"data-scanned",
-  Amount = 123,
-  Period = "daily"|"weekly"|"monthly",
-  BreachAction = "log"|"emit-metric"|"disable",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates a usage limit for a specified Amazon Redshift feature on a
-cluster. The usage limit is identified by the returned usage limit
-identifier.
-}
-\section{Request syntax}{
-\preformatted{svc$create_usage_limit(
-  ClusterIdentifier = "string",
-  FeatureType = "spectrum"|"concurrency-scaling",
-  LimitType = "time"|"data-scanned",
-  Amount = 123,
-  Period = "daily"|"weekly"|"monthly",
-  BreachAction = "log"|"emit-metric"|"disable",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a usage limit for a specified Amazon Redshift feature on a cluster. The usage limit is identified by the returned usage limit identifier.
 
+See \url{https://paws-r.github.io/docs/redshift/create_usage_limit.html} for full documentation.
+}
 \keyword{internal}

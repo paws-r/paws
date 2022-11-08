@@ -4,8 +4,12 @@
 \alias{lambda_list_event_source_mappings}
 \title{Lists event source mappings}
 \usage{
-lambda_list_event_source_mappings(EventSourceArn, FunctionName, Marker,
-  MaxItems)
+lambda_list_event_source_mappings(
+  EventSourceArn = NULL,
+  FunctionName = NULL,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{EventSourceArn}{The Amazon Resource Name (ARN) of the event source.
@@ -35,90 +39,13 @@ the function name, it's limited to 64 characters in length.}
 
 \item{Marker}{A pagination token returned by a previous call.}
 
-\item{MaxItems}{The maximum number of event source mappings to return.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  NextMarker = "string",
-  EventSourceMappings = list(
-    list(
-      UUID = "string",
-      StartingPosition = "TRIM_HORIZON"|"LATEST"|"AT_TIMESTAMP",
-      StartingPositionTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      BatchSize = 123,
-      MaximumBatchingWindowInSeconds = 123,
-      ParallelizationFactor = 123,
-      EventSourceArn = "string",
-      FunctionArn = "string",
-      LastModified = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastProcessingResult = "string",
-      State = "string",
-      StateTransitionReason = "string",
-      DestinationConfig = list(
-        OnSuccess = list(
-          Destination = "string"
-        ),
-        OnFailure = list(
-          Destination = "string"
-        )
-      ),
-      Topics = list(
-        "string"
-      ),
-      Queues = list(
-        "string"
-      ),
-      SourceAccessConfigurations = list(
-        list(
-          Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
-          URI = "string"
-        )
-      ),
-      SelfManagedEventSource = list(
-        Endpoints = list(
-          list(
-            "string"
-          )
-        )
-      ),
-      MaximumRecordAgeInSeconds = 123,
-      BisectBatchOnFunctionError = TRUE|FALSE,
-      MaximumRetryAttempts = 123,
-      TumblingWindowInSeconds = 123,
-      FunctionResponseTypes = list(
-        "ReportBatchItemFailures"
-      )
-    )
-  )
-)
-}
+\item{MaxItems}{The maximum number of event source mappings to return. Note that
+ListEventSourceMappings returns a maximum of 100 items in each response,
+even if you set the number higher.}
 }
 \description{
-Lists event source mappings. Specify an \code{EventSourceArn} to only show
-event source mappings for a single event source.
-}
-\section{Request syntax}{
-\preformatted{svc$list_event_source_mappings(
-  EventSourceArn = "string",
-  FunctionName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+Lists event source mappings. Specify an \code{EventSourceArn} to only show event source mappings for a single event source.
 
-\examples{
-\dontrun{
-# The following example returns a list of the event source mappings for a
-# function named my-function.
-svc$list_event_source_mappings(
-  FunctionName = "my-function"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/list_event_source_mappings.html} for full documentation.
 }
 \keyword{internal}

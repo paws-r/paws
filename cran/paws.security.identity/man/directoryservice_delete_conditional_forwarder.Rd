@@ -2,11 +2,10 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_delete_conditional_forwarder}
 \alias{directoryservice_delete_conditional_forwarder}
-\title{Deletes a conditional forwarder that has been set up for your AWS
-directory}
+\title{Deletes a conditional forwarder that has been set up for your Amazon Web
+Services directory}
 \usage{
-directoryservice_delete_conditional_forwarder(DirectoryId,
-  RemoteDomainName)
+directoryservice_delete_conditional_forwarder(DirectoryId, RemoteDomainName)
 }
 \arguments{
 \item{DirectoryId}{[required] The directory ID for which you are deleting the conditional forwarder.}
@@ -14,19 +13,9 @@ directoryservice_delete_conditional_forwarder(DirectoryId,
 \item{RemoteDomainName}{[required] The fully qualified domain name (FQDN) of the remote domain with which
 you are deleting the conditional forwarder.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a conditional forwarder that has been set up for your AWS
-directory.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_conditional_forwarder(
-  DirectoryId = "string",
-  RemoteDomainName = "string"
-)
-}
-}
+Deletes a conditional forwarder that has been set up for your Amazon Web Services directory.
 
+See \url{https://paws-r.github.io/docs/directoryservice/delete_conditional_forwarder.html} for full documentation.
+}
 \keyword{internal}

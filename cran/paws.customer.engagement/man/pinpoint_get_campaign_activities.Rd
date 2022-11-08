@@ -4,8 +4,12 @@
 \alias{pinpoint_get_campaign_activities}
 \title{Retrieves information about all the activities for a campaign}
 \usage{
-pinpoint_get_campaign_activities(ApplicationId, CampaignId, PageSize,
-  Token)
+pinpoint_get_campaign_activities(
+  ApplicationId,
+  CampaignId,
+  PageSize = NULL,
+  Token = NULL
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
@@ -20,42 +24,9 @@ journey metrics.}
 \item{Token}{The NextToken string that specifies which page of results to return in a
 paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ActivitiesResponse = list(
-    Item = list(
-      list(
-        ApplicationId = "string",
-        CampaignId = "string",
-        End = "string",
-        Id = "string",
-        Result = "string",
-        ScheduledStart = "string",
-        Start = "string",
-        State = "string",
-        SuccessfulEndpointCount = 123,
-        TimezonesCompletedCount = 123,
-        TimezonesTotalCount = 123,
-        TotalEndpointCount = 123,
-        TreatmentId = "string"
-      )
-    ),
-    NextToken = "string"
-  )
-)
-}
-}
 \description{
 Retrieves information about all the activities for a campaign.
-}
-\section{Request syntax}{
-\preformatted{svc$get_campaign_activities(
-  ApplicationId = "string",
-  CampaignId = "string",
-  PageSize = "string",
-  Token = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpoint/get_campaign_activities.html} for full documentation.
+}
 \keyword{internal}

@@ -7,59 +7,12 @@ NULL
 #' reduces round trips and latencies
 #'
 #' @description
-#' Performs multiple DeleteAttributes operations in a single call, which
-#' reduces round trips and latencies. This enables Amazon SimpleDB to
-#' optimize requests, which generally yields better throughput.
-#' 
-#' If you specify BatchDeleteAttributes without attributes or values, all
-#' the attributes for the item are deleted.
-#' 
-#' BatchDeleteAttributes is an idempotent operation; running it multiple
-#' times on the same item or attribute doesn't result in an error.
-#' 
-#' The BatchDeleteAttributes operation succeeds or fails in its entirety.
-#' There are no partial deletes. You can execute multiple
-#' BatchDeleteAttributes operations and other operations in parallel.
-#' However, large numbers of concurrent BatchDeleteAttributes calls can
-#' result in Service Unavailable (503) responses.
-#' 
-#' This operation is vulnerable to exceeding the maximum URL size when
-#' making a REST request using the HTTP GET method.
-#' 
-#' This operation does not support conditions using Expected.X.Name,
-#' Expected.X.Value, or Expected.X.Exists.
-#' 
-#' The following limitations are enforced for this operation:
-#' 
-#' -   1 MB request size
-#' -   25 item limit per BatchDeleteAttributes operation
+#' Performs multiple DeleteAttributes operations in a single call, which reduces round trips and latencies. This enables Amazon SimpleDB to optimize requests, which generally yields better throughput.
 #'
-#' @usage
-#' simpledb_batch_delete_attributes(DomainName, Items)
+#' See [https://paws-r.github.io/docs/simpledb/batch_delete_attributes.html](https://paws-r.github.io/docs/simpledb/batch_delete_attributes.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain in which the attributes are being deleted.
 #' @param Items &#91;required&#93; A list of items on which to perform the operation.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_delete_attributes(
-#'   DomainName = "string",
-#'   Items = list(
-#'     list(
-#'       Name = "string",
-#'       Attributes = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -85,88 +38,12 @@ simpledb_batch_delete_attributes <- function(DomainName, Items) {
 #' one or more items
 #'
 #' @description
-#' The [`batch_put_attributes`][simpledb_batch_put_attributes] operation
-#' creates or replaces attributes within one or more items. By using this
-#' operation, the client can perform multiple PutAttribute operation with a
-#' single call. This helps yield savings in round trips and latencies,
-#' enabling Amazon SimpleDB to optimize requests and generally produce
-#' better throughput.
-#' 
-#' The client may specify the item name with the `Item.X.ItemName`
-#' parameter. The client may specify new attributes using a combination of
-#' the `Item.X.Attribute.Y.Name` and `Item.X.Attribute.Y.Value` parameters.
-#' The client may specify the first attribute for the first item using the
-#' parameters `Item.0.Attribute.0.Name` and `Item.0.Attribute.0.Value`, and
-#' for the second attribute for the first item by the parameters
-#' `Item.0.Attribute.1.Name` and `Item.0.Attribute.1.Value`, and so on.
-#' 
-#' Attributes are uniquely identified within an item by their name/value
-#' combination. For example, a single item can have the attributes
-#' `{ "first_name", "first_value" }` and
-#' `{ "first_name", "second_value" }`. However, it cannot have two
-#' attribute instances where both the `Item.X.Attribute.Y.Name` and
-#' `Item.X.Attribute.Y.Value` are the same.
-#' 
-#' Optionally, the requester can supply the `Replace` parameter for each
-#' individual value. Setting this value to `true` will cause the new
-#' attribute values to replace the existing attribute values. For example,
-#' if an item `I` has the attributes `{ 'a', '1' }, { 'b', '2'}` and
-#' `{ 'b', '3' }` and the requester does a BatchPutAttributes of
-#' `{'I', 'b', '4' }` with the Replace parameter set to true, the final
-#' attributes of the item will be `{ 'a', '1' }` and `{ 'b', '4' }`,
-#' replacing the previous values of the 'b' attribute with the new value.
-#' 
-#' You cannot specify an empty string as an item or as an attribute name.
-#' The [`batch_put_attributes`][simpledb_batch_put_attributes] operation
-#' succeeds or fails in its entirety. There are no partial puts.
-#' 
-#' This operation is vulnerable to exceeding the maximum URL size when
-#' making a REST request using the HTTP GET method. This operation does not
-#' support conditions using `Expected.X.Name`, `Expected.X.Value`, or
-#' `Expected.X.Exists`.
-#' 
-#' You can execute multiple
-#' [`batch_put_attributes`][simpledb_batch_put_attributes] operations and
-#' other operations in parallel. However, large numbers of concurrent
-#' [`batch_put_attributes`][simpledb_batch_put_attributes] calls can result
-#' in Service Unavailable (503) responses.
-#' 
-#' The following limitations are enforced for this operation:
-#' 
-#' -   256 attribute name-value pairs per item
-#' -   1 MB request size
-#' -   1 billion attributes per domain
-#' -   10 GB of total user data storage per domain
-#' -   25 item limit per
-#'     [`batch_put_attributes`][simpledb_batch_put_attributes] operation
+#' The [`batch_put_attributes`][simpledb_batch_put_attributes] operation creates or replaces attributes within one or more items. By using this operation, the client can perform multiple PutAttribute operation with a single call. This helps yield savings in round trips and latencies, enabling Amazon SimpleDB to optimize requests and generally produce better throughput.
 #'
-#' @usage
-#' simpledb_batch_put_attributes(DomainName, Items)
+#' See [https://paws-r.github.io/docs/simpledb/batch_put_attributes.html](https://paws-r.github.io/docs/simpledb/batch_put_attributes.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain in which the attributes are being stored.
 #' @param Items &#91;required&#93; A list of items on which to perform the operation.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_put_attributes(
-#'   DomainName = "string",
-#'   Items = list(
-#'     list(
-#'       Name = "string",
-#'       Attributes = list(
-#'         list(
-#'           Name = "string",
-#'           Value = "string",
-#'           Replace = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -191,36 +68,13 @@ simpledb_batch_put_attributes <- function(DomainName, Items) {
 #' The CreateDomain operation creates a new domain
 #'
 #' @description
-#' The [`create_domain`][simpledb_create_domain] operation creates a new
-#' domain. The domain name should be unique among the domains associated
-#' with the Access Key ID provided in the request. The
-#' [`create_domain`][simpledb_create_domain] operation may take 10 or more
-#' seconds to complete.
-#' 
-#' CreateDomain is an idempotent operation; running it multiple times using
-#' the same domain name will not result in an error response.
-#' 
-#' The client can create up to 100 domains per account.
-#' 
-#' If the client requires additional domains, go to
-#' http://aws.amazon.com/contact-us/simpledb-limit-request/.
+#' The [`create_domain`][simpledb_create_domain] operation creates a new domain. The domain name should be unique among the domains associated with the Access Key ID provided in the request. The [`create_domain`][simpledb_create_domain] operation may take 10 or more seconds to complete.
 #'
-#' @usage
-#' simpledb_create_domain(DomainName)
+#' See [https://paws-r.github.io/docs/simpledb/create_domain.html](https://paws-r.github.io/docs/simpledb/create_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain to create. The name can range between 3 and 255
 #' characters and can contain the following characters: a-z, A-Z, 0-9,
 #' '_', '-', and '.'.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_domain(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -245,27 +99,9 @@ simpledb_create_domain <- function(DomainName) {
 #' Deletes one or more attributes associated with an item
 #'
 #' @description
-#' Deletes one or more attributes associated with an item. If all
-#' attributes of the item are deleted, the item is deleted.
-#' 
-#' If [`delete_attributes`][simpledb_delete_attributes] is called without
-#' being passed any attributes or values specified, all the attributes for
-#' the item are deleted.
-#' 
-#' [`delete_attributes`][simpledb_delete_attributes] is an idempotent
-#' operation; running it multiple times on the same item or attribute does
-#' not result in an error response.
-#' 
-#' Because Amazon SimpleDB makes multiple copies of item data and uses an
-#' eventual consistency update model, performing a
-#' [`get_attributes`][simpledb_get_attributes] or
-#' [`select`][simpledb_select] operation (read) immediately after a
-#' [`delete_attributes`][simpledb_delete_attributes] or
-#' [`put_attributes`][simpledb_put_attributes] operation (write) might not
-#' return updated item data.
+#' Deletes one or more attributes associated with an item. If all attributes of the item are deleted, the item is deleted.
 #'
-#' @usage
-#' simpledb_delete_attributes(DomainName, ItemName, Attributes, Expected)
+#' See [https://paws-r.github.io/docs/simpledb/delete_attributes.html](https://paws-r.github.io/docs/simpledb/delete_attributes.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain in which to perform the operation.
 #' @param ItemName &#91;required&#93; The name of the item. Similar to rows on a spreadsheet, items represent
@@ -276,28 +112,6 @@ simpledb_create_domain <- function(DomainName) {
 #' specified attributes will be deleted or not. The update condition must
 #' be satisfied in order for this request to be processed and the
 #' attributes to be deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_attributes(
-#'   DomainName = "string",
-#'   ItemName = "string",
-#'   Attributes = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   Expected = list(
-#'     Name = "string",
-#'     Value = "string",
-#'     Exists = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -322,29 +136,11 @@ simpledb_delete_attributes <- function(DomainName, ItemName, Attributes = NULL, 
 #' The DeleteDomain operation deletes a domain
 #'
 #' @description
-#' The [`delete_domain`][simpledb_delete_domain] operation deletes a
-#' domain. Any items (and their attributes) in the domain are deleted as
-#' well. The [`delete_domain`][simpledb_delete_domain] operation might take
-#' 10 or more seconds to complete.
-#' 
-#' Running [`delete_domain`][simpledb_delete_domain] on a domain that does
-#' not exist or running the function multiple times using the same domain
-#' name will not result in an error response.
+#' The [`delete_domain`][simpledb_delete_domain] operation deletes a domain. Any items (and their attributes) in the domain are deleted as well. The [`delete_domain`][simpledb_delete_domain] operation might take 10 or more seconds to complete.
 #'
-#' @usage
-#' simpledb_delete_domain(DomainName)
+#' See [https://paws-r.github.io/docs/simpledb/delete_domain.html](https://paws-r.github.io/docs/simpledb/delete_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_domain(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -371,35 +167,11 @@ simpledb_delete_domain <- function(DomainName) {
 #' of the attribute names and values
 #'
 #' @description
-#' Returns information about the domain, including when the domain was
-#' created, the number of items and attributes in the domain, and the size
-#' of the attribute names and values.
+#' Returns information about the domain, including when the domain was created, the number of items and attributes in the domain, and the size of the attribute names and values.
 #'
-#' @usage
-#' simpledb_domain_metadata(DomainName)
+#' See [https://paws-r.github.io/docs/simpledb/domain_metadata.html](https://paws-r.github.io/docs/simpledb/domain_metadata.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain for which to display the metadata of.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ItemCount = 123,
-#'   ItemNamesSizeBytes = 123,
-#'   AttributeNameCount = 123,
-#'   AttributeNamesSizeBytes = 123,
-#'   AttributeValueCount = 123,
-#'   AttributeValuesSizeBytes = 123,
-#'   Timestamp = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$domain_metadata(
-#'   DomainName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -424,20 +196,9 @@ simpledb_domain_metadata <- function(DomainName) {
 #' Returns all of the attributes associated with the specified item
 #'
 #' @description
-#' Returns all of the attributes associated with the specified item.
-#' Optionally, the attributes returned can be limited to one or more
-#' attributes by specifying an attribute name parameter.
-#' 
-#' If the item does not exist on the replica that was accessed for this
-#' operation, an empty set is returned. The system does not return an error
-#' as it cannot guarantee the item does not exist on other replicas.
-#' 
-#' If GetAttributes is called without being passed any attribute names, all
-#' the attributes for the item are returned.
+#' Returns all of the attributes associated with the specified item. Optionally, the attributes returned can be limited to one or more attributes by specifying an attribute name parameter.
 #'
-#' @usage
-#' simpledb_get_attributes(DomainName, ItemName, AttributeNames,
-#'   ConsistentRead)
+#' See [https://paws-r.github.io/docs/simpledb/get_attributes.html](https://paws-r.github.io/docs/simpledb/get_attributes.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain in which to perform the operation.
 #' @param ItemName &#91;required&#93; The name of the item.
@@ -447,33 +208,6 @@ simpledb_domain_metadata <- function(DomainName) {
 #' SimpleDB will be returned. Otherwise, results will be consistent
 #' eventually, and the client may not see data that was written immediately
 #' before your read.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Attributes = list(
-#'     list(
-#'       Name = "string",
-#'       AlternateNameEncoding = "string",
-#'       Value = "string",
-#'       AlternateValueEncoding = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_attributes(
-#'   DomainName = "string",
-#'   ItemName = "string",
-#'   AttributeNames = list(
-#'     "string"
-#'   ),
-#'   ConsistentRead = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -499,40 +233,14 @@ simpledb_get_attributes <- function(DomainName, ItemName, AttributeNames = NULL,
 #' Key ID
 #'
 #' @description
-#' The [`list_domains`][simpledb_list_domains] operation lists all domains
-#' associated with the Access Key ID. It returns domain names up to the
-#' limit set by MaxNumberOfDomains. A NextToken is returned if there are
-#' more than `MaxNumberOfDomains` domains. Calling
-#' [`list_domains`][simpledb_list_domains] successive times with the
-#' `NextToken` provided by the operation returns up to `MaxNumberOfDomains`
-#' more domain names with each successive operation call.
+#' The [`list_domains`][simpledb_list_domains] operation lists all domains associated with the Access Key ID. It returns domain names up to the limit set by MaxNumberOfDomains. A NextToken is returned if there are more than `MaxNumberOfDomains` domains. Calling [`list_domains`][simpledb_list_domains] successive times with the `NextToken` provided by the operation returns up to `MaxNumberOfDomains` more domain names with each successive operation call.
 #'
-#' @usage
-#' simpledb_list_domains(MaxNumberOfDomains, NextToken)
+#' See [https://paws-r.github.io/docs/simpledb/list_domains.html](https://paws-r.github.io/docs/simpledb/list_domains.html) for full documentation.
 #'
 #' @param MaxNumberOfDomains The maximum number of domain names you want returned. The range is 1 to
 #' 100. The default setting is 100.
 #' @param NextToken A string informing Amazon SimpleDB where to start the next list of
 #' domain names.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainNames = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_domains(
-#'   MaxNumberOfDomains = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -557,52 +265,9 @@ simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
 #' The PutAttributes operation creates or replaces attributes in an item
 #'
 #' @description
-#' The PutAttributes operation creates or replaces attributes in an item.
-#' The client may specify new attributes using a combination of the
-#' `Attribute.X.Name` and `Attribute.X.Value` parameters. The client
-#' specifies the first attribute by the parameters `Attribute.0.Name` and
-#' `Attribute.0.Value`, the second attribute by the parameters
-#' `Attribute.1.Name` and `Attribute.1.Value`, and so on.
-#' 
-#' Attributes are uniquely identified in an item by their name/value
-#' combination. For example, a single item can have the attributes
-#' `{ "first_name", "first_value" }` and
-#' `{ \"first_name\", second_value\" }`. However, it cannot have two
-#' attribute instances where both the `Attribute.X.Name` and
-#' `Attribute.X.Value` are the same.
-#' 
-#' Optionally, the requestor can supply the `Replace` parameter for each
-#' individual attribute. Setting this value to `true` causes the new
-#' attribute value to replace the existing attribute value(s). For example,
-#' if an item has the attributes `{ 'a', '1' }`, `{ 'b', '2'}` and
-#' `{ 'b', '3' }` and the requestor calls
-#' [`put_attributes`][simpledb_put_attributes] using the attributes
-#' `{ 'b', '4' }` with the `Replace` parameter set to true, the final
-#' attributes of the item are changed to `{ 'a', '1' }` and `{ 'b', '4' }`,
-#' which replaces the previous values of the 'b' attribute with the new
-#' value.
-#' 
-#' Using [`put_attributes`][simpledb_put_attributes] to replace attribute
-#' values that do not exist will not result in an error response.
-#' 
-#' You cannot specify an empty string as an attribute name.
-#' 
-#' Because Amazon SimpleDB makes multiple copies of client data and uses an
-#' eventual consistency update model, an immediate
-#' [`get_attributes`][simpledb_get_attributes] or
-#' [`select`][simpledb_select] operation (read) immediately after a
-#' [`put_attributes`][simpledb_put_attributes] or
-#' [`delete_attributes`][simpledb_delete_attributes] operation (write)
-#' might not return the updated data.
-#' 
-#' The following limitations are enforced for this operation:
-#' 
-#' -   256 total attribute name-value pairs per item
-#' -   One billion attributes per domain
-#' -   10 GB of total user data storage per domain
+#' The PutAttributes operation creates or replaces attributes in an item. The client may specify new attributes using a combination of the `Attribute.X.Name` and `Attribute.X.Value` parameters. The client specifies the first attribute by the parameters `Attribute.0.Name` and `Attribute.0.Value`, the second attribute by the parameters `Attribute.1.Name` and `Attribute.1.Value`, and so on.
 #'
-#' @usage
-#' simpledb_put_attributes(DomainName, ItemName, Attributes, Expected)
+#' See [https://paws-r.github.io/docs/simpledb/put_attributes.html](https://paws-r.github.io/docs/simpledb/put_attributes.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain in which to perform the operation.
 #' @param ItemName &#91;required&#93; The name of the item.
@@ -611,29 +276,6 @@ simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
 #' specified attributes will be updated or not. The update condition must
 #' be satisfied in order for this request to be processed and the
 #' attributes to be updated.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_attributes(
-#'   DomainName = "string",
-#'   ItemName = "string",
-#'   Attributes = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string",
-#'       Replace = TRUE|FALSE
-#'     )
-#'   ),
-#'   Expected = list(
-#'     Name = "string",
-#'     Value = "string",
-#'     Exists = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -659,23 +301,9 @@ simpledb_put_attributes <- function(DomainName, ItemName, Attributes, Expected =
 #' match the select expression
 #'
 #' @description
-#' The [`select`][simpledb_select] operation returns a set of attributes
-#' for `ItemNames` that match the select expression.
-#' [`select`][simpledb_select] is similar to the standard SQL SELECT
-#' statement.
-#' 
-#' The total size of the response cannot exceed 1 MB in total size. Amazon
-#' SimpleDB automatically adjusts the number of items returned per page to
-#' enforce this limit. For example, if the client asks to retrieve 2500
-#' items, but each individual item is 10 kB in size, the system returns 100
-#' items and an appropriate `NextToken` so the client can access the next
-#' page of results.
-#' 
-#' For information on how to construct select expressions, see Using Select
-#' to Create Amazon SimpleDB Queries in the Developer Guide.
+#' The [`select`][simpledb_select] operation returns a set of attributes for `ItemNames` that match the select expression. [`select`][simpledb_select] is similar to the standard SQL SELECT statement.
 #'
-#' @usage
-#' simpledb_select(SelectExpression, NextToken, ConsistentRead)
+#' See [https://paws-r.github.io/docs/simpledb/select.html](https://paws-r.github.io/docs/simpledb/select.html) for full documentation.
 #'
 #' @param SelectExpression &#91;required&#93; The expression used to query the domain.
 #' @param NextToken A string informing Amazon SimpleDB where to start the next list of
@@ -685,37 +313,6 @@ simpledb_put_attributes <- function(DomainName, ItemName, Attributes, Expected =
 #' SimpleDB will be returned. Otherwise, results will be consistent
 #' eventually, and the client may not see data that was written immediately
 #' before your read.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Items = list(
-#'     list(
-#'       Name = "string",
-#'       AlternateNameEncoding = "string",
-#'       Attributes = list(
-#'         list(
-#'           Name = "string",
-#'           AlternateNameEncoding = "string",
-#'           Value = "string",
-#'           AlternateValueEncoding = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$select(
-#'   SelectExpression = "string",
-#'   NextToken = "string",
-#'   ConsistentRead = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

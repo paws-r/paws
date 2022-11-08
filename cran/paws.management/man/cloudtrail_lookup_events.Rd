@@ -5,8 +5,14 @@
 \title{Looks up management events or CloudTrail Insights events that are
 captured by CloudTrail}
 \usage{
-cloudtrail_lookup_events(LookupAttributes, StartTime, EndTime,
-  EventCategory, MaxResults, NextToken)
+cloudtrail_lookup_events(
+  LookupAttributes = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  EventCategory = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{LookupAttributes}{Contains a list of lookup attributes. Currently the list can contain
@@ -34,82 +40,9 @@ specified in the the original call. For example, if the original call
 specified an AttributeKey of 'Username' with a value of 'root', the call
 with NextToken should include those same parameters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Events = list(
-    list(
-      EventId = "string",
-      EventName = "string",
-      ReadOnly = "string",
-      AccessKeyId = "string",
-      EventTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EventSource = "string",
-      Username = "string",
-      Resources = list(
-        list(
-          ResourceType = "string",
-          ResourceName = "string"
-        )
-      ),
-      CloudTrailEvent = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Looks up \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events}{management events}
-or \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-insights-events}{CloudTrail Insights events}
-that are captured by CloudTrail. You can look up events that occurred in
-a region within the last 90 days. Lookup supports the following
-attributes for management events:
-\itemize{
-\item AWS access key
-\item Event ID
-\item Event name
-\item Event source
-\item Read only
-\item Resource name
-\item Resource type
-\item User name
-}
+Looks up \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events}{management events} or \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-insights-events}{CloudTrail Insights events} that are captured by CloudTrail. You can look up events that occurred in a region within the last 90 days. Lookup supports the following attributes for management events:
 
-Lookup supports the following attributes for Insights events:
-\itemize{
-\item Event ID
-\item Event name
-\item Event source
+See \url{https://paws-r.github.io/docs/cloudtrail/lookup_events.html} for full documentation.
 }
-
-All attributes are optional. The default number of results returned is
-50, with a maximum of 50 possible. The response includes a token that
-you can use to get the next page of results.
-
-The rate of lookup requests is limited to two per second, per account,
-per region. If this limit is exceeded, a throttling error occurs.
-}
-\section{Request syntax}{
-\preformatted{svc$lookup_events(
-  LookupAttributes = list(
-    list(
-      AttributeKey = "EventId"|"EventName"|"ReadOnly"|"Username"|"ResourceType"|"ResourceName"|"EventSource"|"AccessKeyId",
-      AttributeValue = "string"
-    )
-  ),
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EventCategory = "insight",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

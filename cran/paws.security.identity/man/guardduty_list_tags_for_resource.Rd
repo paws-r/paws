@@ -9,25 +9,9 @@ guardduty_list_tags_for_resource(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) for the given GuardDuty resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Lists tags for a resource. Tagging is currently supported for detectors,
-finding filters, IP sets, and threat intel sets, with a limit of 50 tags
-per resource. When invoked, this operation returns all assigned tags for
-a given resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string"
-)
-}
-}
+Lists tags for a resource. Tagging is currently supported for detectors, finding filters, IP sets, and threat intel sets, with a limit of 50 tags per resource. When invoked, this operation returns all assigned tags for a given resource.
 
+See \url{https://paws-r.github.io/docs/guardduty/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

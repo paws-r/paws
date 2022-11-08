@@ -5,7 +5,11 @@
 \title{Provides information about the Regions that are configured for
 multi-Region replication}
 \usage{
-directoryservice_describe_regions(DirectoryId, RegionName, NextToken)
+directoryservice_describe_regions(
+  DirectoryId,
+  RegionName = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory.}
@@ -16,47 +20,9 @@ directoryservice_describe_regions(DirectoryId, RegionName, NextToken)
 \code{\link[=directoryservice_describe_regions]{describe_regions}}. Pass null if
 this is the first call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RegionsDescription = list(
-    list(
-      DirectoryId = "string",
-      RegionName = "string",
-      RegionType = "Primary"|"Additional",
-      Status = "Requested"|"Creating"|"Created"|"Active"|"Inoperable"|"Impaired"|"Restoring"|"RestoreFailed"|"Deleting"|"Deleted"|"Failed",
-      VpcSettings = list(
-        VpcId = "string",
-        SubnetIds = list(
-          "string"
-        )
-      ),
-      DesiredNumberOfDomainControllers = 123,
-      LaunchTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      StatusLastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Provides information about the Regions that are configured for
-multi-Region replication.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_regions(
-  DirectoryId = "string",
-  RegionName = "string",
-  NextToken = "string"
-)
-}
-}
+Provides information about the Regions that are configured for multi-Region replication.
 
+See \url{https://paws-r.github.io/docs/directoryservice/describe_regions.html} for full documentation.
+}
 \keyword{internal}

@@ -10,50 +10,9 @@ directconnect_describe_hosted_connections(connectionId)
 \arguments{
 \item{connectionId}{[required] The ID of the interconnect or LAG.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  connections = list(
-    list(
-      ownerAccount = "string",
-      connectionId = "string",
-      connectionName = "string",
-      connectionState = "ordering"|"requested"|"pending"|"available"|"down"|"deleting"|"deleted"|"rejected"|"unknown",
-      region = "string",
-      location = "string",
-      bandwidth = "string",
-      vlan = 123,
-      partnerName = "string",
-      loaIssueTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lagId = "string",
-      awsDevice = "string",
-      jumboFrameCapable = TRUE|FALSE,
-      awsDeviceV2 = "string",
-      hasLogicalRedundancy = "unknown"|"yes"|"no",
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      ),
-      providerName = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists the hosted connections that have been provisioned on the specified
-interconnect or link aggregation group (LAG).
+Lists the hosted connections that have been provisioned on the specified interconnect or link aggregation group (LAG).
 
-Intended for use by AWS Direct Connect Partners only.
+See \url{https://paws-r.github.io/docs/directconnect/describe_hosted_connections.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_hosted_connections(
-  connectionId = "string"
-)
-}
-}
-
 \keyword{internal}

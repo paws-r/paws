@@ -11,24 +11,9 @@ sns_get_endpoint_attributes(EndpointArn)
 \arguments{
 \item{EndpointArn}{[required] EndpointArn for GetEndpointAttributes input.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Retrieves the endpoint attributes for a device on one of the supported
-push notification services, such as GCM (Firebase Cloud Messaging) and
-APNS. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_endpoint_attributes(
-  EndpointArn = "string"
-)
-}
-}
+Retrieves the endpoint attributes for a device on one of the supported push notification services, such as GCM (Firebase Cloud Messaging) and APNS. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
 
+See \url{https://paws-r.github.io/docs/sns/get_endpoint_attributes.html} for full documentation.
+}
 \keyword{internal}

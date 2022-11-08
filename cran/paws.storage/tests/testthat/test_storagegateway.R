@@ -12,6 +12,10 @@ test_that("list_file_shares", {
   expect_error(svc$list_file_shares(), NA)
 })
 
+test_that("list_file_system_associations", {
+  expect_error(svc$list_file_system_associations(), NA)
+})
+
 test_that("list_gateways", {
   expect_error(svc$list_gateways(), NA)
 })

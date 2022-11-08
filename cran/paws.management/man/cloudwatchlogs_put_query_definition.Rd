@@ -4,8 +4,12 @@
 \alias{cloudwatchlogs_put_query_definition}
 \title{Creates or updates a query definition for CloudWatch Logs Insights}
 \usage{
-cloudwatchlogs_put_query_definition(name, queryDefinitionId,
-  logGroupNames, queryString)
+cloudwatchlogs_put_query_definition(
+  name,
+  queryDefinitionId = NULL,
+  logGroupNames = NULL,
+  queryString
+)
 }
 \arguments{
 \item{name}{[required] A name for the query definition. If you are saving a lot of query
@@ -32,37 +36,9 @@ the updated definition will contain no log groups.}
 \item{queryString}{[required] The query string to use for this definition. For more information, see
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  queryDefinitionId = "string"
-)
-}
-}
 \description{
-Creates or updates a query definition for CloudWatch Logs Insights. For
-more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html}{Analyzing Log Data with CloudWatch Logs Insights}.
+Creates or updates a query definition for CloudWatch Logs Insights. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html}{Analyzing Log Data with CloudWatch Logs Insights}.
 
-To update a query definition, specify its \code{queryDefinitionId} in your
-request. The values of \code{name}, \code{queryString}, and \code{logGroupNames} are
-changed to the values that you specify in your update operation. No
-current values are retained from the current query definition. For
-example, if you update a current query definition that includes log
-groups, and you don't specify the \code{logGroupNames} parameter in your
-update operation, the query definition changes to contain no log groups.
-
-You must have the \code{logs:PutQueryDefinition} permission to be able to
-perform this operation.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/put_query_definition.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_query_definition(
-  name = "string",
-  queryDefinitionId = "string",
-  logGroupNames = list(
-    "string"
-  ),
-  queryString = "string"
-)
-}
-}
-
 \keyword{internal}

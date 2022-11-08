@@ -6,8 +6,14 @@
 configuration template or environment, or that a specified solution
 stack defines}
 \usage{
-elasticbeanstalk_describe_configuration_options(ApplicationName,
-  TemplateName, EnvironmentName, SolutionStackName, PlatformArn, Options)
+elasticbeanstalk_describe_configuration_options(
+  ApplicationName = NULL,
+  TemplateName = NULL,
+  EnvironmentName = NULL,
+  SolutionStackName = NULL,
+  PlatformArn = NULL,
+  Options = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{The name of the application associated with the configuration template
@@ -28,67 +34,9 @@ describe.}
 
 \item{Options}{If specified, restricts the descriptions to only the specified options.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SolutionStackName = "string",
-  PlatformArn = "string",
-  Options = list(
-    list(
-      Namespace = "string",
-      Name = "string",
-      DefaultValue = "string",
-      ChangeSeverity = "string",
-      UserDefined = TRUE|FALSE,
-      ValueType = "Scalar"|"List",
-      ValueOptions = list(
-        "string"
-      ),
-      MinValue = 123,
-      MaxValue = 123,
-      MaxLength = 123,
-      Regex = list(
-        Pattern = "string",
-        Label = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes the configuration options that are used in a particular
-configuration template or environment, or that a specified solution
-stack defines. The description includes the values the options, their
-default values, and an indication of the required action on a running
-environment if an option value is changed.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_configuration_options(
-  ApplicationName = "string",
-  TemplateName = "string",
-  EnvironmentName = "string",
-  SolutionStackName = "string",
-  PlatformArn = "string",
-  Options = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string"
-    )
-  )
-)
-}
-}
+Describes the configuration options that are used in a particular configuration template or environment, or that a specified solution stack defines. The description includes the values the options, their default values, and an indication of the required action on a running environment if an option value is changed.
 
-\examples{
-\dontrun{
-# The following operation retrieves descriptions of all available
-# configuration options for an environment named my-env:
-svc$describe_configuration_options(
-  ApplicationName = "my-app",
-  EnvironmentName = "my-env"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_configuration_options.html} for full documentation.
 }
 \keyword{internal}

@@ -5,58 +5,56 @@
 \title{Disassociates the specified principals or resources from the specified
 resource share}
 \usage{
-ram_disassociate_resource_share(resourceShareArn, resourceArns,
-  principals, clientToken)
+ram_disassociate_resource_share(
+  resourceShareArn,
+  resourceArns = NULL,
+  principals = NULL,
+  clientToken = NULL
+)
 }
 \arguments{
-\item{resourceShareArn}{[required] The Amazon Resource Name (ARN) of the resource share.}
+\item{resourceShareArn}{[required] Specifies \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of the resource share that you want to remove resources from.}
 
-\item{resourceArns}{The Amazon Resource Names (ARNs) of the resources.}
+\item{resourceArns}{Specifies a list of \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+for one or more resources that you want to remove from the resource
+share. After the operation runs, these resources are no longer shared
+with principals outside of the Amazon Web Services account that created
+the resources.}
 
-\item{principals}{The principals.}
+\item{principals}{Specifies a list of one or more principals that no longer are to have
+access to the resources in this resource share.
 
-\item{clientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+You can include the following values:
+\itemize{
+\item An Amazon Web Services account ID, for example: \code{123456789012}
+\item An \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+of an organization in Organizations, for example:
+\verb{organizations::123456789012:organization/o-exampleorgid}
+\item An ARN of an organizational unit (OU) in Organizations, for example:
+\verb{organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123}
+\item An ARN of an IAM role, for example:
+\verb{iam::123456789012:role/rolename}
+\item An ARN of an IAM user, for example: \verb{iam::123456789012user/username}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  resourceShareAssociations = list(
-    list(
-      resourceShareArn = "string",
-      resourceShareName = "string",
-      associatedEntity = "string",
-      associationType = "PRINCIPAL"|"RESOURCE",
-      status = "ASSOCIATING"|"ASSOCIATED"|"FAILED"|"DISASSOCIATING"|"DISASSOCIATED",
-      statusMessage = "string",
-      creationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      external = TRUE|FALSE
-    )
-  ),
-  clientToken = "string"
-)
-}
+
+Not all resource types can be shared with IAM roles and users. For more
+information, see \href{https://docs.aws.amazon.com/ram/latest/userguide/#permissions-rbp-supported-resource-types}{Sharing with IAM roles and users}
+in the \emph{Resource Access Manager User Guide}.}
+
+\item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure
+the idempotency of the request. This lets you safely retry the request
+without accidentally performing the same operation a second time.
+Passing the same value to a later call to an operation requires that you
+also pass the same value for all other parameters. We recommend that you
+use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
+
+If you don't provide this value, then Amazon Web Services generates a
+random one for you.}
 }
 \description{
-Disassociates the specified principals or resources from the specified
-resource share.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_resource_share(
-  resourceShareArn = "string",
-  resourceArns = list(
-    "string"
-  ),
-  principals = list(
-    "string"
-  ),
-  clientToken = "string"
-)
-}
-}
+Disassociates the specified principals or resources from the specified resource share.
 
+See \url{https://paws-r.github.io/docs/ram/disassociate_resource_share.html} for full documentation.
+}
 \keyword{internal}

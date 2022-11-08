@@ -21,23 +21,9 @@ tags to. To get the ARN for a resource, use the applicable \code{Get} or
 
 \item{Tags}{[required] The tags that you want to add to the specified resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds one or more tags to a specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/route53resolver/tag_resource.html} for full documentation.
+}
 \keyword{internal}

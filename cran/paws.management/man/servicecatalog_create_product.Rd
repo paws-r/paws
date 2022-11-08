@@ -4,9 +4,20 @@
 \alias{servicecatalog_create_product}
 \title{Creates a product}
 \usage{
-servicecatalog_create_product(AcceptLanguage, Name, Owner, Description,
-  Distributor, SupportDescription, SupportEmail, SupportUrl, ProductType,
-  Tags, ProvisioningArtifactParameters, IdempotencyToken)
+servicecatalog_create_product(
+  AcceptLanguage = NULL,
+  Name,
+  Owner,
+  Description = NULL,
+  Distributor = NULL,
+  SupportDescription = NULL,
+  SupportEmail = NULL,
+  SupportUrl = NULL,
+  ProductType,
+  Tags = NULL,
+  ProvisioningArtifactParameters,
+  IdempotencyToken
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -42,87 +53,9 @@ servicecatalog_create_product(AcceptLanguage, Name, Owner, Description,
 requests differ only by the idempotency token, the same response is
 returned for each repeated request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProductViewDetail = list(
-    ProductViewSummary = list(
-      Id = "string",
-      ProductId = "string",
-      Name = "string",
-      Owner = "string",
-      ShortDescription = "string",
-      Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-      Distributor = "string",
-      HasDefaultPath = TRUE|FALSE,
-      SupportEmail = "string",
-      SupportDescription = "string",
-      SupportUrl = "string"
-    ),
-    Status = "AVAILABLE"|"CREATING"|"FAILED",
-    ProductARN = "string",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  ProvisioningArtifactDetail = list(
-    Id = "string",
-    Name = "string",
-    Description = "string",
-    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Active = TRUE|FALSE,
-    Guidance = "DEFAULT"|"DEPRECATED"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Creates a product.
 
-A delegated admin is authorized to invoke this command.
-
-The user or role that performs this operation must have the
-\code{cloudformation:GetTemplate} IAM policy permission. This policy
-permission is required when using the \code{ImportFromPhysicalId} template
-source in the information data section.
+See \url{https://paws-r.github.io/docs/servicecatalog/create_product.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_product(
-  AcceptLanguage = "string",
-  Name = "string",
-  Owner = "string",
-  Description = "string",
-  Distributor = "string",
-  SupportDescription = "string",
-  SupportEmail = "string",
-  SupportUrl = "string",
-  ProductType = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ProvisioningArtifactParameters = list(
-    Name = "string",
-    Description = "string",
-    Info = list(
-      "string"
-    ),
-    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-    DisableTemplateValidation = TRUE|FALSE
-  ),
-  IdempotencyToken = "string"
-)
-}
-}
-
 \keyword{internal}

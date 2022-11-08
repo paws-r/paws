@@ -4,8 +4,13 @@
 \alias{clouddirectory_list_attached_indices}
 \title{Lists indices attached to the specified object}
 \usage{
-clouddirectory_list_attached_indices(DirectoryArn, TargetReference,
-  NextToken, MaxResults, ConsistencyLevel)
+clouddirectory_list_attached_indices(
+  DirectoryArn,
+  TargetReference,
+  NextToken = NULL,
+  MaxResults = NULL,
+  ConsistencyLevel = NULL
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory.}
@@ -18,49 +23,9 @@ clouddirectory_list_attached_indices(DirectoryArn, TargetReference,
 
 \item{ConsistencyLevel}{The consistency level to use for this operation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IndexAttachments = list(
-    list(
-      IndexedAttributes = list(
-        list(
-          Key = list(
-            SchemaArn = "string",
-            FacetName = "string",
-            Name = "string"
-          ),
-          Value = list(
-            StringValue = "string",
-            BinaryValue = raw,
-            BooleanValue = TRUE|FALSE,
-            NumberValue = "string",
-            DatetimeValue = as.POSIXct(
-              "2015-01-01"
-            )
-          )
-        )
-      ),
-      ObjectIdentifier = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists indices attached to the specified object.
-}
-\section{Request syntax}{
-\preformatted{svc$list_attached_indices(
-  DirectoryArn = "string",
-  TargetReference = list(
-    Selector = "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  ConsistencyLevel = "SERIALIZABLE"|"EVENTUAL"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_attached_indices.html} for full documentation.
+}
 \keyword{internal}

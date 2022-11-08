@@ -9,25 +9,9 @@ opsworks_deregister_instance(InstanceId)
 \arguments{
 \item{InstanceId}{[required] The instance ID.}
 }
-\value{
-An empty list.
-}
 \description{
-Deregister a registered Amazon EC2 or on-premises instance. This action
-removes the instance from the stack and returns it to your control. This
-action cannot be used with instances that were created with AWS OpsWorks
-Stacks.
+Deregister a registered Amazon EC2 or on-premises instance. This action removes the instance from the stack and returns it to your control. This action cannot be used with instances that were created with AWS OpsWorks Stacks.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/deregister_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$deregister_instance(
-  InstanceId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -9,67 +9,9 @@ sagemaker_describe_compilation_job(CompilationJobName)
 \arguments{
 \item{CompilationJobName}{[required] The name of the model compilation job that you want information about.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CompilationJobName = "string",
-  CompilationJobArn = "string",
-  CompilationJobStatus = "INPROGRESS"|"COMPLETED"|"FAILED"|"STARTING"|"STOPPING"|"STOPPED",
-  CompilationStartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  CompilationEndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  StoppingCondition = list(
-    MaxRuntimeInSeconds = 123,
-    MaxWaitTimeInSeconds = 123
-  ),
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  FailureReason = "string",
-  ModelArtifacts = list(
-    S3ModelArtifacts = "string"
-  ),
-  ModelDigests = list(
-    ArtifactDigest = "string"
-  ),
-  RoleArn = "string",
-  InputConfig = list(
-    S3Uri = "string",
-    DataInputConfig = "string",
-    Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"|"TFLITE"|"DARKNET"|"SKLEARN"
-  ),
-  OutputConfig = list(
-    S3OutputLocation = "string",
-    TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm",
-    TargetPlatform = list(
-      Os = "ANDROID"|"LINUX",
-      Arch = "X86_64"|"X86"|"ARM64"|"ARM_EABI"|"ARM_EABIHF",
-      Accelerator = "INTEL_GRAPHICS"|"MALI"|"NVIDIA"
-    ),
-    CompilerOptions = "string",
-    KmsKeyId = "string"
-  )
-)
-}
-}
 \description{
 Returns information about a model compilation job.
 
-To create a model compilation job, use
-\code{\link[=sagemaker_create_compilation_job]{create_compilation_job}}. To get
-information about multiple model compilation jobs, use
-\code{\link[=sagemaker_list_compilation_jobs]{list_compilation_jobs}}.
+See \url{https://paws-r.github.io/docs/sagemaker/describe_compilation_job.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_compilation_job(
-  CompilationJobName = "string"
-)
-}
-}
-
 \keyword{internal}

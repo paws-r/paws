@@ -5,8 +5,12 @@
 \title{Detects custom labels in a supplied image by using an Amazon Rekognition
 Custom Labels model}
 \usage{
-rekognition_detect_custom_labels(ProjectVersionArn, Image, MaxResults,
-  MinConfidence)
+rekognition_detect_custom_labels(
+  ProjectVersionArn,
+  Image,
+  MaxResults = NULL,
+  MinConfidence = NULL
+)
 }
 \arguments{
 \item{ProjectVersionArn}{[required] The ARN of the model version that you want to use.}
@@ -17,90 +21,19 @@ rekognition_detect_custom_labels(ProjectVersionArn, Image, MaxResults,
 response. The service returns the specified number of highest confidence
 labels ranked from highest confidence to lowest.}
 
-\item{MinConfidence}{Specifies the minimum confidence level for the labels to return. Amazon
-Rekognition doesn't return any labels with a confidence lower than this
-specified value. If you specify a value of 0, all labels are return,
-regardless of the default thresholds that the model version applies.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CustomLabels = list(
-    list(
-      Name = "string",
-      Confidence = 123.0,
-      Geometry = list(
-        BoundingBox = list(
-          Width = 123.0,
-          Height = 123.0,
-          Left = 123.0,
-          Top = 123.0
-        ),
-        Polygon = list(
-          list(
-            X = 123.0,
-            Y = 123.0
-          )
-        )
-      )
-    )
-  )
-)
-}
+\item{MinConfidence}{Specifies the minimum confidence level for the labels to return.
+\code{\link[=rekognition_detect_custom_labels]{detect_custom_labels}} doesn't
+return any labels with a confidence value that's lower than this
+specified value. If you specify a value of 0,
+\code{\link[=rekognition_detect_custom_labels]{detect_custom_labels}} returns all
+labels, regardless of the assumed threshold applied to each label. If
+you don't specify a value for \code{MinConfidence},
+\code{\link[=rekognition_detect_custom_labels]{detect_custom_labels}} returns
+labels based on the assumed threshold of each label.}
 }
 \description{
-Detects custom labels in a supplied image by using an Amazon Rekognition
-Custom Labels model.
+Detects custom labels in a supplied image by using an Amazon Rekognition Custom Labels model.
 
-You specify which version of a model version to use by using the
-\code{ProjectVersionArn} input parameter.
-
-You pass the input image as base64-encoded image bytes or as a reference
-to an image in an Amazon S3 bucket. If you use the AWS CLI to call
-Amazon Rekognition operations, passing image bytes is not supported. The
-image must be either a PNG or JPEG formatted file.
-
-For each object that the model version detects on an image, the API
-returns a (\code{CustomLabel}) object in an array (\code{CustomLabels}). Each
-\code{CustomLabel} object provides the label name (\code{Name}), the level of
-confidence that the image contains the object (\code{Confidence}), and object
-location information, if it exists, for the label on the image
-(\code{Geometry}).
-
-During training model calculates a threshold value that determines if a
-prediction for a label is true. By default,
-\code{\link[=rekognition_detect_custom_labels]{detect_custom_labels}} doesn't
-return labels whose confidence value is below the model's calculated
-threshold value. To filter labels that are returned, specify a value for
-\code{MinConfidence} that is higher than the model's calculated threshold.
-You can get the model's calculated threshold from the model's training
-results shown in the Amazon Rekognition Custom Labels console. To get
-all labels, regardless of confidence, specify a \code{MinConfidence} value of
-0.
-
-You can also add the \code{MaxResults} parameter to limit the number of
-labels returned.
-
-This is a stateless API operation. That is, the operation does not
-persist any data.
-
-This operation requires permissions to perform the
-\code{rekognition:DetectCustomLabels} action.
+See \url{https://paws-r.github.io/docs/rekognition/detect_custom_labels.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$detect_custom_labels(
-  ProjectVersionArn = "string",
-  Image = list(
-    Bytes = raw,
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  MaxResults = 123,
-  MinConfidence = 123.0
-)
-}
-}
-
 \keyword{internal}

@@ -5,8 +5,11 @@
 \title{Disassociates a previously associated principal ARN from a specified
 portfolio}
 \usage{
-servicecatalog_disassociate_principal_from_portfolio(AcceptLanguage,
-  PortfolioId, PrincipalARN)
+servicecatalog_disassociate_principal_from_portfolio(
+  AcceptLanguage = NULL,
+  PortfolioId,
+  PrincipalARN
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -20,20 +23,9 @@ servicecatalog_disassociate_principal_from_portfolio(AcceptLanguage,
 
 \item{PrincipalARN}{[required] The ARN of the principal (IAM user, role, or group).}
 }
-\value{
-An empty list.
-}
 \description{
-Disassociates a previously associated principal ARN from a specified
-portfolio.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_principal_from_portfolio(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  PrincipalARN = "string"
-)
-}
-}
+Disassociates a previously associated principal ARN from a specified portfolio.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/disassociate_principal_from_portfolio.html} for full documentation.
+}
 \keyword{internal}

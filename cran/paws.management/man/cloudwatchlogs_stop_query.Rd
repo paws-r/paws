@@ -10,22 +10,9 @@ cloudwatchlogs_stop_query(queryId)
 \item{queryId}{[required] The ID number of the query to stop. To find this ID number, use
 \code{\link[=cloudwatchlogs_describe_queries]{describe_queries}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  success = TRUE|FALSE
-)
-}
-}
 \description{
-Stops a CloudWatch Logs Insights query that is in progress. If the query
-has already ended, the operation returns an error indicating that the
-specified query is not running.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_query(
-  queryId = "string"
-)
-}
-}
+Stops a CloudWatch Logs Insights query that is in progress. If the query has already ended, the operation returns an error indicating that the specified query is not running.
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/stop_query.html} for full documentation.
+}
 \keyword{internal}

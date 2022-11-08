@@ -4,7 +4,7 @@
 \alias{opsworks_describe_rds_db_instances}
 \title{Describes Amazon RDS instances}
 \usage{
-opsworks_describe_rds_db_instances(StackId, RdsDbInstanceArns)
+opsworks_describe_rds_db_instances(StackId, RdsDbInstanceArns = NULL)
 }
 \arguments{
 \item{StackId}{[required] The ID of the stack with which the instances are registered. The
@@ -12,42 +12,9 @@ operation returns descriptions of all registered Amazon RDS instances.}
 
 \item{RdsDbInstanceArns}{An array containing the ARNs of the instances to be described.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RdsDbInstances = list(
-    list(
-      RdsDbInstanceArn = "string",
-      DbInstanceIdentifier = "string",
-      DbUser = "string",
-      DbPassword = "string",
-      Region = "string",
-      Address = "string",
-      Engine = "string",
-      StackId = "string",
-      MissingOnRds = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
 Describes Amazon RDS instances.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information about
-user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
-
-This call accepts only one resource-identifying parameter.
+See \url{https://paws-r.github.io/docs/opsworks/describe_rds_db_instances.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_rds_db_instances(
-  StackId = "string",
-  RdsDbInstanceArns = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -10,30 +10,9 @@ rekognition_delete_project_version(ProjectVersionArn)
 \item{ProjectVersionArn}{[required] The Amazon Resource Name (ARN) of the model version that you want to
 delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"
-)
-}
-}
 \description{
 Deletes an Amazon Rekognition Custom Labels model.
 
-You can't delete a model if it is running or if it is training. To check
-the status of a model, use the \code{Status} field returned from
-\code{\link[=rekognition_describe_project_versions]{describe_project_versions}}. To
-stop a running model call
-\code{\link[=rekognition_stop_project_version]{stop_project_version}}. If the model
-is training, wait until it finishes.
-
-This operation requires permissions to perform the
-\code{rekognition:DeleteProjectVersion} action.
+See \url{https://paws-r.github.io/docs/rekognition/delete_project_version.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_project_version(
-  ProjectVersionArn = "string"
-)
-}
-}
-
 \keyword{internal}

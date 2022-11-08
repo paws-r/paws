@@ -2,43 +2,32 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_verify_software_token}
 \alias{cognitoidentityprovider_verify_software_token}
-\title{Use this API to register a user's entered TOTP code and mark the user's
-software token MFA status as "verified" if successful}
+\title{Use this API to register a user's entered time-based one-time password
+(TOTP) code and mark the user's software token MFA status as "verified"
+if successful}
 \usage{
-cognitoidentityprovider_verify_software_token(AccessToken, Session,
-  UserCode, FriendlyDeviceName)
+cognitoidentityprovider_verify_software_token(
+  AccessToken = NULL,
+  Session = NULL,
+  UserCode,
+  FriendlyDeviceName = NULL
+)
 }
 \arguments{
-\item{AccessToken}{The access token.}
+\item{AccessToken}{A valid access token that Amazon Cognito issued to the user whose
+software token you want to verify.}
 
-\item{Session}{The session which should be passed both ways in challenge-response calls
+\item{Session}{The session that should be passed both ways in challenge-response calls
 to the service.}
 
-\item{UserCode}{[required] The one time password computed using the secret code returned by
-\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html}{AssociateSoftwareToken"}.}
+\item{UserCode}{[required] The one- time password computed using the secret code returned by
+\code{\link[=cognitoidentityprovider_associate_software_token]{associate_software_token}}.}
 
 \item{FriendlyDeviceName}{The friendly device name.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Status = "SUCCESS"|"ERROR",
-  Session = "string"
-)
-}
-}
 \description{
-Use this API to register a user's entered TOTP code and mark the user's
-software token MFA status as "verified" if successful. The request takes
-an access token or a session string, but not both.
-}
-\section{Request syntax}{
-\preformatted{svc$verify_software_token(
-  AccessToken = "string",
-  Session = "string",
-  UserCode = "string",
-  FriendlyDeviceName = "string"
-)
-}
-}
+Use this API to register a user's entered time-based one-time password (TOTP) code and mark the user's software token MFA status as "verified" if successful. The request takes an access token or a session string, but not both.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/verify_software_token.html} for full documentation.
+}
 \keyword{internal}

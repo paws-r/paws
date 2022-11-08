@@ -4,8 +4,11 @@
 \alias{ssm_get_maintenance_window_execution_task_invocation}
 \title{Retrieves information about a specific task running on a specific target}
 \usage{
-ssm_get_maintenance_window_execution_task_invocation(WindowExecutionId,
-  TaskId, InvocationId)
+ssm_get_maintenance_window_execution_task_invocation(
+  WindowExecutionId,
+  TaskId,
+  InvocationId
+)
 }
 \arguments{
 \item{WindowExecutionId}{[required] The ID of the maintenance window execution for which the task is a part.}
@@ -15,38 +18,9 @@ be retrieved.}
 
 \item{InvocationId}{[required] The invocation ID to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowExecutionId = "string",
-  TaskExecutionId = "string",
-  InvocationId = "string",
-  ExecutionId = "string",
-  TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
-  Parameters = "string",
-  Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
-  StatusDetails = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  OwnerInformation = "string",
-  WindowTargetId = "string"
-)
-}
-}
 \description{
-Retrieves information about a specific task running on a specific
-target.
-}
-\section{Request syntax}{
-\preformatted{svc$get_maintenance_window_execution_task_invocation(
-  WindowExecutionId = "string",
-  TaskId = "string",
-  InvocationId = "string"
-)
-}
-}
+Retrieves information about a specific task running on a specific target.
 
+See \url{https://paws-r.github.io/docs/ssm/get_maintenance_window_execution_task_invocation.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,11 @@
 \alias{ec2_modify_vpc_attribute}
 \title{Modifies the specified attribute of the specified VPC}
 \usage{
-ec2_modify_vpc_attribute(EnableDnsHostnames, EnableDnsSupport, VpcId)
+ec2_modify_vpc_attribute(
+  EnableDnsHostnames = NULL,
+  EnableDnsSupport = NULL,
+  VpcId
+)
 }
 \arguments{
 \item{EnableDnsHostnames}{Indicates whether the instances launched in the VPC get DNS hostnames.
@@ -27,50 +31,9 @@ same request. Use separate requests for each attribute.}
 
 \item{VpcId}{[required] The ID of the VPC.}
 }
-\value{
-An empty list.
-}
 \description{
 Modifies the specified attribute of the specified VPC.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_vpc_attribute(
-  EnableDnsHostnames = list(
-    Value = TRUE|FALSE
-  ),
-  EnableDnsSupport = list(
-    Value = TRUE|FALSE
-  ),
-  VpcId = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example modifies the enableDnsSupport attribute. This attribute
-# indicates whether DNS resolution is enabled for the VPC. If this
-# attribute is true, the Amazon DNS server resolves DNS hostnames for
-# instances in the VPC to their corresponding IP addresses; otherwise, it
-# does not.
-svc$modify_vpc_attribute(
-  EnableDnsSupport = list(
-    Value = FALSE
-  ),
-  VpcId = "vpc-a01106c2"
-)
-
-# This example modifies the enableDnsHostnames attribute. This attribute
-# indicates whether instances launched in the VPC get DNS hostnames. If
-# this attribute is true, instances in the VPC get DNS hostnames;
-# otherwise, they do not.
-svc$modify_vpc_attribute(
-  EnableDnsHostnames = list(
-    Value = FALSE
-  ),
-  VpcId = "vpc-a01106c2"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/modify_vpc_attribute.html} for full documentation.
 }
 \keyword{internal}

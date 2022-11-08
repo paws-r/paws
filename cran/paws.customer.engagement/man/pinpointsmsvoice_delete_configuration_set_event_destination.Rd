@@ -5,25 +5,18 @@
 \title{Deletes an event destination in a configuration set}
 \usage{
 pinpointsmsvoice_delete_configuration_set_event_destination(
-  ConfigurationSetName, EventDestinationName)
+  ConfigurationSetName,
+  EventDestinationName
+)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] ConfigurationSetName}
 
 \item{EventDestinationName}{[required] EventDestinationName}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an event destination in a configuration set.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_configuration_set_event_destination(
-  ConfigurationSetName = "string",
-  EventDestinationName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpointsmsvoice/delete_configuration_set_event_destination.html} for full documentation.
+}
 \keyword{internal}

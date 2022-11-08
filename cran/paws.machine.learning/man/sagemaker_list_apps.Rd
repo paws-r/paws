@@ -4,8 +4,14 @@
 \alias{sagemaker_list_apps}
 \title{Lists apps}
 \usage{
-sagemaker_list_apps(NextToken, MaxResults, SortOrder, SortBy,
-  DomainIdEquals, UserProfileNameEquals)
+sagemaker_list_apps(
+  NextToken = NULL,
+  MaxResults = NULL,
+  SortOrder = NULL,
+  SortBy = NULL,
+  DomainIdEquals = NULL,
+  UserProfileNameEquals = NULL
+)
 }
 \arguments{
 \item{NextToken}{If the previous response was truncated, you will receive this token. Use
@@ -21,37 +27,9 @@ it in your next request to receive the next set of results.}
 
 \item{UserProfileNameEquals}{A parameter to search by user profile name.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Apps = list(
-    list(
-      DomainId = "string",
-      UserProfileName = "string",
-      AppType = "JupyterServer"|"KernelGateway"|"TensorBoard",
-      AppName = "string",
-      Status = "Deleted"|"Deleting"|"Failed"|"InService"|"Pending",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists apps.
-}
-\section{Request syntax}{
-\preformatted{svc$list_apps(
-  NextToken = "string",
-  MaxResults = 123,
-  SortOrder = "Ascending"|"Descending",
-  SortBy = "CreationTime",
-  DomainIdEquals = "string",
-  UserProfileNameEquals = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_apps.html} for full documentation.
+}
 \keyword{internal}

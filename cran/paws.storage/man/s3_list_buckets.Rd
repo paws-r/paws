@@ -7,36 +7,9 @@ request}
 \usage{
 s3_list_buckets()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Buckets = list(
-    list(
-      Name = "string",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  Owner = list(
-    DisplayName = "string",
-    ID = "string"
-  )
-)
-}
-}
 \description{
-Returns a list of all buckets owned by the authenticated sender of the
-request.
-}
-\examples{
-\dontrun{
-# The following example return versions of an object with specific key
-# name prefix. The request limits the number of items returned to two. If
-# there are are more than two object version, S3 returns NextToken in the
-# response. You can specify this token value in your next request to fetch
-# next set of object versions.
-svc$list_buckets()
-}
+Returns a list of all buckets owned by the authenticated sender of the request. To use this operation, you must have the \code{s3:ListAllMyBuckets} permission.
 
+See \url{https://paws-r.github.io/docs/s3/list_buckets.html} for full documentation.
 }
 \keyword{internal}

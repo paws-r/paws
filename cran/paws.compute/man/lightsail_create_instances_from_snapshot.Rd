@@ -5,10 +5,21 @@
 \title{Creates one or more new instances from a manual or automatic snapshot of
 an instance}
 \usage{
-lightsail_create_instances_from_snapshot(instanceNames,
-  attachedDiskMapping, availabilityZone, instanceSnapshotName, bundleId,
-  userData, keyPairName, tags, addOns, sourceInstanceName, restoreDate,
-  useLatestRestorableAutoSnapshot)
+lightsail_create_instances_from_snapshot(
+  instanceNames,
+  attachedDiskMapping = NULL,
+  availabilityZone,
+  instanceSnapshotName = NULL,
+  bundleId,
+  userData = NULL,
+  keyPairName = NULL,
+  tags = NULL,
+  addOns = NULL,
+  ipAddressType = NULL,
+  sourceInstanceName = NULL,
+  restoreDate = NULL,
+  useLatestRestorableAutoSnapshot = NULL
+)
 }
 \arguments{
 \item{instanceNames}{[required] The names for your new instances.}
@@ -41,7 +52,7 @@ user data. For example, \verb{apt-get -y update}.
 Depending on the machine image you choose, the command to get software
 on your instance varies. Amazon Linux and CentOS use \code{yum}, Debian and
 Ubuntu use \code{apt-get}, and FreeBSD uses \code{pkg}. For a complete list, see
-the Dev Guide.}
+the Amazon Lightsail Developer Guide.}
 
 \item{keyPairName}{The name for your key pair.}
 
@@ -53,6 +64,13 @@ resource after it's created.}
 \item{addOns}{An array of objects representing the add-ons to enable for the new
 instance.}
 
+\item{ipAddressType}{The IP address type for the instance.
+
+The possible values are \code{ipv4} for IPv4 only, and \code{dualstack} for IPv4
+and IPv6.
+
+The default value is \code{dualstack}.}
+
 \item{sourceInstanceName}{The name of the source instance from which the source automatic snapshot
 was created.
 
@@ -62,8 +80,8 @@ Constraints:
 \verb{instance snapshot name} parameter. The \verb{source instance name} and
 \verb{instance snapshot name} parameters are mutually exclusive.
 \item Define this parameter only when creating a new instance from an
-automatic snapshot. For more information, see the Lightsail Dev
-Guide.
+automatic snapshot. For more information, see the Amazon Lightsail
+Developer Guide.
 }}
 
 \item{restoreDate}{The date of the automatic snapshot to use for the new instance. Use the
@@ -78,8 +96,8 @@ Constraints:
 and \verb{use latest restorable auto snapshot} parameters are mutually
 exclusive.
 \item Define this parameter only when creating a new instance from an
-automatic snapshot. For more information, see the Lightsail Dev
-Guide.
+automatic snapshot. For more information, see the Amazon Lightsail
+Developer Guide.
 }}
 
 \item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
@@ -91,84 +109,13 @@ Constraints:
 parameter. The \verb{use latest restorable auto snapshot} and
 \verb{restore date} parameters are mutually exclusive.
 \item Define this parameter only when creating a new instance from an
-automatic snapshot. For more information, see the Lightsail Dev
-Guide.
+automatic snapshot. For more information, see the Amazon Lightsail
+Developer Guide.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  operations = list(
-    list(
-      id = "string",
-      resourceName = "string",
-      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      location = list(
-        availabilityZone = "string",
-        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-      ),
-      isTerminal = TRUE|FALSE,
-      operationDetails = "string",
-      operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-      status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-      statusChangedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      errorCode = "string",
-      errorDetails = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates one or more new instances from a manual or automatic snapshot of
-an instance.
+Creates one or more new instances from a manual or automatic snapshot of an instance.
 
-The \verb{create instances from snapshot} operation supports tag-based access
-control via request tags and resource tags applied to the resource
-identified by \verb{instance snapshot name}. For more information, see the
-Lightsail Dev Guide.
+See \url{https://paws-r.github.io/docs/lightsail/create_instances_from_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_instances_from_snapshot(
-  instanceNames = list(
-    "string"
-  ),
-  attachedDiskMapping = list(
-    list(
-      list(
-        originalDiskPath = "string",
-        newDiskName = "string"
-      )
-    )
-  ),
-  availabilityZone = "string",
-  instanceSnapshotName = "string",
-  bundleId = "string",
-  userData = "string",
-  keyPairName = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  addOns = list(
-    list(
-      addOnType = "AutoSnapshot",
-      autoSnapshotAddOnRequest = list(
-        snapshotTimeOfDay = "string"
-      )
-    )
-  ),
-  sourceInstanceName = "string",
-  restoreDate = "string",
-  useLatestRestorableAutoSnapshot = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

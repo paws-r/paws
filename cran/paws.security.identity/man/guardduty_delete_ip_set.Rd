@@ -11,19 +11,9 @@ guardduty_delete_ip_set(DetectorId, IpSetId)
 
 \item{IpSetId}{[required] The unique ID of the IPSet to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the IPSet specified by the \code{ipSetId}. IPSets are called trusted
-IP lists in the console user interface.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_ip_set(
-  DetectorId = "string",
-  IpSetId = "string"
-)
-}
-}
+Deletes the IPSet specified by the \code{ipSetId}. IPSets are called trusted IP lists in the console user interface.
 
+See \url{https://paws-r.github.io/docs/guardduty/delete_ip_set.html} for full documentation.
+}
 \keyword{internal}

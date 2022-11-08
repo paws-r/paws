@@ -6,7 +6,9 @@
 configuration set in a specific AWS Region}
 \usage{
 pinpointemail_put_configuration_set_sending_options(
-  ConfigurationSetName, SendingEnabled)
+  ConfigurationSetName,
+  SendingEnabled = NULL
+)
 }
 \arguments{
 \item{ConfigurationSetName}{[required] The name of the configuration set that you want to enable or disable
@@ -15,19 +17,9 @@ email sending for.}
 \item{SendingEnabled}{If \code{true}, email sending is enabled for the configuration set. If
 \code{false}, email sending is disabled for the configuration set.}
 }
-\value{
-An empty list.
-}
 \description{
-Enable or disable email sending for messages that use a particular
-configuration set in a specific AWS Region.
-}
-\section{Request syntax}{
-\preformatted{svc$put_configuration_set_sending_options(
-  ConfigurationSetName = "string",
-  SendingEnabled = TRUE|FALSE
-)
-}
-}
+Enable or disable email sending for messages that use a particular configuration set in a specific AWS Region.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/put_configuration_set_sending_options.html} for full documentation.
+}
 \keyword{internal}

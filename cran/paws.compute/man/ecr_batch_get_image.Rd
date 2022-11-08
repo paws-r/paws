@@ -4,13 +4,17 @@
 \alias{ecr_batch_get_image}
 \title{Gets detailed information for an image}
 \usage{
-ecr_batch_get_image(registryId, repositoryName, imageIds,
-  acceptedMediaTypes)
+ecr_batch_get_image(
+  registryId = NULL,
+  repositoryName,
+  imageIds,
+  acceptedMediaTypes = NULL
+)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the images
-to describe. If you do not specify a registry, the default registry is
-assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the images to describe. If you do not specify a registry, the
+default registry is assumed.}
 
 \item{repositoryName}{[required] The repository that contains the images to describe.}
 
@@ -24,70 +28,9 @@ Valid values: \code{application/vnd.docker.distribution.manifest.v1+json} |
 \code{application/vnd.docker.distribution.manifest.v2+json} |
 \code{application/vnd.oci.image.manifest.v1+json}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  images = list(
-    list(
-      registryId = "string",
-      repositoryName = "string",
-      imageId = list(
-        imageDigest = "string",
-        imageTag = "string"
-      ),
-      imageManifest = "string",
-      imageManifestMediaType = "string"
-    )
-  ),
-  failures = list(
-    list(
-      imageId = list(
-        imageDigest = "string",
-        imageTag = "string"
-      ),
-      failureCode = "InvalidImageDigest"|"InvalidImageTag"|"ImageTagDoesNotMatchDigest"|"ImageNotFound"|"MissingDigestAndTag"|"ImageReferencedByManifestList"|"KmsError",
-      failureReason = "string"
-    )
-  )
-)
-}
-}
 \description{
-Gets detailed information for an image. Images are specified with either
-an \code{imageTag} or \code{imageDigest}.
+Gets detailed information for an image. Images are specified with either an \code{imageTag} or \code{imageDigest}.
 
-When an image is pulled, the BatchGetImage API is called once to
-retrieve the image manifest.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_get_image(
-  registryId = "string",
-  repositoryName = "string",
-  imageIds = list(
-    list(
-      imageDigest = "string",
-      imageTag = "string"
-    )
-  ),
-  acceptedMediaTypes = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example obtains information for an image with a specified image
-# digest ID from the repository named ubuntu in the current account.
-svc$batch_get_image(
-  imageIds = list(
-    list(
-      imageTag = "precise"
-    )
-  ),
-  repositoryName = "ubuntu"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ecr/batch_get_image.html} for full documentation.
 }
 \keyword{internal}

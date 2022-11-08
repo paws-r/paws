@@ -4,8 +4,14 @@
 \alias{lambda_update_alias}
 \title{Updates the configuration of a Lambda function alias}
 \usage{
-lambda_update_alias(FunctionName, Name, FunctionVersion, Description,
-  RoutingConfig, RevisionId)
+lambda_update_alias(
+  FunctionName,
+  Name,
+  FunctionVersion = NULL,
+  Description = NULL,
+  RoutingConfig = NULL,
+  RevisionId = NULL
+)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -34,56 +40,9 @@ of the alias.}
 specified. Use this option to avoid modifying an alias that has changed
 since you last read it.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AliasArn = "string",
-  Name = "string",
-  FunctionVersion = "string",
-  Description = "string",
-  RoutingConfig = list(
-    AdditionalVersionWeights = list(
-      123.0
-    )
-  ),
-  RevisionId = "string"
-)
-}
-}
 \description{
-Updates the configuration of a Lambda function
-\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_alias(
-  FunctionName = "string",
-  Name = "string",
-  FunctionVersion = "string",
-  Description = "string",
-  RoutingConfig = list(
-    AdditionalVersionWeights = list(
-      123.0
-    )
-  ),
-  RevisionId = "string"
-)
-}
-}
+Updates the configuration of a Lambda function \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.
 
-\examples{
-\dontrun{
-# The following example updates the alias named BLUE to send 30\% of
-# traffic to version 2 and 70\% to version 1.
-svc$update_alias(
-  FunctionName = "my-function",
-  FunctionVersion = "2",
-  Name = "BLUE",
-  RoutingConfig = list(
-    AdditionalVersionWeights = list(
-      `1` = 0.7
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/update_alias.html} for full documentation.
 }
 \keyword{internal}

@@ -4,16 +4,21 @@
 \alias{ssm_describe_maintenance_window_execution_tasks}
 \title{For a given maintenance window execution, lists the tasks that were run}
 \usage{
-ssm_describe_maintenance_window_execution_tasks(WindowExecutionId,
-  Filters, MaxResults, NextToken)
+ssm_describe_maintenance_window_execution_tasks(
+  WindowExecutionId,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{WindowExecutionId}{[required] The ID of the maintenance window execution whose task executions should
 be retrieved.}
 
 \item{Filters}{Optional filters used to scope down the returned tasks. The supported
-filter key is STATUS with the corresponding values PENDING,
-IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.}
+filter key is \code{STATUS} with the corresponding values \code{PENDING},
+\code{IN_PROGRESS}, \code{SUCCESS}, \code{FAILED}, \code{TIMED_OUT}, \code{CANCELLING}, and
+\code{CANCELLED}.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -22,46 +27,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowExecutionTaskIdentities = list(
-    list(
-      WindowExecutionId = "string",
-      TaskExecutionId = "string",
-      Status = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED"|"TIMED_OUT"|"CANCELLING"|"CANCELLED"|"SKIPPED_OVERLAPPING",
-      StatusDetails = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TaskArn = "string",
-      TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 For a given maintenance window execution, lists the tasks that were run.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_maintenance_window_execution_tasks(
-  WindowExecutionId = "string",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_window_execution_tasks.html} for full documentation.
+}
 \keyword{internal}

@@ -7,7 +7,19 @@
 dynamodb(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -26,18 +38,21 @@ or cluster scaling.
 With DynamoDB, you can create database tables that can store and
 retrieve any amount of data, and serve any level of request traffic. You
 can scale up or scale down your tables' throughput capacity without
-downtime or performance degradation, and use the AWS Management Console
-to monitor resource utilization and performance metrics.
+downtime or performance degradation, and use the Amazon Web Services
+Management Console to monitor resource utilization and performance
+metrics.
 
 DynamoDB automatically spreads the data and traffic for your tables over
 a sufficient number of servers to handle your throughput and storage
 requirements, while maintaining consistent and fast performance. All of
 your data is stored on solid state disks (SSDs) and automatically
-replicated across multiple Availability Zones in an AWS region,
-providing built-in high availability and data durability.
+replicated across multiple Availability Zones in an Amazon Web Services
+Region, providing built-in high availability and data durability.
 }
 \section{Service syntax}{
-\preformatted{svc <- dynamodb(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- dynamodb(
   config = list(
     credentials = list(
       creds = list(
@@ -45,19 +60,23 @@ providing built-in high availability and data durability.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=dynamodb_batch_execute_statement]{batch_execute_statement} \tab This operation allows you to perform batch reads and writes on data stored in DynamoDB, using PartiQL\cr
+\link[=dynamodb_batch_execute_statement]{batch_execute_statement} \tab This operation allows you to perform batch reads or writes on data stored in DynamoDB, using PartiQL\cr
 \link[=dynamodb_batch_get_item]{batch_get_item} \tab The BatchGetItem operation returns the attributes of one or more items from one or more tables\cr
 \link[=dynamodb_batch_write_item]{batch_write_item} \tab The BatchWriteItem operation puts or deletes multiple items in one or more tables\cr
 \link[=dynamodb_create_backup]{create_backup} \tab Creates a backup for an existing table\cr
@@ -74,7 +93,7 @@ providing built-in high availability and data durability.
 \link[=dynamodb_describe_global_table]{describe_global_table} \tab Returns information about the specified global table\cr
 \link[=dynamodb_describe_global_table_settings]{describe_global_table_settings} \tab Describes Region-specific settings for a global table\cr
 \link[=dynamodb_describe_kinesis_streaming_destination]{describe_kinesis_streaming_destination} \tab Returns information about the status of Kinesis streaming\cr
-\link[=dynamodb_describe_limits]{describe_limits} \tab Returns the current provisioned-capacity quotas for your AWS account in a Region, both for the Region as a whole and for any one DynamoDB table that you create there\cr
+\link[=dynamodb_describe_limits]{describe_limits} \tab Returns the current provisioned-capacity quotas for your Amazon Web Services account in a Region, both for the Region as a whole and for any one DynamoDB table that you create there\cr
 \link[=dynamodb_describe_table]{describe_table} \tab Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the table\cr
 \link[=dynamodb_describe_table_replica_auto_scaling]{describe_table_replica_auto_scaling} \tab Describes auto scaling settings across replicas of the global table at once\cr
 \link[=dynamodb_describe_time_to_live]{describe_time_to_live} \tab Gives a description of the Time to Live (TTL) status on the specified table\cr
@@ -84,14 +103,14 @@ providing built-in high availability and data durability.
 \link[=dynamodb_execute_transaction]{execute_transaction} \tab This operation allows you to perform transactional reads or writes on data stored in DynamoDB, using PartiQL\cr
 \link[=dynamodb_export_table_to_point_in_time]{export_table_to_point_in_time} \tab Exports table data to an S3 bucket\cr
 \link[=dynamodb_get_item]{get_item} \tab The GetItem operation returns a set of attributes for the item with the given primary key\cr
-\link[=dynamodb_list_backups]{list_backups} \tab List backups associated with an AWS account\cr
+\link[=dynamodb_list_backups]{list_backups} \tab List backups associated with an Amazon Web Services account\cr
 \link[=dynamodb_list_contributor_insights]{list_contributor_insights} \tab Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes\cr
 \link[=dynamodb_list_exports]{list_exports} \tab Lists completed exports within the past 90 days\cr
 \link[=dynamodb_list_global_tables]{list_global_tables} \tab Lists all global tables that have a replica in the specified Region\cr
 \link[=dynamodb_list_tables]{list_tables} \tab Returns an array of table names associated with the current account and endpoint\cr
 \link[=dynamodb_list_tags_of_resource]{list_tags_of_resource} \tab List all tags on an Amazon DynamoDB resource\cr
 \link[=dynamodb_put_item]{put_item} \tab Creates a new item, or replaces an old item with a new item\cr
-\link[=dynamodb_query]{query} \tab The Query operation finds items based on primary key values\cr
+\link[=dynamodb_query]{query} \tab You must provide the name of the partition key attribute and a single value for that attribute\cr
 \link[=dynamodb_restore_table_from_backup]{restore_table_from_backup} \tab Creates a new table from an existing backup\cr
 \link[=dynamodb_restore_table_to_point_in_time]{restore_table_to_point_in_time} \tab Restores the specified table to the specified point in time within EarliestRestorableDateTime and LatestRestorableDateTime\cr
 \link[=dynamodb_scan]{scan} \tab The Scan operation returns one or more items and item attributes by accessing every item in a table or a secondary index\cr

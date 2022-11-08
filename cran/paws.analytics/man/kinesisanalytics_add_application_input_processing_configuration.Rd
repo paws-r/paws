@@ -6,8 +6,11 @@
 API, which only supports SQL applications}
 \usage{
 kinesisanalytics_add_application_input_processing_configuration(
-  ApplicationName, CurrentApplicationVersionId, InputId,
-  InputProcessingConfiguration)
+  ApplicationName,
+  CurrentApplicationVersionId,
+  InputId,
+  InputProcessingConfiguration
+)
 }
 \arguments{
 \item{ApplicationName}{[required] Name of the application to which you want to add the input processing
@@ -30,34 +33,9 @@ operation.}
 \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html}{InputProcessingConfiguration}
 to add to the application.}
 }
-\value{
-An empty list.
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Adds an
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html}{InputProcessingConfiguration}
-to an application. An input processor preprocesses records on the input
-stream before the application's SQL code executes. Currently, the only
-input processor available is \href{https://docs.aws.amazon.com/lambda/}{AWS Lambda}.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/add_application_input_processing_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_application_input_processing_configuration(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  InputId = "string",
-  InputProcessingConfiguration = list(
-    InputLambdaProcessor = list(
-      ResourceARN = "string",
-      RoleARN = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

@@ -5,9 +5,20 @@
 \title{Returns list of event descriptions matching criteria up to the last 6
 weeks}
 \usage{
-elasticbeanstalk_describe_events(ApplicationName, VersionLabel,
-  TemplateName, EnvironmentId, EnvironmentName, PlatformArn, RequestId,
-  Severity, StartTime, EndTime, MaxRecords, NextToken)
+elasticbeanstalk_describe_events(
+  ApplicationName = NULL,
+  VersionLabel = NULL,
+  TemplateName = NULL,
+  EnvironmentId = NULL,
+  EnvironmentName = NULL,
+  PlatformArn = NULL,
+  RequestId = NULL,
+  Severity = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  MaxRecords = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{If specified, AWS Elastic Beanstalk restricts the returned descriptions
@@ -47,64 +58,9 @@ with the most recent event.}
 \item{NextToken}{Pagination token. If specified, the events return the next batch of
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Events = list(
-    list(
-      EventDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Message = "string",
-      ApplicationName = "string",
-      VersionLabel = "string",
-      TemplateName = "string",
-      EnvironmentName = "string",
-      PlatformArn = "string",
-      RequestId = "string",
-      Severity = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns list of event descriptions matching criteria up to the last 6
-weeks.
+Returns list of event descriptions matching criteria up to the last 6 weeks.
 
-This action returns the most recent 1,000 events from the specified
-\code{NextToken}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_events(
-  ApplicationName = "string",
-  VersionLabel = "string",
-  TemplateName = "string",
-  EnvironmentId = "string",
-  EnvironmentName = "string",
-  PlatformArn = "string",
-  RequestId = "string",
-  Severity = "TRACE"|"DEBUG"|"INFO"|"WARN"|"ERROR"|"FATAL",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxRecords = 123,
-  NextToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation retrieves events for an environment named
-# my-env:
-svc$describe_events(
-  EnvironmentName = "my-env"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_events.html} for full documentation.
 }
 \keyword{internal}

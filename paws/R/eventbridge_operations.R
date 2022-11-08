@@ -92,6 +92,74 @@ eventbridge_cancel_replay <- function(ReplayName) {
 }
 .eventbridge$operations$cancel_replay <- eventbridge_cancel_replay
 
+#' Creates an API destination, which is an HTTP invocation endpoint
+#' configured as a target for events
+#'
+#' @description
+#' Creates an API destination, which is an HTTP invocation endpoint
+#' configured as a target for events.
+#'
+#' @usage
+#' eventbridge_create_api_destination(Name, Description, ConnectionArn,
+#'   InvocationEndpoint, HttpMethod, InvocationRateLimitPerSecond)
+#'
+#' @param Name &#91;required&#93; The name for the API destination to create.
+#' @param Description A description for the API destination to create.
+#' @param ConnectionArn &#91;required&#93; The ARN of the connection to use for the API destination. The
+#' destination endpoint must support the authorization type specified for
+#' the connection.
+#' @param InvocationEndpoint &#91;required&#93; The URL to the HTTP invocation endpoint for the API destination.
+#' @param HttpMethod &#91;required&#93; The method to use for the request to the HTTP invocation endpoint.
+#' @param InvocationRateLimitPerSecond The maximum number of requests per second to send to the HTTP invocation
+#' endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiDestinationArn = "string",
+#'   ApiDestinationState = "ACTIVE"|"INACTIVE",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_api_destination(
+#'   Name = "string",
+#'   Description = "string",
+#'   ConnectionArn = "string",
+#'   InvocationEndpoint = "string",
+#'   HttpMethod = "POST"|"GET"|"HEAD"|"OPTIONS"|"PUT"|"PATCH"|"DELETE",
+#'   InvocationRateLimitPerSecond = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_create_api_destination
+eventbridge_create_api_destination <- function(Name, Description = NULL, ConnectionArn, InvocationEndpoint, HttpMethod, InvocationRateLimitPerSecond = NULL) {
+  op <- new_operation(
+    name = "CreateApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$create_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
+  output <- .eventbridge$create_api_destination_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$create_api_destination <- eventbridge_create_api_destination
+
 #' Creates an archive of events with the specified settings
 #'
 #' @description
@@ -107,7 +175,7 @@ eventbridge_cancel_replay <- function(ReplayName) {
 #'   EventPattern, RetentionDays)
 #'
 #' @param ArchiveName &#91;required&#93; The name for the archive to create.
-#' @param EventSourceArn &#91;required&#93; The ARN of the event source associated with the archive.
+#' @param EventSourceArn &#91;required&#93; The ARN of the event bus that sends events to the archive.
 #' @param Description A description for the archive.
 #' @param EventPattern An event pattern to use to filter events sent to the archive.
 #' @param RetentionDays The number of days to retain events for. Default value is 0. If set to
@@ -156,6 +224,233 @@ eventbridge_create_archive <- function(ArchiveName, EventSourceArn, Description 
   return(response)
 }
 .eventbridge$operations$create_archive <- eventbridge_create_archive
+
+#' Creates a connection
+#'
+#' @description
+#' Creates a connection. A connection defines the authorization type and
+#' credentials to use for authorization with an API destination HTTP
+#' endpoint.
+#'
+#' @usage
+#' eventbridge_create_connection(Name, Description, AuthorizationType,
+#'   AuthParameters)
+#'
+#' @param Name &#91;required&#93; The name for the connection to create.
+#' @param Description A description for the connection to create.
+#' @param AuthorizationType &#91;required&#93; The type of authorization to use for the connection.
+#' @param AuthParameters &#91;required&#93; A `CreateConnectionAuthRequestParameters` object that contains the
+#' authorization parameters to use to authorize with the endpoint.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connection(
+#'   Name = "string",
+#'   Description = "string",
+#'   AuthorizationType = "BASIC"|"OAUTH_CLIENT_CREDENTIALS"|"API_KEY",
+#'   AuthParameters = list(
+#'     BasicAuthParameters = list(
+#'       Username = "string",
+#'       Password = "string"
+#'     ),
+#'     OAuthParameters = list(
+#'       ClientParameters = list(
+#'         ClientID = "string",
+#'         ClientSecret = "string"
+#'       ),
+#'       AuthorizationEndpoint = "string",
+#'       HttpMethod = "GET"|"POST"|"PUT",
+#'       OAuthHttpParameters = list(
+#'         HeaderParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         QueryStringParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         BodyParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ApiKeyAuthParameters = list(
+#'       ApiKeyName = "string",
+#'       ApiKeyValue = "string"
+#'     ),
+#'     InvocationHttpParameters = list(
+#'       HeaderParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       QueryStringParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       BodyParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_create_connection
+eventbridge_create_connection <- function(Name, Description = NULL, AuthorizationType, AuthParameters) {
+  op <- new_operation(
+    name = "CreateConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$create_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
+  output <- .eventbridge$create_connection_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$create_connection <- eventbridge_create_connection
+
+#' Creates a global endpoint
+#'
+#' @description
+#' Creates a global endpoint. Global endpoints improve your application's
+#' availability by making it regional-fault tolerant. To do this, you
+#' define a primary and secondary Region with event buses in each Region.
+#' You also create a Amazon Route 53 health check that will tell
+#' EventBridge to route events to the secondary Region when an "unhealthy"
+#' state is encountered and events will be routed back to the primary
+#' Region when the health check reports a "healthy" state.
+#'
+#' @usage
+#' eventbridge_create_endpoint(Name, Description, RoutingConfig,
+#'   ReplicationConfig, EventBuses, RoleArn)
+#'
+#' @param Name &#91;required&#93; The name of the global endpoint. For example,
+#' `"Name":"us-east-2-custom_bus_A-endpoint"`.
+#' @param Description A description of the global endpoint.
+#' @param RoutingConfig &#91;required&#93; Configure the routing policy, including the health check and secondary
+#' Region..
+#' @param ReplicationConfig Enable or disable event replication.
+#' @param EventBuses &#91;required&#93; Define the event buses used.
+#' 
+#' The names of the event buses must be identical in each Region.
+#' @param RoleArn The ARN of the role used for replication.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Arn = "string",
+#'   RoutingConfig = list(
+#'     FailoverConfig = list(
+#'       Primary = list(
+#'         HealthCheck = "string"
+#'       ),
+#'       Secondary = list(
+#'         Route = "string"
+#'       )
+#'     )
+#'   ),
+#'   ReplicationConfig = list(
+#'     State = "ENABLED"|"DISABLED"
+#'   ),
+#'   EventBuses = list(
+#'     list(
+#'       EventBusArn = "string"
+#'     )
+#'   ),
+#'   RoleArn = "string",
+#'   State = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_endpoint(
+#'   Name = "string",
+#'   Description = "string",
+#'   RoutingConfig = list(
+#'     FailoverConfig = list(
+#'       Primary = list(
+#'         HealthCheck = "string"
+#'       ),
+#'       Secondary = list(
+#'         Route = "string"
+#'       )
+#'     )
+#'   ),
+#'   ReplicationConfig = list(
+#'     State = "ENABLED"|"DISABLED"
+#'   ),
+#'   EventBuses = list(
+#'     list(
+#'       EventBusArn = "string"
+#'     )
+#'   ),
+#'   RoleArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_create_endpoint
+eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig, ReplicationConfig = NULL, EventBuses, RoleArn = NULL) {
+  op <- new_operation(
+    name = "CreateEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$create_endpoint_input(Name = Name, Description = Description, RoutingConfig = RoutingConfig, ReplicationConfig = ReplicationConfig, EventBuses = EventBuses, RoleArn = RoleArn)
+  output <- .eventbridge$create_endpoint_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$create_endpoint <- eventbridge_create_endpoint
 
 #' Creates a new event bus within your account
 #'
@@ -226,42 +521,44 @@ eventbridge_create_event_bus <- function(Name, EventSourceName = NULL, Tags = NU
 #'
 #' @description
 #' Called by an SaaS partner to create a partner event source. This
-#' operation is not used by AWS customers.
+#' operation is not used by Amazon Web Services customers.
 #' 
-#' Each partner event source can be used by one AWS account to create a
-#' matching partner event bus in that AWS account. A SaaS partner must
-#' create one partner event source for each AWS account that wants to
-#' receive those event types.
+#' Each partner event source can be used by one Amazon Web Services account
+#' to create a matching partner event bus in that Amazon Web Services
+#' account. A SaaS partner must create one partner event source for each
+#' Amazon Web Services account that wants to receive those event types.
 #' 
 #' A partner event source creates events based on resources within the SaaS
 #' partner's service or application.
 #' 
-#' An AWS account that creates a partner event bus that matches the partner
-#' event source can use that event bus to receive events from the partner,
-#' and then process them using AWS Events rules and targets.
+#' An Amazon Web Services account that creates a partner event bus that
+#' matches the partner event source can use that event bus to receive
+#' events from the partner, and then process them using Amazon Web Services
+#' Events rules and targets.
 #' 
 #' Partner event source names follow this format:
 #' 
 #' ` partner_name/event_namespace/event_name `
 #' 
 #' *partner_name* is determined during partner registration and identifies
-#' the partner to AWS customers. *event_namespace* is determined by the
-#' partner and is a way for the partner to categorize their events.
-#' *event_name* is determined by the partner, and should uniquely identify
-#' an event-generating resource within the partner system. The combination
-#' of *event_namespace* and *event_name* should help AWS customers decide
-#' whether to create an event bus to receive these events.
+#' the partner to Amazon Web Services customers. *event_namespace* is
+#' determined by the partner and is a way for the partner to categorize
+#' their events. *event_name* is determined by the partner, and should
+#' uniquely identify an event-generating resource within the partner
+#' system. The combination of *event_namespace* and *event_name* should
+#' help Amazon Web Services customers decide whether to create an event bus
+#' to receive these events.
 #'
 #' @usage
 #' eventbridge_create_partner_event_source(Name, Account)
 #'
 #' @param Name &#91;required&#93; The name of the partner event source. This name must be unique and must
-#' be in the format ` partner_name/event_namespace/event_name `. The AWS
-#' account that wants to use this partner event source must create a
-#' partner event bus with a name that matches the name of the partner event
-#' source.
-#' @param Account &#91;required&#93; The AWS account ID that is permitted to create a matching partner event
-#' bus for this partner event source.
+#' be in the format ` partner_name/event_namespace/event_name `. The Amazon
+#' Web Services account that wants to use this partner event source must
+#' create a partner event bus with a name that matches the name of the
+#' partner event source.
+#' @param Account &#91;required&#93; The Amazon Web Services account ID that is permitted to create a
+#' matching partner event bus for this partner event source.
 #'
 #' @return
 #' A list with the following syntax:
@@ -348,6 +645,103 @@ eventbridge_deactivate_event_source <- function(Name) {
 }
 .eventbridge$operations$deactivate_event_source <- eventbridge_deactivate_event_source
 
+#' Removes all authorization parameters from the connection
+#'
+#' @description
+#' Removes all authorization parameters from the connection. This lets you
+#' remove the secret from the connection so you can reuse it without having
+#' to create a new connection.
+#'
+#' @usage
+#' eventbridge_deauthorize_connection(Name)
+#'
+#' @param Name &#91;required&#93; The name of the connection to remove authorization from.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAuthorizedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deauthorize_connection(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_deauthorize_connection
+eventbridge_deauthorize_connection <- function(Name) {
+  op <- new_operation(
+    name = "DeauthorizeConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$deauthorize_connection_input(Name = Name)
+  output <- .eventbridge$deauthorize_connection_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$deauthorize_connection <- eventbridge_deauthorize_connection
+
+#' Deletes the specified API destination
+#'
+#' @description
+#' Deletes the specified API destination.
+#'
+#' @usage
+#' eventbridge_delete_api_destination(Name)
+#'
+#' @param Name &#91;required&#93; The name of the destination to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_api_destination(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_delete_api_destination
+eventbridge_delete_api_destination <- function(Name) {
+  op <- new_operation(
+    name = "DeleteApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$delete_api_destination_input(Name = Name)
+  output <- .eventbridge$delete_api_destination_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$delete_api_destination <- eventbridge_delete_api_destination
+
 #' Deletes the specified archive
 #'
 #' @description
@@ -387,6 +781,106 @@ eventbridge_delete_archive <- function(ArchiveName) {
   return(response)
 }
 .eventbridge$operations$delete_archive <- eventbridge_delete_archive
+
+#' Deletes a connection
+#'
+#' @description
+#' Deletes a connection.
+#'
+#' @usage
+#' eventbridge_delete_connection(Name)
+#'
+#' @param Name &#91;required&#93; The name of the connection to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAuthorizedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connection(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_delete_connection
+eventbridge_delete_connection <- function(Name) {
+  op <- new_operation(
+    name = "DeleteConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$delete_connection_input(Name = Name)
+  output <- .eventbridge$delete_connection_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$delete_connection <- eventbridge_delete_connection
+
+#' Delete an existing global endpoint
+#'
+#' @description
+#' Delete an existing global endpoint. For more information about global
+#' endpoints, see [Making applications Regional-fault tolerant with global
+#' endpoints and event
+#' replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html)
+#' in the Amazon EventBridge User Guide.
+#'
+#' @usage
+#' eventbridge_delete_endpoint(Name)
+#'
+#' @param Name &#91;required&#93; The name of the endpoint you want to delete. For example,
+#' `"Name":"us-east-2-custom_bus_A-endpoint"`..
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_endpoint(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_delete_endpoint
+eventbridge_delete_endpoint <- function(Name) {
+  op <- new_operation(
+    name = "DeleteEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$delete_endpoint_input(Name = Name)
+  output <- .eventbridge$delete_endpoint_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$delete_endpoint <- eventbridge_delete_endpoint
 
 #' Deletes the specified custom event bus or partner event bus
 #'
@@ -434,17 +928,17 @@ eventbridge_delete_event_bus <- function(Name) {
 #'
 #' @description
 #' This operation is used by SaaS partners to delete a partner event
-#' source. This operation is not used by AWS customers.
+#' source. This operation is not used by Amazon Web Services customers.
 #' 
 #' When you delete an event source, the status of the corresponding partner
-#' event bus in the AWS customer account becomes DELETED.
+#' event bus in the Amazon Web Services customer account becomes DELETED.
 #'
 #' @usage
 #' eventbridge_delete_partner_event_source(Name, Account)
 #'
 #' @param Name &#91;required&#93; The name of the event source to delete.
-#' @param Account &#91;required&#93; The AWS account ID of the AWS customer that the event source was created
-#' for.
+#' @param Account &#91;required&#93; The Amazon Web Services account ID of the Amazon Web Services customer
+#' that the event source was created for.
 #'
 #' @return
 #' An empty list.
@@ -488,11 +982,15 @@ eventbridge_delete_partner_event_source <- function(Name, Account) {
 #' When you delete a rule, incoming events might continue to match to the
 #' deleted rule. Allow a short period of time for changes to take effect.
 #' 
-#' Managed rules are rules created and managed by another AWS service on
-#' your behalf. These rules are created by those other AWS services to
-#' support functionality in those services. You can delete these rules
-#' using the `Force` option, but you should do so only if you are sure the
-#' other service is not still using that rule.
+#' If you call delete rule multiple times for the same rule, all calls will
+#' succeed. When you call delete rule for a non-existent custom eventbus,
+#' `ResourceNotFoundException` is returned.
+#' 
+#' Managed rules are rules created and managed by another Amazon Web
+#' Services service on your behalf. These rules are created by those other
+#' Amazon Web Services services to support functionality in those services.
+#' You can delete these rules using the `Force` option, but you should do
+#' so only if you are sure the other service is not still using that rule.
 #'
 #' @usage
 #' eventbridge_delete_rule(Name, EventBusName, Force)
@@ -500,10 +998,10 @@ eventbridge_delete_partner_event_source <- function(Name, Account) {
 #' @param Name &#91;required&#93; The name of the rule.
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
-#' @param Force If this is a managed rule, created by an AWS service on your behalf, you
-#' must specify `Force` as `True` to delete the rule. This parameter is
-#' ignored for rules that are not managed rules. You can check whether a
-#' rule is a managed rule by using
+#' @param Force If this is a managed rule, created by an Amazon Web Services service on
+#' your behalf, you must specify `Force` as `True` to delete the rule. This
+#' parameter is ignored for rules that are not managed rules. You can check
+#' whether a rule is a managed rule by using
 #' [`describe_rule`][eventbridge_describe_rule] or
 #' [`list_rules`][eventbridge_list_rules] and checking the `ManagedBy`
 #' field of the response.
@@ -539,6 +1037,64 @@ eventbridge_delete_rule <- function(Name, EventBusName = NULL, Force = NULL) {
   return(response)
 }
 .eventbridge$operations$delete_rule <- eventbridge_delete_rule
+
+#' Retrieves details about an API destination
+#'
+#' @description
+#' Retrieves details about an API destination.
+#'
+#' @usage
+#' eventbridge_describe_api_destination(Name)
+#'
+#' @param Name &#91;required&#93; The name of the API destination to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiDestinationArn = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   ApiDestinationState = "ACTIVE"|"INACTIVE",
+#'   ConnectionArn = "string",
+#'   InvocationEndpoint = "string",
+#'   HttpMethod = "POST"|"GET"|"HEAD"|"OPTIONS"|"PUT"|"PATCH"|"DELETE",
+#'   InvocationRateLimitPerSecond = 123,
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_api_destination(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_describe_api_destination
+eventbridge_describe_api_destination <- function(Name) {
+  op <- new_operation(
+    name = "DescribeApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$describe_api_destination_input(Name = Name)
+  output <- .eventbridge$describe_api_destination_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$describe_api_destination <- eventbridge_describe_api_destination
 
 #' Retrieves details about an archive
 #'
@@ -597,14 +1153,219 @@ eventbridge_describe_archive <- function(ArchiveName) {
 }
 .eventbridge$operations$describe_archive <- eventbridge_describe_archive
 
+#' Retrieves details about a connection
+#'
+#' @description
+#' Retrieves details about a connection.
+#'
+#' @usage
+#' eventbridge_describe_connection(Name)
+#'
+#' @param Name &#91;required&#93; The name of the connection to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   Name = "string",
+#'   Description = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   StateReason = "string",
+#'   AuthorizationType = "BASIC"|"OAUTH_CLIENT_CREDENTIALS"|"API_KEY",
+#'   SecretArn = "string",
+#'   AuthParameters = list(
+#'     BasicAuthParameters = list(
+#'       Username = "string"
+#'     ),
+#'     OAuthParameters = list(
+#'       ClientParameters = list(
+#'         ClientID = "string"
+#'       ),
+#'       AuthorizationEndpoint = "string",
+#'       HttpMethod = "GET"|"POST"|"PUT",
+#'       OAuthHttpParameters = list(
+#'         HeaderParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         QueryStringParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         BodyParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ApiKeyAuthParameters = list(
+#'       ApiKeyName = "string"
+#'     ),
+#'     InvocationHttpParameters = list(
+#'       HeaderParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       QueryStringParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       BodyParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAuthorizedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_connection(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_describe_connection
+eventbridge_describe_connection <- function(Name) {
+  op <- new_operation(
+    name = "DescribeConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$describe_connection_input(Name = Name)
+  output <- .eventbridge$describe_connection_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$describe_connection <- eventbridge_describe_connection
+
+#' Get the information about an existing global endpoint
+#'
+#' @description
+#' Get the information about an existing global endpoint. For more
+#' information about global endpoints, see [Making applications
+#' Regional-fault tolerant with global endpoints and event
+#' replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html)
+#' in the Amazon EventBridge User Guide..
+#'
+#' @usage
+#' eventbridge_describe_endpoint(Name, HomeRegion)
+#'
+#' @param Name &#91;required&#93; The name of the endpoint you want to get information about. For example,
+#' `"Name":"us-east-2-custom_bus_A-endpoint"`.
+#' @param HomeRegion The primary Region of the endpoint you want to get information about.
+#' For example `"HomeRegion": "us-east-1"`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Description = "string",
+#'   Arn = "string",
+#'   RoutingConfig = list(
+#'     FailoverConfig = list(
+#'       Primary = list(
+#'         HealthCheck = "string"
+#'       ),
+#'       Secondary = list(
+#'         Route = "string"
+#'       )
+#'     )
+#'   ),
+#'   ReplicationConfig = list(
+#'     State = "ENABLED"|"DISABLED"
+#'   ),
+#'   EventBuses = list(
+#'     list(
+#'       EventBusArn = "string"
+#'     )
+#'   ),
+#'   RoleArn = "string",
+#'   EndpointId = "string",
+#'   EndpointUrl = "string",
+#'   State = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'   StateReason = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_endpoint(
+#'   Name = "string",
+#'   HomeRegion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_describe_endpoint
+eventbridge_describe_endpoint <- function(Name, HomeRegion = NULL) {
+  op <- new_operation(
+    name = "DescribeEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$describe_endpoint_input(Name = Name, HomeRegion = HomeRegion)
+  output <- .eventbridge$describe_endpoint_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$describe_endpoint <- eventbridge_describe_endpoint
+
 #' Displays details about an event bus in your account
 #'
 #' @description
 #' Displays details about an event bus in your account. This can include
-#' the external AWS accounts that are permitted to write events to your
-#' default event bus, and the associated policy. For custom event buses and
-#' partner event buses, it displays the name, ARN, policy, state, and
-#' creation time.
+#' the external Amazon Web Services accounts that are permitted to write
+#' events to your default event bus, and the associated policy. For custom
+#' event buses and partner event buses, it displays the name, ARN, policy,
+#' state, and creation time.
 #' 
 #' To enable your account to receive events from other accounts on its
 #' default event bus, use [`put_permission`][eventbridge_put_permission].
@@ -716,8 +1477,8 @@ eventbridge_describe_event_source <- function(Name) {
 #'
 #' @description
 #' An SaaS partner can use this operation to list details about a partner
-#' event source that they have created. AWS customers do not use this
-#' operation. Instead, AWS customers can use
+#' event source that they have created. Amazon Web Services customers do
+#' not use this operation. Instead, Amazon Web Services customers can use
 #' [`describe_event_source`][eventbridge_describe_event_source] to see
 #' details about a partner event source that is shared with them.
 #'
@@ -1000,6 +1761,78 @@ eventbridge_enable_rule <- function(Name, EventBusName = NULL) {
 }
 .eventbridge$operations$enable_rule <- eventbridge_enable_rule
 
+#' Retrieves a list of API destination in the account in the current Region
+#'
+#' @description
+#' Retrieves a list of API destination in the account in the current
+#' Region.
+#'
+#' @usage
+#' eventbridge_list_api_destinations(NamePrefix, ConnectionArn, NextToken,
+#'   Limit)
+#'
+#' @param NamePrefix A name prefix to filter results returned. Only API destinations with a
+#' name that starts with the prefix are returned.
+#' @param ConnectionArn The ARN of the connection specified for the API destination.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
+#' @param Limit The maximum number of API destinations to include in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiDestinations = list(
+#'     list(
+#'       ApiDestinationArn = "string",
+#'       Name = "string",
+#'       ApiDestinationState = "ACTIVE"|"INACTIVE",
+#'       ConnectionArn = "string",
+#'       InvocationEndpoint = "string",
+#'       HttpMethod = "POST"|"GET"|"HEAD"|"OPTIONS"|"PUT"|"PATCH"|"DELETE",
+#'       InvocationRateLimitPerSecond = 123,
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_api_destinations(
+#'   NamePrefix = "string",
+#'   ConnectionArn = "string",
+#'   NextToken = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_list_api_destinations
+eventbridge_list_api_destinations <- function(NamePrefix = NULL, ConnectionArn = NULL, NextToken = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListApiDestinations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$list_api_destinations_input(NamePrefix = NamePrefix, ConnectionArn = ConnectionArn, NextToken = NextToken, Limit = Limit)
+  output <- .eventbridge$list_api_destinations_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$list_api_destinations <- eventbridge_list_api_destinations
+
 #' Lists your archives
 #'
 #' @description
@@ -1072,6 +1905,177 @@ eventbridge_list_archives <- function(NamePrefix = NULL, EventSourceArn = NULL, 
 }
 .eventbridge$operations$list_archives <- eventbridge_list_archives
 
+#' Retrieves a list of connections from the account
+#'
+#' @description
+#' Retrieves a list of connections from the account.
+#'
+#' @usage
+#' eventbridge_list_connections(NamePrefix, ConnectionState, NextToken,
+#'   Limit)
+#'
+#' @param NamePrefix A name prefix to filter results returned. Only connections with a name
+#' that starts with the prefix are returned.
+#' @param ConnectionState The state of the connection.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
+#' @param Limit The maximum number of connections to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Connections = list(
+#'     list(
+#'       ConnectionArn = "string",
+#'       Name = "string",
+#'       ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'       StateReason = "string",
+#'       AuthorizationType = "BASIC"|"OAUTH_CLIENT_CREDENTIALS"|"API_KEY",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastAuthorizedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_connections(
+#'   NamePrefix = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   NextToken = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_list_connections
+eventbridge_list_connections <- function(NamePrefix = NULL, ConnectionState = NULL, NextToken = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListConnections",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$list_connections_input(NamePrefix = NamePrefix, ConnectionState = ConnectionState, NextToken = NextToken, Limit = Limit)
+  output <- .eventbridge$list_connections_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$list_connections <- eventbridge_list_connections
+
+#' List the global endpoints associated with this account
+#'
+#' @description
+#' List the global endpoints associated with this account. For more
+#' information about global endpoints, see [Making applications
+#' Regional-fault tolerant with global endpoints and event
+#' replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html)
+#' in the Amazon EventBridge User Guide..
+#'
+#' @usage
+#' eventbridge_list_endpoints(NamePrefix, HomeRegion, NextToken,
+#'   MaxResults)
+#'
+#' @param NamePrefix A value that will return a subset of the endpoints associated with this
+#' account. For example, `"NamePrefix": "ABC"` will return all endpoints
+#' with "ABC" in the name.
+#' @param HomeRegion The primary Region of the endpoints associated with this account. For
+#' example `"HomeRegion": "us-east-1"`.
+#' @param NextToken If `nextToken` is returned, there are more results available. The value
+#' of nextToken is a unique pagination token for each page. Make the call
+#' again using the returned token to retrieve the next page. Keep all other
+#' arguments unchanged. Each pagination token expires after 24 hours. Using
+#' an expired pagination token will return an HTTP 400 InvalidToken error.
+#' @param MaxResults The maximum number of results returned by the call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Endpoints = list(
+#'     list(
+#'       Name = "string",
+#'       Description = "string",
+#'       Arn = "string",
+#'       RoutingConfig = list(
+#'         FailoverConfig = list(
+#'           Primary = list(
+#'             HealthCheck = "string"
+#'           ),
+#'           Secondary = list(
+#'             Route = "string"
+#'           )
+#'         )
+#'       ),
+#'       ReplicationConfig = list(
+#'         State = "ENABLED"|"DISABLED"
+#'       ),
+#'       EventBuses = list(
+#'         list(
+#'           EventBusArn = "string"
+#'         )
+#'       ),
+#'       RoleArn = "string",
+#'       EndpointId = "string",
+#'       EndpointUrl = "string",
+#'       State = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED",
+#'       StateReason = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_endpoints(
+#'   NamePrefix = "string",
+#'   HomeRegion = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_list_endpoints
+eventbridge_list_endpoints <- function(NamePrefix = NULL, HomeRegion = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListEndpoints",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$list_endpoints_input(NamePrefix = NamePrefix, HomeRegion = HomeRegion, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .eventbridge$list_endpoints_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$list_endpoints <- eventbridge_list_endpoints
+
 #' Lists all the event buses in your account, including the default event
 #' bus, custom event buses, and partner event buses
 #'
@@ -1135,12 +2139,13 @@ eventbridge_list_event_buses <- function(NamePrefix = NULL, NextToken = NULL, Li
 .eventbridge$operations$list_event_buses <- eventbridge_list_event_buses
 
 #' You can use this to see all the partner event sources that have been
-#' shared with your AWS account
+#' shared with your Amazon Web Services account
 #'
 #' @description
 #' You can use this to see all the partner event sources that have been
-#' shared with your AWS account. For more information about partner event
-#' sources, see [`create_event_bus`][eventbridge_create_event_bus].
+#' shared with your Amazon Web Services account. For more information about
+#' partner event sources, see
+#' [`create_event_bus`][eventbridge_create_event_bus].
 #'
 #' @usage
 #' eventbridge_list_event_sources(NamePrefix, NextToken, Limit)
@@ -1204,13 +2209,15 @@ eventbridge_list_event_sources <- function(NamePrefix = NULL, NextToken = NULL, 
 }
 .eventbridge$operations$list_event_sources <- eventbridge_list_event_sources
 
-#' An SaaS partner can use this operation to display the AWS account ID
-#' that a particular partner event source name is associated with
+#' An SaaS partner can use this operation to display the Amazon Web
+#' Services account ID that a particular partner event source name is
+#' associated with
 #'
 #' @description
-#' An SaaS partner can use this operation to display the AWS account ID
-#' that a particular partner event source name is associated with. This
-#' operation is not used by AWS customers.
+#' An SaaS partner can use this operation to display the Amazon Web
+#' Services account ID that a particular partner event source name is
+#' associated with. This operation is not used by Amazon Web Services
+#' customers.
 #'
 #' @usage
 #' eventbridge_list_partner_event_source_accounts(EventSourceName,
@@ -1278,8 +2285,8 @@ eventbridge_list_partner_event_source_accounts <- function(EventSourceName, Next
 #'
 #' @description
 #' An SaaS partner can use this operation to list all the partner event
-#' source names that they have created. This operation is not used by AWS
-#' customers.
+#' source names that they have created. This operation is not used by
+#' Amazon Web Services customers.
 #'
 #' @usage
 #' eventbridge_list_partner_event_sources(NamePrefix, NextToken, Limit)
@@ -1349,7 +2356,7 @@ eventbridge_list_partner_event_sources <- function(NamePrefix, NextToken = NULL,
 #' @param NamePrefix A name prefix to filter the replays returned. Only replays with name
 #' that match the prefix are returned.
 #' @param State The state of the replay.
-#' @param EventSourceArn The ARN of the event source associated with the replay.
+#' @param EventSourceArn The ARN of the archive from which the events are replayed.
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit The maximum number of replays to retrieve.
@@ -1644,7 +2651,7 @@ eventbridge_list_tags_for_resource <- function(ResourceARN) {
 #'       EcsParameters = list(
 #'         TaskDefinitionArn = "string",
 #'         TaskCount = 123,
-#'         LaunchType = "EC2"|"FARGATE",
+#'         LaunchType = "EC2"|"FARGATE"|"EXTERNAL",
 #'         NetworkConfiguration = list(
 #'           awsvpcConfiguration = list(
 #'             Subnets = list(
@@ -1657,7 +2664,36 @@ eventbridge_list_tags_for_resource <- function(ResourceARN) {
 #'           )
 #'         ),
 #'         PlatformVersion = "string",
-#'         Group = "string"
+#'         Group = "string",
+#'         CapacityProviderStrategy = list(
+#'           list(
+#'             capacityProvider = "string",
+#'             weight = 123,
+#'             base = 123
+#'           )
+#'         ),
+#'         EnableECSManagedTags = TRUE|FALSE,
+#'         EnableExecuteCommand = TRUE|FALSE,
+#'         PlacementConstraints = list(
+#'           list(
+#'             type = "distinctInstance"|"memberOf",
+#'             expression = "string"
+#'           )
+#'         ),
+#'         PlacementStrategy = list(
+#'           list(
+#'             type = "random"|"spread"|"binpack",
+#'             field = "string"
+#'           )
+#'         ),
+#'         PropagateTags = "TASK_DEFINITION",
+#'         ReferenceId = "string",
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
 #'       ),
 #'       BatchParameters = list(
 #'         JobDefinition = "string",
@@ -1690,6 +2726,14 @@ eventbridge_list_tags_for_resource <- function(ResourceARN) {
 #'         Sql = "string",
 #'         StatementName = "string",
 #'         WithEvent = TRUE|FALSE
+#'       ),
+#'       SageMakerPipelineParameters = list(
+#'         PipelineParameterList = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
 #'       ),
 #'       DeadLetterConfig = list(
 #'         Arn = "string"
@@ -1740,13 +2784,20 @@ eventbridge_list_targets_by_rule <- function(Rule, EventBusName = NULL, NextToke
 #' @description
 #' Sends custom events to Amazon EventBridge so that they can be matched to
 #' rules.
+#' 
+#' PutEvents will only process nested JSON up to 1100 levels deep.
 #'
 #' @usage
-#' eventbridge_put_events(Entries)
+#' eventbridge_put_events(Entries, EndpointId)
 #'
 #' @param Entries &#91;required&#93; The entry that defines an event in your system. You can specify several
 #' parameters for the entry such as the source and type of the event,
 #' resources associated with the event, and so on.
+#' @param EndpointId The URL subdomain of the endpoint. For example, if the URL for Endpoint
+#' is abcde.veo.endpoints.event.amazonaws.com, then the EndpointId is
+#' `abcde.veo`.
+#' 
+#' When using Java, you must include `auth-crt` on the class path.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1777,23 +2828,25 @@ eventbridge_list_targets_by_rule <- function(Rule, EventBusName = NULL, NextToke
 #'       ),
 #'       DetailType = "string",
 #'       Detail = "string",
-#'       EventBusName = "string"
+#'       EventBusName = "string",
+#'       TraceHeader = "string"
 #'     )
-#'   )
+#'   ),
+#'   EndpointId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname eventbridge_put_events
-eventbridge_put_events <- function(Entries) {
+eventbridge_put_events <- function(Entries, EndpointId = NULL) {
   op <- new_operation(
     name = "PutEvents",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .eventbridge$put_events_input(Entries = Entries)
+  input <- .eventbridge$put_events_input(Entries = Entries, EndpointId = EndpointId)
   output <- .eventbridge$put_events_output()
   config <- get_config()
   svc <- .eventbridge$service(config)
@@ -1808,7 +2861,7 @@ eventbridge_put_events <- function(Entries) {
 #'
 #' @description
 #' This is used by SaaS partners to write events to a customer's partner
-#' event bus. AWS customers do not use this operation.
+#' event bus. Amazon Web Services customers do not use this operation.
 #'
 #' @usage
 #' eventbridge_put_partner_events(Entries)
@@ -1869,37 +2922,39 @@ eventbridge_put_partner_events <- function(Entries) {
 }
 .eventbridge$operations$put_partner_events <- eventbridge_put_partner_events
 
-#' Running PutPermission permits the specified AWS account or AWS
-#' organization to put events to the specified event bus
+#' Running PutPermission permits the specified Amazon Web Services account
+#' or Amazon Web Services organization to put events to the specified event
+#' bus
 #'
 #' @description
 #' Running [`put_permission`][eventbridge_put_permission] permits the
-#' specified AWS account or AWS organization to put events to the specified
-#' *event bus*. Amazon EventBridge (CloudWatch Events) rules in your
-#' account are triggered by these events arriving to an event bus in your
-#' account.
+#' specified Amazon Web Services account or Amazon Web Services
+#' organization to put events to the specified *event bus*. Amazon
+#' EventBridge (CloudWatch Events) rules in your account are triggered by
+#' these events arriving to an event bus in your account.
 #' 
 #' For another account to send events to your account, that external
 #' account must have an EventBridge rule with your account's event bus as a
 #' target.
 #' 
-#' To enable multiple AWS accounts to put events to your event bus, run
-#' [`put_permission`][eventbridge_put_permission] once for each of these
-#' accounts. Or, if all the accounts are members of the same AWS
-#' organization, you can run [`put_permission`][eventbridge_put_permission]
-#' once specifying `Principal` as "*" and specifying the AWS organization
+#' To enable multiple Amazon Web Services accounts to put events to your
+#' event bus, run [`put_permission`][eventbridge_put_permission] once for
+#' each of these accounts. Or, if all the accounts are members of the same
+#' Amazon Web Services organization, you can run
+#' [`put_permission`][eventbridge_put_permission] once specifying
+#' `Principal` as "*" and specifying the Amazon Web Services organization
 #' ID in `Condition`, to grant permissions to all accounts in that
 #' organization.
 #' 
 #' If you grant permissions using an organization, then accounts in that
 #' organization must specify a `RoleArn` with proper permissions when they
 #' use `PutTarget` to add your account's event bus as a target. For more
-#' information, see [Sending and Receiving Events Between AWS
+#' information, see [Sending and Receiving Events Between Amazon Web
+#' Services
 #' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
-#' The permission policy on the default event bus cannot exceed 10 KB in
-#' size.
+#' The permission policy on the event bus cannot exceed 10 KB in size.
 #'
 #' @usage
 #' eventbridge_put_permission(EventBusName, Action, Principal, StatementId,
@@ -1908,10 +2963,9 @@ eventbridge_put_partner_events <- function(Entries) {
 #' @param EventBusName The name of the event bus associated with the rule. If you omit this,
 #' the default event bus is used.
 #' @param Action The action that you are enabling the other account to perform.
-#' Currently, this must be `events:PutEvents`.
-#' @param Principal The 12-digit AWS account ID that you are permitting to put events to
-#' your default event bus. Specify "*" to permit any account to put events
-#' to your default event bus.
+#' @param Principal The 12-digit Amazon Web Services account ID that you are permitting to
+#' put events to your default event bus. Specify "*" to permit any account
+#' to put events to your default event bus.
 #' 
 #' If you specify "*" without specifying `Condition`, avoid creating rules
 #' that may match undesirable events. To create more secure rules, make
@@ -1922,16 +2976,18 @@ eventbridge_put_partner_events <- function(Entries) {
 #' permissions to. If you later want to revoke the permission for this
 #' external account, specify this `StatementId` when you run
 #' [`remove_permission`][eventbridge_remove_permission].
-#' @param Condition This parameter enables you to limit the permission to accounts that
-#' fulfill a certain condition, such as being a member of a certain AWS
-#' organization. For more information about AWS Organizations, see [What Is
-#' AWS
-#' Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
-#' in the *AWS Organizations User Guide*.
 #' 
-#' If you specify `Condition` with an AWS organization ID, and specify "*"
-#' as the value for `Principal`, you grant permission to all the accounts
-#' in the named organization.
+#' Each `StatementId` must be unique.
+#' @param Condition This parameter enables you to limit the permission to accounts that
+#' fulfill a certain condition, such as being a member of a certain Amazon
+#' Web Services organization. For more information about Amazon Web
+#' Services Organizations, see [What Is Amazon Web Services
+#' Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html)
+#' in the *Amazon Web Services Organizations User Guide*.
+#' 
+#' If you specify `Condition` with an Amazon Web Services organization ID,
+#' and specify "*" as the value for `Principal`, you grant permission to
+#' all the accounts in the named organization.
 #' 
 #' The `Condition` is a JSON string which must contain `Type`, `Key`, and
 #' `Value` fields.
@@ -1986,12 +3042,12 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #' [`disable_rule`][eventbridge_disable_rule].
 #' 
 #' A single rule watches for events from a single event bus. Events
-#' generated by AWS services go to your account's default event bus. Events
-#' generated by SaaS partner services or applications go to the matching
-#' partner event bus. If you have custom applications or services, you can
-#' specify whether their events go to your default event bus or a custom
-#' event bus that you have created. For more information, see
-#' [`create_event_bus`][eventbridge_create_event_bus].
+#' generated by Amazon Web Services services go to your account's default
+#' event bus. Events generated by SaaS partner services or applications go
+#' to the matching partner event bus. If you have custom applications or
+#' services, you can specify whether their events go to your default event
+#' bus or a custom event bus that you have created. For more information,
+#' see [`create_event_bus`][eventbridge_create_event_bus].
 #' 
 #' If you are updating an existing rule, the rule is replaced with what you
 #' specify in this [`put_rule`][eventbridge_put_rule] command. If you omit
@@ -2023,11 +3079,11 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #' tags of an existing rule, use [`tag_resource`][eventbridge_tag_resource]
 #' and [`untag_resource`][eventbridge_untag_resource].
 #' 
-#' Most services in AWS treat : or / as the same character in Amazon
-#' Resource Names (ARNs). However, EventBridge uses an exact match in event
-#' patterns and rules. Be sure to use the correct ARN characters when
-#' creating event patterns so that they match the ARN syntax in the event
-#' you want to match.
+#' Most services in Amazon Web Services treat : or / as the same character
+#' in Amazon Resource Names (ARNs). However, EventBridge uses an exact
+#' match in event patterns and rules. Be sure to use the correct ARN
+#' characters when creating event patterns so that they match the ARN
+#' syntax in the event you want to match.
 #' 
 #' In EventBridge, it is possible to create rules that lead to infinite
 #' loops, where a rule is fired repeatedly. For example, a rule might
@@ -2044,7 +3100,7 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #' recommend that you use budgeting, which alerts you when charges exceed
 #' your specified limit. For more information, see [Managing Your Costs
 #' with
-#' Budgets](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html).
+#' Budgets](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html).
 #'
 #' @usage
 #' eventbridge_put_rule(Name, ScheduleExpression, EventPattern, State,
@@ -2053,12 +3109,18 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #' @param Name &#91;required&#93; The name of the rule that you are creating or updating.
 #' @param ScheduleExpression The scheduling expression. For example, "cron(0 20 * * ? *)" or
 #' "rate(5 minutes)".
-#' @param EventPattern The event pattern. For more information, see [Events and Event
-#' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html)
-#' in the *Amazon EventBridge User Guide*.
+#' @param EventPattern The event pattern. For more information, see [EventBridge event
+#' patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/) in
+#' the *Amazon EventBridge User Guide*.
 #' @param State Indicates whether the rule is enabled or disabled.
 #' @param Description A description of the rule.
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role associated with the rule.
+#' 
+#' If you're setting an event bus in another account as the target and that
+#' account granted permission to your account through an organization
+#' instead of directly by the account ID, you must specify a `RoleArn` with
+#' proper permissions in the `Target` structure, instead of here in this
+#' parameter.
 #' @param Tags The list of key-value pairs to associate with the rule.
 #' @param EventBusName The name or ARN of the event bus to associate with this rule. If you
 #' omit this, the default event bus is used.
@@ -2119,44 +3181,74 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' 
 #' Targets are the resources that are invoked when a rule is triggered.
 #' 
+#' Each rule can have up to five (5) targets associated with it at one
+#' time.
+#' 
 #' You can configure the following as targets for Events:
 #' 
-#' -   EC2 instances
+#' -   [API
+#'     destination](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-api-destinations.html)
 #' 
-#' -   SSM Run Command
+#' -   [API
+#'     Gateway](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-api-gateway-target.html)
 #' 
-#' -   SSM Automation
+#' -   Batch job queue
 #' 
-#' -   AWS Lambda functions
+#' -   CloudWatch group
 #' 
-#' -   Data streams in Amazon Kinesis Data Streams
+#' -   CodeBuild project
 #' 
-#' -   Data delivery streams in Amazon Kinesis Data Firehose
+#' -   CodePipeline
 #' 
-#' -   Amazon ECS tasks
+#' -   EC2 `CreateSnapshot` API call
 #' 
-#' -   AWS Step Functions state machines
+#' -   EC2 Image Builder
 #' 
-#' -   AWS Batch jobs
+#' -   EC2 `RebootInstances` API call
 #' 
-#' -   AWS CodeBuild projects
+#' -   EC2 `StopInstances` API call
 #' 
-#' -   Pipelines in AWS CodePipeline
+#' -   EC2 `TerminateInstances` API call
 #' 
-#' -   Amazon Inspector assessment templates
+#' -   ECS task
 #' 
-#' -   Amazon SNS topics
+#' -   [Event bus in a different account or
+#'     Region](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
 #' 
-#' -   Amazon SQS queues, including FIFO queues
+#' -   [Event bus in the same account and
+#'     Region](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-bus-to-bus.html)
 #' 
-#' -   The default event bus of another AWS account
+#' -   Firehose delivery stream
 #' 
-#' -   Amazon API Gateway REST APIs
+#' -   Glue workflow
 #' 
-#' -   Redshift Clusters to invoke Data API ExecuteStatement on
+#' -   [Incident Manager response
+#'     plan](https://docs.aws.amazon.com/incident-manager/latest/userguide/incident-creation.html#incident-tracking-auto-eventbridge)
 #' 
-#' Creating rules with built-in targets is supported only in the AWS
-#' Management Console. The built-in targets are
+#' -   Inspector assessment template
+#' 
+#' -   Kinesis stream
+#' 
+#' -   Lambda function
+#' 
+#' -   Redshift cluster
+#' 
+#' -   SageMaker Pipeline
+#' 
+#' -   SNS topic
+#' 
+#' -   SQS queue
+#' 
+#' -   Step Functions state machine
+#' 
+#' -   Systems Manager Automation
+#' 
+#' -   Systems Manager OpsItem
+#' 
+#' -   Systems Manager Run Command
+#' 
+#' Creating rules with built-in targets is supported only in the Amazon Web
+#' Services Management Console. The built-in targets are
 #' `EC2 CreateSnapshot API call`, `EC2 RebootInstances API call`,
 #' `EC2 StopInstances API call`, and `EC2 TerminateInstances API call`.
 #' 
@@ -2167,36 +3259,36 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' instances with one rule, you can use the `RunCommandParameters` field.
 #' 
 #' To be able to make API calls against the resources that you own, Amazon
-#' EventBridge (CloudWatch Events) needs the appropriate permissions. For
-#' AWS Lambda and Amazon SNS resources, EventBridge relies on
-#' resource-based policies. For EC2 instances, Kinesis data streams, AWS
-#' Step Functions state machines and API Gateway REST APIs, EventBridge
-#' relies on IAM roles that you specify in the `RoleARN` argument in
-#' [`put_targets`][eventbridge_put_targets]. For more information, see
-#' [Authentication and Access
+#' EventBridge needs the appropriate permissions. For Lambda and Amazon SNS
+#' resources, EventBridge relies on resource-based policies. For EC2
+#' instances, Kinesis Data Streams, Step Functions state machines and API
+#' Gateway REST APIs, EventBridge relies on IAM roles that you specify in
+#' the `RoleARN` argument in [`put_targets`][eventbridge_put_targets]. For
+#' more information, see [Authentication and Access
 #' Control](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-iam.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
-#' If another AWS account is in the same region and has granted you
-#' permission (using [`put_permission`][eventbridge_put_permission]), you
-#' can send events to that account. Set that account's event bus as a
-#' target of the rules in your account. To send the matched events to the
-#' other account, specify that account's event bus as the `Arn` value when
-#' you run [`put_targets`][eventbridge_put_targets]. If your account sends
-#' events to another account, your account is charged for each sent event.
-#' Each event sent to another account is charged as a custom event. The
-#' account receiving the event is not charged. For more information, see
-#' [Amazon EventBridge (CloudWatch Events)
-#' Pricing](https://aws.amazon.com/eventbridge/pricing/).
+#' If another Amazon Web Services account is in the same region and has
+#' granted you permission (using
+#' [`put_permission`][eventbridge_put_permission]), you can send events to
+#' that account. Set that account's event bus as a target of the rules in
+#' your account. To send the matched events to the other account, specify
+#' that account's event bus as the `Arn` value when you run
+#' [`put_targets`][eventbridge_put_targets]. If your account sends events
+#' to another account, your account is charged for each sent event. Each
+#' event sent to another account is charged as a custom event. The account
+#' receiving the event is not charged. For more information, see [Amazon
+#' EventBridge Pricing](https://aws.amazon.com/eventbridge/pricing/).
 #' 
 #' `Input`, `InputPath`, and `InputTransformer` are not available with
-#' `PutTarget` if the target is an event bus of a different AWS account.
+#' `PutTarget` if the target is an event bus of a different Amazon Web
+#' Services account.
 #' 
 #' If you are setting the event bus of another account as the target, and
 #' that account granted permission to your account through an organization
 #' instead of directly by the account ID, then you must specify a `RoleArn`
 #' with proper permissions in the `Target` structure. For more information,
-#' see [Sending and Receiving Events Between AWS
+#' see [Sending and Receiving Events Between Amazon Web Services
 #' Accounts](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
 #' in the *Amazon EventBridge User Guide*.
 #' 
@@ -2293,7 +3385,7 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #'       EcsParameters = list(
 #'         TaskDefinitionArn = "string",
 #'         TaskCount = 123,
-#'         LaunchType = "EC2"|"FARGATE",
+#'         LaunchType = "EC2"|"FARGATE"|"EXTERNAL",
 #'         NetworkConfiguration = list(
 #'           awsvpcConfiguration = list(
 #'             Subnets = list(
@@ -2306,7 +3398,36 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #'           )
 #'         ),
 #'         PlatformVersion = "string",
-#'         Group = "string"
+#'         Group = "string",
+#'         CapacityProviderStrategy = list(
+#'           list(
+#'             capacityProvider = "string",
+#'             weight = 123,
+#'             base = 123
+#'           )
+#'         ),
+#'         EnableECSManagedTags = TRUE|FALSE,
+#'         EnableExecuteCommand = TRUE|FALSE,
+#'         PlacementConstraints = list(
+#'           list(
+#'             type = "distinctInstance"|"memberOf",
+#'             expression = "string"
+#'           )
+#'         ),
+#'         PlacementStrategy = list(
+#'           list(
+#'             type = "random"|"spread"|"binpack",
+#'             field = "string"
+#'           )
+#'         ),
+#'         PropagateTags = "TASK_DEFINITION",
+#'         ReferenceId = "string",
+#'         Tags = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string"
+#'           )
+#'         )
 #'       ),
 #'       BatchParameters = list(
 #'         JobDefinition = "string",
@@ -2340,6 +3461,14 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #'         StatementName = "string",
 #'         WithEvent = TRUE|FALSE
 #'       ),
+#'       SageMakerPipelineParameters = list(
+#'         PipelineParameterList = list(
+#'           list(
+#'             Name = "string",
+#'             Value = "string"
+#'           )
+#'         )
+#'       ),
 #'       DeadLetterConfig = list(
 #'         Arn = "string"
 #'       ),
@@ -2372,13 +3501,13 @@ eventbridge_put_targets <- function(Rule, EventBusName = NULL, Targets) {
 }
 .eventbridge$operations$put_targets <- eventbridge_put_targets
 
-#' Revokes the permission of another AWS account to be able to put events
-#' to the specified event bus
+#' Revokes the permission of another Amazon Web Services account to be able
+#' to put events to the specified event bus
 #'
 #' @description
-#' Revokes the permission of another AWS account to be able to put events
-#' to the specified event bus. Specify the account to revoke by the
-#' `StatementId` value that you associated with the account when you
+#' Revokes the permission of another Amazon Web Services account to be able
+#' to put events to the specified event bus. Specify the account to revoke
+#' by the `StatementId` value that you associated with the account when you
 #' granted it permission with
 #' [`put_permission`][eventbridge_put_permission]. You can find the
 #' `StatementId` by using
@@ -2432,6 +3561,10 @@ eventbridge_remove_permission <- function(StatementId = NULL, RemoveAllPermissio
 #' Removes the specified targets from the specified rule. When the rule is
 #' triggered, those targets are no longer be invoked.
 #' 
+#' A successful execution of [`remove_targets`][eventbridge_remove_targets]
+#' doesn't guarantee all targets are removed from the rule, it means that
+#' the target(s) listed in the request are removed.
+#' 
 #' When you remove a target, when the associated rule triggers, removed
 #' targets might continue to be invoked. Allow a short period of time for
 #' changes to take effect.
@@ -2448,10 +3581,10 @@ eventbridge_remove_permission <- function(StatementId = NULL, RemoveAllPermissio
 #' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
 #' this, the default event bus is used.
 #' @param Ids &#91;required&#93; The IDs of the targets to remove from the rule.
-#' @param Force If this is a managed rule, created by an AWS service on your behalf, you
-#' must specify `Force` as `True` to remove targets. This parameter is
-#' ignored for rules that are not managed rules. You can check whether a
-#' rule is a managed rule by using
+#' @param Force If this is a managed rule, created by an Amazon Web Services service on
+#' your behalf, you must specify `Force` as `True` to remove targets. This
+#' parameter is ignored for rules that are not managed rules. You can check
+#' whether a rule is a managed rule by using
 #' [`describe_rule`][eventbridge_describe_rule] or
 #' [`list_rules`][eventbridge_list_rules] and checking the `ManagedBy`
 #' field of the response.
@@ -2596,8 +3729,8 @@ eventbridge_start_replay <- function(ReplayName, Description = NULL, EventSource
 #' permission to access or change only resources with certain tag values.
 #' In EventBridge, rules and event buses can be tagged.
 #' 
-#' Tags don't have any semantic meaning to AWS and are interpreted strictly
-#' as strings of characters.
+#' Tags don't have any semantic meaning to Amazon Web Services and are
+#' interpreted strictly as strings of characters.
 #' 
 #' You can use the [`tag_resource`][eventbridge_tag_resource] action with a
 #' resource that already has tags. If you specify a new tag key, this tag
@@ -2654,11 +3787,11 @@ eventbridge_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Tests whether the specified event pattern matches the provided event.
 #' 
-#' Most services in AWS treat : or / as the same character in Amazon
-#' Resource Names (ARNs). However, EventBridge uses an exact match in event
-#' patterns and rules. Be sure to use the correct ARN characters when
-#' creating event patterns so that they match the ARN syntax in the event
-#' you want to match.
+#' Most services in Amazon Web Services treat : or / as the same character
+#' in Amazon Resource Names (ARNs). However, EventBridge uses an exact
+#' match in event patterns and rules. Be sure to use the correct ARN
+#' characters when creating event patterns so that they match the ARN
+#' syntax in the event you want to match.
 #'
 #' @usage
 #' eventbridge_test_event_pattern(EventPattern, Event)
@@ -2666,7 +3799,24 @@ eventbridge_tag_resource <- function(ResourceARN, Tags) {
 #' @param EventPattern &#91;required&#93; The event pattern. For more information, see [Events and Event
 #' Patterns](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html)
 #' in the *Amazon EventBridge User Guide*.
-#' @param Event &#91;required&#93; The event, in JSON format, to test against the event pattern.
+#' @param Event &#91;required&#93; The event, in JSON format, to test against the event pattern. The JSON
+#' must follow the format specified in [Amazon Web Services
+#' Events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html),
+#' and the following fields are mandatory:
+#' 
+#' -   `id`
+#' 
+#' -   `account`
+#' 
+#' -   `source`
+#' 
+#' -   `time`
+#' 
+#' -   `region`
+#' 
+#' -   `resources`
+#' 
+#' -   `detail-type`
 #'
 #' @return
 #' A list with the following syntax:
@@ -2708,7 +3858,7 @@ eventbridge_test_event_pattern <- function(EventPattern, Event) {
 #'
 #' @description
 #' Removes one or more tags from the specified EventBridge resource. In
-#' Amazon EventBridge (CloudWatch Events, rules and event buses can be
+#' Amazon EventBridge (CloudWatch Events), rules and event buses can be
 #' tagged.
 #'
 #' @usage
@@ -2749,6 +3899,70 @@ eventbridge_untag_resource <- function(ResourceARN, TagKeys) {
   return(response)
 }
 .eventbridge$operations$untag_resource <- eventbridge_untag_resource
+
+#' Updates an API destination
+#'
+#' @description
+#' Updates an API destination.
+#'
+#' @usage
+#' eventbridge_update_api_destination(Name, Description, ConnectionArn,
+#'   InvocationEndpoint, HttpMethod, InvocationRateLimitPerSecond)
+#'
+#' @param Name &#91;required&#93; The name of the API destination to update.
+#' @param Description The name of the API destination to update.
+#' @param ConnectionArn The ARN of the connection to use for the API destination.
+#' @param InvocationEndpoint The URL to the endpoint to use for the API destination.
+#' @param HttpMethod The method to use for the API destination.
+#' @param InvocationRateLimitPerSecond The maximum number of invocations per second to send to the API
+#' destination.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ApiDestinationArn = "string",
+#'   ApiDestinationState = "ACTIVE"|"INACTIVE",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_api_destination(
+#'   Name = "string",
+#'   Description = "string",
+#'   ConnectionArn = "string",
+#'   InvocationEndpoint = "string",
+#'   HttpMethod = "POST"|"GET"|"HEAD"|"OPTIONS"|"PUT"|"PATCH"|"DELETE",
+#'   InvocationRateLimitPerSecond = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_update_api_destination
+eventbridge_update_api_destination <- function(Name, Description = NULL, ConnectionArn = NULL, InvocationEndpoint = NULL, HttpMethod = NULL, InvocationRateLimitPerSecond = NULL) {
+  op <- new_operation(
+    name = "UpdateApiDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$update_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
+  output <- .eventbridge$update_api_destination_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$update_api_destination <- eventbridge_update_api_destination
 
 #' Updates the specified archive
 #'
@@ -2806,3 +4020,227 @@ eventbridge_update_archive <- function(ArchiveName, Description = NULL, EventPat
   return(response)
 }
 .eventbridge$operations$update_archive <- eventbridge_update_archive
+
+#' Updates settings for a connection
+#'
+#' @description
+#' Updates settings for a connection.
+#'
+#' @usage
+#' eventbridge_update_connection(Name, Description, AuthorizationType,
+#'   AuthParameters)
+#'
+#' @param Name &#91;required&#93; The name of the connection to update.
+#' @param Description A description for the connection.
+#' @param AuthorizationType The type of authorization to use for the connection.
+#' @param AuthParameters The authorization parameters to use for the connection.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ConnectionArn = "string",
+#'   ConnectionState = "CREATING"|"UPDATING"|"DELETING"|"AUTHORIZED"|"DEAUTHORIZED"|"AUTHORIZING"|"DEAUTHORIZING",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastAuthorizedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connection(
+#'   Name = "string",
+#'   Description = "string",
+#'   AuthorizationType = "BASIC"|"OAUTH_CLIENT_CREDENTIALS"|"API_KEY",
+#'   AuthParameters = list(
+#'     BasicAuthParameters = list(
+#'       Username = "string",
+#'       Password = "string"
+#'     ),
+#'     OAuthParameters = list(
+#'       ClientParameters = list(
+#'         ClientID = "string",
+#'         ClientSecret = "string"
+#'       ),
+#'       AuthorizationEndpoint = "string",
+#'       HttpMethod = "GET"|"POST"|"PUT",
+#'       OAuthHttpParameters = list(
+#'         HeaderParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         QueryStringParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         ),
+#'         BodyParameters = list(
+#'           list(
+#'             Key = "string",
+#'             Value = "string",
+#'             IsValueSecret = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ApiKeyAuthParameters = list(
+#'       ApiKeyName = "string",
+#'       ApiKeyValue = "string"
+#'     ),
+#'     InvocationHttpParameters = list(
+#'       HeaderParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       QueryStringParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       ),
+#'       BodyParameters = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string",
+#'           IsValueSecret = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_update_connection
+eventbridge_update_connection <- function(Name, Description = NULL, AuthorizationType = NULL, AuthParameters = NULL) {
+  op <- new_operation(
+    name = "UpdateConnection",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$update_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
+  output <- .eventbridge$update_connection_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$update_connection <- eventbridge_update_connection
+
+#' Update an existing endpoint
+#'
+#' @description
+#' Update an existing endpoint. For more information about global
+#' endpoints, see [Making applications Regional-fault tolerant with global
+#' endpoints and event
+#' replication](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html)
+#' in the Amazon EventBridge User Guide..
+#'
+#' @usage
+#' eventbridge_update_endpoint(Name, Description, RoutingConfig,
+#'   ReplicationConfig, EventBuses, RoleArn)
+#'
+#' @param Name &#91;required&#93; The name of the endpoint you want to update.
+#' @param Description A description for the endpoint.
+#' @param RoutingConfig Configure the routing policy, including the health check and secondary
+#' Region..
+#' @param ReplicationConfig Whether event replication was enabled or disabled by this request.
+#' @param EventBuses Define event buses used for replication.
+#' @param RoleArn The ARN of the role used by event replication for this request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Name = "string",
+#'   Arn = "string",
+#'   RoutingConfig = list(
+#'     FailoverConfig = list(
+#'       Primary = list(
+#'         HealthCheck = "string"
+#'       ),
+#'       Secondary = list(
+#'         Route = "string"
+#'       )
+#'     )
+#'   ),
+#'   ReplicationConfig = list(
+#'     State = "ENABLED"|"DISABLED"
+#'   ),
+#'   EventBuses = list(
+#'     list(
+#'       EventBusArn = "string"
+#'     )
+#'   ),
+#'   RoleArn = "string",
+#'   EndpointId = "string",
+#'   EndpointUrl = "string",
+#'   State = "ACTIVE"|"CREATING"|"UPDATING"|"DELETING"|"CREATE_FAILED"|"UPDATE_FAILED"|"DELETE_FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_endpoint(
+#'   Name = "string",
+#'   Description = "string",
+#'   RoutingConfig = list(
+#'     FailoverConfig = list(
+#'       Primary = list(
+#'         HealthCheck = "string"
+#'       ),
+#'       Secondary = list(
+#'         Route = "string"
+#'       )
+#'     )
+#'   ),
+#'   ReplicationConfig = list(
+#'     State = "ENABLED"|"DISABLED"
+#'   ),
+#'   EventBuses = list(
+#'     list(
+#'       EventBusArn = "string"
+#'     )
+#'   ),
+#'   RoleArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname eventbridge_update_endpoint
+eventbridge_update_endpoint <- function(Name, Description = NULL, RoutingConfig = NULL, ReplicationConfig = NULL, EventBuses = NULL, RoleArn = NULL) {
+  op <- new_operation(
+    name = "UpdateEndpoint",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .eventbridge$update_endpoint_input(Name = Name, Description = Description, RoutingConfig = RoutingConfig, ReplicationConfig = ReplicationConfig, EventBuses = EventBuses, RoleArn = RoleArn)
+  output <- .eventbridge$update_endpoint_output()
+  config <- get_config()
+  svc <- .eventbridge$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eventbridge$operations$update_endpoint <- eventbridge_update_endpoint

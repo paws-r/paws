@@ -5,8 +5,12 @@
 \title{Returns the list of voices that are available for use when requesting
 speech synthesis}
 \usage{
-polly_describe_voices(Engine, LanguageCode,
-  IncludeAdditionalLanguageCodes, NextToken)
+polly_describe_voices(
+  Engine = NULL,
+  LanguageCode = NULL,
+  IncludeAdditionalLanguageCodes = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Engine}{Specifies the engine (\code{standard} or \code{neural}) used by Amazon Polly when
@@ -27,70 +31,9 @@ voice will be included if you specify \code{yes} but not if you specify \code{no
 \code{\link[=polly_describe_voices]{describe_voices}} operation. If present, this
 indicates where to continue the listing.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Voices = list(
-    list(
-      Gender = "Female"|"Male",
-      Id = "Aditi"|"Amy"|"Astrid"|"Bianca"|"Brian"|"Camila"|"Carla"|"Carmen"|"Celine"|"Chantal"|"Conchita"|"Cristiano"|"Dora"|"Emma"|"Enrique"|"Ewa"|"Filiz"|"Geraint"|"Giorgio"|"Gwyneth"|"Hans"|"Ines"|"Ivy"|"Jacek"|"Jan"|"Joanna"|"Joey"|"Justin"|"Karl"|"Kendra"|"Kevin"|"Kimberly"|"Lea"|"Liv"|"Lotte"|"Lucia"|"Lupe"|"Mads"|"Maja"|"Marlene"|"Mathieu"|"Matthew"|"Maxim"|"Mia"|"Miguel"|"Mizuki"|"Naja"|"Nicole"|"Olivia"|"Penelope"|"Raveena"|"Ricardo"|"Ruben"|"Russell"|"Salli"|"Seoyeon"|"Takumi"|"Tatyana"|"Vicki"|"Vitoria"|"Zeina"|"Zhiyu",
-      LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
-      LanguageName = "string",
-      Name = "string",
-      AdditionalLanguageCodes = list(
-        "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR"
-      ),
-      SupportedEngines = list(
-        "standard"|"neural"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns the list of voices that are available for use when requesting
-speech synthesis. Each voice speaks a specified language, is either male
-or female, and is identified by an ID, which is the ASCII version of the
-voice name.
+Returns the list of voices that are available for use when requesting speech synthesis. Each voice speaks a specified language, is either male or female, and is identified by an ID, which is the ASCII version of the voice name.
 
-When synthesizing speech (
-\code{\link[=polly_synthesize_speech]{synthesize_speech}} ), you provide the voice
-ID for the voice you want from the list of voices returned by
-\code{\link[=polly_describe_voices]{describe_voices}}.
-
-For example, you want your news reader application to read news in a
-specific language, but giving a user the option to choose the voice.
-Using the \code{\link[=polly_describe_voices]{describe_voices}} operation you can
-provide the user with a list of available voices to select from.
-
-You can optionally specify a language code to filter the available
-voices. For example, if you specify \code{en-US}, the operation returns a
-list of all available US English voices.
-
-This operation requires permissions to perform the
-\code{polly:DescribeVoices} action.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_voices(
-  Engine = "standard"|"neural",
-  LanguageCode = "arb"|"cmn-CN"|"cy-GB"|"da-DK"|"de-DE"|"en-AU"|"en-GB"|"en-GB-WLS"|"en-IN"|"en-US"|"es-ES"|"es-MX"|"es-US"|"fr-CA"|"fr-FR"|"is-IS"|"it-IT"|"ja-JP"|"hi-IN"|"ko-KR"|"nb-NO"|"nl-NL"|"pl-PL"|"pt-BR"|"pt-PT"|"ro-RO"|"ru-RU"|"sv-SE"|"tr-TR",
-  IncludeAdditionalLanguageCodes = TRUE|FALSE,
-  NextToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Returns the list of voices that are available for use when requesting
-# speech synthesis. Displayed languages are those within the specified
-# language code. If no language code is specified, voices for all
-# available languages are displayed.
-svc$describe_voices(
-  LanguageCode = "en-GB"
-)
-}
-
+See \url{https://paws-r.github.io/docs/polly/describe_voices.html} for full documentation.
 }
 \keyword{internal}

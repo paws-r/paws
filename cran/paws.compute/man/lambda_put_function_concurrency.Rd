@@ -5,8 +5,7 @@
 \title{Sets the maximum number of simultaneous executions for a function, and
 reserves capacity for that concurrency level}
 \usage{
-lambda_put_function_concurrency(FunctionName,
-  ReservedConcurrentExecutions)
+lambda_put_function_concurrency(FunctionName, ReservedConcurrentExecutions)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -24,46 +23,9 @@ the function name, it is limited to 64 characters in length.}
 
 \item{ReservedConcurrentExecutions}{[required] The number of simultaneous executions to reserve for the function.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReservedConcurrentExecutions = 123
-)
-}
-}
 \description{
-Sets the maximum number of simultaneous executions for a function, and
-reserves capacity for that concurrency level.
+Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level.
 
-Concurrency settings apply to the function as a whole, including all
-published versions and the unpublished version. Reserving concurrency
-both ensures that your function has capacity to process the specified
-number of events simultaneously, and prevents it from scaling beyond
-that level. Use \code{\link[=lambda_get_function]{get_function}} to see the current
-setting for a function.
-
-Use \code{\link[=lambda_get_account_settings]{get_account_settings}} to see your
-Regional concurrency limit. You can reserve concurrency for as many
-functions as you like, as long as you leave at least 100 simultaneous
-executions unreserved for functions that aren't configured with a
-per-function limit. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html}{Managing Concurrency}.
-}
-\section{Request syntax}{
-\preformatted{svc$put_function_concurrency(
-  FunctionName = "string",
-  ReservedConcurrentExecutions = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example configures 100 reserved concurrent executions for
-# the my-function function.
-svc$put_function_concurrency(
-  FunctionName = "my-function",
-  ReservedConcurrentExecutions = 100L
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/put_function_concurrency.html} for full documentation.
 }
 \keyword{internal}

@@ -4,66 +4,38 @@
 \alias{kinesisanalyticsv2_add_application_vpc_configuration}
 \title{Adds a Virtual Private Cloud (VPC) configuration to the application}
 \usage{
-kinesisanalyticsv2_add_application_vpc_configuration(ApplicationName,
-  CurrentApplicationVersionId, VpcConfiguration)
+kinesisanalyticsv2_add_application_vpc_configuration(
+  ApplicationName,
+  CurrentApplicationVersionId = NULL,
+  VpcConfiguration,
+  ConditionalToken = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of an existing application.}
 
-\item{CurrentApplicationVersionId}{[required] The version of the application to which you want to add the VPC
-configuration. You can use the
+\item{CurrentApplicationVersionId}{The version of the application to which you want to add the VPC
+configuration. You must provide the \code{CurrentApplicationVersionId} or the
+\code{ConditionalToken}. You can use the
 \code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}
 operation to get the current application version. If the version
 specified is not the current version, the
-\code{ConcurrentModificationException} is returned.}
+\code{ConcurrentModificationException} is returned. For better concurrency
+support, use the \code{ConditionalToken} parameter instead of
+\code{CurrentApplicationVersionId}.}
 
 \item{VpcConfiguration}{[required] Description of the VPC to add to the application.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationARN = "string",
-  ApplicationVersionId = 123,
-  VpcConfigurationDescription = list(
-    VpcConfigurationId = "string",
-    VpcId = "string",
-    SubnetIds = list(
-      "string"
-    ),
-    SecurityGroupIds = list(
-      "string"
-    )
-  )
-)
-}
+
+\item{ConditionalToken}{A value you use to implement strong concurrency for application updates.
+You must provide the \code{ApplicationVersionID} or the \code{ConditionalToken}.
+You get the application's current \code{ConditionalToken} using
+\code{\link[=kinesisanalyticsv2_describe_application]{describe_application}}. For
+better concurrency support, use the \code{ConditionalToken} parameter instead
+of \code{CurrentApplicationVersionId}.}
 }
 \description{
-Adds a Virtual Private Cloud (VPC) configuration to the application.
-Applications can use VPCs to store and access resources securely.
+Adds a Virtual Private Cloud (VPC) configuration to the application. Applications can use VPCs to store and access resources securely.
 
-Note the following about VPC configurations for Kinesis Data Analytics
-applications:
-\itemize{
-\item VPC configurations are not supported for SQL applications.
-\item When a VPC is added to a Kinesis Data Analytics application, the
-application can no longer be accessed from the Internet directly. To
-enable Internet access to the application, add an Internet gateway
-to your VPC.
+See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_vpc_configuration.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$add_application_vpc_configuration(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  VpcConfiguration = list(
-    SubnetIds = list(
-      "string"
-    ),
-    SecurityGroupIds = list(
-      "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

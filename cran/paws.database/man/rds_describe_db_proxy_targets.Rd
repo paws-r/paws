@@ -4,8 +4,13 @@
 \alias{rds_describe_db_proxy_targets}
 \title{Returns information about DBProxyTarget objects}
 \usage{
-rds_describe_db_proxy_targets(DBProxyName, TargetGroupName, Filters,
-  Marker, MaxRecords)
+rds_describe_db_proxy_targets(
+  DBProxyName,
+  TargetGroupName = NULL,
+  Filters = NULL,
+  Marker = NULL,
+  MaxRecords = NULL
+)
 }
 \arguments{
 \item{DBProxyName}{[required] The identifier of the \code{DBProxyTarget} to describe.}
@@ -27,47 +32,9 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Targets = list(
-    list(
-      TargetArn = "string",
-      Endpoint = "string",
-      TrackedClusterId = "string",
-      RdsResourceId = "string",
-      Port = 123,
-      Type = "RDS_INSTANCE"|"RDS_SERVERLESS_ENDPOINT"|"TRACKED_CLUSTER",
-      TargetHealth = list(
-        State = "REGISTERING"|"AVAILABLE"|"UNAVAILABLE",
-        Reason = "UNREACHABLE"|"CONNECTION_FAILED"|"AUTH_FAILURE"|"PENDING_PROXY_CAPACITY",
-        Description = "string"
-      )
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Returns information about \code{DBProxyTarget} objects. This API supports
-pagination.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_db_proxy_targets(
-  DBProxyName = "string",
-  TargetGroupName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  Marker = "string",
-  MaxRecords = 123
-)
-}
-}
+Returns information about \code{DBProxyTarget} objects. This API supports pagination.
 
+See \url{https://paws-r.github.io/docs/rds/describe_db_proxy_targets.html} for full documentation.
+}
 \keyword{internal}

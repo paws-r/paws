@@ -4,44 +4,18 @@
 \alias{glue_delete_database}
 \title{Removes a specified database from a Data Catalog}
 \usage{
-glue_delete_database(CatalogId, Name)
+glue_delete_database(CatalogId = NULL, Name)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the database resides. If none is
-provided, the AWS account ID is used by default.}
+provided, the Amazon Web Services account ID is used by default.}
 
 \item{Name}{[required] The name of the database to delete. For Hive compatibility, this must be
 all lowercase.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes a specified database from a Data Catalog.
 
-After completing this operation, you no longer have access to the tables
-(and all table versions and partitions that might belong to the tables)
-and the user-defined functions in the deleted database. AWS Glue deletes
-these "orphaned" resources asynchronously in a timely manner, at the
-discretion of the service.
-
-To ensure the immediate deletion of all related resources, before
-calling \code{\link[=glue_delete_database]{delete_database}}, use
-\code{\link[=glue_delete_table_version]{delete_table_version}} or
-\code{\link[=glue_batch_delete_table_version]{batch_delete_table_version}},
-\code{\link[=glue_delete_partition]{delete_partition}} or
-\code{\link[=glue_batch_delete_partition]{batch_delete_partition}},
-\code{\link[=glue_delete_user_defined_function]{delete_user_defined_function}}, and
-\code{\link[=glue_delete_table]{delete_table}} or
-\code{\link[=glue_batch_delete_table]{batch_delete_table}}, to delete any resources
-that belong to the database.
+See \url{https://paws-r.github.io/docs/glue/delete_database.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_database(
-  CatalogId = "string",
-  Name = "string"
-)
-}
-}
-
 \keyword{internal}

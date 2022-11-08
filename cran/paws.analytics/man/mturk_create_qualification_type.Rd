@@ -5,9 +5,18 @@
 \title{The CreateQualificationType operation creates a new Qualification type,
 which is represented by a QualificationType data structure}
 \usage{
-mturk_create_qualification_type(Name, Keywords, Description,
-  QualificationTypeStatus, RetryDelayInSeconds, Test, AnswerKey,
-  TestDurationInSeconds, AutoGranted, AutoGrantedValue)
+mturk_create_qualification_type(
+  Name,
+  Keywords = NULL,
+  Description,
+  QualificationTypeStatus,
+  RetryDelayInSeconds = NULL,
+  Test = NULL,
+  AnswerKey = NULL,
+  TestDurationInSeconds = NULL,
+  AutoGranted = NULL,
+  AutoGrantedValue = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name you give to the Qualification type. The type name is used to
@@ -70,47 +79,9 @@ be true.}
 \item{AutoGrantedValue}{The Qualification value to use for automatically granted Qualifications.
 This parameter is used only if the AutoGranted parameter is true.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  QualificationType = list(
-    QualificationTypeId = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Name = "string",
-    Description = "string",
-    Keywords = "string",
-    QualificationTypeStatus = "Active"|"Inactive",
-    Test = "string",
-    TestDurationInSeconds = 123,
-    AnswerKey = "string",
-    RetryDelayInSeconds = 123,
-    IsRequestable = TRUE|FALSE,
-    AutoGranted = TRUE|FALSE,
-    AutoGrantedValue = 123
-  )
-)
-}
-}
 \description{
-The \code{\link[=mturk_create_qualification_type]{create_qualification_type}}
-operation creates a new Qualification type, which is represented by a
-\code{QualificationType} data structure.
-}
-\section{Request syntax}{
-\preformatted{svc$create_qualification_type(
-  Name = "string",
-  Keywords = "string",
-  Description = "string",
-  QualificationTypeStatus = "Active"|"Inactive",
-  RetryDelayInSeconds = 123,
-  Test = "string",
-  AnswerKey = "string",
-  TestDurationInSeconds = 123,
-  AutoGranted = TRUE|FALSE,
-  AutoGrantedValue = 123
-)
-}
-}
+The \code{\link[=mturk_create_qualification_type]{create_qualification_type}} operation creates a new Qualification type, which is represented by a \code{QualificationType} data structure.
 
+See \url{https://paws-r.github.io/docs/mturk/create_qualification_type.html} for full documentation.
+}
 \keyword{internal}

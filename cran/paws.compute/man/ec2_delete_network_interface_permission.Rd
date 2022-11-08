@@ -4,8 +4,11 @@
 \alias{ec2_delete_network_interface_permission}
 \title{Deletes a permission for a network interface}
 \usage{
-ec2_delete_network_interface_permission(NetworkInterfacePermissionId,
-  Force, DryRun)
+ec2_delete_network_interface_permission(
+  NetworkInterfacePermissionId,
+  Force = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{NetworkInterfacePermissionId}{[required] The ID of the network interface permission.}
@@ -18,25 +21,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Deletes a permission for a network interface. By default, you cannot
-delete the permission if the account for which you're removing the
-permission has attached the network interface to an instance. However,
-you can force delete the permission, regardless of any attachment.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_network_interface_permission(
-  NetworkInterfacePermissionId = "string",
-  Force = TRUE|FALSE,
-  DryRun = TRUE|FALSE
-)
-}
-}
+Deletes a permission for a network interface. By default, you cannot delete the permission if the account for which you're removing the permission has attached the network interface to an instance. However, you can force delete the permission, regardless of any attachment.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_network_interface_permission.html} for full documentation.
+}
 \keyword{internal}

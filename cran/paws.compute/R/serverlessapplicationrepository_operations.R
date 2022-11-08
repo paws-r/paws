@@ -7,14 +7,9 @@ NULL
 #' the first application version in the same call
 #'
 #' @description
-#' Creates an application, optionally including an AWS SAM file to create
-#' the first application version in the same call.
+#' Creates an application, optionally including an AWS SAM file to create the first application version in the same call.
 #'
-#' @usage
-#' serverlessapplicationrepository_create_application(Author, Description,
-#'   HomePageUrl, Labels, LicenseBody, LicenseUrl, Name, ReadmeBody,
-#'   ReadmeUrl, SemanticVersion, SourceCodeArchiveUrl, SourceCodeUrl,
-#'   SpdxLicenseId, TemplateBody, TemplateUrl)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/create_application.html](https://paws-r.github.io/docs/serverlessapplicationrepository/create_application.html) for full documentation.
 #'
 #' @param Author &#91;required&#93; The name of the author publishing the app.
 #' 
@@ -33,7 +28,7 @@ NULL
 #' Pattern: "^\[a-zA-Z0-9+\\\\-_:\\\\/@@\]+$";
 #' @param LicenseBody A local text file that contains the license of the app that matches the
 #' spdxLicenseID value of your application. The file has the format
-#' file://&lt;path&gt;/&lt;filename&gt;.
+#' file://\<path\>/\<filename\>.
 #' 
 #' Maximum size 5 MB
 #' 
@@ -53,7 +48,7 @@ NULL
 #' Pattern: "\[a-zA-Z0-9\\\\-\]+";
 #' @param ReadmeBody A local text readme file in Markdown language that contains a more
 #' detailed description of the application and how it works. The file has
-#' the format file://&lt;path&gt;/&lt;filename&gt;.
+#' the format file://\<path\>/\<filename\>.
 #' 
 #' Maximum size 5 MB
 #' 
@@ -77,7 +72,7 @@ NULL
 #' for example the URL of a specific GitHub commit.
 #' @param SpdxLicenseId A valid identifier from <https://spdx.org/licenses/>.
 #' @param TemplateBody The local raw packaged AWS SAM template file of your application. The
-#' file has the format file://&lt;path&gt;/&lt;filename&gt;.
+#' file has the format file://\<path\>/\<filename\>.
 #' 
 #' You can specify only one of templateBody and templateUrl; otherwise an
 #' error results.
@@ -86,83 +81,6 @@ NULL
 #' 
 #' You can specify only one of templateBody and templateUrl; otherwise an
 #' error results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationId = "string",
-#'   Author = "string",
-#'   CreationTime = "string",
-#'   Description = "string",
-#'   HomePageUrl = "string",
-#'   IsVerifiedAuthor = TRUE|FALSE,
-#'   Labels = list(
-#'     "string"
-#'   ),
-#'   LicenseUrl = "string",
-#'   Name = "string",
-#'   ReadmeUrl = "string",
-#'   SpdxLicenseId = "string",
-#'   VerifiedAuthorUrl = "string",
-#'   Version = list(
-#'     ApplicationId = "string",
-#'     CreationTime = "string",
-#'     ParameterDefinitions = list(
-#'       list(
-#'         AllowedPattern = "string",
-#'         AllowedValues = list(
-#'           "string"
-#'         ),
-#'         ConstraintDescription = "string",
-#'         DefaultValue = "string",
-#'         Description = "string",
-#'         MaxLength = 123,
-#'         MaxValue = 123,
-#'         MinLength = 123,
-#'         MinValue = 123,
-#'         Name = "string",
-#'         NoEcho = TRUE|FALSE,
-#'         ReferencedByResources = list(
-#'           "string"
-#'         ),
-#'         Type = "string"
-#'       )
-#'     ),
-#'     RequiredCapabilities = list(
-#'       "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"|"CAPABILITY_RESOURCE_POLICY"
-#'     ),
-#'     ResourcesSupported = TRUE|FALSE,
-#'     SemanticVersion = "string",
-#'     SourceCodeArchiveUrl = "string",
-#'     SourceCodeUrl = "string",
-#'     TemplateUrl = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_application(
-#'   Author = "string",
-#'   Description = "string",
-#'   HomePageUrl = "string",
-#'   Labels = list(
-#'     "string"
-#'   ),
-#'   LicenseBody = "string",
-#'   LicenseUrl = "string",
-#'   Name = "string",
-#'   ReadmeBody = "string",
-#'   ReadmeUrl = "string",
-#'   SemanticVersion = "string",
-#'   SourceCodeArchiveUrl = "string",
-#'   SourceCodeUrl = "string",
-#'   SpdxLicenseId = "string",
-#'   TemplateBody = "string",
-#'   TemplateUrl = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -189,10 +107,7 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
 #' @description
 #' Creates an application version.
 #'
-#' @usage
-#' serverlessapplicationrepository_create_application_version(
-#'   ApplicationId, SemanticVersion, SourceCodeArchiveUrl, SourceCodeUrl,
-#'   TemplateBody, TemplateUrl)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/create_application_version.html](https://paws-r.github.io/docs/serverlessapplicationrepository/create_application_version.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param SemanticVersion &#91;required&#93; The semantic version of the new version.
@@ -204,56 +119,6 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
 #' for example the URL of a specific GitHub commit.
 #' @param TemplateBody The raw packaged AWS SAM template of your application.
 #' @param TemplateUrl A link to the packaged AWS SAM template of your application.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationId = "string",
-#'   CreationTime = "string",
-#'   ParameterDefinitions = list(
-#'     list(
-#'       AllowedPattern = "string",
-#'       AllowedValues = list(
-#'         "string"
-#'       ),
-#'       ConstraintDescription = "string",
-#'       DefaultValue = "string",
-#'       Description = "string",
-#'       MaxLength = 123,
-#'       MaxValue = 123,
-#'       MinLength = 123,
-#'       MinValue = 123,
-#'       Name = "string",
-#'       NoEcho = TRUE|FALSE,
-#'       ReferencedByResources = list(
-#'         "string"
-#'       ),
-#'       Type = "string"
-#'     )
-#'   ),
-#'   RequiredCapabilities = list(
-#'     "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"|"CAPABILITY_RESOURCE_POLICY"
-#'   ),
-#'   ResourcesSupported = TRUE|FALSE,
-#'   SemanticVersion = "string",
-#'   SourceCodeArchiveUrl = "string",
-#'   SourceCodeUrl = "string",
-#'   TemplateUrl = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_application_version(
-#'   ApplicationId = "string",
-#'   SemanticVersion = "string",
-#'   SourceCodeArchiveUrl = "string",
-#'   SourceCodeUrl = "string",
-#'   TemplateBody = "string",
-#'   TemplateUrl = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -280,11 +145,7 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' @description
 #' Creates an AWS CloudFormation change set for the given application.
 #'
-#' @usage
-#' serverlessapplicationrepository_create_cloud_formation_change_set(
-#'   ApplicationId, Capabilities, ChangeSetName, ClientToken, Description,
-#'   NotificationArns, ParameterOverrides, ResourceTypes,
-#'   RollbackConfiguration, SemanticVersion, StackName, Tags, TemplateId)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/create_cloud_formation_change_set.html](https://paws-r.github.io/docs/serverlessapplicationrepository/create_cloud_formation_change_set.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param Capabilities A list of values that you must specify before you can deploy certain
@@ -305,9 +166,8 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' and
 #' [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html).
 #' If the application contains IAM resources, you can specify either
-#' CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains
-#' IAM resources with custom names, you must specify
-#' CAPABILITY_NAMED_IAM.
+#' CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains IAM
+#' resources with custom names, you must specify CAPABILITY_NAMED_IAM.
 #' 
 #' The following resources require you to specify
 #' CAPABILITY_RESOURCE_POLICY:
@@ -327,99 +187,45 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' application before deploying. If you don't specify this parameter for an
 #' application that requires capabilities, the call will fail.
 #' @param ChangeSetName This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param ClientToken This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param Description This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param NotificationArns This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param ParameterOverrides A list of parameter values for the parameters of the application.
 #' @param ResourceTypes This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param RollbackConfiguration This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param SemanticVersion The semantic version of the application:
 #' 
 #' <https://semver.org/>
 #' @param StackName &#91;required&#93; This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param Tags This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html)*
+#' CloudFormation <span
+#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
 #' API.
 #' @param TemplateId The UUID returned by CreateCloudFormationTemplate.
 #' 
 #' Pattern:
 #' \[0-9a-fA-F\]\{8\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{12\}
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationId = "string",
-#'   ChangeSetId = "string",
-#'   SemanticVersion = "string",
-#'   StackId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_cloud_formation_change_set(
-#'   ApplicationId = "string",
-#'   Capabilities = list(
-#'     "string"
-#'   ),
-#'   ChangeSetName = "string",
-#'   ClientToken = "string",
-#'   Description = "string",
-#'   NotificationArns = list(
-#'     "string"
-#'   ),
-#'   ParameterOverrides = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   ResourceTypes = list(
-#'     "string"
-#'   ),
-#'   RollbackConfiguration = list(
-#'     MonitoringTimeInMinutes = 123,
-#'     RollbackTriggers = list(
-#'       list(
-#'         Arn = "string",
-#'         Type = "string"
-#'       )
-#'     )
-#'   ),
-#'   SemanticVersion = "string",
-#'   StackName = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   TemplateId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -446,36 +252,12 @@ serverlessapplicationrepository_create_cloud_formation_change_set <- function(Ap
 #' @description
 #' Creates an AWS CloudFormation template.
 #'
-#' @usage
-#' serverlessapplicationrepository_create_cloud_formation_template(
-#'   ApplicationId, SemanticVersion)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/create_cloud_formation_template.html](https://paws-r.github.io/docs/serverlessapplicationrepository/create_cloud_formation_template.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param SemanticVersion The semantic version of the application:
 #' 
 #' <https://semver.org/>
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationId = "string",
-#'   CreationTime = "string",
-#'   ExpirationTime = "string",
-#'   SemanticVersion = "string",
-#'   Status = "PREPARING"|"ACTIVE"|"EXPIRED",
-#'   TemplateId = "string",
-#'   TemplateUrl = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_cloud_formation_template(
-#'   ApplicationId = "string",
-#'   SemanticVersion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -502,20 +284,9 @@ serverlessapplicationrepository_create_cloud_formation_template <- function(Appl
 #' @description
 #' Deletes the specified application.
 #'
-#' @usage
-#' serverlessapplicationrepository_delete_application(ApplicationId)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/delete_application.html](https://paws-r.github.io/docs/serverlessapplicationrepository/delete_application.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_application(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -542,74 +313,10 @@ serverlessapplicationrepository_delete_application <- function(ApplicationId) {
 #' @description
 #' Gets the specified application.
 #'
-#' @usage
-#' serverlessapplicationrepository_get_application(ApplicationId,
-#'   SemanticVersion)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/get_application.html](https://paws-r.github.io/docs/serverlessapplicationrepository/get_application.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param SemanticVersion The semantic version of the application to get.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationId = "string",
-#'   Author = "string",
-#'   CreationTime = "string",
-#'   Description = "string",
-#'   HomePageUrl = "string",
-#'   IsVerifiedAuthor = TRUE|FALSE,
-#'   Labels = list(
-#'     "string"
-#'   ),
-#'   LicenseUrl = "string",
-#'   Name = "string",
-#'   ReadmeUrl = "string",
-#'   SpdxLicenseId = "string",
-#'   VerifiedAuthorUrl = "string",
-#'   Version = list(
-#'     ApplicationId = "string",
-#'     CreationTime = "string",
-#'     ParameterDefinitions = list(
-#'       list(
-#'         AllowedPattern = "string",
-#'         AllowedValues = list(
-#'           "string"
-#'         ),
-#'         ConstraintDescription = "string",
-#'         DefaultValue = "string",
-#'         Description = "string",
-#'         MaxLength = 123,
-#'         MaxValue = 123,
-#'         MinLength = 123,
-#'         MinValue = 123,
-#'         Name = "string",
-#'         NoEcho = TRUE|FALSE,
-#'         ReferencedByResources = list(
-#'           "string"
-#'         ),
-#'         Type = "string"
-#'       )
-#'     ),
-#'     RequiredCapabilities = list(
-#'       "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"|"CAPABILITY_RESOURCE_POLICY"
-#'     ),
-#'     ResourcesSupported = TRUE|FALSE,
-#'     SemanticVersion = "string",
-#'     SourceCodeArchiveUrl = "string",
-#'     SourceCodeUrl = "string",
-#'     TemplateUrl = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_application(
-#'   ApplicationId = "string",
-#'   SemanticVersion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -636,38 +343,9 @@ serverlessapplicationrepository_get_application <- function(ApplicationId, Seman
 #' @description
 #' Retrieves the policy for the application.
 #'
-#' @usage
-#' serverlessapplicationrepository_get_application_policy(ApplicationId)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/get_application_policy.html](https://paws-r.github.io/docs/serverlessapplicationrepository/get_application_policy.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Statements = list(
-#'     list(
-#'       Actions = list(
-#'         "string"
-#'       ),
-#'       PrincipalOrgIDs = list(
-#'         "string"
-#'       ),
-#'       Principals = list(
-#'         "string"
-#'       ),
-#'       StatementId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_application_policy(
-#'   ApplicationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -694,37 +372,13 @@ serverlessapplicationrepository_get_application_policy <- function(ApplicationId
 #' @description
 #' Gets the specified AWS CloudFormation template.
 #'
-#' @usage
-#' serverlessapplicationrepository_get_cloud_formation_template(
-#'   ApplicationId, TemplateId)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/get_cloud_formation_template.html](https://paws-r.github.io/docs/serverlessapplicationrepository/get_cloud_formation_template.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param TemplateId &#91;required&#93; The UUID returned by CreateCloudFormationTemplate.
 #' 
 #' Pattern:
 #' \[0-9a-fA-F\]\{8\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{12\}
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationId = "string",
-#'   CreationTime = "string",
-#'   ExpirationTime = "string",
-#'   SemanticVersion = "string",
-#'   Status = "PREPARING"|"ACTIVE"|"EXPIRED",
-#'   TemplateId = "string",
-#'   TemplateUrl = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_cloud_formation_template(
-#'   ApplicationId = "string",
-#'   TemplateId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -751,38 +405,12 @@ serverlessapplicationrepository_get_cloud_formation_template <- function(Applica
 #' @description
 #' Retrieves the list of applications nested in the containing application.
 #'
-#' @usage
-#' serverlessapplicationrepository_list_application_dependencies(
-#'   ApplicationId, MaxItems, NextToken, SemanticVersion)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/list_application_dependencies.html](https://paws-r.github.io/docs/serverlessapplicationrepository/list_application_dependencies.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param MaxItems The total number of items to return.
 #' @param NextToken A token to specify where to start paginating.
 #' @param SemanticVersion The semantic version of the application to get.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Dependencies = list(
-#'     list(
-#'       ApplicationId = "string",
-#'       SemanticVersion = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_application_dependencies(
-#'   ApplicationId = "string",
-#'   MaxItems = 123,
-#'   NextToken = "string",
-#'   SemanticVersion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -809,38 +437,11 @@ serverlessapplicationrepository_list_application_dependencies <- function(Applic
 #' @description
 #' Lists versions for the specified application.
 #'
-#' @usage
-#' serverlessapplicationrepository_list_application_versions(ApplicationId,
-#'   MaxItems, NextToken)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/list_application_versions.html](https://paws-r.github.io/docs/serverlessapplicationrepository/list_application_versions.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param MaxItems The total number of items to return.
 #' @param NextToken A token to specify where to start paginating.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   Versions = list(
-#'     list(
-#'       ApplicationId = "string",
-#'       CreationTime = "string",
-#'       SemanticVersion = "string",
-#'       SourceCodeUrl = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_application_versions(
-#'   ApplicationId = "string",
-#'   MaxItems = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -867,41 +468,10 @@ serverlessapplicationrepository_list_application_versions <- function(Applicatio
 #' @description
 #' Lists applications owned by the requester.
 #'
-#' @usage
-#' serverlessapplicationrepository_list_applications(MaxItems, NextToken)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/list_applications.html](https://paws-r.github.io/docs/serverlessapplicationrepository/list_applications.html) for full documentation.
 #'
 #' @param MaxItems The total number of items to return.
 #' @param NextToken A token to specify where to start paginating.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Applications = list(
-#'     list(
-#'       ApplicationId = "string",
-#'       Author = "string",
-#'       CreationTime = "string",
-#'       Description = "string",
-#'       HomePageUrl = "string",
-#'       Labels = list(
-#'         "string"
-#'       ),
-#'       Name = "string",
-#'       SpdxLicenseId = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_applications(
-#'   MaxItems = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -926,59 +496,12 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
 #' Sets the permission policy for an application
 #'
 #' @description
-#' Sets the permission policy for an application. For the list of actions
-#' supported for this operation, see [Application
-#' Permissions](https://docs.aws.amazon.com/serverlessrepo/latest/devguide/security_iam_resource-based-policy-examples.html#application-permissions)
-#' .
+#' Sets the permission policy for an application. For the list of actions supported for this operation, see [Application Permissions](https://docs.aws.amazon.com/serverlessrepo/latest/devguide/security_iam_resource-based-policy-examples.html#application-permissions) .
 #'
-#' @usage
-#' serverlessapplicationrepository_put_application_policy(ApplicationId,
-#'   Statements)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/put_application_policy.html](https://paws-r.github.io/docs/serverlessapplicationrepository/put_application_policy.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param Statements &#91;required&#93; An array of policy statements applied to the application.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Statements = list(
-#'     list(
-#'       Actions = list(
-#'         "string"
-#'       ),
-#'       PrincipalOrgIDs = list(
-#'         "string"
-#'       ),
-#'       Principals = list(
-#'         "string"
-#'       ),
-#'       StatementId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_application_policy(
-#'   ApplicationId = "string",
-#'   Statements = list(
-#'     list(
-#'       Actions = list(
-#'         "string"
-#'       ),
-#'       PrincipalOrgIDs = list(
-#'         "string"
-#'       ),
-#'       Principals = list(
-#'         "string"
-#'       ),
-#'       StatementId = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1004,27 +527,11 @@ serverlessapplicationrepository_put_application_policy <- function(ApplicationId
 #'
 #' @description
 #' Unshares an application from an AWS Organization.
-#' 
-#' This operation can be called only from the organization's master
-#' account.
 #'
-#' @usage
-#' serverlessapplicationrepository_unshare_application(ApplicationId,
-#'   OrganizationId)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/unshare_application.html](https://paws-r.github.io/docs/serverlessapplicationrepository/unshare_application.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param OrganizationId &#91;required&#93; The AWS Organization ID to unshare the application from.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$unshare_application(
-#'   ApplicationId = "string",
-#'   OrganizationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1051,9 +558,7 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
 #' @description
 #' Updates the specified application.
 #'
-#' @usage
-#' serverlessapplicationrepository_update_application(ApplicationId,
-#'   Author, Description, HomePageUrl, Labels, ReadmeBody, ReadmeUrl)
+#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/update_application.html](https://paws-r.github.io/docs/serverlessapplicationrepository/update_application.html) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param Author The name of the author publishing the app.
@@ -1079,75 +584,6 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
 #' detailed description of the application and how it works.
 #' 
 #' Maximum size 5 MB
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationId = "string",
-#'   Author = "string",
-#'   CreationTime = "string",
-#'   Description = "string",
-#'   HomePageUrl = "string",
-#'   IsVerifiedAuthor = TRUE|FALSE,
-#'   Labels = list(
-#'     "string"
-#'   ),
-#'   LicenseUrl = "string",
-#'   Name = "string",
-#'   ReadmeUrl = "string",
-#'   SpdxLicenseId = "string",
-#'   VerifiedAuthorUrl = "string",
-#'   Version = list(
-#'     ApplicationId = "string",
-#'     CreationTime = "string",
-#'     ParameterDefinitions = list(
-#'       list(
-#'         AllowedPattern = "string",
-#'         AllowedValues = list(
-#'           "string"
-#'         ),
-#'         ConstraintDescription = "string",
-#'         DefaultValue = "string",
-#'         Description = "string",
-#'         MaxLength = 123,
-#'         MaxValue = 123,
-#'         MinLength = 123,
-#'         MinValue = 123,
-#'         Name = "string",
-#'         NoEcho = TRUE|FALSE,
-#'         ReferencedByResources = list(
-#'           "string"
-#'         ),
-#'         Type = "string"
-#'       )
-#'     ),
-#'     RequiredCapabilities = list(
-#'       "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"|"CAPABILITY_RESOURCE_POLICY"
-#'     ),
-#'     ResourcesSupported = TRUE|FALSE,
-#'     SemanticVersion = "string",
-#'     SourceCodeArchiveUrl = "string",
-#'     SourceCodeUrl = "string",
-#'     TemplateUrl = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_application(
-#'   ApplicationId = "string",
-#'   Author = "string",
-#'   Description = "string",
-#'   HomePageUrl = "string",
-#'   Labels = list(
-#'     "string"
-#'   ),
-#'   ReadmeBody = "string",
-#'   ReadmeUrl = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

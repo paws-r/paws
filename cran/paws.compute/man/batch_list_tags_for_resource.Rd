@@ -2,44 +2,20 @@
 % Please edit documentation in R/batch_operations.R
 \name{batch_list_tags_for_resource}
 \alias{batch_list_tags_for_resource}
-\title{Lists the tags for an AWS Batch resource}
+\title{Lists the tags for an Batch resource}
 \usage{
 batch_list_tags_for_resource(resourceArn)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) that identifies the resource that tags
-are listed for. AWS Batch resources that support tags are compute
-environments, jobs, job definitions, and job queues. ARNs for child jobs
-of array and multi-node parallel (MNP) jobs are not supported.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  tags = list(
-    "string"
-  )
-)
-}
+are listed for. Batch resources that support tags are compute
+environments, jobs, job definitions, job queues, and scheduling
+policies. ARNs for child jobs of array and multi-node parallel (MNP)
+jobs are not supported.}
 }
 \description{
-Lists the tags for an AWS Batch resource. AWS Batch resources that
-support tags are compute environments, jobs, job definitions, and job
-queues. ARNs for child jobs of array and multi-node parallel (MNP) jobs
-are not supported.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  resourceArn = "string"
-)
-}
-}
+Lists the tags for an Batch resource. Batch resources that support tags are compute environments, jobs, job definitions, job queues, and scheduling policies. ARNs for child jobs of array and multi-node parallel (MNP) jobs are not supported.
 
-\examples{
-\dontrun{
-# This demonstrates calling the ListTagsForResource action.
-svc$list_tags_for_resource(
-  resourceArn = "arn:aws:batch:us-east-1:123456789012:job-definition/sleep30:1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/batch/list_tags_for_resource.html} for full documentation.
 }
 \keyword{internal}

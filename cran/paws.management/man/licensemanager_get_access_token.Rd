@@ -4,31 +4,16 @@
 \alias{licensemanager_get_access_token}
 \title{Gets a temporary access token to use with AssumeRoleWithWebIdentity}
 \usage{
-licensemanager_get_access_token(Token, TokenProperties)
+licensemanager_get_access_token(Token, TokenProperties = NULL)
 }
 \arguments{
 \item{Token}{[required] Refresh token, encoded as a JWT token.}
 
 \item{TokenProperties}{Token properties to validate against those present in the JWT token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccessToken = "string"
-)
-}
-}
 \description{
-Gets a temporary access token to use with AssumeRoleWithWebIdentity.
-Access tokens are valid for one hour.
-}
-\section{Request syntax}{
-\preformatted{svc$get_access_token(
-  Token = "string",
-  TokenProperties = list(
-    "string"
-  )
-)
-}
-}
+Gets a temporary access token to use with AssumeRoleWithWebIdentity. Access tokens are valid for one hour.
 
+See \url{https://paws-r.github.io/docs/licensemanager/get_access_token.html} for full documentation.
+}
 \keyword{internal}

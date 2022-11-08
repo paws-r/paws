@@ -4,7 +4,7 @@
 \alias{dynamodb_list_exports}
 \title{Lists completed exports within the past 90 days}
 \usage{
-dynamodb_list_exports(TableArn, MaxResults, NextToken)
+dynamodb_list_exports(TableArn = NULL, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{TableArn}{The Amazon Resource Name (ARN) associated with the exported table.}
@@ -15,28 +15,9 @@ dynamodb_list_exports(TableArn, MaxResults, NextToken)
 a previous call to \code{\link[=dynamodb_list_exports]{list_exports}}. When
 provided in this manner, the API fetches the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExportSummaries = list(
-    list(
-      ExportArn = "string",
-      ExportStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists completed exports within the past 90 days.
-}
-\section{Request syntax}{
-\preformatted{svc$list_exports(
-  TableArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/dynamodb/list_exports.html} for full documentation.
+}
 \keyword{internal}

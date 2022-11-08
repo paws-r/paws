@@ -4,7 +4,7 @@
 \alias{sagemaker_describe_feature_group}
 \title{Use this operation to describe a FeatureGroup}
 \usage{
-sagemaker_describe_feature_group(FeatureGroupName, NextToken)
+sagemaker_describe_feature_group(FeatureGroupName, NextToken = NULL)
 }
 \arguments{
 \item{FeatureGroupName}{[required] The name of the \code{FeatureGroup} you want described.}
@@ -12,62 +12,9 @@ sagemaker_describe_feature_group(FeatureGroupName, NextToken)
 \item{NextToken}{A token to resume pagination of the list of \code{Features}
 (\code{FeatureDefinitions}). 2,500 \code{Features} are returned by default.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FeatureGroupArn = "string",
-  FeatureGroupName = "string",
-  RecordIdentifierFeatureName = "string",
-  EventTimeFeatureName = "string",
-  FeatureDefinitions = list(
-    list(
-      FeatureName = "string",
-      FeatureType = "Integral"|"Fractional"|"String"
-    )
-  ),
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  OnlineStoreConfig = list(
-    SecurityConfig = list(
-      KmsKeyId = "string"
-    ),
-    EnableOnlineStore = TRUE|FALSE
-  ),
-  OfflineStoreConfig = list(
-    S3StorageConfig = list(
-      S3Uri = "string",
-      KmsKeyId = "string"
-    ),
-    DisableGlueTableCreation = TRUE|FALSE,
-    DataCatalogConfig = list(
-      TableName = "string",
-      Catalog = "string",
-      Database = "string"
-    )
-  ),
-  RoleArn = "string",
-  FeatureGroupStatus = "Creating"|"Created"|"CreateFailed"|"Deleting"|"DeleteFailed",
-  OfflineStoreStatus = list(
-    Status = "Active"|"Blocked"|"Disabled",
-    BlockedReason = "string"
-  ),
-  FailureReason = "string",
-  Description = "string",
-  NextToken = "string"
-)
-}
-}
 \description{
-Use this operation to describe a \code{FeatureGroup}. The response includes
-information on the creation time, \code{FeatureGroup} name, the unique
-identifier for each \code{FeatureGroup}, and more.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_feature_group(
-  FeatureGroupName = "string",
-  NextToken = "string"
-)
-}
-}
+Use this operation to describe a \code{FeatureGroup}. The response includes information on the creation time, \code{FeatureGroup} name, the unique identifier for each \code{FeatureGroup}, and more.
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_feature_group.html} for full documentation.
+}
 \keyword{internal}

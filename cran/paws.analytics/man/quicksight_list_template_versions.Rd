@@ -5,12 +5,16 @@
 \title{Lists all the versions of the templates in the current Amazon QuickSight
 account}
 \usage{
-quicksight_list_template_versions(AwsAccountId, TemplateId, NextToken,
-  MaxResults)
+quicksight_list_template_versions(
+  AwsAccountId,
+  TemplateId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the templates that you're
-listing.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the templates
+that you're listing.}
 
 \item{TemplateId}{[required] The ID for the template.}
 
@@ -19,37 +23,9 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplateVersionSummaryList = list(
-    list(
-      Arn = "string",
-      VersionNumber = 123,
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-      Description = "string"
-    )
-  ),
-  NextToken = "string",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
-Lists all the versions of the templates in the current Amazon QuickSight
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_template_versions(
-  AwsAccountId = "string",
-  TemplateId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists all the versions of the templates in the current Amazon QuickSight account.
 
+See \url{https://paws-r.github.io/docs/quicksight/list_template_versions.html} for full documentation.
+}
 \keyword{internal}

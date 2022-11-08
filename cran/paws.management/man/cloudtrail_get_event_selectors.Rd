@@ -24,78 +24,9 @@ If you specify a trail ARN, it must be in the format:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrailARN = "string",
-  EventSelectors = list(
-    list(
-      ReadWriteType = "ReadOnly"|"WriteOnly"|"All",
-      IncludeManagementEvents = TRUE|FALSE,
-      DataResources = list(
-        list(
-          Type = "string",
-          Values = list(
-            "string"
-          )
-        )
-      ),
-      ExcludeManagementEventSources = list(
-        "string"
-      )
-    )
-  ),
-  AdvancedEventSelectors = list(
-    list(
-      Name = "string",
-      FieldSelectors = list(
-        list(
-          Field = "string",
-          Equals = list(
-            "string"
-          ),
-          StartsWith = list(
-            "string"
-          ),
-          EndsWith = list(
-            "string"
-          ),
-          NotEquals = list(
-            "string"
-          ),
-          NotStartsWith = list(
-            "string"
-          ),
-          NotEndsWith = list(
-            "string"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes the settings for the event selectors that you configured for
-your trail. The information returned for your event selectors includes
-the following:
-\itemize{
-\item If your event selector includes read-only events, write-only events,
-or all events. This applies to both management events and data
-events.
-\item If your event selector includes management events.
-\item If your event selector includes data events, the Amazon S3 objects
-or AWS Lambda functions that you are logging for data events.
-}
+Describes the settings for the event selectors that you configured for your trail. The information returned for your event selectors includes the following:
 
-For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/}{Logging Data and Management Events for Trails} in
-the \emph{AWS CloudTrail User Guide}.
+See \url{https://paws-r.github.io/docs/cloudtrail/get_event_selectors.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_event_selectors(
-  TrailName = "string"
-)
-}
-}
-
 \keyword{internal}

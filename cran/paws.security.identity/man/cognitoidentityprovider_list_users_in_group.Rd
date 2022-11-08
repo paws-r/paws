@@ -4,8 +4,12 @@
 \alias{cognitoidentityprovider_list_users_in_group}
 \title{Lists the users in the specified group}
 \usage{
-cognitoidentityprovider_list_users_in_group(UserPoolId, GroupName,
-  Limit, NextToken)
+cognitoidentityprovider_list_users_in_group(
+  UserPoolId,
+  GroupName,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -18,50 +22,9 @@ cognitoidentityprovider_list_users_in_group(UserPoolId, GroupName,
 operation, which can be used to return the next set of items in the
 list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Users = list(
-    list(
-      Username = "string",
-      Attributes = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      UserCreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UserLastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Enabled = TRUE|FALSE,
-      UserStatus = "UNCONFIRMED"|"CONFIRMED"|"ARCHIVED"|"COMPROMISED"|"UNKNOWN"|"RESET_REQUIRED"|"FORCE_CHANGE_PASSWORD",
-      MFAOptions = list(
-        list(
-          DeliveryMedium = "SMS"|"EMAIL",
-          AttributeName = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the users in the specified group.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_users_in_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_users_in_group(
-  UserPoolId = "string",
-  GroupName = "string",
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

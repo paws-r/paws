@@ -4,8 +4,7 @@
 \alias{wafregional_update_regex_pattern_set}
 \title{This is AWS WAF Classic documentation}
 \usage{
-wafregional_update_regex_pattern_set(RegexPatternSetId, Updates,
-  ChangeToken)
+wafregional_update_regex_pattern_set(RegexPatternSetId, Updates, ChangeToken)
 }
 \arguments{
 \item{RegexPatternSetId}{[required] The \code{RegexPatternSetId} of the RegexPatternSet that you want to update.
@@ -19,69 +18,9 @@ or delete from a RegexPatternSet.}
 \item{ChangeToken}{[required] The value returned by the most recent call to
 \code{\link[=wafregional_get_change_token]{get_change_token}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Inserts or deletes \code{RegexPatternString} objects in a RegexPatternSet.
-For each \code{RegexPatternString} object, you specify the following values:
-\itemize{
-\item Whether to insert or delete the \code{RegexPatternString}.
-\item The regular expression pattern that you want to insert or delete.
-For more information, see RegexPatternSet.
+See \url{https://paws-r.github.io/docs/wafregional/update_regex_pattern_set.html} for full documentation.
 }
-
-For example, you can create a \code{RegexPatternString} such as
-\verb{B[a@]dB[o0]t}. AWS WAF will match this \code{RegexPatternString} to:
-\itemize{
-\item BadBot
-\item BadB0t
-\item B@dBot
-\item B@dB0t
-}
-
-To create and configure a \code{RegexPatternSet}, perform the following
-steps:
-\enumerate{
-\item Create a \code{RegexPatternSet.} For more information, see
-\code{\link[=wafregional_create_regex_pattern_set]{create_regex_pattern_set}}.
-\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
-change token that you provide in the \code{ChangeToken} parameter of an
-\code{\link[=wafregional_update_regex_pattern_set]{update_regex_pattern_set}}
-request.
-\item Submit an
-\code{\link[=wafregional_update_regex_pattern_set]{update_regex_pattern_set}}
-request to specify the regular expression pattern that you want AWS
-WAF to watch for.
-}
-
-For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_regex_pattern_set(
-  RegexPatternSetId = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      RegexPatternString = "string"
-    )
-  ),
-  ChangeToken = "string"
-)
-}
-}
-
 \keyword{internal}

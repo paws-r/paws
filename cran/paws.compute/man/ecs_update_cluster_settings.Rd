@@ -10,81 +10,14 @@ ecs_update_cluster_settings(cluster, settings)
 \item{cluster}{[required] The name of the cluster to modify the settings for.}
 
 \item{settings}{[required] The setting to use by default for a cluster. This parameter is used to
-enable CloudWatch Container Insights for a cluster. If this value is
-specified, it will override the \code{containerInsights} value set with
+turn on CloudWatch Container Insights for a cluster. If this value is
+specified, it overrides the \code{containerInsights} value set with
 \code{\link[=ecs_put_account_setting]{put_account_setting}} or
 \code{\link[=ecs_put_account_setting_default]{put_account_setting_default}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  cluster = list(
-    clusterArn = "string",
-    clusterName = "string",
-    status = "string",
-    registeredContainerInstancesCount = 123,
-    runningTasksCount = 123,
-    pendingTasksCount = 123,
-    activeServicesCount = 123,
-    statistics = list(
-      list(
-        name = "string",
-        value = "string"
-      )
-    ),
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    ),
-    settings = list(
-      list(
-        name = "containerInsights",
-        value = "string"
-      )
-    ),
-    capacityProviders = list(
-      "string"
-    ),
-    defaultCapacityProviderStrategy = list(
-      list(
-        capacityProvider = "string",
-        weight = 123,
-        base = 123
-      )
-    ),
-    attachments = list(
-      list(
-        id = "string",
-        type = "string",
-        status = "string",
-        details = list(
-          list(
-            name = "string",
-            value = "string"
-          )
-        )
-      )
-    ),
-    attachmentsStatus = "string"
-  )
-)
-}
-}
 \description{
 Modifies the settings to use for a cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$update_cluster_settings(
-  cluster = "string",
-  settings = list(
-    list(
-      name = "containerInsights",
-      value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ecs/update_cluster_settings.html} for full documentation.
+}
 \keyword{internal}

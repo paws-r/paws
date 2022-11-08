@@ -2,11 +2,19 @@
 % Please edit documentation in R/acm_operations.R
 \name{acm_request_certificate}
 \alias{acm_request_certificate}
-\title{Requests an ACM certificate for use with other AWS services}
+\title{Requests an ACM certificate for use with other Amazon Web Services
+services}
 \usage{
-acm_request_certificate(DomainName, ValidationMethod,
-  SubjectAlternativeNames, IdempotencyToken, DomainValidationOptions,
-  Options, CertificateAuthorityArn, Tags)
+acm_request_certificate(
+  DomainName,
+  ValidationMethod = NULL,
+  SubjectAlternativeNames = NULL,
+  IdempotencyToken = NULL,
+  DomainValidationOptions = NULL,
+  Options = NULL,
+  CertificateAuthorityArn = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{DomainName}{[required] Fully qualified domain name (FQDN), such as www.example.com, that you
@@ -72,59 +80,16 @@ see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.htm
 that will be used to issue the certificate. If you do not provide an ARN
 and you are trying to request a private certificate, ACM will attempt to
 issue a public certificate. For more information about private CAs, see
-the \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaWelcome.html}{AWS Certificate Manager Private Certificate Authority (PCA)}
+the \href{https://docs.aws.amazon.com/privateca/latest/userguide/PcaWelcome.html}{Amazon Web Services Certificate Manager Private Certificate Authority (PCA)}
 user guide. The ARN must have the following form:
 
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012}}
 
 \item{Tags}{One or more resource tags to associate with the certificate.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CertificateArn = "string"
-)
-}
-}
 \description{
-Requests an ACM certificate for use with other AWS services. To request
-an ACM certificate, you must specify a fully qualified domain name
-(FQDN) in the \code{DomainName} parameter. You can also specify additional
-FQDNs in the \code{SubjectAlternativeNames} parameter.
+Requests an ACM certificate for use with other Amazon Web Services services. To request an ACM certificate, you must specify a fully qualified domain name (FQDN) in the \code{DomainName} parameter. You can also specify additional FQDNs in the \code{SubjectAlternativeNames} parameter.
 
-If you are requesting a private certificate, domain validation is not
-required. If you are requesting a public certificate, each domain name
-that you specify must be validated to verify that you own or control the
-domain. You can use \href{https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html}{DNS validation}
-or \href{https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html}{email validation}.
-We recommend that you use DNS validation. ACM issues public certificates
-after receiving approval from the domain owner.
+See \url{https://paws-r.github.io/docs/acm/request_certificate.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$request_certificate(
-  DomainName = "string",
-  ValidationMethod = "EMAIL"|"DNS",
-  SubjectAlternativeNames = list(
-    "string"
-  ),
-  IdempotencyToken = "string",
-  DomainValidationOptions = list(
-    list(
-      DomainName = "string",
-      ValidationDomain = "string"
-    )
-  ),
-  Options = list(
-    CertificateTransparencyLoggingPreference = "ENABLED"|"DISABLED"
-  ),
-  CertificateAuthorityArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

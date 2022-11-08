@@ -4,35 +4,28 @@
 \alias{cloudformation_set_stack_policy}
 \title{Sets a stack policy for a specified stack}
 \usage{
-cloudformation_set_stack_policy(StackName, StackPolicyBody,
-  StackPolicyURL)
+cloudformation_set_stack_policy(
+  StackName,
+  StackPolicyBody = NULL,
+  StackPolicyURL = NULL
+)
 }
 \arguments{
 \item{StackName}{[required] The name or unique stack ID that you want to associate a policy with.}
 
 \item{StackPolicyBody}{Structure containing the stack policy body. For more information, go to
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html}{Prevent Updates to Stack Resources}
-in the AWS CloudFormation User Guide. You can specify either the
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html}{Prevent updates to stack resources}
+in the CloudFormation User Guide. You can specify either the
 \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}
 
 \item{StackPolicyURL}{Location of a file containing the stack policy. The URL must point to a
-policy (maximum size: 16 KB) located in an S3 bucket in the same Region
-as the stack. You can specify either the \code{StackPolicyBody} or the
-\code{StackPolicyURL} parameter, but not both.}
-}
-\value{
-An empty list.
+policy (maximum size: 16 KB) located in an Amazon S3 bucket in the same
+Amazon Web Services Region as the stack. You can specify either the
+\code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.}
 }
 \description{
 Sets a stack policy for a specified stack.
-}
-\section{Request syntax}{
-\preformatted{svc$set_stack_policy(
-  StackName = "string",
-  StackPolicyBody = "string",
-  StackPolicyURL = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudformation/set_stack_policy.html} for full documentation.
+}
 \keyword{internal}

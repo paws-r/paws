@@ -2,12 +2,12 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_create_user}
 \alias{iam_create_user}
-\title{Creates a new IAM user for your AWS account}
+\title{Creates a new IAM user for your Amazon Web Services account}
 \usage{
-iam_create_user(Path, UserName, PermissionsBoundary, Tags)
+iam_create_user(Path = NULL, UserName, PermissionsBoundary = NULL, Tags = NULL)
 }
 \arguments{
-\item{Path}{The path for the user name. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
+\item{Path}{The path for the user name. For more information about paths, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
@@ -29,72 +29,18 @@ create resources named both "MyResource" and "myresource".}
 \item{PermissionsBoundary}{The ARN of the policy that is used to set the permissions boundary for
 the user.}
 
-\item{Tags}{A list of tags that you want to attach to the newly created user. Each
-tag consists of a key name and an associated value. For more information
-about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
+\item{Tags}{A list of tags that you want to attach to the new user. Each tag
+consists of a key name and an associated value. For more information
+about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources}
 in the \emph{IAM User Guide}.
 
-If any one of the tags is invalid or if you exceed the allowed number of
-tags per user, then the entire request fails and the user is not
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
 created.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  User = list(
-    Path = "string",
-    UserName = "string",
-    UserId = "string",
-    Arn = "string",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    PasswordLastUsed = as.POSIXct(
-      "2015-01-01"
-    ),
-    PermissionsBoundary = list(
-      PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-      PermissionsBoundaryArn = "string"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Creates a new IAM user for your AWS account.
+Creates a new IAM user for your Amazon Web Services account.
 
-The number and size of IAM resources in an AWS account are limited. For
-more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_user(
-  Path = "string",
-  UserName = "string",
-  PermissionsBoundary = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following create-user command creates an IAM user named Bob in the
-# current account.
-svc$create_user(
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/create_user.html} for full documentation.
 }
 \keyword{internal}

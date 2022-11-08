@@ -9,22 +9,9 @@ apigatewayv2_get_tags(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The resource ARN for the tag.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Gets a collection of Tag resources.
-}
-\section{Request syntax}{
-\preformatted{svc$get_tags(
-  ResourceArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_tags.html} for full documentation.
+}
 \keyword{internal}

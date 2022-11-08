@@ -4,8 +4,12 @@
 \alias{glue_put_schema_version_metadata}
 \title{Puts the metadata key value pair for a specified schema version ID}
 \usage{
-glue_put_schema_version_metadata(SchemaId, SchemaVersionNumber,
-  SchemaVersionId, MetadataKeyValue)
+glue_put_schema_version_metadata(
+  SchemaId = NULL,
+  SchemaVersionNumber = NULL,
+  SchemaVersionId = NULL,
+  MetadataKeyValue
+)
 }
 \arguments{
 \item{SchemaId}{The unique ID for the schema.}
@@ -16,42 +20,9 @@ glue_put_schema_version_metadata(SchemaId, SchemaVersionNumber,
 
 \item{MetadataKeyValue}{[required] The metadata key's corresponding value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaArn = "string",
-  SchemaName = "string",
-  RegistryName = "string",
-  LatestVersion = TRUE|FALSE,
-  VersionNumber = 123,
-  SchemaVersionId = "string",
-  MetadataKey = "string",
-  MetadataValue = "string"
-)
-}
-}
 \description{
-Puts the metadata key value pair for a specified schema version ID. A
-maximum of 10 key value pairs will be allowed per schema version. They
-can be added over one or more calls.
-}
-\section{Request syntax}{
-\preformatted{svc$put_schema_version_metadata(
-  SchemaId = list(
-    SchemaArn = "string",
-    SchemaName = "string",
-    RegistryName = "string"
-  ),
-  SchemaVersionNumber = list(
-    LatestVersion = TRUE|FALSE,
-    VersionNumber = 123
-  ),
-  SchemaVersionId = "string",
-  MetadataKeyValue = list(
-    MetadataKey = "string",
-    MetadataValue = "string"
-  )
-)
-}
-}
+Puts the metadata key value pair for a specified schema version ID. A maximum of 10 key value pairs will be allowed per schema version. They can be added over one or more calls.
 
+See \url{https://paws-r.github.io/docs/glue/put_schema_version_metadata.html} for full documentation.
+}
 \keyword{internal}

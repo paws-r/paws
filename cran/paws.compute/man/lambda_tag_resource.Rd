@@ -11,35 +11,9 @@ lambda_tag_resource(Resource, Tags)
 
 \item{Tags}{[required] A list of tags to apply to the function.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds
-\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}
-to a function.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  Resource = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
+Adds \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags} to a function.
 
-\examples{
-\dontrun{
-# The following example adds a tag with the key name DEPARTMENT and a
-# value of 'Department A' to the specified Lambda function.
-svc$tag_resource(
-  Resource = "arn:aws:lambda:us-west-2:123456789012:function:my-function",
-  Tags = list(
-    DEPARTMENT = "Department A"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/tag_resource.html} for full documentation.
 }
 \keyword{internal}

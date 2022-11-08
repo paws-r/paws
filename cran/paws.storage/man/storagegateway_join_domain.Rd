@@ -4,13 +4,20 @@
 \alias{storagegateway_join_domain}
 \title{Adds a file gateway to an Active Directory domain}
 \usage{
-storagegateway_join_domain(GatewayARN, DomainName, OrganizationalUnit,
-  DomainControllers, TimeoutInSeconds, UserName, Password)
+storagegateway_join_domain(
+  GatewayARN,
+  DomainName,
+  OrganizationalUnit = NULL,
+  DomainControllers = NULL,
+  TimeoutInSeconds = NULL,
+  UserName,
+  Password
+)
 }
 \arguments{
 \item{GatewayARN}{[required] The Amazon Resource Name (ARN) of the gateway. Use the
 \code{\link[=storagegateway_list_gateways]{list_gateways}} operation to return a
-list of gateways for your account and AWS Region.}
+list of gateways for your account and Amazon Web Services Region.}
 
 \item{DomainName}{[required] The name of the domain that you want the gateway to join.}
 
@@ -35,30 +42,9 @@ computers to the domain.}
 \item{Password}{[required] Sets the password of the user who has permission to add the gateway to
 the Active Directory domain.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string",
-  ActiveDirectoryStatus = "ACCESS_DENIED"|"DETACHED"|"JOINED"|"JOINING"|"NETWORK_ERROR"|"TIMEOUT"|"UNKNOWN_ERROR"
-)
-}
-}
 \description{
-Adds a file gateway to an Active Directory domain. This operation is
-only supported for file gateways that support the SMB file protocol.
-}
-\section{Request syntax}{
-\preformatted{svc$join_domain(
-  GatewayARN = "string",
-  DomainName = "string",
-  OrganizationalUnit = "string",
-  DomainControllers = list(
-    "string"
-  ),
-  TimeoutInSeconds = 123,
-  UserName = "string",
-  Password = "string"
-)
-}
-}
+Adds a file gateway to an Active Directory domain. This operation is only supported for file gateways that support the SMB file protocol.
 
+See \url{https://paws-r.github.io/docs/storagegateway/join_domain.html} for full documentation.
+}
 \keyword{internal}

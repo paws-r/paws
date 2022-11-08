@@ -17,40 +17,9 @@ To successfully call this API, you must own the identity.}
 
 \item{PolicyName}{[required] The name of the policy to be deleted.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified sending authorization policy for the given
-identity (an email address or a domain). This API returns successfully
-even if a policy with the specified name does not exist.
+Deletes the specified sending authorization policy for the given identity (an email address or a domain). This API returns successfully even if a policy with the specified name does not exist.
 
-This API is for the identity owner only. If you have not verified the
-identity, this API will return an error.
-
-Sending authorization is a feature that enables an identity owner to
-authorize other senders to use its identities. For information about
-using sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_identity_policy(
-  Identity = "string",
-  PolicyName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes a sending authorization policy for an
-# identity:
-svc$delete_identity_policy(
-  Identity = "user@example.com",
-  PolicyName = "MyPolicy"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/delete_identity_policy.html} for full documentation.
 }
 \keyword{internal}

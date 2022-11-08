@@ -4,11 +4,20 @@
 \alias{apigatewayv2_update_authorizer}
 \title{Updates an Authorizer}
 \usage{
-apigatewayv2_update_authorizer(ApiId, AuthorizerCredentialsArn,
-  AuthorizerId, AuthorizerPayloadFormatVersion,
-  AuthorizerResultTtlInSeconds, AuthorizerType, AuthorizerUri,
-  EnableSimpleResponses, IdentitySource, IdentityValidationExpression,
-  JwtConfiguration, Name)
+apigatewayv2_update_authorizer(
+  ApiId,
+  AuthorizerCredentialsArn = NULL,
+  AuthorizerId,
+  AuthorizerPayloadFormatVersion = NULL,
+  AuthorizerResultTtlInSeconds = NULL,
+  AuthorizerType = NULL,
+  AuthorizerUri = NULL,
+  EnableSimpleResponses = NULL,
+  IdentitySource = NULL,
+  IdentityValidationExpression = NULL,
+  JwtConfiguration = NULL,
+  Name = NULL
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -81,55 +90,9 @@ authorizer type. Supported only for HTTP APIs.}
 
 \item{Name}{The name of the authorizer.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AuthorizerCredentialsArn = "string",
-  AuthorizerId = "string",
-  AuthorizerPayloadFormatVersion = "string",
-  AuthorizerResultTtlInSeconds = 123,
-  AuthorizerType = "REQUEST"|"JWT",
-  AuthorizerUri = "string",
-  EnableSimpleResponses = TRUE|FALSE,
-  IdentitySource = list(
-    "string"
-  ),
-  IdentityValidationExpression = "string",
-  JwtConfiguration = list(
-    Audience = list(
-      "string"
-    ),
-    Issuer = "string"
-  ),
-  Name = "string"
-)
-}
-}
 \description{
 Updates an Authorizer.
-}
-\section{Request syntax}{
-\preformatted{svc$update_authorizer(
-  ApiId = "string",
-  AuthorizerCredentialsArn = "string",
-  AuthorizerId = "string",
-  AuthorizerPayloadFormatVersion = "string",
-  AuthorizerResultTtlInSeconds = 123,
-  AuthorizerType = "REQUEST"|"JWT",
-  AuthorizerUri = "string",
-  EnableSimpleResponses = TRUE|FALSE,
-  IdentitySource = list(
-    "string"
-  ),
-  IdentityValidationExpression = "string",
-  JwtConfiguration = list(
-    Audience = list(
-      "string"
-    ),
-    Issuer = "string"
-  ),
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/update_authorizer.html} for full documentation.
+}
 \keyword{internal}

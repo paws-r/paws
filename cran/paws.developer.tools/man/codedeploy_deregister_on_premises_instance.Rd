@@ -9,17 +9,9 @@ codedeploy_deregister_on_premises_instance(instanceName)
 \arguments{
 \item{instanceName}{[required] The name of the on-premises instance to deregister.}
 }
-\value{
-An empty list.
-}
 \description{
 Deregisters an on-premises instance.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_on_premises_instance(
-  instanceName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/deregister_on_premises_instance.html} for full documentation.
+}
 \keyword{internal}

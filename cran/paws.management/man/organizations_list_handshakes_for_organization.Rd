@@ -5,8 +5,11 @@
 \title{Lists the handshakes that are associated with the organization that the
 requesting user is part of}
 \usage{
-organizations_list_handshakes_for_organization(Filter, NextToken,
-  MaxResults)
+organizations_list_handshakes_for_organization(
+  Filter = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filter}{A filter of the handshakes that you want included in the response. The
@@ -34,78 +37,9 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Handshakes = list(
-    list(
-      Id = "string",
-      Arn = "string",
-      Parties = list(
-        list(
-          Id = "string",
-          Type = "ACCOUNT"|"ORGANIZATION"|"EMAIL"
-        )
-      ),
-      State = "REQUESTED"|"OPEN"|"CANCELED"|"ACCEPTED"|"DECLINED"|"EXPIRED",
-      RequestedTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ExpirationTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      Action = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
-      Resources = list(
-        list(
-          Value = "string",
-          Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATION_FEATURE_SET"|"EMAIL"|"MASTER_EMAIL"|"MASTER_NAME"|"NOTES"|"PARENT_HANDSHAKE",
-          Resources = list()
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the handshakes that are associated with the organization that the
-requesting user is part of. The
-\code{\link[=organizations_list_handshakes_for_organization]{list_handshakes_for_organization}}
-operation returns a list of handshake structures. Each structure
-contains details and status about a handshake.
+Lists the handshakes that are associated with the organization that the requesting user is part of. The \code{\link[=organizations_list_handshakes_for_organization]{list_handshakes_for_organization}} operation returns a list of handshake structures. Each structure contains details and status about a handshake.
 
-Handshakes that are \code{ACCEPTED}, \code{DECLINED}, or \code{CANCELED} appear in the
-results of this API for only 30 days after changing to that state. After
-that, they're deleted and no longer accessible.
-
-Always check the \code{NextToken} response parameter for a \code{null} value when
-calling a \verb{List*} operation. These operations can occasionally return an
-empty set of results even when there are more results available. The
-\code{NextToken} response parameter value is \code{null} \emph{only} when there are no
-more results to display.
-
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
-}
-\section{Request syntax}{
-\preformatted{svc$list_handshakes_for_organization(
-  Filter = list(
-    ActionType = "INVITE"|"ENABLE_ALL_FEATURES"|"APPROVE_ALL_FEATURES"|"ADD_ORGANIZATIONS_SERVICE_LINKED_ROLE",
-    ParentHandshakeId = "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows you how to get a list of handshakes
-# associated with the current organization:
-svc$list_handshakes_for_organization()
-}
-
+See \url{https://paws-r.github.io/docs/organizations/list_handshakes_for_organization.html} for full documentation.
 }
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Describes the current Elastic Load Balancing resource limits for your
 AWS account}
 \usage{
-elb_describe_account_limits(Marker, PageSize)
+elb_describe_account_limits(Marker = NULL, PageSize = NULL)
 }
 \arguments{
 \item{Marker}{The marker for the next set of results. (You received this marker from a
@@ -13,31 +13,9 @@ previous call.)}
 
 \item{PageSize}{The maximum number of results to return with this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Limits = list(
-    list(
-      Name = "string",
-      Max = "string"
-    )
-  ),
-  NextMarker = "string"
-)
-}
-}
 \description{
-Describes the current Elastic Load Balancing resource limits for your
-AWS account.
+Describes the current Elastic Load Balancing resource limits for your AWS account.
 
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html}{Limits for Your Classic Load Balancer}
-in the \emph{Classic Load Balancers Guide}.
+See \url{https://paws-r.github.io/docs/elb/describe_account_limits.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_account_limits(
-  Marker = "string",
-  PageSize = 123
-)
-}
-}
-
 \keyword{internal}

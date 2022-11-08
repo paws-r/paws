@@ -10,25 +10,9 @@ eventbridge_describe_partner_event_source(Name)
 \arguments{
 \item{Name}{[required] The name of the event source to display.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  Name = "string"
-)
-}
-}
 \description{
-An SaaS partner can use this operation to list details about a partner
-event source that they have created. AWS customers do not use this
-operation. Instead, AWS customers can use
-\code{\link[=eventbridge_describe_event_source]{describe_event_source}} to see
-details about a partner event source that is shared with them.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_partner_event_source(
-  Name = "string"
-)
-}
-}
+An SaaS partner can use this operation to list details about a partner event source that they have created. Amazon Web Services customers do not use this operation. Instead, Amazon Web Services customers can use \code{\link[=eventbridge_describe_event_source]{describe_event_source}} to see details about a partner event source that is shared with them.
 
+See \url{https://paws-r.github.io/docs/eventbridge/describe_partner_event_source.html} for full documentation.
+}
 \keyword{internal}

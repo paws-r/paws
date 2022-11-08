@@ -5,8 +5,17 @@
 \title{Adds or updates a file in a branch in an AWS CodeCommit repository, and
 generates a commit for the addition in the specified branch}
 \usage{
-codecommit_put_file(repositoryName, branchName, fileContent, filePath,
-  fileMode, parentCommitId, commitMessage, name, email)
+codecommit_put_file(
+  repositoryName,
+  branchName,
+  fileContent,
+  filePath,
+  fileMode = NULL,
+  parentCommitId = NULL,
+  commitMessage = NULL,
+  name = NULL,
+  email = NULL
+)
 }
 \arguments{
 \item{repositoryName}{[required] The name of the repository where you want to add or update the file.}
@@ -43,31 +52,9 @@ useful.}
 
 \item{email}{An email address for the person adding or updating the file.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  commitId = "string",
-  blobId = "string",
-  treeId = "string"
-)
-}
-}
 \description{
-Adds or updates a file in a branch in an AWS CodeCommit repository, and
-generates a commit for the addition in the specified branch.
-}
-\section{Request syntax}{
-\preformatted{svc$put_file(
-  repositoryName = "string",
-  branchName = "string",
-  fileContent = raw,
-  filePath = "string",
-  fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-  parentCommitId = "string",
-  commitMessage = "string",
-  name = "string",
-  email = "string"
-)
-}
-}
+Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in the specified branch.
 
+See \url{https://paws-r.github.io/docs/codecommit/put_file.html} for full documentation.
+}
 \keyword{internal}

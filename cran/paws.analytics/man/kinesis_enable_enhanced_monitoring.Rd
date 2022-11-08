@@ -27,29 +27,9 @@ enables every metric.
 For more information, see \href{https://docs.aws.amazon.com/streams/latest/dev/monitoring-with-cloudwatch.html}{Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StreamName = "string",
-  CurrentShardLevelMetrics = list(
-    "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
-  ),
-  DesiredShardLevelMetrics = list(
-    "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
-  )
-)
-}
-}
 \description{
 Enables enhanced Kinesis data stream monitoring for shard-level metrics.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_enhanced_monitoring(
-  StreamName = "string",
-  ShardLevelMetrics = list(
-    "IncomingBytes"|"IncomingRecords"|"OutgoingBytes"|"OutgoingRecords"|"WriteProvisionedThroughputExceeded"|"ReadProvisionedThroughputExceeded"|"IteratorAgeMilliseconds"|"ALL"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kinesis/enable_enhanced_monitoring.html} for full documentation.
+}
 \keyword{internal}

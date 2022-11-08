@@ -5,40 +5,16 @@
 \title{Lists all exported output values in the account and Region in which you
 call this action}
 \usage{
-cloudformation_list_exports(NextToken)
+cloudformation_list_exports(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{A string (provided by the \code{\link[=cloudformation_list_exports]{list_exports}}
 response output) that identifies the next page of exported output values
 that you asked to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Exports = list(
-    list(
-      ExportingStackId = "string",
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists all exported output values in the account and Region in which you
-call this action. Use this action to see the exported output values that
-you can import into other stacks. To import values, use the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html}{\code{Fn::ImportValue}}
-function.
+Lists all exported output values in the account and Region in which you call this action. Use this action to see the exported output values that you can import into other stacks. To import values, use the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html}{\code{Fn::ImportValue}} function.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html}{AWS CloudFormation Export Stack Output Values}.
+See \url{https://paws-r.github.io/docs/cloudformation/list_exports.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_exports(
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

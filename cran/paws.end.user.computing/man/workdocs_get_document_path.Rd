@@ -5,8 +5,13 @@
 \title{Retrieves the path information (the hierarchy from the root folder) for
 the requested document}
 \usage{
-workdocs_get_document_path(AuthenticationToken, DocumentId, Limit,
-  Fields, Marker)
+workdocs_get_document_path(
+  AuthenticationToken = NULL,
+  DocumentId,
+  Limit = NULL,
+  Fields = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
@@ -21,37 +26,9 @@ the parent folders.}
 
 \item{Marker}{This value is not supported.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Path = list(
-    Components = list(
-      list(
-        Id = "string",
-        Name = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Retrieves the path information (the hierarchy from the root folder) for
-the requested document.
+Retrieves the path information (the hierarchy from the root folder) for the requested document.
 
-By default, Amazon WorkDocs returns a maximum of 100 levels upwards from
-the requested document and only includes the IDs of the parent folders
-in the path. You can limit the maximum number of levels. You can also
-request the names of the parent folders.
+See \url{https://paws-r.github.io/docs/workdocs/get_document_path.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_document_path(
-  AuthenticationToken = "string",
-  DocumentId = "string",
-  Limit = 123,
-  Fields = "string",
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

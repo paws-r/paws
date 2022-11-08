@@ -5,73 +5,24 @@
 \title{Deletes automated backups using the DbiResourceId value of the source DB
 instance or the Amazon Resource Name (ARN) of the automated backups}
 \usage{
-rds_delete_db_instance_automated_backup(DbiResourceId,
-  DBInstanceAutomatedBackupsArn)
+rds_delete_db_instance_automated_backup(
+  DbiResourceId = NULL,
+  DBInstanceAutomatedBackupsArn = NULL
+)
 }
 \arguments{
 \item{DbiResourceId}{The identifier for the source DB instance, which can't be changed and
-which is unique to an AWS Region.}
+which is unique to an Amazon Web Services Region.}
 
 \item{DBInstanceAutomatedBackupsArn}{The Amazon Resource Name (ARN) of the automated backups to delete, for
 example,
-\code{arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DBInstanceAutomatedBackup = list(
-    DBInstanceArn = "string",
-    DbiResourceId = "string",
-    Region = "string",
-    DBInstanceIdentifier = "string",
-    RestoreWindow = list(
-      EarliestTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LatestTime = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    AllocatedStorage = 123,
-    Status = "string",
-    Port = 123,
-    AvailabilityZone = "string",
-    VpcId = "string",
-    InstanceCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    MasterUsername = "string",
-    Engine = "string",
-    EngineVersion = "string",
-    LicenseModel = "string",
-    Iops = 123,
-    OptionGroupName = "string",
-    TdeCredentialArn = "string",
-    Encrypted = TRUE|FALSE,
-    StorageType = "string",
-    KmsKeyId = "string",
-    Timezone = "string",
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    BackupRetentionPeriod = 123,
-    DBInstanceAutomatedBackupsArn = "string",
-    DBInstanceAutomatedBackupsReplications = list(
-      list(
-        DBInstanceAutomatedBackupsArn = "string"
-      )
-    )
-  )
-)
-}
+\code{arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.
+
+This setting doesn't apply to RDS Custom.}
 }
 \description{
-Deletes automated backups using the \code{DbiResourceId} value of the source
-DB instance or the Amazon Resource Name (ARN) of the automated backups.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_db_instance_automated_backup(
-  DbiResourceId = "string",
-  DBInstanceAutomatedBackupsArn = "string"
-)
-}
-}
+Deletes automated backups using the \code{DbiResourceId} value of the source DB instance or the Amazon Resource Name (ARN) of the automated backups.
 
+See \url{https://paws-r.github.io/docs/rds/delete_db_instance_automated_backup.html} for full documentation.
+}
 \keyword{internal}

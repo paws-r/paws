@@ -5,8 +5,13 @@
 \title{Configures options for asynchronous invocation on a function, version,
 or alias}
 \usage{
-lambda_put_function_event_invoke_config(FunctionName, Qualifier,
-  MaximumRetryAttempts, MaximumEventAgeInSeconds, DestinationConfig)
+lambda_put_function_event_invoke_config(
+  FunctionName,
+  Qualifier = NULL,
+  MaximumRetryAttempts = NULL,
+  MaximumEventAgeInSeconds = NULL,
+  DestinationConfig = NULL
+)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function, version, or alias.
@@ -42,76 +47,9 @@ processing.
 \item \strong{Event Bus} - The ARN of an Amazon EventBridge event bus.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LastModified = as.POSIXct(
-    "2015-01-01"
-  ),
-  FunctionArn = "string",
-  MaximumRetryAttempts = 123,
-  MaximumEventAgeInSeconds = 123,
-  DestinationConfig = list(
-    OnSuccess = list(
-      Destination = "string"
-    ),
-    OnFailure = list(
-      Destination = "string"
-    )
-  )
-)
-}
-}
 \description{
-Configures options for \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html}{asynchronous invocation}
-on a function, version, or alias. If a configuration already exists for
-a function, version, or alias, this operation overwrites it. If you
-exclude any settings, they are removed. To set one option without
-affecting existing settings for other options, use
-\code{\link[=lambda_update_function_event_invoke_config]{update_function_event_invoke_config}}.
+Configures options for \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html}{asynchronous invocation} on a function, version, or alias. If a configuration already exists for a function, version, or alias, this operation overwrites it. If you exclude any settings, they are removed. To set one option without affecting existing settings for other options, use \code{\link[=lambda_update_function_event_invoke_config]{update_function_event_invoke_config}}.
 
-By default, Lambda retries an asynchronous invocation twice if the
-function returns an error. It retains events in a queue for up to six
-hours. When an event fails all processing attempts or stays in the
-asynchronous invocation queue for too long, Lambda discards it. To
-retain discarded events, configure a dead-letter queue with
-\code{\link[=lambda_update_function_configuration]{update_function_configuration}}.
-
-To send an invocation record to a queue, topic, function, or event bus,
-specify a
-\href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations}{destination}.
-You can configure separate destinations for successful invocations
-(on-success) and events that fail all processing attempts (on-failure).
-You can configure destinations in addition to or instead of a
-dead-letter queue.
-}
-\section{Request syntax}{
-\preformatted{svc$put_function_event_invoke_config(
-  FunctionName = "string",
-  Qualifier = "string",
-  MaximumRetryAttempts = 123,
-  MaximumEventAgeInSeconds = 123,
-  DestinationConfig = list(
-    OnSuccess = list(
-      Destination = "string"
-    ),
-    OnFailure = list(
-      Destination = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example sets a maximum event age of one hour and disables
-# retries for the specified function.
-svc$put_function_event_invoke_config(
-  FunctionName = "my-function",
-  MaximumEventAgeInSeconds = 3600L,
-  MaximumRetryAttempts = 0L
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/put_function_event_invoke_config.html} for full documentation.
 }
 \keyword{internal}

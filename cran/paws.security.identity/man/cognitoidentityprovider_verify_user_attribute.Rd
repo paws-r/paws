@@ -4,29 +4,19 @@
 \alias{cognitoidentityprovider_verify_user_attribute}
 \title{Verifies the specified user attributes in the user pool}
 \usage{
-cognitoidentityprovider_verify_user_attribute(AccessToken,
-  AttributeName, Code)
+cognitoidentityprovider_verify_user_attribute(AccessToken, AttributeName, Code)
 }
 \arguments{
-\item{AccessToken}{[required] Represents the access token of the request to verify user attributes.}
+\item{AccessToken}{[required] A valid access token that Amazon Cognito issued to the user whose user
+attributes you want to verify.}
 
 \item{AttributeName}{[required] The attribute name in the request to verify user attributes.}
 
 \item{Code}{[required] The verification code in the request to verify user attributes.}
 }
-\value{
-An empty list.
-}
 \description{
 Verifies the specified user attributes in the user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$verify_user_attribute(
-  AccessToken = "string",
-  AttributeName = "string",
-  Code = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/verify_user_attribute.html} for full documentation.
+}
 \keyword{internal}

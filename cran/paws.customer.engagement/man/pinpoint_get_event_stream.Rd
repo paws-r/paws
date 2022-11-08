@@ -10,28 +10,9 @@ pinpoint_get_event_stream(ApplicationId)
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EventStream = list(
-    ApplicationId = "string",
-    DestinationStreamArn = "string",
-    ExternalId = "string",
-    LastModifiedDate = "string",
-    LastUpdatedBy = "string",
-    RoleArn = "string"
-  )
-)
-}
-}
 \description{
-Retrieves information about the event stream settings for an
-application.
-}
-\section{Request syntax}{
-\preformatted{svc$get_event_stream(
-  ApplicationId = "string"
-)
-}
-}
+Retrieves information about the event stream settings for an application.
 
+See \url{https://paws-r.github.io/docs/pinpoint/get_event_stream.html} for full documentation.
+}
 \keyword{internal}

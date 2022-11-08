@@ -4,8 +4,13 @@
 \alias{clouddirectory_attach_typed_link}
 \title{Attaches a typed link to a specified source and target object}
 \usage{
-clouddirectory_attach_typed_link(DirectoryArn, SourceObjectReference,
-  TargetObjectReference, TypedLinkFacet, Attributes)
+clouddirectory_attach_typed_link(
+  DirectoryArn,
+  SourceObjectReference,
+  TargetObjectReference,
+  TypedLinkFacet,
+  Attributes
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The Amazon Resource Name (ARN) of the directory where you want to attach
@@ -19,70 +24,9 @@ the typed link.}
 
 \item{Attributes}{[required] A set of attributes that are associated with the typed link.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TypedLinkSpecifier = list(
-    TypedLinkFacet = list(
-      SchemaArn = "string",
-      TypedLinkName = "string"
-    ),
-    SourceObjectReference = list(
-      Selector = "string"
-    ),
-    TargetObjectReference = list(
-      Selector = "string"
-    ),
-    IdentityAttributeValues = list(
-      list(
-        AttributeName = "string",
-        Value = list(
-          StringValue = "string",
-          BinaryValue = raw,
-          BooleanValue = TRUE|FALSE,
-          NumberValue = "string",
-          DatetimeValue = as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Attaches a typed link to a specified source and target object. For more
-information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
-}
-\section{Request syntax}{
-\preformatted{svc$attach_typed_link(
-  DirectoryArn = "string",
-  SourceObjectReference = list(
-    Selector = "string"
-  ),
-  TargetObjectReference = list(
-    Selector = "string"
-  ),
-  TypedLinkFacet = list(
-    SchemaArn = "string",
-    TypedLinkName = "string"
-  ),
-  Attributes = list(
-    list(
-      AttributeName = "string",
-      Value = list(
-        StringValue = "string",
-        BinaryValue = raw,
-        BooleanValue = TRUE|FALSE,
-        NumberValue = "string",
-        DatetimeValue = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  )
-)
-}
-}
+Attaches a typed link to a specified source and target object. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/attach_typed_link.html} for full documentation.
+}
 \keyword{internal}

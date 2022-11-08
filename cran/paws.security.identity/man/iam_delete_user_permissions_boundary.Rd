@@ -10,21 +10,9 @@ iam_delete_user_permissions_boundary(UserName)
 \item{UserName}{[required] The name (friendly name, not ARN) of the IAM user from which you want to
 remove the permissions boundary.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the permissions boundary for the specified IAM user.
 
-Deleting the permissions boundary for a user might increase its
-permissions by allowing the user to perform all the actions granted in
-its permissions policies.
+See \url{https://paws-r.github.io/docs/iam/delete_user_permissions_boundary.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_user_permissions_boundary(
-  UserName = "string"
-)
-}
-}
-
 \keyword{internal}

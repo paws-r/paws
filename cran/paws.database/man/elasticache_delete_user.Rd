@@ -9,34 +9,9 @@ elasticache_delete_user(UserId)
 \arguments{
 \item{UserId}{[required] The ID of the user.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserId = "string",
-  UserName = "string",
-  Status = "string",
-  Engine = "string",
-  AccessString = "string",
-  UserGroupIds = list(
-    "string"
-  ),
-  Authentication = list(
-    Type = "password"|"no-password",
-    PasswordCount = 123
-  ),
-  ARN = "string"
-)
-}
-}
 \description{
-For Redis engine version 6.x onwards: Deletes a user. The user will be
-removed from all user groups and in turn removed from all replication
-groups. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user(
-  UserId = "string"
-)
-}
-}
+For Redis engine version 6.0 onwards: Deletes a user. The user will be removed from all user groups and in turn removed from all replication groups. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
 
+See \url{https://paws-r.github.io/docs/elasticache/delete_user.html} for full documentation.
+}
 \keyword{internal}

@@ -8,25 +8,14 @@ change}
 connect_disassociate_approved_origin(InstanceId, Origin)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{Origin}{[required] The domain URL of the integrated application.}
 }
-\value{
-An empty list.
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Revokes access to integrated applications from Amazon Connect.
+See \url{https://paws-r.github.io/docs/connect/disassociate_approved_origin.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disassociate_approved_origin(
-  InstanceId = "string",
-  Origin = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -7,26 +7,9 @@ other files used by Elastic Beanstalk environments}
 \usage{
 elasticbeanstalk_create_storage_location()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  S3Bucket = "string"
-)
-}
-}
 \description{
-Creates a bucket in Amazon S3 to store application versions, logs, and
-other files used by Elastic Beanstalk environments. The Elastic
-Beanstalk console and EB CLI call this API the first time you create an
-environment in a region. If the storage location already exists,
-\code{\link[=elasticbeanstalk_create_storage_location]{create_storage_location}}
-still returns the bucket name but does not create a new bucket.
-}
-\examples{
-\dontrun{
-# The following operation creates a new environment for version v1 of a
-# java application named my-app:
-svc$create_storage_location()
-}
+Creates a bucket in Amazon S3 to store application versions, logs, and other files used by Elastic Beanstalk environments. The Elastic Beanstalk console and EB CLI call this API the first time you create an environment in a region. If the storage location already exists, \code{\link[=elasticbeanstalk_create_storage_location]{create_storage_location}} still returns the bucket name but does not create a new bucket.
 
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/create_storage_location.html} for full documentation.
 }
 \keyword{internal}

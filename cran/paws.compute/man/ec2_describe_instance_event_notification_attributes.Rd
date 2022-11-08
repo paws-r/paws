@@ -5,7 +5,7 @@
 \title{Describes the tag keys that are registered to appear in scheduled event
 notifications for resources in the current Region}
 \usage{
-ec2_describe_instance_event_notification_attributes(DryRun)
+ec2_describe_instance_event_notification_attributes(DryRun = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -13,26 +13,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceTagAttribute = list(
-    InstanceTagKeys = list(
-      "string"
-    ),
-    IncludeAllTagsOfInstance = TRUE|FALSE
-  )
-)
-}
-}
 \description{
-Describes the tag keys that are registered to appear in scheduled event
-notifications for resources in the current Region.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_instance_event_notification_attributes(
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes the tag keys that are registered to appear in scheduled event notifications for resources in the current Region.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_instance_event_notification_attributes.html} for full documentation.
+}
 \keyword{internal}

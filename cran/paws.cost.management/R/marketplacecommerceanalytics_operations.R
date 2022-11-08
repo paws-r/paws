@@ -8,23 +8,9 @@ NULL
 #' the specified SNS topic once the data is available
 #'
 #' @description
-#' Given a data set type and data set publication date, asynchronously
-#' publishes the requested data set to the specified S3 bucket and notifies
-#' the specified SNS topic once the data is available. Returns a unique
-#' request identifier that can be used to correlate requests with
-#' notifications from the SNS topic. Data sets will be published in
-#' comma-separated values (CSV) format with the file name
-#' \{data_set_type\}_YYYY-MM-DD.csv. If a file with the same name
-#' already exists (e.g. if the same data set is requested twice), the
-#' original file will be overwritten by the new file. Requires a Role with
-#' an attached permissions policy providing Allow permissions for the
-#' following actions: s3:PutObject, s3:GetBucketLocation,
-#' sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
+#' Given a data set type and data set publication date, asynchronously publishes the requested data set to the specified S3 bucket and notifies the specified SNS topic once the data is available. Returns a unique request identifier that can be used to correlate requests with notifications from the SNS topic. Data sets will be published in comma-separated values (CSV) format with the file name \{data_set_type\}_YYYY-MM-DD.csv. If a file with the same name already exists (e.g. if the same data set is requested twice), the original file will be overwritten by the new file. Requires a Role with an attached permissions policy providing Allow permissions for the following actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 #'
-#' @usage
-#' marketplacecommerceanalytics_generate_data_set(dataSetType,
-#'   dataSetPublicationDate, roleNameArn, destinationS3BucketName,
-#'   destinationS3Prefix, snsTopicArn, customerDefinedValues)
+#' See [https://paws-r.github.io/docs/marketplacecommerceanalytics/generate_data_set.html](https://paws-r.github.io/docs/marketplacecommerceanalytics/generate_data_set.html) for full documentation.
 #'
 #' @param dataSetType &#91;required&#93; The desired data set type.
 #' 
@@ -166,31 +152,6 @@ NULL
 #' key-value pairs can be used to correlated responses with tracking
 #' information from other systems.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   dataSetRequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$generate_data_set(
-#'   dataSetType = "customer_subscriber_hourly_monthly_subscriptions"|"customer_subscriber_annual_subscriptions"|"daily_business_usage_by_instance_type"|"daily_business_fees"|"daily_business_free_trial_conversions"|"daily_business_new_instances"|"daily_business_new_product_subscribers"|"daily_business_canceled_product_subscribers"|"monthly_revenue_billing_and_revenue_data"|"monthly_revenue_annual_subscriptions"|"monthly_revenue_field_demonstration_usage"|"monthly_revenue_flexible_payment_schedule"|"disbursed_amount_by_product"|"disbursed_amount_by_product_with_uncollected_funds"|"disbursed_amount_by_instance_hours"|"disbursed_amount_by_customer_geo"|"disbursed_amount_by_age_of_uncollected_funds"|"disbursed_amount_by_age_of_disbursed_funds"|"disbursed_amount_by_age_of_past_due_funds"|"disbursed_amount_by_uncollected_funds_breakdown"|"customer_profile_by_industry"|"customer_profile_by_revenue"|"customer_profile_by_geography"|"sales_compensation_billed_revenue"|"us_sales_and_use_tax_records",
-#'   dataSetPublicationDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   roleNameArn = "string",
-#'   destinationS3BucketName = "string",
-#'   destinationS3Prefix = "string",
-#'   snsTopicArn = "string",
-#'   customerDefinedValues = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname marketplacecommerceanalytics_generate_data_set
@@ -216,42 +177,27 @@ marketplacecommerceanalytics_generate_data_set <- function(dataSetType, dataSetP
 #' the specified SNS topic once the data is available
 #'
 #' @description
-#' Given a data set type and a from date, asynchronously publishes the
-#' requested customer support data to the specified S3 bucket and notifies
-#' the specified SNS topic once the data is available. Returns a unique
-#' request identifier that can be used to correlate requests with
-#' notifications from the SNS topic. Data sets will be published in
-#' comma-separated values (CSV) format with the file name
-#' \{data_set_type\}_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with the
-#' same name already exists (e.g. if the same data set is requested twice),
-#' the original file will be overwritten by the new file. Requires a Role
-#' with an attached permissions policy providing Allow permissions for the
-#' following actions: s3:PutObject, s3:GetBucketLocation,
-#' sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
+#' Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available. Returns a unique request identifier that can be used to correlate requests with notifications from the SNS topic. Data sets will be published in comma-separated values (CSV) format with the file name \{data_set_type\}_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with the same name already exists (e.g. if the same data set is requested twice), the original file will be overwritten by the new file. Requires a Role with an attached permissions policy providing Allow permissions for the following actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 #'
-#' @usage
-#' marketplacecommerceanalytics_start_support_data_export(dataSetType,
-#'   fromDate, roleNameArn, destinationS3BucketName, destinationS3Prefix,
-#'   snsTopicArn, customerDefinedValues)
+#' See [https://paws-r.github.io/docs/marketplacecommerceanalytics/start_support_data_export.html](https://paws-r.github.io/docs/marketplacecommerceanalytics/start_support_data_export.html) for full documentation.
 #'
 #' @param dataSetType &#91;required&#93; Specifies the data set type to be written to the output csv file. The
 #' data set types customer_support_contacts_data and
-#' test_customer_support_contacts_data both result in a csv file
-#' containing the following fields: Product Id, Product Code, Customer
-#' Guid, Subscription Guid, Subscription Start Date, Organization, AWS
-#' Account Id, Given Name, Surname, Telephone Number, Email, Title, Country
-#' Code, ZIP Code, Operation Type, and Operation Time.
+#' test_customer_support_contacts_data both result in a csv file containing
+#' the following fields: Product Id, Product Code, Customer Guid,
+#' Subscription Guid, Subscription Start Date, Organization, AWS Account
+#' Id, Given Name, Surname, Telephone Number, Email, Title, Country Code,
+#' ZIP Code, Operation Type, and Operation Time.
 #' 
-#' -   *customer_support_contacts_data* Customer support contact data.
-#'     The data set will contain all changes (Creates, Updates, and
-#'     Deletes) to customer support contact data from the date specified in
-#'     the from_date parameter.
-#' -   *test_customer_support_contacts_data* An example data set
-#'     containing static test data in the same format as
+#' -   *customer_support_contacts_data* Customer support contact data. The
+#'     data set will contain all changes (Creates, Updates, and Deletes) to
+#'     customer support contact data from the date specified in the
+#'     from_date parameter.
+#' -   *test_customer_support_contacts_data* An example data set containing
+#'     static test data in the same format as
 #'     customer_support_contacts_data
 #' @param fromDate &#91;required&#93; The start date from which to retrieve the data set in UTC. This
-#' parameter only affects the customer_support_contacts_data data set
-#' type.
+#' parameter only affects the customer_support_contacts_data data set type.
 #' @param roleNameArn &#91;required&#93; The Amazon Resource Name (ARN) of the Role with an attached permissions
 #' policy to interact with the provided AWS services.
 #' @param destinationS3BucketName &#91;required&#93; The name (friendly name, not ARN) of the destination S3 bucket.
@@ -266,31 +212,6 @@ marketplacecommerceanalytics_generate_data_set <- function(dataSetType, dataSetP
 #' the data set has been published or if an error has occurred.
 #' @param customerDefinedValues (Optional) Key-value pairs which will be returned, unmodified, in the
 #' Amazon SNS notification message and the data set metadata file.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   dataSetRequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_support_data_export(
-#'   dataSetType = "customer_support_contacts_data"|"test_customer_support_contacts_data",
-#'   fromDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   roleNameArn = "string",
-#'   destinationS3BucketName = "string",
-#'   destinationS3Prefix = "string",
-#'   snsTopicArn = "string",
-#'   customerDefinedValues = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

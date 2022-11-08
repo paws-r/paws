@@ -20,41 +20,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RoleName = "string",
-  PolicyName = "string",
-  PolicyDocument = "string"
-)
-}
-}
 \description{
-Retrieves the specified inline policy document that is embedded with the
-specified IAM role.
+Retrieves the specified inline policy document that is embedded with the specified IAM role.
 
-Policies returned by this API are URL-encoded compliant with \href{https://datatracker.ietf.org/doc/html/rfc3986}{RFC 3986}. You can use a URL
-decoding method to convert the policy back to plain JSON text. For
-example, if you use Java, you can use the \code{decode} method of the
-\code{java.net.URLDecoder} utility class in the Java SDK. Other languages and
-SDKs provide similar functionality.
-
-An IAM role can also have managed policies attached to it. To retrieve a
-managed policy document that is attached to a role, use
-\code{\link[=iam_get_policy]{get_policy}} to determine the policy's default
-version, then use \code{\link[=iam_get_policy_version]{get_policy_version}} to
-retrieve the policy document.
-
-For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
-in the \emph{IAM User Guide}.
-
-For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Using Roles to Delegate Permissions and Federate Identities}.
+See \url{https://paws-r.github.io/docs/iam/get_role_policy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_role_policy(
-  RoleName = "string",
-  PolicyName = "string"
-)
-}
-}
-
 \keyword{internal}

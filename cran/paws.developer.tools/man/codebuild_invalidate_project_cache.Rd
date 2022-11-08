@@ -7,19 +7,11 @@
 codebuild_invalidate_project_cache(projectName)
 }
 \arguments{
-\item{projectName}{[required] The name of the AWS CodeBuild build project that the cache is reset for.}
-}
-\value{
-An empty list.
+\item{projectName}{[required] The name of the CodeBuild build project that the cache is reset for.}
 }
 \description{
 Resets the cache for a project.
-}
-\section{Request syntax}{
-\preformatted{svc$invalidate_project_cache(
-  projectName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codebuild/invalidate_project_cache.html} for full documentation.
+}
 \keyword{internal}

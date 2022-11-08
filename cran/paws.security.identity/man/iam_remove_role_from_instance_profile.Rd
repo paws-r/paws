@@ -19,37 +19,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-An empty list.
-}
 \description{
 Removes the specified IAM role from the specified EC2 instance profile.
 
-Make sure that you do not have any Amazon EC2 instances running with the
-role you are about to remove from the instance profile. Removing a role
-from an instance profile that is associated with a running instance
-might break any applications running on the instance.
-
-For more information about IAM roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with Roles}.
-For more information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_role_from_instance_profile(
-  InstanceProfileName = "string",
-  RoleName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command removes the role named Test-Role from the instance
-# profile named ExampleInstanceProfile.
-svc$remove_role_from_instance_profile(
-  InstanceProfileName = "ExampleInstanceProfile",
-  RoleName = "Test-Role"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/remove_role_from_instance_profile.html} for full documentation.
 }
 \keyword{internal}

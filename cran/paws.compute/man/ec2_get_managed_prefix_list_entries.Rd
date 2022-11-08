@@ -4,8 +4,13 @@
 \alias{ec2_get_managed_prefix_list_entries}
 \title{Gets information about the entries for a specified managed prefix list}
 \usage{
-ec2_get_managed_prefix_list_entries(DryRun, PrefixListId, TargetVersion,
-  MaxResults, NextToken)
+ec2_get_managed_prefix_list_entries(
+  DryRun = NULL,
+  PrefixListId,
+  TargetVersion = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -24,30 +29,9 @@ value.}
 
 \item{NextToken}{The token for the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Entries = list(
-    list(
-      Cidr = "string",
-      Description = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets information about the entries for a specified managed prefix list.
-}
-\section{Request syntax}{
-\preformatted{svc$get_managed_prefix_list_entries(
-  DryRun = TRUE|FALSE,
-  PrefixListId = "string",
-  TargetVersion = 123,
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/get_managed_prefix_list_entries.html} for full documentation.
+}
 \keyword{internal}

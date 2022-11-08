@@ -5,8 +5,13 @@
 \title{Returns the detailed parameter list for a particular cluster parameter
 group}
 \usage{
-docdb_describe_db_cluster_parameters(DBClusterParameterGroupName,
-  Source, Filters, MaxRecords, Marker)
+docdb_describe_db_cluster_parameters(
+  DBClusterParameterGroupName,
+  Source = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBClusterParameterGroupName}{[required] The name of a specific cluster parameter group to return parameter
@@ -36,46 +41,9 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Parameters = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string",
-      Description = "string",
-      Source = "string",
-      ApplyType = "string",
-      DataType = "string",
-      AllowedValues = "string",
-      IsModifiable = TRUE|FALSE,
-      MinimumEngineVersion = "string",
-      ApplyMethod = "immediate"|"pending-reboot"
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Returns the detailed parameter list for a particular cluster parameter
-group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_db_cluster_parameters(
-  DBClusterParameterGroupName = "string",
-  Source = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns the detailed parameter list for a particular cluster parameter group.
 
+See \url{https://paws-r.github.io/docs/docdb/describe_db_cluster_parameters.html} for full documentation.
+}
 \keyword{internal}

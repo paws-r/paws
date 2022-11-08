@@ -4,7 +4,13 @@
 \alias{ec2_describe_key_pairs}
 \title{Describes the specified key pairs or all of your key pairs}
 \usage{
-ec2_describe_key_pairs(Filters, KeyNames, KeyPairIds, DryRun)
+ec2_describe_key_pairs(
+  Filters = NULL,
+  KeyNames = NULL,
+  KeyPairIds = NULL,
+  DryRun = NULL,
+  IncludePublicKey = NULL
+)
 }
 \arguments{
 \item{Filters}{The filters.
@@ -15,16 +21,16 @@ ec2_describe_key_pairs(Filters, KeyNames, KeyPairIds, DryRun)
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 }}
 
 \item{KeyNames}{The key pair names.
 
-Default: Describes all your key pairs.}
+Default: Describes all of your key pairs.}
 
 \item{KeyPairIds}{The IDs of the key pairs.}
 
@@ -32,61 +38,14 @@ Default: Describes all your key pairs.}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  KeyPairs = list(
-    list(
-      KeyPairId = "string",
-      KeyFingerprint = "string",
-      KeyName = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
+
+\item{IncludePublicKey}{If \code{true}, the public key material is included in the response.
+
+Default: \code{false}}
 }
 \description{
 Describes the specified key pairs or all of your key pairs.
 
-For more information about key pairs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html}{Key Pairs}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_key_pairs(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  KeyNames = list(
-    "string"
-  ),
-  KeyPairIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example displays the fingerprint for the specified key.
-svc$describe_key_pairs(
-  KeyNames = list(
-    "my-key-pair"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_key_pairs.html} for full documentation.
 }
 \keyword{internal}

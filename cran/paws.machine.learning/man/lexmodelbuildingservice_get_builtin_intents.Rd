@@ -4,8 +4,12 @@
 \alias{lexmodelbuildingservice_get_builtin_intents}
 \title{Gets a list of built-in intents that meet the specified criteria}
 \usage{
-lexmodelbuildingservice_get_builtin_intents(locale, signatureContains,
-  nextToken, maxResults)
+lexmodelbuildingservice_get_builtin_intents(
+  locale = NULL,
+  signatureContains = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{locale}{A list of locales that the intent supports.}
@@ -24,34 +28,9 @@ the next request.}
 \item{maxResults}{The maximum number of intents to return in the response. The default is
 10.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  intents = list(
-    list(
-      signature = "string",
-      supportedLocales = list(
-        "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Gets a list of built-in intents that meet the specified criteria.
 
-This operation requires permission for the \code{lex:GetBuiltinIntents}
-action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_intents.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_builtin_intents(
-  locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
-  signatureContains = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
-
 \keyword{internal}

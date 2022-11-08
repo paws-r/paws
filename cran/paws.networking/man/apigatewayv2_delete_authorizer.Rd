@@ -11,18 +11,9 @@ apigatewayv2_delete_authorizer(ApiId, AuthorizerId)
 
 \item{AuthorizerId}{[required] The authorizer identifier.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an Authorizer.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_authorizer(
-  ApiId = "string",
-  AuthorizerId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_authorizer.html} for full documentation.
+}
 \keyword{internal}

@@ -2,28 +2,18 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_delete_identity_provider}
 \alias{cognitoidentityprovider_delete_identity_provider}
-\title{Deletes an identity provider for a user pool}
+\title{Deletes an IdP for a user pool}
 \usage{
-cognitoidentityprovider_delete_identity_provider(UserPoolId,
-  ProviderName)
+cognitoidentityprovider_delete_identity_provider(UserPoolId, ProviderName)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
 
-\item{ProviderName}{[required] The identity provider name.}
-}
-\value{
-An empty list.
+\item{ProviderName}{[required] The IdP name.}
 }
 \description{
-Deletes an identity provider for a user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_identity_provider(
-  UserPoolId = "string",
-  ProviderName = "string"
-)
-}
-}
+Deletes an IdP for a user pool.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_identity_provider.html} for full documentation.
+}
 \keyword{internal}

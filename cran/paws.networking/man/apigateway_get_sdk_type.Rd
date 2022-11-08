@@ -2,38 +2,16 @@
 % Please edit documentation in R/apigateway_operations.R
 \name{apigateway_get_sdk_type}
 \alias{apigateway_get_sdk_type}
-\title{Get sdk type}
+\title{Gets an SDK type}
 \usage{
 apigateway_get_sdk_type(id)
 }
 \arguments{
-\item{id}{[required] [Required] The identifier of the queried SdkType instance.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  friendlyName = "string",
-  description = "string",
-  configurationProperties = list(
-    list(
-      name = "string",
-      friendlyName = "string",
-      description = "string",
-      required = TRUE|FALSE,
-      defaultValue = "string"
-    )
-  )
-)
-}
+\item{id}{[required] The identifier of the queried SdkType instance.}
 }
 \description{
-Get sdk type
-}
-\section{Request syntax}{
-\preformatted{svc$get_sdk_type(
-  id = "string"
-)
-}
-}
+Gets an SDK type.
 
+See \url{https://paws-r.github.io/docs/apigateway/get_sdk_type.html} for full documentation.
+}
 \keyword{internal}

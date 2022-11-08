@@ -9,25 +9,9 @@ connect_list_tags_for_resource(resourceArn)
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Lists the tags for the specified resource.
 
-For sample policies that use tags, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html}{Amazon Connect Identity-Based Policy Examples}
-in the \emph{Amazon Connect Administrator Guide}.
+See \url{https://paws-r.github.io/docs/connect/list_tags_for_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  resourceArn = "string"
-)
-}
-}
-
 \keyword{internal}

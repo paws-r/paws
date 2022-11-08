@@ -4,11 +4,18 @@
 \alias{cognitoidentity_update_identity_pool}
 \title{Updates an identity pool}
 \usage{
-cognitoidentity_update_identity_pool(IdentityPoolId, IdentityPoolName,
-  AllowUnauthenticatedIdentities, AllowClassicFlow,
-  SupportedLoginProviders, DeveloperProviderName,
-  OpenIdConnectProviderARNs, CognitoIdentityProviders, SamlProviderARNs,
-  IdentityPoolTags)
+cognitoidentity_update_identity_pool(
+  IdentityPoolId,
+  IdentityPoolName,
+  AllowUnauthenticatedIdentities,
+  AllowClassicFlow = NULL,
+  SupportedLoginProviders = NULL,
+  DeveloperProviderName = NULL,
+  OpenIdConnectProviderARNs = NULL,
+  CognitoIdentityProviders = NULL,
+  SamlProviderARNs = NULL,
+  IdentityPoolTags = NULL
+)
 }
 \arguments{
 \item{IdentityPoolId}{[required] An identity pool ID in the format REGION:GUID.}
@@ -25,7 +32,7 @@ in the \emph{Amazon Cognito Developer Guide}.}
 
 \item{DeveloperProviderName}{The "domain" by which Cognito will refer to your users.}
 
-\item{OpenIdConnectProviderARNs}{A list of OpendID Connect provider ARNs.}
+\item{OpenIdConnectProviderARNs}{The ARNs of the OpenID Connect providers.}
 
 \item{CognitoIdentityProviders}{A list representing an Amazon Cognito user pool and its client ID.}
 
@@ -37,68 +44,9 @@ you can apply to identity pools to categorize and manage them in
 different ways, such as by purpose, owner, environment, or other
 criteria.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityPoolId = "string",
-  IdentityPoolName = "string",
-  AllowUnauthenticatedIdentities = TRUE|FALSE,
-  AllowClassicFlow = TRUE|FALSE,
-  SupportedLoginProviders = list(
-    "string"
-  ),
-  DeveloperProviderName = "string",
-  OpenIdConnectProviderARNs = list(
-    "string"
-  ),
-  CognitoIdentityProviders = list(
-    list(
-      ProviderName = "string",
-      ClientId = "string",
-      ServerSideTokenCheck = TRUE|FALSE
-    )
-  ),
-  SamlProviderARNs = list(
-    "string"
-  ),
-  IdentityPoolTags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Updates an identity pool.
 
-You must use AWS Developer credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/update_identity_pool.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_identity_pool(
-  IdentityPoolId = "string",
-  IdentityPoolName = "string",
-  AllowUnauthenticatedIdentities = TRUE|FALSE,
-  AllowClassicFlow = TRUE|FALSE,
-  SupportedLoginProviders = list(
-    "string"
-  ),
-  DeveloperProviderName = "string",
-  OpenIdConnectProviderARNs = list(
-    "string"
-  ),
-  CognitoIdentityProviders = list(
-    list(
-      ProviderName = "string",
-      ClientId = "string",
-      ServerSideTokenCheck = TRUE|FALSE
-    )
-  ),
-  SamlProviderARNs = list(
-    "string"
-  ),
-  IdentityPoolTags = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

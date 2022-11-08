@@ -11,19 +11,9 @@ pinpointemail_delete_email_identity(EmailIdentity)
 \item{EmailIdentity}{[required] The identity (that is, the email address or domain) that you want to
 delete from your Amazon Pinpoint account.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes an email identity that you previously verified for use with
-Amazon Pinpoint. An identity can be either an email address or a domain
-name.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_email_identity(
-  EmailIdentity = "string"
-)
-}
-}
+Deletes an email identity that you previously verified for use with Amazon Pinpoint. An identity can be either an email address or a domain name.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/delete_email_identity.html} for full documentation.
+}
 \keyword{internal}

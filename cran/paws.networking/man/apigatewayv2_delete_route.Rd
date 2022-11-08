@@ -11,18 +11,9 @@ apigatewayv2_delete_route(ApiId, RouteId)
 
 \item{RouteId}{[required] The route ID.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a Route.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_route(
-  ApiId = "string",
-  RouteId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_route.html} for full documentation.
+}
 \keyword{internal}

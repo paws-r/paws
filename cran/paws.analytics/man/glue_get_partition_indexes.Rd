@@ -4,8 +4,12 @@
 \alias{glue_get_partition_indexes}
 \title{Retrieves the partition indexes associated with a table}
 \usage{
-glue_get_partition_indexes(CatalogId, DatabaseName, TableName,
-  NextToken)
+glue_get_partition_indexes(
+  CatalogId = NULL,
+  DatabaseName,
+  TableName,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{CatalogId}{The catalog ID where the table resides.}
@@ -18,47 +22,9 @@ partition indexes.}
 
 \item{NextToken}{A continuation token, included if this is a continuation call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PartitionIndexDescriptorList = list(
-    list(
-      IndexName = "string",
-      Keys = list(
-        list(
-          Name = "string",
-          Type = "string"
-        )
-      ),
-      IndexStatus = "CREATING"|"ACTIVE"|"DELETING"|"FAILED",
-      BackfillErrors = list(
-        list(
-          Code = "ENCRYPTED_PARTITION_ERROR"|"INTERNAL_ERROR"|"INVALID_PARTITION_TYPE_DATA_ERROR"|"MISSING_PARTITION_VALUE_ERROR"|"UNSUPPORTED_PARTITION_CHARACTER_ERROR",
-          Partitions = list(
-            list(
-              Values = list(
-                "string"
-              )
-            )
-          )
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves the partition indexes associated with a table.
-}
-\section{Request syntax}{
-\preformatted{svc$get_partition_indexes(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_partition_indexes.html} for full documentation.
+}
 \keyword{internal}

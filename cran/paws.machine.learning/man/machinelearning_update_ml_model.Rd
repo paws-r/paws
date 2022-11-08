@@ -4,7 +4,11 @@
 \alias{machinelearning_update_ml_model}
 \title{Updates the MLModelName and the ScoreThreshold of an MLModel}
 \usage{
-machinelearning_update_ml_model(MLModelId, MLModelName, ScoreThreshold)
+machinelearning_update_ml_model(
+  MLModelId,
+  MLModelName = NULL,
+  ScoreThreshold = NULL
+)
 }
 \arguments{
 \item{MLModelId}{[required] The ID assigned to the \code{MLModel} during creation.}
@@ -19,25 +23,9 @@ positive result from the \code{MLModel}, such as \code{true}. Output values less
 than the \code{ScoreThreshold} receive a negative response from the
 \code{MLModel}, such as \code{false}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MLModelId = "string"
-)
-}
-}
 \description{
 Updates the \code{MLModelName} and the \code{ScoreThreshold} of an \code{MLModel}.
 
-You can use the \code{\link[=machinelearning_get_ml_model]{get_ml_model}} operation
-to view the contents of the updated data element.
+See \url{https://paws-r.github.io/docs/machinelearning/update_ml_model.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_ml_model(
-  MLModelId = "string",
-  MLModelName = "string",
-  ScoreThreshold = 123.0
-)
-}
-}
-
 \keyword{internal}

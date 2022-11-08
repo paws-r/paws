@@ -4,7 +4,7 @@
 \alias{ec2_delete_nat_gateway}
 \title{Deletes the specified NAT gateway}
 \usage{
-ec2_delete_nat_gateway(DryRun, NatGatewayId)
+ec2_delete_nat_gateway(DryRun = NULL, NatGatewayId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,33 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NatGatewayId}{[required] The ID of the NAT gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NatGatewayId = "string"
-)
-}
-}
 \description{
-Deletes the specified NAT gateway. Deleting a NAT gateway disassociates
-its Elastic IP address, but does not release the address from your
-account. Deleting a NAT gateway does not delete any NAT gateway routes
-in your route tables.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_nat_gateway(
-  DryRun = TRUE|FALSE,
-  NatGatewayId = "string"
-)
-}
-}
+Deletes the specified NAT gateway. Deleting a public NAT gateway disassociates its Elastic IP address, but does not release the address from your account. Deleting a NAT gateway does not delete any NAT gateway routes in your route tables.
 
-\examples{
-\dontrun{
-# This example deletes the specified NAT gateway.
-svc$delete_nat_gateway(
-  NatGatewayId = "nat-04ae55e711cec5680"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_nat_gateway.html} for full documentation.
 }
 \keyword{internal}

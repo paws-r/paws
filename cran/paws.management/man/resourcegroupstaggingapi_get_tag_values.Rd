@@ -2,39 +2,23 @@
 % Please edit documentation in R/resourcegroupstaggingapi_operations.R
 \name{resourcegroupstaggingapi_get_tag_values}
 \alias{resourcegroupstaggingapi_get_tag_values}
-\title{Returns all tag values for the specified key in the specified Region for
-the AWS account}
+\title{Returns all tag values for the specified key that are used in the
+specified Amazon Web Services Region for the calling account}
 \usage{
-resourcegroupstaggingapi_get_tag_values(PaginationToken, Key)
+resourcegroupstaggingapi_get_tag_values(PaginationToken = NULL, Key)
 }
 \arguments{
-\item{PaginationToken}{A string that indicates that additional data is available. Leave this
-value empty for your initial request. If the response includes a
-\code{PaginationToken}, use that string for this value to request an
-additional page of data.}
+\item{PaginationToken}{Specifies a \code{PaginationToken} response value from a previous request to
+indicate that you want the next page of results. Leave this parameter
+empty in your initial request.}
 
-\item{Key}{[required] The key for which you want to list all existing values in the specified
-Region for the AWS account.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PaginationToken = "string",
-  TagValues = list(
-    "string"
-  )
-)
-}
+\item{Key}{[required] Specifies the tag key for which you want to list all existing values
+that are currently used in the specified Amazon Web Services Region for
+the calling account.}
 }
 \description{
-Returns all tag values for the specified key in the specified Region for
-the AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$get_tag_values(
-  PaginationToken = "string",
-  Key = "string"
-)
-}
-}
+Returns all tag values for the specified key that are used in the specified Amazon Web Services Region for the calling account.
 
+See \url{https://paws-r.github.io/docs/resourcegroupstaggingapi/get_tag_values.html} for full documentation.
+}
 \keyword{internal}

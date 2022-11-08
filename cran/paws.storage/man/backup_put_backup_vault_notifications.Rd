@@ -5,38 +5,42 @@
 \title{Turns on notifications on a backup vault for the specified topic and
 events}
 \usage{
-backup_put_backup_vault_notifications(BackupVaultName, SNSTopicArn,
-  BackupVaultEvents)
+backup_put_backup_vault_notifications(
+  BackupVaultName,
+  SNSTopicArn,
+  BackupVaultEvents
+)
 }
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens.}
+them and the Amazon Web Services Region where they are created. They
+consist of lowercase letters, numbers, and hyphens.}
 
 \item{SNSTopicArn}{[required] The Amazon Resource Name (ARN) that specifies the topic for a backup
 vault’s events; for example,
 \code{arn:aws:sns:us-west-2:111122223333:MyVaultTopic}.}
 
 \item{BackupVaultEvents}{[required] An array of events that indicate the status of jobs to back up resources
-to the backup vault.}
-}
-\value{
-An empty list.
-}
-\description{
-Turns on notifications on a backup vault for the specified topic and
-events.
-}
-\section{Request syntax}{
-\preformatted{svc$put_backup_vault_notifications(
-  BackupVaultName = "string",
-  SNSTopicArn = "string",
-  BackupVaultEvents = list(
-    "BACKUP_JOB_STARTED"|"BACKUP_JOB_COMPLETED"|"BACKUP_JOB_SUCCESSFUL"|"BACKUP_JOB_FAILED"|"BACKUP_JOB_EXPIRED"|"RESTORE_JOB_STARTED"|"RESTORE_JOB_COMPLETED"|"RESTORE_JOB_SUCCESSFUL"|"RESTORE_JOB_FAILED"|"COPY_JOB_STARTED"|"COPY_JOB_SUCCESSFUL"|"COPY_JOB_FAILED"|"RECOVERY_POINT_MODIFIED"|"BACKUP_PLAN_CREATED"|"BACKUP_PLAN_MODIFIED"
-  )
-)
-}
+to the backup vault.
+
+For common use cases and code samples, see \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/sns-notifications.html}{Using Amazon SNS to track Backup events}.
+
+The following events are supported:
+\itemize{
+\item \code{BACKUP_JOB_STARTED} | \code{BACKUP_JOB_COMPLETED}
+\item \code{COPY_JOB_STARTED} | \code{COPY_JOB_SUCCESSFUL} | \code{COPY_JOB_FAILED}
+\item \code{RESTORE_JOB_STARTED} | \code{RESTORE_JOB_COMPLETED} |
+\code{RECOVERY_POINT_MODIFIED}
+\item \code{S3_BACKUP_OBJECT_FAILED} | \code{S3_RESTORE_OBJECT_FAILED}
 }
 
+Ignore the list below because it includes deprecated events. Refer to
+the list above.}
+}
+\description{
+Turns on notifications on a backup vault for the specified topic and events.
+
+See \url{https://paws-r.github.io/docs/backup/put_backup_vault_notifications.html} for full documentation.
+}
 \keyword{internal}

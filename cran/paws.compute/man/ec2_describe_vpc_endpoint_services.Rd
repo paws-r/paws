@@ -4,8 +4,13 @@
 \alias{ec2_describe_vpc_endpoint_services}
 \title{Describes available services to which you can create a VPC endpoint}
 \usage{
-ec2_describe_vpc_endpoint_services(DryRun, ServiceNames, Filters,
-  MaxResults, NextToken)
+ec2_describe_vpc_endpoint_services(
+  DryRun = NULL,
+  ServiceNames = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -18,11 +23,14 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{service-name} - The name of the service.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{service-type} - The type of service (\code{Interface} | \code{Gateway}).
+\item \code{supported-ip-address-types} - The IP address type (\code{ipv4} |
+\code{ipv6}).
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -38,78 +46,9 @@ items.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a prior call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceNames = list(
-    "string"
-  ),
-  ServiceDetails = list(
-    list(
-      ServiceName = "string",
-      ServiceId = "string",
-      ServiceType = list(
-        list(
-          ServiceType = "Interface"|"Gateway"|"GatewayLoadBalancer"
-        )
-      ),
-      AvailabilityZones = list(
-        "string"
-      ),
-      Owner = "string",
-      BaseEndpointDnsNames = list(
-        "string"
-      ),
-      PrivateDnsName = "string",
-      PrivateDnsNames = list(
-        list(
-          PrivateDnsName = "string"
-        )
-      ),
-      VpcEndpointPolicySupported = TRUE|FALSE,
-      AcceptanceRequired = TRUE|FALSE,
-      ManagesVpcEndpoints = TRUE|FALSE,
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      PrivateDnsNameVerificationState = "pendingVerification"|"verified"|"failed"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes available services to which you can create a VPC endpoint.
 
-When the service provider and the consumer have different accounts
-multiple Availability Zones, and the consumer views the VPC endpoint
-service information, the response only includes the common Availability
-Zones. For example, when the service provider account uses \verb{us-east-1a}
-and \verb{us-east-1c} and the consumer uses \verb{us-east-1a} and us-east-1a and
-us-east-1b, the response includes the VPC endpoint services in the
-common Availability Zone, \verb{us-east-1a}.
+See \url{https://paws-r.github.io/docs/ec2/describe_vpc_endpoint_services.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_vpc_endpoint_services(
-  DryRun = TRUE|FALSE,
-  ServiceNames = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

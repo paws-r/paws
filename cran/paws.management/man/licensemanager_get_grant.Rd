@@ -4,41 +4,16 @@
 \alias{licensemanager_get_grant}
 \title{Gets detailed information about the specified grant}
 \usage{
-licensemanager_get_grant(GrantArn, Version)
+licensemanager_get_grant(GrantArn, Version = NULL)
 }
 \arguments{
 \item{GrantArn}{[required] Amazon Resource Name (ARN) of the grant.}
 
 \item{Version}{Grant version.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Grant = list(
-    GrantArn = "string",
-    GrantName = "string",
-    ParentArn = "string",
-    LicenseArn = "string",
-    GranteePrincipalArn = "string",
-    HomeRegion = "string",
-    GrantStatus = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-    StatusReason = "string",
-    Version = "string",
-    GrantedOperations = list(
-      "CreateGrant"|"CheckoutLicense"|"CheckoutBorrowLicense"|"CheckInLicense"|"ExtendConsumptionLicense"|"ListPurchasedLicenses"|"CreateToken"
-    )
-  )
-)
-}
-}
 \description{
 Gets detailed information about the specified grant.
-}
-\section{Request syntax}{
-\preformatted{svc$get_grant(
-  GrantArn = "string",
-  Version = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/get_grant.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,10 @@
 \title{Lists all available node types that you can scale your Redis cluster's
 or replication group's current node type}
 \usage{
-elasticache_list_allowed_node_type_modifications(CacheClusterId,
-  ReplicationGroupId)
+elasticache_list_allowed_node_type_modifications(
+  CacheClusterId = NULL,
+  ReplicationGroupId = NULL
+)
 }
 \arguments{
 \item{CacheClusterId}{The name of the cluster you want to scale up to a larger node instanced
@@ -25,34 +27,9 @@ a list of node types you can scale up to.
 You must provide a value for either the \code{CacheClusterId} or the
 \code{ReplicationGroupId}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ScaleUpModifications = list(
-    "string"
-  ),
-  ScaleDownModifications = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Lists all available node types that you can scale your Redis cluster's
-or replication group's current node type.
+Lists all available node types that you can scale your Redis cluster's or replication group's current node type.
 
-When you use the
-\code{\link[=elasticache_modify_cache_cluster]{modify_cache_cluster}} or
-\code{\link[=elasticache_modify_replication_group]{modify_replication_group}}
-operations to scale your cluster or replication group, the value of the
-\code{CacheNodeType} parameter must be one of the node types returned by this
-operation.
+See \url{https://paws-r.github.io/docs/elasticache/list_allowed_node_type_modifications.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_allowed_node_type_modifications(
-  CacheClusterId = "string",
-  ReplicationGroupId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{elasticbeanstalk_retrieve_environment_info}
 \title{Retrieves the compiled information from a RequestEnvironmentInfo request}
 \usage{
-elasticbeanstalk_retrieve_environment_info(EnvironmentId,
-  EnvironmentName, InfoType)
+elasticbeanstalk_retrieve_environment_info(
+  EnvironmentId = NULL,
+  EnvironmentName = NULL,
+  InfoType
+)
 }
 \arguments{
 \item{EnvironmentId}{The ID of the data's environment.
@@ -28,49 +31,9 @@ you do not specify either, AWS Elastic Beanstalk returns
 
 \item{InfoType}{[required] The type of information to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EnvironmentInfo = list(
-    list(
-      InfoType = "tail"|"bundle",
-      Ec2InstanceId = "string",
-      SampleTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      Message = "string"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves the compiled information from a
-\code{\link[=elasticbeanstalk_request_environment_info]{request_environment_info}}
-request.
+Retrieves the compiled information from a \code{\link[=elasticbeanstalk_request_environment_info]{request_environment_info}} request.
 
-Related Topics
-\itemize{
-\item \code{\link[=elasticbeanstalk_request_environment_info]{request_environment_info}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$retrieve_environment_info(
-  EnvironmentId = "string",
-  EnvironmentName = "string",
-  InfoType = "tail"|"bundle"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation retrieves a link to logs from an environment
-# named my-env:
-svc$retrieve_environment_info(
-  EnvironmentName = "my-env",
-  InfoType = "tail"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/retrieve_environment_info.html} for full documentation.
 }
 \keyword{internal}

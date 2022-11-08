@@ -10,32 +10,9 @@ cognitoidentity_describe_identity(IdentityId)
 \arguments{
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityId = "string",
-  Logins = list(
-    "string"
-  ),
-  CreationDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Returns metadata related to the given identity, including when the
-identity was created and any associated linked logins.
+Returns metadata related to the given identity, including when the identity was created and any associated linked logins.
 
-You must use AWS Developer credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/describe_identity.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_identity(
-  IdentityId = "string"
-)
-}
-}
-
 \keyword{internal}

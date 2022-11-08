@@ -5,11 +5,18 @@
 \title{Restores the specified table to the specified point in time within
 EarliestRestorableDateTime and LatestRestorableDateTime}
 \usage{
-dynamodb_restore_table_to_point_in_time(SourceTableArn, SourceTableName,
-  TargetTableName, UseLatestRestorableTime, RestoreDateTime,
-  BillingModeOverride, GlobalSecondaryIndexOverride,
-  LocalSecondaryIndexOverride, ProvisionedThroughputOverride,
-  SSESpecificationOverride)
+dynamodb_restore_table_to_point_in_time(
+  SourceTableArn = NULL,
+  SourceTableName = NULL,
+  TargetTableName,
+  UseLatestRestorableTime = NULL,
+  RestoreDateTime = NULL,
+  BillingModeOverride = NULL,
+  GlobalSecondaryIndexOverride = NULL,
+  LocalSecondaryIndexOverride = NULL,
+  ProvisionedThroughputOverride = NULL,
+  SSESpecificationOverride = NULL
+)
 }
 \arguments{
 \item{SourceTableArn}{The DynamoDB table that will be restored. This value is an Amazon
@@ -39,250 +46,9 @@ exclude some or all of the indexes at the time of restore.}
 
 \item{SSESpecificationOverride}{The new server-side encryption settings for the restored table.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TableDescription = list(
-    AttributeDefinitions = list(
-      list(
-        AttributeName = "string",
-        AttributeType = "S"|"N"|"B"
-      )
-    ),
-    TableName = "string",
-    KeySchema = list(
-      list(
-        AttributeName = "string",
-        KeyType = "HASH"|"RANGE"
-      )
-    ),
-    TableStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS"|"ARCHIVING"|"ARCHIVED",
-    CreationDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ProvisionedThroughput = list(
-      LastIncreaseDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastDecreaseDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      NumberOfDecreasesToday = 123,
-      ReadCapacityUnits = 123,
-      WriteCapacityUnits = 123
-    ),
-    TableSizeBytes = 123,
-    ItemCount = 123,
-    TableArn = "string",
-    TableId = "string",
-    BillingModeSummary = list(
-      BillingMode = "PROVISIONED"|"PAY_PER_REQUEST",
-      LastUpdateToPayPerRequestDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    LocalSecondaryIndexes = list(
-      list(
-        IndexName = "string",
-        KeySchema = list(
-          list(
-            AttributeName = "string",
-            KeyType = "HASH"|"RANGE"
-          )
-        ),
-        Projection = list(
-          ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-          NonKeyAttributes = list(
-            "string"
-          )
-        ),
-        IndexSizeBytes = 123,
-        ItemCount = 123,
-        IndexArn = "string"
-      )
-    ),
-    GlobalSecondaryIndexes = list(
-      list(
-        IndexName = "string",
-        KeySchema = list(
-          list(
-            AttributeName = "string",
-            KeyType = "HASH"|"RANGE"
-          )
-        ),
-        Projection = list(
-          ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-          NonKeyAttributes = list(
-            "string"
-          )
-        ),
-        IndexStatus = "CREATING"|"UPDATING"|"DELETING"|"ACTIVE",
-        Backfilling = TRUE|FALSE,
-        ProvisionedThroughput = list(
-          LastIncreaseDateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          LastDecreaseDateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          NumberOfDecreasesToday = 123,
-          ReadCapacityUnits = 123,
-          WriteCapacityUnits = 123
-        ),
-        IndexSizeBytes = 123,
-        ItemCount = 123,
-        IndexArn = "string"
-      )
-    ),
-    StreamSpecification = list(
-      StreamEnabled = TRUE|FALSE,
-      StreamViewType = "NEW_IMAGE"|"OLD_IMAGE"|"NEW_AND_OLD_IMAGES"|"KEYS_ONLY"
-    ),
-    LatestStreamLabel = "string",
-    LatestStreamArn = "string",
-    GlobalTableVersion = "string",
-    Replicas = list(
-      list(
-        RegionName = "string",
-        ReplicaStatus = "CREATING"|"CREATION_FAILED"|"UPDATING"|"DELETING"|"ACTIVE"|"REGION_DISABLED"|"INACCESSIBLE_ENCRYPTION_CREDENTIALS",
-        ReplicaStatusDescription = "string",
-        ReplicaStatusPercentProgress = "string",
-        KMSMasterKeyId = "string",
-        ProvisionedThroughputOverride = list(
-          ReadCapacityUnits = 123
-        ),
-        GlobalSecondaryIndexes = list(
-          list(
-            IndexName = "string",
-            ProvisionedThroughputOverride = list(
-              ReadCapacityUnits = 123
-            )
-          )
-        ),
-        ReplicaInaccessibleDateTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    RestoreSummary = list(
-      SourceBackupArn = "string",
-      SourceTableArn = "string",
-      RestoreDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      RestoreInProgress = TRUE|FALSE
-    ),
-    SSEDescription = list(
-      Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING",
-      SSEType = "AES256"|"KMS",
-      KMSMasterKeyArn = "string",
-      InaccessibleEncryptionDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    ArchivalSummary = list(
-      ArchivalDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ArchivalReason = "string",
-      ArchivalBackupArn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Restores the specified table to the specified point in time within
-\code{EarliestRestorableDateTime} and \code{LatestRestorableDateTime}. You can
-restore your table to any point in time during the last 35 days. Any
-number of users can execute up to 4 concurrent restores (any type of
-restore) in a given account.
+Restores the specified table to the specified point in time within \code{EarliestRestorableDateTime} and \code{LatestRestorableDateTime}. You can restore your table to any point in time during the last 35 days. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
 
-When you restore using point in time recovery, DynamoDB restores your
-table data to the state based on the selected date and time
-(day:hour:minute:second) to a new table.
-
-Along with data, the following are also included on the new restored
-table using point in time recovery:
-\itemize{
-\item Global secondary indexes (GSIs)
-\item Local secondary indexes (LSIs)
-\item Provisioned read and write capacity
-\item Encryption settings
-
-All these settings come from the current settings of the source
-table at the time of restore.
+See \url{https://paws-r.github.io/docs/dynamodb/restore_table_to_point_in_time.html} for full documentation.
 }
-
-You must manually set up the following on the restored table:
-\itemize{
-\item Auto scaling policies
-\item IAM policies
-\item Amazon CloudWatch metrics and alarms
-\item Tags
-\item Stream settings
-\item Time to Live (TTL) settings
-\item Point in time recovery settings
-}
-}
-\section{Request syntax}{
-\preformatted{svc$restore_table_to_point_in_time(
-  SourceTableArn = "string",
-  SourceTableName = "string",
-  TargetTableName = "string",
-  UseLatestRestorableTime = TRUE|FALSE,
-  RestoreDateTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  BillingModeOverride = "PROVISIONED"|"PAY_PER_REQUEST",
-  GlobalSecondaryIndexOverride = list(
-    list(
-      IndexName = "string",
-      KeySchema = list(
-        list(
-          AttributeName = "string",
-          KeyType = "HASH"|"RANGE"
-        )
-      ),
-      Projection = list(
-        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-        NonKeyAttributes = list(
-          "string"
-        )
-      ),
-      ProvisionedThroughput = list(
-        ReadCapacityUnits = 123,
-        WriteCapacityUnits = 123
-      )
-    )
-  ),
-  LocalSecondaryIndexOverride = list(
-    list(
-      IndexName = "string",
-      KeySchema = list(
-        list(
-          AttributeName = "string",
-          KeyType = "HASH"|"RANGE"
-        )
-      ),
-      Projection = list(
-        ProjectionType = "ALL"|"KEYS_ONLY"|"INCLUDE",
-        NonKeyAttributes = list(
-          "string"
-        )
-      )
-    )
-  ),
-  ProvisionedThroughputOverride = list(
-    ReadCapacityUnits = 123,
-    WriteCapacityUnits = 123
-  ),
-  SSESpecificationOverride = list(
-    Enabled = TRUE|FALSE,
-    SSEType = "AES256"|"KMS",
-    KMSMasterKeyId = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

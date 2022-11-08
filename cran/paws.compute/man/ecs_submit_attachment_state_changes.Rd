@@ -5,7 +5,7 @@
 \title{This action is only used by the Amazon ECS agent, and it is not intended
 for use outside of the agent}
 \usage{
-ecs_submit_attachment_state_changes(cluster, attachments)
+ecs_submit_attachment_state_changes(cluster = NULL, attachments)
 }
 \arguments{
 \item{cluster}{The short name or full ARN of the cluster that hosts the container
@@ -13,29 +13,9 @@ instance the attachment belongs to.}
 
 \item{attachments}{[required] Any attachments associated with the state change request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  acknowledgment = "string"
-)
-}
-}
 \description{
-This action is only used by the Amazon ECS agent, and it is not intended
-for use outside of the agent.
+This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 
-Sent to acknowledge that an attachment changed states.
+See \url{https://paws-r.github.io/docs/ecs/submit_attachment_state_changes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$submit_attachment_state_changes(
-  cluster = "string",
-  attachments = list(
-    list(
-      attachmentArn = "string",
-      status = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

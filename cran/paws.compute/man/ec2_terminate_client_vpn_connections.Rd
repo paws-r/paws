@@ -4,8 +4,12 @@
 \alias{ec2_terminate_client_vpn_connections}
 \title{Terminates active Client VPN endpoint connections}
 \usage{
-ec2_terminate_client_vpn_connections(ClientVpnEndpointId, ConnectionId,
-  Username, DryRun)
+ec2_terminate_client_vpn_connections(
+  ClientVpnEndpointId,
+  ConnectionId = NULL,
+  Username = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{ClientVpnEndpointId}{[required] The ID of the Client VPN endpoint to which the client is connected.}
@@ -21,39 +25,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClientVpnEndpointId = "string",
-  Username = "string",
-  ConnectionStatuses = list(
-    list(
-      ConnectionId = "string",
-      PreviousStatus = list(
-        Code = "active"|"failed-to-terminate"|"terminating"|"terminated",
-        Message = "string"
-      ),
-      CurrentStatus = list(
-        Code = "active"|"failed-to-terminate"|"terminating"|"terminated",
-        Message = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Terminates active Client VPN endpoint connections. This action can be
-used to terminate a specific client connection, or up to five
-connections established by a specific user.
-}
-\section{Request syntax}{
-\preformatted{svc$terminate_client_vpn_connections(
-  ClientVpnEndpointId = "string",
-  ConnectionId = "string",
-  Username = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Terminates active Client VPN endpoint connections. This action can be used to terminate a specific client connection, or up to five connections established by a specific user.
 
+See \url{https://paws-r.github.io/docs/ec2/terminate_client_vpn_connections.html} for full documentation.
+}
 \keyword{internal}

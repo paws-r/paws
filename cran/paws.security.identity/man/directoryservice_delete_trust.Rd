@@ -2,33 +2,22 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_delete_trust}
 \alias{directoryservice_delete_trust}
-\title{Deletes an existing trust relationship between your AWS Managed
-Microsoft AD directory and an external domain}
+\title{Deletes an existing trust relationship between your Managed Microsoft AD
+directory and an external domain}
 \usage{
-directoryservice_delete_trust(TrustId,
-  DeleteAssociatedConditionalForwarder)
+directoryservice_delete_trust(
+  TrustId,
+  DeleteAssociatedConditionalForwarder = NULL
+)
 }
 \arguments{
 \item{TrustId}{[required] The Trust ID of the trust relationship to be deleted.}
 
 \item{DeleteAssociatedConditionalForwarder}{Delete a conditional forwarder as part of a DeleteTrustRequest.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrustId = "string"
-)
-}
-}
 \description{
-Deletes an existing trust relationship between your AWS Managed
-Microsoft AD directory and an external domain.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_trust(
-  TrustId = "string",
-  DeleteAssociatedConditionalForwarder = TRUE|FALSE
-)
-}
-}
+Deletes an existing trust relationship between your Managed Microsoft AD directory and an external domain.
 
+See \url{https://paws-r.github.io/docs/directoryservice/delete_trust.html} for full documentation.
+}
 \keyword{internal}

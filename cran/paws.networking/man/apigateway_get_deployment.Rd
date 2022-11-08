@@ -4,13 +4,12 @@
 \alias{apigateway_get_deployment}
 \title{Gets information about a Deployment resource}
 \usage{
-apigateway_get_deployment(restApiId, deploymentId, embed)
+apigateway_get_deployment(restApiId, deploymentId, embed = NULL)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{deploymentId}{[required] [Required] The identifier of the Deployment resource to get
-information about.}
+\item{deploymentId}{[required] The identifier of the Deployment resource to get information about.}
 
 \item{embed}{A query parameter to retrieve the specified embedded resources of the
 returned Deployment resource in the response. In a REST API call, this
@@ -23,36 +22,9 @@ single-valued list containing only the \code{"apisummary"} string. For
 example,
 \code{GET /restapis/{restapi_id}/deployments/{deployment_id}?embed=apisummary}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  description = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  apiSummary = list(
-    list(
-      list(
-        authorizationType = "string",
-        apiKeyRequired = TRUE|FALSE
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets information about a Deployment resource.
-}
-\section{Request syntax}{
-\preformatted{svc$get_deployment(
-  restApiId = "string",
-  deploymentId = "string",
-  embed = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_deployment.html} for full documentation.
+}
 \keyword{internal}

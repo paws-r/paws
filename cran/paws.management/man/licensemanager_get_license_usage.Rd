@@ -9,29 +9,9 @@ licensemanager_get_license_usage(LicenseArn)
 \arguments{
 \item{LicenseArn}{[required] Amazon Resource Name (ARN) of the license.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LicenseUsage = list(
-    EntitlementUsages = list(
-      list(
-        Name = "string",
-        ConsumedValue = "string",
-        MaxCount = "string",
-        Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets detailed information about the usage of the specified license.
-}
-\section{Request syntax}{
-\preformatted{svc$get_license_usage(
-  LicenseArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/get_license_usage.html} for full documentation.
+}
 \keyword{internal}

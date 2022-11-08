@@ -12,57 +12,9 @@ cloudsearch_define_analysis_scheme(DomainName, AnalysisScheme)
 
 \item{AnalysisScheme}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AnalysisScheme = list(
-    Options = list(
-      AnalysisSchemeName = "string",
-      AnalysisSchemeLanguage = "ar"|"bg"|"ca"|"cs"|"da"|"de"|"el"|"en"|"es"|"eu"|"fa"|"fi"|"fr"|"ga"|"gl"|"he"|"hi"|"hu"|"hy"|"id"|"it"|"ja"|"ko"|"lv"|"mul"|"nl"|"no"|"pt"|"ro"|"ru"|"sv"|"th"|"tr"|"zh-Hans"|"zh-Hant",
-      AnalysisOptions = list(
-        Synonyms = "string",
-        Stopwords = "string",
-        StemmingDictionary = "string",
-        JapaneseTokenizationDictionary = "string",
-        AlgorithmicStemming = "none"|"minimal"|"light"|"full"
-      )
-    ),
-    Status = list(
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateVersion = 123,
-      State = "RequiresIndexDocuments"|"Processing"|"Active"|"FailedToValidate",
-      PendingDeletion = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Configures an analysis scheme that can be applied to a \code{text} or
-\code{text-array} field to define language-specific text processing options.
-For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html}{Configuring Analysis Schemes}
-in the \emph{Amazon CloudSearch Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$define_analysis_scheme(
-  DomainName = "string",
-  AnalysisScheme = list(
-    AnalysisSchemeName = "string",
-    AnalysisSchemeLanguage = "ar"|"bg"|"ca"|"cs"|"da"|"de"|"el"|"en"|"es"|"eu"|"fa"|"fi"|"fr"|"ga"|"gl"|"he"|"hi"|"hu"|"hy"|"id"|"it"|"ja"|"ko"|"lv"|"mul"|"nl"|"no"|"pt"|"ro"|"ru"|"sv"|"th"|"tr"|"zh-Hans"|"zh-Hant",
-    AnalysisOptions = list(
-      Synonyms = "string",
-      Stopwords = "string",
-      StemmingDictionary = "string",
-      JapaneseTokenizationDictionary = "string",
-      AlgorithmicStemming = "none"|"minimal"|"light"|"full"
-    )
-  )
-)
-}
-}
+Configures an analysis scheme that can be applied to a \code{text} or \code{text-array} field to define language-specific text processing options. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the \emph{Amazon CloudSearch Developer Guide}.
 
+See \url{https://paws-r.github.io/docs/cloudsearch/define_analysis_scheme.html} for full documentation.
+}
 \keyword{internal}

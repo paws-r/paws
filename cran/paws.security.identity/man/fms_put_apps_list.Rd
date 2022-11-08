@@ -2,88 +2,18 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_put_apps_list}
 \alias{fms_put_apps_list}
-\title{Creates an AWS Firewall Manager applications list}
+\title{Creates an Firewall Manager applications list}
 \usage{
-fms_put_apps_list(AppsList, TagList)
+fms_put_apps_list(AppsList, TagList = NULL)
 }
 \arguments{
-\item{AppsList}{[required] The details of the AWS Firewall Manager applications list to be created.}
+\item{AppsList}{[required] The details of the Firewall Manager applications list to be created.}
 
 \item{TagList}{The tags associated with the resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AppsList = list(
-    ListId = "string",
-    ListName = "string",
-    ListUpdateToken = "string",
-    CreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    AppsList = list(
-      list(
-        AppName = "string",
-        Protocol = "string",
-        Port = 123
-      )
-    ),
-    PreviousAppsList = list(
-      list(
-        list(
-          AppName = "string",
-          Protocol = "string",
-          Port = 123
-        )
-      )
-    )
-  ),
-  AppsListArn = "string"
-)
-}
-}
 \description{
-Creates an AWS Firewall Manager applications list.
-}
-\section{Request syntax}{
-\preformatted{svc$put_apps_list(
-  AppsList = list(
-    ListId = "string",
-    ListName = "string",
-    ListUpdateToken = "string",
-    CreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    AppsList = list(
-      list(
-        AppName = "string",
-        Protocol = "string",
-        Port = 123
-      )
-    ),
-    PreviousAppsList = list(
-      list(
-        list(
-          AppName = "string",
-          Protocol = "string",
-          Port = 123
-        )
-      )
-    )
-  ),
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates an Firewall Manager applications list.
 
+See \url{https://paws-r.github.io/docs/fms/put_apps_list.html} for full documentation.
+}
 \keyword{internal}

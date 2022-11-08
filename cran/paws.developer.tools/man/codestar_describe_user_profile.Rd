@@ -10,30 +10,9 @@ codestar_describe_user_profile(userArn)
 \arguments{
 \item{userArn}{[required] The Amazon Resource Name (ARN) of the user.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  userArn = "string",
-  displayName = "string",
-  emailAddress = "string",
-  sshPublicKey = "string",
-  createdTimestamp = as.POSIXct(
-    "2015-01-01"
-  ),
-  lastModifiedTimestamp = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Describes a user in AWS CodeStar and the user attributes across all
-projects.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_user_profile(
-  userArn = "string"
-)
-}
-}
+Describes a user in AWS CodeStar and the user attributes across all projects.
 
+See \url{https://paws-r.github.io/docs/codestar/describe_user_profile.html} for full documentation.
+}
 \keyword{internal}

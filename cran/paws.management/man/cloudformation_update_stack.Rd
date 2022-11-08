@@ -4,11 +4,25 @@
 \alias{cloudformation_update_stack}
 \title{Updates a stack as specified in the template}
 \usage{
-cloudformation_update_stack(StackName, TemplateBody, TemplateURL,
-  UsePreviousTemplate, StackPolicyDuringUpdateBody,
-  StackPolicyDuringUpdateURL, Parameters, Capabilities, ResourceTypes,
-  RoleARN, RollbackConfiguration, StackPolicyBody, StackPolicyURL,
-  NotificationARNs, Tags, ClientRequestToken)
+cloudformation_update_stack(
+  StackName,
+  TemplateBody = NULL,
+  TemplateURL = NULL,
+  UsePreviousTemplate = NULL,
+  StackPolicyDuringUpdateBody = NULL,
+  StackPolicyDuringUpdateURL = NULL,
+  Parameters = NULL,
+  Capabilities = NULL,
+  ResourceTypes = NULL,
+  RoleARN = NULL,
+  RollbackConfiguration = NULL,
+  StackPolicyBody = NULL,
+  StackPolicyURL = NULL,
+  NotificationARNs = NULL,
+  Tags = NULL,
+  DisableRollback = NULL,
+  ClientRequestToken = NULL
+)
 }
 \arguments{
 \item{StackName}{[required] The name or unique stack ID of the stack to update.}
@@ -16,16 +30,16 @@ cloudformation_update_stack(StackName, TemplateBody, TemplateURL,
 \item{TemplateBody}{Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. (For more information, go to
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the AWS CloudFormation User Guide.)
+in the CloudFormation User Guide.)
 
 Conditional: You must specify only one of the following parameters:
 \code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to
 \code{true}.}
 
 \item{TemplateURL}{Location of file containing the template body. The URL must point to a
-template that is located in an Amazon S3 bucket. For more information,
-go to \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
-in the AWS CloudFormation User Guide.
+template that's located in an Amazon S3 bucket or a Systems Manager
+document. For more information, go to \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html}{Template Anatomy}
+in the CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
 \code{TemplateBody}, \code{TemplateURL}, or set the \code{UsePreviousTemplate} to
@@ -43,9 +57,9 @@ specify either the \code{StackPolicyDuringUpdateBody} or the
 \code{StackPolicyDuringUpdateURL} parameter, but not both.
 
 If you want to update protected resources, specify a temporary
-overriding stack policy during this update. If you do not specify a
-stack policy, the current policy that is associated with the stack will
-be used.}
+overriding stack policy during this update. If you don't specify a stack
+policy, the current policy that is associated with the stack will be
+used.}
 
 \item{StackPolicyDuringUpdateURL}{Location of a file containing the temporary overriding stack policy. The
 URL must point to a policy (max size: 16KB) located in an S3 bucket in
@@ -54,9 +68,9 @@ the same Region as the stack. You can specify either the
 parameter, but not both.
 
 If you want to update protected resources, specify a temporary
-overriding stack policy during this update. If you do not specify a
-stack policy, the current policy that is associated with the stack will
-be used.}
+overriding stack policy during this update. If you don't specify a stack
+policy, the current policy that is associated with the stack will be
+used.}
 
 \item{Parameters}{A list of \code{Parameter} structures that specify input parameters for the
 stack. For more information, see the
@@ -64,16 +78,16 @@ stack. For more information, see the
 data type.}
 
 \item{Capabilities}{In some cases, you must explicitly acknowledge that your stack template
-contains certain capabilities in order for AWS CloudFormation to update
-the stack.
+contains certain capabilities in order for CloudFormation to update the
+stack.
 \itemize{
 \item \code{CAPABILITY_IAM} and \code{CAPABILITY_NAMED_IAM}
 
 Some stack templates might include resources that can affect
-permissions in your AWS account; for example, by creating new AWS
-Identity and Access Management (IAM) users. For those stacks, you
-must explicitly acknowledge this by specifying one of these
-capabilities.
+permissions in your Amazon Web Services account; for example, by
+creating new Identity and Access Management (IAM) users. For those
+stacks, you must explicitly acknowledge this by specifying one of
+these capabilities.
 
 The following IAM resources require you to specify either the
 \code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
@@ -81,12 +95,12 @@ The following IAM resources require you to specify either the
 \item If you have IAM resources, you can specify either capability.
 \item If you have IAM resources with custom names, you \emph{must} specify
 \code{CAPABILITY_NAMED_IAM}.
-\item If you don't specify either of these capabilities, AWS
+\item If you don't specify either of these capabilities,
 CloudFormation returns an \code{InsufficientCapabilities} error.
 }
 
-If your stack template contains these resources, we recommend that
-you review all permissions associated with them and edit their
+If your stack template contains these resources, we suggest that you
+review all permissions associated with them and edit their
 permissions if necessary.
 \itemize{
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html}{AWS::IAM::AccessKey}
@@ -98,7 +112,7 @@ permissions if necessary.
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in CloudFormation Templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
 Some template contain macros. Macros perform custom processing on
@@ -114,7 +128,7 @@ acknowledge this capability. This includes the
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include}
 and
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
-transforms, which are macros hosted by AWS CloudFormation.
+transforms, which are macros hosted by CloudFormation.
 
 If you want to update a stack from a stack template that contains
 macros \emph{and} nested stacks, you must update the stack directly from
@@ -125,10 +139,10 @@ contains macros if you know what processing the macro performs.
 
 Each macro relies on an underlying Lambda service function for
 processing stack templates. Be aware that the Lambda function owner
-can update the function operation without AWS CloudFormation being
+can update the function operation without CloudFormation being
 notified.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using AWS CloudFormation Macros to Perform Custom Processing on Templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using CloudFormation Macros to Perform Custom Processing on Templates}.
 }}
 
 \item{ResourceTypes}{The template resource types that you have permissions to work with for
@@ -136,25 +150,25 @@ this update stack action, such as \verb{AWS::EC2::Instance}, \verb{AWS::EC2::*},
 or \code{Custom::MyCustomInstance}.
 
 If the list of resource types doesn't include a resource that you're
-updating, the stack update fails. By default, AWS CloudFormation grants
-permissions to all resource types. AWS Identity and Access Management
-(IAM) uses this parameter for AWS CloudFormation-specific condition keys
-in IAM policies. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html}{Controlling Access with AWS Identity and Access Management}.}
+updating, the stack update fails. By default, CloudFormation grants
+permissions to all resource types. Identity and Access Management (IAM)
+uses this parameter for CloudFormation-specific condition keys in IAM
+policies. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html}{Controlling Access with Identity and Access Management}.}
 
-\item{RoleARN}{The Amazon Resource Name (ARN) of an AWS Identity and Access Management
-(IAM) role that AWS CloudFormation assumes to update the stack. AWS
+\item{RoleARN}{The Amazon Resource Name (ARN) of an Identity and Access Management
+(IAM) role that CloudFormation assumes to update the stack.
 CloudFormation uses the role's credentials to make calls on your behalf.
-AWS CloudFormation always uses this role for all future operations on
-the stack. As long as users have permission to operate on the stack, AWS
+CloudFormation always uses this role for all future operations on the
+stack. Provided that users have permission to operate on the stack,
 CloudFormation uses this role even if the users don't have permission to
 pass it. Ensure that the role grants least privilege.
 
-If you don't specify a value, AWS CloudFormation uses the role that was
-previously associated with the stack. If no role is available, AWS
+If you don't specify a value, CloudFormation uses the role that was
+previously associated with the stack. If no role is available,
 CloudFormation uses a temporary session that is generated from your user
 credentials.}
 
-\item{RollbackConfiguration}{The rollback triggers for AWS CloudFormation to monitor during stack
+\item{RollbackConfiguration}{The rollback triggers for CloudFormation to monitor during stack
 creation and updating operations, and for the specified monitoring
 period afterwards.}
 
@@ -162,7 +176,7 @@ period afterwards.}
 \code{StackPolicyBody} or the \code{StackPolicyURL} parameter, but not both.
 
 You might update the stack policy, for example, in order to protect a
-new resource that you created during a stack update. If you do not
+new resource that you created during a stack update. If you don't
 specify a stack policy, the current policy that is associated with the
 stack is unchanged.}
 
@@ -172,28 +186,33 @@ Region as the stack. You can specify either the \code{StackPolicyBody} or the
 \code{StackPolicyURL} parameter, but not both.
 
 You might update the stack policy, for example, in order to protect a
-new resource that you created during a stack update. If you do not
+new resource that you created during a stack update. If you don't
 specify a stack policy, the current policy that is associated with the
 stack is unchanged.}
 
 \item{NotificationARNs}{Amazon Simple Notification Service topic Amazon Resource Names (ARNs)
-that AWS CloudFormation associates with the stack. Specify an empty list
-to remove all notification topics.}
+that CloudFormation associates with the stack. Specify an empty list to
+remove all notification topics.}
 
-\item{Tags}{Key-value pairs to associate with this stack. AWS CloudFormation also
+\item{Tags}{Key-value pairs to associate with this stack. CloudFormation also
 propagates these tags to supported resources in the stack. You can
 specify a maximum number of 50 tags.
 
-If you don't specify this parameter, AWS CloudFormation doesn't modify
-the stack's tags. If you specify an empty value, AWS CloudFormation
-removes all associated tags.}
+If you don't specify this parameter, CloudFormation doesn't modify the
+stack's tags. If you specify an empty value, CloudFormation removes all
+associated tags.}
+
+\item{DisableRollback}{Preserve the state of previously provisioned resources when an operation
+fails.
+
+Default: \code{False}}
 
 \item{ClientRequestToken}{A unique identifier for this
 \code{\link[=cloudformation_update_stack]{update_stack}} request. Specify this
-token if you plan to retry requests so that AWS CloudFormation knows
-that you're not attempting to update a stack with the same name. You
-might retry \code{\link[=cloudformation_update_stack]{update_stack}} requests to
-ensure that AWS CloudFormation successfully received them.
+token if you plan to retry requests so that CloudFormation knows that
+you're not attempting to update a stack with the same name. You might
+retry \code{\link[=cloudformation_update_stack]{update_stack}} requests to ensure
+that CloudFormation successfully received them.
 
 All events triggered by a given stack operation are assigned the same
 client request token, which you can use to track operations. For
@@ -209,70 +228,9 @@ the console, each stack event would be assigned the same token in the
 following format:
 \verb{Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StackId = "string"
-)
-}
-}
 \description{
-Updates a stack as specified in the template. After the call completes
-successfully, the stack update starts. You can check the status of the
-stack via the \code{\link[=cloudformation_describe_stacks]{describe_stacks}}
-action.
+Updates a stack as specified in the template. After the call completes successfully, the stack update starts. You can check the status of the stack through the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} action.
 
-To get a copy of the template for an existing stack, you can use the
-\code{\link[=cloudformation_get_template]{get_template}} action.
-
-For more information about creating an update template, updating a
-stack, and monitoring the progress of the update, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html}{Updating a Stack}.
+See \url{https://paws-r.github.io/docs/cloudformation/update_stack.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_stack(
-  StackName = "string",
-  TemplateBody = "string",
-  TemplateURL = "string",
-  UsePreviousTemplate = TRUE|FALSE,
-  StackPolicyDuringUpdateBody = "string",
-  StackPolicyDuringUpdateURL = "string",
-  Parameters = list(
-    list(
-      ParameterKey = "string",
-      ParameterValue = "string",
-      UsePreviousValue = TRUE|FALSE,
-      ResolvedValue = "string"
-    )
-  ),
-  Capabilities = list(
-    "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"
-  ),
-  ResourceTypes = list(
-    "string"
-  ),
-  RoleARN = "string",
-  RollbackConfiguration = list(
-    RollbackTriggers = list(
-      list(
-        Arn = "string",
-        Type = "string"
-      )
-    ),
-    MonitoringTimeInMinutes = 123
-  ),
-  StackPolicyBody = "string",
-  StackPolicyURL = "string",
-  NotificationARNs = list(
-    "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  ClientRequestToken = "string"
-)
-}
-}
-
 \keyword{internal}

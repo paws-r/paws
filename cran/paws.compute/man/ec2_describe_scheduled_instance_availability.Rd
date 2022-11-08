@@ -4,9 +4,16 @@
 \alias{ec2_describe_scheduled_instance_availability}
 \title{Finds available schedules that meet the specified criteria}
 \usage{
-ec2_describe_scheduled_instance_availability(DryRun, Filters,
-  FirstSlotStartTimeRange, MaxResults, MaxSlotDurationInHours,
-  MinSlotDurationInHours, NextToken, Recurrence)
+ec2_describe_scheduled_instance_availability(
+  DryRun = NULL,
+  Filters = NULL,
+  FirstSlotStartTimeRange,
+  MaxResults = NULL,
+  MaxSlotDurationInHours = NULL,
+  MinSlotDurationInHours = NULL,
+  NextToken = NULL,
+  Recurrence
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -43,107 +50,9 @@ schedule is 100 hours.}
 
 \item{Recurrence}{[required] The schedule recurrence.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  ScheduledInstanceAvailabilitySet = list(
-    list(
-      AvailabilityZone = "string",
-      AvailableInstanceCount = 123,
-      FirstSlotStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      HourlyPrice = "string",
-      InstanceType = "string",
-      MaxTermDurationInDays = 123,
-      MinTermDurationInDays = 123,
-      NetworkPlatform = "string",
-      Platform = "string",
-      PurchaseToken = "string",
-      Recurrence = list(
-        Frequency = "string",
-        Interval = 123,
-        OccurrenceDaySet = list(
-          123
-        ),
-        OccurrenceRelativeToEnd = TRUE|FALSE,
-        OccurrenceUnit = "string"
-      ),
-      SlotDurationInHours = 123,
-      TotalScheduledInstanceHours = 123
-    )
-  )
-)
-}
-}
 \description{
 Finds available schedules that meet the specified criteria.
 
-You can search for an available schedule no more than 3 months in
-advance. You must meet the minimum required duration of 1,200 hours per
-year. For example, the minimum daily schedule is 4 hours, the minimum
-weekly schedule is 24 hours, and the minimum monthly schedule is 100
-hours.
-
-After you find a schedule that meets your needs, call
-\code{\link[=ec2_purchase_scheduled_instances]{purchase_scheduled_instances}} to
-purchase Scheduled Instances with that schedule.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_scheduled_instance_availability(
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  FirstSlotStartTimeRange = list(
-    EarliestTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LatestTime = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  MaxResults = 123,
-  MaxSlotDurationInHours = 123,
-  MinSlotDurationInHours = 123,
-  NextToken = "string",
-  Recurrence = list(
-    Frequency = "string",
-    Interval = 123,
-    OccurrenceDays = list(
-      123
-    ),
-    OccurrenceRelativeToEnd = TRUE|FALSE,
-    OccurrenceUnit = "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes a schedule that occurs every week on Sunday,
-# starting on the specified date. Note that the output contains a single
-# schedule as an example.
-svc$describe_scheduled_instance_availability(
-  FirstSlotStartTimeRange = list(
-    EarliestTime = "2016-01-31T00:00:00Z",
-    LatestTime = "2016-01-31T04:00:00Z"
-  ),
-  Recurrence = list(
-    Frequency = "Weekly",
-    Interval = 1L,
-    OccurrenceDays = list(
-      1L
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_scheduled_instance_availability.html} for full documentation.
 }
 \keyword{internal}

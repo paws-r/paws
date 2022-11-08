@@ -4,13 +4,33 @@
 \alias{ec2_search_local_gateway_routes}
 \title{Searches for routes in the specified local gateway route table}
 \usage{
-ec2_search_local_gateway_routes(LocalGatewayRouteTableId, Filters,
-  MaxResults, NextToken, DryRun)
+ec2_search_local_gateway_routes(
+  LocalGatewayRouteTableId,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{LocalGatewayRouteTableId}{[required] The ID of the local gateway route table.}
 
-\item{Filters}{[required] One or more filters.}
+\item{Filters}{One or more filters.
+\itemize{
+\item \code{route-search.exact-match} - The exact match of the specified
+filter.
+\item \code{route-search.longest-prefix-match} - The longest prefix that
+matches the route.
+\item \code{route-search.subnet-of-match} - The routes with a subnet that match
+the specified CIDR filter.
+\item \code{route-search.supernet-of-match} - The routes with a CIDR that
+encompass the CIDR filter. For example, if you have 10.0.1.0/29 and
+10.0.1.0/31 routes in your route table and you specify
+\code{supernet-of-match} as 10.0.1.0/30, then the result returns
+10.0.1.0/29.
+\item \code{state} - The state of the route.
+\item \code{type} - The route type.
+}}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve
 the remaining results, make another call with the returned \code{nextToken}
@@ -23,42 +43,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Routes = list(
-    list(
-      DestinationCidrBlock = "string",
-      LocalGatewayVirtualInterfaceGroupId = "string",
-      Type = "static"|"propagated",
-      State = "pending"|"active"|"blackhole"|"deleting"|"deleted",
-      LocalGatewayRouteTableId = "string",
-      LocalGatewayRouteTableArn = "string",
-      OwnerId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Searches for routes in the specified local gateway route table.
-}
-\section{Request syntax}{
-\preformatted{svc$search_local_gateway_routes(
-  LocalGatewayRouteTableId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/search_local_gateway_routes.html} for full documentation.
+}
 \keyword{internal}

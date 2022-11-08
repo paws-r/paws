@@ -4,8 +4,15 @@
 \alias{ec2_modify_instance_placement}
 \title{Modifies the placement attributes for a specified instance}
 \usage{
-ec2_modify_instance_placement(Affinity, GroupName, HostId, InstanceId,
-  Tenancy, PartitionNumber, HostResourceGroupArn)
+ec2_modify_instance_placement(
+  Affinity = NULL,
+  GroupName = NULL,
+  HostId = NULL,
+  InstanceId,
+  Tenancy = NULL,
+  PartitionNumber = NULL,
+  HostResourceGroupArn = NULL
+)
 }
 \arguments{
 \item{Affinity}{The affinity setting for the instance.}
@@ -22,52 +29,20 @@ To remove an instance from a placement group, specify an empty string
 
 \item{InstanceId}{[required] The ID of the instance that you are modifying.}
 
-\item{Tenancy}{The tenancy for the instance.}
+\item{Tenancy}{The tenancy for the instance.
 
-\item{PartitionNumber}{Reserved for future use.}
+For T3 instances, you can't change the tenancy from \code{dedicated} to
+\code{host}, or from \code{host} to \code{dedicated}. Attempting to make one of these
+unsupported tenancy changes results in the \code{InvalidTenancy} error code.}
+
+\item{PartitionNumber}{The number of the partition in which to place the instance. Valid only
+if the placement group strategy is set to \code{partition}.}
 
 \item{HostResourceGroupArn}{The ARN of the host resource group in which to place the instance.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Modifies the placement attributes for a specified instance. You can do
-the following:
-\itemize{
-\item Modify the affinity between an instance and a \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html}{Dedicated Host}.
-When affinity is set to \code{host} and the instance is not associated
-with a specific Dedicated Host, the next time the instance is
-launched, it is automatically associated with the host on which it
-lands. If the instance is restarted or rebooted, this relationship
-persists.
-\item Change the Dedicated Host with which an instance is associated.
-\item Change the instance tenancy of an instance from \code{host} to
-\code{dedicated}, or from \code{dedicated} to \code{host}.
-\item Move an instance to or from a \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{placement group}.
-}
+Modifies the placement attributes for a specified instance. You can do the following:
 
-At least one attribute for affinity, host ID, tenancy, or placement
-group name must be specified in the request. Affinity and tenancy can be
-modified in the same request.
-
-To modify the host ID, tenancy, placement group, or partition for an
-instance, the instance must be in the \code{stopped} state.
+See \url{https://paws-r.github.io/docs/ec2/modify_instance_placement.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_instance_placement(
-  Affinity = "default"|"host",
-  GroupName = "string",
-  HostId = "string",
-  InstanceId = "string",
-  Tenancy = "dedicated"|"host",
-  PartitionNumber = 123,
-  HostResourceGroupArn = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,10 +4,18 @@
 \alias{ec2_create_traffic_mirror_session}
 \title{Creates a Traffic Mirror session}
 \usage{
-ec2_create_traffic_mirror_session(NetworkInterfaceId,
-  TrafficMirrorTargetId, TrafficMirrorFilterId, PacketLength,
-  SessionNumber, VirtualNetworkId, Description, TagSpecifications, DryRun,
-  ClientToken)
+ec2_create_traffic_mirror_session(
+  NetworkInterfaceId,
+  TrafficMirrorTargetId,
+  TrafficMirrorFilterId,
+  PacketLength = NULL,
+  SessionNumber,
+  VirtualNetworkId = NULL,
+  Description = NULL,
+  TagSpecifications = NULL,
+  DryRun = NULL,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{NetworkInterfaceId}{[required] The ID of the source network interface.}
@@ -33,9 +41,8 @@ matching filter is the one that mirrors the packets.
 Valid values are 1-32766.}
 
 \item{VirtualNetworkId}{The VXLAN ID for the Traffic Mirror session. For more information about
-the VXLAN protocol, see \href{https://datatracker.ietf.org/doc/html/rfc7348}{RFC 7348}. If you do not
-specify a \code{VirtualNetworkId}, an account-wide unique id is chosen at
-random.}
+the VXLAN protocol, see \href{https://www.rfc-editor.org/rfc/rfc7348}{RFC 7348}. If you do not specify a
+\code{VirtualNetworkId}, an account-wide unique id is chosen at random.}
 
 \item{Description}{The description of the Traffic Mirror session.}
 
@@ -47,71 +54,11 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficMirrorSession = list(
-    TrafficMirrorSessionId = "string",
-    TrafficMirrorTargetId = "string",
-    TrafficMirrorFilterId = "string",
-    NetworkInterfaceId = "string",
-    OwnerId = "string",
-    PacketLength = 123,
-    SessionNumber = 123,
-    VirtualNetworkId = 123,
-    Description = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  ),
-  ClientToken = "string"
-)
-}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
 }
 \description{
 Creates a Traffic Mirror session.
 
-A Traffic Mirror session actively copies packets from a Traffic Mirror
-source to a Traffic Mirror target. Create a filter, and then assign it
-to the session to define a subset of the traffic to mirror, for example
-all TCP traffic.
-
-The Traffic Mirror source and the Traffic Mirror target (monitoring
-appliances) can be in the same VPC, or in a different VPC connected via
-VPC peering or a transit gateway.
-
-By default, no traffic is mirrored. Use
-\code{\link[=ec2_create_traffic_mirror_filter]{create_traffic_mirror_filter}} to
-create filter rules that specify the traffic to mirror.
+See \url{https://paws-r.github.io/docs/ec2/create_traffic_mirror_session.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_traffic_mirror_session(
-  NetworkInterfaceId = "string",
-  TrafficMirrorTargetId = "string",
-  TrafficMirrorFilterId = "string",
-  PacketLength = 123,
-  SessionNumber = 123,
-  VirtualNetworkId = 123,
-  Description = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE,
-  ClientToken = "string"
-)
-}
-}
-
 \keyword{internal}

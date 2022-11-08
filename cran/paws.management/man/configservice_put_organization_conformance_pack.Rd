@@ -2,12 +2,18 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_put_organization_conformance_pack}
 \alias{configservice_put_organization_conformance_pack}
-\title{Deploys conformance packs across member accounts in an AWS Organization}
+\title{Deploys conformance packs across member accounts in an Amazon Web
+Services Organization}
 \usage{
 configservice_put_organization_conformance_pack(
-  OrganizationConformancePackName, TemplateS3Uri, TemplateBody,
-  DeliveryS3Bucket, DeliveryS3KeyPrefix, ConformancePackInputParameters,
-  ExcludedAccounts)
+  OrganizationConformancePackName,
+  TemplateS3Uri = NULL,
+  TemplateBody = NULL,
+  DeliveryS3Bucket = NULL,
+  DeliveryS3KeyPrefix = NULL,
+  ConformancePackInputParameters = NULL,
+  ExcludedAccounts = NULL
+)
 }
 \arguments{
 \item{OrganizationConformancePackName}{[required] Name of the organization conformance pack you want to create.}
@@ -21,76 +27,24 @@ You must have access to read Amazon S3 bucket.}
 containing the template body with a minimum length of 1 byte and a
 maximum length of 51,200 bytes.}
 
-\item{DeliveryS3Bucket}{Location of an Amazon S3 bucket where AWS Config can deliver evaluation
-results. AWS Config stores intermediate files while processing
-conformance pack template.
+\item{DeliveryS3Bucket}{The name of the Amazon S3 bucket where Config stores conformance pack
+templates.
 
-The delivery bucket name should start with awsconfigconforms. For
-example: "Resource": "arn:aws:s3:::your_bucket_name/*". For more
-information, see \href{https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html}{Permissions for cross account bucket access}.}
+This field is optional. If used, it must be prefixed with
+\code{awsconfigconforms}.}
 
-\item{DeliveryS3KeyPrefix}{The prefix for the Amazon S3 bucket.}
+\item{DeliveryS3KeyPrefix}{The prefix for the Amazon S3 bucket.
+
+This field is optional.}
 
 \item{ConformancePackInputParameters}{A list of \code{ConformancePackInputParameter} objects.}
 
-\item{ExcludedAccounts}{A list of AWS accounts to be excluded from an organization conformance
-pack while deploying a conformance pack.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  OrganizationConformancePackArn = "string"
-)
-}
+\item{ExcludedAccounts}{A list of Amazon Web Services accounts to be excluded from an
+organization conformance pack while deploying a conformance pack.}
 }
 \description{
-Deploys conformance packs across member accounts in an AWS Organization.
+Deploys conformance packs across member accounts in an Amazon Web Services Organization. For information on how many organization conformance packs and how many Config rules you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the Config Developer Guide.
 
-Only a master account and a delegated administrator can call this API.
-When calling this API with a delegated administrator, you must ensure
-AWS Organizations \code{ListDelegatedAdministrator} permissions are added.
-
-This API enables organization service access for
-\code{config-multiaccountsetup.amazonaws.com} through the
-\code{EnableAWSServiceAccess} action and creates a service linked role
-\code{AWSServiceRoleForConfigMultiAccountSetup} in the master or delegated
-administrator account of your organization. The service linked role is
-created only when the role does not exist in the caller account. To use
-this API with delegated administrator, register a delegated
-administrator by calling AWS Organization \code{register-delegate-admin} for
-\code{config-multiaccountsetup.amazonaws.com}.
-
-Prerequisite: Ensure you call \code{EnableAllFeatures} API to enable all
-features in an organization.
-
-You must specify either the \code{TemplateS3Uri} or the \code{TemplateBody}
-parameter, but not both. If you provide both AWS Config uses the
-\code{TemplateS3Uri} parameter and ignores the \code{TemplateBody} parameter.
-
-AWS Config sets the state of a conformance pack to CREATE_IN_PROGRESS
-and UPDATE_IN_PROGRESS until the conformance pack is created or
-updated. You cannot update a conformance pack while it is in this state.
-
-You can create 6 conformance packs with 25 AWS Config rules in each pack
-and 3 delegated administrator per organization.
+See \url{https://paws-r.github.io/docs/configservice/put_organization_conformance_pack.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_organization_conformance_pack(
-  OrganizationConformancePackName = "string",
-  TemplateS3Uri = "string",
-  TemplateBody = "string",
-  DeliveryS3Bucket = "string",
-  DeliveryS3KeyPrefix = "string",
-  ConformancePackInputParameters = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string"
-    )
-  ),
-  ExcludedAccounts = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

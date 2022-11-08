@@ -4,30 +4,18 @@
 \alias{licensemanager_delete_grant}
 \title{Deletes the specified grant}
 \usage{
-licensemanager_delete_grant(GrantArn, Version)
+licensemanager_delete_grant(GrantArn, StatusReason = NULL, Version)
 }
 \arguments{
 \item{GrantArn}{[required] Amazon Resource Name (ARN) of the grant.}
 
+\item{StatusReason}{The Status reason for the delete request.}
+
 \item{Version}{[required] Current version of the grant.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  GrantArn = "string",
-  Status = "PENDING_WORKFLOW"|"PENDING_ACCEPT"|"REJECTED"|"ACTIVE"|"FAILED_WORKFLOW"|"DELETED"|"PENDING_DELETE"|"DISABLED",
-  Version = "string"
-)
-}
 }
 \description{
 Deletes the specified grant.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_grant(
-  GrantArn = "string",
-  Version = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/delete_grant.html} for full documentation.
+}
 \keyword{internal}

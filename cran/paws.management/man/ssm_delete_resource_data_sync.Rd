@@ -2,29 +2,18 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_delete_resource_data_sync}
 \alias{ssm_delete_resource_data_sync}
-\title{Deletes a Resource Data Sync configuration}
+\title{Deletes a resource data sync configuration}
 \usage{
-ssm_delete_resource_data_sync(SyncName, SyncType)
+ssm_delete_resource_data_sync(SyncName, SyncType = NULL)
 }
 \arguments{
 \item{SyncName}{[required] The name of the configuration to delete.}
 
 \item{SyncType}{Specify the type of resource data sync to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a Resource Data Sync configuration. After the configuration is
-deleted, changes to data on managed instances are no longer synced to or
-from the target. Deleting a sync configuration does not delete data.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_resource_data_sync(
-  SyncName = "string",
-  SyncType = "string"
-)
-}
-}
+Deletes a resource data sync configuration. After the configuration is deleted, changes to data on managed nodes are no longer synced to or from the target. Deleting a sync configuration doesn't delete data.
 
+See \url{https://paws-r.github.io/docs/ssm/delete_resource_data_sync.html} for full documentation.
+}
 \keyword{internal}

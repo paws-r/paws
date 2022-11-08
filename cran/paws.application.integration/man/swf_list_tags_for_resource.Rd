@@ -9,25 +9,9 @@ swf_list_tags_for_resource(resourceArn)
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) for the Amazon SWF domain.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
 \description{
 List tags for a given domain.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  resourceArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/swf/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

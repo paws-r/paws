@@ -4,7 +4,7 @@
 \alias{personalize_list_schemas}
 \title{Returns the list of schemas associated with the account}
 \usage{
-personalize_list_schemas(nextToken, maxResults)
+personalize_list_schemas(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{A token returned from the previous call to
@@ -13,36 +13,9 @@ schemas (if they exist).}
 
 \item{maxResults}{The maximum number of schemas to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  schemas = list(
-    list(
-      name = "string",
-      schemaArn = "string",
-      creationDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns the list of schemas associated with the account. The response
-provides the properties for each schema, including the Amazon Resource
-Name (ARN). For more information on schemas, see
-\code{\link[=personalize_create_schema]{create_schema}}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_schemas(
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Returns the list of schemas associated with the account. The response provides the properties for each schema, including the Amazon Resource Name (ARN). For more information on schemas, see \code{\link[=personalize_create_schema]{create_schema}}.
 
+See \url{https://paws-r.github.io/docs/personalize/list_schemas.html} for full documentation.
+}
 \keyword{internal}

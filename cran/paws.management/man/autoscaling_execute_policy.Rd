@@ -4,8 +4,13 @@
 \alias{autoscaling_execute_policy}
 \title{Executes the specified policy}
 \usage{
-autoscaling_execute_policy(AutoScalingGroupName, PolicyName,
-  HonorCooldown, MetricValue, BreachThreshold)
+autoscaling_execute_policy(
+  AutoScalingGroupName = NULL,
+  PolicyName,
+  HonorCooldown = NULL,
+  MetricValue = NULL,
+  BreachThreshold = NULL
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
@@ -16,7 +21,7 @@ autoscaling_execute_policy(AutoScalingGroupName, PolicyName,
 to complete before executing the policy.
 
 Valid only if the policy type is \code{SimpleScaling}. For more information,
-see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-cooldowns.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MetricValue}{The metric value to compare to \code{BreachThreshold}. This enables you to
@@ -36,34 +41,9 @@ otherwise.}
 Required if the policy type is \code{StepScaling} and not supported
 otherwise.}
 }
-\value{
-An empty list.
-}
 \description{
-Executes the specified policy. This can be useful for testing the design
-of your scaling policy.
-}
-\section{Request syntax}{
-\preformatted{svc$execute_policy(
-  AutoScalingGroupName = "string",
-  PolicyName = "string",
-  HonorCooldown = TRUE|FALSE,
-  MetricValue = 123.0,
-  BreachThreshold = 123.0
-)
-}
-}
+Executes the specified policy. This can be useful for testing the design of your scaling policy.
 
-\examples{
-\dontrun{
-# This example executes the specified policy.
-svc$execute_policy(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  BreachThreshold = 50,
-  MetricValue = 59,
-  PolicyName = "my-step-scale-out-policy"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/execute_policy.html} for full documentation.
 }
 \keyword{internal}

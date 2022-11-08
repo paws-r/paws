@@ -9,22 +9,12 @@ securityhub_untag_resource(ResourceArn, TagKeys)
 \arguments{
 \item{ResourceArn}{[required] The ARN of the resource to remove the tags from.}
 
-\item{TagKeys}{[required] The tag keys associated with the tags to remove from the resource.}
-}
-\value{
-An empty list.
+\item{TagKeys}{[required] The tag keys associated with the tags to remove from the resource. You
+can remove up to 50 tags at a time.}
 }
 \description{
 Removes one or more tags from a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/securityhub/untag_resource.html} for full documentation.
+}
 \keyword{internal}

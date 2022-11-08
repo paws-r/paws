@@ -5,8 +5,14 @@
 \title{Lists Amazon GuardDuty usage statistics over the last 30 days for the
 specified detector ID}
 \usage{
-guardduty_get_usage_statistics(DetectorId, UsageStatisticType,
-  UsageCriteria, Unit, MaxResults, NextToken)
+guardduty_get_usage_statistics(
+  DetectorId,
+  UsageStatisticType,
+  UsageCriteria,
+  Unit = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector that specifies the GuardDuty service whose usage
@@ -26,78 +32,9 @@ Set the value of this parameter to null for the first request to a list
 action. For subsequent calls, use the NextToken value returned from the
 previous request to continue listing results after the first page.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UsageStatistics = list(
-    SumByAccount = list(
-      list(
-        AccountId = "string",
-        Total = list(
-          Amount = "string",
-          Unit = "string"
-        )
-      )
-    ),
-    SumByDataSource = list(
-      list(
-        DataSource = "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_LOGS",
-        Total = list(
-          Amount = "string",
-          Unit = "string"
-        )
-      )
-    ),
-    SumByResource = list(
-      list(
-        Resource = "string",
-        Total = list(
-          Amount = "string",
-          Unit = "string"
-        )
-      )
-    ),
-    TopResources = list(
-      list(
-        Resource = "string",
-        Total = list(
-          Amount = "string",
-          Unit = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists Amazon GuardDuty usage statistics over the last 30 days for the
-specified detector ID. For newly enabled detectors or data sources the
-cost returned will include only the usage so far under 30 days, this may
-differ from the cost metrics in the console, which projects usage over
-30 days to provide a monthly cost estimate. For more information see
-\href{https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations}{Understanding How Usage Costs are Calculated}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_usage_statistics(
-  DetectorId = "string",
-  UsageStatisticType = "SUM_BY_ACCOUNT"|"SUM_BY_DATA_SOURCE"|"SUM_BY_RESOURCE"|"TOP_RESOURCES",
-  UsageCriteria = list(
-    AccountIds = list(
-      "string"
-    ),
-    DataSources = list(
-      "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_LOGS"
-    ),
-    Resources = list(
-      "string"
-    )
-  ),
-  Unit = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID. For newly enabled detectors or data sources, the cost returned will include only the usage so far under 30 days. This may differ from the cost metrics in the console, which project usage over 30 days to provide a monthly cost estimate. For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations}{Understanding How Usage Costs are Calculated}.
 
+See \url{https://paws-r.github.io/docs/guardduty/get_usage_statistics.html} for full documentation.
+}
 \keyword{internal}

@@ -9,42 +9,9 @@ autoscaling_delete_tags(Tags)
 \arguments{
 \item{Tags}{[required] One or more tags.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified tags.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_tags(
-  Tags = list(
-    list(
-      ResourceId = "string",
-      ResourceType = "string",
-      Key = "string",
-      Value = "string",
-      PropagateAtLaunch = TRUE|FALSE
-    )
-  )
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example deletes the specified tag from the specified Auto Scaling
-# group.
-svc$delete_tags(
-  Tags = list(
-    list(
-      Key = "Dept",
-      ResourceId = "my-auto-scaling-group",
-      ResourceType = "auto-scaling-group",
-      Value = "Research"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/delete_tags.html} for full documentation.
 }
 \keyword{internal}

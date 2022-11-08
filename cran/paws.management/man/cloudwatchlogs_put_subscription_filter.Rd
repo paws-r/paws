@@ -5,17 +5,21 @@
 \title{Creates or updates a subscription filter and associates it with the
 specified log group}
 \usage{
-cloudwatchlogs_put_subscription_filter(logGroupName, filterName,
-  filterPattern, destinationArn, roleArn, distribution)
+cloudwatchlogs_put_subscription_filter(
+  logGroupName,
+  filterName,
+  filterPattern,
+  destinationArn,
+  roleArn = NULL,
+  distribution = NULL
+)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
 
 \item{filterName}{[required] A name for the subscription filter. If you are updating an existing
-filter, you must specify the correct name in \code{filterName}. Otherwise,
-the call fails because you cannot associate a second filter with a log
-group. To find the name of the filter currently associated with a log
-group, use
+filter, you must specify the correct name in \code{filterName}. To find the
+name of the filter currently associated with a log group, use
 \code{\link[=cloudwatchlogs_describe_subscription_filters]{describe_subscription_filters}}.}
 
 \item{filterPattern}{[required] A filter pattern for subscribing to a filtered stream of log events.}
@@ -27,10 +31,15 @@ the supported destinations are:
 subscription filter, for same-account delivery.
 \item A logical destination (specified using an ARN) belonging to a
 different account, for cross-account delivery.
+
+If you are setting up a cross-account subscription, the destination
+must have an IAM policy associated with it that allows the sender to
+send logs to the destination. For more information, see
+\code{\link[=cloudwatchlogs_put_destination_policy]{put_destination_policy}}.
 \item An Amazon Kinesis Firehose delivery stream belonging to the same
 account as the subscription filter, for same-account delivery.
-\item An AWS Lambda function belonging to the same account as the
-subscription filter, for same-account delivery.
+\item A Lambda function belonging to the same account as the subscription
+filter, for same-account delivery.
 }}
 
 \item{roleArn}{The ARN of an IAM role that grants CloudWatch Logs permissions to
@@ -43,49 +52,9 @@ log data is grouped by log stream, but the grouping can be set to random
 for a more even distribution. This property is only applicable when the
 destination is an Amazon Kinesis stream.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates or updates a subscription filter and associates it with the
-specified log group. Subscription filters allow you to subscribe to a
-real-time stream of log events ingested through
-\code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} and have them
-delivered to a specific destination. When log events are sent to the
-receiving service, they are Base64 encoded and compressed with the gzip
-format.
+Creates or updates a subscription filter and associates it with the specified log group. Subscription filters allow you to subscribe to a real-time stream of log events ingested through \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}} and have them delivered to a specific destination. When log events are sent to the receiving service, they are Base64 encoded and compressed with the gzip format.
 
-The following destinations are supported for subscription filters:
-\itemize{
-\item An Amazon Kinesis stream belonging to the same account as the
-subscription filter, for same-account delivery.
-\item A logical destination that belongs to a different account, for
-cross-account delivery.
-\item An Amazon Kinesis Firehose delivery stream that belongs to the same
-account as the subscription filter, for same-account delivery.
-\item An AWS Lambda function that belongs to the same account as the
-subscription filter, for same-account delivery.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/put_subscription_filter.html} for full documentation.
 }
-
-There can only be one subscription filter associated with a log group.
-If you are updating an existing filter, you must specify the correct
-name in \code{filterName}. Otherwise, the call fails because you cannot
-associate a second filter with a log group.
-
-To perform a
-\code{\link[=cloudwatchlogs_put_subscription_filter]{put_subscription_filter}}
-operation, you must also have the \code{iam:PassRole} permission.
-}
-\section{Request syntax}{
-\preformatted{svc$put_subscription_filter(
-  logGroupName = "string",
-  filterName = "string",
-  filterPattern = "string",
-  destinationArn = "string",
-  roleArn = "string",
-  distribution = "Random"|"ByLogStream"
-)
-}
-}
-
 \keyword{internal}

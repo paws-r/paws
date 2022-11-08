@@ -5,7 +5,11 @@
 \title{Returns a list of DBClusterParameterGroup descriptions}
 \usage{
 neptune_describe_db_cluster_parameter_groups(
-  DBClusterParameterGroupName, Filters, MaxRecords, Marker)
+  DBClusterParameterGroupName = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBClusterParameterGroupName}{The name of a specific DB cluster parameter group to return details for.
@@ -32,41 +36,9 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBClusterParameterGroups = list(
-    list(
-      DBClusterParameterGroupName = "string",
-      DBParameterGroupFamily = "string",
-      Description = "string",
-      DBClusterParameterGroupArn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of \code{DBClusterParameterGroup} descriptions. If a
-\code{DBClusterParameterGroupName} parameter is specified, the list will
-contain only the description of the specified DB cluster parameter
-group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_db_cluster_parameter_groups(
-  DBClusterParameterGroupName = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns a list of \code{DBClusterParameterGroup} descriptions. If a \code{DBClusterParameterGroupName} parameter is specified, the list will contain only the description of the specified DB cluster parameter group.
 
+See \url{https://paws-r.github.io/docs/neptune/describe_db_cluster_parameter_groups.html} for full documentation.
+}
 \keyword{internal}

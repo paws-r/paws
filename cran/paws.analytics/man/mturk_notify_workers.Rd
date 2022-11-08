@@ -17,35 +17,9 @@ characters}
 \item{WorkerIds}{[required] A list of Worker IDs you wish to notify. You can notify upto 100 Workers
 at a time.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NotifyWorkersFailureStatuses = list(
-    list(
-      NotifyWorkersFailureCode = "SoftFailure"|"HardFailure",
-      NotifyWorkersFailureMessage = "string",
-      WorkerId = "string"
-    )
-  )
-)
-}
-}
 \description{
-The \code{\link[=mturk_notify_workers]{notify_workers}} operation sends an email to
-one or more Workers that you specify with the Worker ID. You can specify
-up to 100 Worker IDs to send the same message with a single call to the
-NotifyWorkers operation. The NotifyWorkers operation will send a
-notification email to a Worker only if you have previously approved or
-rejected work from the Worker.
-}
-\section{Request syntax}{
-\preformatted{svc$notify_workers(
-  Subject = "string",
-  MessageText = "string",
-  WorkerIds = list(
-    "string"
-  )
-)
-}
-}
+The \code{\link[=mturk_notify_workers]{notify_workers}} operation sends an email to one or more Workers that you specify with the Worker ID. You can specify up to 100 Worker IDs to send the same message with a single call to the NotifyWorkers operation. The NotifyWorkers operation will send a notification email to a Worker only if you have previously approved or rejected work from the Worker.
 
+See \url{https://paws-r.github.io/docs/mturk/notify_workers.html} for full documentation.
+}
 \keyword{internal}

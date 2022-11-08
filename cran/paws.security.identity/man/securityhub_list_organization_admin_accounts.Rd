@@ -4,7 +4,10 @@
 \alias{securityhub_list_organization_admin_accounts}
 \title{Lists the Security Hub administrator accounts}
 \usage{
-securityhub_list_organization_admin_accounts(MaxResults, NextToken)
+securityhub_list_organization_admin_accounts(
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of items to return in the response.}
@@ -15,28 +18,9 @@ operation, set the value of this parameter to \code{NULL}. For subsequent
 calls to the operation, to continue listing data, set the value of this
 parameter to the value returned from the previous response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AdminAccounts = list(
-    list(
-      AccountId = "string",
-      Status = "ENABLED"|"DISABLE_IN_PROGRESS"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the Security Hub administrator accounts. Can only be called by the
-organization management account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_organization_admin_accounts(
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Lists the Security Hub administrator accounts. Can only be called by the organization management account.
 
+See \url{https://paws-r.github.io/docs/securityhub/list_organization_admin_accounts.html} for full documentation.
+}
 \keyword{internal}

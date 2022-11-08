@@ -5,7 +5,7 @@
 \title{List all of the configuration sets associated with your Amazon Pinpoint
 account in the current region}
 \usage{
-pinpointsmsvoice_list_configuration_sets(NextToken, PageSize)
+pinpointsmsvoice_list_configuration_sets(NextToken = NULL, PageSize = NULL)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to the API that indicates the
@@ -14,25 +14,9 @@ position in the list of results.}
 \item{PageSize}{Used to specify the number of items that should be returned in the
 response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConfigurationSets = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-List all of the configuration sets associated with your Amazon Pinpoint
-account in the current region.
-}
-\section{Request syntax}{
-\preformatted{svc$list_configuration_sets(
-  NextToken = "string",
-  PageSize = "string"
-)
-}
-}
+List all of the configuration sets associated with your Amazon Pinpoint account in the current region.
 
+See \url{https://paws-r.github.io/docs/pinpointsmsvoice/list_configuration_sets.html} for full documentation.
+}
 \keyword{internal}

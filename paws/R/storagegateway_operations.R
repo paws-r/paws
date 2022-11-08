@@ -7,11 +7,12 @@ NULL
 #'
 #' @description
 #' Activates the gateway you previously deployed on your host. In the
-#' activation process, you specify information such as the AWS Region that
-#' you want to use for storing snapshots or tapes, the time zone for
-#' scheduled snapshots the gateway snapshot schedule window, an activation
-#' key, and a name for your gateway. The activation process also associates
-#' your gateway with your account. For more information, see
+#' activation process, you specify information such as the Amazon Web
+#' Services Region that you want to use for storing snapshots or tapes, the
+#' time zone for scheduled snapshots the gateway snapshot schedule window,
+#' an activation key, and a name for your gateway. The activation process
+#' also associates your gateway with your account. For more information,
+#' see
 #' [`update_gateway_information`][storagegateway_update_gateway_information].
 #' 
 #' You must turn on the gateway VM before you can activate your gateway.
@@ -31,30 +32,32 @@ NULL
 #' determine the actual configuration of your gateway.
 #' 
 #' For more information, see [Getting activation
-#' key](https://docs.aws.amazon.com/storagegateway/latest/userguide/get-activation-key.html)
-#' in the *AWS Storage Gateway User Guide*.
+#' key](https://docs.aws.amazon.com/storagegateway/index.html) in the
+#' *Storage Gateway User Guide*.
 #' @param GatewayName &#91;required&#93; The name you configured for your gateway.
 #' @param GatewayTimezone &#91;required&#93; A value that indicates the time zone you want to set for the gateway.
 #' The time zone is of the format "GMT-hr:mm" or "GMT+hr:mm". For example,
 #' GMT-4:00 indicates the time is 4 hours behind GMT. GMT+2:00 indicates
 #' the time is 2 hours ahead of GMT. The time zone is used, for example,
 #' for scheduling snapshots and your gateway's maintenance schedule.
-#' @param GatewayRegion &#91;required&#93; A value that indicates the AWS Region where you want to store your data.
-#' The gateway AWS Region specified must be the same AWS Region as the AWS
-#' Region in your `Host` header in the request. For more information about
-#' available AWS Regions and endpoints for AWS Storage Gateway, see [AWS
-#' Storage Gateway endpoints and
+#' @param GatewayRegion &#91;required&#93; A value that indicates the Amazon Web Services Region where you want to
+#' store your data. The gateway Amazon Web Services Region specified must
+#' be the same Amazon Web Services Region as the Amazon Web Services Region
+#' in your `Host` header in the request. For more information about
+#' available Amazon Web Services Regions and endpoints for Storage Gateway,
+#' see [Storage Gateway endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html) in the
-#' *AWS General Reference*.
+#' *Amazon Web Services General Reference*.
 #' 
-#' Valid Values: See [AWS Storage Gateway endpoints and
+#' Valid Values: See [Storage Gateway endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html) in the
-#' *AWS General Reference*.
+#' *Amazon Web Services General Reference*.
 #' @param GatewayType A value that defines the type of gateway to activate. The type specified
 #' is critical to all later functions of the gateway and cannot be changed
 #' after activation. The default value is `CACHED`.
 #' 
-#' Valid Values: `STORED` | `CACHED` | `VTL` | `FILE_S3`
+#' Valid Values: `STORED` | `CACHED` | `VTL` | `VTL_SNOW` | `FILE_S3` |
+#' `FILE_FSX_SMB`
 #' @param TapeDriveType The value that indicates the type of tape drive to use for tape gateway.
 #' This field is optional.
 #' 
@@ -137,8 +140,8 @@ storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayT
 #' @description
 #' Configures one or more gateway local disks as cache for a gateway. This
 #' operation is only supported in the cached volume, tape, and file gateway
-#' type (see [How AWS Storage Gateway works
-#' (architecture)](https://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html).
+#' type (see [How Storage Gateway works
+#' (architecture)](https://docs.aws.amazon.com/storagegateway/index.html).
 #' 
 #' In the request, you specify the gateway Amazon Resource Name (ARN) to
 #' which you want to add cache, and one or more disk IDs that you want to
@@ -211,7 +214,7 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
 #' metadata to resources, which you can use to categorize these resources.
 #' For example, you can categorize resources by purpose, owner,
 #' environment, or team. Each tag consists of a key and a value, which you
-#' define. You can add tags to the following AWS Storage Gateway resources:
+#' define. You can add tags to the following Storage Gateway resources:
 #' 
 #' -   Storage gateways of all types
 #' 
@@ -220,6 +223,8 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
 #' -   Virtual tapes
 #' 
 #' -   NFS and SMB file shares
+#' 
+#' -   File System associations
 #' 
 #' You can create a maximum of 50 tags for each resource. Virtual tapes and
 #' storage volumes that are recovered to a new gateway maintain their tags.
@@ -297,7 +302,7 @@ storagegateway_add_tags_to_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Configures one or more gateway local disks as upload buffer for a
 #' specified gateway. This operation is supported for the stored volume,
-#' cached volume and tape gateway types.
+#' cached volume, and tape gateway types.
 #' 
 #' In the request, you specify the gateway Amazon Resource Name (ARN) to
 #' which you want to add upload buffer, and one or more disk IDs that you
@@ -449,8 +454,6 @@ storagegateway_add_working_storage <- function(GatewayARN, DiskIds) {
 #' When you use your backup application to eject the tape, the tape is
 #' archived directly into the S3 storage class (S3 Glacier or S3 Glacier
 #' Deep Archive) that corresponds to the pool.
-#' 
-#' Valid Values: `GLACIER` | `DEEP_ARCHIVE`
 #'
 #' @usage
 #' storagegateway_assign_tape_pool(TapeARN, PoolId,
@@ -463,8 +466,6 @@ storagegateway_add_working_storage <- function(GatewayARN, DiskIds) {
 #' with the pool. When you use your backup application to eject the tape,
 #' the tape is archived directly into the storage class (S3 Glacier or S3
 #' Glacier Deep Archive) that corresponds to the pool.
-#' 
-#' Valid Values: `GLACIER` | `DEEP_ARCHIVE`
 #' @param BypassGovernanceRetention Set permissions to bypass governance retention. If the lock type of the
 #' archived tape is `Governance`, the tape's archived age is not older than
 #' `RetentionLockInDays`, and the user does not already have
@@ -510,6 +511,92 @@ storagegateway_assign_tape_pool <- function(TapeARN, PoolId, BypassGovernanceRet
   return(response)
 }
 .storagegateway$operations$assign_tape_pool <- storagegateway_assign_tape_pool
+
+#' Associate an Amazon FSx file system with the FSx File Gateway
+#'
+#' @description
+#' Associate an Amazon FSx file system with the FSx File Gateway. After the
+#' association process is complete, the file shares on the Amazon FSx file
+#' system are available for access through the gateway. This operation only
+#' supports the FSx File Gateway type.
+#'
+#' @usage
+#' storagegateway_associate_file_system(UserName, Password, ClientToken,
+#'   GatewayARN, LocationARN, Tags, AuditDestinationARN, CacheAttributes,
+#'   EndpointNetworkConfiguration)
+#'
+#' @param UserName &#91;required&#93; The user name of the user credential that has permission to access the
+#' root share D$ of the Amazon FSx file system. The user account must
+#' belong to the Amazon FSx delegated admin user group.
+#' @param Password &#91;required&#93; The password of the user credential.
+#' @param ClientToken &#91;required&#93; A unique string value that you supply that is used by the FSx File
+#' Gateway to ensure idempotent file system association creation.
+#' @param GatewayARN &#91;required&#93; 
+#' @param LocationARN &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon FSx file system to
+#' associate with the FSx File Gateway.
+#' @param Tags A list of up to 50 tags that can be assigned to the file system
+#' association. Each tag is a key-value pair.
+#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for the audit logs.
+#' @param CacheAttributes 
+#' @param EndpointNetworkConfiguration Specifies the network configuration information for the gateway
+#' associated with the Amazon FSx file system.
+#' 
+#' If multiple file systems are associated with this gateway, this
+#' parameter's `IpAddresses` field is required.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileSystemAssociationARN = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_file_system(
+#'   UserName = "string",
+#'   Password = "string",
+#'   ClientToken = "string",
+#'   GatewayARN = "string",
+#'   LocationARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   AuditDestinationARN = "string",
+#'   CacheAttributes = list(
+#'     CacheStaleTimeoutInSeconds = 123
+#'   ),
+#'   EndpointNetworkConfiguration = list(
+#'     IpAddresses = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_associate_file_system
+storagegateway_associate_file_system <- function(UserName, Password, ClientToken, GatewayARN, LocationARN, Tags = NULL, AuditDestinationARN = NULL, CacheAttributes = NULL, EndpointNetworkConfiguration = NULL) {
+  op <- new_operation(
+    name = "AssociateFileSystem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .storagegateway$associate_file_system_input(UserName = UserName, Password = Password, ClientToken = ClientToken, GatewayARN = GatewayARN, LocationARN = LocationARN, Tags = Tags, AuditDestinationARN = AuditDestinationARN, CacheAttributes = CacheAttributes, EndpointNetworkConfiguration = EndpointNetworkConfiguration)
+  output <- .storagegateway$associate_file_system_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$associate_file_system <- storagegateway_associate_file_system
 
 #' Connects a volume to an iSCSI connection and then attaches the volume to
 #' the specified gateway
@@ -767,8 +854,8 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' @param ClientToken &#91;required&#93; A unique identifier that you use to retry a request. If you retry a
 #' request, use the same `ClientToken` you specified in the initial
 #' request.
-#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
-#' KMS key, or `false` to use a key managed by Amazon S3. Optional.
+#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own KMS
+#' key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
 #' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
@@ -779,9 +866,9 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' is a key-value pair.
 #' 
 #' Valid characters for key and value are letters, spaces, and numbers that
-#' you can represent in UTF-8 format, and the following special characters:
-#' + - = . _ : / @@. The maximum length of a tag's key is 128 characters,
-#' and the maximum length for a tag's value is 256 characters.
+#' you can represent in UTF-8 format, and the following special
+#' characters: + - = . _ : / @@. The maximum length of a tag's key is 128
+#' characters, and the maximum length for a tag's value is 256 characters.
 #'
 #' @return
 #' A list with the following syntax:
@@ -846,62 +933,86 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 }
 .storagegateway$operations$create_cachedi_scsi_volume <- storagegateway_create_cachedi_scsi_volume
 
-#' Creates a Network File System (NFS) file share on an existing file
-#' gateway
+#' Creates a Network File System (NFS) file share on an existing S3 File
+#' Gateway
 #'
 #' @description
-#' Creates a Network File System (NFS) file share on an existing file
-#' gateway. In Storage Gateway, a file share is a file system mount point
+#' Creates a Network File System (NFS) file share on an existing S3 File
+#' Gateway. In Storage Gateway, a file share is a file system mount point
 #' backed by Amazon S3 cloud storage. Storage Gateway exposes file shares
-#' using an NFS interface. This operation is only supported for file
-#' gateways.
+#' using an NFS interface. This operation is only supported for S3 File
+#' Gateways.
 #' 
-#' File gateway requires AWS Security Token Service (AWS STS) to be
-#' activated to enable you to create a file share. Make sure AWS STS is
-#' activated in the AWS Region you are creating your file gateway in. If
-#' AWS STS is not activated in the AWS Region, activate it. For information
-#' about how to activate AWS STS, see [Activating and deactivating AWS STS
-#' in an AWS
+#' S3 File gateway requires Security Token Service (Amazon Web Services
+#' STS) to be activated to enable you to create a file share. Make sure
+#' Amazon Web Services STS is activated in the Amazon Web Services Region
+#' you are creating your S3 File Gateway in. If Amazon Web Services STS is
+#' not activated in the Amazon Web Services Region, activate it. For
+#' information about how to activate Amazon Web Services STS, see
+#' [Activating and deactivating Amazon Web Services STS in an Amazon Web
+#' Services
 #' Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
-#' in the *AWS Identity and Access Management User Guide*.
+#' in the *Identity and Access Management User Guide*.
 #' 
-#' File gateway does not support creating hard or symbolic links on a file
-#' share.
+#' S3 File Gateways do not support creating hard or symbolic links on a
+#' file share.
 #'
 #' @usage
 #' storagegateway_create_nfs_file_share(ClientToken, NFSFileShareDefaults,
 #'   GatewayARN, KMSEncrypted, KMSKey, Role, LocationARN,
 #'   DefaultStorageClass, ObjectACL, ClientList, Squash, ReadOnly,
 #'   GuessMIMETypeEnabled, RequesterPays, Tags, FileShareName,
-#'   CacheAttributes, NotificationPolicy)
+#'   CacheAttributes, NotificationPolicy, VPCEndpointDNSName, BucketRegion,
+#'   AuditDestinationARN)
 #'
-#' @param ClientToken &#91;required&#93; A unique string value that you supply that is used by file gateway to
+#' @param ClientToken &#91;required&#93; A unique string value that you supply that is used by S3 File Gateway to
 #' ensure idempotent file share creation.
 #' @param NFSFileShareDefaults File share default values. Optional.
-#' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the file gateway on which you want to
-#' create a file share.
-#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
-#' KMS key, or `false` to use a key managed by Amazon S3. Optional.
+#' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the S3 File Gateway on which you want
+#' to create a file share.
+#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own KMS
+#' key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
 #' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
 #' used for Amazon S3 server-side encryption. Storage Gateway does not
 #' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
 #' is `true`. Optional.
-#' @param Role &#91;required&#93; The ARN of the AWS Identity and Access Management (IAM) role that a file
-#' gateway assumes when it accesses the underlying storage.
-#' @param LocationARN &#91;required&#93; The ARN of the backend storage used for storing file data. A prefix name
-#' can be added to the S3 bucket name. It must end with a "/".
+#' @param Role &#91;required&#93; The ARN of the Identity and Access Management (IAM) role that an S3 File
+#' Gateway assumes when it accesses the underlying storage.
+#' @param LocationARN &#91;required&#93; A custom ARN for the backend storage used for storing data for file
+#' shares. It includes a resource ARN with an optional prefix
+#' concatenation. The prefix must end with a forward slash (/).
+#' 
+#' You can specify LocationARN as a bucket ARN, access point ARN or access
+#' point alias, as shown in the following examples.
+#' 
+#' Bucket ARN:
+#' 
+#' `arn:aws:s3:::my-bucket/prefix/`
+#' 
+#' Access point ARN:
+#' 
+#' `arn:aws:s3:region:account-id:accesspoint/access-point-name/prefix/`
+#' 
+#' If you specify an access point, the bucket policy must be configured to
+#' delegate access control to the access point. For information, see
+#' [Delegating access control to access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-policies.html#access-points-delegating-control)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' Access point alias:
+#' 
+#' `test-ap-ab123cdef4gehijklmn5opqrstuvuse1a-s3alias`
 #' @param DefaultStorageClass The default storage class for objects put into an Amazon S3 bucket by
-#' the file gateway. The default value is `S3_INTELLIGENT_TIERING`.
-#' Optional.
+#' the S3 File Gateway. The default value is `S3_STANDARD`. Optional.
 #' 
 #' Valid Values: `S3_STANDARD` | `S3_INTELLIGENT_TIERING` |
 #' `S3_STANDARD_IA` | `S3_ONEZONE_IA`
 #' @param ObjectACL A value that sets the access control list (ACL) permission for objects
-#' in the S3 bucket that a file gateway puts objects into. The default
+#' in the S3 bucket that a S3 File Gateway puts objects into. The default
 #' value is `private`.
-#' @param ClientList The list of clients that are allowed to access the file gateway. The
+#' @param ClientList The list of clients that are allowed to access the S3 File Gateway. The
 #' list must contain either valid IP addresses or valid CIDR blocks.
 #' @param Squash A value that maps a user to anonymous user.
 #' 
@@ -941,9 +1052,39 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' @param FileShareName The name of the file share. Optional.
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
-#' `LocationARN`.
-#' @param CacheAttributes Refresh cache information.
-#' @param NotificationPolicy The notification policy of the file share.
+#' `LocationARN`, or if an access point or access point alias is used.
+#' @param CacheAttributes Specifies refresh cache information for the file share.
+#' @param NotificationPolicy The notification policy of the file share. `SettlingTimeInSeconds`
+#' controls the number of seconds to wait after the last point in time a
+#' client wrote to a file before generating an `ObjectUploaded`
+#' notification. Because clients can make many small writes to files, it's
+#' best to set this parameter for as long as possible to avoid generating
+#' multiple notifications for the same file in a small time period.
+#' 
+#' `SettlingTimeInSeconds` has no effect on the timing of the object
+#' uploading to Amazon S3, only the timing of the notification.
+#' 
+#' The following example sets `NotificationPolicy` on with
+#' `SettlingTimeInSeconds` set to 60.
+#' 
+#' `{\"Upload\": {\"SettlingTimeInSeconds\": 60}}`
+#' 
+#' The following example sets `NotificationPolicy` off.
+#' 
+#' `{}`
+#' @param VPCEndpointDNSName Specifies the DNS name for the VPC endpoint that the NFS file share uses
+#' to connect to Amazon S3.
+#' 
+#' This parameter is required for NFS file shares that connect to Amazon S3
+#' through a VPC endpoint, a VPC access point, or an access point alias
+#' that points to a VPC access point.
+#' @param BucketRegion Specifies the Region of the S3 bucket where the NFS file share stores
+#' files.
+#' 
+#' This parameter is required for NFS file shares that connect to Amazon S3
+#' through a VPC endpoint, a VPC access point, or an access point alias
+#' that points to a VPC access point.
+#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for audit logs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -987,21 +1128,24 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #'   CacheAttributes = list(
 #'     CacheStaleTimeoutInSeconds = 123
 #'   ),
-#'   NotificationPolicy = "string"
+#'   NotificationPolicy = "string",
+#'   VPCEndpointDNSName = "string",
+#'   BucketRegion = "string",
+#'   AuditDestinationARN = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_nfs_file_share
-storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaults = NULL, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ClientList = NULL, Squash = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, Tags = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL) {
+storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaults = NULL, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ClientList = NULL, Squash = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, Tags = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, VPCEndpointDNSName = NULL, BucketRegion = NULL, AuditDestinationARN = NULL) {
   op <- new_operation(
     name = "CreateNFSFileShare",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$create_nfs_file_share_input(ClientToken = ClientToken, NFSFileShareDefaults = NFSFileShareDefaults, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, Tags = Tags, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy)
+  input <- .storagegateway$create_nfs_file_share_input(ClientToken = ClientToken, NFSFileShareDefaults = NFSFileShareDefaults, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, Tags = Tags, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, VPCEndpointDNSName = VPCEndpointDNSName, BucketRegion = BucketRegion, AuditDestinationARN = AuditDestinationARN)
   output <- .storagegateway$create_nfs_file_share_output()
   config <- get_config()
   svc <- .storagegateway$service(config)
@@ -1011,24 +1155,26 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 }
 .storagegateway$operations$create_nfs_file_share <- storagegateway_create_nfs_file_share
 
-#' Creates a Server Message Block (SMB) file share on an existing file
-#' gateway
+#' Creates a Server Message Block (SMB) file share on an existing S3 File
+#' Gateway
 #'
 #' @description
-#' Creates a Server Message Block (SMB) file share on an existing file
-#' gateway. In Storage Gateway, a file share is a file system mount point
+#' Creates a Server Message Block (SMB) file share on an existing S3 File
+#' Gateway. In Storage Gateway, a file share is a file system mount point
 #' backed by Amazon S3 cloud storage. Storage Gateway exposes file shares
-#' using an SMB interface. This operation is only supported for file
-#' gateways.
+#' using an SMB interface. This operation is only supported for S3 File
+#' Gateways.
 #' 
-#' File gateways require AWS Security Token Service (AWS STS) to be
-#' activated to enable you to create a file share. Make sure that AWS STS
-#' is activated in the AWS Region you are creating your file gateway in. If
-#' AWS STS is not activated in this AWS Region, activate it. For
-#' information about how to activate AWS STS, see [Activating and
-#' deactivating AWS STS in an AWS
+#' S3 File Gateways require Security Token Service (Amazon Web Services
+#' STS) to be activated to enable you to create a file share. Make sure
+#' that Amazon Web Services STS is activated in the Amazon Web Services
+#' Region you are creating your S3 File Gateway in. If Amazon Web Services
+#' STS is not activated in this Amazon Web Services Region, activate it.
+#' For information about how to activate Amazon Web Services STS, see
+#' [Activating and deactivating Amazon Web Services STS in an Amazon Web
+#' Services
 #' Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
-#' in the *AWS Identity and Access Management User Guide*.
+#' in the *Identity and Access Management User Guide*.
 #' 
 #' File gateways don't support creating hard or symbolic links on a file
 #' share.
@@ -1039,31 +1185,53 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #'   ReadOnly, GuessMIMETypeEnabled, RequesterPays, SMBACLEnabled,
 #'   AccessBasedEnumeration, AdminUserList, ValidUserList, InvalidUserList,
 #'   AuditDestinationARN, Authentication, CaseSensitivity, Tags,
-#'   FileShareName, CacheAttributes, NotificationPolicy)
+#'   FileShareName, CacheAttributes, NotificationPolicy, VPCEndpointDNSName,
+#'   BucketRegion, OplocksEnabled)
 #'
-#' @param ClientToken &#91;required&#93; A unique string value that you supply that is used by file gateway to
+#' @param ClientToken &#91;required&#93; A unique string value that you supply that is used by S3 File Gateway to
 #' ensure idempotent file share creation.
-#' @param GatewayARN &#91;required&#93; The ARN of the file gateway on which you want to create a file share.
-#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
-#' KMS key, or `false` to use a key managed by Amazon S3. Optional.
+#' @param GatewayARN &#91;required&#93; The ARN of the S3 File Gateway on which you want to create a file share.
+#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own KMS
+#' key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
 #' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
 #' used for Amazon S3 server-side encryption. Storage Gateway does not
 #' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
 #' is `true`. Optional.
-#' @param Role &#91;required&#93; The ARN of the AWS Identity and Access Management (IAM) role that a file
-#' gateway assumes when it accesses the underlying storage.
-#' @param LocationARN &#91;required&#93; The ARN of the backend storage used for storing file data. A prefix name
-#' can be added to the S3 bucket name. It must end with a "/".
+#' @param Role &#91;required&#93; The ARN of the Identity and Access Management (IAM) role that an S3 File
+#' Gateway assumes when it accesses the underlying storage.
+#' @param LocationARN &#91;required&#93; A custom ARN for the backend storage used for storing data for file
+#' shares. It includes a resource ARN with an optional prefix
+#' concatenation. The prefix must end with a forward slash (/).
+#' 
+#' You can specify LocationARN as a bucket ARN, access point ARN or access
+#' point alias, as shown in the following examples.
+#' 
+#' Bucket ARN:
+#' 
+#' `arn:aws:s3:::my-bucket/prefix/`
+#' 
+#' Access point ARN:
+#' 
+#' `arn:aws:s3:region:account-id:accesspoint/access-point-name/prefix/`
+#' 
+#' If you specify an access point, the bucket policy must be configured to
+#' delegate access control to the access point. For information, see
+#' [Delegating access control to access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-policies.html#access-points-delegating-control)
+#' in the *Amazon S3 User Guide*.
+#' 
+#' Access point alias:
+#' 
+#' `test-ap-ab123cdef4gehijklmn5opqrstuvuse1a-s3alias`
 #' @param DefaultStorageClass The default storage class for objects put into an Amazon S3 bucket by
-#' the file gateway. The default value is `S3_INTELLIGENT_TIERING`.
-#' Optional.
+#' the S3 File Gateway. The default value is `S3_STANDARD`. Optional.
 #' 
 #' Valid Values: `S3_STANDARD` | `S3_INTELLIGENT_TIERING` |
 #' `S3_STANDARD_IA` | `S3_ONEZONE_IA`
 #' @param ObjectACL A value that sets the access control list (ACL) permission for objects
-#' in the S3 bucket that a file gateway puts objects into. The default
+#' in the S3 bucket that a S3 File Gateway puts objects into. The default
 #' value is `private`.
 #' @param ReadOnly A value that sets the write status of a file share. Set this value to
 #' `true` to set the write status to read-only, otherwise set to `false`.
@@ -1090,8 +1258,8 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' 
 #' For more information, see [Using Microsoft Windows ACLs to control
 #' access to an SMB file
-#' share](https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html)
-#' in the *AWS Storage Gateway User Guide*.
+#' share](https://docs.aws.amazon.com/storagegateway/index.html) in the
+#' *Storage Gateway User Guide*.
 #' 
 #' Valid Values: `true` | `false`
 #' @param AccessBasedEnumeration The files and folders on this share will only be visible to users with
@@ -1113,7 +1281,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' Acceptable formats include: `DOMAIN\User1`, `user1`, `@@group1`, and
 #' `@@DOMAIN\group1`. Can only be set if Authentication is set to
 #' `ActiveDirectory`.
-#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for the audit logs.
+#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for audit logs.
 #' @param Authentication The authentication method that users use to access the file share. The
 #' default is `ActiveDirectory`.
 #' 
@@ -1132,9 +1300,46 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' @param FileShareName The name of the file share. Optional.
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
-#' `LocationARN`.
-#' @param CacheAttributes Refresh cache information.
-#' @param NotificationPolicy The notification policy of the file share.
+#' `LocationARN`, or if an access point or access point alias is used.
+#' @param CacheAttributes Specifies refresh cache information for the file share.
+#' @param NotificationPolicy The notification policy of the file share. `SettlingTimeInSeconds`
+#' controls the number of seconds to wait after the last point in time a
+#' client wrote to a file before generating an `ObjectUploaded`
+#' notification. Because clients can make many small writes to files, it's
+#' best to set this parameter for as long as possible to avoid generating
+#' multiple notifications for the same file in a small time period.
+#' 
+#' `SettlingTimeInSeconds` has no effect on the timing of the object
+#' uploading to Amazon S3, only the timing of the notification.
+#' 
+#' The following example sets `NotificationPolicy` on with
+#' `SettlingTimeInSeconds` set to 60.
+#' 
+#' `{\"Upload\": {\"SettlingTimeInSeconds\": 60}}`
+#' 
+#' The following example sets `NotificationPolicy` off.
+#' 
+#' `{}`
+#' @param VPCEndpointDNSName Specifies the DNS name for the VPC endpoint that the SMB file share uses
+#' to connect to Amazon S3.
+#' 
+#' This parameter is required for SMB file shares that connect to Amazon S3
+#' through a VPC endpoint, a VPC access point, or an access point alias
+#' that points to a VPC access point.
+#' @param BucketRegion Specifies the Region of the S3 bucket where the SMB file share stores
+#' files.
+#' 
+#' This parameter is required for SMB file shares that connect to Amazon S3
+#' through a VPC endpoint, a VPC access point, or an access point alias
+#' that points to a VPC access point.
+#' @param OplocksEnabled Specifies whether opportunistic locking is enabled for the SMB file
+#' share.
+#' 
+#' Enabling opportunistic locking on case-sensitive shares is not
+#' recommended for workloads that involve access to files with the same
+#' name in different case.
+#' 
+#' Valid Values: `true` | `false`
 #'
 #' @return
 #' A list with the following syntax:
@@ -1182,21 +1387,24 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #'   CacheAttributes = list(
 #'     CacheStaleTimeoutInSeconds = 123
 #'   ),
-#'   NotificationPolicy = "string"
+#'   NotificationPolicy = "string",
+#'   VPCEndpointDNSName = "string",
+#'   BucketRegion = "string",
+#'   OplocksEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_smb_file_share
-storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, SMBACLEnabled = NULL, AccessBasedEnumeration = NULL, AdminUserList = NULL, ValidUserList = NULL, InvalidUserList = NULL, AuditDestinationARN = NULL, Authentication = NULL, CaseSensitivity = NULL, Tags = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL) {
+storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, SMBACLEnabled = NULL, AccessBasedEnumeration = NULL, AdminUserList = NULL, ValidUserList = NULL, InvalidUserList = NULL, AuditDestinationARN = NULL, Authentication = NULL, CaseSensitivity = NULL, Tags = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, VPCEndpointDNSName = NULL, BucketRegion = NULL, OplocksEnabled = NULL) {
   op <- new_operation(
     name = "CreateSMBFileShare",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$create_smb_file_share_input(ClientToken = ClientToken, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AccessBasedEnumeration = AccessBasedEnumeration, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, AuditDestinationARN = AuditDestinationARN, Authentication = Authentication, CaseSensitivity = CaseSensitivity, Tags = Tags, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy)
+  input <- .storagegateway$create_smb_file_share_input(ClientToken = ClientToken, GatewayARN = GatewayARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AccessBasedEnumeration = AccessBasedEnumeration, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, AuditDestinationARN = AuditDestinationARN, Authentication = Authentication, CaseSensitivity = CaseSensitivity, Tags = Tags, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, VPCEndpointDNSName = VPCEndpointDNSName, BucketRegion = BucketRegion, OplocksEnabled = OplocksEnabled)
   output <- .storagegateway$create_smb_file_share_output()
   config <- get_config()
   svc <- .storagegateway$service(config)
@@ -1211,24 +1419,24 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' @description
 #' Initiates a snapshot of a volume.
 #' 
-#' AWS Storage Gateway provides the ability to back up point-in-time
-#' snapshots of your data to Amazon Simple Storage (Amazon S3) for durable
-#' off-site recovery, as well as import the data to an Amazon Elastic Block
-#' Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can take
+#' Storage Gateway provides the ability to back up point-in-time snapshots
+#' of your data to Amazon Simple Storage (Amazon S3) for durable off-site
+#' recovery, and also import the data to an Amazon Elastic Block Store
+#' (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can take
 #' snapshots of your gateway volume on a scheduled or ad hoc basis. This
 #' API enables you to take an ad hoc snapshot. For more information, see
 #' [Editing a snapshot
-#' schedule](https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot).
+#' schedule](https://docs.aws.amazon.com/storagegateway/index.html#SchedulingSnapshot).
 #' 
 #' In the [`create_snapshot`][storagegateway_create_snapshot] request, you
 #' identify the volume by providing its Amazon Resource Name (ARN). You
-#' must also provide description for the snapshot. When AWS Storage Gateway
+#' must also provide description for the snapshot. When Storage Gateway
 #' takes the snapshot of specified volume, the snapshot and description
-#' appears in the AWS Storage Gateway console. In response, AWS Storage
-#' Gateway returns you a snapshot ID. You can use this snapshot ID to check
-#' the snapshot progress or later use it when you want to create a volume
-#' from a snapshot. This operation is only supported in stored and cached
-#' volume gateway type.
+#' appears in the Storage Gateway console. In response, Storage Gateway
+#' returns you a snapshot ID. You can use this snapshot ID to check the
+#' snapshot progress or later use it when you want to create a volume from
+#' a snapshot. This operation is only supported in stored and cached volume
+#' gateway type.
 #' 
 #' To list or delete a snapshot, you must use the Amazon EC2 API. For more
 #' information, see
@@ -1250,7 +1458,7 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' of gateway volumes.
 #' @param SnapshotDescription &#91;required&#93; Textual description of the snapshot that appears in the Amazon EC2
 #' console, Elastic Block Store snapshots panel in the **Description**
-#' field, and in the AWS Storage Gateway snapshot **Details** pane,
+#' field, and in the Storage Gateway snapshot **Details** pane,
 #' **Description** field.
 #' @param Tags A list of up to 50 tags that can be assigned to a snapshot. Each tag is
 #' a key-value pair.
@@ -1328,7 +1536,7 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
 #' request, you identify the volume by providing its Amazon Resource Name
 #' (ARN). You must also provide a description for the snapshot. When the
 #' gateway takes a snapshot of the specified volume, the snapshot and its
-#' description appear in the AWS Storage Gateway console. In response, the
+#' description appear in the Storage Gateway console. In response, the
 #' gateway returns you a snapshot ID. You can use this snapshot ID to check
 #' the snapshot progress or later use it when you want to create a volume
 #' from a snapshot.
@@ -1349,7 +1557,7 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
 #' operation to return to retrieve the TargetARN for specified VolumeARN.
 #' @param SnapshotDescription &#91;required&#93; Textual description of the snapshot that appears in the Amazon EC2
 #' console, Elastic Block Store snapshots panel in the **Description**
-#' field, and in the AWS Storage Gateway snapshot **Details** pane,
+#' field, and in the Storage Gateway snapshot **Details** pane,
 #' **Description** field.
 #' @param Tags A list of up to 50 tags that can be assigned to a snapshot. Each tag is
 #' a key-value pair.
@@ -1438,13 +1646,13 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' @param DiskId &#91;required&#93; The unique identifier for the gateway local disk that is configured as a
 #' stored volume. Use [`list_local_disks`][storagegateway_list_local_disks]
 #' to list disk IDs for a gateway.
-#' @param SnapshotId The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the
-#' new stored volume. Specify this field if you want to create the iSCSI
-#' storage volume from a snapshot; otherwise, do not include this field. To
-#' list snapshots for your account use
+#' @param SnapshotId The snapshot ID (e.g., "snap-1122aabb") of the snapshot to restore as
+#' the new stored volume. Specify this field if you want to create the
+#' iSCSI storage volume from a snapshot; otherwise, do not include this
+#' field. To list snapshots for your account use
 #' [DescribeSnapshots](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html)
 #' in the *Amazon Elastic Compute Cloud API Reference*.
-#' @param PreserveExistingData &#91;required&#93; Set to true `true` if you want to preserve the data on the local disk.
+#' @param PreserveExistingData &#91;required&#93; Set to `true` if you want to preserve the data on the local disk.
 #' Otherwise, set to `false` to create an empty volume.
 #' 
 #' Valid Values: `true` | `false`
@@ -1462,8 +1670,8 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' to get a list of the network interfaces available on a gateway.
 #' 
 #' Valid Values: A valid IP address.
-#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
-#' KMS key, or `false` to use a key managed by Amazon S3. Optional.
+#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own KMS
+#' key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
 #' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
@@ -1557,10 +1765,11 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #' directly into the storage class (S3 Glacier or S3 Glacier Deep Archive)
 #' that corresponds to the pool.
 #' @param RetentionLockType Tape retention lock can be configured in two modes. When configured in
-#' governance mode, AWS accounts with specific IAM permissions are
-#' authorized to remove the tape retention lock from archived virtual
-#' tapes. When configured in compliance mode, the tape retention lock
-#' cannot be removed by any user, including the root AWS account.
+#' governance mode, Amazon Web Services accounts with specific IAM
+#' permissions are authorized to remove the tape retention lock from
+#' archived virtual tapes. When configured in compliance mode, the tape
+#' retention lock cannot be removed by any user, including the root Amazon
+#' Web Services account.
 #' @param RetentionLockTimeInDays Tape retention lock time is set in days. Tape retention lock can be
 #' enabled for up to 100 years (36,500 days).
 #' @param Tags A list of up to 50 tags that can be assigned to tape pool. Each tag is a
@@ -1635,7 +1844,7 @@ storagegateway_create_tape_pool <- function(PoolName, StorageClass, RetentionLoc
 #' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) that represents the gateway to
 #' associate the virtual tape with. Use the
 #' [`list_gateways`][storagegateway_list_gateways] operation to return a
-#' list of gateways for your account and AWS Region.
+#' list of gateways for your account and Amazon Web Services Region.
 #' @param TapeSizeInBytes &#91;required&#93; The size, in bytes, of the virtual tape that you want to create.
 #' 
 #' The size must be aligned by gigabyte (1024*1024*1024 bytes).
@@ -1643,8 +1852,8 @@ storagegateway_create_tape_pool <- function(PoolName, StorageClass, RetentionLoc
 #' 
 #' Barcodes cannot be reused. This includes barcodes used for tapes that
 #' have been deleted.
-#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
-#' KMS key, or `false` to use a key managed by Amazon S3. Optional.
+#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own KMS
+#' key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
 #' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
@@ -1656,8 +1865,6 @@ storagegateway_create_tape_pool <- function(PoolName, StorageClass, RetentionLoc
 #' with the pool. When you use your backup application to eject the tape,
 #' the tape is archived directly into the storage class (S3 Glacier or S3
 #' Deep Archive) that corresponds to the pool.
-#' 
-#' Valid Values: `GLACIER` | `DEEP_ARCHIVE`
 #' @param Worm Set to `TRUE` if the tape you are creating is to be configured as a
 #' write-once-read-many (WORM) tape.
 #' @param Tags A list of up to 50 tags that can be assigned to a virtual tape that has
@@ -1744,7 +1951,7 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) that represents the gateway to
 #' associate the virtual tapes with. Use the
 #' [`list_gateways`][storagegateway_list_gateways] operation to return a
-#' list of gateways for your account and AWS Region.
+#' list of gateways for your account and Amazon Web Services Region.
 #' @param TapeSizeInBytes &#91;required&#93; The size, in bytes, of the virtual tapes that you want to create.
 #' 
 #' The size must be aligned by gigabyte (1024*1024*1024 bytes).
@@ -1757,10 +1964,10 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' @param TapeBarcodePrefix &#91;required&#93; A prefix that you append to the barcode of the virtual tape you are
 #' creating. This prefix makes the barcode unique.
 #' 
-#' The prefix must be 1 to 4 characters in length and must be one of the
+#' The prefix must be 1-4 characters in length and must be one of the
 #' uppercase letters from A to Z.
-#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
-#' KMS key, or `false` to use a key managed by Amazon S3. Optional.
+#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own KMS
+#' key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
 #' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
@@ -1772,8 +1979,6 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' with the pool. When you use your backup application to eject the tape,
 #' the tape is archived directly into the storage class (S3 Glacier or S3
 #' Glacier Deep Archive) that corresponds to the pool.
-#' 
-#' Valid Values: `GLACIER` | `DEEP_ARCHIVE`
 #' @param Worm Set to `TRUE` if the tape you are creating is to be configured as a
 #' write-once-read-many (WORM) tape.
 #' @param Tags A list of up to 50 tags that can be assigned to a virtual tape. Each tag
@@ -1901,8 +2106,8 @@ storagegateway_delete_automatic_tape_creation_policy <- function(GatewayARN) {
 #' the upload and download bandwidth rate limit, or you can delete both. If
 #' you delete only one of the limits, the other limit remains unchanged. To
 #' specify which gateway to work with, use the Amazon Resource Name (ARN)
-#' of the gateway in your request. This operation is supported for the
-#' stored volume, cached volume and tape gateway types.
+#' of the gateway in your request. This operation is supported only for the
+#' stored volume, cached volume, and tape gateway types.
 #'
 #' @usage
 #' storagegateway_delete_bandwidth_rate_limit(GatewayARN, BandwidthType)
@@ -2022,21 +2227,21 @@ storagegateway_delete_chap_credentials <- function(TargetARN, InitiatorName) {
 }
 .storagegateway$operations$delete_chap_credentials <- storagegateway_delete_chap_credentials
 
-#' Deletes a file share from a file gateway
+#' Deletes a file share from an S3 File Gateway
 #'
 #' @description
-#' Deletes a file share from a file gateway. This operation is only
-#' supported for file gateways.
+#' Deletes a file share from an S3 File Gateway. This operation is only
+#' supported for S3 File Gateways.
 #'
 #' @usage
 #' storagegateway_delete_file_share(FileShareARN, ForceDelete)
 #'
 #' @param FileShareARN &#91;required&#93; The Amazon Resource Name (ARN) of the file share to be deleted.
 #' @param ForceDelete If this value is set to `true`, the operation deletes a file share
-#' immediately and aborts all data uploads to AWS. Otherwise, the file
-#' share is not deleted until all data is uploaded to AWS. This process
-#' aborts the data upload process, and the file share enters the
-#' `FORCE_DELETING` status.
+#' immediately and aborts all data uploads to Amazon Web Services.
+#' Otherwise, the file share is not deleted until all data is uploaded to
+#' Amazon Web Services. This process aborts the data upload process, and
+#' the file share enters the `FORCE_DELETING` status.
 #' 
 #' Valid Values: `true` | `false`
 #'
@@ -2095,7 +2300,7 @@ storagegateway_delete_file_share <- function(FileShareARN, ForceDelete = NULL) {
 #' remaining Amazon EBS snapshots by canceling your Amazon EC2
 #' subscription.  If you prefer not to cancel your Amazon EC2 subscription,
 #' you can delete your snapshots using the Amazon EC2 console. For more
-#' information, see the [AWS Storage Gateway detail
+#' information, see the [Storage Gateway detail
 #' page](https://aws.amazon.com/storagegateway/).
 #'
 #' @usage
@@ -2155,12 +2360,10 @@ storagegateway_delete_gateway <- function(GatewayARN) {
 #' You can take snapshots of your gateway volumes on a scheduled or ad hoc
 #' basis. This API action enables you to delete a snapshot schedule for a
 #' volume. For more information, see [Backing up your
-#' volumes](https://docs.aws.amazon.com/storagegateway/latest/userguide/backing-up-volumes.html).
-#' In the
+#' volumes](https://docs.aws.amazon.com/storagegateway/index.html). In the
 #' [`delete_snapshot_schedule`][storagegateway_delete_snapshot_schedule]
 #' request, you identify the volume by providing its Amazon Resource Name
-#' (ARN). This operation is only supported in stored and cached volume
-#' gateway types.
+#' (ARN). This operation is only supported for cached volume gateway types.
 #' 
 #' To list or delete a snapshot, you must use the Amazon EC2 API. For more
 #' information, go to
@@ -2228,7 +2431,7 @@ storagegateway_delete_snapshot_schedule <- function(VolumeARN) {
 #' @param GatewayARN &#91;required&#93; The unique Amazon Resource Name (ARN) of the gateway that the virtual
 #' tape to delete is associated with. Use the
 #' [`list_gateways`][storagegateway_list_gateways] operation to return a
-#' list of gateways for your account and AWS Region.
+#' list of gateways for your account and Amazon Web Services Region.
 #' @param TapeARN &#91;required&#93; The Amazon Resource Name (ARN) of the virtual tape to delete.
 #' @param BypassGovernanceRetention Set to `TRUE` to delete an archived tape that belongs to a custom pool
 #' with tape retention lock. Only archived tapes with tape retention lock
@@ -2464,11 +2667,11 @@ storagegateway_delete_volume <- function(VolumeARN) {
 }
 .storagegateway$operations$delete_volume <- storagegateway_delete_volume
 
-#' Returns information about the most recent High Availability monitoring
+#' Returns information about the most recent high availability monitoring
 #' test that was performed on the host in a cluster
 #'
 #' @description
-#' Returns information about the most recent High Availability monitoring
+#' Returns information about the most recent high availability monitoring
 #' test that was performed on the host in a cluster. If a test isn't
 #' performed, the status and start time in the response would be null.
 #'
@@ -2521,14 +2724,16 @@ storagegateway_describe_availability_monitor_test <- function(GatewayARN) {
 #' @description
 #' Returns the bandwidth rate limits of a gateway. By default, these limits
 #' are not set, which means no bandwidth rate limiting is in effect. This
-#' operation is supported for the stored volume, cached volume, and tape
-#' gateway types.
+#' operation is supported only for the stored volume, cached volume, and
+#' tape gateway types. To describe bandwidth rate limits for S3 file
+#' gateways, use
+#' [`describe_bandwidth_rate_limit_schedule`][storagegateway_describe_bandwidth_rate_limit_schedule].
 #' 
-#' This operation only returns a value for a bandwidth rate limit only if
-#' the limit is set. If no limits are set for the gateway, then this
-#' operation returns only the gateway ARN in the response body. To specify
-#' which gateway to describe, use the Amazon Resource Name (ARN) of the
-#' gateway in your request.
+#' This operation returns a value for a bandwidth rate limit only if the
+#' limit is set. If no limits are set for the gateway, then this operation
+#' returns only the gateway ARN in the response body. To specify which
+#' gateway to describe, use the Amazon Resource Name (ARN) of the gateway
+#' in your request.
 #'
 #' @usage
 #' storagegateway_describe_bandwidth_rate_limit(GatewayARN)
@@ -2587,7 +2792,8 @@ storagegateway_describe_bandwidth_rate_limit <- function(GatewayARN) {
 #' Returns information about the bandwidth rate limit schedule of a
 #' gateway. By default, gateways do not have bandwidth rate limit
 #' schedules, which means no bandwidth rate limiting is in effect. This
-#' operation is supported only in the volume and tape gateway types.
+#' operation is supported only for volume, tape and S3 file gateways. FSx
+#' file gateways do not support bandwidth rate limits.
 #' 
 #' This operation returns information about a gateway's bandwidth rate
 #' limit schedule. A bandwidth rate limit schedule consists of one or more
@@ -2729,7 +2935,7 @@ storagegateway_describe_cache <- function(GatewayARN) {
 #' This operation is only supported in the cached volume gateway types.
 #' 
 #' The list of gateway volumes in the request must be from one gateway. In
-#' the response, AWS Storage Gateway returns volume information sorted by
+#' the response, Storage Gateway returns volume information sorted by
 #' volume Amazon Resource Name (ARN).
 #'
 #' @usage
@@ -2882,6 +3088,83 @@ storagegateway_describe_chap_credentials <- function(TargetARN) {
 }
 .storagegateway$operations$describe_chap_credentials <- storagegateway_describe_chap_credentials
 
+#' Gets the file system association information
+#'
+#' @description
+#' Gets the file system association information. This operation is only
+#' supported for FSx File Gateways.
+#'
+#' @usage
+#' storagegateway_describe_file_system_associations(
+#'   FileSystemAssociationARNList)
+#'
+#' @param FileSystemAssociationARNList &#91;required&#93; An array containing the Amazon Resource Name (ARN) of each file system
+#' association to be described.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileSystemAssociationInfoList = list(
+#'     list(
+#'       FileSystemAssociationARN = "string",
+#'       LocationARN = "string",
+#'       FileSystemAssociationStatus = "string",
+#'       AuditDestinationARN = "string",
+#'       GatewayARN = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       CacheAttributes = list(
+#'         CacheStaleTimeoutInSeconds = 123
+#'       ),
+#'       EndpointNetworkConfiguration = list(
+#'         IpAddresses = list(
+#'           "string"
+#'         )
+#'       ),
+#'       FileSystemAssociationStatusDetails = list(
+#'         list(
+#'           ErrorCode = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_file_system_associations(
+#'   FileSystemAssociationARNList = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_describe_file_system_associations
+storagegateway_describe_file_system_associations <- function(FileSystemAssociationARNList) {
+  op <- new_operation(
+    name = "DescribeFileSystemAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .storagegateway$describe_file_system_associations_input(FileSystemAssociationARNList = FileSystemAssociationARNList)
+  output <- .storagegateway$describe_file_system_associations_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$describe_file_system_associations <- storagegateway_describe_file_system_associations
+
 #' Returns metadata about a gateway such as its name, network interfaces,
 #' configured time zone, and the state (whether the gateway is running or
 #' not)
@@ -2926,10 +3209,15 @@ storagegateway_describe_chap_credentials <- function(TargetARN) {
 #'   ),
 #'   VPCEndpoint = "string",
 #'   CloudWatchLogGroupARN = "string",
-#'   HostEnvironment = "VMWARE"|"HYPER-V"|"EC2"|"KVM"|"OTHER",
+#'   HostEnvironment = "VMWARE"|"HYPER-V"|"EC2"|"KVM"|"OTHER"|"SNOWBALL",
 #'   EndpointType = "string",
 #'   SoftwareUpdatesEndDate = "string",
-#'   DeprecationDate = "string"
+#'   DeprecationDate = "string",
+#'   GatewayCapacity = "Small"|"Medium"|"Large",
+#'   SupportedGatewayCapacities = list(
+#'     "Small"|"Medium"|"Large"
+#'   ),
+#'   HostEnvironmentId = "string"
 #' )
 #' ```
 #'
@@ -3033,11 +3321,12 @@ storagegateway_describe_maintenance_start_time <- function(GatewayARN) {
 .storagegateway$operations$describe_maintenance_start_time <- storagegateway_describe_maintenance_start_time
 
 #' Gets a description for one or more Network File System (NFS) file shares
-#' from a file gateway
+#' from an S3 File Gateway
 #'
 #' @description
 #' Gets a description for one or more Network File System (NFS) file shares
-#' from a file gateway. This operation is only supported for file gateways.
+#' from an S3 File Gateway. This operation is only supported for S3 File
+#' Gateways.
 #'
 #' @usage
 #' storagegateway_describe_nfs_file_shares(FileShareARNList)
@@ -3085,7 +3374,10 @@ storagegateway_describe_maintenance_start_time <- function(GatewayARN) {
 #'       CacheAttributes = list(
 #'         CacheStaleTimeoutInSeconds = 123
 #'       ),
-#'       NotificationPolicy = "string"
+#'       NotificationPolicy = "string",
+#'       VPCEndpointDNSName = "string",
+#'       BucketRegion = "string",
+#'       AuditDestinationARN = "string"
 #'     )
 #'   )
 #' )
@@ -3121,12 +3413,12 @@ storagegateway_describe_nfs_file_shares <- function(FileShareARNList) {
 .storagegateway$operations$describe_nfs_file_shares <- storagegateway_describe_nfs_file_shares
 
 #' Gets a description for one or more Server Message Block (SMB) file
-#' shares from a file gateway
+#' shares from a S3 File Gateway
 #'
 #' @description
 #' Gets a description for one or more Server Message Block (SMB) file
-#' shares from a file gateway. This operation is only supported for file
-#' gateways.
+#' shares from a S3 File Gateway. This operation is only supported for S3
+#' File Gateways.
 #'
 #' @usage
 #' storagegateway_describe_smb_file_shares(FileShareARNList)
@@ -3178,7 +3470,10 @@ storagegateway_describe_nfs_file_shares <- function(FileShareARNList) {
 #'       CacheAttributes = list(
 #'         CacheStaleTimeoutInSeconds = 123
 #'       ),
-#'       NotificationPolicy = "string"
+#'       NotificationPolicy = "string",
+#'       VPCEndpointDNSName = "string",
+#'       BucketRegion = "string",
+#'       OplocksEnabled = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -3234,7 +3529,12 @@ storagegateway_describe_smb_file_shares <- function(FileShareARNList) {
 #'   ActiveDirectoryStatus = "ACCESS_DENIED"|"DETACHED"|"JOINED"|"JOINING"|"NETWORK_ERROR"|"TIMEOUT"|"UNKNOWN_ERROR",
 #'   SMBGuestPasswordSet = TRUE|FALSE,
 #'   SMBSecurityStrategy = "ClientSpecified"|"MandatorySigning"|"MandatoryEncryption",
-#'   FileSharesVisible = TRUE|FALSE
+#'   FileSharesVisible = TRUE|FALSE,
+#'   SMBLocalGroups = list(
+#'     GatewayAdmins = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -3339,7 +3639,7 @@ storagegateway_describe_snapshot_schedule <- function(VolumeARN) {
 #' @description
 #' Returns the description of the gateway volumes specified in the request.
 #' The list of gateway volumes in the request must be from one gateway. In
-#' the response, AWS Storage Gateway returns volume information sorted by
+#' the response, Storage Gateway returns volume information sorted by
 #' volume ARNs. This operation is only supported in stored volume gateway
 #' type.
 #'
@@ -3433,7 +3733,7 @@ storagegateway_describe_storedi_scsi_volumes <- function(VolumeARNs) {
 #' Returns a description of specified virtual tapes in the virtual tape
 #' shelf (VTS). This operation is only supported in the tape gateway type.
 #' 
-#' If a specific `TapeARN` is not specified, AWS Storage Gateway returns a
+#' If a specific `TapeARN` is not specified, Storage Gateway returns a
 #' description of all virtual tapes found in the VTS associated with your
 #' account.
 #'
@@ -3787,7 +4087,7 @@ storagegateway_describe_upload_buffer <- function(GatewayARN) {
 #'
 #' @description
 #' Returns a description of virtual tape library (VTL) devices for the
-#' specified tape gateway. In the response, AWS Storage Gateway returns VTL
+#' specified tape gateway. In the response, Storage Gateway returns VTL
 #' device information.
 #' 
 #' This operation is only supported in the tape gateway type.
@@ -4064,6 +4364,62 @@ storagegateway_disable_gateway <- function(GatewayARN) {
 }
 .storagegateway$operations$disable_gateway <- storagegateway_disable_gateway
 
+#' Disassociates an Amazon FSx file system from the specified gateway
+#'
+#' @description
+#' Disassociates an Amazon FSx file system from the specified gateway.
+#' After the disassociation process finishes, the gateway can no longer
+#' access the Amazon FSx file system. This operation is only supported in
+#' the FSx File Gateway type.
+#'
+#' @usage
+#' storagegateway_disassociate_file_system(FileSystemAssociationARN,
+#'   ForceDelete)
+#'
+#' @param FileSystemAssociationARN &#91;required&#93; The Amazon Resource Name (ARN) of the file system association to be
+#' deleted.
+#' @param ForceDelete If this value is set to true, the operation disassociates an Amazon FSx
+#' file system immediately. It ends all data uploads to the file system,
+#' and the file system association enters the `FORCE_DELETING` status. If
+#' this value is set to false, the Amazon FSx file system does not
+#' disassociate until all data is uploaded.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileSystemAssociationARN = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_file_system(
+#'   FileSystemAssociationARN = "string",
+#'   ForceDelete = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_disassociate_file_system
+storagegateway_disassociate_file_system <- function(FileSystemAssociationARN, ForceDelete = NULL) {
+  op <- new_operation(
+    name = "DisassociateFileSystem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .storagegateway$disassociate_file_system_input(FileSystemAssociationARN = FileSystemAssociationARN, ForceDelete = ForceDelete)
+  output <- .storagegateway$disassociate_file_system_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$disassociate_file_system <- storagegateway_disassociate_file_system
+
 #' Adds a file gateway to an Active Directory domain
 #'
 #' @description
@@ -4076,7 +4432,7 @@ storagegateway_disable_gateway <- function(GatewayARN) {
 #'
 #' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the gateway. Use the
 #' [`list_gateways`][storagegateway_list_gateways] operation to return a
-#' list of gateways for your account and AWS Region.
+#' list of gateways for your account and Amazon Web Services Region.
 #' @param DomainName &#91;required&#93; The name of the domain that you want the gateway to join.
 #' @param OrganizationalUnit The organizational unit (OU) is a container in an Active Directory that
 #' can hold users, groups, computers, and other OUs and this parameter
@@ -4201,13 +4557,13 @@ storagegateway_list_automatic_tape_creation_policies <- function(GatewayARN = NU
 }
 .storagegateway$operations$list_automatic_tape_creation_policies <- storagegateway_list_automatic_tape_creation_policies
 
-#' Gets a list of the file shares for a specific file gateway, or the list
-#' of file shares that belong to the calling user account
+#' Gets a list of the file shares for a specific S3 File Gateway, or the
+#' list of file shares that belong to the calling user account
 #'
 #' @description
-#' Gets a list of the file shares for a specific file gateway, or the list
-#' of file shares that belong to the calling user account. This operation
-#' is only supported for file gateways.
+#' Gets a list of the file shares for a specific S3 File Gateway, or the
+#' list of file shares that belong to the calling user account. This
+#' operation is only supported for S3 File Gateways.
 #'
 #' @usage
 #' storagegateway_list_file_shares(GatewayARN, Limit, Marker)
@@ -4268,13 +4624,80 @@ storagegateway_list_file_shares <- function(GatewayARN = NULL, Limit = NULL, Mar
 }
 .storagegateway$operations$list_file_shares <- storagegateway_list_file_shares
 
-#' Lists gateways owned by an AWS account in an AWS Region specified in the
-#' request
+#' Gets a list of FileSystemAssociationSummary objects
 #'
 #' @description
-#' Lists gateways owned by an AWS account in an AWS Region specified in the
-#' request. The returned list is ordered by gateway Amazon Resource Name
-#' (ARN).
+#' Gets a list of `FileSystemAssociationSummary` objects. Each object
+#' contains a summary of a file system association. This operation is only
+#' supported for FSx File Gateways.
+#'
+#' @usage
+#' storagegateway_list_file_system_associations(GatewayARN, Limit, Marker)
+#'
+#' @param GatewayARN 
+#' @param Limit The maximum number of file system associations to return in the
+#' response. If present, `Limit` must be an integer with a value greater
+#' than zero. Optional.
+#' @param Marker Opaque pagination token returned from a previous
+#' [`list_file_system_associations`][storagegateway_list_file_system_associations]
+#' operation. If present, `Marker` specifies where to continue the list
+#' from after a previous call to
+#' [`list_file_system_associations`][storagegateway_list_file_system_associations].
+#' Optional.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Marker = "string",
+#'   NextMarker = "string",
+#'   FileSystemAssociationSummaryList = list(
+#'     list(
+#'       FileSystemAssociationId = "string",
+#'       FileSystemAssociationARN = "string",
+#'       FileSystemAssociationStatus = "string",
+#'       GatewayARN = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_file_system_associations(
+#'   GatewayARN = "string",
+#'   Limit = 123,
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_list_file_system_associations
+storagegateway_list_file_system_associations <- function(GatewayARN = NULL, Limit = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "ListFileSystemAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .storagegateway$list_file_system_associations_input(GatewayARN = GatewayARN, Limit = Limit, Marker = Marker)
+  output <- .storagegateway$list_file_system_associations_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$list_file_system_associations <- storagegateway_list_file_system_associations
+
+#' Lists gateways owned by an Amazon Web Services account in an Amazon Web
+#' Services Region specified in the request
+#'
+#' @description
+#' Lists gateways owned by an Amazon Web Services account in an Amazon Web
+#' Services Region specified in the request. The returned list is ordered
+#' by gateway Amazon Resource Name (ARN).
 #' 
 #' By default, the operation returns a maximum of 100 gateways. This
 #' operation supports pagination that allows you to optionally reduce the
@@ -4305,7 +4728,9 @@ storagegateway_list_file_shares <- function(GatewayARN = NULL, Limit = NULL, Mar
 #'       GatewayOperationalState = "string",
 #'       GatewayName = "string",
 #'       Ec2InstanceId = "string",
-#'       Ec2InstanceRegion = "string"
+#'       Ec2InstanceRegion = "string",
+#'       HostEnvironment = "VMWARE"|"HYPER-V"|"EC2"|"KVM"|"OTHER"|"SNOWBALL",
+#'       HostEnvironmentId = "string"
 #'     )
 #'   ),
 #'   Marker = "string"
@@ -4866,25 +5291,24 @@ storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit 
 .storagegateway$operations$list_volumes <- storagegateway_list_volumes
 
 #' Sends you notification through CloudWatch Events when all files written
-#' to your file share have been uploaded to Amazon S3
+#' to your file share have been uploaded to S3
 #'
 #' @description
 #' Sends you notification through CloudWatch Events when all files written
-#' to your file share have been uploaded to Amazon S3.
+#' to your file share have been uploaded to S3. Amazon S3.
 #' 
-#' AWS Storage Gateway can send a notification through Amazon CloudWatch
-#' Events when all files written to your file share up to that point in
-#' time have been uploaded to Amazon S3. These files include files written
-#' to the file share up to the time that you make a request for
-#' notification. When the upload is done, Storage Gateway sends you
-#' notification through an Amazon CloudWatch Event. You can configure
-#' CloudWatch Events to send the notification through event targets such as
-#' Amazon SNS or AWS Lambda function. This operation is only supported for
-#' file gateways.
+#' Storage Gateway can send a notification through Amazon CloudWatch Events
+#' when all files written to your file share up to that point in time have
+#' been uploaded to Amazon S3. These files include files written to the
+#' file share up to the time that you make a request for notification. When
+#' the upload is done, Storage Gateway sends you notification through an
+#' Amazon CloudWatch Event. You can configure CloudWatch Events to send the
+#' notification through event targets such as Amazon SNS or Lambda
+#' function. This operation is only supported for S3 File Gateways.
 #' 
 #' For more information, see [Getting file upload
-#' notification](https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-upload-notification)
-#' in the *AWS Storage Gateway User Guide*.
+#' notification](https://docs.aws.amazon.com/storagegateway/index.html#get-upload-notification)
+#' in the *Storage Gateway User Guide*.
 #'
 #' @usage
 #' storagegateway_notify_when_uploaded(FileShareARN)
@@ -4927,42 +5351,56 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 }
 .storagegateway$operations$notify_when_uploaded <- storagegateway_notify_when_uploaded
 
-#' Refreshes the cache for the specified file share
+#' Refreshes the cached inventory of objects for the specified file share
 #'
 #' @description
-#' Refreshes the cache for the specified file share. This operation finds
-#' objects in the Amazon S3 bucket that were added, removed, or replaced
-#' since the gateway last listed the bucket's contents and cached the
-#' results. This operation is only supported in the file gateway type. You
-#' can subscribe to be notified through an Amazon CloudWatch event when
-#' your RefreshCache operation completes. For more information, see
-#' [Getting notified about file
-#' operations](https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification)
-#' in the *AWS Storage Gateway User Guide*.
+#' Refreshes the cached inventory of objects for the specified file share.
+#' This operation finds objects in the Amazon S3 bucket that were added,
+#' removed, or replaced since the gateway last listed the bucket's contents
+#' and cached the results. This operation does not import files into the S3
+#' File Gateway cache storage. It only updates the cached inventory to
+#' reflect changes in the inventory of the objects in the S3 bucket. This
+#' operation is only supported in the S3 File Gateway types.
+#' 
+#' You can subscribe to be notified through an Amazon CloudWatch event when
+#' your [`refresh_cache`][storagegateway_refresh_cache] operation
+#' completes. For more information, see [Getting notified about file
+#' operations](https://docs.aws.amazon.com/storagegateway/index.html#get-notification)
+#' in the *Storage Gateway User Guide*. This operation is Only supported
+#' for S3 File Gateways.
 #' 
 #' When this API is called, it only initiates the refresh operation. When
 #' the API call completes and returns a success code, it doesn't
 #' necessarily mean that the file refresh has completed. You should use the
 #' refresh-complete notification to determine that the operation has
 #' completed before you check for new files on the gateway file share. You
-#' can subscribe to be notified through an CloudWatch event when your
+#' can subscribe to be notified through a CloudWatch event when your
 #' [`refresh_cache`][storagegateway_refresh_cache] operation completes.
 #' 
-#' Throttle limit: This API is asynchronous so the gateway will accept no
+#' Throttle limit: This API is asynchronous, so the gateway will accept no
 #' more than two refreshes at any time. We recommend using the
 #' refresh-complete CloudWatch event notification before issuing additional
 #' requests. For more information, see [Getting notified about file
-#' operations](https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification)
-#' in the *AWS Storage Gateway User Guide*.
+#' operations](https://docs.aws.amazon.com/storagegateway/index.html#get-notification)
+#' in the *Storage Gateway User Guide*.
 #' 
-#' If you invoke the RefreshCache API when two requests are already being
-#' processed, any new request will cause an
-#' `InvalidGatewayRequestException` error because too many requests were
-#' sent to the server.
+#' -   Wait at least 60 seconds between consecutive RefreshCache API
+#'     requests.
+#' 
+#' -   RefreshCache does not evict cache entries if invoked consecutively
+#'     within 60 seconds of a previous RefreshCache request.
+#' 
+#' -   If you invoke the RefreshCache API when two requests are already
+#'     being processed, any new request will cause an
+#'     `InvalidGatewayRequestException` error because too many requests
+#'     were sent to the server.
+#' 
+#' The S3 bucket name does not need to be included when entering the list
+#' of folders in the FolderList parameter.
 #' 
 #' For more information, see [Getting notified about file
-#' operations](https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification)
-#' in the *AWS Storage Gateway User Guide*.
+#' operations](https://docs.aws.amazon.com/storagegateway/index.html#get-notification)
+#' in the *Storage Gateway User Guide*.
 #'
 #' @usage
 #' storagegateway_refresh_cache(FileShareARN, FolderList, Recursive)
@@ -5177,7 +5615,8 @@ storagegateway_reset_cache <- function(GatewayARN) {
 #' from the virtual tape shelf (VTS).
 #' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the gateway you want to retrieve the
 #' virtual tape to. Use the [`list_gateways`][storagegateway_list_gateways]
-#' operation to return a list of gateways for your account and AWS Region.
+#' operation to return a list of gateways for your account and Amazon Web
+#' Services Region.
 #' 
 #' You retrieve archived virtual tapes to only one gateway and the gateway
 #' must be a tape gateway.
@@ -5360,13 +5799,13 @@ storagegateway_set_local_console_password <- function(GatewayARN, LocalConsolePa
 #' @description
 #' Sets the password for the guest user `smbguest`. The `smbguest` user is
 #' the user when the authentication method for the file share is set to
-#' `GuestAccess`.
+#' `GuestAccess`. This operation only supported for S3 File Gateways
 #'
 #' @usage
 #' storagegateway_set_smb_guest_password(GatewayARN, Password)
 #'
-#' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the file gateway the SMB file share is
-#' associated with.
+#' @param GatewayARN &#91;required&#93; The Amazon Resource Name (ARN) of the S3 File Gateway the SMB file share
+#' is associated with.
 #' @param Password &#91;required&#93; The password that you want to set for your SMB server.
 #'
 #' @return
@@ -5677,8 +6116,10 @@ storagegateway_update_automatic_tape_creation_policy <- function(AutomaticTapeCr
 #' Updates the bandwidth rate limits of a gateway. You can update both the
 #' upload and download bandwidth rate limit or specify only one of the two.
 #' If you don't set a bandwidth rate limit, the existing rate limit
-#' remains. This operation is supported for the stored volume, cached
-#' volume, and tape gateway types.
+#' remains. This operation is supported only for the stored volume, cached
+#' volume, and tape gateway types. To update bandwidth rate limits for S3
+#' file gateways, use
+#' [`update_bandwidth_rate_limit_schedule`][storagegateway_update_bandwidth_rate_limit_schedule].
 #' 
 #' By default, a gateway's bandwidth rate limits are not set. If you don't
 #' set any limit, the gateway does not have any limitations on its
@@ -5753,7 +6194,8 @@ storagegateway_update_bandwidth_rate_limit <- function(GatewayARN, AverageUpload
 #' default, gateways do not have bandwidth rate limit schedules, which
 #' means no bandwidth rate limiting is in effect. Use this to initiate or
 #' update a gateway's bandwidth rate limit schedule. This operation is
-#' supported in the volume and tape gateway types.
+#' supported only for volume, tape and S3 file gateways. FSx file gateways
+#' do not support bandwidth rate limits.
 #'
 #' @usage
 #' storagegateway_update_bandwidth_rate_limit_schedule(GatewayARN,
@@ -5895,6 +6337,66 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
 }
 .storagegateway$operations$update_chap_credentials <- storagegateway_update_chap_credentials
 
+#' Updates a file system association
+#'
+#' @description
+#' Updates a file system association. This operation is only supported in
+#' the FSx File Gateways.
+#'
+#' @usage
+#' storagegateway_update_file_system_association(FileSystemAssociationARN,
+#'   UserName, Password, AuditDestinationARN, CacheAttributes)
+#'
+#' @param FileSystemAssociationARN &#91;required&#93; The Amazon Resource Name (ARN) of the file system association that you
+#' want to update.
+#' @param UserName The user name of the user credential that has permission to access the
+#' root share D$ of the Amazon FSx file system. The user account must
+#' belong to the Amazon FSx delegated admin user group.
+#' @param Password The password of the user credential.
+#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for the audit logs.
+#' @param CacheAttributes 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileSystemAssociationARN = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_file_system_association(
+#'   FileSystemAssociationARN = "string",
+#'   UserName = "string",
+#'   Password = "string",
+#'   AuditDestinationARN = "string",
+#'   CacheAttributes = list(
+#'     CacheStaleTimeoutInSeconds = 123
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_update_file_system_association
+storagegateway_update_file_system_association <- function(FileSystemAssociationARN, UserName = NULL, Password = NULL, AuditDestinationARN = NULL, CacheAttributes = NULL) {
+  op <- new_operation(
+    name = "UpdateFileSystemAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .storagegateway$update_file_system_association_input(FileSystemAssociationARN = FileSystemAssociationARN, UserName = UserName, Password = Password, AuditDestinationARN = AuditDestinationARN, CacheAttributes = CacheAttributes)
+  output <- .storagegateway$update_file_system_association_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$update_file_system_association <- storagegateway_update_file_system_association
+
 #' Updates a gateway's metadata, which includes the gateway's name and time
 #' zone
 #'
@@ -5909,7 +6411,7 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
 #'
 #' @usage
 #' storagegateway_update_gateway_information(GatewayARN, GatewayName,
-#'   GatewayTimezone, CloudWatchLogGroupARN)
+#'   GatewayTimezone, CloudWatchLogGroupARN, GatewayCapacity)
 #'
 #' @param GatewayARN &#91;required&#93; 
 #' @param GatewayName 
@@ -5919,6 +6421,7 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
 #' 
 #' For more information, see [What is Amazon CloudWatch
 #' Logs?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html)
+#' @param GatewayCapacity Specifies the size of the gateway's metadata cache.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5935,7 +6438,8 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
 #'   GatewayARN = "string",
 #'   GatewayName = "string",
 #'   GatewayTimezone = "string",
-#'   CloudWatchLogGroupARN = "string"
+#'   CloudWatchLogGroupARN = "string",
+#'   GatewayCapacity = "Small"|"Medium"|"Large"
 #' )
 #' ```
 #'
@@ -5953,14 +6457,14 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_gateway_information
-storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = NULL, GatewayTimezone = NULL, CloudWatchLogGroupARN = NULL) {
+storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = NULL, GatewayTimezone = NULL, CloudWatchLogGroupARN = NULL, GatewayCapacity = NULL) {
   op <- new_operation(
     name = "UpdateGatewayInformation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$update_gateway_information_input(GatewayARN = GatewayARN, GatewayName = GatewayName, GatewayTimezone = GatewayTimezone, CloudWatchLogGroupARN = CloudWatchLogGroupARN)
+  input <- .storagegateway$update_gateway_information_input(GatewayARN = GatewayARN, GatewayName = GatewayName, GatewayTimezone = GatewayTimezone, CloudWatchLogGroupARN = CloudWatchLogGroupARN, GatewayCapacity = GatewayCapacity)
   output <- .storagegateway$update_gateway_information_output()
   config <- get_config()
   svc <- .storagegateway$service(config)
@@ -5987,9 +6491,9 @@ storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = 
 #' your iSCSI Initiators' timeouts. For more information about increasing
 #' iSCSI Initiator timeouts for Windows and Linux, see [Customizing your
 #' Windows iSCSI
-#' settings](https://docs.aws.amazon.com/storagegateway/latest/userguide/#CustomizeWindowsiSCSISettings)
+#' settings](https://docs.aws.amazon.com/storagegateway/index.html#CustomizeWindowsiSCSISettings)
 #' and [Customizing your Linux iSCSI
-#' settings](https://docs.aws.amazon.com/storagegateway/latest/userguide/#CustomizeLinuxiSCSISettings),
+#' settings](https://docs.aws.amazon.com/storagegateway/index.html#CustomizeLinuxiSCSISettings),
 #' respectively.
 #'
 #' @usage
@@ -6123,7 +6627,7 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #'
 #' @description
 #' Updates a Network File System (NFS) file share. This operation is only
-#' supported in the file gateway type.
+#' supported in S3 File Gateways.
 #' 
 #' To leave a file share field unchanged, set the corresponding input field
 #' to null.
@@ -6144,11 +6648,11 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #' storagegateway_update_nfs_file_share(FileShareARN, KMSEncrypted, KMSKey,
 #'   NFSFileShareDefaults, DefaultStorageClass, ObjectACL, ClientList,
 #'   Squash, ReadOnly, GuessMIMETypeEnabled, RequesterPays, FileShareName,
-#'   CacheAttributes, NotificationPolicy)
+#'   CacheAttributes, NotificationPolicy, AuditDestinationARN)
 #'
 #' @param FileShareARN &#91;required&#93; The Amazon Resource Name (ARN) of the file share to be updated.
-#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
-#' KMS key, or `false` to use a key managed by Amazon S3. Optional.
+#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own KMS
+#' key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
 #' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
@@ -6157,15 +6661,14 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #' is `true`. Optional.
 #' @param NFSFileShareDefaults The default values for the file share. Optional.
 #' @param DefaultStorageClass The default storage class for objects put into an Amazon S3 bucket by
-#' the file gateway. The default value is `S3_INTELLIGENT_TIERING`.
-#' Optional.
+#' the S3 File Gateway. The default value is `S3_STANDARD`. Optional.
 #' 
 #' Valid Values: `S3_STANDARD` | `S3_INTELLIGENT_TIERING` |
 #' `S3_STANDARD_IA` | `S3_ONEZONE_IA`
 #' @param ObjectACL A value that sets the access control list (ACL) permission for objects
-#' in the S3 bucket that a file gateway puts objects into. The default
+#' in the S3 bucket that a S3 File Gateway puts objects into. The default
 #' value is `private`.
-#' @param ClientList The list of clients that are allowed to access the file gateway. The
+#' @param ClientList The list of clients that are allowed to access the S3 File Gateway. The
 #' list must contain either valid IP addresses or valid CIDR blocks.
 #' @param Squash The user mapped to anonymous user.
 #' 
@@ -6198,9 +6701,27 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #' @param FileShareName The name of the file share. Optional.
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
-#' `LocationARN`.
-#' @param CacheAttributes Refresh cache information.
-#' @param NotificationPolicy The notification policy of the file share.
+#' `LocationARN`, or if an access point or access point alias is used.
+#' @param CacheAttributes Specifies refresh cache information for the file share.
+#' @param NotificationPolicy The notification policy of the file share. `SettlingTimeInSeconds`
+#' controls the number of seconds to wait after the last point in time a
+#' client wrote to a file before generating an `ObjectUploaded`
+#' notification. Because clients can make many small writes to files, it's
+#' best to set this parameter for as long as possible to avoid generating
+#' multiple notifications for the same file in a small time period.
+#' 
+#' `SettlingTimeInSeconds` has no effect on the timing of the object
+#' uploading to Amazon S3, only the timing of the notification.
+#' 
+#' The following example sets `NotificationPolicy` on with
+#' `SettlingTimeInSeconds` set to 60.
+#' 
+#' `{\"Upload\": {\"SettlingTimeInSeconds\": 60}}`
+#' 
+#' The following example sets `NotificationPolicy` off.
+#' 
+#' `{}`
+#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for audit logs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6235,21 +6756,22 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #'   CacheAttributes = list(
 #'     CacheStaleTimeoutInSeconds = 123
 #'   ),
-#'   NotificationPolicy = "string"
+#'   NotificationPolicy = "string",
+#'   AuditDestinationARN = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_nfs_file_share
-storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL, NFSFileShareDefaults = NULL, DefaultStorageClass = NULL, ObjectACL = NULL, ClientList = NULL, Squash = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL) {
+storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL, NFSFileShareDefaults = NULL, DefaultStorageClass = NULL, ObjectACL = NULL, ClientList = NULL, Squash = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, AuditDestinationARN = NULL) {
   op <- new_operation(
     name = "UpdateNFSFileShare",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$update_nfs_file_share_input(FileShareARN = FileShareARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, NFSFileShareDefaults = NFSFileShareDefaults, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy)
+  input <- .storagegateway$update_nfs_file_share_input(FileShareARN = FileShareARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, NFSFileShareDefaults = NFSFileShareDefaults, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, AuditDestinationARN = AuditDestinationARN)
   output <- .storagegateway$update_nfs_file_share_output()
   config <- get_config()
   svc <- .storagegateway$service(config)
@@ -6263,19 +6785,21 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #'
 #' @description
 #' Updates a Server Message Block (SMB) file share. This operation is only
-#' supported for file gateways.
+#' supported for S3 File Gateways.
 #' 
 #' To leave a file share field unchanged, set the corresponding input field
 #' to null.
 #' 
-#' File gateways require AWS Security Token Service (AWS STS) to be
-#' activated to enable you to create a file share. Make sure that AWS STS
-#' is activated in the AWS Region you are creating your file gateway in. If
-#' AWS STS is not activated in this AWS Region, activate it. For
-#' information about how to activate AWS STS, see [Activating and
-#' deactivating AWS STS in an AWS
+#' File gateways require Security Token Service (Amazon Web Services STS)
+#' to be activated to enable you to create a file share. Make sure that
+#' Amazon Web Services STS is activated in the Amazon Web Services Region
+#' you are creating your file gateway in. If Amazon Web Services STS is not
+#' activated in this Amazon Web Services Region, activate it. For
+#' information about how to activate Amazon Web Services STS, see
+#' [Activating and deactivating Amazon Web Services STS in an Amazon Web
+#' Services
 #' Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
-#' in the *AWS Identity and Access Management User Guide*.
+#' in the *Identity and Access Management User Guide*.
 #' 
 #' File gateways don't support creating hard or symbolic links on a file
 #' share.
@@ -6285,12 +6809,12 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #'   DefaultStorageClass, ObjectACL, ReadOnly, GuessMIMETypeEnabled,
 #'   RequesterPays, SMBACLEnabled, AccessBasedEnumeration, AdminUserList,
 #'   ValidUserList, InvalidUserList, AuditDestinationARN, CaseSensitivity,
-#'   FileShareName, CacheAttributes, NotificationPolicy)
+#'   FileShareName, CacheAttributes, NotificationPolicy, OplocksEnabled)
 #'
 #' @param FileShareARN &#91;required&#93; The Amazon Resource Name (ARN) of the SMB file share that you want to
 #' update.
-#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own AWS
-#' KMS key, or `false` to use a key managed by Amazon S3. Optional.
+#' @param KMSEncrypted Set to `true` to use Amazon S3 server-side encryption with your own KMS
+#' key, or `false` to use a key managed by Amazon S3. Optional.
 #' 
 #' Valid Values: `true` | `false`
 #' @param KMSKey The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
@@ -6298,13 +6822,12 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' support asymmetric CMKs. This value can only be set when `KMSEncrypted`
 #' is `true`. Optional.
 #' @param DefaultStorageClass The default storage class for objects put into an Amazon S3 bucket by
-#' the file gateway. The default value is `S3_INTELLIGENT_TIERING`.
-#' Optional.
+#' the S3 File Gateway. The default value is `S3_STANDARD`. Optional.
 #' 
 #' Valid Values: `S3_STANDARD` | `S3_INTELLIGENT_TIERING` |
 #' `S3_STANDARD_IA` | `S3_ONEZONE_IA`
 #' @param ObjectACL A value that sets the access control list (ACL) permission for objects
-#' in the S3 bucket that a file gateway puts objects into. The default
+#' in the S3 bucket that a S3 File Gateway puts objects into. The default
 #' value is `private`.
 #' @param ReadOnly A value that sets the write status of a file share. Set this value to
 #' `true` to set write status to read-only, otherwise set to `false`.
@@ -6331,8 +6854,8 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' 
 #' For more information, see [Using Microsoft Windows ACLs to control
 #' access to an SMB file
-#' share](https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html)
-#' in the *AWS Storage Gateway User Guide*.
+#' share](https://docs.aws.amazon.com/storagegateway/index.html) in the
+#' *Storage Gateway User Guide*.
 #' 
 #' Valid Values: `true` | `false`
 #' @param AccessBasedEnumeration The files and folders on this share will only be visible to users with
@@ -6352,7 +6875,7 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' Acceptable formats include: `DOMAIN\User1`, `user1`, `@@group1`, and
 #' `@@DOMAIN\group1`. Can only be set if Authentication is set to
 #' `ActiveDirectory`.
-#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for the audit logs.
+#' @param AuditDestinationARN The Amazon Resource Name (ARN) of the storage used for audit logs.
 #' @param CaseSensitivity The case of an object name in an Amazon S3 bucket. For
 #' `ClientSpecified`, the client determines the case sensitivity. For
 #' `CaseSensitive`, the gateway determines the case sensitivity. The
@@ -6360,9 +6883,34 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' @param FileShareName The name of the file share. Optional.
 #' 
 #' `FileShareName` must be set if an S3 prefix name is set in
-#' `LocationARN`.
-#' @param CacheAttributes Refresh cache information.
-#' @param NotificationPolicy The notification policy of the file share.
+#' `LocationARN`, or if an access point or access point alias is used.
+#' @param CacheAttributes Specifies refresh cache information for the file share.
+#' @param NotificationPolicy The notification policy of the file share. `SettlingTimeInSeconds`
+#' controls the number of seconds to wait after the last point in time a
+#' client wrote to a file before generating an `ObjectUploaded`
+#' notification. Because clients can make many small writes to files, it's
+#' best to set this parameter for as long as possible to avoid generating
+#' multiple notifications for the same file in a small time period.
+#' 
+#' `SettlingTimeInSeconds` has no effect on the timing of the object
+#' uploading to Amazon S3, only the timing of the notification.
+#' 
+#' The following example sets `NotificationPolicy` on with
+#' `SettlingTimeInSeconds` set to 60.
+#' 
+#' `{\"Upload\": {\"SettlingTimeInSeconds\": 60}}`
+#' 
+#' The following example sets `NotificationPolicy` off.
+#' 
+#' `{}`
+#' @param OplocksEnabled Specifies whether opportunistic locking is enabled for the SMB file
+#' share.
+#' 
+#' Enabling opportunistic locking on case-sensitive shares is not
+#' recommended for workloads that involve access to files with the same
+#' name in different case.
+#' 
+#' Valid Values: `true` | `false`
 #'
 #' @return
 #' A list with the following syntax:
@@ -6400,21 +6948,22 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #'   CacheAttributes = list(
 #'     CacheStaleTimeoutInSeconds = 123
 #'   ),
-#'   NotificationPolicy = "string"
+#'   NotificationPolicy = "string",
+#'   OplocksEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_smb_file_share
-storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, SMBACLEnabled = NULL, AccessBasedEnumeration = NULL, AdminUserList = NULL, ValidUserList = NULL, InvalidUserList = NULL, AuditDestinationARN = NULL, CaseSensitivity = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL) {
+storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, SMBACLEnabled = NULL, AccessBasedEnumeration = NULL, AdminUserList = NULL, ValidUserList = NULL, InvalidUserList = NULL, AuditDestinationARN = NULL, CaseSensitivity = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, OplocksEnabled = NULL) {
   op <- new_operation(
     name = "UpdateSMBFileShare",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .storagegateway$update_smb_file_share_input(FileShareARN = FileShareARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AccessBasedEnumeration = AccessBasedEnumeration, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, AuditDestinationARN = AuditDestinationARN, CaseSensitivity = CaseSensitivity, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy)
+  input <- .storagegateway$update_smb_file_share_input(FileShareARN = FileShareARN, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AccessBasedEnumeration = AccessBasedEnumeration, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, AuditDestinationARN = AuditDestinationARN, CaseSensitivity = CaseSensitivity, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, OplocksEnabled = OplocksEnabled)
   output <- .storagegateway$update_smb_file_share_output()
   config <- get_config()
   svc <- .storagegateway$service(config)
@@ -6424,12 +6973,13 @@ storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NU
 }
 .storagegateway$operations$update_smb_file_share <- storagegateway_update_smb_file_share
 
-#' Controls whether the shares on a gateway are visible in a net view or
-#' browse list
+#' Controls whether the shares on an S3 File Gateway are visible in a net
+#' view or browse list
 #'
 #' @description
-#' Controls whether the shares on a gateway are visible in a net view or
-#' browse list.
+#' Controls whether the shares on an S3 File Gateway are visible in a net
+#' view or browse list. The operation is only supported for S3 File
+#' Gateways.
 #'
 #' @usage
 #' storagegateway_update_smb_file_share_visibility(GatewayARN,
@@ -6474,6 +7024,60 @@ storagegateway_update_smb_file_share_visibility <- function(GatewayARN, FileShar
 }
 .storagegateway$operations$update_smb_file_share_visibility <- storagegateway_update_smb_file_share_visibility
 
+#' Updates the list of Active Directory users and groups that have special
+#' permissions for SMB file shares on the gateway
+#'
+#' @description
+#' Updates the list of Active Directory users and groups that have special
+#' permissions for SMB file shares on the gateway.
+#'
+#' @usage
+#' storagegateway_update_smb_local_groups(GatewayARN, SMBLocalGroups)
+#'
+#' @param GatewayARN &#91;required&#93; 
+#' @param SMBLocalGroups &#91;required&#93; A list of Active Directory users and groups that you want to grant
+#' special permissions for SMB file shares on the gateway.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GatewayARN = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_smb_local_groups(
+#'   GatewayARN = "string",
+#'   SMBLocalGroups = list(
+#'     GatewayAdmins = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname storagegateway_update_smb_local_groups
+storagegateway_update_smb_local_groups <- function(GatewayARN, SMBLocalGroups) {
+  op <- new_operation(
+    name = "UpdateSMBLocalGroups",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .storagegateway$update_smb_local_groups_input(GatewayARN = GatewayARN, SMBLocalGroups = SMBLocalGroups)
+  output <- .storagegateway$update_smb_local_groups_output()
+  config <- get_config()
+  svc <- .storagegateway$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.storagegateway$operations$update_smb_local_groups <- storagegateway_update_smb_local_groups
+
 #' Updates the SMB security strategy on a file gateway
 #'
 #' @description
@@ -6494,7 +7098,7 @@ storagegateway_update_smb_file_share_visibility <- function(GatewayARN, FileShar
 #' ClientSpecified: if you use this option, requests are established based
 #' on what is negotiated by the client. This option is recommended when you
 #' want to maximize compatibility across different clients in your
-#' environment.
+#' environment. Supported only in S3 File Gateway.
 #' 
 #' MandatorySigning: if you use this option, file gateway only allows
 #' connections from SMBv2 or SMBv3 clients that have signing enabled. This

@@ -5,9 +5,18 @@
 \title{Creates an entry (a rule) in a network ACL with the specified rule
 number}
 \usage{
-ec2_create_network_acl_entry(CidrBlock, DryRun, Egress, IcmpTypeCode,
-  Ipv6CidrBlock, NetworkAclId, PortRange, Protocol, RuleAction,
-  RuleNumber)
+ec2_create_network_acl_entry(
+  CidrBlock = NULL,
+  DryRun = NULL,
+  Egress,
+  IcmpTypeCode = NULL,
+  Ipv6CidrBlock = NULL,
+  NetworkAclId,
+  PortRange = NULL,
+  Protocol,
+  RuleAction,
+  RuleNumber
+)
 }
 \arguments{
 \item{CidrBlock}{The IPv4 network range to allow or deny, in CIDR notation (for example
@@ -51,69 +60,9 @@ processed in ascending order by rule number.
 Constraints: Positive integer from 1 to 32766. The range 32767 to 65535
 is reserved for internal use.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates an entry (a rule) in a network ACL with the specified rule
-number. Each network ACL has a set of numbered ingress rules and a
-separate set of numbered egress rules. When determining whether a packet
-should be allowed in or out of a subnet associated with the ACL, we
-process the entries in the ACL according to the rule numbers, in
-ascending order. Each network ACL has a set of ingress rules and a
-separate set of egress rules.
+Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules.
 
-We recommend that you leave room between the rule numbers (for example,
-100, 110, 120, ...), and not number them one right after the other (for
-example, 101, 102, 103, ...). This makes it easier to add a rule between
-existing ones without having to renumber the rules.
-
-After you add an entry, you can't modify it; you must either replace it,
-or create an entry and delete the old one.
-
-For more information about network ACLs, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the \emph{Amazon
-Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_network_acl_entry(
-  CidrBlock = "string",
-  DryRun = TRUE|FALSE,
-  Egress = TRUE|FALSE,
-  IcmpTypeCode = list(
-    Code = 123,
-    Type = 123
-  ),
-  Ipv6CidrBlock = "string",
-  NetworkAclId = "string",
-  PortRange = list(
-    From = 123,
-    To = 123
-  ),
-  Protocol = "string",
-  RuleAction = "allow"|"deny",
-  RuleNumber = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates an entry for the specified network ACL. The rule
-# allows ingress traffic from anywhere (0.0.0.0/0) on UDP port 53 (DNS)
-# into any associated subnet.
-svc$create_network_acl_entry(
-  CidrBlock = "0.0.0.0/0",
-  Egress = FALSE,
-  NetworkAclId = "acl-5fb85d36",
-  PortRange = list(
-    From = 53L,
-    To = 53L
-  ),
-  Protocol = "17",
-  RuleAction = "allow",
-  RuleNumber = 100L
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/create_network_acl_entry.html} for full documentation.
 }
 \keyword{internal}

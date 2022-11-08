@@ -4,9 +4,19 @@
 \alias{opsworks_update_app}
 \title{Updates a specified app}
 \usage{
-opsworks_update_app(AppId, Name, Description, DataSources, Type,
-  AppSource, Domains, EnableSsl, SslConfiguration, Attributes,
-  Environment)
+opsworks_update_app(
+  AppId,
+  Name = NULL,
+  Description = NULL,
+  DataSources = NULL,
+  Type = NULL,
+  AppSource = NULL,
+  Domains = NULL,
+  EnableSsl = NULL,
+  SslConfiguration = NULL,
+  Attributes = NULL,
+  Environment = NULL
+)
 }
 \arguments{
 \item{AppId}{[required] The app ID.}
@@ -46,59 +56,9 @@ it will cause an exception with the message, "Environment: is too large
 If you have specified one or more environment variables, you cannot
 modify the stack's Chef version.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates a specified app.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Deploy or Manage permissions level for the stack, or an attached policy
-that explicitly grants permissions. For more information on user
-permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/update_app.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_app(
-  AppId = "string",
-  Name = "string",
-  Description = "string",
-  DataSources = list(
-    list(
-      Type = "string",
-      Arn = "string",
-      DatabaseName = "string"
-    )
-  ),
-  Type = "aws-flow-ruby"|"java"|"rails"|"php"|"nodejs"|"static"|"other",
-  AppSource = list(
-    Type = "git"|"svn"|"archive"|"s3",
-    Url = "string",
-    Username = "string",
-    Password = "string",
-    SshKey = "string",
-    Revision = "string"
-  ),
-  Domains = list(
-    "string"
-  ),
-  EnableSsl = TRUE|FALSE,
-  SslConfiguration = list(
-    Certificate = "string",
-    PrivateKey = "string",
-    Chain = "string"
-  ),
-  Attributes = list(
-    "string"
-  ),
-  Environment = list(
-    list(
-      Key = "string",
-      Value = "string",
-      Secure = TRUE|FALSE
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

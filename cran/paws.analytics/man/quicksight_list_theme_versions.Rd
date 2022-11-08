@@ -2,13 +2,19 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_list_theme_versions}
 \alias{quicksight_list_theme_versions}
-\title{Lists all the versions of the themes in the current AWS account}
+\title{Lists all the versions of the themes in the current Amazon Web Services
+account}
 \usage{
-quicksight_list_theme_versions(AwsAccountId, ThemeId, NextToken,
-  MaxResults)
+quicksight_list_theme_versions(
+  AwsAccountId,
+  ThemeId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the themes that you're listing.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the themes that
+you're listing.}
 
 \item{ThemeId}{[required] The ID for the theme.}
 
@@ -17,36 +23,9 @@ results.}
 
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ThemeVersionSummaryList = list(
-    list(
-      VersionNumber = 123,
-      Arn = "string",
-      Description = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED"
-    )
-  ),
-  NextToken = "string",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
-Lists all the versions of the themes in the current AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_theme_versions(
-  AwsAccountId = "string",
-  ThemeId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists all the versions of the themes in the current Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/quicksight/list_theme_versions.html} for full documentation.
+}
 \keyword{internal}

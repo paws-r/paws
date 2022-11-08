@@ -2,18 +2,22 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_create_service_linked_role}
 \alias{iam_create_service_linked_role}
-\title{Creates an IAM role that is linked to a specific AWS service}
+\title{Creates an IAM role that is linked to a specific Amazon Web Services
+service}
 \usage{
-iam_create_service_linked_role(AWSServiceName, Description,
-  CustomSuffix)
+iam_create_service_linked_role(
+  AWSServiceName,
+  Description = NULL,
+  CustomSuffix = NULL
+)
 }
 \arguments{
-\item{AWSServiceName}{[required] The service principal for the AWS service to which this role is
-attached. You use a string similar to a URL but without the http:// in
-front. For example: \code{elasticbeanstalk.amazonaws.com}.
+\item{AWSServiceName}{[required] The service principal for the Amazon Web Services service to which this
+role is attached. You use a string similar to a URL but without the
+http:// in front. For example: \code{elasticbeanstalk.amazonaws.com}.
 
 Service principals are unique and case-sensitive. To find the exact
-service principal for your service-linked role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html}{AWS Services That Work with IAM}
+service principal for your service-linked role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html}{Amazon Web Services services that work with IAM}
 in the \emph{IAM User Guide}. Look for the services that have \strong{Yes} in the
 \strong{Service-Linked Role} column. Choose the \strong{Yes} link to view the
 service-linked role documentation for that service.}
@@ -30,59 +34,9 @@ Some services do not support the \code{CustomSuffix} parameter. If you
 provide an optional suffix and the operation fails, try the operation
 again without the suffix.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Role = list(
-    Path = "string",
-    RoleName = "string",
-    RoleId = "string",
-    Arn = "string",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    AssumeRolePolicyDocument = "string",
-    Description = "string",
-    MaxSessionDuration = 123,
-    PermissionsBoundary = list(
-      PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-      PermissionsBoundaryArn = "string"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    RoleLastUsed = list(
-      LastUsedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Region = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates an IAM role that is linked to a specific AWS service. The
-service controls the attached policies and when the role can be deleted.
-This helps ensure that the service is not broken by an unexpectedly
-changed or deleted role, which could put your AWS resources into an
-unknown state. Allowing the service to control the role helps improve
-service stability and proper cleanup when a service and its role are no
-longer needed. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{Using Service-Linked Roles}
-in the \emph{IAM User Guide}.
+Creates an IAM role that is linked to a specific Amazon Web Services service. The service controls the attached policies and when the role can be deleted. This helps ensure that the service is not broken by an unexpectedly changed or deleted role, which could put your Amazon Web Services resources into an unknown state. Allowing the service to control the role helps improve service stability and proper cleanup when a service and its role are no longer needed. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{Using service-linked roles} in the \emph{IAM User Guide}.
 
-To attach a policy to this service-linked role, you must make the
-request using the AWS service that depends on this role.
+See \url{https://paws-r.github.io/docs/iam/create_service_linked_role.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_service_linked_role(
-  AWSServiceName = "string",
-  Description = "string",
-  CustomSuffix = "string"
-)
-}
-}
-
 \keyword{internal}

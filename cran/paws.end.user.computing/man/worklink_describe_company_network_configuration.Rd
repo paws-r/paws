@@ -10,27 +10,9 @@ worklink_describe_company_network_configuration(FleetArn)
 \arguments{
 \item{FleetArn}{[required] The ARN of the fleet.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VpcId = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  SecurityGroupIds = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Describes the networking configuration to access the internal websites
-associated with the specified fleet.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_company_network_configuration(
-  FleetArn = "string"
-)
-}
-}
+Describes the networking configuration to access the internal websites associated with the specified fleet.
 
+See \url{https://paws-r.github.io/docs/worklink/describe_company_network_configuration.html} for full documentation.
+}
 \keyword{internal}

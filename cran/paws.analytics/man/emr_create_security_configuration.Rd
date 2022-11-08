@@ -14,25 +14,9 @@ emr_create_security_configuration(Name, SecurityConfiguration)
 and examples, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-security-configurations.html}{Use Security Configurations to Set Up Cluster Security}
 in the \emph{Amazon EMR Management Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string",
-  CreationDateTime = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Creates a security configuration, which is stored in the service and can
-be specified when a cluster is created.
-}
-\section{Request syntax}{
-\preformatted{svc$create_security_configuration(
-  Name = "string",
-  SecurityConfiguration = "string"
-)
-}
-}
+Creates a security configuration, which is stored in the service and can be specified when a cluster is created.
 
+See \url{https://paws-r.github.io/docs/emr/create_security_configuration.html} for full documentation.
+}
 \keyword{internal}

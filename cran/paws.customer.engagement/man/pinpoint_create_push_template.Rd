@@ -5,8 +5,7 @@
 \title{Creates a message template for messages that are sent through a push
 notification channel}
 \usage{
-pinpoint_create_push_template(PushNotificationTemplateRequest,
-  TemplateName)
+pinpoint_create_push_template(PushNotificationTemplateRequest, TemplateName)
 }
 \arguments{
 \item{PushNotificationTemplateRequest}{[required]}
@@ -16,82 +15,9 @@ alphanumeric character and can contain a maximum of 128 characters. The
 characters can be alphanumeric characters, underscores (_), or hyphens
 (-). Template names are case sensitive.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CreateTemplateMessageBody = list(
-    Arn = "string",
-    Message = "string",
-    RequestID = "string"
-  )
-)
-}
-}
 \description{
-Creates a message template for messages that are sent through a push
-notification channel.
-}
-\section{Request syntax}{
-\preformatted{svc$create_push_template(
-  PushNotificationTemplateRequest = list(
-    ADM = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      ImageIconUrl = "string",
-      ImageUrl = "string",
-      RawContent = "string",
-      SmallImageIconUrl = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    APNS = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      MediaUrl = "string",
-      RawContent = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    Baidu = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      ImageIconUrl = "string",
-      ImageUrl = "string",
-      RawContent = "string",
-      SmallImageIconUrl = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    Default = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    DefaultSubstitutions = "string",
-    GCM = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      ImageIconUrl = "string",
-      ImageUrl = "string",
-      RawContent = "string",
-      SmallImageIconUrl = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    RecommenderId = "string",
-    tags = list(
-      "string"
-    ),
-    TemplateDescription = "string"
-  ),
-  TemplateName = "string"
-)
-}
-}
+Creates a message template for messages that are sent through a push notification channel.
 
+See \url{https://paws-r.github.io/docs/pinpoint/create_push_template.html} for full documentation.
+}
 \keyword{internal}

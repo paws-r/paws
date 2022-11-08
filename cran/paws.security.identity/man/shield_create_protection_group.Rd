@@ -5,15 +5,21 @@
 \title{Creates a grouping of protected resources so they can be handled as a
 collective}
 \usage{
-shield_create_protection_group(ProtectionGroupId, Aggregation, Pattern,
-  ResourceType, Members)
+shield_create_protection_group(
+  ProtectionGroupId,
+  Aggregation,
+  Pattern,
+  ResourceType = NULL,
+  Members = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ProtectionGroupId}{[required] The name of the protection group. You use this to identify the
 protection group in lists and to manage the protection group, for
 example to update, delete, or describe it.}
 
-\item{Aggregation}{[required] Defines how AWS Shield combines resource data for the group in order to
+\item{Aggregation}{[required] Defines how Shield combines resource data for the group in order to
 detect, mitigate, and report events.
 \itemize{
 \item Sum - Use the total traffic across the group. This is a good choice
@@ -24,8 +30,8 @@ good choice for resources that share traffic uniformly. Examples
 include accelerators and load balancers.
 \item Max - Use the highest traffic from each resource. This is useful for
 resources that don't share traffic and for resources that share that
-traffic in a non-uniform way. Examples include CloudFront
-distributions and origin resources for CloudFront distributions.
+traffic in a non-uniform way. Examples include Amazon CloudFront and
+origin resources for CloudFront distributions.
 }}
 
 \item{Pattern}{[required] The criteria to use to choose the protected resources for inclusion in
@@ -42,26 +48,12 @@ must not set it for any other \code{Pattern} setting.}
 \item{Members}{The Amazon Resource Names (ARNs) of the resources to include in the
 protection group. You must set this when you set \code{Pattern} to
 \code{ARBITRARY} and you must not set it for any other \code{Pattern} setting.}
-}
-\value{
-An empty list.
+
+\item{Tags}{One or more tag key-value pairs for the protection group.}
 }
 \description{
-Creates a grouping of protected resources so they can be handled as a
-collective. This resource grouping improves the accuracy of detection
-and reduces false positives.
-}
-\section{Request syntax}{
-\preformatted{svc$create_protection_group(
-  ProtectionGroupId = "string",
-  Aggregation = "SUM"|"MEAN"|"MAX",
-  Pattern = "ALL"|"ARBITRARY"|"BY_RESOURCE_TYPE",
-  ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
-  Members = list(
-    "string"
-  )
-)
-}
-}
+Creates a grouping of protected resources so they can be handled as a collective. This resource grouping improves the accuracy of detection and reduces false positives.
 
+See \url{https://paws-r.github.io/docs/shield/create_protection_group.html} for full documentation.
+}
 \keyword{internal}

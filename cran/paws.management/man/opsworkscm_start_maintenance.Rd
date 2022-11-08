@@ -4,7 +4,7 @@
 \alias{opsworkscm_start_maintenance}
 \title{Manually starts server maintenance}
 \usage{
-opsworkscm_start_maintenance(ServerName, EngineAttributes)
+opsworkscm_start_maintenance(ServerName, EngineAttributes = NULL)
 }
 \arguments{
 \item{ServerName}{[required] The name of the server on which to run maintenance.}
@@ -21,71 +21,9 @@ the value to \code{true} to upgrade the server to Chef Automate 2. For
 more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html}{Upgrade an AWS OpsWorks for Chef Automate Server to Chef Automate 2}.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Server = list(
-    AssociatePublicIpAddress = TRUE|FALSE,
-    BackupRetentionCount = 123,
-    ServerName = "string",
-    CreatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    CloudFormationStackArn = "string",
-    CustomDomain = "string",
-    DisableAutomatedBackup = TRUE|FALSE,
-    Endpoint = "string",
-    Engine = "string",
-    EngineModel = "string",
-    EngineAttributes = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    EngineVersion = "string",
-    InstanceProfileArn = "string",
-    InstanceType = "string",
-    KeyPair = "string",
-    MaintenanceStatus = "SUCCESS"|"FAILED",
-    PreferredMaintenanceWindow = "string",
-    PreferredBackupWindow = "string",
-    SecurityGroupIds = list(
-      "string"
-    ),
-    ServiceRoleArn = "string",
-    Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
-    StatusReason = "string",
-    SubnetIds = list(
-      "string"
-    ),
-    ServerArn = "string"
-  )
-)
-}
-}
 \description{
-Manually starts server maintenance. This command can be useful if an
-earlier maintenance attempt failed, and the underlying cause of
-maintenance failure has been resolved. The server is in an
-\code{UNDER_MAINTENANCE} state while maintenance is in progress.
+Manually starts server maintenance. This command can be useful if an earlier maintenance attempt failed, and the underlying cause of maintenance failure has been resolved. The server is in an \code{UNDER_MAINTENANCE} state while maintenance is in progress.
 
-Maintenance can only be started on servers in \code{HEALTHY} and \code{UNHEALTHY}
-states. Otherwise, an \code{InvalidStateException} is thrown. A
-\code{ResourceNotFoundException} is thrown when the server does not exist. A
-\code{ValidationException} is raised when parameters of the request are not
-valid.
+See \url{https://paws-r.github.io/docs/opsworkscm/start_maintenance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_maintenance(
-  ServerName = "string",
-  EngineAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

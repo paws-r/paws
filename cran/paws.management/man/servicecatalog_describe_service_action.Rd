@@ -4,7 +4,7 @@
 \alias{servicecatalog_describe_service_action}
 \title{Describes a self-service action}
 \usage{
-servicecatalog_describe_service_action(Id, AcceptLanguage)
+servicecatalog_describe_service_action(Id, AcceptLanguage = NULL)
 }
 \arguments{
 \item{Id}{[required] The self-service action identifier.}
@@ -16,31 +16,9 @@ servicecatalog_describe_service_action(Id, AcceptLanguage)
 \item \code{zh} - Chinese
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceActionDetail = list(
-    ServiceActionSummary = list(
-      Id = "string",
-      Name = "string",
-      Description = "string",
-      DefinitionType = "SSM_AUTOMATION"
-    ),
-    Definition = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes a self-service action.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_service_action(
-  Id = "string",
-  AcceptLanguage = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/describe_service_action.html} for full documentation.
+}
 \keyword{internal}

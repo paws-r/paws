@@ -22,29 +22,9 @@ the function name, it is limited to 64 characters in length.}
 
 \item{Qualifier}{[required] The version number or alias name.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the provisioned concurrency configuration for a function.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_provisioned_concurrency_config(
-  FunctionName = "string",
-  Qualifier = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# The following example deletes the provisioned concurrency configuration
-# for the GREEN alias of a function named my-function.
-svc$delete_provisioned_concurrency_config(
-  FunctionName = "my-function",
-  Qualifier = "GREEN"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/delete_provisioned_concurrency_config.html} for full documentation.
 }
 \keyword{internal}

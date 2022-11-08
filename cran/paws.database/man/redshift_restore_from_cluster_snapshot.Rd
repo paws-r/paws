@@ -4,16 +4,41 @@
 \alias{redshift_restore_from_cluster_snapshot}
 \title{Creates a new cluster from a snapshot}
 \usage{
-redshift_restore_from_cluster_snapshot(ClusterIdentifier,
-  SnapshotIdentifier, SnapshotClusterIdentifier, Port, AvailabilityZone,
-  AllowVersionUpgrade, ClusterSubnetGroupName, PubliclyAccessible,
-  OwnerAccount, HsmClientCertificateIdentifier,
-  HsmConfigurationIdentifier, ElasticIp, ClusterParameterGroupName,
-  ClusterSecurityGroups, VpcSecurityGroupIds, PreferredMaintenanceWindow,
-  AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod,
-  KmsKeyId, NodeType, EnhancedVpcRouting, AdditionalInfo, IamRoles,
-  MaintenanceTrackName, SnapshotScheduleIdentifier, NumberOfNodes,
-  AvailabilityZoneRelocation)
+redshift_restore_from_cluster_snapshot(
+  ClusterIdentifier,
+  SnapshotIdentifier = NULL,
+  SnapshotArn = NULL,
+  SnapshotClusterIdentifier = NULL,
+  Port = NULL,
+  AvailabilityZone = NULL,
+  AllowVersionUpgrade = NULL,
+  ClusterSubnetGroupName = NULL,
+  PubliclyAccessible = NULL,
+  OwnerAccount = NULL,
+  HsmClientCertificateIdentifier = NULL,
+  HsmConfigurationIdentifier = NULL,
+  ElasticIp = NULL,
+  ClusterParameterGroupName = NULL,
+  ClusterSecurityGroups = NULL,
+  VpcSecurityGroupIds = NULL,
+  PreferredMaintenanceWindow = NULL,
+  AutomatedSnapshotRetentionPeriod = NULL,
+  ManualSnapshotRetentionPeriod = NULL,
+  KmsKeyId = NULL,
+  NodeType = NULL,
+  EnhancedVpcRouting = NULL,
+  AdditionalInfo = NULL,
+  IamRoles = NULL,
+  MaintenanceTrackName = NULL,
+  SnapshotScheduleIdentifier = NULL,
+  NumberOfNodes = NULL,
+  AvailabilityZoneRelocation = NULL,
+  AquaConfigurationStatus = NULL,
+  DefaultIamRoleArn = NULL,
+  ReservedNodeId = NULL,
+  TargetReservedNodeOfferingId = NULL,
+  Encrypted = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the cluster that will be created from restoring the
@@ -25,13 +50,17 @@ Constraints:
 \item Alphabetic characters must be lowercase.
 \item First character must be a letter.
 \item Cannot end with a hyphen or contain two consecutive hyphens.
-\item Must be unique for all clusters within an AWS account.
+\item Must be unique for all clusters within an Amazon Web Services
+account.
 }}
 
-\item{SnapshotIdentifier}{[required] The name of the snapshot from which to create the new cluster. This
+\item{SnapshotIdentifier}{The name of the snapshot from which to create the new cluster. This
 parameter isn't case sensitive.
 
 Example: \code{my-snapshot-id}}
+
+\item{SnapshotArn}{The Amazon Resource Name (ARN) of the snapshot associated with the
+message to restore from a cluster.}
 
 \item{SnapshotClusterIdentifier}{The name of the cluster the source snapshot was created from. This
 parameter is required if your IAM user has a policy containing a
@@ -62,9 +91,9 @@ must provide subnet group name where you want the cluster restored.}
 
 \item{PubliclyAccessible}{If \code{true}, the cluster can be accessed from a public network.}
 
-\item{OwnerAccount}{The AWS customer account used to create or copy the snapshot. Required
-if you are restoring a snapshot you do not own, optional if you own the
-snapshot.}
+\item{OwnerAccount}{The Amazon Web Services account used to create or copy the snapshot.
+Required if you are restoring a snapshot you do not own, optional if you
+own the snapshot.}
 
 \item{HsmClientCertificateIdentifier}{Specifies the name of the HSM client certificate the Amazon Redshift
 cluster uses to retrieve the data encryption keys stored in an HSM.}
@@ -73,7 +102,9 @@ cluster uses to retrieve the data encryption keys stored in an HSM.}
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.}
 
-\item{ElasticIp}{The elastic IP (EIP) address for the cluster.}
+\item{ElasticIp}{The elastic IP (EIP) address for the cluster. You don't have to specify
+the EIP for a publicly accessible cluster with
+AvailabilityZoneRelocation turned on.}
 
 \item{ClusterParameterGroupName}{The name of the parameter group to be associated with this cluster.
 
@@ -119,6 +150,9 @@ is 0, automated snapshots are disabled. Even if automated snapshots are
 disabled, you can still create manual snapshots when you want with
 \code{\link[=redshift_create_cluster_snapshot]{create_cluster_snapshot}}.
 
+You can't disable automated snapshots for RA3 node types. Set the
+automated retention period from 1-35 days.
+
 Default: The value selected for the cluster from which the snapshot was
 taken.
 
@@ -130,9 +164,13 @@ the retention period of existing snapshots.
 
 The value must be either -1 or an integer between 1 and 3,653.}
 
-\item{KmsKeyId}{The AWS Key Management Service (KMS) key ID of the encryption key that
-you want to use to encrypt data in the cluster that you restore from a
-shared snapshot.}
+\item{KmsKeyId}{The Key Management Service (KMS) key ID of the encryption key that
+encrypts data in the cluster restored from a shared snapshot. You can
+also provide the key ID when you restore from an unencrypted snapshot to
+an encrypted cluster in the same account. Additionally, you can specify
+a new KMS key ID when you restore from an encrypted snapshot in the same
+account in order to change it. In that case, the restored cluster is
+encrypted with the new KMS key ID.}
 
 \item{NodeType}{The node type that the restored cluster will be provisioned with.
 
@@ -159,12 +197,13 @@ Default: false}
 
 \item{AdditionalInfo}{Reserved.}
 
-\item{IamRoles}{A list of AWS Identity and Access Management (IAM) roles that can be
-used by the cluster to access other AWS services. You must supply the
-IAM roles in their Amazon Resource Name (ARN) format. You can supply up
-to 10 IAM roles in a single request.
+\item{IamRoles}{A list of Identity and Access Management (IAM) roles that can be used by
+the cluster to access other Amazon Web Services services. You must
+supply the IAM roles in their Amazon Resource Name (ARN) format.
 
-A cluster can have up to 10 IAM roles associated at any time.}
+The maximum number of IAM roles that you can associate is subject to a
+quota. For more information, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html}{Quotas and limits}
+in the \emph{Amazon Redshift Cluster Management Guide}.}
 
 \item{MaintenanceTrackName}{The name of the maintenance track for the restored cluster. When you
 take a snapshot, the snapshot inherits the \code{MaintenanceTrack} value from
@@ -180,221 +219,31 @@ source cluster are on different tracks.}
 
 \item{AvailabilityZoneRelocation}{The option to enable relocation for an Amazon Redshift cluster between
 Availability Zones after the cluster is restored.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Cluster = list(
-    ClusterIdentifier = "string",
-    NodeType = "string",
-    ClusterStatus = "string",
-    ClusterAvailabilityStatus = "string",
-    ModifyStatus = "string",
-    MasterUsername = "string",
-    DBName = "string",
-    Endpoint = list(
-      Address = "string",
-      Port = 123,
-      VpcEndpoints = list(
-        list(
-          VpcEndpointId = "string"
-        )
-      )
-    ),
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    AutomatedSnapshotRetentionPeriod = 123,
-    ManualSnapshotRetentionPeriod = 123,
-    ClusterSecurityGroups = list(
-      list(
-        ClusterSecurityGroupName = "string",
-        Status = "string"
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    ClusterParameterGroups = list(
-      list(
-        ParameterGroupName = "string",
-        ParameterApplyStatus = "string",
-        ClusterParameterStatusList = list(
-          list(
-            ParameterName = "string",
-            ParameterApplyStatus = "string",
-            ParameterApplyErrorDescription = "string"
-          )
-        )
-      )
-    ),
-    ClusterSubnetGroupName = "string",
-    VpcId = "string",
-    AvailabilityZone = "string",
-    PreferredMaintenanceWindow = "string",
-    PendingModifiedValues = list(
-      MasterUserPassword = "string",
-      NodeType = "string",
-      NumberOfNodes = 123,
-      ClusterType = "string",
-      ClusterVersion = "string",
-      AutomatedSnapshotRetentionPeriod = 123,
-      ClusterIdentifier = "string",
-      PubliclyAccessible = TRUE|FALSE,
-      EnhancedVpcRouting = TRUE|FALSE,
-      MaintenanceTrackName = "string",
-      EncryptionType = "string"
-    ),
-    ClusterVersion = "string",
-    AllowVersionUpgrade = TRUE|FALSE,
-    NumberOfNodes = 123,
-    PubliclyAccessible = TRUE|FALSE,
-    Encrypted = TRUE|FALSE,
-    RestoreStatus = list(
-      Status = "string",
-      CurrentRestoreRateInMegaBytesPerSecond = 123.0,
-      SnapshotSizeInMegaBytes = 123,
-      ProgressInMegaBytes = 123,
-      ElapsedTimeInSeconds = 123,
-      EstimatedTimeToCompletionInSeconds = 123
-    ),
-    DataTransferProgress = list(
-      Status = "string",
-      CurrentRateInMegaBytesPerSecond = 123.0,
-      TotalDataInMegaBytes = 123,
-      DataTransferredInMegaBytes = 123,
-      EstimatedTimeToCompletionInSeconds = 123,
-      ElapsedTimeInSeconds = 123
-    ),
-    HsmStatus = list(
-      HsmClientCertificateIdentifier = "string",
-      HsmConfigurationIdentifier = "string",
-      Status = "string"
-    ),
-    ClusterSnapshotCopyStatus = list(
-      DestinationRegion = "string",
-      RetentionPeriod = 123,
-      ManualSnapshotRetentionPeriod = 123,
-      SnapshotCopyGrantName = "string"
-    ),
-    ClusterPublicKey = "string",
-    ClusterNodes = list(
-      list(
-        NodeRole = "string",
-        PrivateIPAddress = "string",
-        PublicIPAddress = "string"
-      )
-    ),
-    ElasticIpStatus = list(
-      ElasticIp = "string",
-      Status = "string"
-    ),
-    ClusterRevisionNumber = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    KmsKeyId = "string",
-    EnhancedVpcRouting = TRUE|FALSE,
-    IamRoles = list(
-      list(
-        IamRoleArn = "string",
-        ApplyStatus = "string"
-      )
-    ),
-    PendingActions = list(
-      "string"
-    ),
-    MaintenanceTrackName = "string",
-    ElasticResizeNumberOfNodeOptions = "string",
-    DeferredMaintenanceWindows = list(
-      list(
-        DeferMaintenanceIdentifier = "string",
-        DeferMaintenanceStartTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        DeferMaintenanceEndTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    SnapshotScheduleIdentifier = "string",
-    SnapshotScheduleState = "MODIFYING"|"ACTIVE"|"FAILED",
-    ExpectedNextSnapshotScheduleTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ExpectedNextSnapshotScheduleTimeStatus = "string",
-    NextMaintenanceWindowStartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ResizeInfo = list(
-      ResizeType = "string",
-      AllowCancelResize = TRUE|FALSE
-    ),
-    AvailabilityZoneRelocationStatus = "string",
-    ClusterNamespaceArn = "string"
-  )
-)
-}
+
+\item{AquaConfigurationStatus}{The value represents how the cluster is configured to use AQUA (Advanced
+Query Accelerator) after the cluster is restored. Possible values
+include the following.
+\itemize{
+\item enabled - Use AQUA if it is available for the current Amazon Web
+Services Region and Amazon Redshift node type.
+\item disabled - Don't use AQUA.
+\item auto - Amazon Redshift determines whether to use AQUA.
+}}
+
+\item{DefaultIamRoleArn}{The Amazon Resource Name (ARN) for the IAM role that was set as default
+for the cluster when the cluster was last modified while it was restored
+from a snapshot.}
+
+\item{ReservedNodeId}{The identifier of the target reserved node offering.}
+
+\item{TargetReservedNodeOfferingId}{The identifier of the target reserved node offering.}
+
+\item{Encrypted}{Enables support for restoring an unencrypted snapshot to a cluster
+encrypted with Key Management Service (KMS) and a customer managed key.}
 }
 \description{
-Creates a new cluster from a snapshot. By default, Amazon Redshift
-creates the resulting cluster with the same configuration as the
-original cluster from which the snapshot was created, except that the
-new cluster is created with the default cluster security and parameter
-groups. After Amazon Redshift creates the cluster, you can use the
-\code{\link[=redshift_modify_cluster]{modify_cluster}} API to associate a different
-security group and different parameter group with the restored cluster.
-If you are using a DS node type, you can also choose to change to
-another DS node type of the same size during restore.
+Creates a new cluster from a snapshot. By default, Amazon Redshift creates the resulting cluster with the same configuration as the original cluster from which the snapshot was created, except that the new cluster is created with the default cluster security and parameter groups. After Amazon Redshift creates the cluster, you can use the \code{\link[=redshift_modify_cluster]{modify_cluster}} API to associate a different security group and different parameter group with the restored cluster. If you are using a DS node type, you can also choose to change to another DS node type of the same size during restore.
 
-If you restore a cluster into a VPC, you must provide a cluster subnet
-group where you want the cluster restored.
-
-For more information about working with snapshots, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/restore_from_cluster_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$restore_from_cluster_snapshot(
-  ClusterIdentifier = "string",
-  SnapshotIdentifier = "string",
-  SnapshotClusterIdentifier = "string",
-  Port = 123,
-  AvailabilityZone = "string",
-  AllowVersionUpgrade = TRUE|FALSE,
-  ClusterSubnetGroupName = "string",
-  PubliclyAccessible = TRUE|FALSE,
-  OwnerAccount = "string",
-  HsmClientCertificateIdentifier = "string",
-  HsmConfigurationIdentifier = "string",
-  ElasticIp = "string",
-  ClusterParameterGroupName = "string",
-  ClusterSecurityGroups = list(
-    "string"
-  ),
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  PreferredMaintenanceWindow = "string",
-  AutomatedSnapshotRetentionPeriod = 123,
-  ManualSnapshotRetentionPeriod = 123,
-  KmsKeyId = "string",
-  NodeType = "string",
-  EnhancedVpcRouting = TRUE|FALSE,
-  AdditionalInfo = "string",
-  IamRoles = list(
-    "string"
-  ),
-  MaintenanceTrackName = "string",
-  SnapshotScheduleIdentifier = "string",
-  NumberOfNodes = 123,
-  AvailabilityZoneRelocation = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

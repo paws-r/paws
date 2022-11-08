@@ -12,42 +12,9 @@ ses_reorder_receipt_rule_set(RuleSetName, RuleNames)
 \item{RuleNames}{[required] A list of the specified receipt rule set's receipt rules in the order
 that you want to put them.}
 }
-\value{
-An empty list.
-}
 \description{
 Reorders the receipt rules within a receipt rule set.
 
-All of the rules in the rule set must be represented in this request.
-That is, this API will return an error if the reorder request doesn't
-explicitly position all of the rules.
-
-For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
-}
-\section{Request syntax}{
-\preformatted{svc$reorder_receipt_rule_set(
-  RuleSetName = "string",
-  RuleNames = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example reorders the receipt rules within a receipt rule
-# set:
-svc$reorder_receipt_rule_set(
-  RuleNames = list(
-    "MyRule",
-    "MyOtherRule"
-  ),
-  RuleSetName = "MyRuleSet"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/reorder_receipt_rule_set.html} for full documentation.
 }
 \keyword{internal}

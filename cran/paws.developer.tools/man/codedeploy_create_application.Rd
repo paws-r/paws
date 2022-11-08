@@ -4,7 +4,11 @@
 \alias{codedeploy_create_application}
 \title{Creates an application}
 \usage{
-codedeploy_create_application(applicationName, computePlatform, tags)
+codedeploy_create_application(
+  applicationName,
+  computePlatform = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{applicationName}{[required] The name of the application. This name must be unique with the
@@ -17,27 +21,9 @@ applicable IAM user or AWS account.}
 organize and categorize them. Each tag consists of a key and an optional
 value, both of which you define.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  applicationId = "string"
-)
-}
-}
 \description{
 Creates an application.
-}
-\section{Request syntax}{
-\preformatted{svc$create_application(
-  applicationName = "string",
-  computePlatform = "Server"|"Lambda"|"ECS",
-  tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/create_application.html} for full documentation.
+}
 \keyword{internal}

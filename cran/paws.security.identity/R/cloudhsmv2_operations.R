@@ -8,8 +8,7 @@ NULL
 #' @description
 #' Copy an AWS CloudHSM cluster backup to a different region.
 #'
-#' @usage
-#' cloudhsmv2_copy_backup_to_region(DestinationRegion, BackupId, TagList)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/copy_backup_to_region.html](https://paws-r.github.io/docs/cloudhsmv2/copy_backup_to_region.html) for full documentation.
 #'
 #' @param DestinationRegion &#91;required&#93; The AWS region that will contain your copied CloudHSM cluster backup.
 #' @param BackupId &#91;required&#93; The ID of the backup that will be copied to the destination region.
@@ -17,35 +16,6 @@ NULL
 #' tags, only these tags will be applied to the destination backup. If you
 #' do not specify tags, the service copies tags from the source backup to
 #' the destination backup.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DestinationBackup = list(
-#'     CreateTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SourceRegion = "string",
-#'     SourceBackup = "string",
-#'     SourceCluster = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$copy_backup_to_region(
-#'   DestinationRegion = "string",
-#'   BackupId = "string",
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -72,9 +42,7 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #' @description
 #' Creates a new AWS CloudHSM cluster.
 #'
-#' @usage
-#' cloudhsmv2_create_cluster(BackupRetentionPolicy, HsmType,
-#'   SourceBackupId, SubnetIds, TagList)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/create_cluster.html](https://paws-r.github.io/docs/cloudhsmv2/create_cluster.html) for full documentation.
 #'
 #' @param BackupRetentionPolicy A policy that defines how the service retains backups.
 #' @param HsmType &#91;required&#93; The type of HSM to use in the cluster. Currently the only allowed value
@@ -91,80 +59,6 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #' 
 #' -   You can specify only one subnet per Availability Zone.
 #' @param TagList Tags to apply to the CloudHSM cluster during creation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Cluster = list(
-#'     BackupPolicy = "DEFAULT",
-#'     BackupRetentionPolicy = list(
-#'       Type = "DAYS",
-#'       Value = "string"
-#'     ),
-#'     ClusterId = "string",
-#'     CreateTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Hsms = list(
-#'       list(
-#'         AvailabilityZone = "string",
-#'         ClusterId = "string",
-#'         SubnetId = "string",
-#'         EniId = "string",
-#'         EniIp = "string",
-#'         HsmId = "string",
-#'         State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
-#'         StateMessage = "string"
-#'       )
-#'     ),
-#'     HsmType = "string",
-#'     PreCoPassword = "string",
-#'     SecurityGroup = "string",
-#'     SourceBackupId = "string",
-#'     State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
-#'     StateMessage = "string",
-#'     SubnetMapping = list(
-#'       "string"
-#'     ),
-#'     VpcId = "string",
-#'     Certificates = list(
-#'       ClusterCsr = "string",
-#'       HsmCertificate = "string",
-#'       AwsHardwareCertificate = "string",
-#'       ManufacturerHardwareCertificate = "string",
-#'       ClusterCertificate = "string"
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_cluster(
-#'   BackupRetentionPolicy = list(
-#'     Type = "DAYS",
-#'     Value = "string"
-#'   ),
-#'   HsmType = "string",
-#'   SourceBackupId = "string",
-#'   SubnetIds = list(
-#'     "string"
-#'   ),
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -190,11 +84,9 @@ cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, Sou
 #' CloudHSM cluster
 #'
 #' @description
-#' Creates a new hardware security module (HSM) in the specified AWS
-#' CloudHSM cluster.
+#' Creates a new hardware security module (HSM) in the specified AWS CloudHSM cluster.
 #'
-#' @usage
-#' cloudhsmv2_create_hsm(ClusterId, AvailabilityZone, IpAddress)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/create_hsm.html](https://paws-r.github.io/docs/cloudhsmv2/create_hsm.html) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the HSM's cluster. To find the cluster ID, use
 #' [`describe_clusters`][cloudhsmv2_describe_clusters].
@@ -205,32 +97,6 @@ cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, Sou
 #' address from the subnet that maps to the Availability Zone where you are
 #' creating the HSM. If you don't specify an IP address, one is chosen for
 #' you from that subnet.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Hsm = list(
-#'     AvailabilityZone = "string",
-#'     ClusterId = "string",
-#'     SubnetId = "string",
-#'     EniId = "string",
-#'     EniIp = "string",
-#'     HsmId = "string",
-#'     State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
-#'     StateMessage = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_hsm(
-#'   ClusterId = "string",
-#'   AvailabilityZone = "string",
-#'   IpAddress = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -255,53 +121,12 @@ cloudhsmv2_create_hsm <- function(ClusterId, AvailabilityZone, IpAddress = NULL)
 #' Deletes a specified AWS CloudHSM backup
 #'
 #' @description
-#' Deletes a specified AWS CloudHSM backup. A backup can be restored up to
-#' 7 days after the DeleteBackup request is made. For more information on
-#' restoring a backup, see [`restore_backup`][cloudhsmv2_restore_backup].
+#' Deletes a specified AWS CloudHSM backup. A backup can be restored up to 7 days after the DeleteBackup request is made. For more information on restoring a backup, see [`restore_backup`][cloudhsmv2_restore_backup].
 #'
-#' @usage
-#' cloudhsmv2_delete_backup(BackupId)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/delete_backup.html](https://paws-r.github.io/docs/cloudhsmv2/delete_backup.html) for full documentation.
 #'
 #' @param BackupId &#91;required&#93; The ID of the backup to be deleted. To find the ID of a backup, use the
 #' [`describe_backups`][cloudhsmv2_describe_backups] operation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Backup = list(
-#'     BackupId = "string",
-#'     BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
-#'     ClusterId = "string",
-#'     CreateTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CopyTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     NeverExpires = TRUE|FALSE,
-#'     SourceRegion = "string",
-#'     SourceBackup = "string",
-#'     SourceCluster = "string",
-#'     DeleteTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_backup(
-#'   BackupId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -326,77 +151,12 @@ cloudhsmv2_delete_backup <- function(BackupId) {
 #' Deletes the specified AWS CloudHSM cluster
 #'
 #' @description
-#' Deletes the specified AWS CloudHSM cluster. Before you can delete a
-#' cluster, you must delete all HSMs in the cluster. To see if the cluster
-#' contains any HSMs, use
-#' [`describe_clusters`][cloudhsmv2_describe_clusters]. To delete an HSM,
-#' use [`delete_hsm`][cloudhsmv2_delete_hsm].
+#' Deletes the specified AWS CloudHSM cluster. Before you can delete a cluster, you must delete all HSMs in the cluster. To see if the cluster contains any HSMs, use [`describe_clusters`][cloudhsmv2_describe_clusters]. To delete an HSM, use [`delete_hsm`][cloudhsmv2_delete_hsm].
 #'
-#' @usage
-#' cloudhsmv2_delete_cluster(ClusterId)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/delete_cluster.html](https://paws-r.github.io/docs/cloudhsmv2/delete_cluster.html) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you are deleting. To find the
 #' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Cluster = list(
-#'     BackupPolicy = "DEFAULT",
-#'     BackupRetentionPolicy = list(
-#'       Type = "DAYS",
-#'       Value = "string"
-#'     ),
-#'     ClusterId = "string",
-#'     CreateTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Hsms = list(
-#'       list(
-#'         AvailabilityZone = "string",
-#'         ClusterId = "string",
-#'         SubnetId = "string",
-#'         EniId = "string",
-#'         EniIp = "string",
-#'         HsmId = "string",
-#'         State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
-#'         StateMessage = "string"
-#'       )
-#'     ),
-#'     HsmType = "string",
-#'     PreCoPassword = "string",
-#'     SecurityGroup = "string",
-#'     SourceBackupId = "string",
-#'     State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
-#'     StateMessage = "string",
-#'     SubnetMapping = list(
-#'       "string"
-#'     ),
-#'     VpcId = "string",
-#'     Certificates = list(
-#'       ClusterCsr = "string",
-#'       HsmCertificate = "string",
-#'       AwsHardwareCertificate = "string",
-#'       ManufacturerHardwareCertificate = "string",
-#'       ClusterCertificate = "string"
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_cluster(
-#'   ClusterId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -421,14 +181,9 @@ cloudhsmv2_delete_cluster <- function(ClusterId) {
 #' Deletes the specified HSM
 #'
 #' @description
-#' Deletes the specified HSM. To specify an HSM, you can use its identifier
-#' (ID), the IP address of the HSM's elastic network interface (ENI), or
-#' the ID of the HSM's ENI. You need to specify only one of these values.
-#' To find these values, use
-#' [`describe_clusters`][cloudhsmv2_describe_clusters].
+#' Deletes the specified HSM. To specify an HSM, you can use its identifier (ID), the IP address of the HSM's elastic network interface (ENI), or the ID of the HSM's ENI. You need to specify only one of these values. To find these values, use [`describe_clusters`][cloudhsmv2_describe_clusters].
 #'
-#' @usage
-#' cloudhsmv2_delete_hsm(ClusterId, HsmId, EniId, EniIp)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/delete_hsm.html](https://paws-r.github.io/docs/cloudhsmv2/delete_hsm.html) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that contains the HSM that you are
 #' deleting.
@@ -437,24 +192,6 @@ cloudhsmv2_delete_cluster <- function(ClusterId) {
 #' that you are deleting.
 #' @param EniIp The IP address of the elastic network interface (ENI) of the HSM that
 #' you are deleting.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   HsmId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_hsm(
-#'   ClusterId = "string",
-#'   HsmId = "string",
-#'   EniId = "string",
-#'   EniIp = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -480,18 +217,8 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
 #'
 #' @description
 #' Gets information about backups of AWS CloudHSM clusters.
-#' 
-#' This is a paginated operation, which means that each response might
-#' contain only a subset of all the backups. When the response contains
-#' only a subset of backups, it includes a `NextToken` value. Use this
-#' value in a subsequent [`describe_backups`][cloudhsmv2_describe_backups]
-#' request to get more backups. When you receive a response with no
-#' `NextToken` (or an empty or null value), that means there are no more
-#' backups to get.
 #'
-#' @usage
-#' cloudhsmv2_describe_backups(NextToken, MaxResults, Filters,
-#'   SortAscending)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/describe_backups.html](https://paws-r.github.io/docs/cloudhsmv2/describe_backups.html) for full documentation.
 #'
 #' @param NextToken The `NextToken` value that you received in the previous response. Use
 #' this value to get more backups.
@@ -521,54 +248,6 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
 #' @param SortAscending Designates whether or not to sort the return backups by ascending
 #' chronological order of generation.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Backups = list(
-#'     list(
-#'       BackupId = "string",
-#'       BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
-#'       ClusterId = "string",
-#'       CreateTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CopyTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       NeverExpires = TRUE|FALSE,
-#'       SourceRegion = "string",
-#'       SourceBackup = "string",
-#'       SourceCluster = "string",
-#'       DeleteTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       TagList = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_backups(
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   Filters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   SortAscending = TRUE|FALSE
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_describe_backups
@@ -593,17 +272,8 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
 #'
 #' @description
 #' Gets information about AWS CloudHSM clusters.
-#' 
-#' This is a paginated operation, which means that each response might
-#' contain only a subset of all the clusters. When the response contains
-#' only a subset of clusters, it includes a `NextToken` value. Use this
-#' value in a subsequent
-#' [`describe_clusters`][cloudhsmv2_describe_clusters] request to get more
-#' clusters. When you receive a response with no `NextToken` (or an empty
-#' or null value), that means there are no more clusters to get.
 #'
-#' @usage
-#' cloudhsmv2_describe_clusters(Filters, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/describe_clusters.html](https://paws-r.github.io/docs/cloudhsmv2/describe_clusters.html) for full documentation.
 #'
 #' @param Filters One or more filters to limit the items returned in the response.
 #' 
@@ -621,75 +291,6 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
 #' @param MaxResults The maximum number of clusters to return in the response. When there are
 #' more clusters than the number you specify, the response contains a
 #' `NextToken` value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Clusters = list(
-#'     list(
-#'       BackupPolicy = "DEFAULT",
-#'       BackupRetentionPolicy = list(
-#'         Type = "DAYS",
-#'         Value = "string"
-#'       ),
-#'       ClusterId = "string",
-#'       CreateTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Hsms = list(
-#'         list(
-#'           AvailabilityZone = "string",
-#'           ClusterId = "string",
-#'           SubnetId = "string",
-#'           EniId = "string",
-#'           EniIp = "string",
-#'           HsmId = "string",
-#'           State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
-#'           StateMessage = "string"
-#'         )
-#'       ),
-#'       HsmType = "string",
-#'       PreCoPassword = "string",
-#'       SecurityGroup = "string",
-#'       SourceBackupId = "string",
-#'       State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
-#'       StateMessage = "string",
-#'       SubnetMapping = list(
-#'         "string"
-#'       ),
-#'       VpcId = "string",
-#'       Certificates = list(
-#'         ClusterCsr = "string",
-#'         HsmCertificate = "string",
-#'         AwsHardwareCertificate = "string",
-#'         ManufacturerHardwareCertificate = "string",
-#'         ClusterCertificate = "string"
-#'       ),
-#'       TagList = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_clusters(
-#'   Filters = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -716,14 +317,9 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
 #' certificate
 #'
 #' @description
-#' Claims an AWS CloudHSM cluster by submitting the cluster certificate
-#' issued by your issuing certificate authority (CA) and the CA's root
-#' certificate. Before you can claim a cluster, you must sign the cluster's
-#' certificate signing request (CSR) with your issuing CA. To get the
-#' cluster's CSR, use [`describe_clusters`][cloudhsmv2_describe_clusters].
+#' Claims an AWS CloudHSM cluster by submitting the cluster certificate issued by your issuing certificate authority (CA) and the CA's root certificate. Before you can claim a cluster, you must sign the cluster's certificate signing request (CSR) with your issuing CA. To get the cluster's CSR, use [`describe_clusters`][cloudhsmv2_describe_clusters].
 #'
-#' @usage
-#' cloudhsmv2_initialize_cluster(ClusterId, SignedCert, TrustAnchor)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/initialize_cluster.html](https://paws-r.github.io/docs/cloudhsmv2/initialize_cluster.html) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you are claiming. To find the
 #' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
@@ -735,24 +331,6 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
 #' certificate. The certificate used to sign the HSM CSR must be directly
 #' available, and thus must be the root certificate. The certificate must
 #' be in PEM format and can contain a maximum of 5000 characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
-#'   StateMessage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$initialize_cluster(
-#'   ClusterId = "string",
-#'   SignedCert = "string",
-#'   TrustAnchor = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -778,16 +356,8 @@ cloudhsmv2_initialize_cluster <- function(ClusterId, SignedCert, TrustAnchor) {
 #'
 #' @description
 #' Gets a list of tags for the specified AWS CloudHSM cluster.
-#' 
-#' This is a paginated operation, which means that each response might
-#' contain only a subset of all the tags. When the response contains only a
-#' subset of tags, it includes a `NextToken` value. Use this value in a
-#' subsequent [`list_tags`][cloudhsmv2_list_tags] request to get more tags.
-#' When you receive a response with no `NextToken` (or an empty or null
-#' value), that means there are no more tags to get.
 #'
-#' @usage
-#' cloudhsmv2_list_tags(ResourceId, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/list_tags.html](https://paws-r.github.io/docs/cloudhsmv2/list_tags.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster whose tags you are getting.
 #' To find the cluster ID, use
@@ -797,29 +367,6 @@ cloudhsmv2_initialize_cluster <- function(ClusterId, SignedCert, TrustAnchor) {
 #' @param MaxResults The maximum number of tags to return in the response. When there are
 #' more tags than the number you specify, the response contains a
 #' `NextToken` value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags(
-#'   ResourceId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -846,8 +393,7 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
 #' @description
 #' Modifies attributes for AWS CloudHSM backup.
 #'
-#' @usage
-#' cloudhsmv2_modify_backup_attributes(BackupId, NeverExpires)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/modify_backup_attributes.html](https://paws-r.github.io/docs/cloudhsmv2/modify_backup_attributes.html) for full documentation.
 #'
 #' @param BackupId &#91;required&#93; The identifier (ID) of the backup to modify. To find the ID of a backup,
 #' use the [`describe_backups`][cloudhsmv2_describe_backups] operation.
@@ -855,45 +401,6 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
 #' policy for the cluster. `True` exempts a backup from the retention
 #' policy. `False` means the service applies the backup retention policy
 #' defined at the cluster.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Backup = list(
-#'     BackupId = "string",
-#'     BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
-#'     ClusterId = "string",
-#'     CreateTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CopyTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     NeverExpires = TRUE|FALSE,
-#'     SourceRegion = "string",
-#'     SourceBackup = "string",
-#'     SourceCluster = "string",
-#'     DeleteTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_backup_attributes(
-#'   BackupId = "string",
-#'   NeverExpires = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -920,76 +427,11 @@ cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
 #' @description
 #' Modifies AWS CloudHSM cluster.
 #'
-#' @usage
-#' cloudhsmv2_modify_cluster(BackupRetentionPolicy, ClusterId)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/modify_cluster.html](https://paws-r.github.io/docs/cloudhsmv2/modify_cluster.html) for full documentation.
 #'
 #' @param BackupRetentionPolicy &#91;required&#93; A policy that defines how the service retains backups.
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you want to modify. To find the
 #' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Cluster = list(
-#'     BackupPolicy = "DEFAULT",
-#'     BackupRetentionPolicy = list(
-#'       Type = "DAYS",
-#'       Value = "string"
-#'     ),
-#'     ClusterId = "string",
-#'     CreateTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Hsms = list(
-#'       list(
-#'         AvailabilityZone = "string",
-#'         ClusterId = "string",
-#'         SubnetId = "string",
-#'         EniId = "string",
-#'         EniIp = "string",
-#'         HsmId = "string",
-#'         State = "CREATE_IN_PROGRESS"|"ACTIVE"|"DEGRADED"|"DELETE_IN_PROGRESS"|"DELETED",
-#'         StateMessage = "string"
-#'       )
-#'     ),
-#'     HsmType = "string",
-#'     PreCoPassword = "string",
-#'     SecurityGroup = "string",
-#'     SourceBackupId = "string",
-#'     State = "CREATE_IN_PROGRESS"|"UNINITIALIZED"|"INITIALIZE_IN_PROGRESS"|"INITIALIZED"|"ACTIVE"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DEGRADED",
-#'     StateMessage = "string",
-#'     SubnetMapping = list(
-#'       "string"
-#'     ),
-#'     VpcId = "string",
-#'     Certificates = list(
-#'       ClusterCsr = "string",
-#'       HsmCertificate = "string",
-#'       AwsHardwareCertificate = "string",
-#'       ManufacturerHardwareCertificate = "string",
-#'       ClusterCertificate = "string"
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_cluster(
-#'   BackupRetentionPolicy = list(
-#'     Type = "DAYS",
-#'     Value = "string"
-#'   ),
-#'   ClusterId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1015,53 +457,12 @@ cloudhsmv2_modify_cluster <- function(BackupRetentionPolicy, ClusterId) {
 #' state
 #'
 #' @description
-#' Restores a specified AWS CloudHSM backup that is in the
-#' `PENDING_DELETION` state. For mor information on deleting a backup, see
-#' [`delete_backup`][cloudhsmv2_delete_backup].
+#' Restores a specified AWS CloudHSM backup that is in the `PENDING_DELETION` state. For mor information on deleting a backup, see [`delete_backup`][cloudhsmv2_delete_backup].
 #'
-#' @usage
-#' cloudhsmv2_restore_backup(BackupId)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/restore_backup.html](https://paws-r.github.io/docs/cloudhsmv2/restore_backup.html) for full documentation.
 #'
 #' @param BackupId &#91;required&#93; The ID of the backup to be restored. To find the ID of a backup, use the
 #' [`describe_backups`][cloudhsmv2_describe_backups] operation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Backup = list(
-#'     BackupId = "string",
-#'     BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
-#'     ClusterId = "string",
-#'     CreateTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CopyTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     NeverExpires = TRUE|FALSE,
-#'     SourceRegion = "string",
-#'     SourceBackup = "string",
-#'     SourceCluster = "string",
-#'     DeleteTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     TagList = list(
-#'       list(
-#'         Key = "string",
-#'         Value = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_backup(
-#'   BackupId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1087,32 +488,14 @@ cloudhsmv2_restore_backup <- function(BackupId) {
 #' cluster
 #'
 #' @description
-#' Adds or overwrites one or more tags for the specified AWS CloudHSM
-#' cluster.
+#' Adds or overwrites one or more tags for the specified AWS CloudHSM cluster.
 #'
-#' @usage
-#' cloudhsmv2_tag_resource(ResourceId, TagList)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/tag_resource.html](https://paws-r.github.io/docs/cloudhsmv2/tag_resource.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster that you are tagging. To
 #' find the cluster ID, use
 #' [`describe_clusters`][cloudhsmv2_describe_clusters].
 #' @param TagList &#91;required&#93; A list of one or more tags.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceId = "string",
-#'   TagList = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1138,30 +521,15 @@ cloudhsmv2_tag_resource <- function(ResourceId, TagList) {
 #' cluster
 #'
 #' @description
-#' Removes the specified tag or tags from the specified AWS CloudHSM
-#' cluster.
+#' Removes the specified tag or tags from the specified AWS CloudHSM cluster.
 #'
-#' @usage
-#' cloudhsmv2_untag_resource(ResourceId, TagKeyList)
+#' See [https://paws-r.github.io/docs/cloudhsmv2/untag_resource.html](https://paws-r.github.io/docs/cloudhsmv2/untag_resource.html) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster whose tags you are removing.
 #' To find the cluster ID, use
 #' [`describe_clusters`][cloudhsmv2_describe_clusters].
 #' @param TagKeyList &#91;required&#93; A list of one or more tag keys for the tags that you are removing.
 #' Specify only the tag keys, not the tag values.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceId = "string",
-#'   TagKeyList = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

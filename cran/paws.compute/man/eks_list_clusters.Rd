@@ -2,10 +2,10 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_list_clusters}
 \alias{eks_list_clusters}
-\title{Lists the Amazon EKS clusters in your AWS account in the specified
-Region}
+\title{Lists the Amazon EKS clusters in your Amazon Web Services account in the
+specified Region}
 \usage{
-eks_list_clusters(maxResults, nextToken)
+eks_list_clusters(maxResults = NULL, nextToken = NULL, include = NULL)
 }
 \arguments{
 \item{maxResults}{The maximum number of cluster results returned by
@@ -27,34 +27,14 @@ continues from the end of the previous results that returned the
 This token should be treated as an opaque identifier that is used only
 to retrieve the next items in a list and not for other programmatic
 purposes.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  clusters = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
+
+\item{include}{Indicates whether external clusters are included in the returned list.
+Use '\code{all}' to return connected clusters, or blank to return only Amazon
+EKS clusters. '\code{all}' must be in lowercase otherwise an error occurs.}
 }
 \description{
-Lists the Amazon EKS clusters in your AWS account in the specified
-Region.
-}
-\section{Request syntax}{
-\preformatted{svc$list_clusters(
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
+Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Region.
 
-\examples{
-\dontrun{
-# This example command lists all of your available clusters in your
-# default region.
-svc$list_clusters()
-}
-
+See \url{https://paws-r.github.io/docs/eks/list_clusters.html} for full documentation.
 }
 \keyword{internal}

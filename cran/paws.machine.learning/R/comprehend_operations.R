@@ -7,52 +7,14 @@ NULL
 #' documents
 #'
 #' @description
-#' Determines the dominant language of the input text for a batch of
-#' documents. For a list of languages that Amazon Comprehend can detect,
-#' see [Amazon Comprehend Supported
-#' Languages](https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
+#' Determines the dominant language of the input text for a batch of documents. For a list of languages that Amazon Comprehend can detect, see [Amazon Comprehend Supported Languages](https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
 #'
-#' @usage
-#' comprehend_batch_detect_dominant_language(TextList)
+#' See [https://paws-r.github.io/docs/comprehend/batch_detect_dominant_language.html](https://paws-r.github.io/docs/comprehend/batch_detect_dominant_language.html) for full documentation.
 #'
 #' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
 #' a maximum of 25 documents. Each document should contain at least 20
 #' characters and must contain fewer than 5,000 bytes of UTF-8 encoded
 #' characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResultList = list(
-#'     list(
-#'       Index = 123,
-#'       Languages = list(
-#'         list(
-#'           LanguageCode = "string",
-#'           Score = 123.0
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ErrorList = list(
-#'     list(
-#'       Index = 123,
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_detect_dominant_language(
-#'   TextList = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -78,12 +40,9 @@ comprehend_batch_detect_dominant_language <- function(TextList) {
 #' information about them
 #'
 #' @description
-#' Inspects the text of a batch of documents for named entities and returns
-#' information about them. For more information about named entities, see
-#' how-entities
+#' Inspects the text of a batch of documents for named entities and returns information about them. For more information about named entities, see how-entities
 #'
-#' @usage
-#' comprehend_batch_detect_entities(TextList, LanguageCode)
+#' See [https://paws-r.github.io/docs/comprehend/batch_detect_entities.html](https://paws-r.github.io/docs/comprehend/batch_detect_entities.html) for full documentation.
 #'
 #' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
 #' a maximum of 25 documents. Each document must contain fewer than 5,000
@@ -91,44 +50,6 @@ comprehend_batch_detect_dominant_language <- function(TextList) {
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResultList = list(
-#'     list(
-#'       Index = 123,
-#'       Entities = list(
-#'         list(
-#'           Score = 123.0,
-#'           Type = "PERSON"|"LOCATION"|"ORGANIZATION"|"COMMERCIAL_ITEM"|"EVENT"|"DATE"|"QUANTITY"|"TITLE"|"OTHER",
-#'           Text = "string",
-#'           BeginOffset = 123,
-#'           EndOffset = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ErrorList = list(
-#'     list(
-#'       Index = 123,
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_detect_entities(
-#'   TextList = list(
-#'     "string"
-#'   ),
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -155,52 +76,14 @@ comprehend_batch_detect_entities <- function(TextList, LanguageCode) {
 #' @description
 #' Detects the key noun phrases found in a batch of documents.
 #'
-#' @usage
-#' comprehend_batch_detect_key_phrases(TextList, LanguageCode)
+#' See [https://paws-r.github.io/docs/comprehend/batch_detect_key_phrases.html](https://paws-r.github.io/docs/comprehend/batch_detect_key_phrases.html) for full documentation.
 #'
 #' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
-#' a maximum of 25 documents. Each document must contain fewer that 5,000
+#' a maximum of 25 documents. Each document must contain fewer than 5,000
 #' bytes of UTF-8 encoded characters.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResultList = list(
-#'     list(
-#'       Index = 123,
-#'       KeyPhrases = list(
-#'         list(
-#'           Score = 123.0,
-#'           Text = "string",
-#'           BeginOffset = 123,
-#'           EndOffset = 123
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ErrorList = list(
-#'     list(
-#'       Index = 123,
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_detect_key_phrases(
-#'   TextList = list(
-#'     "string"
-#'   ),
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -226,11 +109,9 @@ comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
 #' sentiment, POSITIVE, NEUTRAL, MIXED, or NEGATIVE, in each one
 #'
 #' @description
-#' Inspects a batch of documents and returns an inference of the prevailing
-#' sentiment, `POSITIVE`, `NEUTRAL`, `MIXED`, or `NEGATIVE`, in each one.
+#' Inspects a batch of documents and returns an inference of the prevailing sentiment, `POSITIVE`, `NEUTRAL`, `MIXED`, or `NEGATIVE`, in each one.
 #'
-#' @usage
-#' comprehend_batch_detect_sentiment(TextList, LanguageCode)
+#' See [https://paws-r.github.io/docs/comprehend/batch_detect_sentiment.html](https://paws-r.github.io/docs/comprehend/batch_detect_sentiment.html) for full documentation.
 #'
 #' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
 #' a maximum of 25 documents. Each document must contain fewer that 5,000
@@ -238,42 +119,6 @@ comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResultList = list(
-#'     list(
-#'       Index = 123,
-#'       Sentiment = "POSITIVE"|"NEGATIVE"|"NEUTRAL"|"MIXED",
-#'       SentimentScore = list(
-#'         Positive = 123.0,
-#'         Negative = 123.0,
-#'         Neutral = 123.0,
-#'         Mixed = 123.0
-#'       )
-#'     )
-#'   ),
-#'   ErrorList = list(
-#'     list(
-#'       Index = 123,
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_detect_sentiment(
-#'   TextList = list(
-#'     "string"
-#'   ),
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -299,12 +144,9 @@ comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
 #' speech of the words in the document and returns information about them
 #'
 #' @description
-#' Inspects the text of a batch of documents for the syntax and part of
-#' speech of the words in the document and returns information about them.
-#' For more information, see how-syntax.
+#' Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them. For more information, see how-syntax.
 #'
-#' @usage
-#' comprehend_batch_detect_syntax(TextList, LanguageCode)
+#' See [https://paws-r.github.io/docs/comprehend/batch_detect_syntax.html](https://paws-r.github.io/docs/comprehend/batch_detect_syntax.html) for full documentation.
 #'
 #' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
 #' a maximum of 25 documents. Each document must contain fewer that 5,000
@@ -313,47 +155,6 @@ comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
 #' following languages supported by Amazon Comprehend: German ("de"),
 #' English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
 #' Portuguese ("pt"). All documents must be in the same language.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResultList = list(
-#'     list(
-#'       Index = 123,
-#'       SyntaxTokens = list(
-#'         list(
-#'           TokenId = 123,
-#'           Text = "string",
-#'           BeginOffset = 123,
-#'           EndOffset = 123,
-#'           PartOfSpeech = list(
-#'             Tag = "ADJ"|"ADP"|"ADV"|"AUX"|"CONJ"|"CCONJ"|"DET"|"INTJ"|"NOUN"|"NUM"|"O"|"PART"|"PRON"|"PROPN"|"PUNCT"|"SCONJ"|"SYM"|"VERB",
-#'             Score = 123.0
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ErrorList = list(
-#'     list(
-#'       Index = 123,
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_detect_syntax(
-#'   TextList = list(
-#'     "string"
-#'   ),
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -380,42 +181,14 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #' model and an endpoint
 #'
 #' @description
-#' Creates a new document classification request to analyze a single
-#' document in real-time, using a previously created and trained custom
-#' model and an endpoint.
+#' Creates a new document classification request to analyze a single document in real-time, using a previously created and trained custom model and an endpoint.
 #'
-#' @usage
-#' comprehend_classify_document(Text, EndpointArn)
+#' See [https://paws-r.github.io/docs/comprehend/classify_document.html](https://paws-r.github.io/docs/comprehend/classify_document.html) for full documentation.
 #'
 #' @param Text &#91;required&#93; The document text to be analyzed.
-#' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Classes = list(
-#'     list(
-#'       Name = "string",
-#'       Score = 123.0
-#'     )
-#'   ),
-#'   Labels = list(
-#'     list(
-#'       Name = "string",
-#'       Score = 123.0
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$classify_document(
-#'   Text = "string",
-#'   EndpointArn = "string"
-#' )
-#' ```
+#' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint. For information about
+#' endpoints, see [Managing
+#' endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
 #'
 #' @keywords internal
 #'
@@ -437,23 +210,55 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 }
 .comprehend$operations$classify_document <- comprehend_classify_document
 
+#' Analyzes input text for the presence of personally identifiable
+#' information (PII) and returns the labels of identified PII entity types
+#' such as name, address, bank account number, or phone number
+#'
+#' @description
+#' Analyzes input text for the presence of personally identifiable information (PII) and returns the labels of identified PII entity types such as name, address, bank account number, or phone number.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/contains_pii_entities.html](https://paws-r.github.io/docs/comprehend/contains_pii_entities.html) for full documentation.
+#'
+#' @param Text &#91;required&#93; Creates a new document classification request to analyze a single
+#' document in real-time, returning personally identifiable information
+#' (PII) entity labels.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
+#' valid language.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_contains_pii_entities
+comprehend_contains_pii_entities <- function(Text, LanguageCode) {
+  op <- new_operation(
+    name = "ContainsPiiEntities",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$contains_pii_entities_input(Text = Text, LanguageCode = LanguageCode)
+  output <- .comprehend$contains_pii_entities_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$contains_pii_entities <- comprehend_contains_pii_entities
+
 #' Creates a new document classifier that you can use to categorize
 #' documents
 #'
 #' @description
-#' Creates a new document classifier that you can use to categorize
-#' documents. To create a classifier, you provide a set of training
-#' documents that labeled with the categories that you want to use. After
-#' the classifier is trained you can use it to categorize a set of labeled
-#' documents into the categories. For more information, see
-#' how-document-classification.
+#' Creates a new document classifier that you can use to categorize documents. To create a classifier, you provide a set of training documents that labeled with the categories that you want to use. After the classifier is trained you can use it to categorize a set of labeled documents into the categories. For more information, see how-document-classification.
 #'
-#' @usage
-#' comprehend_create_document_classifier(DocumentClassifierName,
-#'   DataAccessRoleArn, Tags, InputDataConfig, OutputDataConfig,
-#'   ClientRequestToken, LanguageCode, VolumeKmsKeyId, VpcConfig, Mode)
+#' See [https://paws-r.github.io/docs/comprehend/create_document_classifier.html](https://paws-r.github.io/docs/comprehend/create_document_classifier.html) for full documentation.
 #'
 #' @param DocumentClassifierName &#91;required&#93; The name of the document classifier.
+#' @param VersionName The version name given to the newly created classifier. Version names
+#' can have a maximum of 256 characters. Alphanumeric characters, hyphens
+#' (-) and underscores (_) are allowed. The version name must be unique
+#' among all models with the same classifier name in the account/AWS
+#' Region.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
 #' role that grants Amazon Comprehend read access to your input data.
 #' @param Tags Tags to be associated with the document classifier being created. A tag
@@ -488,69 +293,42 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #' one or more labels for each document. In multi-label mode, multiple
 #' labels for an individual document are separated by a delimiter. The
 #' default delimiter between labels is a pipe (|).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DocumentClassifierArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_document_classifier(
-#'   DocumentClassifierName = "string",
-#'   DataAccessRoleArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   InputDataConfig = list(
-#'     DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
-#'     S3Uri = "string",
-#'     LabelDelimiter = "string",
-#'     AugmentedManifests = list(
-#'       list(
-#'         S3Uri = "string",
-#'         AttributeNames = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Uri = "string",
-#'     KmsKeyId = "string"
-#'   ),
-#'   ClientRequestToken = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'   VolumeKmsKeyId = "string",
-#'   VpcConfig = list(
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Subnets = list(
-#'       "string"
-#'     )
-#'   ),
-#'   Mode = "MULTI_CLASS"|"MULTI_LABEL"
-#' )
-#' ```
+#' @param ModelKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+#' uses to encrypt trained custom models. The ModelKmsKeyId can be either
+#' of the following formats:
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' @param ModelPolicy The resource-based policy to attach to your custom document classifier
+#' model. You can use this policy to allow another AWS account to import
+#' your custom model.
+#' 
+#' Provide your policy as a JSON body that you enter as a UTF-8 encoded
+#' string without line breaks. To provide valid JSON, enclose the attribute
+#' names and values in double quotes. If the JSON body is also enclosed in
+#' double quotes, then you must escape the double quotes that are inside
+#' the policy:
+#' 
+#' `"{\"attribute\": \"value\", \"attribute\": [\"value\"]}"`
+#' 
+#' To avoid escaping quotes, you can use single quotes to enclose the
+#' policy and double quotes to enclose the JSON names and values:
+#' 
+#' `'{"attribute": "value", "attribute": ["value"]}'`
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_create_document_classifier
-comprehend_create_document_classifier <- function(DocumentClassifierName, DataAccessRoleArn, Tags = NULL, InputDataConfig, OutputDataConfig = NULL, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL, Mode = NULL) {
+comprehend_create_document_classifier <- function(DocumentClassifierName, VersionName = NULL, DataAccessRoleArn, Tags = NULL, InputDataConfig, OutputDataConfig = NULL, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL, Mode = NULL, ModelKmsKeyId = NULL, ModelPolicy = NULL) {
   op <- new_operation(
     name = "CreateDocumentClassifier",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$create_document_classifier_input(DocumentClassifierName = DocumentClassifierName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Mode = Mode)
+  input <- .comprehend$create_document_classifier_input(DocumentClassifierName = DocumentClassifierName, VersionName = VersionName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Mode = Mode, ModelKmsKeyId = ModelKmsKeyId, ModelPolicy = ModelPolicy)
   output <- .comprehend$create_document_classifier_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -561,15 +339,13 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 .comprehend$operations$create_document_classifier <- comprehend_create_document_classifier
 
 #' Creates a model-specific endpoint for synchronous inference for a
-#' previously trained custom model
+#' previously trained custom model For information about endpoints, see
+#' Managing endpoints
 #'
 #' @description
-#' Creates a model-specific endpoint for synchronous inference for a
-#' previously trained custom model
+#' Creates a model-specific endpoint for synchronous inference for a previously trained custom model For information about endpoints, see [Managing endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
 #'
-#' @usage
-#' comprehend_create_endpoint(EndpointName, ModelArn,
-#'   DesiredInferenceUnits, ClientRequestToken, Tags)
+#' See [https://paws-r.github.io/docs/comprehend/create_endpoint.html](https://paws-r.github.io/docs/comprehend/create_endpoint.html) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; This is the descriptive suffix that becomes part of the `EndpointArn`
 #' used for all subsequent requests to this resource.
@@ -585,42 +361,21 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #' pair that adds metadata to the endpoint. For example, a tag with "Sales"
 #' as the key might be added to an endpoint to indicate its use by the
 #' sales department.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_endpoint(
-#'   EndpointName = "string",
-#'   ModelArn = "string",
-#'   DesiredInferenceUnits = 123,
-#'   ClientRequestToken = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param DataAccessRoleArn The Amazon Resource Name (ARN) of the AWS identity and Access Management
+#' (IAM) role that grants Amazon Comprehend read access to trained custom
+#' models encrypted with a customer managed key (ModelKmsKeyId).
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_create_endpoint
-comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceUnits, ClientRequestToken = NULL, Tags = NULL) {
+comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceUnits, ClientRequestToken = NULL, Tags = NULL, DataAccessRoleArn = NULL) {
   op <- new_operation(
     name = "CreateEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$create_endpoint_input(EndpointName = EndpointName, ModelArn = ModelArn, DesiredInferenceUnits = DesiredInferenceUnits, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  input <- .comprehend$create_endpoint_input(EndpointName = EndpointName, ModelArn = ModelArn, DesiredInferenceUnits = DesiredInferenceUnits, ClientRequestToken = ClientRequestToken, Tags = Tags, DataAccessRoleArn = DataAccessRoleArn)
   output <- .comprehend$create_endpoint_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -633,19 +388,18 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceU
 #' Creates an entity recognizer using submitted files
 #'
 #' @description
-#' Creates an entity recognizer using submitted files. After your
-#' [`create_entity_recognizer`][comprehend_create_entity_recognizer]
-#' request is submitted, you can check job status using the API.
+#' Creates an entity recognizer using submitted files. After your [`create_entity_recognizer`][comprehend_create_entity_recognizer] request is submitted, you can check job status using the API.
 #'
-#' @usage
-#' comprehend_create_entity_recognizer(RecognizerName, DataAccessRoleArn,
-#'   Tags, InputDataConfig, ClientRequestToken, LanguageCode, VolumeKmsKeyId,
-#'   VpcConfig)
+#' See [https://paws-r.github.io/docs/comprehend/create_entity_recognizer.html](https://paws-r.github.io/docs/comprehend/create_entity_recognizer.html) for full documentation.
 #'
 #' @param RecognizerName &#91;required&#93; The name given to the newly created recognizer. Recognizer names can be
 #' a maximum of 256 characters. Alphanumeric characters, hyphens (-) and
 #' underscores (_) are allowed. The name must be unique in the
 #' account/region.
+#' @param VersionName The version name given to the newly created recognizer. Version names
+#' can be a maximum of 256 characters. Alphanumeric characters, hyphens (-)
+#' and underscores (_) are allowed. The version name must be unique among
+#' all models with the same recognizer name in the account/ AWS Region.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
 #' role that grants Amazon Comprehend read access to your input data.
 #' @param Tags Tags to be associated with the entity recognizer being created. A tag is
@@ -674,76 +428,42 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceU
 #' (VPC) containing the resources you are using for your custom entity
 #' recognizer. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EntityRecognizerArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_entity_recognizer(
-#'   RecognizerName = "string",
-#'   DataAccessRoleArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   InputDataConfig = list(
-#'     DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
-#'     EntityTypes = list(
-#'       list(
-#'         Type = "string"
-#'       )
-#'     ),
-#'     Documents = list(
-#'       S3Uri = "string"
-#'     ),
-#'     Annotations = list(
-#'       S3Uri = "string"
-#'     ),
-#'     EntityList = list(
-#'       S3Uri = "string"
-#'     ),
-#'     AugmentedManifests = list(
-#'       list(
-#'         S3Uri = "string",
-#'         AttributeNames = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   ClientRequestToken = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'   VolumeKmsKeyId = "string",
-#'   VpcConfig = list(
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Subnets = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param ModelKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+#' uses to encrypt trained custom models. The ModelKmsKeyId can be either
+#' of the following formats
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' @param ModelPolicy The JSON resource-based policy to attach to your custom entity
+#' recognizer model. You can use this policy to allow another AWS account
+#' to import your custom model.
+#' 
+#' Provide your JSON as a UTF-8 encoded string without line breaks. To
+#' provide valid JSON for your policy, enclose the attribute names and
+#' values in double quotes. If the JSON body is also enclosed in double
+#' quotes, then you must escape the double quotes that are inside the
+#' policy:
+#' 
+#' `"{\"attribute\": \"value\", \"attribute\": [\"value\"]}"`
+#' 
+#' To avoid escaping quotes, you can use single quotes to enclose the
+#' policy and double quotes to enclose the JSON names and values:
+#' 
+#' `'{"attribute": "value", "attribute": ["value"]}'`
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_create_entity_recognizer
-comprehend_create_entity_recognizer <- function(RecognizerName, DataAccessRoleArn, Tags = NULL, InputDataConfig, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
+comprehend_create_entity_recognizer <- function(RecognizerName, VersionName = NULL, DataAccessRoleArn, Tags = NULL, InputDataConfig, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL, ModelKmsKeyId = NULL, ModelPolicy = NULL) {
   op <- new_operation(
     name = "CreateEntityRecognizer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$create_entity_recognizer_input(RecognizerName = RecognizerName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
+  input <- .comprehend$create_entity_recognizer_input(RecognizerName = RecognizerName, VersionName = VersionName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, ModelKmsKeyId = ModelKmsKeyId, ModelPolicy = ModelPolicy)
   output <- .comprehend$create_entity_recognizer_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -757,30 +477,10 @@ comprehend_create_entity_recognizer <- function(RecognizerName, DataAccessRoleAr
 #'
 #' @description
 #' Deletes a previously created document classifier
-#' 
-#' Only those classifiers that are in terminated states (IN_ERROR,
-#' TRAINED) will be deleted. If an active inference job is using the model,
-#' a `ResourceInUseException` will be returned.
-#' 
-#' This is an asynchronous action that puts the classifier into a DELETING
-#' state, and it is then removed by a background job. Once removed, the
-#' classifier disappears from your account and is no longer available for
-#' use.
 #'
-#' @usage
-#' comprehend_delete_document_classifier(DocumentClassifierArn)
+#' See [https://paws-r.github.io/docs/comprehend/delete_document_classifier.html](https://paws-r.github.io/docs/comprehend/delete_document_classifier.html) for full documentation.
 #'
 #' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the document classifier.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_document_classifier(
-#'   DocumentClassifierArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -805,23 +505,11 @@ comprehend_delete_document_classifier <- function(DocumentClassifierArn) {
 #' Deletes a model-specific endpoint for a previously-trained custom model
 #'
 #' @description
-#' Deletes a model-specific endpoint for a previously-trained custom model.
-#' All endpoints must be deleted in order for the model to be deleted.
+#' Deletes a model-specific endpoint for a previously-trained custom model. All endpoints must be deleted in order for the model to be deleted. For information about endpoints, see [Managing endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
 #'
-#' @usage
-#' comprehend_delete_endpoint(EndpointArn)
+#' See [https://paws-r.github.io/docs/comprehend/delete_endpoint.html](https://paws-r.github.io/docs/comprehend/delete_endpoint.html) for full documentation.
 #'
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint being deleted.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_endpoint(
-#'   EndpointArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -847,30 +535,10 @@ comprehend_delete_endpoint <- function(EndpointArn) {
 #'
 #' @description
 #' Deletes an entity recognizer.
-#' 
-#' Only those recognizers that are in terminated states (IN_ERROR,
-#' TRAINED) will be deleted. If an active inference job is using the model,
-#' a `ResourceInUseException` will be returned.
-#' 
-#' This is an asynchronous action that puts the recognizer into a DELETING
-#' state, and it is then removed by a background job. Once removed, the
-#' recognizer disappears from your account and is no longer available for
-#' use.
 #'
-#' @usage
-#' comprehend_delete_entity_recognizer(EntityRecognizerArn)
+#' See [https://paws-r.github.io/docs/comprehend/delete_entity_recognizer.html](https://paws-r.github.io/docs/comprehend/delete_entity_recognizer.html) for full documentation.
 #'
 #' @param EntityRecognizerArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the entity recognizer.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_entity_recognizer(
-#'   EntityRecognizerArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -892,62 +560,46 @@ comprehend_delete_entity_recognizer <- function(EntityRecognizerArn) {
 }
 .comprehend$operations$delete_entity_recognizer <- comprehend_delete_entity_recognizer
 
+#' Deletes a resource-based policy that is attached to a custom model
+#'
+#' @description
+#' Deletes a resource-based policy that is attached to a custom model.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/delete_resource_policy.html](https://paws-r.github.io/docs/comprehend/delete_resource_policy.html) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom model version that has the
+#' policy to delete.
+#' @param PolicyRevisionId The revision ID of the policy to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_delete_resource_policy
+comprehend_delete_resource_policy <- function(ResourceArn, PolicyRevisionId = NULL) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$delete_resource_policy_input(ResourceArn = ResourceArn, PolicyRevisionId = PolicyRevisionId)
+  output <- .comprehend$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$delete_resource_policy <- comprehend_delete_resource_policy
+
 #' Gets the properties associated with a document classification job
 #'
 #' @description
-#' Gets the properties associated with a document classification job. Use
-#' this operation to get the status of a classification job.
+#' Gets the properties associated with a document classification job. Use this operation to get the status of a classification job.
 #'
-#' @usage
-#' comprehend_describe_document_classification_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/describe_document_classification_job.html](https://paws-r.github.io/docs/comprehend/describe_document_classification_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DocumentClassificationJobProperties = list(
-#'     JobId = "string",
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     DocumentClassifierArn = "string",
-#'     InputDataConfig = list(
-#'       S3Uri = "string",
-#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Uri = "string",
-#'       KmsKeyId = "string"
-#'     ),
-#'     DataAccessRoleArn = "string",
-#'     VolumeKmsKeyId = "string",
-#'     VpcConfig = list(
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       Subnets = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_document_classification_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -974,86 +626,10 @@ comprehend_describe_document_classification_job <- function(JobId) {
 #' @description
 #' Gets the properties associated with a document classifier.
 #'
-#' @usage
-#' comprehend_describe_document_classifier(DocumentClassifierArn)
+#' See [https://paws-r.github.io/docs/comprehend/describe_document_classifier.html](https://paws-r.github.io/docs/comprehend/describe_document_classifier.html) for full documentation.
 #'
 #' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the document classifier.
 #' The operation returns this identifier in its response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DocumentClassifierProperties = list(
-#'     DocumentClassifierArn = "string",
-#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'     Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     TrainingStartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     TrainingEndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InputDataConfig = list(
-#'       DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
-#'       S3Uri = "string",
-#'       LabelDelimiter = "string",
-#'       AugmentedManifests = list(
-#'         list(
-#'           S3Uri = "string",
-#'           AttributeNames = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Uri = "string",
-#'       KmsKeyId = "string"
-#'     ),
-#'     ClassifierMetadata = list(
-#'       NumberOfLabels = 123,
-#'       NumberOfTrainedDocuments = 123,
-#'       NumberOfTestDocuments = 123,
-#'       EvaluationMetrics = list(
-#'         Accuracy = 123.0,
-#'         Precision = 123.0,
-#'         Recall = 123.0,
-#'         F1Score = 123.0,
-#'         MicroPrecision = 123.0,
-#'         MicroRecall = 123.0,
-#'         MicroF1Score = 123.0,
-#'         HammingLoss = 123.0
-#'       )
-#'     ),
-#'     DataAccessRoleArn = "string",
-#'     VolumeKmsKeyId = "string",
-#'     VpcConfig = list(
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       Subnets = list(
-#'         "string"
-#'       )
-#'     ),
-#'     Mode = "MULTI_CLASS"|"MULTI_LABEL"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_document_classifier(
-#'   DocumentClassifierArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1078,58 +654,12 @@ comprehend_describe_document_classifier <- function(DocumentClassifierArn) {
 #' Gets the properties associated with a dominant language detection job
 #'
 #' @description
-#' Gets the properties associated with a dominant language detection job.
-#' Use this operation to get the status of a detection job.
+#' Gets the properties associated with a dominant language detection job. Use this operation to get the status of a detection job.
 #'
-#' @usage
-#' comprehend_describe_dominant_language_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/describe_dominant_language_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_dominant_language_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DominantLanguageDetectionJobProperties = list(
-#'     JobId = "string",
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InputDataConfig = list(
-#'       S3Uri = "string",
-#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Uri = "string",
-#'       KmsKeyId = "string"
-#'     ),
-#'     DataAccessRoleArn = "string",
-#'     VolumeKmsKeyId = "string",
-#'     VpcConfig = list(
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       Subnets = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_dominant_language_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1154,41 +684,11 @@ comprehend_describe_dominant_language_detection_job <- function(JobId) {
 #' Gets the properties associated with a specific endpoint
 #'
 #' @description
-#' Gets the properties associated with a specific endpoint. Use this
-#' operation to get the status of an endpoint.
+#' Gets the properties associated with a specific endpoint. Use this operation to get the status of an endpoint. For information about endpoints, see [Managing endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
 #'
-#' @usage
-#' comprehend_describe_endpoint(EndpointArn)
+#' See [https://paws-r.github.io/docs/comprehend/describe_endpoint.html](https://paws-r.github.io/docs/comprehend/describe_endpoint.html) for full documentation.
 #'
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint being described.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointProperties = list(
-#'     EndpointArn = "string",
-#'     Status = "CREATING"|"DELETING"|"FAILED"|"IN_SERVICE"|"UPDATING",
-#'     Message = "string",
-#'     ModelArn = "string",
-#'     DesiredInferenceUnits = 123,
-#'     CurrentInferenceUnits = 123,
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastModifiedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_endpoint(
-#'   EndpointArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1213,60 +713,12 @@ comprehend_describe_endpoint <- function(EndpointArn) {
 #' Gets the properties associated with an entities detection job
 #'
 #' @description
-#' Gets the properties associated with an entities detection job. Use this
-#' operation to get the status of a detection job.
+#' Gets the properties associated with an entities detection job. Use this operation to get the status of a detection job.
 #'
-#' @usage
-#' comprehend_describe_entities_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/describe_entities_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_entities_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EntitiesDetectionJobProperties = list(
-#'     JobId = "string",
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EntityRecognizerArn = "string",
-#'     InputDataConfig = list(
-#'       S3Uri = "string",
-#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Uri = "string",
-#'       KmsKeyId = "string"
-#'     ),
-#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'     DataAccessRoleArn = "string",
-#'     VolumeKmsKeyId = "string",
-#'     VpcConfig = list(
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       Subnets = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_entities_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1292,100 +744,11 @@ comprehend_describe_entities_detection_job <- function(JobId) {
 #' containing training data, recognizer metadata, metrics, and so on
 #'
 #' @description
-#' Provides details about an entity recognizer including status, S3 buckets
-#' containing training data, recognizer metadata, metrics, and so on.
+#' Provides details about an entity recognizer including status, S3 buckets containing training data, recognizer metadata, metrics, and so on.
 #'
-#' @usage
-#' comprehend_describe_entity_recognizer(EntityRecognizerArn)
+#' See [https://paws-r.github.io/docs/comprehend/describe_entity_recognizer.html](https://paws-r.github.io/docs/comprehend/describe_entity_recognizer.html) for full documentation.
 #'
 #' @param EntityRecognizerArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the entity recognizer.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EntityRecognizerProperties = list(
-#'     EntityRecognizerArn = "string",
-#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'     Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     TrainingStartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     TrainingEndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InputDataConfig = list(
-#'       DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
-#'       EntityTypes = list(
-#'         list(
-#'           Type = "string"
-#'         )
-#'       ),
-#'       Documents = list(
-#'         S3Uri = "string"
-#'       ),
-#'       Annotations = list(
-#'         S3Uri = "string"
-#'       ),
-#'       EntityList = list(
-#'         S3Uri = "string"
-#'       ),
-#'       AugmentedManifests = list(
-#'         list(
-#'           S3Uri = "string",
-#'           AttributeNames = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     RecognizerMetadata = list(
-#'       NumberOfTrainedDocuments = 123,
-#'       NumberOfTestDocuments = 123,
-#'       EvaluationMetrics = list(
-#'         Precision = 123.0,
-#'         Recall = 123.0,
-#'         F1Score = 123.0
-#'       ),
-#'       EntityTypes = list(
-#'         list(
-#'           Type = "string",
-#'           EvaluationMetrics = list(
-#'             Precision = 123.0,
-#'             Recall = 123.0,
-#'             F1Score = 123.0
-#'           ),
-#'           NumberOfTrainMentions = 123
-#'         )
-#'       )
-#'     ),
-#'     DataAccessRoleArn = "string",
-#'     VolumeKmsKeyId = "string",
-#'     VpcConfig = list(
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       Subnets = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_entity_recognizer(
-#'   EntityRecognizerArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1412,49 +775,9 @@ comprehend_describe_entity_recognizer <- function(EntityRecognizerArn) {
 #' @description
 #' Gets the status and details of an events detection job.
 #'
-#' @usage
-#' comprehend_describe_events_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/describe_events_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_events_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the events detection job.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventsDetectionJobProperties = list(
-#'     JobId = "string",
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InputDataConfig = list(
-#'       S3Uri = "string",
-#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Uri = "string",
-#'       KmsKeyId = "string"
-#'     ),
-#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'     DataAccessRoleArn = "string",
-#'     TargetEventTypes = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_events_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1479,59 +802,12 @@ comprehend_describe_events_detection_job <- function(JobId) {
 #' Gets the properties associated with a key phrases detection job
 #'
 #' @description
-#' Gets the properties associated with a key phrases detection job. Use
-#' this operation to get the status of a detection job.
+#' Gets the properties associated with a key phrases detection job. Use this operation to get the status of a detection job.
 #'
-#' @usage
-#' comprehend_describe_key_phrases_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/describe_key_phrases_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_key_phrases_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   KeyPhrasesDetectionJobProperties = list(
-#'     JobId = "string",
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InputDataConfig = list(
-#'       S3Uri = "string",
-#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Uri = "string",
-#'       KmsKeyId = "string"
-#'     ),
-#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'     DataAccessRoleArn = "string",
-#'     VolumeKmsKeyId = "string",
-#'     VpcConfig = list(
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       Subnets = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_key_phrases_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1556,58 +832,12 @@ comprehend_describe_key_phrases_detection_job <- function(JobId) {
 #' Gets the properties associated with a PII entities detection job
 #'
 #' @description
-#' Gets the properties associated with a PII entities detection job. For
-#' example, you can use this operation to get the job status.
+#' Gets the properties associated with a PII entities detection job. For example, you can use this operation to get the job status.
 #'
-#' @usage
-#' comprehend_describe_pii_entities_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/describe_pii_entities_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_pii_entities_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PiiEntitiesDetectionJobProperties = list(
-#'     JobId = "string",
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InputDataConfig = list(
-#'       S3Uri = "string",
-#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Uri = "string",
-#'       KmsKeyId = "string"
-#'     ),
-#'     RedactionConfig = list(
-#'       PiiEntityTypes = list(
-#'         "BANK_ACCOUNT_NUMBER"|"BANK_ROUTING"|"CREDIT_DEBIT_NUMBER"|"CREDIT_DEBIT_CVV"|"CREDIT_DEBIT_EXPIRY"|"PIN"|"EMAIL"|"ADDRESS"|"NAME"|"PHONE"|"SSN"|"DATE_TIME"|"PASSPORT_NUMBER"|"DRIVER_ID"|"URL"|"AGE"|"USERNAME"|"PASSWORD"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"IP_ADDRESS"|"MAC_ADDRESS"|"ALL"
-#'       ),
-#'       MaskMode = "MASK"|"REPLACE_WITH_PII_ENTITY_TYPE",
-#'       MaskCharacter = "string"
-#'     ),
-#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'     DataAccessRoleArn = "string",
-#'     Mode = "ONLY_REDACTION"|"ONLY_OFFSETS"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_pii_entities_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1629,62 +859,45 @@ comprehend_describe_pii_entities_detection_job <- function(JobId) {
 }
 .comprehend$operations$describe_pii_entities_detection_job <- comprehend_describe_pii_entities_detection_job
 
+#' Gets the details of a resource-based policy that is attached to a custom
+#' model, including the JSON body of the policy
+#'
+#' @description
+#' Gets the details of a resource-based policy that is attached to a custom model, including the JSON body of the policy.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/describe_resource_policy.html](https://paws-r.github.io/docs/comprehend/describe_resource_policy.html) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the policy to describe.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_describe_resource_policy
+comprehend_describe_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DescribeResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$describe_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .comprehend$describe_resource_policy_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$describe_resource_policy <- comprehend_describe_resource_policy
+
 #' Gets the properties associated with a sentiment detection job
 #'
 #' @description
-#' Gets the properties associated with a sentiment detection job. Use this
-#' operation to get the status of a detection job.
+#' Gets the properties associated with a sentiment detection job. Use this operation to get the status of a detection job.
 #'
-#' @usage
-#' comprehend_describe_sentiment_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/describe_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_sentiment_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
 #' operation returns this identifier in its response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SentimentDetectionJobProperties = list(
-#'     JobId = "string",
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InputDataConfig = list(
-#'       S3Uri = "string",
-#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Uri = "string",
-#'       KmsKeyId = "string"
-#'     ),
-#'     LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'     DataAccessRoleArn = "string",
-#'     VolumeKmsKeyId = "string",
-#'     VpcConfig = list(
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       Subnets = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_sentiment_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1706,61 +919,44 @@ comprehend_describe_sentiment_detection_job <- function(JobId) {
 }
 .comprehend$operations$describe_sentiment_detection_job <- comprehend_describe_sentiment_detection_job
 
+#' Gets the properties associated with a targeted sentiment detection job
+#'
+#' @description
+#' Gets the properties associated with a targeted sentiment detection job. Use this operation to get the status of the job.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/describe_targeted_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_targeted_sentiment_detection_job.html) for full documentation.
+#'
+#' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
+#' operation returns this identifier in its response.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_describe_targeted_sentiment_detection_job
+comprehend_describe_targeted_sentiment_detection_job <- function(JobId) {
+  op <- new_operation(
+    name = "DescribeTargetedSentimentDetectionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$describe_targeted_sentiment_detection_job_input(JobId = JobId)
+  output <- .comprehend$describe_targeted_sentiment_detection_job_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$describe_targeted_sentiment_detection_job <- comprehend_describe_targeted_sentiment_detection_job
+
 #' Gets the properties associated with a topic detection job
 #'
 #' @description
-#' Gets the properties associated with a topic detection job. Use this
-#' operation to get the status of a detection job.
+#' Gets the properties associated with a topic detection job. Use this operation to get the status of a detection job.
 #'
-#' @usage
-#' comprehend_describe_topics_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/describe_topics_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_topics_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier assigned by the user to the detection job.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TopicsDetectionJobProperties = list(
-#'     JobId = "string",
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     Message = "string",
-#'     SubmitTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InputDataConfig = list(
-#'       S3Uri = "string",
-#'       InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'     ),
-#'     OutputDataConfig = list(
-#'       S3Uri = "string",
-#'       KmsKeyId = "string"
-#'     ),
-#'     NumberOfTopics = 123,
-#'     DataAccessRoleArn = "string",
-#'     VolumeKmsKeyId = "string",
-#'     VpcConfig = list(
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       Subnets = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_topics_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1785,36 +981,12 @@ comprehend_describe_topics_detection_job <- function(JobId) {
 #' Determines the dominant language of the input text
 #'
 #' @description
-#' Determines the dominant language of the input text. For a list of
-#' languages that Amazon Comprehend can detect, see [Amazon Comprehend
-#' Supported
-#' Languages](https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
+#' Determines the dominant language of the input text. For a list of languages that Amazon Comprehend can detect, see [Amazon Comprehend Supported Languages](https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
 #'
-#' @usage
-#' comprehend_detect_dominant_language(Text)
+#' See [https://paws-r.github.io/docs/comprehend/detect_dominant_language.html](https://paws-r.github.io/docs/comprehend/detect_dominant_language.html) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string should contain at least 20 characters
 #' and must contain fewer that 5,000 bytes of UTF-8 encoded characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Languages = list(
-#'     list(
-#'       LanguageCode = "string",
-#'       Score = 123.0
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detect_dominant_language(
-#'   Text = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1839,11 +1011,9 @@ comprehend_detect_dominant_language <- function(Text) {
 #' Inspects text for named entities, and returns information about them
 #'
 #' @description
-#' Inspects text for named entities, and returns information about them.
-#' For more information, about named entities, see how-entities.
+#' Inspects text for named entities, and returns information about them. For more information, about named entities, see how-entities.
 #'
-#' @usage
-#' comprehend_detect_entities(Text, LanguageCode, EndpointArn)
+#' See [https://paws-r.github.io/docs/comprehend/detect_entities.html](https://paws-r.github.io/docs/comprehend/detect_entities.html) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
 #' UTF-8 encoded characters.
@@ -1862,31 +1032,9 @@ comprehend_detect_dominant_language <- function(Text) {
 #' If you specify an endpoint, Amazon Comprehend uses the language of your
 #' custom model, and it ignores any language code that you provide in your
 #' request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Entities = list(
-#'     list(
-#'       Score = 123.0,
-#'       Type = "PERSON"|"LOCATION"|"ORGANIZATION"|"COMMERCIAL_ITEM"|"EVENT"|"DATE"|"QUANTITY"|"TITLE"|"OTHER",
-#'       Text = "string",
-#'       BeginOffset = 123,
-#'       EndOffset = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detect_entities(
-#'   Text = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'   EndpointArn = "string"
-#' )
-#' ```
+#' 
+#' For information about endpoints, see [Managing
+#' endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
 #'
 #' @keywords internal
 #'
@@ -1913,37 +1061,13 @@ comprehend_detect_entities <- function(Text, LanguageCode = NULL, EndpointArn = 
 #' @description
 #' Detects the key noun phrases found in the text.
 #'
-#' @usage
-#' comprehend_detect_key_phrases(Text, LanguageCode)
+#' See [https://paws-r.github.io/docs/comprehend/detect_key_phrases.html](https://paws-r.github.io/docs/comprehend/detect_key_phrases.html) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
 #' UTF-8 encoded characters.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   KeyPhrases = list(
-#'     list(
-#'       Score = 123.0,
-#'       Text = "string",
-#'       BeginOffset = 123,
-#'       EndOffset = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detect_key_phrases(
-#'   Text = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1969,38 +1093,14 @@ comprehend_detect_key_phrases <- function(Text, LanguageCode) {
 #' identifiable information (PII) and returns information about them
 #'
 #' @description
-#' Inspects the input text for entities that contain personally
-#' identifiable information (PII) and returns information about them.
+#' Inspects the input text for entities that contain personally identifiable information (PII) and returns information about them.
 #'
-#' @usage
-#' comprehend_detect_pii_entities(Text, LanguageCode)
+#' See [https://paws-r.github.io/docs/comprehend/detect_pii_entities.html](https://paws-r.github.io/docs/comprehend/detect_pii_entities.html) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
 #' UTF-8 encoded characters.
-#' @param LanguageCode &#91;required&#93; The language of the input documents.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Entities = list(
-#'     list(
-#'       Score = 123.0,
-#'       Type = "BANK_ACCOUNT_NUMBER"|"BANK_ROUTING"|"CREDIT_DEBIT_NUMBER"|"CREDIT_DEBIT_CVV"|"CREDIT_DEBIT_EXPIRY"|"PIN"|"EMAIL"|"ADDRESS"|"NAME"|"PHONE"|"SSN"|"DATE_TIME"|"PASSPORT_NUMBER"|"DRIVER_ID"|"URL"|"AGE"|"USERNAME"|"PASSWORD"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"IP_ADDRESS"|"MAC_ADDRESS"|"ALL",
-#'       BeginOffset = 123,
-#'       EndOffset = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detect_pii_entities(
-#'   Text = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
-#' )
-#' ```
+#' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
+#' valid language.
 #'
 #' @keywords internal
 #'
@@ -2026,39 +1126,15 @@ comprehend_detect_pii_entities <- function(Text, LanguageCode) {
 #' (POSITIVE, NEUTRAL, MIXED, or NEGATIVE)
 #'
 #' @description
-#' Inspects text and returns an inference of the prevailing sentiment
-#' (`POSITIVE`, `NEUTRAL`, `MIXED`, or `NEGATIVE`).
+#' Inspects text and returns an inference of the prevailing sentiment (`POSITIVE`, `NEUTRAL`, `MIXED`, or `NEGATIVE`).
 #'
-#' @usage
-#' comprehend_detect_sentiment(Text, LanguageCode)
+#' See [https://paws-r.github.io/docs/comprehend/detect_sentiment.html](https://paws-r.github.io/docs/comprehend/detect_sentiment.html) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
 #' UTF-8 encoded characters.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Sentiment = "POSITIVE"|"NEGATIVE"|"NEUTRAL"|"MIXED",
-#'   SentimentScore = list(
-#'     Positive = 123.0,
-#'     Negative = 123.0,
-#'     Neutral = 123.0,
-#'     Mixed = 123.0
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detect_sentiment(
-#'   Text = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2083,11 +1159,9 @@ comprehend_detect_sentiment <- function(Text, LanguageCode) {
 #' Inspects text for syntax and the part of speech of words in the document
 #'
 #' @description
-#' Inspects text for syntax and the part of speech of words in the
-#' document. For more information, how-syntax.
+#' Inspects text for syntax and the part of speech of words in the document. For more information, how-syntax.
 #'
-#' @usage
-#' comprehend_detect_syntax(Text, LanguageCode)
+#' See [https://paws-r.github.io/docs/comprehend/detect_syntax.html](https://paws-r.github.io/docs/comprehend/detect_syntax.html) for full documentation.
 #'
 #' @param Text &#91;required&#93; A UTF-8 string. Each string must contain fewer that 5,000 bytes of UTF
 #' encoded characters.
@@ -2095,33 +1169,6 @@ comprehend_detect_sentiment <- function(Text, LanguageCode) {
 #' following languages supported by Amazon Comprehend: German ("de"),
 #' English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
 #' Portuguese ("pt").
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SyntaxTokens = list(
-#'     list(
-#'       TokenId = 123,
-#'       Text = "string",
-#'       BeginOffset = 123,
-#'       EndOffset = 123,
-#'       PartOfSpeech = list(
-#'         Tag = "ADJ"|"ADP"|"ADV"|"AUX"|"CONJ"|"CCONJ"|"DET"|"INTJ"|"NOUN"|"NUM"|"O"|"PART"|"PRON"|"PROPN"|"PUNCT"|"SCONJ"|"SYM"|"VERB",
-#'         Score = 123.0
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detect_syntax(
-#'   Text = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2143,16 +1190,66 @@ comprehend_detect_syntax <- function(Text, LanguageCode) {
 }
 .comprehend$operations$detect_syntax <- comprehend_detect_syntax
 
+#' Creates a new custom model that replicates a source custom model that
+#' you import
+#'
+#' @description
+#' Creates a new custom model that replicates a source custom model that you import. The source model can be in your AWS account or another one.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/import_model.html](https://paws-r.github.io/docs/comprehend/import_model.html) for full documentation.
+#'
+#' @param SourceModelArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom model to import.
+#' @param ModelName The name to assign to the custom model that is created in Amazon
+#' Comprehend by this import.
+#' @param VersionName The version name given to the custom model that is created by this
+#' import. Version names can have a maximum of 256 characters. Alphanumeric
+#' characters, hyphens (-) and underscores (_) are allowed. The version
+#' name must be unique among all models with the same classifier name in
+#' the account/AWS Region.
+#' @param ModelKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+#' uses to encrypt trained custom models. The ModelKmsKeyId can be either
+#' of the following formats:
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' @param DataAccessRoleArn The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
+#' role that allows Amazon Comprehend to use Amazon Key Management Service
+#' (KMS) to encrypt or decrypt the custom model.
+#' @param Tags Tags to be associated with the custom model that is created by this
+#' import. A tag is a key-value pair that adds as a metadata to a resource
+#' used by Amazon Comprehend. For example, a tag with "Sales" as the key
+#' might be added to a resource to indicate its use by the sales
+#' department.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_import_model
+comprehend_import_model <- function(SourceModelArn, ModelName = NULL, VersionName = NULL, ModelKmsKeyId = NULL, DataAccessRoleArn = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "ImportModel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$import_model_input(SourceModelArn = SourceModelArn, ModelName = ModelName, VersionName = VersionName, ModelKmsKeyId = ModelKmsKeyId, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags)
+  output <- .comprehend$import_model_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$import_model <- comprehend_import_model
+
 #' Gets a list of the documentation classification jobs that you have
 #' submitted
 #'
 #' @description
-#' Gets a list of the documentation classification jobs that you have
-#' submitted.
+#' Gets a list of the documentation classification jobs that you have submitted.
 #'
-#' @usage
-#' comprehend_list_document_classification_jobs(Filter, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/comprehend/list_document_classification_jobs.html](https://paws-r.github.io/docs/comprehend/list_document_classification_jobs.html) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their names,
 #' status, or the date and time that they were submitted. You can only set
@@ -2160,65 +1257,6 @@ comprehend_detect_syntax <- function(Text, LanguageCode) {
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DocumentClassificationJobPropertiesList = list(
-#'     list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DocumentClassifierArn = "string",
-#'       InputDataConfig = list(
-#'         S3Uri = "string",
-#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Uri = "string",
-#'         KmsKeyId = "string"
-#'       ),
-#'       DataAccessRoleArn = "string",
-#'       VolumeKmsKeyId = "string",
-#'       VpcConfig = list(
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         ),
-#'         Subnets = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_document_classification_jobs(
-#'   Filter = list(
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2240,13 +1278,44 @@ comprehend_list_document_classification_jobs <- function(Filter = NULL, NextToke
 }
 .comprehend$operations$list_document_classification_jobs <- comprehend_list_document_classification_jobs
 
+#' Gets a list of summaries of the document classifiers that you have
+#' created
+#'
+#' @description
+#' Gets a list of summaries of the document classifiers that you have created
+#'
+#' See [https://paws-r.github.io/docs/comprehend/list_document_classifier_summaries.html](https://paws-r.github.io/docs/comprehend/list_document_classifier_summaries.html) for full documentation.
+#'
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults The maximum number of results to return on each page. The default is
+#' 100.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_list_document_classifier_summaries
+comprehend_list_document_classifier_summaries <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListDocumentClassifierSummaries",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$list_document_classifier_summaries_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .comprehend$list_document_classifier_summaries_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$list_document_classifier_summaries <- comprehend_list_document_classifier_summaries
+
 #' Gets a list of the document classifiers that you have created
 #'
 #' @description
 #' Gets a list of the document classifiers that you have created.
 #'
-#' @usage
-#' comprehend_list_document_classifiers(Filter, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/comprehend/list_document_classifiers.html](https://paws-r.github.io/docs/comprehend/list_document_classifiers.html) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
@@ -2254,94 +1323,6 @@ comprehend_list_document_classification_jobs <- function(Filter = NULL, NextToke
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DocumentClassifierPropertiesList = list(
-#'     list(
-#'       DocumentClassifierArn = "string",
-#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'       Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       TrainingStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       TrainingEndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputDataConfig = list(
-#'         DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
-#'         S3Uri = "string",
-#'         LabelDelimiter = "string",
-#'         AugmentedManifests = list(
-#'           list(
-#'             S3Uri = "string",
-#'             AttributeNames = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Uri = "string",
-#'         KmsKeyId = "string"
-#'       ),
-#'       ClassifierMetadata = list(
-#'         NumberOfLabels = 123,
-#'         NumberOfTrainedDocuments = 123,
-#'         NumberOfTestDocuments = 123,
-#'         EvaluationMetrics = list(
-#'           Accuracy = 123.0,
-#'           Precision = 123.0,
-#'           Recall = 123.0,
-#'           F1Score = 123.0,
-#'           MicroPrecision = 123.0,
-#'           MicroRecall = 123.0,
-#'           MicroF1Score = 123.0,
-#'           HammingLoss = 123.0
-#'         )
-#'       ),
-#'       DataAccessRoleArn = "string",
-#'       VolumeKmsKeyId = "string",
-#'       VpcConfig = list(
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         ),
-#'         Subnets = list(
-#'           "string"
-#'         )
-#'       ),
-#'       Mode = "MULTI_CLASS"|"MULTI_LABEL"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_document_classifiers(
-#'   Filter = list(
-#'     Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2367,12 +1348,9 @@ comprehend_list_document_classifiers <- function(Filter = NULL, NextToken = NULL
 #' submitted
 #'
 #' @description
-#' Gets a list of the dominant language detection jobs that you have
-#' submitted.
+#' Gets a list of the dominant language detection jobs that you have submitted.
 #'
-#' @usage
-#' comprehend_list_dominant_language_detection_jobs(Filter, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/comprehend/list_dominant_language_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_dominant_language_detection_jobs.html) for full documentation.
 #'
 #' @param Filter Filters that jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
@@ -2380,64 +1358,6 @@ comprehend_list_document_classifiers <- function(Filter = NULL, NextToken = NULL
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DominantLanguageDetectionJobPropertiesList = list(
-#'     list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputDataConfig = list(
-#'         S3Uri = "string",
-#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Uri = "string",
-#'         KmsKeyId = "string"
-#'       ),
-#'       DataAccessRoleArn = "string",
-#'       VolumeKmsKeyId = "string",
-#'       VpcConfig = list(
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         ),
-#'         Subnets = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_dominant_language_detection_jobs(
-#'   Filter = list(
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2462,10 +1382,9 @@ comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, Next
 #' Gets a list of all existing endpoints that you've created
 #'
 #' @description
-#' Gets a list of all existing endpoints that you've created.
+#' Gets a list of all existing endpoints that you've created. For information about endpoints, see [Managing endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
 #'
-#' @usage
-#' comprehend_list_endpoints(Filter, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/comprehend/list_endpoints.html](https://paws-r.github.io/docs/comprehend/list_endpoints.html) for full documentation.
 #'
 #' @param Filter Filters the endpoints that are returned. You can filter endpoints on
 #' their name, model, status, or the date and time that they were created.
@@ -2473,48 +1392,6 @@ comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, Next
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EndpointPropertiesList = list(
-#'     list(
-#'       EndpointArn = "string",
-#'       Status = "CREATING"|"DELETING"|"FAILED"|"IN_SERVICE"|"UPDATING",
-#'       Message = "string",
-#'       ModelArn = "string",
-#'       DesiredInferenceUnits = 123,
-#'       CurrentInferenceUnits = 123,
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastModifiedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_endpoints(
-#'   Filter = list(
-#'     ModelArn = "string",
-#'     Status = "CREATING"|"DELETING"|"FAILED"|"IN_SERVICE"|"UPDATING",
-#'     CreationTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CreationTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2541,8 +1418,7 @@ comprehend_list_endpoints <- function(Filter = NULL, NextToken = NULL, MaxResult
 #' @description
 #' Gets a list of the entity detection jobs that you have submitted.
 #'
-#' @usage
-#' comprehend_list_entities_detection_jobs(Filter, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/comprehend/list_entities_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_entities_detection_jobs.html) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
@@ -2550,66 +1426,6 @@ comprehend_list_endpoints <- function(Filter = NULL, NextToken = NULL, MaxResult
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EntitiesDetectionJobPropertiesList = list(
-#'     list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EntityRecognizerArn = "string",
-#'       InputDataConfig = list(
-#'         S3Uri = "string",
-#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Uri = "string",
-#'         KmsKeyId = "string"
-#'       ),
-#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'       DataAccessRoleArn = "string",
-#'       VolumeKmsKeyId = "string",
-#'       VpcConfig = list(
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         ),
-#'         Subnets = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_entities_detection_jobs(
-#'   Filter = list(
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2631,21 +1447,45 @@ comprehend_list_entities_detection_jobs <- function(Filter = NULL, NextToken = N
 }
 .comprehend$operations$list_entities_detection_jobs <- comprehend_list_entities_detection_jobs
 
+#' Gets a list of summaries for the entity recognizers that you have
+#' created
+#'
+#' @description
+#' Gets a list of summaries for the entity recognizers that you have created.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/list_entity_recognizer_summaries.html](https://paws-r.github.io/docs/comprehend/list_entity_recognizer_summaries.html) for full documentation.
+#'
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults The maximum number of results to return on each page. The default is
+#' 100.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_list_entity_recognizer_summaries
+comprehend_list_entity_recognizer_summaries <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListEntityRecognizerSummaries",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$list_entity_recognizer_summaries_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .comprehend$list_entity_recognizer_summaries_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$list_entity_recognizer_summaries <- comprehend_list_entity_recognizer_summaries
+
 #' Gets a list of the properties of all entity recognizers that you
 #' created, including recognizers currently in training
 #'
 #' @description
-#' Gets a list of the properties of all entity recognizers that you
-#' created, including recognizers currently in training. Allows you to
-#' filter the list of recognizers based on criteria such as status and
-#' submission time. This call returns up to 500 entity recognizers in the
-#' list, with a default number of 100 recognizers in the list.
-#' 
-#' The results of this list are not in any particular order. Please get the
-#' list and sort locally if needed.
+#' Gets a list of the properties of all entity recognizers that you created, including recognizers currently in training. Allows you to filter the list of recognizers based on criteria such as status and submission time. This call returns up to 500 entity recognizers in the list, with a default number of 100 recognizers in the list.
 #'
-#' @usage
-#' comprehend_list_entity_recognizers(Filter, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/comprehend/list_entity_recognizers.html](https://paws-r.github.io/docs/comprehend/list_entity_recognizers.html) for full documentation.
 #'
 #' @param Filter Filters the list of entities returned. You can filter on `Status`,
 #' `SubmitTimeBefore`, or `SubmitTimeAfter`. You can only set one filter at
@@ -2653,106 +1493,6 @@ comprehend_list_entities_detection_jobs <- function(Filter = NULL, NextToken = N
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return on each page. The default is
 #' 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EntityRecognizerPropertiesList = list(
-#'     list(
-#'       EntityRecognizerArn = "string",
-#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'       Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       TrainingStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       TrainingEndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputDataConfig = list(
-#'         DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
-#'         EntityTypes = list(
-#'           list(
-#'             Type = "string"
-#'           )
-#'         ),
-#'         Documents = list(
-#'           S3Uri = "string"
-#'         ),
-#'         Annotations = list(
-#'           S3Uri = "string"
-#'         ),
-#'         EntityList = list(
-#'           S3Uri = "string"
-#'         ),
-#'         AugmentedManifests = list(
-#'           list(
-#'             S3Uri = "string",
-#'             AttributeNames = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       RecognizerMetadata = list(
-#'         NumberOfTrainedDocuments = 123,
-#'         NumberOfTestDocuments = 123,
-#'         EvaluationMetrics = list(
-#'           Precision = 123.0,
-#'           Recall = 123.0,
-#'           F1Score = 123.0
-#'         ),
-#'         EntityTypes = list(
-#'           list(
-#'             Type = "string",
-#'             EvaluationMetrics = list(
-#'               Precision = 123.0,
-#'               Recall = 123.0,
-#'               F1Score = 123.0
-#'             ),
-#'             NumberOfTrainMentions = 123
-#'           )
-#'         )
-#'       ),
-#'       DataAccessRoleArn = "string",
-#'       VolumeKmsKeyId = "string",
-#'       VpcConfig = list(
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         ),
-#'         Subnets = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_entity_recognizers(
-#'   Filter = list(
-#'     Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2779,67 +1519,13 @@ comprehend_list_entity_recognizers <- function(Filter = NULL, NextToken = NULL, 
 #' @description
 #' Gets a list of the events detection jobs that you have submitted.
 #'
-#' @usage
-#' comprehend_list_events_detection_jobs(Filter, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/comprehend/list_events_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_events_detection_jobs.html) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
 #' one filter at a time.
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventsDetectionJobPropertiesList = list(
-#'     list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputDataConfig = list(
-#'         S3Uri = "string",
-#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Uri = "string",
-#'         KmsKeyId = "string"
-#'       ),
-#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'       DataAccessRoleArn = "string",
-#'       TargetEventTypes = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_events_detection_jobs(
-#'   Filter = list(
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2866,9 +1552,7 @@ comprehend_list_events_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' @description
 #' Get a list of key phrase detection jobs that you have submitted.
 #'
-#' @usage
-#' comprehend_list_key_phrases_detection_jobs(Filter, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/comprehend/list_key_phrases_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_key_phrases_detection_jobs.html) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
@@ -2876,65 +1560,6 @@ comprehend_list_events_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   KeyPhrasesDetectionJobPropertiesList = list(
-#'     list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputDataConfig = list(
-#'         S3Uri = "string",
-#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Uri = "string",
-#'         KmsKeyId = "string"
-#'       ),
-#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'       DataAccessRoleArn = "string",
-#'       VolumeKmsKeyId = "string",
-#'       VpcConfig = list(
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         ),
-#'         Subnets = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_key_phrases_detection_jobs(
-#'   Filter = list(
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2961,73 +1586,13 @@ comprehend_list_key_phrases_detection_jobs <- function(Filter = NULL, NextToken 
 #' @description
 #' Gets a list of the PII entity detection jobs that you have submitted.
 #'
-#' @usage
-#' comprehend_list_pii_entities_detection_jobs(Filter, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/comprehend/list_pii_entities_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_pii_entities_detection_jobs.html) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
 #' one filter at a time.
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PiiEntitiesDetectionJobPropertiesList = list(
-#'     list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputDataConfig = list(
-#'         S3Uri = "string",
-#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Uri = "string",
-#'         KmsKeyId = "string"
-#'       ),
-#'       RedactionConfig = list(
-#'         PiiEntityTypes = list(
-#'           "BANK_ACCOUNT_NUMBER"|"BANK_ROUTING"|"CREDIT_DEBIT_NUMBER"|"CREDIT_DEBIT_CVV"|"CREDIT_DEBIT_EXPIRY"|"PIN"|"EMAIL"|"ADDRESS"|"NAME"|"PHONE"|"SSN"|"DATE_TIME"|"PASSPORT_NUMBER"|"DRIVER_ID"|"URL"|"AGE"|"USERNAME"|"PASSWORD"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"IP_ADDRESS"|"MAC_ADDRESS"|"ALL"
-#'         ),
-#'         MaskMode = "MASK"|"REPLACE_WITH_PII_ENTITY_TYPE",
-#'         MaskCharacter = "string"
-#'       ),
-#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'       DataAccessRoleArn = "string",
-#'       Mode = "ONLY_REDACTION"|"ONLY_OFFSETS"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_pii_entities_detection_jobs(
-#'   Filter = list(
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3054,8 +1619,7 @@ comprehend_list_pii_entities_detection_jobs <- function(Filter = NULL, NextToken
 #' @description
 #' Gets a list of sentiment detection jobs that you have submitted.
 #'
-#' @usage
-#' comprehend_list_sentiment_detection_jobs(Filter, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/comprehend/list_sentiment_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_sentiment_detection_jobs.html) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
 #' status, or the date and time that they were submitted. You can only set
@@ -3063,65 +1627,6 @@ comprehend_list_pii_entities_detection_jobs <- function(Filter = NULL, NextToken
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SentimentDetectionJobPropertiesList = list(
-#'     list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputDataConfig = list(
-#'         S3Uri = "string",
-#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Uri = "string",
-#'         KmsKeyId = "string"
-#'       ),
-#'       LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'       DataAccessRoleArn = "string",
-#'       VolumeKmsKeyId = "string",
-#'       VpcConfig = list(
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         ),
-#'         Subnets = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_sentiment_detection_jobs(
-#'   Filter = list(
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3148,32 +1653,10 @@ comprehend_list_sentiment_detection_jobs <- function(Filter = NULL, NextToken = 
 #' @description
 #' Lists all tags associated with a given Amazon Comprehend resource.
 #'
-#' @usage
-#' comprehend_list_tags_for_resource(ResourceArn)
+#' See [https://paws-r.github.io/docs/comprehend/list_tags_for_resource.html](https://paws-r.github.io/docs/comprehend/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Comprehend resource
 #' you are querying.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3195,13 +1678,46 @@ comprehend_list_tags_for_resource <- function(ResourceArn) {
 }
 .comprehend$operations$list_tags_for_resource <- comprehend_list_tags_for_resource
 
+#' Gets a list of targeted sentiment detection jobs that you have submitted
+#'
+#' @description
+#' Gets a list of targeted sentiment detection jobs that you have submitted.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/list_targeted_sentiment_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_targeted_sentiment_detection_jobs.html) for full documentation.
+#'
+#' @param Filter Filters the jobs that are returned. You can filter jobs on their name,
+#' status, or the date and time that they were submitted. You can only set
+#' one filter at a time.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults The maximum number of results to return in each page. The default is
+#' 100.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_list_targeted_sentiment_detection_jobs
+comprehend_list_targeted_sentiment_detection_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListTargetedSentimentDetectionJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$list_targeted_sentiment_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .comprehend$list_targeted_sentiment_detection_jobs_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$list_targeted_sentiment_detection_jobs <- comprehend_list_targeted_sentiment_detection_jobs
+
 #' Gets a list of the topic detection jobs that you have submitted
 #'
 #' @description
 #' Gets a list of the topic detection jobs that you have submitted.
 #'
-#' @usage
-#' comprehend_list_topics_detection_jobs(Filter, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/comprehend/list_topics_detection_jobs.html](https://paws-r.github.io/docs/comprehend/list_topics_detection_jobs.html) for full documentation.
 #'
 #' @param Filter Filters the jobs that are returned. Jobs can be filtered on their name,
 #' status, or the date and time that they were submitted. You can set only
@@ -3209,65 +1725,6 @@ comprehend_list_tags_for_resource <- function(ResourceArn) {
 #' @param NextToken Identifies the next page of results to return.
 #' @param MaxResults The maximum number of results to return in each page. The default is
 #' 100.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TopicsDetectionJobPropertiesList = list(
-#'     list(
-#'       JobId = "string",
-#'       JobName = "string",
-#'       JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'       Message = "string",
-#'       SubmitTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InputDataConfig = list(
-#'         S3Uri = "string",
-#'         InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'       ),
-#'       OutputDataConfig = list(
-#'         S3Uri = "string",
-#'         KmsKeyId = "string"
-#'       ),
-#'       NumberOfTopics = 123,
-#'       DataAccessRoleArn = "string",
-#'       VolumeKmsKeyId = "string",
-#'       VpcConfig = list(
-#'         SecurityGroupIds = list(
-#'           "string"
-#'         ),
-#'         Subnets = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_topics_detection_jobs(
-#'   Filter = list(
-#'     JobName = "string",
-#'     JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED",
-#'     SubmitTimeBefore = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SubmitTimeAfter = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3289,16 +1746,58 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 }
 .comprehend$operations$list_topics_detection_jobs <- comprehend_list_topics_detection_jobs
 
+#' Attaches a resource-based policy to a custom model
+#'
+#' @description
+#' Attaches a resource-based policy to a custom model. You can use this policy to authorize an entity in another AWS account to import the custom model, which replicates it in Amazon Comprehend in their account.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/put_resource_policy.html](https://paws-r.github.io/docs/comprehend/put_resource_policy.html) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom model to attach the policy
+#' to.
+#' @param ResourcePolicy &#91;required&#93; The JSON resource-based policy to attach to your custom model. Provide
+#' your JSON as a UTF-8 encoded string without line breaks. To provide
+#' valid JSON for your policy, enclose the attribute names and values in
+#' double quotes. If the JSON body is also enclosed in double quotes, then
+#' you must escape the double quotes that are inside the policy:
+#' 
+#' `"{\"attribute\": \"value\", \"attribute\": [\"value\"]}"`
+#' 
+#' To avoid escaping quotes, you can use single quotes to enclose the
+#' policy and double quotes to enclose the JSON names and values:
+#' 
+#' `'{"attribute": "value", "attribute": ["value"]}'`
+#' @param PolicyRevisionId The revision ID that Amazon Comprehend assigned to the policy that you
+#' are updating. If you are creating a new policy that has no prior
+#' version, don't use this parameter. Amazon Comprehend creates the
+#' revision ID for you.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_put_resource_policy
+comprehend_put_resource_policy <- function(ResourceArn, ResourcePolicy, PolicyRevisionId = NULL) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$put_resource_policy_input(ResourceArn = ResourceArn, ResourcePolicy = ResourcePolicy, PolicyRevisionId = PolicyRevisionId)
+  output <- .comprehend$put_resource_policy_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$put_resource_policy <- comprehend_put_resource_policy
+
 #' Starts an asynchronous document classification job
 #'
 #' @description
-#' Starts an asynchronous document classification job. Use the operation to
-#' track the progress of the job.
+#' Starts an asynchronous document classification job. Use the operation to track the progress of the job.
 #'
-#' @usage
-#' comprehend_start_document_classification_job(JobName,
-#'   DocumentClassifierArn, InputDataConfig, OutputDataConfig,
-#'   DataAccessRoleArn, ClientRequestToken, VolumeKmsKeyId, VpcConfig)
+#' See [https://paws-r.github.io/docs/comprehend/start_document_classification_job.html](https://paws-r.github.io/docs/comprehend/start_document_classification_job.html) for full documentation.
 #'
 #' @param JobName The identifier of the job.
 #' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) of the document classifier to use to
@@ -3322,54 +1821,22 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' (VPC) containing the resources you are using for your document
 #' classification job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_document_classification_job(
-#'   JobName = "string",
-#'   DocumentClassifierArn = "string",
-#'   InputDataConfig = list(
-#'     S3Uri = "string",
-#'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Uri = "string",
-#'     KmsKeyId = "string"
-#'   ),
-#'   DataAccessRoleArn = "string",
-#'   ClientRequestToken = "string",
-#'   VolumeKmsKeyId = "string",
-#'   VpcConfig = list(
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Subnets = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param Tags Tags to be associated with the document classification job. A tag is a
+#' key-value pair that adds metadata to a resource used by Amazon
+#' Comprehend. For example, a tag with "Sales" as the key might be added to
+#' a resource to indicate its use by the sales department.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_document_classification_job
-comprehend_start_document_classification_job <- function(JobName = NULL, DocumentClassifierArn, InputDataConfig, OutputDataConfig, DataAccessRoleArn, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
+comprehend_start_document_classification_job <- function(JobName = NULL, DocumentClassifierArn, InputDataConfig, OutputDataConfig, DataAccessRoleArn, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartDocumentClassificationJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_document_classification_job_input(JobName = JobName, DocumentClassifierArn = DocumentClassifierArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
+  input <- .comprehend$start_document_classification_job_input(JobName = JobName, DocumentClassifierArn = DocumentClassifierArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_document_classification_job_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -3383,13 +1850,9 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #' of documents
 #'
 #' @description
-#' Starts an asynchronous dominant language detection job for a collection
-#' of documents. Use the operation to track the status of a job.
+#' Starts an asynchronous dominant language detection job for a collection of documents. Use the operation to track the status of a job.
 #'
-#' @usage
-#' comprehend_start_dominant_language_detection_job(InputDataConfig,
-#'   OutputDataConfig, DataAccessRoleArn, JobName, ClientRequestToken,
-#'   VolumeKmsKeyId, VpcConfig)
+#' See [https://paws-r.github.io/docs/comprehend/start_dominant_language_detection_job.html](https://paws-r.github.io/docs/comprehend/start_dominant_language_detection_job.html) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -3413,53 +1876,22 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #' (VPC) containing the resources you are using for your dominant language
 #' detection job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_dominant_language_detection_job(
-#'   InputDataConfig = list(
-#'     S3Uri = "string",
-#'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Uri = "string",
-#'     KmsKeyId = "string"
-#'   ),
-#'   DataAccessRoleArn = "string",
-#'   JobName = "string",
-#'   ClientRequestToken = "string",
-#'   VolumeKmsKeyId = "string",
-#'   VpcConfig = list(
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Subnets = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param Tags Tags to be associated with the dominant language detection job. A tag is
+#' a key-value pair that adds metadata to a resource used by Amazon
+#' Comprehend. For example, a tag with "Sales" as the key might be added to
+#' a resource to indicate its use by the sales department.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_dominant_language_detection_job
-comprehend_start_dominant_language_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
+comprehend_start_dominant_language_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartDominantLanguageDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_dominant_language_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
+  input <- .comprehend$start_dominant_language_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_dominant_language_detection_job_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -3473,18 +1905,9 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' documents
 #'
 #' @description
-#' Starts an asynchronous entity detection job for a collection of
-#' documents. Use the operation to track the status of a job.
-#' 
-#' This API can be used for either standard entity detection or custom
-#' entity recognition. In order to be used for custom entity recognition,
-#' the optional `EntityRecognizerArn` must be used in order to provide
-#' access to the recognizer being used to detect the custom entity.
+#' Starts an asynchronous entity detection job for a collection of documents. Use the operation to track the status of a job.
 #'
-#' @usage
-#' comprehend_start_entities_detection_job(InputDataConfig,
-#'   OutputDataConfig, DataAccessRoleArn, JobName, EntityRecognizerArn,
-#'   LanguageCode, ClientRequestToken, VolumeKmsKeyId, VpcConfig)
+#' See [https://paws-r.github.io/docs/comprehend/start_entities_detection_job.html](https://paws-r.github.io/docs/comprehend/start_entities_detection_job.html) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -3517,55 +1940,22 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' (VPC) containing the resources you are using for your entity detection
 #' job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_entities_detection_job(
-#'   InputDataConfig = list(
-#'     S3Uri = "string",
-#'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Uri = "string",
-#'     KmsKeyId = "string"
-#'   ),
-#'   DataAccessRoleArn = "string",
-#'   JobName = "string",
-#'   EntityRecognizerArn = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'   ClientRequestToken = "string",
-#'   VolumeKmsKeyId = "string",
-#'   VpcConfig = list(
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Subnets = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param Tags Tags to be associated with the entities detection job. A tag is a
+#' key-value pair that adds metadata to a resource used by Amazon
+#' Comprehend. For example, a tag with "Sales" as the key might be added to
+#' a resource to indicate its use by the sales department.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_entities_detection_job
-comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, EntityRecognizerArn = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
+comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, EntityRecognizerArn = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartEntitiesDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, EntityRecognizerArn = EntityRecognizerArn, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
+  input <- .comprehend$start_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, EntityRecognizerArn = EntityRecognizerArn, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_entities_detection_job_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -3578,13 +1968,9 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #' Starts an asynchronous event detection job for a collection of documents
 #'
 #' @description
-#' Starts an asynchronous event detection job for a collection of
-#' documents.
+#' Starts an asynchronous event detection job for a collection of documents.
 #'
-#' @usage
-#' comprehend_start_events_detection_job(InputDataConfig, OutputDataConfig,
-#'   DataAccessRoleArn, JobName, LanguageCode, ClientRequestToken,
-#'   TargetEventTypes)
+#' See [https://paws-r.github.io/docs/comprehend/start_events_detection_job.html](https://paws-r.github.io/docs/comprehend/start_events_detection_job.html) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -3595,48 +1981,22 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #' @param ClientRequestToken An unique identifier for the request. If you don't set the client
 #' request token, Amazon Comprehend generates one.
 #' @param TargetEventTypes &#91;required&#93; The types of events to detect in the input documents.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_events_detection_job(
-#'   InputDataConfig = list(
-#'     S3Uri = "string",
-#'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Uri = "string",
-#'     KmsKeyId = "string"
-#'   ),
-#'   DataAccessRoleArn = "string",
-#'   JobName = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'   ClientRequestToken = "string",
-#'   TargetEventTypes = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param Tags Tags to be associated with the events detection job. A tag is a
+#' key-value pair that adds metadata to a resource used by Amazon
+#' Comprehend. For example, a tag with "Sales" as the key might be added to
+#' a resource to indicate its use by the sales department.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_events_detection_job
-comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, TargetEventTypes) {
+comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, TargetEventTypes, Tags = NULL) {
   op <- new_operation(
     name = "StartEventsDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_events_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, TargetEventTypes = TargetEventTypes)
+  input <- .comprehend$start_events_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, TargetEventTypes = TargetEventTypes, Tags = Tags)
   output <- .comprehend$start_events_detection_job_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -3650,13 +2010,9 @@ comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataCon
 #' documents
 #'
 #' @description
-#' Starts an asynchronous key phrase detection job for a collection of
-#' documents. Use the operation to track the status of a job.
+#' Starts an asynchronous key phrase detection job for a collection of documents. Use the operation to track the status of a job.
 #'
-#' @usage
-#' comprehend_start_key_phrases_detection_job(InputDataConfig,
-#'   OutputDataConfig, DataAccessRoleArn, JobName, LanguageCode,
-#'   ClientRequestToken, VolumeKmsKeyId, VpcConfig)
+#' See [https://paws-r.github.io/docs/comprehend/start_key_phrases_detection_job.html](https://paws-r.github.io/docs/comprehend/start_key_phrases_detection_job.html) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -3683,54 +2039,22 @@ comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataCon
 #' (VPC) containing the resources you are using for your key phrases
 #' detection job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_key_phrases_detection_job(
-#'   InputDataConfig = list(
-#'     S3Uri = "string",
-#'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Uri = "string",
-#'     KmsKeyId = "string"
-#'   ),
-#'   DataAccessRoleArn = "string",
-#'   JobName = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'   ClientRequestToken = "string",
-#'   VolumeKmsKeyId = "string",
-#'   VpcConfig = list(
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Subnets = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param Tags Tags to be associated with the key phrases detection job. A tag is a
+#' key-value pair that adds metadata to a resource used by Amazon
+#' Comprehend. For example, a tag with "Sales" as the key might be added to
+#' a resource to indicate its use by the sales department.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_key_phrases_detection_job
-comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
+comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartKeyPhrasesDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_key_phrases_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
+  input <- .comprehend$start_key_phrases_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_key_phrases_detection_job_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -3744,13 +2068,9 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' documents
 #'
 #' @description
-#' Starts an asynchronous PII entity detection job for a collection of
-#' documents.
+#' Starts an asynchronous PII entity detection job for a collection of documents.
 #'
-#' @usage
-#' comprehend_start_pii_entities_detection_job(InputDataConfig,
-#'   OutputDataConfig, Mode, RedactionConfig, DataAccessRoleArn, JobName,
-#'   LanguageCode, ClientRequestToken)
+#' See [https://paws-r.github.io/docs/comprehend/start_pii_entities_detection_job.html](https://paws-r.github.io/docs/comprehend/start_pii_entities_detection_job.html) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; The input properties for a PII entities detection job.
 #' @param OutputDataConfig &#91;required&#93; Provides conﬁguration parameters for the output of PII entity detection
@@ -3765,56 +2085,26 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
 #' (IAM) role that grants Amazon Comprehend read access to your input data.
 #' @param JobName The identifier of the job.
-#' @param LanguageCode &#91;required&#93; The language of the input documents.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
+#' valid language.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend generates one.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_pii_entities_detection_job(
-#'   InputDataConfig = list(
-#'     S3Uri = "string",
-#'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Uri = "string",
-#'     KmsKeyId = "string"
-#'   ),
-#'   Mode = "ONLY_REDACTION"|"ONLY_OFFSETS",
-#'   RedactionConfig = list(
-#'     PiiEntityTypes = list(
-#'       "BANK_ACCOUNT_NUMBER"|"BANK_ROUTING"|"CREDIT_DEBIT_NUMBER"|"CREDIT_DEBIT_CVV"|"CREDIT_DEBIT_EXPIRY"|"PIN"|"EMAIL"|"ADDRESS"|"NAME"|"PHONE"|"SSN"|"DATE_TIME"|"PASSPORT_NUMBER"|"DRIVER_ID"|"URL"|"AGE"|"USERNAME"|"PASSWORD"|"AWS_ACCESS_KEY"|"AWS_SECRET_KEY"|"IP_ADDRESS"|"MAC_ADDRESS"|"ALL"
-#'     ),
-#'     MaskMode = "MASK"|"REPLACE_WITH_PII_ENTITY_TYPE",
-#'     MaskCharacter = "string"
-#'   ),
-#'   DataAccessRoleArn = "string",
-#'   JobName = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'   ClientRequestToken = "string"
-#' )
-#' ```
+#' @param Tags Tags to be associated with the PII entities detection job. A tag is a
+#' key-value pair that adds metadata to a resource used by Amazon
+#' Comprehend. For example, a tag with "Sales" as the key might be added to
+#' a resource to indicate its use by the sales department.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_pii_entities_detection_job
-comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputDataConfig, Mode, RedactionConfig = NULL, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL) {
+comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputDataConfig, Mode, RedactionConfig = NULL, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartPiiEntitiesDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_pii_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, Mode = Mode, RedactionConfig = RedactionConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken)
+  input <- .comprehend$start_pii_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, Mode = Mode, RedactionConfig = RedactionConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .comprehend$start_pii_entities_detection_job_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -3828,13 +2118,9 @@ comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputD
 #' documents
 #'
 #' @description
-#' Starts an asynchronous sentiment detection job for a collection of
-#' documents. use the operation to track the status of a job.
+#' Starts an asynchronous sentiment detection job for a collection of documents. Use the operation to track the status of a job.
 #'
-#' @usage
-#' comprehend_start_sentiment_detection_job(InputDataConfig,
-#'   OutputDataConfig, DataAccessRoleArn, JobName, LanguageCode,
-#'   ClientRequestToken, VolumeKmsKeyId, VpcConfig)
+#' See [https://paws-r.github.io/docs/comprehend/start_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/start_sentiment_detection_job.html) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
@@ -3861,54 +2147,22 @@ comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputD
 #' (VPC) containing the resources you are using for your sentiment
 #' detection job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_sentiment_detection_job(
-#'   InputDataConfig = list(
-#'     S3Uri = "string",
-#'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Uri = "string",
-#'     KmsKeyId = "string"
-#'   ),
-#'   DataAccessRoleArn = "string",
-#'   JobName = "string",
-#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-#'   ClientRequestToken = "string",
-#'   VolumeKmsKeyId = "string",
-#'   VpcConfig = list(
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Subnets = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param Tags Tags to be associated with the sentiment detection job. A tag is a
+#' key-value pair that adds metadata to a resource used by Amazon
+#' Comprehend. For example, a tag with "Sales" as the key might be added to
+#' a resource to indicate its use by the sales department.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_sentiment_detection_job
-comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
+comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartSentimentDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_sentiment_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
+  input <- .comprehend$start_sentiment_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_sentiment_detection_job_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -3918,16 +2172,65 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 }
 .comprehend$operations$start_sentiment_detection_job <- comprehend_start_sentiment_detection_job
 
+#' Starts an asynchronous targeted sentiment detection job for a collection
+#' of documents
+#'
+#' @description
+#' Starts an asynchronous targeted sentiment detection job for a collection of documents. Use the operation to track the status of a job.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/start_targeted_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/start_targeted_sentiment_detection_job.html) for full documentation.
+#'
+#' @param InputDataConfig &#91;required&#93; 
+#' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
+#' (IAM) role that grants Amazon Comprehend read access to your input data.
+#' For more information, see [Role-based
+#' permissions](https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions).
+#' @param JobName The identifier of the job.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
+#' valid language.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend generates one.
+#' @param VolumeKmsKeyId ID for the KMS key that Amazon Comprehend uses to encrypt data on the
+#' storage volume attached to the ML compute instance(s) that process the
+#' analysis job. The VolumeKmsKeyId can be either of the following formats:
+#' 
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' 
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' @param VpcConfig 
+#' @param Tags Tags to be associated with the targeted sentiment detection job. A tag
+#' is a key-value pair that adds metadata to a resource used by Amazon
+#' Comprehend. For example, a tag with "Sales" as the key might be added to
+#' a resource to indicate its use by the sales department.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_start_targeted_sentiment_detection_job
+comprehend_start_targeted_sentiment_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "StartTargetedSentimentDetectionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$start_targeted_sentiment_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
+  output <- .comprehend$start_targeted_sentiment_detection_job_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$start_targeted_sentiment_detection_job <- comprehend_start_targeted_sentiment_detection_job
+
 #' Starts an asynchronous topic detection job
 #'
 #' @description
-#' Starts an asynchronous topic detection job. Use the
-#' `DescribeTopicDetectionJob` operation to track the status of a job.
+#' Starts an asynchronous topic detection job. Use the `DescribeTopicDetectionJob` operation to track the status of a job.
 #'
-#' @usage
-#' comprehend_start_topics_detection_job(InputDataConfig, OutputDataConfig,
-#'   DataAccessRoleArn, JobName, NumberOfTopics, ClientRequestToken,
-#'   VolumeKmsKeyId, VpcConfig)
+#' See [https://paws-r.github.io/docs/comprehend/start_topics_detection_job.html](https://paws-r.github.io/docs/comprehend/start_topics_detection_job.html) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files. The output is a compressed
@@ -3955,54 +2258,22 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #' (VPC) containing the resources you are using for your topic detection
 #' job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_topics_detection_job(
-#'   InputDataConfig = list(
-#'     S3Uri = "string",
-#'     InputFormat = "ONE_DOC_PER_FILE"|"ONE_DOC_PER_LINE"
-#'   ),
-#'   OutputDataConfig = list(
-#'     S3Uri = "string",
-#'     KmsKeyId = "string"
-#'   ),
-#'   DataAccessRoleArn = "string",
-#'   JobName = "string",
-#'   NumberOfTopics = 123,
-#'   ClientRequestToken = "string",
-#'   VolumeKmsKeyId = "string",
-#'   VpcConfig = list(
-#'     SecurityGroupIds = list(
-#'       "string"
-#'     ),
-#'     Subnets = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param Tags Tags to be associated with the topics detection job. A tag is a
+#' key-value pair that adds metadata to a resource used by Amazon
+#' Comprehend. For example, a tag with "Sales" as the key might be added to
+#' a resource to indicate its use by the sales department.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_topics_detection_job
-comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, NumberOfTopics = NULL, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL) {
+comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, NumberOfTopics = NULL, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartTopicsDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_topics_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, NumberOfTopics = NumberOfTopics, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig)
+  input <- .comprehend$start_topics_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, NumberOfTopics = NumberOfTopics, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_topics_detection_job_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -4016,39 +2287,10 @@ comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataCon
 #'
 #' @description
 #' Stops a dominant language detection job in progress.
-#' 
-#' If the job state is `IN_PROGRESS` the job is marked for termination and
-#' put into the `STOP_REQUESTED` state. If the job completes before it can
-#' be stopped, it is put into the `COMPLETED` state; otherwise the job is
-#' stopped and put into the `STOPPED` state.
-#' 
-#' If the job is in the `COMPLETED` or `FAILED` state when you call the
-#' [`stop_dominant_language_detection_job`][comprehend_stop_dominant_language_detection_job]
-#' operation, the operation returns a 400 Internal Request Exception.
-#' 
-#' When a job is stopped, any documents already processed are written to
-#' the output location.
 #'
-#' @usage
-#' comprehend_stop_dominant_language_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/stop_dominant_language_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_dominant_language_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the dominant language detection job to stop.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_dominant_language_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4074,39 +2316,10 @@ comprehend_stop_dominant_language_detection_job <- function(JobId) {
 #'
 #' @description
 #' Stops an entities detection job in progress.
-#' 
-#' If the job state is `IN_PROGRESS` the job is marked for termination and
-#' put into the `STOP_REQUESTED` state. If the job completes before it can
-#' be stopped, it is put into the `COMPLETED` state; otherwise the job is
-#' stopped and put into the `STOPPED` state.
-#' 
-#' If the job is in the `COMPLETED` or `FAILED` state when you call the
-#' [`stop_dominant_language_detection_job`][comprehend_stop_dominant_language_detection_job]
-#' operation, the operation returns a 400 Internal Request Exception.
-#' 
-#' When a job is stopped, any documents already processed are written to
-#' the output location.
 #'
-#' @usage
-#' comprehend_stop_entities_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/stop_entities_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_entities_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the entities detection job to stop.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_entities_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4133,26 +2346,9 @@ comprehend_stop_entities_detection_job <- function(JobId) {
 #' @description
 #' Stops an events detection job in progress.
 #'
-#' @usage
-#' comprehend_stop_events_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/stop_events_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_events_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the events detection job to stop.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_events_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4178,39 +2374,10 @@ comprehend_stop_events_detection_job <- function(JobId) {
 #'
 #' @description
 #' Stops a key phrases detection job in progress.
-#' 
-#' If the job state is `IN_PROGRESS` the job is marked for termination and
-#' put into the `STOP_REQUESTED` state. If the job completes before it can
-#' be stopped, it is put into the `COMPLETED` state; otherwise the job is
-#' stopped and put into the `STOPPED` state.
-#' 
-#' If the job is in the `COMPLETED` or `FAILED` state when you call the
-#' [`stop_dominant_language_detection_job`][comprehend_stop_dominant_language_detection_job]
-#' operation, the operation returns a 400 Internal Request Exception.
-#' 
-#' When a job is stopped, any documents already processed are written to
-#' the output location.
 #'
-#' @usage
-#' comprehend_stop_key_phrases_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/stop_key_phrases_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_key_phrases_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the key phrases detection job to stop.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_key_phrases_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4237,26 +2404,9 @@ comprehend_stop_key_phrases_detection_job <- function(JobId) {
 #' @description
 #' Stops a PII entities detection job in progress.
 #'
-#' @usage
-#' comprehend_stop_pii_entities_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/stop_pii_entities_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_pii_entities_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the PII entities detection job to stop.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_pii_entities_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4282,39 +2432,10 @@ comprehend_stop_pii_entities_detection_job <- function(JobId) {
 #'
 #' @description
 #' Stops a sentiment detection job in progress.
-#' 
-#' If the job state is `IN_PROGRESS` the job is marked for termination and
-#' put into the `STOP_REQUESTED` state. If the job completes before it can
-#' be stopped, it is put into the `COMPLETED` state; otherwise the job is
-#' be stopped and put into the `STOPPED` state.
-#' 
-#' If the job is in the `COMPLETED` or `FAILED` state when you call the
-#' [`stop_dominant_language_detection_job`][comprehend_stop_dominant_language_detection_job]
-#' operation, the operation returns a 400 Internal Request Exception.
-#' 
-#' When a job is stopped, any documents already processed are written to
-#' the output location.
 #'
-#' @usage
-#' comprehend_stop_sentiment_detection_job(JobId)
+#' See [https://paws-r.github.io/docs/comprehend/stop_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_sentiment_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier of the sentiment detection job to stop.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   JobId = "string",
-#'   JobStatus = "SUBMITTED"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"STOP_REQUESTED"|"STOPPED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_sentiment_detection_job(
-#'   JobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4336,32 +2457,44 @@ comprehend_stop_sentiment_detection_job <- function(JobId) {
 }
 .comprehend$operations$stop_sentiment_detection_job <- comprehend_stop_sentiment_detection_job
 
+#' Stops a targeted sentiment detection job in progress
+#'
+#' @description
+#' Stops a targeted sentiment detection job in progress.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/stop_targeted_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/stop_targeted_sentiment_detection_job.html) for full documentation.
+#'
+#' @param JobId &#91;required&#93; The identifier of the targeted sentiment detection job to stop.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_stop_targeted_sentiment_detection_job
+comprehend_stop_targeted_sentiment_detection_job <- function(JobId) {
+  op <- new_operation(
+    name = "StopTargetedSentimentDetectionJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$stop_targeted_sentiment_detection_job_input(JobId = JobId)
+  output <- .comprehend$stop_targeted_sentiment_detection_job_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$stop_targeted_sentiment_detection_job <- comprehend_stop_targeted_sentiment_detection_job
+
 #' Stops a document classifier training job while in progress
 #'
 #' @description
 #' Stops a document classifier training job while in progress.
-#' 
-#' If the training job state is `TRAINING`, the job is marked for
-#' termination and put into the `STOP_REQUESTED` state. If the training job
-#' completes before it can be stopped, it is put into the `TRAINED`;
-#' otherwise the training job is stopped and put into the `STOPPED` state
-#' and the service sends back an HTTP 200 response with an empty HTTP body.
 #'
-#' @usage
-#' comprehend_stop_training_document_classifier(DocumentClassifierArn)
+#' See [https://paws-r.github.io/docs/comprehend/stop_training_document_classifier.html](https://paws-r.github.io/docs/comprehend/stop_training_document_classifier.html) for full documentation.
 #'
 #' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the document classifier
 #' currently being trained.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_training_document_classifier(
-#'   DocumentClassifierArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4387,29 +2520,11 @@ comprehend_stop_training_document_classifier <- function(DocumentClassifierArn) 
 #'
 #' @description
 #' Stops an entity recognizer training job while in progress.
-#' 
-#' If the training job state is `TRAINING`, the job is marked for
-#' termination and put into the `STOP_REQUESTED` state. If the training job
-#' completes before it can be stopped, it is put into the `TRAINED`;
-#' otherwise the training job is stopped and putted into the `STOPPED`
-#' state and the service sends back an HTTP 200 response with an empty HTTP
-#' body.
 #'
-#' @usage
-#' comprehend_stop_training_entity_recognizer(EntityRecognizerArn)
+#' See [https://paws-r.github.io/docs/comprehend/stop_training_entity_recognizer.html](https://paws-r.github.io/docs/comprehend/stop_training_entity_recognizer.html) for full documentation.
 #'
 #' @param EntityRecognizerArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the entity recognizer
 #' currently being trained.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_training_entity_recognizer(
-#'   EntityRecognizerArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4434,35 +2549,15 @@ comprehend_stop_training_entity_recognizer <- function(EntityRecognizerArn) {
 #' Associates a specific tag with an Amazon Comprehend resource
 #'
 #' @description
-#' Associates a specific tag with an Amazon Comprehend resource. A tag is a
-#' key-value pair that adds as a metadata to a resource used by Amazon
-#' Comprehend. For example, a tag with "Sales" as the key might be added to
-#' a resource to indicate its use by the sales department.
+#' Associates a specific tag with an Amazon Comprehend resource. A tag is a key-value pair that adds as a metadata to a resource used by Amazon Comprehend. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department.
 #'
-#' @usage
-#' comprehend_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/comprehend/tag_resource.html](https://paws-r.github.io/docs/comprehend/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Comprehend resource
 #' to which you want to associate the tags.
 #' @param Tags &#91;required&#93; Tags being associated with a specific Amazon Comprehend resource. There
 #' can be a maximum of 50 tags (both existing and pending) associated with
 #' a specific resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4489,8 +2584,7 @@ comprehend_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes a specific tag associated with an Amazon Comprehend resource.
 #'
-#' @usage
-#' comprehend_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/comprehend/untag_resource.html](https://paws-r.github.io/docs/comprehend/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Comprehend resource
 #' from which you want to remove the tags.
@@ -4498,19 +2592,6 @@ comprehend_tag_resource <- function(ResourceArn, Tags) {
 #' a given resource. For example, a tag with "Sales" as the key might be
 #' added to a resource to indicate its use by the sales department. Keys
 #' must be unique and cannot be duplicated for a particular resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4535,38 +2616,29 @@ comprehend_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates information about the specified endpoint
 #'
 #' @description
-#' Updates information about the specified endpoint.
+#' Updates information about the specified endpoint. For information about endpoints, see [Managing endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
 #'
-#' @usage
-#' comprehend_update_endpoint(EndpointArn, DesiredInferenceUnits)
+#' See [https://paws-r.github.io/docs/comprehend/update_endpoint.html](https://paws-r.github.io/docs/comprehend/update_endpoint.html) for full documentation.
 #'
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint being updated.
-#' @param DesiredInferenceUnits &#91;required&#93; The desired number of inference units to be used by the model using this
+#' @param DesiredModelArn The ARN of the new model to use when updating an existing endpoint.
+#' @param DesiredInferenceUnits The desired number of inference units to be used by the model using this
 #' endpoint. Each inference unit represents of a throughput of 100
 #' characters per second.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_endpoint(
-#'   EndpointArn = "string",
-#'   DesiredInferenceUnits = 123
-#' )
-#' ```
+#' @param DesiredDataAccessRoleArn Data access role ARN to use in case the new model is encrypted with a
+#' customer CMK.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_update_endpoint
-comprehend_update_endpoint <- function(EndpointArn, DesiredInferenceUnits) {
+comprehend_update_endpoint <- function(EndpointArn, DesiredModelArn = NULL, DesiredInferenceUnits = NULL, DesiredDataAccessRoleArn = NULL) {
   op <- new_operation(
     name = "UpdateEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$update_endpoint_input(EndpointArn = EndpointArn, DesiredInferenceUnits = DesiredInferenceUnits)
+  input <- .comprehend$update_endpoint_input(EndpointArn = EndpointArn, DesiredModelArn = DesiredModelArn, DesiredInferenceUnits = DesiredInferenceUnits, DesiredDataAccessRoleArn = DesiredDataAccessRoleArn)
   output <- .comprehend$update_endpoint_output()
   config <- get_config()
   svc <- .comprehend$service(config)

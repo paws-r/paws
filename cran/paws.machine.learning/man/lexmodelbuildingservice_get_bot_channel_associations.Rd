@@ -4,8 +4,13 @@
 \alias{lexmodelbuildingservice_get_bot_channel_associations}
 \title{Returns a list of all of the channels associated with the specified bot}
 \usage{
-lexmodelbuildingservice_get_bot_channel_associations(botName, botAlias,
-  nextToken, maxResults, nameContains)
+lexmodelbuildingservice_get_bot_channel_associations(
+  botName,
+  botAlias,
+  nextToken = NULL,
+  maxResults = NULL,
+  nameContains = NULL
+)
 }
 \arguments{
 \item{botName}{[required] The name of the Amazon Lex bot in the association.}
@@ -26,46 +31,9 @@ returned if any part of its name matches the substring. For example,
 "xyz" matches both "xyzabc" and "abcxyz." To return all bot channel
 associations, use a hyphen ("-") as the \code{nameContains} parameter.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  botChannelAssociations = list(
-    list(
-      name = "string",
-      description = "string",
-      botAlias = "string",
-      botName = "string",
-      createdDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      type = "Facebook"|"Slack"|"Twilio-Sms"|"Kik",
-      botConfiguration = list(
-        "string"
-      ),
-      status = "IN_PROGRESS"|"CREATED"|"FAILED",
-      failureReason = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Returns a list of all of the channels associated with the specified bot.
 
-The
-\code{\link[=lexmodelbuildingservice_get_bot_channel_associations]{get_bot_channel_associations}}
-operation requires permissions for the \code{lex:GetBotChannelAssociations}
-action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_channel_associations.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_bot_channel_associations(
-  botName = "string",
-  botAlias = "string",
-  nextToken = "string",
-  maxResults = 123,
-  nameContains = "string"
-)
-}
-}
-
 \keyword{internal}

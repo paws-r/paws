@@ -5,7 +5,12 @@
 \title{Associates a subnet in your VPC or an internet gateway or virtual
 private gateway attached to your VPC with a route table in your VPC}
 \usage{
-ec2_associate_route_table(DryRun, RouteTableId, SubnetId, GatewayId)
+ec2_associate_route_table(
+  DryRun = NULL,
+  RouteTableId,
+  SubnetId = NULL,
+  GatewayId = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -19,46 +24,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{GatewayId}{The ID of the internet gateway or virtual private gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AssociationId = "string",
-  AssociationState = list(
-    State = "associating"|"associated"|"disassociating"|"disassociated"|"failed",
-    StatusMessage = "string"
-  )
-)
-}
-}
 \description{
-Associates a subnet in your VPC or an internet gateway or virtual
-private gateway attached to your VPC with a route table in your VPC.
-This association causes traffic from the subnet or gateway to be routed
-according to the routes in the route table. The action returns an
-association ID, which you need in order to disassociate the route table
-later. A route table can be associated with multiple subnets.
+Associates a subnet in your VPC or an internet gateway or virtual private gateway attached to your VPC with a route table in your VPC. This association causes traffic from the subnet or gateway to be routed according to the routes in the route table. The action returns an association ID, which you need in order to disassociate the route table later. A route table can be associated with multiple subnets.
 
-For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_route_table(
-  DryRun = TRUE|FALSE,
-  RouteTableId = "string",
-  SubnetId = "string",
-  GatewayId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example associates the specified route table with the specified
-# subnet.
-svc$associate_route_table(
-  RouteTableId = "rtb-22574640",
-  SubnetId = "subnet-9d4a7b6"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/associate_route_table.html} for full documentation.
 }
 \keyword{internal}

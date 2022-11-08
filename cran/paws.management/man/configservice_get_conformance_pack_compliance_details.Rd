@@ -2,11 +2,15 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_get_conformance_pack_compliance_details}
 \alias{configservice_get_conformance_pack_compliance_details}
-\title{Returns compliance details of a conformance pack for all AWS resources
-that are monitered by conformance pack}
+\title{Returns compliance details of a conformance pack for all Amazon Web
+Services resources that are monitered by conformance pack}
 \usage{
 configservice_get_conformance_pack_compliance_details(
-  ConformancePackName, Filters, Limit, NextToken)
+  ConformancePackName,
+  Filters = NULL,
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ConformancePackName}{[required] Name of the conformance pack.}
@@ -14,61 +18,14 @@ configservice_get_conformance_pack_compliance_details(
 \item{Filters}{A \code{ConformancePackEvaluationFilters} object.}
 
 \item{Limit}{The maximum number of evaluation results returned on each page. If you
-do no specify a number, AWS Config uses the default. The default is 100.}
+do no specify a number, Config uses the default. The default is 100.}
 
 \item{NextToken}{The \code{nextToken} string returned in a previous request that you use to
 request the next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConformancePackName = "string",
-  ConformancePackRuleEvaluationResults = list(
-    list(
-      ComplianceType = "COMPLIANT"|"NON_COMPLIANT",
-      EvaluationResultIdentifier = list(
-        EvaluationResultQualifier = list(
-          ConfigRuleName = "string",
-          ResourceType = "string",
-          ResourceId = "string"
-        ),
-        OrderingTimestamp = as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      ConfigRuleInvokedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ResultRecordedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Annotation = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns compliance details of a conformance pack for all AWS resources
-that are monitered by conformance pack.
-}
-\section{Request syntax}{
-\preformatted{svc$get_conformance_pack_compliance_details(
-  ConformancePackName = "string",
-  Filters = list(
-    ConfigRuleNames = list(
-      "string"
-    ),
-    ComplianceType = "COMPLIANT"|"NON_COMPLIANT",
-    ResourceType = "string",
-    ResourceIds = list(
-      "string"
-    )
-  ),
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
+Returns compliance details of a conformance pack for all Amazon Web Services resources that are monitered by conformance pack.
 
+See \url{https://paws-r.github.io/docs/configservice/get_conformance_pack_compliance_details.html} for full documentation.
+}
 \keyword{internal}

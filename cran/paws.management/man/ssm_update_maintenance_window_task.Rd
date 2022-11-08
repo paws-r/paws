@@ -4,38 +4,52 @@
 \alias{ssm_update_maintenance_window_task}
 \title{Modifies a task assigned to a maintenance window}
 \usage{
-ssm_update_maintenance_window_task(WindowId, WindowTaskId, Targets,
-  TaskArn, ServiceRoleArn, TaskParameters, TaskInvocationParameters,
-  Priority, MaxConcurrency, MaxErrors, LoggingInfo, Name, Description,
-  Replace)
+ssm_update_maintenance_window_task(
+  WindowId,
+  WindowTaskId,
+  Targets = NULL,
+  TaskArn = NULL,
+  ServiceRoleArn = NULL,
+  TaskParameters = NULL,
+  TaskInvocationParameters = NULL,
+  Priority = NULL,
+  MaxConcurrency = NULL,
+  MaxErrors = NULL,
+  LoggingInfo = NULL,
+  Name = NULL,
+  Description = NULL,
+  Replace = NULL,
+  CutoffBehavior = NULL
+)
 }
 \arguments{
 \item{WindowId}{[required] The maintenance window ID that contains the task to modify.}
 
 \item{WindowTaskId}{[required] The task ID to modify.}
 
-\item{Targets}{The targets (either instances or tags) to modify. Instances are
-specified using Key=instanceids,Values=instanceID_1,instanceID_2. Tags
-are specified using Key=tag_name,Values=tag_value.
+\item{Targets}{The targets (either managed nodes or tags) to modify. Managed nodes are
+specified using the format
+\verb{Key=instanceids,Values=instanceID_1,instanceID_2}. Tags are specified
+using the format \verb{ Key=tag_name,Values=tag_value}.
 
 One or more targets must be specified for maintenance window Run
 Command-type tasks. Depending on the task, targets are optional for
-other maintenance window task types (Automation, AWS Lambda, and AWS
-Step Functions). For more information about running tasks that do not
-specify targets, see see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html}{Registering maintenance window tasks without targets}
-in the \emph{AWS Systems Manager User Guide}.}
+other maintenance window task types (Automation, Lambda, and Step
+Functions). For more information about running tasks that don't specify
+targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html}{Registering maintenance window tasks without targets}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{TaskArn}{The task ARN to modify.}
 
-\item{ServiceRoleArn}{The ARN of the IAM service role for Systems Manager to assume when
-running a maintenance window task. If you do not specify a service role
-ARN, Systems Manager uses your account's service-linked role. If no
-service-linked role for Systems Manager exists in your account, it is
-created when you run
+\item{ServiceRoleArn}{The Amazon Resource Name (ARN) of the IAM service role for Amazon Web
+Services Systems Manager to assume when running a maintenance window
+task. If you do not specify a service role ARN, Systems Manager uses
+your account's service-linked role. If no service-linked role for
+Systems Manager exists in your account, it is created when you run
 \code{\link[=ssm_register_task_with_maintenance_window]{register_task_with_maintenance_window}}.
 
-For more information, see the following topics in the in the \emph{AWS
-Systems Manager User Guide}:
+For more information, see the following topics in the in the \emph{Amazon Web
+Services Systems Manager User Guide}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions}{Using service-linked roles for Systems Manager}
 \item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role}{Should I use a service-linked role or a custom service role to run maintenance window tasks?}
@@ -61,7 +75,7 @@ the fields that match the task type. All other fields should be empty.
 When you update a maintenance window task that has options specified in
 \code{TaskInvocationParameters}, you must provide again all the
 \code{TaskInvocationParameters} values that you want to retain. The values
-you do not specify again are removed. For example, suppose that when you
+you don't specify again are removed. For example, suppose that when you
 registered a Run Command task, you specified \code{TaskInvocationParameters}
 values for \code{Comment}, \code{NotificationConfig}, and \code{OutputS3BucketName}. If
 you update the maintenance window task and specify only a different
@@ -72,29 +86,36 @@ you update the maintenance window task and specify only a different
 priority. Tasks that have the same priority are scheduled in parallel.}
 
 \item{MaxConcurrency}{The new \code{MaxConcurrency} value you want to specify. \code{MaxConcurrency} is
-the number of targets that are allowed to run this task in parallel.
+the number of targets that are allowed to run this task, in parallel.
 
-For maintenance window tasks without a target specified, you cannot
+Although this element is listed as "Required: No", a value can be
+omitted only when you are registering or updating a \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html}{targetless task}
+You must provide a value in all other cases.
+
+For maintenance window tasks without a target specified, you can't
 supply a value for this option. Instead, the system inserts a
-placeholder value of \code{1}, which may be reported in the response to this
-command. This value does not affect the running of your task and can be
-ignored.}
+placeholder value of \code{1}. This value doesn't affect the running of your
+task.}
 
 \item{MaxErrors}{The new \code{MaxErrors} value to specify. \code{MaxErrors} is the maximum number
 of errors that are allowed before the task stops being scheduled.
 
-For maintenance window tasks without a target specified, you cannot
+Although this element is listed as "Required: No", a value can be
+omitted only when you are registering or updating a \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html}{targetless task}
+You must provide a value in all other cases.
+
+For maintenance window tasks without a target specified, you can't
 supply a value for this option. Instead, the system inserts a
-placeholder value of \code{1}, which may be reported in the response to this
-command. This value does not affect the running of your task and can be
-ignored.}
+placeholder value of \code{1}. This value doesn't affect the running of your
+task.}
 
 \item{LoggingInfo}{The new logging location in Amazon S3 to specify.
 
-\code{LoggingInfo} has been deprecated. To specify an S3 bucket to contain
-logs, instead use the \code{OutputS3BucketName} and \code{OutputS3KeyPrefix}
-options in the \code{TaskInvocationParameters} structure. For information
-about how Systems Manager handles these options for the supported
+\code{LoggingInfo} has been deprecated. To specify an Amazon Simple Storage
+Service (Amazon S3) bucket to contain logs, instead use the
+\code{OutputS3BucketName} and \code{OutputS3KeyPrefix} options in the
+\code{TaskInvocationParameters} structure. For information about how Amazon
+Web Services Systems Manager handles these options for the supported
 maintenance window task types, see
 MaintenanceWindowTaskInvocationParameters.}
 
@@ -103,205 +124,33 @@ MaintenanceWindowTaskInvocationParameters.}
 \item{Description}{The new task description to specify.}
 
 \item{Replace}{If True, then all fields that are required by the
-RegisterTaskWithMaintenanceWindow action are also required for this API
-request. Optional fields that are not specified are set to null.}
+\code{\link[=ssm_register_task_with_maintenance_window]{register_task_with_maintenance_window}}
+operation are also required for this API request. Optional fields that
+aren't specified are set to null.}
+
+\item{CutoffBehavior}{Indicates whether tasks should continue to run after the cutoff time
+specified in the maintenance windows is reached.
+\itemize{
+\item \code{CONTINUE_TASK}: When the cutoff time is reached, any tasks that are
+running continue. The default value.
+\item \code{CANCEL_TASK}:
+\itemize{
+\item For Automation, Lambda, Step Functions tasks: When the cutoff
+time is reached, any task invocations that are already running
+continue, but no new task invocations are started.
+\item For Run Command tasks: When the cutoff time is reached, the
+system sends a \code{\link[=ssm_cancel_command]{cancel_command}} operation
+that attempts to cancel the command associated with the task.
+However, there is no guarantee that the command will be
+terminated and the underlying process stopped.
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowId = "string",
-  WindowTaskId = "string",
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  TaskArn = "string",
-  ServiceRoleArn = "string",
-  TaskParameters = list(
-    list(
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  TaskInvocationParameters = list(
-    RunCommand = list(
-      Comment = "string",
-      CloudWatchOutputConfig = list(
-        CloudWatchLogGroupName = "string",
-        CloudWatchOutputEnabled = TRUE|FALSE
-      ),
-      DocumentHash = "string",
-      DocumentHashType = "Sha256"|"Sha1",
-      DocumentVersion = "string",
-      NotificationConfig = list(
-        NotificationArn = "string",
-        NotificationEvents = list(
-          "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-        ),
-        NotificationType = "Command"|"Invocation"
-      ),
-      OutputS3BucketName = "string",
-      OutputS3KeyPrefix = "string",
-      Parameters = list(
-        list(
-          "string"
-        )
-      ),
-      ServiceRoleArn = "string",
-      TimeoutSeconds = 123
-    ),
-    Automation = list(
-      DocumentVersion = "string",
-      Parameters = list(
-        list(
-          "string"
-        )
-      )
-    ),
-    StepFunctions = list(
-      Input = "string",
-      Name = "string"
-    ),
-    Lambda = list(
-      ClientContext = "string",
-      Qualifier = "string",
-      Payload = raw
-    )
-  ),
-  Priority = 123,
-  MaxConcurrency = "string",
-  MaxErrors = "string",
-  LoggingInfo = list(
-    S3BucketName = "string",
-    S3KeyPrefix = "string",
-    S3Region = "string"
-  ),
-  Name = "string",
-  Description = "string"
-)
-}
+
+The status for tasks that are not completed is \code{TIMED_OUT}.
+}}
 }
 \description{
-Modifies a task assigned to a maintenance window. You can't change the
-task type, but you can change the following values:
-\itemize{
-\item TaskARN. For example, you can change a RUN_COMMAND task from
-AWS-RunPowerShellScript to AWS-RunShellScript.
-\item ServiceRoleArn
-\item TaskInvocationParameters
-\item Priority
-\item MaxConcurrency
-\item MaxErrors
-}
+Modifies a task assigned to a maintenance window. You can't change the task type, but you can change the following values:
 
-One or more targets must be specified for maintenance window Run
-Command-type tasks. Depending on the task, targets are optional for
-other maintenance window task types (Automation, AWS Lambda, and AWS
-Step Functions). For more information about running tasks that do not
-specify targets, see see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html}{Registering maintenance window tasks without targets}
-in the \emph{AWS Systems Manager User Guide}.
-
-If the value for a parameter in
-\code{\link[=ssm_update_maintenance_window_task]{update_maintenance_window_task}}
-is null, then the corresponding field is not modified. If you set
-\code{Replace} to true, then all fields required by the
-\code{\link[=ssm_register_task_with_maintenance_window]{register_task_with_maintenance_window}}
-action are required for this request. Optional fields that aren't
-specified are set to null.
-
-When you update a maintenance window task that has options specified in
-\code{TaskInvocationParameters}, you must provide again all the
-\code{TaskInvocationParameters} values that you want to retain. The values
-you do not specify again are removed. For example, suppose that when you
-registered a Run Command task, you specified \code{TaskInvocationParameters}
-values for \code{Comment}, \code{NotificationConfig}, and \code{OutputS3BucketName}. If
-you update the maintenance window task and specify only a different
-\code{OutputS3BucketName} value, the values for \code{Comment} and
-\code{NotificationConfig} are removed.
+See \url{https://paws-r.github.io/docs/ssm/update_maintenance_window_task.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_maintenance_window_task(
-  WindowId = "string",
-  WindowTaskId = "string",
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  TaskArn = "string",
-  ServiceRoleArn = "string",
-  TaskParameters = list(
-    list(
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  TaskInvocationParameters = list(
-    RunCommand = list(
-      Comment = "string",
-      CloudWatchOutputConfig = list(
-        CloudWatchLogGroupName = "string",
-        CloudWatchOutputEnabled = TRUE|FALSE
-      ),
-      DocumentHash = "string",
-      DocumentHashType = "Sha256"|"Sha1",
-      DocumentVersion = "string",
-      NotificationConfig = list(
-        NotificationArn = "string",
-        NotificationEvents = list(
-          "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-        ),
-        NotificationType = "Command"|"Invocation"
-      ),
-      OutputS3BucketName = "string",
-      OutputS3KeyPrefix = "string",
-      Parameters = list(
-        list(
-          "string"
-        )
-      ),
-      ServiceRoleArn = "string",
-      TimeoutSeconds = 123
-    ),
-    Automation = list(
-      DocumentVersion = "string",
-      Parameters = list(
-        list(
-          "string"
-        )
-      )
-    ),
-    StepFunctions = list(
-      Input = "string",
-      Name = "string"
-    ),
-    Lambda = list(
-      ClientContext = "string",
-      Qualifier = "string",
-      Payload = raw
-    )
-  ),
-  Priority = 123,
-  MaxConcurrency = "string",
-  MaxErrors = "string",
-  LoggingInfo = list(
-    S3BucketName = "string",
-    S3KeyPrefix = "string",
-    S3Region = "string"
-  ),
-  Name = "string",
-  Description = "string",
-  Replace = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

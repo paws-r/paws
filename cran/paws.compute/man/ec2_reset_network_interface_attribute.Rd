@@ -4,8 +4,11 @@
 \alias{ec2_reset_network_interface_attribute}
 \title{Resets a network interface attribute}
 \usage{
-ec2_reset_network_interface_attribute(DryRun, NetworkInterfaceId,
-  SourceDestCheck)
+ec2_reset_network_interface_attribute(
+  DryRun = NULL,
+  NetworkInterfaceId,
+  SourceDestCheck = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -17,20 +20,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{SourceDestCheck}{The source/destination checking attribute. Resets the value to \code{true}.}
 }
-\value{
-An empty list.
-}
 \description{
-Resets a network interface attribute. You can specify only one attribute
-at a time.
-}
-\section{Request syntax}{
-\preformatted{svc$reset_network_interface_attribute(
-  DryRun = TRUE|FALSE,
-  NetworkInterfaceId = "string",
-  SourceDestCheck = "string"
-)
-}
-}
+Resets a network interface attribute. You can specify only one attribute at a time.
 
+See \url{https://paws-r.github.io/docs/ec2/reset_network_interface_attribute.html} for full documentation.
+}
 \keyword{internal}

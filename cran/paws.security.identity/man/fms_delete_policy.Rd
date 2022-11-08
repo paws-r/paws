@@ -2,9 +2,9 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_delete_policy}
 \alias{fms_delete_policy}
-\title{Permanently deletes an AWS Firewall Manager policy}
+\title{Permanently deletes an Firewall Manager policy}
 \usage{
-fms_delete_policy(PolicyId, DeleteAllPolicyResources)
+fms_delete_policy(PolicyId, DeleteAllPolicyResources = NULL)
 }
 \arguments{
 \item{PolicyId}{[required] The ID of the policy that you want to delete. You can retrieve this ID
@@ -13,10 +13,9 @@ from \code{\link[=fms_put_policy]{put_policy}} and
 
 \item{DeleteAllPolicyResources}{If \code{True}, the request performs cleanup according to the policy type.
 
-For AWS WAF and Shield Advanced policies, the cleanup does the
-following:
+For WAF and Shield Advanced policies, the cleanup does the following:
 \itemize{
-\item Deletes rule groups created by AWS Firewall Manager
+\item Deletes rule groups created by Firewall Manager
 \item Removes web ACLs from in-scope resources
 \item Deletes web ACLs that contain no rules or rule groups
 }
@@ -39,18 +38,9 @@ scope of the policy, those accounts and resources are handled by the
 policy. All others are out of scope. If you don't specify tags or
 accounts, all resources are in scope.}
 }
-\value{
-An empty list.
-}
 \description{
-Permanently deletes an AWS Firewall Manager policy.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_policy(
-  PolicyId = "string",
-  DeleteAllPolicyResources = TRUE|FALSE
-)
-}
-}
+Permanently deletes an Firewall Manager policy.
 
+See \url{https://paws-r.github.io/docs/fms/delete_policy.html} for full documentation.
+}
 \keyword{internal}

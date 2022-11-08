@@ -3,10 +3,14 @@
 \name{workspaces_describe_connection_alias_permissions}
 \alias{workspaces_describe_connection_alias_permissions}
 \title{Describes the permissions that the owner of a connection alias has
-granted to another AWS account for the specified connection alias}
+granted to another Amazon Web Services account for the specified
+connection alias}
 \usage{
-workspaces_describe_connection_alias_permissions(AliasId, NextToken,
-  MaxResults)
+workspaces_describe_connection_alias_permissions(
+  AliasId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{AliasId}{[required] The identifier of the connection alias.}
@@ -16,31 +20,9 @@ provide this token to receive the next set of results.}
 
 \item{MaxResults}{The maximum number of results to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AliasId = "string",
-  ConnectionAliasPermissions = list(
-    list(
-      SharedAccountId = "string",
-      AllowAssociation = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the permissions that the owner of a connection alias has
-granted to another AWS account for the specified connection alias. For
-more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_connection_alias_permissions(
-  AliasId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Describes the permissions that the owner of a connection alias has granted to another Amazon Web Services account for the specified connection alias. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
 
+See \url{https://paws-r.github.io/docs/workspaces/describe_connection_alias_permissions.html} for full documentation.
+}
 \keyword{internal}

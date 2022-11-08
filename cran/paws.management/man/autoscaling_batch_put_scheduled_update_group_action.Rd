@@ -6,50 +6,18 @@
 Scaling group}
 \usage{
 autoscaling_batch_put_scheduled_update_group_action(
-  AutoScalingGroupName, ScheduledUpdateGroupActions)
+  AutoScalingGroupName,
+  ScheduledUpdateGroupActions
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{ScheduledUpdateGroupActions}{[required] One or more scheduled actions. The maximum number allowed is 50.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedScheduledUpdateGroupActions = list(
-    list(
-      ScheduledActionName = "string",
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Creates or updates one or more scheduled scaling actions for an Auto
-Scaling group. If you leave a parameter unspecified when updating a
-scheduled scaling action, the corresponding value remains unchanged.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_put_scheduled_update_group_action(
-  AutoScalingGroupName = "string",
-  ScheduledUpdateGroupActions = list(
-    list(
-      ScheduledActionName = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Recurrence = "string",
-      MinSize = 123,
-      MaxSize = 123,
-      DesiredCapacity = 123
-    )
-  )
-)
-}
-}
+Creates or updates one or more scheduled scaling actions for an Auto Scaling group.
 
+See \url{https://paws-r.github.io/docs/autoscaling/batch_put_scheduled_update_group_action.html} for full documentation.
+}
 \keyword{internal}

@@ -4,40 +4,18 @@
 \alias{ecr_initiate_layer_upload}
 \title{Notifies Amazon ECR that you intend to upload an image layer}
 \usage{
-ecr_initiate_layer_upload(registryId, repositoryName)
+ecr_initiate_layer_upload(registryId = NULL, repositoryName)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry to which you intend to
-upload layers. If you do not specify a registry, the default registry is
-assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry to which
+you intend to upload layers. If you do not specify a registry, the
+default registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository to which you intend to upload layers.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  uploadId = "string",
-  partSize = 123
-)
-}
 }
 \description{
 Notifies Amazon ECR that you intend to upload an image layer.
 
-When an image is pushed, the InitiateLayerUpload API is called once per
-image layer that has not already been uploaded. Whether or not an image
-layer has been uploaded is determined by the BatchCheckLayerAvailability
-API action.
-
-This operation is used by the Amazon ECR proxy and is not generally used
-by customers for pulling and pushing images. In most cases, you should
-use the \code{docker} CLI to pull, tag, and push images.
+See \url{https://paws-r.github.io/docs/ecr/initiate_layer_upload.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$initiate_layer_upload(
-  registryId = "string",
-  repositoryName = "string"
-)
-}
-}
-
 \keyword{internal}

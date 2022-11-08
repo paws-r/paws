@@ -13,63 +13,9 @@ be from the same gateway. Use
 \code{\link[=storagegateway_list_volumes]{list_volumes}} to get volume ARNs for a
 gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CachediSCSIVolumes = list(
-    list(
-      VolumeARN = "string",
-      VolumeId = "string",
-      VolumeType = "string",
-      VolumeStatus = "string",
-      VolumeAttachmentStatus = "string",
-      VolumeSizeInBytes = 123,
-      VolumeProgress = 123.0,
-      SourceSnapshotId = "string",
-      VolumeiSCSIAttributes = list(
-        TargetARN = "string",
-        NetworkInterfaceId = "string",
-        NetworkInterfacePort = 123,
-        LunNumber = 123,
-        ChapEnabled = TRUE|FALSE
-      ),
-      CreatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      VolumeUsedInBytes = 123,
-      KMSKey = "string",
-      TargetName = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns a description of the gateway volumes specified in the request.
-This operation is only supported in the cached volume gateway types.
+Returns a description of the gateway volumes specified in the request. This operation is only supported in the cached volume gateway types.
 
-The list of gateway volumes in the request must be from one gateway. In
-the response, AWS Storage Gateway returns volume information sorted by
-volume Amazon Resource Name (ARN).
-}
-\section{Request syntax}{
-\preformatted{svc$describe_cachedi_scsi_volumes(
-  VolumeARNs = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# Returns a description of the gateway cached iSCSI volumes specified in
-# the request.
-svc$describe_cachedi_scsi_volumes(
-  VolumeARNs = list(
-    "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/describe_cachedi_scsi_volumes.html} for full documentation.
 }
 \keyword{internal}

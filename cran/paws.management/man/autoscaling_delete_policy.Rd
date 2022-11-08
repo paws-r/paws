@@ -4,42 +4,16 @@
 \alias{autoscaling_delete_policy}
 \title{Deletes the specified scaling policy}
 \usage{
-autoscaling_delete_policy(AutoScalingGroupName, PolicyName)
+autoscaling_delete_policy(AutoScalingGroupName = NULL, PolicyName)
 }
 \arguments{
 \item{AutoScalingGroupName}{The name of the Auto Scaling group.}
 
 \item{PolicyName}{[required] The name or Amazon Resource Name (ARN) of the policy.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified scaling policy.
 
-Deleting either a step scaling policy or a simple scaling policy deletes
-the underlying alarm action, but does not delete the alarm, even if it
-no longer has an associated action.
-
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/deleting-scaling-policy.html}{Deleting a scaling policy}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_policy(
-  AutoScalingGroupName = "string",
-  PolicyName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes the specified Auto Scaling policy.
-svc$delete_policy(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  PolicyName = "my-step-scale-out-policy"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/delete_policy.html} for full documentation.
 }
 \keyword{internal}

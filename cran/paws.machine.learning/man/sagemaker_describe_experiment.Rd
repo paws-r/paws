@@ -9,43 +9,9 @@ sagemaker_describe_experiment(ExperimentName)
 \arguments{
 \item{ExperimentName}{[required] The name of the experiment to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExperimentName = "string",
-  ExperimentArn = "string",
-  DisplayName = "string",
-  Source = list(
-    SourceArn = "string",
-    SourceType = "string"
-  ),
-  Description = "string",
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreatedBy = list(
-    UserProfileArn = "string",
-    UserProfileName = "string",
-    DomainId = "string"
-  ),
-  LastModifiedTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastModifiedBy = list(
-    UserProfileArn = "string",
-    UserProfileName = "string",
-    DomainId = "string"
-  )
-)
-}
-}
 \description{
 Provides a list of an experiment's properties.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_experiment(
-  ExperimentName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_experiment.html} for full documentation.
+}
 \keyword{internal}

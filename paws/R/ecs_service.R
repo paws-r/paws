@@ -8,29 +8,39 @@ NULL
 #' Amazon Elastic Container Service
 #' 
 #' Amazon Elastic Container Service (Amazon ECS) is a highly scalable,
-#' fast, container management service that makes it easy to run, stop, and
-#' manage Docker containers on a cluster. You can host your cluster on a
-#' serverless infrastructure that is managed by Amazon ECS by launching
-#' your services or tasks using the Fargate launch type. For more control,
-#' you can host your tasks on a cluster of Amazon Elastic Compute Cloud
-#' (Amazon EC2) instances that you manage by using the EC2 launch type. For
-#' more information about launch types, see [Amazon ECS Launch
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html).
+#' fast, container management service. It makes it easy to run, stop, and
+#' manage Docker containers. You can host your cluster on a serverless
+#' infrastructure that's managed by Amazon ECS by launching your services
+#' or tasks on Fargate. For more control, you can host your tasks on a
+#' cluster of Amazon Elastic Compute Cloud (Amazon EC2) or External
+#' (on-premises) instances that you manage.
 #' 
-#' Amazon ECS lets you launch and stop container-based applications with
-#' simple API calls, allows you to get the state of your cluster from a
-#' centralized service, and gives you access to many familiar Amazon EC2
-#' features.
+#' Amazon ECS makes it easy to launch and stop container-based applications
+#' with simple API calls. This makes it easy to get the state of your
+#' cluster from a centralized service, and gives you access to many
+#' familiar Amazon EC2 features.
 #' 
 #' You can use Amazon ECS to schedule the placement of containers across
 #' your cluster based on your resource needs, isolation policies, and
-#' availability requirements. Amazon ECS eliminates the need for you to
-#' operate your own cluster management and configuration management systems
-#' or worry about scaling your management infrastructure.
+#' availability requirements. With Amazon ECS, you don't need to operate
+#' your own cluster management and configuration management systems. You
+#' also don't need to worry about scaling your management infrastructure.
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -42,10 +52,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -63,7 +77,7 @@ NULL
 #' \tabular{ll}{
 #'  \link[=ecs_create_capacity_provider]{create_capacity_provider} \tab Creates a new capacity provider\cr
 #'  \link[=ecs_create_cluster]{create_cluster} \tab Creates a new Amazon ECS cluster\cr
-#'  \link[=ecs_create_service]{create_service} \tab Runs and maintains a desired number of tasks from a specified task definition\cr
+#'  \link[=ecs_create_service]{create_service} \tab Runs and maintains your desired number of tasks from a specified task definition\cr
 #'  \link[=ecs_create_task_set]{create_task_set} \tab Create a task set in the specified cluster and service\cr
 #'  \link[=ecs_delete_account_setting]{delete_account_setting} \tab Disables an account setting for a specified IAM user, IAM role, or the root user for an account\cr
 #'  \link[=ecs_delete_attributes]{delete_attributes} \tab Deletes one or more custom attributes from an Amazon ECS resource\cr
@@ -75,21 +89,22 @@ NULL
 #'  \link[=ecs_deregister_task_definition]{deregister_task_definition} \tab Deregisters the specified task definition by family and revision\cr
 #'  \link[=ecs_describe_capacity_providers]{describe_capacity_providers} \tab Describes one or more of your capacity providers\cr
 #'  \link[=ecs_describe_clusters]{describe_clusters} \tab Describes one or more of your clusters\cr
-#'  \link[=ecs_describe_container_instances]{describe_container_instances} \tab Describes Amazon Elastic Container Service container instances\cr
+#'  \link[=ecs_describe_container_instances]{describe_container_instances} \tab Describes one or more container instances\cr
 #'  \link[=ecs_describe_services]{describe_services} \tab Describes the specified services running in your cluster\cr
 #'  \link[=ecs_describe_task_definition]{describe_task_definition} \tab Describes a task definition\cr
 #'  \link[=ecs_describe_tasks]{describe_tasks} \tab Describes a specified task or tasks\cr
 #'  \link[=ecs_describe_task_sets]{describe_task_sets} \tab Describes the task sets in the specified cluster and service\cr
 #'  \link[=ecs_discover_poll_endpoint]{discover_poll_endpoint} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent\cr
+#'  \link[=ecs_execute_command]{execute_command} \tab Runs a command remotely on a container within a task\cr
 #'  \link[=ecs_list_account_settings]{list_account_settings} \tab Lists the account settings for a specified principal\cr
 #'  \link[=ecs_list_attributes]{list_attributes} \tab Lists the attributes for Amazon ECS resources within a specified target type and cluster\cr
 #'  \link[=ecs_list_clusters]{list_clusters} \tab Returns a list of existing clusters\cr
 #'  \link[=ecs_list_container_instances]{list_container_instances} \tab Returns a list of container instances in a specified cluster\cr
-#'  \link[=ecs_list_services]{list_services} \tab Lists the services that are running in a specified cluster\cr
+#'  \link[=ecs_list_services]{list_services} \tab Returns a list of services\cr
 #'  \link[=ecs_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for an Amazon ECS resource\cr
-#'  \link[=ecs_list_task_definition_families]{list_task_definition_families} \tab Returns a list of task definition families that are registered to your account (which may include task definition families that no longer have any ACTIVE task definition revisions)\cr
+#'  \link[=ecs_list_task_definition_families]{list_task_definition_families} \tab Returns a list of task definition families that are registered to your account\cr
 #'  \link[=ecs_list_task_definitions]{list_task_definitions} \tab Returns a list of task definitions that are registered to your account\cr
-#'  \link[=ecs_list_tasks]{list_tasks} \tab Returns a list of tasks for a specified cluster\cr
+#'  \link[=ecs_list_tasks]{list_tasks} \tab Returns a list of tasks\cr
 #'  \link[=ecs_put_account_setting]{put_account_setting} \tab Modifies an account setting\cr
 #'  \link[=ecs_put_account_setting_default]{put_account_setting_default} \tab Modifies an account setting for all IAM users on an account for whom no individual account setting has been specified\cr
 #'  \link[=ecs_put_attributes]{put_attributes} \tab Create or update an attribute on an Amazon ECS resource\cr
@@ -105,10 +120,11 @@ NULL
 #'  \link[=ecs_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
 #'  \link[=ecs_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
 #'  \link[=ecs_update_capacity_provider]{update_capacity_provider} \tab Modifies the parameters for a capacity provider\cr
+#'  \link[=ecs_update_cluster]{update_cluster} \tab Updates the cluster\cr
 #'  \link[=ecs_update_cluster_settings]{update_cluster_settings} \tab Modifies the settings to use for a cluster\cr
 #'  \link[=ecs_update_container_agent]{update_container_agent} \tab Updates the Amazon ECS container agent on a specified container instance\cr
 #'  \link[=ecs_update_container_instances_state]{update_container_instances_state} \tab Modifies the status of an Amazon ECS container instance\cr
-#'  \link[=ecs_update_service]{update_service} \tab Updating the task placement strategies and constraints on an Amazon ECS service remains in preview and is a Beta Service as defined by and subject to the Beta Service Participation Service Terms located at https://aws\cr
+#'  \link[=ecs_update_service]{update_service} \tab Modifies the parameters of a service\cr
 #'  \link[=ecs_update_service_primary_task_set]{update_service_primary_task_set} \tab Modifies which task set in a service is the primary task set\cr
 #'  \link[=ecs_update_task_set]{update_task_set} \tab Modifies a task set
 #' }

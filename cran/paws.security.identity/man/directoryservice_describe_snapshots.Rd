@@ -5,8 +5,12 @@
 \title{Obtains information about the directory snapshots that belong to this
 account}
 \usage{
-directoryservice_describe_snapshots(DirectoryId, SnapshotIds, NextToken,
-  Limit)
+directoryservice_describe_snapshots(
+  DirectoryId = NULL,
+  SnapshotIds = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{DirectoryId}{The identifier of the directory for which to retrieve snapshot
@@ -22,48 +26,9 @@ if this is the first call.}
 
 \item{Limit}{The maximum number of objects to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Snapshots = list(
-    list(
-      DirectoryId = "string",
-      SnapshotId = "string",
-      Type = "Auto"|"Manual",
-      Name = "string",
-      Status = "Creating"|"Completed"|"Failed",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Obtains information about the directory snapshots that belong to this
-account.
+Obtains information about the directory snapshots that belong to this account.
 
-This operation supports pagination with the use of the \emph{NextToken}
-request and response parameters. If more results are available, the
-\emph{DescribeSnapshots.NextToken} member contains a token that you pass in
-the next call to
-\code{\link[=directoryservice_describe_snapshots]{describe_snapshots}} to retrieve
-the next set of items.
-
-You can also specify a maximum number of return results with the \emph{Limit}
-parameter.
+See \url{https://paws-r.github.io/docs/directoryservice/describe_snapshots.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_snapshots(
-  DirectoryId = "string",
-  SnapshotIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
-
 \keyword{internal}

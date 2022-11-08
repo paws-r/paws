@@ -9,18 +9,9 @@ codebuild_delete_project(name)
 \arguments{
 \item{name}{[required] The name of the build project.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a build project. When you delete a project, its builds are not
-deleted.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_project(
-  name = "string"
-)
-}
-}
+Deletes a build project. When you delete a project, its builds are not deleted.
 
+See \url{https://paws-r.github.io/docs/codebuild/delete_project.html} for full documentation.
+}
 \keyword{internal}

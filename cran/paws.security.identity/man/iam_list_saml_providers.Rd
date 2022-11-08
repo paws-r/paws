@@ -6,30 +6,9 @@
 \usage{
 iam_list_saml_providers()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SAMLProviderList = list(
-    list(
-      Arn = "string",
-      ValidUntil = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Lists the SAML provider resource objects defined in IAM in the account.
+Lists the SAML provider resource objects defined in IAM in the account. IAM resource-listing operations return a subset of the available attributes for the resource. For example, this operation does not return tags, even though they are an attribute of the returned object. To view all of the information for a SAML provider, see \code{\link[=iam_get_saml_provider]{get_saml_provider}}.
 
-This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
+See \url{https://paws-r.github.io/docs/iam/list_saml_providers.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_saml_providers()
-}
-}
-
 \keyword{internal}

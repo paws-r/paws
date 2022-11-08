@@ -5,26 +5,45 @@ NULL
 #' AWS Certificate Manager Private Certificate Authority
 #'
 #' @description
-#' This is the *ACM Private CA API Reference*. It provides descriptions,
-#' syntax, and usage examples for each of the actions and data types
-#' involved in creating and managing private certificate authorities (CA)
-#' for your organization.
+#' This is the *Certificate Manager Private Certificate Authority (PCA) API
+#' Reference*. It provides descriptions, syntax, and usage examples for
+#' each of the actions and data types involved in creating and managing a
+#' private certificate authority (CA) for your organization.
 #' 
-#' The documentation for each action shows the Query API request parameters
-#' and the XML response. Alternatively, you can use one of the AWS SDKs to
-#' access an API that's tailored to the programming language or platform
-#' that you're using. For more information, see [AWS
-#' SDKs](https://aws.amazon.com/tools/#SDKs).
+#' The documentation for each action shows the API request parameters and
+#' the JSON response. Alternatively, you can use one of the Amazon Web
+#' Services SDKs to access an API that is tailored to the programming
+#' language or platform that you prefer. For more information, see [Amazon
+#' Web Services SDKs](https://aws.amazon.com/developer/tools/#SDKs).
 #' 
-#' Each ACM Private CA API action has a quota that determines the number of
-#' times the action can be called per second. For more information, see
-#' [API Rate Quotas in ACM Private
-#' CA](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaLimits.html#PcaLimits-api)
-#' in the ACM Private CA user guide.
+#' Each ACM Private CA API operation has a quota that determines the number
+#' of times the operation can be called per second. ACM Private CA
+#' throttles API requests at different rates depending on the operation.
+#' Throttling means that ACM Private CA rejects an otherwise valid request
+#' because the request exceeds the operation's quota for the number of
+#' requests per second. When a request is throttled, ACM Private CA returns
+#' a ThrottlingException error. ACM Private CA does not guarantee a minimum
+#' request rate for APIs.
+#' 
+#' To see an up-to-date list of your ACM Private CA quotas, or to request a
+#' quota increase, log into your Amazon Web Services account and visit the
+#' Service Quotas console.
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -36,10 +55,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -56,9 +79,9 @@ NULL
 #' \tabular{ll}{
 #'  \link[=acmpca_create_certificate_authority]{create_certificate_authority} \tab Creates a root or subordinate private certificate authority (CA)\cr
 #'  \link[=acmpca_create_certificate_authority_audit_report]{create_certificate_authority_audit_report} \tab Creates an audit report that lists every time that your CA private key is used\cr
-#'  \link[=acmpca_create_permission]{create_permission} \tab Grants one or more permissions on a private CA to the AWS Certificate Manager (ACM) service principal (acm\cr
+#'  \link[=acmpca_create_permission]{create_permission} \tab Grants one or more permissions on a private CA to the Certificate Manager (ACM) service principal (acm\cr
 #'  \link[=acmpca_delete_certificate_authority]{delete_certificate_authority} \tab Deletes a private certificate authority (CA)\cr
-#'  \link[=acmpca_delete_permission]{delete_permission} \tab Revokes permissions on a private CA granted to the AWS Certificate Manager (ACM) service principal (acm\cr
+#'  \link[=acmpca_delete_permission]{delete_permission} \tab Revokes permissions on a private CA granted to the Certificate Manager (ACM) service principal (acm\cr
 #'  \link[=acmpca_delete_policy]{delete_policy} \tab Deletes the resource-based policy attached to a private CA\cr
 #'  \link[=acmpca_describe_certificate_authority]{describe_certificate_authority} \tab Lists information about your private certificate authority (CA) or one that has been shared with you\cr
 #'  \link[=acmpca_describe_certificate_authority_audit_report]{describe_certificate_authority_audit_report} \tab Lists information about a specific audit report created by calling the CreateCertificateAuthorityAuditReport action\cr
@@ -69,7 +92,7 @@ NULL
 #'  \link[=acmpca_import_certificate_authority_certificate]{import_certificate_authority_certificate} \tab Imports a signed private CA certificate into ACM Private CA\cr
 #'  \link[=acmpca_issue_certificate]{issue_certificate} \tab Uses your private certificate authority (CA), or one that has been shared with you, to issue a client certificate\cr
 #'  \link[=acmpca_list_certificate_authorities]{list_certificate_authorities} \tab Lists the private certificate authorities that you created by using the CreateCertificateAuthority action\cr
-#'  \link[=acmpca_list_permissions]{list_permissions} \tab List all permissions on a private CA, if any, granted to the AWS Certificate Manager (ACM) service principal (acm\cr
+#'  \link[=acmpca_list_permissions]{list_permissions} \tab List all permissions on a private CA, if any, granted to the Certificate Manager (ACM) service principal (acm\cr
 #'  \link[=acmpca_list_tags]{list_tags} \tab Lists the tags, if any, that are associated with your private CA or one that has been shared with you\cr
 #'  \link[=acmpca_put_policy]{put_policy} \tab Attaches a resource-based policy to a private CA\cr
 #'  \link[=acmpca_restore_certificate_authority]{restore_certificate_authority} \tab Restores a certificate authority (CA) that is in the DELETED state\cr

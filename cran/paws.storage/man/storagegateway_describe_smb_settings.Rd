@@ -10,26 +10,9 @@ storagegateway_describe_smb_settings(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string",
-  DomainName = "string",
-  ActiveDirectoryStatus = "ACCESS_DENIED"|"DETACHED"|"JOINED"|"JOINING"|"NETWORK_ERROR"|"TIMEOUT"|"UNKNOWN_ERROR",
-  SMBGuestPasswordSet = TRUE|FALSE,
-  SMBSecurityStrategy = "ClientSpecified"|"MandatorySigning"|"MandatoryEncryption",
-  FileSharesVisible = TRUE|FALSE
-)
-}
-}
 \description{
-Gets a description of a Server Message Block (SMB) file share settings
-from a file gateway. This operation is only supported for file gateways.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_smb_settings(
-  GatewayARN = "string"
-)
-}
-}
+Gets a description of a Server Message Block (SMB) file share settings from a file gateway. This operation is only supported for file gateways.
 
+See \url{https://paws-r.github.io/docs/storagegateway/describe_smb_settings.html} for full documentation.
+}
 \keyword{internal}

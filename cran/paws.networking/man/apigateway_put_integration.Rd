@@ -4,59 +4,68 @@
 \alias{apigateway_put_integration}
 \title{Sets up a method's integration}
 \usage{
-apigateway_put_integration(restApiId, resourceId, httpMethod, type,
-  integrationHttpMethod, uri, connectionType, connectionId, credentials,
-  requestParameters, requestTemplates, passthroughBehavior,
-  cacheNamespace, cacheKeyParameters, contentHandling, timeoutInMillis,
-  tlsConfig)
+apigateway_put_integration(
+  restApiId,
+  resourceId,
+  httpMethod,
+  type,
+  integrationHttpMethod = NULL,
+  uri = NULL,
+  connectionType = NULL,
+  connectionId = NULL,
+  credentials = NULL,
+  requestParameters = NULL,
+  requestTemplates = NULL,
+  passthroughBehavior = NULL,
+  cacheNamespace = NULL,
+  cacheKeyParameters = NULL,
+  contentHandling = NULL,
+  timeoutInMillis = NULL,
+  tlsConfig = NULL
+)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{resourceId}{[required] [Required] Specifies a put integration request's resource ID.}
+\item{resourceId}{[required] Specifies a put integration request's resource ID.}
 
-\item{httpMethod}{[required] [Required] Specifies a put integration request's HTTP method.}
+\item{httpMethod}{[required] Specifies the HTTP method for the integration.}
 
-\item{type}{[required] [Required] Specifies a put integration input's type.}
+\item{type}{[required] Specifies a put integration input's type.}
 
-\item{integrationHttpMethod}{Specifies a put integration HTTP method. When the integration type is
-HTTP or AWS, this field is required.}
+\item{integrationHttpMethod}{The HTTP method for the integration.}
 
 \item{uri}{Specifies Uniform Resource Identifier (URI) of the integration endpoint.
-\itemize{
-\item For \code{HTTP} or \code{HTTP_PROXY} integrations, the URI must be a fully
-formed, encoded HTTP(S) URL according to the \href{https://en.wikipedia.org/wiki/Uniform_Resource_Identifier}{RFC-3986 specification},
-for either standard integration, where \code{connectionType} is not
-\code{VPC_LINK}, or private integration, where \code{connectionType} is
-\code{VPC_LINK}. For a private HTTP integration, the URI is not used for
-routing.
-\item For \code{AWS} or \code{AWS_PROXY} integrations, the URI is of the form
-\code{arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}}.
-Here, \code{{Region}} is the API Gateway region (e.g., \code{us-east-1});
-\code{{service}} is the name of the integrated AWS service (e.g., \code{s3});
-and \code{{subdomain}} is a designated subdomain supported by certain AWS
-service for fast host-name lookup. \code{action} can be used for an AWS
-service action-based API, using an
-\verb{Action=\{name\}&\{p1\}=\{v1\}&p2=\{v2\}...} query string. The ensuing
-\code{{service_api}} refers to a supported action \code{{name}} plus any
-required input parameters. Alternatively, \code{path} can be used for an
-AWS service path-based API. The ensuing \code{service_api} refers to the
-path to an AWS service resource, including the region of the
-integrated AWS service, if applicable. For example, for integration
-with the S3 API of \code{GetObject}, the \code{uri} can be either
+For HTTP or \code{HTTP_PROXY} integrations, the URI must be a fully formed,
+encoded HTTP(S) URL according to the RFC-3986 specification, for either
+standard integration, where \code{connectionType} is not \code{VPC_LINK}, or
+private integration, where \code{connectionType} is \code{VPC_LINK}. For a private
+HTTP integration, the URI is not used for routing. For \code{AWS} or
+\code{AWS_PROXY} integrations, the URI is of the form
+\verb{arn:aws:apigateway:\\\{region\\\}:\\\{subdomain.service|service\\\}:path|action/\\\{service_api}\}.
+Here, \{Region\} is the API Gateway region (e.g., us-east-1);
+\{service\} is the name of the integrated Amazon Web Services service
+(e.g., s3); and \{subdomain\} is a designated subdomain supported by
+certain Amazon Web Services service for fast host-name lookup. action
+can be used for an Amazon Web Services service action-based API, using
+an Action=\{name\}&\{p1\}=\{v1\}&p2=\{v2\}... query string. The
+ensuing \{service_api\} refers to a supported action \{name\} plus
+any required input parameters. Alternatively, path can be used for an
+Amazon Web Services service path-based API. The ensuing service_api
+refers to the path to an Amazon Web Services service resource, including
+the region of the integrated Amazon Web Services service, if applicable.
+For example, for integration with the S3 API of \code{GetObject}, the \code{uri}
+can be either
 \code{arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}}
-or \code{arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}}
-}}
+or \code{arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}}.}
 
 \item{connectionType}{The type of the network connection to the integration endpoint. The
 valid value is \code{INTERNET} for connections through the public routable
 internet or \code{VPC_LINK} for private connections between API Gateway and a
 network load balancer in a VPC. The default value is \code{INTERNET}.}
 
-\item{connectionId}{The
-(\href{https://docs.aws.amazon.com/apigateway/api-reference/resource/vpc-link/#id}{\code{id}})
-of the VpcLink used for the integration when \code{connectionType=VPC_LINK}
-and undefined, otherwise.}
+\item{connectionId}{The ID of the VpcLink used for the integration. Specify this value only
+if you specify \code{VPC_LINK} as the connection type.}
 
 \item{credentials}{Specifies whether credentials are required for a put integration.}
 
@@ -78,17 +87,7 @@ client. The content type value is the key in this map, and the template
 Content-Type header in the request, and the available mapping templates
 specified as the \code{requestTemplates} property on the Integration
 resource. There are three valid values: \code{WHEN_NO_MATCH},
-\code{WHEN_NO_TEMPLATES}, and \code{NEVER}.
-\itemize{
-\item \code{WHEN_NO_MATCH} passes the request body for unmapped content types
-through to the integration back end without transformation.
-\item \code{NEVER} rejects unmapped content types with an HTTP 415 'Unsupported
-Media Type' response.
-\item \code{WHEN_NO_TEMPLATES} allows pass-through when the integration has NO
-content types mapped to templates. However if there is at least one
-content type defined, unmapped content types will be rejected with
-the same 415 response.
-}}
+\code{WHEN_NO_TEMPLATES}, and \code{NEVER}.}
 
 \item{cacheNamespace}{Specifies a group of related cached parameters. By default, API Gateway
 uses the resource ID as the \code{cacheNamespace}. You can specify the same
@@ -102,12 +101,6 @@ specified for Method \code{requestParameters}.}
 \item{contentHandling}{Specifies how to handle request payload content type conversions.
 Supported values are \code{CONVERT_TO_BINARY} and \code{CONVERT_TO_TEXT}, with the
 following behaviors:
-\itemize{
-\item \code{CONVERT_TO_BINARY}: Converts a request payload from a
-Base64-encoded string to the corresponding binary blob.
-\item \code{CONVERT_TO_TEXT}: Converts a request payload from a binary blob to
-a Base64-encoded string.
-}
 
 If this property is not defined, the request payload will be passed
 through from the method request to integration request without
@@ -119,78 +112,9 @@ support payload pass-through.}
 
 \item{tlsConfig}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-  httpMethod = "string",
-  uri = "string",
-  connectionType = "INTERNET"|"VPC_LINK",
-  connectionId = "string",
-  credentials = "string",
-  requestParameters = list(
-    "string"
-  ),
-  requestTemplates = list(
-    "string"
-  ),
-  passthroughBehavior = "string",
-  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-  timeoutInMillis = 123,
-  cacheNamespace = "string",
-  cacheKeyParameters = list(
-    "string"
-  ),
-  integrationResponses = list(
-    list(
-      statusCode = "string",
-      selectionPattern = "string",
-      responseParameters = list(
-        "string"
-      ),
-      responseTemplates = list(
-        "string"
-      ),
-      contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT"
-    )
-  ),
-  tlsConfig = list(
-    insecureSkipVerification = TRUE|FALSE
-  )
-)
-}
-}
 \description{
 Sets up a method's integration.
-}
-\section{Request syntax}{
-\preformatted{svc$put_integration(
-  restApiId = "string",
-  resourceId = "string",
-  httpMethod = "string",
-  type = "HTTP"|"AWS"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
-  integrationHttpMethod = "string",
-  uri = "string",
-  connectionType = "INTERNET"|"VPC_LINK",
-  connectionId = "string",
-  credentials = "string",
-  requestParameters = list(
-    "string"
-  ),
-  requestTemplates = list(
-    "string"
-  ),
-  passthroughBehavior = "string",
-  cacheNamespace = "string",
-  cacheKeyParameters = list(
-    "string"
-  ),
-  contentHandling = "CONVERT_TO_BINARY"|"CONVERT_TO_TEXT",
-  timeoutInMillis = 123,
-  tlsConfig = list(
-    insecureSkipVerification = TRUE|FALSE
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/put_integration.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,13 @@
 \alias{servicecatalog_list_organization_portfolio_access}
 \title{Lists the organization nodes that have access to the specified portfolio}
 \usage{
-servicecatalog_list_organization_portfolio_access(AcceptLanguage,
-  PortfolioId, OrganizationNodeType, PageToken, PageSize)
+servicecatalog_list_organization_portfolio_access(
+  AcceptLanguage = NULL,
+  PortfolioId,
+  OrganizationNodeType,
+  PageToken = NULL,
+  PageSize = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -31,35 +36,9 @@ results, use null.}
 
 \item{PageSize}{The maximum number of items to return with this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OrganizationNodes = list(
-    list(
-      Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
-      Value = "string"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
-Lists the organization nodes that have access to the specified
-portfolio. This API can only be called by the management account in the
-organization or by a delegated admin.
+Lists the organization nodes that have access to the specified portfolio. This API can only be called by the management account in the organization or by a delegated admin.
 
-If a delegated admin is de-registered, they can no longer perform this
-operation.
+See \url{https://paws-r.github.io/docs/servicecatalog/list_organization_portfolio_access.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_organization_portfolio_access(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  OrganizationNodeType = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
-  PageToken = "string",
-  PageSize = 123
-)
-}
-}
-
 \keyword{internal}

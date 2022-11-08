@@ -5,47 +5,23 @@
 \title{Describes an existing IAM policy assignment, as specified by the
 assignment name}
 \usage{
-quicksight_describe_iam_policy_assignment(AwsAccountId, AssignmentName,
-  Namespace)
+quicksight_describe_iam_policy_assignment(
+  AwsAccountId,
+  AssignmentName,
+  Namespace
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the assignment that you want to
-describe.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the assignment
+that you want to describe.}
 
 \item{AssignmentName}{[required] The name of the assignment, also called a rule.}
 
 \item{Namespace}{[required] The namespace that contains the assignment.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IAMPolicyAssignment = list(
-    AwsAccountId = "string",
-    AssignmentId = "string",
-    AssignmentName = "string",
-    PolicyArn = "string",
-    Identities = list(
-      list(
-        "string"
-      )
-    ),
-    AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED"
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
-Describes an existing IAM policy assignment, as specified by the
-assignment name.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_iam_policy_assignment(
-  AwsAccountId = "string",
-  AssignmentName = "string",
-  Namespace = "string"
-)
-}
-}
+Describes an existing IAM policy assignment, as specified by the assignment name.
 
+See \url{https://paws-r.github.io/docs/quicksight/describe_iam_policy_assignment.html} for full documentation.
+}
 \keyword{internal}

@@ -11,49 +11,9 @@ securityhub_get_members(AccountIds)
 \item{AccountIds}{[required] The list of account IDs for the Security Hub member accounts to return
 the details for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Members = list(
-    list(
-      AccountId = "string",
-      Email = "string",
-      MasterId = "string",
-      MemberStatus = "string",
-      InvitedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdatedAt = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  UnprocessedAccounts = list(
-    list(
-      AccountId = "string",
-      ProcessingResult = "string"
-    )
-  )
-)
-}
-}
 \description{
-Returns the details for the Security Hub member accounts for the
-specified account IDs.
+Returns the details for the Security Hub member accounts for the specified account IDs.
 
-A master account can be either a delegated Security Hub administrator
-account for an organization or a master account that enabled Security
-Hub manually.
-
-The results include both member accounts that are in an organization and
-accounts that were invited manually.
+See \url{https://paws-r.github.io/docs/securityhub/get_members.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_members(
-  AccountIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

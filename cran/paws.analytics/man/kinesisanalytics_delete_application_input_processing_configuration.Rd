@@ -6,7 +6,10 @@
 API, which only supports SQL applications}
 \usage{
 kinesisanalytics_delete_application_input_processing_configuration(
-  ApplicationName, CurrentApplicationVersionId, InputId)
+  ApplicationName,
+  CurrentApplicationVersionId,
+  InputId
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The Kinesis Analytics application name.}
@@ -19,26 +22,9 @@ application by using the
 \code{\link[=kinesisanalytics_describe_application]{describe_application}}
 operation.}
 }
-\value{
-An empty list.
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Deletes an
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html}{InputProcessingConfiguration}
-from an input.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/delete_application_input_processing_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_application_input_processing_configuration(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  InputId = "string"
-)
-}
-}
-
 \keyword{internal}

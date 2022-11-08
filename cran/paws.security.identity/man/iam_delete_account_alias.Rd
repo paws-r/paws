@@ -2,7 +2,7 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_delete_account_alias}
 \alias{iam_delete_account_alias}
-\title{Deletes the specified AWS account alias}
+\title{Deletes the specified Amazon Web Services account alias}
 \usage{
 iam_delete_account_alias(AccountAlias)
 }
@@ -13,29 +13,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of lowercase letters, digits, and dashes. You cannot start or
 finish with a dash, nor can you have two dashes in a row.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified AWS account alias. For information about using an
-AWS account alias, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html}{Using an Alias for Your AWS Account ID}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_account_alias(
-  AccountAlias = "string"
-)
-}
-}
+Deletes the specified Amazon Web Services account alias. For information about using an Amazon Web Services account alias, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html}{Using an alias for your Amazon Web Services account ID} in the \emph{IAM User Guide}.
 
-\examples{
-\dontrun{
-# The following command removes the alias mycompany from the current AWS
-# account:
-svc$delete_account_alias(
-  AccountAlias = "mycompany"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/delete_account_alias.html} for full documentation.
 }
 \keyword{internal}

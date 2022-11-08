@@ -2,27 +2,18 @@
 % Please edit documentation in R/macie_operations.R
 \name{macie_associate_member_account}
 \alias{macie_associate_member_account}
-\title{Associates a specified AWS account with Amazon Macie Classic as a member
-account}
+\title{(Discontinued) Associates a specified Amazon Web Services account with
+Amazon Macie Classic as a member account}
 \usage{
 macie_associate_member_account(memberAccountId)
 }
 \arguments{
-\item{memberAccountId}{[required] The ID of the AWS account that you want to associate with Amazon Macie
-Classic as a member account.}
-}
-\value{
-An empty list.
+\item{memberAccountId}{[required] (Discontinued) The ID of the Amazon Web Services account that you want
+to associate with Amazon Macie Classic as a member account.}
 }
 \description{
-Associates a specified AWS account with Amazon Macie Classic as a member
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_member_account(
-  memberAccountId = "string"
-)
-}
-}
+(Discontinued) Associates a specified Amazon Web Services account with Amazon Macie Classic as a member account.
 
+See \url{https://paws-r.github.io/docs/macie/associate_member_account.html} for full documentation.
+}
 \keyword{internal}

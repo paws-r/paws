@@ -2,13 +2,18 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_invite_members}
 \alias{guardduty_invite_members}
-\title{Invites other AWS accounts (created as members of the current AWS
-account by CreateMembers) to enable GuardDuty, and allow the current AWS
-account to view and manage these accounts' findings on their behalf as
-the GuardDuty administrator account}
+\title{Invites other Amazon Web Services accounts (created as members of the
+current Amazon Web Services account by CreateMembers) to enable
+GuardDuty, and allow the current Amazon Web Services account to view and
+manage these accounts' findings on their behalf as the GuardDuty
+administrator account}
 \usage{
-guardduty_invite_members(DetectorId, AccountIds,
-  DisableEmailNotification, Message)
+guardduty_invite_members(
+  DetectorId,
+  AccountIds,
+  DisableEmailNotification = NULL,
+  Message = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account that you want to
@@ -24,33 +29,9 @@ members.}
 \item{Message}{The invitation message that you want to send to the accounts that you're
 inviting to GuardDuty as members.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UnprocessedAccounts = list(
-    list(
-      AccountId = "string",
-      Result = "string"
-    )
-  )
-)
-}
-}
 \description{
-Invites other AWS accounts (created as members of the current AWS
-account by CreateMembers) to enable GuardDuty, and allow the current AWS
-account to view and manage these accounts' findings on their behalf as
-the GuardDuty administrator account.
-}
-\section{Request syntax}{
-\preformatted{svc$invite_members(
-  DetectorId = "string",
-  AccountIds = list(
-    "string"
-  ),
-  DisableEmailNotification = TRUE|FALSE,
-  Message = "string"
-)
-}
-}
+Invites other Amazon Web Services accounts (created as members of the current Amazon Web Services account by CreateMembers) to enable GuardDuty, and allow the current Amazon Web Services account to view and manage these accounts' findings on their behalf as the GuardDuty administrator account.
 
+See \url{https://paws-r.github.io/docs/guardduty/invite_members.html} for full documentation.
+}
 \keyword{internal}

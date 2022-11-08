@@ -2,115 +2,23 @@
 % Please edit documentation in R/marketplacemetering_operations.R
 \name{marketplacemetering_batch_meter_usage}
 \alias{marketplacemetering_batch_meter_usage}
-\title{BatchMeterUsage is called from a SaaS application listed on the AWS
+\title{BatchMeterUsage is called from a SaaS application listed on AWS
 Marketplace to post metering records for a set of customers}
 \usage{
 marketplacemetering_batch_meter_usage(UsageRecords, ProductCode)
 }
 \arguments{
-\item{UsageRecords}{[required] The set of UsageRecords to submit. BatchMeterUsage accepts up to 25
-UsageRecords at a time.}
+\item{UsageRecords}{[required] The set of \code{UsageRecords} to submit.
+\code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}} accepts up
+to 25 \code{UsageRecords} at a time.}
 
 \item{ProductCode}{[required] Product code is used to uniquely identify a product in AWS Marketplace.
 The product code should be the same as the one used during the
 publishing of a new product.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Results = list(
-    list(
-      UsageRecord = list(
-        Timestamp = as.POSIXct(
-          "2015-01-01"
-        ),
-        CustomerIdentifier = "string",
-        Dimension = "string",
-        Quantity = 123,
-        UsageAllocations = list(
-          list(
-            AllocatedUsageQuantity = 123,
-            Tags = list(
-              list(
-                Key = "string",
-                Value = "string"
-              )
-            )
-          )
-        )
-      ),
-      MeteringRecordId = "string",
-      Status = "Success"|"CustomerNotSubscribed"|"DuplicateRecord"
-    )
-  ),
-  UnprocessedRecords = list(
-    list(
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      CustomerIdentifier = "string",
-      Dimension = "string",
-      Quantity = 123,
-      UsageAllocations = list(
-        list(
-          AllocatedUsageQuantity = 123,
-          Tags = list(
-            list(
-              Key = "string",
-              Value = "string"
-            )
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-BatchMeterUsage is called from a SaaS application listed on the AWS
-Marketplace to post metering records for a set of customers.
+\code{\link[=marketplacemetering_batch_meter_usage]{batch_meter_usage}} is called from a SaaS application listed on AWS Marketplace to post metering records for a set of customers.
 
-For identical requests, the API is idempotent; requests can be retried
-with the same records or a subset of the input records.
-
-Every request to BatchMeterUsage is for one product. If you need to
-meter usage for multiple products, you must make multiple calls to
-BatchMeterUsage.
-
-BatchMeterUsage can process up to 25 UsageRecords at a time.
-
-A UsageRecord can optionally include multiple usage allocations, to
-provide customers with usagedata split into buckets by tags that you
-define (or allow the customer to define).
-
-BatchMeterUsage requests must be less than 1MB in size.
+See \url{https://paws-r.github.io/docs/marketplacemetering/batch_meter_usage.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$batch_meter_usage(
-  UsageRecords = list(
-    list(
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      CustomerIdentifier = "string",
-      Dimension = "string",
-      Quantity = 123,
-      UsageAllocations = list(
-        list(
-          AllocatedUsageQuantity = 123,
-          Tags = list(
-            list(
-              Key = "string",
-              Value = "string"
-            )
-          )
-        )
-      )
-    )
-  ),
-  ProductCode = "string"
-)
-}
-}
-
 \keyword{internal}

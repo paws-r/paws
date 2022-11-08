@@ -39,6 +39,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ecr$batch_get_repository_scanning_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(repositoryNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$batch_get_repository_scanning_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(scanningConfigurations = structure(list(structure(list(repositoryArn = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), scanOnPush = structure(logical(0), tags = list(type = "boolean")), scanFrequency = structure(logical(0), tags = list(type = "string")), appliedScanFilters = structure(list(structure(list(filter = structure(logical(0), tags = list(type = "string")), filterType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), failures = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), failureCode = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ecr$complete_layer_upload_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), uploadId = structure(logical(0), tags = list(type = "string")), layerDigests = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -51,9 +63,21 @@ NULL
   return(populate(args, shape))
 }
 
+.ecr$create_pull_through_cache_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$create_pull_through_cache_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), registryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ecr$create_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), imageTagMutability = structure(logical(0), tags = list(type = "string")), imageScanningConfiguration = structure(list(scanOnPush = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), encryptionConfiguration = structure(list(encryptionType = structure(logical(0), tags = list(type = "string")), kmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), imageTagMutability = structure(logical(0), tags = list(type = "string")), imageScanningConfiguration = structure(list(scanOnPush = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), encryptionConfiguration = structure(list(encryptionType = structure(logical(0), tags = list(type = "string")), kmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -72,6 +96,18 @@ NULL
 .ecr$delete_lifecycle_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), lifecyclePolicyText = structure(logical(0), tags = list(type = "string")), lastEvaluatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$delete_pull_through_cache_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$delete_pull_through_cache_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), registryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -111,6 +147,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ecr$describe_image_replication_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), imageId = structure(list(imageDigest = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), registryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$describe_image_replication_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(repositoryName = structure(logical(0), tags = list(type = "string")), imageId = structure(list(imageDigest = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), replicationStatuses = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), failureCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ecr$describe_image_scan_findings_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), imageId = structure(list(imageDigest = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -119,7 +167,7 @@ NULL
 
 .ecr$describe_image_scan_findings_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), imageId = structure(list(imageDigest = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imageScanStatus = structure(list(status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imageScanFindings = structure(list(imageScanCompletedAt = structure(logical(0), tags = list(type = "timestamp")), vulnerabilitySourceUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), findings = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), severity = structure(logical(0), tags = list(type = "string")), attributes = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), findingSeverityCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), imageId = structure(list(imageDigest = structure(logical(0), tags = list(type = "string")), imageTag = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imageScanStatus = structure(list(status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imageScanFindings = structure(list(imageScanCompletedAt = structure(logical(0), tags = list(type = "timestamp")), vulnerabilitySourceUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), findingSeverityCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), findings = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), uri = structure(logical(0), tags = list(type = "string")), severity = structure(logical(0), tags = list(type = "string")), attributes = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), enhancedFindings = structure(list(structure(list(awsAccountId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), findingArn = structure(logical(0), tags = list(type = "string")), firstObservedAt = structure(logical(0), tags = list(type = "timestamp")), lastObservedAt = structure(logical(0), tags = list(type = "timestamp")), packageVulnerabilityDetails = structure(list(cvss = structure(list(structure(list(baseScore = structure(logical(0), tags = list(type = "double")), scoringVector = structure(logical(0), tags = list(type = "string")), source = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), referenceUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), relatedVulnerabilities = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), source = structure(logical(0), tags = list(type = "string")), sourceUrl = structure(logical(0), tags = list(type = "string")), vendorCreatedAt = structure(logical(0), tags = list(type = "timestamp")), vendorSeverity = structure(logical(0), tags = list(type = "string")), vendorUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), vulnerabilityId = structure(logical(0), tags = list(type = "string")), vulnerablePackages = structure(list(structure(list(arch = structure(logical(0), tags = list(type = "string")), epoch = structure(logical(0), tags = list(type = "integer")), filePath = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), packageManager = structure(logical(0), tags = list(type = "string")), release = structure(logical(0), tags = list(type = "string")), sourceLayerHash = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), remediation = structure(list(recommendation = structure(list(url = structure(logical(0), tags = list(type = "string")), text = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), resources = structure(list(structure(list(details = structure(list(awsEcrContainerImage = structure(list(architecture = structure(logical(0), tags = list(type = "string")), author = structure(logical(0), tags = list(type = "string")), imageHash = structure(logical(0), tags = list(type = "string")), imageTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), platform = structure(logical(0), tags = list(type = "string")), pushedAt = structure(logical(0), tags = list(type = "timestamp")), registry = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), id = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), score = structure(logical(0), tags = list(type = "double")), scoreDetails = structure(list(cvss = structure(list(adjustments = structure(list(structure(list(metric = structure(logical(0), tags = list(type = "string")), reason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), score = structure(logical(0), tags = list(type = "double")), scoreSource = structure(logical(0), tags = list(type = "string")), scoringVector = structure(logical(0), tags = list(type = "string")), version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), severity = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -131,7 +179,19 @@ NULL
 
 .ecr$describe_images_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(imageDetails = structure(list(structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), imageDigest = structure(logical(0), tags = list(type = "string")), imageTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), imageSizeInBytes = structure(logical(0), tags = list(type = "long")), imagePushedAt = structure(logical(0), tags = list(type = "timestamp")), imageScanStatus = structure(list(status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imageScanFindingsSummary = structure(list(imageScanCompletedAt = structure(logical(0), tags = list(type = "timestamp")), vulnerabilitySourceUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), findingSeverityCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure")), imageManifestMediaType = structure(logical(0), tags = list(type = "string")), artifactMediaType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(imageDetails = structure(list(structure(list(registryId = structure(logical(0), tags = list(type = "string")), repositoryName = structure(logical(0), tags = list(type = "string")), imageDigest = structure(logical(0), tags = list(type = "string")), imageTags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), imageSizeInBytes = structure(logical(0), tags = list(type = "long")), imagePushedAt = structure(logical(0), tags = list(type = "timestamp")), imageScanStatus = structure(list(status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), imageScanFindingsSummary = structure(list(imageScanCompletedAt = structure(logical(0), tags = list(type = "timestamp")), vulnerabilitySourceUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), findingSeverityCounts = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure")), imageManifestMediaType = structure(logical(0), tags = list(type = "string")), artifactMediaType = structure(logical(0), tags = list(type = "string")), lastRecordedPullTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$describe_pull_through_cache_rules_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), ecrRepositoryPrefixes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$describe_pull_through_cache_rules_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(pullThroughCacheRules = structure(list(structure(list(ecrRepositoryPrefix = structure(logical(0), tags = list(type = "string")), upstreamRegistryUrl = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), registryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -143,7 +203,7 @@ NULL
 
 .ecr$describe_registry_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), replicationConfiguration = structure(list(rules = structure(list(structure(list(destinations = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), replicationConfiguration = structure(list(rules = structure(list(structure(list(destinations = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), repositoryFilters = structure(list(structure(list(filter = structure(logical(0), tags = list(type = "string")), filterType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -216,6 +276,18 @@ NULL
 .ecr$get_registry_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), policyText = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$get_registry_scanning_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$get_registry_scanning_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(registryId = structure(logical(0), tags = list(type = "string")), scanningConfiguration = structure(list(scanType = structure(logical(0), tags = list(type = "string")), rules = structure(list(structure(list(scanFrequency = structure(logical(0), tags = list(type = "string")), repositoryFilters = structure(list(structure(list(filter = structure(logical(0), tags = list(type = "string")), filterType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -327,15 +399,27 @@ NULL
   return(populate(args, shape))
 }
 
+.ecr$put_registry_scanning_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(scanType = structure(logical(0), tags = list(type = "string")), rules = structure(list(structure(list(scanFrequency = structure(logical(0), tags = list(type = "string")), repositoryFilters = structure(list(structure(list(filter = structure(logical(0), tags = list(type = "string")), filterType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ecr$put_registry_scanning_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(registryScanningConfiguration = structure(list(scanType = structure(logical(0), tags = list(type = "string")), rules = structure(list(structure(list(scanFrequency = structure(logical(0), tags = list(type = "string")), repositoryFilters = structure(list(structure(list(filter = structure(logical(0), tags = list(type = "string")), filterType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ecr$put_replication_configuration_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(replicationConfiguration = structure(list(rules = structure(list(structure(list(destinations = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(replicationConfiguration = structure(list(rules = structure(list(structure(list(destinations = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), repositoryFilters = structure(list(structure(list(filter = structure(logical(0), tags = list(type = "string")), filterType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .ecr$put_replication_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(replicationConfiguration = structure(list(rules = structure(list(structure(list(destinations = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(replicationConfiguration = structure(list(rules = structure(list(structure(list(destinations = structure(list(structure(list(region = structure(logical(0), tags = list(type = "string")), registryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), repositoryFilters = structure(list(structure(list(filter = structure(logical(0), tags = list(type = "string")), filterType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

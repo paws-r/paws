@@ -4,8 +4,11 @@
 \alias{securityhub_get_enabled_standards}
 \title{Returns a list of the standards that are currently enabled}
 \usage{
-securityhub_get_enabled_standards(StandardsSubscriptionArns, NextToken,
-  MaxResults)
+securityhub_get_enabled_standards(
+  StandardsSubscriptionArns = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{StandardsSubscriptionArns}{The list of the standards subscription ARNs for the standards to
@@ -21,34 +24,9 @@ response.}
 
 \item{MaxResults}{The maximum number of results to return in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StandardsSubscriptions = list(
-    list(
-      StandardsSubscriptionArn = "string",
-      StandardsArn = "string",
-      StandardsInput = list(
-        "string"
-      ),
-      StandardsStatus = "PENDING"|"READY"|"FAILED"|"DELETING"|"INCOMPLETE"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns a list of the standards that are currently enabled.
-}
-\section{Request syntax}{
-\preformatted{svc$get_enabled_standards(
-  StandardsSubscriptionArns = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/securityhub/get_enabled_standards.html} for full documentation.
+}
 \keyword{internal}

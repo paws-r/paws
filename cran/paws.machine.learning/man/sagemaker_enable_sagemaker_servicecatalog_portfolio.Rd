@@ -6,16 +6,9 @@
 \usage{
 sagemaker_enable_sagemaker_servicecatalog_portfolio()
 }
-\value{
-An empty list.
-}
 \description{
-Enables using Service Catalog in SageMaker. Service Catalog is used to
-create SageMaker projects.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_sagemaker_servicecatalog_portfolio()
-}
-}
+Enables using Service Catalog in SageMaker. Service Catalog is used to create SageMaker projects.
 
+See \url{https://paws-r.github.io/docs/sagemaker/enable_sagemaker_servicecatalog_portfolio.html} for full documentation.
+}
 \keyword{internal}

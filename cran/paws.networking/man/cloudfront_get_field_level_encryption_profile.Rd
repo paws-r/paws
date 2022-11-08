@@ -9,46 +9,9 @@ cloudfront_get_field_level_encryption_profile(Id)
 \arguments{
 \item{Id}{[required] Get the ID for the field-level encryption profile information.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FieldLevelEncryptionProfile = list(
-    Id = "string",
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    FieldLevelEncryptionProfileConfig = list(
-      Name = "string",
-      CallerReference = "string",
-      Comment = "string",
-      EncryptionEntities = list(
-        Quantity = 123,
-        Items = list(
-          list(
-            PublicKeyId = "string",
-            ProviderId = "string",
-            FieldPatterns = list(
-              Quantity = 123,
-              Items = list(
-                "string"
-              )
-            )
-          )
-        )
-      )
-    )
-  ),
-  ETag = "string"
-)
-}
-}
 \description{
 Get the field-level encryption profile information.
-}
-\section{Request syntax}{
-\preformatted{svc$get_field_level_encryption_profile(
-  Id = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/get_field_level_encryption_profile.html} for full documentation.
+}
 \keyword{internal}

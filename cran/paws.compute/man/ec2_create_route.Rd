@@ -4,11 +4,24 @@
 \alias{ec2_create_route}
 \title{Creates a route in a route table within a VPC}
 \usage{
-ec2_create_route(DestinationCidrBlock, DestinationIpv6CidrBlock,
-  DestinationPrefixListId, DryRun, VpcEndpointId,
-  EgressOnlyInternetGatewayId, GatewayId, InstanceId, NatGatewayId,
-  TransitGatewayId, LocalGatewayId, CarrierGatewayId, NetworkInterfaceId,
-  RouteTableId, VpcPeeringConnectionId)
+ec2_create_route(
+  DestinationCidrBlock = NULL,
+  DestinationIpv6CidrBlock = NULL,
+  DestinationPrefixListId = NULL,
+  DryRun = NULL,
+  VpcEndpointId = NULL,
+  EgressOnlyInternetGatewayId = NULL,
+  GatewayId = NULL,
+  InstanceId = NULL,
+  NatGatewayId = NULL,
+  TransitGatewayId = NULL,
+  LocalGatewayId = NULL,
+  CarrierGatewayId = NULL,
+  NetworkInterfaceId = NULL,
+  RouteTableId,
+  VpcPeeringConnectionId = NULL,
+  CoreNetworkArn = NULL
+)
 }
 \arguments{
 \item{DestinationCidrBlock}{The IPv4 CIDR address block used for the destination match. Routing
@@ -53,69 +66,12 @@ associated with a Wavelength Zone.}
 \item{RouteTableId}{[required] The ID of the route table for the route.}
 
 \item{VpcPeeringConnectionId}{The ID of a VPC peering connection.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
+
+\item{CoreNetworkArn}{The Amazon Resource Name (ARN) of the core network.}
 }
 \description{
 Creates a route in a route table within a VPC.
 
-You must specify one of the following targets: internet gateway or
-virtual private gateway, NAT instance, NAT gateway, VPC peering
-connection, network interface, egress-only internet gateway, or transit
-gateway.
-
-When determining how to route traffic, we use the route with the most
-specific match. For example, traffic is destined for the IPv4 address
-\verb{192.0.2.3}, and the route table includes the following two IPv4 routes:
-\itemize{
-\item \verb{192.0.2.0/24} (goes to some target A)
-\item \verb{192.0.2.0/28} (goes to some target B)
-}
-
-Both routes apply to the traffic destined for \verb{192.0.2.3}. However, the
-second route in the list covers a smaller number of IP addresses and is
-therefore more specific, so we use that route to determine where to
-target the traffic.
-
-For more information about route tables, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_route(
-  DestinationCidrBlock = "string",
-  DestinationIpv6CidrBlock = "string",
-  DestinationPrefixListId = "string",
-  DryRun = TRUE|FALSE,
-  VpcEndpointId = "string",
-  EgressOnlyInternetGatewayId = "string",
-  GatewayId = "string",
-  InstanceId = "string",
-  NatGatewayId = "string",
-  TransitGatewayId = "string",
-  LocalGatewayId = "string",
-  CarrierGatewayId = "string",
-  NetworkInterfaceId = "string",
-  RouteTableId = "string",
-  VpcPeeringConnectionId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates a route for the specified route table. The route
-# matches all traffic (0.0.0.0/0) and routes it to the specified Internet
-# gateway.
-svc$create_route(
-  DestinationCidrBlock = "0.0.0.0/0",
-  GatewayId = "igw-c0a643a9",
-  RouteTableId = "rtb-22574640"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/create_route.html} for full documentation.
 }
 \keyword{internal}

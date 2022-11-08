@@ -7,36 +7,12 @@
 lambda_list_tags(Resource)
 }
 \arguments{
-\item{Resource}{[required] The function's Amazon Resource Name (ARN).}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    "string"
-  )
-)
-}
+\item{Resource}{[required] The function's Amazon Resource Name (ARN). Note: Lambda does not support
+adding tags to aliases or versions.}
 }
 \description{
-Returns a function's
-\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}.
-You can also view tags with \code{\link[=lambda_get_function]{get_function}}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags(
-  Resource = "string"
-)
-}
-}
+Returns a function's \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}. You can also view tags with \code{\link[=lambda_get_function]{get_function}}.
 
-\examples{
-\dontrun{
-# The following example displays the tags attached to the my-function
-# Lambda function.
-svc$list_tags(
-  Resource = "arn:aws:lambda:us-west-2:123456789012:function:my-function"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/list_tags.html} for full documentation.
 }
 \keyword{internal}

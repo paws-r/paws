@@ -6,25 +6,9 @@
 \usage{
 ses_get_send_quota()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Max24HourSend = 123.0,
-  MaxSendRate = 123.0,
-  SentLast24Hours = 123.0
-)
-}
-}
 \description{
 Provides the sending limits for the Amazon SES account.
 
-You can execute this operation no more than once per second.
-}
-\examples{
-\dontrun{
-# The following example returns the Amazon SES sending limits for an AWS
-# account:
-svc$get_send_quota()
-}
-
+See \url{https://paws-r.github.io/docs/ses/get_send_quota.html} for full documentation.
 }
 \keyword{internal}

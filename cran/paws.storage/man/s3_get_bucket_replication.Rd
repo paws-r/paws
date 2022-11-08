@@ -4,128 +4,18 @@
 \alias{s3_get_bucket_replication}
 \title{Returns the replication configuration of a bucket}
 \usage{
-s3_get_bucket_replication(Bucket, ExpectedBucketOwner)
+s3_get_bucket_replication(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name for which to get the replication information.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ReplicationConfiguration = list(
-    Role = "string",
-    Rules = list(
-      list(
-        ID = "string",
-        Priority = 123,
-        Prefix = "string",
-        Filter = list(
-          Prefix = "string",
-          Tag = list(
-            Key = "string",
-            Value = "string"
-          ),
-          And = list(
-            Prefix = "string",
-            Tags = list(
-              list(
-                Key = "string",
-                Value = "string"
-              )
-            )
-          )
-        ),
-        Status = "Enabled"|"Disabled",
-        SourceSelectionCriteria = list(
-          SseKmsEncryptedObjects = list(
-            Status = "Enabled"|"Disabled"
-          ),
-          ReplicaModifications = list(
-            Status = "Enabled"|"Disabled"
-          )
-        ),
-        ExistingObjectReplication = list(
-          Status = "Enabled"|"Disabled"
-        ),
-        Destination = list(
-          Bucket = "string",
-          Account = "string",
-          StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
-          AccessControlTranslation = list(
-            Owner = "Destination"
-          ),
-          EncryptionConfiguration = list(
-            ReplicaKmsKeyID = "string"
-          ),
-          ReplicationTime = list(
-            Status = "Enabled"|"Disabled",
-            Time = list(
-              Minutes = 123
-            )
-          ),
-          Metrics = list(
-            Status = "Enabled"|"Disabled",
-            EventThreshold = list(
-              Minutes = 123
-            )
-          )
-        ),
-        DeleteMarkerReplication = list(
-          Status = "Enabled"|"Disabled"
-        )
-      )
-    )
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
 Returns the replication configuration of a bucket.
 
-It can take a while to propagate the put or delete a replication
-configuration to all Amazon S3 systems. Therefore, a get request soon
-after put or delete can return a wrong result.
-
-For information about replication configuration, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html}{Replication}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-This operation requires permissions for the
-\code{s3:GetReplicationConfiguration} action. For more information about
-permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-iam-policies.html}{Using Bucket Policies and User Policies}.
-
-If you include the \code{Filter} element in a replication configuration, you
-must also include the \code{DeleteMarkerReplication} and \code{Priority} elements.
-The response also returns those elements.
-
-For information about
-\code{\link[=s3_get_bucket_replication]{get_bucket_replication}} errors, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList}{List of replication-related error codes}
-
-The following operations are related to
-\code{\link[=s3_get_bucket_replication]{get_bucket_replication}}:
-\itemize{
-\item \code{\link[=s3_put_bucket_replication]{put_bucket_replication}}
-\item \code{\link[=s3_delete_bucket_replication]{delete_bucket_replication}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$get_bucket_replication(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns replication configuration set on a bucket.
-svc$get_bucket_replication(
-  Bucket = "examplebucket"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/get_bucket_replication.html} for full documentation.
 }
 \keyword{internal}

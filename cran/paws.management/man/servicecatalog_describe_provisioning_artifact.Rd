@@ -5,9 +5,14 @@
 \title{Gets information about the specified provisioning artifact (also known
 as a version) for the specified product}
 \usage{
-servicecatalog_describe_provisioning_artifact(AcceptLanguage,
-  ProvisioningArtifactId, ProductId, ProvisioningArtifactName,
-  ProductName, Verbose)
+servicecatalog_describe_provisioning_artifact(
+  AcceptLanguage = NULL,
+  ProvisioningArtifactId = NULL,
+  ProductId = NULL,
+  ProvisioningArtifactName = NULL,
+  ProductName = NULL,
+  Verbose = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -27,40 +32,9 @@ servicecatalog_describe_provisioning_artifact(AcceptLanguage,
 
 \item{Verbose}{Indicates whether a verbose level of detail is enabled.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProvisioningArtifactDetail = list(
-    Id = "string",
-    Name = "string",
-    Description = "string",
-    Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Active = TRUE|FALSE,
-    Guidance = "DEFAULT"|"DEPRECATED"
-  ),
-  Info = list(
-    "string"
-  ),
-  Status = "AVAILABLE"|"CREATING"|"FAILED"
-)
-}
-}
 \description{
-Gets information about the specified provisioning artifact (also known
-as a version) for the specified product.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_provisioning_artifact(
-  AcceptLanguage = "string",
-  ProvisioningArtifactId = "string",
-  ProductId = "string",
-  ProvisioningArtifactName = "string",
-  ProductName = "string",
-  Verbose = TRUE|FALSE
-)
-}
-}
+Gets information about the specified provisioning artifact (also known as a version) for the specified product.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/describe_provisioning_artifact.html} for full documentation.
+}
 \keyword{internal}

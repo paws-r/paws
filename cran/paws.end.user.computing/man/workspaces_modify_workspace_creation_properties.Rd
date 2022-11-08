@@ -4,33 +4,19 @@
 \alias{workspaces_modify_workspace_creation_properties}
 \title{Modify the default properties used to create WorkSpaces}
 \usage{
-workspaces_modify_workspace_creation_properties(ResourceId,
-  WorkspaceCreationProperties)
+workspaces_modify_workspace_creation_properties(
+  ResourceId,
+  WorkspaceCreationProperties
+)
 }
 \arguments{
 \item{ResourceId}{[required] The identifier of the directory.}
 
 \item{WorkspaceCreationProperties}{[required] The default properties for creating WorkSpaces.}
 }
-\value{
-An empty list.
-}
 \description{
 Modify the default properties used to create WorkSpaces.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_workspace_creation_properties(
-  ResourceId = "string",
-  WorkspaceCreationProperties = list(
-    EnableWorkDocs = TRUE|FALSE,
-    EnableInternetAccess = TRUE|FALSE,
-    DefaultOu = "string",
-    CustomSecurityGroupId = "string",
-    UserEnabledAsLocalAdministrator = TRUE|FALSE,
-    EnableMaintenanceMode = TRUE|FALSE
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workspaces/modify_workspace_creation_properties.html} for full documentation.
+}
 \keyword{internal}

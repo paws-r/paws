@@ -4,23 +4,14 @@
 \alias{pinpointsmsvoice_create_configuration_set}
 \title{Create a new configuration set}
 \usage{
-pinpointsmsvoice_create_configuration_set(ConfigurationSetName)
+pinpointsmsvoice_create_configuration_set(ConfigurationSetName = NULL)
 }
 \arguments{
 \item{ConfigurationSetName}{The name that you want to give the configuration set.}
 }
-\value{
-An empty list.
-}
 \description{
-Create a new configuration set. After you create the configuration set,
-you can add one or more event destinations to it.
-}
-\section{Request syntax}{
-\preformatted{svc$create_configuration_set(
-  ConfigurationSetName = "string"
-)
-}
-}
+Create a new configuration set. After you create the configuration set, you can add one or more event destinations to it.
 
+See \url{https://paws-r.github.io/docs/pinpointsmsvoice/create_configuration_set.html} for full documentation.
+}
 \keyword{internal}

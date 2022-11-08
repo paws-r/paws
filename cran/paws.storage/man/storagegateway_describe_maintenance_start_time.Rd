@@ -10,37 +10,9 @@ storagegateway_describe_maintenance_start_time(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string",
-  HourOfDay = 123,
-  MinuteOfHour = 123,
-  DayOfWeek = 123,
-  DayOfMonth = 123,
-  Timezone = "string"
-)
-}
-}
 \description{
-Returns your gateway's weekly maintenance start time including the day
-and time of the week. Note that values are in terms of the gateway's
-time zone.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_maintenance_start_time(
-  GatewayARN = "string"
-)
-}
-}
+Returns your gateway's weekly maintenance start time including the day and time of the week. Note that values are in terms of the gateway's time zone.
 
-\examples{
-\dontrun{
-# Returns your gateway's weekly maintenance start time including the day
-# and time of the week.
-svc$describe_maintenance_start_time(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/describe_maintenance_start_time.html} for full documentation.
 }
 \keyword{internal}

@@ -11,20 +11,9 @@ opsworks_untag_resource(ResourceArn, TagKeys)
 
 \item{TagKeys}{[required] A list of the keys of tags to be removed from a stack or layer.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes tags from a specified stack or layer.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/opsworks/untag_resource.html} for full documentation.
+}
 \keyword{internal}

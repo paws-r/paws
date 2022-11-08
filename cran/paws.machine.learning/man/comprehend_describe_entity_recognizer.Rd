@@ -10,93 +10,9 @@ comprehend_describe_entity_recognizer(EntityRecognizerArn)
 \arguments{
 \item{EntityRecognizerArn}{[required] The Amazon Resource Name (ARN) that identifies the entity recognizer.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EntityRecognizerProperties = list(
-    EntityRecognizerArn = "string",
-    LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW",
-    Status = "SUBMITTED"|"TRAINING"|"DELETING"|"STOP_REQUESTED"|"STOPPED"|"IN_ERROR"|"TRAINED",
-    Message = "string",
-    SubmitTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    TrainingStartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    TrainingEndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    InputDataConfig = list(
-      DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
-      EntityTypes = list(
-        list(
-          Type = "string"
-        )
-      ),
-      Documents = list(
-        S3Uri = "string"
-      ),
-      Annotations = list(
-        S3Uri = "string"
-      ),
-      EntityList = list(
-        S3Uri = "string"
-      ),
-      AugmentedManifests = list(
-        list(
-          S3Uri = "string",
-          AttributeNames = list(
-            "string"
-          )
-        )
-      )
-    ),
-    RecognizerMetadata = list(
-      NumberOfTrainedDocuments = 123,
-      NumberOfTestDocuments = 123,
-      EvaluationMetrics = list(
-        Precision = 123.0,
-        Recall = 123.0,
-        F1Score = 123.0
-      ),
-      EntityTypes = list(
-        list(
-          Type = "string",
-          EvaluationMetrics = list(
-            Precision = 123.0,
-            Recall = 123.0,
-            F1Score = 123.0
-          ),
-          NumberOfTrainMentions = 123
-        )
-      )
-    ),
-    DataAccessRoleArn = "string",
-    VolumeKmsKeyId = "string",
-    VpcConfig = list(
-      SecurityGroupIds = list(
-        "string"
-      ),
-      Subnets = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Provides details about an entity recognizer including status, S3 buckets
-containing training data, recognizer metadata, metrics, and so on.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_entity_recognizer(
-  EntityRecognizerArn = "string"
-)
-}
-}
+Provides details about an entity recognizer including status, S3 buckets containing training data, recognizer metadata, metrics, and so on.
 
+See \url{https://paws-r.github.io/docs/comprehend/describe_entity_recognizer.html} for full documentation.
+}
 \keyword{internal}

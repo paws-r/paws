@@ -3,10 +3,14 @@
 \name{route53_list_query_logging_configs}
 \alias{route53_list_query_logging_configs}
 \title{Lists the configurations for DNS query logging that are associated with
-the current AWS account or the configuration that is associated with a
-specified hosted zone}
+the current Amazon Web Services account or the configuration that is
+associated with a specified hosted zone}
 \usage{
-route53_list_query_logging_configs(HostedZoneId, NextToken, MaxResults)
+route53_list_query_logging_configs(
+  HostedZoneId = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{HostedZoneId}{(Optional) If you want to list the query logging configuration that is
@@ -15,11 +19,11 @@ associated with a hosted zone, specify the ID in \code{HostedZoneId}.
 If you don't specify a hosted zone ID,
 \code{\link[=route53_list_query_logging_configs]{list_query_logging_configs}}
 returns all of the configurations that are associated with the current
-AWS account.}
+Amazon Web Services account.}
 
-\item{NextToken}{(Optional) If the current AWS account has more than \code{MaxResults} query
-logging configurations, use \code{NextToken} to get the second and subsequent
-pages of results.
+\item{NextToken}{(Optional) If the current Amazon Web Services account has more than
+\code{MaxResults} query logging configurations, use \code{NextToken} to get the
+second and subsequent pages of results.
 
 For the first
 \code{\link[=route53_list_query_logging_configs]{list_query_logging_configs}}
@@ -31,45 +35,16 @@ request.}
 
 \item{MaxResults}{(Optional) The maximum number of query logging configurations that you
 want Amazon Route 53 to return in response to the current request. If
-the current AWS account has more than \code{MaxResults} configurations, use
-the value of
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListQueryLoggingConfigs.html#API_ListQueryLoggingConfigs_RequestSyntax}{NextToken}
-in the response to get the next page of results.
+the current Amazon Web Services account has more than \code{MaxResults}
+configurations, use the value of NextToken in the response to get the
+next page of results.
 
 If you don't specify a value for \code{MaxResults}, Route 53 returns up to
 100 configurations.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  QueryLoggingConfigs = list(
-    list(
-      Id = "string",
-      HostedZoneId = "string",
-      CloudWatchLogsLogGroupArn = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the configurations for DNS query logging that are associated with
-the current AWS account or the configuration that is associated with a
-specified hosted zone.
+Lists the configurations for DNS query logging that are associated with the current Amazon Web Services account or the configuration that is associated with a specified hosted zone.
 
-For more information about DNS query logs, see
-\code{\link[=route53_create_query_logging_config]{create_query_logging_config}}.
-Additional information, including the format of DNS query logs, appears
-in \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries}
-in the \emph{Amazon Route 53 Developer Guide}.
+See \url{https://paws-r.github.io/docs/route53/list_query_logging_configs.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_query_logging_configs(
-  HostedZoneId = "string",
-  NextToken = "string",
-  MaxResults = "string"
-)
-}
-}
-
 \keyword{internal}

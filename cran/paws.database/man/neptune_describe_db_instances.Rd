@@ -4,8 +4,12 @@
 \alias{neptune_describe_db_instances}
 \title{Returns information about provisioned instances, and supports pagination}
 \usage{
-neptune_describe_db_instances(DBInstanceIdentifier, Filters, MaxRecords,
-  Marker)
+neptune_describe_db_instances(
+  DBInstanceIdentifier = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{DBInstanceIdentifier}{The user-supplied instance identifier. If this parameter is specified,
@@ -29,8 +33,9 @@ identified by these ARNs.
 the results list to DB instances created by that engine.
 }
 
-For example, to invoke this API from the AWS CLI and filter so that only
-Neptune DB instances are returned, you could use the following command:}
+For example, to invoke this API from the Amazon CLI and filter so that
+only Neptune DB instances are returned, you could use the following
+command:}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token
@@ -46,176 +51,9 @@ Constraints: Minimum 20, maximum 100.}
 this parameter is specified, the response includes only records beyond
 the marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBInstances = list(
-    list(
-      DBInstanceIdentifier = "string",
-      DBInstanceClass = "string",
-      Engine = "string",
-      DBInstanceStatus = "string",
-      MasterUsername = "string",
-      DBName = "string",
-      Endpoint = list(
-        Address = "string",
-        Port = 123,
-        HostedZoneId = "string"
-      ),
-      AllocatedStorage = 123,
-      InstanceCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      PreferredBackupWindow = "string",
-      BackupRetentionPeriod = 123,
-      DBSecurityGroups = list(
-        list(
-          DBSecurityGroupName = "string",
-          Status = "string"
-        )
-      ),
-      VpcSecurityGroups = list(
-        list(
-          VpcSecurityGroupId = "string",
-          Status = "string"
-        )
-      ),
-      DBParameterGroups = list(
-        list(
-          DBParameterGroupName = "string",
-          ParameterApplyStatus = "string"
-        )
-      ),
-      AvailabilityZone = "string",
-      DBSubnetGroup = list(
-        DBSubnetGroupName = "string",
-        DBSubnetGroupDescription = "string",
-        VpcId = "string",
-        SubnetGroupStatus = "string",
-        Subnets = list(
-          list(
-            SubnetIdentifier = "string",
-            SubnetAvailabilityZone = list(
-              Name = "string"
-            ),
-            SubnetStatus = "string"
-          )
-        ),
-        DBSubnetGroupArn = "string"
-      ),
-      PreferredMaintenanceWindow = "string",
-      PendingModifiedValues = list(
-        DBInstanceClass = "string",
-        AllocatedStorage = 123,
-        MasterUserPassword = "string",
-        Port = 123,
-        BackupRetentionPeriod = 123,
-        MultiAZ = TRUE|FALSE,
-        EngineVersion = "string",
-        LicenseModel = "string",
-        Iops = 123,
-        DBInstanceIdentifier = "string",
-        StorageType = "string",
-        CACertificateIdentifier = "string",
-        DBSubnetGroupName = "string",
-        PendingCloudwatchLogsExports = list(
-          LogTypesToEnable = list(
-            "string"
-          ),
-          LogTypesToDisable = list(
-            "string"
-          )
-        )
-      ),
-      LatestRestorableTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      MultiAZ = TRUE|FALSE,
-      EngineVersion = "string",
-      AutoMinorVersionUpgrade = TRUE|FALSE,
-      ReadReplicaSourceDBInstanceIdentifier = "string",
-      ReadReplicaDBInstanceIdentifiers = list(
-        "string"
-      ),
-      ReadReplicaDBClusterIdentifiers = list(
-        "string"
-      ),
-      LicenseModel = "string",
-      Iops = 123,
-      OptionGroupMemberships = list(
-        list(
-          OptionGroupName = "string",
-          Status = "string"
-        )
-      ),
-      CharacterSetName = "string",
-      SecondaryAvailabilityZone = "string",
-      PubliclyAccessible = TRUE|FALSE,
-      StatusInfos = list(
-        list(
-          StatusType = "string",
-          Normal = TRUE|FALSE,
-          Status = "string",
-          Message = "string"
-        )
-      ),
-      StorageType = "string",
-      TdeCredentialArn = "string",
-      DbInstancePort = 123,
-      DBClusterIdentifier = "string",
-      StorageEncrypted = TRUE|FALSE,
-      KmsKeyId = "string",
-      DbiResourceId = "string",
-      CACertificateIdentifier = "string",
-      DomainMemberships = list(
-        list(
-          Domain = "string",
-          Status = "string",
-          FQDN = "string",
-          IAMRoleName = "string"
-        )
-      ),
-      CopyTagsToSnapshot = TRUE|FALSE,
-      MonitoringInterval = 123,
-      EnhancedMonitoringResourceArn = "string",
-      MonitoringRoleArn = "string",
-      PromotionTier = 123,
-      DBInstanceArn = "string",
-      Timezone = "string",
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-      PerformanceInsightsEnabled = TRUE|FALSE,
-      PerformanceInsightsKMSKeyId = "string",
-      EnabledCloudwatchLogsExports = list(
-        "string"
-      ),
-      DeletionProtection = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Returns information about provisioned instances, and supports
-pagination.
+Returns information about provisioned instances, and supports pagination.
 
-This operation can also return information for Amazon RDS instances and
-Amazon DocDB instances.
+See \url{https://paws-r.github.io/docs/neptune/describe_db_instances.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_db_instances(
-  DBInstanceIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

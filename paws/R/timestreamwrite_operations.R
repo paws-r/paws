@@ -8,11 +8,13 @@ NULL
 #' @description
 #' Creates a new Timestream database. If the KMS key is not specified, the
 #' database will be encrypted with a Timestream managed KMS key located in
-#' your account. Refer to [AWS managed KMS
+#' your account. Refer to [Amazon Web Services managed KMS
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk)
-#' for more info. Service quotas apply. For more information, see [Access
-#' Management](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html)
-#' in the Timestream Developer Guide.
+#' for more info. [Service quotas
+#' apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html).
+#' See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-db.html)
+#' for details.
 #'
 #' @usage
 #' timestreamwrite_create_database(DatabaseName, KmsKeyId, Tags)
@@ -20,7 +22,7 @@ NULL
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param KmsKeyId The KMS key for the database. If the KMS key is not specified, the
 #' database will be encrypted with a Timestream managed KMS key located in
-#' your account. Refer to [AWS managed KMS
+#' your account. Refer to [Amazon Web Services managed KMS
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk)
 #' for more info.
 #' @param Tags A list of key-value pairs to label the table.
@@ -83,24 +85,27 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #'
 #' @description
 #' The CreateTable operation adds a new table to an existing database in
-#' your account. In an AWS account, table names must be at least unique
-#' within each Region if they are in the same database. You may have
-#' identical table names in the same Region if the tables are in seperate
-#' databases. While creating the table, you must specify the table name,
-#' database name, and the retention properties. Service quotas apply. For
-#' more information, see [Access
-#' Management](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html)
-#' in the Timestream Developer Guide.
+#' your account. In an Amazon Web Services account, table names must be at
+#' least unique within each Region if they are in the same database. You
+#' may have identical table names in the same Region if the tables are in
+#' separate databases. While creating the table, you must specify the table
+#' name, database name, and the retention properties. [Service quotas
+#' apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html).
+#' See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-table.html)
+#' for details.
 #'
 #' @usage
 #' timestreamwrite_create_table(DatabaseName, TableName,
-#'   RetentionProperties, Tags)
+#'   RetentionProperties, Tags, MagneticStoreWriteProperties)
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param TableName &#91;required&#93; The name of the Timestream table.
 #' @param RetentionProperties The duration for which your time series data must be stored in the
 #' memory store and the magnetic store.
 #' @param Tags A list of key-value pairs to label the table.
+#' @param MagneticStoreWriteProperties Contains properties to set on the table when enabling magnetic store
+#' writes.
 #'
 #' @return
 #' A list with the following syntax:
@@ -120,6 +125,17 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #'     ),
 #'     LastUpdatedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     MagneticStoreWriteProperties = list(
+#'       EnableMagneticStoreWrites = TRUE|FALSE,
+#'       MagneticStoreRejectedDataLocation = list(
+#'         S3Configuration = list(
+#'           BucketName = "string",
+#'           ObjectKeyPrefix = "string",
+#'           EncryptionOption = "SSE_S3"|"SSE_KMS",
+#'           KmsKeyId = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -139,6 +155,17 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   MagneticStoreWriteProperties = list(
+#'     EnableMagneticStoreWrites = TRUE|FALSE,
+#'     MagneticStoreRejectedDataLocation = list(
+#'       S3Configuration = list(
+#'         BucketName = "string",
+#'         ObjectKeyPrefix = "string",
+#'         EncryptionOption = "SSE_S3"|"SSE_KMS",
+#'         KmsKeyId = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -146,14 +173,14 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_create_table
-timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionProperties = NULL, Tags = NULL) {
+timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionProperties = NULL, Tags = NULL, MagneticStoreWriteProperties = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .timestreamwrite$create_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties, Tags = Tags)
+  input <- .timestreamwrite$create_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties, Tags = Tags, MagneticStoreWriteProperties = MagneticStoreWriteProperties)
   output <- .timestreamwrite$create_table_output()
   config <- get_config()
   svc <- .timestreamwrite$service(config)
@@ -176,6 +203,10 @@ timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionPrope
 #' Due to the nature of distributed retries, the operation can return
 #' either success or a ResourceNotFoundException. Clients should consider
 #' them equivalent.
+#' 
+#' See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.delete-db.html)
+#' for details.
 #'
 #' @usage
 #' timestreamwrite_delete_database(DatabaseName)
@@ -222,6 +253,10 @@ timestreamwrite_delete_database <- function(DatabaseName) {
 #' Due to the nature of distributed retries, the operation can return
 #' either success or a ResourceNotFoundException. Clients should consider
 #' them equivalent.
+#' 
+#' See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.delete-table.html)
+#' for details.
 #'
 #' @usage
 #' timestreamwrite_delete_table(DatabaseName, TableName)
@@ -267,10 +302,11 @@ timestreamwrite_delete_table <- function(DatabaseName, TableName) {
 #' @description
 #' Returns information about the database, including the database name,
 #' time that the database was created, and the total number of tables found
-#' within the database. Service quotas apply. For more information, see
-#' [Access
-#' Management](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html)
-#' in the Timestream Developer Guide.
+#' within the database. [Service quotas
+#' apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html).
+#' See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-db.html)
+#' for details.
 #'
 #' @usage
 #' timestreamwrite_describe_database(DatabaseName)
@@ -331,18 +367,21 @@ timestreamwrite_describe_database <- function(DatabaseName) {
 #' Timestream API calls against. This API is available through both Write
 #' and Query.
 #' 
-#' Because Timestream’s SDKs are designed to transparently work with the
+#' Because the Timestream SDKs are designed to transparently work with the
 #' service’s architecture, including the management and mapping of the
 #' service endpoints, *it is not recommended that you use this API unless*:
+#' 
+#' -   You are using [VPC endpoints (Amazon Web Services PrivateLink) with
+#'     Timestream](https://docs.aws.amazon.com/timestream/latest/developerguide/VPCEndpoints.html)
 #' 
 #' -   Your application uses a programming language that does not yet have
 #'     SDK support
 #' 
 #' -   You require better control over the client-side implementation
 #' 
-#' For detailed information on how to use DescribeEndpoints, see [The
-#' Endpoint Discovery Pattern and REST
-#' APIs](https://docs.aws.amazon.com/timestream/latest/developerguide/).
+#' For detailed information on how and when to use and implement
+#' DescribeEndpoints, see [The Endpoint Discovery
+#' Pattern](https://docs.aws.amazon.com/timestream/latest/developerguide/Using.API.html#Using-API.endpoint-discovery).
 #'
 #' @usage
 #' timestreamwrite_describe_endpoints()
@@ -391,9 +430,11 @@ timestreamwrite_describe_endpoints <- function() {
 #' @description
 #' Returns information about the table, including the table name, database
 #' name, retention duration of the memory store and the magnetic store.
-#' Service quotas apply. For more information, see [Access
-#' Management](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html)
-#' in the Timestream Developer Guide.
+#' [Service quotas
+#' apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html).
+#' See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-table.html)
+#' for details.
 #'
 #' @usage
 #' timestreamwrite_describe_table(DatabaseName, TableName)
@@ -419,6 +460,17 @@ timestreamwrite_describe_endpoints <- function() {
 #'     ),
 #'     LastUpdatedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     MagneticStoreWriteProperties = list(
+#'       EnableMagneticStoreWrites = TRUE|FALSE,
+#'       MagneticStoreRejectedDataLocation = list(
+#'         S3Configuration = list(
+#'           BucketName = "string",
+#'           ObjectKeyPrefix = "string",
+#'           EncryptionOption = "SSE_S3"|"SSE_KMS",
+#'           KmsKeyId = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -455,10 +507,11 @@ timestreamwrite_describe_table <- function(DatabaseName, TableName) {
 #' Returns a list of your Timestream databases
 #'
 #' @description
-#' Returns a list of your Timestream databases. Service quotas apply. For
-#' more information, see [Access
-#' Management](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html)
-#' in the Timestream Developer Guide.
+#' Returns a list of your Timestream databases. [Service quotas
+#' apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html).
+#' See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-db.html)
+#' for details.
 #'
 #' @usage
 #' timestreamwrite_list_databases(NextToken, MaxResults)
@@ -525,7 +578,9 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
 #'
 #' @description
 #' A list of tables, along with the name, status and retention properties
-#' of each table.
+#' of each table. See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-table.html)
+#' for details.
 #'
 #' @usage
 #' timestreamwrite_list_tables(DatabaseName, NextToken, MaxResults)
@@ -557,6 +612,17 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
 #'       ),
 #'       LastUpdatedTime = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       MagneticStoreWriteProperties = list(
+#'         EnableMagneticStoreWrites = TRUE|FALSE,
+#'         MagneticStoreRejectedDataLocation = list(
+#'           S3Configuration = list(
+#'             BucketName = "string",
+#'             ObjectKeyPrefix = "string",
+#'             EncryptionOption = "SSE_S3"|"SSE_KMS",
+#'             KmsKeyId = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -748,6 +814,10 @@ timestreamwrite_untag_resource <- function(ResourceARN, TagKeys) {
 #' new KMS key to be used (`KmsKeyId`). If there are any concurrent
 #' [`update_database`][timestreamwrite_update_database] requests, first
 #' writer wins.
+#' 
+#' See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.update-db.html)
+#' for details.
 #'
 #' @usage
 #' timestreamwrite_update_database(DatabaseName, KmsKeyId)
@@ -829,17 +899,19 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
 #' Timestream does not retrieve data from the magnetic store to populate
 #' the memory store.
 #' 
-#' Service quotas apply. For more information, see [Access
-#' Management](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html)
-#' in the Timestream Developer Guide.
+#' See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.update-table.html)
+#' for details.
 #'
 #' @usage
 #' timestreamwrite_update_table(DatabaseName, TableName,
-#'   RetentionProperties)
+#'   RetentionProperties, MagneticStoreWriteProperties)
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
-#' @param TableName &#91;required&#93; The name of the Timesream table.
-#' @param RetentionProperties &#91;required&#93; The retention duration of the memory store and the magnetic store.
+#' @param TableName &#91;required&#93; The name of the Timestream table.
+#' @param RetentionProperties The retention duration of the memory store and the magnetic store.
+#' @param MagneticStoreWriteProperties Contains properties to set on the table when enabling magnetic store
+#' writes.
 #'
 #' @return
 #' A list with the following syntax:
@@ -859,6 +931,17 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
 #'     ),
 #'     LastUpdatedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     MagneticStoreWriteProperties = list(
+#'       EnableMagneticStoreWrites = TRUE|FALSE,
+#'       MagneticStoreRejectedDataLocation = list(
+#'         S3Configuration = list(
+#'           BucketName = "string",
+#'           ObjectKeyPrefix = "string",
+#'           EncryptionOption = "SSE_S3"|"SSE_KMS",
+#'           KmsKeyId = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -872,6 +955,17 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
 #'   RetentionProperties = list(
 #'     MemoryStoreRetentionPeriodInHours = 123,
 #'     MagneticStoreRetentionPeriodInDays = 123
+#'   ),
+#'   MagneticStoreWriteProperties = list(
+#'     EnableMagneticStoreWrites = TRUE|FALSE,
+#'     MagneticStoreRejectedDataLocation = list(
+#'       S3Configuration = list(
+#'         BucketName = "string",
+#'         ObjectKeyPrefix = "string",
+#'         EncryptionOption = "SSE_S3"|"SSE_KMS",
+#'         KmsKeyId = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -879,14 +973,14 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_update_table
-timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionProperties) {
+timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionProperties = NULL, MagneticStoreWriteProperties = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .timestreamwrite$update_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties)
+  input <- .timestreamwrite$update_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties, MagneticStoreWriteProperties = MagneticStoreWriteProperties)
   output <- .timestreamwrite$update_table_output()
   config <- get_config()
   svc <- .timestreamwrite$service(config)
@@ -911,27 +1005,71 @@ timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionPrope
 #' Timestream, the query results might not reflect the results of a
 #' recently completed write operation. The results may also include some
 #' stale data. If you repeat the query request after a short time, the
-#' results should return the latest data. Service quotas apply. For more
-#' information, see [Access
-#' Management](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html)
-#' in the Timestream Developer Guide.
+#' results should return the latest data. [Service quotas
+#' apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html).
+#' 
+#' See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.write.html)
+#' for details.
+#' 
+#' **Upserts**
+#' 
+#' You can use the `Version` parameter in a
+#' [`write_records`][timestreamwrite_write_records] request to update data
+#' points. Timestream tracks a version number with each record. `Version`
+#' defaults to `1` when not specified for the record in the request.
+#' Timestream will update an existing record’s measure value along with its
+#' `Version` upon receiving a write request with a higher `Version` number
+#' for that record. Upon receiving an update request where the measure
+#' value is the same as that of the existing record, Timestream still
+#' updates `Version`, if it is greater than the existing value of
+#' `Version`. You can update a data point as many times as desired, as long
+#' as the value of `Version` continuously increases.
+#' 
+#' For example, suppose you write a new record without indicating `Version`
+#' in the request. Timestream will store this record, and set `Version` to
+#' `1`. Now, suppose you try to update this record with a
+#' [`write_records`][timestreamwrite_write_records] request of the same
+#' record with a different measure value but, like before, do not provide
+#' `Version`. In this case, Timestream will reject this update with a
+#' `RejectedRecordsException` since the updated record’s version is not
+#' greater than the existing value of Version. However, if you were to
+#' resend the update request with `Version` set to `2`, Timestream would
+#' then succeed in updating the record’s value, and the `Version` would be
+#' set to `2`. Next, suppose you sent a
+#' [`write_records`][timestreamwrite_write_records] request with this same
+#' record and an identical measure value, but with `Version` set to `3`. In
+#' this case, Timestream would only update `Version` to `3`. Any further
+#' updates would need to send a version number greater than `3`, or the
+#' update requests would receive a `RejectedRecordsException`.
 #'
 #' @usage
 #' timestreamwrite_write_records(DatabaseName, TableName, CommonAttributes,
 #'   Records)
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
-#' @param TableName &#91;required&#93; The name of the Timesream table.
-#' @param CommonAttributes A record containing the common measure and dimension attributes shared
-#' across all the records in the request. The measure and dimension
-#' attributes specified in here will be merged with the measure and
+#' @param TableName &#91;required&#93; The name of the Timestream table.
+#' @param CommonAttributes A record containing the common measure, dimension, time, and version
+#' attributes shared across all the records in the request. The measure and
+#' dimension attributes specified will be merged with the measure and
 #' dimension attributes in the records object when the data is written into
-#' Timestream.
-#' @param Records &#91;required&#93; An array of records containing the unique dimension and measure
-#' attributes for each time series data point.
+#' Timestream. Dimensions may not overlap, or a `ValidationException` will
+#' be thrown. In other words, a record must contain dimensions with unique
+#' names.
+#' @param Records &#91;required&#93; An array of records containing the unique measure, dimension, time, and
+#' version attributes for each time series data point.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecordsIngested = list(
+#'     Total = 123,
+#'     MemoryStore = 123,
+#'     MagneticStore = 123
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -948,10 +1086,17 @@ timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionPrope
 #'     ),
 #'     MeasureName = "string",
 #'     MeasureValue = "string",
-#'     MeasureValueType = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN",
+#'     MeasureValueType = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN"|"TIMESTAMP"|"MULTI",
 #'     Time = "string",
 #'     TimeUnit = "MILLISECONDS"|"SECONDS"|"MICROSECONDS"|"NANOSECONDS",
-#'     Version = 123
+#'     Version = 123,
+#'     MeasureValues = list(
+#'       list(
+#'         Name = "string",
+#'         Value = "string",
+#'         Type = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN"|"TIMESTAMP"|"MULTI"
+#'       )
+#'     )
 #'   ),
 #'   Records = list(
 #'     list(
@@ -964,10 +1109,17 @@ timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionPrope
 #'       ),
 #'       MeasureName = "string",
 #'       MeasureValue = "string",
-#'       MeasureValueType = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN",
+#'       MeasureValueType = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN"|"TIMESTAMP"|"MULTI",
 #'       Time = "string",
 #'       TimeUnit = "MILLISECONDS"|"SECONDS"|"MICROSECONDS"|"NANOSECONDS",
-#'       Version = 123
+#'       Version = 123,
+#'       MeasureValues = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string",
+#'           Type = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN"|"TIMESTAMP"|"MULTI"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )

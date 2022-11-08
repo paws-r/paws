@@ -5,7 +5,7 @@
 \title{Deletes a message template for messages that were sent through the voice
 channel}
 \usage{
-pinpoint_delete_voice_template(TemplateName, Version)
+pinpoint_delete_voice_template(TemplateName, Version = NULL)
 }
 \arguments{
 \item{TemplateName}{[required] The name of the message template. A template name must start with an
@@ -35,25 +35,9 @@ parameter isn't used or is set to false.
 of the template.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MessageBody = list(
-    Message = "string",
-    RequestID = "string"
-  )
-)
-}
-}
 \description{
-Deletes a message template for messages that were sent through the voice
-channel.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_voice_template(
-  TemplateName = "string",
-  Version = "string"
-)
-}
-}
+Deletes a message template for messages that were sent through the voice channel.
 
+See \url{https://paws-r.github.io/docs/pinpoint/delete_voice_template.html} for full documentation.
+}
 \keyword{internal}

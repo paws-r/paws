@@ -6,7 +6,12 @@
 gateway route table}
 \usage{
 ec2_get_transit_gateway_prefix_list_references(
-  TransitGatewayRouteTableId, Filters, MaxResults, NextToken, DryRun)
+  TransitGatewayRouteTableId,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the transit gateway route table.}
@@ -39,46 +44,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayPrefixListReferences = list(
-    list(
-      TransitGatewayRouteTableId = "string",
-      PrefixListId = "string",
-      PrefixListOwnerId = "string",
-      State = "pending"|"available"|"modifying"|"deleting",
-      Blackhole = TRUE|FALSE,
-      TransitGatewayAttachment = list(
-        TransitGatewayAttachmentId = "string",
-        ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
-        ResourceId = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Gets information about the prefix list references in a specified transit
-gateway route table.
-}
-\section{Request syntax}{
-\preformatted{svc$get_transit_gateway_prefix_list_references(
-  TransitGatewayRouteTableId = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Gets information about the prefix list references in a specified transit gateway route table.
 
+See \url{https://paws-r.github.io/docs/ec2/get_transit_gateway_prefix_list_references.html} for full documentation.
+}
 \keyword{internal}

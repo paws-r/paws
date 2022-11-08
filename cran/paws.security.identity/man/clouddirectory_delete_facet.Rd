@@ -12,20 +12,9 @@ more information, see arns.}
 
 \item{Name}{[required] The name of the facet to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a given Facet. All attributes and Rules that are associated with
-the facet will be deleted. Only development schema facets are allowed
-deletion.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_facet(
-  SchemaArn = "string",
-  Name = "string"
-)
-}
-}
+Deletes a given Facet. All attributes and Rules that are associated with the facet will be deleted. Only development schema facets are allowed deletion.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/delete_facet.html} for full documentation.
+}
 \keyword{internal}

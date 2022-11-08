@@ -5,7 +5,7 @@
 \title{Retrieve a JPG-format screenshot of a running instance to help with
 troubleshooting}
 \usage{
-ec2_get_console_screenshot(DryRun, InstanceId, WakeUp)
+ec2_get_console_screenshot(DryRun = NULL, InstanceId, WakeUp = NULL)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -18,26 +18,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{WakeUp}{When set to \code{true}, acts as keystroke input and wakes up an instance
 that's in standby or "sleep" mode.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ImageData = "string",
-  InstanceId = "string"
-)
-}
-}
 \description{
-Retrieve a JPG-format screenshot of a running instance to help with
-troubleshooting.
+Retrieve a JPG-format screenshot of a running instance to help with troubleshooting.
 
-The returned content is Base64-encoded.
+See \url{https://paws-r.github.io/docs/ec2/get_console_screenshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_console_screenshot(
-  DryRun = TRUE|FALSE,
-  InstanceId = "string",
-  WakeUp = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

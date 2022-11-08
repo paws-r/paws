@@ -11,28 +11,9 @@ shield_describe_protection_group(ProtectionGroupId)
 protection group in lists and to manage the protection group, for
 example to update, delete, or describe it.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProtectionGroup = list(
-    ProtectionGroupId = "string",
-    Aggregation = "SUM"|"MEAN"|"MAX",
-    Pattern = "ALL"|"ARBITRARY"|"BY_RESOURCE_TYPE",
-    ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
-    Members = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns the specification for the specified protection group.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_protection_group(
-  ProtectionGroupId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/shield/describe_protection_group.html} for full documentation.
+}
 \keyword{internal}

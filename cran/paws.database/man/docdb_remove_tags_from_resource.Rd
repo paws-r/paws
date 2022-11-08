@@ -12,20 +12,9 @@ value is an Amazon Resource Name (ARN).}
 
 \item{TagKeys}{[required] The tag key (name) of the tag to be removed.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes metadata tags from an Amazon DocumentDB resource.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_tags_from_resource(
-  ResourceName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/docdb/remove_tags_from_resource.html} for full documentation.
+}
 \keyword{internal}

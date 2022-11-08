@@ -5,8 +5,12 @@
 \title{Lists the assessment templates that correspond to the assessment targets
 that are specified by the ARNs of the assessment targets}
 \usage{
-inspector_list_assessment_templates(assessmentTargetArns, filter,
-  nextToken, maxResults)
+inspector_list_assessment_templates(
+  assessmentTargetArns = NULL,
+  filter = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{assessmentTargetArns}{A list of ARNs that specifies the assessment targets whose assessment
@@ -28,51 +32,9 @@ previous response to continue listing data.}
 \item{maxResults}{You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is 500.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  assessmentTemplateArns = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists the assessment templates that correspond to the assessment targets
-that are specified by the ARNs of the assessment targets.
-}
-\section{Request syntax}{
-\preformatted{svc$list_assessment_templates(
-  assessmentTargetArns = list(
-    "string"
-  ),
-  filter = list(
-    namePattern = "string",
-    durationRange = list(
-      minSeconds = 123,
-      maxSeconds = 123
-    ),
-    rulesPackageArns = list(
-      "string"
-    )
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Lists the assessment templates that correspond to the assessment targets that are specified by the ARNs of the assessment targets.
 
-\examples{
-\dontrun{
-# Lists the assessment templates that correspond to the assessment targets
-# that are specified by the ARNs of the assessment targets.
-svc$list_assessment_templates(
-  assessmentTargetArns = list(
-    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq"
-  ),
-  maxResults = 123L
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/list_assessment_templates.html} for full documentation.
 }
 \keyword{internal}

@@ -5,8 +5,15 @@
 \title{This operation returns the time series data collected by a Contributor
 Insights rule}
 \usage{
-cloudwatch_get_insight_rule_report(RuleName, StartTime, EndTime, Period,
-  MaxContributorCount, Metrics, OrderBy)
+cloudwatch_get_insight_rule_report(
+  RuleName,
+  StartTime,
+  EndTime,
+  Period,
+  MaxContributorCount = NULL,
+  Metrics = NULL,
+  OrderBy = NULL
+)
 }
 \arguments{
 \item{RuleName}{[required] The name of the rule that you want to see data from.}
@@ -53,94 +60,9 @@ period represented by that data point.
 \item{OrderBy}{Determines what statistic to use to rank the contributors. Valid values
 are SUM and MAXIMUM.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  KeyLabels = list(
-    "string"
-  ),
-  AggregationStatistic = "string",
-  AggregateValue = 123.0,
-  ApproximateUniqueCount = 123,
-  Contributors = list(
-    list(
-      Keys = list(
-        "string"
-      ),
-      ApproximateAggregateValue = 123.0,
-      Datapoints = list(
-        list(
-          Timestamp = as.POSIXct(
-            "2015-01-01"
-          ),
-          ApproximateValue = 123.0
-        )
-      )
-    )
-  ),
-  MetricDatapoints = list(
-    list(
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      UniqueContributors = 123.0,
-      MaxContributorValue = 123.0,
-      SampleCount = 123.0,
-      Average = 123.0,
-      Sum = 123.0,
-      Minimum = 123.0,
-      Maximum = 123.0
-    )
-  )
-)
-}
-}
 \description{
-This operation returns the time series data collected by a Contributor
-Insights rule. The data includes the identity and number of contributors
-to the log group.
+This operation returns the time series data collected by a Contributor Insights rule. The data includes the identity and number of contributors to the log group.
 
-You can also optionally return one or more statistics about each data
-point in the time series. These statistics can include the following:
-\itemize{
-\item \code{UniqueContributors} -- the number of unique contributors for each
-data point.
-\item \code{MaxContributorValue} -- the value of the top contributor for each
-data point. The identity of the contributor might change for each
-data point in the graph.
-
-If this rule aggregates by COUNT, the top contributor for each data
-point is the contributor with the most occurrences in that period.
-If the rule aggregates by SUM, the top contributor is the
-contributor with the highest sum in the log field specified by the
-rule's \code{Value}, during that period.
-\item \code{SampleCount} -- the number of data points matched by the rule.
-\item \code{Sum} -- the sum of the values from all contributors during the time
-period represented by that data point.
-\item \code{Minimum} -- the minimum value from a single observation during the
-time period represented by that data point.
-\item \code{Maximum} -- the maximum value from a single observation during the
-time period represented by that data point.
-\item \code{Average} -- the average value from all contributors during the time
-period represented by that data point.
+See \url{https://paws-r.github.io/docs/cloudwatch/get_insight_rule_report.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_insight_rule_report(
-  RuleName = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Period = 123,
-  MaxContributorCount = 123,
-  Metrics = list(
-    "string"
-  ),
-  OrderBy = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,7 +4,13 @@
 \alias{guardduty_update_ip_set}
 \title{Updates the IPSet specified by the IPSet ID}
 \usage{
-guardduty_update_ip_set(DetectorId, IpSetId, Name, Location, Activate)
+guardduty_update_ip_set(
+  DetectorId,
+  IpSetId,
+  Name = NULL,
+  Location = NULL,
+  Activate = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The detectorID that specifies the GuardDuty service whose IPSet you want
@@ -14,27 +20,14 @@ to update.}
 
 \item{Name}{The unique ID that specifies the IPSet that you want to update.}
 
-\item{Location}{The updated URI of the file that contains the IPSet. For example:
-https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.}
+\item{Location}{The updated URI of the file that contains the IPSet.}
 
 \item{Activate}{The updated Boolean value that specifies whether the IPSet is active or
 not.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates the IPSet specified by the IPSet ID.
-}
-\section{Request syntax}{
-\preformatted{svc$update_ip_set(
-  DetectorId = "string",
-  IpSetId = "string",
-  Name = "string",
-  Location = "string",
-  Activate = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/update_ip_set.html} for full documentation.
+}
 \keyword{internal}

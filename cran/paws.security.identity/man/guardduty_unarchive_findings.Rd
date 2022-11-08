@@ -11,20 +11,9 @@ guardduty_unarchive_findings(DetectorId, FindingIds)
 
 \item{FindingIds}{[required] The IDs of the findings to unarchive.}
 }
-\value{
-An empty list.
-}
 \description{
 Unarchives GuardDuty findings specified by the \code{findingIds}.
-}
-\section{Request syntax}{
-\preformatted{svc$unarchive_findings(
-  DetectorId = "string",
-  FindingIds = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/guardduty/unarchive_findings.html} for full documentation.
+}
 \keyword{internal}

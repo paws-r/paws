@@ -11,29 +11,9 @@ configservice_deliver_config_snapshot(deliveryChannelName)
 \item{deliveryChannelName}{[required] The name of the delivery channel through which the snapshot is
 delivered.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  configSnapshotId = "string"
-)
-}
-}
 \description{
-Schedules delivery of a configuration snapshot to the Amazon S3 bucket
-in the specified delivery channel. After the delivery has started, AWS
-Config sends the following notifications using an Amazon SNS topic that
-you have specified.
-\itemize{
-\item Notification of the start of the delivery.
-\item Notification of the completion of the delivery, if the delivery was
-successfully completed.
-\item Notification of delivery failure, if the delivery failed.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$deliver_config_snapshot(
-  deliveryChannelName = "string"
-)
-}
-}
+Schedules delivery of a configuration snapshot to the Amazon S3 bucket in the specified delivery channel. After the delivery has started, Config sends the following notifications using an Amazon SNS topic that you have specified.
 
+See \url{https://paws-r.github.io/docs/configservice/deliver_config_snapshot.html} for full documentation.
+}
 \keyword{internal}

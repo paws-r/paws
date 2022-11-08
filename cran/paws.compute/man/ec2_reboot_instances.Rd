@@ -4,7 +4,7 @@
 \alias{ec2_reboot_instances}
 \title{Requests a reboot of the specified instances}
 \usage{
-ec2_reboot_instances(InstanceIds, DryRun)
+ec2_reboot_instances(InstanceIds, DryRun = NULL)
 }
 \arguments{
 \item{InstanceIds}{[required] The instance IDs.}
@@ -14,40 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-An empty list.
-}
 \description{
-Requests a reboot of the specified instances. This operation is
-asynchronous; it only queues a request to reboot the specified
-instances. The operation succeeds if the instances are valid and belong
-to you. Requests to reboot terminated instances are ignored.
+Requests a reboot of the specified instances. This operation is asynchronous; it only queues a request to reboot the specified instances. The operation succeeds if the instances are valid and belong to you. Requests to reboot terminated instances are ignored.
 
-If an instance does not cleanly shut down within a few minutes, Amazon
-EC2 performs a hard reboot.
-
-For more information about troubleshooting, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html}{Getting console output and rebooting instances}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$reboot_instances(
-  InstanceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example reboots the specified EC2 instance.
-svc$reboot_instances(
-  InstanceIds = list(
-    "i-1234567890abcdef5"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/reboot_instances.html} for full documentation.
 }
 \keyword{internal}

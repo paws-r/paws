@@ -16,23 +16,9 @@ Constraints:
 \item Can't be associated with any DB clusters.
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a specified DB cluster parameter group. The DB cluster parameter
-group to be deleted can't be associated with any DB clusters.
+Deletes a specified DB cluster parameter group. The DB cluster parameter group to be deleted can't be associated with any DB clusters.
 
-For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
-in the \emph{Amazon Aurora User Guide.}
-
-This action only applies to Aurora DB clusters.
+See \url{https://paws-r.github.io/docs/rds/delete_db_cluster_parameter_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_db_cluster_parameter_group(
-  DBClusterParameterGroupName = "string"
-)
-}
-}
-
 \keyword{internal}

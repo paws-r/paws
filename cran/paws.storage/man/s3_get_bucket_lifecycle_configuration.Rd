@@ -6,125 +6,18 @@
 using an object key name prefix, one or more object tags, or a
 combination of both}
 \usage{
-s3_get_bucket_lifecycle_configuration(Bucket, ExpectedBucketOwner)
+s3_get_bucket_lifecycle_configuration(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which to get the lifecycle information.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Rules = list(
-    list(
-      Expiration = list(
-        Date = as.POSIXct(
-          "2015-01-01"
-        ),
-        Days = 123,
-        ExpiredObjectDeleteMarker = TRUE|FALSE
-      ),
-      ID = "string",
-      Prefix = "string",
-      Filter = list(
-        Prefix = "string",
-        Tag = list(
-          Key = "string",
-          Value = "string"
-        ),
-        And = list(
-          Prefix = "string",
-          Tags = list(
-            list(
-              Key = "string",
-              Value = "string"
-            )
-          )
-        )
-      ),
-      Status = "Enabled"|"Disabled",
-      Transitions = list(
-        list(
-          Date = as.POSIXct(
-            "2015-01-01"
-          ),
-          Days = 123,
-          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
-        )
-      ),
-      NoncurrentVersionTransitions = list(
-        list(
-          NoncurrentDays = 123,
-          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
-        )
-      ),
-      NoncurrentVersionExpiration = list(
-        NoncurrentDays = 123
-      ),
-      AbortIncompleteMultipartUpload = list(
-        DaysAfterInitiation = 123
-      )
-    )
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-Bucket lifecycle configuration now supports specifying a lifecycle rule
-using an object key name prefix, one or more object tags, or a
-combination of both. Accordingly, this section describes the latest API.
-The response describes the new filter element that you can use to
-specify a filter to select a subset of objects to which the rule
-applies. If you are using a previous version of the lifecycle
-configuration, it still works. For the earlier API description, see
-\code{\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle}}.
+Bucket lifecycle configuration now supports specifying a lifecycle rule using an object key name prefix, one or more object tags, or a combination of both. Accordingly, this section describes the latest API. The response describes the new filter element that you can use to specify a filter to select a subset of objects to which the rule applies. If you are using a previous version of the lifecycle configuration, it still works. For the earlier action, see \code{\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle}}.
 
-Returns the lifecycle configuration information set on the bucket. For
-information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Object Lifecycle Management}.
-
-To use this operation, you must have permission to perform the
-\code{s3:GetLifecycleConfiguration} action. The bucket owner has this
-permission, by default. The bucket owner can grant this permission to
-others. For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
-
-\code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
-has the following special error:
-\itemize{
-\item Error code: \code{NoSuchLifecycleConfiguration}
-\itemize{
-\item Description: The lifecycle configuration does not exist.
-\item HTTP Status Code: 404 Not Found
-\item SOAP Fault Code Prefix: Client
-}
-}
-
-The following operations are related to
-\code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}:
-\itemize{
-\item \code{\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle}}
-\item \code{\link[=s3_put_bucket_lifecycle]{put_bucket_lifecycle}}
-\item \code{\link[=s3_delete_bucket_lifecycle]{delete_bucket_lifecycle}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$get_bucket_lifecycle_configuration(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example retrieves lifecycle configuration on set on a
-# bucket.
-svc$get_bucket_lifecycle_configuration(
-  Bucket = "examplebucket"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/get_bucket_lifecycle_configuration.html} for full documentation.
 }
 \keyword{internal}

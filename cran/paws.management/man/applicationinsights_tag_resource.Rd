@@ -15,32 +15,9 @@ required tag key (\code{Key}) and an associated tag value (\code{Value}). The
 maximum length of a tag key is 128 characters. The maximum length of a
 tag value is 256 characters.}
 }
-\value{
-An empty list.
-}
 \description{
-Add one or more tags (keys and values) to a specified application. A
-\emph{tag} is a label that you optionally define and associate with an
-application. Tags can help you categorize and manage application in
-different ways, such as by purpose, owner, environment, or other
-criteria.
+Add one or more tags (keys and values) to a specified application. A \emph{tag} is a label that you optionally define and associate with an application. Tags can help you categorize and manage application in different ways, such as by purpose, owner, environment, or other criteria.
 
-Each tag consists of a required \emph{tag key} and an associated \emph{tag value},
-both of which you define. A tag key is a general label that acts as a
-category for more specific tag values. A tag value acts as a descriptor
-within a tag key.
+See \url{https://paws-r.github.io/docs/applicationinsights/tag_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceARN = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

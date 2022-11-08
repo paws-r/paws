@@ -11,18 +11,9 @@ servicecatalog_associate_budget_with_resource(BudgetName, ResourceId)
 
 \item{ResourceId}{[required] The resource identifier. Either a portfolio-id or a product-id.}
 }
-\value{
-An empty list.
-}
 \description{
 Associates the specified budget with the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_budget_with_resource(
-  BudgetName = "string",
-  ResourceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/associate_budget_with_resource.html} for full documentation.
+}
 \keyword{internal}

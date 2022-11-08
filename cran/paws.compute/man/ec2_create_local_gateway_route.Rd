@@ -4,8 +4,12 @@
 \alias{ec2_create_local_gateway_route}
 \title{Creates a static route for the specified local gateway route table}
 \usage{
-ec2_create_local_gateway_route(DestinationCidrBlock,
-  LocalGatewayRouteTableId, LocalGatewayVirtualInterfaceGroupId, DryRun)
+ec2_create_local_gateway_route(
+  DestinationCidrBlock,
+  LocalGatewayRouteTableId,
+  LocalGatewayVirtualInterfaceGroupId,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{DestinationCidrBlock}{[required] The CIDR range used for destination matches. Routing decisions are based
@@ -20,31 +24,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Route = list(
-    DestinationCidrBlock = "string",
-    LocalGatewayVirtualInterfaceGroupId = "string",
-    Type = "static"|"propagated",
-    State = "pending"|"active"|"blackhole"|"deleting"|"deleted",
-    LocalGatewayRouteTableId = "string",
-    LocalGatewayRouteTableArn = "string",
-    OwnerId = "string"
-  )
-)
-}
-}
 \description{
 Creates a static route for the specified local gateway route table.
-}
-\section{Request syntax}{
-\preformatted{svc$create_local_gateway_route(
-  DestinationCidrBlock = "string",
-  LocalGatewayRouteTableId = "string",
-  LocalGatewayVirtualInterfaceGroupId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/create_local_gateway_route.html} for full documentation.
+}
 \keyword{internal}

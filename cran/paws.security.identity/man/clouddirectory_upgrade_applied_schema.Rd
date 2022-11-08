@@ -5,8 +5,11 @@
 \title{Upgrades a single directory in-place using the PublishedSchemaArn with
 schema updates found in MinorVersion}
 \usage{
-clouddirectory_upgrade_applied_schema(PublishedSchemaArn, DirectoryArn,
-  DryRun)
+clouddirectory_upgrade_applied_schema(
+  PublishedSchemaArn,
+  DirectoryArn,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{PublishedSchemaArn}{[required] The revision of the published schema to upgrade the directory to.}
@@ -18,29 +21,9 @@ compatible or not. If schema compatibility fails, an exception would be
 thrown else the call would succeed but no changes will be saved. This
 parameter is optional.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UpgradedSchemaArn = "string",
-  DirectoryArn = "string"
-)
-}
-}
 \description{
-Upgrades a single directory in-place using the \code{PublishedSchemaArn} with
-schema updates found in \code{MinorVersion}. Backwards-compatible minor
-version upgrades are instantaneously available for readers on all
-objects in the directory. Note: This is a synchronous API call and
-upgrades only one schema on a given directory per call. To upgrade
-multiple directories from one schema, you would need to call this API on
-each directory.
-}
-\section{Request syntax}{
-\preformatted{svc$upgrade_applied_schema(
-  PublishedSchemaArn = "string",
-  DirectoryArn = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Upgrades a single directory in-place using the \code{PublishedSchemaArn} with schema updates found in \code{MinorVersion}. Backwards-compatible minor version upgrades are instantaneously available for readers on all objects in the directory. Note: This is a synchronous API call and upgrades only one schema on a given directory per call. To upgrade multiple directories from one schema, you would need to call this API on each directory.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/upgrade_applied_schema.html} for full documentation.
+}
 \keyword{internal}

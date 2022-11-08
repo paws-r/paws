@@ -4,31 +4,19 @@
 \alias{applicationinsights_describe_component_configuration}
 \title{Describes the monitoring configuration of the component}
 \usage{
-applicationinsights_describe_component_configuration(ResourceGroupName,
-  ComponentName)
+applicationinsights_describe_component_configuration(
+  ResourceGroupName,
+  ComponentName
+)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
 
 \item{ComponentName}{[required] The name of the component.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Monitor = TRUE|FALSE,
-  Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
-  ComponentConfiguration = "string"
-)
-}
-}
 \description{
 Describes the monitoring configuration of the component.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_component_configuration(
-  ResourceGroupName = "string",
-  ComponentName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/applicationinsights/describe_component_configuration.html} for full documentation.
+}
 \keyword{internal}

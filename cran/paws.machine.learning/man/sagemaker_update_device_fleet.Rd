@@ -4,8 +4,13 @@
 \alias{sagemaker_update_device_fleet}
 \title{Updates a fleet of devices}
 \usage{
-sagemaker_update_device_fleet(DeviceFleetName, RoleArn, Description,
-  OutputConfig)
+sagemaker_update_device_fleet(
+  DeviceFleetName,
+  RoleArn = NULL,
+  Description = NULL,
+  OutputConfig,
+  EnableIotRoleAlias = NULL
+)
 }
 \arguments{
 \item{DeviceFleetName}{[required] The name of the fleet.}
@@ -15,24 +20,17 @@ sagemaker_update_device_fleet(DeviceFleetName, RoleArn, Description,
 \item{Description}{Description of the fleet.}
 
 \item{OutputConfig}{[required] Output configuration for storing sample data collected by the fleet.}
-}
-\value{
-An empty list.
+
+\item{EnableIotRoleAlias}{Whether to create an Amazon Web Services IoT Role Alias during device
+fleet creation. The name of the role alias generated will match this
+pattern: "SageMakerEdge-\{DeviceFleetName\}".
+
+For example, if your device fleet is called "demo-fleet", the name of
+the role alias will be "SageMakerEdge-demo-fleet".}
 }
 \description{
 Updates a fleet of devices.
-}
-\section{Request syntax}{
-\preformatted{svc$update_device_fleet(
-  DeviceFleetName = "string",
-  RoleArn = "string",
-  Description = "string",
-  OutputConfig = list(
-    S3OutputLocation = "string",
-    KmsKeyId = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_device_fleet.html} for full documentation.
+}
 \keyword{internal}

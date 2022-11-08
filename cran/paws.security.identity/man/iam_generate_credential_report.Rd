@@ -2,20 +2,13 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_generate_credential_report}
 \alias{iam_generate_credential_report}
-\title{Generates a credential report for the AWS account}
+\title{Generates a credential report for the Amazon Web Services account}
 \usage{
 iam_generate_credential_report()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  State = "STARTED"|"INPROGRESS"|"COMPLETE",
-  Description = "string"
-)
-}
-}
 \description{
-Generates a credential report for the AWS account. For more information
-about the credential report, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html}{Getting Credential Reports}
-in the \emph{IAM User Guide}.
+Generates a credential report for the Amazon Web Services account. For more information about the credential report, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html}{Getting credential reports} in the \emph{IAM User Guide}.
+
+See \url{https://paws-r.github.io/docs/iam/generate_credential_report.html} for full documentation.
 }
 \keyword{internal}

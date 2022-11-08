@@ -4,79 +4,16 @@
 \alias{apigateway_get_stages}
 \title{Gets information about one or more Stage resources}
 \usage{
-apigateway_get_stages(restApiId, deploymentId)
+apigateway_get_stages(restApiId, deploymentId = NULL)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
 \item{deploymentId}{The stages' deployment identifiers.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  item = list(
-    list(
-      deploymentId = "string",
-      clientCertificateId = "string",
-      stageName = "string",
-      description = "string",
-      cacheClusterEnabled = TRUE|FALSE,
-      cacheClusterSize = "0.5"|"1.6"|"6.1"|"13.5"|"28.4"|"58.2"|"118"|"237",
-      cacheClusterStatus = "CREATE_IN_PROGRESS"|"AVAILABLE"|"DELETE_IN_PROGRESS"|"NOT_AVAILABLE"|"FLUSH_IN_PROGRESS",
-      methodSettings = list(
-        list(
-          metricsEnabled = TRUE|FALSE,
-          loggingLevel = "string",
-          dataTraceEnabled = TRUE|FALSE,
-          throttlingBurstLimit = 123,
-          throttlingRateLimit = 123.0,
-          cachingEnabled = TRUE|FALSE,
-          cacheTtlInSeconds = 123,
-          cacheDataEncrypted = TRUE|FALSE,
-          requireAuthorizationForCacheControl = TRUE|FALSE,
-          unauthorizedCacheControlHeaderStrategy = "FAIL_WITH_403"|"SUCCEED_WITH_RESPONSE_HEADER"|"SUCCEED_WITHOUT_RESPONSE_HEADER"
-        )
-      ),
-      variables = list(
-        "string"
-      ),
-      documentationVersion = "string",
-      accessLogSettings = list(
-        format = "string",
-        destinationArn = "string"
-      ),
-      canarySettings = list(
-        percentTraffic = 123.0,
-        deploymentId = "string",
-        stageVariableOverrides = list(
-          "string"
-        ),
-        useStageCache = TRUE|FALSE
-      ),
-      tracingEnabled = TRUE|FALSE,
-      webAclArn = "string",
-      tags = list(
-        "string"
-      ),
-      createdDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets information about one or more Stage resources.
-}
-\section{Request syntax}{
-\preformatted{svc$get_stages(
-  restApiId = "string",
-  deploymentId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_stages.html} for full documentation.
+}
 \keyword{internal}

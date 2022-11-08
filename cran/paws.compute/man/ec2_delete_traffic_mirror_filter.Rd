@@ -4,7 +4,7 @@
 \alias{ec2_delete_traffic_mirror_filter}
 \title{Deletes the specified Traffic Mirror filter}
 \usage{
-ec2_delete_traffic_mirror_filter(TrafficMirrorFilterId, DryRun)
+ec2_delete_traffic_mirror_filter(TrafficMirrorFilterId, DryRun = NULL)
 }
 \arguments{
 \item{TrafficMirrorFilterId}{[required] The ID of the Traffic Mirror filter.}
@@ -14,24 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficMirrorFilterId = "string"
-)
-}
-}
 \description{
 Deletes the specified Traffic Mirror filter.
 
-You cannot delete a Traffic Mirror filter that is in use by a Traffic
-Mirror session.
+See \url{https://paws-r.github.io/docs/ec2/delete_traffic_mirror_filter.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_traffic_mirror_filter(
-  TrafficMirrorFilterId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

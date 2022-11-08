@@ -13,19 +13,9 @@ backup_delete_backup_selection(BackupPlanId, SelectionId)
 \item{SelectionId}{[required] Uniquely identifies the body of a request to assign a set of resources
 to a backup plan.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the resource selection associated with a backup plan that is
-specified by the \code{SelectionId}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_backup_selection(
-  BackupPlanId = "string",
-  SelectionId = "string"
-)
-}
-}
+Deletes the resource selection associated with a backup plan that is specified by the \code{SelectionId}.
 
+See \url{https://paws-r.github.io/docs/backup/delete_backup_selection.html} for full documentation.
+}
 \keyword{internal}

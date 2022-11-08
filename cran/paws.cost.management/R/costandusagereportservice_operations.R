@@ -8,35 +8,10 @@ NULL
 #' @description
 #' Deletes the specified report.
 #'
-#' @usage
-#' costandusagereportservice_delete_report_definition(ReportName)
+#' See [https://paws-r.github.io/docs/costandusagereportservice/delete_report_definition.html](https://paws-r.github.io/docs/costandusagereportservice/delete_report_definition.html) for full documentation.
 #'
 #' @param ReportName The name of the report that you want to delete. The name must be unique,
 #' is case sensitive, and can't include spaces.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResponseMessage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_report_definition(
-#'   ReportName = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example deletes the AWS Cost and Usage report named
-#' # ExampleReport.
-#' svc$delete_report_definition(
-#'   ReportName = "ExampleReport"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -63,56 +38,10 @@ costandusagereportservice_delete_report_definition <- function(ReportName = NULL
 #' @description
 #' Lists the AWS Cost and Usage reports available to this account.
 #'
-#' @usage
-#' costandusagereportservice_describe_report_definitions(MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/costandusagereportservice/describe_report_definitions.html](https://paws-r.github.io/docs/costandusagereportservice/describe_report_definitions.html) for full documentation.
 #'
 #' @param MaxResults 
 #' @param NextToken 
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ReportDefinitions = list(
-#'     list(
-#'       ReportName = "string",
-#'       TimeUnit = "HOURLY"|"DAILY"|"MONTHLY",
-#'       Format = "textORcsv"|"Parquet",
-#'       Compression = "ZIP"|"GZIP"|"Parquet",
-#'       AdditionalSchemaElements = list(
-#'         "RESOURCES"
-#'       ),
-#'       S3Bucket = "string",
-#'       S3Prefix = "string",
-#'       S3Region = "af-south-1"|"ap-east-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-north-1"|"eu-south-1"|"me-south-1"|"sa-east-1"|"us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"cn-north-1"|"cn-northwest-1",
-#'       AdditionalArtifacts = list(
-#'         "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
-#'       ),
-#'       RefreshClosedReports = TRUE|FALSE,
-#'       ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_report_definitions(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example lists the AWS Cost and Usage reports for the
-#' # account.
-#' svc$describe_report_definitions(
-#'   MaxResults = 5L
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -139,39 +68,10 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 #' @description
 #' Allows you to programatically update your report preferences.
 #'
-#' @usage
-#' costandusagereportservice_modify_report_definition(ReportName,
-#'   ReportDefinition)
+#' See [https://paws-r.github.io/docs/costandusagereportservice/modify_report_definition.html](https://paws-r.github.io/docs/costandusagereportservice/modify_report_definition.html) for full documentation.
 #'
 #' @param ReportName &#91;required&#93; 
 #' @param ReportDefinition &#91;required&#93; 
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$modify_report_definition(
-#'   ReportName = "string",
-#'   ReportDefinition = list(
-#'     ReportName = "string",
-#'     TimeUnit = "HOURLY"|"DAILY"|"MONTHLY",
-#'     Format = "textORcsv"|"Parquet",
-#'     Compression = "ZIP"|"GZIP"|"Parquet",
-#'     AdditionalSchemaElements = list(
-#'       "RESOURCES"
-#'     ),
-#'     S3Bucket = "string",
-#'     S3Prefix = "string",
-#'     S3Region = "af-south-1"|"ap-east-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-north-1"|"eu-south-1"|"me-south-1"|"sa-east-1"|"us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"cn-north-1"|"cn-northwest-1",
-#'     AdditionalArtifacts = list(
-#'       "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
-#'     ),
-#'     RefreshClosedReports = TRUE|FALSE,
-#'     ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -198,61 +98,10 @@ costandusagereportservice_modify_report_definition <- function(ReportName, Repor
 #' @description
 #' Creates a new report using the description that you provide.
 #'
-#' @usage
-#' costandusagereportservice_put_report_definition(ReportDefinition)
+#' See [https://paws-r.github.io/docs/costandusagereportservice/put_report_definition.html](https://paws-r.github.io/docs/costandusagereportservice/put_report_definition.html) for full documentation.
 #'
 #' @param ReportDefinition &#91;required&#93; Represents the output of the PutReportDefinition operation. The content
 #' consists of the detailed metadata and data file information.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_report_definition(
-#'   ReportDefinition = list(
-#'     ReportName = "string",
-#'     TimeUnit = "HOURLY"|"DAILY"|"MONTHLY",
-#'     Format = "textORcsv"|"Parquet",
-#'     Compression = "ZIP"|"GZIP"|"Parquet",
-#'     AdditionalSchemaElements = list(
-#'       "RESOURCES"
-#'     ),
-#'     S3Bucket = "string",
-#'     S3Prefix = "string",
-#'     S3Region = "af-south-1"|"ap-east-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-north-1"|"eu-south-1"|"me-south-1"|"sa-east-1"|"us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"cn-north-1"|"cn-northwest-1",
-#'     AdditionalArtifacts = list(
-#'       "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
-#'     ),
-#'     RefreshClosedReports = TRUE|FALSE,
-#'     ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # The following example creates a AWS Cost and Usage report named
-#' # ExampleReport.
-#' svc$put_report_definition(
-#'   ReportDefinition = list(
-#'     AdditionalArtifacts = list(
-#'       "REDSHIFT",
-#'       "QUICKSIGHT"
-#'     ),
-#'     AdditionalSchemaElements = list(
-#'       "RESOURCES"
-#'     ),
-#'     Compression = "ZIP",
-#'     Format = "textORcsv",
-#'     ReportName = "ExampleReport",
-#'     S3Bucket = "example-s3-bucket",
-#'     S3Prefix = "exampleprefix",
-#'     S3Region = "us-east-1",
-#'     TimeUnit = "DAILY"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'

@@ -9,33 +9,9 @@ codestar_describe_project(id)
 \arguments{
 \item{id}{[required] The ID of the project.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  name = "string",
-  id = "string",
-  arn = "string",
-  description = "string",
-  clientRequestToken = "string",
-  createdTimeStamp = as.POSIXct(
-    "2015-01-01"
-  ),
-  stackId = "string",
-  projectTemplateId = "string",
-  status = list(
-    state = "string",
-    reason = "string"
-  )
-)
-}
-}
 \description{
 Describes a project and its resources.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_project(
-  id = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codestar/describe_project.html} for full documentation.
+}
 \keyword{internal}

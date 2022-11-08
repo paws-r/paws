@@ -4,31 +4,16 @@
 \alias{glue_list_workflows}
 \title{Lists names of workflows created in the account}
 \usage{
-glue_list_workflows(NextToken, MaxResults)
+glue_list_workflows(NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{NextToken}{A continuation token, if this is a continuation request.}
 
 \item{MaxResults}{The maximum size of a list to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Workflows = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists names of workflows created in the account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_workflows(
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/list_workflows.html} for full documentation.
+}
 \keyword{internal}

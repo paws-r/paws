@@ -4,12 +4,26 @@
 \alias{neptune_modify_db_cluster}
 \title{Modify a setting for a DB cluster}
 \usage{
-neptune_modify_db_cluster(DBClusterIdentifier, NewDBClusterIdentifier,
-  ApplyImmediately, BackupRetentionPeriod, DBClusterParameterGroupName,
-  VpcSecurityGroupIds, Port, MasterUserPassword, OptionGroupName,
-  PreferredBackupWindow, PreferredMaintenanceWindow,
-  EnableIAMDatabaseAuthentication, CloudwatchLogsExportConfiguration,
-  EngineVersion, DeletionProtection)
+neptune_modify_db_cluster(
+  DBClusterIdentifier,
+  NewDBClusterIdentifier = NULL,
+  ApplyImmediately = NULL,
+  BackupRetentionPeriod = NULL,
+  DBClusterParameterGroupName = NULL,
+  VpcSecurityGroupIds = NULL,
+  Port = NULL,
+  MasterUserPassword = NULL,
+  OptionGroupName = NULL,
+  PreferredBackupWindow = NULL,
+  PreferredMaintenanceWindow = NULL,
+  EnableIAMDatabaseAuthentication = NULL,
+  CloudwatchLogsExportConfiguration = NULL,
+  EngineVersion = NULL,
+  AllowMajorVersionUpgrade = NULL,
+  DBInstanceParameterGroupName = NULL,
+  DeletionProtection = NULL,
+  CopyTagsToSnapshot = NULL
+)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The DB cluster identifier for the cluster being modified. This parameter
@@ -38,13 +52,11 @@ regardless of the \code{PreferredMaintenanceWindow} setting for the DB
 cluster. If this parameter is set to \code{false}, changes to the DB cluster
 are applied during the next maintenance window.
 
-The \code{ApplyImmediately} parameter only affects the
-\code{NewDBClusterIdentifier} and \code{MasterUserPassword} values. If you set the
-\code{ApplyImmediately} parameter value to false, then changes to the
-\code{NewDBClusterIdentifier} and \code{MasterUserPassword} values are applied
-during the next maintenance window. All other changes are applied
-immediately, regardless of the value of the \code{ApplyImmediately}
-parameter.
+The \code{ApplyImmediately} parameter only affects \code{NewDBClusterIdentifier}
+values. If you set the \code{ApplyImmediately} parameter value to false, then
+changes to \code{NewDBClusterIdentifier} values are applied during the next
+maintenance window. All other changes are applied immediately,
+regardless of the value of the \code{ApplyImmediately} parameter.
 
 Default: \code{false}}
 
@@ -68,19 +80,16 @@ Constraints: Value must be \code{1150-65535}
 
 Default: The same port as the original DB cluster.}
 
-\item{MasterUserPassword}{The new password for the master database user. This password can contain
-any printable ASCII character except "/", """, or "@".
+\item{MasterUserPassword}{Not supported by Neptune.}
 
-Constraints: Must contain from 8 to 41 characters.}
-
-\item{OptionGroupName}{\emph{(Not supported by Neptune)}}
+\item{OptionGroupName}{\emph{Not supported by Neptune.}}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
 automated backups are enabled, using the \code{BackupRetentionPeriod}
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region.
+block of time for each Amazon Region.
 
 Constraints:
 \itemize{
@@ -96,14 +105,14 @@ Universal Coordinated Time (UTC).
 Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
+block of time for each Amazon Region, occurring on a random day of the
 week.
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
 Constraints: Minimum 30-minute window.}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
+\item{EnableIAMDatabaseAuthentication}{True to enable mapping of Amazon Identity and Access Management (IAM)
 accounts to database accounts, and otherwise false.
 
 Default: \code{false}}
@@ -120,122 +129,40 @@ For a list of valid engine versions, see \href{https://docs.aws.amazon.com/neptu
 or call
 \code{\link[=neptune_describe_db_engine_versions]{describe_db_engine_versions}}.}
 
+\item{AllowMajorVersionUpgrade}{A value that indicates whether upgrades between different major versions
+are allowed.
+
+Constraints: You must set the allow-major-version-upgrade flag when
+providing an \code{EngineVersion} parameter that uses a different major
+version than the DB cluster's current version.}
+
+\item{DBInstanceParameterGroupName}{The name of the DB parameter group to apply to all instances of the DB
+cluster.
+
+When you apply a parameter group using \code{DBInstanceParameterGroupName},
+parameter changes aren't applied during the next maintenance window but
+instead are applied immediately.
+
+Default: The existing name setting
+
+Constraints:
+\itemize{
+\item The DB parameter group must be in the same DB parameter group family
+as the target DB cluster version.
+\item The \code{DBInstanceParameterGroupName} parameter is only valid in
+combination with the \code{AllowMajorVersionUpgrade} parameter.
+}}
+
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
 enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is disabled.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DBCluster = list(
-    AllocatedStorage = 123,
-    AvailabilityZones = list(
-      "string"
-    ),
-    BackupRetentionPeriod = 123,
-    CharacterSetName = "string",
-    DatabaseName = "string",
-    DBClusterIdentifier = "string",
-    DBClusterParameterGroup = "string",
-    DBSubnetGroup = "string",
-    Status = "string",
-    PercentProgress = "string",
-    EarliestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Endpoint = "string",
-    ReaderEndpoint = "string",
-    MultiAZ = TRUE|FALSE,
-    Engine = "string",
-    EngineVersion = "string",
-    LatestRestorableTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Port = 123,
-    MasterUsername = "string",
-    DBClusterOptionGroupMemberships = list(
-      list(
-        DBClusterOptionGroupName = "string",
-        Status = "string"
-      )
-    ),
-    PreferredBackupWindow = "string",
-    PreferredMaintenanceWindow = "string",
-    ReplicationSourceIdentifier = "string",
-    ReadReplicaIdentifiers = list(
-      "string"
-    ),
-    DBClusterMembers = list(
-      list(
-        DBInstanceIdentifier = "string",
-        IsClusterWriter = TRUE|FALSE,
-        DBClusterParameterGroupStatus = "string",
-        PromotionTier = 123
-      )
-    ),
-    VpcSecurityGroups = list(
-      list(
-        VpcSecurityGroupId = "string",
-        Status = "string"
-      )
-    ),
-    HostedZoneId = "string",
-    StorageEncrypted = TRUE|FALSE,
-    KmsKeyId = "string",
-    DbClusterResourceId = "string",
-    DBClusterArn = "string",
-    AssociatedRoles = list(
-      list(
-        RoleArn = "string",
-        Status = "string",
-        FeatureName = "string"
-      )
-    ),
-    IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-    CloneGroupId = "string",
-    ClusterCreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    EnabledCloudwatchLogsExports = list(
-      "string"
-    ),
-    DeletionProtection = TRUE|FALSE
-  )
-)
-}
+
+\item{CopyTagsToSnapshot}{\emph{If set to true, tags are copied to any snapshot of the DB cluster that
+is created.}}
 }
 \description{
-Modify a setting for a DB cluster. You can change one or more database
-configuration parameters by specifying these parameters and the new
-values in the request.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_db_cluster(
-  DBClusterIdentifier = "string",
-  NewDBClusterIdentifier = "string",
-  ApplyImmediately = TRUE|FALSE,
-  BackupRetentionPeriod = 123,
-  DBClusterParameterGroupName = "string",
-  VpcSecurityGroupIds = list(
-    "string"
-  ),
-  Port = 123,
-  MasterUserPassword = "string",
-  OptionGroupName = "string",
-  PreferredBackupWindow = "string",
-  PreferredMaintenanceWindow = "string",
-  EnableIAMDatabaseAuthentication = TRUE|FALSE,
-  CloudwatchLogsExportConfiguration = list(
-    EnableLogTypes = list(
-      "string"
-    ),
-    DisableLogTypes = list(
-      "string"
-    )
-  ),
-  EngineVersion = "string",
-  DeletionProtection = TRUE|FALSE
-)
-}
-}
+Modify a setting for a DB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
 
+See \url{https://paws-r.github.io/docs/neptune/modify_db_cluster.html} for full documentation.
+}
 \keyword{internal}

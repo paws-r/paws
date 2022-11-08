@@ -4,7 +4,7 @@
 \alias{codestar_delete_project}
 \title{Deletes a project, including project resources}
 \usage{
-codestar_delete_project(id, clientRequestToken, deleteStack)
+codestar_delete_project(id, clientRequestToken = NULL, deleteStack = NULL)
 }
 \arguments{
 \item{id}{[required] The ID of the project to be deleted in AWS CodeStar.}
@@ -19,25 +19,9 @@ resources. This option will delete all AWS resources for the project
 (except for any buckets in Amazon S3) as well as deleting the project
 itself. Recommended for most use cases.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  stackId = "string",
-  projectArn = "string"
-)
-}
-}
 \description{
-Deletes a project, including project resources. Does not delete users
-associated with the project, but does delete the IAM roles that allowed
-access to the project.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_project(
-  id = "string",
-  clientRequestToken = "string",
-  deleteStack = TRUE|FALSE
-)
-}
-}
+Deletes a project, including project resources. Does not delete users associated with the project, but does delete the IAM roles that allowed access to the project.
 
+See \url{https://paws-r.github.io/docs/codestar/delete_project.html} for full documentation.
+}
 \keyword{internal}

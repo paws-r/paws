@@ -5,8 +5,11 @@
 \title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications}
 \usage{
-kinesisanalytics_add_application_reference_data_source(ApplicationName,
-  CurrentApplicationVersionId, ReferenceDataSource)
+kinesisanalytics_add_application_reference_data_source(
+  ApplicationName,
+  CurrentApplicationVersionId,
+  ReferenceDataSource
+)
 }
 \arguments{
 \item{ApplicationName}{[required] Name of an existing application.}
@@ -26,67 +29,9 @@ must also provide an IAM role with the necessary permissions that Amazon
 Kinesis Analytics can assume to read the object from your S3 bucket on
 your behalf.}
 }
-\value{
-An empty list.
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Adds a reference data source to an existing application.
-
-Amazon Kinesis Analytics reads reference data (that is, an Amazon S3
-object) and creates an in-application table within your application. In
-the request, you provide the source (S3 bucket name and object key
-name), name of the in-application table to create, and the necessary
-mapping information that describes how data in Amazon S3 object maps to
-columns in the resulting in-application table.
-
-For conceptual information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html}{Configuring Application Input}.
-For the limits on data sources you can add to your application, see
-\href{https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html}{Limits}.
-
-This operation requires permissions to perform the
-\code{kinesisanalytics:AddApplicationOutput} action.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/add_application_reference_data_source.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_application_reference_data_source(
-  ApplicationName = "string",
-  CurrentApplicationVersionId = 123,
-  ReferenceDataSource = list(
-    TableName = "string",
-    S3ReferenceDataSource = list(
-      BucketARN = "string",
-      FileKey = "string",
-      ReferenceRoleARN = "string"
-    ),
-    ReferenceSchema = list(
-      RecordFormat = list(
-        RecordFormatType = "JSON"|"CSV",
-        MappingParameters = list(
-          JSONMappingParameters = list(
-            RecordRowPath = "string"
-          ),
-          CSVMappingParameters = list(
-            RecordRowDelimiter = "string",
-            RecordColumnDelimiter = "string"
-          )
-        )
-      ),
-      RecordEncoding = "string",
-      RecordColumns = list(
-        list(
-          Name = "string",
-          Mapping = "string",
-          SqlType = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

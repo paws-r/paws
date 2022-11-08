@@ -5,7 +5,11 @@
 \title{Returns a list of virtual tape recovery points that are available for
 the specified tape gateway}
 \usage{
-storagegateway_describe_tape_recovery_points(GatewayARN, Marker, Limit)
+storagegateway_describe_tape_recovery_points(
+  GatewayARN,
+  Marker = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -16,51 +20,9 @@ describing the virtual tape recovery points.}
 \item{Limit}{Specifies that the number of virtual tape recovery points that are
 described be limited to the specified number.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string",
-  TapeRecoveryPointInfos = list(
-    list(
-      TapeARN = "string",
-      TapeRecoveryPointTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TapeSizeInBytes = 123,
-      TapeStatus = "string"
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Returns a list of virtual tape recovery points that are available for
-the specified tape gateway.
+Returns a list of virtual tape recovery points that are available for the specified tape gateway.
 
-A recovery point is a point-in-time view of a virtual tape at which all
-the data on the virtual tape is consistent. If your gateway crashes,
-virtual tapes that have recovery points can be recovered to a new
-gateway. This operation is only supported in the tape gateway type.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_tape_recovery_points(
-  GatewayARN = "string",
-  Marker = "string",
-  Limit = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# Returns a list of virtual tape recovery points that are available for
-# the specified gateway-VTL.
-svc$describe_tape_recovery_points(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
-  Limit = 1L,
-  Marker = "1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/describe_tape_recovery_points.html} for full documentation.
 }
 \keyword{internal}

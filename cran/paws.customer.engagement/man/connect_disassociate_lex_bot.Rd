@@ -8,29 +8,16 @@ change}
 connect_disassociate_lex_bot(InstanceId, BotName, LexRegion)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{BotName}{[required] The name of the Amazon Lex bot. Maximum character limit of 50.}
 
 \item{LexRegion}{[required] The Region in which the Amazon Lex bot has been created.}
 }
-\value{
-An empty list.
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Revokes authorization from the specified instance to access the
-specified Amazon Lex bot.
+See \url{https://paws-r.github.io/docs/connect/disassociate_lex_bot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disassociate_lex_bot(
-  InstanceId = "string",
-  BotName = "string",
-  LexRegion = "string"
-)
-}
-}
-
 \keyword{internal}

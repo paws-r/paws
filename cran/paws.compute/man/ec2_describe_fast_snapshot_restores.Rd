@@ -4,15 +4,19 @@
 \alias{ec2_describe_fast_snapshot_restores}
 \title{Describes the state of fast snapshot restores for your snapshots}
 \usage{
-ec2_describe_fast_snapshot_restores(Filters, MaxResults, NextToken,
-  DryRun)
+ec2_describe_fast_snapshot_restores(
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{Filters}{The filters. The possible values are:
 \itemize{
 \item \code{availability-zone}: The Availability Zone of the snapshot.
-\item \code{owner-id}: The ID of the AWS account that enabled fast snapshot
-restore on the snapshot.
+\item \code{owner-id}: The ID of the Amazon Web Services account that enabled
+fast snapshot restore on the snapshot.
 \item \code{snapshot-id}: The ID of the snapshot.
 \item \code{state}: The state of fast snapshot restores for the snapshot
 (\code{enabling} | \code{optimizing} | \code{enabled} | \code{disabling} | \code{disabled}).
@@ -29,55 +33,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FastSnapshotRestores = list(
-    list(
-      SnapshotId = "string",
-      AvailabilityZone = "string",
-      State = "enabling"|"optimizing"|"enabled"|"disabling"|"disabled",
-      StateTransitionReason = "string",
-      OwnerId = "string",
-      OwnerAlias = "string",
-      EnablingTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      OptimizingTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EnabledTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      DisablingTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      DisabledTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the state of fast snapshot restores for your snapshots.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_fast_snapshot_restores(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_fast_snapshot_restores.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,12 @@
 \title{Updates the custom component name and/or the list of resources that make
 up the component}
 \usage{
-applicationinsights_update_component(ResourceGroupName, ComponentName,
-  NewComponentName, ResourceList)
+applicationinsights_update_component(
+  ResourceGroupName,
+  ComponentName,
+  NewComponentName = NULL,
+  ResourceList = NULL
+)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
@@ -17,23 +21,9 @@ applicationinsights_update_component(ResourceGroupName, ComponentName,
 
 \item{ResourceList}{The list of resource ARNs that belong to the component.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the custom component name and/or the list of resources that make
-up the component.
-}
-\section{Request syntax}{
-\preformatted{svc$update_component(
-  ResourceGroupName = "string",
-  ComponentName = "string",
-  NewComponentName = "string",
-  ResourceList = list(
-    "string"
-  )
-)
-}
-}
+Updates the custom component name and/or the list of resources that make up the component.
 
+See \url{https://paws-r.github.io/docs/applicationinsights/update_component.html} for full documentation.
+}
 \keyword{internal}

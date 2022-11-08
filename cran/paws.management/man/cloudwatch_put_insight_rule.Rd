@@ -4,7 +4,12 @@
 \alias{cloudwatch_put_insight_rule}
 \title{Creates a Contributor Insights rule}
 \usage{
-cloudwatch_put_insight_rule(RuleName, RuleState, RuleDefinition, Tags)
+cloudwatch_put_insight_rule(
+  RuleName,
+  RuleState = NULL,
+  RuleDefinition,
+  Tags = NULL
+)
 }
 \arguments{
 \item{RuleName}{[required] A unique name for the rule.}
@@ -30,31 +35,9 @@ Insights rule, any tags you specify in this parameter are ignored. To
 change the tags of an existing rule, use
 \code{\link[=cloudwatch_tag_resource]{tag_resource}}.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates a Contributor Insights rule. Rules evaluate log events in a
-CloudWatch Logs log group, enabling you to find contributor data for the
-log events in that log group. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html}{Using Contributor Insights to Analyze High-Cardinality Data}.
+Creates a Contributor Insights rule. Rules evaluate log events in a CloudWatch Logs log group, enabling you to find contributor data for the log events in that log group. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html}{Using Contributor Insights to Analyze High-Cardinality Data}.
 
-If you create a rule, delete it, and then re-create it with the same
-name, historical data from the first time the rule was created might not
-be available.
+See \url{https://paws-r.github.io/docs/cloudwatch/put_insight_rule.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_insight_rule(
-  RuleName = "string",
-  RuleState = "string",
-  RuleDefinition = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

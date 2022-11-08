@@ -14,30 +14,9 @@ information.}
 \item{RadiusSettings}{[required] A RadiusSettings object that contains information about the RADIUS
 server.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the Remote Authentication Dial In User Service (RADIUS) server
-information for an AD Connector or Microsoft AD directory.
-}
-\section{Request syntax}{
-\preformatted{svc$update_radius(
-  DirectoryId = "string",
-  RadiusSettings = list(
-    RadiusServers = list(
-      "string"
-    ),
-    RadiusPort = 123,
-    RadiusTimeout = 123,
-    RadiusRetries = 123,
-    SharedSecret = "string",
-    AuthenticationProtocol = "PAP"|"CHAP"|"MS-CHAPv1"|"MS-CHAPv2",
-    DisplayLabel = "string",
-    UseSameUsername = TRUE|FALSE
-  )
-)
-}
-}
+Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector or Microsoft AD directory.
 
+See \url{https://paws-r.github.io/docs/directoryservice/update_radius.html} for full documentation.
+}
 \keyword{internal}

@@ -4,175 +4,29 @@
 \alias{ecs_update_container_instances_state}
 \title{Modifies the status of an Amazon ECS container instance}
 \usage{
-ecs_update_container_instances_state(cluster, containerInstances,
-  status)
+ecs_update_container_instances_state(
+  cluster = NULL,
+  containerInstances,
+  status
+)
 }
 \arguments{
 \item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the container instance to update. If you do not specify a cluster,
 the default cluster is assumed.}
 
-\item{containerInstances}{[required] A list of container instance IDs or full ARN entries.}
+\item{containerInstances}{[required] A list of up to 10 container instance IDs or full ARN entries.}
 
-\item{status}{[required] The container instance state with which to update the container
-instance. The only valid values for this action are \code{ACTIVE} and
-\code{DRAINING}. A container instance can only be updated to \code{DRAINING}
-status once it has reached an \code{ACTIVE} state. If a container instance is
-in \code{REGISTERING}, \code{DEREGISTERING}, or \code{REGISTRATION_FAILED} state you
-can describe the container instance but will be unable to update the
-container instance state.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  containerInstances = list(
-    list(
-      containerInstanceArn = "string",
-      ec2InstanceId = "string",
-      capacityProviderName = "string",
-      version = 123,
-      versionInfo = list(
-        agentVersion = "string",
-        agentHash = "string",
-        dockerVersion = "string"
-      ),
-      remainingResources = list(
-        list(
-          name = "string",
-          type = "string",
-          doubleValue = 123.0,
-          longValue = 123,
-          integerValue = 123,
-          stringSetValue = list(
-            "string"
-          )
-        )
-      ),
-      registeredResources = list(
-        list(
-          name = "string",
-          type = "string",
-          doubleValue = 123.0,
-          longValue = 123,
-          integerValue = 123,
-          stringSetValue = list(
-            "string"
-          )
-        )
-      ),
-      status = "string",
-      statusReason = "string",
-      agentConnected = TRUE|FALSE,
-      runningTasksCount = 123,
-      pendingTasksCount = 123,
-      agentUpdateStatus = "PENDING"|"STAGING"|"STAGED"|"UPDATING"|"UPDATED"|"FAILED",
-      attributes = list(
-        list(
-          name = "string",
-          value = "string",
-          targetType = "container-instance",
-          targetId = "string"
-        )
-      ),
-      registeredAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      attachments = list(
-        list(
-          id = "string",
-          type = "string",
-          status = "string",
-          details = list(
-            list(
-              name = "string",
-              value = "string"
-            )
-          )
-        )
-      ),
-      tags = list(
-        list(
-          key = "string",
-          value = "string"
-        )
-      )
-    )
-  ),
-  failures = list(
-    list(
-      arn = "string",
-      reason = "string",
-      detail = "string"
-    )
-  )
-)
-}
+\item{status}{[required] The container instance state to update the container instance with. The
+only valid values for this action are \code{ACTIVE} and \code{DRAINING}. A
+container instance can only be updated to \code{DRAINING} status once it has
+reached an \code{ACTIVE} state. If a container instance is in \code{REGISTERING},
+\code{DEREGISTERING}, or \code{REGISTRATION_FAILED} state you can describe the
+container instance but can't update the container instance state.}
 }
 \description{
 Modifies the status of an Amazon ECS container instance.
 
-Once a container instance has reached an \code{ACTIVE} state, you can change
-the status of a container instance to \code{DRAINING} to manually remove an
-instance from a cluster, for example to perform system updates, update
-the Docker daemon, or scale down the cluster size.
-
-A container instance cannot be changed to \code{DRAINING} until it has
-reached an \code{ACTIVE} status. If the instance is in any other status, an
-error will be received.
-
-When you set a container instance to \code{DRAINING}, Amazon ECS prevents new
-tasks from being scheduled for placement on the container instance and
-replacement service tasks are started on other container instances in
-the cluster if the resources are available. Service tasks on the
-container instance that are in the \code{PENDING} state are stopped
-immediately.
-
-Service tasks on the container instance that are in the \code{RUNNING} state
-are stopped and replaced according to the service's deployment
-configuration parameters, \code{minimumHealthyPercent} and \code{maximumPercent}.
-You can change the deployment configuration of your service using
-\code{\link[=ecs_update_service]{update_service}}.
-\itemize{
-\item If \code{minimumHealthyPercent} is below 100\%, the scheduler can ignore
-\code{desiredCount} temporarily during task replacement. For example,
-\code{desiredCount} is four tasks, a minimum of 50\% allows the scheduler
-to stop two existing tasks before starting two new tasks. If the
-minimum is 100\%, the service scheduler can't remove existing tasks
-until the replacement tasks are considered healthy. Tasks for
-services that do not use a load balancer are considered healthy if
-they are in the \code{RUNNING} state. Tasks for services that use a load
-balancer are considered healthy if they are in the \code{RUNNING} state
-and the container instance they are hosted on is reported as healthy
-by the load balancer.
-\item The \code{maximumPercent} parameter represents an upper limit on the
-number of running tasks during task replacement, which enables you
-to define the replacement batch size. For example, if \code{desiredCount}
-is four tasks, a maximum of 200\% starts four new tasks before
-stopping the four tasks to be drained, provided that the cluster
-resources required to do this are available. If the maximum is 100\%,
-then replacement tasks can't start until the draining tasks have
-stopped.
+See \url{https://paws-r.github.io/docs/ecs/update_container_instances_state.html} for full documentation.
 }
-
-Any \code{PENDING} or \code{RUNNING} tasks that do not belong to a service are not
-affected. You must wait for them to finish or stop them manually.
-
-A container instance has completed draining when it has no more
-\code{RUNNING} tasks. You can verify this using
-\code{\link[=ecs_list_tasks]{list_tasks}}.
-
-When a container instance has been drained, you can set a container
-instance to \code{ACTIVE} status and once it has reached that status the
-Amazon ECS scheduler can begin scheduling tasks on the instance again.
-}
-\section{Request syntax}{
-\preformatted{svc$update_container_instances_state(
-  cluster = "string",
-  containerInstances = list(
-    "string"
-  ),
-  status = "ACTIVE"|"DRAINING"|"REGISTERING"|"DEREGISTERING"|"REGISTRATION_FAILED"
-)
-}
-}
-
 \keyword{internal}

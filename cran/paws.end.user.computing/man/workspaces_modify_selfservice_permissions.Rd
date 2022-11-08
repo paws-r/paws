@@ -5,33 +5,16 @@
 \title{Modifies the self-service WorkSpace management capabilities for your
 users}
 \usage{
-workspaces_modify_selfservice_permissions(ResourceId,
-  SelfservicePermissions)
+workspaces_modify_selfservice_permissions(ResourceId, SelfservicePermissions)
 }
 \arguments{
 \item{ResourceId}{[required] The identifier of the directory.}
 
 \item{SelfservicePermissions}{[required] The permissions to enable or disable self-service capabilities.}
 }
-\value{
-An empty list.
-}
 \description{
-Modifies the self-service WorkSpace management capabilities for your
-users. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html}{Enable Self-Service WorkSpace Management Capabilities for Your Users}.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_selfservice_permissions(
-  ResourceId = "string",
-  SelfservicePermissions = list(
-    RestartWorkspace = "ENABLED"|"DISABLED",
-    IncreaseVolumeSize = "ENABLED"|"DISABLED",
-    ChangeComputeType = "ENABLED"|"DISABLED",
-    SwitchRunningMode = "ENABLED"|"DISABLED",
-    RebuildWorkspace = "ENABLED"|"DISABLED"
-  )
-)
-}
-}
+Modifies the self-service WorkSpace management capabilities for your users. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html}{Enable Self-Service WorkSpace Management Capabilities for Your Users}.
 
+See \url{https://paws-r.github.io/docs/workspaces/modify_selfservice_permissions.html} for full documentation.
+}
 \keyword{internal}

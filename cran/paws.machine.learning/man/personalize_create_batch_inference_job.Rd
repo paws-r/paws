@@ -4,9 +4,17 @@
 \alias{personalize_create_batch_inference_job}
 \title{Creates a batch inference job}
 \usage{
-personalize_create_batch_inference_job(jobName, solutionVersionArn,
-  filterArn, numResults, jobInput, jobOutput, roleArn,
-  batchInferenceJobConfig)
+personalize_create_batch_inference_job(
+  jobName,
+  solutionVersionArn,
+  filterArn = NULL,
+  numResults = NULL,
+  jobInput,
+  jobOutput,
+  roleArn,
+  batchInferenceJobConfig = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{jobName}{[required] The name of the batch inference job to create.}
@@ -15,9 +23,9 @@ personalize_create_batch_inference_job(jobName, solutionVersionArn,
 to generate the batch inference recommendations.}
 
 \item{filterArn}{The ARN of the filter to apply to the batch inference job. For more
-information on using filters, see Using Filters with Amazon Personalize.}
+information on using filters, see \href{https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html}{Filtering batch recommendations}.}
 
-\item{numResults}{The number of recommendations to retreive.}
+\item{numResults}{The number of recommendations to retrieve.}
 
 \item{jobInput}{[required] The Amazon S3 path that leads to the input file to base your
 recommendations on. The input material must be in JSON format.}
@@ -25,48 +33,16 @@ recommendations on. The input material must be in JSON format.}
 \item{jobOutput}{[required] The path to the Amazon S3 bucket where the job's output will be stored.}
 
 \item{roleArn}{[required] The ARN of the Amazon Identity and Access Management role that has
-permissions to read and write to your input and out Amazon S3 buckets
+permissions to read and write to your input and output Amazon S3 buckets
 respectively.}
 
 \item{batchInferenceJobConfig}{The configuration details of a batch inference job.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  batchInferenceJobArn = "string"
-)
-}
+
+\item{tags}{A list of tags to apply to the batch inference job.}
 }
 \description{
-Creates a batch inference job. The operation can handle up to 50 million
-records and the input file must be in JSON format. For more information,
-see recommendations-batch.
-}
-\section{Request syntax}{
-\preformatted{svc$create_batch_inference_job(
-  jobName = "string",
-  solutionVersionArn = "string",
-  filterArn = "string",
-  numResults = 123,
-  jobInput = list(
-    s3DataSource = list(
-      path = "string",
-      kmsKeyArn = "string"
-    )
-  ),
-  jobOutput = list(
-    s3DataDestination = list(
-      path = "string",
-      kmsKeyArn = "string"
-    )
-  ),
-  roleArn = "string",
-  batchInferenceJobConfig = list(
-    itemExplorationConfig = list(
-      "string"
-    )
-  )
-)
-}
-}
+Creates a batch inference job. The operation can handle up to 50 million records and the input file must be in JSON format. For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/creating-batch-inference-job.html}{Creating a batch inference job}.
 
+See \url{https://paws-r.github.io/docs/personalize/create_batch_inference_job.html} for full documentation.
+}
 \keyword{internal}

@@ -4,9 +4,14 @@
 \alias{rds_describe_db_instance_automated_backups}
 \title{Displays backups for both current and deleted instances}
 \usage{
-rds_describe_db_instance_automated_backups(DbiResourceId,
-  DBInstanceIdentifier, Filters, MaxRecords, Marker,
-  DBInstanceAutomatedBackupsArn)
+rds_describe_db_instance_automated_backups(
+  DbiResourceId = NULL,
+  DBInstanceIdentifier = NULL,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL,
+  DBInstanceAutomatedBackupsArn = NULL
+)
 }
 \arguments{
 \item{DbiResourceId}{The resource ID of the DB instance that is the source of the automated
@@ -51,84 +56,13 @@ is specified the response includes only records beyond the marker, up to
 
 \item{DBInstanceAutomatedBackupsArn}{The Amazon Resource Name (ARN) of the replicated automated backups, for
 example,
-\code{arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  DBInstanceAutomatedBackups = list(
-    list(
-      DBInstanceArn = "string",
-      DbiResourceId = "string",
-      Region = "string",
-      DBInstanceIdentifier = "string",
-      RestoreWindow = list(
-        EarliestTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        LatestTime = as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      AllocatedStorage = 123,
-      Status = "string",
-      Port = 123,
-      AvailabilityZone = "string",
-      VpcId = "string",
-      InstanceCreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      MasterUsername = "string",
-      Engine = "string",
-      EngineVersion = "string",
-      LicenseModel = "string",
-      Iops = 123,
-      OptionGroupName = "string",
-      TdeCredentialArn = "string",
-      Encrypted = TRUE|FALSE,
-      StorageType = "string",
-      KmsKeyId = "string",
-      Timezone = "string",
-      IAMDatabaseAuthenticationEnabled = TRUE|FALSE,
-      BackupRetentionPeriod = 123,
-      DBInstanceAutomatedBackupsArn = "string",
-      DBInstanceAutomatedBackupsReplications = list(
-        list(
-          DBInstanceAutomatedBackupsArn = "string"
-        )
-      )
-    )
-  )
-)
-}
+\code{arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.
+
+This setting doesn't apply to RDS Custom.}
 }
 \description{
-Displays backups for both current and deleted instances. For example,
-use this operation to find details about automated backups for
-previously deleted instances. Current instances with retention periods
-greater than zero (0) are returned for both the
-\code{\link[=rds_describe_db_instance_automated_backups]{describe_db_instance_automated_backups}}
-and \code{\link[=rds_describe_db_instances]{describe_db_instances}} operations.
+Displays backups for both current and deleted instances. For example, use this operation to find details about automated backups for previously deleted instances. Current instances with retention periods greater than zero (0) are returned for both the \code{\link[=rds_describe_db_instance_automated_backups]{describe_db_instance_automated_backups}} and \code{\link[=rds_describe_db_instances]{describe_db_instances}} operations.
 
-All parameters are optional.
+See \url{https://paws-r.github.io/docs/rds/describe_db_instance_automated_backups.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_db_instance_automated_backups(
-  DbiResourceId = "string",
-  DBInstanceIdentifier = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string",
-  DBInstanceAutomatedBackupsArn = "string"
-)
-}
-}
-
 \keyword{internal}

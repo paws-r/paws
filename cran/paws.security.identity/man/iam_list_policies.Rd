@@ -2,19 +2,25 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_list_policies}
 \alias{iam_list_policies}
-\title{Lists all the managed policies that are available in your AWS account,
-including your own customer-defined managed policies and all AWS managed
-policies}
+\title{Lists all the managed policies that are available in your Amazon Web
+Services account, including your own customer-defined managed policies
+and all Amazon Web Services managed policies}
 \usage{
-iam_list_policies(Scope, OnlyAttached, PathPrefix, PolicyUsageFilter,
-  Marker, MaxItems)
+iam_list_policies(
+  Scope = NULL,
+  OnlyAttached = NULL,
+  PathPrefix = NULL,
+  PolicyUsageFilter = NULL,
+  Marker = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{Scope}{The scope to use for filtering the results.
 
-To list only AWS managed policies, set \code{Scope} to \code{AWS}. To list only
-the customer managed policies in your AWS account, set \code{Scope} to
-\code{Local}.
+To list only Amazon Web Services managed policies, set \code{Scope} to \code{AWS}.
+To list only the customer managed policies in your Amazon Web Services
+account, set \code{Scope} to \code{Local}.
 
 This parameter is optional. If it is not included, or if it is set to
 \code{All}, all policies are returned.}
@@ -60,58 +66,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Policies = list(
-    list(
-      PolicyName = "string",
-      PolicyId = "string",
-      Arn = "string",
-      Path = "string",
-      DefaultVersionId = "string",
-      AttachmentCount = 123,
-      PermissionsBoundaryUsageCount = 123,
-      IsAttachable = TRUE|FALSE,
-      Description = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      UpdateDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Lists all the managed policies that are available in your AWS account,
-including your own customer-defined managed policies and all AWS managed
-policies.
+Lists all the managed policies that are available in your Amazon Web Services account, including your own customer-defined managed policies and all Amazon Web Services managed policies.
 
-You can filter the list of policies that is returned using the optional
-\code{OnlyAttached}, \code{Scope}, and \code{PathPrefix} parameters. For example, to
-list only the customer managed policies in your AWS account, set \code{Scope}
-to \code{Local}. To list only AWS managed policies, set \code{Scope} to \code{AWS}.
-
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters.
-
-For more information about managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
-in the \emph{IAM User Guide}.
+See \url{https://paws-r.github.io/docs/iam/list_policies.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_policies(
-  Scope = "All"|"AWS"|"Local",
-  OnlyAttached = TRUE|FALSE,
-  PathPrefix = "string",
-  PolicyUsageFilter = "PermissionsPolicy"|"PermissionsBoundary",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
 \keyword{internal}

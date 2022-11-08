@@ -4,14 +4,18 @@
 \alias{glue_put_resource_policy}
 \title{Sets the Data Catalog resource policy for access control}
 \usage{
-glue_put_resource_policy(PolicyInJson, ResourceArn, PolicyHashCondition,
-  PolicyExistsCondition, EnableHybrid)
+glue_put_resource_policy(
+  PolicyInJson,
+  ResourceArn = NULL,
+  PolicyHashCondition = NULL,
+  PolicyExistsCondition = NULL,
+  EnableHybrid = NULL
+)
 }
 \arguments{
 \item{PolicyInJson}{[required] Contains the policy document to set, in JSON format.}
 
-\item{ResourceArn}{The ARN of the AWS Glue resource for the resource policy to be set. For
-more information about AWS Glue resource ARNs, see the \href{https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id}{AWS Glue ARN string pattern}}
+\item{ResourceArn}{Do not use. For internal use only.}
 
 \item{PolicyHashCondition}{The hash value returned when the previous policy was set using
 \code{\link[=glue_put_resource_policy]{put_resource_policy}}. Its purpose is to
@@ -20,36 +24,24 @@ if no previous policy has been set.}
 
 \item{PolicyExistsCondition}{A value of \code{MUST_EXIST} is used to update a policy. A value of
 \code{NOT_EXIST} is used to create a new policy. If a value of \code{NONE} or a
-null value is used, the call will not depend on the existence of a
+null value is used, the call does not depend on the existence of a
 policy.}
 
-\item{EnableHybrid}{Allows you to specify if you want to use both resource-level and
-account/catalog-level resource policies. A resource-level policy is a
-policy attached to an individual resource such as a database or a table.
+\item{EnableHybrid}{If \code{'TRUE'}, indicates that you are using both methods to grant
+cross-account access to Data Catalog resources:
+\itemize{
+\item By directly updating the resource policy with \code{PutResourePolicy}
+\item By using the \strong{Grant permissions} command on the Amazon Web
+Services Management Console.
+}
 
-The default value of \code{NO} indicates that resource-level policies cannot
-co-exist with an account-level policy. A value of \code{YES} means the use of
-both resource-level and account/catalog-level resource policies is
-allowed.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyHash = "string"
-)
-}
+Must be set to \code{'TRUE'} if you have already used the Management Console
+to grant cross-account access, otherwise the call fails. Default is
+'FALSE'.}
 }
 \description{
 Sets the Data Catalog resource policy for access control.
-}
-\section{Request syntax}{
-\preformatted{svc$put_resource_policy(
-  PolicyInJson = "string",
-  ResourceArn = "string",
-  PolicyHashCondition = "string",
-  PolicyExistsCondition = "MUST_EXIST"|"NOT_EXIST"|"NONE",
-  EnableHybrid = "TRUE"|"FALSE"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/put_resource_policy.html} for full documentation.
+}
 \keyword{internal}

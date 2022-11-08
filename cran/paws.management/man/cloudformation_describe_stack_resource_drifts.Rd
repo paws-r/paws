@@ -5,8 +5,12 @@
 \title{Returns drift information for the resources that have been checked for
 drift in the specified stack}
 \usage{
-cloudformation_describe_stack_resource_drifts(StackName,
-  StackResourceDriftStatusFilters, NextToken, MaxResults)
+cloudformation_describe_stack_resource_drifts(
+  StackName,
+  StackResourceDriftStatusFilters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{StackName}{[required] The name of the stack for which you want drift information.}
@@ -18,10 +22,9 @@ drift results returned.
 configuration in that the resource has been deleted.
 \item \code{MODIFIED}: One or more resource properties differ from their
 expected template values.
-\item \code{IN_SYNC}: The resources's actual configuration matches its expected
+\item \code{IN_SYNC}: The resource's actual configuration matches its expected
 template configuration.
-\item \code{NOT_CHECKED}: AWS CloudFormation does not currently return this
-value.
+\item \code{NOT_CHECKED}: CloudFormation doesn't currently return this value.
 }}
 
 \item{NextToken}{A string that identifies the next page of stack resource drift results.}
@@ -31,72 +34,9 @@ number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
 parameter to get the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StackResourceDrifts = list(
-    list(
-      StackId = "string",
-      LogicalResourceId = "string",
-      PhysicalResourceId = "string",
-      PhysicalResourceIdContext = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      ResourceType = "string",
-      ExpectedProperties = "string",
-      ActualProperties = "string",
-      PropertyDifferences = list(
-        list(
-          PropertyPath = "string",
-          ExpectedValue = "string",
-          ActualValue = "string",
-          DifferenceType = "ADD"|"REMOVE"|"NOT_EQUAL"
-        )
-      ),
-      StackResourceDriftStatus = "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED",
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ModuleInfo = list(
-        TypeHierarchy = "string",
-        LogicalIdHierarchy = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns drift information for the resources that have been checked for
-drift in the specified stack. This includes actual and expected
-configuration values for resources where AWS CloudFormation detects
-configuration drift.
+Returns drift information for the resources that have been checked for drift in the specified stack. This includes actual and expected configuration values for resources where CloudFormation detects configuration drift.
 
-For a given stack, there will be one \code{StackResourceDrift} for each stack
-resource that has been checked for drift. Resources that have not yet
-been checked for drift are not included. Resources that do not currently
-support drift detection are not checked, and so not included. For a list
-of resources that support drift detection, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html}{Resources that Support Drift Detection}.
-
-Use
-\code{\link[=cloudformation_detect_stack_resource_drift]{detect_stack_resource_drift}}
-to detect drift on individual resources, or
-\code{\link[=cloudformation_detect_stack_drift]{detect_stack_drift}} to detect
-drift on all supported resources for a given stack.
+See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_resource_drifts.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_stack_resource_drifts(
-  StackName = "string",
-  StackResourceDriftStatusFilters = list(
-    "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED"
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

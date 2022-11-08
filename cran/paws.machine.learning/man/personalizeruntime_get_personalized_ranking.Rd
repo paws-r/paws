@@ -4,8 +4,14 @@
 \alias{personalizeruntime_get_personalized_ranking}
 \title{Re-ranks a list of recommended items for the given user}
 \usage{
-personalizeruntime_get_personalized_ranking(campaignArn, inputList,
-  userId, context, filterArn, filterValues)
+personalizeruntime_get_personalized_ranking(
+  campaignArn,
+  inputList,
+  userId,
+  context = NULL,
+  filterArn = NULL,
+  filterValues = NULL
+)
 }
 \arguments{
 \item{campaignArn}{[required] The Amazon Resource Name (ARN) of the campaign to use for generating the
@@ -41,42 +47,9 @@ recommendations.
 
 For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/filter.html}{Filtering Recommendations}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  personalizedRanking = list(
-    list(
-      itemId = "string",
-      score = 123.0
-    )
-  ),
-  recommendationId = "string"
-)
-}
-}
 \description{
-Re-ranks a list of recommended items for the given user. The first item
-in the list is deemed the most likely item to be of interest to the
-user.
+Re-ranks a list of recommended items for the given user. The first item in the list is deemed the most likely item to be of interest to the user.
 
-The solution backing the campaign must have been created using a recipe
-of type PERSONALIZED_RANKING.
+See \url{https://paws-r.github.io/docs/personalizeruntime/get_personalized_ranking.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_personalized_ranking(
-  campaignArn = "string",
-  inputList = list(
-    "string"
-  ),
-  userId = "string",
-  context = list(
-    "string"
-  ),
-  filterArn = "string",
-  filterValues = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

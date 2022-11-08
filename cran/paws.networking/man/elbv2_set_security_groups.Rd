@@ -12,43 +12,9 @@ elbv2_set_security_groups(LoadBalancerArn, SecurityGroups)
 
 \item{SecurityGroups}{[required] The IDs of the security groups.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SecurityGroupIds = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Associates the specified security groups with the specified Application
-Load Balancer. The specified security groups override the previously
-associated security groups.
+Associates the specified security groups with the specified Application Load Balancer. The specified security groups override the previously associated security groups.
 
-You can't specify a security group for a Network Load Balancer or
-Gateway Load Balancer.
-}
-\section{Request syntax}{
-\preformatted{svc$set_security_groups(
-  LoadBalancerArn = "string",
-  SecurityGroups = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example associates the specified security group with the specified
-# load balancer.
-svc$set_security_groups(
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo...",
-  SecurityGroups = list(
-    "sg-5943793c"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/set_security_groups.html} for full documentation.
 }
 \keyword{internal}

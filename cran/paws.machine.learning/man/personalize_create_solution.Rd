@@ -4,8 +4,16 @@
 \alias{personalize_create_solution}
 \title{Creates the configuration for training a model}
 \usage{
-personalize_create_solution(name, performHPO, performAutoML, recipeArn,
-  datasetGroupArn, eventType, solutionConfig)
+personalize_create_solution(
+  name,
+  performHPO = NULL,
+  performAutoML = NULL,
+  recipeArn = NULL,
+  datasetGroupArn,
+  eventType = NULL,
+  solutionConfig = NULL,
+  tags = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name for the solution.}
@@ -34,127 +42,23 @@ training data.}
 
 \item{eventType}{When your have multiple event types (using an \code{EVENT_TYPE} schema
 field), this parameter specifies which event type (for example, 'click'
-or 'like') is used for training the model.}
+or 'like') is used for training the model.
+
+If you do not provide an \code{eventType}, Amazon Personalize will use all
+interactions for training with equal weight regardless of type.}
 
 \item{solutionConfig}{The configuration to use with the solution. When \code{performAutoML} is set
 to true, Amazon Personalize only evaluates the \code{autoMLConfig} section of
-the solution configuration.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  solutionArn = "string"
-)
-}
+the solution configuration.
+
+Amazon Personalize doesn't support configuring the \code{hpoObjective} at
+this time.}
+
+\item{tags}{A list of tags to apply to the solution.}
 }
 \description{
-Creates the configuration for training a model. A trained model is known
-as a solution. After the configuration is created, you train the model
-(create a solution) by calling the
-\code{\link[=personalize_create_solution_version]{create_solution_version}}
-operation. Every time you call
-\code{\link[=personalize_create_solution_version]{create_solution_version}}, a new
-version of the solution is created.
+Creates the configuration for training a model. A trained model is known as a solution. After the configuration is created, you train the model (create a solution) by calling the \code{\link[=personalize_create_solution_version]{create_solution_version}} operation. Every time you call \code{\link[=personalize_create_solution_version]{create_solution_version}}, a new version of the solution is created.
 
-After creating a solution version, you check its accuracy by calling
-\code{\link[=personalize_get_solution_metrics]{get_solution_metrics}}. When you are
-satisfied with the version, you deploy it using
-\code{\link[=personalize_create_campaign]{create_campaign}}. The campaign provides
-recommendations to a client through the
-\href{https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html}{GetRecommendations}
-API.
-
-To train a model, Amazon Personalize requires training data and a
-recipe. The training data comes from the dataset group that you provide
-in the request. A recipe specifies the training algorithm and a feature
-transformation. You can specify one of the predefined recipes provided
-by Amazon Personalize. Alternatively, you can specify \code{performAutoML}
-and Amazon Personalize will analyze your data and select the optimum
-USER_PERSONALIZATION recipe for you.
-
-\strong{Status}
-
-A solution can be in one of the following states:
-\itemize{
-\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
-FAILED
-\item DELETE PENDING > DELETE IN_PROGRESS
+See \url{https://paws-r.github.io/docs/personalize/create_solution.html} for full documentation.
 }
-
-To get the status of the solution, call
-\code{\link[=personalize_describe_solution]{describe_solution}}. Wait until the
-status shows as ACTIVE before calling
-\code{\link[=personalize_create_solution_version]{create_solution_version}}.
-
-\strong{Related APIs}
-\itemize{
-\item \code{\link[=personalize_list_solutions]{list_solutions}}
-\item \code{\link[=personalize_create_solution_version]{create_solution_version}}
-\item \code{\link[=personalize_describe_solution]{describe_solution}}
-\item \code{\link[=personalize_delete_solution]{delete_solution}}
-\item \code{\link[=personalize_list_solution_versions]{list_solution_versions}}
-\item \code{\link[=personalize_describe_solution_version]{describe_solution_version}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$create_solution(
-  name = "string",
-  performHPO = TRUE|FALSE,
-  performAutoML = TRUE|FALSE,
-  recipeArn = "string",
-  datasetGroupArn = "string",
-  eventType = "string",
-  solutionConfig = list(
-    eventValueThreshold = "string",
-    hpoConfig = list(
-      hpoObjective = list(
-        type = "string",
-        metricName = "string",
-        metricRegex = "string"
-      ),
-      hpoResourceConfig = list(
-        maxNumberOfTrainingJobs = "string",
-        maxParallelTrainingJobs = "string"
-      ),
-      algorithmHyperParameterRanges = list(
-        integerHyperParameterRanges = list(
-          list(
-            name = "string",
-            minValue = 123,
-            maxValue = 123
-          )
-        ),
-        continuousHyperParameterRanges = list(
-          list(
-            name = "string",
-            minValue = 123.0,
-            maxValue = 123.0
-          )
-        ),
-        categoricalHyperParameterRanges = list(
-          list(
-            name = "string",
-            values = list(
-              "string"
-            )
-          )
-        )
-      )
-    ),
-    algorithmHyperParameters = list(
-      "string"
-    ),
-    featureTransformationParameters = list(
-      "string"
-    ),
-    autoMLConfig = list(
-      metricName = "string",
-      recipeList = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

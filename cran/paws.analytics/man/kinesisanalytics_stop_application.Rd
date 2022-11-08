@@ -10,31 +10,9 @@ kinesisanalytics_stop_application(ApplicationName)
 \arguments{
 \item{ApplicationName}{[required] Name of the running application to stop.}
 }
-\value{
-An empty list.
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Stops the application from processing input data. You can stop an
-application only if it is in the running state. You can use the
-\code{\link[=kinesisanalytics_describe_application]{describe_application}}
-operation to find the application state. After the application is
-stopped, Amazon Kinesis Analytics stops reading data from the input, the
-application stops processing data, and there is no output written to the
-destination.
-
-This operation requires permissions to perform the
-\code{kinesisanalytics:StopApplication} action.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/stop_application.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$stop_application(
-  ApplicationName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,60 +4,27 @@
 \alias{costexplorer_get_anomaly_subscriptions}
 \title{Retrieves the cost anomaly subscription objects for your account}
 \usage{
-costexplorer_get_anomaly_subscriptions(SubscriptionArnList, MonitorArn,
-  NextPageToken, MaxResults)
+costexplorer_get_anomaly_subscriptions(
+  SubscriptionArnList = NULL,
+  MonitorArn = NULL,
+  NextPageToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{SubscriptionArnList}{A list of cost anomaly subscription ARNs.}
 
 \item{MonitorArn}{Cost anomaly monitor ARNs.}
 
-\item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
-when the response from a previous call has more results than the maximum
-page size.}
+\item{NextPageToken}{The token to retrieve the next set of results. Amazon Web Services
+provides the token when the response from a previous call has more
+results than the maximum page size.}
 
 \item{MaxResults}{The number of entries a paginated response contains.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AnomalySubscriptions = list(
-    list(
-      SubscriptionArn = "string",
-      AccountId = "string",
-      MonitorArnList = list(
-        "string"
-      ),
-      Subscribers = list(
-        list(
-          Address = "string",
-          Type = "EMAIL"|"SNS",
-          Status = "CONFIRMED"|"DECLINED"
-        )
-      ),
-      Threshold = 123.0,
-      Frequency = "DAILY"|"IMMEDIATE"|"WEEKLY",
-      SubscriptionName = "string"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
-Retrieves the cost anomaly subscription objects for your account. You
-can filter using a list of cost anomaly monitor Amazon Resource Names
-(ARNs).
-}
-\section{Request syntax}{
-\preformatted{svc$get_anomaly_subscriptions(
-  SubscriptionArnList = list(
-    "string"
-  ),
-  MonitorArn = "string",
-  NextPageToken = "string",
-  MaxResults = 123
-)
-}
-}
+Retrieves the cost anomaly subscription objects for your account. You can filter using a list of cost anomaly monitor Amazon Resource Names (ARNs).
 
+See \url{https://paws-r.github.io/docs/costexplorer/get_anomaly_subscriptions.html} for full documentation.
+}
 \keyword{internal}

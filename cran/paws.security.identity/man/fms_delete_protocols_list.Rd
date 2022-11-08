@@ -2,7 +2,7 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_delete_protocols_list}
 \alias{fms_delete_protocols_list}
-\title{Permanently deletes an AWS Firewall Manager protocols list}
+\title{Permanently deletes an Firewall Manager protocols list}
 \usage{
 fms_delete_protocols_list(ListId)
 }
@@ -12,17 +12,9 @@ this ID from \code{\link[=fms_put_protocols_list]{put_protocols_list}},
 \code{\link[=fms_list_protocols_lists]{list_protocols_lists}}, and
 \code{GetProtocolsLost}.}
 }
-\value{
-An empty list.
-}
 \description{
-Permanently deletes an AWS Firewall Manager protocols list.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_protocols_list(
-  ListId = "string"
-)
-}
-}
+Permanently deletes an Firewall Manager protocols list.
 
+See \url{https://paws-r.github.io/docs/fms/delete_protocols_list.html} for full documentation.
+}
 \keyword{internal}

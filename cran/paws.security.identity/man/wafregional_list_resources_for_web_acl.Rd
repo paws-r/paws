@@ -4,7 +4,7 @@
 \alias{wafregional_list_resources_for_web_acl}
 \title{This is AWS WAF Classic Regional documentation}
 \usage{
-wafregional_list_resources_for_web_acl(WebACLId, ResourceType)
+wafregional_list_resources_for_web_acl(WebACLId, ResourceType = NULL)
 }
 \arguments{
 \item{WebACLId}{[required] The unique identifier (ID) of the web ACL for which to list the
@@ -13,32 +13,9 @@ associated resources.}
 \item{ResourceType}{The type of resource to list, either an application load balancer or
 Amazon API Gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceArns = list(
-    "string"
-  )
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic Regional} documentation. For more
-information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic Regional} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Returns an array of resources associated with the specified web ACL.
+See \url{https://paws-r.github.io/docs/wafregional/list_resources_for_web_acl.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_resources_for_web_acl(
-  WebACLId = "string",
-  ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"
-)
-}
-}
-
 \keyword{internal}

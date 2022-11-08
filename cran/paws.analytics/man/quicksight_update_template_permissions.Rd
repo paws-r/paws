@@ -4,11 +4,15 @@
 \alias{quicksight_update_template_permissions}
 \title{Updates the resource permissions for a template}
 \usage{
-quicksight_update_template_permissions(AwsAccountId, TemplateId,
-  GrantPermissions, RevokePermissions)
+quicksight_update_template_permissions(
+  AwsAccountId,
+  TemplateId,
+  GrantPermissions = NULL,
+  RevokePermissions = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the template.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the template.}
 
 \item{TemplateId}{[required] The ID for the template.}
 
@@ -16,48 +20,9 @@ quicksight_update_template_permissions(AwsAccountId, TemplateId,
 
 \item{RevokePermissions}{A list of resource permissions to be revoked from the template.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplateId = "string",
-  TemplateArn = "string",
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Updates the resource permissions for a template.
-}
-\section{Request syntax}{
-\preformatted{svc$update_template_permissions(
-  AwsAccountId = "string",
-  TemplateId = "string",
-  GrantPermissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  RevokePermissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/update_template_permissions.html} for full documentation.
+}
 \keyword{internal}

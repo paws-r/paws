@@ -4,9 +4,14 @@
 \alias{ec2_modify_vpn_connection_options}
 \title{Modifies the connection options for your Site-to-Site VPN connection}
 \usage{
-ec2_modify_vpn_connection_options(VpnConnectionId, LocalIpv4NetworkCidr,
-  RemoteIpv4NetworkCidr, LocalIpv6NetworkCidr, RemoteIpv6NetworkCidr,
-  DryRun)
+ec2_modify_vpn_connection_options(
+  VpnConnectionId,
+  LocalIpv4NetworkCidr = NULL,
+  RemoteIpv4NetworkCidr = NULL,
+  LocalIpv6NetworkCidr = NULL,
+  RemoteIpv6NetworkCidr = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{VpnConnectionId}{[required] The ID of the Site-to-Site VPN connection.}
@@ -16,7 +21,7 @@ connection.
 
 Default: \verb{0.0.0.0/0}}
 
-\item{RemoteIpv4NetworkCidr}{The IPv4 CIDR on the AWS side of the VPN connection.
+\item{RemoteIpv4NetworkCidr}{The IPv4 CIDR on the Amazon Web Services side of the VPN connection.
 
 Default: \verb{0.0.0.0/0}}
 
@@ -25,7 +30,7 @@ connection.
 
 Default: \verb{::/0}}
 
-\item{RemoteIpv6NetworkCidr}{The IPv6 CIDR on the AWS side of the VPN connection.
+\item{RemoteIpv6NetworkCidr}{The IPv6 CIDR on the Amazon Web Services side of the VPN connection.
 
 Default: \verb{::/0}}
 
@@ -34,124 +39,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VpnConnection = list(
-    CustomerGatewayConfiguration = "string",
-    CustomerGatewayId = "string",
-    Category = "string",
-    State = "pending"|"available"|"deleting"|"deleted",
-    Type = "ipsec.1",
-    VpnConnectionId = "string",
-    VpnGatewayId = "string",
-    TransitGatewayId = "string",
-    Options = list(
-      EnableAcceleration = TRUE|FALSE,
-      StaticRoutesOnly = TRUE|FALSE,
-      LocalIpv4NetworkCidr = "string",
-      RemoteIpv4NetworkCidr = "string",
-      LocalIpv6NetworkCidr = "string",
-      RemoteIpv6NetworkCidr = "string",
-      TunnelInsideIpVersion = "ipv4"|"ipv6",
-      TunnelOptions = list(
-        list(
-          OutsideIpAddress = "string",
-          TunnelInsideCidr = "string",
-          TunnelInsideIpv6Cidr = "string",
-          PreSharedKey = "string",
-          Phase1LifetimeSeconds = 123,
-          Phase2LifetimeSeconds = 123,
-          RekeyMarginTimeSeconds = 123,
-          RekeyFuzzPercentage = 123,
-          ReplayWindowSize = 123,
-          DpdTimeoutSeconds = 123,
-          DpdTimeoutAction = "string",
-          Phase1EncryptionAlgorithms = list(
-            list(
-              Value = "string"
-            )
-          ),
-          Phase2EncryptionAlgorithms = list(
-            list(
-              Value = "string"
-            )
-          ),
-          Phase1IntegrityAlgorithms = list(
-            list(
-              Value = "string"
-            )
-          ),
-          Phase2IntegrityAlgorithms = list(
-            list(
-              Value = "string"
-            )
-          ),
-          Phase1DHGroupNumbers = list(
-            list(
-              Value = 123
-            )
-          ),
-          Phase2DHGroupNumbers = list(
-            list(
-              Value = 123
-            )
-          ),
-          IkeVersions = list(
-            list(
-              Value = "string"
-            )
-          ),
-          StartupAction = "string"
-        )
-      )
-    ),
-    Routes = list(
-      list(
-        DestinationCidrBlock = "string",
-        Source = "Static",
-        State = "pending"|"available"|"deleting"|"deleted"
-      )
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    VgwTelemetry = list(
-      list(
-        AcceptedRouteCount = 123,
-        LastStatusChange = as.POSIXct(
-          "2015-01-01"
-        ),
-        OutsideIpAddress = "string",
-        Status = "UP"|"DOWN",
-        StatusMessage = "string",
-        CertificateArn = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Modifies the connection options for your Site-to-Site VPN connection.
 
-When you modify the VPN connection options, the VPN endpoint IP
-addresses on the AWS side do not change, and the tunnel options do not
-change. Your VPN connection will be temporarily unavailable for a brief
-period while the VPN connection is updated.
+See \url{https://paws-r.github.io/docs/ec2/modify_vpn_connection_options.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_vpn_connection_options(
-  VpnConnectionId = "string",
-  LocalIpv4NetworkCidr = "string",
-  RemoteIpv4NetworkCidr = "string",
-  LocalIpv6NetworkCidr = "string",
-  RemoteIpv6NetworkCidr = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

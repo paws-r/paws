@@ -6,17 +6,9 @@ NULL
 #' Create a configuration set
 #'
 #' @description
-#' Create a configuration set. *Configuration sets* are groups of rules
-#' that you can apply to the emails you send using Amazon Pinpoint. You
-#' apply a configuration set to an email by including a reference to the
-#' configuration set in the headers of the email. When you apply a
-#' configuration set to an email, all of the rules in that configuration
-#' set are applied to the email.
+#' Create a configuration set. *Configuration sets* are groups of rules that you can apply to the emails you send using Amazon Pinpoint. You apply a configuration set to an email by including a reference to the configuration set in the headers of the email. When you apply a configuration set to an email, all of the rules in that configuration set are applied to the email.
 #'
-#' @usage
-#' pinpointemail_create_configuration_set(ConfigurationSetName,
-#'   TrackingOptions, DeliveryOptions, ReputationOptions, SendingOptions,
-#'   Tags)
+#' See [https://paws-r.github.io/docs/pinpointemail/create_configuration_set.html](https://paws-r.github.io/docs/pinpointemail/create_configuration_set.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set.
 #' @param TrackingOptions An object that defines the open and click tracking options for emails
@@ -30,38 +22,6 @@ NULL
 #' that you send using the configuration set.
 #' @param Tags An array of objects that define the tags (keys and values) that you want
 #' to associate with the configuration set.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_configuration_set(
-#'   ConfigurationSetName = "string",
-#'   TrackingOptions = list(
-#'     CustomRedirectDomain = "string"
-#'   ),
-#'   DeliveryOptions = list(
-#'     TlsPolicy = "REQUIRE"|"OPTIONAL",
-#'     SendingPoolName = "string"
-#'   ),
-#'   ReputationOptions = list(
-#'     ReputationMetricsEnabled = TRUE|FALSE,
-#'     LastFreshStart = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   SendingOptions = list(
-#'     SendingEnabled = TRUE|FALSE
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -86,61 +46,15 @@ pinpointemail_create_configuration_set <- function(ConfigurationSetName, Trackin
 #' Create an event destination
 #'
 #' @description
-#' Create an event destination. In Amazon Pinpoint, *events* include
-#' message sends, deliveries, opens, clicks, bounces, and complaints.
-#' *Event destinations* are places that you can send information about
-#' these events to. For example, you can send event data to Amazon SNS to
-#' receive notifications when you receive bounces or complaints, or you can
-#' use Amazon Kinesis Data Firehose to stream data to Amazon S3 for
-#' long-term storage.
-#' 
-#' A single configuration set can include more than one event destination.
+#' Create an event destination. In Amazon Pinpoint, *events* include message sends, deliveries, opens, clicks, bounces, and complaints. *Event destinations* are places that you can send information about these events to. For example, you can send event data to Amazon SNS to receive notifications when you receive bounces or complaints, or you can use Amazon Kinesis Data Firehose to stream data to Amazon S3 for long-term storage.
 #'
-#' @usage
-#' pinpointemail_create_configuration_set_event_destination(
-#'   ConfigurationSetName, EventDestinationName, EventDestination)
+#' See [https://paws-r.github.io/docs/pinpointemail/create_configuration_set_event_destination.html](https://paws-r.github.io/docs/pinpointemail/create_configuration_set_event_destination.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to add an event
 #' destination to.
 #' @param EventDestinationName &#91;required&#93; A name that identifies the event destination within the configuration
 #' set.
 #' @param EventDestination &#91;required&#93; An object that defines the event destination.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_configuration_set_event_destination(
-#'   ConfigurationSetName = "string",
-#'   EventDestinationName = "string",
-#'   EventDestination = list(
-#'     Enabled = TRUE|FALSE,
-#'     MatchingEventTypes = list(
-#'       "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"
-#'     ),
-#'     KinesisFirehoseDestination = list(
-#'       IamRoleArn = "string",
-#'       DeliveryStreamArn = "string"
-#'     ),
-#'     CloudWatchDestination = list(
-#'       DimensionConfigurations = list(
-#'         list(
-#'           DimensionName = "string",
-#'           DimensionValueSource = "MESSAGE_TAG"|"EMAIL_HEADER"|"LINK_TAG",
-#'           DefaultDimensionValue = "string"
-#'         )
-#'       )
-#'     ),
-#'     SnsDestination = list(
-#'       TopicArn = "string"
-#'     ),
-#'     PinpointDestination = list(
-#'       ApplicationArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -165,34 +79,13 @@ pinpointemail_create_configuration_set_event_destination <- function(Configurati
 #' Create a new pool of dedicated IP addresses
 #'
 #' @description
-#' Create a new pool of dedicated IP addresses. A pool can include one or
-#' more dedicated IP addresses that are associated with your Amazon
-#' Pinpoint account. You can associate a pool with a configuration set.
-#' When you send an email that uses that configuration set, Amazon Pinpoint
-#' sends it using only the IP addresses in the associated pool.
+#' Create a new pool of dedicated IP addresses. A pool can include one or more dedicated IP addresses that are associated with your Amazon Pinpoint account. You can associate a pool with a configuration set. When you send an email that uses that configuration set, Amazon Pinpoint sends it using only the IP addresses in the associated pool.
 #'
-#' @usage
-#' pinpointemail_create_dedicated_ip_pool(PoolName, Tags)
+#' See [https://paws-r.github.io/docs/pinpointemail/create_dedicated_ip_pool.html](https://paws-r.github.io/docs/pinpointemail/create_dedicated_ip_pool.html) for full documentation.
 #'
 #' @param PoolName &#91;required&#93; The name of the dedicated IP pool.
 #' @param Tags An object that defines the tags (keys and values) that you want to
 #' associate with the pool.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_dedicated_ip_pool(
-#'   PoolName = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -217,20 +110,9 @@ pinpointemail_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 #' Create a new predictive inbox placement test
 #'
 #' @description
-#' Create a new predictive inbox placement test. Predictive inbox placement
-#' tests can help you predict how your messages will be handled by various
-#' email providers around the world. When you perform a predictive inbox
-#' placement test, you provide a sample message that contains the content
-#' that you plan to send to your customers. Amazon Pinpoint then sends that
-#' message to special email addresses spread across several major email
-#' providers. After about 24 hours, the test is complete, and you can use
-#' the
-#' [`get_deliverability_test_report`][pinpointemail_get_deliverability_test_report]
-#' operation to view the results of the test.
+#' Create a new predictive inbox placement test. Predictive inbox placement tests can help you predict how your messages will be handled by various email providers around the world. When you perform a predictive inbox placement test, you provide a sample message that contains the content that you plan to send to your customers. Amazon Pinpoint then sends that message to special email addresses spread across several major email providers. After about 24 hours, the test is complete, and you can use the [`get_deliverability_test_report`][pinpointemail_get_deliverability_test_report] operation to view the results of the test.
 #'
-#' @usage
-#' pinpointemail_create_deliverability_test_report(ReportName,
-#'   FromEmailAddress, Content, Tags)
+#' See [https://paws-r.github.io/docs/pinpointemail/create_deliverability_test_report.html](https://paws-r.github.io/docs/pinpointemail/create_deliverability_test_report.html) for full documentation.
 #'
 #' @param ReportName A unique name that helps you to identify the predictive inbox placement
 #' test when you retrieve the results.
@@ -240,54 +122,6 @@ pinpointemail_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 #' predictive inbox placement test.
 #' @param Tags An array of objects that define the tags (keys and values) that you want
 #' to associate with the predictive inbox placement test.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ReportId = "string",
-#'   DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_deliverability_test_report(
-#'   ReportName = "string",
-#'   FromEmailAddress = "string",
-#'   Content = list(
-#'     Simple = list(
-#'       Subject = list(
-#'         Data = "string",
-#'         Charset = "string"
-#'       ),
-#'       Body = list(
-#'         Text = list(
-#'           Data = "string",
-#'           Charset = "string"
-#'         ),
-#'         Html = list(
-#'           Data = "string",
-#'           Charset = "string"
-#'         )
-#'       )
-#'     ),
-#'     Raw = list(
-#'       Data = raw
-#'     ),
-#'     Template = list(
-#'       TemplateArn = "string",
-#'       TemplateData = "string"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -312,59 +146,13 @@ pinpointemail_create_deliverability_test_report <- function(ReportName = NULL, F
 #' Verifies an email identity for use with Amazon Pinpoint
 #'
 #' @description
-#' Verifies an email identity for use with Amazon Pinpoint. In Amazon
-#' Pinpoint, an identity is an email address or domain that you use when
-#' you send email. Before you can use an identity to send email with Amazon
-#' Pinpoint, you first have to verify it. By verifying an address, you
-#' demonstrate that you're the owner of the address, and that you've given
-#' Amazon Pinpoint permission to send email from the address.
-#' 
-#' When you verify an email address, Amazon Pinpoint sends an email to the
-#' address. Your email address is verified as soon as you follow the link
-#' in the verification email.
-#' 
-#' When you verify a domain, this operation provides a set of DKIM tokens,
-#' which you can convert into CNAME tokens. You add these CNAME tokens to
-#' the DNS configuration for your domain. Your domain is verified when
-#' Amazon Pinpoint detects these records in the DNS configuration for your
-#' domain. It usually takes around 72 hours to complete the domain
-#' verification process.
+#' Verifies an email identity for use with Amazon Pinpoint. In Amazon Pinpoint, an identity is an email address or domain that you use when you send email. Before you can use an identity to send email with Amazon Pinpoint, you first have to verify it. By verifying an address, you demonstrate that you're the owner of the address, and that you've given Amazon Pinpoint permission to send email from the address.
 #'
-#' @usage
-#' pinpointemail_create_email_identity(EmailIdentity, Tags)
+#' See [https://paws-r.github.io/docs/pinpointemail/create_email_identity.html](https://paws-r.github.io/docs/pinpointemail/create_email_identity.html) for full documentation.
 #'
 #' @param EmailIdentity &#91;required&#93; The email address or domain that you want to verify.
 #' @param Tags An array of objects that define the tags (keys and values) that you want
 #' to associate with the email identity.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
-#'   VerifiedForSendingStatus = TRUE|FALSE,
-#'   DkimAttributes = list(
-#'     SigningEnabled = TRUE|FALSE,
-#'     Status = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE"|"NOT_STARTED",
-#'     Tokens = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_email_identity(
-#'   EmailIdentity = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -390,27 +178,10 @@ pinpointemail_create_email_identity <- function(EmailIdentity, Tags = NULL) {
 #'
 #' @description
 #' Delete an existing configuration set.
-#' 
-#' In Amazon Pinpoint, *configuration sets* are groups of rules that you
-#' can apply to the emails you send. You apply a configuration set to an
-#' email by including a reference to the configuration set in the headers
-#' of the email. When you apply a configuration set to an email, all of the
-#' rules in that configuration set are applied to the email.
 #'
-#' @usage
-#' pinpointemail_delete_configuration_set(ConfigurationSetName)
+#' See [https://paws-r.github.io/docs/pinpointemail/delete_configuration_set.html](https://paws-r.github.io/docs/pinpointemail/delete_configuration_set.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_configuration_set(
-#'   ConfigurationSetName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -436,32 +207,12 @@ pinpointemail_delete_configuration_set <- function(ConfigurationSetName) {
 #'
 #' @description
 #' Delete an event destination.
-#' 
-#' In Amazon Pinpoint, *events* include message sends, deliveries, opens,
-#' clicks, bounces, and complaints. *Event destinations* are places that
-#' you can send information about these events to. For example, you can
-#' send event data to Amazon SNS to receive notifications when you receive
-#' bounces or complaints, or you can use Amazon Kinesis Data Firehose to
-#' stream data to Amazon S3 for long-term storage.
 #'
-#' @usage
-#' pinpointemail_delete_configuration_set_event_destination(
-#'   ConfigurationSetName, EventDestinationName)
+#' See [https://paws-r.github.io/docs/pinpointemail/delete_configuration_set_event_destination.html](https://paws-r.github.io/docs/pinpointemail/delete_configuration_set_event_destination.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that contains the event destination
 #' that you want to delete.
 #' @param EventDestinationName &#91;required&#93; The name of the event destination that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_configuration_set_event_destination(
-#'   ConfigurationSetName = "string",
-#'   EventDestinationName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -488,20 +239,9 @@ pinpointemail_delete_configuration_set_event_destination <- function(Configurati
 #' @description
 #' Delete a dedicated IP pool.
 #'
-#' @usage
-#' pinpointemail_delete_dedicated_ip_pool(PoolName)
+#' See [https://paws-r.github.io/docs/pinpointemail/delete_dedicated_ip_pool.html](https://paws-r.github.io/docs/pinpointemail/delete_dedicated_ip_pool.html) for full documentation.
 #'
 #' @param PoolName &#91;required&#93; The name of the dedicated IP pool that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_dedicated_ip_pool(
-#'   PoolName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -527,25 +267,12 @@ pinpointemail_delete_dedicated_ip_pool <- function(PoolName) {
 #' Amazon Pinpoint
 #'
 #' @description
-#' Deletes an email identity that you previously verified for use with
-#' Amazon Pinpoint. An identity can be either an email address or a domain
-#' name.
+#' Deletes an email identity that you previously verified for use with Amazon Pinpoint. An identity can be either an email address or a domain name.
 #'
-#' @usage
-#' pinpointemail_delete_email_identity(EmailIdentity)
+#' See [https://paws-r.github.io/docs/pinpointemail/delete_email_identity.html](https://paws-r.github.io/docs/pinpointemail/delete_email_identity.html) for full documentation.
 #'
 #' @param EmailIdentity &#91;required&#93; The identity (that is, the email address or domain) that you want to
 #' delete from your Amazon Pinpoint account.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_email_identity(
-#'   EmailIdentity = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -571,32 +298,9 @@ pinpointemail_delete_email_identity <- function(EmailIdentity) {
 #' your Amazon Pinpoint account in the current AWS Region
 #'
 #' @description
-#' Obtain information about the email-sending status and capabilities of
-#' your Amazon Pinpoint account in the current AWS Region.
+#' Obtain information about the email-sending status and capabilities of your Amazon Pinpoint account in the current AWS Region.
 #'
-#' @usage
-#' pinpointemail_get_account()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SendQuota = list(
-#'     Max24HourSend = 123.0,
-#'     MaxSendRate = 123.0,
-#'     SentLast24Hours = 123.0
-#'   ),
-#'   SendingEnabled = TRUE|FALSE,
-#'   DedicatedIpAutoWarmupEnabled = TRUE|FALSE,
-#'   EnforcementStatus = "string",
-#'   ProductionAccessEnabled = TRUE|FALSE
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_account()
-#' ```
+#' See [https://paws-r.github.io/docs/pinpointemail/get_account.html](https://paws-r.github.io/docs/pinpointemail/get_account.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -622,42 +326,13 @@ pinpointemail_get_account <- function() {
 #' appear on
 #'
 #' @description
-#' Retrieve a list of the blacklists that your dedicated IP addresses
-#' appear on.
+#' Retrieve a list of the blacklists that your dedicated IP addresses appear on.
 #'
-#' @usage
-#' pinpointemail_get_blacklist_reports(BlacklistItemNames)
+#' See [https://paws-r.github.io/docs/pinpointemail/get_blacklist_reports.html](https://paws-r.github.io/docs/pinpointemail/get_blacklist_reports.html) for full documentation.
 #'
 #' @param BlacklistItemNames &#91;required&#93; A list of IP addresses that you want to retrieve blacklist information
 #' about. You can only specify the dedicated IP addresses that you use to
 #' send email using Amazon Pinpoint or Amazon SES.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BlacklistReport = list(
-#'     list(
-#'       list(
-#'         RblName = "string",
-#'         ListingTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         Description = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_blacklist_reports(
-#'   BlacklistItemNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -684,58 +359,12 @@ pinpointemail_get_blacklist_reports <- function(BlacklistItemNames) {
 #' for sending email, and more
 #'
 #' @description
-#' Get information about an existing configuration set, including the
-#' dedicated IP pool that it's associated with, whether or not it's enabled
-#' for sending email, and more.
-#' 
-#' In Amazon Pinpoint, *configuration sets* are groups of rules that you
-#' can apply to the emails you send. You apply a configuration set to an
-#' email by including a reference to the configuration set in the headers
-#' of the email. When you apply a configuration set to an email, all of the
-#' rules in that configuration set are applied to the email.
+#' Get information about an existing configuration set, including the dedicated IP pool that it's associated with, whether or not it's enabled for sending email, and more.
 #'
-#' @usage
-#' pinpointemail_get_configuration_set(ConfigurationSetName)
+#' See [https://paws-r.github.io/docs/pinpointemail/get_configuration_set.html](https://paws-r.github.io/docs/pinpointemail/get_configuration_set.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to obtain more
 #' information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigurationSetName = "string",
-#'   TrackingOptions = list(
-#'     CustomRedirectDomain = "string"
-#'   ),
-#'   DeliveryOptions = list(
-#'     TlsPolicy = "REQUIRE"|"OPTIONAL",
-#'     SendingPoolName = "string"
-#'   ),
-#'   ReputationOptions = list(
-#'     ReputationMetricsEnabled = TRUE|FALSE,
-#'     LastFreshStart = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   SendingOptions = list(
-#'     SendingEnabled = TRUE|FALSE
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_configuration_set(
-#'   ConfigurationSetName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -761,63 +390,11 @@ pinpointemail_get_configuration_set <- function(ConfigurationSetName) {
 #' configuration set
 #'
 #' @description
-#' Retrieve a list of event destinations that are associated with a
-#' configuration set.
-#' 
-#' In Amazon Pinpoint, *events* include message sends, deliveries, opens,
-#' clicks, bounces, and complaints. *Event destinations* are places that
-#' you can send information about these events to. For example, you can
-#' send event data to Amazon SNS to receive notifications when you receive
-#' bounces or complaints, or you can use Amazon Kinesis Data Firehose to
-#' stream data to Amazon S3 for long-term storage.
+#' Retrieve a list of event destinations that are associated with a configuration set.
 #'
-#' @usage
-#' pinpointemail_get_configuration_set_event_destinations(
-#'   ConfigurationSetName)
+#' See [https://paws-r.github.io/docs/pinpointemail/get_configuration_set_event_destinations.html](https://paws-r.github.io/docs/pinpointemail/get_configuration_set_event_destinations.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that contains the event destination.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventDestinations = list(
-#'     list(
-#'       Name = "string",
-#'       Enabled = TRUE|FALSE,
-#'       MatchingEventTypes = list(
-#'         "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"
-#'       ),
-#'       KinesisFirehoseDestination = list(
-#'         IamRoleArn = "string",
-#'         DeliveryStreamArn = "string"
-#'       ),
-#'       CloudWatchDestination = list(
-#'         DimensionConfigurations = list(
-#'           list(
-#'             DimensionName = "string",
-#'             DimensionValueSource = "MESSAGE_TAG"|"EMAIL_HEADER"|"LINK_TAG",
-#'             DefaultDimensionValue = "string"
-#'           )
-#'         )
-#'       ),
-#'       SnsDestination = list(
-#'         TopicArn = "string"
-#'       ),
-#'       PinpointDestination = list(
-#'         ApplicationArn = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_configuration_set_event_destinations(
-#'   ConfigurationSetName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -844,36 +421,13 @@ pinpointemail_get_configuration_set_event_destinations <- function(Configuration
 #' the automatic warm-up process for the address
 #'
 #' @description
-#' Get information about a dedicated IP address, including the name of the
-#' dedicated IP pool that it's associated with, as well information about
-#' the automatic warm-up process for the address.
+#' Get information about a dedicated IP address, including the name of the dedicated IP pool that it's associated with, as well information about the automatic warm-up process for the address.
 #'
-#' @usage
-#' pinpointemail_get_dedicated_ip(Ip)
+#' See [https://paws-r.github.io/docs/pinpointemail/get_dedicated_ip.html](https://paws-r.github.io/docs/pinpointemail/get_dedicated_ip.html) for full documentation.
 #'
 #' @param Ip &#91;required&#93; The IP address that you want to obtain more information about. The value
 #' you specify has to be a dedicated IP address that's assocaited with your
 #' Amazon Pinpoint account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DedicatedIp = list(
-#'     Ip = "string",
-#'     WarmupStatus = "IN_PROGRESS"|"DONE",
-#'     WarmupPercentage = 123,
-#'     PoolName = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_dedicated_ip(
-#'   Ip = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -899,11 +453,9 @@ pinpointemail_get_dedicated_ip <- function(Ip) {
 #' Pinpoint account
 #'
 #' @description
-#' List the dedicated IP addresses that are associated with your Amazon
-#' Pinpoint account.
+#' List the dedicated IP addresses that are associated with your Amazon Pinpoint account.
 #'
-#' @usage
-#' pinpointemail_get_dedicated_ips(PoolName, NextToken, PageSize)
+#' See [https://paws-r.github.io/docs/pinpointemail/get_dedicated_ips.html](https://paws-r.github.io/docs/pinpointemail/get_dedicated_ips.html) for full documentation.
 #'
 #' @param PoolName The name of the IP pool that the dedicated IP address is associated
 #' with.
@@ -914,31 +466,6 @@ pinpointemail_get_dedicated_ip <- function(Ip) {
 #' `GetDedicatedIpsRequest`. If the number of results is larger than the
 #' number you specified in this parameter, then the response includes a
 #' `NextToken` element, which you can use to obtain additional results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DedicatedIps = list(
-#'     list(
-#'       Ip = "string",
-#'       WarmupStatus = "IN_PROGRESS"|"DONE",
-#'       WarmupPercentage = 123,
-#'       PoolName = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_dedicated_ips(
-#'   PoolName = "string",
-#'   NextToken = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -964,66 +491,9 @@ pinpointemail_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, P
 #' for your Amazon Pinpoint account
 #'
 #' @description
-#' Retrieve information about the status of the Deliverability dashboard
-#' for your Amazon Pinpoint account. When the Deliverability dashboard is
-#' enabled, you gain access to reputation, deliverability, and other
-#' metrics for the domains that you use to send email using Amazon
-#' Pinpoint. You also gain the ability to perform predictive inbox
-#' placement tests.
-#' 
-#' When you use the Deliverability dashboard, you pay a monthly
-#' subscription charge, in addition to any other fees that you accrue by
-#' using Amazon Pinpoint. For more information about the features and cost
-#' of a Deliverability dashboard subscription, see [Amazon Pinpoint
-#' Pricing](https://aws.amazon.com/pinpoint/pricing/).
+#' Retrieve information about the status of the Deliverability dashboard for your Amazon Pinpoint account. When the Deliverability dashboard is enabled, you gain access to reputation, deliverability, and other metrics for the domains that you use to send email using Amazon Pinpoint. You also gain the ability to perform predictive inbox placement tests.
 #'
-#' @usage
-#' pinpointemail_get_deliverability_dashboard_options()
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DashboardEnabled = TRUE|FALSE,
-#'   SubscriptionExpiryDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   AccountStatus = "ACTIVE"|"PENDING_EXPIRATION"|"DISABLED",
-#'   ActiveSubscribedDomains = list(
-#'     list(
-#'       Domain = "string",
-#'       SubscriptionStartDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InboxPlacementTrackingOption = list(
-#'         Global = TRUE|FALSE,
-#'         TrackedIsps = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   PendingExpirationSubscribedDomains = list(
-#'     list(
-#'       Domain = "string",
-#'       SubscriptionStartDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InboxPlacementTrackingOption = list(
-#'         Global = TRUE|FALSE,
-#'         TrackedIsps = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_deliverability_dashboard_options()
-#' ```
+#' See [https://paws-r.github.io/docs/pinpointemail/get_deliverability_dashboard_options.html](https://paws-r.github.io/docs/pinpointemail/get_deliverability_dashboard_options.html) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1050,60 +520,9 @@ pinpointemail_get_deliverability_dashboard_options <- function() {
 #' @description
 #' Retrieve the results of a predictive inbox placement test.
 #'
-#' @usage
-#' pinpointemail_get_deliverability_test_report(ReportId)
+#' See [https://paws-r.github.io/docs/pinpointemail/get_deliverability_test_report.html](https://paws-r.github.io/docs/pinpointemail/get_deliverability_test_report.html) for full documentation.
 #'
 #' @param ReportId &#91;required&#93; A unique string that identifies the predictive inbox placement test.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DeliverabilityTestReport = list(
-#'     ReportId = "string",
-#'     ReportName = "string",
-#'     Subject = "string",
-#'     FromEmailAddress = "string",
-#'     CreateDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
-#'   ),
-#'   OverallPlacement = list(
-#'     InboxPercentage = 123.0,
-#'     SpamPercentage = 123.0,
-#'     MissingPercentage = 123.0,
-#'     SpfPercentage = 123.0,
-#'     DkimPercentage = 123.0
-#'   ),
-#'   IspPlacements = list(
-#'     list(
-#'       IspName = "string",
-#'       PlacementStatistics = list(
-#'         InboxPercentage = 123.0,
-#'         SpamPercentage = 123.0,
-#'         MissingPercentage = 123.0,
-#'         SpfPercentage = 123.0,
-#'         DkimPercentage = 123.0
-#'       )
-#'     )
-#'   ),
-#'   Message = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_deliverability_test_report(
-#'   ReportId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1128,58 +547,15 @@ pinpointemail_get_deliverability_test_report <- function(ReportId) {
 #' Retrieve all the deliverability data for a specific campaign
 #'
 #' @description
-#' Retrieve all the deliverability data for a specific campaign. This data
-#' is available for a campaign only if the campaign sent email by using a
-#' domain that the Deliverability dashboard is enabled for
-#' ([`put_deliverability_dashboard_option`][pinpointemail_put_deliverability_dashboard_option]
-#' operation).
+#' Retrieve all the deliverability data for a specific campaign. This data is available for a campaign only if the campaign sent email by using a domain that the Deliverability dashboard is enabled for ([`put_deliverability_dashboard_option`][pinpointemail_put_deliverability_dashboard_option] operation).
 #'
-#' @usage
-#' pinpointemail_get_domain_deliverability_campaign(CampaignId)
+#' See [https://paws-r.github.io/docs/pinpointemail/get_domain_deliverability_campaign.html](https://paws-r.github.io/docs/pinpointemail/get_domain_deliverability_campaign.html) for full documentation.
 #'
 #' @param CampaignId &#91;required&#93; The unique identifier for the campaign. Amazon Pinpoint automatically
 #' generates and assigns this identifier to a campaign. This value is not
 #' the same as the campaign identifier that Amazon Pinpoint assigns to
 #' campaigns that you create and manage by using the Amazon Pinpoint API or
 #' the Amazon Pinpoint console.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainDeliverabilityCampaign = list(
-#'     CampaignId = "string",
-#'     ImageUrl = "string",
-#'     Subject = "string",
-#'     FromAddress = "string",
-#'     SendingIps = list(
-#'       "string"
-#'     ),
-#'     FirstSeenDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastSeenDateTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     InboxCount = 123,
-#'     SpamCount = 123,
-#'     ReadRate = 123.0,
-#'     DeleteRate = 123.0,
-#'     ReadDeleteRate = 123.0,
-#'     ProjectedVolume = 123,
-#'     Esps = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_domain_deliverability_campaign(
-#'   CampaignId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1205,11 +581,9 @@ pinpointemail_get_domain_deliverability_campaign <- function(CampaignId) {
 #' use to send email
 #'
 #' @description
-#' Retrieve inbox placement and engagement rates for the domains that you
-#' use to send email.
+#' Retrieve inbox placement and engagement rates for the domains that you use to send email.
 #'
-#' @usage
-#' pinpointemail_get_domain_statistics_report(Domain, StartDate, EndDate)
+#' See [https://paws-r.github.io/docs/pinpointemail/get_domain_statistics_report.html](https://paws-r.github.io/docs/pinpointemail/get_domain_statistics_report.html) for full documentation.
 #'
 #' @param Domain &#91;required&#93; The domain that you want to obtain deliverability metrics for.
 #' @param StartDate &#91;required&#93; The first day (in Unix time) that you want to obtain domain
@@ -1217,66 +591,6 @@ pinpointemail_get_domain_deliverability_campaign <- function(CampaignId) {
 #' @param EndDate &#91;required&#93; The last day (in Unix time) that you want to obtain domain
 #' deliverability metrics for. The `EndDate` that you specify has to be
 #' less than or equal to 30 days after the `StartDate`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OverallVolume = list(
-#'     VolumeStatistics = list(
-#'       InboxRawCount = 123,
-#'       SpamRawCount = 123,
-#'       ProjectedInbox = 123,
-#'       ProjectedSpam = 123
-#'     ),
-#'     ReadRatePercent = 123.0,
-#'     DomainIspPlacements = list(
-#'       list(
-#'         IspName = "string",
-#'         InboxRawCount = 123,
-#'         SpamRawCount = 123,
-#'         InboxPercentage = 123.0,
-#'         SpamPercentage = 123.0
-#'       )
-#'     )
-#'   ),
-#'   DailyVolumes = list(
-#'     list(
-#'       StartDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       VolumeStatistics = list(
-#'         InboxRawCount = 123,
-#'         SpamRawCount = 123,
-#'         ProjectedInbox = 123,
-#'         ProjectedSpam = 123
-#'       ),
-#'       DomainIspPlacements = list(
-#'         list(
-#'           IspName = "string",
-#'           InboxRawCount = 123,
-#'           SpamRawCount = 123,
-#'           InboxPercentage = 123.0,
-#'           SpamPercentage = 123.0
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_domain_statistics_report(
-#'   Domain = "string",
-#'   StartDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1303,49 +617,11 @@ pinpointemail_get_domain_statistics_report <- function(Domain, StartDate, EndDat
 #' its DKIM authentication status, and its custom Mail-From settings
 #'
 #' @description
-#' Provides information about a specific identity associated with your
-#' Amazon Pinpoint account, including the identity's verification status,
-#' its DKIM authentication status, and its custom Mail-From settings.
+#' Provides information about a specific identity associated with your Amazon Pinpoint account, including the identity's verification status, its DKIM authentication status, and its custom Mail-From settings.
 #'
-#' @usage
-#' pinpointemail_get_email_identity(EmailIdentity)
+#' See [https://paws-r.github.io/docs/pinpointemail/get_email_identity.html](https://paws-r.github.io/docs/pinpointemail/get_email_identity.html) for full documentation.
 #'
 #' @param EmailIdentity &#91;required&#93; The email identity that you want to retrieve details for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
-#'   FeedbackForwardingStatus = TRUE|FALSE,
-#'   VerifiedForSendingStatus = TRUE|FALSE,
-#'   DkimAttributes = list(
-#'     SigningEnabled = TRUE|FALSE,
-#'     Status = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE"|"NOT_STARTED",
-#'     Tokens = list(
-#'       "string"
-#'     )
-#'   ),
-#'   MailFromAttributes = list(
-#'     MailFromDomain = "string",
-#'     MailFromDomainStatus = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE",
-#'     BehaviorOnMxFailure = "USE_DEFAULT_VALUE"|"REJECT_MESSAGE"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_email_identity(
-#'   EmailIdentity = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1371,17 +647,9 @@ pinpointemail_get_email_identity <- function(EmailIdentity) {
 #' account in the current region
 #'
 #' @description
-#' List all of the configuration sets associated with your Amazon Pinpoint
-#' account in the current region.
-#' 
-#' In Amazon Pinpoint, *configuration sets* are groups of rules that you
-#' can apply to the emails you send. You apply a configuration set to an
-#' email by including a reference to the configuration set in the headers
-#' of the email. When you apply a configuration set to an email, all of the
-#' rules in that configuration set are applied to the email.
+#' List all of the configuration sets associated with your Amazon Pinpoint account in the current region.
 #'
-#' @usage
-#' pinpointemail_list_configuration_sets(NextToken, PageSize)
+#' See [https://paws-r.github.io/docs/pinpointemail/list_configuration_sets.html](https://paws-r.github.io/docs/pinpointemail/list_configuration_sets.html) for full documentation.
 #'
 #' @param NextToken A token returned from a previous call to
 #' [`list_configuration_sets`][pinpointemail_list_configuration_sets] to
@@ -1391,25 +659,6 @@ pinpointemail_get_email_identity <- function(EmailIdentity) {
 #' the number of results is larger than the number you specified in this
 #' parameter, then the response includes a `NextToken` element, which you
 #' can use to obtain additional results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigurationSets = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_configuration_sets(
-#'   NextToken = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1435,11 +684,9 @@ pinpointemail_list_configuration_sets <- function(NextToken = NULL, PageSize = N
 #' account in the current AWS Region
 #'
 #' @description
-#' List all of the dedicated IP pools that exist in your Amazon Pinpoint
-#' account in the current AWS Region.
+#' List all of the dedicated IP pools that exist in your Amazon Pinpoint account in the current AWS Region.
 #'
-#' @usage
-#' pinpointemail_list_dedicated_ip_pools(NextToken, PageSize)
+#' See [https://paws-r.github.io/docs/pinpointemail/list_dedicated_ip_pools.html](https://paws-r.github.io/docs/pinpointemail/list_dedicated_ip_pools.html) for full documentation.
 #'
 #' @param NextToken A token returned from a previous call to
 #' [`list_dedicated_ip_pools`][pinpointemail_list_dedicated_ip_pools] to
@@ -1449,25 +696,6 @@ pinpointemail_list_configuration_sets <- function(NextToken = NULL, PageSize = N
 #' the number of results is larger than the number you specified in this
 #' parameter, then the response includes a `NextToken` element, which you
 #' can use to obtain additional results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DedicatedIpPools = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_dedicated_ip_pools(
-#'   NextToken = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1493,14 +721,9 @@ pinpointemail_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = N
 #' performed, regardless of their statuses
 #'
 #' @description
-#' Show a list of the predictive inbox placement tests that you've
-#' performed, regardless of their statuses. For predictive inbox placement
-#' tests that are complete, you can use the
-#' [`get_deliverability_test_report`][pinpointemail_get_deliverability_test_report]
-#' operation to view the results.
+#' Show a list of the predictive inbox placement tests that you've performed, regardless of their statuses. For predictive inbox placement tests that are complete, you can use the [`get_deliverability_test_report`][pinpointemail_get_deliverability_test_report] operation to view the results.
 #'
-#' @usage
-#' pinpointemail_list_deliverability_test_reports(NextToken, PageSize)
+#' See [https://paws-r.github.io/docs/pinpointemail/list_deliverability_test_reports.html](https://paws-r.github.io/docs/pinpointemail/list_deliverability_test_reports.html) for full documentation.
 #'
 #' @param NextToken A token returned from a previous call to
 #' [`list_deliverability_test_reports`][pinpointemail_list_deliverability_test_reports]
@@ -1514,34 +737,6 @@ pinpointemail_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = N
 #' 
 #' The value you specify has to be at least 0, and can be no more than
 #' 1000.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DeliverabilityTestReports = list(
-#'     list(
-#'       ReportId = "string",
-#'       ReportName = "string",
-#'       Subject = "string",
-#'       FromEmailAddress = "string",
-#'       CreateDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DeliverabilityTestStatus = "IN_PROGRESS"|"COMPLETED"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_deliverability_test_reports(
-#'   NextToken = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1567,15 +762,9 @@ pinpointemail_list_deliverability_test_reports <- function(NextToken = NULL, Pag
 #' domain to send email during a specified time range
 #'
 #' @description
-#' Retrieve deliverability data for all the campaigns that used a specific
-#' domain to send email during a specified time range. This data is
-#' available for a domain only if you enabled the Deliverability dashboard
-#' ([`put_deliverability_dashboard_option`][pinpointemail_put_deliverability_dashboard_option]
-#' operation) for the domain.
+#' Retrieve deliverability data for all the campaigns that used a specific domain to send email during a specified time range. This data is available for a domain only if you enabled the Deliverability dashboard ([`put_deliverability_dashboard_option`][pinpointemail_put_deliverability_dashboard_option] operation) for the domain.
 #'
-#' @usage
-#' pinpointemail_list_domain_deliverability_campaigns(StartDate, EndDate,
-#'   SubscribedDomain, NextToken, PageSize)
+#' See [https://paws-r.github.io/docs/pinpointemail/list_domain_deliverability_campaigns.html](https://paws-r.github.io/docs/pinpointemail/list_domain_deliverability_campaigns.html) for full documentation.
 #'
 #' @param StartDate &#91;required&#93; The first day, in Unix time format, that you want to obtain
 #' deliverability data for.
@@ -1593,55 +782,6 @@ pinpointemail_list_deliverability_test_reports <- function(NextToken = NULL, Pag
 #' operation. If the number of results is larger than the number that you
 #' specify in this parameter, the response includes a `NextToken` element,
 #' which you can use to obtain additional results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DomainDeliverabilityCampaigns = list(
-#'     list(
-#'       CampaignId = "string",
-#'       ImageUrl = "string",
-#'       Subject = "string",
-#'       FromAddress = "string",
-#'       SendingIps = list(
-#'         "string"
-#'       ),
-#'       FirstSeenDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastSeenDateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InboxCount = 123,
-#'       SpamCount = 123,
-#'       ReadRate = 123.0,
-#'       DeleteRate = 123.0,
-#'       ReadDeleteRate = 123.0,
-#'       ProjectedVolume = 123,
-#'       Esps = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_domain_deliverability_campaigns(
-#'   StartDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   SubscribedDomain = "string",
-#'   NextToken = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1667,13 +807,9 @@ pinpointemail_list_domain_deliverability_campaigns <- function(StartDate, EndDat
 #' your Amazon Pinpoint account
 #'
 #' @description
-#' Returns a list of all of the email identities that are associated with
-#' your Amazon Pinpoint account. An identity can be either an email address
-#' or a domain. This operation returns identities that are verified as well
-#' as those that aren't.
+#' Returns a list of all of the email identities that are associated with your Amazon Pinpoint account. An identity can be either an email address or a domain. This operation returns identities that are verified as well as those that aren't.
 #'
-#' @usage
-#' pinpointemail_list_email_identities(NextToken, PageSize)
+#' See [https://paws-r.github.io/docs/pinpointemail/list_email_identities.html](https://paws-r.github.io/docs/pinpointemail/list_email_identities.html) for full documentation.
 #'
 #' @param NextToken A token returned from a previous call to
 #' [`list_email_identities`][pinpointemail_list_email_identities] to
@@ -1686,29 +822,6 @@ pinpointemail_list_domain_deliverability_campaigns <- function(StartDate, EndDat
 #' 
 #' The value you specify has to be at least 0, and can be no more than
 #' 1000.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EmailIdentities = list(
-#'     list(
-#'       IdentityType = "EMAIL_ADDRESS"|"DOMAIN"|"MANAGED_DOMAIN",
-#'       IdentityName = "string",
-#'       SendingEnabled = TRUE|FALSE
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_email_identities(
-#'   NextToken = "string",
-#'   PageSize = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1734,38 +847,12 @@ pinpointemail_list_email_identities <- function(NextToken = NULL, PageSize = NUL
 #' specified resource
 #'
 #' @description
-#' Retrieve a list of the tags (keys and values) that are associated with a
-#' specified resource. A *tag* is a label that you optionally define and
-#' associate with a resource in Amazon Pinpoint. Each tag consists of a
-#' required *tag key* and an optional associated *tag value*. A tag key is
-#' a general label that acts as a category for more specific tag values. A
-#' tag value acts as a descriptor within a tag key.
+#' Retrieve a list of the tags (keys and values) that are associated with a specified resource. A *tag* is a label that you optionally define and associate with a resource in Amazon Pinpoint. Each tag consists of a required *tag key* and an optional associated *tag value*. A tag key is a general label that acts as a category for more specific tag values. A tag value acts as a descriptor within a tag key.
 #'
-#' @usage
-#' pinpointemail_list_tags_for_resource(ResourceArn)
+#' See [https://paws-r.github.io/docs/pinpointemail/list_tags_for_resource.html](https://paws-r.github.io/docs/pinpointemail/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to retrieve
 #' tag information for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1791,27 +878,14 @@ pinpointemail_list_tags_for_resource <- function(ResourceArn) {
 #' addresses
 #'
 #' @description
-#' Enable or disable the automatic warm-up feature for dedicated IP
-#' addresses.
+#' Enable or disable the automatic warm-up feature for dedicated IP addresses.
 #'
-#' @usage
-#' pinpointemail_put_account_dedicated_ip_warmup_attributes(
-#'   AutoWarmupEnabled)
+#' See [https://paws-r.github.io/docs/pinpointemail/put_account_dedicated_ip_warmup_attributes.html](https://paws-r.github.io/docs/pinpointemail/put_account_dedicated_ip_warmup_attributes.html) for full documentation.
 #'
 #' @param AutoWarmupEnabled Enables or disables the automatic warm-up feature for dedicated IP
 #' addresses that are associated with your Amazon Pinpoint account in the
 #' current AWS Region. Set to `true` to enable the automatic warm-up
 #' feature, or set to `false` to disable it.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_account_dedicated_ip_warmup_attributes(
-#'   AutoWarmupEnabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1838,24 +912,13 @@ pinpointemail_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupE
 #' @description
 #' Enable or disable the ability of your account to send email.
 #'
-#' @usage
-#' pinpointemail_put_account_sending_attributes(SendingEnabled)
+#' See [https://paws-r.github.io/docs/pinpointemail/put_account_sending_attributes.html](https://paws-r.github.io/docs/pinpointemail/put_account_sending_attributes.html) for full documentation.
 #'
 #' @param SendingEnabled Enables or disables your account's ability to send email. Set to `true`
 #' to enable email sending, or set to `false` to disable email sending.
 #' 
 #' If AWS paused your account's ability to send email, you can't use this
 #' operation to resume your account's ability to send email.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_account_sending_attributes(
-#'   SendingEnabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1880,13 +943,9 @@ pinpointemail_put_account_sending_attributes <- function(SendingEnabled = NULL) 
 #' Associate a configuration set with a dedicated IP pool
 #'
 #' @description
-#' Associate a configuration set with a dedicated IP pool. You can use
-#' dedicated IP pools to create groups of dedicated IP addresses for
-#' sending specific types of email.
+#' Associate a configuration set with a dedicated IP pool. You can use dedicated IP pools to create groups of dedicated IP addresses for sending specific types of email.
 #'
-#' @usage
-#' pinpointemail_put_configuration_set_delivery_options(
-#'   ConfigurationSetName, TlsPolicy, SendingPoolName)
+#' See [https://paws-r.github.io/docs/pinpointemail/put_configuration_set_delivery_options.html](https://paws-r.github.io/docs/pinpointemail/put_configuration_set_delivery_options.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to associate with a
 #' dedicated IP pool.
@@ -1897,18 +956,6 @@ pinpointemail_put_account_sending_attributes <- function(SendingEnabled = NULL) 
 #' TLS connection can't be established.
 #' @param SendingPoolName The name of the dedicated IP pool that you want to associate with the
 #' configuration set.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_configuration_set_delivery_options(
-#'   ConfigurationSetName = "string",
-#'   TlsPolicy = "REQUIRE"|"OPTIONAL",
-#'   SendingPoolName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1934,29 +981,15 @@ pinpointemail_put_configuration_set_delivery_options <- function(ConfigurationSe
 #' send using a particular configuration set in a specific AWS Region
 #'
 #' @description
-#' Enable or disable collection of reputation metrics for emails that you
-#' send using a particular configuration set in a specific AWS Region.
+#' Enable or disable collection of reputation metrics for emails that you send using a particular configuration set in a specific AWS Region.
 #'
-#' @usage
-#' pinpointemail_put_configuration_set_reputation_options(
-#'   ConfigurationSetName, ReputationMetricsEnabled)
+#' See [https://paws-r.github.io/docs/pinpointemail/put_configuration_set_reputation_options.html](https://paws-r.github.io/docs/pinpointemail/put_configuration_set_reputation_options.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to enable or disable
 #' reputation metric tracking for.
 #' @param ReputationMetricsEnabled If `true`, tracking of reputation metrics is enabled for the
 #' configuration set. If `false`, tracking of reputation metrics is
 #' disabled for the configuration set.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_configuration_set_reputation_options(
-#'   ConfigurationSetName = "string",
-#'   ReputationMetricsEnabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1982,28 +1015,14 @@ pinpointemail_put_configuration_set_reputation_options <- function(Configuration
 #' configuration set in a specific AWS Region
 #'
 #' @description
-#' Enable or disable email sending for messages that use a particular
-#' configuration set in a specific AWS Region.
+#' Enable or disable email sending for messages that use a particular configuration set in a specific AWS Region.
 #'
-#' @usage
-#' pinpointemail_put_configuration_set_sending_options(
-#'   ConfigurationSetName, SendingEnabled)
+#' See [https://paws-r.github.io/docs/pinpointemail/put_configuration_set_sending_options.html](https://paws-r.github.io/docs/pinpointemail/put_configuration_set_sending_options.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to enable or disable
 #' email sending for.
 #' @param SendingEnabled If `true`, email sending is enabled for the configuration set. If
 #' `false`, email sending is disabled for the configuration set.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_configuration_set_sending_options(
-#'   ConfigurationSetName = "string",
-#'   SendingEnabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2029,27 +1048,13 @@ pinpointemail_put_configuration_set_sending_options <- function(ConfigurationSet
 #' email that you send using Amazon Pinpoint
 #'
 #' @description
-#' Specify a custom domain to use for open and click tracking elements in
-#' email that you send using Amazon Pinpoint.
+#' Specify a custom domain to use for open and click tracking elements in email that you send using Amazon Pinpoint.
 #'
-#' @usage
-#' pinpointemail_put_configuration_set_tracking_options(
-#'   ConfigurationSetName, CustomRedirectDomain)
+#' See [https://paws-r.github.io/docs/pinpointemail/put_configuration_set_tracking_options.html](https://paws-r.github.io/docs/pinpointemail/put_configuration_set_tracking_options.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that you want to add a custom tracking
 #' domain to.
 #' @param CustomRedirectDomain The domain that you want to use to track open and click events.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_configuration_set_tracking_options(
-#'   ConfigurationSetName = "string",
-#'   CustomRedirectDomain = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2075,34 +1080,14 @@ pinpointemail_put_configuration_set_tracking_options <- function(ConfigurationSe
 #'
 #' @description
 #' Move a dedicated IP address to an existing dedicated IP pool.
-#' 
-#' The dedicated IP address that you specify must already exist, and must
-#' be associated with your Amazon Pinpoint account.
-#' 
-#' The dedicated IP pool you specify must already exist. You can create a
-#' new pool by using the
-#' [`create_dedicated_ip_pool`][pinpointemail_create_dedicated_ip_pool]
-#' operation.
 #'
-#' @usage
-#' pinpointemail_put_dedicated_ip_in_pool(Ip, DestinationPoolName)
+#' See [https://paws-r.github.io/docs/pinpointemail/put_dedicated_ip_in_pool.html](https://paws-r.github.io/docs/pinpointemail/put_dedicated_ip_in_pool.html) for full documentation.
 #'
 #' @param Ip &#91;required&#93; The IP address that you want to move to the dedicated IP pool. The value
 #' you specify has to be a dedicated IP address that's associated with your
 #' Amazon Pinpoint account.
 #' @param DestinationPoolName &#91;required&#93; The name of the IP pool that you want to add the dedicated IP address
 #' to. You have to specify an IP pool that already exists.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_dedicated_ip_in_pool(
-#'   Ip = "string",
-#'   DestinationPoolName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2129,24 +1114,12 @@ pinpointemail_put_dedicated_ip_in_pool <- function(Ip, DestinationPoolName) {
 #' @description
 #' Put dedicated ip warmup attributes
 #'
-#' @usage
-#' pinpointemail_put_dedicated_ip_warmup_attributes(Ip, WarmupPercentage)
+#' See [https://paws-r.github.io/docs/pinpointemail/put_dedicated_ip_warmup_attributes.html](https://paws-r.github.io/docs/pinpointemail/put_dedicated_ip_warmup_attributes.html) for full documentation.
 #'
 #' @param Ip &#91;required&#93; The dedicated IP address that you want to update the warm-up attributes
 #' for.
 #' @param WarmupPercentage &#91;required&#93; The warm-up percentage that you want to associate with the dedicated IP
 #' address.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_dedicated_ip_warmup_attributes(
-#'   Ip = "string",
-#'   WarmupPercentage = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2172,50 +1145,14 @@ pinpointemail_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentag
 #' account
 #'
 #' @description
-#' Enable or disable the Deliverability dashboard for your Amazon Pinpoint
-#' account. When you enable the Deliverability dashboard, you gain access
-#' to reputation, deliverability, and other metrics for the domains that
-#' you use to send email using Amazon Pinpoint. You also gain the ability
-#' to perform predictive inbox placement tests.
-#' 
-#' When you use the Deliverability dashboard, you pay a monthly
-#' subscription charge, in addition to any other fees that you accrue by
-#' using Amazon Pinpoint. For more information about the features and cost
-#' of a Deliverability dashboard subscription, see [Amazon Pinpoint
-#' Pricing](https://aws.amazon.com/pinpoint/pricing/).
+#' Enable or disable the Deliverability dashboard for your Amazon Pinpoint account. When you enable the Deliverability dashboard, you gain access to reputation, deliverability, and other metrics for the domains that you use to send email using Amazon Pinpoint. You also gain the ability to perform predictive inbox placement tests.
 #'
-#' @usage
-#' pinpointemail_put_deliverability_dashboard_option(DashboardEnabled,
-#'   SubscribedDomains)
+#' See [https://paws-r.github.io/docs/pinpointemail/put_deliverability_dashboard_option.html](https://paws-r.github.io/docs/pinpointemail/put_deliverability_dashboard_option.html) for full documentation.
 #'
 #' @param DashboardEnabled &#91;required&#93; Specifies whether to enable the Deliverability dashboard for your Amazon
 #' Pinpoint account. To enable the dashboard, set this value to `true`.
 #' @param SubscribedDomains An array of objects, one for each verified domain that you use to send
 #' email and enabled the Deliverability dashboard for.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_deliverability_dashboard_option(
-#'   DashboardEnabled = TRUE|FALSE,
-#'   SubscribedDomains = list(
-#'     list(
-#'       Domain = "string",
-#'       SubscriptionStartDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       InboxPlacementTrackingOption = list(
-#'         Global = TRUE|FALSE,
-#'         TrackedIsps = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2242,9 +1179,7 @@ pinpointemail_put_deliverability_dashboard_option <- function(DashboardEnabled, 
 #' @description
 #' Used to enable or disable DKIM authentication for an email identity.
 #'
-#' @usage
-#' pinpointemail_put_email_identity_dkim_attributes(EmailIdentity,
-#'   SigningEnabled)
+#' See [https://paws-r.github.io/docs/pinpointemail/put_email_identity_dkim_attributes.html](https://paws-r.github.io/docs/pinpointemail/put_email_identity_dkim_attributes.html) for full documentation.
 #'
 #' @param EmailIdentity &#91;required&#93; The email identity that you want to change the DKIM settings for.
 #' @param SigningEnabled Sets the DKIM signing configuration for the identity.
@@ -2253,17 +1188,6 @@ pinpointemail_put_deliverability_dashboard_option <- function(DashboardEnabled, 
 #' sends from the identity are DKIM-signed. When you set this value to
 #' `false`, then the messages that Amazon Pinpoint sends from the identity
 #' aren't DKIM-signed.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_email_identity_dkim_attributes(
-#'   EmailIdentity = "string",
-#'   SigningEnabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2288,25 +1212,9 @@ pinpointemail_put_email_identity_dkim_attributes <- function(EmailIdentity, Sign
 #' Used to enable or disable feedback forwarding for an identity
 #'
 #' @description
-#' Used to enable or disable feedback forwarding for an identity. This
-#' setting determines what happens when an identity is used to send an
-#' email that results in a bounce or complaint event.
-#' 
-#' When you enable feedback forwarding, Amazon Pinpoint sends you email
-#' notifications when bounce or complaint events occur. Amazon Pinpoint
-#' sends this notification to the address that you specified in the
-#' Return-Path header of the original email.
-#' 
-#' When you disable feedback forwarding, Amazon Pinpoint sends
-#' notifications through other mechanisms, such as by notifying an Amazon
-#' SNS topic. You're required to have a method of tracking bounces and
-#' complaints. If you haven't set up another mechanism for receiving bounce
-#' or complaint notifications, Amazon Pinpoint sends an email notification
-#' when these events occur (even if this setting is disabled).
+#' Used to enable or disable feedback forwarding for an identity. This setting determines what happens when an identity is used to send an email that results in a bounce or complaint event.
 #'
-#' @usage
-#' pinpointemail_put_email_identity_feedback_attributes(EmailIdentity,
-#'   EmailForwardingEnabled)
+#' See [https://paws-r.github.io/docs/pinpointemail/put_email_identity_feedback_attributes.html](https://paws-r.github.io/docs/pinpointemail/put_email_identity_feedback_attributes.html) for full documentation.
 #'
 #' @param EmailIdentity &#91;required&#93; The email identity that you want to configure bounce and complaint
 #' feedback forwarding for.
@@ -2324,17 +1232,6 @@ pinpointemail_put_email_identity_dkim_attributes <- function(EmailIdentity, Sign
 #' receiving bounce or complaint notifications, Amazon Pinpoint sends an
 #' email notification when these events occur (even if this setting is
 #' disabled).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_email_identity_feedback_attributes(
-#'   EmailIdentity = "string",
-#'   EmailForwardingEnabled = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2360,12 +1257,9 @@ pinpointemail_put_email_identity_feedback_attributes <- function(EmailIdentity, 
 #' an email identity
 #'
 #' @description
-#' Used to enable or disable the custom Mail-From domain configuration for
-#' an email identity.
+#' Used to enable or disable the custom Mail-From domain configuration for an email identity.
 #'
-#' @usage
-#' pinpointemail_put_email_identity_mail_from_attributes(EmailIdentity,
-#'   MailFromDomain, BehaviorOnMxFailure)
+#' See [https://paws-r.github.io/docs/pinpointemail/put_email_identity_mail_from_attributes.html](https://paws-r.github.io/docs/pinpointemail/put_email_identity_mail_from_attributes.html) for full documentation.
 #'
 #' @param EmailIdentity &#91;required&#93; The verified email identity that you want to set up the custom MAIL FROM
 #' domain for.
@@ -2387,18 +1281,6 @@ pinpointemail_put_email_identity_feedback_attributes <- function(EmailIdentity, 
 #' 
 #' These behaviors are taken when the custom MAIL FROM domain configuration
 #' is in the `Pending`, `Failed`, and `TemporaryFailure` states.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_email_identity_mail_from_attributes(
-#'   EmailIdentity = "string",
-#'   MailFromDomain = "string",
-#'   BehaviorOnMxFailure = "USE_DEFAULT_VALUE"|"REJECT_MESSAGE"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2423,23 +1305,9 @@ pinpointemail_put_email_identity_mail_from_attributes <- function(EmailIdentity,
 #' Sends an email message
 #'
 #' @description
-#' Sends an email message. You can use the Amazon Pinpoint Email API to
-#' send two types of messages:
-#' 
-#' -   **Simple** – A standard email message. When you create this type of
-#'     message, you specify the sender, the recipient, and the message
-#'     body, and Amazon Pinpoint assembles the message for you.
-#' 
-#' -   **Raw** – A raw, MIME-formatted email message. When you send this
-#'     type of email, you have to specify all of the message headers, as
-#'     well as the message body. You can use this message type to send
-#'     messages that contain attachments. The message that you specify has
-#'     to be a valid MIME message.
+#' Sends an email message. You can use the Amazon Pinpoint Email API to send two types of messages:
 #'
-#' @usage
-#' pinpointemail_send_email(FromEmailAddress, Destination,
-#'   ReplyToAddresses, FeedbackForwardingEmailAddress, Content, EmailTags,
-#'   ConfigurationSetName)
+#' See [https://paws-r.github.io/docs/pinpointemail/send_email.html](https://paws-r.github.io/docs/pinpointemail/send_email.html) for full documentation.
 #'
 #' @param FromEmailAddress The email address that you want to use as the "From" address for the
 #' email. The address that you specify has to be verified.
@@ -2456,68 +1324,6 @@ pinpointemail_put_email_identity_mail_from_attributes <- function(EmailIdentity,
 #' define, so that you can publish email sending events.
 #' @param ConfigurationSetName The name of the configuration set that you want to use when sending the
 #' email.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   MessageId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_email(
-#'   FromEmailAddress = "string",
-#'   Destination = list(
-#'     ToAddresses = list(
-#'       "string"
-#'     ),
-#'     CcAddresses = list(
-#'       "string"
-#'     ),
-#'     BccAddresses = list(
-#'       "string"
-#'     )
-#'   ),
-#'   ReplyToAddresses = list(
-#'     "string"
-#'   ),
-#'   FeedbackForwardingEmailAddress = "string",
-#'   Content = list(
-#'     Simple = list(
-#'       Subject = list(
-#'         Data = "string",
-#'         Charset = "string"
-#'       ),
-#'       Body = list(
-#'         Text = list(
-#'           Data = "string",
-#'           Charset = "string"
-#'         ),
-#'         Html = list(
-#'           Data = "string",
-#'           Charset = "string"
-#'         )
-#'       )
-#'     ),
-#'     Raw = list(
-#'       Data = raw
-#'     ),
-#'     Template = list(
-#'       TemplateArn = "string",
-#'       TemplateData = "string"
-#'     )
-#'   ),
-#'   EmailTags = list(
-#'     list(
-#'       Name = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   ConfigurationSetName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2542,19 +1348,9 @@ pinpointemail_send_email <- function(FromEmailAddress = NULL, Destination, Reply
 #' Add one or more tags (keys and values) to a specified resource
 #'
 #' @description
-#' Add one or more tags (keys and values) to a specified resource. A
-#' *tag* is a label that you optionally define and associate with a
-#' resource in Amazon Pinpoint. Tags can help you categorize and manage
-#' resources in different ways, such as by purpose, owner, environment, or
-#' other criteria. A resource can have as many as 50 tags.
-#' 
-#' Each tag consists of a required *tag key* and an associated *tag value*,
-#' both of which you define. A tag key is a general label that acts as a
-#' category for more specific tag values. A tag value acts as a descriptor
-#' within a tag key.
+#' Add one or more tags (keys and values) to a specified resource. A *tag* is a label that you optionally define and associate with a resource in Amazon Pinpoint. Tags can help you categorize and manage resources in different ways, such as by purpose, owner, environment, or other criteria. A resource can have as many as 50 tags.
 #'
-#' @usage
-#' pinpointemail_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/pinpointemail/tag_resource.html](https://paws-r.github.io/docs/pinpointemail/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to add one
 #' or more tags to.
@@ -2562,22 +1358,6 @@ pinpointemail_send_email <- function(FromEmailAddress = NULL, Destination, Reply
 #' of a required tag key (`Key`) and an associated tag value (`Value`). The
 #' maximum length of a tag key is 128 characters. The maximum length of a
 #' tag value is 256 characters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2604,8 +1384,7 @@ pinpointemail_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Remove one or more tags (keys and values) from a specified resource.
 #'
-#' @usage
-#' pinpointemail_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/pinpointemail/untag_resource.html](https://paws-r.github.io/docs/pinpointemail/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove
 #' one or more tags from.
@@ -2617,19 +1396,6 @@ pinpointemail_tag_resource <- function(ResourceArn, Tags) {
 #' parameter and argument for each additional tag to remove, separated by
 #' an ampersand. For example:
 #' `/v1/email/tags?ResourceArn=ResourceArn&TagKeys=Key1&TagKeys=Key2`
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2654,60 +1420,14 @@ pinpointemail_untag_resource <- function(ResourceArn, TagKeys) {
 #' Update the configuration of an event destination for a configuration set
 #'
 #' @description
-#' Update the configuration of an event destination for a configuration
-#' set.
-#' 
-#' In Amazon Pinpoint, *events* include message sends, deliveries, opens,
-#' clicks, bounces, and complaints. *Event destinations* are places that
-#' you can send information about these events to. For example, you can
-#' send event data to Amazon SNS to receive notifications when you receive
-#' bounces or complaints, or you can use Amazon Kinesis Data Firehose to
-#' stream data to Amazon S3 for long-term storage.
+#' Update the configuration of an event destination for a configuration set.
 #'
-#' @usage
-#' pinpointemail_update_configuration_set_event_destination(
-#'   ConfigurationSetName, EventDestinationName, EventDestination)
+#' See [https://paws-r.github.io/docs/pinpointemail/update_configuration_set_event_destination.html](https://paws-r.github.io/docs/pinpointemail/update_configuration_set_event_destination.html) for full documentation.
 #'
 #' @param ConfigurationSetName &#91;required&#93; The name of the configuration set that contains the event destination
 #' that you want to modify.
 #' @param EventDestinationName &#91;required&#93; The name of the event destination that you want to modify.
 #' @param EventDestination &#91;required&#93; An object that defines the event destination.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_configuration_set_event_destination(
-#'   ConfigurationSetName = "string",
-#'   EventDestinationName = "string",
-#'   EventDestination = list(
-#'     Enabled = TRUE|FALSE,
-#'     MatchingEventTypes = list(
-#'       "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"
-#'     ),
-#'     KinesisFirehoseDestination = list(
-#'       IamRoleArn = "string",
-#'       DeliveryStreamArn = "string"
-#'     ),
-#'     CloudWatchDestination = list(
-#'       DimensionConfigurations = list(
-#'         list(
-#'           DimensionName = "string",
-#'           DimensionValueSource = "MESSAGE_TAG"|"EMAIL_HEADER"|"LINK_TAG",
-#'           DefaultDimensionValue = "string"
-#'         )
-#'       )
-#'     ),
-#'     SnsDestination = list(
-#'       TopicArn = "string"
-#'     ),
-#'     PinpointDestination = list(
-#'       ApplicationArn = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

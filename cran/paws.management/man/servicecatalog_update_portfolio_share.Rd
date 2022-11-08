@@ -4,8 +4,13 @@
 \alias{servicecatalog_update_portfolio_share}
 \title{Updates the specified portfolio share}
 \usage{
-servicecatalog_update_portfolio_share(AcceptLanguage, PortfolioId,
-  AccountId, OrganizationNode, ShareTagOptions)
+servicecatalog_update_portfolio_share(
+  AcceptLanguage = NULL,
+  PortfolioId,
+  AccountId = NULL,
+  OrganizationNode = NULL,
+  ShareTagOptions = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -27,47 +32,9 @@ updating an external account to account type share.}
 If this field is not provided, the current state of TagOptions sharing
 on the portfolio share will not be modified.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PortfolioShareToken = "string",
-  Status = "NOT_STARTED"|"IN_PROGRESS"|"COMPLETED"|"COMPLETED_WITH_ERRORS"|"ERROR"
-)
-}
-}
 \description{
-Updates the specified portfolio share. You can use this API to enable or
-disable TagOptions sharing for an existing portfolio share.
+Updates the specified portfolio share. You can use this API to enable or disable TagOptions sharing for an existing portfolio share.
 
-The portfolio share cannot be updated if the
-\code{\link[=servicecatalog_create_portfolio_share]{create_portfolio_share}}
-operation is \code{IN_PROGRESS}, as the share is not available to recipient
-entities. In this case, you must wait for the portfolio share to be
-COMPLETED.
-
-You must provide the \code{accountId} or organization node in the input, but
-not both.
-
-If the portfolio is shared to both an external account and an
-organization node, and both shares need to be updated, you must invoke
-\code{\link[=servicecatalog_update_portfolio_share]{update_portfolio_share}}
-separately for each share type.
-
-This API cannot be used for removing the portfolio share. You must use
-\code{\link[=servicecatalog_delete_portfolio_share]{delete_portfolio_share}} API
-for that action.
+See \url{https://paws-r.github.io/docs/servicecatalog/update_portfolio_share.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_portfolio_share(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  AccountId = "string",
-  OrganizationNode = list(
-    Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
-    Value = "string"
-  ),
-  ShareTagOptions = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

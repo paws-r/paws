@@ -4,37 +4,16 @@
 \alias{autoscaling_delete_scheduled_action}
 \title{Deletes the specified scheduled action}
 \usage{
-autoscaling_delete_scheduled_action(AutoScalingGroupName,
-  ScheduledActionName)
+autoscaling_delete_scheduled_action(AutoScalingGroupName, ScheduledActionName)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{ScheduledActionName}{[required] The name of the action to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified scheduled action.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_scheduled_action(
-  AutoScalingGroupName = "string",
-  ScheduledActionName = "string"
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example deletes the specified scheduled action from the specified
-# Auto Scaling group.
-svc$delete_scheduled_action(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  ScheduledActionName = "my-scheduled-action"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/delete_scheduled_action.html} for full documentation.
 }
 \keyword{internal}

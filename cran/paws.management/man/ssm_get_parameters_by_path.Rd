@@ -5,14 +5,22 @@
 \title{Retrieve information about one or more parameters in a specific
 hierarchy}
 \usage{
-ssm_get_parameters_by_path(Path, Recursive, ParameterFilters,
-  WithDecryption, MaxResults, NextToken)
+ssm_get_parameters_by_path(
+  Path,
+  Recursive = NULL,
+  ParameterFilters = NULL,
+  WithDecryption = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Path}{[required] The hierarchy for the parameter. Hierarchies start with a forward slash
-(/) and end with the parameter name. A parameter name hierarchy can have
-a maximum of 15 levels. Here is an example of a hierarchy:
-\verb{/Finance/Prod/IAD/WinServ2016/license33}}
+(/). The hierarchy is the parameter name except the last part of the
+parameter. For the API call to succeed, the last part of the parameter
+name can't be in the path. A parameter name hierarchy can have a maximum
+of 15 levels. Here is an example of a hierarchy:
+\verb{/Finance/Prod/IAD/WinServ2016/license33 }}
 
 \item{Recursive}{Retrieve all parameters within a hierarchy.
 
@@ -20,17 +28,17 @@ If a user has access to a path, then the user can access all levels of
 that path. For example, if a user has permission to access path \verb{/a},
 then the user can also access \verb{/a/b}. Even if a user has explicitly been
 denied access in IAM for parameter \verb{/a/b}, they can still call the
-GetParametersByPath API action recursively for \verb{/a} and view \verb{/a/b}.}
+GetParametersByPath API operation recursively for \verb{/a} and view \verb{/a/b}.}
 
 \item{ParameterFilters}{Filters to limit the request results.
 
-For \code{\link[=ssm_get_parameters_by_path]{get_parameters_by_path}}, the
-following filter \code{Key} names are supported: \code{Type}, \code{KeyId}, \code{Label},
-and \code{DataType}.
+The following \code{Key} values are supported for
+\code{\link[=ssm_get_parameters_by_path]{get_parameters_by_path}}: \code{Type}, \code{KeyId},
+and \code{Label}.
 
-The following \code{Key} values are not supported for
-\code{\link[=ssm_get_parameters_by_path]{get_parameters_by_path}}: \code{tag}, \code{Name},
-\code{Path}, and \code{Tier}.}
+The following \code{Key} values aren't supported for
+\code{\link[=ssm_get_parameters_by_path]{get_parameters_by_path}}: \code{tag},
+\code{DataType}, \code{Name}, \code{Path}, and \code{Tier}.}
 
 \item{WithDecryption}{Retrieve all parameters in a hierarchy with their value decrypted.}
 
@@ -41,57 +49,9 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Parameters = list(
-    list(
-      Name = "string",
-      Type = "String"|"StringList"|"SecureString",
-      Value = "string",
-      Version = 123,
-      Selector = "string",
-      SourceResult = "string",
-      LastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      ARN = "string",
-      DataType = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieve information about one or more parameters in a specific
-hierarchy.
+Retrieve information about one or more parameters in a specific hierarchy.
 
-Request results are returned on a best-effort basis. If you specify
-\code{MaxResults} in the request, the response includes information up to the
-limit specified. The number of items returned, however, can be between
-zero and the value of \code{MaxResults}. If the service reaches an internal
-limit while processing the results, it stops the operation and returns
-the matching values up to that point and a \code{NextToken}. You can specify
-the \code{NextToken} in a subsequent call to get the next set of results.
+See \url{https://paws-r.github.io/docs/ssm/get_parameters_by_path.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_parameters_by_path(
-  Path = "string",
-  Recursive = TRUE|FALSE,
-  ParameterFilters = list(
-    list(
-      Key = "string",
-      Option = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  WithDecryption = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

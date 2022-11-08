@@ -4,8 +4,14 @@
 \alias{appmesh_create_virtual_service}
 \title{Creates a virtual service within a service mesh}
 \usage{
-appmesh_create_virtual_service(clientToken, meshName, meshOwner, spec,
-  tags, virtualServiceName)
+appmesh_create_virtual_service(
+  clientToken = NULL,
+  meshName,
+  meshOwner = NULL,
+  spec,
+  tags = NULL,
+  virtualServiceName
+)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -14,10 +20,10 @@ underscores are allowed.}
 
 \item{meshName}{[required] The name of the service mesh to create the virtual service in.}
 
-\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
-not your own, then the account that you specify must share the mesh with
-your account before you can create the resource in the service mesh. For
-more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
+\item{meshOwner}{The Amazon Web Services IAM account ID of the service mesh owner. If the
+account ID is not your own, then the account that you specify must share
+the mesh with your account before you can create the resource in the
+service mesh. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{spec}{[required] The virtual service specification to apply.}
 
@@ -29,77 +35,9 @@ length of 256 characters.}
 
 \item{virtualServiceName}{[required] The name to use for the virtual service.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualService = list(
-    meshName = "string",
-    metadata = list(
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      meshOwner = "string",
-      resourceOwner = "string",
-      uid = "string",
-      version = 123
-    ),
-    spec = list(
-      provider = list(
-        virtualNode = list(
-          virtualNodeName = "string"
-        ),
-        virtualRouter = list(
-          virtualRouterName = "string"
-        )
-      )
-    ),
-    status = list(
-      status = "ACTIVE"|"INACTIVE"|"DELETED"
-    ),
-    virtualServiceName = "string"
-  )
-)
-}
-}
 \description{
 Creates a virtual service within a service mesh.
 
-A virtual service is an abstraction of a real service that is provided
-by a virtual node directly or indirectly by means of a virtual router.
-Dependent services call your virtual service by its
-\code{virtualServiceName}, and those requests are routed to the virtual node
-or virtual router that is specified as the provider for the virtual
-service.
-
-For more information about virtual services, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_services.html}{Virtual services}.
+See \url{https://paws-r.github.io/docs/appmesh/create_virtual_service.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_virtual_service(
-  clientToken = "string",
-  meshName = "string",
-  meshOwner = "string",
-  spec = list(
-    provider = list(
-      virtualNode = list(
-        virtualNodeName = "string"
-      ),
-      virtualRouter = list(
-        virtualRouterName = "string"
-      )
-    )
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  virtualServiceName = "string"
-)
-}
-}
-
 \keyword{internal}

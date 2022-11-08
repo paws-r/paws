@@ -2,14 +2,20 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_describe_launch_configurations}
 \alias{autoscaling_describe_launch_configurations}
-\title{Describes one or more launch configurations}
+\title{Gets information about the launch configurations in the account and
+Region}
 \usage{
-autoscaling_describe_launch_configurations(LaunchConfigurationNames,
-  NextToken, MaxRecords)
+autoscaling_describe_launch_configurations(
+  LaunchConfigurationNames = NULL,
+  NextToken = NULL,
+  MaxRecords = NULL
+)
 }
 \arguments{
-\item{LaunchConfigurationNames}{The launch configuration names. If you omit this parameter, all launch
-configurations are described.}
+\item{LaunchConfigurationNames}{The launch configuration names. If you omit this property, all launch
+configurations are described.
+
+Array Members: Maximum number of 50 items.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
@@ -17,85 +23,9 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{50} and the maximum value is \code{100}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LaunchConfigurations = list(
-    list(
-      LaunchConfigurationName = "string",
-      LaunchConfigurationARN = "string",
-      ImageId = "string",
-      KeyName = "string",
-      SecurityGroups = list(
-        "string"
-      ),
-      ClassicLinkVPCId = "string",
-      ClassicLinkVPCSecurityGroups = list(
-        "string"
-      ),
-      UserData = "string",
-      InstanceType = "string",
-      KernelId = "string",
-      RamdiskId = "string",
-      BlockDeviceMappings = list(
-        list(
-          VirtualName = "string",
-          DeviceName = "string",
-          Ebs = list(
-            SnapshotId = "string",
-            VolumeSize = 123,
-            VolumeType = "string",
-            DeleteOnTermination = TRUE|FALSE,
-            Iops = 123,
-            Encrypted = TRUE|FALSE
-          ),
-          NoDevice = TRUE|FALSE
-        )
-      ),
-      InstanceMonitoring = list(
-        Enabled = TRUE|FALSE
-      ),
-      SpotPrice = "string",
-      IamInstanceProfile = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EbsOptimized = TRUE|FALSE,
-      AssociatePublicIpAddress = TRUE|FALSE,
-      PlacementTenancy = "string",
-      MetadataOptions = list(
-        HttpTokens = "optional"|"required",
-        HttpPutResponseHopLimit = 123,
-        HttpEndpoint = "disabled"|"enabled"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes one or more launch configurations.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_launch_configurations(
-  LaunchConfigurationNames = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxRecords = 123
-)
-}
-}
+Gets information about the launch configurations in the account and Region.
 
-\examples{
-\dontrun{
-# This example describes the specified launch configuration.
-svc$describe_launch_configurations(
-  LaunchConfigurationNames = list(
-    "my-launch-config"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/describe_launch_configurations.html} for full documentation.
 }
 \keyword{internal}

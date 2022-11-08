@@ -2,30 +2,16 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_delete_experiment}
 \alias{sagemaker_delete_experiment}
-\title{Deletes an Amazon SageMaker experiment}
+\title{Deletes an SageMaker experiment}
 \usage{
 sagemaker_delete_experiment(ExperimentName)
 }
 \arguments{
 \item{ExperimentName}{[required] The name of the experiment to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExperimentArn = "string"
-)
-}
-}
 \description{
-Deletes an Amazon SageMaker experiment. All trials associated with the
-experiment must be deleted first. Use the
-\code{\link[=sagemaker_list_trials]{list_trials}} API to get a list of the trials
-associated with the experiment.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_experiment(
-  ExperimentName = "string"
-)
-}
-}
+Deletes an SageMaker experiment. All trials associated with the experiment must be deleted first. Use the \code{\link[=sagemaker_list_trials]{list_trials}} API to get a list of the trials associated with the experiment.
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_experiment.html} for full documentation.
+}
 \keyword{internal}

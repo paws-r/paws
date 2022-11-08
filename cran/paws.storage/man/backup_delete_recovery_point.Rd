@@ -9,25 +9,16 @@ backup_delete_recovery_point(BackupVaultName, RecoveryPointArn)
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
 are identified by names that are unique to the account used to create
-them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens.}
+them and the Amazon Web Services Region where they are created. They
+consist of lowercase letters, numbers, and hyphens.}
 
 \item{RecoveryPointArn}{[required] An Amazon Resource Name (ARN) that uniquely identifies a recovery point;
 for example,
 \verb{arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45}.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the recovery point specified by a recovery point ID.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_recovery_point(
-  BackupVaultName = "string",
-  RecoveryPointArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/backup/delete_recovery_point.html} for full documentation.
+}
 \keyword{internal}

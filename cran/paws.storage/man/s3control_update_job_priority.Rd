@@ -7,39 +7,16 @@
 s3control_update_job_priority(AccountId, JobId, Priority)
 }
 \arguments{
-\item{AccountId}{[required]}
+\item{AccountId}{[required] The Amazon Web Services account ID associated with the S3 Batch
+Operations job.}
 
 \item{JobId}{[required] The ID for the job whose priority you want to update.}
 
 \item{Priority}{[required] The priority you want to assign to this job.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string",
-  Priority = 123
-)
-}
-}
 \description{
-Updates an existing S3 Batch Operations job's priority. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{S3 Batch Operations} in
-the \emph{Amazon Simple Storage Service Developer Guide}.
+Updates an existing S3 Batch Operations job's priority. For more information, see S3 Batch Operations in the \emph{Amazon S3 User Guide}.
 
-Related actions include:
-\itemize{
-\item \code{\link[=s3control_create_job]{create_job}}
-\item \code{\link[=s3control_list_jobs]{list_jobs}}
-\item \code{\link[=s3control_describe_job]{describe_job}}
-\item \code{\link[=s3control_update_job_status]{update_job_status}}
+See \url{https://paws-r.github.io/docs/s3control/update_job_priority.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$update_job_priority(
-  AccountId = "string",
-  JobId = "string",
-  Priority = 123
-)
-}
-}
-
 \keyword{internal}

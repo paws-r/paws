@@ -4,7 +4,7 @@
 \alias{codestar_update_project}
 \title{Updates a project in AWS CodeStar}
 \usage{
-codestar_update_project(id, name, description)
+codestar_update_project(id, name = NULL, description = NULL)
 }
 \arguments{
 \item{id}{[required] The ID of the project you want to update.}
@@ -13,19 +13,9 @@ codestar_update_project(id, name, description)
 
 \item{description}{The description of the project, if any.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates a project in AWS CodeStar.
-}
-\section{Request syntax}{
-\preformatted{svc$update_project(
-  id = "string",
-  name = "string",
-  description = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codestar/update_project.html} for full documentation.
+}
 \keyword{internal}

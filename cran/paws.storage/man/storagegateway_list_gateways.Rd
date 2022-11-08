@@ -2,10 +2,10 @@
 % Please edit documentation in R/storagegateway_operations.R
 \name{storagegateway_list_gateways}
 \alias{storagegateway_list_gateways}
-\title{Lists gateways owned by an AWS account in an AWS Region specified in the
-request}
+\title{Lists gateways owned by an Amazon Web Services account in an Amazon Web
+Services Region specified in the request}
 \usage{
-storagegateway_list_gateways(Marker, Limit)
+storagegateway_list_gateways(Marker = NULL, Limit = NULL)
 }
 \arguments{
 \item{Marker}{An opaque string that indicates the position at which to begin the
@@ -14,55 +14,9 @@ returned list of gateways.}
 \item{Limit}{Specifies that the list of gateways returned be limited to the specified
 number of items.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Gateways = list(
-    list(
-      GatewayId = "string",
-      GatewayARN = "string",
-      GatewayType = "string",
-      GatewayOperationalState = "string",
-      GatewayName = "string",
-      Ec2InstanceId = "string",
-      Ec2InstanceRegion = "string"
-    )
-  ),
-  Marker = "string"
-)
-}
-}
 \description{
-Lists gateways owned by an AWS account in an AWS Region specified in the
-request. The returned list is ordered by gateway Amazon Resource Name
-(ARN).
+Lists gateways owned by an Amazon Web Services account in an Amazon Web Services Region specified in the request. The returned list is ordered by gateway Amazon Resource Name (ARN).
 
-By default, the operation returns a maximum of 100 gateways. This
-operation supports pagination that allows you to optionally reduce the
-number of gateways returned in a response.
-
-If you have more gateways than are returned in a response (that is, the
-response returns only a truncated list of your gateways), the response
-contains a marker that you can specify in your next request to fetch the
-next page of gateways.
-}
-\section{Request syntax}{
-\preformatted{svc$list_gateways(
-  Marker = "string",
-  Limit = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# Lists gateways owned by an AWS account in a specified region as
-# requested. Results are sorted by gateway ARN up to a maximum of 100
-# gateways.
-svc$list_gateways(
-  Limit = 2L,
-  Marker = "1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/list_gateways.html} for full documentation.
 }
 \keyword{internal}

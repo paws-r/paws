@@ -2,58 +2,16 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_get_policy}
 \alias{fms_get_policy}
-\title{Returns information about the specified AWS Firewall Manager policy}
+\title{Returns information about the specified Firewall Manager policy}
 \usage{
 fms_get_policy(PolicyId)
 }
 \arguments{
-\item{PolicyId}{[required] The ID of the AWS Firewall Manager policy that you want the details for.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Policy = list(
-    PolicyId = "string",
-    PolicyName = "string",
-    PolicyUpdateToken = "string",
-    SecurityServicePolicyData = list(
-      Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
-      ManagedServiceData = "string"
-    ),
-    ResourceType = "string",
-    ResourceTypeList = list(
-      "string"
-    ),
-    ResourceTags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    ExcludeResourceTags = TRUE|FALSE,
-    RemediationEnabled = TRUE|FALSE,
-    IncludeMap = list(
-      list(
-        "string"
-      )
-    ),
-    ExcludeMap = list(
-      list(
-        "string"
-      )
-    )
-  ),
-  PolicyArn = "string"
-)
-}
+\item{PolicyId}{[required] The ID of the Firewall Manager policy that you want the details for.}
 }
 \description{
-Returns information about the specified AWS Firewall Manager policy.
-}
-\section{Request syntax}{
-\preformatted{svc$get_policy(
-  PolicyId = "string"
-)
-}
-}
+Returns information about the specified Firewall Manager policy.
 
+See \url{https://paws-r.github.io/docs/fms/get_policy.html} for full documentation.
+}
 \keyword{internal}

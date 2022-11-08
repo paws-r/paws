@@ -37,6 +37,16 @@ NULL
   return(populate(args, shape))
 }
 
+.organizations$close_account_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.organizations$close_account_output <- function(...) {
+  list()
+}
+
 .organizations$create_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RoleName = structure(logical(0), tags = list(type = "string")), IamUserAccessToBilling = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))

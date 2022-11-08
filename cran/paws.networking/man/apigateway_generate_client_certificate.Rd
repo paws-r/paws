@@ -4,7 +4,7 @@
 \alias{apigateway_generate_client_certificate}
 \title{Generates a ClientCertificate resource}
 \usage{
-apigateway_generate_client_certificate(description, tags)
+apigateway_generate_client_certificate(description = NULL, tags = NULL)
 }
 \arguments{
 \item{description}{The description of the ClientCertificate.}
@@ -13,34 +13,9 @@ apigateway_generate_client_certificate(description, tags)
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  clientCertificateId = "string",
-  description = "string",
-  pemEncodedCertificate = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  expirationDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Generates a ClientCertificate resource.
-}
-\section{Request syntax}{
-\preformatted{svc$generate_client_certificate(
-  description = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/generate_client_certificate.html} for full documentation.
+}
 \keyword{internal}

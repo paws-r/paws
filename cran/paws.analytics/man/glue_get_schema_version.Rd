@@ -5,7 +5,11 @@
 \title{Get the specified schema by its unique ID assigned when a version of the
 schema is created or registered}
 \usage{
-glue_get_schema_version(SchemaId, SchemaVersionId, SchemaVersionNumber)
+glue_get_schema_version(
+  SchemaId = NULL,
+  SchemaVersionId = NULL,
+  SchemaVersionNumber = NULL
+)
 }
 \arguments{
 \item{SchemaId}{This is a wrapper structure to contain schema identity fields. The
@@ -24,37 +28,9 @@ provided.}
 
 \item{SchemaVersionNumber}{The version number of the schema.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaVersionId = "string",
-  SchemaDefinition = "string",
-  DataFormat = "AVRO",
-  SchemaArn = "string",
-  VersionNumber = 123,
-  Status = "AVAILABLE"|"PENDING"|"FAILURE"|"DELETING",
-  CreatedTime = "string"
-)
-}
-}
 \description{
-Get the specified schema by its unique ID assigned when a version of the
-schema is created or registered. Schema versions in Deleted status will
-not be included in the results.
-}
-\section{Request syntax}{
-\preformatted{svc$get_schema_version(
-  SchemaId = list(
-    SchemaArn = "string",
-    SchemaName = "string",
-    RegistryName = "string"
-  ),
-  SchemaVersionId = "string",
-  SchemaVersionNumber = list(
-    LatestVersion = TRUE|FALSE,
-    VersionNumber = 123
-  )
-)
-}
-}
+Get the specified schema by its unique ID assigned when a version of the schema is created or registered. Schema versions in Deleted status will not be included in the results.
 
+See \url{https://paws-r.github.io/docs/glue/get_schema_version.html} for full documentation.
+}
 \keyword{internal}

@@ -28,24 +28,9 @@ value.
 server or backup.
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
-Puppet Enterprise server, or to server backups.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for Puppet Enterprise server, or to server backups.
 
+See \url{https://paws-r.github.io/docs/opsworkscm/tag_resource.html} for full documentation.
+}
 \keyword{internal}

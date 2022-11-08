@@ -4,7 +4,7 @@
 \alias{iam_get_group}
 \title{Returns a list of IAM users that are in the specified IAM group}
 \usage{
-iam_get_group(GroupName, Marker, MaxItems)
+iam_get_group(GroupName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group.
@@ -28,57 +28,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Group = list(
-    Path = "string",
-    GroupName = "string",
-    GroupId = "string",
-    Arn = "string",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  Users = list(
-    list(
-      Path = "string",
-      UserName = "string",
-      UserId = "string",
-      Arn = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      PasswordLastUsed = as.POSIXct(
-        "2015-01-01"
-      ),
-      PermissionsBoundary = list(
-        PermissionsBoundaryType = "PermissionsBoundaryPolicy",
-        PermissionsBoundaryArn = "string"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Returns a list of IAM users that are in the specified IAM group. You can
-paginate the results using the \code{MaxItems} and \code{Marker} parameters.
-}
-\section{Request syntax}{
-\preformatted{svc$get_group(
-  GroupName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+Returns a list of IAM users that are in the specified IAM group. You can paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 
+See \url{https://paws-r.github.io/docs/iam/get_group.html} for full documentation.
+}
 \keyword{internal}

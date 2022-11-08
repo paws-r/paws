@@ -12,86 +12,9 @@ elbv2_modify_load_balancer_attributes(LoadBalancerArn, Attributes)
 
 \item{Attributes}{[required] The load balancer attributes.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Modifies the specified attributes of the specified Application Load
-Balancer, Network Load Balancer, or Gateway Load Balancer.
+Modifies the specified attributes of the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer.
 
-If any of the specified attributes can't be modified as requested, the
-call fails. Any existing attributes that you do not modify retain their
-current values.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_load_balancer_attributes(
-  LoadBalancerArn = "string",
-  Attributes = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example enables deletion protection for the specified load
-# balancer.
-svc$modify_load_balancer_attributes(
-  Attributes = list(
-    list(
-      Key = "deletion_protection.enabled",
-      Value = "true"
-    )
-  ),
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
-)
-
-# This example changes the idle timeout value for the specified load
-# balancer.
-svc$modify_load_balancer_attributes(
-  Attributes = list(
-    list(
-      Key = "idle_timeout.timeout_seconds",
-      Value = "30"
-    )
-  ),
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
-)
-
-# This example enables access logs for the specified load balancer. Note
-# that the S3 bucket must exist in the same region as the load balancer
-# and must have a policy attached that grants access to the Elastic Load
-# Balancing service.
-svc$modify_load_balancer_attributes(
-  Attributes = list(
-    list(
-      Key = "access_logs.s3.enabled",
-      Value = "true"
-    ),
-    list(
-      Key = "access_logs.s3.bucket",
-      Value = "my-loadbalancer-logs"
-    ),
-    list(
-      Key = "access_logs.s3.prefix",
-      Value = "myapp"
-    )
-  ),
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/modify_load_balancer_attributes.html} for full documentation.
 }
 \keyword{internal}

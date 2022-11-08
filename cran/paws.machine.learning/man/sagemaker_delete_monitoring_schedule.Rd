@@ -9,19 +9,9 @@ sagemaker_delete_monitoring_schedule(MonitoringScheduleName)
 \arguments{
 \item{MonitoringScheduleName}{[required] The name of the monitoring schedule to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a monitoring schedule. Also stops the schedule had not already
-been stopped. This does not delete the job execution history of the
-monitoring schedule.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_monitoring_schedule(
-  MonitoringScheduleName = "string"
-)
-}
-}
+Deletes a monitoring schedule. Also stops the schedule had not already been stopped. This does not delete the job execution history of the monitoring schedule.
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_monitoring_schedule.html} for full documentation.
+}
 \keyword{internal}

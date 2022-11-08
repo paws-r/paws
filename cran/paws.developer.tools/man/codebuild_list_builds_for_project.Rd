@@ -2,19 +2,32 @@
 % Please edit documentation in R/codebuild_operations.R
 \name{codebuild_list_builds_for_project}
 \alias{codebuild_list_builds_for_project}
-\title{Gets a list of build IDs for the specified build project, with each
-build ID representing a single build}
+\title{Gets a list of build identifiers for the specified build project, with
+each build identifier representing a single build}
 \usage{
-codebuild_list_builds_for_project(projectName, sortOrder, nextToken)
+codebuild_list_builds_for_project(
+  projectName,
+  sortOrder = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
-\item{projectName}{[required] The name of the AWS CodeBuild project.}
+\item{projectName}{[required] The name of the CodeBuild project.}
 
-\item{sortOrder}{The order to list build IDs. Valid values include:
+\item{sortOrder}{The order to sort the results in. The results are sorted by build
+number, not the build identifier. If this is not specified, the results
+are sorted in descending order.
+
+Valid values include:
 \itemize{
-\item \code{ASCENDING}: List the build IDs in ascending order by build ID.
-\item \code{DESCENDING}: List the build IDs in descending order by build ID.
-}}
+\item \code{ASCENDING}: List the build identifiers in ascending order, by build
+number.
+\item \code{DESCENDING}: List the build identifiers in descending order, by
+build number.
+}
+
+If the project has more than 100 builds, setting the sort order will
+result in an error.}
 
 \item{nextToken}{During a previous call, if there are more than 100 items in the list,
 only the first 100 items are returned, along with a unique string called
@@ -23,26 +36,9 @@ operation again, adding the next token to the call. To get all of the
 items in the list, keep calling this operation with each subsequent next
 token that is returned, until no more next tokens are returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ids = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Gets a list of build IDs for the specified build project, with each
-build ID representing a single build.
-}
-\section{Request syntax}{
-\preformatted{svc$list_builds_for_project(
-  projectName = "string",
-  sortOrder = "ASCENDING"|"DESCENDING",
-  nextToken = "string"
-)
-}
-}
+Gets a list of build identifiers for the specified build project, with each build identifier representing a single build.
 
+See \url{https://paws-r.github.io/docs/codebuild/list_builds_for_project.html} for full documentation.
+}
 \keyword{internal}

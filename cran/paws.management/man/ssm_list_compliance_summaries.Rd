@@ -5,7 +5,11 @@
 \title{Returns a summary count of compliant and non-compliant resources for a
 compliance type}
 \usage{
-ssm_list_compliance_summaries(Filters, NextToken, MaxResults)
+ssm_list_compliance_summaries(
+  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{Filters}{One or more compliance or inventory filters. Use a filter to return a
@@ -18,60 +22,9 @@ results.}
 specify null or 50. The call also returns a token that you can specify
 in a subsequent call to get the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ComplianceSummaryItems = list(
-    list(
-      ComplianceType = "string",
-      CompliantSummary = list(
-        CompliantCount = 123,
-        SeveritySummary = list(
-          CriticalCount = 123,
-          HighCount = 123,
-          MediumCount = 123,
-          LowCount = 123,
-          InformationalCount = 123,
-          UnspecifiedCount = 123
-        )
-      ),
-      NonCompliantSummary = list(
-        NonCompliantCount = 123,
-        SeveritySummary = list(
-          CriticalCount = 123,
-          HighCount = 123,
-          MediumCount = 123,
-          LowCount = 123,
-          InformationalCount = 123,
-          UnspecifiedCount = 123
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns a summary count of compliant and non-compliant resources for a
-compliance type. For example, this call can return State Manager
-associations, patches, or custom compliance types according to the
-filter criteria that you specify.
-}
-\section{Request syntax}{
-\preformatted{svc$list_compliance_summaries(
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      Type = "EQUAL"|"NOT_EQUAL"|"BEGIN_WITH"|"LESS_THAN"|"GREATER_THAN"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns a summary count of compliant and non-compliant resources for a compliance type. For example, this call can return State Manager associations, patches, or custom compliance types according to the filter criteria that you specify.
 
+See \url{https://paws-r.github.io/docs/ssm/list_compliance_summaries.html} for full documentation.
+}
 \keyword{internal}

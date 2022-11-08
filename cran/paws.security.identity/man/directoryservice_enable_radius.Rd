@@ -14,31 +14,9 @@ directoryservice_enable_radius(DirectoryId, RadiusSettings)
 \item{RadiusSettings}{[required] A RadiusSettings object that contains information about the RADIUS
 server.}
 }
-\value{
-An empty list.
-}
 \description{
-Enables multi-factor authentication (MFA) with the Remote Authentication
-Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD
-directory.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_radius(
-  DirectoryId = "string",
-  RadiusSettings = list(
-    RadiusServers = list(
-      "string"
-    ),
-    RadiusPort = 123,
-    RadiusTimeout = 123,
-    RadiusRetries = 123,
-    SharedSecret = "string",
-    AuthenticationProtocol = "PAP"|"CHAP"|"MS-CHAPv1"|"MS-CHAPv2",
-    DisplayLabel = "string",
-    UseSameUsername = TRUE|FALSE
-  )
-)
-}
-}
+Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory.
 
+See \url{https://paws-r.github.io/docs/directoryservice/enable_radius.html} for full documentation.
+}
 \keyword{internal}

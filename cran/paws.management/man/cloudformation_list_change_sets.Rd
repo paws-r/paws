@@ -4,7 +4,7 @@
 \alias{cloudformation_list_change_sets}
 \title{Returns the ID and status of each active change set for a stack}
 \usage{
-cloudformation_list_change_sets(StackName, NextToken)
+cloudformation_list_change_sets(StackName, NextToken = NULL)
 }
 \arguments{
 \item{StackName}{[required] The name or the Amazon Resource Name (ARN) of the stack for which you
@@ -14,41 +14,9 @@ want to list change sets.}
 \code{\link[=cloudformation_list_change_sets]{list_change_sets}} response output)
 that identifies the next page of change sets that you want to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Summaries = list(
-    list(
-      StackId = "string",
-      StackName = "string",
-      ChangeSetId = "string",
-      ChangeSetName = "string",
-      ExecutionStatus = "UNAVAILABLE"|"AVAILABLE"|"EXECUTE_IN_PROGRESS"|"EXECUTE_COMPLETE"|"EXECUTE_FAILED"|"OBSOLETE",
-      Status = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"DELETE_PENDING"|"DELETE_IN_PROGRESS"|"DELETE_COMPLETE"|"DELETE_FAILED"|"FAILED",
-      StatusReason = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Description = "string",
-      IncludeNestedStacks = TRUE|FALSE,
-      ParentChangeSetId = "string",
-      RootChangeSetId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Returns the ID and status of each active change set for a stack. For
-example, AWS CloudFormation lists change sets that are in the
-\code{CREATE_IN_PROGRESS} or \code{CREATE_PENDING} state.
-}
-\section{Request syntax}{
-\preformatted{svc$list_change_sets(
-  StackName = "string",
-  NextToken = "string"
-)
-}
-}
+Returns the ID and status of each active change set for a stack. For example, CloudFormation lists change sets that are in the \code{CREATE_IN_PROGRESS} or \code{CREATE_PENDING} state.
 
+See \url{https://paws-r.github.io/docs/cloudformation/list_change_sets.html} for full documentation.
+}
 \keyword{internal}

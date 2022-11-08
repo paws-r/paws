@@ -3,7 +3,8 @@
 \name{globalaccelerator_advertise_byoip_cidr}
 \alias{globalaccelerator_advertise_byoip_cidr}
 \title{Advertises an IPv4 address range that is provisioned for use with your
-AWS resources through bring your own IP addresses (BYOIP)}
+Amazon Web Services resources through bring your own IP addresses
+(BYOIP)}
 \usage{
 globalaccelerator_advertise_byoip_cidr(Cidr)
 }
@@ -12,40 +13,9 @@ globalaccelerator_advertise_byoip_cidr(Cidr)
 you provisioned. You can't advertise only a portion of the provisioned
 range.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ByoipCidr = list(
-    Cidr = "string",
-    State = "PENDING_PROVISIONING"|"READY"|"PENDING_ADVERTISING"|"ADVERTISING"|"PENDING_WITHDRAWING"|"PENDING_DEPROVISIONING"|"DEPROVISIONED"|"FAILED_PROVISION"|"FAILED_ADVERTISING"|"FAILED_WITHDRAW"|"FAILED_DEPROVISION",
-    Events = list(
-      list(
-        Message = "string",
-        Timestamp = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Advertises an IPv4 address range that is provisioned for use with your
-AWS resources through bring your own IP addresses (BYOIP). It can take a
-few minutes before traffic to the specified addresses starts routing to
-AWS because of propagation delays.
+Advertises an IPv4 address range that is provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP). It can take a few minutes before traffic to the specified addresses starts routing to Amazon Web Services because of propagation delays.
 
-To stop advertising the BYOIP address range, use
-\href{https://docs.aws.amazon.com/global-accelerator/latest/api/}{WithdrawByoipCidr}.
-
-For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html}{Bring Your Own IP Addresses (BYOIP)}
-in the \emph{AWS Global Accelerator Developer Guide}.
+See \url{https://paws-r.github.io/docs/globalaccelerator/advertise_byoip_cidr.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$advertise_byoip_cidr(
-  Cidr = "string"
-)
-}
-}
-
 \keyword{internal}

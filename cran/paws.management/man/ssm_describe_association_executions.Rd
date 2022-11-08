@@ -2,10 +2,14 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_association_executions}
 \alias{ssm_describe_association_executions}
-\title{Use this API action to view all executions for a specific association ID}
+\title{Views all executions for a specific association ID}
 \usage{
-ssm_describe_association_executions(AssociationId, Filters, MaxResults,
-  NextToken)
+ssm_describe_association_executions(
+  AssociationId,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{AssociationId}{[required] The association ID for which you want to view execution history details.}
@@ -26,46 +30,9 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AssociationExecutions = list(
-    list(
-      AssociationId = "string",
-      AssociationVersion = "string",
-      ExecutionId = "string",
-      Status = "string",
-      DetailedStatus = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastExecutionDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      ResourceCountByStatus = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Use this API action to view all executions for a specific association
-ID.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_association_executions(
-  AssociationId = "string",
-  Filters = list(
-    list(
-      Key = "ExecutionId"|"Status"|"CreatedTime",
-      Value = "string",
-      Type = "EQUAL"|"LESS_THAN"|"GREATER_THAN"
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Views all executions for a specific association ID.
 
+See \url{https://paws-r.github.io/docs/ssm/describe_association_executions.html} for full documentation.
+}
 \keyword{internal}

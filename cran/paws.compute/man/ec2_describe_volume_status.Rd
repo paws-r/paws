@@ -4,8 +4,13 @@
 \alias{ec2_describe_volume_status}
 \title{Describes the status of the specified volumes}
 \usage{
-ec2_describe_volume_status(Filters, MaxResults, NextToken, VolumeIds,
-  DryRun)
+ec2_describe_volume_status(
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  VolumeIds = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{Filters}{The filters.
@@ -59,141 +64,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  VolumeStatuses = list(
-    list(
-      Actions = list(
-        list(
-          Code = "string",
-          Description = "string",
-          EventId = "string",
-          EventType = "string"
-        )
-      ),
-      AvailabilityZone = "string",
-      OutpostArn = "string",
-      Events = list(
-        list(
-          Description = "string",
-          EventId = "string",
-          EventType = "string",
-          NotAfter = as.POSIXct(
-            "2015-01-01"
-          ),
-          NotBefore = as.POSIXct(
-            "2015-01-01"
-          ),
-          InstanceId = "string"
-        )
-      ),
-      VolumeId = "string",
-      VolumeStatus = list(
-        Details = list(
-          list(
-            Name = "io-enabled"|"io-performance",
-            Status = "string"
-          )
-        ),
-        Status = "ok"|"impaired"|"insufficient-data"
-      ),
-      AttachmentStatuses = list(
-        list(
-          IoPerformance = "string",
-          InstanceId = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes the status of the specified volumes. Volume status provides
-the result of the checks performed on your volumes to determine events
-that can impair the performance of your volumes. The performance of a
-volume can be affected if an issue occurs on the volume's underlying
-host. If the volume's underlying host experiences a power outage or
-system issue, after the system is restored, there could be data
-inconsistencies on the volume. Volume events notify you if this occurs.
-Volume actions notify you if any action needs to be taken in response to
-the event.
+Describes the status of the specified volumes. Volume status provides the result of the checks performed on your volumes to determine events that can impair the performance of your volumes. The performance of a volume can be affected if an issue occurs on the volume's underlying host. If the volume's underlying host experiences a power outage or system issue, after the system is restored, there could be data inconsistencies on the volume. Volume events notify you if this occurs. Volume actions notify you if any action needs to be taken in response to the event.
 
-The \code{\link[=ec2_describe_volume_status]{describe_volume_status}} operation
-provides the following information about the specified volumes:
-
-\emph{Status}: Reflects the current status of the volume. The possible values
-are \code{ok}, \code{impaired} , \code{warning}, or \code{insufficient-data}. If all checks
-pass, the overall status of the volume is \code{ok}. If the check fails, the
-overall status is \code{impaired}. If the status is \code{insufficient-data}, then
-the checks might still be taking place on your volume at the time. We
-recommend that you retry the request. For more information about volume
-status, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html}{Monitoring the status of your volumes}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-
-\emph{Events}: Reflect the cause of a volume status and might require you to
-take action. For example, if your volume returns an \code{impaired} status,
-then the volume event might be \code{potential-data-inconsistency}. This
-means that your volume has been affected by an issue with the underlying
-host, has all I/O operations disabled, and might have inconsistent data.
-
-\emph{Actions}: Reflect the actions you might have to take in response to an
-event. For example, if the status of the volume is \code{impaired} and the
-volume event shows \code{potential-data-inconsistency}, then the action shows
-\code{enable-volume-io}. This means that you may want to enable the I/O
-operations for the volume by calling the
-\code{\link[=ec2_enable_volume_io]{enable_volume_io}} action and then check the
-volume for data consistency.
-
-Volume status is based on the volume status checks, and does not reflect
-the volume state. Therefore, volume status does not indicate volumes in
-the \code{error} state (for example, when a volume is incapable of accepting
-I/O.)
-}
-\section{Request syntax}{
-\preformatted{svc$describe_volume_status(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  VolumeIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the status for the volume
-# `vol-1234567890abcdef0`.
-svc$describe_volume_status(
-  VolumeIds = list(
-    "vol-1234567890abcdef0"
-  )
-)
-
-# This example describes the status for all volumes that are impaired. In
-# this example output, there are no impaired volumes.
-svc$describe_volume_status(
-  Filters = list(
-    list(
-      Name = "volume-status.status",
-      Values = list(
-        "impaired"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_volume_status.html} for full documentation.
 }
 \keyword{internal}

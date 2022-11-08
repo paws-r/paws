@@ -4,7 +4,7 @@
 \alias{servicecatalog_update_tag_option}
 \title{Updates the specified TagOption}
 \usage{
-servicecatalog_update_tag_option(Id, Value, Active)
+servicecatalog_update_tag_option(Id, Value = NULL, Active = NULL)
 }
 \arguments{
 \item{Id}{[required] The TagOption identifier.}
@@ -13,28 +13,9 @@ servicecatalog_update_tag_option(Id, Value, Active)
 
 \item{Active}{The updated active state.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TagOptionDetail = list(
-    Key = "string",
-    Value = "string",
-    Active = TRUE|FALSE,
-    Id = "string",
-    Owner = "string"
-  )
-)
-}
-}
 \description{
 Updates the specified TagOption.
-}
-\section{Request syntax}{
-\preformatted{svc$update_tag_option(
-  Id = "string",
-  Value = "string",
-  Active = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/update_tag_option.html} for full documentation.
+}
 \keyword{internal}

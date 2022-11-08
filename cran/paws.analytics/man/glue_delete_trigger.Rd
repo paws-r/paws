@@ -9,21 +9,9 @@ glue_delete_trigger(Name)
 \arguments{
 \item{Name}{[required] The name of the trigger to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string"
-)
-}
-}
 \description{
-Deletes a specified trigger. If the trigger is not found, no exception
-is thrown.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_trigger(
-  Name = "string"
-)
-}
-}
+Deletes a specified trigger. If the trigger is not found, no exception is thrown.
 
+See \url{https://paws-r.github.io/docs/glue/delete_trigger.html} for full documentation.
+}
 \keyword{internal}

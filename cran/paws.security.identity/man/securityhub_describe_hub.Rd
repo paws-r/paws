@@ -5,28 +5,14 @@
 \title{Returns details about the Hub resource in your account, including the
 HubArn and the time when you enabled Security Hub}
 \usage{
-securityhub_describe_hub(HubArn)
+securityhub_describe_hub(HubArn = NULL)
 }
 \arguments{
 \item{HubArn}{The ARN of the Hub resource to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HubArn = "string",
-  SubscribedAt = "string",
-  AutoEnableControls = TRUE|FALSE
-)
-}
-}
 \description{
-Returns details about the Hub resource in your account, including the
-\code{HubArn} and the time when you enabled Security Hub.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_hub(
-  HubArn = "string"
-)
-}
-}
+Returns details about the Hub resource in your account, including the \code{HubArn} and the time when you enabled Security Hub.
 
+See \url{https://paws-r.github.io/docs/securityhub/describe_hub.html} for full documentation.
+}
 \keyword{internal}

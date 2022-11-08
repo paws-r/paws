@@ -10,26 +10,9 @@ comprehend_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the given Amazon Comprehend resource
 you are querying.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Lists all tags associated with a given Amazon Comprehend resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/comprehend/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

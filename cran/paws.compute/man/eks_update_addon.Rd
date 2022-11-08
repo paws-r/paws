@@ -4,8 +4,14 @@
 \alias{eks_update_addon}
 \title{Updates an Amazon EKS add-on}
 \usage{
-eks_update_addon(clusterName, addonName, addonVersion,
-  serviceAccountRoleArn, resolveConflicts, clientRequestToken)
+eks_update_addon(
+  clusterName,
+  addonName,
+  addonVersion = NULL,
+  serviceAccountRoleArn = NULL,
+  resolveConflicts = NULL,
+  clientRequestToken = NULL
+)
 }
 \arguments{
 \item{clusterName}{[required] The name of the cluster.}
@@ -37,47 +43,9 @@ of the add-on to the cluster.}
 \item{clientRequestToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  update = list(
-    id = "string",
-    status = "InProgress"|"Failed"|"Cancelled"|"Successful",
-    type = "VersionUpdate"|"EndpointAccessUpdate"|"LoggingUpdate"|"ConfigUpdate"|"AddonUpdate",
-    params = list(
-      list(
-        type = "Version"|"PlatformVersion"|"EndpointPrivateAccess"|"EndpointPublicAccess"|"ClusterLogging"|"DesiredSize"|"LabelsToAdd"|"LabelsToRemove"|"MaxSize"|"MinSize"|"ReleaseVersion"|"PublicAccessCidrs"|"AddonVersion"|"ServiceAccountRoleArn"|"ResolveConflicts",
-        value = "string"
-      )
-    ),
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    errors = list(
-      list(
-        errorCode = "SubnetNotFound"|"SecurityGroupNotFound"|"EniLimitReached"|"IpNotAvailable"|"AccessDenied"|"OperationNotPermitted"|"VpcIdNotFound"|"Unknown"|"NodeCreationFailure"|"PodEvictionFailure"|"InsufficientFreeAddresses"|"ClusterUnreachable"|"InsufficientNumberOfReplicas"|"ConfigurationConflict",
-        errorMessage = "string",
-        resourceIds = list(
-          "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Updates an Amazon EKS add-on.
-}
-\section{Request syntax}{
-\preformatted{svc$update_addon(
-  clusterName = "string",
-  addonName = "string",
-  addonVersion = "string",
-  serviceAccountRoleArn = "string",
-  resolveConflicts = "OVERWRITE"|"NONE",
-  clientRequestToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/eks/update_addon.html} for full documentation.
+}
 \keyword{internal}

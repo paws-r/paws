@@ -2,133 +2,45 @@
 % Please edit documentation in R/secretsmanager_operations.R
 \name{secretsmanager_delete_secret}
 \alias{secretsmanager_delete_secret}
-\title{Deletes an entire secret and all of its versions}
+\title{Deletes a secret and all of its versions}
 \usage{
-secretsmanager_delete_secret(SecretId, RecoveryWindowInDays,
-  ForceDeleteWithoutRecovery)
+secretsmanager_delete_secret(
+  SecretId,
+  RecoveryWindowInDays = NULL,
+  ForceDeleteWithoutRecovery = NULL
+)
 }
 \arguments{
-\item{SecretId}{[required] Specifies the secret that you want to delete. You can specify either the
-Amazon Resource Name (ARN) or the friendly name of the secret.
+\item{SecretId}{[required] The ARN or name of the secret to delete.
 
-If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too—for example, if you
-don’t include the final hyphen and six random characters that Secrets
-Manager adds at the end of the ARN when you created the secret. A
-partial ARN match can work as long as it uniquely matches only one
-secret. However, if your secret has a name that ends in a hyphen
-followed by six characters (before Secrets Manager adds the hyphen and
-six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you’re
-specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don’t create secret names
-ending with a hyphen followed by six characters.
+For an ARN, we recommend that you specify a complete ARN rather than a
+partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 
-If you specify an incomplete ARN without the random suffix, and instead
-provide the 'friendly name', you \emph{must} not include the random suffix.
-If you do include the random suffix added by Secrets Manager, you
-receive either a \emph{ResourceNotFoundException} or an
-\emph{AccessDeniedException} error, depending on your permissions.}
+\item{RecoveryWindowInDays}{The number of days from 7 to 30 that Secrets Manager waits before
+permanently deleting the secret. You can't use both this parameter and
+\code{ForceDeleteWithoutRecovery} in the same call. If you don't use either,
+then Secrets Manager defaults to a 30 day recovery window.}
 
-\item{RecoveryWindowInDays}{(Optional) Specifies the number of days that Secrets Manager waits
-before it can delete the secret. You can't use both this parameter and
-the \code{ForceDeleteWithoutRecovery} parameter in the same API call.
+\item{ForceDeleteWithoutRecovery}{Specifies whether to delete the secret without any recovery window. You
+can't use both this parameter and \code{RecoveryWindowInDays} in the same
+call. If you don't use either, then Secrets Manager defaults to a 30 day
+recovery window.
 
-This value can range from 7 to 30 days. The default value is 30.}
-
-\item{ForceDeleteWithoutRecovery}{(Optional) Specifies that the secret is to be deleted without any
-recovery window. You can't use both this parameter and the
-\code{RecoveryWindowInDays} parameter in the same API call.
-
-An asynchronous background process performs the actual deletion, so
-there can be a short delay before the operation completes. If you write
-code to delete and then immediately recreate a secret with the same
-name, ensure that your code includes appropriate back off and retry
-logic.
+Secrets Manager performs the actual deletion with an asynchronous
+background process, so there might be a short delay before the secret is
+permanently deleted. If you delete a secret and then immediately create
+a secret with the same name, use appropriate back off and retry logic.
 
 Use this parameter with caution. This parameter causes the operation to
-skip the normal waiting period before the permanent deletion that AWS
-would normally impose with the \code{RecoveryWindowInDays} parameter. If you
-delete a secret with the \code{ForceDeleteWithouRecovery} parameter, then you
-have no opportunity to recover the secret. It is permanently lost.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ARN = "string",
-  Name = "string",
-  DeletionDate = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
+skip the normal recovery window before the permanent deletion that
+Secrets Manager would normally impose with the \code{RecoveryWindowInDays}
+parameter. If you delete a secret with the \code{ForceDeleteWithouRecovery}
+parameter, then you have no opportunity to recover the secret. You lose
+the secret permanently.}
 }
 \description{
-Deletes an entire secret and all of its versions. You can optionally
-include a recovery window during which you can restore the secret. If
-you don't specify a recovery window value, the operation defaults to 30
-days. Secrets Manager attaches a \code{DeletionDate} stamp to the secret that
-specifies the end of the recovery window. At the end of the recovery
-window, Secrets Manager deletes the secret permanently.
+Deletes a secret and all of its versions. You can specify a recovery window during which you can restore the secret. The minimum recovery window is 7 days. The default recovery window is 30 days. Secrets Manager attaches a \code{DeletionDate} stamp to the secret that specifies the end of the recovery window. At the end of the recovery window, Secrets Manager deletes the secret permanently.
 
-At any time before recovery window ends, you can use
-\code{\link[=secretsmanager_restore_secret]{restore_secret}} to remove the
-\code{DeletionDate} and cancel the deletion of the secret.
-
-You cannot access the encrypted secret information in any secret that is
-scheduled for deletion. If you need to access that information, you must
-cancel the deletion with
-\code{\link[=secretsmanager_restore_secret]{restore_secret}} and then retrieve the
-information.
-\itemize{
-\item There is no explicit operation to delete a version of a secret.
-Instead, remove all staging labels from the \code{VersionStage} field of
-a version. That marks the version as deprecated and allows Secrets
-Manager to delete it as needed. Versions that do not have any
-staging labels do not show up in
-\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}
-unless you specify \code{IncludeDeprecated}.
-\item The permanent secret deletion at the end of the waiting period is
-performed as a background task with low priority. There is no
-guarantee of a specific time after the recovery window for the
-actual delete operation to occur.
-}
-
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item secretsmanager:DeleteSecret
-}
-
-\strong{Related operations}
-\itemize{
-\item To create a secret, use
-\code{\link[=secretsmanager_create_secret]{create_secret}}.
-\item To cancel deletion of a version of a secret before the recovery
-window has expired, use
-\code{\link[=secretsmanager_restore_secret]{restore_secret}}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$delete_secret(
-  SecretId = "string",
-  RecoveryWindowInDays = 123,
-  ForceDeleteWithoutRecovery = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to delete a secret. The secret stays in
-# your account in a deprecated and inaccessible state until the recovery
-# window ends. After the date and time in the DeletionDate response field
-# has passed, you can no longer recover this secret with restore-secret.
-svc$delete_secret(
-  RecoveryWindowInDays = 7L,
-  SecretId = "MyTestDatabaseSecret1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/secretsmanager/delete_secret.html} for full documentation.
 }
 \keyword{internal}

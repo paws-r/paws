@@ -10,20 +10,9 @@ ec2_cancel_export_task(ExportTaskId)
 \item{ExportTaskId}{[required] The ID of the export task. This is the ID returned by
 \code{\link[=ec2_create_instance_export_task]{create_instance_export_task}}.}
 }
-\value{
-An empty list.
-}
 \description{
-Cancels an active export task. The request removes all artifacts of the
-export, including any partially-created Amazon S3 objects. If the export
-task is complete or is in the process of transferring the final disk
-image, the command fails and returns an error.
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_export_task(
-  ExportTaskId = "string"
-)
-}
-}
+Cancels an active export task. The request removes all artifacts of the export, including any partially-created Amazon S3 objects. If the export task is complete or is in the process of transferring the final disk image, the command fails and returns an error.
 
+See \url{https://paws-r.github.io/docs/ec2/cancel_export_task.html} for full documentation.
+}
 \keyword{internal}

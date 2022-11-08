@@ -7,7 +7,19 @@
 organizations(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -16,10 +28,76 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS Organizations
+Organizations is a web service that enables you to consolidate your
+multiple Amazon Web Services accounts into an \emph{organization} and
+centrally manage your accounts and their resources.
+
+This guide provides descriptions of the Organizations operations. For
+more information about using this service, see the \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html}{Organizations User Guide}.
+
+\strong{Support and feedback for Organizations}
+
+We welcome your feedback. Send your comments to
+\href{mailto:feedback-awsorganizations@amazon.com}{feedback-awsorganizations@amazon.com} or post your feedback and
+questions in the \href{https://repost.aws/tags/TA6BEgyePwRAKiMatMcHghcA?forumID=219}{Organizations support forum}.
+For more information about the Amazon Web Services support forums, see
+\href{https://repost.aws/forums?origin=help.jspa}{Forums Help}.
+
+\strong{Endpoint to call When using the CLI or the Amazon Web Services SDK}
+
+For the current release of Organizations, specify the \code{us-east-1} region
+for all Amazon Web Services API and CLI calls made from the commercial
+Amazon Web Services Regions outside of China. If calling from one of the
+Amazon Web Services Regions in China, then specify \code{cn-northwest-1}. You
+can do this in the CLI by using these parameters and commands:
+\itemize{
+\item Use the following parameter with each command to specify both the
+endpoint and its region:
+
+\verb{--endpoint-url https://organizations.us-east-1.amazonaws.com}
+\emph{(from commercial Amazon Web Services Regions outside of China)}
+
+or
+
+\verb{--endpoint-url https://organizations.cn-northwest-1.amazonaws.com.cn}
+\emph{(from Amazon Web Services Regions in China)}
+\item Use the default endpoint, but configure your default region with
+this command:
+
+\verb{aws configure set default.region us-east-1} \emph{(from commercial
+Amazon Web Services Regions outside of China)}
+
+or
+
+\verb{aws configure set default.region cn-northwest-1} \emph{(from Amazon Web
+Services Regions in China)}
+\item Use the following parameter with each command to specify the
+endpoint:
+
+\verb{--region us-east-1} \emph{(from commercial Amazon Web Services Regions
+outside of China)}
+
+or
+
+\verb{--region cn-northwest-1} \emph{(from Amazon Web Services Regions in
+China)}
+}
+
+\strong{Recording API Requests}
+
+Organizations supports CloudTrail, a service that records Amazon Web
+Services API calls for your Amazon Web Services account and delivers log
+files to an Amazon S3 bucket. By using information collected by
+CloudTrail, you can determine which requests the Organizations service
+received, who made the request and when, and so on. For more about
+Organizations and its support for CloudTrail, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/#orgs_cloudtrail-integration}{Logging Organizations Events with CloudTrail}
+in the \emph{Organizations User Guide}. To learn more about CloudTrail,
+including how to turn it on and find your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html}{CloudTrail User Guide}.
 }
 \section{Service syntax}{
-\preformatted{svc <- organizations(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- organizations(
   config = list(
     credentials = list(
       creds = list(
@@ -27,13 +105,17 @@ AWS Organizations
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
@@ -42,17 +124,18 @@ AWS Organizations
 \link[=organizations_accept_handshake]{accept_handshake} \tab Sends a response to the originator of a handshake agreeing to the action proposed by the handshake request\cr
 \link[=organizations_attach_policy]{attach_policy} \tab Attaches a policy to a root, an organizational unit (OU), or an individual account\cr
 \link[=organizations_cancel_handshake]{cancel_handshake} \tab Cancels a handshake\cr
-\link[=organizations_create_account]{create_account} \tab Creates an AWS account that is automatically a member of the organization whose credentials made the request\cr
+\link[=organizations_close_account]{close_account} \tab Closes an Amazon Web Services member account within an organization\cr
+\link[=organizations_create_account]{create_account} \tab Creates an Amazon Web Services account that is automatically a member of the organization whose credentials made the request\cr
 \link[=organizations_create_gov_cloud_account]{create_gov_cloud_account} \tab This action is available if all of the following are true:\cr
-\link[=organizations_create_organization]{create_organization} \tab Creates an AWS organization\cr
+\link[=organizations_create_organization]{create_organization} \tab Creates an Amazon Web Services organization\cr
 \link[=organizations_create_organizational_unit]{create_organizational_unit} \tab Creates an organizational unit (OU) within a root or parent OU\cr
-\link[=organizations_create_policy]{create_policy} \tab Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual AWS account\cr
+\link[=organizations_create_policy]{create_policy} \tab Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual Amazon Web Services account\cr
 \link[=organizations_decline_handshake]{decline_handshake} \tab Declines a handshake request\cr
 \link[=organizations_delete_organization]{delete_organization} \tab Deletes the organization\cr
 \link[=organizations_delete_organizational_unit]{delete_organizational_unit} \tab Deletes an organizational unit (OU) from a root or another OU\cr
 \link[=organizations_delete_policy]{delete_policy} \tab Deletes the specified policy from your organization\cr
-\link[=organizations_deregister_delegated_administrator]{deregister_delegated_administrator} \tab Removes the specified member AWS account as a delegated administrator for the specified AWS service\cr
-\link[=organizations_describe_account]{describe_account} \tab Retrieves AWS Organizations-related information about the specified account\cr
+\link[=organizations_deregister_delegated_administrator]{deregister_delegated_administrator} \tab Removes the specified member Amazon Web Services account as a delegated administrator for the specified Amazon Web Services service\cr
+\link[=organizations_describe_account]{describe_account} \tab Retrieves Organizations-related information about the specified account\cr
 \link[=organizations_describe_create_account_status]{describe_create_account_status} \tab Retrieves the current status of an asynchronous request to create an account\cr
 \link[=organizations_describe_effective_policy]{describe_effective_policy} \tab Returns the contents of the effective policy for specified policy type and account\cr
 \link[=organizations_describe_handshake]{describe_handshake} \tab Retrieves information about a previously requested handshake\cr
@@ -60,20 +143,20 @@ AWS Organizations
 \link[=organizations_describe_organizational_unit]{describe_organizational_unit} \tab Retrieves information about an organizational unit (OU)\cr
 \link[=organizations_describe_policy]{describe_policy} \tab Retrieves information about a policy\cr
 \link[=organizations_detach_policy]{detach_policy} \tab Detaches a policy from a target root, organizational unit (OU), or account\cr
-\link[=organizations_disable_aws_service_access]{disable_aws_service_access} \tab Disables the integration of an AWS service (the service that is specified by ServicePrincipal) with AWS Organizations\cr
+\link[=organizations_disable_aws_service_access]{disable_aws_service_access} \tab Disables the integration of an Amazon Web Services service (the service that is specified by ServicePrincipal) with Organizations\cr
 \link[=organizations_disable_policy_type]{disable_policy_type} \tab Disables an organizational policy type in a root\cr
 \link[=organizations_enable_all_features]{enable_all_features} \tab Enables all features in an organization\cr
-\link[=organizations_enable_aws_service_access]{enable_aws_service_access} \tab Enables the integration of an AWS service (the service that is specified by ServicePrincipal) with AWS Organizations\cr
+\link[=organizations_enable_aws_service_access]{enable_aws_service_access} \tab Enables the integration of an Amazon Web Services service (the service that is specified by ServicePrincipal) with Organizations\cr
 \link[=organizations_enable_policy_type]{enable_policy_type} \tab Enables a policy type in a root\cr
 \link[=organizations_invite_account_to_organization]{invite_account_to_organization} \tab Sends an invitation to another account to join your organization as a member account\cr
 \link[=organizations_leave_organization]{leave_organization} \tab Removes a member account from its parent organization\cr
 \link[=organizations_list_accounts]{list_accounts} \tab Lists all the accounts in the organization\cr
 \link[=organizations_list_accounts_for_parent]{list_accounts_for_parent} \tab Lists the accounts in an organization that are contained by the specified target root or organizational unit (OU)\cr
-\link[=organizations_list_aws_service_access_for_organization]{list_aws_service_access_for_organization} \tab Returns a list of the AWS services that you enabled to integrate with your organization\cr
+\link[=organizations_list_aws_service_access_for_organization]{list_aws_service_access_for_organization} \tab Returns a list of the Amazon Web Services services that you enabled to integrate with your organization\cr
 \link[=organizations_list_children]{list_children} \tab Lists all of the organizational units (OUs) or accounts that are contained in the specified parent OU or root\cr
 \link[=organizations_list_create_account_status]{list_create_account_status} \tab Lists the account creation requests that match the specified status that is currently being tracked for the organization\cr
-\link[=organizations_list_delegated_administrators]{list_delegated_administrators} \tab Lists the AWS accounts that are designated as delegated administrators in this organization\cr
-\link[=organizations_list_delegated_services_for_account]{list_delegated_services_for_account} \tab List the AWS services for which the specified account is a delegated administrator\cr
+\link[=organizations_list_delegated_administrators]{list_delegated_administrators} \tab Lists the Amazon Web Services accounts that are designated as delegated administrators in this organization\cr
+\link[=organizations_list_delegated_services_for_account]{list_delegated_services_for_account} \tab List the Amazon Web Services services for which the specified account is a delegated administrator\cr
 \link[=organizations_list_handshakes_for_account]{list_handshakes_for_account} \tab Lists the current handshakes that are associated with the account of the requesting user\cr
 \link[=organizations_list_handshakes_for_organization]{list_handshakes_for_organization} \tab Lists the handshakes that are associated with the organization that the requesting user is part of\cr
 \link[=organizations_list_organizational_units_for_parent]{list_organizational_units_for_parent} \tab Lists the organizational units (OUs) in a parent organizational unit or root\cr
@@ -84,7 +167,7 @@ AWS Organizations
 \link[=organizations_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags that are attached to the specified resource\cr
 \link[=organizations_list_targets_for_policy]{list_targets_for_policy} \tab Lists all the roots, organizational units (OUs), and accounts that the specified policy is attached to\cr
 \link[=organizations_move_account]{move_account} \tab Moves an account from its current source parent root or organizational unit (OU) to the specified destination parent root or OU\cr
-\link[=organizations_register_delegated_administrator]{register_delegated_administrator} \tab Enables the specified member account to administer the Organizations features of the specified AWS service\cr
+\link[=organizations_register_delegated_administrator]{register_delegated_administrator} \tab Enables the specified member account to administer the Organizations features of the specified Amazon Web Services service\cr
 \link[=organizations_remove_account_from_organization]{remove_account_from_organization} \tab Removes the specified account from the organization\cr
 \link[=organizations_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
 \link[=organizations_untag_resource]{untag_resource} \tab Removes any tags with the specified keys from the specified resource\cr

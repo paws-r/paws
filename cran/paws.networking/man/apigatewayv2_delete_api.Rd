@@ -9,17 +9,9 @@ apigatewayv2_delete_api(ApiId)
 \arguments{
 \item{ApiId}{[required] The API identifier.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an Api resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_api(
-  ApiId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_api.html} for full documentation.
+}
 \keyword{internal}

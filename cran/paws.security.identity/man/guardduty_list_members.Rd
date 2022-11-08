@@ -5,8 +5,12 @@
 \title{Lists details about all member accounts for the current GuardDuty
 administrator account}
 \usage{
-guardduty_list_members(DetectorId, MaxResults, NextToken,
-  OnlyAssociated)
+guardduty_list_members(
+  DetectorId,
+  MaxResults = NULL,
+  NextToken = NULL,
+  OnlyAssociated = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector the member is associated with.}
@@ -23,35 +27,9 @@ value of NextToken from the previous response to continue listing data.}
 members (including members who haven't been invited yet or have been
 disassociated).}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Members = list(
-    list(
-      AccountId = "string",
-      DetectorId = "string",
-      MasterId = "string",
-      Email = "string",
-      RelationshipStatus = "string",
-      InvitedAt = "string",
-      UpdatedAt = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists details about all member accounts for the current GuardDuty
-administrator account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_members(
-  DetectorId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  OnlyAssociated = "string"
-)
-}
-}
+Lists details about all member accounts for the current GuardDuty administrator account.
 
+See \url{https://paws-r.github.io/docs/guardduty/list_members.html} for full documentation.
+}
 \keyword{internal}

@@ -4,9 +4,12 @@
 \alias{rds_copy_db_parameter_group}
 \title{Copies the specified DB parameter group}
 \usage{
-rds_copy_db_parameter_group(SourceDBParameterGroupIdentifier,
-  TargetDBParameterGroupIdentifier, TargetDBParameterGroupDescription,
-  Tags)
+rds_copy_db_parameter_group(
+  SourceDBParameterGroupIdentifier,
+  TargetDBParameterGroupIdentifier,
+  TargetDBParameterGroupDescription,
+  Tags = NULL
+)
 }
 \arguments{
 \item{SourceDBParameterGroupIdentifier}{[required] The identifier or ARN for the source DB parameter group. For information
@@ -16,8 +19,6 @@ in the \emph{Amazon RDS User Guide}.
 Constraints:
 \itemize{
 \item Must specify a valid DB parameter group.
-\item Must specify a valid DB parameter group identifier, for example
-\code{my-db-param-group}, or a valid ARN.
 }}
 
 \item{TargetDBParameterGroupIdentifier}{[required] The identifier for the copied DB parameter group.
@@ -36,33 +37,9 @@ Example: \code{my-db-parameter-group}}
 
 \item{Tags}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBParameterGroup = list(
-    DBParameterGroupName = "string",
-    DBParameterGroupFamily = "string",
-    Description = "string",
-    DBParameterGroupArn = "string"
-  )
-)
-}
-}
 \description{
 Copies the specified DB parameter group.
-}
-\section{Request syntax}{
-\preformatted{svc$copy_db_parameter_group(
-  SourceDBParameterGroupIdentifier = "string",
-  TargetDBParameterGroupIdentifier = "string",
-  TargetDBParameterGroupDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/rds/copy_db_parameter_group.html} for full documentation.
+}
 \keyword{internal}

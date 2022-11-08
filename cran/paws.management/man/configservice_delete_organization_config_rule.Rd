@@ -2,36 +2,17 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_delete_organization_config_rule}
 \alias{configservice_delete_organization_config_rule}
-\title{Deletes the specified organization config rule and all of its evaluation
+\title{Deletes the specified organization Config rule and all of its evaluation
 results from all member accounts in that organization}
 \usage{
-configservice_delete_organization_config_rule(
-  OrganizationConfigRuleName)
+configservice_delete_organization_config_rule(OrganizationConfigRuleName)
 }
 \arguments{
-\item{OrganizationConfigRuleName}{[required] The name of organization config rule that you want to delete.}
-}
-\value{
-An empty list.
+\item{OrganizationConfigRuleName}{[required] The name of organization Config rule that you want to delete.}
 }
 \description{
-Deletes the specified organization config rule and all of its evaluation
-results from all member accounts in that organization.
+Deletes the specified organization Config rule and all of its evaluation results from all member accounts in that organization.
 
-Only a master account and a delegated administrator account can delete
-an organization config rule. When calling this API with a delegated
-administrator, you must ensure AWS Organizations
-\code{ListDelegatedAdministrator} permissions are added.
-
-AWS Config sets the state of a rule to DELETE_IN_PROGRESS until the
-deletion is complete. You cannot update a rule while it is in this
-state.
+See \url{https://paws-r.github.io/docs/configservice/delete_organization_config_rule.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_organization_config_rule(
-  OrganizationConfigRuleName = "string"
-)
-}
-}
-
 \keyword{internal}

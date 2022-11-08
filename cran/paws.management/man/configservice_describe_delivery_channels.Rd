@@ -4,42 +4,14 @@
 \alias{configservice_describe_delivery_channels}
 \title{Returns details about the specified delivery channel}
 \usage{
-configservice_describe_delivery_channels(DeliveryChannelNames)
+configservice_describe_delivery_channels(DeliveryChannelNames = NULL)
 }
 \arguments{
 \item{DeliveryChannelNames}{A list of delivery channel names.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeliveryChannels = list(
-    list(
-      name = "string",
-      s3BucketName = "string",
-      s3KeyPrefix = "string",
-      snsTopicARN = "string",
-      configSnapshotDeliveryProperties = list(
-        deliveryFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns details about the specified delivery channel. If a delivery
-channel is not specified, this action returns the details of all
-delivery channels associated with the account.
+Returns details about the specified delivery channel. If a delivery channel is not specified, this action returns the details of all delivery channels associated with the account.
 
-Currently, you can specify only one delivery channel per region in your
-account.
+See \url{https://paws-r.github.io/docs/configservice/describe_delivery_channels.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_delivery_channels(
-  DeliveryChannelNames = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

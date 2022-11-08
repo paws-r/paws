@@ -5,7 +5,7 @@
 \title{Sends a signal to an Automation execution to change the current behavior
 or status of the execution}
 \usage{
-ssm_send_automation_signal(AutomationExecutionId, SignalType, Payload)
+ssm_send_automation_signal(AutomationExecutionId, SignalType, Payload = NULL)
 }
 \arguments{
 \item{AutomationExecutionId}{[required] The unique identifier for an existing Automation execution that you want
@@ -31,24 +31,9 @@ the payload. For example:
 
 \code{StepExecutionId="97fff367-fc5a-4299-aed8-0123456789ab"}}
 }
-\value{
-An empty list.
-}
 \description{
-Sends a signal to an Automation execution to change the current behavior
-or status of the execution.
-}
-\section{Request syntax}{
-\preformatted{svc$send_automation_signal(
-  AutomationExecutionId = "string",
-  SignalType = "Approve"|"Reject"|"StartStep"|"StopStep"|"Resume",
-  Payload = list(
-    list(
-      "string"
-    )
-  )
-)
-}
-}
+Sends a signal to an Automation execution to change the current behavior or status of the execution.
 
+See \url{https://paws-r.github.io/docs/ssm/send_automation_signal.html} for full documentation.
+}
 \keyword{internal}

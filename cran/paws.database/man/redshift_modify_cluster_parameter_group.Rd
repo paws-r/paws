@@ -19,38 +19,9 @@ parameter are optional.
 For the workload management (WLM) configuration, you must supply all the
 name-value pairs in the wlm_json_configuration parameter.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ParameterGroupName = "string",
-  ParameterGroupStatus = "string"
-)
-}
-}
 \description{
-Modifies the parameters of a parameter group.
+Modifies the parameters of a parameter group. For the parameters parameter, it can't contain ASCII characters.
 
-For more information about parameters and parameter groups, go to
-\href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/modify_cluster_parameter_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_cluster_parameter_group(
-  ParameterGroupName = "string",
-  Parameters = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string",
-      Description = "string",
-      Source = "string",
-      DataType = "string",
-      AllowedValues = "string",
-      ApplyType = "static"|"dynamic",
-      IsModifiable = TRUE|FALSE,
-      MinimumEngineVersion = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

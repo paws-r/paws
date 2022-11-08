@@ -10,37 +10,9 @@ elbv2_delete_load_balancer(LoadBalancerArn)
 \arguments{
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified Application Load Balancer, Network Load Balancer,
-or Gateway Load Balancer. Deleting a load balancer also deletes its
-listeners.
+Deletes the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer. Deleting a load balancer also deletes its listeners.
 
-You can't delete a load balancer if deletion protection is enabled. If
-the load balancer does not exist or has already been deleted, the call
-succeeds.
-
-Deleting a load balancer does not affect its registered targets. For
-example, your EC2 instances continue to run and are still registered to
-their target groups. If you no longer need these EC2 instances, you can
-stop or terminate them.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_load_balancer(
-  LoadBalancerArn = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes the specified load balancer.
-svc$delete_load_balancer(
-  LoadBalancerArn = "arn:aws:elasticloadbalancing:us-west-2:123456789012:lo..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/delete_load_balancer.html} for full documentation.
 }
 \keyword{internal}

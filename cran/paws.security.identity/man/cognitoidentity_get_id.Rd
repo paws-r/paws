@@ -4,7 +4,7 @@
 \alias{cognitoidentity_get_id}
 \title{Generates (or retrieves) a Cognito ID}
 \usage{
-cognitoidentity_get_id(AccountId, IdentityPoolId, Logins)
+cognitoidentity_get_id(AccountId = NULL, IdentityPoolId, Logins = NULL)
 }
 \arguments{
 \item{AccountId}{A standard AWS account ID (9+ digits).}
@@ -24,27 +24,9 @@ example, \verb{cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789}.
 \item Digits: \code{www.digits.com}
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityId = "string"
-)
-}
-}
 \description{
-Generates (or retrieves) a Cognito ID. Supplying multiple logins will
-create an implicit linked account.
+Generates (or retrieves) a Cognito ID. Supplying multiple logins will create an implicit linked account.
 
-This is a public API. You do not need any credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/get_id.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_id(
-  AccountId = "string",
-  IdentityPoolId = "string",
-  Logins = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

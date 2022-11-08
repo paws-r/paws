@@ -2,10 +2,14 @@
 % Please edit documentation in R/xray_operations.R
 \name{xray_put_telemetry_records}
 \alias{xray_put_telemetry_records}
-\title{Used by the AWS X-Ray daemon to upload telemetry}
+\title{Used by the Amazon Web Services X-Ray daemon to upload telemetry}
 \usage{
-xray_put_telemetry_records(TelemetryRecords, EC2InstanceId, Hostname,
-  ResourceARN)
+xray_put_telemetry_records(
+  TelemetryRecords,
+  EC2InstanceId = NULL,
+  Hostname = NULL,
+  ResourceARN = NULL
+)
 }
 \arguments{
 \item{TelemetryRecords}{[required]}
@@ -16,38 +20,9 @@ xray_put_telemetry_records(TelemetryRecords, EC2InstanceId, Hostname,
 
 \item{ResourceARN}{}
 }
-\value{
-An empty list.
-}
 \description{
-Used by the AWS X-Ray daemon to upload telemetry.
-}
-\section{Request syntax}{
-\preformatted{svc$put_telemetry_records(
-  TelemetryRecords = list(
-    list(
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      SegmentsReceivedCount = 123,
-      SegmentsSentCount = 123,
-      SegmentsSpilloverCount = 123,
-      SegmentsRejectedCount = 123,
-      BackendConnectionErrors = list(
-        TimeoutCount = 123,
-        ConnectionRefusedCount = 123,
-        HTTPCode4XXCount = 123,
-        HTTPCode5XXCount = 123,
-        UnknownHostCount = 123,
-        OtherCount = 123
-      )
-    )
-  ),
-  EC2InstanceId = "string",
-  Hostname = "string",
-  ResourceARN = "string"
-)
-}
-}
+Used by the Amazon Web Services X-Ray daemon to upload telemetry.
 
+See \url{https://paws-r.github.io/docs/xray/put_telemetry_records.html} for full documentation.
+}
 \keyword{internal}

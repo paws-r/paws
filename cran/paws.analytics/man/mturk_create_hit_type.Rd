@@ -4,9 +4,15 @@
 \alias{mturk_create_hit_type}
 \title{The CreateHITType operation creates a new HIT type}
 \usage{
-mturk_create_hit_type(AutoApprovalDelayInSeconds,
-  AssignmentDurationInSeconds, Reward, Title, Keywords, Description,
-  QualificationRequirements)
+mturk_create_hit_type(
+  AutoApprovalDelayInSeconds = NULL,
+  AssignmentDurationInSeconds,
+  Reward,
+  Title,
+  Keywords = NULL,
+  Description,
+  QualificationRequirements = NULL
+)
 }
 \arguments{
 \item{AutoApprovalDelayInSeconds}{The number of seconds after an assignment for the HIT has been
@@ -43,46 +49,9 @@ All requirements must be met in order for a Worker to accept the HIT.
 Additionally, other actions can be restricted using the \code{ActionsGuarded}
 field on each \code{QualificationRequirement} structure.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HITTypeId = "string"
-)
-}
-}
 \description{
-The \code{\link[=mturk_create_hit_type]{create_hit_type}} operation creates a new
-HIT type. This operation allows you to define a standard set of HIT
-properties to use when creating HITs. If you register a HIT type with
-values that match an existing HIT type, the HIT type ID of the existing
-type will be returned.
-}
-\section{Request syntax}{
-\preformatted{svc$create_hit_type(
-  AutoApprovalDelayInSeconds = 123,
-  AssignmentDurationInSeconds = 123,
-  Reward = "string",
-  Title = "string",
-  Keywords = "string",
-  Description = "string",
-  QualificationRequirements = list(
-    list(
-      QualificationTypeId = "string",
-      Comparator = "LessThan"|"LessThanOrEqualTo"|"GreaterThan"|"GreaterThanOrEqualTo"|"EqualTo"|"NotEqualTo"|"Exists"|"DoesNotExist"|"In"|"NotIn",
-      IntegerValues = list(
-        123
-      ),
-      LocaleValues = list(
-        list(
-          Country = "string",
-          Subdivision = "string"
-        )
-      ),
-      RequiredToPreview = TRUE|FALSE,
-      ActionsGuarded = "Accept"|"PreviewAndAccept"|"DiscoverPreviewAndAccept"
-    )
-  )
-)
-}
-}
+The \code{\link[=mturk_create_hit_type]{create_hit_type}} operation creates a new HIT type. This operation allows you to define a standard set of HIT properties to use when creating HITs. If you register a HIT type with values that match an existing HIT type, the HIT type ID of the existing type will be returned.
 
+See \url{https://paws-r.github.io/docs/mturk/create_hit_type.html} for full documentation.
+}
 \keyword{internal}

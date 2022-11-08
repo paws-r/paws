@@ -10,45 +10,9 @@ machinelearning_get_batch_prediction(BatchPredictionId)
 \arguments{
 \item{BatchPredictionId}{[required] An ID assigned to the \code{BatchPrediction} at creation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BatchPredictionId = "string",
-  MLModelId = "string",
-  BatchPredictionDataSourceId = "string",
-  InputDataLocationS3 = "string",
-  CreatedByIamUser = "string",
-  CreatedAt = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastUpdatedAt = as.POSIXct(
-    "2015-01-01"
-  ),
-  Name = "string",
-  Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
-  OutputUri = "string",
-  LogUri = "string",
-  Message = "string",
-  ComputeTime = 123,
-  FinishedAt = as.POSIXct(
-    "2015-01-01"
-  ),
-  StartedAt = as.POSIXct(
-    "2015-01-01"
-  ),
-  TotalRecordCount = 123,
-  InvalidRecordCount = 123
-)
-}
-}
 \description{
-Returns a \code{BatchPrediction} that includes detailed metadata, status, and
-data file information for a \verb{Batch Prediction} request.
-}
-\section{Request syntax}{
-\preformatted{svc$get_batch_prediction(
-  BatchPredictionId = "string"
-)
-}
-}
+Returns a \code{BatchPrediction} that includes detailed metadata, status, and data file information for a \verb{Batch Prediction} request.
 
+See \url{https://paws-r.github.io/docs/machinelearning/get_batch_prediction.html} for full documentation.
+}
 \keyword{internal}

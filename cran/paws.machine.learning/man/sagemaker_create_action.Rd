@@ -4,11 +4,20 @@
 \alias{sagemaker_create_action}
 \title{Creates an action}
 \usage{
-sagemaker_create_action(ActionName, Source, ActionType, Description,
-  Status, Properties, MetadataProperties, Tags)
+sagemaker_create_action(
+  ActionName,
+  Source,
+  ActionType,
+  Description = NULL,
+  Status = NULL,
+  Properties = NULL,
+  MetadataProperties = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{ActionName}{[required] The name of the action. Must be unique to your account in an AWS Region.}
+\item{ActionName}{[required] The name of the action. Must be unique to your account in an Amazon Web
+Services Region.}
 
 \item{Source}{[required] The source type, ID, and URI.}
 
@@ -24,46 +33,9 @@ sagemaker_create_action(ActionName, Source, ActionType, Description,
 
 \item{Tags}{A list of tags to apply to the action.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ActionArn = "string"
-)
-}
-}
 \description{
-Creates an \emph{action}. An action is a lineage tracking entity that
-represents an action or activity. For example, a model deployment or an
-HPO job. Generally, an action involves at least one input or output
-artifact. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_action(
-  ActionName = "string",
-  Source = list(
-    SourceUri = "string",
-    SourceType = "string",
-    SourceId = "string"
-  ),
-  ActionType = "string",
-  Description = "string",
-  Status = "Unknown"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
-  Properties = list(
-    "string"
-  ),
-  MetadataProperties = list(
-    CommitId = "string",
-    Repository = "string",
-    GeneratedBy = "string",
-    ProjectId = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates an \emph{action}. An action is a lineage tracking entity that represents an action or activity. For example, a model deployment or an HPO job. Generally, an action involves at least one input or output artifact. For more information, see Amazon SageMaker ML Lineage Tracking.
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_action.html} for full documentation.
+}
 \keyword{internal}

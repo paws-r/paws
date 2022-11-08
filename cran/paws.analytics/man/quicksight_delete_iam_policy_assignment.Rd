@@ -4,34 +4,23 @@
 \alias{quicksight_delete_iam_policy_assignment}
 \title{Deletes an existing IAM policy assignment}
 \usage{
-quicksight_delete_iam_policy_assignment(AwsAccountId, AssignmentName,
-  Namespace)
+quicksight_delete_iam_policy_assignment(
+  AwsAccountId,
+  AssignmentName,
+  Namespace
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID where you want to delete the IAM policy assignment.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID where you want to delete the IAM
+policy assignment.}
 
 \item{AssignmentName}{[required] The name of the assignment.}
 
 \item{Namespace}{[required] The namespace that contains the assignment.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AssignmentName = "string",
-  RequestId = "string",
-  Status = 123
-)
-}
-}
 \description{
 Deletes an existing IAM policy assignment.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_iam_policy_assignment(
-  AwsAccountId = "string",
-  AssignmentName = "string",
-  Namespace = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/delete_iam_policy_assignment.html} for full documentation.
+}
 \keyword{internal}

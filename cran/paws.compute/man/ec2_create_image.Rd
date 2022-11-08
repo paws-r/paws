@@ -5,8 +5,15 @@
 \title{Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that
 is either running or stopped}
 \usage{
-ec2_create_image(BlockDeviceMappings, Description, DryRun, InstanceId,
-  Name, NoReboot, TagSpecifications)
+ec2_create_image(
+  BlockDeviceMappings = NULL,
+  Description = NULL,
+  DryRun = NULL,
+  InstanceId,
+  Name,
+  NoReboot = NULL,
+  TagSpecifications = NULL
+)
 }
 \arguments{
 \item{BlockDeviceMappings}{The block device mappings. This parameter cannot be used to modify the
@@ -28,20 +35,28 @@ Constraints: 3-128 alphanumeric characters, parentheses (()), square
 brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-),
 single quotes ('), at-signs (@), or underscores(_)}
 
-\item{NoReboot}{By default, Amazon EC2 attempts to shut down and reboot the instance
-before creating the image. If the \verb{No Reboot} option is set, Amazon EC2
-doesn't shut down the instance before creating the image. When this
-option is used, file system integrity on the created image can't be
-guaranteed.}
+\item{NoReboot}{By default, when Amazon EC2 creates the new AMI, it reboots the instance
+so that it can take snapshots of the attached volumes while data is at
+rest, in order to ensure a consistent state. You can set the \code{NoReboot}
+parameter to \code{true} in the API request, or use the \code{--no-reboot} option
+in the CLI to prevent Amazon EC2 from shutting down and rebooting the
+instance.
+
+If you choose to bypass the shutdown and reboot process by setting the
+\code{NoReboot} parameter to \code{true} in the API request, or by using the
+\code{--no-reboot} option in the CLI, we can't guarantee the file system
+integrity of the created image.
+
+Default: \code{false} (follow standard reboot process)}
 
 \item{TagSpecifications}{The tags to apply to the AMI and snapshots on creation. You can tag the
 AMI, the snapshots, or both.
 \itemize{
 \item To tag the AMI, the value for \code{ResourceType} must be \code{image}.
 \item To tag the snapshots that are created of the root volume and of
-other EBS volumes that are attached to the instance, the value for
-\code{ResourceType} must be \code{snapshot}. The same tag is applied to all of
-the snapshots that are created.
+other Amazon EBS volumes that are attached to the instance, the
+value for \code{ResourceType} must be \code{snapshot}. The same tag is applied
+to all of the snapshots that are created.
 }
 
 If you specify other values for \code{ResourceType}, the request fails.
@@ -49,88 +64,9 @@ If you specify other values for \code{ResourceType}, the request fails.
 To tag an AMI or snapshot after it has been created, see
 \code{\link[=ec2_create_tags]{create_tags}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ImageId = "string"
-)
-}
-}
 \description{
-Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that
-is either running or stopped.
+Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped.
 
-If you customized your instance with instance store volumes or EBS
-volumes in addition to the root device volume, the new AMI contains
-block device mapping information for those volumes. When you launch an
-instance from this new AMI, the instance automatically launches with
-those additional volumes.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html}{Creating Amazon EBS-Backed Linux AMIs}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_image(
-  BlockDeviceMappings = list(
-    list(
-      DeviceName = "string",
-      VirtualName = "string",
-      Ebs = list(
-        DeleteOnTermination = TRUE|FALSE,
-        Iops = 123,
-        SnapshotId = "string",
-        VolumeSize = 123,
-        VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
-        KmsKeyId = "string",
-        Throughput = 123,
-        Encrypted = TRUE|FALSE
-      ),
-      NoDevice = "string"
-    )
-  ),
-  Description = "string",
-  DryRun = TRUE|FALSE,
-  InstanceId = "string",
-  Name = "string",
-  NoReboot = TRUE|FALSE,
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates an AMI from the specified instance and adds an EBS
-# volume with the device name /dev/sdh and an instance store volume with
-# the device name /dev/sdc.
-svc$create_image(
-  BlockDeviceMappings = list(
-    list(
-      DeviceName = "/dev/sdh",
-      Ebs = list(
-        VolumeSize = "100"
-      )
-    ),
-    list(
-      DeviceName = "/dev/sdc",
-      VirtualName = "ephemeral1"
-    )
-  ),
-  Description = "An AMI for my server",
-  InstanceId = "i-1234567890abcdef0",
-  Name = "My server",
-  NoReboot = TRUE
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/create_image.html} for full documentation.
 }
 \keyword{internal}

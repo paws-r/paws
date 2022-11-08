@@ -4,7 +4,7 @@
 \alias{cognitoidentity_get_open_id_token}
 \title{Gets an OpenID token, using a known Cognito ID}
 \usage{
-cognitoidentity_get_open_id_token(IdentityId, Logins)
+cognitoidentity_get_open_id_token(IdentityId, Logins = NULL)
 }
 \arguments{
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
@@ -13,33 +13,11 @@ cognitoidentity_get_open_id_token(IdentityId, Logins)
 tokens. When using graph.facebook.com and www.amazon.com, supply the
 access_token returned from the provider's authflow. For
 accounts.google.com, an Amazon Cognito user pool provider, or any other
-OpenId Connect provider, always include the \code{id_token}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityId = "string",
-  Token = "string"
-)
-}
+OpenID Connect provider, always include the \code{id_token}.}
 }
 \description{
-Gets an OpenID token, using a known Cognito ID. This known Cognito ID is
-returned by \code{\link[=cognitoidentity_get_id]{get_id}}. You can optionally add
-additional logins for the identity. Supplying multiple logins creates an
-implicit link.
+Gets an OpenID token, using a known Cognito ID. This known Cognito ID is returned by \code{\link[=cognitoidentity_get_id]{get_id}}. You can optionally add additional logins for the identity. Supplying multiple logins creates an implicit link.
 
-The OpenId token is valid for 10 minutes.
-
-This is a public API. You do not need any credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/get_open_id_token.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_open_id_token(
-  IdentityId = "string",
-  Logins = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

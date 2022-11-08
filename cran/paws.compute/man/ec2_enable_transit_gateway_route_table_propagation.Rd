@@ -6,41 +6,27 @@
 propagation route table}
 \usage{
 ec2_enable_transit_gateway_route_table_propagation(
-  TransitGatewayRouteTableId, TransitGatewayAttachmentId, DryRun)
+  TransitGatewayRouteTableId,
+  TransitGatewayAttachmentId = NULL,
+  DryRun = NULL,
+  TransitGatewayRouteTableAnnouncementId = NULL
+)
 }
 \arguments{
 \item{TransitGatewayRouteTableId}{[required] The ID of the propagation route table.}
 
-\item{TransitGatewayAttachmentId}{[required] The ID of the attachment.}
+\item{TransitGatewayAttachmentId}{The ID of the attachment.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Propagation = list(
-    TransitGatewayAttachmentId = "string",
-    ResourceId = "string",
-    ResourceType = "vpc"|"vpn"|"direct-connect-gateway"|"connect"|"peering"|"tgw-peering",
-    TransitGatewayRouteTableId = "string",
-    State = "enabling"|"enabled"|"disabling"|"disabled"
-  )
-)
-}
+
+\item{TransitGatewayRouteTableAnnouncementId}{The ID of the transit gateway route table announcement.}
 }
 \description{
-Enables the specified attachment to propagate routes to the specified
-propagation route table.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_transit_gateway_route_table_propagation(
-  TransitGatewayRouteTableId = "string",
-  TransitGatewayAttachmentId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Enables the specified attachment to propagate routes to the specified propagation route table.
 
+See \url{https://paws-r.github.io/docs/ec2/enable_transit_gateway_route_table_propagation.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,14 @@
 \alias{applicationinsights_list_problems}
 \title{Lists the problems with your application}
 \usage{
-applicationinsights_list_problems(ResourceGroupName, StartTime, EndTime,
-  MaxResults, NextToken)
+applicationinsights_list_problems(
+  ResourceGroupName = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  ComponentName = NULL
+)
 }
 \arguments{
 \item{ResourceGroupName}{The name of the resource group.}
@@ -22,49 +28,12 @@ the remaining results, make another call with the returned \code{NextToken}
 value.}
 
 \item{NextToken}{The token to request the next page of results.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ProblemList = list(
-    list(
-      Id = "string",
-      Title = "string",
-      Insights = "string",
-      Status = "IGNORE"|"RESOLVED"|"PENDING",
-      AffectedResource = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      SeverityLevel = "Low"|"Medium"|"High",
-      ResourceGroupName = "string",
-      Feedback = list(
-        "NOT_SPECIFIED"|"USEFUL"|"NOT_USEFUL"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
+
+\item{ComponentName}{The name of the component.}
 }
 \description{
 Lists the problems with your application.
-}
-\section{Request syntax}{
-\preformatted{svc$list_problems(
-  ResourceGroupName = "string",
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/applicationinsights/list_problems.html} for full documentation.
+}
 \keyword{internal}

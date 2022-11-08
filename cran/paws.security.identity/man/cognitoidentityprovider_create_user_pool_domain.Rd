@@ -4,11 +4,16 @@
 \alias{cognitoidentityprovider_create_user_pool_domain}
 \title{Creates a new domain for a user pool}
 \usage{
-cognitoidentityprovider_create_user_pool_domain(Domain, UserPoolId,
-  CustomDomainConfig)
+cognitoidentityprovider_create_user_pool_domain(
+  Domain,
+  UserPoolId,
+  CustomDomainConfig = NULL
+)
 }
 \arguments{
-\item{Domain}{[required] The domain string.}
+\item{Domain}{[required] The domain string. For custom domains, this is the fully-qualified
+domain name, such as \code{auth.example.com}. For Amazon Cognito prefix
+domains, this is the prefix alone, such as \code{auth}.}
 
 \item{UserPoolId}{[required] The user pool ID.}
 
@@ -22,24 +27,9 @@ Cognito hosted domain instead.
 For more information about the hosted domain and custom domains, see
 \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html}{Configuring a User Pool Domain}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CloudFrontDomain = "string"
-)
-}
-}
 \description{
 Creates a new domain for a user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$create_user_pool_domain(
-  Domain = "string",
-  UserPoolId = "string",
-  CustomDomainConfig = list(
-    CertificateArn = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/create_user_pool_domain.html} for full documentation.
+}
 \keyword{internal}

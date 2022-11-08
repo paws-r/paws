@@ -5,7 +5,7 @@
 \title{Gets information about AWS tags for a specified Amazon Resource Name
 (ARN) in AWS CodeCommit}
 \usage{
-codecommit_list_tags_for_resource(resourceArn, nextToken)
+codecommit_list_tags_for_resource(resourceArn, nextToken = NULL)
 }
 \arguments{
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource for which you want to get
@@ -14,27 +14,9 @@ information about tags, if any.}
 \item{nextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  tags = list(
-    "string"
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Gets information about AWS tags for a specified Amazon Resource Name
-(ARN) in AWS CodeCommit. For a list of valid resources in AWS
-CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats}{CodeCommit Resources and Operations}
-in the \emph{AWS CodeCommit User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  resourceArn = "string",
-  nextToken = "string"
-)
-}
-}
+Gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats}{CodeCommit Resources and Operations} in the \emph{AWS CodeCommit User Guide}.
 
+See \url{https://paws-r.github.io/docs/codecommit/list_tags_for_resource.html} for full documentation.
+}
 \keyword{internal}

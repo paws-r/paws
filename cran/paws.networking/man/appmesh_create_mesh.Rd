@@ -4,7 +4,7 @@
 \alias{appmesh_create_mesh}
 \title{Creates a service mesh}
 \usage{
-appmesh_create_mesh(clientToken, meshName, spec, tags)
+appmesh_create_mesh(clientToken = NULL, meshName, spec = NULL, tags = NULL)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -21,63 +21,9 @@ optional value, both of which you define. Tag keys can have a maximum
 character length of 128 characters, and tag values can have a maximum
 length of 256 characters.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  mesh = list(
-    meshName = "string",
-    metadata = list(
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      meshOwner = "string",
-      resourceOwner = "string",
-      uid = "string",
-      version = 123
-    ),
-    spec = list(
-      egressFilter = list(
-        type = "ALLOW_ALL"|"DROP_ALL"
-      )
-    ),
-    status = list(
-      status = "ACTIVE"|"INACTIVE"|"DELETED"
-    )
-  )
-)
-}
-}
 \description{
 Creates a service mesh.
 
-A service mesh is a logical boundary for network traffic between
-services that are represented by resources within the mesh. After you
-create your service mesh, you can create virtual services, virtual
-nodes, virtual routers, and routes to distribute traffic between the
-applications in your mesh.
-
-For more information about service meshes, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/meshes.html}{Service meshes}.
+See \url{https://paws-r.github.io/docs/appmesh/create_mesh.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_mesh(
-  clientToken = "string",
-  meshName = "string",
-  spec = list(
-    egressFilter = list(
-      type = "ALLOW_ALL"|"DROP_ALL"
-    )
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

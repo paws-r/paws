@@ -5,7 +5,7 @@
 \title{List all of the configuration sets associated with your Amazon Pinpoint
 account in the current region}
 \usage{
-pinpointemail_list_configuration_sets(NextToken, PageSize)
+pinpointemail_list_configuration_sets(NextToken = NULL, PageSize = NULL)
 }
 \arguments{
 \item{NextToken}{A token returned from a previous call to
@@ -18,31 +18,9 @@ the number of results is larger than the number you specified in this
 parameter, then the response includes a \code{NextToken} element, which you
 can use to obtain additional results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConfigurationSets = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-List all of the configuration sets associated with your Amazon Pinpoint
-account in the current region.
+List all of the configuration sets associated with your Amazon Pinpoint account in the current region.
 
-In Amazon Pinpoint, \emph{configuration sets} are groups of rules that you
-can apply to the emails you send. You apply a configuration set to an
-email by including a reference to the configuration set in the headers
-of the email. When you apply a configuration set to an email, all of the
-rules in that configuration set are applied to the email.
+See \url{https://paws-r.github.io/docs/pinpointemail/list_configuration_sets.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_configuration_sets(
-  NextToken = "string",
-  PageSize = 123
-)
-}
-}
-
 \keyword{internal}

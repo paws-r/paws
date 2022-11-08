@@ -2,23 +2,28 @@
 % Please edit documentation in R/route53_operations.R
 \name{route53_create_key_signing_key}
 \alias{route53_create_key_signing_key}
-\title{Creates a new key signing key (KSK) associated with a hosted zone}
+\title{Creates a new key-signing key (KSK) associated with a hosted zone}
 \usage{
-route53_create_key_signing_key(CallerReference, HostedZoneId,
-  KeyManagementServiceArn, Name, Status)
+route53_create_key_signing_key(
+  CallerReference,
+  HostedZoneId,
+  KeyManagementServiceArn,
+  Name,
+  Status
+)
 }
 \arguments{
 \item{CallerReference}{[required] A unique string that identifies the request.}
 
 \item{HostedZoneId}{[required] The unique string (ID) used to identify a hosted zone.}
 
-\item{KeyManagementServiceArn}{[required] The Amazon resource name (ARN) for a customer managed key (CMK) in AWS
-Key Management Service (KMS). The \code{KeyManagementServiceArn} must be
-unique for each key signing key (KSK) in a single hosted zone. To see an
+\item{KeyManagementServiceArn}{[required] The Amazon resource name (ARN) for a customer managed key in Key
+Management Service (KMS). The \code{KeyManagementServiceArn} must be unique
+for each key-signing key (KSK) in a single hosted zone. To see an
 example of \code{KeyManagementServiceArn} that grants the correct permissions
 for DNSSEC, scroll down to \strong{Example}.
 
-You must configure the CMK as follows:
+You must configure the customer managed customer managed key as follows:
 \subsection{Status}{
 
 Enabled
@@ -46,67 +51,23 @@ The key policy must give permission for the following actions:
 The key policy must also include the Amazon Route 53 service in the
 principal for your account. Specify the following:
 \itemize{
-\item \code{"Service": "api-service.dnssec.route53.aws.internal"}
+\item \code{"Service": "dnssec-route53.amazonaws.com"}
 }
 
-For more information about working with CMK in KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html}{AWS Key Management Service concepts}.
+For more information about working with a customer managed key in KMS,
+see Key Management Service concepts.
 }}
 
-\item{Name}{[required] An alphanumeric string used to identify a key signing key (KSK). \code{Name}
-must be unique for each key signing key in the same hosted zone.}
+\item{Name}{[required] A string used to identify a key-signing key (KSK). \code{Name} can include
+numbers, letters, and underscores (_). \code{Name} must be unique for each
+key-signing key in the same hosted zone.}
 
-\item{Status}{[required] A string specifying the initial status of the key signing key (KSK). You
+\item{Status}{[required] A string specifying the initial status of the key-signing key (KSK). You
 can set the value to \code{ACTIVE} or \code{INACTIVE}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeInfo = list(
-    Id = "string",
-    Status = "PENDING"|"INSYNC",
-    SubmittedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    Comment = "string"
-  ),
-  KeySigningKey = list(
-    Name = "string",
-    KmsArn = "string",
-    Flag = 123,
-    SigningAlgorithmMnemonic = "string",
-    SigningAlgorithmType = 123,
-    DigestAlgorithmMnemonic = "string",
-    DigestAlgorithmType = 123,
-    KeyTag = 123,
-    DigestValue = "string",
-    PublicKey = "string",
-    DSRecord = "string",
-    DNSKEYRecord = "string",
-    Status = "string",
-    StatusMessage = "string",
-    CreatedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  Location = "string"
-)
-}
-}
 \description{
-Creates a new key signing key (KSK) associated with a hosted zone. You
-can only have two KSKs per hosted zone.
-}
-\section{Request syntax}{
-\preformatted{svc$create_key_signing_key(
-  CallerReference = "string",
-  HostedZoneId = "string",
-  KeyManagementServiceArn = "string",
-  Name = "string",
-  Status = "string"
-)
-}
-}
+Creates a new key-signing key (KSK) associated with a hosted zone. You can only have two KSKs per hosted zone.
 
+See \url{https://paws-r.github.io/docs/route53/create_key_signing_key.html} for full documentation.
+}
 \keyword{internal}

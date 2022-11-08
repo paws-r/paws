@@ -16,18 +16,9 @@ Constraints:
 \item Cannot be associated with any clusters.
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a specified cluster parameter group. The cluster parameter group
-to be deleted can't be associated with any clusters.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_db_cluster_parameter_group(
-  DBClusterParameterGroupName = "string"
-)
-}
-}
+Deletes a specified cluster parameter group. The cluster parameter group to be deleted can't be associated with any clusters.
 
+See \url{https://paws-r.github.io/docs/docdb/delete_db_cluster_parameter_group.html} for full documentation.
+}
 \keyword{internal}

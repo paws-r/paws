@@ -8,10 +8,10 @@ NULL
 #'
 #' @description
 #' Creates a parallel data resource in Amazon Translate by importing an
-#' input file from Amazon S3. Parallel data files contain examples of
-#' source phrases and their translations from your translation memory. By
-#' adding parallel data, you can influence the style, tone, and word choice
-#' in your translation output.
+#' input file from Amazon S3. Parallel data files contain examples that
+#' show how you want segments of text to be translated. By adding parallel
+#' data, you can influence the style, tone, and word choice in your
+#' translation output.
 #'
 #' @usage
 #' translate_create_parallel_data(Name, Description, ParallelDataConfig,
@@ -157,12 +157,12 @@ translate_delete_terminology <- function(Name) {
 }
 .translate$operations$delete_terminology <- translate_delete_terminology
 
-#' Gets the properties associated with an asycnhronous batch translation
+#' Gets the properties associated with an asynchronous batch translation
 #' job including name, ID, status, source and target languages,
 #' input/output S3 buckets, and so on
 #'
 #' @description
-#' Gets the properties associated with an asycnhronous batch translation
+#' Gets the properties associated with an asynchronous batch translation
 #' job including name, ID, status, source and target languages,
 #' input/output S3 buckets, and so on.
 #'
@@ -208,9 +208,17 @@ translate_delete_terminology <- function(Name) {
 #'       ContentType = "string"
 #'     ),
 #'     OutputDataConfig = list(
-#'       S3Uri = "string"
+#'       S3Uri = "string",
+#'       EncryptionKey = list(
+#'         Type = "KMS",
+#'         Id = "string"
+#'       )
 #'     ),
-#'     DataAccessRoleArn = "string"
+#'     DataAccessRoleArn = "string",
+#'     Settings = list(
+#'       Formality = "FORMAL"|"INFORMAL",
+#'       Profanity = "MASK"
+#'     )
 #'   )
 #' )
 #' ```
@@ -340,8 +348,16 @@ translate_get_parallel_data <- function(Name) {
 #' translate_get_terminology(Name, TerminologyDataFormat)
 #'
 #' @param Name &#91;required&#93; The name of the custom terminology being retrieved.
-#' @param TerminologyDataFormat &#91;required&#93; The data format of the custom terminology being retrieved, either CSV or
-#' TMX.
+#' @param TerminologyDataFormat The data format of the custom terminology being retrieved.
+#' 
+#' If you don't specify this parameter, Amazon Translate returns a file
+#' with the same format as the file that was imported to create the
+#' terminology.
+#' 
+#' If you specify this parameter when you retrieve a multi-directional
+#' terminology resource, you must specify the same format as the input file
+#' that was imported to create it. Otherwise, Amazon Translate throws an
+#' error.
 #'
 #' @return
 #' A list with the following syntax:
@@ -366,9 +382,17 @@ translate_get_parallel_data <- function(Name) {
 #'     ),
 #'     LastUpdatedAt = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     Directionality = "UNI"|"MULTI",
+#'     Message = "string",
+#'     SkippedTermCount = 123,
+#'     Format = "CSV"|"TMX"|"TSV"
 #'   ),
 #'   TerminologyDataLocation = list(
+#'     RepositoryType = "string",
+#'     Location = "string"
+#'   ),
+#'   AuxiliaryDataLocation = list(
 #'     RepositoryType = "string",
 #'     Location = "string"
 #'   )
@@ -379,14 +403,14 @@ translate_get_parallel_data <- function(Name) {
 #' ```
 #' svc$get_terminology(
 #'   Name = "string",
-#'   TerminologyDataFormat = "CSV"|"TMX"
+#'   TerminologyDataFormat = "CSV"|"TMX"|"TSV"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname translate_get_terminology
-translate_get_terminology <- function(Name, TerminologyDataFormat) {
+translate_get_terminology <- function(Name, TerminologyDataFormat = NULL) {
   op <- new_operation(
     name = "GetTerminology",
     http_method = "POST",
@@ -403,21 +427,20 @@ translate_get_terminology <- function(Name, TerminologyDataFormat) {
 }
 .translate$operations$get_terminology <- translate_get_terminology
 
-#' Creates or updates a custom terminology, depending on whether or not one
+#' Creates or updates a custom terminology, depending on whether one
 #' already exists for the given terminology name
 #'
 #' @description
-#' Creates or updates a custom terminology, depending on whether or not one
+#' Creates or updates a custom terminology, depending on whether one
 #' already exists for the given terminology name. Importing a terminology
 #' with the same name as an existing one will merge the terminologies based
-#' on the chosen merge strategy. Currently, the only supported merge
-#' strategy is OVERWRITE, and so the imported terminology will overwrite an
-#' existing terminology of the same name.
+#' on the chosen merge strategy. The only supported merge strategy is
+#' OVERWRITE, where the imported terminology overwrites the existing
+#' terminology of the same name.
 #' 
 #' If you import a terminology that overwrites an existing one, the new
-#' terminology take up to 10 minutes to fully propagate and be available
-#' for use in a translation due to cache policies with the DataPlane
-#' service that performs the translations.
+#' terminology takes up to 10 minutes to fully propagate. After that,
+#' translations have access to the new terminology.
 #'
 #' @usage
 #' translate_import_terminology(Name, MergeStrategy, Description,
@@ -455,7 +478,15 @@ translate_get_terminology <- function(Name, TerminologyDataFormat) {
 #'     ),
 #'     LastUpdatedAt = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     Directionality = "UNI"|"MULTI",
+#'     Message = "string",
+#'     SkippedTermCount = 123,
+#'     Format = "CSV"|"TMX"|"TSV"
+#'   ),
+#'   AuxiliaryDataLocation = list(
+#'     RepositoryType = "string",
+#'     Location = "string"
 #'   )
 #' )
 #' ```
@@ -468,7 +499,8 @@ translate_get_terminology <- function(Name, TerminologyDataFormat) {
 #'   Description = "string",
 #'   TerminologyData = list(
 #'     File = raw,
-#'     Format = "CSV"|"TMX"
+#'     Format = "CSV"|"TMX"|"TSV",
+#'     Directionality = "UNI"|"MULTI"
 #'   ),
 #'   EncryptionKey = list(
 #'     Type = "KMS",
@@ -496,6 +528,66 @@ translate_import_terminology <- function(Name, MergeStrategy, Description = NULL
   return(response)
 }
 .translate$operations$import_terminology <- translate_import_terminology
+
+#' Provides a list of languages (RFC-5646 codes and names) that Amazon
+#' Translate supports
+#'
+#' @description
+#' Provides a list of languages (RFC-5646 codes and names) that Amazon
+#' Translate supports.
+#'
+#' @usage
+#' translate_list_languages(DisplayLanguageCode, NextToken, MaxResults)
+#'
+#' @param DisplayLanguageCode The language code for the language to use to display the language names
+#' in the response. The language code is `en` by default.
+#' @param NextToken Include the NextToken value to fetch the next group of supported
+#' languages.
+#' @param MaxResults The maximum number of results to return in each response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Languages = list(
+#'     list(
+#'       LanguageName = "string",
+#'       LanguageCode = "string"
+#'     )
+#'   ),
+#'   DisplayLanguageCode = "de"|"en"|"es"|"fr"|"it"|"ja"|"ko"|"pt"|"zh"|"zh-TW",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_languages(
+#'   DisplayLanguageCode = "de"|"en"|"es"|"fr"|"it"|"ja"|"ko"|"pt"|"zh"|"zh-TW",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname translate_list_languages
+translate_list_languages <- function(DisplayLanguageCode = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListLanguages",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .translate$list_languages_input(DisplayLanguageCode = DisplayLanguageCode, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .translate$list_languages_output()
+  config <- get_config()
+  svc <- .translate$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.translate$operations$list_languages <- translate_list_languages
 
 #' Provides a list of your parallel data resources in Amazon Translate
 #'
@@ -616,7 +708,11 @@ translate_list_parallel_data <- function(NextToken = NULL, MaxResults = NULL) {
 #'       ),
 #'       LastUpdatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       Directionality = "UNI"|"MULTI",
+#'       Message = "string",
+#'       SkippedTermCount = 123,
+#'       Format = "CSV"|"TMX"|"TSV"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -702,9 +798,17 @@ translate_list_terminologies <- function(NextToken = NULL, MaxResults = NULL) {
 #'         ContentType = "string"
 #'       ),
 #'       OutputDataConfig = list(
-#'         S3Uri = "string"
+#'         S3Uri = "string",
+#'         EncryptionKey = list(
+#'           Type = "KMS",
+#'           Id = "string"
+#'         )
 #'       ),
-#'       DataAccessRoleArn = "string"
+#'       DataAccessRoleArn = "string",
+#'       Settings = list(
+#'         Formality = "FORMAL"|"INFORMAL",
+#'         Profanity = "MASK"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -770,29 +874,53 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #' @usage
 #' translate_start_text_translation_job(JobName, InputDataConfig,
 #'   OutputDataConfig, DataAccessRoleArn, SourceLanguageCode,
-#'   TargetLanguageCodes, TerminologyNames, ParallelDataNames, ClientToken)
+#'   TargetLanguageCodes, TerminologyNames, ParallelDataNames, ClientToken,
+#'   Settings)
 #'
 #' @param JobName The name of the batch translation job to be performed.
-#' @param InputDataConfig &#91;required&#93; Specifies the format and S3 location of the input documents for the
+#' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input documents for the
 #' translation job.
 #' @param OutputDataConfig &#91;required&#93; Specifies the S3 folder to which your job output will be saved.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an AWS Identity Access and Management
 #' (IAM) role that grants Amazon Translate read access to your input data.
-#' For more nformation, see identity-and-access-management.
+#' For more information, see identity-and-access-management.
 #' @param SourceLanguageCode &#91;required&#93; The language code of the input language. For a list of language codes,
 #' see what-is-languages.
 #' 
 #' Amazon Translate does not automatically detect a source language during
 #' batch translation jobs.
 #' @param TargetLanguageCodes &#91;required&#93; The language code of the output language.
-#' @param TerminologyNames The name of the terminology to use in the batch translation job. For a
-#' list of available terminologies, use the
+#' @param TerminologyNames The name of a custom terminology resource to add to the translation job.
+#' This resource lists examples source terms and the desired translation
+#' for each term.
+#' 
+#' This parameter accepts only one custom terminology resource.
+#' 
+#' For a list of available custom terminology resources, use the
 #' [`list_terminologies`][translate_list_terminologies] operation.
-#' @param ParallelDataNames The names of the parallel data resources to use in the batch translation
-#' job. For a list of available parallel data resources, use the
+#' 
+#' For more information, see how-custom-terminology.
+#' @param ParallelDataNames The name of a parallel data resource to add to the translation job. This
+#' resource consists of examples that show how you want segments of text to
+#' be translated. When you add parallel data to a translation job, you
+#' create an *Active Custom Translation* job.
+#' 
+#' This parameter accepts only one parallel data resource.
+#' 
+#' Active Custom Translation jobs are priced at a higher rate than other
+#' jobs that don't use parallel data. For more information, see [Amazon
+#' Translate pricing](https://aws.amazon.com/translate/pricing/).
+#' 
+#' For a list of available parallel data resources, use the
 #' [`list_parallel_data`][translate_list_parallel_data] operation.
-#' @param ClientToken &#91;required&#93; A unique identifier for the request. This token is auto-generated when
-#' using the Amazon Translate SDK.
+#' 
+#' For more information, see customizing-translations-parallel-data.
+#' @param ClientToken &#91;required&#93; A unique identifier for the request. This token is generated for you
+#' when using the Amazon Translate SDK.
+#' @param Settings Settings to configure your translation output, including the option to
+#' mask profane words and phrases.
+#' [`start_text_translation_job`][translate_start_text_translation_job]
+#' does not support the formality setting.
 #'
 #' @return
 #' A list with the following syntax:
@@ -812,7 +940,11 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #'     ContentType = "string"
 #'   ),
 #'   OutputDataConfig = list(
-#'     S3Uri = "string"
+#'     S3Uri = "string",
+#'     EncryptionKey = list(
+#'       Type = "KMS",
+#'       Id = "string"
+#'     )
 #'   ),
 #'   DataAccessRoleArn = "string",
 #'   SourceLanguageCode = "string",
@@ -825,21 +957,25 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #'   ParallelDataNames = list(
 #'     "string"
 #'   ),
-#'   ClientToken = "string"
+#'   ClientToken = "string",
+#'   Settings = list(
+#'     Formality = "FORMAL"|"INFORMAL",
+#'     Profanity = "MASK"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname translate_start_text_translation_job
-translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig, OutputDataConfig, DataAccessRoleArn, SourceLanguageCode, TargetLanguageCodes, TerminologyNames = NULL, ParallelDataNames = NULL, ClientToken) {
+translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig, OutputDataConfig, DataAccessRoleArn, SourceLanguageCode, TargetLanguageCodes, TerminologyNames = NULL, ParallelDataNames = NULL, ClientToken, Settings = NULL) {
   op <- new_operation(
     name = "StartTextTranslationJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .translate$start_text_translation_job_input(JobName = JobName, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, SourceLanguageCode = SourceLanguageCode, TargetLanguageCodes = TargetLanguageCodes, TerminologyNames = TerminologyNames, ParallelDataNames = ParallelDataNames, ClientToken = ClientToken)
+  input <- .translate$start_text_translation_job_input(JobName = JobName, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, SourceLanguageCode = SourceLanguageCode, TargetLanguageCodes = TargetLanguageCodes, TerminologyNames = TerminologyNames, ParallelDataNames = ParallelDataNames, ClientToken = ClientToken, Settings = Settings)
   output <- .translate$start_text_translation_job_output()
   config <- get_config()
   svc <- .translate$service(config)
@@ -916,7 +1052,7 @@ translate_stop_text_translation_job <- function(JobId) {
 #'
 #' @usage
 #' translate_translate_text(Text, TerminologyNames, SourceLanguageCode,
-#'   TargetLanguageCode)
+#'   TargetLanguageCode, Settings)
 #'
 #' @param Text &#91;required&#93; The text to translate. The text string can be a maximum of 5,000 bytes
 #' long. Depending on your character set, this may be fewer than 5,000
@@ -932,10 +1068,18 @@ translate_stop_text_translation_job <- function(JobId) {
 #' To have Amazon Translate determine the source language of your text, you
 #' can specify `auto` in the `SourceLanguageCode` field. If you specify
 #' `auto`, Amazon Translate will call [Amazon
-#' Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/comprehend-general.html)
+#' Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html)
 #' to determine the source language.
+#' 
+#' If you specify `auto`, you must send the
+#' [`translate_text`][translate_translate_text] request in a region that
+#' supports Amazon Comprehend. Otherwise, the request returns an error
+#' indicating that autodetect is not supported.
 #' @param TargetLanguageCode &#91;required&#93; The language code requested for the language of the target text. The
 #' language must be a language supported by Amazon Translate.
+#' @param Settings Settings to configure your translation output, including the option to
+#' set the formality level of the output text and the option to mask
+#' profane words and phrases.
 #'
 #' @return
 #' A list with the following syntax:
@@ -954,6 +1098,10 @@ translate_stop_text_translation_job <- function(JobId) {
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   AppliedSettings = list(
+#'     Formality = "FORMAL"|"INFORMAL",
+#'     Profanity = "MASK"
 #'   )
 #' )
 #' ```
@@ -966,21 +1114,25 @@ translate_stop_text_translation_job <- function(JobId) {
 #'     "string"
 #'   ),
 #'   SourceLanguageCode = "string",
-#'   TargetLanguageCode = "string"
+#'   TargetLanguageCode = "string",
+#'   Settings = list(
+#'     Formality = "FORMAL"|"INFORMAL",
+#'     Profanity = "MASK"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname translate_translate_text
-translate_translate_text <- function(Text, TerminologyNames = NULL, SourceLanguageCode, TargetLanguageCode) {
+translate_translate_text <- function(Text, TerminologyNames = NULL, SourceLanguageCode, TargetLanguageCode, Settings = NULL) {
   op <- new_operation(
     name = "TranslateText",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .translate$translate_text_input(Text = Text, TerminologyNames = TerminologyNames, SourceLanguageCode = SourceLanguageCode, TargetLanguageCode = TargetLanguageCode)
+  input <- .translate$translate_text_input(Text = Text, TerminologyNames = TerminologyNames, SourceLanguageCode = SourceLanguageCode, TargetLanguageCode = TargetLanguageCode, Settings = Settings)
   output <- .translate$translate_text_output()
   config <- get_config()
   svc <- .translate$service(config)

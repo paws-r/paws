@@ -7,72 +7,16 @@
 s3control_put_job_tagging(AccountId, JobId, Tags)
 }
 \arguments{
-\item{AccountId}{[required] The AWS account ID associated with the S3 Batch Operations job.}
+\item{AccountId}{[required] The Amazon Web Services account ID associated with the S3 Batch
+Operations job.}
 
 \item{JobId}{[required] The ID for the S3 Batch Operations job whose tags you want to replace.}
 
 \item{Tags}{[required] The set of tags to associate with the S3 Batch Operations job.}
 }
-\value{
-An empty list.
-}
 \description{
 Sets the supplied tag-set on an S3 Batch Operations job.
 
-A tag is a key-value pair. You can associate S3 Batch Operations tags
-with any job by sending a PUT request against the tagging subresource
-that is associated with the job. To modify the existing tag set, you can
-either replace the existing tag set entirely, or make changes within the
-existing tag set by retrieving the existing tag set using
-\code{\link[=s3control_get_job_tagging]{get_job_tagging}}, modify that tag set, and
-use this action to replace the tag set with the one you modified. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-\itemize{
-\item If you send this request with an empty tag set, Amazon S3 deletes
-the existing tag set on the Batch Operations job. If you use this
-method, you are charged for a Tier 1 Request (PUT). For more
-information, see \href{https://aws.amazon.com/s3/pricing/}{Amazon S3 pricing}.
-\item For deleting existing tags for your Batch Operations job, a
-\code{\link[=s3control_delete_job_tagging]{delete_job_tagging}} request is
-preferred because it achieves the same result without incurring
-charges.
-\item A few things to consider about using tags:
-\itemize{
-\item Amazon S3 limits the maximum number of tags to 50 tags per job.
-\item You can associate up to 50 tags with a job as long as they have
-unique tag keys.
-\item A tag key can be up to 128 Unicode characters in length, and tag
-values can be up to 256 Unicode characters in length.
-\item The key and values are case sensitive.
-\item For tagging-related restrictions related to characters and
-encodings, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html}{User-Defined Tag Restrictions}
-in the \emph{AWS Billing and Cost Management User Guide}.
+See \url{https://paws-r.github.io/docs/s3control/put_job_tagging.html} for full documentation.
 }
-}
-
-To use this operation, you must have permission to perform the
-\code{s3:PutJobTagging} action.
-
-Related actions include:
-\itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html}{CreatJob}
-\item \code{\link[=s3control_get_job_tagging]{get_job_tagging}}
-\item \code{\link[=s3control_delete_job_tagging]{delete_job_tagging}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$put_job_tagging(
-  AccountId = "string",
-  JobId = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

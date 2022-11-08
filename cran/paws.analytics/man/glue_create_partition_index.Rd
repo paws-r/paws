@@ -4,8 +4,12 @@
 \alias{glue_create_partition_index}
 \title{Creates a specified partition index in an existing table}
 \usage{
-glue_create_partition_index(CatalogId, DatabaseName, TableName,
-  PartitionIndex)
+glue_create_partition_index(
+  CatalogId = NULL,
+  DatabaseName,
+  TableName,
+  PartitionIndex
+)
 }
 \arguments{
 \item{CatalogId}{The catalog ID where the table resides.}
@@ -19,25 +23,9 @@ index.}
 \item{PartitionIndex}{[required] Specifies a \code{PartitionIndex} structure to create a partition index in an
 existing table.}
 }
-\value{
-An empty list.
-}
 \description{
 Creates a specified partition index in an existing table.
-}
-\section{Request syntax}{
-\preformatted{svc$create_partition_index(
-  CatalogId = "string",
-  DatabaseName = "string",
-  TableName = "string",
-  PartitionIndex = list(
-    Keys = list(
-      "string"
-    ),
-    IndexName = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/create_partition_index.html} for full documentation.
+}
 \keyword{internal}

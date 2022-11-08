@@ -2,33 +2,19 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_update_trust}
 \alias{directoryservice_update_trust}
-\title{Updates the trust that has been set up between your AWS Managed
-Microsoft AD directory and an on-premises Active Directory}
+\title{Updates the trust that has been set up between your Managed Microsoft AD
+directory and an self-managed Active Directory}
 \usage{
-directoryservice_update_trust(TrustId, SelectiveAuth)
+directoryservice_update_trust(TrustId, SelectiveAuth = NULL)
 }
 \arguments{
 \item{TrustId}{[required] Identifier of the trust relationship.}
 
 \item{SelectiveAuth}{Updates selective authentication for the trust.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestId = "string",
-  TrustId = "string"
-)
-}
-}
 \description{
-Updates the trust that has been set up between your AWS Managed
-Microsoft AD directory and an on-premises Active Directory.
-}
-\section{Request syntax}{
-\preformatted{svc$update_trust(
-  TrustId = "string",
-  SelectiveAuth = "Enabled"|"Disabled"
-)
-}
-}
+Updates the trust that has been set up between your Managed Microsoft AD directory and an self-managed Active Directory.
 
+See \url{https://paws-r.github.io/docs/directoryservice/update_trust.html} for full documentation.
+}
 \keyword{internal}

@@ -4,13 +4,18 @@
 \alias{ssm_get_parameter_history}
 \title{Retrieves the history of all changes to a parameter}
 \usage{
-ssm_get_parameter_history(Name, WithDecryption, MaxResults, NextToken)
+ssm_get_parameter_history(
+  Name,
+  WithDecryption = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name of the parameter for which you want to review history.}
 
 \item{WithDecryption}{Return decrypted values for secure string parameters. This flag is
-ignored for String and StringList parameter types.}
+ignored for \code{String} and \code{StringList} parameter types.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -19,50 +24,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Parameters = list(
-    list(
-      Name = "string",
-      Type = "String"|"StringList"|"SecureString",
-      KeyId = "string",
-      LastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedUser = "string",
-      Description = "string",
-      Value = "string",
-      AllowedPattern = "string",
-      Version = 123,
-      Labels = list(
-        "string"
-      ),
-      Tier = "Standard"|"Advanced"|"Intelligent-Tiering",
-      Policies = list(
-        list(
-          PolicyText = "string",
-          PolicyType = "string",
-          PolicyStatus = "string"
-        )
-      ),
-      DataType = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves the history of all changes to a parameter.
-}
-\section{Request syntax}{
-\preformatted{svc$get_parameter_history(
-  Name = "string",
-  WithDecryption = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/get_parameter_history.html} for full documentation.
+}
 \keyword{internal}

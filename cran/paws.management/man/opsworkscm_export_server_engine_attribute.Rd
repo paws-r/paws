@@ -4,8 +4,11 @@
 \alias{opsworkscm_export_server_engine_attribute}
 \title{Exports a specified server engine attribute as a base64-encoded string}
 \usage{
-opsworkscm_export_server_engine_attribute(ExportAttributeName,
-  ServerName, InputAttributes)
+opsworkscm_export_server_engine_attribute(
+  ExportAttributeName,
+  ServerName,
+  InputAttributes = NULL
+)
 }
 \arguments{
 \item{ExportAttributeName}{[required] The name of the export attribute. Currently, the supported export
@@ -33,40 +36,9 @@ empty, OpsWorks for Chef Automate uses the most current version. In
 Puppet, this parameter is ignored.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EngineAttribute = list(
-    Name = "string",
-    Value = "string"
-  ),
-  ServerName = "string"
-)
-}
-}
 \description{
-Exports a specified server engine attribute as a base64-encoded string.
-For example, you can export user data that you can use in EC2 to
-associate nodes with a server.
+Exports a specified server engine attribute as a base64-encoded string. For example, you can export user data that you can use in EC2 to associate nodes with a server.
 
-This operation is synchronous.
-
-A \code{ValidationException} is raised when parameters of the request are not
-valid. A \code{ResourceNotFoundException} is thrown when the server does not
-exist. An \code{InvalidStateException} is thrown when the server is in any of
-the following states: CREATING, TERMINATED, FAILED or DELETING.
+See \url{https://paws-r.github.io/docs/opsworkscm/export_server_engine_attribute.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$export_server_engine_attribute(
-  ExportAttributeName = "string",
-  ServerName = "string",
-  InputAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

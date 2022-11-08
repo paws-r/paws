@@ -4,7 +4,11 @@
 \alias{backup_create_backup_plan}
 \title{Creates a backup plan using a backup plan name and backup rules}
 \usage{
-backup_create_backup_plan(BackupPlan, BackupPlanTags, CreatorRequestId)
+backup_create_backup_plan(
+  BackupPlan,
+  BackupPlanTags = NULL,
+  CreatorRequestId = NULL
+)
 }
 \arguments{
 \item{BackupPlan}{[required] Specifies the body of a backup plan. Includes a \code{BackupPlanName} and one
@@ -17,79 +21,14 @@ tags are assigned to all backups created with this plan.}
 \item{CreatorRequestId}{Identifies the request and allows failed requests to be retried without
 the risk of running the operation twice. If the request includes a
 \code{CreatorRequestId} that matches an existing backup plan, that plan is
-returned. This parameter is optional.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  BackupPlanId = "string",
-  BackupPlanArn = "string",
-  CreationDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  VersionId = "string",
-  AdvancedBackupSettings = list(
-    list(
-      ResourceType = "string",
-      BackupOptions = list(
-        "string"
-      )
-    )
-  )
-)
-}
+returned. This parameter is optional.
+
+If used, this parameter must contain 1 to 50 alphanumeric or '-_.'
+characters.}
 }
 \description{
-Creates a backup plan using a backup plan name and backup rules. A
-backup plan is a document that contains information that AWS Backup uses
-to schedule tasks that create recovery points for resources.
+Creates a backup plan using a backup plan name and backup rules. A backup plan is a document that contains information that Backup uses to schedule tasks that create recovery points for resources.
 
-If you call \code{\link[=backup_create_backup_plan]{create_backup_plan}} with a
-plan that already exists, an \code{AlreadyExistsException} is returned.
+See \url{https://paws-r.github.io/docs/backup/create_backup_plan.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_backup_plan(
-  BackupPlan = list(
-    BackupPlanName = "string",
-    Rules = list(
-      list(
-        RuleName = "string",
-        TargetBackupVaultName = "string",
-        ScheduleExpression = "string",
-        StartWindowMinutes = 123,
-        CompletionWindowMinutes = 123,
-        Lifecycle = list(
-          MoveToColdStorageAfterDays = 123,
-          DeleteAfterDays = 123
-        ),
-        RecoveryPointTags = list(
-          "string"
-        ),
-        CopyActions = list(
-          list(
-            Lifecycle = list(
-              MoveToColdStorageAfterDays = 123,
-              DeleteAfterDays = 123
-            ),
-            DestinationBackupVaultArn = "string"
-          )
-        )
-      )
-    ),
-    AdvancedBackupSettings = list(
-      list(
-        ResourceType = "string",
-        BackupOptions = list(
-          "string"
-        )
-      )
-    )
-  ),
-  BackupPlanTags = list(
-    "string"
-  ),
-  CreatorRequestId = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Restores an Elastic IP address that was previously moved to the EC2-VPC
 platform back to the EC2-Classic platform}
 \usage{
-ec2_restore_address_to_classic(DryRun, PublicIp)
+ec2_restore_address_to_classic(DryRun = NULL, PublicIp)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -15,35 +15,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{PublicIp}{[required] The Elastic IP address.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PublicIp = "string",
-  Status = "MoveInProgress"|"InVpc"|"InClassic"
-)
-}
-}
 \description{
-Restores an Elastic IP address that was previously moved to the EC2-VPC
-platform back to the EC2-Classic platform. You cannot move an Elastic IP
-address that was originally allocated for use in EC2-VPC. The Elastic IP
-address must not be associated with an instance or network interface.
-}
-\section{Request syntax}{
-\preformatted{svc$restore_address_to_classic(
-  DryRun = TRUE|FALSE,
-  PublicIp = "string"
-)
-}
-}
+Restores an Elastic IP address that was previously moved to the EC2-VPC platform back to the EC2-Classic platform. You cannot move an Elastic IP address that was originally allocated for use in EC2-VPC. The Elastic IP address must not be associated with an instance or network interface.
 
-\examples{
-\dontrun{
-# This example restores the specified Elastic IP address to the
-# EC2-Classic platform.
-svc$restore_address_to_classic(
-  PublicIp = "198.51.100.0"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/restore_address_to_classic.html} for full documentation.
 }
 \keyword{internal}

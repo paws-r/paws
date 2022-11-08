@@ -5,68 +5,15 @@
 \title{Describes the specified load balancer policy types or all load balancer
 policy types}
 \usage{
-elb_describe_load_balancer_policy_types(PolicyTypeNames)
+elb_describe_load_balancer_policy_types(PolicyTypeNames = NULL)
 }
 \arguments{
 \item{PolicyTypeNames}{The names of the policy types. If no names are specified, describes all
 policy types defined by Elastic Load Balancing.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyTypeDescriptions = list(
-    list(
-      PolicyTypeName = "string",
-      Description = "string",
-      PolicyAttributeTypeDescriptions = list(
-        list(
-          AttributeName = "string",
-          AttributeType = "string",
-          Description = "string",
-          DefaultValue = "string",
-          Cardinality = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes the specified load balancer policy types or all load balancer
-policy types.
+Describes the specified load balancer policy types or all load balancer policy types.
 
-The description of each type indicates how it can be used. For example,
-some policies can be used only with layer 7 listeners, some policies can
-be used only with layer 4 listeners, and some policies can be used only
-with your EC2 instances.
-
-You can use
-\code{\link[=elb_create_load_balancer_policy]{create_load_balancer_policy}} to
-create a policy configuration for any of these policy types. Then,
-depending on the policy type, use either
-\code{\link[=elb_set_load_balancer_policies_of_listener]{set_load_balancer_policies_of_listener}}
-or
-\code{\link[=elb_set_load_balancer_policies_for_backend_server]{set_load_balancer_policies_for_backend_server}}
-to set the policy.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_load_balancer_policy_types(
-  PolicyTypeNames = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the specified load balancer policy type.
-svc$describe_load_balancer_policy_types(
-  PolicyTypeNames = list(
-    "ProxyProtocolPolicyType"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/describe_load_balancer_policy_types.html} for full documentation.
 }
 \keyword{internal}

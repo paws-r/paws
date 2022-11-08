@@ -7,7 +7,19 @@
 neptune(config = list())
 }
 \arguments{
-\item{config}{Optional configuration of credentials, endpoint, and/or region.}
+\item{config}{Optional configuration of credentials, endpoint, and/or region.
+\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+\item{\strong{region}:} {The AWS Region used in instantiating the client.}
+\item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+\item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+}}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -39,7 +51,9 @@ maintenance window. The reference structure is as follows, and we list
 following some related topics from the user guide.
 }
 \section{Service syntax}{
-\preformatted{svc <- neptune(
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{svc <- neptune(
   config = list(
     credentials = list(
       creds = list(
@@ -47,19 +61,23 @@ following some related topics from the user guide.
         secret_access_key = "string",
         session_token = "string"
       ),
-      profile = "string"
+      profile = "string",
+      anonymous = "logical"
     ),
     endpoint = "string",
-    region = "string"
+    region = "string",
+    close_connection = "logical",
+    timeout = "numeric",
+    s3_force_path_style = "logical"
   )
 )
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Operations}{
 
 \tabular{ll}{
-\link[=neptune_add_role_to_db_cluster]{add_role_to_db_cluster} \tab Associates an Identity and Access Management (IAM) role from an Neptune DB cluster\cr
+\link[=neptune_add_role_to_db_cluster]{add_role_to_db_cluster} \tab Associates an Identity and Access Management (IAM) role with an Neptune DB cluster\cr
 \link[=neptune_add_source_identifier_to_subscription]{add_source_identifier_to_subscription} \tab Adds a source identifier to an existing event notification subscription\cr
 \link[=neptune_add_tags_to_resource]{add_tags_to_resource} \tab Adds metadata tags to an Amazon Neptune resource\cr
 \link[=neptune_apply_pending_maintenance_action]{apply_pending_maintenance_action} \tab Applies a pending maintenance action to a resource (for example, to a DB instance)\cr
@@ -74,6 +92,7 @@ following some related topics from the user guide.
 \link[=neptune_create_db_parameter_group]{create_db_parameter_group} \tab Creates a new DB parameter group\cr
 \link[=neptune_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new DB subnet group\cr
 \link[=neptune_create_event_subscription]{create_event_subscription} \tab Creates an event notification subscription\cr
+\link[=neptune_create_global_cluster]{create_global_cluster} \tab Creates a Neptune global database spread across multiple Amazon Regions\cr
 \link[=neptune_delete_db_cluster]{delete_db_cluster} \tab The DeleteDBCluster action deletes a previously provisioned DB cluster\cr
 \link[=neptune_delete_db_cluster_endpoint]{delete_db_cluster_endpoint} \tab Deletes a custom endpoint and removes it from an Amazon Neptune DB cluster\cr
 \link[=neptune_delete_db_cluster_parameter_group]{delete_db_cluster_parameter_group} \tab Deletes a specified DB cluster parameter group\cr
@@ -82,6 +101,7 @@ following some related topics from the user guide.
 \link[=neptune_delete_db_parameter_group]{delete_db_parameter_group} \tab Deletes a specified DBParameterGroup\cr
 \link[=neptune_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a DB subnet group\cr
 \link[=neptune_delete_event_subscription]{delete_event_subscription} \tab Deletes an event notification subscription\cr
+\link[=neptune_delete_global_cluster]{delete_global_cluster} \tab Deletes a global database\cr
 \link[=neptune_describe_db_cluster_endpoints]{describe_db_cluster_endpoints} \tab Returns information about endpoints for an Amazon Neptune DB cluster\cr
 \link[=neptune_describe_db_cluster_parameter_groups]{describe_db_cluster_parameter_groups} \tab Returns a list of DBClusterParameterGroup descriptions\cr
 \link[=neptune_describe_db_cluster_parameters]{describe_db_cluster_parameters} \tab Returns the detailed parameter list for a particular DB cluster parameter group\cr
@@ -98,10 +118,12 @@ following some related topics from the user guide.
 \link[=neptune_describe_event_categories]{describe_event_categories} \tab Displays a list of categories for all event source types, or, if specified, for a specified source type\cr
 \link[=neptune_describe_events]{describe_events} \tab Returns events related to DB instances, DB security groups, DB snapshots, and DB parameter groups for the past 14 days\cr
 \link[=neptune_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the subscription descriptions for a customer account\cr
+\link[=neptune_describe_global_clusters]{describe_global_clusters} \tab Returns information about Neptune global database clusters\cr
 \link[=neptune_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Returns a list of orderable DB instance options for the specified engine\cr
 \link[=neptune_describe_pending_maintenance_actions]{describe_pending_maintenance_actions} \tab Returns a list of resources (for example, DB instances) that have at least one pending maintenance action\cr
 \link[=neptune_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications} \tab You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance\cr
 \link[=neptune_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster\cr
+\link[=neptune_failover_global_cluster]{failover_global_cluster} \tab Initiates the failover process for a Neptune global database\cr
 \link[=neptune_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon Neptune resource\cr
 \link[=neptune_modify_db_cluster]{modify_db_cluster} \tab Modify a setting for a DB cluster\cr
 \link[=neptune_modify_db_cluster_endpoint]{modify_db_cluster_endpoint} \tab Modifies the properties of an endpoint in an Amazon Neptune DB cluster\cr
@@ -111,8 +133,10 @@ following some related topics from the user guide.
 \link[=neptune_modify_db_parameter_group]{modify_db_parameter_group} \tab Modifies the parameters of a DB parameter group\cr
 \link[=neptune_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing DB subnet group\cr
 \link[=neptune_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing event notification subscription\cr
+\link[=neptune_modify_global_cluster]{modify_global_cluster} \tab Modify a setting for an Amazon Neptune global cluster\cr
 \link[=neptune_promote_read_replica_db_cluster]{promote_read_replica_db_cluster} \tab Not supported\cr
 \link[=neptune_reboot_db_instance]{reboot_db_instance} \tab You might need to reboot your DB instance, usually for maintenance reasons\cr
+\link[=neptune_remove_from_global_cluster]{remove_from_global_cluster} \tab Detaches a Neptune DB cluster from a Neptune global database\cr
 \link[=neptune_remove_role_from_db_cluster]{remove_role_from_db_cluster} \tab Disassociates an Identity and Access Management (IAM) role from a DB cluster\cr
 \link[=neptune_remove_source_identifier_from_subscription]{remove_source_identifier_from_subscription} \tab Removes a source identifier from an existing event notification subscription\cr
 \link[=neptune_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes metadata tags from an Amazon Neptune resource\cr
@@ -120,7 +144,7 @@ following some related topics from the user guide.
 \link[=neptune_reset_db_parameter_group]{reset_db_parameter_group} \tab Modifies the parameters of a DB parameter group to the engine/system default value\cr
 \link[=neptune_restore_db_cluster_from_snapshot]{restore_db_cluster_from_snapshot} \tab Creates a new DB cluster from a DB snapshot or DB cluster snapshot\cr
 \link[=neptune_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time} \tab Restores a DB cluster to an arbitrary point in time\cr
-\link[=neptune_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Neptune DB cluster that was stopped using the AWS console, the AWS CLI stop-db-cluster command, or the StopDBCluster API\cr
+\link[=neptune_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Neptune DB cluster that was stopped using the Amazon console, the Amazon CLI stop-db-cluster command, or the StopDBCluster API\cr
 \link[=neptune_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Neptune DB cluster
 }
 }

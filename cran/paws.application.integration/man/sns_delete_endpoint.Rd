@@ -9,21 +9,9 @@ sns_delete_endpoint(EndpointArn)
 \arguments{
 \item{EndpointArn}{[required] EndpointArn of endpoint to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the endpoint for a device and mobile app from Amazon SNS. This
-action is idempotent. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
+Deletes the endpoint for a device and mobile app from Amazon SNS. This action is idempotent. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
 
-When you delete an endpoint that is also subscribed to a topic, then you
-must also unsubscribe the endpoint from the topic.
+See \url{https://paws-r.github.io/docs/sns/delete_endpoint.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_endpoint(
-  EndpointArn = "string"
-)
-}
-}
-
 \keyword{internal}

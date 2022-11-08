@@ -5,8 +5,7 @@
 \title{Detaches one or more Classic Load Balancers from the specified Auto
 Scaling group}
 \usage{
-autoscaling_detach_load_balancers(AutoScalingGroupName,
-  LoadBalancerNames)
+autoscaling_detach_load_balancers(AutoScalingGroupName, LoadBalancerNames)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -14,46 +13,9 @@ autoscaling_detach_load_balancers(AutoScalingGroupName,
 \item{LoadBalancerNames}{[required] The names of the load balancers. You can specify up to 10 load
 balancers.}
 }
-\value{
-An empty list.
-}
 \description{
-Detaches one or more Classic Load Balancers from the specified Auto
-Scaling group.
+Detaches one or more Classic Load Balancers from the specified Auto Scaling group.
 
-This operation detaches only Classic Load Balancers. If you have
-Application Load Balancers, Network Load Balancers, or Gateway Load
-Balancers, use the
-\code{\link[=autoscaling_detach_load_balancer_target_groups]{detach_load_balancer_target_groups}}
-API instead.
-
-When you detach a load balancer, it enters the \code{Removing} state while
-deregistering the instances in the group. When all instances are
-deregistered, then you can no longer describe the load balancer using
-the \code{\link[=autoscaling_describe_load_balancers]{describe_load_balancers}} API
-call. The instances remain running.
-}
-\section{Request syntax}{
-\preformatted{svc$detach_load_balancers(
-  AutoScalingGroupName = "string",
-  LoadBalancerNames = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example detaches the specified load balancer from the specified
-# Auto Scaling group.
-svc$detach_load_balancers(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  LoadBalancerNames = list(
-    "my-load-balancer"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/detach_load_balancers.html} for full documentation.
 }
 \keyword{internal}

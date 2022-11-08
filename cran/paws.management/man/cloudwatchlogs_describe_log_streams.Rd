@@ -4,8 +4,14 @@
 \alias{cloudwatchlogs_describe_log_streams}
 \title{Lists the log streams for the specified log group}
 \usage{
-cloudwatchlogs_describe_log_streams(logGroupName, logStreamNamePrefix,
-  orderBy, descending, nextToken, limit)
+cloudwatchlogs_describe_log_streams(
+  logGroupName,
+  logStreamNamePrefix = NULL,
+  orderBy = NULL,
+  descending = NULL,
+  nextToken = NULL,
+  limit = NULL
+)
 }
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
@@ -21,10 +27,10 @@ event time. The default value is \code{LogStreamName}.
 If you order the results by event time, you cannot specify the
 \code{logStreamNamePrefix} parameter.
 
-\code{lastEventTimeStamp} represents the time of the most recent log event in
+\code{lastEventTimestamp} represents the time of the most recent log event in
 the log stream in CloudWatch Logs. This number is expressed as the
 number of milliseconds after Jan 1, 1970 00:00:00 UTC.
-\code{lastEventTimeStamp} updates on an eventual consistency basis. It
+\code{lastEventTimestamp} updates on an eventual consistency basis. It
 typically updates in less than an hour from ingestion, but in rare
 situations might take longer.}
 
@@ -38,42 +44,9 @@ from a previous call.)}
 \item{limit}{The maximum number of items returned. If you don't specify a value, the
 default is up to 50 items.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  logStreams = list(
-    list(
-      logStreamName = "string",
-      creationTime = 123,
-      firstEventTimestamp = 123,
-      lastEventTimestamp = 123,
-      lastIngestionTime = 123,
-      uploadSequenceToken = "string",
-      arn = "string",
-      storedBytes = 123
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists the log streams for the specified log group. You can list all the
-log streams or filter the results by prefix. You can also control how
-the results are ordered.
+Lists the log streams for the specified log group. You can list all the log streams or filter the results by prefix. You can also control how the results are ordered.
 
-This operation has a limit of five transactions per second, after which
-transactions are throttled.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_log_streams.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_log_streams(
-  logGroupName = "string",
-  logStreamNamePrefix = "string",
-  orderBy = "LogStreamName"|"LastEventTime",
-  descending = TRUE|FALSE,
-  nextToken = "string",
-  limit = 123
-)
-}
-}
-
 \keyword{internal}

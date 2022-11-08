@@ -2,15 +2,15 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_list_keys}
 \alias{kms_list_keys}
-\title{Gets a list of all customer master keys (CMKs) in the caller's AWS
-account and Region}
+\title{Gets a list of all KMS keys in the caller's Amazon Web Services account
+and Region}
 \usage{
-kms_list_keys(Limit, Marker)
+kms_list_keys(Limit = NULL, Marker = NULL)
 }
 \arguments{
 \item{Limit}{Use this parameter to specify the maximum number of items to return.
-When this value is present, AWS KMS does not return more than the
-specified number of items, but it might return fewer.
+When this value is present, KMS does not return more than the specified
+number of items, but it might return fewer.
 
 This value is optional. If you include a value, it must be between 1 and
 1000, inclusive. If you do not include a value, it defaults to 100.}
@@ -19,51 +19,9 @@ This value is optional. If you include a value, it must be between 1 and
 with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Keys = list(
-    list(
-      KeyId = "string",
-      KeyArn = "string"
-    )
-  ),
-  NextMarker = "string",
-  Truncated = TRUE|FALSE
-)
-}
-}
 \description{
-Gets a list of all customer master keys (CMKs) in the caller's AWS
-account and Region.
+Gets a list of all KMS keys in the caller's Amazon Web Services account and Region.
 
-\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
-a different AWS account.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ListKeys}
-(IAM policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_create_key]{create_key}}
-\item \code{\link[=kms_describe_key]{describe_key}}
-\item \code{\link[=kms_list_aliases]{list_aliases}}
-\item \code{\link[=kms_list_resource_tags]{list_resource_tags}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_keys(
-  Limit = 123,
-  Marker = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example lists CMKs.
-svc$list_keys()
-}
-
+See \url{https://paws-r.github.io/docs/kms/list_keys.html} for full documentation.
 }
 \keyword{internal}

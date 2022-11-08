@@ -9,20 +9,9 @@ cloudwatchlogs_delete_retention_policy(logGroupName)
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified retention policy.
 
-Log events do not expire if they belong to log groups without a
-retention policy.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/delete_retention_policy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_retention_policy(
-  logGroupName = "string"
-)
-}
-}
-
 \keyword{internal}

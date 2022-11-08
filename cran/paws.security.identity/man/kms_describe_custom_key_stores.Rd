@@ -2,17 +2,21 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_describe_custom_key_stores}
 \alias{kms_describe_custom_key_stores}
-\title{Gets information about custom key stores in the account and region}
+\title{Gets information about custom key stores in the account and Region}
 \usage{
-kms_describe_custom_key_stores(CustomKeyStoreId, CustomKeyStoreName,
-  Limit, Marker)
+kms_describe_custom_key_stores(
+  CustomKeyStoreId = NULL,
+  CustomKeyStoreName = NULL,
+  Limit = NULL,
+  Marker = NULL
+)
 }
 \arguments{
 \item{CustomKeyStoreId}{Gets only information about the specified custom key store. Enter the
 key store ID.
 
 By default, this operation gets information about all custom key stores
-in the account and region. To limit the output to a particular custom
+in the account and Region. To limit the output to a particular custom
 key store, you can use either the \code{CustomKeyStoreId} or
 \code{CustomKeyStoreName} parameter, but not both.}
 
@@ -20,94 +24,21 @@ key store, you can use either the \code{CustomKeyStoreId} or
 friendly name of the custom key store.
 
 By default, this operation gets information about all custom key stores
-in the account and region. To limit the output to a particular custom
+in the account and Region. To limit the output to a particular custom
 key store, you can use either the \code{CustomKeyStoreId} or
 \code{CustomKeyStoreName} parameter, but not both.}
 
 \item{Limit}{Use this parameter to specify the maximum number of items to return.
-When this value is present, AWS KMS does not return more than the
-specified number of items, but it might return fewer.}
+When this value is present, KMS does not return more than the specified
+number of items, but it might return fewer.}
 
 \item{Marker}{Use this parameter in a subsequent request after you receive a response
 with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CustomKeyStores = list(
-    list(
-      CustomKeyStoreId = "string",
-      CustomKeyStoreName = "string",
-      CloudHsmClusterId = "string",
-      TrustAnchorCertificate = "string",
-      ConnectionState = "CONNECTED"|"CONNECTING"|"FAILED"|"DISCONNECTED"|"DISCONNECTING",
-      ConnectionErrorCode = "INVALID_CREDENTIALS"|"CLUSTER_NOT_FOUND"|"NETWORK_ERRORS"|"INTERNAL_ERROR"|"INSUFFICIENT_CLOUDHSM_HSMS"|"USER_LOCKED_OUT"|"USER_NOT_FOUND"|"USER_LOGGED_IN"|"SUBNET_NOT_FOUND",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextMarker = "string",
-  Truncated = TRUE|FALSE
-)
-}
-}
 \description{
-Gets information about \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key stores}
-in the account and region.
+Gets information about \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key stores} in the account and Region.
 
-This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
-feature in AWS KMS, which combines the convenience and extensive
-integration of AWS KMS with the isolation and control of a single-tenant
-key store.
-
-By default, this operation returns information about all custom key
-stores in the account and region. To get only information about a
-particular custom key store, use either the \code{CustomKeyStoreName} or
-\code{CustomKeyStoreId} parameter (but not both).
-
-To determine whether the custom key store is connected to its AWS
-CloudHSM cluster, use the \code{ConnectionState} element in the response. If
-an attempt to connect the custom key store failed, the \code{ConnectionState}
-value is \code{FAILED} and the \code{ConnectionErrorCode} element in the response
-indicates the cause of the failure. For help interpreting the
-\code{ConnectionErrorCode}, see CustomKeyStoresListEntry.
-
-Custom key stores have a \code{DISCONNECTED} connection state if the key
-store has never been connected or you use the
-\code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}
-operation to disconnect it. If your custom key store state is
-\code{CONNECTED} but you are having trouble using it, make sure that its
-associated AWS CloudHSM cluster is active and contains the minimum
-number of HSMs required for the operation, if any.
-
-For help repairing your custom key store, see the \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshooting Custom Key Stores}
-topic in the \emph{AWS Key Management Service Developer Guide}.
-
-\strong{Cross-account use}: No. You cannot perform this operation on a custom
-key store in a different AWS account.
-
-\strong{Required permissions}:
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:DescribeCustomKeyStores}
-(IAM policy)
-
-\strong{Related operations:}
-\itemize{
-\item \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}}
-\item \code{\link[=kms_create_custom_key_store]{create_custom_key_store}}
-\item \code{\link[=kms_delete_custom_key_store]{delete_custom_key_store}}
-\item \code{\link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store}}
-\item \code{\link[=kms_update_custom_key_store]{update_custom_key_store}}
+See \url{https://paws-r.github.io/docs/kms/describe_custom_key_stores.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$describe_custom_key_stores(
-  CustomKeyStoreId = "string",
-  CustomKeyStoreName = "string",
-  Limit = 123,
-  Marker = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -5,8 +5,11 @@
 \title{Creates an AWS CloudFormation WAFV2 template for the specified web ACL
 in the specified Amazon S3 bucket}
 \usage{
-waf_create_web_acl_migration_stack(WebACLId, S3BucketName,
-  IgnoreUnsupportedType)
+waf_create_web_acl_migration_stack(
+  WebACLId,
+  S3BucketName,
+  IgnoreUnsupportedType
+)
 }
 \arguments{
 \item{WebACLId}{[required] The UUID of the WAF Classic web ACL that you want to migrate to WAF v2.}
@@ -29,32 +32,9 @@ the migration. Set this to true to ignore unsupported entities in the
 web ACL during the migration. Otherwise, if AWS WAF encounters
 unsupported entities, it stops the process and throws an exception.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  S3ObjectUrl = "string"
-)
-}
-}
 \description{
-Creates an AWS CloudFormation WAFV2 template for the specified web ACL
-in the specified Amazon S3 bucket. Then, in CloudFormation, you create a
-stack from the template, to create the web ACL and its resources in AWS
-WAFV2. Use this to migrate your AWS WAF Classic web ACL to the latest
-version of AWS WAF.
+Creates an AWS CloudFormation WAFV2 template for the specified web ACL in the specified Amazon S3 bucket. Then, in CloudFormation, you create a stack from the template, to create the web ACL and its resources in AWS WAFV2. Use this to migrate your AWS WAF Classic web ACL to the latest version of AWS WAF.
 
-This is part of a larger migration procedure for web ACLs from AWS WAF
-Classic to the latest version of AWS WAF. For the full procedure,
-including caveats and manual steps to complete the migration and switch
-over to the new web ACL, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-migrating-from-classic.html}{Migrating your AWS WAF Classic resources to AWS WAF}
-in the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
+See \url{https://paws-r.github.io/docs/waf/create_web_acl_migration_stack.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_web_acl_migration_stack(
-  WebACLId = "string",
-  S3BucketName = "string",
-  IgnoreUnsupportedType = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

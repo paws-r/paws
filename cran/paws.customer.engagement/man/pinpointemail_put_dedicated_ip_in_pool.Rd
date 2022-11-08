@@ -14,26 +14,9 @@ Amazon Pinpoint account.}
 \item{DestinationPoolName}{[required] The name of the IP pool that you want to add the dedicated IP address
 to. You have to specify an IP pool that already exists.}
 }
-\value{
-An empty list.
-}
 \description{
 Move a dedicated IP address to an existing dedicated IP pool.
 
-The dedicated IP address that you specify must already exist, and must
-be associated with your Amazon Pinpoint account.
-
-The dedicated IP pool you specify must already exist. You can create a
-new pool by using the
-\code{\link[=pinpointemail_create_dedicated_ip_pool]{create_dedicated_ip_pool}}
-operation.
+See \url{https://paws-r.github.io/docs/pinpointemail/put_dedicated_ip_in_pool.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_dedicated_ip_in_pool(
-  Ip = "string",
-  DestinationPoolName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{apigatewayv2_delete_integration_response}
 \title{Deletes an IntegrationResponses}
 \usage{
-apigatewayv2_delete_integration_response(ApiId, IntegrationId,
-  IntegrationResponseId)
+apigatewayv2_delete_integration_response(
+  ApiId,
+  IntegrationId,
+  IntegrationResponseId
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -14,19 +17,9 @@ apigatewayv2_delete_integration_response(ApiId, IntegrationId,
 
 \item{IntegrationResponseId}{[required] The integration response ID.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an IntegrationResponses.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_integration_response(
-  ApiId = "string",
-  IntegrationId = "string",
-  IntegrationResponseId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/delete_integration_response.html} for full documentation.
+}
 \keyword{internal}

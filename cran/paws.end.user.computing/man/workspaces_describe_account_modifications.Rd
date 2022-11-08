@@ -5,39 +5,15 @@
 \title{Retrieves a list that describes modifications to the configuration of
 Bring Your Own License (BYOL) for the specified account}
 \usage{
-workspaces_describe_account_modifications(NextToken)
+workspaces_describe_account_modifications(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated,
 provide this token to receive the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountModifications = list(
-    list(
-      ModificationState = "PENDING"|"COMPLETED"|"FAILED",
-      DedicatedTenancySupport = "ENABLED"|"DISABLED",
-      DedicatedTenancyManagementCidrRange = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves a list that describes modifications to the configuration of
-Bring Your Own License (BYOL) for the specified account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_account_modifications(
-  NextToken = "string"
-)
-}
-}
+Retrieves a list that describes modifications to the configuration of Bring Your Own License (BYOL) for the specified account.
 
+See \url{https://paws-r.github.io/docs/workspaces/describe_account_modifications.html} for full documentation.
+}
 \keyword{internal}

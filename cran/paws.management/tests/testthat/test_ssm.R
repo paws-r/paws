@@ -120,6 +120,14 @@ test_that("list_ops_item_events", {
   expect_error(svc$list_ops_item_events(MaxResults = 20), NA)
 })
 
+test_that("list_ops_item_related_items", {
+  expect_error(svc$list_ops_item_related_items(), NA)
+})
+
+test_that("list_ops_item_related_items", {
+  expect_error(svc$list_ops_item_related_items(MaxResults = 20), NA)
+})
+
 test_that("list_ops_metadata", {
   expect_error(svc$list_ops_metadata(), NA)
 })

@@ -2,7 +2,7 @@
 % Please edit documentation in R/elasticache_operations.R
 \name{elasticache_list_tags_for_resource}
 \alias{elasticache_list_tags_for_resource}
-\title{Lists all cost allocation tags currently on the named resource}
+\title{Lists all tags currently on a named resource}
 \usage{
 elasticache_list_tags_for_resource(ResourceName)
 }
@@ -12,37 +12,11 @@ list of tags, for example
 \code{arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster} or
 \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.}
 }
 \description{
-Lists all cost allocation tags currently on the named resource. A
-\verb{cost allocation tag} is a key-value pair where the key is
-case-sensitive and the value is optional. You can use cost allocation
-tags to categorize and track your AWS costs.
+Lists all tags currently on a named resource.
 
-If the cluster is not in the \emph{available} state,
-\code{\link[=elasticache_list_tags_for_resource]{list_tags_for_resource}} returns
-an error.
-
-You can have a maximum of 50 cost allocation tags on an ElastiCache
-resource. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html}{Monitoring Costs with Tags}.
+See \url{https://paws-r.github.io/docs/elasticache/list_tags_for_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceName = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -6,27 +6,9 @@ NULL
 #' Creates an activity
 #'
 #' @description
-#' Creates an activity. An activity is a task that you write in any
-#' programming language and host on any machine that has access to AWS Step
-#' Functions. Activities must poll Step Functions using the
-#' [`get_activity_task`][sfn_get_activity_task] API action and respond
-#' using `SendTask*` API actions. This function lets Step Functions know
-#' the existence of your activity and returns an identifier for use in a
-#' state machine and when polling from the activity.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not reflect very recent updates and changes.
-#' 
-#' [`create_activity`][sfn_create_activity] is an idempotent API.
-#' Subsequent requests won’t create a duplicate resource if it was already
-#' created. [`create_activity`][sfn_create_activity]'s idempotency check is
-#' based on the activity `name`. If a following request has different
-#' `tags` values, Step Functions will ignore these differences and treat it
-#' as an idempotent request of the previous. In this case, `tags` will not
-#' be updated, even if they are different.
+#' Creates an activity. An activity is a task that you write in any programming language and host on any machine that has access to AWS Step Functions. Activities must poll Step Functions using the [`get_activity_task`][sfn_get_activity_task] API action and respond using `SendTask*` API actions. This function lets Step Functions know the existence of your activity and returns an identifier for use in a state machine and when polling from the activity.
 #'
-#' @usage
-#' sfn_create_activity(name, tags)
+#' See [https://paws-r.github.io/docs/sfn/create_activity.html](https://paws-r.github.io/docs/sfn/create_activity.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the activity to create. This name must be unique for your
 #' AWS account and region for 90 days. For more information, see [Limits
@@ -60,30 +42,6 @@ NULL
 #' Tags may only contain Unicode letters, digits, white space, or these
 #' symbols: `_ . : / = + - @@`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   activityArn = "string",
-#'   creationDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_activity(
-#'   name = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname sfn_create_activity
@@ -107,31 +65,9 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' Creates a state machine
 #'
 #' @description
-#' Creates a state machine. A state machine consists of a collection of
-#' states that can do work (`Task` states), determine to which states to
-#' transition next (`Choice` states), stop an execution with an error
-#' (`Fail` states), and so on. State machines are specified using a
-#' JSON-based, structured language. For more information, see [Amazon
-#' States
-#' Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html)
-#' in the AWS Step Functions User Guide.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not reflect very recent updates and changes.
-#' 
-#' [`create_state_machine`][sfn_create_state_machine] is an idempotent API.
-#' Subsequent requests won’t create a duplicate resource if it was already
-#' created. [`create_state_machine`][sfn_create_state_machine]'s
-#' idempotency check is based on the state machine `name`, `definition`,
-#' `type`, `LoggingConfiguration` and `TracingConfiguration`. If a
-#' following request has a different `roleArn` or `tags`, Step Functions
-#' will ignore these differences and treat it as an idempotent request of
-#' the previous. In this case, `roleArn` and `tags` will not be updated,
-#' even if they are different.
+#' Creates a state machine. A state machine consists of a collection of states that can do work (`Task` states), determine to which states to transition next (`Choice` states), stop an execution with an error (`Fail` states), and so on. State machines are specified using a JSON-based, structured language. For more information, see [Amazon States Language](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html) in the AWS Step Functions User Guide.
 #'
-#' @usage
-#' sfn_create_state_machine(name, definition, roleArn, type,
-#'   loggingConfiguration, tags, tracingConfiguration)
+#' See [https://paws-r.github.io/docs/sfn/create_state_machine.html](https://paws-r.github.io/docs/sfn/create_state_machine.html) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the state machine.
 #' 
@@ -176,47 +112,6 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' symbols: `_ . : / = + - @@`.
 #' @param tracingConfiguration Selects whether AWS X-Ray tracing is enabled.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   stateMachineArn = "string",
-#'   creationDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_state_machine(
-#'   name = "string",
-#'   definition = "string",
-#'   roleArn = "string",
-#'   type = "STANDARD"|"EXPRESS",
-#'   loggingConfiguration = list(
-#'     level = "ALL"|"ERROR"|"FATAL"|"OFF",
-#'     includeExecutionData = TRUE|FALSE,
-#'     destinations = list(
-#'       list(
-#'         cloudWatchLogsLogGroup = list(
-#'           logGroupArn = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   ),
-#'   tracingConfiguration = list(
-#'     enabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname sfn_create_state_machine
@@ -242,20 +137,9 @@ sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, log
 #' @description
 #' Deletes an activity.
 #'
-#' @usage
-#' sfn_delete_activity(activityArn)
+#' See [https://paws-r.github.io/docs/sfn/delete_activity.html](https://paws-r.github.io/docs/sfn/delete_activity.html) for full documentation.
 #'
 #' @param activityArn &#91;required&#93; The Amazon Resource Name (ARN) of the activity to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_activity(
-#'   activityArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -280,27 +164,11 @@ sfn_delete_activity <- function(activityArn) {
 #' Deletes a state machine
 #'
 #' @description
-#' Deletes a state machine. This is an asynchronous operation: It sets the
-#' state machine's status to `DELETING` and begins the deletion process.
-#' 
-#' For `EXPRESS`state machines, the deletion will happen eventually
-#' (usually less than a minute). Running executions may emit logs after
-#' [`delete_state_machine`][sfn_delete_state_machine] API is called.
+#' Deletes a state machine. This is an asynchronous operation: It sets the state machine's status to `DELETING` and begins the deletion process.
 #'
-#' @usage
-#' sfn_delete_state_machine(stateMachineArn)
+#' See [https://paws-r.github.io/docs/sfn/delete_state_machine.html](https://paws-r.github.io/docs/sfn/delete_state_machine.html) for full documentation.
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_state_machine(
-#'   stateMachineArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -326,33 +194,10 @@ sfn_delete_state_machine <- function(stateMachineArn) {
 #'
 #' @description
 #' Describes an activity.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not reflect very recent updates and changes.
 #'
-#' @usage
-#' sfn_describe_activity(activityArn)
+#' See [https://paws-r.github.io/docs/sfn/describe_activity.html](https://paws-r.github.io/docs/sfn/describe_activity.html) for full documentation.
 #'
 #' @param activityArn &#91;required&#93; The Amazon Resource Name (ARN) of the activity to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   activityArn = "string",
-#'   name = "string",
-#'   creationDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_activity(
-#'   activityArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -378,49 +223,10 @@ sfn_describe_activity <- function(activityArn) {
 #'
 #' @description
 #' Describes an execution.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not reflect very recent updates and changes.
-#' 
-#' This API action is not supported by `EXPRESS` state machines.
 #'
-#' @usage
-#' sfn_describe_execution(executionArn)
+#' See [https://paws-r.github.io/docs/sfn/describe_execution.html](https://paws-r.github.io/docs/sfn/describe_execution.html) for full documentation.
 #'
 #' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   executionArn = "string",
-#'   stateMachineArn = "string",
-#'   name = "string",
-#'   status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
-#'   startDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   stopDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   input = "string",
-#'   inputDetails = list(
-#'     included = TRUE|FALSE
-#'   ),
-#'   output = "string",
-#'   outputDetails = list(
-#'     included = TRUE|FALSE
-#'   ),
-#'   traceHeader = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_execution(
-#'   executionArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -446,51 +252,10 @@ sfn_describe_execution <- function(executionArn) {
 #'
 #' @description
 #' Describes a state machine.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not reflect very recent updates and changes.
 #'
-#' @usage
-#' sfn_describe_state_machine(stateMachineArn)
+#' See [https://paws-r.github.io/docs/sfn/describe_state_machine.html](https://paws-r.github.io/docs/sfn/describe_state_machine.html) for full documentation.
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   stateMachineArn = "string",
-#'   name = "string",
-#'   status = "ACTIVE"|"DELETING",
-#'   definition = "string",
-#'   roleArn = "string",
-#'   type = "STANDARD"|"EXPRESS",
-#'   creationDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   loggingConfiguration = list(
-#'     level = "ALL"|"ERROR"|"FATAL"|"OFF",
-#'     includeExecutionData = TRUE|FALSE,
-#'     destinations = list(
-#'       list(
-#'         cloudWatchLogsLogGroup = list(
-#'           logGroupArn = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   tracingConfiguration = list(
-#'     enabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_state_machine(
-#'   stateMachineArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -516,52 +281,11 @@ sfn_describe_state_machine <- function(stateMachineArn) {
 #'
 #' @description
 #' Describes the state machine associated with a specific execution.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not reflect very recent updates and changes.
-#' 
-#' This API action is not supported by `EXPRESS` state machines.
 #'
-#' @usage
-#' sfn_describe_state_machine_for_execution(executionArn)
+#' See [https://paws-r.github.io/docs/sfn/describe_state_machine_for_execution.html](https://paws-r.github.io/docs/sfn/describe_state_machine_for_execution.html) for full documentation.
 #'
 #' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution you want state machine
 #' information for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   stateMachineArn = "string",
-#'   name = "string",
-#'   definition = "string",
-#'   roleArn = "string",
-#'   updateDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   loggingConfiguration = list(
-#'     level = "ALL"|"ERROR"|"FATAL"|"OFF",
-#'     includeExecutionData = TRUE|FALSE,
-#'     destinations = list(
-#'       list(
-#'         cloudWatchLogsLogGroup = list(
-#'           logGroupArn = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   tracingConfiguration = list(
-#'     enabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_state_machine_for_execution(
-#'   executionArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -587,26 +311,9 @@ sfn_describe_state_machine_for_execution <- function(executionArn) {
 #' which has been scheduled for execution by a running state machine
 #'
 #' @description
-#' Used by workers to retrieve a task (with the specified activity ARN)
-#' which has been scheduled for execution by a running state machine. This
-#' initiates a long poll, where the service holds the HTTP connection open
-#' and responds as soon as a task becomes available (i.e. an execution of a
-#' task of this type is needed.) The maximum time the service holds on to
-#' the request before responding is 60 seconds. If no task is available
-#' within 60 seconds, the poll returns a `taskToken` with a null string.
-#' 
-#' Workers should set their client side socket timeout to at least 65
-#' seconds (5 seconds higher than the maximum time the service may hold the
-#' poll request).
-#' 
-#' Polling with [`get_activity_task`][sfn_get_activity_task] can cause
-#' latency in some implementations. See [Avoid Latency When Polling for
-#' Activity
-#' Tasks](https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html)
-#' in the Step Functions Developer Guide.
+#' Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine. This initiates a long poll, where the service holds the HTTP connection open and responds as soon as a task becomes available (i.e. an execution of a task of this type is needed.) The maximum time the service holds on to the request before responding is 60 seconds. If no task is available within 60 seconds, the poll returns a `taskToken` with a null string.
 #'
-#' @usage
-#' sfn_get_activity_task(activityArn, workerName)
+#' See [https://paws-r.github.io/docs/sfn/get_activity_task.html](https://paws-r.github.io/docs/sfn/get_activity_task.html) for full documentation.
 #'
 #' @param activityArn &#91;required&#93; The Amazon Resource Name (ARN) of the activity to retrieve tasks from
 #' (assigned when you create the task using
@@ -614,23 +321,6 @@ sfn_describe_state_machine_for_execution <- function(executionArn) {
 #' @param workerName You can provide an arbitrary name in order to identify the worker that
 #' the task is assigned to. This name is used when it is logged in the
 #' execution history.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   taskToken = "string",
-#'   input = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_activity_task(
-#'   activityArn = "string",
-#'   workerName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -655,23 +345,9 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #' Returns the history of the specified execution as a list of events
 #'
 #' @description
-#' Returns the history of the specified execution as a list of events. By
-#' default, the results are returned in ascending order of the `timeStamp`
-#' of the events. Use the `reverseOrder` parameter to get the latest events
-#' first.
-#' 
-#' If `nextToken` is returned, there are more results available. The value
-#' of `nextToken` is a unique pagination token for each page. Make the call
-#' again using the returned token to retrieve the next page. Keep all other
-#' arguments unchanged. Each pagination token expires after 24 hours. Using
-#' an expired pagination token will return an *HTTP 400 InvalidToken*
-#' error.
-#' 
-#' This API action is not supported by `EXPRESS` state machines.
+#' Returns the history of the specified execution as a list of events. By default, the results are returned in ascending order of the `timeStamp` of the events. Use the `reverseOrder` parameter to get the latest events first.
 #'
-#' @usage
-#' sfn_get_execution_history(executionArn, maxResults, reverseOrder,
-#'   nextToken, includeExecutionData)
+#' See [https://paws-r.github.io/docs/sfn/get_execution_history.html](https://paws-r.github.io/docs/sfn/get_execution_history.html) for full documentation.
 #'
 #' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution.
 #' @param maxResults The maximum number of results that are returned per call. You can use
@@ -689,205 +365,6 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #' error.
 #' @param includeExecutionData You can select whether execution data (input or output of a history
 #' event) is returned. The default is `true`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   events = list(
-#'     list(
-#'       timestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       type = "ActivityFailed"|"ActivityScheduled"|"ActivityScheduleFailed"|"ActivityStarted"|"ActivitySucceeded"|"ActivityTimedOut"|"ChoiceStateEntered"|"ChoiceStateExited"|"ExecutionAborted"|"ExecutionFailed"|"ExecutionStarted"|"ExecutionSucceeded"|"ExecutionTimedOut"|"FailStateEntered"|"LambdaFunctionFailed"|"LambdaFunctionScheduled"|"LambdaFunctionScheduleFailed"|"LambdaFunctionStarted"|"LambdaFunctionStartFailed"|"LambdaFunctionSucceeded"|"LambdaFunctionTimedOut"|"MapIterationAborted"|"MapIterationFailed"|"MapIterationStarted"|"MapIterationSucceeded"|"MapStateAborted"|"MapStateEntered"|"MapStateExited"|"MapStateFailed"|"MapStateStarted"|"MapStateSucceeded"|"ParallelStateAborted"|"ParallelStateEntered"|"ParallelStateExited"|"ParallelStateFailed"|"ParallelStateStarted"|"ParallelStateSucceeded"|"PassStateEntered"|"PassStateExited"|"SucceedStateEntered"|"SucceedStateExited"|"TaskFailed"|"TaskScheduled"|"TaskStarted"|"TaskStartFailed"|"TaskStateAborted"|"TaskStateEntered"|"TaskStateExited"|"TaskSubmitFailed"|"TaskSubmitted"|"TaskSucceeded"|"TaskTimedOut"|"WaitStateAborted"|"WaitStateEntered"|"WaitStateExited",
-#'       id = 123,
-#'       previousEventId = 123,
-#'       activityFailedEventDetails = list(
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       activityScheduleFailedEventDetails = list(
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       activityScheduledEventDetails = list(
-#'         resource = "string",
-#'         input = "string",
-#'         inputDetails = list(
-#'           truncated = TRUE|FALSE
-#'         ),
-#'         timeoutInSeconds = 123,
-#'         heartbeatInSeconds = 123
-#'       ),
-#'       activityStartedEventDetails = list(
-#'         workerName = "string"
-#'       ),
-#'       activitySucceededEventDetails = list(
-#'         output = "string",
-#'         outputDetails = list(
-#'           truncated = TRUE|FALSE
-#'         )
-#'       ),
-#'       activityTimedOutEventDetails = list(
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       taskFailedEventDetails = list(
-#'         resourceType = "string",
-#'         resource = "string",
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       taskScheduledEventDetails = list(
-#'         resourceType = "string",
-#'         resource = "string",
-#'         region = "string",
-#'         parameters = "string",
-#'         timeoutInSeconds = 123,
-#'         heartbeatInSeconds = 123
-#'       ),
-#'       taskStartFailedEventDetails = list(
-#'         resourceType = "string",
-#'         resource = "string",
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       taskStartedEventDetails = list(
-#'         resourceType = "string",
-#'         resource = "string"
-#'       ),
-#'       taskSubmitFailedEventDetails = list(
-#'         resourceType = "string",
-#'         resource = "string",
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       taskSubmittedEventDetails = list(
-#'         resourceType = "string",
-#'         resource = "string",
-#'         output = "string",
-#'         outputDetails = list(
-#'           truncated = TRUE|FALSE
-#'         )
-#'       ),
-#'       taskSucceededEventDetails = list(
-#'         resourceType = "string",
-#'         resource = "string",
-#'         output = "string",
-#'         outputDetails = list(
-#'           truncated = TRUE|FALSE
-#'         )
-#'       ),
-#'       taskTimedOutEventDetails = list(
-#'         resourceType = "string",
-#'         resource = "string",
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       executionFailedEventDetails = list(
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       executionStartedEventDetails = list(
-#'         input = "string",
-#'         inputDetails = list(
-#'           truncated = TRUE|FALSE
-#'         ),
-#'         roleArn = "string"
-#'       ),
-#'       executionSucceededEventDetails = list(
-#'         output = "string",
-#'         outputDetails = list(
-#'           truncated = TRUE|FALSE
-#'         )
-#'       ),
-#'       executionAbortedEventDetails = list(
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       executionTimedOutEventDetails = list(
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       mapStateStartedEventDetails = list(
-#'         length = 123
-#'       ),
-#'       mapIterationStartedEventDetails = list(
-#'         name = "string",
-#'         index = 123
-#'       ),
-#'       mapIterationSucceededEventDetails = list(
-#'         name = "string",
-#'         index = 123
-#'       ),
-#'       mapIterationFailedEventDetails = list(
-#'         name = "string",
-#'         index = 123
-#'       ),
-#'       mapIterationAbortedEventDetails = list(
-#'         name = "string",
-#'         index = 123
-#'       ),
-#'       lambdaFunctionFailedEventDetails = list(
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       lambdaFunctionScheduleFailedEventDetails = list(
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       lambdaFunctionScheduledEventDetails = list(
-#'         resource = "string",
-#'         input = "string",
-#'         inputDetails = list(
-#'           truncated = TRUE|FALSE
-#'         ),
-#'         timeoutInSeconds = 123
-#'       ),
-#'       lambdaFunctionStartFailedEventDetails = list(
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       lambdaFunctionSucceededEventDetails = list(
-#'         output = "string",
-#'         outputDetails = list(
-#'           truncated = TRUE|FALSE
-#'         )
-#'       ),
-#'       lambdaFunctionTimedOutEventDetails = list(
-#'         error = "string",
-#'         cause = "string"
-#'       ),
-#'       stateEnteredEventDetails = list(
-#'         name = "string",
-#'         input = "string",
-#'         inputDetails = list(
-#'           truncated = TRUE|FALSE
-#'         )
-#'       ),
-#'       stateExitedEventDetails = list(
-#'         name = "string",
-#'         output = "string",
-#'         outputDetails = list(
-#'           truncated = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_execution_history(
-#'   executionArn = "string",
-#'   maxResults = 123,
-#'   reverseOrder = TRUE|FALSE,
-#'   nextToken = "string",
-#'   includeExecutionData = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -913,19 +390,8 @@ sfn_get_execution_history <- function(executionArn, maxResults = NULL, reverseOr
 #'
 #' @description
 #' Lists the existing activities.
-#' 
-#' If `nextToken` is returned, there are more results available. The value
-#' of `nextToken` is a unique pagination token for each page. Make the call
-#' again using the returned token to retrieve the next page. Keep all other
-#' arguments unchanged. Each pagination token expires after 24 hours. Using
-#' an expired pagination token will return an *HTTP 400 InvalidToken*
-#' error.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not reflect very recent updates and changes.
 #'
-#' @usage
-#' sfn_list_activities(maxResults, nextToken)
+#' See [https://paws-r.github.io/docs/sfn/list_activities.html](https://paws-r.github.io/docs/sfn/list_activities.html) for full documentation.
 #'
 #' @param maxResults The maximum number of results that are returned per call. You can use
 #' `nextToken` to obtain further pages of results. The default is 100 and
@@ -939,31 +405,6 @@ sfn_get_execution_history <- function(executionArn, maxResults = NULL, reverseOr
 #' arguments unchanged. Each pagination token expires after 24 hours. Using
 #' an expired pagination token will return an *HTTP 400 InvalidToken*
 #' error.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   activities = list(
-#'     list(
-#'       activityArn = "string",
-#'       name = "string",
-#'       creationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_activities(
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -988,25 +429,9 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' Lists the executions of a state machine that meet the filtering criteria
 #'
 #' @description
-#' Lists the executions of a state machine that meet the filtering
-#' criteria. Results are sorted by time, with the most recent execution
-#' first.
-#' 
-#' If `nextToken` is returned, there are more results available. The value
-#' of `nextToken` is a unique pagination token for each page. Make the call
-#' again using the returned token to retrieve the next page. Keep all other
-#' arguments unchanged. Each pagination token expires after 24 hours. Using
-#' an expired pagination token will return an *HTTP 400 InvalidToken*
-#' error.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not reflect very recent updates and changes.
-#' 
-#' This API action is not supported by `EXPRESS` state machines.
+#' Lists the executions of a state machine that meet the filtering criteria. Results are sorted by time, with the most recent execution first.
 #'
-#' @usage
-#' sfn_list_executions(stateMachineArn, statusFilter, maxResults,
-#'   nextToken)
+#' See [https://paws-r.github.io/docs/sfn/list_executions.html](https://paws-r.github.io/docs/sfn/list_executions.html) for full documentation.
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine whose executions is
 #' listed.
@@ -1024,38 +449,6 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' arguments unchanged. Each pagination token expires after 24 hours. Using
 #' an expired pagination token will return an *HTTP 400 InvalidToken*
 #' error.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   executions = list(
-#'     list(
-#'       executionArn = "string",
-#'       stateMachineArn = "string",
-#'       name = "string",
-#'       status = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
-#'       startDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       stopDate = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_executions(
-#'   stateMachineArn = "string",
-#'   statusFilter = "RUNNING"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"ABORTED",
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1081,19 +474,8 @@ sfn_list_executions <- function(stateMachineArn, statusFilter = NULL, maxResults
 #'
 #' @description
 #' Lists the existing state machines.
-#' 
-#' If `nextToken` is returned, there are more results available. The value
-#' of `nextToken` is a unique pagination token for each page. Make the call
-#' again using the returned token to retrieve the next page. Keep all other
-#' arguments unchanged. Each pagination token expires after 24 hours. Using
-#' an expired pagination token will return an *HTTP 400 InvalidToken*
-#' error.
-#' 
-#' This operation is eventually consistent. The results are best effort and
-#' may not reflect very recent updates and changes.
 #'
-#' @usage
-#' sfn_list_state_machines(maxResults, nextToken)
+#' See [https://paws-r.github.io/docs/sfn/list_state_machines.html](https://paws-r.github.io/docs/sfn/list_state_machines.html) for full documentation.
 #'
 #' @param maxResults The maximum number of results that are returned per call. You can use
 #' `nextToken` to obtain further pages of results. The default is 100 and
@@ -1107,32 +489,6 @@ sfn_list_executions <- function(stateMachineArn, statusFilter = NULL, maxResults
 #' arguments unchanged. Each pagination token expires after 24 hours. Using
 #' an expired pagination token will return an *HTTP 400 InvalidToken*
 #' error.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   stateMachines = list(
-#'     list(
-#'       stateMachineArn = "string",
-#'       name = "string",
-#'       type = "STANDARD"|"EXPRESS",
-#'       creationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_state_machines(
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1158,35 +514,11 @@ sfn_list_state_machines <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' @description
 #' List tags for a given resource.
-#' 
-#' Tags may only contain Unicode letters, digits, white space, or these
-#' symbols: `_ . : / = + - @@`.
 #'
-#' @usage
-#' sfn_list_tags_for_resource(resourceArn)
+#' See [https://paws-r.github.io/docs/sfn/list_tags_for_resource.html](https://paws-r.github.io/docs/sfn/list_tags_for_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Step Functions state machine or
 #' activity.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   resourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1212,12 +544,9 @@ sfn_list_tags_for_resource <- function(resourceArn) {
 #' report that the task identified by the taskToken failed
 #'
 #' @description
-#' Used by activity workers and task states using the
-#' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
-#' pattern to report that the task identified by the `taskToken` failed.
+#' Used by activity workers and task states using the [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token) pattern to report that the task identified by the `taskToken` failed.
 #'
-#' @usage
-#' sfn_send_task_failure(taskToken, error, cause)
+#' See [https://paws-r.github.io/docs/sfn/send_task_failure.html](https://paws-r.github.io/docs/sfn/send_task_failure.html) for full documentation.
 #'
 #' @param taskToken &#91;required&#93; The token that represents this task. Task tokens are generated by Step
 #' Functions when tasks are assigned to a worker, or in the [context
@@ -1226,18 +555,6 @@ sfn_list_tags_for_resource <- function(resourceArn) {
 #' GetActivityTaskOutput$taskToken.
 #' @param error The error code of the failure.
 #' @param cause A more detailed explanation of the cause of the failure.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_task_failure(
-#'   taskToken = "string",
-#'   error = "string",
-#'   cause = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1264,45 +581,15 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
 #' taskToken is still making progress
 #'
 #' @description
-#' Used by activity workers and task states using the
-#' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
-#' pattern to report to Step Functions that the task represented by the
-#' specified `taskToken` is still making progress. This action resets the
-#' `Heartbeat` clock. The `Heartbeat` threshold is specified in the state
-#' machine's Amazon States Language definition (`HeartbeatSeconds`). This
-#' action does not in itself create an event in the execution history.
-#' However, if the task times out, the execution history contains an
-#' `ActivityTimedOut` entry for activities, or a `TaskTimedOut` entry for
-#' for tasks using the [job
-#' run](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync)
-#' or
-#' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
-#' pattern.
-#' 
-#' The `Timeout` of a task, defined in the state machine's Amazon States
-#' Language definition, is its maximum allowed duration, regardless of the
-#' number of [`send_task_heartbeat`][sfn_send_task_heartbeat] requests
-#' received. Use `HeartbeatSeconds` to configure the timeout interval for
-#' heartbeats.
+#' Used by activity workers and task states using the [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token) pattern to report to Step Functions that the task represented by the specified `taskToken` is still making progress. This action resets the `Heartbeat` clock. The `Heartbeat` threshold is specified in the state machine's Amazon States Language definition (`HeartbeatSeconds`). This action does not in itself create an event in the execution history. However, if the task times out, the execution history contains an `ActivityTimedOut` entry for activities, or a `TaskTimedOut` entry for for tasks using the [job run](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync) or [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token) pattern.
 #'
-#' @usage
-#' sfn_send_task_heartbeat(taskToken)
+#' See [https://paws-r.github.io/docs/sfn/send_task_heartbeat.html](https://paws-r.github.io/docs/sfn/send_task_heartbeat.html) for full documentation.
 #'
 #' @param taskToken &#91;required&#93; The token that represents this task. Task tokens are generated by Step
 #' Functions when tasks are assigned to a worker, or in the [context
 #' object](https://docs.aws.amazon.com/step-functions/latest/dg/input-output-contextobject.html)
 #' when a workflow enters a task state. See
 #' GetActivityTaskOutput$taskToken.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_task_heartbeat(
-#'   taskToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1328,13 +615,9 @@ sfn_send_task_heartbeat <- function(taskToken) {
 #' report that the task identified by the taskToken completed successfully
 #'
 #' @description
-#' Used by activity workers and task states using the
-#' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
-#' pattern to report that the task identified by the `taskToken` completed
-#' successfully.
+#' Used by activity workers and task states using the [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token) pattern to report that the task identified by the `taskToken` completed successfully.
 #'
-#' @usage
-#' sfn_send_task_success(taskToken, output)
+#' See [https://paws-r.github.io/docs/sfn/send_task_success.html](https://paws-r.github.io/docs/sfn/send_task_success.html) for full documentation.
 #'
 #' @param taskToken &#91;required&#93; The token that represents this task. Task tokens are generated by Step
 #' Functions when tasks are assigned to a worker, or in the [context
@@ -1343,17 +626,6 @@ sfn_send_task_heartbeat <- function(taskToken) {
 #' GetActivityTaskOutput$taskToken.
 #' @param output &#91;required&#93; The JSON output of the task. Length constraints apply to the payload
 #' size, and are expressed as bytes in UTF-8 encoding.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$send_task_success(
-#'   taskToken = "string",
-#'   output = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1379,16 +651,8 @@ sfn_send_task_success <- function(taskToken, output) {
 #'
 #' @description
 #' Starts a state machine execution.
-#' 
-#' [`start_execution`][sfn_start_execution] is idempotent. If
-#' [`start_execution`][sfn_start_execution] is called with the same name
-#' and input as a running execution, the call will succeed and return the
-#' same response as the original request. If the execution is closed or if
-#' the input is different, it will return a 400 `ExecutionAlreadyExists`
-#' error. Names can be reused after 90 days.
 #'
-#' @usage
-#' sfn_start_execution(stateMachineArn, name, input, traceHeader)
+#' See [https://paws-r.github.io/docs/sfn/start_execution.html](https://paws-r.github.io/docs/sfn/start_execution.html) for full documentation.
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine to execute.
 #' @param name The name of the execution. This name must be unique for your AWS
@@ -1424,27 +688,6 @@ sfn_send_task_success <- function(taskToken, output) {
 #' @param traceHeader Passes the AWS X-Ray trace header. The trace header can also be passed
 #' in the request payload.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   executionArn = "string",
-#'   startDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_execution(
-#'   stateMachineArn = "string",
-#'   name = "string",
-#'   input = "string",
-#'   traceHeader = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname sfn_start_execution
@@ -1470,8 +713,7 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
 #' @description
 #' Starts a Synchronous Express state machine execution.
 #'
-#' @usage
-#' sfn_start_sync_execution(stateMachineArn, name, input, traceHeader)
+#' See [https://paws-r.github.io/docs/sfn/start_sync_execution.html](https://paws-r.github.io/docs/sfn/start_sync_execution.html) for full documentation.
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine to execute.
 #' @param name The name of the execution.
@@ -1487,48 +729,6 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
 #' in UTF-8 encoding.
 #' @param traceHeader Passes the AWS X-Ray trace header. The trace header can also be passed
 #' in the request payload.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   executionArn = "string",
-#'   stateMachineArn = "string",
-#'   name = "string",
-#'   startDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   stopDate = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   status = "SUCCEEDED"|"FAILED"|"TIMED_OUT",
-#'   error = "string",
-#'   cause = "string",
-#'   input = "string",
-#'   inputDetails = list(
-#'     included = TRUE|FALSE
-#'   ),
-#'   output = "string",
-#'   outputDetails = list(
-#'     included = TRUE|FALSE
-#'   ),
-#'   traceHeader = "string",
-#'   billingDetails = list(
-#'     billedMemoryUsedInMB = 123,
-#'     billedDurationInMilliseconds = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_sync_execution(
-#'   stateMachineArn = "string",
-#'   name = "string",
-#'   input = "string",
-#'   traceHeader = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1554,34 +754,12 @@ sfn_start_sync_execution <- function(stateMachineArn, name = NULL, input = NULL,
 #'
 #' @description
 #' Stops an execution.
-#' 
-#' This API action is not supported by `EXPRESS` state machines.
 #'
-#' @usage
-#' sfn_stop_execution(executionArn, error, cause)
+#' See [https://paws-r.github.io/docs/sfn/stop_execution.html](https://paws-r.github.io/docs/sfn/stop_execution.html) for full documentation.
 #'
 #' @param executionArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution to stop.
 #' @param error The error code of the failure.
 #' @param cause A more detailed explanation of the cause of the failure.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   stopDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_execution(
-#'   executionArn = "string",
-#'   error = "string",
-#'   cause = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1607,19 +785,8 @@ sfn_stop_execution <- function(executionArn, error = NULL, cause = NULL) {
 #'
 #' @description
 #' Add a tag to a Step Functions resource.
-#' 
-#' An array of key-value pairs. For more information, see [Using Cost
-#' Allocation
-#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
-#' in the *AWS Billing and Cost Management User Guide*, and [Controlling
-#' Access Using IAM
-#' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
-#' 
-#' Tags may only contain Unicode letters, digits, white space, or these
-#' symbols: `_ . : / = + - @@`.
 #'
-#' @usage
-#' sfn_tag_resource(resourceArn, tags)
+#' See [https://paws-r.github.io/docs/sfn/tag_resource.html](https://paws-r.github.io/docs/sfn/tag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Step Functions state machine or
 #' activity.
@@ -1627,22 +794,6 @@ sfn_stop_execution <- function(executionArn, error = NULL, cause = NULL) {
 #' 
 #' Tags may only contain Unicode letters, digits, white space, or these
 #' symbols: `_ . : / = + - @@`.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   resourceArn = "string",
-#'   tags = list(
-#'     list(
-#'       key = "string",
-#'       value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1669,25 +820,11 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Remove a tag from a Step Functions resource
 #'
-#' @usage
-#' sfn_untag_resource(resourceArn, tagKeys)
+#' See [https://paws-r.github.io/docs/sfn/untag_resource.html](https://paws-r.github.io/docs/sfn/untag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) for the Step Functions state machine or
 #' activity.
 #' @param tagKeys &#91;required&#93; The list of tags to remove from the resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   resourceArn = "string",
-#'   tagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1713,21 +850,9 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 #' or loggingConfiguration
 #'
 #' @description
-#' Updates an existing state machine by modifying its `definition`,
-#' `roleArn`, or `loggingConfiguration`. Running executions will continue
-#' to use the previous `definition` and `roleArn`. You must include at
-#' least one of `definition` or `roleArn` or you will receive a
-#' `MissingRequiredParameter` error.
-#' 
-#' All [`start_execution`][sfn_start_execution] calls within a few seconds
-#' will use the updated `definition` and `roleArn`. Executions started
-#' immediately after calling
-#' [`update_state_machine`][sfn_update_state_machine] may use the previous
-#' state machine `definition` and `roleArn`.
+#' Updates an existing state machine by modifying its `definition`, `roleArn`, or `loggingConfiguration`. Running executions will continue to use the previous `definition` and `roleArn`. You must include at least one of `definition` or `roleArn` or you will receive a `MissingRequiredParameter` error.
 #'
-#' @usage
-#' sfn_update_state_machine(stateMachineArn, definition, roleArn,
-#'   loggingConfiguration, tracingConfiguration)
+#' See [https://paws-r.github.io/docs/sfn/update_state_machine.html](https://paws-r.github.io/docs/sfn/update_state_machine.html) for full documentation.
 #'
 #' @param stateMachineArn &#91;required&#93; The Amazon Resource Name (ARN) of the state machine.
 #' @param definition The Amazon States Language definition of the state machine. See [Amazon
@@ -1737,39 +862,6 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 #' @param loggingConfiguration The `LoggingConfiguration` data type is used to set CloudWatch Logs
 #' options.
 #' @param tracingConfiguration Selects whether AWS X-Ray tracing is enabled.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   updateDate = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_state_machine(
-#'   stateMachineArn = "string",
-#'   definition = "string",
-#'   roleArn = "string",
-#'   loggingConfiguration = list(
-#'     level = "ALL"|"ERROR"|"FATAL"|"OFF",
-#'     includeExecutionData = TRUE|FALSE,
-#'     destinations = list(
-#'       list(
-#'         cloudWatchLogsLogGroup = list(
-#'           logGroupArn = "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   tracingConfiguration = list(
-#'     enabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

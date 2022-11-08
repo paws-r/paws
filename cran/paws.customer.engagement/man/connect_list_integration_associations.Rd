@@ -2,52 +2,31 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_integration_associations}
 \alias{connect_list_integration_associations}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Provides summary information about the Amazon Web Services resource
+associations for the specified Amazon Connect instance}
 \usage{
-connect_list_integration_associations(InstanceId, NextToken, MaxResults)
+connect_list_integration_associations(
+  InstanceId,
+  IntegrationType = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
+
+\item{IntegrationType}{The integration type.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximimum number of results to return per page.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  IntegrationAssociationSummaryList = list(
-    list(
-      IntegrationAssociationId = "string",
-      IntegrationAssociationArn = "string",
-      InstanceId = "string",
-      IntegrationType = "EVENT",
-      IntegrationArn = "string",
-      SourceApplicationUrl = "string",
-      SourceApplicationName = "string",
-      SourceType = "SALESFORCE"|"ZENDESK"
-    )
-  ),
-  NextToken = "string"
-)
-}
+\item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+Provides summary information about the Amazon Web Services resource associations for the specified Amazon Connect instance.
 
-Provides summary information about the AppIntegration associations for
-the specified Amazon Connect instance.
+See \url{https://paws-r.github.io/docs/connect/list_integration_associations.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_integration_associations(
-  InstanceId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

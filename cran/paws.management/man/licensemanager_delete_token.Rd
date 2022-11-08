@@ -9,17 +9,9 @@ licensemanager_delete_token(TokenId)
 \arguments{
 \item{TokenId}{[required] Token ID.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified token. Must be called in the license home Region.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_token(
-  TokenId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/delete_token.html} for full documentation.
+}
 \keyword{internal}

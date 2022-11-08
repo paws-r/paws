@@ -2,20 +2,27 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_ops_summary}
 \alias{ssm_get_ops_summary}
-\title{View a summary of OpsItems based on specified filters and aggregators}
+\title{View a summary of operations metadata (OpsData) based on specified
+filters and aggregators}
 \usage{
-ssm_get_ops_summary(SyncName, Filters, Aggregators, ResultAttributes,
-  NextToken, MaxResults)
+ssm_get_ops_summary(
+  SyncName = NULL,
+  Filters = NULL,
+  Aggregators = NULL,
+  ResultAttributes = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{SyncName}{Specify the name of a resource data sync to get.}
 
-\item{Filters}{Optional filters used to scope down the returned OpsItems.}
+\item{Filters}{Optional filters used to scope down the returned OpsData.}
 
-\item{Aggregators}{Optional aggregators that return counts of OpsItems based on one or more
+\item{Aggregators}{Optional aggregators that return counts of OpsData based on one or more
 expressions.}
 
-\item{ResultAttributes}{The OpsItem data type to return.}
+\item{ResultAttributes}{The OpsData data type to return.}
 
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
@@ -24,71 +31,9 @@ results.}
 returns a token that you can specify in a subsequent call to get the
 next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Entities = list(
-    list(
-      Id = "string",
-      Data = list(
-        list(
-          CaptureTime = "string",
-          Content = list(
-            list(
-              "string"
-            )
-          )
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-View a summary of OpsItems based on specified filters and aggregators.
-}
-\section{Request syntax}{
-\preformatted{svc$get_ops_summary(
-  SyncName = "string",
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      ),
-      Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
-    )
-  ),
-  Aggregators = list(
-    list(
-      AggregatorType = "string",
-      TypeName = "string",
-      AttributeName = "string",
-      Values = list(
-        "string"
-      ),
-      Filters = list(
-        list(
-          Key = "string",
-          Values = list(
-            "string"
-          ),
-          Type = "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"|"Exists"
-        )
-      ),
-      Aggregators = list()
-    )
-  ),
-  ResultAttributes = list(
-    list(
-      TypeName = "string"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+View a summary of operations metadata (OpsData) based on specified filters and aggregators. OpsData can include information about Amazon Web Services Systems Manager OpsCenter operational workitems (OpsItems) as well as information about any Amazon Web Services resource or service configured to report OpsData to Amazon Web Services Systems Manager Explorer.
 
+See \url{https://paws-r.github.io/docs/ssm/get_ops_summary.html} for full documentation.
+}
 \keyword{internal}

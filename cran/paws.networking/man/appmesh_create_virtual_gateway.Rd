@@ -4,8 +4,14 @@
 \alias{appmesh_create_virtual_gateway}
 \title{Creates a virtual gateway}
 \usage{
-appmesh_create_virtual_gateway(clientToken, meshName, meshOwner, spec,
-  tags, virtualGatewayName)
+appmesh_create_virtual_gateway(
+  clientToken = NULL,
+  meshName,
+  meshOwner = NULL,
+  spec,
+  tags = NULL,
+  virtualGatewayName
+)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
@@ -14,10 +20,10 @@ underscores are allowed.}
 
 \item{meshName}{[required] The name of the service mesh to create the virtual gateway in.}
 
-\item{meshOwner}{The AWS IAM account ID of the service mesh owner. If the account ID is
-not your own, then the account that you specify must share the mesh with
-your account before you can create the resource in the service mesh. For
-more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
+\item{meshOwner}{The Amazon Web Services IAM account ID of the service mesh owner. If the
+account ID is not your own, then the account that you specify must share
+the mesh with your account before you can create the resource in the
+service mesh. For more information about mesh sharing, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html}{Working with shared meshes}.}
 
 \item{spec}{[required] The virtual gateway specification to apply.}
 
@@ -29,201 +35,9 @@ length of 256 characters.}
 
 \item{virtualGatewayName}{[required] The name to use for the virtual gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  virtualGateway = list(
-    meshName = "string",
-    metadata = list(
-      arn = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      meshOwner = "string",
-      resourceOwner = "string",
-      uid = "string",
-      version = 123
-    ),
-    spec = list(
-      backendDefaults = list(
-        clientPolicy = list(
-          tls = list(
-            enforce = TRUE|FALSE,
-            ports = list(
-              123
-            ),
-            validation = list(
-              trust = list(
-                acm = list(
-                  certificateAuthorityArns = list(
-                    "string"
-                  )
-                ),
-                file = list(
-                  certificateChain = "string"
-                )
-              )
-            )
-          )
-        )
-      ),
-      listeners = list(
-        list(
-          connectionPool = list(
-            grpc = list(
-              maxRequests = 123
-            ),
-            http = list(
-              maxConnections = 123,
-              maxPendingRequests = 123
-            ),
-            http2 = list(
-              maxRequests = 123
-            )
-          ),
-          healthCheck = list(
-            healthyThreshold = 123,
-            intervalMillis = 123,
-            path = "string",
-            port = 123,
-            protocol = "http"|"http2"|"grpc",
-            timeoutMillis = 123,
-            unhealthyThreshold = 123
-          ),
-          portMapping = list(
-            port = 123,
-            protocol = "http"|"http2"|"grpc"
-          ),
-          tls = list(
-            certificate = list(
-              acm = list(
-                certificateArn = "string"
-              ),
-              file = list(
-                certificateChain = "string",
-                privateKey = "string"
-              )
-            ),
-            mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-          )
-        )
-      ),
-      logging = list(
-        accessLog = list(
-          file = list(
-            path = "string"
-          )
-        )
-      )
-    ),
-    status = list(
-      status = "ACTIVE"|"INACTIVE"|"DELETED"
-    ),
-    virtualGatewayName = "string"
-  )
-)
-}
-}
 \description{
 Creates a virtual gateway.
 
-A virtual gateway allows resources outside your mesh to communicate to
-resources that are inside your mesh. The virtual gateway represents an
-Envoy proxy running in an Amazon ECS task, in a Kubernetes service, or
-on an Amazon EC2 instance. Unlike a virtual node, which represents an
-Envoy running with an application, a virtual gateway represents Envoy
-deployed by itself.
-
-For more information about virtual gateways, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_gateways.html}{Virtual gateways}.
+See \url{https://paws-r.github.io/docs/appmesh/create_virtual_gateway.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_virtual_gateway(
-  clientToken = "string",
-  meshName = "string",
-  meshOwner = "string",
-  spec = list(
-    backendDefaults = list(
-      clientPolicy = list(
-        tls = list(
-          enforce = TRUE|FALSE,
-          ports = list(
-            123
-          ),
-          validation = list(
-            trust = list(
-              acm = list(
-                certificateAuthorityArns = list(
-                  "string"
-                )
-              ),
-              file = list(
-                certificateChain = "string"
-              )
-            )
-          )
-        )
-      )
-    ),
-    listeners = list(
-      list(
-        connectionPool = list(
-          grpc = list(
-            maxRequests = 123
-          ),
-          http = list(
-            maxConnections = 123,
-            maxPendingRequests = 123
-          ),
-          http2 = list(
-            maxRequests = 123
-          )
-        ),
-        healthCheck = list(
-          healthyThreshold = 123,
-          intervalMillis = 123,
-          path = "string",
-          port = 123,
-          protocol = "http"|"http2"|"grpc",
-          timeoutMillis = 123,
-          unhealthyThreshold = 123
-        ),
-        portMapping = list(
-          port = 123,
-          protocol = "http"|"http2"|"grpc"
-        ),
-        tls = list(
-          certificate = list(
-            acm = list(
-              certificateArn = "string"
-            ),
-            file = list(
-              certificateChain = "string",
-              privateKey = "string"
-            )
-          ),
-          mode = "STRICT"|"PERMISSIVE"|"DISABLED"
-        )
-      )
-    ),
-    logging = list(
-      accessLog = list(
-        file = list(
-          path = "string"
-        )
-      )
-    )
-  ),
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  ),
-  virtualGatewayName = "string"
-)
-}
-}
-
 \keyword{internal}

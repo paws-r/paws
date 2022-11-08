@@ -2,51 +2,21 @@
 % Please edit documentation in R/macie_operations.R
 \name{macie_disassociate_s3_resources}
 \alias{macie_disassociate_s3_resources}
-\title{Removes specified S3 resources from being monitored by Amazon Macie
-Classic}
+\title{(Discontinued) Removes specified S3 resources from being monitored by
+Amazon Macie Classic}
 \usage{
-macie_disassociate_s3_resources(memberAccountId, associatedS3Resources)
+macie_disassociate_s3_resources(memberAccountId = NULL, associatedS3Resources)
 }
 \arguments{
-\item{memberAccountId}{The ID of the Amazon Macie Classic member account whose resources you
-want to remove from being monitored by Amazon Macie Classic.}
+\item{memberAccountId}{(Discontinued) The ID of the Amazon Macie Classic member account whose
+resources you want to remove from being monitored by Macie Classic.}
 
-\item{associatedS3Resources}{[required] The S3 resources (buckets or prefixes) that you want to remove from
-being monitored and classified by Amazon Macie Classic.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  failedS3Resources = list(
-    list(
-      failedItem = list(
-        bucketName = "string",
-        prefix = "string"
-      ),
-      errorCode = "string",
-      errorMessage = "string"
-    )
-  )
-)
-}
+\item{associatedS3Resources}{[required] (Discontinued) The S3 resources (buckets or prefixes) that you want to
+remove from being monitored and classified by Amazon Macie Classic.}
 }
 \description{
-Removes specified S3 resources from being monitored by Amazon Macie
-Classic. If memberAccountId isn't specified, the action removes
-specified S3 resources from Macie Classic for the current master
-account. If memberAccountId is specified, the action removes specified
-S3 resources from Macie Classic for the specified member account.
-}
-\section{Request syntax}{
-\preformatted{svc$disassociate_s3_resources(
-  memberAccountId = "string",
-  associatedS3Resources = list(
-    list(
-      bucketName = "string",
-      prefix = "string"
-    )
-  )
-)
-}
-}
+(Discontinued) Removes specified S3 resources from being monitored by Amazon Macie Classic. If \code{memberAccountId} isn't specified, the action removes specified S3 resources from Macie Classic for the current Macie Classic administrator account. If \code{memberAccountId} is specified, the action removes specified S3 resources from Macie Classic for the specified member account.
 
+See \url{https://paws-r.github.io/docs/macie/disassociate_s3_resources.html} for full documentation.
+}
 \keyword{internal}

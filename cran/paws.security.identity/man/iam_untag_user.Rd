@@ -9,42 +9,16 @@ iam_untag_user(UserName, TagKeys)
 \arguments{
 \item{UserName}{[required] The name of the IAM user from which you want to remove tags.
 
-This parameter accepts (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
-that consist of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{TagKeys}{[required] A list of key names as a simple array of strings. The tags with matching
 keys are removed from the specified user.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes the specified tags from the user. For more information about
-tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_user(
-  UserName = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
+Removes the specified tags from the user. For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources} in the \emph{IAM User Guide}.
 
-\examples{
-\dontrun{
-# The following example shows how to remove tags that are attached to a
-# user named 'anika'.
-svc$untag_user(
-  TagKeys = list(
-    "Dept"
-  ),
-  UserName = "anika"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/untag_user.html} for full documentation.
 }
 \keyword{internal}

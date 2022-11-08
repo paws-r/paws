@@ -4,7 +4,7 @@
 \alias{cognitoidentityprovider_list_groups}
 \title{Lists the groups associated with a user pool}
 \usage{
-cognitoidentityprovider_list_groups(UserPoolId, Limit, NextToken)
+cognitoidentityprovider_list_groups(UserPoolId, Limit = NULL, NextToken = NULL)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -15,39 +15,9 @@ cognitoidentityprovider_list_groups(UserPoolId, Limit, NextToken)
 operation, which can be used to return the next set of items in the
 list.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Groups = list(
-    list(
-      GroupName = "string",
-      UserPoolId = "string",
-      Description = "string",
-      RoleArn = "string",
-      Precedence = 123,
-      LastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the groups associated with a user pool.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_groups.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_groups(
-  UserPoolId = "string",
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

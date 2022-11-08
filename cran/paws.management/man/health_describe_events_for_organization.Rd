@@ -2,11 +2,15 @@
 % Please edit documentation in R/health_operations.R
 \name{health_describe_events_for_organization}
 \alias{health_describe_events_for_organization}
-\title{Returns information about events across your organization in AWS
+\title{Returns information about events across your organization in
 Organizations}
 \usage{
-health_describe_events_for_organization(filter, nextToken, maxResults,
-  locale)
+health_describe_events_for_organization(
+  filter = NULL,
+  nextToken = NULL,
+  maxResults = NULL,
+  locale = NULL
+)
 }
 \arguments{
 \item{filter}{Values to narrow the results returned.}
@@ -23,117 +27,9 @@ inclusive.}
 \item{locale}{The locale (language) to return information in. English (en) is the
 default and the only supported value at this time.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  events = list(
-    list(
-      arn = "string",
-      service = "string",
-      eventTypeCode = "string",
-      eventTypeCategory = "issue"|"accountNotification"|"scheduledChange"|"investigation",
-      eventScopeCode = "PUBLIC"|"ACCOUNT_SPECIFIC"|"NONE",
-      region = "string",
-      startTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      endTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      statusCode = "open"|"closed"|"upcoming"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns information about events across your organization in AWS
-Organizations. You can use the\code{filters} parameter to specify the events
-that you want to return. Events are returned in a summary form and don't
-include the affected accounts, detailed description, any additional
-metadata that depends on the event type, or any affected resources. To
-retrieve that information, use the following operations:
-\itemize{
-\item \code{\link[=health_describe_affected_accounts_for_organization]{describe_affected_accounts_for_organization}}
-\item \code{\link[=health_describe_event_details_for_organization]{describe_event_details_for_organization}}
-\item \code{\link[=health_describe_affected_entities_for_organization]{describe_affected_entities_for_organization}}
+Returns information about events across your organization in Organizations. You can use the\code{filters} parameter to specify the events that you want to return. Events are returned in a summary form and don't include the affected accounts, detailed description, any additional metadata that depends on the event type, or any affected resources. To retrieve that information, use the following operations:
+
+See \url{https://paws-r.github.io/docs/health/describe_events_for_organization.html} for full documentation.
 }
-
-If you don't specify a \code{filter}, the \code{DescribeEventsForOrganizations}
-returns all events across your organization. Results are sorted by
-\code{lastModifiedTime}, starting with the most recent event.
-
-For more information about the different types of AWS Health events, see
-\href{https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html}{Event}.
-
-Before you can call this operation, you must first enable AWS Health to
-work with AWS Organizations. To do this, call the
-\code{\link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization}}
-operation from your organization's master AWS account.
-
-This API operation uses pagination. Specify the \code{nextToken} parameter in
-the next request to return more results.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_events_for_organization(
-  filter = list(
-    eventTypeCodes = list(
-      "string"
-    ),
-    awsAccountIds = list(
-      "string"
-    ),
-    services = list(
-      "string"
-    ),
-    regions = list(
-      "string"
-    ),
-    startTime = list(
-      from = as.POSIXct(
-        "2015-01-01"
-      ),
-      to = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    endTime = list(
-      from = as.POSIXct(
-        "2015-01-01"
-      ),
-      to = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    lastUpdatedTime = list(
-      from = as.POSIXct(
-        "2015-01-01"
-      ),
-      to = as.POSIXct(
-        "2015-01-01"
-      )
-    ),
-    entityArns = list(
-      "string"
-    ),
-    entityValues = list(
-      "string"
-    ),
-    eventTypeCategories = list(
-      "issue"|"accountNotification"|"scheduledChange"|"investigation"
-    ),
-    eventStatusCodes = list(
-      "open"|"closed"|"upcoming"
-    )
-  ),
-  nextToken = "string",
-  maxResults = 123,
-  locale = "string"
-)
-}
-}
-
 \keyword{internal}

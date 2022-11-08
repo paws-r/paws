@@ -9,17 +9,9 @@ sagemaker_stop_monitoring_schedule(MonitoringScheduleName)
 \arguments{
 \item{MonitoringScheduleName}{[required] The name of the schedule to stop.}
 }
-\value{
-An empty list.
-}
 \description{
 Stops a previously started monitoring schedule.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_monitoring_schedule(
-  MonitoringScheduleName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/stop_monitoring_schedule.html} for full documentation.
+}
 \keyword{internal}

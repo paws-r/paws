@@ -4,9 +4,17 @@
 \alias{ec2_modify_traffic_mirror_session}
 \title{Modifies a Traffic Mirror session}
 \usage{
-ec2_modify_traffic_mirror_session(TrafficMirrorSessionId,
-  TrafficMirrorTargetId, TrafficMirrorFilterId, PacketLength,
-  SessionNumber, VirtualNetworkId, Description, RemoveFields, DryRun)
+ec2_modify_traffic_mirror_session(
+  TrafficMirrorSessionId,
+  TrafficMirrorTargetId = NULL,
+  TrafficMirrorFilterId = NULL,
+  PacketLength = NULL,
+  SessionNumber = NULL,
+  VirtualNetworkId = NULL,
+  Description = NULL,
+  RemoveFields = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TrafficMirrorSessionId}{[required] The ID of the Traffic Mirror session.}
@@ -42,46 +50,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficMirrorSession = list(
-    TrafficMirrorSessionId = "string",
-    TrafficMirrorTargetId = "string",
-    TrafficMirrorFilterId = "string",
-    NetworkInterfaceId = "string",
-    OwnerId = "string",
-    PacketLength = 123,
-    SessionNumber = 123,
-    VirtualNetworkId = 123,
-    Description = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Modifies a Traffic Mirror session.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_traffic_mirror_session(
-  TrafficMirrorSessionId = "string",
-  TrafficMirrorTargetId = "string",
-  TrafficMirrorFilterId = "string",
-  PacketLength = 123,
-  SessionNumber = 123,
-  VirtualNetworkId = 123,
-  Description = "string",
-  RemoveFields = list(
-    "packet-length"|"description"|"virtual-network-id"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/modify_traffic_mirror_session.html} for full documentation.
+}
 \keyword{internal}

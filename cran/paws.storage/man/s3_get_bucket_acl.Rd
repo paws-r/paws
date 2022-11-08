@@ -2,57 +2,21 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_bucket_acl}
 \alias{s3_get_bucket_acl}
-\title{This implementation of the GET operation uses the acl subresource to
-return the access control list (ACL) of a bucket}
+\title{This implementation of the GET action uses the acl subresource to return
+the access control list (ACL) of a bucket}
 \usage{
-s3_get_bucket_acl(Bucket, ExpectedBucketOwner)
+s3_get_bucket_acl(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] Specifies the S3 bucket whose ACL is being requested.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Owner = list(
-    DisplayName = "string",
-    ID = "string"
-  ),
-  Grants = list(
-    list(
-      Grantee = list(
-        DisplayName = "string",
-        EmailAddress = "string",
-        ID = "string",
-        Type = "CanonicalUser"|"AmazonCustomerByEmail"|"Group",
-        URI = "string"
-      ),
-      Permission = "FULL_CONTROL"|"WRITE"|"WRITE_ACP"|"READ"|"READ_ACP"
-    )
-  )
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-This implementation of the \code{GET} operation uses the \code{acl} subresource to
-return the access control list (ACL) of a bucket. To use \code{GET} to return
-the ACL of the bucket, you must have \code{READ_ACP} access to the bucket. If
-\code{READ_ACP} permission is granted to the anonymous user, you can return
-the ACL of the bucket without using an authorization header.
+This implementation of the \code{GET} action uses the \code{acl} subresource to return the access control list (ACL) of a bucket. To use \code{GET} to return the ACL of the bucket, you must have \code{READ_ACP} access to the bucket. If \code{READ_ACP} permission is granted to the anonymous user, you can return the ACL of the bucket without using an authorization header.
 
-\strong{Related Resources}
-\itemize{
-\item \code{\link[=s3_list_objects]{list_objects}}
+See \url{https://paws-r.github.io/docs/s3/get_bucket_acl.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_bucket_acl(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

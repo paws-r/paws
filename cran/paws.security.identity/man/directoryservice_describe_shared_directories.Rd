@@ -4,8 +4,12 @@
 \alias{directoryservice_describe_shared_directories}
 \title{Returns the shared directories in your account}
 \usage{
-directoryservice_describe_shared_directories(OwnerDirectoryId,
-  SharedDirectoryIds, NextToken, Limit)
+directoryservice_describe_shared_directories(
+  OwnerDirectoryId,
+  SharedDirectoryIds = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
 \item{OwnerDirectoryId}{[required] Returns the identifier of the directory in the directory owner account.}
@@ -19,42 +23,9 @@ Pass null if this is the first call.}
 
 \item{Limit}{The number of shared directories to return in the response object.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SharedDirectories = list(
-    list(
-      OwnerAccountId = "string",
-      OwnerDirectoryId = "string",
-      ShareMethod = "ORGANIZATIONS"|"HANDSHAKE",
-      SharedAccountId = "string",
-      SharedDirectoryId = "string",
-      ShareStatus = "Shared"|"PendingAcceptance"|"Rejected"|"Rejecting"|"RejectFailed"|"Sharing"|"ShareFailed"|"Deleted"|"Deleting",
-      ShareNotes = "string",
-      CreatedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns the shared directories in your account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_shared_directories(
-  OwnerDirectoryId = "string",
-  SharedDirectoryIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/describe_shared_directories.html} for full documentation.
+}
 \keyword{internal}

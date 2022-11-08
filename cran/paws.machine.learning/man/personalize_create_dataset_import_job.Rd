@@ -5,8 +5,14 @@
 \title{Creates a job that imports training data from your data source (an
 Amazon S3 bucket) to an Amazon Personalize dataset}
 \usage{
-personalize_create_dataset_import_job(jobName, datasetArn, dataSource,
-  roleArn)
+personalize_create_dataset_import_job(
+  jobName,
+  datasetArn,
+  dataSource,
+  roleArn,
+  tags = NULL,
+  importMode = NULL
+)
 }
 \arguments{
 \item{jobName}{[required] The name for the dataset import job.}
@@ -17,57 +23,23 @@ personalize_create_dataset_import_job(jobName, datasetArn, dataSource,
 
 \item{roleArn}{[required] The ARN of the IAM role that has permissions to read from the Amazon S3
 data source.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  datasetImportJobArn = "string"
-)
-}
+
+\item{tags}{A list of tags to apply to the dataset import job.}
+
+\item{importMode}{Specify how to add the new records to an existing dataset. The default
+import mode is \code{FULL}. If you haven't imported bulk records into the
+dataset previously, you can only specify \code{FULL}.
+\itemize{
+\item Specify \code{FULL} to overwrite all existing bulk data in your dataset.
+Data you imported individually is not replaced.
+\item Specify \code{INCREMENTAL} to append the new records to the existing data
+in your dataset. Amazon Personalize replaces any record with the
+same ID with the new one.
+}}
 }
 \description{
-Creates a job that imports training data from your data source (an
-Amazon S3 bucket) to an Amazon Personalize dataset. To allow Amazon
-Personalize to import the training data, you must specify an AWS
-Identity and Access Management (IAM) role that has permission to read
-from the data source, as Amazon Personalize makes a copy of your data
-and processes it in an internal AWS system.
+Creates a job that imports training data from your data source (an Amazon S3 bucket) to an Amazon Personalize dataset. To allow Amazon Personalize to import the training data, you must specify an IAM service role that has permission to read from the data source, as Amazon Personalize makes a copy of your data and processes it internally. For information on granting access to your Amazon S3 bucket, see \href{https://docs.aws.amazon.com/personalize/latest/dg/granting-personalize-s3-access.html}{Giving Amazon Personalize Access to Amazon S3 Resources}.
 
-The dataset import job replaces any previous data in the dataset.
-
-\strong{Status}
-
-A dataset import job can be in one of the following states:
-\itemize{
-\item CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE
-FAILED
+See \url{https://paws-r.github.io/docs/personalize/create_dataset_import_job.html} for full documentation.
 }
-
-To get the status of the import job, call
-\code{\link[=personalize_describe_dataset_import_job]{describe_dataset_import_job}},
-providing the Amazon Resource Name (ARN) of the dataset import job. The
-dataset import is complete when the status shows as ACTIVE. If the
-status shows as CREATE FAILED, the response includes a \code{failureReason}
-key, which describes why the job failed.
-
-Importing takes time. You must wait until the status shows as ACTIVE
-before training a model using the dataset.
-
-\strong{Related APIs}
-\itemize{
-\item \code{\link[=personalize_list_dataset_import_jobs]{list_dataset_import_jobs}}
-\item \code{\link[=personalize_describe_dataset_import_job]{describe_dataset_import_job}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$create_dataset_import_job(
-  jobName = "string",
-  datasetArn = "string",
-  dataSource = list(
-    dataLocation = "string"
-  ),
-  roleArn = "string"
-)
-}
-}
-
 \keyword{internal}

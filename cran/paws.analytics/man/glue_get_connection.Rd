@@ -4,61 +4,24 @@
 \alias{glue_get_connection}
 \title{Retrieves a connection definition from the Data Catalog}
 \usage{
-glue_get_connection(CatalogId, Name, HidePassword)
+glue_get_connection(CatalogId = NULL, Name, HidePassword = NULL)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the connection resides. If none is
-provided, the AWS account ID is used by default.}
+provided, the Amazon Web Services account ID is used by default.}
 
 \item{Name}{[required] The name of the connection definition to retrieve.}
 
 \item{HidePassword}{Allows you to retrieve the connection metadata without returning the
-password. For instance, the AWS Glue console uses this flag to retrieve
-the connection, and does not display the password. Set this parameter
-when the caller might not have permission to use the AWS KMS key to
-decrypt the password, but it does have permission to access the rest of
-the connection properties.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Connection = list(
-    Name = "string",
-    Description = "string",
-    ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
-    MatchCriteria = list(
-      "string"
-    ),
-    ConnectionProperties = list(
-      "string"
-    ),
-    PhysicalConnectionRequirements = list(
-      SubnetId = "string",
-      SecurityGroupIdList = list(
-        "string"
-      ),
-      AvailabilityZone = "string"
-    ),
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdatedBy = "string"
-  )
-)
-}
+password. For instance, the Glue console uses this flag to retrieve the
+connection, and does not display the password. Set this parameter when
+the caller might not have permission to use the KMS key to decrypt the
+password, but it does have permission to access the rest of the
+connection properties.}
 }
 \description{
 Retrieves a connection definition from the Data Catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$get_connection(
-  CatalogId = "string",
-  Name = "string",
-  HidePassword = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_connection.html} for full documentation.
+}
 \keyword{internal}

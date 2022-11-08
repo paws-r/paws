@@ -3,10 +3,9 @@
 \name{emr_put_block_public_access_configuration}
 \alias{emr_put_block_public_access_configuration}
 \title{Creates or updates an Amazon EMR block public access configuration for
-your AWS account in the current Region}
+your Amazon Web Services account in the current Region}
 \usage{
-emr_put_block_public_access_configuration(
-  BlockPublicAccessConfiguration)
+emr_put_block_public_access_configuration(BlockPublicAccessConfiguration)
 }
 \arguments{
 \item{BlockPublicAccessConfiguration}{[required] A configuration for Amazon EMR block public access. The configuration
@@ -27,28 +26,9 @@ feature, you must manually enable and configure it. For accounts that
 did not create an EMR cluster in a Region before this date, block public
 access is enabled by default in that Region.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates or updates an Amazon EMR block public access configuration for
-your AWS account in the current Region. For more information see
-\href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{Configure Block Public Access for Amazon EMR} in the
-\emph{Amazon EMR Management Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$put_block_public_access_configuration(
-  BlockPublicAccessConfiguration = list(
-    BlockPublicSecurityGroupRules = TRUE|FALSE,
-    PermittedPublicSecurityGroupRuleRanges = list(
-      list(
-        MinRange = 123,
-        MaxRange = 123
-      )
-    )
-  )
-)
-}
-}
+Creates or updates an Amazon EMR block public access configuration for your Amazon Web Services account in the current Region. For more information see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{Configure Block Public Access for Amazon EMR} in the \emph{Amazon EMR Management Guide}.
 
+See \url{https://paws-r.github.io/docs/emr/put_block_public_access_configuration.html} for full documentation.
+}
 \keyword{internal}

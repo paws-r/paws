@@ -5,89 +5,27 @@
 \title{Enables fast snapshot restores for the specified snapshots in the
 specified Availability Zones}
 \usage{
-ec2_enable_fast_snapshot_restores(AvailabilityZones, SourceSnapshotIds,
-  DryRun)
+ec2_enable_fast_snapshot_restores(
+  AvailabilityZones,
+  SourceSnapshotIds,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{AvailabilityZones}{[required] One or more Availability Zones. For example, \verb{us-east-2a}.}
 
 \item{SourceSnapshotIds}{[required] The IDs of one or more snapshots. For example, \verb{snap-1234567890abcdef0}.
-You can specify a snapshot that was shared with you from another AWS
-account.}
+You can specify a snapshot that was shared with you from another Amazon
+Web Services account.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Successful = list(
-    list(
-      SnapshotId = "string",
-      AvailabilityZone = "string",
-      State = "enabling"|"optimizing"|"enabled"|"disabling"|"disabled",
-      StateTransitionReason = "string",
-      OwnerId = "string",
-      OwnerAlias = "string",
-      EnablingTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      OptimizingTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EnabledTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      DisablingTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      DisabledTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  Unsuccessful = list(
-    list(
-      SnapshotId = "string",
-      FastSnapshotRestoreStateErrors = list(
-        list(
-          AvailabilityZone = "string",
-          Error = list(
-            Code = "string",
-            Message = "string"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Enables fast snapshot restores for the specified snapshots in the
-specified Availability Zones.
+Enables fast snapshot restores for the specified snapshots in the specified Availability Zones.
 
-You get the full benefit of fast snapshot restores after they enter the
-\code{enabled} state. To get the current state of fast snapshot restores, use
-\code{\link[=ec2_describe_fast_snapshot_restores]{describe_fast_snapshot_restores}}.
-To disable fast snapshot restores, use
-\code{\link[=ec2_disable_fast_snapshot_restores]{disable_fast_snapshot_restores}}.
-
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html}{Amazon EBS fast snapshot restore}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/enable_fast_snapshot_restores.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$enable_fast_snapshot_restores(
-  AvailabilityZones = list(
-    "string"
-  ),
-  SourceSnapshotIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

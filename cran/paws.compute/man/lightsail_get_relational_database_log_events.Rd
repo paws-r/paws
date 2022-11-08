@@ -4,8 +4,14 @@
 \alias{lightsail_get_relational_database_log_events}
 \title{Returns a list of log events for a database in Amazon Lightsail}
 \usage{
-lightsail_get_relational_database_log_events(relationalDatabaseName,
-  logStreamName, startTime, endTime, startFromHead, pageToken)
+lightsail_get_relational_database_log_events(
+  relationalDatabaseName,
+  logStreamName,
+  startTime = NULL,
+  endTime = NULL,
+  startFromHead = NULL,
+  pageToken = NULL
+)
 }
 \arguments{
 \item{relationalDatabaseName}{[required] The name of your database for which to get log events.}
@@ -53,38 +59,9 @@ request. If your results are paginated, the response will return a next
 forward token and/or next backward token that you can specify as the
 page token in a subsequent request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  resourceLogEvents = list(
-    list(
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      message = "string"
-    )
-  ),
-  nextBackwardToken = "string",
-  nextForwardToken = "string"
-)
-}
-}
 \description{
 Returns a list of log events for a database in Amazon Lightsail.
-}
-\section{Request syntax}{
-\preformatted{svc$get_relational_database_log_events(
-  relationalDatabaseName = "string",
-  logStreamName = "string",
-  startTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  endTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  startFromHead = TRUE|FALSE,
-  pageToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/lightsail/get_relational_database_log_events.html} for full documentation.
+}
 \keyword{internal}

@@ -3,9 +3,9 @@
 \name{securityhub_list_invitations}
 \alias{securityhub_list_invitations}
 \title{Lists all Security Hub membership invitations that were sent to the
-current AWS account}
+current Amazon Web Services account}
 \usage{
-securityhub_list_invitations(MaxResults, NextToken)
+securityhub_list_invitations(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of items to return in the response.}
@@ -18,35 +18,9 @@ For subsequent calls to the operation, to continue listing data, set the
 value of this parameter to the value returned from the previous
 response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Invitations = list(
-    list(
-      AccountId = "string",
-      InvitationId = "string",
-      InvitedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      MemberStatus = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists all Security Hub membership invitations that were sent to the
-current AWS account.
+Lists all Security Hub membership invitations that were sent to the current Amazon Web Services account.
 
-This operation is only used by accounts that do not belong to an
-organization. Organization accounts do not receive invitations.
+See \url{https://paws-r.github.io/docs/securityhub/list_invitations.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_invitations(
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -137,7 +137,7 @@ codeguruprofiler_add_notification_channels <- function(channels, profilingGroupN
 #'       )
 #'     )
 #'   ),
-#'   resolution = "P1D"|"PT1H"|"PT5M",
+#'   resolution = "PT5M"|"PT1H"|"P1D",
 #'   startTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -173,7 +173,7 @@ codeguruprofiler_add_notification_channels <- function(channels, profilingGroupN
 #'   startTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   targetResolution = "P1D"|"PT1H"|"PT5M"
+#'   targetResolution = "PT5M"|"PT1H"|"P1D"
 #' )
 #' ```
 #'
@@ -204,7 +204,7 @@ codeguruprofiler_batch_get_frame_metric_data <- function(endTime = NULL, frameMe
 #' Used by profiler agents to report their current state and to receive
 #' remote configuration updates. For example,
 #' [`configure_agent`][codeguruprofiler_configure_agent] can be used to
-#' tell and agent whether to profile or not and for how long to return
+#' tell an agent whether to profile or not and for how long to return
 #' profiling data.
 #'
 #' @usage
@@ -321,7 +321,7 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = 
 #'       profilingEnabled = TRUE|FALSE
 #'     ),
 #'     arn = "string",
-#'     computePlatform = "AWSLambda"|"Default",
+#'     computePlatform = "Default"|"AWSLambda",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -334,7 +334,7 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = 
 #'         "2015-01-01"
 #'       ),
 #'       latestAggregatedProfile = list(
-#'         period = "P1D"|"PT1H"|"PT5M",
+#'         period = "PT5M"|"PT1H"|"P1D",
 #'         start = as.POSIXct(
 #'           "2015-01-01"
 #'         )
@@ -357,7 +357,7 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = 
 #'     profilingEnabled = TRUE|FALSE
 #'   ),
 #'   clientToken = "string",
-#'   computePlatform = "AWSLambda"|"Default",
+#'   computePlatform = "Default"|"AWSLambda",
 #'   profilingGroupName = "string",
 #'   tags = list(
 #'     "string"
@@ -447,7 +447,7 @@ codeguruprofiler_delete_profiling_group <- function(profilingGroupName) {
 #'       profilingEnabled = TRUE|FALSE
 #'     ),
 #'     arn = "string",
-#'     computePlatform = "AWSLambda"|"Default",
+#'     computePlatform = "Default"|"AWSLambda",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -460,7 +460,7 @@ codeguruprofiler_delete_profiling_group <- function(profilingGroupName) {
 #'         "2015-01-01"
 #'       ),
 #'       latestAggregatedProfile = list(
-#'         period = "P1D"|"PT1H"|"PT5M",
+#'         period = "PT5M"|"PT1H"|"P1D",
 #'         start = as.POSIXct(
 #'           "2015-01-01"
 #'         )
@@ -847,7 +847,7 @@ codeguruprofiler_get_profile <- function(accept = NULL, endTime = NULL, maxDepth
 #'             "2015-01-01"
 #'           ),
 #'           userFeedback = list(
-#'             type = "Negative"|"Positive"
+#'             type = "Positive"|"Negative"
 #'           )
 #'         )
 #'       ),
@@ -1105,8 +1105,8 @@ codeguruprofiler_list_findings_reports <- function(dailyReportsOnly = NULL, endT
 #'   ),
 #'   maxResults = 123,
 #'   nextToken = "string",
-#'   orderBy = "TimestampAscending"|"TimestampDescending",
-#'   period = "P1D"|"PT1H"|"PT5M",
+#'   orderBy = "TimestampDescending"|"TimestampAscending",
+#'   period = "PT5M"|"PT1H"|"P1D",
 #'   profilingGroupName = "string",
 #'   startTime = as.POSIXct(
 #'     "2015-01-01"
@@ -1183,7 +1183,7 @@ codeguruprofiler_list_profile_times <- function(endTime, maxResults = NULL, next
 #'         profilingEnabled = TRUE|FALSE
 #'       ),
 #'       arn = "string",
-#'       computePlatform = "AWSLambda"|"Default",
+#'       computePlatform = "Default"|"AWSLambda",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -1196,7 +1196,7 @@ codeguruprofiler_list_profile_times <- function(endTime, maxResults = NULL, next
 #'           "2015-01-01"
 #'         ),
 #'         latestAggregatedProfile = list(
-#'           period = "P1D"|"PT1H"|"PT5M",
+#'           period = "PT5M"|"PT1H"|"P1D",
 #'           start = as.POSIXct(
 #'             "2015-01-01"
 #'           )
@@ -1572,7 +1572,7 @@ codeguruprofiler_remove_permission <- function(actionGroup, profilingGroupName, 
 #'   anomalyInstanceId = "string",
 #'   comment = "string",
 #'   profilingGroupName = "string",
-#'   type = "Negative"|"Positive"
+#'   type = "Positive"|"Negative"
 #' )
 #' ```
 #'
@@ -1709,7 +1709,7 @@ codeguruprofiler_untag_resource <- function(resourceArn, tagKeys) {
 #'       profilingEnabled = TRUE|FALSE
 #'     ),
 #'     arn = "string",
-#'     computePlatform = "AWSLambda"|"Default",
+#'     computePlatform = "Default"|"AWSLambda",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1722,7 +1722,7 @@ codeguruprofiler_untag_resource <- function(resourceArn, tagKeys) {
 #'         "2015-01-01"
 #'       ),
 #'       latestAggregatedProfile = list(
-#'         period = "P1D"|"PT1H"|"PT5M",
+#'         period = "PT5M"|"PT1H"|"P1D",
 #'         start = as.POSIXct(
 #'           "2015-01-01"
 #'         )

@@ -2,14 +2,18 @@
 % Please edit documentation in R/cloudformation_operations.R
 \name{cloudformation_describe_stack_resources}
 \alias{cloudformation_describe_stack_resources}
-\title{Returns AWS resource descriptions for running and deleted stacks}
+\title{Returns Amazon Web Services resource descriptions for running and
+deleted stacks}
 \usage{
-cloudformation_describe_stack_resources(StackName, LogicalResourceId,
-  PhysicalResourceId)
+cloudformation_describe_stack_resources(
+  StackName = NULL,
+  LogicalResourceId = NULL,
+  PhysicalResourceId = NULL
+)
 }
 \arguments{
 \item{StackName}{The name or the unique stack ID that is associated with the stack, which
-are not always interchangeable:
+aren't always interchangeable:
 \itemize{
 \item Running stacks: You can specify either the stack's name or its
 unique stack ID.
@@ -18,7 +22,7 @@ unique stack ID.
 
 Default: There is no default value.
 
-Required: Conditional. If you do not specify \code{StackName}, you must
+Required: Conditional. If you don't specify \code{StackName}, you must
 specify \code{PhysicalResourceId}.}
 
 \item{LogicalResourceId}{The logical name of the resource as specified in the template.
@@ -26,7 +30,7 @@ specify \code{PhysicalResourceId}.}
 Default: There is no default value.}
 
 \item{PhysicalResourceId}{The name or unique identifier that corresponds to a physical instance ID
-of a resource supported by AWS CloudFormation.
+of a resource supported by CloudFormation.
 
 For example, for an Amazon Elastic Compute Cloud (EC2) instance,
 \code{PhysicalResourceId} corresponds to the \code{InstanceId}. You can pass the
@@ -35,72 +39,14 @@ EC2 \code{InstanceId} to
 find which stack the instance belongs to and what other resources are
 part of the stack.
 
-Required: Conditional. If you do not specify \code{PhysicalResourceId}, you
+Required: Conditional. If you don't specify \code{PhysicalResourceId}, you
 must specify \code{StackName}.
 
 Default: There is no default value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  StackResources = list(
-    list(
-      StackName = "string",
-      StackId = "string",
-      LogicalResourceId = "string",
-      PhysicalResourceId = "string",
-      ResourceType = "string",
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      ResourceStatus = "CREATE_IN_PROGRESS"|"CREATE_FAILED"|"CREATE_COMPLETE"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|"DELETE_COMPLETE"|"DELETE_SKIPPED"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"|"UPDATE_COMPLETE"|"IMPORT_FAILED"|"IMPORT_COMPLETE"|"IMPORT_IN_PROGRESS"|"IMPORT_ROLLBACK_IN_PROGRESS"|"IMPORT_ROLLBACK_FAILED"|"IMPORT_ROLLBACK_COMPLETE",
-      ResourceStatusReason = "string",
-      Description = "string",
-      DriftInformation = list(
-        StackResourceDriftStatus = "IN_SYNC"|"MODIFIED"|"DELETED"|"NOT_CHECKED",
-        LastCheckTimestamp = as.POSIXct(
-          "2015-01-01"
-        )
-      ),
-      ModuleInfo = list(
-        TypeHierarchy = "string",
-        LogicalIdHierarchy = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns AWS resource descriptions for running and deleted stacks. If
-\code{StackName} is specified, all the associated resources that are part of
-the stack are returned. If \code{PhysicalResourceId} is specified, the
-associated resources of the stack that the resource belongs to are
-returned.
+Returns Amazon Web Services resource descriptions for running and deleted stacks. If \code{StackName} is specified, all the associated resources that are part of the stack are returned. If \code{PhysicalResourceId} is specified, the associated resources of the stack that the resource belongs to are returned.
 
-Only the first 100 resources will be returned. If your stack has more
-resources than this, you should use
-\code{\link[=cloudformation_list_stack_resources]{list_stack_resources}} instead.
-
-For deleted stacks,
-\code{\link[=cloudformation_describe_stack_resources]{describe_stack_resources}}
-returns resource information for up to 90 days after the stack has been
-deleted.
-
-You must specify either \code{StackName} or \code{PhysicalResourceId}, but not
-both. In addition, you can specify \code{LogicalResourceId} to filter the
-returned result. For more information about resources, the
-\code{LogicalResourceId} and \code{PhysicalResourceId}, go to the \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{AWS CloudFormation User Guide}.
-
-A \code{ValidationError} is returned if you specify both \code{StackName} and
-\code{PhysicalResourceId} in the same request.
+See \url{https://paws-r.github.io/docs/cloudformation/describe_stack_resources.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_stack_resources(
-  StackName = "string",
-  LogicalResourceId = "string",
-  PhysicalResourceId = "string"
-)
-}
-}
-
 \keyword{internal}

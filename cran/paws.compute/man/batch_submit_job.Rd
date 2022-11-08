@@ -2,25 +2,50 @@
 % Please edit documentation in R/batch_operations.R
 \name{batch_submit_job}
 \alias{batch_submit_job}
-\title{Submits an AWS Batch job from a job definition}
+\title{Submits an Batch job from a job definition}
 \usage{
-batch_submit_job(jobName, jobQueue, arrayProperties, dependsOn,
-  jobDefinition, parameters, containerOverrides, nodeOverrides,
-  retryStrategy, propagateTags, timeout, tags)
+batch_submit_job(
+  jobName,
+  jobQueue,
+  shareIdentifier = NULL,
+  schedulingPriorityOverride = NULL,
+  arrayProperties = NULL,
+  dependsOn = NULL,
+  jobDefinition,
+  parameters = NULL,
+  containerOverrides = NULL,
+  nodeOverrides = NULL,
+  retryStrategy = NULL,
+  propagateTags = NULL,
+  timeout = NULL,
+  tags = NULL
+)
 }
 \arguments{
-\item{jobName}{[required] The name of the job. The first character must be alphanumeric, and up to
-128 letters (uppercase and lowercase), numbers, hyphens, and underscores
-are allowed.}
+\item{jobName}{[required] The name of the job. It can be up to 128 letters long. The first
+character must be alphanumeric, can contain uppercase and lowercase
+letters, numbers, hyphens (-), and underscores (_).}
 
-\item{jobQueue}{[required] The job queue into which the job is submitted. You can specify either
-the name or the Amazon Resource Name (ARN) of the queue.}
+\item{jobQueue}{[required] The job queue where the job is submitted. You can specify either the
+name or the Amazon Resource Name (ARN) of the queue.}
+
+\item{shareIdentifier}{The share identifier for the job. If the job queue does not have a
+scheduling policy, then this parameter must not be specified. If the job
+queue has a scheduling policy, then this parameter must be specified.}
+
+\item{schedulingPriorityOverride}{The scheduling priority for the job. This will only affect jobs in job
+queues with a fair share policy. Jobs with a higher scheduling priority
+will be scheduled before jobs with a lower scheduling priority. This
+will override any scheduling priority in the job definition.
+
+The minimum supported value is 0 and the maximum supported value is
+9999.}
 
 \item{arrayProperties}{The array properties for the submitted job, such as the size of the
 array. The array size can be between 2 and 10,000. If you specify array
 properties for a job, it becomes an array job. For more information, see
 \href{https://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html}{Array Jobs}
-in the \emph{AWS Batch User Guide}.}
+in the \emph{Batch User Guide}.}
 
 \item{dependsOn}{A list of dependencies for the job. A job can depend upon a maximum of
 20 jobs. You can specify a \code{SEQUENTIAL} type dependency without
@@ -41,19 +66,19 @@ are specified as a key and value pair mapping. Parameters in a
 \code{\link[=batch_submit_job]{submit_job}} request override any corresponding
 parameter defaults from the job definition.}
 
-\item{containerOverrides}{A list of container overrides in JSON format that specify the name of a
-container in the specified job definition and the overrides it should
-receive. You can override the default command for a container (that's
-specified in the job definition or the Docker image) with a \code{command}
-override. You can also override existing environment variables (that are
-specified in the job definition or Docker image) on a container or add
-new environment variables to it with an \code{environment} override.}
+\item{containerOverrides}{A list of container overrides in the JSON format that specify the name
+of a container in the specified job definition and the overrides it
+receives. You can override the default command for a container, which is
+specified in the job definition or the Docker image, with a \code{command}
+override. You can also override existing environment variables on a
+container or add new environment variables to it with an \code{environment}
+override.}
 
 \item{nodeOverrides}{A list of node overrides in JSON format that specify the node range to
 target and the container overrides for that node range.
 
-This parameter isn't applicable to jobs running on Fargate resources;
-use \code{containerOverrides} instead.}
+This parameter isn't applicable to jobs that are running on Fargate
+resources; use \code{containerOverrides} instead.}
 
 \item{retryStrategy}{The retry strategy to use for failed jobs from this
 \code{\link[=batch_submit_job]{submit_job}} operation. When a retry strategy is
@@ -70,7 +95,7 @@ When specified, this overrides the tag propagation setting in the job
 definition.}
 
 \item{timeout}{The timeout configuration for this \code{\link[=batch_submit_job]{submit_job}}
-operation. You can specify a timeout duration after which AWS Batch
+operation. You can specify a timeout duration after which Batch
 terminates your jobs if they haven't finished. If a job is terminated
 due to a timeout, it isn't retried. The minimum value for the timeout is
 60 seconds. This configuration overrides any timeout configuration
@@ -81,123 +106,12 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{tags}{The tags that you apply to the job request to help you categorize and
 organize your resources. Each tag consists of a key and an optional
-value. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
-in \emph{AWS General Reference}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  jobArn = "string",
-  jobName = "string",
-  jobId = "string"
-)
-}
+value. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}
+in \emph{Amazon Web Services General Reference}.}
 }
 \description{
-Submits an AWS Batch job from a job definition. Parameters specified
-during \code{\link[=batch_submit_job]{submit_job}} override parameters defined in
-the job definition.
+Submits an Batch job from a job definition. Parameters that are specified during \code{\link[=batch_submit_job]{submit_job}} override parameters defined in the job definition. vCPU and memory requirements that are specified in the \code{resourceRequirements} objects in the job definition are the exception. They can't be overridden this way using the \code{memory} and \code{vcpus} parameters. Rather, you must specify updates to job definition parameters in a \code{resourceRequirements} object that's included in the \code{containerOverrides} parameter.
 
-Jobs run on Fargate resources don't run for more than 14 days. After 14
-days, the Fargate resources might no longer be available and the job is
-terminated.
-}
-\section{Request syntax}{
-\preformatted{svc$submit_job(
-  jobName = "string",
-  jobQueue = "string",
-  arrayProperties = list(
-    size = 123
-  ),
-  dependsOn = list(
-    list(
-      jobId = "string",
-      type = "N_TO_N"|"SEQUENTIAL"
-    )
-  ),
-  jobDefinition = "string",
-  parameters = list(
-    "string"
-  ),
-  containerOverrides = list(
-    vcpus = 123,
-    memory = 123,
-    command = list(
-      "string"
-    ),
-    instanceType = "string",
-    environment = list(
-      list(
-        name = "string",
-        value = "string"
-      )
-    ),
-    resourceRequirements = list(
-      list(
-        value = "string",
-        type = "GPU"|"VCPU"|"MEMORY"
-      )
-    )
-  ),
-  nodeOverrides = list(
-    numNodes = 123,
-    nodePropertyOverrides = list(
-      list(
-        targetNodes = "string",
-        containerOverrides = list(
-          vcpus = 123,
-          memory = 123,
-          command = list(
-            "string"
-          ),
-          instanceType = "string",
-          environment = list(
-            list(
-              name = "string",
-              value = "string"
-            )
-          ),
-          resourceRequirements = list(
-            list(
-              value = "string",
-              type = "GPU"|"VCPU"|"MEMORY"
-            )
-          )
-        )
-      )
-    )
-  ),
-  retryStrategy = list(
-    attempts = 123,
-    evaluateOnExit = list(
-      list(
-        onStatusReason = "string",
-        onReason = "string",
-        onExitCode = "string",
-        action = "RETRY"|"EXIT"
-      )
-    )
-  ),
-  propagateTags = TRUE|FALSE,
-  timeout = list(
-    attemptDurationSeconds = 123
-  ),
-  tags = list(
-    "string"
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example submits a simple container job called example to the
-# HighPriority job queue.
-svc$submit_job(
-  jobDefinition = "sleep60",
-  jobName = "example",
-  jobQueue = "HighPriority"
-)
-}
-
+See \url{https://paws-r.github.io/docs/batch/submit_job.html} for full documentation.
 }
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Lists all the user profiles configured for your AWS account in AWS
 CodeStar}
 \usage{
-codestar_list_user_profiles(nextToken, maxResults)
+codestar_list_user_profiles(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{nextToken}{The continuation token for the next set of results, if the results
@@ -13,30 +13,9 @@ cannot be returned in one response.}
 
 \item{maxResults}{The maximum number of results to return in a response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  userProfiles = list(
-    list(
-      userArn = "string",
-      displayName = "string",
-      emailAddress = "string",
-      sshPublicKey = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Lists all the user profiles configured for your AWS account in AWS
-CodeStar.
-}
-\section{Request syntax}{
-\preformatted{svc$list_user_profiles(
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Lists all the user profiles configured for your AWS account in AWS CodeStar.
 
+See \url{https://paws-r.github.io/docs/codestar/list_user_profiles.html} for full documentation.
+}
 \keyword{internal}

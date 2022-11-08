@@ -9,17 +9,9 @@ pinpointsmsvoice_delete_configuration_set(ConfigurationSetName)
 \arguments{
 \item{ConfigurationSetName}{[required] ConfigurationSetName}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an existing configuration set.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_configuration_set(
-  ConfigurationSetName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpointsmsvoice/delete_configuration_set.html} for full documentation.
+}
 \keyword{internal}

@@ -7,24 +7,13 @@
 apigateway_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] [Required] The ARN of a resource that can be tagged.}
+\item{resourceArn}{[required] The ARN of a resource that can be tagged.}
 
-\item{tagKeys}{[required] [Required] The Tag keys to delete.}
-}
-\value{
-An empty list.
+\item{tagKeys}{[required] The Tag keys to delete.}
 }
 \description{
 Removes a tag from a given resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  resourceArn = "string",
-  tagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/untag_resource.html} for full documentation.
+}
 \keyword{internal}

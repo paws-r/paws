@@ -4,138 +4,38 @@
 \alias{secretsmanager_update_secret_version_stage}
 \title{Modifies the staging labels attached to a version of a secret}
 \usage{
-secretsmanager_update_secret_version_stage(SecretId, VersionStage,
-  RemoveFromVersionId, MoveToVersionId)
+secretsmanager_update_secret_version_stage(
+  SecretId,
+  VersionStage,
+  RemoveFromVersionId = NULL,
+  MoveToVersionId = NULL
+)
 }
 \arguments{
-\item{SecretId}{[required] Specifies the secret with the version with the list of staging labels
-you want to modify. You can specify either the Amazon Resource Name
-(ARN) or the friendly name of the secret.
+\item{SecretId}{[required] The ARN or the name of the secret with the version and staging labelsto
+modify.
 
-If you specify an ARN, we generally recommend that you specify a
-complete ARN. You can specify a partial ARN too—for example, if you
-don’t include the final hyphen and six random characters that Secrets
-Manager adds at the end of the ARN when you created the secret. A
-partial ARN match can work as long as it uniquely matches only one
-secret. However, if your secret has a name that ends in a hyphen
-followed by six characters (before Secrets Manager adds the hyphen and
-six characters to the ARN) and you try to use that as a partial ARN,
-then those characters cause Secrets Manager to assume that you’re
-specifying a complete ARN. This confusion can cause unexpected results.
-To avoid this situation, we recommend that you don’t create secret names
-ending with a hyphen followed by six characters.
-
-If you specify an incomplete ARN without the random suffix, and instead
-provide the 'friendly name', you \emph{must} not include the random suffix.
-If you do include the random suffix added by Secrets Manager, you
-receive either a \emph{ResourceNotFoundException} or an
-\emph{AccessDeniedException} error, depending on your permissions.}
+For an ARN, we recommend that you specify a complete ARN rather than a
+partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 
 \item{VersionStage}{[required] The staging label to add to this version.}
 
-\item{RemoveFromVersionId}{Specifies the secret version ID of the version that the staging label is
-to be removed from. If the staging label you are trying to attach to one
-version is already attached to a different version, then you must
-include this parameter and specify the version that the label is to be
-removed from. If the label is attached and you either do not specify
-this parameter, or the version ID does not match, then the operation
-fails.}
+\item{RemoveFromVersionId}{The ID of the version that the staging label is to be removed from. If
+the staging label you are trying to attach to one version is already
+attached to a different version, then you must include this parameter
+and specify the version that the label is to be removed from. If the
+label is attached and you either do not specify this parameter, or the
+version ID does not match, then the operation fails.}
 
-\item{MoveToVersionId}{(Optional) The secret version ID that you want to add the staging label.
-If you want to remove a label from a version, then do not specify this
-parameter.
+\item{MoveToVersionId}{The ID of the version to add the staging label to. To remove a label
+from a version, then do not specify this parameter.
 
 If the staging label is already attached to a different version of the
 secret, then you must also specify the \code{RemoveFromVersionId} parameter.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ARN = "string",
-  Name = "string"
-)
-}
-}
 \description{
-Modifies the staging labels attached to a version of a secret. Staging
-labels are used to track a version as it progresses through the secret
-rotation process. You can attach a staging label to only one version of
-a secret at a time. If a staging label to be added is already attached
-to another version, then it is moved--removed from the other version
-first and then attached to this one. For more information about staging
-labels, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_staging-label}{Staging Labels}
-in the \emph{AWS Secrets Manager User Guide}.
+Modifies the staging labels attached to a version of a secret. Secrets Manager uses staging labels to track a version as it progresses through the secret rotation process. Each staging label can be attached to only one version at a time. To add a staging label to a version when it is already attached to another version, Secrets Manager first removes it from the other version first and then attaches it to this one. For more information about versions and staging labels, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version}{Concepts: Version}.
 
-The staging labels that you specify in the \code{VersionStage} parameter are
-added to the existing list of staging labels--they don't replace it.
-
-You can move the \code{AWSCURRENT} staging label to this version by including
-it in this call.
-
-Whenever you move \code{AWSCURRENT}, Secrets Manager automatically moves the
-label \code{AWSPREVIOUS} to the version that \code{AWSCURRENT} was removed from.
-
-If this action results in the last label being removed from a version,
-then the version is considered to be 'deprecated' and can be deleted by
-Secrets Manager.
-
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item secretsmanager:UpdateSecretVersionStage
-}
-
-\strong{Related operations}
-\itemize{
-\item To get the list of staging labels that are currently associated with
-a version of a secret, use
-\code{\link[=secretsmanager_describe_secret]{describe_secret}} and examine the
-\code{SecretVersionsToStages} response value.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$update_secret_version_stage(
-  SecretId = "string",
-  VersionStage = "string",
-  RemoveFromVersionId = "string",
-  MoveToVersionId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows you how to add a staging label to a version
-# of a secret. You can review the results by running the operation
-# ListSecretVersionIds and viewing the VersionStages response field for
-# the affected version.
-svc$update_secret_version_stage(
-  MoveToVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
-  SecretId = "MyTestDatabaseSecret",
-  VersionStage = "STAGINGLABEL1"
-)
-
-# The following example shows you how to delete a staging label that is
-# attached to a version of a secret. You can review the results by running
-# the operation ListSecretVersionIds and viewing the VersionStages
-# response field for the affected version.
-svc$update_secret_version_stage(
-  RemoveFromVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
-  SecretId = "MyTestDatabaseSecret",
-  VersionStage = "STAGINGLABEL1"
-)
-
-# The following example shows you how to move a staging label that is
-# attached to one version of a secret to a different version. You can
-# review the results by running the operation ListSecretVersionIds and
-# viewing the VersionStages response field for the affected version.
-svc$update_secret_version_stage(
-  MoveToVersionId = "EXAMPLE2-90ab-cdef-fedc-ba987SECRET2",
-  RemoveFromVersionId = "EXAMPLE1-90ab-cdef-fedc-ba987SECRET1",
-  SecretId = "MyTestDatabaseSecret",
-  VersionStage = "AWSCURRENT"
-)
-}
-
+See \url{https://paws-r.github.io/docs/secretsmanager/update_secret_version_stage.html} for full documentation.
 }
 \keyword{internal}

@@ -5,90 +5,56 @@
 \title{Returns all ongoing DDoS attacks or all DDoS attacks during a specified
 time period}
 \usage{
-shield_list_attacks(ResourceArns, StartTime, EndTime, NextToken,
-  MaxResults)
+shield_list_attacks(
+  ResourceArns = NULL,
+  StartTime = NULL,
+  EndTime = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
-\item{ResourceArns}{The ARN (Amazon Resource Name) of the resource that was attacked. If
-this is left blank, all applicable resources for this account will be
+\item{ResourceArns}{The ARNs (Amazon Resource Names) of the resources that were attacked. If
+you leave this blank, all applicable resources for this account will be
 included.}
 
 \item{StartTime}{The start of the time period for the attacks. This is a \code{timestamp}
-type. The sample request above indicates a \code{number} type because the
-default used by WAF is Unix time in seconds. However any valid
-\href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#parameter-types}{timestamp format}
-is allowed.}
+type. The request syntax listing for this call indicates a \code{number}
+type, but you can provide the time in any valid \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-types.html#parameter-type-timestamp}{timestamp format}
+setting.}
 
 \item{EndTime}{The end of the time period for the attacks. This is a \code{timestamp} type.
-The sample request above indicates a \code{number} type because the default
-used by WAF is Unix time in seconds. However any valid \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#parameter-types}{timestamp format}
-is allowed.}
+The request syntax listing for this call indicates a \code{number} type, but
+you can provide the time in any valid \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-types.html#parameter-type-timestamp}{timestamp format}
+setting.}
 
-\item{NextToken}{The \code{ListAttacksRequest.NextMarker} value from a previous call to
-\code{ListAttacksRequest}. Pass null if this is the first call.}
+\item{NextToken}{When you request a list of objects from Shield Advanced, if the response
+does not include all of the remaining available objects, Shield Advanced
+includes a \code{NextToken} value in the response. You can retrieve the next
+batch of objects by requesting the list again and providing the token
+that was returned by the prior call in your request.
 
-\item{MaxResults}{The maximum number of AttackSummary objects to return. If you leave this
-blank, Shield Advanced returns the first 20 results.
+You can indicate the maximum number of objects that you want Shield
+Advanced to return for a single call with the \code{MaxResults} setting.
+Shield Advanced will not return more than \code{MaxResults} objects, but may
+return fewer, even if more objects are still available.
 
-This is a maximum value. Shield Advanced might return the results in
-smaller batches. That is, the number of objects returned could be less
-than \code{MaxResults}, even if there are still more objects yet to return.
-If there are more objects to return, Shield Advanced returns a value in
-\code{NextToken} that you can use in your next request, to get the next batch
-of objects.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AttackSummaries = list(
-    list(
-      AttackId = "string",
-      ResourceArn = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      AttackVectors = list(
-        list(
-          VectorType = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
+Whenever more objects remain that Shield Advanced has not yet returned
+to you, the response will include a \code{NextToken} value.
+
+On your first call to a list operation, leave this setting empty.}
+
+\item{MaxResults}{The greatest number of objects that you want Shield Advanced to return
+to the list request. Shield Advanced might return fewer objects than you
+indicate in this setting, even if more objects are available. If there
+are more objects remaining, Shield Advanced will always also return a
+\code{NextToken} value in the response.
+
+The default setting is 20.}
 }
 \description{
-Returns all ongoing DDoS attacks or all DDoS attacks during a specified
-time period.
-}
-\section{Request syntax}{
-\preformatted{svc$list_attacks(
-  ResourceArns = list(
-    "string"
-  ),
-  StartTime = list(
-    FromInclusive = as.POSIXct(
-      "2015-01-01"
-    ),
-    ToExclusive = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  EndTime = list(
-    FromInclusive = as.POSIXct(
-      "2015-01-01"
-    ),
-    ToExclusive = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period.
 
+See \url{https://paws-r.github.io/docs/shield/list_attacks.html} for full documentation.
+}
 \keyword{internal}

@@ -2,35 +2,14 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_get_distribution_bundles}
 \alias{lightsail_get_distribution_bundles}
-\title{Returns the list bundles that can be applied to you Amazon Lightsail
-content delivery network (CDN) distributions}
+\title{Returns the bundles that can be applied to your Amazon Lightsail content
+delivery network (CDN) distributions}
 \usage{
 lightsail_get_distribution_bundles()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  bundles = list(
-    list(
-      bundleId = "string",
-      name = "string",
-      price = 123.0,
-      transferPerMonthInGb = 123,
-      isActive = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Returns the list bundles that can be applied to you Amazon Lightsail
-content delivery network (CDN) distributions.
+Returns the bundles that can be applied to your Amazon Lightsail content delivery network (CDN) distributions.
 
-A distribution bundle specifies the monthly network transfer quota and
-monthly cost of your dsitribution.
+See \url{https://paws-r.github.io/docs/lightsail/get_distribution_bundles.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_distribution_bundles()
-}
-}
-
 \keyword{internal}

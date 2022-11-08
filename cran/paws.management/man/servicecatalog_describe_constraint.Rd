@@ -4,7 +4,7 @@
 \alias{servicecatalog_describe_constraint}
 \title{Gets information about the specified constraint}
 \usage{
-servicecatalog_describe_constraint(AcceptLanguage, Id)
+servicecatalog_describe_constraint(AcceptLanguage = NULL, Id)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -16,30 +16,9 @@ servicecatalog_describe_constraint(AcceptLanguage, Id)
 
 \item{Id}{[required] The identifier of the constraint.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConstraintDetail = list(
-    ConstraintId = "string",
-    Type = "string",
-    Description = "string",
-    Owner = "string",
-    ProductId = "string",
-    PortfolioId = "string"
-  ),
-  ConstraintParameters = "string",
-  Status = "AVAILABLE"|"CREATING"|"FAILED"
-)
-}
-}
 \description{
 Gets information about the specified constraint.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_constraint(
-  AcceptLanguage = "string",
-  Id = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/describe_constraint.html} for full documentation.
+}
 \keyword{internal}

@@ -4,45 +4,19 @@
 \alias{elasticbeanstalk_delete_environment_configuration}
 \title{Deletes the draft configuration associated with the running environment}
 \usage{
-elasticbeanstalk_delete_environment_configuration(ApplicationName,
-  EnvironmentName)
+elasticbeanstalk_delete_environment_configuration(
+  ApplicationName,
+  EnvironmentName
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application the environment is associated with.}
 
 \item{EnvironmentName}{[required] The name of the environment to delete the draft configuration from.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the draft configuration associated with the running environment.
 
-Updating a running environment with any configuration changes creates a
-draft configuration set. You can get the draft configuration using
-\code{\link[=elasticbeanstalk_describe_configuration_settings]{describe_configuration_settings}}
-while the update is in progress or if the update fails. The
-\code{DeploymentStatus} for the draft configuration indicates whether the
-deployment is in process or has failed. The draft configuration remains
-in existence until it is deleted with this action.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_environment_configuration(
-  ApplicationName = "string",
-  EnvironmentName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following operation deletes a draft configuration for an environment
-# named my-env:
-svc$delete_environment_configuration(
-  ApplicationName = "my-app",
-  EnvironmentName = "my-env"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/delete_environment_configuration.html} for full documentation.
 }
 \keyword{internal}

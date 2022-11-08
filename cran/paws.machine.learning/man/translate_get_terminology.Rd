@@ -4,53 +4,25 @@
 \alias{translate_get_terminology}
 \title{Retrieves a custom terminology}
 \usage{
-translate_get_terminology(Name, TerminologyDataFormat)
+translate_get_terminology(Name, TerminologyDataFormat = NULL)
 }
 \arguments{
 \item{Name}{[required] The name of the custom terminology being retrieved.}
 
-\item{TerminologyDataFormat}{[required] The data format of the custom terminology being retrieved, either CSV or
-TMX.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TerminologyProperties = list(
-    Name = "string",
-    Description = "string",
-    Arn = "string",
-    SourceLanguageCode = "string",
-    TargetLanguageCodes = list(
-      "string"
-    ),
-    EncryptionKey = list(
-      Type = "KMS",
-      Id = "string"
-    ),
-    SizeBytes = 123,
-    TermCount = 123,
-    CreatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdatedAt = as.POSIXct(
-      "2015-01-01"
-    )
-  ),
-  TerminologyDataLocation = list(
-    RepositoryType = "string",
-    Location = "string"
-  )
-)
-}
+\item{TerminologyDataFormat}{The data format of the custom terminology being retrieved.
+
+If you don't specify this parameter, Amazon Translate returns a file
+with the same format as the file that was imported to create the
+terminology.
+
+If you specify this parameter when you retrieve a multi-directional
+terminology resource, you must specify the same format as the input file
+that was imported to create it. Otherwise, Amazon Translate throws an
+error.}
 }
 \description{
 Retrieves a custom terminology.
-}
-\section{Request syntax}{
-\preformatted{svc$get_terminology(
-  Name = "string",
-  TerminologyDataFormat = "CSV"|"TMX"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/translate/get_terminology.html} for full documentation.
+}
 \keyword{internal}

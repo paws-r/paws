@@ -9,75 +9,9 @@ ssm_get_ops_item(OpsItemId)
 \arguments{
 \item{OpsItemId}{[required] The ID of the OpsItem that you want to get.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OpsItem = list(
-    CreatedBy = "string",
-    OpsItemType = "string",
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Description = "string",
-    LastModifiedBy = "string",
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Notifications = list(
-      list(
-        Arn = "string"
-      )
-    ),
-    Priority = 123,
-    RelatedOpsItems = list(
-      list(
-        OpsItemId = "string"
-      )
-    ),
-    Status = "Open"|"InProgress"|"Resolved"|"Pending"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"CompletedWithSuccess"|"CompletedWithFailure"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"PendingApproval"|"Approved"|"Rejected",
-    OpsItemId = "string",
-    Version = "string",
-    Title = "string",
-    Source = "string",
-    OperationalData = list(
-      list(
-        Value = "string",
-        Type = "SearchableString"|"String"
-      )
-    ),
-    Category = "string",
-    Severity = "string",
-    ActualStartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ActualEndTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PlannedStartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PlannedEndTime = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Get information about an OpsItem by using the ID. You must have
-permission in AWS Identity and Access Management (IAM) to view
-information about an OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter}
-in the \emph{AWS Systems Manager User Guide}.
+Get information about an OpsItem by using the ID. You must have permission in Identity and Access Management (IAM) to view information about an OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-Operations engineers and IT professionals use OpsCenter to view,
-investigate, and remediate operational issues impacting the performance
-and health of their AWS resources. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html}{AWS Systems Manager OpsCenter}
-in the \emph{AWS Systems Manager User Guide}.
+See \url{https://paws-r.github.io/docs/ssm/get_ops_item.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_ops_item(
-  OpsItemId = "string"
-)
-}
-}
-
 \keyword{internal}

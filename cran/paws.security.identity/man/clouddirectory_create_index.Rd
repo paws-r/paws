@@ -4,8 +4,13 @@
 \alias{clouddirectory_create_index}
 \title{Creates an index object}
 \usage{
-clouddirectory_create_index(DirectoryArn, OrderedIndexedAttributeList,
-  IsUnique, ParentReference, LinkName)
+clouddirectory_create_index(
+  DirectoryArn,
+  OrderedIndexedAttributeList,
+  IsUnique,
+  ParentReference = NULL,
+  LinkName = NULL
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory where the index should be created.}
@@ -20,33 +25,9 @@ or not.}
 
 \item{LinkName}{The name of the link between the parent object and the index object.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ObjectIdentifier = "string"
-)
-}
-}
 \description{
-Creates an index object. See \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.html}{Indexing and search}
-for more information.
-}
-\section{Request syntax}{
-\preformatted{svc$create_index(
-  DirectoryArn = "string",
-  OrderedIndexedAttributeList = list(
-    list(
-      SchemaArn = "string",
-      FacetName = "string",
-      Name = "string"
-    )
-  ),
-  IsUnique = TRUE|FALSE,
-  ParentReference = list(
-    Selector = "string"
-  ),
-  LinkName = "string"
-)
-}
-}
+Creates an index object. See \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.html}{Indexing and search} for more information.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/create_index.html} for full documentation.
+}
 \keyword{internal}

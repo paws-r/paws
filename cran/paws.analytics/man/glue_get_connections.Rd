@@ -4,76 +4,34 @@
 \alias{glue_get_connections}
 \title{Retrieves a list of connection definitions from the Data Catalog}
 \usage{
-glue_get_connections(CatalogId, Filter, HidePassword, NextToken,
-  MaxResults)
+glue_get_connections(
+  CatalogId = NULL,
+  Filter = NULL,
+  HidePassword = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{CatalogId}{The ID of the Data Catalog in which the connections reside. If none is
-provided, the AWS account ID is used by default.}
+provided, the Amazon Web Services account ID is used by default.}
 
 \item{Filter}{A filter that controls which connections are returned.}
 
 \item{HidePassword}{Allows you to retrieve the connection metadata without returning the
-password. For instance, the AWS Glue console uses this flag to retrieve
-the connection, and does not display the password. Set this parameter
-when the caller might not have permission to use the AWS KMS key to
-decrypt the password, but it does have permission to access the rest of
-the connection properties.}
+password. For instance, the Glue console uses this flag to retrieve the
+connection, and does not display the password. Set this parameter when
+the caller might not have permission to use the KMS key to decrypt the
+password, but it does have permission to access the rest of the
+connection properties.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
 
 \item{MaxResults}{The maximum number of connections to return in one response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConnectionList = list(
-    list(
-      Name = "string",
-      Description = "string",
-      ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM",
-      MatchCriteria = list(
-        "string"
-      ),
-      ConnectionProperties = list(
-        "string"
-      ),
-      PhysicalConnectionRequirements = list(
-        SubnetId = "string",
-        SecurityGroupIdList = list(
-          "string"
-        ),
-        AvailabilityZone = "string"
-      ),
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedBy = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves a list of connection definitions from the Data Catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$get_connections(
-  CatalogId = "string",
-  Filter = list(
-    MatchCriteria = list(
-      "string"
-    ),
-    ConnectionType = "JDBC"|"SFTP"|"MONGODB"|"KAFKA"|"NETWORK"|"MARKETPLACE"|"CUSTOM"
-  ),
-  HidePassword = TRUE|FALSE,
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_connections.html} for full documentation.
+}
 \keyword{internal}

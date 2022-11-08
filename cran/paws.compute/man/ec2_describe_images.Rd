@@ -5,12 +5,30 @@
 \title{Describes the specified images (AMIs, AKIs, and ARIs) available to you
 or all of the images available to you}
 \usage{
-ec2_describe_images(ExecutableUsers, Filters, ImageIds, Owners, DryRun)
+ec2_describe_images(
+  ExecutableUsers = NULL,
+  Filters = NULL,
+  ImageIds = NULL,
+  Owners = NULL,
+  IncludeDeprecated = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{ExecutableUsers}{Scopes the images by users with explicit launch permissions. Specify an
-AWS account ID, \code{self} (the sender of the request), or \code{all} (public
-AMIs).}
+Amazon Web Services account ID, \code{self} (the sender of the request), or
+\code{all} (public AMIs).
+\itemize{
+\item If you specify an Amazon Web Services account ID that is not your
+own, only AMIs shared with that specific Amazon Web Services account
+ID are returned. However, AMIs that are shared with the account’s
+organization or organizational unit (OU) are not returned.
+\item If you specify \code{self} or your own Amazon Web Services account ID,
+AMIs shared with your account are returned. In addition, AMIs that
+are shared with the organization or OU of which you are member are
+also returned.
+\item If you specify \code{all}, all public AMIs are returned.
+}}
 
 \item{Filters}{The filters.
 \itemize{
@@ -22,13 +40,18 @@ termination.
 \item \code{block-device-mapping.device-name} - The device name specified in
 the block device mapping (for example, \verb{/dev/sdh} or \code{xvdh}).
 \item \code{block-device-mapping.snapshot-id} - The ID of the snapshot used for
-the EBS volume.
-\item \code{block-device-mapping.volume-size} - The volume size of the EBS
-volume, in GiB.
-\item \code{block-device-mapping.volume-type} - The volume type of the EBS
-volume (\code{gp2} | \code{io1} | \code{io2} | \code{st1 }| \code{sc1} | \code{standard}).
+the Amazon EBS volume.
+\item \code{block-device-mapping.volume-size} - The volume size of the Amazon
+EBS volume, in GiB.
+\item \code{block-device-mapping.volume-type} - The volume type of the Amazon
+EBS volume (\code{io1} | \code{io2} | \code{gp2} | \code{gp3} | \code{sc1 }| \code{st1} |
+\code{standard}).
 \item \code{block-device-mapping.encrypted} - A Boolean that indicates whether
-the EBS volume is encrypted.
+the Amazon EBS volume is encrypted.
+\item \code{creation-date} - The time when the image was created, in the ISO
+8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for
+example, \verb{2021-09-29T11:04:43.305Z}. You can use a wildcard (\code{*}),
+for example, \verb{2021-09-29T*}, which matches an entire day.
 \item \code{description} - The description of the image (provided during image
 creation).
 \item \code{ena-support} - A Boolean that indicates whether enhanced networking
@@ -40,17 +63,18 @@ with ENA is enabled.
 \item \code{kernel-id} - The kernel ID.
 \item \code{manifest-location} - The location of the image manifest.
 \item \code{name} - The name of the AMI (provided during image creation).
-\item \code{owner-alias} - The owner alias, from an Amazon-maintained list
-(\code{amazon} | \code{aws-marketplace}). This is not the user-configured AWS
-account alias set using the IAM console. We recommend that you use
-the related parameter instead of this filter.
-\item \code{owner-id} - The AWS account ID of the owner. We recommend that you
-use the related parameter instead of this filter.
+\item \code{owner-alias} - The owner alias (\code{amazon} | \code{aws-marketplace}). The
+valid aliases are defined in an Amazon-maintained list. This is not
+the Amazon Web Services account alias that can be set using the IAM
+console. We recommend that you use the \strong{Owner} request parameter
+instead of this filter.
+\item \code{owner-id} - The Amazon Web Services account ID of the owner. We
+recommend that you use the \strong{Owner} request parameter instead of
+this filter.
 \item \code{platform} - The platform. To only list Windows-based AMIs, use
 \code{windows}.
 \item \code{product-code} - The product code.
-\item \code{product-code.type} - The type of the product code (\code{devpay} |
-\code{marketplace}).
+\item \code{product-code.type} - The type of the product code (\code{marketplace}).
 \item \code{ramdisk-id} - The RAM disk ID.
 \item \code{root-device-name} - The device name of the root device volume (for
 example, \verb{/dev/sda1}).
@@ -62,11 +86,11 @@ example, \verb{/dev/sda1}).
 \item \code{state-reason-message} - The message for the state change.
 \item \code{sriov-net-support} - A value of \code{simple} indicates that enhanced
 networking with the Intel 82599 VF interface is enabled.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -79,125 +103,26 @@ regardless of the tag value.
 Default: Describes all images available to you.}
 
 \item{Owners}{Scopes the results to images with the specified owners. You can specify
-a combination of AWS account IDs, \code{self}, \code{amazon}, and
+a combination of Amazon Web Services account IDs, \code{self}, \code{amazon}, and
 \code{aws-marketplace}. If you omit this parameter, the results include all
 images for which you have launch permissions, regardless of ownership.}
+
+\item{IncludeDeprecated}{If \code{true}, all deprecated AMIs are included in the response. If \code{false},
+no deprecated AMIs are included in the response. If no value is
+specified, the default value is \code{false}.
+
+If you are the AMI owner, all deprecated AMIs appear in the response
+regardless of the value (\code{true} or \code{false}) that you set for this
+parameter.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Images = list(
-    list(
-      Architecture = "i386"|"x86_64"|"arm64",
-      CreationDate = "string",
-      ImageId = "string",
-      ImageLocation = "string",
-      ImageType = "machine"|"kernel"|"ramdisk",
-      Public = TRUE|FALSE,
-      KernelId = "string",
-      OwnerId = "string",
-      Platform = "Windows",
-      PlatformDetails = "string",
-      UsageOperation = "string",
-      ProductCodes = list(
-        list(
-          ProductCodeId = "string",
-          ProductCodeType = "devpay"|"marketplace"
-        )
-      ),
-      RamdiskId = "string",
-      State = "pending"|"available"|"invalid"|"deregistered"|"transient"|"failed"|"error",
-      BlockDeviceMappings = list(
-        list(
-          DeviceName = "string",
-          VirtualName = "string",
-          Ebs = list(
-            DeleteOnTermination = TRUE|FALSE,
-            Iops = 123,
-            SnapshotId = "string",
-            VolumeSize = 123,
-            VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
-            KmsKeyId = "string",
-            Throughput = 123,
-            Encrypted = TRUE|FALSE
-          ),
-          NoDevice = "string"
-        )
-      ),
-      Description = "string",
-      EnaSupport = TRUE|FALSE,
-      Hypervisor = "ovm"|"xen",
-      ImageOwnerAlias = "string",
-      Name = "string",
-      RootDeviceName = "string",
-      RootDeviceType = "ebs"|"instance-store",
-      SriovNetSupport = "string",
-      StateReason = list(
-        Code = "string",
-        Message = "string"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      VirtualizationType = "hvm"|"paravirtual"
-    )
-  )
-)
-}
-}
 \description{
-Describes the specified images (AMIs, AKIs, and ARIs) available to you
-or all of the images available to you.
+Describes the specified images (AMIs, AKIs, and ARIs) available to you or all of the images available to you.
 
-The images available to you include public images, private images that
-you own, and private images owned by other AWS accounts for which you
-have explicit launch permissions.
-
-Recently deregistered images appear in the returned results for a short
-interval and then return empty results. After all instances that
-reference a deregistered AMI are terminated, specifying the ID of the
-image results in an error indicating that the AMI ID cannot be found.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_images(
-  ExecutableUsers = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  ImageIds = list(
-    "string"
-  ),
-  Owners = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the specified AMI.
-svc$describe_images(
-  ImageIds = list(
-    "ami-5731123e"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_images.html} for full documentation.
 }
 \keyword{internal}

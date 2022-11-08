@@ -9,27 +9,9 @@ directoryservice_restore_from_snapshot(SnapshotId)
 \arguments{
 \item{SnapshotId}{[required] The identifier of the snapshot to restore from.}
 }
-\value{
-An empty list.
-}
 \description{
 Restores a directory using an existing directory snapshot.
 
-When you restore a directory from a snapshot, any changes made to the
-directory after the snapshot date are overwritten.
-
-This action returns as soon as the restore operation is initiated. You
-can monitor the progress of the restore operation by calling the
-\code{\link[=directoryservice_describe_directories]{describe_directories}}
-operation with the directory identifier. When the
-\strong{DirectoryDescription.Stage} value changes to \code{Active}, the restore
-operation is complete.
+See \url{https://paws-r.github.io/docs/directoryservice/restore_from_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$restore_from_snapshot(
-  SnapshotId = "string"
-)
-}
-}
-
 \keyword{internal}

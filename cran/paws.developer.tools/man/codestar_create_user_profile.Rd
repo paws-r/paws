@@ -6,8 +6,12 @@
 display name and email address assocciated with the user, in AWS
 CodeStar}
 \usage{
-codestar_create_user_profile(userArn, displayName, emailAddress,
-  sshPublicKey)
+codestar_create_user_profile(
+  userArn,
+  displayName,
+  emailAddress,
+  sshPublicKey = NULL
+)
 }
 \arguments{
 \item{userArn}{[required] The Amazon Resource Name (ARN) of the user in IAM.}
@@ -23,36 +27,9 @@ project owner allows the user remote access to project resources, this
 public key will be used along with the user's private key for SSH
 access.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  userArn = "string",
-  displayName = "string",
-  emailAddress = "string",
-  sshPublicKey = "string",
-  createdTimestamp = as.POSIXct(
-    "2015-01-01"
-  ),
-  lastModifiedTimestamp = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Creates a profile for a user that includes user preferences, such as the
-display name and email address assocciated with the user, in AWS
-CodeStar. The user profile is not project-specific. Information in the
-user profile is displayed wherever the user's information appears to
-other users in AWS CodeStar.
-}
-\section{Request syntax}{
-\preformatted{svc$create_user_profile(
-  userArn = "string",
-  displayName = "string",
-  emailAddress = "string",
-  sshPublicKey = "string"
-)
-}
-}
+Creates a profile for a user that includes user preferences, such as the display name and email address assocciated with the user, in AWS CodeStar. The user profile is not project-specific. Information in the user profile is displayed wherever the user's information appears to other users in AWS CodeStar.
 
+See \url{https://paws-r.github.io/docs/codestar/create_user_profile.html} for full documentation.
+}
 \keyword{internal}

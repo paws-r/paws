@@ -4,8 +4,13 @@
 \alias{cognitoidentityprovider_update_group}
 \title{Updates the specified group with the specified attributes}
 \usage{
-cognitoidentityprovider_update_group(GroupName, UserPoolId, Description,
-  RoleArn, Precedence)
+cognitoidentityprovider_update_group(
+  GroupName,
+  UserPoolId,
+  Description = NULL,
+  RoleArn = NULL,
+  Precedence = NULL
+)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group.}
@@ -14,47 +19,16 @@ cognitoidentityprovider_update_group(GroupName, UserPoolId, Description,
 
 \item{Description}{A string containing the new description of the group.}
 
-\item{RoleArn}{The new role ARN for the group. This is used for setting the
-\code{cognito:roles} and \code{cognito:preferred_role} claims in the token.}
+\item{RoleArn}{The new role Amazon Resource Name (ARN) for the group. This is used for
+setting the \code{cognito:roles} and \code{cognito:preferred_role} claims in the
+token.}
 
 \item{Precedence}{The new precedence value for the group. For more information about this
 parameter, see \code{\link[=cognitoidentityprovider_create_group]{create_group}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Group = list(
-    GroupName = "string",
-    UserPoolId = "string",
-    Description = "string",
-    RoleArn = "string",
-    Precedence = 123,
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreationDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Updates the specified group with the specified attributes.
 
-Calling this action requires developer credentials.
-
-If you don't provide a value for an attribute, it will be set to the
-default value.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/update_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_group(
-  GroupName = "string",
-  UserPoolId = "string",
-  Description = "string",
-  RoleArn = "string",
-  Precedence = 123
-)
-}
-}
-
 \keyword{internal}

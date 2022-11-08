@@ -5,16 +5,29 @@ NULL
 #' AWS Certificate Manager
 #'
 #' @description
-#' Welcome to the AWS Certificate Manager (ACM) API documentation.
+#' Amazon Web Services Certificate Manager
 #' 
-#' You can use ACM to manage SSL/TLS certificates for your AWS-based
-#' websites and applications. For general information about using ACM, see
-#' the [*AWS Certificate Manager User
-#' Guide*](https://docs.aws.amazon.com/acm/latest/userguide/) .
+#' You can use Amazon Web Services Certificate Manager (ACM) to manage
+#' SSL/TLS certificates for your Amazon Web Services-based websites and
+#' applications. For more information about using ACM, see the [Amazon Web
+#' Services Certificate Manager User
+#' Guide](https://docs.aws.amazon.com/acm/latest/userguide/).
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -26,10 +39,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -48,13 +65,15 @@ NULL
 #'  \link[=acm_delete_certificate]{delete_certificate} \tab Deletes a certificate and its associated private key\cr
 #'  \link[=acm_describe_certificate]{describe_certificate} \tab Returns detailed metadata about the specified ACM certificate\cr
 #'  \link[=acm_export_certificate]{export_certificate} \tab Exports a private certificate issued by a private certificate authority (CA) for use anywhere\cr
+#'  \link[=acm_get_account_configuration]{get_account_configuration} \tab Returns the account configuration options associated with an Amazon Web Services account\cr
 #'  \link[=acm_get_certificate]{get_certificate} \tab Retrieves an Amazon-issued certificate and its certificate chain\cr
-#'  \link[=acm_import_certificate]{import_certificate} \tab Imports a certificate into AWS Certificate Manager (ACM) to use with services that are integrated with ACM\cr
+#'  \link[=acm_import_certificate]{import_certificate} \tab Imports a certificate into Amazon Web Services Certificate Manager (ACM) to use with services that are integrated with ACM\cr
 #'  \link[=acm_list_certificates]{list_certificates} \tab Retrieves a list of certificate ARNs and domain names\cr
 #'  \link[=acm_list_tags_for_certificate]{list_tags_for_certificate} \tab Lists the tags that have been applied to the ACM certificate\cr
+#'  \link[=acm_put_account_configuration]{put_account_configuration} \tab Adds or modifies account-level configurations in ACM\cr
 #'  \link[=acm_remove_tags_from_certificate]{remove_tags_from_certificate} \tab Remove one or more tags from an ACM certificate\cr
-#'  \link[=acm_renew_certificate]{renew_certificate} \tab Renews an eligable ACM certificate\cr
-#'  \link[=acm_request_certificate]{request_certificate} \tab Requests an ACM certificate for use with other AWS services\cr
+#'  \link[=acm_renew_certificate]{renew_certificate} \tab Renews an eligible ACM certificate\cr
+#'  \link[=acm_request_certificate]{request_certificate} \tab Requests an ACM certificate for use with other Amazon Web Services services\cr
 #'  \link[=acm_resend_validation_email]{resend_validation_email} \tab Resends the email that requests domain ownership validation\cr
 #'  \link[=acm_update_certificate_options]{update_certificate_options} \tab Updates a certificate
 #' }

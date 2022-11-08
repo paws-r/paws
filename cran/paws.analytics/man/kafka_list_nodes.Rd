@@ -4,7 +4,7 @@
 \alias{kafka_list_nodes}
 \title{Returns a list of the broker nodes in the cluster}
 \usage{
-kafka_list_nodes(ClusterArn, MaxResults, NextToken)
+kafka_list_nodes(ClusterArn, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{ClusterArn}{[required] The Amazon Resource Name (ARN) that uniquely identifies the cluster.}
@@ -16,53 +16,9 @@ more results, the response includes a NextToken parameter.}
 truncated, the call returns NextToken in the response. To get the next
 batch, provide this token in your next request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  NodeInfoList = list(
-    list(
-      AddedToClusterTime = "string",
-      BrokerNodeInfo = list(
-        AttachedENIId = "string",
-        BrokerId = 123.0,
-        ClientSubnet = "string",
-        ClientVpcIpAddress = "string",
-        CurrentBrokerSoftwareInfo = list(
-          ConfigurationArn = "string",
-          ConfigurationRevision = 123,
-          KafkaVersion = "string"
-        ),
-        Endpoints = list(
-          "string"
-        )
-      ),
-      InstanceType = "string",
-      NodeARN = "string",
-      NodeType = "BROKER",
-      ZookeeperNodeInfo = list(
-        AttachedENIId = "string",
-        ClientVpcIpAddress = "string",
-        Endpoints = list(
-          "string"
-        ),
-        ZookeeperId = 123.0,
-        ZookeeperVersion = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Returns a list of the broker nodes in the cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$list_nodes(
-  ClusterArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kafka/list_nodes.html} for full documentation.
+}
 \keyword{internal}

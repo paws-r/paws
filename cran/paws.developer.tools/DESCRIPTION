@@ -1,10 +1,10 @@
 Package: paws.developer.tools
 Title: 'Amazon Web Services' Developer Tools Services
-Version: 0.1.13
+Version: 0.1.14
 Authors@R: c(
-    person("David", "Kretch", , "david.kretch@gmail.com", role = c("aut")),
+    person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
-    person("Dyfan", "Jones", email = "dyfan.r.jones@gmail.com", role = "cre"),
+    person("Dyfan", "Jones", , "dyfan.r.jones@gmail.com", role = "cre"),
     person("Amazon.com, Inc.", role = "cph")
   )
 Description: Interface to 'Amazon Web Services' developer tools services,
@@ -19,11 +19,17 @@ Suggests:
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Collate: 
     'cloud9_service.R'
     'cloud9_interfaces.R'
     'cloud9_operations.R'
+    'cloudcontrolapi_service.R'
+    'cloudcontrolapi_interfaces.R'
+    'cloudcontrolapi_operations.R'
+    'codeartifact_service.R'
+    'codeartifact_interfaces.R'
+    'codeartifact_operations.R'
     'codebuild_service.R'
     'codebuild_interfaces.R'
     'codebuild_operations.R'
@@ -33,12 +39,36 @@ Collate:
     'codedeploy_service.R'
     'codedeploy_interfaces.R'
     'codedeploy_operations.R'
+    'codeguruprofiler_service.R'
+    'codeguruprofiler_interfaces.R'
+    'codeguruprofiler_operations.R'
+    'codegurureviewer_service.R'
+    'codegurureviewer_interfaces.R'
+    'codegurureviewer_operations.R'
     'codepipeline_service.R'
     'codepipeline_interfaces.R'
     'codepipeline_operations.R'
     'codestar_service.R'
     'codestar_interfaces.R'
     'codestar_operations.R'
+    'codestarconnections_service.R'
+    'codestarconnections_interfaces.R'
+    'codestarconnections_operations.R'
+    'codestarnotifications_service.R'
+    'codestarnotifications_interfaces.R'
+    'codestarnotifications_operations.R'
+    'devopsguru_service.R'
+    'devopsguru_interfaces.R'
+    'devopsguru_operations.R'
+    'drs_service.R'
+    'drs_interfaces.R'
+    'drs_operations.R'
+    'fis_service.R'
+    'fis_interfaces.R'
+    'fis_operations.R'
+    'wellarchitected_service.R'
+    'wellarchitected_interfaces.R'
+    'wellarchitected_operations.R'
     'xray_service.R'
     'xray_interfaces.R'
     'xray_operations.R'

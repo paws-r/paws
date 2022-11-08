@@ -11,65 +11,9 @@ wafregional_get_web_acl(WebACLId)
 returned by \code{\link[=wafregional_create_web_acl]{create_web_acl}} and by
 \code{\link[=wafregional_list_web_ac_ls]{list_web_ac_ls}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WebACL = list(
-    WebACLId = "string",
-    Name = "string",
-    MetricName = "string",
-    DefaultAction = list(
-      Type = "BLOCK"|"ALLOW"|"COUNT"
-    ),
-    Rules = list(
-      list(
-        Priority = 123,
-        RuleId = "string",
-        Action = list(
-          Type = "BLOCK"|"ALLOW"|"COUNT"
-        ),
-        OverrideAction = list(
-          Type = "NONE"|"COUNT"
-        ),
-        Type = "REGULAR"|"RATE_BASED"|"GROUP",
-        ExcludedRules = list(
-          list(
-            RuleId = "string"
-          )
-        )
-      )
-    ),
-    WebACLArn = "string"
-  )
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Returns the WebACL that is specified by \code{WebACLId}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_web_acl(
-  WebACLId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example returns the details of a web ACL with the ID
-# createwebacl-1472061481310.
-svc$get_web_acl(
-  WebACLId = "createwebacl-1472061481310"
-)
-}
-
+See \url{https://paws-r.github.io/docs/wafregional/get_web_acl.html} for full documentation.
 }
 \keyword{internal}

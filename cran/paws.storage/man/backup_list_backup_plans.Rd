@@ -2,9 +2,13 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_list_backup_plans}
 \alias{backup_list_backup_plans}
-\title{Returns a list of existing backup plans for an authenticated account}
+\title{Returns a list of all active backup plans for an authenticated account}
 \usage{
-backup_list_backup_plans(NextToken, MaxResults, IncludeDeleted)
+backup_list_backup_plans(
+  NextToken = NULL,
+  MaxResults = NULL,
+  IncludeDeleted = NULL
+)
 }
 \arguments{
 \item{NextToken}{The next item following a partial list of returned items. For example,
@@ -17,52 +21,9 @@ pointed to by the next token.}
 \item{IncludeDeleted}{A Boolean value with a default value of \code{FALSE} that returns deleted
 backup plans when set to \code{TRUE}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  BackupPlansList = list(
-    list(
-      BackupPlanArn = "string",
-      BackupPlanId = "string",
-      CreationDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      DeletionDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      VersionId = "string",
-      BackupPlanName = "string",
-      CreatorRequestId = "string",
-      LastExecutionDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      AdvancedBackupSettings = list(
-        list(
-          ResourceType = "string",
-          BackupOptions = list(
-            "string"
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns a list of existing backup plans for an authenticated account.
-The list is populated only if the advanced option is set for the backup
-plan. The list contains information such as Amazon Resource Names
-(ARNs), plan IDs, creation and deletion dates, version IDs, plan names,
-and creator request IDs.
-}
-\section{Request syntax}{
-\preformatted{svc$list_backup_plans(
-  NextToken = "string",
-  MaxResults = 123,
-  IncludeDeleted = TRUE|FALSE
-)
-}
-}
+Returns a list of all active backup plans for an authenticated account. The list contains information such as Amazon Resource Names (ARNs), plan IDs, creation and deletion dates, version IDs, plan names, and creator request IDs.
 
+See \url{https://paws-r.github.io/docs/backup/list_backup_plans.html} for full documentation.
+}
 \keyword{internal}

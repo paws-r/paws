@@ -4,9 +4,19 @@
 \alias{ec2_modify_subnet_attribute}
 \title{Modifies a subnet attribute}
 \usage{
-ec2_modify_subnet_attribute(AssignIpv6AddressOnCreation,
-  MapPublicIpOnLaunch, SubnetId, MapCustomerOwnedIpOnLaunch,
-  CustomerOwnedIpv4Pool)
+ec2_modify_subnet_attribute(
+  AssignIpv6AddressOnCreation = NULL,
+  MapPublicIpOnLaunch = NULL,
+  SubnetId,
+  MapCustomerOwnedIpOnLaunch = NULL,
+  CustomerOwnedIpv4Pool = NULL,
+  EnableDns64 = NULL,
+  PrivateDnsHostnameTypeOnLaunch = NULL,
+  EnableResourceNameDnsARecordOnLaunch = NULL,
+  EnableResourceNameDnsAAAARecordOnLaunch = NULL,
+  EnableLniAtDeviceIndex = NULL,
+  DisableLniAtDeviceIndex = NULL
+)
 }
 \arguments{
 \item{AssignIpv6AddressOnCreation}{Specify \code{true} to indicate that network interfaces created in the
@@ -35,42 +45,34 @@ using \code{CustomerOwnedIpv4Pool}.}
 
 You must set this value when you specify \code{true} for
 \code{MapCustomerOwnedIpOnLaunch}.}
-}
-\value{
-An empty list.
+
+\item{EnableDns64}{Indicates whether DNS queries made to the Amazon-provided DNS Resolver
+in this subnet should return synthetic IPv6 addresses for IPv4-only
+destinations.}
+
+\item{PrivateDnsHostnameTypeOnLaunch}{The type of hostname to assign to instances in the subnet at launch. For
+IPv4-only and dual-stack (IPv4 and IPv6) subnets, an instance DNS name
+can be based on the instance IPv4 address (ip-name) or the instance ID
+(resource-name). For IPv6 only subnets, an instance DNS name must be
+based on the instance ID (resource-name).}
+
+\item{EnableResourceNameDnsARecordOnLaunch}{Indicates whether to respond to DNS queries for instance hostnames with
+DNS A records.}
+
+\item{EnableResourceNameDnsAAAARecordOnLaunch}{Indicates whether to respond to DNS queries for instance hostnames with
+DNS AAAA records.}
+
+\item{EnableLniAtDeviceIndex}{Indicates the device position for local network interfaces in this
+subnet. For example, \code{1} indicates local network interfaces in this
+subnet are the secondary network interface (eth1). A local network
+interface cannot be the primary network interface (eth0).}
+
+\item{DisableLniAtDeviceIndex}{Specify \code{true} to indicate that local network interfaces at the current
+position should be disabled.}
 }
 \description{
-Modifies a subnet attribute. You can only modify one attribute at a
-time.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_subnet_attribute(
-  AssignIpv6AddressOnCreation = list(
-    Value = TRUE|FALSE
-  ),
-  MapPublicIpOnLaunch = list(
-    Value = TRUE|FALSE
-  ),
-  SubnetId = "string",
-  MapCustomerOwnedIpOnLaunch = list(
-    Value = TRUE|FALSE
-  ),
-  CustomerOwnedIpv4Pool = "string"
-)
-}
-}
+Modifies a subnet attribute. You can only modify one attribute at a time.
 
-\examples{
-\dontrun{
-# This example modifies the specified subnet so that all instances
-# launched into this subnet are assigned a public IP address.
-svc$modify_subnet_attribute(
-  MapPublicIpOnLaunch = list(
-    Value = TRUE
-  ),
-  SubnetId = "subnet-1a2b3c4d"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/modify_subnet_attribute.html} for full documentation.
 }
 \keyword{internal}

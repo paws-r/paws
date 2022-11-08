@@ -11,23 +11,9 @@ connect_get_contact_attributes(InstanceId, InitialContactId)
 
 \item{InitialContactId}{[required] The identifier of the initial contact.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Retrieves the contact attributes for the specified contact.
-}
-\section{Request syntax}{
-\preformatted{svc$get_contact_attributes(
-  InstanceId = "string",
-  InitialContactId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/get_contact_attributes.html} for full documentation.
+}
 \keyword{internal}

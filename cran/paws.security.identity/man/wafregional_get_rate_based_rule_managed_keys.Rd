@@ -4,7 +4,7 @@
 \alias{wafregional_get_rate_based_rule_managed_keys}
 \title{This is AWS WAF Classic documentation}
 \usage{
-wafregional_get_rate_based_rule_managed_keys(RuleId, NextMarker)
+wafregional_get_rate_based_rule_managed_keys(RuleId, NextMarker = NULL)
 }
 \arguments{
 \item{RuleId}{[required] The \code{RuleId} of the RateBasedRule for which you want to get a list of
@@ -15,37 +15,9 @@ wafregional_get_rate_based_rule_managed_keys(RuleId, NextMarker)
 \item{NextMarker}{A null value and not currently used. Do not include this in your
 request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ManagedKeys = list(
-    "string"
-  ),
-  NextMarker = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Returns an array of IP addresses currently being blocked by the
-RateBasedRule that is specified by the \code{RuleId}. The maximum number of
-managed keys that will be blocked is 10,000. If more than 10,000
-addresses exceed the rate limit, the 10,000 addresses with the highest
-rates will be blocked.
+See \url{https://paws-r.github.io/docs/wafregional/get_rate_based_rule_managed_keys.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_rate_based_rule_managed_keys(
-  RuleId = "string",
-  NextMarker = "string"
-)
-}
-}
-
 \keyword{internal}

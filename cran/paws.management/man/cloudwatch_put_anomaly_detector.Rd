@@ -4,60 +4,66 @@
 \alias{cloudwatch_put_anomaly_detector}
 \title{Creates an anomaly detection model for a CloudWatch metric}
 \usage{
-cloudwatch_put_anomaly_detector(Namespace, MetricName, Dimensions, Stat,
-  Configuration)
+cloudwatch_put_anomaly_detector(
+  Namespace = NULL,
+  MetricName = NULL,
+  Dimensions = NULL,
+  Stat = NULL,
+  Configuration = NULL,
+  SingleMetricAnomalyDetector = NULL,
+  MetricMathAnomalyDetector = NULL
+)
 }
 \arguments{
-\item{Namespace}{[required] The namespace of the metric to create the anomaly detection model for.}
+\item{Namespace}{The namespace of the metric to create the anomaly detection model for.}
 
-\item{MetricName}{[required] The name of the metric to create the anomaly detection model for.}
+\item{MetricName}{The name of the metric to create the anomaly detection model for.}
 
 \item{Dimensions}{The metric dimensions to create the anomaly detection model for.}
 
-\item{Stat}{[required] The statistic to use for the metric and the anomaly detection model.}
+\item{Stat}{The statistic to use for the metric and the anomaly detection model.}
 
 \item{Configuration}{The configuration specifies details about how the anomaly detection
 model is to be trained, including time ranges to exclude when training
 and updating the model. You can specify as many as 10 time ranges.
 
 The configuration can also include the time zone to use for the metric.}
+
+\item{SingleMetricAnomalyDetector}{A single metric anomaly detector to be created.
+
+When using \code{SingleMetricAnomalyDetector}, you cannot include the
+following parameters in the same operation:
+\itemize{
+\item \code{Dimensions}
+\item \code{MetricName}
+\item \code{Namespace}
+\item \code{Stat}
+\item the \code{MetricMatchAnomalyDetector} parameters of
+\code{PutAnomalyDetectorInput}
 }
-\value{
-An empty list.
+
+Instead, specify the single metric anomaly detector attributes as part
+of the property \code{SingleMetricAnomalyDetector}.}
+
+\item{MetricMathAnomalyDetector}{The metric math anomaly detector to be created.
+
+When using \code{MetricMathAnomalyDetector}, you cannot include the following
+parameters in the same operation:
+\itemize{
+\item \code{Dimensions}
+\item \code{MetricName}
+\item \code{Namespace}
+\item \code{Stat}
+\item the \code{SingleMetricAnomalyDetector} parameters of
+\code{PutAnomalyDetectorInput}
+}
+
+Instead, specify the metric math anomaly detector attributes as part of
+the property \code{MetricMathAnomalyDetector}.}
 }
 \description{
-Creates an anomaly detection model for a CloudWatch metric. You can use
-the model to display a band of expected normal values when the metric is
-graphed.
+Creates an anomaly detection model for a CloudWatch metric. You can use the model to display a band of expected normal values when the metric is graphed.
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html}{CloudWatch Anomaly Detection}.
+See \url{https://paws-r.github.io/docs/cloudwatch/put_anomaly_detector.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_anomaly_detector(
-  Namespace = "string",
-  MetricName = "string",
-  Dimensions = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  Stat = "string",
-  Configuration = list(
-    ExcludedTimeRanges = list(
-      list(
-        StartTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        EndTime = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    MetricTimezone = "string"
-  )
-)
-}
-}
-
 \keyword{internal}

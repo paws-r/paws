@@ -5,8 +5,12 @@
 \title{Updates the specified user's attributes, including developer attributes,
 as an administrator}
 \usage{
-cognitoidentityprovider_admin_update_user_attributes(UserPoolId,
-  Username, UserAttributes, ClientMetadata)
+cognitoidentityprovider_admin_update_user_attributes(
+  UserPoolId,
+  Username,
+  UserAttributes,
+  ClientMetadata = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where you want to update user
@@ -17,68 +21,54 @@ attributes.}
 \item{UserAttributes}{[required] An array of name-value pairs representing user attributes.
 
 For custom attributes, you must prepend the \verb{custom:} prefix to the
-attribute name.}
+attribute name.
+
+If your user pool requires verification before Amazon Cognito updates an
+attribute value that you specify in this request, Amazon Cognito doesn’t
+immediately update the value of that attribute. After your user receives
+and responds to a verification message to verify the new value, Amazon
+Cognito updates the attribute value. Your user can sign in and receive
+messages with the original attribute value until they verify the new
+value.
+
+To update the value of an attribute that requires verification in the
+same API request, include the \code{email_verified} or
+\code{phone_number_verified} attribute, with a value of \code{true}. If you set
+the \code{email_verified} or \code{phone_number_verified} value for an \code{email} or
+\code{phone_number} attribute that requires verification to \code{true}, Amazon
+Cognito doesn’t send a verification message to your user.}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for any
 custom workflows that this action triggers.
 
-You create custom workflows by assigning AWS Lambda functions to user
-pool triggers. When you use the AdminUpdateUserAttributes API action,
-Amazon Cognito invokes the function that is assigned to the \emph{custom
-message} trigger. When Amazon Cognito invokes this function, it passes a
-JSON payload, which the function receives as input. This payload
-contains a \code{clientMetadata} attribute, which provides the data that you
-assigned to the ClientMetadata parameter in your
-AdminUpdateUserAttributes request. In your function code in AWS Lambda,
-you can process the \code{clientMetadata} value to enhance your workflow for
-your specific needs.
+You create custom workflows by assigning Lambda functions to user pool
+triggers. When you use the AdminUpdateUserAttributes API action, Amazon
+Cognito invokes the function that is assigned to the \emph{custom message}
+trigger. When Amazon Cognito invokes this function, it passes a JSON
+payload, which the function receives as input. This payload contains a
+\code{clientMetadata} attribute, which provides the data that you assigned to
+the ClientMetadata parameter in your AdminUpdateUserAttributes request.
+In your function code in Lambda, you can process the \code{clientMetadata}
+value to enhance your workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing User Pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
-Take the following limitations into consideration when you use the
-ClientMetadata parameter:
+When you use the ClientMetadata parameter, remember that Amazon Cognito
+won't do the following:
 \itemize{
-\item Amazon Cognito does not store the ClientMetadata value. This data is
-available only to AWS Lambda triggers that are assigned to a user
-pool to support custom workflows. If your user pool configuration
-does not include triggers, the ClientMetadata parameter serves no
-purpose.
-\item Amazon Cognito does not validate the ClientMetadata value.
-\item Amazon Cognito does not encrypt the the ClientMetadata value, so
-don't use it to provide sensitive information.
+\item Store the ClientMetadata value. This data is available only to
+Lambda triggers that are assigned to a user pool to support custom
+workflows. If your user pool configuration doesn't include triggers,
+the ClientMetadata parameter serves no purpose.
+\item Validate the ClientMetadata value.
+\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
+provide sensitive information.
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the specified user's attributes, including developer attributes,
-as an administrator. Works on any user.
+Updates the specified user's attributes, including developer attributes, as an administrator. Works on any user.
 
-For custom attributes, you must prepend the \verb{custom:} prefix to the
-attribute name.
-
-In addition to updating user attributes, this API can also be used to
-mark phone and email as verified.
-
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_update_user_attributes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_update_user_attributes(
-  UserPoolId = "string",
-  Username = "string",
-  UserAttributes = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ClientMetadata = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

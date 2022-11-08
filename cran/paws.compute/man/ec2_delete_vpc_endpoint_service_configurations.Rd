@@ -4,7 +4,7 @@
 \alias{ec2_delete_vpc_endpoint_service_configurations}
 \title{Deletes one or more VPC endpoint service configurations in your account}
 \usage{
-ec2_delete_vpc_endpoint_service_configurations(DryRun, ServiceIds)
+ec2_delete_vpc_endpoint_service_configurations(DryRun = NULL, ServiceIds)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,34 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ServiceIds}{[required] The IDs of one or more services.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Unsuccessful = list(
-    list(
-      Error = list(
-        Code = "string",
-        Message = "string"
-      ),
-      ResourceId = "string"
-    )
-  )
-)
-}
-}
 \description{
-Deletes one or more VPC endpoint service configurations in your account.
-Before you delete the endpoint service configuration, you must reject
-any \code{Available} or \code{PendingAcceptance} interface endpoint connections
-that are attached to the service.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_vpc_endpoint_service_configurations(
-  DryRun = TRUE|FALSE,
-  ServiceIds = list(
-    "string"
-  )
-)
-}
-}
+Deletes one or more VPC endpoint service configurations in your account. Before you delete the endpoint service configuration, you must reject any \code{Available} or \code{PendingAcceptance} interface endpoint connections that are attached to the service.
 
+See \url{https://paws-r.github.io/docs/ec2/delete_vpc_endpoint_service_configurations.html} for full documentation.
+}
 \keyword{internal}

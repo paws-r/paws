@@ -4,8 +4,11 @@
 \alias{sagemaker_create_model_package_group}
 \title{Creates a model group}
 \usage{
-sagemaker_create_model_package_group(ModelPackageGroupName,
-  ModelPackageGroupDescription, Tags)
+sagemaker_create_model_package_group(
+  ModelPackageGroupName,
+  ModelPackageGroupDescription = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ModelPackageGroupName}{[required] The name of the model group.}
@@ -13,30 +16,12 @@ sagemaker_create_model_package_group(ModelPackageGroupName,
 \item{ModelPackageGroupDescription}{A description for the model group.}
 
 \item{Tags}{A list of key value pairs associated with the model group. For more
-information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
-in the \emph{AWS General Reference Guide}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ModelPackageGroupArn = "string"
-)
-}
+information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+in the \emph{Amazon Web Services General Reference Guide}.}
 }
 \description{
 Creates a model group. A model group contains a group of model versions.
-}
-\section{Request syntax}{
-\preformatted{svc$create_model_package_group(
-  ModelPackageGroupName = "string",
-  ModelPackageGroupDescription = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_model_package_group.html} for full documentation.
+}
 \keyword{internal}

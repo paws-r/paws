@@ -4,7 +4,7 @@
 \alias{sqs_get_queue_attributes}
 \title{Gets attributes for the specified queue}
 \usage{
-sqs_get_queue_attributes(QueueUrl, AttributeNames)
+sqs_get_queue_attributes(QueueUrl, AttributeNames = NULL)
 }
 \arguments{
 \item{QueueUrl}{[required] The URL of the Amazon SQS queue whose attribute information is
@@ -13,6 +13,9 @@ retrieved.
 Queue URLs and names are case-sensitive.}
 
 \item{AttributeNames}{A list of attributes for which to retrieve information.
+
+The \code{AttributeName.N} parameter is optional, but if you don't specify
+values for this parameter, the request returns empty results.
 
 In the future, new attributes might be added. If you write code that
 calls this action, we recommend that you structure your code so that it
@@ -56,7 +59,7 @@ action waits for a message to arrive.
 dead-letter queue functionality of the source queue as a JSON
 object. For more information about the redrive policy and
 dead-letter queues, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Using Amazon SQS Dead-Letter Queues}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+in the \emph{Amazon SQS Developer Guide}.
 \itemize{
 \item \code{deadLetterTargetArn} – The Amazon Resource Name (ARN) of the
 dead-letter queue to which Amazon SQS moves messages after the
@@ -69,45 +72,43 @@ the dead-letter-queue.
 }
 \item \code{VisibilityTimeout} – Returns the visibility timeout for the queue.
 For more information about the visibility timeout, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+in the \emph{Amazon SQS Developer Guide}.
 }
 
 The following attributes apply only to
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html}{server-side-encryption}:
 \itemize{
-\item \code{KmsMasterKeyId} – Returns the ID of an AWS-managed customer master
-key (CMK) for Amazon SQS or a custom CMK. For more information, see
-\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms}{Key Terms}.
+\item \code{KmsMasterKeyId} – Returns the ID of an Amazon Web Services managed
+customer master key (CMK) for Amazon SQS or a custom CMK. For more
+information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms}{Key Terms}.
 \item \code{KmsDataKeyReusePeriodSeconds} – Returns the length of time, in
 seconds, for which Amazon SQS can reuse a data key to encrypt or
-decrypt messages before calling AWS KMS again. For more information,
-see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work}{How Does the Data Key Reuse Period Work?}.
+decrypt messages before calling KMS again. For more information, see
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work}{How Does the Data Key Reuse Period Work?}.
+\item \code{SqsManagedSseEnabled} – Returns information about whether the queue
+is using SSE-SQS encryption using SQS owned encryption keys. Only
+one server-side encryption option is supported per queue (e.g.
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html}{SSE-KMS}
+or
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html}{SSE-SQS}).
 }
 
 The following attributes apply only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO (first-in-first-out) queues}:
 \itemize{
 \item \code{FifoQueue} – Returns information about whether the queue is FIFO.
-For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic}{FIFO Queue Logic}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-understanding-logic.html}{FIFO queue logic}
+in the \emph{Amazon SQS Developer Guide}.
 
 To determine whether a queue is
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO},
 you can check whether \code{QueueName} ends with the \code{.fifo} suffix.
 \item \code{ContentBasedDeduplication} – Returns whether content-based
 deduplication is enabled for the queue. For more information, see
-\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing}{Exactly-Once Processing}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html}{Exactly-once processing}
+in the \emph{Amazon SQS Developer Guide}.
 }
 
-\strong{Preview: High throughput for FIFO queues}
-
-\strong{High throughput for Amazon SQS FIFO queues is in preview release and
-is subject to change.} This feature provides a high number of
-transactions per second (TPS) for messages in FIFO queues. For
-information on throughput quotas, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html}{Quotas related to messages}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
-
-This preview includes two new attributes:
+The following attributes apply only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html}{high throughput for FIFO queues}:
 \itemize{
 \item \code{DeduplicationScope} – Specifies whether message deduplication
 occurs at the message group or queue level. Valid values are
@@ -126,44 +127,15 @@ To enable high throughput for FIFO queues, do the following:
 }
 
 If you set these attributes to anything other than the values shown for
-enabling high throughput, standard throughput is in effect and
+enabling high throughput, normal throughput is in effect and
 deduplication occurs as specified.
 
-This preview is available in the following AWS Regions:
-\itemize{
-\item US East (Ohio); us-east-2
-\item US East (N. Virginia); us-east-1
-\item US West (Oregon); us-west-2
-\item Europe (Ireland); eu-west-1
-}
-
-For more information about high throughput for FIFO queues, see
-\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html}{Preview: High throughput for FIFO queues}
-in the \emph{Amazon Simple Queue Service Developer Guide}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    "string"
-  )
-)
-}
+For information on throughput quotas, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html}{Quotas related to messages}
+in the \emph{Amazon SQS Developer Guide}.}
 }
 \description{
 Gets attributes for the specified queue.
 
-To determine whether a queue is
-\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO},
-you can check whether \code{QueueName} ends with the \code{.fifo} suffix.
+See \url{https://paws-r.github.io/docs/sqs/get_queue_attributes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_queue_attributes(
-  QueueUrl = "string",
-  AttributeNames = list(
-    "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"|"DeduplicationScope"|"FifoThroughputLimit"
-  )
-)
-}
-}
-
 \keyword{internal}

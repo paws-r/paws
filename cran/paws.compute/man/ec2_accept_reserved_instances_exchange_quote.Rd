@@ -5,8 +5,11 @@
 \title{Accepts the Convertible Reserved Instance exchange quote described in
 the GetReservedInstancesExchangeQuote call}
 \usage{
-ec2_accept_reserved_instances_exchange_quote(DryRun,
-  ReservedInstanceIds, TargetConfigurations)
+ec2_accept_reserved_instances_exchange_quote(
+  DryRun = NULL,
+  ReservedInstanceIds,
+  TargetConfigurations = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -20,32 +23,9 @@ Convertible Reserved Instance of the same or higher value.}
 \item{TargetConfigurations}{The configuration of the target Convertible Reserved Instance to
 exchange for your current Convertible Reserved Instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExchangeId = "string"
-)
-}
-}
 \description{
-Accepts the Convertible Reserved Instance exchange quote described in
-the
-\code{\link[=ec2_get_reserved_instances_exchange_quote]{get_reserved_instances_exchange_quote}}
-call.
-}
-\section{Request syntax}{
-\preformatted{svc$accept_reserved_instances_exchange_quote(
-  DryRun = TRUE|FALSE,
-  ReservedInstanceIds = list(
-    "string"
-  ),
-  TargetConfigurations = list(
-    list(
-      InstanceCount = 123,
-      OfferingId = "string"
-    )
-  )
-)
-}
-}
+Accepts the Convertible Reserved Instance exchange quote described in the \code{\link[=ec2_get_reserved_instances_exchange_quote]{get_reserved_instances_exchange_quote}} call.
 
+See \url{https://paws-r.github.io/docs/ec2/accept_reserved_instances_exchange_quote.html} for full documentation.
+}
 \keyword{internal}

@@ -4,7 +4,12 @@
 \alias{apigatewayv2_get_route_responses}
 \title{Gets the RouteResponses for a Route}
 \usage{
-apigatewayv2_get_route_responses(ApiId, MaxResults, NextToken, RouteId)
+apigatewayv2_get_route_responses(
+  ApiId,
+  MaxResults = NULL,
+  NextToken = NULL,
+  RouteId
+)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -16,38 +21,9 @@ element of the collection.}
 
 \item{RouteId}{[required] The route ID.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Items = list(
-    list(
-      ModelSelectionExpression = "string",
-      ResponseModels = list(
-        "string"
-      ),
-      ResponseParameters = list(
-        list(
-          Required = TRUE|FALSE
-        )
-      ),
-      RouteResponseId = "string",
-      RouteResponseKey = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets the RouteResponses for a Route.
-}
-\section{Request syntax}{
-\preformatted{svc$get_route_responses(
-  ApiId = "string",
-  MaxResults = "string",
-  NextToken = "string",
-  RouteId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_route_responses.html} for full documentation.
+}
 \keyword{internal}

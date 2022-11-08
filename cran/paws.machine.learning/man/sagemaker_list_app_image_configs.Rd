@@ -4,9 +4,17 @@
 \alias{sagemaker_list_app_image_configs}
 \title{Lists the AppImageConfigs in your account and their properties}
 \usage{
-sagemaker_list_app_image_configs(MaxResults, NextToken, NameContains,
-  CreationTimeBefore, CreationTimeAfter, ModifiedTimeBefore,
-  ModifiedTimeAfter, SortBy, SortOrder)
+sagemaker_list_app_image_configs(
+  MaxResults = NULL,
+  NextToken = NULL,
+  NameContains = NULL,
+  CreationTimeBefore = NULL,
+  CreationTimeAfter = NULL,
+  ModifiedTimeBefore = NULL,
+  ModifiedTimeAfter = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of AppImageConfigs to return in the response. The
@@ -35,63 +43,9 @@ specified time.}
 
 \item{SortOrder}{The sort order. The default value is \code{Descending}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  AppImageConfigs = list(
-    list(
-      AppImageConfigArn = "string",
-      AppImageConfigName = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastModifiedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      KernelGatewayImageConfig = list(
-        KernelSpecs = list(
-          list(
-            Name = "string",
-            DisplayName = "string"
-          )
-        ),
-        FileSystemConfig = list(
-          MountPath = "string",
-          DefaultUid = 123,
-          DefaultGid = 123
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Lists the AppImageConfigs in your account and their properties. The list
-can be filtered by creation time or modified time, and whether the
-AppImageConfig name contains a specified string.
-}
-\section{Request syntax}{
-\preformatted{svc$list_app_image_configs(
-  MaxResults = 123,
-  NextToken = "string",
-  NameContains = "string",
-  CreationTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreationTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  ModifiedTimeBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  ModifiedTimeAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  SortBy = "CreationTime"|"LastModifiedTime"|"Name",
-  SortOrder = "Ascending"|"Descending"
-)
-}
-}
+Lists the AppImageConfigs in your account and their properties. The list can be filtered by creation time or modified time, and whether the AppImageConfig name contains a specified string.
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_app_image_configs.html} for full documentation.
+}
 \keyword{internal}

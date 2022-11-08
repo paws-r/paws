@@ -4,47 +4,18 @@
 \alias{s3_delete_bucket_tagging}
 \title{Deletes the tags from the bucket}
 \usage{
-s3_delete_bucket_tagging(Bucket, ExpectedBucketOwner)
+s3_delete_bucket_tagging(Bucket, ExpectedBucketOwner = NULL)
 }
 \arguments{
 \item{Bucket}{[required] The bucket that has the tag set to be removed.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-An empty list.
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
 Deletes the tags from the bucket.
 
-To use this operation, you must have permission to perform the
-\code{s3:PutBucketTagging} action. By default, the bucket owner has this
-permission and can grant this permission to others.
-
-The following operations are related to
-\code{\link[=s3_delete_bucket_tagging]{delete_bucket_tagging}}:
-\itemize{
-\item \code{\link[=s3_get_bucket_tagging]{get_bucket_tagging}}
-\item \code{\link[=s3_put_bucket_tagging]{put_bucket_tagging}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$delete_bucket_tagging(
-  Bucket = "string",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes bucket tags.
-svc$delete_bucket_tagging(
-  Bucket = "examplebucket"
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/delete_bucket_tagging.html} for full documentation.
 }
 \keyword{internal}

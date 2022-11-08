@@ -11,28 +11,9 @@ codecommit_get_pull_request_approval_states(pullRequestId, revisionId)
 
 \item{revisionId}{[required] The system-generated ID for the pull request revision.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  approvals = list(
-    list(
-      userArn = "string",
-      approvalState = "APPROVE"|"REVOKE"
-    )
-  )
-)
-}
-}
 \description{
-Gets information about the approval states for a specified pull request.
-Approval states only apply to pull requests that have one or more
-approval rules applied to them.
-}
-\section{Request syntax}{
-\preformatted{svc$get_pull_request_approval_states(
-  pullRequestId = "string",
-  revisionId = "string"
-)
-}
-}
+Gets information about the approval states for a specified pull request. Approval states only apply to pull requests that have one or more approval rules applied to them.
 
+See \url{https://paws-r.github.io/docs/codecommit/get_pull_request_approval_states.html} for full documentation.
+}
 \keyword{internal}

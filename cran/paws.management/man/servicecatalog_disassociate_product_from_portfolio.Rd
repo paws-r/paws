@@ -4,8 +4,11 @@
 \alias{servicecatalog_disassociate_product_from_portfolio}
 \title{Disassociates the specified product from the specified portfolio}
 \usage{
-servicecatalog_disassociate_product_from_portfolio(AcceptLanguage,
-  ProductId, PortfolioId)
+servicecatalog_disassociate_product_from_portfolio(
+  AcceptLanguage = NULL,
+  ProductId,
+  PortfolioId
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -19,21 +22,9 @@ servicecatalog_disassociate_product_from_portfolio(AcceptLanguage,
 
 \item{PortfolioId}{[required] The portfolio identifier.}
 }
-\value{
-An empty list.
-}
 \description{
 Disassociates the specified product from the specified portfolio.
 
-A delegated admin is authorized to invoke this command.
+See \url{https://paws-r.github.io/docs/servicecatalog/disassociate_product_from_portfolio.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disassociate_product_from_portfolio(
-  AcceptLanguage = "string",
-  ProductId = "string",
-  PortfolioId = "string"
-)
-}
-}
-
 \keyword{internal}

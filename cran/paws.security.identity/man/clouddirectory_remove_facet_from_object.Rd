@@ -4,8 +4,11 @@
 \alias{clouddirectory_remove_facet_from_object}
 \title{Removes the specified facet from the specified object}
 \usage{
-clouddirectory_remove_facet_from_object(DirectoryArn, SchemaFacet,
-  ObjectReference)
+clouddirectory_remove_facet_from_object(
+  DirectoryArn,
+  SchemaFacet,
+  ObjectReference
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory in which the object resides.}
@@ -14,24 +17,9 @@ clouddirectory_remove_facet_from_object(DirectoryArn, SchemaFacet,
 
 \item{ObjectReference}{[required] A reference to the object to remove the facet from.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes the specified facet from the specified object.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_facet_from_object(
-  DirectoryArn = "string",
-  SchemaFacet = list(
-    SchemaArn = "string",
-    FacetName = "string"
-  ),
-  ObjectReference = list(
-    Selector = "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/remove_facet_from_object.html} for full documentation.
+}
 \keyword{internal}

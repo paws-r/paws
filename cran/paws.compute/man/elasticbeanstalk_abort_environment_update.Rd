@@ -5,8 +5,10 @@
 \title{Cancels in-progress environment configuration update or application
 version deployment}
 \usage{
-elasticbeanstalk_abort_environment_update(EnvironmentId,
-  EnvironmentName)
+elasticbeanstalk_abort_environment_update(
+  EnvironmentId = NULL,
+  EnvironmentName = NULL
+)
 }
 \arguments{
 \item{EnvironmentId}{This specifies the ID of the environment with the in-progress update
@@ -15,29 +17,9 @@ that you want to cancel.}
 \item{EnvironmentName}{This specifies the name of the environment with the in-progress update
 that you want to cancel.}
 }
-\value{
-An empty list.
-}
 \description{
-Cancels in-progress environment configuration update or application
-version deployment.
-}
-\section{Request syntax}{
-\preformatted{svc$abort_environment_update(
-  EnvironmentId = "string",
-  EnvironmentName = "string"
-)
-}
-}
+Cancels in-progress environment configuration update or application version deployment.
 
-\examples{
-\dontrun{
-# The following code aborts a running application version deployment for
-# an environment named my-env:
-svc$abort_environment_update(
-  EnvironmentName = "my-env"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/abort_environment_update.html} for full documentation.
 }
 \keyword{internal}

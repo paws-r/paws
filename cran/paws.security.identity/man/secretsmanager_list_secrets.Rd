@@ -2,129 +2,35 @@
 % Please edit documentation in R/secretsmanager_operations.R
 \name{secretsmanager_list_secrets}
 \alias{secretsmanager_list_secrets}
-\title{Lists all of the secrets that are stored by Secrets Manager in the AWS
-account}
+\title{Lists the secrets that are stored by Secrets Manager in the Amazon Web
+Services account, not including secrets that are marked for deletion}
 \usage{
-secretsmanager_list_secrets(MaxResults, NextToken, Filters, SortOrder)
+secretsmanager_list_secrets(
+  MaxResults = NULL,
+  NextToken = NULL,
+  Filters = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
-\item{MaxResults}{(Optional) Limits the number of results you want to include in the
-response. If you don't include this parameter, it defaults to a value
-that's specific to the operation. If additional items exist beyond the
-maximum you specify, the \code{NextToken} response element is present and has
-a value (isn't null). Include that value as the \code{NextToken} request
-parameter in the next call to the operation to get the next part of the
-results. Note that Secrets Manager might return fewer results than the
-maximum even when there are more results available. You should check
-\code{NextToken} after every operation to ensure that you receive all of the
-results.}
+\item{MaxResults}{The number of results to include in the response.
 
-\item{NextToken}{(Optional) Use this parameter in a request if you receive a \code{NextToken}
-response in a previous request indicating there's more output available.
-In a subsequent call, set it to the value of the previous call
-\code{NextToken} response to indicate where the output should continue from.}
+If there are more results available, in the response, Secrets Manager
+includes \code{NextToken}. To get the next results, call
+\code{\link[=secretsmanager_list_secrets]{list_secrets}} again with the value from
+\code{NextToken}.}
 
-\item{Filters}{Lists the secret request filters.}
+\item{NextToken}{A token that indicates where the output should continue from, if a
+previous call did not show all results. To get the next results, call
+\code{\link[=secretsmanager_list_secrets]{list_secrets}} again with this value.}
+
+\item{Filters}{The filters to apply to the list of secrets.}
 
 \item{SortOrder}{Lists secrets in the requested order.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SecretList = list(
-    list(
-      ARN = "string",
-      Name = "string",
-      Description = "string",
-      KmsKeyId = "string",
-      RotationEnabled = TRUE|FALSE,
-      RotationLambdaARN = "string",
-      RotationRules = list(
-        AutomaticallyAfterDays = 123
-      ),
-      LastRotatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastChangedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastAccessedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      DeletedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      SecretVersionsToStages = list(
-        list(
-          "string"
-        )
-      ),
-      OwningService = "string",
-      CreatedDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists all of the secrets that are stored by Secrets Manager in the AWS
-account. To list the versions currently stored for a specific secret,
-use \code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}.
-The encrypted fields \code{SecretString} and \code{SecretBinary} are not included
-in the output. To get that information, call the
-\code{\link[=secretsmanager_get_secret_value]{get_secret_value}} operation.
+Lists the secrets that are stored by Secrets Manager in the Amazon Web Services account, not including secrets that are marked for deletion. To see secrets marked for deletion, use the Secrets Manager console.
 
-Always check the \code{NextToken} response parameter when calling any of the
-\verb{List*} operations. These operations can occasionally return an empty or
-shorter than expected list of results even when there more results
-become available. When this happens, the \code{NextToken} response parameter
-contains a value to pass to the next call to the same API to request the
-next part of the list.
-
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item secretsmanager:ListSecrets
-}
-
-\strong{Related operations}
-\itemize{
-\item To list the versions attached to a secret, use
-\code{\link[=secretsmanager_list_secret_version_ids]{list_secret_version_ids}}.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$list_secrets(
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Key = "description"|"name"|"tag-key"|"tag-value"|"all",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  SortOrder = "asc"|"desc"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to list all of the secrets in your
-# account.
-svc$list_secrets()
-}
-
+See \url{https://paws-r.github.io/docs/secretsmanager/list_secrets.html} for full documentation.
 }
 \keyword{internal}

@@ -2,14 +2,18 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_modify_vpn_tunnel_options}
 \alias{ec2_modify_vpn_tunnel_options}
-\title{Modifies the options for a VPN tunnel in an AWS Site-to-Site VPN
-connection}
+\title{Modifies the options for a VPN tunnel in an Amazon Web Services
+Site-to-Site VPN connection}
 \usage{
-ec2_modify_vpn_tunnel_options(VpnConnectionId,
-  VpnTunnelOutsideIpAddress, TunnelOptions, DryRun)
+ec2_modify_vpn_tunnel_options(
+  VpnConnectionId,
+  VpnTunnelOutsideIpAddress,
+  TunnelOptions,
+  DryRun = NULL
+)
 }
 \arguments{
-\item{VpnConnectionId}{[required] The ID of the AWS Site-to-Site VPN connection.}
+\item{VpnConnectionId}{[required] The ID of the Amazon Web Services Site-to-Site VPN connection.}
 
 \item{VpnTunnelOutsideIpAddress}{[required] The external IP address of the VPN tunnel.}
 
@@ -20,168 +24,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VpnConnection = list(
-    CustomerGatewayConfiguration = "string",
-    CustomerGatewayId = "string",
-    Category = "string",
-    State = "pending"|"available"|"deleting"|"deleted",
-    Type = "ipsec.1",
-    VpnConnectionId = "string",
-    VpnGatewayId = "string",
-    TransitGatewayId = "string",
-    Options = list(
-      EnableAcceleration = TRUE|FALSE,
-      StaticRoutesOnly = TRUE|FALSE,
-      LocalIpv4NetworkCidr = "string",
-      RemoteIpv4NetworkCidr = "string",
-      LocalIpv6NetworkCidr = "string",
-      RemoteIpv6NetworkCidr = "string",
-      TunnelInsideIpVersion = "ipv4"|"ipv6",
-      TunnelOptions = list(
-        list(
-          OutsideIpAddress = "string",
-          TunnelInsideCidr = "string",
-          TunnelInsideIpv6Cidr = "string",
-          PreSharedKey = "string",
-          Phase1LifetimeSeconds = 123,
-          Phase2LifetimeSeconds = 123,
-          RekeyMarginTimeSeconds = 123,
-          RekeyFuzzPercentage = 123,
-          ReplayWindowSize = 123,
-          DpdTimeoutSeconds = 123,
-          DpdTimeoutAction = "string",
-          Phase1EncryptionAlgorithms = list(
-            list(
-              Value = "string"
-            )
-          ),
-          Phase2EncryptionAlgorithms = list(
-            list(
-              Value = "string"
-            )
-          ),
-          Phase1IntegrityAlgorithms = list(
-            list(
-              Value = "string"
-            )
-          ),
-          Phase2IntegrityAlgorithms = list(
-            list(
-              Value = "string"
-            )
-          ),
-          Phase1DHGroupNumbers = list(
-            list(
-              Value = 123
-            )
-          ),
-          Phase2DHGroupNumbers = list(
-            list(
-              Value = 123
-            )
-          ),
-          IkeVersions = list(
-            list(
-              Value = "string"
-            )
-          ),
-          StartupAction = "string"
-        )
-      )
-    ),
-    Routes = list(
-      list(
-        DestinationCidrBlock = "string",
-        Source = "Static",
-        State = "pending"|"available"|"deleting"|"deleted"
-      )
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    ),
-    VgwTelemetry = list(
-      list(
-        AcceptedRouteCount = 123,
-        LastStatusChange = as.POSIXct(
-          "2015-01-01"
-        ),
-        OutsideIpAddress = "string",
-        Status = "UP"|"DOWN",
-        StatusMessage = "string",
-        CertificateArn = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Modifies the options for a VPN tunnel in an AWS Site-to-Site VPN
-connection. You can modify multiple options for a tunnel in a single
-request, but you can only modify one tunnel at a time. For more
-information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html}{Site-to-Site VPN Tunnel Options for Your Site-to-Site VPN Connection}
-in the \emph{AWS Site-to-Site VPN User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_vpn_tunnel_options(
-  VpnConnectionId = "string",
-  VpnTunnelOutsideIpAddress = "string",
-  TunnelOptions = list(
-    TunnelInsideCidr = "string",
-    TunnelInsideIpv6Cidr = "string",
-    PreSharedKey = "string",
-    Phase1LifetimeSeconds = 123,
-    Phase2LifetimeSeconds = 123,
-    RekeyMarginTimeSeconds = 123,
-    RekeyFuzzPercentage = 123,
-    ReplayWindowSize = 123,
-    DPDTimeoutSeconds = 123,
-    DPDTimeoutAction = "string",
-    Phase1EncryptionAlgorithms = list(
-      list(
-        Value = "string"
-      )
-    ),
-    Phase2EncryptionAlgorithms = list(
-      list(
-        Value = "string"
-      )
-    ),
-    Phase1IntegrityAlgorithms = list(
-      list(
-        Value = "string"
-      )
-    ),
-    Phase2IntegrityAlgorithms = list(
-      list(
-        Value = "string"
-      )
-    ),
-    Phase1DHGroupNumbers = list(
-      list(
-        Value = 123
-      )
-    ),
-    Phase2DHGroupNumbers = list(
-      list(
-        Value = 123
-      )
-    ),
-    IKEVersions = list(
-      list(
-        Value = "string"
-      )
-    ),
-    StartupAction = "string"
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
+Modifies the options for a VPN tunnel in an Amazon Web Services Site-to-Site VPN connection. You can modify multiple options for a tunnel in a single request, but you can only modify one tunnel at a time. For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html}{Site-to-Site VPN tunnel options for your Site-to-Site VPN connection} in the \emph{Amazon Web Services Site-to-Site VPN User Guide}.
 
+See \url{https://paws-r.github.io/docs/ec2/modify_vpn_tunnel_options.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,13 @@
 \title{Lists information about associations between Amazon VPCs and query
 logging configurations}
 \usage{
-route53resolver_list_resolver_query_log_config_associations(MaxResults,
-  NextToken, Filters, SortBy, SortOrder)
+route53resolver_list_resolver_query_log_config_associations(
+  MaxResults = NULL,
+  NextToken = NULL,
+  Filters = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of query logging associations that you want to return
@@ -86,45 +91,9 @@ If you submit a second or subsequent
 request and specify the \code{NextToken} parameter, you must use the same
 value for \code{SortOrder}, if any, as in the previous request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  TotalCount = 123,
-  TotalFilteredCount = 123,
-  ResolverQueryLogConfigAssociations = list(
-    list(
-      Id = "string",
-      ResolverQueryLogConfigId = "string",
-      ResourceId = "string",
-      Status = "CREATING"|"ACTIVE"|"ACTION_NEEDED"|"DELETING"|"FAILED",
-      Error = "NONE"|"DESTINATION_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
-      ErrorMessage = "string",
-      CreationTime = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists information about associations between Amazon VPCs and query
-logging configurations.
-}
-\section{Request syntax}{
-\preformatted{svc$list_resolver_query_log_config_associations(
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  SortBy = "string",
-  SortOrder = "ASCENDING"|"DESCENDING"
-)
-}
-}
+Lists information about associations between Amazon VPCs and query logging configurations.
 
+See \url{https://paws-r.github.io/docs/route53resolver/list_resolver_query_log_config_associations.html} for full documentation.
+}
 \keyword{internal}

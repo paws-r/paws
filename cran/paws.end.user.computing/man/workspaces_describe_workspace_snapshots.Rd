@@ -9,33 +9,9 @@ workspaces_describe_workspace_snapshots(WorkspaceId)
 \arguments{
 \item{WorkspaceId}{[required] The identifier of the WorkSpace.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RebuildSnapshots = list(
-    list(
-      SnapshotTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  RestoreSnapshots = list(
-    list(
-      SnapshotTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Describes the snapshots for the specified WorkSpace.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_workspace_snapshots(
-  WorkspaceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workspaces/describe_workspace_snapshots.html} for full documentation.
+}
 \keyword{internal}

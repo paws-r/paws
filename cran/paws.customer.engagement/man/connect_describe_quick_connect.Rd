@@ -2,56 +2,19 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_describe_quick_connect}
 \alias{connect_describe_quick_connect}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Describes the quick connect}
 \usage{
 connect_describe_quick_connect(InstanceId, QuickConnectId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{QuickConnectId}{[required] The identifier for the quick connect.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  QuickConnect = list(
-    QuickConnectARN = "string",
-    QuickConnectId = "string",
-    Name = "string",
-    Description = "string",
-    QuickConnectConfig = list(
-      QuickConnectType = "USER"|"QUEUE"|"PHONE_NUMBER",
-      UserConfig = list(
-        UserId = "string",
-        ContactFlowId = "string"
-      ),
-      QueueConfig = list(
-        QueueId = "string",
-        ContactFlowId = "string"
-      ),
-      PhoneConfig = list(
-        PhoneNumber = "string"
-      )
-    ),
-    Tags = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
-
 Describes the quick connect.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_quick_connect(
-  InstanceId = "string",
-  QuickConnectId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/connect/describe_quick_connect.html} for full documentation.
+}
 \keyword{internal}

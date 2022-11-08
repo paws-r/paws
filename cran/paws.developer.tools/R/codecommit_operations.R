@@ -7,32 +7,12 @@ NULL
 #' repository
 #'
 #' @description
-#' Creates an association between an approval rule template and a specified
-#' repository. Then, the next time a pull request is created in the
-#' repository where the destination reference (if specified) matches the
-#' destination reference (branch) for the pull request, an approval rule
-#' that matches the template conditions is automatically created for that
-#' pull request. If no destination references are specified in the
-#' template, an approval rule that matches the template contents is created
-#' for all pull requests in that repository.
+#' Creates an association between an approval rule template and a specified repository. Then, the next time a pull request is created in the repository where the destination reference (if specified) matches the destination reference (branch) for the pull request, an approval rule that matches the template conditions is automatically created for that pull request. If no destination references are specified in the template, an approval rule that matches the template contents is created for all pull requests in that repository.
 #'
-#' @usage
-#' codecommit_associate_approval_rule_template_with_repository(
-#'   approvalRuleTemplateName, repositoryName)
+#' See [https://paws-r.github.io/docs/codecommit/associate_approval_rule_template_with_repository.html](https://paws-r.github.io/docs/codecommit/associate_approval_rule_template_with_repository.html) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name for the approval rule template.
 #' @param repositoryName &#91;required&#93; The name of the repository that you want to associate with the template.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_approval_rule_template_with_repository(
-#'   approvalRuleTemplateName = "string",
-#'   repositoryName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -58,12 +38,9 @@ codecommit_associate_approval_rule_template_with_repository <- function(approval
 #' specified repositories
 #'
 #' @description
-#' Creates an association between an approval rule template and one or more
-#' specified repositories.
+#' Creates an association between an approval rule template and one or more specified repositories.
 #'
-#' @usage
-#' codecommit_batch_associate_approval_rule_template_with_repositories(
-#'   approvalRuleTemplateName, repositoryNames)
+#' See [https://paws-r.github.io/docs/codecommit/batch_associate_approval_rule_template_with_repositories.html](https://paws-r.github.io/docs/codecommit/batch_associate_approval_rule_template_with_repositories.html) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the template you want to associate with one or more
 #' repositories.
@@ -71,33 +48,6 @@ codecommit_associate_approval_rule_template_with_repository <- function(approval
 #' 
 #' The length constraint limit is for each string in the array. The array
 #' itself can be empty.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   associatedRepositoryNames = list(
-#'     "string"
-#'   ),
-#'   errors = list(
-#'     list(
-#'       repositoryName = "string",
-#'       errorCode = "string",
-#'       errorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_associate_approval_rule_template_with_repositories(
-#'   approvalRuleTemplateName = "string",
-#'   repositoryNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -124,15 +74,9 @@ codecommit_batch_associate_approval_rule_template_with_repositories <- function(
 #' strategy
 #'
 #' @description
-#' Returns information about one or more merge conflicts in the attempted
-#' merge of two commit specifiers using the squash or three-way merge
-#' strategy.
+#' Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy.
 #'
-#' @usage
-#' codecommit_batch_describe_merge_conflicts(repositoryName,
-#'   destinationCommitSpecifier, sourceCommitSpecifier, mergeOption,
-#'   maxMergeHunks, maxConflictFiles, filePaths, conflictDetailLevel,
-#'   conflictResolutionStrategy, nextToken)
+#' See [https://paws-r.github.io/docs/codecommit/batch_describe_merge_conflicts.html](https://paws-r.github.io/docs/codecommit/batch_describe_merge_conflicts.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the merge conflicts you want to
 #' review.
@@ -156,97 +100,6 @@ codecommit_batch_associate_approval_rule_template_with_repositories <- function(
 #' merge operation is successful.
 #' @param nextToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   conflicts = list(
-#'     list(
-#'       conflictMetadata = list(
-#'         filePath = "string",
-#'         fileSizes = list(
-#'           source = 123,
-#'           destination = 123,
-#'           base = 123
-#'         ),
-#'         fileModes = list(
-#'           source = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-#'           destination = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-#'           base = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'         ),
-#'         objectTypes = list(
-#'           source = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
-#'           destination = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
-#'           base = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK"
-#'         ),
-#'         numberOfConflicts = 123,
-#'         isBinaryFile = list(
-#'           source = TRUE|FALSE,
-#'           destination = TRUE|FALSE,
-#'           base = TRUE|FALSE
-#'         ),
-#'         contentConflict = TRUE|FALSE,
-#'         fileModeConflict = TRUE|FALSE,
-#'         objectTypeConflict = TRUE|FALSE,
-#'         mergeOperations = list(
-#'           source = "A"|"M"|"D",
-#'           destination = "A"|"M"|"D"
-#'         )
-#'       ),
-#'       mergeHunks = list(
-#'         list(
-#'           isConflict = TRUE|FALSE,
-#'           source = list(
-#'             startLine = 123,
-#'             endLine = 123,
-#'             hunkContent = "string"
-#'           ),
-#'           destination = list(
-#'             startLine = 123,
-#'             endLine = 123,
-#'             hunkContent = "string"
-#'           ),
-#'           base = list(
-#'             startLine = 123,
-#'             endLine = 123,
-#'             hunkContent = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string",
-#'   errors = list(
-#'     list(
-#'       filePath = "string",
-#'       exceptionName = "string",
-#'       message = "string"
-#'     )
-#'   ),
-#'   destinationCommitId = "string",
-#'   sourceCommitId = "string",
-#'   baseCommitId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_describe_merge_conflicts(
-#'   repositoryName = "string",
-#'   destinationCommitSpecifier = "string",
-#'   sourceCommitSpecifier = "string",
-#'   mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE",
-#'   maxMergeHunks = 123,
-#'   maxConflictFiles = 123,
-#'   filePaths = list(
-#'     "string"
-#'   ),
-#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -272,12 +125,9 @@ codecommit_batch_describe_merge_conflicts <- function(repositoryName, destinatio
 #' more specified repositories
 #'
 #' @description
-#' Removes the association between an approval rule template and one or
-#' more specified repositories.
+#' Removes the association between an approval rule template and one or more specified repositories.
 #'
-#' @usage
-#' codecommit_batch_disassociate_approval_rule_template_from_repositories(
-#'   approvalRuleTemplateName, repositoryNames)
+#' See [https://paws-r.github.io/docs/codecommit/batch_disassociate_approval_rule_template_from_repositories.html](https://paws-r.github.io/docs/codecommit/batch_disassociate_approval_rule_template_from_repositories.html) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the template that you want to disassociate from one or more
 #' repositories.
@@ -286,33 +136,6 @@ codecommit_batch_describe_merge_conflicts <- function(repositoryName, destinatio
 #' 
 #' The length constraint limit is for each string in the array. The array
 #' itself can be empty.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   disassociatedRepositoryNames = list(
-#'     "string"
-#'   ),
-#'   errors = list(
-#'     list(
-#'       repositoryName = "string",
-#'       errorCode = "string",
-#'       errorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_disassociate_approval_rule_template_from_repositories(
-#'   approvalRuleTemplateName = "string",
-#'   repositoryNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -338,62 +161,15 @@ codecommit_batch_disassociate_approval_rule_template_from_repositories <- functi
 #' repository
 #'
 #' @description
-#' Returns information about the contents of one or more commits in a
-#' repository.
+#' Returns information about the contents of one or more commits in a repository.
 #'
-#' @usage
-#' codecommit_batch_get_commits(commitIds, repositoryName)
+#' See [https://paws-r.github.io/docs/codecommit/batch_get_commits.html](https://paws-r.github.io/docs/codecommit/batch_get_commits.html) for full documentation.
 #'
 #' @param commitIds &#91;required&#93; The full commit IDs of the commits to get information about.
 #' 
 #' You must supply the full SHA IDs of each commit. You cannot use
 #' shortened SHA IDs.
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the commits.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   commits = list(
-#'     list(
-#'       commitId = "string",
-#'       treeId = "string",
-#'       parents = list(
-#'         "string"
-#'       ),
-#'       message = "string",
-#'       author = list(
-#'         name = "string",
-#'         email = "string",
-#'         date = "string"
-#'       ),
-#'       committer = list(
-#'         name = "string",
-#'         email = "string",
-#'         date = "string"
-#'       ),
-#'       additionalData = "string"
-#'     )
-#'   ),
-#'   errors = list(
-#'     list(
-#'       commitId = "string",
-#'       errorCode = "string",
-#'       errorMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_commits(
-#'   commitIds = list(
-#'     "string"
-#'   ),
-#'   repositoryName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -419,58 +195,13 @@ codecommit_batch_get_commits <- function(commitIds, repositoryName) {
 #'
 #' @description
 #' Returns information about one or more repositories.
-#' 
-#' The description field for a repository accepts all HTML characters and
-#' all valid Unicode characters. Applications that do not HTML-encode the
-#' description and display it in a webpage can expose users to potentially
-#' malicious code. Make sure that you HTML-encode the description field in
-#' any application that uses this API to display the repository description
-#' on a webpage.
 #'
-#' @usage
-#' codecommit_batch_get_repositories(repositoryNames)
+#' See [https://paws-r.github.io/docs/codecommit/batch_get_repositories.html](https://paws-r.github.io/docs/codecommit/batch_get_repositories.html) for full documentation.
 #'
 #' @param repositoryNames &#91;required&#93; The names of the repositories to get information about.
 #' 
 #' The length constraint limit is for each string in the array. The array
 #' itself can be empty.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   repositories = list(
-#'     list(
-#'       accountId = "string",
-#'       repositoryId = "string",
-#'       repositoryName = "string",
-#'       repositoryDescription = "string",
-#'       defaultBranch = "string",
-#'       lastModifiedDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       creationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       cloneUrlHttp = "string",
-#'       cloneUrlSsh = "string",
-#'       Arn = "string"
-#'     )
-#'   ),
-#'   repositoriesNotFound = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_repositories(
-#'   repositoryNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -496,16 +227,9 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
 #' one or more repositories in your AWS account
 #'
 #' @description
-#' Creates a template for approval rules that can then be associated with
-#' one or more repositories in your AWS account. When you associate a
-#' template with a repository, AWS CodeCommit creates an approval rule that
-#' matches the conditions of the template for all pull requests that meet
-#' the conditions of the template. For more information, see
-#' [`associate_approval_rule_template_with_repository`][codecommit_associate_approval_rule_template_with_repository].
+#' Creates a template for approval rules that can then be associated with one or more repositories in your AWS account. When you associate a template with a repository, AWS CodeCommit creates an approval rule that matches the conditions of the template for all pull requests that meet the conditions of the template. For more information, see [`associate_approval_rule_template_with_repository`][codecommit_associate_approval_rule_template_with_repository].
 #'
-#' @usage
-#' codecommit_create_approval_rule_template(approvalRuleTemplateName,
-#'   approvalRuleTemplateContent, approvalRuleTemplateDescription)
+#' See [https://paws-r.github.io/docs/codecommit/create_approval_rule_template.html](https://paws-r.github.io/docs/codecommit/create_approval_rule_template.html) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template. Provide descriptive names,
 #' because this name is applied to the approval rules created automatically
@@ -549,36 +273,6 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
 #' description that explains what this template does and when it might be
 #' appropriate to associate it with repositories.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   approvalRuleTemplate = list(
-#'     approvalRuleTemplateId = "string",
-#'     approvalRuleTemplateName = "string",
-#'     approvalRuleTemplateDescription = "string",
-#'     approvalRuleTemplateContent = "string",
-#'     ruleContentSha256 = "string",
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModifiedUser = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_approval_rule_template(
-#'   approvalRuleTemplateName = "string",
-#'   approvalRuleTemplateContent = "string",
-#'   approvalRuleTemplateDescription = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codecommit_create_approval_rule_template
@@ -603,28 +297,12 @@ codecommit_create_approval_rule_template <- function(approvalRuleTemplateName, a
 #'
 #' @description
 #' Creates a branch in a repository and points the branch to a commit.
-#' 
-#' Calling the create branch operation does not set a repository's default
-#' branch. To do this, call the update default branch operation.
 #'
-#' @usage
-#' codecommit_create_branch(repositoryName, branchName, commitId)
+#' See [https://paws-r.github.io/docs/codecommit/create_branch.html](https://paws-r.github.io/docs/codecommit/create_branch.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository in which you want to create the new branch.
 #' @param branchName &#91;required&#93; The name of the new branch to create.
 #' @param commitId &#91;required&#93; The ID of the commit to point the new branch to.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_branch(
-#'   repositoryName = "string",
-#'   branchName = "string",
-#'   commitId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -651,10 +329,7 @@ codecommit_create_branch <- function(repositoryName, branchName, commitId) {
 #' @description
 #' Creates a commit for a repository on the tip of a specified branch.
 #'
-#' @usage
-#' codecommit_create_commit(repositoryName, branchName, parentCommitId,
-#'   authorName, email, commitMessage, keepEmptyFolders, putFiles,
-#'   deleteFiles, setFileModes)
+#' See [https://paws-r.github.io/docs/codecommit/create_commit.html](https://paws-r.github.io/docs/codecommit/create_commit.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you create the commit.
 #' @param branchName &#91;required&#93; The name of the branch where you create the commit.
@@ -673,71 +348,6 @@ codecommit_create_branch <- function(repositoryName, branchName, commitId) {
 #' @param deleteFiles The files to delete in this commit. These files still exist in earlier
 #' commits.
 #' @param setFileModes The file modes to update for files in this commit.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   commitId = "string",
-#'   treeId = "string",
-#'   filesAdded = list(
-#'     list(
-#'       absolutePath = "string",
-#'       blobId = "string",
-#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'     )
-#'   ),
-#'   filesUpdated = list(
-#'     list(
-#'       absolutePath = "string",
-#'       blobId = "string",
-#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'     )
-#'   ),
-#'   filesDeleted = list(
-#'     list(
-#'       absolutePath = "string",
-#'       blobId = "string",
-#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_commit(
-#'   repositoryName = "string",
-#'   branchName = "string",
-#'   parentCommitId = "string",
-#'   authorName = "string",
-#'   email = "string",
-#'   commitMessage = "string",
-#'   keepEmptyFolders = TRUE|FALSE,
-#'   putFiles = list(
-#'     list(
-#'       filePath = "string",
-#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-#'       fileContent = raw,
-#'       sourceFile = list(
-#'         filePath = "string",
-#'         isMove = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   deleteFiles = list(
-#'     list(
-#'       filePath = "string"
-#'     )
-#'   ),
-#'   setFileModes = list(
-#'     list(
-#'       filePath = "string",
-#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -764,9 +374,7 @@ codecommit_create_commit <- function(repositoryName, branchName, parentCommitId 
 #' @description
 #' Creates a pull request in the specified repository.
 #'
-#' @usage
-#' codecommit_create_pull_request(title, description, targets,
-#'   clientRequestToken)
+#' See [https://paws-r.github.io/docs/codecommit/create_pull_request.html](https://paws-r.github.io/docs/codecommit/create_pull_request.html) for full documentation.
 #'
 #' @param title &#91;required&#93; The title of the pull request. This title is used to identify the pull
 #' request to other users in the repository.
@@ -783,79 +391,6 @@ codecommit_create_commit <- function(repositoryName, branchName, parentCommitId 
 #' 
 #' The AWS SDKs prepopulate client request tokens. If you are using an AWS
 #' SDK, an idempotency token is created for you.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pullRequest = list(
-#'     pullRequestId = "string",
-#'     title = "string",
-#'     description = "string",
-#'     lastActivityDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     pullRequestStatus = "OPEN"|"CLOSED",
-#'     authorArn = "string",
-#'     pullRequestTargets = list(
-#'       list(
-#'         repositoryName = "string",
-#'         sourceReference = "string",
-#'         destinationReference = "string",
-#'         destinationCommit = "string",
-#'         sourceCommit = "string",
-#'         mergeBase = "string",
-#'         mergeMetadata = list(
-#'           isMerged = TRUE|FALSE,
-#'           mergedBy = "string",
-#'           mergeCommitId = "string",
-#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-#'         )
-#'       )
-#'     ),
-#'     clientRequestToken = "string",
-#'     revisionId = "string",
-#'     approvalRules = list(
-#'       list(
-#'         approvalRuleId = "string",
-#'         approvalRuleName = "string",
-#'         approvalRuleContent = "string",
-#'         ruleContentSha256 = "string",
-#'         lastModifiedDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         creationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastModifiedUser = "string",
-#'         originApprovalRuleTemplate = list(
-#'           approvalRuleTemplateId = "string",
-#'           approvalRuleTemplateName = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_pull_request(
-#'   title = "string",
-#'   description = "string",
-#'   targets = list(
-#'     list(
-#'       repositoryName = "string",
-#'       sourceReference = "string",
-#'       destinationReference = "string"
-#'     )
-#'   ),
-#'   clientRequestToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -882,9 +417,7 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 #' @description
 #' Creates an approval rule for a pull request.
 #'
-#' @usage
-#' codecommit_create_pull_request_approval_rule(pullRequestId,
-#'   approvalRuleName, approvalRuleContent)
+#' See [https://paws-r.github.io/docs/codecommit/create_pull_request_approval_rule.html](https://paws-r.github.io/docs/codecommit/create_pull_request_approval_rule.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request for which you want to create
 #' the approval rule.
@@ -924,39 +457,6 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 #' in the *IAM User Guide*.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   approvalRule = list(
-#'     approvalRuleId = "string",
-#'     approvalRuleName = "string",
-#'     approvalRuleContent = "string",
-#'     ruleContentSha256 = "string",
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModifiedUser = "string",
-#'     originApprovalRuleTemplate = list(
-#'       approvalRuleTemplateId = "string",
-#'       approvalRuleTemplateName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_pull_request_approval_rule(
-#'   pullRequestId = "string",
-#'   approvalRuleName = "string",
-#'   approvalRuleContent = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codecommit_create_pull_request_approval_rule
@@ -982,9 +482,7 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
 #' @description
 #' Creates a new, empty repository.
 #'
-#' @usage
-#' codecommit_create_repository(repositoryName, repositoryDescription,
-#'   tags)
+#' See [https://paws-r.github.io/docs/codecommit/create_repository.html](https://paws-r.github.io/docs/codecommit/create_repository.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the new repository to be created.
 #' 
@@ -1003,40 +501,6 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
 #' any application that uses this API to display the repository description
 #' on a webpage.
 #' @param tags One or more tag key-value pairs to use when tagging this repository.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   repositoryMetadata = list(
-#'     accountId = "string",
-#'     repositoryId = "string",
-#'     repositoryName = "string",
-#'     repositoryDescription = "string",
-#'     defaultBranch = "string",
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     cloneUrlHttp = "string",
-#'     cloneUrlSsh = "string",
-#'     Arn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_repository(
-#'   repositoryName = "string",
-#'   repositoryDescription = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1062,21 +526,9 @@ codecommit_create_repository <- function(repositoryName, repositoryDescription =
 #' branches using a specified merge strategy
 #'
 #' @description
-#' Creates an unreferenced commit that represents the result of merging two
-#' branches using a specified merge strategy. This can help you determine
-#' the outcome of a potential merge. This API cannot be used with the
-#' fast-forward merge strategy because that strategy does not create a
-#' merge commit.
-#' 
-#' This unreferenced merge commit can only be accessed using the GetCommit
-#' API or through git commands such as git fetch. To retrieve this commit,
-#' you must specify its commit ID or otherwise reference it.
+#' Creates an unreferenced commit that represents the result of merging two branches using a specified merge strategy. This can help you determine the outcome of a potential merge. This API cannot be used with the fast-forward merge strategy because that strategy does not create a merge commit.
 #'
-#' @usage
-#' codecommit_create_unreferenced_merge_commit(repositoryName,
-#'   sourceCommitSpecifier, destinationCommitSpecifier, mergeOption,
-#'   conflictDetailLevel, conflictResolutionStrategy, authorName, email,
-#'   commitMessage, keepEmptyFolders, conflictResolution)
+#' See [https://paws-r.github.io/docs/codecommit/create_unreferenced_merge_commit.html](https://paws-r.github.io/docs/codecommit/create_unreferenced_merge_commit.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to create the unreferenced
 #' merge commit.
@@ -1105,52 +557,6 @@ codecommit_create_repository <- function(repositoryName, repositoryDescription =
 #' @param conflictResolution If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 #' use when resolving conflicts during a merge.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   commitId = "string",
-#'   treeId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_unreferenced_merge_commit(
-#'   repositoryName = "string",
-#'   sourceCommitSpecifier = "string",
-#'   destinationCommitSpecifier = "string",
-#'   mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE",
-#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
-#'   authorName = "string",
-#'   email = "string",
-#'   commitMessage = "string",
-#'   keepEmptyFolders = TRUE|FALSE,
-#'   conflictResolution = list(
-#'     replaceContents = list(
-#'       list(
-#'         filePath = "string",
-#'         replacementType = "KEEP_BASE"|"KEEP_SOURCE"|"KEEP_DESTINATION"|"USE_NEW_CONTENT",
-#'         content = raw,
-#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'       )
-#'     ),
-#'     deleteFiles = list(
-#'       list(
-#'         filePath = "string"
-#'       )
-#'     ),
-#'     setFileModes = list(
-#'       list(
-#'         filePath = "string",
-#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codecommit_create_unreferenced_merge_commit
@@ -1174,29 +580,11 @@ codecommit_create_unreferenced_merge_commit <- function(repositoryName, sourceCo
 #' Deletes a specified approval rule template
 #'
 #' @description
-#' Deletes a specified approval rule template. Deleting a template does not
-#' remove approval rules on pull requests already created with the
-#' template.
+#' Deletes a specified approval rule template. Deleting a template does not remove approval rules on pull requests already created with the template.
 #'
-#' @usage
-#' codecommit_delete_approval_rule_template(approvalRuleTemplateName)
+#' See [https://paws-r.github.io/docs/codecommit/delete_approval_rule_template.html](https://paws-r.github.io/docs/codecommit/delete_approval_rule_template.html) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   approvalRuleTemplateId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_approval_rule_template(
-#'   approvalRuleTemplateName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1222,33 +610,12 @@ codecommit_delete_approval_rule_template <- function(approvalRuleTemplateName) {
 #' branch for the repository
 #'
 #' @description
-#' Deletes a branch from a repository, unless that branch is the default
-#' branch for the repository.
+#' Deletes a branch from a repository, unless that branch is the default branch for the repository.
 #'
-#' @usage
-#' codecommit_delete_branch(repositoryName, branchName)
+#' See [https://paws-r.github.io/docs/codecommit/delete_branch.html](https://paws-r.github.io/docs/codecommit/delete_branch.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the branch to be deleted.
 #' @param branchName &#91;required&#93; The name of the branch to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   deletedBranch = list(
-#'     branchName = "string",
-#'     commitId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_branch(
-#'   repositoryName = "string",
-#'   branchName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1274,50 +641,14 @@ codecommit_delete_branch <- function(repositoryName, branchName) {
 #' repository
 #'
 #' @description
-#' Deletes the content of a comment made on a change, file, or commit in a
-#' repository.
+#' Deletes the content of a comment made on a change, file, or commit in a repository.
 #'
-#' @usage
-#' codecommit_delete_comment_content(commentId)
+#' See [https://paws-r.github.io/docs/codecommit/delete_comment_content.html](https://paws-r.github.io/docs/codecommit/delete_comment_content.html) for full documentation.
 #'
 #' @param commentId &#91;required&#93; The unique, system-generated ID of the comment. To get this ID, use
 #' [`get_comments_for_compared_commit`][codecommit_get_comments_for_compared_commit]
 #' or
 #' [`get_comments_for_pull_request`][codecommit_get_comments_for_pull_request].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   comment = list(
-#'     commentId = "string",
-#'     content = "string",
-#'     inReplyTo = "string",
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     authorArn = "string",
-#'     deleted = TRUE|FALSE,
-#'     clientRequestToken = "string",
-#'     callerReactions = list(
-#'       "string"
-#'     ),
-#'     reactionCounts = list(
-#'       123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_comment_content(
-#'   commentId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1342,13 +673,9 @@ codecommit_delete_comment_content <- function(commentId) {
 #' Deletes a specified file from a specified branch
 #'
 #' @description
-#' Deletes a specified file from a specified branch. A commit is created on
-#' the branch that contains the revision. The file still exists in the
-#' commits earlier to the commit that contains the deletion.
+#' Deletes a specified file from a specified branch. A commit is created on the branch that contains the revision. The file still exists in the commits earlier to the commit that contains the deletion.
 #'
-#' @usage
-#' codecommit_delete_file(repositoryName, branchName, filePath,
-#'   parentCommitId, keepEmptyFolders, commitMessage, name, email)
+#' See [https://paws-r.github.io/docs/codecommit/delete_file.html](https://paws-r.github.io/docs/codecommit/delete_file.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the file to delete.
 #' @param branchName &#91;required&#93; The name of the branch where the commit that deletes the file is made.
@@ -1375,31 +702,6 @@ codecommit_delete_comment_content <- function(commentId) {
 #' @param email The email address for the commit that deletes the file. If no email
 #' address is specified, the email address is left blank.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   commitId = "string",
-#'   blobId = "string",
-#'   treeId = "string",
-#'   filePath = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_file(
-#'   repositoryName = "string",
-#'   branchName = "string",
-#'   filePath = "string",
-#'   parentCommitId = "string",
-#'   keepEmptyFolders = TRUE|FALSE,
-#'   commitMessage = "string",
-#'   name = "string",
-#'   email = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codecommit_delete_file
@@ -1423,36 +725,13 @@ codecommit_delete_file <- function(repositoryName, branchName, filePath, parentC
 #' Deletes an approval rule from a specified pull request
 #'
 #' @description
-#' Deletes an approval rule from a specified pull request. Approval rules
-#' can be deleted from a pull request only if the pull request is open, and
-#' if the approval rule was created specifically for a pull request and not
-#' generated from an approval rule template associated with the repository
-#' where the pull request was created. You cannot delete an approval rule
-#' from a merged or closed pull request.
+#' Deletes an approval rule from a specified pull request. Approval rules can be deleted from a pull request only if the pull request is open, and if the approval rule was created specifically for a pull request and not generated from an approval rule template associated with the repository where the pull request was created. You cannot delete an approval rule from a merged or closed pull request.
 #'
-#' @usage
-#' codecommit_delete_pull_request_approval_rule(pullRequestId,
-#'   approvalRuleName)
+#' See [https://paws-r.github.io/docs/codecommit/delete_pull_request_approval_rule.html](https://paws-r.github.io/docs/codecommit/delete_pull_request_approval_rule.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request that contains the approval
 #' rule you want to delete.
 #' @param approvalRuleName &#91;required&#93; The name of the approval rule you want to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   approvalRuleId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_pull_request_approval_rule(
-#'   pullRequestId = "string",
-#'   approvalRuleName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1477,32 +756,11 @@ codecommit_delete_pull_request_approval_rule <- function(pullRequestId, approval
 #' Deletes a repository
 #'
 #' @description
-#' Deletes a repository. If a specified repository was already deleted, a
-#' null repository ID is returned.
-#' 
-#' Deleting a repository also deletes all associated objects and metadata.
-#' After a repository is deleted, all future push calls to the deleted
-#' repository fail.
+#' Deletes a repository. If a specified repository was already deleted, a null repository ID is returned.
 #'
-#' @usage
-#' codecommit_delete_repository(repositoryName)
+#' See [https://paws-r.github.io/docs/codecommit/delete_repository.html](https://paws-r.github.io/docs/codecommit/delete_repository.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   repositoryId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_repository(
-#'   repositoryName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1529,16 +787,9 @@ codecommit_delete_repository <- function(repositoryName) {
 #' strategy
 #'
 #' @description
-#' Returns information about one or more merge conflicts in the attempted
-#' merge of two commit specifiers using the squash or three-way merge
-#' strategy. If the merge option for the attempted merge is specified as
-#' FAST_FORWARD_MERGE, an exception is thrown.
+#' Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy. If the merge option for the attempted merge is specified as FAST_FORWARD_MERGE, an exception is thrown.
 #'
-#' @usage
-#' codecommit_describe_merge_conflicts(repositoryName,
-#'   destinationCommitSpecifier, sourceCommitSpecifier, mergeOption,
-#'   maxMergeHunks, filePath, conflictDetailLevel,
-#'   conflictResolutionStrategy, nextToken)
+#' See [https://paws-r.github.io/docs/codecommit/describe_merge_conflicts.html](https://paws-r.github.io/docs/codecommit/describe_merge_conflicts.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to get information about a
 #' merge conflict.
@@ -1560,83 +811,6 @@ codecommit_delete_repository <- function(repositoryName) {
 #' merge operation is successful.
 #' @param nextToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   conflictMetadata = list(
-#'     filePath = "string",
-#'     fileSizes = list(
-#'       source = 123,
-#'       destination = 123,
-#'       base = 123
-#'     ),
-#'     fileModes = list(
-#'       source = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-#'       destination = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-#'       base = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'     ),
-#'     objectTypes = list(
-#'       source = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
-#'       destination = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
-#'       base = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK"
-#'     ),
-#'     numberOfConflicts = 123,
-#'     isBinaryFile = list(
-#'       source = TRUE|FALSE,
-#'       destination = TRUE|FALSE,
-#'       base = TRUE|FALSE
-#'     ),
-#'     contentConflict = TRUE|FALSE,
-#'     fileModeConflict = TRUE|FALSE,
-#'     objectTypeConflict = TRUE|FALSE,
-#'     mergeOperations = list(
-#'       source = "A"|"M"|"D",
-#'       destination = "A"|"M"|"D"
-#'     )
-#'   ),
-#'   mergeHunks = list(
-#'     list(
-#'       isConflict = TRUE|FALSE,
-#'       source = list(
-#'         startLine = 123,
-#'         endLine = 123,
-#'         hunkContent = "string"
-#'       ),
-#'       destination = list(
-#'         startLine = 123,
-#'         endLine = 123,
-#'         hunkContent = "string"
-#'       ),
-#'       base = list(
-#'         startLine = 123,
-#'         endLine = 123,
-#'         hunkContent = "string"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string",
-#'   destinationCommitId = "string",
-#'   sourceCommitId = "string",
-#'   baseCommitId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_merge_conflicts(
-#'   repositoryName = "string",
-#'   destinationCommitSpecifier = "string",
-#'   sourceCommitSpecifier = "string",
-#'   mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE",
-#'   maxMergeHunks = 123,
-#'   filePath = "string",
-#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1663,9 +837,7 @@ codecommit_describe_merge_conflicts <- function(repositoryName, destinationCommi
 #' @description
 #' Returns information about one or more pull request events.
 #'
-#' @usage
-#' codecommit_describe_pull_request_events(pullRequestId,
-#'   pullRequestEventType, actorArn, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codecommit/describe_pull_request_events.html](https://paws-r.github.io/docs/codecommit/describe_pull_request_events.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -1679,73 +851,6 @@ codecommit_describe_merge_conflicts <- function(repositoryName, destinationCommi
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results. The default is 100 events, which is also the maximum number of
 #' events that can be returned in a result.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pullRequestEvents = list(
-#'     list(
-#'       pullRequestId = "string",
-#'       eventDate = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       pullRequestEventType = "PULL_REQUEST_CREATED"|"PULL_REQUEST_STATUS_CHANGED"|"PULL_REQUEST_SOURCE_REFERENCE_UPDATED"|"PULL_REQUEST_MERGE_STATE_CHANGED"|"PULL_REQUEST_APPROVAL_RULE_CREATED"|"PULL_REQUEST_APPROVAL_RULE_UPDATED"|"PULL_REQUEST_APPROVAL_RULE_DELETED"|"PULL_REQUEST_APPROVAL_RULE_OVERRIDDEN"|"PULL_REQUEST_APPROVAL_STATE_CHANGED",
-#'       actorArn = "string",
-#'       pullRequestCreatedEventMetadata = list(
-#'         repositoryName = "string",
-#'         sourceCommitId = "string",
-#'         destinationCommitId = "string",
-#'         mergeBase = "string"
-#'       ),
-#'       pullRequestStatusChangedEventMetadata = list(
-#'         pullRequestStatus = "OPEN"|"CLOSED"
-#'       ),
-#'       pullRequestSourceReferenceUpdatedEventMetadata = list(
-#'         repositoryName = "string",
-#'         beforeCommitId = "string",
-#'         afterCommitId = "string",
-#'         mergeBase = "string"
-#'       ),
-#'       pullRequestMergedStateChangedEventMetadata = list(
-#'         repositoryName = "string",
-#'         destinationReference = "string",
-#'         mergeMetadata = list(
-#'           isMerged = TRUE|FALSE,
-#'           mergedBy = "string",
-#'           mergeCommitId = "string",
-#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-#'         )
-#'       ),
-#'       approvalRuleEventMetadata = list(
-#'         approvalRuleName = "string",
-#'         approvalRuleId = "string",
-#'         approvalRuleContent = "string"
-#'       ),
-#'       approvalStateChangedEventMetadata = list(
-#'         revisionId = "string",
-#'         approvalStatus = "APPROVE"|"REVOKE"
-#'       ),
-#'       approvalRuleOverriddenEventMetadata = list(
-#'         revisionId = "string",
-#'         overrideStatus = "OVERRIDE"|"REVOKE"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_pull_request_events(
-#'   pullRequestId = "string",
-#'   pullRequestEventType = "PULL_REQUEST_CREATED"|"PULL_REQUEST_STATUS_CHANGED"|"PULL_REQUEST_SOURCE_REFERENCE_UPDATED"|"PULL_REQUEST_MERGE_STATE_CHANGED"|"PULL_REQUEST_APPROVAL_RULE_CREATED"|"PULL_REQUEST_APPROVAL_RULE_UPDATED"|"PULL_REQUEST_APPROVAL_RULE_DELETED"|"PULL_REQUEST_APPROVAL_RULE_OVERRIDDEN"|"PULL_REQUEST_APPROVAL_STATE_CHANGED",
-#'   actorArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1772,30 +877,13 @@ codecommit_describe_pull_request_events <- function(pullRequestId, pullRequestEv
 #' pull requests are created in the specified repository
 #'
 #' @description
-#' Removes the association between a template and a repository so that
-#' approval rules based on the template are not automatically created when
-#' pull requests are created in the specified repository. This does not
-#' delete any approval rules previously created for pull requests through
-#' the template association.
+#' Removes the association between a template and a repository so that approval rules based on the template are not automatically created when pull requests are created in the specified repository. This does not delete any approval rules previously created for pull requests through the template association.
 #'
-#' @usage
-#' codecommit_disassociate_approval_rule_template_from_repository(
-#'   approvalRuleTemplateName, repositoryName)
+#' See [https://paws-r.github.io/docs/codecommit/disassociate_approval_rule_template_from_repository.html](https://paws-r.github.io/docs/codecommit/disassociate_approval_rule_template_from_repository.html) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template to disassociate from a specified
 #' repository.
 #' @param repositoryName &#91;required&#93; The name of the repository you want to disassociate from the template.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_approval_rule_template_from_repository(
-#'   approvalRuleTemplateName = "string",
-#'   repositoryName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1821,42 +909,14 @@ codecommit_disassociate_approval_rule_template_from_repository <- function(appro
 #' its associated approval rules
 #'
 #' @description
-#' Evaluates whether a pull request has met all the conditions specified in
-#' its associated approval rules.
+#' Evaluates whether a pull request has met all the conditions specified in its associated approval rules.
 #'
-#' @usage
-#' codecommit_evaluate_pull_request_approval_rules(pullRequestId,
-#'   revisionId)
+#' See [https://paws-r.github.io/docs/codecommit/evaluate_pull_request_approval_rules.html](https://paws-r.github.io/docs/codecommit/evaluate_pull_request_approval_rules.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request you want to evaluate.
 #' @param revisionId &#91;required&#93; The system-generated ID for the pull request revision. To retrieve the
 #' most recent revision ID for a pull request, use
 #' [`get_pull_request`][codecommit_get_pull_request].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   evaluation = list(
-#'     approved = TRUE|FALSE,
-#'     overridden = TRUE|FALSE,
-#'     approvalRulesSatisfied = list(
-#'       "string"
-#'     ),
-#'     approvalRulesNotSatisfied = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$evaluate_pull_request_approval_rules(
-#'   pullRequestId = "string",
-#'   revisionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1883,39 +943,10 @@ codecommit_evaluate_pull_request_approval_rules <- function(pullRequestId, revis
 #' @description
 #' Returns information about a specified approval rule template.
 #'
-#' @usage
-#' codecommit_get_approval_rule_template(approvalRuleTemplateName)
+#' See [https://paws-r.github.io/docs/codecommit/get_approval_rule_template.html](https://paws-r.github.io/docs/codecommit/get_approval_rule_template.html) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template for which you want to get
 #' information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   approvalRuleTemplate = list(
-#'     approvalRuleTemplateId = "string",
-#'     approvalRuleTemplateName = "string",
-#'     approvalRuleTemplateDescription = "string",
-#'     approvalRuleTemplateContent = "string",
-#'     ruleContentSha256 = "string",
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModifiedUser = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_approval_rule_template(
-#'   approvalRuleTemplateName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1941,30 +972,12 @@ codecommit_get_approval_rule_template <- function(approvalRuleTemplateName) {
 #' repository
 #'
 #' @description
-#' Returns the base-64 encoded content of an individual blob in a
-#' repository.
+#' Returns the base-64 encoded content of an individual blob in a repository.
 #'
-#' @usage
-#' codecommit_get_blob(repositoryName, blobId)
+#' See [https://paws-r.github.io/docs/codecommit/get_blob.html](https://paws-r.github.io/docs/codecommit/get_blob.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the blob.
 #' @param blobId &#91;required&#93; The ID of the blob, which is its SHA-1 pointer.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   content = raw
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_blob(
-#'   repositoryName = "string",
-#'   blobId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1990,34 +1003,13 @@ codecommit_get_blob <- function(repositoryName, blobId) {
 #' the last commit ID
 #'
 #' @description
-#' Returns information about a repository branch, including its name and
-#' the last commit ID.
+#' Returns information about a repository branch, including its name and the last commit ID.
 #'
-#' @usage
-#' codecommit_get_branch(repositoryName, branchName)
+#' See [https://paws-r.github.io/docs/codecommit/get_branch.html](https://paws-r.github.io/docs/codecommit/get_branch.html) for full documentation.
 #'
 #' @param repositoryName The name of the repository that contains the branch for which you want
 #' to retrieve information.
 #' @param branchName The name of the branch for which you want to retrieve information.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   branch = list(
-#'     branchName = "string",
-#'     commitId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_branch(
-#'   repositoryName = "string",
-#'   branchName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2043,54 +1035,14 @@ codecommit_get_branch <- function(repositoryName = NULL, branchName = NULL) {
 #' repository
 #'
 #' @description
-#' Returns the content of a comment made on a change, file, or commit in a
-#' repository.
-#' 
-#' Reaction counts might include numbers from user identities who were
-#' deleted after the reaction was made. For a count of reactions from
-#' active identities, use GetCommentReactions.
+#' Returns the content of a comment made on a change, file, or commit in a repository.
 #'
-#' @usage
-#' codecommit_get_comment(commentId)
+#' See [https://paws-r.github.io/docs/codecommit/get_comment.html](https://paws-r.github.io/docs/codecommit/get_comment.html) for full documentation.
 #'
 #' @param commentId &#91;required&#93; The unique, system-generated ID of the comment. To get this ID, use
 #' [`get_comments_for_compared_commit`][codecommit_get_comments_for_compared_commit]
 #' or
 #' [`get_comments_for_pull_request`][codecommit_get_comments_for_pull_request].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   comment = list(
-#'     commentId = "string",
-#'     content = "string",
-#'     inReplyTo = "string",
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     authorArn = "string",
-#'     deleted = TRUE|FALSE,
-#'     clientRequestToken = "string",
-#'     callerReactions = list(
-#'       "string"
-#'     ),
-#'     reactionCounts = list(
-#'       123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_comment(
-#'   commentId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2115,12 +1067,9 @@ codecommit_get_comment <- function(commentId) {
 #' Returns information about reactions to a specified comment ID
 #'
 #' @description
-#' Returns information about reactions to a specified comment ID. Reactions
-#' from users who have been deleted will not be included in the count.
+#' Returns information about reactions to a specified comment ID. Reactions from users who have been deleted will not be included in the count.
 #'
-#' @usage
-#' codecommit_get_comment_reactions(commentId, reactionUserArn, nextToken,
-#'   maxResults)
+#' See [https://paws-r.github.io/docs/codecommit/get_comment_reactions.html](https://paws-r.github.io/docs/codecommit/get_comment_reactions.html) for full documentation.
 #'
 #' @param commentId &#91;required&#93; The ID of the comment for which you want to get reactions information.
 #' @param reactionUserArn Optional. The Amazon Resource Name (ARN) of the user or identity for
@@ -2129,37 +1078,6 @@ codecommit_get_comment <- function(commentId) {
 #' batch of the results.
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results. The default is the same as the allowed maximum, 1,000.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   reactionsForComment = list(
-#'     list(
-#'       reaction = list(
-#'         emoji = "string",
-#'         shortCode = "string",
-#'         unicode = "string"
-#'       ),
-#'       reactionUsers = list(
-#'         "string"
-#'       ),
-#'       reactionsFromDeletedUsersCount = 123
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_comment_reactions(
-#'   commentId = "string",
-#'   reactionUserArn = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2185,16 +1103,9 @@ codecommit_get_comment_reactions <- function(commentId, reactionUserArn = NULL, 
 #' commits
 #'
 #' @description
-#' Returns information about comments made on the comparison between two
-#' commits.
-#' 
-#' Reaction counts might include numbers from user identities who were
-#' deleted after the reaction was made. For a count of reactions from
-#' active identities, use GetCommentReactions.
+#' Returns information about comments made on the comparison between two commits.
 #'
-#' @usage
-#' codecommit_get_comments_for_compared_commit(repositoryName,
-#'   beforeCommitId, afterCommitId, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codecommit/get_comments_for_compared_commit.html](https://paws-r.github.io/docs/codecommit/get_comments_for_compared_commit.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to compare commits.
 #' @param beforeCommitId To establish the directionality of the comparison, the full commit ID of
@@ -2205,61 +1116,6 @@ codecommit_get_comment_reactions <- function(commentId, reactionUserArn = NULL, 
 #' batch of the results.
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results. The default is 100 comments, but you can configure up to 500.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   commentsForComparedCommitData = list(
-#'     list(
-#'       repositoryName = "string",
-#'       beforeCommitId = "string",
-#'       afterCommitId = "string",
-#'       beforeBlobId = "string",
-#'       afterBlobId = "string",
-#'       location = list(
-#'         filePath = "string",
-#'         filePosition = 123,
-#'         relativeFileVersion = "BEFORE"|"AFTER"
-#'       ),
-#'       comments = list(
-#'         list(
-#'           commentId = "string",
-#'           content = "string",
-#'           inReplyTo = "string",
-#'           creationDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           lastModifiedDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           authorArn = "string",
-#'           deleted = TRUE|FALSE,
-#'           clientRequestToken = "string",
-#'           callerReactions = list(
-#'             "string"
-#'           ),
-#'           reactionCounts = list(
-#'             123
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_comments_for_compared_commit(
-#'   repositoryName = "string",
-#'   beforeCommitId = "string",
-#'   afterCommitId = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2285,14 +1141,8 @@ codecommit_get_comments_for_compared_commit <- function(repositoryName, beforeCo
 #'
 #' @description
 #' Returns comments made on a pull request.
-#' 
-#' Reaction counts might include numbers from user identities who were
-#' deleted after the reaction was made. For a count of reactions from
-#' active identities, use GetCommentReactions.
 #'
-#' @usage
-#' codecommit_get_comments_for_pull_request(pullRequestId, repositoryName,
-#'   beforeCommitId, afterCommitId, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codecommit/get_comments_for_pull_request.html](https://paws-r.github.io/docs/codecommit/get_comments_for_pull_request.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -2306,63 +1156,6 @@ codecommit_get_comments_for_compared_commit <- function(repositoryName, beforeCo
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results. The default is 100 comments. You can return up to 500 comments
 #' with a single request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   commentsForPullRequestData = list(
-#'     list(
-#'       pullRequestId = "string",
-#'       repositoryName = "string",
-#'       beforeCommitId = "string",
-#'       afterCommitId = "string",
-#'       beforeBlobId = "string",
-#'       afterBlobId = "string",
-#'       location = list(
-#'         filePath = "string",
-#'         filePosition = 123,
-#'         relativeFileVersion = "BEFORE"|"AFTER"
-#'       ),
-#'       comments = list(
-#'         list(
-#'           commentId = "string",
-#'           content = "string",
-#'           inReplyTo = "string",
-#'           creationDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           lastModifiedDate = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           authorArn = "string",
-#'           deleted = TRUE|FALSE,
-#'           clientRequestToken = "string",
-#'           callerReactions = list(
-#'             "string"
-#'           ),
-#'           reactionCounts = list(
-#'             123
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_comments_for_pull_request(
-#'   pullRequestId = "string",
-#'   repositoryName = "string",
-#'   beforeCommitId = "string",
-#'   afterCommitId = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2388,48 +1181,12 @@ codecommit_get_comments_for_pull_request <- function(pullRequestId, repositoryNa
 #' committer information
 #'
 #' @description
-#' Returns information about a commit, including commit message and
-#' committer information.
+#' Returns information about a commit, including commit message and committer information.
 #'
-#' @usage
-#' codecommit_get_commit(repositoryName, commitId)
+#' See [https://paws-r.github.io/docs/codecommit/get_commit.html](https://paws-r.github.io/docs/codecommit/get_commit.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to which the commit was made.
 #' @param commitId &#91;required&#93; The commit ID. Commit IDs are the full SHA ID of the commit.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   commit = list(
-#'     commitId = "string",
-#'     treeId = "string",
-#'     parents = list(
-#'       "string"
-#'     ),
-#'     message = "string",
-#'     author = list(
-#'       name = "string",
-#'       email = "string",
-#'       date = "string"
-#'     ),
-#'     committer = list(
-#'       name = "string",
-#'       email = "string",
-#'       date = "string"
-#'     ),
-#'     additionalData = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_commit(
-#'   repositoryName = "string",
-#'   commitId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2456,13 +1213,9 @@ codecommit_get_commit <- function(repositoryName, commitId) {
 #' reference)
 #'
 #' @description
-#' Returns information about the differences in a valid commit specifier
-#' (such as a branch, tag, HEAD, commit ID, or other fully qualified
-#' reference). Results can be limited to a specified path.
+#' Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID, or other fully qualified reference). Results can be limited to a specified path.
 #'
-#' @usage
-#' codecommit_get_differences(repositoryName, beforeCommitSpecifier,
-#'   afterCommitSpecifier, beforePath, afterPath, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/codecommit/get_differences.html](https://paws-r.github.io/docs/codecommit/get_differences.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to get differences.
 #' @param beforeCommitSpecifier The branch, tag, HEAD, or other fully qualified reference used to
@@ -2484,42 +1237,6 @@ codecommit_get_commit <- function(repositoryName, commitId) {
 #' results.
 #' @param NextToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   differences = list(
-#'     list(
-#'       beforeBlob = list(
-#'         blobId = "string",
-#'         path = "string",
-#'         mode = "string"
-#'       ),
-#'       afterBlob = list(
-#'         blobId = "string",
-#'         path = "string",
-#'         mode = "string"
-#'       ),
-#'       changeType = "A"|"M"|"D"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_differences(
-#'   repositoryName = "string",
-#'   beforeCommitSpecifier = "string",
-#'   afterCommitSpecifier = "string",
-#'   beforePath = "string",
-#'   afterPath = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2545,11 +1262,9 @@ codecommit_get_differences <- function(repositoryName, beforeCommitSpecifier = N
 #' metadata
 #'
 #' @description
-#' Returns the base-64 encoded contents of a specified file and its
-#' metadata.
+#' Returns the base-64 encoded contents of a specified file and its metadata.
 #'
-#' @usage
-#' codecommit_get_file(repositoryName, commitSpecifier, filePath)
+#' See [https://paws-r.github.io/docs/codecommit/get_file.html](https://paws-r.github.io/docs/codecommit/get_file.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the file.
 #' @param commitSpecifier The fully quaified reference that identifies the commit that contains
@@ -2559,28 +1274,6 @@ codecommit_get_differences <- function(repositoryName, beforeCommitSpecifier = N
 #' @param filePath &#91;required&#93; The fully qualified path to the file, including the full name and
 #' extension of the file. For example, /examples/file.md is the fully
 #' qualified path to a file named file.md in a folder named examples.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   commitId = "string",
-#'   blobId = "string",
-#'   filePath = "string",
-#'   fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-#'   fileSize = 123,
-#'   fileContent = raw
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_file(
-#'   repositoryName = "string",
-#'   commitSpecifier = "string",
-#'   filePath = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2607,8 +1300,7 @@ codecommit_get_file <- function(repositoryName, commitSpecifier = NULL, filePath
 #' @description
 #' Returns the contents of a specified folder in a repository.
 #'
-#' @usage
-#' codecommit_get_folder(repositoryName, commitSpecifier, folderPath)
+#' See [https://paws-r.github.io/docs/codecommit/get_folder.html](https://paws-r.github.io/docs/codecommit/get_folder.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository.
 #' @param commitSpecifier A fully qualified reference used to identify a commit that contains the
@@ -2620,55 +1312,6 @@ codecommit_get_file <- function(repositoryName, commitSpecifier = NULL, filePath
 #' including the folder name. For example, /examples is a fully-qualified
 #' path to a folder named examples that was created off of the root
 #' directory (/) of a repository.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   commitId = "string",
-#'   folderPath = "string",
-#'   treeId = "string",
-#'   subFolders = list(
-#'     list(
-#'       treeId = "string",
-#'       absolutePath = "string",
-#'       relativePath = "string"
-#'     )
-#'   ),
-#'   files = list(
-#'     list(
-#'       blobId = "string",
-#'       absolutePath = "string",
-#'       relativePath = "string",
-#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'     )
-#'   ),
-#'   symbolicLinks = list(
-#'     list(
-#'       blobId = "string",
-#'       absolutePath = "string",
-#'       relativePath = "string",
-#'       fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'     )
-#'   ),
-#'   subModules = list(
-#'     list(
-#'       commitId = "string",
-#'       absolutePath = "string",
-#'       relativePath = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_folder(
-#'   repositoryName = "string",
-#'   commitSpecifier = "string",
-#'   folderPath = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2695,10 +1338,7 @@ codecommit_get_folder <- function(repositoryName, commitSpecifier = NULL, folder
 #' @description
 #' Returns information about a specified merge commit.
 #'
-#' @usage
-#' codecommit_get_merge_commit(repositoryName, sourceCommitSpecifier,
-#'   destinationCommitSpecifier, conflictDetailLevel,
-#'   conflictResolutionStrategy)
+#' See [https://paws-r.github.io/docs/codecommit/get_merge_commit.html](https://paws-r.github.io/docs/codecommit/get_merge_commit.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the merge commit about which
 #' you want to get information.
@@ -2715,28 +1355,6 @@ codecommit_get_folder <- function(repositoryName, commitSpecifier = NULL, folder
 #' attempt automatically merging two versions of a file. The default is
 #' NONE, which requires any conflicts to be resolved manually before the
 #' merge operation is successful.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   sourceCommitId = "string",
-#'   destinationCommitId = "string",
-#'   baseCommitId = "string",
-#'   mergedCommitId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_merge_commit(
-#'   repositoryName = "string",
-#'   sourceCommitSpecifier = "string",
-#'   destinationCommitSpecifier = "string",
-#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2762,14 +1380,9 @@ codecommit_get_merge_commit <- function(repositoryName, sourceCommitSpecifier, d
 #' commit IDs for a pull request in a repository
 #'
 #' @description
-#' Returns information about merge conflicts between the before and after
-#' commit IDs for a pull request in a repository.
+#' Returns information about merge conflicts between the before and after commit IDs for a pull request in a repository.
 #'
-#' @usage
-#' codecommit_get_merge_conflicts(repositoryName,
-#'   destinationCommitSpecifier, sourceCommitSpecifier, mergeOption,
-#'   conflictDetailLevel, maxConflictFiles, conflictResolutionStrategy,
-#'   nextToken)
+#' See [https://paws-r.github.io/docs/codecommit/get_merge_conflicts.html](https://paws-r.github.io/docs/codecommit/get_merge_conflicts.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where the pull request was created.
 #' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
@@ -2789,65 +1402,6 @@ codecommit_get_merge_commit <- function(repositoryName, sourceCommitSpecifier, d
 #' merge operation is successful.
 #' @param nextToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   mergeable = TRUE|FALSE,
-#'   destinationCommitId = "string",
-#'   sourceCommitId = "string",
-#'   baseCommitId = "string",
-#'   conflictMetadataList = list(
-#'     list(
-#'       filePath = "string",
-#'       fileSizes = list(
-#'         source = 123,
-#'         destination = 123,
-#'         base = 123
-#'       ),
-#'       fileModes = list(
-#'         source = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-#'         destination = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-#'         base = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'       ),
-#'       objectTypes = list(
-#'         source = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
-#'         destination = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK",
-#'         base = "FILE"|"DIRECTORY"|"GIT_LINK"|"SYMBOLIC_LINK"
-#'       ),
-#'       numberOfConflicts = 123,
-#'       isBinaryFile = list(
-#'         source = TRUE|FALSE,
-#'         destination = TRUE|FALSE,
-#'         base = TRUE|FALSE
-#'       ),
-#'       contentConflict = TRUE|FALSE,
-#'       fileModeConflict = TRUE|FALSE,
-#'       objectTypeConflict = TRUE|FALSE,
-#'       mergeOperations = list(
-#'         source = "A"|"M"|"D",
-#'         destination = "A"|"M"|"D"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_merge_conflicts(
-#'   repositoryName = "string",
-#'   destinationCommitSpecifier = "string",
-#'   sourceCommitSpecifier = "string",
-#'   mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE",
-#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-#'   maxConflictFiles = 123,
-#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2873,14 +1427,9 @@ codecommit_get_merge_conflicts <- function(repositoryName, destinationCommitSpec
 #' specified branches
 #'
 #' @description
-#' Returns information about the merge options available for merging two
-#' specified branches. For details about why a merge option is not
-#' available, use GetMergeConflicts or DescribeMergeConflicts.
+#' Returns information about the merge options available for merging two specified branches. For details about why a merge option is not available, use GetMergeConflicts or DescribeMergeConflicts.
 #'
-#' @usage
-#' codecommit_get_merge_options(repositoryName, sourceCommitSpecifier,
-#'   destinationCommitSpecifier, conflictDetailLevel,
-#'   conflictResolutionStrategy)
+#' See [https://paws-r.github.io/docs/codecommit/get_merge_options.html](https://paws-r.github.io/docs/codecommit/get_merge_options.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the commits about which you
 #' want to get merge options.
@@ -2897,30 +1446,6 @@ codecommit_get_merge_conflicts <- function(repositoryName, destinationCommitSpec
 #' attempt automatically merging two versions of a file. The default is
 #' NONE, which requires any conflicts to be resolved manually before the
 #' merge operation is successful.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   mergeOptions = list(
-#'     "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-#'   ),
-#'   sourceCommitId = "string",
-#'   destinationCommitId = "string",
-#'   baseCommitId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_merge_options(
-#'   repositoryName = "string",
-#'   sourceCommitSpecifier = "string",
-#'   destinationCommitSpecifier = "string",
-#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2947,75 +1472,10 @@ codecommit_get_merge_options <- function(repositoryName, sourceCommitSpecifier, 
 #' @description
 #' Gets information about a pull request in a specified repository.
 #'
-#' @usage
-#' codecommit_get_pull_request(pullRequestId)
+#' See [https://paws-r.github.io/docs/codecommit/get_pull_request.html](https://paws-r.github.io/docs/codecommit/get_pull_request.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pullRequest = list(
-#'     pullRequestId = "string",
-#'     title = "string",
-#'     description = "string",
-#'     lastActivityDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     pullRequestStatus = "OPEN"|"CLOSED",
-#'     authorArn = "string",
-#'     pullRequestTargets = list(
-#'       list(
-#'         repositoryName = "string",
-#'         sourceReference = "string",
-#'         destinationReference = "string",
-#'         destinationCommit = "string",
-#'         sourceCommit = "string",
-#'         mergeBase = "string",
-#'         mergeMetadata = list(
-#'           isMerged = TRUE|FALSE,
-#'           mergedBy = "string",
-#'           mergeCommitId = "string",
-#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-#'         )
-#'       )
-#'     ),
-#'     clientRequestToken = "string",
-#'     revisionId = "string",
-#'     approvalRules = list(
-#'       list(
-#'         approvalRuleId = "string",
-#'         approvalRuleName = "string",
-#'         approvalRuleContent = "string",
-#'         ruleContentSha256 = "string",
-#'         lastModifiedDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         creationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastModifiedUser = "string",
-#'         originApprovalRuleTemplate = list(
-#'           approvalRuleTemplateId = "string",
-#'           approvalRuleTemplateName = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_pull_request(
-#'   pullRequestId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3040,36 +1500,12 @@ codecommit_get_pull_request <- function(pullRequestId) {
 #' Gets information about the approval states for a specified pull request
 #'
 #' @description
-#' Gets information about the approval states for a specified pull request.
-#' Approval states only apply to pull requests that have one or more
-#' approval rules applied to them.
+#' Gets information about the approval states for a specified pull request. Approval states only apply to pull requests that have one or more approval rules applied to them.
 #'
-#' @usage
-#' codecommit_get_pull_request_approval_states(pullRequestId, revisionId)
+#' See [https://paws-r.github.io/docs/codecommit/get_pull_request_approval_states.html](https://paws-r.github.io/docs/codecommit/get_pull_request_approval_states.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID for the pull request.
 #' @param revisionId &#91;required&#93; The system-generated ID for the pull request revision.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   approvals = list(
-#'     list(
-#'       userArn = "string",
-#'       approvalState = "APPROVE"|"REVOKE"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_pull_request_approval_states(
-#'   pullRequestId = "string",
-#'   revisionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3097,36 +1533,15 @@ codecommit_get_pull_request_approval_states <- function(pullRequestId, revisionI
 #' requirements for the pull request
 #'
 #' @description
-#' Returns information about whether approval rules have been set aside
-#' (overridden) for a pull request, and if so, the Amazon Resource Name
-#' (ARN) of the user or identity that overrode the rules and their
-#' requirements for the pull request.
+#' Returns information about whether approval rules have been set aside (overridden) for a pull request, and if so, the Amazon Resource Name (ARN) of the user or identity that overrode the rules and their requirements for the pull request.
 #'
-#' @usage
-#' codecommit_get_pull_request_override_state(pullRequestId, revisionId)
+#' See [https://paws-r.github.io/docs/codecommit/get_pull_request_override_state.html](https://paws-r.github.io/docs/codecommit/get_pull_request_override_state.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The ID of the pull request for which you want to get information about
 #' whether approval rules have been set aside (overridden).
 #' @param revisionId &#91;required&#93; The system-generated ID of the revision for the pull request. To
 #' retrieve the most recent revision ID, use
 #' [`get_pull_request`][codecommit_get_pull_request].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   overridden = TRUE|FALSE,
-#'   overrider = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_pull_request_override_state(
-#'   pullRequestId = "string",
-#'   revisionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3152,48 +1567,10 @@ codecommit_get_pull_request_override_state <- function(pullRequestId, revisionId
 #'
 #' @description
 #' Returns information about a repository.
-#' 
-#' The description field for a repository accepts all HTML characters and
-#' all valid Unicode characters. Applications that do not HTML-encode the
-#' description and display it in a webpage can expose users to potentially
-#' malicious code. Make sure that you HTML-encode the description field in
-#' any application that uses this API to display the repository description
-#' on a webpage.
 #'
-#' @usage
-#' codecommit_get_repository(repositoryName)
+#' See [https://paws-r.github.io/docs/codecommit/get_repository.html](https://paws-r.github.io/docs/codecommit/get_repository.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to get information about.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   repositoryMetadata = list(
-#'     accountId = "string",
-#'     repositoryId = "string",
-#'     repositoryName = "string",
-#'     repositoryDescription = "string",
-#'     defaultBranch = "string",
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     cloneUrlHttp = "string",
-#'     cloneUrlSsh = "string",
-#'     Arn = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_repository(
-#'   repositoryName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3220,38 +1597,9 @@ codecommit_get_repository <- function(repositoryName) {
 #' @description
 #' Gets information about triggers configured for a repository.
 #'
-#' @usage
-#' codecommit_get_repository_triggers(repositoryName)
+#' See [https://paws-r.github.io/docs/codecommit/get_repository_triggers.html](https://paws-r.github.io/docs/codecommit/get_repository_triggers.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository for which the trigger is configured.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   configurationId = "string",
-#'   triggers = list(
-#'     list(
-#'       name = "string",
-#'       destinationArn = "string",
-#'       customData = "string",
-#'       branches = list(
-#'         "string"
-#'       ),
-#'       events = list(
-#'         "all"|"updateReference"|"createReference"|"deleteReference"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_repository_triggers(
-#'   repositoryName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3277,36 +1625,14 @@ codecommit_get_repository_triggers <- function(repositoryName) {
 #' AWS account
 #'
 #' @description
-#' Lists all approval rule templates in the specified AWS Region in your
-#' AWS account. If an AWS Region is not specified, the AWS Region where you
-#' are signed in is used.
+#' Lists all approval rule templates in the specified AWS Region in your AWS account. If an AWS Region is not specified, the AWS Region where you are signed in is used.
 #'
-#' @usage
-#' codecommit_list_approval_rule_templates(nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codecommit/list_approval_rule_templates.html](https://paws-r.github.io/docs/codecommit/list_approval_rule_templates.html) for full documentation.
 #'
 #' @param nextToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   approvalRuleTemplateNames = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_approval_rule_templates(
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3332,12 +1658,9 @@ codecommit_list_approval_rule_templates <- function(nextToken = NULL, maxResults
 #' repository
 #'
 #' @description
-#' Lists all approval rule templates that are associated with a specified
-#' repository.
+#' Lists all approval rule templates that are associated with a specified repository.
 #'
-#' @usage
-#' codecommit_list_associated_approval_rule_templates_for_repository(
-#'   repositoryName, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codecommit/list_associated_approval_rule_templates_for_repository.html](https://paws-r.github.io/docs/codecommit/list_associated_approval_rule_templates_for_repository.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository for which you want to list all associated
 #' approval rule templates.
@@ -3345,26 +1668,6 @@ codecommit_list_approval_rule_templates <- function(nextToken = NULL, maxResults
 #' batch of the results.
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   approvalRuleTemplateNames = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_associated_approval_rule_templates_for_repository(
-#'   repositoryName = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3391,30 +1694,10 @@ codecommit_list_associated_approval_rule_templates_for_repository <- function(re
 #' @description
 #' Gets information about one or more branches in a repository.
 #'
-#' @usage
-#' codecommit_list_branches(repositoryName, nextToken)
+#' See [https://paws-r.github.io/docs/codecommit/list_branches.html](https://paws-r.github.io/docs/codecommit/list_branches.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the branches.
 #' @param nextToken An enumeration token that allows the operation to batch the results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   branches = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_branches(
-#'   repositoryName = "string",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3439,12 +1722,9 @@ codecommit_list_branches <- function(repositoryName, nextToken = NULL) {
 #' Returns a list of pull requests for a specified repository
 #'
 #' @description
-#' Returns a list of pull requests for a specified repository. The return
-#' list can be refined by pull request status or pull request author ARN.
+#' Returns a list of pull requests for a specified repository. The return list can be refined by pull request status or pull request author ARN.
 #'
-#' @usage
-#' codecommit_list_pull_requests(repositoryName, authorArn,
-#'   pullRequestStatus, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codecommit/list_pull_requests.html](https://paws-r.github.io/docs/codecommit/list_pull_requests.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository for which you want to list pull requests.
 #' @param authorArn Optional. The Amazon Resource Name (ARN) of the user who created the
@@ -3456,28 +1736,6 @@ codecommit_list_branches <- function(repositoryName, nextToken = NULL) {
 #' batch of the results.
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pullRequestIds = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_pull_requests(
-#'   repositoryName = "string",
-#'   authorArn = "string",
-#'   pullRequestStatus = "OPEN"|"CLOSED",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3504,8 +1762,7 @@ codecommit_list_pull_requests <- function(repositoryName, authorArn = NULL, pull
 #' @description
 #' Gets information about one or more repositories.
 #'
-#' @usage
-#' codecommit_list_repositories(nextToken, sortBy, order)
+#' See [https://paws-r.github.io/docs/codecommit/list_repositories.html](https://paws-r.github.io/docs/codecommit/list_repositories.html) for full documentation.
 #'
 #' @param nextToken An enumeration token that allows the operation to batch the results of
 #' the operation. Batch sizes are 1,000 for list repository operations.
@@ -3513,29 +1770,6 @@ codecommit_list_pull_requests <- function(repositoryName, authorArn = NULL, pull
 #' 1,000 records is retrieved.
 #' @param sortBy The criteria used to sort the results of a list repositories operation.
 #' @param order The order in which to sort the results of a list repositories operation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   repositories = list(
-#'     list(
-#'       repositoryName = "string",
-#'       repositoryId = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_repositories(
-#'   nextToken = "string",
-#'   sortBy = "repositoryName"|"lastModifiedDate",
-#'   order = "ascending"|"descending"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3561,12 +1795,9 @@ codecommit_list_repositories <- function(nextToken = NULL, sortBy = NULL, order 
 #' template
 #'
 #' @description
-#' Lists all repositories associated with the specified approval rule
-#' template.
+#' Lists all repositories associated with the specified approval rule template.
 #'
-#' @usage
-#' codecommit_list_repositories_for_approval_rule_template(
-#'   approvalRuleTemplateName, nextToken, maxResults)
+#' See [https://paws-r.github.io/docs/codecommit/list_repositories_for_approval_rule_template.html](https://paws-r.github.io/docs/codecommit/list_repositories_for_approval_rule_template.html) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template for which you want to list
 #' repositories that are associated with that template.
@@ -3574,26 +1805,6 @@ codecommit_list_repositories <- function(nextToken = NULL, sortBy = NULL, order 
 #' batch of the results.
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
 #' results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   repositoryNames = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_repositories_for_approval_rule_template(
-#'   approvalRuleTemplateName = "string",
-#'   nextToken = "string",
-#'   maxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3619,38 +1830,14 @@ codecommit_list_repositories_for_approval_rule_template <- function(approvalRule
 #' (ARN) in AWS CodeCommit
 #'
 #' @description
-#' Gets information about AWS tags for a specified Amazon Resource Name
-#' (ARN) in AWS CodeCommit. For a list of valid resources in AWS
-#' CodeCommit, see [CodeCommit Resources and
-#' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats)
-#' in the *AWS CodeCommit User Guide*.
+#' Gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see [CodeCommit Resources and Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats) in the *AWS CodeCommit User Guide*.
 #'
-#' @usage
-#' codecommit_list_tags_for_resource(resourceArn, nextToken)
+#' See [https://paws-r.github.io/docs/codecommit/list_tags_for_resource.html](https://paws-r.github.io/docs/codecommit/list_tags_for_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which you want to get
 #' information about tags, if any.
 #' @param nextToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   resourceArn = "string",
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3677,9 +1864,7 @@ codecommit_list_tags_for_resource <- function(resourceArn, nextToken = NULL) {
 #' @description
 #' Merges two branches using the fast-forward merge strategy.
 #'
-#' @usage
-#' codecommit_merge_branches_by_fast_forward(repositoryName,
-#'   sourceCommitSpecifier, destinationCommitSpecifier, targetBranch)
+#' See [https://paws-r.github.io/docs/codecommit/merge_branches_by_fast_forward.html](https://paws-r.github.io/docs/codecommit/merge_branches_by_fast_forward.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to merge two branches.
 #' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
@@ -3687,25 +1872,6 @@ codecommit_list_tags_for_resource <- function(resourceArn, nextToken = NULL) {
 #' @param destinationCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
 #' identify a commit (for example, a branch name or a full commit ID).
 #' @param targetBranch The branch where the merge is applied.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   commitId = "string",
-#'   treeId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$merge_branches_by_fast_forward(
-#'   repositoryName = "string",
-#'   sourceCommitSpecifier = "string",
-#'   destinationCommitSpecifier = "string",
-#'   targetBranch = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3732,11 +1898,7 @@ codecommit_merge_branches_by_fast_forward <- function(repositoryName, sourceComm
 #' @description
 #' Merges two branches using the squash merge strategy.
 #'
-#' @usage
-#' codecommit_merge_branches_by_squash(repositoryName,
-#'   sourceCommitSpecifier, destinationCommitSpecifier, targetBranch,
-#'   conflictDetailLevel, conflictResolutionStrategy, authorName, email,
-#'   commitMessage, keepEmptyFolders, conflictResolution)
+#' See [https://paws-r.github.io/docs/codecommit/merge_branches_by_squash.html](https://paws-r.github.io/docs/codecommit/merge_branches_by_squash.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to merge two branches.
 #' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
@@ -3765,52 +1927,6 @@ codecommit_merge_branches_by_fast_forward <- function(repositoryName, sourceComm
 #' @param conflictResolution If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 #' use when resolving conflicts during a merge.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   commitId = "string",
-#'   treeId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$merge_branches_by_squash(
-#'   repositoryName = "string",
-#'   sourceCommitSpecifier = "string",
-#'   destinationCommitSpecifier = "string",
-#'   targetBranch = "string",
-#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
-#'   authorName = "string",
-#'   email = "string",
-#'   commitMessage = "string",
-#'   keepEmptyFolders = TRUE|FALSE,
-#'   conflictResolution = list(
-#'     replaceContents = list(
-#'       list(
-#'         filePath = "string",
-#'         replacementType = "KEEP_BASE"|"KEEP_SOURCE"|"KEEP_DESTINATION"|"USE_NEW_CONTENT",
-#'         content = raw,
-#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'       )
-#'     ),
-#'     deleteFiles = list(
-#'       list(
-#'         filePath = "string"
-#'       )
-#'     ),
-#'     setFileModes = list(
-#'       list(
-#'         filePath = "string",
-#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codecommit_merge_branches_by_squash
@@ -3836,11 +1952,7 @@ codecommit_merge_branches_by_squash <- function(repositoryName, sourceCommitSpec
 #' @description
 #' Merges two specified branches using the three-way merge strategy.
 #'
-#' @usage
-#' codecommit_merge_branches_by_three_way(repositoryName,
-#'   sourceCommitSpecifier, destinationCommitSpecifier, targetBranch,
-#'   conflictDetailLevel, conflictResolutionStrategy, authorName, email,
-#'   commitMessage, keepEmptyFolders, conflictResolution)
+#' See [https://paws-r.github.io/docs/codecommit/merge_branches_by_three_way.html](https://paws-r.github.io/docs/codecommit/merge_branches_by_three_way.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to merge two branches.
 #' @param sourceCommitSpecifier &#91;required&#93; The branch, tag, HEAD, or other fully qualified reference used to
@@ -3868,52 +1980,6 @@ codecommit_merge_branches_by_squash <- function(repositoryName, sourceCommitSpec
 #' @param conflictResolution If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 #' use when resolving conflicts during a merge.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   commitId = "string",
-#'   treeId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$merge_branches_by_three_way(
-#'   repositoryName = "string",
-#'   sourceCommitSpecifier = "string",
-#'   destinationCommitSpecifier = "string",
-#'   targetBranch = "string",
-#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
-#'   authorName = "string",
-#'   email = "string",
-#'   commitMessage = "string",
-#'   keepEmptyFolders = TRUE|FALSE,
-#'   conflictResolution = list(
-#'     replaceContents = list(
-#'       list(
-#'         filePath = "string",
-#'         replacementType = "KEEP_BASE"|"KEEP_SOURCE"|"KEEP_DESTINATION"|"USE_NEW_CONTENT",
-#'         content = raw,
-#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'       )
-#'     ),
-#'     deleteFiles = list(
-#'       list(
-#'         filePath = "string"
-#'       )
-#'     ),
-#'     setFileModes = list(
-#'       list(
-#'         filePath = "string",
-#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codecommit_merge_branches_by_three_way
@@ -3939,14 +2005,9 @@ codecommit_merge_branches_by_three_way <- function(repositoryName, sourceCommitS
 #' the fast-forward merge strategy
 #'
 #' @description
-#' Attempts to merge the source commit of a pull request into the specified
-#' destination branch for that pull request at the specified commit using
-#' the fast-forward merge strategy. If the merge is successful, it closes
-#' the pull request.
+#' Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the fast-forward merge strategy. If the merge is successful, it closes the pull request.
 #'
-#' @usage
-#' codecommit_merge_pull_request_by_fast_forward(pullRequestId,
-#'   repositoryName, sourceCommitId)
+#' See [https://paws-r.github.io/docs/codecommit/merge_pull_request_by_fast_forward.html](https://paws-r.github.io/docs/codecommit/merge_pull_request_by_fast_forward.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -3955,72 +2016,6 @@ codecommit_merge_branches_by_three_way <- function(repositoryName, sourceCommitS
 #' source branch. Pass this value if you want an exception thrown if the
 #' current commit ID of the tip of the source branch does not match this
 #' commit ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pullRequest = list(
-#'     pullRequestId = "string",
-#'     title = "string",
-#'     description = "string",
-#'     lastActivityDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     pullRequestStatus = "OPEN"|"CLOSED",
-#'     authorArn = "string",
-#'     pullRequestTargets = list(
-#'       list(
-#'         repositoryName = "string",
-#'         sourceReference = "string",
-#'         destinationReference = "string",
-#'         destinationCommit = "string",
-#'         sourceCommit = "string",
-#'         mergeBase = "string",
-#'         mergeMetadata = list(
-#'           isMerged = TRUE|FALSE,
-#'           mergedBy = "string",
-#'           mergeCommitId = "string",
-#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-#'         )
-#'       )
-#'     ),
-#'     clientRequestToken = "string",
-#'     revisionId = "string",
-#'     approvalRules = list(
-#'       list(
-#'         approvalRuleId = "string",
-#'         approvalRuleName = "string",
-#'         approvalRuleContent = "string",
-#'         ruleContentSha256 = "string",
-#'         lastModifiedDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         creationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastModifiedUser = "string",
-#'         originApprovalRuleTemplate = list(
-#'           approvalRuleTemplateId = "string",
-#'           approvalRuleTemplateName = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$merge_pull_request_by_fast_forward(
-#'   pullRequestId = "string",
-#'   repositoryName = "string",
-#'   sourceCommitId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4047,15 +2042,9 @@ codecommit_merge_pull_request_by_fast_forward <- function(pullRequestId, reposit
 #' the squash merge strategy
 #'
 #' @description
-#' Attempts to merge the source commit of a pull request into the specified
-#' destination branch for that pull request at the specified commit using
-#' the squash merge strategy. If the merge is successful, it closes the
-#' pull request.
+#' Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the squash merge strategy. If the merge is successful, it closes the pull request.
 #'
-#' @usage
-#' codecommit_merge_pull_request_by_squash(pullRequestId, repositoryName,
-#'   sourceCommitId, conflictDetailLevel, conflictResolutionStrategy,
-#'   commitMessage, authorName, email, keepEmptyFolders, conflictResolution)
+#' See [https://paws-r.github.io/docs/codecommit/merge_pull_request_by_squash.html](https://paws-r.github.io/docs/codecommit/merge_pull_request_by_squash.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -4083,99 +2072,6 @@ codecommit_merge_pull_request_by_fast_forward <- function(pullRequestId, reposit
 #' file is created for empty folders. The default is false.
 #' @param conflictResolution If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 #' use when resolving conflicts during a merge.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pullRequest = list(
-#'     pullRequestId = "string",
-#'     title = "string",
-#'     description = "string",
-#'     lastActivityDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     pullRequestStatus = "OPEN"|"CLOSED",
-#'     authorArn = "string",
-#'     pullRequestTargets = list(
-#'       list(
-#'         repositoryName = "string",
-#'         sourceReference = "string",
-#'         destinationReference = "string",
-#'         destinationCommit = "string",
-#'         sourceCommit = "string",
-#'         mergeBase = "string",
-#'         mergeMetadata = list(
-#'           isMerged = TRUE|FALSE,
-#'           mergedBy = "string",
-#'           mergeCommitId = "string",
-#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-#'         )
-#'       )
-#'     ),
-#'     clientRequestToken = "string",
-#'     revisionId = "string",
-#'     approvalRules = list(
-#'       list(
-#'         approvalRuleId = "string",
-#'         approvalRuleName = "string",
-#'         approvalRuleContent = "string",
-#'         ruleContentSha256 = "string",
-#'         lastModifiedDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         creationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastModifiedUser = "string",
-#'         originApprovalRuleTemplate = list(
-#'           approvalRuleTemplateId = "string",
-#'           approvalRuleTemplateName = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$merge_pull_request_by_squash(
-#'   pullRequestId = "string",
-#'   repositoryName = "string",
-#'   sourceCommitId = "string",
-#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
-#'   commitMessage = "string",
-#'   authorName = "string",
-#'   email = "string",
-#'   keepEmptyFolders = TRUE|FALSE,
-#'   conflictResolution = list(
-#'     replaceContents = list(
-#'       list(
-#'         filePath = "string",
-#'         replacementType = "KEEP_BASE"|"KEEP_SOURCE"|"KEEP_DESTINATION"|"USE_NEW_CONTENT",
-#'         content = raw,
-#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'       )
-#'     ),
-#'     deleteFiles = list(
-#'       list(
-#'         filePath = "string"
-#'       )
-#'     ),
-#'     setFileModes = list(
-#'       list(
-#'         filePath = "string",
-#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4202,16 +2098,9 @@ codecommit_merge_pull_request_by_squash <- function(pullRequestId, repositoryNam
 #' the three-way merge strategy
 #'
 #' @description
-#' Attempts to merge the source commit of a pull request into the specified
-#' destination branch for that pull request at the specified commit using
-#' the three-way merge strategy. If the merge is successful, it closes the
-#' pull request.
+#' Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the three-way merge strategy. If the merge is successful, it closes the pull request.
 #'
-#' @usage
-#' codecommit_merge_pull_request_by_three_way(pullRequestId,
-#'   repositoryName, sourceCommitId, conflictDetailLevel,
-#'   conflictResolutionStrategy, commitMessage, authorName, email,
-#'   keepEmptyFolders, conflictResolution)
+#' See [https://paws-r.github.io/docs/codecommit/merge_pull_request_by_three_way.html](https://paws-r.github.io/docs/codecommit/merge_pull_request_by_three_way.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -4240,99 +2129,6 @@ codecommit_merge_pull_request_by_squash <- function(pullRequestId, repositoryNam
 #' @param conflictResolution If AUTOMERGE is the conflict resolution strategy, a list of inputs to
 #' use when resolving conflicts during a merge.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pullRequest = list(
-#'     pullRequestId = "string",
-#'     title = "string",
-#'     description = "string",
-#'     lastActivityDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     pullRequestStatus = "OPEN"|"CLOSED",
-#'     authorArn = "string",
-#'     pullRequestTargets = list(
-#'       list(
-#'         repositoryName = "string",
-#'         sourceReference = "string",
-#'         destinationReference = "string",
-#'         destinationCommit = "string",
-#'         sourceCommit = "string",
-#'         mergeBase = "string",
-#'         mergeMetadata = list(
-#'           isMerged = TRUE|FALSE,
-#'           mergedBy = "string",
-#'           mergeCommitId = "string",
-#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-#'         )
-#'       )
-#'     ),
-#'     clientRequestToken = "string",
-#'     revisionId = "string",
-#'     approvalRules = list(
-#'       list(
-#'         approvalRuleId = "string",
-#'         approvalRuleName = "string",
-#'         approvalRuleContent = "string",
-#'         ruleContentSha256 = "string",
-#'         lastModifiedDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         creationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastModifiedUser = "string",
-#'         originApprovalRuleTemplate = list(
-#'           approvalRuleTemplateId = "string",
-#'           approvalRuleTemplateName = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$merge_pull_request_by_three_way(
-#'   pullRequestId = "string",
-#'   repositoryName = "string",
-#'   sourceCommitId = "string",
-#'   conflictDetailLevel = "FILE_LEVEL"|"LINE_LEVEL",
-#'   conflictResolutionStrategy = "NONE"|"ACCEPT_SOURCE"|"ACCEPT_DESTINATION"|"AUTOMERGE",
-#'   commitMessage = "string",
-#'   authorName = "string",
-#'   email = "string",
-#'   keepEmptyFolders = TRUE|FALSE,
-#'   conflictResolution = list(
-#'     replaceContents = list(
-#'       list(
-#'         filePath = "string",
-#'         replacementType = "KEEP_BASE"|"KEEP_SOURCE"|"KEEP_DESTINATION"|"USE_NEW_CONTENT",
-#'         content = raw,
-#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'       )
-#'     ),
-#'     deleteFiles = list(
-#'       list(
-#'         filePath = "string"
-#'       )
-#'     ),
-#'     setFileModes = list(
-#'       list(
-#'         filePath = "string",
-#'         fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codecommit_merge_pull_request_by_three_way
@@ -4357,12 +2153,9 @@ codecommit_merge_pull_request_by_three_way <- function(pullRequestId, repository
 #' pull request
 #'
 #' @description
-#' Sets aside (overrides) all approval rule requirements for a specified
-#' pull request.
+#' Sets aside (overrides) all approval rule requirements for a specified pull request.
 #'
-#' @usage
-#' codecommit_override_pull_request_approval_rules(pullRequestId,
-#'   revisionId, overrideStatus)
+#' See [https://paws-r.github.io/docs/codecommit/override_pull_request_approval_rules.html](https://paws-r.github.io/docs/codecommit/override_pull_request_approval_rules.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request for which you want to
 #' override all approval rule requirements. To get this information, use
@@ -4373,18 +2166,6 @@ codecommit_merge_pull_request_by_three_way <- function(pullRequestId, repository
 #' @param overrideStatus &#91;required&#93; Whether you want to set aside approval rule requirements for the pull
 #' request (OVERRIDE) or revoke a previous override and apply approval rule
 #' requirements (REVOKE). REVOKE status is not stored.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$override_pull_request_approval_rules(
-#'   pullRequestId = "string",
-#'   revisionId = "string",
-#'   overrideStatus = "OVERRIDE"|"REVOKE"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4411,9 +2192,7 @@ codecommit_override_pull_request_approval_rules <- function(pullRequestId, revis
 #' @description
 #' Posts a comment on the comparison between two commits.
 #'
-#' @usage
-#' codecommit_post_comment_for_compared_commit(repositoryName,
-#'   beforeCommitId, afterCommitId, location, content, clientRequestToken)
+#' See [https://paws-r.github.io/docs/codecommit/post_comment_for_compared_commit.html](https://paws-r.github.io/docs/codecommit/post_comment_for_compared_commit.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to post a comment on the
 #' comparison between commits.
@@ -4429,59 +2208,6 @@ codecommit_override_pull_request_approval_rules <- function(pullRequestId, revis
 #' parameter. If a request is received with the same parameters and a token
 #' is included, the request returns information about the initial request
 #' that used that token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   repositoryName = "string",
-#'   beforeCommitId = "string",
-#'   afterCommitId = "string",
-#'   beforeBlobId = "string",
-#'   afterBlobId = "string",
-#'   location = list(
-#'     filePath = "string",
-#'     filePosition = 123,
-#'     relativeFileVersion = "BEFORE"|"AFTER"
-#'   ),
-#'   comment = list(
-#'     commentId = "string",
-#'     content = "string",
-#'     inReplyTo = "string",
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     authorArn = "string",
-#'     deleted = TRUE|FALSE,
-#'     clientRequestToken = "string",
-#'     callerReactions = list(
-#'       "string"
-#'     ),
-#'     reactionCounts = list(
-#'       123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$post_comment_for_compared_commit(
-#'   repositoryName = "string",
-#'   beforeCommitId = "string",
-#'   afterCommitId = "string",
-#'   location = list(
-#'     filePath = "string",
-#'     filePosition = 123,
-#'     relativeFileVersion = "BEFORE"|"AFTER"
-#'   ),
-#'   content = "string",
-#'   clientRequestToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4508,9 +2234,7 @@ codecommit_post_comment_for_compared_commit <- function(repositoryName, beforeCo
 #' @description
 #' Posts a comment on a pull request.
 #'
-#' @usage
-#' codecommit_post_comment_for_pull_request(pullRequestId, repositoryName,
-#'   beforeCommitId, afterCommitId, location, content, clientRequestToken)
+#' See [https://paws-r.github.io/docs/codecommit/post_comment_for_pull_request.html](https://paws-r.github.io/docs/codecommit/post_comment_for_pull_request.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
@@ -4531,61 +2255,6 @@ codecommit_post_comment_for_compared_commit <- function(repositoryName, beforeCo
 #' parameter. If a request is received with the same parameters and a token
 #' is included, the request returns information about the initial request
 #' that used that token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   repositoryName = "string",
-#'   pullRequestId = "string",
-#'   beforeCommitId = "string",
-#'   afterCommitId = "string",
-#'   beforeBlobId = "string",
-#'   afterBlobId = "string",
-#'   location = list(
-#'     filePath = "string",
-#'     filePosition = 123,
-#'     relativeFileVersion = "BEFORE"|"AFTER"
-#'   ),
-#'   comment = list(
-#'     commentId = "string",
-#'     content = "string",
-#'     inReplyTo = "string",
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     authorArn = "string",
-#'     deleted = TRUE|FALSE,
-#'     clientRequestToken = "string",
-#'     callerReactions = list(
-#'       "string"
-#'     ),
-#'     reactionCounts = list(
-#'       123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$post_comment_for_pull_request(
-#'   pullRequestId = "string",
-#'   repositoryName = "string",
-#'   beforeCommitId = "string",
-#'   afterCommitId = "string",
-#'   location = list(
-#'     filePath = "string",
-#'     filePosition = 123,
-#'     relativeFileVersion = "BEFORE"|"AFTER"
-#'   ),
-#'   content = "string",
-#'   clientRequestToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4611,11 +2280,9 @@ codecommit_post_comment_for_pull_request <- function(pullRequestId, repositoryNa
 #' commits or a pull request
 #'
 #' @description
-#' Posts a comment in reply to an existing comment on a comparison between
-#' commits or a pull request.
+#' Posts a comment in reply to an existing comment on a comparison between commits or a pull request.
 #'
-#' @usage
-#' codecommit_post_comment_reply(inReplyTo, clientRequestToken, content)
+#' See [https://paws-r.github.io/docs/codecommit/post_comment_reply.html](https://paws-r.github.io/docs/codecommit/post_comment_reply.html) for full documentation.
 #'
 #' @param inReplyTo &#91;required&#93; The system-generated ID of the comment to which you want to reply. To
 #' get this ID, use
@@ -4628,42 +2295,6 @@ codecommit_post_comment_for_pull_request <- function(pullRequestId, repositoryNa
 #' is included, the request returns information about the initial request
 #' that used that token.
 #' @param content &#91;required&#93; The contents of your reply to a comment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   comment = list(
-#'     commentId = "string",
-#'     content = "string",
-#'     inReplyTo = "string",
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     authorArn = "string",
-#'     deleted = TRUE|FALSE,
-#'     clientRequestToken = "string",
-#'     callerReactions = list(
-#'       "string"
-#'     ),
-#'     reactionCounts = list(
-#'       123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$post_comment_reply(
-#'   inReplyTo = "string",
-#'   clientRequestToken = "string",
-#'   content = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4689,13 +2320,9 @@ codecommit_post_comment_reply <- function(inReplyTo, clientRequestToken = NULL, 
 #' identity is used to make the request
 #'
 #' @description
-#' Adds or updates a reaction to a specified comment for the user whose
-#' identity is used to make the request. You can only add or update a
-#' reaction for yourself. You cannot add, modify, or delete a reaction for
-#' another user.
+#' Adds or updates a reaction to a specified comment for the user whose identity is used to make the request. You can only add or update a reaction for yourself. You cannot add, modify, or delete a reaction for another user.
 #'
-#' @usage
-#' codecommit_put_comment_reaction(commentId, reactionValue)
+#' See [https://paws-r.github.io/docs/codecommit/put_comment_reaction.html](https://paws-r.github.io/docs/codecommit/put_comment_reaction.html) for full documentation.
 #'
 #' @param commentId &#91;required&#93; The ID of the comment to which you want to add or update a reaction.
 #' @param reactionValue &#91;required&#93; The emoji reaction you want to add or update. To remove a reaction,
@@ -4703,17 +2330,6 @@ codecommit_post_comment_reply <- function(inReplyTo, clientRequestToken = NULL, 
 #' none. For information about emoji reaction values supported in AWS
 #' CodeCommit, see the [AWS CodeCommit User
 #' Guide](https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-commit-comment.html#emoji-reaction-table).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_comment_reaction(
-#'   commentId = "string",
-#'   reactionValue = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4739,12 +2355,9 @@ codecommit_put_comment_reaction <- function(commentId, reactionValue) {
 #' generates a commit for the addition in the specified branch
 #'
 #' @description
-#' Adds or updates a file in a branch in an AWS CodeCommit repository, and
-#' generates a commit for the addition in the specified branch.
+#' Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in the specified branch.
 #'
-#' @usage
-#' codecommit_put_file(repositoryName, branchName, fileContent, filePath,
-#'   fileMode, parentCommitId, commitMessage, name, email)
+#' See [https://paws-r.github.io/docs/codecommit/put_file.html](https://paws-r.github.io/docs/codecommit/put_file.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to add or update the file.
 #' @param branchName &#91;required&#93; The name of the branch where you want to add or update the file. If this
@@ -4772,31 +2385,6 @@ codecommit_put_comment_reaction <- function(commentId, reactionValue) {
 #' useful.
 #' @param email An email address for the person adding or updating the file.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   commitId = "string",
-#'   blobId = "string",
-#'   treeId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_file(
-#'   repositoryName = "string",
-#'   branchName = "string",
-#'   fileContent = raw,
-#'   filePath = "string",
-#'   fileMode = "EXECUTABLE"|"NORMAL"|"SYMLINK",
-#'   parentCommitId = "string",
-#'   commitMessage = "string",
-#'   name = "string",
-#'   email = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codecommit_put_file
@@ -4820,43 +2408,13 @@ codecommit_put_file <- function(repositoryName, branchName, fileContent, filePat
 #' Replaces all triggers for a repository
 #'
 #' @description
-#' Replaces all triggers for a repository. Used to create or delete
-#' triggers.
+#' Replaces all triggers for a repository. Used to create or delete triggers.
 #'
-#' @usage
-#' codecommit_put_repository_triggers(repositoryName, triggers)
+#' See [https://paws-r.github.io/docs/codecommit/put_repository_triggers.html](https://paws-r.github.io/docs/codecommit/put_repository_triggers.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository where you want to create or update the
 #' trigger.
 #' @param triggers &#91;required&#93; The JSON block of configuration information for each trigger.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   configurationId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_repository_triggers(
-#'   repositoryName = "string",
-#'   triggers = list(
-#'     list(
-#'       name = "string",
-#'       destinationArn = "string",
-#'       customData = "string",
-#'       branches = list(
-#'         "string"
-#'       ),
-#'       events = list(
-#'         "all"|"updateReference"|"createReference"|"deleteReference"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4881,30 +2439,13 @@ codecommit_put_repository_triggers <- function(repositoryName, triggers) {
 #' Adds or updates tags for a resource in AWS CodeCommit
 #'
 #' @description
-#' Adds or updates tags for a resource in AWS CodeCommit. For a list of
-#' valid resources in AWS CodeCommit, see [CodeCommit Resources and
-#' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats)
-#' in the *AWS CodeCommit User Guide*.
+#' Adds or updates tags for a resource in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see [CodeCommit Resources and Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats) in the *AWS CodeCommit User Guide*.
 #'
-#' @usage
-#' codecommit_tag_resource(resourceArn, tags)
+#' See [https://paws-r.github.io/docs/codecommit/tag_resource.html](https://paws-r.github.io/docs/codecommit/tag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which you want to add
 #' or update tags.
 #' @param tags &#91;required&#93; The key-value pair to use when tagging this repository.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   resourceArn = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4930,52 +2471,12 @@ codecommit_tag_resource <- function(resourceArn, tags) {
 #' the trigger target
 #'
 #' @description
-#' Tests the functionality of repository triggers by sending information to
-#' the trigger target. If real data is available in the repository, the
-#' test sends data from the last commit. If no data is available, sample
-#' data is generated.
+#' Tests the functionality of repository triggers by sending information to the trigger target. If real data is available in the repository, the test sends data from the last commit. If no data is available, sample data is generated.
 #'
-#' @usage
-#' codecommit_test_repository_triggers(repositoryName, triggers)
+#' See [https://paws-r.github.io/docs/codecommit/test_repository_triggers.html](https://paws-r.github.io/docs/codecommit/test_repository_triggers.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository in which to test the triggers.
 #' @param triggers &#91;required&#93; The list of triggers to test.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   successfulExecutions = list(
-#'     "string"
-#'   ),
-#'   failedExecutions = list(
-#'     list(
-#'       trigger = "string",
-#'       failureMessage = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$test_repository_triggers(
-#'   repositoryName = "string",
-#'   triggers = list(
-#'     list(
-#'       name = "string",
-#'       destinationArn = "string",
-#'       customData = "string",
-#'       branches = list(
-#'         "string"
-#'       ),
-#'       events = list(
-#'         "all"|"updateReference"|"createReference"|"deleteReference"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5000,30 +2501,13 @@ codecommit_test_repository_triggers <- function(repositoryName, triggers) {
 #' Removes tags for a resource in AWS CodeCommit
 #'
 #' @description
-#' Removes tags for a resource in AWS CodeCommit. For a list of valid
-#' resources in AWS CodeCommit, see [CodeCommit Resources and
-#' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats)
-#' in the *AWS CodeCommit User Guide*.
+#' Removes tags for a resource in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see [CodeCommit Resources and Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats) in the *AWS CodeCommit User Guide*.
 #'
-#' @usage
-#' codecommit_untag_resource(resourceArn, tagKeys)
+#' See [https://paws-r.github.io/docs/codecommit/untag_resource.html](https://paws-r.github.io/docs/codecommit/untag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which you want to
 #' remove tags.
 #' @param tagKeys &#91;required&#93; The tag key for each tag that you want to remove from the resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   resourceArn = "string",
-#'   tagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5048,13 +2532,9 @@ codecommit_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates the content of an approval rule template
 #'
 #' @description
-#' Updates the content of an approval rule template. You can change the
-#' number of required approvals, the membership of the approval rule, and
-#' whether an approval pool is defined.
+#' Updates the content of an approval rule template. You can change the number of required approvals, the membership of the approval rule, and whether an approval pool is defined.
 #'
-#' @usage
-#' codecommit_update_approval_rule_template_content(
-#'   approvalRuleTemplateName, newRuleContent, existingRuleContentSha256)
+#' See [https://paws-r.github.io/docs/codecommit/update_approval_rule_template_content.html](https://paws-r.github.io/docs/codecommit/update_approval_rule_template_content.html) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the approval rule template where you want to update the
 #' content of the rule.
@@ -5063,36 +2543,6 @@ codecommit_untag_resource <- function(resourceArn, tagKeys) {
 #' @param existingRuleContentSha256 The SHA-256 hash signature for the content of the approval rule. You can
 #' retrieve this information by using
 #' [`get_pull_request`][codecommit_get_pull_request].
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   approvalRuleTemplate = list(
-#'     approvalRuleTemplateId = "string",
-#'     approvalRuleTemplateName = "string",
-#'     approvalRuleTemplateDescription = "string",
-#'     approvalRuleTemplateContent = "string",
-#'     ruleContentSha256 = "string",
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModifiedUser = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_approval_rule_template_content(
-#'   approvalRuleTemplateName = "string",
-#'   newRuleContent = "string",
-#'   existingRuleContentSha256 = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5119,41 +2569,10 @@ codecommit_update_approval_rule_template_content <- function(approvalRuleTemplat
 #' @description
 #' Updates the description for a specified approval rule template.
 #'
-#' @usage
-#' codecommit_update_approval_rule_template_description(
-#'   approvalRuleTemplateName, approvalRuleTemplateDescription)
+#' See [https://paws-r.github.io/docs/codecommit/update_approval_rule_template_description.html](https://paws-r.github.io/docs/codecommit/update_approval_rule_template_description.html) for full documentation.
 #'
 #' @param approvalRuleTemplateName &#91;required&#93; The name of the template for which you want to update the description.
 #' @param approvalRuleTemplateDescription &#91;required&#93; The updated description of the approval rule template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   approvalRuleTemplate = list(
-#'     approvalRuleTemplateId = "string",
-#'     approvalRuleTemplateName = "string",
-#'     approvalRuleTemplateDescription = "string",
-#'     approvalRuleTemplateContent = "string",
-#'     ruleContentSha256 = "string",
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModifiedUser = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_approval_rule_template_description(
-#'   approvalRuleTemplateName = "string",
-#'   approvalRuleTemplateDescription = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5180,41 +2599,10 @@ codecommit_update_approval_rule_template_description <- function(approvalRuleTem
 #' @description
 #' Updates the name of a specified approval rule template.
 #'
-#' @usage
-#' codecommit_update_approval_rule_template_name(
-#'   oldApprovalRuleTemplateName, newApprovalRuleTemplateName)
+#' See [https://paws-r.github.io/docs/codecommit/update_approval_rule_template_name.html](https://paws-r.github.io/docs/codecommit/update_approval_rule_template_name.html) for full documentation.
 #'
 #' @param oldApprovalRuleTemplateName &#91;required&#93; The current name of the approval rule template.
 #' @param newApprovalRuleTemplateName &#91;required&#93; The new name you want to apply to the approval rule template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   approvalRuleTemplate = list(
-#'     approvalRuleTemplateId = "string",
-#'     approvalRuleTemplateName = "string",
-#'     approvalRuleTemplateDescription = "string",
-#'     approvalRuleTemplateContent = "string",
-#'     ruleContentSha256 = "string",
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModifiedUser = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_approval_rule_template_name(
-#'   oldApprovalRuleTemplateName = "string",
-#'   newApprovalRuleTemplateName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5241,8 +2629,7 @@ codecommit_update_approval_rule_template_name <- function(oldApprovalRuleTemplat
 #' @description
 #' Replaces the contents of a comment.
 #'
-#' @usage
-#' codecommit_update_comment(commentId, content)
+#' See [https://paws-r.github.io/docs/codecommit/update_comment.html](https://paws-r.github.io/docs/codecommit/update_comment.html) for full documentation.
 #'
 #' @param commentId &#91;required&#93; The system-generated ID of the comment you want to update. To get this
 #' ID, use
@@ -5250,41 +2637,6 @@ codecommit_update_approval_rule_template_name <- function(oldApprovalRuleTemplat
 #' or
 #' [`get_comments_for_pull_request`][codecommit_get_comments_for_pull_request].
 #' @param content &#91;required&#93; The updated content to replace the existing content of the comment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   comment = list(
-#'     commentId = "string",
-#'     content = "string",
-#'     inReplyTo = "string",
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     authorArn = "string",
-#'     deleted = TRUE|FALSE,
-#'     clientRequestToken = "string",
-#'     callerReactions = list(
-#'       "string"
-#'     ),
-#'     reactionCounts = list(
-#'       123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_comment(
-#'   commentId = "string",
-#'   content = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5310,27 +2662,11 @@ codecommit_update_comment <- function(commentId, content) {
 #'
 #' @description
 #' Sets or changes the default branch name for the specified repository.
-#' 
-#' If you use this operation to change the default branch name to the
-#' current default branch name, a success message is returned even though
-#' the default branch did not change.
 #'
-#' @usage
-#' codecommit_update_default_branch(repositoryName, defaultBranchName)
+#' See [https://paws-r.github.io/docs/codecommit/update_default_branch.html](https://paws-r.github.io/docs/codecommit/update_default_branch.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to set or change the default branch for.
 #' @param defaultBranchName &#91;required&#93; The name of the branch to set as the default.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_default_branch(
-#'   repositoryName = "string",
-#'   defaultBranchName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5356,13 +2692,9 @@ codecommit_update_default_branch <- function(repositoryName, defaultBranchName) 
 #' pull request
 #'
 #' @description
-#' Updates the structure of an approval rule created specifically for a
-#' pull request. For example, you can change the number of required
-#' approvers and the approval pool for approvers.
+#' Updates the structure of an approval rule created specifically for a pull request. For example, you can change the number of required approvers and the approval pool for approvers.
 #'
-#' @usage
-#' codecommit_update_pull_request_approval_rule_content(pullRequestId,
-#'   approvalRuleName, existingRuleContentSha256, newRuleContent)
+#' See [https://paws-r.github.io/docs/codecommit/update_pull_request_approval_rule_content.html](https://paws-r.github.io/docs/codecommit/update_pull_request_approval_rule_content.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request.
 #' @param approvalRuleName &#91;required&#93; The name of the approval rule you want to update.
@@ -5401,40 +2733,6 @@ codecommit_update_default_branch <- function(repositoryName, defaultBranchName) 
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 #' in the *IAM User Guide*.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   approvalRule = list(
-#'     approvalRuleId = "string",
-#'     approvalRuleName = "string",
-#'     approvalRuleContent = "string",
-#'     ruleContentSha256 = "string",
-#'     lastModifiedDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     lastModifiedUser = "string",
-#'     originApprovalRuleTemplate = list(
-#'       approvalRuleTemplateId = "string",
-#'       approvalRuleTemplateName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_pull_request_approval_rule_content(
-#'   pullRequestId = "string",
-#'   approvalRuleName = "string",
-#'   existingRuleContentSha256 = "string",
-#'   newRuleContent = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname codecommit_update_pull_request_approval_rule_content
@@ -5458,28 +2756,13 @@ codecommit_update_pull_request_approval_rule_content <- function(pullRequestId, 
 #' Updates the state of a user's approval on a pull request
 #'
 #' @description
-#' Updates the state of a user's approval on a pull request. The user is
-#' derived from the signed-in account when the request is made.
+#' Updates the state of a user's approval on a pull request. The user is derived from the signed-in account when the request is made.
 #'
-#' @usage
-#' codecommit_update_pull_request_approval_state(pullRequestId, revisionId,
-#'   approvalState)
+#' See [https://paws-r.github.io/docs/codecommit/update_pull_request_approval_state.html](https://paws-r.github.io/docs/codecommit/update_pull_request_approval_state.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request.
 #' @param revisionId &#91;required&#93; The system-generated ID of the revision.
 #' @param approvalState &#91;required&#93; The approval state to associate with the user on the pull request.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_pull_request_approval_state(
-#'   pullRequestId = "string",
-#'   revisionId = "string",
-#'   approvalState = "APPROVE"|"REVOKE"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5506,78 +2789,12 @@ codecommit_update_pull_request_approval_state <- function(pullRequestId, revisio
 #' @description
 #' Replaces the contents of the description of a pull request.
 #'
-#' @usage
-#' codecommit_update_pull_request_description(pullRequestId, description)
+#' See [https://paws-r.github.io/docs/codecommit/update_pull_request_description.html](https://paws-r.github.io/docs/codecommit/update_pull_request_description.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param description &#91;required&#93; The updated content of the description for the pull request. This
 #' content replaces the existing description.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pullRequest = list(
-#'     pullRequestId = "string",
-#'     title = "string",
-#'     description = "string",
-#'     lastActivityDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     pullRequestStatus = "OPEN"|"CLOSED",
-#'     authorArn = "string",
-#'     pullRequestTargets = list(
-#'       list(
-#'         repositoryName = "string",
-#'         sourceReference = "string",
-#'         destinationReference = "string",
-#'         destinationCommit = "string",
-#'         sourceCommit = "string",
-#'         mergeBase = "string",
-#'         mergeMetadata = list(
-#'           isMerged = TRUE|FALSE,
-#'           mergedBy = "string",
-#'           mergeCommitId = "string",
-#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-#'         )
-#'       )
-#'     ),
-#'     clientRequestToken = "string",
-#'     revisionId = "string",
-#'     approvalRules = list(
-#'       list(
-#'         approvalRuleId = "string",
-#'         approvalRuleName = "string",
-#'         approvalRuleContent = "string",
-#'         ruleContentSha256 = "string",
-#'         lastModifiedDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         creationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastModifiedUser = "string",
-#'         originApprovalRuleTemplate = list(
-#'           approvalRuleTemplateId = "string",
-#'           approvalRuleTemplateName = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_pull_request_description(
-#'   pullRequestId = "string",
-#'   description = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5604,79 +2821,13 @@ codecommit_update_pull_request_description <- function(pullRequestId, descriptio
 #' @description
 #' Updates the status of a pull request.
 #'
-#' @usage
-#' codecommit_update_pull_request_status(pullRequestId, pullRequestStatus)
+#' See [https://paws-r.github.io/docs/codecommit/update_pull_request_status.html](https://paws-r.github.io/docs/codecommit/update_pull_request_status.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param pullRequestStatus &#91;required&#93; The status of the pull request. The only valid operations are to update
 #' the status from `OPEN` to `OPEN`, `OPEN` to `CLOSED` or from `CLOSED` to
 #' `CLOSED`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pullRequest = list(
-#'     pullRequestId = "string",
-#'     title = "string",
-#'     description = "string",
-#'     lastActivityDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     pullRequestStatus = "OPEN"|"CLOSED",
-#'     authorArn = "string",
-#'     pullRequestTargets = list(
-#'       list(
-#'         repositoryName = "string",
-#'         sourceReference = "string",
-#'         destinationReference = "string",
-#'         destinationCommit = "string",
-#'         sourceCommit = "string",
-#'         mergeBase = "string",
-#'         mergeMetadata = list(
-#'           isMerged = TRUE|FALSE,
-#'           mergedBy = "string",
-#'           mergeCommitId = "string",
-#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-#'         )
-#'       )
-#'     ),
-#'     clientRequestToken = "string",
-#'     revisionId = "string",
-#'     approvalRules = list(
-#'       list(
-#'         approvalRuleId = "string",
-#'         approvalRuleName = "string",
-#'         approvalRuleContent = "string",
-#'         ruleContentSha256 = "string",
-#'         lastModifiedDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         creationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastModifiedUser = "string",
-#'         originApprovalRuleTemplate = list(
-#'           approvalRuleTemplateId = "string",
-#'           approvalRuleTemplateName = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_pull_request_status(
-#'   pullRequestId = "string",
-#'   pullRequestStatus = "OPEN"|"CLOSED"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5703,77 +2854,11 @@ codecommit_update_pull_request_status <- function(pullRequestId, pullRequestStat
 #' @description
 #' Replaces the title of a pull request.
 #'
-#' @usage
-#' codecommit_update_pull_request_title(pullRequestId, title)
+#' See [https://paws-r.github.io/docs/codecommit/update_pull_request_title.html](https://paws-r.github.io/docs/codecommit/update_pull_request_title.html) for full documentation.
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
 #' @param title &#91;required&#93; The updated title of the pull request. This replaces the existing title.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   pullRequest = list(
-#'     pullRequestId = "string",
-#'     title = "string",
-#'     description = "string",
-#'     lastActivityDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     creationDate = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     pullRequestStatus = "OPEN"|"CLOSED",
-#'     authorArn = "string",
-#'     pullRequestTargets = list(
-#'       list(
-#'         repositoryName = "string",
-#'         sourceReference = "string",
-#'         destinationReference = "string",
-#'         destinationCommit = "string",
-#'         sourceCommit = "string",
-#'         mergeBase = "string",
-#'         mergeMetadata = list(
-#'           isMerged = TRUE|FALSE,
-#'           mergedBy = "string",
-#'           mergeCommitId = "string",
-#'           mergeOption = "FAST_FORWARD_MERGE"|"SQUASH_MERGE"|"THREE_WAY_MERGE"
-#'         )
-#'       )
-#'     ),
-#'     clientRequestToken = "string",
-#'     revisionId = "string",
-#'     approvalRules = list(
-#'       list(
-#'         approvalRuleId = "string",
-#'         approvalRuleName = "string",
-#'         approvalRuleContent = "string",
-#'         ruleContentSha256 = "string",
-#'         lastModifiedDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         creationDate = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastModifiedUser = "string",
-#'         originApprovalRuleTemplate = list(
-#'           approvalRuleTemplateId = "string",
-#'           approvalRuleTemplateName = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_pull_request_title(
-#'   pullRequestId = "string",
-#'   title = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5799,33 +2884,13 @@ codecommit_update_pull_request_title <- function(pullRequestId, title) {
 #'
 #' @description
 #' Sets or changes the comment or description for a repository.
-#' 
-#' The description field for a repository accepts all HTML characters and
-#' all valid Unicode characters. Applications that do not HTML-encode the
-#' description and display it in a webpage can expose users to potentially
-#' malicious code. Make sure that you HTML-encode the description field in
-#' any application that uses this API to display the repository description
-#' on a webpage.
 #'
-#' @usage
-#' codecommit_update_repository_description(repositoryName,
-#'   repositoryDescription)
+#' See [https://paws-r.github.io/docs/codecommit/update_repository_description.html](https://paws-r.github.io/docs/codecommit/update_repository_description.html) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name of the repository to set or change the comment or description
 #' for.
 #' @param repositoryDescription The new comment or description for the specified repository. Repository
 #' descriptions are limited to 1,000 characters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_repository_description(
-#'   repositoryName = "string",
-#'   repositoryDescription = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5850,30 +2915,12 @@ codecommit_update_repository_description <- function(repositoryName, repositoryD
 #' Renames a repository
 #'
 #' @description
-#' Renames a repository. The repository name must be unique across the
-#' calling AWS account. Repository names are limited to 100 alphanumeric,
-#' dash, and underscore characters, and cannot include certain characters.
-#' The suffix .git is prohibited. For more information about the limits on
-#' repository names, see
-#' [Limits](https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html)
-#' in the AWS CodeCommit User Guide.
+#' Renames a repository. The repository name must be unique across the calling AWS account. Repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. The suffix .git is prohibited. For more information about the limits on repository names, see [Limits](https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html) in the AWS CodeCommit User Guide.
 #'
-#' @usage
-#' codecommit_update_repository_name(oldName, newName)
+#' See [https://paws-r.github.io/docs/codecommit/update_repository_name.html](https://paws-r.github.io/docs/codecommit/update_repository_name.html) for full documentation.
 #'
 #' @param oldName &#91;required&#93; The current name of the repository.
 #' @param newName &#91;required&#93; The new name for the repository.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_repository_name(
-#'   oldName = "string",
-#'   newName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

@@ -6,14 +6,9 @@ NULL
 #' Creates a DAX cluster
 #'
 #' @description
-#' Creates a DAX cluster. All nodes in the cluster run the same DAX caching
-#' software.
+#' Creates a DAX cluster. All nodes in the cluster run the same DAX caching software.
 #'
-#' @usage
-#' dax_create_cluster(ClusterName, NodeType, Description,
-#'   ReplicationFactor, AvailabilityZones, SubnetGroupName, SecurityGroupIds,
-#'   PreferredMaintenanceWindow, NotificationTopicArn, IamRoleArn,
-#'   ParameterGroupName, Tags, SSESpecification)
+#' See [https://paws-r.github.io/docs/dax/create_cluster.html](https://paws-r.github.io/docs/dax/create_cluster.html) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The cluster identifier. This parameter is stored as a lowercase string.
 #' 
@@ -84,109 +79,24 @@ NULL
 #' @param Tags A set of tags to associate with the DAX cluster.
 #' @param SSESpecification Represents the settings used to enable server-side encryption on the
 #' cluster.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Cluster = list(
-#'     ClusterName = "string",
-#'     Description = "string",
-#'     ClusterArn = "string",
-#'     TotalNodes = 123,
-#'     ActiveNodes = 123,
-#'     NodeType = "string",
-#'     Status = "string",
-#'     ClusterDiscoveryEndpoint = list(
-#'       Address = "string",
-#'       Port = 123
-#'     ),
-#'     NodeIdsToRemove = list(
-#'       "string"
-#'     ),
-#'     Nodes = list(
-#'       list(
-#'         NodeId = "string",
-#'         Endpoint = list(
-#'           Address = "string",
-#'           Port = 123
-#'         ),
-#'         NodeCreateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         AvailabilityZone = "string",
-#'         NodeStatus = "string",
-#'         ParameterGroupStatus = "string"
-#'       )
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     NotificationConfiguration = list(
-#'       TopicArn = "string",
-#'       TopicStatus = "string"
-#'     ),
-#'     SubnetGroup = "string",
-#'     SecurityGroups = list(
-#'       list(
-#'         SecurityGroupIdentifier = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     IamRoleArn = "string",
-#'     ParameterGroup = list(
-#'       ParameterGroupName = "string",
-#'       ParameterApplyStatus = "string",
-#'       NodeIdsToReboot = list(
-#'         "string"
-#'       )
-#'     ),
-#'     SSEDescription = list(
-#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_cluster(
-#'   ClusterName = "string",
-#'   NodeType = "string",
-#'   Description = "string",
-#'   ReplicationFactor = 123,
-#'   AvailabilityZones = list(
-#'     "string"
-#'   ),
-#'   SubnetGroupName = "string",
-#'   SecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   PreferredMaintenanceWindow = "string",
-#'   NotificationTopicArn = "string",
-#'   IamRoleArn = "string",
-#'   ParameterGroupName = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   SSESpecification = list(
-#'     Enabled = TRUE|FALSE
-#'   )
-#' )
-#' ```
+#' @param ClusterEndpointEncryptionType The type of encryption the cluster's endpoint should support. Values
+#' are:
+#' 
+#' -   `NONE` for no encryption
+#' 
+#' -   `TLS` for Transport Layer Security
 #'
 #' @keywords internal
 #'
 #' @rdname dax_create_cluster
-dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, ReplicationFactor, AvailabilityZones = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, IamRoleArn, ParameterGroupName = NULL, Tags = NULL, SSESpecification = NULL) {
+dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, ReplicationFactor, AvailabilityZones = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, IamRoleArn, ParameterGroupName = NULL, Tags = NULL, SSESpecification = NULL, ClusterEndpointEncryptionType = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dax$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, Description = Description, ReplicationFactor = ReplicationFactor, AvailabilityZones = AvailabilityZones, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, IamRoleArn = IamRoleArn, ParameterGroupName = ParameterGroupName, Tags = Tags, SSESpecification = SSESpecification)
+  input <- .dax$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, Description = Description, ReplicationFactor = ReplicationFactor, AvailabilityZones = AvailabilityZones, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, IamRoleArn = IamRoleArn, ParameterGroupName = ParameterGroupName, Tags = Tags, SSESpecification = SSESpecification, ClusterEndpointEncryptionType = ClusterEndpointEncryptionType)
   output <- .dax$create_cluster_output()
   config <- get_config()
   svc <- .dax$service(config)
@@ -199,34 +109,13 @@ dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, Replic
 #' Creates a new parameter group
 #'
 #' @description
-#' Creates a new parameter group. A parameter group is a collection of
-#' parameters that you apply to all of the nodes in a DAX cluster.
+#' Creates a new parameter group. A parameter group is a collection of parameters that you apply to all of the nodes in a DAX cluster.
 #'
-#' @usage
-#' dax_create_parameter_group(ParameterGroupName, Description)
+#' See [https://paws-r.github.io/docs/dax/create_parameter_group.html](https://paws-r.github.io/docs/dax/create_parameter_group.html) for full documentation.
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of the parameter group to apply to all of the clusters in this
 #' replication group.
 #' @param Description A description of the parameter group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ParameterGroup = list(
-#'     ParameterGroupName = "string",
-#'     Description = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_parameter_group(
-#'   ParameterGroupName = "string",
-#'   Description = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -253,41 +142,11 @@ dax_create_parameter_group <- function(ParameterGroupName, Description = NULL) {
 #' @description
 #' Creates a new subnet group.
 #'
-#' @usage
-#' dax_create_subnet_group(SubnetGroupName, Description, SubnetIds)
+#' See [https://paws-r.github.io/docs/dax/create_subnet_group.html](https://paws-r.github.io/docs/dax/create_subnet_group.html) for full documentation.
 #'
 #' @param SubnetGroupName &#91;required&#93; A name for the subnet group. This value is stored as a lowercase string.
 #' @param Description A description for the subnet group
 #' @param SubnetIds &#91;required&#93; A list of VPC subnet IDs for the subnet group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SubnetGroup = list(
-#'     SubnetGroupName = "string",
-#'     Description = "string",
-#'     VpcId = "string",
-#'     Subnets = list(
-#'       list(
-#'         SubnetIdentifier = "string",
-#'         SubnetAvailabilityZone = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_subnet_group(
-#'   SubnetGroupName = "string",
-#'   Description = "string",
-#'   SubnetIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -313,95 +172,13 @@ dax_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetI
 #'
 #' @description
 #' Removes one or more nodes from a DAX cluster.
-#' 
-#' You cannot use
-#' [`decrease_replication_factor`][dax_decrease_replication_factor] to
-#' remove the last node in a DAX cluster. If you need to do this, use
-#' [`delete_cluster`][dax_delete_cluster] instead.
 #'
-#' @usage
-#' dax_decrease_replication_factor(ClusterName, NewReplicationFactor,
-#'   AvailabilityZones, NodeIdsToRemove)
+#' See [https://paws-r.github.io/docs/dax/decrease_replication_factor.html](https://paws-r.github.io/docs/dax/decrease_replication_factor.html) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The name of the DAX cluster from which you want to remove nodes.
 #' @param NewReplicationFactor &#91;required&#93; The new number of nodes for the DAX cluster.
 #' @param AvailabilityZones The Availability Zone(s) from which to remove nodes.
 #' @param NodeIdsToRemove The unique identifiers of the nodes to be removed from the cluster.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Cluster = list(
-#'     ClusterName = "string",
-#'     Description = "string",
-#'     ClusterArn = "string",
-#'     TotalNodes = 123,
-#'     ActiveNodes = 123,
-#'     NodeType = "string",
-#'     Status = "string",
-#'     ClusterDiscoveryEndpoint = list(
-#'       Address = "string",
-#'       Port = 123
-#'     ),
-#'     NodeIdsToRemove = list(
-#'       "string"
-#'     ),
-#'     Nodes = list(
-#'       list(
-#'         NodeId = "string",
-#'         Endpoint = list(
-#'           Address = "string",
-#'           Port = 123
-#'         ),
-#'         NodeCreateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         AvailabilityZone = "string",
-#'         NodeStatus = "string",
-#'         ParameterGroupStatus = "string"
-#'       )
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     NotificationConfiguration = list(
-#'       TopicArn = "string",
-#'       TopicStatus = "string"
-#'     ),
-#'     SubnetGroup = "string",
-#'     SecurityGroups = list(
-#'       list(
-#'         SecurityGroupIdentifier = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     IamRoleArn = "string",
-#'     ParameterGroup = list(
-#'       ParameterGroupName = "string",
-#'       ParameterApplyStatus = "string",
-#'       NodeIdsToReboot = list(
-#'         "string"
-#'       )
-#'     ),
-#'     SSEDescription = list(
-#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$decrease_replication_factor(
-#'   ClusterName = "string",
-#'   NewReplicationFactor = 123,
-#'   AvailabilityZones = list(
-#'     "string"
-#'   ),
-#'   NodeIdsToRemove = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -426,83 +203,11 @@ dax_decrease_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #' Deletes a previously provisioned DAX cluster
 #'
 #' @description
-#' Deletes a previously provisioned DAX cluster. *DeleteCluster* deletes
-#' all associated nodes, node endpoints and the DAX cluster itself. When
-#' you receive a successful response from this action, DAX immediately
-#' begins deleting the cluster; you cannot cancel or revert this action.
+#' Deletes a previously provisioned DAX cluster. *DeleteCluster* deletes all associated nodes, node endpoints and the DAX cluster itself. When you receive a successful response from this action, DAX immediately begins deleting the cluster; you cannot cancel or revert this action.
 #'
-#' @usage
-#' dax_delete_cluster(ClusterName)
+#' See [https://paws-r.github.io/docs/dax/delete_cluster.html](https://paws-r.github.io/docs/dax/delete_cluster.html) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The name of the cluster to be deleted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Cluster = list(
-#'     ClusterName = "string",
-#'     Description = "string",
-#'     ClusterArn = "string",
-#'     TotalNodes = 123,
-#'     ActiveNodes = 123,
-#'     NodeType = "string",
-#'     Status = "string",
-#'     ClusterDiscoveryEndpoint = list(
-#'       Address = "string",
-#'       Port = 123
-#'     ),
-#'     NodeIdsToRemove = list(
-#'       "string"
-#'     ),
-#'     Nodes = list(
-#'       list(
-#'         NodeId = "string",
-#'         Endpoint = list(
-#'           Address = "string",
-#'           Port = 123
-#'         ),
-#'         NodeCreateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         AvailabilityZone = "string",
-#'         NodeStatus = "string",
-#'         ParameterGroupStatus = "string"
-#'       )
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     NotificationConfiguration = list(
-#'       TopicArn = "string",
-#'       TopicStatus = "string"
-#'     ),
-#'     SubnetGroup = "string",
-#'     SecurityGroups = list(
-#'       list(
-#'         SecurityGroupIdentifier = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     IamRoleArn = "string",
-#'     ParameterGroup = list(
-#'       ParameterGroupName = "string",
-#'       ParameterApplyStatus = "string",
-#'       NodeIdsToReboot = list(
-#'         "string"
-#'       )
-#'     ),
-#'     SSEDescription = list(
-#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_cluster(
-#'   ClusterName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -527,28 +232,11 @@ dax_delete_cluster <- function(ClusterName) {
 #' Deletes the specified parameter group
 #'
 #' @description
-#' Deletes the specified parameter group. You cannot delete a parameter
-#' group if it is associated with any DAX clusters.
+#' Deletes the specified parameter group. You cannot delete a parameter group if it is associated with any DAX clusters.
 #'
-#' @usage
-#' dax_delete_parameter_group(ParameterGroupName)
+#' See [https://paws-r.github.io/docs/dax/delete_parameter_group.html](https://paws-r.github.io/docs/dax/delete_parameter_group.html) for full documentation.
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of the parameter group to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DeletionMessage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_parameter_group(
-#'   ParameterGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -574,29 +262,10 @@ dax_delete_parameter_group <- function(ParameterGroupName) {
 #'
 #' @description
 #' Deletes a subnet group.
-#' 
-#' You cannot delete a subnet group if it is associated with any DAX
-#' clusters.
 #'
-#' @usage
-#' dax_delete_subnet_group(SubnetGroupName)
+#' See [https://paws-r.github.io/docs/dax/delete_subnet_group.html](https://paws-r.github.io/docs/dax/delete_subnet_group.html) for full documentation.
 #'
 #' @param SubnetGroupName &#91;required&#93; The name of the subnet group to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DeletionMessage = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_subnet_group(
-#'   SubnetGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -623,26 +292,9 @@ dax_delete_subnet_group <- function(SubnetGroupName) {
 #' identifier is supplied
 #'
 #' @description
-#' Returns information about all provisioned DAX clusters if no cluster
-#' identifier is specified, or about a specific DAX cluster if a cluster
-#' identifier is supplied.
-#' 
-#' If the cluster is in the CREATING state, only cluster level information
-#' will be displayed until all of the nodes are successfully provisioned.
-#' 
-#' If the cluster is in the DELETING state, only cluster level information
-#' will be displayed.
-#' 
-#' If nodes are currently being added to the DAX cluster, node endpoint
-#' information and creation time for the additional nodes will not be
-#' displayed until they are completely provisioned. When the DAX cluster
-#' state is *available*, the cluster is ready for use.
-#' 
-#' If nodes are currently being removed from the DAX cluster, no endpoint
-#' information for the removed nodes is displayed.
+#' Returns information about all provisioned DAX clusters if no cluster identifier is specified, or about a specific DAX cluster if a cluster identifier is supplied.
 #'
-#' @usage
-#' dax_describe_clusters(ClusterNames, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/dax/describe_clusters.html](https://paws-r.github.io/docs/dax/describe_clusters.html) for full documentation.
 #'
 #' @param ClusterNames The names of the DAX clusters being described.
 #' @param MaxResults The maximum number of results to include in the response. If more
@@ -654,81 +306,6 @@ dax_delete_subnet_group <- function(SubnetGroupName) {
 #' pagination of results from this action. If this parameter is specified,
 #' the response includes only results beyond the token, up to the value
 #' specified by `MaxResults`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   Clusters = list(
-#'     list(
-#'       ClusterName = "string",
-#'       Description = "string",
-#'       ClusterArn = "string",
-#'       TotalNodes = 123,
-#'       ActiveNodes = 123,
-#'       NodeType = "string",
-#'       Status = "string",
-#'       ClusterDiscoveryEndpoint = list(
-#'         Address = "string",
-#'         Port = 123
-#'       ),
-#'       NodeIdsToRemove = list(
-#'         "string"
-#'       ),
-#'       Nodes = list(
-#'         list(
-#'           NodeId = "string",
-#'           Endpoint = list(
-#'             Address = "string",
-#'             Port = 123
-#'           ),
-#'           NodeCreateTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           AvailabilityZone = "string",
-#'           NodeStatus = "string",
-#'           ParameterGroupStatus = "string"
-#'         )
-#'       ),
-#'       PreferredMaintenanceWindow = "string",
-#'       NotificationConfiguration = list(
-#'         TopicArn = "string",
-#'         TopicStatus = "string"
-#'       ),
-#'       SubnetGroup = "string",
-#'       SecurityGroups = list(
-#'         list(
-#'           SecurityGroupIdentifier = "string",
-#'           Status = "string"
-#'         )
-#'       ),
-#'       IamRoleArn = "string",
-#'       ParameterGroup = list(
-#'         ParameterGroupName = "string",
-#'         ParameterApplyStatus = "string",
-#'         NodeIdsToReboot = list(
-#'           "string"
-#'         )
-#'       ),
-#'       SSEDescription = list(
-#'         Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_clusters(
-#'   ClusterNames = list(
-#'     "string"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -754,11 +331,9 @@ dax_describe_clusters <- function(ClusterNames = NULL, MaxResults = NULL, NextTo
 #' software
 #'
 #' @description
-#' Returns the default system parameter information for the DAX caching
-#' software.
+#' Returns the default system parameter information for the DAX caching software.
 #'
-#' @usage
-#' dax_describe_default_parameters(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/dax/describe_default_parameters.html](https://paws-r.github.io/docs/dax/describe_default_parameters.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
@@ -769,41 +344,6 @@ dax_describe_clusters <- function(ClusterNames = NULL, MaxResults = NULL, NextTo
 #' pagination of results from this action. If this parameter is specified,
 #' the response includes only results beyond the token, up to the value
 #' specified by `MaxResults`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterType = "DEFAULT"|"NODE_TYPE_SPECIFIC",
-#'       ParameterValue = "string",
-#'       NodeTypeSpecificValues = list(
-#'         list(
-#'           NodeType = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       Description = "string",
-#'       Source = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = "TRUE"|"FALSE"|"CONDITIONAL",
-#'       ChangeType = "IMMEDIATE"|"REQUIRES_REBOOT"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_default_parameters(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -828,17 +368,9 @@ dax_describe_default_parameters <- function(MaxResults = NULL, NextToken = NULL)
 #' Returns events related to DAX clusters and parameter groups
 #'
 #' @description
-#' Returns events related to DAX clusters and parameter groups. You can
-#' obtain events specific to a particular DAX cluster or parameter group by
-#' providing the name as a parameter.
-#' 
-#' By default, only the events occurring within the last 24 hours are
-#' returned; however, you can retrieve up to 14 days' worth of events if
-#' necessary.
+#' Returns events related to DAX clusters and parameter groups. You can obtain events specific to a particular DAX cluster or parameter group by providing the name as a parameter.
 #'
-#' @usage
-#' dax_describe_events(SourceName, SourceType, StartTime, EndTime,
-#'   Duration, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/dax/describe_events.html](https://paws-r.github.io/docs/dax/describe_events.html) for full documentation.
 #'
 #' @param SourceName The identifier of the event source for which events will be returned. If
 #' not specified, then all sources are included in the response.
@@ -858,41 +390,6 @@ dax_describe_default_parameters <- function(MaxResults = NULL, NextToken = NULL)
 #' pagination of results from this action. If this parameter is specified,
 #' the response includes only results beyond the token, up to the value
 #' specified by `MaxResults`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   Events = list(
-#'     list(
-#'       SourceName = "string",
-#'       SourceType = "CLUSTER"|"PARAMETER_GROUP"|"SUBNET_GROUP",
-#'       Message = "string",
-#'       Date = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_events(
-#'   SourceName = "string",
-#'   SourceType = "CLUSTER"|"PARAMETER_GROUP"|"SUBNET_GROUP",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   Duration = 123,
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -917,13 +414,9 @@ dax_describe_events <- function(SourceName = NULL, SourceType = NULL, StartTime 
 #' Returns a list of parameter group descriptions
 #'
 #' @description
-#' Returns a list of parameter group descriptions. If a parameter group
-#' name is specified, the list will contain only the descriptions for that
-#' group.
+#' Returns a list of parameter group descriptions. If a parameter group name is specified, the list will contain only the descriptions for that group.
 #'
-#' @usage
-#' dax_describe_parameter_groups(ParameterGroupNames, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/dax/describe_parameter_groups.html](https://paws-r.github.io/docs/dax/describe_parameter_groups.html) for full documentation.
 #'
 #' @param ParameterGroupNames The names of the parameter groups.
 #' @param MaxResults The maximum number of results to include in the response. If more
@@ -935,31 +428,6 @@ dax_describe_events <- function(SourceName = NULL, SourceType = NULL, StartTime 
 #' pagination of results from this action. If this parameter is specified,
 #' the response includes only results beyond the token, up to the value
 #' specified by `MaxResults`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   ParameterGroups = list(
-#'     list(
-#'       ParameterGroupName = "string",
-#'       Description = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_parameter_groups(
-#'   ParameterGroupNames = list(
-#'     "string"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -986,9 +454,7 @@ dax_describe_parameter_groups <- function(ParameterGroupNames = NULL, MaxResults
 #' @description
 #' Returns the detailed parameter list for a particular parameter group.
 #'
-#' @usage
-#' dax_describe_parameters(ParameterGroupName, Source, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/dax/describe_parameters.html](https://paws-r.github.io/docs/dax/describe_parameters.html) for full documentation.
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of the parameter group.
 #' @param Source How the parameter is defined. For example, `system` denotes a
@@ -1002,43 +468,6 @@ dax_describe_parameter_groups <- function(ParameterGroupNames = NULL, MaxResults
 #' pagination of results from this action. If this parameter is specified,
 #' the response includes only results beyond the token, up to the value
 #' specified by `MaxResults`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   Parameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterType = "DEFAULT"|"NODE_TYPE_SPECIFIC",
-#'       ParameterValue = "string",
-#'       NodeTypeSpecificValues = list(
-#'         list(
-#'           NodeType = "string",
-#'           Value = "string"
-#'         )
-#'       ),
-#'       Description = "string",
-#'       Source = "string",
-#'       DataType = "string",
-#'       AllowedValues = "string",
-#'       IsModifiable = "TRUE"|"FALSE"|"CONDITIONAL",
-#'       ChangeType = "IMMEDIATE"|"REQUIRES_REBOOT"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_parameters(
-#'   ParameterGroupName = "string",
-#'   Source = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1063,11 +492,9 @@ dax_describe_parameters <- function(ParameterGroupName, Source = NULL, MaxResult
 #' Returns a list of subnet group descriptions
 #'
 #' @description
-#' Returns a list of subnet group descriptions. If a subnet group name is
-#' specified, the list will contain only the description of that group.
+#' Returns a list of subnet group descriptions. If a subnet group name is specified, the list will contain only the description of that group.
 #'
-#' @usage
-#' dax_describe_subnet_groups(SubnetGroupNames, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/dax/describe_subnet_groups.html](https://paws-r.github.io/docs/dax/describe_subnet_groups.html) for full documentation.
 #'
 #' @param SubnetGroupNames The name of the subnet group.
 #' @param MaxResults The maximum number of results to include in the response. If more
@@ -1079,38 +506,6 @@ dax_describe_parameters <- function(ParameterGroupName, Source = NULL, MaxResult
 #' pagination of results from this action. If this parameter is specified,
 #' the response includes only results beyond the token, up to the value
 #' specified by `MaxResults`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   NextToken = "string",
-#'   SubnetGroups = list(
-#'     list(
-#'       SubnetGroupName = "string",
-#'       Description = "string",
-#'       VpcId = "string",
-#'       Subnets = list(
-#'         list(
-#'           SubnetIdentifier = "string",
-#'           SubnetAvailabilityZone = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_subnet_groups(
-#'   SubnetGroupNames = list(
-#'     "string"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1137,9 +532,7 @@ dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NUL
 #' @description
 #' Adds one or more nodes to a DAX cluster.
 #'
-#' @usage
-#' dax_increase_replication_factor(ClusterName, NewReplicationFactor,
-#'   AvailabilityZones)
+#' See [https://paws-r.github.io/docs/dax/increase_replication_factor.html](https://paws-r.github.io/docs/dax/increase_replication_factor.html) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The name of the DAX cluster that will receive additional nodes.
 #' @param NewReplicationFactor &#91;required&#93; The new number of nodes for the DAX cluster.
@@ -1147,78 +540,6 @@ dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NUL
 #' All nodes belonging to the cluster are placed in these Availability
 #' Zones. Use this parameter if you want to distribute the nodes across
 #' multiple AZs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Cluster = list(
-#'     ClusterName = "string",
-#'     Description = "string",
-#'     ClusterArn = "string",
-#'     TotalNodes = 123,
-#'     ActiveNodes = 123,
-#'     NodeType = "string",
-#'     Status = "string",
-#'     ClusterDiscoveryEndpoint = list(
-#'       Address = "string",
-#'       Port = 123
-#'     ),
-#'     NodeIdsToRemove = list(
-#'       "string"
-#'     ),
-#'     Nodes = list(
-#'       list(
-#'         NodeId = "string",
-#'         Endpoint = list(
-#'           Address = "string",
-#'           Port = 123
-#'         ),
-#'         NodeCreateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         AvailabilityZone = "string",
-#'         NodeStatus = "string",
-#'         ParameterGroupStatus = "string"
-#'       )
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     NotificationConfiguration = list(
-#'       TopicArn = "string",
-#'       TopicStatus = "string"
-#'     ),
-#'     SubnetGroup = "string",
-#'     SecurityGroups = list(
-#'       list(
-#'         SecurityGroupIdentifier = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     IamRoleArn = "string",
-#'     ParameterGroup = list(
-#'       ParameterGroupName = "string",
-#'       ParameterApplyStatus = "string",
-#'       NodeIdsToReboot = list(
-#'         "string"
-#'       )
-#'     ),
-#'     SSEDescription = list(
-#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$increase_replication_factor(
-#'   ClusterName = "string",
-#'   NewReplicationFactor = 123,
-#'   AvailabilityZones = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1243,38 +564,14 @@ dax_increase_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #' List all of the tags for a DAX cluster
 #'
 #' @description
-#' List all of the tags for a DAX cluster. You can call
-#' [`list_tags`][dax_list_tags] up to 10 times per second, per account.
+#' List all of the tags for a DAX cluster. You can call [`list_tags`][dax_list_tags] up to 10 times per second, per account.
 #'
-#' @usage
-#' dax_list_tags(ResourceName, NextToken)
+#' See [https://paws-r.github.io/docs/dax/list_tags.html](https://paws-r.github.io/docs/dax/list_tags.html) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The name of the DAX resource to which the tags belong.
 #' @param NextToken An optional token returned from a prior request. Use this token for
 #' pagination of results from this action. If this parameter is specified,
 #' the response includes only results beyond the token.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags(
-#'   ResourceName = "string",
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1299,87 +596,12 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
 #' Reboots a single node of a DAX cluster
 #'
 #' @description
-#' Reboots a single node of a DAX cluster. The reboot action takes place as
-#' soon as possible. During the reboot, the node status is set to
-#' REBOOTING.
-#' 
-#' [`reboot_node`][dax_reboot_node] restarts the DAX engine process and
-#' does not remove the contents of the cache.
+#' Reboots a single node of a DAX cluster. The reboot action takes place as soon as possible. During the reboot, the node status is set to REBOOTING.
 #'
-#' @usage
-#' dax_reboot_node(ClusterName, NodeId)
+#' See [https://paws-r.github.io/docs/dax/reboot_node.html](https://paws-r.github.io/docs/dax/reboot_node.html) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The name of the DAX cluster containing the node to be rebooted.
 #' @param NodeId &#91;required&#93; The system-assigned ID of the node to be rebooted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Cluster = list(
-#'     ClusterName = "string",
-#'     Description = "string",
-#'     ClusterArn = "string",
-#'     TotalNodes = 123,
-#'     ActiveNodes = 123,
-#'     NodeType = "string",
-#'     Status = "string",
-#'     ClusterDiscoveryEndpoint = list(
-#'       Address = "string",
-#'       Port = 123
-#'     ),
-#'     NodeIdsToRemove = list(
-#'       "string"
-#'     ),
-#'     Nodes = list(
-#'       list(
-#'         NodeId = "string",
-#'         Endpoint = list(
-#'           Address = "string",
-#'           Port = 123
-#'         ),
-#'         NodeCreateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         AvailabilityZone = "string",
-#'         NodeStatus = "string",
-#'         ParameterGroupStatus = "string"
-#'       )
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     NotificationConfiguration = list(
-#'       TopicArn = "string",
-#'       TopicStatus = "string"
-#'     ),
-#'     SubnetGroup = "string",
-#'     SecurityGroups = list(
-#'       list(
-#'         SecurityGroupIdentifier = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     IamRoleArn = "string",
-#'     ParameterGroup = list(
-#'       ParameterGroupName = "string",
-#'       ParameterApplyStatus = "string",
-#'       NodeIdsToReboot = list(
-#'         "string"
-#'       )
-#'     ),
-#'     SSEDescription = list(
-#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reboot_node(
-#'   ClusterName = "string",
-#'   NodeId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1404,41 +626,12 @@ dax_reboot_node <- function(ClusterName, NodeId) {
 #' Associates a set of tags with a DAX resource
 #'
 #' @description
-#' Associates a set of tags with a DAX resource. You can call
-#' [`tag_resource`][dax_tag_resource] up to 5 times per second, per
-#' account.
+#' Associates a set of tags with a DAX resource. You can call [`tag_resource`][dax_tag_resource] up to 5 times per second, per account.
 #'
-#' @usage
-#' dax_tag_resource(ResourceName, Tags)
+#' See [https://paws-r.github.io/docs/dax/tag_resource.html](https://paws-r.github.io/docs/dax/tag_resource.html) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The name of the DAX resource to which tags should be added.
 #' @param Tags &#91;required&#93; The tags to be assigned to the DAX resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceName = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1463,39 +656,13 @@ dax_tag_resource <- function(ResourceName, Tags) {
 #' Removes the association of tags from a DAX resource
 #'
 #' @description
-#' Removes the association of tags from a DAX resource. You can call
-#' [`untag_resource`][dax_untag_resource] up to 5 times per second, per
-#' account.
+#' Removes the association of tags from a DAX resource. You can call [`untag_resource`][dax_untag_resource] up to 5 times per second, per account.
 #'
-#' @usage
-#' dax_untag_resource(ResourceName, TagKeys)
+#' See [https://paws-r.github.io/docs/dax/untag_resource.html](https://paws-r.github.io/docs/dax/untag_resource.html) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The name of the DAX resource from which the tags should be removed.
 #' @param TagKeys &#91;required&#93; A list of tag keys. If the DAX cluster has any tags with these keys,
 #' then the tags are removed from the cluster.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceName = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1520,14 +687,9 @@ dax_untag_resource <- function(ResourceName, TagKeys) {
 #' Modifies the settings for a DAX cluster
 #'
 #' @description
-#' Modifies the settings for a DAX cluster. You can use this action to
-#' change one or more cluster configuration parameters by specifying the
-#' parameters and the new values.
+#' Modifies the settings for a DAX cluster. You can use this action to change one or more cluster configuration parameters by specifying the parameters and the new values.
 #'
-#' @usage
-#' dax_update_cluster(ClusterName, Description, PreferredMaintenanceWindow,
-#'   NotificationTopicArn, NotificationTopicStatus, ParameterGroupName,
-#'   SecurityGroupIds)
+#' See [https://paws-r.github.io/docs/dax/update_cluster.html](https://paws-r.github.io/docs/dax/update_cluster.html) for full documentation.
 #'
 #' @param ClusterName &#91;required&#93; The name of the DAX cluster to be modified.
 #' @param Description A description of the changes being made to the cluster.
@@ -1536,87 +698,13 @@ dax_untag_resource <- function(ResourceName, TagKeys) {
 #' normally takes less than 30 minutes, and is performed automatically
 #' within the maintenance window.
 #' @param NotificationTopicArn The Amazon Resource Name (ARN) that identifies the topic.
-#' @param NotificationTopicStatus The current state of the topic.
+#' @param NotificationTopicStatus The current state of the topic. A value of “active” means that
+#' notifications will be sent to the topic. A value of “inactive” means
+#' that notifications will not be sent to the topic.
 #' @param ParameterGroupName The name of a parameter group for this cluster.
 #' @param SecurityGroupIds A list of user-specified security group IDs to be assigned to each node
 #' in the DAX cluster. If this parameter is not specified, DAX assigns the
 #' default VPC security group to each node.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Cluster = list(
-#'     ClusterName = "string",
-#'     Description = "string",
-#'     ClusterArn = "string",
-#'     TotalNodes = 123,
-#'     ActiveNodes = 123,
-#'     NodeType = "string",
-#'     Status = "string",
-#'     ClusterDiscoveryEndpoint = list(
-#'       Address = "string",
-#'       Port = 123
-#'     ),
-#'     NodeIdsToRemove = list(
-#'       "string"
-#'     ),
-#'     Nodes = list(
-#'       list(
-#'         NodeId = "string",
-#'         Endpoint = list(
-#'           Address = "string",
-#'           Port = 123
-#'         ),
-#'         NodeCreateTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         AvailabilityZone = "string",
-#'         NodeStatus = "string",
-#'         ParameterGroupStatus = "string"
-#'       )
-#'     ),
-#'     PreferredMaintenanceWindow = "string",
-#'     NotificationConfiguration = list(
-#'       TopicArn = "string",
-#'       TopicStatus = "string"
-#'     ),
-#'     SubnetGroup = "string",
-#'     SecurityGroups = list(
-#'       list(
-#'         SecurityGroupIdentifier = "string",
-#'         Status = "string"
-#'       )
-#'     ),
-#'     IamRoleArn = "string",
-#'     ParameterGroup = list(
-#'       ParameterGroupName = "string",
-#'       ParameterApplyStatus = "string",
-#'       NodeIdsToReboot = list(
-#'         "string"
-#'       )
-#'     ),
-#'     SSEDescription = list(
-#'       Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_cluster(
-#'   ClusterName = "string",
-#'   Description = "string",
-#'   PreferredMaintenanceWindow = "string",
-#'   NotificationTopicArn = "string",
-#'   NotificationTopicStatus = "string",
-#'   ParameterGroupName = "string",
-#'   SecurityGroupIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1641,40 +729,17 @@ dax_update_cluster <- function(ClusterName, Description = NULL, PreferredMainten
 #' Modifies the parameters of a parameter group
 #'
 #' @description
-#' Modifies the parameters of a parameter group. You can modify up to 20
-#' parameters in a single request by submitting a list parameter name and
-#' value pairs.
+#' Modifies the parameters of a parameter group. You can modify up to 20 parameters in a single request by submitting a list parameter name and value pairs.
 #'
-#' @usage
-#' dax_update_parameter_group(ParameterGroupName, ParameterNameValues)
+#' See [https://paws-r.github.io/docs/dax/update_parameter_group.html](https://paws-r.github.io/docs/dax/update_parameter_group.html) for full documentation.
 #'
 #' @param ParameterGroupName &#91;required&#93; The name of the parameter group.
 #' @param ParameterNameValues &#91;required&#93; An array of name-value pairs for the parameters in the group. Each
 #' element in the array represents a single parameter.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ParameterGroup = list(
-#'     ParameterGroupName = "string",
-#'     Description = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_parameter_group(
-#'   ParameterGroupName = "string",
-#'   ParameterNameValues = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' 
+#' `record-ttl-millis` and `query-ttl-millis` are the only supported
+#' parameter names. For more details, see [Configuring TTL
+#' Settings](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.cluster-management.html#DAX.cluster-management.custom-settings.ttl).
 #'
 #' @keywords internal
 #'
@@ -1701,41 +766,11 @@ dax_update_parameter_group <- function(ParameterGroupName, ParameterNameValues) 
 #' @description
 #' Modifies an existing subnet group.
 #'
-#' @usage
-#' dax_update_subnet_group(SubnetGroupName, Description, SubnetIds)
+#' See [https://paws-r.github.io/docs/dax/update_subnet_group.html](https://paws-r.github.io/docs/dax/update_subnet_group.html) for full documentation.
 #'
 #' @param SubnetGroupName &#91;required&#93; The name of the subnet group.
 #' @param Description A description of the subnet group.
 #' @param SubnetIds A list of subnet IDs in the subnet group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   SubnetGroup = list(
-#'     SubnetGroupName = "string",
-#'     Description = "string",
-#'     VpcId = "string",
-#'     Subnets = list(
-#'       list(
-#'         SubnetIdentifier = "string",
-#'         SubnetAvailabilityZone = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_subnet_group(
-#'   SubnetGroupName = "string",
-#'   Description = "string",
-#'   SubnetIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

@@ -12,30 +12,9 @@ requested.
 
 Must be the ARN of an Elastic Beanstalk resource.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceArn = "string",
-  ResourceTags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
-Return the tags applied to an AWS Elastic Beanstalk resource. The
-response contains a list of tag key-value pairs.
+Return the tags applied to an AWS Elastic Beanstalk resource. The response contains a list of tag key-value pairs.
 
-Elastic Beanstalk supports tagging of all of its resources. For details
-about resource tagging, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html}{Tagging Application Resources}.
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/list_tags_for_resource.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_tags_for_resource(
-  ResourceArn = "string"
-)
-}
-}
-
 \keyword{internal}

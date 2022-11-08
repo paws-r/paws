@@ -2,47 +2,27 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_unassign_private_ip_addresses}
 \alias{ec2_unassign_private_ip_addresses}
-\title{Unassigns one or more secondary private IP addresses from a network
-interface}
+\title{Unassigns one or more secondary private IP addresses, or IPv4 Prefix
+Delegation prefixes from a network interface}
 \usage{
-ec2_unassign_private_ip_addresses(NetworkInterfaceId,
-  PrivateIpAddresses)
+ec2_unassign_private_ip_addresses(
+  NetworkInterfaceId,
+  PrivateIpAddresses = NULL,
+  Ipv4Prefixes = NULL
+)
 }
 \arguments{
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
 
-\item{PrivateIpAddresses}{[required] The secondary private IP addresses to unassign from the network
+\item{PrivateIpAddresses}{The secondary private IP addresses to unassign from the network
 interface. You can specify this option multiple times to unassign more
 than one IP address.}
-}
-\value{
-An empty list.
+
+\item{Ipv4Prefixes}{The IPv4 prefixes to unassign from the network interface.}
 }
 \description{
-Unassigns one or more secondary private IP addresses from a network
-interface.
-}
-\section{Request syntax}{
-\preformatted{svc$unassign_private_ip_addresses(
-  NetworkInterfaceId = "string",
-  PrivateIpAddresses = list(
-    "string"
-  )
-)
-}
-}
+Unassigns one or more secondary private IP addresses, or IPv4 Prefix Delegation prefixes from a network interface.
 
-\examples{
-\dontrun{
-# This example unassigns the specified private IP address from the
-# specified network interface.
-svc$unassign_private_ip_addresses(
-  NetworkInterfaceId = "eni-e5aa89a3",
-  PrivateIpAddresses = list(
-    "10.0.0.82"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/unassign_private_ip_addresses.html} for full documentation.
 }
 \keyword{internal}

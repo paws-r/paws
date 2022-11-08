@@ -4,119 +4,45 @@
 \alias{s3_put_bucket_tagging}
 \title{Sets the tags for a bucket}
 \usage{
-s3_put_bucket_tagging(Bucket, ContentMD5, Tagging, ExpectedBucketOwner)
+s3_put_bucket_tagging(
+  Bucket,
+  ContentMD5 = NULL,
+  ChecksumAlgorithm = NULL,
+  Tagging,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. You must use this
 header as a message integrity check to verify that the request body was
-not corrupted in transit. For more information, see \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.
+not corrupted in transit. For more information, see RFC 1864.
 
-For requests made using the AWS Command Line Interface (CLI) or AWS
-SDKs, this field is calculated automatically.}
+For requests made using the Amazon Web Services Command Line Interface
+(CLI) or Amazon Web Services SDKs, this field is calculated
+automatically.}
+
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+using the SDK. This header will not provide any additional functionality
+if not using the SDK. When sending this header, there must be a
+corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+Otherwise, Amazon S3 fails the request with the HTTP status code
+\verb{400 Bad Request}. For more information, see Checking object integrity
+in the \emph{Amazon S3 User Guide}.
+
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.}
 
 \item{Tagging}{[required] Container for the \code{TagSet} and \code{Tag} elements.}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-An empty list.
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
 Sets the tags for a bucket.
 
-Use tags to organize your AWS bill to reflect your own cost structure.
-To do this, sign up to get your AWS account bill with tag key values
-included. Then, to see the cost of combined resources, organize your
-billing information according to resources with the same tag key values.
-For example, you can tag several resources with a specific application
-name, and then organize your billing information to see the total cost
-of that application across several services. For more information, see
-\href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Cost Allocation and Tagging}.
-
-Within a bucket, if you add a tag that has the same key as an existing
-tag, the new value overwrites the old value. For more information, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/CostAllocTagging.html}{Using Cost Allocation in Amazon S3 Bucket Tags}.
-
-To use this operation, you must have permissions to perform the
-\code{s3:PutBucketTagging} action. The bucket owner has this permission by
-default and can grant this permission to others. For more information
-about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources}{Permissions Related to Bucket Subresource Operations}
-and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to Your Amazon S3 Resources}.
-
-\code{\link[=s3_put_bucket_tagging]{put_bucket_tagging}} has the following special
-errors:
-\itemize{
-\item Error code: \code{InvalidTagError}
-\itemize{
-\item Description: The tag provided was not a valid tag. This error
-can occur if the tag did not pass input validation. For
-information about tag restrictions, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html}{User-Defined Tag Restrictions}
-and \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/aws-tag-restrictions.html}{AWS-Generated Cost Allocation Tag Restrictions}.
-}
-\item Error code: \code{MalformedXMLError}
-\itemize{
-\item Description: The XML provided does not match the schema.
-}
-\item Error code: \code{OperationAbortedError }
-\itemize{
-\item Description: A conflicting conditional operation is currently in
-progress against this resource. Please try again.
-}
-\item Error code: \code{InternalError}
-\itemize{
-\item Description: The service was unable to apply the provided tag to
-the bucket.
-}
-}
-
-The following operations are related to
-\code{\link[=s3_put_bucket_tagging]{put_bucket_tagging}}:
-\itemize{
-\item \code{\link[=s3_get_bucket_tagging]{get_bucket_tagging}}
-\item \code{\link[=s3_delete_bucket_tagging]{delete_bucket_tagging}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$put_bucket_tagging(
-  Bucket = "string",
-  ContentMD5 = "string",
-  Tagging = list(
-    TagSet = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  ),
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example sets tags on a bucket. Any existing tags are
-# replaced.
-svc$put_bucket_tagging(
-  Bucket = "examplebucket",
-  Tagging = list(
-    TagSet = list(
-      list(
-        Key = "Key1",
-        Value = "Value1"
-      ),
-      list(
-        Key = "Key2",
-        Value = "Value2"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/put_bucket_tagging.html} for full documentation.
 }
 \keyword{internal}

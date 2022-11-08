@@ -2,11 +2,15 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_set_user_mfa_preference}
 \alias{cognitoidentityprovider_admin_set_user_mfa_preference}
-\title{Sets the user's multi-factor authentication (MFA) preference, including
-which MFA options are enabled and if any are preferred}
+\title{The user's multi-factor authentication (MFA) preference, including which
+MFA options are activated, and if any are preferred}
 \usage{
-cognitoidentityprovider_admin_set_user_mfa_preference(SMSMfaSettings,
-  SoftwareTokenMfaSettings, Username, UserPoolId)
+cognitoidentityprovider_admin_set_user_mfa_preference(
+  SMSMfaSettings = NULL,
+  SoftwareTokenMfaSettings = NULL,
+  Username,
+  UserPoolId
+)
 }
 \arguments{
 \item{SMSMfaSettings}{The SMS text message MFA settings.}
@@ -17,31 +21,9 @@ cognitoidentityprovider_admin_set_user_mfa_preference(SMSMfaSettings,
 
 \item{UserPoolId}{[required] The user pool ID.}
 }
-\value{
-An empty list.
-}
 \description{
-Sets the user's multi-factor authentication (MFA) preference, including
-which MFA options are enabled and if any are preferred. Only one factor
-can be set as preferred. The preferred MFA factor will be used to
-authenticate a user if multiple factors are enabled. If multiple options
-are enabled and no preference is set, a challenge to choose an MFA
-option will be returned during sign in.
-}
-\section{Request syntax}{
-\preformatted{svc$admin_set_user_mfa_preference(
-  SMSMfaSettings = list(
-    Enabled = TRUE|FALSE,
-    PreferredMfa = TRUE|FALSE
-  ),
-  SoftwareTokenMfaSettings = list(
-    Enabled = TRUE|FALSE,
-    PreferredMfa = TRUE|FALSE
-  ),
-  Username = "string",
-  UserPoolId = "string"
-)
-}
-}
+The user's multi-factor authentication (MFA) preference, including which MFA options are activated, and if any are preferred. Only one factor can be set as preferred. The preferred MFA factor will be used to authenticate a user if multiple factors are activated. If multiple options are activated and no preference is set, a challenge to choose an MFA option will be returned during sign-in.
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_set_user_mfa_preference.html} for full documentation.
+}
 \keyword{internal}

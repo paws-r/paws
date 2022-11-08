@@ -12,30 +12,9 @@ opsworks_attach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
 \item{LayerId}{[required] The ID of the layer to which the Elastic Load Balancing instance is to
 be attached.}
 }
-\value{
-An empty list.
-}
 \description{
-Attaches an Elastic Load Balancing load balancer to a specified layer.
-AWS OpsWorks Stacks does not support Application Load Balancer. You can
-only use Classic Load Balancer with AWS OpsWorks Stacks. For more
-information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers-elb.html}{Elastic Load Balancing}.
+Attaches an Elastic Load Balancing load balancer to a specified layer. AWS OpsWorks Stacks does not support Application Load Balancer. You can only use Classic Load Balancer with AWS OpsWorks Stacks. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers-elb.html}{Elastic Load Balancing}.
 
-You must create the Elastic Load Balancing instance separately, by using
-the Elastic Load Balancing console, API, or CLI. For more information,
-see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html}{Elastic Load Balancing Developer Guide}.
-
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/attach_elastic_load_balancer.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$attach_elastic_load_balancer(
-  ElasticLoadBalancerName = "string",
-  LayerId = "string"
-)
-}
-}
-
 \keyword{internal}

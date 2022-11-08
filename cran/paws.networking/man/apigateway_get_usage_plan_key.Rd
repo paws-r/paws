@@ -7,31 +7,15 @@
 apigateway_get_usage_plan_key(usagePlanId, keyId)
 }
 \arguments{
-\item{usagePlanId}{[required] [Required] The Id of the UsagePlan resource representing the usage
-plan containing the to-be-retrieved UsagePlanKey resource representing a
-plan customer.}
+\item{usagePlanId}{[required] The Id of the UsagePlan resource representing the usage plan containing
+the to-be-retrieved UsagePlanKey resource representing a plan customer.}
 
-\item{keyId}{[required] [Required] The key Id of the to-be-retrieved UsagePlanKey resource
-representing a plan customer.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  type = "string",
-  value = "string",
-  name = "string"
-)
-}
+\item{keyId}{[required] The key Id of the to-be-retrieved UsagePlanKey resource representing a
+plan customer.}
 }
 \description{
 Gets a usage plan key of a given key identifier.
-}
-\section{Request syntax}{
-\preformatted{svc$get_usage_plan_key(
-  usagePlanId = "string",
-  keyId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_usage_plan_key.html} for full documentation.
+}
 \keyword{internal}

@@ -16,52 +16,9 @@ two document batch formats:
 \item application/xml
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  status = "string",
-  adds = 123,
-  deletes = 123,
-  warnings = list(
-    list(
-      message = "string"
-    )
-  )
-)
-}
-}
 \description{
-Posts a batch of documents to a search domain for indexing. A document
-batch is a collection of add and delete operations that represent the
-documents you want to add, update, or delete from your domain. Batches
-can be described in either JSON or XML. Each item that you want Amazon
-CloudSearch to return as a search result (such as a product) is
-represented as a document. Every document has a unique ID and one or
-more fields that contain the data that you want to search and return in
-results. Individual documents cannot contain more than 1 MB of data. The
-entire batch cannot exceed 5 MB. To get the best possible upload
-performance, group add and delete operations in batches that are close
-the 5 MB limit. Submitting a large volume of single-document batches can
-overload a domain's document service.
+Posts a batch of documents to a search domain for indexing. A document batch is a collection of add and delete operations that represent the documents you want to add, update, or delete from your domain. Batches can be described in either JSON or XML. Each item that you want Amazon CloudSearch to return as a search result (such as a product) is represented as a document. Every document has a unique ID and one or more fields that contain the data that you want to search and return in results. Individual documents cannot contain more than 1 MB of data. The entire batch cannot exceed 5 MB. To get the best possible upload performance, group add and delete operations in batches that are close the 5 MB limit. Submitting a large volume of single-document batches can overload a domain's document service.
 
-The endpoint for submitting
-\code{\link[=cloudsearchdomain_upload_documents]{upload_documents}} requests is
-domain-specific. To get the document endpoint for your domain, use the
-Amazon CloudSearch configuration service \code{DescribeDomains} action. A
-domain's endpoints are also displayed on the domain dashboard in the
-Amazon CloudSearch console.
-
-For more information about formatting your data for Amazon CloudSearch,
-see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/preparing-data.html}{Preparing Your Data}
-in the \emph{Amazon CloudSearch Developer Guide}. For more information about
-uploading data for indexing, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/uploading-data.html}{Uploading Data}
-in the \emph{Amazon CloudSearch Developer Guide}.
+See \url{https://paws-r.github.io/docs/cloudsearchdomain/upload_documents.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$upload_documents(
-  documents = raw,
-  contentType = "application/json"|"application/xml"
-)
-}
-}
-
 \keyword{internal}

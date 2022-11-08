@@ -4,7 +4,11 @@
 \alias{ssm_describe_automation_executions}
 \title{Provides details about all active and terminated Automation executions}
 \usage{
-ssm_describe_automation_executions(Filters, MaxResults, NextToken)
+ssm_describe_automation_executions(
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Filters}{Filters used to limit the scope of executions that are requested.}
@@ -16,123 +20,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AutomationExecutionMetadataList = list(
-    list(
-      AutomationExecutionId = "string",
-      DocumentName = "string",
-      DocumentVersion = "string",
-      AutomationExecutionStatus = "Pending"|"InProgress"|"Waiting"|"Success"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"PendingApproval"|"Approved"|"Rejected"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"CompletedWithSuccess"|"CompletedWithFailure",
-      ExecutionStartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ExecutionEndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      ExecutedBy = "string",
-      LogFile = "string",
-      Outputs = list(
-        list(
-          "string"
-        )
-      ),
-      Mode = "Auto"|"Interactive",
-      ParentAutomationExecutionId = "string",
-      CurrentStepName = "string",
-      CurrentAction = "string",
-      FailureMessage = "string",
-      TargetParameterName = "string",
-      Targets = list(
-        list(
-          Key = "string",
-          Values = list(
-            "string"
-          )
-        )
-      ),
-      TargetMaps = list(
-        list(
-          list(
-            "string"
-          )
-        )
-      ),
-      ResolvedTargets = list(
-        ParameterValues = list(
-          "string"
-        ),
-        Truncated = TRUE|FALSE
-      ),
-      MaxConcurrency = "string",
-      MaxErrors = "string",
-      Target = "string",
-      AutomationType = "CrossAccount"|"Local",
-      AutomationSubtype = "ChangeRequest",
-      ScheduledTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Runbooks = list(
-        list(
-          DocumentName = "string",
-          DocumentVersion = "string",
-          Parameters = list(
-            list(
-              "string"
-            )
-          ),
-          TargetParameterName = "string",
-          Targets = list(
-            list(
-              Key = "string",
-              Values = list(
-                "string"
-              )
-            )
-          ),
-          MaxConcurrency = "string",
-          MaxErrors = "string",
-          TargetLocations = list(
-            list(
-              Accounts = list(
-                "string"
-              ),
-              Regions = list(
-                "string"
-              ),
-              TargetLocationMaxConcurrency = "string",
-              TargetLocationMaxErrors = "string",
-              ExecutionRoleName = "string"
-            )
-          )
-        )
-      ),
-      OpsItemId = "string",
-      AssociationId = "string",
-      ChangeRequestName = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Provides details about all active and terminated Automation executions.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_automation_executions(
-  Filters = list(
-    list(
-      Key = "DocumentNamePrefix"|"ExecutionStatus"|"ExecutionId"|"ParentExecutionId"|"CurrentAction"|"StartTimeBefore"|"StartTimeAfter"|"AutomationType"|"TagKey"|"TargetResourceGroup"|"AutomationSubtype"|"OpsItemId",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/describe_automation_executions.html} for full documentation.
+}
 \keyword{internal}

@@ -11,23 +11,9 @@ inspector_create_exclusions_preview(assessmentTemplateArn)
 \item{assessmentTemplateArn}{[required] The ARN that specifies the assessment template for which you want to
 create an exclusions preview.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  previewToken = "string"
-)
-}
-}
 \description{
-Starts the generation of an exclusions preview for the specified
-assessment template. The exclusions preview lists the potential
-exclusions (ExclusionPreview) that Inspector can detect before it runs
-the assessment.
-}
-\section{Request syntax}{
-\preformatted{svc$create_exclusions_preview(
-  assessmentTemplateArn = "string"
-)
-}
-}
+Starts the generation of an exclusions preview for the specified assessment template. The exclusions preview lists the potential exclusions (ExclusionPreview) that Inspector can detect before it runs the assessment.
 
+See \url{https://paws-r.github.io/docs/inspector/create_exclusions_preview.html} for full documentation.
+}
 \keyword{internal}

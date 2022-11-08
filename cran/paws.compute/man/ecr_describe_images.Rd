@@ -4,13 +4,19 @@
 \alias{ecr_describe_images}
 \title{Returns metadata about the images in a repository}
 \usage{
-ecr_describe_images(registryId, repositoryName, imageIds, nextToken,
-  maxResults, filter)
+ecr_describe_images(
+  registryId = NULL,
+  repositoryName,
+  imageIds = NULL,
+  nextToken = NULL,
+  maxResults = NULL,
+  filter = NULL
+)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the
-repository in which to describe images. If you do not specify a
-registry, the default registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID associated with the registry that
+contains the repository in which to describe images. If you do not
+specify a registry, the default registry is assumed.}
 
 \item{repositoryName}{[required] The repository that contains the images to describe.}
 
@@ -39,69 +45,9 @@ specify images with \code{imageIds}.}
 \item{filter}{The filter key and value with which to filter your
 \code{\link[=ecr_describe_images]{describe_images}} results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  imageDetails = list(
-    list(
-      registryId = "string",
-      repositoryName = "string",
-      imageDigest = "string",
-      imageTags = list(
-        "string"
-      ),
-      imageSizeInBytes = 123,
-      imagePushedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      imageScanStatus = list(
-        status = "IN_PROGRESS"|"COMPLETE"|"FAILED",
-        description = "string"
-      ),
-      imageScanFindingsSummary = list(
-        imageScanCompletedAt = as.POSIXct(
-          "2015-01-01"
-        ),
-        vulnerabilitySourceUpdatedAt = as.POSIXct(
-          "2015-01-01"
-        ),
-        findingSeverityCounts = list(
-          123
-        )
-      ),
-      imageManifestMediaType = "string",
-      artifactMediaType = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Returns metadata about the images in a repository.
 
-Beginning with Docker version 1.9, the Docker client compresses image
-layers before pushing them to a V2 Docker registry. The output of the
-\verb{docker images} command shows the uncompressed image size, so it may
-return a larger image size than the image sizes returned by
-\code{\link[=ecr_describe_images]{describe_images}}.
+See \url{https://paws-r.github.io/docs/ecr/describe_images.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_images(
-  registryId = "string",
-  repositoryName = "string",
-  imageIds = list(
-    list(
-      imageDigest = "string",
-      imageTag = "string"
-    )
-  ),
-  nextToken = "string",
-  maxResults = 123,
-  filter = list(
-    tagStatus = "TAGGED"|"UNTAGGED"|"ANY"
-  )
-)
-}
-}
-
 \keyword{internal}

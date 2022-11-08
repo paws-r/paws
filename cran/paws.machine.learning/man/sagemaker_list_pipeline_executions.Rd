@@ -4,8 +4,15 @@
 \alias{sagemaker_list_pipeline_executions}
 \title{Gets a list of the pipeline executions}
 \usage{
-sagemaker_list_pipeline_executions(PipelineName, CreatedAfter,
-  CreatedBefore, SortBy, SortOrder, NextToken, MaxResults)
+sagemaker_list_pipeline_executions(
+  PipelineName,
+  CreatedAfter = NULL,
+  CreatedBefore = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{PipelineName}{[required] The name of the pipeline.}
@@ -27,41 +34,9 @@ set of pipeline executions, use the token in the next request.}
 
 \item{MaxResults}{The maximum number of pipeline executions to return in the response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PipelineExecutionSummaries = list(
-    list(
-      PipelineExecutionArn = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      PipelineExecutionStatus = "Executing"|"Stopping"|"Stopped"|"Failed"|"Succeeded",
-      PipelineExecutionDescription = "string",
-      PipelineExecutionDisplayName = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets a list of the pipeline executions.
-}
-\section{Request syntax}{
-\preformatted{svc$list_pipeline_executions(
-  PipelineName = "string",
-  CreatedAfter = as.POSIXct(
-    "2015-01-01"
-  ),
-  CreatedBefore = as.POSIXct(
-    "2015-01-01"
-  ),
-  SortBy = "CreationTime"|"PipelineExecutionArn",
-  SortOrder = "Ascending"|"Descending",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_pipeline_executions.html} for full documentation.
+}
 \keyword{internal}

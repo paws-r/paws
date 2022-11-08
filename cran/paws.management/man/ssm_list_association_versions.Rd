@@ -4,7 +4,11 @@
 \alias{ssm_list_association_versions}
 \title{Retrieves all versions of an association for a specific association ID}
 \usage{
-ssm_list_association_versions(AssociationId, MaxResults, NextToken)
+ssm_list_association_versions(
+  AssociationId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{AssociationId}{[required] The association ID for which you want to view all versions.}
@@ -16,73 +20,9 @@ next set of results.}
 \item{NextToken}{A token to start the list. Use this token to get the next set of
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AssociationVersions = list(
-    list(
-      AssociationId = "string",
-      AssociationVersion = "string",
-      CreatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Name = "string",
-      DocumentVersion = "string",
-      Parameters = list(
-        list(
-          "string"
-        )
-      ),
-      Targets = list(
-        list(
-          Key = "string",
-          Values = list(
-            "string"
-          )
-        )
-      ),
-      ScheduleExpression = "string",
-      OutputLocation = list(
-        S3Location = list(
-          OutputS3Region = "string",
-          OutputS3BucketName = "string",
-          OutputS3KeyPrefix = "string"
-        )
-      ),
-      AssociationName = "string",
-      MaxErrors = "string",
-      MaxConcurrency = "string",
-      ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
-      SyncCompliance = "AUTO"|"MANUAL",
-      ApplyOnlyAtCronInterval = TRUE|FALSE,
-      TargetLocations = list(
-        list(
-          Accounts = list(
-            "string"
-          ),
-          Regions = list(
-            "string"
-          ),
-          TargetLocationMaxConcurrency = "string",
-          TargetLocationMaxErrors = "string",
-          ExecutionRoleName = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves all versions of an association for a specific association ID.
-}
-\section{Request syntax}{
-\preformatted{svc$list_association_versions(
-  AssociationId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/list_association_versions.html} for full documentation.
+}
 \keyword{internal}

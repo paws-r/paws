@@ -4,8 +4,13 @@
 \alias{ec2_describe_traffic_mirror_filters}
 \title{Describes one or more Traffic Mirror filters}
 \usage{
-ec2_describe_traffic_mirror_filters(TrafficMirrorFilterIds, DryRun,
-  Filters, MaxResults, NextToken)
+ec2_describe_traffic_mirror_filters(
+  TrafficMirrorFilterIds = NULL,
+  DryRun = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{TrafficMirrorFilterIds}{The ID of the Traffic Mirror filter.}
@@ -27,90 +32,9 @@ value.}
 
 \item{NextToken}{The token for the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficMirrorFilters = list(
-    list(
-      TrafficMirrorFilterId = "string",
-      IngressFilterRules = list(
-        list(
-          TrafficMirrorFilterRuleId = "string",
-          TrafficMirrorFilterId = "string",
-          TrafficDirection = "ingress"|"egress",
-          RuleNumber = 123,
-          RuleAction = "accept"|"reject",
-          Protocol = 123,
-          DestinationPortRange = list(
-            FromPort = 123,
-            ToPort = 123
-          ),
-          SourcePortRange = list(
-            FromPort = 123,
-            ToPort = 123
-          ),
-          DestinationCidrBlock = "string",
-          SourceCidrBlock = "string",
-          Description = "string"
-        )
-      ),
-      EgressFilterRules = list(
-        list(
-          TrafficMirrorFilterRuleId = "string",
-          TrafficMirrorFilterId = "string",
-          TrafficDirection = "ingress"|"egress",
-          RuleNumber = 123,
-          RuleAction = "accept"|"reject",
-          Protocol = 123,
-          DestinationPortRange = list(
-            FromPort = 123,
-            ToPort = 123
-          ),
-          SourcePortRange = list(
-            FromPort = 123,
-            ToPort = 123
-          ),
-          DestinationCidrBlock = "string",
-          SourceCidrBlock = "string",
-          Description = "string"
-        )
-      ),
-      NetworkServices = list(
-        "amazon-dns"
-      ),
-      Description = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes one or more Traffic Mirror filters.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_traffic_mirror_filters(
-  TrafficMirrorFilterIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_traffic_mirror_filters.html} for full documentation.
+}
 \keyword{internal}

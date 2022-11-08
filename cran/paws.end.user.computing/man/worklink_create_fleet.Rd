@@ -4,8 +4,12 @@
 \alias{worklink_create_fleet}
 \title{Creates a fleet}
 \usage{
-worklink_create_fleet(FleetName, DisplayName,
-  OptimizeForEndUserLocation, Tags)
+worklink_create_fleet(
+  FleetName,
+  DisplayName = NULL,
+  OptimizeForEndUserLocation = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{FleetName}{[required] A unique name for the fleet.}
@@ -18,27 +22,9 @@ Region.}
 
 \item{Tags}{The tags to add to the resource. A tag is a key-value pair.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FleetArn = "string"
-)
-}
-}
 \description{
-Creates a fleet. A fleet consists of resources and the configuration
-that delivers associated websites to authorized users who download and
-set up the Amazon WorkLink app.
-}
-\section{Request syntax}{
-\preformatted{svc$create_fleet(
-  FleetName = "string",
-  DisplayName = "string",
-  OptimizeForEndUserLocation = TRUE|FALSE,
-  Tags = list(
-    "string"
-  )
-)
-}
-}
+Creates a fleet. A fleet consists of resources and the configuration that delivers associated websites to authorized users who download and set up the Amazon WorkLink app.
 
+See \url{https://paws-r.github.io/docs/worklink/create_fleet.html} for full documentation.
+}
 \keyword{internal}

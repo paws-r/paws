@@ -7,22 +7,13 @@
 apigateway_flush_stage_cache(restApiId, stageName)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{stageName}{[required] [Required] The name of the stage to flush its cache.}
-}
-\value{
-An empty list.
+\item{stageName}{[required] The name of the stage to flush its cache.}
 }
 \description{
 Flushes a stage's cache.
-}
-\section{Request syntax}{
-\preformatted{svc$flush_stage_cache(
-  restApiId = "string",
-  stageName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/flush_stage_cache.html} for full documentation.
+}
 \keyword{internal}

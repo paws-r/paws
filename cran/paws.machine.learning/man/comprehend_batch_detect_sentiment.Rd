@@ -16,42 +16,9 @@ bytes of UTF-8 encoded characters.}
 languages supported by Amazon Comprehend. All documents must be in the
 same language.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResultList = list(
-    list(
-      Index = 123,
-      Sentiment = "POSITIVE"|"NEGATIVE"|"NEUTRAL"|"MIXED",
-      SentimentScore = list(
-        Positive = 123.0,
-        Negative = 123.0,
-        Neutral = 123.0,
-        Mixed = 123.0
-      )
-    )
-  ),
-  ErrorList = list(
-    list(
-      Index = 123,
-      ErrorCode = "string",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Inspects a batch of documents and returns an inference of the prevailing
-sentiment, \code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE}, in each one.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_detect_sentiment(
-  TextList = list(
-    "string"
-  ),
-  LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
-)
-}
-}
+Inspects a batch of documents and returns an inference of the prevailing sentiment, \code{POSITIVE}, \code{NEUTRAL}, \code{MIXED}, or \code{NEGATIVE}, in each one.
 
+See \url{https://paws-r.github.io/docs/comprehend/batch_detect_sentiment.html} for full documentation.
+}
 \keyword{internal}

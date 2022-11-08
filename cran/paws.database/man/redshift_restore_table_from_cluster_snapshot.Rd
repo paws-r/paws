@@ -4,9 +4,17 @@
 \alias{redshift_restore_table_from_cluster_snapshot}
 \title{Creates a new table from a table in an Amazon Redshift cluster snapshot}
 \usage{
-redshift_restore_table_from_cluster_snapshot(ClusterIdentifier,
-  SnapshotIdentifier, SourceDatabaseName, SourceSchemaName,
-  SourceTableName, TargetDatabaseName, TargetSchemaName, NewTableName)
+redshift_restore_table_from_cluster_snapshot(
+  ClusterIdentifier,
+  SnapshotIdentifier,
+  SourceDatabaseName,
+  SourceSchemaName = NULL,
+  SourceTableName,
+  TargetDatabaseName = NULL,
+  TargetSchemaName = NULL,
+  NewTableName,
+  EnableCaseSensitiveIdentifier = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the Amazon Redshift cluster to restore the table to.}
@@ -28,62 +36,14 @@ If you do not specify a \code{SourceSchemaName} value, the default is
 \item{TargetSchemaName}{The name of the schema to restore the table to.}
 
 \item{NewTableName}{[required] The name of the table to create as a result of the current request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  TableRestoreStatus = list(
-    TableRestoreRequestId = "string",
-    Status = "PENDING"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"CANCELED",
-    Message = "string",
-    RequestTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ProgressInMegaBytes = 123,
-    TotalDataInMegaBytes = 123,
-    ClusterIdentifier = "string",
-    SnapshotIdentifier = "string",
-    SourceDatabaseName = "string",
-    SourceSchemaName = "string",
-    SourceTableName = "string",
-    TargetDatabaseName = "string",
-    TargetSchemaName = "string",
-    NewTableName = "string"
-  )
-)
-}
+
+\item{EnableCaseSensitiveIdentifier}{Indicates whether name identifiers for database, schema, and table are
+case sensitive. If \code{true}, the names are case sensitive. If \code{false}
+(default), the names are not case sensitive.}
 }
 \description{
-Creates a new table from a table in an Amazon Redshift cluster snapshot.
-You must create the new table within the Amazon Redshift cluster that
-the snapshot was taken from.
+Creates a new table from a table in an Amazon Redshift cluster snapshot. You must create the new table within the Amazon Redshift cluster that the snapshot was taken from.
 
-You cannot use
-\code{\link[=redshift_restore_table_from_cluster_snapshot]{restore_table_from_cluster_snapshot}}
-to restore a table with the same name as an existing table in an Amazon
-Redshift cluster. That is, you cannot overwrite an existing table in a
-cluster with a restored table. If you want to replace your original
-table with a new, restored table, then rename or drop your original
-table before you call
-\code{\link[=redshift_restore_table_from_cluster_snapshot]{restore_table_from_cluster_snapshot}}.
-When you have renamed your original table, then you can pass the
-original name of the table as the \code{NewTableName} parameter value in the
-call to
-\code{\link[=redshift_restore_table_from_cluster_snapshot]{restore_table_from_cluster_snapshot}}.
-This way, you can replace the original table with the table created from
-the snapshot.
+See \url{https://paws-r.github.io/docs/redshift/restore_table_from_cluster_snapshot.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$restore_table_from_cluster_snapshot(
-  ClusterIdentifier = "string",
-  SnapshotIdentifier = "string",
-  SourceDatabaseName = "string",
-  SourceSchemaName = "string",
-  SourceTableName = "string",
-  TargetDatabaseName = "string",
-  TargetSchemaName = "string",
-  NewTableName = "string"
-)
-}
-}
-
 \keyword{internal}

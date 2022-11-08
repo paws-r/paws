@@ -5,30 +5,16 @@
 \title{Describe the attributes of a custom routing accelerator}
 \usage{
 globalaccelerator_describe_custom_routing_accelerator_attributes(
-  AcceleratorArn)
+  AcceleratorArn
+)
 }
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the custom routing accelerator to
 describe the attributes for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AcceleratorAttributes = list(
-    FlowLogsEnabled = TRUE|FALSE,
-    FlowLogsS3Bucket = "string",
-    FlowLogsS3Prefix = "string"
-  )
-)
-}
-}
 \description{
 Describe the attributes of a custom routing accelerator.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_custom_routing_accelerator_attributes(
-  AcceleratorArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/describe_custom_routing_accelerator_attributes.html} for full documentation.
+}
 \keyword{internal}

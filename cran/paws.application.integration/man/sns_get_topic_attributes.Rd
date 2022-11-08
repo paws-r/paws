@@ -9,23 +9,9 @@ sns_get_topic_attributes(TopicArn)
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic whose properties you want to get.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns all of the properties of a topic. Topic properties returned
-might differ based on the authorization of the user.
-}
-\section{Request syntax}{
-\preformatted{svc$get_topic_attributes(
-  TopicArn = "string"
-)
-}
-}
+Returns all of the properties of a topic. Topic properties returned might differ based on the authorization of the user.
 
+See \url{https://paws-r.github.io/docs/sns/get_topic_attributes.html} for full documentation.
+}
 \keyword{internal}

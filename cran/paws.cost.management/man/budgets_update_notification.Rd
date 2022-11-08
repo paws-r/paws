@@ -4,8 +4,12 @@
 \alias{budgets_update_notification}
 \title{Updates a notification}
 \usage{
-budgets_update_notification(AccountId, BudgetName, OldNotification,
-  NewNotification)
+budgets_update_notification(
+  AccountId,
+  BudgetName,
+  OldNotification,
+  NewNotification
+)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budget whose notification
@@ -17,32 +21,9 @@ you want to update.}
 
 \item{NewNotification}{[required] The updated notification to be associated with a budget.}
 }
-\value{
-An empty list.
-}
 \description{
 Updates a notification.
-}
-\section{Request syntax}{
-\preformatted{svc$update_notification(
-  AccountId = "string",
-  BudgetName = "string",
-  OldNotification = list(
-    NotificationType = "ACTUAL"|"FORECASTED",
-    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-    Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-    NotificationState = "OK"|"ALARM"
-  ),
-  NewNotification = list(
-    NotificationType = "ACTUAL"|"FORECASTED",
-    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-    Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-    NotificationState = "OK"|"ALARM"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/budgets/update_notification.html} for full documentation.
+}
 \keyword{internal}

@@ -20,17 +20,9 @@ lambda_delete_function_code_signing_config(FunctionName)
 The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes the code signing configuration from the function.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_function_code_signing_config(
-  FunctionName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/lambda/delete_function_code_signing_config.html} for full documentation.
+}
 \keyword{internal}

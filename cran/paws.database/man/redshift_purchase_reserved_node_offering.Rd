@@ -4,8 +4,10 @@
 \alias{redshift_purchase_reserved_node_offering}
 \title{Allows you to purchase reserved nodes}
 \usage{
-redshift_purchase_reserved_node_offering(ReservedNodeOfferingId,
-  NodeCount)
+redshift_purchase_reserved_node_offering(
+  ReservedNodeOfferingId,
+  NodeCount = NULL
+)
 }
 \arguments{
 \item{ReservedNodeOfferingId}{[required] The unique identifier of the reserved node offering you want to
@@ -15,51 +17,9 @@ purchase.}
 
 Default: \code{1}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ReservedNode = list(
-    ReservedNodeId = "string",
-    ReservedNodeOfferingId = "string",
-    NodeType = "string",
-    StartTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Duration = 123,
-    FixedPrice = 123.0,
-    UsagePrice = 123.0,
-    CurrencyCode = "string",
-    NodeCount = 123,
-    State = "string",
-    OfferingType = "string",
-    RecurringCharges = list(
-      list(
-        RecurringChargeAmount = 123.0,
-        RecurringChargeFrequency = "string"
-      )
-    ),
-    ReservedNodeOfferingType = "Regular"|"Upgradable"
-  )
-)
-}
-}
 \description{
-Allows you to purchase reserved nodes. Amazon Redshift offers a
-predefined set of reserved node offerings. You can purchase one or more
-of the offerings. You can call the
-\code{\link[=redshift_describe_reserved_node_offerings]{describe_reserved_node_offerings}}
-API to obtain the available reserved node offerings. You can call this
-API by providing a specific reserved node offering and the number of
-nodes you want to reserve.
+Allows you to purchase reserved nodes. Amazon Redshift offers a predefined set of reserved node offerings. You can purchase one or more of the offerings. You can call the \code{\link[=redshift_describe_reserved_node_offerings]{describe_reserved_node_offerings}} API to obtain the available reserved node offerings. You can call this API by providing a specific reserved node offering and the number of nodes you want to reserve.
 
-For more information about reserved node offerings, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html}{Purchasing Reserved Nodes}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/purchase_reserved_node_offering.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$purchase_reserved_node_offering(
-  ReservedNodeOfferingId = "string",
-  NodeCount = 123
-)
-}
-}
-
 \keyword{internal}

@@ -13,20 +13,9 @@ access control groups, and connection aliases.}
 
 \item{TagKeys}{[required] The tag keys.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified tags from the specified WorkSpaces resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_tags(
-  ResourceId = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workspaces/delete_tags.html} for full documentation.
+}
 \keyword{internal}

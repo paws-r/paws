@@ -6,7 +6,11 @@
 VPC subnet endpoint}
 \usage{
 globalaccelerator_list_custom_routing_port_mappings_by_destination(
-  EndpointId, DestinationAddress, MaxResults, NextToken)
+  EndpointId,
+  DestinationAddress,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{EndpointId}{[required] The ID for the virtual private cloud (VPC) subnet.}
@@ -20,48 +24,9 @@ this call. The default value is 10.}
 \item{NextToken}{The token for the next set of results. You receive this token from a
 previous call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DestinationPortMappings = list(
-    list(
-      AcceleratorArn = "string",
-      AcceleratorSocketAddresses = list(
-        list(
-          IpAddress = "string",
-          Port = 123
-        )
-      ),
-      EndpointGroupArn = "string",
-      EndpointId = "string",
-      EndpointGroupRegion = "string",
-      DestinationSocketAddress = list(
-        IpAddress = "string",
-        Port = 123
-      ),
-      IpAddressType = "IPV4",
-      DestinationTrafficState = "ALLOW"|"DENY"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-List the port mappings for a specific EC2 instance (destination) in a
-VPC subnet endpoint. The response is the mappings for one destination IP
-address. This is useful when your subnet endpoint has mappings that span
-multiple custom routing accelerators in your account, or for scenarios
-where you only want to list the port mappings for a specific destination
-instance.
-}
-\section{Request syntax}{
-\preformatted{svc$list_custom_routing_port_mappings_by_destination(
-  EndpointId = "string",
-  DestinationAddress = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+List the port mappings for a specific EC2 instance (destination) in a VPC subnet endpoint. The response is the mappings for one destination IP address. This is useful when your subnet endpoint has mappings that span multiple custom routing accelerators in your account, or for scenarios where you only want to list the port mappings for a specific destination instance.
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_port_mappings_by_destination.html} for full documentation.
+}
 \keyword{internal}

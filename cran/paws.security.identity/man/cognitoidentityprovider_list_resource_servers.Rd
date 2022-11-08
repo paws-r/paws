@@ -4,8 +4,11 @@
 \alias{cognitoidentityprovider_list_resource_servers}
 \title{Lists the resource servers for a user pool}
 \usage{
-cognitoidentityprovider_list_resource_servers(UserPoolId, MaxResults,
-  NextToken)
+cognitoidentityprovider_list_resource_servers(
+  UserPoolId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
@@ -14,35 +17,9 @@ cognitoidentityprovider_list_resource_servers(UserPoolId, MaxResults,
 
 \item{NextToken}{A pagination token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResourceServers = list(
-    list(
-      UserPoolId = "string",
-      Identifier = "string",
-      Name = "string",
-      Scopes = list(
-        list(
-          ScopeName = "string",
-          ScopeDescription = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the resource servers for a user pool.
-}
-\section{Request syntax}{
-\preformatted{svc$list_resource_servers(
-  UserPoolId = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_resource_servers.html} for full documentation.
+}
 \keyword{internal}

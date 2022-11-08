@@ -3,12 +3,17 @@
 \name{configservice_select_aggregate_resource_config}
 \alias{configservice_select_aggregate_resource_config}
 \title{Accepts a structured query language (SQL) SELECT command and an
-aggregator to query configuration state of AWS resources across multiple
-accounts and regions, performs the corresponding search, and returns
-resource configurations matching the properties}
+aggregator to query configuration state of Amazon Web Services resources
+across multiple accounts and regions, performs the corresponding search,
+and returns resource configurations matching the properties}
 \usage{
-configservice_select_aggregate_resource_config(Expression,
-  ConfigurationAggregatorName, Limit, MaxResults, NextToken)
+configservice_select_aggregate_resource_config(
+  Expression,
+  ConfigurationAggregatorName,
+  Limit = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Expression}{[required] The SQL query SELECT command.}
@@ -17,46 +22,15 @@ configservice_select_aggregate_resource_config(Expression,
 
 \item{Limit}{The maximum number of query results returned on each page.}
 
-\item{MaxResults}{The maximum number of query results returned on each page. AWS Config
-also allows the Limit request parameter.}
+\item{MaxResults}{The maximum number of query results returned on each page. Config also
+allows the Limit request parameter.}
 
 \item{NextToken}{The nextToken string returned in a previous request that you use to
 request the next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Results = list(
-    "string"
-  ),
-  QueryInfo = list(
-    SelectFields = list(
-      list(
-        Name = "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Accepts a structured query language (SQL) SELECT command and an
-aggregator to query configuration state of AWS resources across multiple
-accounts and regions, performs the corresponding search, and returns
-resource configurations matching the properties.
+Accepts a structured query language (SQL) SELECT command and an aggregator to query configuration state of Amazon Web Services resources across multiple accounts and regions, performs the corresponding search, and returns resource configurations matching the properties.
 
-For more information about query components, see the \href{https://docs.aws.amazon.com/config/latest/developerguide/query-components.html}{\strong{Query Components}}
-section in the AWS Config Developer Guide.
+See \url{https://paws-r.github.io/docs/configservice/select_aggregate_resource_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$select_aggregate_resource_config(
-  Expression = "string",
-  ConfigurationAggregatorName = "string",
-  Limit = 123,
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

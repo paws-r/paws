@@ -34,29 +34,9 @@ WHOIS and the following five addresses:
 \item webmaster@subdomain.example.com
 }}
 }
-\value{
-An empty list.
-}
 \description{
-Resends the email that requests domain ownership validation. The domain
-owner or an authorized representative must approve the ACM certificate
-before it can be issued. The certificate can be approved by clicking a
-link in the mail to navigate to the Amazon certificate approval website
-and then clicking \strong{I Approve}. However, the validation email can be
-blocked by spam filters. Therefore, if you do not receive the original
-mail, you can request that the mail be resent within 72 hours of
-requesting the ACM certificate. If more than 72 hours have elapsed since
-your original request or since your last attempt to resend validation
-mail, you must request a new certificate. For more information about
-setting up your contact email addresses, see \href{https://docs.aws.amazon.com/acm/latest/userguide/setup-email.html}{Configure Email for your Domain}.
-}
-\section{Request syntax}{
-\preformatted{svc$resend_validation_email(
-  CertificateArn = "string",
-  Domain = "string",
-  ValidationDomain = "string"
-)
-}
-}
+Resends the email that requests domain ownership validation. The domain owner or an authorized representative must approve the ACM certificate before it can be issued. The certificate can be approved by clicking a link in the mail to navigate to the Amazon certificate approval website and then clicking \strong{I Approve}. However, the validation email can be blocked by spam filters. Therefore, if you do not receive the original mail, you can request that the mail be resent within 72 hours of requesting the ACM certificate. If more than 72 hours have elapsed since your original request or since your last attempt to resend validation mail, you must request a new certificate. For more information about setting up your contact email addresses, see \href{https://docs.aws.amazon.com/acm/latest/userguide/setup-email.html}{Configure Email for your Domain}.
 
+See \url{https://paws-r.github.io/docs/acm/resend_validation_email.html} for full documentation.
+}
 \keyword{internal}

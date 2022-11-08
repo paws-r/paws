@@ -4,7 +4,7 @@
 \alias{glue_create_script}
 \title{Transforms a directed acyclic graph (DAG) into code}
 \usage{
-glue_create_script(DagNodes, DagEdges, Language)
+glue_create_script(DagNodes = NULL, DagEdges = NULL, Language = NULL)
 }
 \arguments{
 \item{DagNodes}{A list of the nodes in the DAG.}
@@ -13,42 +13,9 @@ glue_create_script(DagNodes, DagEdges, Language)
 
 \item{Language}{The programming language of the resulting code from the DAG.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PythonScript = "string",
-  ScalaCode = "string"
-)
-}
-}
 \description{
 Transforms a directed acyclic graph (DAG) into code.
-}
-\section{Request syntax}{
-\preformatted{svc$create_script(
-  DagNodes = list(
-    list(
-      Id = "string",
-      NodeType = "string",
-      Args = list(
-        list(
-          Name = "string",
-          Value = "string",
-          Param = TRUE|FALSE
-        )
-      ),
-      LineNumber = 123
-    )
-  ),
-  DagEdges = list(
-    list(
-      Source = "string",
-      Target = "string",
-      TargetParameter = "string"
-    )
-  ),
-  Language = "PYTHON"|"SCALA"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/create_script.html} for full documentation.
+}
 \keyword{internal}

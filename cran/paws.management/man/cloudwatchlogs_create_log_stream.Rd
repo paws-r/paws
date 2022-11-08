@@ -11,32 +11,9 @@ cloudwatchlogs_create_log_stream(logGroupName, logStreamName)
 
 \item{logStreamName}{[required] The name of the log stream.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates a log stream for the specified log group. A log stream is a
-sequence of log events that originate from a single source, such as an
-application instance or a resource that is being monitored.
+Creates a log stream for the specified log group. A log stream is a sequence of log events that originate from a single source, such as an application instance or a resource that is being monitored.
 
-There is no limit on the number of log streams that you can create for a
-log group. There is a limit of 50 TPS on
-\code{\link[=cloudwatchlogs_create_log_stream]{create_log_stream}} operations,
-after which transactions are throttled.
-
-You must use the following guidelines when naming a log stream:
-\itemize{
-\item Log stream names must be unique within the log group.
-\item Log stream names can be between 1 and 512 characters long.
-\item The ':' (colon) and '*' (asterisk) characters are not allowed.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/create_log_stream.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$create_log_stream(
-  logGroupName = "string",
-  logStreamName = "string"
-)
-}
-}
-
 \keyword{internal}

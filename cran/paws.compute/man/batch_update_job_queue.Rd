@@ -4,71 +4,53 @@
 \alias{batch_update_job_queue}
 \title{Updates a job queue}
 \usage{
-batch_update_job_queue(jobQueue, state, priority,
-  computeEnvironmentOrder)
+batch_update_job_queue(
+  jobQueue,
+  state = NULL,
+  schedulingPolicyArn = NULL,
+  priority = NULL,
+  computeEnvironmentOrder = NULL
+)
 }
 \arguments{
 \item{jobQueue}{[required] The name or the Amazon Resource Name (ARN) of the job queue.}
 
 \item{state}{Describes the queue's ability to accept new jobs. If the job queue state
-is \code{ENABLED}, it is able to accept jobs. If the job queue state is
-\code{DISABLED}, new jobs cannot be added to the queue, but jobs already in
-the queue can finish.}
+is \code{ENABLED}, it can accept jobs. If the job queue state is \code{DISABLED},
+new jobs can't be added to the queue, but jobs already in the queue can
+finish.}
+
+\item{schedulingPolicyArn}{Amazon Resource Name (ARN) of the fair share scheduling policy. Once a
+job queue is created, the fair share scheduling policy can be replaced
+but not removed. The format is
+\code{aws:Partition:batch:Region:Account:scheduling-policy/Name }. For
+example,
+\code{aws:aws:batch:us-west-2:012345678910:scheduling-policy/MySchedulingPolicy}.}
 
 \item{priority}{The priority of the job queue. Job queues with a higher priority (or a
 higher integer value for the \code{priority} parameter) are evaluated first
 when associated with the same compute environment. Priority is
-determined in descending order, for example, a job queue with a priority
+determined in descending order. For example, a job queue with a priority
 value of \code{10} is given scheduling preference over a job queue with a
 priority value of \code{1}. All of the compute environments must be either
-EC2 (\code{EC2} or \code{SPOT}) or Fargate (\code{FARGATE} or \code{FARGATE_SPOT}); EC2 and
-Fargate compute environments cannot be mixed.}
+EC2 (\code{EC2} or \code{SPOT}) or Fargate (\code{FARGATE} or \code{FARGATE_SPOT}). EC2 and
+Fargate compute environments can't be mixed.}
 
 \item{computeEnvironmentOrder}{Details the set of compute environments mapped to a job queue and their
 order relative to each other. This is one of the parameters used by the
-job scheduler to determine which compute environment should run a given
-job. Compute environments must be in the \code{VALID} state before you can
+job scheduler to determine which compute environment runs a given job.
+Compute environments must be in the \code{VALID} state before you can
 associate them with a job queue. All of the compute environments must be
-either EC2 (\code{EC2} or \code{SPOT}) or Fargate (\code{FARGATE} or \code{FARGATE_SPOT});
+either EC2 (\code{EC2} or \code{SPOT}) or Fargate (\code{FARGATE} or \code{FARGATE_SPOT}).
 EC2 and Fargate compute environments can't be mixed.
 
 All compute environments that are associated with a job queue must share
-the same architecture. AWS Batch doesn't support mixing compute
-environment architecture types in a single job queue.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  jobQueueName = "string",
-  jobQueueArn = "string"
-)
-}
+the same architecture. Batch doesn't support mixing compute environment
+architecture types in a single job queue.}
 }
 \description{
 Updates a job queue.
-}
-\section{Request syntax}{
-\preformatted{svc$update_job_queue(
-  jobQueue = "string",
-  state = "ENABLED"|"DISABLED",
-  priority = 123,
-  computeEnvironmentOrder = list(
-    list(
-      order = 123,
-      computeEnvironment = "string"
-    )
-  )
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example disables a job queue so that it can be deleted.
-svc$update_job_queue(
-  jobQueue = "GPGPU",
-  state = "DISABLED"
-)
-}
-
+See \url{https://paws-r.github.io/docs/batch/update_job_queue.html} for full documentation.
 }
 \keyword{internal}

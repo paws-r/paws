@@ -7,26 +7,9 @@ account}
 \usage{
 inspector_describe_cross_account_access_role()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  roleArn = "string",
-  valid = TRUE|FALSE,
-  registeredAt = as.POSIXct(
-    "2015-01-01"
-  )
-)
-}
-}
 \description{
-Describes the IAM role that enables Amazon Inspector to access your AWS
-account.
-}
-\examples{
-\dontrun{
-# Describes the IAM role that enables Amazon Inspector to access your AWS
-# account.
-svc$describe_cross_account_access_role()
-}
+Describes the IAM role that enables Amazon Inspector to access your AWS account.
 
+See \url{https://paws-r.github.io/docs/inspector/describe_cross_account_access_role.html} for full documentation.
 }
 \keyword{internal}

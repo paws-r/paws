@@ -2,31 +2,16 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_stop_transform_job}
 \alias{sagemaker_stop_transform_job}
-\title{Stops a transform job}
+\title{Stops a batch transform job}
 \usage{
 sagemaker_stop_transform_job(TransformJobName)
 }
 \arguments{
-\item{TransformJobName}{[required] The name of the transform job to stop.}
-}
-\value{
-An empty list.
+\item{TransformJobName}{[required] The name of the batch transform job to stop.}
 }
 \description{
-Stops a transform job.
+Stops a batch transform job.
 
-When Amazon SageMaker receives a
-\code{\link[=sagemaker_stop_transform_job]{stop_transform_job}} request, the status
-of the job changes to \code{Stopping}. After Amazon SageMaker stops the job,
-the status is set to \code{Stopped}. When you stop a transform job before it
-is completed, Amazon SageMaker doesn't store the job's output in Amazon
-S3.
+See \url{https://paws-r.github.io/docs/sagemaker/stop_transform_job.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$stop_transform_job(
-  TransformJobName = "string"
-)
-}
-}
-
 \keyword{internal}

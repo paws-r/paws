@@ -17,25 +17,9 @@ whether approval rules have been set aside (overridden).}
 retrieve the most recent revision ID, use
 \code{\link[=codecommit_get_pull_request]{get_pull_request}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  overridden = TRUE|FALSE,
-  overrider = "string"
-)
-}
-}
 \description{
-Returns information about whether approval rules have been set aside
-(overridden) for a pull request, and if so, the Amazon Resource Name
-(ARN) of the user or identity that overrode the rules and their
-requirements for the pull request.
-}
-\section{Request syntax}{
-\preformatted{svc$get_pull_request_override_state(
-  pullRequestId = "string",
-  revisionId = "string"
-)
-}
-}
+Returns information about whether approval rules have been set aside (overridden) for a pull request, and if so, the Amazon Resource Name (ARN) of the user or identity that overrode the rules and their requirements for the pull request.
 
+See \url{https://paws-r.github.io/docs/codecommit/get_pull_request_override_state.html} for full documentation.
+}
 \keyword{internal}

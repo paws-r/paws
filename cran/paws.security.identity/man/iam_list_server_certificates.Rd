@@ -5,7 +5,7 @@
 \title{Lists the server certificates stored in IAM that have the specified path
 prefix}
 \usage{
-iam_list_server_certificates(PathPrefix, Marker, MaxItems)
+iam_list_server_certificates(PathPrefix = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{PathPrefix}{The path prefix for filtering the results. For example:
@@ -36,46 +36,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServerCertificateMetadataList = list(
-    list(
-      Path = "string",
-      ServerCertificateName = "string",
-      ServerCertificateId = "string",
-      Arn = "string",
-      UploadDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Expiration = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Lists the server certificates stored in IAM that have the specified path
-prefix. If none exist, the operation returns an empty list.
+Lists the server certificates stored in IAM that have the specified path prefix. If none exist, the operation returns an empty list.
 
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters.
-
-For more information about working with server certificates, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
-in the \emph{IAM User Guide}. This topic also includes a list of AWS services
-that can use the server certificates that you manage with IAM.
+See \url{https://paws-r.github.io/docs/iam/list_server_certificates.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_server_certificates(
-  PathPrefix = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
 \keyword{internal}

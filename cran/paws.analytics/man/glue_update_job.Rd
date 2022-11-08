@@ -9,57 +9,12 @@ glue_update_job(JobName, JobUpdate)
 \arguments{
 \item{JobName}{[required] The name of the job definition to update.}
 
-\item{JobUpdate}{[required] Specifies the values with which to update the job definition.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  JobName = "string"
-)
-}
+\item{JobUpdate}{[required] Specifies the values with which to update the job definition.
+Unspecified configuration is removed or reset to default values.}
 }
 \description{
-Updates an existing job definition.
-}
-\section{Request syntax}{
-\preformatted{svc$update_job(
-  JobName = "string",
-  JobUpdate = list(
-    Description = "string",
-    LogUri = "string",
-    Role = "string",
-    ExecutionProperty = list(
-      MaxConcurrentRuns = 123
-    ),
-    Command = list(
-      Name = "string",
-      ScriptLocation = "string",
-      PythonVersion = "string"
-    ),
-    DefaultArguments = list(
-      "string"
-    ),
-    NonOverridableArguments = list(
-      "string"
-    ),
-    Connections = list(
-      Connections = list(
-        "string"
-      )
-    ),
-    MaxRetries = 123,
-    AllocatedCapacity = 123,
-    Timeout = 123,
-    MaxCapacity = 123.0,
-    WorkerType = "Standard"|"G.1X"|"G.2X",
-    NumberOfWorkers = 123,
-    SecurityConfiguration = "string",
-    NotificationProperty = list(
-      NotifyDelayAfter = 123
-    ),
-    GlueVersion = "string"
-  )
-)
-}
-}
+Updates an existing job definition. The previous job definition is completely overwritten by this information.
 
+See \url{https://paws-r.github.io/docs/glue/update_job.html} for full documentation.
+}
 \keyword{internal}

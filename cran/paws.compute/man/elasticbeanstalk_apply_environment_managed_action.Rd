@@ -4,8 +4,11 @@
 \alias{elasticbeanstalk_apply_environment_managed_action}
 \title{Applies a scheduled managed action immediately}
 \usage{
-elasticbeanstalk_apply_environment_managed_action(EnvironmentName,
-  EnvironmentId, ActionId)
+elasticbeanstalk_apply_environment_managed_action(
+  EnvironmentName = NULL,
+  EnvironmentId = NULL,
+  ActionId
+)
 }
 \arguments{
 \item{EnvironmentName}{The name of the target environment.}
@@ -14,28 +17,9 @@ elasticbeanstalk_apply_environment_managed_action(EnvironmentName,
 
 \item{ActionId}{[required] The action ID of the scheduled managed action to execute.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ActionId = "string",
-  ActionDescription = "string",
-  ActionType = "InstanceRefresh"|"PlatformUpdate"|"Unknown",
-  Status = "string"
-)
-}
-}
 \description{
-Applies a scheduled managed action immediately. A managed action can be
-applied only if its status is \code{Scheduled}. Get the status and action ID
-of a managed action with
-\code{\link[=elasticbeanstalk_describe_environment_managed_actions]{describe_environment_managed_actions}}.
-}
-\section{Request syntax}{
-\preformatted{svc$apply_environment_managed_action(
-  EnvironmentName = "string",
-  EnvironmentId = "string",
-  ActionId = "string"
-)
-}
-}
+Applies a scheduled managed action immediately. A managed action can be applied only if its status is \code{Scheduled}. Get the status and action ID of a managed action with \code{\link[=elasticbeanstalk_describe_environment_managed_actions]{describe_environment_managed_actions}}.
 
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/apply_environment_managed_action.html} for full documentation.
+}
 \keyword{internal}

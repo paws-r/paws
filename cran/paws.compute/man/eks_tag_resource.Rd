@@ -14,27 +14,9 @@ node groups.}
 
 \item{tags}{[required] The tags to add to the resource. A tag is an array of key-value pairs.}
 }
-\value{
-An empty list.
-}
 \description{
-Associates the specified tags to a resource with the specified
-\code{resourceArn}. If existing tags on a resource are not specified in the
-request parameters, they are not changed. When a resource is deleted,
-the tags associated with that resource are deleted as well. Tags that
-you create for Amazon EKS resources do not propagate to any other
-resources associated with the cluster. For example, if you tag a cluster
-with this operation, that tag does not automatically propagate to the
-subnets and worker nodes associated with the cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  resourceArn = "string",
-  tags = list(
-    "string"
-  )
-)
-}
-}
+Associates the specified tags to a resource with the specified \code{resourceArn}. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well. Tags that you create for Amazon EKS resources do not propagate to any other resources associated with the cluster. For example, if you tag a cluster with this operation, that tag does not automatically propagate to the subnets and nodes associated with the cluster.
 
+See \url{https://paws-r.github.io/docs/eks/tag_resource.html} for full documentation.
+}
 \keyword{internal}

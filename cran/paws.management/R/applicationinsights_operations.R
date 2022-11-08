@@ -8,11 +8,9 @@ NULL
 #' @description
 #' Adds an application that is created from a resource group.
 #'
-#' @usage
-#' applicationinsights_create_application(ResourceGroupName,
-#'   OpsCenterEnabled, CWEMonitorEnabled, OpsItemSNSTopicArn, Tags)
+#' See [https://paws-r.github.io/docs/applicationinsights/create_application.html](https://paws-r.github.io/docs/applicationinsights/create_application.html) for full documentation.
 #'
-#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param ResourceGroupName The name of the resource group.
 #' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an
 #' application.
 #' @param CWEMonitorEnabled Indicates whether Application Insights can listen to CloudWatch events
@@ -24,49 +22,25 @@ NULL
 #' @param Tags List of tags to add to the application. tag key (`Key`) and an
 #' associated tag value (`Value`). The maximum length of a tag key is 128
 #' characters. The maximum length of a tag value is 256 characters.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationInfo = list(
-#'     ResourceGroupName = "string",
-#'     LifeCycle = "string",
-#'     OpsItemSNSTopicArn = "string",
-#'     OpsCenterEnabled = TRUE|FALSE,
-#'     CWEMonitorEnabled = TRUE|FALSE,
-#'     Remarks = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_application(
-#'   ResourceGroupName = "string",
-#'   OpsCenterEnabled = TRUE|FALSE,
-#'   CWEMonitorEnabled = TRUE|FALSE,
-#'   OpsItemSNSTopicArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param AutoConfigEnabled Indicates whether Application Insights automatically configures
+#' unmonitored resources in the resource group.
+#' @param AutoCreate Configures all of the resources in the resource group by applying the
+#' recommended configurations.
+#' @param GroupingType Application Insights can create applications based on a resource group
+#' or on an account. To create an account-based application using all of
+#' the resources in the account, set this parameter to `ACCOUNT_BASED`.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_create_application
-applicationinsights_create_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, Tags = NULL) {
+applicationinsights_create_application <- function(ResourceGroupName = NULL, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, Tags = NULL, AutoConfigEnabled = NULL, AutoCreate = NULL, GroupingType = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$create_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, Tags = Tags)
+  input <- .applicationinsights$create_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, Tags = Tags, AutoConfigEnabled = AutoConfigEnabled, AutoCreate = AutoCreate, GroupingType = GroupingType)
   output <- .applicationinsights$create_application_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -80,30 +54,13 @@ applicationinsights_create_application <- function(ResourceGroupName, OpsCenterE
 #' monitor
 #'
 #' @description
-#' Creates a custom component by grouping similar standalone instances to
-#' monitor.
+#' Creates a custom component by grouping similar standalone instances to monitor.
 #'
-#' @usage
-#' applicationinsights_create_component(ResourceGroupName, ComponentName,
-#'   ResourceList)
+#' See [https://paws-r.github.io/docs/applicationinsights/create_component.html](https://paws-r.github.io/docs/applicationinsights/create_component.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param ResourceList &#91;required&#93; The list of resource ARNs that belong to the component.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_component(
-#'   ResourceGroupName = "string",
-#'   ComponentName = "string",
-#'   ResourceList = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -130,9 +87,7 @@ applicationinsights_create_component <- function(ResourceGroupName, ComponentNam
 #' @description
 #' Adds an log pattern to a `LogPatternSet`.
 #'
-#' @usage
-#' applicationinsights_create_log_pattern(ResourceGroupName,
-#'   PatternSetName, PatternName, Pattern, Rank)
+#' See [https://paws-r.github.io/docs/applicationinsights/create_log_pattern.html](https://paws-r.github.io/docs/applicationinsights/create_log_pattern.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
@@ -150,31 +105,6 @@ applicationinsights_create_component <- function(ResourceGroupName, ComponentNam
 #' rank. And a `High` severity pattern translates to a `250,000` rank. Rank
 #' values less than `1` or greater than `1,000,000` are reserved for
 #' AWS-provided patterns.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LogPattern = list(
-#'     PatternSetName = "string",
-#'     PatternName = "string",
-#'     Pattern = "string",
-#'     Rank = 123
-#'   ),
-#'   ResourceGroupName = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_log_pattern(
-#'   ResourceGroupName = "string",
-#'   PatternSetName = "string",
-#'   PatternName = "string",
-#'   Pattern = "string",
-#'   Rank = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -199,23 +129,11 @@ applicationinsights_create_log_pattern <- function(ResourceGroupName, PatternSet
 #' Removes the specified application from monitoring
 #'
 #' @description
-#' Removes the specified application from monitoring. Does not delete the
-#' application.
+#' Removes the specified application from monitoring. Does not delete the application.
 #'
-#' @usage
-#' applicationinsights_delete_application(ResourceGroupName)
+#' See [https://paws-r.github.io/docs/applicationinsights/delete_application.html](https://paws-r.github.io/docs/applicationinsights/delete_application.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_application(
-#'   ResourceGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -240,26 +158,12 @@ applicationinsights_delete_application <- function(ResourceGroupName) {
 #' Ungroups a custom component
 #'
 #' @description
-#' Ungroups a custom component. When you ungroup custom components, all
-#' applicable monitors that are set up for the component are removed and
-#' the instances revert to their standalone status.
+#' Ungroups a custom component. When you ungroup custom components, all applicable monitors that are set up for the component are removed and the instances revert to their standalone status.
 #'
-#' @usage
-#' applicationinsights_delete_component(ResourceGroupName, ComponentName)
+#' See [https://paws-r.github.io/docs/applicationinsights/delete_component.html](https://paws-r.github.io/docs/applicationinsights/delete_component.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_component(
-#'   ResourceGroupName = "string",
-#'   ComponentName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -286,25 +190,11 @@ applicationinsights_delete_component <- function(ResourceGroupName, ComponentNam
 #' @description
 #' Removes the specified log pattern from a `LogPatternSet`.
 #'
-#' @usage
-#' applicationinsights_delete_log_pattern(ResourceGroupName,
-#'   PatternSetName, PatternName)
+#' See [https://paws-r.github.io/docs/applicationinsights/delete_log_pattern.html](https://paws-r.github.io/docs/applicationinsights/delete_log_pattern.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
 #' @param PatternName &#91;required&#93; The name of the log pattern.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_log_pattern(
-#'   ResourceGroupName = "string",
-#'   PatternSetName = "string",
-#'   PatternName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -331,32 +221,9 @@ applicationinsights_delete_log_pattern <- function(ResourceGroupName, PatternSet
 #' @description
 #' Describes the application.
 #'
-#' @usage
-#' applicationinsights_describe_application(ResourceGroupName)
+#' See [https://paws-r.github.io/docs/applicationinsights/describe_application.html](https://paws-r.github.io/docs/applicationinsights/describe_application.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationInfo = list(
-#'     ResourceGroupName = "string",
-#'     LifeCycle = "string",
-#'     OpsItemSNSTopicArn = "string",
-#'     OpsCenterEnabled = TRUE|FALSE,
-#'     CWEMonitorEnabled = TRUE|FALSE,
-#'     Remarks = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_application(
-#'   ResourceGroupName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -382,45 +249,12 @@ applicationinsights_describe_application <- function(ResourceGroupName) {
 #' in a component
 #'
 #' @description
-#' Describes a component and lists the resources that are grouped together
-#' in a component.
+#' Describes a component and lists the resources that are grouped together in a component.
 #'
-#' @usage
-#' applicationinsights_describe_component(ResourceGroupName, ComponentName)
+#' See [https://paws-r.github.io/docs/applicationinsights/describe_component.html](https://paws-r.github.io/docs/applicationinsights/describe_component.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationComponent = list(
-#'     ComponentName = "string",
-#'     ComponentRemarks = "string",
-#'     ResourceType = "string",
-#'     OsType = "WINDOWS"|"LINUX",
-#'     Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
-#'     Monitor = TRUE|FALSE,
-#'     DetectedWorkload = list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   ResourceList = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_component(
-#'   ResourceGroupName = "string",
-#'   ComponentName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -447,30 +281,10 @@ applicationinsights_describe_component <- function(ResourceGroupName, ComponentN
 #' @description
 #' Describes the monitoring configuration of the component.
 #'
-#' @usage
-#' applicationinsights_describe_component_configuration(ResourceGroupName,
-#'   ComponentName)
+#' See [https://paws-r.github.io/docs/applicationinsights/describe_component_configuration.html](https://paws-r.github.io/docs/applicationinsights/describe_component_configuration.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Monitor = TRUE|FALSE,
-#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
-#'   ComponentConfiguration = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_component_configuration(
-#'   ResourceGroupName = "string",
-#'   ComponentName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -497,32 +311,11 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #' @description
 #' Describes the recommended monitoring configuration of the component.
 #'
-#' @usage
-#' applicationinsights_describe_component_configuration_recommendation(
-#'   ResourceGroupName, ComponentName, Tier)
+#' See [https://paws-r.github.io/docs/applicationinsights/describe_component_configuration_recommendation.html](https://paws-r.github.io/docs/applicationinsights/describe_component_configuration_recommendation.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
-#' @param Tier &#91;required&#93; The tier of the application component. Supported tiers include
-#' `DOT_NET_CORE`, `DOT_NET_WORKER`, `DOT_NET_WEB`, `SQL_SERVER`, and
-#' `DEFAULT`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComponentConfiguration = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_component_configuration_recommendation(
-#'   ResourceGroupName = "string",
-#'   ComponentName = "string",
-#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"
-#' )
-#' ```
+#' @param Tier &#91;required&#93; The tier of the application component.
 #'
 #' @keywords internal
 #'
@@ -549,36 +342,11 @@ applicationinsights_describe_component_configuration_recommendation <- function(
 #' @description
 #' Describe a specific log pattern from a `LogPatternSet`.
 #'
-#' @usage
-#' applicationinsights_describe_log_pattern(ResourceGroupName,
-#'   PatternSetName, PatternName)
+#' See [https://paws-r.github.io/docs/applicationinsights/describe_log_pattern.html](https://paws-r.github.io/docs/applicationinsights/describe_log_pattern.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
 #' @param PatternName &#91;required&#93; The name of the log pattern.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceGroupName = "string",
-#'   LogPattern = list(
-#'     PatternSetName = "string",
-#'     PatternName = "string",
-#'     Pattern = "string",
-#'     Rank = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_log_pattern(
-#'   ResourceGroupName = "string",
-#'   PatternSetName = "string",
-#'   PatternName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -605,77 +373,9 @@ applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternS
 #' @description
 #' Describes an anomaly or error with the application.
 #'
-#' @usage
-#' applicationinsights_describe_observation(ObservationId)
+#' See [https://paws-r.github.io/docs/applicationinsights/describe_observation.html](https://paws-r.github.io/docs/applicationinsights/describe_observation.html) for full documentation.
 #'
 #' @param ObservationId &#91;required&#93; The ID of the observation.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Observation = list(
-#'     Id = "string",
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SourceType = "string",
-#'     SourceARN = "string",
-#'     LogGroup = "string",
-#'     LineTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LogText = "string",
-#'     LogFilter = "ERROR"|"WARN"|"INFO",
-#'     MetricNamespace = "string",
-#'     MetricName = "string",
-#'     Unit = "string",
-#'     Value = 123.0,
-#'     CloudWatchEventId = "string",
-#'     CloudWatchEventSource = "EC2"|"CODE_DEPLOY"|"HEALTH"|"RDS",
-#'     CloudWatchEventDetailType = "string",
-#'     HealthEventArn = "string",
-#'     HealthService = "string",
-#'     HealthEventTypeCode = "string",
-#'     HealthEventTypeCategory = "string",
-#'     HealthEventDescription = "string",
-#'     CodeDeployDeploymentId = "string",
-#'     CodeDeployDeploymentGroup = "string",
-#'     CodeDeployState = "string",
-#'     CodeDeployApplication = "string",
-#'     CodeDeployInstanceGroupId = "string",
-#'     Ec2State = "string",
-#'     RdsEventCategories = "string",
-#'     RdsEventMessage = "string",
-#'     S3EventName = "string",
-#'     StatesExecutionArn = "string",
-#'     StatesArn = "string",
-#'     StatesStatus = "string",
-#'     StatesInput = "string",
-#'     EbsEvent = "string",
-#'     EbsResult = "string",
-#'     EbsCause = "string",
-#'     EbsRequestId = "string",
-#'     XRayFaultPercent = 123,
-#'     XRayThrottlePercent = 123,
-#'     XRayErrorPercent = 123,
-#'     XRayRequestCount = 123,
-#'     XRayRequestAverageLatency = 123,
-#'     XRayNodeName = "string",
-#'     XRayNodeType = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_observation(
-#'   ObservationId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -702,42 +402,9 @@ applicationinsights_describe_observation <- function(ObservationId) {
 #' @description
 #' Describes an application problem.
 #'
-#' @usage
-#' applicationinsights_describe_problem(ProblemId)
+#' See [https://paws-r.github.io/docs/applicationinsights/describe_problem.html](https://paws-r.github.io/docs/applicationinsights/describe_problem.html) for full documentation.
 #'
 #' @param ProblemId &#91;required&#93; The ID of the problem.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Problem = list(
-#'     Id = "string",
-#'     Title = "string",
-#'     Insights = "string",
-#'     Status = "IGNORE"|"RESOLVED"|"PENDING",
-#'     AffectedResource = "string",
-#'     StartTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     EndTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     SeverityLevel = "Low"|"Medium"|"High",
-#'     ResourceGroupName = "string",
-#'     Feedback = list(
-#'       "NOT_SPECIFIED"|"USEFUL"|"NOT_USEFUL"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_problem(
-#'   ProblemId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -764,81 +431,9 @@ applicationinsights_describe_problem <- function(ProblemId) {
 #' @description
 #' Describes the anomalies or errors associated with the problem.
 #'
-#' @usage
-#' applicationinsights_describe_problem_observations(ProblemId)
+#' See [https://paws-r.github.io/docs/applicationinsights/describe_problem_observations.html](https://paws-r.github.io/docs/applicationinsights/describe_problem_observations.html) for full documentation.
 #'
 #' @param ProblemId &#91;required&#93; The ID of the problem.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RelatedObservations = list(
-#'     ObservationList = list(
-#'       list(
-#'         Id = "string",
-#'         StartTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         EndTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         SourceType = "string",
-#'         SourceARN = "string",
-#'         LogGroup = "string",
-#'         LineTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         LogText = "string",
-#'         LogFilter = "ERROR"|"WARN"|"INFO",
-#'         MetricNamespace = "string",
-#'         MetricName = "string",
-#'         Unit = "string",
-#'         Value = 123.0,
-#'         CloudWatchEventId = "string",
-#'         CloudWatchEventSource = "EC2"|"CODE_DEPLOY"|"HEALTH"|"RDS",
-#'         CloudWatchEventDetailType = "string",
-#'         HealthEventArn = "string",
-#'         HealthService = "string",
-#'         HealthEventTypeCode = "string",
-#'         HealthEventTypeCategory = "string",
-#'         HealthEventDescription = "string",
-#'         CodeDeployDeploymentId = "string",
-#'         CodeDeployDeploymentGroup = "string",
-#'         CodeDeployState = "string",
-#'         CodeDeployApplication = "string",
-#'         CodeDeployInstanceGroupId = "string",
-#'         Ec2State = "string",
-#'         RdsEventCategories = "string",
-#'         RdsEventMessage = "string",
-#'         S3EventName = "string",
-#'         StatesExecutionArn = "string",
-#'         StatesArn = "string",
-#'         StatesStatus = "string",
-#'         StatesInput = "string",
-#'         EbsEvent = "string",
-#'         EbsResult = "string",
-#'         EbsCause = "string",
-#'         EbsRequestId = "string",
-#'         XRayFaultPercent = 123,
-#'         XRayThrottlePercent = 123,
-#'         XRayErrorPercent = 123,
-#'         XRayRequestCount = 123,
-#'         XRayRequestAverageLatency = 123,
-#'         XRayNodeName = "string",
-#'         XRayNodeType = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_problem_observations(
-#'   ProblemId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -865,39 +460,12 @@ applicationinsights_describe_problem_observations <- function(ProblemId) {
 #' @description
 #' Lists the IDs of the applications that you are monitoring.
 #'
-#' @usage
-#' applicationinsights_list_applications(MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/applicationinsights/list_applications.html](https://paws-r.github.io/docs/applicationinsights/list_applications.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationInfoList = list(
-#'     list(
-#'       ResourceGroupName = "string",
-#'       LifeCycle = "string",
-#'       OpsItemSNSTopicArn = "string",
-#'       OpsCenterEnabled = TRUE|FALSE,
-#'       CWEMonitorEnabled = TRUE|FALSE,
-#'       Remarks = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_applications(
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -923,50 +491,15 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
 #' application
 #'
 #' @description
-#' Lists the auto-grouped, standalone, and custom components of the
-#' application.
+#' Lists the auto-grouped, standalone, and custom components of the application.
 #'
-#' @usage
-#' applicationinsights_list_components(ResourceGroupName, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/applicationinsights/list_components.html](https://paws-r.github.io/docs/applicationinsights/list_components.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationComponentList = list(
-#'     list(
-#'       ComponentName = "string",
-#'       ComponentRemarks = "string",
-#'       ResourceType = "string",
-#'       OsType = "WINDOWS"|"LINUX",
-#'       Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
-#'       Monitor = TRUE|FALSE,
-#'       DetectedWorkload = list(
-#'         list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_components(
-#'   ResourceGroupName = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -992,21 +525,9 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #' updates performed by Application Insights
 #'
 #' @description
-#' Lists the INFO, WARN, and ERROR events for periodic configuration
-#' updates performed by Application Insights. Examples of events
-#' represented are:
-#' 
-#' -   INFO: creating a new alarm or updating an alarm threshold.
-#' 
-#' -   WARN: alarm not created due to insufficient data points used to
-#'     predict thresholds.
-#' 
-#' -   ERROR: alarm not created due to permission errors or exceeding
-#'     quotas.
+#' Lists the INFO, WARN, and ERROR events for periodic configuration updates performed by Application Insights. Examples of events represented are:
 #'
-#' @usage
-#' applicationinsights_list_configuration_history(ResourceGroupName,
-#'   StartTime, EndTime, EventStatus, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/applicationinsights/list_configuration_history.html](https://paws-r.github.io/docs/applicationinsights/list_configuration_history.html) for full documentation.
 #'
 #' @param ResourceGroupName Resource group to which the application belongs.
 #' @param StartTime The start time of the event.
@@ -1031,42 +552,6 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #' of that parameter. Pagination continues from the end of the previous
 #' results that returned the `NextToken` value. This value is `null` when
 #' there are no more results to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EventList = list(
-#'     list(
-#'       MonitoredResourceARN = "string",
-#'       EventStatus = "INFO"|"WARN"|"ERROR",
-#'       EventResourceType = "CLOUDWATCH_ALARM"|"CLOUDWATCH_LOG"|"CLOUDFORMATION"|"SSM_ASSOCIATION",
-#'       EventTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EventDetail = "string",
-#'       EventResourceName = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_configuration_history(
-#'   ResourceGroupName = "string",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EventStatus = "INFO"|"WARN"|"ERROR",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1093,36 +578,13 @@ applicationinsights_list_configuration_history <- function(ResourceGroupName = N
 #' @description
 #' Lists the log pattern sets in the specific application.
 #'
-#' @usage
-#' applicationinsights_list_log_pattern_sets(ResourceGroupName, MaxResults,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/applicationinsights/list_log_pattern_sets.html](https://paws-r.github.io/docs/applicationinsights/list_log_pattern_sets.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceGroupName = "string",
-#'   LogPatternSets = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_log_pattern_sets(
-#'   ResourceGroupName = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1149,9 +611,7 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
 #' @description
 #' Lists the log patterns in the specific log `LogPatternSet`.
 #'
-#' @usage
-#' applicationinsights_list_log_patterns(ResourceGroupName, PatternSetName,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/applicationinsights/list_log_patterns.html](https://paws-r.github.io/docs/applicationinsights/list_log_patterns.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName The name of the log pattern set.
@@ -1159,33 +619,6 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceGroupName = "string",
-#'   LogPatterns = list(
-#'     list(
-#'       PatternSetName = "string",
-#'       PatternName = "string",
-#'       Pattern = "string",
-#'       Rank = 123
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_log_patterns(
-#'   ResourceGroupName = "string",
-#'   PatternSetName = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1212,9 +645,7 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #' @description
 #' Lists the problems with your application.
 #'
-#' @usage
-#' applicationinsights_list_problems(ResourceGroupName, StartTime, EndTime,
-#'   MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/applicationinsights/list_problems.html](https://paws-r.github.io/docs/applicationinsights/list_problems.html) for full documentation.
 #'
 #' @param ResourceGroupName The name of the resource group.
 #' @param StartTime The time when the problem was detected, in epoch seconds. If you don't
@@ -1226,61 +657,19 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ProblemList = list(
-#'     list(
-#'       Id = "string",
-#'       Title = "string",
-#'       Insights = "string",
-#'       Status = "IGNORE"|"RESOLVED"|"PENDING",
-#'       AffectedResource = "string",
-#'       StartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       EndTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       SeverityLevel = "Low"|"Medium"|"High",
-#'       ResourceGroupName = "string",
-#'       Feedback = list(
-#'         "NOT_SPECIFIED"|"USEFUL"|"NOT_USEFUL"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_problems(
-#'   ResourceGroupName = "string",
-#'   StartTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   EndTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
+#' @param ComponentName The name of the component.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_problems
-applicationinsights_list_problems <- function(ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL) {
+applicationinsights_list_problems <- function(ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL, ComponentName = NULL) {
   op <- new_operation(
     name = "ListProblems",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$list_problems_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationinsights$list_problems_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, ComponentName = ComponentName)
   output <- .applicationinsights$list_problems_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -1294,38 +683,12 @@ applicationinsights_list_problems <- function(ResourceGroupName = NULL, StartTim
 #' specified application
 #'
 #' @description
-#' Retrieve a list of the tags (keys and values) that are associated with a
-#' specified application. A *tag* is a label that you optionally define and
-#' associate with an application. Each tag consists of a required *tag key*
-#' and an optional associated *tag value*. A tag key is a general label
-#' that acts as a category for more specific tag values. A tag value acts
-#' as a descriptor within a tag key.
+#' Retrieve a list of the tags (keys and values) that are associated with a specified application. A *tag* is a label that you optionally define and associate with an application. Each tag consists of a required *tag key* and an optional associated *tag value*. A tag key is a general label that acts as a category for more specific tag values. A tag value acts as a descriptor within a tag key.
 #'
-#' @usage
-#' applicationinsights_list_tags_for_resource(ResourceARN)
+#' See [https://paws-r.github.io/docs/applicationinsights/list_tags_for_resource.html](https://paws-r.github.io/docs/applicationinsights/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to
 #' retrieve tag information for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceARN = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1350,19 +713,9 @@ applicationinsights_list_tags_for_resource <- function(ResourceARN) {
 #' Add one or more tags (keys and values) to a specified application
 #'
 #' @description
-#' Add one or more tags (keys and values) to a specified application. A
-#' *tag* is a label that you optionally define and associate with an
-#' application. Tags can help you categorize and manage application in
-#' different ways, such as by purpose, owner, environment, or other
-#' criteria.
-#' 
-#' Each tag consists of a required *tag key* and an associated *tag value*,
-#' both of which you define. A tag key is a general label that acts as a
-#' category for more specific tag values. A tag value acts as a descriptor
-#' within a tag key.
+#' Add one or more tags (keys and values) to a specified application. A *tag* is a label that you optionally define and associate with an application. Tags can help you categorize and manage application in different ways, such as by purpose, owner, environment, or other criteria.
 #'
-#' @usage
-#' applicationinsights_tag_resource(ResourceARN, Tags)
+#' See [https://paws-r.github.io/docs/applicationinsights/tag_resource.html](https://paws-r.github.io/docs/applicationinsights/tag_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to add
 #' one or more tags to.
@@ -1370,22 +723,6 @@ applicationinsights_list_tags_for_resource <- function(ResourceARN) {
 #' required tag key (`Key`) and an associated tag value (`Value`). The
 #' maximum length of a tag key is 128 characters. The maximum length of a
 #' tag value is 256 characters.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceARN = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1412,8 +749,7 @@ applicationinsights_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Remove one or more tags (keys and values) from a specified application.
 #'
-#' @usage
-#' applicationinsights_untag_resource(ResourceARN, TagKeys)
+#' See [https://paws-r.github.io/docs/applicationinsights/untag_resource.html](https://paws-r.github.io/docs/applicationinsights/untag_resource.html) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to
 #' remove one or more tags from.
@@ -1424,19 +760,6 @@ applicationinsights_tag_resource <- function(ResourceARN, Tags) {
 #' To remove more than one tag from the application, append the `TagKeys`
 #' parameter and argument for each additional tag to remove, separated by
 #' an ampersand.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceARN = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1463,9 +786,7 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates the application.
 #'
-#' @usage
-#' applicationinsights_update_application(ResourceGroupName,
-#'   OpsCenterEnabled, CWEMonitorEnabled, OpsItemSNSTopicArn, RemoveSNSTopic)
+#' See [https://paws-r.github.io/docs/applicationinsights/update_application.html](https://paws-r.github.io/docs/applicationinsights/update_application.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an
@@ -1478,44 +799,19 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #' opsItem.
 #' @param RemoveSNSTopic Disassociates the SNS topic from the opsItem created for detected
 #' problems.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ApplicationInfo = list(
-#'     ResourceGroupName = "string",
-#'     LifeCycle = "string",
-#'     OpsItemSNSTopicArn = "string",
-#'     OpsCenterEnabled = TRUE|FALSE,
-#'     CWEMonitorEnabled = TRUE|FALSE,
-#'     Remarks = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_application(
-#'   ResourceGroupName = "string",
-#'   OpsCenterEnabled = TRUE|FALSE,
-#'   CWEMonitorEnabled = TRUE|FALSE,
-#'   OpsItemSNSTopicArn = "string",
-#'   RemoveSNSTopic = TRUE|FALSE
-#' )
-#' ```
+#' @param AutoConfigEnabled Turns auto-configuration on or off.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_update_application
-applicationinsights_update_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, RemoveSNSTopic = NULL) {
+applicationinsights_update_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, RemoveSNSTopic = NULL, AutoConfigEnabled = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$update_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, RemoveSNSTopic = RemoveSNSTopic)
+  input <- .applicationinsights$update_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, RemoveSNSTopic = RemoveSNSTopic, AutoConfigEnabled = AutoConfigEnabled)
   output <- .applicationinsights$update_application_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -1529,32 +825,14 @@ applicationinsights_update_application <- function(ResourceGroupName, OpsCenterE
 #' up the component
 #'
 #' @description
-#' Updates the custom component name and/or the list of resources that make
-#' up the component.
+#' Updates the custom component name and/or the list of resources that make up the component.
 #'
-#' @usage
-#' applicationinsights_update_component(ResourceGroupName, ComponentName,
-#'   NewComponentName, ResourceList)
+#' See [https://paws-r.github.io/docs/applicationinsights/update_component.html](https://paws-r.github.io/docs/applicationinsights/update_component.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param NewComponentName The new name of the component.
 #' @param ResourceList The list of resource ARNs that belong to the component.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_component(
-#'   ResourceGroupName = "string",
-#'   ComponentName = "string",
-#'   NewComponentName = "string",
-#'   ResourceList = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1579,21 +857,14 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #' Updates the monitoring configurations for the component
 #'
 #' @description
-#' Updates the monitoring configurations for the component. The
-#' configuration input parameter is an escaped JSON of the configuration
-#' and should match the schema of what is returned by
-#' [`describe_component_configuration_recommendation`][applicationinsights_describe_component_configuration_recommendation].
+#' Updates the monitoring configurations for the component. The configuration input parameter is an escaped JSON of the configuration and should match the schema of what is returned by [`describe_component_configuration_recommendation`][applicationinsights_describe_component_configuration_recommendation].
 #'
-#' @usage
-#' applicationinsights_update_component_configuration(ResourceGroupName,
-#'   ComponentName, Monitor, Tier, ComponentConfiguration)
+#' See [https://paws-r.github.io/docs/applicationinsights/update_component_configuration.html](https://paws-r.github.io/docs/applicationinsights/update_component_configuration.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param Monitor Indicates whether the application component is monitored.
-#' @param Tier The tier of the application component. Supported tiers include
-#' `DOT_NET_WORKER`, `DOT_NET_WEB`, `DOT_NET_CORE`, `SQL_SERVER`, and
-#' `DEFAULT`.
+#' @param Tier The tier of the application component.
 #' @param ComponentConfiguration The configuration settings of the component. The value is the escaped
 #' JSON of the configuration. For more information about the JSON format,
 #' see [Working with
@@ -1603,32 +874,20 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #' to see the recommended configuration for a component. For the complete
 #' format of the component configuration file, see [Component
 #' Configuration](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/component-config.html).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_component_configuration(
-#'   ResourceGroupName = "string",
-#'   ComponentName = "string",
-#'   Monitor = TRUE|FALSE,
-#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
-#'   ComponentConfiguration = "string"
-#' )
-#' ```
+#' @param AutoConfigEnabled Automatically configures the component by applying the recommended
+#' configurations.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_update_component_configuration
-applicationinsights_update_component_configuration <- function(ResourceGroupName, ComponentName, Monitor = NULL, Tier = NULL, ComponentConfiguration = NULL) {
+applicationinsights_update_component_configuration <- function(ResourceGroupName, ComponentName, Monitor = NULL, Tier = NULL, ComponentConfiguration = NULL, AutoConfigEnabled = NULL) {
   op <- new_operation(
     name = "UpdateComponentConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$update_component_configuration_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, Monitor = Monitor, Tier = Tier, ComponentConfiguration = ComponentConfiguration)
+  input <- .applicationinsights$update_component_configuration_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, Monitor = Monitor, Tier = Tier, ComponentConfiguration = ComponentConfiguration, AutoConfigEnabled = AutoConfigEnabled)
   output <- .applicationinsights$update_component_configuration_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -1643,9 +902,7 @@ applicationinsights_update_component_configuration <- function(ResourceGroupName
 #' @description
 #' Adds a log pattern to a `LogPatternSet`.
 #'
-#' @usage
-#' applicationinsights_update_log_pattern(ResourceGroupName,
-#'   PatternSetName, PatternName, Pattern, Rank)
+#' See [https://paws-r.github.io/docs/applicationinsights/update_log_pattern.html](https://paws-r.github.io/docs/applicationinsights/update_log_pattern.html) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
@@ -1663,31 +920,6 @@ applicationinsights_update_component_configuration <- function(ResourceGroupName
 #' rank. And a `High` severity pattern translates to a `250,000` rank. Rank
 #' values less than `1` or greater than `1,000,000` are reserved for
 #' AWS-provided patterns.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceGroupName = "string",
-#'   LogPattern = list(
-#'     PatternSetName = "string",
-#'     PatternName = "string",
-#'     Pattern = "string",
-#'     Rank = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_log_pattern(
-#'   ResourceGroupName = "string",
-#'   PatternSetName = "string",
-#'   PatternName = "string",
-#'   Pattern = "string",
-#'   Rank = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

@@ -4,7 +4,7 @@
 \alias{ec2_delete_network_acl}
 \title{Deletes the specified network ACL}
 \usage{
-ec2_delete_network_acl(DryRun, NetworkAclId)
+ec2_delete_network_acl(DryRun = NULL, NetworkAclId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,28 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkAclId}{[required] The ID of the network ACL.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified network ACL. You can't delete the ACL if it's
-associated with any subnets. You can't delete the default network ACL.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_network_acl(
-  DryRun = TRUE|FALSE,
-  NetworkAclId = "string"
-)
-}
-}
+Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets. You can't delete the default network ACL.
 
-\examples{
-\dontrun{
-# This example deletes the specified network ACL.
-svc$delete_network_acl(
-  NetworkAclId = "acl-5fb85d36"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_network_acl.html} for full documentation.
 }
 \keyword{internal}

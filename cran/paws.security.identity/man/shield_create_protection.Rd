@@ -2,9 +2,9 @@
 % Please edit documentation in R/shield_operations.R
 \name{shield_create_protection}
 \alias{shield_create_protection}
-\title{Enables AWS Shield Advanced for a specific AWS resource}
+\title{Enables Shield Advanced for a specific Amazon Web Services resource}
 \usage{
-shield_create_protection(Name, ResourceArn)
+shield_create_protection(Name, ResourceArn, Tags = NULL)
 }
 \arguments{
 \item{Name}{[required] Friendly name for the \code{Protection} you are creating.}
@@ -17,39 +17,21 @@ The ARN should be in one of the following formats:
 \code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id }
 \item For an Elastic Load Balancer (Classic Load Balancer):
 \code{arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name }
-\item For an AWS CloudFront distribution:
+\item For an Amazon CloudFront distribution:
 \code{arn:aws:cloudfront::account-id:distribution/distribution-id }
-\item For an AWS Global Accelerator accelerator:
+\item For an Global Accelerator standard accelerator:
 \code{arn:aws:globalaccelerator::account-id:accelerator/accelerator-id }
-\item For Amazon Route 53: \code{arn:aws:route53:::hostedzone/hosted-zone-id }
+\item For Amazon Route 53: \code{arn:aws:route53:::hostedzone/hosted-zone-id }
 \item For an Elastic IP address:
 \code{arn:aws:ec2:region:account-id:eip-allocation/allocation-id }
 }}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ProtectionId = "string"
-)
-}
+
+\item{Tags}{One or more tag key-value pairs for the Protection object that is
+created.}
 }
 \description{
-Enables AWS Shield Advanced for a specific AWS resource. The resource
-can be an Amazon CloudFront distribution, Elastic Load Balancing load
-balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an
-Amazon Route 53 hosted zone.
+Enables Shield Advanced for a specific Amazon Web Services resource. The resource can be an Amazon CloudFront distribution, Amazon Route 53 hosted zone, Global Accelerator standard accelerator, Elastic IP Address, Application Load Balancer, or a Classic Load Balancer. You can protect Amazon EC2 instances and Network Load Balancers by association with protected Amazon EC2 Elastic IP addresses.
 
-You can add protection to only a single resource with each
-CreateProtection request. If you want to add protection to multiple
-resources at once, use the AWS WAF console. For more information see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html}{Getting Started with AWS Shield Advanced}
-and \href{https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html}{Add AWS Shield Advanced Protection to more AWS Resources}.
+See \url{https://paws-r.github.io/docs/shield/create_protection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_protection(
-  Name = "string",
-  ResourceArn = "string"
-)
-}
-}
-
 \keyword{internal}

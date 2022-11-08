@@ -4,15 +4,26 @@
 \alias{quicksight_update_data_set}
 \title{Updates a dataset}
 \usage{
-quicksight_update_data_set(AwsAccountId, DataSetId, Name,
-  PhysicalTableMap, LogicalTableMap, ImportMode, ColumnGroups,
-  RowLevelPermissionDataSet, ColumnLevelPermissionRules)
+quicksight_update_data_set(
+  AwsAccountId,
+  DataSetId,
+  Name,
+  PhysicalTableMap,
+  LogicalTableMap = NULL,
+  ImportMode,
+  ColumnGroups = NULL,
+  FieldFolders = NULL,
+  RowLevelPermissionDataSet = NULL,
+  RowLevelPermissionTagConfiguration = NULL,
+  ColumnLevelPermissionRules = NULL,
+  DataSetUsageConfiguration = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The AWS account ID.}
+\item{AwsAccountId}{[required] The Amazon Web Services account ID.}
 
 \item{DataSetId}{[required] The ID for the dataset that you want to update. This ID is unique per
-AWS Region for each AWS account.}
+Amazon Web Services Region for each Amazon Web Services account.}
 
 \item{Name}{[required] The display name for the dataset.}
 
@@ -24,165 +35,24 @@ physical tables.}
 
 \item{ImportMode}{[required] Indicates whether you want to import the data into SPICE.}
 
-\item{ColumnGroups}{Groupings of columns that work together in certain QuickSight features.
-Currently, only geospatial hierarchy is supported.}
+\item{ColumnGroups}{Groupings of columns that work together in certain Amazon QuickSight
+features. Currently, only geospatial hierarchy is supported.}
+
+\item{FieldFolders}{The folder that contains fields and nested subfolders for your dataset.}
 
 \item{RowLevelPermissionDataSet}{The row-level security configuration for the data you want to create.}
 
+\item{RowLevelPermissionTagConfiguration}{The configuration of tags on a dataset to set row-level security.
+Row-level security tags are currently supported for anonymous embedding
+only.}
+
 \item{ColumnLevelPermissionRules}{A set of one or more definitions of a \code{ColumnLevelPermissionRule}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  DataSetId = "string",
-  IngestionArn = "string",
-  IngestionId = "string",
-  RequestId = "string",
-  Status = 123
-)
-}
+
+\item{DataSetUsageConfiguration}{}
 }
 \description{
-Updates a dataset.
-}
-\section{Request syntax}{
-\preformatted{svc$update_data_set(
-  AwsAccountId = "string",
-  DataSetId = "string",
-  Name = "string",
-  PhysicalTableMap = list(
-    list(
-      RelationalTable = list(
-        DataSourceArn = "string",
-        Catalog = "string",
-        Schema = "string",
-        Name = "string",
-        InputColumns = list(
-          list(
-            Name = "string",
-            Type = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME"|"BIT"|"BOOLEAN"|"JSON"
-          )
-        )
-      ),
-      CustomSql = list(
-        DataSourceArn = "string",
-        Name = "string",
-        SqlQuery = "string",
-        Columns = list(
-          list(
-            Name = "string",
-            Type = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME"|"BIT"|"BOOLEAN"|"JSON"
-          )
-        )
-      ),
-      S3Source = list(
-        DataSourceArn = "string",
-        UploadSettings = list(
-          Format = "CSV"|"TSV"|"CLF"|"ELF"|"XLSX"|"JSON",
-          StartFromRow = 123,
-          ContainsHeader = TRUE|FALSE,
-          TextQualifier = "DOUBLE_QUOTE"|"SINGLE_QUOTE",
-          Delimiter = "string"
-        ),
-        InputColumns = list(
-          list(
-            Name = "string",
-            Type = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME"|"BIT"|"BOOLEAN"|"JSON"
-          )
-        )
-      )
-    )
-  ),
-  LogicalTableMap = list(
-    list(
-      Alias = "string",
-      DataTransforms = list(
-        list(
-          ProjectOperation = list(
-            ProjectedColumns = list(
-              "string"
-            )
-          ),
-          FilterOperation = list(
-            ConditionExpression = "string"
-          ),
-          CreateColumnsOperation = list(
-            Columns = list(
-              list(
-                ColumnName = "string",
-                ColumnId = "string",
-                Expression = "string"
-              )
-            )
-          ),
-          RenameColumnOperation = list(
-            ColumnName = "string",
-            NewColumnName = "string"
-          ),
-          CastColumnTypeOperation = list(
-            ColumnName = "string",
-            NewColumnType = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME",
-            Format = "string"
-          ),
-          TagColumnOperation = list(
-            ColumnName = "string",
-            Tags = list(
-              list(
-                ColumnGeographicRole = "COUNTRY"|"STATE"|"COUNTY"|"CITY"|"POSTCODE"|"LONGITUDE"|"LATITUDE",
-                ColumnDescription = list(
-                  Text = "string"
-                )
-              )
-            )
-          )
-        )
-      ),
-      Source = list(
-        JoinInstruction = list(
-          LeftOperand = "string",
-          RightOperand = "string",
-          LeftJoinKeyProperties = list(
-            UniqueKey = TRUE|FALSE
-          ),
-          RightJoinKeyProperties = list(
-            UniqueKey = TRUE|FALSE
-          ),
-          Type = "INNER"|"OUTER"|"LEFT"|"RIGHT",
-          OnClause = "string"
-        ),
-        PhysicalTableId = "string"
-      )
-    )
-  ),
-  ImportMode = "SPICE"|"DIRECT_QUERY",
-  ColumnGroups = list(
-    list(
-      GeoSpatialColumnGroup = list(
-        Name = "string",
-        CountryCode = "US",
-        Columns = list(
-          "string"
-        )
-      )
-    )
-  ),
-  RowLevelPermissionDataSet = list(
-    Namespace = "string",
-    Arn = "string",
-    PermissionPolicy = "GRANT_ACCESS"|"DENY_ACCESS"
-  ),
-  ColumnLevelPermissionRules = list(
-    list(
-      Principals = list(
-        "string"
-      ),
-      ColumnNames = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
+Updates a dataset. This operation doesn't support datasets that include uploaded files as a source.
 
+See \url{https://paws-r.github.io/docs/quicksight/update_data_set.html} for full documentation.
+}
 \keyword{internal}

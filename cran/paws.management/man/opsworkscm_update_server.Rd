@@ -4,8 +4,13 @@
 \alias{opsworkscm_update_server}
 \title{Updates settings for a server}
 \usage{
-opsworkscm_update_server(DisableAutomatedBackup, BackupRetentionCount,
-  ServerName, PreferredMaintenanceWindow, PreferredBackupWindow)
+opsworkscm_update_server(
+  DisableAutomatedBackup = NULL,
+  BackupRetentionCount = NULL,
+  ServerName,
+  PreferredMaintenanceWindow = NULL,
+  PreferredBackupWindow = NULL
+)
 }
 \arguments{
 \item{DisableAutomatedBackup}{Setting DisableAutomatedBackup to \code{true} disables automated or scheduled
@@ -19,62 +24,9 @@ backups. Automated backups are enabled by default.}
 
 \item{PreferredBackupWindow}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Server = list(
-    AssociatePublicIpAddress = TRUE|FALSE,
-    BackupRetentionCount = 123,
-    ServerName = "string",
-    CreatedAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    CloudFormationStackArn = "string",
-    CustomDomain = "string",
-    DisableAutomatedBackup = TRUE|FALSE,
-    Endpoint = "string",
-    Engine = "string",
-    EngineModel = "string",
-    EngineAttributes = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    EngineVersion = "string",
-    InstanceProfileArn = "string",
-    InstanceType = "string",
-    KeyPair = "string",
-    MaintenanceStatus = "SUCCESS"|"FAILED",
-    PreferredMaintenanceWindow = "string",
-    PreferredBackupWindow = "string",
-    SecurityGroupIds = list(
-      "string"
-    ),
-    ServiceRoleArn = "string",
-    Status = "BACKING_UP"|"CONNECTION_LOST"|"CREATING"|"DELETING"|"MODIFYING"|"FAILED"|"HEALTHY"|"RUNNING"|"RESTORING"|"SETUP"|"UNDER_MAINTENANCE"|"UNHEALTHY"|"TERMINATED",
-    StatusReason = "string",
-    SubnetIds = list(
-      "string"
-    ),
-    ServerArn = "string"
-  )
-)
-}
-}
 \description{
 Updates settings for a server.
 
-This operation is synchronous.
+See \url{https://paws-r.github.io/docs/opsworkscm/update_server.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_server(
-  DisableAutomatedBackup = TRUE|FALSE,
-  BackupRetentionCount = 123,
-  ServerName = "string",
-  PreferredMaintenanceWindow = "string",
-  PreferredBackupWindow = "string"
-)
-}
-}
-
 \keyword{internal}

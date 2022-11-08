@@ -4,8 +4,12 @@
 \alias{clouddirectory_list_applied_schema_arns}
 \title{Lists schema major versions applied to a directory}
 \usage{
-clouddirectory_list_applied_schema_arns(DirectoryArn, SchemaArn,
-  NextToken, MaxResults)
+clouddirectory_list_applied_schema_arns(
+  DirectoryArn,
+  SchemaArn = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory you are listing.}
@@ -19,27 +23,9 @@ version.}
 
 \item{MaxResults}{The maximum number of results to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaArns = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists schema major versions applied to a directory. If \code{SchemaArn} is
-provided, lists the minor version.
-}
-\section{Request syntax}{
-\preformatted{svc$list_applied_schema_arns(
-  DirectoryArn = "string",
-  SchemaArn = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
+Lists schema major versions applied to a directory. If \code{SchemaArn} is provided, lists the minor version.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/list_applied_schema_arns.html} for full documentation.
+}
 \keyword{internal}

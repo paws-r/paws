@@ -4,8 +4,13 @@
 \alias{glue_create_workflow}
 \title{Creates a new workflow}
 \usage{
-glue_create_workflow(Name, Description, DefaultRunProperties, Tags,
-  MaxConcurrentRuns)
+glue_create_workflow(
+  Name,
+  Description = NULL,
+  DefaultRunProperties = NULL,
+  Tags = NULL,
+  MaxConcurrentRuns = NULL
+)
 }
 \arguments{
 \item{Name}{[required] The name to be assigned to the workflow. It should be unique within your
@@ -24,28 +29,9 @@ number of concurrent runs of any of the component jobs. If you leave
 this parameter blank, there is no limit to the number of concurrent
 workflow runs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Name = "string"
-)
-}
-}
 \description{
 Creates a new workflow.
-}
-\section{Request syntax}{
-\preformatted{svc$create_workflow(
-  Name = "string",
-  Description = "string",
-  DefaultRunProperties = list(
-    "string"
-  ),
-  Tags = list(
-    "string"
-  ),
-  MaxConcurrentRuns = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/create_workflow.html} for full documentation.
+}
 \keyword{internal}

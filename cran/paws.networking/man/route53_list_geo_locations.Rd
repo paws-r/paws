@@ -4,8 +4,12 @@
 \alias{route53_list_geo_locations}
 \title{Retrieves a list of supported geographic locations}
 \usage{
-route53_list_geo_locations(StartContinentCode, StartCountryCode,
-  StartSubdivisionCode, MaxItems)
+route53_list_geo_locations(
+  StartContinentCode = NULL,
+  StartCountryCode = NULL,
+  StartSubdivisionCode = NULL,
+  MaxItems = NULL
+)
 }
 \arguments{
 \item{StartContinentCode}{The code for the continent with which you want to start listing
@@ -39,46 +43,9 @@ response body for this request. If more than \code{maxitems} geolocations
 remain to be listed, then the value of the \code{IsTruncated} element in the
 response is \code{true}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GeoLocationDetailsList = list(
-    list(
-      ContinentCode = "string",
-      ContinentName = "string",
-      CountryCode = "string",
-      CountryName = "string",
-      SubdivisionCode = "string",
-      SubdivisionName = "string"
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  NextContinentCode = "string",
-  NextCountryCode = "string",
-  NextSubdivisionCode = "string",
-  MaxItems = "string"
-)
-}
-}
 \description{
 Retrieves a list of supported geographic locations.
 
-Countries are listed first, and continents are listed last. If Amazon
-Route 53 supports subdivisions for a country (for example, states or
-provinces), the subdivisions for that country are listed in alphabetical
-order immediately after the corresponding country.
-
-For a list of supported geolocation codes, see the
-\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_GeoLocation.html}{GeoLocation}
-data type.
+See \url{https://paws-r.github.io/docs/route53/list_geo_locations.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_geo_locations(
-  StartContinentCode = "string",
-  StartCountryCode = "string",
-  StartSubdivisionCode = "string",
-  MaxItems = "string"
-)
-}
-}
-
 \keyword{internal}

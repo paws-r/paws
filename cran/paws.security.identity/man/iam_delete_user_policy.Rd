@@ -21,36 +21,9 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the specified inline policy that is embedded in the specified
-IAM user.
+Deletes the specified inline policy that is embedded in the specified IAM user.
 
-A user can also have managed policies attached to it. To detach a
-managed policy from a user, use
-\code{\link[=iam_detach_user_policy]{detach_user_policy}}. For more information
-about policies, refer to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user_policy(
-  UserName = "string",
-  PolicyName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following delete-user-policy command removes the specified policy
-# from the IAM user named Juan:
-svc$delete_user_policy(
-  PolicyName = "ExamplePolicy",
-  UserName = "Juan"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/delete_user_policy.html} for full documentation.
 }
 \keyword{internal}

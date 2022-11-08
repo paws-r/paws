@@ -5,7 +5,11 @@
 \title{Lists all the roots, organizational units (OUs), and accounts that the
 specified policy is attached to}
 \usage{
-organizations_list_targets_for_policy(PolicyId, NextToken, MaxResults)
+organizations_list_targets_for_policy(
+  PolicyId,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{PolicyId}{[required] The unique identifier (ID) of the policy whose attachments you want to
@@ -32,51 +36,9 @@ maximum even when there are more results available. You should check
 \code{NextToken} after every operation to ensure that you receive all of the
 results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Targets = list(
-    list(
-      TargetId = "string",
-      Arn = "string",
-      Name = "string",
-      Type = "ACCOUNT"|"ORGANIZATIONAL_UNIT"|"ROOT"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists all the roots, organizational units (OUs), and accounts that the
-specified policy is attached to.
+Lists all the roots, organizational units (OUs), and accounts that the specified policy is attached to.
 
-Always check the \code{NextToken} response parameter for a \code{null} value when
-calling a \verb{List*} operation. These operations can occasionally return an
-empty set of results even when there are more results available. The
-\code{NextToken} response parameter value is \code{null} \emph{only} when there are no
-more results to display.
-
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
-}
-\section{Request syntax}{
-\preformatted{svc$list_targets_for_policy(
-  PolicyId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows how to get the list of roots, OUs, and
-# accounts to which the specified policy is attached:/n/n
-svc$list_targets_for_policy(
-  PolicyId = "p-FullAWSAccess"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/list_targets_for_policy.html} for full documentation.
 }
 \keyword{internal}

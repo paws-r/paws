@@ -5,7 +5,7 @@
 \title{Retrieves information about the status and settings of all the import
 jobs for an application}
 \usage{
-pinpoint_get_import_jobs(ApplicationId, PageSize, Token)
+pinpoint_get_import_jobs(ApplicationId, PageSize = NULL, Token = NULL)
 }
 \arguments{
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
@@ -18,53 +18,9 @@ journey metrics.}
 \item{Token}{The NextToken string that specifies which page of results to return in a
 paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ImportJobsResponse = list(
-    Item = list(
-      list(
-        ApplicationId = "string",
-        CompletedPieces = 123,
-        CompletionDate = "string",
-        CreationDate = "string",
-        Definition = list(
-          DefineSegment = TRUE|FALSE,
-          ExternalId = "string",
-          Format = "CSV"|"JSON",
-          RegisterEndpoints = TRUE|FALSE,
-          RoleArn = "string",
-          S3Url = "string",
-          SegmentId = "string",
-          SegmentName = "string"
-        ),
-        FailedPieces = 123,
-        Failures = list(
-          "string"
-        ),
-        Id = "string",
-        JobStatus = "CREATED"|"PREPARING_FOR_INITIALIZATION"|"INITIALIZING"|"PROCESSING"|"PENDING_JOB"|"COMPLETING"|"COMPLETED"|"FAILING"|"FAILED",
-        TotalFailures = 123,
-        TotalPieces = 123,
-        TotalProcessed = 123,
-        Type = "string"
-      )
-    ),
-    NextToken = "string"
-  )
-)
-}
-}
 \description{
-Retrieves information about the status and settings of all the import
-jobs for an application.
-}
-\section{Request syntax}{
-\preformatted{svc$get_import_jobs(
-  ApplicationId = "string",
-  PageSize = "string",
-  Token = "string"
-)
-}
-}
+Retrieves information about the status and settings of all the import jobs for an application.
 
+See \url{https://paws-r.github.io/docs/pinpoint/get_import_jobs.html} for full documentation.
+}
 \keyword{internal}

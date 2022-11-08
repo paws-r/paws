@@ -5,7 +5,7 @@
 \title{Enables Security Hub for your account in the current Region or the
 Region you specify in the request}
 \usage{
-securityhub_enable_security_hub(Tags, EnableDefaultStandards)
+securityhub_enable_security_hub(Tags = NULL, EnableDefaultStandards = NULL)
 }
 \arguments{
 \item{Tags}{The tags to add to the hub resource when you enable Security Hub.}
@@ -16,49 +16,9 @@ designated as automatically enabled. If you do not provide a value for
 automatically enabled standards, set \code{EnableDefaultStandards} to
 \code{false}.}
 }
-\value{
-An empty list.
-}
 \description{
-Enables Security Hub for your account in the current Region or the
-Region you specify in the request.
+Enables Security Hub for your account in the current Region or the Region you specify in the request.
 
-When you enable Security Hub, you grant to Security Hub the permissions
-necessary to gather findings from other services that are integrated
-with Security Hub.
-
-When you use the
-\code{\link[=securityhub_enable_security_hub]{enable_security_hub}} operation to
-enable Security Hub, you also automatically enable the following
-standards.
-\itemize{
-\item CIS AWS Foundations
-\item AWS Foundational Security Best Practices
+See \url{https://paws-r.github.io/docs/securityhub/enable_security_hub.html} for full documentation.
 }
-
-You do not enable the Payment Card Industry Data Security Standard (PCI
-DSS) standard.
-
-To not enable the automatically enabled standards, set
-\code{EnableDefaultStandards} to \code{false}.
-
-After you enable Security Hub, to enable a standard, use the
-\code{\link[=securityhub_batch_enable_standards]{batch_enable_standards}}
-operation. To disable a standard, use the
-\code{\link[=securityhub_batch_disable_standards]{batch_disable_standards}}
-operation.
-
-To learn more, see \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html}{Setting Up AWS Security Hub}
-in the \emph{AWS Security Hub User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_security_hub(
-  Tags = list(
-    "string"
-  ),
-  EnableDefaultStandards = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

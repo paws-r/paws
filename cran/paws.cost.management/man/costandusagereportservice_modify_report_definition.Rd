@@ -4,42 +4,19 @@
 \alias{costandusagereportservice_modify_report_definition}
 \title{Allows you to programatically update your report preferences}
 \usage{
-costandusagereportservice_modify_report_definition(ReportName,
-  ReportDefinition)
+costandusagereportservice_modify_report_definition(
+  ReportName,
+  ReportDefinition
+)
 }
 \arguments{
 \item{ReportName}{[required]}
 
 \item{ReportDefinition}{[required]}
 }
-\value{
-An empty list.
-}
 \description{
 Allows you to programatically update your report preferences.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_report_definition(
-  ReportName = "string",
-  ReportDefinition = list(
-    ReportName = "string",
-    TimeUnit = "HOURLY"|"DAILY"|"MONTHLY",
-    Format = "textORcsv"|"Parquet",
-    Compression = "ZIP"|"GZIP"|"Parquet",
-    AdditionalSchemaElements = list(
-      "RESOURCES"
-    ),
-    S3Bucket = "string",
-    S3Prefix = "string",
-    S3Region = "af-south-1"|"ap-east-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-north-1"|"eu-south-1"|"me-south-1"|"sa-east-1"|"us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"cn-north-1"|"cn-northwest-1",
-    AdditionalArtifacts = list(
-      "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
-    ),
-    RefreshClosedReports = TRUE|FALSE,
-    ReportVersioning = "CREATE_NEW_REPORT"|"OVERWRITE_REPORT"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/costandusagereportservice/modify_report_definition.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,7 @@
 \title{Changes the status of the specified user signing certificate from active
 to disabled, or vice versa}
 \usage{
-iam_update_signing_certificate(UserName, CertificateId, Status)
+iam_update_signing_certificate(UserName = NULL, CertificateId, Status)
 }
 \arguments{
 \item{UserName}{The name of the IAM user the signing certificate belongs to.
@@ -20,42 +20,12 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 that can consist of any upper or lowercased letter or digit.}
 
 \item{Status}{[required] The status you want to assign to the certificate. \code{Active} means that
-the certificate can be used for API calls to AWS \code{Inactive} means that
-the certificate cannot be used.}
-}
-\value{
-An empty list.
+the certificate can be used for programmatic calls to Amazon Web
+Services \code{Inactive} means that the certificate cannot be used.}
 }
 \description{
-Changes the status of the specified user signing certificate from active
-to disabled, or vice versa. This operation can be used to disable an IAM
-user's signing certificate as part of a certificate rotation work flow.
+Changes the status of the specified user signing certificate from active to disabled, or vice versa. This operation can be used to disable an IAM user's signing certificate as part of a certificate rotation work flow.
 
-If the \code{UserName} field is not specified, the user name is determined
-implicitly based on the AWS access key ID used to sign the request. This
-operation works for access keys under the AWS account. Consequently, you
-can use this operation to manage AWS account root user credentials even
-if the AWS account has no associated users.
-}
-\section{Request syntax}{
-\preformatted{svc$update_signing_certificate(
-  UserName = "string",
-  CertificateId = "string",
-  Status = "Active"|"Inactive"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command changes the status of a signing certificate for a
-# user named Bob to Inactive.
-svc$update_signing_certificate(
-  CertificateId = "TA7SMP42TDN5Z26OBPJE7EXAMPLE",
-  Status = "Inactive",
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/update_signing_certificate.html} for full documentation.
 }
 \keyword{internal}

@@ -4,7 +4,7 @@
 \alias{iam_list_role_tags}
 \title{Lists the tags that are attached to the specified role}
 \usage{
-iam_list_role_tags(RoleName, Marker, MaxItems)
+iam_list_role_tags(RoleName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{RoleName}{[required] The name of the IAM role for which you want to see the list of tags.
@@ -18,52 +18,19 @@ receive a response indicating that the results are truncated. Set it to
 the value of the \code{Marker} element in the response that you received to
 indicate where the next call should start.}
 
-\item{MaxItems}{(Optional) Use this only when paginating results to indicate the maximum
-number of items that you want in the response. If additional items exist
-beyond the maximum that you specify, the \code{IsTruncated} response element
-is \code{true}.
+\item{MaxItems}{Use this only when paginating results to indicate the maximum number of
+items you want in the response. If additional items exist beyond the
+maximum you specify, the \code{IsTruncated} response element is \code{true}.
 
-If you do not include this parameter, it defaults to 100. Note that IAM
-might return fewer results, even when more results are available. In
-that case, the \code{IsTruncated} response element returns \code{true}, and
-\code{Marker} contains a value to include in the subsequent call that tells
-the service where to continue from.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
+If you do not include this parameter, the number of items defaults to
+100. Note that IAM might return fewer results, even when there are more
+results available. In that case, the \code{IsTruncated} response element
+returns \code{true}, and \code{Marker} contains a value to include in the
+subsequent call that tells the service where to continue from.}
 }
 \description{
-Lists the tags that are attached to the specified role. The returned
-list of tags is sorted by tag key. For more information about tagging,
-see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM Identities}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$list_role_tags(
-  RoleName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+Lists the tags that are attached to the specified role. The returned list of tags is sorted by tag key. For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources} in the \emph{IAM User Guide}.
 
-\examples{
-\dontrun{
-# The following example shows how to list the tags attached to a role.
-svc$list_role_tags(
-  RoleName = "taggedrole1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/list_role_tags.html} for full documentation.
 }
 \keyword{internal}

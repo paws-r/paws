@@ -2,159 +2,33 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_describe_auto_scaling_groups}
 \alias{autoscaling_describe_auto_scaling_groups}
-\title{Describes one or more Auto Scaling groups}
+\title{Gets information about the Auto Scaling groups in the account and Region}
 \usage{
-autoscaling_describe_auto_scaling_groups(AutoScalingGroupNames,
-  NextToken, MaxRecords)
+autoscaling_describe_auto_scaling_groups(
+  AutoScalingGroupNames = NULL,
+  NextToken = NULL,
+  MaxRecords = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{AutoScalingGroupNames}{The names of the Auto Scaling groups. By default, you can only specify
 up to 50 names. You can optionally increase this limit using the
-\code{MaxRecords} parameter.
+\code{MaxRecords} property.
 
-If you omit this parameter, all Auto Scaling groups are described.}
+If you omit this property, all Auto Scaling groups are described.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{50} and the maximum value is \code{100}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  AutoScalingGroups = list(
-    list(
-      AutoScalingGroupName = "string",
-      AutoScalingGroupARN = "string",
-      LaunchConfigurationName = "string",
-      LaunchTemplate = list(
-        LaunchTemplateId = "string",
-        LaunchTemplateName = "string",
-        Version = "string"
-      ),
-      MixedInstancesPolicy = list(
-        LaunchTemplate = list(
-          LaunchTemplateSpecification = list(
-            LaunchTemplateId = "string",
-            LaunchTemplateName = "string",
-            Version = "string"
-          ),
-          Overrides = list(
-            list(
-              InstanceType = "string",
-              WeightedCapacity = "string",
-              LaunchTemplateSpecification = list(
-                LaunchTemplateId = "string",
-                LaunchTemplateName = "string",
-                Version = "string"
-              )
-            )
-          )
-        ),
-        InstancesDistribution = list(
-          OnDemandAllocationStrategy = "string",
-          OnDemandBaseCapacity = 123,
-          OnDemandPercentageAboveBaseCapacity = 123,
-          SpotAllocationStrategy = "string",
-          SpotInstancePools = 123,
-          SpotMaxPrice = "string"
-        )
-      ),
-      MinSize = 123,
-      MaxSize = 123,
-      DesiredCapacity = 123,
-      DefaultCooldown = 123,
-      AvailabilityZones = list(
-        "string"
-      ),
-      LoadBalancerNames = list(
-        "string"
-      ),
-      TargetGroupARNs = list(
-        "string"
-      ),
-      HealthCheckType = "string",
-      HealthCheckGracePeriod = 123,
-      Instances = list(
-        list(
-          InstanceId = "string",
-          InstanceType = "string",
-          AvailabilityZone = "string",
-          LifecycleState = "Pending"|"Pending:Wait"|"Pending:Proceed"|"Quarantined"|"InService"|"Terminating"|"Terminating:Wait"|"Terminating:Proceed"|"Terminated"|"Detaching"|"Detached"|"EnteringStandby"|"Standby",
-          HealthStatus = "string",
-          LaunchConfigurationName = "string",
-          LaunchTemplate = list(
-            LaunchTemplateId = "string",
-            LaunchTemplateName = "string",
-            Version = "string"
-          ),
-          ProtectedFromScaleIn = TRUE|FALSE,
-          WeightedCapacity = "string"
-        )
-      ),
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      SuspendedProcesses = list(
-        list(
-          ProcessName = "string",
-          SuspensionReason = "string"
-        )
-      ),
-      PlacementGroup = "string",
-      VPCZoneIdentifier = "string",
-      EnabledMetrics = list(
-        list(
-          Metric = "string",
-          Granularity = "string"
-        )
-      ),
-      Status = "string",
-      Tags = list(
-        list(
-          ResourceId = "string",
-          ResourceType = "string",
-          Key = "string",
-          Value = "string",
-          PropagateAtLaunch = TRUE|FALSE
-        )
-      ),
-      TerminationPolicies = list(
-        "string"
-      ),
-      NewInstancesProtectedFromScaleIn = TRUE|FALSE,
-      ServiceLinkedRoleARN = "string",
-      MaxInstanceLifetime = 123,
-      CapacityRebalance = TRUE|FALSE
-    )
-  ),
-  NextToken = "string"
-)
-}
+
+\item{Filters}{One or more filters to limit the results based on specific tags.}
 }
 \description{
-Describes one or more Auto Scaling groups.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_auto_scaling_groups(
-  AutoScalingGroupNames = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxRecords = 123
-)
-}
-}
+Gets information about the Auto Scaling groups in the account and Region.
 
-\examples{
-\dontrun{
-# This example describes the specified Auto Scaling group.
-svc$describe_auto_scaling_groups(
-  AutoScalingGroupNames = list(
-    "my-auto-scaling-group"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/describe_auto_scaling_groups.html} for full documentation.
 }
 \keyword{internal}

@@ -4,81 +4,15 @@
 NULL
 
 #' Returns the current configuration items for resources that are present
-#' in your AWS Config aggregator
+#' in your Config aggregator
 #'
 #' @description
-#' Returns the current configuration items for resources that are present
-#' in your AWS Config aggregator. The operation also returns a list of
-#' resources that are not processed in the current request. If there are no
-#' unprocessed resources, the operation returns an empty
-#' `unprocessedResourceIdentifiers` list.
-#' 
-#' -   The API does not return results for deleted resources.
-#' 
-#' -   The API does not return tags and relationships.
+#' Returns the current configuration items for resources that are present in your Config aggregator. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty `unprocessedResourceIdentifiers` list.
 #'
-#' @usage
-#' configservice_batch_get_aggregate_resource_config(
-#'   ConfigurationAggregatorName, ResourceIdentifiers)
+#' See [https://paws-r.github.io/docs/configservice/batch_get_aggregate_resource_config.html](https://paws-r.github.io/docs/configservice/batch_get_aggregate_resource_config.html) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param ResourceIdentifiers &#91;required&#93; A list of aggregate ResourceIdentifiers objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   BaseConfigurationItems = list(
-#'     list(
-#'       version = "string",
-#'       accountId = "string",
-#'       configurationItemCaptureTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       configurationItemStatus = "OK"|"ResourceDiscovered"|"ResourceNotRecorded"|"ResourceDeleted"|"ResourceDeletedNotRecorded",
-#'       configurationStateId = "string",
-#'       arn = "string",
-#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'       resourceId = "string",
-#'       resourceName = "string",
-#'       awsRegion = "string",
-#'       availabilityZone = "string",
-#'       resourceCreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       configuration = "string",
-#'       supplementaryConfiguration = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   UnprocessedResourceIdentifiers = list(
-#'     list(
-#'       SourceAccountId = "string",
-#'       SourceRegion = "string",
-#'       ResourceId = "string",
-#'       ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'       ResourceName = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_aggregate_resource_config(
-#'   ConfigurationAggregatorName = "string",
-#'   ResourceIdentifiers = list(
-#'     list(
-#'       SourceAccountId = "string",
-#'       SourceRegion = "string",
-#'       ResourceId = "string",
-#'       ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'       ResourceName = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -100,74 +34,15 @@ configservice_batch_get_aggregate_resource_config <- function(ConfigurationAggre
 }
 .configservice$operations$batch_get_aggregate_resource_config <- configservice_batch_get_aggregate_resource_config
 
-#' Returns the current configuration for one or more requested resources
+#' Returns the BaseConfigurationItem for one or more requested resources
 #'
 #' @description
-#' Returns the current configuration for one or more requested resources.
-#' The operation also returns a list of resources that are not processed in
-#' the current request. If there are no unprocessed resources, the
-#' operation returns an empty unprocessedResourceKeys list.
-#' 
-#' -   The API does not return results for deleted resources.
-#' 
-#' -   The API does not return any tags for the requested resources. This
-#'     information is filtered out of the supplementaryConfiguration
-#'     section of the API response.
+#' Returns the `BaseConfigurationItem` for one or more requested resources. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty unprocessedResourceKeys list.
 #'
-#' @usage
-#' configservice_batch_get_resource_config(resourceKeys)
+#' See [https://paws-r.github.io/docs/configservice/batch_get_resource_config.html](https://paws-r.github.io/docs/configservice/batch_get_resource_config.html) for full documentation.
 #'
 #' @param resourceKeys &#91;required&#93; A list of resource keys to be processed with the current request. Each
 #' element in the list consists of the resource type and resource ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   baseConfigurationItems = list(
-#'     list(
-#'       version = "string",
-#'       accountId = "string",
-#'       configurationItemCaptureTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       configurationItemStatus = "OK"|"ResourceDiscovered"|"ResourceNotRecorded"|"ResourceDeleted"|"ResourceDeletedNotRecorded",
-#'       configurationStateId = "string",
-#'       arn = "string",
-#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'       resourceId = "string",
-#'       resourceName = "string",
-#'       awsRegion = "string",
-#'       availabilityZone = "string",
-#'       resourceCreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       configuration = "string",
-#'       supplementaryConfiguration = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   unprocessedResourceKeys = list(
-#'     list(
-#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'       resourceId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$batch_get_resource_config(
-#'   resourceKeys = list(
-#'     list(
-#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'       resourceId = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -193,26 +68,12 @@ configservice_batch_get_resource_config <- function(resourceKeys) {
 #' aggregator account in a specified region
 #'
 #' @description
-#' Deletes the authorization granted to the specified configuration
-#' aggregator account in a specified region.
+#' Deletes the authorization granted to the specified configuration aggregator account in a specified region.
 #'
-#' @usage
-#' configservice_delete_aggregation_authorization(AuthorizedAccountId,
-#'   AuthorizedAwsRegion)
+#' See [https://paws-r.github.io/docs/configservice/delete_aggregation_authorization.html](https://paws-r.github.io/docs/configservice/delete_aggregation_authorization.html) for full documentation.
 #'
 #' @param AuthorizedAccountId &#91;required&#93; The 12-digit account ID of the account authorized to aggregate data.
 #' @param AuthorizedAwsRegion &#91;required&#93; The region authorized to collect aggregated data.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_aggregation_authorization(
-#'   AuthorizedAccountId = "string",
-#'   AuthorizedAwsRegion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -234,34 +95,14 @@ configservice_delete_aggregation_authorization <- function(AuthorizedAccountId, 
 }
 .configservice$operations$delete_aggregation_authorization <- configservice_delete_aggregation_authorization
 
-#' Deletes the specified AWS Config rule and all of its evaluation results
+#' Deletes the specified Config rule and all of its evaluation results
 #'
 #' @description
-#' Deletes the specified AWS Config rule and all of its evaluation results.
-#' 
-#' AWS Config sets the state of a rule to `DELETING` until the deletion is
-#' complete. You cannot update a rule while it is in this state. If you
-#' make a [`put_config_rule`][configservice_put_config_rule] or
-#' [`delete_config_rule`][configservice_delete_config_rule] request for the
-#' rule, you will receive a `ResourceInUseException`.
-#' 
-#' You can check the state of a rule by using the
-#' [`describe_config_rules`][configservice_describe_config_rules] request.
+#' Deletes the specified Config rule and all of its evaluation results.
 #'
-#' @usage
-#' configservice_delete_config_rule(ConfigRuleName)
+#' See [https://paws-r.github.io/docs/configservice/delete_config_rule.html](https://paws-r.github.io/docs/configservice/delete_config_rule.html) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_config_rule(
-#'   ConfigRuleName = "string"
-#' )
-#' ```
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule that you want to delete.
 #'
 #' @keywords internal
 #'
@@ -287,24 +128,11 @@ configservice_delete_config_rule <- function(ConfigRuleName) {
 #' associated with the aggregator
 #'
 #' @description
-#' Deletes the specified configuration aggregator and the aggregated data
-#' associated with the aggregator.
+#' Deletes the specified configuration aggregator and the aggregated data associated with the aggregator.
 #'
-#' @usage
-#' configservice_delete_configuration_aggregator(
-#'   ConfigurationAggregatorName)
+#' See [https://paws-r.github.io/docs/configservice/delete_configuration_aggregator.html](https://paws-r.github.io/docs/configservice/delete_configuration_aggregator.html) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_configuration_aggregator(
-#'   ConfigurationAggregatorName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -330,35 +158,13 @@ configservice_delete_configuration_aggregator <- function(ConfigurationAggregato
 #'
 #' @description
 #' Deletes the configuration recorder.
-#' 
-#' After the configuration recorder is deleted, AWS Config will not record
-#' resource configuration changes until you create a new configuration
-#' recorder.
-#' 
-#' This action does not delete the configuration information that was
-#' previously recorded. You will be able to access the previously recorded
-#' information by using the
-#' [`get_resource_config_history`][configservice_get_resource_config_history]
-#' action, but you will not be able to access this information in the AWS
-#' Config console until you create a new configuration recorder.
 #'
-#' @usage
-#' configservice_delete_configuration_recorder(ConfigurationRecorderName)
+#' See [https://paws-r.github.io/docs/configservice/delete_configuration_recorder.html](https://paws-r.github.io/docs/configservice/delete_configuration_recorder.html) for full documentation.
 #'
 #' @param ConfigurationRecorderName &#91;required&#93; The name of the configuration recorder to be deleted. You can retrieve
 #' the name of your configuration recorder by using the
 #' [`describe_configuration_recorders`][configservice_describe_configuration_recorders]
 #' action.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_configuration_recorder(
-#'   ConfigurationRecorderName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -380,33 +186,16 @@ configservice_delete_configuration_recorder <- function(ConfigurationRecorderNam
 }
 .configservice$operations$delete_configuration_recorder <- configservice_delete_configuration_recorder
 
-#' Deletes the specified conformance pack and all the AWS Config rules,
+#' Deletes the specified conformance pack and all the Config rules,
 #' remediation actions, and all evaluation results within that conformance
 #' pack
 #'
 #' @description
-#' Deletes the specified conformance pack and all the AWS Config rules,
-#' remediation actions, and all evaluation results within that conformance
-#' pack.
-#' 
-#' AWS Config sets the conformance pack to `DELETE_IN_PROGRESS` until the
-#' deletion is complete. You cannot update a conformance pack while it is
-#' in this state.
+#' Deletes the specified conformance pack and all the Config rules, remediation actions, and all evaluation results within that conformance pack.
 #'
-#' @usage
-#' configservice_delete_conformance_pack(ConformancePackName)
+#' See [https://paws-r.github.io/docs/configservice/delete_conformance_pack.html](https://paws-r.github.io/docs/configservice/delete_conformance_pack.html) for full documentation.
 #'
 #' @param ConformancePackName &#91;required&#93; Name of the conformance pack you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_conformance_pack(
-#'   ConformancePackName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -432,26 +221,10 @@ configservice_delete_conformance_pack <- function(ConformancePackName) {
 #'
 #' @description
 #' Deletes the delivery channel.
-#' 
-#' Before you can delete the delivery channel, you must stop the
-#' configuration recorder by using the
-#' [`stop_configuration_recorder`][configservice_stop_configuration_recorder]
-#' action.
 #'
-#' @usage
-#' configservice_delete_delivery_channel(DeliveryChannelName)
+#' See [https://paws-r.github.io/docs/configservice/delete_delivery_channel.html](https://paws-r.github.io/docs/configservice/delete_delivery_channel.html) for full documentation.
 #'
 #' @param DeliveryChannelName &#91;required&#93; The name of the delivery channel to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_delivery_channel(
-#'   DeliveryChannelName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -473,30 +246,15 @@ configservice_delete_delivery_channel <- function(DeliveryChannelName) {
 }
 .configservice$operations$delete_delivery_channel <- configservice_delete_delivery_channel
 
-#' Deletes the evaluation results for the specified AWS Config rule
+#' Deletes the evaluation results for the specified Config rule
 #'
 #' @description
-#' Deletes the evaluation results for the specified AWS Config rule. You
-#' can specify one AWS Config rule per request. After you delete the
-#' evaluation results, you can call the
-#' [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
-#' API to start evaluating your AWS resources against the rule.
+#' Deletes the evaluation results for the specified Config rule. You can specify one Config rule per request. After you delete the evaluation results, you can call the [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation] API to start evaluating your Amazon Web Services resources against the rule.
 #'
-#' @usage
-#' configservice_delete_evaluation_results(ConfigRuleName)
+#' See [https://paws-r.github.io/docs/configservice/delete_evaluation_results.html](https://paws-r.github.io/docs/configservice/delete_evaluation_results.html) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule for which you want to delete the
-#' evaluation results.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_evaluation_results(
-#'   ConfigRuleName = "string"
-#' )
-#' ```
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to delete the evaluation
+#' results.
 #'
 #' @keywords internal
 #'
@@ -518,37 +276,15 @@ configservice_delete_evaluation_results <- function(ConfigRuleName) {
 }
 .configservice$operations$delete_evaluation_results <- configservice_delete_evaluation_results
 
-#' Deletes the specified organization config rule and all of its evaluation
+#' Deletes the specified organization Config rule and all of its evaluation
 #' results from all member accounts in that organization
 #'
 #' @description
-#' Deletes the specified organization config rule and all of its evaluation
-#' results from all member accounts in that organization.
-#' 
-#' Only a master account and a delegated administrator account can delete
-#' an organization config rule. When calling this API with a delegated
-#' administrator, you must ensure AWS Organizations
-#' `ListDelegatedAdministrator` permissions are added.
-#' 
-#' AWS Config sets the state of a rule to DELETE_IN_PROGRESS until the
-#' deletion is complete. You cannot update a rule while it is in this
-#' state.
+#' Deletes the specified organization Config rule and all of its evaluation results from all member accounts in that organization.
 #'
-#' @usage
-#' configservice_delete_organization_config_rule(
-#'   OrganizationConfigRuleName)
+#' See [https://paws-r.github.io/docs/configservice/delete_organization_config_rule.html](https://paws-r.github.io/docs/configservice/delete_organization_config_rule.html) for full documentation.
 #'
-#' @param OrganizationConfigRuleName &#91;required&#93; The name of organization config rule that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_organization_config_rule(
-#'   OrganizationConfigRuleName = "string"
-#' )
-#' ```
+#' @param OrganizationConfigRuleName &#91;required&#93; The name of organization Config rule that you want to delete.
 #'
 #' @keywords internal
 #'
@@ -571,38 +307,15 @@ configservice_delete_organization_config_rule <- function(OrganizationConfigRule
 .configservice$operations$delete_organization_config_rule <- configservice_delete_organization_config_rule
 
 #' Deletes the specified organization conformance pack and all of the
-#' config rules and remediation actions from all member accounts in that
+#' Config rules and remediation actions from all member accounts in that
 #' organization
 #'
 #' @description
-#' Deletes the specified organization conformance pack and all of the
-#' config rules and remediation actions from all member accounts in that
-#' organization.
-#' 
-#' Only a master account or a delegated administrator account can delete an
-#' organization conformance pack. When calling this API with a delegated
-#' administrator, you must ensure AWS Organizations
-#' `ListDelegatedAdministrator` permissions are added.
-#' 
-#' AWS Config sets the state of a conformance pack to DELETE_IN_PROGRESS
-#' until the deletion is complete. You cannot update a conformance pack
-#' while it is in this state.
+#' Deletes the specified organization conformance pack and all of the Config rules and remediation actions from all member accounts in that organization.
 #'
-#' @usage
-#' configservice_delete_organization_conformance_pack(
-#'   OrganizationConformancePackName)
+#' See [https://paws-r.github.io/docs/configservice/delete_organization_conformance_pack.html](https://paws-r.github.io/docs/configservice/delete_organization_conformance_pack.html) for full documentation.
 #'
 #' @param OrganizationConformancePackName &#91;required&#93; The name of organization conformance pack that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_organization_conformance_pack(
-#'   OrganizationConformancePackName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -628,26 +341,12 @@ configservice_delete_organization_conformance_pack <- function(OrganizationConfo
 #' account in a specified region
 #'
 #' @description
-#' Deletes pending authorization requests for a specified aggregator
-#' account in a specified region.
+#' Deletes pending authorization requests for a specified aggregator account in a specified region.
 #'
-#' @usage
-#' configservice_delete_pending_aggregation_request(RequesterAccountId,
-#'   RequesterAwsRegion)
+#' See [https://paws-r.github.io/docs/configservice/delete_pending_aggregation_request.html](https://paws-r.github.io/docs/configservice/delete_pending_aggregation_request.html) for full documentation.
 #'
 #' @param RequesterAccountId &#91;required&#93; The 12-digit account ID of the account requesting to aggregate data.
 #' @param RequesterAwsRegion &#91;required&#93; The region requesting to aggregate data.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_pending_aggregation_request(
-#'   RequesterAccountId = "string",
-#'   RequesterAwsRegion = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -674,24 +373,11 @@ configservice_delete_pending_aggregation_request <- function(RequesterAccountId,
 #' @description
 #' Deletes the remediation configuration.
 #'
-#' @usage
-#' configservice_delete_remediation_configuration(ConfigRuleName,
-#'   ResourceType)
+#' See [https://paws-r.github.io/docs/configservice/delete_remediation_configuration.html](https://paws-r.github.io/docs/configservice/delete_remediation_configuration.html) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule for which you want to delete remediation
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to delete remediation
 #' configuration.
 #' @param ResourceType The type of a resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_remediation_configuration(
-#'   ConfigRuleName = "string",
-#'   ResourceType = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -717,53 +403,15 @@ configservice_delete_remediation_configuration <- function(ConfigRuleName, Resou
 #' keys
 #'
 #' @description
-#' Deletes one or more remediation exceptions mentioned in the resource
-#' keys.
-#' 
-#' AWS Config generates a remediation exception when a problem occurs
-#' executing a remediation action to a specific resource. Remediation
-#' exceptions blocks auto-remediation until the exception is cleared.
+#' Deletes one or more remediation exceptions mentioned in the resource keys.
 #'
-#' @usage
-#' configservice_delete_remediation_exceptions(ConfigRuleName,
-#'   ResourceKeys)
+#' See [https://paws-r.github.io/docs/configservice/delete_remediation_exceptions.html](https://paws-r.github.io/docs/configservice/delete_remediation_exceptions.html) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule for which you want to delete remediation
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to delete remediation
 #' exception configuration.
 #' @param ResourceKeys &#91;required&#93; An exception list of resource exception keys to be processed with the
-#' current request. AWS Config adds exception for each resource key. For
-#' example, AWS Config adds 3 exceptions for 3 resource keys.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedBatches = list(
-#'     list(
-#'       FailureMessage = "string",
-#'       FailedItems = list(
-#'         list(
-#'           ResourceType = "string",
-#'           ResourceId = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_remediation_exceptions(
-#'   ConfigRuleName = "string",
-#'   ResourceKeys = list(
-#'     list(
-#'       ResourceType = "string",
-#'       ResourceId = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' current request. Config adds exception for each resource key. For
+#' example, Config adds 3 exceptions for 3 resource keys.
 #'
 #' @keywords internal
 #'
@@ -789,27 +437,12 @@ configservice_delete_remediation_exceptions <- function(ConfigRuleName, Resource
 #' deleted
 #'
 #' @description
-#' Records the configuration state for a custom resource that has been
-#' deleted. This API records a new ConfigurationItem with a ResourceDeleted
-#' status. You can retrieve the ConfigurationItems recorded for this
-#' resource in your AWS Config History.
+#' Records the configuration state for a custom resource that has been deleted. This API records a new ConfigurationItem with a ResourceDeleted status. You can retrieve the ConfigurationItems recorded for this resource in your Config History.
 #'
-#' @usage
-#' configservice_delete_resource_config(ResourceType, ResourceId)
+#' See [https://paws-r.github.io/docs/configservice/delete_resource_config.html](https://paws-r.github.io/docs/configservice/delete_resource_config.html) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; The type of the resource.
 #' @param ResourceId &#91;required&#93; Unique identifier of the resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_resource_config(
-#'   ResourceType = "string",
-#'   ResourceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -836,20 +469,9 @@ configservice_delete_resource_config <- function(ResourceType, ResourceId) {
 #' @description
 #' Deletes the retention configuration.
 #'
-#' @usage
-#' configservice_delete_retention_configuration(RetentionConfigurationName)
+#' See [https://paws-r.github.io/docs/configservice/delete_retention_configuration.html](https://paws-r.github.io/docs/configservice/delete_retention_configuration.html) for full documentation.
 #'
 #' @param RetentionConfigurationName &#91;required&#93; The name of the retention configuration to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_retention_configuration(
-#'   RetentionConfigurationName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -871,25 +493,15 @@ configservice_delete_retention_configuration <- function(RetentionConfigurationN
 }
 .configservice$operations$delete_retention_configuration <- configservice_delete_retention_configuration
 
-#' Deletes the stored query for an AWS account in an AWS Region
+#' Deletes the stored query for a single Amazon Web Services account and a
+#' single Amazon Web Services Region
 #'
 #' @description
-#' Deletes the stored query for an AWS account in an AWS Region.
+#' Deletes the stored query for a single Amazon Web Services account and a single Amazon Web Services Region.
 #'
-#' @usage
-#' configservice_delete_stored_query(QueryName)
+#' See [https://paws-r.github.io/docs/configservice/delete_stored_query.html](https://paws-r.github.io/docs/configservice/delete_stored_query.html) for full documentation.
 #'
 #' @param QueryName &#91;required&#93; The name of the query that you want to delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_stored_query(
-#'   QueryName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -915,38 +527,12 @@ configservice_delete_stored_query <- function(QueryName) {
 #' in the specified delivery channel
 #'
 #' @description
-#' Schedules delivery of a configuration snapshot to the Amazon S3 bucket
-#' in the specified delivery channel. After the delivery has started, AWS
-#' Config sends the following notifications using an Amazon SNS topic that
-#' you have specified.
-#' 
-#' -   Notification of the start of the delivery.
-#' 
-#' -   Notification of the completion of the delivery, if the delivery was
-#'     successfully completed.
-#' 
-#' -   Notification of delivery failure, if the delivery failed.
+#' Schedules delivery of a configuration snapshot to the Amazon S3 bucket in the specified delivery channel. After the delivery has started, Config sends the following notifications using an Amazon SNS topic that you have specified.
 #'
-#' @usage
-#' configservice_deliver_config_snapshot(deliveryChannelName)
+#' See [https://paws-r.github.io/docs/configservice/deliver_config_snapshot.html](https://paws-r.github.io/docs/configservice/deliver_config_snapshot.html) for full documentation.
 #'
 #' @param deliveryChannelName &#91;required&#93; The name of the delivery channel through which the snapshot is
 #' delivered.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   configSnapshotId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deliver_config_snapshot(
-#'   deliveryChannelName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -972,59 +558,16 @@ configservice_deliver_config_snapshot <- function(deliveryChannelName) {
 #' resources for compliant and noncompliant rules
 #'
 #' @description
-#' Returns a list of compliant and noncompliant rules with the number of
-#' resources for compliant and noncompliant rules.
-#' 
-#' The results can return an empty result page, but if you have a
-#' `nextToken`, the results are displayed on the next page.
+#' Returns a list of compliant and noncompliant rules with the number of resources for compliant and noncompliant rules. Does not display rules that do not have compliance results.
 #'
-#' @usage
-#' configservice_describe_aggregate_compliance_by_config_rules(
-#'   ConfigurationAggregatorName, Filters, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_aggregate_compliance_by_config_rules.html](https://paws-r.github.io/docs/configservice/describe_aggregate_compliance_by_config_rules.html) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param Filters Filters the results by ConfigRuleComplianceFilters object.
 #' @param Limit The maximum number of evaluation results returned on each page. The
-#' default is maximum. If you specify 0, AWS Config uses the default.
+#' default is maximum. If you specify 0, Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AggregateComplianceByConfigRules = list(
-#'     list(
-#'       ConfigRuleName = "string",
-#'       Compliance = list(
-#'         ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-#'         ComplianceContributorCount = list(
-#'           CappedCount = 123,
-#'           CapExceeded = TRUE|FALSE
-#'         )
-#'       ),
-#'       AccountId = "string",
-#'       AwsRegion = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_aggregate_compliance_by_config_rules(
-#'   ConfigurationAggregatorName = "string",
-#'   Filters = list(
-#'     ConfigRuleName = "string",
-#'     ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-#'     AccountId = "string",
-#'     AwsRegion = "string"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1046,46 +589,56 @@ configservice_describe_aggregate_compliance_by_config_rules <- function(Configur
 }
 .configservice$operations$describe_aggregate_compliance_by_config_rules <- configservice_describe_aggregate_compliance_by_config_rules
 
+#' Returns a list of the conformance packs and their associated compliance
+#' status with the count of compliant and noncompliant Config rules within
+#' each conformance pack
+#'
+#' @description
+#' Returns a list of the conformance packs and their associated compliance status with the count of compliant and noncompliant Config rules within each conformance pack. Also returns the total rule count which includes compliant rules, noncompliant rules, and rules that cannot be evaluated due to insufficient data.
+#'
+#' See [https://paws-r.github.io/docs/configservice/describe_aggregate_compliance_by_conformance_packs.html](https://paws-r.github.io/docs/configservice/describe_aggregate_compliance_by_conformance_packs.html) for full documentation.
+#'
+#' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
+#' @param Filters Filters the result by `AggregateConformancePackComplianceFilters`
+#' object.
+#' @param Limit The maximum number of conformance packs compliance details returned on
+#' each page. The default is maximum. If you specify 0, Config uses the
+#' default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_describe_aggregate_compliance_by_conformance_packs
+configservice_describe_aggregate_compliance_by_conformance_packs <- function(ConfigurationAggregatorName, Filters = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeAggregateComplianceByConformancePacks",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$describe_aggregate_compliance_by_conformance_packs_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$describe_aggregate_compliance_by_conformance_packs_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$describe_aggregate_compliance_by_conformance_packs <- configservice_describe_aggregate_compliance_by_conformance_packs
+
 #' Returns a list of authorizations granted to various aggregator accounts
 #' and regions
 #'
 #' @description
-#' Returns a list of authorizations granted to various aggregator accounts
-#' and regions.
+#' Returns a list of authorizations granted to various aggregator accounts and regions.
 #'
-#' @usage
-#' configservice_describe_aggregation_authorizations(Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_aggregation_authorizations.html](https://paws-r.github.io/docs/configservice/describe_aggregation_authorizations.html) for full documentation.
 #'
 #' @param Limit The maximum number of AggregationAuthorizations returned on each page.
-#' The default is maximum. If you specify 0, AWS Config uses the default.
+#' The default is maximum. If you specify 0, Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AggregationAuthorizations = list(
-#'     list(
-#'       AggregationAuthorizationArn = "string",
-#'       AuthorizedAccountId = "string",
-#'       AuthorizedAwsRegion = "string",
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_aggregation_authorizations(
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1107,79 +660,19 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
 }
 .configservice$operations$describe_aggregation_authorizations <- configservice_describe_aggregation_authorizations
 
-#' Indicates whether the specified AWS Config rules are compliant
+#' Indicates whether the specified Config rules are compliant
 #'
 #' @description
-#' Indicates whether the specified AWS Config rules are compliant. If a
-#' rule is noncompliant, this action returns the number of AWS resources
-#' that do not comply with the rule.
-#' 
-#' A rule is compliant if all of the evaluated resources comply with it. It
-#' is noncompliant if any of these resources do not comply.
-#' 
-#' If AWS Config has no current evaluation results for the rule, it returns
-#' `INSUFFICIENT_DATA`. This result might indicate one of the following
-#' conditions:
-#' 
-#' -   AWS Config has never invoked an evaluation for the rule. To check
-#'     whether it has, use the
-#'     [`describe_config_rule_evaluation_status`][configservice_describe_config_rule_evaluation_status]
-#'     action to get the `LastSuccessfulInvocationTime` and
-#'     `LastFailedInvocationTime`.
-#' 
-#' -   The rule's AWS Lambda function is failing to send evaluation results
-#'     to AWS Config. Verify that the role you assigned to your
-#'     configuration recorder includes the `config:PutEvaluations`
-#'     permission. If the rule is a custom rule, verify that the AWS Lambda
-#'     execution role includes the `config:PutEvaluations` permission.
-#' 
-#' -   The rule's AWS Lambda function has returned `NOT_APPLICABLE` for all
-#'     evaluation results. This can occur if the resources were deleted or
-#'     removed from the rule's scope.
+#' Indicates whether the specified Config rules are compliant. If a rule is noncompliant, this action returns the number of Amazon Web Services resources that do not comply with the rule.
 #'
-#' @usage
-#' configservice_describe_compliance_by_config_rule(ConfigRuleNames,
-#'   ComplianceTypes, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_compliance_by_config_rule.html](https://paws-r.github.io/docs/configservice/describe_compliance_by_config_rule.html) for full documentation.
 #'
-#' @param ConfigRuleNames Specify one or more AWS Config rule names to filter the results by rule.
+#' @param ConfigRuleNames Specify one or more Config rule names to filter the results by rule.
 #' @param ComplianceTypes Filters the results by compliance.
 #' 
 #' The allowed values are `COMPLIANT` and `NON_COMPLIANT`.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComplianceByConfigRules = list(
-#'     list(
-#'       ConfigRuleName = "string",
-#'       Compliance = list(
-#'         ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-#'         ComplianceContributorCount = list(
-#'           CappedCount = 123,
-#'           CapExceeded = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_compliance_by_config_rule(
-#'   ConfigRuleNames = list(
-#'     "string"
-#'   ),
-#'   ComplianceTypes = list(
-#'     "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1201,90 +694,30 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
 }
 .configservice$operations$describe_compliance_by_config_rule <- configservice_describe_compliance_by_config_rule
 
-#' Indicates whether the specified AWS resources are compliant
+#' Indicates whether the specified Amazon Web Services resources are
+#' compliant
 #'
 #' @description
-#' Indicates whether the specified AWS resources are compliant. If a
-#' resource is noncompliant, this action returns the number of AWS Config
-#' rules that the resource does not comply with.
-#' 
-#' A resource is compliant if it complies with all the AWS Config rules
-#' that evaluate it. It is noncompliant if it does not comply with one or
-#' more of these rules.
-#' 
-#' If AWS Config has no current evaluation results for the resource, it
-#' returns `INSUFFICIENT_DATA`. This result might indicate one of the
-#' following conditions about the rules that evaluate the resource:
-#' 
-#' -   AWS Config has never invoked an evaluation for the rule. To check
-#'     whether it has, use the
-#'     [`describe_config_rule_evaluation_status`][configservice_describe_config_rule_evaluation_status]
-#'     action to get the `LastSuccessfulInvocationTime` and
-#'     `LastFailedInvocationTime`.
-#' 
-#' -   The rule's AWS Lambda function is failing to send evaluation results
-#'     to AWS Config. Verify that the role that you assigned to your
-#'     configuration recorder includes the `config:PutEvaluations`
-#'     permission. If the rule is a custom rule, verify that the AWS Lambda
-#'     execution role includes the `config:PutEvaluations` permission.
-#' 
-#' -   The rule's AWS Lambda function has returned `NOT_APPLICABLE` for all
-#'     evaluation results. This can occur if the resources were deleted or
-#'     removed from the rule's scope.
+#' Indicates whether the specified Amazon Web Services resources are compliant. If a resource is noncompliant, this action returns the number of Config rules that the resource does not comply with.
 #'
-#' @usage
-#' configservice_describe_compliance_by_resource(ResourceType, ResourceId,
-#'   ComplianceTypes, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_compliance_by_resource.html](https://paws-r.github.io/docs/configservice/describe_compliance_by_resource.html) for full documentation.
 #'
-#' @param ResourceType The types of AWS resources for which you want compliance information
-#' (for example, `AWS::EC2::Instance`). For this action, you can specify
-#' that the resource type is an AWS account by specifying `AWS::::Account`.
-#' @param ResourceId The ID of the AWS resource for which you want compliance information.
-#' You can specify only one resource ID. If you specify a resource ID, you
-#' must also specify a type for `ResourceType`.
+#' @param ResourceType The types of Amazon Web Services resources for which you want compliance
+#' information (for example, `AWS::EC2::Instance`). For this action, you
+#' can specify that the resource type is an Amazon Web Services account by
+#' specifying `AWS::::Account`.
+#' @param ResourceId The ID of the Amazon Web Services resource for which you want compliance
+#' information. You can specify only one resource ID. If you specify a
+#' resource ID, you must also specify a type for `ResourceType`.
 #' @param ComplianceTypes Filters the results by compliance.
 #' 
 #' The allowed values are `COMPLIANT`, `NON_COMPLIANT`, and
 #' `INSUFFICIENT_DATA`.
 #' @param Limit The maximum number of evaluation results returned on each page. The
 #' default is 10. You cannot specify a number greater than 100. If you
-#' specify 0, AWS Config uses the default.
+#' specify 0, Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComplianceByResources = list(
-#'     list(
-#'       ResourceType = "string",
-#'       ResourceId = "string",
-#'       Compliance = list(
-#'         ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-#'         ComplianceContributorCount = list(
-#'           CappedCount = 123,
-#'           CapExceeded = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_compliance_by_resource(
-#'   ResourceType = "string",
-#'   ResourceId = "string",
-#'   ComplianceTypes = list(
-#'     "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1306,21 +739,16 @@ configservice_describe_compliance_by_resource <- function(ResourceType = NULL, R
 }
 .configservice$operations$describe_compliance_by_resource <- configservice_describe_compliance_by_resource
 
-#' Returns status information for each of your AWS managed Config rules
+#' Returns status information for each of your Config managed rules
 #'
 #' @description
-#' Returns status information for each of your AWS managed Config rules.
-#' The status includes information such as the last time AWS Config invoked
-#' the rule, the last time AWS Config failed to invoke the rule, and the
-#' related error for the last failure.
+#' Returns status information for each of your Config managed rules. The status includes information such as the last time Config invoked the rule, the last time Config failed to invoke the rule, and the related error for the last failure.
 #'
-#' @usage
-#' configservice_describe_config_rule_evaluation_status(ConfigRuleNames,
-#'   NextToken, Limit)
+#' See [https://paws-r.github.io/docs/configservice/describe_config_rule_evaluation_status.html](https://paws-r.github.io/docs/configservice/describe_config_rule_evaluation_status.html) for full documentation.
 #'
-#' @param ConfigRuleNames The name of the AWS managed Config rules for which you want status
-#' information. If you do not specify any names, AWS Config returns status
-#' information for all AWS managed Config rules that you use.
+#' @param ConfigRuleNames The name of the Config managed rules for which you want status
+#' information. If you do not specify any names, Config returns status
+#' information for all Config managed rules that you use.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #' @param Limit The number of rule evaluation results that you want returned.
@@ -1328,56 +756,9 @@ configservice_describe_compliance_by_resource <- function(ResourceType = NULL, R
 #' This parameter is required if the rule limit for your account is more
 #' than the default of 150 rules.
 #' 
-#' For information about requesting a rule limit increase, see [AWS Config
+#' For information about requesting a rule limit increase, see [Config
 #' Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config)
-#' in the *AWS General Reference Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigRulesEvaluationStatus = list(
-#'     list(
-#'       ConfigRuleName = "string",
-#'       ConfigRuleArn = "string",
-#'       ConfigRuleId = "string",
-#'       LastSuccessfulInvocationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastFailedInvocationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastSuccessfulEvaluationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastFailedEvaluationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       FirstActivatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastDeactivatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastErrorCode = "string",
-#'       LastErrorMessage = "string",
-#'       FirstEvaluationStarted = TRUE|FALSE
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_config_rule_evaluation_status(
-#'   ConfigRuleNames = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
+#' in the *Amazon Web Services General Reference Guide*.
 #'
 #' @keywords internal
 #'
@@ -1399,67 +780,17 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 }
 .configservice$operations$describe_config_rule_evaluation_status <- configservice_describe_config_rule_evaluation_status
 
-#' Returns details about your AWS Config rules
+#' Returns details about your Config rules
 #'
 #' @description
-#' Returns details about your AWS Config rules.
+#' Returns details about your Config rules.
 #'
-#' @usage
-#' configservice_describe_config_rules(ConfigRuleNames, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_config_rules.html](https://paws-r.github.io/docs/configservice/describe_config_rules.html) for full documentation.
 #'
-#' @param ConfigRuleNames The names of the AWS Config rules for which you want details. If you do
-#' not specify any names, AWS Config returns details for all your rules.
+#' @param ConfigRuleNames The names of the Config rules for which you want details. If you do not
+#' specify any names, Config returns details for all your rules.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigRules = list(
-#'     list(
-#'       ConfigRuleName = "string",
-#'       ConfigRuleArn = "string",
-#'       ConfigRuleId = "string",
-#'       Description = "string",
-#'       Scope = list(
-#'         ComplianceResourceTypes = list(
-#'           "string"
-#'         ),
-#'         TagKey = "string",
-#'         TagValue = "string",
-#'         ComplianceResourceId = "string"
-#'       ),
-#'       Source = list(
-#'         Owner = "CUSTOM_LAMBDA"|"AWS",
-#'         SourceIdentifier = "string",
-#'         SourceDetails = list(
-#'           list(
-#'             EventSource = "aws.config",
-#'             MessageType = "ConfigurationItemChangeNotification"|"ConfigurationSnapshotDeliveryCompleted"|"ScheduledNotification"|"OversizedConfigurationItemChangeNotification",
-#'             MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
-#'           )
-#'         )
-#'       ),
-#'       InputParameters = "string",
-#'       MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
-#'       ConfigRuleState = "ACTIVE"|"DELETING"|"DELETING_RESULTS"|"EVALUATING",
-#'       CreatedBy = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_config_rules(
-#'   ConfigRuleNames = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1484,15 +815,9 @@ configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToke
 #' Returns status information for sources within an aggregator
 #'
 #' @description
-#' Returns status information for sources within an aggregator. The status
-#' includes information about the last time AWS Config verified
-#' authorization between the source account and an aggregator account. In
-#' case of a failure, the status contains the related error code or
-#' message.
+#' Returns status information for sources within an aggregator. The status includes information about the last time Config verified authorization between the source account and an aggregator account. In case of a failure, the status contains the related error code or message.
 #'
-#' @usage
-#' configservice_describe_configuration_aggregator_sources_status(
-#'   ConfigurationAggregatorName, UpdateStatus, NextToken, Limit)
+#' See [https://paws-r.github.io/docs/configservice/describe_configuration_aggregator_sources_status.html](https://paws-r.github.io/docs/configservice/describe_configuration_aggregator_sources_status.html) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param UpdateStatus Filters the status type.
@@ -1505,40 +830,7 @@ configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToke
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #' @param Limit The maximum number of AggregatorSourceStatus returned on each page. The
-#' default is maximum. If you specify 0, AWS Config uses the default.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AggregatedSourceStatusList = list(
-#'     list(
-#'       SourceId = "string",
-#'       SourceType = "ACCOUNT"|"ORGANIZATION",
-#'       AwsRegion = "string",
-#'       LastUpdateStatus = "FAILED"|"SUCCEEDED"|"OUTDATED",
-#'       LastUpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastErrorCode = "string",
-#'       LastErrorMessage = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_configuration_aggregator_sources_status(
-#'   ConfigurationAggregatorName = "string",
-#'   UpdateStatus = list(
-#'     "FAILED"|"SUCCEEDED"|"OUTDATED"
-#'   ),
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
+#' default is maximum. If you specify 0, Config uses the default.
 #'
 #' @keywords internal
 #'
@@ -1563,70 +855,15 @@ configservice_describe_configuration_aggregator_sources_status <- function(Confi
 #' Returns the details of one or more configuration aggregators
 #'
 #' @description
-#' Returns the details of one or more configuration aggregators. If the
-#' configuration aggregator is not specified, this action returns the
-#' details for all the configuration aggregators associated with the
-#' account.
+#' Returns the details of one or more configuration aggregators. If the configuration aggregator is not specified, this action returns the details for all the configuration aggregators associated with the account.
 #'
-#' @usage
-#' configservice_describe_configuration_aggregators(
-#'   ConfigurationAggregatorNames, NextToken, Limit)
+#' See [https://paws-r.github.io/docs/configservice/describe_configuration_aggregators.html](https://paws-r.github.io/docs/configservice/describe_configuration_aggregators.html) for full documentation.
 #'
 #' @param ConfigurationAggregatorNames The name of the configuration aggregators.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #' @param Limit The maximum number of configuration aggregators returned on each page.
-#' The default is maximum. If you specify 0, AWS Config uses the default.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigurationAggregators = list(
-#'     list(
-#'       ConfigurationAggregatorName = "string",
-#'       ConfigurationAggregatorArn = "string",
-#'       AccountAggregationSources = list(
-#'         list(
-#'           AccountIds = list(
-#'             "string"
-#'           ),
-#'           AllAwsRegions = TRUE|FALSE,
-#'           AwsRegions = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       OrganizationAggregationSource = list(
-#'         RoleArn = "string",
-#'         AwsRegions = list(
-#'           "string"
-#'         ),
-#'         AllAwsRegions = TRUE|FALSE
-#'       ),
-#'       CreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CreatedBy = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_configuration_aggregators(
-#'   ConfigurationAggregatorNames = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string",
-#'   Limit = 123
-#' )
-#' ```
+#' The default is maximum. If you specify 0, Config uses the default.
 #'
 #' @keywords internal
 #'
@@ -1651,54 +888,13 @@ configservice_describe_configuration_aggregators <- function(ConfigurationAggreg
 #' Returns the current status of the specified configuration recorder
 #'
 #' @description
-#' Returns the current status of the specified configuration recorder. If a
-#' configuration recorder is not specified, this action returns the status
-#' of all configuration recorders associated with the account.
-#' 
-#' Currently, you can specify only one configuration recorder per region in
-#' your account.
+#' Returns the current status of the specified configuration recorder. If a configuration recorder is not specified, this action returns the status of all configuration recorders associated with the account.
 #'
-#' @usage
-#' configservice_describe_configuration_recorder_status(
-#'   ConfigurationRecorderNames)
+#' See [https://paws-r.github.io/docs/configservice/describe_configuration_recorder_status.html](https://paws-r.github.io/docs/configservice/describe_configuration_recorder_status.html) for full documentation.
 #'
 #' @param ConfigurationRecorderNames The name(s) of the configuration recorder. If the name is not specified,
 #' the action returns the current status of all the configuration recorders
 #' associated with the account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigurationRecordersStatus = list(
-#'     list(
-#'       name = "string",
-#'       lastStartTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       lastStopTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       recording = TRUE|FALSE,
-#'       lastStatus = "Pending"|"Success"|"Failure",
-#'       lastErrorCode = "string",
-#'       lastErrorMessage = "string",
-#'       lastStatusChangeTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_configuration_recorder_status(
-#'   ConfigurationRecorderNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1723,47 +919,11 @@ configservice_describe_configuration_recorder_status <- function(ConfigurationRe
 #' Returns the details for the specified configuration recorders
 #'
 #' @description
-#' Returns the details for the specified configuration recorders. If the
-#' configuration recorder is not specified, this action returns the details
-#' for all configuration recorders associated with the account.
-#' 
-#' Currently, you can specify only one configuration recorder per region in
-#' your account.
+#' Returns the details for the specified configuration recorders. If the configuration recorder is not specified, this action returns the details for all configuration recorders associated with the account.
 #'
-#' @usage
-#' configservice_describe_configuration_recorders(
-#'   ConfigurationRecorderNames)
+#' See [https://paws-r.github.io/docs/configservice/describe_configuration_recorders.html](https://paws-r.github.io/docs/configservice/describe_configuration_recorders.html) for full documentation.
 #'
 #' @param ConfigurationRecorderNames A list of configuration recorder names.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigurationRecorders = list(
-#'     list(
-#'       name = "string",
-#'       roleARN = "string",
-#'       recordingGroup = list(
-#'         allSupported = TRUE|FALSE,
-#'         includeGlobalResourceTypes = TRUE|FALSE,
-#'         resourceTypes = list(
-#'           "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_configuration_recorders(
-#'   ConfigurationRecorderNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1789,49 +949,15 @@ configservice_describe_configuration_recorders <- function(ConfigurationRecorder
 #'
 #' @description
 #' Returns compliance details for each rule in that conformance pack.
-#' 
-#' You must provide exact rule names.
 #'
-#' @usage
-#' configservice_describe_conformance_pack_compliance(ConformancePackName,
-#'   Filters, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_conformance_pack_compliance.html](https://paws-r.github.io/docs/configservice/describe_conformance_pack_compliance.html) for full documentation.
 #'
 #' @param ConformancePackName &#91;required&#93; Name of the conformance pack.
 #' @param Filters A `ConformancePackComplianceFilters` object.
-#' @param Limit The maximum number of AWS Config rules within a conformance pack are
+#' @param Limit The maximum number of Config rules within a conformance pack are
 #' returned on each page.
 #' @param NextToken The `nextToken` string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConformancePackName = "string",
-#'   ConformancePackRuleComplianceList = list(
-#'     list(
-#'       ConfigRuleName = "string",
-#'       ComplianceType = "COMPLIANT"|"NON_COMPLIANT"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_conformance_pack_compliance(
-#'   ConformancePackName = "string",
-#'   Filters = list(
-#'     ConfigRuleNames = list(
-#'       "string"
-#'     ),
-#'     ComplianceType = "COMPLIANT"|"NON_COMPLIANT"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1857,52 +983,13 @@ configservice_describe_conformance_pack_compliance <- function(ConformancePackNa
 #'
 #' @description
 #' Provides one or more conformance packs deployment status.
-#' 
-#' If there are no conformance packs then you will see an empty result.
 #'
-#' @usage
-#' configservice_describe_conformance_pack_status(ConformancePackNames,
-#'   Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_conformance_pack_status.html](https://paws-r.github.io/docs/configservice/describe_conformance_pack_status.html) for full documentation.
 #'
 #' @param ConformancePackNames Comma-separated list of conformance pack names.
 #' @param Limit The maximum number of conformance packs status returned on each page.
 #' @param NextToken The `nextToken` string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConformancePackStatusDetails = list(
-#'     list(
-#'       ConformancePackName = "string",
-#'       ConformancePackId = "string",
-#'       ConformancePackArn = "string",
-#'       ConformancePackState = "CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED",
-#'       StackArn = "string",
-#'       ConformancePackStatusReason = "string",
-#'       LastUpdateRequestedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdateCompletedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_conformance_pack_status(
-#'   ConformancePackNames = list(
-#'     "string"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1929,54 +1016,14 @@ configservice_describe_conformance_pack_status <- function(ConformancePackNames 
 #' @description
 #' Returns a list of one or more conformance packs.
 #'
-#' @usage
-#' configservice_describe_conformance_packs(ConformancePackNames, Limit,
-#'   NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_conformance_packs.html](https://paws-r.github.io/docs/configservice/describe_conformance_packs.html) for full documentation.
 #'
 #' @param ConformancePackNames Comma-separated list of conformance pack names for which you want
-#' details. If you do not specify any names, AWS Config returns details for
-#' all your conformance packs.
+#' details. If you do not specify any names, Config returns details for all
+#' your conformance packs.
 #' @param Limit The maximum number of conformance packs returned on each page.
 #' @param NextToken The `nextToken` string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConformancePackDetails = list(
-#'     list(
-#'       ConformancePackName = "string",
-#'       ConformancePackArn = "string",
-#'       ConformancePackId = "string",
-#'       DeliveryS3Bucket = "string",
-#'       DeliveryS3KeyPrefix = "string",
-#'       ConformancePackInputParameters = list(
-#'         list(
-#'           ParameterName = "string",
-#'           ParameterValue = "string"
-#'         )
-#'       ),
-#'       LastUpdateRequestedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       CreatedBy = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_conformance_packs(
-#'   ConformancePackNames = list(
-#'     "string"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2001,74 +1048,11 @@ configservice_describe_conformance_packs <- function(ConformancePackNames = NULL
 #' Returns the current status of the specified delivery channel
 #'
 #' @description
-#' Returns the current status of the specified delivery channel. If a
-#' delivery channel is not specified, this action returns the current
-#' status of all delivery channels associated with the account.
-#' 
-#' Currently, you can specify only one delivery channel per region in your
-#' account.
+#' Returns the current status of the specified delivery channel. If a delivery channel is not specified, this action returns the current status of all delivery channels associated with the account.
 #'
-#' @usage
-#' configservice_describe_delivery_channel_status(DeliveryChannelNames)
+#' See [https://paws-r.github.io/docs/configservice/describe_delivery_channel_status.html](https://paws-r.github.io/docs/configservice/describe_delivery_channel_status.html) for full documentation.
 #'
 #' @param DeliveryChannelNames A list of delivery channel names.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DeliveryChannelsStatus = list(
-#'     list(
-#'       name = "string",
-#'       configSnapshotDeliveryInfo = list(
-#'         lastStatus = "Success"|"Failure"|"Not_Applicable",
-#'         lastErrorCode = "string",
-#'         lastErrorMessage = "string",
-#'         lastAttemptTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastSuccessfulTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         nextDeliveryTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       configHistoryDeliveryInfo = list(
-#'         lastStatus = "Success"|"Failure"|"Not_Applicable",
-#'         lastErrorCode = "string",
-#'         lastErrorMessage = "string",
-#'         lastAttemptTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         lastSuccessfulTime = as.POSIXct(
-#'           "2015-01-01"
-#'         ),
-#'         nextDeliveryTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       configStreamDeliveryInfo = list(
-#'         lastStatus = "Success"|"Failure"|"Not_Applicable",
-#'         lastErrorCode = "string",
-#'         lastErrorMessage = "string",
-#'         lastStatusChangeTime = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_delivery_channel_status(
-#'   DeliveryChannelNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2093,44 +1077,11 @@ configservice_describe_delivery_channel_status <- function(DeliveryChannelNames 
 #' Returns details about the specified delivery channel
 #'
 #' @description
-#' Returns details about the specified delivery channel. If a delivery
-#' channel is not specified, this action returns the details of all
-#' delivery channels associated with the account.
-#' 
-#' Currently, you can specify only one delivery channel per region in your
-#' account.
+#' Returns details about the specified delivery channel. If a delivery channel is not specified, this action returns the details of all delivery channels associated with the account.
 #'
-#' @usage
-#' configservice_describe_delivery_channels(DeliveryChannelNames)
+#' See [https://paws-r.github.io/docs/configservice/describe_delivery_channels.html](https://paws-r.github.io/docs/configservice/describe_delivery_channels.html) for full documentation.
 #'
 #' @param DeliveryChannelNames A list of delivery channel names.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DeliveryChannels = list(
-#'     list(
-#'       name = "string",
-#'       s3BucketName = "string",
-#'       s3KeyPrefix = "string",
-#'       snsTopicARN = "string",
-#'       configSnapshotDeliveryProperties = list(
-#'         deliveryFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_delivery_channels(
-#'   DeliveryChannelNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2152,62 +1103,21 @@ configservice_describe_delivery_channels <- function(DeliveryChannelNames = NULL
 }
 .configservice$operations$describe_delivery_channels <- configservice_describe_delivery_channels
 
-#' Provides organization config rule deployment status for an organization
+#' Provides organization Config rule deployment status for an organization
 #'
 #' @description
-#' Provides organization config rule deployment status for an organization.
-#' 
-#' The status is not considered successful until organization config rule
-#' is successfully deployed in all the member accounts with an exception of
-#' excluded accounts.
-#' 
-#' When you specify the limit and the next token, you receive a paginated
-#' response. Limit and next token are not applicable if you specify
-#' organization config rule names. It is only applicable, when you request
-#' all the organization config rules.
+#' Provides organization Config rule deployment status for an organization.
 #'
-#' @usage
-#' configservice_describe_organization_config_rule_statuses(
-#'   OrganizationConfigRuleNames, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_organization_config_rule_statuses.html](https://paws-r.github.io/docs/configservice/describe_organization_config_rule_statuses.html) for full documentation.
 #'
-#' @param OrganizationConfigRuleNames The names of organization config rules for which you want status
-#' details. If you do not specify any names, AWS Config returns details for
-#' all your organization AWS Confg rules.
+#' @param OrganizationConfigRuleNames The names of organization Config rules for which you want status
+#' details. If you do not specify any names, Config returns details for all
+#' your organization Config rules.
 #' @param Limit The maximum number of `OrganizationConfigRuleStatuses` returned on each
-#' page. If you do no specify a number, AWS Config uses the default. The
+#' page. If you do no specify a number, Config uses the default. The
 #' default is 100.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OrganizationConfigRuleStatuses = list(
-#'     list(
-#'       OrganizationConfigRuleName = "string",
-#'       OrganizationRuleStatus = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string",
-#'       LastUpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_organization_config_rule_statuses(
-#'   OrganizationConfigRuleNames = list(
-#'     "string"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2229,86 +1139,21 @@ configservice_describe_organization_config_rule_statuses <- function(Organizatio
 }
 .configservice$operations$describe_organization_config_rule_statuses <- configservice_describe_organization_config_rule_statuses
 
-#' Returns a list of organization config rules
+#' Returns a list of organization Config rules
 #'
 #' @description
-#' Returns a list of organization config rules.
-#' 
-#' When you specify the limit and the next token, you receive a paginated
-#' response. Limit and next token are not applicable if you specify
-#' organization config rule names. It is only applicable, when you request
-#' all the organization config rules.
+#' Returns a list of organization Config rules.
 #'
-#' @usage
-#' configservice_describe_organization_config_rules(
-#'   OrganizationConfigRuleNames, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_organization_config_rules.html](https://paws-r.github.io/docs/configservice/describe_organization_config_rules.html) for full documentation.
 #'
-#' @param OrganizationConfigRuleNames The names of organization config rules for which you want details. If
-#' you do not specify any names, AWS Config returns details for all your
-#' organization config rules.
-#' @param Limit The maximum number of organization config rules returned on each page.
-#' If you do no specify a number, AWS Config uses the default. The default
-#' is 100.
+#' @param OrganizationConfigRuleNames The names of organization Config rules for which you want details. If
+#' you do not specify any names, Config returns details for all your
+#' organization Config rules.
+#' @param Limit The maximum number of organization Config rules returned on each page.
+#' If you do no specify a number, Config uses the default. The default is
+#' 100.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OrganizationConfigRules = list(
-#'     list(
-#'       OrganizationConfigRuleName = "string",
-#'       OrganizationConfigRuleArn = "string",
-#'       OrganizationManagedRuleMetadata = list(
-#'         Description = "string",
-#'         RuleIdentifier = "string",
-#'         InputParameters = "string",
-#'         MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
-#'         ResourceTypesScope = list(
-#'           "string"
-#'         ),
-#'         ResourceIdScope = "string",
-#'         TagKeyScope = "string",
-#'         TagValueScope = "string"
-#'       ),
-#'       OrganizationCustomRuleMetadata = list(
-#'         Description = "string",
-#'         LambdaFunctionArn = "string",
-#'         OrganizationConfigRuleTriggerTypes = list(
-#'           "ConfigurationItemChangeNotification"|"OversizedConfigurationItemChangeNotification"|"ScheduledNotification"
-#'         ),
-#'         InputParameters = "string",
-#'         MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
-#'         ResourceTypesScope = list(
-#'           "string"
-#'         ),
-#'         ResourceIdScope = "string",
-#'         TagKeyScope = "string",
-#'         TagValueScope = "string"
-#'       ),
-#'       ExcludedAccounts = list(
-#'         "string"
-#'       ),
-#'       LastUpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_organization_config_rules(
-#'   OrganizationConfigRuleNames = list(
-#'     "string"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2334,60 +1179,18 @@ configservice_describe_organization_config_rules <- function(OrganizationConfigR
 #' organization
 #'
 #' @description
-#' Provides organization conformance pack deployment status for an
-#' organization.
-#' 
-#' The status is not considered successful until organization conformance
-#' pack is successfully deployed in all the member accounts with an
-#' exception of excluded accounts.
-#' 
-#' When you specify the limit and the next token, you receive a paginated
-#' response. Limit and next token are not applicable if you specify
-#' organization conformance pack names. They are only applicable, when you
-#' request all the organization conformance packs.
+#' Provides organization conformance pack deployment status for an organization.
 #'
-#' @usage
-#' configservice_describe_organization_conformance_pack_statuses(
-#'   OrganizationConformancePackNames, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_organization_conformance_pack_statuses.html](https://paws-r.github.io/docs/configservice/describe_organization_conformance_pack_statuses.html) for full documentation.
 #'
 #' @param OrganizationConformancePackNames The names of organization conformance packs for which you want status
-#' details. If you do not specify any names, AWS Config returns details for
-#' all your organization conformance packs.
+#' details. If you do not specify any names, Config returns details for all
+#' your organization conformance packs.
 #' @param Limit The maximum number of OrganizationConformancePackStatuses returned on
-#' each page. If you do no specify a number, AWS Config uses the default.
-#' The default is 100.
+#' each page. If you do no specify a number, Config uses the default. The
+#' default is 100.
 #' @param NextToken The nextToken string returned on a previous page that you use to get the
 #' next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OrganizationConformancePackStatuses = list(
-#'     list(
-#'       OrganizationConformancePackName = "string",
-#'       Status = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string",
-#'       LastUpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_organization_conformance_pack_statuses(
-#'   OrganizationConformancePackNames = list(
-#'     "string"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2413,63 +1216,15 @@ configservice_describe_organization_conformance_pack_statuses <- function(Organi
 #'
 #' @description
 #' Returns a list of organization conformance packs.
-#' 
-#' When you specify the limit and the next token, you receive a paginated
-#' response.
-#' 
-#' Limit and next token are not applicable if you specify organization
-#' conformance packs names. They are only applicable, when you request all
-#' the organization conformance packs.
 #'
-#' @usage
-#' configservice_describe_organization_conformance_packs(
-#'   OrganizationConformancePackNames, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_organization_conformance_packs.html](https://paws-r.github.io/docs/configservice/describe_organization_conformance_packs.html) for full documentation.
 #'
 #' @param OrganizationConformancePackNames The name that you assign to an organization conformance pack.
 #' @param Limit The maximum number of organization config packs returned on each page.
-#' If you do no specify a number, AWS Config uses the default. The default
-#' is 100.
+#' If you do no specify a number, Config uses the default. The default is
+#' 100.
 #' @param NextToken The nextToken string returned on a previous page that you use to get the
 #' next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OrganizationConformancePacks = list(
-#'     list(
-#'       OrganizationConformancePackName = "string",
-#'       OrganizationConformancePackArn = "string",
-#'       DeliveryS3Bucket = "string",
-#'       DeliveryS3KeyPrefix = "string",
-#'       ConformancePackInputParameters = list(
-#'         list(
-#'           ParameterName = "string",
-#'           ParameterValue = "string"
-#'         )
-#'       ),
-#'       ExcludedAccounts = list(
-#'         "string"
-#'       ),
-#'       LastUpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_organization_conformance_packs(
-#'   OrganizationConformancePackNames = list(
-#'     "string"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2496,35 +1251,12 @@ configservice_describe_organization_conformance_packs <- function(OrganizationCo
 #' @description
 #' Returns a list of all pending aggregation requests.
 #'
-#' @usage
-#' configservice_describe_pending_aggregation_requests(Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_pending_aggregation_requests.html](https://paws-r.github.io/docs/configservice/describe_pending_aggregation_requests.html) for full documentation.
 #'
 #' @param Limit The maximum number of evaluation results returned on each page. The
-#' default is maximum. If you specify 0, AWS Config uses the default.
+#' default is maximum. If you specify 0, Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   PendingAggregationRequests = list(
-#'     list(
-#'       RequesterAccountId = "string",
-#'       RequesterAwsRegion = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_pending_aggregation_requests(
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2551,59 +1283,10 @@ configservice_describe_pending_aggregation_requests <- function(Limit = NULL, Ne
 #' @description
 #' Returns the details of one or more remediation configurations.
 #'
-#' @usage
-#' configservice_describe_remediation_configurations(ConfigRuleNames)
+#' See [https://paws-r.github.io/docs/configservice/describe_remediation_configurations.html](https://paws-r.github.io/docs/configservice/describe_remediation_configurations.html) for full documentation.
 #'
-#' @param ConfigRuleNames &#91;required&#93; A list of AWS Config rule names of remediation configurations for which
-#' you want details.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RemediationConfigurations = list(
-#'     list(
-#'       ConfigRuleName = "string",
-#'       TargetType = "SSM_DOCUMENT",
-#'       TargetId = "string",
-#'       TargetVersion = "string",
-#'       Parameters = list(
-#'         list(
-#'           ResourceValue = list(
-#'             Value = "RESOURCE_ID"
-#'           ),
-#'           StaticValue = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       ResourceType = "string",
-#'       Automatic = TRUE|FALSE,
-#'       ExecutionControls = list(
-#'         SsmControls = list(
-#'           ConcurrentExecutionRatePercentage = 123,
-#'           ErrorPercentage = 123
-#'         )
-#'       ),
-#'       MaximumAutomaticAttempts = 123,
-#'       RetryAttemptSeconds = 123,
-#'       Arn = "string",
-#'       CreatedByService = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_remediation_configurations(
-#'   ConfigRuleNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param ConfigRuleNames &#91;required&#93; A list of Config rule names of remediation configurations for which you
+#' want details.
 #'
 #' @keywords internal
 #'
@@ -2628,68 +1311,18 @@ configservice_describe_remediation_configurations <- function(ConfigRuleNames) {
 #' Returns the details of one or more remediation exceptions
 #'
 #' @description
-#' Returns the details of one or more remediation exceptions. A detailed
-#' view of a remediation exception for a set of resources that includes an
-#' explanation of an exception and the time when the exception will be
-#' deleted. When you specify the limit and the next token, you receive a
-#' paginated response.
-#' 
-#' AWS Config generates a remediation exception when a problem occurs
-#' executing a remediation action to a specific resource. Remediation
-#' exceptions blocks auto-remediation until the exception is cleared.
-#' 
-#' When you specify the limit and the next token, you receive a paginated
-#' response.
-#' 
-#' Limit and next token are not applicable if you request resources in
-#' batch. It is only applicable, when you request all resources.
+#' Returns the details of one or more remediation exceptions. A detailed view of a remediation exception for a set of resources that includes an explanation of an exception and the time when the exception will be deleted. When you specify the limit and the next token, you receive a paginated response.
 #'
-#' @usage
-#' configservice_describe_remediation_exceptions(ConfigRuleName,
-#'   ResourceKeys, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_remediation_exceptions.html](https://paws-r.github.io/docs/configservice/describe_remediation_exceptions.html) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule.
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule.
 #' @param ResourceKeys An exception list of resource exception keys to be processed with the
-#' current request. AWS Config adds exception for each resource key. For
-#' example, AWS Config adds 3 exceptions for 3 resource keys.
+#' current request. Config adds exception for each resource key. For
+#' example, Config adds 3 exceptions for 3 resource keys.
 #' @param Limit The maximum number of RemediationExceptionResourceKey returned on each
-#' page. The default is 25. If you specify 0, AWS Config uses the default.
+#' page. The default is 25. If you specify 0, Config uses the default.
 #' @param NextToken The `nextToken` string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RemediationExceptions = list(
-#'     list(
-#'       ConfigRuleName = "string",
-#'       ResourceType = "string",
-#'       ResourceId = "string",
-#'       Message = "string",
-#'       ExpirationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_remediation_exceptions(
-#'   ConfigRuleName = "string",
-#'   ResourceKeys = list(
-#'     list(
-#'       ResourceType = "string",
-#'       ResourceId = "string"
-#'     )
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2716,75 +1349,17 @@ configservice_describe_remediation_exceptions <- function(ConfigRuleName, Resour
 #' execution occur, and any error messages for steps that have failed
 #'
 #' @description
-#' Provides a detailed view of a Remediation Execution for a set of
-#' resources including state, timestamps for when steps for the remediation
-#' execution occur, and any error messages for steps that have failed. When
-#' you specify the limit and the next token, you receive a paginated
-#' response.
+#' Provides a detailed view of a Remediation Execution for a set of resources including state, timestamps for when steps for the remediation execution occur, and any error messages for steps that have failed. When you specify the limit and the next token, you receive a paginated response.
 #'
-#' @usage
-#' configservice_describe_remediation_execution_status(ConfigRuleName,
-#'   ResourceKeys, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_remediation_execution_status.html](https://paws-r.github.io/docs/configservice/describe_remediation_execution_status.html) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; A list of AWS Config rule names.
+#' @param ConfigRuleName &#91;required&#93; A list of Config rule names.
 #' @param ResourceKeys A list of resource keys to be processed with the current request. Each
 #' element in the list consists of the resource type and resource ID.
 #' @param Limit The maximum number of RemediationExecutionStatuses returned on each
-#' page. The default is maximum. If you specify 0, AWS Config uses the
-#' default.
+#' page. The default is maximum. If you specify 0, Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RemediationExecutionStatuses = list(
-#'     list(
-#'       ResourceKey = list(
-#'         resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'         resourceId = "string"
-#'       ),
-#'       State = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED",
-#'       StepDetails = list(
-#'         list(
-#'           Name = "string",
-#'           State = "SUCCEEDED"|"PENDING"|"FAILED",
-#'           ErrorMessage = "string",
-#'           StartTime = as.POSIXct(
-#'             "2015-01-01"
-#'           ),
-#'           StopTime = as.POSIXct(
-#'             "2015-01-01"
-#'           )
-#'         )
-#'       ),
-#'       InvocationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_remediation_execution_status(
-#'   ConfigRuleName = "string",
-#'   ResourceKeys = list(
-#'     list(
-#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'       resourceId = "string"
-#'     )
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2809,49 +1384,18 @@ configservice_describe_remediation_execution_status <- function(ConfigRuleName, 
 #' Returns the details of one or more retention configurations
 #'
 #' @description
-#' Returns the details of one or more retention configurations. If the
-#' retention configuration name is not specified, this action returns the
-#' details for all the retention configurations for that account.
-#' 
-#' Currently, AWS Config supports only one retention configuration per
-#' region in your account.
+#' Returns the details of one or more retention configurations. If the retention configuration name is not specified, this action returns the details for all the retention configurations for that account.
 #'
-#' @usage
-#' configservice_describe_retention_configurations(
-#'   RetentionConfigurationNames, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/describe_retention_configurations.html](https://paws-r.github.io/docs/configservice/describe_retention_configurations.html) for full documentation.
 #'
 #' @param RetentionConfigurationNames A list of names of retention configurations for which you want details.
-#' If you do not specify a name, AWS Config returns details for all the
+#' If you do not specify a name, Config returns details for all the
 #' retention configurations for that account.
 #' 
-#' Currently, AWS Config supports only one retention configuration per
-#' region in your account.
+#' Currently, Config supports only one retention configuration per region
+#' in your account.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RetentionConfigurations = list(
-#'     list(
-#'       Name = "string",
-#'       RetentionPeriodInDays = 123
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_retention_configurations(
-#'   RetentionConfigurationNames = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2873,83 +1417,28 @@ configservice_describe_retention_configurations <- function(RetentionConfigurati
 }
 .configservice$operations$describe_retention_configurations <- configservice_describe_retention_configurations
 
-#' Returns the evaluation results for the specified AWS Config rule for a
+#' Returns the evaluation results for the specified Config rule for a
 #' specific resource in a rule
 #'
 #' @description
-#' Returns the evaluation results for the specified AWS Config rule for a
-#' specific resource in a rule. The results indicate which AWS resources
-#' were evaluated by the rule, when each resource was last evaluated, and
-#' whether each resource complies with the rule.
-#' 
-#' The results can return an empty result page. But if you have a
-#' `nextToken`, the results are displayed on the next page.
+#' Returns the evaluation results for the specified Config rule for a specific resource in a rule. The results indicate which Amazon Web Services resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule.
 #'
-#' @usage
-#' configservice_get_aggregate_compliance_details_by_config_rule(
-#'   ConfigurationAggregatorName, ConfigRuleName, AccountId, AwsRegion,
-#'   ComplianceType, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/get_aggregate_compliance_details_by_config_rule.html](https://paws-r.github.io/docs/configservice/get_aggregate_compliance_details_by_config_rule.html) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
-#' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule for which you want compliance
-#' information.
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want compliance information.
 #' @param AccountId &#91;required&#93; The 12-digit account ID of the source account.
 #' @param AwsRegion &#91;required&#93; The source region from where the data is aggregated.
 #' @param ComplianceType The resource compliance status.
 #' 
 #' For the `GetAggregateComplianceDetailsByConfigRuleRequest` data type,
-#' AWS Config supports only the `COMPLIANT` and `NON_COMPLIANT`. AWS Config
-#' does not support the `NOT_APPLICABLE` and `INSUFFICIENT_DATA` values.
+#' Config supports only the `COMPLIANT` and `NON_COMPLIANT`. Config does
+#' not support the `NOT_APPLICABLE` and `INSUFFICIENT_DATA` values.
 #' @param Limit The maximum number of evaluation results returned on each page. The
 #' default is 50. You cannot specify a number greater than 100. If you
-#' specify 0, AWS Config uses the default.
+#' specify 0, Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AggregateEvaluationResults = list(
-#'     list(
-#'       EvaluationResultIdentifier = list(
-#'         EvaluationResultQualifier = list(
-#'           ConfigRuleName = "string",
-#'           ResourceType = "string",
-#'           ResourceId = "string"
-#'         ),
-#'         OrderingTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-#'       ResultRecordedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ConfigRuleInvokedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Annotation = "string",
-#'       AccountId = "string",
-#'       AwsRegion = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_aggregate_compliance_details_by_config_rule(
-#'   ConfigurationAggregatorName = "string",
-#'   ConfigRuleName = "string",
-#'   AccountId = "string",
-#'   AwsRegion = "string",
-#'   ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2975,15 +1464,9 @@ configservice_get_aggregate_compliance_details_by_config_rule <- function(Config
 #' accounts and regions in an aggregator
 #'
 #' @description
-#' Returns the number of compliant and noncompliant rules for one or more
-#' accounts and regions in an aggregator.
-#' 
-#' The results can return an empty result page, but if you have a
-#' nextToken, the results are displayed on the next page.
+#' Returns the number of compliant and noncompliant rules for one or more accounts and regions in an aggregator.
 #'
-#' @usage
-#' configservice_get_aggregate_config_rule_compliance_summary(
-#'   ConfigurationAggregatorName, Filters, GroupByKey, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/get_aggregate_config_rule_compliance_summary.html](https://paws-r.github.io/docs/configservice/get_aggregate_config_rule_compliance_summary.html) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param Filters Filters the results based on the ConfigRuleComplianceSummaryFilters
@@ -2991,50 +1474,9 @@ configservice_get_aggregate_compliance_details_by_config_rule <- function(Config
 #' @param GroupByKey Groups the result based on ACCOUNT_ID or AWS_REGION.
 #' @param Limit The maximum number of evaluation results returned on each page. The
 #' default is 1000. You cannot specify a number greater than 1000. If you
-#' specify 0, AWS Config uses the default.
+#' specify 0, Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GroupByKey = "string",
-#'   AggregateComplianceCounts = list(
-#'     list(
-#'       GroupName = "string",
-#'       ComplianceSummary = list(
-#'         CompliantResourceCount = list(
-#'           CappedCount = 123,
-#'           CapExceeded = TRUE|FALSE
-#'         ),
-#'         NonCompliantResourceCount = list(
-#'           CappedCount = 123,
-#'           CapExceeded = TRUE|FALSE
-#'         ),
-#'         ComplianceSummaryTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_aggregate_config_rule_compliance_summary(
-#'   ConfigurationAggregatorName = "string",
-#'   Filters = list(
-#'     AccountId = "string",
-#'     AwsRegion = "string"
-#'   ),
-#'   GroupByKey = "ACCOUNT_ID"|"AWS_REGION",
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3056,63 +1498,61 @@ configservice_get_aggregate_config_rule_compliance_summary <- function(Configura
 }
 .configservice$operations$get_aggregate_config_rule_compliance_summary <- configservice_get_aggregate_config_rule_compliance_summary
 
-#' Returns the resource counts across accounts and regions that are present
-#' in your AWS Config aggregator
+#' Returns the count of compliant and noncompliant conformance packs across
+#' all Amazon Web Services accounts and Amazon Web Services Regions in an
+#' aggregator
 #'
 #' @description
-#' Returns the resource counts across accounts and regions that are present
-#' in your AWS Config aggregator. You can request the resource counts by
-#' providing filters and GroupByKey.
-#' 
-#' For example, if the input contains accountID 12345678910 and region
-#' us-east-1 in filters, the API returns the count of resources in account
-#' ID 12345678910 and region us-east-1. If the input contains ACCOUNT_ID
-#' as a GroupByKey, the API returns resource counts for all source accounts
-#' that are present in your aggregator.
+#' Returns the count of compliant and noncompliant conformance packs across all Amazon Web Services accounts and Amazon Web Services Regions in an aggregator. You can filter based on Amazon Web Services account ID or Amazon Web Services Region.
 #'
-#' @usage
-#' configservice_get_aggregate_discovered_resource_counts(
-#'   ConfigurationAggregatorName, Filters, GroupByKey, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/get_aggregate_conformance_pack_compliance_summary.html](https://paws-r.github.io/docs/configservice/get_aggregate_conformance_pack_compliance_summary.html) for full documentation.
+#'
+#' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
+#' @param Filters Filters the results based on the
+#' `AggregateConformancePackComplianceSummaryFilters` object.
+#' @param GroupByKey Groups the result based on Amazon Web Services account ID or Amazon Web
+#' Services Region.
+#' @param Limit The maximum number of results returned on each page. The default is
+#' maximum. If you specify 0, Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_get_aggregate_conformance_pack_compliance_summary
+configservice_get_aggregate_conformance_pack_compliance_summary <- function(ConfigurationAggregatorName, Filters = NULL, GroupByKey = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetAggregateConformancePackComplianceSummary",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$get_aggregate_conformance_pack_compliance_summary_input(ConfigurationAggregatorName = ConfigurationAggregatorName, Filters = Filters, GroupByKey = GroupByKey, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$get_aggregate_conformance_pack_compliance_summary_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$get_aggregate_conformance_pack_compliance_summary <- configservice_get_aggregate_conformance_pack_compliance_summary
+
+#' Returns the resource counts across accounts and regions that are present
+#' in your Config aggregator
+#'
+#' @description
+#' Returns the resource counts across accounts and regions that are present in your Config aggregator. You can request the resource counts by providing filters and GroupByKey.
+#'
+#' See [https://paws-r.github.io/docs/configservice/get_aggregate_discovered_resource_counts.html](https://paws-r.github.io/docs/configservice/get_aggregate_discovered_resource_counts.html) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param Filters Filters the results based on the `ResourceCountFilters` object.
 #' @param GroupByKey The key to group the resource counts.
 #' @param Limit The maximum number of GroupedResourceCount objects returned on each
 #' page. The default is 1000. You cannot specify a number greater than
-#' 1000. If you specify 0, AWS Config uses the default.
+#' 1000. If you specify 0, Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TotalDiscoveredResources = 123,
-#'   GroupByKey = "string",
-#'   GroupedResourceCounts = list(
-#'     list(
-#'       GroupName = "string",
-#'       ResourceCount = 123
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_aggregate_discovered_resource_counts(
-#'   ConfigurationAggregatorName = "string",
-#'   Filters = list(
-#'     ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'     AccountId = "string",
-#'     Region = "string"
-#'   ),
-#'   GroupByKey = "RESOURCE_TYPE"|"ACCOUNT_ID"|"AWS_REGION",
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3138,73 +1578,12 @@ configservice_get_aggregate_discovered_resource_counts <- function(Configuration
 #' in a specific source account and region
 #'
 #' @description
-#' Returns configuration item that is aggregated for your specific resource
-#' in a specific source account and region.
+#' Returns configuration item that is aggregated for your specific resource in a specific source account and region.
 #'
-#' @usage
-#' configservice_get_aggregate_resource_config(ConfigurationAggregatorName,
-#'   ResourceIdentifier)
+#' See [https://paws-r.github.io/docs/configservice/get_aggregate_resource_config.html](https://paws-r.github.io/docs/configservice/get_aggregate_resource_config.html) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param ResourceIdentifier &#91;required&#93; An object that identifies aggregate resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigurationItem = list(
-#'     version = "string",
-#'     accountId = "string",
-#'     configurationItemCaptureTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     configurationItemStatus = "OK"|"ResourceDiscovered"|"ResourceNotRecorded"|"ResourceDeleted"|"ResourceDeletedNotRecorded",
-#'     configurationStateId = "string",
-#'     configurationItemMD5Hash = "string",
-#'     arn = "string",
-#'     resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'     resourceId = "string",
-#'     resourceName = "string",
-#'     awsRegion = "string",
-#'     availabilityZone = "string",
-#'     resourceCreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     relatedEvents = list(
-#'       "string"
-#'     ),
-#'     relationships = list(
-#'       list(
-#'         resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'         resourceId = "string",
-#'         resourceName = "string",
-#'         relationshipName = "string"
-#'       )
-#'     ),
-#'     configuration = "string",
-#'     supplementaryConfiguration = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_aggregate_resource_config(
-#'   ConfigurationAggregatorName = "string",
-#'   ResourceIdentifier = list(
-#'     SourceAccountId = "string",
-#'     SourceRegion = "string",
-#'     ResourceId = "string",
-#'     ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'     ResourceName = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3226,72 +1605,23 @@ configservice_get_aggregate_resource_config <- function(ConfigurationAggregatorN
 }
 .configservice$operations$get_aggregate_resource_config <- configservice_get_aggregate_resource_config
 
-#' Returns the evaluation results for the specified AWS Config rule
+#' Returns the evaluation results for the specified Config rule
 #'
 #' @description
-#' Returns the evaluation results for the specified AWS Config rule. The
-#' results indicate which AWS resources were evaluated by the rule, when
-#' each resource was last evaluated, and whether each resource complies
-#' with the rule.
+#' Returns the evaluation results for the specified Config rule. The results indicate which Amazon Web Services resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule.
 #'
-#' @usage
-#' configservice_get_compliance_details_by_config_rule(ConfigRuleName,
-#'   ComplianceTypes, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/get_compliance_details_by_config_rule.html](https://paws-r.github.io/docs/configservice/get_compliance_details_by_config_rule.html) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule for which you want compliance
-#' information.
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want compliance information.
 #' @param ComplianceTypes Filters the results by compliance.
 #' 
 #' The allowed values are `COMPLIANT`, `NON_COMPLIANT`, and
 #' `NOT_APPLICABLE`.
 #' @param Limit The maximum number of evaluation results returned on each page. The
 #' default is 10. You cannot specify a number greater than 100. If you
-#' specify 0, AWS Config uses the default.
+#' specify 0, Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EvaluationResults = list(
-#'     list(
-#'       EvaluationResultIdentifier = list(
-#'         EvaluationResultQualifier = list(
-#'           ConfigRuleName = "string",
-#'           ResourceType = "string",
-#'           ResourceId = "string"
-#'         ),
-#'         OrderingTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-#'       ResultRecordedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ConfigRuleInvokedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Annotation = "string",
-#'       ResultToken = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_compliance_details_by_config_rule(
-#'   ConfigRuleName = "string",
-#'   ComplianceTypes = list(
-#'     "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3313,69 +1643,24 @@ configservice_get_compliance_details_by_config_rule <- function(ConfigRuleName, 
 }
 .configservice$operations$get_compliance_details_by_config_rule <- configservice_get_compliance_details_by_config_rule
 
-#' Returns the evaluation results for the specified AWS resource
+#' Returns the evaluation results for the specified Amazon Web Services
+#' resource
 #'
 #' @description
-#' Returns the evaluation results for the specified AWS resource. The
-#' results indicate which AWS Config rules were used to evaluate the
-#' resource, when each rule was last used, and whether the resource
-#' complies with each rule.
+#' Returns the evaluation results for the specified Amazon Web Services resource. The results indicate which Config rules were used to evaluate the resource, when each rule was last used, and whether the resource complies with each rule.
 #'
-#' @usage
-#' configservice_get_compliance_details_by_resource(ResourceType,
-#'   ResourceId, ComplianceTypes, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/get_compliance_details_by_resource.html](https://paws-r.github.io/docs/configservice/get_compliance_details_by_resource.html) for full documentation.
 #'
-#' @param ResourceType &#91;required&#93; The type of the AWS resource for which you want compliance information.
-#' @param ResourceId &#91;required&#93; The ID of the AWS resource for which you want compliance information.
+#' @param ResourceType &#91;required&#93; The type of the Amazon Web Services resource for which you want
+#' compliance information.
+#' @param ResourceId &#91;required&#93; The ID of the Amazon Web Services resource for which you want compliance
+#' information.
 #' @param ComplianceTypes Filters the results by compliance.
 #' 
 #' The allowed values are `COMPLIANT`, `NON_COMPLIANT`, and
 #' `NOT_APPLICABLE`.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EvaluationResults = list(
-#'     list(
-#'       EvaluationResultIdentifier = list(
-#'         EvaluationResultQualifier = list(
-#'           ConfigRuleName = "string",
-#'           ResourceType = "string",
-#'           ResourceId = "string"
-#'         ),
-#'         OrderingTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-#'       ResultRecordedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ConfigRuleInvokedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Annotation = "string",
-#'       ResultToken = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_compliance_details_by_resource(
-#'   ResourceType = "string",
-#'   ResourceId = "string",
-#'   ComplianceTypes = list(
-#'     "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3397,37 +1682,13 @@ configservice_get_compliance_details_by_resource <- function(ResourceType, Resou
 }
 .configservice$operations$get_compliance_details_by_resource <- configservice_get_compliance_details_by_resource
 
-#' Returns the number of AWS Config rules that are compliant and
-#' noncompliant, up to a maximum of 25 for each
+#' Returns the number of Config rules that are compliant and noncompliant,
+#' up to a maximum of 25 for each
 #'
 #' @description
-#' Returns the number of AWS Config rules that are compliant and
-#' noncompliant, up to a maximum of 25 for each.
+#' Returns the number of Config rules that are compliant and noncompliant, up to a maximum of 25 for each.
 #'
-#' @usage
-#' configservice_get_compliance_summary_by_config_rule()
-#'
-
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComplianceSummary = list(
-#'     CompliantResourceCount = list(
-#'       CappedCount = 123,
-#'       CapExceeded = TRUE|FALSE
-#'     ),
-#'     NonCompliantResourceCount = list(
-#'       CappedCount = 123,
-#'       CapExceeded = TRUE|FALSE
-#'     ),
-#'     ComplianceSummaryTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
+#' See [https://paws-r.github.io/docs/configservice/get_compliance_summary_by_config_rule.html](https://paws-r.github.io/docs/configservice/get_compliance_summary_by_config_rule.html) for full documentation.
 #'
 
 #'
@@ -3455,55 +1716,17 @@ configservice_get_compliance_summary_by_config_rule <- function() {
 #' are noncompliant
 #'
 #' @description
-#' Returns the number of resources that are compliant and the number that
-#' are noncompliant. You can specify one or more resource types to get
-#' these numbers for each resource type. The maximum number returned is
-#' 100.
+#' Returns the number of resources that are compliant and the number that are noncompliant. You can specify one or more resource types to get these numbers for each resource type. The maximum number returned is 100.
 #'
-#' @usage
-#' configservice_get_compliance_summary_by_resource_type(ResourceTypes)
+#' See [https://paws-r.github.io/docs/configservice/get_compliance_summary_by_resource_type.html](https://paws-r.github.io/docs/configservice/get_compliance_summary_by_resource_type.html) for full documentation.
 #'
 #' @param ResourceTypes Specify one or more resource types to get the number of resources that
 #' are compliant and the number that are noncompliant for each resource
 #' type.
 #' 
-#' For this request, you can specify an AWS resource type such as
-#' `AWS::EC2::Instance`. You can specify that the resource type is an AWS
-#' account by specifying `AWS::::Account`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ComplianceSummariesByResourceType = list(
-#'     list(
-#'       ResourceType = "string",
-#'       ComplianceSummary = list(
-#'         CompliantResourceCount = list(
-#'           CappedCount = 123,
-#'           CapExceeded = TRUE|FALSE
-#'         ),
-#'         NonCompliantResourceCount = list(
-#'           CappedCount = 123,
-#'           CapExceeded = TRUE|FALSE
-#'         ),
-#'         ComplianceSummaryTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_compliance_summary_by_resource_type(
-#'   ResourceTypes = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' For this request, you can specify an Amazon Web Services resource type
+#' such as `AWS::EC2::Instance`. You can specify that the resource type is
+#' an Amazon Web Services account by specifying `AWS::::Account`.
 #'
 #' @keywords internal
 #'
@@ -3525,73 +1748,20 @@ configservice_get_compliance_summary_by_resource_type <- function(ResourceTypes 
 }
 .configservice$operations$get_compliance_summary_by_resource_type <- configservice_get_compliance_summary_by_resource_type
 
-#' Returns compliance details of a conformance pack for all AWS resources
-#' that are monitered by conformance pack
+#' Returns compliance details of a conformance pack for all Amazon Web
+#' Services resources that are monitered by conformance pack
 #'
 #' @description
-#' Returns compliance details of a conformance pack for all AWS resources
-#' that are monitered by conformance pack.
+#' Returns compliance details of a conformance pack for all Amazon Web Services resources that are monitered by conformance pack.
 #'
-#' @usage
-#' configservice_get_conformance_pack_compliance_details(
-#'   ConformancePackName, Filters, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/get_conformance_pack_compliance_details.html](https://paws-r.github.io/docs/configservice/get_conformance_pack_compliance_details.html) for full documentation.
 #'
 #' @param ConformancePackName &#91;required&#93; Name of the conformance pack.
 #' @param Filters A `ConformancePackEvaluationFilters` object.
 #' @param Limit The maximum number of evaluation results returned on each page. If you
-#' do no specify a number, AWS Config uses the default. The default is 100.
+#' do no specify a number, Config uses the default. The default is 100.
 #' @param NextToken The `nextToken` string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConformancePackName = "string",
-#'   ConformancePackRuleEvaluationResults = list(
-#'     list(
-#'       ComplianceType = "COMPLIANT"|"NON_COMPLIANT",
-#'       EvaluationResultIdentifier = list(
-#'         EvaluationResultQualifier = list(
-#'           ConfigRuleName = "string",
-#'           ResourceType = "string",
-#'           ResourceId = "string"
-#'         ),
-#'         OrderingTimestamp = as.POSIXct(
-#'           "2015-01-01"
-#'         )
-#'       ),
-#'       ConfigRuleInvokedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ResultRecordedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Annotation = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_conformance_pack_compliance_details(
-#'   ConformancePackName = "string",
-#'   Filters = list(
-#'     ConfigRuleNames = list(
-#'       "string"
-#'     ),
-#'     ComplianceType = "COMPLIANT"|"NON_COMPLIANT",
-#'     ResourceType = "string",
-#'     ResourceIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3617,42 +1787,14 @@ configservice_get_conformance_pack_compliance_details <- function(ConformancePac
 #' cumulative compliance results of all the rules in that conformance pack
 #'
 #' @description
-#' Returns compliance details for the conformance pack based on the
-#' cumulative compliance results of all the rules in that conformance pack.
+#' Returns compliance details for the conformance pack based on the cumulative compliance results of all the rules in that conformance pack.
 #'
-#' @usage
-#' configservice_get_conformance_pack_compliance_summary(
-#'   ConformancePackNames, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/get_conformance_pack_compliance_summary.html](https://paws-r.github.io/docs/configservice/get_conformance_pack_compliance_summary.html) for full documentation.
 #'
 #' @param ConformancePackNames &#91;required&#93; Names of conformance packs.
 #' @param Limit The maximum number of conformance packs returned on each page.
 #' @param NextToken The nextToken string returned on a previous page that you use to get the
 #' next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConformancePackComplianceSummaryList = list(
-#'     list(
-#'       ConformancePackName = "string",
-#'       ConformancePackComplianceStatus = "COMPLIANT"|"NON_COMPLIANT"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_conformance_pack_compliance_summary(
-#'   ConformancePackNames = list(
-#'     "string"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3674,100 +1816,61 @@ configservice_get_conformance_pack_compliance_summary <- function(ConformancePac
 }
 .configservice$operations$get_conformance_pack_compliance_summary <- configservice_get_conformance_pack_compliance_summary
 
-#' Returns the resource types, the number of each resource type, and the
-#' total number of resources that AWS Config is recording in this region
-#' for your AWS account
+#' Returns the policy definition containing the logic for your Config
+#' Custom Policy rule
 #'
 #' @description
-#' Returns the resource types, the number of each resource type, and the
-#' total number of resources that AWS Config is recording in this region
-#' for your AWS account.
-#' 
-#' **Example**
-#' 
-#' 1.  AWS Config is recording three resource types in the US East (Ohio)
-#'     Region for your account: 25 EC2 instances, 20 IAM users, and 15 S3
-#'     buckets.
-#' 
-#' 2.  You make a call to the
-#'     [`get_discovered_resource_counts`][configservice_get_discovered_resource_counts]
-#'     action and specify that you want all resource types.
-#' 
-#' 3.  AWS Config returns the following:
-#' 
-#'     -   The resource types (EC2 instances, IAM users, and S3 buckets).
-#' 
-#'     -   The number of each resource type (25, 20, and 15).
-#' 
-#'     -   The total number of all resources (60).
-#' 
-#' The response is paginated. By default, AWS Config lists 100
-#' ResourceCount objects on each page. You can customize this number with
-#' the `limit` parameter. The response includes a `nextToken` string. To
-#' get the next page of results, run the request again and specify the
-#' string for the `nextToken` parameter.
-#' 
-#' If you make a call to the
-#' [`get_discovered_resource_counts`][configservice_get_discovered_resource_counts]
-#' action, you might not immediately receive resource counts in the
-#' following situations:
-#' 
-#' -   You are a new AWS Config customer.
-#' 
-#' -   You just enabled resource recording.
-#' 
-#' It might take a few minutes for AWS Config to record and count your
-#' resources. Wait a few minutes and then retry the
-#' [`get_discovered_resource_counts`][configservice_get_discovered_resource_counts]
-#' action.
+#' Returns the policy definition containing the logic for your Config Custom Policy rule.
 #'
-#' @usage
-#' configservice_get_discovered_resource_counts(resourceTypes, limit,
-#'   nextToken)
+#' See [https://paws-r.github.io/docs/configservice/get_custom_rule_policy.html](https://paws-r.github.io/docs/configservice/get_custom_rule_policy.html) for full documentation.
+#'
+#' @param ConfigRuleName The name of your Config Custom Policy rule.
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_get_custom_rule_policy
+configservice_get_custom_rule_policy <- function(ConfigRuleName = NULL) {
+  op <- new_operation(
+    name = "GetCustomRulePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$get_custom_rule_policy_input(ConfigRuleName = ConfigRuleName)
+  output <- .configservice$get_custom_rule_policy_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$get_custom_rule_policy <- configservice_get_custom_rule_policy
+
+#' Returns the resource types, the number of each resource type, and the
+#' total number of resources that Config is recording in this region for
+#' your Amazon Web Services account
+#'
+#' @description
+#' Returns the resource types, the number of each resource type, and the total number of resources that Config is recording in this region for your Amazon Web Services account.
+#'
+#' See [https://paws-r.github.io/docs/configservice/get_discovered_resource_counts.html](https://paws-r.github.io/docs/configservice/get_discovered_resource_counts.html) for full documentation.
 #'
 #' @param resourceTypes The comma-separated list that specifies the resource types that you want
-#' AWS Config to return (for example, `"AWS::EC2::Instance"`,
+#' Config to return (for example, `"AWS::EC2::Instance"`,
 #' `"AWS::IAM::User"`).
 #' 
-#' If a value for `resourceTypes` is not specified, AWS Config returns all
-#' resource types that AWS Config is recording in the region for your
-#' account.
+#' If a value for `resourceTypes` is not specified, Config returns all
+#' resource types that Config is recording in the region for your account.
 #' 
-#' If the configuration recorder is turned off, AWS Config returns an empty
+#' If the configuration recorder is turned off, Config returns an empty
 #' list of ResourceCount objects. If the configuration recorder is not
 #' recording a specific resource type (for example, S3 buckets), that
 #' resource type is not returned in the list of ResourceCount objects.
 #' @param limit The maximum number of ResourceCount objects returned on each page. The
 #' default is 100. You cannot specify a number greater than 100. If you
-#' specify 0, AWS Config uses the default.
+#' specify 0, Config uses the default.
 #' @param nextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   totalDiscoveredResources = 123,
-#'   resourceCounts = list(
-#'     list(
-#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'       count = 123
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_discovered_resource_counts(
-#'   resourceTypes = list(
-#'     "string"
-#'   ),
-#'   limit = 123,
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3790,57 +1893,21 @@ configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, l
 .configservice$operations$get_discovered_resource_counts <- configservice_get_discovered_resource_counts
 
 #' Returns detailed status for each member account within an organization
-#' for a given organization config rule
+#' for a given organization Config rule
 #'
 #' @description
-#' Returns detailed status for each member account within an organization
-#' for a given organization config rule.
+#' Returns detailed status for each member account within an organization for a given organization Config rule.
 #'
-#' @usage
-#' configservice_get_organization_config_rule_detailed_status(
-#'   OrganizationConfigRuleName, Filters, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/get_organization_config_rule_detailed_status.html](https://paws-r.github.io/docs/configservice/get_organization_config_rule_detailed_status.html) for full documentation.
 #'
-#' @param OrganizationConfigRuleName &#91;required&#93; The name of organization config rule for which you want status details
-#' for member accounts.
+#' @param OrganizationConfigRuleName &#91;required&#93; The name of your organization Config rule for which you want status
+#' details for member accounts.
 #' @param Filters A `StatusDetailFilters` object.
 #' @param Limit The maximum number of `OrganizationConfigRuleDetailedStatus` returned on
-#' each page. If you do not specify a number, AWS Config uses the default.
-#' The default is 100.
+#' each page. If you do not specify a number, Config uses the default. The
+#' default is 100.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OrganizationConfigRuleDetailedStatus = list(
-#'     list(
-#'       AccountId = "string",
-#'       ConfigRuleName = "string",
-#'       MemberAccountRuleStatus = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string",
-#'       LastUpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_organization_config_rule_detailed_status(
-#'   OrganizationConfigRuleName = "string",
-#'   Filters = list(
-#'     AccountId = "string",
-#'     MemberAccountRuleStatus = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3866,54 +1933,18 @@ configservice_get_organization_config_rule_detailed_status <- function(Organizat
 #' for a given organization conformance pack
 #'
 #' @description
-#' Returns detailed status for each member account within an organization
-#' for a given organization conformance pack.
+#' Returns detailed status for each member account within an organization for a given organization conformance pack.
 #'
-#' @usage
-#' configservice_get_organization_conformance_pack_detailed_status(
-#'   OrganizationConformancePackName, Filters, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/get_organization_conformance_pack_detailed_status.html](https://paws-r.github.io/docs/configservice/get_organization_conformance_pack_detailed_status.html) for full documentation.
 #'
 #' @param OrganizationConformancePackName &#91;required&#93; The name of organization conformance pack for which you want status
 #' details for member accounts.
 #' @param Filters An `OrganizationResourceDetailedStatusFilters` object.
 #' @param Limit The maximum number of `OrganizationConformancePackDetailedStatuses`
-#' returned on each page. If you do not specify a number, AWS Config uses
-#' the default. The default is 100.
+#' returned on each page. If you do not specify a number, Config uses the
+#' default. The default is 100.
 #' @param NextToken The nextToken string returned on a previous page that you use to get the
 #' next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OrganizationConformancePackDetailedStatuses = list(
-#'     list(
-#'       AccountId = "string",
-#'       ConformancePackName = "string",
-#'       Status = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED",
-#'       ErrorCode = "string",
-#'       ErrorMessage = "string",
-#'       LastUpdateTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_organization_conformance_pack_detailed_status(
-#'   OrganizationConformancePackName = "string",
-#'   Filters = list(
-#'     AccountId = "string",
-#'     Status = "CREATE_SUCCESSFUL"|"CREATE_IN_PROGRESS"|"CREATE_FAILED"|"DELETE_SUCCESSFUL"|"DELETE_FAILED"|"DELETE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_IN_PROGRESS"|"UPDATE_FAILED"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3935,30 +1966,42 @@ configservice_get_organization_conformance_pack_detailed_status <- function(Orga
 }
 .configservice$operations$get_organization_conformance_pack_detailed_status <- configservice_get_organization_conformance_pack_detailed_status
 
-#' Returns a list of configuration items for the specified resource
+#' Returns the policy definition containing the logic for your organization
+#' Config Custom Policy rule
 #'
 #' @description
-#' Returns a list of configuration items for the specified resource. The
-#' list contains details about each state of the resource during the
-#' specified time interval. If you specified a retention period to retain
-#' your `ConfigurationItems` between a minimum of 30 days and a maximum of
-#' 7 years (2557 days), AWS Config returns the `ConfigurationItems` for the
-#' specified retention period.
-#' 
-#' The response is paginated. By default, AWS Config returns a limit of 10
-#' configuration items per page. You can customize this number with the
-#' `limit` parameter. The response includes a `nextToken` string. To get
-#' the next page of results, run the request again and specify the string
-#' for the `nextToken` parameter.
-#' 
-#' Each call to the API is limited to span a duration of seven days. It is
-#' likely that the number of records returned is smaller than the specified
-#' `limit`. In such cases, you can make another call, using the
-#' `nextToken`.
+#' Returns the policy definition containing the logic for your organization Config Custom Policy rule.
 #'
-#' @usage
-#' configservice_get_resource_config_history(resourceType, resourceId,
-#'   laterTime, earlierTime, chronologicalOrder, limit, nextToken)
+#' See [https://paws-r.github.io/docs/configservice/get_organization_custom_rule_policy.html](https://paws-r.github.io/docs/configservice/get_organization_custom_rule_policy.html) for full documentation.
+#'
+#' @param OrganizationConfigRuleName &#91;required&#93; The name of your organization Config Custom Policy rule.
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_get_organization_custom_rule_policy
+configservice_get_organization_custom_rule_policy <- function(OrganizationConfigRuleName) {
+  op <- new_operation(
+    name = "GetOrganizationCustomRulePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$get_organization_custom_rule_policy_input(OrganizationConfigRuleName = OrganizationConfigRuleName)
+  output <- .configservice$get_organization_custom_rule_policy_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$get_organization_custom_rule_policy <- configservice_get_organization_custom_rule_policy
+
+#' Returns a list of ConfigurationItems for the specified resource
+#'
+#' @description
+#' Returns a list of `ConfigurationItems` for the specified resource. The list contains details about each state of the resource during the specified time interval. If you specified a retention period to retain your `ConfigurationItems` between a minimum of 30 days and a maximum of 7 years (2557 days), Config returns the `ConfigurationItems` for the specified retention period.
+#'
+#' See [https://paws-r.github.io/docs/configservice/get_resource_config_history.html](https://paws-r.github.io/docs/configservice/get_resource_config_history.html) for full documentation.
 #'
 #' @param resourceType &#91;required&#93; The resource type.
 #' @param resourceId &#91;required&#93; The ID of the resource (for example., `sg-xxxxxx`).
@@ -3971,73 +2014,9 @@ configservice_get_organization_conformance_pack_detailed_status <- function(Orga
 #' results are listed in reverse chronological order.
 #' @param limit The maximum number of configuration items returned on each page. The
 #' default is 10. You cannot specify a number greater than 100. If you
-#' specify 0, AWS Config uses the default.
+#' specify 0, Config uses the default.
 #' @param nextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   configurationItems = list(
-#'     list(
-#'       version = "string",
-#'       accountId = "string",
-#'       configurationItemCaptureTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       configurationItemStatus = "OK"|"ResourceDiscovered"|"ResourceNotRecorded"|"ResourceDeleted"|"ResourceDeletedNotRecorded",
-#'       configurationStateId = "string",
-#'       configurationItemMD5Hash = "string",
-#'       arn = "string",
-#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'       resourceId = "string",
-#'       resourceName = "string",
-#'       awsRegion = "string",
-#'       availabilityZone = "string",
-#'       resourceCreationTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       tags = list(
-#'         "string"
-#'       ),
-#'       relatedEvents = list(
-#'         "string"
-#'       ),
-#'       relationships = list(
-#'         list(
-#'           resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'           resourceId = "string",
-#'           resourceName = "string",
-#'           relationshipName = "string"
-#'         )
-#'       ),
-#'       configuration = "string",
-#'       supplementaryConfiguration = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_resource_config_history(
-#'   resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'   resourceId = "string",
-#'   laterTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   earlierTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   chronologicalOrder = "Reverse"|"Forward",
-#'   limit = 123,
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4064,31 +2043,9 @@ configservice_get_resource_config_history <- function(resourceType, resourceId, 
 #' @description
 #' Returns the details of a specific stored query.
 #'
-#' @usage
-#' configservice_get_stored_query(QueryName)
+#' See [https://paws-r.github.io/docs/configservice/get_stored_query.html](https://paws-r.github.io/docs/configservice/get_stored_query.html) for full documentation.
 #'
 #' @param QueryName &#91;required&#93; The name of the query.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   StoredQuery = list(
-#'     QueryId = "string",
-#'     QueryArn = "string",
-#'     QueryName = "string",
-#'     Description = "string",
-#'     Expression = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_stored_query(
-#'   QueryName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4114,63 +2071,18 @@ configservice_get_stored_query <- function(QueryName) {
 #' are aggregated for a specific resource type across accounts and regions
 #'
 #' @description
-#' Accepts a resource type and returns a list of resource identifiers that
-#' are aggregated for a specific resource type across accounts and regions.
-#' A resource identifier includes the resource type, ID, (if available) the
-#' custom resource name, source account, and source region. You can narrow
-#' the results to include only resources that have specific resource IDs,
-#' or a resource name, or source account ID, or source region.
-#' 
-#' For example, if the input consists of accountID 12345678910 and the
-#' region is us-east-1 for resource type `AWS::EC2::Instance` then the API
-#' returns all the EC2 instance identifiers of accountID 12345678910 and
-#' region us-east-1.
+#' Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions. A resource identifier includes the resource type, ID, (if available) the custom resource name, source account, and source region. You can narrow the results to include only resources that have specific resource IDs, or a resource name, or source account ID, or source region.
 #'
-#' @usage
-#' configservice_list_aggregate_discovered_resources(
-#'   ConfigurationAggregatorName, ResourceType, Filters, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/list_aggregate_discovered_resources.html](https://paws-r.github.io/docs/configservice/list_aggregate_discovered_resources.html) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
-#' @param ResourceType &#91;required&#93; The type of resources that you want AWS Config to list in the response.
+#' @param ResourceType &#91;required&#93; The type of resources that you want Config to list in the response.
 #' @param Filters Filters the results based on the `ResourceFilters` object.
-#' @param Limit The maximum number of resource identifiers returned on each page. The
-#' default is 100. You cannot specify a number greater than 100. If you
-#' specify 0, AWS Config uses the default.
+#' @param Limit The maximum number of resource identifiers returned on each page. You
+#' cannot specify a number greater than 100. If you specify 0, Config uses
+#' the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ResourceIdentifiers = list(
-#'     list(
-#'       SourceAccountId = "string",
-#'       SourceRegion = "string",
-#'       ResourceId = "string",
-#'       ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'       ResourceName = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_aggregate_discovered_resources(
-#'   ConfigurationAggregatorName = "string",
-#'   ResourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'   Filters = list(
-#'     AccountId = "string",
-#'     ResourceId = "string",
-#'     ResourceName = "string",
-#'     Region = "string"
-#'   ),
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4192,77 +2104,75 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
 }
 .configservice$operations$list_aggregate_discovered_resources <- configservice_list_aggregate_discovered_resources
 
+#' Returns a list of conformance pack compliance scores
+#'
+#' @description
+#' Returns a list of conformance pack compliance scores. A compliance score is the percentage of the number of compliant rule-resource combinations in a conformance pack compared to the number of total possible rule-resource combinations in the conformance pack. This metric provides you with a high-level view of the compliance state of your conformance packs, and can be used to identify, investigate, and understand the level of compliance in your conformance packs.
+#'
+#' See [https://paws-r.github.io/docs/configservice/list_conformance_pack_compliance_scores.html](https://paws-r.github.io/docs/configservice/list_conformance_pack_compliance_scores.html) for full documentation.
+#'
+#' @param Filters Filters the results based on the
+#' `ConformancePackComplianceScoresFilters`.
+#' @param SortOrder Determines the order in which conformance pack compliance scores are
+#' sorted. Either in ascending or descending order.
+#' 
+#' Conformance packs with a compliance score of `INSUFFICIENT_DATA` will be
+#' first when sorting by ascending order and last when sorting by
+#' descending order.
+#' @param SortBy Sorts your conformance pack compliance scores in either ascending or
+#' descending order, depending on `SortOrder`.
+#' 
+#' By default, conformance pack compliance scores are sorted in ascending
+#' order by compliance score and alphabetically by name of the conformance
+#' pack if there is more than one conformance pack with the same compliance
+#' score.
+#' @param Limit The maximum number of conformance pack compliance scores returned on
+#' each page.
+#' @param NextToken The `nextToken` string in a prior request that you can use to get the
+#' paginated response for next set of conformance pack compliance scores.
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_list_conformance_pack_compliance_scores
+configservice_list_conformance_pack_compliance_scores <- function(Filters = NULL, SortOrder = NULL, SortBy = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListConformancePackComplianceScores",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$list_conformance_pack_compliance_scores_input(Filters = Filters, SortOrder = SortOrder, SortBy = SortBy, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$list_conformance_pack_compliance_scores_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$list_conformance_pack_compliance_scores <- configservice_list_conformance_pack_compliance_scores
+
 #' Accepts a resource type and returns a list of resource identifiers for
 #' the resources of that type
 #'
 #' @description
-#' Accepts a resource type and returns a list of resource identifiers for
-#' the resources of that type. A resource identifier includes the resource
-#' type, ID, and (if available) the custom resource name. The results
-#' consist of resources that AWS Config has discovered, including those
-#' that AWS Config is not currently recording. You can narrow the results
-#' to include only resources that have specific resource IDs or a resource
-#' name.
-#' 
-#' You can specify either resource IDs or a resource name, but not both, in
-#' the same request.
-#' 
-#' The response is paginated. By default, AWS Config lists 100 resource
-#' identifiers on each page. You can customize this number with the `limit`
-#' parameter. The response includes a `nextToken` string. To get the next
-#' page of results, run the request again and specify the string for the
-#' `nextToken` parameter.
+#' Accepts a resource type and returns a list of resource identifiers for the resources of that type. A resource identifier includes the resource type, ID, and (if available) the custom resource name. The results consist of resources that Config has discovered, including those that Config is not currently recording. You can narrow the results to include only resources that have specific resource IDs or a resource name.
 #'
-#' @usage
-#' configservice_list_discovered_resources(resourceType, resourceIds,
-#'   resourceName, limit, includeDeletedResources, nextToken)
+#' See [https://paws-r.github.io/docs/configservice/list_discovered_resources.html](https://paws-r.github.io/docs/configservice/list_discovered_resources.html) for full documentation.
 #'
-#' @param resourceType &#91;required&#93; The type of resources that you want AWS Config to list in the response.
-#' @param resourceIds The IDs of only those resources that you want AWS Config to list in the
-#' response. If you do not specify this parameter, AWS Config lists all
+#' @param resourceType &#91;required&#93; The type of resources that you want Config to list in the response.
+#' @param resourceIds The IDs of only those resources that you want Config to list in the
+#' response. If you do not specify this parameter, Config lists all
 #' resources of the specified type that it has discovered.
-#' @param resourceName The custom name of only those resources that you want AWS Config to list
-#' in the response. If you do not specify this parameter, AWS Config lists
-#' all resources of the specified type that it has discovered.
+#' @param resourceName The custom name of only those resources that you want Config to list in
+#' the response. If you do not specify this parameter, Config lists all
+#' resources of the specified type that it has discovered.
 #' @param limit The maximum number of resource identifiers returned on each page. The
 #' default is 100. You cannot specify a number greater than 100. If you
-#' specify 0, AWS Config uses the default.
-#' @param includeDeletedResources Specifies whether AWS Config includes deleted resources in the results.
-#' By default, deleted resources are not included.
+#' specify 0, Config uses the default.
+#' @param includeDeletedResources Specifies whether Config includes deleted resources in the results. By
+#' default, deleted resources are not included.
 #' @param nextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   resourceIdentifiers = list(
-#'     list(
-#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'       resourceId = "string",
-#'       resourceName = "string",
-#'       resourceDeletionTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_discovered_resources(
-#'   resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'   resourceIds = list(
-#'     "string"
-#'   ),
-#'   resourceName = "string",
-#'   limit = 123,
-#'   includeDeletedResources = TRUE|FALSE,
-#'   nextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4284,42 +2194,17 @@ configservice_list_discovered_resources <- function(resourceType, resourceIds = 
 }
 .configservice$operations$list_discovered_resources <- configservice_list_discovered_resources
 
-#' List the stored queries for an AWS account in an AWS Region
+#' Lists the stored queries for a single Amazon Web Services account and a
+#' single Amazon Web Services Region
 #'
 #' @description
-#' List the stored queries for an AWS account in an AWS Region. The default
-#' is 100.
+#' Lists the stored queries for a single Amazon Web Services account and a single Amazon Web Services Region. The default is 100.
 #'
-#' @usage
-#' configservice_list_stored_queries(NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/configservice/list_stored_queries.html](https://paws-r.github.io/docs/configservice/list_stored_queries.html) for full documentation.
 #'
 #' @param NextToken The nextToken string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
 #' @param MaxResults The maximum number of results to be returned with a single call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   StoredQueryMetadata = list(
-#'     list(
-#'       QueryId = "string",
-#'       QueryArn = "string",
-#'       QueryName = "string",
-#'       Description = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_stored_queries(
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4341,45 +2226,21 @@ configservice_list_stored_queries <- function(NextToken = NULL, MaxResults = NUL
 }
 .configservice$operations$list_stored_queries <- configservice_list_stored_queries
 
-#' List the tags for AWS Config resource
+#' List the tags for Config resource
 #'
 #' @description
-#' List the tags for AWS Config resource.
+#' List the tags for Config resource.
 #'
-#' @usage
-#' configservice_list_tags_for_resource(ResourceArn, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/list_tags_for_resource.html](https://paws-r.github.io/docs/configservice/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags. Currently, the supported resources are `ConfigRule`,
 #' `ConfigurationAggregator` and `AggregatorAuthorization`.
 #' @param Limit The maximum number of tags returned on each page. The limit maximum is
-#' 50. You cannot specify a number greater than 50. If you specify 0, AWS
+#' 50. You cannot specify a number greater than 50. If you specify 0,
 #' Config uses the default.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string",
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4405,45 +2266,13 @@ configservice_list_tags_for_resource <- function(ResourceArn, Limit = NULL, Next
 #' source account and region
 #'
 #' @description
-#' Authorizes the aggregator account and region to collect data from the
-#' source account and region.
+#' Authorizes the aggregator account and region to collect data from the source account and region.
 #'
-#' @usage
-#' configservice_put_aggregation_authorization(AuthorizedAccountId,
-#'   AuthorizedAwsRegion, Tags)
+#' See [https://paws-r.github.io/docs/configservice/put_aggregation_authorization.html](https://paws-r.github.io/docs/configservice/put_aggregation_authorization.html) for full documentation.
 #'
 #' @param AuthorizedAccountId &#91;required&#93; The 12-digit account ID of the account authorized to aggregate data.
 #' @param AuthorizedAwsRegion &#91;required&#93; The region authorized to collect aggregated data.
 #' @param Tags An array of tag object.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AggregationAuthorization = list(
-#'     AggregationAuthorizationArn = "string",
-#'     AuthorizedAccountId = "string",
-#'     AuthorizedAwsRegion = "string",
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_aggregation_authorization(
-#'   AuthorizedAccountId = "string",
-#'   AuthorizedAwsRegion = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4465,100 +2294,16 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 }
 .configservice$operations$put_aggregation_authorization <- configservice_put_aggregation_authorization
 
-#' Adds or updates an AWS Config rule for evaluating whether your AWS
+#' Adds or updates an Config rule to evaluate if your Amazon Web Services
 #' resources comply with your desired configurations
 #'
 #' @description
-#' Adds or updates an AWS Config rule for evaluating whether your AWS
-#' resources comply with your desired configurations.
-#' 
-#' You can use this action for custom AWS Config rules and AWS managed
-#' Config rules. A custom AWS Config rule is a rule that you develop and
-#' maintain. An AWS managed Config rule is a customizable, predefined rule
-#' that AWS Config provides.
-#' 
-#' If you are adding a new custom AWS Config rule, you must first create
-#' the AWS Lambda function that the rule invokes to evaluate your
-#' resources. When you use the
-#' [`put_config_rule`][configservice_put_config_rule] action to add the
-#' rule to AWS Config, you must specify the Amazon Resource Name (ARN) that
-#' AWS Lambda assigns to the function. Specify the ARN for the
-#' `SourceIdentifier` key. This key is part of the `Source` object, which
-#' is part of the `ConfigRule` object.
-#' 
-#' If you are adding an AWS managed Config rule, specify the rule's
-#' identifier for the `SourceIdentifier` key. To reference AWS managed
-#' Config rule identifiers, see [About AWS Managed Config
-#' Rules](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
-#' 
-#' For any new rule that you add, specify the `ConfigRuleName` in the
-#' `ConfigRule` object. Do not specify the `ConfigRuleArn` or the
-#' `ConfigRuleId`. These values are generated by AWS Config for new rules.
-#' 
-#' If you are updating a rule that you added previously, you can specify
-#' the rule by `ConfigRuleName`, `ConfigRuleId`, or `ConfigRuleArn` in the
-#' `ConfigRule` data type that you use in this request.
-#' 
-#' The maximum number of rules that AWS Config supports is 150.
-#' 
-#' For information about requesting a rule limit increase, see [AWS Config
-#' Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config)
-#' in the *AWS General Reference Guide*.
-#' 
-#' For more information about developing and using AWS Config rules, see
-#' [Evaluating AWS Resource Configurations with AWS
-#' Config](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
-#' in the *AWS Config Developer Guide*.
+#' Adds or updates an Config rule to evaluate if your Amazon Web Services resources comply with your desired configurations. For information on how many Config rules you can have per account, see [**Service Limits**](https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html) in the *Config Developer Guide*.
 #'
-#' @usage
-#' configservice_put_config_rule(ConfigRule, Tags)
+#' See [https://paws-r.github.io/docs/configservice/put_config_rule.html](https://paws-r.github.io/docs/configservice/put_config_rule.html) for full documentation.
 #'
 #' @param ConfigRule &#91;required&#93; The rule that you want to add to your account.
 #' @param Tags An array of tag object.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_config_rule(
-#'   ConfigRule = list(
-#'     ConfigRuleName = "string",
-#'     ConfigRuleArn = "string",
-#'     ConfigRuleId = "string",
-#'     Description = "string",
-#'     Scope = list(
-#'       ComplianceResourceTypes = list(
-#'         "string"
-#'       ),
-#'       TagKey = "string",
-#'       TagValue = "string",
-#'       ComplianceResourceId = "string"
-#'     ),
-#'     Source = list(
-#'       Owner = "CUSTOM_LAMBDA"|"AWS",
-#'       SourceIdentifier = "string",
-#'       SourceDetails = list(
-#'         list(
-#'           EventSource = "aws.config",
-#'           MessageType = "ConfigurationItemChangeNotification"|"ConfigurationSnapshotDeliveryCompleted"|"ScheduledNotification"|"OversizedConfigurationItemChangeNotification",
-#'           MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
-#'         )
-#'       )
-#'     ),
-#'     InputParameters = "string",
-#'     MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
-#'     ConfigRuleState = "ACTIVE"|"DELETING"|"DELETING_RESULTS"|"EVALUATING",
-#'     CreatedBy = "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4584,93 +2329,14 @@ configservice_put_config_rule <- function(ConfigRule, Tags = NULL) {
 #' source accounts and regions
 #'
 #' @description
-#' Creates and updates the configuration aggregator with the selected
-#' source accounts and regions. The source account can be individual
-#' account(s) or an organization.
-#' 
-#' AWS Config should be enabled in source accounts and regions you want to
-#' aggregate.
-#' 
-#' If your source type is an organization, you must be signed in to the
-#' master account and all features must be enabled in your organization.
-#' AWS Config calls `EnableAwsServiceAccess` API to enable integration
-#' between AWS Config and AWS Organizations.
+#' Creates and updates the configuration aggregator with the selected source accounts and regions. The source account can be individual account(s) or an organization.
 #'
-#' @usage
-#' configservice_put_configuration_aggregator(ConfigurationAggregatorName,
-#'   AccountAggregationSources, OrganizationAggregationSource, Tags)
+#' See [https://paws-r.github.io/docs/configservice/put_configuration_aggregator.html](https://paws-r.github.io/docs/configservice/put_configuration_aggregator.html) for full documentation.
 #'
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param AccountAggregationSources A list of AccountAggregationSource object.
 #' @param OrganizationAggregationSource An OrganizationAggregationSource object.
 #' @param Tags An array of tag object.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConfigurationAggregator = list(
-#'     ConfigurationAggregatorName = "string",
-#'     ConfigurationAggregatorArn = "string",
-#'     AccountAggregationSources = list(
-#'       list(
-#'         AccountIds = list(
-#'           "string"
-#'         ),
-#'         AllAwsRegions = TRUE|FALSE,
-#'         AwsRegions = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     OrganizationAggregationSource = list(
-#'       RoleArn = "string",
-#'       AwsRegions = list(
-#'         "string"
-#'       ),
-#'       AllAwsRegions = TRUE|FALSE
-#'     ),
-#'     CreationTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CreatedBy = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_configuration_aggregator(
-#'   ConfigurationAggregatorName = "string",
-#'   AccountAggregationSources = list(
-#'     list(
-#'       AccountIds = list(
-#'         "string"
-#'       ),
-#'       AllAwsRegions = TRUE|FALSE,
-#'       AwsRegions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   OrganizationAggregationSource = list(
-#'     RoleArn = "string",
-#'     AwsRegions = list(
-#'       "string"
-#'     ),
-#'     AllAwsRegions = TRUE|FALSE
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4696,45 +2362,12 @@ configservice_put_configuration_aggregator <- function(ConfigurationAggregatorNa
 #' configurations
 #'
 #' @description
-#' Creates a new configuration recorder to record the selected resource
-#' configurations.
-#' 
-#' You can use this action to change the role `roleARN` or the
-#' `recordingGroup` of an existing recorder. To change the role, call the
-#' action on the existing configuration recorder and specify a role.
-#' 
-#' Currently, you can specify only one configuration recorder per region in
-#' your account.
-#' 
-#' If `ConfigurationRecorder` does not have the **recordingGroup**
-#' parameter specified, the default is to record all supported resource
-#' types.
+#' Creates a new configuration recorder to record the selected resource configurations.
 #'
-#' @usage
-#' configservice_put_configuration_recorder(ConfigurationRecorder)
+#' See [https://paws-r.github.io/docs/configservice/put_configuration_recorder.html](https://paws-r.github.io/docs/configservice/put_configuration_recorder.html) for full documentation.
 #'
 #' @param ConfigurationRecorder &#91;required&#93; The configuration recorder object that records each configuration change
 #' made to the resources.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_configuration_recorder(
-#'   ConfigurationRecorder = list(
-#'     name = "string",
-#'     roleARN = "string",
-#'     recordingGroup = list(
-#'       allSupported = TRUE|FALSE,
-#'       includeGlobalResourceTypes = TRUE|FALSE,
-#'       resourceTypes = list(
-#'         "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4759,22 +2392,9 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder) {
 #' Creates or updates a conformance pack
 #'
 #' @description
-#' Creates or updates a conformance pack. A conformance pack is a
-#' collection of AWS Config rules that can be easily deployed in an account
-#' and a region and across AWS Organization.
-#' 
-#' This API creates a service linked role `AWSServiceRoleForConfigConforms`
-#' in your account. The service linked role is created only when the role
-#' does not exist in your account.
-#' 
-#' You must specify either the `TemplateS3Uri` or the `TemplateBody`
-#' parameter, but not both. If you provide both AWS Config uses the
-#' `TemplateS3Uri` parameter and ignores the `TemplateBody` parameter.
+#' Creates or updates a conformance pack. A conformance pack is a collection of Config rules that can be easily deployed in an account and a region and across Amazon Web Services Organization. For information on how many conformance packs you can have per account, see [**Service Limits**](https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html) in the Config Developer Guide.
 #'
-#' @usage
-#' configservice_put_conformance_pack(ConformancePackName, TemplateS3Uri,
-#'   TemplateBody, DeliveryS3Bucket, DeliveryS3KeyPrefix,
-#'   ConformancePackInputParameters)
+#' See [https://paws-r.github.io/docs/configservice/put_conformance_pack.html](https://paws-r.github.io/docs/configservice/put_conformance_pack.html) for full documentation.
 #'
 #' @param ConformancePackName &#91;required&#93; Name of the conformance pack you want to create.
 #' @param TemplateS3Uri Location of file containing the template body
@@ -4787,37 +2407,17 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder) {
 #' containing the template body with a minimum length of 1 byte and a
 #' maximum length of 51,200 bytes.
 #' 
-#' You can only use a YAML template with one resource type, that is, config
-#' rule and a remediation action.
-#' @param DeliveryS3Bucket AWS Config stores intermediate files while processing conformance pack
-#' template.
+#' You can only use a YAML template with two resource types: Config rule
+#' (`AWS::Config::ConfigRule`) and a remediation action
+#' (`AWS::Config::RemediationConfiguration`).
+#' @param DeliveryS3Bucket The name of the Amazon S3 bucket where Config stores conformance pack
+#' templates.
+#' 
+#' This field is optional.
 #' @param DeliveryS3KeyPrefix The prefix for the Amazon S3 bucket.
+#' 
+#' This field is optional.
 #' @param ConformancePackInputParameters A list of `ConformancePackInputParameter` objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ConformancePackArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_conformance_pack(
-#'   ConformancePackName = "string",
-#'   TemplateS3Uri = "string",
-#'   TemplateBody = "string",
-#'   DeliveryS3Bucket = "string",
-#'   DeliveryS3KeyPrefix = "string",
-#'   ConformancePackInputParameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4843,45 +2443,13 @@ configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Ur
 #' to an Amazon S3 bucket and Amazon SNS topic
 #'
 #' @description
-#' Creates a delivery channel object to deliver configuration information
-#' to an Amazon S3 bucket and Amazon SNS topic.
-#' 
-#' Before you can create a delivery channel, you must create a
-#' configuration recorder.
-#' 
-#' You can use this action to change the Amazon S3 bucket or an Amazon SNS
-#' topic of the existing delivery channel. To change the Amazon S3 bucket
-#' or an Amazon SNS topic, call this action and specify the changed values
-#' for the S3 bucket and the SNS topic. If you specify a different value
-#' for either the S3 bucket or the SNS topic, this action will keep the
-#' existing value for the parameter that is not changed.
-#' 
-#' You can have only one delivery channel per region in your account.
+#' Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic.
 #'
-#' @usage
-#' configservice_put_delivery_channel(DeliveryChannel)
+#' See [https://paws-r.github.io/docs/configservice/put_delivery_channel.html](https://paws-r.github.io/docs/configservice/put_delivery_channel.html) for full documentation.
 #'
 #' @param DeliveryChannel &#91;required&#93; The configuration delivery channel object that delivers the
 #' configuration information to an Amazon S3 bucket and to an Amazon SNS
 #' topic.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_delivery_channel(
-#'   DeliveryChannel = list(
-#'     name = "string",
-#'     s3BucketName = "string",
-#'     s3KeyPrefix = "string",
-#'     snsTopicARN = "string",
-#'     configSnapshotDeliveryProperties = list(
-#'       deliveryFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4903,69 +2471,28 @@ configservice_put_delivery_channel <- function(DeliveryChannel) {
 }
 .configservice$operations$put_delivery_channel <- configservice_put_delivery_channel
 
-#' Used by an AWS Lambda function to deliver evaluation results to AWS
-#' Config
+#' Used by an Lambda function to deliver evaluation results to Config
 #'
 #' @description
-#' Used by an AWS Lambda function to deliver evaluation results to AWS
-#' Config. This action is required in every AWS Lambda function that is
-#' invoked by an AWS Config rule.
+#' Used by an Lambda function to deliver evaluation results to Config. This action is required in every Lambda function that is invoked by an Config rule.
 #'
-#' @usage
-#' configservice_put_evaluations(Evaluations, ResultToken, TestMode)
+#' See [https://paws-r.github.io/docs/configservice/put_evaluations.html](https://paws-r.github.io/docs/configservice/put_evaluations.html) for full documentation.
 #'
-#' @param Evaluations The assessments that the AWS Lambda function performs. Each evaluation
-#' identifies an AWS resource and indicates whether it complies with the
-#' AWS Config rule that invokes the AWS Lambda function.
-#' @param ResultToken &#91;required&#93; An encrypted token that associates an evaluation with an AWS Config
-#' rule. Identifies the rule and the event that triggered the evaluation.
+#' @param Evaluations The assessments that the Lambda function performs. Each evaluation
+#' identifies an Amazon Web Services resource and indicates whether it
+#' complies with the Config rule that invokes the Lambda function.
+#' @param ResultToken &#91;required&#93; An encrypted token that associates an evaluation with an Config rule.
+#' Identifies the rule and the event that triggered the evaluation.
 #' @param TestMode Use this parameter to specify a test run for
 #' [`put_evaluations`][configservice_put_evaluations]. You can verify
-#' whether your AWS Lambda function will deliver evaluation results to AWS
-#' Config. No updates occur to your existing evaluations, and evaluation
-#' results are not sent to AWS Config.
+#' whether your Lambda function will deliver evaluation results to Config.
+#' No updates occur to your existing evaluations, and evaluation results
+#' are not sent to Config.
 #' 
 #' When `TestMode` is `true`,
 #' [`put_evaluations`][configservice_put_evaluations] doesn't require a
 #' valid value for the `ResultToken` parameter, but the value cannot be
 #' null.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedEvaluations = list(
-#'     list(
-#'       ComplianceResourceType = "string",
-#'       ComplianceResourceId = "string",
-#'       ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-#'       Annotation = "string",
-#'       OrderingTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_evaluations(
-#'   Evaluations = list(
-#'     list(
-#'       ComplianceResourceType = "string",
-#'       ComplianceResourceId = "string",
-#'       ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-#'       Annotation = "string",
-#'       OrderingTimestamp = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   ResultToken = "string",
-#'   TestMode = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4987,36 +2514,15 @@ configservice_put_evaluations <- function(Evaluations = NULL, ResultToken, TestM
 }
 .configservice$operations$put_evaluations <- configservice_put_evaluations
 
-#' Put external evaluation
+#' Add or updates the evaluations for process checks
 #'
 #' @description
-#' Put external evaluation
+#' Add or updates the evaluations for process checks. This API checks if the rule is a process check when the name of the Config rule is provided.
 #'
-#' @usage
-#' configservice_put_external_evaluation(ConfigRuleName,
-#'   ExternalEvaluation)
+#' See [https://paws-r.github.io/docs/configservice/put_external_evaluation.html](https://paws-r.github.io/docs/configservice/put_external_evaluation.html) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; 
-#' @param ExternalEvaluation &#91;required&#93; 
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_external_evaluation(
-#'   ConfigRuleName = "string",
-#'   ExternalEvaluation = list(
-#'     ComplianceResourceType = "string",
-#'     ComplianceResourceId = "string",
-#'     ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-#'     Annotation = "string",
-#'     OrderingTimestamp = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule.
+#' @param ExternalEvaluation &#91;required&#93; An `ExternalEvaluation` object that provides details about compliance.
 #'
 #' @keywords internal
 #'
@@ -5038,119 +2544,49 @@ configservice_put_external_evaluation <- function(ConfigRuleName, ExternalEvalua
 }
 .configservice$operations$put_external_evaluation <- configservice_put_external_evaluation
 
-#' Adds or updates organization config rule for your entire organization
-#' evaluating whether your AWS resources comply with your desired
+#' Adds or updates an Config rule for your entire organization to evaluate
+#' if your Amazon Web Services resources comply with your desired
 #' configurations
 #'
 #' @description
-#' Adds or updates organization config rule for your entire organization
-#' evaluating whether your AWS resources comply with your desired
-#' configurations.
-#' 
-#' Only a master account and a delegated administrator can create or update
-#' an organization config rule. When calling this API with a delegated
-#' administrator, you must ensure AWS Organizations
-#' `ListDelegatedAdministrator` permissions are added.
-#' 
-#' This API enables organization service access through the
-#' `EnableAWSServiceAccess` action and creates a service linked role
-#' `AWSServiceRoleForConfigMultiAccountSetup` in the master or delegated
-#' administrator account of your organization. The service linked role is
-#' created only when the role does not exist in the caller account. AWS
-#' Config verifies the existence of role with `GetRole` action.
-#' 
-#' To use this API with delegated administrator, register a delegated
-#' administrator by calling AWS Organization
-#' `register-delegated-administrator` for
-#' `config-multiaccountsetup.amazonaws.com`.
-#' 
-#' You can use this action to create both custom AWS Config rules and AWS
-#' managed Config rules. If you are adding a new custom AWS Config rule,
-#' you must first create AWS Lambda function in the master account or a
-#' delegated administrator that the rule invokes to evaluate your
-#' resources. When you use the
-#' [`put_organization_config_rule`][configservice_put_organization_config_rule]
-#' action to add the rule to AWS Config, you must specify the Amazon
-#' Resource Name (ARN) that AWS Lambda assigns to the function. If you are
-#' adding an AWS managed Config rule, specify the rule's identifier for the
-#' `RuleIdentifier` key.
-#' 
-#' The maximum number of organization config rules that AWS Config supports
-#' is 150 and 3 delegated administrator per organization.
-#' 
-#' Prerequisite: Ensure you call `EnableAllFeatures` API to enable all
-#' features in an organization.
-#' 
-#' Specify either `OrganizationCustomRuleMetadata` or
-#' `OrganizationManagedRuleMetadata`.
+#' Adds or updates an Config rule for your entire organization to evaluate if your Amazon Web Services resources comply with your desired configurations. For information on how many organization Config rules you can have per account, see [**Service Limits**](https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html) in the *Config Developer Guide*.
 #'
-#' @usage
-#' configservice_put_organization_config_rule(OrganizationConfigRuleName,
-#'   OrganizationManagedRuleMetadata, OrganizationCustomRuleMetadata,
-#'   ExcludedAccounts)
+#' See [https://paws-r.github.io/docs/configservice/put_organization_config_rule.html](https://paws-r.github.io/docs/configservice/put_organization_config_rule.html) for full documentation.
 #'
-#' @param OrganizationConfigRuleName &#91;required&#93; The name that you assign to an organization config rule.
-#' @param OrganizationManagedRuleMetadata An `OrganizationManagedRuleMetadata` object.
-#' @param OrganizationCustomRuleMetadata An `OrganizationCustomRuleMetadata` object.
+#' @param OrganizationConfigRuleName &#91;required&#93; The name that you assign to an organization Config rule.
+#' @param OrganizationManagedRuleMetadata An `OrganizationManagedRuleMetadata` object. This object specifies
+#' organization managed rule metadata such as resource type and ID of
+#' Amazon Web Services resource along with the rule identifier. It also
+#' provides the frequency with which you want Config to run evaluations for
+#' the rule if the trigger type is periodic.
+#' @param OrganizationCustomRuleMetadata An `OrganizationCustomRuleMetadata` object. This object specifies
+#' organization custom rule metadata such as resource type, resource ID of
+#' Amazon Web Services resource, Lambda function ARN, and organization
+#' trigger types that trigger Config to evaluate your Amazon Web Services
+#' resources against a rule. It also provides the frequency with which you
+#' want Config to run evaluations for the rule if the trigger type is
+#' periodic.
 #' @param ExcludedAccounts A comma-separated list of accounts that you want to exclude from an
-#' organization config rule.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OrganizationConfigRuleArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_organization_config_rule(
-#'   OrganizationConfigRuleName = "string",
-#'   OrganizationManagedRuleMetadata = list(
-#'     Description = "string",
-#'     RuleIdentifier = "string",
-#'     InputParameters = "string",
-#'     MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
-#'     ResourceTypesScope = list(
-#'       "string"
-#'     ),
-#'     ResourceIdScope = "string",
-#'     TagKeyScope = "string",
-#'     TagValueScope = "string"
-#'   ),
-#'   OrganizationCustomRuleMetadata = list(
-#'     Description = "string",
-#'     LambdaFunctionArn = "string",
-#'     OrganizationConfigRuleTriggerTypes = list(
-#'       "ConfigurationItemChangeNotification"|"OversizedConfigurationItemChangeNotification"|"ScheduledNotification"
-#'     ),
-#'     InputParameters = "string",
-#'     MaximumExecutionFrequency = "One_Hour"|"Three_Hours"|"Six_Hours"|"Twelve_Hours"|"TwentyFour_Hours",
-#'     ResourceTypesScope = list(
-#'       "string"
-#'     ),
-#'     ResourceIdScope = "string",
-#'     TagKeyScope = "string",
-#'     TagValueScope = "string"
-#'   ),
-#'   ExcludedAccounts = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' organization Config rule.
+#' @param OrganizationCustomPolicyRuleMetadata An `OrganizationCustomPolicyRuleMetadata` object. This object specifies
+#' metadata for your organization's Config Custom Policy rule. The metadata
+#' includes the runtime system in use, which accounts have debug logging
+#' enabled, and other custom rule metadata, such as resource type, resource
+#' ID of Amazon Web Services resource, and organization trigger types that
+#' initiate Config to evaluate Amazon Web Services resources against a
+#' rule.
 #'
 #' @keywords internal
 #'
 #' @rdname configservice_put_organization_config_rule
-configservice_put_organization_config_rule <- function(OrganizationConfigRuleName, OrganizationManagedRuleMetadata = NULL, OrganizationCustomRuleMetadata = NULL, ExcludedAccounts = NULL) {
+configservice_put_organization_config_rule <- function(OrganizationConfigRuleName, OrganizationManagedRuleMetadata = NULL, OrganizationCustomRuleMetadata = NULL, ExcludedAccounts = NULL, OrganizationCustomPolicyRuleMetadata = NULL) {
   op <- new_operation(
     name = "PutOrganizationConfigRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .configservice$put_organization_config_rule_input(OrganizationConfigRuleName = OrganizationConfigRuleName, OrganizationManagedRuleMetadata = OrganizationManagedRuleMetadata, OrganizationCustomRuleMetadata = OrganizationCustomRuleMetadata, ExcludedAccounts = ExcludedAccounts)
+  input <- .configservice$put_organization_config_rule_input(OrganizationConfigRuleName = OrganizationConfigRuleName, OrganizationManagedRuleMetadata = OrganizationManagedRuleMetadata, OrganizationCustomRuleMetadata = OrganizationCustomRuleMetadata, ExcludedAccounts = ExcludedAccounts, OrganizationCustomPolicyRuleMetadata = OrganizationCustomPolicyRuleMetadata)
   output <- .configservice$put_organization_config_rule_output()
   config <- get_config()
   svc <- .configservice$service(config)
@@ -5160,44 +2596,13 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 }
 .configservice$operations$put_organization_config_rule <- configservice_put_organization_config_rule
 
-#' Deploys conformance packs across member accounts in an AWS Organization
+#' Deploys conformance packs across member accounts in an Amazon Web
+#' Services Organization
 #'
 #' @description
-#' Deploys conformance packs across member accounts in an AWS Organization.
-#' 
-#' Only a master account and a delegated administrator can call this API.
-#' When calling this API with a delegated administrator, you must ensure
-#' AWS Organizations `ListDelegatedAdministrator` permissions are added.
-#' 
-#' This API enables organization service access for
-#' `config-multiaccountsetup.amazonaws.com` through the
-#' `EnableAWSServiceAccess` action and creates a service linked role
-#' `AWSServiceRoleForConfigMultiAccountSetup` in the master or delegated
-#' administrator account of your organization. The service linked role is
-#' created only when the role does not exist in the caller account. To use
-#' this API with delegated administrator, register a delegated
-#' administrator by calling AWS Organization `register-delegate-admin` for
-#' `config-multiaccountsetup.amazonaws.com`.
-#' 
-#' Prerequisite: Ensure you call `EnableAllFeatures` API to enable all
-#' features in an organization.
-#' 
-#' You must specify either the `TemplateS3Uri` or the `TemplateBody`
-#' parameter, but not both. If you provide both AWS Config uses the
-#' `TemplateS3Uri` parameter and ignores the `TemplateBody` parameter.
-#' 
-#' AWS Config sets the state of a conformance pack to CREATE_IN_PROGRESS
-#' and UPDATE_IN_PROGRESS until the conformance pack is created or
-#' updated. You cannot update a conformance pack while it is in this state.
-#' 
-#' You can create 6 conformance packs with 25 AWS Config rules in each pack
-#' and 3 delegated administrator per organization.
+#' Deploys conformance packs across member accounts in an Amazon Web Services Organization. For information on how many organization conformance packs and how many Config rules you can have per account, see [**Service Limits**](https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html) in the Config Developer Guide.
 #'
-#' @usage
-#' configservice_put_organization_conformance_pack(
-#'   OrganizationConformancePackName, TemplateS3Uri, TemplateBody,
-#'   DeliveryS3Bucket, DeliveryS3KeyPrefix, ConformancePackInputParameters,
-#'   ExcludedAccounts)
+#' See [https://paws-r.github.io/docs/configservice/put_organization_conformance_pack.html](https://paws-r.github.io/docs/configservice/put_organization_conformance_pack.html) for full documentation.
 #'
 #' @param OrganizationConformancePackName &#91;required&#93; Name of the organization conformance pack you want to create.
 #' @param TemplateS3Uri Location of file containing the template body. The uri must point to the
@@ -5207,46 +2612,17 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' @param TemplateBody A string containing full conformance pack template body. Structure
 #' containing the template body with a minimum length of 1 byte and a
 #' maximum length of 51,200 bytes.
-#' @param DeliveryS3Bucket Location of an Amazon S3 bucket where AWS Config can deliver evaluation
-#' results. AWS Config stores intermediate files while processing
-#' conformance pack template.
+#' @param DeliveryS3Bucket The name of the Amazon S3 bucket where Config stores conformance pack
+#' templates.
 #' 
-#' The delivery bucket name should start with awsconfigconforms. For
-#' example: "Resource": "arn:aws:s3:::your_bucket_name/*". For more
-#' information, see [Permissions for cross account bucket
-#' access](https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html).
+#' This field is optional. If used, it must be prefixed with
+#' `awsconfigconforms`.
 #' @param DeliveryS3KeyPrefix The prefix for the Amazon S3 bucket.
+#' 
+#' This field is optional.
 #' @param ConformancePackInputParameters A list of `ConformancePackInputParameter` objects.
-#' @param ExcludedAccounts A list of AWS accounts to be excluded from an organization conformance
-#' pack while deploying a conformance pack.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OrganizationConformancePackArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_organization_conformance_pack(
-#'   OrganizationConformancePackName = "string",
-#'   TemplateS3Uri = "string",
-#'   TemplateBody = "string",
-#'   DeliveryS3Bucket = "string",
-#'   DeliveryS3KeyPrefix = "string",
-#'   ConformancePackInputParameters = list(
-#'     list(
-#'       ParameterName = "string",
-#'       ParameterValue = "string"
-#'     )
-#'   ),
-#'   ExcludedAccounts = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param ExcludedAccounts A list of Amazon Web Services accounts to be excluded from an
+#' organization conformance pack while deploying a conformance pack.
 #'
 #' @keywords internal
 #'
@@ -5268,111 +2644,15 @@ configservice_put_organization_conformance_pack <- function(OrganizationConforma
 }
 .configservice$operations$put_organization_conformance_pack <- configservice_put_organization_conformance_pack
 
-#' Adds or updates the remediation configuration with a specific AWS Config
+#' Adds or updates the remediation configuration with a specific Config
 #' rule with the selected target or action
 #'
 #' @description
-#' Adds or updates the remediation configuration with a specific AWS Config
-#' rule with the selected target or action. The API creates the
-#' `RemediationConfiguration` object for the AWS Config rule. The AWS
-#' Config rule must already exist for you to add a remediation
-#' configuration. The target (SSM document) must exist and have permissions
-#' to use the target.
-#' 
-#' If you make backward incompatible changes to the SSM document, you must
-#' call this again to ensure the remediations can run.
-#' 
-#' This API does not support adding remediation configurations for
-#' service-linked AWS Config Rules such as Organization Config rules, the
-#' rules deployed by conformance packs, and rules deployed by AWS Security
-#' Hub.
+#' Adds or updates the remediation configuration with a specific Config rule with the selected target or action. The API creates the `RemediationConfiguration` object for the Config rule. The Config rule must already exist for you to add a remediation configuration. The target (SSM document) must exist and have permissions to use the target.
 #'
-#' @usage
-#' configservice_put_remediation_configurations(RemediationConfigurations)
+#' See [https://paws-r.github.io/docs/configservice/put_remediation_configurations.html](https://paws-r.github.io/docs/configservice/put_remediation_configurations.html) for full documentation.
 #'
 #' @param RemediationConfigurations &#91;required&#93; A list of remediation configuration objects.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedBatches = list(
-#'     list(
-#'       FailureMessage = "string",
-#'       FailedItems = list(
-#'         list(
-#'           ConfigRuleName = "string",
-#'           TargetType = "SSM_DOCUMENT",
-#'           TargetId = "string",
-#'           TargetVersion = "string",
-#'           Parameters = list(
-#'             list(
-#'               ResourceValue = list(
-#'                 Value = "RESOURCE_ID"
-#'               ),
-#'               StaticValue = list(
-#'                 Values = list(
-#'                   "string"
-#'                 )
-#'               )
-#'             )
-#'           ),
-#'           ResourceType = "string",
-#'           Automatic = TRUE|FALSE,
-#'           ExecutionControls = list(
-#'             SsmControls = list(
-#'               ConcurrentExecutionRatePercentage = 123,
-#'               ErrorPercentage = 123
-#'             )
-#'           ),
-#'           MaximumAutomaticAttempts = 123,
-#'           RetryAttemptSeconds = 123,
-#'           Arn = "string",
-#'           CreatedByService = "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_remediation_configurations(
-#'   RemediationConfigurations = list(
-#'     list(
-#'       ConfigRuleName = "string",
-#'       TargetType = "SSM_DOCUMENT",
-#'       TargetId = "string",
-#'       TargetVersion = "string",
-#'       Parameters = list(
-#'         list(
-#'           ResourceValue = list(
-#'             Value = "RESOURCE_ID"
-#'           ),
-#'           StaticValue = list(
-#'             Values = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       ResourceType = "string",
-#'       Automatic = TRUE|FALSE,
-#'       ExecutionControls = list(
-#'         SsmControls = list(
-#'           ConcurrentExecutionRatePercentage = 123,
-#'           ErrorPercentage = 123
-#'         )
-#'       ),
-#'       MaximumAutomaticAttempts = 123,
-#'       RetryAttemptSeconds = 123,
-#'       Arn = "string",
-#'       CreatedByService = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5398,66 +2678,17 @@ configservice_put_remediation_configurations <- function(RemediationConfiguratio
 #' considered for auto-remediation
 #'
 #' @description
-#' A remediation exception is when a specific resource is no longer
-#' considered for auto-remediation. This API adds a new exception or
-#' updates an exisiting exception for a specific resource with a specific
-#' AWS Config rule.
-#' 
-#' AWS Config generates a remediation exception when a problem occurs
-#' executing a remediation action to a specific resource. Remediation
-#' exceptions blocks auto-remediation until the exception is cleared.
+#' A remediation exception is when a specific resource is no longer considered for auto-remediation. This API adds a new exception or updates an existing exception for a specific resource with a specific Config rule.
 #'
-#' @usage
-#' configservice_put_remediation_exceptions(ConfigRuleName, ResourceKeys,
-#'   Message, ExpirationTime)
+#' See [https://paws-r.github.io/docs/configservice/put_remediation_exceptions.html](https://paws-r.github.io/docs/configservice/put_remediation_exceptions.html) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; The name of the AWS Config rule for which you want to create remediation
+#' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want to create remediation
 #' exception.
 #' @param ResourceKeys &#91;required&#93; An exception list of resource exception keys to be processed with the
-#' current request. AWS Config adds exception for each resource key. For
-#' example, AWS Config adds 3 exceptions for 3 resource keys.
+#' current request. Config adds exception for each resource key. For
+#' example, Config adds 3 exceptions for 3 resource keys.
 #' @param Message The message contains an explanation of the exception.
 #' @param ExpirationTime The exception is automatically deleted after the expiration date.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailedBatches = list(
-#'     list(
-#'       FailureMessage = "string",
-#'       FailedItems = list(
-#'         list(
-#'           ConfigRuleName = "string",
-#'           ResourceType = "string",
-#'           ResourceId = "string",
-#'           Message = "string",
-#'           ExpirationTime = as.POSIXct(
-#'             "2015-01-01"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_remediation_exceptions(
-#'   ConfigRuleName = "string",
-#'   ResourceKeys = list(
-#'     list(
-#'       ResourceType = "string",
-#'       ResourceId = "string"
-#'     )
-#'   ),
-#'   Message = "string",
-#'   ExpirationTime = as.POSIXct(
-#'     "2015-01-01"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5482,59 +2713,29 @@ configservice_put_remediation_exceptions <- function(ConfigRuleName, ResourceKey
 #' Records the configuration state for the resource provided in the request
 #'
 #' @description
-#' Records the configuration state for the resource provided in the
-#' request. The configuration state of a resource is represented in AWS
-#' Config as Configuration Items. Once this API records the configuration
-#' item, you can retrieve the list of configuration items for the custom
-#' resource type using existing AWS Config APIs.
-#' 
-#' The custom resource type must be registered with AWS CloudFormation.
-#' This API accepts the configuration item registered with AWS
-#' CloudFormation.
-#' 
-#' When you call this API, AWS Config only stores configuration state of
-#' the resource provided in the request. This API does not change or
-#' remediate the configuration of the resource.
-#' 
-#' Write-only schema properites are not recorded as part of the published
-#' configuration item.
+#' Records the configuration state for the resource provided in the request. The configuration state of a resource is represented in Config as Configuration Items. Once this API records the configuration item, you can retrieve the list of configuration items for the custom resource type using existing Config APIs.
 #'
-#' @usage
-#' configservice_put_resource_config(ResourceType, SchemaVersionId,
-#'   ResourceId, ResourceName, Configuration, Tags)
+#' See [https://paws-r.github.io/docs/configservice/put_resource_config.html](https://paws-r.github.io/docs/configservice/put_resource_config.html) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; The type of the resource. The custom resource type must be registered
-#' with AWS CloudFormation.
+#' with CloudFormation.
 #' 
-#' You cannot use the organization names “aws”, “amzn”, “amazon”, “alexa”,
+#' You cannot use the organization names “amzn”, “amazon”, “alexa”,
 #' “custom” with custom resource types. It is the first part of the
 #' ResourceType up to the first ::.
-#' @param SchemaVersionId &#91;required&#93; Version of the schema registered for the ResourceType in AWS
-#' CloudFormation.
+#' @param SchemaVersionId &#91;required&#93; Version of the schema registered for the ResourceType in CloudFormation.
 #' @param ResourceId &#91;required&#93; Unique identifier of the resource.
 #' @param ResourceName Name of the resource.
 #' @param Configuration &#91;required&#93; The configuration object of the resource in valid JSON format. It must
-#' match the schema registered with AWS CloudFormation.
+#' match the schema registered with CloudFormation.
 #' 
 #' The configuration JSON must not exceed 64 KB.
 #' @param Tags Tags associated with the resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_resource_config(
-#'   ResourceType = "string",
-#'   SchemaVersionId = "string",
-#'   ResourceId = "string",
-#'   ResourceName = "string",
-#'   Configuration = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' 
+#' This field is not to be confused with the Amazon Web Services-wide tag
+#' feature for Amazon Web Services resources. Tags for
+#' [`put_resource_config`][configservice_put_resource_config] are tags that
+#' you supply for the configuration items of your custom resources.
 #'
 #' @keywords internal
 #'
@@ -5557,44 +2758,17 @@ configservice_put_resource_config <- function(ResourceType, SchemaVersionId, Res
 .configservice$operations$put_resource_config <- configservice_put_resource_config
 
 #' Creates and updates the retention configuration with details about
-#' retention period (number of days) that AWS Config stores your historical
+#' retention period (number of days) that Config stores your historical
 #' information
 #'
 #' @description
-#' Creates and updates the retention configuration with details about
-#' retention period (number of days) that AWS Config stores your historical
-#' information. The API creates the `RetentionConfiguration` object and
-#' names the object as **default**. When you have a
-#' `RetentionConfiguration` object named **default**, calling the API
-#' modifies the default object.
-#' 
-#' Currently, AWS Config supports only one retention configuration per
-#' region in your account.
+#' Creates and updates the retention configuration with details about retention period (number of days) that Config stores your historical information. The API creates the `RetentionConfiguration` object and names the object as **default**. When you have a `RetentionConfiguration` object named **default**, calling the API modifies the default object.
 #'
-#' @usage
-#' configservice_put_retention_configuration(RetentionPeriodInDays)
+#' See [https://paws-r.github.io/docs/configservice/put_retention_configuration.html](https://paws-r.github.io/docs/configservice/put_retention_configuration.html) for full documentation.
 #'
-#' @param RetentionPeriodInDays &#91;required&#93; Number of days AWS Config stores your historical information.
+#' @param RetentionPeriodInDays &#91;required&#93; Number of days Config stores your historical information.
 #' 
 #' Currently, only applicable to the configuration item history.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RetentionConfiguration = list(
-#'     Name = "string",
-#'     RetentionPeriodInDays = 123
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_retention_configuration(
-#'   RetentionPeriodInDays = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5619,43 +2793,17 @@ configservice_put_retention_configuration <- function(RetentionPeriodInDays) {
 #' Saves a new query or updates an existing saved query
 #'
 #' @description
-#' Saves a new query or updates an existing saved query. The `QueryName`
-#' must be unique for an AWS account in an AWS Region. You can create upto
-#' 300 queries in an AWS account in an AWS Region.
+#' Saves a new query or updates an existing saved query. The `QueryName` must be unique for a single Amazon Web Services account and a single Amazon Web Services Region. You can create upto 300 queries in a single Amazon Web Services account and a single Amazon Web Services Region.
 #'
-#' @usage
-#' configservice_put_stored_query(StoredQuery, Tags)
+#' See [https://paws-r.github.io/docs/configservice/put_stored_query.html](https://paws-r.github.io/docs/configservice/put_stored_query.html) for full documentation.
 #'
 #' @param StoredQuery &#91;required&#93; A list of `StoredQuery` objects. The mandatory fields are `QueryName`
 #' and `Expression`.
+#' 
+#' When you are creating a query, you must provide a query name and an
+#' expression. When you are updating a query, you must provide a query name
+#' but updating the description is optional.
 #' @param Tags A list of `Tags` object.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   QueryArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$put_stored_query(
-#'   StoredQuery = list(
-#'     QueryId = "string",
-#'     QueryArn = "string",
-#'     QueryName = "string",
-#'     Description = "string",
-#'     Expression = "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5678,60 +2826,22 @@ configservice_put_stored_query <- function(StoredQuery, Tags = NULL) {
 .configservice$operations$put_stored_query <- configservice_put_stored_query
 
 #' Accepts a structured query language (SQL) SELECT command and an
-#' aggregator to query configuration state of AWS resources across multiple
-#' accounts and regions, performs the corresponding search, and returns
-#' resource configurations matching the properties
+#' aggregator to query configuration state of Amazon Web Services resources
+#' across multiple accounts and regions, performs the corresponding search,
+#' and returns resource configurations matching the properties
 #'
 #' @description
-#' Accepts a structured query language (SQL) SELECT command and an
-#' aggregator to query configuration state of AWS resources across multiple
-#' accounts and regions, performs the corresponding search, and returns
-#' resource configurations matching the properties.
-#' 
-#' For more information about query components, see the [**Query
-#' Components**](https://docs.aws.amazon.com/config/latest/developerguide/query-components.html)
-#' section in the AWS Config Developer Guide.
+#' Accepts a structured query language (SQL) SELECT command and an aggregator to query configuration state of Amazon Web Services resources across multiple accounts and regions, performs the corresponding search, and returns resource configurations matching the properties.
 #'
-#' @usage
-#' configservice_select_aggregate_resource_config(Expression,
-#'   ConfigurationAggregatorName, Limit, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/select_aggregate_resource_config.html](https://paws-r.github.io/docs/configservice/select_aggregate_resource_config.html) for full documentation.
 #'
 #' @param Expression &#91;required&#93; The SQL query SELECT command.
 #' @param ConfigurationAggregatorName &#91;required&#93; The name of the configuration aggregator.
 #' @param Limit The maximum number of query results returned on each page.
-#' @param MaxResults The maximum number of query results returned on each page. AWS Config
-#' also allows the Limit request parameter.
+#' @param MaxResults The maximum number of query results returned on each page. Config also
+#' allows the Limit request parameter.
 #' @param NextToken The nextToken string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Results = list(
-#'     "string"
-#'   ),
-#'   QueryInfo = list(
-#'     SelectFields = list(
-#'       list(
-#'         Name = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$select_aggregate_resource_config(
-#'   Expression = "string",
-#'   ConfigurationAggregatorName = "string",
-#'   Limit = 123,
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5758,48 +2868,14 @@ configservice_select_aggregate_resource_config <- function(Expression, Configura
 #' properties
 #'
 #' @description
-#' Accepts a structured query language (SQL) `SELECT` command, performs the
-#' corresponding search, and returns resource configurations matching the
-#' properties.
-#' 
-#' For more information about query components, see the [**Query
-#' Components**](https://docs.aws.amazon.com/config/latest/developerguide/query-components.html)
-#' section in the AWS Config Developer Guide.
+#' Accepts a structured query language (SQL) `SELECT` command, performs the corresponding search, and returns resource configurations matching the properties.
 #'
-#' @usage
-#' configservice_select_resource_config(Expression, Limit, NextToken)
+#' See [https://paws-r.github.io/docs/configservice/select_resource_config.html](https://paws-r.github.io/docs/configservice/select_resource_config.html) for full documentation.
 #'
 #' @param Expression &#91;required&#93; The SQL query `SELECT` command.
 #' @param Limit The maximum number of query results returned on each page.
 #' @param NextToken The `nextToken` string returned in a previous request that you use to
 #' request the next page of results in a paginated response.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Results = list(
-#'     "string"
-#'   ),
-#'   QueryInfo = list(
-#'     SelectFields = list(
-#'       list(
-#'         Name = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$select_resource_config(
-#'   Expression = "string",
-#'   Limit = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5821,69 +2897,15 @@ configservice_select_resource_config <- function(Expression, Limit = NULL, NextT
 }
 .configservice$operations$select_resource_config <- configservice_select_resource_config
 
-#' Runs an on-demand evaluation for the specified AWS Config rules against
-#' the last known configuration state of the resources
+#' Runs an on-demand evaluation for the specified Config rules against the
+#' last known configuration state of the resources
 #'
 #' @description
-#' Runs an on-demand evaluation for the specified AWS Config rules against
-#' the last known configuration state of the resources. Use
-#' [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
-#' when you want to test that a rule you updated is working as expected.
-#' [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
-#' does not re-record the latest configuration state for your resources. It
-#' re-runs an evaluation against the last known state of your resources.
-#' 
-#' You can specify up to 25 AWS Config rules per request.
-#' 
-#' An existing
-#' [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
-#' call for the specified rules must complete before you can call the API
-#' again. If you chose to have AWS Config stream to an Amazon SNS topic,
-#' you will receive a `ConfigRuleEvaluationStarted` notification when the
-#' evaluation starts.
-#' 
-#' You don't need to call the
-#' [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
-#' API to run an evaluation for a new rule. When you create a rule, AWS
-#' Config evaluates your resources against the rule automatically.
-#' 
-#' The
-#' [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
-#' API is useful if you want to run on-demand evaluations, such as the
-#' following example:
-#' 
-#' 1.  You have a custom rule that evaluates your IAM resources every 24
-#'     hours.
-#' 
-#' 2.  You update your Lambda function to add additional conditions to your
-#'     rule.
-#' 
-#' 3.  Instead of waiting for the next periodic evaluation, you call the
-#'     [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation]
-#'     API.
-#' 
-#' 4.  AWS Config invokes your Lambda function and evaluates your IAM
-#'     resources.
-#' 
-#' 5.  Your custom rule will still run periodic evaluations every 24 hours.
+#' Runs an on-demand evaluation for the specified Config rules against the last known configuration state of the resources. Use [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation] when you want to test that a rule you updated is working as expected. [`start_config_rules_evaluation`][configservice_start_config_rules_evaluation] does not re-record the latest configuration state for your resources. It re-runs an evaluation against the last known state of your resources.
 #'
-#' @usage
-#' configservice_start_config_rules_evaluation(ConfigRuleNames)
+#' See [https://paws-r.github.io/docs/configservice/start_config_rules_evaluation.html](https://paws-r.github.io/docs/configservice/start_config_rules_evaluation.html) for full documentation.
 #'
-#' @param ConfigRuleNames The list of names of AWS Config rules that you want to run evaluations
-#' for.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_config_rules_evaluation(
-#'   ConfigRuleNames = list(
-#'     "string"
-#'   )
-#' )
-#' ```
+#' @param ConfigRuleNames The list of names of Config rules that you want to run evaluations for.
 #'
 #' @keywords internal
 #'
@@ -5905,31 +2927,16 @@ configservice_start_config_rules_evaluation <- function(ConfigRuleNames = NULL) 
 }
 .configservice$operations$start_config_rules_evaluation <- configservice_start_config_rules_evaluation
 
-#' Starts recording configurations of the AWS resources you have selected
-#' to record in your AWS account
+#' Starts recording configurations of the Amazon Web Services resources you
+#' have selected to record in your Amazon Web Services account
 #'
 #' @description
-#' Starts recording configurations of the AWS resources you have selected
-#' to record in your AWS account.
-#' 
-#' You must have created at least one delivery channel to successfully
-#' start the configuration recorder.
+#' Starts recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account.
 #'
-#' @usage
-#' configservice_start_configuration_recorder(ConfigurationRecorderName)
+#' See [https://paws-r.github.io/docs/configservice/start_configuration_recorder.html](https://paws-r.github.io/docs/configservice/start_configuration_recorder.html) for full documentation.
 #'
 #' @param ConfigurationRecorderName &#91;required&#93; The name of the recorder object that records each configuration change
 #' made to the resources.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_configuration_recorder(
-#'   ConfigurationRecorderName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5951,53 +2958,18 @@ configservice_start_configuration_recorder <- function(ConfigurationRecorderName
 }
 .configservice$operations$start_configuration_recorder <- configservice_start_configuration_recorder
 
-#' Runs an on-demand remediation for the specified AWS Config rules against
-#' the last known remediation configuration
+#' Runs an on-demand remediation for the specified Config rules against the
+#' last known remediation configuration
 #'
 #' @description
-#' Runs an on-demand remediation for the specified AWS Config rules against
-#' the last known remediation configuration. It runs an execution against
-#' the current state of your resources. Remediation execution is
-#' asynchronous.
-#' 
-#' You can specify up to 100 resource keys per request. An existing
-#' StartRemediationExecution call for the specified resource keys must
-#' complete before you can call the API again.
+#' Runs an on-demand remediation for the specified Config rules against the last known remediation configuration. It runs an execution against the current state of your resources. Remediation execution is asynchronous.
 #'
-#' @usage
-#' configservice_start_remediation_execution(ConfigRuleName, ResourceKeys)
+#' See [https://paws-r.github.io/docs/configservice/start_remediation_execution.html](https://paws-r.github.io/docs/configservice/start_remediation_execution.html) for full documentation.
 #'
-#' @param ConfigRuleName &#91;required&#93; The list of names of AWS Config rules that you want to run remediation
+#' @param ConfigRuleName &#91;required&#93; The list of names of Config rules that you want to run remediation
 #' execution for.
 #' @param ResourceKeys &#91;required&#93; A list of resource keys to be processed with the current request. Each
 #' element in the list consists of the resource type and resource ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   FailureMessage = "string",
-#'   FailedItems = list(
-#'     list(
-#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'       resourceId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_remediation_execution(
-#'   ConfigRuleName = "string",
-#'   ResourceKeys = list(
-#'     list(
-#'       resourceType = "AWS::EC2::CustomerGateway"|"AWS::EC2::EIP"|"AWS::EC2::Host"|"AWS::EC2::Instance"|"AWS::EC2::InternetGateway"|"AWS::EC2::NetworkAcl"|"AWS::EC2::NetworkInterface"|"AWS::EC2::RouteTable"|"AWS::EC2::SecurityGroup"|"AWS::EC2::Subnet"|"AWS::CloudTrail::Trail"|"AWS::EC2::Volume"|"AWS::EC2::VPC"|"AWS::EC2::VPNConnection"|"AWS::EC2::VPNGateway"|"AWS::EC2::RegisteredHAInstance"|"AWS::EC2::NatGateway"|"AWS::EC2::EgressOnlyInternetGateway"|"AWS::EC2::VPCEndpoint"|"AWS::EC2::VPCEndpointService"|"AWS::EC2::FlowLog"|"AWS::EC2::VPCPeeringConnection"|"AWS::Elasticsearch::Domain"|"AWS::IAM::Group"|"AWS::IAM::Policy"|"AWS::IAM::Role"|"AWS::IAM::User"|"AWS::ElasticLoadBalancingV2::LoadBalancer"|"AWS::ACM::Certificate"|"AWS::RDS::DBInstance"|"AWS::RDS::DBSubnetGroup"|"AWS::RDS::DBSecurityGroup"|"AWS::RDS::DBSnapshot"|"AWS::RDS::DBCluster"|"AWS::RDS::DBClusterSnapshot"|"AWS::RDS::EventSubscription"|"AWS::S3::Bucket"|"AWS::S3::AccountPublicAccessBlock"|"AWS::Redshift::Cluster"|"AWS::Redshift::ClusterSnapshot"|"AWS::Redshift::ClusterParameterGroup"|"AWS::Redshift::ClusterSecurityGroup"|"AWS::Redshift::ClusterSubnetGroup"|"AWS::Redshift::EventSubscription"|"AWS::SSM::ManagedInstanceInventory"|"AWS::CloudWatch::Alarm"|"AWS::CloudFormation::Stack"|"AWS::ElasticLoadBalancing::LoadBalancer"|"AWS::AutoScaling::AutoScalingGroup"|"AWS::AutoScaling::LaunchConfiguration"|"AWS::AutoScaling::ScalingPolicy"|"AWS::AutoScaling::ScheduledAction"|"AWS::DynamoDB::Table"|"AWS::CodeBuild::Project"|"AWS::WAF::RateBasedRule"|"AWS::WAF::Rule"|"AWS::WAF::RuleGroup"|"AWS::WAF::WebACL"|"AWS::WAFRegional::RateBasedRule"|"AWS::WAFRegional::Rule"|"AWS::WAFRegional::RuleGroup"|"AWS::WAFRegional::WebACL"|"AWS::CloudFront::Distribution"|"AWS::CloudFront::StreamingDistribution"|"AWS::Lambda::Function"|"AWS::NetworkFirewall::Firewall"|"AWS::NetworkFirewall::FirewallPolicy"|"AWS::NetworkFirewall::RuleGroup"|"AWS::ElasticBeanstalk::Application"|"AWS::ElasticBeanstalk::ApplicationVersion"|"AWS::ElasticBeanstalk::Environment"|"AWS::WAFv2::WebACL"|"AWS::WAFv2::RuleGroup"|"AWS::WAFv2::IPSet"|"AWS::WAFv2::RegexPatternSet"|"AWS::WAFv2::ManagedRuleSet"|"AWS::XRay::EncryptionConfig"|"AWS::SSM::AssociationCompliance"|"AWS::SSM::PatchCompliance"|"AWS::Shield::Protection"|"AWS::ShieldRegional::Protection"|"AWS::Config::ResourceCompliance"|"AWS::ApiGateway::Stage"|"AWS::ApiGateway::RestApi"|"AWS::ApiGatewayV2::Stage"|"AWS::ApiGatewayV2::Api"|"AWS::CodePipeline::Pipeline"|"AWS::ServiceCatalog::CloudFormationProvisionedProduct"|"AWS::ServiceCatalog::CloudFormationProduct"|"AWS::ServiceCatalog::Portfolio"|"AWS::SQS::Queue"|"AWS::KMS::Key"|"AWS::QLDB::Ledger"|"AWS::SecretsManager::Secret"|"AWS::SNS::Topic"|"AWS::SSM::FileData",
-#'       resourceId = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6019,28 +2991,16 @@ configservice_start_remediation_execution <- function(ConfigRuleName, ResourceKe
 }
 .configservice$operations$start_remediation_execution <- configservice_start_remediation_execution
 
-#' Stops recording configurations of the AWS resources you have selected to
-#' record in your AWS account
+#' Stops recording configurations of the Amazon Web Services resources you
+#' have selected to record in your Amazon Web Services account
 #'
 #' @description
-#' Stops recording configurations of the AWS resources you have selected to
-#' record in your AWS account.
+#' Stops recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account.
 #'
-#' @usage
-#' configservice_stop_configuration_recorder(ConfigurationRecorderName)
+#' See [https://paws-r.github.io/docs/configservice/stop_configuration_recorder.html](https://paws-r.github.io/docs/configservice/stop_configuration_recorder.html) for full documentation.
 #'
 #' @param ConfigurationRecorderName &#91;required&#93; The name of the recorder object that records each configuration change
 #' made to the resources.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_configuration_recorder(
-#'   ConfigurationRecorderName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6066,34 +3026,14 @@ configservice_stop_configuration_recorder <- function(ConfigurationRecorderName)
 #' resourceArn
 #'
 #' @description
-#' Associates the specified tags to a resource with the specified
-#' resourceArn. If existing tags on a resource are not specified in the
-#' request parameters, they are not changed. When a resource is deleted,
-#' the tags associated with that resource are deleted as well.
+#' Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well.
 #'
-#' @usage
-#' configservice_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/configservice/tag_resource.html](https://paws-r.github.io/docs/configservice/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags. Currently, the supported resources are `ConfigRule`,
 #' `ConfigurationAggregator` and `AggregatorAuthorization`.
 #' @param Tags &#91;required&#93; An array of tag object.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6120,26 +3060,12 @@ configservice_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Deletes specified tags from a resource.
 #'
-#' @usage
-#' configservice_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/configservice/untag_resource.html](https://paws-r.github.io/docs/configservice/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource for which to
 #' list the tags. Currently, the supported resources are `ConfigRule`,
 #' `ConfigurationAggregator` and `AggregatorAuthorization`.
 #' @param TagKeys &#91;required&#93; The keys of the tags to be removed.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

@@ -14,75 +14,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{EndpointBatchRequest}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  MessageBody = list(
-    Message = "string",
-    RequestID = "string"
-  )
-)
-}
-}
 \description{
-Creates a new batch of endpoints for an application or updates the
-settings and attributes of a batch of existing endpoints for an
-application. You can also use this operation to define custom attributes
-for a batch of endpoints. If an update includes one or more values for a
-custom attribute, Amazon Pinpoint replaces (overwrites) any existing
-values with the new values.
-}
-\section{Request syntax}{
-\preformatted{svc$update_endpoints_batch(
-  ApplicationId = "string",
-  EndpointBatchRequest = list(
-    Item = list(
-      list(
-        Address = "string",
-        Attributes = list(
-          list(
-            "string"
-          )
-        ),
-        ChannelType = "PUSH"|"GCM"|"APNS"|"APNS_SANDBOX"|"APNS_VOIP"|"APNS_VOIP_SANDBOX"|"ADM"|"SMS"|"VOICE"|"EMAIL"|"BAIDU"|"CUSTOM",
-        Demographic = list(
-          AppVersion = "string",
-          Locale = "string",
-          Make = "string",
-          Model = "string",
-          ModelVersion = "string",
-          Platform = "string",
-          PlatformVersion = "string",
-          Timezone = "string"
-        ),
-        EffectiveDate = "string",
-        EndpointStatus = "string",
-        Id = "string",
-        Location = list(
-          City = "string",
-          Country = "string",
-          Latitude = 123.0,
-          Longitude = 123.0,
-          PostalCode = "string",
-          Region = "string"
-        ),
-        Metrics = list(
-          123.0
-        ),
-        OptOut = "string",
-        RequestId = "string",
-        User = list(
-          UserAttributes = list(
-            list(
-              "string"
-            )
-          ),
-          UserId = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
+Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing endpoints for an application. You can also use this operation to define custom attributes for a batch of endpoints. If an update includes one or more values for a custom attribute, Amazon Pinpoint replaces (overwrites) any existing values with the new values.
 
+See \url{https://paws-r.github.io/docs/pinpoint/update_endpoints_batch.html} for full documentation.
+}
 \keyword{internal}

@@ -5,11 +5,58 @@
 \title{Returns the default engine and system parameter information for the
 specified database engine}
 \usage{
-rds_describe_engine_default_parameters(DBParameterGroupFamily, Filters,
-  MaxRecords, Marker)
+rds_describe_engine_default_parameters(
+  DBParameterGroupFamily,
+  Filters = NULL,
+  MaxRecords = NULL,
+  Marker = NULL
+)
 }
 \arguments{
-\item{DBParameterGroupFamily}{[required] The name of the DB parameter group family.}
+\item{DBParameterGroupFamily}{[required] The name of the DB parameter group family.
+
+Valid Values:
+\itemize{
+\item \code{aurora5.6}
+\item \code{aurora-mysql5.7}
+\item \code{aurora-mysql8.0}
+\item \code{aurora-postgresql10}
+\item \code{aurora-postgresql11}
+\item \code{aurora-postgresql12}
+\item \code{aurora-postgresql13}
+\item \code{mariadb10.2}
+\item \code{mariadb10.3}
+\item \code{mariadb10.4}
+\item \code{mariadb10.5}
+\item \code{mariadb10.6}
+\item \code{mysql5.7}
+\item \code{mysql8.0}
+\item \code{postgres10}
+\item \code{postgres11}
+\item \code{postgres12}
+\item \code{postgres13}
+\item \code{postgres14}
+\item \code{sqlserver-ee-11.0}
+\item \code{sqlserver-ee-12.0}
+\item \code{sqlserver-ee-13.0}
+\item \code{sqlserver-ee-14.0}
+\item \code{sqlserver-ee-15.0}
+\item \code{sqlserver-ex-11.0}
+\item \code{sqlserver-ex-12.0}
+\item \code{sqlserver-ex-13.0}
+\item \code{sqlserver-ex-14.0}
+\item \code{sqlserver-ex-15.0}
+\item \code{sqlserver-se-11.0}
+\item \code{sqlserver-se-12.0}
+\item \code{sqlserver-se-13.0}
+\item \code{sqlserver-se-14.0}
+\item \code{sqlserver-se-15.0}
+\item \code{sqlserver-web-11.0}
+\item \code{sqlserver-web-12.0}
+\item \code{sqlserver-web-13.0}
+\item \code{sqlserver-web-14.0}
+\item \code{sqlserver-web-15.0}
+}}
 
 \item{Filters}{This parameter isn't currently supported.}
 
@@ -27,51 +74,9 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EngineDefaults = list(
-    DBParameterGroupFamily = "string",
-    Marker = "string",
-    Parameters = list(
-      list(
-        ParameterName = "string",
-        ParameterValue = "string",
-        Description = "string",
-        Source = "string",
-        ApplyType = "string",
-        DataType = "string",
-        AllowedValues = "string",
-        IsModifiable = TRUE|FALSE,
-        MinimumEngineVersion = "string",
-        ApplyMethod = "immediate"|"pending-reboot",
-        SupportedEngineModes = list(
-          "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns the default engine and system parameter information for the
-specified database engine.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_engine_default_parameters(
-  DBParameterGroupFamily = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxRecords = 123,
-  Marker = "string"
-)
-}
-}
+Returns the default engine and system parameter information for the specified database engine.
 
+See \url{https://paws-r.github.io/docs/rds/describe_engine_default_parameters.html} for full documentation.
+}
 \keyword{internal}

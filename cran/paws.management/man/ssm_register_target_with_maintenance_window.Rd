@@ -4,8 +4,15 @@
 \alias{ssm_register_target_with_maintenance_window}
 \title{Registers a target with a maintenance window}
 \usage{
-ssm_register_target_with_maintenance_window(WindowId, ResourceType,
-  Targets, OwnerInformation, Name, Description, ClientToken)
+ssm_register_target_with_maintenance_window(
+  WindowId,
+  ResourceType,
+  Targets,
+  OwnerInformation = NULL,
+  Name = NULL,
+  Description = NULL,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{WindowId}{[required] The ID of the maintenance window the target should be registered with.}
@@ -13,42 +20,48 @@ ssm_register_target_with_maintenance_window(WindowId, ResourceType,
 \item{ResourceType}{[required] The type of target being registered with the maintenance window.}
 
 \item{Targets}{[required] The targets to register with the maintenance window. In other words, the
-instances to run commands on when the maintenance window runs.
+managed nodes to run commands on when the maintenance window runs.
 
-You can specify targets using instance IDs, resource group names, or
-tags that have been applied to instances.
+If a single maintenance window task is registered with multiple targets,
+its task invocations occur sequentially and not in parallel. If your
+task must run on multiple targets at the same time, register a task for
+each target individually and assign each task the same priority level.
 
-\strong{Example 1}: Specify instance IDs
+You can specify targets using managed node IDs, resource group names, or
+tags that have been applied to managed nodes.
 
-\verb{Key=InstanceIds,Values=instance-id-1,instance-id-2,instance-id-3 }
+\strong{Example 1}: Specify managed node IDs
 
-\strong{Example 2}: Use tag key-pairs applied to instances
+\verb{Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>,<instance-id-3>}
 
-\verb{Key=tag:my-tag-key,Values=my-tag-value-1,my-tag-value-2 }
+\strong{Example 2}: Use tag key-pairs applied to managed nodes
 
-\strong{Example 3}: Use tag-keys applied to instances
+\verb{Key=tag:<my-tag-key>,Values=<my-tag-value-1>,<my-tag-value-2>}
 
-\verb{Key=tag-key,Values=my-tag-key-1,my-tag-key-2 }
+\strong{Example 3}: Use tag-keys applied to managed nodes
+
+\verb{Key=tag-key,Values=<my-tag-key-1>,<my-tag-key-2>}
 
 \strong{Example 4}: Use resource group names
 
-\verb{Key=resource-groups:Name,Values=resource-group-name }
+\verb{Key=resource-groups:Name,Values=<resource-group-name>}
 
 \strong{Example 5}: Use filters for resource group types
 
-\verb{Key=resource-groups:ResourceTypeFilters,Values=resource-type-1,resource-type-2 }
+\verb{Key=resource-groups:ResourceTypeFilters,Values=<resource-type-1>,<resource-type-2>}
 
 For \code{Key=resource-groups:ResourceTypeFilters}, specify resource types in
 the following format
 
-\verb{Key=resource-groups:ResourceTypeFilters,Values=AWS::EC2::INSTANCE,AWS::EC2::VPC }
+\verb{Key=resource-groups:ResourceTypeFilters,Values=AWS::EC2::INSTANCE,AWS::EC2::VPC}
 
 For more information about these examples formats, including the best
 use case for each one, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html}{Examples: Register targets with a maintenance window}
-in the \emph{AWS Systems Manager User Guide}.}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
-\item{OwnerInformation}{User-provided value that will be included in any CloudWatch events
-raised while running tasks for these targets in this maintenance window.}
+\item{OwnerInformation}{User-provided value that will be included in any Amazon CloudWatch
+Events events raised while running tasks for these targets in this
+maintenance window.}
 
 \item{Name}{An optional name for the target.}
 
@@ -56,33 +69,9 @@ raised while running tasks for these targets in this maintenance window.}
 
 \item{ClientToken}{User-provided idempotency token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowTargetId = "string"
-)
-}
-}
 \description{
 Registers a target with a maintenance window.
-}
-\section{Request syntax}{
-\preformatted{svc$register_target_with_maintenance_window(
-  WindowId = "string",
-  ResourceType = "INSTANCE"|"RESOURCE_GROUP",
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  OwnerInformation = "string",
-  Name = "string",
-  Description = "string",
-  ClientToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/register_target_with_maintenance_window.html} for full documentation.
+}
 \keyword{internal}

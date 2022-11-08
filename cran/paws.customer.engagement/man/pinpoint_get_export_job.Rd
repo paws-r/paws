@@ -13,43 +13,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{JobId}{[required] The unique identifier for the job.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ExportJobResponse = list(
-    ApplicationId = "string",
-    CompletedPieces = 123,
-    CompletionDate = "string",
-    CreationDate = "string",
-    Definition = list(
-      RoleArn = "string",
-      S3UrlPrefix = "string",
-      SegmentId = "string",
-      SegmentVersion = 123
-    ),
-    FailedPieces = 123,
-    Failures = list(
-      "string"
-    ),
-    Id = "string",
-    JobStatus = "CREATED"|"PREPARING_FOR_INITIALIZATION"|"INITIALIZING"|"PROCESSING"|"PENDING_JOB"|"COMPLETING"|"COMPLETED"|"FAILING"|"FAILED",
-    TotalFailures = 123,
-    TotalPieces = 123,
-    TotalProcessed = 123,
-    Type = "string"
-  )
-)
-}
-}
 \description{
-Retrieves information about the status and settings of a specific export
-job for an application.
-}
-\section{Request syntax}{
-\preformatted{svc$get_export_job(
-  ApplicationId = "string",
-  JobId = "string"
-)
-}
-}
+Retrieves information about the status and settings of a specific export job for an application.
 
+See \url{https://paws-r.github.io/docs/pinpoint/get_export_job.html} for full documentation.
+}
 \keyword{internal}

@@ -10,23 +10,9 @@ lightsail_get_relational_database_log_streams(relationalDatabaseName)
 \arguments{
 \item{relationalDatabaseName}{[required] The name of your database for which to get log streams.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  logStreams = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns a list of available log streams for a specific database in
-Amazon Lightsail.
-}
-\section{Request syntax}{
-\preformatted{svc$get_relational_database_log_streams(
-  relationalDatabaseName = "string"
-)
-}
-}
+Returns a list of available log streams for a specific database in Amazon Lightsail.
 
+See \url{https://paws-r.github.io/docs/lightsail/get_relational_database_log_streams.html} for full documentation.
+}
 \keyword{internal}

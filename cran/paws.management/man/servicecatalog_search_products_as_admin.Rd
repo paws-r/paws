@@ -5,8 +5,16 @@
 \title{Gets information about the products for the specified portfolio or all
 products}
 \usage{
-servicecatalog_search_products_as_admin(AcceptLanguage, PortfolioId,
-  Filters, SortBy, SortOrder, PageToken, PageSize, ProductSource)
+servicecatalog_search_products_as_admin(
+  AcceptLanguage = NULL,
+  PortfolioId = NULL,
+  Filters = NULL,
+  SortBy = NULL,
+  SortOrder = NULL,
+  PageToken = NULL,
+  PageSize = NULL,
+  ProductSource = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -32,54 +40,9 @@ results, use null.}
 
 \item{ProductSource}{Access level of the source of the product.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ProductViewDetails = list(
-    list(
-      ProductViewSummary = list(
-        Id = "string",
-        ProductId = "string",
-        Name = "string",
-        Owner = "string",
-        ShortDescription = "string",
-        Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
-        Distributor = "string",
-        HasDefaultPath = TRUE|FALSE,
-        SupportEmail = "string",
-        SupportDescription = "string",
-        SupportUrl = "string"
-      ),
-      Status = "AVAILABLE"|"CREATING"|"FAILED",
-      ProductARN = "string",
-      CreatedTime = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
-Gets information about the products for the specified portfolio or all
-products.
-}
-\section{Request syntax}{
-\preformatted{svc$search_products_as_admin(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  Filters = list(
-    list(
-      "string"
-    )
-  ),
-  SortBy = "Title"|"VersionCount"|"CreationDate",
-  SortOrder = "ASCENDING"|"DESCENDING",
-  PageToken = "string",
-  PageSize = 123,
-  ProductSource = "ACCOUNT"
-)
-}
-}
+Gets information about the products for the specified portfolio or all products.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/search_products_as_admin.html} for full documentation.
+}
 \keyword{internal}

@@ -5,71 +5,35 @@
 \title{Creates a new cost anomaly detection monitor with the requested type and
 monitor specification}
 \usage{
-costexplorer_create_anomaly_monitor(AnomalyMonitor)
+costexplorer_create_anomaly_monitor(AnomalyMonitor, ResourceTags = NULL)
 }
 \arguments{
 \item{AnomalyMonitor}{[required] The cost anomaly detection monitor object that you want to create.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  MonitorArn = "string"
-)
-}
+
+\item{ResourceTags}{An optional list of tags to associate with the specified
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AnomalyMonitor.html}{\code{AnomalyMonitor}}
+. You can use resource tags to control access to your \code{monitor} using
+IAM policies.
+
+Each tag consists of a key and a value, and each key must be unique for
+the resource. The following restrictions apply to resource tags:
+\itemize{
+\item Although the maximum number of array members is 200, you can assign
+a maximum of 50 user-tags to one resource. The remaining are
+reserved for Amazon Web Services use
+\item The maximum length of a key is 128 characters
+\item The maximum length of a value is 256 characters
+\item Keys and values can only contain alphanumeric characters, spaces,
+and any of the following: \verb{_.:/=+@-}
+\item Keys and values are case sensitive
+\item Keys and values are trimmed for any leading or trailing whitespaces
+\item Don’t use \verb{aws:} as a prefix for your keys. This prefix is reserved
+for Amazon Web Services use
+}}
 }
 \description{
-Creates a new cost anomaly detection monitor with the requested type and
-monitor specification.
-}
-\section{Request syntax}{
-\preformatted{svc$create_anomaly_monitor(
-  AnomalyMonitor = list(
-    MonitorArn = "string",
-    MonitorName = "string",
-    CreationDate = "string",
-    LastUpdatedDate = "string",
-    LastEvaluatedDate = "string",
-    MonitorType = "DIMENSIONAL"|"CUSTOM",
-    MonitorDimension = "SERVICE",
-    MonitorSpecification = list(
-      Or = list(
-        list()
-      ),
-      And = list(
-        list()
-      ),
-      Not = list(),
-      Dimensions = list(
-        Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
-        Values = list(
-          "string"
-        ),
-        MatchOptions = list(
-          "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-        )
-      ),
-      Tags = list(
-        Key = "string",
-        Values = list(
-          "string"
-        ),
-        MatchOptions = list(
-          "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-        )
-      ),
-      CostCategories = list(
-        Key = "string",
-        Values = list(
-          "string"
-        ),
-        MatchOptions = list(
-          "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
-        )
-      )
-    ),
-    DimensionalValueCount = 123
-  )
-)
-}
-}
+Creates a new cost anomaly detection monitor with the requested type and monitor specification.
 
+See \url{https://paws-r.github.io/docs/costexplorer/create_anomaly_monitor.html} for full documentation.
+}
 \keyword{internal}

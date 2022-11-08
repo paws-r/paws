@@ -9,61 +9,9 @@ appstream_delete_image(Name)
 \arguments{
 \item{Name}{[required] The name of the image.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Image = list(
-    Name = "string",
-    Arn = "string",
-    BaseImageArn = "string",
-    DisplayName = "string",
-    State = "PENDING"|"AVAILABLE"|"FAILED"|"COPYING"|"DELETING",
-    Visibility = "PUBLIC"|"PRIVATE"|"SHARED",
-    ImageBuilderSupported = TRUE|FALSE,
-    ImageBuilderName = "string",
-    Platform = "WINDOWS"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019",
-    Description = "string",
-    StateChangeReason = list(
-      Code = "INTERNAL_ERROR"|"IMAGE_BUILDER_NOT_AVAILABLE"|"IMAGE_COPY_FAILURE",
-      Message = "string"
-    ),
-    Applications = list(
-      list(
-        Name = "string",
-        DisplayName = "string",
-        IconURL = "string",
-        LaunchPath = "string",
-        LaunchParameters = "string",
-        Enabled = TRUE|FALSE,
-        Metadata = list(
-          "string"
-        )
-      )
-    ),
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    PublicBaseImageReleasedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    AppstreamAgentVersion = "string",
-    ImagePermissions = list(
-      allowFleet = TRUE|FALSE,
-      allowImageBuilder = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Deletes the specified image. You cannot delete an image when it is in
-use. After you delete an image, you cannot provision new capacity using
-the image.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_image(
-  Name = "string"
-)
-}
-}
+Deletes the specified image. You cannot delete an image when it is in use. After you delete an image, you cannot provision new capacity using the image.
 
+See \url{https://paws-r.github.io/docs/appstream/delete_image.html} for full documentation.
+}
 \keyword{internal}

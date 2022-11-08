@@ -2,60 +2,20 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_add_tags}
 \alias{sagemaker_add_tags}
-\title{Adds or overwrites one or more tags for the specified Amazon SageMaker
-resource}
+\title{Adds or overwrites one or more tags for the specified SageMaker resource}
 \usage{
 sagemaker_add_tags(ResourceArn, Tags)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to tag.}
 
-\item{Tags}{[required] An array of key-value pairs. You can use tags to categorize your AWS
-resources in different ways, for example, by purpose, owner, or
-environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
+\item{Tags}{[required] An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}.}
 }
 \description{
-Adds or overwrites one or more tags for the specified Amazon SageMaker
-resource. You can add tags to notebook instances, training jobs,
-hyperparameter tuning jobs, batch transform jobs, models, labeling jobs,
-work teams, endpoint configurations, and endpoints.
+Adds or overwrites one or more tags for the specified SageMaker resource. You can add tags to notebook instances, training jobs, hyperparameter tuning jobs, batch transform jobs, models, labeling jobs, work teams, endpoint configurations, and endpoints.
 
-Each tag consists of a key and an optional value. Tag keys must be
-unique per resource. For more information about tags, see For more
-information, see \href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{AWS Tagging Strategies}.
-
-Tags that you add to a hyperparameter tuning job by calling this API are
-also added to any training jobs that the hyperparameter tuning job
-launches after you call this API, but not to training jobs that the
-hyperparameter tuning job launched before you called this API. To make
-sure that the tags associated with a hyperparameter tuning job are also
-added to all training jobs that the hyperparameter tuning job launches,
-add the tags when you first create the tuning job by specifying them in
-the \code{Tags} parameter of
-\code{\link[=sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job}}
+See \url{https://paws-r.github.io/docs/sagemaker/add_tags.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$add_tags(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

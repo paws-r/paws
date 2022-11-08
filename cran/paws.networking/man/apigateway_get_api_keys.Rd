@@ -4,8 +4,13 @@
 \alias{apigateway_get_api_keys}
 \title{Gets information about the current ApiKeys resource}
 \usage{
-apigateway_get_api_keys(position, limit, nameQuery, customerId,
-  includeValues)
+apigateway_get_api_keys(
+  position = NULL,
+  limit = NULL,
+  nameQuery = NULL,
+  customerId = NULL,
+  includeValues = NULL
+)
 }
 \arguments{
 \item{position}{The current pagination position in the paged result set.}
@@ -21,49 +26,9 @@ such as a developer portal.}
 \item{includeValues}{A boolean flag to specify whether (\code{true}) or not (\code{false}) the result
 contains key values.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  warnings = list(
-    "string"
-  ),
-  position = "string",
-  items = list(
-    list(
-      id = "string",
-      value = "string",
-      name = "string",
-      customerId = "string",
-      description = "string",
-      enabled = TRUE|FALSE,
-      createdDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      lastUpdatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      stageKeys = list(
-        "string"
-      ),
-      tags = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets information about the current ApiKeys resource.
-}
-\section{Request syntax}{
-\preformatted{svc$get_api_keys(
-  position = "string",
-  limit = 123,
-  nameQuery = "string",
-  customerId = "string",
-  includeValues = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_api_keys.html} for full documentation.
+}
 \keyword{internal}

@@ -12,24 +12,9 @@ more information, see arns.}
 
 \item{Name}{[required] The unique name of the typed link facet.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityAttributeOrder = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns the identity attribute order for a specific TypedLinkFacet. For
-more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_typed_link_facet_information(
-  SchemaArn = "string",
-  Name = "string"
-)
-}
-}
+Returns the identity attribute order for a specific TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/get_typed_link_facet_information.html} for full documentation.
+}
 \keyword{internal}

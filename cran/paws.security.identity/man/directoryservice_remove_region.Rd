@@ -11,20 +11,9 @@ directoryservice_remove_region(DirectoryId)
 \item{DirectoryId}{[required] The identifier of the directory for which you want to remove Region
 replication.}
 }
-\value{
-An empty list.
-}
 \description{
-Stops all replication and removes the domain controllers from the
-specified Region. You cannot remove the primary Region with this
-operation. Instead, use the
-\code{\link[=directoryservice_delete_directory]{delete_directory}} API.
-}
-\section{Request syntax}{
-\preformatted{svc$remove_region(
-  DirectoryId = "string"
-)
-}
-}
+Stops all replication and removes the domain controllers from the specified Region. You cannot remove the primary Region with this operation. Instead, use the \code{\link[=directoryservice_delete_directory]{delete_directory}} API.
 
+See \url{https://paws-r.github.io/docs/directoryservice/remove_region.html} for full documentation.
+}
 \keyword{internal}

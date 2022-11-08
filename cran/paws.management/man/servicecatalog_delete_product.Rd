@@ -4,7 +4,7 @@
 \alias{servicecatalog_delete_product}
 \title{Deletes the specified product}
 \usage{
-servicecatalog_delete_product(AcceptLanguage, Id)
+servicecatalog_delete_product(AcceptLanguage = NULL, Id)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -16,23 +16,9 @@ servicecatalog_delete_product(AcceptLanguage, Id)
 
 \item{Id}{[required] The product identifier.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified product.
 
-You cannot delete a product if it was shared with you or is associated
-with a portfolio.
-
-A delegated admin is authorized to invoke this command.
+See \url{https://paws-r.github.io/docs/servicecatalog/delete_product.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_product(
-  AcceptLanguage = "string",
-  Id = "string"
-)
-}
-}
-
 \keyword{internal}

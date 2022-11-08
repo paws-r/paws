@@ -4,37 +4,20 @@
 \alias{apigateway_get_model}
 \title{Describes an existing model defined for a RestApi resource}
 \usage{
-apigateway_get_model(restApiId, modelName, flatten)
+apigateway_get_model(restApiId, modelName, flatten = NULL)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The RestApi identifier under which the Model exists.}
+\item{restApiId}{[required] The RestApi identifier under which the Model exists.}
 
-\item{modelName}{[required] [Required] The name of the model as an identifier.}
+\item{modelName}{[required] The name of the model as an identifier.}
 
 \item{flatten}{A query parameter of a Boolean value to resolve (\code{true}) all external
 model references and returns a flattened model schema or not (\code{false})
 The default is \code{false}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  schema = "string",
-  contentType = "string"
-)
-}
-}
 \description{
 Describes an existing model defined for a RestApi resource.
-}
-\section{Request syntax}{
-\preformatted{svc$get_model(
-  restApiId = "string",
-  modelName = "string",
-  flatten = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_model.html} for full documentation.
+}
 \keyword{internal}

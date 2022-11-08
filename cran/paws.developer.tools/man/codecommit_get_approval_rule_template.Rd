@@ -10,33 +10,9 @@ codecommit_get_approval_rule_template(approvalRuleTemplateName)
 \item{approvalRuleTemplateName}{[required] The name of the approval rule template for which you want to get
 information.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  approvalRuleTemplate = list(
-    approvalRuleTemplateId = "string",
-    approvalRuleTemplateName = "string",
-    approvalRuleTemplateDescription = "string",
-    approvalRuleTemplateContent = "string",
-    ruleContentSha256 = "string",
-    lastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    creationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    lastModifiedUser = "string"
-  )
-)
-}
-}
 \description{
 Returns information about a specified approval rule template.
-}
-\section{Request syntax}{
-\preformatted{svc$get_approval_rule_template(
-  approvalRuleTemplateName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codecommit/get_approval_rule_template.html} for full documentation.
+}
 \keyword{internal}

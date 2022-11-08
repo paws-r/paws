@@ -2,9 +2,14 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_list_resolver_rules}
 \alias{route53resolver_list_resolver_rules}
-\title{Lists the Resolver rules that were created using the current AWS account}
+\title{Lists the Resolver rules that were created using the current Amazon Web
+Services account}
 \usage{
-route53resolver_list_resolver_rules(MaxResults, NextToken, Filters)
+route53resolver_list_resolver_rules(
+  MaxResults = NULL,
+  NextToken = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of Resolver rules that you want to return in the
@@ -30,54 +35,9 @@ If you submit a second or subsequent
 specify the \code{NextToken} parameter, you must use the same values for
 \code{Filters}, if any, as in the previous request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  MaxResults = 123,
-  ResolverRules = list(
-    list(
-      Id = "string",
-      CreatorRequestId = "string",
-      Arn = "string",
-      DomainName = "string",
-      Status = "COMPLETE"|"DELETING"|"UPDATING"|"FAILED",
-      StatusMessage = "string",
-      RuleType = "FORWARD"|"SYSTEM"|"RECURSIVE",
-      Name = "string",
-      TargetIps = list(
-        list(
-          Ip = "string",
-          Port = 123
-        )
-      ),
-      ResolverEndpointId = "string",
-      OwnerId = "string",
-      ShareStatus = "NOT_SHARED"|"SHARED_WITH_ME"|"SHARED_BY_ME",
-      CreationTime = "string",
-      ModificationTime = "string"
-    )
-  )
-)
-}
-}
 \description{
-Lists the Resolver rules that were created using the current AWS
-account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_resolver_rules(
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  )
-)
-}
-}
+Lists the Resolver rules that were created using the current Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/route53resolver/list_resolver_rules.html} for full documentation.
+}
 \keyword{internal}

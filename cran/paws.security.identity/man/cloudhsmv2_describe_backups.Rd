@@ -4,8 +4,12 @@
 \alias{cloudhsmv2_describe_backups}
 \title{Gets information about backups of AWS CloudHSM clusters}
 \usage{
-cloudhsmv2_describe_backups(NextToken, MaxResults, Filters,
-  SortAscending)
+cloudhsmv2_describe_backups(
+  NextToken = NULL,
+  MaxResults = NULL,
+  Filters = NULL,
+  SortAscending = NULL
+)
 }
 \arguments{
 \item{NextToken}{The \code{NextToken} value that you received in the previous response. Use
@@ -39,61 +43,9 @@ retention policy defined at the cluster.}
 \item{SortAscending}{Designates whether or not to sort the return backups by ascending
 chronological order of generation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Backups = list(
-    list(
-      BackupId = "string",
-      BackupState = "CREATE_IN_PROGRESS"|"READY"|"DELETED"|"PENDING_DELETION",
-      ClusterId = "string",
-      CreateTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      CopyTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      NeverExpires = TRUE|FALSE,
-      SourceRegion = "string",
-      SourceBackup = "string",
-      SourceCluster = "string",
-      DeleteTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      TagList = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets information about backups of AWS CloudHSM clusters.
 
-This is a paginated operation, which means that each response might
-contain only a subset of all the backups. When the response contains
-only a subset of backups, it includes a \code{NextToken} value. Use this
-value in a subsequent \code{\link[=cloudhsmv2_describe_backups]{describe_backups}}
-request to get more backups. When you receive a response with no
-\code{NextToken} (or an empty or null value), that means there are no more
-backups to get.
+See \url{https://paws-r.github.io/docs/cloudhsmv2/describe_backups.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_backups(
-  NextToken = "string",
-  MaxResults = 123,
-  Filters = list(
-    list(
-      "string"
-    )
-  ),
-  SortAscending = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

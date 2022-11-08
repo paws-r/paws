@@ -4,8 +4,12 @@
 \alias{worklink_associate_domain}
 \title{Specifies a domain to be associated to Amazon WorkLink}
 \usage{
-worklink_associate_domain(FleetArn, DomainName, DisplayName,
-  AcmCertificateArn)
+worklink_associate_domain(
+  FleetArn,
+  DomainName,
+  DisplayName = NULL,
+  AcmCertificateArn
+)
 }
 \arguments{
 \item{FleetArn}{[required] The Amazon Resource Name (ARN) of the fleet.}
@@ -17,20 +21,9 @@ worklink_associate_domain(FleetArn, DomainName, DisplayName,
 \item{AcmCertificateArn}{[required] The ARN of an issued ACM certificate that is valid for the domain being
 associated.}
 }
-\value{
-An empty list.
-}
 \description{
 Specifies a domain to be associated to Amazon WorkLink.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_domain(
-  FleetArn = "string",
-  DomainName = "string",
-  DisplayName = "string",
-  AcmCertificateArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/worklink/associate_domain.html} for full documentation.
+}
 \keyword{internal}

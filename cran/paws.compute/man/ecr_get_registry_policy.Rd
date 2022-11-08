@@ -6,19 +6,9 @@
 \usage{
 ecr_get_registry_policy()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  registryId = "string",
-  policyText = "string"
-)
-}
-}
 \description{
 Retrieves the permissions policy for a registry.
-}
-\section{Request syntax}{
-\preformatted{svc$get_registry_policy()
-}
-}
 
+See \url{https://paws-r.github.io/docs/ecr/get_registry_policy.html} for full documentation.
+}
 \keyword{internal}

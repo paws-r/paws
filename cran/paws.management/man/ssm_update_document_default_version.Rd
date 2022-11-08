@@ -13,25 +13,9 @@ version.}
 \item{DocumentVersion}{[required] The version of a custom document that you want to set as the default
 version.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Description = list(
-    Name = "string",
-    DefaultVersion = "string",
-    DefaultVersionName = "string"
-  )
-)
-}
-}
 \description{
 Set the default version of a document.
-}
-\section{Request syntax}{
-\preformatted{svc$update_document_default_version(
-  Name = "string",
-  DocumentVersion = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/update_document_default_version.html} for full documentation.
+}
 \keyword{internal}

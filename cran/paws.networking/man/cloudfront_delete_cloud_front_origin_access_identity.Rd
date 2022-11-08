@@ -4,7 +4,7 @@
 \alias{cloudfront_delete_cloud_front_origin_access_identity}
 \title{Delete an origin access identity}
 \usage{
-cloudfront_delete_cloud_front_origin_access_identity(Id, IfMatch)
+cloudfront_delete_cloud_front_origin_access_identity(Id, IfMatch = NULL)
 }
 \arguments{
 \item{Id}{[required] The origin access identity's ID.}
@@ -12,18 +12,9 @@ cloudfront_delete_cloud_front_origin_access_identity(Id, IfMatch)
 \item{IfMatch}{The value of the \code{ETag} header you received from a previous \code{GET} or
 \code{PUT} request. For example: \code{E2QWRUHAPOMQZL}.}
 }
-\value{
-An empty list.
-}
 \description{
 Delete an origin access identity.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_cloud_front_origin_access_identity(
-  Id = "string",
-  IfMatch = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudfront/delete_cloud_front_origin_access_identity.html} for full documentation.
+}
 \keyword{internal}

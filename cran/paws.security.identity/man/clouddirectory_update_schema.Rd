@@ -12,22 +12,9 @@ information, see arns.}
 
 \item{Name}{[required] The name of the schema.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaArn = "string"
-)
-}
-}
 \description{
-Updates the schema name with a new name. Only development schema names
-can be updated.
-}
-\section{Request syntax}{
-\preformatted{svc$update_schema(
-  SchemaArn = "string",
-  Name = "string"
-)
-}
-}
+Updates the schema name with a new name. Only development schema names can be updated.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/update_schema.html} for full documentation.
+}
 \keyword{internal}

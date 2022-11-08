@@ -4,62 +4,19 @@
 \alias{autoscaling_delete_auto_scaling_group}
 \title{Deletes the specified Auto Scaling group}
 \usage{
-autoscaling_delete_auto_scaling_group(AutoScalingGroupName, ForceDelete)
+autoscaling_delete_auto_scaling_group(AutoScalingGroupName, ForceDelete = NULL)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{ForceDelete}{Specifies that the group is to be deleted along with all instances
 associated with the group, without waiting for all instances to be
-terminated. This parameter also deletes any lifecycle actions associated
-with the group.}
-}
-\value{
-An empty list.
+terminated. This action also deletes any outstanding lifecycle actions
+associated with the group.}
 }
 \description{
 Deletes the specified Auto Scaling group.
 
-If the group has instances or scaling activities in progress, you must
-specify the option to force the deletion in order for it to succeed.
-
-If the group has policies, deleting the group deletes the policies, the
-underlying alarm actions, and any alarm that no longer has an associated
-action.
-
-To remove instances from the Auto Scaling group before deleting it, call
-the \code{\link[=autoscaling_detach_instances]{detach_instances}} API with the list
-of instances and the option to decrement the desired capacity. This
-ensures that Amazon EC2 Auto Scaling does not launch replacement
-instances.
-
-To terminate all instances before deleting the Auto Scaling group, call
-the \code{\link[=autoscaling_update_auto_scaling_group]{update_auto_scaling_group}}
-API and set the minimum size and desired capacity of the Auto Scaling
-group to zero.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_auto_scaling_group(
-  AutoScalingGroupName = "string",
-  ForceDelete = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes the specified Auto Scaling group.
-svc$delete_auto_scaling_group(
-  AutoScalingGroupName = "my-auto-scaling-group"
-)
-
-# This example deletes the specified Auto Scaling group and all its
-# instances.
-svc$delete_auto_scaling_group(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  ForceDelete = TRUE
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/delete_auto_scaling_group.html} for full documentation.
 }
 \keyword{internal}

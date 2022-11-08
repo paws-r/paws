@@ -10,26 +10,9 @@ waf_delete_logging_configuration(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the web ACL from which you want to
 delete the LoggingConfiguration.}
 }
-\value{
-An empty list.
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Permanently deletes the LoggingConfiguration from the specified web ACL.
+See \url{https://paws-r.github.io/docs/waf/delete_logging_configuration.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_logging_configuration(
-  ResourceArn = "string"
-)
-}
-}
-
 \keyword{internal}

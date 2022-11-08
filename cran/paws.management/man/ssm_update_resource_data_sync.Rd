@@ -14,42 +14,9 @@ SyncFromSource.}
 
 \item{SyncSource}{[required] Specify information about the data sources to synchronize.}
 }
-\value{
-An empty list.
-}
 \description{
-Update a resource data sync. After you create a resource data sync for a
-Region, you can't change the account options for that sync. For example,
-if you create a sync in the us-east-2 (Ohio) Region and you choose the
-Include only the current account option, you can't edit that sync later
-and choose the Include all accounts from my AWS Organizations
-configuration option. Instead, you must delete the first resource data
-sync, and create a new one.
+Update a resource data sync. After you create a resource data sync for a Region, you can't change the account options for that sync. For example, if you create a sync in the us-east-2 (Ohio) Region and you choose the \verb{Include only the current account} option, you can't edit that sync later and choose the \verb{Include all accounts from my Organizations configuration} option. Instead, you must delete the first resource data sync, and create a new one.
 
-This API action only supports a resource data sync that was created with
-a SyncFromSource \code{SyncType}.
+See \url{https://paws-r.github.io/docs/ssm/update_resource_data_sync.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_resource_data_sync(
-  SyncName = "string",
-  SyncType = "string",
-  SyncSource = list(
-    SourceType = "string",
-    AwsOrganizationsSource = list(
-      OrganizationSourceType = "string",
-      OrganizationalUnits = list(
-        list(
-          OrganizationalUnitId = "string"
-        )
-      )
-    ),
-    SourceRegions = list(
-      "string"
-    ),
-    IncludeFutureRegions = TRUE|FALSE
-  )
-)
-}
-}
-
 \keyword{internal}

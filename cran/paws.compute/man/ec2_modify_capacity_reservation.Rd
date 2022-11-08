@@ -5,13 +5,22 @@
 \title{Modifies a Capacity Reservation's capacity and the conditions under
 which it is to be released}
 \usage{
-ec2_modify_capacity_reservation(CapacityReservationId, InstanceCount,
-  EndDate, EndDateType, DryRun)
+ec2_modify_capacity_reservation(
+  CapacityReservationId,
+  InstanceCount = NULL,
+  EndDate = NULL,
+  EndDateType = NULL,
+  Accept = NULL,
+  DryRun = NULL,
+  AdditionalInfo = NULL
+)
 }
 \arguments{
 \item{CapacityReservationId}{[required] The ID of the Capacity Reservation.}
 
-\item{InstanceCount}{The number of instances for which to reserve capacity.}
+\item{InstanceCount}{The number of instances for which to reserve capacity. The number of
+instances can't be increased or decreased by more than \code{1000} in a
+single request.}
 
 \item{EndDate}{The date and time at which the Capacity Reservation expires. When a
 Capacity Reservation expires, the reserved capacity is released and you
@@ -37,36 +46,19 @@ specified date and time. You must provide an \code{EndDate} value if
 \code{EndDateType} is \code{limited}.
 }}
 
+\item{Accept}{Reserved. Capacity Reservations you have created are accepted by
+default.}
+
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
+
+\item{AdditionalInfo}{Reserved for future use.}
 }
 \description{
-Modifies a Capacity Reservation's capacity and the conditions under
-which it is to be released. You cannot change a Capacity Reservation's
-instance type, EBS optimization, instance store settings, platform,
-Availability Zone, or instance eligibility. If you need to modify any of
-these attributes, we recommend that you cancel the Capacity Reservation,
-and then create a new one with the required attributes.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_capacity_reservation(
-  CapacityReservationId = "string",
-  InstanceCount = 123,
-  EndDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndDateType = "unlimited"|"limited",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Modifies a Capacity Reservation's capacity and the conditions under which it is to be released. You cannot change a Capacity Reservation's instance type, EBS optimization, instance store settings, platform, Availability Zone, or instance eligibility. If you need to modify any of these attributes, we recommend that you cancel the Capacity Reservation, and then create a new one with the required attributes.
 
+See \url{https://paws-r.github.io/docs/ec2/modify_capacity_reservation.html} for full documentation.
+}
 \keyword{internal}

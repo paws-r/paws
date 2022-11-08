@@ -9,23 +9,9 @@ dax_delete_subnet_group(SubnetGroupName)
 \arguments{
 \item{SubnetGroupName}{[required] The name of the subnet group to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DeletionMessage = "string"
-)
-}
-}
 \description{
 Deletes a subnet group.
 
-You cannot delete a subnet group if it is associated with any DAX
-clusters.
+See \url{https://paws-r.github.io/docs/dax/delete_subnet_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_subnet_group(
-  SubnetGroupName = "string"
-)
-}
-}
-
 \keyword{internal}

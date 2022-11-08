@@ -9,21 +9,9 @@ clouddirectory_enable_directory(DirectoryArn)
 \arguments{
 \item{DirectoryArn}{[required] The ARN of the directory to enable.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DirectoryArn = "string"
-)
-}
-}
 \description{
-Enables the specified directory. Only disabled directories can be
-enabled. Once enabled, the directory can then be read and written to.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_directory(
-  DirectoryArn = "string"
-)
-}
-}
+Enables the specified directory. Only disabled directories can be enabled. Once enabled, the directory can then be read and written to.
 
+See \url{https://paws-r.github.io/docs/clouddirectory/enable_directory.html} for full documentation.
+}
 \keyword{internal}

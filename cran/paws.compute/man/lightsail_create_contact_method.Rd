@@ -10,7 +10,8 @@ lightsail_create_contact_method(protocol, contactEndpoint)
 \item{protocol}{[required] The protocol of the contact method, such as \code{Email} or \code{SMS} (text
 messaging).
 
-The \code{SMS} protocol is supported only in the following AWS Regions.
+The \code{SMS} protocol is supported only in the following Amazon Web
+Services Regions.
 \itemize{
 \item US East (N. Virginia) (\code{us-east-1})
 \item US West (Oregon) (\code{us-west-2})
@@ -21,8 +22,8 @@ The \code{SMS} protocol is supported only in the following AWS Regions.
 }
 
 For a list of countries/regions where SMS text messages can be sent, and
-the latest AWS Regions where SMS text messaging is supported, see
-\href{https://docs.aws.amazon.com/sns/latest/dg/sns-supported-regions-countries.html}{Supported Regions and Countries}
+the latest Amazon Web Services Regions where SMS text messaging is
+supported, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-supported-regions-countries.html}{Supported Regions and Countries}
 in the \emph{Amazon SNS Developer Guide}.
 
 For more information about notifications in Amazon Lightsail, see
@@ -39,50 +40,9 @@ and the country code. For example, a U.S. phone number in E.164 format
 would be specified as +1XXX5550100. For more information, see
 \href{https://en.wikipedia.org/wiki/E.164}{E.164} on \emph{Wikipedia}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  operations = list(
-    list(
-      id = "string",
-      resourceName = "string",
-      resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      location = list(
-        availabilityZone = "string",
-        regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-      ),
-      isTerminal = TRUE|FALSE,
-      operationDetails = "string",
-      operationType = "DeleteKnownHostKeys"|"DeleteInstance"|"CreateInstance"|"StopInstance"|"StartInstance"|"RebootInstance"|"OpenInstancePublicPorts"|"PutInstancePublicPorts"|"CloseInstancePublicPorts"|"AllocateStaticIp"|"ReleaseStaticIp"|"AttachStaticIp"|"DetachStaticIp"|"UpdateDomainEntry"|"DeleteDomainEntry"|"CreateDomain"|"DeleteDomain"|"CreateInstanceSnapshot"|"DeleteInstanceSnapshot"|"CreateInstancesFromSnapshot"|"CreateLoadBalancer"|"DeleteLoadBalancer"|"AttachInstancesToLoadBalancer"|"DetachInstancesFromLoadBalancer"|"UpdateLoadBalancerAttribute"|"CreateLoadBalancerTlsCertificate"|"DeleteLoadBalancerTlsCertificate"|"AttachLoadBalancerTlsCertificate"|"CreateDisk"|"DeleteDisk"|"AttachDisk"|"DetachDisk"|"CreateDiskSnapshot"|"DeleteDiskSnapshot"|"CreateDiskFromSnapshot"|"CreateRelationalDatabase"|"UpdateRelationalDatabase"|"DeleteRelationalDatabase"|"CreateRelationalDatabaseFromSnapshot"|"CreateRelationalDatabaseSnapshot"|"DeleteRelationalDatabaseSnapshot"|"UpdateRelationalDatabaseParameters"|"StartRelationalDatabase"|"RebootRelationalDatabase"|"StopRelationalDatabase"|"EnableAddOn"|"DisableAddOn"|"PutAlarm"|"GetAlarms"|"DeleteAlarm"|"TestAlarm"|"CreateContactMethod"|"GetContactMethods"|"SendContactMethodVerification"|"DeleteContactMethod"|"CreateDistribution"|"UpdateDistribution"|"DeleteDistribution"|"ResetDistributionCache"|"AttachCertificateToDistribution"|"DetachCertificateFromDistribution"|"UpdateDistributionBundle"|"CreateCertificate"|"DeleteCertificate"|"CreateContainerService"|"UpdateContainerService"|"DeleteContainerService"|"CreateContainerServiceDeployment"|"CreateContainerServiceRegistryLogin"|"RegisterContainerImage"|"DeleteContainerImage",
-      status = "NotStarted"|"Started"|"Failed"|"Completed"|"Succeeded",
-      statusChangedAt = as.POSIXct(
-        "2015-01-01"
-      ),
-      errorCode = "string",
-      errorDetails = "string"
-    )
-  )
-)
-}
-}
 \description{
 Creates an email or SMS text message contact method.
 
-A contact method is used to send you notifications about your Amazon
-Lightsail resources. You can add one email address and one mobile phone
-number contact method in each AWS Region. However, SMS text messaging is
-not supported in some AWS Regions, and SMS text messages cannot be sent
-to some countries/regions. For more information, see Notifications in
-Amazon Lightsail.
+See \url{https://paws-r.github.io/docs/lightsail/create_contact_method.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_contact_method(
-  protocol = "Email"|"SMS",
-  contactEndpoint = "string"
-)
-}
-}
-
 \keyword{internal}

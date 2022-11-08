@@ -11,46 +11,9 @@ lexmodelbuildingservice_get_bot_alias(name, botName)
 
 \item{botName}{[required] The name of the bot.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  name = "string",
-  description = "string",
-  botVersion = "string",
-  botName = "string",
-  lastUpdatedDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  checksum = "string",
-  conversationLogs = list(
-    logSettings = list(
-      list(
-        logType = "AUDIO"|"TEXT",
-        destination = "CLOUDWATCH_LOGS"|"S3",
-        kmsKeyArn = "string",
-        resourceArn = "string",
-        resourcePrefix = "string"
-      )
-    ),
-    iamRoleArn = "string"
-  )
-)
-}
-}
 \description{
-Returns information about an Amazon Lex bot alias. For more information
-about aliases, see versioning-aliases.
+Returns information about an Amazon Lex bot alias. For more information about aliases, see versioning-aliases.
 
-This operation requires permissions for the \code{lex:GetBotAlias} action.
+See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_alias.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_bot_alias(
-  name = "string",
-  botName = "string"
-)
-}
-}
-
 \keyword{internal}

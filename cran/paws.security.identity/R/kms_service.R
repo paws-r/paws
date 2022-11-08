@@ -5,51 +5,68 @@ NULL
 #' AWS Key Management Service
 #'
 #' @description
-#' AWS Key Management Service (AWS KMS) is an encryption and key management
-#' web service. This guide describes the AWS KMS operations that you can
-#' call programmatically. For general information about AWS KMS, see the
-#' [*AWS Key Management Service Developer
+#' Key Management Service
+#' 
+#' Key Management Service (KMS) is an encryption and key management web
+#' service. This guide describes the KMS operations that you can call
+#' programmatically. For general information about KMS, see the [*Key
+#' Management Service Developer
 #' Guide*](https://docs.aws.amazon.com/kms/latest/developerguide/) .
 #' 
-#' AWS provides SDKs that consist of libraries and sample code for various
-#' programming languages and platforms (Java, Ruby, .Net, macOS, Android,
-#' etc.). The SDKs provide a convenient way to create programmatic access
-#' to AWS KMS and other AWS services. For example, the SDKs take care of
-#' tasks such as signing requests (see below), managing errors, and
-#' retrying requests automatically. For more information about the AWS
-#' SDKs, including how to download and install them, see [Tools for Amazon
-#' Web Services](https://aws.amazon.com/tools/).
+#' KMS is replacing the term *customer master key (CMK)* with *KMS key* and
+#' *KMS key*. The concept has not changed. To prevent breaking changes, KMS
+#' is keeping some variations of this term.
 #' 
-#' We recommend that you use the AWS SDKs to make programmatic API calls to
-#' AWS KMS.
+#' Amazon Web Services provides SDKs that consist of libraries and sample
+#' code for various programming languages and platforms (Java, Ruby, .Net,
+#' macOS, Android, etc.). The SDKs provide a convenient way to create
+#' programmatic access to KMS and other Amazon Web Services services. For
+#' example, the SDKs take care of tasks such as signing requests (see
+#' below), managing errors, and retrying requests automatically. For more
+#' information about the Amazon Web Services SDKs, including how to
+#' download and install them, see [Tools for Amazon Web
+#' Services](https://aws.amazon.com/developer/tools/).
 #' 
-#' Clients must support TLS (Transport Layer Security) 1.0. We recommend
-#' TLS 1.2. Clients must also support cipher suites with Perfect Forward
-#' Secrecy (PFS) such as Ephemeral Diffie-Hellman (DHE) or Elliptic Curve
-#' Ephemeral Diffie-Hellman (ECDHE). Most modern systems such as Java 7 and
-#' later support these modes.
+#' We recommend that you use the Amazon Web Services SDKs to make
+#' programmatic API calls to KMS.
+#' 
+#' If you need to use FIPS 140-2 validated cryptographic modules when
+#' communicating with Amazon Web Services, use the FIPS endpoint in your
+#' preferred Amazon Web Services Region. For more information about the
+#' available FIPS endpoints, see [Service
+#' endpoints](https://docs.aws.amazon.com/general/latest/gr/kms.html#kms_region)
+#' in the Key Management Service topic of the *Amazon Web Services General
+#' Reference*.
+#' 
+#' All KMS API calls must be signed and be transmitted using Transport
+#' Layer Security (TLS). KMS recommends you always use the latest supported
+#' TLS version. Clients must also support cipher suites with Perfect
+#' Forward Secrecy (PFS) such as Ephemeral Diffie-Hellman (DHE) or Elliptic
+#' Curve Ephemeral Diffie-Hellman (ECDHE). Most modern systems such as Java
+#' 7 and later support these modes.
 #' 
 #' **Signing Requests**
 #' 
 #' Requests must be signed by using an access key ID and a secret access
-#' key. We strongly recommend that you *do not* use your AWS account (root)
-#' access key ID and secret key for everyday work with AWS KMS. Instead,
-#' use the access key ID and secret access key for an IAM user. You can
-#' also use the AWS Security Token Service to generate temporary security
-#' credentials that you can use to sign requests.
+#' key. We strongly recommend that you *do not* use your Amazon Web
+#' Services account (root) access key ID and secret key for everyday work
+#' with KMS. Instead, use the access key ID and secret access key for an
+#' IAM user. You can also use the Amazon Web Services Security Token
+#' Service to generate temporary security credentials that you can use to
+#' sign requests.
 #' 
-#' All AWS KMS operations require [Signature Version
+#' All KMS operations require [Signature Version
 #' 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 #' 
 #' **Logging API Requests**
 #' 
-#' AWS KMS supports AWS CloudTrail, a service that logs AWS API calls and
-#' related events for your AWS account and delivers them to an Amazon S3
-#' bucket that you specify. By using the information collected by
-#' CloudTrail, you can determine what requests were made to AWS KMS, who
-#' made the request, when it was made, and so on. To learn more about
-#' CloudTrail, including how to turn it on and find your log files, see the
-#' [AWS CloudTrail User
+#' KMS supports CloudTrail, a service that logs Amazon Web Services API
+#' calls and related events for your Amazon Web Services account and
+#' delivers them to an Amazon S3 bucket that you specify. By using the
+#' information collected by CloudTrail, you can determine what requests
+#' were made to KMS, who made the request, when it was made, and so on. To
+#' learn more about CloudTrail, including how to turn it on and find your
+#' log files, see the [CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/).
 #' 
 #' **Additional Resources**
@@ -57,10 +74,10 @@ NULL
 #' For more information about credentials and request signing, see the
 #' following:
 #' 
-#' -   [AWS Security
+#' -   [Amazon Web Services Security
 #'     Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html) -
 #'     This topic provides general information about the types of
-#'     credentials used for accessing AWS.
+#'     credentials used to access Amazon Web Services.
 #' 
 #' -   [Temporary Security
 #'     Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) -
@@ -90,6 +107,18 @@ NULL
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -101,10 +130,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -112,7 +145,7 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- kms()
-#' # The following example cancels deletion of the specified CMK.
+#' # The following example cancels deletion of the specified KMS key.
 #' svc$cancel_key_deletion(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
 #' )
@@ -120,52 +153,56 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=kms_cancel_key_deletion]{cancel_key_deletion} \tab Cancels the deletion of a customer master key (CMK)\cr
-#'  \link[=kms_connect_custom_key_store]{connect_custom_key_store} \tab Connects or reconnects a custom key store to its associated AWS CloudHSM cluster\cr
-#'  \link[=kms_create_alias]{create_alias} \tab Creates a friendly name for a customer master key (CMK)\cr
-#'  \link[=kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store that is associated with an AWS CloudHSM cluster that you own and manage\cr
-#'  \link[=kms_create_grant]{create_grant} \tab Adds a grant to a customer master key (CMK)\cr
-#'  \link[=kms_create_key]{create_key} \tab Creates a unique customer managed customer master key (CMK) in your AWS account and Region\cr
-#'  \link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext that was encrypted by a AWS KMS customer master key (CMK) using any of the following operations:\cr
+#'  \link[=kms_cancel_key_deletion]{cancel_key_deletion} \tab Cancels the deletion of a KMS key\cr
+#'  \link[=kms_connect_custom_key_store]{connect_custom_key_store} \tab Connects or reconnects a custom key store to its associated CloudHSM cluster\cr
+#'  \link[=kms_create_alias]{create_alias} \tab Creates a friendly name for a KMS key\cr
+#'  \link[=kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store that is associated with an CloudHSM cluster that you own and manage\cr
+#'  \link[=kms_create_grant]{create_grant} \tab Adds a grant to a KMS key\cr
+#'  \link[=kms_create_key]{create_key} \tab Creates a unique customer managed KMS key in your Amazon Web Services account and Region\cr
+#'  \link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext that was encrypted by a KMS key using any of the following operations:\cr
 #'  \link[=kms_delete_alias]{delete_alias} \tab Deletes the specified alias\cr
 #'  \link[=kms_delete_custom_key_store]{delete_custom_key_store} \tab Deletes a custom key store\cr
 #'  \link[=kms_delete_imported_key_material]{delete_imported_key_material} \tab Deletes key material that you previously imported\cr
-#'  \link[=kms_describe_custom_key_stores]{describe_custom_key_stores} \tab Gets information about custom key stores in the account and region\cr
-#'  \link[=kms_describe_key]{describe_key} \tab Provides detailed information about a customer master key (CMK)\cr
-#'  \link[=kms_disable_key]{disable_key} \tab Sets the state of a customer master key (CMK) to disabled\cr
-#'  \link[=kms_disable_key_rotation]{disable_key_rotation} \tab Disables automatic rotation of the key material for the specified symmetric customer master key (CMK)\cr
-#'  \link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store} \tab Disconnects the custom key store from its associated AWS CloudHSM cluster\cr
-#'  \link[=kms_enable_key]{enable_key} \tab Sets the key state of a customer master key (CMK) to enabled\cr
-#'  \link[=kms_enable_key_rotation]{enable_key_rotation} \tab Enables automatic rotation of the key material for the specified symmetric customer master key (CMK)\cr
-#'  \link[=kms_encrypt]{encrypt} \tab Encrypts plaintext into ciphertext by using a customer master key (CMK)\cr
-#'  \link[=kms_generate_data_key]{generate_data_key} \tab Generates a unique symmetric data key for client-side encryption\cr
-#'  \link[=kms_generate_data_key_pair]{generate_data_key_pair} \tab Generates a unique asymmetric data key pair\cr
-#'  \link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext} \tab Generates a unique asymmetric data key pair\cr
-#'  \link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext} \tab Generates a unique symmetric data key\cr
+#'  \link[=kms_describe_custom_key_stores]{describe_custom_key_stores} \tab Gets information about custom key stores in the account and Region\cr
+#'  \link[=kms_describe_key]{describe_key} \tab Provides detailed information about a KMS key\cr
+#'  \link[=kms_disable_key]{disable_key} \tab Sets the state of a KMS key to disabled\cr
+#'  \link[=kms_disable_key_rotation]{disable_key_rotation} \tab Disables automatic rotation of the key material of the specified symmetric encryption KMS key\cr
+#'  \link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store} \tab Disconnects the custom key store from its associated CloudHSM cluster\cr
+#'  \link[=kms_enable_key]{enable_key} \tab Sets the key state of a KMS key to enabled\cr
+#'  \link[=kms_enable_key_rotation]{enable_key_rotation} \tab Enables automatic rotation of the key material of the specified symmetric encryption KMS key\cr
+#'  \link[=kms_encrypt]{encrypt} \tab Encrypts plaintext of up to 4,096 bytes using a KMS key\cr
+#'  \link[=kms_generate_data_key]{generate_data_key} \tab Returns a unique symmetric data key for use outside of KMS\cr
+#'  \link[=kms_generate_data_key_pair]{generate_data_key_pair} \tab Returns a unique asymmetric data key pair for use outside of KMS\cr
+#'  \link[=kms_generate_data_key_pair_without_plaintext]{generate_data_key_pair_without_plaintext} \tab Returns a unique asymmetric data key pair for use outside of KMS\cr
+#'  \link[=kms_generate_data_key_without_plaintext]{generate_data_key_without_plaintext} \tab Returns a unique symmetric data key for use outside of KMS\cr
+#'  \link[=kms_generate_mac]{generate_mac} \tab Generates a hash-based message authentication code (HMAC) for a message using an HMAC KMS key and a MAC algorithm that the key supports\cr
 #'  \link[=kms_generate_random]{generate_random} \tab Returns a random byte string that is cryptographically secure\cr
-#'  \link[=kms_get_key_policy]{get_key_policy} \tab Gets a key policy attached to the specified customer master key (CMK)\cr
-#'  \link[=kms_get_key_rotation_status]{get_key_rotation_status} \tab Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified customer master key (CMK)\cr
-#'  \link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the items you need to import key material into a symmetric, customer managed customer master key (CMK)\cr
-#'  \link[=kms_get_public_key]{get_public_key} \tab Returns the public key of an asymmetric CMK\cr
-#'  \link[=kms_import_key_material]{import_key_material} \tab Imports key material into an existing symmetric AWS KMS customer master key (CMK) that was created without key material\cr
-#'  \link[=kms_list_aliases]{list_aliases} \tab Gets a list of aliases in the caller's AWS account and region\cr
-#'  \link[=kms_list_grants]{list_grants} \tab Gets a list of all grants for the specified customer master key (CMK)\cr
-#'  \link[=kms_list_key_policies]{list_key_policies} \tab Gets the names of the key policies that are attached to a customer master key (CMK)\cr
-#'  \link[=kms_list_keys]{list_keys} \tab Gets a list of all customer master keys (CMKs) in the caller's AWS account and Region\cr
-#'  \link[=kms_list_resource_tags]{list_resource_tags} \tab Returns all tags on the specified customer master key (CMK)\cr
-#'  \link[=kms_list_retirable_grants]{list_retirable_grants} \tab Returns all grants in which the specified principal is the RetiringPrincipal in the grant\cr
-#'  \link[=kms_put_key_policy]{put_key_policy} \tab Attaches a key policy to the specified customer master key (CMK)\cr
-#'  \link[=kms_re_encrypt]{re_encrypt} \tab Decrypts ciphertext and then reencrypts it entirely within AWS KMS\cr
-#'  \link[=kms_retire_grant]{retire_grant} \tab Retires a grant\cr
-#'  \link[=kms_revoke_grant]{revoke_grant} \tab Revokes the specified grant for the specified customer master key (CMK)\cr
-#'  \link[=kms_schedule_key_deletion]{schedule_key_deletion} \tab Schedules the deletion of a customer master key (CMK)\cr
-#'  \link[=kms_sign]{sign} \tab Creates a digital signature for a message or message digest by using the private key in an asymmetric CMK\cr
-#'  \link[=kms_tag_resource]{tag_resource} \tab Adds or edits tags on a customer managed CMK\cr
-#'  \link[=kms_untag_resource]{untag_resource} \tab Deletes tags from a customer managed CMK\cr
-#'  \link[=kms_update_alias]{update_alias} \tab Associates an existing AWS KMS alias with a different customer master key (CMK)\cr
+#'  \link[=kms_get_key_policy]{get_key_policy} \tab Gets a key policy attached to the specified KMS key\cr
+#'  \link[=kms_get_key_rotation_status]{get_key_rotation_status} \tab Gets a Boolean value that indicates whether automatic rotation of the key material is enabled for the specified KMS key\cr
+#'  \link[=kms_get_parameters_for_import]{get_parameters_for_import} \tab Returns the items you need to import key material into a symmetric encryption KMS key\cr
+#'  \link[=kms_get_public_key]{get_public_key} \tab Returns the public key of an asymmetric KMS key\cr
+#'  \link[=kms_import_key_material]{import_key_material} \tab Imports key material into an existing symmetric encryption KMS key that was created without key material\cr
+#'  \link[=kms_list_aliases]{list_aliases} \tab Gets a list of aliases in the caller's Amazon Web Services account and region\cr
+#'  \link[=kms_list_grants]{list_grants} \tab Gets a list of all grants for the specified KMS key\cr
+#'  \link[=kms_list_key_policies]{list_key_policies} \tab Gets the names of the key policies that are attached to a KMS key\cr
+#'  \link[=kms_list_keys]{list_keys} \tab Gets a list of all KMS keys in the caller's Amazon Web Services account and Region\cr
+#'  \link[=kms_list_resource_tags]{list_resource_tags} \tab Returns all tags on the specified KMS key\cr
+#'  \link[=kms_list_retirable_grants]{list_retirable_grants} \tab Returns information about all grants in the Amazon Web Services account and Region that have the specified retiring principal\cr
+#'  \link[=kms_put_key_policy]{put_key_policy} \tab Attaches a key policy to the specified KMS key\cr
+#'  \link[=kms_re_encrypt]{re_encrypt} \tab Decrypts ciphertext and then reencrypts it entirely within KMS\cr
+#'  \link[=kms_replicate_key]{replicate_key} \tab Replicates a multi-Region key into the specified Region\cr
+#'  \link[=kms_retire_grant]{retire_grant} \tab Deletes a grant\cr
+#'  \link[=kms_revoke_grant]{revoke_grant} \tab Deletes the specified grant\cr
+#'  \link[=kms_schedule_key_deletion]{schedule_key_deletion} \tab Schedules the deletion of a KMS key\cr
+#'  \link[=kms_sign]{sign} \tab Creates a digital signature for a message or message digest by using the private key in an asymmetric signing KMS key\cr
+#'  \link[=kms_tag_resource]{tag_resource} \tab Adds or edits tags on a customer managed key\cr
+#'  \link[=kms_untag_resource]{untag_resource} \tab Deletes tags from a customer managed key\cr
+#'  \link[=kms_update_alias]{update_alias} \tab Associates an existing KMS alias with a different KMS key\cr
 #'  \link[=kms_update_custom_key_store]{update_custom_key_store} \tab Changes the properties of a custom key store\cr
-#'  \link[=kms_update_key_description]{update_key_description} \tab Updates the description of a customer master key (CMK)\cr
-#'  \link[=kms_verify]{verify} \tab Verifies a digital signature that was generated by the Sign operation
+#'  \link[=kms_update_key_description]{update_key_description} \tab Updates the description of a KMS key\cr
+#'  \link[=kms_update_primary_region]{update_primary_region} \tab Changes the primary key of a multi-Region key\cr
+#'  \link[=kms_verify]{verify} \tab Verifies a digital signature that was generated by the Sign operation\cr
+#'  \link[=kms_verify_mac]{verify_mac} \tab Verifies the hash-based message authentication code (HMAC) for a specified message, HMAC KMS key, and MAC algorithm
 #' }
 #'
 #' @return

@@ -9,30 +9,9 @@ autoscaling_delete_launch_configuration(LaunchConfigurationName)
 \arguments{
 \item{LaunchConfigurationName}{[required] The name of the launch configuration.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified launch configuration.
 
-The launch configuration must not be attached to an Auto Scaling group.
-When this call completes, the launch configuration is no longer
-available for use.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_launch_configuration(
-  LaunchConfigurationName = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes the specified launch configuration.
-svc$delete_launch_configuration(
-  LaunchConfigurationName = "my-launch-config"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/delete_launch_configuration.html} for full documentation.
 }
 \keyword{internal}

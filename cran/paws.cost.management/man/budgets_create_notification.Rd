@@ -4,15 +4,14 @@
 \alias{budgets_create_notification}
 \title{Creates a notification}
 \usage{
-budgets_create_notification(AccountId, BudgetName, Notification,
-  Subscribers)
+budgets_create_notification(AccountId, BudgetName, Notification, Subscribers)
 }
 \arguments{
 \item{AccountId}{[required] The \code{accountId} that is associated with the budget that you want to
 create a notification for.}
 
-\item{BudgetName}{[required] The name of the budget that you want AWS to notify you about. Budget
-names must be unique within an account.}
+\item{BudgetName}{[required] The name of the budget that you want Amazon Web Services to notify you
+about. Budget names must be unique within an account.}
 
 \item{Notification}{[required] The notification that you want to create.}
 
@@ -20,32 +19,9 @@ names must be unique within an account.}
 Each notification can have one SNS subscriber and up to 10 email
 subscribers.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates a notification. You must create the budget before you create the
-associated notification.
-}
-\section{Request syntax}{
-\preformatted{svc$create_notification(
-  AccountId = "string",
-  BudgetName = "string",
-  Notification = list(
-    NotificationType = "ACTUAL"|"FORECASTED",
-    ComparisonOperator = "GREATER_THAN"|"LESS_THAN"|"EQUAL_TO",
-    Threshold = 123.0,
-    ThresholdType = "PERCENTAGE"|"ABSOLUTE_VALUE",
-    NotificationState = "OK"|"ALARM"
-  ),
-  Subscribers = list(
-    list(
-      SubscriptionType = "SNS"|"EMAIL",
-      Address = "string"
-    )
-  )
-)
-}
-}
+Creates a notification. You must create the budget before you create the associated notification.
 
+See \url{https://paws-r.github.io/docs/budgets/create_notification.html} for full documentation.
+}
 \keyword{internal}

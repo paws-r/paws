@@ -10,22 +10,9 @@ glue_get_tags(ResourceArn)
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource for which to retrieve
 tags.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 \description{
 Retrieves a list of tags associated with a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$get_tags(
-  ResourceArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/get_tags.html} for full documentation.
+}
 \keyword{internal}

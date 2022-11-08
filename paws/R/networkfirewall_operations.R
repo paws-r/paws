@@ -91,11 +91,11 @@ networkfirewall_associate_firewall_policy <- function(UpdateToken = NULL, Firewa
 #' can specify one subnet for each of the Availability Zones that the VPC
 #' spans.
 #' 
-#' This request creates an AWS Network Firewall firewall endpoint in each
-#' of the subnets. To enable the firewall's protections, you must also
-#' modify the VPC's route tables for each subnet's Availability Zone, to
-#' redirect the traffic that's coming into and going out of the zone
-#' through the firewall endpoint.
+#' This request creates an Network Firewall firewall endpoint in each of
+#' the subnets. To enable the firewall's protections, you must also modify
+#' the VPC's route tables for each subnet's Availability Zone, to redirect
+#' the traffic that's coming into and going out of the zone through the
+#' firewall endpoint.
 #'
 #' @usage
 #' networkfirewall_associate_subnets(UpdateToken, FirewallArn,
@@ -176,17 +176,18 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 }
 .networkfirewall$operations$associate_subnets <- networkfirewall_associate_subnets
 
-#' Creates an AWS Network Firewall Firewall and accompanying FirewallStatus
-#' for a VPC
+#' Creates an Network Firewall Firewall and accompanying FirewallStatus for
+#' a VPC
 #'
 #' @description
-#' Creates an AWS Network Firewall Firewall and accompanying FirewallStatus
-#' for a VPC.
+#' Creates an Network Firewall Firewall and accompanying FirewallStatus for
+#' a VPC.
 #' 
-#' The firewall defines the configuration settings for an AWS Network
-#' Firewall firewall. The settings that you can define at creation include
-#' the firewall policy, the subnets in your VPC to use for the firewall
-#' endpoints, and any tags that are attached to the firewall AWS resource.
+#' The firewall defines the configuration settings for an Network Firewall
+#' firewall. The settings that you can define at creation include the
+#' firewall policy, the subnets in your VPC to use for the firewall
+#' endpoints, and any tags that are attached to the firewall Amazon Web
+#' Services resource.
 #' 
 #' After you create a firewall, you can provide additional settings, like
 #' the logging configuration.
@@ -197,8 +198,8 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #' [`associate_subnets`][networkfirewall_associate_subnets], and
 #' [`update_firewall_delete_protection`][networkfirewall_update_firewall_delete_protection].
 #' 
-#' To manage a firewall's tags, use the standard AWS resource tagging
-#' operations,
+#' To manage a firewall's tags, use the standard Amazon Web Services
+#' resource tagging operations,
 #' [`list_tags_for_resource`][networkfirewall_list_tags_for_resource],
 #' [`tag_resource`][networkfirewall_tag_resource], and
 #' [`untag_resource`][networkfirewall_untag_resource].
@@ -210,7 +211,8 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #' @usage
 #' networkfirewall_create_firewall(FirewallName, FirewallPolicyArn, VpcId,
 #'   SubnetMappings, DeleteProtection, SubnetChangeProtection,
-#'   FirewallPolicyChangeProtection, Description, Tags)
+#'   FirewallPolicyChangeProtection, Description, Tags,
+#'   EncryptionConfiguration)
 #'
 #' @param FirewallName &#91;required&#93; The descriptive name of the firewall. You can't change the name of a
 #' firewall after you create it.
@@ -240,6 +242,8 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #' to `TRUE`.
 #' @param Description A description of the firewall.
 #' @param Tags The key:value pairs to associate with the resource.
+#' @param EncryptionConfiguration A complex type that contains settings for encryption of your firewall
+#' resources.
 #'
 #' @return
 #' A list with the following syntax:
@@ -265,11 +269,15 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #'         Key = "string",
 #'         Value = "string"
 #'       )
+#'     ),
+#'     EncryptionConfiguration = list(
+#'       KeyId = "string",
+#'       Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
 #'     )
 #'   ),
 #'   FirewallStatus = list(
 #'     Status = "PROVISIONING"|"DELETING"|"READY",
-#'     ConfigurationSyncStateSummary = "PENDING"|"IN_SYNC",
+#'     ConfigurationSyncStateSummary = "PENDING"|"IN_SYNC"|"CAPACITY_CONSTRAINED",
 #'     SyncStates = list(
 #'       list(
 #'         Attachment = list(
@@ -279,7 +287,19 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #'         ),
 #'         Config = list(
 #'           list(
-#'             SyncStatus = "PENDING"|"IN_SYNC"
+#'             SyncStatus = "PENDING"|"IN_SYNC"|"CAPACITY_CONSTRAINED",
+#'             UpdateToken = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CapacityUsageSummary = list(
+#'       CIDRs = list(
+#'         AvailableCIDRCount = 123,
+#'         UtilizedCIDRCount = 123,
+#'         IPSetReferences = list(
+#'           list(
+#'             ResolvedCIDRCount = 123
 #'           )
 #'         )
 #'       )
@@ -308,6 +328,10 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   EncryptionConfiguration = list(
+#'     KeyId = "string",
+#'     Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
 #'   )
 #' )
 #' ```
@@ -315,14 +339,14 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #' @keywords internal
 #'
 #' @rdname networkfirewall_create_firewall
-networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, VpcId, SubnetMappings, DeleteProtection = NULL, SubnetChangeProtection = NULL, FirewallPolicyChangeProtection = NULL, Description = NULL, Tags = NULL) {
+networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, VpcId, SubnetMappings, DeleteProtection = NULL, SubnetChangeProtection = NULL, FirewallPolicyChangeProtection = NULL, Description = NULL, Tags = NULL, EncryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFirewall",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .networkfirewall$create_firewall_input(FirewallName = FirewallName, FirewallPolicyArn = FirewallPolicyArn, VpcId = VpcId, SubnetMappings = SubnetMappings, DeleteProtection = DeleteProtection, SubnetChangeProtection = SubnetChangeProtection, FirewallPolicyChangeProtection = FirewallPolicyChangeProtection, Description = Description, Tags = Tags)
+  input <- .networkfirewall$create_firewall_input(FirewallName = FirewallName, FirewallPolicyArn = FirewallPolicyArn, VpcId = VpcId, SubnetMappings = SubnetMappings, DeleteProtection = DeleteProtection, SubnetChangeProtection = SubnetChangeProtection, FirewallPolicyChangeProtection = FirewallPolicyChangeProtection, Description = Description, Tags = Tags, EncryptionConfiguration = EncryptionConfiguration)
   output <- .networkfirewall$create_firewall_output()
   config <- get_config()
   svc <- .networkfirewall$service(config)
@@ -339,13 +363,13 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
 #' Creates the firewall policy for the firewall according to the
 #' specifications.
 #' 
-#' An AWS Network Firewall firewall policy defines the behavior of a
-#' firewall, in a collection of stateless and stateful rule groups and
-#' other settings. You can use one firewall policy for multiple firewalls.
+#' An Network Firewall firewall policy defines the behavior of a firewall,
+#' in a collection of stateless and stateful rule groups and other
+#' settings. You can use one firewall policy for multiple firewalls.
 #'
 #' @usage
 #' networkfirewall_create_firewall_policy(FirewallPolicyName,
-#'   FirewallPolicy, Description, Tags, DryRun)
+#'   FirewallPolicy, Description, Tags, DryRun, EncryptionConfiguration)
 #'
 #' @param FirewallPolicyName &#91;required&#93; The descriptive name of the firewall policy. You can't change the name
 #' of a firewall policy after you create it.
@@ -365,6 +389,8 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
 #' 
 #' If set to `FALSE`, Network Firewall makes the requested changes to your
 #' resources.
+#' @param EncryptionConfiguration A complex type that contains settings for encryption of your firewall
+#' policy resources.
 #'
 #' @return
 #' A list with the following syntax:
@@ -382,6 +408,16 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
 #'         Key = "string",
 #'         Value = "string"
 #'       )
+#'     ),
+#'     ConsumedStatelessRuleCapacity = 123,
+#'     ConsumedStatefulRuleCapacity = 123,
+#'     NumberOfAssociations = 123,
+#'     EncryptionConfiguration = list(
+#'       KeyId = "string",
+#'       Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -420,8 +456,18 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
 #'     ),
 #'     StatefulRuleGroupReferences = list(
 #'       list(
-#'         ResourceArn = "string"
+#'         ResourceArn = "string",
+#'         Priority = 123,
+#'         Override = list(
+#'           Action = "DROP_TO_ALERT"
+#'         )
 #'       )
+#'     ),
+#'     StatefulDefaultActions = list(
+#'       "string"
+#'     ),
+#'     StatefulEngineOptions = list(
+#'       RuleOrder = "DEFAULT_ACTION_ORDER"|"STRICT_ORDER"
 #'     )
 #'   ),
 #'   Description = "string",
@@ -431,21 +477,25 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
 #'       Value = "string"
 #'     )
 #'   ),
-#'   DryRun = TRUE|FALSE
+#'   DryRun = TRUE|FALSE,
+#'   EncryptionConfiguration = list(
+#'     KeyId = "string",
+#'     Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_create_firewall_policy
-networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallPolicy, Description = NULL, Tags = NULL, DryRun = NULL) {
+networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallPolicy, Description = NULL, Tags = NULL, DryRun = NULL, EncryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFirewallPolicy",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .networkfirewall$create_firewall_policy_input(FirewallPolicyName = FirewallPolicyName, FirewallPolicy = FirewallPolicy, Description = Description, Tags = Tags, DryRun = DryRun)
+  input <- .networkfirewall$create_firewall_policy_input(FirewallPolicyName = FirewallPolicyName, FirewallPolicy = FirewallPolicy, Description = Description, Tags = Tags, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration)
   output <- .networkfirewall$create_firewall_policy_output()
   config <- get_config()
   svc <- .networkfirewall$service(config)
@@ -467,7 +517,8 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #'
 #' @usage
 #' networkfirewall_create_rule_group(RuleGroupName, RuleGroup, Rules, Type,
-#'   Description, Capacity, Tags, DryRun)
+#'   Description, Capacity, Tags, DryRun, EncryptionConfiguration,
+#'   SourceMetadata)
 #'
 #' @param RuleGroupName &#91;required&#93; The descriptive name of the rule group. You can't change the name of a
 #' rule group after you create it.
@@ -475,22 +526,17 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' 
 #' You must provide either this rule group setting or a `Rules` setting,
 #' but not both.
-#' @param Rules The name of a file containing stateful rule group rules specifications
-#' in Suricata flat format, with one rule per line. Use this to import your
-#' existing Suricata compatible rule groups.
+#' @param Rules A string containing stateful rule group rules specifications in Suricata
+#' flat format, with one rule per line. Use this to import your existing
+#' Suricata compatible rule groups.
 #' 
 #' You must provide either this rules setting or a populated `RuleGroup`
 #' setting, but not both.
 #' 
-#' You can provide your rule group specification in a file through this
-#' setting when you create or update your rule group. The call response
-#' returns a RuleGroup object that Network Firewall has populated from your
-#' file. Network Firewall uses the file contents to populate the rule group
-#' rules, but does not maintain a reference to the file or use the file in
-#' any way after performing the create or update. If you call
-#' [`describe_rule_group`][networkfirewall_describe_rule_group] to retrieve
-#' the rule group, Network Firewall returns rules settings inside a
-#' RuleGroup object.
+#' You can provide your rule group specification in Suricata flat format
+#' through this setting when you create or update your rule group. The call
+#' response returns a RuleGroup object that Network Firewall has populated
+#' from your string.
 #' @param Type &#91;required&#93; Indicates whether the rule group is stateless or stateful. If the rule
 #' group is stateless, it contains stateless rules. If it is stateful, it
 #' contains stateful rules.
@@ -526,8 +572,8 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #'     elements provided in the setting. For example, a protocol setting
 #'     \["UDP"\] and a source setting \["10.0.0.0/24"\] each have a value
 #'     of 1. A protocol setting \["UDP","TCP"\] has a value of 2. A source
-#'     setting \["10.0.0.0/24","10.0.0.1/24","10.0.0.2/24"\] has a value
-#'     of 3.
+#'     setting \["10.0.0.0/24","10.0.0.1/24","10.0.0.2/24"\] has a value of
+#'     3.
 #' 
 #' A rule with no criteria specified in any of its match settings has a
 #' capacity requirement of 1. A rule with protocol setting \["UDP","TCP"\],
@@ -553,6 +599,11 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' 
 #' If set to `FALSE`, Network Firewall makes the requested changes to your
 #' resources.
+#' @param EncryptionConfiguration A complex type that contains settings for encryption of your rule group
+#' resources.
+#' @param SourceMetadata A complex type that contains metadata about the rule group that your own
+#' rule group is copied from. You can use the metadata to keep track of
+#' updates made to the originating rule group.
 #'
 #' @return
 #' A list with the following syntax:
@@ -572,6 +623,20 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #'         Key = "string",
 #'         Value = "string"
 #'       )
+#'     ),
+#'     ConsumedCapacity = 123,
+#'     NumberOfAssociations = 123,
+#'     EncryptionConfiguration = list(
+#'       KeyId = "string",
+#'       Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'     ),
+#'     SourceMetadata = list(
+#'       SourceArn = "string",
+#'       SourceUpdateToken = "string"
+#'     ),
+#'     SnsTopic = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -595,6 +660,13 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #'           Definition = list(
 #'             "string"
 #'           )
+#'         )
+#'       )
+#'     ),
+#'     ReferenceSets = list(
+#'       IPSetReferences = list(
+#'         list(
+#'           ReferenceArn = "string"
 #'         )
 #'       )
 #'     ),
@@ -693,6 +765,9 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     StatefulRuleOptions = list(
+#'       RuleOrder = "DEFAULT_ACTION_ORDER"|"STRICT_ORDER"
 #'     )
 #'   ),
 #'   Rules = "string",
@@ -705,21 +780,29 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #'       Value = "string"
 #'     )
 #'   ),
-#'   DryRun = TRUE|FALSE
+#'   DryRun = TRUE|FALSE,
+#'   EncryptionConfiguration = list(
+#'     KeyId = "string",
+#'     Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'   ),
+#'   SourceMetadata = list(
+#'     SourceArn = "string",
+#'     SourceUpdateToken = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_create_rule_group
-networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, Rules = NULL, Type, Description = NULL, Capacity, Tags = NULL, DryRun = NULL) {
+networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, Rules = NULL, Type, Description = NULL, Capacity, Tags = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL) {
   op <- new_operation(
     name = "CreateRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .networkfirewall$create_rule_group_input(RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, Capacity = Capacity, Tags = Tags, DryRun = DryRun)
+  input <- .networkfirewall$create_rule_group_input(RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, Capacity = Capacity, Tags = Tags, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata)
   output <- .networkfirewall$create_rule_group_output()
   config <- get_config()
   svc <- .networkfirewall$service(config)
@@ -785,11 +868,15 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #'         Key = "string",
 #'         Value = "string"
 #'       )
+#'     ),
+#'     EncryptionConfiguration = list(
+#'       KeyId = "string",
+#'       Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
 #'     )
 #'   ),
 #'   FirewallStatus = list(
 #'     Status = "PROVISIONING"|"DELETING"|"READY",
-#'     ConfigurationSyncStateSummary = "PENDING"|"IN_SYNC",
+#'     ConfigurationSyncStateSummary = "PENDING"|"IN_SYNC"|"CAPACITY_CONSTRAINED",
 #'     SyncStates = list(
 #'       list(
 #'         Attachment = list(
@@ -799,7 +886,19 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #'         ),
 #'         Config = list(
 #'           list(
-#'             SyncStatus = "PENDING"|"IN_SYNC"
+#'             SyncStatus = "PENDING"|"IN_SYNC"|"CAPACITY_CONSTRAINED",
+#'             UpdateToken = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CapacityUsageSummary = list(
+#'       CIDRs = list(
+#'         AvailableCIDRCount = 123,
+#'         UtilizedCIDRCount = 123,
+#'         IPSetReferences = list(
+#'           list(
+#'             ResolvedCIDRCount = 123
 #'           )
 #'         )
 #'       )
@@ -868,6 +967,16 @@ networkfirewall_delete_firewall <- function(FirewallName = NULL, FirewallArn = N
 #'         Key = "string",
 #'         Value = "string"
 #'       )
+#'     ),
+#'     ConsumedStatelessRuleCapacity = 123,
+#'     ConsumedStatefulRuleCapacity = 123,
+#'     NumberOfAssociations = 123,
+#'     EncryptionConfiguration = list(
+#'       KeyId = "string",
+#'       Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -983,6 +1092,20 @@ networkfirewall_delete_resource_policy <- function(ResourceArn) {
 #'         Key = "string",
 #'         Value = "string"
 #'       )
+#'     ),
+#'     ConsumedCapacity = 123,
+#'     NumberOfAssociations = 123,
+#'     EncryptionConfiguration = list(
+#'       KeyId = "string",
+#'       Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'     ),
+#'     SourceMetadata = list(
+#'       SourceArn = "string",
+#'       SourceUpdateToken = "string"
+#'     ),
+#'     SnsTopic = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -1058,11 +1181,15 @@ networkfirewall_delete_rule_group <- function(RuleGroupName = NULL, RuleGroupArn
 #'         Key = "string",
 #'         Value = "string"
 #'       )
+#'     ),
+#'     EncryptionConfiguration = list(
+#'       KeyId = "string",
+#'       Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
 #'     )
 #'   ),
 #'   FirewallStatus = list(
 #'     Status = "PROVISIONING"|"DELETING"|"READY",
-#'     ConfigurationSyncStateSummary = "PENDING"|"IN_SYNC",
+#'     ConfigurationSyncStateSummary = "PENDING"|"IN_SYNC"|"CAPACITY_CONSTRAINED",
 #'     SyncStates = list(
 #'       list(
 #'         Attachment = list(
@@ -1072,7 +1199,19 @@ networkfirewall_delete_rule_group <- function(RuleGroupName = NULL, RuleGroupArn
 #'         ),
 #'         Config = list(
 #'           list(
-#'             SyncStatus = "PENDING"|"IN_SYNC"
+#'             SyncStatus = "PENDING"|"IN_SYNC"|"CAPACITY_CONSTRAINED",
+#'             UpdateToken = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     CapacityUsageSummary = list(
+#'       CIDRs = list(
+#'         AvailableCIDRCount = 123,
+#'         UtilizedCIDRCount = 123,
+#'         IPSetReferences = list(
+#'           list(
+#'             ResolvedCIDRCount = 123
 #'           )
 #'         )
 #'       )
@@ -1142,6 +1281,16 @@ networkfirewall_describe_firewall <- function(FirewallName = NULL, FirewallArn =
 #'         Key = "string",
 #'         Value = "string"
 #'       )
+#'     ),
+#'     ConsumedStatelessRuleCapacity = 123,
+#'     ConsumedStatefulRuleCapacity = 123,
+#'     NumberOfAssociations = 123,
+#'     EncryptionConfiguration = list(
+#'       KeyId = "string",
+#'       Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   ),
 #'   FirewallPolicy = list(
@@ -1173,8 +1322,18 @@ networkfirewall_describe_firewall <- function(FirewallName = NULL, FirewallArn =
 #'     ),
 #'     StatefulRuleGroupReferences = list(
 #'       list(
-#'         ResourceArn = "string"
+#'         ResourceArn = "string",
+#'         Priority = 123,
+#'         Override = list(
+#'           Action = "DROP_TO_ALERT"
+#'         )
 #'       )
+#'     ),
+#'     StatefulDefaultActions = list(
+#'       "string"
+#'     ),
+#'     StatefulEngineOptions = list(
+#'       RuleOrder = "DEFAULT_ACTION_ORDER"|"STRICT_ORDER"
 #'     )
 #'   )
 #' )
@@ -1364,6 +1523,13 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #'         )
 #'       )
 #'     ),
+#'     ReferenceSets = list(
+#'       IPSetReferences = list(
+#'         list(
+#'           ReferenceArn = "string"
+#'         )
+#'       )
+#'     ),
 #'     RulesSource = list(
 #'       RulesString = "string",
 #'       RulesSourceList = list(
@@ -1459,6 +1625,9 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     StatefulRuleOptions = list(
+#'       RuleOrder = "DEFAULT_ACTION_ORDER"|"STRICT_ORDER"
 #'     )
 #'   ),
 #'   RuleGroupResponse = list(
@@ -1474,6 +1643,20 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #'         Key = "string",
 #'         Value = "string"
 #'       )
+#'     ),
+#'     ConsumedCapacity = 123,
+#'     NumberOfAssociations = 123,
+#'     EncryptionConfiguration = list(
+#'       KeyId = "string",
+#'       Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'     ),
+#'     SourceMetadata = list(
+#'       SourceArn = "string",
+#'       SourceUpdateToken = "string"
+#'     ),
+#'     SnsTopic = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -1507,6 +1690,82 @@ networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupA
   return(response)
 }
 .networkfirewall$operations$describe_rule_group <- networkfirewall_describe_rule_group
+
+#' High-level information about a rule group, returned by operations like
+#' create and describe
+#'
+#' @description
+#' High-level information about a rule group, returned by operations like
+#' create and describe. You can use the information provided in the
+#' metadata to retrieve and manage a rule group. You can retrieve all
+#' objects for a rule group by calling
+#' [`describe_rule_group`][networkfirewall_describe_rule_group].
+#'
+#' @usage
+#' networkfirewall_describe_rule_group_metadata(RuleGroupName,
+#'   RuleGroupArn, Type)
+#'
+#' @param RuleGroupName The descriptive name of the rule group. You can't change the name of a
+#' rule group after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param RuleGroupArn The descriptive name of the rule group. You can't change the name of a
+#' rule group after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param Type Indicates whether the rule group is stateless or stateful. If the rule
+#' group is stateless, it contains stateless rules. If it is stateful, it
+#' contains stateful rules.
+#' 
+#' This setting is required for requests that do not include the
+#' `RuleGroupARN`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RuleGroupArn = "string",
+#'   RuleGroupName = "string",
+#'   Description = "string",
+#'   Type = "STATELESS"|"STATEFUL",
+#'   Capacity = 123,
+#'   StatefulRuleOptions = list(
+#'     RuleOrder = "DEFAULT_ACTION_ORDER"|"STRICT_ORDER"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_rule_group_metadata(
+#'   RuleGroupName = "string",
+#'   RuleGroupArn = "string",
+#'   Type = "STATELESS"|"STATEFUL"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_describe_rule_group_metadata
+networkfirewall_describe_rule_group_metadata <- function(RuleGroupName = NULL, RuleGroupArn = NULL, Type = NULL) {
+  op <- new_operation(
+    name = "DescribeRuleGroupMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .networkfirewall$describe_rule_group_metadata_input(RuleGroupName = RuleGroupName, RuleGroupArn = RuleGroupArn, Type = Type)
+  output <- .networkfirewall$describe_rule_group_metadata_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$describe_rule_group_metadata <- networkfirewall_describe_rule_group_metadata
 
 #' Removes the specified subnet associations from the firewall
 #'
@@ -1733,7 +1992,8 @@ networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxR
 #' a single call might not return the full list.
 #'
 #' @usage
-#' networkfirewall_list_rule_groups(NextToken, MaxResults)
+#' networkfirewall_list_rule_groups(NextToken, MaxResults, Scope,
+#'   ManagedType, Type)
 #'
 #' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
 #' number of objects that are still available for retrieval exceeds the
@@ -1744,6 +2004,14 @@ networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxR
 #' for this request. If more objects are available, in the response,
 #' Network Firewall provides a `NextToken` value that you can use in a
 #' subsequent call to get the next batch of objects.
+#' @param Scope The scope of the request. The default setting of `ACCOUNT` or a setting
+#' of `NULL` returns all of the rule groups in your account. A setting of
+#' `MANAGED` returns all available managed rule groups.
+#' @param ManagedType Indicates the general category of the Amazon Web Services managed rule
+#' group.
+#' @param Type Indicates whether the rule group is stateless or stateful. If the rule
+#' group is stateless, it contains stateless rules. If it is stateful, it
+#' contains stateful rules.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1763,21 +2031,24 @@ networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxR
 #' ```
 #' svc$list_rule_groups(
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   Scope = "MANAGED"|"ACCOUNT",
+#'   ManagedType = "AWS_MANAGED_THREAT_SIGNATURES"|"AWS_MANAGED_DOMAIN_LISTS",
+#'   Type = "STATELESS"|"STATEFUL"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_list_rule_groups
-networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL) {
+networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL, Scope = NULL, ManagedType = NULL, Type = NULL) {
   op <- new_operation(
     name = "ListRuleGroups",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .networkfirewall$list_rule_groups_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .networkfirewall$list_rule_groups_input(NextToken = NextToken, MaxResults = MaxResults, Scope = Scope, ManagedType = ManagedType, Type = Type)
   output <- .networkfirewall$list_rule_groups_output()
   config <- get_config()
   svc <- .networkfirewall$service(config)
@@ -1794,11 +2065,11 @@ networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL
 #' key:value pairs that you can use to categorize and manage your
 #' resources, for purposes like billing. For example, you might set the tag
 #' key to "customer" and the value to the customer name or ID. You can
-#' specify one or more tags to add to each AWS resource, up to 50 tags for
-#' a resource.
+#' specify one or more tags to add to each Amazon Web Services resource, up
+#' to 50 tags for a resource.
 #' 
-#' You can tag the AWS resources that you manage through AWS Network
-#' Firewall: firewalls, firewall policies, and rule groups.
+#' You can tag the Amazon Web Services resources that you manage through
+#' Network Firewall: firewalls, firewall policies, and rule groups.
 #'
 #' @usage
 #' networkfirewall_list_tags_for_resource(NextToken, MaxResults,
@@ -1858,15 +2129,14 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
 }
 .networkfirewall$operations$list_tags_for_resource <- networkfirewall_list_tags_for_resource
 
-#' Creates or updates an AWS Identity and Access Management policy for your
-#' rule group or firewall policy
+#' Creates or updates an IAM policy for your rule group or firewall policy
 #'
 #' @description
-#' Creates or updates an AWS Identity and Access Management policy for your
-#' rule group or firewall policy. Use this to share rule groups and
-#' firewall policies between accounts. This operation works in conjunction
-#' with the AWS Resource Access Manager (RAM) service to manage resource
-#' sharing for Network Firewall.
+#' Creates or updates an IAM policy for your rule group or firewall policy.
+#' Use this to share rule groups and firewall policies between accounts.
+#' This operation works in conjunction with the Amazon Web Services
+#' Resource Access Manager (RAM) service to manage resource sharing for
+#' Network Firewall.
 #' 
 #' Use this operation to create or update a resource policy for your rule
 #' group or firewall policy. In the policy, you specify the accounts that
@@ -1884,8 +2154,8 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
 #' -   [AcceptResourceShareInvitation](https://docs.aws.amazon.com/ram/latest/APIReference/API_AcceptResourceShareInvitation.html) -
 #'     Accepts the share invitation for a specified resource share.
 #' 
-#' For additional information about resource sharing using RAM, see [AWS
-#' Resource Access Manager User
+#' For additional information about resource sharing using RAM, see
+#' [Resource Access Manager User
 #' Guide](https://docs.aws.amazon.com/ram/latest/userguide/what-is.html).
 #'
 #' @usage
@@ -1893,9 +2163,9 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the account that you want to share
 #' rule groups and firewall policies with.
-#' @param Policy &#91;required&#93; The AWS Identity and Access Management policy statement that lists the
-#' accounts that you want to share your rule group or firewall policy with
-#' and the operations that you want the accounts to be able to perform.
+#' @param Policy &#91;required&#93; The IAM policy statement that lists the accounts that you want to share
+#' your rule group or firewall policy with and the operations that you want
+#' the accounts to be able to perform.
 #' 
 #' For a rule group resource, you can specify the following operations in
 #' the Actions section of the statement:
@@ -1959,10 +2229,11 @@ networkfirewall_put_resource_policy <- function(ResourceArn, Policy) {
 #' pairs that you can use to categorize and manage your resources, for
 #' purposes like billing. For example, you might set the tag key to
 #' "customer" and the value to the customer name or ID. You can specify one
-#' or more tags to add to each AWS resource, up to 50 tags for a resource.
+#' or more tags to add to each Amazon Web Services resource, up to 50 tags
+#' for a resource.
 #' 
-#' You can tag the AWS resources that you manage through AWS Network
-#' Firewall: firewalls, firewall policies, and rule groups.
+#' You can tag the Amazon Web Services resources that you manage through
+#' Network Firewall: firewalls, firewall policies, and rule groups.
 #'
 #' @usage
 #' networkfirewall_tag_resource(ResourceArn, Tags)
@@ -2013,11 +2284,12 @@ networkfirewall_tag_resource <- function(ResourceArn, Tags) {
 #' Tags are key:value pairs that you can use to categorize and manage your
 #' resources, for purposes like billing. For example, you might set the tag
 #' key to "customer" and the value to the customer name or ID. You can
-#' specify one or more tags to add to each AWS resource, up to 50 tags for
-#' a resource.
+#' specify one or more tags to add to each Amazon Web Services resource, up
+#' to 50 tags for a resource.
 #' 
-#' You can manage tags for the AWS resources that you manage through AWS
-#' Network Firewall: firewalls, firewall policies, and rule groups.
+#' You can manage tags for the Amazon Web Services resources that you
+#' manage through Network Firewall: firewalls, firewall policies, and rule
+#' groups.
 #'
 #' @usage
 #' networkfirewall_untag_resource(ResourceArn, TagKeys)
@@ -2220,6 +2492,86 @@ networkfirewall_update_firewall_description <- function(UpdateToken = NULL, Fire
 }
 .networkfirewall$operations$update_firewall_description <- networkfirewall_update_firewall_description
 
+#' A complex type that contains settings for encryption of your firewall
+#' resources
+#'
+#' @description
+#' A complex type that contains settings for encryption of your firewall
+#' resources.
+#'
+#' @usage
+#' networkfirewall_update_firewall_encryption_configuration(UpdateToken,
+#'   FirewallArn, FirewallName, EncryptionConfiguration)
+#'
+#' @param UpdateToken An optional token that you can use for optimistic locking. Network
+#' Firewall returns a token to your requests that access the firewall. The
+#' token marks the state of the firewall resource at the time of the
+#' request.
+#' 
+#' To make an unconditional change to the firewall, omit the token in your
+#' update request. Without the token, Network Firewall performs your
+#' updates regardless of whether the firewall has changed since you last
+#' retrieved it.
+#' 
+#' To make a conditional change to the firewall, provide the token in your
+#' update request. Network Firewall uses the token to ensure that the
+#' firewall hasn't changed since you last retrieved it. If it has changed,
+#' the operation fails with an `InvalidTokenException`. If this happens,
+#' retrieve the firewall again to get a current copy of it with a new
+#' token. Reapply your changes as needed, then try the operation again
+#' using the new token.
+#' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
+#' @param FirewallName The descriptive name of the firewall. You can't change the name of a
+#' firewall after you create it.
+#' @param EncryptionConfiguration 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FirewallArn = "string",
+#'   FirewallName = "string",
+#'   UpdateToken = "string",
+#'   EncryptionConfiguration = list(
+#'     KeyId = "string",
+#'     Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_firewall_encryption_configuration(
+#'   UpdateToken = "string",
+#'   FirewallArn = "string",
+#'   FirewallName = "string",
+#'   EncryptionConfiguration = list(
+#'     KeyId = "string",
+#'     Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_update_firewall_encryption_configuration
+networkfirewall_update_firewall_encryption_configuration <- function(UpdateToken = NULL, FirewallArn = NULL, FirewallName = NULL, EncryptionConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateFirewallEncryptionConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .networkfirewall$update_firewall_encryption_configuration_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, EncryptionConfiguration = EncryptionConfiguration)
+  output <- .networkfirewall$update_firewall_encryption_configuration_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$update_firewall_encryption_configuration <- networkfirewall_update_firewall_encryption_configuration
+
 #' Updates the properties of the specified firewall policy
 #'
 #' @description
@@ -2227,7 +2579,8 @@ networkfirewall_update_firewall_description <- function(UpdateToken = NULL, Fire
 #'
 #' @usage
 #' networkfirewall_update_firewall_policy(UpdateToken, FirewallPolicyArn,
-#'   FirewallPolicyName, FirewallPolicy, Description, DryRun)
+#'   FirewallPolicyName, FirewallPolicy, Description, DryRun,
+#'   EncryptionConfiguration)
 #'
 #' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to
 #' your requests that access the firewall policy. The token marks the state
@@ -2262,6 +2615,8 @@ networkfirewall_update_firewall_description <- function(UpdateToken = NULL, Fire
 #' 
 #' If set to `FALSE`, Network Firewall makes the requested changes to your
 #' resources.
+#' @param EncryptionConfiguration A complex type that contains settings for encryption of your firewall
+#' policy resources.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2279,6 +2634,16 @@ networkfirewall_update_firewall_description <- function(UpdateToken = NULL, Fire
 #'         Key = "string",
 #'         Value = "string"
 #'       )
+#'     ),
+#'     ConsumedStatelessRuleCapacity = 123,
+#'     ConsumedStatefulRuleCapacity = 123,
+#'     NumberOfAssociations = 123,
+#'     EncryptionConfiguration = list(
+#'       KeyId = "string",
+#'       Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -2319,26 +2684,40 @@ networkfirewall_update_firewall_description <- function(UpdateToken = NULL, Fire
 #'     ),
 #'     StatefulRuleGroupReferences = list(
 #'       list(
-#'         ResourceArn = "string"
+#'         ResourceArn = "string",
+#'         Priority = 123,
+#'         Override = list(
+#'           Action = "DROP_TO_ALERT"
+#'         )
 #'       )
+#'     ),
+#'     StatefulDefaultActions = list(
+#'       "string"
+#'     ),
+#'     StatefulEngineOptions = list(
+#'       RuleOrder = "DEFAULT_ACTION_ORDER"|"STRICT_ORDER"
 #'     )
 #'   ),
 #'   Description = "string",
-#'   DryRun = TRUE|FALSE
+#'   DryRun = TRUE|FALSE,
+#'   EncryptionConfiguration = list(
+#'     KeyId = "string",
+#'     Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_update_firewall_policy
-networkfirewall_update_firewall_policy <- function(UpdateToken, FirewallPolicyArn = NULL, FirewallPolicyName = NULL, FirewallPolicy, Description = NULL, DryRun = NULL) {
+networkfirewall_update_firewall_policy <- function(UpdateToken, FirewallPolicyArn = NULL, FirewallPolicyName = NULL, FirewallPolicy, Description = NULL, DryRun = NULL, EncryptionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateFirewallPolicy",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .networkfirewall$update_firewall_policy_input(UpdateToken = UpdateToken, FirewallPolicyArn = FirewallPolicyArn, FirewallPolicyName = FirewallPolicyName, FirewallPolicy = FirewallPolicy, Description = Description, DryRun = DryRun)
+  input <- .networkfirewall$update_firewall_policy_input(UpdateToken = UpdateToken, FirewallPolicyArn = FirewallPolicyArn, FirewallPolicyName = FirewallPolicyName, FirewallPolicy = FirewallPolicy, Description = Description, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration)
   output <- .networkfirewall$update_firewall_policy_output()
   config <- get_config()
   svc <- .networkfirewall$service(config)
@@ -2348,10 +2727,14 @@ networkfirewall_update_firewall_policy <- function(UpdateToken, FirewallPolicyAr
 }
 .networkfirewall$operations$update_firewall_policy <- networkfirewall_update_firewall_policy
 
-#' Update firewall policy change protection
+#' Modifies the flag, ChangeProtection, which indicates whether it is
+#' possible to change the firewall
 #'
 #' @description
-#' Update firewall policy change protection
+#' Modifies the flag, `ChangeProtection`, which indicates whether it is
+#' possible to change the firewall. If the flag is set to `TRUE`, the
+#' firewall is protected from changes. This setting helps protect against
+#' accidentally changing a firewall that's in use.
 #'
 #' @usage
 #' networkfirewall_update_firewall_policy_change_protection(UpdateToken,
@@ -2544,7 +2927,8 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #'
 #' @usage
 #' networkfirewall_update_rule_group(UpdateToken, RuleGroupArn,
-#'   RuleGroupName, RuleGroup, Rules, Type, Description, DryRun)
+#'   RuleGroupName, RuleGroup, Rules, Type, Description, DryRun,
+#'   EncryptionConfiguration, SourceMetadata)
 #'
 #' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to
 #' your requests that access the rule group. The token marks the state of
@@ -2568,22 +2952,17 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #' 
 #' You must provide either this rule group setting or a `Rules` setting,
 #' but not both.
-#' @param Rules The name of a file containing stateful rule group rules specifications
-#' in Suricata flat format, with one rule per line. Use this to import your
-#' existing Suricata compatible rule groups.
+#' @param Rules A string containing stateful rule group rules specifications in Suricata
+#' flat format, with one rule per line. Use this to import your existing
+#' Suricata compatible rule groups.
 #' 
 #' You must provide either this rules setting or a populated `RuleGroup`
 #' setting, but not both.
 #' 
-#' You can provide your rule group specification in a file through this
-#' setting when you create or update your rule group. The call response
-#' returns a RuleGroup object that Network Firewall has populated from your
-#' file. Network Firewall uses the file contents to populate the rule group
-#' rules, but does not maintain a reference to the file or use the file in
-#' any way after performing the create or update. If you call
-#' [`describe_rule_group`][networkfirewall_describe_rule_group] to retrieve
-#' the rule group, Network Firewall returns rules settings inside a
-#' RuleGroup object.
+#' You can provide your rule group specification in Suricata flat format
+#' through this setting when you create or update your rule group. The call
+#' response returns a RuleGroup object that Network Firewall has populated
+#' from your string.
 #' @param Type Indicates whether the rule group is stateless or stateful. If the rule
 #' group is stateless, it contains stateless rules. If it is stateful, it
 #' contains stateful rules.
@@ -2604,6 +2983,11 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #' 
 #' If set to `FALSE`, Network Firewall makes the requested changes to your
 #' resources.
+#' @param EncryptionConfiguration A complex type that contains settings for encryption of your rule group
+#' resources.
+#' @param SourceMetadata A complex type that contains metadata about the rule group that your own
+#' rule group is copied from. You can use the metadata to keep track of
+#' updates made to the originating rule group.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2623,6 +3007,20 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #'         Key = "string",
 #'         Value = "string"
 #'       )
+#'     ),
+#'     ConsumedCapacity = 123,
+#'     NumberOfAssociations = 123,
+#'     EncryptionConfiguration = list(
+#'       KeyId = "string",
+#'       Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'     ),
+#'     SourceMetadata = list(
+#'       SourceArn = "string",
+#'       SourceUpdateToken = "string"
+#'     ),
+#'     SnsTopic = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -2648,6 +3046,13 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #'           Definition = list(
 #'             "string"
 #'           )
+#'         )
+#'       )
+#'     ),
+#'     ReferenceSets = list(
+#'       IPSetReferences = list(
+#'         list(
+#'           ReferenceArn = "string"
 #'         )
 #'       )
 #'     ),
@@ -2746,26 +3151,37 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #'           )
 #'         )
 #'       )
+#'     ),
+#'     StatefulRuleOptions = list(
+#'       RuleOrder = "DEFAULT_ACTION_ORDER"|"STRICT_ORDER"
 #'     )
 #'   ),
 #'   Rules = "string",
 #'   Type = "STATELESS"|"STATEFUL",
 #'   Description = "string",
-#'   DryRun = TRUE|FALSE
+#'   DryRun = TRUE|FALSE,
+#'   EncryptionConfiguration = list(
+#'     KeyId = "string",
+#'     Type = "CUSTOMER_KMS"|"AWS_OWNED_KMS_KEY"
+#'   ),
+#'   SourceMetadata = list(
+#'     SourceArn = "string",
+#'     SourceUpdateToken = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_update_rule_group
-networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, RuleGroupName = NULL, RuleGroup = NULL, Rules = NULL, Type = NULL, Description = NULL, DryRun = NULL) {
+networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, RuleGroupName = NULL, RuleGroup = NULL, Rules = NULL, Type = NULL, Description = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL) {
   op <- new_operation(
     name = "UpdateRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .networkfirewall$update_rule_group_input(UpdateToken = UpdateToken, RuleGroupArn = RuleGroupArn, RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, DryRun = DryRun)
+  input <- .networkfirewall$update_rule_group_input(UpdateToken = UpdateToken, RuleGroupArn = RuleGroupArn, RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata)
   output <- .networkfirewall$update_rule_group_output()
   config <- get_config()
   svc <- .networkfirewall$service(config)

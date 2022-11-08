@@ -8,23 +8,12 @@ servers}
 ssm_deregister_managed_instance(InstanceId)
 }
 \arguments{
-\item{InstanceId}{[required] The ID assigned to the managed instance when you registered it using the
+\item{InstanceId}{[required] The ID assigned to the managed node when you registered it using the
 activation process.}
 }
-\value{
-An empty list.
-}
 \description{
-Removes the server or virtual machine from the list of registered
-servers. You can reregister the instance again at any time. If you don't
-plan to use Run Command on the server, we suggest uninstalling SSM Agent
-first.
-}
-\section{Request syntax}{
-\preformatted{svc$deregister_managed_instance(
-  InstanceId = "string"
-)
-}
-}
+Removes the server or virtual machine from the list of registered servers. You can reregister the node again at any time. If you don't plan to use Run Command on the server, we suggest uninstalling SSM Agent first.
 
+See \url{https://paws-r.github.io/docs/ssm/deregister_managed_instance.html} for full documentation.
+}
 \keyword{internal}

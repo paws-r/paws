@@ -4,17 +4,26 @@
 \alias{quicksight_create_analysis}
 \title{Creates an analysis in Amazon QuickSight}
 \usage{
-quicksight_create_analysis(AwsAccountId, AnalysisId, Name, Parameters,
-  Permissions, SourceEntity, ThemeArn, Tags)
+quicksight_create_analysis(
+  AwsAccountId,
+  AnalysisId,
+  Name,
+  Parameters = NULL,
+  Permissions = NULL,
+  SourceEntity,
+  ThemeArn = NULL,
+  Tags = NULL
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account where you are creating an analysis.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account where you are creating an
+analysis.}
 
 \item{AnalysisId}{[required] The ID for the analysis that you're creating. This ID displays in the
 URL of the analysis.}
 
 \item{Name}{[required] A descriptive name for the analysis that you're creating. This name
-displays for the analysis in the QuickSight console.}
+displays for the analysis in the Amazon QuickSight console.}
 
 \item{Parameters}{The parameter names and override values that you want to use. An
 analysis can have any parameter type, and some parameters might accept
@@ -22,9 +31,9 @@ multiple values.}
 
 \item{Permissions}{A structure that describes the principals and the resource-level
 permissions on an analysis. You can use the \code{Permissions} structure to
-grant permissions by providing a list of AWS Identity and Access
-Management (IAM) action information for each principal listed by Amazon
-Resource Name (ARN).
+grant permissions by providing a list of Identity and Access Management
+(IAM) action information for each principal listed by Amazon Resource
+Name (ARN).
 
 To specify no permissions, omit \code{Permissions}.}
 
@@ -33,94 +42,15 @@ metadata structure contains details that describe a source template and
 one or more datasets.}
 
 \item{ThemeArn}{The ARN for the theme to apply to the analysis that you're creating. To
-see the theme in the QuickSight console, make sure that you have access
-to it.}
+see the theme in the Amazon QuickSight console, make sure that you have
+access to it.}
 
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags
 assigned to the analysis.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Arn = "string",
-  AnalysisId = "string",
-  CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Creates an analysis in Amazon QuickSight.
-}
-\section{Request syntax}{
-\preformatted{svc$create_analysis(
-  AwsAccountId = "string",
-  AnalysisId = "string",
-  Name = "string",
-  Parameters = list(
-    StringParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          "string"
-        )
-      )
-    ),
-    IntegerParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          123
-        )
-      )
-    ),
-    DecimalParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          123.0
-        )
-      )
-    ),
-    DateTimeParameters = list(
-      list(
-        Name = "string",
-        Values = list(
-          as.POSIXct(
-            "2015-01-01"
-          )
-        )
-      )
-    )
-  ),
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  SourceEntity = list(
-    SourceTemplate = list(
-      DataSetReferences = list(
-        list(
-          DataSetPlaceholder = "string",
-          DataSetArn = "string"
-        )
-      ),
-      Arn = "string"
-    )
-  ),
-  ThemeArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/create_analysis.html} for full documentation.
+}
 \keyword{internal}

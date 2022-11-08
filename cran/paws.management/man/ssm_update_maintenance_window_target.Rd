@@ -4,8 +4,15 @@
 \alias{ssm_update_maintenance_window_target}
 \title{Modifies the target of an existing maintenance window}
 \usage{
-ssm_update_maintenance_window_target(WindowId, WindowTargetId, Targets,
-  OwnerInformation, Name, Description, Replace)
+ssm_update_maintenance_window_target(
+  WindowId,
+  WindowTargetId,
+  Targets = NULL,
+  OwnerInformation = NULL,
+  Name = NULL,
+  Description = NULL,
+  Replace = NULL
+)
 }
 \arguments{
 \item{WindowId}{[required] The maintenance window ID with which to modify the target.}
@@ -14,69 +21,22 @@ ssm_update_maintenance_window_target(WindowId, WindowTargetId, Targets,
 
 \item{Targets}{The targets to add or replace.}
 
-\item{OwnerInformation}{User-provided value that will be included in any CloudWatch events
-raised while running tasks for these targets in this maintenance window.}
+\item{OwnerInformation}{User-provided value that will be included in any Amazon CloudWatch
+Events events raised while running tasks for these targets in this
+maintenance window.}
 
 \item{Name}{A name for the update.}
 
 \item{Description}{An optional description for the update.}
 
-\item{Replace}{If True, then all fields that are required by the
-RegisterTargetWithMaintenanceWindow action are also required for this
-API request. Optional fields that are not specified are set to null.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowId = "string",
-  WindowTargetId = "string",
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  OwnerInformation = "string",
-  Name = "string",
-  Description = "string"
-)
-}
+\item{Replace}{If \code{True}, then all fields that are required by the
+\code{\link[=ssm_register_target_with_maintenance_window]{register_target_with_maintenance_window}}
+operation are also required for this API request. Optional fields that
+aren't specified are set to null.}
 }
 \description{
-Modifies the target of an existing maintenance window. You can change
-the following:
-\itemize{
-\item Name
-\item Description
-\item Owner
-\item IDs for an ID target
-\item Tags for a Tag target
-\item From any supported tag type to another. The three supported tag
-types are ID target, Tag target, and resource group. For more
-information, see Target.
-}
+Modifies the target of an existing maintenance window. You can change the following:
 
-If a parameter is null, then the corresponding field is not modified.
+See \url{https://paws-r.github.io/docs/ssm/update_maintenance_window_target.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$update_maintenance_window_target(
-  WindowId = "string",
-  WindowTargetId = "string",
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  OwnerInformation = "string",
-  Name = "string",
-  Description = "string",
-  Replace = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

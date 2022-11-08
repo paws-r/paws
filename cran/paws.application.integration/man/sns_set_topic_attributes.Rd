@@ -4,7 +4,7 @@
 \alias{sns_set_topic_attributes}
 \title{Allows a topic owner to set an attribute of the topic to a new value}
 \usage{
-sns_set_topic_attributes(TopicArn, AttributeName, AttributeValue)
+sns_set_topic_attributes(TopicArn, AttributeName, AttributeValue = NULL)
 }
 \arguments{
 \item{TopicArn}{[required] The ARN of the topic to modify.}
@@ -26,11 +26,12 @@ default, only the topic owner can publish or subscribe to the topic.
 The following attribute applies only to
 \href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html}{server-side-encryption}:
 \itemize{
-\item \code{KmsMasterKeyId} – The ID of an AWS-managed customer master key
-(CMK) for Amazon SNS or a custom CMK. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms}{Key Terms}.
+\item \code{KmsMasterKeyId} – The ID of an Amazon Web Services managed customer
+master key (CMK) for Amazon SNS or a custom CMK. For more
+information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms}{Key Terms}.
 For more examples, see
 \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{KeyId}
-in the \emph{AWS Key Management Service API Reference}.
+in the \emph{Key Management Service API Reference}.
 }
 
 The following attribute applies only to \href{https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html}{FIFO topics}:
@@ -48,26 +49,16 @@ using the body of the message (but not the attributes of the
 message).
 
 (Optional) To override the generated value, you can specify a
-value for the the \code{MessageDeduplicationId} parameter for the
+value for the \code{MessageDeduplicationId} parameter for the
 \code{\link[=sns_publish]{publish}} action.
 }
 }}
 
 \item{AttributeValue}{The new value for the attribute.}
 }
-\value{
-An empty list.
-}
 \description{
 Allows a topic owner to set an attribute of the topic to a new value.
-}
-\section{Request syntax}{
-\preformatted{svc$set_topic_attributes(
-  TopicArn = "string",
-  AttributeName = "string",
-  AttributeValue = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sns/set_topic_attributes.html} for full documentation.
+}
 \keyword{internal}

@@ -4,8 +4,15 @@
 \alias{serverlessapplicationrepository_update_application}
 \title{Updates the specified application}
 \usage{
-serverlessapplicationrepository_update_application(ApplicationId,
-  Author, Description, HomePageUrl, Labels, ReadmeBody, ReadmeUrl)
+serverlessapplicationrepository_update_application(
+  ApplicationId,
+  Author = NULL,
+  Description = NULL,
+  HomePageUrl = NULL,
+  Labels = NULL,
+  ReadmeBody = NULL,
+  ReadmeUrl = NULL
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -39,74 +46,9 @@ detailed description of the application and how it works.
 
 Maximum size 5 MB}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationId = "string",
-  Author = "string",
-  CreationTime = "string",
-  Description = "string",
-  HomePageUrl = "string",
-  IsVerifiedAuthor = TRUE|FALSE,
-  Labels = list(
-    "string"
-  ),
-  LicenseUrl = "string",
-  Name = "string",
-  ReadmeUrl = "string",
-  SpdxLicenseId = "string",
-  VerifiedAuthorUrl = "string",
-  Version = list(
-    ApplicationId = "string",
-    CreationTime = "string",
-    ParameterDefinitions = list(
-      list(
-        AllowedPattern = "string",
-        AllowedValues = list(
-          "string"
-        ),
-        ConstraintDescription = "string",
-        DefaultValue = "string",
-        Description = "string",
-        MaxLength = 123,
-        MaxValue = 123,
-        MinLength = 123,
-        MinValue = 123,
-        Name = "string",
-        NoEcho = TRUE|FALSE,
-        ReferencedByResources = list(
-          "string"
-        ),
-        Type = "string"
-      )
-    ),
-    RequiredCapabilities = list(
-      "CAPABILITY_IAM"|"CAPABILITY_NAMED_IAM"|"CAPABILITY_AUTO_EXPAND"|"CAPABILITY_RESOURCE_POLICY"
-    ),
-    ResourcesSupported = TRUE|FALSE,
-    SemanticVersion = "string",
-    SourceCodeArchiveUrl = "string",
-    SourceCodeUrl = "string",
-    TemplateUrl = "string"
-  )
-)
-}
-}
 \description{
 Updates the specified application.
-}
-\section{Request syntax}{
-\preformatted{svc$update_application(
-  ApplicationId = "string",
-  Author = "string",
-  Description = "string",
-  HomePageUrl = "string",
-  Labels = list(
-    "string"
-  ),
-  ReadmeBody = "string",
-  ReadmeUrl = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/update_application.html} for full documentation.
+}
 \keyword{internal}

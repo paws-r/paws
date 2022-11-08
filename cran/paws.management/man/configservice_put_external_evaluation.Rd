@@ -2,36 +2,18 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_put_external_evaluation}
 \alias{configservice_put_external_evaluation}
-\title{Put external evaluation}
+\title{Add or updates the evaluations for process checks}
 \usage{
-configservice_put_external_evaluation(ConfigRuleName,
-  ExternalEvaluation)
+configservice_put_external_evaluation(ConfigRuleName, ExternalEvaluation)
 }
 \arguments{
-\item{ConfigRuleName}{[required]}
+\item{ConfigRuleName}{[required] The name of the Config rule.}
 
-\item{ExternalEvaluation}{[required]}
-}
-\value{
-An empty list.
+\item{ExternalEvaluation}{[required] An \code{ExternalEvaluation} object that provides details about compliance.}
 }
 \description{
-Put external evaluation
-}
-\section{Request syntax}{
-\preformatted{svc$put_external_evaluation(
-  ConfigRuleName = "string",
-  ExternalEvaluation = list(
-    ComplianceResourceType = "string",
-    ComplianceResourceId = "string",
-    ComplianceType = "COMPLIANT"|"NON_COMPLIANT"|"NOT_APPLICABLE"|"INSUFFICIENT_DATA",
-    Annotation = "string",
-    OrderingTimestamp = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
+Add or updates the evaluations for process checks. This API checks if the rule is a process check when the name of the Config rule is provided.
 
+See \url{https://paws-r.github.io/docs/configservice/put_external_evaluation.html} for full documentation.
+}
 \keyword{internal}

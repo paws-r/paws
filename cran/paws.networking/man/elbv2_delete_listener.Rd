@@ -9,29 +9,9 @@ elbv2_delete_listener(ListenerArn)
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes the specified listener.
 
-Alternatively, your listener is deleted when you delete the load
-balancer to which it is attached.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_listener(
-  ListenerArn = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example deletes the specified listener.
-svc$delete_listener(
-  ListenerArn = "arn:aws:elasticloadbalancing:ua-west-2:123456789012:listen..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/elbv2/delete_listener.html} for full documentation.
 }
 \keyword{internal}

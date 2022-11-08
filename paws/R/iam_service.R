@@ -5,18 +5,32 @@ NULL
 #' AWS Identity and Access Management
 #'
 #' @description
-#' AWS Identity and Access Management (IAM) is a web service for securely
-#' controlling access to AWS services. With IAM, you can centrally manage
-#' users, security credentials such as access keys, and permissions that
-#' control which AWS resources users and applications can access. For more
-#' information about IAM, see [AWS Identity and Access Management
-#' (IAM)](https://aws.amazon.com/iam/) and the [AWS Identity and Access
-#' Management User
+#' Identity and Access Management
+#' 
+#' Identity and Access Management (IAM) is a web service for securely
+#' controlling access to Amazon Web Services services. With IAM, you can
+#' centrally manage users, security credentials such as access keys, and
+#' permissions that control which Amazon Web Services resources users and
+#' applications can access. For more information about IAM, see [Identity
+#' and Access Management (IAM)](https://aws.amazon.com/iam/) and the
+#' [Identity and Access Management User
 #' Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/).
 #'
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -28,10 +42,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```
@@ -57,28 +75,28 @@ NULL
 #'  \link[=iam_attach_role_policy]{attach_role_policy} \tab Attaches the specified managed policy to the specified IAM role\cr
 #'  \link[=iam_attach_user_policy]{attach_user_policy} \tab Attaches the specified managed policy to the specified user\cr
 #'  \link[=iam_change_password]{change_password} \tab Changes the password of the IAM user who is calling this operation\cr
-#'  \link[=iam_create_access_key]{create_access_key} \tab Creates a new AWS secret access key and corresponding AWS access key ID for the specified user\cr
-#'  \link[=iam_create_account_alias]{create_account_alias} \tab Creates an alias for your AWS account\cr
+#'  \link[=iam_create_access_key]{create_access_key} \tab Creates a new Amazon Web Services secret access key and corresponding Amazon Web Services access key ID for the specified user\cr
+#'  \link[=iam_create_account_alias]{create_account_alias} \tab Creates an alias for your Amazon Web Services account\cr
 #'  \link[=iam_create_group]{create_group} \tab Creates a new group\cr
 #'  \link[=iam_create_instance_profile]{create_instance_profile} \tab Creates a new instance profile\cr
-#'  \link[=iam_create_login_profile]{create_login_profile} \tab Creates a password for the specified user, giving the user the ability to access AWS services through the AWS Management Console\cr
+#'  \link[=iam_create_login_profile]{create_login_profile} \tab Creates a password for the specified IAM user\cr
 #'  \link[=iam_create_open_id_connect_provider]{create_open_id_connect_provider} \tab Creates an IAM entity to describe an identity provider (IdP) that supports OpenID Connect (OIDC)\cr
-#'  \link[=iam_create_policy]{create_policy} \tab Creates a new managed policy for your AWS account\cr
+#'  \link[=iam_create_policy]{create_policy} \tab Creates a new managed policy for your Amazon Web Services account\cr
 #'  \link[=iam_create_policy_version]{create_policy_version} \tab Creates a new version of the specified managed policy\cr
-#'  \link[=iam_create_role]{create_role} \tab Creates a new role for your AWS account\cr
+#'  \link[=iam_create_role]{create_role} \tab Creates a new role for your Amazon Web Services account\cr
 #'  \link[=iam_create_saml_provider]{create_saml_provider} \tab Creates an IAM resource that describes an identity provider (IdP) that supports SAML 2\cr
-#'  \link[=iam_create_service_linked_role]{create_service_linked_role} \tab Creates an IAM role that is linked to a specific AWS service\cr
+#'  \link[=iam_create_service_linked_role]{create_service_linked_role} \tab Creates an IAM role that is linked to a specific Amazon Web Services service\cr
 #'  \link[=iam_create_service_specific_credential]{create_service_specific_credential} \tab Generates a set of credentials consisting of a user name and password that can be used to access the service specified in the request\cr
-#'  \link[=iam_create_user]{create_user} \tab Creates a new IAM user for your AWS account\cr
-#'  \link[=iam_create_virtual_mfa_device]{create_virtual_mfa_device} \tab Creates a new virtual MFA device for the AWS account\cr
+#'  \link[=iam_create_user]{create_user} \tab Creates a new IAM user for your Amazon Web Services account\cr
+#'  \link[=iam_create_virtual_mfa_device]{create_virtual_mfa_device} \tab Creates a new virtual MFA device for the Amazon Web Services account\cr
 #'  \link[=iam_deactivate_mfa_device]{deactivate_mfa_device} \tab Deactivates the specified MFA device and removes it from association with the user name for which it was originally enabled\cr
 #'  \link[=iam_delete_access_key]{delete_access_key} \tab Deletes the access key pair associated with the specified IAM user\cr
-#'  \link[=iam_delete_account_alias]{delete_account_alias} \tab Deletes the specified AWS account alias\cr
-#'  \link[=iam_delete_account_password_policy]{delete_account_password_policy} \tab Deletes the password policy for the AWS account\cr
+#'  \link[=iam_delete_account_alias]{delete_account_alias} \tab Deletes the specified Amazon Web Services account alias\cr
+#'  \link[=iam_delete_account_password_policy]{delete_account_password_policy} \tab Deletes the password policy for the Amazon Web Services account\cr
 #'  \link[=iam_delete_group]{delete_group} \tab Deletes the specified IAM group\cr
 #'  \link[=iam_delete_group_policy]{delete_group_policy} \tab Deletes the specified inline policy that is embedded in the specified IAM group\cr
 #'  \link[=iam_delete_instance_profile]{delete_instance_profile} \tab Deletes the specified instance profile\cr
-#'  \link[=iam_delete_login_profile]{delete_login_profile} \tab Deletes the password for the specified IAM user, which terminates the user's ability to access AWS services through the AWS Management Console\cr
+#'  \link[=iam_delete_login_profile]{delete_login_profile} \tab Deletes the password for the specified IAM user, which terminates the user's ability to access Amazon Web Services services through the Amazon Web Services Management Console\cr
 #'  \link[=iam_delete_open_id_connect_provider]{delete_open_id_connect_provider} \tab Deletes an OpenID Connect identity provider (IdP) resource object in IAM\cr
 #'  \link[=iam_delete_policy]{delete_policy} \tab Deletes the specified managed policy\cr
 #'  \link[=iam_delete_policy_version]{delete_policy_version} \tab Deletes the specified version from the specified managed policy\cr
@@ -99,22 +117,22 @@ NULL
 #'  \link[=iam_detach_role_policy]{detach_role_policy} \tab Removes the specified managed policy from the specified role\cr
 #'  \link[=iam_detach_user_policy]{detach_user_policy} \tab Removes the specified managed policy from the specified user\cr
 #'  \link[=iam_enable_mfa_device]{enable_mfa_device} \tab Enables the specified MFA device and associates it with the specified IAM user\cr
-#'  \link[=iam_generate_credential_report]{generate_credential_report} \tab Generates a credential report for the AWS account\cr
-#'  \link[=iam_generate_organizations_access_report]{generate_organizations_access_report} \tab Generates a report for service last accessed data for AWS Organizations\cr
-#'  \link[=iam_generate_service_last_accessed_details]{generate_service_last_accessed_details} \tab Generates a report that includes details about when an IAM resource (user, group, role, or policy) was last used in an attempt to access AWS services\cr
+#'  \link[=iam_generate_credential_report]{generate_credential_report} \tab Generates a credential report for the Amazon Web Services account\cr
+#'  \link[=iam_generate_organizations_access_report]{generate_organizations_access_report} \tab Generates a report for service last accessed data for Organizations\cr
+#'  \link[=iam_generate_service_last_accessed_details]{generate_service_last_accessed_details} \tab Generates a report that includes details about when an IAM resource (user, group, role, or policy) was last used in an attempt to access Amazon Web Services services\cr
 #'  \link[=iam_get_access_key_last_used]{get_access_key_last_used} \tab Retrieves information about when the specified access key was last used\cr
-#'  \link[=iam_get_account_authorization_details]{get_account_authorization_details} \tab Retrieves information about all IAM users, groups, roles, and policies in your AWS account, including their relationships to one another\cr
-#'  \link[=iam_get_account_password_policy]{get_account_password_policy} \tab Retrieves the password policy for the AWS account\cr
-#'  \link[=iam_get_account_summary]{get_account_summary} \tab Retrieves information about IAM entity usage and IAM quotas in the AWS account\cr
+#'  \link[=iam_get_account_authorization_details]{get_account_authorization_details} \tab Retrieves information about all IAM users, groups, roles, and policies in your Amazon Web Services account, including their relationships to one another\cr
+#'  \link[=iam_get_account_password_policy]{get_account_password_policy} \tab Retrieves the password policy for the Amazon Web Services account\cr
+#'  \link[=iam_get_account_summary]{get_account_summary} \tab Retrieves information about IAM entity usage and IAM quotas in the Amazon Web Services account\cr
 #'  \link[=iam_get_context_keys_for_custom_policy]{get_context_keys_for_custom_policy} \tab Gets a list of all of the context keys referenced in the input policies\cr
 #'  \link[=iam_get_context_keys_for_principal_policy]{get_context_keys_for_principal_policy} \tab Gets a list of all of the context keys referenced in all the IAM policies that are attached to the specified IAM entity\cr
-#'  \link[=iam_get_credential_report]{get_credential_report} \tab Retrieves a credential report for the AWS account\cr
+#'  \link[=iam_get_credential_report]{get_credential_report} \tab Retrieves a credential report for the Amazon Web Services account\cr
 #'  \link[=iam_get_group]{get_group} \tab Returns a list of IAM users that are in the specified IAM group\cr
 #'  \link[=iam_get_group_policy]{get_group_policy} \tab Retrieves the specified inline policy document that is embedded in the specified IAM group\cr
 #'  \link[=iam_get_instance_profile]{get_instance_profile} \tab Retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role\cr
-#'  \link[=iam_get_login_profile]{get_login_profile} \tab Retrieves the user name and password-creation date for the specified IAM user\cr
+#'  \link[=iam_get_login_profile]{get_login_profile} \tab Retrieves the user name for the specified IAM user\cr
 #'  \link[=iam_get_open_id_connect_provider]{get_open_id_connect_provider} \tab Returns information about the specified OpenID Connect (OIDC) provider resource object in IAM\cr
-#'  \link[=iam_get_organizations_access_report]{get_organizations_access_report} \tab Retrieves the service last accessed data report for AWS Organizations that was previously generated using the GenerateOrganizationsAccessReport operation\cr
+#'  \link[=iam_get_organizations_access_report]{get_organizations_access_report} \tab Retrieves the service last accessed data report for Organizations that was previously generated using the GenerateOrganizationsAccessReport operation\cr
 #'  \link[=iam_get_policy]{get_policy} \tab Retrieves information about the specified managed policy, including the policy's default version and the total number of IAM users, groups, and roles to which the policy is attached\cr
 #'  \link[=iam_get_policy_version]{get_policy_version} \tab Retrieves information about the specified version of the specified managed policy, including the policy document\cr
 #'  \link[=iam_get_role]{get_role} \tab Retrieves information about the specified role, including the role's path, GUID, ARN, and the role's trust policy that grants permission to assume the role\cr
@@ -128,7 +146,7 @@ NULL
 #'  \link[=iam_get_user]{get_user} \tab Retrieves information about the specified IAM user, including the user's creation date, path, unique ID, and ARN\cr
 #'  \link[=iam_get_user_policy]{get_user_policy} \tab Retrieves the specified inline policy document that is embedded in the specified IAM user\cr
 #'  \link[=iam_list_access_keys]{list_access_keys} \tab Returns information about the access key IDs associated with the specified IAM user\cr
-#'  \link[=iam_list_account_aliases]{list_account_aliases} \tab Lists the account alias associated with the AWS account (Note: you can have only one)\cr
+#'  \link[=iam_list_account_aliases]{list_account_aliases} \tab Lists the account alias associated with the Amazon Web Services account (Note: you can have only one)\cr
 #'  \link[=iam_list_attached_group_policies]{list_attached_group_policies} \tab Lists all managed policies that are attached to the specified IAM group\cr
 #'  \link[=iam_list_attached_role_policies]{list_attached_role_policies} \tab Lists all managed policies that are attached to the specified IAM role\cr
 #'  \link[=iam_list_attached_user_policies]{list_attached_user_policies} \tab Lists all managed policies that are attached to the specified IAM user\cr
@@ -138,23 +156,29 @@ NULL
 #'  \link[=iam_list_groups_for_user]{list_groups_for_user} \tab Lists the IAM groups that the specified IAM user belongs to\cr
 #'  \link[=iam_list_instance_profiles]{list_instance_profiles} \tab Lists the instance profiles that have the specified path prefix\cr
 #'  \link[=iam_list_instance_profiles_for_role]{list_instance_profiles_for_role} \tab Lists the instance profiles that have the specified associated IAM role\cr
+#'  \link[=iam_list_instance_profile_tags]{list_instance_profile_tags} \tab Lists the tags that are attached to the specified IAM instance profile\cr
 #'  \link[=iam_list_mfa_devices]{list_mfa_devices} \tab Lists the MFA devices for an IAM user\cr
-#'  \link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers} \tab Lists information about the IAM OpenID Connect (OIDC) provider resource objects defined in the AWS account\cr
-#'  \link[=iam_list_policies]{list_policies} \tab Lists all the managed policies that are available in your AWS account, including your own customer-defined managed policies and all AWS managed policies\cr
+#'  \link[=iam_list_mfa_device_tags]{list_mfa_device_tags} \tab Lists the tags that are attached to the specified IAM virtual multi-factor authentication (MFA) device\cr
+#'  \link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers} \tab Lists information about the IAM OpenID Connect (OIDC) provider resource objects defined in the Amazon Web Services account\cr
+#'  \link[=iam_list_open_id_connect_provider_tags]{list_open_id_connect_provider_tags} \tab Lists the tags that are attached to the specified OpenID Connect (OIDC)-compatible identity provider\cr
+#'  \link[=iam_list_policies]{list_policies} \tab Lists all the managed policies that are available in your Amazon Web Services account, including your own customer-defined managed policies and all Amazon Web Services managed policies\cr
 #'  \link[=iam_list_policies_granting_service_access]{list_policies_granting_service_access} \tab Retrieves a list of policies that the IAM identity (user, group, or role) can use to access each specified service\cr
+#'  \link[=iam_list_policy_tags]{list_policy_tags} \tab Lists the tags that are attached to the specified IAM customer managed policy\cr
 #'  \link[=iam_list_policy_versions]{list_policy_versions} \tab Lists information about the versions of the specified managed policy, including the version that is currently set as the policy's default version\cr
 #'  \link[=iam_list_role_policies]{list_role_policies} \tab Lists the names of the inline policies that are embedded in the specified IAM role\cr
 #'  \link[=iam_list_roles]{list_roles} \tab Lists the IAM roles that have the specified path prefix\cr
 #'  \link[=iam_list_role_tags]{list_role_tags} \tab Lists the tags that are attached to the specified role\cr
 #'  \link[=iam_list_saml_providers]{list_saml_providers} \tab Lists the SAML provider resource objects defined in IAM in the account\cr
+#'  \link[=iam_list_saml_provider_tags]{list_saml_provider_tags} \tab Lists the tags that are attached to the specified Security Assertion Markup Language (SAML) identity provider\cr
 #'  \link[=iam_list_server_certificates]{list_server_certificates} \tab Lists the server certificates stored in IAM that have the specified path prefix\cr
+#'  \link[=iam_list_server_certificate_tags]{list_server_certificate_tags} \tab Lists the tags that are attached to the specified IAM server certificate\cr
 #'  \link[=iam_list_service_specific_credentials]{list_service_specific_credentials} \tab Returns information about the service-specific credentials associated with the specified IAM user\cr
 #'  \link[=iam_list_signing_certificates]{list_signing_certificates} \tab Returns information about the signing certificates associated with the specified IAM user\cr
 #'  \link[=iam_list_ssh_public_keys]{list_ssh_public_keys} \tab Returns information about the SSH public keys associated with the specified IAM user\cr
 #'  \link[=iam_list_user_policies]{list_user_policies} \tab Lists the names of the inline policies embedded in the specified IAM user\cr
 #'  \link[=iam_list_users]{list_users} \tab Lists the IAM users that have the specified path prefix\cr
-#'  \link[=iam_list_user_tags]{list_user_tags} \tab Lists the tags that are attached to the specified user\cr
-#'  \link[=iam_list_virtual_mfa_devices]{list_virtual_mfa_devices} \tab Lists the virtual MFA devices defined in the AWS account by assignment status\cr
+#'  \link[=iam_list_user_tags]{list_user_tags} \tab Lists the tags that are attached to the specified IAM user\cr
+#'  \link[=iam_list_virtual_mfa_devices]{list_virtual_mfa_devices} \tab Lists the virtual MFA devices defined in the Amazon Web Services account by assignment status\cr
 #'  \link[=iam_put_group_policy]{put_group_policy} \tab Adds or updates an inline policy document that is embedded in the specified IAM group\cr
 #'  \link[=iam_put_role_permissions_boundary]{put_role_permissions_boundary} \tab Adds or updates the policy that is specified as the IAM role's permissions boundary\cr
 #'  \link[=iam_put_role_policy]{put_role_policy} \tab Adds or updates an inline policy document that is embedded in the specified IAM role\cr
@@ -164,17 +188,29 @@ NULL
 #'  \link[=iam_remove_role_from_instance_profile]{remove_role_from_instance_profile} \tab Removes the specified IAM role from the specified EC2 instance profile\cr
 #'  \link[=iam_remove_user_from_group]{remove_user_from_group} \tab Removes the specified user from the specified group\cr
 #'  \link[=iam_reset_service_specific_credential]{reset_service_specific_credential} \tab Resets the password for a service-specific credential\cr
-#'  \link[=iam_resync_mfa_device]{resync_mfa_device} \tab Synchronizes the specified MFA device with its IAM resource object on the AWS servers\cr
+#'  \link[=iam_resync_mfa_device]{resync_mfa_device} \tab Synchronizes the specified MFA device with its IAM resource object on the Amazon Web Services servers\cr
 #'  \link[=iam_set_default_policy_version]{set_default_policy_version} \tab Sets the specified version of the specified policy as the policy's default (operative) version\cr
-#'  \link[=iam_set_security_token_service_preferences]{set_security_token_service_preferences} \tab Sets the specified version of the global endpoint token as the token version used for the AWS account\cr
-#'  \link[=iam_simulate_custom_policy]{simulate_custom_policy} \tab Simulate how a set of IAM policies and optionally a resource-based policy works with a list of API operations and AWS resources to determine the policies' effective permissions\cr
-#'  \link[=iam_simulate_principal_policy]{simulate_principal_policy} \tab Simulate how a set of IAM policies attached to an IAM entity works with a list of API operations and AWS resources to determine the policies' effective permissions\cr
+#'  \link[=iam_set_security_token_service_preferences]{set_security_token_service_preferences} \tab Sets the specified version of the global endpoint token as the token version used for the Amazon Web Services account\cr
+#'  \link[=iam_simulate_custom_policy]{simulate_custom_policy} \tab Simulate how a set of IAM policies and optionally a resource-based policy works with a list of API operations and Amazon Web Services resources to determine the policies' effective permissions\cr
+#'  \link[=iam_simulate_principal_policy]{simulate_principal_policy} \tab Simulate how a set of IAM policies attached to an IAM entity works with a list of API operations and Amazon Web Services resources to determine the policies' effective permissions\cr
+#'  \link[=iam_tag_instance_profile]{tag_instance_profile} \tab Adds one or more tags to an IAM instance profile\cr
+#'  \link[=iam_tag_mfa_device]{tag_mfa_device} \tab Adds one or more tags to an IAM virtual multi-factor authentication (MFA) device\cr
+#'  \link[=iam_tag_open_id_connect_provider]{tag_open_id_connect_provider} \tab Adds one or more tags to an OpenID Connect (OIDC)-compatible identity provider\cr
+#'  \link[=iam_tag_policy]{tag_policy} \tab Adds one or more tags to an IAM customer managed policy\cr
 #'  \link[=iam_tag_role]{tag_role} \tab Adds one or more tags to an IAM role\cr
+#'  \link[=iam_tag_saml_provider]{tag_saml_provider} \tab Adds one or more tags to a Security Assertion Markup Language (SAML) identity provider\cr
+#'  \link[=iam_tag_server_certificate]{tag_server_certificate} \tab Adds one or more tags to an IAM server certificate\cr
 #'  \link[=iam_tag_user]{tag_user} \tab Adds one or more tags to an IAM user\cr
+#'  \link[=iam_untag_instance_profile]{untag_instance_profile} \tab Removes the specified tags from the IAM instance profile\cr
+#'  \link[=iam_untag_mfa_device]{untag_mfa_device} \tab Removes the specified tags from the IAM virtual multi-factor authentication (MFA) device\cr
+#'  \link[=iam_untag_open_id_connect_provider]{untag_open_id_connect_provider} \tab Removes the specified tags from the specified OpenID Connect (OIDC)-compatible identity provider in IAM\cr
+#'  \link[=iam_untag_policy]{untag_policy} \tab Removes the specified tags from the customer managed policy\cr
 #'  \link[=iam_untag_role]{untag_role} \tab Removes the specified tags from the role\cr
+#'  \link[=iam_untag_saml_provider]{untag_saml_provider} \tab Removes the specified tags from the specified Security Assertion Markup Language (SAML) identity provider in IAM\cr
+#'  \link[=iam_untag_server_certificate]{untag_server_certificate} \tab Removes the specified tags from the IAM server certificate\cr
 #'  \link[=iam_untag_user]{untag_user} \tab Removes the specified tags from the user\cr
 #'  \link[=iam_update_access_key]{update_access_key} \tab Changes the status of the specified access key from Active to Inactive, or vice versa\cr
-#'  \link[=iam_update_account_password_policy]{update_account_password_policy} \tab Updates the password policy settings for the AWS account\cr
+#'  \link[=iam_update_account_password_policy]{update_account_password_policy} \tab Updates the password policy settings for the Amazon Web Services account\cr
 #'  \link[=iam_update_assume_role_policy]{update_assume_role_policy} \tab Updates the policy that grants an IAM entity permission to assume a role\cr
 #'  \link[=iam_update_group]{update_group} \tab Updates the name and/or the path of the specified IAM group\cr
 #'  \link[=iam_update_login_profile]{update_login_profile} \tab Changes the password for the specified IAM user\cr
@@ -187,7 +223,7 @@ NULL
 #'  \link[=iam_update_signing_certificate]{update_signing_certificate} \tab Changes the status of the specified user signing certificate from active to disabled, or vice versa\cr
 #'  \link[=iam_update_ssh_public_key]{update_ssh_public_key} \tab Sets the status of an IAM user's SSH public key to active or inactive\cr
 #'  \link[=iam_update_user]{update_user} \tab Updates the name and/or the path of the specified IAM user\cr
-#'  \link[=iam_upload_server_certificate]{upload_server_certificate} \tab Uploads a server certificate entity for the AWS account\cr
+#'  \link[=iam_upload_server_certificate]{upload_server_certificate} \tab Uploads a server certificate entity for the Amazon Web Services account\cr
 #'  \link[=iam_upload_signing_certificate]{upload_signing_certificate} \tab Uploads an X\cr
 #'  \link[=iam_upload_ssh_public_key]{upload_ssh_public_key} \tab Uploads an SSH public key and associates it with the specified IAM user
 #' }

@@ -4,8 +4,15 @@
 \alias{ec2_modify_instance_metadata_options}
 \title{Modify the instance metadata parameters on a running or stopped instance}
 \usage{
-ec2_modify_instance_metadata_options(InstanceId, HttpTokens,
-  HttpPutResponseHopLimit, HttpEndpoint, DryRun)
+ec2_modify_instance_metadata_options(
+  InstanceId,
+  HttpTokens = NULL,
+  HttpPutResponseHopLimit = NULL,
+  HttpEndpoint = NULL,
+  DryRun = NULL,
+  HttpProtocolIpv6 = NULL,
+  InstanceMetadataTags = NULL
+)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance.}
@@ -31,49 +38,30 @@ travel. If no parameter is specified, the existing state is maintained.
 
 Possible values: Integers from 1 to 64}
 
-\item{HttpEndpoint}{This parameter enables or disables the HTTP metadata endpoint on your
-instances. If the parameter is not specified, the existing state is
-maintained.
+\item{HttpEndpoint}{Enables or disables the HTTP metadata endpoint on your instances. If
+this parameter is not specified, the existing state is maintained.
 
-If you specify a value of \code{disabled}, you will not be able to access
-your instance metadata.}
+If you specify a value of \code{disabled}, you cannot access your instance
+metadata.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  InstanceId = "string",
-  InstanceMetadataOptions = list(
-    State = "pending"|"applied",
-    HttpTokens = "optional"|"required",
-    HttpPutResponseHopLimit = 123,
-    HttpEndpoint = "disabled"|"enabled"
-  )
-)
-}
+
+\item{HttpProtocolIpv6}{Enables or disables the IPv6 endpoint for the instance metadata service.
+This setting applies only if you have enabled the HTTP metadata
+endpoint.}
+
+\item{InstanceMetadataTags}{Set to \code{enabled} to allow access to instance tags from the instance
+metadata. Set to \code{disabled} to turn off access to instance tags from the
+instance metadata. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS}{Work with instance tags using the instance metadata}.
+
+Default: \code{disabled}}
 }
 \description{
-Modify the instance metadata parameters on a running or stopped
-instance. When you modify the parameters on a stopped instance, they are
-applied when the instance is started. When you modify the parameters on
-a running instance, the API responds with a state of “pending”. After
-the parameter modifications are successfully applied to the instance,
-the state of the modifications changes from “pending” to “applied” in
-subsequent describe-instances API calls. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data}.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_instance_metadata_options(
-  InstanceId = "string",
-  HttpTokens = "optional"|"required",
-  HttpPutResponseHopLimit = 123,
-  HttpEndpoint = "disabled"|"enabled",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Modify the instance metadata parameters on a running or stopped instance. When you modify the parameters on a stopped instance, they are applied when the instance is started. When you modify the parameters on a running instance, the API responds with a state of “pending”. After the parameter modifications are successfully applied to the instance, the state of the modifications changes from “pending” to “applied” in subsequent describe-instances API calls. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data} in the \emph{Amazon EC2 User Guide}.
 
+See \url{https://paws-r.github.io/docs/ec2/modify_instance_metadata_options.html} for full documentation.
+}
 \keyword{internal}

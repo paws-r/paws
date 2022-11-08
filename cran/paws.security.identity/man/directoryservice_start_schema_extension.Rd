@@ -4,8 +4,12 @@
 \alias{directoryservice_start_schema_extension}
 \title{Applies a schema extension to a Microsoft AD directory}
 \usage{
-directoryservice_start_schema_extension(DirectoryId,
-  CreateSnapshotBeforeSchemaExtension, LdifContent, Description)
+directoryservice_start_schema_extension(
+  DirectoryId,
+  CreateSnapshotBeforeSchemaExtension,
+  LdifContent,
+  Description
+)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory for which the schema extension will be
@@ -16,28 +20,14 @@ extension.}
 
 \item{LdifContent}{[required] The LDIF file represented as a string. To construct the LdifContent
 string, precede each line as it would be formatted in an ldif file with
-\\n. See the example request below for more details. The file size can
-be no larger than 1MB.}
+\n. See the example request below for more details. The file size can be
+no larger than 1MB.}
 
 \item{Description}{[required] A description of the schema extension.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  SchemaExtensionId = "string"
-)
-}
-}
 \description{
 Applies a schema extension to a Microsoft AD directory.
-}
-\section{Request syntax}{
-\preformatted{svc$start_schema_extension(
-  DirectoryId = "string",
-  CreateSnapshotBeforeSchemaExtension = TRUE|FALSE,
-  LdifContent = "string",
-  Description = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/start_schema_extension.html} for full documentation.
+}
 \keyword{internal}

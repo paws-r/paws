@@ -4,7 +4,7 @@
 \alias{directoryservice_list_ip_routes}
 \title{Lists the address blocks that you have added to a directory}
 \usage{
-directoryservice_list_ip_routes(DirectoryId, NextToken, Limit)
+directoryservice_list_ip_routes(DirectoryId, NextToken = NULL, Limit = NULL)
 }
 \arguments{
 \item{DirectoryId}{[required] Identifier (ID) of the directory for which you want to retrieve the IP
@@ -17,34 +17,9 @@ is the first call.}
 \item{Limit}{Maximum number of items to return. If this value is zero, the maximum
 number of items is specified by the limitations of the operation.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IpRoutesInfo = list(
-    list(
-      DirectoryId = "string",
-      CidrIp = "string",
-      IpRouteStatusMsg = "Adding"|"Added"|"Removing"|"Removed"|"AddFailed"|"RemoveFailed",
-      AddedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      IpRouteStatusReason = "string",
-      Description = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the address blocks that you have added to a directory.
-}
-\section{Request syntax}{
-\preformatted{svc$list_ip_routes(
-  DirectoryId = "string",
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/directoryservice/list_ip_routes.html} for full documentation.
+}
 \keyword{internal}

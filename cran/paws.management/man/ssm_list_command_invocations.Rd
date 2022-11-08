@@ -2,15 +2,21 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_list_command_invocations}
 \alias{ssm_list_command_invocations}
-\title{An invocation is copy of a command sent to a specific instance}
+\title{An invocation is copy of a command sent to a specific managed node}
 \usage{
-ssm_list_command_invocations(CommandId, InstanceId, MaxResults,
-  NextToken, Filters, Details)
+ssm_list_command_invocations(
+  CommandId = NULL,
+  InstanceId = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  Filters = NULL,
+  Details = NULL
+)
 }
 \arguments{
 \item{CommandId}{(Optional) The invocations for a specific command ID.}
 
-\item{InstanceId}{(Optional) The command execution details for a specific instance ID.}
+\item{InstanceId}{(Optional) The command execution details for a specific managed node ID.}
 
 \item{MaxResults}{(Optional) The maximum number of items to return for this call. The call
 also returns a token that you can specify in a subsequent call to get
@@ -23,87 +29,11 @@ this token from a previous call.)}
 list of results.}
 
 \item{Details}{(Optional) If set this returns the response of the command executions
-and any command output. By default this is set to False.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  CommandInvocations = list(
-    list(
-      CommandId = "string",
-      InstanceId = "string",
-      InstanceName = "string",
-      Comment = "string",
-      DocumentName = "string",
-      DocumentVersion = "string",
-      RequestedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Status = "Pending"|"InProgress"|"Delayed"|"Success"|"Cancelled"|"TimedOut"|"Failed"|"Cancelling",
-      StatusDetails = "string",
-      TraceOutput = "string",
-      StandardOutputUrl = "string",
-      StandardErrorUrl = "string",
-      CommandPlugins = list(
-        list(
-          Name = "string",
-          Status = "Pending"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed",
-          StatusDetails = "string",
-          ResponseCode = 123,
-          ResponseStartDateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          ResponseFinishDateTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          Output = "string",
-          StandardOutputUrl = "string",
-          StandardErrorUrl = "string",
-          OutputS3Region = "string",
-          OutputS3BucketName = "string",
-          OutputS3KeyPrefix = "string"
-        )
-      ),
-      ServiceRole = "string",
-      NotificationConfig = list(
-        NotificationArn = "string",
-        NotificationEvents = list(
-          "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-        ),
-        NotificationType = "Command"|"Invocation"
-      ),
-      CloudWatchOutputConfig = list(
-        CloudWatchLogGroupName = "string",
-        CloudWatchOutputEnabled = TRUE|FALSE
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
+and any command output. The default value is \code{false}.}
 }
 \description{
-An invocation is copy of a command sent to a specific instance. A
-command can apply to one or more instances. A command invocation applies
-to one instance. For example, if a user runs SendCommand against three
-instances, then a command invocation is created for each requested
-instance ID. ListCommandInvocations provide status about command
-execution.
-}
-\section{Request syntax}{
-\preformatted{svc$list_command_invocations(
-  CommandId = "string",
-  InstanceId = "string",
-  MaxResults = 123,
-  NextToken = "string",
-  Filters = list(
-    list(
-      key = "InvokedAfter"|"InvokedBefore"|"Status"|"ExecutionStage"|"DocumentName",
-      value = "string"
-    )
-  ),
-  Details = TRUE|FALSE
-)
-}
-}
+An invocation is copy of a command sent to a specific managed node. A command can apply to one or more managed nodes. A command invocation applies to one managed node. For example, if a user runs \code{\link[=ssm_send_command]{send_command}} against three managed nodes, then a command invocation is created for each requested managed node ID. \code{\link[=ssm_list_command_invocations]{list_command_invocations}} provide status about command execution.
 
+See \url{https://paws-r.github.io/docs/ssm/list_command_invocations.html} for full documentation.
+}
 \keyword{internal}

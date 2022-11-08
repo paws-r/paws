@@ -4,12 +4,16 @@
 \alias{directoryservice_describe_trusts}
 \title{Obtains information about the trust relationships for this account}
 \usage{
-directoryservice_describe_trusts(DirectoryId, TrustIds, NextToken,
-  Limit)
+directoryservice_describe_trusts(
+  DirectoryId = NULL,
+  TrustIds = NULL,
+  NextToken = NULL,
+  Limit = NULL
+)
 }
 \arguments{
-\item{DirectoryId}{The Directory ID of the AWS directory that is a part of the requested
-trust relationship.}
+\item{DirectoryId}{The Directory ID of the Amazon Web Services directory that is a part of
+the requested trust relationship.}
 
 \item{TrustIds}{A list of identifiers of the trust relationships for which to obtain the
 information. If this member is null, all trust relationships that belong
@@ -23,50 +27,9 @@ is the first call.}
 
 \item{Limit}{The maximum number of objects to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Trusts = list(
-    list(
-      DirectoryId = "string",
-      TrustId = "string",
-      RemoteDomainName = "string",
-      TrustType = "Forest"|"External",
-      TrustDirection = "One-Way: Outgoing"|"One-Way: Incoming"|"Two-Way",
-      TrustState = "Creating"|"Created"|"Verifying"|"VerifyFailed"|"Verified"|"Updating"|"UpdateFailed"|"Updated"|"Deleting"|"Deleted"|"Failed",
-      CreatedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      StateLastUpdatedDateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      TrustStateReason = "string",
-      SelectiveAuth = "Enabled"|"Disabled"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Obtains information about the trust relationships for this account.
 
-If no input parameters are provided, such as DirectoryId or TrustIds,
-this request describes all the trust relationships belonging to the
-account.
+See \url{https://paws-r.github.io/docs/directoryservice/describe_trusts.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_trusts(
-  DirectoryId = "string",
-  TrustIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  Limit = 123
-)
-}
-}
-
 \keyword{internal}

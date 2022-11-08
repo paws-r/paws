@@ -11,62 +11,9 @@ storagegateway_describe_gateway_information(GatewayARN)
 \arguments{
 \item{GatewayARN}{[required]}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string",
-  GatewayId = "string",
-  GatewayName = "string",
-  GatewayTimezone = "string",
-  GatewayState = "string",
-  GatewayNetworkInterfaces = list(
-    list(
-      Ipv4Address = "string",
-      MacAddress = "string",
-      Ipv6Address = "string"
-    )
-  ),
-  GatewayType = "string",
-  NextUpdateAvailabilityDate = "string",
-  LastSoftwareUpdate = "string",
-  Ec2InstanceId = "string",
-  Ec2InstanceRegion = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  VPCEndpoint = "string",
-  CloudWatchLogGroupARN = "string",
-  HostEnvironment = "VMWARE"|"HYPER-V"|"EC2"|"KVM"|"OTHER",
-  EndpointType = "string",
-  SoftwareUpdatesEndDate = "string",
-  DeprecationDate = "string"
-)
-}
-}
 \description{
-Returns metadata about a gateway such as its name, network interfaces,
-configured time zone, and the state (whether the gateway is running or
-not). To specify which gateway to describe, use the Amazon Resource Name
-(ARN) of the gateway in your request.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_gateway_information(
-  GatewayARN = "string"
-)
-}
-}
+Returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is running or not). To specify which gateway to describe, use the Amazon Resource Name (ARN) of the gateway in your request.
 
-\examples{
-\dontrun{
-# Returns metadata about a gateway such as its name, network interfaces,
-# configured time zone, and the state (whether the gateway is running or
-# not).
-svc$describe_gateway_information(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/describe_gateway_information.html} for full documentation.
 }
 \keyword{internal}

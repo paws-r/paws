@@ -6,8 +6,7 @@
 push notification services, such as APNS and GCM (Firebase Cloud
 Messaging)}
 \usage{
-sns_set_platform_application_attributes(PlatformApplicationArn,
-  Attributes)
+sns_set_platform_application_attributes(PlatformApplicationArn, Attributes)
 }
 \arguments{
 \item{PlatformApplicationArn}{[required] PlatformApplicationArn for SetPlatformApplicationAttributes action.}
@@ -16,14 +15,27 @@ sns_set_platform_application_attributes(PlatformApplicationArn,
 include the following:
 \itemize{
 \item \code{PlatformCredential} – The credential received from the notification
-service. For \code{APNS} and \code{APNS_SANDBOX}, \code{PlatformCredential} is
-\verb{private key}. For \code{GCM} (Firebase Cloud Messaging),
-\code{PlatformCredential} is \verb{API key}. For \code{ADM}, \code{PlatformCredential}
-is \verb{client secret}.
+service.
+\itemize{
+\item For ADM, \code{PlatformCredential}is client secret.
+\item For Apple Services using certificate credentials,
+\code{PlatformCredential} is private key.
+\item For Apple Services using token credentials, \code{PlatformCredential}
+is signing key.
+\item For GCM (Firebase Cloud Messaging), \code{PlatformCredential} is API
+key.
+}
 \item \code{PlatformPrincipal} – The principal received from the notification
-service. For \code{APNS} and \code{APNS_SANDBOX}, \code{PlatformPrincipal} is
-\verb{SSL certificate}. For \code{GCM} (Firebase Cloud Messaging), there is no
-\code{PlatformPrincipal}. For \code{ADM}, \code{PlatformPrincipal} is \verb{client id}.
+service.
+\itemize{
+\item For ADM, \code{PlatformPrincipal}is client id.
+\item For Apple Services using certificate credentials,
+\code{PlatformPrincipal} is SSL certificate.
+\item For Apple Services using token credentials, \code{PlatformPrincipal}
+is signing key ID.
+\item For GCM (Firebase Cloud Messaging), there is no
+\code{PlatformPrincipal}.
+}
 \item \code{EventEndpointCreated} – Topic ARN to which \code{EndpointCreated} event
 notifications are sent.
 \item \code{EventEndpointDeleted} – Topic ARN to which \code{EndpointDeleted} event
@@ -39,26 +51,20 @@ write access to use CloudWatch Logs on your behalf.
 write access to use CloudWatch Logs on your behalf.
 \item \code{SuccessFeedbackSampleRate} – Sample rate percentage (0-100) of
 successfully delivered messages.
-}}
-}
-\value{
-An empty list.
-}
-\description{
-Sets the attributes of the platform application object for the supported
-push notification services, such as APNS and GCM (Firebase Cloud
-Messaging). For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
-For information on configuring attributes for message delivery status,
-see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html}{Using Amazon SNS Application Attributes for Message Delivery Status}.
-}
-\section{Request syntax}{
-\preformatted{svc$set_platform_application_attributes(
-  PlatformApplicationArn = "string",
-  Attributes = list(
-    "string"
-  )
-)
-}
 }
 
+The following attributes only apply to \code{APNs} token-based
+authentication:
+\itemize{
+\item \code{ApplePlatformTeamID} – The identifier that's assigned to your Apple
+developer account team.
+\item \code{ApplePlatformBundleID} – The bundle identifier that's assigned to
+your iOS app.
+}}
+}
+\description{
+Sets the attributes of the platform application object for the supported push notification services, such as APNS and GCM (Firebase Cloud Messaging). For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}. For information on configuring attributes for message delivery status, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html}{Using Amazon SNS Application Attributes for Message Delivery Status}.
+
+See \url{https://paws-r.github.io/docs/sns/set_platform_application_attributes.html} for full documentation.
+}
 \keyword{internal}

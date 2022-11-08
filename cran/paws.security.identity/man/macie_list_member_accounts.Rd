@@ -2,41 +2,24 @@
 % Please edit documentation in R/macie_operations.R
 \name{macie_list_member_accounts}
 \alias{macie_list_member_accounts}
-\title{Lists all Amazon Macie Classic member accounts for the current Amazon
-Macie Classic master account}
+\title{(Discontinued) Lists all Amazon Macie Classic member accounts for the
+current Macie Classic administrator account}
 \usage{
-macie_list_member_accounts(nextToken, maxResults)
+macie_list_member_accounts(nextToken = NULL, maxResults = NULL)
 }
 \arguments{
-\item{nextToken}{Use this parameter when paginating results. Set the value of this
-parameter to null on your first call to the ListMemberAccounts action.
-Subsequent calls to the action fill nextToken in the request with the
-value of nextToken from the previous response to continue listing data.}
+\item{nextToken}{(Discontinued) Use this parameter when paginating results. Set the value
+of this parameter to null on your first call to the
+\code{\link[=macie_list_member_accounts]{list_member_accounts}} action. Subsequent
+calls to the action fill \code{nextToken} in the request with the value of
+\code{nextToken} from the previous response to continue listing data.}
 
-\item{maxResults}{Use this parameter to indicate the maximum number of items that you want
-in the response. The default value is 250.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  memberAccounts = list(
-    list(
-      accountId = "string"
-    )
-  ),
-  nextToken = "string"
-)
-}
+\item{maxResults}{(Discontinued) Use this parameter to indicate the maximum number of
+items that you want in the response. The default value is 250.}
 }
 \description{
-Lists all Amazon Macie Classic member accounts for the current Amazon
-Macie Classic master account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_member_accounts(
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+(Discontinued) Lists all Amazon Macie Classic member accounts for the current Macie Classic administrator account.
 
+See \url{https://paws-r.github.io/docs/macie/list_member_accounts.html} for full documentation.
+}
 \keyword{internal}

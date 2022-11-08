@@ -5,8 +5,12 @@
 \title{Creates a policy with the specified attributes for the specified load
 balancer}
 \usage{
-elb_create_load_balancer_policy(LoadBalancerName, PolicyName,
-  PolicyTypeName, PolicyAttributes)
+elb_create_load_balancer_policy(
+  LoadBalancerName,
+  PolicyName,
+  PolicyTypeName,
+  PolicyAttributes = NULL
+)
 }
 \arguments{
 \item{LoadBalancerName}{[required] The name of the load balancer.}
@@ -19,75 +23,9 @@ unique within the set of policies for this load balancer.}
 
 \item{PolicyAttributes}{The policy attributes.}
 }
-\value{
-An empty list.
-}
 \description{
-Creates a policy with the specified attributes for the specified load
-balancer.
+Creates a policy with the specified attributes for the specified load balancer.
 
-Policies are settings that are saved for your load balancer and that can
-be applied to the listener or the application server, depending on the
-policy type.
-}
-\section{Request syntax}{
-\preformatted{svc$create_load_balancer_policy(
-  LoadBalancerName = "string",
-  PolicyName = "string",
-  PolicyTypeName = "string",
-  PolicyAttributes = list(
-    list(
-      AttributeName = "string",
-      AttributeValue = "string"
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example creates a policy that enables Proxy Protocol on the
-# specified load balancer.
-svc$create_load_balancer_policy(
-  LoadBalancerName = "my-load-balancer",
-  PolicyAttributes = list(
-    list(
-      AttributeName = "ProxyProtocol",
-      AttributeValue = "true"
-    )
-  ),
-  PolicyName = "my-ProxyProtocol-policy",
-  PolicyTypeName = "ProxyProtocolPolicyType"
-)
-
-# This example creates a public key policy.
-svc$create_load_balancer_policy(
-  LoadBalancerName = "my-load-balancer",
-  PolicyAttributes = list(
-    list(
-      AttributeName = "PublicKey",
-      AttributeValue = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwAYUjnf..."
-    )
-  ),
-  PolicyName = "my-PublicKey-policy",
-  PolicyTypeName = "PublicKeyPolicyType"
-)
-
-# This example creates a backend server authentication policy that enables
-# authentication on your backend instance using a public key policy.
-svc$create_load_balancer_policy(
-  LoadBalancerName = "my-load-balancer",
-  PolicyAttributes = list(
-    list(
-      AttributeName = "PublicKeyPolicyName",
-      AttributeValue = "my-PublicKey-policy"
-    )
-  ),
-  PolicyName = "my-authentication-policy",
-  PolicyTypeName = "BackendServerAuthenticationPolicyType"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elb/create_load_balancer_policy.html} for full documentation.
 }
 \keyword{internal}

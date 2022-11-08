@@ -13,20 +13,9 @@ remove tags. For example,
 
 \item{TagKeys}{[required] The keys of tags that you want to remove.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes specified tags from an AWS OpsWorks-CM server or backup.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagKeys = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/opsworkscm/untag_resource.html} for full documentation.
+}
 \keyword{internal}

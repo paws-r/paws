@@ -5,8 +5,12 @@
 \title{Creates and updates the configuration aggregator with the selected
 source accounts and regions}
 \usage{
-configservice_put_configuration_aggregator(ConfigurationAggregatorName,
-  AccountAggregationSources, OrganizationAggregationSource, Tags)
+configservice_put_configuration_aggregator(
+  ConfigurationAggregatorName,
+  AccountAggregationSources = NULL,
+  OrganizationAggregationSource = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ConfigurationAggregatorName}{[required] The name of the configuration aggregator.}
@@ -17,82 +21,9 @@ configservice_put_configuration_aggregator(ConfigurationAggregatorName,
 
 \item{Tags}{An array of tag object.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ConfigurationAggregator = list(
-    ConfigurationAggregatorName = "string",
-    ConfigurationAggregatorArn = "string",
-    AccountAggregationSources = list(
-      list(
-        AccountIds = list(
-          "string"
-        ),
-        AllAwsRegions = TRUE|FALSE,
-        AwsRegions = list(
-          "string"
-        )
-      )
-    ),
-    OrganizationAggregationSource = list(
-      RoleArn = "string",
-      AwsRegions = list(
-        "string"
-      ),
-      AllAwsRegions = TRUE|FALSE
-    ),
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreatedBy = "string"
-  )
-)
-}
-}
 \description{
-Creates and updates the configuration aggregator with the selected
-source accounts and regions. The source account can be individual
-account(s) or an organization.
+Creates and updates the configuration aggregator with the selected source accounts and regions. The source account can be individual account(s) or an organization.
 
-AWS Config should be enabled in source accounts and regions you want to
-aggregate.
-
-If your source type is an organization, you must be signed in to the
-master account and all features must be enabled in your organization.
-AWS Config calls \code{EnableAwsServiceAccess} API to enable integration
-between AWS Config and AWS Organizations.
+See \url{https://paws-r.github.io/docs/configservice/put_configuration_aggregator.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$put_configuration_aggregator(
-  ConfigurationAggregatorName = "string",
-  AccountAggregationSources = list(
-    list(
-      AccountIds = list(
-        "string"
-      ),
-      AllAwsRegions = TRUE|FALSE,
-      AwsRegions = list(
-        "string"
-      )
-    )
-  ),
-  OrganizationAggregationSource = list(
-    RoleArn = "string",
-    AwsRegions = list(
-      "string"
-    ),
-    AllAwsRegions = TRUE|FALSE
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

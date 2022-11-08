@@ -2,47 +2,70 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_send_command}
 \alias{ssm_send_command}
-\title{Runs commands on one or more managed instances}
+\title{Runs commands on one or more managed nodes}
 \usage{
-ssm_send_command(InstanceIds, Targets, DocumentName, DocumentVersion,
-  DocumentHash, DocumentHashType, TimeoutSeconds, Comment, Parameters,
-  OutputS3Region, OutputS3BucketName, OutputS3KeyPrefix, MaxConcurrency,
-  MaxErrors, ServiceRoleArn, NotificationConfig, CloudWatchOutputConfig)
+ssm_send_command(
+  InstanceIds = NULL,
+  Targets = NULL,
+  DocumentName,
+  DocumentVersion = NULL,
+  DocumentHash = NULL,
+  DocumentHashType = NULL,
+  TimeoutSeconds = NULL,
+  Comment = NULL,
+  Parameters = NULL,
+  OutputS3Region = NULL,
+  OutputS3BucketName = NULL,
+  OutputS3KeyPrefix = NULL,
+  MaxConcurrency = NULL,
+  MaxErrors = NULL,
+  ServiceRoleArn = NULL,
+  NotificationConfig = NULL,
+  CloudWatchOutputConfig = NULL
+)
 }
 \arguments{
-\item{InstanceIds}{The IDs of the instances where the command should run. Specifying
-instance IDs is most useful when you are targeting a limited number of
-instances, though you can specify up to 50 IDs.
+\item{InstanceIds}{The IDs of the managed nodes where the command should run. Specifying
+managed node IDs is most useful when you are targeting a limited number
+of managed nodes, though you can specify up to 50 IDs.
 
-To target a larger number of instances, or if you prefer not to list
-individual instance IDs, we recommend using the \code{Targets} option
-instead. Using \code{Targets}, which accepts tag key-value pairs to identify
-the instances to send commands to, you can a send command to tens,
-hundreds, or thousands of instances at once.
+To target a larger number of managed nodes, or if you prefer not to list
+individual node IDs, we recommend using the \code{Targets} option instead.
+Using \code{Targets}, which accepts tag key-value pairs to identify the
+managed nodes to send commands to, you can a send command to tens,
+hundreds, or thousands of nodes at once.
 
 For more information about how to use targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Using targets and rate controls to send commands to a fleet}
-in the \emph{AWS Systems Manager User Guide}.}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
-\item{Targets}{An array of search criteria that targets instances using a \verb{Key,Value}
-combination that you specify. Specifying targets is most useful when you
-want to send a command to a large number of instances at once. Using
-\code{Targets}, which accepts tag key-value pairs to identify instances, you
-can send a command to tens, hundreds, or thousands of instances at once.
+\item{Targets}{An array of search criteria that targets managed nodes using a
+\verb{Key,Value} combination that you specify. Specifying targets is most
+useful when you want to send a command to a large number of managed
+nodes at once. Using \code{Targets}, which accepts tag key-value pairs to
+identify managed nodes, you can send a command to tens, hundreds, or
+thousands of nodes at once.
 
-To send a command to a smaller number of instances, you can use the
+To send a command to a smaller number of managed nodes, you can use the
 \code{InstanceIds} option instead.
 
 For more information about how to use targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending commands to a fleet}
-in the \emph{AWS Systems Manager User Guide}.}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
-\item{DocumentName}{[required] Required. The name of the Systems Manager document to run. This can be a
-public document or a custom document.}
+\item{DocumentName}{[required] The name of the Amazon Web Services Systems Manager document (SSM
+document) to run. This can be a public document or a custom document. To
+run a shared document belonging to another account, specify the document
+Amazon Resource Name (ARN). For more information about how to use shared
+documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html}{Using shared SSM documents}
+in the \emph{Amazon Web Services Systems Manager User Guide}.
+
+If you specify a document name or ARN that hasn't been shared with your
+account, you receive an \code{InvalidDocument} error.}
 
 \item{DocumentVersion}{The SSM document version to use in the request. You can specify
 $DEFAULT, $LATEST, or a specific version number. If you run commands by
-using the AWS CLI, then you must escape the first two options by using a
-backslash. If you specify a version number, then you don't need to use
-the backslash. For example:
+using the Command Line Interface (Amazon Web Services CLI), then you
+must escape the first two options by using a backslash. If you specify a
+version number, then you don't need to use the backslash. For example:
 
 --document-version "\\$DEFAULT"
 
@@ -59,8 +82,8 @@ Sha1 hashes have been deprecated.}
 
 Sha1 hashes have been deprecated.}
 
-\item{TimeoutSeconds}{If this time is reached and the command has not already started running,
-it will not run.}
+\item{TimeoutSeconds}{If this time is reached and the command hasn't already started running,
+it won't run.}
 
 \item{Comment}{User-specified information about the command, such as a brief
 description of what the command should do.}
@@ -69,8 +92,8 @@ description of what the command should do.}
 run.}
 
 \item{OutputS3Region}{(Deprecated) You can no longer specify this parameter. The system
-ignores it. Instead, Systems Manager automatically determines the Region
-of the S3 bucket.}
+ignores it. Instead, Systems Manager automatically determines the Amazon
+Web Services Region of the S3 bucket.}
 
 \item{OutputS3BucketName}{The name of the S3 bucket where command execution responses should be
 stored.}
@@ -78,131 +101,32 @@ stored.}
 \item{OutputS3KeyPrefix}{The directory structure within the S3 bucket where the responses should
 be stored.}
 
-\item{MaxConcurrency}{(Optional) The maximum number of instances that are allowed to run the
-command at the same time. You can specify a number such as 10 or a
-percentage such as 10\%. The default value is 50. For more information
-about how to use MaxConcurrency, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity}{Using concurrency controls}
-in the \emph{AWS Systems Manager User Guide}.}
+\item{MaxConcurrency}{(Optional) The maximum number of managed nodes that are allowed to run
+the command at the same time. You can specify a number such as 10 or a
+percentage such as 10\%. The default value is \code{50}. For more information
+about how to use \code{MaxConcurrency}, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity}{Using concurrency controls}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{MaxErrors}{The maximum number of errors allowed without the command failing. When
-the command fails one more time beyond the value of MaxErrors, the
+the command fails one more time beyond the value of \code{MaxErrors}, the
 systems stops sending the command to additional targets. You can specify
-a number like 10 or a percentage like 10\%. The default value is 0. For
-more information about how to use MaxErrors, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors}{Using error controls}
-in the \emph{AWS Systems Manager User Guide}.}
+a number like 10 or a percentage like 10\%. The default value is \code{0}. For
+more information about how to use \code{MaxErrors}, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors}{Using error controls}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
-\item{ServiceRoleArn}{The ARN of the IAM service role to use to publish Amazon Simple
-Notification Service (Amazon SNS) notifications for Run Command
-commands.}
+\item{ServiceRoleArn}{The ARN of the Identity and Access Management (IAM) service role to use
+to publish Amazon Simple Notification Service (Amazon SNS) notifications
+for Run Command commands.}
 
 \item{NotificationConfig}{Configurations for sending notifications.}
 
-\item{CloudWatchOutputConfig}{Enables Systems Manager to send Run Command output to Amazon CloudWatch
-Logs.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Command = list(
-    CommandId = "string",
-    DocumentName = "string",
-    DocumentVersion = "string",
-    Comment = "string",
-    ExpiresAfter = as.POSIXct(
-      "2015-01-01"
-    ),
-    Parameters = list(
-      list(
-        "string"
-      )
-    ),
-    InstanceIds = list(
-      "string"
-    ),
-    Targets = list(
-      list(
-        Key = "string",
-        Values = list(
-          "string"
-        )
-      )
-    ),
-    RequestedDateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Status = "Pending"|"InProgress"|"Success"|"Cancelled"|"Failed"|"TimedOut"|"Cancelling",
-    StatusDetails = "string",
-    OutputS3Region = "string",
-    OutputS3BucketName = "string",
-    OutputS3KeyPrefix = "string",
-    MaxConcurrency = "string",
-    MaxErrors = "string",
-    TargetCount = 123,
-    CompletedCount = 123,
-    ErrorCount = 123,
-    DeliveryTimedOutCount = 123,
-    ServiceRole = "string",
-    NotificationConfig = list(
-      NotificationArn = "string",
-      NotificationEvents = list(
-        "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-      ),
-      NotificationType = "Command"|"Invocation"
-    ),
-    CloudWatchOutputConfig = list(
-      CloudWatchLogGroupName = "string",
-      CloudWatchOutputEnabled = TRUE|FALSE
-    ),
-    TimeoutSeconds = 123
-  )
-)
-}
+\item{CloudWatchOutputConfig}{Enables Amazon Web Services Systems Manager to send Run Command output
+to Amazon CloudWatch Logs. Run Command is a capability of Amazon Web
+Services Systems Manager.}
 }
 \description{
-Runs commands on one or more managed instances.
-}
-\section{Request syntax}{
-\preformatted{svc$send_command(
-  InstanceIds = list(
-    "string"
-  ),
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DocumentName = "string",
-  DocumentVersion = "string",
-  DocumentHash = "string",
-  DocumentHashType = "Sha256"|"Sha1",
-  TimeoutSeconds = 123,
-  Comment = "string",
-  Parameters = list(
-    list(
-      "string"
-    )
-  ),
-  OutputS3Region = "string",
-  OutputS3BucketName = "string",
-  OutputS3KeyPrefix = "string",
-  MaxConcurrency = "string",
-  MaxErrors = "string",
-  ServiceRoleArn = "string",
-  NotificationConfig = list(
-    NotificationArn = "string",
-    NotificationEvents = list(
-      "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-    ),
-    NotificationType = "Command"|"Invocation"
-  ),
-  CloudWatchOutputConfig = list(
-    CloudWatchLogGroupName = "string",
-    CloudWatchOutputEnabled = TRUE|FALSE
-  )
-)
-}
-}
+Runs commands on one or more managed nodes.
 
+See \url{https://paws-r.github.io/docs/ssm/send_command.html} for full documentation.
+}
 \keyword{internal}

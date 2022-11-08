@@ -5,57 +5,16 @@
 \title{Describes the rules packages that are specified by the ARNs of the rules
 packages}
 \usage{
-inspector_describe_rules_packages(rulesPackageArns, locale)
+inspector_describe_rules_packages(rulesPackageArns, locale = NULL)
 }
 \arguments{
 \item{rulesPackageArns}{[required] The ARN that specifies the rules package that you want to describe.}
 
 \item{locale}{The locale that you want to translate a rules package description into.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  rulesPackages = list(
-    list(
-      arn = "string",
-      name = "string",
-      version = "string",
-      provider = "string",
-      description = "string"
-    )
-  ),
-  failedItems = list(
-    list(
-      failureCode = "INVALID_ARN"|"DUPLICATE_ARN"|"ITEM_DOES_NOT_EXIST"|"ACCESS_DENIED"|"LIMIT_EXCEEDED"|"INTERNAL_ERROR",
-      retryable = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Describes the rules packages that are specified by the ARNs of the rules
-packages.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_rules_packages(
-  rulesPackageArns = list(
-    "string"
-  ),
-  locale = "EN_US"
-)
-}
-}
+Describes the rules packages that are specified by the ARNs of the rules packages.
 
-\examples{
-\dontrun{
-# Describes the rules packages that are specified by the ARNs of the rules
-# packages.
-svc$describe_rules_packages(
-  rulesPackageArns = list(
-    "arn:aws:inspector:us-west-2:758058086616:rulespackage/0-JJOtZiqQ"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/describe_rules_packages.html} for full documentation.
 }
 \keyword{internal}

@@ -4,8 +4,11 @@
 \alias{autoscaling_enter_standby}
 \title{Moves the specified instances into the standby state}
 \usage{
-autoscaling_enter_standby(InstanceIds, AutoScalingGroupName,
-  ShouldDecrementDesiredCapacity)
+autoscaling_enter_standby(
+  InstanceIds = NULL,
+  AutoScalingGroupName,
+  ShouldDecrementDesiredCapacity
+)
 }
 \arguments{
 \item{InstanceIds}{The IDs of the instances. You can specify up to 20 instances.}
@@ -15,66 +18,9 @@ autoscaling_enter_standby(InstanceIds, AutoScalingGroupName,
 \item{ShouldDecrementDesiredCapacity}{[required] Indicates whether to decrement the desired capacity of the Auto Scaling
 group by the number of instances moved to \code{Standby} mode.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Activities = list(
-    list(
-      ActivityId = "string",
-      AutoScalingGroupName = "string",
-      Description = "string",
-      Cause = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
-      StatusMessage = "string",
-      Progress = 123,
-      Details = "string"
-    )
-  )
-)
-}
-}
 \description{
 Moves the specified instances into the standby state.
 
-If you choose to decrement the desired capacity of the Auto Scaling
-group, the instances can enter standby as long as the desired capacity
-of the Auto Scaling group after the instances are placed into standby is
-equal to or greater than the minimum capacity of the group.
-
-If you choose not to decrement the desired capacity of the Auto Scaling
-group, the Auto Scaling group launches new instances to replace the
-instances on standby.
-
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html}{Temporarily removing instances from your Auto Scaling group}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$enter_standby(
-  InstanceIds = list(
-    "string"
-  ),
-  AutoScalingGroupName = "string",
-  ShouldDecrementDesiredCapacity = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example puts the specified instance into standby mode.
-svc$enter_standby(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  InstanceIds = list(
-    "i-93633f9b"
-  ),
-  ShouldDecrementDesiredCapacity = TRUE
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/enter_standby.html} for full documentation.
 }
 \keyword{internal}

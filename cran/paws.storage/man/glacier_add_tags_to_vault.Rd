@@ -4,7 +4,7 @@
 \alias{glacier_add_tags_to_vault}
 \title{This operation adds the specified tags to a vault}
 \usage{
-glacier_add_tags_to_vault(accountId, vaultName, Tags)
+glacier_add_tags_to_vault(accountId, vaultName, Tags = NULL)
 }
 \arguments{
 \item{accountId}{[required] The \code{AccountId} value is the AWS account ID of the account that owns the
@@ -18,40 +18,9 @@ account ID, do not include any hyphens ('-') in the ID.}
 \item{Tags}{The tags to add to the vault. Each tag is composed of a key and a value.
 The value can be an empty string.}
 }
-\value{
-An empty list.
-}
 \description{
-This operation adds the specified tags to a vault. Each tag is composed
-of a key and a value. Each vault can have up to 10 tags. If your request
-would cause the tag limit for the vault to be exceeded, the operation
-throws the \code{LimitExceededException} error. If a tag already exists on
-the vault under a specified key, the existing key value will be
-overwritten. For more information about tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon S3 Glacier Resources}.
-}
-\section{Request syntax}{
-\preformatted{svc$add_tags_to_vault(
-  accountId = "string",
-  vaultName = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
+This operation adds the specified tags to a vault. Each tag is composed of a key and a value. Each vault can have up to 10 tags. If your request would cause the tag limit for the vault to be exceeded, the operation throws the \code{LimitExceededException} error. If a tag already exists on the vault under a specified key, the existing key value will be overwritten. For more information about tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon S3 Glacier Resources}.
 
-\examples{
-\dontrun{
-# The example adds two tags to a my-vault.
-svc$add_tags_to_vault(
-  Tags = list(
-    examplekey1 = "examplevalue1",
-    examplekey2 = "examplevalue2"
-  ),
-  accountId = "-",
-  vaultName = "my-vault"
-)
-}
-
+See \url{https://paws-r.github.io/docs/glacier/add_tags_to_vault.html} for full documentation.
 }
 \keyword{internal}

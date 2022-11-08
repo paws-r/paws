@@ -12,30 +12,9 @@ iam_get_access_key_last_used(AccessKeyId)
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 that can consist of any upper or lowercased letter or digit.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  UserName = "string",
-  AccessKeyLastUsed = list(
-    LastUsedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    ServiceName = "string",
-    Region = "string"
-  )
-)
-}
-}
 \description{
-Retrieves information about when the specified access key was last used.
-The information includes the date and time of last use, along with the
-AWS service and Region that were specified in the last request made with
-that key.
-}
-\section{Request syntax}{
-\preformatted{svc$get_access_key_last_used(
-  AccessKeyId = "string"
-)
-}
-}
+Retrieves information about when the specified access key was last used. The information includes the date and time of last use, along with the Amazon Web Services service and Region that were specified in the last request made with that key.
 
+See \url{https://paws-r.github.io/docs/iam/get_access_key_last_used.html} for full documentation.
+}
 \keyword{internal}

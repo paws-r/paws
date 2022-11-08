@@ -2,13 +2,18 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_maintenance_windows}
 \alias{ssm_describe_maintenance_windows}
-\title{Retrieves the maintenance windows in an AWS account}
+\title{Retrieves the maintenance windows in an Amazon Web Services account}
 \usage{
-ssm_describe_maintenance_windows(Filters, MaxResults, NextToken)
+ssm_describe_maintenance_windows(
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Filters}{Optional filters used to narrow down the scope of the returned
-maintenance windows. Supported filter keys are \strong{Name} and \strong{Enabled}.}
+maintenance windows. Supported filter keys are \code{Name} and \code{Enabled}. For
+example, \code{Name=MyMaintenanceWindow} and \code{Enabled=True}.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -17,45 +22,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowIdentities = list(
-    list(
-      WindowId = "string",
-      Name = "string",
-      Description = "string",
-      Enabled = TRUE|FALSE,
-      Duration = 123,
-      Cutoff = 123,
-      Schedule = "string",
-      ScheduleTimezone = "string",
-      ScheduleOffset = 123,
-      EndDate = "string",
-      StartDate = "string",
-      NextExecutionTime = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves the maintenance windows in an AWS account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_maintenance_windows(
-  Filters = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Retrieves the maintenance windows in an Amazon Web Services account.
 
+See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_windows.html} for full documentation.
+}
 \keyword{internal}

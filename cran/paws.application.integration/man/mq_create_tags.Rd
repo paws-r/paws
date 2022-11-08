@@ -4,27 +4,16 @@
 \alias{mq_create_tags}
 \title{Add a tag to a resource}
 \usage{
-mq_create_tags(ResourceArn, Tags)
+mq_create_tags(ResourceArn, Tags = NULL)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource tag.}
 
 \item{Tags}{The key-value pair for the resource tag.}
 }
-\value{
-An empty list.
-}
 \description{
 Add a tag to a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$create_tags(
-  ResourceArn = "string",
-  Tags = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/mq/create_tags.html} for full documentation.
+}
 \keyword{internal}

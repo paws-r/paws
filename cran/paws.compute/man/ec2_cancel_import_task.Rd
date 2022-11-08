@@ -4,7 +4,7 @@
 \alias{ec2_cancel_import_task}
 \title{Cancels an in-process import virtual machine or import snapshot task}
 \usage{
-ec2_cancel_import_task(CancelReason, DryRun, ImportTaskId)
+ec2_cancel_import_task(CancelReason = NULL, DryRun = NULL, ImportTaskId = NULL)
 }
 \arguments{
 \item{CancelReason}{The reason for canceling the task.}
@@ -16,24 +16,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ImportTaskId}{The ID of the import image or import snapshot task to be canceled.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ImportTaskId = "string",
-  PreviousState = "string",
-  State = "string"
-)
-}
-}
 \description{
 Cancels an in-process import virtual machine or import snapshot task.
-}
-\section{Request syntax}{
-\preformatted{svc$cancel_import_task(
-  CancelReason = "string",
-  DryRun = TRUE|FALSE,
-  ImportTaskId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/cancel_import_task.html} for full documentation.
+}
 \keyword{internal}

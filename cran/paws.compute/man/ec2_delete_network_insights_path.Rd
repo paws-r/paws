@@ -4,7 +4,7 @@
 \alias{ec2_delete_network_insights_path}
 \title{Deletes the specified path}
 \usage{
-ec2_delete_network_insights_path(DryRun, NetworkInsightsPathId)
+ec2_delete_network_insights_path(DryRun = NULL, NetworkInsightsPathId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -14,21 +14,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{NetworkInsightsPathId}{[required] The ID of the path.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NetworkInsightsPathId = "string"
-)
-}
-}
 \description{
 Deletes the specified path.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_network_insights_path(
-  DryRun = TRUE|FALSE,
-  NetworkInsightsPathId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/delete_network_insights_path.html} for full documentation.
+}
 \keyword{internal}

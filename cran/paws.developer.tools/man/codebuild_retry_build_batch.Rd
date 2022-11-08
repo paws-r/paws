@@ -4,7 +4,11 @@
 \alias{codebuild_retry_build_batch}
 \title{Restarts a failed batch build}
 \usage{
-codebuild_retry_build_batch(id, idempotencyToken, retryType)
+codebuild_retry_build_batch(
+  id = NULL,
+  idempotencyToken = NULL,
+  retryType = NULL
+)
 }
 \arguments{
 \item{id}{Specifies the identifier of the batch build to restart.}
@@ -15,250 +19,14 @@ request. The token is included in the
 \code{\link[=codebuild_retry_build_batch]{retry_build_batch}} request and is valid
 for five minutes. If you repeat the
 \code{\link[=codebuild_retry_build_batch]{retry_build_batch}} request with the same
-token, but change a parameter, AWS CodeBuild returns a parameter
-mismatch error.}
+token, but change a parameter, CodeBuild returns a parameter mismatch
+error.}
 
 \item{retryType}{Specifies the type of retry to perform.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  buildBatch = list(
-    id = "string",
-    arn = "string",
-    startTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    endTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    currentPhase = "string",
-    buildBatchStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-    sourceVersion = "string",
-    resolvedSourceVersion = "string",
-    projectName = "string",
-    phases = list(
-      list(
-        phaseType = "SUBMITTED"|"DOWNLOAD_BATCHSPEC"|"IN_PROGRESS"|"COMBINE_ARTIFACTS"|"SUCCEEDED"|"FAILED"|"STOPPED",
-        phaseStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-        startTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        endTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        durationInSeconds = 123,
-        contexts = list(
-          list(
-            statusCode = "string",
-            message = "string"
-          )
-        )
-      )
-    ),
-    source = list(
-      type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-      location = "string",
-      gitCloneDepth = 123,
-      gitSubmodulesConfig = list(
-        fetchSubmodules = TRUE|FALSE
-      ),
-      buildspec = "string",
-      auth = list(
-        type = "OAUTH",
-        resource = "string"
-      ),
-      reportBuildStatus = TRUE|FALSE,
-      buildStatusConfig = list(
-        context = "string",
-        targetUrl = "string"
-      ),
-      insecureSsl = TRUE|FALSE,
-      sourceIdentifier = "string"
-    ),
-    secondarySources = list(
-      list(
-        type = "CODECOMMIT"|"CODEPIPELINE"|"GITHUB"|"S3"|"BITBUCKET"|"GITHUB_ENTERPRISE"|"NO_SOURCE",
-        location = "string",
-        gitCloneDepth = 123,
-        gitSubmodulesConfig = list(
-          fetchSubmodules = TRUE|FALSE
-        ),
-        buildspec = "string",
-        auth = list(
-          type = "OAUTH",
-          resource = "string"
-        ),
-        reportBuildStatus = TRUE|FALSE,
-        buildStatusConfig = list(
-          context = "string",
-          targetUrl = "string"
-        ),
-        insecureSsl = TRUE|FALSE,
-        sourceIdentifier = "string"
-      )
-    ),
-    secondarySourceVersions = list(
-      list(
-        sourceIdentifier = "string",
-        sourceVersion = "string"
-      )
-    ),
-    artifacts = list(
-      location = "string",
-      sha256sum = "string",
-      md5sum = "string",
-      overrideArtifactName = TRUE|FALSE,
-      encryptionDisabled = TRUE|FALSE,
-      artifactIdentifier = "string"
-    ),
-    secondaryArtifacts = list(
-      list(
-        location = "string",
-        sha256sum = "string",
-        md5sum = "string",
-        overrideArtifactName = TRUE|FALSE,
-        encryptionDisabled = TRUE|FALSE,
-        artifactIdentifier = "string"
-      )
-    ),
-    cache = list(
-      type = "NO_CACHE"|"S3"|"LOCAL",
-      location = "string",
-      modes = list(
-        "LOCAL_DOCKER_LAYER_CACHE"|"LOCAL_SOURCE_CACHE"|"LOCAL_CUSTOM_CACHE"
-      )
-    ),
-    environment = list(
-      type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
-      image = "string",
-      computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
-      environmentVariables = list(
-        list(
-          name = "string",
-          value = "string",
-          type = "PLAINTEXT"|"PARAMETER_STORE"|"SECRETS_MANAGER"
-        )
-      ),
-      privilegedMode = TRUE|FALSE,
-      certificate = "string",
-      registryCredential = list(
-        credential = "string",
-        credentialProvider = "SECRETS_MANAGER"
-      ),
-      imagePullCredentialsType = "CODEBUILD"|"SERVICE_ROLE"
-    ),
-    serviceRole = "string",
-    logConfig = list(
-      cloudWatchLogs = list(
-        status = "ENABLED"|"DISABLED",
-        groupName = "string",
-        streamName = "string"
-      ),
-      s3Logs = list(
-        status = "ENABLED"|"DISABLED",
-        location = "string",
-        encryptionDisabled = TRUE|FALSE
-      )
-    ),
-    buildTimeoutInMinutes = 123,
-    queuedTimeoutInMinutes = 123,
-    complete = TRUE|FALSE,
-    initiator = "string",
-    vpcConfig = list(
-      vpcId = "string",
-      subnets = list(
-        "string"
-      ),
-      securityGroupIds = list(
-        "string"
-      )
-    ),
-    encryptionKey = "string",
-    buildBatchNumber = 123,
-    fileSystemLocations = list(
-      list(
-        type = "EFS",
-        location = "string",
-        mountPoint = "string",
-        identifier = "string",
-        mountOptions = "string"
-      )
-    ),
-    buildBatchConfig = list(
-      serviceRole = "string",
-      combineArtifacts = TRUE|FALSE,
-      restrictions = list(
-        maximumBuildsAllowed = 123,
-        computeTypesAllowed = list(
-          "string"
-        )
-      ),
-      timeoutInMins = 123
-    ),
-    buildGroups = list(
-      list(
-        identifier = "string",
-        dependsOn = list(
-          "string"
-        ),
-        ignoreFailure = TRUE|FALSE,
-        currentBuildSummary = list(
-          arn = "string",
-          requestedOn = as.POSIXct(
-            "2015-01-01"
-          ),
-          buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-          primaryArtifact = list(
-            type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-            location = "string",
-            identifier = "string"
-          ),
-          secondaryArtifacts = list(
-            list(
-              type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-              location = "string",
-              identifier = "string"
-            )
-          )
-        ),
-        priorBuildSummaryList = list(
-          list(
-            arn = "string",
-            requestedOn = as.POSIXct(
-              "2015-01-01"
-            ),
-            buildStatus = "SUCCEEDED"|"FAILED"|"FAULT"|"TIMED_OUT"|"IN_PROGRESS"|"STOPPED",
-            primaryArtifact = list(
-              type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-              location = "string",
-              identifier = "string"
-            ),
-            secondaryArtifacts = list(
-              list(
-                type = "CODEPIPELINE"|"S3"|"NO_ARTIFACTS",
-                location = "string",
-                identifier = "string"
-              )
-            )
-          )
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Restarts a failed batch build. Only batch builds that have failed can be
-retried.
-}
-\section{Request syntax}{
-\preformatted{svc$retry_build_batch(
-  id = "string",
-  idempotencyToken = "string",
-  retryType = "RETRY_ALL_BUILDS"|"RETRY_FAILED_BUILDS"
-)
-}
-}
+Restarts a failed batch build. Only batch builds that have failed can be retried.
 
+See \url{https://paws-r.github.io/docs/codebuild/retry_build_batch.html} for full documentation.
+}
 \keyword{internal}

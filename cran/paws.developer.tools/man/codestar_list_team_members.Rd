@@ -4,7 +4,7 @@
 \alias{codestar_list_team_members}
 \title{Lists all team members associated with a project}
 \usage{
-codestar_list_team_members(projectId, nextToken, maxResults)
+codestar_list_team_members(projectId, nextToken = NULL, maxResults = NULL)
 }
 \arguments{
 \item{projectId}{[required] The ID of the project for which you want to list team members.}
@@ -14,29 +14,9 @@ cannot be returned in one response.}
 
 \item{maxResults}{The maximum number of team members you want returned in a response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  teamMembers = list(
-    list(
-      userArn = "string",
-      projectRole = "string",
-      remoteAccessAllowed = TRUE|FALSE
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists all team members associated with a project.
-}
-\section{Request syntax}{
-\preformatted{svc$list_team_members(
-  projectId = "string",
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codestar/list_team_members.html} for full documentation.
+}
 \keyword{internal}

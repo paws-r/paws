@@ -12,20 +12,9 @@ tags.}
 
 \item{TagsToRemove}{[required] Tags to remove from this resource.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes tags from a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$untag_resource(
-  ResourceArn = "string",
-  TagsToRemove = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/untag_resource.html} for full documentation.
+}
 \keyword{internal}

@@ -4,42 +4,15 @@
 \alias{cloudhsm_list_hsms}
 \title{This is documentation for AWS CloudHSM Classic}
 \usage{
-cloudhsm_list_hsms(NextToken)
+cloudhsm_list_hsms(NextToken = NULL)
 }
 \arguments{
 \item{NextToken}{The \code{NextToken} value from a previous call to
 \code{\link[=cloudhsm_list_hsms]{list_hsms}}. Pass null if this is the first call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HsmList = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-This is documentation for \strong{AWS CloudHSM Classic}. For more
-information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},
-and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
 
-\strong{For information about the current version of AWS CloudHSM}, see \href{https://aws.amazon.com/cloudhsm/}{AWS CloudHSM}, the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}, and the
-\href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/}{AWS CloudHSM API Reference}.
-
-Retrieves the identifiers of all of the HSMs provisioned for the current
-customer.
-
-This operation supports pagination with the use of the \code{NextToken}
-member. If more results are available, the \code{NextToken} member of the
-response contains a token that you pass in the next call to
-\code{\link[=cloudhsm_list_hsms]{list_hsms}} to retrieve the next set of items.
+See \url{https://paws-r.github.io/docs/cloudhsm/list_hsms.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_hsms(
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

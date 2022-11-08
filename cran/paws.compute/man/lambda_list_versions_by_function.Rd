@@ -5,7 +5,7 @@
 \title{Returns a list of versions, with the version-specific configuration of
 each}
 \usage{
-lambda_list_versions_by_function(FunctionName, Marker, MaxItems)
+lambda_list_versions_by_function(FunctionName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -24,118 +24,14 @@ the function name, it is limited to 64 characters in length.}
 \item{Marker}{Specify the pagination token that's returned by a previous request to
 retrieve the next page of results.}
 
-\item{MaxItems}{The maximum number of versions to return.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  NextMarker = "string",
-  Versions = list(
-    list(
-      FunctionName = "string",
-      FunctionArn = "string",
-      Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-      Role = "string",
-      Handler = "string",
-      CodeSize = 123,
-      Description = "string",
-      Timeout = 123,
-      MemorySize = 123,
-      LastModified = "string",
-      CodeSha256 = "string",
-      Version = "string",
-      VpcConfig = list(
-        SubnetIds = list(
-          "string"
-        ),
-        SecurityGroupIds = list(
-          "string"
-        ),
-        VpcId = "string"
-      ),
-      DeadLetterConfig = list(
-        TargetArn = "string"
-      ),
-      Environment = list(
-        Variables = list(
-          "string"
-        ),
-        Error = list(
-          ErrorCode = "string",
-          Message = "string"
-        )
-      ),
-      KMSKeyArn = "string",
-      TracingConfig = list(
-        Mode = "Active"|"PassThrough"
-      ),
-      MasterArn = "string",
-      RevisionId = "string",
-      Layers = list(
-        list(
-          Arn = "string",
-          CodeSize = 123,
-          SigningProfileVersionArn = "string",
-          SigningJobArn = "string"
-        )
-      ),
-      State = "Pending"|"Active"|"Inactive"|"Failed",
-      StateReason = "string",
-      StateReasonCode = "Idle"|"Creating"|"Restoring"|"EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-      LastUpdateStatus = "Successful"|"Failed"|"InProgress",
-      LastUpdateStatusReason = "string",
-      LastUpdateStatusReasonCode = "EniLimitExceeded"|"InsufficientRolePermissions"|"InvalidConfiguration"|"InternalError"|"SubnetOutOfIPAddresses"|"InvalidSubnet"|"InvalidSecurityGroup"|"ImageDeleted"|"ImageAccessDenied"|"InvalidImage",
-      FileSystemConfigs = list(
-        list(
-          Arn = "string",
-          LocalMountPath = "string"
-        )
-      ),
-      PackageType = "Zip"|"Image",
-      ImageConfigResponse = list(
-        ImageConfig = list(
-          EntryPoint = list(
-            "string"
-          ),
-          Command = list(
-            "string"
-          ),
-          WorkingDirectory = "string"
-        ),
-        Error = list(
-          ErrorCode = "string",
-          Message = "string"
-        )
-      ),
-      SigningProfileVersionArn = "string",
-      SigningJobArn = "string"
-    )
-  )
-)
-}
+\item{MaxItems}{The maximum number of versions to return. Note that
+\code{\link[=lambda_list_versions_by_function]{list_versions_by_function}} returns
+a maximum of 50 items in each response, even if you set the number
+higher.}
 }
 \description{
-Returns a list of
-\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{versions},
-with the version-specific configuration of each. Lambda returns up to 50
-versions per call.
-}
-\section{Request syntax}{
-\preformatted{svc$list_versions_by_function(
-  FunctionName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+Returns a list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{versions}, with the version-specific configuration of each. Lambda returns up to 50 versions per call.
 
-\examples{
-\dontrun{
-# The following example returns a list of versions of a function named
-# my-function
-svc$list_versions_by_function(
-  FunctionName = "my-function"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/list_versions_by_function.html} for full documentation.
 }
 \keyword{internal}

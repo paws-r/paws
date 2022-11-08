@@ -7,29 +7,14 @@
 personalizeevents_put_items(datasetArn, items)
 }
 \arguments{
-\item{datasetArn}{[required] The Amazon Resource Number (ARN) of the Items dataset you are adding the
+\item{datasetArn}{[required] The Amazon Resource Name (ARN) of the Items dataset you are adding the
 item or items to.}
 
 \item{items}{[required] A list of item data.}
 }
-\value{
-An empty list.
-}
 \description{
-Adds one or more items to an Items dataset. For more information see
-importing-items.
-}
-\section{Request syntax}{
-\preformatted{svc$put_items(
-  datasetArn = "string",
-  items = list(
-    list(
-      itemId = "string",
-      properties = "string"
-    )
-  )
-)
-}
-}
+Adds one or more items to an Items dataset. For more information see \href{https://docs.aws.amazon.com/personalize/latest/dg/importing-items.html}{Importing Items Incrementally}.
 
+See \url{https://paws-r.github.io/docs/personalizeevents/put_items.html} for full documentation.
+}
 \keyword{internal}

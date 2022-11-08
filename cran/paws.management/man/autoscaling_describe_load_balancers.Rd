@@ -2,10 +2,14 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_describe_load_balancers}
 \alias{autoscaling_describe_load_balancers}
-\title{Describes the load balancers for the specified Auto Scaling group}
+\title{Gets information about the load balancers for the specified Auto Scaling
+group}
 \usage{
-autoscaling_describe_load_balancers(AutoScalingGroupName, NextToken,
-  MaxRecords)
+autoscaling_describe_load_balancers(
+  AutoScalingGroupName,
+  NextToken = NULL,
+  MaxRecords = NULL
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -16,44 +20,9 @@ from a previous call.)}
 \item{MaxRecords}{The maximum number of items to return with this call. The default value
 is \code{100} and the maximum value is \code{100}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LoadBalancers = list(
-    list(
-      LoadBalancerName = "string",
-      State = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the load balancers for the specified Auto Scaling group.
+Gets information about the load balancers for the specified Auto Scaling group.
 
-This operation describes only Classic Load Balancers. If you have
-Application Load Balancers, Network Load Balancers, or Gateway Load
-Balancers, use the
-\code{\link[=autoscaling_describe_load_balancer_target_groups]{describe_load_balancer_target_groups}}
-API instead.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_load_balancers(
-  AutoScalingGroupName = "string",
-  NextToken = "string",
-  MaxRecords = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the load balancers attached to the specified Auto
-# Scaling group.
-svc$describe_load_balancers(
-  AutoScalingGroupName = "my-auto-scaling-group"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/describe_load_balancers.html} for full documentation.
 }
 \keyword{internal}

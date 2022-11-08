@@ -11,27 +11,9 @@ guardduty_describe_organization_configuration(DetectorId)
 \item{DetectorId}{[required] The ID of the detector to retrieve information about the delegated
 administrator from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AutoEnable = TRUE|FALSE,
-  MemberAccountLimitReached = TRUE|FALSE,
-  DataSources = list(
-    S3Logs = list(
-      AutoEnable = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Returns information about the account selected as the delegated
-administrator for GuardDuty.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_organization_configuration(
-  DetectorId = "string"
-)
-}
-}
+Returns information about the account selected as the delegated administrator for GuardDuty.
 
+See \url{https://paws-r.github.io/docs/guardduty/describe_organization_configuration.html} for full documentation.
+}
 \keyword{internal}

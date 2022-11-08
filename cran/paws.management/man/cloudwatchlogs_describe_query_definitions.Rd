@@ -5,8 +5,11 @@
 \title{This operation returns a paginated list of your saved CloudWatch Logs
 Insights query definitions}
 \usage{
-cloudwatchlogs_describe_query_definitions(queryDefinitionNamePrefix,
-  maxResults, nextToken)
+cloudwatchlogs_describe_query_definitions(
+  queryDefinitionNamePrefix = NULL,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{queryDefinitionNamePrefix}{Use this parameter to filter your results to only the query definitions
@@ -16,38 +19,9 @@ that have names that start with the prefix you specify.}
 
 \item{nextToken}{}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  queryDefinitions = list(
-    list(
-      queryDefinitionId = "string",
-      name = "string",
-      queryString = "string",
-      lastModified = 123,
-      logGroupNames = list(
-        "string"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-This operation returns a paginated list of your saved CloudWatch Logs
-Insights query definitions.
+This operation returns a paginated list of your saved CloudWatch Logs Insights query definitions.
 
-You can use the \code{queryDefinitionNamePrefix} parameter to limit the
-results to only the query definitions that have names that start with a
-certain string.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_query_definitions.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_query_definitions(
-  queryDefinitionNamePrefix = "string",
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
-
 \keyword{internal}

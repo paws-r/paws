@@ -4,8 +4,13 @@
 \alias{sfn_get_execution_history}
 \title{Returns the history of the specified execution as a list of events}
 \usage{
-sfn_get_execution_history(executionArn, maxResults, reverseOrder,
-  nextToken, includeExecutionData)
+sfn_get_execution_history(
+  executionArn,
+  maxResults = NULL,
+  reverseOrder = NULL,
+  nextToken = NULL,
+  includeExecutionData = NULL
+)
 }
 \arguments{
 \item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution.}
@@ -29,216 +34,9 @@ error.}
 \item{includeExecutionData}{You can select whether execution data (input or output of a history
 event) is returned. The default is \code{true}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  events = list(
-    list(
-      timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      type = "ActivityFailed"|"ActivityScheduled"|"ActivityScheduleFailed"|"ActivityStarted"|"ActivitySucceeded"|"ActivityTimedOut"|"ChoiceStateEntered"|"ChoiceStateExited"|"ExecutionAborted"|"ExecutionFailed"|"ExecutionStarted"|"ExecutionSucceeded"|"ExecutionTimedOut"|"FailStateEntered"|"LambdaFunctionFailed"|"LambdaFunctionScheduled"|"LambdaFunctionScheduleFailed"|"LambdaFunctionStarted"|"LambdaFunctionStartFailed"|"LambdaFunctionSucceeded"|"LambdaFunctionTimedOut"|"MapIterationAborted"|"MapIterationFailed"|"MapIterationStarted"|"MapIterationSucceeded"|"MapStateAborted"|"MapStateEntered"|"MapStateExited"|"MapStateFailed"|"MapStateStarted"|"MapStateSucceeded"|"ParallelStateAborted"|"ParallelStateEntered"|"ParallelStateExited"|"ParallelStateFailed"|"ParallelStateStarted"|"ParallelStateSucceeded"|"PassStateEntered"|"PassStateExited"|"SucceedStateEntered"|"SucceedStateExited"|"TaskFailed"|"TaskScheduled"|"TaskStarted"|"TaskStartFailed"|"TaskStateAborted"|"TaskStateEntered"|"TaskStateExited"|"TaskSubmitFailed"|"TaskSubmitted"|"TaskSucceeded"|"TaskTimedOut"|"WaitStateAborted"|"WaitStateEntered"|"WaitStateExited",
-      id = 123,
-      previousEventId = 123,
-      activityFailedEventDetails = list(
-        error = "string",
-        cause = "string"
-      ),
-      activityScheduleFailedEventDetails = list(
-        error = "string",
-        cause = "string"
-      ),
-      activityScheduledEventDetails = list(
-        resource = "string",
-        input = "string",
-        inputDetails = list(
-          truncated = TRUE|FALSE
-        ),
-        timeoutInSeconds = 123,
-        heartbeatInSeconds = 123
-      ),
-      activityStartedEventDetails = list(
-        workerName = "string"
-      ),
-      activitySucceededEventDetails = list(
-        output = "string",
-        outputDetails = list(
-          truncated = TRUE|FALSE
-        )
-      ),
-      activityTimedOutEventDetails = list(
-        error = "string",
-        cause = "string"
-      ),
-      taskFailedEventDetails = list(
-        resourceType = "string",
-        resource = "string",
-        error = "string",
-        cause = "string"
-      ),
-      taskScheduledEventDetails = list(
-        resourceType = "string",
-        resource = "string",
-        region = "string",
-        parameters = "string",
-        timeoutInSeconds = 123,
-        heartbeatInSeconds = 123
-      ),
-      taskStartFailedEventDetails = list(
-        resourceType = "string",
-        resource = "string",
-        error = "string",
-        cause = "string"
-      ),
-      taskStartedEventDetails = list(
-        resourceType = "string",
-        resource = "string"
-      ),
-      taskSubmitFailedEventDetails = list(
-        resourceType = "string",
-        resource = "string",
-        error = "string",
-        cause = "string"
-      ),
-      taskSubmittedEventDetails = list(
-        resourceType = "string",
-        resource = "string",
-        output = "string",
-        outputDetails = list(
-          truncated = TRUE|FALSE
-        )
-      ),
-      taskSucceededEventDetails = list(
-        resourceType = "string",
-        resource = "string",
-        output = "string",
-        outputDetails = list(
-          truncated = TRUE|FALSE
-        )
-      ),
-      taskTimedOutEventDetails = list(
-        resourceType = "string",
-        resource = "string",
-        error = "string",
-        cause = "string"
-      ),
-      executionFailedEventDetails = list(
-        error = "string",
-        cause = "string"
-      ),
-      executionStartedEventDetails = list(
-        input = "string",
-        inputDetails = list(
-          truncated = TRUE|FALSE
-        ),
-        roleArn = "string"
-      ),
-      executionSucceededEventDetails = list(
-        output = "string",
-        outputDetails = list(
-          truncated = TRUE|FALSE
-        )
-      ),
-      executionAbortedEventDetails = list(
-        error = "string",
-        cause = "string"
-      ),
-      executionTimedOutEventDetails = list(
-        error = "string",
-        cause = "string"
-      ),
-      mapStateStartedEventDetails = list(
-        length = 123
-      ),
-      mapIterationStartedEventDetails = list(
-        name = "string",
-        index = 123
-      ),
-      mapIterationSucceededEventDetails = list(
-        name = "string",
-        index = 123
-      ),
-      mapIterationFailedEventDetails = list(
-        name = "string",
-        index = 123
-      ),
-      mapIterationAbortedEventDetails = list(
-        name = "string",
-        index = 123
-      ),
-      lambdaFunctionFailedEventDetails = list(
-        error = "string",
-        cause = "string"
-      ),
-      lambdaFunctionScheduleFailedEventDetails = list(
-        error = "string",
-        cause = "string"
-      ),
-      lambdaFunctionScheduledEventDetails = list(
-        resource = "string",
-        input = "string",
-        inputDetails = list(
-          truncated = TRUE|FALSE
-        ),
-        timeoutInSeconds = 123
-      ),
-      lambdaFunctionStartFailedEventDetails = list(
-        error = "string",
-        cause = "string"
-      ),
-      lambdaFunctionSucceededEventDetails = list(
-        output = "string",
-        outputDetails = list(
-          truncated = TRUE|FALSE
-        )
-      ),
-      lambdaFunctionTimedOutEventDetails = list(
-        error = "string",
-        cause = "string"
-      ),
-      stateEnteredEventDetails = list(
-        name = "string",
-        input = "string",
-        inputDetails = list(
-          truncated = TRUE|FALSE
-        )
-      ),
-      stateExitedEventDetails = list(
-        name = "string",
-        output = "string",
-        outputDetails = list(
-          truncated = TRUE|FALSE
-        )
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns the history of the specified execution as a list of events. By
-default, the results are returned in ascending order of the \code{timeStamp}
-of the events. Use the \code{reverseOrder} parameter to get the latest events
-first.
+Returns the history of the specified execution as a list of events. By default, the results are returned in ascending order of the \code{timeStamp} of the events. Use the \code{reverseOrder} parameter to get the latest events first.
 
-If \code{nextToken} is returned, there are more results available. The value
-of \code{nextToken} is a unique pagination token for each page. Make the call
-again using the returned token to retrieve the next page. Keep all other
-arguments unchanged. Each pagination token expires after 24 hours. Using
-an expired pagination token will return an \emph{HTTP 400 InvalidToken}
-error.
-
-This API action is not supported by \code{EXPRESS} state machines.
+See \url{https://paws-r.github.io/docs/sfn/get_execution_history.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_execution_history(
-  executionArn = "string",
-  maxResults = 123,
-  reverseOrder = TRUE|FALSE,
-  nextToken = "string",
-  includeExecutionData = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

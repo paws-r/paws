@@ -5,7 +5,7 @@
 \title{Returns a DataSource that includes metadata and data file information,
 as well as the current status of the DataSource}
 \usage{
-machinelearning_get_data_source(DataSourceId, Verbose)
+machinelearning_get_data_source(DataSourceId, Verbose = NULL)
 }
 \arguments{
 \item{DataSourceId}{[required] The ID assigned to the \code{DataSource} at creation.}
@@ -18,70 +18,9 @@ If true, \code{DataSourceSchema} is returned.
 
 If false, \code{DataSourceSchema} is not returned.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DataSourceId = "string",
-  DataLocationS3 = "string",
-  DataRearrangement = "string",
-  CreatedByIamUser = "string",
-  CreatedAt = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastUpdatedAt = as.POSIXct(
-    "2015-01-01"
-  ),
-  DataSizeInBytes = 123,
-  NumberOfFiles = 123,
-  Name = "string",
-  Status = "PENDING"|"INPROGRESS"|"FAILED"|"COMPLETED"|"DELETED",
-  LogUri = "string",
-  Message = "string",
-  RedshiftMetadata = list(
-    RedshiftDatabase = list(
-      DatabaseName = "string",
-      ClusterIdentifier = "string"
-    ),
-    DatabaseUserName = "string",
-    SelectSqlQuery = "string"
-  ),
-  RDSMetadata = list(
-    Database = list(
-      InstanceIdentifier = "string",
-      DatabaseName = "string"
-    ),
-    DatabaseUserName = "string",
-    SelectSqlQuery = "string",
-    ResourceRole = "string",
-    ServiceRole = "string",
-    DataPipelineId = "string"
-  ),
-  RoleARN = "string",
-  ComputeStatistics = TRUE|FALSE,
-  ComputeTime = 123,
-  FinishedAt = as.POSIXct(
-    "2015-01-01"
-  ),
-  StartedAt = as.POSIXct(
-    "2015-01-01"
-  ),
-  DataSourceSchema = "string"
-)
-}
-}
 \description{
-Returns a \code{DataSource} that includes metadata and data file information,
-as well as the current status of the \code{DataSource}.
+Returns a \code{DataSource} that includes metadata and data file information, as well as the current status of the \code{DataSource}.
 
-\code{\link[=machinelearning_get_data_source]{get_data_source}} provides results in
-normal or verbose format. The verbose format adds the schema description
-and the list of files pointed to by the DataSource to the normal format.
+See \url{https://paws-r.github.io/docs/machinelearning/get_data_source.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_data_source(
-  DataSourceId = "string",
-  Verbose = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

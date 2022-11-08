@@ -4,8 +4,13 @@
 \alias{rekognition_start_face_detection}
 \title{Starts asynchronous detection of faces in a stored video}
 \usage{
-rekognition_start_face_detection(Video, ClientRequestToken,
-  NotificationChannel, FaceAttributes, JobTag)
+rekognition_start_face_detection(
+  Video,
+  ClientRequestToken = NULL,
+  NotificationChannel = NULL,
+  FaceAttributes = NULL,
+  JobTag = NULL
+)
 }
 \arguments{
 \item{Video}{[required] The video in which you want to detect faces. The video must be stored in
@@ -18,7 +23,10 @@ same \code{JobId} is returned. Use \code{ClientRequestToken} to prevent the same
 job from being accidently started more than once.}
 
 \item{NotificationChannel}{The ARN of the Amazon SNS topic to which you want Amazon Rekognition
-Video to publish the completion status of the face detection operation.}
+Video to publish the completion status of the face detection operation.
+The Amazon SNS topic must have a topic name that begins with
+\emph{AmazonRekognition} if you are using the AmazonRekognitionServiceRole
+permissions policy.}
 
 \item{FaceAttributes}{The face attributes you want returned.
 
@@ -32,49 +40,9 @@ that's published to your Amazon Simple Notification Service topic. For
 example, you can use \code{JobTag} to group related jobs and identify them in
 the completion notification.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string"
-)
-}
-}
 \description{
 Starts asynchronous detection of faces in a stored video.
 
-Amazon Rekognition Video can detect faces in a video stored in an Amazon
-S3 bucket. Use Video to specify the bucket name and the filename of the
-video. \code{\link[=rekognition_start_face_detection]{start_face_detection}}
-returns a job identifier (\code{JobId}) that you use to get the results of
-the operation. When face detection is finished, Amazon Rekognition Video
-publishes a completion status to the Amazon Simple Notification Service
-topic that you specify in \code{NotificationChannel}. To get the results of
-the face detection operation, first check that the status value
-published to the Amazon SNS topic is \code{SUCCEEDED}. If so, call
-\code{\link[=rekognition_get_face_detection]{get_face_detection}} and pass the job
-identifier (\code{JobId}) from the initial call to
-\code{\link[=rekognition_start_face_detection]{start_face_detection}}.
-
-For more information, see Detecting Faces in a Stored Video in the
-Amazon Rekognition Developer Guide.
+See \url{https://paws-r.github.io/docs/rekognition/start_face_detection.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_face_detection(
-  Video = list(
-    S3Object = list(
-      Bucket = "string",
-      Name = "string",
-      Version = "string"
-    )
-  ),
-  ClientRequestToken = "string",
-  NotificationChannel = list(
-    SNSTopicArn = "string",
-    RoleArn = "string"
-  ),
-  FaceAttributes = "DEFAULT"|"ALL",
-  JobTag = "string"
-)
-}
-}
-
 \keyword{internal}

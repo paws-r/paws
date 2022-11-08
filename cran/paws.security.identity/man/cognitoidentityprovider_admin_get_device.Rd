@@ -4,8 +4,7 @@
 \alias{cognitoidentityprovider_admin_get_device}
 \title{Gets the device, as an administrator}
 \usage{
-cognitoidentityprovider_admin_get_device(DeviceKey, UserPoolId,
-  Username)
+cognitoidentityprovider_admin_get_device(DeviceKey, UserPoolId, Username)
 }
 \arguments{
 \item{DeviceKey}{[required] The device key.}
@@ -14,41 +13,9 @@ cognitoidentityprovider_admin_get_device(DeviceKey, UserPoolId,
 
 \item{Username}{[required] The user name.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Device = list(
-    DeviceKey = "string",
-    DeviceAttributes = list(
-      list(
-        Name = "string",
-        Value = "string"
-      )
-    ),
-    DeviceCreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    DeviceLastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    DeviceLastAuthenticatedDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
 Gets the device, as an administrator.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_get_device.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_get_device(
-  DeviceKey = "string",
-  UserPoolId = "string",
-  Username = "string"
-)
-}
-}
-
 \keyword{internal}

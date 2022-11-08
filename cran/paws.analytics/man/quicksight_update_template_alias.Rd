@@ -4,12 +4,16 @@
 \alias{quicksight_update_template_alias}
 \title{Updates the template alias of a template}
 \usage{
-quicksight_update_template_alias(AwsAccountId, TemplateId, AliasName,
-  TemplateVersionNumber)
+quicksight_update_template_alias(
+  AwsAccountId,
+  TemplateId,
+  AliasName,
+  TemplateVersionNumber
+)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the template alias that you're
-updating.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the template
+alias that you're updating.}
 
 \item{TemplateId}{[required] The ID for the template.}
 
@@ -21,29 +25,9 @@ apply to templates.}
 
 \item{TemplateVersionNumber}{[required] The version number of the template.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TemplateAlias = list(
-    AliasName = "string",
-    Arn = "string",
-    TemplateVersionNumber = 123
-  ),
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Updates the template alias of a template.
-}
-\section{Request syntax}{
-\preformatted{svc$update_template_alias(
-  AwsAccountId = "string",
-  TemplateId = "string",
-  AliasName = "string",
-  TemplateVersionNumber = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/update_template_alias.html} for full documentation.
+}
 \keyword{internal}

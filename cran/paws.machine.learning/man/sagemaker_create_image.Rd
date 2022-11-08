@@ -4,8 +4,13 @@
 \alias{sagemaker_create_image}
 \title{Creates a custom SageMaker image}
 \usage{
-sagemaker_create_image(Description, DisplayName, ImageName, RoleArn,
-  Tags)
+sagemaker_create_image(
+  Description = NULL,
+  DisplayName = NULL,
+  ImageName,
+  RoleArn,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Description}{The description of the image.}
@@ -20,31 +25,9 @@ SageMaker to perform tasks on your behalf.}
 
 \item{Tags}{A list of tags to apply to the image.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ImageArn = "string"
-)
-}
-}
 \description{
-Creates a custom SageMaker image. A SageMaker image is a set of image
-versions. Each image version represents a container image stored in
-Amazon Container Registry (ECR). For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html}{Bring your own SageMaker image}.
-}
-\section{Request syntax}{
-\preformatted{svc$create_image(
-  Description = "string",
-  DisplayName = "string",
-  ImageName = "string",
-  RoleArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a custom SageMaker image. A SageMaker image is a set of image versions. Each image version represents a container image stored in Amazon Elastic Container Registry (ECR). For more information, see Bring your own SageMaker image.
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_image.html} for full documentation.
+}
 \keyword{internal}

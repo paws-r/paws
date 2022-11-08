@@ -4,7 +4,13 @@
 \alias{ec2_describe_volumes}
 \title{Describes the specified EBS volumes or all of your EBS volumes}
 \usage{
-ec2_describe_volumes(Filters, VolumeIds, DryRun, MaxResults, NextToken)
+ec2_describe_volumes(
+  Filters = NULL,
+  VolumeIds = NULL,
+  DryRun = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Filters}{The filters.
@@ -33,11 +39,11 @@ snapshot that is enabled for fast snapshot restore (\code{true} |
 \item \code{snapshot-id} - The snapshot from which the volume was created.
 \item \code{status} - The state of the volume (\code{creating} | \code{available} |
 \verb{in-use} | \code{deleting} | \code{deleted} | \code{error}).
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
@@ -73,109 +79,9 @@ Pagination continues from the end of the previous results that returned
 the \code{NextToken} value. This value is \code{null} when there are no more
 results to return.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Volumes = list(
-    list(
-      Attachments = list(
-        list(
-          AttachTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          Device = "string",
-          InstanceId = "string",
-          State = "attaching"|"attached"|"detaching"|"detached"|"busy",
-          VolumeId = "string",
-          DeleteOnTermination = TRUE|FALSE
-        )
-      ),
-      AvailabilityZone = "string",
-      CreateTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Encrypted = TRUE|FALSE,
-      KmsKeyId = "string",
-      OutpostArn = "string",
-      Size = 123,
-      SnapshotId = "string",
-      State = "creating"|"available"|"in-use"|"deleting"|"deleted"|"error",
-      VolumeId = "string",
-      Iops = 123,
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
-      FastRestored = TRUE|FALSE,
-      MultiAttachEnabled = TRUE|FALSE,
-      Throughput = 123
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the specified EBS volumes or all of your EBS volumes.
 
-If you are describing a long list of volumes, we recommend that you
-paginate the output to make the list more manageable. The \code{MaxResults}
-parameter sets the maximum number of results returned in a single page.
-If the list of results exceeds your \code{MaxResults} value, then that number
-of results is returned along with a \code{NextToken} value that can be passed
-to a subsequent \code{\link[=ec2_describe_volumes]{describe_volumes}} request to
-retrieve the remaining results.
-
-For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes.html}{Amazon EBS volumes}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_volumes(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  VolumeIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes all of your volumes in the default region.
-svc$describe_volumes()
-
-# This example describes all volumes that are both attached to the
-# instance with the ID i-1234567890abcdef0 and set to delete when the
-# instance terminates.
-svc$describe_volumes(
-  Filters = list(
-    list(
-      Name = "attachment.instance-id",
-      Values = list(
-        "i-1234567890abcdef0"
-      )
-    ),
-    list(
-      Name = "attachment.delete-on-termination",
-      Values = list(
-        "true"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_volumes.html} for full documentation.
 }
 \keyword{internal}

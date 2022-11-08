@@ -2,10 +2,15 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_list_layers}
 \alias{lambda_list_layers}
-\title{Lists AWS Lambda layers and shows information about the latest version
-of each}
+\title{Lists Lambda layers and shows information about the latest version of
+each}
 \usage{
-lambda_list_layers(CompatibleRuntime, Marker, MaxItems)
+lambda_list_layers(
+  CompatibleRuntime = NULL,
+  Marker = NULL,
+  MaxItems = NULL,
+  CompatibleArchitecture = NULL
+)
 }
 \arguments{
 \item{CompatibleRuntime}{A runtime identifier. For example, \code{go1.x}.}
@@ -13,53 +18,12 @@ lambda_list_layers(CompatibleRuntime, Marker, MaxItems)
 \item{Marker}{A pagination token returned by a previous call.}
 
 \item{MaxItems}{The maximum number of layers to return.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  NextMarker = "string",
-  Layers = list(
-    list(
-      LayerName = "string",
-      LayerArn = "string",
-      LatestMatchingVersion = list(
-        LayerVersionArn = "string",
-        Version = 123,
-        Description = "string",
-        CreatedDate = "string",
-        CompatibleRuntimes = list(
-          "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"
-        ),
-        LicenseInfo = "string"
-      )
-    )
-  )
-)
-}
+
+\item{CompatibleArchitecture}{The compatible \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html}{instruction set architecture}.}
 }
 \description{
-Lists \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layers}
-and shows information about the latest version of each. Specify a
-\href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier}
-to list only layers that indicate that they're compatible with that
-runtime.
-}
-\section{Request syntax}{
-\preformatted{svc$list_layers(
-  CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
+Lists \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-layers.html}{Lambda layers} and shows information about the latest version of each. Specify a \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier} to list only layers that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layers that are compatible with that \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html}{instruction set architecture}.
 
-\examples{
-\dontrun{
-# The following example returns information about layers that are
-# compatible with the Python 3.7 runtime.
-svc$list_layers(
-  CompatibleRuntime = "python3.7"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/list_layers.html} for full documentation.
 }
 \keyword{internal}

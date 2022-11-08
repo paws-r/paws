@@ -2,30 +2,35 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_abort_multipart_upload}
 \alias{s3_abort_multipart_upload}
-\title{This operation aborts a multipart upload}
+\title{This action aborts a multipart upload}
 \usage{
-s3_abort_multipart_upload(Bucket, Key, UploadId, RequestPayer,
-  ExpectedBucketOwner)
+s3_abort_multipart_upload(
+  Bucket,
+  Key,
+  UploadId,
+  RequestPayer = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name to which the upload was taking place.
 
-When using this API with an access point, you must direct requests to
+When using this action with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation with an access point through the AWS SDKs, you
-provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
+When using this action with an access point through the Amazon Web
+Services SDKs, you provide the access point ARN in place of the bucket
+name. For more information about access point ARNs, see Using access
+points in the \emph{Amazon S3 User Guide}.
 
-When using this API with Amazon S3 on Outposts, you must direct requests
-to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
-form
-\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
-When using this operation using S3 on Outposts through the AWS SDKs, you
-provide the Outposts bucket ARN in place of the bucket name. For more
-information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using S3 on Outposts}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+\code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
+When using this action with S3 on Outposts through the Amazon Web
+Services SDKs, you provide the Outposts bucket ARN in place of the
+bucket name. For more information about S3 on Outposts ARNs, see Using
+Amazon S3 on Outposts in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Key of the object for which the multipart upload was initiated.}
 
@@ -33,62 +38,13 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{RequestPayer}{}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  RequestCharged = "requester"
-)
-}
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-This operation aborts a multipart upload. After a multipart upload is
-aborted, no additional parts can be uploaded using that upload ID. The
-storage consumed by any previously uploaded parts will be freed.
-However, if any part uploads are currently in progress, those part
-uploads might or might not succeed. As a result, it might be necessary
-to abort a given multipart upload multiple times in order to completely
-free all storage consumed by all parts.
+This action aborts a multipart upload. After a multipart upload is aborted, no additional parts can be uploaded using that upload ID. The storage consumed by any previously uploaded parts will be freed. However, if any part uploads are currently in progress, those part uploads might or might not succeed. As a result, it might be necessary to abort a given multipart upload multiple times in order to completely free all storage consumed by all parts.
 
-To verify that all parts have been removed, so you don't get charged for
-the part storage, you should call the \code{\link[=s3_list_parts]{list_parts}}
-operation and ensure that the parts list is empty.
-
-For information about permissions required to use the multipart upload
-API, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload API and Permissions}.
-
-The following operations are related to
-\code{\link[=s3_abort_multipart_upload]{abort_multipart_upload}}:
-\itemize{
-\item \code{\link[=s3_create_multipart_upload]{create_multipart_upload}}
-\item \code{\link[=s3_upload_part]{upload_part}}
-\item \code{\link[=s3_complete_multipart_upload]{complete_multipart_upload}}
-\item \code{\link[=s3_list_parts]{list_parts}}
-\item \code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$abort_multipart_upload(
-  Bucket = "string",
-  Key = "string",
-  UploadId = "string",
-  RequestPayer = "requester",
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example aborts a multipart upload.
-svc$abort_multipart_upload(
-  Bucket = "examplebucket",
-  Key = "bigobject",
-  UploadId = "xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LA..."
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/abort_multipart_upload.html} for full documentation.
 }
 \keyword{internal}

@@ -4,58 +4,19 @@
 \alias{elasticbeanstalk_update_application_resource_lifecycle}
 \title{Modifies lifecycle settings for an application}
 \usage{
-elasticbeanstalk_update_application_resource_lifecycle(ApplicationName,
-  ResourceLifecycleConfig)
+elasticbeanstalk_update_application_resource_lifecycle(
+  ApplicationName,
+  ResourceLifecycleConfig
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application.}
 
 \item{ResourceLifecycleConfig}{[required] The lifecycle configuration.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationName = "string",
-  ResourceLifecycleConfig = list(
-    ServiceRole = "string",
-    VersionLifecycleConfig = list(
-      MaxCountRule = list(
-        Enabled = TRUE|FALSE,
-        MaxCount = 123,
-        DeleteSourceFromS3 = TRUE|FALSE
-      ),
-      MaxAgeRule = list(
-        Enabled = TRUE|FALSE,
-        MaxAgeInDays = 123,
-        DeleteSourceFromS3 = TRUE|FALSE
-      )
-    )
-  )
-)
-}
-}
 \description{
 Modifies lifecycle settings for an application.
-}
-\section{Request syntax}{
-\preformatted{svc$update_application_resource_lifecycle(
-  ApplicationName = "string",
-  ResourceLifecycleConfig = list(
-    ServiceRole = "string",
-    VersionLifecycleConfig = list(
-      MaxCountRule = list(
-        Enabled = TRUE|FALSE,
-        MaxCount = 123,
-        DeleteSourceFromS3 = TRUE|FALSE
-      ),
-      MaxAgeRule = list(
-        Enabled = TRUE|FALSE,
-        MaxAgeInDays = 123,
-        DeleteSourceFromS3 = TRUE|FALSE
-      )
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/update_application_resource_lifecycle.html} for full documentation.
+}
 \keyword{internal}

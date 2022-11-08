@@ -4,8 +4,12 @@
 \alias{cognitoidentityprovider_admin_list_devices}
 \title{Lists devices, as an administrator}
 \usage{
-cognitoidentityprovider_admin_list_devices(UserPoolId, Username, Limit,
-  PaginationToken)
+cognitoidentityprovider_admin_list_devices(
+  UserPoolId,
+  Username,
+  Limit = NULL,
+  PaginationToken = NULL
+)
 }
 \arguments{
 \item{UserPoolId}{[required] The user pool ID.}
@@ -16,45 +20,9 @@ cognitoidentityprovider_admin_list_devices(UserPoolId, Username, Limit,
 
 \item{PaginationToken}{The pagination token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Devices = list(
-    list(
-      DeviceKey = "string",
-      DeviceAttributes = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      DeviceCreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      DeviceLastModifiedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      DeviceLastAuthenticatedDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  PaginationToken = "string"
-)
-}
-}
 \description{
 Lists devices, as an administrator.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_list_devices.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$admin_list_devices(
-  UserPoolId = "string",
-  Username = "string",
-  Limit = 123,
-  PaginationToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -5,8 +5,13 @@
 \title{Returns a paginated list of self-service actions associated with the
 specified Product ID and Provisioning Artifact ID}
 \usage{
-servicecatalog_list_service_actions_for_provisioning_artifact(ProductId,
-  ProvisioningArtifactId, PageSize, PageToken, AcceptLanguage)
+servicecatalog_list_service_actions_for_provisioning_artifact(
+  ProductId,
+  ProvisioningArtifactId,
+  PageSize = NULL,
+  PageToken = NULL,
+  AcceptLanguage = NULL
+)
 }
 \arguments{
 \item{ProductId}{[required] The product identifier. For example, \code{prod-abcdzk7xy33qa}.}
@@ -26,33 +31,9 @@ results, use null.}
 \item \code{zh} - Chinese
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceActionSummaries = list(
-    list(
-      Id = "string",
-      Name = "string",
-      Description = "string",
-      DefinitionType = "SSM_AUTOMATION"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
-Returns a paginated list of self-service actions associated with the
-specified Product ID and Provisioning Artifact ID.
-}
-\section{Request syntax}{
-\preformatted{svc$list_service_actions_for_provisioning_artifact(
-  ProductId = "string",
-  ProvisioningArtifactId = "string",
-  PageSize = 123,
-  PageToken = "string",
-  AcceptLanguage = "string"
-)
-}
-}
+Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_service_actions_for_provisioning_artifact.html} for full documentation.
+}
 \keyword{internal}

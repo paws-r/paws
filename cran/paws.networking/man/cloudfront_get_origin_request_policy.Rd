@@ -16,70 +16,9 @@ policy is not attached to a cache behavior, you can get the identifier
 using
 \code{\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies}}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  OriginRequestPolicy = list(
-    Id = "string",
-    LastModifiedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    OriginRequestPolicyConfig = list(
-      Comment = "string",
-      Name = "string",
-      HeadersConfig = list(
-        HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
-        Headers = list(
-          Quantity = 123,
-          Items = list(
-            "string"
-          )
-        )
-      ),
-      CookiesConfig = list(
-        CookieBehavior = "none"|"whitelist"|"all",
-        Cookies = list(
-          Quantity = 123,
-          Items = list(
-            "string"
-          )
-        )
-      ),
-      QueryStringsConfig = list(
-        QueryStringBehavior = "none"|"whitelist"|"all",
-        QueryStrings = list(
-          Quantity = 123,
-          Items = list(
-            "string"
-          )
-        )
-      )
-    )
-  ),
-  ETag = "string"
-)
-}
-}
 \description{
 Gets an origin request policy, including the following metadata:
-\itemize{
-\item The policy’s identifier.
-\item The date and time when the policy was last modified.
-}
 
-To get an origin request policy, you must provide the policy’s
-identifier. If the origin request policy is attached to a distribution’s
-cache behavior, you can get the policy’s identifier using
-\code{\link[=cloudfront_list_distributions]{list_distributions}} or
-\code{\link[=cloudfront_get_distribution]{get_distribution}}. If the origin request
-policy is not attached to a cache behavior, you can get the identifier
-using
-\code{\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies}}.
+See \url{https://paws-r.github.io/docs/cloudfront/get_origin_request_policy.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_origin_request_policy(
-  Id = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -12,18 +12,9 @@ more information, see arns.}
 
 \item{Name}{[required] The unique name of the typed link facet.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a TypedLinkFacet. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink}{Typed Links}.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_typed_link_facet(
-  SchemaArn = "string",
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/delete_typed_link_facet.html} for full documentation.
+}
 \keyword{internal}

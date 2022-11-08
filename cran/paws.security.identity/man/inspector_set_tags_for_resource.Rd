@@ -5,7 +5,7 @@
 \title{Sets tags (key and value pairs) to the assessment template that is
 specified by the ARN of the assessment template}
 \usage{
-inspector_set_tags_for_resource(resourceArn, tags)
+inspector_set_tags_for_resource(resourceArn, tags = NULL)
 }
 \arguments{
 \item{resourceArn}{[required] The ARN of the assessment template that you want to set tags to.}
@@ -13,40 +13,9 @@ inspector_set_tags_for_resource(resourceArn, tags)
 \item{tags}{A collection of key and value pairs that you want to set to the
 assessment template.}
 }
-\value{
-An empty list.
-}
 \description{
-Sets tags (key and value pairs) to the assessment template that is
-specified by the ARN of the assessment template.
-}
-\section{Request syntax}{
-\preformatted{svc$set_tags_for_resource(
-  resourceArn = "string",
-  tags = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
+Sets tags (key and value pairs) to the assessment template that is specified by the ARN of the assessment template.
 
-\examples{
-\dontrun{
-# Sets tags (key and value pairs) to the assessment template that is
-# specified by the ARN of the assessment template.
-svc$set_tags_for_resource(
-  resourceArn = "arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX...",
-  tags = list(
-    list(
-      key = "Example",
-      value = "example"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/set_tags_for_resource.html} for full documentation.
 }
 \keyword{internal}

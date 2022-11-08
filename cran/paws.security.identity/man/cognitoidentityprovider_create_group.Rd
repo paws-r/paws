@@ -4,8 +4,13 @@
 \alias{cognitoidentityprovider_create_group}
 \title{Creates a new group in the specified user pool}
 \usage{
-cognitoidentityprovider_create_group(GroupName, UserPoolId, Description,
-  RoleArn, Precedence)
+cognitoidentityprovider_create_group(
+  GroupName,
+  UserPoolId,
+  Description = NULL,
+  RoleArn = NULL,
+  Precedence = NULL
+)
 }
 \arguments{
 \item{GroupName}{[required] The name of the group. Must be unique.}
@@ -14,58 +19,29 @@ cognitoidentityprovider_create_group(GroupName, UserPoolId, Description,
 
 \item{Description}{A string containing the description of the group.}
 
-\item{RoleArn}{The role ARN for the group.}
+\item{RoleArn}{The role Amazon Resource Name (ARN) for the group.}
 
-\item{Precedence}{A nonnegative integer value that specifies the precedence of this group
+\item{Precedence}{A non-negative integer value that specifies the precedence of this group
 relative to the other groups that a user can belong to in the user pool.
 Zero is the highest precedence value. Groups with lower \code{Precedence}
 values take precedence over groups with higher or null \code{Precedence}
 values. If a user belongs to two or more groups, it is the group with
-the lowest precedence value whose role ARN will be used in the
-\code{cognito:roles} and \code{cognito:preferred_role} claims in the user's
-tokens.
+the lowest precedence value whose role ARN is given in the user's tokens
+for the \code{cognito:roles} and \code{cognito:preferred_role} claims.
 
 Two groups can have the same \code{Precedence} value. If this happens,
 neither group takes precedence over the other. If two groups with the
 same \code{Precedence} have the same role ARN, that role is used in the
 \code{cognito:preferred_role} claim in tokens for users in each group. If the
 two groups have different role ARNs, the \code{cognito:preferred_role} claim
-is not set in users' tokens.
+isn't set in users' tokens.
 
-The default \code{Precedence} value is null.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Group = list(
-    GroupName = "string",
-    UserPoolId = "string",
-    Description = "string",
-    RoleArn = "string",
-    Precedence = 123,
-    LastModifiedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreationDate = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
+The default \code{Precedence} value is null. The maximum \code{Precedence} value
+is \code{2^31-1}.}
 }
 \description{
 Creates a new group in the specified user pool.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/create_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_group(
-  GroupName = "string",
-  UserPoolId = "string",
-  Description = "string",
-  RoleArn = "string",
-  Precedence = 123
-)
-}
-}
-
 \keyword{internal}

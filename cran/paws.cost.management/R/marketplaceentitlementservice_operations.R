@@ -6,13 +6,9 @@ NULL
 #' GetEntitlements retrieves entitlement values for a given product
 #'
 #' @description
-#' GetEntitlements retrieves entitlement values for a given product. The
-#' results can be filtered based on customer identifier or product
-#' dimensions.
+#' GetEntitlements retrieves entitlement values for a given product. The results can be filtered based on customer identifier or product dimensions.
 #'
-#' @usage
-#' marketplaceentitlementservice_get_entitlements(ProductCode, Filter,
-#'   NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/marketplaceentitlementservice/get_entitlements.html](https://paws-r.github.io/docs/marketplaceentitlementservice/get_entitlements.html) for full documentation.
 #'
 #' @param ProductCode &#91;required&#93; Product code is used to uniquely identify a product in AWS Marketplace.
 #' The product code will be provided by AWS Marketplace when the product
@@ -26,44 +22,6 @@ NULL
 #' @param MaxResults The maximum number of items to retrieve from the GetEntitlements
 #' operation. For pagination, use the NextToken field in subsequent calls
 #' to GetEntitlements.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Entitlements = list(
-#'     list(
-#'       ProductCode = "string",
-#'       Dimension = "string",
-#'       CustomerIdentifier = "string",
-#'       Value = list(
-#'         IntegerValue = 123,
-#'         DoubleValue = 123.0,
-#'         BooleanValue = TRUE|FALSE,
-#'         StringValue = "string"
-#'       ),
-#'       ExpirationDate = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_entitlements(
-#'   ProductCode = "string",
-#'   Filter = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

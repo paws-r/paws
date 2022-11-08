@@ -4,8 +4,16 @@
 \alias{cloudwatch_describe_alarm_history}
 \title{Retrieves the history for the specified alarm}
 \usage{
-cloudwatch_describe_alarm_history(AlarmName, AlarmTypes,
-  HistoryItemType, StartDate, EndDate, MaxRecords, NextToken, ScanBy)
+cloudwatch_describe_alarm_history(
+  AlarmName = NULL,
+  AlarmTypes = NULL,
+  HistoryItemType = NULL,
+  StartDate = NULL,
+  EndDate = NULL,
+  MaxRecords = NULL,
+  NextToken = NULL,
+  ScanBy = NULL
+)
 }
 \arguments{
 \item{AlarmName}{The name of the alarm.}
@@ -30,50 +38,9 @@ Specify \code{TimestampDescending} to have the newest event history returned
 first, and specify \code{TimestampAscending} to have the oldest history
 returned first.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AlarmHistoryItems = list(
-    list(
-      AlarmName = "string",
-      AlarmType = "CompositeAlarm"|"MetricAlarm",
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      HistoryItemType = "ConfigurationUpdate"|"StateUpdate"|"Action",
-      HistorySummary = "string",
-      HistoryData = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Retrieves the history for the specified alarm. You can filter the
-results by date range or item type. If an alarm name is not specified,
-the histories for either all metric alarms or all composite alarms are
-returned.
+Retrieves the history for the specified alarm. You can filter the results by date range or item type. If an alarm name is not specified, the histories for either all metric alarms or all composite alarms are returned.
 
-CloudWatch retains the history of an alarm even if you delete the alarm.
+See \url{https://paws-r.github.io/docs/cloudwatch/describe_alarm_history.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_alarm_history(
-  AlarmName = "string",
-  AlarmTypes = list(
-    "CompositeAlarm"|"MetricAlarm"
-  ),
-  HistoryItemType = "ConfigurationUpdate"|"StateUpdate"|"Action",
-  StartDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  MaxRecords = 123,
-  NextToken = "string",
-  ScanBy = "TimestampDescending"|"TimestampAscending"
-)
-}
-}
-
 \keyword{internal}

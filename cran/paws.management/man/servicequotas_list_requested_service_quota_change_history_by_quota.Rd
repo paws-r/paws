@@ -5,7 +5,12 @@
 \title{Retrieves the quota increase requests for the specified quota}
 \usage{
 servicequotas_list_requested_service_quota_change_history_by_quota(
-  ServiceCode, QuotaCode, Status, NextToken, MaxResults)
+  ServiceCode,
+  QuotaCode,
+  Status = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{ServiceCode}{[required] The service identifier.}
@@ -20,46 +25,9 @@ servicequotas_list_requested_service_quota_change_history_by_quota(
 the remaining results, if any, make another call with the token returned
 from this call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  RequestedQuotas = list(
-    list(
-      Id = "string",
-      CaseId = "string",
-      ServiceCode = "string",
-      ServiceName = "string",
-      QuotaCode = "string",
-      QuotaName = "string",
-      DesiredValue = 123.0,
-      Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
-      Created = as.POSIXct(
-        "2015-01-01"
-      ),
-      LastUpdated = as.POSIXct(
-        "2015-01-01"
-      ),
-      Requester = "string",
-      QuotaArn = "string",
-      GlobalQuota = TRUE|FALSE,
-      Unit = "string"
-    )
-  )
-)
-}
-}
 \description{
 Retrieves the quota increase requests for the specified quota.
-}
-\section{Request syntax}{
-\preformatted{svc$list_requested_service_quota_change_history_by_quota(
-  ServiceCode = "string",
-  QuotaCode = "string",
-  Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicequotas/list_requested_service_quota_change_history_by_quota.html} for full documentation.
+}
 \keyword{internal}

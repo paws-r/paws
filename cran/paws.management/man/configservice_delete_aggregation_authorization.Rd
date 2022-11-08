@@ -5,27 +5,19 @@
 \title{Deletes the authorization granted to the specified configuration
 aggregator account in a specified region}
 \usage{
-configservice_delete_aggregation_authorization(AuthorizedAccountId,
-  AuthorizedAwsRegion)
+configservice_delete_aggregation_authorization(
+  AuthorizedAccountId,
+  AuthorizedAwsRegion
+)
 }
 \arguments{
 \item{AuthorizedAccountId}{[required] The 12-digit account ID of the account authorized to aggregate data.}
 
 \item{AuthorizedAwsRegion}{[required] The region authorized to collect aggregated data.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the authorization granted to the specified configuration
-aggregator account in a specified region.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_aggregation_authorization(
-  AuthorizedAccountId = "string",
-  AuthorizedAwsRegion = "string"
-)
-}
-}
+Deletes the authorization granted to the specified configuration aggregator account in a specified region.
 
+See \url{https://paws-r.github.io/docs/configservice/delete_aggregation_authorization.html} for full documentation.
+}
 \keyword{internal}

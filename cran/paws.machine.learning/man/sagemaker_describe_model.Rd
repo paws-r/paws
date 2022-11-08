@@ -9,63 +9,9 @@ sagemaker_describe_model(ModelName)
 \arguments{
 \item{ModelName}{[required] The name of the model.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ModelName = "string",
-  PrimaryContainer = list(
-    ContainerHostname = "string",
-    Image = "string",
-    ImageConfig = list(
-      RepositoryAccessMode = "Platform"|"Vpc"
-    ),
-    Mode = "SingleModel"|"MultiModel",
-    ModelDataUrl = "string",
-    Environment = list(
-      "string"
-    ),
-    ModelPackageName = "string"
-  ),
-  Containers = list(
-    list(
-      ContainerHostname = "string",
-      Image = "string",
-      ImageConfig = list(
-        RepositoryAccessMode = "Platform"|"Vpc"
-      ),
-      Mode = "SingleModel"|"MultiModel",
-      ModelDataUrl = "string",
-      Environment = list(
-        "string"
-      ),
-      ModelPackageName = "string"
-    )
-  ),
-  ExecutionRoleArn = "string",
-  VpcConfig = list(
-    SecurityGroupIds = list(
-      "string"
-    ),
-    Subnets = list(
-      "string"
-    )
-  ),
-  CreationTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  ModelArn = "string",
-  EnableNetworkIsolation = TRUE|FALSE
-)
-}
-}
 \description{
-Describes a model that you created using the
-\code{\link[=sagemaker_create_model]{create_model}} API.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_model(
-  ModelName = "string"
-)
-}
-}
+Describes a model that you created using the \code{\link[=sagemaker_create_model]{create_model}} API.
 
+See \url{https://paws-r.github.io/docs/sagemaker/describe_model.html} for full documentation.
+}
 \keyword{internal}

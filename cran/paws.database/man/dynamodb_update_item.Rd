@@ -5,10 +5,20 @@
 \title{Edits an existing item's attributes, or adds a new item to the table if
 it does not already exist}
 \usage{
-dynamodb_update_item(TableName, Key, AttributeUpdates, Expected,
-  ConditionalOperator, ReturnValues, ReturnConsumedCapacity,
-  ReturnItemCollectionMetrics, UpdateExpression, ConditionExpression,
-  ExpressionAttributeNames, ExpressionAttributeValues)
+dynamodb_update_item(
+  TableName,
+  Key,
+  AttributeUpdates = NULL,
+  Expected = NULL,
+  ConditionalOperator = NULL,
+  ReturnValues = NULL,
+  ReturnConsumedCapacity = NULL,
+  ReturnItemCollectionMetrics = NULL,
+  UpdateExpression = NULL,
+  ConditionExpression = NULL,
+  ExpressionAttributeNames = NULL,
+  ExpressionAttributeValues = NULL
+)
 }
 \arguments{
 \item{TableName}{[required] The name of the table containing the item to update.}
@@ -174,7 +184,7 @@ name in an expression.
 misinterpreted in an expression.
 }
 
-Use the \strong{#} character in an expression to dereference an attribute
+Use the \strong{\#} character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 \itemize{
 \item \code{Percentile}
@@ -220,274 +230,9 @@ You could then use these values in an expression, such as this:
 For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Attributes = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  ConsumedCapacity = list(
-    TableName = "string",
-    CapacityUnits = 123.0,
-    ReadCapacityUnits = 123.0,
-    WriteCapacityUnits = 123.0,
-    Table = list(
-      ReadCapacityUnits = 123.0,
-      WriteCapacityUnits = 123.0,
-      CapacityUnits = 123.0
-    ),
-    LocalSecondaryIndexes = list(
-      list(
-        ReadCapacityUnits = 123.0,
-        WriteCapacityUnits = 123.0,
-        CapacityUnits = 123.0
-      )
-    ),
-    GlobalSecondaryIndexes = list(
-      list(
-        ReadCapacityUnits = 123.0,
-        WriteCapacityUnits = 123.0,
-        CapacityUnits = 123.0
-      )
-    )
-  ),
-  ItemCollectionMetrics = list(
-    ItemCollectionKey = list(
-      list(
-        S = "string",
-        N = "string",
-        B = raw,
-        SS = list(
-          "string"
-        ),
-        NS = list(
-          "string"
-        ),
-        BS = list(
-          raw
-        ),
-        M = list(
-          list()
-        ),
-        L = list(
-          list()
-        ),
-        NULL = TRUE|FALSE,
-        BOOL = TRUE|FALSE
-      )
-    ),
-    SizeEstimateRangeGB = list(
-      123.0
-    )
-  )
-)
-}
-}
 \description{
-Edits an existing item's attributes, or adds a new item to the table if
-it does not already exist. You can put, delete, or add attribute values.
-You can also perform a conditional update on an existing item (insert a
-new attribute name-value pair if it doesn't exist, or replace an
-existing name-value pair if it has certain expected attribute values).
+Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put, delete, or add attribute values. You can also perform a conditional update on an existing item (insert a new attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected attribute values).
 
-You can also return the item's attribute values in the same
-\code{\link[=dynamodb_update_item]{update_item}} operation using the \code{ReturnValues}
-parameter.
-}
-\section{Request syntax}{
-\preformatted{svc$update_item(
-  TableName = "string",
-  Key = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  ),
-  AttributeUpdates = list(
-    list(
-      Value = list(
-        S = "string",
-        N = "string",
-        B = raw,
-        SS = list(
-          "string"
-        ),
-        NS = list(
-          "string"
-        ),
-        BS = list(
-          raw
-        ),
-        M = list(
-          list()
-        ),
-        L = list(
-          list()
-        ),
-        NULL = TRUE|FALSE,
-        BOOL = TRUE|FALSE
-      ),
-      Action = "ADD"|"PUT"|"DELETE"
-    )
-  ),
-  Expected = list(
-    list(
-      Value = list(
-        S = "string",
-        N = "string",
-        B = raw,
-        SS = list(
-          "string"
-        ),
-        NS = list(
-          "string"
-        ),
-        BS = list(
-          raw
-        ),
-        M = list(
-          list()
-        ),
-        L = list(
-          list()
-        ),
-        NULL = TRUE|FALSE,
-        BOOL = TRUE|FALSE
-      ),
-      Exists = TRUE|FALSE,
-      ComparisonOperator = "EQ"|"NE"|"IN"|"LE"|"LT"|"GE"|"GT"|"BETWEEN"|"NOT_NULL"|"NULL"|"CONTAINS"|"NOT_CONTAINS"|"BEGINS_WITH",
-      AttributeValueList = list(
-        list(
-          S = "string",
-          N = "string",
-          B = raw,
-          SS = list(
-            "string"
-          ),
-          NS = list(
-            "string"
-          ),
-          BS = list(
-            raw
-          ),
-          M = list(
-            list()
-          ),
-          L = list(
-            list()
-          ),
-          NULL = TRUE|FALSE,
-          BOOL = TRUE|FALSE
-        )
-      )
-    )
-  ),
-  ConditionalOperator = "AND"|"OR",
-  ReturnValues = "NONE"|"ALL_OLD"|"UPDATED_OLD"|"ALL_NEW"|"UPDATED_NEW",
-  ReturnConsumedCapacity = "INDEXES"|"TOTAL"|"NONE",
-  ReturnItemCollectionMetrics = "SIZE"|"NONE",
-  UpdateExpression = "string",
-  ConditionExpression = "string",
-  ExpressionAttributeNames = list(
-    "string"
-  ),
-  ExpressionAttributeValues = list(
-    list(
-      S = "string",
-      N = "string",
-      B = raw,
-      SS = list(
-        "string"
-      ),
-      NS = list(
-        "string"
-      ),
-      BS = list(
-        raw
-      ),
-      M = list(
-        list()
-      ),
-      L = list(
-        list()
-      ),
-      NULL = TRUE|FALSE,
-      BOOL = TRUE|FALSE
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example updates an item in the Music table. It adds a new attribute
-# (Year) and modifies the AlbumTitle attribute.  All of the attributes in
-# the item, as they appear after the update, are returned in the response.
-svc$update_item(
-  ExpressionAttributeNames = list(
-    `#AT` = "AlbumTitle",
-    `#Y` = "Year"
-  ),
-  ExpressionAttributeValues = list(
-    `:t` = list(
-      S = "Louder Than Ever"
-    ),
-    `:y` = list(
-      N = "2015"
-    )
-  ),
-  Key = list(
-    Artist = list(
-      S = "Acme Band"
-    ),
-    SongTitle = list(
-      S = "Happy Day"
-    )
-  ),
-  ReturnValues = "ALL_NEW",
-  TableName = "Music",
-  UpdateExpression = "SET #Y = :y, #AT = :t"
-)
-}
-
+See \url{https://paws-r.github.io/docs/dynamodb/update_item.html} for full documentation.
 }
 \keyword{internal}

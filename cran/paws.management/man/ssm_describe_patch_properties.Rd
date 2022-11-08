@@ -6,8 +6,13 @@
 family, classification, severity, and other properties of available
 patches}
 \usage{
-ssm_describe_patch_properties(OperatingSystem, Property, PatchSet,
-  MaxResults, NextToken)
+ssm_describe_patch_properties(
+  OperatingSystem,
+  Property,
+  PatchSet = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{OperatingSystem}{[required] The operating system type for which to list patches.}
@@ -15,8 +20,8 @@ ssm_describe_patch_properties(OperatingSystem, Property, PatchSet,
 \item{Property}{[required] The patch property for which you want to view patch details.}
 
 \item{PatchSet}{Indicates whether to list patches for the Windows operating system or
-for Microsoft applications. Not applicable for the Linux or macOS
-operating systems.}
+for applications released by Microsoft. Not applicable for the Linux or
+macOS operating systems.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -25,89 +30,9 @@ next set of results.}
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Properties = list(
-    list(
-      "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Lists the properties of available patches organized by product, product
-family, classification, severity, and other properties of available
-patches. You can use the reported properties in the filters you specify
-in requests for actions such as
-\code{\link[=ssm_create_patch_baseline]{create_patch_baseline}},
-\code{\link[=ssm_update_patch_baseline]{update_patch_baseline}},
-\code{\link[=ssm_describe_available_patches]{describe_available_patches}}, and
-\code{\link[=ssm_describe_patch_baselines]{describe_patch_baselines}}.
+Lists the properties of available patches organized by product, product family, classification, severity, and other properties of available patches. You can use the reported properties in the filters you specify in requests for operations such as \code{\link[=ssm_create_patch_baseline]{create_patch_baseline}}, \code{\link[=ssm_update_patch_baseline]{update_patch_baseline}}, \code{\link[=ssm_describe_available_patches]{describe_available_patches}}, and \code{\link[=ssm_describe_patch_baselines]{describe_patch_baselines}}.
 
-The following section lists the properties that can be used in filters
-for each major operating system type:
-\subsection{AMAZON_LINUX}{
-
-Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+See \url{https://paws-r.github.io/docs/ssm/describe_patch_properties.html} for full documentation.
 }
-
-\subsection{AMAZON_LINUX_2}{
-
-Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-}
-
-\subsection{CENTOS}{
-
-Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-}
-
-\subsection{DEBIAN}{
-
-Valid properties: PRODUCT, PRIORITY
-}
-
-\subsection{MACOS}{
-
-Valid properties: PRODUCT, CLASSIFICATION
-}
-
-\subsection{ORACLE_LINUX}{
-
-Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-}
-
-\subsection{REDHAT_ENTERPRISE_LINUX}{
-
-Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-}
-
-\subsection{SUSE}{
-
-Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
-}
-
-\subsection{UBUNTU}{
-
-Valid properties: PRODUCT, PRIORITY
-}
-
-\subsection{WINDOWS}{
-
-Valid properties: PRODUCT, PRODUCT_FAMILY, CLASSIFICATION,
-MSRC_SEVERITY
-}
-}
-\section{Request syntax}{
-\preformatted{svc$describe_patch_properties(
-  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
-  Property = "PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PRIORITY"|"SEVERITY",
-  PatchSet = "OS"|"APPLICATION",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
 \keyword{internal}

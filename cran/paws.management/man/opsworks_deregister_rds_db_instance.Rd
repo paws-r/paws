@@ -9,22 +9,9 @@ opsworks_deregister_rds_db_instance(RdsDbInstanceArn)
 \arguments{
 \item{RdsDbInstanceArn}{[required] The Amazon RDS instance's ARN.}
 }
-\value{
-An empty list.
-}
 \description{
 Deregisters an Amazon RDS instance.
 
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Manage permissions level for the stack, or an attached policy that
-explicitly grants permissions. For more information on user permissions,
-see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/deregister_rds_db_instance.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$deregister_rds_db_instance(
-  RdsDbInstanceArn = "string"
-)
-}
-}
-
 \keyword{internal}

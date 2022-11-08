@@ -4,115 +4,41 @@
 \alias{s3_put_bucket_lifecycle}
 \title{For an updated version of this API, see PutBucketLifecycleConfiguration}
 \usage{
-s3_put_bucket_lifecycle(Bucket, ContentMD5, LifecycleConfiguration,
-  ExpectedBucketOwner)
+s3_put_bucket_lifecycle(
+  Bucket,
+  ContentMD5 = NULL,
+  ChecksumAlgorithm = NULL,
+  LifecycleConfiguration = NULL,
+  ExpectedBucketOwner = NULL
+)
 }
 \arguments{
 \item{Bucket}{[required]}
 
-\item{ContentMD5}{For requests made using the AWS Command Line Interface (CLI) or AWS
-SDKs, this field is calculated automatically.}
+\item{ContentMD5}{For requests made using the Amazon Web Services Command Line Interface
+(CLI) or Amazon Web Services SDKs, this field is calculated
+automatically.}
+
+\item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
+using the SDK. This header will not provide any additional functionality
+if not using the SDK. When sending this header, there must be a
+corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
+Otherwise, Amazon S3 fails the request with the HTTP status code
+\verb{400 Bad Request}. For more information, see Checking object integrity
+in the \emph{Amazon S3 User Guide}.
+
+If you provide an individual checksum, Amazon S3 ignores any provided
+\code{ChecksumAlgorithm} parameter.}
 
 \item{LifecycleConfiguration}{}
 
-\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
-different account, the request will fail with an HTTP
-\verb{403 (Access Denied)} error.}
-}
-\value{
-An empty list.
+\item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
+different account, the request fails with the HTTP status code
+\verb{403 Forbidden} (access denied).}
 }
 \description{
-For an updated version of this API, see
-\code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}.
-This version has been deprecated. Existing lifecycle configurations will
-work. For new lifecycle configurations, use the updated API.
+For an updated version of this API, see \code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}. This version has been deprecated. Existing lifecycle configurations will work. For new lifecycle configurations, use the updated API.
 
-Creates a new lifecycle configuration for the bucket or replaces an
-existing lifecycle configuration. For information about lifecycle
-configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Object Lifecycle Management}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-By default, all Amazon S3 resources, including buckets, objects, and
-related subresources (for example, lifecycle configuration and website
-configuration) are private. Only the resource owner, the AWS account
-that created the resource, can access it. The resource owner can
-optionally grant access permissions to others by writing an access
-policy. For this operation, users must get the
-\code{s3:PutLifecycleConfiguration} permission.
-
-You can also explicitly deny permissions. Explicit denial also
-supersedes any other permissions. If you want to prevent users or
-accounts from removing or deleting objects from your bucket, you must
-deny them permissions for the following actions:
-\itemize{
-\item \code{s3:DeleteObject}
-\item \code{s3:DeleteObjectVersion}
-\item \code{s3:PutLifecycleConfiguration}
+See \url{https://paws-r.github.io/docs/s3/put_bucket_lifecycle.html} for full documentation.
 }
-
-For more information about permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
-in the \emph{Amazon Simple Storage Service Developer Guide}.
-
-For more examples of transitioning objects to storage classes such as
-STANDARD_IA or ONEZONE_IA, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/intro-lifecycle-rules.html#lifecycle-configuration-examples}{Examples of Lifecycle Configuration}.
-
-\strong{Related Resources}
-\itemize{
-\item \code{\link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle}}(Deprecated)
-\item \code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}
-\item \code{\link[=s3_restore_object]{restore_object}}
-\item By default, a resource owner—in this case, a bucket owner, which is
-the AWS account that created the bucket—can perform any of the
-operations. A resource owner can also grant others permission to
-perform the operation. For more information, see the following
-topics in the Amazon Simple Storage Service Developer Guide:
-\itemize{
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html}{Specifying Permissions in a Policy}
-\item \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html}{Managing Access Permissions to your Amazon S3 Resources}
-}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$put_bucket_lifecycle(
-  Bucket = "string",
-  ContentMD5 = "string",
-  LifecycleConfiguration = list(
-    Rules = list(
-      list(
-        Expiration = list(
-          Date = as.POSIXct(
-            "2015-01-01"
-          ),
-          Days = 123,
-          ExpiredObjectDeleteMarker = TRUE|FALSE
-        ),
-        ID = "string",
-        Prefix = "string",
-        Status = "Enabled"|"Disabled",
-        Transition = list(
-          Date = as.POSIXct(
-            "2015-01-01"
-          ),
-          Days = 123,
-          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
-        ),
-        NoncurrentVersionTransition = list(
-          NoncurrentDays = 123,
-          StorageClass = "GLACIER"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"DEEP_ARCHIVE"
-        ),
-        NoncurrentVersionExpiration = list(
-          NoncurrentDays = 123
-        ),
-        AbortIncompleteMultipartUpload = list(
-          DaysAfterInitiation = 123
-        )
-      )
-    )
-  ),
-  ExpectedBucketOwner = "string"
-)
-}
-}
-
 \keyword{internal}

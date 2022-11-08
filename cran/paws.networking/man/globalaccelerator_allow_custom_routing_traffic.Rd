@@ -6,9 +6,13 @@
 a VPC subnet endpoint that can receive traffic for a custom routing
 accelerator}
 \usage{
-globalaccelerator_allow_custom_routing_traffic(EndpointGroupArn,
-  EndpointId, DestinationAddresses, DestinationPorts,
-  AllowAllTrafficToEndpoint)
+globalaccelerator_allow_custom_routing_traffic(
+  EndpointGroupArn,
+  EndpointId,
+  DestinationAddresses = NULL,
+  DestinationPorts = NULL,
+  AllowAllTrafficToEndpoint = NULL
+)
 }
 \arguments{
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group.}
@@ -43,35 +47,9 @@ group.
 
 The default value is FALSE.}
 }
-\value{
-An empty list.
-}
 \description{
-Specify the Amazon EC2 instance (destination) IP addresses and ports for
-a VPC subnet endpoint that can receive traffic for a custom routing
-accelerator. You can allow traffic to all destinations in the subnet
-endpoint, or allow traffic to a specified list of destination IP
-addresses and ports in the subnet. Note that you cannot specify IP
-addresses or ports outside of the range that you configured for the
-endpoint group.
+Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that can receive traffic for a custom routing accelerator. You can allow traffic to all destinations in the subnet endpoint, or allow traffic to a specified list of destination IP addresses and ports in the subnet. Note that you cannot specify IP addresses or ports outside of the range that you configured for the endpoint group.
 
-After you make changes, you can verify that the updates are complete by
-checking the status of your accelerator: the status changes from
-IN_PROGRESS to DEPLOYED.
+See \url{https://paws-r.github.io/docs/globalaccelerator/allow_custom_routing_traffic.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$allow_custom_routing_traffic(
-  EndpointGroupArn = "string",
-  EndpointId = "string",
-  DestinationAddresses = list(
-    "string"
-  ),
-  DestinationPorts = list(
-    123
-  ),
-  AllowAllTrafficToEndpoint = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

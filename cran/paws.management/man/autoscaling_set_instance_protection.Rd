@@ -4,8 +4,11 @@
 \alias{autoscaling_set_instance_protection}
 \title{Updates the instance protection settings of the specified instances}
 \usage{
-autoscaling_set_instance_protection(InstanceIds, AutoScalingGroupName,
-  ProtectedFromScaleIn)
+autoscaling_set_instance_protection(
+  InstanceIds,
+  AutoScalingGroupName,
+  ProtectedFromScaleIn
+)
 }
 \arguments{
 \item{InstanceIds}{[required] One or more instance IDs. You can specify up to 50 instances.}
@@ -15,50 +18,9 @@ autoscaling_set_instance_protection(InstanceIds, AutoScalingGroupName,
 \item{ProtectedFromScaleIn}{[required] Indicates whether the instance is protected from termination by Amazon
 EC2 Auto Scaling when scaling in.}
 }
-\value{
-An empty list.
-}
 \description{
-Updates the instance protection settings of the specified instances.
+Updates the instance protection settings of the specified instances. This operation cannot be called on instances in a warm pool.
 
-For more information about preventing instances that are part of an Auto
-Scaling group from terminating on scale in, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection}{Instance scale-in protection}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-
-If you exceed your maximum limit of instance IDs, which is 50 per Auto
-Scaling group, the call fails.
-}
-\section{Request syntax}{
-\preformatted{svc$set_instance_protection(
-  InstanceIds = list(
-    "string"
-  ),
-  AutoScalingGroupName = "string",
-  ProtectedFromScaleIn = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example enables instance protection for the specified instance.
-svc$set_instance_protection(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  InstanceIds = list(
-    "i-93633f9b"
-  ),
-  ProtectedFromScaleIn = TRUE
-)
-
-# This example disables instance protection for the specified instance.
-svc$set_instance_protection(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  InstanceIds = list(
-    "i-93633f9b"
-  ),
-  ProtectedFromScaleIn = FALSE
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/set_instance_protection.html} for full documentation.
 }
 \keyword{internal}

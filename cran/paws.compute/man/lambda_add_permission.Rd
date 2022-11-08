@@ -2,10 +2,22 @@
 % Please edit documentation in R/lambda_operations.R
 \name{lambda_add_permission}
 \alias{lambda_add_permission}
-\title{Grants an AWS service or another account permission to use a function}
+\title{Grants an Amazon Web Services service, account, or organization
+permission to use a function}
 \usage{
-lambda_add_permission(FunctionName, StatementId, Action, Principal,
-  SourceArn, SourceAccount, EventSourceToken, Qualifier, RevisionId)
+lambda_add_permission(
+  FunctionName,
+  StatementId,
+  Action,
+  Principal,
+  SourceArn = NULL,
+  SourceAccount = NULL,
+  EventSourceToken = NULL,
+  Qualifier = NULL,
+  RevisionId = NULL,
+  PrincipalOrgID = NULL,
+  FunctionUrlAuthType = NULL
+)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function, version, or alias.
@@ -29,12 +41,16 @@ the same policy.}
 \item{Action}{[required] The action that the principal can use on the function. For example,
 \code{lambda:InvokeFunction} or \code{lambda:GetFunction}.}
 
-\item{Principal}{[required] The AWS service or account that invokes the function. If you specify a
-service, use \code{SourceArn} or \code{SourceAccount} to limit who can invoke the
-function through that service.}
+\item{Principal}{[required] The Amazon Web Services service or account that invokes the function. If
+you specify a service, use \code{SourceArn} or \code{SourceAccount} to limit who
+can invoke the function through that service.}
 
-\item{SourceArn}{For AWS services, the ARN of the AWS resource that invokes the function.
-For example, an Amazon S3 bucket or Amazon SNS topic.}
+\item{SourceArn}{For Amazon Web Services services, the ARN of the Amazon Web Services
+resource that invokes the function. For example, an Amazon S3 bucket or
+Amazon SNS topic.
+
+Note that Lambda configures the comparison using the \code{StringLike}
+operator.}
 
 \item{SourceAccount}{For Amazon S3, the ID of the account that owns the resource. Use this
 together with \code{SourceArn} to ensure that the resource is owned by the
@@ -50,70 +66,19 @@ the function.}
 \item{RevisionId}{Only update the policy if the revision ID matches the ID that's
 specified. Use this option to avoid modifying a policy that has changed
 since you last read it.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Statement = "string"
-)
-}
+
+\item{PrincipalOrgID}{The identifier for your organization in Organizations. Use this to grant
+permissions to all the Amazon Web Services accounts under this
+organization.}
+
+\item{FunctionUrlAuthType}{The type of authentication that your function URL uses. Set to \code{AWS_IAM}
+if you want to restrict access to authenticated \code{IAM} users only. Set to
+\code{NONE} if you want to bypass IAM authentication to create a public
+endpoint. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html}{Security and auth model for Lambda function URLs}.}
 }
 \description{
-Grants an AWS service or another account permission to use a function.
-You can apply the policy at the function level, or specify a qualifier
-to restrict access to a single version or alias. If you use a qualifier,
-the invoker must use the full Amazon Resource Name (ARN) of that version
-or alias to invoke the function.
+Grants an Amazon Web Services service, account, or organization permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function. Note: Lambda does not support adding policies to version $LATEST.
 
-To grant permission to another account, specify the account ID as the
-\code{Principal}. For AWS services, the principal is a domain-style
-identifier defined by the service, like \code{s3.amazonaws.com} or
-\code{sns.amazonaws.com}. For AWS services, you can also specify the ARN of
-the associated resource as the \code{SourceArn}. If you grant permission to a
-service principal without specifying the source, other accounts could
-potentially configure resources in their account to invoke your Lambda
-function.
-
-This action adds a statement to a resource-based permissions policy for
-the function. For more information about function policies, see \href{https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html}{Lambda Function Policies}.
-}
-\section{Request syntax}{
-\preformatted{svc$add_permission(
-  FunctionName = "string",
-  StatementId = "string",
-  Action = "string",
-  Principal = "string",
-  SourceArn = "string",
-  SourceAccount = "string",
-  EventSourceToken = "string",
-  Qualifier = "string",
-  RevisionId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example adds permission for Amazon S3 to invoke a Lambda
-# function named my-function for notifications from a bucket named
-# my-bucket-1xpuxmplzrlbh in account 123456789012.
-svc$add_permission(
-  Action = "lambda:InvokeFunction",
-  FunctionName = "my-function",
-  Principal = "s3.amazonaws.com",
-  SourceAccount = "123456789012",
-  SourceArn = "arn:aws:s3:::my-bucket-1xpuxmplzrlbh/*",
-  StatementId = "s3"
-)
-
-# The following example adds permission for account 223456789012 invoke a
-# Lambda function named my-function.
-svc$add_permission(
-  Action = "lambda:InvokeFunction",
-  FunctionName = "my-function",
-  Principal = "223456789012",
-  StatementId = "xaccount"
-)
-}
-
+See \url{https://paws-r.github.io/docs/lambda/add_permission.html} for full documentation.
 }
 \keyword{internal}

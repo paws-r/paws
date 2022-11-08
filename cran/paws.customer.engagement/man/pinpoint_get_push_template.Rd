@@ -5,7 +5,7 @@
 \title{Retrieves the content and settings of a message template for messages
 that are sent through a push notification channel}
 \usage{
-pinpoint_get_push_template(TemplateName, Version)
+pinpoint_get_push_template(TemplateName, Version = NULL)
 }
 \arguments{
 \item{TemplateName}{[required] The name of the message template. A template name must start with an
@@ -35,84 +35,9 @@ parameter isn't used or is set to false.
 of the template.
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PushNotificationTemplateResponse = list(
-    ADM = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      ImageIconUrl = "string",
-      ImageUrl = "string",
-      RawContent = "string",
-      SmallImageIconUrl = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    APNS = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      MediaUrl = "string",
-      RawContent = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    Arn = "string",
-    Baidu = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      ImageIconUrl = "string",
-      ImageUrl = "string",
-      RawContent = "string",
-      SmallImageIconUrl = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    CreationDate = "string",
-    Default = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    DefaultSubstitutions = "string",
-    GCM = list(
-      Action = "OPEN_APP"|"DEEP_LINK"|"URL",
-      Body = "string",
-      ImageIconUrl = "string",
-      ImageUrl = "string",
-      RawContent = "string",
-      SmallImageIconUrl = "string",
-      Sound = "string",
-      Title = "string",
-      Url = "string"
-    ),
-    LastModifiedDate = "string",
-    RecommenderId = "string",
-    tags = list(
-      "string"
-    ),
-    TemplateDescription = "string",
-    TemplateName = "string",
-    TemplateType = "EMAIL"|"SMS"|"VOICE"|"PUSH",
-    Version = "string"
-  )
-)
-}
-}
 \description{
-Retrieves the content and settings of a message template for messages
-that are sent through a push notification channel.
-}
-\section{Request syntax}{
-\preformatted{svc$get_push_template(
-  TemplateName = "string",
-  Version = "string"
-)
-}
-}
+Retrieves the content and settings of a message template for messages that are sent through a push notification channel.
 
+See \url{https://paws-r.github.io/docs/pinpoint/get_push_template.html} for full documentation.
+}
 \keyword{internal}

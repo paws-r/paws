@@ -4,8 +4,17 @@
 \alias{cloudwatch_get_metric_statistics}
 \title{Gets statistics for the specified metric}
 \usage{
-cloudwatch_get_metric_statistics(Namespace, MetricName, Dimensions,
-  StartTime, EndTime, Period, Statistics, ExtendedStatistics, Unit)
+cloudwatch_get_metric_statistics(
+  Namespace,
+  MetricName,
+  Dimensions = NULL,
+  StartTime,
+  EndTime,
+  Period,
+  Statistics = NULL,
+  ExtendedStatistics = NULL,
+  Unit = NULL
+)
 }
 \arguments{
 \item{Namespace}{[required] The namespace of the metric, with or without spaces.}
@@ -96,111 +105,9 @@ that unit specified. If you specify a unit that does not match the data
 collected, the results of the operation are null. CloudWatch does not
 perform unit conversions.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Label = "string",
-  Datapoints = list(
-    list(
-      Timestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      SampleCount = 123.0,
-      Average = 123.0,
-      Sum = 123.0,
-      Minimum = 123.0,
-      Maximum = 123.0,
-      Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
-      ExtendedStatistics = list(
-        123.0
-      )
-    )
-  )
-)
-}
-}
 \description{
 Gets statistics for the specified metric.
 
-The maximum number of data points returned from a single call is 1,440.
-If you request more than 1,440 data points, CloudWatch returns an error.
-To reduce the number of data points, you can narrow the specified time
-range and make multiple requests across adjacent time ranges, or you can
-increase the specified period. Data points are not returned in
-chronological order.
-
-CloudWatch aggregates data points based on the length of the period that
-you specify. For example, if you request statistics with a one-hour
-period, CloudWatch aggregates all data points with time stamps that fall
-within each one-hour period. Therefore, the number of values aggregated
-by CloudWatch is larger than the number of data points returned.
-
-CloudWatch needs raw data points to calculate percentile statistics. If
-you publish data using a statistic set instead, you can only retrieve
-percentile statistics for this data if one of the following conditions
-is true:
-\itemize{
-\item The SampleCount value of the statistic set is 1.
-\item The Min and the Max values of the statistic set are equal.
+See \url{https://paws-r.github.io/docs/cloudwatch/get_metric_statistics.html} for full documentation.
 }
-
-Percentile statistics are not available for metrics when any of the
-metric values are negative numbers.
-
-Amazon CloudWatch retains metric data as follows:
-\itemize{
-\item Data points with a period of less than 60 seconds are available for
-3 hours. These data points are high-resolution metrics and are
-available only for custom metrics that have been defined with a
-\code{StorageResolution} of 1.
-\item Data points with a period of 60 seconds (1-minute) are available for
-15 days.
-\item Data points with a period of 300 seconds (5-minute) are available
-for 63 days.
-\item Data points with a period of 3600 seconds (1 hour) are available for
-455 days (15 months).
-}
-
-Data points that are initially published with a shorter period are
-aggregated together for long-term storage. For example, if you collect
-data using a period of 1 minute, the data remains available for 15 days
-with 1-minute resolution. After 15 days, this data is still available,
-but is aggregated and retrievable only with a resolution of 5 minutes.
-After 63 days, the data is further aggregated and is available with a
-resolution of 1 hour.
-
-CloudWatch started retaining 5-minute and 1-hour metric data as of July
-9, 2016.
-
-For information about metrics and dimensions supported by AWS services,
-see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/aws-services-cloudwatch-metrics.html}{Amazon CloudWatch Metrics and Dimensions Reference}
-in the \emph{Amazon CloudWatch User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$get_metric_statistics(
-  Namespace = "string",
-  MetricName = "string",
-  Dimensions = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  StartTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  EndTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  Period = 123,
-  Statistics = list(
-    "SampleCount"|"Average"|"Sum"|"Minimum"|"Maximum"
-  ),
-  ExtendedStatistics = list(
-    "string"
-  ),
-  Unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None"
-)
-}
-}
-
 \keyword{internal}

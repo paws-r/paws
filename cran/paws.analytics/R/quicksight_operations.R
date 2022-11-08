@@ -8,32 +8,11 @@ NULL
 #' @description
 #' Cancels an ongoing ingestion of data into SPICE.
 #'
-#' @usage
-#' quicksight_cancel_ingestion(AwsAccountId, DataSetId, IngestionId)
+#' See [https://paws-r.github.io/docs/quicksight/cancel_ingestion.html](https://paws-r.github.io/docs/quicksight/cancel_ingestion.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID of the dataset used in the ingestion.
 #' @param IngestionId &#91;required&#93; An ID for the ingestion.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   IngestionId = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$cancel_ingestion(
-#'   AwsAccountId = "string",
-#'   DataSetId = "string",
-#'   IngestionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -55,46 +34,20 @@ quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
 }
 .quicksight$operations$cancel_ingestion <- quicksight_cancel_ingestion
 
-#' Creates Amazon QuickSight customizations the current AWS Region
+#' Creates Amazon QuickSight customizations for the current Amazon Web
+#' Services Region
 #'
 #' @description
-#' Creates Amazon QuickSight customizations the current AWS Region.
-#' Currently, you can add a custom default theme by using the
-#' [`create_account_customization`][quicksight_create_account_customization]
-#' or
-#' [`update_account_customization`][quicksight_update_account_customization]
-#' API operation. To further customize QuickSight by removing QuickSight
-#' sample assets and videos for all new users, see [Customizing
-#' QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/customizing-quicksight.html)
-#' in the *Amazon QuickSight User Guide.*
-#' 
-#' You can create customizations for your AWS account or, if you specify a
-#' namespace, for a QuickSight namespace instead. Customizations that apply
-#' to a namespace always override customizations that apply to an AWS
-#' account. To find out which customizations apply, use the
-#' [`describe_account_customization`][quicksight_describe_account_customization]
-#' API operation.
-#' 
-#' Before you use the
-#' [`create_account_customization`][quicksight_create_account_customization]
-#' API operation to add a theme as the namespace default, make sure that
-#' you first share the theme with the namespace. If you don't share it with
-#' the namespace, the theme isn't visible to your users even if you make it
-#' the default theme. To check if the theme is shared, view the current
-#' permissions by using the
-#' [`describe_theme_permissions`][quicksight_describe_theme_permissions]
-#' API operation. To share the theme, grant permissions by using the
-#' [`update_theme_permissions`][quicksight_update_theme_permissions] API
-#' operation.
+#' Creates Amazon QuickSight customizations for the current Amazon Web Services Region. Currently, you can add a custom default theme by using the [`create_account_customization`][quicksight_create_account_customization] or [`update_account_customization`][quicksight_update_account_customization] API operation. To further customize Amazon QuickSight by removing Amazon QuickSight sample assets and videos for all new users, see [Customizing Amazon QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/customizing-quicksight.html) in the *Amazon QuickSight User Guide.*
 #'
-#' @usage
-#' quicksight_create_account_customization(AwsAccountId, Namespace,
-#'   AccountCustomization, Tags)
+#' See [https://paws-r.github.io/docs/quicksight/create_account_customization.html](https://paws-r.github.io/docs/quicksight/create_account_customization.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that you want to customize QuickSight for.
-#' @param Namespace The QuickSight namespace that you want to add customizations to.
-#' @param AccountCustomization &#91;required&#93; The QuickSight customizations you're adding in the current AWS Region.
-#' You can add these to an AWS account and a QuickSight namespace.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that you want to customize
+#' Amazon QuickSight for.
+#' @param Namespace The Amazon QuickSight namespace that you want to add customizations to.
+#' @param AccountCustomization &#91;required&#93; The Amazon QuickSight customizations you're adding in the current Amazon
+#' Web Services Region. You can add these to an Amazon Web Services account
+#' and a QuickSight namespace.
 #' 
 #' For example, you can add a default theme by setting
 #' `AccountCustomization` to the midnight theme:
@@ -102,38 +55,6 @@ quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
 #' Or, you can add a custom theme by specifying
 #' `"AccountCustomization": { "DefaultTheme": "arn:aws:quicksight:us-west-2:111122223333:theme/bdb844d0-0fe9-4d9d-b520-0fe602d93639" }`.
 #' @param Tags A list of the tags that you want to attach to this resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string",
-#'   AccountCustomization = list(
-#'     DefaultTheme = "string"
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_account_customization(
-#'   AwsAccountId = "string",
-#'   Namespace = "string",
-#'   AccountCustomization = list(
-#'     DefaultTheme = "string"
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -155,121 +76,131 @@ quicksight_create_account_customization <- function(AwsAccountId, Namespace = NU
 }
 .quicksight$operations$create_account_customization <- quicksight_create_account_customization
 
+#' Creates an Amazon QuickSight account, or subscribes to Amazon QuickSight
+#' Q
+#'
+#' @description
+#' Creates an Amazon QuickSight account, or subscribes to Amazon QuickSight Q.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/create_account_subscription.html](https://paws-r.github.io/docs/quicksight/create_account_subscription.html) for full documentation.
+#'
+#' @param Edition &#91;required&#93; The edition of Amazon QuickSight that you want your account to have.
+#' Currently, you can choose from `ENTERPRISE` or `ENTERPRISE_AND_Q`.
+#' 
+#' If you choose `ENTERPRISE_AND_Q`, the following parameters are required:
+#' 
+#' -   `FirstName`
+#' 
+#' -   `LastName`
+#' 
+#' -   `EmailAddress`
+#' 
+#' -   `ContactNumber`
+#' @param AuthenticationMethod &#91;required&#93; The method that you want to use to authenticate your Amazon QuickSight
+#' account. Currently, the valid values for this parameter are
+#' `IAM_AND_QUICKSIGHT`, `IAM_ONLY`, and `ACTIVE_DIRECTORY`.
+#' 
+#' If you choose `ACTIVE_DIRECTORY`, provide an `ActiveDirectoryName` and
+#' an `AdminGroup` associated with your Active Directory.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID of the account that you're using to
+#' create your Amazon QuickSight account.
+#' @param AccountName &#91;required&#93; The name of your Amazon QuickSight account. This name is unique over all
+#' of Amazon Web Services, and it appears only when users sign in. You
+#' can't change `AccountName` value after the Amazon QuickSight account is
+#' created.
+#' @param NotificationEmail &#91;required&#93; The email address that you want Amazon QuickSight to send notifications
+#' to regarding your Amazon QuickSight account or Amazon QuickSight
+#' subscription.
+#' @param ActiveDirectoryName The name of your Active Directory. This field is required if
+#' `ACTIVE_DIRECTORY` is the selected authentication method of the new
+#' Amazon QuickSight account.
+#' @param Realm The realm of the Active Directory that is associated with your Amazon
+#' QuickSight account. This field is required if `ACTIVE_DIRECTORY` is the
+#' selected authentication method of the new Amazon QuickSight account.
+#' @param DirectoryId The ID of the Active Directory that is associated with your Amazon
+#' QuickSight account.
+#' @param AdminGroup The admin group associated with your Active Directory. This field is
+#' required if `ACTIVE_DIRECTORY` is the selected authentication method of
+#' the new Amazon QuickSight account. For more information about using
+#' Active Directory in Amazon QuickSight, see [Using Active Directory with
+#' Amazon QuickSight Enterprise
+#' Edition](https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html)
+#' in the Amazon QuickSight User Guide.
+#' @param AuthorGroup The author group associated with your Active Directory. For more
+#' information about using Active Directory in Amazon QuickSight, see
+#' [Using Active Directory with Amazon QuickSight Enterprise
+#' Edition](https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html)
+#' in the Amazon QuickSight User Guide.
+#' @param ReaderGroup The reader group associated with your Active Direcrtory. For more
+#' information about using Active Directory in Amazon QuickSight, see
+#' [Using Active Directory with Amazon QuickSight Enterprise
+#' Edition](https://docs.aws.amazon.com/quicksight/latest/user/aws-directory-service.html)
+#' in the *Amazon QuickSight User Guide*.
+#' @param FirstName The first name of the author of the Amazon QuickSight account to use for
+#' future communications. This field is required if `ENTERPPRISE_AND_Q` is
+#' the selected edition of the new Amazon QuickSight account.
+#' @param LastName The last name of the author of the Amazon QuickSight account to use for
+#' future communications. This field is required if `ENTERPPRISE_AND_Q` is
+#' the selected edition of the new Amazon QuickSight account.
+#' @param EmailAddress The email address of the author of the Amazon QuickSight account to use
+#' for future communications. This field is required if `ENTERPPRISE_AND_Q`
+#' is the selected edition of the new Amazon QuickSight account.
+#' @param ContactNumber A 10-digit phone number for the author of the Amazon QuickSight account
+#' to use for future communications. This field is required if
+#' `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight
+#' account.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_account_subscription
+quicksight_create_account_subscription <- function(Edition, AuthenticationMethod, AwsAccountId, AccountName, NotificationEmail, ActiveDirectoryName = NULL, Realm = NULL, DirectoryId = NULL, AdminGroup = NULL, AuthorGroup = NULL, ReaderGroup = NULL, FirstName = NULL, LastName = NULL, EmailAddress = NULL, ContactNumber = NULL) {
+  op <- new_operation(
+    name = "CreateAccountSubscription",
+    http_method = "POST",
+    http_path = "/account/{AwsAccountId}",
+    paginator = list()
+  )
+  input <- .quicksight$create_account_subscription_input(Edition = Edition, AuthenticationMethod = AuthenticationMethod, AwsAccountId = AwsAccountId, AccountName = AccountName, NotificationEmail = NotificationEmail, ActiveDirectoryName = ActiveDirectoryName, Realm = Realm, DirectoryId = DirectoryId, AdminGroup = AdminGroup, AuthorGroup = AuthorGroup, ReaderGroup = ReaderGroup, FirstName = FirstName, LastName = LastName, EmailAddress = EmailAddress, ContactNumber = ContactNumber)
+  output <- .quicksight$create_account_subscription_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_account_subscription <- quicksight_create_account_subscription
+
 #' Creates an analysis in Amazon QuickSight
 #'
 #' @description
 #' Creates an analysis in Amazon QuickSight.
 #'
-#' @usage
-#' quicksight_create_analysis(AwsAccountId, AnalysisId, Name, Parameters,
-#'   Permissions, SourceEntity, ThemeArn, Tags)
+#' See [https://paws-r.github.io/docs/quicksight/create_analysis.html](https://paws-r.github.io/docs/quicksight/create_analysis.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account where you are creating an analysis.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account where you are creating an
+#' analysis.
 #' @param AnalysisId &#91;required&#93; The ID for the analysis that you're creating. This ID displays in the
 #' URL of the analysis.
 #' @param Name &#91;required&#93; A descriptive name for the analysis that you're creating. This name
-#' displays for the analysis in the QuickSight console.
+#' displays for the analysis in the Amazon QuickSight console.
 #' @param Parameters The parameter names and override values that you want to use. An
 #' analysis can have any parameter type, and some parameters might accept
 #' multiple values.
 #' @param Permissions A structure that describes the principals and the resource-level
 #' permissions on an analysis. You can use the `Permissions` structure to
-#' grant permissions by providing a list of AWS Identity and Access
-#' Management (IAM) action information for each principal listed by Amazon
-#' Resource Name (ARN).
+#' grant permissions by providing a list of Identity and Access Management
+#' (IAM) action information for each principal listed by Amazon Resource
+#' Name (ARN).
 #' 
 #' To specify no permissions, omit `Permissions`.
 #' @param SourceEntity &#91;required&#93; A source entity to use for the analysis that you're creating. This
 #' metadata structure contains details that describe a source template and
 #' one or more datasets.
 #' @param ThemeArn The ARN for the theme to apply to the analysis that you're creating. To
-#' see the theme in the QuickSight console, make sure that you have access
-#' to it.
+#' see the theme in the Amazon QuickSight console, make sure that you have
+#' access to it.
 #' @param Tags Contains a map of the key-value pairs for the resource tag or tags
 #' assigned to the analysis.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   AnalysisId = "string",
-#'   CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_analysis(
-#'   AwsAccountId = "string",
-#'   AnalysisId = "string",
-#'   Name = "string",
-#'   Parameters = list(
-#'     StringParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     IntegerParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           123
-#'         )
-#'       )
-#'     ),
-#'     DecimalParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           123.0
-#'         )
-#'       )
-#'     ),
-#'     DateTimeParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           as.POSIXct(
-#'             "2015-01-01"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   SourceEntity = list(
-#'     SourceTemplate = list(
-#'       DataSetReferences = list(
-#'         list(
-#'           DataSetPlaceholder = "string",
-#'           DataSetArn = "string"
-#'         )
-#'       ),
-#'       Arn = "string"
-#'     )
-#'   ),
-#'   ThemeArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -294,21 +225,12 @@ quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 #' Creates a dashboard from a template
 #'
 #' @description
-#' Creates a dashboard from a template. To first create a template, see the
-#' [`create_template`][quicksight_create_template] API operation.
-#' 
-#' A dashboard is an entity in QuickSight that identifies QuickSight
-#' reports, created from analyses. You can share QuickSight dashboards.
-#' With the right permissions, you can create scheduled email reports from
-#' them. If you have the correct permissions, you can create a dashboard
-#' from a template that exists in a different AWS account.
+#' Creates a dashboard from a template. To first create a template, see the [`create_template`][quicksight_create_template] API operation.
 #'
-#' @usage
-#' quicksight_create_dashboard(AwsAccountId, DashboardId, Name, Parameters,
-#'   Permissions, SourceEntity, Tags, VersionDescription,
-#'   DashboardPublishOptions, ThemeArn)
+#' See [https://paws-r.github.io/docs/quicksight/create_dashboard.html](https://paws-r.github.io/docs/quicksight/create_dashboard.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account where you want to create the dashboard.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account where you want to create the
+#' dashboard.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard, also added to the IAM policy.
 #' @param Name &#91;required&#93; The display name of the dashboard.
 #' @param Parameters The parameters for the creation of the dashboard, which you want to use
@@ -326,8 +248,8 @@ quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 #' analysis, first convert the analysis to a template by using the
 #' [`create_template`][quicksight_create_template] API operation. For
 #' `SourceTemplate`, specify the Amazon Resource Name (ARN) of the source
-#' template. The `SourceTemplate`ARN can contain any AWS Account and any
-#' QuickSight-supported AWS Region.
+#' template. The `SourceTemplate`ARN can contain any Amazon Web Services
+#' account and any Amazon QuickSight-supported Amazon Web Services Region.
 #' 
 #' Use the `DataSetReferences` entity within `SourceTemplate` to list the
 #' replacement datasets for the placeholders listed in the original. The
@@ -339,9 +261,9 @@ quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 #' 
 #' -   `AvailabilityStatus` for `AdHocFilteringOption` - This status can be
 #'     either `ENABLED` or `DISABLED`. When this is set to `DISABLED`,
-#'     QuickSight disables the left filter pane on the published dashboard,
-#'     which can be used for ad hoc (one-time) filtering. This option is
-#'     `ENABLED` by default.
+#'     Amazon QuickSight disables the left filter pane on the published
+#'     dashboard, which can be used for ad hoc (one-time) filtering. This
+#'     option is `ENABLED` by default.
 #' 
 #' -   `AvailabilityStatus` for `ExportToCSVOption` - This status can be
 #'     either `ENABLED` or `DISABLED`. The visual option to export data to
@@ -354,103 +276,7 @@ quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 #' @param ThemeArn The Amazon Resource Name (ARN) of the theme that is being used for this
 #' dashboard. If you add a value for this field, it overrides the value
 #' that is used in the source entity. The theme ARN must exist in the same
-#' AWS account where you create the dashboard.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   VersionArn = "string",
-#'   DashboardId = "string",
-#'   CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_dashboard(
-#'   AwsAccountId = "string",
-#'   DashboardId = "string",
-#'   Name = "string",
-#'   Parameters = list(
-#'     StringParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     IntegerParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           123
-#'         )
-#'       )
-#'     ),
-#'     DecimalParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           123.0
-#'         )
-#'       )
-#'     ),
-#'     DateTimeParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           as.POSIXct(
-#'             "2015-01-01"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   SourceEntity = list(
-#'     SourceTemplate = list(
-#'       DataSetReferences = list(
-#'         list(
-#'           DataSetPlaceholder = "string",
-#'           DataSetArn = "string"
-#'         )
-#'       ),
-#'       Arn = "string"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   VersionDescription = "string",
-#'   DashboardPublishOptions = list(
-#'     AdHocFilteringOption = list(
-#'       AvailabilityStatus = "ENABLED"|"DISABLED"
-#'     ),
-#'     ExportToCSVOption = list(
-#'       AvailabilityStatus = "ENABLED"|"DISABLED"
-#'     ),
-#'     SheetControlsOption = list(
-#'       VisibilityState = "EXPANDED"|"COLLAPSED"
-#'     )
-#'   ),
-#'   ThemeArn = "string"
-#' )
-#' ```
+#' Amazon Web Services account where you create the dashboard.
 #'
 #' @keywords internal
 #'
@@ -475,210 +301,44 @@ quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Paramet
 #' Creates a dataset
 #'
 #' @description
-#' Creates a dataset.
+#' Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.
 #'
-#' @usage
-#' quicksight_create_data_set(AwsAccountId, DataSetId, Name,
-#'   PhysicalTableMap, LogicalTableMap, ImportMode, ColumnGroups,
-#'   Permissions, RowLevelPermissionDataSet, ColumnLevelPermissionRules,
-#'   Tags)
+#' See [https://paws-r.github.io/docs/quicksight/create_data_set.html](https://paws-r.github.io/docs/quicksight/create_data_set.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
-#' @param DataSetId &#91;required&#93; An ID for the dataset that you want to create. This ID is unique per AWS
-#' Region for each AWS account.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param DataSetId &#91;required&#93; An ID for the dataset that you want to create. This ID is unique per
+#' Amazon Web Services Region for each Amazon Web Services account.
 #' @param Name &#91;required&#93; The display name for the dataset.
 #' @param PhysicalTableMap &#91;required&#93; Declares the physical tables that are available in the underlying data
 #' sources.
 #' @param LogicalTableMap Configures the combination and transformation of the data from the
 #' physical tables.
 #' @param ImportMode &#91;required&#93; Indicates whether you want to import the data into SPICE.
-#' @param ColumnGroups Groupings of columns that work together in certain QuickSight features.
-#' Currently, only geospatial hierarchy is supported.
+#' @param ColumnGroups Groupings of columns that work together in certain Amazon QuickSight
+#' features. Currently, only geospatial hierarchy is supported.
+#' @param FieldFolders The folder that contains fields and nested subfolders for your dataset.
 #' @param Permissions A list of resource permissions on the dataset.
 #' @param RowLevelPermissionDataSet The row-level security configuration for the data that you want to
 #' create.
+#' @param RowLevelPermissionTagConfiguration The configuration of tags on a dataset to set row-level security.
+#' Row-level security tags are currently supported for anonymous embedding
+#' only.
 #' @param ColumnLevelPermissionRules A set of one or more definitions of a ` ColumnLevelPermissionRule `.
 #' @param Tags Contains a map of the key-value pairs for the resource tag or tags
 #' assigned to the dataset.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   DataSetId = "string",
-#'   IngestionArn = "string",
-#'   IngestionId = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_data_set(
-#'   AwsAccountId = "string",
-#'   DataSetId = "string",
-#'   Name = "string",
-#'   PhysicalTableMap = list(
-#'     list(
-#'       RelationalTable = list(
-#'         DataSourceArn = "string",
-#'         Catalog = "string",
-#'         Schema = "string",
-#'         Name = "string",
-#'         InputColumns = list(
-#'           list(
-#'             Name = "string",
-#'             Type = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME"|"BIT"|"BOOLEAN"|"JSON"
-#'           )
-#'         )
-#'       ),
-#'       CustomSql = list(
-#'         DataSourceArn = "string",
-#'         Name = "string",
-#'         SqlQuery = "string",
-#'         Columns = list(
-#'           list(
-#'             Name = "string",
-#'             Type = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME"|"BIT"|"BOOLEAN"|"JSON"
-#'           )
-#'         )
-#'       ),
-#'       S3Source = list(
-#'         DataSourceArn = "string",
-#'         UploadSettings = list(
-#'           Format = "CSV"|"TSV"|"CLF"|"ELF"|"XLSX"|"JSON",
-#'           StartFromRow = 123,
-#'           ContainsHeader = TRUE|FALSE,
-#'           TextQualifier = "DOUBLE_QUOTE"|"SINGLE_QUOTE",
-#'           Delimiter = "string"
-#'         ),
-#'         InputColumns = list(
-#'           list(
-#'             Name = "string",
-#'             Type = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME"|"BIT"|"BOOLEAN"|"JSON"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   LogicalTableMap = list(
-#'     list(
-#'       Alias = "string",
-#'       DataTransforms = list(
-#'         list(
-#'           ProjectOperation = list(
-#'             ProjectedColumns = list(
-#'               "string"
-#'             )
-#'           ),
-#'           FilterOperation = list(
-#'             ConditionExpression = "string"
-#'           ),
-#'           CreateColumnsOperation = list(
-#'             Columns = list(
-#'               list(
-#'                 ColumnName = "string",
-#'                 ColumnId = "string",
-#'                 Expression = "string"
-#'               )
-#'             )
-#'           ),
-#'           RenameColumnOperation = list(
-#'             ColumnName = "string",
-#'             NewColumnName = "string"
-#'           ),
-#'           CastColumnTypeOperation = list(
-#'             ColumnName = "string",
-#'             NewColumnType = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME",
-#'             Format = "string"
-#'           ),
-#'           TagColumnOperation = list(
-#'             ColumnName = "string",
-#'             Tags = list(
-#'               list(
-#'                 ColumnGeographicRole = "COUNTRY"|"STATE"|"COUNTY"|"CITY"|"POSTCODE"|"LONGITUDE"|"LATITUDE",
-#'                 ColumnDescription = list(
-#'                   Text = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Source = list(
-#'         JoinInstruction = list(
-#'           LeftOperand = "string",
-#'           RightOperand = "string",
-#'           LeftJoinKeyProperties = list(
-#'             UniqueKey = TRUE|FALSE
-#'           ),
-#'           RightJoinKeyProperties = list(
-#'             UniqueKey = TRUE|FALSE
-#'           ),
-#'           Type = "INNER"|"OUTER"|"LEFT"|"RIGHT",
-#'           OnClause = "string"
-#'         ),
-#'         PhysicalTableId = "string"
-#'       )
-#'     )
-#'   ),
-#'   ImportMode = "SPICE"|"DIRECT_QUERY",
-#'   ColumnGroups = list(
-#'     list(
-#'       GeoSpatialColumnGroup = list(
-#'         Name = "string",
-#'         CountryCode = "US",
-#'         Columns = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RowLevelPermissionDataSet = list(
-#'     Namespace = "string",
-#'     Arn = "string",
-#'     PermissionPolicy = "GRANT_ACCESS"|"DENY_ACCESS"
-#'   ),
-#'   ColumnLevelPermissionRules = list(
-#'     list(
-#'       Principals = list(
-#'         "string"
-#'       ),
-#'       ColumnNames = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param DataSetUsageConfiguration 
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_create_data_set
-quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, Permissions = NULL, RowLevelPermissionDataSet = NULL, ColumnLevelPermissionRules = NULL, Tags = NULL) {
+quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, FieldFolders = NULL, Permissions = NULL, RowLevelPermissionDataSet = NULL, RowLevelPermissionTagConfiguration = NULL, ColumnLevelPermissionRules = NULL, Tags = NULL, DataSetUsageConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDataSet",
     http_method = "POST",
     http_path = "/accounts/{AwsAccountId}/data-sets",
     paginator = list()
   )
-  input <- .quicksight$create_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, Permissions = Permissions, RowLevelPermissionDataSet = RowLevelPermissionDataSet, ColumnLevelPermissionRules = ColumnLevelPermissionRules, Tags = Tags)
+  input <- .quicksight$create_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, FieldFolders = FieldFolders, Permissions = Permissions, RowLevelPermissionDataSet = RowLevelPermissionDataSet, RowLevelPermissionTagConfiguration = RowLevelPermissionTagConfiguration, ColumnLevelPermissionRules = ColumnLevelPermissionRules, Tags = Tags, DataSetUsageConfiguration = DataSetUsageConfiguration)
   output <- .quicksight$create_data_set_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -693,265 +353,28 @@ quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
 #' @description
 #' Creates a data source.
 #'
-#' @usage
-#' quicksight_create_data_source(AwsAccountId, DataSourceId, Name, Type,
-#'   DataSourceParameters, Credentials, Permissions, VpcConnectionProperties,
-#'   SslProperties, Tags)
+#' See [https://paws-r.github.io/docs/quicksight/create_data_source.html](https://paws-r.github.io/docs/quicksight/create_data_source.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
-#' @param DataSourceId &#91;required&#93; An ID for the data source. This ID is unique per AWS Region for each AWS
-#' account.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param DataSourceId &#91;required&#93; An ID for the data source. This ID is unique per Amazon Web Services
+#' Region for each Amazon Web Services account.
 #' @param Name &#91;required&#93; A display name for the data source.
-#' @param Type &#91;required&#93; The type of the data source. Currently, the supported types for this
-#' operation are:
-#' `ATHENA, AURORA, AURORA_POSTGRESQL, MARIADB, MYSQL, POSTGRESQL, PRESTO, REDSHIFT, S3, SNOWFLAKE, SPARK, SQLSERVER, TERADATA`.
-#' Use [`list_data_sources`][quicksight_list_data_sources] to return a list
-#' of all data sources.
-#' @param DataSourceParameters The parameters that QuickSight uses to connect to your underlying
+#' @param Type &#91;required&#93; The type of the data source. To return a list of all data sources, use
+#' [`list_data_sources`][quicksight_list_data_sources].
+#' 
+#' Use `AMAZON_ELASTICSEARCH` for Amazon OpenSearch Service.
+#' @param DataSourceParameters The parameters that Amazon QuickSight uses to connect to your underlying
 #' source.
-#' @param Credentials The credentials QuickSight that uses to connect to your underlying
-#' source. Currently, only credentials based on user name and password are
-#' supported.
+#' @param Credentials The credentials Amazon QuickSight that uses to connect to your
+#' underlying source. Currently, only credentials based on user name and
+#' password are supported.
 #' @param Permissions A list of resource permissions on the data source.
-#' @param VpcConnectionProperties Use this parameter only when you want QuickSight to use a VPC connection
-#' when connecting to your underlying source.
-#' @param SslProperties Secure Socket Layer (SSL) properties that apply when QuickSight connects
-#' to your underlying source.
+#' @param VpcConnectionProperties Use this parameter only when you want Amazon QuickSight to use a VPC
+#' connection when connecting to your underlying source.
+#' @param SslProperties Secure Socket Layer (SSL) properties that apply when Amazon QuickSight
+#' connects to your underlying source.
 #' @param Tags Contains a map of the key-value pairs for the resource tag or tags
 #' assigned to the data source.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   DataSourceId = "string",
-#'   CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_data_source(
-#'   AwsAccountId = "string",
-#'   DataSourceId = "string",
-#'   Name = "string",
-#'   Type = "ADOBE_ANALYTICS"|"AMAZON_ELASTICSEARCH"|"ATHENA"|"AURORA"|"AURORA_POSTGRESQL"|"AWS_IOT_ANALYTICS"|"GITHUB"|"JIRA"|"MARIADB"|"MYSQL"|"ORACLE"|"POSTGRESQL"|"PRESTO"|"REDSHIFT"|"S3"|"SALESFORCE"|"SERVICENOW"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"TWITTER"|"TIMESTREAM",
-#'   DataSourceParameters = list(
-#'     AmazonElasticsearchParameters = list(
-#'       Domain = "string"
-#'     ),
-#'     AthenaParameters = list(
-#'       WorkGroup = "string"
-#'     ),
-#'     AuroraParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     AuroraPostgreSqlParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     AwsIotAnalyticsParameters = list(
-#'       DataSetName = "string"
-#'     ),
-#'     JiraParameters = list(
-#'       SiteBaseUrl = "string"
-#'     ),
-#'     MariaDbParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     MySqlParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     OracleParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     PostgreSqlParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     PrestoParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Catalog = "string"
-#'     ),
-#'     RdsParameters = list(
-#'       InstanceId = "string",
-#'       Database = "string"
-#'     ),
-#'     RedshiftParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string",
-#'       ClusterId = "string"
-#'     ),
-#'     S3Parameters = list(
-#'       ManifestFileLocation = list(
-#'         Bucket = "string",
-#'         Key = "string"
-#'       )
-#'     ),
-#'     ServiceNowParameters = list(
-#'       SiteBaseUrl = "string"
-#'     ),
-#'     SnowflakeParameters = list(
-#'       Host = "string",
-#'       Database = "string",
-#'       Warehouse = "string"
-#'     ),
-#'     SparkParameters = list(
-#'       Host = "string",
-#'       Port = 123
-#'     ),
-#'     SqlServerParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     TeradataParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     TwitterParameters = list(
-#'       Query = "string",
-#'       MaxRows = 123
-#'     )
-#'   ),
-#'   Credentials = list(
-#'     CredentialPair = list(
-#'       Username = "string",
-#'       Password = "string",
-#'       AlternateDataSourceParameters = list(
-#'         list(
-#'           AmazonElasticsearchParameters = list(
-#'             Domain = "string"
-#'           ),
-#'           AthenaParameters = list(
-#'             WorkGroup = "string"
-#'           ),
-#'           AuroraParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           AuroraPostgreSqlParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           AwsIotAnalyticsParameters = list(
-#'             DataSetName = "string"
-#'           ),
-#'           JiraParameters = list(
-#'             SiteBaseUrl = "string"
-#'           ),
-#'           MariaDbParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           MySqlParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           OracleParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           PostgreSqlParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           PrestoParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Catalog = "string"
-#'           ),
-#'           RdsParameters = list(
-#'             InstanceId = "string",
-#'             Database = "string"
-#'           ),
-#'           RedshiftParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string",
-#'             ClusterId = "string"
-#'           ),
-#'           S3Parameters = list(
-#'             ManifestFileLocation = list(
-#'               Bucket = "string",
-#'               Key = "string"
-#'             )
-#'           ),
-#'           ServiceNowParameters = list(
-#'             SiteBaseUrl = "string"
-#'           ),
-#'           SnowflakeParameters = list(
-#'             Host = "string",
-#'             Database = "string",
-#'             Warehouse = "string"
-#'           ),
-#'           SparkParameters = list(
-#'             Host = "string",
-#'             Port = 123
-#'           ),
-#'           SqlServerParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           TeradataParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           TwitterParameters = list(
-#'             Query = "string",
-#'             MaxRows = 123
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     CopySourceArn = "string"
-#'   ),
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   VpcConnectionProperties = list(
-#'     VpcConnectionArn = "string"
-#'   ),
-#'   SslProperties = list(
-#'     DisableSsl = TRUE|FALSE
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -973,49 +396,94 @@ quicksight_create_data_source <- function(AwsAccountId, DataSourceId, Name, Type
 }
 .quicksight$operations$create_data_source <- quicksight_create_data_source
 
-#' Creates an Amazon QuickSight group
+#' Creates an empty shared folder
 #'
 #' @description
-#' Creates an Amazon QuickSight group.
-#' 
-#' The permissions resource is
-#' `arn:aws:quicksight:us-east-1:<relevant-aws-account-id>:group/default/<group-name> `.
-#' 
-#' The response is a group object.
+#' Creates an empty shared folder.
 #'
-#' @usage
-#' quicksight_create_group(GroupName, Description, AwsAccountId, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/create_folder.html](https://paws-r.github.io/docs/quicksight/create_folder.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account where you want to create the
+#' folder.
+#' @param FolderId &#91;required&#93; The ID of the folder.
+#' @param Name The name of the folder.
+#' @param FolderType The type of folder. By default, `folderType` is `SHARED`.
+#' @param ParentFolderArn The Amazon Resource Name (ARN) for the parent folder.
+#' 
+#' `ParentFolderArn` can be null. An empty `parentFolderArn` creates a
+#' root-level folder.
+#' @param Permissions A structure that describes the principals and the resource-level
+#' permissions of a folder.
+#' 
+#' To specify no permissions, omit `Permissions`.
+#' @param Tags Tags for the folder.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_folder
+quicksight_create_folder <- function(AwsAccountId, FolderId, Name = NULL, FolderType = NULL, ParentFolderArn = NULL, Permissions = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateFolder",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/folders/{FolderId}",
+    paginator = list()
+  )
+  input <- .quicksight$create_folder_input(AwsAccountId = AwsAccountId, FolderId = FolderId, Name = Name, FolderType = FolderType, ParentFolderArn = ParentFolderArn, Permissions = Permissions, Tags = Tags)
+  output <- .quicksight$create_folder_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_folder <- quicksight_create_folder
+
+#' Adds an asset, such as a dashboard, analysis, or dataset into a folder
+#'
+#' @description
+#' Adds an asset, such as a dashboard, analysis, or dataset into a folder.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/create_folder_membership.html](https://paws-r.github.io/docs/quicksight/create_folder_membership.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
+#' @param FolderId &#91;required&#93; The ID of the folder.
+#' @param MemberId &#91;required&#93; The ID of the asset (the dashboard, analysis, or dataset).
+#' @param MemberType &#91;required&#93; The type of the member, including `DASHBOARD`, `ANALYSIS`, and
+#' `DATASET`.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_create_folder_membership
+quicksight_create_folder_membership <- function(AwsAccountId, FolderId, MemberId, MemberType) {
+  op <- new_operation(
+    name = "CreateFolderMembership",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/folders/{FolderId}/members/{MemberType}/{MemberId}",
+    paginator = list()
+  )
+  input <- .quicksight$create_folder_membership_input(AwsAccountId = AwsAccountId, FolderId = FolderId, MemberId = MemberId, MemberType = MemberType)
+  output <- .quicksight$create_folder_membership_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$create_folder_membership <- quicksight_create_folder_membership
+
+#' Use the CreateGroup operation to create a group in Amazon QuickSight
+#'
+#' @description
+#' Use the [`create_group`][quicksight_create_group] operation to create a group in Amazon QuickSight. You can create up to 10,000 groups in a namespace. If you want to create more than 10,000 groups in a namespace, contact AWS Support.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/create_group.html](https://paws-r.github.io/docs/quicksight/create_group.html) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; A name for the group that you want to create.
 #' @param Description A description for the group that you want to create.
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the group is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
-#' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Group = list(
-#'     Arn = "string",
-#'     GroupName = "string",
-#'     Description = "string",
-#'     PrincipalId = "string"
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_group(
-#'   GroupName = "string",
-#'   Description = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
+#' @param Namespace &#91;required&#93; The namespace that you want the group to be a part of.
 #'
 #' @keywords internal
 #'
@@ -1042,38 +510,14 @@ quicksight_create_group <- function(GroupName, Description = NULL, AwsAccountId,
 #' @description
 #' Adds an Amazon QuickSight user to an Amazon QuickSight group.
 #'
-#' @usage
-#' quicksight_create_group_membership(MemberName, GroupName, AwsAccountId,
-#'   Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/create_group_membership.html](https://paws-r.github.io/docs/quicksight/create_group_membership.html) for full documentation.
 #'
 #' @param MemberName &#91;required&#93; The name of the user that you want to add to the group membership.
 #' @param GroupName &#91;required&#93; The name of the group that you want to add the user to.
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the group is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
-#' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GroupMember = list(
-#'     Arn = "string",
-#'     MemberName = "string"
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_group_membership(
-#'   MemberName = "string",
-#'   GroupName = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
+#' @param Namespace &#91;required&#93; The namespace that you want the user to be a part of.
 #'
 #' @keywords internal
 #'
@@ -1099,20 +543,14 @@ quicksight_create_group_membership <- function(MemberName, GroupName, AwsAccount
 #' Amazon Resource Name (ARN)
 #'
 #' @description
-#' Creates an assignment with one specified IAM policy, identified by its
-#' Amazon Resource Name (ARN). This policy assignment is attached to the
-#' specified groups or users of Amazon QuickSight. Assignment names are
-#' unique per AWS account. To avoid overwriting rules in other namespaces,
-#' use assignment names that are unique.
+#' Creates an assignment with one specified IAM policy, identified by its Amazon Resource Name (ARN). This policy assignment is attached to the specified groups or users of Amazon QuickSight. Assignment names are unique per Amazon Web Services account. To avoid overwriting rules in other namespaces, use assignment names that are unique.
 #'
-#' @usage
-#' quicksight_create_iam_policy_assignment(AwsAccountId, AssignmentName,
-#'   AssignmentStatus, PolicyArn, Identities, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/create_iam_policy_assignment.html](https://paws-r.github.io/docs/quicksight/create_iam_policy_assignment.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account where you want to assign an IAM policy to
-#' QuickSight users or groups.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account where you want to assign an
+#' IAM policy to Amazon QuickSight users or groups.
 #' @param AssignmentName &#91;required&#93; The name of the assignment, also called a rule. It must be unique within
-#' an AWS account.
+#' an Amazon Web Services account.
 #' @param AssignmentStatus &#91;required&#93; The status of the assignment. Possible values are as follows:
 #' 
 #' -   `ENABLED` - Anything specified in this assignment is used when
@@ -1123,45 +561,11 @@ quicksight_create_group_membership <- function(MemberName, GroupName, AwsAccount
 #' 
 #' -   `DRAFT` - This assignment is an unfinished draft and isn't used when
 #'     creating the data source.
-#' @param PolicyArn The ARN for the IAM policy to apply to the QuickSight users and groups
-#' specified in this assignment.
-#' @param Identities The QuickSight users, groups, or both that you want to assign the policy
-#' to.
+#' @param PolicyArn The ARN for the IAM policy to apply to the Amazon QuickSight users and
+#' groups specified in this assignment.
+#' @param Identities The Amazon QuickSight users, groups, or both that you want to assign the
+#' policy to.
 #' @param Namespace &#91;required&#93; The namespace that contains the assignment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AssignmentName = "string",
-#'   AssignmentId = "string",
-#'   AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
-#'   PolicyArn = "string",
-#'   Identities = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_iam_policy_assignment(
-#'   AwsAccountId = "string",
-#'   AssignmentName = "string",
-#'   AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
-#'   PolicyArn = "string",
-#'   Identities = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   Namespace = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1183,57 +587,29 @@ quicksight_create_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 }
 .quicksight$operations$create_iam_policy_assignment <- quicksight_create_iam_policy_assignment
 
-#' Creates and starts a new SPICE ingestion on a dataset
+#' Creates and starts a new SPICE ingestion for a dataset
 #'
 #' @description
-#' Creates and starts a new SPICE ingestion on a dataset
-#' 
-#' Any ingestions operating on tagged datasets inherit the same tags
-#' automatically for use in access control. For an example, see [How do I
-#' create an IAM policy to control access to Amazon EC2 resources using
-#' tags?](https://aws.amazon.com/premiumsupport/knowledge-center/iam-ec2-resource-tags/)
-#' in the AWS Knowledge Center. Tags are visible on the tagged dataset, but
-#' not on the ingestion resource.
+#' Creates and starts a new SPICE ingestion for a dataset. You can manually refresh datasets in an Enterprise edition account 32 times in a 24-hour period. You can manually refresh datasets in a Standard edition account 8 times in a 24-hour period. Each 24-hour period is measured starting 24 hours before the current date and time.
 #'
-#' @usage
-#' quicksight_create_ingestion(DataSetId, IngestionId, AwsAccountId)
+#' See [https://paws-r.github.io/docs/quicksight/create_ingestion.html](https://paws-r.github.io/docs/quicksight/create_ingestion.html) for full documentation.
 #'
 #' @param DataSetId &#91;required&#93; The ID of the dataset used in the ingestion.
 #' @param IngestionId &#91;required&#93; An ID for the ingestion.
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   IngestionId = "string",
-#'   IngestionStatus = "INITIALIZED"|"QUEUED"|"RUNNING"|"FAILED"|"COMPLETED"|"CANCELLED",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_ingestion(
-#'   DataSetId = "string",
-#'   IngestionId = "string",
-#'   AwsAccountId = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param IngestionType The type of ingestion that you want to create.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_create_ingestion
-quicksight_create_ingestion <- function(DataSetId, IngestionId, AwsAccountId) {
+quicksight_create_ingestion <- function(DataSetId, IngestionId, AwsAccountId, IngestionType = NULL) {
   op <- new_operation(
     name = "CreateIngestion",
     http_method = "PUT",
     http_path = "/accounts/{AwsAccountId}/data-sets/{DataSetId}/ingestions/{IngestionId}",
     paginator = list()
   )
-  input <- .quicksight$create_ingestion_input(DataSetId = DataSetId, IngestionId = IngestionId, AwsAccountId = AwsAccountId)
+  input <- .quicksight$create_ingestion_input(DataSetId = DataSetId, IngestionId = IngestionId, AwsAccountId = AwsAccountId, IngestionType = IngestionType)
   output <- .quicksight$create_ingestion_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -1247,58 +623,17 @@ quicksight_create_ingestion <- function(DataSetId, IngestionId, AwsAccountId) {
 #' Amazon QuickSight
 #'
 #' @description
-#' (Enterprise edition only) Creates a new namespace for you to use with
-#' Amazon QuickSight.
-#' 
-#' A namespace allows you to isolate the QuickSight users and groups that
-#' are registered for that namespace. Users that access the namespace can
-#' share assets only with other users or groups in the same namespace. They
-#' can't see users and groups in other namespaces. You can create a
-#' namespace after your AWS account is subscribed to QuickSight. The
-#' namespace must be unique within the AWS account. By default, there is a
-#' limit of 100 namespaces per AWS account. To increase your limit, create
-#' a ticket with AWS Support.
+#' (Enterprise edition only) Creates a new namespace for you to use with Amazon QuickSight.
 #'
-#' @usage
-#' quicksight_create_namespace(AwsAccountId, Namespace, IdentityStore,
-#'   Tags)
+#' See [https://paws-r.github.io/docs/quicksight/create_namespace.html](https://paws-r.github.io/docs/quicksight/create_namespace.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that you want to create the QuickSight
-#' namespace in.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that you want to create the
+#' Amazon QuickSight namespace in.
 #' @param Namespace &#91;required&#93; The name that you want to use to describe the new namespace.
 #' @param IdentityStore &#91;required&#93; Specifies the type of your user identity directory. Currently, this
 #' supports users with an identity type of `QUICKSIGHT`.
 #' @param Tags The tags that you want to associate with the namespace that you're
 #' creating.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   Name = "string",
-#'   CapacityRegion = "string",
-#'   CreationStatus = "CREATED"|"CREATING"|"DELETING"|"RETRYABLE_FAILURE"|"NON_RETRYABLE_FAILURE",
-#'   IdentityStore = "QUICKSIGHT",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_namespace(
-#'   AwsAccountId = "string",
-#'   Namespace = "string",
-#'   IdentityStore = "QUICKSIGHT",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1320,28 +655,19 @@ quicksight_create_namespace <- function(AwsAccountId, Namespace, IdentityStore, 
 }
 .quicksight$operations$create_namespace <- quicksight_create_namespace
 
-#' Creates a template from an existing QuickSight analysis or template
+#' Creates a template from an existing Amazon QuickSight analysis or
+#' template
 #'
 #' @description
-#' Creates a template from an existing QuickSight analysis or template. You
-#' can use the resulting template to create a dashboard.
-#' 
-#' A *template* is an entity in QuickSight that encapsulates the metadata
-#' required to create an analysis and that you can use to create s
-#' dashboard. A template adds a layer of abstraction by using placeholders
-#' to replace the dataset associated with the analysis. You can use
-#' templates to create dashboards by replacing dataset placeholders with
-#' datasets that follow the same schema that was used to create the source
-#' analysis and template.
+#' Creates a template from an existing Amazon QuickSight analysis or template. You can use the resulting template to create a dashboard.
 #'
-#' @usage
-#' quicksight_create_template(AwsAccountId, TemplateId, Name, Permissions,
-#'   SourceEntity, Tags, VersionDescription)
+#' See [https://paws-r.github.io/docs/quicksight/create_template.html](https://paws-r.github.io/docs/quicksight/create_template.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the group is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in. You use
+#' the ID for the Amazon Web Services account that contains your Amazon
+#' QuickSight account.
 #' @param TemplateId &#91;required&#93; An ID for the template that you want to create. This template is unique
-#' per AWS Region in each AWS account.
+#' per Amazon Web Services Region; in each Amazon Web Services account.
 #' @param Name A display name for the template.
 #' @param Permissions A list of resource permissions to be set on the template.
 #' @param SourceEntity &#91;required&#93; The entity that you are using as a source when you create the template.
@@ -1350,8 +676,8 @@ quicksight_create_namespace <- function(AwsAccountId, Namespace, IdentityStore, 
 #' analysis. Both of these require an Amazon Resource Name (ARN). For
 #' `SourceTemplate`, specify the ARN of the source template. For
 #' `SourceAnalysis`, specify the ARN of the source analysis. The
-#' `SourceTemplate` ARN can contain any AWS Account and any
-#' QuickSight-supported AWS Region.
+#' `SourceTemplate` ARN can contain any Amazon Web Services account and any
+#' Amazon QuickSight-supported Amazon Web Services Region.
 #' 
 #' Use the `DataSetReferences` entity within `SourceTemplate` or
 #' `SourceAnalysis` to list the replacement datasets for the placeholders
@@ -1364,57 +690,6 @@ quicksight_create_namespace <- function(AwsAccountId, Namespace, IdentityStore, 
 #' [`update_template`][quicksight_update_template] is called, a new version
 #' is created. Each version of the template maintains a description of the
 #' version in the `VersionDescription` field.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   VersionArn = "string",
-#'   TemplateId = "string",
-#'   CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_template(
-#'   AwsAccountId = "string",
-#'   TemplateId = "string",
-#'   Name = "string",
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   SourceEntity = list(
-#'     SourceAnalysis = list(
-#'       Arn = "string",
-#'       DataSetReferences = list(
-#'         list(
-#'           DataSetPlaceholder = "string",
-#'           DataSetArn = "string"
-#'         )
-#'       )
-#'     ),
-#'     SourceTemplate = list(
-#'       Arn = "string"
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   VersionDescription = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1441,41 +716,15 @@ quicksight_create_template <- function(AwsAccountId, TemplateId, Name = NULL, Pe
 #' @description
 #' Creates a template alias for a template.
 #'
-#' @usage
-#' quicksight_create_template_alias(AwsAccountId, TemplateId, AliasName,
-#'   TemplateVersionNumber)
+#' See [https://paws-r.github.io/docs/quicksight/create_template_alias.html](https://paws-r.github.io/docs/quicksight/create_template_alias.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you creating
-#' an alias for.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
+#' that you creating an alias for.
 #' @param TemplateId &#91;required&#93; An ID for the template.
 #' @param AliasName &#91;required&#93; The name that you want to give to the template alias that you're
 #' creating. Don't start the alias name with the `$` character. Alias names
-#' that start with `$` are reserved by QuickSight.
+#' that start with `$` are reserved by Amazon QuickSight.
 #' @param TemplateVersionNumber &#91;required&#93; The version number of the template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemplateAlias = list(
-#'     AliasName = "string",
-#'     Arn = "string",
-#'     TemplateVersionNumber = 123
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_template_alias(
-#'   AwsAccountId = "string",
-#'   TemplateId = "string",
-#'   AliasName = "string",
-#'   TemplateVersionNumber = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1501,26 +750,19 @@ quicksight_create_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #'
 #' @description
 #' Creates a theme.
-#' 
-#' A *theme* is set of configuration options for color and layout. Themes
-#' apply to analyses and dashboards. For more information, see [Using
-#' Themes in Amazon
-#' QuickSight](https://docs.aws.amazon.com/quicksight/latest/user/themes-in-quicksight.html)
-#' in the *Amazon QuickSight User Guide*.
 #'
-#' @usage
-#' quicksight_create_theme(AwsAccountId, ThemeId, Name, BaseThemeId,
-#'   VersionDescription, Configuration, Permissions, Tags)
+#' See [https://paws-r.github.io/docs/quicksight/create_theme.html](https://paws-r.github.io/docs/quicksight/create_theme.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account where you want to store the new theme.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account where you want to store the
+#' new theme.
 #' @param ThemeId &#91;required&#93; An ID for the theme that you want to create. The theme ID is unique per
-#' AWS Region in each AWS account.
+#' Amazon Web Services Region in each Amazon Web Services account.
 #' @param Name &#91;required&#93; A display name for the theme.
 #' @param BaseThemeId &#91;required&#93; The ID of the theme that a custom theme will inherit from. All themes
 #' inherit from one of the starting themes defined by Amazon QuickSight.
 #' For a list of the starting themes, use
 #' [`list_themes`][quicksight_list_themes] or choose **Themes** from within
-#' a QuickSight analysis.
+#' an analysis.
 #' @param VersionDescription A description of the first version of the theme that you're creating.
 #' Every time [`update_theme`][quicksight_update_theme] is called, a new
 #' version is created. Each version of the theme has a description of the
@@ -1529,88 +771,6 @@ quicksight_create_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #' @param Permissions A valid grouping of resource permissions to apply to the new theme.
 #' @param Tags A map of the key-value pairs for the resource tag or tags that you want
 #' to add to the resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   VersionArn = "string",
-#'   ThemeId = "string",
-#'   CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_theme(
-#'   AwsAccountId = "string",
-#'   ThemeId = "string",
-#'   Name = "string",
-#'   BaseThemeId = "string",
-#'   VersionDescription = "string",
-#'   Configuration = list(
-#'     DataColorPalette = list(
-#'       Colors = list(
-#'         "string"
-#'       ),
-#'       MinMaxGradient = list(
-#'         "string"
-#'       ),
-#'       EmptyFillColor = "string"
-#'     ),
-#'     UIColorPalette = list(
-#'       PrimaryForeground = "string",
-#'       PrimaryBackground = "string",
-#'       SecondaryForeground = "string",
-#'       SecondaryBackground = "string",
-#'       Accent = "string",
-#'       AccentForeground = "string",
-#'       Danger = "string",
-#'       DangerForeground = "string",
-#'       Warning = "string",
-#'       WarningForeground = "string",
-#'       Success = "string",
-#'       SuccessForeground = "string",
-#'       Dimension = "string",
-#'       DimensionForeground = "string",
-#'       Measure = "string",
-#'       MeasureForeground = "string"
-#'     ),
-#'     Sheet = list(
-#'       Tile = list(
-#'         Border = list(
-#'           Show = TRUE|FALSE
-#'         )
-#'       ),
-#'       TileLayout = list(
-#'         Gutter = list(
-#'           Show = TRUE|FALSE
-#'         ),
-#'         Margin = list(
-#'           Show = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1637,41 +797,15 @@ quicksight_create_theme <- function(AwsAccountId, ThemeId, Name, BaseThemeId, Ve
 #' @description
 #' Creates a theme alias for a theme.
 #'
-#' @usage
-#' quicksight_create_theme_alias(AwsAccountId, ThemeId, AliasName,
-#'   ThemeVersionNumber)
+#' See [https://paws-r.github.io/docs/quicksight/create_theme_alias.html](https://paws-r.github.io/docs/quicksight/create_theme_alias.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme for the new theme
-#' alias.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme for
+#' the new theme alias.
 #' @param ThemeId &#91;required&#93; An ID for the theme alias.
 #' @param AliasName &#91;required&#93; The name that you want to give to the theme alias that you are creating.
 #' The alias name can't begin with a `$`. Alias names that start with `$`
 #' are reserved by Amazon QuickSight.
 #' @param ThemeVersionNumber &#91;required&#93; The version number of the theme.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ThemeAlias = list(
-#'     Arn = "string",
-#'     AliasName = "string",
-#'     ThemeVersionNumber = 123
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_theme_alias(
-#'   AwsAccountId = "string",
-#'   ThemeId = "string",
-#'   AliasName = "string",
-#'   ThemeVersionNumber = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1693,36 +827,20 @@ quicksight_create_theme_alias <- function(AwsAccountId, ThemeId, AliasName, Them
 }
 .quicksight$operations$create_theme_alias <- quicksight_create_theme_alias
 
-#' Deletes all Amazon QuickSight customizations in this AWS Region for the
-#' specified AWS account and QuickSight namespace
+#' Deletes all Amazon QuickSight customizations in this Amazon Web Services
+#' Region for the specified Amazon Web Services account and Amazon
+#' QuickSight namespace
 #'
 #' @description
-#' Deletes all Amazon QuickSight customizations in this AWS Region for the
-#' specified AWS account and QuickSight namespace.
+#' Deletes all Amazon QuickSight customizations in this Amazon Web Services Region for the specified Amazon Web Services account and Amazon QuickSight namespace.
 #'
-#' @usage
-#' quicksight_delete_account_customization(AwsAccountId, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/delete_account_customization.html](https://paws-r.github.io/docs/quicksight/delete_account_customization.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that you want to delete QuickSight
-#' customizations from in this AWS Region.
-#' @param Namespace The QuickSight namespace that you're deleting the customizations from.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_account_customization(
-#'   AwsAccountId = "string",
-#'   Namespace = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that you want to delete
+#' Amazon QuickSight customizations from in this Amazon Web Services
+#' Region.
+#' @param Namespace The Amazon QuickSight namespace that you're deleting the customizations
+#' from.
 #'
 #' @keywords internal
 #'
@@ -1747,60 +865,20 @@ quicksight_delete_account_customization <- function(AwsAccountId, Namespace = NU
 #' Deletes an analysis from Amazon QuickSight
 #'
 #' @description
-#' Deletes an analysis from Amazon QuickSight. You can optionally include a
-#' recovery window during which you can restore the analysis. If you don't
-#' specify a recovery window value, the operation defaults to 30 days.
-#' QuickSight attaches a `DeletionTime` stamp to the response that
-#' specifies the end of the recovery window. At the end of the recovery
-#' window, QuickSight deletes the analysis permanently.
-#' 
-#' At any time before recovery window ends, you can use the
-#' [`restore_analysis`][quicksight_restore_analysis] API operation to
-#' remove the `DeletionTime` stamp and cancel the deletion of the analysis.
-#' The analysis remains visible in the API until it's deleted, so you can
-#' describe it but you can't make a template from it.
-#' 
-#' An analysis that's scheduled for deletion isn't accessible in the
-#' QuickSight console. To access it in the console, restore it. Deleting an
-#' analysis doesn't delete the dashboards that you publish from it.
+#' Deletes an analysis from Amazon QuickSight. You can optionally include a recovery window during which you can restore the analysis. If you don't specify a recovery window value, the operation defaults to 30 days. Amazon QuickSight attaches a `DeletionTime` stamp to the response that specifies the end of the recovery window. At the end of the recovery window, Amazon QuickSight deletes the analysis permanently.
 #'
-#' @usage
-#' quicksight_delete_analysis(AwsAccountId, AnalysisId,
-#'   RecoveryWindowInDays, ForceDeleteWithoutRecovery)
+#' See [https://paws-r.github.io/docs/quicksight/delete_analysis.html](https://paws-r.github.io/docs/quicksight/delete_analysis.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account where you want to delete an analysis.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account where you want to delete an
+#' analysis.
 #' @param AnalysisId &#91;required&#93; The ID of the analysis that you're deleting.
-#' @param RecoveryWindowInDays A value that specifies the number of days that QuickSight waits before
-#' it deletes the analysis. You can't use this parameter with the
+#' @param RecoveryWindowInDays A value that specifies the number of days that Amazon QuickSight waits
+#' before it deletes the analysis. You can't use this parameter with the
 #' `ForceDeleteWithoutRecovery` option in the same API call. The default
 #' value is 30.
 #' @param ForceDeleteWithoutRecovery This option defaults to the value `NoForceDeleteWithoutRecovery`. To
 #' immediately delete the analysis, add the `ForceDeleteWithoutRecovery`
 #' option. You can't restore an analysis after it's deleted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = 123,
-#'   Arn = "string",
-#'   AnalysisId = "string",
-#'   DeletionTime = as.POSIXct(
-#'     "2015-01-01"
-#'   ),
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_analysis(
-#'   AwsAccountId = "string",
-#'   AnalysisId = "string",
-#'   RecoveryWindowInDays = 123,
-#'   ForceDeleteWithoutRecovery = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1827,34 +905,13 @@ quicksight_delete_analysis <- function(AwsAccountId, AnalysisId, RecoveryWindowI
 #' @description
 #' Deletes a dashboard.
 #'
-#' @usage
-#' quicksight_delete_dashboard(AwsAccountId, DashboardId, VersionNumber)
+#' See [https://paws-r.github.io/docs/quicksight/delete_dashboard.html](https://paws-r.github.io/docs/quicksight/delete_dashboard.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you're
-#' deleting.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
+#' that you're deleting.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard.
 #' @param VersionNumber The version number of the dashboard. If the version number property is
 #' provided, only the specified version of the dashboard is deleted.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = 123,
-#'   Arn = "string",
-#'   DashboardId = "string",
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_dashboard(
-#'   AwsAccountId = "string",
-#'   DashboardId = "string",
-#'   VersionNumber = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1881,31 +938,11 @@ quicksight_delete_dashboard <- function(AwsAccountId, DashboardId, VersionNumber
 #' @description
 #' Deletes a dataset.
 #'
-#' @usage
-#' quicksight_delete_data_set(AwsAccountId, DataSetId)
+#' See [https://paws-r.github.io/docs/quicksight/delete_data_set.html](https://paws-r.github.io/docs/quicksight/delete_data_set.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID for the dataset that you want to create. This ID is unique per
-#' AWS Region for each AWS account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   DataSetId = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_data_set(
-#'   AwsAccountId = "string",
-#'   DataSetId = "string"
-#' )
-#' ```
+#' Amazon Web Services Region for each Amazon Web Services account.
 #'
 #' @keywords internal
 #'
@@ -1930,34 +967,13 @@ quicksight_delete_data_set <- function(AwsAccountId, DataSetId) {
 #' Deletes the data source permanently
 #'
 #' @description
-#' Deletes the data source permanently. This operation breaks all the
-#' datasets that reference the deleted data source.
+#' Deletes the data source permanently. This operation breaks all the datasets that reference the deleted data source.
 #'
-#' @usage
-#' quicksight_delete_data_source(AwsAccountId, DataSourceId)
+#' See [https://paws-r.github.io/docs/quicksight/delete_data_source.html](https://paws-r.github.io/docs/quicksight/delete_data_source.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
-#' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per AWS Region for each AWS
-#' account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   DataSourceId = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_data_source(
-#'   AwsAccountId = "string",
-#'   DataSourceId = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per Amazon Web Services
+#' Region for each Amazon Web Services account.
 #'
 #' @keywords internal
 #'
@@ -1979,36 +995,82 @@ quicksight_delete_data_source <- function(AwsAccountId, DataSourceId) {
 }
 .quicksight$operations$delete_data_source <- quicksight_delete_data_source
 
+#' Deletes an empty folder
+#'
+#' @description
+#' Deletes an empty folder.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/delete_folder.html](https://paws-r.github.io/docs/quicksight/delete_folder.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
+#' @param FolderId &#91;required&#93; The ID of the folder.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_folder
+quicksight_delete_folder <- function(AwsAccountId, FolderId) {
+  op <- new_operation(
+    name = "DeleteFolder",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/folders/{FolderId}",
+    paginator = list()
+  )
+  input <- .quicksight$delete_folder_input(AwsAccountId = AwsAccountId, FolderId = FolderId)
+  output <- .quicksight$delete_folder_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_folder <- quicksight_delete_folder
+
+#' Removes an asset, such as a dashboard, analysis, or dataset, from a
+#' folder
+#'
+#' @description
+#' Removes an asset, such as a dashboard, analysis, or dataset, from a folder.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/delete_folder_membership.html](https://paws-r.github.io/docs/quicksight/delete_folder_membership.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
+#' @param FolderId &#91;required&#93; The Folder ID.
+#' @param MemberId &#91;required&#93; The ID of the asset (the dashboard, analysis, or dataset) that you want
+#' to delete.
+#' @param MemberType &#91;required&#93; The type of the member, including `DASHBOARD`, `ANALYSIS`, and `DATASET`
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_delete_folder_membership
+quicksight_delete_folder_membership <- function(AwsAccountId, FolderId, MemberId, MemberType) {
+  op <- new_operation(
+    name = "DeleteFolderMembership",
+    http_method = "DELETE",
+    http_path = "/accounts/{AwsAccountId}/folders/{FolderId}/members/{MemberType}/{MemberId}",
+    paginator = list()
+  )
+  input <- .quicksight$delete_folder_membership_input(AwsAccountId = AwsAccountId, FolderId = FolderId, MemberId = MemberId, MemberType = MemberType)
+  output <- .quicksight$delete_folder_membership_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$delete_folder_membership <- quicksight_delete_folder_membership
+
 #' Removes a user group from Amazon QuickSight
 #'
 #' @description
 #' Removes a user group from Amazon QuickSight.
 #'
-#' @usage
-#' quicksight_delete_group(GroupName, AwsAccountId, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/delete_group.html](https://paws-r.github.io/docs/quicksight/delete_group.html) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group that you want to delete.
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the group is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
-#' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_group(
-#'   GroupName = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
+#' @param Namespace &#91;required&#93; The namespace of the group that you want to delete.
 #'
 #' @keywords internal
 #'
@@ -2034,37 +1096,16 @@ quicksight_delete_group <- function(GroupName, AwsAccountId, Namespace) {
 #' the group
 #'
 #' @description
-#' Removes a user from a group so that the user is no longer a member of
-#' the group.
+#' Removes a user from a group so that the user is no longer a member of the group.
 #'
-#' @usage
-#' quicksight_delete_group_membership(MemberName, GroupName, AwsAccountId,
-#'   Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/delete_group_membership.html](https://paws-r.github.io/docs/quicksight/delete_group_membership.html) for full documentation.
 #'
 #' @param MemberName &#91;required&#93; The name of the user that you want to delete from the group membership.
 #' @param GroupName &#91;required&#93; The name of the group that you want to delete the user from.
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the group is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
-#' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_group_membership(
-#'   MemberName = "string",
-#'   GroupName = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
+#' @param Namespace &#91;required&#93; The namespace of the group that you want to remove a user from.
 #'
 #' @keywords internal
 #'
@@ -2091,32 +1132,12 @@ quicksight_delete_group_membership <- function(MemberName, GroupName, AwsAccount
 #' @description
 #' Deletes an existing IAM policy assignment.
 #'
-#' @usage
-#' quicksight_delete_iam_policy_assignment(AwsAccountId, AssignmentName,
-#'   Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/delete_iam_policy_assignment.html](https://paws-r.github.io/docs/quicksight/delete_iam_policy_assignment.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID where you want to delete the IAM policy assignment.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID where you want to delete the IAM
+#' policy assignment.
 #' @param AssignmentName &#91;required&#93; The name of the assignment.
 #' @param Namespace &#91;required&#93; The namespace that contains the assignment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AssignmentName = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_iam_policy_assignment(
-#'   AwsAccountId = "string",
-#'   AssignmentName = "string",
-#'   Namespace = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2142,34 +1163,13 @@ quicksight_delete_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' the namespace
 #'
 #' @description
-#' Deletes a namespace and the users and groups that are associated with
-#' the namespace. This is an asynchronous process. Assets including
-#' dashboards, analyses, datasets and data sources are not deleted. To
-#' delete these assets, you use the API operations for the relevant asset.
+#' Deletes a namespace and the users and groups that are associated with the namespace. This is an asynchronous process. Assets including dashboards, analyses, datasets and data sources are not deleted. To delete these assets, you use the API operations for the relevant asset.
 #'
-#' @usage
-#' quicksight_delete_namespace(AwsAccountId, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/delete_namespace.html](https://paws-r.github.io/docs/quicksight/delete_namespace.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that you want to delete the QuickSight
-#' namespace from.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that you want to delete the
+#' Amazon QuickSight namespace from.
 #' @param Namespace &#91;required&#93; The namespace that you want to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_namespace(
-#'   AwsAccountId = "string",
-#'   Namespace = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2196,36 +1196,15 @@ quicksight_delete_namespace <- function(AwsAccountId, Namespace) {
 #' @description
 #' Deletes a template.
 #'
-#' @usage
-#' quicksight_delete_template(AwsAccountId, TemplateId, VersionNumber)
+#' See [https://paws-r.github.io/docs/quicksight/delete_template.html](https://paws-r.github.io/docs/quicksight/delete_template.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you're
-#' deleting.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
+#' that you're deleting.
 #' @param TemplateId &#91;required&#93; An ID for the template you want to delete.
 #' @param VersionNumber Specifies the version of the template that you want to delete. If you
 #' don't provide a version number,
 #' [`delete_template`][quicksight_delete_template] deletes all versions of
 #' the template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RequestId = "string",
-#'   Arn = "string",
-#'   TemplateId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_template(
-#'   AwsAccountId = "string",
-#'   TemplateId = "string",
-#'   VersionNumber = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2250,40 +1229,17 @@ quicksight_delete_template <- function(AwsAccountId, TemplateId, VersionNumber =
 #' Deletes the item that the specified template alias points to
 #'
 #' @description
-#' Deletes the item that the specified template alias points to. If you
-#' provide a specific alias, you delete the version of the template that
-#' the alias points to.
+#' Deletes the item that the specified template alias points to. If you provide a specific alias, you delete the version of the template that the alias points to.
 #'
-#' @usage
-#' quicksight_delete_template_alias(AwsAccountId, TemplateId, AliasName)
+#' See [https://paws-r.github.io/docs/quicksight/delete_template_alias.html](https://paws-r.github.io/docs/quicksight/delete_template_alias.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the item to delete.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the item to
+#' delete.
 #' @param TemplateId &#91;required&#93; The ID for the template that the specified alias is for.
 #' @param AliasName &#91;required&#93; The name for the template alias. To delete a specific alias, you delete
 #' the version that the alias points to. You can specify the alias name, or
 #' specify the latest version of the template by providing the keyword
 #' `$LATEST` in the `AliasName` parameter.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = 123,
-#'   TemplateId = "string",
-#'   AliasName = "string",
-#'   Arn = "string",
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_template_alias(
-#'   AwsAccountId = "string",
-#'   TemplateId = "string",
-#'   AliasName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2310,36 +1266,16 @@ quicksight_delete_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #' @description
 #' Deletes a theme.
 #'
-#' @usage
-#' quicksight_delete_theme(AwsAccountId, ThemeId, VersionNumber)
+#' See [https://paws-r.github.io/docs/quicksight/delete_theme.html](https://paws-r.github.io/docs/quicksight/delete_theme.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you're deleting.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme that
+#' you're deleting.
 #' @param ThemeId &#91;required&#93; An ID for the theme that you want to delete.
 #' @param VersionNumber The version of the theme that you want to delete.
 #' 
 #' **Note:** If you don't provide a version number, you're using this call
 #' to [`delete_theme`][quicksight_delete_theme] to delete all versions of
 #' the theme.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   RequestId = "string",
-#'   Status = 123,
-#'   ThemeId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_theme(
-#'   AwsAccountId = "string",
-#'   ThemeId = "string",
-#'   VersionNumber = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2365,37 +1301,14 @@ quicksight_delete_theme <- function(AwsAccountId, ThemeId, VersionNumber = NULL)
 #' to
 #'
 #' @description
-#' Deletes the version of the theme that the specified theme alias points
-#' to. If you provide a specific alias, you delete the version of the theme
-#' that the alias points to.
+#' Deletes the version of the theme that the specified theme alias points to. If you provide a specific alias, you delete the version of the theme that the alias points to.
 #'
-#' @usage
-#' quicksight_delete_theme_alias(AwsAccountId, ThemeId, AliasName)
+#' See [https://paws-r.github.io/docs/quicksight/delete_theme_alias.html](https://paws-r.github.io/docs/quicksight/delete_theme_alias.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme alias to delete.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme alias
+#' to delete.
 #' @param ThemeId &#91;required&#93; The ID for the theme that the specified alias is for.
 #' @param AliasName &#91;required&#93; The unique name for the theme alias to delete.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AliasName = "string",
-#'   Arn = "string",
-#'   RequestId = "string",
-#'   Status = 123,
-#'   ThemeId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_theme_alias(
-#'   AwsAccountId = "string",
-#'   ThemeId = "string",
-#'   AliasName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2418,39 +1331,19 @@ quicksight_delete_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
 .quicksight$operations$delete_theme_alias <- quicksight_delete_theme_alias
 
 #' Deletes the Amazon QuickSight user that is associated with the identity
-#' of the AWS Identity and Access Management (IAM) user or role that's
-#' making the call
+#' of the Identity and Access Management (IAM) user or role that's making
+#' the call
 #'
 #' @description
-#' Deletes the Amazon QuickSight user that is associated with the identity
-#' of the AWS Identity and Access Management (IAM) user or role that's
-#' making the call. The IAM user isn't deleted as a result of this call.
+#' Deletes the Amazon QuickSight user that is associated with the identity of the Identity and Access Management (IAM) user or role that's making the call. The IAM user isn't deleted as a result of this call.
 #'
-#' @usage
-#' quicksight_delete_user(UserName, AwsAccountId, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/delete_user.html](https://paws-r.github.io/docs/quicksight/delete_user.html) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The name of the user that you want to delete.
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the user is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the user is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
 #' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_user(
-#'   UserName = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2477,32 +1370,13 @@ quicksight_delete_user <- function(UserName, AwsAccountId, Namespace) {
 #' @description
 #' Deletes a user identified by its principal ID.
 #'
-#' @usage
-#' quicksight_delete_user_by_principal_id(PrincipalId, AwsAccountId,
-#'   Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/delete_user_by_principal_id.html](https://paws-r.github.io/docs/quicksight/delete_user_by_principal_id.html) for full documentation.
 #'
 #' @param PrincipalId &#91;required&#93; The principal ID of the user.
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the user is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the user is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
 #' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_user_by_principal_id(
-#'   PrincipalId = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2524,100 +1398,25 @@ quicksight_delete_user_by_principal_id <- function(PrincipalId, AwsAccountId, Na
 }
 .quicksight$operations$delete_user_by_principal_id <- quicksight_delete_user_by_principal_id
 
-#' Describes the customizations associated with the provided AWS account
-#' and Amazon QuickSight namespace in an AWS Region
+#' Describes the customizations associated with the provided Amazon Web
+#' Services account and Amazon Amazon QuickSight namespace in an Amazon Web
+#' Services Region
 #'
 #' @description
-#' Describes the customizations associated with the provided AWS account
-#' and Amazon QuickSight namespace in an AWS Region. The QuickSight console
-#' evaluates which customizations to apply by running this API operation
-#' with the `Resolved` flag included.
-#' 
-#' To determine what customizations display when you run this command, it
-#' can help to visualize the relationship of the entities involved.
-#' 
-#' -   `AWS Account` - The AWS account exists at the top of the hierarchy.
-#'     It has the potential to use all of the AWS Regions and AWS Services.
-#'     When you subscribe to QuickSight, you choose one AWS Region to use
-#'     as your home Region. That's where your free SPICE capacity is
-#'     located. You can use QuickSight in any supported AWS Region.
-#' 
-#' -   `AWS Region` - In each AWS Region where you sign in to QuickSight at
-#'     least once, QuickSight acts as a separate instance of the same
-#'     service. If you have a user directory, it resides in us-east-1,
-#'     which is the US East (N. Virginia). Generally speaking, these users
-#'     have access to QuickSight in any AWS Region, unless they are
-#'     constrained to a namespace.
-#' 
-#'     To run the command in a different AWS Region, you change your Region
-#'     settings. If you're using the AWS CLI, you can use one of the
-#'     following options:
-#' 
-#'     -   Use [command line
-#'         options](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-options.html).
-#' 
-#'     -   Use [named
-#'         profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html).
-#' 
-#'     -   Run `aws configure` to change your default AWS Region. Use Enter
-#'         to key the same settings for your keys. For more information,
-#'         see [Configuring the AWS
-#'         CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
-#' 
-#' -   `Namespace` - A QuickSight namespace is a partition that contains
-#'     users and assets (data sources, datasets, dashboards, and so on). To
-#'     access assets that are in a specific namespace, users and groups
-#'     must also be part of the same namespace. People who share a
-#'     namespace are completely isolated from users and assets in other
-#'     namespaces, even if they are in the same AWS account and AWS Region.
-#' 
-#' -   `Applied customizations` - Within an AWS Region, a set of QuickSight
-#'     customizations can apply to an AWS account or to a namespace.
-#'     Settings that you apply to a namespace override settings that you
-#'     apply to an AWS account. All settings are isolated to a single AWS
-#'     Region. To apply them in other AWS Regions, run the
-#'     [`create_account_customization`][quicksight_create_account_customization]
-#'     command in each AWS Region where you want to apply the same
-#'     customizations.
+#' Describes the customizations associated with the provided Amazon Web Services account and Amazon Amazon QuickSight namespace in an Amazon Web Services Region. The Amazon QuickSight console evaluates which customizations to apply by running this API operation with the `Resolved` flag included.
 #'
-#' @usage
-#' quicksight_describe_account_customization(AwsAccountId, Namespace,
-#'   Resolved)
+#' See [https://paws-r.github.io/docs/quicksight/describe_account_customization.html](https://paws-r.github.io/docs/quicksight/describe_account_customization.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that you want to describe QuickSight
-#' customizations for.
-#' @param Namespace The QuickSight namespace that you want to describe QuickSight
-#' customizations for.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that you want to describe
+#' Amazon QuickSight customizations for.
+#' @param Namespace The Amazon QuickSight namespace that you want to describe Amazon
+#' QuickSight customizations for.
 #' @param Resolved The `Resolved` flag works with the other parameters to determine which
-#' view of QuickSight customizations is returned. You can add this flag to
-#' your command to use the same view that QuickSight uses to identify which
-#' customizations to apply to the console. Omit this flag, or set it to
-#' `no-resolved`, to reveal customizations that are configured at different
-#' levels.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string",
-#'   AccountCustomization = list(
-#'     DefaultTheme = "string"
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_account_customization(
-#'   AwsAccountId = "string",
-#'   Namespace = "string",
-#'   Resolved = TRUE|FALSE
-#' )
-#' ```
+#' view of Amazon QuickSight customizations is returned. You can add this
+#' flag to your command to use the same view that Amazon QuickSight uses to
+#' identify which customizations to apply to the console. Omit this flag,
+#' or set it to `no-resolved`, to reveal customizations that are configured
+#' at different levels.
 #'
 #' @keywords internal
 #'
@@ -2639,40 +1438,16 @@ quicksight_describe_account_customization <- function(AwsAccountId, Namespace = 
 }
 .quicksight$operations$describe_account_customization <- quicksight_describe_account_customization
 
-#' Describes the settings that were used when your QuickSight subscription
-#' was first created in this AWS account
+#' Describes the settings that were used when your Amazon QuickSight
+#' subscription was first created in this Amazon Web Services account
 #'
 #' @description
-#' Describes the settings that were used when your QuickSight subscription
-#' was first created in this AWS account.
+#' Describes the settings that were used when your Amazon QuickSight subscription was first created in this Amazon Web Services account.
 #'
-#' @usage
-#' quicksight_describe_account_settings(AwsAccountId)
+#' See [https://paws-r.github.io/docs/quicksight/describe_account_settings.html](https://paws-r.github.io/docs/quicksight/describe_account_settings.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that contains the settings that you want to
-#' list.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AccountSettings = list(
-#'     AccountName = "string",
-#'     Edition = "STANDARD"|"ENTERPRISE",
-#'     DefaultNamespace = "string",
-#'     NotificationEmail = "string"
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_account_settings(
-#'   AwsAccountId = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the settings
+#' that you want to list.
 #'
 #' @keywords internal
 #'
@@ -2694,63 +1469,49 @@ quicksight_describe_account_settings <- function(AwsAccountId) {
 }
 .quicksight$operations$describe_account_settings <- quicksight_describe_account_settings
 
+#' Use the DescribeAccountSubscription operation to receive a description
+#' of a Amazon QuickSight account's subscription
+#'
+#' @description
+#' Use the DescribeAccountSubscription operation to receive a description of a Amazon QuickSight account's subscription. A successful API call returns an `AccountInfo` object that includes an account's name, subscription status, authentication type, edition, and notification email address.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/describe_account_subscription.html](https://paws-r.github.io/docs/quicksight/describe_account_subscription.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID associated with your Amazon
+#' QuickSight account.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_account_subscription
+quicksight_describe_account_subscription <- function(AwsAccountId) {
+  op <- new_operation(
+    name = "DescribeAccountSubscription",
+    http_method = "GET",
+    http_path = "/account/{AwsAccountId}",
+    paginator = list()
+  )
+  input <- .quicksight$describe_account_subscription_input(AwsAccountId = AwsAccountId)
+  output <- .quicksight$describe_account_subscription_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_account_subscription <- quicksight_describe_account_subscription
+
 #' Provides a summary of the metadata for an analysis
 #'
 #' @description
 #' Provides a summary of the metadata for an analysis.
 #'
-#' @usage
-#' quicksight_describe_analysis(AwsAccountId, AnalysisId)
+#' See [https://paws-r.github.io/docs/quicksight/describe_analysis.html](https://paws-r.github.io/docs/quicksight/describe_analysis.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the analysis. You must be using
-#' the AWS account that the analysis is in.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analysis.
+#' You must be using the Amazon Web Services account that the analysis is
+#' in.
 #' @param AnalysisId &#91;required&#93; The ID of the analysis that you're describing. The ID is part of the URL
 #' of the analysis.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Analysis = list(
-#'     AnalysisId = "string",
-#'     Arn = "string",
-#'     Name = "string",
-#'     Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'     Errors = list(
-#'       list(
-#'         Type = "ACCESS_DENIED"|"SOURCE_NOT_FOUND"|"DATA_SET_NOT_FOUND"|"INTERNAL_FAILURE"|"PARAMETER_VALUE_INCOMPATIBLE"|"PARAMETER_TYPE_INVALID"|"PARAMETER_NOT_FOUND"|"COLUMN_TYPE_MISMATCH"|"COLUMN_GEOGRAPHIC_ROLE_MISMATCH"|"COLUMN_REPLACEMENT_MISSING",
-#'         Message = "string"
-#'       )
-#'     ),
-#'     DataSetArns = list(
-#'       "string"
-#'     ),
-#'     ThemeArn = "string",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Sheets = list(
-#'       list(
-#'         SheetId = "string",
-#'         Name = "string"
-#'       )
-#'     )
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_analysis(
-#'   AwsAccountId = "string",
-#'   AnalysisId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2777,41 +1538,13 @@ quicksight_describe_analysis <- function(AwsAccountId, AnalysisId) {
 #' @description
 #' Provides the read and write permissions for an analysis.
 #'
-#' @usage
-#' quicksight_describe_analysis_permissions(AwsAccountId, AnalysisId)
+#' See [https://paws-r.github.io/docs/quicksight/describe_analysis_permissions.html](https://paws-r.github.io/docs/quicksight/describe_analysis_permissions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the analysis whose permissions
-#' you're describing. You must be using the AWS account that the analysis
-#' is in.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analysis
+#' whose permissions you're describing. You must be using the Amazon Web
+#' Services account that the analysis is in.
 #' @param AnalysisId &#91;required&#93; The ID of the analysis whose permissions you're describing. The ID is
 #' part of the analysis URL.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AnalysisId = "string",
-#'   AnalysisArn = "string",
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_analysis_permissions(
-#'   AwsAccountId = "string",
-#'   AnalysisId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2838,75 +1571,14 @@ quicksight_describe_analysis_permissions <- function(AwsAccountId, AnalysisId) {
 #' @description
 #' Provides a summary for a dashboard.
 #'
-#' @usage
-#' quicksight_describe_dashboard(AwsAccountId, DashboardId, VersionNumber,
-#'   AliasName)
+#' See [https://paws-r.github.io/docs/quicksight/describe_dashboard.html](https://paws-r.github.io/docs/quicksight/describe_dashboard.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you're
-#' describing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
+#' that you're describing.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard.
 #' @param VersionNumber The version number for the dashboard. If a version number isn't passed,
 #' the latest published dashboard version is described.
 #' @param AliasName The alias name.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Dashboard = list(
-#'     DashboardId = "string",
-#'     Arn = "string",
-#'     Name = "string",
-#'     Version = list(
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Errors = list(
-#'         list(
-#'           Type = "ACCESS_DENIED"|"SOURCE_NOT_FOUND"|"DATA_SET_NOT_FOUND"|"INTERNAL_FAILURE"|"PARAMETER_VALUE_INCOMPATIBLE"|"PARAMETER_TYPE_INVALID"|"PARAMETER_NOT_FOUND"|"COLUMN_TYPE_MISMATCH"|"COLUMN_GEOGRAPHIC_ROLE_MISMATCH"|"COLUMN_REPLACEMENT_MISSING",
-#'           Message = "string"
-#'         )
-#'       ),
-#'       VersionNumber = 123,
-#'       Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'       Arn = "string",
-#'       SourceEntityArn = "string",
-#'       DataSetArns = list(
-#'         "string"
-#'       ),
-#'       Description = "string",
-#'       ThemeArn = "string",
-#'       Sheets = list(
-#'         list(
-#'           SheetId = "string",
-#'           Name = "string"
-#'         )
-#'       )
-#'     ),
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastPublishedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_dashboard(
-#'   AwsAccountId = "string",
-#'   DashboardId = "string",
-#'   VersionNumber = 123,
-#'   AliasName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2933,39 +1605,11 @@ quicksight_describe_dashboard <- function(AwsAccountId, DashboardId, VersionNumb
 #' @description
 #' Describes read and write permissions for a dashboard.
 #'
-#' @usage
-#' quicksight_describe_dashboard_permissions(AwsAccountId, DashboardId)
+#' See [https://paws-r.github.io/docs/quicksight/describe_dashboard_permissions.html](https://paws-r.github.io/docs/quicksight/describe_dashboard_permissions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you're
-#' describing permissions for.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
+#' that you're describing permissions for.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard, also added to the IAM policy.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DashboardId = "string",
-#'   DashboardArn = "string",
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_dashboard_permissions(
-#'   AwsAccountId = "string",
-#'   DashboardId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2990,181 +1634,13 @@ quicksight_describe_dashboard_permissions <- function(AwsAccountId, DashboardId)
 #' Describes a dataset
 #'
 #' @description
-#' Describes a dataset.
+#' Describes a dataset. This operation doesn't support datasets that include uploaded files as a source.
 #'
-#' @usage
-#' quicksight_describe_data_set(AwsAccountId, DataSetId)
+#' See [https://paws-r.github.io/docs/quicksight/describe_data_set.html](https://paws-r.github.io/docs/quicksight/describe_data_set.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID for the dataset that you want to create. This ID is unique per
-#' AWS Region for each AWS account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSet = list(
-#'     Arn = "string",
-#'     DataSetId = "string",
-#'     Name = "string",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     PhysicalTableMap = list(
-#'       list(
-#'         RelationalTable = list(
-#'           DataSourceArn = "string",
-#'           Catalog = "string",
-#'           Schema = "string",
-#'           Name = "string",
-#'           InputColumns = list(
-#'             list(
-#'               Name = "string",
-#'               Type = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME"|"BIT"|"BOOLEAN"|"JSON"
-#'             )
-#'           )
-#'         ),
-#'         CustomSql = list(
-#'           DataSourceArn = "string",
-#'           Name = "string",
-#'           SqlQuery = "string",
-#'           Columns = list(
-#'             list(
-#'               Name = "string",
-#'               Type = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME"|"BIT"|"BOOLEAN"|"JSON"
-#'             )
-#'           )
-#'         ),
-#'         S3Source = list(
-#'           DataSourceArn = "string",
-#'           UploadSettings = list(
-#'             Format = "CSV"|"TSV"|"CLF"|"ELF"|"XLSX"|"JSON",
-#'             StartFromRow = 123,
-#'             ContainsHeader = TRUE|FALSE,
-#'             TextQualifier = "DOUBLE_QUOTE"|"SINGLE_QUOTE",
-#'             Delimiter = "string"
-#'           ),
-#'           InputColumns = list(
-#'             list(
-#'               Name = "string",
-#'               Type = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME"|"BIT"|"BOOLEAN"|"JSON"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     LogicalTableMap = list(
-#'       list(
-#'         Alias = "string",
-#'         DataTransforms = list(
-#'           list(
-#'             ProjectOperation = list(
-#'               ProjectedColumns = list(
-#'                 "string"
-#'               )
-#'             ),
-#'             FilterOperation = list(
-#'               ConditionExpression = "string"
-#'             ),
-#'             CreateColumnsOperation = list(
-#'               Columns = list(
-#'                 list(
-#'                   ColumnName = "string",
-#'                   ColumnId = "string",
-#'                   Expression = "string"
-#'                 )
-#'               )
-#'             ),
-#'             RenameColumnOperation = list(
-#'               ColumnName = "string",
-#'               NewColumnName = "string"
-#'             ),
-#'             CastColumnTypeOperation = list(
-#'               ColumnName = "string",
-#'               NewColumnType = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME",
-#'               Format = "string"
-#'             ),
-#'             TagColumnOperation = list(
-#'               ColumnName = "string",
-#'               Tags = list(
-#'                 list(
-#'                   ColumnGeographicRole = "COUNTRY"|"STATE"|"COUNTY"|"CITY"|"POSTCODE"|"LONGITUDE"|"LATITUDE",
-#'                   ColumnDescription = list(
-#'                     Text = "string"
-#'                   )
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         ),
-#'         Source = list(
-#'           JoinInstruction = list(
-#'             LeftOperand = "string",
-#'             RightOperand = "string",
-#'             LeftJoinKeyProperties = list(
-#'               UniqueKey = TRUE|FALSE
-#'             ),
-#'             RightJoinKeyProperties = list(
-#'               UniqueKey = TRUE|FALSE
-#'             ),
-#'             Type = "INNER"|"OUTER"|"LEFT"|"RIGHT",
-#'             OnClause = "string"
-#'           ),
-#'           PhysicalTableId = "string"
-#'         )
-#'       )
-#'     ),
-#'     OutputColumns = list(
-#'       list(
-#'         Name = "string",
-#'         Description = "string",
-#'         Type = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME"
-#'       )
-#'     ),
-#'     ImportMode = "SPICE"|"DIRECT_QUERY",
-#'     ConsumedSpiceCapacityInBytes = 123,
-#'     ColumnGroups = list(
-#'       list(
-#'         GeoSpatialColumnGroup = list(
-#'           Name = "string",
-#'           CountryCode = "US",
-#'           Columns = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     RowLevelPermissionDataSet = list(
-#'       Namespace = "string",
-#'       Arn = "string",
-#'       PermissionPolicy = "GRANT_ACCESS"|"DENY_ACCESS"
-#'     ),
-#'     ColumnLevelPermissionRules = list(
-#'       list(
-#'         Principals = list(
-#'           "string"
-#'         ),
-#'         ColumnNames = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_data_set(
-#'   AwsAccountId = "string",
-#'   DataSetId = "string"
-#' )
-#' ```
+#' Amazon Web Services Region for each Amazon Web Services account.
 #'
 #' @keywords internal
 #'
@@ -3190,43 +1666,12 @@ quicksight_describe_data_set <- function(AwsAccountId, DataSetId) {
 #'
 #' @description
 #' Describes the permissions on a dataset.
-#' 
-#' The permissions resource is
-#' `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id`.
 #'
-#' @usage
-#' quicksight_describe_data_set_permissions(AwsAccountId, DataSetId)
+#' See [https://paws-r.github.io/docs/quicksight/describe_data_set_permissions.html](https://paws-r.github.io/docs/quicksight/describe_data_set_permissions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID for the dataset that you want to create. This ID is unique per
-#' AWS Region for each AWS account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSetArn = "string",
-#'   DataSetId = "string",
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_data_set_permissions(
-#'   AwsAccountId = "string",
-#'   DataSetId = "string"
-#' )
-#' ```
+#' Amazon Web Services Region for each Amazon Web Services account.
 #'
 #' @keywords internal
 #'
@@ -3253,236 +1698,11 @@ quicksight_describe_data_set_permissions <- function(AwsAccountId, DataSetId) {
 #' @description
 #' Describes a data source.
 #'
-#' @usage
-#' quicksight_describe_data_source(AwsAccountId, DataSourceId)
+#' See [https://paws-r.github.io/docs/quicksight/describe_data_source.html](https://paws-r.github.io/docs/quicksight/describe_data_source.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
-#' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per AWS Region for each AWS
-#' account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSource = list(
-#'     Arn = "string",
-#'     DataSourceId = "string",
-#'     Name = "string",
-#'     Type = "ADOBE_ANALYTICS"|"AMAZON_ELASTICSEARCH"|"ATHENA"|"AURORA"|"AURORA_POSTGRESQL"|"AWS_IOT_ANALYTICS"|"GITHUB"|"JIRA"|"MARIADB"|"MYSQL"|"ORACLE"|"POSTGRESQL"|"PRESTO"|"REDSHIFT"|"S3"|"SALESFORCE"|"SERVICENOW"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"TWITTER"|"TIMESTREAM",
-#'     Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     DataSourceParameters = list(
-#'       AmazonElasticsearchParameters = list(
-#'         Domain = "string"
-#'       ),
-#'       AthenaParameters = list(
-#'         WorkGroup = "string"
-#'       ),
-#'       AuroraParameters = list(
-#'         Host = "string",
-#'         Port = 123,
-#'         Database = "string"
-#'       ),
-#'       AuroraPostgreSqlParameters = list(
-#'         Host = "string",
-#'         Port = 123,
-#'         Database = "string"
-#'       ),
-#'       AwsIotAnalyticsParameters = list(
-#'         DataSetName = "string"
-#'       ),
-#'       JiraParameters = list(
-#'         SiteBaseUrl = "string"
-#'       ),
-#'       MariaDbParameters = list(
-#'         Host = "string",
-#'         Port = 123,
-#'         Database = "string"
-#'       ),
-#'       MySqlParameters = list(
-#'         Host = "string",
-#'         Port = 123,
-#'         Database = "string"
-#'       ),
-#'       OracleParameters = list(
-#'         Host = "string",
-#'         Port = 123,
-#'         Database = "string"
-#'       ),
-#'       PostgreSqlParameters = list(
-#'         Host = "string",
-#'         Port = 123,
-#'         Database = "string"
-#'       ),
-#'       PrestoParameters = list(
-#'         Host = "string",
-#'         Port = 123,
-#'         Catalog = "string"
-#'       ),
-#'       RdsParameters = list(
-#'         InstanceId = "string",
-#'         Database = "string"
-#'       ),
-#'       RedshiftParameters = list(
-#'         Host = "string",
-#'         Port = 123,
-#'         Database = "string",
-#'         ClusterId = "string"
-#'       ),
-#'       S3Parameters = list(
-#'         ManifestFileLocation = list(
-#'           Bucket = "string",
-#'           Key = "string"
-#'         )
-#'       ),
-#'       ServiceNowParameters = list(
-#'         SiteBaseUrl = "string"
-#'       ),
-#'       SnowflakeParameters = list(
-#'         Host = "string",
-#'         Database = "string",
-#'         Warehouse = "string"
-#'       ),
-#'       SparkParameters = list(
-#'         Host = "string",
-#'         Port = 123
-#'       ),
-#'       SqlServerParameters = list(
-#'         Host = "string",
-#'         Port = 123,
-#'         Database = "string"
-#'       ),
-#'       TeradataParameters = list(
-#'         Host = "string",
-#'         Port = 123,
-#'         Database = "string"
-#'       ),
-#'       TwitterParameters = list(
-#'         Query = "string",
-#'         MaxRows = 123
-#'       )
-#'     ),
-#'     AlternateDataSourceParameters = list(
-#'       list(
-#'         AmazonElasticsearchParameters = list(
-#'           Domain = "string"
-#'         ),
-#'         AthenaParameters = list(
-#'           WorkGroup = "string"
-#'         ),
-#'         AuroraParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         AuroraPostgreSqlParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         AwsIotAnalyticsParameters = list(
-#'           DataSetName = "string"
-#'         ),
-#'         JiraParameters = list(
-#'           SiteBaseUrl = "string"
-#'         ),
-#'         MariaDbParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         MySqlParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         OracleParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         PostgreSqlParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         PrestoParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Catalog = "string"
-#'         ),
-#'         RdsParameters = list(
-#'           InstanceId = "string",
-#'           Database = "string"
-#'         ),
-#'         RedshiftParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string",
-#'           ClusterId = "string"
-#'         ),
-#'         S3Parameters = list(
-#'           ManifestFileLocation = list(
-#'             Bucket = "string",
-#'             Key = "string"
-#'           )
-#'         ),
-#'         ServiceNowParameters = list(
-#'           SiteBaseUrl = "string"
-#'         ),
-#'         SnowflakeParameters = list(
-#'           Host = "string",
-#'           Database = "string",
-#'           Warehouse = "string"
-#'         ),
-#'         SparkParameters = list(
-#'           Host = "string",
-#'           Port = 123
-#'         ),
-#'         SqlServerParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         TeradataParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         TwitterParameters = list(
-#'           Query = "string",
-#'           MaxRows = 123
-#'         )
-#'       )
-#'     ),
-#'     VpcConnectionProperties = list(
-#'       VpcConnectionArn = "string"
-#'     ),
-#'     SslProperties = list(
-#'       DisableSsl = TRUE|FALSE
-#'     ),
-#'     ErrorInfo = list(
-#'       Type = "ACCESS_DENIED"|"COPY_SOURCE_NOT_FOUND"|"TIMEOUT"|"ENGINE_VERSION_NOT_SUPPORTED"|"UNKNOWN_HOST"|"GENERIC_SQL_FAILURE"|"CONFLICT"|"UNKNOWN",
-#'       Message = "string"
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_data_source(
-#'   AwsAccountId = "string",
-#'   DataSourceId = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per Amazon Web Services
+#' Region for each Amazon Web Services account.
 #'
 #' @keywords internal
 #'
@@ -3509,39 +1729,11 @@ quicksight_describe_data_source <- function(AwsAccountId, DataSourceId) {
 #' @description
 #' Describes the resource permissions for a data source.
 #'
-#' @usage
-#' quicksight_describe_data_source_permissions(AwsAccountId, DataSourceId)
+#' See [https://paws-r.github.io/docs/quicksight/describe_data_source_permissions.html](https://paws-r.github.io/docs/quicksight/describe_data_source_permissions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
-#' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per AWS Region for each AWS
-#' account.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSourceArn = "string",
-#'   DataSourceId = "string",
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_data_source_permissions(
-#'   AwsAccountId = "string",
-#'   DataSourceId = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per Amazon Web Services
+#' Region for each Amazon Web Services account.
 #'
 #' @keywords internal
 #'
@@ -3563,44 +1755,109 @@ quicksight_describe_data_source_permissions <- function(AwsAccountId, DataSource
 }
 .quicksight$operations$describe_data_source_permissions <- quicksight_describe_data_source_permissions
 
+#' Describes a folder
+#'
+#' @description
+#' Describes a folder.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/describe_folder.html](https://paws-r.github.io/docs/quicksight/describe_folder.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
+#' @param FolderId &#91;required&#93; The ID of the folder.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_folder
+quicksight_describe_folder <- function(AwsAccountId, FolderId) {
+  op <- new_operation(
+    name = "DescribeFolder",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/folders/{FolderId}",
+    paginator = list()
+  )
+  input <- .quicksight$describe_folder_input(AwsAccountId = AwsAccountId, FolderId = FolderId)
+  output <- .quicksight$describe_folder_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_folder <- quicksight_describe_folder
+
+#' Describes permissions for a folder
+#'
+#' @description
+#' Describes permissions for a folder.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/describe_folder_permissions.html](https://paws-r.github.io/docs/quicksight/describe_folder_permissions.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
+#' @param FolderId &#91;required&#93; The ID of the folder.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_folder_permissions
+quicksight_describe_folder_permissions <- function(AwsAccountId, FolderId) {
+  op <- new_operation(
+    name = "DescribeFolderPermissions",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/folders/{FolderId}/permissions",
+    paginator = list()
+  )
+  input <- .quicksight$describe_folder_permissions_input(AwsAccountId = AwsAccountId, FolderId = FolderId)
+  output <- .quicksight$describe_folder_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_folder_permissions <- quicksight_describe_folder_permissions
+
+#' Describes the folder resolved permissions
+#'
+#' @description
+#' Describes the folder resolved permissions. Permissions consists of both folder direct permissions and the inherited permissions from the ancestor folders.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/describe_folder_resolved_permissions.html](https://paws-r.github.io/docs/quicksight/describe_folder_resolved_permissions.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
+#' @param FolderId &#91;required&#93; The ID of the folder.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_folder_resolved_permissions
+quicksight_describe_folder_resolved_permissions <- function(AwsAccountId, FolderId) {
+  op <- new_operation(
+    name = "DescribeFolderResolvedPermissions",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/folders/{FolderId}/resolved-permissions",
+    paginator = list()
+  )
+  input <- .quicksight$describe_folder_resolved_permissions_input(AwsAccountId = AwsAccountId, FolderId = FolderId)
+  output <- .quicksight$describe_folder_resolved_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_folder_resolved_permissions <- quicksight_describe_folder_resolved_permissions
+
 #' Returns an Amazon QuickSight group's description and Amazon Resource
 #' Name (ARN)
 #'
 #' @description
-#' Returns an Amazon QuickSight group's description and Amazon Resource
-#' Name (ARN).
+#' Returns an Amazon QuickSight group's description and Amazon Resource Name (ARN).
 #'
-#' @usage
-#' quicksight_describe_group(GroupName, AwsAccountId, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/describe_group.html](https://paws-r.github.io/docs/quicksight/describe_group.html) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group that you want to describe.
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the group is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
-#' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Group = list(
-#'     Arn = "string",
-#'     GroupName = "string",
-#'     Description = "string",
-#'     PrincipalId = "string"
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_group(
-#'   GroupName = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
+#' @param Namespace &#91;required&#93; The namespace of the group that you want described.
 #'
 #' @keywords internal
 #'
@@ -3622,51 +1879,53 @@ quicksight_describe_group <- function(GroupName, AwsAccountId, Namespace) {
 }
 .quicksight$operations$describe_group <- quicksight_describe_group
 
+#' Use the DescribeGroupMembership operation to determine if a user is a
+#' member of the specified group
+#'
+#' @description
+#' Use the [`describe_group_membership`][quicksight_describe_group_membership] operation to determine if a user is a member of the specified group. If the user exists and is a member of the specified group, an associated `GroupMember` object is returned.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/describe_group_membership.html](https://paws-r.github.io/docs/quicksight/describe_group_membership.html) for full documentation.
+#'
+#' @param MemberName &#91;required&#93; The user name of the user that you want to search for.
+#' @param GroupName &#91;required&#93; The name of the group that you want to search.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
+#' @param Namespace &#91;required&#93; The namespace that includes the group you are searching within.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_group_membership
+quicksight_describe_group_membership <- function(MemberName, GroupName, AwsAccountId, Namespace) {
+  op <- new_operation(
+    name = "DescribeGroupMembership",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/namespaces/{Namespace}/groups/{GroupName}/members/{MemberName}",
+    paginator = list()
+  )
+  input <- .quicksight$describe_group_membership_input(MemberName = MemberName, GroupName = GroupName, AwsAccountId = AwsAccountId, Namespace = Namespace)
+  output <- .quicksight$describe_group_membership_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_group_membership <- quicksight_describe_group_membership
+
 #' Describes an existing IAM policy assignment, as specified by the
 #' assignment name
 #'
 #' @description
-#' Describes an existing IAM policy assignment, as specified by the
-#' assignment name.
+#' Describes an existing IAM policy assignment, as specified by the assignment name.
 #'
-#' @usage
-#' quicksight_describe_iam_policy_assignment(AwsAccountId, AssignmentName,
-#'   Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/describe_iam_policy_assignment.html](https://paws-r.github.io/docs/quicksight/describe_iam_policy_assignment.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the assignment that you want to
-#' describe.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the assignment
+#' that you want to describe.
 #' @param AssignmentName &#91;required&#93; The name of the assignment, also called a rule.
 #' @param Namespace &#91;required&#93; The namespace that contains the assignment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   IAMPolicyAssignment = list(
-#'     AwsAccountId = "string",
-#'     AssignmentId = "string",
-#'     AssignmentName = "string",
-#'     PolicyArn = "string",
-#'     Identities = list(
-#'       list(
-#'         "string"
-#'       )
-#'     ),
-#'     AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED"
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_iam_policy_assignment(
-#'   AwsAccountId = "string",
-#'   AssignmentName = "string",
-#'   Namespace = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3693,54 +1952,11 @@ quicksight_describe_iam_policy_assignment <- function(AwsAccountId, AssignmentNa
 #' @description
 #' Describes a SPICE ingestion.
 #'
-#' @usage
-#' quicksight_describe_ingestion(AwsAccountId, DataSetId, IngestionId)
+#' See [https://paws-r.github.io/docs/quicksight/describe_ingestion.html](https://paws-r.github.io/docs/quicksight/describe_ingestion.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID of the dataset used in the ingestion.
 #' @param IngestionId &#91;required&#93; An ID for the ingestion.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Ingestion = list(
-#'     Arn = "string",
-#'     IngestionId = "string",
-#'     IngestionStatus = "INITIALIZED"|"QUEUED"|"RUNNING"|"FAILED"|"COMPLETED"|"CANCELLED",
-#'     ErrorInfo = list(
-#'       Type = "FAILURE_TO_ASSUME_ROLE"|"INGESTION_SUPERSEDED"|"INGESTION_CANCELED"|"DATA_SET_DELETED"|"DATA_SET_NOT_SPICE"|"S3_UPLOADED_FILE_DELETED"|"S3_MANIFEST_ERROR"|"DATA_TOLERANCE_EXCEPTION"|"SPICE_TABLE_NOT_FOUND"|"DATA_SET_SIZE_LIMIT_EXCEEDED"|"ROW_SIZE_LIMIT_EXCEEDED"|"ACCOUNT_CAPACITY_LIMIT_EXCEEDED"|"CUSTOMER_ERROR"|"DATA_SOURCE_NOT_FOUND"|"IAM_ROLE_NOT_AVAILABLE"|"CONNECTION_FAILURE"|"SQL_TABLE_NOT_FOUND"|"PERMISSION_DENIED"|"SSL_CERTIFICATE_VALIDATION_FAILURE"|"OAUTH_TOKEN_FAILURE"|"SOURCE_API_LIMIT_EXCEEDED_FAILURE"|"PASSWORD_AUTHENTICATION_FAILURE"|"SQL_SCHEMA_MISMATCH_ERROR"|"INVALID_DATE_FORMAT"|"INVALID_DATAPREP_SYNTAX"|"SOURCE_RESOURCE_LIMIT_EXCEEDED"|"SQL_INVALID_PARAMETER_VALUE"|"QUERY_TIMEOUT"|"SQL_NUMERIC_OVERFLOW"|"UNRESOLVABLE_HOST"|"UNROUTABLE_HOST"|"SQL_EXCEPTION"|"S3_FILE_INACCESSIBLE"|"IOT_FILE_NOT_FOUND"|"IOT_DATA_SET_FILE_EMPTY"|"INVALID_DATA_SOURCE_CONFIG"|"DATA_SOURCE_AUTH_FAILED"|"DATA_SOURCE_CONNECTION_FAILED"|"FAILURE_TO_PROCESS_JSON_FILE"|"INTERNAL_SERVICE_ERROR",
-#'       Message = "string"
-#'     ),
-#'     RowInfo = list(
-#'       RowsIngested = 123,
-#'       RowsDropped = 123
-#'     ),
-#'     QueueInfo = list(
-#'       WaitingOnIngestion = "string",
-#'       QueuedIngestion = "string"
-#'     ),
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     IngestionTimeInSeconds = 123,
-#'     IngestionSizeInBytes = 123,
-#'     RequestSource = "MANUAL"|"SCHEDULED",
-#'     RequestType = "INITIAL_INGESTION"|"EDIT"|"INCREMENTAL_REFRESH"|"FULL_REFRESH"
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_ingestion(
-#'   AwsAccountId = "string",
-#'   DataSetId = "string",
-#'   IngestionId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3762,45 +1978,45 @@ quicksight_describe_ingestion <- function(AwsAccountId, DataSetId, IngestionId) 
 }
 .quicksight$operations$describe_ingestion <- quicksight_describe_ingestion
 
+#' Provides a summary and status of IP rules
+#'
+#' @description
+#' Provides a summary and status of IP rules.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/describe_ip_restriction.html](https://paws-r.github.io/docs/quicksight/describe_ip_restriction.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the IP rules.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_describe_ip_restriction
+quicksight_describe_ip_restriction <- function(AwsAccountId) {
+  op <- new_operation(
+    name = "DescribeIpRestriction",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/ip-restriction",
+    paginator = list()
+  )
+  input <- .quicksight$describe_ip_restriction_input(AwsAccountId = AwsAccountId)
+  output <- .quicksight$describe_ip_restriction_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$describe_ip_restriction <- quicksight_describe_ip_restriction
+
 #' Describes the current namespace
 #'
 #' @description
 #' Describes the current namespace.
 #'
-#' @usage
-#' quicksight_describe_namespace(AwsAccountId, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/describe_namespace.html](https://paws-r.github.io/docs/quicksight/describe_namespace.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that contains the QuickSight namespace that
-#' you want to describe.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the Amazon
+#' QuickSight namespace that you want to describe.
 #' @param Namespace &#91;required&#93; The namespace that you want to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Namespace = list(
-#'     Name = "string",
-#'     Arn = "string",
-#'     CapacityRegion = "string",
-#'     CreationStatus = "CREATED"|"CREATING"|"DELETING"|"RETRYABLE_FAILURE"|"NON_RETRYABLE_FAILURE",
-#'     IdentityStore = "QUICKSIGHT",
-#'     NamespaceError = list(
-#'       Type = "PERMISSION_DENIED"|"INTERNAL_SERVICE_ERROR",
-#'       Message = "string"
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_namespace(
-#'   AwsAccountId = "string",
-#'   Namespace = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3827,12 +2043,10 @@ quicksight_describe_namespace <- function(AwsAccountId, Namespace) {
 #' @description
 #' Describes a template's metadata.
 #'
-#' @usage
-#' quicksight_describe_template(AwsAccountId, TemplateId, VersionNumber,
-#'   AliasName)
+#' See [https://paws-r.github.io/docs/quicksight/describe_template.html](https://paws-r.github.io/docs/quicksight/describe_template.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you're
-#' describing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
+#' that you're describing.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param VersionNumber (Optional) The number for the version to describe. If a `VersionNumber`
 #' parameter value isn't provided, the latest version of the template is
@@ -3842,82 +2056,6 @@ quicksight_describe_namespace <- function(AwsAccountId, Namespace) {
 #' can specify the latest version of the template by providing the keyword
 #' `$LATEST` in the `AliasName` parameter. The keyword `$PUBLISHED` doesn't
 #' apply to templates.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Template = list(
-#'     Arn = "string",
-#'     Name = "string",
-#'     Version = list(
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Errors = list(
-#'         list(
-#'           Type = "SOURCE_NOT_FOUND"|"DATA_SET_NOT_FOUND"|"INTERNAL_FAILURE"|"ACCESS_DENIED",
-#'           Message = "string"
-#'         )
-#'       ),
-#'       VersionNumber = 123,
-#'       Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'       DataSetConfigurations = list(
-#'         list(
-#'           Placeholder = "string",
-#'           DataSetSchema = list(
-#'             ColumnSchemaList = list(
-#'               list(
-#'                 Name = "string",
-#'                 DataType = "string",
-#'                 GeographicRole = "string"
-#'               )
-#'             )
-#'           ),
-#'           ColumnGroupSchemaList = list(
-#'             list(
-#'               Name = "string",
-#'               ColumnGroupColumnSchemaList = list(
-#'                 list(
-#'                   Name = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Description = "string",
-#'       SourceEntityArn = "string",
-#'       ThemeArn = "string",
-#'       Sheets = list(
-#'         list(
-#'           SheetId = "string",
-#'           Name = "string"
-#'         )
-#'       )
-#'     ),
-#'     TemplateId = "string",
-#'     LastUpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     )
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_template(
-#'   AwsAccountId = "string",
-#'   TemplateId = "string",
-#'   VersionNumber = 123,
-#'   AliasName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3944,40 +2082,16 @@ quicksight_describe_template <- function(AwsAccountId, TemplateId, VersionNumber
 #' @description
 #' Describes the template alias for a template.
 #'
-#' @usage
-#' quicksight_describe_template_alias(AwsAccountId, TemplateId, AliasName)
+#' See [https://paws-r.github.io/docs/quicksight/describe_template_alias.html](https://paws-r.github.io/docs/quicksight/describe_template_alias.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template alias that you're
-#' describing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
+#' alias that you're describing.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param AliasName &#91;required&#93; The name of the template alias that you want to describe. If you name a
 #' specific alias, you describe the version that the alias points to. You
 #' can specify the latest version of the template by providing the keyword
 #' `$LATEST` in the `AliasName` parameter. The keyword `$PUBLISHED` doesn't
 #' apply to templates.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemplateAlias = list(
-#'     AliasName = "string",
-#'     Arn = "string",
-#'     TemplateVersionNumber = 123
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_template_alias(
-#'   AwsAccountId = "string",
-#'   TemplateId = "string",
-#'   AliasName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4004,39 +2118,11 @@ quicksight_describe_template_alias <- function(AwsAccountId, TemplateId, AliasNa
 #' @description
 #' Describes read and write permissions on a template.
 #'
-#' @usage
-#' quicksight_describe_template_permissions(AwsAccountId, TemplateId)
+#' See [https://paws-r.github.io/docs/quicksight/describe_template_permissions.html](https://paws-r.github.io/docs/quicksight/describe_template_permissions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you're
-#' describing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
+#' that you're describing.
 #' @param TemplateId &#91;required&#93; The ID for the template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemplateId = "string",
-#'   TemplateArn = "string",
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_template_permissions(
-#'   AwsAccountId = "string",
-#'   TemplateId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4063,12 +2149,10 @@ quicksight_describe_template_permissions <- function(AwsAccountId, TemplateId) {
 #' @description
 #' Describes a theme.
 #'
-#' @usage
-#' quicksight_describe_theme(AwsAccountId, ThemeId, VersionNumber,
-#'   AliasName)
+#' See [https://paws-r.github.io/docs/quicksight/describe_theme.html](https://paws-r.github.io/docs/quicksight/describe_theme.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you're
-#' describing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme that
+#' you're describing.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
 #' @param VersionNumber The version number for the version to describe. If a `VersionNumber`
 #' parameter value isn't provided, the latest version of the theme is
@@ -4078,97 +2162,6 @@ quicksight_describe_template_permissions <- function(AwsAccountId, TemplateId) {
 #' specify the latest version of the theme by providing the keyword
 #' `$LATEST` in the `AliasName` parameter. The keyword `$PUBLISHED` doesn't
 #' apply to themes.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Theme = list(
-#'     Arn = "string",
-#'     Name = "string",
-#'     ThemeId = "string",
-#'     Version = list(
-#'       VersionNumber = 123,
-#'       Arn = "string",
-#'       Description = "string",
-#'       BaseThemeId = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Configuration = list(
-#'         DataColorPalette = list(
-#'           Colors = list(
-#'             "string"
-#'           ),
-#'           MinMaxGradient = list(
-#'             "string"
-#'           ),
-#'           EmptyFillColor = "string"
-#'         ),
-#'         UIColorPalette = list(
-#'           PrimaryForeground = "string",
-#'           PrimaryBackground = "string",
-#'           SecondaryForeground = "string",
-#'           SecondaryBackground = "string",
-#'           Accent = "string",
-#'           AccentForeground = "string",
-#'           Danger = "string",
-#'           DangerForeground = "string",
-#'           Warning = "string",
-#'           WarningForeground = "string",
-#'           Success = "string",
-#'           SuccessForeground = "string",
-#'           Dimension = "string",
-#'           DimensionForeground = "string",
-#'           Measure = "string",
-#'           MeasureForeground = "string"
-#'         ),
-#'         Sheet = list(
-#'           Tile = list(
-#'             Border = list(
-#'               Show = TRUE|FALSE
-#'             )
-#'           ),
-#'           TileLayout = list(
-#'             Gutter = list(
-#'               Show = TRUE|FALSE
-#'             ),
-#'             Margin = list(
-#'               Show = TRUE|FALSE
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Errors = list(
-#'         list(
-#'           Type = "INTERNAL_FAILURE",
-#'           Message = "string"
-#'         )
-#'       ),
-#'       Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED"
-#'     ),
-#'     CreatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     LastUpdatedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     Type = "QUICKSIGHT"|"CUSTOM"|"ALL"
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_theme(
-#'   AwsAccountId = "string",
-#'   ThemeId = "string",
-#'   VersionNumber = 123,
-#'   AliasName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4195,36 +2188,12 @@ quicksight_describe_theme <- function(AwsAccountId, ThemeId, VersionNumber = NUL
 #' @description
 #' Describes the alias for a theme.
 #'
-#' @usage
-#' quicksight_describe_theme_alias(AwsAccountId, ThemeId, AliasName)
+#' See [https://paws-r.github.io/docs/quicksight/describe_theme_alias.html](https://paws-r.github.io/docs/quicksight/describe_theme_alias.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme alias that you're
-#' describing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme alias
+#' that you're describing.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
 #' @param AliasName &#91;required&#93; The name of the theme alias that you want to describe.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ThemeAlias = list(
-#'     Arn = "string",
-#'     AliasName = "string",
-#'     ThemeVersionNumber = 123
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_theme_alias(
-#'   AwsAccountId = "string",
-#'   ThemeId = "string",
-#'   AliasName = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4251,39 +2220,11 @@ quicksight_describe_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
 #' @description
 #' Describes the read and write permissions for a theme.
 #'
-#' @usage
-#' quicksight_describe_theme_permissions(AwsAccountId, ThemeId)
+#' See [https://paws-r.github.io/docs/quicksight/describe_theme_permissions.html](https://paws-r.github.io/docs/quicksight/describe_theme_permissions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you're
-#' describing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme that
+#' you're describing.
 #' @param ThemeId &#91;required&#93; The ID for the theme that you want to describe permissions for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ThemeId = "string",
-#'   ThemeArn = "string",
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_theme_permissions(
-#'   AwsAccountId = "string",
-#'   ThemeId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4310,41 +2251,13 @@ quicksight_describe_theme_permissions <- function(AwsAccountId, ThemeId) {
 #' @description
 #' Returns information about a user, given the user name.
 #'
-#' @usage
-#' quicksight_describe_user(UserName, AwsAccountId, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/describe_user.html](https://paws-r.github.io/docs/quicksight/describe_user.html) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The name of the user that you want to describe.
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the user is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the user is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
 #' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   User = list(
-#'     Arn = "string",
-#'     UserName = "string",
-#'     Email = "string",
-#'     Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
-#'     IdentityType = "IAM"|"QUICKSIGHT",
-#'     Active = TRUE|FALSE,
-#'     PrincipalId = "string",
-#'     CustomPermissionsName = "string"
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_user(
-#'   UserName = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4366,39 +2279,125 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 }
 .quicksight$operations$describe_user <- quicksight_describe_user
 
-#' Generates a session URL and authorization code that you can use to embed
-#' an Amazon QuickSight read-only dashboard in your web server code
+#' Generates an embed URL that you can use to embed an Amazon QuickSight
+#' dashboard in your website, without having to register any reader users
 #'
 #' @description
-#' Generates a session URL and authorization code that you can use to embed
-#' an Amazon QuickSight read-only dashboard in your web server code. Before
-#' you use this command, make sure that you have configured the dashboards
-#' and permissions.
-#' 
-#' Currently, you can use `GetDashboardEmbedURL` only from the server, not
-#' from the user's browser. The following rules apply to the combination of
-#' URL and authorization code:
-#' 
-#' -   They must be used together.
-#' 
-#' -   They can be used one time only.
-#' 
-#' -   They are valid for 5 minutes after you run this command.
-#' 
-#' -   The resulting user session is valid for 10 hours.
-#' 
-#' For more information, see [Embedded
-#' Analytics](https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html)
-#' in the *Amazon QuickSight User Guide*.
+#' Generates an embed URL that you can use to embed an Amazon QuickSight dashboard in your website, without having to register any reader users. Before you use this action, make sure that you have configured the dashboards and permissions.
 #'
-#' @usage
-#' quicksight_get_dashboard_embed_url(AwsAccountId, DashboardId,
-#'   IdentityType, SessionLifetimeInMinutes, UndoRedoDisabled, ResetDisabled,
-#'   StatePersistenceEnabled, UserArn, Namespace, AdditionalDashboardIds)
+#' See [https://paws-r.github.io/docs/quicksight/generate_embed_url_for_anonymous_user.html](https://paws-r.github.io/docs/quicksight/generate_embed_url_for_anonymous_user.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that contains the dashboard that you're
-#' embedding.
-#' @param DashboardId &#91;required&#93; The ID for the dashboard, also added to the AWS Identity and Access
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the dashboard
+#' that you're embedding.
+#' @param SessionLifetimeInMinutes How many minutes the session is valid. The session lifetime must be in
+#' \[15-600\] minutes range.
+#' @param Namespace &#91;required&#93; The Amazon QuickSight namespace that the anonymous user virtually
+#' belongs to. If you are not using an Amazon QuickSight custom namespace,
+#' set this to `default`.
+#' @param SessionTags The session tags used for row-level security. Before you use this
+#' parameter, make sure that you have configured the relevant datasets
+#' using the `DataSet$RowLevelPermissionTagConfiguration` parameter so that
+#' session tags can be used to provide row-level security.
+#' 
+#' These are not the tags used for the Amazon Web Services resource tagging
+#' feature. For more information, see [Using Row-Level Security (RLS) with
+#' Tags](https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-rls-tags.html)in
+#' the *Amazon QuickSight User Guide*.
+#' @param AuthorizedResourceArns &#91;required&#93; The Amazon Resource Names (ARNs) for the Amazon QuickSight resources
+#' that the user is authorized to access during the lifetime of the
+#' session. If you choose `Dashboard` embedding experience, pass the list
+#' of dashboard ARNs in the account that you want the user to be able to
+#' view. Currently, you can pass up to 25 dashboard ARNs in each API call.
+#' @param ExperienceConfiguration &#91;required&#93; The configuration of the experience that you are embedding.
+#' @param AllowedDomains The domains that you want to add to the allow list for access to the
+#' generated URL that is then embedded. This optional parameter overrides
+#' the static domains that are configured in the Manage QuickSight menu in
+#' the Amazon QuickSight console. Instead, it allows only the domains that
+#' you include in this parameter. You can list up to three domains or
+#' subdomains in each API call.
+#' 
+#' To include all subdomains under a specific domain to the allow list, use
+#' `*`. For example, `https://*.sapp.amazon.com` includes all subdomains
+#' under `https://sapp.amazon.com`.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_generate_embed_url_for_anonymous_user
+quicksight_generate_embed_url_for_anonymous_user <- function(AwsAccountId, SessionLifetimeInMinutes = NULL, Namespace, SessionTags = NULL, AuthorizedResourceArns, ExperienceConfiguration, AllowedDomains = NULL) {
+  op <- new_operation(
+    name = "GenerateEmbedUrlForAnonymousUser",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/embed-url/anonymous-user",
+    paginator = list()
+  )
+  input <- .quicksight$generate_embed_url_for_anonymous_user_input(AwsAccountId = AwsAccountId, SessionLifetimeInMinutes = SessionLifetimeInMinutes, Namespace = Namespace, SessionTags = SessionTags, AuthorizedResourceArns = AuthorizedResourceArns, ExperienceConfiguration = ExperienceConfiguration, AllowedDomains = AllowedDomains)
+  output <- .quicksight$generate_embed_url_for_anonymous_user_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$generate_embed_url_for_anonymous_user <- quicksight_generate_embed_url_for_anonymous_user
+
+#' Generates an embed URL that you can use to embed an Amazon QuickSight
+#' experience in your website
+#'
+#' @description
+#' Generates an embed URL that you can use to embed an Amazon QuickSight experience in your website. This action can be used for any type of user registered in an Amazon QuickSight account. Before you use this action, make sure that you have configured the relevant Amazon QuickSight resource and permissions.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/generate_embed_url_for_registered_user.html](https://paws-r.github.io/docs/quicksight/generate_embed_url_for_registered_user.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the dashboard
+#' that you're embedding.
+#' @param SessionLifetimeInMinutes How many minutes the session is valid. The session lifetime must be in
+#' \[15-600\] minutes range.
+#' @param UserArn &#91;required&#93; The Amazon Resource Name for the registered user.
+#' @param ExperienceConfiguration &#91;required&#93; The experience you are embedding. For registered users, you can embed
+#' Amazon QuickSight dashboards or the entire Amazon QuickSight console.
+#' @param AllowedDomains The domains that you want to add to the allow list for access to the
+#' generated URL that is then embedded. This optional parameter overrides
+#' the static domains that are configured in the Manage QuickSight menu in
+#' the Amazon QuickSight console. Instead, it allows only the domains that
+#' you include in this parameter. You can list up to three domains or
+#' subdomains in each API call.
+#' 
+#' To include all subdomains under a specific domain to the allow list, use
+#' `*`. For example, `https://*.sapp.amazon.com` includes all subdomains
+#' under `https://sapp.amazon.com`.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_generate_embed_url_for_registered_user
+quicksight_generate_embed_url_for_registered_user <- function(AwsAccountId, SessionLifetimeInMinutes = NULL, UserArn, ExperienceConfiguration, AllowedDomains = NULL) {
+  op <- new_operation(
+    name = "GenerateEmbedUrlForRegisteredUser",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/embed-url/registered-user",
+    paginator = list()
+  )
+  input <- .quicksight$generate_embed_url_for_registered_user_input(AwsAccountId = AwsAccountId, SessionLifetimeInMinutes = SessionLifetimeInMinutes, UserArn = UserArn, ExperienceConfiguration = ExperienceConfiguration, AllowedDomains = AllowedDomains)
+  output <- .quicksight$generate_embed_url_for_registered_user_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$generate_embed_url_for_registered_user <- quicksight_generate_embed_url_for_registered_user
+
+#' Generates a temporary session URL and authorization code(bearer token)
+#' that you can use to embed an Amazon QuickSight read-only dashboard in
+#' your website or application
+#'
+#' @description
+#' Generates a temporary session URL and authorization code(bearer token) that you can use to embed an Amazon QuickSight read-only dashboard in your website or application. Before you use this command, make sure that you have configured the dashboards and permissions.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/get_dashboard_embed_url.html](https://paws-r.github.io/docs/quicksight/get_dashboard_embed_url.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the dashboard
+#' that you're embedding.
+#' @param DashboardId &#91;required&#93; The ID for the dashboard, also added to the Identity and Access
 #' Management (IAM) policy.
 #' @param IdentityType &#91;required&#93; The authentication method that the user uses to sign in.
 #' @param SessionLifetimeInMinutes How many minutes the session is valid. The session lifetime must be
@@ -4409,12 +2408,12 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 #' which enables the reset button.
 #' @param StatePersistenceEnabled Adds persistence of state for the user session in an embedded dashboard.
 #' Persistence applies to the sheet and the parameter settings. These are
-#' control settings that the dashboard subscriber (QuickSight reader)
-#' chooses while viewing the dashboard. If this is set to `TRUE`, the
-#' settings are the same when the subscriber reopens the same dashboard
-#' URL. The state is stored in QuickSight, not in a browser cookie. If this
-#' is set to FALSE, the state of the user session is not persisted. The
-#' default is `FALSE`.
+#' control settings that the dashboard subscriber (Amazon QuickSight
+#' reader) chooses while viewing the dashboard. If this is set to `TRUE`,
+#' the settings are the same when the subscriber reopens the same dashboard
+#' URL. The state is stored in Amazon QuickSight, not in a browser cookie.
+#' If this is set to FALSE, the state of the user session is not persisted.
+#' The default is `FALSE`.
 #' @param UserArn The Amazon QuickSight user's Amazon Resource Name (ARN), for use with
 #' `QUICKSIGHT` identity type. You can use this for any Amazon QuickSight
 #' users in your account (readers, authors, or admins) authenticated as one
@@ -4430,43 +2429,15 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 #' 
 #' Omit this parameter for users in the third group – IAM users and IAM
 #' role-based sessions.
-#' @param Namespace The QuickSight namespace that contains the dashboard IDs in this
-#' request. If you're not using a custom namespace, set this to
-#' "`default`".
-#' @param AdditionalDashboardIds A list of one or more dashboard IDs that you want to add to a session
-#' that includes anonymous users. The `IdentityType` parameter must be set
-#' to `ANONYMOUS` for this to work, because other identity types
-#' authenticate as QuickSight or IAM users. For example, if you set
+#' @param Namespace The Amazon QuickSight namespace that contains the dashboard IDs in this
+#' request. If you're not using a custom namespace, set
+#' `Namespace = default`.
+#' @param AdditionalDashboardIds A list of one or more dashboard IDs that you want anonymous users to
+#' have tempporary access to. Currently, the `IdentityType` parameter must
+#' be set to `ANONYMOUS` because other identity types authenticate as
+#' Amazon QuickSight or IAM users. For example, if you set
 #' "`--dashboard-id dash_id1 --dashboard-id dash_id2 dash_id3 identity-type ANONYMOUS`",
 #' the session can access all three dashboards.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EmbedUrl = "string",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_dashboard_embed_url(
-#'   AwsAccountId = "string",
-#'   DashboardId = "string",
-#'   IdentityType = "IAM"|"QUICKSIGHT"|"ANONYMOUS",
-#'   SessionLifetimeInMinutes = 123,
-#'   UndoRedoDisabled = TRUE|FALSE,
-#'   ResetDisabled = TRUE|FALSE,
-#'   StatePersistenceEnabled = TRUE|FALSE,
-#'   UserArn = "string",
-#'   Namespace = "string",
-#'   AdditionalDashboardIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4489,33 +2460,15 @@ quicksight_get_dashboard_embed_url <- function(AwsAccountId, DashboardId, Identi
 .quicksight$operations$get_dashboard_embed_url <- quicksight_get_dashboard_embed_url
 
 #' Generates a session URL and authorization code that you can use to embed
-#' the Amazon QuickSight console in your web server code
+#' the Amazon Amazon QuickSight console in your web server code
 #'
 #' @description
-#' Generates a session URL and authorization code that you can use to embed
-#' the Amazon QuickSight console in your web server code. Use
-#' [`get_session_embed_url`][quicksight_get_session_embed_url] where you
-#' want to provide an authoring portal that allows users to create data
-#' sources, datasets, analyses, and dashboards. The users who access an
-#' embedded QuickSight console need belong to the author or admin security
-#' cohort. If you want to restrict permissions to some of these features,
-#' add a custom permissions profile to the user with the
-#' [`update_user`][quicksight_update_user] API operation. Use
-#' [`register_user`][quicksight_register_user] API operation to add a new
-#' user with a custom permission profile attached. For more information,
-#' see the following sections in the *Amazon QuickSight User Guide*:
-#' 
-#' -   [Embedding the Amazon QuickSight
-#'     Console](https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html)
-#' 
-#' -   [Customizing Access to the Amazon QuickSight
-#'     Console](https://docs.aws.amazon.com/quicksight/latest/user/customizing-permissions-to-the-quicksight-console.html)
+#' Generates a session URL and authorization code that you can use to embed the Amazon Amazon QuickSight console in your web server code. Use [`get_session_embed_url`][quicksight_get_session_embed_url] where you want to provide an authoring portal that allows users to create data sources, datasets, analyses, and dashboards. The users who access an embedded Amazon QuickSight console need belong to the author or admin security cohort. If you want to restrict permissions to some of these features, add a custom permissions profile to the user with the [`update_user`][quicksight_update_user] API operation. Use [`register_user`][quicksight_register_user] API operation to add a new user with a custom permission profile attached. For more information, see the following sections in the *Amazon QuickSight User Guide*:
 #'
-#' @usage
-#' quicksight_get_session_embed_url(AwsAccountId, EntryPoint,
-#'   SessionLifetimeInMinutes, UserArn)
+#' See [https://paws-r.github.io/docs/quicksight/get_session_embed_url.html](https://paws-r.github.io/docs/quicksight/get_session_embed_url.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account associated with your QuickSight subscription.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account associated with your Amazon
+#' QuickSight subscription.
 #' @param EntryPoint The URL you use to access the embedded session. The entry point URL is
 #' constrained to the following paths:
 #' 
@@ -4528,10 +2481,10 @@ quicksight_get_dashboard_embed_url <- function(AwsAccountId, DashboardId, Identi
 #' -   `/start/favorites`
 #' 
 #' -   `/dashboards/DashboardId ` - where `DashboardId` is the actual ID
-#'     key from the QuickSight console URL of the dashboard
+#'     key from the Amazon QuickSight console URL of the dashboard
 #' 
 #' -   `/analyses/AnalysisId ` - where `AnalysisId` is the actual ID key
-#'     from the QuickSight console URL of the analysis
+#'     from the Amazon QuickSight console URL of the analysis
 #' @param SessionLifetimeInMinutes How many minutes the session is valid. The session lifetime must be
 #' 15-600 minutes.
 #' @param UserArn The Amazon QuickSight user's Amazon Resource Name (ARN), for use with
@@ -4543,32 +2496,12 @@ quicksight_get_dashboard_embed_url <- function(AwsAccountId, DashboardId, Identi
 #' 
 #' 2.  Invited nonfederated users
 #' 
-#' 3.  AWS Identity and Access Management (IAM) users and IAM role-based
+#' 3.  Identity and Access Management (IAM) users and IAM role-based
 #'     sessions authenticated through Federated Single Sign-On using SAML,
 #'     OpenID Connect, or IAM federation
 #' 
 #' Omit this parameter for users in the third group, IAM users and IAM
 #' role-based sessions.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EmbedUrl = "string",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_session_embed_url(
-#'   AwsAccountId = "string",
-#'   EntryPoint = "string",
-#'   SessionLifetimeInMinutes = 123,
-#'   UserArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4590,51 +2523,17 @@ quicksight_get_session_embed_url <- function(AwsAccountId, EntryPoint = NULL, Se
 }
 .quicksight$operations$get_session_embed_url <- quicksight_get_session_embed_url
 
-#' Lists Amazon QuickSight analyses that exist in the specified AWS account
+#' Lists Amazon QuickSight analyses that exist in the specified Amazon Web
+#' Services account
 #'
 #' @description
-#' Lists Amazon QuickSight analyses that exist in the specified AWS
-#' account.
+#' Lists Amazon QuickSight analyses that exist in the specified Amazon Web Services account.
 #'
-#' @usage
-#' quicksight_list_analyses(AwsAccountId, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_analyses.html](https://paws-r.github.io/docs/quicksight/list_analyses.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the analyses.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analyses.
 #' @param NextToken A pagination token that can be used in a subsequent request.
 #' @param MaxResults The maximum number of results to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AnalysisSummaryList = list(
-#'     list(
-#'       Arn = "string",
-#'       AnalysisId = "string",
-#'       Name = "string",
-#'       Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_analyses(
-#'   AwsAccountId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4656,53 +2555,20 @@ quicksight_list_analyses <- function(AwsAccountId, NextToken = NULL, MaxResults 
 }
 .quicksight$operations$list_analyses <- quicksight_list_analyses
 
-#' Lists all the versions of the dashboards in the QuickSight subscription
+#' Lists all the versions of the dashboards in the Amazon QuickSight
+#' subscription
 #'
 #' @description
-#' Lists all the versions of the dashboards in the QuickSight subscription.
+#' Lists all the versions of the dashboards in the Amazon QuickSight subscription.
 #'
-#' @usage
-#' quicksight_list_dashboard_versions(AwsAccountId, DashboardId, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_dashboard_versions.html](https://paws-r.github.io/docs/quicksight/list_dashboard_versions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you're
-#' listing versions for.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
+#' that you're listing versions for.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DashboardVersionSummaryList = list(
-#'     list(
-#'       Arn = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       VersionNumber = 123,
-#'       Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'       SourceEntityArn = "string",
-#'       Description = "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_dashboard_versions(
-#'   AwsAccountId = "string",
-#'   DashboardId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4724,55 +2590,18 @@ quicksight_list_dashboard_versions <- function(AwsAccountId, DashboardId, NextTo
 }
 .quicksight$operations$list_dashboard_versions <- quicksight_list_dashboard_versions
 
-#' Lists dashboards in an AWS account
+#' Lists dashboards in an Amazon Web Services account
 #'
 #' @description
-#' Lists dashboards in an AWS account.
+#' Lists dashboards in an Amazon Web Services account.
 #'
-#' @usage
-#' quicksight_list_dashboards(AwsAccountId, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_dashboards.html](https://paws-r.github.io/docs/quicksight/list_dashboards.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboards that you're
-#' listing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboards
+#' that you're listing.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DashboardSummaryList = list(
-#'     list(
-#'       Arn = "string",
-#'       DashboardId = "string",
-#'       Name = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       PublishedVersionNumber = 123,
-#'       LastPublishedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_dashboards(
-#'   AwsAccountId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4794,62 +2623,18 @@ quicksight_list_dashboards <- function(AwsAccountId, NextToken = NULL, MaxResult
 }
 .quicksight$operations$list_dashboards <- quicksight_list_dashboards
 
-#' Lists all of the datasets belonging to the current AWS account in an AWS
-#' Region
+#' Lists all of the datasets belonging to the current Amazon Web Services
+#' account in an Amazon Web Services Region
 #'
 #' @description
-#' Lists all of the datasets belonging to the current AWS account in an AWS
-#' Region.
-#' 
-#' The permissions resource is
-#' `arn:aws:quicksight:region:aws-account-id:dataset/*`.
+#' Lists all of the datasets belonging to the current Amazon Web Services account in an Amazon Web Services Region.
 #'
-#' @usage
-#' quicksight_list_data_sets(AwsAccountId, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_data_sets.html](https://paws-r.github.io/docs/quicksight/list_data_sets.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSetSummaries = list(
-#'     list(
-#'       Arn = "string",
-#'       DataSetId = "string",
-#'       Name = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       ImportMode = "SPICE"|"DIRECT_QUERY",
-#'       RowLevelPermissionDataSet = list(
-#'         Namespace = "string",
-#'         Arn = "string",
-#'         PermissionPolicy = "GRANT_ACCESS"|"DENY_ACCESS"
-#'       ),
-#'       ColumnLevelPermissionRulesApplied = TRUE|FALSE
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_data_sets(
-#'   AwsAccountId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4871,247 +2656,18 @@ quicksight_list_data_sets <- function(AwsAccountId, NextToken = NULL, MaxResults
 }
 .quicksight$operations$list_data_sets <- quicksight_list_data_sets
 
-#' Lists data sources in current AWS Region that belong to this AWS account
+#' Lists data sources in current Amazon Web Services Region that belong to
+#' this Amazon Web Services account
 #'
 #' @description
-#' Lists data sources in current AWS Region that belong to this AWS
-#' account.
+#' Lists data sources in current Amazon Web Services Region that belong to this Amazon Web Services account.
 #'
-#' @usage
-#' quicksight_list_data_sources(AwsAccountId, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_data_sources.html](https://paws-r.github.io/docs/quicksight/list_data_sources.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSources = list(
-#'     list(
-#'       Arn = "string",
-#'       DataSourceId = "string",
-#'       Name = "string",
-#'       Type = "ADOBE_ANALYTICS"|"AMAZON_ELASTICSEARCH"|"ATHENA"|"AURORA"|"AURORA_POSTGRESQL"|"AWS_IOT_ANALYTICS"|"GITHUB"|"JIRA"|"MARIADB"|"MYSQL"|"ORACLE"|"POSTGRESQL"|"PRESTO"|"REDSHIFT"|"S3"|"SALESFORCE"|"SERVICENOW"|"SNOWFLAKE"|"SPARK"|"SQLSERVER"|"TERADATA"|"TWITTER"|"TIMESTREAM",
-#'       Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       DataSourceParameters = list(
-#'         AmazonElasticsearchParameters = list(
-#'           Domain = "string"
-#'         ),
-#'         AthenaParameters = list(
-#'           WorkGroup = "string"
-#'         ),
-#'         AuroraParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         AuroraPostgreSqlParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         AwsIotAnalyticsParameters = list(
-#'           DataSetName = "string"
-#'         ),
-#'         JiraParameters = list(
-#'           SiteBaseUrl = "string"
-#'         ),
-#'         MariaDbParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         MySqlParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         OracleParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         PostgreSqlParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         PrestoParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Catalog = "string"
-#'         ),
-#'         RdsParameters = list(
-#'           InstanceId = "string",
-#'           Database = "string"
-#'         ),
-#'         RedshiftParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string",
-#'           ClusterId = "string"
-#'         ),
-#'         S3Parameters = list(
-#'           ManifestFileLocation = list(
-#'             Bucket = "string",
-#'             Key = "string"
-#'           )
-#'         ),
-#'         ServiceNowParameters = list(
-#'           SiteBaseUrl = "string"
-#'         ),
-#'         SnowflakeParameters = list(
-#'           Host = "string",
-#'           Database = "string",
-#'           Warehouse = "string"
-#'         ),
-#'         SparkParameters = list(
-#'           Host = "string",
-#'           Port = 123
-#'         ),
-#'         SqlServerParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         TeradataParameters = list(
-#'           Host = "string",
-#'           Port = 123,
-#'           Database = "string"
-#'         ),
-#'         TwitterParameters = list(
-#'           Query = "string",
-#'           MaxRows = 123
-#'         )
-#'       ),
-#'       AlternateDataSourceParameters = list(
-#'         list(
-#'           AmazonElasticsearchParameters = list(
-#'             Domain = "string"
-#'           ),
-#'           AthenaParameters = list(
-#'             WorkGroup = "string"
-#'           ),
-#'           AuroraParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           AuroraPostgreSqlParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           AwsIotAnalyticsParameters = list(
-#'             DataSetName = "string"
-#'           ),
-#'           JiraParameters = list(
-#'             SiteBaseUrl = "string"
-#'           ),
-#'           MariaDbParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           MySqlParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           OracleParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           PostgreSqlParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           PrestoParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Catalog = "string"
-#'           ),
-#'           RdsParameters = list(
-#'             InstanceId = "string",
-#'             Database = "string"
-#'           ),
-#'           RedshiftParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string",
-#'             ClusterId = "string"
-#'           ),
-#'           S3Parameters = list(
-#'             ManifestFileLocation = list(
-#'               Bucket = "string",
-#'               Key = "string"
-#'             )
-#'           ),
-#'           ServiceNowParameters = list(
-#'             SiteBaseUrl = "string"
-#'           ),
-#'           SnowflakeParameters = list(
-#'             Host = "string",
-#'             Database = "string",
-#'             Warehouse = "string"
-#'           ),
-#'           SparkParameters = list(
-#'             Host = "string",
-#'             Port = 123
-#'           ),
-#'           SqlServerParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           TeradataParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           TwitterParameters = list(
-#'             Query = "string",
-#'             MaxRows = 123
-#'           )
-#'         )
-#'       ),
-#'       VpcConnectionProperties = list(
-#'         VpcConnectionArn = "string"
-#'       ),
-#'       SslProperties = list(
-#'         DisableSsl = TRUE|FALSE
-#'       ),
-#'       ErrorInfo = list(
-#'         Type = "ACCESS_DENIED"|"COPY_SOURCE_NOT_FOUND"|"TIMEOUT"|"ENGINE_VERSION_NOT_SUPPORTED"|"UNKNOWN_HOST"|"GENERIC_SQL_FAILURE"|"CONFLICT"|"UNKNOWN",
-#'         Message = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_data_sources(
-#'   AwsAccountId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5133,48 +2689,85 @@ quicksight_list_data_sources <- function(AwsAccountId, NextToken = NULL, MaxResu
 }
 .quicksight$operations$list_data_sources <- quicksight_list_data_sources
 
+#' List all assets (DASHBOARD, ANALYSIS, and DATASET) in a folder
+#'
+#' @description
+#' List all assets (`DASHBOARD`, `ANALYSIS`, and `DATASET`) in a folder.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/list_folder_members.html](https://paws-r.github.io/docs/quicksight/list_folder_members.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
+#' @param FolderId &#91;required&#93; The ID of the folder.
+#' @param NextToken The token for the next set of results, or null if there are no more
+#' results.
+#' @param MaxResults The maximum number of results to be returned per request.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_folder_members
+quicksight_list_folder_members <- function(AwsAccountId, FolderId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListFolderMembers",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/folders/{FolderId}/members",
+    paginator = list()
+  )
+  input <- .quicksight$list_folder_members_input(AwsAccountId = AwsAccountId, FolderId = FolderId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$list_folder_members_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_folder_members <- quicksight_list_folder_members
+
+#' Lists all folders in an account
+#'
+#' @description
+#' Lists all folders in an account.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/list_folders.html](https://paws-r.github.io/docs/quicksight/list_folders.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
+#' @param NextToken The token for the next set of results, or null if there are no more
+#' results.
+#' @param MaxResults The maximum number of results to be returned per request.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_list_folders
+quicksight_list_folders <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListFolders",
+    http_method = "GET",
+    http_path = "/accounts/{AwsAccountId}/folders",
+    paginator = list()
+  )
+  input <- .quicksight$list_folders_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$list_folders_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$list_folders <- quicksight_list_folders
+
 #' Lists member users in a group
 #'
 #' @description
 #' Lists member users in a group.
 #'
-#' @usage
-#' quicksight_list_group_memberships(GroupName, NextToken, MaxResults,
-#'   AwsAccountId, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/list_group_memberships.html](https://paws-r.github.io/docs/quicksight/list_group_memberships.html) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group that you want to see a membership list of.
 #' @param NextToken A pagination token that can be used in a subsequent request.
 #' @param MaxResults The maximum number of results to return from this request.
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the group is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
-#' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GroupMemberList = list(
-#'     list(
-#'       Arn = "string",
-#'       MemberName = "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_group_memberships(
-#'   GroupName = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   AwsAccountId = "string",
-#'   Namespace = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
+#' @param Namespace &#91;required&#93; The namespace of the group that you want a list of users from.
 #'
 #' @keywords internal
 #'
@@ -5201,42 +2794,14 @@ quicksight_list_group_memberships <- function(GroupName, NextToken = NULL, MaxRe
 #' @description
 #' Lists all user groups in Amazon QuickSight.
 #'
-#' @usage
-#' quicksight_list_groups(AwsAccountId, NextToken, MaxResults, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/list_groups.html](https://paws-r.github.io/docs/quicksight/list_groups.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the group is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
 #' @param NextToken A pagination token that can be used in a subsequent request.
 #' @param MaxResults The maximum number of results to return.
-#' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GroupList = list(
-#'     list(
-#'       Arn = "string",
-#'       GroupName = "string",
-#'       Description = "string",
-#'       PrincipalId = "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_groups(
-#'   AwsAccountId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   Namespace = "string"
-#' )
-#' ```
+#' @param Namespace &#91;required&#93; The namespace that you want a list of groups from.
 #'
 #' @keywords internal
 #'
@@ -5263,43 +2828,15 @@ quicksight_list_groups <- function(AwsAccountId, NextToken = NULL, MaxResults = 
 #' @description
 #' Lists IAM policy assignments in the current Amazon QuickSight account.
 #'
-#' @usage
-#' quicksight_list_iam_policy_assignments(AwsAccountId, AssignmentStatus,
-#'   Namespace, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_iam_policy_assignments.html](https://paws-r.github.io/docs/quicksight/list_iam_policy_assignments.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains these IAM policy assignments.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains these IAM policy
+#' assignments.
 #' @param AssignmentStatus The status of the assignments.
 #' @param Namespace &#91;required&#93; The namespace for the assignments.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   IAMPolicyAssignments = list(
-#'     list(
-#'       AssignmentName = "string",
-#'       AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_iam_policy_assignments(
-#'   AwsAccountId = "string",
-#'   AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
-#'   Namespace = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5326,47 +2863,16 @@ quicksight_list_iam_policy_assignments <- function(AwsAccountId, AssignmentStatu
 #' group or groups that the user belongs to
 #'
 #' @description
-#' Lists all the IAM policy assignments, including the Amazon Resource
-#' Names (ARNs) for the IAM policies assigned to the specified user and
-#' group or groups that the user belongs to.
+#' Lists all the IAM policy assignments, including the Amazon Resource Names (ARNs) for the IAM policies assigned to the specified user and group or groups that the user belongs to.
 #'
-#' @usage
-#' quicksight_list_iam_policy_assignments_for_user(AwsAccountId, UserName,
-#'   NextToken, MaxResults, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/list_iam_policy_assignments_for_user.html](https://paws-r.github.io/docs/quicksight/list_iam_policy_assignments_for_user.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the assignments.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the assignments.
 #' @param UserName &#91;required&#93; The name of the user.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
 #' @param Namespace &#91;required&#93; The namespace of the assignment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ActiveAssignments = list(
-#'     list(
-#'       AssignmentName = "string",
-#'       PolicyArn = "string"
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   NextToken = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_iam_policy_assignments_for_user(
-#'   AwsAccountId = "string",
-#'   UserName = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   Namespace = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5393,61 +2899,13 @@ quicksight_list_iam_policy_assignments_for_user <- function(AwsAccountId, UserNa
 #' @description
 #' Lists the history of SPICE ingestions for a dataset.
 #'
-#' @usage
-#' quicksight_list_ingestions(DataSetId, NextToken, AwsAccountId,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_ingestions.html](https://paws-r.github.io/docs/quicksight/list_ingestions.html) for full documentation.
 #'
 #' @param DataSetId &#91;required&#93; The ID of the dataset used in the ingestion.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param MaxResults The maximum number of results to be returned per request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Ingestions = list(
-#'     list(
-#'       Arn = "string",
-#'       IngestionId = "string",
-#'       IngestionStatus = "INITIALIZED"|"QUEUED"|"RUNNING"|"FAILED"|"COMPLETED"|"CANCELLED",
-#'       ErrorInfo = list(
-#'         Type = "FAILURE_TO_ASSUME_ROLE"|"INGESTION_SUPERSEDED"|"INGESTION_CANCELED"|"DATA_SET_DELETED"|"DATA_SET_NOT_SPICE"|"S3_UPLOADED_FILE_DELETED"|"S3_MANIFEST_ERROR"|"DATA_TOLERANCE_EXCEPTION"|"SPICE_TABLE_NOT_FOUND"|"DATA_SET_SIZE_LIMIT_EXCEEDED"|"ROW_SIZE_LIMIT_EXCEEDED"|"ACCOUNT_CAPACITY_LIMIT_EXCEEDED"|"CUSTOMER_ERROR"|"DATA_SOURCE_NOT_FOUND"|"IAM_ROLE_NOT_AVAILABLE"|"CONNECTION_FAILURE"|"SQL_TABLE_NOT_FOUND"|"PERMISSION_DENIED"|"SSL_CERTIFICATE_VALIDATION_FAILURE"|"OAUTH_TOKEN_FAILURE"|"SOURCE_API_LIMIT_EXCEEDED_FAILURE"|"PASSWORD_AUTHENTICATION_FAILURE"|"SQL_SCHEMA_MISMATCH_ERROR"|"INVALID_DATE_FORMAT"|"INVALID_DATAPREP_SYNTAX"|"SOURCE_RESOURCE_LIMIT_EXCEEDED"|"SQL_INVALID_PARAMETER_VALUE"|"QUERY_TIMEOUT"|"SQL_NUMERIC_OVERFLOW"|"UNRESOLVABLE_HOST"|"UNROUTABLE_HOST"|"SQL_EXCEPTION"|"S3_FILE_INACCESSIBLE"|"IOT_FILE_NOT_FOUND"|"IOT_DATA_SET_FILE_EMPTY"|"INVALID_DATA_SOURCE_CONFIG"|"DATA_SOURCE_AUTH_FAILED"|"DATA_SOURCE_CONNECTION_FAILED"|"FAILURE_TO_PROCESS_JSON_FILE"|"INTERNAL_SERVICE_ERROR",
-#'         Message = "string"
-#'       ),
-#'       RowInfo = list(
-#'         RowsIngested = 123,
-#'         RowsDropped = 123
-#'       ),
-#'       QueueInfo = list(
-#'         WaitingOnIngestion = "string",
-#'         QueuedIngestion = "string"
-#'       ),
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       IngestionTimeInSeconds = 123,
-#'       IngestionSizeInBytes = 123,
-#'       RequestSource = "MANUAL"|"SCHEDULED",
-#'       RequestType = "INITIAL_INGESTION"|"EDIT"|"INCREMENTAL_REFRESH"|"FULL_REFRESH"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_ingestions(
-#'   DataSetId = "string",
-#'   NextToken = "string",
-#'   AwsAccountId = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5469,50 +2927,25 @@ quicksight_list_ingestions <- function(DataSetId, NextToken = NULL, AwsAccountId
 }
 .quicksight$operations$list_ingestions <- quicksight_list_ingestions
 
-#' Lists the namespaces for the specified AWS account
+#' Lists the namespaces for the specified Amazon Web Services account
 #'
 #' @description
-#' Lists the namespaces for the specified AWS account.
+#' Lists the namespaces for the specified Amazon Web Services account. This operation doesn't list deleted namespaces.
 #'
-#' @usage
-#' quicksight_list_namespaces(AwsAccountId, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_namespaces.html](https://paws-r.github.io/docs/quicksight/list_namespaces.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that contains the QuickSight namespaces that
-#' you want to list.
-#' @param NextToken A pagination token that can be used in a subsequent request.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the Amazon
+#' QuickSight namespaces that you want to list.
+#' @param NextToken A unique pagination token that can be used in a subsequent request. You
+#' will receive a pagination token in the response body of a previous
+#' `ListNameSpaces` API call if there is more data that can be returned. To
+#' receive the data, make another
+#' [`list_namespaces`][quicksight_list_namespaces] API call with the
+#' returned token to retrieve the next page of data. Each token is valid
+#' for 24 hours. If you try to make a
+#' [`list_namespaces`][quicksight_list_namespaces] API call with an expired
+#' token, you will receive a `HTTP 400 InvalidNextTokenException` error.
 #' @param MaxResults The maximum number of results to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Namespaces = list(
-#'     list(
-#'       Name = "string",
-#'       Arn = "string",
-#'       CapacityRegion = "string",
-#'       CreationStatus = "CREATED"|"CREATING"|"DELETING"|"RETRYABLE_FAILURE"|"NON_RETRYABLE_FAILURE",
-#'       IdentityStore = "QUICKSIGHT",
-#'       NamespaceError = list(
-#'         Type = "PERMISSION_DENIED"|"INTERNAL_SERVICE_ERROR",
-#'         Message = "string"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_namespaces(
-#'   AwsAccountId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5539,33 +2972,10 @@ quicksight_list_namespaces <- function(AwsAccountId, NextToken = NULL, MaxResult
 #' @description
 #' Lists the tags assigned to a resource.
 #'
-#' @usage
-#' quicksight_list_tags_for_resource(ResourceArn)
+#' See [https://paws-r.github.io/docs/quicksight/list_tags_for_resource.html](https://paws-r.github.io/docs/quicksight/list_tags_for_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want a list of
 #' tags for.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   ResourceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5592,43 +3002,14 @@ quicksight_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Lists all the aliases of a template.
 #'
-#' @usage
-#' quicksight_list_template_aliases(AwsAccountId, TemplateId, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_template_aliases.html](https://paws-r.github.io/docs/quicksight/list_template_aliases.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template aliases that you're
-#' listing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
+#' aliases that you're listing.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemplateAliasList = list(
-#'     list(
-#'       AliasName = "string",
-#'       Arn = "string",
-#'       TemplateVersionNumber = 123
-#'     )
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string",
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_template_aliases(
-#'   AwsAccountId = "string",
-#'   TemplateId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5654,50 +3035,16 @@ quicksight_list_template_aliases <- function(AwsAccountId, TemplateId, NextToken
 #' account
 #'
 #' @description
-#' Lists all the versions of the templates in the current Amazon QuickSight
-#' account.
+#' Lists all the versions of the templates in the current Amazon QuickSight account.
 #'
-#' @usage
-#' quicksight_list_template_versions(AwsAccountId, TemplateId, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_template_versions.html](https://paws-r.github.io/docs/quicksight/list_template_versions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the templates that you're
-#' listing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the templates
+#' that you're listing.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemplateVersionSummaryList = list(
-#'     list(
-#'       Arn = "string",
-#'       VersionNumber = 123,
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'       Description = "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_template_versions(
-#'   AwsAccountId = "string",
-#'   TemplateId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5724,47 +3071,13 @@ quicksight_list_template_versions <- function(AwsAccountId, TemplateId, NextToke
 #' @description
 #' Lists all the templates in the current Amazon QuickSight account.
 #'
-#' @usage
-#' quicksight_list_templates(AwsAccountId, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_templates.html](https://paws-r.github.io/docs/quicksight/list_templates.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the templates that you're
-#' listing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the templates
+#' that you're listing.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemplateSummaryList = list(
-#'     list(
-#'       Arn = "string",
-#'       TemplateId = "string",
-#'       Name = "string",
-#'       LatestVersionNumber = 123,
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_templates(
-#'   AwsAccountId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5791,43 +3104,14 @@ quicksight_list_templates <- function(AwsAccountId, NextToken = NULL, MaxResults
 #' @description
 #' Lists all the aliases of a theme.
 #'
-#' @usage
-#' quicksight_list_theme_aliases(AwsAccountId, ThemeId, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_theme_aliases.html](https://paws-r.github.io/docs/quicksight/list_theme_aliases.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme aliases that you're
-#' listing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme
+#' aliases that you're listing.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ThemeAliasList = list(
-#'     list(
-#'       Arn = "string",
-#'       AliasName = "string",
-#'       ThemeVersionNumber = 123
-#'     )
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string",
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_theme_aliases(
-#'   AwsAccountId = "string",
-#'   ThemeId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5849,51 +3133,20 @@ quicksight_list_theme_aliases <- function(AwsAccountId, ThemeId, NextToken = NUL
 }
 .quicksight$operations$list_theme_aliases <- quicksight_list_theme_aliases
 
-#' Lists all the versions of the themes in the current AWS account
+#' Lists all the versions of the themes in the current Amazon Web Services
+#' account
 #'
 #' @description
-#' Lists all the versions of the themes in the current AWS account.
+#' Lists all the versions of the themes in the current Amazon Web Services account.
 #'
-#' @usage
-#' quicksight_list_theme_versions(AwsAccountId, ThemeId, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_theme_versions.html](https://paws-r.github.io/docs/quicksight/list_theme_versions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the themes that you're listing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the themes that
+#' you're listing.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ThemeVersionSummaryList = list(
-#'     list(
-#'       VersionNumber = 123,
-#'       Arn = "string",
-#'       Description = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_theme_versions(
-#'   AwsAccountId = "string",
-#'   ThemeId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5915,15 +3168,15 @@ quicksight_list_theme_versions <- function(AwsAccountId, ThemeId, NextToken = NU
 }
 .quicksight$operations$list_theme_versions <- quicksight_list_theme_versions
 
-#' Lists all the themes in the current AWS account
+#' Lists all the themes in the current Amazon Web Services account
 #'
 #' @description
-#' Lists all the themes in the current AWS account.
+#' Lists all the themes in the current Amazon Web Services account.
 #'
-#' @usage
-#' quicksight_list_themes(AwsAccountId, NextToken, MaxResults, Type)
+#' See [https://paws-r.github.io/docs/quicksight/list_themes.html](https://paws-r.github.io/docs/quicksight/list_themes.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the themes that you're listing.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the themes that
+#' you're listing.
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
@@ -5935,42 +3188,8 @@ quicksight_list_theme_versions <- function(AwsAccountId, ThemeId, NextToken = NU
 #' -   `CUSTOM` - Display only the themes created by people using Amazon
 #'     QuickSight.
 #' 
-#' -   `QUICKSIGHT` - Display only the starting themes defined by
+#' -   `QUICKSIGHT` - Display only the starting themes defined by Amazon
 #'     QuickSight.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ThemeSummaryList = list(
-#'     list(
-#'       Arn = "string",
-#'       Name = "string",
-#'       ThemeId = "string",
-#'       LatestVersionNumber = 123,
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_themes(
-#'   AwsAccountId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   Type = "QUICKSIGHT"|"CUSTOM"|"ALL"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5996,49 +3215,18 @@ quicksight_list_themes <- function(AwsAccountId, NextToken = NULL, MaxResults = 
 #' member of
 #'
 #' @description
-#' Lists the Amazon QuickSight groups that an Amazon QuickSight user is a
-#' member of.
+#' Lists the Amazon QuickSight groups that an Amazon QuickSight user is a member of.
 #'
-#' @usage
-#' quicksight_list_user_groups(UserName, AwsAccountId, Namespace,
-#'   NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/list_user_groups.html](https://paws-r.github.io/docs/quicksight/list_user_groups.html) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The Amazon QuickSight user name that you want to list group memberships
 #' for.
-#' @param AwsAccountId &#91;required&#93; The AWS account ID that the user is in. Currently, you use the ID for
-#' the AWS account that contains your Amazon QuickSight account.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID that the user is in. Currently, you
+#' use the ID for the Amazon Web Services account that contains your Amazon
+#' QuickSight account.
 #' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
 #' @param NextToken A pagination token that can be used in a subsequent request.
 #' @param MaxResults The maximum number of results to return from this request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   GroupList = list(
-#'     list(
-#'       Arn = "string",
-#'       GroupName = "string",
-#'       Description = "string",
-#'       PrincipalId = "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_user_groups(
-#'   UserName = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6064,49 +3252,16 @@ quicksight_list_user_groups <- function(UserName, AwsAccountId, Namespace, NextT
 #' account
 #'
 #' @description
-#' Returns a list of all of the Amazon QuickSight users belonging to this
-#' account.
+#' Returns a list of all of the Amazon QuickSight users belonging to this account.
 #'
-#' @usage
-#' quicksight_list_users(AwsAccountId, NextToken, MaxResults, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/list_users.html](https://paws-r.github.io/docs/quicksight/list_users.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the user is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the user is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
 #' @param NextToken A pagination token that can be used in a subsequent request.
 #' @param MaxResults The maximum number of results to return from this request.
 #' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UserList = list(
-#'     list(
-#'       Arn = "string",
-#'       UserName = "string",
-#'       Email = "string",
-#'       Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
-#'       IdentityType = "IAM"|"QUICKSIGHT",
-#'       Active = TRUE|FALSE,
-#'       PrincipalId = "string",
-#'       CustomPermissionsName = "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_users(
-#'   AwsAccountId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123,
-#'   Namespace = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6129,17 +3284,13 @@ quicksight_list_users <- function(AwsAccountId, NextToken = NULL, MaxResults = N
 .quicksight$operations$list_users <- quicksight_list_users
 
 #' Creates an Amazon QuickSight user, whose identity is associated with the
-#' AWS Identity and Access Management (IAM) identity or role specified in
-#' the request
+#' Identity and Access Management (IAM) identity or role specified in the
+#' request
 #'
 #' @description
-#' Creates an Amazon QuickSight user, whose identity is associated with the
-#' AWS Identity and Access Management (IAM) identity or role specified in
-#' the request.
+#' Creates an Amazon QuickSight user, whose identity is associated with the Identity and Access Management (IAM) identity or role specified in the request.
 #'
-#' @usage
-#' quicksight_register_user(IdentityType, Email, UserRole, IamArn,
-#'   SessionName, AwsAccountId, Namespace, UserName, CustomPermissionsName)
+#' See [https://paws-r.github.io/docs/quicksight/register_user.html](https://paws-r.github.io/docs/quicksight/register_user.html) for full documentation.
 #'
 #' @param IdentityType &#91;required&#93; Amazon QuickSight supports several ways of managing the identity of
 #' users. This parameter accepts two values:
@@ -6172,9 +3323,10 @@ quicksight_list_users <- function(AwsAccountId, NextToken = NULL, MaxResults = N
 #' same IAM role if each user has a different session name. For more
 #' information on assuming IAM roles, see
 #' [`assume-role`](https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html)
-#' in the *AWS CLI Reference.*
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the user is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
+#' in the *CLI Reference.*
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the user is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
 #' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
 #' @param UserName The Amazon QuickSight user name that you want to create for the user you
 #' are registering.
@@ -6196,65 +3348,48 @@ quicksight_list_users <- function(AwsAccountId, NextToken = NULL, MaxResults = N
 #' 
 #' A set of custom permissions includes any combination of these
 #' restrictions. Currently, you need to create the profile names for custom
-#' permission sets by using the QuickSight console. Then, you use the
-#' [`register_user`][quicksight_register_user] API operation to assign the
-#' named set of permissions to a QuickSight user.
+#' permission sets by using the Amazon QuickSight console. Then, you use
+#' the [`register_user`][quicksight_register_user] API operation to assign
+#' the named set of permissions to a Amazon QuickSight user.
 #' 
-#' QuickSight custom permissions are applied through IAM policies.
+#' Amazon QuickSight custom permissions are applied through IAM policies.
 #' Therefore, they override the permissions typically granted by assigning
-#' QuickSight users to one of the default security cohorts in QuickSight
-#' (admin, author, reader).
+#' Amazon QuickSight users to one of the default security cohorts in Amazon
+#' QuickSight (admin, author, reader).
 #' 
-#' This feature is available only to QuickSight Enterprise edition
-#' subscriptions that use SAML 2.0-Based Federation for Single Sign-On
-#' (SSO).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   User = list(
-#'     Arn = "string",
-#'     UserName = "string",
-#'     Email = "string",
-#'     Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
-#'     IdentityType = "IAM"|"QUICKSIGHT",
-#'     Active = TRUE|FALSE,
-#'     PrincipalId = "string",
-#'     CustomPermissionsName = "string"
-#'   ),
-#'   UserInvitationUrl = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_user(
-#'   IdentityType = "IAM"|"QUICKSIGHT",
-#'   Email = "string",
-#'   UserRole = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
-#'   IamArn = "string",
-#'   SessionName = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string",
-#'   UserName = "string",
-#'   CustomPermissionsName = "string"
-#' )
-#' ```
+#' This feature is available only to Amazon QuickSight Enterprise edition
+#' subscriptions.
+#' @param ExternalLoginFederationProviderType The type of supported external login provider that provides identity to
+#' let a user federate into Amazon QuickSight with an associated Identity
+#' and Access Management(IAM) role. The type of supported external login
+#' provider can be one of the following.
+#' 
+#' -   `COGNITO`: Amazon Cognito. The provider URL is
+#'     cognito-identity.amazonaws.com. When choosing the `COGNITO` provider
+#'     type, don’t use the "CustomFederationProviderUrl" parameter which is
+#'     only needed when the external provider is custom.
+#' 
+#' -   `CUSTOM_OIDC`: Custom OpenID Connect (OIDC) provider. When choosing
+#'     `CUSTOM_OIDC` type, use the `CustomFederationProviderUrl` parameter
+#'     to provide the custom OIDC provider URL.
+#' @param CustomFederationProviderUrl The URL of the custom OpenID Connect (OIDC) provider that provides
+#' identity to let a user federate into Amazon QuickSight with an
+#' associated Identity and Access Management(IAM) role. This parameter
+#' should only be used when `ExternalLoginFederationProviderType` parameter
+#' is set to `CUSTOM_OIDC`.
+#' @param ExternalLoginId The identity ID for a user in the external login provider.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_register_user
-quicksight_register_user <- function(IdentityType, Email, UserRole, IamArn = NULL, SessionName = NULL, AwsAccountId, Namespace, UserName = NULL, CustomPermissionsName = NULL) {
+quicksight_register_user <- function(IdentityType, Email, UserRole, IamArn = NULL, SessionName = NULL, AwsAccountId, Namespace, UserName = NULL, CustomPermissionsName = NULL, ExternalLoginFederationProviderType = NULL, CustomFederationProviderUrl = NULL, ExternalLoginId = NULL) {
   op <- new_operation(
     name = "RegisterUser",
     http_method = "POST",
     http_path = "/accounts/{AwsAccountId}/namespaces/{Namespace}/users",
     paginator = list()
   )
-  input <- .quicksight$register_user_input(IdentityType = IdentityType, Email = Email, UserRole = UserRole, IamArn = IamArn, SessionName = SessionName, AwsAccountId = AwsAccountId, Namespace = Namespace, UserName = UserName, CustomPermissionsName = CustomPermissionsName)
+  input <- .quicksight$register_user_input(IdentityType = IdentityType, Email = Email, UserRole = UserRole, IamArn = IamArn, SessionName = SessionName, AwsAccountId = AwsAccountId, Namespace = Namespace, UserName = UserName, CustomPermissionsName = CustomPermissionsName, ExternalLoginFederationProviderType = ExternalLoginFederationProviderType, CustomFederationProviderUrl = CustomFederationProviderUrl, ExternalLoginId = ExternalLoginId)
   output <- .quicksight$register_user_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -6269,30 +3404,10 @@ quicksight_register_user <- function(IdentityType, Email, UserRole, IamArn = NUL
 #' @description
 #' Restores an analysis.
 #'
-#' @usage
-#' quicksight_restore_analysis(AwsAccountId, AnalysisId)
+#' See [https://paws-r.github.io/docs/quicksight/restore_analysis.html](https://paws-r.github.io/docs/quicksight/restore_analysis.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the analysis.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analysis.
 #' @param AnalysisId &#91;required&#93; The ID of the analysis that you're restoring.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Status = 123,
-#'   Arn = "string",
-#'   AnalysisId = "string",
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$restore_analysis(
-#'   AwsAccountId = "string",
-#'   AnalysisId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6319,55 +3434,14 @@ quicksight_restore_analysis <- function(AwsAccountId, AnalysisId) {
 #' @description
 #' Searches for analyses that belong to the user specified in the filter.
 #'
-#' @usage
-#' quicksight_search_analyses(AwsAccountId, Filters, NextToken, MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/search_analyses.html](https://paws-r.github.io/docs/quicksight/search_analyses.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the analyses that you're
-#' searching for.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analyses
+#' that you're searching for.
 #' @param Filters &#91;required&#93; The structure for the search filters that you want to apply to your
 #' search.
 #' @param NextToken A pagination token that can be used in a subsequent request.
 #' @param MaxResults The maximum number of results to return.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AnalysisSummaryList = list(
-#'     list(
-#'       Arn = "string",
-#'       AnalysisId = "string",
-#'       Name = "string",
-#'       Status = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$search_analyses(
-#'   AwsAccountId = "string",
-#'   Filters = list(
-#'     list(
-#'       Operator = "StringEquals",
-#'       Name = "QUICKSIGHT_USER",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6394,61 +3468,16 @@ quicksight_search_analyses <- function(AwsAccountId, Filters, NextToken = NULL, 
 #' @description
 #' Searches for dashboards that belong to a user.
 #'
-#' @usage
-#' quicksight_search_dashboards(AwsAccountId, Filters, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/quicksight/search_dashboards.html](https://paws-r.github.io/docs/quicksight/search_dashboards.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the user whose dashboards you're
-#' searching for.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the user whose
+#' dashboards you're searching for.
 #' @param Filters &#91;required&#93; The filters to apply to the search. Currently, you can search only by
 #' user name, for example,
 #' `"Filters": [ { "Name": "QUICKSIGHT_USER", "Operator": "StringEquals", "Value": "arn:aws:quicksight:us-east-1:1:user/default/UserName1" } ]`
 #' @param NextToken The token for the next set of results, or null if there are no more
 #' results.
 #' @param MaxResults The maximum number of results to be returned per request.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DashboardSummaryList = list(
-#'     list(
-#'       Arn = "string",
-#'       DashboardId = "string",
-#'       Name = "string",
-#'       CreatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       LastUpdatedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       ),
-#'       PublishedVersionNumber = 123,
-#'       LastPublishedTime = as.POSIXct(
-#'         "2015-01-01"
-#'       )
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$search_dashboards(
-#'   AwsAccountId = "string",
-#'   Filters = list(
-#'     list(
-#'       Operator = "StringEquals",
-#'       Name = "QUICKSIGHT_USER",
-#'       Value = "string"
-#'     )
-#'   ),
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6470,63 +3499,89 @@ quicksight_search_dashboards <- function(AwsAccountId, Filters, NextToken = NULL
 }
 .quicksight$operations$search_dashboards <- quicksight_search_dashboards
 
-#' Assigns one or more tags (key-value pairs) to the specified QuickSight
-#' resource
+#' Searches the subfolders in a folder
 #'
 #' @description
-#' Assigns one or more tags (key-value pairs) to the specified QuickSight
-#' resource.
-#' 
-#' Tags can help you organize and categorize your resources. You can also
-#' use them to scope user permissions, by granting a user permission to
-#' access or change only resources with certain tag values. You can use the
-#' [`tag_resource`][quicksight_tag_resource] operation with a resource that
-#' already has tags. If you specify a new tag key for the resource, this
-#' tag is appended to the list of tags associated with the resource. If you
-#' specify a tag key that is already associated with the resource, the new
-#' tag value that you specify replaces the previous value for that tag.
-#' 
-#' You can associate as many as 50 tags with a resource. QuickSight
-#' supports tagging on data set, data source, dashboard, and template.
-#' 
-#' Tagging for QuickSight works in a similar way to tagging for other AWS
-#' services, except for the following:
-#' 
-#' -   You can't use tags to track AWS costs for QuickSight. This
-#'     restriction is because QuickSight costs are based on users and SPICE
-#'     capacity, which aren't taggable resources.
-#' 
-#' -   QuickSight doesn't currently support the Tag Editor for AWS Resource
-#'     Groups.
+#' Searches the subfolders in a folder.
 #'
-#' @usage
-#' quicksight_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/quicksight/search_folders.html](https://paws-r.github.io/docs/quicksight/search_folders.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
+#' @param Filters &#91;required&#93; The filters to apply to the search. Currently, you can search only by
+#' the parent folder ARN. For example,
+#' `"Filters": [ { "Name": "PARENT_FOLDER_ARN", "Operator": "StringEquals", "Value": "arn:aws:quicksight:us-east-1:1:folder/folderId" } ]`.
+#' @param NextToken The token for the next set of results, or null if there are no more
+#' results.
+#' @param MaxResults The maximum number of results to be returned per request.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_search_folders
+quicksight_search_folders <- function(AwsAccountId, Filters, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "SearchFolders",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/search/folders",
+    paginator = list()
+  )
+  input <- .quicksight$search_folders_input(AwsAccountId = AwsAccountId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .quicksight$search_folders_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$search_folders <- quicksight_search_folders
+
+#' Use the SearchGroups operation to search groups in a specified Amazon
+#' QuickSight namespace using the supplied filters
+#'
+#' @description
+#' Use the [`search_groups`][quicksight_search_groups] operation to search groups in a specified Amazon QuickSight namespace using the supplied filters.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/search_groups.html](https://paws-r.github.io/docs/quicksight/search_groups.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
+#' @param NextToken A pagination token that can be used in a subsequent request.
+#' @param MaxResults The maximum number of results to return from this request.
+#' @param Namespace &#91;required&#93; The namespace that you want to search.
+#' @param Filters &#91;required&#93; The structure for the search filters that you want to apply to your
+#' search.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_search_groups
+quicksight_search_groups <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL, Namespace, Filters) {
+  op <- new_operation(
+    name = "SearchGroups",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/namespaces/{Namespace}/groups-search",
+    paginator = list()
+  )
+  input <- .quicksight$search_groups_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults, Namespace = Namespace, Filters = Filters)
+  output <- .quicksight$search_groups_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$search_groups <- quicksight_search_groups
+
+#' Assigns one or more tags (key-value pairs) to the specified Amazon
+#' QuickSight resource
+#'
+#' @description
+#' Assigns one or more tags (key-value pairs) to the specified Amazon QuickSight resource.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/tag_resource.html](https://paws-r.github.io/docs/quicksight/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to tag.
 #' @param Tags &#91;required&#93; Contains a map of the key-value pairs for the resource tag or tags
 #' assigned to the resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6553,31 +3608,11 @@ quicksight_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes a tag or tags from a resource.
 #'
-#' @usage
-#' quicksight_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/quicksight/untag_resource.html](https://paws-r.github.io/docs/quicksight/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to untag.
 #' @param TagKeys &#91;required&#93; The keys of the key-value pairs for the resource tag or tags assigned to
 #' the resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6599,53 +3634,20 @@ quicksight_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .quicksight$operations$untag_resource <- quicksight_untag_resource
 
-#' Updates Amazon QuickSight customizations the current AWS Region
+#' Updates Amazon QuickSight customizations for the current Amazon Web
+#' Services Region
 #'
 #' @description
-#' Updates Amazon QuickSight customizations the current AWS Region.
-#' Currently, the only customization you can use is a theme.
-#' 
-#' You can use customizations for your AWS account or, if you specify a
-#' namespace, for a QuickSight namespace instead. Customizations that apply
-#' to a namespace override customizations that apply to an AWS account. To
-#' find out which customizations apply, use the
-#' [`describe_account_customization`][quicksight_describe_account_customization]
-#' API operation.
+#' Updates Amazon QuickSight customizations for the current Amazon Web Services Region. Currently, the only customization that you can use is a theme.
 #'
-#' @usage
-#' quicksight_update_account_customization(AwsAccountId, Namespace,
-#'   AccountCustomization)
+#' See [https://paws-r.github.io/docs/quicksight/update_account_customization.html](https://paws-r.github.io/docs/quicksight/update_account_customization.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that you want to update QuickSight
-#' customizations for.
-#' @param Namespace The namespace that you want to update QuickSight customizations for.
-#' @param AccountCustomization &#91;required&#93; The QuickSight customizations you're updating in the current AWS Region.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string",
-#'   AccountCustomization = list(
-#'     DefaultTheme = "string"
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_account_customization(
-#'   AwsAccountId = "string",
-#'   Namespace = "string",
-#'   AccountCustomization = list(
-#'     DefaultTheme = "string"
-#'   )
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that you want to update
+#' Amazon QuickSight customizations for.
+#' @param Namespace The namespace that you want to update Amazon QuickSight customizations
+#' for.
+#' @param AccountCustomization &#91;required&#93; The Amazon QuickSight customizations you're updating in the current
+#' Amazon Web Services Region.
 #'
 #' @keywords internal
 #'
@@ -6667,41 +3669,23 @@ quicksight_update_account_customization <- function(AwsAccountId, Namespace = NU
 }
 .quicksight$operations$update_account_customization <- quicksight_update_account_customization
 
-#' Updates the Amazon QuickSight settings in your AWS account
+#' Updates the Amazon QuickSight settings in your Amazon Web Services
+#' account
 #'
 #' @description
-#' Updates the Amazon QuickSight settings in your AWS account.
+#' Updates the Amazon QuickSight settings in your Amazon Web Services account.
 #'
-#' @usage
-#' quicksight_update_account_settings(AwsAccountId, DefaultNamespace,
-#'   NotificationEmail)
+#' See [https://paws-r.github.io/docs/quicksight/update_account_settings.html](https://paws-r.github.io/docs/quicksight/update_account_settings.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that contains the QuickSight settings that
-#' you want to list.
-#' @param DefaultNamespace &#91;required&#93; The default namespace for this AWS account. Currently, the default is
-#' `default`. AWS Identity and Access Management (IAM) users that register
-#' for the first time with QuickSight provide an email that becomes
-#' associated with the default namespace.
-#' @param NotificationEmail The email address that you want QuickSight to send notifications to
-#' regarding your AWS account or QuickSight subscription.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_account_settings(
-#'   AwsAccountId = "string",
-#'   DefaultNamespace = "string",
-#'   NotificationEmail = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the Amazon
+#' QuickSight settings that you want to list.
+#' @param DefaultNamespace &#91;required&#93; The default namespace for this Amazon Web Services account. Currently,
+#' the default is `default`. Identity and Access Management (IAM) users
+#' that register for the first time with Amazon QuickSight provide an email
+#' address that becomes associated with the default namespace.
+#' @param NotificationEmail The email address that you want Amazon QuickSight to send notifications
+#' to regarding your Amazon Web Services account or Amazon QuickSight
+#' subscription.
 #'
 #' @keywords internal
 #'
@@ -6728,16 +3712,14 @@ quicksight_update_account_settings <- function(AwsAccountId, DefaultNamespace, N
 #' @description
 #' Updates an analysis in Amazon QuickSight
 #'
-#' @usage
-#' quicksight_update_analysis(AwsAccountId, AnalysisId, Name, Parameters,
-#'   SourceEntity, ThemeArn)
+#' See [https://paws-r.github.io/docs/quicksight/update_analysis.html](https://paws-r.github.io/docs/quicksight/update_analysis.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the analysis that you're
-#' updating.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analysis
+#' that you're updating.
 #' @param AnalysisId &#91;required&#93; The ID for the analysis that you're updating. This ID displays in the
 #' URL of the analysis.
 #' @param Name &#91;required&#93; A descriptive name for the analysis that you're updating. This name
-#' displays for the analysis in the QuickSight console.
+#' displays for the analysis in the Amazon QuickSight console.
 #' @param Parameters The parameter names and override values that you want to use. An
 #' analysis can have any parameter type, and some parameters might accept
 #' multiple values.
@@ -6745,77 +3727,8 @@ quicksight_update_account_settings <- function(AwsAccountId, DefaultNamespace, N
 #' metadata structure contains details that describe a source template and
 #' one or more datasets.
 #' @param ThemeArn The Amazon Resource Name (ARN) for the theme to apply to the analysis
-#' that you're creating. To see the theme in the QuickSight console, make
-#' sure that you have access to it.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   AnalysisId = "string",
-#'   UpdateStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_analysis(
-#'   AwsAccountId = "string",
-#'   AnalysisId = "string",
-#'   Name = "string",
-#'   Parameters = list(
-#'     StringParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     IntegerParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           123
-#'         )
-#'       )
-#'     ),
-#'     DecimalParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           123.0
-#'         )
-#'       )
-#'     ),
-#'     DateTimeParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           as.POSIXct(
-#'             "2015-01-01"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   SourceEntity = list(
-#'     SourceTemplate = list(
-#'       DataSetReferences = list(
-#'         list(
-#'           DataSetPlaceholder = "string",
-#'           DataSetArn = "string"
-#'         )
-#'       ),
-#'       Arn = "string"
-#'     )
-#'   ),
-#'   ThemeArn = "string"
-#' )
-#' ```
+#' that you're creating. To see the theme in the Amazon QuickSight console,
+#' make sure that you have access to it.
 #'
 #' @keywords internal
 #'
@@ -6842,62 +3755,17 @@ quicksight_update_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 #' @description
 #' Updates the read and write permissions for an analysis.
 #'
-#' @usage
-#' quicksight_update_analysis_permissions(AwsAccountId, AnalysisId,
-#'   GrantPermissions, RevokePermissions)
+#' See [https://paws-r.github.io/docs/quicksight/update_analysis_permissions.html](https://paws-r.github.io/docs/quicksight/update_analysis_permissions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the analysis whose permissions
-#' you're updating. You must be using the AWS account that the analysis is
-#' in.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the analysis
+#' whose permissions you're updating. You must be using the Amazon Web
+#' Services account that the analysis is in.
 #' @param AnalysisId &#91;required&#93; The ID of the analysis whose permissions you're updating. The ID is part
 #' of the analysis URL.
 #' @param GrantPermissions A structure that describes the permissions to add and the principal to
 #' add them to.
 #' @param RevokePermissions A structure that describes the permissions to remove and the principal
 #' to remove them from.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AnalysisArn = "string",
-#'   AnalysisId = "string",
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_analysis_permissions(
-#'   AwsAccountId = "string",
-#'   AnalysisId = "string",
-#'   GrantPermissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RevokePermissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -6919,18 +3787,15 @@ quicksight_update_analysis_permissions <- function(AwsAccountId, AnalysisId, Gra
 }
 .quicksight$operations$update_analysis_permissions <- quicksight_update_analysis_permissions
 
-#' Updates a dashboard in an AWS account
+#' Updates a dashboard in an Amazon Web Services account
 #'
 #' @description
-#' Updates a dashboard in an AWS account.
+#' Updates a dashboard in an Amazon Web Services account.
 #'
-#' @usage
-#' quicksight_update_dashboard(AwsAccountId, DashboardId, Name,
-#'   SourceEntity, Parameters, VersionDescription, DashboardPublishOptions,
-#'   ThemeArn)
+#' See [https://paws-r.github.io/docs/quicksight/update_dashboard.html](https://paws-r.github.io/docs/quicksight/update_dashboard.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you're
-#' updating.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
+#' that you're updating.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard.
 #' @param Name &#91;required&#93; The display name of the dashboard.
 #' @param SourceEntity &#91;required&#93; The entity that you are using as a source when you update the dashboard.
@@ -6940,8 +3805,8 @@ quicksight_update_analysis_permissions <- function(AwsAccountId, AnalysisId, Gra
 #' analysis, first convert the analysis to a template by using the
 #' [`create_template`][quicksight_create_template] API operation. For
 #' `SourceTemplate`, specify the Amazon Resource Name (ARN) of the source
-#' template. The `SourceTemplate` ARN can contain any AWS Account and any
-#' QuickSight-supported AWS Region.
+#' template. The `SourceTemplate` ARN can contain any Amazon Web Services
+#' account and any Amazon QuickSight-supported Amazon Web Services Region.
 #' 
 #' Use the `DataSetReferences` entity within `SourceTemplate` to list the
 #' replacement datasets for the placeholders listed in the original. The
@@ -6954,9 +3819,9 @@ quicksight_update_analysis_permissions <- function(AwsAccountId, AnalysisId, Gra
 #' 
 #' -   `AvailabilityStatus` for `AdHocFilteringOption` - This status can be
 #'     either `ENABLED` or `DISABLED`. When this is set to `DISABLED`,
-#'     QuickSight disables the left filter pane on the published dashboard,
-#'     which can be used for ad hoc (one-time) filtering. This option is
-#'     `ENABLED` by default.
+#'     Amazon QuickSight disables the left filter pane on the published
+#'     dashboard, which can be used for ad hoc (one-time) filtering. This
+#'     option is `ENABLED` by default.
 #' 
 #' -   `AvailabilityStatus` for `ExportToCSVOption` - This status can be
 #'     either `ENABLED` or `DISABLED`. The visual option to export data to
@@ -6969,89 +3834,7 @@ quicksight_update_analysis_permissions <- function(AwsAccountId, AnalysisId, Gra
 #' @param ThemeArn The Amazon Resource Name (ARN) of the theme that is being used for this
 #' dashboard. If you add a value for this field, it overrides the value
 #' that was originally associated with the entity. The theme ARN must exist
-#' in the same AWS account where you create the dashboard.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   VersionArn = "string",
-#'   DashboardId = "string",
-#'   CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_dashboard(
-#'   AwsAccountId = "string",
-#'   DashboardId = "string",
-#'   Name = "string",
-#'   SourceEntity = list(
-#'     SourceTemplate = list(
-#'       DataSetReferences = list(
-#'         list(
-#'           DataSetPlaceholder = "string",
-#'           DataSetArn = "string"
-#'         )
-#'       ),
-#'       Arn = "string"
-#'     )
-#'   ),
-#'   Parameters = list(
-#'     StringParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           "string"
-#'         )
-#'       )
-#'     ),
-#'     IntegerParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           123
-#'         )
-#'       )
-#'     ),
-#'     DecimalParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           123.0
-#'         )
-#'       )
-#'     ),
-#'     DateTimeParameters = list(
-#'       list(
-#'         Name = "string",
-#'         Values = list(
-#'           as.POSIXct(
-#'             "2015-01-01"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   VersionDescription = "string",
-#'   DashboardPublishOptions = list(
-#'     AdHocFilteringOption = list(
-#'       AvailabilityStatus = "ENABLED"|"DISABLED"
-#'     ),
-#'     ExportToCSVOption = list(
-#'       AvailabilityStatus = "ENABLED"|"DISABLED"
-#'     ),
-#'     SheetControlsOption = list(
-#'       VisibilityState = "EXPANDED"|"COLLAPSED"
-#'     )
-#'   ),
-#'   ThemeArn = "string"
-#' )
-#' ```
+#' in the same Amazon Web Services account where you create the dashboard.
 #'
 #' @keywords internal
 #'
@@ -7078,70 +3861,27 @@ quicksight_update_dashboard <- function(AwsAccountId, DashboardId, Name, SourceE
 #' @description
 #' Updates read and write permissions on a dashboard.
 #'
-#' @usage
-#' quicksight_update_dashboard_permissions(AwsAccountId, DashboardId,
-#'   GrantPermissions, RevokePermissions)
+#' See [https://paws-r.github.io/docs/quicksight/update_dashboard_permissions.html](https://paws-r.github.io/docs/quicksight/update_dashboard_permissions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard whose permissions
-#' you're updating.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
+#' whose permissions you're updating.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard.
 #' @param GrantPermissions The permissions that you want to grant on this resource.
 #' @param RevokePermissions The permissions that you want to revoke from this resource.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DashboardArn = "string",
-#'   DashboardId = "string",
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_dashboard_permissions(
-#'   AwsAccountId = "string",
-#'   DashboardId = "string",
-#'   GrantPermissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RevokePermissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
+#' @param GrantLinkPermissions Grants link permissions to all users in a defined namespace.
+#' @param RevokeLinkPermissions Revokes link permissions from all users in a defined namespace.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_update_dashboard_permissions
-quicksight_update_dashboard_permissions <- function(AwsAccountId, DashboardId, GrantPermissions = NULL, RevokePermissions = NULL) {
+quicksight_update_dashboard_permissions <- function(AwsAccountId, DashboardId, GrantPermissions = NULL, RevokePermissions = NULL, GrantLinkPermissions = NULL, RevokeLinkPermissions = NULL) {
   op <- new_operation(
     name = "UpdateDashboardPermissions",
     http_method = "PUT",
     http_path = "/accounts/{AwsAccountId}/dashboards/{DashboardId}/permissions",
     paginator = list()
   )
-  input <- .quicksight$update_dashboard_permissions_input(AwsAccountId = AwsAccountId, DashboardId = DashboardId, GrantPermissions = GrantPermissions, RevokePermissions = RevokePermissions)
+  input <- .quicksight$update_dashboard_permissions_input(AwsAccountId = AwsAccountId, DashboardId = DashboardId, GrantPermissions = GrantPermissions, RevokePermissions = RevokePermissions, GrantLinkPermissions = GrantLinkPermissions, RevokeLinkPermissions = RevokeLinkPermissions)
   output <- .quicksight$update_dashboard_permissions_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -7156,34 +3896,12 @@ quicksight_update_dashboard_permissions <- function(AwsAccountId, DashboardId, G
 #' @description
 #' Updates the published version of a dashboard.
 #'
-#' @usage
-#' quicksight_update_dashboard_published_version(AwsAccountId, DashboardId,
-#'   VersionNumber)
+#' See [https://paws-r.github.io/docs/quicksight/update_dashboard_published_version.html](https://paws-r.github.io/docs/quicksight/update_dashboard_published_version.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the dashboard that you're
-#' updating.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the dashboard
+#' that you're updating.
 #' @param DashboardId &#91;required&#93; The ID for the dashboard.
 #' @param VersionNumber &#91;required&#93; The version number of the dashboard.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DashboardId = "string",
-#'   DashboardArn = "string",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_dashboard_published_version(
-#'   AwsAccountId = "string",
-#'   DashboardId = "string",
-#'   VersionNumber = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7208,191 +3926,40 @@ quicksight_update_dashboard_published_version <- function(AwsAccountId, Dashboar
 #' Updates a dataset
 #'
 #' @description
-#' Updates a dataset.
+#' Updates a dataset. This operation doesn't support datasets that include uploaded files as a source.
 #'
-#' @usage
-#' quicksight_update_data_set(AwsAccountId, DataSetId, Name,
-#'   PhysicalTableMap, LogicalTableMap, ImportMode, ColumnGroups,
-#'   RowLevelPermissionDataSet, ColumnLevelPermissionRules)
+#' See [https://paws-r.github.io/docs/quicksight/update_data_set.html](https://paws-r.github.io/docs/quicksight/update_data_set.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID for the dataset that you want to update. This ID is unique per
-#' AWS Region for each AWS account.
+#' Amazon Web Services Region for each Amazon Web Services account.
 #' @param Name &#91;required&#93; The display name for the dataset.
 #' @param PhysicalTableMap &#91;required&#93; Declares the physical tables that are available in the underlying data
 #' sources.
 #' @param LogicalTableMap Configures the combination and transformation of the data from the
 #' physical tables.
 #' @param ImportMode &#91;required&#93; Indicates whether you want to import the data into SPICE.
-#' @param ColumnGroups Groupings of columns that work together in certain QuickSight features.
-#' Currently, only geospatial hierarchy is supported.
+#' @param ColumnGroups Groupings of columns that work together in certain Amazon QuickSight
+#' features. Currently, only geospatial hierarchy is supported.
+#' @param FieldFolders The folder that contains fields and nested subfolders for your dataset.
 #' @param RowLevelPermissionDataSet The row-level security configuration for the data you want to create.
+#' @param RowLevelPermissionTagConfiguration The configuration of tags on a dataset to set row-level security.
+#' Row-level security tags are currently supported for anonymous embedding
+#' only.
 #' @param ColumnLevelPermissionRules A set of one or more definitions of a ` ColumnLevelPermissionRule `.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   DataSetId = "string",
-#'   IngestionArn = "string",
-#'   IngestionId = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_data_set(
-#'   AwsAccountId = "string",
-#'   DataSetId = "string",
-#'   Name = "string",
-#'   PhysicalTableMap = list(
-#'     list(
-#'       RelationalTable = list(
-#'         DataSourceArn = "string",
-#'         Catalog = "string",
-#'         Schema = "string",
-#'         Name = "string",
-#'         InputColumns = list(
-#'           list(
-#'             Name = "string",
-#'             Type = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME"|"BIT"|"BOOLEAN"|"JSON"
-#'           )
-#'         )
-#'       ),
-#'       CustomSql = list(
-#'         DataSourceArn = "string",
-#'         Name = "string",
-#'         SqlQuery = "string",
-#'         Columns = list(
-#'           list(
-#'             Name = "string",
-#'             Type = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME"|"BIT"|"BOOLEAN"|"JSON"
-#'           )
-#'         )
-#'       ),
-#'       S3Source = list(
-#'         DataSourceArn = "string",
-#'         UploadSettings = list(
-#'           Format = "CSV"|"TSV"|"CLF"|"ELF"|"XLSX"|"JSON",
-#'           StartFromRow = 123,
-#'           ContainsHeader = TRUE|FALSE,
-#'           TextQualifier = "DOUBLE_QUOTE"|"SINGLE_QUOTE",
-#'           Delimiter = "string"
-#'         ),
-#'         InputColumns = list(
-#'           list(
-#'             Name = "string",
-#'             Type = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME"|"BIT"|"BOOLEAN"|"JSON"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   LogicalTableMap = list(
-#'     list(
-#'       Alias = "string",
-#'       DataTransforms = list(
-#'         list(
-#'           ProjectOperation = list(
-#'             ProjectedColumns = list(
-#'               "string"
-#'             )
-#'           ),
-#'           FilterOperation = list(
-#'             ConditionExpression = "string"
-#'           ),
-#'           CreateColumnsOperation = list(
-#'             Columns = list(
-#'               list(
-#'                 ColumnName = "string",
-#'                 ColumnId = "string",
-#'                 Expression = "string"
-#'               )
-#'             )
-#'           ),
-#'           RenameColumnOperation = list(
-#'             ColumnName = "string",
-#'             NewColumnName = "string"
-#'           ),
-#'           CastColumnTypeOperation = list(
-#'             ColumnName = "string",
-#'             NewColumnType = "STRING"|"INTEGER"|"DECIMAL"|"DATETIME",
-#'             Format = "string"
-#'           ),
-#'           TagColumnOperation = list(
-#'             ColumnName = "string",
-#'             Tags = list(
-#'               list(
-#'                 ColumnGeographicRole = "COUNTRY"|"STATE"|"COUNTY"|"CITY"|"POSTCODE"|"LONGITUDE"|"LATITUDE",
-#'                 ColumnDescription = list(
-#'                   Text = "string"
-#'                 )
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       Source = list(
-#'         JoinInstruction = list(
-#'           LeftOperand = "string",
-#'           RightOperand = "string",
-#'           LeftJoinKeyProperties = list(
-#'             UniqueKey = TRUE|FALSE
-#'           ),
-#'           RightJoinKeyProperties = list(
-#'             UniqueKey = TRUE|FALSE
-#'           ),
-#'           Type = "INNER"|"OUTER"|"LEFT"|"RIGHT",
-#'           OnClause = "string"
-#'         ),
-#'         PhysicalTableId = "string"
-#'       )
-#'     )
-#'   ),
-#'   ImportMode = "SPICE"|"DIRECT_QUERY",
-#'   ColumnGroups = list(
-#'     list(
-#'       GeoSpatialColumnGroup = list(
-#'         Name = "string",
-#'         CountryCode = "US",
-#'         Columns = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   RowLevelPermissionDataSet = list(
-#'     Namespace = "string",
-#'     Arn = "string",
-#'     PermissionPolicy = "GRANT_ACCESS"|"DENY_ACCESS"
-#'   ),
-#'   ColumnLevelPermissionRules = list(
-#'     list(
-#'       Principals = list(
-#'         "string"
-#'       ),
-#'       ColumnNames = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
+#' @param DataSetUsageConfiguration 
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_update_data_set
-quicksight_update_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, RowLevelPermissionDataSet = NULL, ColumnLevelPermissionRules = NULL) {
+quicksight_update_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, FieldFolders = NULL, RowLevelPermissionDataSet = NULL, RowLevelPermissionTagConfiguration = NULL, ColumnLevelPermissionRules = NULL, DataSetUsageConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateDataSet",
     http_method = "PUT",
     http_path = "/accounts/{AwsAccountId}/data-sets/{DataSetId}",
     paginator = list()
   )
-  input <- .quicksight$update_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, RowLevelPermissionDataSet = RowLevelPermissionDataSet, ColumnLevelPermissionRules = ColumnLevelPermissionRules)
+  input <- .quicksight$update_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, FieldFolders = FieldFolders, RowLevelPermissionDataSet = RowLevelPermissionDataSet, RowLevelPermissionTagConfiguration = RowLevelPermissionTagConfiguration, ColumnLevelPermissionRules = ColumnLevelPermissionRules, DataSetUsageConfiguration = DataSetUsageConfiguration)
   output <- .quicksight$update_data_set_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -7406,54 +3973,15 @@ quicksight_update_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
 #'
 #' @description
 #' Updates the permissions on a dataset.
-#' 
-#' The permissions resource is
-#' `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id`.
 #'
-#' @usage
-#' quicksight_update_data_set_permissions(AwsAccountId, DataSetId,
-#'   GrantPermissions, RevokePermissions)
+#' See [https://paws-r.github.io/docs/quicksight/update_data_set_permissions.html](https://paws-r.github.io/docs/quicksight/update_data_set_permissions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
 #' @param DataSetId &#91;required&#93; The ID for the dataset whose permissions you want to update. This ID is
-#' unique per AWS Region for each AWS account.
+#' unique per Amazon Web Services Region for each Amazon Web Services
+#' account.
 #' @param GrantPermissions The resource permissions that you want to grant to the dataset.
 #' @param RevokePermissions The resource permissions that you want to revoke from the dataset.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSetArn = "string",
-#'   DataSetId = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_data_set_permissions(
-#'   AwsAccountId = "string",
-#'   DataSetId = "string",
-#'   GrantPermissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RevokePermissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7480,242 +4008,21 @@ quicksight_update_data_set_permissions <- function(AwsAccountId, DataSetId, Gran
 #' @description
 #' Updates a data source.
 #'
-#' @usage
-#' quicksight_update_data_source(AwsAccountId, DataSourceId, Name,
-#'   DataSourceParameters, Credentials, VpcConnectionProperties,
-#'   SslProperties)
+#' See [https://paws-r.github.io/docs/quicksight/update_data_source.html](https://paws-r.github.io/docs/quicksight/update_data_source.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
-#' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per AWS Region for each AWS
-#' account.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per Amazon Web Services
+#' Region for each Amazon Web Services account.
 #' @param Name &#91;required&#93; A display name for the data source.
-#' @param DataSourceParameters The parameters that QuickSight uses to connect to your underlying
+#' @param DataSourceParameters The parameters that Amazon QuickSight uses to connect to your underlying
 #' source.
-#' @param Credentials The credentials that QuickSight that uses to connect to your underlying
-#' source. Currently, only credentials based on user name and password are
-#' supported.
-#' @param VpcConnectionProperties Use this parameter only when you want QuickSight to use a VPC connection
-#' when connecting to your underlying source.
-#' @param SslProperties Secure Socket Layer (SSL) properties that apply when QuickSight connects
-#' to your underlying source.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Arn = "string",
-#'   DataSourceId = "string",
-#'   UpdateStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_data_source(
-#'   AwsAccountId = "string",
-#'   DataSourceId = "string",
-#'   Name = "string",
-#'   DataSourceParameters = list(
-#'     AmazonElasticsearchParameters = list(
-#'       Domain = "string"
-#'     ),
-#'     AthenaParameters = list(
-#'       WorkGroup = "string"
-#'     ),
-#'     AuroraParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     AuroraPostgreSqlParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     AwsIotAnalyticsParameters = list(
-#'       DataSetName = "string"
-#'     ),
-#'     JiraParameters = list(
-#'       SiteBaseUrl = "string"
-#'     ),
-#'     MariaDbParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     MySqlParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     OracleParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     PostgreSqlParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     PrestoParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Catalog = "string"
-#'     ),
-#'     RdsParameters = list(
-#'       InstanceId = "string",
-#'       Database = "string"
-#'     ),
-#'     RedshiftParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string",
-#'       ClusterId = "string"
-#'     ),
-#'     S3Parameters = list(
-#'       ManifestFileLocation = list(
-#'         Bucket = "string",
-#'         Key = "string"
-#'       )
-#'     ),
-#'     ServiceNowParameters = list(
-#'       SiteBaseUrl = "string"
-#'     ),
-#'     SnowflakeParameters = list(
-#'       Host = "string",
-#'       Database = "string",
-#'       Warehouse = "string"
-#'     ),
-#'     SparkParameters = list(
-#'       Host = "string",
-#'       Port = 123
-#'     ),
-#'     SqlServerParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     TeradataParameters = list(
-#'       Host = "string",
-#'       Port = 123,
-#'       Database = "string"
-#'     ),
-#'     TwitterParameters = list(
-#'       Query = "string",
-#'       MaxRows = 123
-#'     )
-#'   ),
-#'   Credentials = list(
-#'     CredentialPair = list(
-#'       Username = "string",
-#'       Password = "string",
-#'       AlternateDataSourceParameters = list(
-#'         list(
-#'           AmazonElasticsearchParameters = list(
-#'             Domain = "string"
-#'           ),
-#'           AthenaParameters = list(
-#'             WorkGroup = "string"
-#'           ),
-#'           AuroraParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           AuroraPostgreSqlParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           AwsIotAnalyticsParameters = list(
-#'             DataSetName = "string"
-#'           ),
-#'           JiraParameters = list(
-#'             SiteBaseUrl = "string"
-#'           ),
-#'           MariaDbParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           MySqlParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           OracleParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           PostgreSqlParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           PrestoParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Catalog = "string"
-#'           ),
-#'           RdsParameters = list(
-#'             InstanceId = "string",
-#'             Database = "string"
-#'           ),
-#'           RedshiftParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string",
-#'             ClusterId = "string"
-#'           ),
-#'           S3Parameters = list(
-#'             ManifestFileLocation = list(
-#'               Bucket = "string",
-#'               Key = "string"
-#'             )
-#'           ),
-#'           ServiceNowParameters = list(
-#'             SiteBaseUrl = "string"
-#'           ),
-#'           SnowflakeParameters = list(
-#'             Host = "string",
-#'             Database = "string",
-#'             Warehouse = "string"
-#'           ),
-#'           SparkParameters = list(
-#'             Host = "string",
-#'             Port = 123
-#'           ),
-#'           SqlServerParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           TeradataParameters = list(
-#'             Host = "string",
-#'             Port = 123,
-#'             Database = "string"
-#'           ),
-#'           TwitterParameters = list(
-#'             Query = "string",
-#'             MaxRows = 123
-#'           )
-#'         )
-#'       )
-#'     ),
-#'     CopySourceArn = "string"
-#'   ),
-#'   VpcConnectionProperties = list(
-#'     VpcConnectionArn = "string"
-#'   ),
-#'   SslProperties = list(
-#'     DisableSsl = TRUE|FALSE
-#'   )
-#' )
-#' ```
+#' @param Credentials The credentials that Amazon QuickSight that uses to connect to your
+#' underlying source. Currently, only credentials based on user name and
+#' password are supported.
+#' @param VpcConnectionProperties Use this parameter only when you want Amazon QuickSight to use a VPC
+#' connection when connecting to your underlying source.
+#' @param SslProperties Secure Socket Layer (SSL) properties that apply when Amazon QuickSight
+#' connects to your underlying source.
 #'
 #' @keywords internal
 #'
@@ -7742,52 +4049,15 @@ quicksight_update_data_source <- function(AwsAccountId, DataSourceId, Name, Data
 #' @description
 #' Updates the permissions to a data source.
 #'
-#' @usage
-#' quicksight_update_data_source_permissions(AwsAccountId, DataSourceId,
-#'   GrantPermissions, RevokePermissions)
+#' See [https://paws-r.github.io/docs/quicksight/update_data_source_permissions.html](https://paws-r.github.io/docs/quicksight/update_data_source_permissions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The AWS account ID.
-#' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per AWS Region for each AWS
-#' account.
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID.
+#' @param DataSourceId &#91;required&#93; The ID of the data source. This ID is unique per Amazon Web Services
+#' Region for each Amazon Web Services account.
 #' @param GrantPermissions A list of resource permissions that you want to grant on the data
 #' source.
 #' @param RevokePermissions A list of resource permissions that you want to revoke on the data
 #' source.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DataSourceArn = "string",
-#'   DataSourceId = "string",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_data_source_permissions(
-#'   AwsAccountId = "string",
-#'   DataSourceId = "string",
-#'   GrantPermissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RevokePermissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -7809,44 +4079,84 @@ quicksight_update_data_source_permissions <- function(AwsAccountId, DataSourceId
 }
 .quicksight$operations$update_data_source_permissions <- quicksight_update_data_source_permissions
 
+#' Updates the name of a folder
+#'
+#' @description
+#' Updates the name of a folder.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/update_folder.html](https://paws-r.github.io/docs/quicksight/update_folder.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder to
+#' update.
+#' @param FolderId &#91;required&#93; The ID of the folder.
+#' @param Name &#91;required&#93; The name of the folder.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_folder
+quicksight_update_folder <- function(AwsAccountId, FolderId, Name) {
+  op <- new_operation(
+    name = "UpdateFolder",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/folders/{FolderId}",
+    paginator = list()
+  )
+  input <- .quicksight$update_folder_input(AwsAccountId = AwsAccountId, FolderId = FolderId, Name = Name)
+  output <- .quicksight$update_folder_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_folder <- quicksight_update_folder
+
+#' Updates permissions of a folder
+#'
+#' @description
+#' Updates permissions of a folder.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/update_folder_permissions.html](https://paws-r.github.io/docs/quicksight/update_folder_permissions.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder to
+#' update.
+#' @param FolderId &#91;required&#93; The ID of the folder.
+#' @param GrantPermissions The permissions that you want to grant on a resource.
+#' @param RevokePermissions The permissions that you want to revoke from a resource.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_folder_permissions
+quicksight_update_folder_permissions <- function(AwsAccountId, FolderId, GrantPermissions = NULL, RevokePermissions = NULL) {
+  op <- new_operation(
+    name = "UpdateFolderPermissions",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/folders/{FolderId}/permissions",
+    paginator = list()
+  )
+  input <- .quicksight$update_folder_permissions_input(AwsAccountId = AwsAccountId, FolderId = FolderId, GrantPermissions = GrantPermissions, RevokePermissions = RevokePermissions)
+  output <- .quicksight$update_folder_permissions_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_folder_permissions <- quicksight_update_folder_permissions
+
 #' Changes a group description
 #'
 #' @description
 #' Changes a group description.
 #'
-#' @usage
-#' quicksight_update_group(GroupName, Description, AwsAccountId, Namespace)
+#' See [https://paws-r.github.io/docs/quicksight/update_group.html](https://paws-r.github.io/docs/quicksight/update_group.html) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group that you want to update.
 #' @param Description The description for the group that you want to update.
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the group is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
-#' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Group = list(
-#'     Arn = "string",
-#'     GroupName = "string",
-#'     Description = "string",
-#'     PrincipalId = "string"
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_group(
-#'   GroupName = "string",
-#'   Description = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string"
-#' )
-#' ```
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the group is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
+#' @param Namespace &#91;required&#93; The namespace of the group that you want to update.
 #'
 #' @keywords internal
 #'
@@ -7871,17 +4181,14 @@ quicksight_update_group <- function(GroupName, Description = NULL, AwsAccountId,
 #' Updates an existing IAM policy assignment
 #'
 #' @description
-#' Updates an existing IAM policy assignment. This operation updates only
-#' the optional parameter or parameters that are specified in the request.
-#' This overwrites all of the users included in `Identities`.
+#' Updates an existing IAM policy assignment. This operation updates only the optional parameter or parameters that are specified in the request. This overwrites all of the users included in `Identities`.
 #'
-#' @usage
-#' quicksight_update_iam_policy_assignment(AwsAccountId, AssignmentName,
-#'   Namespace, AssignmentStatus, PolicyArn, Identities)
+#' See [https://paws-r.github.io/docs/quicksight/update_iam_policy_assignment.html](https://paws-r.github.io/docs/quicksight/update_iam_policy_assignment.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the IAM policy assignment.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the IAM policy
+#' assignment.
 #' @param AssignmentName &#91;required&#93; The name of the assignment, also called a rule. This name must be unique
-#' within an AWS account.
+#' within an Amazon Web Services account.
 #' @param Namespace &#91;required&#93; The namespace of the assignment.
 #' @param AssignmentStatus The status of the assignment. Possible values are as follows:
 #' 
@@ -7893,44 +4200,10 @@ quicksight_update_group <- function(GroupName, Description = NULL, AwsAccountId,
 #' 
 #' -   `DRAFT` - This assignment is an unfinished draft and isn't used when
 #'     creating the data source.
-#' @param PolicyArn The ARN for the IAM policy to apply to the QuickSight users and groups
-#' specified in this assignment.
-#' @param Identities The QuickSight users, groups, or both that you want to assign the policy
-#' to.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AssignmentName = "string",
-#'   AssignmentId = "string",
-#'   PolicyArn = "string",
-#'   Identities = list(
-#'     list(
-#'       "string"
-#'     )
-#'   ),
-#'   AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_iam_policy_assignment(
-#'   AwsAccountId = "string",
-#'   AssignmentName = "string",
-#'   Namespace = "string",
-#'   AssignmentStatus = "ENABLED"|"DRAFT"|"DISABLED",
-#'   PolicyArn = "string",
-#'   Identities = list(
-#'     list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
+#' @param PolicyArn The ARN for the IAM policy to apply to the Amazon QuickSight users and
+#' groups specified in this assignment.
+#' @param Identities The Amazon QuickSight users, groups, or both that you want to assign the
+#' policy to.
 #'
 #' @keywords internal
 #'
@@ -7952,19 +4225,81 @@ quicksight_update_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 }
 .quicksight$operations$update_iam_policy_assignment <- quicksight_update_iam_policy_assignment
 
+#' Updates the content and status of IP rules
+#'
+#' @description
+#' Updates the content and status of IP rules. To use this operation, you need to provide the entire map of rules. You can use the [`describe_ip_restriction`][quicksight_describe_ip_restriction] operation to get the current rule map.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/update_ip_restriction.html](https://paws-r.github.io/docs/quicksight/update_ip_restriction.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the IP rules.
+#' @param IpRestrictionRuleMap A map that describes the updated IP rules with CIDR ranges and
+#' descriptions.
+#' @param Enabled A value that specifies whether IP rules are turned on.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_ip_restriction
+quicksight_update_ip_restriction <- function(AwsAccountId, IpRestrictionRuleMap = NULL, Enabled = NULL) {
+  op <- new_operation(
+    name = "UpdateIpRestriction",
+    http_method = "POST",
+    http_path = "/accounts/{AwsAccountId}/ip-restriction",
+    paginator = list()
+  )
+  input <- .quicksight$update_ip_restriction_input(AwsAccountId = AwsAccountId, IpRestrictionRuleMap = IpRestrictionRuleMap, Enabled = Enabled)
+  output <- .quicksight$update_ip_restriction_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_ip_restriction <- quicksight_update_ip_restriction
+
+#' Use the UpdatePublicSharingSettings operation to turn on or turn off the
+#' public sharing settings of an Amazon QuickSight dashboard
+#'
+#' @description
+#' Use the [`update_public_sharing_settings`][quicksight_update_public_sharing_settings] operation to turn on or turn off the public sharing settings of an Amazon QuickSight dashboard.
+#'
+#' See [https://paws-r.github.io/docs/quicksight/update_public_sharing_settings.html](https://paws-r.github.io/docs/quicksight/update_public_sharing_settings.html) for full documentation.
+#'
+#' @param AwsAccountId &#91;required&#93; The Amazon Web Services account ID associated with your Amazon
+#' QuickSight subscription.
+#' @param PublicSharingEnabled A Boolean value that indicates whether public sharing is turned on for
+#' an Amazon QuickSight account.
+#'
+#' @keywords internal
+#'
+#' @rdname quicksight_update_public_sharing_settings
+quicksight_update_public_sharing_settings <- function(AwsAccountId, PublicSharingEnabled = NULL) {
+  op <- new_operation(
+    name = "UpdatePublicSharingSettings",
+    http_method = "PUT",
+    http_path = "/accounts/{AwsAccountId}/public-sharing-settings",
+    paginator = list()
+  )
+  input <- .quicksight$update_public_sharing_settings_input(AwsAccountId = AwsAccountId, PublicSharingEnabled = PublicSharingEnabled)
+  output <- .quicksight$update_public_sharing_settings_output()
+  config <- get_config()
+  svc <- .quicksight$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.quicksight$operations$update_public_sharing_settings <- quicksight_update_public_sharing_settings
+
 #' Updates a template from an existing Amazon QuickSight analysis or
 #' another template
 #'
 #' @description
-#' Updates a template from an existing Amazon QuickSight analysis or
-#' another template.
+#' Updates a template from an existing Amazon QuickSight analysis or another template.
 #'
-#' @usage
-#' quicksight_update_template(AwsAccountId, TemplateId, SourceEntity,
-#'   VersionDescription, Name)
+#' See [https://paws-r.github.io/docs/quicksight/update_template.html](https://paws-r.github.io/docs/quicksight/update_template.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template that you're
-#' updating.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
+#' that you're updating.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param SourceEntity &#91;required&#93; The entity that you are using as a source when you update the template.
 #' In `SourceEntity`, you specify the type of object you're using as
@@ -7972,8 +4307,8 @@ quicksight_update_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' analysis. Both of these require an Amazon Resource Name (ARN). For
 #' `SourceTemplate`, specify the ARN of the source template. For
 #' `SourceAnalysis`, specify the ARN of the source analysis. The
-#' `SourceTemplate` ARN can contain any AWS Account and any
-#' QuickSight-supported AWS Region.
+#' `SourceTemplate` ARN can contain any Amazon Web Services account and any
+#' Amazon QuickSight-supported Amazon Web Services Region;.
 #' 
 #' Use the `DataSetReferences` entity within `SourceTemplate` or
 #' `SourceAnalysis` to list the replacement datasets for the placeholders
@@ -7985,43 +4320,6 @@ quicksight_update_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' maintains a description of the version in the `VersionDescription`
 #' field.
 #' @param Name The name for the template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemplateId = "string",
-#'   Arn = "string",
-#'   VersionArn = "string",
-#'   CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_template(
-#'   AwsAccountId = "string",
-#'   TemplateId = "string",
-#'   SourceEntity = list(
-#'     SourceAnalysis = list(
-#'       Arn = "string",
-#'       DataSetReferences = list(
-#'         list(
-#'           DataSetPlaceholder = "string",
-#'           DataSetArn = "string"
-#'         )
-#'       )
-#'     ),
-#'     SourceTemplate = list(
-#'       Arn = "string"
-#'     )
-#'   ),
-#'   VersionDescription = "string",
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8048,12 +4346,10 @@ quicksight_update_template <- function(AwsAccountId, TemplateId, SourceEntity, V
 #' @description
 #' Updates the template alias of a template.
 #'
-#' @usage
-#' quicksight_update_template_alias(AwsAccountId, TemplateId, AliasName,
-#'   TemplateVersionNumber)
+#' See [https://paws-r.github.io/docs/quicksight/update_template_alias.html](https://paws-r.github.io/docs/quicksight/update_template_alias.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template alias that you're
-#' updating.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template
+#' alias that you're updating.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param AliasName &#91;required&#93; The alias of the template that you want to update. If you name a
 #' specific alias, you update the version that the alias points to. You can
@@ -8061,30 +4357,6 @@ quicksight_update_template <- function(AwsAccountId, TemplateId, SourceEntity, V
 #' `$LATEST` in the `AliasName` parameter. The keyword `$PUBLISHED` doesn't
 #' apply to templates.
 #' @param TemplateVersionNumber &#91;required&#93; The version number of the template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemplateAlias = list(
-#'     AliasName = "string",
-#'     Arn = "string",
-#'     TemplateVersionNumber = 123
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_template_alias(
-#'   AwsAccountId = "string",
-#'   TemplateId = "string",
-#'   AliasName = "string",
-#'   TemplateVersionNumber = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8111,57 +4383,12 @@ quicksight_update_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #' @description
 #' Updates the resource permissions for a template.
 #'
-#' @usage
-#' quicksight_update_template_permissions(AwsAccountId, TemplateId,
-#'   GrantPermissions, RevokePermissions)
+#' See [https://paws-r.github.io/docs/quicksight/update_template_permissions.html](https://paws-r.github.io/docs/quicksight/update_template_permissions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the template.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the template.
 #' @param TemplateId &#91;required&#93; The ID for the template.
 #' @param GrantPermissions A list of resource permissions to be granted on the template.
 #' @param RevokePermissions A list of resource permissions to be revoked from the template.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemplateId = "string",
-#'   TemplateArn = "string",
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_template_permissions(
-#'   AwsAccountId = "string",
-#'   TemplateId = "string",
-#'   GrantPermissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RevokePermissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8188,88 +4415,20 @@ quicksight_update_template_permissions <- function(AwsAccountId, TemplateId, Gra
 #' @description
 #' Updates a theme.
 #'
-#' @usage
-#' quicksight_update_theme(AwsAccountId, ThemeId, Name, BaseThemeId,
-#'   VersionDescription, Configuration)
+#' See [https://paws-r.github.io/docs/quicksight/update_theme.html](https://paws-r.github.io/docs/quicksight/update_theme.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme that you're updating.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme that
+#' you're updating.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
 #' @param Name The name for the theme.
 #' @param BaseThemeId &#91;required&#93; The theme ID, defined by Amazon QuickSight, that a custom theme inherits
-#' from. All themes initially inherit from a default QuickSight theme.
+#' from. All themes initially inherit from a default Amazon QuickSight
+#' theme.
 #' @param VersionDescription A description of the theme version that you're updating Every time that
 #' you call [`update_theme`][quicksight_update_theme], you create a new
 #' version of the theme. Each version of the theme maintains a description
 #' of the version in `VersionDescription`.
 #' @param Configuration The theme configuration, which contains the theme display properties.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ThemeId = "string",
-#'   Arn = "string",
-#'   VersionArn = "string",
-#'   CreationStatus = "CREATION_IN_PROGRESS"|"CREATION_SUCCESSFUL"|"CREATION_FAILED"|"UPDATE_IN_PROGRESS"|"UPDATE_SUCCESSFUL"|"UPDATE_FAILED"|"DELETED",
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_theme(
-#'   AwsAccountId = "string",
-#'   ThemeId = "string",
-#'   Name = "string",
-#'   BaseThemeId = "string",
-#'   VersionDescription = "string",
-#'   Configuration = list(
-#'     DataColorPalette = list(
-#'       Colors = list(
-#'         "string"
-#'       ),
-#'       MinMaxGradient = list(
-#'         "string"
-#'       ),
-#'       EmptyFillColor = "string"
-#'     ),
-#'     UIColorPalette = list(
-#'       PrimaryForeground = "string",
-#'       PrimaryBackground = "string",
-#'       SecondaryForeground = "string",
-#'       SecondaryBackground = "string",
-#'       Accent = "string",
-#'       AccentForeground = "string",
-#'       Danger = "string",
-#'       DangerForeground = "string",
-#'       Warning = "string",
-#'       WarningForeground = "string",
-#'       Success = "string",
-#'       SuccessForeground = "string",
-#'       Dimension = "string",
-#'       DimensionForeground = "string",
-#'       Measure = "string",
-#'       MeasureForeground = "string"
-#'     ),
-#'     Sheet = list(
-#'       Tile = list(
-#'         Border = list(
-#'           Show = TRUE|FALSE
-#'         )
-#'       ),
-#'       TileLayout = list(
-#'         Gutter = list(
-#'           Show = TRUE|FALSE
-#'         ),
-#'         Margin = list(
-#'           Show = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8296,39 +4455,13 @@ quicksight_update_theme <- function(AwsAccountId, ThemeId, Name = NULL, BaseThem
 #' @description
 #' Updates an alias of a theme.
 #'
-#' @usage
-#' quicksight_update_theme_alias(AwsAccountId, ThemeId, AliasName,
-#'   ThemeVersionNumber)
+#' See [https://paws-r.github.io/docs/quicksight/update_theme_alias.html](https://paws-r.github.io/docs/quicksight/update_theme_alias.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme alias that you're
-#' updating.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme alias
+#' that you're updating.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
 #' @param AliasName &#91;required&#93; The name of the theme alias that you want to update.
 #' @param ThemeVersionNumber &#91;required&#93; The version number of the theme that the alias should reference.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ThemeAlias = list(
-#'     Arn = "string",
-#'     AliasName = "string",
-#'     ThemeVersionNumber = 123
-#'   ),
-#'   Status = 123,
-#'   RequestId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_theme_alias(
-#'   AwsAccountId = "string",
-#'   ThemeId = "string",
-#'   AliasName = "string",
-#'   ThemeVersionNumber = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8353,101 +4486,14 @@ quicksight_update_theme_alias <- function(AwsAccountId, ThemeId, AliasName, Them
 #' Updates the resource permissions for a theme
 #'
 #' @description
-#' Updates the resource permissions for a theme. Permissions apply to the
-#' action to grant or revoke permissions on, for example
-#' `"quicksight:DescribeTheme"`.
-#' 
-#' Theme permissions apply in groupings. Valid groupings include the
-#' following for the three levels of permissions, which are user, owner, or
-#' no permissions:
-#' 
-#' -   User
-#' 
-#'     -   `"quicksight:DescribeTheme"`
-#' 
-#'     -   `"quicksight:DescribeThemeAlias"`
-#' 
-#'     -   `"quicksight:ListThemeAliases"`
-#' 
-#'     -   `"quicksight:ListThemeVersions"`
-#' 
-#' -   Owner
-#' 
-#'     -   `"quicksight:DescribeTheme"`
-#' 
-#'     -   `"quicksight:DescribeThemeAlias"`
-#' 
-#'     -   `"quicksight:ListThemeAliases"`
-#' 
-#'     -   `"quicksight:ListThemeVersions"`
-#' 
-#'     -   `"quicksight:DeleteTheme"`
-#' 
-#'     -   `"quicksight:UpdateTheme"`
-#' 
-#'     -   `"quicksight:CreateThemeAlias"`
-#' 
-#'     -   `"quicksight:DeleteThemeAlias"`
-#' 
-#'     -   `"quicksight:UpdateThemeAlias"`
-#' 
-#'     -   `"quicksight:UpdateThemePermissions"`
-#' 
-#'     -   `"quicksight:DescribeThemePermissions"`
-#' 
-#' -   To specify no permissions, omit the permissions list.
+#' Updates the resource permissions for a theme. Permissions apply to the action to grant or revoke permissions on, for example `"quicksight:DescribeTheme"`.
 #'
-#' @usage
-#' quicksight_update_theme_permissions(AwsAccountId, ThemeId,
-#'   GrantPermissions, RevokePermissions)
+#' See [https://paws-r.github.io/docs/quicksight/update_theme_permissions.html](https://paws-r.github.io/docs/quicksight/update_theme_permissions.html) for full documentation.
 #'
-#' @param AwsAccountId &#91;required&#93; The ID of the AWS account that contains the theme.
+#' @param AwsAccountId &#91;required&#93; The ID of the Amazon Web Services account that contains the theme.
 #' @param ThemeId &#91;required&#93; The ID for the theme.
 #' @param GrantPermissions A list of resource permissions to be granted for the theme.
 #' @param RevokePermissions A list of resource permissions to be revoked from the theme.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ThemeId = "string",
-#'   ThemeArn = "string",
-#'   Permissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_theme_permissions(
-#'   AwsAccountId = "string",
-#'   ThemeId = "string",
-#'   GrantPermissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   RevokePermissions = list(
-#'     list(
-#'       Principal = "string",
-#'       Actions = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -8474,13 +4520,12 @@ quicksight_update_theme_permissions <- function(AwsAccountId, ThemeId, GrantPerm
 #' @description
 #' Updates an Amazon QuickSight user.
 #'
-#' @usage
-#' quicksight_update_user(UserName, AwsAccountId, Namespace, Email, Role,
-#'   CustomPermissionsName, UnapplyCustomPermissions)
+#' See [https://paws-r.github.io/docs/quicksight/update_user.html](https://paws-r.github.io/docs/quicksight/update_user.html) for full documentation.
 #'
 #' @param UserName &#91;required&#93; The Amazon QuickSight user name that you want to update.
-#' @param AwsAccountId &#91;required&#93; The ID for the AWS account that the user is in. Currently, you use the
-#' ID for the AWS account that contains your Amazon QuickSight account.
+#' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that the user is in.
+#' Currently, you use the ID for the Amazon Web Services account that
+#' contains your Amazon QuickSight account.
 #' @param Namespace &#91;required&#93; The namespace. Currently, you should set this to `default`.
 #' @param Email &#91;required&#93; The email address of the user that you want to update.
 #' @param Role &#91;required&#93; The Amazon QuickSight role of the user. The role can be one of the
@@ -8494,8 +4539,8 @@ quicksight_update_theme_permissions <- function(AwsAccountId, ThemeId, GrantPerm
 #' -   `ADMIN`: A user who is an author, who can also manage Amazon
 #'     QuickSight settings.
 #' 
-#' The name of the QuickSight role is invisible to the user except for the
-#' console screens dealing with permissions.
+#' The name of the Amazon QuickSight role is invisible to the user except
+#' for the console screens dealing with permissions.
 #' @param CustomPermissionsName (Enterprise edition only) The name of the custom permissions profile
 #' that you want to assign to this user. Customized permissions allows you
 #' to control a user's access by restricting access the following
@@ -8511,66 +4556,57 @@ quicksight_update_theme_permissions <- function(AwsAccountId, ThemeId, GrantPerm
 #' 
 #' A set of custom permissions includes any combination of these
 #' restrictions. Currently, you need to create the profile names for custom
-#' permission sets by using the QuickSight console. Then, you use the
-#' [`register_user`][quicksight_register_user] API operation to assign the
-#' named set of permissions to a QuickSight user.
+#' permission sets by using the Amazon QuickSight console. Then, you use
+#' the [`register_user`][quicksight_register_user] API operation to assign
+#' the named set of permissions to a Amazon QuickSight user.
 #' 
-#' QuickSight custom permissions are applied through IAM policies.
+#' Amazon QuickSight custom permissions are applied through IAM policies.
 #' Therefore, they override the permissions typically granted by assigning
-#' QuickSight users to one of the default security cohorts in QuickSight
-#' (admin, author, reader).
+#' Amazon QuickSight users to one of the default security cohorts in Amazon
+#' QuickSight (admin, author, reader).
 #' 
-#' This feature is available only to QuickSight Enterprise edition
-#' subscriptions that use SAML 2.0-Based Federation for Single Sign-On
-#' (SSO).
+#' This feature is available only to Amazon QuickSight Enterprise edition
+#' subscriptions.
 #' @param UnapplyCustomPermissions A flag that you use to indicate that you want to remove all custom
 #' permissions from this user. Using this parameter resets the user to the
 #' state it was in before a custom permissions profile was applied. This
 #' parameter defaults to NULL and it doesn't accept any other value.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   User = list(
-#'     Arn = "string",
-#'     UserName = "string",
-#'     Email = "string",
-#'     Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
-#'     IdentityType = "IAM"|"QUICKSIGHT",
-#'     Active = TRUE|FALSE,
-#'     PrincipalId = "string",
-#'     CustomPermissionsName = "string"
-#'   ),
-#'   RequestId = "string",
-#'   Status = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_user(
-#'   UserName = "string",
-#'   AwsAccountId = "string",
-#'   Namespace = "string",
-#'   Email = "string",
-#'   Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
-#'   CustomPermissionsName = "string",
-#'   UnapplyCustomPermissions = TRUE|FALSE
-#' )
-#' ```
+#' @param ExternalLoginFederationProviderType The type of supported external login provider that provides identity to
+#' let a user federate into Amazon QuickSight with an associated Identity
+#' and Access Management(IAM) role. The type of supported external login
+#' provider can be one of the following.
+#' 
+#' -   `COGNITO`: Amazon Cognito. The provider URL is
+#'     cognito-identity.amazonaws.com. When choosing the `COGNITO` provider
+#'     type, don’t use the "CustomFederationProviderUrl" parameter which is
+#'     only needed when the external provider is custom.
+#' 
+#' -   `CUSTOM_OIDC`: Custom OpenID Connect (OIDC) provider. When choosing
+#'     `CUSTOM_OIDC` type, use the `CustomFederationProviderUrl` parameter
+#'     to provide the custom OIDC provider URL.
+#' 
+#' -   `NONE`: This clears all the previously saved external login
+#'     information for a user. Use the
+#'     [`describe_user`][quicksight_describe_user] API operation to check
+#'     the external login information.
+#' @param CustomFederationProviderUrl The URL of the custom OpenID Connect (OIDC) provider that provides
+#' identity to let a user federate into Amazon QuickSight with an
+#' associated Identity and Access Management(IAM) role. This parameter
+#' should only be used when `ExternalLoginFederationProviderType` parameter
+#' is set to `CUSTOM_OIDC`.
+#' @param ExternalLoginId The identity ID for a user in the external login provider.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_update_user
-quicksight_update_user <- function(UserName, AwsAccountId, Namespace, Email, Role, CustomPermissionsName = NULL, UnapplyCustomPermissions = NULL) {
+quicksight_update_user <- function(UserName, AwsAccountId, Namespace, Email, Role, CustomPermissionsName = NULL, UnapplyCustomPermissions = NULL, ExternalLoginFederationProviderType = NULL, CustomFederationProviderUrl = NULL, ExternalLoginId = NULL) {
   op <- new_operation(
     name = "UpdateUser",
     http_method = "PUT",
     http_path = "/accounts/{AwsAccountId}/namespaces/{Namespace}/users/{UserName}",
     paginator = list()
   )
-  input <- .quicksight$update_user_input(UserName = UserName, AwsAccountId = AwsAccountId, Namespace = Namespace, Email = Email, Role = Role, CustomPermissionsName = CustomPermissionsName, UnapplyCustomPermissions = UnapplyCustomPermissions)
+  input <- .quicksight$update_user_input(UserName = UserName, AwsAccountId = AwsAccountId, Namespace = Namespace, Email = Email, Role = Role, CustomPermissionsName = CustomPermissionsName, UnapplyCustomPermissions = UnapplyCustomPermissions, ExternalLoginFederationProviderType = ExternalLoginFederationProviderType, CustomFederationProviderUrl = CustomFederationProviderUrl, ExternalLoginId = ExternalLoginId)
   output <- .quicksight$update_user_output()
   config <- get_config()
   svc <- .quicksight$service(config)

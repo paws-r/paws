@@ -5,8 +5,11 @@
 \title{Adds an inbound (ingress) rule to an Amazon Redshift security group}
 \usage{
 redshift_authorize_cluster_security_group_ingress(
-  ClusterSecurityGroupName, CIDRIP, EC2SecurityGroupName,
-  EC2SecurityGroupOwnerId)
+  ClusterSecurityGroupName,
+  CIDRIP = NULL,
+  EC2SecurityGroupName = NULL,
+  EC2SecurityGroupOwnerId = NULL
+)
 }
 \arguments{
 \item{ClusterSecurityGroupName}{[required] The name of the security group to which the ingress rule is added.}
@@ -15,82 +18,15 @@ redshift_authorize_cluster_security_group_ingress(
 
 \item{EC2SecurityGroupName}{The EC2 security group to be added the Amazon Redshift security group.}
 
-\item{EC2SecurityGroupOwnerId}{The AWS account number of the owner of the security group specified by
-the \emph{EC2SecurityGroupName} parameter. The AWS Access Key ID is not an
-acceptable value.
+\item{EC2SecurityGroupOwnerId}{The Amazon Web Services account number of the owner of the security
+group specified by the \emph{EC2SecurityGroupName} parameter. The Amazon Web
+Services Access Key ID is not an acceptable value.
 
 Example: \code{111122223333}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClusterSecurityGroup = list(
-    ClusterSecurityGroupName = "string",
-    Description = "string",
-    EC2SecurityGroups = list(
-      list(
-        Status = "string",
-        EC2SecurityGroupName = "string",
-        EC2SecurityGroupOwnerId = "string",
-        Tags = list(
-          list(
-            Key = "string",
-            Value = "string"
-          )
-        )
-      )
-    ),
-    IPRanges = list(
-      list(
-        Status = "string",
-        CIDRIP = "string",
-        Tags = list(
-          list(
-            Key = "string",
-            Value = "string"
-          )
-        )
-      )
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Adds an inbound (ingress) rule to an Amazon Redshift security group.
-Depending on whether the application accessing your cluster is running
-on the Internet or an Amazon EC2 instance, you can authorize inbound
-access to either a Classless Interdomain Routing (CIDR)/Internet
-Protocol (IP) range or to an Amazon EC2 security group. You can add as
-many as 20 ingress rules to an Amazon Redshift security group.
+Adds an inbound (ingress) rule to an Amazon Redshift security group. Depending on whether the application accessing your cluster is running on the Internet or an Amazon EC2 instance, you can authorize inbound access to either a Classless Interdomain Routing (CIDR)/Internet Protocol (IP) range or to an Amazon EC2 security group. You can add as many as 20 ingress rules to an Amazon Redshift security group.
 
-If you authorize access to an Amazon EC2 security group, specify
-\emph{EC2SecurityGroupName} and \emph{EC2SecurityGroupOwnerId}. The Amazon EC2
-security group and Amazon Redshift cluster must be in the same AWS
-Region.
-
-If you authorize access to a CIDR/IP address range, specify \emph{CIDRIP}.
-For an overview of CIDR blocks, see the Wikipedia article on \href{https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Classless Inter-Domain Routing}.
-
-You must also associate the security group with a cluster so that
-clients running on these IP addresses or the EC2 instance are authorized
-to connect to the cluster. For information about managing security
-groups, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Working with Security Groups}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/authorize_cluster_security_group_ingress.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$authorize_cluster_security_group_ingress(
-  ClusterSecurityGroupName = "string",
-  CIDRIP = "string",
-  EC2SecurityGroupName = "string",
-  EC2SecurityGroupOwnerId = "string"
-)
-}
-}
-
 \keyword{internal}

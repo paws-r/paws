@@ -9,17 +9,9 @@ glue_delete_classifier(Name)
 \arguments{
 \item{Name}{[required] Name of the classifier to remove.}
 }
-\value{
-An empty list.
-}
 \description{
 Removes a classifier from the Data Catalog.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_classifier(
-  Name = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/glue/delete_classifier.html} for full documentation.
+}
 \keyword{internal}

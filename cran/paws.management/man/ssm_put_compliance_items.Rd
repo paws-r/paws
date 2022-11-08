@@ -5,12 +5,19 @@
 \title{Registers a compliance type and other compliance details on a designated
 resource}
 \usage{
-ssm_put_compliance_items(ResourceId, ResourceType, ComplianceType,
-  ExecutionSummary, Items, ItemContentHash, UploadType)
+ssm_put_compliance_items(
+  ResourceId,
+  ResourceType,
+  ComplianceType,
+  ExecutionSummary,
+  Items,
+  ItemContentHash = NULL,
+  UploadType = NULL
+)
 }
 \arguments{
-\item{ResourceId}{[required] Specify an ID for this resource. For a managed instance, this is the
-instance ID.}
+\item{ResourceId}{[required] Specify an ID for this resource. For a managed node, this is the node
+ID.}
 
 \item{ResourceType}{[required] Specify the type of resource. \code{ManagedInstance} is currently the only
 supported resource type.}
@@ -43,70 +50,9 @@ specific association. The association must be configured with
 
 This attribute is only valid for association compliance.}
 }
-\value{
-An empty list.
-}
 \description{
-Registers a compliance type and other compliance details on a designated
-resource. This action lets you register custom compliance details with a
-resource. This call overwrites existing compliance information on the
-resource, so you must provide a full list of compliance items each time
-that you send the request.
+Registers a compliance type and other compliance details on a designated resource. This operation lets you register custom compliance details with a resource. This call overwrites existing compliance information on the resource, so you must provide a full list of compliance items each time that you send the request.
 
-ComplianceType can be one of the following:
-\itemize{
-\item ExecutionId: The execution ID when the patch, association, or custom
-compliance item was applied.
-\item ExecutionType: Specify patch, association, or Custom:\code{string}.
-\item ExecutionTime. The time the patch, association, or custom compliance
-item was applied to the instance.
-\item Id: The patch, association, or custom compliance ID.
-\item Title: A title.
-\item Status: The status of the compliance item. For example, \code{approved}
-for patches, or \code{Failed} for associations.
-\item Severity: A patch severity. For example, \code{critical}.
-\item DocumentName: A SSM document name. For example,
-AWS-RunPatchBaseline.
-\item DocumentVersion: An SSM document version number. For example, 4.
-\item Classification: A patch classification. For example,
-\verb{security updates}.
-\item PatchBaselineId: A patch baseline ID.
-\item PatchSeverity: A patch severity. For example, \code{Critical}.
-\item PatchState: A patch state. For example,
-\code{InstancesWithFailedPatches}.
-\item PatchGroup: The name of a patch group.
-\item InstalledTime: The time the association, patch, or custom compliance
-item was applied to the resource. Specify the time by using the
-following format: yyyy-MM-dd'T'HH:mm:ss'Z'
+See \url{https://paws-r.github.io/docs/ssm/put_compliance_items.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$put_compliance_items(
-  ResourceId = "string",
-  ResourceType = "string",
-  ComplianceType = "string",
-  ExecutionSummary = list(
-    ExecutionTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    ExecutionId = "string",
-    ExecutionType = "string"
-  ),
-  Items = list(
-    list(
-      Id = "string",
-      Title = "string",
-      Severity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"INFORMATIONAL"|"UNSPECIFIED",
-      Status = "COMPLIANT"|"NON_COMPLIANT",
-      Details = list(
-        "string"
-      )
-    )
-  ),
-  ItemContentHash = "string",
-  UploadType = "COMPLETE"|"PARTIAL"
-)
-}
-}
-
 \keyword{internal}

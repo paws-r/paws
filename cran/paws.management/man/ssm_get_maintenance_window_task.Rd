@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_maintenance_window_task}
 \alias{ssm_get_maintenance_window_task}
-\title{Lists the tasks in a maintenance window}
+\title{Retrieves the details of a maintenance window task}
 \usage{
 ssm_get_maintenance_window_task(WindowId, WindowTaskId)
 }
@@ -11,101 +11,9 @@ ssm_get_maintenance_window_task(WindowId, WindowTaskId)
 
 \item{WindowTaskId}{[required] The maintenance window task ID to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  WindowId = "string",
-  WindowTaskId = "string",
-  Targets = list(
-    list(
-      Key = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  TaskArn = "string",
-  ServiceRoleArn = "string",
-  TaskType = "RUN_COMMAND"|"AUTOMATION"|"STEP_FUNCTIONS"|"LAMBDA",
-  TaskParameters = list(
-    list(
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  TaskInvocationParameters = list(
-    RunCommand = list(
-      Comment = "string",
-      CloudWatchOutputConfig = list(
-        CloudWatchLogGroupName = "string",
-        CloudWatchOutputEnabled = TRUE|FALSE
-      ),
-      DocumentHash = "string",
-      DocumentHashType = "Sha256"|"Sha1",
-      DocumentVersion = "string",
-      NotificationConfig = list(
-        NotificationArn = "string",
-        NotificationEvents = list(
-          "All"|"InProgress"|"Success"|"TimedOut"|"Cancelled"|"Failed"
-        ),
-        NotificationType = "Command"|"Invocation"
-      ),
-      OutputS3BucketName = "string",
-      OutputS3KeyPrefix = "string",
-      Parameters = list(
-        list(
-          "string"
-        )
-      ),
-      ServiceRoleArn = "string",
-      TimeoutSeconds = 123
-    ),
-    Automation = list(
-      DocumentVersion = "string",
-      Parameters = list(
-        list(
-          "string"
-        )
-      )
-    ),
-    StepFunctions = list(
-      Input = "string",
-      Name = "string"
-    ),
-    Lambda = list(
-      ClientContext = "string",
-      Qualifier = "string",
-      Payload = raw
-    )
-  ),
-  Priority = 123,
-  MaxConcurrency = "string",
-  MaxErrors = "string",
-  LoggingInfo = list(
-    S3BucketName = "string",
-    S3KeyPrefix = "string",
-    S3Region = "string"
-  ),
-  Name = "string",
-  Description = "string"
-)
-}
-}
 \description{
-Lists the tasks in a maintenance window.
+Retrieves the details of a maintenance window task.
 
-For maintenance window tasks without a specified target, you cannot
-supply values for \code{--max-errors} and \code{--max-concurrency}. Instead, the
-system inserts a placeholder value of \code{1}, which may be reported in the
-response to this command. These values do not affect the running of your
-task and can be ignored.
+See \url{https://paws-r.github.io/docs/ssm/get_maintenance_window_task.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_maintenance_window_task(
-  WindowId = "string",
-  WindowTaskId = "string"
-)
-}
-}
-
 \keyword{internal}

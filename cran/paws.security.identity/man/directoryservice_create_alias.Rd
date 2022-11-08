@@ -11,31 +11,13 @@ directoryservice_create_alias(DirectoryId, Alias)
 
 \item{Alias}{[required] The requested alias.
 
-The alias must be unique amongst all aliases in AWS. This operation
-throws an \code{EntityAlreadyExistsException} error if the alias already
-exists.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  DirectoryId = "string",
-  Alias = "string"
-)
-}
+The alias must be unique amongst all aliases in Amazon Web Services.
+This operation throws an \code{EntityAlreadyExistsException} error if the
+alias already exists.}
 }
 \description{
-Creates an alias for a directory and assigns the alias to the directory.
-The alias is used to construct the access URL for the directory, such as
-\verb{http://<alias>.awsapps.com}.
+Creates an alias for a directory and assigns the alias to the directory. The alias is used to construct the access URL for the directory, such as \verb{http://<alias>.awsapps.com}.
 
-After an alias has been created, it cannot be deleted or reused, so this
-operation should only be used when absolutely necessary.
+See \url{https://paws-r.github.io/docs/directoryservice/create_alias.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_alias(
-  DirectoryId = "string",
-  Alias = "string"
-)
-}
-}
-
 \keyword{internal}

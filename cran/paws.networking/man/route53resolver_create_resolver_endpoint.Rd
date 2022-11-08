@@ -4,14 +4,20 @@
 \alias{route53resolver_create_resolver_endpoint}
 \title{Creates a Resolver endpoint}
 \usage{
-route53resolver_create_resolver_endpoint(CreatorRequestId, Name,
-  SecurityGroupIds, Direction, IpAddresses, Tags)
+route53resolver_create_resolver_endpoint(
+  CreatorRequestId,
+  Name = NULL,
+  SecurityGroupIds,
+  Direction,
+  IpAddresses,
+  Tags = NULL
+)
 }
 \arguments{
 \item{CreatorRequestId}{[required] A unique string that identifies the request and that allows failed
-requests to be retried without the risk of executing the operation
-twice. \code{CreatorRequestId} can be any unique string, for example, a
-date/time stamp.}
+requests to be retried without the risk of running the operation twice.
+\code{CreatorRequestId} can be any unique string, for example, a date/time
+stamp.}
 
 \item{Name}{A friendly name that lets you easily find a configuration in the
 Resolver dashboard in the Route 53 console.}
@@ -38,59 +44,9 @@ endpoints). The subnet ID uniquely identifies a VPC.}
 \item{Tags}{A list of the tag keys and values that you want to associate with the
 endpoint.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResolverEndpoint = list(
-    Id = "string",
-    CreatorRequestId = "string",
-    Arn = "string",
-    Name = "string",
-    SecurityGroupIds = list(
-      "string"
-    ),
-    Direction = "INBOUND"|"OUTBOUND",
-    IpAddressCount = 123,
-    HostVPCId = "string",
-    Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
-    StatusMessage = "string",
-    CreationTime = "string",
-    ModificationTime = "string"
-  )
-)
-}
-}
 \description{
-Creates a Resolver endpoint. There are two types of Resolver endpoints,
-inbound and outbound:
-\itemize{
-\item An \emph{inbound Resolver endpoint} forwards DNS queries to the DNS
-service for a VPC from your network.
-\item An \emph{outbound Resolver endpoint} forwards DNS queries from the DNS
-service for a VPC to your network.
-}
-}
-\section{Request syntax}{
-\preformatted{svc$create_resolver_endpoint(
-  CreatorRequestId = "string",
-  Name = "string",
-  SecurityGroupIds = list(
-    "string"
-  ),
-  Direction = "INBOUND"|"OUTBOUND",
-  IpAddresses = list(
-    list(
-      SubnetId = "string",
-      Ip = "string"
-    )
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Creates a Resolver endpoint. There are two types of Resolver endpoints, inbound and outbound:
 
+See \url{https://paws-r.github.io/docs/route53resolver/create_resolver_endpoint.html} for full documentation.
+}
 \keyword{internal}

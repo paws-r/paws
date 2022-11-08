@@ -4,7 +4,11 @@
 \alias{ec2_delete_launch_template}
 \title{Deletes a launch template}
 \usage{
-ec2_delete_launch_template(DryRun, LaunchTemplateId, LaunchTemplateName)
+ec2_delete_launch_template(
+  DryRun = NULL,
+  LaunchTemplateId = NULL,
+  LaunchTemplateName = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -12,53 +16,19 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{LaunchTemplateId}{The ID of the launch template. You must specify either the launch
-template ID or launch template name in the request.}
+\item{LaunchTemplateId}{The ID of the launch template.
 
-\item{LaunchTemplateName}{The name of the launch template. You must specify either the launch
-template ID or launch template name in the request.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  LaunchTemplate = list(
-    LaunchTemplateId = "string",
-    LaunchTemplateName = "string",
-    CreateTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    CreatedBy = "string",
-    DefaultVersionNumber = 123,
-    LatestVersionNumber = 123,
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
+You must specify either the \code{LaunchTemplateId} or the
+\code{LaunchTemplateName}, but not both.}
+
+\item{LaunchTemplateName}{The name of the launch template.
+
+You must specify either the \code{LaunchTemplateName} or the
+\code{LaunchTemplateId}, but not both.}
 }
 \description{
-Deletes a launch template. Deleting a launch template deletes all of its
-versions.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_launch_template(
-  DryRun = TRUE|FALSE,
-  LaunchTemplateId = "string",
-  LaunchTemplateName = "string"
-)
-}
-}
+Deletes a launch template. Deleting a launch template deletes all of its versions.
 
-\examples{
-\dontrun{
-# This example deletes the specified launch template.
-svc$delete_launch_template(
-  LaunchTemplateId = "lt-0abcd290751193123"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/delete_launch_template.html} for full documentation.
 }
 \keyword{internal}

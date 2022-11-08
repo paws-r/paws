@@ -5,8 +5,13 @@
 \title{Shares the specified portfolio with the specified account or
 organization node}
 \usage{
-servicecatalog_create_portfolio_share(AcceptLanguage, PortfolioId,
-  AccountId, OrganizationNode, ShareTagOptions)
+servicecatalog_create_portfolio_share(
+  AcceptLanguage = NULL,
+  PortfolioId,
+  AccountId = NULL,
+  OrganizationNode = NULL,
+  ShareTagOptions = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -30,46 +35,9 @@ order for the administrator to monitor the status of the
 \item{ShareTagOptions}{Enables or disables \code{TagOptions } sharing when creating the portfolio
 share. If this flag is not provided, TagOptions sharing is disabled.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PortfolioShareToken = "string"
-)
-}
-}
 \description{
-Shares the specified portfolio with the specified account or
-organization node. Shares to an organization node can only be created by
-the management account of an organization or by a delegated
-administrator. You can share portfolios to an organization, an
-organizational unit, or a specific account.
+Shares the specified portfolio with the specified account or organization node. Shares to an organization node can only be created by the management account of an organization or by a delegated administrator. You can share portfolios to an organization, an organizational unit, or a specific account.
 
-Note that if a delegated admin is de-registered, they can no longer
-create portfolio shares.
-
-\code{AWSOrganizationsAccess} must be enabled in order to create a portfolio
-share to an organization node.
-
-You can't share a shared resource, including portfolios that contain a
-shared product.
-
-If the portfolio share with the specified account or organization node
-already exists, this action will have no effect and will not return an
-error. To update an existing share, you must use the
-\code{\link[=servicecatalog_update_portfolio_share]{update_portfolio_share}} API
-instead.
+See \url{https://paws-r.github.io/docs/servicecatalog/create_portfolio_share.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_portfolio_share(
-  AcceptLanguage = "string",
-  PortfolioId = "string",
-  AccountId = "string",
-  OrganizationNode = list(
-    Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
-    Value = "string"
-  ),
-  ShareTagOptions = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

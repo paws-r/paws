@@ -10,23 +10,9 @@ ses_delete_custom_verification_email_template(TemplateName)
 \item{TemplateName}{[required] The name of the custom verification email template that you want to
 delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes an existing custom verification email template.
 
-For more information about custom verification email templates, see
-\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html}{Using Custom Verification Email Templates}
-in the \emph{Amazon SES Developer Guide}.
-
-You can execute this operation no more than once per second.
+See \url{https://paws-r.github.io/docs/ses/delete_custom_verification_email_template.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_custom_verification_email_template(
-  TemplateName = "string"
-)
-}
-}
-
 \keyword{internal}

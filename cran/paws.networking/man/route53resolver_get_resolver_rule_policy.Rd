@@ -10,23 +10,9 @@ route53resolver_get_resolver_rule_policy(Arn)
 \item{Arn}{[required] The ID of the Resolver rule that you want to get the Resolver rule
 policy for.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResolverRulePolicy = "string"
-)
-}
-}
 \description{
-Gets information about the Resolver rule policy for a specified rule. A
-Resolver rule policy includes the rule that you want to share with
-another account, the account that you want to share the rule with, and
-the Resolver operations that you want to allow the account to use.
-}
-\section{Request syntax}{
-\preformatted{svc$get_resolver_rule_policy(
-  Arn = "string"
-)
-}
-}
+Gets information about the Resolver rule policy for a specified rule. A Resolver rule policy includes the rule that you want to share with another account, the account that you want to share the rule with, and the Resolver operations that you want to allow the account to use.
 
+See \url{https://paws-r.github.io/docs/route53resolver/get_resolver_rule_policy.html} for full documentation.
+}
 \keyword{internal}

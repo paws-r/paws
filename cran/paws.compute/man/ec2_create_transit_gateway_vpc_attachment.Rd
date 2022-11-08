@@ -4,8 +4,14 @@
 \alias{ec2_create_transit_gateway_vpc_attachment}
 \title{Attaches the specified VPC to the specified transit gateway}
 \usage{
-ec2_create_transit_gateway_vpc_attachment(TransitGatewayId, VpcId,
-  SubnetIds, Options, TagSpecifications, DryRun)
+ec2_create_transit_gateway_vpc_attachment(
+  TransitGatewayId,
+  VpcId,
+  SubnetIds,
+  Options = NULL,
+  TagSpecifications = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{TransitGatewayId}{[required] The ID of the transit gateway.}
@@ -26,71 +32,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGatewayVpcAttachment = list(
-    TransitGatewayAttachmentId = "string",
-    TransitGatewayId = "string",
-    VpcId = "string",
-    VpcOwnerId = "string",
-    State = "initiating"|"initiatingRequest"|"pendingAcceptance"|"rollingBack"|"pending"|"available"|"modifying"|"deleting"|"deleted"|"failed"|"rejected"|"rejecting"|"failing",
-    SubnetIds = list(
-      "string"
-    ),
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Options = list(
-      DnsSupport = "enable"|"disable",
-      Ipv6Support = "enable"|"disable",
-      ApplianceModeSupport = "enable"|"disable"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Attaches the specified VPC to the specified transit gateway.
 
-If you attach a VPC with a CIDR range that overlaps the CIDR range of a
-VPC that is already attached, the new VPC CIDR range is not propagated
-to the default propagation route table.
-
-To send VPC traffic to an attached transit gateway, add a route to the
-VPC route table using \code{\link[=ec2_create_route]{create_route}}.
+See \url{https://paws-r.github.io/docs/ec2/create_transit_gateway_vpc_attachment.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_transit_gateway_vpc_attachment(
-  TransitGatewayId = "string",
-  VpcId = "string",
-  SubnetIds = list(
-    "string"
-  ),
-  Options = list(
-    DnsSupport = "enable"|"disable",
-    Ipv6Support = "enable"|"disable",
-    ApplianceModeSupport = "enable"|"disable"
-  ),
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
-
 \keyword{internal}

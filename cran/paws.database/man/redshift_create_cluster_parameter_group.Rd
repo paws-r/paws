@@ -4,8 +4,12 @@
 \alias{redshift_create_cluster_parameter_group}
 \title{Creates an Amazon Redshift parameter group}
 \usage{
-redshift_create_cluster_parameter_group(ParameterGroupName,
-  ParameterGroupFamily, Description, Tags)
+redshift_create_cluster_parameter_group(
+  ParameterGroupName,
+  ParameterGroupFamily,
+  Description,
+  Tags = NULL
+)
 }
 \arguments{
 \item{ParameterGroupName}{[required] The name of the cluster parameter group.
@@ -15,7 +19,7 @@ Constraints:
 \item Must be 1 to 255 alphanumeric characters or hyphens
 \item First character must be a letter.
 \item Cannot end with a hyphen or contain two consecutive hyphens.
-\item Must be unique withing your AWS account.
+\item Must be unique withing your Amazon Web Services account.
 }
 
 This value is stored as a lower-case string.}
@@ -26,58 +30,19 @@ applies. The cluster engine version determines the set of parameters.
 To get a list of valid parameter group family names, you can call
 \code{\link[=redshift_describe_cluster_parameter_groups]{describe_cluster_parameter_groups}}.
 By default, Amazon Redshift returns a list of all the parameter groups
-that are owned by your AWS account, including the default parameter
-groups for each Amazon Redshift engine version. The parameter group
-family names associated with the default parameter groups provide you
-the valid values. For example, a valid family name is "redshift-1.0".}
+that are owned by your Amazon Web Services account, including the
+default parameter groups for each Amazon Redshift engine version. The
+parameter group family names associated with the default parameter
+groups provide you the valid values. For example, a valid family name is
+"redshift-1.0".}
 
 \item{Description}{[required] A description of the parameter group.}
 
 \item{Tags}{A list of tag instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClusterParameterGroup = list(
-    ParameterGroupName = "string",
-    ParameterGroupFamily = "string",
-    Description = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Creates an Amazon Redshift parameter group.
 
-Creating parameter groups is independent of creating clusters. You can
-associate a cluster with a parameter group when you create the cluster.
-You can also associate an existing cluster with a parameter group after
-the cluster is created by using
-\code{\link[=redshift_modify_cluster]{modify_cluster}}.
-
-Parameters in the parameter group define specific behavior that applies
-to the databases you create on the cluster. For more information about
-parameters and parameter groups, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups}
-in the \emph{Amazon Redshift Cluster Management Guide}.
+See \url{https://paws-r.github.io/docs/redshift/create_cluster_parameter_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_cluster_parameter_group(
-  ParameterGroupName = "string",
-  ParameterGroupFamily = "string",
-  Description = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}

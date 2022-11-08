@@ -9,23 +9,9 @@ sagemaker_delete_endpoint(EndpointName)
 \arguments{
 \item{EndpointName}{[required] The name of the endpoint that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes an endpoint. Amazon SageMaker frees up all of the resources that
-were deployed when the endpoint was created.
+Deletes an endpoint. SageMaker frees up all of the resources that were deployed when the endpoint was created.
 
-Amazon SageMaker retires any custom KMS key grants associated with the
-endpoint, meaning you don't need to use the
-\href{https://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html}{RevokeGrant}
-API call.
+See \url{https://paws-r.github.io/docs/sagemaker/delete_endpoint.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_endpoint(
-  EndpointName = "string"
-)
-}
-}
-
 \keyword{internal}

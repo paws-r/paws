@@ -12,23 +12,9 @@ supported for directories.}
 
 \item{Tags}{[required] A list of tag key-value pairs.}
 }
-\value{
-An empty list.
-}
 \description{
 An API operation for adding tags to a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceArn = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/clouddirectory/tag_resource.html} for full documentation.
+}
 \keyword{internal}

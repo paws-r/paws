@@ -5,14 +5,20 @@
 \title{Starts logging information, such as queries and connection attempts, for
 the specified Amazon Redshift cluster}
 \usage{
-redshift_enable_logging(ClusterIdentifier, BucketName, S3KeyPrefix)
+redshift_enable_logging(
+  ClusterIdentifier,
+  BucketName = NULL,
+  S3KeyPrefix = NULL,
+  LogDestinationType = NULL,
+  LogExports = NULL
+)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the cluster on which logging is to be started.
 
 Example: \code{examplecluster}}
 
-\item{BucketName}{[required] The name of an existing S3 bucket where the log files are to be stored.
+\item{BucketName}{The name of an existing S3 bucket where the log files are to be stored.
 
 Constraints:
 \itemize{
@@ -36,33 +42,16 @@ invalid characters are:
 \item x7f or larger
 }
 }}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  LoggingEnabled = TRUE|FALSE,
-  BucketName = "string",
-  S3KeyPrefix = "string",
-  LastSuccessfulDeliveryTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastFailureTime = as.POSIXct(
-    "2015-01-01"
-  ),
-  LastFailureMessage = "string"
-)
-}
+
+\item{LogDestinationType}{The log destination type. An enum with possible values of \code{s3} and
+\code{cloudwatch}.}
+
+\item{LogExports}{The collection of exported log types. Log types include the connection
+log, user log and user activity log.}
 }
 \description{
-Starts logging information, such as queries and connection attempts, for
-the specified Amazon Redshift cluster.
-}
-\section{Request syntax}{
-\preformatted{svc$enable_logging(
-  ClusterIdentifier = "string",
-  BucketName = "string",
-  S3KeyPrefix = "string"
-)
-}
-}
+Starts logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.
 
+See \url{https://paws-r.github.io/docs/redshift/enable_logging.html} for full documentation.
+}
 \keyword{internal}

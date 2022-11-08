@@ -13,52 +13,9 @@ to.}
 
 \item{attributes}{[required] The array of attributes that you want to assign to specified findings.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  failedItems = list(
-    list(
-      failureCode = "INVALID_ARN"|"DUPLICATE_ARN"|"ITEM_DOES_NOT_EXIST"|"ACCESS_DENIED"|"LIMIT_EXCEEDED"|"INTERNAL_ERROR",
-      retryable = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
-Assigns attributes (key and value pairs) to the findings that are
-specified by the ARNs of the findings.
-}
-\section{Request syntax}{
-\preformatted{svc$add_attributes_to_findings(
-  findingArns = list(
-    "string"
-  ),
-  attributes = list(
-    list(
-      key = "string",
-      value = "string"
-    )
-  )
-)
-}
-}
+Assigns attributes (key and value pairs) to the findings that are specified by the ARNs of the findings.
 
-\examples{
-\dontrun{
-# Assigns attributes (key and value pairs) to the findings that are
-# specified by the ARNs of the findings.
-svc$add_attributes_to_findings(
-  attributes = list(
-    list(
-      key = "Example",
-      value = "example"
-    )
-  ),
-  findingArns = list(
-    "arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-..."
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/inspector/add_attributes_to_findings.html} for full documentation.
 }
 \keyword{internal}

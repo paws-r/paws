@@ -4,8 +4,13 @@
 \alias{ec2_describe_instances}
 \title{Describes the specified instances or all instances}
 \usage{
-ec2_describe_instances(Filters, InstanceIds, DryRun, MaxResults,
-  NextToken)
+ec2_describe_instances(
+  Filters = NULL,
+  InstanceIds = NULL,
+  DryRun = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Filters}{The filters.
@@ -25,6 +30,8 @@ the block device mapping (for example, \verb{/dev/sdh} or \code{xvdh}).
 \item \code{block-device-mapping.status} - The status for the EBS volume
 (\code{attaching} | \code{attached} | \code{detaching} | \code{detached}).
 \item \code{block-device-mapping.volume-id} - The volume ID of the EBS volume.
+\item \code{capacity-reservation-id} - The ID of the Capacity Reservation into
+which the instance was launched.
 \item \code{client-token} - The idempotency token you provided when you
 launched the instance.
 \item \code{dns-name} - The public DNS name of the instance.
@@ -64,7 +71,10 @@ launched.
 \item \code{launch-index} - When launching multiple instances, this is the
 index for the instance in the launch group (for example, 0, 1, 2,
 and so on).
-\item \code{launch-time} - The time when the instance was launched.
+\item \code{launch-time} - The time when the instance was launched, in the ISO
+8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for
+example, \verb{2021-09-29T11:04:43.305Z}. You can use a wildcard (\code{*}),
+for example, \verb{2021-09-29T*}, which matches an entire day.
 \item \code{metadata-options.http-tokens} - The metadata request authorization
 state (\code{optional} | \code{required})
 \item \code{metadata-options.http-put-response-hop-limit} - The http metadata
@@ -129,7 +139,7 @@ network interface.
 \item \code{network-interface.requester-id} - The requester ID for the network
 interface.
 \item \code{network-interface.requester-managed} - Indicates whether the
-network interface is being managed by AWS.
+network interface is being managed by Amazon Web Services.
 \item \code{network-interface.status} - The status of the network interface
 (\code{available}) | \verb{in-use}).
 \item \code{network-interface.source-dest-check} - Whether the network
@@ -141,7 +151,9 @@ perform network address translation (NAT) in your VPC.
 interface.
 \item \code{network-interface.vpc-id} - The ID of the VPC for the network
 interface.
-\item \code{owner-id} - The AWS account ID of the instance owner.
+\item \code{outpost-arn} - The Amazon Resource Name (ARN) of the Outpost.
+\item \code{owner-id} - The Amazon Web Services account ID of the instance
+owner.
 \item \code{placement-group-name} - The name of the placement group for the
 instance.
 \item \code{placement-partition-number} - The partition in which the instance
@@ -159,8 +171,8 @@ launch the instance.
 example, shows "User Initiated [date]" when you stop or terminate
 the instance). Similar to the state-reason-code filter.
 \item \code{requester-id} - The ID of the entity that launched the instance on
-your behalf (for example, AWS Management Console, Auto Scaling, and
-so on).
+your behalf (for example, Amazon Web Services Management Console,
+Auto Scaling, and so on).
 \item \code{reservation-id} - The ID of the instance's reservation. A
 reservation ID is created any time you launch an instance. A
 reservation ID has a one-to-one relationship with an instance launch
@@ -182,11 +194,11 @@ translation (NAT) in your VPC.
 \item \code{state-reason-code} - The reason code for the state change.
 \item \code{state-reason-message} - A message that describes the state change.
 \item \code{subnet-id} - The ID of the subnet for the instance.
-\item \code{tag}:<key> - The key/value combination of a tag assigned to
-the resource. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner}
-for the filter name and \code{TeamA} for the filter value.
+\item \verb{tag:<key>} - The key/value combination of a tag assigned to the
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources that have a tag with a specific key,
 regardless of the tag value.
@@ -213,295 +225,9 @@ parameter and the instance IDs parameter in the same call.}
 
 \item{NextToken}{The token to request the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Reservations = list(
-    list(
-      Groups = list(
-        list(
-          GroupName = "string",
-          GroupId = "string"
-        )
-      ),
-      Instances = list(
-        list(
-          AmiLaunchIndex = 123,
-          ImageId = "string",
-          InstanceId = "string",
-          InstanceType = "t1.micro"|"t2.nano"|"t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"t2.xlarge"|"t2.2xlarge"|"t3.nano"|"t3.micro"|"t3.small"|"t3.medium"|"t3.large"|"t3.xlarge"|"t3.2xlarge"|"t3a.nano"|"t3a.micro"|"t3a.small"|"t3a.medium"|"t3a.large"|"t3a.xlarge"|"t3a.2xlarge"|"t4g.nano"|"t4g.micro"|"t4g.small"|"t4g.medium"|"t4g.large"|"t4g.xlarge"|"t4g.2xlarge"|"m1.small"|"m1.medium"|"m1.large"|"m1.xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m4.16xlarge"|"m2.xlarge"|"m2.2xlarge"|"m2.4xlarge"|"cr1.8xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5.metal"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"r5b.large"|"r5b.xlarge"|"r5b.2xlarge"|"r5b.4xlarge"|"r5b.8xlarge"|"r5b.12xlarge"|"r5b.16xlarge"|"r5b.24xlarge"|"r5b.metal"|"r5d.large"|"r5d.xlarge"|"r5d.2xlarge"|"r5d.4xlarge"|"r5d.8xlarge"|"r5d.12xlarge"|"r5d.16xlarge"|"r5d.24xlarge"|"r5d.metal"|"r5ad.large"|"r5ad.xlarge"|"r5ad.2xlarge"|"r5ad.4xlarge"|"r5ad.8xlarge"|"r5ad.12xlarge"|"r5ad.16xlarge"|"r5ad.24xlarge"|"r6g.metal"|"r6g.medium"|"r6g.large"|"r6g.xlarge"|"r6g.2xlarge"|"r6g.4xlarge"|"r6g.8xlarge"|"r6g.12xlarge"|"r6g.16xlarge"|"r6gd.metal"|"r6gd.medium"|"r6gd.large"|"r6gd.xlarge"|"r6gd.2xlarge"|"r6gd.4xlarge"|"r6gd.8xlarge"|"r6gd.12xlarge"|"r6gd.16xlarge"|"x1.16xlarge"|"x1.32xlarge"|"x1e.xlarge"|"x1e.2xlarge"|"x1e.4xlarge"|"x1e.8xlarge"|"x1e.16xlarge"|"x1e.32xlarge"|"i2.xlarge"|"i2.2xlarge"|"i2.4xlarge"|"i2.8xlarge"|"i3.large"|"i3.xlarge"|"i3.2xlarge"|"i3.4xlarge"|"i3.8xlarge"|"i3.16xlarge"|"i3.metal"|"i3en.large"|"i3en.xlarge"|"i3en.2xlarge"|"i3en.3xlarge"|"i3en.6xlarge"|"i3en.12xlarge"|"i3en.24xlarge"|"i3en.metal"|"hi1.4xlarge"|"hs1.8xlarge"|"c1.medium"|"c1.xlarge"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5.metal"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"c5ad.large"|"c5ad.xlarge"|"c5ad.2xlarge"|"c5ad.4xlarge"|"c5ad.8xlarge"|"c5ad.12xlarge"|"c5ad.16xlarge"|"c5ad.24xlarge"|"c5d.large"|"c5d.xlarge"|"c5d.2xlarge"|"c5d.4xlarge"|"c5d.9xlarge"|"c5d.12xlarge"|"c5d.18xlarge"|"c5d.24xlarge"|"c5d.metal"|"c5n.large"|"c5n.xlarge"|"c5n.2xlarge"|"c5n.4xlarge"|"c5n.9xlarge"|"c5n.18xlarge"|"c5n.metal"|"c6g.metal"|"c6g.medium"|"c6g.large"|"c6g.xlarge"|"c6g.2xlarge"|"c6g.4xlarge"|"c6g.8xlarge"|"c6g.12xlarge"|"c6g.16xlarge"|"c6gd.metal"|"c6gd.medium"|"c6gd.large"|"c6gd.xlarge"|"c6gd.2xlarge"|"c6gd.4xlarge"|"c6gd.8xlarge"|"c6gd.12xlarge"|"c6gd.16xlarge"|"c6gn.medium"|"c6gn.large"|"c6gn.xlarge"|"c6gn.2xlarge"|"c6gn.4xlarge"|"c6gn.8xlarge"|"c6gn.12xlarge"|"c6gn.16xlarge"|"cc1.4xlarge"|"cc2.8xlarge"|"g2.2xlarge"|"g2.8xlarge"|"g3.4xlarge"|"g3.8xlarge"|"g3.16xlarge"|"g3s.xlarge"|"g4ad.4xlarge"|"g4ad.8xlarge"|"g4ad.16xlarge"|"g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g4dn.metal"|"cg1.4xlarge"|"p2.xlarge"|"p2.8xlarge"|"p2.16xlarge"|"p3.2xlarge"|"p3.8xlarge"|"p3.16xlarge"|"p3dn.24xlarge"|"p4d.24xlarge"|"d2.xlarge"|"d2.2xlarge"|"d2.4xlarge"|"d2.8xlarge"|"d3.xlarge"|"d3.2xlarge"|"d3.4xlarge"|"d3.8xlarge"|"d3en.xlarge"|"d3en.2xlarge"|"d3en.4xlarge"|"d3en.6xlarge"|"d3en.8xlarge"|"d3en.12xlarge"|"f1.2xlarge"|"f1.4xlarge"|"f1.16xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5.metal"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"|"m5d.large"|"m5d.xlarge"|"m5d.2xlarge"|"m5d.4xlarge"|"m5d.8xlarge"|"m5d.12xlarge"|"m5d.16xlarge"|"m5d.24xlarge"|"m5d.metal"|"m5ad.large"|"m5ad.xlarge"|"m5ad.2xlarge"|"m5ad.4xlarge"|"m5ad.8xlarge"|"m5ad.12xlarge"|"m5ad.16xlarge"|"m5ad.24xlarge"|"m5zn.large"|"m5zn.xlarge"|"m5zn.2xlarge"|"m5zn.3xlarge"|"m5zn.6xlarge"|"m5zn.12xlarge"|"m5zn.metal"|"h1.2xlarge"|"h1.4xlarge"|"h1.8xlarge"|"h1.16xlarge"|"z1d.large"|"z1d.xlarge"|"z1d.2xlarge"|"z1d.3xlarge"|"z1d.6xlarge"|"z1d.12xlarge"|"z1d.metal"|"u-6tb1.metal"|"u-9tb1.metal"|"u-12tb1.metal"|"u-18tb1.metal"|"u-24tb1.metal"|"a1.medium"|"a1.large"|"a1.xlarge"|"a1.2xlarge"|"a1.4xlarge"|"a1.metal"|"m5dn.large"|"m5dn.xlarge"|"m5dn.2xlarge"|"m5dn.4xlarge"|"m5dn.8xlarge"|"m5dn.12xlarge"|"m5dn.16xlarge"|"m5dn.24xlarge"|"m5n.large"|"m5n.xlarge"|"m5n.2xlarge"|"m5n.4xlarge"|"m5n.8xlarge"|"m5n.12xlarge"|"m5n.16xlarge"|"m5n.24xlarge"|"r5dn.large"|"r5dn.xlarge"|"r5dn.2xlarge"|"r5dn.4xlarge"|"r5dn.8xlarge"|"r5dn.12xlarge"|"r5dn.16xlarge"|"r5dn.24xlarge"|"r5n.large"|"r5n.xlarge"|"r5n.2xlarge"|"r5n.4xlarge"|"r5n.8xlarge"|"r5n.12xlarge"|"r5n.16xlarge"|"r5n.24xlarge"|"inf1.xlarge"|"inf1.2xlarge"|"inf1.6xlarge"|"inf1.24xlarge"|"m6g.metal"|"m6g.medium"|"m6g.large"|"m6g.xlarge"|"m6g.2xlarge"|"m6g.4xlarge"|"m6g.8xlarge"|"m6g.12xlarge"|"m6g.16xlarge"|"m6gd.metal"|"m6gd.medium"|"m6gd.large"|"m6gd.xlarge"|"m6gd.2xlarge"|"m6gd.4xlarge"|"m6gd.8xlarge"|"m6gd.12xlarge"|"m6gd.16xlarge"|"mac1.metal",
-          KernelId = "string",
-          KeyName = "string",
-          LaunchTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          Monitoring = list(
-            State = "disabled"|"disabling"|"enabled"|"pending"
-          ),
-          Placement = list(
-            AvailabilityZone = "string",
-            Affinity = "string",
-            GroupName = "string",
-            PartitionNumber = 123,
-            HostId = "string",
-            Tenancy = "default"|"dedicated"|"host",
-            SpreadDomain = "string",
-            HostResourceGroupArn = "string"
-          ),
-          Platform = "Windows",
-          PrivateDnsName = "string",
-          PrivateIpAddress = "string",
-          ProductCodes = list(
-            list(
-              ProductCodeId = "string",
-              ProductCodeType = "devpay"|"marketplace"
-            )
-          ),
-          PublicDnsName = "string",
-          PublicIpAddress = "string",
-          RamdiskId = "string",
-          State = list(
-            Code = 123,
-            Name = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped"
-          ),
-          StateTransitionReason = "string",
-          SubnetId = "string",
-          VpcId = "string",
-          Architecture = "i386"|"x86_64"|"arm64",
-          BlockDeviceMappings = list(
-            list(
-              DeviceName = "string",
-              Ebs = list(
-                AttachTime = as.POSIXct(
-                  "2015-01-01"
-                ),
-                DeleteOnTermination = TRUE|FALSE,
-                Status = "attaching"|"attached"|"detaching"|"detached",
-                VolumeId = "string"
-              )
-            )
-          ),
-          ClientToken = "string",
-          EbsOptimized = TRUE|FALSE,
-          EnaSupport = TRUE|FALSE,
-          Hypervisor = "ovm"|"xen",
-          IamInstanceProfile = list(
-            Arn = "string",
-            Id = "string"
-          ),
-          InstanceLifecycle = "spot"|"scheduled",
-          ElasticGpuAssociations = list(
-            list(
-              ElasticGpuId = "string",
-              ElasticGpuAssociationId = "string",
-              ElasticGpuAssociationState = "string",
-              ElasticGpuAssociationTime = "string"
-            )
-          ),
-          ElasticInferenceAcceleratorAssociations = list(
-            list(
-              ElasticInferenceAcceleratorArn = "string",
-              ElasticInferenceAcceleratorAssociationId = "string",
-              ElasticInferenceAcceleratorAssociationState = "string",
-              ElasticInferenceAcceleratorAssociationTime = as.POSIXct(
-                "2015-01-01"
-              )
-            )
-          ),
-          NetworkInterfaces = list(
-            list(
-              Association = list(
-                CarrierIp = "string",
-                IpOwnerId = "string",
-                PublicDnsName = "string",
-                PublicIp = "string"
-              ),
-              Attachment = list(
-                AttachTime = as.POSIXct(
-                  "2015-01-01"
-                ),
-                AttachmentId = "string",
-                DeleteOnTermination = TRUE|FALSE,
-                DeviceIndex = 123,
-                Status = "attaching"|"attached"|"detaching"|"detached",
-                NetworkCardIndex = 123
-              ),
-              Description = "string",
-              Groups = list(
-                list(
-                  GroupName = "string",
-                  GroupId = "string"
-                )
-              ),
-              Ipv6Addresses = list(
-                list(
-                  Ipv6Address = "string"
-                )
-              ),
-              MacAddress = "string",
-              NetworkInterfaceId = "string",
-              OwnerId = "string",
-              PrivateDnsName = "string",
-              PrivateIpAddress = "string",
-              PrivateIpAddresses = list(
-                list(
-                  Association = list(
-                    CarrierIp = "string",
-                    IpOwnerId = "string",
-                    PublicDnsName = "string",
-                    PublicIp = "string"
-                  ),
-                  Primary = TRUE|FALSE,
-                  PrivateDnsName = "string",
-                  PrivateIpAddress = "string"
-                )
-              ),
-              SourceDestCheck = TRUE|FALSE,
-              Status = "available"|"associated"|"attaching"|"in-use"|"detaching",
-              SubnetId = "string",
-              VpcId = "string",
-              InterfaceType = "string"
-            )
-          ),
-          OutpostArn = "string",
-          RootDeviceName = "string",
-          RootDeviceType = "ebs"|"instance-store",
-          SecurityGroups = list(
-            list(
-              GroupName = "string",
-              GroupId = "string"
-            )
-          ),
-          SourceDestCheck = TRUE|FALSE,
-          SpotInstanceRequestId = "string",
-          SriovNetSupport = "string",
-          StateReason = list(
-            Code = "string",
-            Message = "string"
-          ),
-          Tags = list(
-            list(
-              Key = "string",
-              Value = "string"
-            )
-          ),
-          VirtualizationType = "hvm"|"paravirtual",
-          CpuOptions = list(
-            CoreCount = 123,
-            ThreadsPerCore = 123
-          ),
-          CapacityReservationId = "string",
-          CapacityReservationSpecification = list(
-            CapacityReservationPreference = "open"|"none",
-            CapacityReservationTarget = list(
-              CapacityReservationId = "string",
-              CapacityReservationResourceGroupArn = "string"
-            )
-          ),
-          HibernationOptions = list(
-            Configured = TRUE|FALSE
-          ),
-          Licenses = list(
-            list(
-              LicenseConfigurationArn = "string"
-            )
-          ),
-          MetadataOptions = list(
-            State = "pending"|"applied",
-            HttpTokens = "optional"|"required",
-            HttpPutResponseHopLimit = 123,
-            HttpEndpoint = "disabled"|"enabled"
-          ),
-          EnclaveOptions = list(
-            Enabled = TRUE|FALSE
-          )
-        )
-      ),
-      OwnerId = "string",
-      RequesterId = "string",
-      ReservationId = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the specified instances or all instances.
 
-If you specify instance IDs, the output includes information for only
-the specified instances. If you specify filters, the output includes
-information for only those instances that meet the filter criteria. If
-you do not specify instance IDs or filters, the output includes
-information for all instances, which can affect performance. We
-recommend that you use pagination to ensure that the operation returns
-quickly and successfully.
-
-If you specify an instance ID that is not valid, an error is returned.
-If you specify an instance that you do not own, it is not included in
-the output.
-
-Recently terminated instances might appear in the returned results. This
-interval is usually less than one hour.
-
-If you describe instances in the rare case where an Availability Zone is
-experiencing a service disruption and you specify instance IDs that are
-in the affected zone, or do not specify any instance IDs at all, the
-call fails. If you describe instances and specify only instance IDs that
-are in an unaffected zone, the call works normally.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_instances(
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  InstanceIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the specified instance.
-svc$describe_instances(
-  InstanceIds = list(
-    "i-1234567890abcdef0"
-  )
-)
-
-# This example describes the instances with the t2.micro instance type.
-svc$describe_instances(
-  Filters = list(
-    list(
-      Name = "instance-type",
-      Values = list(
-        "t2.micro"
-      )
-    )
-  )
-)
-
-# This example describes the instances with the Purpose=test tag.
-svc$describe_instances(
-  Filters = list(
-    list(
-      Name = "tag:Purpose",
-      Values = list(
-        "test"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/ec2/describe_instances.html} for full documentation.
 }
 \keyword{internal}

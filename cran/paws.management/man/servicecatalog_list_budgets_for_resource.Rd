@@ -4,8 +4,12 @@
 \alias{servicecatalog_list_budgets_for_resource}
 \title{Lists all the budgets associated to the specified resource}
 \usage{
-servicecatalog_list_budgets_for_resource(AcceptLanguage, ResourceId,
-  PageSize, PageToken)
+servicecatalog_list_budgets_for_resource(
+  AcceptLanguage = NULL,
+  ResourceId,
+  PageSize = NULL,
+  PageToken = NULL
+)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -22,28 +26,9 @@ servicecatalog_list_budgets_for_resource(AcceptLanguage, ResourceId,
 \item{PageToken}{The page token for the next set of results. To retrieve the first set of
 results, use null.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Budgets = list(
-    list(
-      BudgetName = "string"
-    )
-  ),
-  NextPageToken = "string"
-)
-}
-}
 \description{
 Lists all the budgets associated to the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$list_budgets_for_resource(
-  AcceptLanguage = "string",
-  ResourceId = "string",
-  PageSize = 123,
-  PageToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/servicecatalog/list_budgets_for_resource.html} for full documentation.
+}
 \keyword{internal}

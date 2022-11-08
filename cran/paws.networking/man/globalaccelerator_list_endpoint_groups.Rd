@@ -4,8 +4,11 @@
 \alias{globalaccelerator_list_endpoint_groups}
 \title{List the endpoint groups that are associated with a listener}
 \usage{
-globalaccelerator_list_endpoint_groups(ListenerArn, MaxResults,
-  NextToken)
+globalaccelerator_list_endpoint_groups(
+  ListenerArn,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
@@ -16,49 +19,9 @@ call. The default value is 10.}
 \item{NextToken}{The token for the next set of results. You receive this token from a
 previous call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EndpointGroups = list(
-    list(
-      EndpointGroupArn = "string",
-      EndpointGroupRegion = "string",
-      EndpointDescriptions = list(
-        list(
-          EndpointId = "string",
-          Weight = 123,
-          HealthState = "INITIAL"|"HEALTHY"|"UNHEALTHY",
-          HealthReason = "string",
-          ClientIPPreservationEnabled = TRUE|FALSE
-        )
-      ),
-      TrafficDialPercentage = 123.0,
-      HealthCheckPort = 123,
-      HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
-      HealthCheckPath = "string",
-      HealthCheckIntervalSeconds = 123,
-      ThresholdCount = 123,
-      PortOverrides = list(
-        list(
-          ListenerPort = 123,
-          EndpointPort = 123
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 List the endpoint groups that are associated with a listener.
-}
-\section{Request syntax}{
-\preformatted{svc$list_endpoint_groups(
-  ListenerArn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/list_endpoint_groups.html} for full documentation.
+}
 \keyword{internal}

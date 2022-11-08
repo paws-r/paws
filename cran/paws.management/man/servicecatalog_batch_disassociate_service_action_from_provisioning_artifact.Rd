@@ -6,7 +6,9 @@
 provisioning artifact}
 \usage{
 servicecatalog_batch_disassociate_service_action_from_provisioning_artifact(
-  ServiceActionAssociations, AcceptLanguage)
+  ServiceActionAssociations,
+  AcceptLanguage = NULL
+)
 }
 \arguments{
 \item{ServiceActionAssociations}{[required] One or more associations, each consisting of the Action ID, the Product
@@ -19,36 +21,9 @@ ID, and the Provisioning Artifact ID.}
 \item \code{zh} - Chinese
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  FailedServiceActionAssociations = list(
-    list(
-      ServiceActionId = "string",
-      ProductId = "string",
-      ProvisioningArtifactId = "string",
-      ErrorCode = "DUPLICATE_RESOURCE"|"INTERNAL_FAILURE"|"LIMIT_EXCEEDED"|"RESOURCE_NOT_FOUND"|"THROTTLING",
-      ErrorMessage = "string"
-    )
-  )
-)
-}
-}
 \description{
-Disassociates a batch of self-service actions from the specified
-provisioning artifact.
-}
-\section{Request syntax}{
-\preformatted{svc$batch_disassociate_service_action_from_provisioning_artifact(
-  ServiceActionAssociations = list(
-    list(
-      ServiceActionId = "string",
-      ProductId = "string",
-      ProvisioningArtifactId = "string"
-    )
-  ),
-  AcceptLanguage = "string"
-)
-}
-}
+Disassociates a batch of self-service actions from the specified provisioning artifact.
 
+See \url{https://paws-r.github.io/docs/servicecatalog/batch_disassociate_service_action_from_provisioning_artifact.html} for full documentation.
+}
 \keyword{internal}

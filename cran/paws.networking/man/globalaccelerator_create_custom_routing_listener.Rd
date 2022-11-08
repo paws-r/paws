@@ -5,8 +5,11 @@
 \title{Create a listener to process inbound connections from clients to a
 custom routing accelerator}
 \usage{
-globalaccelerator_create_custom_routing_listener(AcceleratorArn,
-  PortRanges, IdempotencyToken)
+globalaccelerator_create_custom_routing_listener(
+  AcceleratorArn,
+  PortRanges,
+  IdempotencyToken
+)
 }
 \arguments{
 \item{AcceleratorArn}{[required] The Amazon Resource Name (ARN) of the accelerator for a custom routing
@@ -21,37 +24,9 @@ Separately, you set port ranges for endpoints. For more information, see
 \item{IdempotencyToken}{[required] A unique, case-sensitive identifier that you provide to ensure the
 idempotency—that is, the uniqueness—of the request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Listener = list(
-    ListenerArn = "string",
-    PortRanges = list(
-      list(
-        FromPort = 123,
-        ToPort = 123
-      )
-    )
-  )
-)
-}
-}
 \description{
-Create a listener to process inbound connections from clients to a
-custom routing accelerator. Connections arrive to assigned static IP
-addresses on the port range that you specify.
-}
-\section{Request syntax}{
-\preformatted{svc$create_custom_routing_listener(
-  AcceleratorArn = "string",
-  PortRanges = list(
-    list(
-      FromPort = 123,
-      ToPort = 123
-    )
-  ),
-  IdempotencyToken = "string"
-)
-}
-}
+Create a listener to process inbound connections from clients to a custom routing accelerator. Connections arrive to assigned static IP addresses on the port range that you specify.
 
+See \url{https://paws-r.github.io/docs/globalaccelerator/create_custom_routing_listener.html} for full documentation.
+}
 \keyword{internal}

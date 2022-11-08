@@ -4,8 +4,12 @@
 \alias{licensemanager_list_licenses}
 \title{Lists the licenses for your account}
 \usage{
-licensemanager_list_licenses(LicenseArns, Filters, NextToken,
-  MaxResults)
+licensemanager_list_licenses(
+  LicenseArns = NULL,
+  Filters = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
 \item{LicenseArns}{Amazon Resource Names (ARNs) of the licenses.}
@@ -14,7 +18,7 @@ licensemanager_list_licenses(LicenseArns, Filters, NextToken,
 \itemize{
 \item \code{Beneficiary}
 \item \code{ProductSKU}
-\item \code{KeyFingerprint}
+\item \code{Fingerprint}
 \item \code{Status}
 }}
 
@@ -22,80 +26,9 @@ licensemanager_list_licenses(LicenseArns, Filters, NextToken,
 
 \item{MaxResults}{Maximum number of results to return in a single call.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Licenses = list(
-    list(
-      LicenseArn = "string",
-      LicenseName = "string",
-      ProductName = "string",
-      ProductSKU = "string",
-      Issuer = list(
-        Name = "string",
-        SignKey = "string",
-        KeyFingerprint = "string"
-      ),
-      HomeRegion = "string",
-      Status = "AVAILABLE"|"PENDING_AVAILABLE"|"DEACTIVATED"|"SUSPENDED"|"EXPIRED"|"PENDING_DELETE"|"DELETED",
-      Validity = list(
-        Begin = "string",
-        End = "string"
-      ),
-      Beneficiary = "string",
-      Entitlements = list(
-        list(
-          Name = "string",
-          Value = "string",
-          MaxCount = 123,
-          Overage = TRUE|FALSE,
-          Unit = "Count"|"None"|"Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second",
-          AllowCheckIn = TRUE|FALSE
-        )
-      ),
-      ConsumptionConfiguration = list(
-        RenewType = "None"|"Weekly"|"Monthly",
-        ProvisionalConfiguration = list(
-          MaxTimeToLiveInMinutes = 123
-        ),
-        BorrowConfiguration = list(
-          AllowEarlyCheckIn = TRUE|FALSE,
-          MaxTimeToLiveInMinutes = 123
-        )
-      ),
-      LicenseMetadata = list(
-        list(
-          Name = "string",
-          Value = "string"
-        )
-      ),
-      CreateTime = "string",
-      Version = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Lists the licenses for your account.
-}
-\section{Request syntax}{
-\preformatted{svc$list_licenses(
-  LicenseArns = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/licensemanager/list_licenses.html} for full documentation.
+}
 \keyword{internal}

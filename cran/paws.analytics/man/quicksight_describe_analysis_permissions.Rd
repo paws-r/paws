@@ -7,39 +7,16 @@
 quicksight_describe_analysis_permissions(AwsAccountId, AnalysisId)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the analysis whose permissions
-you're describing. You must be using the AWS account that the analysis
-is in.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the analysis
+whose permissions you're describing. You must be using the Amazon Web
+Services account that the analysis is in.}
 
 \item{AnalysisId}{[required] The ID of the analysis whose permissions you're describing. The ID is
 part of the analysis URL.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AnalysisId = "string",
-  AnalysisArn = "string",
-  Permissions = list(
-    list(
-      Principal = "string",
-      Actions = list(
-        "string"
-      )
-    )
-  ),
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Provides the read and write permissions for an analysis.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_analysis_permissions(
-  AwsAccountId = "string",
-  AnalysisId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/describe_analysis_permissions.html} for full documentation.
+}
 \keyword{internal}

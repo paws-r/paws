@@ -5,38 +5,19 @@
 \title{This action is only used by the Amazon ECS agent, and it is not intended
 for use outside of the agent}
 \usage{
-ecs_discover_poll_endpoint(containerInstance, cluster)
+ecs_discover_poll_endpoint(containerInstance = NULL, cluster = NULL)
 }
 \arguments{
-\item{containerInstance}{The container instance ID or full ARN of the container instance. The ARN
-contains the \code{arn:aws:ecs} namespace, followed by the Region of the
-container instance, the AWS account ID of the container instance owner,
-the \code{container-instance} namespace, and then the container instance ID.
-For example,
-\code{arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID}.}
+\item{containerInstance}{The container instance ID or full ARN of the container instance. For
+more information about the ARN format, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#ecs-resource-ids}{Amazon Resource Name (ARN)}
+in the \emph{Amazon ECS Developer Guide}.}
 
-\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster to
-which the container instance belongs.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  endpoint = "string",
-  telemetryEndpoint = "string"
-)
-}
+\item{cluster}{The short name or full Amazon Resource Name (ARN) of the cluster that
+the container instance belongs to.}
 }
 \description{
-This action is only used by the Amazon ECS agent, and it is not intended
-for use outside of the agent.
+This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 
-Returns an endpoint for the Amazon ECS agent to poll for updates.
+See \url{https://paws-r.github.io/docs/ecs/discover_poll_endpoint.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$discover_poll_endpoint(
-  containerInstance = "string",
-  cluster = "string"
-)
-}
-}
-
 \keyword{internal}

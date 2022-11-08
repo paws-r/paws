@@ -5,8 +5,11 @@
 \title{Modifies a cluster subnet group to include the specified list of VPC
 subnets}
 \usage{
-redshift_modify_cluster_subnet_group(ClusterSubnetGroupName,
-  Description, SubnetIds)
+redshift_modify_cluster_subnet_group(
+  ClusterSubnetGroupName,
+  Description = NULL,
+  SubnetIds
+)
 }
 \arguments{
 \item{ClusterSubnetGroupName}{[required] The name of the subnet group to be modified.}
@@ -16,51 +19,9 @@ redshift_modify_cluster_subnet_group(ClusterSubnetGroupName,
 \item{SubnetIds}{[required] An array of VPC subnet IDs. A maximum of 20 subnets can be modified in a
 single request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClusterSubnetGroup = list(
-    ClusterSubnetGroupName = "string",
-    Description = "string",
-    VpcId = "string",
-    SubnetGroupStatus = "string",
-    Subnets = list(
-      list(
-        SubnetIdentifier = "string",
-        SubnetAvailabilityZone = list(
-          Name = "string",
-          SupportedPlatforms = list(
-            list(
-              Name = "string"
-            )
-          )
-        ),
-        SubnetStatus = "string"
-      )
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Modifies a cluster subnet group to include the specified list of VPC
-subnets. The operation replaces the existing list of subnets with the
-new list of subnets.
-}
-\section{Request syntax}{
-\preformatted{svc$modify_cluster_subnet_group(
-  ClusterSubnetGroupName = "string",
-  Description = "string",
-  SubnetIds = list(
-    "string"
-  )
-)
-}
-}
+Modifies a cluster subnet group to include the specified list of VPC subnets. The operation replaces the existing list of subnets with the new list of subnets.
 
+See \url{https://paws-r.github.io/docs/redshift/modify_cluster_subnet_group.html} for full documentation.
+}
 \keyword{internal}

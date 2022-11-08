@@ -2,9 +2,9 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_detach_classic_link_vpc}
 \alias{ec2_detach_classic_link_vpc}
-\title{Unlinks (detaches) a linked EC2-Classic instance from a VPC}
+\title{We are retiring EC2-Classic on August 15, 2022}
 \usage{
-ec2_detach_classic_link_vpc(DryRun, InstanceId, VpcId)
+ec2_detach_classic_link_vpc(DryRun = NULL, InstanceId, VpcId)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -16,25 +16,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcId}{[required] The ID of the VPC to which the instance is linked.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Return = TRUE|FALSE
-)
-}
-}
 \description{
-Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the
-instance has been unlinked, the VPC security groups are no longer
-associated with it. An instance is automatically unlinked from a VPC
-when it's stopped.
-}
-\section{Request syntax}{
-\preformatted{svc$detach_classic_link_vpc(
-  DryRun = TRUE|FALSE,
-  InstanceId = "string",
-  VpcId = "string"
-)
-}
-}
+We are retiring EC2-Classic on August 15, 2022. We recommend that you migrate from EC2-Classic to a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html}{Migrate from EC2-Classic to a VPC} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
+See \url{https://paws-r.github.io/docs/ec2/detach_classic_link_vpc.html} for full documentation.
+}
 \keyword{internal}

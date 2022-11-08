@@ -2,14 +2,13 @@
 % Please edit documentation in R/organizations_operations.R
 \name{organizations_describe_account}
 \alias{organizations_describe_account}
-\title{Retrieves AWS Organizations-related information about the specified
-account}
+\title{Retrieves Organizations-related information about the specified account}
 \usage{
 organizations_describe_account(AccountId)
 }
 \arguments{
-\item{AccountId}{[required] The unique identifier (ID) of the AWS account that you want information
-about. You can get the ID from the
+\item{AccountId}{[required] The unique identifier (ID) of the Amazon Web Services account that you
+want information about. You can get the ID from the
 \code{\link[=organizations_list_accounts]{list_accounts}} or
 \code{\link[=organizations_list_accounts_for_parent]{list_accounts_for_parent}}
 operations.
@@ -17,45 +16,9 @@ operations.
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an account
 ID string requires exactly 12 digits.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Account = list(
-    Id = "string",
-    Arn = "string",
-    Email = "string",
-    Name = "string",
-    Status = "ACTIVE"|"SUSPENDED",
-    JoinedMethod = "INVITED"|"CREATED",
-    JoinedTimestamp = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Retrieves AWS Organizations-related information about the specified
-account.
+Retrieves Organizations-related information about the specified account.
 
-This operation can be called only from the organization's management
-account or by a member account that is a delegated administrator for an
-AWS service.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_account(
-  AccountId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example shows a user in the master account (111111111111)
-# asking for details about account 555555555555:
-svc$describe_account(
-  AccountId = "555555555555"
-)
-}
-
+See \url{https://paws-r.github.io/docs/organizations/describe_account.html} for full documentation.
 }
 \keyword{internal}

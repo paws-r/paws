@@ -4,9 +4,18 @@
 \alias{s3_create_bucket}
 \title{Creates a new S3 bucket}
 \usage{
-s3_create_bucket(ACL, Bucket, CreateBucketConfiguration,
-  GrantFullControl, GrantRead, GrantReadACP, GrantWrite, GrantWriteACP,
-  ObjectLockEnabledForBucket)
+s3_create_bucket(
+  ACL = NULL,
+  Bucket,
+  CreateBucketConfiguration = NULL,
+  GrantFullControl = NULL,
+  GrantRead = NULL,
+  GrantReadACP = NULL,
+  GrantWrite = NULL,
+  GrantWriteACP = NULL,
+  ObjectLockEnabledForBucket = NULL,
+  ObjectOwnership = NULL
+)
 }
 \arguments{
 \item{ACL}{The canned ACL to apply to the bucket.}
@@ -22,138 +31,21 @@ the bucket.}
 
 \item{GrantReadACP}{Allows grantee to read the bucket ACL.}
 
-\item{GrantWrite}{Allows grantee to create, overwrite, and delete any object in the
-bucket.}
+\item{GrantWrite}{Allows grantee to create new objects in the bucket.
+
+For the bucket and object owners of existing objects, also allows
+deletions and overwrites of those objects.}
 
 \item{GrantWriteACP}{Allows grantee to write the ACL for the applicable bucket.}
 
 \item{ObjectLockEnabledForBucket}{Specifies whether you want S3 Object Lock to be enabled for the new
 bucket.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Location = "string"
-)
-}
+
+\item{ObjectOwnership}{}
 }
 \description{
-Creates a new S3 bucket. To create a bucket, you must register with
-Amazon S3 and have a valid AWS Access Key ID to authenticate requests.
-Anonymous requests are never allowed to create buckets. By creating the
-bucket, you become the bucket owner.
+Creates a new S3 bucket. To create a bucket, you must register with Amazon S3 and have a valid Amazon Web Services Access Key ID to authenticate requests. Anonymous requests are never allowed to create buckets. By creating the bucket, you become the bucket owner.
 
-Not every string is an acceptable bucket name. For information about
-bucket naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html}{Working with Amazon S3 buckets}.
-
-If you want to create an Amazon S3 on Outposts bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html}{Create Bucket}.
-
-By default, the bucket is created in the US East (N. Virginia) Region.
-You can optionally specify a Region in the request body. You might
-choose a Region to optimize latency, minimize costs, or address
-regulatory requirements. For example, if you reside in Europe, you will
-probably find it advantageous to create buckets in the Europe (Ireland)
-Region. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html#access-bucket-intro}{Accessing a bucket}.
-
-If you send your create bucket request to the \code{s3.amazonaws.com}
-endpoint, the request goes to the us-east-1 Region. Accordingly, the
-signature calculations in Signature Version 4 must use us-east-1 as the
-Region, even if the location constraint in the request specifies another
-Region where the bucket is to be created. If you create a bucket in a
-Region other than US East (N. Virginia), your application must be able
-to handle 307 redirect. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/VirtualHosting.html}{Virtual hosting of buckets}.
-
-When creating a bucket using this operation, you can optionally specify
-the accounts or groups that should be granted specific permissions on
-the bucket. There are two ways to grant the appropriate permissions
-using the request headers.
-\itemize{
-\item Specify a canned ACL using the \code{x-amz-acl} request header. Amazon S3
-supports a set of predefined ACLs, known as \emph{canned ACLs}. Each
-canned ACL has a predefined set of grantees and permissions. For
-more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL}{Canned ACL}.
-\item Specify access permissions explicitly using the \code{x-amz-grant-read},
-\code{x-amz-grant-write}, \code{x-amz-grant-read-acp},
-\code{x-amz-grant-write-acp}, and \code{x-amz-grant-full-control} headers.
-These headers map to the set of permissions Amazon S3 supports in an
-ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Access control list (ACL) overview}.
-
-You specify each grantee as a type=value pair, where the type is one
-of the following:
-\itemize{
-\item \code{id} – if the value specified is the canonical user ID of an AWS
-account
-\item \code{uri} – if you are granting permissions to a predefined group
-\item \code{emailAddress} – if the value specified is the email address of
-an AWS account
-
-Using email addresses to specify a grantee is only supported in
-the following AWS Regions:
-\itemize{
-\item US East (N. Virginia)
-\item US West (N. California)
-\item US West (Oregon)
-\item Asia Pacific (Singapore)
-\item Asia Pacific (Sydney)
-\item Asia Pacific (Tokyo)
-\item Europe (Ireland)
-\item South America (São Paulo)
-}
-
-For a list of all the Amazon S3 supported Regions and endpoints,
-see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region}{Regions and Endpoints}
-in the AWS General Reference.
-}
-
-For example, the following \code{x-amz-grant-read} header grants the AWS
-accounts identified by account IDs permissions to read object data
-and its metadata:
-
-\verb{x-amz-grant-read: id="11112222333", id="444455556666" }
-}
-
-You can use either a canned ACL or specify access permissions
-explicitly. You cannot do both.
-
-The following operations are related to
-\code{\link[=s3_create_bucket]{create_bucket}}:
-\itemize{
-\item \code{\link[=s3_put_object]{put_object}}
-\item \code{\link[=s3_delete_bucket]{delete_bucket}}
-}
-}
-\section{Request syntax}{
-\preformatted{svc$create_bucket(
-  ACL = "private"|"public-read"|"public-read-write"|"authenticated-read",
-  Bucket = "string",
-  CreateBucketConfiguration = list(
-    LocationConstraint = "af-south-1"|"ap-east-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"EU"|"eu-central-1"|"eu-north-1"|"eu-south-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"me-south-1"|"sa-east-1"|"us-east-2"|"us-gov-east-1"|"us-gov-west-1"|"us-west-1"|"us-west-2"
-  ),
-  GrantFullControl = "string",
-  GrantRead = "string",
-  GrantReadACP = "string",
-  GrantWrite = "string",
-  GrantWriteACP = "string",
-  ObjectLockEnabledForBucket = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example creates a bucket.
-svc$create_bucket(
-  Bucket = "examplebucket"
-)
-
-# The following example creates a bucket. The request specifies an AWS
-# region where to create the bucket.
-svc$create_bucket(
-  Bucket = "examplebucket",
-  CreateBucketConfiguration = list(
-    LocationConstraint = "eu-west-1"
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/s3/create_bucket.html} for full documentation.
 }
 \keyword{internal}

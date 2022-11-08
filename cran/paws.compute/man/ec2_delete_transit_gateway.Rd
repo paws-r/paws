@@ -4,7 +4,7 @@
 \alias{ec2_delete_transit_gateway}
 \title{Deletes the specified transit gateway}
 \usage{
-ec2_delete_transit_gateway(TransitGatewayId, DryRun)
+ec2_delete_transit_gateway(TransitGatewayId, DryRun = NULL)
 }
 \arguments{
 \item{TransitGatewayId}{[required] The ID of the transit gateway.}
@@ -14,50 +14,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TransitGateway = list(
-    TransitGatewayId = "string",
-    TransitGatewayArn = "string",
-    State = "pending"|"available"|"modifying"|"deleting"|"deleted",
-    OwnerId = "string",
-    Description = "string",
-    CreationTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    Options = list(
-      AmazonSideAsn = 123,
-      TransitGatewayCidrBlocks = list(
-        "string"
-      ),
-      AutoAcceptSharedAttachments = "enable"|"disable",
-      DefaultRouteTableAssociation = "enable"|"disable",
-      AssociationDefaultRouteTableId = "string",
-      DefaultRouteTablePropagation = "enable"|"disable",
-      PropagationDefaultRouteTableId = "string",
-      VpnEcmpSupport = "enable"|"disable",
-      DnsSupport = "enable"|"disable",
-      MulticastSupport = "enable"|"disable"
-    ),
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
 Deletes the specified transit gateway.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_transit_gateway(
-  TransitGatewayId = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/delete_transit_gateway.html} for full documentation.
+}
 \keyword{internal}

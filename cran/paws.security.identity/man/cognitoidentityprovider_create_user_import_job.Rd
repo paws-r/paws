@@ -4,8 +4,11 @@
 \alias{cognitoidentityprovider_create_user_import_job}
 \title{Creates the user import job}
 \usage{
-cognitoidentityprovider_create_user_import_job(JobName, UserPoolId,
-  CloudWatchLogsRoleArn)
+cognitoidentityprovider_create_user_import_job(
+  JobName,
+  UserPoolId,
+  CloudWatchLogsRoleArn
+)
 }
 \arguments{
 \item{JobName}{[required] The job name for the user import job.}
@@ -13,45 +16,12 @@ cognitoidentityprovider_create_user_import_job(JobName, UserPoolId,
 \item{UserPoolId}{[required] The user pool ID for the user pool that the users are being imported
 into.}
 
-\item{CloudWatchLogsRoleArn}{[required] The role ARN for the Amazon CloudWatch Logging role for the user import
-job.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UserImportJob = list(
-    JobName = "string",
-    JobId = "string",
-    UserPoolId = "string",
-    PreSignedUrl = "string",
-    CreationDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    StartDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    CompletionDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    Status = "Created"|"Pending"|"InProgress"|"Stopping"|"Expired"|"Stopped"|"Failed"|"Succeeded",
-    CloudWatchLogsRoleArn = "string",
-    ImportedUsers = 123,
-    SkippedUsers = 123,
-    FailedUsers = 123,
-    CompletionMessage = "string"
-  )
-)
-}
+\item{CloudWatchLogsRoleArn}{[required] The role ARN for the Amazon CloudWatch Logs Logging role for the user
+import job.}
 }
 \description{
 Creates the user import job.
-}
-\section{Request syntax}{
-\preformatted{svc$create_user_import_job(
-  JobName = "string",
-  UserPoolId = "string",
-  CloudWatchLogsRoleArn = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/create_user_import_job.html} for full documentation.
+}
 \keyword{internal}

@@ -5,7 +5,10 @@
 \title{This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications}
 \usage{
-kinesisanalytics_list_applications(Limit, ExclusiveStartApplicationName)
+kinesisanalytics_list_applications(
+  Limit = NULL,
+  ExclusiveStartApplicationName = NULL
+)
 }
 \arguments{
 \item{Limit}{Maximum number of applications to list.}
@@ -15,45 +18,9 @@ retrieve the list, you don't need to specify this parameter in the first
 request. However, in subsequent requests, you add the last application
 name from the previous response to get the next page of applications.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationSummaries = list(
-    list(
-      ApplicationName = "string",
-      ApplicationARN = "string",
-      ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"
-    )
-  ),
-  HasMoreApplications = TRUE|FALSE
-)
-}
-}
 \description{
-This documentation is for version 1 of the Amazon Kinesis Data Analytics
-API, which only supports SQL applications. Version 2 of the API supports
-SQL and Java applications. For more information about version 2, see
-Amazon Kinesis Data Analytics API V2 Documentation.
+This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
 
-Returns a list of Amazon Kinesis Analytics applications in your account.
-For each application, the response includes the application name, Amazon
-Resource Name (ARN), and status. If the response returns the
-\code{HasMoreApplications} value as true, you can send another request by
-adding the \code{ExclusiveStartApplicationName} in the request body, and set
-the value of this to the last application name from the previous
-response.
-
-If you want detailed information about a specific application, use
-\code{\link[=kinesisanalytics_describe_application]{describe_application}}.
-
-This operation requires permissions to perform the
-\code{kinesisanalytics:ListApplications} action.
+See \url{https://paws-r.github.io/docs/kinesisanalytics/list_applications.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_applications(
-  Limit = 123,
-  ExclusiveStartApplicationName = "string"
-)
-}
-}
-
 \keyword{internal}

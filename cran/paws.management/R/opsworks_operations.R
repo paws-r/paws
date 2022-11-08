@@ -7,40 +7,12 @@ NULL
 #'
 #' @description
 #' Assign a registered instance to a layer.
-#' 
-#' -   You can assign registered on-premises instances to any layer type.
-#' 
-#' -   You can assign registered Amazon EC2 instances only to custom
-#'     layers.
-#' 
-#' -   You cannot use this action with instances that were created with AWS
-#'     OpsWorks Stacks.
-#' 
-#' **Required Permissions**: To use this action, an AWS Identity and Access
-#' Management (IAM) user must have a Manage permissions level for the stack
-#' or an attached policy that explicitly grants permissions. For more
-#' information on user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_assign_instance(InstanceId, LayerIds)
+#' See [https://paws-r.github.io/docs/opsworks/assign_instance.html](https://paws-r.github.io/docs/opsworks/assign_instance.html) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #' @param LayerIds &#91;required&#93; The layer ID, which must correspond to a custom layer. You cannot assign
 #' a registered instance to a built-in layer.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$assign_instance(
-#'   InstanceId = "string",
-#'   LayerIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -66,37 +38,12 @@ opsworks_assign_instance <- function(InstanceId, LayerIds) {
 #' instance
 #'
 #' @description
-#' Assigns one of the stack's registered Amazon EBS volumes to a specified
-#' instance. The volume must first be registered with the stack by calling
-#' [`register_volume`][opsworks_register_volume]. After you register the
-#' volume, you must call [`update_volume`][opsworks_update_volume] to
-#' specify a mount point before calling
-#' [`assign_volume`][opsworks_assign_volume]. For more information, see
-#' [Resource
-#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Assigns one of the stack's registered Amazon EBS volumes to a specified instance. The volume must first be registered with the stack by calling [`register_volume`][opsworks_register_volume]. After you register the volume, you must call [`update_volume`][opsworks_update_volume] to specify a mount point before calling [`assign_volume`][opsworks_assign_volume]. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' @usage
-#' opsworks_assign_volume(VolumeId, InstanceId)
+#' See [https://paws-r.github.io/docs/opsworks/assign_volume.html](https://paws-r.github.io/docs/opsworks/assign_volume.html) for full documentation.
 #'
 #' @param VolumeId &#91;required&#93; The volume ID.
 #' @param InstanceId The instance ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$assign_volume(
-#'   VolumeId = "string",
-#'   InstanceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -122,34 +69,12 @@ opsworks_assign_volume <- function(VolumeId, InstanceId = NULL) {
 #' specified instance
 #'
 #' @description
-#' Associates one of the stack's registered Elastic IP addresses with a
-#' specified instance. The address must first be registered with the stack
-#' by calling [`register_elastic_ip`][opsworks_register_elastic_ip]. For
-#' more information, see [Resource
-#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Associates one of the stack's registered Elastic IP addresses with a specified instance. The address must first be registered with the stack by calling [`register_elastic_ip`][opsworks_register_elastic_ip]. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' @usage
-#' opsworks_associate_elastic_ip(ElasticIp, InstanceId)
+#' See [https://paws-r.github.io/docs/opsworks/associate_elastic_ip.html](https://paws-r.github.io/docs/opsworks/associate_elastic_ip.html) for full documentation.
 #'
 #' @param ElasticIp &#91;required&#93; The Elastic IP address.
 #' @param InstanceId The instance ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$associate_elastic_ip(
-#'   ElasticIp = "string",
-#'   InstanceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -174,40 +99,13 @@ opsworks_associate_elastic_ip <- function(ElasticIp, InstanceId = NULL) {
 #' Attaches an Elastic Load Balancing load balancer to a specified layer
 #'
 #' @description
-#' Attaches an Elastic Load Balancing load balancer to a specified layer.
-#' AWS OpsWorks Stacks does not support Application Load Balancer. You can
-#' only use Classic Load Balancer with AWS OpsWorks Stacks. For more
-#' information, see [Elastic Load
-#' Balancing](https://docs.aws.amazon.com/opsworks/latest/userguide/layers-elb.html).
-#' 
-#' You must create the Elastic Load Balancing instance separately, by using
-#' the Elastic Load Balancing console, API, or CLI. For more information,
-#' see [Elastic Load Balancing Developer
-#' Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Attaches an Elastic Load Balancing load balancer to a specified layer. AWS OpsWorks Stacks does not support Application Load Balancer. You can only use Classic Load Balancer with AWS OpsWorks Stacks. For more information, see [Elastic Load Balancing](https://docs.aws.amazon.com/opsworks/latest/userguide/layers-elb.html).
 #'
-#' @usage
-#' opsworks_attach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
+#' See [https://paws-r.github.io/docs/opsworks/attach_elastic_load_balancer.html](https://paws-r.github.io/docs/opsworks/attach_elastic_load_balancer.html) for full documentation.
 #'
 #' @param ElasticLoadBalancerName &#91;required&#93; The Elastic Load Balancing instance's name.
 #' @param LayerId &#91;required&#93; The ID of the layer to which the Elastic Load Balancing instance is to
 #' be attached.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$attach_elastic_load_balancer(
-#'   ElasticLoadBalancerName = "string",
-#'   LayerId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -232,23 +130,9 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' Creates a clone of a specified stack
 #'
 #' @description
-#' Creates a clone of a specified stack. For more information, see [Clone a
-#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html).
-#' By default, all parameters are set to the values used by the parent
-#' stack.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have an
-#' attached policy that explicitly grants permissions. For more information
-#' about user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Creates a clone of a specified stack. For more information, see [Clone a Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html). By default, all parameters are set to the values used by the parent stack.
 #'
-#' @usage
-#' opsworks_clone_stack(SourceStackId, Name, Region, VpcId, Attributes,
-#'   ServiceRoleArn, DefaultInstanceProfileArn, DefaultOs, HostnameTheme,
-#'   DefaultAvailabilityZone, DefaultSubnetId, CustomJson,
-#'   ConfigurationManager, ChefConfiguration, UseCustomCookbooks,
-#'   UseOpsworksSecurityGroups, CustomCookbooksSource, DefaultSshKeyName,
-#'   ClonePermissions, CloneAppIds, DefaultRootDeviceType, AgentVersion)
+#' See [https://paws-r.github.io/docs/opsworks/clone_stack.html](https://paws-r.github.io/docs/opsworks/clone_stack.html) for full documentation.
 #'
 #' @param SourceStackId &#91;required&#93; The source stack ID.
 #' @param Name The cloned stack name.
@@ -460,59 +344,6 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' You can also specify an agent version when you create or update an
 #' instance, which overrides the stack's default setting.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   StackId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$clone_stack(
-#'   SourceStackId = "string",
-#'   Name = "string",
-#'   Region = "string",
-#'   VpcId = "string",
-#'   Attributes = list(
-#'     "string"
-#'   ),
-#'   ServiceRoleArn = "string",
-#'   DefaultInstanceProfileArn = "string",
-#'   DefaultOs = "string",
-#'   HostnameTheme = "string",
-#'   DefaultAvailabilityZone = "string",
-#'   DefaultSubnetId = "string",
-#'   CustomJson = "string",
-#'   ConfigurationManager = list(
-#'     Name = "string",
-#'     Version = "string"
-#'   ),
-#'   ChefConfiguration = list(
-#'     ManageBerkshelf = TRUE|FALSE,
-#'     BerkshelfVersion = "string"
-#'   ),
-#'   UseCustomCookbooks = TRUE|FALSE,
-#'   UseOpsworksSecurityGroups = TRUE|FALSE,
-#'   CustomCookbooksSource = list(
-#'     Type = "git"|"svn"|"archive"|"s3",
-#'     Url = "string",
-#'     Username = "string",
-#'     Password = "string",
-#'     SshKey = "string",
-#'     Revision = "string"
-#'   ),
-#'   DefaultSshKeyName = "string",
-#'   ClonePermissions = TRUE|FALSE,
-#'   CloneAppIds = list(
-#'     "string"
-#'   ),
-#'   DefaultRootDeviceType = "ebs"|"instance-store",
-#'   AgentVersion = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname opsworks_clone_stack
@@ -536,20 +367,9 @@ opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcI
 #' Creates an app for a specified stack
 #'
 #' @description
-#' Creates an app for a specified stack. For more information, see
-#' [Creating
-#' Apps](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Creates an app for a specified stack. For more information, see [Creating Apps](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html).
 #'
-#' @usage
-#' opsworks_create_app(StackId, Shortname, Name, Description, DataSources,
-#'   Type, AppSource, Domains, EnableSsl, SslConfiguration, Attributes,
-#'   Environment)
+#' See [https://paws-r.github.io/docs/opsworks/create_app.html](https://paws-r.github.io/docs/opsworks/create_app.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #' @param Shortname The app's short name.
@@ -585,59 +405,6 @@ opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcI
 #' If you have specified one or more environment variables, you cannot
 #' modify the stack's Chef version.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AppId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_app(
-#'   StackId = "string",
-#'   Shortname = "string",
-#'   Name = "string",
-#'   Description = "string",
-#'   DataSources = list(
-#'     list(
-#'       Type = "string",
-#'       Arn = "string",
-#'       DatabaseName = "string"
-#'     )
-#'   ),
-#'   Type = "aws-flow-ruby"|"java"|"rails"|"php"|"nodejs"|"static"|"other",
-#'   AppSource = list(
-#'     Type = "git"|"svn"|"archive"|"s3",
-#'     Url = "string",
-#'     Username = "string",
-#'     Password = "string",
-#'     SshKey = "string",
-#'     Revision = "string"
-#'   ),
-#'   Domains = list(
-#'     "string"
-#'   ),
-#'   EnableSsl = TRUE|FALSE,
-#'   SslConfiguration = list(
-#'     Certificate = "string",
-#'     PrivateKey = "string",
-#'     Chain = "string"
-#'   ),
-#'   Attributes = list(
-#'     "string"
-#'   ),
-#'   Environment = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string",
-#'       Secure = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname opsworks_create_app
@@ -661,20 +428,9 @@ opsworks_create_app <- function(StackId, Shortname = NULL, Name, Description = N
 #' Runs deployment or stack commands
 #'
 #' @description
-#' Runs deployment or stack commands. For more information, see [Deploying
-#' Apps](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html)
-#' and [Run Stack
-#' Commands](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Deploy or Manage permissions level for the stack, or an attached policy
-#' that explicitly grants permissions. For more information on user
-#' permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Runs deployment or stack commands. For more information, see [Deploying Apps](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html) and [Run Stack Commands](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html).
 #'
-#' @usage
-#' opsworks_create_deployment(StackId, AppId, InstanceIds, LayerIds,
-#'   Command, Comment, CustomJson)
+#' See [https://paws-r.github.io/docs/opsworks/create_deployment.html](https://paws-r.github.io/docs/opsworks/create_deployment.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #' @param AppId The app ID. This parameter is required for app deployments, but not for
@@ -695,38 +451,6 @@ opsworks_create_app <- function(StackId, Shortname = NULL, Name, Description = N
 #' Attributes](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html)
 #' and [Overriding Attributes With Custom
 #' JSON](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   DeploymentId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_deployment(
-#'   StackId = "string",
-#'   AppId = "string",
-#'   InstanceIds = list(
-#'     "string"
-#'   ),
-#'   LayerIds = list(
-#'     "string"
-#'   ),
-#'   Command = list(
-#'     Name = "install_dependencies"|"update_dependencies"|"update_custom_cookbooks"|"execute_recipes"|"configure"|"setup"|"deploy"|"rollback"|"start"|"stop"|"restart"|"undeploy",
-#'     Args = list(
-#'       list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   Comment = "string",
-#'   CustomJson = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -751,22 +475,9 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' Creates an instance in a specified stack
 #'
 #' @description
-#' Creates an instance in a specified stack. For more information, see
-#' [Adding an Instance to a
-#' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Creates an instance in a specified stack. For more information, see [Adding an Instance to a Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
 #'
-#' @usage
-#' opsworks_create_instance(StackId, LayerIds, InstanceType,
-#'   AutoScalingType, Hostname, Os, AmiId, SshKeyName, AvailabilityZone,
-#'   VirtualizationType, SubnetId, Architecture, RootDeviceType,
-#'   BlockDeviceMappings, InstallUpdatesOnBoot, EbsOptimized, AgentVersion,
-#'   Tenancy)
+#' See [https://paws-r.github.io/docs/opsworks/create_instance.html](https://paws-r.github.io/docs/opsworks/create_instance.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #' @param LayerIds &#91;required&#93; An array that contains the instance's layer IDs.
@@ -885,53 +596,6 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' [Amazon EC2 Dedicated
 #' Instances](https://aws.amazon.com/ec2/pricing/dedicated-instances/).
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InstanceId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_instance(
-#'   StackId = "string",
-#'   LayerIds = list(
-#'     "string"
-#'   ),
-#'   InstanceType = "string",
-#'   AutoScalingType = "load"|"timer",
-#'   Hostname = "string",
-#'   Os = "string",
-#'   AmiId = "string",
-#'   SshKeyName = "string",
-#'   AvailabilityZone = "string",
-#'   VirtualizationType = "string",
-#'   SubnetId = "string",
-#'   Architecture = "x86_64"|"i386",
-#'   RootDeviceType = "ebs"|"instance-store",
-#'   BlockDeviceMappings = list(
-#'     list(
-#'       DeviceName = "string",
-#'       NoDevice = "string",
-#'       VirtualName = "string",
-#'       Ebs = list(
-#'         SnapshotId = "string",
-#'         Iops = 123,
-#'         VolumeSize = 123,
-#'         VolumeType = "gp2"|"io1"|"standard",
-#'         DeleteOnTermination = TRUE|FALSE
-#'       )
-#'     )
-#'   ),
-#'   InstallUpdatesOnBoot = TRUE|FALSE,
-#'   EbsOptimized = TRUE|FALSE,
-#'   AgentVersion = "string",
-#'   Tenancy = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname opsworks_create_instance
@@ -955,29 +619,9 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' Creates a layer
 #'
 #' @description
-#' Creates a layer. For more information, see [How to Create a
-#' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html).
-#' 
-#' You should use **CreateLayer** for noncustom layer types such as PHP App
-#' Server only if the stack does not have an existing layer of that type. A
-#' stack can have at most one instance of each noncustom layer; if you
-#' attempt to create a second instance, **CreateLayer** fails. A stack can
-#' have an arbitrary number of custom layers, so you can call
-#' **CreateLayer** as many times as you like for that layer type.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Creates a layer. For more information, see [How to Create a Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html).
 #'
-#' @usage
-#' opsworks_create_layer(StackId, Type, Name, Shortname, Attributes,
-#'   CloudWatchLogsConfiguration, CustomInstanceProfileArn, CustomJson,
-#'   CustomSecurityGroupIds, Packages, VolumeConfigurations,
-#'   EnableAutoHealing, AutoAssignElasticIps, AutoAssignPublicIps,
-#'   CustomRecipes, InstallUpdatesOnBoot, UseEbsOptimizedInstances,
-#'   LifecycleEventConfiguration)
+#' See [https://paws-r.github.io/docs/opsworks/create_layer.html](https://paws-r.github.io/docs/opsworks/create_layer.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The layer stack ID.
 #' @param Type &#91;required&#93; The layer type. A stack cannot have more than one built-in layer of the
@@ -1037,92 +681,6 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' Shutdown event to specify an execution timeout and enable or disable
 #' Elastic Load Balancer connection draining.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LayerId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_layer(
-#'   StackId = "string",
-#'   Type = "aws-flow-ruby"|"ecs-cluster"|"java-app"|"lb"|"web"|"php-app"|"rails-app"|"nodejs-app"|"memcached"|"db-master"|"monitoring-master"|"custom",
-#'   Name = "string",
-#'   Shortname = "string",
-#'   Attributes = list(
-#'     "string"
-#'   ),
-#'   CloudWatchLogsConfiguration = list(
-#'     Enabled = TRUE|FALSE,
-#'     LogStreams = list(
-#'       list(
-#'         LogGroupName = "string",
-#'         DatetimeFormat = "string",
-#'         TimeZone = "LOCAL"|"UTC",
-#'         File = "string",
-#'         FileFingerprintLines = "string",
-#'         MultiLineStartPattern = "string",
-#'         InitialPosition = "start_of_file"|"end_of_file",
-#'         Encoding = "ascii"|"big5"|"big5hkscs"|"cp037"|"cp424"|"cp437"|"cp500"|"cp720"|"cp737"|"cp775"|"cp850"|"cp852"|"cp855"|"cp856"|"cp857"|"cp858"|"cp860"|"cp861"|"cp862"|"cp863"|"cp864"|"cp865"|"cp866"|"cp869"|"cp874"|"cp875"|"cp932"|"cp949"|"cp950"|"cp1006"|"cp1026"|"cp1140"|"cp1250"|"cp1251"|"cp1252"|"cp1253"|"cp1254"|"cp1255"|"cp1256"|"cp1257"|"cp1258"|"euc_jp"|"euc_jis_2004"|"euc_jisx0213"|"euc_kr"|"gb2312"|"gbk"|"gb18030"|"hz"|"iso2022_jp"|"iso2022_jp_1"|"iso2022_jp_2"|"iso2022_jp_2004"|"iso2022_jp_3"|"iso2022_jp_ext"|"iso2022_kr"|"latin_1"|"iso8859_2"|"iso8859_3"|"iso8859_4"|"iso8859_5"|"iso8859_6"|"iso8859_7"|"iso8859_8"|"iso8859_9"|"iso8859_10"|"iso8859_13"|"iso8859_14"|"iso8859_15"|"iso8859_16"|"johab"|"koi8_r"|"koi8_u"|"mac_cyrillic"|"mac_greek"|"mac_iceland"|"mac_latin2"|"mac_roman"|"mac_turkish"|"ptcp154"|"shift_jis"|"shift_jis_2004"|"shift_jisx0213"|"utf_32"|"utf_32_be"|"utf_32_le"|"utf_16"|"utf_16_be"|"utf_16_le"|"utf_7"|"utf_8"|"utf_8_sig",
-#'         BufferDuration = 123,
-#'         BatchCount = 123,
-#'         BatchSize = 123
-#'       )
-#'     )
-#'   ),
-#'   CustomInstanceProfileArn = "string",
-#'   CustomJson = "string",
-#'   CustomSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Packages = list(
-#'     "string"
-#'   ),
-#'   VolumeConfigurations = list(
-#'     list(
-#'       MountPoint = "string",
-#'       RaidLevel = 123,
-#'       NumberOfDisks = 123,
-#'       Size = 123,
-#'       VolumeType = "string",
-#'       Iops = 123,
-#'       Encrypted = TRUE|FALSE
-#'     )
-#'   ),
-#'   EnableAutoHealing = TRUE|FALSE,
-#'   AutoAssignElasticIps = TRUE|FALSE,
-#'   AutoAssignPublicIps = TRUE|FALSE,
-#'   CustomRecipes = list(
-#'     Setup = list(
-#'       "string"
-#'     ),
-#'     Configure = list(
-#'       "string"
-#'     ),
-#'     Deploy = list(
-#'       "string"
-#'     ),
-#'     Undeploy = list(
-#'       "string"
-#'     ),
-#'     Shutdown = list(
-#'       "string"
-#'     )
-#'   ),
-#'   InstallUpdatesOnBoot = TRUE|FALSE,
-#'   UseEbsOptimizedInstances = TRUE|FALSE,
-#'   LifecycleEventConfiguration = list(
-#'     Shutdown = list(
-#'       ExecutionTimeout = 123,
-#'       DelayUntilElbConnectionsDrained = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname opsworks_create_layer
@@ -1146,21 +704,9 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' Creates a new stack
 #'
 #' @description
-#' Creates a new stack. For more information, see [Create a New
-#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have an
-#' attached policy that explicitly grants permissions. For more information
-#' about user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Creates a new stack. For more information, see [Create a New Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html).
 #'
-#' @usage
-#' opsworks_create_stack(Name, Region, VpcId, Attributes, ServiceRoleArn,
-#'   DefaultInstanceProfileArn, DefaultOs, HostnameTheme,
-#'   DefaultAvailabilityZone, DefaultSubnetId, CustomJson,
-#'   ConfigurationManager, ChefConfiguration, UseCustomCookbooks,
-#'   UseOpsworksSecurityGroups, CustomCookbooksSource, DefaultSshKeyName,
-#'   DefaultRootDeviceType, AgentVersion)
+#' See [https://paws-r.github.io/docs/opsworks/create_stack.html](https://paws-r.github.io/docs/opsworks/create_stack.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The stack name.
 #' @param Region &#91;required&#93; The stack's AWS region, such as `ap-south-1`. For more information about
@@ -1379,54 +925,6 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' You can also specify an agent version when you create or update an
 #' instance, which overrides the stack's default setting.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   StackId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_stack(
-#'   Name = "string",
-#'   Region = "string",
-#'   VpcId = "string",
-#'   Attributes = list(
-#'     "string"
-#'   ),
-#'   ServiceRoleArn = "string",
-#'   DefaultInstanceProfileArn = "string",
-#'   DefaultOs = "string",
-#'   HostnameTheme = "string",
-#'   DefaultAvailabilityZone = "string",
-#'   DefaultSubnetId = "string",
-#'   CustomJson = "string",
-#'   ConfigurationManager = list(
-#'     Name = "string",
-#'     Version = "string"
-#'   ),
-#'   ChefConfiguration = list(
-#'     ManageBerkshelf = TRUE|FALSE,
-#'     BerkshelfVersion = "string"
-#'   ),
-#'   UseCustomCookbooks = TRUE|FALSE,
-#'   UseOpsworksSecurityGroups = TRUE|FALSE,
-#'   CustomCookbooksSource = list(
-#'     Type = "git"|"svn"|"archive"|"s3",
-#'     Url = "string",
-#'     Username = "string",
-#'     Password = "string",
-#'     SshKey = "string",
-#'     Revision = "string"
-#'   ),
-#'   DefaultSshKeyName = "string",
-#'   DefaultRootDeviceType = "ebs"|"instance-store",
-#'   AgentVersion = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname opsworks_create_stack
@@ -1451,15 +949,8 @@ opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL,
 #'
 #' @description
 #' Creates a new user profile.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have an
-#' attached policy that explicitly grants permissions. For more information
-#' about user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_create_user_profile(IamUserArn, SshUsername, SshPublicKey,
-#'   AllowSelfManagement)
+#' See [https://paws-r.github.io/docs/opsworks/create_user_profile.html](https://paws-r.github.io/docs/opsworks/create_user_profile.html) for full documentation.
 #'
 #' @param IamUserArn &#91;required&#93; The user's IAM ARN; this can also be a federated user's ARN.
 #' @param SshUsername The user's SSH user name. The allowable characters are \[a-z\], \[A-Z\],
@@ -1472,24 +963,6 @@ opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL,
 #' Settings page. For more information, see [Setting an IAM User's Public
 #' SSH
 #' Key](https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   IamUserArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_user_profile(
-#'   IamUserArn = "string",
-#'   SshUsername = "string",
-#'   SshPublicKey = "string",
-#'   AllowSelfManagement = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1515,27 +988,10 @@ opsworks_create_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 #'
 #' @description
 #' Deletes a specified app.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_delete_app(AppId)
+#' See [https://paws-r.github.io/docs/opsworks/delete_app.html](https://paws-r.github.io/docs/opsworks/delete_app.html) for full documentation.
 #'
 #' @param AppId &#91;required&#93; The app ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_app(
-#'   AppId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1561,36 +1017,13 @@ opsworks_delete_app <- function(AppId) {
 #' instance
 #'
 #' @description
-#' Deletes a specified instance, which terminates the associated Amazon EC2
-#' instance. You must stop an instance before you can delete it.
-#' 
-#' For more information, see [Deleting
-#' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-delete.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Deletes a specified instance, which terminates the associated Amazon EC2 instance. You must stop an instance before you can delete it.
 #'
-#' @usage
-#' opsworks_delete_instance(InstanceId, DeleteElasticIp, DeleteVolumes)
+#' See [https://paws-r.github.io/docs/opsworks/delete_instance.html](https://paws-r.github.io/docs/opsworks/delete_instance.html) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #' @param DeleteElasticIp Whether to delete the instance Elastic IP address.
 #' @param DeleteVolumes Whether to delete the instance's Amazon EBS volumes.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_instance(
-#'   InstanceId = "string",
-#'   DeleteElasticIp = TRUE|FALSE,
-#'   DeleteVolumes = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1615,31 +1048,11 @@ opsworks_delete_instance <- function(InstanceId, DeleteElasticIp = NULL, DeleteV
 #' Deletes a specified layer
 #'
 #' @description
-#' Deletes a specified layer. You must first stop and then delete all
-#' associated instances or unassign registered instances. For more
-#' information, see [How to Delete a
-#' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-delete.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Deletes a specified layer. You must first stop and then delete all associated instances or unassign registered instances. For more information, see [How to Delete a Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-delete.html).
 #'
-#' @usage
-#' opsworks_delete_layer(LayerId)
+#' See [https://paws-r.github.io/docs/opsworks/delete_layer.html](https://paws-r.github.io/docs/opsworks/delete_layer.html) for full documentation.
 #'
 #' @param LayerId &#91;required&#93; The layer ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_layer(
-#'   LayerId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1664,31 +1077,11 @@ opsworks_delete_layer <- function(LayerId) {
 #' Deletes a specified stack
 #'
 #' @description
-#' Deletes a specified stack. You must first delete all instances, layers,
-#' and apps or deregister registered instances. For more information, see
-#' [Shut Down a
-#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-shutting.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Deletes a specified stack. You must first delete all instances, layers, and apps or deregister registered instances. For more information, see [Shut Down a Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-shutting.html).
 #'
-#' @usage
-#' opsworks_delete_stack(StackId)
+#' See [https://paws-r.github.io/docs/opsworks/delete_stack.html](https://paws-r.github.io/docs/opsworks/delete_stack.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_stack(
-#'   StackId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1714,26 +1107,10 @@ opsworks_delete_stack <- function(StackId) {
 #'
 #' @description
 #' Deletes a user profile.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have an
-#' attached policy that explicitly grants permissions. For more information
-#' about user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_delete_user_profile(IamUserArn)
+#' See [https://paws-r.github.io/docs/opsworks/delete_user_profile.html](https://paws-r.github.io/docs/opsworks/delete_user_profile.html) for full documentation.
 #'
 #' @param IamUserArn &#91;required&#93; The user's IAM ARN. This can also be a federated user's ARN.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_user_profile(
-#'   IamUserArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1758,30 +1135,11 @@ opsworks_delete_user_profile <- function(IamUserArn) {
 #' Deregisters a specified Amazon ECS cluster from a stack
 #'
 #' @description
-#' Deregisters a specified Amazon ECS cluster from a stack. For more
-#' information, see [Resource
-#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see
-#' <https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html>.
+#' Deregisters a specified Amazon ECS cluster from a stack. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete).
 #'
-#' @usage
-#' opsworks_deregister_ecs_cluster(EcsClusterArn)
+#' See [https://paws-r.github.io/docs/opsworks/deregister_ecs_cluster.html](https://paws-r.github.io/docs/opsworks/deregister_ecs_cluster.html) for full documentation.
 #'
 #' @param EcsClusterArn &#91;required&#93; The cluster's Amazon Resource Number (ARN).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_ecs_cluster(
-#'   EcsClusterArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1806,30 +1164,11 @@ opsworks_deregister_ecs_cluster <- function(EcsClusterArn) {
 #' Deregisters a specified Elastic IP address
 #'
 #' @description
-#' Deregisters a specified Elastic IP address. The address can then be
-#' registered by another stack. For more information, see [Resource
-#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Deregisters a specified Elastic IP address. The address can then be registered by another stack. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' @usage
-#' opsworks_deregister_elastic_ip(ElasticIp)
+#' See [https://paws-r.github.io/docs/opsworks/deregister_elastic_ip.html](https://paws-r.github.io/docs/opsworks/deregister_elastic_ip.html) for full documentation.
 #'
 #' @param ElasticIp &#91;required&#93; The Elastic IP address.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_elastic_ip(
-#'   ElasticIp = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1854,31 +1193,11 @@ opsworks_deregister_elastic_ip <- function(ElasticIp) {
 #' Deregister a registered Amazon EC2 or on-premises instance
 #'
 #' @description
-#' Deregister a registered Amazon EC2 or on-premises instance. This action
-#' removes the instance from the stack and returns it to your control. This
-#' action cannot be used with instances that were created with AWS OpsWorks
-#' Stacks.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Deregister a registered Amazon EC2 or on-premises instance. This action removes the instance from the stack and returns it to your control. This action cannot be used with instances that were created with AWS OpsWorks Stacks.
 #'
-#' @usage
-#' opsworks_deregister_instance(InstanceId)
+#' See [https://paws-r.github.io/docs/opsworks/deregister_instance.html](https://paws-r.github.io/docs/opsworks/deregister_instance.html) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_instance(
-#'   InstanceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1904,27 +1223,10 @@ opsworks_deregister_instance <- function(InstanceId) {
 #'
 #' @description
 #' Deregisters an Amazon RDS instance.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_deregister_rds_db_instance(RdsDbInstanceArn)
+#' See [https://paws-r.github.io/docs/opsworks/deregister_rds_db_instance.html](https://paws-r.github.io/docs/opsworks/deregister_rds_db_instance.html) for full documentation.
 #'
 #' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance's ARN.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_rds_db_instance(
-#'   RdsDbInstanceArn = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1949,32 +1251,13 @@ opsworks_deregister_rds_db_instance <- function(RdsDbInstanceArn) {
 #' Deregisters an Amazon EBS volume
 #'
 #' @description
-#' Deregisters an Amazon EBS volume. The volume can then be registered by
-#' another stack. For more information, see [Resource
-#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Deregisters an Amazon EBS volume. The volume can then be registered by another stack. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' @usage
-#' opsworks_deregister_volume(VolumeId)
+#' See [https://paws-r.github.io/docs/opsworks/deregister_volume.html](https://paws-r.github.io/docs/opsworks/deregister_volume.html) for full documentation.
 #'
 #' @param VolumeId &#91;required&#93; The AWS OpsWorks Stacks volume ID, which is the GUID that AWS OpsWorks
 #' Stacks assigned to the instance when you registered the volume with the
 #' stack, not the Amazon EC2 volume ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_volume(
-#'   VolumeId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -1999,44 +1282,12 @@ opsworks_deregister_volume <- function(VolumeId) {
 #' Describes the available AWS OpsWorks Stacks agent versions
 #'
 #' @description
-#' Describes the available AWS OpsWorks Stacks agent versions. You must
-#' specify a stack ID or a configuration manager.
-#' [`describe_agent_versions`][opsworks_describe_agent_versions] returns a
-#' list of available agent versions for the specified stack or
-#' configuration manager.
+#' Describes the available AWS OpsWorks Stacks agent versions. You must specify a stack ID or a configuration manager. [`describe_agent_versions`][opsworks_describe_agent_versions] returns a list of available agent versions for the specified stack or configuration manager.
 #'
-#' @usage
-#' opsworks_describe_agent_versions(StackId, ConfigurationManager)
+#' See [https://paws-r.github.io/docs/opsworks/describe_agent_versions.html](https://paws-r.github.io/docs/opsworks/describe_agent_versions.html) for full documentation.
 #'
 #' @param StackId The stack ID.
 #' @param ConfigurationManager The configuration manager.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AgentVersions = list(
-#'     list(
-#'       Version = "string",
-#'       ConfigurationManager = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_agent_versions(
-#'   StackId = "string",
-#'   ConfigurationManager = list(
-#'     Name = "string",
-#'     Version = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2062,17 +1313,8 @@ opsworks_describe_agent_versions <- function(StackId = NULL, ConfigurationManage
 #'
 #' @description
 #' Requests a description of a specified set of apps.
-#' 
-#' This call accepts only one resource-identifying parameter.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_apps(StackId, AppIds)
+#' See [https://paws-r.github.io/docs/opsworks/describe_apps.html](https://paws-r.github.io/docs/opsworks/describe_apps.html) for full documentation.
 #'
 #' @param StackId The app stack ID. If you use this parameter,
 #' [`describe_apps`][opsworks_describe_apps] returns a description of the
@@ -2081,68 +1323,6 @@ opsworks_describe_agent_versions <- function(StackId = NULL, ConfigurationManage
 #' parameter, [`describe_apps`][opsworks_describe_apps] returns a
 #' description of the specified apps. Otherwise, it returns a description
 #' of every app.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Apps = list(
-#'     list(
-#'       AppId = "string",
-#'       StackId = "string",
-#'       Shortname = "string",
-#'       Name = "string",
-#'       Description = "string",
-#'       DataSources = list(
-#'         list(
-#'           Type = "string",
-#'           Arn = "string",
-#'           DatabaseName = "string"
-#'         )
-#'       ),
-#'       Type = "aws-flow-ruby"|"java"|"rails"|"php"|"nodejs"|"static"|"other",
-#'       AppSource = list(
-#'         Type = "git"|"svn"|"archive"|"s3",
-#'         Url = "string",
-#'         Username = "string",
-#'         Password = "string",
-#'         SshKey = "string",
-#'         Revision = "string"
-#'       ),
-#'       Domains = list(
-#'         "string"
-#'       ),
-#'       EnableSsl = TRUE|FALSE,
-#'       SslConfiguration = list(
-#'         Certificate = "string",
-#'         PrivateKey = "string",
-#'         Chain = "string"
-#'       ),
-#'       Attributes = list(
-#'         "string"
-#'       ),
-#'       CreatedAt = "string",
-#'       Environment = list(
-#'         list(
-#'           Key = "string",
-#'           Value = "string",
-#'           Secure = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_apps(
-#'   StackId = "string",
-#'   AppIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2168,17 +1348,8 @@ opsworks_describe_apps <- function(StackId = NULL, AppIds = NULL) {
 #'
 #' @description
 #' Describes the results of specified commands.
-#' 
-#' This call accepts only one resource-identifying parameter.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_commands(DeploymentId, InstanceId, CommandIds)
+#' See [https://paws-r.github.io/docs/opsworks/describe_commands.html](https://paws-r.github.io/docs/opsworks/describe_commands.html) for full documentation.
 #'
 #' @param DeploymentId The deployment ID. If you include this parameter,
 #' [`describe_commands`][opsworks_describe_commands] returns a description
@@ -2190,38 +1361,6 @@ opsworks_describe_apps <- function(StackId = NULL, AppIds = NULL) {
 #' [`describe_commands`][opsworks_describe_commands] returns a description
 #' of the specified commands. Otherwise, it returns a description of every
 #' command.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Commands = list(
-#'     list(
-#'       CommandId = "string",
-#'       InstanceId = "string",
-#'       DeploymentId = "string",
-#'       CreatedAt = "string",
-#'       AcknowledgedAt = "string",
-#'       CompletedAt = "string",
-#'       Status = "string",
-#'       ExitCode = 123,
-#'       LogUrl = "string",
-#'       Type = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_commands(
-#'   DeploymentId = "string",
-#'   InstanceId = "string",
-#'   CommandIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2247,17 +1386,8 @@ opsworks_describe_commands <- function(DeploymentId = NULL, InstanceId = NULL, C
 #'
 #' @description
 #' Requests a description of a specified set of deployments.
-#' 
-#' This call accepts only one resource-identifying parameter.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_deployments(StackId, AppId, DeploymentIds)
+#' See [https://paws-r.github.io/docs/opsworks/describe_deployments.html](https://paws-r.github.io/docs/opsworks/describe_deployments.html) for full documentation.
 #'
 #' @param StackId The stack ID. If you include this parameter, the command returns a
 #' description of the commands associated with the specified stack.
@@ -2266,49 +1396,6 @@ opsworks_describe_commands <- function(DeploymentId = NULL, InstanceId = NULL, C
 #' @param DeploymentIds An array of deployment IDs to be described. If you include this
 #' parameter, the command returns a description of the specified
 #' deployments. Otherwise, it returns a description of every deployment.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Deployments = list(
-#'     list(
-#'       DeploymentId = "string",
-#'       StackId = "string",
-#'       AppId = "string",
-#'       CreatedAt = "string",
-#'       CompletedAt = "string",
-#'       Duration = 123,
-#'       IamUserArn = "string",
-#'       Comment = "string",
-#'       Command = list(
-#'         Name = "install_dependencies"|"update_dependencies"|"update_custom_cookbooks"|"execute_recipes"|"configure"|"setup"|"deploy"|"rollback"|"start"|"stop"|"restart"|"undeploy",
-#'         Args = list(
-#'           list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       Status = "string",
-#'       CustomJson = "string",
-#'       InstanceIds = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_deployments(
-#'   StackId = "string",
-#'   AppId = "string",
-#'   DeploymentIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2333,23 +1420,9 @@ opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, Deployme
 #' Describes Amazon ECS clusters that are registered with a stack
 #'
 #' @description
-#' Describes Amazon ECS clusters that are registered with a stack. If you
-#' specify only a stack ID, you can use the `MaxResults` and `NextToken`
-#' parameters to paginate the response. However, AWS OpsWorks Stacks
-#' currently supports only one cluster per layer, so the result set has a
-#' maximum of one element.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack or an attached
-#' policy that explicitly grants permission. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
-#' 
-#' This call accepts only one resource-identifying parameter.
+#' Describes Amazon ECS clusters that are registered with a stack. If you specify only a stack ID, you can use the `MaxResults` and `NextToken` parameters to paginate the response. However, AWS OpsWorks Stacks currently supports only one cluster per layer, so the result set has a maximum of one element.
 #'
-#' @usage
-#' opsworks_describe_ecs_clusters(EcsClusterArns, StackId, NextToken,
-#'   MaxResults)
+#' See [https://paws-r.github.io/docs/opsworks/describe_ecs_clusters.html](https://paws-r.github.io/docs/opsworks/describe_ecs_clusters.html) for full documentation.
 #'
 #' @param EcsClusterArns A list of ARNs, one for each cluster to be described.
 #' @param StackId A stack ID. [`describe_ecs_clusters`][opsworks_describe_ecs_clusters]
@@ -2366,34 +1439,6 @@ opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, Deployme
 #' number of available results exceeds this maximum, the response includes
 #' a `NextToken` value that you can assign to the `NextToken` request
 #' parameter to get the next set of results.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EcsClusters = list(
-#'     list(
-#'       EcsClusterArn = "string",
-#'       EcsClusterName = "string",
-#'       StackId = "string",
-#'       RegisteredAt = "string"
-#'     )
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_ecs_clusters(
-#'   EcsClusterArns = list(
-#'     "string"
-#'   ),
-#'   StackId = "string",
-#'   NextToken = "string",
-#'   MaxResults = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2418,19 +1463,9 @@ opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL
 #' Describes Elastic IP addresses
 #'
 #' @description
-#' Describes [Elastic IP
-#' addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html).
-#' 
-#' This call accepts only one resource-identifying parameter.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Describes [Elastic IP addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html).
 #'
-#' @usage
-#' opsworks_describe_elastic_ips(InstanceId, StackId, Ips)
+#' See [https://paws-r.github.io/docs/opsworks/describe_elastic_ips.html](https://paws-r.github.io/docs/opsworks/describe_elastic_ips.html) for full documentation.
 #'
 #' @param InstanceId The instance ID. If you include this parameter,
 #' [`describe_elastic_ips`][opsworks_describe_elastic_ips] returns a
@@ -2444,33 +1479,6 @@ opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL
 #' parameter, [`describe_elastic_ips`][opsworks_describe_elastic_ips]
 #' returns a description of the specified Elastic IP addresses. Otherwise,
 #' it returns a description of every Elastic IP address.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ElasticIps = list(
-#'     list(
-#'       Ip = "string",
-#'       Name = "string",
-#'       Domain = "string",
-#'       Region = "string",
-#'       InstanceId = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_elastic_ips(
-#'   InstanceId = "string",
-#'   StackId = "string",
-#'   Ips = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2496,58 +1504,13 @@ opsworks_describe_elastic_ips <- function(InstanceId = NULL, StackId = NULL, Ips
 #'
 #' @description
 #' Describes a stack's Elastic Load Balancing instances.
-#' 
-#' This call accepts only one resource-identifying parameter.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_elastic_load_balancers(StackId, LayerIds)
+#' See [https://paws-r.github.io/docs/opsworks/describe_elastic_load_balancers.html](https://paws-r.github.io/docs/opsworks/describe_elastic_load_balancers.html) for full documentation.
 #'
 #' @param StackId A stack ID. The action describes the stack's Elastic Load Balancing
 #' instances.
 #' @param LayerIds A list of layer IDs. The action describes the Elastic Load Balancing
 #' instances for the specified layers.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ElasticLoadBalancers = list(
-#'     list(
-#'       ElasticLoadBalancerName = "string",
-#'       Region = "string",
-#'       DnsName = "string",
-#'       StackId = "string",
-#'       LayerId = "string",
-#'       VpcId = "string",
-#'       AvailabilityZones = list(
-#'         "string"
-#'       ),
-#'       SubnetIds = list(
-#'         "string"
-#'       ),
-#'       Ec2InstanceIds = list(
-#'         "string"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_elastic_load_balancers(
-#'   StackId = "string",
-#'   LayerIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2573,17 +1536,8 @@ opsworks_describe_elastic_load_balancers <- function(StackId = NULL, LayerIds = 
 #'
 #' @description
 #' Requests a description of a set of instances.
-#' 
-#' This call accepts only one resource-identifying parameter.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_instances(StackId, LayerId, InstanceIds)
+#' See [https://paws-r.github.io/docs/opsworks/describe_instances.html](https://paws-r.github.io/docs/opsworks/describe_instances.html) for full documentation.
 #'
 #' @param StackId A stack ID. If you use this parameter,
 #' [`describe_instances`][opsworks_describe_instances] returns descriptions
@@ -2595,90 +1549,6 @@ opsworks_describe_elastic_load_balancers <- function(StackId = NULL, LayerIds = 
 #' [`describe_instances`][opsworks_describe_instances] returns a
 #' description of the specified instances. Otherwise, it returns a
 #' description of every instance.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Instances = list(
-#'     list(
-#'       AgentVersion = "string",
-#'       AmiId = "string",
-#'       Architecture = "x86_64"|"i386",
-#'       Arn = "string",
-#'       AutoScalingType = "load"|"timer",
-#'       AvailabilityZone = "string",
-#'       BlockDeviceMappings = list(
-#'         list(
-#'           DeviceName = "string",
-#'           NoDevice = "string",
-#'           VirtualName = "string",
-#'           Ebs = list(
-#'             SnapshotId = "string",
-#'             Iops = 123,
-#'             VolumeSize = 123,
-#'             VolumeType = "gp2"|"io1"|"standard",
-#'             DeleteOnTermination = TRUE|FALSE
-#'           )
-#'         )
-#'       ),
-#'       CreatedAt = "string",
-#'       EbsOptimized = TRUE|FALSE,
-#'       Ec2InstanceId = "string",
-#'       EcsClusterArn = "string",
-#'       EcsContainerInstanceArn = "string",
-#'       ElasticIp = "string",
-#'       Hostname = "string",
-#'       InfrastructureClass = "string",
-#'       InstallUpdatesOnBoot = TRUE|FALSE,
-#'       InstanceId = "string",
-#'       InstanceProfileArn = "string",
-#'       InstanceType = "string",
-#'       LastServiceErrorId = "string",
-#'       LayerIds = list(
-#'         "string"
-#'       ),
-#'       Os = "string",
-#'       Platform = "string",
-#'       PrivateDns = "string",
-#'       PrivateIp = "string",
-#'       PublicDns = "string",
-#'       PublicIp = "string",
-#'       RegisteredBy = "string",
-#'       ReportedAgentVersion = "string",
-#'       ReportedOs = list(
-#'         Family = "string",
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       RootDeviceType = "ebs"|"instance-store",
-#'       RootDeviceVolumeId = "string",
-#'       SecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       SshHostDsaKeyFingerprint = "string",
-#'       SshHostRsaKeyFingerprint = "string",
-#'       SshKeyName = "string",
-#'       StackId = "string",
-#'       Status = "string",
-#'       SubnetId = "string",
-#'       Tenancy = "string",
-#'       VirtualizationType = "paravirtual"|"hvm"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_instances(
-#'   StackId = "string",
-#'   LayerId = "string",
-#'   InstanceIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2704,138 +1574,13 @@ opsworks_describe_instances <- function(StackId = NULL, LayerId = NULL, Instance
 #'
 #' @description
 #' Requests a description of one or more layers in a specified stack.
-#' 
-#' This call accepts only one resource-identifying parameter.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_layers(StackId, LayerIds)
+#' See [https://paws-r.github.io/docs/opsworks/describe_layers.html](https://paws-r.github.io/docs/opsworks/describe_layers.html) for full documentation.
 #'
 #' @param StackId The stack ID.
 #' @param LayerIds An array of layer IDs that specify the layers to be described. If you
 #' omit this parameter, [`describe_layers`][opsworks_describe_layers]
 #' returns a description of every layer in the specified stack.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Layers = list(
-#'     list(
-#'       Arn = "string",
-#'       StackId = "string",
-#'       LayerId = "string",
-#'       Type = "aws-flow-ruby"|"ecs-cluster"|"java-app"|"lb"|"web"|"php-app"|"rails-app"|"nodejs-app"|"memcached"|"db-master"|"monitoring-master"|"custom",
-#'       Name = "string",
-#'       Shortname = "string",
-#'       Attributes = list(
-#'         "string"
-#'       ),
-#'       CloudWatchLogsConfiguration = list(
-#'         Enabled = TRUE|FALSE,
-#'         LogStreams = list(
-#'           list(
-#'             LogGroupName = "string",
-#'             DatetimeFormat = "string",
-#'             TimeZone = "LOCAL"|"UTC",
-#'             File = "string",
-#'             FileFingerprintLines = "string",
-#'             MultiLineStartPattern = "string",
-#'             InitialPosition = "start_of_file"|"end_of_file",
-#'             Encoding = "ascii"|"big5"|"big5hkscs"|"cp037"|"cp424"|"cp437"|"cp500"|"cp720"|"cp737"|"cp775"|"cp850"|"cp852"|"cp855"|"cp856"|"cp857"|"cp858"|"cp860"|"cp861"|"cp862"|"cp863"|"cp864"|"cp865"|"cp866"|"cp869"|"cp874"|"cp875"|"cp932"|"cp949"|"cp950"|"cp1006"|"cp1026"|"cp1140"|"cp1250"|"cp1251"|"cp1252"|"cp1253"|"cp1254"|"cp1255"|"cp1256"|"cp1257"|"cp1258"|"euc_jp"|"euc_jis_2004"|"euc_jisx0213"|"euc_kr"|"gb2312"|"gbk"|"gb18030"|"hz"|"iso2022_jp"|"iso2022_jp_1"|"iso2022_jp_2"|"iso2022_jp_2004"|"iso2022_jp_3"|"iso2022_jp_ext"|"iso2022_kr"|"latin_1"|"iso8859_2"|"iso8859_3"|"iso8859_4"|"iso8859_5"|"iso8859_6"|"iso8859_7"|"iso8859_8"|"iso8859_9"|"iso8859_10"|"iso8859_13"|"iso8859_14"|"iso8859_15"|"iso8859_16"|"johab"|"koi8_r"|"koi8_u"|"mac_cyrillic"|"mac_greek"|"mac_iceland"|"mac_latin2"|"mac_roman"|"mac_turkish"|"ptcp154"|"shift_jis"|"shift_jis_2004"|"shift_jisx0213"|"utf_32"|"utf_32_be"|"utf_32_le"|"utf_16"|"utf_16_be"|"utf_16_le"|"utf_7"|"utf_8"|"utf_8_sig",
-#'             BufferDuration = 123,
-#'             BatchCount = 123,
-#'             BatchSize = 123
-#'           )
-#'         )
-#'       ),
-#'       CustomInstanceProfileArn = "string",
-#'       CustomJson = "string",
-#'       CustomSecurityGroupIds = list(
-#'         "string"
-#'       ),
-#'       DefaultSecurityGroupNames = list(
-#'         "string"
-#'       ),
-#'       Packages = list(
-#'         "string"
-#'       ),
-#'       VolumeConfigurations = list(
-#'         list(
-#'           MountPoint = "string",
-#'           RaidLevel = 123,
-#'           NumberOfDisks = 123,
-#'           Size = 123,
-#'           VolumeType = "string",
-#'           Iops = 123,
-#'           Encrypted = TRUE|FALSE
-#'         )
-#'       ),
-#'       EnableAutoHealing = TRUE|FALSE,
-#'       AutoAssignElasticIps = TRUE|FALSE,
-#'       AutoAssignPublicIps = TRUE|FALSE,
-#'       DefaultRecipes = list(
-#'         Setup = list(
-#'           "string"
-#'         ),
-#'         Configure = list(
-#'           "string"
-#'         ),
-#'         Deploy = list(
-#'           "string"
-#'         ),
-#'         Undeploy = list(
-#'           "string"
-#'         ),
-#'         Shutdown = list(
-#'           "string"
-#'         )
-#'       ),
-#'       CustomRecipes = list(
-#'         Setup = list(
-#'           "string"
-#'         ),
-#'         Configure = list(
-#'           "string"
-#'         ),
-#'         Deploy = list(
-#'           "string"
-#'         ),
-#'         Undeploy = list(
-#'           "string"
-#'         ),
-#'         Shutdown = list(
-#'           "string"
-#'         )
-#'       ),
-#'       CreatedAt = "string",
-#'       InstallUpdatesOnBoot = TRUE|FALSE,
-#'       UseEbsOptimizedInstances = TRUE|FALSE,
-#'       LifecycleEventConfiguration = list(
-#'         Shutdown = list(
-#'           ExecutionTimeout = 123,
-#'           DelayUntilElbConnectionsDrained = TRUE|FALSE
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_layers(
-#'   StackId = "string",
-#'   LayerIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2861,63 +1606,10 @@ opsworks_describe_layers <- function(StackId = NULL, LayerIds = NULL) {
 #'
 #' @description
 #' Describes load-based auto scaling configurations for specified layers.
-#' 
-#' You must specify at least one of the parameters.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_load_based_auto_scaling(LayerIds)
+#' See [https://paws-r.github.io/docs/opsworks/describe_load_based_auto_scaling.html](https://paws-r.github.io/docs/opsworks/describe_load_based_auto_scaling.html) for full documentation.
 #'
 #' @param LayerIds &#91;required&#93; An array of layer IDs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LoadBasedAutoScalingConfigurations = list(
-#'     list(
-#'       LayerId = "string",
-#'       Enable = TRUE|FALSE,
-#'       UpScaling = list(
-#'         InstanceCount = 123,
-#'         ThresholdsWaitTime = 123,
-#'         IgnoreMetricsTime = 123,
-#'         CpuThreshold = 123.0,
-#'         MemoryThreshold = 123.0,
-#'         LoadThreshold = 123.0,
-#'         Alarms = list(
-#'           "string"
-#'         )
-#'       ),
-#'       DownScaling = list(
-#'         InstanceCount = 123,
-#'         ThresholdsWaitTime = 123,
-#'         IgnoreMetricsTime = 123,
-#'         CpuThreshold = 123.0,
-#'         MemoryThreshold = 123.0,
-#'         LoadThreshold = 123.0,
-#'         Alarms = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_load_based_auto_scaling(
-#'   LayerIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -2943,30 +1635,8 @@ opsworks_describe_load_based_auto_scaling <- function(LayerIds) {
 #'
 #' @description
 #' Describes a user's SSH information.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have
-#' self-management enabled or an attached policy that explicitly grants
-#' permissions. For more information about user permissions, see [Managing
-#' User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_my_user_profile()
-#'
-
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UserProfile = list(
-#'     IamUserArn = "string",
-#'     Name = "string",
-#'     SshUsername = "string",
-#'     SshPublicKey = "string"
-#'   )
-#' )
-#' ```
+#' See [https://paws-r.github.io/docs/opsworks/describe_my_user_profile.html](https://paws-r.github.io/docs/opsworks/describe_my_user_profile.html) for full documentation.
 #'
 
 #'
@@ -2994,36 +1664,9 @@ opsworks_describe_my_user_profile <- function() {
 #' Stacks
 #'
 #' @description
-#' Describes the operating systems that are supported by AWS OpsWorks
-#' Stacks.
+#' Describes the operating systems that are supported by AWS OpsWorks Stacks.
 #'
-#' @usage
-#' opsworks_describe_operating_systems()
-#'
-
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   OperatingSystems = list(
-#'     list(
-#'       Name = "string",
-#'       Id = "string",
-#'       Type = "string",
-#'       ConfigurationManagers = list(
-#'         list(
-#'           Name = "string",
-#'           Version = "string"
-#'         )
-#'       ),
-#'       ReportedName = "string",
-#'       ReportedVersion = "string",
-#'       Supported = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
+#' See [https://paws-r.github.io/docs/opsworks/describe_operating_systems.html](https://paws-r.github.io/docs/opsworks/describe_operating_systems.html) for full documentation.
 #'
 
 #'
@@ -3051,44 +1694,13 @@ opsworks_describe_operating_systems <- function() {
 #'
 #' @description
 #' Describes the permissions for a specified stack.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_permissions(IamUserArn, StackId)
+#' See [https://paws-r.github.io/docs/opsworks/describe_permissions.html](https://paws-r.github.io/docs/opsworks/describe_permissions.html) for full documentation.
 #'
 #' @param IamUserArn The user's IAM ARN. This can also be a federated user's ARN. For more
 #' information about IAM ARNs, see [Using
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html).
 #' @param StackId The stack ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Permissions = list(
-#'     list(
-#'       StackId = "string",
-#'       IamUserArn = "string",
-#'       AllowSsh = TRUE|FALSE,
-#'       AllowSudo = TRUE|FALSE,
-#'       Level = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_permissions(
-#'   IamUserArn = "string",
-#'   StackId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3114,17 +1726,8 @@ opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
 #'
 #' @description
 #' Describe an instance's RAID arrays.
-#' 
-#' This call accepts only one resource-identifying parameter.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_raid_arrays(InstanceId, StackId, RaidArrayIds)
+#' See [https://paws-r.github.io/docs/opsworks/describe_raid_arrays.html](https://paws-r.github.io/docs/opsworks/describe_raid_arrays.html) for full documentation.
 #'
 #' @param InstanceId The instance ID. If you use this parameter,
 #' [`describe_raid_arrays`][opsworks_describe_raid_arrays] returns
@@ -3134,41 +1737,6 @@ opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
 #' [`describe_raid_arrays`][opsworks_describe_raid_arrays] returns
 #' descriptions of the specified arrays. Otherwise, it returns a
 #' description of every array.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RaidArrays = list(
-#'     list(
-#'       RaidArrayId = "string",
-#'       InstanceId = "string",
-#'       Name = "string",
-#'       RaidLevel = 123,
-#'       NumberOfDisks = 123,
-#'       Size = 123,
-#'       Device = "string",
-#'       MountPoint = "string",
-#'       AvailabilityZone = "string",
-#'       CreatedAt = "string",
-#'       StackId = "string",
-#'       VolumeType = "string",
-#'       Iops = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_raid_arrays(
-#'   InstanceId = "string",
-#'   StackId = "string",
-#'   RaidArrayIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3194,51 +1762,12 @@ opsworks_describe_raid_arrays <- function(InstanceId = NULL, StackId = NULL, Rai
 #'
 #' @description
 #' Describes Amazon RDS instances.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
-#' 
-#' This call accepts only one resource-identifying parameter.
 #'
-#' @usage
-#' opsworks_describe_rds_db_instances(StackId, RdsDbInstanceArns)
+#' See [https://paws-r.github.io/docs/opsworks/describe_rds_db_instances.html](https://paws-r.github.io/docs/opsworks/describe_rds_db_instances.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The ID of the stack with which the instances are registered. The
 #' operation returns descriptions of all registered Amazon RDS instances.
 #' @param RdsDbInstanceArns An array containing the ARNs of the instances to be described.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   RdsDbInstances = list(
-#'     list(
-#'       RdsDbInstanceArn = "string",
-#'       DbInstanceIdentifier = "string",
-#'       DbUser = "string",
-#'       DbPassword = "string",
-#'       Region = "string",
-#'       Address = "string",
-#'       Engine = "string",
-#'       StackId = "string",
-#'       MissingOnRds = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_rds_db_instances(
-#'   StackId = "string",
-#'   RdsDbInstanceArns = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3264,17 +1793,8 @@ opsworks_describe_rds_db_instances <- function(StackId, RdsDbInstanceArns = NULL
 #'
 #' @description
 #' Describes AWS OpsWorks Stacks service errors.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
-#' 
-#' This call accepts only one resource-identifying parameter.
 #'
-#' @usage
-#' opsworks_describe_service_errors(StackId, InstanceId, ServiceErrorIds)
+#' See [https://paws-r.github.io/docs/opsworks/describe_service_errors.html](https://paws-r.github.io/docs/opsworks/describe_service_errors.html) for full documentation.
 #'
 #' @param StackId The stack ID. If you use this parameter,
 #' [`describe_service_errors`][opsworks_describe_service_errors] returns
@@ -3286,34 +1806,6 @@ opsworks_describe_rds_db_instances <- function(StackId, RdsDbInstanceArns = NULL
 #' [`describe_service_errors`][opsworks_describe_service_errors] returns
 #' descriptions of the specified errors. Otherwise, it returns a
 #' description of every error.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ServiceErrors = list(
-#'     list(
-#'       ServiceErrorId = "string",
-#'       StackId = "string",
-#'       InstanceId = "string",
-#'       Type = "string",
-#'       Message = "string",
-#'       CreatedAt = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_service_errors(
-#'   StackId = "string",
-#'   InstanceId = "string",
-#'   ServiceErrorIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3339,35 +1831,10 @@ opsworks_describe_service_errors <- function(StackId = NULL, InstanceId = NULL, 
 #'
 #' @description
 #' Requests a description of a stack's provisioning parameters.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_stack_provisioning_parameters(StackId)
+#' See [https://paws-r.github.io/docs/opsworks/describe_stack_provisioning_parameters.html](https://paws-r.github.io/docs/opsworks/describe_stack_provisioning_parameters.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   AgentInstallerUrl = "string",
-#'   Parameters = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_stack_provisioning_parameters(
-#'   StackId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3393,62 +1860,11 @@ opsworks_describe_stack_provisioning_parameters <- function(StackId) {
 #' number of instances in each state, such as running_setup or online
 #'
 #' @description
-#' Describes the number of layers and apps in a specified stack, and the
-#' number of instances in each state, such as `running_setup` or `online`.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Describes the number of layers and apps in a specified stack, and the number of instances in each state, such as `running_setup` or `online`.
 #'
-#' @usage
-#' opsworks_describe_stack_summary(StackId)
+#' See [https://paws-r.github.io/docs/opsworks/describe_stack_summary.html](https://paws-r.github.io/docs/opsworks/describe_stack_summary.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   StackSummary = list(
-#'     StackId = "string",
-#'     Name = "string",
-#'     Arn = "string",
-#'     LayersCount = 123,
-#'     AppsCount = 123,
-#'     InstancesCount = list(
-#'       Assigning = 123,
-#'       Booting = 123,
-#'       ConnectionLost = 123,
-#'       Deregistering = 123,
-#'       Online = 123,
-#'       Pending = 123,
-#'       Rebooting = 123,
-#'       Registered = 123,
-#'       Registering = 123,
-#'       Requested = 123,
-#'       RunningSetup = 123,
-#'       SetupFailed = 123,
-#'       ShuttingDown = 123,
-#'       StartFailed = 123,
-#'       StopFailed = 123,
-#'       Stopped = 123,
-#'       Stopping = 123,
-#'       Terminated = 123,
-#'       Terminating = 123,
-#'       Unassigning = 123
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_stack_summary(
-#'   StackId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3474,76 +1890,12 @@ opsworks_describe_stack_summary <- function(StackId) {
 #'
 #' @description
 #' Requests a description of one or more stacks.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_stacks(StackIds)
+#' See [https://paws-r.github.io/docs/opsworks/describe_stacks.html](https://paws-r.github.io/docs/opsworks/describe_stacks.html) for full documentation.
 #'
 #' @param StackIds An array of stack IDs that specify the stacks to be described. If you
 #' omit this parameter, [`describe_stacks`][opsworks_describe_stacks]
 #' returns a description of every stack.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Stacks = list(
-#'     list(
-#'       StackId = "string",
-#'       Name = "string",
-#'       Arn = "string",
-#'       Region = "string",
-#'       VpcId = "string",
-#'       Attributes = list(
-#'         "string"
-#'       ),
-#'       ServiceRoleArn = "string",
-#'       DefaultInstanceProfileArn = "string",
-#'       DefaultOs = "string",
-#'       HostnameTheme = "string",
-#'       DefaultAvailabilityZone = "string",
-#'       DefaultSubnetId = "string",
-#'       CustomJson = "string",
-#'       ConfigurationManager = list(
-#'         Name = "string",
-#'         Version = "string"
-#'       ),
-#'       ChefConfiguration = list(
-#'         ManageBerkshelf = TRUE|FALSE,
-#'         BerkshelfVersion = "string"
-#'       ),
-#'       UseCustomCookbooks = TRUE|FALSE,
-#'       UseOpsworksSecurityGroups = TRUE|FALSE,
-#'       CustomCookbooksSource = list(
-#'         Type = "git"|"svn"|"archive"|"s3",
-#'         Url = "string",
-#'         Username = "string",
-#'         Password = "string",
-#'         SshKey = "string",
-#'         Revision = "string"
-#'       ),
-#'       DefaultSshKeyName = "string",
-#'       CreatedAt = "string",
-#'       DefaultRootDeviceType = "ebs"|"instance-store",
-#'       AgentVersion = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_stacks(
-#'   StackIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3568,65 +1920,11 @@ opsworks_describe_stacks <- function(StackIds = NULL) {
 #' Describes time-based auto scaling configurations for specified instances
 #'
 #' @description
-#' Describes time-based auto scaling configurations for specified
-#' instances.
-#' 
-#' You must specify at least one of the parameters.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Describes time-based auto scaling configurations for specified instances.
 #'
-#' @usage
-#' opsworks_describe_time_based_auto_scaling(InstanceIds)
+#' See [https://paws-r.github.io/docs/opsworks/describe_time_based_auto_scaling.html](https://paws-r.github.io/docs/opsworks/describe_time_based_auto_scaling.html) for full documentation.
 #'
 #' @param InstanceIds &#91;required&#93; An array of instance IDs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TimeBasedAutoScalingConfigurations = list(
-#'     list(
-#'       InstanceId = "string",
-#'       AutoScalingSchedule = list(
-#'         Monday = list(
-#'           "string"
-#'         ),
-#'         Tuesday = list(
-#'           "string"
-#'         ),
-#'         Wednesday = list(
-#'           "string"
-#'         ),
-#'         Thursday = list(
-#'           "string"
-#'         ),
-#'         Friday = list(
-#'           "string"
-#'         ),
-#'         Saturday = list(
-#'           "string"
-#'         ),
-#'         Sunday = list(
-#'           "string"
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_time_based_auto_scaling(
-#'   InstanceIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3652,42 +1950,11 @@ opsworks_describe_time_based_auto_scaling <- function(InstanceIds) {
 #'
 #' @description
 #' Describe specified users.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have an
-#' attached policy that explicitly grants permissions. For more information
-#' about user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_user_profiles(IamUserArns)
+#' See [https://paws-r.github.io/docs/opsworks/describe_user_profiles.html](https://paws-r.github.io/docs/opsworks/describe_user_profiles.html) for full documentation.
 #'
 #' @param IamUserArns An array of IAM or federated user ARNs that identify the users to be
 #' described.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   UserProfiles = list(
-#'     list(
-#'       IamUserArn = "string",
-#'       Name = "string",
-#'       SshUsername = "string",
-#'       SshPublicKey = "string",
-#'       AllowSelfManagement = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_user_profiles(
-#'   IamUserArns = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3713,17 +1980,8 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
 #'
 #' @description
 #' Describes an instance's Amazon EBS volumes.
-#' 
-#' This call accepts only one resource-identifying parameter.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Show, Deploy, or Manage permissions level for the stack, or an attached
-#' policy that explicitly grants permissions. For more information about
-#' user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_describe_volumes(InstanceId, StackId, RaidArrayId, VolumeIds)
+#' See [https://paws-r.github.io/docs/opsworks/describe_volumes.html](https://paws-r.github.io/docs/opsworks/describe_volumes.html) for full documentation.
 #'
 #' @param InstanceId The instance ID. If you use this parameter,
 #' [`describe_volumes`][opsworks_describe_volumes] returns descriptions of
@@ -3737,43 +1995,6 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
 #' [`describe_volumes`][opsworks_describe_volumes] returns descriptions of
 #' the specified volumes. Otherwise, it returns a description of every
 #' volume.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Volumes = list(
-#'     list(
-#'       VolumeId = "string",
-#'       Ec2VolumeId = "string",
-#'       Name = "string",
-#'       RaidArrayId = "string",
-#'       InstanceId = "string",
-#'       Status = "string",
-#'       Size = 123,
-#'       Device = "string",
-#'       MountPoint = "string",
-#'       Region = "string",
-#'       AvailabilityZone = "string",
-#'       VolumeType = "string",
-#'       Iops = 123,
-#'       Encrypted = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_volumes(
-#'   InstanceId = "string",
-#'   StackId = "string",
-#'   RaidArrayId = "string",
-#'   VolumeIds = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3799,30 +2020,12 @@ opsworks_describe_volumes <- function(InstanceId = NULL, StackId = NULL, RaidArr
 #'
 #' @description
 #' Detaches a specified Elastic Load Balancing instance from its layer.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_detach_elastic_load_balancer(ElasticLoadBalancerName, LayerId)
+#' See [https://paws-r.github.io/docs/opsworks/detach_elastic_load_balancer.html](https://paws-r.github.io/docs/opsworks/detach_elastic_load_balancer.html) for full documentation.
 #'
 #' @param ElasticLoadBalancerName &#91;required&#93; The Elastic Load Balancing instance's name.
 #' @param LayerId &#91;required&#93; The ID of the layer that the Elastic Load Balancing instance is attached
 #' to.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$detach_elastic_load_balancer(
-#'   ElasticLoadBalancerName = "string",
-#'   LayerId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3847,30 +2050,11 @@ opsworks_detach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' Disassociates an Elastic IP address from its instance
 #'
 #' @description
-#' Disassociates an Elastic IP address from its instance. The address
-#' remains registered with the stack. For more information, see [Resource
-#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Disassociates an Elastic IP address from its instance. The address remains registered with the stack. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' @usage
-#' opsworks_disassociate_elastic_ip(ElasticIp)
+#' See [https://paws-r.github.io/docs/opsworks/disassociate_elastic_ip.html](https://paws-r.github.io/docs/opsworks/disassociate_elastic_ip.html) for full documentation.
 #'
 #' @param ElasticIp &#91;required&#93; The Elastic IP address.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$disassociate_elastic_ip(
-#'   ElasticIp = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3896,35 +2080,11 @@ opsworks_disassociate_elastic_ip <- function(ElasticIp) {
 #' host name theme
 #'
 #' @description
-#' Gets a generated host name for the specified layer, based on the current
-#' host name theme.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Gets a generated host name for the specified layer, based on the current host name theme.
 #'
-#' @usage
-#' opsworks_get_hostname_suggestion(LayerId)
+#' See [https://paws-r.github.io/docs/opsworks/get_hostname_suggestion.html](https://paws-r.github.io/docs/opsworks/get_hostname_suggestion.html) for full documentation.
 #'
 #' @param LayerId &#91;required&#93; The layer ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   LayerId = "string",
-#'   Hostname = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_hostname_suggestion(
-#'   LayerId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -3950,38 +2110,14 @@ opsworks_get_hostname_suggestion <- function(LayerId) {
 #'
 #' @description
 #' This action can be used only with Windows stacks.
-#' 
-#' Grants RDP access to a Windows instance for a specified time period.
 #'
-#' @usage
-#' opsworks_grant_access(InstanceId, ValidForInMinutes)
+#' See [https://paws-r.github.io/docs/opsworks/grant_access.html](https://paws-r.github.io/docs/opsworks/grant_access.html) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance's AWS OpsWorks Stacks ID.
 #' @param ValidForInMinutes The length of time (in minutes) that the grant is valid. When the grant
 #' expires at the end of this period, the user will no longer be able to
 #' use the credentials to log in. If the user is logged in at the time, he
 #' or she automatically will be logged out.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   TemporaryCredential = list(
-#'     Username = "string",
-#'     Password = "string",
-#'     ValidForInMinutes = 123,
-#'     InstanceId = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$grant_access(
-#'   InstanceId = "string",
-#'   ValidForInMinutes = 123
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4008,34 +2144,13 @@ opsworks_grant_access <- function(InstanceId, ValidForInMinutes = NULL) {
 #' @description
 #' Returns a list of tags that are applied to the specified stack or layer.
 #'
-#' @usage
-#' opsworks_list_tags(ResourceArn, MaxResults, NextToken)
+#' See [https://paws-r.github.io/docs/opsworks/list_tags.html](https://paws-r.github.io/docs/opsworks/list_tags.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The stack or layer's Amazon Resource Number (ARN).
 #' @param MaxResults Do not use. A validation exception occurs if you add a `MaxResults`
 #' parameter to a `ListTagsRequest` call.
 #' @param NextToken Do not use. A validation exception occurs if you add a `NextToken`
 #' parameter to a `ListTagsRequest` call.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   Tags = list(
-#'     "string"
-#'   ),
-#'   NextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags(
-#'   ResourceArn = "string",
-#'   MaxResults = 123,
-#'   NextToken = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4060,30 +2175,11 @@ opsworks_list_tags <- function(ResourceArn, MaxResults = NULL, NextToken = NULL)
 #' Reboots a specified instance
 #'
 #' @description
-#' Reboots a specified instance. For more information, see [Starting,
-#' Stopping, and Rebooting
-#' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Reboots a specified instance. For more information, see [Starting, Stopping, and Rebooting Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
 #'
-#' @usage
-#' opsworks_reboot_instance(InstanceId)
+#' See [https://paws-r.github.io/docs/opsworks/reboot_instance.html](https://paws-r.github.io/docs/opsworks/reboot_instance.html) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$reboot_instance(
-#'   InstanceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4108,38 +2204,12 @@ opsworks_reboot_instance <- function(InstanceId) {
 #' Registers a specified Amazon ECS cluster with a stack
 #'
 #' @description
-#' Registers a specified Amazon ECS cluster with a stack. You can register
-#' only one cluster with a stack. A cluster can be registered with only one
-#' stack. For more information, see [Resource
-#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Registers a specified Amazon ECS cluster with a stack. You can register only one cluster with a stack. A cluster can be registered with only one stack. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html).
 #'
-#' @usage
-#' opsworks_register_ecs_cluster(EcsClusterArn, StackId)
+#' See [https://paws-r.github.io/docs/opsworks/register_ecs_cluster.html](https://paws-r.github.io/docs/opsworks/register_ecs_cluster.html) for full documentation.
 #'
 #' @param EcsClusterArn &#91;required&#93; The cluster's ARN.
 #' @param StackId &#91;required&#93; The stack ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   EcsClusterArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_ecs_cluster(
-#'   EcsClusterArn = "string",
-#'   StackId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4164,40 +2234,12 @@ opsworks_register_ecs_cluster <- function(EcsClusterArn, StackId) {
 #' Registers an Elastic IP address with a specified stack
 #'
 #' @description
-#' Registers an Elastic IP address with a specified stack. An address can
-#' be registered with only one stack at a time. If the address is already
-#' registered, you must first deregister it by calling
-#' [`deregister_elastic_ip`][opsworks_deregister_elastic_ip]. For more
-#' information, see [Resource
-#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Registers an Elastic IP address with a specified stack. An address can be registered with only one stack at a time. If the address is already registered, you must first deregister it by calling [`deregister_elastic_ip`][opsworks_deregister_elastic_ip]. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' @usage
-#' opsworks_register_elastic_ip(ElasticIp, StackId)
+#' See [https://paws-r.github.io/docs/opsworks/register_elastic_ip.html](https://paws-r.github.io/docs/opsworks/register_elastic_ip.html) for full documentation.
 #'
 #' @param ElasticIp &#91;required&#93; The Elastic IP address.
 #' @param StackId &#91;required&#93; The stack ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   ElasticIp = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_elastic_ip(
-#'   ElasticIp = "string",
-#'   StackId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4223,35 +2265,9 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
 #' with a specified stack
 #'
 #' @description
-#' Registers instances that were created outside of AWS OpsWorks Stacks
-#' with a specified stack.
-#' 
-#' We do not recommend using this action to register instances. The
-#' complete registration operation includes two tasks: installing the AWS
-#' OpsWorks Stacks agent on the instance, and registering the instance with
-#' the stack. [`register_instance`][opsworks_register_instance] handles
-#' only the second step. You should instead use the AWS CLI `register`
-#' command, which performs the entire registration operation. For more
-#' information, see [Registering an Instance with an AWS OpsWorks Stacks
-#' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/registered-instances-register.html).
-#' 
-#' Registered instances have the same requirements as instances that are
-#' created by using the [`create_instance`][opsworks_create_instance] API.
-#' For example, registered instances must be running a supported
-#' Linux-based operating system, and they must have a supported instance
-#' type. For more information about requirements for instances that you
-#' want to register, see [Preparing the
-#' Instance](https://docs.aws.amazon.com/opsworks/latest/userguide/).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Registers instances that were created outside of AWS OpsWorks Stacks with a specified stack.
 #'
-#' @usage
-#' opsworks_register_instance(StackId, Hostname, PublicIp, PrivateIp,
-#'   RsaPublicKey, RsaPublicKeyFingerprint, InstanceIdentity)
+#' See [https://paws-r.github.io/docs/opsworks/register_instance.html](https://paws-r.github.io/docs/opsworks/register_instance.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The ID of the stack that the instance is to be registered with.
 #' @param Hostname The instance's hostname.
@@ -4261,30 +2277,6 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
 #' between the instance and the service.
 #' @param RsaPublicKeyFingerprint The instances public RSA key fingerprint.
 #' @param InstanceIdentity An InstanceIdentity object that contains the instance's identity.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   InstanceId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_instance(
-#'   StackId = "string",
-#'   Hostname = "string",
-#'   PublicIp = "string",
-#'   PrivateIp = "string",
-#'   RsaPublicKey = "string",
-#'   RsaPublicKeyFingerprint = "string",
-#'   InstanceIdentity = list(
-#'     Document = "string",
-#'     Signature = "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4310,34 +2302,13 @@ opsworks_register_instance <- function(StackId, Hostname = NULL, PublicIp = NULL
 #'
 #' @description
 #' Registers an Amazon RDS instance with a stack.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_register_rds_db_instance(StackId, RdsDbInstanceArn, DbUser,
-#'   DbPassword)
+#' See [https://paws-r.github.io/docs/opsworks/register_rds_db_instance.html](https://paws-r.github.io/docs/opsworks/register_rds_db_instance.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance's ARN.
 #' @param DbUser &#91;required&#93; The database's master user name.
 #' @param DbPassword &#91;required&#93; The database password.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_rds_db_instance(
-#'   StackId = "string",
-#'   RdsDbInstanceArn = "string",
-#'   DbUser = "string",
-#'   DbPassword = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4362,40 +2333,12 @@ opsworks_register_rds_db_instance <- function(StackId, RdsDbInstanceArn, DbUser,
 #' Registers an Amazon EBS volume with a specified stack
 #'
 #' @description
-#' Registers an Amazon EBS volume with a specified stack. A volume can be
-#' registered with only one stack at a time. If the volume is already
-#' registered, you must first deregister it by calling
-#' [`deregister_volume`][opsworks_deregister_volume]. For more information,
-#' see [Resource
-#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Registers an Amazon EBS volume with a specified stack. A volume can be registered with only one stack at a time. If the volume is already registered, you must first deregister it by calling [`deregister_volume`][opsworks_deregister_volume]. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' @usage
-#' opsworks_register_volume(Ec2VolumeId, StackId)
+#' See [https://paws-r.github.io/docs/opsworks/register_volume.html](https://paws-r.github.io/docs/opsworks/register_volume.html) for full documentation.
 #'
 #' @param Ec2VolumeId The Amazon EBS volume ID.
 #' @param StackId &#91;required&#93; The stack ID.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   VolumeId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_volume(
-#'   Ec2VolumeId = "string",
-#'   StackId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4420,24 +2363,9 @@ opsworks_register_volume <- function(Ec2VolumeId = NULL, StackId) {
 #' Specify the load-based auto scaling configuration for a specified layer
 #'
 #' @description
-#' Specify the load-based auto scaling configuration for a specified layer.
-#' For more information, see [Managing Load with Time-based and Load-based
-#' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
-#' 
-#' To use load-based auto scaling, you must create a set of load-based auto
-#' scaling instances. Load-based auto scaling operates only on the
-#' instances from that set, so you must ensure that you have created enough
-#' instances to handle the maximum anticipated load.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Specify the load-based auto scaling configuration for a specified layer. For more information, see [Managing Load with Time-based and Load-based Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
 #'
-#' @usage
-#' opsworks_set_load_based_auto_scaling(LayerId, Enable, UpScaling,
-#'   DownScaling)
+#' See [https://paws-r.github.io/docs/opsworks/set_load_based_auto_scaling.html](https://paws-r.github.io/docs/opsworks/set_load_based_auto_scaling.html) for full documentation.
 #'
 #' @param LayerId &#91;required&#93; The layer ID.
 #' @param Enable Enables load-based auto scaling for the layer.
@@ -4449,39 +2377,6 @@ opsworks_register_volume <- function(Ec2VolumeId = NULL, StackId) {
 #' configuration. If the load falls below these thresholds for a specified
 #' amount of time, AWS OpsWorks Stacks stops a specified number of
 #' instances.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_load_based_auto_scaling(
-#'   LayerId = "string",
-#'   Enable = TRUE|FALSE,
-#'   UpScaling = list(
-#'     InstanceCount = 123,
-#'     ThresholdsWaitTime = 123,
-#'     IgnoreMetricsTime = 123,
-#'     CpuThreshold = 123.0,
-#'     MemoryThreshold = 123.0,
-#'     LoadThreshold = 123.0,
-#'     Alarms = list(
-#'       "string"
-#'     )
-#'   ),
-#'   DownScaling = list(
-#'     InstanceCount = 123,
-#'     ThresholdsWaitTime = 123,
-#'     IgnoreMetricsTime = 123,
-#'     CpuThreshold = 123.0,
-#'     MemoryThreshold = 123.0,
-#'     LoadThreshold = 123.0,
-#'     Alarms = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4506,17 +2401,9 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
 #' Specifies a user's permissions
 #'
 #' @description
-#' Specifies a user's permissions. For more information, see [Security and
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Specifies a user's permissions. For more information, see [Security and Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html).
 #'
-#' @usage
-#' opsworks_set_permission(StackId, IamUserArn, AllowSsh, AllowSudo, Level)
+#' See [https://paws-r.github.io/docs/opsworks/set_permission.html](https://paws-r.github.io/docs/opsworks/set_permission.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #' @param IamUserArn &#91;required&#93; The user's IAM ARN. This can also be a federated user's ARN.
@@ -4538,20 +2425,6 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
 #' For more information about the permissions associated with these levels,
 #' see [Managing User
 #' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_permission(
-#'   StackId = "string",
-#'   IamUserArn = "string",
-#'   AllowSsh = TRUE|FALSE,
-#'   AllowSudo = TRUE|FALSE,
-#'   Level = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4577,55 +2450,12 @@ opsworks_set_permission <- function(StackId, IamUserArn, AllowSsh = NULL, AllowS
 #' instance
 #'
 #' @description
-#' Specify the time-based auto scaling configuration for a specified
-#' instance. For more information, see [Managing Load with Time-based and
-#' Load-based
-#' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Specify the time-based auto scaling configuration for a specified instance. For more information, see [Managing Load with Time-based and Load-based Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
 #'
-#' @usage
-#' opsworks_set_time_based_auto_scaling(InstanceId, AutoScalingSchedule)
+#' See [https://paws-r.github.io/docs/opsworks/set_time_based_auto_scaling.html](https://paws-r.github.io/docs/opsworks/set_time_based_auto_scaling.html) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #' @param AutoScalingSchedule An `AutoScalingSchedule` with the instance schedule.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$set_time_based_auto_scaling(
-#'   InstanceId = "string",
-#'   AutoScalingSchedule = list(
-#'     Monday = list(
-#'       "string"
-#'     ),
-#'     Tuesday = list(
-#'       "string"
-#'     ),
-#'     Wednesday = list(
-#'       "string"
-#'     ),
-#'     Thursday = list(
-#'       "string"
-#'     ),
-#'     Friday = list(
-#'       "string"
-#'     ),
-#'     Saturday = list(
-#'       "string"
-#'     ),
-#'     Sunday = list(
-#'       "string"
-#'     )
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4650,30 +2480,11 @@ opsworks_set_time_based_auto_scaling <- function(InstanceId, AutoScalingSchedule
 #' Starts a specified instance
 #'
 #' @description
-#' Starts a specified instance. For more information, see [Starting,
-#' Stopping, and Rebooting
-#' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Starts a specified instance. For more information, see [Starting, Stopping, and Rebooting Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
 #'
-#' @usage
-#' opsworks_start_instance(InstanceId)
+#' See [https://paws-r.github.io/docs/opsworks/start_instance.html](https://paws-r.github.io/docs/opsworks/start_instance.html) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_instance(
-#'   InstanceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4699,27 +2510,10 @@ opsworks_start_instance <- function(InstanceId) {
 #'
 #' @description
 #' Starts a stack's instances.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_start_stack(StackId)
+#' See [https://paws-r.github.io/docs/opsworks/start_stack.html](https://paws-r.github.io/docs/opsworks/start_stack.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$start_stack(
-#'   StackId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4744,20 +2538,9 @@ opsworks_start_stack <- function(StackId) {
 #' Stops a specified instance
 #'
 #' @description
-#' Stops a specified instance. When you stop a standard instance, the data
-#' disappears and must be reinstalled when you restart the instance. You
-#' can stop an Amazon EBS-backed instance without losing data. For more
-#' information, see [Starting, Stopping, and Rebooting
-#' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Stops a specified instance. When you stop a standard instance, the data disappears and must be reinstalled when you restart the instance. You can stop an Amazon EBS-backed instance without losing data. For more information, see [Starting, Stopping, and Rebooting Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
 #'
-#' @usage
-#' opsworks_stop_instance(InstanceId, Force)
+#' See [https://paws-r.github.io/docs/opsworks/stop_instance.html](https://paws-r.github.io/docs/opsworks/stop_instance.html) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #' @param Force Specifies whether to force an instance to stop. If the instance's root
@@ -4767,17 +2550,6 @@ opsworks_start_stack <- function(StackId) {
 #' You must also delete the formerly-associated instance in EC2 after
 #' troubleshooting and replacing the AWS OpsWorks Stacks instance with a
 #' new one.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_instance(
-#'   InstanceId = "string",
-#'   Force = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4803,27 +2575,10 @@ opsworks_stop_instance <- function(InstanceId, Force = NULL) {
 #'
 #' @description
 #' Stops a specified stack.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_stop_stack(StackId)
+#' See [https://paws-r.github.io/docs/opsworks/stop_stack.html](https://paws-r.github.io/docs/opsworks/stop_stack.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$stop_stack(
-#'   StackId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4849,13 +2604,9 @@ opsworks_stop_stack <- function(StackId) {
 #' Stacks
 #'
 #' @description
-#' Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks
-#' Stacks. For more information about how tagging works, see
-#' [Tags](https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html)
-#' in the AWS OpsWorks User Guide.
+#' Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks. For more information about how tagging works, see [Tags](https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html) in the AWS OpsWorks User Guide.
 #'
-#' @usage
-#' opsworks_tag_resource(ResourceArn, Tags)
+#' See [https://paws-r.github.io/docs/opsworks/tag_resource.html](https://paws-r.github.io/docs/opsworks/tag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The stack or layer's Amazon Resource Number (ARN).
 #' @param Tags &#91;required&#93; A map that contains tag keys and tag values that are attached to a stack
@@ -4875,19 +2626,6 @@ opsworks_stop_stack <- function(StackId) {
 #'     value.
 #' 
 #' -   A maximum of 40 tags is allowed for any resource.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   ResourceArn = "string",
-#'   Tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4913,31 +2651,11 @@ opsworks_tag_resource <- function(ResourceArn, Tags) {
 #' instance
 #'
 #' @description
-#' Unassigns a registered instance from all layers that are using the
-#' instance. The instance remains in the stack as an unassigned instance,
-#' and can be assigned to another layer as needed. You cannot use this
-#' action with instances that were created with AWS OpsWorks Stacks.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack or an attached policy that
-#' explicitly grants permissions. For more information about user
-#' permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Unassigns a registered instance from all layers that are using the instance. The instance remains in the stack as an unassigned instance, and can be assigned to another layer as needed. You cannot use this action with instances that were created with AWS OpsWorks Stacks.
 #'
-#' @usage
-#' opsworks_unassign_instance(InstanceId)
+#' See [https://paws-r.github.io/docs/opsworks/unassign_instance.html](https://paws-r.github.io/docs/opsworks/unassign_instance.html) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$unassign_instance(
-#'   InstanceId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -4962,30 +2680,11 @@ opsworks_unassign_instance <- function(InstanceId) {
 #' Unassigns an assigned Amazon EBS volume
 #'
 #' @description
-#' Unassigns an assigned Amazon EBS volume. The volume remains registered
-#' with the stack. For more information, see [Resource
-#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Unassigns an assigned Amazon EBS volume. The volume remains registered with the stack. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' @usage
-#' opsworks_unassign_volume(VolumeId)
+#' See [https://paws-r.github.io/docs/opsworks/unassign_volume.html](https://paws-r.github.io/docs/opsworks/unassign_volume.html) for full documentation.
 #'
 #' @param VolumeId &#91;required&#93; The volume ID.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$unassign_volume(
-#'   VolumeId = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5012,24 +2711,10 @@ opsworks_unassign_volume <- function(VolumeId) {
 #' @description
 #' Removes tags from a specified stack or layer.
 #'
-#' @usage
-#' opsworks_untag_resource(ResourceArn, TagKeys)
+#' See [https://paws-r.github.io/docs/opsworks/untag_resource.html](https://paws-r.github.io/docs/opsworks/untag_resource.html) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The stack or layer's Amazon Resource Number (ARN).
 #' @param TagKeys &#91;required&#93; A list of the keys of tags to be removed from a stack or layer.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   ResourceArn = "string",
-#'   TagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5055,17 +2740,8 @@ opsworks_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @description
 #' Updates a specified app.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Deploy or Manage permissions level for the stack, or an attached policy
-#' that explicitly grants permissions. For more information on user
-#' permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_update_app(AppId, Name, Description, DataSources, Type,
-#'   AppSource, Domains, EnableSsl, SslConfiguration, Attributes,
-#'   Environment)
+#' See [https://paws-r.github.io/docs/opsworks/update_app.html](https://paws-r.github.io/docs/opsworks/update_app.html) for full documentation.
 #'
 #' @param AppId &#91;required&#93; The app ID.
 #' @param Name The app name.
@@ -5095,53 +2771,6 @@ opsworks_untag_resource <- function(ResourceArn, TagKeys) {
 #' If you have specified one or more environment variables, you cannot
 #' modify the stack's Chef version.
 #'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_app(
-#'   AppId = "string",
-#'   Name = "string",
-#'   Description = "string",
-#'   DataSources = list(
-#'     list(
-#'       Type = "string",
-#'       Arn = "string",
-#'       DatabaseName = "string"
-#'     )
-#'   ),
-#'   Type = "aws-flow-ruby"|"java"|"rails"|"php"|"nodejs"|"static"|"other",
-#'   AppSource = list(
-#'     Type = "git"|"svn"|"archive"|"s3",
-#'     Url = "string",
-#'     Username = "string",
-#'     Password = "string",
-#'     SshKey = "string",
-#'     Revision = "string"
-#'   ),
-#'   Domains = list(
-#'     "string"
-#'   ),
-#'   EnableSsl = TRUE|FALSE,
-#'   SslConfiguration = list(
-#'     Certificate = "string",
-#'     PrivateKey = "string",
-#'     Chain = "string"
-#'   ),
-#'   Attributes = list(
-#'     "string"
-#'   ),
-#'   Environment = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string",
-#'       Secure = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname opsworks_update_app
@@ -5165,32 +2794,12 @@ opsworks_update_app <- function(AppId, Name = NULL, Description = NULL, DataSour
 #' Updates a registered Elastic IP address's name
 #'
 #' @description
-#' Updates a registered Elastic IP address's name. For more information,
-#' see [Resource
-#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Updates a registered Elastic IP address's name. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' @usage
-#' opsworks_update_elastic_ip(ElasticIp, Name)
+#' See [https://paws-r.github.io/docs/opsworks/update_elastic_ip.html](https://paws-r.github.io/docs/opsworks/update_elastic_ip.html) for full documentation.
 #'
 #' @param ElasticIp &#91;required&#93; The IP address for which you want to update the name.
 #' @param Name The new name.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_elastic_ip(
-#'   ElasticIp = "string",
-#'   Name = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5216,17 +2825,8 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #'
 #' @description
 #' Updates a specified instance.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_update_instance(InstanceId, LayerIds, InstanceType,
-#'   AutoScalingType, Hostname, Os, AmiId, SshKeyName, Architecture,
-#'   InstallUpdatesOnBoot, EbsOptimized, AgentVersion)
+#' See [https://paws-r.github.io/docs/opsworks/update_instance.html](https://paws-r.github.io/docs/opsworks/update_instance.html) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The instance ID.
 #' @param LayerIds The instance's layer IDs.
@@ -5316,29 +2916,6 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' 
 #' AgentVersion cannot be set to Chef 12.2.
 #'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_instance(
-#'   InstanceId = "string",
-#'   LayerIds = list(
-#'     "string"
-#'   ),
-#'   InstanceType = "string",
-#'   AutoScalingType = "load"|"timer",
-#'   Hostname = "string",
-#'   Os = "string",
-#'   AmiId = "string",
-#'   SshKeyName = "string",
-#'   Architecture = "x86_64"|"i386",
-#'   InstallUpdatesOnBoot = TRUE|FALSE,
-#'   EbsOptimized = TRUE|FALSE,
-#'   AgentVersion = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname opsworks_update_instance
@@ -5363,20 +2940,8 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #'
 #' @description
 #' Updates a specified layer.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_update_layer(LayerId, Name, Shortname, Attributes,
-#'   CloudWatchLogsConfiguration, CustomInstanceProfileArn, CustomJson,
-#'   CustomSecurityGroupIds, Packages, VolumeConfigurations,
-#'   EnableAutoHealing, AutoAssignElasticIps, AutoAssignPublicIps,
-#'   CustomRecipes, InstallUpdatesOnBoot, UseEbsOptimizedInstances,
-#'   LifecycleEventConfiguration)
+#' See [https://paws-r.github.io/docs/opsworks/update_layer.html](https://paws-r.github.io/docs/opsworks/update_layer.html) for full documentation.
 #'
 #' @param LayerId &#91;required&#93; The layer ID.
 #' @param Name The layer name, which is used by the console.
@@ -5384,7 +2949,7 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #' name, which is used internally by AWS OpsWorks Stacks and by Chef. The
 #' short name is also used as the name for the directory where your app
 #' files are installed. It can have a maximum of 200 characters and must be
-#' in the following format: /\\A\[a-z0-9\\-\\_\\.\]+\\Z/.
+#' in the following format: /\A\[a-z0-9\\-\\_\\.\]+\Z/.
 #' 
 #' The built-in layers' short names are defined by AWS OpsWorks Stacks. For
 #' more information, see the [Layer
@@ -5427,86 +2992,6 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #' @param UseEbsOptimizedInstances Whether to use Amazon EBS-optimized instances.
 #' @param LifecycleEventConfiguration 
 #'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_layer(
-#'   LayerId = "string",
-#'   Name = "string",
-#'   Shortname = "string",
-#'   Attributes = list(
-#'     "string"
-#'   ),
-#'   CloudWatchLogsConfiguration = list(
-#'     Enabled = TRUE|FALSE,
-#'     LogStreams = list(
-#'       list(
-#'         LogGroupName = "string",
-#'         DatetimeFormat = "string",
-#'         TimeZone = "LOCAL"|"UTC",
-#'         File = "string",
-#'         FileFingerprintLines = "string",
-#'         MultiLineStartPattern = "string",
-#'         InitialPosition = "start_of_file"|"end_of_file",
-#'         Encoding = "ascii"|"big5"|"big5hkscs"|"cp037"|"cp424"|"cp437"|"cp500"|"cp720"|"cp737"|"cp775"|"cp850"|"cp852"|"cp855"|"cp856"|"cp857"|"cp858"|"cp860"|"cp861"|"cp862"|"cp863"|"cp864"|"cp865"|"cp866"|"cp869"|"cp874"|"cp875"|"cp932"|"cp949"|"cp950"|"cp1006"|"cp1026"|"cp1140"|"cp1250"|"cp1251"|"cp1252"|"cp1253"|"cp1254"|"cp1255"|"cp1256"|"cp1257"|"cp1258"|"euc_jp"|"euc_jis_2004"|"euc_jisx0213"|"euc_kr"|"gb2312"|"gbk"|"gb18030"|"hz"|"iso2022_jp"|"iso2022_jp_1"|"iso2022_jp_2"|"iso2022_jp_2004"|"iso2022_jp_3"|"iso2022_jp_ext"|"iso2022_kr"|"latin_1"|"iso8859_2"|"iso8859_3"|"iso8859_4"|"iso8859_5"|"iso8859_6"|"iso8859_7"|"iso8859_8"|"iso8859_9"|"iso8859_10"|"iso8859_13"|"iso8859_14"|"iso8859_15"|"iso8859_16"|"johab"|"koi8_r"|"koi8_u"|"mac_cyrillic"|"mac_greek"|"mac_iceland"|"mac_latin2"|"mac_roman"|"mac_turkish"|"ptcp154"|"shift_jis"|"shift_jis_2004"|"shift_jisx0213"|"utf_32"|"utf_32_be"|"utf_32_le"|"utf_16"|"utf_16_be"|"utf_16_le"|"utf_7"|"utf_8"|"utf_8_sig",
-#'         BufferDuration = 123,
-#'         BatchCount = 123,
-#'         BatchSize = 123
-#'       )
-#'     )
-#'   ),
-#'   CustomInstanceProfileArn = "string",
-#'   CustomJson = "string",
-#'   CustomSecurityGroupIds = list(
-#'     "string"
-#'   ),
-#'   Packages = list(
-#'     "string"
-#'   ),
-#'   VolumeConfigurations = list(
-#'     list(
-#'       MountPoint = "string",
-#'       RaidLevel = 123,
-#'       NumberOfDisks = 123,
-#'       Size = 123,
-#'       VolumeType = "string",
-#'       Iops = 123,
-#'       Encrypted = TRUE|FALSE
-#'     )
-#'   ),
-#'   EnableAutoHealing = TRUE|FALSE,
-#'   AutoAssignElasticIps = TRUE|FALSE,
-#'   AutoAssignPublicIps = TRUE|FALSE,
-#'   CustomRecipes = list(
-#'     Setup = list(
-#'       "string"
-#'     ),
-#'     Configure = list(
-#'       "string"
-#'     ),
-#'     Deploy = list(
-#'       "string"
-#'     ),
-#'     Undeploy = list(
-#'       "string"
-#'     ),
-#'     Shutdown = list(
-#'       "string"
-#'     )
-#'   ),
-#'   InstallUpdatesOnBoot = TRUE|FALSE,
-#'   UseEbsOptimizedInstances = TRUE|FALSE,
-#'   LifecycleEventConfiguration = list(
-#'     Shutdown = list(
-#'       ExecutionTimeout = 123,
-#'       DelayUntilElbConnectionsDrained = TRUE|FALSE
-#'     )
-#'   )
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname opsworks_update_layer
@@ -5531,27 +3016,10 @@ opsworks_update_layer <- function(LayerId, Name = NULL, Shortname = NULL, Attrib
 #'
 #' @description
 #' Updates a user's SSH public key.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have
-#' self-management enabled or an attached policy that explicitly grants
-#' permissions. For more information about user permissions, see [Managing
-#' User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_update_my_user_profile(SshPublicKey)
+#' See [https://paws-r.github.io/docs/opsworks/update_my_user_profile.html](https://paws-r.github.io/docs/opsworks/update_my_user_profile.html) for full documentation.
 #'
 #' @param SshPublicKey The user's SSH public key.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_my_user_profile(
-#'   SshPublicKey = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5577,31 +3045,12 @@ opsworks_update_my_user_profile <- function(SshPublicKey = NULL) {
 #'
 #' @description
 #' Updates an Amazon RDS instance.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_update_rds_db_instance(RdsDbInstanceArn, DbUser, DbPassword)
+#' See [https://paws-r.github.io/docs/opsworks/update_rds_db_instance.html](https://paws-r.github.io/docs/opsworks/update_rds_db_instance.html) for full documentation.
 #'
 #' @param RdsDbInstanceArn &#91;required&#93; The Amazon RDS instance's ARN.
 #' @param DbUser The master user name.
 #' @param DbPassword The database password.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_rds_db_instance(
-#'   RdsDbInstanceArn = "string",
-#'   DbUser = "string",
-#'   DbPassword = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5627,20 +3076,8 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #'
 #' @description
 #' Updates a specified stack.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_update_stack(StackId, Name, Attributes, ServiceRoleArn,
-#'   DefaultInstanceProfileArn, DefaultOs, HostnameTheme,
-#'   DefaultAvailabilityZone, DefaultSubnetId, CustomJson,
-#'   ConfigurationManager, ChefConfiguration, UseCustomCookbooks,
-#'   CustomCookbooksSource, DefaultSshKeyName, DefaultRootDeviceType,
-#'   UseOpsworksSecurityGroups, AgentVersion)
+#' See [https://paws-r.github.io/docs/opsworks/update_stack.html](https://paws-r.github.io/docs/opsworks/update_stack.html) for full documentation.
 #'
 #' @param StackId &#91;required&#93; The stack ID.
 #' @param Name The stack's new name.
@@ -5804,48 +3241,6 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' You can also specify an agent version when you create or update an
 #' instance, which overrides the stack's default setting.
 #'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_stack(
-#'   StackId = "string",
-#'   Name = "string",
-#'   Attributes = list(
-#'     "string"
-#'   ),
-#'   ServiceRoleArn = "string",
-#'   DefaultInstanceProfileArn = "string",
-#'   DefaultOs = "string",
-#'   HostnameTheme = "string",
-#'   DefaultAvailabilityZone = "string",
-#'   DefaultSubnetId = "string",
-#'   CustomJson = "string",
-#'   ConfigurationManager = list(
-#'     Name = "string",
-#'     Version = "string"
-#'   ),
-#'   ChefConfiguration = list(
-#'     ManageBerkshelf = TRUE|FALSE,
-#'     BerkshelfVersion = "string"
-#'   ),
-#'   UseCustomCookbooks = TRUE|FALSE,
-#'   CustomCookbooksSource = list(
-#'     Type = "git"|"svn"|"archive"|"s3",
-#'     Url = "string",
-#'     Username = "string",
-#'     Password = "string",
-#'     SshKey = "string",
-#'     Revision = "string"
-#'   ),
-#'   DefaultSshKeyName = "string",
-#'   DefaultRootDeviceType = "ebs"|"instance-store",
-#'   UseOpsworksSecurityGroups = TRUE|FALSE,
-#'   AgentVersion = "string"
-#' )
-#' ```
-#'
 #' @keywords internal
 #'
 #' @rdname opsworks_update_stack
@@ -5870,15 +3265,8 @@ opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, Servi
 #'
 #' @description
 #' Updates a specified user profile.
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have an
-#' attached policy that explicitly grants permissions. For more information
-#' about user permissions, see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
 #'
-#' @usage
-#' opsworks_update_user_profile(IamUserArn, SshUsername, SshPublicKey,
-#'   AllowSelfManagement)
+#' See [https://paws-r.github.io/docs/opsworks/update_user_profile.html](https://paws-r.github.io/docs/opsworks/update_user_profile.html) for full documentation.
 #'
 #' @param IamUserArn &#91;required&#93; The user IAM ARN. This can also be a federated user's ARN.
 #' @param SshUsername The user's SSH user name. The allowable characters are \[a-z\], \[A-Z\],
@@ -5890,19 +3278,6 @@ opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, Servi
 #' @param AllowSelfManagement Whether users can specify their own SSH public key through the My
 #' Settings page. For more information, see [Managing User
 #' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html).
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_user_profile(
-#'   IamUserArn = "string",
-#'   SshUsername = "string",
-#'   SshPublicKey = "string",
-#'   AllowSelfManagement = TRUE|FALSE
-#' )
-#' ```
 #'
 #' @keywords internal
 #'
@@ -5927,34 +3302,13 @@ opsworks_update_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 #' Updates an Amazon EBS volume's name or mount point
 #'
 #' @description
-#' Updates an Amazon EBS volume's name or mount point. For more
-#' information, see [Resource
-#' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
-#' 
-#' **Required Permissions**: To use this action, an IAM user must have a
-#' Manage permissions level for the stack, or an attached policy that
-#' explicitly grants permissions. For more information on user permissions,
-#' see [Managing User
-#' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html).
+#' Updates an Amazon EBS volume's name or mount point. For more information, see [Resource Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
 #'
-#' @usage
-#' opsworks_update_volume(VolumeId, Name, MountPoint)
+#' See [https://paws-r.github.io/docs/opsworks/update_volume.html](https://paws-r.github.io/docs/opsworks/update_volume.html) for full documentation.
 #'
 #' @param VolumeId &#91;required&#93; The volume ID.
 #' @param Name The new name.
 #' @param MountPoint The new mount point.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_volume(
-#'   VolumeId = "string",
-#'   Name = "string",
-#'   MountPoint = "string"
-#' )
-#' ```
 #'
 #' @keywords internal
 #'

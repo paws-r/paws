@@ -4,23 +4,27 @@
 \alias{applicationautoscaling_describe_scalable_targets}
 \title{Gets information about the scalable targets in the specified namespace}
 \usage{
-applicationautoscaling_describe_scalable_targets(ServiceNamespace,
-  ResourceIds, ScalableDimension, MaxResults, NextToken)
+applicationautoscaling_describe_scalable_targets(
+  ServiceNamespace,
+  ResourceIds = NULL,
+  ScalableDimension = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
-\item{ServiceNamespace}{[required] The namespace of the AWS service that provides the resource. For a
-resource provided by your own application or service, use
-\code{custom-resource} instead.}
+\item{ServiceNamespace}{[required] The namespace of the Amazon Web Services service that provides the
+resource. For a resource provided by your own application or service,
+use \code{custom-resource} instead.}
 
 \item{ResourceIds}{The identifier of the resource associated with the scalable target. This
-string consists of the resource type and unique identifier. If you
-specify a scalable dimension, you must also specify a resource ID.
+string consists of the resource type and unique identifier.
 \itemize{
 \item ECS service - The resource type is \code{service} and the unique
 identifier is the cluster name and service name. Example:
 \code{service/default/sample-webapp}.
-\item Spot Fleet request - The resource type is \code{spot-fleet-request} and
-the unique identifier is the Spot Fleet request ID. Example:
+\item Spot Fleet - The resource type is \code{spot-fleet-request} and the
+unique identifier is the Spot Fleet request ID. Example:
 \verb{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
 \item EMR cluster - The resource type is \code{instancegroup} and the unique
 identifier is the cluster ID and instance group ID. Example:
@@ -34,8 +38,8 @@ the unique identifier is the index name. Example:
 \code{table/my-table/index/my-table-index}.
 \item Aurora DB cluster - The resource type is \code{cluster} and the unique
 identifier is the cluster name. Example: \code{cluster:my-db-cluster}.
-\item Amazon SageMaker endpoint variant - The resource type is \code{variant}
-and the unique identifier is the resource ID. Example:
+\item SageMaker endpoint variant - The resource type is \code{variant} and the
+unique identifier is the resource ID. Example:
 \code{endpoint/my-end-point/variant/KMeansClustering}.
 \item Custom resources are not supported with a resource type. This
 parameter must specify the \code{OutputValue} from the CloudFormation
@@ -59,6 +63,11 @@ identifier is the table name. Example:
 \item Amazon MSK cluster - The resource type and unique identifier are
 specified using the cluster ARN. Example:
 \verb{arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5}.
+\item Amazon ElastiCache replication group - The resource type is
+\code{replication-group} and the unique identifier is the replication
+group name. Example: \code{replication-group/mycluster}.
+\item Neptune cluster - The resource type is \code{cluster} and the unique
+identifier is the cluster name. Example: \code{cluster:mycluster}.
 }}
 
 \item{ScalableDimension}{The scalable dimension associated with the scalable target. This string
@@ -68,10 +77,10 @@ ID.
 \itemize{
 \item \code{ecs:service:DesiredCount} - The desired task count of an ECS
 service.
-\item \code{ec2:spot-fleet-request:TargetCapacity} - The target capacity of a
-Spot Fleet request.
 \item \code{elasticmapreduce:instancegroup:InstanceCount} - The instance count
 of an EMR Instance Group.
+\item \code{ec2:spot-fleet-request:TargetCapacity} - The target capacity of a
+Spot Fleet.
 \item \code{appstream:fleet:DesiredCapacity} - The desired capacity of an
 AppStream 2.0 fleet.
 \item \code{dynamodb:table:ReadCapacityUnits} - The provisioned read capacity
@@ -86,7 +95,7 @@ for a DynamoDB global secondary index.
 Aurora DB cluster. Available for Aurora MySQL-compatible edition and
 Aurora PostgreSQL-compatible edition.
 \item \code{sagemaker:variant:DesiredInstanceCount} - The number of EC2
-instances for an Amazon SageMaker model endpoint variant.
+instances for an SageMaker model endpoint variant.
 \item \code{custom-resource:ResourceType:Property} - The scalable dimension for
 a custom resource provided by your own application or service.
 \item \code{comprehend:document-classifier-endpoint:DesiredInferenceUnits} -
@@ -103,6 +112,12 @@ for an Amazon Keyspaces table.
 capacity for an Amazon Keyspaces table.
 \item \code{kafka:broker-storage:VolumeSize} - The provisioned volume size (in
 GiB) for brokers in an Amazon MSK cluster.
+\item \code{elasticache:replication-group:NodeGroups} - The number of node
+groups for an Amazon ElastiCache replication group.
+\item \code{elasticache:replication-group:Replicas} - The number of replicas
+per node group for an Amazon ElastiCache replication group.
+\item \code{neptune:cluster:ReadReplicaCount} - The count of read replicas in
+an Amazon Neptune DB cluster.
 }}
 
 \item{MaxResults}{The maximum number of scalable targets. This value can be between 1 and
@@ -116,56 +131,9 @@ parameter is not used, the operation returns up to 50 results and a
 
 \item{NextToken}{The token for the next set of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ScalableTargets = list(
-    list(
-      ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
-      ResourceId = "string",
-      ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
-      MinCapacity = 123,
-      MaxCapacity = 123,
-      RoleARN = "string",
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      SuspendedState = list(
-        DynamicScalingInSuspended = TRUE|FALSE,
-        DynamicScalingOutSuspended = TRUE|FALSE,
-        ScheduledScalingSuspended = TRUE|FALSE
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets information about the scalable targets in the specified namespace.
 
-You can filter the results using \code{ResourceIds} and \code{ScalableDimension}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_scalable_targets(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
-  ResourceIds = list(
-    "string"
-  ),
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example describes the scalable targets for the ECS service
-# namespace.
-svc$describe_scalable_targets(
-  ServiceNamespace = "ecs"
-)
-}
-
+See \url{https://paws-r.github.io/docs/applicationautoscaling/describe_scalable_targets.html} for full documentation.
 }
 \keyword{internal}

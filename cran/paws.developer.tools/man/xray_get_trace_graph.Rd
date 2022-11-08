@@ -4,115 +4,16 @@
 \alias{xray_get_trace_graph}
 \title{Retrieves a service graph for one or more specific trace IDs}
 \usage{
-xray_get_trace_graph(TraceIds, NextToken)
+xray_get_trace_graph(TraceIds, NextToken = NULL)
 }
 \arguments{
 \item{TraceIds}{[required] Trace IDs of requests for which to generate a service graph.}
 
 \item{NextToken}{Pagination token.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Services = list(
-    list(
-      ReferenceId = 123,
-      Name = "string",
-      Names = list(
-        "string"
-      ),
-      Root = TRUE|FALSE,
-      AccountId = "string",
-      Type = "string",
-      State = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Edges = list(
-        list(
-          ReferenceId = 123,
-          StartTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          EndTime = as.POSIXct(
-            "2015-01-01"
-          ),
-          SummaryStatistics = list(
-            OkCount = 123,
-            ErrorStatistics = list(
-              ThrottleCount = 123,
-              OtherCount = 123,
-              TotalCount = 123
-            ),
-            FaultStatistics = list(
-              OtherCount = 123,
-              TotalCount = 123
-            ),
-            TotalCount = 123,
-            TotalResponseTime = 123.0
-          ),
-          ResponseTimeHistogram = list(
-            list(
-              Value = 123.0,
-              Count = 123
-            )
-          ),
-          Aliases = list(
-            list(
-              Name = "string",
-              Names = list(
-                "string"
-              ),
-              Type = "string"
-            )
-          )
-        )
-      ),
-      SummaryStatistics = list(
-        OkCount = 123,
-        ErrorStatistics = list(
-          ThrottleCount = 123,
-          OtherCount = 123,
-          TotalCount = 123
-        ),
-        FaultStatistics = list(
-          OtherCount = 123,
-          TotalCount = 123
-        ),
-        TotalCount = 123,
-        TotalResponseTime = 123.0
-      ),
-      DurationHistogram = list(
-        list(
-          Value = 123.0,
-          Count = 123
-        )
-      ),
-      ResponseTimeHistogram = list(
-        list(
-          Value = 123.0,
-          Count = 123
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Retrieves a service graph for one or more specific trace IDs.
-}
-\section{Request syntax}{
-\preformatted{svc$get_trace_graph(
-  TraceIds = list(
-    "string"
-  ),
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/xray/get_trace_graph.html} for full documentation.
+}
 \keyword{internal}

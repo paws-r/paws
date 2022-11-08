@@ -4,9 +4,15 @@
 \alias{dax_update_cluster}
 \title{Modifies the settings for a DAX cluster}
 \usage{
-dax_update_cluster(ClusterName, Description, PreferredMaintenanceWindow,
-  NotificationTopicArn, NotificationTopicStatus, ParameterGroupName,
-  SecurityGroupIds)
+dax_update_cluster(
+  ClusterName,
+  Description = NULL,
+  PreferredMaintenanceWindow = NULL,
+  NotificationTopicArn = NULL,
+  NotificationTopicStatus = NULL,
+  ParameterGroupName = NULL,
+  SecurityGroupIds = NULL
+)
 }
 \arguments{
 \item{ClusterName}{[required] The name of the DAX cluster to be modified.}
@@ -20,7 +26,9 @@ within the maintenance window.}
 
 \item{NotificationTopicArn}{The Amazon Resource Name (ARN) that identifies the topic.}
 
-\item{NotificationTopicStatus}{The current state of the topic.}
+\item{NotificationTopicStatus}{The current state of the topic. A value of “active” means that
+notifications will be sent to the topic. A value of “inactive” means
+that notifications will not be sent to the topic.}
 
 \item{ParameterGroupName}{The name of a parameter group for this cluster.}
 
@@ -28,83 +36,9 @@ within the maintenance window.}
 in the DAX cluster. If this parameter is not specified, DAX assigns the
 default VPC security group to each node.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Cluster = list(
-    ClusterName = "string",
-    Description = "string",
-    ClusterArn = "string",
-    TotalNodes = 123,
-    ActiveNodes = 123,
-    NodeType = "string",
-    Status = "string",
-    ClusterDiscoveryEndpoint = list(
-      Address = "string",
-      Port = 123
-    ),
-    NodeIdsToRemove = list(
-      "string"
-    ),
-    Nodes = list(
-      list(
-        NodeId = "string",
-        Endpoint = list(
-          Address = "string",
-          Port = 123
-        ),
-        NodeCreateTime = as.POSIXct(
-          "2015-01-01"
-        ),
-        AvailabilityZone = "string",
-        NodeStatus = "string",
-        ParameterGroupStatus = "string"
-      )
-    ),
-    PreferredMaintenanceWindow = "string",
-    NotificationConfiguration = list(
-      TopicArn = "string",
-      TopicStatus = "string"
-    ),
-    SubnetGroup = "string",
-    SecurityGroups = list(
-      list(
-        SecurityGroupIdentifier = "string",
-        Status = "string"
-      )
-    ),
-    IamRoleArn = "string",
-    ParameterGroup = list(
-      ParameterGroupName = "string",
-      ParameterApplyStatus = "string",
-      NodeIdsToReboot = list(
-        "string"
-      )
-    ),
-    SSEDescription = list(
-      Status = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
-    )
-  )
-)
-}
-}
 \description{
-Modifies the settings for a DAX cluster. You can use this action to
-change one or more cluster configuration parameters by specifying the
-parameters and the new values.
-}
-\section{Request syntax}{
-\preformatted{svc$update_cluster(
-  ClusterName = "string",
-  Description = "string",
-  PreferredMaintenanceWindow = "string",
-  NotificationTopicArn = "string",
-  NotificationTopicStatus = "string",
-  ParameterGroupName = "string",
-  SecurityGroupIds = list(
-    "string"
-  )
-)
-}
-}
+Modifies the settings for a DAX cluster. You can use this action to change one or more cluster configuration parameters by specifying the parameters and the new values.
 
+See \url{https://paws-r.github.io/docs/dax/update_cluster.html} for full documentation.
+}
 \keyword{internal}

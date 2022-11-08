@@ -5,10 +5,22 @@
 \title{Launches an AWS Elastic Beanstalk environment for the specified
 application using the specified configuration}
 \usage{
-elasticbeanstalk_create_environment(ApplicationName, EnvironmentName,
-  GroupName, Description, CNAMEPrefix, Tier, Tags, VersionLabel,
-  TemplateName, SolutionStackName, PlatformArn, OptionSettings,
-  OptionsToRemove, OperationsRole)
+elasticbeanstalk_create_environment(
+  ApplicationName,
+  EnvironmentName = NULL,
+  GroupName = NULL,
+  Description = NULL,
+  CNAMEPrefix = NULL,
+  Tier = NULL,
+  Tags = NULL,
+  VersionLabel = NULL,
+  TemplateName = NULL,
+  SolutionStackName = NULL,
+  PlatformArn = NULL,
+  OptionSettings = NULL,
+  OptionsToRemove = NULL,
+  OperationsRole = NULL
+)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the application that is associated with this environment.}
@@ -85,114 +97,9 @@ operations role, you must have the \code{iam:PassRole} permission for the
 role. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/}{Operations roles} in the
 \emph{AWS Elastic Beanstalk Developer Guide}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  EnvironmentName = "string",
-  EnvironmentId = "string",
-  ApplicationName = "string",
-  VersionLabel = "string",
-  SolutionStackName = "string",
-  PlatformArn = "string",
-  TemplateName = "string",
-  Description = "string",
-  EndpointURL = "string",
-  CNAME = "string",
-  DateCreated = as.POSIXct(
-    "2015-01-01"
-  ),
-  DateUpdated = as.POSIXct(
-    "2015-01-01"
-  ),
-  Status = "Aborting"|"Launching"|"Updating"|"LinkingFrom"|"LinkingTo"|"Ready"|"Terminating"|"Terminated",
-  AbortableOperationInProgress = TRUE|FALSE,
-  Health = "Green"|"Yellow"|"Red"|"Grey",
-  HealthStatus = "NoData"|"Unknown"|"Pending"|"Ok"|"Info"|"Warning"|"Degraded"|"Severe"|"Suspended",
-  Resources = list(
-    LoadBalancer = list(
-      LoadBalancerName = "string",
-      Domain = "string",
-      Listeners = list(
-        list(
-          Protocol = "string",
-          Port = 123
-        )
-      )
-    )
-  ),
-  Tier = list(
-    Name = "string",
-    Type = "string",
-    Version = "string"
-  ),
-  EnvironmentLinks = list(
-    list(
-      LinkName = "string",
-      EnvironmentName = "string"
-    )
-  ),
-  EnvironmentArn = "string",
-  OperationsRole = "string"
-)
-}
-}
 \description{
-Launches an AWS Elastic Beanstalk environment for the specified
-application using the specified configuration.
-}
-\section{Request syntax}{
-\preformatted{svc$create_environment(
-  ApplicationName = "string",
-  EnvironmentName = "string",
-  GroupName = "string",
-  Description = "string",
-  CNAMEPrefix = "string",
-  Tier = list(
-    Name = "string",
-    Type = "string",
-    Version = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  VersionLabel = "string",
-  TemplateName = "string",
-  SolutionStackName = "string",
-  PlatformArn = "string",
-  OptionSettings = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string",
-      Value = "string"
-    )
-  ),
-  OptionsToRemove = list(
-    list(
-      ResourceName = "string",
-      Namespace = "string",
-      OptionName = "string"
-    )
-  ),
-  OperationsRole = "string"
-)
-}
-}
+Launches an AWS Elastic Beanstalk environment for the specified application using the specified configuration.
 
-\examples{
-\dontrun{
-# The following operation creates a new environment for version v1 of a
-# java application named my-app:
-svc$create_environment(
-  ApplicationName = "my-app",
-  CNAMEPrefix = "my-app",
-  EnvironmentName = "my-env",
-  SolutionStackName = "64bit Amazon Linux 2015.03 v2.0.0 running Tomcat 8 Java 8",
-  VersionLabel = "v1"
-)
-}
-
+See \url{https://paws-r.github.io/docs/elasticbeanstalk/create_environment.html} for full documentation.
 }
 \keyword{internal}

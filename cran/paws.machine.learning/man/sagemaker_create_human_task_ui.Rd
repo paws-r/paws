@@ -5,7 +5,7 @@
 \title{Defines the settings you will use for the human review workflow user
 interface}
 \usage{
-sagemaker_create_human_task_ui(HumanTaskUiName, UiTemplate, Tags)
+sagemaker_create_human_task_ui(HumanTaskUiName, UiTemplate, Tags = NULL)
 }
 \arguments{
 \item{HumanTaskUiName}{[required] The name of the user interface you are creating.}
@@ -16,31 +16,9 @@ sagemaker_create_human_task_ui(HumanTaskUiName, UiTemplate, Tags)
 and organize a human review workflow user interface. Each tag consists
 of a key and a value, both of which you define.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  HumanTaskUiArn = "string"
-)
-}
-}
 \description{
-Defines the settings you will use for the human review workflow user
-interface. Reviewers will see a three-panel interface with an
-instruction area, the item to review, and an input area.
-}
-\section{Request syntax}{
-\preformatted{svc$create_human_task_ui(
-  HumanTaskUiName = "string",
-  UiTemplate = list(
-    Content = "string"
-  ),
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
+Defines the settings you will use for the human review workflow user interface. Reviewers will see a three-panel interface with an instruction area, the item to review, and an input area.
 
+See \url{https://paws-r.github.io/docs/sagemaker/create_human_task_ui.html} for full documentation.
+}
 \keyword{internal}

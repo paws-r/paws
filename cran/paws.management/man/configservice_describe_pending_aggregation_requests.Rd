@@ -4,36 +4,21 @@
 \alias{configservice_describe_pending_aggregation_requests}
 \title{Returns a list of all pending aggregation requests}
 \usage{
-configservice_describe_pending_aggregation_requests(Limit, NextToken)
+configservice_describe_pending_aggregation_requests(
+  Limit = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{Limit}{The maximum number of evaluation results returned on each page. The
-default is maximum. If you specify 0, AWS Config uses the default.}
+default is maximum. If you specify 0, Config uses the default.}
 
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PendingAggregationRequests = list(
-    list(
-      RequesterAccountId = "string",
-      RequesterAwsRegion = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Returns a list of all pending aggregation requests.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_pending_aggregation_requests(
-  Limit = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/configservice/describe_pending_aggregation_requests.html} for full documentation.
+}
 \keyword{internal}

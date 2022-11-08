@@ -4,8 +4,11 @@
 \alias{cognitoidentity_get_credentials_for_identity}
 \title{Returns credentials for the provided identity ID}
 \usage{
-cognitoidentity_get_credentials_for_identity(IdentityId, Logins,
-  CustomRoleArn)
+cognitoidentity_get_credentials_for_identity(
+  IdentityId,
+  Logins = NULL,
+  CustomRoleArn = NULL
+)
 }
 \arguments{
 \item{IdentityId}{[required] A unique identifier in the format REGION:GUID.}
@@ -18,7 +21,7 @@ Logins should not be specified when trying to get credentials for an
 unauthenticated identity.
 
 The Logins parameter is required when using identities associated with
-external identity providers such as FaceBook. For examples of \code{Logins}
+external identity providers such as Facebook. For examples of \code{Logins}
 maps, see the code examples in the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html}{External Identity Providers}
 section of the Amazon Cognito Developer Guide.}
 
@@ -27,37 +30,9 @@ roles were received in the token from the identity provider. For
 example, a SAML-based identity provider. This parameter is optional for
 identity providers that do not support role customization.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  IdentityId = "string",
-  Credentials = list(
-    AccessKeyId = "string",
-    SecretKey = "string",
-    SessionToken = "string",
-    Expiration = as.POSIXct(
-      "2015-01-01"
-    )
-  )
-)
-}
-}
 \description{
-Returns credentials for the provided identity ID. Any provided logins
-will be validated against supported login providers. If the token is for
-cognito-identity.amazonaws.com, it will be passed through to AWS
-Security Token Service with the appropriate role for the token.
+Returns credentials for the provided identity ID. Any provided logins will be validated against supported login providers. If the token is for cognito-identity.amazonaws.com, it will be passed through to AWS Security Token Service with the appropriate role for the token.
 
-This is a public API. You do not need any credentials to call this API.
+See \url{https://paws-r.github.io/docs/cognitoidentity/get_credentials_for_identity.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_credentials_for_identity(
-  IdentityId = "string",
-  Logins = list(
-    "string"
-  ),
-  CustomRoleArn = "string"
-)
-}
-}
-
 \keyword{internal}

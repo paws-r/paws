@@ -9,24 +9,9 @@ iam_delete_saml_provider(SAMLProviderArn)
 \arguments{
 \item{SAMLProviderArn}{[required] The Amazon Resource Name (ARN) of the SAML provider to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a SAML provider resource in IAM.
 
-Deleting the provider resource from IAM does not update any roles that
-reference the SAML provider resource's ARN as a principal in their trust
-policies. Any attempt to assume a role that references a non-existent
-provider resource ARN fails.
-
-This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
+See \url{https://paws-r.github.io/docs/iam/delete_saml_provider.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_saml_provider(
-  SAMLProviderArn = "string"
-)
-}
-}
-
 \keyword{internal}

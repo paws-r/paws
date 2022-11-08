@@ -5,8 +5,11 @@
 \title{Used to enable or disable the custom Mail-From domain configuration for
 an email identity}
 \usage{
-pinpointemail_put_email_identity_mail_from_attributes(EmailIdentity,
-  MailFromDomain, BehaviorOnMxFailure)
+pinpointemail_put_email_identity_mail_from_attributes(
+  EmailIdentity,
+  MailFromDomain = NULL,
+  BehaviorOnMxFailure = NULL
+)
 }
 \arguments{
 \item{EmailIdentity}{[required] The verified email identity that you want to set up the custom MAIL FROM
@@ -31,20 +34,9 @@ deliver the email.
 These behaviors are taken when the custom MAIL FROM domain configuration
 is in the \code{Pending}, \code{Failed}, and \code{TemporaryFailure} states.}
 }
-\value{
-An empty list.
-}
 \description{
-Used to enable or disable the custom Mail-From domain configuration for
-an email identity.
-}
-\section{Request syntax}{
-\preformatted{svc$put_email_identity_mail_from_attributes(
-  EmailIdentity = "string",
-  MailFromDomain = "string",
-  BehaviorOnMxFailure = "USE_DEFAULT_VALUE"|"REJECT_MESSAGE"
-)
-}
-}
+Used to enable or disable the custom Mail-From domain configuration for an email identity.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/put_email_identity_mail_from_attributes.html} for full documentation.
+}
 \keyword{internal}

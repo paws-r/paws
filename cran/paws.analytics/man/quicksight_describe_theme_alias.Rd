@@ -7,35 +7,16 @@
 quicksight_describe_theme_alias(AwsAccountId, ThemeId, AliasName)
 }
 \arguments{
-\item{AwsAccountId}{[required] The ID of the AWS account that contains the theme alias that you're
-describing.}
+\item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the theme alias
+that you're describing.}
 
 \item{ThemeId}{[required] The ID for the theme.}
 
 \item{AliasName}{[required] The name of the theme alias that you want to describe.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ThemeAlias = list(
-    Arn = "string",
-    AliasName = "string",
-    ThemeVersionNumber = 123
-  ),
-  Status = 123,
-  RequestId = "string"
-)
-}
-}
 \description{
 Describes the alias for a theme.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_theme_alias(
-  AwsAccountId = "string",
-  ThemeId = "string",
-  AliasName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/quicksight/describe_theme_alias.html} for full documentation.
+}
 \keyword{internal}

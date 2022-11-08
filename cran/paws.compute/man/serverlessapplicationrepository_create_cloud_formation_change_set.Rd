@@ -5,9 +5,20 @@
 \title{Creates an AWS CloudFormation change set for the given application}
 \usage{
 serverlessapplicationrepository_create_cloud_formation_change_set(
-  ApplicationId, Capabilities, ChangeSetName, ClientToken, Description,
-  NotificationArns, ParameterOverrides, ResourceTypes,
-  RollbackConfiguration, SemanticVersion, StackName, Tags, TemplateId)
+  ApplicationId,
+  Capabilities = NULL,
+  ChangeSetName = NULL,
+  ClientToken = NULL,
+  Description = NULL,
+  NotificationArns = NULL,
+  ParameterOverrides = NULL,
+  ResourceTypes = NULL,
+  RollbackConfiguration = NULL,
+  SemanticVersion = NULL,
+  StackName,
+  Tags = NULL,
+  TemplateId = NULL
+)
 }
 \arguments{
 \item{ApplicationId}{[required] The Amazon Resource Name (ARN) of the application.}
@@ -30,9 +41,8 @@ CAPABILITY_NAMED_IAM:
 and
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}.
 If the application contains IAM resources, you can specify either
-CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains
-IAM resources with custom names, you must specify
-CAPABILITY_NAMED_IAM.
+CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains IAM
+resources with custom names, you must specify CAPABILITY_NAMED_IAM.
 
 The following resources require you to specify
 CAPABILITY_RESOURCE_POLICY:
@@ -53,35 +63,35 @@ application before deploying. If you don't specify this parameter for an
 application that requires capabilities, the call will fail.}
 
 \item{ChangeSetName}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}}
+CloudFormation <span
+href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>}
 API.}
 
 \item{ClientToken}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}}
+CloudFormation <span
+href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>}
 API.}
 
 \item{Description}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}}
+CloudFormation <span
+href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>}
 API.}
 
 \item{NotificationArns}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}}
+CloudFormation <span
+href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>}
 API.}
 
 \item{ParameterOverrides}{A list of parameter values for the parameters of the application.}
 
 \item{ResourceTypes}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}}
+CloudFormation <span
+href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>}
 API.}
 
 \item{RollbackConfiguration}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}}
+CloudFormation <span
+href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>}
 API.}
 
 \item{SemanticVersion}{The semantic version of the application:
@@ -89,13 +99,13 @@ API.}
 \url{https://semver.org/}}
 
 \item{StackName}{[required] This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}}
+CloudFormation <span
+href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>}
 API.}
 
 \item{Tags}{This property corresponds to the parameter of the same name for the \emph{AWS
-CloudFormation
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}}
+CloudFormation <span
+href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>}
 API.}
 
 \item{TemplateId}{The UUID returned by CreateCloudFormationTemplate.
@@ -103,59 +113,9 @@ API.}
 Pattern:
 [0-9a-fA-F]\{8\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{4\}\\-[0-9a-fA-F]\{12\}}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationId = "string",
-  ChangeSetId = "string",
-  SemanticVersion = "string",
-  StackId = "string"
-)
-}
-}
 \description{
 Creates an AWS CloudFormation change set for the given application.
-}
-\section{Request syntax}{
-\preformatted{svc$create_cloud_formation_change_set(
-  ApplicationId = "string",
-  Capabilities = list(
-    "string"
-  ),
-  ChangeSetName = "string",
-  ClientToken = "string",
-  Description = "string",
-  NotificationArns = list(
-    "string"
-  ),
-  ParameterOverrides = list(
-    list(
-      Name = "string",
-      Value = "string"
-    )
-  ),
-  ResourceTypes = list(
-    "string"
-  ),
-  RollbackConfiguration = list(
-    MonitoringTimeInMinutes = 123,
-    RollbackTriggers = list(
-      list(
-        Arn = "string",
-        Type = "string"
-      )
-    )
-  ),
-  SemanticVersion = "string",
-  StackName = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  TemplateId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/create_cloud_formation_change_set.html} for full documentation.
+}
 \keyword{internal}

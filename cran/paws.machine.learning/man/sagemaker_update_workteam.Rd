@@ -4,8 +4,12 @@
 \alias{sagemaker_update_workteam}
 \title{Updates an existing work team with new member definitions or description}
 \usage{
-sagemaker_update_workteam(WorkteamName, MemberDefinitions, Description,
-  NotificationConfiguration)
+sagemaker_update_workteam(
+  WorkteamName,
+  MemberDefinitions = NULL,
+  Description = NULL,
+  NotificationConfiguration = NULL
+)
 }
 \arguments{
 \item{WorkteamName}{[required] The name of the work team to update.}
@@ -25,7 +29,7 @@ create a workforce. All of the \code{CognitoMemberDefinition} objects that
 make up the member definition must have the same \code{ClientId} and
 \code{UserPool} values. To add a Amazon Cognito user group to an existing
 worker pool, see Adding groups to a User Pool. For more information
-about user pools, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html}{Amazon Cognito User Pools}.
+about user pools, see Amazon Cognito User Pools.
 
 For workforces created using your own OIDC IdP, specify the user groups
 that you want to include in your private work team in
@@ -39,71 +43,9 @@ with the work team you update.}
 
 \item{NotificationConfiguration}{Configures SNS topic notifications for available or expiring work items}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Workteam = list(
-    WorkteamName = "string",
-    MemberDefinitions = list(
-      list(
-        CognitoMemberDefinition = list(
-          UserPool = "string",
-          UserGroup = "string",
-          ClientId = "string"
-        ),
-        OidcMemberDefinition = list(
-          Groups = list(
-            "string"
-          )
-        )
-      )
-    ),
-    WorkteamArn = "string",
-    WorkforceArn = "string",
-    ProductListingIds = list(
-      "string"
-    ),
-    Description = "string",
-    SubDomain = "string",
-    CreateDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    LastUpdatedDate = as.POSIXct(
-      "2015-01-01"
-    ),
-    NotificationConfiguration = list(
-      NotificationTopicArn = "string"
-    )
-  )
-)
-}
-}
 \description{
-Updates an existing work team with new member definitions or
-description.
-}
-\section{Request syntax}{
-\preformatted{svc$update_workteam(
-  WorkteamName = "string",
-  MemberDefinitions = list(
-    list(
-      CognitoMemberDefinition = list(
-        UserPool = "string",
-        UserGroup = "string",
-        ClientId = "string"
-      ),
-      OidcMemberDefinition = list(
-        Groups = list(
-          "string"
-        )
-      )
-    )
-  ),
-  Description = "string",
-  NotificationConfiguration = list(
-    NotificationTopicArn = "string"
-  )
-)
-}
-}
+Updates an existing work team with new member definitions or description.
 
+See \url{https://paws-r.github.io/docs/sagemaker/update_workteam.html} for full documentation.
+}
 \keyword{internal}

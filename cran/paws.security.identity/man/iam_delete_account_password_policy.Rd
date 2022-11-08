@@ -2,23 +2,13 @@
 % Please edit documentation in R/iam_operations.R
 \name{iam_delete_account_password_policy}
 \alias{iam_delete_account_password_policy}
-\title{Deletes the password policy for the AWS account}
+\title{Deletes the password policy for the Amazon Web Services account}
 \usage{
 iam_delete_account_password_policy()
 }
-\value{
-An empty list.
-}
 \description{
-Deletes the password policy for the AWS account. There are no
-parameters.
-}
-\examples{
-\dontrun{
-# The following command removes the password policy from the current AWS
-# account:
-svc$delete_account_password_policy()
-}
+Deletes the password policy for the Amazon Web Services account. There are no parameters.
 
+See \url{https://paws-r.github.io/docs/iam/delete_account_password_policy.html} for full documentation.
 }
 \keyword{internal}

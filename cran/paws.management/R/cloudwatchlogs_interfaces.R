@@ -193,7 +193,7 @@ NULL
 
 .cloudwatchlogs$describe_metric_filters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(metricFilters = structure(list(structure(list(filterName = structure(logical(0), tags = list(type = "string")), filterPattern = structure(logical(0), tags = list(type = "string")), metricTransformations = structure(list(structure(list(metricName = structure(logical(0), tags = list(type = "string")), metricNamespace = structure(logical(0), tags = list(type = "string")), metricValue = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "long")), logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(metricFilters = structure(list(structure(list(filterName = structure(logical(0), tags = list(type = "string")), filterPattern = structure(logical(0), tags = list(type = "string")), metricTransformations = structure(list(structure(list(metricName = structure(logical(0), tags = list(type = "string")), metricNamespace = structure(logical(0), tags = list(type = "string")), metricValue = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "double")), dimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), creationTime = structure(logical(0), tags = list(type = "long")), logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -341,7 +341,7 @@ NULL
 
 .cloudwatchlogs$put_destination_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(destinationName = structure(logical(0), tags = list(type = "string")), accessPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(destinationName = structure(logical(0), tags = list(type = "string")), accessPolicy = structure(logical(0), tags = list(type = "string")), forceUpdate = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -363,7 +363,7 @@ NULL
 
 .cloudwatchlogs$put_metric_filter_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), filterName = structure(logical(0), tags = list(type = "string")), filterPattern = structure(logical(0), tags = list(type = "string")), metricTransformations = structure(list(structure(list(metricName = structure(logical(0), tags = list(type = "string")), metricNamespace = structure(logical(0), tags = list(type = "string")), metricValue = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), filterName = structure(logical(0), tags = list(type = "string")), filterPattern = structure(logical(0), tags = list(type = "string")), metricTransformations = structure(list(structure(list(metricName = structure(logical(0), tags = list(type = "string")), metricNamespace = structure(logical(0), tags = list(type = "string")), metricValue = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "double")), dimensions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

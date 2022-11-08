@@ -6,8 +6,11 @@
 specified Convertible Reserved Instances for a new Convertible Reserved
 Instance}
 \usage{
-ec2_get_reserved_instances_exchange_quote(DryRun, ReservedInstanceIds,
-  TargetConfigurations)
+ec2_get_reserved_instances_exchange_quote(
+  DryRun = NULL,
+  ReservedInstanceIds,
+  TargetConfigurations = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -20,73 +23,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TargetConfigurations}{The configuration of the target Convertible Reserved Instance to
 exchange for your current Convertible Reserved Instances.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CurrencyCode = "string",
-  IsValidExchange = TRUE|FALSE,
-  OutputReservedInstancesWillExpireAt = as.POSIXct(
-    "2015-01-01"
-  ),
-  PaymentDue = "string",
-  ReservedInstanceValueRollup = list(
-    HourlyPrice = "string",
-    RemainingTotalValue = "string",
-    RemainingUpfrontValue = "string"
-  ),
-  ReservedInstanceValueSet = list(
-    list(
-      ReservationValue = list(
-        HourlyPrice = "string",
-        RemainingTotalValue = "string",
-        RemainingUpfrontValue = "string"
-      ),
-      ReservedInstanceId = "string"
-    )
-  ),
-  TargetConfigurationValueRollup = list(
-    HourlyPrice = "string",
-    RemainingTotalValue = "string",
-    RemainingUpfrontValue = "string"
-  ),
-  TargetConfigurationValueSet = list(
-    list(
-      ReservationValue = list(
-        HourlyPrice = "string",
-        RemainingTotalValue = "string",
-        RemainingUpfrontValue = "string"
-      ),
-      TargetConfiguration = list(
-        InstanceCount = 123,
-        OfferingId = "string"
-      )
-    )
-  ),
-  ValidationFailureReason = "string"
-)
-}
-}
 \description{
-Returns a quote and exchange information for exchanging one or more
-specified Convertible Reserved Instances for a new Convertible Reserved
-Instance. If the exchange cannot be performed, the reason is returned in
-the response. Use
-\code{\link[=ec2_accept_reserved_instances_exchange_quote]{accept_reserved_instances_exchange_quote}}
-to perform the exchange.
-}
-\section{Request syntax}{
-\preformatted{svc$get_reserved_instances_exchange_quote(
-  DryRun = TRUE|FALSE,
-  ReservedInstanceIds = list(
-    "string"
-  ),
-  TargetConfigurations = list(
-    list(
-      InstanceCount = 123,
-      OfferingId = "string"
-    )
-  )
-)
-}
-}
+Returns a quote and exchange information for exchanging one or more specified Convertible Reserved Instances for a new Convertible Reserved Instance. If the exchange cannot be performed, the reason is returned in the response. Use \code{\link[=ec2_accept_reserved_instances_exchange_quote]{accept_reserved_instances_exchange_quote}} to perform the exchange.
 
+See \url{https://paws-r.github.io/docs/ec2/get_reserved_instances_exchange_quote.html} for full documentation.
+}
 \keyword{internal}

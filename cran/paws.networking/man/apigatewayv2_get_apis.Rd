@@ -4,7 +4,7 @@
 \alias{apigatewayv2_get_apis}
 \title{Gets a collection of Api resources}
 \usage{
-apigatewayv2_get_apis(MaxResults, NextToken)
+apigatewayv2_get_apis(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{MaxResults}{The maximum number of elements to be returned for this resource.}
@@ -12,64 +12,9 @@ apigatewayv2_get_apis(MaxResults, NextToken)
 \item{NextToken}{The next page of elements from this collection. Not valid for the last
 element of the collection.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Items = list(
-    list(
-      ApiEndpoint = "string",
-      ApiGatewayManaged = TRUE|FALSE,
-      ApiId = "string",
-      ApiKeySelectionExpression = "string",
-      CorsConfiguration = list(
-        AllowCredentials = TRUE|FALSE,
-        AllowHeaders = list(
-          "string"
-        ),
-        AllowMethods = list(
-          "string"
-        ),
-        AllowOrigins = list(
-          "string"
-        ),
-        ExposeHeaders = list(
-          "string"
-        ),
-        MaxAge = 123
-      ),
-      CreatedDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Description = "string",
-      DisableSchemaValidation = TRUE|FALSE,
-      DisableExecuteApiEndpoint = TRUE|FALSE,
-      ImportInfo = list(
-        "string"
-      ),
-      Name = "string",
-      ProtocolType = "WEBSOCKET"|"HTTP",
-      RouteSelectionExpression = "string",
-      Tags = list(
-        "string"
-      ),
-      Version = "string",
-      Warnings = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets a collection of Api resources.
-}
-\section{Request syntax}{
-\preformatted{svc$get_apis(
-  MaxResults = "string",
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigatewayv2/get_apis.html} for full documentation.
+}
 \keyword{internal}

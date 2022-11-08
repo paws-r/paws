@@ -11,20 +11,9 @@ cognitoidentityprovider_delete_group(GroupName, UserPoolId)
 
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a group. Currently only groups with no members can be deleted.
+Deletes a group.
 
-Calling this action requires developer credentials.
+See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_group(
-  GroupName = "string",
-  UserPoolId = "string"
-)
-}
-}
-
 \keyword{internal}

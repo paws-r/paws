@@ -5,7 +5,7 @@
 \title{Returns information about the signing certificates associated with the
 specified IAM user}
 \usage{
-iam_list_signing_certificates(UserName, Marker, MaxItems)
+iam_list_signing_certificates(UserName = NULL, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{UserName}{The name of the IAM user whose signing certificates you want to examine.
@@ -29,55 +29,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Certificates = list(
-    list(
-      UserName = "string",
-      CertificateId = "string",
-      CertificateBody = "string",
-      Status = "Active"|"Inactive",
-      UploadDate = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Returns information about the signing certificates associated with the
-specified IAM user. If none exists, the operation returns an empty list.
+Returns information about the signing certificates associated with the specified IAM user. If none exists, the operation returns an empty list.
 
-Although each user is limited to a small number of signing certificates,
-you can still paginate the results using the \code{MaxItems} and \code{Marker}
-parameters.
-
-If the \code{UserName} field is not specified, the user name is determined
-implicitly based on the AWS access key ID used to sign the request for
-this API. This operation works for access keys under the AWS account.
-Consequently, you can use this operation to manage AWS account root user
-credentials even if the AWS account has no associated users.
-}
-\section{Request syntax}{
-\preformatted{svc$list_signing_certificates(
-  UserName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command lists the signing certificates for the IAM user
-# named Bob.
-svc$list_signing_certificates(
-  UserName = "Bob"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/list_signing_certificates.html} for full documentation.
 }
 \keyword{internal}

@@ -2,11 +2,16 @@
 % Please edit documentation in R/cloud9_operations.R
 \name{cloud9_describe_environment_memberships}
 \alias{cloud9_describe_environment_memberships}
-\title{Gets information about environment members for an AWS Cloud9 development
+\title{Gets information about environment members for an Cloud9 development
 environment}
 \usage{
-cloud9_describe_environment_memberships(userArn, environmentId,
-  permissions, nextToken, maxResults)
+cloud9_describe_environment_memberships(
+  userArn = NULL,
+  environmentId = NULL,
+  permissions = NULL,
+  nextToken = NULL,
+  maxResults = NULL
+)
 }
 \arguments{
 \item{userArn}{The Amazon Resource Name (ARN) of an individual environment member to
@@ -35,63 +40,9 @@ token that is returned, until no more next tokens are returned.}
 
 \item{maxResults}{The maximum number of environment members to get information about.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  memberships = list(
-    list(
-      permissions = "owner"|"read-write"|"read-only",
-      userId = "string",
-      userArn = "string",
-      environmentId = "string",
-      lastAccess = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Gets information about environment members for an AWS Cloud9 development
-environment.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_environment_memberships(
-  userArn = "string",
-  environmentId = "string",
-  permissions = list(
-    "owner"|"read-write"|"read-only"
-  ),
-  nextToken = "string",
-  maxResults = 123
-)
-}
-}
+Gets information about environment members for an Cloud9 development environment.
 
-\examples{
-\dontrun{
-# The following example gets information about all of the environment
-# members for the specified AWS Cloud9 development environment.
-svc$describe_environment_memberships(
-  environmentId = "8d9967e2f0624182b74e7690ad69ebEX"
-)
-
-# The following example gets information about the owner of the specified
-# AWS Cloud9 development environment.
-svc$describe_environment_memberships(
-  environmentId = "8d9967e2f0624182b74e7690ad69ebEX",
-  permissions = list(
-    "owner"
-  )
-)
-
-# The following example gets AWS Cloud9 development environment membership
-# information for the specified user.
-svc$describe_environment_memberships(
-  userArn = "arn:aws:iam::123456789012:user/MyDemoUser"
-)
-}
-
+See \url{https://paws-r.github.io/docs/cloud9/describe_environment_memberships.html} for full documentation.
 }
 \keyword{internal}

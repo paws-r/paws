@@ -4,7 +4,7 @@
 \alias{kafka_list_configuration_revisions}
 \title{Returns a list of all the MSK configurations in this Region}
 \usage{
-kafka_list_configuration_revisions(Arn, MaxResults, NextToken)
+kafka_list_configuration_revisions(Arn, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
 \item{Arn}{[required] The Amazon Resource Name (ARN) that uniquely identifies an MSK
@@ -17,31 +17,9 @@ more results, the response includes a NextToken parameter.}
 truncated, the call returns NextToken in the response. To get the next
 batch, provide this token in your next request.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  Revisions = list(
-    list(
-      CreationTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      Description = "string",
-      Revision = 123
-    )
-  )
-)
-}
-}
 \description{
 Returns a list of all the MSK configurations in this Region.
-}
-\section{Request syntax}{
-\preformatted{svc$list_configuration_revisions(
-  Arn = "string",
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/kafka/list_configuration_revisions.html} for full documentation.
+}
 \keyword{internal}

@@ -5,34 +5,24 @@
 \title{This API is in preview release for Amazon Connect and is subject to
 change}
 \usage{
-connect_disassociate_instance_storage_config(InstanceId, AssociationId,
-  ResourceType)
+connect_disassociate_instance_storage_config(
+  InstanceId,
+  AssociationId,
+  ResourceType
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
 \item{AssociationId}{[required] The existing association identifier that uniquely identifies the
 resource type and storage config for the given instance ID.}
 
 \item{ResourceType}{[required] A valid resource type.}
 }
-\value{
-An empty list.
-}
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+This API is in preview release for Amazon Connect and is subject to change.
 
-Removes the storage type configurations for the specified resource type
-and association ID.
+See \url{https://paws-r.github.io/docs/connect/disassociate_instance_storage_config.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$disassociate_instance_storage_config(
-  InstanceId = "string",
-  AssociationId = "string",
-  ResourceType = "CHAT_TRANSCRIPTS"|"CALL_RECORDINGS"|"SCHEDULED_REPORTS"|"MEDIA_STREAMS"|"CONTACT_TRACE_RECORDS"|"AGENT_EVENTS"
-)
-}
-}
-
 \keyword{internal}

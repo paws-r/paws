@@ -3,43 +3,18 @@
 #' @include batch_service.R
 NULL
 
-#' Cancels a job in an AWS Batch job queue
+#' Cancels a job in an Batch job queue
 #'
 #' @description
-#' Cancels a job in an AWS Batch job queue. Jobs that are in the
-#' `SUBMITTED`, `PENDING`, or `RUNNABLE` state are canceled. Jobs that have
-#' progressed to `STARTING` or `RUNNING` are not canceled (but the API
-#' operation still succeeds, even if no job is canceled); these jobs must
-#' be terminated with the [`terminate_job`][batch_terminate_job] operation.
+#' Cancels a job in an Batch job queue. Jobs that are in the `SUBMITTED`, `PENDING`, or `RUNNABLE` state are canceled. Jobs that have progressed to `STARTING` or `RUNNING` aren't canceled, but the API operation still succeeds, even if no job is canceled. These jobs must be terminated with the [`terminate_job`][batch_terminate_job] operation.
 #'
-#' @usage
-#' batch_cancel_job(jobId, reason)
+#' See [https://paws-r.github.io/docs/batch/cancel_job.html](https://paws-r.github.io/docs/batch/cancel_job.html) for full documentation.
 #'
-#' @param jobId &#91;required&#93; The AWS Batch job ID of the job to cancel.
+#' @param jobId &#91;required&#93; The Batch job ID of the job to cancel.
 #' @param reason &#91;required&#93; A message to attach to the job that explains the reason for canceling
 #' it. This message is returned by future
 #' [`describe_jobs`][batch_describe_jobs] operations on the job. This
-#' message is also recorded in the AWS Batch activity logs.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$cancel_job(
-#'   jobId = "string",
-#'   reason = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example cancels a job with the specified job ID.
-#' svc$cancel_job(
-#'   jobId = "1d828f65-7a4d-42e8-996d-3b900ed59dc4",
-#'   reason = "Cancelling job."
-#' )
-#' }
+#' message is also recorded in the Batch activity logs.
 #'
 #' @keywords internal
 #'
@@ -61,259 +36,95 @@ batch_cancel_job <- function(jobId, reason) {
 }
 .batch$operations$cancel_job <- batch_cancel_job
 
-#' Creates an AWS Batch compute environment
+#' Creates an Batch compute environment
 #'
 #' @description
-#' Creates an AWS Batch compute environment. You can create `MANAGED` or
-#' `UNMANAGED` compute environments. `MANAGED` compute environments can use
-#' Amazon EC2 or AWS Fargate resources. `UNMANAGED` compute environments
-#' can only use EC2 resources.
-#' 
-#' In a managed compute environment, AWS Batch manages the capacity and
-#' instance types of the compute resources within the environment. This is
-#' based on the compute resource specification that you define or the
-#' [launch
-#' template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
-#' that you specify when you create the compute environment. You can choose
-#' either to use EC2 On-Demand Instances and EC2 Spot Instances, or to use
-#' Fargate and Fargate Spot capacity in your managed compute environment.
-#' You can optionally set a maximum price so that Spot Instances only
-#' launch when the Spot Instance price is less than a specified percentage
-#' of the On-Demand price.
-#' 
-#' Multi-node parallel jobs are not supported on Spot Instances.
-#' 
-#' In an unmanaged compute environment, you can manage your own EC2 compute
-#' resources and have a lot of flexibility with how you configure your
-#' compute resources. For example, you can use custom AMI. However, you
-#' need to verify that your AMI meets the Amazon ECS container instance AMI
-#' specification. For more information, see [container instance
-#' AMIs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
-#' the *Amazon Elastic Container Service Developer Guide*. After you have
-#' created your unmanaged compute environment, you can use the
-#' [`describe_compute_environments`][batch_describe_compute_environments]
-#' operation to find the Amazon ECS cluster that's associated with it.
-#' Then, manually launch your container instances into that Amazon ECS
-#' cluster. For more information, see [Launching an Amazon ECS container
-#' instance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
-#' 
-#' AWS Batch doesn't upgrade the AMIs in a compute environment after it's
-#' created. For example, it doesn't update the AMIs when a newer version of
-#' the Amazon ECS-optimized AMI is available. Therefore, you're responsible
-#' for the management of the guest operating system (including updates and
-#' security patches) and any additional application software or utilities
-#' that you install on the compute resources. To use a new AMI for your AWS
-#' Batch jobs, complete these steps:
-#' 
-#' 1.  Create a new compute environment with the new AMI.
-#' 
-#' 2.  Add the compute environment to an existing job queue.
-#' 
-#' 3.  Remove the earlier compute environment from your job queue.
-#' 
-#' 4.  Delete the earlier compute environment.
+#' Creates an Batch compute environment. You can create `MANAGED` or `UNMANAGED` compute environments. `MANAGED` compute environments can use Amazon EC2 or Fargate resources. `UNMANAGED` compute environments can only use EC2 resources.
 #'
-#' @usage
-#' batch_create_compute_environment(computeEnvironmentName, type, state,
-#'   computeResources, serviceRole, tags)
+#' See [https://paws-r.github.io/docs/batch/create_compute_environment.html](https://paws-r.github.io/docs/batch/create_compute_environment.html) for full documentation.
 #'
-#' @param computeEnvironmentName &#91;required&#93; The name for your compute environment. Up to 128 letters (uppercase and
-#' lowercase), numbers, hyphens, and underscores are allowed.
+#' @param computeEnvironmentName &#91;required&#93; The name for your compute environment. It can be up to 128 letters long.
+#' It can contain uppercase and lowercase letters, numbers, hyphens (-),
+#' and underscores (_).
 #' @param type &#91;required&#93; The type of the compute environment: `MANAGED` or `UNMANAGED`. For more
 #' information, see [Compute
 #' Environments](https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
-#' in the *AWS Batch User Guide*.
+#' in the *Batch User Guide*.
 #' @param state The state of the compute environment. If the state is `ENABLED`, then
 #' the compute environment accepts jobs from a queue and can scale out
 #' automatically based on queues.
 #' 
-#' If the state is `ENABLED`, then the AWS Batch scheduler can attempt to
-#' place jobs from an associated job queue on the compute resources within
-#' the environment. If the compute environment is managed, then it can
-#' scale its instances out or in automatically, based on the job queue
-#' demand.
+#' If the state is `ENABLED`, then the Batch scheduler can attempt to place
+#' jobs from an associated job queue on the compute resources within the
+#' environment. If the compute environment is managed, then it can scale
+#' its instances out or in automatically, based on the job queue demand.
 #' 
-#' If the state is `DISABLED`, then the AWS Batch scheduler doesn't attempt
-#' to place jobs within the environment. Jobs in a `STARTING` or `RUNNING`
+#' If the state is `DISABLED`, then the Batch scheduler doesn't attempt to
+#' place jobs within the environment. Jobs in a `STARTING` or `RUNNING`
 #' state continue to progress normally. Managed compute environments in the
 #' `DISABLED` state don't scale out. However, they scale in to `minvCpus`
 #' value after instances become idle.
+#' @param unmanagedvCpus The maximum number of vCPUs for an unmanaged compute environment. This
+#' parameter is only used for fair share scheduling to reserve vCPU
+#' capacity for new share identifiers. If this parameter isn't provided for
+#' a fair share job queue, no vCPU capacity is reserved.
+#' 
+#' This parameter is only supported when the `type` parameter is set to
+#' `UNMANAGED`.
 #' @param computeResources Details about the compute resources managed by the compute environment.
 #' This parameter is required for managed compute environments. For more
 #' information, see [Compute
 #' Environments](https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
-#' in the *AWS Batch User Guide*.
-#' @param serviceRole &#91;required&#93; The full Amazon Resource Name (ARN) of the IAM role that allows AWS
-#' Batch to make calls to other AWS services on your behalf. For more
-#' information, see [AWS Batch service IAM
+#' in the *Batch User Guide*.
+#' @param serviceRole The full Amazon Resource Name (ARN) of the IAM role that allows Batch to
+#' make calls to other Amazon Web Services services on your behalf. For
+#' more information, see [Batch service IAM
 #' role](https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html)
-#' in the *AWS Batch User Guide*.
+#' in the *Batch User Guide*.
 #' 
-#' If your specified role has a path other than `/`, then you must either
-#' specify the full role ARN (this is recommended) or prefix the role name
-#' with the path.
+#' If your account already created the Batch service-linked role, that role
+#' is used by default for your compute environment unless you specify a
+#' different role here. If the Batch service-linked role doesn't exist in
+#' your account, and no role is specified here, the service attempts to
+#' create the Batch service-linked role in your account.
 #' 
-#' Depending on how you created your AWS Batch service role, its ARN might
+#' If your specified role has a path other than `/`, then you must specify
+#' either the full role ARN (recommended) or prefix the role name with the
+#' path. For example, if a role with the name `bar` has a path of `/foo/`
+#' then you would specify `/foo/bar` as the role name. For more
+#' information, see [Friendly names and
+#' paths](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names)
+#' in the *IAM User Guide*.
+#' 
+#' Depending on how you created your Batch service role, its ARN might
 #' contain the `service-role` path prefix. When you only specify the name
-#' of the service role, AWS Batch assumes that your ARN doesn't use the
+#' of the service role, Batch assumes that your ARN doesn't use the
 #' `service-role` path prefix. Because of this, we recommend that you
 #' specify the full ARN of your service role when you create compute
 #' environments.
 #' @param tags The tags that you apply to the compute environment to help you
 #' categorize and organize your resources. Each tag consists of a key and
-#' an optional value. For more information, see [Tagging AWS
+#' an optional value. For more information, see [Tagging Amazon Web
+#' Services
 #' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
-#' in *AWS General Reference*.
+#' in *Amazon Web Services General Reference*.
 #' 
 #' These tags can be updated or removed using the
 #' [`tag_resource`][batch_tag_resource] and
 #' [`untag_resource`][batch_untag_resource] API operations. These tags
 #' don't propagate to the underlying compute resources.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   computeEnvironmentName = "string",
-#'   computeEnvironmentArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_compute_environment(
-#'   computeEnvironmentName = "string",
-#'   type = "MANAGED"|"UNMANAGED",
-#'   state = "ENABLED"|"DISABLED",
-#'   computeResources = list(
-#'     type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT",
-#'     allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED",
-#'     minvCpus = 123,
-#'     maxvCpus = 123,
-#'     desiredvCpus = 123,
-#'     instanceTypes = list(
-#'       "string"
-#'     ),
-#'     imageId = "string",
-#'     subnets = list(
-#'       "string"
-#'     ),
-#'     securityGroupIds = list(
-#'       "string"
-#'     ),
-#'     ec2KeyPair = "string",
-#'     instanceRole = "string",
-#'     tags = list(
-#'       "string"
-#'     ),
-#'     placementGroup = "string",
-#'     bidPercentage = 123,
-#'     spotIamFleetRole = "string",
-#'     launchTemplate = list(
-#'       launchTemplateId = "string",
-#'       launchTemplateName = "string",
-#'       version = "string"
-#'     ),
-#'     ec2Configuration = list(
-#'       list(
-#'         imageType = "string",
-#'         imageIdOverride = "string"
-#'       )
-#'     )
-#'   ),
-#'   serviceRole = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example creates a managed compute environment with specific C4
-#' # instance types that are launched on demand. The compute environment is
-#' # called C4OnDemand.
-#' svc$create_compute_environment(
-#'   type = "MANAGED",
-#'   computeEnvironmentName = "C4OnDemand",
-#'   computeResources = list(
-#'     type = "EC2",
-#'     desiredvCpus = 48L,
-#'     ec2KeyPair = "id_rsa",
-#'     instanceRole = "ecsInstanceRole",
-#'     instanceTypes = list(
-#'       "c4.large",
-#'       "c4.xlarge",
-#'       "c4.2xlarge",
-#'       "c4.4xlarge",
-#'       "c4.8xlarge"
-#'     ),
-#'     maxvCpus = 128L,
-#'     minvCpus = 0L,
-#'     securityGroupIds = list(
-#'       "sg-cf5093b2"
-#'     ),
-#'     subnets = list(
-#'       "subnet-220c0e0a",
-#'       "subnet-1a95556d",
-#'       "subnet-978f6dce"
-#'     ),
-#'     tags = list(
-#'       Name = "Batch Instance - C4OnDemand"
-#'     )
-#'   ),
-#'   serviceRole = "arn:aws:iam::012345678910:role/AWSBatchServiceRole",
-#'   state = "ENABLED"
-#' )
-#' 
-#' # This example creates a managed compute environment with the M4 instance
-#' # type that is launched when the Spot bid price is at or below 20% of the
-#' # On-Demand price for the instance type. The compute environment is called
-#' # M4Spot.
-#' svc$create_compute_environment(
-#'   type = "MANAGED",
-#'   computeEnvironmentName = "M4Spot",
-#'   computeResources = list(
-#'     type = "SPOT",
-#'     bidPercentage = 20L,
-#'     desiredvCpus = 4L,
-#'     ec2KeyPair = "id_rsa",
-#'     instanceRole = "ecsInstanceRole",
-#'     instanceTypes = list(
-#'       "m4"
-#'     ),
-#'     maxvCpus = 128L,
-#'     minvCpus = 0L,
-#'     securityGroupIds = list(
-#'       "sg-cf5093b2"
-#'     ),
-#'     spotIamFleetRole = "arn:aws:iam::012345678910:role/aws-ec2-spot-fleet-role",
-#'     subnets = list(
-#'       "subnet-220c0e0a",
-#'       "subnet-1a95556d",
-#'       "subnet-978f6dce"
-#'     ),
-#'     tags = list(
-#'       Name = "Batch Instance - M4Spot"
-#'     )
-#'   ),
-#'   serviceRole = "arn:aws:iam::012345678910:role/AWSBatchServiceRole",
-#'   state = "ENABLED"
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname batch_create_compute_environment
-batch_create_compute_environment <- function(computeEnvironmentName, type, state = NULL, computeResources = NULL, serviceRole, tags = NULL) {
+batch_create_compute_environment <- function(computeEnvironmentName, type, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateComputeEnvironment",
     http_method = "POST",
     http_path = "/v1/createcomputeenvironment",
     paginator = list()
   )
-  input <- .batch$create_compute_environment_input(computeEnvironmentName = computeEnvironmentName, type = type, state = state, computeResources = computeResources, serviceRole = serviceRole, tags = tags)
+  input <- .batch$create_compute_environment_input(computeEnvironmentName = computeEnvironmentName, type = type, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, tags = tags)
   output <- .batch$create_compute_environment_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -323,28 +134,27 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 }
 .batch$operations$create_compute_environment <- batch_create_compute_environment
 
-#' Creates an AWS Batch job queue
+#' Creates an Batch job queue
 #'
 #' @description
-#' Creates an AWS Batch job queue. When you create a job queue, you
-#' associate one or more compute environments to the queue and assign an
-#' order of preference for the compute environments.
-#' 
-#' You also set a priority to the job queue that determines the order in
-#' which the AWS Batch scheduler places jobs onto its associated compute
-#' environments. For example, if a compute environment is associated with
-#' more than one job queue, the job queue with a higher priority is given
-#' preference for scheduling jobs to that compute environment.
+#' Creates an Batch job queue. When you create a job queue, you associate one or more compute environments to the queue and assign an order of preference for the compute environments.
 #'
-#' @usage
-#' batch_create_job_queue(jobQueueName, state, priority,
-#'   computeEnvironmentOrder, tags)
+#' See [https://paws-r.github.io/docs/batch/create_job_queue.html](https://paws-r.github.io/docs/batch/create_job_queue.html) for full documentation.
 #'
-#' @param jobQueueName &#91;required&#93; The name of the job queue. Up to 128 letters (uppercase and lowercase),
-#' numbers, and underscores are allowed.
+#' @param jobQueueName &#91;required&#93; The name of the job queue. It can be up to 128 letters long. It can
+#' contain uppercase and lowercase letters, numbers, hyphens (-), and
+#' underscores (_).
 #' @param state The state of the job queue. If the job queue state is `ENABLED`, it is
 #' able to accept jobs. If the job queue state is `DISABLED`, new jobs
 #' can't be added to the queue, but jobs already in the queue can finish.
+#' @param schedulingPolicyArn The Amazon Resource Name (ARN) of the fair share scheduling policy. If
+#' this parameter is specified, the job queue uses a fair share scheduling
+#' policy. If this parameter isn't specified, the job queue uses a first
+#' in, first out (FIFO) scheduling policy. After a job queue is created,
+#' you can replace but can't remove the fair share scheduling policy. The
+#' format is `aws:Partition:batch:Region:Account:scheduling-policy/Name `.
+#' An example is
+#' `aws:aws:batch:us-west-2:012345678910:scheduling-policy/MySchedulingPolicy`.
 #' @param priority &#91;required&#93; The priority of the job queue. Job queues with a higher priority (or a
 #' higher integer value for the `priority` parameter) are evaluated first
 #' when associated with the same compute environment. Priority is
@@ -352,10 +162,10 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #' value of `10` is given scheduling preference over a job queue with a
 #' priority value of `1`. All of the compute environments must be either
 #' EC2 (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`); EC2 and
-#' Fargate compute environments cannot be mixed.
+#' Fargate compute environments can't be mixed.
 #' @param computeEnvironmentOrder &#91;required&#93; The set of compute environments mapped to a job queue and their order
 #' relative to each other. The job scheduler uses this parameter to
-#' determine which compute environment should run a specific job. Compute
+#' determine which compute environment runs a specific job. Compute
 #' environments must be in the `VALID` state before you can associate them
 #' with a job queue. You can associate up to three compute environments
 #' with a job queue. All of the compute environments must be either EC2
@@ -363,88 +173,25 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #' Fargate compute environments can't be mixed.
 #' 
 #' All compute environments that are associated with a job queue must share
-#' the same architecture. AWS Batch doesn't support mixing compute
-#' environment architecture types in a single job queue.
+#' the same architecture. Batch doesn't support mixing compute environment
+#' architecture types in a single job queue.
 #' @param tags The tags that you apply to the job queue to help you categorize and
 #' organize your resources. Each tag consists of a key and an optional
-#' value. For more information, see [Tagging your AWS Batch
+#' value. For more information, see [Tagging your Batch
 #' resources](https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html)
-#' in *AWS Batch User Guide*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   jobQueueName = "string",
-#'   jobQueueArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_job_queue(
-#'   jobQueueName = "string",
-#'   state = "ENABLED"|"DISABLED",
-#'   priority = 123,
-#'   computeEnvironmentOrder = list(
-#'     list(
-#'       order = 123,
-#'       computeEnvironment = "string"
-#'     )
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example creates a job queue called LowPriority that uses the M4Spot
-#' # compute environment.
-#' svc$create_job_queue(
-#'   computeEnvironmentOrder = list(
-#'     list(
-#'       computeEnvironment = "M4Spot",
-#'       order = 1L
-#'     )
-#'   ),
-#'   jobQueueName = "LowPriority",
-#'   priority = 1L,
-#'   state = "ENABLED"
-#' )
-#' 
-#' # This example creates a job queue called HighPriority that uses the
-#' # C4OnDemand compute environment with an order of 1 and the M4Spot compute
-#' # environment with an order of 2.
-#' svc$create_job_queue(
-#'   computeEnvironmentOrder = list(
-#'     list(
-#'       computeEnvironment = "C4OnDemand",
-#'       order = 1L
-#'     ),
-#'     list(
-#'       computeEnvironment = "M4Spot",
-#'       order = 2L
-#'     )
-#'   ),
-#'   jobQueueName = "HighPriority",
-#'   priority = 10L,
-#'   state = "ENABLED"
-#' )
-#' }
+#' in *Batch User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname batch_create_job_queue
-batch_create_job_queue <- function(jobQueueName, state = NULL, priority, computeEnvironmentOrder, tags = NULL) {
+batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyArn = NULL, priority, computeEnvironmentOrder, tags = NULL) {
   op <- new_operation(
     name = "CreateJobQueue",
     http_method = "POST",
     http_path = "/v1/createjobqueue",
     paginator = list()
   )
-  input <- .batch$create_job_queue_input(jobQueueName = jobQueueName, state = state, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, tags = tags)
+  input <- .batch$create_job_queue_input(jobQueueName = jobQueueName, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, tags = tags)
   output <- .batch$create_job_queue_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -454,44 +201,56 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, priority, compute
 }
 .batch$operations$create_job_queue <- batch_create_job_queue
 
-#' Deletes an AWS Batch compute environment
+#' Creates an Batch scheduling policy
 #'
 #' @description
-#' Deletes an AWS Batch compute environment.
-#' 
-#' Before you can delete a compute environment, you must set its state to
-#' `DISABLED` with the
-#' [`update_compute_environment`][batch_update_compute_environment] API
-#' operation and disassociate it from any job queues with the
-#' [`update_job_queue`][batch_update_job_queue] API operation. Compute
-#' environments that use AWS Fargate resources must terminate all active
-#' jobs on that compute environment before deleting the compute
-#' environment. If this isn't done, the compute environment will end up in
-#' an invalid state.
+#' Creates an Batch scheduling policy.
 #'
-#' @usage
-#' batch_delete_compute_environment(computeEnvironment)
+#' See [https://paws-r.github.io/docs/batch/create_scheduling_policy.html](https://paws-r.github.io/docs/batch/create_scheduling_policy.html) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the scheduling policy. It can be up to 128 letters long. It
+#' can contain uppercase and lowercase letters, numbers, hyphens (-), and
+#' underscores (_).
+#' @param fairsharePolicy The fair share policy of the scheduling policy.
+#' @param tags The tags that you apply to the scheduling policy to help you categorize
+#' and organize your resources. Each tag consists of a key and an optional
+#' value. For more information, see [Tagging Amazon Web Services
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in *Amazon Web Services General Reference*.
+#' 
+#' These tags can be updated or removed using the
+#' [`tag_resource`][batch_tag_resource] and
+#' [`untag_resource`][batch_untag_resource] API operations.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_create_scheduling_policy
+batch_create_scheduling_policy <- function(name, fairsharePolicy = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateSchedulingPolicy",
+    http_method = "POST",
+    http_path = "/v1/createschedulingpolicy",
+    paginator = list()
+  )
+  input <- .batch$create_scheduling_policy_input(name = name, fairsharePolicy = fairsharePolicy, tags = tags)
+  output <- .batch$create_scheduling_policy_output()
+  config <- get_config()
+  svc <- .batch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$create_scheduling_policy <- batch_create_scheduling_policy
+
+#' Deletes an Batch compute environment
+#'
+#' @description
+#' Deletes an Batch compute environment.
+#'
+#' See [https://paws-r.github.io/docs/batch/delete_compute_environment.html](https://paws-r.github.io/docs/batch/delete_compute_environment.html) for full documentation.
 #'
 #' @param computeEnvironment &#91;required&#93; The name or Amazon Resource Name (ARN) of the compute environment to
 #' delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_compute_environment(
-#'   computeEnvironment = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes the P2OnDemand compute environment.
-#' svc$delete_compute_environment(
-#'   computeEnvironment = "P2OnDemand"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -516,38 +275,12 @@ batch_delete_compute_environment <- function(computeEnvironment) {
 #' Deletes the specified job queue
 #'
 #' @description
-#' Deletes the specified job queue. You must first disable submissions for
-#' a queue with the [`update_job_queue`][batch_update_job_queue] operation.
-#' All jobs in the queue are eventually terminated when you delete a job
-#' queue. The jobs are terminated at a rate of about 16 jobs each second.
-#' 
-#' It's not necessary to disassociate compute environments from a queue
-#' before submitting a [`delete_job_queue`][batch_delete_job_queue]
-#' request.
+#' Deletes the specified job queue. You must first disable submissions for a queue with the [`update_job_queue`][batch_update_job_queue] operation. All jobs in the queue are eventually terminated when you delete a job queue. The jobs are terminated at a rate of about 16 jobs each second.
 #'
-#' @usage
-#' batch_delete_job_queue(jobQueue)
+#' See [https://paws-r.github.io/docs/batch/delete_job_queue.html](https://paws-r.github.io/docs/batch/delete_job_queue.html) for full documentation.
 #'
 #' @param jobQueue &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the queue to
 #' delete.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$delete_job_queue(
-#'   jobQueue = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deletes the GPGPU job queue.
-#' svc$delete_job_queue(
-#'   jobQueue = "GPGPU"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -569,35 +302,44 @@ batch_delete_job_queue <- function(jobQueue) {
 }
 .batch$operations$delete_job_queue <- batch_delete_job_queue
 
-#' Deregisters an AWS Batch job definition
+#' Deletes the specified scheduling policy
 #'
 #' @description
-#' Deregisters an AWS Batch job definition. Job definitions are permanently
-#' deleted after 180 days.
+#' Deletes the specified scheduling policy.
 #'
-#' @usage
-#' batch_deregister_job_definition(jobDefinition)
+#' See [https://paws-r.github.io/docs/batch/delete_scheduling_policy.html](https://paws-r.github.io/docs/batch/delete_scheduling_policy.html) for full documentation.
+#'
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the scheduling policy to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_delete_scheduling_policy
+batch_delete_scheduling_policy <- function(arn) {
+  op <- new_operation(
+    name = "DeleteSchedulingPolicy",
+    http_method = "POST",
+    http_path = "/v1/deleteschedulingpolicy",
+    paginator = list()
+  )
+  input <- .batch$delete_scheduling_policy_input(arn = arn)
+  output <- .batch$delete_scheduling_policy_output()
+  config <- get_config()
+  svc <- .batch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$delete_scheduling_policy <- batch_delete_scheduling_policy
+
+#' Deregisters an Batch job definition
+#'
+#' @description
+#' Deregisters an Batch job definition. Job definitions are permanently deleted after 180 days.
+#'
+#' See [https://paws-r.github.io/docs/batch/deregister_job_definition.html](https://paws-r.github.io/docs/batch/deregister_job_definition.html) for full documentation.
 #'
 #' @param jobDefinition &#91;required&#93; The name and revision (`name:revision`) or full Amazon Resource Name
 #' (ARN) of the job definition to deregister.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$deregister_job_definition(
-#'   jobDefinition = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example deregisters a job definition called sleep10.
-#' svc$deregister_job_definition(
-#'   jobDefinition = "sleep10"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -623,14 +365,8 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #'
 #' @description
 #' Describes one or more of your compute environments.
-#' 
-#' If you're using an unmanaged compute environment, you can use the
-#' `DescribeComputeEnvironment` operation to determine the `ecsClusterArn`
-#' that you should launch your Amazon ECS container instances into.
 #'
-#' @usage
-#' batch_describe_compute_environments(computeEnvironments, maxResults,
-#'   nextToken)
+#' See [https://paws-r.github.io/docs/batch/describe_compute_environments.html](https://paws-r.github.io/docs/batch/describe_compute_environments.html) for full documentation.
 #'
 #' @param computeEnvironments A list of up to 100 compute environment names or full Amazon Resource
 #' Name (ARN) entries.
@@ -657,86 +393,6 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #' retrieve the next items in a list and not for other programmatic
 #' purposes.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   computeEnvironments = list(
-#'     list(
-#'       computeEnvironmentName = "string",
-#'       computeEnvironmentArn = "string",
-#'       ecsClusterArn = "string",
-#'       tags = list(
-#'         "string"
-#'       ),
-#'       type = "MANAGED"|"UNMANAGED",
-#'       state = "ENABLED"|"DISABLED",
-#'       status = "CREATING"|"UPDATING"|"DELETING"|"DELETED"|"VALID"|"INVALID",
-#'       statusReason = "string",
-#'       computeResources = list(
-#'         type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT",
-#'         allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED",
-#'         minvCpus = 123,
-#'         maxvCpus = 123,
-#'         desiredvCpus = 123,
-#'         instanceTypes = list(
-#'           "string"
-#'         ),
-#'         imageId = "string",
-#'         subnets = list(
-#'           "string"
-#'         ),
-#'         securityGroupIds = list(
-#'           "string"
-#'         ),
-#'         ec2KeyPair = "string",
-#'         instanceRole = "string",
-#'         tags = list(
-#'           "string"
-#'         ),
-#'         placementGroup = "string",
-#'         bidPercentage = 123,
-#'         spotIamFleetRole = "string",
-#'         launchTemplate = list(
-#'           launchTemplateId = "string",
-#'           launchTemplateName = "string",
-#'           version = "string"
-#'         ),
-#'         ec2Configuration = list(
-#'           list(
-#'             imageType = "string",
-#'             imageIdOverride = "string"
-#'           )
-#'         )
-#'       ),
-#'       serviceRole = "string"
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_compute_environments(
-#'   computeEnvironments = list(
-#'     "string"
-#'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the P2OnDemand compute environment.
-#' svc$describe_compute_environments(
-#'   computeEnvironments = list(
-#'     "P2OnDemand"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname batch_describe_compute_environments
@@ -760,22 +416,21 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #' Describes a list of job definitions
 #'
 #' @description
-#' Describes a list of job definitions. You can specify a `status` (such as
-#' `ACTIVE`) to only return job definitions that match that status.
+#' Describes a list of job definitions. You can specify a `status` (such as `ACTIVE`) to only return job definitions that match that status.
 #'
-#' @usage
-#' batch_describe_job_definitions(jobDefinitions, maxResults,
-#'   jobDefinitionName, status, nextToken)
+#' See [https://paws-r.github.io/docs/batch/describe_job_definitions.html](https://paws-r.github.io/docs/batch/describe_job_definitions.html) for full documentation.
 #'
-#' @param jobDefinitions A list of up to 100 job definition names or full Amazon Resource Name
-#' (ARN) entries.
+#' @param jobDefinitions A list of up to 100 job definitions. Each entry in the list can either
+#' be an ARN in the format
+#' `arn:aws:batch:${Region}:${Account}:job-definition/${JobDefinitionName}:${Revision}`
+#' or a short version using the form `${JobDefinitionName}:${Revision}`.
 #' @param maxResults The maximum number of results returned by
 #' [`describe_job_definitions`][batch_describe_job_definitions] in
 #' paginated output. When this parameter is used,
 #' [`describe_job_definitions`][batch_describe_job_definitions] only
-#' returns `maxResults` results in a single page along with a `nextToken`
-#' response element. The remaining results of the initial request can be
-#' seen by sending another
+#' returns `maxResults` results in a single page and a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another
 #' [`describe_job_definitions`][batch_describe_job_definitions] request
 #' with the returned `nextToken` value. This value can be between 1 and
 #' 100. If this parameter isn't used, then
@@ -793,269 +448,6 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #' This token should be treated as an opaque identifier that's only used to
 #' retrieve the next items in a list and not for other programmatic
 #' purposes.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   jobDefinitions = list(
-#'     list(
-#'       jobDefinitionName = "string",
-#'       jobDefinitionArn = "string",
-#'       revision = 123,
-#'       status = "string",
-#'       type = "string",
-#'       parameters = list(
-#'         "string"
-#'       ),
-#'       retryStrategy = list(
-#'         attempts = 123,
-#'         evaluateOnExit = list(
-#'           list(
-#'             onStatusReason = "string",
-#'             onReason = "string",
-#'             onExitCode = "string",
-#'             action = "RETRY"|"EXIT"
-#'           )
-#'         )
-#'       ),
-#'       containerProperties = list(
-#'         image = "string",
-#'         vcpus = 123,
-#'         memory = 123,
-#'         command = list(
-#'           "string"
-#'         ),
-#'         jobRoleArn = "string",
-#'         executionRoleArn = "string",
-#'         volumes = list(
-#'           list(
-#'             host = list(
-#'               sourcePath = "string"
-#'             ),
-#'             name = "string"
-#'           )
-#'         ),
-#'         environment = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         mountPoints = list(
-#'           list(
-#'             containerPath = "string",
-#'             readOnly = TRUE|FALSE,
-#'             sourceVolume = "string"
-#'           )
-#'         ),
-#'         readonlyRootFilesystem = TRUE|FALSE,
-#'         privileged = TRUE|FALSE,
-#'         ulimits = list(
-#'           list(
-#'             hardLimit = 123,
-#'             name = "string",
-#'             softLimit = 123
-#'           )
-#'         ),
-#'         user = "string",
-#'         instanceType = "string",
-#'         resourceRequirements = list(
-#'           list(
-#'             value = "string",
-#'             type = "GPU"|"VCPU"|"MEMORY"
-#'           )
-#'         ),
-#'         linuxParameters = list(
-#'           devices = list(
-#'             list(
-#'               hostPath = "string",
-#'               containerPath = "string",
-#'               permissions = list(
-#'                 "READ"|"WRITE"|"MKNOD"
-#'               )
-#'             )
-#'           ),
-#'           initProcessEnabled = TRUE|FALSE,
-#'           sharedMemorySize = 123,
-#'           tmpfs = list(
-#'             list(
-#'               containerPath = "string",
-#'               size = 123,
-#'               mountOptions = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           maxSwap = 123,
-#'           swappiness = 123
-#'         ),
-#'         logConfiguration = list(
-#'           logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
-#'           options = list(
-#'             "string"
-#'           ),
-#'           secretOptions = list(
-#'             list(
-#'               name = "string",
-#'               valueFrom = "string"
-#'             )
-#'           )
-#'         ),
-#'         secrets = list(
-#'           list(
-#'             name = "string",
-#'             valueFrom = "string"
-#'           )
-#'         ),
-#'         networkConfiguration = list(
-#'           assignPublicIp = "ENABLED"|"DISABLED"
-#'         ),
-#'         fargatePlatformConfiguration = list(
-#'           platformVersion = "string"
-#'         )
-#'       ),
-#'       timeout = list(
-#'         attemptDurationSeconds = 123
-#'       ),
-#'       nodeProperties = list(
-#'         numNodes = 123,
-#'         mainNode = 123,
-#'         nodeRangeProperties = list(
-#'           list(
-#'             targetNodes = "string",
-#'             container = list(
-#'               image = "string",
-#'               vcpus = 123,
-#'               memory = 123,
-#'               command = list(
-#'                 "string"
-#'               ),
-#'               jobRoleArn = "string",
-#'               executionRoleArn = "string",
-#'               volumes = list(
-#'                 list(
-#'                   host = list(
-#'                     sourcePath = "string"
-#'                   ),
-#'                   name = "string"
-#'                 )
-#'               ),
-#'               environment = list(
-#'                 list(
-#'                   name = "string",
-#'                   value = "string"
-#'                 )
-#'               ),
-#'               mountPoints = list(
-#'                 list(
-#'                   containerPath = "string",
-#'                   readOnly = TRUE|FALSE,
-#'                   sourceVolume = "string"
-#'                 )
-#'               ),
-#'               readonlyRootFilesystem = TRUE|FALSE,
-#'               privileged = TRUE|FALSE,
-#'               ulimits = list(
-#'                 list(
-#'                   hardLimit = 123,
-#'                   name = "string",
-#'                   softLimit = 123
-#'                 )
-#'               ),
-#'               user = "string",
-#'               instanceType = "string",
-#'               resourceRequirements = list(
-#'                 list(
-#'                   value = "string",
-#'                   type = "GPU"|"VCPU"|"MEMORY"
-#'                 )
-#'               ),
-#'               linuxParameters = list(
-#'                 devices = list(
-#'                   list(
-#'                     hostPath = "string",
-#'                     containerPath = "string",
-#'                     permissions = list(
-#'                       "READ"|"WRITE"|"MKNOD"
-#'                     )
-#'                   )
-#'                 ),
-#'                 initProcessEnabled = TRUE|FALSE,
-#'                 sharedMemorySize = 123,
-#'                 tmpfs = list(
-#'                   list(
-#'                     containerPath = "string",
-#'                     size = 123,
-#'                     mountOptions = list(
-#'                       "string"
-#'                     )
-#'                   )
-#'                 ),
-#'                 maxSwap = 123,
-#'                 swappiness = 123
-#'               ),
-#'               logConfiguration = list(
-#'                 logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
-#'                 options = list(
-#'                   "string"
-#'                 ),
-#'                 secretOptions = list(
-#'                   list(
-#'                     name = "string",
-#'                     valueFrom = "string"
-#'                   )
-#'                 )
-#'               ),
-#'               secrets = list(
-#'                 list(
-#'                   name = "string",
-#'                   valueFrom = "string"
-#'                 )
-#'               ),
-#'               networkConfiguration = list(
-#'                 assignPublicIp = "ENABLED"|"DISABLED"
-#'               ),
-#'               fargatePlatformConfiguration = list(
-#'                 platformVersion = "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       tags = list(
-#'         "string"
-#'       ),
-#'       propagateTags = TRUE|FALSE,
-#'       platformCapabilities = list(
-#'         "EC2"|"FARGATE"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_job_definitions(
-#'   jobDefinitions = list(
-#'     "string"
-#'   ),
-#'   maxResults = 123,
-#'   jobDefinitionName = "string",
-#'   status = "string",
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes all of your active job definitions.
-#' svc$describe_job_definitions(
-#'   status = "ACTIVE"
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1082,8 +474,7 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
 #' @description
 #' Describes one or more of your job queues.
 #'
-#' @usage
-#' batch_describe_job_queues(jobQueues, maxResults, nextToken)
+#' See [https://paws-r.github.io/docs/batch/describe_job_queues.html](https://paws-r.github.io/docs/batch/describe_job_queues.html) for full documentation.
 #'
 #' @param jobQueues A list of up to 100 queue names or full queue Amazon Resource Name (ARN)
 #' entries.
@@ -1091,7 +482,7 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
 #' [`describe_job_queues`][batch_describe_job_queues] in paginated output.
 #' When this parameter is used,
 #' [`describe_job_queues`][batch_describe_job_queues] only returns
-#' `maxResults` results in a single page along with a `nextToken` response
+#' `maxResults` results in a single page and a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
 #' sending another [`describe_job_queues`][batch_describe_job_queues]
 #' request with the returned `nextToken` value. This value can be between 1
@@ -1108,54 +499,6 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
 #' This token should be treated as an opaque identifier that's only used to
 #' retrieve the next items in a list and not for other programmatic
 #' purposes.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   jobQueues = list(
-#'     list(
-#'       jobQueueName = "string",
-#'       jobQueueArn = "string",
-#'       state = "ENABLED"|"DISABLED",
-#'       status = "CREATING"|"UPDATING"|"DELETING"|"DELETED"|"VALID"|"INVALID",
-#'       statusReason = "string",
-#'       priority = 123,
-#'       computeEnvironmentOrder = list(
-#'         list(
-#'           order = 123,
-#'           computeEnvironment = "string"
-#'         )
-#'       ),
-#'       tags = list(
-#'         "string"
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_job_queues(
-#'   jobQueues = list(
-#'     "string"
-#'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes the HighPriority job queue.
-#' svc$describe_job_queues(
-#'   jobQueues = list(
-#'     "HighPriority"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1177,330 +520,14 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 }
 .batch$operations$describe_job_queues <- batch_describe_job_queues
 
-#' Describes a list of AWS Batch jobs
+#' Describes a list of Batch jobs
 #'
 #' @description
-#' Describes a list of AWS Batch jobs.
+#' Describes a list of Batch jobs.
 #'
-#' @usage
-#' batch_describe_jobs(jobs)
+#' See [https://paws-r.github.io/docs/batch/describe_jobs.html](https://paws-r.github.io/docs/batch/describe_jobs.html) for full documentation.
 #'
 #' @param jobs &#91;required&#93; A list of up to 100 job IDs.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   jobs = list(
-#'     list(
-#'       jobArn = "string",
-#'       jobName = "string",
-#'       jobId = "string",
-#'       jobQueue = "string",
-#'       status = "SUBMITTED"|"PENDING"|"RUNNABLE"|"STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED",
-#'       attempts = list(
-#'         list(
-#'           container = list(
-#'             containerInstanceArn = "string",
-#'             taskArn = "string",
-#'             exitCode = 123,
-#'             reason = "string",
-#'             logStreamName = "string",
-#'             networkInterfaces = list(
-#'               list(
-#'                 attachmentId = "string",
-#'                 ipv6Address = "string",
-#'                 privateIpv4Address = "string"
-#'               )
-#'             )
-#'           ),
-#'           startedAt = 123,
-#'           stoppedAt = 123,
-#'           statusReason = "string"
-#'         )
-#'       ),
-#'       statusReason = "string",
-#'       createdAt = 123,
-#'       retryStrategy = list(
-#'         attempts = 123,
-#'         evaluateOnExit = list(
-#'           list(
-#'             onStatusReason = "string",
-#'             onReason = "string",
-#'             onExitCode = "string",
-#'             action = "RETRY"|"EXIT"
-#'           )
-#'         )
-#'       ),
-#'       startedAt = 123,
-#'       stoppedAt = 123,
-#'       dependsOn = list(
-#'         list(
-#'           jobId = "string",
-#'           type = "N_TO_N"|"SEQUENTIAL"
-#'         )
-#'       ),
-#'       jobDefinition = "string",
-#'       parameters = list(
-#'         "string"
-#'       ),
-#'       container = list(
-#'         image = "string",
-#'         vcpus = 123,
-#'         memory = 123,
-#'         command = list(
-#'           "string"
-#'         ),
-#'         jobRoleArn = "string",
-#'         executionRoleArn = "string",
-#'         volumes = list(
-#'           list(
-#'             host = list(
-#'               sourcePath = "string"
-#'             ),
-#'             name = "string"
-#'           )
-#'         ),
-#'         environment = list(
-#'           list(
-#'             name = "string",
-#'             value = "string"
-#'           )
-#'         ),
-#'         mountPoints = list(
-#'           list(
-#'             containerPath = "string",
-#'             readOnly = TRUE|FALSE,
-#'             sourceVolume = "string"
-#'           )
-#'         ),
-#'         readonlyRootFilesystem = TRUE|FALSE,
-#'         ulimits = list(
-#'           list(
-#'             hardLimit = 123,
-#'             name = "string",
-#'             softLimit = 123
-#'           )
-#'         ),
-#'         privileged = TRUE|FALSE,
-#'         user = "string",
-#'         exitCode = 123,
-#'         reason = "string",
-#'         containerInstanceArn = "string",
-#'         taskArn = "string",
-#'         logStreamName = "string",
-#'         instanceType = "string",
-#'         networkInterfaces = list(
-#'           list(
-#'             attachmentId = "string",
-#'             ipv6Address = "string",
-#'             privateIpv4Address = "string"
-#'           )
-#'         ),
-#'         resourceRequirements = list(
-#'           list(
-#'             value = "string",
-#'             type = "GPU"|"VCPU"|"MEMORY"
-#'           )
-#'         ),
-#'         linuxParameters = list(
-#'           devices = list(
-#'             list(
-#'               hostPath = "string",
-#'               containerPath = "string",
-#'               permissions = list(
-#'                 "READ"|"WRITE"|"MKNOD"
-#'               )
-#'             )
-#'           ),
-#'           initProcessEnabled = TRUE|FALSE,
-#'           sharedMemorySize = 123,
-#'           tmpfs = list(
-#'             list(
-#'               containerPath = "string",
-#'               size = 123,
-#'               mountOptions = list(
-#'                 "string"
-#'               )
-#'             )
-#'           ),
-#'           maxSwap = 123,
-#'           swappiness = 123
-#'         ),
-#'         logConfiguration = list(
-#'           logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
-#'           options = list(
-#'             "string"
-#'           ),
-#'           secretOptions = list(
-#'             list(
-#'               name = "string",
-#'               valueFrom = "string"
-#'             )
-#'           )
-#'         ),
-#'         secrets = list(
-#'           list(
-#'             name = "string",
-#'             valueFrom = "string"
-#'           )
-#'         ),
-#'         networkConfiguration = list(
-#'           assignPublicIp = "ENABLED"|"DISABLED"
-#'         ),
-#'         fargatePlatformConfiguration = list(
-#'           platformVersion = "string"
-#'         )
-#'       ),
-#'       nodeDetails = list(
-#'         nodeIndex = 123,
-#'         isMainNode = TRUE|FALSE
-#'       ),
-#'       nodeProperties = list(
-#'         numNodes = 123,
-#'         mainNode = 123,
-#'         nodeRangeProperties = list(
-#'           list(
-#'             targetNodes = "string",
-#'             container = list(
-#'               image = "string",
-#'               vcpus = 123,
-#'               memory = 123,
-#'               command = list(
-#'                 "string"
-#'               ),
-#'               jobRoleArn = "string",
-#'               executionRoleArn = "string",
-#'               volumes = list(
-#'                 list(
-#'                   host = list(
-#'                     sourcePath = "string"
-#'                   ),
-#'                   name = "string"
-#'                 )
-#'               ),
-#'               environment = list(
-#'                 list(
-#'                   name = "string",
-#'                   value = "string"
-#'                 )
-#'               ),
-#'               mountPoints = list(
-#'                 list(
-#'                   containerPath = "string",
-#'                   readOnly = TRUE|FALSE,
-#'                   sourceVolume = "string"
-#'                 )
-#'               ),
-#'               readonlyRootFilesystem = TRUE|FALSE,
-#'               privileged = TRUE|FALSE,
-#'               ulimits = list(
-#'                 list(
-#'                   hardLimit = 123,
-#'                   name = "string",
-#'                   softLimit = 123
-#'                 )
-#'               ),
-#'               user = "string",
-#'               instanceType = "string",
-#'               resourceRequirements = list(
-#'                 list(
-#'                   value = "string",
-#'                   type = "GPU"|"VCPU"|"MEMORY"
-#'                 )
-#'               ),
-#'               linuxParameters = list(
-#'                 devices = list(
-#'                   list(
-#'                     hostPath = "string",
-#'                     containerPath = "string",
-#'                     permissions = list(
-#'                       "READ"|"WRITE"|"MKNOD"
-#'                     )
-#'                   )
-#'                 ),
-#'                 initProcessEnabled = TRUE|FALSE,
-#'                 sharedMemorySize = 123,
-#'                 tmpfs = list(
-#'                   list(
-#'                     containerPath = "string",
-#'                     size = 123,
-#'                     mountOptions = list(
-#'                       "string"
-#'                     )
-#'                   )
-#'                 ),
-#'                 maxSwap = 123,
-#'                 swappiness = 123
-#'               ),
-#'               logConfiguration = list(
-#'                 logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
-#'                 options = list(
-#'                   "string"
-#'                 ),
-#'                 secretOptions = list(
-#'                   list(
-#'                     name = "string",
-#'                     valueFrom = "string"
-#'                   )
-#'                 )
-#'               ),
-#'               secrets = list(
-#'                 list(
-#'                   name = "string",
-#'                   valueFrom = "string"
-#'                 )
-#'               ),
-#'               networkConfiguration = list(
-#'                 assignPublicIp = "ENABLED"|"DISABLED"
-#'               ),
-#'               fargatePlatformConfiguration = list(
-#'                 platformVersion = "string"
-#'               )
-#'             )
-#'           )
-#'         )
-#'       ),
-#'       arrayProperties = list(
-#'         statusSummary = list(
-#'           123
-#'         ),
-#'         size = 123,
-#'         index = 123
-#'       ),
-#'       timeout = list(
-#'         attemptDurationSeconds = 123
-#'       ),
-#'       tags = list(
-#'         "string"
-#'       ),
-#'       propagateTags = TRUE|FALSE,
-#'       platformCapabilities = list(
-#'         "EC2"|"FARGATE"
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$describe_jobs(
-#'   jobs = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example describes a job with the specified job ID.
-#' svc$describe_jobs(
-#'   jobs = list(
-#'     "24fa2d7a-64c4-49d2-8b47-f8da4fbde8e9"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -1522,25 +549,42 @@ batch_describe_jobs <- function(jobs) {
 }
 .batch$operations$describe_jobs <- batch_describe_jobs
 
-#' Returns a list of AWS Batch jobs
+#' Describes one or more of your scheduling policies
 #'
 #' @description
-#' Returns a list of AWS Batch jobs.
-#' 
-#' You must specify only one of the following items:
-#' 
-#' -   A job queue ID to return a list of jobs in that job queue
-#' 
-#' -   A multi-node parallel job ID to return a list of that job's nodes
-#' 
-#' -   An array job ID to return a list of that job's children
-#' 
-#' You can filter the results by job status with the `jobStatus` parameter.
-#' If you don't specify a status, only `RUNNING` jobs are returned.
+#' Describes one or more of your scheduling policies.
 #'
-#' @usage
-#' batch_list_jobs(jobQueue, arrayJobId, multiNodeJobId, jobStatus,
-#'   maxResults, nextToken)
+#' See [https://paws-r.github.io/docs/batch/describe_scheduling_policies.html](https://paws-r.github.io/docs/batch/describe_scheduling_policies.html) for full documentation.
+#'
+#' @param arns &#91;required&#93; A list of up to 100 scheduling policy Amazon Resource Name (ARN)
+#' entries.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_describe_scheduling_policies
+batch_describe_scheduling_policies <- function(arns) {
+  op <- new_operation(
+    name = "DescribeSchedulingPolicies",
+    http_method = "POST",
+    http_path = "/v1/describeschedulingpolicies",
+    paginator = list()
+  )
+  input <- .batch$describe_scheduling_policies_input(arns = arns)
+  output <- .batch$describe_scheduling_policies_output()
+  config <- get_config()
+  svc <- .batch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$describe_scheduling_policies <- batch_describe_scheduling_policies
+
+#' Returns a list of Batch jobs
+#'
+#' @description
+#' Returns a list of Batch jobs.
+#'
+#' See [https://paws-r.github.io/docs/batch/list_jobs.html](https://paws-r.github.io/docs/batch/list_jobs.html) for full documentation.
 #'
 #' @param jobQueue The name or full Amazon Resource Name (ARN) of the job queue used to
 #' list jobs.
@@ -1549,13 +593,15 @@ batch_describe_jobs <- function(jobs) {
 #' @param multiNodeJobId The job ID for a multi-node parallel job. Specifying a multi-node
 #' parallel job ID with this parameter lists all nodes that are associated
 #' with the specified job.
-#' @param jobStatus The job status used to filter jobs in the specified queue. If you don't
-#' specify a status, only `RUNNING` jobs are returned.
+#' @param jobStatus The job status used to filter jobs in the specified queue. If the
+#' `filters` parameter is specified, the `jobStatus` parameter is ignored
+#' and jobs with any status are returned. If you don't specify a status,
+#' only `RUNNING` jobs are returned.
 #' @param maxResults The maximum number of results returned by [`list_jobs`][batch_list_jobs]
 #' in paginated output. When this parameter is used,
 #' [`list_jobs`][batch_list_jobs] only returns `maxResults` results in a
-#' single page along with a `nextToken` response element. The remaining
-#' results of the initial request can be seen by sending another
+#' single page and a `nextToken` response element. The remaining results of
+#' the initial request can be seen by sending another
 #' [`list_jobs`][batch_list_jobs] request with the returned `nextToken`
 #' value. This value can be between 1 and 100. If this parameter isn't
 #' used, then [`list_jobs`][batch_list_jobs] returns up to 100 results and
@@ -1569,78 +615,62 @@ batch_describe_jobs <- function(jobs) {
 #' This token should be treated as an opaque identifier that's only used to
 #' retrieve the next items in a list and not for other programmatic
 #' purposes.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   jobSummaryList = list(
-#'     list(
-#'       jobArn = "string",
-#'       jobId = "string",
-#'       jobName = "string",
-#'       createdAt = 123,
-#'       status = "SUBMITTED"|"PENDING"|"RUNNABLE"|"STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED",
-#'       statusReason = "string",
-#'       startedAt = 123,
-#'       stoppedAt = 123,
-#'       container = list(
-#'         exitCode = 123,
-#'         reason = "string"
-#'       ),
-#'       arrayProperties = list(
-#'         size = 123,
-#'         index = 123
-#'       ),
-#'       nodeProperties = list(
-#'         isMainNode = TRUE|FALSE,
-#'         numNodes = 123,
-#'         nodeIndex = 123
-#'       )
-#'     )
-#'   ),
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_jobs(
-#'   jobQueue = "string",
-#'   arrayJobId = "string",
-#'   multiNodeJobId = "string",
-#'   jobStatus = "SUBMITTED"|"PENDING"|"RUNNABLE"|"STARTING"|"RUNNING"|"SUCCEEDED"|"FAILED",
-#'   maxResults = 123,
-#'   nextToken = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example lists the running jobs in the HighPriority job queue.
-#' svc$list_jobs(
-#'   jobQueue = "HighPriority"
-#' )
+#' @param filters The filter to apply to the query. Only one filter can be used at a time.
+#' When the filter is used, `jobStatus` is ignored. The filter doesn't
+#' apply to child jobs in an array or multi-node parallel (MNP) jobs. The
+#' results are sorted by the `createdAt` field, with the most recent jobs
+#' being first.
 #' 
-#' # This example lists jobs in the HighPriority job queue that are in the
-#' # SUBMITTED job status.
-#' svc$list_jobs(
-#'   jobQueue = "HighPriority",
-#'   jobStatus = "SUBMITTED"
-#' )
-#' }
+#' ### JOB_NAME
+#' 
+#' The value of the filter is a case-insensitive match for the job name. If
+#' the value ends with an asterisk (*), the filter will match any job name
+#' that begins with the string before the '*'. This corresponds to the
+#' `jobName` value. For example, `test1` matches both `Test1` and `test1`,
+#' and `test1*` matches both `test1` and `Test10`. When the `JOB_NAME`
+#' filter is used, the results are grouped by the job name and version.
+#' 
+#' ### JOB_DEFINITION
+#' 
+#' The value for the filter is the name or Amazon Resource Name (ARN) of
+#' the job definition. This corresponds to the `jobDefinition` value. The
+#' value is case sensitive. When the value for the filter is the job
+#' definition name, the results include all the jobs that used any revision
+#' of that job definition name. If the value ends with an asterisk (*),
+#' the filter will match any job definition name that begins with the
+#' string before the '*'. For example, `jd1` matches only `jd1`, and
+#' `jd1*` matches both `jd1` and `jd1A`. The version of the job definition
+#' that's used doesn't affect the sort order. When the `JOB_DEFINITION`
+#' filter is used and the ARN is used (which is in the form
+#' `arn:${Partition}:batch:${Region}:${Account}:job-definition/${JobDefinitionName}:${Revision}`),
+#' the results include jobs that used the specified revision of the job
+#' definition. Asterisk (*) is not supported when the ARN is used.
+#' 
+#' ### BEFORE_CREATED_AT
+#' 
+#' The value for the filter is the time that's before the job was created.
+#' This corresponds to the `createdAt` value. The value is a string
+#' representation of the number of milliseconds since 00:00:00 UTC
+#' (midnight) on January 1, 1970.
+#' 
+#' ### AFTER_CREATED_AT
+#' 
+#' The value for the filter is the time that's after the job was created.
+#' This corresponds to the `createdAt` value. The value is a string
+#' representation of the number of milliseconds since 00:00:00 UTC
+#' (midnight) on January 1, 1970.
 #'
 #' @keywords internal
 #'
 #' @rdname batch_list_jobs
-batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId = NULL, jobStatus = NULL, maxResults = NULL, nextToken = NULL) {
+batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId = NULL, jobStatus = NULL, maxResults = NULL, nextToken = NULL, filters = NULL) {
   op <- new_operation(
     name = "ListJobs",
     http_method = "POST",
     http_path = "/v1/listjobs",
     paginator = list()
   )
-  input <- .batch$list_jobs_input(jobQueue = jobQueue, arrayJobId = arrayJobId, multiNodeJobId = multiNodeJobId, jobStatus = jobStatus, maxResults = maxResults, nextToken = nextToken)
+  input <- .batch$list_jobs_input(jobQueue = jobQueue, arrayJobId = arrayJobId, multiNodeJobId = multiNodeJobId, jobStatus = jobStatus, maxResults = maxResults, nextToken = nextToken, filters = filters)
   output <- .batch$list_jobs_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -1650,46 +680,68 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 }
 .batch$operations$list_jobs <- batch_list_jobs
 
-#' Lists the tags for an AWS Batch resource
+#' Returns a list of Batch scheduling policies
 #'
 #' @description
-#' Lists the tags for an AWS Batch resource. AWS Batch resources that
-#' support tags are compute environments, jobs, job definitions, and job
-#' queues. ARNs for child jobs of array and multi-node parallel (MNP) jobs
-#' are not supported.
+#' Returns a list of Batch scheduling policies.
 #'
-#' @usage
-#' batch_list_tags_for_resource(resourceArn)
+#' See [https://paws-r.github.io/docs/batch/list_scheduling_policies.html](https://paws-r.github.io/docs/batch/list_scheduling_policies.html) for full documentation.
+#'
+#' @param maxResults The maximum number of results that's returned by
+#' [`list_scheduling_policies`][batch_list_scheduling_policies] in
+#' paginated output. When this parameter is used,
+#' [`list_scheduling_policies`][batch_list_scheduling_policies] only
+#' returns `maxResults` results in a single page and a `nextToken` response
+#' element. You can see the remaining results of the initial request by
+#' sending another
+#' [`list_scheduling_policies`][batch_list_scheduling_policies] request
+#' with the returned `nextToken` value. This value can be between 1 and
+#' 100. If this parameter isn't used,
+#' [`list_scheduling_policies`][batch_list_scheduling_policies] returns up
+#' to 100 results and a `nextToken` value if applicable.
+#' @param nextToken The `nextToken` value that's returned from a previous paginated
+#' [`list_scheduling_policies`][batch_list_scheduling_policies] request
+#' where `maxResults` was used and the results exceeded the value of that
+#' parameter. Pagination continues from the end of the previous results
+#' that returned the `nextToken` value. This value is `null` when there are
+#' no more results to return.
+#' 
+#' This token should be treated as an opaque identifier that's only used to
+#' retrieve the next items in a list and not for other programmatic
+#' purposes.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_list_scheduling_policies
+batch_list_scheduling_policies <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListSchedulingPolicies",
+    http_method = "POST",
+    http_path = "/v1/listschedulingpolicies",
+    paginator = list()
+  )
+  input <- .batch$list_scheduling_policies_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .batch$list_scheduling_policies_output()
+  config <- get_config()
+  svc <- .batch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$list_scheduling_policies <- batch_list_scheduling_policies
+
+#' Lists the tags for an Batch resource
+#'
+#' @description
+#' Lists the tags for an Batch resource. Batch resources that support tags are compute environments, jobs, job definitions, job queues, and scheduling policies. ARNs for child jobs of array and multi-node parallel (MNP) jobs are not supported.
+#'
+#' See [https://paws-r.github.io/docs/batch/list_tags_for_resource.html](https://paws-r.github.io/docs/batch/list_tags_for_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource that tags
-#' are listed for. AWS Batch resources that support tags are compute
-#' environments, jobs, job definitions, and job queues. ARNs for child jobs
-#' of array and multi-node parallel (MNP) jobs are not supported.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$list_tags_for_resource(
-#'   resourceArn = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This demonstrates calling the ListTagsForResource action.
-#' svc$list_tags_for_resource(
-#'   resourceArn = "arn:aws:batch:us-east-1:123456789012:job-definition/sleep30:1"
-#' )
-#' }
+#' are listed for. Batch resources that support tags are compute
+#' environments, jobs, job definitions, job queues, and scheduling
+#' policies. ARNs for child jobs of array and multi-node parallel (MNP)
+#' jobs are not supported.
 #'
 #' @keywords internal
 #'
@@ -1711,22 +763,20 @@ batch_list_tags_for_resource <- function(resourceArn) {
 }
 .batch$operations$list_tags_for_resource <- batch_list_tags_for_resource
 
-#' Registers an AWS Batch job definition
+#' Registers an Batch job definition
 #'
 #' @description
-#' Registers an AWS Batch job definition.
+#' Registers an Batch job definition.
 #'
-#' @usage
-#' batch_register_job_definition(jobDefinitionName, type, parameters,
-#'   containerProperties, nodeProperties, retryStrategy, propagateTags,
-#'   timeout, tags, platformCapabilities)
+#' See [https://paws-r.github.io/docs/batch/register_job_definition.html](https://paws-r.github.io/docs/batch/register_job_definition.html) for full documentation.
 #'
-#' @param jobDefinitionName &#91;required&#93; The name of the job definition to register. Up to 128 letters (uppercase
-#' and lowercase), numbers, hyphens, and underscores are allowed.
+#' @param jobDefinitionName &#91;required&#93; The name of the job definition to register. It can be up to 128 letters
+#' long. It can contain uppercase and lowercase letters, numbers, hyphens
+#' (-), and underscores (_).
 #' @param type &#91;required&#93; The type of job definition. For more information about multi-node
 #' parallel jobs, see [Creating a multi-node parallel job
 #' definition](https://docs.aws.amazon.com/batch/latest/userguide/multi-node-job-def.html)
-#' in the *AWS Batch User Guide*.
+#' in the *Batch User Guide*.
 #' 
 #' If the job is run on Fargate resources, then `multinode` isn't
 #' supported.
@@ -1734,6 +784,13 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' definition. Parameters are specified as a key-value pair mapping.
 #' Parameters in a [`submit_job`][batch_submit_job] request override any
 #' corresponding parameter defaults from the job definition.
+#' @param schedulingPriority The scheduling priority for jobs that are submitted with this job
+#' definition. This will only affect jobs in job queues with a fair share
+#' policy. Jobs with a higher scheduling priority will be scheduled before
+#' jobs with a lower scheduling priority.
+#' 
+#' The minimum supported value is 0 and the maximum supported value is
+#' 9999.
 #' @param containerProperties An object with various properties specific to single-node
 #' container-based jobs. If the job definition's `type` parameter is
 #' `container`, then you must specify either `containerProperties` or
@@ -1745,8 +802,8 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' If you specify node properties for a job, it becomes a multi-node
 #' parallel job. For more information, see [Multi-node Parallel
 #' Jobs](https://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html)
-#' in the *AWS Batch User Guide*. If the job definition's `type` parameter
-#' is `container`, then you must specify either `containerProperties` or
+#' in the *Batch User Guide*. If the job definition's `type` parameter is
+#' `container`, then you must specify either `containerProperties` or
 #' `nodeProperties`.
 #' 
 #' If the job runs on Fargate resources, then you must not specify
@@ -1762,315 +819,34 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' job definitions tags. If the total number of combined tags from the job
 #' and job definition is over 50, the job is moved to the `FAILED` state.
 #' @param timeout The timeout configuration for jobs that are submitted with this job
-#' definition, after which AWS Batch terminates your jobs if they have not
+#' definition, after which Batch terminates your jobs if they have not
 #' finished. If a job is terminated due to a timeout, it isn't retried. The
 #' minimum value for the timeout is 60 seconds. Any timeout configuration
 #' that's specified during a [`submit_job`][batch_submit_job] operation
 #' overrides the timeout configuration defined here. For more information,
 #' see [Job
 #' Timeouts](https://docs.aws.amazon.com/batch/latest/userguide/job_timeouts.html)
-#' in the *AWS Batch User Guide*.
+#' in the *Batch User Guide*.
 #' @param tags The tags that you apply to the job definition to help you categorize and
 #' organize your resources. Each tag consists of a key and an optional
-#' value. For more information, see [Tagging AWS
+#' value. For more information, see [Tagging Amazon Web Services
 #' Resources](https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html)
-#' in *AWS Batch User Guide*.
+#' in *Batch User Guide*.
 #' @param platformCapabilities The platform capabilities required by the job definition. If no value is
 #' specified, it defaults to `EC2`. To run the job on Fargate resources,
 #' specify `FARGATE`.
 #'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   jobDefinitionName = "string",
-#'   jobDefinitionArn = "string",
-#'   revision = 123
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$register_job_definition(
-#'   jobDefinitionName = "string",
-#'   type = "container"|"multinode",
-#'   parameters = list(
-#'     "string"
-#'   ),
-#'   containerProperties = list(
-#'     image = "string",
-#'     vcpus = 123,
-#'     memory = 123,
-#'     command = list(
-#'       "string"
-#'     ),
-#'     jobRoleArn = "string",
-#'     executionRoleArn = "string",
-#'     volumes = list(
-#'       list(
-#'         host = list(
-#'           sourcePath = "string"
-#'         ),
-#'         name = "string"
-#'       )
-#'     ),
-#'     environment = list(
-#'       list(
-#'         name = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     mountPoints = list(
-#'       list(
-#'         containerPath = "string",
-#'         readOnly = TRUE|FALSE,
-#'         sourceVolume = "string"
-#'       )
-#'     ),
-#'     readonlyRootFilesystem = TRUE|FALSE,
-#'     privileged = TRUE|FALSE,
-#'     ulimits = list(
-#'       list(
-#'         hardLimit = 123,
-#'         name = "string",
-#'         softLimit = 123
-#'       )
-#'     ),
-#'     user = "string",
-#'     instanceType = "string",
-#'     resourceRequirements = list(
-#'       list(
-#'         value = "string",
-#'         type = "GPU"|"VCPU"|"MEMORY"
-#'       )
-#'     ),
-#'     linuxParameters = list(
-#'       devices = list(
-#'         list(
-#'           hostPath = "string",
-#'           containerPath = "string",
-#'           permissions = list(
-#'             "READ"|"WRITE"|"MKNOD"
-#'           )
-#'         )
-#'       ),
-#'       initProcessEnabled = TRUE|FALSE,
-#'       sharedMemorySize = 123,
-#'       tmpfs = list(
-#'         list(
-#'           containerPath = "string",
-#'           size = 123,
-#'           mountOptions = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       maxSwap = 123,
-#'       swappiness = 123
-#'     ),
-#'     logConfiguration = list(
-#'       logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
-#'       options = list(
-#'         "string"
-#'       ),
-#'       secretOptions = list(
-#'         list(
-#'           name = "string",
-#'           valueFrom = "string"
-#'         )
-#'       )
-#'     ),
-#'     secrets = list(
-#'       list(
-#'         name = "string",
-#'         valueFrom = "string"
-#'       )
-#'     ),
-#'     networkConfiguration = list(
-#'       assignPublicIp = "ENABLED"|"DISABLED"
-#'     ),
-#'     fargatePlatformConfiguration = list(
-#'       platformVersion = "string"
-#'     )
-#'   ),
-#'   nodeProperties = list(
-#'     numNodes = 123,
-#'     mainNode = 123,
-#'     nodeRangeProperties = list(
-#'       list(
-#'         targetNodes = "string",
-#'         container = list(
-#'           image = "string",
-#'           vcpus = 123,
-#'           memory = 123,
-#'           command = list(
-#'             "string"
-#'           ),
-#'           jobRoleArn = "string",
-#'           executionRoleArn = "string",
-#'           volumes = list(
-#'             list(
-#'               host = list(
-#'                 sourcePath = "string"
-#'               ),
-#'               name = "string"
-#'             )
-#'           ),
-#'           environment = list(
-#'             list(
-#'               name = "string",
-#'               value = "string"
-#'             )
-#'           ),
-#'           mountPoints = list(
-#'             list(
-#'               containerPath = "string",
-#'               readOnly = TRUE|FALSE,
-#'               sourceVolume = "string"
-#'             )
-#'           ),
-#'           readonlyRootFilesystem = TRUE|FALSE,
-#'           privileged = TRUE|FALSE,
-#'           ulimits = list(
-#'             list(
-#'               hardLimit = 123,
-#'               name = "string",
-#'               softLimit = 123
-#'             )
-#'           ),
-#'           user = "string",
-#'           instanceType = "string",
-#'           resourceRequirements = list(
-#'             list(
-#'               value = "string",
-#'               type = "GPU"|"VCPU"|"MEMORY"
-#'             )
-#'           ),
-#'           linuxParameters = list(
-#'             devices = list(
-#'               list(
-#'                 hostPath = "string",
-#'                 containerPath = "string",
-#'                 permissions = list(
-#'                   "READ"|"WRITE"|"MKNOD"
-#'                 )
-#'               )
-#'             ),
-#'             initProcessEnabled = TRUE|FALSE,
-#'             sharedMemorySize = 123,
-#'             tmpfs = list(
-#'               list(
-#'                 containerPath = "string",
-#'                 size = 123,
-#'                 mountOptions = list(
-#'                   "string"
-#'                 )
-#'               )
-#'             ),
-#'             maxSwap = 123,
-#'             swappiness = 123
-#'           ),
-#'           logConfiguration = list(
-#'             logDriver = "json-file"|"syslog"|"journald"|"gelf"|"fluentd"|"awslogs"|"splunk",
-#'             options = list(
-#'               "string"
-#'             ),
-#'             secretOptions = list(
-#'               list(
-#'                 name = "string",
-#'                 valueFrom = "string"
-#'               )
-#'             )
-#'           ),
-#'           secrets = list(
-#'             list(
-#'               name = "string",
-#'               valueFrom = "string"
-#'             )
-#'           ),
-#'           networkConfiguration = list(
-#'             assignPublicIp = "ENABLED"|"DISABLED"
-#'           ),
-#'           fargatePlatformConfiguration = list(
-#'             platformVersion = "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   retryStrategy = list(
-#'     attempts = 123,
-#'     evaluateOnExit = list(
-#'       list(
-#'         onStatusReason = "string",
-#'         onReason = "string",
-#'         onExitCode = "string",
-#'         action = "RETRY"|"EXIT"
-#'       )
-#'     )
-#'   ),
-#'   propagateTags = TRUE|FALSE,
-#'   timeout = list(
-#'     attemptDurationSeconds = 123
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   ),
-#'   platformCapabilities = list(
-#'     "EC2"|"FARGATE"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example registers a job definition for a simple container job.
-#' svc$register_job_definition(
-#'   type = "container",
-#'   containerProperties = list(
-#'     command = list(
-#'       "sleep",
-#'       "10"
-#'     ),
-#'     image = "busybox",
-#'     memory = 128L,
-#'     vcpus = 1L
-#'   ),
-#'   jobDefinitionName = "sleep10"
-#' )
-#' 
-#' # This demonstrates calling the RegisterJobDefinition action, including
-#' # tags.
-#' svc$register_job_definition(
-#'   type = "container",
-#'   containerProperties = list(
-#'     command = list(
-#'       "sleep",
-#'       "30"
-#'     ),
-#'     image = "busybox",
-#'     memory = 128L,
-#'     vcpus = 1L
-#'   ),
-#'   jobDefinitionName = "sleep30",
-#'   tags = list(
-#'     Department = "Engineering",
-#'     User = "JaneDoe"
-#'   )
-#' )
-#' }
-#'
 #' @keywords internal
 #'
 #' @rdname batch_register_job_definition
-batch_register_job_definition <- function(jobDefinitionName, type, parameters = NULL, containerProperties = NULL, nodeProperties = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL, platformCapabilities = NULL) {
+batch_register_job_definition <- function(jobDefinitionName, type, parameters = NULL, schedulingPriority = NULL, containerProperties = NULL, nodeProperties = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL, platformCapabilities = NULL) {
   op <- new_operation(
     name = "RegisterJobDefinition",
     http_method = "POST",
     http_path = "/v1/registerjobdefinition",
     paginator = list()
   )
-  input <- .batch$register_job_definition_input(jobDefinitionName = jobDefinitionName, type = type, parameters = parameters, containerProperties = containerProperties, nodeProperties = nodeProperties, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, platformCapabilities = platformCapabilities)
+  input <- .batch$register_job_definition_input(jobDefinitionName = jobDefinitionName, type = type, parameters = parameters, schedulingPriority = schedulingPriority, containerProperties = containerProperties, nodeProperties = nodeProperties, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, platformCapabilities = platformCapabilities)
   output <- .batch$register_job_definition_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -2080,33 +856,34 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 }
 .batch$operations$register_job_definition <- batch_register_job_definition
 
-#' Submits an AWS Batch job from a job definition
+#' Submits an Batch job from a job definition
 #'
 #' @description
-#' Submits an AWS Batch job from a job definition. Parameters specified
-#' during [`submit_job`][batch_submit_job] override parameters defined in
-#' the job definition.
+#' Submits an Batch job from a job definition. Parameters that are specified during [`submit_job`][batch_submit_job] override parameters defined in the job definition. vCPU and memory requirements that are specified in the `resourceRequirements` objects in the job definition are the exception. They can't be overridden this way using the `memory` and `vcpus` parameters. Rather, you must specify updates to job definition parameters in a `resourceRequirements` object that's included in the `containerOverrides` parameter.
+#'
+#' See [https://paws-r.github.io/docs/batch/submit_job.html](https://paws-r.github.io/docs/batch/submit_job.html) for full documentation.
+#'
+#' @param jobName &#91;required&#93; The name of the job. It can be up to 128 letters long. The first
+#' character must be alphanumeric, can contain uppercase and lowercase
+#' letters, numbers, hyphens (-), and underscores (_).
+#' @param jobQueue &#91;required&#93; The job queue where the job is submitted. You can specify either the
+#' name or the Amazon Resource Name (ARN) of the queue.
+#' @param shareIdentifier The share identifier for the job. If the job queue does not have a
+#' scheduling policy, then this parameter must not be specified. If the job
+#' queue has a scheduling policy, then this parameter must be specified.
+#' @param schedulingPriorityOverride The scheduling priority for the job. This will only affect jobs in job
+#' queues with a fair share policy. Jobs with a higher scheduling priority
+#' will be scheduled before jobs with a lower scheduling priority. This
+#' will override any scheduling priority in the job definition.
 #' 
-#' Jobs run on Fargate resources don't run for more than 14 days. After 14
-#' days, the Fargate resources might no longer be available and the job is
-#' terminated.
-#'
-#' @usage
-#' batch_submit_job(jobName, jobQueue, arrayProperties, dependsOn,
-#'   jobDefinition, parameters, containerOverrides, nodeOverrides,
-#'   retryStrategy, propagateTags, timeout, tags)
-#'
-#' @param jobName &#91;required&#93; The name of the job. The first character must be alphanumeric, and up to
-#' 128 letters (uppercase and lowercase), numbers, hyphens, and underscores
-#' are allowed.
-#' @param jobQueue &#91;required&#93; The job queue into which the job is submitted. You can specify either
-#' the name or the Amazon Resource Name (ARN) of the queue.
+#' The minimum supported value is 0 and the maximum supported value is
+#' 9999.
 #' @param arrayProperties The array properties for the submitted job, such as the size of the
 #' array. The array size can be between 2 and 10,000. If you specify array
 #' properties for a job, it becomes an array job. For more information, see
 #' [Array
 #' Jobs](https://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html)
-#' in the *AWS Batch User Guide*.
+#' in the *Batch User Guide*.
 #' @param dependsOn A list of dependencies for the job. A job can depend upon a maximum of
 #' 20 jobs. You can specify a `SEQUENTIAL` type dependency without
 #' specifying a job ID for array jobs so that each child array job
@@ -2123,18 +900,18 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' are specified as a key and value pair mapping. Parameters in a
 #' [`submit_job`][batch_submit_job] request override any corresponding
 #' parameter defaults from the job definition.
-#' @param containerOverrides A list of container overrides in JSON format that specify the name of a
-#' container in the specified job definition and the overrides it should
-#' receive. You can override the default command for a container (that's
-#' specified in the job definition or the Docker image) with a `command`
-#' override. You can also override existing environment variables (that are
-#' specified in the job definition or Docker image) on a container or add
-#' new environment variables to it with an `environment` override.
+#' @param containerOverrides A list of container overrides in the JSON format that specify the name
+#' of a container in the specified job definition and the overrides it
+#' receives. You can override the default command for a container, which is
+#' specified in the job definition or the Docker image, with a `command`
+#' override. You can also override existing environment variables on a
+#' container or add new environment variables to it with an `environment`
+#' override.
 #' @param nodeOverrides A list of node overrides in JSON format that specify the node range to
 #' target and the container overrides for that node range.
 #' 
-#' This parameter isn't applicable to jobs running on Fargate resources;
-#' use `containerOverrides` instead.
+#' This parameter isn't applicable to jobs that are running on Fargate
+#' resources; use `containerOverrides` instead.
 #' @param retryStrategy The retry strategy to use for failed jobs from this
 #' [`submit_job`][batch_submit_job] operation. When a retry strategy is
 #' specified here, it overrides the retry strategy defined in the job
@@ -2148,7 +925,7 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' When specified, this overrides the tag propagation setting in the job
 #' definition.
 #' @param timeout The timeout configuration for this [`submit_job`][batch_submit_job]
-#' operation. You can specify a timeout duration after which AWS Batch
+#' operation. You can specify a timeout duration after which Batch
 #' terminates your jobs if they haven't finished. If a job is terminated
 #' due to a timeout, it isn't retried. The minimum value for the timeout is
 #' 60 seconds. This configuration overrides any timeout configuration
@@ -2159,129 +936,21 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param tags The tags that you apply to the job request to help you categorize and
 #' organize your resources. Each tag consists of a key and an optional
-#' value. For more information, see [Tagging AWS
+#' value. For more information, see [Tagging Amazon Web Services
 #' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
-#' in *AWS General Reference*.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   jobArn = "string",
-#'   jobName = "string",
-#'   jobId = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$submit_job(
-#'   jobName = "string",
-#'   jobQueue = "string",
-#'   arrayProperties = list(
-#'     size = 123
-#'   ),
-#'   dependsOn = list(
-#'     list(
-#'       jobId = "string",
-#'       type = "N_TO_N"|"SEQUENTIAL"
-#'     )
-#'   ),
-#'   jobDefinition = "string",
-#'   parameters = list(
-#'     "string"
-#'   ),
-#'   containerOverrides = list(
-#'     vcpus = 123,
-#'     memory = 123,
-#'     command = list(
-#'       "string"
-#'     ),
-#'     instanceType = "string",
-#'     environment = list(
-#'       list(
-#'         name = "string",
-#'         value = "string"
-#'       )
-#'     ),
-#'     resourceRequirements = list(
-#'       list(
-#'         value = "string",
-#'         type = "GPU"|"VCPU"|"MEMORY"
-#'       )
-#'     )
-#'   ),
-#'   nodeOverrides = list(
-#'     numNodes = 123,
-#'     nodePropertyOverrides = list(
-#'       list(
-#'         targetNodes = "string",
-#'         containerOverrides = list(
-#'           vcpus = 123,
-#'           memory = 123,
-#'           command = list(
-#'             "string"
-#'           ),
-#'           instanceType = "string",
-#'           environment = list(
-#'             list(
-#'               name = "string",
-#'               value = "string"
-#'             )
-#'           ),
-#'           resourceRequirements = list(
-#'             list(
-#'               value = "string",
-#'               type = "GPU"|"VCPU"|"MEMORY"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   retryStrategy = list(
-#'     attempts = 123,
-#'     evaluateOnExit = list(
-#'       list(
-#'         onStatusReason = "string",
-#'         onReason = "string",
-#'         onExitCode = "string",
-#'         action = "RETRY"|"EXIT"
-#'       )
-#'     )
-#'   ),
-#'   propagateTags = TRUE|FALSE,
-#'   timeout = list(
-#'     attemptDurationSeconds = 123
-#'   ),
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example submits a simple container job called example to the
-#' # HighPriority job queue.
-#' svc$submit_job(
-#'   jobDefinition = "sleep60",
-#'   jobName = "example",
-#'   jobQueue = "HighPriority"
-#' )
-#' }
+#' in *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
 #'
 #' @rdname batch_submit_job
-batch_submit_job <- function(jobName, jobQueue, arrayProperties = NULL, dependsOn = NULL, jobDefinition, parameters = NULL, containerOverrides = NULL, nodeOverrides = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL) {
+batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, schedulingPriorityOverride = NULL, arrayProperties = NULL, dependsOn = NULL, jobDefinition, parameters = NULL, containerOverrides = NULL, nodeOverrides = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL) {
   op <- new_operation(
     name = "SubmitJob",
     http_method = "POST",
     http_path = "/v1/submitjob",
     paginator = list()
   )
-  input <- .batch$submit_job_input(jobName = jobName, jobQueue = jobQueue, arrayProperties = arrayProperties, dependsOn = dependsOn, jobDefinition = jobDefinition, parameters = parameters, containerOverrides = containerOverrides, nodeOverrides = nodeOverrides, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags)
+  input <- .batch$submit_job_input(jobName = jobName, jobQueue = jobQueue, shareIdentifier = shareIdentifier, schedulingPriorityOverride = schedulingPriorityOverride, arrayProperties = arrayProperties, dependsOn = dependsOn, jobDefinition = jobDefinition, parameters = parameters, containerOverrides = containerOverrides, nodeOverrides = nodeOverrides, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags)
   output <- .batch$submit_job_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -2295,50 +964,19 @@ batch_submit_job <- function(jobName, jobQueue, arrayProperties = NULL, dependsO
 #' resourceArn
 #'
 #' @description
-#' Associates the specified tags to a resource with the specified
-#' `resourceArn`. If existing tags on a resource aren't specified in the
-#' request parameters, they aren't changed. When a resource is deleted, the
-#' tags associated with that resource are deleted as well. AWS Batch
-#' resources that support tags are compute environments, jobs, job
-#' definitions, and job queues. ARNs for child jobs of array and multi-node
-#' parallel (MNP) jobs are not supported.
+#' Associates the specified tags to a resource with the specified `resourceArn`. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags that are associated with that resource are deleted as well. Batch resources that support tags are compute environments, jobs, job definitions, job queues, and scheduling policies. ARNs for child jobs of array and multi-node parallel (MNP) jobs are not supported.
 #'
-#' @usage
-#' batch_tag_resource(resourceArn, tags)
+#' See [https://paws-r.github.io/docs/batch/tag_resource.html](https://paws-r.github.io/docs/batch/tag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that tags are added to.
-#' AWS Batch resources that support tags are compute environments, jobs,
-#' job definitions, and job queues. ARNs for child jobs of array and
-#' multi-node parallel (MNP) jobs are not supported.
+#' Batch resources that support tags are compute environments, jobs, job
+#' definitions, job queues, and scheduling policies. ARNs for child jobs of
+#' array and multi-node parallel (MNP) jobs are not supported.
 #' @param tags &#91;required&#93; The tags that you apply to the resource to help you categorize and
 #' organize your resources. Each tag consists of a key and an optional
-#' value. For more information, see [Tagging AWS
+#' value. For more information, see [Tagging Amazon Web Services
 #' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
-#' in *AWS General Reference*.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$tag_resource(
-#'   resourceArn = "string",
-#'   tags = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This demonstrates calling the TagResource action.
-#' svc$tag_resource(
-#'   resourceArn = "arn:aws:batch:us-east-1:123456789012:job-definition/sleep30:1",
-#'   tags = list(
-#'     Stage = "Alpha"
-#'   )
-#' )
-#' }
+#' in *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
 #'
@@ -2363,39 +1001,15 @@ batch_tag_resource <- function(resourceArn, tags) {
 #' Terminates a job in a job queue
 #'
 #' @description
-#' Terminates a job in a job queue. Jobs that are in the `STARTING` or
-#' `RUNNING` state are terminated, which causes them to transition to
-#' `FAILED`. Jobs that have not progressed to the `STARTING` state are
-#' cancelled.
+#' Terminates a job in a job queue. Jobs that are in the `STARTING` or `RUNNING` state are terminated, which causes them to transition to `FAILED`. Jobs that have not progressed to the `STARTING` state are cancelled.
 #'
-#' @usage
-#' batch_terminate_job(jobId, reason)
+#' See [https://paws-r.github.io/docs/batch/terminate_job.html](https://paws-r.github.io/docs/batch/terminate_job.html) for full documentation.
 #'
-#' @param jobId &#91;required&#93; The AWS Batch job ID of the job to terminate.
+#' @param jobId &#91;required&#93; The Batch job ID of the job to terminate.
 #' @param reason &#91;required&#93; A message to attach to the job that explains the reason for canceling
 #' it. This message is returned by future
 #' [`describe_jobs`][batch_describe_jobs] operations on the job. This
-#' message is also recorded in the AWS Batch activity logs.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$terminate_job(
-#'   jobId = "string",
-#'   reason = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example terminates a job with the specified job ID.
-#' svc$terminate_job(
-#'   jobId = "61e743ed-35e4-48da-b2de-5c8333821c84",
-#'   reason = "Terminating job."
-#' )
-#' }
+#' message is also recorded in the Batch activity logs.
 #'
 #' @keywords internal
 #'
@@ -2417,43 +1031,18 @@ batch_terminate_job <- function(jobId, reason) {
 }
 .batch$operations$terminate_job <- batch_terminate_job
 
-#' Deletes specified tags from an AWS Batch resource
+#' Deletes specified tags from an Batch resource
 #'
 #' @description
-#' Deletes specified tags from an AWS Batch resource.
+#' Deletes specified tags from an Batch resource.
 #'
-#' @usage
-#' batch_untag_resource(resourceArn, tagKeys)
+#' See [https://paws-r.github.io/docs/batch/untag_resource.html](https://paws-r.github.io/docs/batch/untag_resource.html) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which to delete
-#' tags. AWS Batch resources that support tags are compute environments,
-#' jobs, job definitions, and job queues. ARNs for child jobs of array and
-#' multi-node parallel (MNP) jobs are not supported.
+#' tags. Batch resources that support tags are compute environments, jobs,
+#' job definitions, job queues, and scheduling policies. ARNs for child
+#' jobs of array and multi-node parallel (MNP) jobs are not supported.
 #' @param tagKeys &#91;required&#93; The keys of the tags to be removed.
-#'
-#' @return
-#' An empty list.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$untag_resource(
-#'   resourceArn = "string",
-#'   tagKeys = list(
-#'     "string"
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This demonstrates calling the UntagResource action.
-#' svc$untag_resource(
-#'   resourceArn = "arn:aws:batch:us-east-1:123456789012:job-definition/sleep30:1",
-#'   tagKeys = list(
-#'     "Stage"
-#'   )
-#' )
-#' }
 #'
 #' @keywords internal
 #'
@@ -2475,14 +1064,12 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 }
 .batch$operations$untag_resource <- batch_untag_resource
 
-#' Updates an AWS Batch compute environment
+#' Updates an Batch compute environment
 #'
 #' @description
-#' Updates an AWS Batch compute environment.
+#' Updates an Batch compute environment.
 #'
-#' @usage
-#' batch_update_compute_environment(computeEnvironment, state,
-#'   computeResources, serviceRole)
+#' See [https://paws-r.github.io/docs/batch/update_compute_environment.html](https://paws-r.github.io/docs/batch/update_compute_environment.html) for full documentation.
 #'
 #' @param computeEnvironment &#91;required&#93; The name or full Amazon Resource Name (ARN) of the compute environment
 #' to update.
@@ -2490,89 +1077,70 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' `ENABLED` state can accept jobs from a queue and scale in or out
 #' automatically based on the workload demand of its associated queues.
 #' 
-#' If the state is `ENABLED`, then the AWS Batch scheduler can attempt to
-#' place jobs from an associated job queue on the compute resources within
-#' the environment. If the compute environment is managed, then it can
-#' scale its instances out or in automatically, based on the job queue
-#' demand.
+#' If the state is `ENABLED`, then the Batch scheduler can attempt to place
+#' jobs from an associated job queue on the compute resources within the
+#' environment. If the compute environment is managed, then it can scale
+#' its instances out or in automatically, based on the job queue demand.
 #' 
-#' If the state is `DISABLED`, then the AWS Batch scheduler doesn't attempt
-#' to place jobs within the environment. Jobs in a `STARTING` or `RUNNING`
+#' If the state is `DISABLED`, then the Batch scheduler doesn't attempt to
+#' place jobs within the environment. Jobs in a `STARTING` or `RUNNING`
 #' state continue to progress normally. Managed compute environments in the
 #' `DISABLED` state don't scale out. However, they scale in to `minvCpus`
 #' value after instances become idle.
+#' @param unmanagedvCpus The maximum number of vCPUs expected to be used for an unmanaged compute
+#' environment. Do not specify this parameter for a managed compute
+#' environment. This parameter is only used for fair share scheduling to
+#' reserve vCPU capacity for new share identifiers. If this parameter is
+#' not provided for a fair share job queue, no vCPU capacity will be
+#' reserved.
 #' @param computeResources Details of the compute resources managed by the compute environment.
 #' Required for a managed compute environment. For more information, see
 #' [Compute
 #' Environments](https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
-#' in the *AWS Batch User Guide*.
-#' @param serviceRole The full Amazon Resource Name (ARN) of the IAM role that allows AWS
-#' Batch to make calls to other AWS services on your behalf. For more
-#' information, see [AWS Batch service IAM
+#' in the *Batch User Guide*.
+#' @param serviceRole The full Amazon Resource Name (ARN) of the IAM role that allows Batch to
+#' make calls to other Amazon Web Services services on your behalf. For
+#' more information, see [Batch service IAM
 #' role](https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html)
-#' in the *AWS Batch User Guide*.
+#' in the *Batch User Guide*.
+#' 
+#' If the compute environment has a service-linked role, it can't be
+#' changed to use a regular IAM role. Likewise, if the compute environment
+#' has a regular IAM role, it can't be changed to use a service-linked
+#' role. To update the parameters for the compute environment that require
+#' an infrastructure update to change, the **AWSServiceRoleForBatch**
+#' service-linked role must be used. For more information, see [Updating
+#' compute
+#' environments](https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html)
+#' in the *Batch User Guide*.
 #' 
 #' If your specified role has a path other than `/`, then you must either
-#' specify the full role ARN (this is recommended) or prefix the role name
-#' with the path.
+#' specify the full role ARN (recommended) or prefix the role name with the
+#' path.
 #' 
-#' Depending on how you created your AWS Batch service role, its ARN might
+#' Depending on how you created your Batch service role, its ARN might
 #' contain the `service-role` path prefix. When you only specify the name
-#' of the service role, AWS Batch assumes that your ARN does not use the
+#' of the service role, Batch assumes that your ARN doesn't use the
 #' `service-role` path prefix. Because of this, we recommend that you
 #' specify the full ARN of your service role when you create compute
 #' environments.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   computeEnvironmentName = "string",
-#'   computeEnvironmentArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_compute_environment(
-#'   computeEnvironment = "string",
-#'   state = "ENABLED"|"DISABLED",
-#'   computeResources = list(
-#'     minvCpus = 123,
-#'     maxvCpus = 123,
-#'     desiredvCpus = 123,
-#'     subnets = list(
-#'       "string"
-#'     ),
-#'     securityGroupIds = list(
-#'       "string"
-#'     )
-#'   ),
-#'   serviceRole = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example disables the P2OnDemand compute environment so it can be
-#' # deleted.
-#' svc$update_compute_environment(
-#'   computeEnvironment = "P2OnDemand",
-#'   state = "DISABLED"
-#' )
-#' }
+#' @param updatePolicy Specifies the updated infrastructure update policy for the compute
+#' environment. For more information about infrastructure updates, see
+#' [Updating compute
+#' environments](https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html)
+#' in the *Batch User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname batch_update_compute_environment
-batch_update_compute_environment <- function(computeEnvironment, state = NULL, computeResources = NULL, serviceRole = NULL) {
+batch_update_compute_environment <- function(computeEnvironment, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, updatePolicy = NULL) {
   op <- new_operation(
     name = "UpdateComputeEnvironment",
     http_method = "POST",
     http_path = "/v1/updatecomputeenvironment",
     paginator = list()
   )
-  input <- .batch$update_compute_environment_input(computeEnvironment = computeEnvironment, state = state, computeResources = computeResources, serviceRole = serviceRole)
+  input <- .batch$update_compute_environment_input(computeEnvironment = computeEnvironment, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, updatePolicy = updatePolicy)
   output <- .batch$update_compute_environment_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -2587,79 +1155,50 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, c
 #' @description
 #' Updates a job queue.
 #'
-#' @usage
-#' batch_update_job_queue(jobQueue, state, priority,
-#'   computeEnvironmentOrder)
+#' See [https://paws-r.github.io/docs/batch/update_job_queue.html](https://paws-r.github.io/docs/batch/update_job_queue.html) for full documentation.
 #'
 #' @param jobQueue &#91;required&#93; The name or the Amazon Resource Name (ARN) of the job queue.
 #' @param state Describes the queue's ability to accept new jobs. If the job queue state
-#' is `ENABLED`, it is able to accept jobs. If the job queue state is
-#' `DISABLED`, new jobs cannot be added to the queue, but jobs already in
-#' the queue can finish.
+#' is `ENABLED`, it can accept jobs. If the job queue state is `DISABLED`,
+#' new jobs can't be added to the queue, but jobs already in the queue can
+#' finish.
+#' @param schedulingPolicyArn Amazon Resource Name (ARN) of the fair share scheduling policy. Once a
+#' job queue is created, the fair share scheduling policy can be replaced
+#' but not removed. The format is
+#' `aws:Partition:batch:Region:Account:scheduling-policy/Name `. For
+#' example,
+#' `aws:aws:batch:us-west-2:012345678910:scheduling-policy/MySchedulingPolicy`.
 #' @param priority The priority of the job queue. Job queues with a higher priority (or a
 #' higher integer value for the `priority` parameter) are evaluated first
 #' when associated with the same compute environment. Priority is
-#' determined in descending order, for example, a job queue with a priority
+#' determined in descending order. For example, a job queue with a priority
 #' value of `10` is given scheduling preference over a job queue with a
 #' priority value of `1`. All of the compute environments must be either
-#' EC2 (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`); EC2 and
-#' Fargate compute environments cannot be mixed.
+#' EC2 (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`). EC2 and
+#' Fargate compute environments can't be mixed.
 #' @param computeEnvironmentOrder Details the set of compute environments mapped to a job queue and their
 #' order relative to each other. This is one of the parameters used by the
-#' job scheduler to determine which compute environment should run a given
-#' job. Compute environments must be in the `VALID` state before you can
+#' job scheduler to determine which compute environment runs a given job.
+#' Compute environments must be in the `VALID` state before you can
 #' associate them with a job queue. All of the compute environments must be
-#' either EC2 (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`);
+#' either EC2 (`EC2` or `SPOT`) or Fargate (`FARGATE` or `FARGATE_SPOT`).
 #' EC2 and Fargate compute environments can't be mixed.
 #' 
 #' All compute environments that are associated with a job queue must share
-#' the same architecture. AWS Batch doesn't support mixing compute
-#' environment architecture types in a single job queue.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   jobQueueName = "string",
-#'   jobQueueArn = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$update_job_queue(
-#'   jobQueue = "string",
-#'   state = "ENABLED"|"DISABLED",
-#'   priority = 123,
-#'   computeEnvironmentOrder = list(
-#'     list(
-#'       order = 123,
-#'       computeEnvironment = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' # This example disables a job queue so that it can be deleted.
-#' svc$update_job_queue(
-#'   jobQueue = "GPGPU",
-#'   state = "DISABLED"
-#' )
-#' }
+#' the same architecture. Batch doesn't support mixing compute environment
+#' architecture types in a single job queue.
 #'
 #' @keywords internal
 #'
 #' @rdname batch_update_job_queue
-batch_update_job_queue <- function(jobQueue, state = NULL, priority = NULL, computeEnvironmentOrder = NULL) {
+batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn = NULL, priority = NULL, computeEnvironmentOrder = NULL) {
   op <- new_operation(
     name = "UpdateJobQueue",
     http_method = "POST",
     http_path = "/v1/updatejobqueue",
     paginator = list()
   )
-  input <- .batch$update_job_queue_input(jobQueue = jobQueue, state = state, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder)
+  input <- .batch$update_job_queue_input(jobQueue = jobQueue, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder)
   output <- .batch$update_job_queue_output()
   config <- get_config()
   svc <- .batch$service(config)
@@ -2668,3 +1207,33 @@ batch_update_job_queue <- function(jobQueue, state = NULL, priority = NULL, comp
   return(response)
 }
 .batch$operations$update_job_queue <- batch_update_job_queue
+
+#' Updates a scheduling policy
+#'
+#' @description
+#' Updates a scheduling policy.
+#'
+#' See [https://paws-r.github.io/docs/batch/update_scheduling_policy.html](https://paws-r.github.io/docs/batch/update_scheduling_policy.html) for full documentation.
+#'
+#' @param arn &#91;required&#93; The Amazon Resource Name (ARN) of the scheduling policy to update.
+#' @param fairsharePolicy The fair share policy.
+#'
+#' @keywords internal
+#'
+#' @rdname batch_update_scheduling_policy
+batch_update_scheduling_policy <- function(arn, fairsharePolicy = NULL) {
+  op <- new_operation(
+    name = "UpdateSchedulingPolicy",
+    http_method = "POST",
+    http_path = "/v1/updateschedulingpolicy",
+    paginator = list()
+  )
+  input <- .batch$update_scheduling_policy_input(arn = arn, fairsharePolicy = fairsharePolicy)
+  output <- .batch$update_scheduling_policy_output()
+  config <- get_config()
+  svc <- .batch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.batch$operations$update_scheduling_policy <- batch_update_scheduling_policy

@@ -5,7 +5,7 @@
 \title{Lists the names of the inline policies embedded in the specified IAM
 user}
 \usage{
-iam_list_user_policies(UserName, Marker, MaxItems)
+iam_list_user_policies(UserName, Marker = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{UserName}{[required] The name of the user to list policies for.
@@ -29,37 +29,9 @@ results available. In that case, the \code{IsTruncated} response element
 returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PolicyNames = list(
-    "string"
-  ),
-  IsTruncated = TRUE|FALSE,
-  Marker = "string"
-)
-}
-}
 \description{
-Lists the names of the inline policies embedded in the specified IAM
-user.
+Lists the names of the inline policies embedded in the specified IAM user.
 
-An IAM user can also have managed policies attached to it. To list the
-managed policies that are attached to a user, use
-\code{\link[=iam_list_attached_user_policies]{list_attached_user_policies}}. For
-more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
-in the \emph{IAM User Guide}.
-
-You can paginate the results using the \code{MaxItems} and \code{Marker}
-parameters. If there are no inline policies embedded with the specified
-user, the operation returns an empty list.
+See \url{https://paws-r.github.io/docs/iam/list_user_policies.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_user_policies(
-  UserName = "string",
-  Marker = "string",
-  MaxItems = 123
-)
-}
-}
-
 \keyword{internal}

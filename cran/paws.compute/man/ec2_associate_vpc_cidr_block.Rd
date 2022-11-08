@@ -4,8 +4,18 @@
 \alias{ec2_associate_vpc_cidr_block}
 \title{Associates a CIDR block with your VPC}
 \usage{
-ec2_associate_vpc_cidr_block(AmazonProvidedIpv6CidrBlock, CidrBlock,
-  VpcId, Ipv6CidrBlockNetworkBorderGroup, Ipv6Pool, Ipv6CidrBlock)
+ec2_associate_vpc_cidr_block(
+  AmazonProvidedIpv6CidrBlock = NULL,
+  CidrBlock = NULL,
+  VpcId,
+  Ipv6CidrBlockNetworkBorderGroup = NULL,
+  Ipv6Pool = NULL,
+  Ipv6CidrBlock = NULL,
+  Ipv4IpamPoolId = NULL,
+  Ipv4NetmaskLength = NULL,
+  Ipv6IpamPoolId = NULL,
+  Ipv6NetmaskLength = NULL
+)
 }
 \arguments{
 \item{AmazonProvidedIpv6CidrBlock}{Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for
@@ -31,56 +41,28 @@ block.}
 \code{Ipv6Pool} in the request.
 
 To let Amazon choose the IPv6 CIDR block for you, omit this parameter.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Ipv6CidrBlockAssociation = list(
-    AssociationId = "string",
-    Ipv6CidrBlock = "string",
-    Ipv6CidrBlockState = list(
-      State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
-      StatusMessage = "string"
-    ),
-    NetworkBorderGroup = "string",
-    Ipv6Pool = "string"
-  ),
-  CidrBlockAssociation = list(
-    AssociationId = "string",
-    CidrBlock = "string",
-    CidrBlockState = list(
-      State = "associating"|"associated"|"disassociating"|"disassociated"|"failing"|"failed",
-      StatusMessage = "string"
-    )
-  ),
-  VpcId = "string"
-)
-}
+
+\item{Ipv4IpamPoolId}{Associate a CIDR allocated from an IPv4 IPAM pool to a VPC. For more
+information about Amazon VPC IP Address Manager (IPAM), see \href{https://docs.aws.amazon.com/vpc/latest/ipam/}{What is IPAM?} in the \emph{Amazon VPC
+IPAM User Guide}.}
+
+\item{Ipv4NetmaskLength}{The netmask length of the IPv4 CIDR you would like to associate from an
+Amazon VPC IP Address Manager (IPAM) pool. For more information about
+IPAM, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/}{What is IPAM?}
+in the \emph{Amazon VPC IPAM User Guide}.}
+
+\item{Ipv6IpamPoolId}{Associates a CIDR allocated from an IPv6 IPAM pool to a VPC. For more
+information about Amazon VPC IP Address Manager (IPAM), see \href{https://docs.aws.amazon.com/vpc/latest/ipam/}{What is IPAM?} in the \emph{Amazon VPC
+IPAM User Guide}.}
+
+\item{Ipv6NetmaskLength}{The netmask length of the IPv6 CIDR you would like to associate from an
+Amazon VPC IP Address Manager (IPAM) pool. For more information about
+IPAM, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/}{What is IPAM?}
+in the \emph{Amazon VPC IPAM User Guide}.}
 }
 \description{
-Associates a CIDR block with your VPC. You can associate a secondary
-IPv4 CIDR block, an Amazon-provided IPv6 CIDR block, or an IPv6 CIDR
-block from an IPv6 address pool that you provisioned through bring your
-own IP addresses
-(\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html}{BYOIP}).
-The IPv6 CIDR block size is fixed at /56.
+Associates a CIDR block with your VPC. You can associate a secondary IPv4 CIDR block, an Amazon-provided IPv6 CIDR block, or an IPv6 CIDR block from an IPv6 address pool that you provisioned through bring your own IP addresses (\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html}{BYOIP}). The IPv6 CIDR block size is fixed at /56.
 
-You must specify one of the following in the request: an IPv4 CIDR
-block, an IPv6 pool, or an Amazon-provided IPv6 CIDR block.
-
-For more information about associating CIDR blocks with your VPC and
-applicable restrictions, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#VPC_Sizing}{VPC and Subnet Sizing}
-in the \emph{Amazon Virtual Private Cloud User Guide}.
+See \url{https://paws-r.github.io/docs/ec2/associate_vpc_cidr_block.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$associate_vpc_cidr_block(
-  AmazonProvidedIpv6CidrBlock = TRUE|FALSE,
-  CidrBlock = "string",
-  VpcId = "string",
-  Ipv6CidrBlockNetworkBorderGroup = "string",
-  Ipv6Pool = "string",
-  Ipv6CidrBlock = "string"
-)
-}
-}
-
 \keyword{internal}

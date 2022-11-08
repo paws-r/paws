@@ -9,57 +9,9 @@ opsworks_describe_time_based_auto_scaling(InstanceIds)
 \arguments{
 \item{InstanceIds}{[required] An array of instance IDs.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TimeBasedAutoScalingConfigurations = list(
-    list(
-      InstanceId = "string",
-      AutoScalingSchedule = list(
-        Monday = list(
-          "string"
-        ),
-        Tuesday = list(
-          "string"
-        ),
-        Wednesday = list(
-          "string"
-        ),
-        Thursday = list(
-          "string"
-        ),
-        Friday = list(
-          "string"
-        ),
-        Saturday = list(
-          "string"
-        ),
-        Sunday = list(
-          "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes time-based auto scaling configurations for specified
-instances.
+Describes time-based auto scaling configurations for specified instances.
 
-You must specify at least one of the parameters.
-
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information about
-user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/describe_time_based_auto_scaling.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_time_based_auto_scaling(
-  InstanceIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

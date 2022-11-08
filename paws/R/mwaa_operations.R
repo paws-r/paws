@@ -3,15 +3,18 @@
 #' @include mwaa_service.R
 NULL
 
-#' Create a CLI token to use Airflow CLI
+#' Creates a CLI token for the Airflow CLI
 #'
 #' @description
-#' Create a CLI token to use Airflow CLI.
+#' Creates a CLI token for the Airflow CLI. To learn more, see [Creating an
+#' Apache Airflow CLI
+#' token](https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-cli.html).
 #'
 #' @usage
 #' mwaa_create_cli_token(Name)
 #'
-#' @param Name &#91;required&#93; Create a CLI token request for a MWAA environment.
+#' @param Name &#91;required&#93; The name of the Amazon MWAA environment. For example,
+#' `MyMWAAEnvironment`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -49,80 +52,105 @@ mwaa_create_cli_token <- function(Name) {
 }
 .mwaa$operations$create_cli_token <- mwaa_create_cli_token
 
-#' JSON blob that describes the environment to create
+#' Creates an Amazon Managed Workflows for Apache Airflow (MWAA)
+#' environment
 #'
 #' @description
-#' JSON blob that describes the environment to create.
+#' Creates an Amazon Managed Workflows for Apache Airflow (MWAA)
+#' environment.
 #'
 #' @usage
 #' mwaa_create_environment(AirflowConfigurationOptions, AirflowVersion,
 #'   DagS3Path, EnvironmentClass, ExecutionRoleArn, KmsKey,
-#'   LoggingConfiguration, MaxWorkers, Name, NetworkConfiguration,
-#'   PluginsS3ObjectVersion, PluginsS3Path, RequirementsS3ObjectVersion,
-#'   RequirementsS3Path, SourceBucketArn, Tags, WebserverAccessMode,
+#'   LoggingConfiguration, MaxWorkers, MinWorkers, Name,
+#'   NetworkConfiguration, PluginsS3ObjectVersion, PluginsS3Path,
+#'   RequirementsS3ObjectVersion, RequirementsS3Path, Schedulers,
+#'   SourceBucketArn, Tags, WebserverAccessMode,
 #'   WeeklyMaintenanceWindowStart)
 #'
-#' @param AirflowConfigurationOptions The Apache Airflow configuration setting you want to override in your
-#' environment. For more information, see [Environment
-#' configuration](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
-#' @param AirflowVersion The Apache Airflow version you want to use for your environment.
-#' @param DagS3Path &#91;required&#93; The relative path to the DAG folder on your Amazon S3 storage bucket.
-#' For example, `dags`. For more information, see [Importing DAGs on Amazon
-#' MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/).
-#' @param EnvironmentClass The environment class you want to use for your environment. The
-#' environment class determines the size of the containers and database
-#' used for your Apache Airflow services.
+#' @param AirflowConfigurationOptions A list of key-value pairs containing the Apache Airflow configuration
+#' options you want to attach to your environment. To learn more, see
+#' [Apache Airflow configuration
+#' options](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
+#' @param AirflowVersion The Apache Airflow version for your environment. If no value is
+#' specified, it defaults to the latest version. Valid values: `1.10.12`,
+#' `2.0.2`, and `2.2.2`. To learn more, see [Apache Airflow versions on
+#' Amazon Managed Workflows for Apache Airflow
+#' (MWAA)](https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html).
+#' @param DagS3Path &#91;required&#93; The relative path to the DAGs folder on your Amazon S3 bucket. For
+#' example, `dags`. To learn more, see [Adding or updating
+#' DAGs](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html).
+#' @param EnvironmentClass The environment class type. Valid values: `mw1.small`, `mw1.medium`,
+#' `mw1.large`. To learn more, see [Amazon MWAA environment
+#' class](https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html).
 #' @param ExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the execution role for your
-#' environment. An execution role is an AWS Identity and Access Management
-#' (IAM) role that grants MWAA permission to access AWS services and
-#' resources used by your environment. For example,
-#' `arn:aws:iam::123456789:role/my-execution-role`. For more information,
-#' see [Managing access to Amazon Managed Workflows for Apache
-#' Airflow](https://docs.aws.amazon.com/mwaa/latest/userguide/manage-access.html).
-#' @param KmsKey The AWS Key Management Service (KMS) key to encrypt and decrypt the data
-#' in your environment. You can use an AWS KMS key managed by MWAA, or a
-#' custom KMS key (advanced). For more information, see [Customer master
-#' keys
-#' (CMKs)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html?icmpid=docs_console_unmapped#master_keys)
-#' in the AWS KMS developer guide.
-#' @param LoggingConfiguration The Apache Airflow logs you want to send to Amazon CloudWatch Logs.
+#' environment. An execution role is an Amazon Web Services Identity and
+#' Access Management (IAM) role that grants MWAA permission to access
+#' Amazon Web Services services and resources used by your environment. For
+#' example, `arn:aws:iam::123456789:role/my-execution-role`. To learn more,
+#' see [Amazon MWAA Execution
+#' role](https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html).
+#' @param KmsKey The Amazon Web Services Key Management Service (KMS) key to encrypt the
+#' data in your environment. You can use an Amazon Web Services owned CMK,
+#' or a Customer managed CMK (advanced). To learn more, see [Create an
+#' Amazon MWAA
+#' environment](https://docs.aws.amazon.com/mwaa/latest/userguide/create-environment.html).
+#' @param LoggingConfiguration Defines the Apache Airflow logs to send to CloudWatch Logs.
 #' @param MaxWorkers The maximum number of workers that you want to run in your environment.
-#' MWAA scales the number of Apache Airflow workers and the Fargate
-#' containers that run your tasks up to the number you specify in this
-#' field. When there are no more tasks running, and no more in the queue,
-#' MWAA disposes of the extra containers leaving the one worker that is
-#' included with your environment.
-#' @param Name &#91;required&#93; The name of your MWAA environment.
-#' @param NetworkConfiguration &#91;required&#93; The VPC networking components you want to use for your environment. At
-#' least two private subnet identifiers and one VPC security group
-#' identifier are required to create an environment. For more information,
-#' see [Creating the VPC network for a MWAA
-#' environment](https://docs.aws.amazon.com/mwaa/latest/userguide/).
-#' @param PluginsS3ObjectVersion The `plugins.zip` file version you want to use.
-#' @param PluginsS3Path The relative path to the `plugins.zip` file on your Amazon S3 storage
-#' bucket. For example, `plugins.zip`. If a relative path is provided in
-#' the request, then `PluginsS3ObjectVersion` is required. For more
-#' information, see [Importing DAGs on Amazon
-#' MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/).
-#' @param RequirementsS3ObjectVersion The `requirements.txt` file version you want to use.
+#' MWAA scales the number of Apache Airflow workers up to the number you
+#' specify in the `MaxWorkers` field. For example, `20`. When there are no
+#' more tasks running, and no more in the queue, MWAA disposes of the extra
+#' workers leaving the one worker that is included with your environment,
+#' or the number you specify in `MinWorkers`.
+#' @param MinWorkers The minimum number of workers that you want to run in your environment.
+#' MWAA scales the number of Apache Airflow workers up to the number you
+#' specify in the `MaxWorkers` field. When there are no more tasks running,
+#' and no more in the queue, MWAA disposes of the extra workers leaving the
+#' worker count you specify in the `MinWorkers` field. For example, `2`.
+#' @param Name &#91;required&#93; The name of the Amazon MWAA environment. For example,
+#' `MyMWAAEnvironment`.
+#' @param NetworkConfiguration &#91;required&#93; The VPC networking components used to secure and enable network traffic
+#' between the Amazon Web Services resources for your environment. To learn
+#' more, see [About networking on Amazon
+#' MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/networking-about.html).
+#' @param PluginsS3ObjectVersion The version of the plugins.zip file on your Amazon S3 bucket. A version
+#' must be specified each time a plugins.zip file is updated. To learn
+#' more, see [How S3 Versioning
+#' works](https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html).
+#' @param PluginsS3Path The relative path to the `plugins.zip` file on your Amazon S3 bucket.
+#' For example, `plugins.zip`. If specified, then the plugins.zip version
+#' is required. To learn more, see [Installing custom
+#' plugins](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import-plugins.html).
+#' @param RequirementsS3ObjectVersion The version of the requirements.txt file on your Amazon S3 bucket. A
+#' version must be specified each time a requirements.txt file is updated.
+#' To learn more, see [How S3 Versioning
+#' works](https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html).
 #' @param RequirementsS3Path The relative path to the `requirements.txt` file on your Amazon S3
-#' storage bucket. For example, `requirements.txt`. If a relative path is
-#' provided in the request, then `RequirementsS3ObjectVersion` is required.
-#' For more information, see [Importing DAGs on Amazon
-#' MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/).
-#' @param SourceBucketArn &#91;required&#93; The Amazon Resource Name (ARN) of your Amazon S3 storage bucket. For
-#' example, `arn:aws:s3:::airflow-mybucketname`.
-#' @param Tags The metadata tags you want to attach to your environment. For more
-#' information, see [Tagging AWS
+#' bucket. For example, `requirements.txt`. If specified, then a file
+#' version is required. To learn more, see [Installing Python
+#' dependencies](https://docs.aws.amazon.com/mwaa/latest/userguide/working-dags-dependencies.html).
+#' @param Schedulers The number of Apache Airflow schedulers to run in your environment.
+#' Valid values:
+#' 
+#' -   v2 - Accepts between 2 to 5. Defaults to 2.
+#' 
+#' -   v1 - Accepts 1.
+#' @param SourceBucketArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon S3 bucket where your DAG
+#' code and supporting files are stored. For example,
+#' `arn:aws:s3:::my-airflow-bucket-unique-name`. To learn more, see [Create
+#' an Amazon S3 bucket for Amazon
+#' MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-s3-bucket.html).
+#' @param Tags The key-value tag pairs you want to associate to your environment. For
+#' example, `"Environment": "Staging"`. To learn more, see [Tagging Amazon
+#' Web Services
 #' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
-#' @param WebserverAccessMode The networking access of your Apache Airflow web server. A public
-#' network allows your Airflow UI to be accessed over the Internet by users
-#' granted access in your IAM policy. A private network limits access of
-#' your Airflow UI to users within your VPC. For more information, see
-#' [Creating the VPC network for a MWAA
-#' environment](https://docs.aws.amazon.com/mwaa/latest/userguide/).
-#' @param WeeklyMaintenanceWindowStart The day and time you want MWAA to start weekly maintenance updates on
-#' your environment.
+#' @param WebserverAccessMode The Apache Airflow *Web server* access mode. To learn more, see [Apache
+#' Airflow access
+#' modes](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html).
+#' @param WeeklyMaintenanceWindowStart The day and time of the week in Coordinated Universal Time (UTC) 24-hour
+#' standard time to start weekly maintenance updates of your environment in
+#' the following format: `DAY:HH:MM`. For example: `TUE:03:30`. You can
+#' specify a start time in 30 minute increments only.
 #'
 #' @return
 #' A list with the following syntax:
@@ -166,6 +194,7 @@ mwaa_create_cli_token <- function(Name) {
 #'     )
 #'   ),
 #'   MaxWorkers = 123,
+#'   MinWorkers = 123,
 #'   Name = "string",
 #'   NetworkConfiguration = list(
 #'     SecurityGroupIds = list(
@@ -179,6 +208,7 @@ mwaa_create_cli_token <- function(Name) {
 #'   PluginsS3Path = "string",
 #'   RequirementsS3ObjectVersion = "string",
 #'   RequirementsS3Path = "string",
+#'   Schedulers = 123,
 #'   SourceBucketArn = "string",
 #'   Tags = list(
 #'     "string"
@@ -191,14 +221,14 @@ mwaa_create_cli_token <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname mwaa_create_environment
-mwaa_create_environment <- function(AirflowConfigurationOptions = NULL, AirflowVersion = NULL, DagS3Path, EnvironmentClass = NULL, ExecutionRoleArn, KmsKey = NULL, LoggingConfiguration = NULL, MaxWorkers = NULL, Name, NetworkConfiguration, PluginsS3ObjectVersion = NULL, PluginsS3Path = NULL, RequirementsS3ObjectVersion = NULL, RequirementsS3Path = NULL, SourceBucketArn, Tags = NULL, WebserverAccessMode = NULL, WeeklyMaintenanceWindowStart = NULL) {
+mwaa_create_environment <- function(AirflowConfigurationOptions = NULL, AirflowVersion = NULL, DagS3Path, EnvironmentClass = NULL, ExecutionRoleArn, KmsKey = NULL, LoggingConfiguration = NULL, MaxWorkers = NULL, MinWorkers = NULL, Name, NetworkConfiguration, PluginsS3ObjectVersion = NULL, PluginsS3Path = NULL, RequirementsS3ObjectVersion = NULL, RequirementsS3Path = NULL, Schedulers = NULL, SourceBucketArn, Tags = NULL, WebserverAccessMode = NULL, WeeklyMaintenanceWindowStart = NULL) {
   op <- new_operation(
     name = "CreateEnvironment",
     http_method = "PUT",
     http_path = "/environments/{Name}",
     paginator = list()
   )
-  input <- .mwaa$create_environment_input(AirflowConfigurationOptions = AirflowConfigurationOptions, AirflowVersion = AirflowVersion, DagS3Path = DagS3Path, EnvironmentClass = EnvironmentClass, ExecutionRoleArn = ExecutionRoleArn, KmsKey = KmsKey, LoggingConfiguration = LoggingConfiguration, MaxWorkers = MaxWorkers, Name = Name, NetworkConfiguration = NetworkConfiguration, PluginsS3ObjectVersion = PluginsS3ObjectVersion, PluginsS3Path = PluginsS3Path, RequirementsS3ObjectVersion = RequirementsS3ObjectVersion, RequirementsS3Path = RequirementsS3Path, SourceBucketArn = SourceBucketArn, Tags = Tags, WebserverAccessMode = WebserverAccessMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart)
+  input <- .mwaa$create_environment_input(AirflowConfigurationOptions = AirflowConfigurationOptions, AirflowVersion = AirflowVersion, DagS3Path = DagS3Path, EnvironmentClass = EnvironmentClass, ExecutionRoleArn = ExecutionRoleArn, KmsKey = KmsKey, LoggingConfiguration = LoggingConfiguration, MaxWorkers = MaxWorkers, MinWorkers = MinWorkers, Name = Name, NetworkConfiguration = NetworkConfiguration, PluginsS3ObjectVersion = PluginsS3ObjectVersion, PluginsS3Path = PluginsS3Path, RequirementsS3ObjectVersion = RequirementsS3ObjectVersion, RequirementsS3Path = RequirementsS3Path, Schedulers = Schedulers, SourceBucketArn = SourceBucketArn, Tags = Tags, WebserverAccessMode = WebserverAccessMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart)
   output <- .mwaa$create_environment_output()
   config <- get_config()
   svc <- .mwaa$service(config)
@@ -208,17 +238,18 @@ mwaa_create_environment <- function(AirflowConfigurationOptions = NULL, AirflowV
 }
 .mwaa$operations$create_environment <- mwaa_create_environment
 
-#' Create a JWT token to be used to login to Airflow Web UI with claims
-#' based Authentication
+#' Creates a web login token for the Airflow Web UI
 #'
 #' @description
-#' Create a JWT token to be used to login to Airflow Web UI with claims
-#' based Authentication.
+#' Creates a web login token for the Airflow Web UI. To learn more, see
+#' [Creating an Apache Airflow web login
+#' token](https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-web.html).
 #'
 #' @usage
 #' mwaa_create_web_login_token(Name)
 #'
-#' @param Name &#91;required&#93; Create an Airflow Web UI login token request for a MWAA environment.
+#' @param Name &#91;required&#93; The name of the Amazon MWAA environment. For example,
+#' `MyMWAAEnvironment`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -256,15 +287,18 @@ mwaa_create_web_login_token <- function(Name) {
 }
 .mwaa$operations$create_web_login_token <- mwaa_create_web_login_token
 
-#' Delete an existing environment
+#' Deletes an Amazon Managed Workflows for Apache Airflow (MWAA)
+#' environment
 #'
 #' @description
-#' Delete an existing environment.
+#' Deletes an Amazon Managed Workflows for Apache Airflow (MWAA)
+#' environment.
 #'
 #' @usage
 #' mwaa_delete_environment(Name)
 #'
-#' @param Name &#91;required&#93; The name of the environment to delete.
+#' @param Name &#91;required&#93; The name of the Amazon MWAA environment. For example,
+#' `MyMWAAEnvironment`.
 #'
 #' @return
 #' An empty list.
@@ -296,15 +330,18 @@ mwaa_delete_environment <- function(Name) {
 }
 .mwaa$operations$delete_environment <- mwaa_delete_environment
 
-#' Get details of an existing environment
+#' Describes an Amazon Managed Workflows for Apache Airflow (MWAA)
+#' environment
 #'
 #' @description
-#' Get details of an existing environment.
+#' Describes an Amazon Managed Workflows for Apache Airflow (MWAA)
+#' environment.
 #'
 #' @usage
 #' mwaa_get_environment(Name)
 #'
-#' @param Name &#91;required&#93; The name of the environment to retrieve.
+#' @param Name &#91;required&#93; The name of the Amazon MWAA environment. For example,
+#' `MyMWAAEnvironment`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -331,6 +368,7 @@ mwaa_delete_environment <- function(Name) {
 #'         ErrorCode = "string",
 #'         ErrorMessage = "string"
 #'       ),
+#'       Source = "string",
 #'       Status = "SUCCESS"|"PENDING"|"FAILED"
 #'     ),
 #'     LoggingConfiguration = list(
@@ -361,6 +399,7 @@ mwaa_delete_environment <- function(Name) {
 #'       )
 #'     ),
 #'     MaxWorkers = 123,
+#'     MinWorkers = 123,
 #'     Name = "string",
 #'     NetworkConfiguration = list(
 #'       SecurityGroupIds = list(
@@ -374,9 +413,10 @@ mwaa_delete_environment <- function(Name) {
 #'     PluginsS3Path = "string",
 #'     RequirementsS3ObjectVersion = "string",
 #'     RequirementsS3Path = "string",
+#'     Schedulers = 123,
 #'     ServiceRoleArn = "string",
 #'     SourceBucketArn = "string",
-#'     Status = "CREATING"|"CREATE_FAILED"|"AVAILABLE"|"UPDATING"|"DELETING"|"DELETED",
+#'     Status = "CREATING"|"CREATE_FAILED"|"AVAILABLE"|"UPDATING"|"DELETING"|"DELETED"|"UNAVAILABLE"|"UPDATE_FAILED",
 #'     Tags = list(
 #'       "string"
 #'     ),
@@ -414,16 +454,19 @@ mwaa_get_environment <- function(Name) {
 }
 .mwaa$operations$get_environment <- mwaa_get_environment
 
-#' List Amazon MWAA Environments
+#' Lists the Amazon Managed Workflows for Apache Airflow (MWAA)
+#' environments
 #'
 #' @description
-#' List Amazon MWAA Environments.
+#' Lists the Amazon Managed Workflows for Apache Airflow (MWAA)
+#' environments.
 #'
 #' @usage
 #' mwaa_list_environments(MaxResults, NextToken)
 #'
-#' @param MaxResults The maximum results when listing MWAA environments.
-#' @param NextToken The Next Token when listing MWAA environments.
+#' @param MaxResults The maximum number of results to retrieve per page. For example, `5`
+#' environments per page.
+#' @param NextToken Retrieves the next page of the results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -464,15 +507,20 @@ mwaa_list_environments <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .mwaa$operations$list_environments <- mwaa_list_environments
 
-#' List the tags for MWAA environments
+#' Lists the key-value tag pairs associated to the Amazon Managed Workflows
+#' for Apache Airflow (MWAA) environment
 #'
 #' @description
-#' List the tags for MWAA environments.
+#' Lists the key-value tag pairs associated to the Amazon Managed Workflows
+#' for Apache Airflow (MWAA) environment. For example,
+#' `"Environment": "Staging"`.
 #'
 #' @usage
 #' mwaa_list_tags_for_resource(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; The ARN of the MWAA environment.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon MWAA environment. For
+#' example,
+#' `arn:aws:airflow:us-east-1:123456789012:environment/MyMWAAEnvironment`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -511,17 +559,20 @@ mwaa_list_tags_for_resource <- function(ResourceArn) {
 }
 .mwaa$operations$list_tags_for_resource <- mwaa_list_tags_for_resource
 
-#' An operation for publishing metrics from the customers to the Ops plane
+#' Internal only
 #'
 #' @description
-#' An operation for publishing metrics from the customers to the Ops plane.
+#' **Internal only**. Publishes environment health metrics to Amazon
+#' CloudWatch.
 #'
 #' @usage
 #' mwaa_publish_metrics(EnvironmentName, MetricData)
 #'
-#' @param EnvironmentName &#91;required&#93; Publishes environment metric data to Amazon CloudWatch.
-#' @param MetricData &#91;required&#93; Publishes metric data points to Amazon CloudWatch. CloudWatch associates
-#' the data points with the specified metrica.
+#' @param EnvironmentName &#91;required&#93; **Internal only**. The name of the environment.
+#' @param MetricData &#91;required&#93; **Internal only**. Publishes metrics to Amazon CloudWatch. To learn more
+#' about the metrics published to Amazon CloudWatch, see [Amazon MWAA
+#' performance metrics in Amazon
+#' CloudWatch](https://docs.aws.amazon.com/mwaa/latest/userguide/cw-metrics.html).
 #'
 #' @return
 #' An empty list.
@@ -575,16 +626,23 @@ mwaa_publish_metrics <- function(EnvironmentName, MetricData) {
 }
 .mwaa$operations$publish_metrics <- mwaa_publish_metrics
 
-#' Add tag to the MWAA environments
+#' Associates key-value tag pairs to your Amazon Managed Workflows for
+#' Apache Airflow (MWAA) environment
 #'
 #' @description
-#' Add tag to the MWAA environments.
+#' Associates key-value tag pairs to your Amazon Managed Workflows for
+#' Apache Airflow (MWAA) environment.
 #'
 #' @usage
 #' mwaa_tag_resource(ResourceArn, Tags)
 #'
-#' @param ResourceArn &#91;required&#93; The tag resource ARN of the MWAA environments.
-#' @param Tags &#91;required&#93; The tag resource tag of the MWAA environments.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon MWAA environment. For
+#' example,
+#' `arn:aws:airflow:us-east-1:123456789012:environment/MyMWAAEnvironment`.
+#' @param Tags &#91;required&#93; The key-value tag pairs you want to associate to your environment. For
+#' example, `"Environment": "Staging"`. To learn more, see [Tagging Amazon
+#' Web Services
+#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 #'
 #' @return
 #' An empty list.
@@ -619,16 +677,22 @@ mwaa_tag_resource <- function(ResourceArn, Tags) {
 }
 .mwaa$operations$tag_resource <- mwaa_tag_resource
 
-#' Remove a tag from the MWAA environments
+#' Removes key-value tag pairs associated to your Amazon Managed Workflows
+#' for Apache Airflow (MWAA) environment
 #'
 #' @description
-#' Remove a tag from the MWAA environments.
+#' Removes key-value tag pairs associated to your Amazon Managed Workflows
+#' for Apache Airflow (MWAA) environment. For example,
+#' `"Environment": "Staging"`.
 #'
 #' @usage
 #' mwaa_untag_resource(ResourceArn, tagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The tag resource ARN of the MWAA environments.
-#' @param tagKeys &#91;required&#93; The tag resource key of the MWAA environments.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon MWAA environment. For
+#' example,
+#' `arn:aws:airflow:us-east-1:123456789012:environment/MyMWAAEnvironment`.
+#' @param tagKeys &#91;required&#93; The key-value tag pair you want to remove. For example,
+#' `"Environment": "Staging"`.
 #'
 #' @return
 #' An empty list.
@@ -663,38 +727,87 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 }
 .mwaa$operations$untag_resource <- mwaa_untag_resource
 
-#' Update an MWAA environment
+#' Updates an Amazon Managed Workflows for Apache Airflow (MWAA)
+#' environment
 #'
 #' @description
-#' Update an MWAA environment.
+#' Updates an Amazon Managed Workflows for Apache Airflow (MWAA)
+#' environment.
 #'
 #' @usage
 #' mwaa_update_environment(AirflowConfigurationOptions, AirflowVersion,
 #'   DagS3Path, EnvironmentClass, ExecutionRoleArn, LoggingConfiguration,
-#'   MaxWorkers, Name, NetworkConfiguration, PluginsS3ObjectVersion,
-#'   PluginsS3Path, RequirementsS3ObjectVersion, RequirementsS3Path,
-#'   SourceBucketArn, WebserverAccessMode, WeeklyMaintenanceWindowStart)
+#'   MaxWorkers, MinWorkers, Name, NetworkConfiguration,
+#'   PluginsS3ObjectVersion, PluginsS3Path, RequirementsS3ObjectVersion,
+#'   RequirementsS3Path, Schedulers, SourceBucketArn, WebserverAccessMode,
+#'   WeeklyMaintenanceWindowStart)
 #'
-#' @param AirflowConfigurationOptions The Airflow Configuration Options to update of your Amazon MWAA
+#' @param AirflowConfigurationOptions A list of key-value pairs containing the Apache Airflow configuration
+#' options you want to attach to your environment. To learn more, see
+#' [Apache Airflow configuration
+#' options](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
+#' @param AirflowVersion The Apache Airflow version for your environment. If no value is
+#' specified, defaults to the latest version. Valid values: `1.10.12`,
+#' `2.0.2`, and `2.2.2`.
+#' @param DagS3Path The relative path to the DAGs folder on your Amazon S3 bucket. For
+#' example, `dags`. To learn more, see [Adding or updating
+#' DAGs](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html).
+#' @param EnvironmentClass The environment class type. Valid values: `mw1.small`, `mw1.medium`,
+#' `mw1.large`. To learn more, see [Amazon MWAA environment
+#' class](https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html).
+#' @param ExecutionRoleArn The Amazon Resource Name (ARN) of the execution role in IAM that allows
+#' MWAA to access Amazon Web Services resources in your environment. For
+#' example, `arn:aws:iam::123456789:role/my-execution-role`. To learn more,
+#' see [Amazon MWAA Execution
+#' role](https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html).
+#' @param LoggingConfiguration The Apache Airflow log types to send to CloudWatch Logs.
+#' @param MaxWorkers The maximum number of workers that you want to run in your environment.
+#' MWAA scales the number of Apache Airflow workers up to the number you
+#' specify in the `MaxWorkers` field. For example, `20`. When there are no
+#' more tasks running, and no more in the queue, MWAA disposes of the extra
+#' workers leaving the one worker that is included with your environment,
+#' or the number you specify in `MinWorkers`.
+#' @param MinWorkers The minimum number of workers that you want to run in your environment.
+#' MWAA scales the number of Apache Airflow workers up to the number you
+#' specify in the `MaxWorkers` field. When there are no more tasks running,
+#' and no more in the queue, MWAA disposes of the extra workers leaving the
+#' worker count you specify in the `MinWorkers` field. For example, `2`.
+#' @param Name &#91;required&#93; The name of your Amazon MWAA environment. For example,
+#' `MyMWAAEnvironment`.
+#' @param NetworkConfiguration The VPC networking components used to secure and enable network traffic
+#' between the Amazon Web Services resources for your environment. To learn
+#' more, see [About networking on Amazon
+#' MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/networking-about.html).
+#' @param PluginsS3ObjectVersion The version of the plugins.zip file on your Amazon S3 bucket. A version
+#' must be specified each time a plugins.zip file is updated. To learn
+#' more, see [How S3 Versioning
+#' works](https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html).
+#' @param PluginsS3Path The relative path to the `plugins.zip` file on your Amazon S3 bucket.
+#' For example, `plugins.zip`. If specified, then the plugins.zip version
+#' is required. To learn more, see [Installing custom
+#' plugins](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import-plugins.html).
+#' @param RequirementsS3ObjectVersion The version of the requirements.txt file on your Amazon S3 bucket. A
+#' version must be specified each time a requirements.txt file is updated.
+#' To learn more, see [How S3 Versioning
+#' works](https://docs.aws.amazon.com/AmazonS3/latest/userguide/versioning-workflows.html).
+#' @param RequirementsS3Path The relative path to the `requirements.txt` file on your Amazon S3
+#' bucket. For example, `requirements.txt`. If specified, then a file
+#' version is required. To learn more, see [Installing Python
+#' dependencies](https://docs.aws.amazon.com/mwaa/latest/userguide/working-dags-dependencies.html).
+#' @param Schedulers The number of Apache Airflow schedulers to run in your Amazon MWAA
 #' environment.
-#' @param AirflowVersion The Airflow Version to update of your Amazon MWAA environment.
-#' @param DagS3Path The Dags folder S3 Path to update of your Amazon MWAA environment.
-#' @param EnvironmentClass The Environment Class to update of your Amazon MWAA environment.
-#' @param ExecutionRoleArn The Executio Role ARN to update of your Amazon MWAA environment.
-#' @param LoggingConfiguration The Logging Configuration to update of your Amazon MWAA environment.
-#' @param MaxWorkers The Maximum Workers to update of your Amazon MWAA environment.
-#' @param Name &#91;required&#93; The name of your Amazon MWAA environment that you wish to update.
-#' @param NetworkConfiguration The Network Configuration to update of your Amazon MWAA environment.
-#' @param PluginsS3ObjectVersion The Plugins.zip S3 Object Version to update of your Amazon MWAA
-#' environment.
-#' @param PluginsS3Path The Plugins.zip S3 Path to update of your Amazon MWAA environment.
-#' @param RequirementsS3ObjectVersion The Requirements.txt S3 ObjectV ersion to update of your Amazon MWAA
-#' environment.
-#' @param RequirementsS3Path The Requirements.txt S3 Path to update of your Amazon MWAA environment.
-#' @param SourceBucketArn The S3 Source Bucket ARN to update of your Amazon MWAA environment.
-#' @param WebserverAccessMode The Webserver Access Mode to update of your Amazon MWAA environment.
-#' @param WeeklyMaintenanceWindowStart The Weekly Maintenance Window Start to update of your Amazon MWAA
-#' environment.
+#' @param SourceBucketArn The Amazon Resource Name (ARN) of the Amazon S3 bucket where your DAG
+#' code and supporting files are stored. For example,
+#' `arn:aws:s3:::my-airflow-bucket-unique-name`. To learn more, see [Create
+#' an Amazon S3 bucket for Amazon
+#' MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-s3-bucket.html).
+#' @param WebserverAccessMode The Apache Airflow *Web server* access mode. To learn more, see [Apache
+#' Airflow access
+#' modes](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html).
+#' @param WeeklyMaintenanceWindowStart The day and time of the week in Coordinated Universal Time (UTC) 24-hour
+#' standard time to start weekly maintenance updates of your environment in
+#' the following format: `DAY:HH:MM`. For example: `TUE:03:30`. You can
+#' specify a start time in 30 minute increments only.
 #'
 #' @return
 #' A list with the following syntax:
@@ -737,6 +850,7 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #'     )
 #'   ),
 #'   MaxWorkers = 123,
+#'   MinWorkers = 123,
 #'   Name = "string",
 #'   NetworkConfiguration = list(
 #'     SecurityGroupIds = list(
@@ -747,6 +861,7 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #'   PluginsS3Path = "string",
 #'   RequirementsS3ObjectVersion = "string",
 #'   RequirementsS3Path = "string",
+#'   Schedulers = 123,
 #'   SourceBucketArn = "string",
 #'   WebserverAccessMode = "PRIVATE_ONLY"|"PUBLIC_ONLY",
 #'   WeeklyMaintenanceWindowStart = "string"
@@ -756,14 +871,14 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname mwaa_update_environment
-mwaa_update_environment <- function(AirflowConfigurationOptions = NULL, AirflowVersion = NULL, DagS3Path = NULL, EnvironmentClass = NULL, ExecutionRoleArn = NULL, LoggingConfiguration = NULL, MaxWorkers = NULL, Name, NetworkConfiguration = NULL, PluginsS3ObjectVersion = NULL, PluginsS3Path = NULL, RequirementsS3ObjectVersion = NULL, RequirementsS3Path = NULL, SourceBucketArn = NULL, WebserverAccessMode = NULL, WeeklyMaintenanceWindowStart = NULL) {
+mwaa_update_environment <- function(AirflowConfigurationOptions = NULL, AirflowVersion = NULL, DagS3Path = NULL, EnvironmentClass = NULL, ExecutionRoleArn = NULL, LoggingConfiguration = NULL, MaxWorkers = NULL, MinWorkers = NULL, Name, NetworkConfiguration = NULL, PluginsS3ObjectVersion = NULL, PluginsS3Path = NULL, RequirementsS3ObjectVersion = NULL, RequirementsS3Path = NULL, Schedulers = NULL, SourceBucketArn = NULL, WebserverAccessMode = NULL, WeeklyMaintenanceWindowStart = NULL) {
   op <- new_operation(
     name = "UpdateEnvironment",
     http_method = "PATCH",
     http_path = "/environments/{Name}",
     paginator = list()
   )
-  input <- .mwaa$update_environment_input(AirflowConfigurationOptions = AirflowConfigurationOptions, AirflowVersion = AirflowVersion, DagS3Path = DagS3Path, EnvironmentClass = EnvironmentClass, ExecutionRoleArn = ExecutionRoleArn, LoggingConfiguration = LoggingConfiguration, MaxWorkers = MaxWorkers, Name = Name, NetworkConfiguration = NetworkConfiguration, PluginsS3ObjectVersion = PluginsS3ObjectVersion, PluginsS3Path = PluginsS3Path, RequirementsS3ObjectVersion = RequirementsS3ObjectVersion, RequirementsS3Path = RequirementsS3Path, SourceBucketArn = SourceBucketArn, WebserverAccessMode = WebserverAccessMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart)
+  input <- .mwaa$update_environment_input(AirflowConfigurationOptions = AirflowConfigurationOptions, AirflowVersion = AirflowVersion, DagS3Path = DagS3Path, EnvironmentClass = EnvironmentClass, ExecutionRoleArn = ExecutionRoleArn, LoggingConfiguration = LoggingConfiguration, MaxWorkers = MaxWorkers, MinWorkers = MinWorkers, Name = Name, NetworkConfiguration = NetworkConfiguration, PluginsS3ObjectVersion = PluginsS3ObjectVersion, PluginsS3Path = PluginsS3Path, RequirementsS3ObjectVersion = RequirementsS3ObjectVersion, RequirementsS3Path = RequirementsS3Path, Schedulers = Schedulers, SourceBucketArn = SourceBucketArn, WebserverAccessMode = WebserverAccessMode, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart)
   output <- .mwaa$update_environment_output()
   config <- get_config()
   svc <- .mwaa$service(config)

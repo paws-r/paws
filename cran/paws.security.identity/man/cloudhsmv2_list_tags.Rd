@@ -4,7 +4,7 @@
 \alias{cloudhsmv2_list_tags}
 \title{Gets a list of tags for the specified AWS CloudHSM cluster}
 \usage{
-cloudhsmv2_list_tags(ResourceId, NextToken, MaxResults)
+cloudhsmv2_list_tags(ResourceId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
 \item{ResourceId}{[required] The cluster identifier (ID) for the cluster whose tags you are getting.
@@ -18,35 +18,9 @@ this value to get more tags.}
 more tags than the number you specify, the response contains a
 \code{NextToken} value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets a list of tags for the specified AWS CloudHSM cluster.
 
-This is a paginated operation, which means that each response might
-contain only a subset of all the tags. When the response contains only a
-subset of tags, it includes a \code{NextToken} value. Use this value in a
-subsequent \code{\link[=cloudhsmv2_list_tags]{list_tags}} request to get more tags.
-When you receive a response with no \code{NextToken} (or an empty or null
-value), that means there are no more tags to get.
+See \url{https://paws-r.github.io/docs/cloudhsmv2/list_tags.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$list_tags(
-  ResourceId = "string",
-  NextToken = "string",
-  MaxResults = 123
-)
-}
-}
-
 \keyword{internal}

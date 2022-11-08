@@ -5,8 +5,12 @@
 \title{Describes the VPC endpoint connections to your VPC endpoint services,
 including any endpoints that are pending your acceptance}
 \usage{
-ec2_describe_vpc_endpoint_connections(DryRun, Filters, MaxResults,
-  NextToken)
+ec2_describe_vpc_endpoint_connections(
+  DryRun = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -16,9 +20,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Filters}{One or more filters.
 \itemize{
+\item \code{ip-address-type} - The IP address type (\code{ipv4} | \code{ipv6}).
 \item \code{service-id} - The ID of the service.
-\item \code{vpc-endpoint-owner} - The AWS account number of the owner of the
-endpoint.
+\item \code{vpc-endpoint-owner} - The ID of the Amazon Web Services account ID
+that owns the endpoint.
 \item \code{vpc-endpoint-state} - The state of the endpoint
 (\code{pendingAcceptance} | \code{pending} | \code{available} | \code{deleting} |
 \code{deleted} | \code{rejected} | \code{failed}).
@@ -33,54 +38,9 @@ can be between 5 and 1,000; if \code{MaxResults} is given a value larger than
 
 \item{NextToken}{The token to retrieve the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  VpcEndpointConnections = list(
-    list(
-      ServiceId = "string",
-      VpcEndpointId = "string",
-      VpcEndpointOwner = "string",
-      VpcEndpointState = "PendingAcceptance"|"Pending"|"Available"|"Deleting"|"Deleted"|"Rejected"|"Failed"|"Expired",
-      CreationTimestamp = as.POSIXct(
-        "2015-01-01"
-      ),
-      DnsEntries = list(
-        list(
-          DnsName = "string",
-          HostedZoneId = "string"
-        )
-      ),
-      NetworkLoadBalancerArns = list(
-        "string"
-      ),
-      GatewayLoadBalancerArns = list(
-        "string"
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the VPC endpoint connections to your VPC endpoint services,
-including any endpoints that are pending your acceptance.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_vpc_endpoint_connections(
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Describes the VPC endpoint connections to your VPC endpoint services, including any endpoints that are pending your acceptance.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_vpc_endpoint_connections.html} for full documentation.
+}
 \keyword{internal}

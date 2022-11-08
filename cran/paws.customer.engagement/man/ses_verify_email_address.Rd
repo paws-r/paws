@@ -9,28 +9,9 @@ ses_verify_email_address(EmailAddress)
 \arguments{
 \item{EmailAddress}{[required] The email address to be verified.}
 }
-\value{
-An empty list.
-}
 \description{
-Deprecated. Use the \code{\link[=ses_verify_email_identity]{verify_email_identity}}
-operation to verify a new email address.
-}
-\section{Request syntax}{
-\preformatted{svc$verify_email_address(
-  EmailAddress = "string"
-)
-}
-}
+Deprecated. Use the \code{\link[=ses_verify_email_identity]{verify_email_identity}} operation to verify a new email address.
 
-\examples{
-\dontrun{
-# The following example starts the email address verification process with
-# Amazon SES:
-svc$verify_email_address(
-  EmailAddress = "user@example.com"
-)
-}
-
+See \url{https://paws-r.github.io/docs/ses/verify_email_address.html} for full documentation.
 }
 \keyword{internal}

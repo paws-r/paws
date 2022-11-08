@@ -5,8 +5,13 @@
 \title{Returns the descriptions of all the current mount targets, or a specific
 mount target, for a file system}
 \usage{
-efs_describe_mount_targets(MaxItems, Marker, FileSystemId,
-  MountTargetId, AccessPointId)
+efs_describe_mount_targets(
+  MaxItems = NULL,
+  Marker = NULL,
+  FileSystemId = NULL,
+  MountTargetId = NULL,
+  AccessPointId = NULL
+)
 }
 \arguments{
 \item{MaxItems}{(Optional) Maximum number of mount targets to return in the response.
@@ -33,56 +38,9 @@ to list. It must be included in your request if a \code{FileSystemId} or
 \code{MountTargetId} is not included in your request. Accepts either an
 access point ID or ARN as input.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Marker = "string",
-  MountTargets = list(
-    list(
-      OwnerId = "string",
-      MountTargetId = "string",
-      FileSystemId = "string",
-      SubnetId = "string",
-      LifeCycleState = "creating"|"available"|"updating"|"deleting"|"deleted",
-      IpAddress = "string",
-      NetworkInterfaceId = "string",
-      AvailabilityZoneId = "string",
-      AvailabilityZoneName = "string",
-      VpcId = "string"
-    )
-  ),
-  NextMarker = "string"
-)
-}
-}
 \description{
-Returns the descriptions of all the current mount targets, or a specific
-mount target, for a file system. When requesting all of the current
-mount targets, the order of mount targets returned in the response is
-unspecified.
+Returns the descriptions of all the current mount targets, or a specific mount target, for a file system. When requesting all of the current mount targets, the order of mount targets returned in the response is unspecified.
 
-This operation requires permissions for the
-\code{elasticfilesystem:DescribeMountTargets} action, on either the file
-system ID that you specify in \code{FileSystemId}, or on the file system of
-the mount target that you specify in \code{MountTargetId}.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_mount_targets(
-  MaxItems = 123,
-  Marker = "string",
-  FileSystemId = "string",
-  MountTargetId = "string",
-  AccessPointId = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# This operation describes all of a file system's mount targets.
-svc$describe_mount_targets(
-  FileSystemId = "fs-01234567"
-)
-}
-
+See \url{https://paws-r.github.io/docs/efs/describe_mount_targets.html} for full documentation.
 }
 \keyword{internal}

@@ -4,25 +4,19 @@
 \alias{codedeploy_update_application}
 \title{Changes the name of an application}
 \usage{
-codedeploy_update_application(applicationName, newApplicationName)
+codedeploy_update_application(
+  applicationName = NULL,
+  newApplicationName = NULL
+)
 }
 \arguments{
 \item{applicationName}{The current name of the application you want to change.}
 
 \item{newApplicationName}{The new name to give the application.}
 }
-\value{
-An empty list.
-}
 \description{
 Changes the name of an application.
-}
-\section{Request syntax}{
-\preformatted{svc$update_application(
-  applicationName = "string",
-  newApplicationName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/codedeploy/update_application.html} for full documentation.
+}
 \keyword{internal}

@@ -12,21 +12,9 @@ workspaces_associate_ip_groups(DirectoryId, GroupIds)
 
 \item{GroupIds}{[required] The identifiers of one or more IP access control groups.}
 }
-\value{
-An empty list.
-}
 \description{
-Associates the specified IP access control group with the specified
-directory.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_ip_groups(
-  DirectoryId = "string",
-  GroupIds = list(
-    "string"
-  )
-)
-}
-}
+Associates the specified IP access control group with the specified directory.
 
+See \url{https://paws-r.github.io/docs/workspaces/associate_ip_groups.html} for full documentation.
+}
 \keyword{internal}

@@ -11,34 +11,9 @@ lightsail_get_container_images(serviceName)
 \item{serviceName}{[required] The name of the container service for which to return registered
 container images.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  containerImages = list(
-    list(
-      image = "string",
-      digest = "string",
-      createdAt = as.POSIXct(
-        "2015-01-01"
-      )
-    )
-  )
-)
-}
-}
 \description{
-Returns the container images that are registered to your Amazon
-Lightsail container service.
+Returns the container images that are registered to your Amazon Lightsail container service.
 
-If you created a deployment on your Lightsail container service that
-uses container images from a public registry like Docker Hub, those
-images are not returned as part of this action. Those images are not
-registered to your Lightsail container service.
+See \url{https://paws-r.github.io/docs/lightsail/get_container_images.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_container_images(
-  serviceName = "string"
-)
-}
-}
-
 \keyword{internal}

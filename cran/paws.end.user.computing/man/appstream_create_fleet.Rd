@@ -4,11 +4,29 @@
 \alias{appstream_create_fleet}
 \title{Creates a fleet}
 \usage{
-appstream_create_fleet(Name, ImageName, ImageArn, InstanceType,
-  FleetType, ComputeCapacity, VpcConfig, MaxUserDurationInSeconds,
-  DisconnectTimeoutInSeconds, Description, DisplayName,
-  EnableDefaultInternetAccess, DomainJoinInfo, Tags,
-  IdleDisconnectTimeoutInSeconds, IamRoleArn, StreamView)
+appstream_create_fleet(
+  Name,
+  ImageName = NULL,
+  ImageArn = NULL,
+  InstanceType,
+  FleetType = NULL,
+  ComputeCapacity = NULL,
+  VpcConfig = NULL,
+  MaxUserDurationInSeconds = NULL,
+  DisconnectTimeoutInSeconds = NULL,
+  Description = NULL,
+  DisplayName = NULL,
+  EnableDefaultInternetAccess = NULL,
+  DomainJoinInfo = NULL,
+  Tags = NULL,
+  IdleDisconnectTimeoutInSeconds = NULL,
+  IamRoleArn = NULL,
+  StreamView = NULL,
+  Platform = NULL,
+  MaxConcurrentSessions = NULL,
+  UsbDeviceFilterStrings = NULL,
+  SessionScriptS3Location = NULL
+)
 }
 \arguments{
 \item{Name}{[required] A unique name for the fleet.}
@@ -20,6 +38,7 @@ appstream_create_fleet(Name, ImageName, ImageArn, InstanceType,
 \item{InstanceType}{[required] The instance type to use when launching fleet instances. The following
 instance types are available:
 \itemize{
+\item stream.standard.small
 \item stream.standard.medium
 \item stream.standard.large
 \item stream.compute.large
@@ -52,6 +71,12 @@ instance types are available:
 \item stream.graphics-pro.4xlarge
 \item stream.graphics-pro.8xlarge
 \item stream.graphics-pro.16xlarge
+}
+
+The following instance types are available for Elastic fleets:
+\itemize{
+\item stream.standard.small
+\item stream.standard.medium
 }}
 
 \item{FleetType}{The fleet type.
@@ -70,9 +95,12 @@ users are connected and a small hourly fee for instances that are not
 streaming apps.
 }}
 
-\item{ComputeCapacity}{[required] The desired capacity for the fleet.}
+\item{ComputeCapacity}{The desired capacity for the fleet. This is not allowed for Elastic
+fleets. For Elastic fleets, specify MaxConcurrentSessions instead.}
 
-\item{VpcConfig}{The VPC configuration for the fleet.}
+\item{VpcConfig}{The VPC configuration for the fleet. This is required for Elastic
+fleets, but not required for other fleet types. Elastic fleets require
+that you specify at least two subnets in different availability zones.}
 
 \item{MaxUserDurationInSeconds}{The maximum amount of time that a streaming session can remain active,
 in seconds. If users are still connected to a streaming instance five
@@ -97,7 +125,8 @@ Specify a value between 60 and 360000.}
 \item{EnableDefaultInternetAccess}{Enables or disables default internet access for the fleet.}
 
 \item{DomainJoinInfo}{The name of the directory and organizational unit (OU) to use to join
-the fleet to a Microsoft Active Directory domain.}
+the fleet to a Microsoft Active Directory domain. This is not allowed
+for Elastic fleets.}
 
 \item{Tags}{The tags to associate with the fleet. A tag is a key-value pair, and the
 value is optional. For example, Environment=Test. If you do not specify
@@ -154,95 +183,23 @@ applications opened by users display. When \code{DESKTOP} is specified, the
 standard desktop that is provided by the operating system displays.
 
 The default value is \code{APP}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  Fleet = list(
-    Arn = "string",
-    Name = "string",
-    DisplayName = "string",
-    Description = "string",
-    ImageName = "string",
-    ImageArn = "string",
-    InstanceType = "string",
-    FleetType = "ALWAYS_ON"|"ON_DEMAND",
-    ComputeCapacityStatus = list(
-      Desired = 123,
-      Running = 123,
-      InUse = 123,
-      Available = 123
-    ),
-    MaxUserDurationInSeconds = 123,
-    DisconnectTimeoutInSeconds = 123,
-    State = "STARTING"|"RUNNING"|"STOPPING"|"STOPPED",
-    VpcConfig = list(
-      SubnetIds = list(
-        "string"
-      ),
-      SecurityGroupIds = list(
-        "string"
-      )
-    ),
-    CreatedTime = as.POSIXct(
-      "2015-01-01"
-    ),
-    FleetErrors = list(
-      list(
-        ErrorCode = "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"|"IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION"|"NETWORK_INTERFACE_LIMIT_EXCEEDED"|"INTERNAL_SERVICE_ERROR"|"IAM_SERVICE_ROLE_IS_MISSING"|"MACHINE_ROLE_IS_MISSING"|"STS_DISABLED_IN_REGION"|"SUBNET_HAS_INSUFFICIENT_IP_ADDRESSES"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SUBNET_ACTION"|"SUBNET_NOT_FOUND"|"IMAGE_NOT_FOUND"|"INVALID_SUBNET_CONFIGURATION"|"SECURITY_GROUPS_NOT_FOUND"|"IGW_NOT_ATTACHED"|"IAM_SERVICE_ROLE_MISSING_DESCRIBE_SECURITY_GROUPS_ACTION"|"DOMAIN_JOIN_ERROR_FILE_NOT_FOUND"|"DOMAIN_JOIN_ERROR_ACCESS_DENIED"|"DOMAIN_JOIN_ERROR_LOGON_FAILURE"|"DOMAIN_JOIN_ERROR_INVALID_PARAMETER"|"DOMAIN_JOIN_ERROR_MORE_DATA"|"DOMAIN_JOIN_ERROR_NO_SUCH_DOMAIN"|"DOMAIN_JOIN_ERROR_NOT_SUPPORTED"|"DOMAIN_JOIN_NERR_INVALID_WORKGROUP_NAME"|"DOMAIN_JOIN_NERR_WORKSTATION_NOT_STARTED"|"DOMAIN_JOIN_ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED"|"DOMAIN_JOIN_NERR_PASSWORD_EXPIRED"|"DOMAIN_JOIN_INTERNAL_SERVICE_ERROR",
-        ErrorMessage = "string"
-      )
-    ),
-    EnableDefaultInternetAccess = TRUE|FALSE,
-    DomainJoinInfo = list(
-      DirectoryName = "string",
-      OrganizationalUnitDistinguishedName = "string"
-    ),
-    IdleDisconnectTimeoutInSeconds = 123,
-    IamRoleArn = "string",
-    StreamView = "APP"|"DESKTOP"
-  )
-)
-}
+
+\item{Platform}{The fleet platform. WINDOWS_SERVER_2019 and AMAZON_LINUX2 are supported
+for Elastic fleets.}
+
+\item{MaxConcurrentSessions}{The maximum concurrent sessions of the Elastic fleet. This is required
+for Elastic fleets, and not allowed for other fleet types.}
+
+\item{UsbDeviceFilterStrings}{The USB device filter strings that specify which USB devices a user can
+redirect to the fleet streaming session, when using the Windows native
+client. This is allowed but not required for Elastic fleets.}
+
+\item{SessionScriptS3Location}{The S3 location of the session scripts configuration zip file. This only
+applies to Elastic fleets.}
 }
 \description{
-Creates a fleet. A fleet consists of streaming instances that run a
-specified image.
-}
-\section{Request syntax}{
-\preformatted{svc$create_fleet(
-  Name = "string",
-  ImageName = "string",
-  ImageArn = "string",
-  InstanceType = "string",
-  FleetType = "ALWAYS_ON"|"ON_DEMAND",
-  ComputeCapacity = list(
-    DesiredInstances = 123
-  ),
-  VpcConfig = list(
-    SubnetIds = list(
-      "string"
-    ),
-    SecurityGroupIds = list(
-      "string"
-    )
-  ),
-  MaxUserDurationInSeconds = 123,
-  DisconnectTimeoutInSeconds = 123,
-  Description = "string",
-  DisplayName = "string",
-  EnableDefaultInternetAccess = TRUE|FALSE,
-  DomainJoinInfo = list(
-    DirectoryName = "string",
-    OrganizationalUnitDistinguishedName = "string"
-  ),
-  Tags = list(
-    "string"
-  ),
-  IdleDisconnectTimeoutInSeconds = 123,
-  IamRoleArn = "string",
-  StreamView = "APP"|"DESKTOP"
-)
-}
-}
+Creates a fleet. A fleet consists of streaming instances that run a specified image when using Always-On or On-Demand.
 
+See \url{https://paws-r.github.io/docs/appstream/create_fleet.html} for full documentation.
+}
 \keyword{internal}

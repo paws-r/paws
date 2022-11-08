@@ -4,8 +4,13 @@
 \alias{ec2_describe_traffic_mirror_sessions}
 \title{Describes one or more Traffic Mirror sessions}
 \usage{
-ec2_describe_traffic_mirror_sessions(TrafficMirrorSessionIds, DryRun,
-  Filters, MaxResults, NextToken)
+ec2_describe_traffic_mirror_sessions(
+  TrafficMirrorSessionIds = NULL,
+  DryRun = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{TrafficMirrorSessionIds}{The ID of the Traffic Mirror session.}
@@ -37,54 +42,9 @@ value.}
 
 \item{NextToken}{The token for the next page of results.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TrafficMirrorSessions = list(
-    list(
-      TrafficMirrorSessionId = "string",
-      TrafficMirrorTargetId = "string",
-      TrafficMirrorFilterId = "string",
-      NetworkInterfaceId = "string",
-      OwnerId = "string",
-      PacketLength = 123,
-      SessionNumber = 123,
-      VirtualNetworkId = 123,
-      Description = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes one or more Traffic Mirror sessions. By default, all Traffic
-Mirror sessions are described. Alternatively, you can filter the
-results.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_traffic_mirror_sessions(
-  TrafficMirrorSessionIds = list(
-    "string"
-  ),
-  DryRun = TRUE|FALSE,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string"
-)
-}
-}
+Describes one or more Traffic Mirror sessions. By default, all Traffic Mirror sessions are described. Alternatively, you can filter the results.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_traffic_mirror_sessions.html} for full documentation.
+}
 \keyword{internal}

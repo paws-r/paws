@@ -6,37 +6,16 @@
 logging configuration and an Amazon VPC}
 \usage{
 route53resolver_get_resolver_query_log_config_association(
-  ResolverQueryLogConfigAssociationId)
+  ResolverQueryLogConfigAssociationId
+)
 }
 \arguments{
 \item{ResolverQueryLogConfigAssociationId}{[required] The ID of the Resolver query logging configuration association that you
 want to get information about.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ResolverQueryLogConfigAssociation = list(
-    Id = "string",
-    ResolverQueryLogConfigId = "string",
-    ResourceId = "string",
-    Status = "CREATING"|"ACTIVE"|"ACTION_NEEDED"|"DELETING"|"FAILED",
-    Error = "NONE"|"DESTINATION_NOT_FOUND"|"ACCESS_DENIED"|"INTERNAL_SERVICE_ERROR",
-    ErrorMessage = "string",
-    CreationTime = "string"
-  )
-)
-}
-}
 \description{
-Gets information about a specified association between a Resolver query
-logging configuration and an Amazon VPC. When you associate a VPC with a
-query logging configuration, Resolver logs DNS queries that originate in
-that VPC.
-}
-\section{Request syntax}{
-\preformatted{svc$get_resolver_query_log_config_association(
-  ResolverQueryLogConfigAssociationId = "string"
-)
-}
-}
+Gets information about a specified association between a Resolver query logging configuration and an Amazon VPC. When you associate a VPC with a query logging configuration, Resolver logs DNS queries that originate in that VPC.
 
+See \url{https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config_association.html} for full documentation.
+}
 \keyword{internal}

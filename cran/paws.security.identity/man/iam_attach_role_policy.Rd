@@ -15,44 +15,12 @@ spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and AWS Service Namespaces}
-in the \emph{AWS General Reference}.}
-}
-\value{
-An empty list.
+For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
-Attaches the specified managed policy to the specified IAM role. When
-you attach a managed policy to a role, the managed policy becomes part
-of the role's permission (access) policy.
+Attaches the specified managed policy to the specified IAM role. When you attach a managed policy to a role, the managed policy becomes part of the role's permission (access) policy.
 
-You cannot use a managed policy as the role's trust policy. The role's
-trust policy is created at the same time as the role, using
-\code{\link[=iam_create_role]{create_role}}. You can update a role's trust policy
-using \code{\link[=iam_update_assume_role_policy]{update_assume_role_policy}}.
-
-Use this API to attach a \emph{managed} policy to a role. To embed an inline
-policy in a role, use \code{\link[=iam_put_role_policy]{put_role_policy}}. For more
-information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
-in the \emph{IAM User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$attach_role_policy(
-  RoleName = "string",
-  PolicyArn = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following command attaches the AWS managed policy named
-# ReadOnlyAccess to the IAM role named ReadOnlyRole.
-svc$attach_role_policy(
-  PolicyArn = "arn:aws:iam::aws:policy/ReadOnlyAccess",
-  RoleName = "ReadOnlyRole"
-)
-}
-
+See \url{https://paws-r.github.io/docs/iam/attach_role_policy.html} for full documentation.
 }
 \keyword{internal}

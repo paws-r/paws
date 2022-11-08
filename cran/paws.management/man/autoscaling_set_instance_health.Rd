@@ -4,8 +4,11 @@
 \alias{autoscaling_set_instance_health}
 \title{Sets the health status of the specified instance}
 \usage{
-autoscaling_set_instance_health(InstanceId, HealthStatus,
-  ShouldRespectGracePeriod)
+autoscaling_set_instance_health(
+  InstanceId,
+  HealthStatus,
+  ShouldRespectGracePeriod = NULL
+)
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance.}
@@ -24,33 +27,9 @@ For more information about the health check grace period, see
 \code{\link[=autoscaling_create_auto_scaling_group]{create_auto_scaling_group}} in
 the \emph{Amazon EC2 Auto Scaling API Reference}.}
 }
-\value{
-An empty list.
-}
 \description{
 Sets the health status of the specified instance.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health checks for Auto Scaling instances}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$set_instance_health(
-  InstanceId = "string",
-  HealthStatus = "string",
-  ShouldRespectGracePeriod = TRUE|FALSE
-)
-}
-}
-
-\examples{
-\dontrun{
-# This example sets the health status of the specified instance to
-# Unhealthy.
-svc$set_instance_health(
-  HealthStatus = "Unhealthy",
-  InstanceId = "i-93633f9b"
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/set_instance_health.html} for full documentation.
 }
 \keyword{internal}

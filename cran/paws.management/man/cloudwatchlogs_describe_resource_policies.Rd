@@ -4,7 +4,7 @@
 \alias{cloudwatchlogs_describe_resource_policies}
 \title{Lists the resource policies in this account}
 \usage{
-cloudwatchlogs_describe_resource_policies(nextToken, limit)
+cloudwatchlogs_describe_resource_policies(nextToken = NULL, limit = NULL)
 }
 \arguments{
 \item{nextToken}{}
@@ -12,28 +12,9 @@ cloudwatchlogs_describe_resource_policies(nextToken, limit)
 \item{limit}{The maximum number of resource policies to be displayed with one call of
 this API.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  resourcePolicies = list(
-    list(
-      policyName = "string",
-      policyDocument = "string",
-      lastUpdatedTime = 123
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
 Lists the resource policies in this account.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_resource_policies(
-  nextToken = "string",
-  limit = 123
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_resource_policies.html} for full documentation.
+}
 \keyword{internal}

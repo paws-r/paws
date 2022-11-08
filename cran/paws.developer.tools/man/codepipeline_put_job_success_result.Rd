@@ -5,8 +5,13 @@
 \title{Represents the success of a job as returned to the pipeline by a job
 worker}
 \usage{
-codepipeline_put_job_success_result(jobId, currentRevision,
-  continuationToken, executionDetails, outputVariables)
+codepipeline_put_job_success_result(
+  jobId,
+  currentRevision = NULL,
+  continuationToken = NULL,
+  executionDetails = NULL,
+  outputVariables = NULL
+)
 }
 \arguments{
 \item{jobId}{[required] The unique system-generated ID of the job that succeeded. This is the
@@ -29,35 +34,9 @@ by the job worker.}
 available to a downstream action configuration. \code{outputVariables} can be
 included only when there is no continuation token on the request.}
 }
-\value{
-An empty list.
-}
 \description{
-Represents the success of a job as returned to the pipeline by a job
-worker. Used for custom actions only.
-}
-\section{Request syntax}{
-\preformatted{svc$put_job_success_result(
-  jobId = "string",
-  currentRevision = list(
-    revision = "string",
-    changeIdentifier = "string",
-    created = as.POSIXct(
-      "2015-01-01"
-    ),
-    revisionSummary = "string"
-  ),
-  continuationToken = "string",
-  executionDetails = list(
-    summary = "string",
-    externalExecutionId = "string",
-    percentComplete = 123
-  ),
-  outputVariables = list(
-    "string"
-  )
-)
-}
-}
+Represents the success of a job as returned to the pipeline by a job worker. Used for custom actions only.
 
+See \url{https://paws-r.github.io/docs/codepipeline/put_job_success_result.html} for full documentation.
+}
 \keyword{internal}

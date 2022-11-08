@@ -10,27 +10,9 @@ pinpoint_get_app(ApplicationId)
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ApplicationResponse = list(
-    Arn = "string",
-    Id = "string",
-    Name = "string",
-    tags = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Retrieves information about an application.
-}
-\section{Request syntax}{
-\preformatted{svc$get_app(
-  ApplicationId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/pinpoint/get_app.html} for full documentation.
+}
 \keyword{internal}

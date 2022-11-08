@@ -4,12 +4,16 @@
 \alias{ec2_create_egress_only_internet_gateway}
 \title{[IPv6 only] Creates an egress-only internet gateway for your VPC}
 \usage{
-ec2_create_egress_only_internet_gateway(ClientToken, DryRun, VpcId,
-  TagSpecifications)
+ec2_create_egress_only_internet_gateway(
+  ClientToken = NULL,
+  DryRun = NULL,
+  VpcId,
+  TagSpecifications = NULL
+)
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{How to ensure idempotency}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -20,52 +24,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{TagSpecifications}{The tags to assign to the egress-only internet gateway.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ClientToken = "string",
-  EgressOnlyInternetGateway = list(
-    Attachments = list(
-      list(
-        State = "attaching"|"attached"|"detaching"|"detached",
-        VpcId = "string"
-      )
-    ),
-    EgressOnlyInternetGatewayId = "string",
-    Tags = list(
-      list(
-        Key = "string",
-        Value = "string"
-      )
-    )
-  )
-)
-}
-}
 \description{
-[IPv6 only] Creates an egress-only internet gateway for your VPC. An
-egress-only internet gateway is used to enable outbound communication
-over IPv6 from instances in your VPC to the internet, and prevents hosts
-outside of your VPC from initiating an IPv6 connection with your
-instance.
-}
-\section{Request syntax}{
-\preformatted{svc$create_egress_only_internet_gateway(
-  ClientToken = "string",
-  DryRun = TRUE|FALSE,
-  VpcId = "string",
-  TagSpecifications = list(
-    list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
+[IPv6 only] Creates an egress-only internet gateway for your VPC. An egress-only internet gateway is used to enable outbound communication over IPv6 from instances in your VPC to the internet, and prevents hosts outside of your VPC from initiating an IPv6 connection with your instance.
 
+See \url{https://paws-r.github.io/docs/ec2/create_egress_only_internet_gateway.html} for full documentation.
+}
 \keyword{internal}

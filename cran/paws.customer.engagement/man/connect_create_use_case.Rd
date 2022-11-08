@@ -2,40 +2,29 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_create_use_case}
 \alias{connect_create_use_case}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Creates a use case for an integration association}
 \usage{
-connect_create_use_case(InstanceId, IntegrationAssociationId,
-  UseCaseType)
+connect_create_use_case(
+  InstanceId,
+  IntegrationAssociationId,
+  UseCaseType,
+  Tags = NULL
+)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.}
 
-\item{IntegrationAssociationId}{[required] The identifier for the AppIntegration association.}
+\item{IntegrationAssociationId}{[required] The identifier for the integration association.}
 
-\item{UseCaseType}{[required] The type of use case to associate to the AppIntegration association.
-Each AppIntegration association can have only one of each use case type.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  UseCaseId = "string",
-  UseCaseArn = "string"
-)
-}
+\item{UseCaseType}{[required] The type of use case to associate to the integration association. Each
+integration association can have only one of each use case type.}
+
+\item{Tags}{The tags used to organize, track, or control access for this resource.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to
-change.
+Creates a use case for an integration association.
 
-Creates a use case for an AppIntegration association.
+See \url{https://paws-r.github.io/docs/connect/create_use_case.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$create_use_case(
-  InstanceId = "string",
-  IntegrationAssociationId = "string",
-  UseCaseType = "RULES_EVALUATION"
-)
-}
-}
-
 \keyword{internal}

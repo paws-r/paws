@@ -7,23 +7,13 @@
 apigateway_delete_deployment(restApiId, deploymentId)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{deploymentId}{[required] [Required] The identifier of the Deployment resource to delete.}
-}
-\value{
-An empty list.
+\item{deploymentId}{[required] The identifier of the Deployment resource to delete.}
 }
 \description{
-Deletes a Deployment resource. Deleting a deployment will only succeed
-if there are no Stage resources associated with it.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_deployment(
-  restApiId = "string",
-  deploymentId = "string"
-)
-}
-}
+Deletes a Deployment resource. Deleting a deployment will only succeed if there are no Stage resources associated with it.
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_deployment.html} for full documentation.
+}
 \keyword{internal}

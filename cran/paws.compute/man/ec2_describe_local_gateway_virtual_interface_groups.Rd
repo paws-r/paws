@@ -5,8 +5,12 @@
 \title{Describes the specified local gateway virtual interface groups}
 \usage{
 ec2_describe_local_gateway_virtual_interface_groups(
-  LocalGatewayVirtualInterfaceGroupIds, Filters, MaxResults, NextToken,
-  DryRun)
+  LocalGatewayVirtualInterfaceGroupIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{LocalGatewayVirtualInterfaceGroupIds}{The IDs of the virtual interface groups.}
@@ -14,10 +18,12 @@ ec2_describe_local_gateway_virtual_interface_groups(
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{local-gateway-id} - The ID of a local gateway.
-\item \code{local-gateway-virtual-interface-id} - The ID of the virtual
-interface.
 \item \code{local-gateway-virtual-interface-group-id} - The ID of the virtual
 interface group.
+\item \code{local-gateway-virtual-interface-id} - The ID of the virtual
+interface.
+\item \code{owner-id} - The ID of the Amazon Web Services account that owns the
+local gateway virtual interface group.
 }}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve
@@ -31,49 +37,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  LocalGatewayVirtualInterfaceGroups = list(
-    list(
-      LocalGatewayVirtualInterfaceGroupId = "string",
-      LocalGatewayVirtualInterfaceIds = list(
-        "string"
-      ),
-      LocalGatewayId = "string",
-      OwnerId = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Describes the specified local gateway virtual interface groups.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_local_gateway_virtual_interface_groups(
-  LocalGatewayVirtualInterfaceGroupIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/describe_local_gateway_virtual_interface_groups.html} for full documentation.
+}
 \keyword{internal}

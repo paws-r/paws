@@ -5,15 +5,22 @@
 \title{Describes the specified customer-owned address pools or all of your
 customer-owned address pools}
 \usage{
-ec2_describe_coip_pools(PoolIds, Filters, MaxResults, NextToken, DryRun)
+ec2_describe_coip_pools(
+  PoolIds = NULL,
+  Filters = NULL,
+  MaxResults = NULL,
+  NextToken = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{PoolIds}{The IDs of the address pools.}
 
-\item{Filters}{The filters. The following are the possible values:
+\item{Filters}{One or more filters.
 \itemize{
-\item \code{coip-pool.pool-id}
-\item \code{coip-pool.local-gateway-route-table-id}
+\item \code{coip-pool.local-gateway-route-table-id} - The ID of the local
+gateway route table.
+\item \code{coip-pool.pool-id} - The ID of the address pool.
 }}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve
@@ -27,50 +34,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  CoipPools = list(
-    list(
-      PoolId = "string",
-      PoolCidrs = list(
-        "string"
-      ),
-      LocalGatewayRouteTableId = "string",
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      ),
-      PoolArn = "string"
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
-Describes the specified customer-owned address pools or all of your
-customer-owned address pools.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_coip_pools(
-  PoolIds = list(
-    "string"
-  ),
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  MaxResults = 123,
-  NextToken = "string",
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes the specified customer-owned address pools or all of your customer-owned address pools.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_coip_pools.html} for full documentation.
+}
 \keyword{internal}

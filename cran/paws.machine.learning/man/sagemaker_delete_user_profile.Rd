@@ -11,20 +11,9 @@ sagemaker_delete_user_profile(DomainId, UserProfileName)
 
 \item{UserProfileName}{[required] The user profile name.}
 }
-\value{
-An empty list.
-}
 \description{
-Deletes a user profile. When a user profile is deleted, the user loses
-access to their EFS volume, including data, notebooks, and other
-artifacts.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_user_profile(
-  DomainId = "string",
-  UserProfileName = "string"
-)
-}
-}
+Deletes a user profile. When a user profile is deleted, the user loses access to their EFS volume, including data, notebooks, and other artifacts.
 
+See \url{https://paws-r.github.io/docs/sagemaker/delete_user_profile.html} for full documentation.
+}
 \keyword{internal}

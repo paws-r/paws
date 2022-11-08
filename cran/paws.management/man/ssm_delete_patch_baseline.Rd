@@ -9,20 +9,9 @@ ssm_delete_patch_baseline(BaselineId)
 \arguments{
 \item{BaselineId}{[required] The ID of the patch baseline to delete.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  BaselineId = "string"
-)
-}
-}
 \description{
 Deletes a patch baseline.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_patch_baseline(
-  BaselineId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ssm/delete_patch_baseline.html} for full documentation.
+}
 \keyword{internal}

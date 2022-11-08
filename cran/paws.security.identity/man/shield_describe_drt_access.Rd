@@ -3,28 +3,14 @@
 \name{shield_describe_drt_access}
 \alias{shield_describe_drt_access}
 \title{Returns the current role and list of Amazon S3 log buckets used by the
-DDoS Response Team (DRT) to access your AWS account while assisting with
-attack mitigation}
+Shield Response Team (SRT) to access your Amazon Web Services account
+while assisting with attack mitigation}
 \usage{
 shield_describe_drt_access()
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  RoleArn = "string",
-  LogBucketList = list(
-    "string"
-  )
-)
-}
-}
 \description{
-Returns the current role and list of Amazon S3 log buckets used by the
-DDoS Response Team (DRT) to access your AWS account while assisting with
-attack mitigation.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_drt_access()
-}
-}
+Returns the current role and list of Amazon S3 log buckets used by the Shield Response Team (SRT) to access your Amazon Web Services account while assisting with attack mitigation.
 
+See \url{https://paws-r.github.io/docs/shield/describe_drt_access.html} for full documentation.
+}
 \keyword{internal}

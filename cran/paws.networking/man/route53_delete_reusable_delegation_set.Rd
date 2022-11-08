@@ -9,26 +9,9 @@ route53_delete_reusable_delegation_set(Id)
 \arguments{
 \item{Id}{[required] The ID of the reusable delegation set that you want to delete.}
 }
-\value{
-An empty list.
-}
 \description{
 Deletes a reusable delegation set.
 
-You can delete a reusable delegation set only if it isn't associated
-with any hosted zones.
-
-To verify that the reusable delegation set is not associated with any
-hosted zones, submit a
-\code{\link[=route53_get_reusable_delegation_set]{get_reusable_delegation_set}}
-request and specify the ID of the reusable delegation set that you want
-to delete.
+See \url{https://paws-r.github.io/docs/route53/delete_reusable_delegation_set.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$delete_reusable_delegation_set(
-  Id = "string"
-)
-}
-}
-
 \keyword{internal}

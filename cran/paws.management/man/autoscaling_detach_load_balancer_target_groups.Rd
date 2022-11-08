@@ -4,8 +4,10 @@
 \alias{autoscaling_detach_load_balancer_target_groups}
 \title{Detaches one or more target groups from the specified Auto Scaling group}
 \usage{
-autoscaling_detach_load_balancer_target_groups(AutoScalingGroupName,
-  TargetGroupARNs)
+autoscaling_detach_load_balancer_target_groups(
+  AutoScalingGroupName,
+  TargetGroupARNs
+)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -13,34 +15,9 @@ autoscaling_detach_load_balancer_target_groups(AutoScalingGroupName,
 \item{TargetGroupARNs}{[required] The Amazon Resource Names (ARN) of the target groups. You can specify up
 to 10 target groups.}
 }
-\value{
-An empty list.
-}
 \description{
-Detaches one or more target groups from the specified Auto Scaling
-group.
-}
-\section{Request syntax}{
-\preformatted{svc$detach_load_balancer_target_groups(
-  AutoScalingGroupName = "string",
-  TargetGroupARNs = list(
-    "string"
-  )
-)
-}
-}
+Detaches one or more target groups from the specified Auto Scaling group.
 
-\examples{
-\dontrun{
-# This example detaches the specified target group from the specified Auto
-# Scaling group
-svc$detach_load_balancer_target_groups(
-  AutoScalingGroupName = "my-auto-scaling-group",
-  TargetGroupARNs = list(
-    "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-tar..."
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/autoscaling/detach_load_balancer_target_groups.html} for full documentation.
 }
 \keyword{internal}

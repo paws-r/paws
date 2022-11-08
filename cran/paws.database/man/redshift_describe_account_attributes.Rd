@@ -4,36 +4,14 @@
 \alias{redshift_describe_account_attributes}
 \title{Returns a list of attributes attached to an account}
 \usage{
-redshift_describe_account_attributes(AttributeNames)
+redshift_describe_account_attributes(AttributeNames = NULL)
 }
 \arguments{
 \item{AttributeNames}{A list of attribute names.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  AccountAttributes = list(
-    list(
-      AttributeName = "string",
-      AttributeValues = list(
-        list(
-          AttributeValue = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
 Returns a list of attributes attached to an account
-}
-\section{Request syntax}{
-\preformatted{svc$describe_account_attributes(
-  AttributeNames = list(
-    "string"
-  )
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/redshift/describe_account_attributes.html} for full documentation.
+}
 \keyword{internal}

@@ -5,8 +5,13 @@
 \title{Updates a gateway's metadata, which includes the gateway's name and time
 zone}
 \usage{
-storagegateway_update_gateway_information(GatewayARN, GatewayName,
-  GatewayTimezone, CloudWatchLogGroupARN)
+storagegateway_update_gateway_information(
+  GatewayARN,
+  GatewayName = NULL,
+  GatewayTimezone = NULL,
+  CloudWatchLogGroupARN = NULL,
+  GatewayCapacity = NULL
+)
 }
 \arguments{
 \item{GatewayARN}{[required]}
@@ -19,43 +24,12 @@ storagegateway_update_gateway_information(GatewayARN, GatewayName,
 you want to use to monitor and log events in the gateway.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html}{What is Amazon CloudWatch Logs?}}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  GatewayARN = "string",
-  GatewayName = "string"
-)
-}
+
+\item{GatewayCapacity}{Specifies the size of the gateway's metadata cache.}
 }
 \description{
-Updates a gateway's metadata, which includes the gateway's name and time
-zone. To specify which gateway to update, use the Amazon Resource Name
-(ARN) of the gateway in your request.
+Updates a gateway's metadata, which includes the gateway's name and time zone. To specify which gateway to update, use the Amazon Resource Name (ARN) of the gateway in your request.
 
-For gateways activated after September 2, 2015, the gateway's ARN
-contains the gateway ID rather than the gateway name. However, changing
-the name of the gateway has no effect on the gateway's ARN.
-}
-\section{Request syntax}{
-\preformatted{svc$update_gateway_information(
-  GatewayARN = "string",
-  GatewayName = "string",
-  GatewayTimezone = "string",
-  CloudWatchLogGroupARN = "string"
-)
-}
-}
-
-\examples{
-\dontrun{
-# Updates a gateway's metadata, which includes the gateway's name and time
-# zone.
-svc$update_gateway_information(
-  GatewayARN = "arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B",
-  GatewayName = "MyGateway2",
-  GatewayTimezone = "GMT-12:00"
-)
-}
-
+See \url{https://paws-r.github.io/docs/storagegateway/update_gateway_information.html} for full documentation.
 }
 \keyword{internal}

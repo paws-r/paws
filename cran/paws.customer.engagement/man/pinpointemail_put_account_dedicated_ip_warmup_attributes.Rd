@@ -6,7 +6,8 @@
 addresses}
 \usage{
 pinpointemail_put_account_dedicated_ip_warmup_attributes(
-  AutoWarmupEnabled)
+  AutoWarmupEnabled = NULL
+)
 }
 \arguments{
 \item{AutoWarmupEnabled}{Enables or disables the automatic warm-up feature for dedicated IP
@@ -14,18 +15,9 @@ addresses that are associated with your Amazon Pinpoint account in the
 current AWS Region. Set to \code{true} to enable the automatic warm-up
 feature, or set to \code{false} to disable it.}
 }
-\value{
-An empty list.
-}
 \description{
-Enable or disable the automatic warm-up feature for dedicated IP
-addresses.
-}
-\section{Request syntax}{
-\preformatted{svc$put_account_dedicated_ip_warmup_attributes(
-  AutoWarmupEnabled = TRUE|FALSE
-)
-}
-}
+Enable or disable the automatic warm-up feature for dedicated IP addresses.
 
+See \url{https://paws-r.github.io/docs/pinpointemail/put_account_dedicated_ip_warmup_attributes.html} for full documentation.
+}
 \keyword{internal}

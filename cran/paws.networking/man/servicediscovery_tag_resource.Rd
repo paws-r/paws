@@ -14,42 +14,9 @@ tags for.}
 required. You can set the value of a tag to an empty string, but you
 can't set the value of a tag to null.}
 }
-\value{
-An empty list.
-}
 \description{
 Adds one or more tags to the specified resource.
-}
-\section{Request syntax}{
-\preformatted{svc$tag_resource(
-  ResourceARN = "string",
-  Tags = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 
-\examples{
-\dontrun{
-# This example adds "Department" and "Project" tags to a resource.
-svc$tag_resource(
-  ResourceARN = "arn:aws:servicediscovery:us-east-1:123456789012:namespace/...",
-  Tags = list(
-    list(
-      Key = "Department",
-      Value = "Engineering"
-    ),
-    list(
-      Key = "Project",
-      Value = "Zeta"
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/servicediscovery/tag_resource.html} for full documentation.
 }
 \keyword{internal}

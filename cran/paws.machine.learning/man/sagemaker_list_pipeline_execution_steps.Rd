@@ -4,8 +4,12 @@
 \alias{sagemaker_list_pipeline_execution_steps}
 \title{Gets a list of PipeLineExecutionStep objects}
 \usage{
-sagemaker_list_pipeline_execution_steps(PipelineExecutionArn, NextToken,
-  MaxResults, SortOrder)
+sagemaker_list_pipeline_execution_steps(
+  PipelineExecutionArn = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
 \item{PipelineExecutionArn}{The Amazon Resource Name (ARN) of the pipeline execution.}
@@ -21,59 +25,9 @@ response.}
 
 \item{SortOrder}{The field by which to sort results. The default is \code{CreatedTime}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  PipelineExecutionSteps = list(
-    list(
-      StepName = "string",
-      StartTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndTime = as.POSIXct(
-        "2015-01-01"
-      ),
-      StepStatus = "Starting"|"Executing"|"Stopping"|"Stopped"|"Failed"|"Succeeded",
-      CacheHitResult = list(
-        SourcePipelineExecutionArn = "string"
-      ),
-      FailureReason = "string",
-      Metadata = list(
-        TrainingJob = list(
-          Arn = "string"
-        ),
-        ProcessingJob = list(
-          Arn = "string"
-        ),
-        TransformJob = list(
-          Arn = "string"
-        ),
-        Model = list(
-          Arn = "string"
-        ),
-        RegisterModel = list(
-          Arn = "string"
-        ),
-        Condition = list(
-          Outcome = "True"|"False"
-        )
-      )
-    )
-  ),
-  NextToken = "string"
-)
-}
-}
 \description{
 Gets a list of \code{PipeLineExecutionStep} objects.
-}
-\section{Request syntax}{
-\preformatted{svc$list_pipeline_execution_steps(
-  PipelineExecutionArn = "string",
-  NextToken = "string",
-  MaxResults = 123,
-  SortOrder = "Ascending"|"Descending"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/sagemaker/list_pipeline_execution_steps.html} for full documentation.
+}
 \keyword{internal}

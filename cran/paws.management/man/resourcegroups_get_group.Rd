@@ -4,39 +4,16 @@
 \alias{resourcegroups_get_group}
 \title{Returns information about a specified resource group}
 \usage{
-resourcegroups_get_group(GroupName, Group)
+resourcegroups_get_group(GroupName = NULL, Group = NULL)
 }
 \arguments{
 \item{GroupName}{Deprecated - don't use this parameter. Use \code{Group} instead.}
 
 \item{Group}{The name or the ARN of the resource group to retrieve.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Group = list(
-    GroupArn = "string",
-    Name = "string",
-    Description = "string"
-  )
-)
-}
-}
 \description{
 Returns information about a specified resource group.
 
-\strong{Minimum permissions}
-
-To run this command, you must have the following permissions:
-\itemize{
-\item \code{resource-groups:GetGroup}
+See \url{https://paws-r.github.io/docs/resourcegroups/get_group.html} for full documentation.
 }
-}
-\section{Request syntax}{
-\preformatted{svc$get_group(
-  GroupName = "string",
-  Group = "string"
-)
-}
-}
-
 \keyword{internal}

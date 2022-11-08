@@ -5,8 +5,12 @@
 \title{Returns the number of events of each event type (issue, scheduled
 change, and account notification)}
 \usage{
-health_describe_event_aggregates(filter, aggregateField, maxResults,
-  nextToken)
+health_describe_event_aggregates(
+  filter = NULL,
+  aggregateField,
+  maxResults = NULL,
+  nextToken = NULL
+)
 }
 \arguments{
 \item{filter}{Values to narrow the results returned.}
@@ -22,97 +26,9 @@ response. To retrieve the next batch of results, reissue the search
 request and include the returned token. When all results have been
 returned, the response does not contain a pagination token value.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  eventAggregates = list(
-    list(
-      aggregateValue = "string",
-      count = 123
-    )
-  ),
-  nextToken = "string"
-)
-}
-}
 \description{
-Returns the number of events of each event type (issue, scheduled
-change, and account notification). If no filter is specified, the counts
-of all events in each category are returned.
+Returns the number of events of each event type (issue, scheduled change, and account notification). If no filter is specified, the counts of all events in each category are returned.
 
-This API operation uses pagination. Specify the \code{nextToken} parameter in
-the next request to return more results.
+See \url{https://paws-r.github.io/docs/health/describe_event_aggregates.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_event_aggregates(
-  filter = list(
-    eventArns = list(
-      "string"
-    ),
-    eventTypeCodes = list(
-      "string"
-    ),
-    services = list(
-      "string"
-    ),
-    regions = list(
-      "string"
-    ),
-    availabilityZones = list(
-      "string"
-    ),
-    startTimes = list(
-      list(
-        from = as.POSIXct(
-          "2015-01-01"
-        ),
-        to = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    endTimes = list(
-      list(
-        from = as.POSIXct(
-          "2015-01-01"
-        ),
-        to = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    lastUpdatedTimes = list(
-      list(
-        from = as.POSIXct(
-          "2015-01-01"
-        ),
-        to = as.POSIXct(
-          "2015-01-01"
-        )
-      )
-    ),
-    entityArns = list(
-      "string"
-    ),
-    entityValues = list(
-      "string"
-    ),
-    eventTypeCategories = list(
-      "issue"|"accountNotification"|"scheduledChange"|"investigation"
-    ),
-    tags = list(
-      list(
-        "string"
-      )
-    ),
-    eventStatusCodes = list(
-      "open"|"closed"|"upcoming"
-    )
-  ),
-  aggregateField = "eventTypeCategory",
-  maxResults = 123,
-  nextToken = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -7,49 +7,11 @@
 apigateway_get_rest_api(restApiId)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  id = "string",
-  name = "string",
-  description = "string",
-  createdDate = as.POSIXct(
-    "2015-01-01"
-  ),
-  version = "string",
-  warnings = list(
-    "string"
-  ),
-  binaryMediaTypes = list(
-    "string"
-  ),
-  minimumCompressionSize = 123,
-  apiKeySource = "HEADER"|"AUTHORIZER",
-  endpointConfiguration = list(
-    types = list(
-      "REGIONAL"|"EDGE"|"PRIVATE"
-    ),
-    vpcEndpointIds = list(
-      "string"
-    )
-  ),
-  policy = "string",
-  tags = list(
-    "string"
-  ),
-  disableExecuteApiEndpoint = TRUE|FALSE
-)
-}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 }
 \description{
 Lists the RestApi resource in the collection.
-}
-\section{Request syntax}{
-\preformatted{svc$get_rest_api(
-  restApiId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/get_rest_api.html} for full documentation.
+}
 \keyword{internal}

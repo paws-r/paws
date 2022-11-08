@@ -4,8 +4,14 @@
 \alias{ec2_copy_fpga_image}
 \title{Copies the specified Amazon FPGA Image (AFI) to the current Region}
 \usage{
-ec2_copy_fpga_image(DryRun, SourceFpgaImageId, Description, Name,
-  SourceRegion, ClientToken)
+ec2_copy_fpga_image(
+  DryRun = NULL,
+  SourceFpgaImageId,
+  Description = NULL,
+  Name = NULL,
+  SourceRegion,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -22,27 +28,11 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{SourceRegion}{[required] The Region that contains the source AFI.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  FpgaImageId = "string"
-)
-}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}.}
 }
 \description{
 Copies the specified Amazon FPGA Image (AFI) to the current Region.
-}
-\section{Request syntax}{
-\preformatted{svc$copy_fpga_image(
-  DryRun = TRUE|FALSE,
-  SourceFpgaImageId = "string",
-  Description = "string",
-  Name = "string",
-  SourceRegion = "string",
-  ClientToken = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/ec2/copy_fpga_image.html} for full documentation.
+}
 \keyword{internal}

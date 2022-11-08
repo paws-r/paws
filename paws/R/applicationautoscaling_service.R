@@ -8,41 +8,45 @@ NULL
 #' With Application Auto Scaling, you can configure automatic scaling for
 #' the following resources:
 #' 
-#' -   Amazon ECS services
-#' 
-#' -   Amazon EC2 Spot Fleet requests
-#' 
-#' -   Amazon EMR clusters
-#' 
 #' -   Amazon AppStream 2.0 fleets
 #' 
-#' -   Amazon DynamoDB tables and global secondary indexes throughput
-#'     capacity
-#' 
 #' -   Amazon Aurora Replicas
-#' 
-#' -   Amazon SageMaker endpoint variants
-#' 
-#' -   Custom resources provided by your own applications or services
 #' 
 #' -   Amazon Comprehend document classification and entity recognizer
 #'     endpoints
 #' 
-#' -   AWS Lambda function provisioned concurrency
+#' -   Amazon DynamoDB tables and global secondary indexes throughput
+#'     capacity
+#' 
+#' -   Amazon ECS services
+#' 
+#' -   Amazon ElastiCache for Redis clusters (replication groups)
+#' 
+#' -   Amazon EMR clusters
 #' 
 #' -   Amazon Keyspaces (for Apache Cassandra) tables
 #' 
-#' -   Amazon Managed Streaming for Apache Kafka cluster storage
+#' -   Lambda function provisioned concurrency
+#' 
+#' -   Amazon Managed Streaming for Apache Kafka broker storage
+#' 
+#' -   Amazon Neptune clusters
+#' 
+#' -   Amazon SageMaker endpoint variants
+#' 
+#' -   Spot Fleets (Amazon EC2)
+#' 
+#' -   Custom resources provided by your own applications or services
 #' 
 #' **API Summary**
 #' 
 #' The Application Auto Scaling service API includes three key sets of
 #' actions:
 #' 
-#' -   Register and manage scalable targets - Register AWS or custom
-#'     resources as scalable targets (a resource that Application Auto
-#'     Scaling can scale), set minimum and maximum capacity limits, and
-#'     retrieve information on existing scalable targets.
+#' -   Register and manage scalable targets - Register Amazon Web Services
+#'     or custom resources as scalable targets (a resource that Application
+#'     Auto Scaling can scale), set minimum and maximum capacity limits,
+#'     and retrieve information on existing scalable targets.
 #' 
 #' -   Configure and manage automatic scaling - Define scaling policies to
 #'     dynamically scale your resources in response to CloudWatch alarms,
@@ -66,6 +70,18 @@ NULL
 #' @param
 #' config
 #' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e., `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' }
 #'
 #' @section Service syntax:
 #' ```
@@ -77,10 +93,14 @@ NULL
 #'         secret_access_key = "string",
 #'         session_token = "string"
 #'       ),
-#'       profile = "string"
+#'       profile = "string",
+#'       anonymous = "logical"
 #'     ),
 #'     endpoint = "string",
-#'     region = "string"
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical"
 #'   )
 #' )
 #' ```

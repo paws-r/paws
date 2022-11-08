@@ -7,19 +7,11 @@
 backup_stop_backup_job(BackupJobId)
 }
 \arguments{
-\item{BackupJobId}{[required] Uniquely identifies a request to AWS Backup to back up a resource.}
-}
-\value{
-An empty list.
+\item{BackupJobId}{[required] Uniquely identifies a request to Backup to back up a resource.}
 }
 \description{
 Attempts to cancel a job to create a one-time backup of a resource.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_backup_job(
-  BackupJobId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/backup/stop_backup_job.html} for full documentation.
+}
 \keyword{internal}

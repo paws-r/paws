@@ -7,22 +7,13 @@
 apigateway_delete_stage(restApiId, stageName)
 }
 \arguments{
-\item{restApiId}{[required] [Required] The string identifier of the associated RestApi.}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{stageName}{[required] [Required] The name of the Stage resource to delete.}
-}
-\value{
-An empty list.
+\item{stageName}{[required] The name of the Stage resource to delete.}
 }
 \description{
 Deletes a Stage resource.
-}
-\section{Request syntax}{
-\preformatted{svc$delete_stage(
-  restApiId = "string",
-  stageName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/apigateway/delete_stage.html} for full documentation.
+}
 \keyword{internal}

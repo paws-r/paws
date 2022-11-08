@@ -4,8 +4,14 @@
 \alias{cloudwatchlogs_start_query}
 \title{Schedules a query of a log group using CloudWatch Logs Insights}
 \usage{
-cloudwatchlogs_start_query(logGroupName, logGroupNames, startTime,
-  endTime, queryString, limit)
+cloudwatchlogs_start_query(
+  logGroupName = NULL,
+  logGroupNames = NULL,
+  startTime,
+  endTime,
+  queryString,
+  limit = NULL
+)
 }
 \arguments{
 \item{logGroupName}{The log group on which to perform the query.
@@ -33,35 +39,9 @@ the number of seconds since January 1, 1970, 00:00:00 UTC.}
 string uses the \code{fields} command, only the specified fields and their
 values are returned. The default is 1000.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  queryId = "string"
-)
-}
-}
 \description{
-Schedules a query of a log group using CloudWatch Logs Insights. You
-specify the log group and time range to query and the query string to
-use.
+Schedules a query of a log group using CloudWatch Logs Insights. You specify the log group and time range to query and the query string to use.
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.
-
-Queries time out after 15 minutes of execution. If your queries are
-timing out, reduce the time range being searched or partition your query
-into a number of queries.
+See \url{https://paws-r.github.io/docs/cloudwatchlogs/start_query.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$start_query(
-  logGroupName = "string",
-  logGroupNames = list(
-    "string"
-  ),
-  startTime = 123,
-  endTime = 123,
-  queryString = "string",
-  limit = 123
-)
-}
-}
-
 \keyword{internal}

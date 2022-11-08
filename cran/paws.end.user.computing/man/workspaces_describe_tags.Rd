@@ -11,25 +11,9 @@ workspaces_describe_tags(ResourceId)
 are WorkSpaces, registered directories, images, custom bundles, IP
 access control groups, and connection aliases.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  TagList = list(
-    list(
-      Key = "string",
-      Value = "string"
-    )
-  )
-)
-}
-}
 \description{
 Describes the specified tags for the specified WorkSpaces resource.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_tags(
-  ResourceId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/workspaces/describe_tags.html} for full documentation.
+}
 \keyword{internal}

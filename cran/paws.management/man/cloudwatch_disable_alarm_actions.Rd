@@ -9,21 +9,9 @@ cloudwatch_disable_alarm_actions(AlarmNames)
 \arguments{
 \item{AlarmNames}{[required] The names of the alarms.}
 }
-\value{
-An empty list.
-}
 \description{
-Disables the actions for the specified alarms. When an alarm's actions
-are disabled, the alarm actions do not execute when the alarm state
-changes.
-}
-\section{Request syntax}{
-\preformatted{svc$disable_alarm_actions(
-  AlarmNames = list(
-    "string"
-  )
-)
-}
-}
+Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm actions do not execute when the alarm state changes.
 
+See \url{https://paws-r.github.io/docs/cloudwatch/disable_alarm_actions.html} for full documentation.
+}
 \keyword{internal}

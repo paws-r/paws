@@ -4,8 +4,11 @@
 \alias{wafregional_update_size_constraint_set}
 \title{This is AWS WAF Classic documentation}
 \usage{
-wafregional_update_size_constraint_set(SizeConstraintSetId, ChangeToken,
-  Updates)
+wafregional_update_size_constraint_set(
+  SizeConstraintSetId,
+  ChangeToken,
+  Updates
+)
 }
 \arguments{
 \item{SizeConstraintSetId}{[required] The \code{SizeConstraintSetId} of the SizeConstraintSet that you want to
@@ -27,115 +30,9 @@ applicable data types:
 \item FieldToMatch: Contains \code{Data} and \code{Type}
 }}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  ChangeToken = "string"
-)
-}
-}
 \description{
-This is \strong{AWS WAF Classic} documentation. For more information, see
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic}
-in the developer guide.
+This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-\strong{For the latest version of AWS WAF}, use the AWS WAFV2 API and see the
-\href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-With the latest version, AWS WAF has a single set of endpoints for
-regional and global use.
-
-Inserts or deletes SizeConstraint objects (filters) in a
-SizeConstraintSet. For each \code{SizeConstraint} object, you specify the
-following values:
-\itemize{
-\item Whether to insert or delete the object from the array. If you want
-to change a \code{SizeConstraintSetUpdate} object, you delete the
-existing object and add a new one.
-\item The part of a web request that you want AWS WAF to evaluate, such as
-the length of a query string or the length of the \code{User-Agent}
-header.
-\item Whether to perform any transformations on the request, such as
-converting it to lowercase, before checking its length. Note that
-transformations of the request body are not supported because the
-AWS resource forwards only the first \code{8192} bytes of your request to
-AWS WAF.
-
-You can only specify a single type of TextTransformation.
-\item A \code{ComparisonOperator} used for evaluating the selected part of the
-request against the specified \code{Size}, such as equals, greater than,
-less than, and so on.
-\item The length, in bytes, that you want AWS WAF to watch for in selected
-part of the request. The length is computed after applying the
-transformation.
-}
-
-For example, you can add a \code{SizeConstraintSetUpdate} object that matches
-web requests in which the length of the \code{User-Agent} header is greater
-than 100 bytes. You can then configure AWS WAF to block those requests.
-
-To create and configure a \code{SizeConstraintSet}, perform the following
-steps:
-\enumerate{
-\item Create a \code{SizeConstraintSet.} For more information, see
-\code{\link[=wafregional_create_size_constraint_set]{create_size_constraint_set}}.
-\item Use \code{\link[=wafregional_get_change_token]{get_change_token}} to get the
-change token that you provide in the \code{ChangeToken} parameter of an
-\code{\link[=wafregional_update_size_constraint_set]{update_size_constraint_set}}
-request.
-\item Submit an
-\code{\link[=wafregional_update_size_constraint_set]{update_size_constraint_set}}
-request to specify the part of the request that you want AWS WAF to
-inspect (for example, the header or the URI) and the value that you
-want AWS WAF to watch for.
-}
-
-For more information about how to use the AWS WAF API to allow or block
-HTTP requests, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{AWS WAF Developer Guide}.
-}
-\section{Request syntax}{
-\preformatted{svc$update_size_constraint_set(
-  SizeConstraintSetId = "string",
-  ChangeToken = "string",
-  Updates = list(
-    list(
-      Action = "INSERT"|"DELETE",
-      SizeConstraint = list(
-        FieldToMatch = list(
-          Type = "URI"|"QUERY_STRING"|"HEADER"|"METHOD"|"BODY"|"SINGLE_QUERY_ARG"|"ALL_QUERY_ARGS",
-          Data = "string"
-        ),
-        TextTransformation = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE",
-        ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
-        Size = 123
-      )
-    )
-  )
-)
-}
-}
-
-\examples{
-\dontrun{
-# The following example deletes a SizeConstraint object (filters) in a
-# size constraint set with the ID
-# example1ds3t-46da-4fdb-b8d5-abc321j569j5.
-svc$update_size_constraint_set(
-  ChangeToken = "abcd12f2-46da-4fdb-b8d5-fbd4c466928f",
-  SizeConstraintSetId = "example1ds3t-46da-4fdb-b8d5-abc321j569j5",
-  Updates = list(
-    list(
-      Action = "DELETE",
-      SizeConstraint = list(
-        ComparisonOperator = "GT",
-        FieldToMatch = list(
-          Type = "QUERY_STRING"
-        ),
-        Size = 0L,
-        TextTransformation = "NONE"
-      )
-    )
-  )
-)
-}
-
+See \url{https://paws-r.github.io/docs/wafregional/update_size_constraint_set.html} for full documentation.
 }
 \keyword{internal}

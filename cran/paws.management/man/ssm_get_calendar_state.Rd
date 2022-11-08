@@ -2,53 +2,24 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_calendar_state}
 \alias{ssm_get_calendar_state}
-\title{Gets the state of the AWS Systems Manager Change Calendar at an
-optional, specified time}
+\title{Gets the state of a Amazon Web Services Systems Manager change calendar
+at the current time or a specified time}
 \usage{
-ssm_get_calendar_state(CalendarNames, AtTime)
+ssm_get_calendar_state(CalendarNames, AtTime = NULL)
 }
 \arguments{
 \item{CalendarNames}{[required] The names or Amazon Resource Names (ARNs) of the Systems Manager
-documents that represent the calendar entries for which you want to get
-the state.}
+documents (SSM documents) that represent the calendar entries for which
+you want to get the state.}
 
 \item{AtTime}{(Optional) The specific time for which you want to get calendar state
 information, in \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO 8601}
-format. If you do not add \code{AtTime}, the current time is assumed.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  State = "OPEN"|"CLOSED",
-  AtTime = "string",
-  NextTransitionTime = "string"
-)
-}
+format. If you don't specify a value or \code{AtTime}, the current time is
+used.}
 }
 \description{
-Gets the state of the AWS Systems Manager Change Calendar at an
-optional, specified time. If you specify a time,
-\code{\link[=ssm_get_calendar_state]{get_calendar_state}} returns the state of the
-calendar at a specific time, and returns the next time that the Change
-Calendar state will transition. If you do not specify a time,
-\code{\link[=ssm_get_calendar_state]{get_calendar_state}} assumes the current time.
-Change Calendar entries have two possible states: \code{OPEN} or \code{CLOSED}.
+Gets the state of a Amazon Web Services Systems Manager change calendar at the current time or a specified time. If you specify a time, \code{\link[=ssm_get_calendar_state]{get_calendar_state}} returns the state of the calendar at that specific time, and returns the next time that the change calendar state will transition. If you don't specify a time, \code{\link[=ssm_get_calendar_state]{get_calendar_state}} uses the current time. Change Calendar entries have two possible states: \code{OPEN} or \code{CLOSED}.
 
-If you specify more than one calendar in a request, the command returns
-the status of \code{OPEN} only if all calendars in the request are open. If
-one or more calendars in the request are closed, the status returned is
-\code{CLOSED}.
-
-For more information about Systems Manager Change Calendar, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar.html}{AWS Systems Manager Change Calendar}
-in the \emph{AWS Systems Manager User Guide}.
+See \url{https://paws-r.github.io/docs/ssm/get_calendar_state.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$get_calendar_state(
-  CalendarNames = list(
-    "string"
-  ),
-  AtTime = "string"
-)
-}
-}
-
 \keyword{internal}

@@ -2,56 +2,21 @@
 % Please edit documentation in R/macie_operations.R
 \name{macie_associate_s3_resources}
 \alias{macie_associate_s3_resources}
-\title{Associates specified S3 resources with Amazon Macie Classic for
-monitoring and data classification}
+\title{(Discontinued) Associates specified S3 resources with Amazon Macie
+Classic for monitoring and data classification}
 \usage{
-macie_associate_s3_resources(memberAccountId, s3Resources)
+macie_associate_s3_resources(memberAccountId = NULL, s3Resources)
 }
 \arguments{
-\item{memberAccountId}{The ID of the Amazon Macie Classic member account whose resources you
-want to associate with Macie Classic.}
+\item{memberAccountId}{(Discontinued) The ID of the Amazon Macie Classic member account whose
+resources you want to associate with Macie Classic.}
 
-\item{s3Resources}{[required] The S3 resources that you want to associate with Amazon Macie Classic
-for monitoring and data classification.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  failedS3Resources = list(
-    list(
-      failedItem = list(
-        bucketName = "string",
-        prefix = "string"
-      ),
-      errorCode = "string",
-      errorMessage = "string"
-    )
-  )
-)
-}
+\item{s3Resources}{[required] (Discontinued) The S3 resources that you want to associate with Amazon
+Macie Classic for monitoring and data classification.}
 }
 \description{
-Associates specified S3 resources with Amazon Macie Classic for
-monitoring and data classification. If memberAccountId isn't specified,
-the action associates specified S3 resources with Macie Classic for the
-current master account. If memberAccountId is specified, the action
-associates specified S3 resources with Macie Classic for the specified
-member account.
-}
-\section{Request syntax}{
-\preformatted{svc$associate_s3_resources(
-  memberAccountId = "string",
-  s3Resources = list(
-    list(
-      bucketName = "string",
-      prefix = "string",
-      classificationType = list(
-        oneTime = "FULL"|"NONE",
-        continuous = "FULL"
-      )
-    )
-  )
-)
-}
-}
+(Discontinued) Associates specified S3 resources with Amazon Macie Classic for monitoring and data classification. If \code{memberAccountId} isn't specified, the action associates specified S3 resources with Macie Classic for the current Macie Classic administrator account. If \code{memberAccountId} is specified, the action associates specified S3 resources with Macie Classic for the specified member account.
 
+See \url{https://paws-r.github.io/docs/macie/associate_s3_resources.html} for full documentation.
+}
 \keyword{internal}

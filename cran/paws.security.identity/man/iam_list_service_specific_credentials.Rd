@@ -5,7 +5,7 @@
 \title{Returns information about the service-specific credentials associated
 with the specified IAM user}
 \usage{
-iam_list_service_specific_credentials(UserName, ServiceName)
+iam_list_service_specific_credentials(UserName = NULL, ServiceName = NULL)
 }
 \arguments{
 \item{UserName}{The name of the user whose service-specific credentials you want
@@ -16,42 +16,13 @@ This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{re
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 
-\item{ServiceName}{Filters the returned results to only those for the specified AWS
-service. If not specified, then AWS returns service-specific credentials
-for all services.}
-}
-\value{
-A list with the following syntax:\preformatted{list(
-  ServiceSpecificCredentials = list(
-    list(
-      UserName = "string",
-      Status = "Active"|"Inactive",
-      ServiceUserName = "string",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      ServiceSpecificCredentialId = "string",
-      ServiceName = "string"
-    )
-  )
-)
-}
+\item{ServiceName}{Filters the returned results to only those for the specified Amazon Web
+Services service. If not specified, then Amazon Web Services returns
+service-specific credentials for all services.}
 }
 \description{
-Returns information about the service-specific credentials associated
-with the specified IAM user. If none exists, the operation returns an
-empty list. The service-specific credentials returned by this operation
-are used only for authenticating the IAM user to a specific service. For
-more information about using service-specific credentials to
-authenticate to an AWS service, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html}{Set Up service-specific credentials}
-in the AWS CodeCommit User Guide.
-}
-\section{Request syntax}{
-\preformatted{svc$list_service_specific_credentials(
-  UserName = "string",
-  ServiceName = "string"
-)
-}
-}
+Returns information about the service-specific credentials associated with the specified IAM user. If none exists, the operation returns an empty list. The service-specific credentials returned by this operation are used only for authenticating the IAM user to a specific service. For more information about using service-specific credentials to authenticate to an Amazon Web Services service, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html}{Set up service-specific credentials} in the CodeCommit User Guide.
 
+See \url{https://paws-r.github.io/docs/iam/list_service_specific_credentials.html} for full documentation.
+}
 \keyword{internal}

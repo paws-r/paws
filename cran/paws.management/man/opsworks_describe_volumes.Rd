@@ -4,7 +4,12 @@
 \alias{opsworks_describe_volumes}
 \title{Describes an instance's Amazon EBS volumes}
 \usage{
-opsworks_describe_volumes(InstanceId, StackId, RaidArrayId, VolumeIds)
+opsworks_describe_volumes(
+  InstanceId = NULL,
+  StackId = NULL,
+  RaidArrayId = NULL,
+  VolumeIds = NULL
+)
 }
 \arguments{
 \item{InstanceId}{The instance ID. If you use this parameter,
@@ -23,49 +28,9 @@ the volumes associated with the specified RAID array.}
 the specified volumes. Otherwise, it returns a description of every
 volume.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  Volumes = list(
-    list(
-      VolumeId = "string",
-      Ec2VolumeId = "string",
-      Name = "string",
-      RaidArrayId = "string",
-      InstanceId = "string",
-      Status = "string",
-      Size = 123,
-      Device = "string",
-      MountPoint = "string",
-      Region = "string",
-      AvailabilityZone = "string",
-      VolumeType = "string",
-      Iops = 123,
-      Encrypted = TRUE|FALSE
-    )
-  )
-)
-}
-}
 \description{
 Describes an instance's Amazon EBS volumes.
 
-This call accepts only one resource-identifying parameter.
-
-\strong{Required Permissions}: To use this action, an IAM user must have a
-Show, Deploy, or Manage permissions level for the stack, or an attached
-policy that explicitly grants permissions. For more information about
-user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.
+See \url{https://paws-r.github.io/docs/opsworks/describe_volumes.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$describe_volumes(
-  InstanceId = "string",
-  StackId = "string",
-  RaidArrayId = "string",
-  VolumeIds = list(
-    "string"
-  )
-)
-}
-}
-
 \keyword{internal}

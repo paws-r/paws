@@ -9,62 +9,9 @@ lightsail_get_load_balancer(loadBalancerName)
 \arguments{
 \item{loadBalancerName}{[required] The name of the load balancer.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  loadBalancer = list(
-    name = "string",
-    arn = "string",
-    supportCode = "string",
-    createdAt = as.POSIXct(
-      "2015-01-01"
-    ),
-    location = list(
-      availabilityZone = "string",
-      regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"
-    ),
-    resourceType = "ContainerService"|"Instance"|"StaticIp"|"KeyPair"|"InstanceSnapshot"|"Domain"|"PeeredVpc"|"LoadBalancer"|"LoadBalancerTlsCertificate"|"Disk"|"DiskSnapshot"|"RelationalDatabase"|"RelationalDatabaseSnapshot"|"ExportSnapshotRecord"|"CloudFormationStackRecord"|"Alarm"|"ContactMethod"|"Distribution"|"Certificate",
-    tags = list(
-      list(
-        key = "string",
-        value = "string"
-      )
-    ),
-    dnsName = "string",
-    state = "active"|"provisioning"|"active_impaired"|"failed"|"unknown",
-    protocol = "HTTP_HTTPS"|"HTTP",
-    publicPorts = list(
-      123
-    ),
-    healthCheckPath = "string",
-    instancePort = 123,
-    instanceHealthSummary = list(
-      list(
-        instanceName = "string",
-        instanceHealth = "initial"|"healthy"|"unhealthy"|"unused"|"draining"|"unavailable",
-        instanceHealthReason = "Lb.RegistrationInProgress"|"Lb.InitialHealthChecking"|"Lb.InternalError"|"Instance.ResponseCodeMismatch"|"Instance.Timeout"|"Instance.FailedHealthChecks"|"Instance.NotRegistered"|"Instance.NotInUse"|"Instance.DeregistrationInProgress"|"Instance.InvalidState"|"Instance.IpUnusable"
-      )
-    ),
-    tlsCertificateSummaries = list(
-      list(
-        name = "string",
-        isAttached = TRUE|FALSE
-      )
-    ),
-    configurationOptions = list(
-      "string"
-    )
-  )
-)
-}
-}
 \description{
 Returns information about the specified Lightsail load balancer.
-}
-\section{Request syntax}{
-\preformatted{svc$get_load_balancer(
-  loadBalancerName = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/lightsail/get_load_balancer.html} for full documentation.
+}
 \keyword{internal}

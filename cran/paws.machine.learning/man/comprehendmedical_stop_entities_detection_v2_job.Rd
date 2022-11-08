@@ -9,20 +9,9 @@ comprehendmedical_stop_entities_detection_v2_job(JobId)
 \arguments{
 \item{JobId}{[required] The identifier of the medical entities job to stop.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  JobId = "string"
-)
-}
-}
 \description{
 Stops a medical entities detection job in progress.
-}
-\section{Request syntax}{
-\preformatted{svc$stop_entities_detection_v2_job(
-  JobId = "string"
-)
-}
-}
 
+See \url{https://paws-r.github.io/docs/comprehendmedical/stop_entities_detection_v2_job.html} for full documentation.
+}
 \keyword{internal}

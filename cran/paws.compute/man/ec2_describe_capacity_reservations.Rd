@@ -4,8 +4,13 @@
 \alias{ec2_describe_capacity_reservations}
 \title{Describes one or more of your Capacity Reservations}
 \usage{
-ec2_describe_capacity_reservations(CapacityReservationIds, NextToken,
-  MaxResults, Filters, DryRun)
+ec2_describe_capacity_reservations(
+  CapacityReservationIds = NULL,
+  NextToken = NULL,
+  MaxResults = NULL,
+  Filters = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{CapacityReservationIds}{The ID of the Capacity Reservation.}
@@ -21,23 +26,23 @@ the returned \code{nextToken} value. This value can be between 5 and 500. If
 \itemize{
 \item \code{instance-type} - The type of instance for which the Capacity
 Reservation reserves capacity.
-\item \code{owner-id} - The ID of the AWS account that owns the Capacity
-Reservation.
-\item \code{availability-zone-id} - The Availability Zone ID of the Capacity
-Reservation.
+\item \code{owner-id} - The ID of the Amazon Web Services account that owns the
+Capacity Reservation.
 \item \code{instance-platform} - The type of operating system for which the
 Capacity Reservation reserves capacity.
-\item \code{availability-zone} - The Availability Zone ID of the Capacity
+\item \code{availability-zone} - The Availability Zone of the Capacity
 Reservation.
 \item \code{tenancy} - Indicates the tenancy of the Capacity Reservation. A
 Capacity Reservation can have one of the following tenancy settings:
 \itemize{
 \item \code{default} - The Capacity Reservation is created on hardware that
-is shared with other AWS accounts.
+is shared with other Amazon Web Services accounts.
 \item \code{dedicated} - The Capacity Reservation is created on
-single-tenant hardware that is dedicated to a single AWS
-account.
+single-tenant hardware that is dedicated to a single Amazon Web
+Services account.
 }
+\item \code{outpost-arn} - The Amazon Resource Name (ARN) of the Outpost on
+which the Capacity Reservation was created.
 \item \code{state} - The current state of the Capacity Reservation. A Capacity
 Reservation can be in one of the following states:
 \itemize{
@@ -46,8 +51,8 @@ available for your use.
 \item \code{expired} - The Capacity Reservation expired automatically at
 the date and time specified in your request. The reserved
 capacity is no longer available for your use.
-\item \code{cancelled} - The Capacity Reservation was manually cancelled.
-The reserved capacity is no longer available for your use.
+\item \code{cancelled} - The Capacity Reservation was cancelled. The
+reserved capacity is no longer available for your use.
 \item \code{pending} - The Capacity Reservation request was successful but
 the capacity provisioning is still pending.
 \item \code{failed} - The Capacity Reservation request has failed. A
@@ -55,6 +60,8 @@ request might fail due to invalid request parameters, capacity
 constraints, or instance limit constraints. Failed requests are
 retained for 60 minutes.
 }
+\item \code{start-date} - The date and time at which the Capacity Reservation
+was started.
 \item \code{end-date} - The date and time at which the Capacity Reservation
 expires. When a Capacity Reservation expires, the reserved capacity
 is released and you can no longer launch instances into it. The
@@ -83,6 +90,8 @@ Availability Zone), and explicitly target the Capacity
 Reservation. This ensures that only permitted instances can use
 the reserved capacity.
 }
+\item \code{placement-group-arn} - The ARN of the cluster placement group in
+which the Capacity Reservation was created.
 }}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -90,66 +99,9 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  NextToken = "string",
-  CapacityReservations = list(
-    list(
-      CapacityReservationId = "string",
-      OwnerId = "string",
-      CapacityReservationArn = "string",
-      AvailabilityZoneId = "string",
-      InstanceType = "string",
-      InstancePlatform = "Linux/UNIX"|"Red Hat Enterprise Linux"|"SUSE Linux"|"Windows"|"Windows with SQL Server"|"Windows with SQL Server Enterprise"|"Windows with SQL Server Standard"|"Windows with SQL Server Web"|"Linux with SQL Server Standard"|"Linux with SQL Server Web"|"Linux with SQL Server Enterprise",
-      AvailabilityZone = "string",
-      Tenancy = "default"|"dedicated",
-      TotalInstanceCount = 123,
-      AvailableInstanceCount = 123,
-      EbsOptimized = TRUE|FALSE,
-      EphemeralStorage = TRUE|FALSE,
-      State = "active"|"expired"|"cancelled"|"pending"|"failed",
-      EndDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      EndDateType = "unlimited"|"limited",
-      InstanceMatchCriteria = "open"|"targeted",
-      CreateDate = as.POSIXct(
-        "2015-01-01"
-      ),
-      Tags = list(
-        list(
-          Key = "string",
-          Value = "string"
-        )
-      )
-    )
-  )
-)
-}
-}
 \description{
-Describes one or more of your Capacity Reservations. The results
-describe only the Capacity Reservations in the AWS Region that you're
-currently using.
-}
-\section{Request syntax}{
-\preformatted{svc$describe_capacity_reservations(
-  CapacityReservationIds = list(
-    "string"
-  ),
-  NextToken = "string",
-  MaxResults = 123,
-  Filters = list(
-    list(
-      Name = "string",
-      Values = list(
-        "string"
-      )
-    )
-  ),
-  DryRun = TRUE|FALSE
-)
-}
-}
+Describes one or more of your Capacity Reservations. The results describe only the Capacity Reservations in the Amazon Web Services Region that you're currently using.
 
+See \url{https://paws-r.github.io/docs/ec2/describe_capacity_reservations.html} for full documentation.
+}
 \keyword{internal}

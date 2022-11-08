@@ -4,62 +4,19 @@
 \alias{neptune_modify_db_cluster_parameter_group}
 \title{Modifies the parameters of a DB cluster parameter group}
 \usage{
-neptune_modify_db_cluster_parameter_group(DBClusterParameterGroupName,
-  Parameters)
+neptune_modify_db_cluster_parameter_group(
+  DBClusterParameterGroupName,
+  Parameters
+)
 }
 \arguments{
 \item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group to modify.}
 
 \item{Parameters}{[required] A list of parameters in the DB cluster parameter group to modify.}
 }
-\value{
-A list with the following syntax:\preformatted{list(
-  DBClusterParameterGroupName = "string"
-)
-}
-}
 \description{
-Modifies the parameters of a DB cluster parameter group. To modify more
-than one parameter, submit a list of the following: \code{ParameterName},
-\code{ParameterValue}, and \code{ApplyMethod}. A maximum of 20 parameters can be
-modified in a single request.
+Modifies the parameters of a DB cluster parameter group. To modify more than one parameter, submit a list of the following: \code{ParameterName}, \code{ParameterValue}, and \code{ApplyMethod}. A maximum of 20 parameters can be modified in a single request.
 
-Changes to dynamic parameters are applied immediately. Changes to static
-parameters require a reboot without failover to the DB cluster
-associated with the parameter group before the change can take effect.
-
-After you create a DB cluster parameter group, you should wait at least
-5 minutes before creating your first DB cluster that uses that DB
-cluster parameter group as the default parameter group. This allows
-Amazon Neptune to fully complete the create action before the parameter
-group is used as the default for a new DB cluster. This is especially
-important for parameters that are critical when creating the default
-database for a DB cluster, such as the character set for the default
-database defined by the \code{character_set_database} parameter. You can use
-the \emph{Parameter Groups} option of the Amazon Neptune console or the
-\code{\link[=neptune_describe_db_cluster_parameters]{describe_db_cluster_parameters}}
-command to verify that your DB cluster parameter group has been created
-or modified.
+See \url{https://paws-r.github.io/docs/neptune/modify_db_cluster_parameter_group.html} for full documentation.
 }
-\section{Request syntax}{
-\preformatted{svc$modify_db_cluster_parameter_group(
-  DBClusterParameterGroupName = "string",
-  Parameters = list(
-    list(
-      ParameterName = "string",
-      ParameterValue = "string",
-      Description = "string",
-      Source = "string",
-      ApplyType = "string",
-      DataType = "string",
-      AllowedValues = "string",
-      IsModifiable = TRUE|FALSE,
-      MinimumEngineVersion = "string",
-      ApplyMethod = "immediate"|"pending-reboot"
-    )
-  )
-)
-}
-}
-
 \keyword{internal}
