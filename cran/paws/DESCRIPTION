@@ -1,6 +1,6 @@
 Package: paws
 Title: Paws Amazon Web Services SDK
-Version: 0.1.12
+Version: 0.1.14
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -12,19 +12,19 @@ License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
-    paws.analytics (>= 0.1.12),
-    paws.application.integration (>= 0.1.12),
-    paws.compute (>= 0.1.12),
-    paws.cost.management (>= 0.1.12),
-    paws.customer.engagement (>= 0.1.12),
-    paws.database (>= 0.1.12),
-    paws.developer.tools (>= 0.1.12),
-    paws.end.user.computing (>= 0.1.12),
-    paws.machine.learning (>= 0.1.12),
-    paws.management (>= 0.1.12),
-    paws.networking (>= 0.1.12),
-    paws.security.identity (>= 0.1.12),
-    paws.storage (>= 0.1.12)
+    paws.analytics (>= 0.1.14),
+    paws.application.integration (>= 0.1.14),
+    paws.compute (>= 0.1.14),
+    paws.cost.management (>= 0.1.14),
+    paws.customer.engagement (>= 0.1.14),
+    paws.database (>= 0.1.14),
+    paws.developer.tools (>= 0.1.14),
+    paws.end.user.computing (>= 0.1.14),
+    paws.machine.learning (>= 0.1.14),
+    paws.management (>= 0.1.14),
+    paws.networking (>= 0.1.14),
+    paws.security.identity (>= 0.1.14),
+    paws.storage (>= 0.1.14)
 Suggests: 
     testthat
 Encoding: UTF-8
