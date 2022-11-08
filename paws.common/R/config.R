@@ -177,16 +177,12 @@ get_profile_name <- function(profile = "") {
 
 # Gets the instance metadata by making an http request.
 get_instance_metadata <- function(query_path = "") {
-
+  token_ttl <- '21600' # same approach as in boto3: https://github.com/boto/botocore/blob/master/botocore/utils.py#L376
   # Do not get metadata when the disabled setting is on.
   if (trimws(tolower(get_env("AWS_EC2_METADATA_DISABLED"))) %in% c("true", "1")) {
     return(NULL)
   }
   # Get token timeout for IMDSv2 tokens
-  tokentimeout=trimws(tolower(get_env("PAWS_EC2_IMDSV2_TOKEN_TIMEOUT_SECONDS")))
-  if (is.na(as.numeric(tokentimeout))) {
-        tokentimeout="30"
-  }
   token <-  "" # Token to be used in case of more secure IMDSv2 authentication
   #try IMDSv2  (more information): https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html
    metadata_token_url <-  file.path(
@@ -197,7 +193,7 @@ get_instance_metadata <- function(query_path = "") {
         "PUT", 
         metadata_token_url, 
         timeout = 1, 
-        header=c("X-aws-ec2-metadata-token-ttl-seconds"= tokentimeout)
+        header=c("X-aws-ec2-metadata-token-ttl-seconds"= token_ttl)
     )
 
   metadata_token_response <- tryCatch(
