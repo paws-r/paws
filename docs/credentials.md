@@ -50,7 +50,7 @@ Sys.setenv(
 ```
 
 If you have a session token from temporary security credentials, you
-can set it and its expiration time in environment variables `AWS_SESSION_TOKEN`
+can set it and its expiration time in environment variable(s) `AWS_SESSION_TOKEN`
 and `AWS_CREDENTIAL_EXPIRATION`:
 
 ``` r
@@ -62,7 +62,7 @@ Sys.setenv(
 )
 ```
 
-`AWS_CREDENTIAL_EXPIRATION` must be an ISO 8601 formatted date string.
+`AWS_CREDENTIAL_EXPIRATION` must be an ISO 8601 formatted date string. If `AWS_CREDENTIAL_EXPIRATION` is not provided (i.e., only the temporary values for `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_SESSION_TOKEN` are provided), then the expiration time is assumed to be `Inf`.
 
 ---
 
@@ -130,13 +130,18 @@ svc <- paws::svc(
 
 `expiration` must be a `POSIXct` date-time or able to be compared with them.
 
+Additionally, anonymous credentials may be used (e.g., before calling `assume_role_with_web_identity()` on an STS service)
+``` r
+svc <- paws::svc(config = list(credentials = list(anonymous = TRUE)))
+```
+
 ---
 
 
-## Get credentials from an EC2 instance or container role
+## Get credentials from an EC2 instance or container role (including via EKS)
 
 If you are running R on an EC2 instance with an attached IAM role, or in a
-container on AWS with an attached container IAM role, Paws will automatically
+container on AWS (including via EKS) with an attached container IAM role, Paws will automatically
 use the credentials from the attached role.
 
 ---

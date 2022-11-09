@@ -159,7 +159,7 @@ config_file_credential_process <- function(command) {
 
 # Get the `role_arn`'s temporary credentials given a `credential_source`,
 # either "Environment", "Ec2InstanceMetadata", or "EcsContainer".
-# See https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-credential_source.html.
+# See https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html
 config_file_credential_source <- function(role_arn, role_session_name, mfa_serial, credential_source) {
   if (credential_source == "Environment") {
     creds <- env_provider()
@@ -218,6 +218,28 @@ config_file_source_profile <- function(role_arn, role_session_name, mfa_serial, 
   return(role_creds)
 }
 
+# Get the user's MFA token code from a prompt.
+# Use an RStudio prompt if running in RStudio.
+# Otherwise use a text prompt in the console.
+get_token_code <- function() {
+  if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
+    token_code <- rstudioapi::showPrompt("MFA", "Enter MFA token code")
+  } else {
+    token_code <- readline("Enter MFA token code: ")
+  }
+  return(token_code)
+}
+
+parse_creds_from_sts_resp <- function(resp){
+  role_creds <- Creds(
+    access_key_id = resp$Credentials$AccessKeyId,
+    secret_access_key = resp$Credentials$SecretAccessKey,
+    session_token = resp$Credentials$SessionToken,
+    expiration = resp$Credentials$Expiration
+  )
+  return(role_creds)
+}
+
 # Get credentials for assumed role `role_arn`, using credentials in `creds`.
 # If the role requires MFA, the MFA device's serial number must be provided in
 # `mfa_serial`, and the user will be prompted interactively to provide the
@@ -239,25 +261,26 @@ get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, cred
     )
   }
   if (is.null(resp)) return(NULL)
-  role_creds <- Creds(
-    access_key_id = resp$Credentials$AccessKeyId,
-    secret_access_key = resp$Credentials$SecretAccessKey,
-    session_token = resp$Credentials$SessionToken,
-    expiration = resp$Credentials$Expiration
-  )
+  role_creds <- parse_creds_from_sts_resp(resp)
   return(role_creds)
 }
 
-# Get the user's MFA token code from a prompt.
-# Use an RStudio prompt if running in RStudio.
-# Otherwise use a text prompt in the console.
-get_token_code <- function() {
-  if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
-    token_code <- rstudioapi::showPrompt("MFA", "Enter MFA token code")
-  } else {
-    token_code <- readline("Enter MFA token code: ")
-  }
-  return(token_code)
+# Get credentials for AssumeRoleWithWebIdentity `role_arn`, using credentials in `creds`
+get_assume_role_with_web_identity_creds <- function(role_arn, web_identity_token, role_session_name, creds) {
+  role_arn <- get_env()
+  web_identity_token <- readLines(get_env("AWS_WEB_IDENTITY_TOKEN_FILE"))
+  svc <- paws::sts(config = list(credentials = list(anonymous = TRUE)))
+
+  resp <- svc$sts_assume_role_with_web_identity(
+    RoleArn = role_arn, #TODO(@MT)
+    WebIdentityToken = web_identity_token, #TODO(@MT) pass through from env var
+    RoleSessionName = role_session_name #TODO(@MT) accounte for "" in env var
+  )
+
+  # TODO: region get_region()
+  if (is.null(resp)) return(NULL)
+  role_creds <- parse_creds_from_resp(resp)
+  return(role_creds)
 }
 
 # Retrieve container job role credentials
