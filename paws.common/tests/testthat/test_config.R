@@ -81,11 +81,12 @@ test_that("get_role_session_name", {
   expect_equal(get_role_session_name(NULL), "bar")
   expect_equal(get_role_session_name("foo"), "foo")
 })
-test_that("get_web_identity_token", {
-  Sys.setenv(AWS_ROLE_SESSION_NAME = "bar")
-  expect_equal(get_role_session_name(), "bar")
-  expect_equal(get_role_session_name(NULL), "bar")
-  expect_equal(get_role_session_name("foo"), "foo")
+
+test_that("get_web_identity_token_file", {
+  Sys.setenv(AWS_WEB_IDENTITY_TOKEN_FILE = "bar")
+  expect_equal(get_web_identity_token_file(), "bar")
+  expect_equal(get_web_identity_token_file(NULL), "bar")
+  expect_equal(get_web_identity_token_file("foo"), "foo")
 })
 
 
