@@ -150,41 +150,16 @@ get_env <- function(variable) {
   return("")
 }
 
-# Get the value of an OS environment variable.
-# NOTE: Does not work on Windows.
-get_os_env <- function(var) {
-  if (.Platform$OS.type == "unix") {
-    value <- system(sprintf("echo $%s", var), intern = T)
-  } else {
-    value <- "" # Not implemented on Windows.
-  }
+# Get the name of the IAM role from the instance metadata.
+get_iam_role <- function() {
 
-  return(value)
-}
+  iam_role_response <-  get_instance_metadata("iam/security-credentials")
 
-# Get the AWS profile to use. If none, return "default".
-get_profile_name <- function(profile = "") {
-  if (!is.null(profile) && profile != "") {
-    return(profile)
-  }
+  if (is.null(iam_role_response)) return(NULL)
 
-  profile <- get_env("AWS_PROFILE")
+  iam_role_name <- raw_to_utf8(iam_role_response$body)
 
-  if (profile == "") profile <- "default"
-
-  return(profile)
-}
-
-# Get the user's MFA token code from a prompt.
-# Use an RStudio prompt if running in RStudio.
-# Otherwise use a text prompt in the console.
-get_token_code <- function() {
-  if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
-    token_code <- rstudioapi::showPrompt("MFA", "Enter MFA token code")
-  } else {
-    token_code <- readline("Enter MFA token code: ")
-  }
-  return(token_code)
+  return(iam_role_name)
 }
 
 # Gets the instance metadata by making an http request.
@@ -216,6 +191,31 @@ get_instance_metadata <- function(query_path = "") {
   }
 
   return(metadata_response)
+}
+
+# Get the value of an OS environment variable.
+# NOTE: Does not work on Windows.
+get_os_env <- function(var) {
+  if (.Platform$OS.type == "unix") {
+    value <- system(sprintf("echo $%s", var), intern = T)
+  } else {
+    value <- "" # Not implemented on Windows.
+  }
+
+  return(value)
+}
+
+# Get the AWS profile to use. If none, return "default".
+get_profile_name <- function(profile = "") {
+  if (!is.null(profile) && profile != "") {
+    return(profile)
+  }
+
+  profile <- get_env("AWS_PROFILE")
+
+  if (profile == "") profile <- "default"
+
+  return(profile)
 }
 
 # Get region from the config file.

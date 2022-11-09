@@ -228,7 +228,7 @@ get_creds_from_sts_resp <- function(resp){
   return(role_creds)
 }
 
-# Get credentials for assumed role `role_arn`, using credentials in `creds`.
+# Get STS credentials for AssumeRole `role_arn`, using credentials in `creds`.
 # If the role requires MFA, the MFA device's serial number must be provided in
 # `mfa_serial`, and the user will be prompted interactively to provide the
 # current MFA token code.
@@ -253,9 +253,9 @@ get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, cred
   return(role_creds)
 }
 
-# Get credentials for AssumeRoleWithWebIdentity `role_arn`, using credentials in `creds`
+# Get STS credentials for AssumeRoleWithWebIdentity (using AWS_WEB_IDENTITY_TOKEN_FILE)
 get_assume_role_with_web_identity_creds <- function(role_arn, web_identity_token, role_session_name, creds) {
-  role_arn <- get_env()
+  role_arn <- get_env("AWS_ROLE_ARN")
   web_identity_token <- readLines(get_env("AWS_WEB_IDENTITY_TOKEN_FILE"))
   svc <- paws::sts(config = list(credentials = list(anonymous = TRUE)))
 
@@ -295,17 +295,10 @@ container_credentials_provider <- function() {
   if (container_credentials_uri != "") {
     credentials_response <- get_container_credentials()
   }
+  get_assumed_role_creds(role_arn, role_session_name, mfa_serial, creds)
 
-  if (is.null(credentials_response)) return(NULL)
 
-  credentials_response_body <-
-    jsonlite::fromJSON(raw_to_utf8(credentials_response$body))
-
-  access_key_id <- credentials_response_body$AccessKeyId
-  secret_access_key <- credentials_response_body$SecretAccessKey
-  session_token <- credentials_response_body$Token
-  expiration <- as_timestamp(credentials_response_body$Expiration, "iso8601")
-
+  # return credential
   if (is.null(access_key_id) || is.null(secret_access_key) ||
       is.null(session_token)) return(NULL)
 
@@ -345,7 +338,18 @@ get_container_credentials <- function() {
     return(NULL)
   }
 
-  return(metadata_response)
+  credentials_response_body <-
+    jsonlite::fromJSON(raw_to_utf8(metadata_response$body))
+
+  credentials_list <-
+    list(
+      access_key_id  = credentials_response_body$AccessKeyId,
+      secret_access_key <- credentials_response_body$SecretAccessKey,
+      session_token <- credentials_response_body$Token,
+      expiration <- as_timestamp(credentials_response_body$Expiration, "iso8601"),
+    )
+
+  return(credentials_list)
 }
 
 # Retrieve credentials for EC2 IAM Role
@@ -382,18 +386,6 @@ iam_credentials_provider <- function() {
     creds <- NULL
   }
   return(creds)
-}
-
-# Get the name of the IAM role from the instance metadata.
-get_iam_role <- function() {
-
-  iam_role_response <-  get_instance_metadata("iam/security-credentials")
-
-  if (is.null(iam_role_response)) return(NULL)
-
-  iam_role_name <- raw_to_utf8(iam_role_response$body)
-
-  return(iam_role_name)
 }
 
 no_credentials <- function() {
