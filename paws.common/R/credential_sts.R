@@ -2,7 +2,7 @@
 #
 # We need to re-implement the STS AssumeRole and AssumeRoleWithWebIdentity operations to avoid circular
 # dependency: paws depends on paws.common, therefore we can't make paws.common
-# also depend on paws.
+# also depend on paws (namely, paws.security.identity within paws).
 #
 # Sources:
 # - paws/paws/R/sts_service.R
@@ -83,7 +83,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 
 .sts$assume_role_with_web_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SubjectFromWebIdentityToken = structure(logical(0), tags = list(type = "string")), AssumedRoleUser = structure(list(AssumedRoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer")), Provider = structure(logical(0), tags = list(type = "string")), Audience = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "AssumeRoleWithWebIdentityResult"))
+  shape <- structure(list(Credentials = structure(list(AccessKeyId = structure(logical(0), tags = list(type = "string")), SecretAccessKey = structure(logical(0), tags = list(type = "string")), SessionToken = structure(logical(0), tags = list(type = "string")), Expiration = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), SubjectFromWebIdentityToken = structure(logical(0), tags = list(type = "string")), AssumedRoleUser = structure(list(AssumedRoleId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PackedPolicySize = structure(logical(0), tags = list(type = "integer")), Provider = structure(logical(0), tags = list(type = "string")), Audience = structure(logical(0), tags = list(type = "string")), SourceIdentity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "AssumeRoleWithWebIdentityResult"))
   return(populate(args, shape))
 }
 
