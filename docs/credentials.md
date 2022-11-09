@@ -50,8 +50,8 @@ Sys.setenv(
 ```
 
 If you have a session token from temporary security credentials, you
-can set it and its expiration time in environment variable(s) `AWS_SESSION_TOKEN`
-and `AWS_CREDENTIAL_EXPIRATION`:
+can set it and its expiration time in environment variables `AWS_SESSION_TOKEN`
+and `AWS_CREDENTIAL_EXPIRATION` (optional):
 
 ``` r
 Sys.setenv(

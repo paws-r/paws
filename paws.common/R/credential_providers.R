@@ -218,18 +218,6 @@ config_file_source_profile <- function(role_arn, role_session_name, mfa_serial, 
   return(role_creds)
 }
 
-# Get the user's MFA token code from a prompt.
-# Use an RStudio prompt if running in RStudio.
-# Otherwise use a text prompt in the console.
-get_token_code <- function() {
-  if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
-    token_code <- rstudioapi::showPrompt("MFA", "Enter MFA token code")
-  } else {
-    token_code <- readline("Enter MFA token code: ")
-  }
-  return(token_code)
-}
-
 parse_creds_from_sts_resp <- function(resp){
   role_creds <- Creds(
     access_key_id = resp$Credentials$AccessKeyId,
@@ -281,6 +269,18 @@ get_assume_role_with_web_identity_creds <- function(role_arn, web_identity_token
   if (is.null(resp)) return(NULL)
   role_creds <- parse_creds_from_resp(resp)
   return(role_creds)
+}
+
+# Get the user's MFA token code from a prompt.
+# Use an RStudio prompt if running in RStudio.
+# Otherwise use a text prompt in the console.
+get_token_code <- function() {
+  if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
+    token_code <- rstudioapi::showPrompt("MFA", "Enter MFA token code")
+  } else {
+    token_code <- readline("Enter MFA token code: ")
+  }
+  return(token_code)
 }
 
 # Retrieve container job role credentials

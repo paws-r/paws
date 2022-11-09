@@ -175,6 +175,18 @@ get_profile_name <- function(profile = "") {
   return(profile)
 }
 
+# Get the user's MFA token code from a prompt.
+# Use an RStudio prompt if running in RStudio.
+# Otherwise use a text prompt in the console.
+get_token_code <- function() {
+  if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
+    token_code <- rstudioapi::showPrompt("MFA", "Enter MFA token code")
+  } else {
+    token_code <- readline("Enter MFA token code: ")
+  }
+  return(token_code)
+}
+
 # Gets the instance metadata by making an http request.
 get_instance_metadata <- function(query_path = "") {
 
