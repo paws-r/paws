@@ -67,3 +67,25 @@ test_that("get_profile_name", {
   expect_equal(get_profile_name(NULL), "bar")
   expect_equal(get_profile_name("foo"), "foo")
 })
+
+test_that("get_role_arn", {
+  Sys.setenv(AWS_ROLE_ARN = "bar")
+  expect_equal(get_role_arn(), "bar")
+  expect_equal(get_role_arn(NULL), "bar")
+  expect_equal(get_role_arn("foo"), "foo")
+})
+
+test_that("get_role_session_name", {
+  Sys.setenv(AWS_ROLE_SESSION_NAME = "bar")
+  expect_equal(get_role_session_name(), "bar")
+  expect_equal(get_role_session_name(NULL), "bar")
+  expect_equal(get_role_session_name("foo"), "foo")
+})
+test_that("get_web_identity_token", {
+  Sys.setenv(AWS_ROLE_SESSION_NAME = "bar")
+  expect_equal(get_role_session_name(), "bar")
+  expect_equal(get_role_session_name(NULL), "bar")
+  expect_equal(get_role_session_name("foo"), "foo")
+})
+
+

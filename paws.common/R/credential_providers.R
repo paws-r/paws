@@ -223,7 +223,7 @@ get_creds_from_sts_resp <- function(resp){
     access_key_id = resp$Credentials$AccessKeyId,
     secret_access_key = resp$Credentials$SecretAccessKey,
     session_token = resp$Credentials$SessionToken,
-    expiration = resp$Credentials$Expiration
+    expiration = as_timestamp(as_resp$Credentials$Expiration, "iso8601")
   )
   return(role_creds)
 }
@@ -233,7 +233,7 @@ get_creds_from_sts_resp <- function(resp){
 # `mfa_serial`, and the user will be prompted interactively to provide the
 # current MFA token code.
 get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, creds) {
-  svc <- sts(config = list(credentials = list(creds = creds), region = "us-east-1"))
+  svc <- sts(config = list(credentials = list(creds = creds)))
   if (is.null(mfa_serial) || mfa_serial == "") {
     resp <- svc$assume_role(
       RoleArn = role_arn,
@@ -253,21 +253,18 @@ get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, cred
   return(role_creds)
 }
 
-# Get STS credentials for AssumeRoleWithWebIdentity (using AWS_WEB_IDENTITY_TOKEN_FILE)
+# Get STS credentials for AssumeRoleWithWebIdentity
 get_assume_role_with_web_identity_creds <- function(role_arn, web_identity_token, role_session_name, creds) {
-  role_arn <- get_env("AWS_ROLE_ARN")
-  web_identity_token <- readLines(get_env("AWS_WEB_IDENTITY_TOKEN_FILE"))
-  svc <- paws::sts(config = list(credentials = list(anonymous = TRUE)))
+  svc <- sts(config = list(credentials = list(creds = creds)))
 
   resp <- svc$sts_assume_role_with_web_identity(
-    RoleArn = role_arn, #TODO(@MT)
-    WebIdentityToken = web_identity_token, #TODO(@MT) pass through from env var
-    RoleSessionName = role_session_name #TODO(@MT) accounte for "" in env var
+    RoleArn = role_arn,
+    WebIdentityToken = web_identity_token,
+    RoleSessionName = role_session_name
   )
 
-  # TODO: region get_region()
   if (is.null(resp)) return(NULL)
-  role_creds <- parse_creds_from_resp(resp)
+  role_creds <- get_creds_from_sts_resp(resp)
   return(role_creds)
 }
 
@@ -290,13 +287,19 @@ container_credentials_provider <- function() {
   credentials_response <- NULL
 
   container_credentials_uri <- get_env("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
+  container_credentials_token <- get_env("AWS_WEB_IDENTITY_TOKEN_FILE")
 
-  # Look for job role credentials first
+  # Look for job role credentials first, then web identity token file
   if (container_credentials_uri != "") {
     credentials_response <- get_container_credentials()
+  } else if (container_credentials_token != "") {
+    credentials_response <- get_container_credentials_eks()
   }
-  get_assumed_role_creds(role_arn, role_session_name, mfa_serial, creds)
 
+  access_key_id <- credentials_response$access_key_id
+  secret_access_key <- credentials_response$secret_access_key
+  session_token <- credentials_response$session_token
+  expiration <- credentials_response$expiration
 
   # return credential
   if (is.null(access_key_id) || is.null(secret_access_key) ||
@@ -344,10 +347,25 @@ get_container_credentials <- function() {
   credentials_list <-
     list(
       access_key_id  = credentials_response_body$AccessKeyId,
-      secret_access_key <- credentials_response_body$SecretAccessKey,
-      session_token <- credentials_response_body$Token,
-      expiration <- as_timestamp(credentials_response_body$Expiration, "iso8601"),
+      secret_access_key = credentials_response_body$SecretAccessKey,
+      session_token = credentials_response_body$Token,
+      expiration = as_timestamp(credentials_response_body$Expiration, "iso8601"),
     )
+
+  return(credentials_list)
+}
+
+get_container_credentials_eks <- function() {
+  role_arn <- get_role_arn()
+  web_identity_token <- readLines(get_web_identity_token_file())
+  creds <- list(anonymous = TRUE)
+
+  credentials_list <- get_assume_role_with_web_identity_creds(
+    role_arn,
+    web_identity_token,
+    role_session_name,
+    creds
+  )
 
   return(credentials_list)
 }

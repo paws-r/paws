@@ -260,3 +260,42 @@ get_region <- function(profile = "") {
 
   return(region)
 }
+
+# Get the AWS role ARN to use. If none, return "default".
+get_role_arn <- function(role_arn = "") {
+  if (!is.null(role_arn) && role_arn != "") {
+    return(role_arn)
+  }
+
+  role_arn <- get_env("AWS_ROLE_ARN")
+
+  if (role_arn == "") stop("No Role ARN provided")
+
+  return(role_arn)
+}
+
+
+# Get the AWS role session to use. If none, return "default".
+get_role_session_name <- function(role_session_name = "") {
+  if (!is.null(role_session_name) && role_session_name != "") {
+    return(role_session_name)
+  }
+
+  role_session_name <- get_env("AWS_ROLE_SESSION_NAME")
+
+  if (role_session_name == "") role_session_name <- "default"
+
+  return(role_session_name)
+}
+
+get_web_identity_token_file <- function(web_identity_token_file = "") {
+  if (!is.null(web_identity_token_file) && web_identity_token_file != "") {
+    return(web_identity_token_file)
+  }
+
+  web_identity_token_file <- get_env("AWS_WEB_IDENTITY_TOKEN_FILE")
+
+  if (web_identity_token_file == "") stop("No WebIdentityToken file available")
+
+  return(web_identity_token_file)
+}
