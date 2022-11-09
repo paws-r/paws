@@ -218,7 +218,7 @@ config_file_source_profile <- function(role_arn, role_session_name, mfa_serial, 
   return(role_creds)
 }
 
-parse_creds_from_sts_resp <- function(resp){
+get_creds_from_sts_resp <- function(resp){
   role_creds <- Creds(
     access_key_id = resp$Credentials$AccessKeyId,
     secret_access_key = resp$Credentials$SecretAccessKey,
@@ -249,7 +249,7 @@ get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, cred
     )
   }
   if (is.null(resp)) return(NULL)
-  role_creds <- parse_creds_from_sts_resp(resp)
+  role_creds <- get_creds_from_sts_resp(resp)
   return(role_creds)
 }
 
