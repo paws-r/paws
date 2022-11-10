@@ -274,7 +274,6 @@ get_role_arn <- function(role_arn = "") {
   return(role_arn)
 }
 
-
 # Get the AWS role session to use. If none, return "default".
 get_role_session_name <- function(role_session_name = "") {
   if (!is.null(role_session_name) && role_session_name != "") {
