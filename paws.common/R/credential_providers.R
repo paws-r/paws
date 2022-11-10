@@ -269,7 +269,7 @@ get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, cred
 get_assume_role_with_web_identity_creds <- function(role_arn, role_session_name, web_identity_token) {
   svc <- sts(config = list(credentials = list(anonymous = TRUE)))
 
-  resp <- svc$sts_assume_role_with_web_identity(
+  resp <- svc$assume_role_with_web_identity(
     RoleArn = role_arn,
     RoleSessionName = role_session_name,
     WebIdentityToken = web_identity_token
