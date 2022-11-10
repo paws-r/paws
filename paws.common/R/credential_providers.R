@@ -218,6 +218,18 @@ config_file_source_profile <- function(role_arn, role_session_name, mfa_serial, 
   return(role_creds)
 }
 
+# Get the user's MFA token code from a prompt.
+# Use an RStudio prompt if running in RStudio.
+# Otherwise use a text prompt in the console.
+get_token_code <- function() {
+  if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
+    token_code <- rstudioapi::showPrompt("MFA", "Enter MFA token code")
+  } else {
+    token_code <- readline("Enter MFA token code: ")
+  }
+  return(token_code)
+}
+
 get_creds_from_sts_resp <- function(resp){
   role_creds <- Creds(
     access_key_id = resp$Credentials$AccessKeyId,
@@ -233,7 +245,7 @@ get_creds_from_sts_resp <- function(resp){
 # `mfa_serial`, and the user will be prompted interactively to provide the
 # current MFA token code.
 get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, creds) {
-  svc <- sts(config = list(credentials = list(creds = creds)))
+  svc <- sts(config = list(credentials = list(creds = creds)), region = "us-east-1")
   if (is.null(mfa_serial) || mfa_serial == "") {
     resp <- svc$assume_role(
       RoleArn = role_arn,
@@ -266,18 +278,6 @@ get_assume_role_with_web_identity_creds <- function(role_arn, web_identity_token
   if (is.null(resp)) return(NULL)
   role_creds <- get_creds_from_sts_resp(resp)
   return(role_creds)
-}
-
-# Get the user's MFA token code from a prompt.
-# Use an RStudio prompt if running in RStudio.
-# Otherwise use a text prompt in the console.
-get_token_code <- function() {
-  if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
-    token_code <- rstudioapi::showPrompt("MFA", "Enter MFA token code")
-  } else {
-    token_code <- readline("Enter MFA token code: ")
-  }
-  return(token_code)
 }
 
 # Retrieve container job role credentials
@@ -356,15 +356,11 @@ get_container_credentials <- function() {
 }
 
 get_container_credentials_eks <- function() {
-  role_arn <- get_role_arn()
-  web_identity_token <- readLines(get_web_identity_token_file())
-  creds <- list(anonymous = TRUE)
-
   credentials_list <- get_assume_role_with_web_identity_creds(
-    role_arn,
-    web_identity_token,
-    role_session_name,
-    creds
+    role_arn = get_role_arn(),
+    web_identity_token = readLines(get_web_identity_token_file()),
+    role_session_name = get_role_session_name(),
+    creds = list(anonymous = TRUE)
   )
 
   return(credentials_list)

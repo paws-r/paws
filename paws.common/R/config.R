@@ -261,7 +261,7 @@ get_region <- function(profile = "") {
   return(region)
 }
 
-# Get the AWS role ARN to use. If none, return "default".
+# Get the AWS role ARN to use.
 get_role_arn <- function(role_arn = "") {
   if (!is.null(role_arn) && role_arn != "") {
     return(role_arn)
@@ -288,6 +288,7 @@ get_role_session_name <- function(role_session_name = "") {
   return(role_session_name)
 }
 
+# Get the Web Identity Token File to use (via AssumeRoleWithWebIdentity).
 get_web_identity_token_file <- function(web_identity_token_file = "") {
   if (!is.null(web_identity_token_file) && web_identity_token_file != "") {
     return(web_identity_token_file)

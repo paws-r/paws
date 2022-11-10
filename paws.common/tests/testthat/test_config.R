@@ -55,17 +55,17 @@ test_that("set_config", {
   expect_error(set_config(list(), list(foo = 123)))
 })
 
-test_that("get_region", {
-  Sys.setenv(AWS_REGION = "foo")
-  expect_equal(get_region(), "foo")
-  expect_equal(get_region(NULL), "foo")
-})
-
 test_that("get_profile_name", {
   Sys.setenv(AWS_PROFILE = "bar")
   expect_equal(get_profile_name(), "bar")
   expect_equal(get_profile_name(NULL), "bar")
   expect_equal(get_profile_name("foo"), "foo")
+})
+
+test_that("get_region", {
+  Sys.setenv(AWS_REGION = "foo")
+  expect_equal(get_region(), "foo")
+  expect_equal(get_region(NULL), "foo")
 })
 
 test_that("get_role_arn", {
@@ -88,5 +88,3 @@ test_that("get_web_identity_token_file", {
   expect_equal(get_web_identity_token_file(NULL), "bar")
   expect_equal(get_web_identity_token_file("foo"), "foo")
 })
-
-
