@@ -68,27 +68,32 @@ paws_logging_opt <- list(
   paws.log_timestamp_fmt = "%Y-%m-%d %H:%M:%OS3"
 )
 
+# Help parse log messages that contain % i.e. encoded urls
+parse_msg <- function(...) {
+  if(length(list(...)) == 1) paste(...) else sprintf(...)
+}
+
 log_debug <- function(...) {
   if (isTRUE(getOption('paws.log_level') >= 4L)) {
-    log_msg('DEBUG', sprintf(...))
+    log_msg('DEBUG', parse_msg(...))
   }
 }
 
 log_info <- function(...) {
   if (isTRUE(getOption('paws.log_level') >= 3L)) {
-    log_msg('INFO', sprintf(...))
+    log_msg('INFO', parse_msg(...))
   }
 }
 
 log_warn <- function(...) {
   if (isTRUE(getOption('paws.log_level') >= 2L)) {
-    log_msg('WARN', sprintf(...))
+    log_msg('WARN', parse_msg(...))
   }
 }
 
 log_error <- function(...) {
   if (isTRUE(getOption('paws.log_level') >= 1L)) {
-    log_msg('ERROR', sprintf(...))
+    log_msg('ERROR', parse_msg(...))
   }
 }
 
