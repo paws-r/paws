@@ -235,7 +235,7 @@ get_creds_from_sts_resp <- function(resp){
     access_key_id = resp$Credentials$AccessKeyId,
     secret_access_key = resp$Credentials$SecretAccessKey,
     session_token = resp$Credentials$SessionToken,
-    expiration = as_timestamp(as_resp$Credentials$Expiration, "iso8601")
+    expiration = as_timestamp(resp$Credentials$Expiration, "iso8601")
   )
   return(role_creds)
 }
