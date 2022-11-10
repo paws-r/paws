@@ -245,7 +245,7 @@ get_creds_from_sts_resp <- function(resp){
 # `mfa_serial`, and the user will be prompted interactively to provide the
 # current MFA token code.
 get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, creds) {
-  svc <- sts(config = list(credentials = list(creds = creds)), region = "us-east-1")
+  svc <- sts(config = list(credentials = list(creds = creds)), region = "us-east-1"))
   if (is.null(mfa_serial) || mfa_serial == "") {
     resp <- svc$assume_role(
       RoleArn = role_arn,
@@ -266,8 +266,8 @@ get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, cred
 }
 
 # Get STS credentials for AssumeRoleWithWebIdentity
-get_assume_role_with_web_identity_creds <- function(role_arn, web_identity_token, role_session_name, creds) {
-  svc <- sts(config = list(credentials = list(creds = creds)))
+get_assume_role_with_web_identity_creds <- function(role_arn, web_identity_token, role_session_name) {
+  svc <- sts(config = list(credentials = list(anonymous = TRUE)))
 
   resp <- svc$sts_assume_role_with_web_identity(
     RoleArn = role_arn,
@@ -359,8 +359,7 @@ get_container_credentials_eks <- function() {
   credentials_list <- get_assume_role_with_web_identity_creds(
     role_arn = get_role_arn(),
     web_identity_token = readLines(get_web_identity_token_file()),
-    role_session_name = get_role_session_name(),
-    creds = list(anonymous = TRUE)
+    role_session_name = get_role_session_name()
   )
 
   return(credentials_list)
