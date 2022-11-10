@@ -358,8 +358,8 @@ get_container_credentials <- function() {
 get_container_credentials_eks <- function() {
   credentials_list <- get_assume_role_with_web_identity_creds(
     role_arn = get_role_arn(),
-    web_identity_token = readLines(get_web_identity_token_file()),
-    role_session_name = get_role_session_name()
+    role_session_name = get_role_session_name(),
+    web_identity_token = readLines(get_web_identity_token_file())
   )
 
   return(credentials_list)
