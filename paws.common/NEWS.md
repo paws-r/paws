@@ -3,6 +3,7 @@
 * Fix Content-Md5 being modified by user
 * Add logging system to help with debugging paws issues
 * Add support for `AssumeRoleWithWebIdentity` (#477)
+* Clarify that `AWS_CREDENTIAL_EXPIRATION` is optional when using `AWS_SESSION_TOKEN` (#549)
 
 # paws.common 0.5.1
 
