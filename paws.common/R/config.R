@@ -175,7 +175,8 @@ get_profile_name <- function(profile = "") {
   return(profile)
 }
 
-# Gets the instance metadata by making an http request.
+# Gets the instance metadata by making an http request to an instance metadata services
+# Please see security recommendations by AWS: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html
 get_instance_metadata <- function(query_path = "") {
   token_ttl <- '21600' # same approach as in boto3: https://github.com/boto/botocore/blob/master/botocore/utils.py#L376
   # Do not get metadata when the disabled setting is on.
@@ -221,7 +222,7 @@ get_instance_metadata <- function(query_path = "") {
         timeout = 1, 
         header=c("X-aws-ec2-metadata-token"= token)
     )
-  } else { # use IMDSv1 in case IMDSv2 is not available - not recommended - very insecure
+  } else {
   metadata_request <-
     new_http_request("GET", metadata_url, timeout = 1)
   }
