@@ -55,7 +55,8 @@ HttpResponse <- struct(
 # @param close Whether to immediately close the connection, or else reuse connections.
 # @param timeout How long to wait for an initial response.
 # @param dest Control where the response body is written
-new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = NULL, dest = NULL) {
+# @param header list of HTTP headers to add to the request
+new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = NULL, dest = NULL, header = list()) {
   if (method == "") {
     method <- "GET"
   }
@@ -69,7 +70,7 @@ new_http_request <- function(method, url, body = NULL, close = FALSE, timeout = 
     proto = "HTTP/1.1",
     proto_major = 1,
     proto_minor = 1,
-    header = list(), # TODO
+    header = header,
     body = body,
     host = u$host,
     close = close,

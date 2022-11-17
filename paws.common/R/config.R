@@ -175,21 +175,57 @@ get_profile_name <- function(profile = "") {
   return(profile)
 }
 
-# Gets the instance metadata by making an http request.
+# Gets the instance metadata by making an http request to an instance metadata services
+# Please see security recommendations by AWS: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html
 get_instance_metadata <- function(query_path = "") {
-
+  token_ttl <- '21600' # same approach as in boto3: https://github.com/boto/botocore/blob/master/botocore/utils.py#L376
   # Do not get metadata when the disabled setting is on.
   if (trimws(tolower(get_env("AWS_EC2_METADATA_DISABLED"))) %in% c("true", "1")) {
     return(NULL)
   }
+  # Get token timeout for IMDSv2 tokens
+  token <-  "" # Token to be used in case of more secure IMDSv2 authentication
+  #try IMDSv2  (more information): https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html
+   metadata_token_url <-  file.path(
+    "http://169.254.169.254/latest/api/token"
+  )
+ metadata_token_request <-
+    new_http_request(
+        "PUT", 
+        metadata_token_url, 
+        timeout = 1, 
+        header=c("X-aws-ec2-metadata-token-ttl-seconds"= token_ttl)
+    )
 
+  metadata_token_response <- tryCatch(
+    {
+      issue(metadata_token_request)
+    },
+    error = function(e) {
+      NULL
+    }
+  )
+  if (!(is.null(metadata_token_response)) && metadata_token_response$status_code == 200) {
+      if (length(metadata_token_response["body"])>0) {
+          token=rawToChar(metadata_token_response["body"])
+      } 
+  }
   metadata_url <- file.path(
     "http://169.254.169.254/latest/meta-data",
     query_path
   )
+  if (token!="") {
+  metadata_request <-
+    new_http_request(
+        "GET", 
+        metadata_url, 
+        timeout = 1, 
+        header=c("X-aws-ec2-metadata-token"= token)
+    )
+  } else {
   metadata_request <-
     new_http_request("GET", metadata_url, timeout = 1)
-
+  }
   metadata_response <- tryCatch(
     {
       issue(metadata_request)
