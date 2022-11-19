@@ -564,7 +564,7 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 
   text <- "<body>foo \\bar { \\u0123 <code>baz'</code></body>"
-  expected <- "foo \\\\bar \\{ `U+0123` `baz\\'`"
+  expected <- "foo \\\\bar \\{ U+0123 `baz\\'`"
   expect_equal(convert(text), expected)
 
   # TODO: The following test fails (in actual output, <b> and </b> are missing)
