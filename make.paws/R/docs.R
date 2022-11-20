@@ -508,7 +508,7 @@ clean_markdown <- function(markdown) {
   result <- markdown[keep]
 
   # Unicode character codes: \\uxxxx to `U+xxxx`
-  result <- gsub(r"{\\u([0-9a-fA-F]{4})}", r"{U+\1}", result)
+  result <- gsub("\\\\u([0-9a-fA-F]{4})", "`U+\\1`", result)
 
   # Escape backslashes followed by characters so LaTeX doesn't interpret them
   # as escape sequences.
