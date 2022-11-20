@@ -567,8 +567,8 @@ test_that("convert", {
   # TODO(davidkretch): The following commented out expectation passes on macOS
   # and fails on Ubuntu on GitHub Actions. Fix temporarily with the Linux
   # output since extra backslashes should be ok.
-  # expected <- "foo \\\\bar \\{ U+0123 `baz\\'`"
-  expected <- "foo \\\\bar \\{ \\U+0123 `baz\\'`"
+  # expected <- "foo \\\\bar \\{ `U+0123` `baz\\'`"
+  expected <- "foo \\\\bar \\{ \\`U+0123` `baz\\'`"
   expect_equal(convert(text), expected)
 
   # TODO: The following test fails (in actual output, <b> and </b> are missing)
