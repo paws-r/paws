@@ -527,6 +527,9 @@ clean_markdown <- function(markdown) {
   # Convert \_ to _. Pandoc adds an \.
   result <- gsub("\\_", "_", result, fixed = TRUE)
 
+  # Convert 2+ backslashes to \\.
+  result <- gsub(r"(\\{2,})", r"(\\\\)", result, perl = TRUE)
+
   result <- fix_internal_links(result)
 
   return(result)
