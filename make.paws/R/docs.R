@@ -527,9 +527,6 @@ clean_markdown <- function(markdown) {
   # Convert \_ to _. Pandoc adds an \.
   result <- gsub("\\_", "_", result, fixed = TRUE)
 
-  # Convert "### Foo:" to "### Foo" to avoid R documentation warnings.
-  result <- gsub(r"((\#+.*):)", r"(\1)", result)
-
   result <- fix_internal_links(result)
 
   return(result)
