@@ -143,8 +143,6 @@ svc <- paws::svc(config = list(credentials = list(anonymous = TRUE)))
 If you are running R on an EC2 instance or in a container on AWS (ECS or EKS) with an 
 attached IAM role, Paws will automatically use the credentials from the attached role.
 
-## Get credentials inside containers orchestrated by Kubernetes 
-
 ---
 
 
