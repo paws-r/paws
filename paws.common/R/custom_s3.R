@@ -347,10 +347,8 @@ s3_redirect_from_error <- function(request){
 # but they aren't all universally available for use. This will try to
 # find region from response elements, but will fall back to calling
 # HEAD on the bucket if all else fails.
-# :param bucket: The bucket to find the region for. This is necessary if
-#     the region is not available in the error response.
-# :param response: A response representing a service request that failed
-#     due to incorrect region configuration.
+# param response: HttpResponse
+# param error: Error
 s3_get_bucket_region <- function(response, error){
   # First try to source the region from the headers.
   response_headers <- response$header
