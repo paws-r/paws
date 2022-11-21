@@ -260,3 +260,123 @@ test_that("S3 access points", {
   actual <- update_endpoint_for_s3_config(req)
   expect_equal(actual$http_request$url$host, host)
 })
+
+test_that("update url endpoint with new endpoint", {
+  org_ep <- "https://s3.eu-east-2.amazonaws.com"
+  new_ep <- "https://s3.amazonaws.com"
+  actual <- set_request_url(org_ep, new_ep)
+  expect_equal(actual, new_ep)
+})
+
+test_that("update url endpoint with new endpoint without new scheme", {
+  org_ep <- "https://s3.eu-east-2.amazonaws.com"
+  new_ep <- "sftp://s3.amazonaws.com"
+  actual <- set_request_url(org_ep, new_ep, F)
+  expect_equal(actual, "https://s3.amazonaws.com")
+})
+
+test_that("ignore redirect when no http response is given", {
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  actual <- s3_redirect_from_error(req)
+  expect_equal(actual, req)
+})
+
+test_that("ignore redirect if already redirected", {
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$http_response <- paws.common:::HttpResponse(
+    status_code = 301,
+    body = charToRaw(paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    )),
+    header = list(
+      "x-amz-bucket-region" = "eu-east-2"
+    )
+  )
+  req$context$s3_redirect <- TRUE
+  actual <- s3_redirect_from_error(req)
+  expect_equal(actual, req)
+})
+
+test_that("ignore redirect if unable to find S3 region", {
+  raw_error <- charToRaw(paste0(
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+    "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+    "<Bucket>foo</Bucket></Error>"
+  ))
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$http_response <- paws.common:::HttpResponse(
+    status_code = 301,
+    body = raw_error
+  )
+  actual <- s3_redirect_from_error(req)
+  expect_equal(actual, req)
+  expect_equal(actual$http_response$body, raw_error)
+})
+
+
+test_that("redirect request from http response error", {
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$http_response <- paws.common:::HttpResponse(
+    status_code = 301,
+    body = charToRaw(paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    )),
+    header = list(
+      "x-amz-bucket-region" = "eu-east-2"
+    )
+  )
+
+  pass <- function(x) return(x)
+  mockery::stub(s3_redirect_from_error, "send", pass)
+
+  actual <- s3_redirect_from_error(req)
+  expect_equal(actual$context$s3_redirect, TRUE)
+  expect_equal(actual$http_request$url$host, "foo.s3.eu-east-2.amazonaws.com")
+})
+
+test_that("redirect error with region", {
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$http_response <- paws.common:::HttpResponse(
+    status_code = 301,
+    body = charToRaw(paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    )),
+    header = list(
+      "x-amz-bucket-region" = "eu-east-2"
+    )
+  )
+
+  error <- s3_unmarshal_error(req)$error
+
+  expect_equal(error$code, "BucketRegionError")
+  expect_true(
+    grepl("incorrect region.*bucket is in 'eu-east-2' region", error$message)
+  )
+  expect_equal(error$status_code, 301)
+})
+
+test_that("redirect error without region", {
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$http_response <- paws.common:::HttpResponse(
+    status_code = 301,
+    body = charToRaw(paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    ))
+  )
+
+  error <- s3_unmarshal_error(req)$error
+
+  expect_equal(error$code, "BucketRegionError")
+  expect_true(
+    grepl("incorrect region", error$message)
+  )
+  expect_equal(error$status_code, 301)
+})
