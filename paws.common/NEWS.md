@@ -2,6 +2,7 @@
 
 * Fix Content-Md5 being modified by user
 * Add logging system to help with debugging paws issues
+* Add s3 redirects from error message
 
 # paws.common 0.5.1
 
