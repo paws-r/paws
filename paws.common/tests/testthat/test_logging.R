@@ -191,3 +191,40 @@ test_that("check log messages", {
   unlink(temp_file)
 })
 
+test_that("check log encoded message", {
+  temp_file <- tempfile()
+  options("paws.log_level" = 4L)
+  options("paws.log_file" = temp_file)
+
+  # log encoded url message
+  log_debug("foo%20bar")
+  log_info("foo%20bar")
+  log_warn("foo%20bar")
+  log_error("foo%20bar")
+
+  result <- readLines(temp_file)
+  expect_true(grepl("^.*DEBUG.*: foo%20bar", result[[1]]))
+  expect_true(grepl("^.*INFO.*: foo%20bar", result[[2]]))
+  expect_true(grepl("^.*WARN.*: foo%20bar", result[[3]]))
+  expect_true(grepl("^.*ERROR.*: foo%20bar", result[[4]]))
+  unlink(temp_file)
+})
+
+test_that("check log message additional arguments", {
+  temp_file <- tempfile()
+  options("paws.log_level" = 4L)
+  options("paws.log_file" = temp_file)
+
+  # log with arguments
+  log_debug("foo %s", "bar")
+  log_info("foo %s", "bar")
+  log_warn("foo %s", "bar")
+  log_error("foo %s", "bar")
+
+  result <- readLines(temp_file)
+  expect_true(grepl("^.*DEBUG.*: foo bar", result[[1]]))
+  expect_true(grepl("^.*INFO.*: foo bar", result[[2]]))
+  expect_true(grepl("^.*WARN.*: foo bar", result[[3]]))
+  expect_true(grepl("^.*ERROR.*: foo bar", result[[4]]))
+  unlink(temp_file)
+})
