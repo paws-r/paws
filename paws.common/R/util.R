@@ -107,3 +107,6 @@ call_with_args <- function(f, data) {
   }
   return(do.call(f, as.list(data)[args]))
 }
+
+# helper function to make it easy to replace NULLs with default value
+`%||%` <- function(x,y) if(is.null(x)) y else x
