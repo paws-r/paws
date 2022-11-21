@@ -331,11 +331,13 @@ test_that("redirect request from http response error", {
   )
 
   pass <- function(x) return(x)
+  mockery::stub(s3_redirect_from_error, "sign", pass)
   mockery::stub(s3_redirect_from_error, "send", pass)
 
   actual <- s3_redirect_from_error(req)
   expect_equal(actual$context$s3_redirect, TRUE)
-  expect_equal(actual$http_request$url$host, "foo.s3.eu-east-2.amazonaws.com")
+  expect_equal(actual$client_info$endpoint, "https://s3.eu-east-2.amazonaws.com")
+  expect_equal(actual$http_request$url$host, "s3.eu-east-2.amazonaws.com")
 })
 
 test_that("redirect error with region", {
