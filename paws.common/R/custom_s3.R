@@ -275,15 +275,15 @@ s3_redirect_from_error <- function(request){
   # if we sign a Head* request with the wrong region,
   # we'll get a 400 Bad Request but we won't get a
   # body saying it's an "AuthorizationHeaderMalformed".
-  is_special_head_object = (
+  is_special_head_object <- (
     error_code %in% c('301', '400') & request$operation$name == 'HeadObject'
   )
-  is_special_head_bucket = (
+  is_special_head_bucket <- (
     error_code %in% c('301', '400')
     & request$operation$name == 'HeadBucket'
     & 'x-amz-bucket-region' %in% names(request$http_response$header)
   )
-  is_wrong_signing_region = (
+  is_wrong_signing_region <- (
     error$Code == 'AuthorizationHeaderMalformed' & 'Region' %in% names(error)
   )
   is_redirect_status <- request$http_response$status_code %in% c(301, 302, 307)
@@ -364,7 +364,9 @@ s3_get_bucket_region <- function(response, error){
 # Splice a new endpoint into an existing URL. Note that some endpoints
 # from the endpoint provider have a path component which will be
 # discarded by this function.
-set_request_url <- function(original_endpoint, new_endpoint, use_new_scheme=TRUE){
+set_request_url <- function(original_endpoint,
+                            new_endpoint,
+                            use_new_scheme = TRUE){
   new_endpoint_components <- httr::parse_url(new_endpoint)
   original_endpoint_components <- httr::parse_url(original_endpoint)
   scheme <- original_endpoint_components$scheme
