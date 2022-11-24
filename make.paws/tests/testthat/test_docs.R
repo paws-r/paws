@@ -238,7 +238,7 @@ test_that("make_doc_params", {
             documentation = "Documentation1"
           ),
           Member2 = list(
-            documentation = "Documentation2"
+            documentation = "Documentation2\n<h2>Foo</h2>"
           )
         )
       )
@@ -247,6 +247,8 @@ test_that("make_doc_params", {
   expected <- paste(
     "#' @param Member1 Documentation1",
     "#' @param Member2 &#91;required&#93; Documentation2",
+    "#' ",
+    "#' **Foo**",
     sep = "\n"
   )
   expect_equal(make_doc_params(operation, api), expected)
