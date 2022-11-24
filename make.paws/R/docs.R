@@ -512,7 +512,7 @@ clean_markdown <- function(markdown) {
 
   # Escape backslashes followed by characters so LaTeX doesn't interpret them
   # as escape sequences.
-  result <- gsub(r"{\\([a-zA-Z])}", r"{\\\\\1}", result)
+  result <- gsub(r"(\\([a-zA-Z]))", r"{\\\\\1}", result)
 
   # Remove certain characters not allowed by LaTeX.
   result <- gsub("\U2028", "", result)
