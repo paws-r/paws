@@ -512,7 +512,7 @@ clean_markdown <- function(markdown) {
 
   # Escape backslashes followed by characters so LaTeX doesn't interpret them
   # as escape sequences.
-  result <- gsub(r"(\\([a-zA-Z]))", r"{\\\\\1}", result)
+  result <- gsub("\\\\([a-zA-Z])", "\\\\\\\\\\1", result)
 
   # Remove certain characters not allowed by LaTeX.
   result <- gsub("\U2028", "", result)
@@ -528,7 +528,7 @@ clean_markdown <- function(markdown) {
   result <- gsub("\\_", "_", result, fixed = TRUE)
 
   # Convert 2+ backslashes to \\.
-  result <- gsub(r"(\\{2,})", r"(\\\\)", result, perl = TRUE)
+  result <- gsub("\\\\{2,}", "\\\\\\\\", result, perl = TRUE)
 
   result <- fix_internal_links(result)
 
