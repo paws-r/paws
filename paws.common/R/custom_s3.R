@@ -269,7 +269,11 @@ s3_redirect_from_error <- function(request){
     return(request)
   }
   error_code <- request$http_response$status_code
-  if(error_code == 200){
+
+  # Exit s3_redirect_from_error function if initial request is successful
+  # https://docs.aws.amazon.com/waf/latest/developerguide/customizing-the-response-status-codes.html
+  http_success_code <- c(200, 201, 202, 204, 206)
+  if(error_code %in% http_success_code){
     return(request)
   }
   error <- decode_xml(request$http_response$body)$Error
