@@ -343,12 +343,14 @@ test_that("redirect request from http response error", {
     )
   )
 
-  pass <- function(x) return(x)
+  pass <- mock2(side_effect = function(...) as.list(...))
   mockery::stub(s3_redirect_from_error, "sign", pass)
   mockery::stub(s3_redirect_from_error, "send", pass)
 
   actual <- s3_redirect_from_error(req)
-  expect_equal(actual$context$s3_redirect, TRUE)
+  sign_args <- mockery::mock_args(pass)[[1]]
+  expect_true(sign_args[[1]]$context$s3_redirect)
+  expect_false(sign_args[[1]]$built)
   expect_equal(actual$client_info$endpoint, "https://s3.eu-east-2.amazonaws.com")
   expect_equal(actual$http_request$url$host, "s3.eu-east-2.amazonaws.com")
 })
