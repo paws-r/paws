@@ -55,12 +55,6 @@ test_that("set_config", {
   expect_error(set_config(list(), list(foo = 123)))
 })
 
-test_that("get_region", {
-  Sys.setenv(AWS_REGION = "foo")
-  expect_equal(get_region(), "foo")
-  expect_equal(get_region(NULL), "foo")
-})
-
 test_that("get_profile_name", {
   Sys.setenv(AWS_PROFILE = "bar")
   expect_equal(get_profile_name(), "bar")
@@ -68,9 +62,35 @@ test_that("get_profile_name", {
   expect_equal(get_profile_name("foo"), "foo")
 })
 
+test_that("get_region", {
+  Sys.setenv(AWS_REGION = "foo")
+  expect_equal(get_region(), "foo")
+  expect_equal(get_region(NULL), "foo")
+})
+
+test_that("get_role_arn", {
+  Sys.setenv(AWS_ROLE_ARN = "bar")
+  expect_equal(get_role_arn(), "bar")
+  expect_equal(get_role_arn(NULL), "bar")
+  expect_equal(get_role_arn("foo"), "foo")
+})
+
+test_that("get_role_session_name", {
+  Sys.setenv(AWS_ROLE_SESSION_NAME = "bar")
+  expect_equal(get_role_session_name(), "bar")
+  expect_equal(get_role_session_name(NULL), "bar")
+  expect_equal(get_role_session_name("foo"), "foo")
+})
+
+test_that("get_web_identity_token_file", {
+  Sys.setenv(AWS_WEB_IDENTITY_TOKEN_FILE = "bar")
+  expect_equal(get_web_identity_token_file(), "bar")
+  expect_equal(get_web_identity_token_file(NULL), "bar")
+  expect_equal(get_web_identity_token_file("foo"), "foo")
+})
 
 test_that("get_instance_metadata_imdsv1", {
-   # this function mocks the behaviour of the IMDSv1 metadata service in so far as it allows testing of get_instance_metadata in config. 
+   # this function mocks the behaviour of the IMDSv1 metadata service in so far as it allows testing of get_instance_metadata in config.
    valid_metadata_response="ami-id
 ami-launch-index
 ami-manifest-path
@@ -116,7 +136,7 @@ services/"
                 body = charToRaw(valid_metadata_response)
             )
              return (mock_imdsv1_metadata_response)
-        } 
+        }
        # if there is an invalid request in general return a HTTP error code
          mock_imdsv1_response_invalid_request=HttpResponse(
                 status_code = 405,
@@ -132,7 +152,7 @@ services/"
 
 
 test_that("get_instance_metadata_imdsv2", {
-   # this function mocks the behaviour of the IMDSv2 metadata service in so far as it allows testing of get_instance_metadata in config. 
+   # this function mocks the behaviour of the IMDSv2 metadata service in so far as it allows testing of get_instance_metadata in config.
    valid_metadata_response="ami-id
 ami-launch-index
 ami-manifest-path
@@ -159,7 +179,7 @@ services/"
    test_aws_token="AWSTESTINGTokENZZ-XXXXxxxXXXx2XXx1X45XXxXXxX-XxXXxxxXx=="
    mock_imdsv2_behaviour <- function(http_request) {
        # mock behaviour of the imdsv2 metadata service
-      if (http_request$url$scheme=="http" && http_request$method=="PUT" && http_request$url$path=="/latest/api/token" 
+      if (http_request$url$scheme=="http" && http_request$method=="PUT" && http_request$url$path=="/latest/api/token"
           && !is.na(http_request$header["X-aws-ec2-metadata-token-ttl-seconds"])
           && !is.na(as.numeric(http_request$header[["X-aws-ec2-metadata-token-ttl-seconds"]]))
         ) {
@@ -185,7 +205,7 @@ services/"
                 body = charToRaw(valid_metadata_response)
             )
              return (mock_imdsv2_metadata_response)
-        } 
+        }
        # if there is an invalid request in general return a HTTP error code
          mock_imdsv1_response_invalid_request=HttpResponse(
                 status_code = 405,

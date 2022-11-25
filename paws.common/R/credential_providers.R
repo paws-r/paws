@@ -159,7 +159,7 @@ config_file_credential_process <- function(command) {
 
 # Get the `role_arn`'s temporary credentials given a `credential_source`,
 # either "Environment", "Ec2InstanceMetadata", or "EcsContainer".
-# See https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-credential_source.html.
+# See https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html
 config_file_credential_source <- function(role_arn, role_session_name, mfa_serial, credential_source) {
   if (credential_source == "Environment") {
     creds <- env_provider()
@@ -218,7 +218,29 @@ config_file_source_profile <- function(role_arn, role_session_name, mfa_serial, 
   return(role_creds)
 }
 
-# Get credentials for assumed role `role_arn`, using credentials in `creds`.
+# Get the user's MFA token code from a prompt.
+# Use an RStudio prompt if running in RStudio.
+# Otherwise use a text prompt in the console.
+get_token_code <- function() {
+  if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
+    token_code <- rstudioapi::showPrompt("MFA", "Enter MFA token code")
+  } else {
+    token_code <- readline("Enter MFA token code: ")
+  }
+  return(token_code)
+}
+
+get_creds_from_sts_resp <- function(resp){
+  role_creds <- Creds(
+    access_key_id = resp$Credentials$AccessKeyId,
+    secret_access_key = resp$Credentials$SecretAccessKey,
+    session_token = resp$Credentials$SessionToken,
+    expiration = as_timestamp(resp$Credentials$Expiration, "iso8601")
+  )
+  return(role_creds)
+}
+
+# Get STS credentials for AssumeRole `role_arn`, using credentials in `creds`.
 # If the role requires MFA, the MFA device's serial number must be provided in
 # `mfa_serial`, and the user will be prompted interactively to provide the
 # current MFA token code.
@@ -239,25 +261,23 @@ get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, cred
     )
   }
   if (is.null(resp)) return(NULL)
-  role_creds <- Creds(
-    access_key_id = resp$Credentials$AccessKeyId,
-    secret_access_key = resp$Credentials$SecretAccessKey,
-    session_token = resp$Credentials$SessionToken,
-    expiration = resp$Credentials$Expiration
-  )
+  role_creds <- get_creds_from_sts_resp(resp)
   return(role_creds)
 }
 
-# Get the user's MFA token code from a prompt.
-# Use an RStudio prompt if running in RStudio.
-# Otherwise use a text prompt in the console.
-get_token_code <- function() {
-  if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
-    token_code <- rstudioapi::showPrompt("MFA", "Enter MFA token code")
-  } else {
-    token_code <- readline("Enter MFA token code: ")
-  }
-  return(token_code)
+# Get STS credentials for AssumeRoleWithWebIdentity
+get_assume_role_with_web_identity_creds <- function(role_arn, role_session_name, web_identity_token) {
+  svc <- sts(config = list(credentials = list(anonymous = TRUE)))
+
+  resp <- svc$assume_role_with_web_identity(
+    RoleArn = role_arn,
+    RoleSessionName = role_session_name,
+    WebIdentityToken = web_identity_token
+  )
+
+  if (is.null(resp)) return(NULL)
+  role_creds <- get_creds_from_sts_resp(resp)
+  return(role_creds)
 }
 
 # Retrieve container job role credentials
@@ -267,22 +287,21 @@ container_credentials_provider <- function() {
   credentials_response <- NULL
 
   container_credentials_uri <- get_env("AWS_CONTAINER_CREDENTIALS_RELATIVE_URI")
+  container_credentials_token <- get_env("AWS_WEB_IDENTITY_TOKEN_FILE")
 
-  # Look for job role credentials first
+  # Look for job role credentials first, then web identity token file
   if (container_credentials_uri != "") {
     credentials_response <- get_container_credentials()
+  } else if (container_credentials_token != "") {
+    credentials_response <- get_container_credentials_eks()
   }
 
-  if (is.null(credentials_response)) return(NULL)
+  access_key_id <- credentials_response$access_key_id
+  secret_access_key <- credentials_response$secret_access_key
+  session_token <- credentials_response$session_token
+  expiration <- credentials_response$expiration
 
-  credentials_response_body <-
-    jsonlite::fromJSON(raw_to_utf8(credentials_response$body))
-
-  access_key_id <- credentials_response_body$AccessKeyId
-  secret_access_key <- credentials_response_body$SecretAccessKey
-  session_token <- credentials_response_body$Token
-  expiration <- as_timestamp(credentials_response_body$Expiration, "iso8601")
-
+  # return credential
   if (is.null(access_key_id) || is.null(secret_access_key) ||
       is.null(session_token)) return(NULL)
 
@@ -322,7 +341,28 @@ get_container_credentials <- function() {
     return(NULL)
   }
 
-  return(metadata_response)
+  credentials_response_body <-
+    jsonlite::fromJSON(raw_to_utf8(metadata_response$body))
+
+  credentials_list <-
+    list(
+      access_key_id  = credentials_response_body$AccessKeyId,
+      secret_access_key = credentials_response_body$SecretAccessKey,
+      session_token = credentials_response_body$Token,
+      expiration = as_timestamp(credentials_response_body$Expiration, "iso8601"),
+    )
+
+  return(credentials_list)
+}
+
+get_container_credentials_eks <- function() {
+  credentials_list <- get_assume_role_with_web_identity_creds(
+    role_arn = get_role_arn(),
+    role_session_name = get_role_session_name(),
+    web_identity_token = readLines(get_web_identity_token_file(), warn = FALSE)
+  )
+
+  return(credentials_list)
 }
 
 # Retrieve credentials for EC2 IAM Role
@@ -359,18 +399,6 @@ iam_credentials_provider <- function() {
     creds <- NULL
   }
   return(creds)
-}
-
-# Get the name of the IAM role from the instance metadata.
-get_iam_role <- function() {
-
-  iam_role_response <-  get_instance_metadata("iam/security-credentials")
-
-  if (is.null(iam_role_response)) return(NULL)
-
-  iam_role_name <- raw_to_utf8(iam_role_response$body)
-
-  return(iam_role_name)
 }
 
 no_credentials <- function() {

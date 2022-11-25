@@ -150,29 +150,16 @@ get_env <- function(variable) {
   return("")
 }
 
-# Get the value of an OS environment variable.
-# NOTE: Does not work on Windows.
-get_os_env <- function(var) {
-  if (.Platform$OS.type == "unix") {
-    value <- system(sprintf("echo $%s", var), intern = T)
-  } else {
-    value <- "" # Not implemented on Windows.
-  }
+# Get the name of the IAM role from the instance metadata.
+get_iam_role <- function() {
 
-  return(value)
-}
+  iam_role_response <-  get_instance_metadata("iam/security-credentials")
 
-# Get the AWS profile to use. If none, return "default".
-get_profile_name <- function(profile = "") {
-  if (!is.null(profile) && profile != "") {
-    return(profile)
-  }
+  if (is.null(iam_role_response)) return(NULL)
 
-  profile <- get_env("AWS_PROFILE")
+  iam_role_name <- raw_to_utf8(iam_role_response$body)
 
-  if (profile == "") profile <- "default"
-
-  return(profile)
+  return(iam_role_name)
 }
 
 # Gets the instance metadata by making an http request to an instance metadata services
@@ -242,6 +229,31 @@ get_instance_metadata <- function(query_path = "") {
   return(metadata_response)
 }
 
+# Get the value of an OS environment variable.
+# NOTE: Does not work on Windows.
+get_os_env <- function(var) {
+  if (.Platform$OS.type == "unix") {
+    value <- system(sprintf("echo $%s", var), intern = T)
+  } else {
+    value <- "" # Not implemented on Windows.
+  }
+
+  return(value)
+}
+
+# Get the AWS profile to use. If none, return "default".
+get_profile_name <- function(profile = "") {
+  if (!is.null(profile) && profile != "") {
+    return(profile)
+  }
+
+  profile <- get_env("AWS_PROFILE")
+
+  if (profile == "") profile <- "default"
+
+  return(profile)
+}
+
 # Get region from the config file.
 # For profiles other than default, the profile name is prefaced by "profile".
 # See https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
@@ -283,4 +295,43 @@ get_region <- function(profile = "") {
   if (is.null(region)) stop("No region provided")
 
   return(region)
+}
+
+# Get the AWS role ARN to use.
+get_role_arn <- function(role_arn = "") {
+  if (!is.null(role_arn) && role_arn != "") {
+    return(role_arn)
+  }
+
+  role_arn <- get_env("AWS_ROLE_ARN")
+
+  if (role_arn == "") stop("No Role ARN provided")
+
+  return(role_arn)
+}
+
+# Get the AWS role session to use. If none, return "default".
+get_role_session_name <- function(role_session_name = "") {
+  if (!is.null(role_session_name) && role_session_name != "") {
+    return(role_session_name)
+  }
+
+  role_session_name <- get_env("AWS_ROLE_SESSION_NAME")
+
+  if (role_session_name == "") role_session_name <- "default"
+
+  return(role_session_name)
+}
+
+# Get the Web Identity Token File to use (via AssumeRoleWithWebIdentity).
+get_web_identity_token_file <- function(web_identity_token_file = "") {
+  if (!is.null(web_identity_token_file) && web_identity_token_file != "") {
+    return(web_identity_token_file)
+  }
+
+  web_identity_token_file <- get_env("AWS_WEB_IDENTITY_TOKEN_FILE")
+
+  if (web_identity_token_file == "") stop("No WebIdentityToken file available")
+
+  return(web_identity_token_file)
 }
