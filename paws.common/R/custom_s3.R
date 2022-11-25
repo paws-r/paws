@@ -268,35 +268,10 @@ s3_redirect_from_error <- function(request){
     )
     return(request)
   }
-  error_code <- request$http_response$status_code
+
   error <- decode_xml(request$http_response$body)$Error
 
-  # We have to account for 400 responses because
-  # if we sign a Head* request with the wrong region,
-  # we'll get a 400 Bad Request but we won't get a
-  # body saying it's an "AuthorizationHeaderMalformed".
-  is_special_head_object <- (
-    error_code %in% c('301', '400') & request$operation$name == 'HeadObject'
-  )
-  is_special_head_bucket <- (
-    error_code %in% c('301', '400')
-    & request$operation$name == 'HeadBucket'
-    & 'x-amz-bucket-region' %in% names(request$http_response$header)
-  )
-  is_wrong_signing_region <- (
-    error$Code == 'AuthorizationHeaderMalformed' & 'Region' %in% names(error)
-  )
-  is_redirect_status <- request$http_response$status_code %in% c(301, 302, 307)
-  is_permanent_redirect <- error_code == 'PermanentRedirect'
-  if (!any(
-    c(
-      is_special_head_object,
-      is_wrong_signing_region,
-      is_permanent_redirect,
-      is_special_head_bucket,
-      is_redirect_status
-    )
-  )) {
+  if (!can_be_redirected(request, error)) {
     return(request)
   }
   bucket_name <- bucket_name_from_req_params(request)
@@ -341,6 +316,39 @@ s3_redirect_from_error <- function(request){
   request$context$s3_redirect <- TRUE
 
   return(request)
+}
+
+can_be_redirected <- function(request, error){
+  error_code <- request$http_response$status_code
+
+  # We have to account for 400 responses because
+  # if we sign a Head* request with the wrong region,
+  # we'll get a 400 Bad Request but we won't get a
+  # body saying it's an "AuthorizationHeaderMalformed".
+  is_special_head_object <- (
+    error_code %in% c('301', '400') & request$operation$name == 'HeadObject'
+  )
+  is_special_head_bucket <- (
+    error_code %in% c('301', '400')
+    & request$operation$name == 'HeadBucket'
+    & 'x-amz-bucket-region' %in% names(request$http_response$header)
+  )
+  is_wrong_signing_region <- (
+    error$Code == 'AuthorizationHeaderMalformed' & 'Region' %in% names(error)
+  )
+  is_redirect_status <- request$http_response$status_code %in% c(301, 302, 307)
+  is_permanent_redirect <- error_code == 'PermanentRedirect'
+
+  return(any(
+    c(
+      is_special_head_object,
+      is_wrong_signing_region,
+      is_permanent_redirect,
+      is_special_head_bucket,
+      is_redirect_status
+      )
+    )
+  )
 }
 
 # There are multiple potential sources for the new region to redirect to,
