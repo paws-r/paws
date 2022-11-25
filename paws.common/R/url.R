@@ -42,15 +42,15 @@ parse_url <- function(url) {
 # Build a URL from a Url object.
 # <scheme>://<net_loc>/<path>;<params>?<query>#<fragment>
 build_url <- function(url) {
-  if (url$scheme != "" && url$host != "") {
+  if (nzchar(url$scheme) && nzchar(url$host)) {
     l <- paste0(url$scheme, "://", url$host)
   } else {
     return("")
   }
-  if (url$raw_path != "") l <- paste0(l, url$raw_path)
-  else if (url$path != "") l <- paste0(l, url$path)
-  if (url$raw_query != "") l <- paste(l, url$raw_query, sep = "?")
-  if (url$fragment != "") l <- paste0(l, "#", url$fragment)
+  prefix <- function(prefix, x) {if (nzchar(x)) paste0(prefix, x)}
+  l <- paste0(l, if (nzchar(url$raw_path)) url$raw_path else url$path,
+    prefix("?", url$raw_query), prefix("#", url$fragment)
+  )
   return(l)
 }
 

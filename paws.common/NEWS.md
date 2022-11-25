@@ -2,6 +2,7 @@
 
 * Fix Content-Md5 being modified by user
 * Add logging system to help with debugging paws issues
+* Automatically redirect S3 requests when they are initially made to the wrong region; previously these requests would fail
 * Add support for `AssumeRoleWithWebIdentity` (#477, thanks to @fh-mthomson for contribution)
 * Clarify that `AWS_CREDENTIAL_EXPIRATION` is optional when using `AWS_SESSION_TOKEN` (#549)
 
