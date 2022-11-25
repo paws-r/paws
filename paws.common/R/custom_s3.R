@@ -268,10 +268,12 @@ s3_redirect_from_error <- function(request){
     )
     return(request)
   }
-
+  error_code <- request$http_response$status_code
+  if(error_code == 200){
+    return(request)
+  }
   error <- decode_xml(request$http_response$body)$Error
-
-  if (!can_be_redirected(request, error)) {
+  if (!can_be_redirected(request, error_code, error)) {
     return(request)
   }
   bucket_name <- bucket_name_from_req_params(request)
@@ -307,20 +309,16 @@ s3_redirect_from_error <- function(request){
     paste0(request$client_info$endpoint, request$operation$http_path)
   )
   request$built <- FALSE
+  request$context$s3_redirect <- TRUE
   # re-sign redirect request
   request <- sign(request)
-
   # re-send redirect request
   request <- send(request)
-
-  request$context$s3_redirect <- TRUE
 
   return(request)
 }
 
-can_be_redirected <- function(request, error){
-  error_code <- request$http_response$status_code
-
+can_be_redirected <- function(request, error_code, error){
   # We have to account for 400 responses because
   # if we sign a Head* request with the wrong region,
   # we'll get a 400 Bad Request but we won't get a
@@ -337,7 +335,7 @@ can_be_redirected <- function(request, error){
     error$Code == 'AuthorizationHeaderMalformed' & 'Region' %in% names(error)
   )
   is_redirect_status <- request$http_response$status_code %in% c(301, 302, 307)
-  is_permanent_redirect <- error_code == 'PermanentRedirect'
+  is_permanent_redirect <- error$Code == 'PermanentRedirect'
 
   return(any(
     c(
@@ -367,7 +365,6 @@ s3_get_bucket_region <- function(response, error){
   region <- error$Region
   return(region)
 }
-
 
 # Splice a new endpoint into an existing URL. Note that some endpoints
 # from the endpoint provider have a path component which will be
