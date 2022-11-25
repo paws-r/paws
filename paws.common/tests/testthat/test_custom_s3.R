@@ -281,6 +281,19 @@ test_that("ignore redirect when no http response is given", {
   expect_equal(actual, req)
 })
 
+test_that("ignore redirect when http status is successful", {
+  for (status in c(200, 201, 202, 204, 206)) {
+    req <- build_request(bucket = "foo", operation = "ListObjects")
+    req$http_response <- paws.common:::HttpResponse(
+      status_code = status,
+      body = raw(0),
+      header = list()
+    )
+    actual <- s3_redirect_from_error(req)
+    expect_equal(actual, req)
+  }
+})
+
 test_that("ignore redirect if already redirected", {
   req <- build_request(bucket = "foo", operation = "ListObjects")
   req$http_response <- paws.common:::HttpResponse(
