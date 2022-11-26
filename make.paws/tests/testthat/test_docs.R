@@ -566,10 +566,6 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 
   text <- "<body>foo \\bar { \\u0123 <code>baz'</code></body>"
-  # TODO(davidkretch): The following commented out expected value passes on
-  # macOS and fails on Ubuntu on GitHub Actions. Fix temporarily with the
-  # output that works on Ubuntu since extra backslashes should be ok.
-  # expected <- "foo \\\\bar \\{ `U+0123` `baz\\'`"
   expected <- "foo \\\\bar \\{ \\`U+0123` `baz\\'`"
   expect_equal(convert(text), expected)
 
