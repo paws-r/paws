@@ -114,6 +114,7 @@ make_doc_params <- function(operation, api) {
       param <- input$member_name
       required <- input$required
       documentation <- convert(input$documentation, package_name(api), links = get_links(api))
+      documentation <- convert_headings_to_bold(documentation)
       documentation <- glue::glue_collapse(documentation, sep = "\n")
       if (required) {
         documentation <- glue::glue("&#91;required&#93; {documentation}")
@@ -259,6 +260,15 @@ break_lines <- function(s, chars = 72, at = "\\s") {
   regex <- sprintf("(.{1,%i})(%s|$)", chars, paste(at, collapse = "|"))
   result <- gsub(regex, "\\1\\2\n", s)
   result <- gsub(" +\n", "\n", result)
+  return(result)
+}
+
+# Convert headings (the # at the beginning of lines) to bold.
+# This is done because R CMD check gives warnings when there are headings
+# without bodies, and the easiest way of removing these is to convert them to
+# bold.
+convert_headings_to_bold <- function(s) {
+  result <- gsub("^#+ (.*)", "\\*\\*\\1\\*\\*", s)
   return(result)
 }
 
@@ -508,7 +518,11 @@ clean_markdown <- function(markdown) {
   result <- markdown[keep]
 
   # Unicode character codes: \\uxxxx to `U+xxxx`
-  result <- gsub("\\\\\\\\u([0-9a-fA-F]{4})", "`U+\\1`", result)
+  result <- gsub("\\\\u([0-9a-fA-F]{4})", "`U+\\1`", result)
+
+  # Escape backslashes followed by characters so LaTeX doesn't interpret them
+  # as escape sequences.
+  result <- gsub("\\\\([a-zA-Z])", "\\\\\\\\\\1", result)
 
   # Remove certain characters not allowed by LaTeX.
   result <- gsub("\U2028", "", result)
@@ -522,6 +536,9 @@ clean_markdown <- function(markdown) {
 
   # Convert \_ to _. Pandoc adds an \.
   result <- gsub("\\_", "_", result, fixed = TRUE)
+
+  # Convert 2+ backslashes to \\.
+  result <- gsub("\\\\{2,}", "\\\\\\\\", result, perl = TRUE)
 
   result <- fix_internal_links(result)
 

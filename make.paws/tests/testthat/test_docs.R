@@ -238,7 +238,7 @@ test_that("make_doc_params", {
             documentation = "Documentation1"
           ),
           Member2 = list(
-            documentation = "Documentation2"
+            documentation = "Documentation2\n<h2>Foo</h2>"
           )
         )
       )
@@ -247,6 +247,8 @@ test_that("make_doc_params", {
   expected <- paste(
     "#' @param Member1 Documentation1",
     "#' @param Member2 &#91;required&#93; Documentation2",
+    "#' ",
+    "#' **Foo**",
     sep = "\n"
   )
   expect_equal(make_doc_params(operation, api), expected)
@@ -564,7 +566,7 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 
   text <- "<body>foo \\bar { \\u0123 <code>baz'</code></body>"
-  expected <- "foo \\\\bar \\{ `U+0123` `baz\\'`"
+  expected <- "foo \\\\bar \\{ \\`U+0123` `baz\\'`"
   expect_equal(convert(text), expected)
 
   # TODO: The following test fails (in actual output, <b> and </b> are missing)
