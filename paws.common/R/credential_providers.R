@@ -344,13 +344,12 @@ get_container_credentials <- function() {
   credentials_response_body <-
     jsonlite::fromJSON(raw_to_utf8(metadata_response$body))
 
-  credentials_list <-
-    list(
-      access_key_id  = credentials_response_body$AccessKeyId,
-      secret_access_key = credentials_response_body$SecretAccessKey,
-      session_token = credentials_response_body$Token,
-      expiration = as_timestamp(credentials_response_body$Expiration, "iso8601"),
-    )
+  credentials_list <- list(
+    access_key_id  = credentials_response_body$AccessKeyId,
+    secret_access_key = credentials_response_body$SecretAccessKey,
+    session_token = credentials_response_body$Token,
+    expiration = as_timestamp(credentials_response_body$Expiration, "iso8601")
+  )
 
   return(credentials_list)
 }
