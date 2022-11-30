@@ -90,11 +90,9 @@ test_that("get_web_identity_token_file", {
 })
 
 test_that("get_instance_metadata_imdsv1", {
-  skip_on_os("windows")
-
   # this function mocks the behaviour of the IMDSv1 metadata service in so far
   # as it allows testing of get_instance_metadata in config.
-  valid_metadata_response="ami-id
+  valid_metadata_response <- "ami-id
 ami-launch-index
 ami-manifest-path
 block-device-mapping/
@@ -140,7 +138,7 @@ services/"
     # mock behaviour of the imdsv1 metadata service
     if (http_request$url$scheme=="http"
       && http_request$method=="GET"
-      && http_request$url$path=="/latest/meta-data/") {
+      && grepl("meta-data", http_request$url$path)) {
       # provide response according to IMDSv1
       mock_imdsv1_metadata_response <- HttpResponse(
         status_code = 200,
@@ -181,8 +179,6 @@ services/"
 })
 
 test_that("get_instance_metadata_imdsv2", {
-  skip_on_os("windows")
-
   # this function mocks the behaviour of the IMDSv2 metadata service in so far
   # as it allows testing of get_instance_metadata in config.
   valid_metadata_response <- "ami-id
@@ -234,7 +230,7 @@ services/"
     # mock behaviour of the imdsv2 metadata service
     if (http_request$url$scheme=="http"
       && http_request$method=="GET"
-      && http_request$url$path=="/latest/meta-data/"
+      && grepl("meta-data", http_request$url$path)
       && !is.na(http_request$header[["X-aws-ec2-metadata-token"]])
       && http_request$header[["X-aws-ec2-metadata-token"]]==test_aws_token
       ) {
