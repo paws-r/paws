@@ -1,7 +1,7 @@
 Package: paws.common
 Type: Package
 Title: Paws Low-Level Amazon Web Services API
-Version: 0.5.1.9000
+Version: 0.5.2
 Authors@R: c(
         person("David", "Kretch", email = "david.kretch@gmail.com", role = "aut"),
         person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
@@ -54,8 +54,8 @@ Collate:
     'service.R'
     'custom_dynamodb.R'
     'custom_rds.R'
-    'xmlutil.R'
     'util.R'
+    'xmlutil.R'
     'stream.R'
     'custom_s3.R'
     'error.R'
