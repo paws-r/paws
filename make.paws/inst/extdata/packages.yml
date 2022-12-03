@@ -1,29 +1,43 @@
 ---
-- name: compute
+- name: compute.p1
+  services:
+    - ec2
+    - lightsail
+  title: "'Amazon Web Services' Compute Services"
+  description: >-
+    This is the backend package for 'paws.compute'. Please use 'paws.compute' to
+    access 'Amazon Web Services' compute services.
+  category_description: >-
+    Interface to 'Amazon Web Services' compute services, including
+    'Elastic Compute Cloud' ('EC2'), 'Lambda' functions-as-a-service,
+    containers, batch processing, and more <https://aws.amazon.com/>.
+  parent: compute
+
+- name: compute.p2
   services:
     - apprunner
     - batch
     - braket
     - compute-optimizer
-    - ec2
     - ec2-instance-connect
     - ecr
     - ecr-public
     - ecs
     - eks
     - elasticbeanstalk
+    - elasticinference
     - emr-containers
     - emr-serverless
     - imagebuilder
     - lambda
-    - lightsail
     - proton
     - serverlessrepo
   title: "'Amazon Web Services' Compute Services"
   description: >-
-    Interface to 'Amazon Web Services' compute services, including
-    'Elastic Compute Cloud' ('EC2'), 'Lambda' functions-as-a-service,
-    containers, batch processing, and more <https://aws.amazon.com/>.
+    This is the backend package for 'paws.compute'. Please use 'paws.compute' to
+    access 'Amazon Web Services' compute services.
+  category_description: ""
+  parent: compute
 
 - name: storage
   services:

@@ -1,3 +1,5 @@
+#' @include cran_category.R cran_collection.R cran_sub_category.R
+
 #' Make the AWS SDK R package
 #'
 #' @param in_dir Directory containing AWS API input files.
@@ -26,7 +28,9 @@ make_sdk <- function(
   categories <- get_categories()
   if (only_cran) {
     cran <- row.names(utils::available.packages(repos = "https://cran.rstudio.com"))
-    categories <- categories[sapply(categories, get_category_package_name) %in% cran]
+    package <- sapply(categories, function(x) get_package_name(x$name))
+    parent_package <- sapply(categories, function(x) get_package_name(x$parent))
+    categories <- categories[package %in% cran | parent_package %in% cran]
     apis_to_use <- unlist(sapply(categories, function(x) x$services))
     apis <- apis[apis %in% apis_to_use]
   }
@@ -57,6 +61,23 @@ make_sdk <- function(
   })
 
   make_categories(temp_dir, out_sdk_dir, categories, api_names)
+
+  # Identify sub-categories
+  found <- find_sub_categories(categories)
+
+  if (any(found)){
+    # Group categories
+    grp_sub_cats <- group_categories(categories[found])
+
+    # Build categories from sub-categories
+    for(cat in names(grp_sub_cats)){
+      make_category_collection(temp_dir, out_sdk_dir, grp_sub_cats[[cat]], cat, api_names)
+    }
+
+    # rebuild categories from sub-categories for paws
+    categories <- make_category_from_sub_category(categories)
+  }
+
   make_collection(temp_dir, out_sdk_dir, categories, api_names)
 }
 

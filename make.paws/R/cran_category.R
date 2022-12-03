@@ -34,7 +34,11 @@ make_category <- function(category, service_names, sdk_dir, out_dir) {
 }
 
 get_category_package_name <- function(category) {
-  sprintf("paws.%s", category$name)
+  get_package_name(category$name)
+}
+
+get_package_name <- function(suffix) {
+  sprintf("paws.%s", suffix)
 }
 
 # Get the stored AWS service categories and which services they include.
