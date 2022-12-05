@@ -43,7 +43,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
           sudo apt-get install -y libharfbuzz-dev libfribidi-dev
-          sudo apt-get install -y libicu-dev
 
       - name: List dependencies
         run: |
