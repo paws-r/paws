@@ -91,7 +91,8 @@ parse_query_string <- function(query) {
     pair <- strsplit(el, "=")[[1]]
     key <- pair[1]
     value <- if(length(pair)>1){pair[2]}else{""}
-    result[[key]] <- c(result[[key]], query_unescape(value))
+    res_len <- length(result[[key]])
+    result[[key]][res_len + 1] <- query_unescape(value)
   }
   return(result)
 }
