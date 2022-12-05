@@ -104,14 +104,14 @@ xml_build_structure <- function(params) {
       flattened <- tag_get(child, "flattened") != ""
 
       if (flattened) {
-        result <- c(result, parsed)
+        result[[length(result) + 1]] <- parsed
       } else {
         result[[location_name]] <- parsed
       }
     }
   }
   # Check cache list for default elements
-  if (all(sapply(parsed_result, is_empty_logical))) return(NULL)
+  if (all(sapply(parsed_result, is_empty_xml))) return(NULL)
   return(result)
 }
 
