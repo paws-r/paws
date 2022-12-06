@@ -6,7 +6,9 @@
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs.
+There were one NOTE, no ERRORs or WARNINGs.
+
+NOTE: Days since last update: 5
 
 We apologize for submitting another update within 30 days. We would like to
 fix a serious bug introduced in the last version.
