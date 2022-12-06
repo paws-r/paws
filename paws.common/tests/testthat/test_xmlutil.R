@@ -35,7 +35,7 @@ test_that("check xml build", {
 })
 
 test_that("check nested xml build", {
-  params_nested <-   structure(list(
+  params_nested <- structure(list(
       nested = structure(list(
         foo = structure(logical(0), tags = list(type = "string")),
         bar = structure(list())
@@ -47,4 +47,21 @@ test_that("check nested xml build", {
   )
   actual <- xml_build(params_nested)
   expect_equal(actual, list(nested = list(bar = list())))
+})
+
+test_that("check nested xml build with nested default parameters", {
+  params_nested <- structure(list(
+      nested = structure(list(
+          foo = structure(list(
+            bar = structure(logical(0))
+          ), tags = list(type = "string")),
+          cho = ""
+        ),
+        tags = list(type = "structure")
+      )
+    ),
+    tags = list(type = "structure")
+  )
+  actual <- xml_build(params_nested)
+  expect_equal(actual, list(nested = list(cho = list(""))))
 })

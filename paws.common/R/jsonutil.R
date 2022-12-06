@@ -87,8 +87,7 @@ json_build_structure <- function(values) {
 
     buf <- sprintf('"%s":%s', name, json_build_any(field))
 
-    v <- c(v, buf)
-
+    v[[length(v) + 1]] <- buf
   }
 
   v <- sprintf("{%s}", paste(v, collapse = ","))
@@ -105,7 +104,7 @@ json_build_map <- function(values) {
   for (key in sort(names(values))) {
     value <- values[[key]]
     buf <- sprintf('"%s":%s', key, json_build_any(value))
-    v <- c(v, buf)
+    v[[length(v) + 1]] <- buf
   }
   v <- sprintf("{%s}", paste(v, collapse = ","))
   return(v)

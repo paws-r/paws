@@ -1,3 +1,7 @@
+# paws.common 0.5.3
+
+* Fixed bugs introduced in`xml_build` in previous version (#569).
+
 # paws.common 0.5.2
 
 * Fix Content-Md5 being modified by user
