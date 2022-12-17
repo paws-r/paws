@@ -25,7 +25,6 @@
     - ecs
     - eks
     - elasticbeanstalk
-    - elastic-inference
     - emr-containers
     - emr-serverless
     - imagebuilder
