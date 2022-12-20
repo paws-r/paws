@@ -80,15 +80,12 @@ SigningContext <- struct(
   time = 0,
   expire_time = 0,
   signed_header_vals = list(),
-
   disable_uri_path_escaping = FALSE,
-
   cred_values = list(),
   is_presigned = FALSE,
   formatted_time = "",
   formatted_short_time = "",
   unsigned_payload = "",
-
   body_digest = "",
   signed_headers = "",
   canonical_headers = "",
@@ -108,7 +105,6 @@ v4_sign_request_handler <- function(request) {
 sign_sdk_request_with_curr_time <- function(request,
                                             curr_time_fn = Sys.time,
                                             opts = NULL) {
-
   region <- request$client_info$signing_region
   if (region == "") {
     region <- request$config$region
@@ -139,10 +135,11 @@ sign_sdk_request_with_curr_time <- function(request,
   request$http_request <- sign_with_body(
     v4, request$http_request, request$body,
     name, region, request$expire_time,
-    request$expire_time > 0, signing_time)
+    request$expire_time > 0, signing_time
+  )
 
   # set headers for anonymous credentials
-  if(isTRUE(request$config$credentials$anonymous)){
+  if (isTRUE(request$config$credentials$anonymous)) {
     request$http_request$header <- anonymous_headers(
       request$http_request$header
     )
@@ -153,7 +150,6 @@ sign_sdk_request_with_curr_time <- function(request,
 
 sign_with_body <- function(signer, request, body, service, region,
                            expire_time, is_presigned, signing_time) {
-
   curr_time_fn <- signer$curr_time_fn
   if (is.null(curr_time_fn)) {
     curr_time_fn <- Sys.time
@@ -175,7 +171,9 @@ sign_with_body <- function(signer, request, body, service, region,
   )
 
   sort_list <- function(x) {
-    if (length(x) == 0) return(x)
+    if (length(x) == 0) {
+      return(x)
+    }
     x[sort(names(x))]
   }
   if (!is.null(ctx$query) && length(ctx$query) > 0) {
@@ -275,7 +273,7 @@ build_context <- function(ctx, disable_header_hoisting) {
     if (!disable_header_hoisting) {
       for (header in names(unsigned_headers)) {
         if (grepl("X-Amz-", header) & !grepl("X-Amz-Meta-", header) &
-            !(header %in% REQUIRED_SIGNED_HEADERS)) {
+          !(header %in% REQUIRED_SIGNED_HEADERS)) {
           ctx$query[[header]] <- unsigned_headers[[header]]
           unsigned_headers[[header]] <- NULL
         }
@@ -387,7 +385,7 @@ build_canonical_headers <- function(ctx, header, ignored_headers) {
       }
     } else {
       value <- ctx$signed_header_vals[[key]]
-      header_value <- paste0(key, ":", paste(value, collapse =","))
+      header_value <- paste0(key, ":", paste(value, collapse = ","))
     }
     header_values <- c(header_values, header_value)
   }
@@ -467,7 +465,7 @@ get_uri_path <- function(url) {
 
 # Clear down headers for anonymous credentials
 # https://github.com/aws/aws-sdk-go/blob/a7b02935e4fefa40f175f4d2143ec9c88a5f90f5/aws/signer/v4/v4_test.go#L321-L355
-anonymous_headers <- function(headers){
+anonymous_headers <- function(headers) {
   found <- grepl("X-Amz-*", names(headers))
   headers[found] <- ""
   headers["Authorization"] <- ""
