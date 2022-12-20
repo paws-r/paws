@@ -32,7 +32,7 @@ write_source_collection <- function(
     for (service in category$service) {
       service_name <- service_names[[service]]
       if (!service_exists(sdk_dir, service_name)) {
-        warning(sprintf("%s not found\n", service_name))
+        warning(sprintf("service not found: %s\n", service))
         next
       }
       docs <- get_client_docs(sdk_dir, service_name)
