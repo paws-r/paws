@@ -44,7 +44,7 @@ in the \emph{Amazon Connect Administrator Guide}.
 You can connect programmatically to an Amazon Web Services service by
 using an endpoint. For a list of Amazon Connect endpoints, see \href{https://docs.aws.amazon.com/general/latest/gr/connect_region.html}{Amazon Connect Endpoints}.
 
-Working with contact flows? Check out the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
+Working with contact flows? Check out the \href{https://docs.aws.amazon.com/connect/latest/APIReference/flow-language.html}{Amazon Connect Flow language}.
 }
 \section{Service syntax}{
 

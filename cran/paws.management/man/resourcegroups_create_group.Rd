@@ -34,13 +34,13 @@ A resource group can contain either a \code{ResourceQuery} or a
 \item{Configuration}{A configuration associates the resource group with an AWS service and
 specifies how the service can interact with the resources in the group.
 A configuration is an array of GroupConfigurationItem elements. For
-details about the syntax of service configurations, see \href{https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html}{Service configurations for resource groups}.
+details about the syntax of service configurations, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html}{Service configurations for resource groups}.
 
 A resource group can contain either a \code{Configuration} or a
 \code{ResourceQuery}, but not both.}
 }
 \description{
-Creates a resource group with the specified name and description. You can optionally include a resource query, or a service configuration. For more information about constructing a resource query, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}. For more information about service configurations, see \href{https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html}{Service configurations for resource groups}.
+Creates a resource group with the specified name and description. You can optionally include a resource query, or a service configuration. For more information about constructing a resource query, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}. For more information about service configurations, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html}{Service configurations for resource groups}.
 
 See \url{https://paws-r.github.io/docs/resourcegroups/create_group.html} for full documentation.
 }

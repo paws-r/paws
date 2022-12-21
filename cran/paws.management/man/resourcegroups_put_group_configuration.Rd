@@ -16,7 +16,7 @@ specifies how the service can interact with the resources in the group.
 A configuration is an array of GroupConfigurationItem elements.
 
 For information about the syntax of a service configuration, see
-\href{https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html}{Service configurations for resource groups}.
+\href{https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html}{Service configurations for resource groups}.
 
 A resource group can contain either a \code{Configuration} or a
 \code{ResourceQuery}, but not both.}

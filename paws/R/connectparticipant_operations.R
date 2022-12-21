@@ -12,7 +12,7 @@ NULL
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_complete_attachment_upload(AttachmentIds,
@@ -96,7 +96,7 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_create_participant_connection(Type, ParticipantToken,
@@ -165,7 +165,7 @@ connectparticipant_create_participant_connection <- function(Type, ParticipantTo
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_disconnect_participant(ClientToken, ConnectionToken)
@@ -213,7 +213,7 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_get_attachment(AttachmentId, ConnectionToken)
@@ -268,7 +268,7 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_get_transcript(ContactId, MaxResults, NextToken,
@@ -360,7 +360,7 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_send_event(ContentType, Content, ClientToken,
@@ -424,7 +424,7 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_send_message(ContentType, Content, ClientToken,
@@ -484,7 +484,7 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' authentication](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #'
 #' @usage
 #' connectparticipant_start_attachment_upload(ContentType,

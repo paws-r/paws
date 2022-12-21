@@ -9,8 +9,8 @@ route53domains_check_domain_transferability(DomainName, AuthCode = NULL)
 \arguments{
 \item{DomainName}{[required] The name of the domain that you want to transfer to Route 53. The
 top-level domain (TLD), such as .com, must be a TLD that Route 53
-supports. For a list of supported TLDs, see Domains that You Can
-Register with Amazon Route 53 in the \emph{Amazon Route 53 Developer Guide}.
+supports. For a list of supported TLDs, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html}{Domains that You Can Register with Amazon Route 53}
+in the \emph{Amazon Route 53 Developer Guide}.
 
 The domain name can contain only the following characters:
 \itemize{

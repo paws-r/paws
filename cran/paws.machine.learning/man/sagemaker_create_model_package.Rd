@@ -86,8 +86,8 @@ For versioned models, the value of this parameter must be set to
 
 \item{DriftCheckBaselines}{Represents the drift check baselines that can be used when the model
 monitor is set using the model package. For more information, see the
-topic on Drift Detection against Previous Baselines in SageMaker
-Pipelines in the \emph{Amazon SageMaker Developer Guide}.}
+topic on \href{https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines-quality-clarify-baseline-lifecycle.html#pipelines-quality-clarify-baseline-drift-detection}{Drift Detection against Previous Baselines in SageMaker Pipelines}
+in the \emph{Amazon SageMaker Developer Guide}.}
 
 \item{Domain}{The machine learning domain of your model package and its components.
 Common machine learning domains include computer vision and natural

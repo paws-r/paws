@@ -103,11 +103,11 @@ resiliencehub_create_app <- function(assessmentSchedule = NULL, clientToken = NU
 #' the same client token for other API requests.
 #' @param format The format for the recommendation template.
 #' 
-#' ### CfnJson
+#' **CfnJson**
 #' 
 #' The template is CloudFormation JSON.
 #' 
-#' ### CfnYaml
+#' **CfnYaml**
 #' 
 #' The template is CloudFormation YAML.
 #' @param name &#91;required&#93; The name for the recommendation template.
@@ -116,15 +116,15 @@ resiliencehub_create_app <- function(assessmentSchedule = NULL, clientToken = NU
 #' @param recommendationTypes An array of strings that specify the recommendation template type or
 #' types.
 #' 
-#' ### Alarm
+#' **Alarm**
 #' 
 #' The template is an AlarmRecommendation template.
 #' 
-#' ### Sop
+#' **Sop**
 #' 
 #' The template is a SopRecommendation template.
 #' 
-#' ### Test
+#' **Test**
 #' 
 #' The template is a TestRecommendation template.
 #' @param tags The tags assigned to the resource. A tag is a label that you assign to

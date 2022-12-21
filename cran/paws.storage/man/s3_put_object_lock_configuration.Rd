@@ -36,7 +36,7 @@ using the SDK. This header will not provide any additional functionality
 if not using the SDK. When sending this header, there must be a
 corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
 Otherwise, Amazon S3 fails the request with the HTTP status code
-\verb{400 Bad Request}. For more information, see Checking object integrity
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
 
 If you provide an individual checksum, Amazon S3 ignores any provided
@@ -47,7 +47,7 @@ different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 }
 \description{
-Places an Object Lock configuration on the specified bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see Locking Objects.
+Places an Object Lock configuration on the specified bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}.
 
 See \url{https://paws-r.github.io/docs/s3/put_object_lock_configuration.html} for full documentation.
 }

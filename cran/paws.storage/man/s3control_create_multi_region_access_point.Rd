@@ -19,7 +19,7 @@ requests are unique.}
 Point.}
 }
 \description{
-Creates a Multi-Region Access Point and associates it with the specified buckets. For more information about creating Multi-Region Access Points, see Creating Multi-Region Access Points in the \emph{Amazon S3 User Guide}.
+Creates a Multi-Region Access Point and associates it with the specified buckets. For more information about creating Multi-Region Access Points, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingMultiRegionAccessPoints.html}{Creating Multi-Region Access Points} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://paws-r.github.io/docs/s3control/create_multi_region_access_point.html} for full documentation.
 }

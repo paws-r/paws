@@ -60,7 +60,7 @@ This is not supported by Amazon S3 on Outposts buckets.}
 This is required by Amazon S3 on Outposts buckets.}
 }
 \description{
-This action creates an Amazon S3 on Outposts bucket. To create an S3 bucket, see Create Bucket in the \emph{Amazon S3 API Reference}.
+This action creates an Amazon S3 on Outposts bucket. To create an S3 bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{Create Bucket} in the \emph{Amazon S3 API Reference}.
 
 See \url{https://paws-r.github.io/docs/s3control/create_bucket.html} for full documentation.
 }

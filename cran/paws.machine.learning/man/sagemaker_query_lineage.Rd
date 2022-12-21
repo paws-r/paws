@@ -23,8 +23,10 @@ starting point for your lineage query.}
 determines the direction from the StartArn(s) that the query traverses.}
 
 \item{IncludeEdges}{Setting this value to \code{True} retrieves not only the entities of interest
-but also the Associations and lineage entities on the path. Set to
-\code{False} to only return lineage entities that match your query.}
+but also the
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking-entities.html}{Associations}
+and lineage entities on the path. Set to \code{False} to only return lineage
+entities that match your query.}
 
 \item{Filters}{A set of filtering parameters that allow you to specify which entities
 should be returned.
@@ -49,7 +51,7 @@ response to to retrieve the next page of results.}
 response to to retrieve the next page of results.}
 }
 \description{
-Use this action to inspect your lineage and discover relationships between entities. For more information, see Querying Lineage Entities in the \emph{Amazon SageMaker Developer Guide}.
+Use this action to inspect your lineage and discover relationships between entities. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/querying-lineage-entities.html}{Querying Lineage Entities} in the \emph{Amazon SageMaker Developer Guide}.
 
 See \url{https://paws-r.github.io/docs/sagemaker/query_lineage.html} for full documentation.
 }

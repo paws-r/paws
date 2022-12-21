@@ -5639,7 +5639,7 @@ networkmanager_start_organization_service_access_update <- function(Action) {
 #' @description
 #' Starts analyzing the routing path between the specified source and
 #' destination. For more information, see [Route
-#' Analyzer](https://docs.aws.amazon.com/vpc/latest/tgwnm/route-analyzer.html).
+#' Analyzer](https://docs.aws.amazon.com/network-manager/latest/tgwnm/route-analyzer.html).
 #'
 #' @usage
 #' networkmanager_start_route_analysis(GlobalNetworkId, Source,

@@ -788,13 +788,13 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' -   stream.standard.medium
 #' @param FleetType The fleet type.
 #' 
-#' ### ALWAYS_ON
+#' **ALWAYS_ON**
 #' 
 #' Provides users with instant-on access to their apps. You are charged for
 #' all running instances in your fleet, even if no users are streaming
 #' apps.
 #' 
-#' ### ON_DEMAND
+#' **ON_DEMAND**
 #' 
 #' Provide users with access to applications after they connect, which
 #' takes one to two minutes. You are charged for instance streaming when

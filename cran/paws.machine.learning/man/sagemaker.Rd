@@ -32,8 +32,8 @@ Provides APIs for creating and managing SageMaker resources.
 
 Other Resources:
 \itemize{
-\item SageMaker Developer Guide
-\item Amazon Augmented AI Runtime API Reference
+\item \href{https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html#first-time-user}{SageMaker Developer Guide}
+\item \href{https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/Welcome.html}{Amazon Augmented AI Runtime API Reference}
 }
 }
 \section{Service syntax}{

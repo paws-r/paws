@@ -36,7 +36,8 @@ Web Services Region in an Amazon Web Services account.}
 \item{HyperParameters}{Algorithm-specific parameters that influence the quality of the model.
 You set hyperparameters before you start the learning process. For a
 list of hyperparameters for each training algorithm provided by
-SageMaker, see Algorithms.
+SageMaker, see
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
 
 You can specify a maximum of 100 hyperparameters. Each hyperparameter is
 a key-value pair. Each key and value is limited to 256 characters, as
@@ -44,9 +45,9 @@ specified by the \verb{Length Constraint}.}
 
 \item{AlgorithmSpecification}{[required] The registry path of the Docker image that contains the training
 algorithm and algorithm-specific metadata, including the input mode. For
-more information about algorithms provided by SageMaker, see Algorithms.
-For information about providing your own algorithms, see Using Your Own
-Algorithms with Amazon SageMaker.}
+more information about algorithms provided by SageMaker, see
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html}{Algorithms}.
+For information about providing your own algorithms, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html}{Using Your Own Algorithms with Amazon SageMaker}.}
 
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that SageMaker can assume
 to perform tasks on your behalf.
@@ -56,7 +57,7 @@ data from an S3 bucket, download a Docker image that contains training
 code, write model artifacts to an S3 bucket, write logs to Amazon
 CloudWatch Logs, and publish metrics to Amazon CloudWatch. You grant
 permissions for all of these tasks to an IAM role. For more information,
-see SageMaker Roles.
+see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html}{SageMaker Roles}.
 
 To be able to pass this role to SageMaker, the caller of this API must
 have the \code{iam:PassRole} permission.}
@@ -92,8 +93,7 @@ count greater than 1.}
 
 \item{VpcConfig}{A VpcConfig object that specifies the VPC that you want your training
 job to connect to. Control access to and from your training container by
-configuring the VPC. For more information, see Protect Training Jobs by
-Using an Amazon Virtual Private Cloud.}
+configuring the VPC. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html}{Protect Training Jobs by Using an Amazon Virtual Private Cloud}.}
 
 \item{StoppingCondition}{[required] Specifies a limit to how long a model training job can run. It also
 specifies how long a managed Spot training job has to complete. When the
@@ -121,8 +121,7 @@ distributed training, choose \code{True}. Encryption provides greater
 security for distributed training, but training might take longer. How
 long it takes depends on the amount of communication between compute
 instances, especially if you use a deep learning algorithm in
-distributed training. For more information, see Protect Communications
-Between ML Compute Instances in a Distributed Training Job.}
+distributed training. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html}{Protect Communications Between ML Compute Instances in a Distributed Training Job}.}
 
 \item{EnableManagedSpotTraining}{To train models using managed spot training, choose \code{True}. Managed spot
 training provides a fully managed and scalable infrastructure for

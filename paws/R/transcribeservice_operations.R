@@ -22,10 +22,10 @@ NULL
 #' To learn more about:
 #' 
 #' -   Call Analytics categories, see [Creating
-#'     categories](https://docs.aws.amazon.com/transcribe/latest/dg/call-analytics-create-categories.html)
+#'     categories](https://docs.aws.amazon.com/transcribe/latest/dg/)
 #' 
 #' -   Using rules, see [Rule
-#'     criteria](https://docs.aws.amazon.com/transcribe/latest/dg/call-analytics-create-categories.html#call-analytics-create-categories-rules)
+#'     criteria](https://docs.aws.amazon.com/transcribe/latest/dg/#call-analytics-create-categories-rules)
 #'     and refer to the data type
 #' 
 #' -   Call Analytics, see [Analyzing call center audio with Call
@@ -2631,7 +2631,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' create them before submitting your job request. Categories cannot be
 #' retroactively applied to a job. To create a new category, use the
 #' operation. To learn more about Call Analytics categories, see [Creating
-#' categories](https://docs.aws.amazon.com/transcribe/latest/dg/call-analytics-create-categories.html).
+#' categories](https://docs.aws.amazon.com/transcribe/latest/dg/).
 #' 
 #' To make a
 #' [`start_call_analytics_job`][transcribeservice_start_call_analytics_job]

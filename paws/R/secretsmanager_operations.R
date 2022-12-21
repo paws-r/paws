@@ -21,7 +21,7 @@ NULL
 #' Then use
 #' [`update_secret_version_stage`][secretsmanager_update_secret_version_stage]
 #' to change staging labels. For more information, see [How rotation
-#' works](https://docs.aws.amazon.com/secretsmanager/latest/userguide/).
+#' works](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how).
 #' 
 #' To turn on automatic rotation again, call
 #' [`rotate_secret`][secretsmanager_rotate_secret].
@@ -1648,8 +1648,9 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' able to rotate the secret, you must make sure the secret value is in the
 #' [JSON structure of a database
 #' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_secret_json_structure.html).
-#' In particular, if you want to use the alternating users strategy, your
-#' secret must contain the ARN of a superuser secret.
+#' In particular, if you want to use the [alternating users
+#' strategy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#rotation-strategy),
+#' your secret must contain the ARN of a superuser secret.
 #' 
 #' To configure rotation, you also need the ARN of an Amazon Web Services
 #' Lambda function and the schedule for the rotation. The Lambda rotation
@@ -1658,13 +1659,14 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' credentials, the function marks the new secret version with the staging
 #' label `AWSCURRENT`. Then anyone who retrieves the secret gets the new
 #' version. For more information, see [How rotation
-#' works](https://docs.aws.amazon.com/secretsmanager/latest/userguide/).
+#' works](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how).
 #' 
 #' You can create the Lambda rotation function based on the [rotation
 #' function
 #' templates](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_available-rotation-templates.html)
 #' that Secrets Manager provides. Choose a template that matches your
-#' Rotation strategy.
+#' [Rotation
+#' strategy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#rotation-strategy).
 #' 
 #' When rotation is successful, the `AWSPENDING` staging label might be
 #' attached to the same version as the `AWSCURRENT` version, or it might
@@ -1718,9 +1720,9 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' 
 #' If you don't immediately rotate the secret, Secrets Manager tests the
 #' rotation configuration by running the [`testSecret`
-#' step](https://docs.aws.amazon.com/secretsmanager/latest/userguide/) of
-#' the Lambda rotation function. The test creates an `AWSPENDING` version
-#' of the secret and then removes it.
+#' step](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how)
+#' of the Lambda rotation function. The test creates an `AWSPENDING`
+#' version of the secret and then removes it.
 #' 
 #' If you don't specify this value, then by default, Secrets Manager
 #' rotates the secret immediately.

@@ -38,12 +38,11 @@ assume to perform tasks on your behalf.}
 
 \item{StoppingCondition}{}
 
-\item{Tags}{(Optional) An array of key-value pairs. For more information, see Using
-Cost Allocation Tags in the \emph{Amazon Web Services Billing and Cost
-Management User Guide}.}
+\item{Tags}{(Optional) An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL}{Using Cost Allocation Tags}
+in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 }
 \description{
-Creates a definition for a job that monitors data quality and drift. For information about model monitor, see Amazon SageMaker Model Monitor.
+Creates a definition for a job that monitors data quality and drift. For information about model monitor, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html}{Amazon SageMaker Model Monitor}.
 
 See \url{https://paws-r.github.io/docs/sagemaker/create_data_quality_job_definition.html} for full documentation.
 }

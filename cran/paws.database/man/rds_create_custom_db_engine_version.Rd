@@ -53,34 +53,30 @@ pairs in a file or a quoted string. RDS Custom applies the patches in
 the order in which they are listed.
 
 The following JSON fields are valid:
-\subsection{MediaImportTemplateVersion}{
+
+\strong{MediaImportTemplateVersion}
 
 Version of the CEV manifest. The date is in the format \code{YYYY-MM-DD}.
-}
 
-\subsection{databaseInstallationFileNames}{
+\strong{databaseInstallationFileNames}
 
 Ordered list of installation files for the CEV.
-}
 
-\subsection{opatchFileNames}{
+\strong{opatchFileNames}
 
 Ordered list of OPatch installers used for the Oracle DB engine.
-}
 
-\subsection{psuRuPatchFileNames}{
+\strong{psuRuPatchFileNames}
 
 The PSU and RU patches for this CEV.
-}
 
-\subsection{OtherPatchFileNames}{
+\strong{OtherPatchFileNames}
 
 The patches that are not in the list of PSU and RU patches. Amazon RDS
 applies these patches after applying the PSU and RU patches.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-cev.html#custom-cev.preparing.manifest}{Creating the CEV manifest}
-in the \emph{Amazon RDS User Guide}.
-}}
+in the \emph{Amazon RDS User Guide}.}
 
 \item{Tags}{}
 }

@@ -70,7 +70,7 @@ one at a time.}
 Web Services accounts where you want to run the automation. Use this
 operation to start an automation in multiple Amazon Web Services Regions
 and multiple Amazon Web Services accounts. For more information, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html}{Running Automation workflows in multiple Amazon Web Services Regions and Amazon Web Services accounts}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/running-automations-multiple-accounts-regions.html}{Running Automation workflows in multiple Amazon Web Services Regions and Amazon Web Services accounts}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{Tags}{Optional metadata that you assign to a resource. You can specify a

@@ -25,7 +25,8 @@ servicecatalog_update_constraint(
 
 \item{Parameters}{The constraint parameters, in JSON format. The syntax depends on the
 constraint type as follows:
-\subsection{LAUNCH}{
+
+\strong{LAUNCH}
 
 You are required to specify either the \code{RoleArn} or the \code{LocalRoleName}
 but can't use both.
@@ -51,16 +52,14 @@ You cannot have both a \code{LAUNCH} and a \code{STACKSET} constraint.
 
 You also cannot have more than one \code{LAUNCH} constraint on a product and
 portfolio.
-}
 
-\subsection{NOTIFICATION}{
+\strong{NOTIFICATION}
 
 Specify the \code{NotificationArns} property as follows:
 
 \verb{\{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]\}}
-}
 
-\subsection{RESOURCE_UPDATE}{
+\strong{RESOURCE_UPDATE}
 
 Specify the \code{TagUpdatesOnProvisionedProduct} property as follows:
 
@@ -68,9 +67,8 @@ Specify the \code{TagUpdatesOnProvisionedProduct} property as follows:
 
 The \code{TagUpdatesOnProvisionedProduct} property accepts a string value of
 \code{ALLOWED} or \code{NOT_ALLOWED}.
-}
 
-\subsection{STACKSET}{
+\strong{STACKSET}
 
 Specify the \code{Parameters} property as follows:
 
@@ -83,12 +81,10 @@ and portfolio.
 
 Products with a \code{STACKSET} constraint will launch an AWS CloudFormation
 stack set.
-}
 
-\subsection{TEMPLATE}{
+\strong{TEMPLATE}
 
-Specify the \code{Rules} property. For more information, see \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html}{Template Constraint Rules}.
-}}
+Specify the \code{Rules} property. For more information, see \href{https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html}{Template Constraint Rules}.}
 }
 \description{
 Updates the specified constraint.

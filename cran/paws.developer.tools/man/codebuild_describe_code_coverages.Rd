@@ -27,15 +27,14 @@ exclude this parameter.}
 \item{sortOrder}{Specifies if the results are sorted in ascending or descending order.}
 
 \item{sortBy}{Specifies how the results are sorted. Possible values are:
-\subsection{FILE_PATH}{
+
+\strong{FILE_PATH}
 
 The results are sorted by file path.
-}
 
-\subsection{LINE_COVERAGE_PERCENTAGE}{
+\strong{LINE_COVERAGE_PERCENTAGE}
 
-The results are sorted by the percentage of lines that are covered.
-}}
+The results are sorted by the percentage of lines that are covered.}
 
 \item{minLineCoveragePercentage}{The minimum line coverage percentage to report.}
 

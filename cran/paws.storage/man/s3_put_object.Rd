@@ -45,8 +45,7 @@ s3_put_object(
 )
 }
 \arguments{
-\item{ACL}{The canned ACL to apply to the object. For more information, see Canned
-ACL.
+\item{ACL}{The canned ACL to apply to the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL}{Canned ACL}.
 
 This action is not supported by Amazon S3 on Outposts.}
 
@@ -59,8 +58,8 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
-name. For more information about access point ARNs, see Using access
-points in the \emph{Amazon S3 User Guide}.
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
 When using this action with Amazon S3 on Outposts, you must direct
 requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -68,45 +67,45 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When using this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts bucket ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see Using
-Amazon S3 on Outposts in the \emph{Amazon S3 User Guide}.}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Can be used to specify caching behavior along the request/reply chain.
 For more information, see
-http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.}
+\href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9}{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9}.}
 
 \item{ContentDisposition}{Specifies presentational information for the object. For more
 information, see
-http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1.}
+\href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1}{http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1}.}
 
 \item{ContentEncoding}{Specifies what content encodings have been applied to the object and
 thus what decoding mechanisms must be applied to obtain the media-type
 referenced by the Content-Type header field. For more information, see
-http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11.}
+\href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11}{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11}.}
 
 \item{ContentLanguage}{The language the content is in.}
 
 \item{ContentLength}{Size of the body in bytes. This parameter is useful when the size of the
 body cannot be determined automatically. For more information, see
-http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13.}
+\href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13}{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the message (without the
 headers) according to RFC 1864. This header can be used as a message
 integrity check to verify that the data is the same data that was
 originally sent. Although it is optional, we recommend using the
 Content-MD5 mechanism as an end-to-end integrity check. For more
-information about REST request authentication, see REST Authentication.}
+information about REST request authentication, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html}{REST Authentication}.}
 
 \item{ContentType}{A standard MIME type describing the format of the contents. For more
 information, see
-http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17.}
+\href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17}{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17}.}
 
 \item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
 using the SDK. This header will not provide any additional functionality
 if not using the SDK. When sending this header, there must be a
 corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
 Otherwise, Amazon S3 fails the request with the HTTP status code
-\verb{400 Bad Request}. For more information, see Checking object integrity
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
 
 If you provide an individual checksum, Amazon S3 ignores any provided
@@ -115,30 +114,30 @@ If you provide an individual checksum, Amazon S3 ignores any provided
 \item{ChecksumCRC32}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
 specifies the base64-encoded, 32-bit CRC32 checksum of the object. For
-more information, see Checking object integrity in the \emph{Amazon S3 User
-Guide}.}
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumCRC32C}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
 specifies the base64-encoded, 32-bit CRC32C checksum of the object. For
-more information, see Checking object integrity in the \emph{Amazon S3 User
-Guide}.}
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumSHA1}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
 specifies the base64-encoded, 160-bit SHA-1 digest of the object. For
-more information, see Checking object integrity in the \emph{Amazon S3 User
-Guide}.}
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumSHA256}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
 specifies the base64-encoded, 256-bit SHA-256 digest of the object. For
-more information, see Checking object integrity in the \emph{Amazon S3 User
-Guide}.}
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Expires}{The date and time at which the object is no longer cacheable. For more
 information, see
-http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21.}
+\href{https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21}{http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21}.}
 
 \item{GrantFullControl}{Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 object.
@@ -168,13 +167,13 @@ Amazon S3 (for example, AES256, aws:kms).}
 created objects. The STANDARD storage class provides high durability and
 high availability. Depending on performance needs, you can specify a
 different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-Storage Class. For more information, see Storage Classes in the \emph{Amazon
-S3 User Guide}.}
+Storage Class. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{Storage Classes}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{WebsiteRedirectLocation}{If the bucket is configured as a website, redirects requests for this
 object to another object in the same bucket or to an external URL.
 Amazon S3 stores the value of this header in the object metadata. For
-information about object metadata, see Object Key and Metadata.
+information about object metadata, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html}{Object Key and Metadata}.
 
 In the following example, the request header sets the redirect to an
 object (anotherPage.html) in the same bucket:
@@ -186,8 +185,8 @@ another website:
 
 \verb{x-amz-website-redirect-location: http://www.example.com/}
 
-For more information about website hosting in Amazon S3, see Hosting
-Websites on Amazon S3 and How to Configure Website Page Redirects.}
+For more information about website hosting in Amazon S3, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html}{Hosting Websites on Amazon S3}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html}{How to Configure Website Page Redirects}.}
 
 \item{SSECustomerAlgorithm}{Specifies the algorithm to use to when encrypting the object (for
 example, AES256).}
@@ -235,7 +234,7 @@ parameters. (For example, "Key1=Value1")}
 Must be formatted as a timestamp parameter.}
 
 \item{ObjectLockLegalHoldStatus}{Specifies whether a legal hold will be applied to this object. For more
-information about S3 Object Lock, see Object Lock.}
+information about S3 Object Lock, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Object Lock}.}
 
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request fails with the HTTP status code

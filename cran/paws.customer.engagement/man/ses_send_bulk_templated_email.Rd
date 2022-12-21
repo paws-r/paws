@@ -30,16 +30,16 @@ do so by a sending authorization policy, then you must also specify the
 see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.
 
 Amazon SES does not support the SMTPUTF8 extension, as described in
-\href{https://www.rfc-editor.org/rfc/rfc6531}{RFC6531}. For this reason, the
-\emph{local part} of a source email address (the part of the email address
-that precedes the @ sign) may only contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If
+RFC6531. For this reason, the \emph{local part} of a source email address
+(the part of the email address that precedes the @ sign) may only
+contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If
 the \emph{domain part} of an address (the part after the @ sign) contains
 non-ASCII characters, they must be encoded using Punycode, as described
 in \href{https://www.rfc-editor.org/rfc/rfc3492.html}{RFC3492}. The sender
 name (also known as the \emph{friendly name}) may contain non-ASCII
 characters. These characters must be encoded using MIME encoded-word
-syntax, as described in \href{https://www.rfc-editor.org/rfc/rfc2047}{RFC 2047}. MIME encoded-word syntax
-uses the following form: \verb{=?charset?encoding?encoded-text?=}.}
+syntax, as described in RFC 2047. MIME encoded-word syntax uses the
+following form: \verb{=?charset?encoding?encoded-text?=}.}
 
 \item{SourceArn}{This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy

@@ -29,7 +29,7 @@ following Unicode characters are allowed:
 \verb{#x10000} to \verb{#x10FFFF}
 
 Any characters not included in this list will be rejected. For more
-information, see the \href{http://www.w3.org/TR/REC-xml/#charsets}{W3C specification for characters}.}
+information, see the \href{https://www.w3.org/TR/REC-xml/#charsets}{W3C specification for characters}.}
 
 \item{DelaySeconds}{The length of time, in seconds, for which to delay a specific message.
 Valid values: 0 to 900. Maximum: 15 minutes. Messages with a positive

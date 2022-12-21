@@ -3526,7 +3526,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' Valid values include:
 #' 
-#' ### ALLOW_ADMIN_USER_PASSWORD_AUTH
+#' **ALLOW_ADMIN_USER_PASSWORD_AUTH**
 #' 
 #' Enable admin based user password authentication flow
 #' `ADMIN_USER_PASSWORD_AUTH`. This setting replaces the
@@ -3534,21 +3534,21 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' Cognito receives the password in the request instead of using the Secure
 #' Remote Password (SRP) protocol to verify passwords.
 #' 
-#' ### ALLOW_CUSTOM_AUTH
+#' **ALLOW_CUSTOM_AUTH**
 #' 
 #' Enable Lambda trigger based authentication.
 #' 
-#' ### ALLOW_USER_PASSWORD_AUTH
+#' **ALLOW_USER_PASSWORD_AUTH**
 #' 
 #' Enable user password-based authentication. In this flow, Amazon Cognito
 #' receives the password in the request instead of using the SRP protocol
 #' to verify passwords.
 #' 
-#' ### ALLOW_USER_SRP_AUTH
+#' **ALLOW_USER_SRP_AUTH**
 #' 
 #' Enable SRP-based authentication.
 #' 
-#' ### ALLOW_REFRESH_TOKEN_AUTH
+#' **ALLOW_REFRESH_TOKEN_AUTH**
 #' 
 #' Enable the authflow that refreshes tokens.
 #' 
@@ -3594,18 +3594,18 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' App callback URLs such as myapp://example are also supported.
 #' @param AllowedOAuthFlows The allowed OAuth flows.
 #' 
-#' ### code
+#' **code**
 #' 
 #' Use a code grant flow, which provides an authorization code as the
 #' response. This code can be exchanged for access tokens with the
 #' `/oauth2/token` endpoint.
 #' 
-#' ### implicit
+#' **implicit**
 #' 
 #' Issue the access token (and, optionally, ID token, based on scopes)
 #' directly to your user.
 #' 
-#' ### client_credentials
+#' **client_credentials**
 #' 
 #' Issue the access token from the `/oauth2/token` endpoint directly to a
 #' non-person user using a combination of the client ID and client secret.
@@ -8616,8 +8616,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' -   Not include a fragment component.
 #' 
-#' See [OAuth 2.0 - Redirection
-#' Endpoint](https://www.rfc-editor.org/rfc/rfc6749#section-3.1.2).
+#' See OAuth 2.0 - Redirection Endpoint.
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 #' testing purposes only.
@@ -8634,8 +8633,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' -   Not include a fragment component.
 #' 
-#' See [OAuth 2.0 - Redirection
-#' Endpoint](https://www.rfc-editor.org/rfc/rfc6749#section-3.1.2).
+#' See OAuth 2.0 - Redirection Endpoint.
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for `http://localhost`
 #' for testing purposes only.
@@ -8643,18 +8641,18 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' App callback URLs such as `myapp://example` are also supported.
 #' @param AllowedOAuthFlows The allowed OAuth flows.
 #' 
-#' ### code
+#' **code**
 #' 
 #' Use a code grant flow, which provides an authorization code as the
 #' response. This code can be exchanged for access tokens with the
 #' `/oauth2/token` endpoint.
 #' 
-#' ### implicit
+#' **implicit**
 #' 
 #' Issue the access token (and, optionally, ID token, based on scopes)
 #' directly to your user.
 #' 
-#' ### client_credentials
+#' **client_credentials**
 #' 
 #' Issue the access token from the `/oauth2/token` endpoint directly to a
 #' non-person user using a combination of the client ID and client secret.

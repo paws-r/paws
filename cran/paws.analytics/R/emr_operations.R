@@ -303,7 +303,8 @@ emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetI
 #' @param SessionPolicyArn &#91;required&#93; The Amazon Resource Name (ARN) for the session policy that will be
 #' applied to the user or group. You should specify the ARN for the session
 #' policy that you want to apply, not the ARN of your user role. For more
-#' information, see Create an EMR Studio User Role with Session Policies.
+#' information, see [Create an EMR Studio User Role with Session
+#' Policies](https://docs.aws.amazon.com/emr/latest/ManagementGuide/).
 #'
 #' @keywords internal
 #'
@@ -676,7 +677,7 @@ emr_get_auto_termination_policy <- function(ClusterId) {
 #' Web Services account in the current Region
 #'
 #' @description
-#' Returns the Amazon EMR block public access configuration for your Amazon Web Services account in the current Region. For more information see Configure Block Public Access for Amazon EMR in the *Amazon EMR Management Guide*.
+#' Returns the Amazon EMR block public access configuration for your Amazon Web Services account in the current Region. For more information see [Configure Block Public Access for Amazon EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/) in the *Amazon EMR Management Guide*.
 #'
 #' See [https://paws-r.github.io/docs/emr/get_block_public_access_configuration.html](https://paws-r.github.io/docs/emr/get_block_public_access_configuration.html) for full documentation.
 #'

@@ -51,7 +51,7 @@ application. The value must be a JSON serialized and base64 encoded map
 with string keys and values. The total size of the \code{sessionAttributes}
 and \code{requestAttributes} headers is limited to 12 KB.
 
-For more information, see Setting Session Attributes.}
+For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs}{Setting Session Attributes}.}
 
 \item{requestAttributes}{You pass this value as the \code{x-amz-lex-request-attributes} HTTP header.
 
@@ -63,7 +63,7 @@ and \code{sessionAttributes} headers is limited to 12 KB.
 The namespace \verb{x-amz-lex:} is reserved for special attributes. Don't
 create any request attributes with the prefix \verb{x-amz-lex:}.
 
-For more information, see Setting Request Attributes.}
+For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs}{Setting Request Attributes}.}
 
 \item{contentType}{[required] You pass this value as the \code{Content-Type} HTTP header.
 

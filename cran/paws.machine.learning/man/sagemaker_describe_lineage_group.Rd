@@ -10,7 +10,7 @@ sagemaker_describe_lineage_group(LineageGroupName)
 \item{LineageGroupName}{[required] The name of the lineage group.}
 }
 \description{
-Provides a list of properties for the requested lineage group. For more information, see Cross-Account Lineage Tracking in the \emph{Amazon SageMaker Developer Guide}.
+Provides a list of properties for the requested lineage group. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/xaccount-lineage-tracking.html}{Cross-Account Lineage Tracking} in the \emph{Amazon SageMaker Developer Guide}.
 
 See \url{https://paws-r.github.io/docs/sagemaker/describe_lineage_group.html} for full documentation.
 }

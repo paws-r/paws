@@ -26,7 +26,7 @@ codes:
 }}
 
 \item{CountryCode}{Amazon Route 53 uses the two-letter country codes that are specified in
-ISO standard 3166-1 alpha-2.}
+\href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO standard 3166-1 alpha-2}.}
 
 \item{SubdivisionCode}{The code for the subdivision, such as a particular state within the
 United States. For a list of US state abbreviations, see Appendix B:

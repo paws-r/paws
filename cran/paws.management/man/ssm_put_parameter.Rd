@@ -96,7 +96,7 @@ the \verb{Key ID} parameter.
 
 \item{AllowedPattern}{A regular expression used to validate the parameter value. For example,
 for String types with values restricted to numbers, you can specify the
-following: AllowedPattern=^\d+$}
+following: AllowedPattern=^\\d+$}
 
 \item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
 categorize a resource in different ways, such as by purpose, owner, or

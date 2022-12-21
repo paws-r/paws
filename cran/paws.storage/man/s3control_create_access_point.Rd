@@ -44,7 +44,7 @@ buckets.}
 access point.}
 }
 \description{
-Creates an access point and associates it with the specified bucket. For more information, see Managing Data Access with Amazon S3 Access Points in the \emph{Amazon S3 User Guide}.
+Creates an access point and associates it with the specified bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing Data Access with Amazon S3 Access Points} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://paws-r.github.io/docs/s3control/create_access_point.html} for full documentation.
 }

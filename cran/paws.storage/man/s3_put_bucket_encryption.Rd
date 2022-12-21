@@ -17,7 +17,8 @@ s3_put_bucket_encryption(
 \item{Bucket}{[required] Specifies default encryption for a bucket using server-side encryption
 with Amazon S3-managed keys (SSE-S3) or customer managed keys (SSE-KMS).
 For information about the Amazon S3 default encryption feature, see
-Amazon S3 Default Bucket Encryption in the \emph{Amazon S3 User Guide}.}
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the server-side encryption
 configuration.
@@ -31,7 +32,7 @@ using the SDK. This header will not provide any additional functionality
 if not using the SDK. When sending this header, there must be a
 corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
 Otherwise, Amazon S3 fails the request with the HTTP status code
-\verb{400 Bad Request}. For more information, see Checking object integrity
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
 
 If you provide an individual checksum, Amazon S3 ignores any provided

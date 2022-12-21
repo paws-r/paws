@@ -26,7 +26,7 @@ NULL
 #' manage Config. The Config API uses the Signature Version 4 protocol for
 #' signing requests. For more information about how to sign a request with
 #' this protocol, see [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #' For detailed information about Config features and their associated
 #' actions or commands, as well as how to work with Amazon Web Services
 #' Management Console, see [What Is

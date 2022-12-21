@@ -34,8 +34,8 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
-name. For more information about access point ARNs, see Using access
-points in the \emph{Amazon S3 User Guide}.
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
 When using this action with Amazon S3 on Outposts, you must direct
 requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -43,8 +43,8 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When using this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts bucket ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see Using
-Amazon S3 on Outposts in the \emph{Amazon S3 User Guide}.}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{ContentLength}{Size of the body in bytes. This parameter is useful when the size of the
 body cannot be determined automatically.}
@@ -58,7 +58,7 @@ using the SDK. This header will not provide any additional functionality
 if not using the SDK. When sending this header, there must be a
 corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
 Otherwise, Amazon S3 fails the request with the HTTP status code
-\verb{400 Bad Request}. For more information, see Checking object integrity
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
 
 If you provide an individual checksum, Amazon S3 ignores any provided
@@ -71,26 +71,26 @@ checksum value supplied in the
 \item{ChecksumCRC32}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
 specifies the base64-encoded, 32-bit CRC32 checksum of the object. For
-more information, see Checking object integrity in the \emph{Amazon S3 User
-Guide}.}
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumCRC32C}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
 specifies the base64-encoded, 32-bit CRC32C checksum of the object. For
-more information, see Checking object integrity in the \emph{Amazon S3 User
-Guide}.}
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumSHA1}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
 specifies the base64-encoded, 160-bit SHA-1 digest of the object. For
-more information, see Checking object integrity in the \emph{Amazon S3 User
-Guide}.}
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumSHA256}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
 specifies the base64-encoded, 256-bit SHA-256 digest of the object. For
-more information, see Checking object integrity in the \emph{Amazon S3 User
-Guide}.}
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Object key for which the multipart upload was initiated.}
 

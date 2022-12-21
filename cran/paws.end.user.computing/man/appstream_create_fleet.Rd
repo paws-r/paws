@@ -80,20 +80,19 @@ The following instance types are available for Elastic fleets:
 }}
 
 \item{FleetType}{The fleet type.
-\subsection{ALWAYS_ON}{
+
+\strong{ALWAYS_ON}
 
 Provides users with instant-on access to their apps. You are charged for
 all running instances in your fleet, even if no users are streaming
 apps.
-}
 
-\subsection{ON_DEMAND}{
+\strong{ON_DEMAND}
 
 Provide users with access to applications after they connect, which
 takes one to two minutes. You are charged for instance streaming when
 users are connected and a small hourly fee for instances that are not
-streaming apps.
-}}
+streaming apps.}
 
 \item{ComputeCapacity}{The desired capacity for the fleet. This is not allowed for Elastic
 fleets. For Elastic fleets, specify MaxConcurrentSessions instead.}

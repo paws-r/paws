@@ -304,7 +304,7 @@ length.
 the AUTH token.
 }
 
-For more information, see AUTH password at
+For more information, see \href{https://redis.io/commands/auth/}{AUTH password} at
 http://redis.io/commands/AUTH.}
 
 \item{OutpostMode}{Specifies whether the nodes in the cluster are created in a single

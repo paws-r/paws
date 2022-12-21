@@ -11,7 +11,7 @@ route53_create_traffic_policy(Name, Document, Comment = NULL)
 \item{Name}{[required] The name of the traffic policy.}
 
 \item{Document}{[required] The definition of this traffic policy in JSON format. For more
-information, see Traffic Policy Document Format.}
+information, see \href{https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html}{Traffic Policy Document Format}.}
 
 \item{Comment}{(Optional) Any comments that you want to include about the traffic
 policy.}

@@ -1455,7 +1455,7 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #' 
 #' Kinesis Data Firehose buffers records before delivering them to the
 #' destination. To disambiguate the data blobs at the destination, a common
-#' solution is to use delimiters in the data, such as a newline (`\n`) or
+#' solution is to use delimiters in the data, such as a newline (`\\n`) or
 #' some other character unique within the data. This allows the consumer
 #' application to parse individual data items when reading the data from
 #' the destination.
@@ -1550,7 +1550,7 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' 
 #' Kinesis Data Firehose buffers records before delivering them to the
 #' destination. To disambiguate the data blobs at the destination, a common
-#' solution is to use delimiters in the data, such as a newline (`\n`) or
+#' solution is to use delimiters in the data, such as a newline (`\\n`) or
 #' some other character unique within the data. This allows the consumer
 #' application to parse individual data items when reading the data from
 #' the destination.

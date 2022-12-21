@@ -35,7 +35,7 @@ Suggests:
     testthat
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.2
 Collate:
     'RcppExports.R'
     'struct.R'

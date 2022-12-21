@@ -78,13 +78,13 @@ NULL
 #' 
 #' For authentication of requests, Amazon Web Services Support uses
 #' [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
 #' 
 #' See [About the Amazon Web Services Support
-#' API](https://docs.aws.amazon.com/awssupport/latest/user/Welcome.html) in
-#' the *Amazon Web Services Support User Guide* for information about how
-#' to use this service to create and manage your support cases, and how to
-#' call Trusted Advisor for results of checks on your resources.
+#' API](https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html)
+#' in the *Amazon Web Services Support User Guide* for information about
+#' how to use this service to create and manage your support cases, and how
+#' to call Trusted Advisor for results of checks on your resources.
 #'
 #' @param
 #' config

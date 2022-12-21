@@ -27,8 +27,8 @@ the URL encoding of
 The value must be URL encoded.}
 
 \item{Policy}{[required] The policy that you want to apply to the specified access point. For
-more information about access point policies, see Managing data access
-with Amazon S3 access points in the \emph{Amazon S3 User Guide}.}
+more information about access point policies, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{Managing data access with Amazon S3 access points}
+in the \emph{Amazon S3 User Guide}.}
 }
 \description{
 Associates an access policy with the specified access point. Each access point can have only one policy, so a request made to this API replaces any existing policy associated with the specified access point.

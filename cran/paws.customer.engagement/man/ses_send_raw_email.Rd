@@ -21,16 +21,16 @@ parameter, you must specify a "From" address in the raw text of the
 message. (You can also specify both.)
 
 Amazon SES does not support the SMTPUTF8 extension, as described
-in\href{https://www.rfc-editor.org/rfc/rfc6531}{RFC6531}. For this reason,
-the \emph{local part} of a source email address (the part of the email
-address that precedes the @ sign) may only contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If
+inRFC6531. For this reason, the \emph{local part} of a source email address
+(the part of the email address that precedes the @ sign) may only
+contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If
 the \emph{domain part} of an address (the part after the @ sign) contains
 non-ASCII characters, they must be encoded using Punycode, as described
 in \href{https://www.rfc-editor.org/rfc/rfc3492.html}{RFC3492}. The sender
 name (also known as the \emph{friendly name}) may contain non-ASCII
 characters. These characters must be encoded using MIME encoded-word
-syntax, as described in \href{https://www.rfc-editor.org/rfc/rfc2047}{RFC 2047}. MIME encoded-word syntax
-uses the following form: \verb{=?charset?encoding?encoded-text?=}.
+syntax, as described in RFC 2047. MIME encoded-word syntax uses the
+following form: \verb{=?charset?encoding?encoded-text?=}.
 
 If you specify the \code{Source} parameter and have feedback forwarding
 enabled, then bounces and complaints will be sent to this email address.
@@ -55,9 +55,8 @@ the \emph{Amazon SES Developer Guide}.
 outside of the 7-bit ASCII character range, we highly recommend that
 you encode that content. For more information, see \href{https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html}{Sending Raw Email}
 in the \emph{Amazon SES Developer Guide}.
-\item Per \href{https://www.rfc-editor.org/rfc/rfc5321#section-4.5.3.1.6}{RFC 5321}, the
-maximum length of each line of text, including the \<CRLF\>, must
-not exceed 1,000 characters.
+\item Per RFC 5321, the maximum length of each line of text, including the
+\<CRLF\>, must not exceed 1,000 characters.
 }}
 
 \item{FromArn}{This parameter is used only for sending authorization. It is the ARN of

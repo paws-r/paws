@@ -124,21 +124,21 @@ read access.}
 \item{AdminUserList}{A list of users or groups in the Active Directory that will be granted
 administrator privileges on the file share. These users can do all file
 operations as the super-user. Acceptable formats include:
-\verb{DOMAIN\\User1}, \code{user1}, \verb{@group1}, and \verb{@DOMAIN\\group1}.
+\verb{DOMAIN\\\\User1}, \code{user1}, \verb{@group1}, and \verb{@DOMAIN\\\\group1}.
 
 Use this option very carefully, because any user in this list can do
 anything they like on the file share, regardless of file permissions.}
 
 \item{ValidUserList}{A list of users or groups in the Active Directory that are allowed to
 access the file share. A group must be prefixed with the @ character.
-Acceptable formats include: \verb{DOMAIN\\User1}, \code{user1}, \verb{@group1}, and
-\verb{@DOMAIN\\group1}. Can only be set if Authentication is set to
+Acceptable formats include: \verb{DOMAIN\\\\User1}, \code{user1}, \verb{@group1}, and
+\verb{@DOMAIN\\\\group1}. Can only be set if Authentication is set to
 \code{ActiveDirectory}.}
 
 \item{InvalidUserList}{A list of users or groups in the Active Directory that are not allowed
 to access the file share. A group must be prefixed with the @ character.
-Acceptable formats include: \verb{DOMAIN\\User1}, \code{user1}, \verb{@group1}, and
-\verb{@DOMAIN\\group1}. Can only be set if Authentication is set to
+Acceptable formats include: \verb{DOMAIN\\\\User1}, \code{user1}, \verb{@group1}, and
+\verb{@DOMAIN\\\\group1}. Can only be set if Authentication is set to
 \code{ActiveDirectory}.}
 
 \item{AuditDestinationARN}{The Amazon Resource Name (ARN) of the storage used for audit logs.}

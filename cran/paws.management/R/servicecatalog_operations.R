@@ -371,7 +371,7 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' @param Parameters &#91;required&#93; The constraint parameters, in JSON format. The syntax depends on the
 #' constraint type as follows:
 #' 
-#' ### LAUNCH
+#' **LAUNCH**
 #' 
 #' You are required to specify either the `RoleArn` or the `LocalRoleName`
 #' but can't use both.
@@ -398,13 +398,13 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' You also cannot have more than one `LAUNCH` constraint on a product and
 #' portfolio.
 #' 
-#' ### NOTIFICATION
+#' **NOTIFICATION**
 #' 
 #' Specify the `NotificationArns` property as follows:
 #' 
 #' `{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}`
 #' 
-#' ### RESOURCE_UPDATE
+#' **RESOURCE_UPDATE**
 #' 
 #' Specify the `TagUpdatesOnProvisionedProduct` property as follows:
 #' 
@@ -413,7 +413,7 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' The `TagUpdatesOnProvisionedProduct` property accepts a string value of
 #' `ALLOWED` or `NOT_ALLOWED`.
 #' 
-#' ### STACKSET
+#' **STACKSET**
 #' 
 #' Specify the `Parameters` property as follows:
 #' 
@@ -427,7 +427,7 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' Products with a `STACKSET` constraint will launch an AWS CloudFormation
 #' stack set.
 #' 
-#' ### TEMPLATE
+#' **TEMPLATE**
 #' 
 #' Specify the `Rules` property. For more information, see [Template
 #' Constraint
@@ -716,7 +716,7 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @param DefinitionType &#91;required&#93; The service action definition type. For example, `SSM_AUTOMATION`.
 #' @param Definition &#91;required&#93; The self-service action definition. Can be one of the following:
 #' 
-#' ### Name
+#' **Name**
 #' 
 #' The name of the AWS Systems Manager document (SSM document). For
 #' example, `AWS-RestartEC2Instance`.
@@ -724,12 +724,12 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' If you are using a shared SSM document, you must provide the ARN instead
 #' of the name.
 #' 
-#' ### Version
+#' **Version**
 #' 
 #' The AWS Systems Manager automation document version. For example,
 #' `"Version": "1"`
 #' 
-#' ### AssumeRole
+#' **AssumeRole**
 #' 
 #' The Amazon Resource Name (ARN) of the role that performs the
 #' self-service actions on your behalf. For example,
@@ -738,7 +738,7 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' To reuse the provisioned product launch role, set to
 #' `"AssumeRole": "LAUNCH_ROLE"`.
 #' 
-#' ### Parameters
+#' **Parameters**
 #' 
 #' The list of parameters in JSON format.
 #' 
@@ -3228,7 +3228,7 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' @param Parameters The constraint parameters, in JSON format. The syntax depends on the
 #' constraint type as follows:
 #' 
-#' ### LAUNCH
+#' **LAUNCH**
 #' 
 #' You are required to specify either the `RoleArn` or the `LocalRoleName`
 #' but can't use both.
@@ -3255,13 +3255,13 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' You also cannot have more than one `LAUNCH` constraint on a product and
 #' portfolio.
 #' 
-#' ### NOTIFICATION
+#' **NOTIFICATION**
 #' 
 #' Specify the `NotificationArns` property as follows:
 #' 
 #' `{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}`
 #' 
-#' ### RESOURCE_UPDATE
+#' **RESOURCE_UPDATE**
 #' 
 #' Specify the `TagUpdatesOnProvisionedProduct` property as follows:
 #' 
@@ -3270,7 +3270,7 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' The `TagUpdatesOnProvisionedProduct` property accepts a string value of
 #' `ALLOWED` or `NOT_ALLOWED`.
 #' 
-#' ### STACKSET
+#' **STACKSET**
 #' 
 #' Specify the `Parameters` property as follows:
 #' 
@@ -3284,7 +3284,7 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' Products with a `STACKSET` constraint will launch an AWS CloudFormation
 #' stack set.
 #' 
-#' ### TEMPLATE
+#' **TEMPLATE**
 #' 
 #' Specify the `Rules` property. For more information, see [Template
 #' Constraint

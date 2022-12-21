@@ -24,22 +24,20 @@ example of \code{KeyManagementServiceArn} that grants the correct permissions
 for DNSSEC, scroll down to \strong{Example}.
 
 You must configure the customer managed customer managed key as follows:
-\subsection{Status}{
+
+\strong{Status}
 
 Enabled
-}
 
-\subsection{Key spec}{
+\strong{Key spec}
 
 ECC_NIST_P256
-}
 
-\subsection{Key usage}{
+\strong{Key usage}
 
 Sign and verify
-}
 
-\subsection{Key policy}{
+\strong{Key policy}
 
 The key policy must give permission for the following actions:
 \itemize{
@@ -55,8 +53,7 @@ principal for your account. Specify the following:
 }
 
 For more information about working with a customer managed key in KMS,
-see Key Management Service concepts.
-}}
+see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html}{Key Management Service concepts}.}
 
 \item{Name}{[required] A string used to identify a key-signing key (KSK). \code{Name} can include
 numbers, letters, and underscores (_). \code{Name} must be unique for each

@@ -33,7 +33,7 @@ create a workforce. All of the \code{CognitoMemberDefinition} objects that
 make up the member definition must have the same \code{ClientId} and
 \code{UserPool} values. To add a Amazon Cognito user group to an existing
 worker pool, see Adding groups to a User Pool. For more information
-about user pools, see Amazon Cognito User Pools.
+about user pools, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html}{Amazon Cognito User Pools}.
 
 For workforces created using your own OIDC IdP, specify the user groups
 that you want to include in your private work team in
@@ -46,8 +46,9 @@ items.}
 
 \item{Tags}{An array of key-value pairs.
 
-For more information, see Resource Tag and Using Cost Allocation Tags in
-the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html}{Resource Tag}
+and \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
+in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 }
 \description{
 Creates a new work team for labeling your data. A work team is defined by one or more Amazon Cognito user pools. You must first create the user pools before you can create a work team.

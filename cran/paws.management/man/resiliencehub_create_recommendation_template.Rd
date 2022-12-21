@@ -30,15 +30,14 @@ case-sensitive string of up to 64 ASCII characters. You should not reuse
 the same client token for other API requests.}
 
 \item{format}{The format for the recommendation template.
-\subsection{CfnJson}{
+
+\strong{CfnJson}
 
 The template is CloudFormation JSON.
-}
 
-\subsection{CfnYaml}{
+\strong{CfnYaml}
 
-The template is CloudFormation YAML.
-}}
+The template is CloudFormation YAML.}
 
 \item{name}{[required] The name for the recommendation template.}
 
@@ -47,20 +46,18 @@ template.}
 
 \item{recommendationTypes}{An array of strings that specify the recommendation template type or
 types.
-\subsection{Alarm}{
+
+\strong{Alarm}
 
 The template is an AlarmRecommendation template.
-}
 
-\subsection{Sop}{
+\strong{Sop}
 
 The template is a SopRecommendation template.
-}
 
-\subsection{Test}{
+\strong{Test}
 
-The template is a TestRecommendation template.
-}}
+The template is a TestRecommendation template.}
 
 \item{tags}{The tags assigned to the resource. A tag is a label that you assign to
 an Amazon Web Services resource. Each tag consists of a key/value pair.}

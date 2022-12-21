@@ -23,8 +23,7 @@ A-Z, 0-9, and : + = @ _ \% - (hyphen). The name is not case sensitive.}
 \item{HyperParameterTuningJobConfig}{[required] The HyperParameterTuningJobConfig object that describes the tuning job,
 including the search strategy, the objective metric used to evaluate
 training jobs, ranges of parameters to search, and resource limits for
-the tuning job. For more information, see How Hyperparameter Tuning
-Works.}
+the tuning job. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html}{How Hyperparameter Tuning Works}.}
 
 \item{TrainingJobDefinition}{The HyperParameterTrainingJobDefinition object that describes the
 training jobs that this tuning job launches, including static

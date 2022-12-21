@@ -94,12 +94,12 @@ reports the refresh status of one or more checks.
 }
 
 For authentication of requests, Amazon Web Services Support uses
-\href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 Signing Process}.
+\href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4 Signing Process}.
 
-See \href{https://docs.aws.amazon.com/awssupport/latest/user/Welcome.html}{About the Amazon Web Services Support API} in
-the \emph{Amazon Web Services Support User Guide} for information about how
-to use this service to create and manage your support cases, and how to
-call Trusted Advisor for results of checks on your resources.
+See \href{https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html}{About the Amazon Web Services Support API}
+in the \emph{Amazon Web Services Support User Guide} for information about
+how to use this service to create and manage your support cases, and how
+to call Trusted Advisor for results of checks on your resources.
 }
 \section{Service syntax}{
 

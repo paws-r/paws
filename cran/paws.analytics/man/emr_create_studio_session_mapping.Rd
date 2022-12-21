@@ -39,7 +39,7 @@ or a group.}
 \item{SessionPolicyArn}{[required] The Amazon Resource Name (ARN) for the session policy that will be
 applied to the user or group. You should specify the ARN for the session
 policy that you want to apply, not the ARN of your user role. For more
-information, see Create an EMR Studio User Role with Session Policies.}
+information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{Create an EMR Studio User Role with Session Policies}.}
 }
 \description{
 Maps a user or group to the Amazon EMR Studio specified by \code{StudioId}, and applies a session policy to refine Studio permissions for that user or group. Use \code{\link[=emr_create_studio_session_mapping]{create_studio_session_mapping}} to assign users to a Studio when you use Amazon Web Services SSO authentication. For instructions on how to assign users to a Studio when you use IAM authentication, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-studio-manage-users.html#emr-studio-assign-users-groups}{Assign a user or group to your EMR Studio}.

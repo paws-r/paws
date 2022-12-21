@@ -84,8 +84,9 @@ route53recoverycluster_list_routing_controls <- function(ControlPanelArn = NULL,
 #' override one safety rule or multiple safety rules by including one or
 #' more ARNs, separated by commas.
 #' 
-#' For more information, see Override safety rules to reroute traffic in
-#' the Amazon Route 53 Application Recovery Controller Developer Guide.
+#' For more information, see [Override safety rules to reroute
+#' traffic](https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.override-safety-rule.html)
+#' in the Amazon Route 53 Application Recovery Controller Developer Guide.
 #'
 #' @keywords internal
 #'
@@ -120,8 +121,9 @@ route53recoverycluster_update_routing_control_state <- function(RoutingControlAr
 #' one safety rule or multiple safety rules by including one or more ARNs,
 #' separated by commas.
 #' 
-#' For more information, see Override safety rules to reroute traffic in
-#' the Amazon Route 53 Application Recovery Controller Developer Guide.
+#' For more information, see [Override safety rules to reroute
+#' traffic](https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.override-safety-rule.html)
+#' in the Amazon Route 53 Application Recovery Controller Developer Guide.
 #'
 #' @keywords internal
 #'

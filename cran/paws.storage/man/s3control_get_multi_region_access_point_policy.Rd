@@ -14,8 +14,8 @@ Access Point.}
 \item{Name}{[required] Specifies the Multi-Region Access Point. The name of the Multi-Region
 Access Point is different from the alias. For more information about the
 distinction between the name and the alias of an Multi-Region Access
-Point, see Managing Multi-Region Access Points in the \emph{Amazon S3 User
-Guide}.}
+Point, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingMultiRegionAccessPoints.html#multi-region-access-point-naming}{Managing Multi-Region Access Points}
+in the \emph{Amazon S3 User Guide}.}
 }
 \description{
 Returns the access control policy of the specified Multi-Region Access Point.

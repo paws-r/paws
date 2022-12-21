@@ -1839,21 +1839,18 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' 
 #' Default value is `SSD`. For more information, see [Storage type
 #' options](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options)
-#' in the *FSx for Windows File Server User Guide* and [Multiple storage
-#' options](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options)
-#' in the *FSx for Lustre User Guide*.
+#' in the *FSx for Windows File Server User Guide* and Multiple storage
+#' options in the *FSx for Lustre User Guide*.
 #' @param SubnetIds &#91;required&#93; Specifies the IDs of the subnets that the file system will be accessible
 #' from. For Windows and ONTAP `MULTI_AZ_1` deployment types,provide
 #' exactly two subnet IDs, one for the preferred file server and one for
 #' the standby file server. You specify one of these subnets as the
 #' preferred subnet using the `WindowsConfiguration > PreferredSubnetID` or
 #' `OntapConfiguration > PreferredSubnetID` properties. For more
-#' information about Multi-AZ file system configuration, see [Availability
-#' and durability: Single-AZ and Multi-AZ file
-#' systems](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html)
-#' in the *Amazon FSx for Windows User Guide* and [Availability and
-#' durability](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/) in the
-#' *Amazon FSx for ONTAP User Guide*.
+#' information about Multi-AZ file system configuration, see Availability
+#' and durability: Single-AZ and Multi-AZ file systems in the *Amazon FSx
+#' for Windows User Guide* and Availability and durability in the *Amazon
+#' FSx for ONTAP User Guide*.
 #' 
 #' For Windows `SINGLE_AZ_1` and `SINGLE_AZ_2` and all Lustre deployment
 #' types, provide exactly one subnet ID. The file server is launched in
@@ -2362,9 +2359,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' [`create_file_system_from_backup`][fsx_create_file_system_from_backup]
 #' call returns while the file system's lifecycle state is still
 #' `CREATING`. You can check the file-system creation status by calling the
-#' [DescribeFileSystems](https://docs.aws.amazon.com/fsx/latest/APIReference/API_DescribeFileSystems.html)
-#' operation, which returns the file system state along with other
-#' information.
+#' DescribeFileSystems operation, which returns the file system state along
+#' with other information.
 #'
 #' @usage
 #' fsx_create_file_system_from_backup(BackupId, ClientRequestToken,

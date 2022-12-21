@@ -11,7 +11,7 @@ resourcegroups_get_group_configuration(Group = NULL)
 \item{Group}{The name or the ARN of the resource group.}
 }
 \description{
-Returns the service configuration associated with the specified resource group. For details about the service configuration syntax, see \href{https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html}{Service configurations for resource groups}.
+Returns the service configuration associated with the specified resource group. For details about the service configuration syntax, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html}{Service configurations for resource groups}.
 
 See \url{https://paws-r.github.io/docs/resourcegroups/get_group_configuration.html} for full documentation.
 }

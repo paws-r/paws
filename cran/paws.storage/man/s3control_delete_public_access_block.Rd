@@ -12,7 +12,7 @@ s3control_delete_public_access_block(AccountId)
 \code{PublicAccessBlock} configuration you want to remove.}
 }
 \description{
-Removes the \code{PublicAccessBlock} configuration for an Amazon Web Services account. For more information, see Using Amazon S3 block public access.
+Removes the \code{PublicAccessBlock} configuration for an Amazon Web Services account. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html}{Using Amazon S3 block public access}.
 
 See \url{https://paws-r.github.io/docs/s3control/delete_public_access_block.html} for full documentation.
 }

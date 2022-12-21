@@ -96,7 +96,7 @@ paths separated by a comma.
 
 You can only use pure Python libraries with a \code{DevEndpoint}. Libraries
 that rely on C extensions, such as the
-\href{https://pandas.pydata.org/}{pandas} Python data analysis library, are
+\href{http://pandas.pydata.org/}{pandas} Python data analysis library, are
 not yet supported.}
 
 \item{ExtraJarsS3Path}{The path to one or more Java \code{.jar} files in an S3 bucket that should be

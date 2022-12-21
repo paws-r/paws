@@ -23,8 +23,7 @@ s3_put_object_acl(
 )
 }
 \arguments{
-\item{ACL}{The canned ACL to apply to the object. For more information, see Canned
-ACL.}
+\item{ACL}{The canned ACL to apply to the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL}{Canned ACL}.}
 
 \item{AccessControlPolicy}{Contains the elements that set the ACL permissions for an object per
 grantee.}
@@ -37,12 +36,12 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
-name. For more information about access point ARNs, see Using access
-points in the \emph{Amazon S3 User Guide}.}
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be
 used as a message integrity check to verify that the request body was
-not corrupted in transit. For more information, go to RFC 1864.\>
+not corrupted in transit. For more information, go to \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.\>}
 
 For requests made using the Amazon Web Services Command Line Interface
 (CLI) or Amazon Web Services SDKs, this field is calculated
@@ -53,7 +52,7 @@ using the SDK. This header will not provide any additional functionality
 if not using the SDK. When sending this header, there must be a
 corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
 Otherwise, Amazon S3 fails the request with the HTTP status code
-\verb{400 Bad Request}. For more information, see Checking object integrity
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
 
 If you provide an individual checksum, Amazon S3 ignores any provided
@@ -88,8 +87,8 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
-name. For more information about access point ARNs, see Using access
-points in the \emph{Amazon S3 User Guide}.
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
 When using this action with Amazon S3 on Outposts, you must direct
 requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -97,8 +96,8 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When using this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts bucket ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see Using
-Amazon S3 on Outposts in the \emph{Amazon S3 User Guide}.}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{RequestPayer}{}
 
@@ -109,7 +108,7 @@ different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 }
 \description{
-Uses the \code{acl} subresource to set the access control list (ACL) permissions for a new or existing object in an S3 bucket. You must have \code{WRITE_ACP} permission to set the ACL of an object. For more information, see What permissions can I grant? in the \emph{Amazon S3 User Guide}.
+Uses the \code{acl} subresource to set the access control list (ACL) permissions for a new or existing object in an S3 bucket. You must have \code{WRITE_ACP} permission to set the ACL of an object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#permissions}{What permissions can I grant?} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://paws-r.github.io/docs/s3/put_object_acl.html} for full documentation.
 }

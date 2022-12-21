@@ -46,8 +46,8 @@ you work with API cluster operations to get or update routing control
 states in Route 53 ARC.} In addition, you must specify the US West
 (Oregon) Region for Route 53 ARC API calls. For example, use the
 parameter \verb{--region us-west-2} with AWS CLI commands. For more
-information, see Get and update routing control states using the API in
-the Amazon Route 53 Application Recovery Controller Developer Guide.
+information, see \href{https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.update.api.html}{Get and update routing control states using the API}
+in the Amazon Route 53 Application Recovery Controller Developer Guide.
 
 This API guide includes information about the API operations for how to
 get and update routing control states in Route 53 ARC. To work with
@@ -59,22 +59,19 @@ For more information about working with routing control in Route 53 ARC,
 see the following:
 \itemize{
 \item Create clusters, control panels, and routing controls by using API
-operations. For more information, see the Recovery Control
-Configuration API Reference Guide for Amazon Route 53 Application
-Recovery Controller.
+operations. For more information, see the \href{https://docs.aws.amazon.com/recovery-cluster/latest/api/}{Recovery Control Configuration API Reference Guide for Amazon Route 53 Application Recovery Controller}.
 \item Learn about the components in recovery control, including clusters,
 routing controls, and control panels, and how to work with Route 53
 ARC in the Amazon Web Services console. For more information, see
-Recovery control components in the Amazon Route 53 Application
-Recovery Controller Developer Guide.
+\href{https://docs.aws.amazon.com/r53recovery/latest/dg/introduction-components.html#introduction-components-routing}{Recovery control components}
+in the Amazon Route 53 Application Recovery Controller Developer
+Guide.
 \item Route 53 ARC also provides readiness checks that continually audit
 resources to help make sure that your applications are scaled and
 ready to handle failover traffic. For more information about the
-related API operations, see the Recovery Readiness API Reference
-Guide for Amazon Route 53 Application Recovery Controller.
+related API operations, see the \href{https://docs.aws.amazon.com/recovery-readiness/latest/api/}{Recovery Readiness API Reference Guide for Amazon Route 53 Application Recovery Controller}.
 \item For more information about creating resilient applications and
-preparing for recovery readiness with Route 53 ARC, see the Amazon
-Route 53 Application Recovery Controller Developer Guide.
+preparing for recovery readiness with Route 53 ARC, see the \href{https://docs.aws.amazon.com/r53recovery/latest/dg/}{Amazon Route 53 Application Recovery Controller Developer Guide}.
 }
 }
 \section{Service syntax}{

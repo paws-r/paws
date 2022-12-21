@@ -15,7 +15,7 @@ specified Amazon Web Services account.}
 \code{PublicAccessBlock} configuration you want to set.}
 }
 \description{
-Creates or modifies the \code{PublicAccessBlock} configuration for an Amazon Web Services account. For this operation, users must have the \code{s3:PutBucketPublicAccessBlock} permission. For more information, see Using Amazon S3 block public access.
+Creates or modifies the \code{PublicAccessBlock} configuration for an Amazon Web Services account. For this operation, users must have the \code{s3:PutBucketPublicAccessBlock} permission. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html}{Using Amazon S3 block public access}.
 
 See \url{https://paws-r.github.io/docs/s3control/put_public_access_block.html} for full documentation.
 }

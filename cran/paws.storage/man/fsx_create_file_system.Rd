@@ -71,8 +71,8 @@ and on \code{PERSISTENT_1} Lustre file system deployment types.
 }
 
 Default value is \code{SSD}. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options}{Storage type options}
-in the \emph{FSx for Windows File Server User Guide} and \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options}{Multiple storage options}
-in the \emph{FSx for Lustre User Guide}.}
+in the \emph{FSx for Windows File Server User Guide} and Multiple storage
+options in the \emph{FSx for Lustre User Guide}.}
 
 \item{SubnetIds}{[required] Specifies the IDs of the subnets that the file system will be accessible
 from. For Windows and ONTAP \code{MULTI_AZ_1} deployment types,provide
@@ -80,9 +80,10 @@ exactly two subnet IDs, one for the preferred file server and one for
 the standby file server. You specify one of these subnets as the
 preferred subnet using the \code{WindowsConfiguration > PreferredSubnetID} or
 \code{OntapConfiguration > PreferredSubnetID} properties. For more
-information about Multi-AZ file system configuration, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html}{Availability and durability: Single-AZ and Multi-AZ file systems}
-in the \emph{Amazon FSx for Windows User Guide} and \href{https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/}{Availability and durability} in the
-\emph{Amazon FSx for ONTAP User Guide}.
+information about Multi-AZ file system configuration, see Availability
+and durability: Single-AZ and Multi-AZ file systems in the \emph{Amazon FSx
+for Windows User Guide} and Availability and durability in the \emph{Amazon
+FSx for ONTAP User Guide}.
 
 For Windows \code{SINGLE_AZ_1} and \code{SINGLE_AZ_2} and all Lustre deployment
 types, provide exactly one subnet ID. The file server is launched in
