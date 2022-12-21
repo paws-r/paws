@@ -1,6 +1,6 @@
 Package: paws.security.identity
 Title: 'Amazon Web Services' Security, Identity, & Compliance Services
-Version: 0.1.12
+Version: 0.2.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -15,8 +15,8 @@ License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
-    paws.security.identity.p1 (>= 0.1.12),
-    paws.security.identity.p2 (>= 0.1.12)
+    paws.security.identity.p1 (>= 0.2.0),
+    paws.security.identity.p2 (>= 0.2.0)
 Suggests: 
     testthat
 Encoding: UTF-8

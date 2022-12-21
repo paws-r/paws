@@ -1,6 +1,6 @@
 Package: paws.analytics
 Title: 'Amazon Web Services' Analytics Services
-Version: 0.1.12
+Version: 0.2.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),

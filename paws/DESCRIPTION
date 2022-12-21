@@ -1,6 +1,6 @@
 Package: paws
 Title: Amazon Web Services Software Development Kit
-Version: 0.1.12
+Version: 0.2.0
 Authors@R: c(
     person(given = "David", family = "Kretch", role = c("aut", "cre"), email = "david.kretch@gmail.com"),
     person(given = "Adam", family = "Banker", role = "aut", email = "adam.banker39@gmail.com"),
