@@ -94,8 +94,7 @@ SigningContext <- struct(
   credential_string = "",
   string_to_sign = "",
   signature = "",
-  authorization = "",
-   .class = "SigningContext"
+  authorization = ""
 )
 
 # Signs an SDK request with the V4 signature.
@@ -258,12 +257,8 @@ assign_amz_query_values <- function(ctx) {
   return(ctx)
 }
 
-build_context <- function(ctx, ...){
-  UseMethod("build_context")
-}
-
 # Build the SigningContext for a request.
-build_context.SigningContext <- function(ctx, disable_header_hoisting, ...) {
+build_context <- function(ctx, disable_header_hoisting, ...) {
   ctx <- build_time(ctx)
   ctx <- build_credential_string(ctx)
   ctx <- build_body_digest(ctx)
