@@ -118,11 +118,15 @@ sort_list <- function(x) {
   x[sort(names(x))]
 }
 
+str_match <- function(str, pattern) {
+  m <- gregexec(pattern, str, perl = T)
+  return(unlist(regmatches(str, m)))
+}
+
 # Get parameter names from http_path template:
 find_params <- function(str) {
-  m <- gregexec('\\{(.*?)}', str, perl = T)
-  out <- regmatches(str, m)
-  return(unlist(out)[grep("\\{.*\\}", unlist(out), invert = T, perl = T)])
+  out <- str_match(str, '\\{(.*?)}')
+  return(out[grep("\\{.*\\}", out, invert = T, perl = T)])
 }
 
 # convert http_path template to sprintf format:
@@ -145,16 +149,14 @@ sprintf_template <- function(template) {
 # for example:
 # /{Bucket}/{Key+} -> /demo_bucket/path/to/file
 render_template <- function(request){
-  template <- remove_bucket_from_url_paths_from_model(
-    request$operation$http_path
-  )
-  Params <- find_params(template)
-  encoded_params <- vector("list", length(Params))
-  names(encoded_params) <- Params
-  for (p in Params) {
-    if (grepl("\\+", request$params[[p]], perl = TRUE)) {
+  template <- request$operation$http_path
+  template_params <- find_params(template)
+  encoded_params <- vector("list", length(template_params))
+  names(encoded_params) <- template_params
+  for (p in template_params) {
+    if (grepl("\\+", p, perl = TRUE)) {
       encoded_params[[p]] <- paws.common:::paws_url_encoder(
-        gsub("+", "", request$params[[p]], perl = TRUE), safe = "/~"
+        request$params[[gsub("\\+", "", p, perl = TRUE)]], safe = "/~"
       )
     } else {
       encoded_params[[p]] <- paws.common:::paws_url_encoder(
@@ -166,16 +168,43 @@ render_template <- function(request){
   return(do.call(sprintf, c(fmt = mod_temp, encoded_params)))
 }
 
+LABEL_RE <- "[a-z0-9][a-z0-9\\-]*[a-z0-9]"
 
 # Developed from:
-# https://github.com/boto/botocore/blob/cc3f1c22f55ba50ca792eb73e7a6f721abdcc5ee/botocore/handlers.py#L1030-L1057
+# https://github.com/boto/botocore/blob/cc3f1c22f55ba50ca792eb73e7a6f721abdcc5ee/botocore/utils.py#L1275-L1295
+check_dns_name <- function(bucket_name){
+  if (grepl("\\.", bucket_name, perl=TRUE)) {
+    return(FALSE)
+  }
+  n <- nchar(bucket_name)
+  if (n < 3 || n > 63) {
+    return(FALSE)
+  }
+  m <- regexpr(LABEL_RE, bucket_name, perl = T)
+  match <- regmatches(bucket_name, m)
+  if (identical(match, character(0)) || nchar(match) != nchar(bucket_name)) {
+    return(FALSE)
+  }
+  return(TRUE)
+}
 
-# Strips leading `{Bucket}/` from any operations that have it.
-# The original value is retained in a separate "authPath" field. This is
-# used in the sign_v1_auth_query.
-remove_bucket_from_url_paths_from_model <- function(http_path) {
-  bucket_path = '/{Bucket}'
-  needs_slash <- http_path == bucket_path
-  auth_path <- if (needs_slash) paste0(http_path, "/") else http_path
+# modified from:
+# https://github.com/boto/botocore/blob/cc3f1c22f55ba50ca792eb73e7a6f721abdcc5ee/botocore/utils.py#L1327-L1388
+# set auth_path for sign_v1_auth_query
+get_auth <- function(request) {
+  auth_path <- render_template(request)
+  path_parts <- unlist(strsplit(auth_path, "/"))
+  if (length(path_parts) > 1) {
+    bucket_name <- path_parts[2]
+    if (check_dns_name(bucket_name)) {
+      # If the operation is on a bucket, the auth_path must be
+      # terminated with a '/' character.
+      if (length(path_parts) == 2) {
+        if (substring(auth_path, nchar(auth_path)) != "/") {
+          auth_path <- paste0(auth_path, "/")
+        }
+      }
+    }
+  }
   return(auth_path)
 }
