@@ -21,9 +21,7 @@ generate_signed_url <- function(client_method,
     "`expires` must be numeric" = is.numeric(expires_in),
     "`expires_in` must be greater than 0" = expires_in > 0L
   )
-  # temp to dev on
-  pkg_name <- packageName() # pkg_name <- "paws.storage"
-
+  pkg_name <- packageName()
   # get package private api objects: metadata, handlers, interfaces, etc.
   pkg_api <- get_pkg_api()
   .pkg_api <- paste0(".", pkg_api)
@@ -47,8 +45,9 @@ generate_signed_url <- function(client_method,
   # create: new_operation from client_method
   op <- eval(operation_body[[2]][[3]], envir = getNamespace("paws.common"))
 
+  original_params <- formals(operation_fun) %||% list()
   # create: input from client_method
-  kwargs <- as.list(modifyList(formals(operation_fun), params))
+  kwargs <- as.list(modifyList(original_params, params))
   input <- do.call(
     get(
       .pkg_api,
@@ -76,7 +75,6 @@ generate_signed_url <- function(client_method,
 
   # build request
   request <- build(request)
-
   # sign request
   request <- sign_v1_auth_query(request)
 
