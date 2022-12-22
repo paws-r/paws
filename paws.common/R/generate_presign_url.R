@@ -21,7 +21,8 @@ generate_signed_url <- function(client_method,
     "`expires` must be numeric" = is.numeric(expires_in),
     "`expires_in` must be greater than 0" = expires_in > 0L
   )
-  pkg_name <- packageName()
+
+  pkg_name <- "paws.storage"
   # get package private api objects: metadata, handlers, interfaces, etc.
   pkg_api <- get_pkg_api()
   .pkg_api <- paste0(".", pkg_api)
