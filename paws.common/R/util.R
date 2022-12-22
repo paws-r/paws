@@ -124,7 +124,7 @@ str_match <- function(str, pattern) {
 }
 
 # Get parameter names from http_path template:
-find_params <- function(str) {
+get_template_params <- function(str) {
   out <- str_match(str, '\\{(.*?)}')
   return(out[grep("\\{.*\\}", out, invert = T, perl = T)])
 }
@@ -150,7 +150,7 @@ sprintf_template <- function(template) {
 # /{Bucket}/{Key+} -> /demo_bucket/path/to/file
 render_template <- function(request){
   template <- request$operation$http_path
-  template_params <- find_params(template)
+  template_params <- get_template_params(template)
   encoded_params <- vector("list", length(template_params))
   names(encoded_params) <- template_params
   for (p in template_params) {
