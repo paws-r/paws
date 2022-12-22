@@ -62,7 +62,7 @@ Collate:
     'request.R'
     'signer_v4.R'
     'signer_query.R'
-    'generate_presign_url.R'
+    'generate_presigned_url.R'
     'handlers_core.R'
     'handlers_ec2query.R'
     'handlers_jsonrpc.R'

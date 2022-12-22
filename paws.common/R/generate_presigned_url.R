@@ -54,7 +54,7 @@ generate_presigned_url <- function(client_method,
 
   original_params <- formals(operation_fun) %||% list()
   param_check <- setdiff(names(params), names(original_params))
-  if (!identical(param_check, character(0))) {
+  if (!identical(param_check, character(0)) || is.null(param_check)) {
     stop(sprintf(
         "Invalid parameter(s) [`%s`] for client method %s",
         paste(param_check, collapse = "`, `"), client_method
