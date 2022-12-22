@@ -68,10 +68,6 @@ SigningContextQuery <- struct(
   disable_uri_path_escaping = FALSE,
   cred_values = list(),
   is_presigned = FALSE,
-  formatted_time = "",
-  formatted_short_time = "",
-  unsigned_payload = "",
-  body_digest = "",
   signed_headers = "",
   canonical_headers = "",
   canonical_string = "",
@@ -79,8 +75,7 @@ SigningContextQuery <- struct(
   string_to_sign = "",
   signature = "",
   authorization = "",
-  anonymous = FALSE,
-  .class = "SigningContextQuery"
+  anonymous = FALSE
 )
 
 sign_v1_auth_query <- function(request) {
@@ -130,7 +125,6 @@ sign_with_body_query <- function(signer, request, body, service, region,
     service_name = service,
     region = region,
     disable_uri_path_escaping = signer$disable_uri_path_escaping,
-    unsigned_payload = signer$unsigned_payload,
     anonymous = anonymous
   )
 
@@ -146,12 +140,12 @@ sign_with_body_query <- function(signer, request, body, service, region,
 
   ctx$request <- sanitize_host_for_header(ctx$request)
   ctx <- assign_amz_query_values(ctx)
-  ctx <- build_context(ctx, signer$disable_header_hoisting, auth_path)
+  ctx <- build_context_query(ctx, signer$disable_header_hoisting, auth_path)
 
   return(ctx$request)
 }
 
-build_context.SigningContextQuery <- function(ctx, disable_header_hoisting, auth_path, ...) {
+build_context_query <- function(ctx, disable_header_hoisting, auth_path, ...) {
   ctx$request$header[["Date"]] <- set_date(ctx)
   unsigned_headers <- ctx$request$header
 
@@ -160,8 +154,8 @@ build_context.SigningContextQuery <- function(ctx, disable_header_hoisting, auth
   ctx$canonical_string <- canonical_string(ctx, auth_path)
   log_debug('StringToSign:\n%s', ctx$canonical_string)
 
-  signature <- sign_string_query(ctx, ctx$canonical_string)
-  ctx <- inject_signature_query(ctx, signature)
+  ctx$signature <- sign_string_query(ctx)
+  ctx$request$url$raw_query <- inject_signature_query(ctx)
 
   return(ctx)
 }
@@ -239,19 +233,19 @@ canonical_string <- function(ctx, auth_path) {
   return(canonical_string)
 }
 
-sign_string_query <- function(ctx, string_to_sign){
+sign_string_query <- function(ctx){
   new_hmac <- make_hmac(
-    enc2utf8(ctx$cred_values$secret_access_key), string_to_sign, "sha1"
+    enc2utf8(ctx$cred_values$secret_access_key), ctx$canonical_string, "sha1"
   )
   return(base64enc::base64encode(new_hmac))
 }
 
 # Developed from:
 # https://github.com/boto/botocore/blob/master/botocore/auth.py#L875-L905
-inject_signature_query <- function(ctx, signature){
+inject_signature_query <- function(ctx){
   query_list <- list(
     AWSAccessKeyId = ctx$cred_values$access_key_id,
-    Signature = signature
+    Signature = ctx$signature
   )
   headers <- ctx$request$header
   query_list["Expires"] <- ctx$request$header$Date
@@ -269,6 +263,5 @@ inject_signature_query <- function(ctx, signature){
   query_list <- if(!ctx$anonymous) query_list else list()
   query <- ctx$request$url$raw_query
   new_query <- Filter(nzchar, c(query, build_query_string(query_list)))
-  ctx$request$url$raw_query <- paste(new_query, collapse = "&")
-  return(ctx)
+  return(paste(new_query, collapse = "&"))
 }
