@@ -4,7 +4,7 @@
 # list like `list(a =, b =)`, with default values a = 1 and b = 2.
 # All names internal to this function start with `.` to avoid getting clobbered
 # by names passed into the function.
-struct <- function(...) {
+struct <- function(..., .class = NULL) {
   .struct <- list(...)
 
   .f <- function() {
@@ -12,7 +12,7 @@ struct <- function(...) {
     for (.key in names(.args)) {
       .struct[.key] <- .args[.key]
     }
-    class(.struct) <- "struct"
+    class(.struct) <- c(.class, "struct")
     return(.struct)
   }
   formals(.f) <- do.call(alist, .struct)
