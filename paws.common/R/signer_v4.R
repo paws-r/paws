@@ -1,5 +1,6 @@
 #' @include credentials.R
 #' @include struct.R
+#' @include util.R
 NULL
 
 # AWS Signature Version 4 signing process.
@@ -93,7 +94,8 @@ SigningContext <- struct(
   credential_string = "",
   string_to_sign = "",
   signature = "",
-  authorization = ""
+  authorization = "",
+   .class = "SigningContext"
 )
 
 # Signs an SDK request with the V4 signature.
@@ -170,12 +172,6 @@ sign_with_body <- function(signer, request, body, service, region,
     unsigned_payload = signer$unsigned_payload
   )
 
-  sort_list <- function(x) {
-    if (length(x) == 0) {
-      return(x)
-    }
-    x[sort(names(x))]
-  }
   if (!is.null(ctx$query) && length(ctx$query) > 0) {
     ctx$query <- sort_list(ctx$query)
   }
@@ -199,7 +195,6 @@ sign_with_body <- function(signer, request, body, service, region,
   if (!(signer$disable_request_body_overwrite || ctx$is_presigned)) {
     # Implement presigned requests.
   }
-
   return(ctx$request)
 }
 
@@ -251,6 +246,7 @@ assign_amz_query_values <- function(ctx) {
       query["X-Amz-Security-Token"] <- NULL
     }
     ctx$query <- query
+    return(ctx)
   }
 
   if (ctx$cred_values$session_token != "") {
@@ -262,8 +258,12 @@ assign_amz_query_values <- function(ctx) {
   return(ctx)
 }
 
+build_context <- function(ctx, ...){
+  UseMethod("build_context")
+}
+
 # Build the SigningContext for a request.
-build_context <- function(ctx, disable_header_hoisting) {
+build_context.SigningContext <- function(ctx, disable_header_hoisting, ...) {
   ctx <- build_time(ctx)
   ctx <- build_credential_string(ctx)
   ctx <- build_body_digest(ctx)
@@ -342,14 +342,22 @@ sha256 <- function(x) {
 build_body_digest <- function(ctx) {
   hash <- get_element(ctx$request$header, "X-Amz-Content-Sha256")
   if (hash == "") {
-    if (ctx$unsigned_payload || (ctx$is_presigned && ctx$service_name == "s3")) {
+    include_sha256_header <- (
+      ctx$unsigned_payload ||
+      ctx$service_name %in% c("s3", "s3-object-lambda", "glacier")
+    )
+    s3_presign <- (
+      ctx$is_presigned && ctx$service_name %in% c("s3", "s3-object-lambda")
+    )
+    if (ctx$unsigned_payload || s3_presign) {
       hash <- "UNSIGNED-PAYLOAD"
+      include_sha256_header <- !s3_presign
     } else if (is_empty(ctx$body)) {
       hash <- EMPTY_STRING_SHA256
     } else {
       hash <- sha256(ctx$body)
     }
-    if (ctx$unsigned_payload || ctx$service_name %in% c("s3", "glacier")) {
+    if (include_sha256_header) {
       ctx$request$header["X-Amz-Content-Sha256"] <- hash
     }
   }
@@ -359,14 +367,11 @@ build_body_digest <- function(ctx) {
 
 build_canonical_headers <- function(ctx, header, ignored_headers) {
   headers <- c("host")
-  for (key in names(header)) {
-    if (key %in% ignored_headers) {
-      next
-    } else {
-      lower_case_key <- tolower(key)
-      ctx$signed_header_vals[[lower_case_key]] <- header[[key]]
-      headers <- c(headers, lower_case_key)
-    }
+  header_names <- names(header)
+  for (key in header_names[!(header_names %in% ignored_headers)]) {
+    lower_case_key <- tolower(key)
+    ctx$signed_header_vals[[lower_case_key]] <- header[[key]]
+    headers[length(headers) + 1] <- lower_case_key
   }
   headers <- sort(headers)
   ctx$signed_headers <- paste(headers, collapse = ";")
@@ -387,7 +392,7 @@ build_canonical_headers <- function(ctx, header, ignored_headers) {
       value <- ctx$signed_header_vals[[key]]
       header_value <- paste0(key, ":", paste(value, collapse = ","))
     }
-    header_values <- c(header_values, header_value)
+    header_values[length(header_values) + 1] <- header_value
   }
   ctx$canonical_headers <- paste(header_values, collapse = "\n")
   return(ctx)
@@ -442,8 +447,8 @@ build_signature <- function(ctx) {
 }
 
 # Do a keyed hash operation on the given data using the given key.
-make_hmac <- function(key, data) {
-  return(digest::hmac(key, enc2utf8(data), "sha256", serialize = FALSE, raw = TRUE))
+make_hmac <- function(key, data, algo = "sha256") {
+  return(digest::hmac(key, enc2utf8(data), algo, serialize = FALSE, raw = TRUE))
 }
 
 # Return the path part of a URI, e.g. "https://www.example.com/abc/xyz" -> "abc/xyz".
