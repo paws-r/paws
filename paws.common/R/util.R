@@ -110,3 +110,72 @@ call_with_args <- function(f, data) {
 
 # helper function to make it easy to replace NULLs with default value
 `%||%` <- function(x,y) if(is.null(x)) y else x
+
+sort_list <- function(x) {
+  if (length(x) == 0) {
+    return(x)
+  }
+  x[sort(names(x))]
+}
+
+# Get parameter names from http_path template:
+find_params <- function(str) {
+  m <- gregexec('\\{(.*?)}', str, perl = T)
+  out <- regmatches(str, m)
+  return(unlist(out)[grep("\\{.*\\}", unlist(out), invert = T, perl = T)])
+}
+
+# convert http_path template to sprintf format:
+# /{Bucket} -> /%s
+# /{Bucket}/{Key+} -> /%s/%s
+sprintf_template <- function(template) {
+  temp_split <- unlist(strsplit(template, "\\?"))
+  auth_temp <- temp_split[grepl("\\{.*\\}", temp_split)]
+
+  # set template to sprintf format
+  m <- gregexpr('\\{(.*?)}', auth_temp, perl = T)
+  regmatches(auth_temp, m) <- "%s"
+  return(auth_temp)
+}
+
+# Developed from:
+# https://github.com/boto/botocore/blob/481523259d919e7a74331bc5828ab15ecc19d44b/botocore/serialize.py#L496-L513
+
+# render params into http_path template
+# for example:
+# /{Bucket}/{Key+} -> /demo_bucket/path/to/file
+render_template <- function(request){
+  template <- remove_bucket_from_url_paths_from_model(
+    request$operation$http_path
+  )
+  Params <- find_params(template)
+  encoded_params <- vector("list", length(Params))
+  names(encoded_params) <- Params
+  for (p in Params) {
+    if (grepl("\\+", request$params[[p]], perl = TRUE)) {
+      encoded_params[[p]] <- paws.common:::paws_url_encoder(
+        gsub("+", "", request$params[[p]], perl = TRUE), safe = "/~"
+      )
+    } else {
+      encoded_params[[p]] <- paws.common:::paws_url_encoder(
+        request$params[[p]]
+      )
+    }
+  }
+  mod_temp <- sprintf_template(template)
+  return(do.call(sprintf, c(fmt = mod_temp, encoded_params)))
+}
+
+
+# Developed from:
+# https://github.com/boto/botocore/blob/cc3f1c22f55ba50ca792eb73e7a6f721abdcc5ee/botocore/handlers.py#L1030-L1057
+
+# Strips leading `{Bucket}/` from any operations that have it.
+# The original value is retained in a separate "authPath" field. This is
+# used in the sign_v1_auth_query.
+remove_bucket_from_url_paths_from_model <- function(http_path) {
+  bucket_path = '/{Bucket}'
+  needs_slash <- http_path == bucket_path
+  auth_path <- if (needs_slash) paste0(http_path, "/") else http_path
+  return(auth_path)
+}
