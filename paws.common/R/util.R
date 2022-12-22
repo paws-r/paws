@@ -155,11 +155,11 @@ render_template <- function(request){
   names(encoded_params) <- template_params
   for (p in template_params) {
     if (grepl("\\+", p, perl = TRUE)) {
-      encoded_params[[p]] <- paws.common:::paws_url_encoder(
+      encoded_params[[p]] <- paws_url_encoder(
         request$params[[gsub("\\+", "", p, perl = TRUE)]], safe = "/~"
       )
     } else {
-      encoded_params[[p]] <- paws.common:::paws_url_encoder(
+      encoded_params[[p]] <- paws_url_encoder(
         request$params[[p]]
       )
     }
