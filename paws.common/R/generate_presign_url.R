@@ -11,15 +11,21 @@
 #' @param params (list): The parameters normally passed to ``client_method``.
 #' @param expires_in: The number of seconds the presigned url is valid
 #' for. By default it expires in an hour (3600 seconds)
+#' @param  http_param The http method to use on the generated url. By default,
+#' the http method is whatever is used in the method's model.
 #' @return The presigned url character
-generate_signed_url <- function(client_method,
+generate_presigned_url <- function(client_method,
                                 params = list(),
-                                expires_in = 3600) {
+                                expires_in = 3600,
+                                http_method = NULL) {
   stopifnot(
     "`client_method` must to be a character" = is.character(client_method),
     "`params` must be a list of parameters for client_method" = is.list(params),
     "`expires` must be numeric" = is.numeric(expires_in),
-    "`expires_in` must be greater than 0" = expires_in > 0L
+    "`expires_in` must be greater than 0" = expires_in > 0L,
+    "`http_method` must be a character" = (
+      is.character(http_method) || is.null(http_method)
+    )
   )
 
   pkg_name <- "paws.storage"
@@ -47,6 +53,16 @@ generate_signed_url <- function(client_method,
   op <- eval(operation_body[[2]][[3]], envir = getNamespace("paws.common"))
 
   original_params <- formals(operation_fun) %||% list()
+  param_check <- setdiff(names(params), names(original_params))
+  if (!identical(param_check, character(0))) {
+    stop(sprintf(
+        "Invalid parameter(s) [`%s`] for client method %s",
+        paste(param_check, collapse = "`, `"), client_method
+      ),
+      call. = FALSE
+    )
+  }
+
   # create: input from client_method
   kwargs <- as.list(modifyList(original_params, params))
   input <- do.call(
@@ -78,6 +94,10 @@ generate_signed_url <- function(client_method,
   request <- build(request)
   # sign request
   request <- sign_v1_auth_query(request)
+
+  if (!is.null(http_method)) {
+    request$http_request$url$scheme <- http_method
+  }
 
   return(build_url(request$http_request$url))
 }
