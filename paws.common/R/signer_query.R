@@ -107,7 +107,7 @@ sign_v1_auth_query <- function(request) {
     signing_time <- request$last_signed_at
   }
 
-  auth_path <- render_template(request)
+  auth_path <- get_auth(request)
   request$http_request <- sign_with_body_query(
     v1, request$http_request, request$body,
     name, region, request$expire_time, signing_time,
