@@ -220,9 +220,9 @@ canonical_resource <- function(ctx, auth_path) {
     qsa <- parse_query_string(raw_query)
     found <- names(qsa) %in% QSAOfInterest
     qsa <- qsa[found]
+    buf <- Filter(nzchar, c(buf, build_query_string(qsa)))
   }
-  new_query <- Filter(nzchar, c(buf, build_query_string(qsa)))
-  return(paste(new_query, sep = "?"))
+  return(paste(buf, sep = "?"))
 }
 
 # Developed from:
