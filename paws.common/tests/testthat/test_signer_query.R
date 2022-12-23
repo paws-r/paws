@@ -132,6 +132,32 @@ test_that("check generated presigned url with different http_method", {
   )
 })
 
+test_that("check generate_presigned_url with query string arguments of interest", {
+  Sys.setenv("AWS_ACCESS_KEY_ID" = "DUMMY")
+  Sys.setenv("AWS_SECRET_ACCESS_KEY" = "SECRETDUMMY")
+  Sys.setenv("AWS_REGION" = "us-east-1")
+
+  s3 <- list()
+  s3$generate_presigned_url <- paws.common:::generate_presigned_url
+  actual <- s3$generate_presigned_url(
+    client_method = "get_object",
+    params = list(Bucket = "foo", Key = "bar", VersionId = "something_made_up#")
+  )
+
+  expect_true(
+    grepl(
+      sprintf(
+        "https://%s.s3.amazonaws.com/%s\\?versionId=%s&AWSAccessKeyId=%s&Expires=.*?&Signature=.*",
+        "foo",
+        "bar",
+        "something_made_up%23",
+        "DUMMY"
+      ),
+      actual
+    )
+  )
+})
+
 test_that("check generate_presigned_url with error in client_method", {
   Sys.setenv("AWS_ACCESS_KEY_ID" = "DUMMY")
   Sys.setenv("AWS_SECRET_ACCESS_KEY" = "SECRETDUMMY")
@@ -148,7 +174,7 @@ test_that("check generate_presigned_url with error in client_method", {
   )
 })
 
-test_that("check generate_presigned_url with in correct parameters", {
+test_that("check generate_presigned_url with wrong parameters", {
   Sys.setenv("AWS_ACCESS_KEY_ID" = "DUMMY")
   Sys.setenv("AWS_SECRET_ACCESS_KEY" = "SECRETDUMMY")
   Sys.setenv("AWS_REGION" = "us-east-1")
