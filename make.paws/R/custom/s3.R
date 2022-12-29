@@ -140,7 +140,7 @@ s3_download_file <- function(Bucket, Key, Filename, IfMatch = NULL, IfModifiedSi
 #' s3_generate_signed_url(client_method, params=list(), expires_in=3600,
 #' http_method = NULL)
 #'
-#' @param client_method (character_: The client method to presign for
+#' @param client_method (character): The client method to presign for
 #' @param params (list): The parameters normally passed to ``client_method``.
 #' @param expires_in (numeric): The number of seconds the presigned url is valid
 #' for. By default it expires in an hour (3600 seconds)
