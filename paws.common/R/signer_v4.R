@@ -258,7 +258,7 @@ assign_amz_query_values <- function(ctx) {
 }
 
 # Build the SigningContext for a request.
-build_context <- function(ctx, disable_header_hoisting, ...) {
+build_context <- function(ctx, disable_header_hoisting) {
   ctx <- build_time(ctx)
   ctx <- build_credential_string(ctx)
   ctx <- build_body_digest(ctx)
