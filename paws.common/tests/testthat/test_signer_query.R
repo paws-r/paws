@@ -785,22 +785,3 @@ test_that("check generate_presigned_url with query string arguments of interest"
     )
   )
 })
-
-test_that("check helper function to get svc", {
-  s3 <- list()
-  s3$dummmy <- function() {
-    return(get_pkg_api())
-  }
-  actual <- s3$dummmy()
-  expect_equal("s3", actual)
-})
-
-
-test_that("check helper function to get svc in do.call", {
-  s3 <- list()
-  s3$dummmy <- function() {
-    return(get_pkg_api())
-  }
-  actual <- do.call(s3$dummmy, list())
-  expect_equal("s3", actual)
-})
