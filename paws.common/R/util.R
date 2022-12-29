@@ -208,3 +208,13 @@ get_auth <- function(request) {
   }
   return(auth_path)
 }
+
+get_pkg_api <- function() {
+  call <- sys.call(-1)[[1]]
+  # Ensure we correctly identify the service object (e.g. `svc`) when the
+  # operation is called through `do.call`, e.g. `do.call(svc$operation, args)`.
+  if (is.function(call)) {
+    call <- sys.call(-2)[[2]]
+  }
+  return(as.character(call[[2]]))
+}
