@@ -5,13 +5,8 @@ custom_dir <- file.path(getwd(), "..", "..", "R", "custom")
 source(file.path(custom_dir, "s3.R"), local = TRUE)
 
 # import private methods from paws.common
-get_pkg_api <- get("get_pkg_api", asNamespace("paws.common"))
 get_config <- get("get_config", asNamespace("paws.common"))
 new_request <- get("new_request", asNamespace("paws.common"))
-build <- get("build", asNamespace("paws.common"))
-sign_v1_auth_query <- get("sign_v1_auth_query", asNamespace("paws.common"))
-build_url <- get("build_url", asNamespace("paws.common"))
-`%||%` <- get("%||%", asNamespace("paws.common"))
 
 test_that("check generated presigned url with different http_method", {
   skip_if_not_installed("paws.common")
