@@ -19,9 +19,9 @@ test_that("check generated presigned url with different http_method", {
   Sys.setenv("AWS_SECRET_ACCESS_KEY" = "SECRETDUMMY")
   Sys.setenv("AWS_REGION" = "us-east-1")
 
-  s3 <- list()
-  s3$generate_presigned_url <- s3_generate_presigned_url
-  actual <- s3$generate_presigned_url(
+  svc <- list()
+  svc$generate_presigned_url <- s3_generate_presigned_url
+  actual <- svc$generate_presigned_url(
     client_method = "list_objects_v2",
     params = list(Bucket = "foo", Prefix = "bar"),
     http_method = "HTTP"
@@ -46,10 +46,10 @@ test_that("check generate_presigned_url with error in client_method", {
   Sys.setenv("AWS_SECRET_ACCESS_KEY" = "SECRETDUMMY")
   Sys.setenv("AWS_REGION" = "us-east-1")
 
-  s3 <- list()
-  s3$generate_presigned_url <- s3_generate_presigned_url
+  svc <- list()
+  svc$generate_presigned_url <- s3_generate_presigned_url
   expect_error(
-    s3$generate_presigned_url(
+    svc$generate_presigned_url(
       client_method = "AWS_HELLO",
       params = list(Bucket = "foo", Prefix = "bar")
     ),
@@ -62,10 +62,10 @@ test_that("check generate_presigned_url with wrong parameters", {
   Sys.setenv("AWS_SECRET_ACCESS_KEY" = "SECRETDUMMY")
   Sys.setenv("AWS_REGION" = "us-east-1")
 
-  s3 <- list()
-  s3$generate_presigned_url <- s3_generate_presigned_url
+  svc <- list()
+  svc$generate_presigned_url <- s3_generate_presigned_url
   expect_error(
-    s3$generate_presigned_url(
+    svc$generate_presigned_url(
       client_method = "list_buckets",
       params = list(MadeUp = "foo")
     ),
