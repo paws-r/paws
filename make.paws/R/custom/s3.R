@@ -73,7 +73,8 @@ NULL
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
-#' @param RequestPayer
+#' @param RequestPayer Confirms that the requester knows that they will be
+#' charged for the request. Bucket owners need not specify this parameter in their requests
 #' @param PartNumber Part number of the object being read. This is a positive integer between
 #' 1 and 10,000. Effectively performs a 'ranged' GET request for the part
 #' specified. Useful for downloading just a part of an object.
@@ -208,6 +209,7 @@ s3_generate_presigned_url <- function(client_method,
 
   original_params <- formals(operation_fun)
   original_params <- if(!is.null(original_params)) original_params else list()
+  if(!is.null(original_params)) original_params else list()
   param_check <- setdiff(names(params), names(original_params))
   if (!identical(param_check, character(0)) || is.null(param_check)) {
     stop(sprintf(
@@ -246,21 +248,23 @@ s3_generate_presigned_url <- function(client_method,
   request$expire_time <- expires_in
 
   # build request
-  request <- get("build", envir = getNamespace("paws.common"))(request)
+  request <- do.call(
+    "build", list(request = request), envir = getNamespace("paws.common")
+  )
   # sign request
-  request <- get(
-    "sign_v1_auth_query", envir = getNamespace("paws.common")
-  )(request)
+  request <- do.call(
+    "sign_v1_auth_query", list(request = request),
+    envir = getNamespace("paws.common")
+  )
 
   if (!is.null(http_method)) {
     request$http_request$url$scheme <- http_method
   }
 
-  return(
-    get(
-      "build_url", envir = getNamespace("paws.common")
-    )(request$http_request$url)
-  )
+  return(do.call(
+    "build_url", list(url = request$http_request$url),
+    envir = getNamespace("paws.common")
+  ))
 }
 
 .s3$operations$generate_presigned_url <- s3_generate_presigned_url
