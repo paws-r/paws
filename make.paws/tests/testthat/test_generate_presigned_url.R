@@ -1,7 +1,7 @@
 .s3 <- list()
 
 # get s3_generate_presigned_url custom s3 function
-custom_dir <- file.path(getwd(), "..", "..", "R", "custom")
+custom_dir <- system.file("src", "custom", package = "make.paws")
 source(file.path(custom_dir, "s3.R"), local = TRUE)
 
 # import private methods from paws.common
