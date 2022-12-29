@@ -1,7 +1,7 @@
 #' @include s3_service.R s3_operations.R
 
-#' @import paws.common
-#' @importFrom utils modifyList packageName
+#' @importFrom paws.common new_operation get_config new_request send_request
+#' @importFrom utils modifyList
 NULL
 
 #' Download a file from S3 and store it at a specified file location
@@ -185,9 +185,8 @@ s3_generate_presigned_url <- function(client_method,
 
   pkg_name <- "paws.storage"
   # get package private api objects: metadata, handlers, interfaces, etc.
-  pkg_api <- get_pkg_api()
+  pkg_api <- "s3"
   .pkg_api <- paste0(".", pkg_api)
-
   tryCatch(
     {
       operation_fun <- get(
@@ -207,7 +206,8 @@ s3_generate_presigned_url <- function(client_method,
   # create: new_operation from client_method
   op <- eval(operation_body[[2]][[3]], envir = getNamespace("paws.common"))
 
-  original_params <- formals(operation_fun) %||% list()
+  original_params <- formals(operation_fun)
+  original_params <- if(!is.null(original_params)) original_params else list()
   param_check <- setdiff(names(params), names(original_params))
   if (!identical(param_check, character(0)) || is.null(param_check)) {
     stop(sprintf(
@@ -246,15 +246,21 @@ s3_generate_presigned_url <- function(client_method,
   request$expire_time <- expires_in
 
   # build request
-  request <- build(request)
+  request <- get("build", envir = getNamespace("paws.common"))(request)
   # sign request
-  request <- sign_v1_auth_query(request)
+  request <- get(
+    "sign_v1_auth_query", envir = getNamespace("paws.common")
+  )(request)
 
   if (!is.null(http_method)) {
     request$http_request$url$scheme <- http_method
   }
 
-  return(build_url(request$http_request$url))
+  return(
+    get(
+      "build_url", envir = getNamespace("paws.common")
+    )(request$http_request$url)
+  )
 }
 
 .s3$operations$generate_presigned_url <- s3_generate_presigned_url
