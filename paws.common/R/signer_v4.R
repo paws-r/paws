@@ -1,5 +1,6 @@
 #' @include credentials.R
 #' @include struct.R
+#' @include util.R
 NULL
 
 # AWS Signature Version 4 signing process.
@@ -80,15 +81,12 @@ SigningContext <- struct(
   time = 0,
   expire_time = 0,
   signed_header_vals = list(),
-
   disable_uri_path_escaping = FALSE,
-
   cred_values = list(),
   is_presigned = FALSE,
   formatted_time = "",
   formatted_short_time = "",
   unsigned_payload = "",
-
   body_digest = "",
   signed_headers = "",
   canonical_headers = "",
@@ -108,7 +106,6 @@ v4_sign_request_handler <- function(request) {
 sign_sdk_request_with_curr_time <- function(request,
                                             curr_time_fn = Sys.time,
                                             opts = NULL) {
-
   region <- request$client_info$signing_region
   if (region == "") {
     region <- request$config$region
@@ -139,10 +136,11 @@ sign_sdk_request_with_curr_time <- function(request,
   request$http_request <- sign_with_body(
     v4, request$http_request, request$body,
     name, region, request$expire_time,
-    request$expire_time > 0, signing_time)
+    request$expire_time > 0, signing_time
+  )
 
   # set headers for anonymous credentials
-  if(isTRUE(request$config$credentials$anonymous)){
+  if (isTRUE(request$config$credentials$anonymous)) {
     request$http_request$header <- anonymous_headers(
       request$http_request$header
     )
@@ -153,7 +151,6 @@ sign_sdk_request_with_curr_time <- function(request,
 
 sign_with_body <- function(signer, request, body, service, region,
                            expire_time, is_presigned, signing_time) {
-
   curr_time_fn <- signer$curr_time_fn
   if (is.null(curr_time_fn)) {
     curr_time_fn <- Sys.time
@@ -174,10 +171,6 @@ sign_with_body <- function(signer, request, body, service, region,
     unsigned_payload = signer$unsigned_payload
   )
 
-  sort_list <- function(x) {
-    if (length(x) == 0) return(x)
-    x[sort(names(x))]
-  }
   if (!is.null(ctx$query) && length(ctx$query) > 0) {
     ctx$query <- sort_list(ctx$query)
   }
@@ -201,7 +194,6 @@ sign_with_body <- function(signer, request, body, service, region,
   if (!(signer$disable_request_body_overwrite || ctx$is_presigned)) {
     # Implement presigned requests.
   }
-
   return(ctx$request)
 }
 
@@ -253,6 +245,7 @@ assign_amz_query_values <- function(ctx) {
       query["X-Amz-Security-Token"] <- NULL
     }
     ctx$query <- query
+    return(ctx)
   }
 
   if (ctx$cred_values$session_token != "") {
@@ -275,7 +268,7 @@ build_context <- function(ctx, disable_header_hoisting) {
     if (!disable_header_hoisting) {
       for (header in names(unsigned_headers)) {
         if (grepl("X-Amz-", header) & !grepl("X-Amz-Meta-", header) &
-            !(header %in% REQUIRED_SIGNED_HEADERS)) {
+          !(header %in% REQUIRED_SIGNED_HEADERS)) {
           ctx$query[[header]] <- unsigned_headers[[header]]
           unsigned_headers[[header]] <- NULL
         }
@@ -344,14 +337,22 @@ sha256 <- function(x) {
 build_body_digest <- function(ctx) {
   hash <- get_element(ctx$request$header, "X-Amz-Content-Sha256")
   if (hash == "") {
-    if (ctx$unsigned_payload || (ctx$is_presigned && ctx$service_name == "s3")) {
+    include_sha256_header <- (
+      ctx$unsigned_payload ||
+      ctx$service_name %in% c("s3", "s3-object-lambda", "glacier")
+    )
+    s3_presign <- (
+      ctx$is_presigned && ctx$service_name %in% c("s3", "s3-object-lambda")
+    )
+    if (ctx$unsigned_payload || s3_presign) {
       hash <- "UNSIGNED-PAYLOAD"
+      include_sha256_header <- !s3_presign
     } else if (is_empty(ctx$body)) {
       hash <- EMPTY_STRING_SHA256
     } else {
       hash <- sha256(ctx$body)
     }
-    if (ctx$unsigned_payload || ctx$service_name %in% c("s3", "glacier")) {
+    if (include_sha256_header) {
       ctx$request$header["X-Amz-Content-Sha256"] <- hash
     }
   }
@@ -361,14 +362,11 @@ build_body_digest <- function(ctx) {
 
 build_canonical_headers <- function(ctx, header, ignored_headers) {
   headers <- c("host")
-  for (key in names(header)) {
-    if (key %in% ignored_headers) {
-      next
-    } else {
-      lower_case_key <- tolower(key)
-      ctx$signed_header_vals[[lower_case_key]] <- header[[key]]
-      headers <- c(headers, lower_case_key)
-    }
+  header_names <- names(header)
+  for (key in header_names[!(header_names %in% ignored_headers)]) {
+    lower_case_key <- tolower(key)
+    ctx$signed_header_vals[[lower_case_key]] <- header[[key]]
+    headers[length(headers) + 1] <- lower_case_key
   }
   headers <- sort(headers)
   ctx$signed_headers <- paste(headers, collapse = ";")
@@ -387,9 +385,9 @@ build_canonical_headers <- function(ctx, header, ignored_headers) {
       }
     } else {
       value <- ctx$signed_header_vals[[key]]
-      header_value <- paste0(key, ":", paste(value, collapse =","))
+      header_value <- paste0(key, ":", paste(value, collapse = ","))
     }
-    header_values <- c(header_values, header_value)
+    header_values[length(header_values) + 1] <- header_value
   }
   ctx$canonical_headers <- paste(header_values, collapse = "\n")
   return(ctx)
@@ -444,8 +442,8 @@ build_signature <- function(ctx) {
 }
 
 # Do a keyed hash operation on the given data using the given key.
-make_hmac <- function(key, data) {
-  return(digest::hmac(key, enc2utf8(data), "sha256", serialize = FALSE, raw = TRUE))
+make_hmac <- function(key, data, algo = "sha256") {
+  return(digest::hmac(key, enc2utf8(data), algo, serialize = FALSE, raw = TRUE))
 }
 
 # Return the path part of a URI, e.g. "https://www.example.com/abc/xyz" -> "abc/xyz".
@@ -467,7 +465,7 @@ get_uri_path <- function(url) {
 
 # Clear down headers for anonymous credentials
 # https://github.com/aws/aws-sdk-go/blob/a7b02935e4fefa40f175f4d2143ec9c88a5f90f5/aws/signer/v4/v4_test.go#L321-L355
-anonymous_headers <- function(headers){
+anonymous_headers <- function(headers) {
   found <- grepl("X-Amz-*", names(headers))
   headers[found] <- ""
   headers["Authorization"] <- ""
