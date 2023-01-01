@@ -20,7 +20,13 @@
      }, FUN.VALUE = logical(1)
    )
    categories <- categories[active]
-   write_source_collection(sdk_dir, package_dir, categories, service_names)
+   write_source_collection(
+     sdk_dir,
+     package_dir,
+     categories,
+     service_names,
+     expand_doc_links = TRUE
+   )
    write_documentation(package_dir)
    write_imports_collection(package_dir, version, get_category_packages(categories))
  }

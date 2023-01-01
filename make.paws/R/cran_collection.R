@@ -26,7 +26,8 @@ write_source_collection <- function(
     sdk_dir,
     out_dir,
     categories,
-    service_names) {
+    service_names,
+    expand_doc_links = FALSE) {
   clients <- list()
   for (category in categories) {
     for (service in category$service) {
@@ -36,6 +37,12 @@ write_source_collection <- function(
         next
       }
       docs <- get_client_docs(sdk_dir, service_name)
+      if (expand_doc_links) {
+        docs <- add_package_name_to_links(
+          docs,
+          get_category_package_name(category)
+        )
+      }
       source <- make_collection_client_source(category, service_name)
       client <- paste(docs, source, sep = "\n")
       clients[service_name] <- client
@@ -88,4 +95,14 @@ service_exists <- function(path, service) {
   if (length(service) == 0) return(FALSE)
   file <- file.path(path, "R", sprintf("%s_service.R", service))
   return(file.exists(file))
+}
+
+# Add package name to all function documentation links, e.g.
+# link[=wafv2_associate_web_acl]{associate_web_acl} -->
+# link[paws.security.identity.p2:wafv2_associate_web_acl]{associate_web_acl}
+add_package_name_to_links <- function(docs, package) {
+  regex <- "link\\[\\=([^\\[]*)\\]"
+  replacement <- sprintf("link[%s:\\1]", package)
+  docs <- gsub(regex, replacement, docs)
+  return(docs)
 }
