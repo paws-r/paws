@@ -15,9 +15,20 @@ make_collection <- function(sdk_dir, out_dir, categories, service_names) {
     version = version,
     imports = c()
   )
-  write_source_collection(sdk_dir, package_dir, categories, service_names)
+  write_source_collection(
+    sdk_dir,
+    package_dir,
+    categories,
+    service_names,
+    expand_doc_links = TRUE,
+    use_parents = TRUE
+  )
   write_documentation(package_dir)
-  write_imports_collection(package_dir, version, get_category_packages(categories))
+  write_imports_collection(
+    package_dir,
+    version,
+    get_category_packages(categories, get_parents = TRUE)
+  )
 }
 
 # Write the R source files for the collection package, which import and
@@ -27,7 +38,8 @@ write_source_collection <- function(
     out_dir,
     categories,
     service_names,
-    expand_doc_links = FALSE) {
+    expand_doc_links = FALSE,
+    use_parents = FALSE) {
   clients <- list()
   for (category in categories) {
     for (service in category$service) {
@@ -38,12 +50,13 @@ write_source_collection <- function(
       }
       docs <- get_client_docs(sdk_dir, service_name)
       if (expand_doc_links) {
-        docs <- add_package_name_to_links(
-          docs,
-          get_category_package_name(category)
-        )
+        docs <- add_package_name_to_links(docs, get_package_name(category$name))
       }
-      source <- make_collection_client_source(category, service_name)
+      if (use_parents && !is.null(category$parent))
+        package <- get_package_name(category$parent)
+      else
+        package <- get_package_name(category$name)
+      source <- make_collection_client_source(package, service_name)
       client <- paste(docs, source, sep = "\n")
       clients[service_name] <- client
     }
@@ -82,8 +95,7 @@ collection_client_template <- template(
   `
 )
 
-make_collection_client_source <- function(category, service) {
-  package <- get_category_package_name(category)
+make_collection_client_source <- function(package, service) {
   render(
     collection_client_template,
     service = service,

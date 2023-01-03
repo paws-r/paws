@@ -49,14 +49,18 @@ get_categories <- function() {
 
 # Return a vector of existing packages, excluding those that are not
 # generated because they currently have no supported APIs.
-get_category_packages <- function(categories) {
+get_category_packages <- function(categories, get_parents = FALSE) {
   packages <- c()
   for (category in categories) {
     if (length(category$services) > 0) {
-      packages <- c(packages, get_category_package_name(category))
+      if (get_parents && !is.null(category$parent))
+        package <- get_package_name(category$parent)
+      else
+        package <- get_package_name(category$name)
+      packages <- c(packages, package)
     }
   }
-  packages
+  unique(packages)
 }
 
 # Copy all files for the API given in name.
