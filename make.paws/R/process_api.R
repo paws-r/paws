@@ -72,7 +72,8 @@ make_custom_operations_files <- function(api) {
   from <- system_file(sprintf("src/custom/%s.R", package), package = methods::getPackageName())
   filename <- paste0(package, "_custom.R")
   if (from != "" && file.exists(from)) {
-    result[[file.path(CODE_DIR, filename)]] <- readLines(from)
+    contents <- readLines(from)
+    result[[file.path(CODE_DIR, filename)]] <- paste(contents, collapse = "\n")
   }
   return(result)
 }
