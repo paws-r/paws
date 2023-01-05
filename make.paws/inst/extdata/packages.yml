@@ -189,49 +189,62 @@
     'groundstation' API for control satellite communications, downlink and
     process satellite data applications <https://aws.amazon.com/>.
 
-- name: management
+- name: management.p1
   services:
+    - amp
     - application-autoscaling
-    - applicationcostprofiler
     - application-insights
-    - servicecatalog-appregistry
+    - applicationcostprofiler
     - auditmanager
     - autoscaling
     - autoscaling-plans
     - cloudformation
     - cloudtrail
-    - monitoring
+    - config
     - events
     - evidently
-    - logs
-    - rum
-    - config
     - finspace
+    - grafana
     - health
     - license-manager
     - license-manager-user-subscriptions
-    - grafana
+    - logs
+  title: "'Amazon Web Services' Management & Governance Services"
+  description: >-
+    This is the backend package for 'paws.management'. Please use 
+    'paws.management' to access 'Amazon Web Services' management services.
+  category_description: >-
+    Interface to 'Amazon Web Services' management and governance services,
+    including 'CloudWatch' application and infrastructure monitoring, 'Auto
+    Scaling' for automatically scaling resources, and more
+    <https://aws.amazon.com/>.
+  parent: management
+
+- name: management.p2
+  services:
+    - monitoring
     - opsworks
     - opsworkscm
     - organizations
     - pi
-    - amp
     - resiliencehub
     - resource-groups
     - resourcegroupstaggingapi
-    - servicecatalog
+    - rum
     - service-quotas
+    - servicecatalog
+    - servicecatalog-appregistry
     - ssm
     - ssm-contacts
     - ssm-incidents
     - support
     - synthetics
   title: "'Amazon Web Services' Management & Governance Services"
-  description:  >-
-    Interface to 'Amazon Web Services' management and governance services,
-    including 'CloudWatch' application and infrastructure monitoring, 'Auto
-    Scaling' for automatically scaling resources, and more
-    <https://aws.amazon.com/>.
+  description: >-
+    This is the backend package for 'paws.management'. Please use 
+    'paws.management' to access 'Amazon Web Services' management services.
+  category_description: ""
+  parent: management
 
 - name: media.services
   services:
