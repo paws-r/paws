@@ -84,6 +84,7 @@ get_client_docs <- function(path, service) {
   client_line <- grep(sprintf("^%s", service), lines)
   blank_line <- which.max(lines[1:client_line] == "")
   docs <- lines[(blank_line+1):(client_line-1)]
+  docs <- delete_internal_links(docs) # Avoid broken link CRAN check warnings.
   paste(docs, collapse = "\n")
 }
 
@@ -115,6 +116,16 @@ service_exists <- function(path, service) {
 add_package_name_to_links <- function(docs, package) {
   regex <- "link\\[\\=([^\\[]*)\\]"
   replacement <- sprintf("link[%s:\\1]", package)
+  docs <- gsub(regex, replacement, docs)
+  return(docs)
+}
+
+# Delete internal links, e.g.
+# [`create_members`][securityhub_create_members] -->
+# `create_members`
+delete_internal_links <- function(docs) {
+  regex <- "\\[(`[a-z_]+`)\\]\\[[a-z_]+\\]"
+  replacement <- "\\1"
   docs <- gsub(regex, replacement, docs)
   return(docs)
 }
