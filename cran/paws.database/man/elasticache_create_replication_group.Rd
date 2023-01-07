@@ -371,7 +371,7 @@ length.
 the AUTH token.
 }
 
-For more information, see AUTH password at
+For more information, see \href{https://redis.io/commands/auth/}{AUTH password} at
 http://redis.io/commands/AUTH.}
 
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to \code{true}.

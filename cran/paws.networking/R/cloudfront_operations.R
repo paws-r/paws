@@ -468,7 +468,7 @@ cloudfront_create_response_headers_policy <- function(ResponseHeadersPolicyConfi
 #' This API is deprecated
 #'
 #' @description
-#' This API is deprecated. Amazon CloudFront is deprecating real-time messaging protocol (RTMP) distributions on December 31, 2020. For more information, read the announcement on the Amazon CloudFront discussion forum.
+#' This API is deprecated. Amazon CloudFront is deprecating real-time messaging protocol (RTMP) distributions on December 31, 2020. For more information, [read the announcement](https://repost.aws/questions/QUoUZgHZh7SEWlnQUPlBmVNQ?annID=7356) on the Amazon CloudFront discussion forum.
 #'
 #' See [https://paws-r.github.io/docs/cloudfront/create_streaming_distribution.html](https://paws-r.github.io/docs/cloudfront/create_streaming_distribution.html) for full documentation.
 #'
@@ -497,7 +497,7 @@ cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig
 #' This API is deprecated
 #'
 #' @description
-#' This API is deprecated. Amazon CloudFront is deprecating real-time messaging protocol (RTMP) distributions on December 31, 2020. For more information, read the announcement on the Amazon CloudFront discussion forum.
+#' This API is deprecated. Amazon CloudFront is deprecating real-time messaging protocol (RTMP) distributions on December 31, 2020. For more information, [read the announcement](https://repost.aws/questions/QUoUZgHZh7SEWlnQUPlBmVNQ?annID=7356) on the Amazon CloudFront discussion forum.
 #'
 #' See [https://paws-r.github.io/docs/cloudfront/create_streaming_distribution_with_tags.html](https://paws-r.github.io/docs/cloudfront/create_streaming_distribution_with_tags.html) for full documentation.
 #'

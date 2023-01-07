@@ -23,7 +23,7 @@ s3control_put_storage_lens_configuration(
 You can set up to a maximum of 50 tags.}
 }
 \description{
-Puts an Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see Working with Amazon S3 Storage Lens in the \emph{Amazon S3 User Guide}.
+Puts an Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html}{Working with Amazon S3 Storage Lens} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://paws-r.github.io/docs/s3control/put_storage_lens_configuration.html} for full documentation.
 }

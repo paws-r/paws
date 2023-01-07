@@ -40,26 +40,23 @@ parameter are returned.}
 \item{HealthStatus}{The health status of the instances that you want to discover. This
 parameter is ignored for services that don't have a health check
 configured, and all instances are returned.
-\subsection{HEALTHY}{
+
+\strong{HEALTHY}
 
 Returns healthy instances.
-}
 
-\subsection{UNHEALTHY}{
+\strong{UNHEALTHY}
 
 Returns unhealthy instances.
-}
 
-\subsection{ALL}{
+\strong{ALL}
 
 Returns all instances.
-}
 
-\subsection{HEALTHY_OR_ELSE_ALL}{
+\strong{HEALTHY_OR_ELSE_ALL}
 
 Returns healthy instances, unless none are reporting a healthy state. In
-that case, return all instances. This is also called failing open.
-}}
+that case, return all instances. This is also called failing open.}
 }
 \description{
 Discovers registered instances for a specified namespace and service. You can use \code{\link[=servicediscovery_discover_instances]{discover_instances}} to discover instances for any type of namespace. For public and private DNS namespaces, you can also use DNS queries to discover instances.

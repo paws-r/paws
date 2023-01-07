@@ -35,47 +35,47 @@ work with the following objects:
 
 Notification rules, by calling the following:
 \itemize{
-\item \code{\link[=codestarnotifications_create_notification_rule]{create_notification_rule}},
+\item \code{create_notification_rule},
 which creates a notification rule for a resource in your account.
-\item \code{\link[=codestarnotifications_delete_notification_rule]{delete_notification_rule}},
+\item \code{delete_notification_rule},
 which deletes a notification rule.
-\item \code{\link[=codestarnotifications_describe_notification_rule]{describe_notification_rule}},
+\item \code{describe_notification_rule},
 which provides information about a notification rule.
-\item \code{\link[=codestarnotifications_list_notification_rules]{list_notification_rules}},
+\item \code{list_notification_rules},
 which lists the notification rules associated with your account.
-\item \code{\link[=codestarnotifications_update_notification_rule]{update_notification_rule}},
+\item \code{update_notification_rule},
 which changes the name, events, or targets associated with a
 notification rule.
-\item \code{\link[=codestarnotifications_subscribe]{subscribe}}, which subscribes a
+\item \code{subscribe}, which subscribes a
 target to a notification rule.
-\item \code{\link[=codestarnotifications_unsubscribe]{unsubscribe}}, which removes a
+\item \code{unsubscribe}, which removes a
 target from a notification rule.
 }
 
 Targets, by calling the following:
 \itemize{
-\item \code{\link[=codestarnotifications_delete_target]{delete_target}}, which
+\item \code{delete_target}, which
 removes a notification rule target (SNS topic) from a notification
 rule.
-\item \code{\link[=codestarnotifications_list_targets]{list_targets}}, which lists
+\item \code{list_targets}, which lists
 the targets associated with a notification rule.
 }
 
 Events, by calling the following:
 \itemize{
-\item \code{\link[=codestarnotifications_list_event_types]{list_event_types}}, which
+\item \code{list_event_types}, which
 lists the event types you can include in a notification rule.
 }
 
 Tags, by calling the following:
 \itemize{
-\item \code{\link[=codestarnotifications_list_tags_for_resource]{list_tags_for_resource}},
+\item \code{list_tags_for_resource},
 which lists the tags already associated with a notification rule in
 your account.
-\item \code{\link[=codestarnotifications_tag_resource]{tag_resource}}, which
+\item \code{tag_resource}, which
 associates a tag you provide with a notification rule in your
 account.
-\item \code{\link[=codestarnotifications_untag_resource]{untag_resource}}, which
+\item \code{untag_resource}, which
 removes a tag from a notification rule in your account.
 }
 
@@ -109,19 +109,19 @@ the CodeStarNotifications User Guide.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=codestarnotifications_create_notification_rule]{create_notification_rule} \tab Creates a notification rule for a resource\cr
-\link[=codestarnotifications_delete_notification_rule]{delete_notification_rule} \tab Deletes a notification rule for a resource\cr
-\link[=codestarnotifications_delete_target]{delete_target} \tab Deletes a specified target for notifications\cr
-\link[=codestarnotifications_describe_notification_rule]{describe_notification_rule} \tab Returns information about a specified notification rule\cr
-\link[=codestarnotifications_list_event_types]{list_event_types} \tab Returns information about the event types available for configuring notifications\cr
-\link[=codestarnotifications_list_notification_rules]{list_notification_rules} \tab Returns a list of the notification rules for an AWS account\cr
-\link[=codestarnotifications_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with a notification rule\cr
-\link[=codestarnotifications_list_targets]{list_targets} \tab Returns a list of the notification rule targets for an AWS account\cr
-\link[=codestarnotifications_subscribe]{subscribe} \tab Creates an association between a notification rule and an SNS topic so that the associated target can receive notifications when the events described in the rule are triggered\cr
-\link[=codestarnotifications_tag_resource]{tag_resource} \tab Associates a set of provided tags with a notification rule\cr
-\link[=codestarnotifications_unsubscribe]{unsubscribe} \tab Removes an association between a notification rule and an Amazon SNS topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered\cr
-\link[=codestarnotifications_untag_resource]{untag_resource} \tab Removes the association between one or more provided tags and a notification rule\cr
-\link[=codestarnotifications_update_notification_rule]{update_notification_rule} \tab Updates a notification rule for a resource
+\link[paws.developer.tools:codestarnotifications_create_notification_rule]{create_notification_rule} \tab Creates a notification rule for a resource\cr
+\link[paws.developer.tools:codestarnotifications_delete_notification_rule]{delete_notification_rule} \tab Deletes a notification rule for a resource\cr
+\link[paws.developer.tools:codestarnotifications_delete_target]{delete_target} \tab Deletes a specified target for notifications\cr
+\link[paws.developer.tools:codestarnotifications_describe_notification_rule]{describe_notification_rule} \tab Returns information about a specified notification rule\cr
+\link[paws.developer.tools:codestarnotifications_list_event_types]{list_event_types} \tab Returns information about the event types available for configuring notifications\cr
+\link[paws.developer.tools:codestarnotifications_list_notification_rules]{list_notification_rules} \tab Returns a list of the notification rules for an AWS account\cr
+\link[paws.developer.tools:codestarnotifications_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with a notification rule\cr
+\link[paws.developer.tools:codestarnotifications_list_targets]{list_targets} \tab Returns a list of the notification rule targets for an AWS account\cr
+\link[paws.developer.tools:codestarnotifications_subscribe]{subscribe} \tab Creates an association between a notification rule and an SNS topic so that the associated target can receive notifications when the events described in the rule are triggered\cr
+\link[paws.developer.tools:codestarnotifications_tag_resource]{tag_resource} \tab Associates a set of provided tags with a notification rule\cr
+\link[paws.developer.tools:codestarnotifications_unsubscribe]{unsubscribe} \tab Removes an association between a notification rule and an Amazon SNS topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered\cr
+\link[paws.developer.tools:codestarnotifications_untag_resource]{untag_resource} \tab Removes the association between one or more provided tags and a notification rule\cr
+\link[paws.developer.tools:codestarnotifications_update_notification_rule]{update_notification_rule} \tab Updates a notification rule for a resource
 }
 }
 

@@ -59,9 +59,9 @@ combined with historical data. For more information see \href{https://docs.aws.a
 \section{Operations}{
 
 \tabular{ll}{
-\link[=personalizeevents_put_events]{put_events} \tab Records user interaction event data\cr
-\link[=personalizeevents_put_items]{put_items} \tab Adds one or more items to an Items dataset\cr
-\link[=personalizeevents_put_users]{put_users} \tab Adds one or more users to a Users dataset
+\link[paws.machine.learning:personalizeevents_put_events]{put_events} \tab Records user interaction event data\cr
+\link[paws.machine.learning:personalizeevents_put_items]{put_items} \tab Adds one or more items to an Items dataset\cr
+\link[paws.machine.learning:personalizeevents_put_users]{put_users} \tab Adds one or more users to a Users dataset
 }
 }
 

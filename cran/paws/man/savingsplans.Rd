@@ -60,15 +60,15 @@ receive a lower price for that usage. For more information, see the \href{https:
 \section{Operations}{
 
 \tabular{ll}{
-\link[=savingsplans_create_savings_plan]{create_savings_plan} \tab Creates a Savings Plan\cr
-\link[=savingsplans_delete_queued_savings_plan]{delete_queued_savings_plan} \tab Deletes the queued purchase for the specified Savings Plan\cr
-\link[=savingsplans_describe_savings_plan_rates]{describe_savings_plan_rates} \tab Describes the specified Savings Plans rates\cr
-\link[=savingsplans_describe_savings_plans]{describe_savings_plans} \tab Describes the specified Savings Plans\cr
-\link[=savingsplans_describe_savings_plans_offering_rates]{describe_savings_plans_offering_rates} \tab Describes the specified Savings Plans offering rates\cr
-\link[=savingsplans_describe_savings_plans_offerings]{describe_savings_plans_offerings} \tab Describes the specified Savings Plans offerings\cr
-\link[=savingsplans_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
-\link[=savingsplans_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
-\link[=savingsplans_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource
+\link[paws.cost.management:savingsplans_create_savings_plan]{create_savings_plan} \tab Creates a Savings Plan\cr
+\link[paws.cost.management:savingsplans_delete_queued_savings_plan]{delete_queued_savings_plan} \tab Deletes the queued purchase for the specified Savings Plan\cr
+\link[paws.cost.management:savingsplans_describe_savings_plan_rates]{describe_savings_plan_rates} \tab Describes the specified Savings Plans rates\cr
+\link[paws.cost.management:savingsplans_describe_savings_plans]{describe_savings_plans} \tab Describes the specified Savings Plans\cr
+\link[paws.cost.management:savingsplans_describe_savings_plans_offering_rates]{describe_savings_plans_offering_rates} \tab Describes the specified Savings Plans offering rates\cr
+\link[paws.cost.management:savingsplans_describe_savings_plans_offerings]{describe_savings_plans_offerings} \tab Describes the specified Savings Plans offerings\cr
+\link[paws.cost.management:savingsplans_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
+\link[paws.cost.management:savingsplans_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
+\link[paws.cost.management:savingsplans_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource
 }
 }
 

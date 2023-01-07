@@ -70,21 +70,21 @@ tiers to provide fast analysis while reducing costs.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=timestreamwrite_create_database]{create_database} \tab Creates a new Timestream database\cr
-\link[=timestreamwrite_create_table]{create_table} \tab The CreateTable operation adds a new table to an existing database in your account\cr
-\link[=timestreamwrite_delete_database]{delete_database} \tab Deletes a given Timestream database\cr
-\link[=timestreamwrite_delete_table]{delete_table} \tab Deletes a given Timestream table\cr
-\link[=timestreamwrite_describe_database]{describe_database} \tab Returns information about the database, including the database name, time that the database was created, and the total number of tables found within the database\cr
-\link[=timestreamwrite_describe_endpoints]{describe_endpoints} \tab DescribeEndpoints returns a list of available endpoints to make Timestream API calls against\cr
-\link[=timestreamwrite_describe_table]{describe_table} \tab Returns information about the table, including the table name, database name, retention duration of the memory store and the magnetic store\cr
-\link[=timestreamwrite_list_databases]{list_databases} \tab Returns a list of your Timestream databases\cr
-\link[=timestreamwrite_list_tables]{list_tables} \tab A list of tables, along with the name, status and retention properties of each table\cr
-\link[=timestreamwrite_list_tags_for_resource]{list_tags_for_resource} \tab List all tags on a Timestream resource\cr
-\link[=timestreamwrite_tag_resource]{tag_resource} \tab Associate a set of tags with a Timestream resource\cr
-\link[=timestreamwrite_untag_resource]{untag_resource} \tab Removes the association of tags from a Timestream resource\cr
-\link[=timestreamwrite_update_database]{update_database} \tab Modifies the KMS key for an existing database\cr
-\link[=timestreamwrite_update_table]{update_table} \tab Modifies the retention duration of the memory store and magnetic store for your Timestream table\cr
-\link[=timestreamwrite_write_records]{write_records} \tab The WriteRecords operation enables you to write your time series data into Timestream
+\link[paws.database:timestreamwrite_create_database]{create_database} \tab Creates a new Timestream database\cr
+\link[paws.database:timestreamwrite_create_table]{create_table} \tab The CreateTable operation adds a new table to an existing database in your account\cr
+\link[paws.database:timestreamwrite_delete_database]{delete_database} \tab Deletes a given Timestream database\cr
+\link[paws.database:timestreamwrite_delete_table]{delete_table} \tab Deletes a given Timestream table\cr
+\link[paws.database:timestreamwrite_describe_database]{describe_database} \tab Returns information about the database, including the database name, time that the database was created, and the total number of tables found within the database\cr
+\link[paws.database:timestreamwrite_describe_endpoints]{describe_endpoints} \tab DescribeEndpoints returns a list of available endpoints to make Timestream API calls against\cr
+\link[paws.database:timestreamwrite_describe_table]{describe_table} \tab Returns information about the table, including the table name, database name, retention duration of the memory store and the magnetic store\cr
+\link[paws.database:timestreamwrite_list_databases]{list_databases} \tab Returns a list of your Timestream databases\cr
+\link[paws.database:timestreamwrite_list_tables]{list_tables} \tab A list of tables, along with the name, status and retention properties of each table\cr
+\link[paws.database:timestreamwrite_list_tags_for_resource]{list_tags_for_resource} \tab List all tags on a Timestream resource\cr
+\link[paws.database:timestreamwrite_tag_resource]{tag_resource} \tab Associate a set of tags with a Timestream resource\cr
+\link[paws.database:timestreamwrite_untag_resource]{untag_resource} \tab Removes the association of tags from a Timestream resource\cr
+\link[paws.database:timestreamwrite_update_database]{update_database} \tab Modifies the KMS key for an existing database\cr
+\link[paws.database:timestreamwrite_update_table]{update_table} \tab Modifies the retention duration of the memory store and magnetic store for your Timestream table\cr
+\link[paws.database:timestreamwrite_write_records]{write_records} \tab The WriteRecords operation enables you to write your time series data into Timestream
 }
 }
 

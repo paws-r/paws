@@ -27,7 +27,7 @@ documents associated with each topic}
 \item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Access Management
 (IAM) role that grants Amazon Comprehend read access to your input data.
 For more information, see
-\url{https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions}.}
+https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions.}
 
 \item{JobName}{The identifier of the job.}
 

@@ -18,8 +18,8 @@ NULL
 #' 
 #' After you create an app monitor, sign in to the CloudWatch RUM console
 #' to get the JavaScript code snippet to add to your web application. For
-#' more information, see How do I find a code snippet that I've already
-#' generated?
+#' more information, see [How do I find a code snippet that I've already
+#' generated?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-find-code-snippet.html)
 #'
 #' @usage
 #' cloudwatchrum_create_app_monitor(AppMonitorConfiguration, CwLogEnabled,
@@ -619,8 +619,9 @@ cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
 #' 
 #' After you update an app monitor, sign in to the CloudWatch RUM console
 #' to get the updated JavaScript code snippet to add to your web
-#' application. For more information, see How do I find a code snippet that
-#' I've already generated?
+#' application. For more information, see [How do I find a code snippet
+#' that I've already
+#' generated?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-find-code-snippet.html)
 #'
 #' @usage
 #' cloudwatchrum_update_app_monitor(AppMonitorConfiguration, CwLogEnabled,

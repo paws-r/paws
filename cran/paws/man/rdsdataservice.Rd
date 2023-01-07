@@ -64,12 +64,12 @@ in the \emph{Amazon Aurora User Guide}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=rdsdataservice_batch_execute_statement]{batch_execute_statement} \tab Runs a batch SQL statement over an array of data\cr
-\link[=rdsdataservice_begin_transaction]{begin_transaction} \tab Starts a SQL transaction\cr
-\link[=rdsdataservice_commit_transaction]{commit_transaction} \tab Ends a SQL transaction started with the BeginTransaction operation and commits the changes\cr
-\link[=rdsdataservice_execute_sql]{execute_sql} \tab Runs one or more SQL statements\cr
-\link[=rdsdataservice_execute_statement]{execute_statement} \tab Runs a SQL statement against a database\cr
-\link[=rdsdataservice_rollback_transaction]{rollback_transaction} \tab Performs a rollback of a transaction
+\link[paws.database:rdsdataservice_batch_execute_statement]{batch_execute_statement} \tab Runs a batch SQL statement over an array of data\cr
+\link[paws.database:rdsdataservice_begin_transaction]{begin_transaction} \tab Starts a SQL transaction\cr
+\link[paws.database:rdsdataservice_commit_transaction]{commit_transaction} \tab Ends a SQL transaction started with the BeginTransaction operation and commits the changes\cr
+\link[paws.database:rdsdataservice_execute_sql]{execute_sql} \tab Runs one or more SQL statements\cr
+\link[paws.database:rdsdataservice_execute_statement]{execute_statement} \tab Runs a SQL statement against a database\cr
+\link[paws.database:rdsdataservice_rollback_transaction]{rollback_transaction} \tab Performs a rollback of a transaction
 }
 }
 

@@ -69,7 +69,7 @@ capacity in a multi-tenant database.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=marketplaceentitlementservice_get_entitlements]{get_entitlements} \tab GetEntitlements retrieves entitlement values for a given product
+\link[paws.cost.management:marketplaceentitlementservice_get_entitlements]{get_entitlements} \tab GetEntitlements retrieves entitlement values for a given product
 }
 }
 

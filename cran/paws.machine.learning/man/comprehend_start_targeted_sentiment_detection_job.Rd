@@ -24,7 +24,7 @@ comprehend_start_targeted_sentiment_detection_job(
 
 \item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Access Management
 (IAM) role that grants Amazon Comprehend read access to your input data.
-For more information, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions}{Role-based permissions}.}
+For more information, see Role-based permissions.}
 
 \item{JobName}{The identifier of the job.}
 

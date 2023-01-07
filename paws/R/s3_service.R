@@ -80,6 +80,7 @@ NULL
 #'  \link[=s3_delete_object_tagging]{delete_object_tagging} \tab Removes the entire tag set from the specified object\cr
 #'  \link[=s3_delete_public_access_block]{delete_public_access_block} \tab Removes the PublicAccessBlock configuration for an Amazon S3 bucket\cr
 #'  \link[=s3_download_file]{download_file} \tab Download a file from S3 and store it at a specified file location\cr
+#'  \link[=s3_generate_presigned_url]{generate_presigned_url} \tab @title Generate a presigned url given a client, its method, and arguments\cr
 #'  \link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration} \tab This implementation of the GET action uses the accelerate subresource to return the Transfer Acceleration state of a bucket, which is either Enabled or Suspended\cr
 #'  \link[=s3_get_bucket_acl]{get_bucket_acl} \tab This implementation of the GET action uses the acl subresource to return the access control list (ACL) of a bucket\cr
 #'  \link[=s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration} \tab This implementation of the GET action returns an analytics configuration (identified by the analytics configuration ID) from the bucket\cr

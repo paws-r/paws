@@ -57,8 +57,8 @@ Amazon Personalize Runtime
 \section{Operations}{
 
 \tabular{ll}{
-\link[=personalizeruntime_get_personalized_ranking]{get_personalized_ranking} \tab Re-ranks a list of recommended items for the given user\cr
-\link[=personalizeruntime_get_recommendations]{get_recommendations} \tab Returns a list of recommended items
+\link[paws.machine.learning:personalizeruntime_get_personalized_ranking]{get_personalized_ranking} \tab Re-ranks a list of recommended items for the given user\cr
+\link[paws.machine.learning:personalizeruntime_get_recommendations]{get_recommendations} \tab Returns a list of recommended items
 }
 }
 

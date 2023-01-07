@@ -48,9 +48,9 @@ Balancers. The 2015-12-01 API supports Application Load Balancers and
 Network Load Balancers.
 
 To get started, create a load balancer with one or more listeners using
-\code{\link[=elb_create_load_balancer]{create_load_balancer}}. Register your
+\code{create_load_balancer}. Register your
 instances with the load balancer using
-\code{\link[=elb_register_instances_with_load_balancer]{register_instances_with_load_balancer}}.
+\code{register_instances_with_load_balancer}.
 
 All Elastic Load Balancing operations are \emph{idempotent}, which means that
 they complete at most one time. If you repeat an operation, it succeeds
@@ -83,35 +83,35 @@ with a 200 OK response code.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=elb_add_tags]{add_tags} \tab Adds the specified tags to the specified load balancer\cr
-\link[=elb_apply_security_groups_to_load_balancer]{apply_security_groups_to_load_balancer} \tab Associates one or more security groups with your load balancer in a virtual private cloud (VPC)\cr
-\link[=elb_attach_load_balancer_to_subnets]{attach_load_balancer_to_subnets} \tab Adds one or more subnets to the set of configured subnets for the specified load balancer\cr
-\link[=elb_configure_health_check]{configure_health_check} \tab Specifies the health check settings to use when evaluating the health state of your EC2 instances\cr
-\link[=elb_create_app_cookie_stickiness_policy]{create_app_cookie_stickiness_policy} \tab Generates a stickiness policy with sticky session lifetimes that follow that of an application-generated cookie\cr
-\link[=elb_create_lb_cookie_stickiness_policy]{create_lb_cookie_stickiness_policy} \tab Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the browser (user-agent) or a specified expiration period\cr
-\link[=elb_create_load_balancer]{create_load_balancer} \tab Creates a Classic Load Balancer\cr
-\link[=elb_create_load_balancer_listeners]{create_load_balancer_listeners} \tab Creates one or more listeners for the specified load balancer\cr
-\link[=elb_create_load_balancer_policy]{create_load_balancer_policy} \tab Creates a policy with the specified attributes for the specified load balancer\cr
-\link[=elb_delete_load_balancer]{delete_load_balancer} \tab Deletes the specified load balancer\cr
-\link[=elb_delete_load_balancer_listeners]{delete_load_balancer_listeners} \tab Deletes the specified listeners from the specified load balancer\cr
-\link[=elb_delete_load_balancer_policy]{delete_load_balancer_policy} \tab Deletes the specified policy from the specified load balancer\cr
-\link[=elb_deregister_instances_from_load_balancer]{deregister_instances_from_load_balancer} \tab Deregisters the specified instances from the specified load balancer\cr
-\link[=elb_describe_account_limits]{describe_account_limits} \tab Describes the current Elastic Load Balancing resource limits for your AWS account\cr
-\link[=elb_describe_instance_health]{describe_instance_health} \tab Describes the state of the specified instances with respect to the specified load balancer\cr
-\link[=elb_describe_load_balancer_attributes]{describe_load_balancer_attributes} \tab Describes the attributes for the specified load balancer\cr
-\link[=elb_describe_load_balancer_policies]{describe_load_balancer_policies} \tab Describes the specified policies\cr
-\link[=elb_describe_load_balancer_policy_types]{describe_load_balancer_policy_types} \tab Describes the specified load balancer policy types or all load balancer policy types\cr
-\link[=elb_describe_load_balancers]{describe_load_balancers} \tab Describes the specified the load balancers\cr
-\link[=elb_describe_tags]{describe_tags} \tab Describes the tags associated with the specified load balancers\cr
-\link[=elb_detach_load_balancer_from_subnets]{detach_load_balancer_from_subnets} \tab Removes the specified subnets from the set of configured subnets for the load balancer\cr
-\link[=elb_disable_availability_zones_for_load_balancer]{disable_availability_zones_for_load_balancer} \tab Removes the specified Availability Zones from the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC\cr
-\link[=elb_enable_availability_zones_for_load_balancer]{enable_availability_zones_for_load_balancer} \tab Adds the specified Availability Zones to the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC\cr
-\link[=elb_modify_load_balancer_attributes]{modify_load_balancer_attributes} \tab Modifies the attributes of the specified load balancer\cr
-\link[=elb_register_instances_with_load_balancer]{register_instances_with_load_balancer} \tab Adds the specified instances to the specified load balancer\cr
-\link[=elb_remove_tags]{remove_tags} \tab Removes one or more tags from the specified load balancer\cr
-\link[=elb_set_load_balancer_listener_ssl_certificate]{set_load_balancer_listener_ssl_certificate} \tab Sets the certificate that terminates the specified listener's SSL connections\cr
-\link[=elb_set_load_balancer_policies_for_backend_server]{set_load_balancer_policies_for_backend_server} \tab Replaces the set of policies associated with the specified port on which the EC2 instance is listening with a new set of policies\cr
-\link[=elb_set_load_balancer_policies_of_listener]{set_load_balancer_policies_of_listener} \tab Replaces the current set of policies for the specified load balancer port with the specified set of policies
+\link[paws.networking:elb_add_tags]{add_tags} \tab Adds the specified tags to the specified load balancer\cr
+\link[paws.networking:elb_apply_security_groups_to_load_balancer]{apply_security_groups_to_load_balancer} \tab Associates one or more security groups with your load balancer in a virtual private cloud (VPC)\cr
+\link[paws.networking:elb_attach_load_balancer_to_subnets]{attach_load_balancer_to_subnets} \tab Adds one or more subnets to the set of configured subnets for the specified load balancer\cr
+\link[paws.networking:elb_configure_health_check]{configure_health_check} \tab Specifies the health check settings to use when evaluating the health state of your EC2 instances\cr
+\link[paws.networking:elb_create_app_cookie_stickiness_policy]{create_app_cookie_stickiness_policy} \tab Generates a stickiness policy with sticky session lifetimes that follow that of an application-generated cookie\cr
+\link[paws.networking:elb_create_lb_cookie_stickiness_policy]{create_lb_cookie_stickiness_policy} \tab Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the browser (user-agent) or a specified expiration period\cr
+\link[paws.networking:elb_create_load_balancer]{create_load_balancer} \tab Creates a Classic Load Balancer\cr
+\link[paws.networking:elb_create_load_balancer_listeners]{create_load_balancer_listeners} \tab Creates one or more listeners for the specified load balancer\cr
+\link[paws.networking:elb_create_load_balancer_policy]{create_load_balancer_policy} \tab Creates a policy with the specified attributes for the specified load balancer\cr
+\link[paws.networking:elb_delete_load_balancer]{delete_load_balancer} \tab Deletes the specified load balancer\cr
+\link[paws.networking:elb_delete_load_balancer_listeners]{delete_load_balancer_listeners} \tab Deletes the specified listeners from the specified load balancer\cr
+\link[paws.networking:elb_delete_load_balancer_policy]{delete_load_balancer_policy} \tab Deletes the specified policy from the specified load balancer\cr
+\link[paws.networking:elb_deregister_instances_from_load_balancer]{deregister_instances_from_load_balancer} \tab Deregisters the specified instances from the specified load balancer\cr
+\link[paws.networking:elb_describe_account_limits]{describe_account_limits} \tab Describes the current Elastic Load Balancing resource limits for your AWS account\cr
+\link[paws.networking:elb_describe_instance_health]{describe_instance_health} \tab Describes the state of the specified instances with respect to the specified load balancer\cr
+\link[paws.networking:elb_describe_load_balancer_attributes]{describe_load_balancer_attributes} \tab Describes the attributes for the specified load balancer\cr
+\link[paws.networking:elb_describe_load_balancer_policies]{describe_load_balancer_policies} \tab Describes the specified policies\cr
+\link[paws.networking:elb_describe_load_balancer_policy_types]{describe_load_balancer_policy_types} \tab Describes the specified load balancer policy types or all load balancer policy types\cr
+\link[paws.networking:elb_describe_load_balancers]{describe_load_balancers} \tab Describes the specified the load balancers\cr
+\link[paws.networking:elb_describe_tags]{describe_tags} \tab Describes the tags associated with the specified load balancers\cr
+\link[paws.networking:elb_detach_load_balancer_from_subnets]{detach_load_balancer_from_subnets} \tab Removes the specified subnets from the set of configured subnets for the load balancer\cr
+\link[paws.networking:elb_disable_availability_zones_for_load_balancer]{disable_availability_zones_for_load_balancer} \tab Removes the specified Availability Zones from the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC\cr
+\link[paws.networking:elb_enable_availability_zones_for_load_balancer]{enable_availability_zones_for_load_balancer} \tab Adds the specified Availability Zones to the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC\cr
+\link[paws.networking:elb_modify_load_balancer_attributes]{modify_load_balancer_attributes} \tab Modifies the attributes of the specified load balancer\cr
+\link[paws.networking:elb_register_instances_with_load_balancer]{register_instances_with_load_balancer} \tab Adds the specified instances to the specified load balancer\cr
+\link[paws.networking:elb_remove_tags]{remove_tags} \tab Removes one or more tags from the specified load balancer\cr
+\link[paws.networking:elb_set_load_balancer_listener_ssl_certificate]{set_load_balancer_listener_ssl_certificate} \tab Sets the certificate that terminates the specified listener's SSL connections\cr
+\link[paws.networking:elb_set_load_balancer_policies_for_backend_server]{set_load_balancer_policies_for_backend_server} \tab Replaces the set of policies associated with the specified port on which the EC2 instance is listening with a new set of policies\cr
+\link[paws.networking:elb_set_load_balancer_policies_of_listener]{set_load_balancer_policies_of_listener} \tab Replaces the current set of policies for the specified load balancer port with the specified set of policies
 }
 }
 

@@ -27,7 +27,7 @@ training job produced a model artifact.
 }}
 }
 \description{
-Creates an \emph{association} between the source and the destination. A source can be associated with multiple destinations, and a destination can be associated with multiple sources. An association is a lineage tracking entity. For more information, see Amazon SageMaker ML Lineage Tracking.
+Creates an \emph{association} between the source and the destination. A source can be associated with multiple destinations, and a destination can be associated with multiple sources. An association is a lineage tracking entity. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html}{Amazon SageMaker ML Lineage Tracking}.
 
 See \url{https://paws-r.github.io/docs/sagemaker/add_association.html} for full documentation.
 }

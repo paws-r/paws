@@ -1,0 +1,76 @@
+Package: paws.management.p1
+Title: 'Amazon Web Services' Management & Governance Services
+Version: 0.1.12
+Authors@R: c(
+    person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
+    person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
+    person("Dyfan", "Jones", , "dyfan.r.jones@gmail.com", role = "cre"),
+    person("Amazon.com, Inc.", role = "cph")
+  )
+Description: This is the backend package for 'paws.management'. Please use
+    'paws.management' to access 'Amazon Web Services' management services.
+License: Apache License (>= 2.0)
+URL: https://github.com/paws-r/paws
+BugReports: https://github.com/paws-r/paws/issues
+Imports: 
+    paws.common (>= 0.3.0)
+Suggests: 
+    testthat
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
+RoxygenNote: 7.2.2
+Collate: 
+    'applicationautoscaling_service.R'
+    'applicationautoscaling_interfaces.R'
+    'applicationautoscaling_operations.R'
+    'applicationcostprofiler_service.R'
+    'applicationcostprofiler_interfaces.R'
+    'applicationcostprofiler_operations.R'
+    'applicationinsights_service.R'
+    'applicationinsights_interfaces.R'
+    'applicationinsights_operations.R'
+    'auditmanager_service.R'
+    'auditmanager_interfaces.R'
+    'auditmanager_operations.R'
+    'autoscaling_service.R'
+    'autoscaling_interfaces.R'
+    'autoscaling_operations.R'
+    'autoscalingplans_service.R'
+    'autoscalingplans_interfaces.R'
+    'autoscalingplans_operations.R'
+    'cloudformation_service.R'
+    'cloudformation_interfaces.R'
+    'cloudformation_operations.R'
+    'cloudtrail_service.R'
+    'cloudtrail_interfaces.R'
+    'cloudtrail_operations.R'
+    'cloudwatchevents_service.R'
+    'cloudwatchevents_interfaces.R'
+    'cloudwatchevents_operations.R'
+    'cloudwatchevidently_service.R'
+    'cloudwatchevidently_interfaces.R'
+    'cloudwatchevidently_operations.R'
+    'cloudwatchlogs_service.R'
+    'cloudwatchlogs_interfaces.R'
+    'cloudwatchlogs_operations.R'
+    'configservice_service.R'
+    'configservice_interfaces.R'
+    'configservice_operations.R'
+    'finspace_service.R'
+    'finspace_interfaces.R'
+    'finspace_operations.R'
+    'health_service.R'
+    'health_interfaces.R'
+    'health_operations.R'
+    'licensemanager_service.R'
+    'licensemanager_interfaces.R'
+    'licensemanager_operations.R'
+    'licensemanagerusersubscriptions_service.R'
+    'licensemanagerusersubscriptions_interfaces.R'
+    'licensemanagerusersubscriptions_operations.R'
+    'managedgrafana_service.R'
+    'managedgrafana_interfaces.R'
+    'managedgrafana_operations.R'
+    'prometheusservice_service.R'
+    'prometheusservice_interfaces.R'
+    'prometheusservice_operations.R'

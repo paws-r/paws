@@ -36,8 +36,9 @@ request.}
 \item{MaxResults}{(Optional) The maximum number of query logging configurations that you
 want Amazon Route 53 to return in response to the current request. If
 the current Amazon Web Services account has more than \code{MaxResults}
-configurations, use the value of NextToken in the response to get the
-next page of results.
+configurations, use the value of
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListQueryLoggingConfigs.html#API_ListQueryLoggingConfigs_RequestSyntax}{NextToken}
+in the response to get the next page of results.
 
 If you don't specify a value for \code{MaxResults}, Route 53 returns up to
 100 configurations.}

@@ -65,12 +65,12 @@ For more information about using this service, see the \href{https://docs.aws.am
 \section{Operations}{
 
 \tabular{ll}{
-\link[=applicationcostprofiler_delete_report_definition]{delete_report_definition} \tab Deletes the specified report definition in AWS Application Cost Profiler\cr
-\link[=applicationcostprofiler_get_report_definition]{get_report_definition} \tab Retrieves the definition of a report already configured in AWS Application Cost Profiler\cr
-\link[=applicationcostprofiler_import_application_usage]{import_application_usage} \tab Ingests application usage data from Amazon Simple Storage Service (Amazon S3)\cr
-\link[=applicationcostprofiler_list_report_definitions]{list_report_definitions} \tab Retrieves a list of all reports and their configurations for your AWS account\cr
-\link[=applicationcostprofiler_put_report_definition]{put_report_definition} \tab Creates the report definition for a report in Application Cost Profiler\cr
-\link[=applicationcostprofiler_update_report_definition]{update_report_definition} \tab Updates existing report in AWS Application Cost Profiler
+\link[paws.management.p1:applicationcostprofiler_delete_report_definition]{delete_report_definition} \tab Deletes the specified report definition in AWS Application Cost Profiler\cr
+\link[paws.management.p1:applicationcostprofiler_get_report_definition]{get_report_definition} \tab Retrieves the definition of a report already configured in AWS Application Cost Profiler\cr
+\link[paws.management.p1:applicationcostprofiler_import_application_usage]{import_application_usage} \tab Ingests application usage data from Amazon Simple Storage Service (Amazon S3)\cr
+\link[paws.management.p1:applicationcostprofiler_list_report_definitions]{list_report_definitions} \tab Retrieves a list of all reports and their configurations for your AWS account\cr
+\link[paws.management.p1:applicationcostprofiler_put_report_definition]{put_report_definition} \tab Creates the report definition for a report in Application Cost Profiler\cr
+\link[paws.management.p1:applicationcostprofiler_update_report_definition]{update_report_definition} \tab Updates existing report in AWS Application Cost Profiler
 }
 }
 

@@ -1,6 +1,6 @@
 Package: paws.compute
 Title: 'Amazon Web Services' Compute Services
-Version: 0.1.14
+Version: 0.1.12
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -15,64 +15,10 @@ License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
-    paws.common (>= 0.3.0)
+    paws.compute.p1 (>= 0.1.12),
+    paws.compute.p2 (>= 0.1.12)
 Suggests: 
     testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.2.1
-Collate: 
-    'apprunner_service.R'
-    'apprunner_interfaces.R'
-    'apprunner_operations.R'
-    'batch_service.R'
-    'batch_interfaces.R'
-    'batch_operations.R'
-    'braket_service.R'
-    'braket_interfaces.R'
-    'braket_operations.R'
-    'computeoptimizer_service.R'
-    'computeoptimizer_interfaces.R'
-    'computeoptimizer_operations.R'
-    'ec2_service.R'
-    'ec2_interfaces.R'
-    'ec2_operations.R'
-    'ec2instanceconnect_service.R'
-    'ec2instanceconnect_interfaces.R'
-    'ec2instanceconnect_operations.R'
-    'ecr_service.R'
-    'ecr_interfaces.R'
-    'ecr_operations.R'
-    'ecrpublic_service.R'
-    'ecrpublic_interfaces.R'
-    'ecrpublic_operations.R'
-    'ecs_service.R'
-    'ecs_interfaces.R'
-    'ecs_operations.R'
-    'eks_service.R'
-    'eks_interfaces.R'
-    'eks_operations.R'
-    'elasticbeanstalk_service.R'
-    'elasticbeanstalk_interfaces.R'
-    'elasticbeanstalk_operations.R'
-    'emrcontainers_service.R'
-    'emrcontainers_interfaces.R'
-    'emrcontainers_operations.R'
-    'emrserverless_service.R'
-    'emrserverless_interfaces.R'
-    'emrserverless_operations.R'
-    'imagebuilder_service.R'
-    'imagebuilder_interfaces.R'
-    'imagebuilder_operations.R'
-    'lambda_service.R'
-    'lambda_interfaces.R'
-    'lambda_operations.R'
-    'lightsail_service.R'
-    'lightsail_interfaces.R'
-    'lightsail_operations.R'
-    'proton_service.R'
-    'proton_interfaces.R'
-    'proton_operations.R'
-    'serverlessapplicationrepository_service.R'
-    'serverlessapplicationrepository_interfaces.R'
-    'serverlessapplicationrepository_operations.R'
+RoxygenNote: 7.2.2

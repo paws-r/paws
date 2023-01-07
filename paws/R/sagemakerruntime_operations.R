@@ -12,7 +12,8 @@ NULL
 #' services, your client applications use this API to get inferences from
 #' the model hosted at the specified endpoint.
 #' 
-#' For an overview of Amazon SageMaker, see How It Works.
+#' For an overview of Amazon SageMaker, see [How It
+#' Works](https://docs.aws.amazon.com/sagemaker/latest/dg/).
 #' 
 #' Amazon SageMaker strips all POST headers except those supported by the
 #' API. Amazon SageMaker might add additional headers. You should not rely
@@ -42,13 +43,15 @@ NULL
 #'   TargetContainerHostname, InferenceId)
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint that you specified when you created the
-#' endpoint using the CreateEndpoint API.
+#' endpoint using the
+#' [CreateEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html)
+#' API.
 #' @param Body &#91;required&#93; Provides input data, in the format specified in the `ContentType`
 #' request header. Amazon SageMaker passes all of the data in the body to
 #' the model.
 #' 
-#' For information about the format of the request body, see Common Data
-#' Formats-Inference.
+#' For information about the format of the request body, see [Common Data
+#' Formats-Inference](https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html).
 #' @param ContentType The MIME type of the input data in the request body.
 #' @param Accept The desired MIME type of the inference in the response.
 #' @param CustomAttributes Provides additional information about a request for an inference
@@ -57,8 +60,9 @@ NULL
 #' this value, for example, to provide an ID that you can use to track a
 #' request or to provide other metadata that a service endpoint was
 #' programmed to process. The value must consist of no more than 1024
-#' visible US-ASCII characters as specified in Section 3.3.6. Field Value
-#' Components of the Hypertext Transfer Protocol (HTTP/1.1).
+#' visible US-ASCII characters as specified in [Section 3.3.6. Field Value
+#' Components](https://www.rfc-editor.org/rfc/rfc7230#section-3.2.6) of the
+#' Hypertext Transfer Protocol (HTTP/1.1).
 #' 
 #' The code in your model is responsible for setting or updating any custom
 #' attributes in the response. If your code does not set this value in the
@@ -75,13 +79,15 @@ NULL
 #' to distribute the invocation traffic based on the variant weights.
 #' 
 #' For information about how to use variant targeting to perform a/b
-#' testing, see Test models in production
+#' testing, see [Test models in
+#' production](https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html)
 #' @param TargetContainerHostname If the endpoint hosts multiple containers and is configured to use
 #' direct invocation, this parameter specifies the host name of the
 #' container to invoke.
 #' @param InferenceId If you provide a value, it is added to the captured data when you enable
 #' data capture on the endpoint. For information about data capture, see
-#' Capture Data.
+#' [Capture
+#' Data](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -160,7 +166,9 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
 #'   Accept, CustomAttributes, InferenceId, InputLocation, RequestTTLSeconds)
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint that you specified when you created the
-#' endpoint using the `CreateEndpoint` API.
+#' endpoint using the
+#' [`CreateEndpoint`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html)
+#' API.
 #' @param ContentType The MIME type of the input data in the request body.
 #' @param Accept The desired MIME type of the inference in the response.
 #' @param CustomAttributes Provides additional information about a request for an inference
@@ -169,8 +177,9 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
 #' this value, for example, to provide an ID that you can use to track a
 #' request or to provide other metadata that a service endpoint was
 #' programmed to process. The value must consist of no more than 1024
-#' visible US-ASCII characters as specified in Section 3.3.6. Field Value
-#' Components of the Hypertext Transfer Protocol (HTTP/1.1).
+#' visible US-ASCII characters as specified in [Section 3.3.6. Field Value
+#' Components](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2.6)
+#' of the Hypertext Transfer Protocol (HTTP/1.1).
 #' 
 #' The code in your model is responsible for setting or updating any custom
 #' attributes in the response. If your code does not set this value in the

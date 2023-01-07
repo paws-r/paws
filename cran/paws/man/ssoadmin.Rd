@@ -57,43 +57,43 @@ AWS Single Sign-On Admin
 \section{Operations}{
 
 \tabular{ll}{
-\link[=ssoadmin_attach_customer_managed_policy_reference_to_permission_set]{attach_customer_managed_policy_reference_to_permission_set} \tab Attaches the specified customer managed policy to the specified PermissionSet\cr
-\link[=ssoadmin_attach_managed_policy_to_permission_set]{attach_managed_policy_to_permission_set} \tab Attaches an Amazon Web Services managed policy ARN to a permission set\cr
-\link[=ssoadmin_create_account_assignment]{create_account_assignment} \tab Assigns access to a principal for a specified Amazon Web Services account using a specified permission set\cr
-\link[=ssoadmin_create_instance_access_control_attribute_configuration]{create_instance_access_control_attribute_configuration} \tab Enables the attributes-based access control (ABAC) feature for the specified Amazon Web Services SSO instance\cr
-\link[=ssoadmin_create_permission_set]{create_permission_set} \tab Creates a permission set within a specified Amazon Web Services SSO instance\cr
-\link[=ssoadmin_delete_account_assignment]{delete_account_assignment} \tab Deletes a principal's access from a specified Amazon Web Services account using a specified permission set\cr
-\link[=ssoadmin_delete_inline_policy_from_permission_set]{delete_inline_policy_from_permission_set} \tab Deletes the inline policy from a specified permission set\cr
-\link[=ssoadmin_delete_instance_access_control_attribute_configuration]{delete_instance_access_control_attribute_configuration} \tab Disables the attributes-based access control (ABAC) feature for the specified Amazon Web Services SSO instance and deletes all of the attribute mappings that have been configured\cr
-\link[=ssoadmin_delete_permissions_boundary_from_permission_set]{delete_permissions_boundary_from_permission_set} \tab Deletes the permissions boundary from a specified PermissionSet\cr
-\link[=ssoadmin_delete_permission_set]{delete_permission_set} \tab Deletes the specified permission set\cr
-\link[=ssoadmin_describe_account_assignment_creation_status]{describe_account_assignment_creation_status} \tab Describes the status of the assignment creation request\cr
-\link[=ssoadmin_describe_account_assignment_deletion_status]{describe_account_assignment_deletion_status} \tab Describes the status of the assignment deletion request\cr
-\link[=ssoadmin_describe_instance_access_control_attribute_configuration]{describe_instance_access_control_attribute_configuration} \tab Returns the list of Amazon Web Services SSO identity store attributes that have been configured to work with attributes-based access control (ABAC) for the specified Amazon Web Services SSO instance\cr
-\link[=ssoadmin_describe_permission_set]{describe_permission_set} \tab Gets the details of the permission set\cr
-\link[=ssoadmin_describe_permission_set_provisioning_status]{describe_permission_set_provisioning_status} \tab Describes the status for the given permission set provisioning request\cr
-\link[=ssoadmin_detach_customer_managed_policy_reference_from_permission_set]{detach_customer_managed_policy_reference_from_permission_set} \tab Detaches the specified customer managed policy from the specified PermissionSet\cr
-\link[=ssoadmin_detach_managed_policy_from_permission_set]{detach_managed_policy_from_permission_set} \tab Detaches the attached Amazon Web Services managed policy ARN from the specified permission set\cr
-\link[=ssoadmin_get_inline_policy_for_permission_set]{get_inline_policy_for_permission_set} \tab Obtains the inline policy assigned to the permission set\cr
-\link[=ssoadmin_get_permissions_boundary_for_permission_set]{get_permissions_boundary_for_permission_set} \tab Obtains the permissions boundary for a specified PermissionSet\cr
-\link[=ssoadmin_list_account_assignment_creation_status]{list_account_assignment_creation_status} \tab Lists the status of the Amazon Web Services account assignment creation requests for a specified Amazon Web Services SSO instance\cr
-\link[=ssoadmin_list_account_assignment_deletion_status]{list_account_assignment_deletion_status} \tab Lists the status of the Amazon Web Services account assignment deletion requests for a specified Amazon Web Services SSO instance\cr
-\link[=ssoadmin_list_account_assignments]{list_account_assignments} \tab Lists the assignee of the specified Amazon Web Services account with the specified permission set\cr
-\link[=ssoadmin_list_accounts_for_provisioned_permission_set]{list_accounts_for_provisioned_permission_set} \tab Lists all the Amazon Web Services accounts where the specified permission set is provisioned\cr
-\link[=ssoadmin_list_customer_managed_policy_references_in_permission_set]{list_customer_managed_policy_references_in_permission_set} \tab Lists all customer managed policies attached to a specified PermissionSet\cr
-\link[=ssoadmin_list_instances]{list_instances} \tab Lists the Amazon Web Services SSO instances that the caller has access to\cr
-\link[=ssoadmin_list_managed_policies_in_permission_set]{list_managed_policies_in_permission_set} \tab Lists the Amazon Web Services managed policy that is attached to a specified permission set\cr
-\link[=ssoadmin_list_permission_set_provisioning_status]{list_permission_set_provisioning_status} \tab Lists the status of the permission set provisioning requests for a specified Amazon Web Services SSO instance\cr
-\link[=ssoadmin_list_permission_sets]{list_permission_sets} \tab Lists the PermissionSets in an Amazon Web Services SSO instance\cr
-\link[=ssoadmin_list_permission_sets_provisioned_to_account]{list_permission_sets_provisioned_to_account} \tab Lists all the permission sets that are provisioned to a specified Amazon Web Services account\cr
-\link[=ssoadmin_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are attached to a specified resource\cr
-\link[=ssoadmin_provision_permission_set]{provision_permission_set} \tab The process by which a specified permission set is provisioned to the specified target\cr
-\link[=ssoadmin_put_inline_policy_to_permission_set]{put_inline_policy_to_permission_set} \tab Attaches an inline policy to a permission set\cr
-\link[=ssoadmin_put_permissions_boundary_to_permission_set]{put_permissions_boundary_to_permission_set} \tab Attaches an Amazon Web Services managed or customer managed policy to the specified PermissionSet as a permissions boundary\cr
-\link[=ssoadmin_tag_resource]{tag_resource} \tab Associates a set of tags with a specified resource\cr
-\link[=ssoadmin_untag_resource]{untag_resource} \tab Disassociates a set of tags from a specified resource\cr
-\link[=ssoadmin_update_instance_access_control_attribute_configuration]{update_instance_access_control_attribute_configuration} \tab Updates the Amazon Web Services SSO identity store attributes that you can use with the Amazon Web Services SSO instance for attributes-based access control (ABAC)\cr
-\link[=ssoadmin_update_permission_set]{update_permission_set} \tab Updates an existing permission set
+\link[paws.security.identity.p2:ssoadmin_attach_customer_managed_policy_reference_to_permission_set]{attach_customer_managed_policy_reference_to_permission_set} \tab Attaches the specified customer managed policy to the specified PermissionSet\cr
+\link[paws.security.identity.p2:ssoadmin_attach_managed_policy_to_permission_set]{attach_managed_policy_to_permission_set} \tab Attaches an Amazon Web Services managed policy ARN to a permission set\cr
+\link[paws.security.identity.p2:ssoadmin_create_account_assignment]{create_account_assignment} \tab Assigns access to a principal for a specified Amazon Web Services account using a specified permission set\cr
+\link[paws.security.identity.p2:ssoadmin_create_instance_access_control_attribute_configuration]{create_instance_access_control_attribute_configuration} \tab Enables the attributes-based access control (ABAC) feature for the specified Amazon Web Services SSO instance\cr
+\link[paws.security.identity.p2:ssoadmin_create_permission_set]{create_permission_set} \tab Creates a permission set within a specified Amazon Web Services SSO instance\cr
+\link[paws.security.identity.p2:ssoadmin_delete_account_assignment]{delete_account_assignment} \tab Deletes a principal's access from a specified Amazon Web Services account using a specified permission set\cr
+\link[paws.security.identity.p2:ssoadmin_delete_inline_policy_from_permission_set]{delete_inline_policy_from_permission_set} \tab Deletes the inline policy from a specified permission set\cr
+\link[paws.security.identity.p2:ssoadmin_delete_instance_access_control_attribute_configuration]{delete_instance_access_control_attribute_configuration} \tab Disables the attributes-based access control (ABAC) feature for the specified Amazon Web Services SSO instance and deletes all of the attribute mappings that have been configured\cr
+\link[paws.security.identity.p2:ssoadmin_delete_permissions_boundary_from_permission_set]{delete_permissions_boundary_from_permission_set} \tab Deletes the permissions boundary from a specified PermissionSet\cr
+\link[paws.security.identity.p2:ssoadmin_delete_permission_set]{delete_permission_set} \tab Deletes the specified permission set\cr
+\link[paws.security.identity.p2:ssoadmin_describe_account_assignment_creation_status]{describe_account_assignment_creation_status} \tab Describes the status of the assignment creation request\cr
+\link[paws.security.identity.p2:ssoadmin_describe_account_assignment_deletion_status]{describe_account_assignment_deletion_status} \tab Describes the status of the assignment deletion request\cr
+\link[paws.security.identity.p2:ssoadmin_describe_instance_access_control_attribute_configuration]{describe_instance_access_control_attribute_configuration} \tab Returns the list of Amazon Web Services SSO identity store attributes that have been configured to work with attributes-based access control (ABAC) for the specified Amazon Web Services SSO instance\cr
+\link[paws.security.identity.p2:ssoadmin_describe_permission_set]{describe_permission_set} \tab Gets the details of the permission set\cr
+\link[paws.security.identity.p2:ssoadmin_describe_permission_set_provisioning_status]{describe_permission_set_provisioning_status} \tab Describes the status for the given permission set provisioning request\cr
+\link[paws.security.identity.p2:ssoadmin_detach_customer_managed_policy_reference_from_permission_set]{detach_customer_managed_policy_reference_from_permission_set} \tab Detaches the specified customer managed policy from the specified PermissionSet\cr
+\link[paws.security.identity.p2:ssoadmin_detach_managed_policy_from_permission_set]{detach_managed_policy_from_permission_set} \tab Detaches the attached Amazon Web Services managed policy ARN from the specified permission set\cr
+\link[paws.security.identity.p2:ssoadmin_get_inline_policy_for_permission_set]{get_inline_policy_for_permission_set} \tab Obtains the inline policy assigned to the permission set\cr
+\link[paws.security.identity.p2:ssoadmin_get_permissions_boundary_for_permission_set]{get_permissions_boundary_for_permission_set} \tab Obtains the permissions boundary for a specified PermissionSet\cr
+\link[paws.security.identity.p2:ssoadmin_list_account_assignment_creation_status]{list_account_assignment_creation_status} \tab Lists the status of the Amazon Web Services account assignment creation requests for a specified Amazon Web Services SSO instance\cr
+\link[paws.security.identity.p2:ssoadmin_list_account_assignment_deletion_status]{list_account_assignment_deletion_status} \tab Lists the status of the Amazon Web Services account assignment deletion requests for a specified Amazon Web Services SSO instance\cr
+\link[paws.security.identity.p2:ssoadmin_list_account_assignments]{list_account_assignments} \tab Lists the assignee of the specified Amazon Web Services account with the specified permission set\cr
+\link[paws.security.identity.p2:ssoadmin_list_accounts_for_provisioned_permission_set]{list_accounts_for_provisioned_permission_set} \tab Lists all the Amazon Web Services accounts where the specified permission set is provisioned\cr
+\link[paws.security.identity.p2:ssoadmin_list_customer_managed_policy_references_in_permission_set]{list_customer_managed_policy_references_in_permission_set} \tab Lists all customer managed policies attached to a specified PermissionSet\cr
+\link[paws.security.identity.p2:ssoadmin_list_instances]{list_instances} \tab Lists the Amazon Web Services SSO instances that the caller has access to\cr
+\link[paws.security.identity.p2:ssoadmin_list_managed_policies_in_permission_set]{list_managed_policies_in_permission_set} \tab Lists the Amazon Web Services managed policy that is attached to a specified permission set\cr
+\link[paws.security.identity.p2:ssoadmin_list_permission_set_provisioning_status]{list_permission_set_provisioning_status} \tab Lists the status of the permission set provisioning requests for a specified Amazon Web Services SSO instance\cr
+\link[paws.security.identity.p2:ssoadmin_list_permission_sets]{list_permission_sets} \tab Lists the PermissionSets in an Amazon Web Services SSO instance\cr
+\link[paws.security.identity.p2:ssoadmin_list_permission_sets_provisioned_to_account]{list_permission_sets_provisioned_to_account} \tab Lists all the permission sets that are provisioned to a specified Amazon Web Services account\cr
+\link[paws.security.identity.p2:ssoadmin_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are attached to a specified resource\cr
+\link[paws.security.identity.p2:ssoadmin_provision_permission_set]{provision_permission_set} \tab The process by which a specified permission set is provisioned to the specified target\cr
+\link[paws.security.identity.p2:ssoadmin_put_inline_policy_to_permission_set]{put_inline_policy_to_permission_set} \tab Attaches an inline policy to a permission set\cr
+\link[paws.security.identity.p2:ssoadmin_put_permissions_boundary_to_permission_set]{put_permissions_boundary_to_permission_set} \tab Attaches an Amazon Web Services managed or customer managed policy to the specified PermissionSet as a permissions boundary\cr
+\link[paws.security.identity.p2:ssoadmin_tag_resource]{tag_resource} \tab Associates a set of tags with a specified resource\cr
+\link[paws.security.identity.p2:ssoadmin_untag_resource]{untag_resource} \tab Disassociates a set of tags from a specified resource\cr
+\link[paws.security.identity.p2:ssoadmin_update_instance_access_control_attribute_configuration]{update_instance_access_control_attribute_configuration} \tab Updates the Amazon Web Services SSO identity store attributes that you can use with the Amazon Web Services SSO instance for attributes-based access control (ABAC)\cr
+\link[paws.security.identity.p2:ssoadmin_update_permission_set]{update_permission_set} \tab Updates an existing permission set
 }
 }
 

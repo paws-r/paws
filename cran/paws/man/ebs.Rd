@@ -82,12 +82,12 @@ in the \emph{Amazon Web Services General Reference}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=ebs_complete_snapshot]{complete_snapshot} \tab Seals and completes the snapshot after all of the required blocks of data have been written to it\cr
-\link[=ebs_get_snapshot_block]{get_snapshot_block} \tab Returns the data in a block in an Amazon Elastic Block Store snapshot\cr
-\link[=ebs_list_changed_blocks]{list_changed_blocks} \tab Returns information about the blocks that are different between two Amazon Elastic Block Store snapshots of the same volume/snapshot lineage\cr
-\link[=ebs_list_snapshot_blocks]{list_snapshot_blocks} \tab Returns information about the blocks in an Amazon Elastic Block Store snapshot\cr
-\link[=ebs_put_snapshot_block]{put_snapshot_block} \tab Writes a block of data to a snapshot\cr
-\link[=ebs_start_snapshot]{start_snapshot} \tab Creates a new Amazon EBS snapshot
+\link[paws.storage:ebs_complete_snapshot]{complete_snapshot} \tab Seals and completes the snapshot after all of the required blocks of data have been written to it\cr
+\link[paws.storage:ebs_get_snapshot_block]{get_snapshot_block} \tab Returns the data in a block in an Amazon Elastic Block Store snapshot\cr
+\link[paws.storage:ebs_list_changed_blocks]{list_changed_blocks} \tab Returns information about the blocks that are different between two Amazon Elastic Block Store snapshots of the same volume/snapshot lineage\cr
+\link[paws.storage:ebs_list_snapshot_blocks]{list_snapshot_blocks} \tab Returns information about the blocks in an Amazon Elastic Block Store snapshot\cr
+\link[paws.storage:ebs_put_snapshot_block]{put_snapshot_block} \tab Writes a block of data to a snapshot\cr
+\link[paws.storage:ebs_start_snapshot]{start_snapshot} \tab Creates a new Amazon EBS snapshot
 }
 }
 

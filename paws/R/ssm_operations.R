@@ -9858,7 +9858,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' @param Overwrite Overwrite an existing parameter. The default value is `false`.
 #' @param AllowedPattern A regular expression used to validate the parameter value. For example,
 #' for String types with values restricted to numbers, you can specify the
-#' following: AllowedPattern=^\d+$
+#' following: AllowedPattern=^\\d+$
 #' @param Tags Optional metadata that you assign to a resource. Tags enable you to
 #' categorize a resource in different ways, such as by purpose, owner, or
 #' environment. For example, you might want to tag a Systems Manager
@@ -11074,7 +11074,7 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' and multiple Amazon Web Services accounts. For more information, see
 #' [Running Automation workflows in multiple Amazon Web Services Regions
 #' and Amazon Web Services
-#' accounts](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html)
+#' accounts](https://docs.aws.amazon.com/systems-manager/latest/userguide/running-automations-multiple-accounts-regions.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param Tags Optional metadata that you assign to a resource. You can specify a
 #' maximum of five tags for an automation. Tags enable you to categorize a

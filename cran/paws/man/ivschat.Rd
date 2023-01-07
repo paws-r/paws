@@ -70,7 +70,7 @@ to have permissions for Amazon IVS Chat API requests.
 }
 
 Users (viewers) connect to a room using secure access tokens that you
-create using the \code{\link[=ivschat_create_chat_token]{create_chat_token}}
+create using the \code{create_chat_token}
 endpoint through the AWS SDK. You call CreateChatToken for every user’s
 chat session, passing identity and authorization information about the
 user.
@@ -98,19 +98,19 @@ on the Security page of the \emph{Amazon IVS User Guide}.
 
 \strong{Messaging Endpoints}
 \itemize{
-\item \code{\link[=ivschat_delete_message]{delete_message}} — Sends an event to a
+\item \code{delete_message} — Sends an event to a
 specific room which directs clients to delete a specific message;
 that is, unrender it from view and delete it from the client’s chat
 history. This event’s \code{EventName} is \code{aws:DELETE_MESSAGE}. This
 replicates the
 \href{https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-deletemessage-publish.html}{DeleteMessage}
 WebSocket operation in the Amazon IVS Chat Messaging API.
-\item \code{\link[=ivschat_disconnect_user]{disconnect_user}} — Disconnects all
+\item \code{disconnect_user} — Disconnects all
 connections using a specified user ID from a room. This replicates
 the
 \href{https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-disconnectuser-publish.html}{DisconnectUser}
 WebSocket operation in the Amazon IVS Chat Messaging API.
-\item \code{\link[=ivschat_send_event]{send_event}} — Sends an event to a room. Use
+\item \code{send_event} — Sends an event to a room. Use
 this within your application’s business logic to send events to
 clients of a room; e.g., to notify clients to change the way the
 chat UI is rendered.
@@ -118,7 +118,7 @@ chat UI is rendered.
 
 \strong{Chat Token Endpoint}
 \itemize{
-\item \code{\link[=ivschat_create_chat_token]{create_chat_token}} — Creates an
+\item \code{create_chat_token} — Creates an
 encrypted token that is used to establish an individual WebSocket
 connection to a room. The token is valid for one minute, and a
 connection (session) established with the token is valid for the
@@ -127,23 +127,23 @@ specified duration.
 
 \strong{Room Endpoints}
 \itemize{
-\item \code{\link[=ivschat_create_room]{create_room}} — Creates a room that allows
+\item \code{create_room} — Creates a room that allows
 clients to connect and pass messages.
-\item \code{\link[=ivschat_delete_room]{delete_room}} — Deletes the specified room.
-\item \code{\link[=ivschat_get_room]{get_room}} — Gets the specified room.
-\item \code{\link[=ivschat_list_rooms]{list_rooms}} — Gets summary information about
+\item \code{delete_room} — Deletes the specified room.
+\item \code{get_room} — Gets the specified room.
+\item \code{list_rooms} — Gets summary information about
 all your rooms in the AWS region where the API request is processed.
-\item \code{\link[=ivschat_update_room]{update_room}} — Updates a room’s
+\item \code{update_room} — Updates a room’s
 configuration.
 }
 
 \strong{Tags Endpoints}
 \itemize{
-\item \code{\link[=ivschat_list_tags_for_resource]{list_tags_for_resource}} — Gets
+\item \code{list_tags_for_resource} — Gets
 information about AWS tags for the specified ARN.
-\item \code{\link[=ivschat_tag_resource]{tag_resource}} — Adds or updates tags for
+\item \code{tag_resource} — Adds or updates tags for
 the AWS resource with the specified ARN.
-\item \code{\link[=ivschat_untag_resource]{untag_resource}} — Removes tags from the
+\item \code{untag_resource} — Removes tags from the
 resource with the specified ARN.
 }
 
@@ -177,18 +177,18 @@ for managing Chat resources; see the \href{https://docs.aws.amazon.com/ivs/lates
 \section{Operations}{
 
 \tabular{ll}{
-\link[=ivschat_create_chat_token]{create_chat_token} \tab Creates an encrypted token that is used to establish an individual WebSocket connection to a room\cr
-\link[=ivschat_create_room]{create_room} \tab Creates a room that allows clients to connect and pass messages\cr
-\link[=ivschat_delete_message]{delete_message} \tab Sends an event to a specific room which directs clients to delete a specific message; that is, unrender it from view and delete it from the client’s chat history\cr
-\link[=ivschat_delete_room]{delete_room} \tab Deletes the specified room\cr
-\link[=ivschat_disconnect_user]{disconnect_user} \tab Disconnects all connections using a specified user ID from a room\cr
-\link[=ivschat_get_room]{get_room} \tab Gets the specified room\cr
-\link[=ivschat_list_rooms]{list_rooms} \tab Gets summary information about all your rooms in the AWS region where the API request is processed\cr
-\link[=ivschat_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for the specified ARN\cr
-\link[=ivschat_send_event]{send_event} \tab Sends an event to a room\cr
-\link[=ivschat_tag_resource]{tag_resource} \tab Adds or updates tags for the AWS resource with the specified ARN\cr
-\link[=ivschat_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr
-\link[=ivschat_update_room]{update_room} \tab Updates a room’s configuration
+\link[paws.end.user.computing:ivschat_create_chat_token]{create_chat_token} \tab Creates an encrypted token that is used to establish an individual WebSocket connection to a room\cr
+\link[paws.end.user.computing:ivschat_create_room]{create_room} \tab Creates a room that allows clients to connect and pass messages\cr
+\link[paws.end.user.computing:ivschat_delete_message]{delete_message} \tab Sends an event to a specific room which directs clients to delete a specific message; that is, unrender it from view and delete it from the client’s chat history\cr
+\link[paws.end.user.computing:ivschat_delete_room]{delete_room} \tab Deletes the specified room\cr
+\link[paws.end.user.computing:ivschat_disconnect_user]{disconnect_user} \tab Disconnects all connections using a specified user ID from a room\cr
+\link[paws.end.user.computing:ivschat_get_room]{get_room} \tab Gets the specified room\cr
+\link[paws.end.user.computing:ivschat_list_rooms]{list_rooms} \tab Gets summary information about all your rooms in the AWS region where the API request is processed\cr
+\link[paws.end.user.computing:ivschat_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for the specified ARN\cr
+\link[paws.end.user.computing:ivschat_send_event]{send_event} \tab Sends an event to a room\cr
+\link[paws.end.user.computing:ivschat_tag_resource]{tag_resource} \tab Adds or updates tags for the AWS resource with the specified ARN\cr
+\link[paws.end.user.computing:ivschat_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr
+\link[paws.end.user.computing:ivschat_update_room]{update_room} \tab Updates a room’s configuration
 }
 }
 

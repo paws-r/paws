@@ -121,53 +121,53 @@ see the \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-g
 \section{Operations}{
 
 \tabular{ll}{
-\link[=globalaccelerator_add_custom_routing_endpoints]{add_custom_routing_endpoints} \tab Associate a virtual private cloud (VPC) subnet endpoint with your custom routing accelerator\cr
-\link[=globalaccelerator_advertise_byoip_cidr]{advertise_byoip_cidr} \tab Advertises an IPv4 address range that is provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP)\cr
-\link[=globalaccelerator_allow_custom_routing_traffic]{allow_custom_routing_traffic} \tab Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that can receive traffic for a custom routing accelerator\cr
-\link[=globalaccelerator_create_accelerator]{create_accelerator} \tab Create an accelerator\cr
-\link[=globalaccelerator_create_custom_routing_accelerator]{create_custom_routing_accelerator} \tab Create a custom routing accelerator\cr
-\link[=globalaccelerator_create_custom_routing_endpoint_group]{create_custom_routing_endpoint_group} \tab Create an endpoint group for the specified listener for a custom routing accelerator\cr
-\link[=globalaccelerator_create_custom_routing_listener]{create_custom_routing_listener} \tab Create a listener to process inbound connections from clients to a custom routing accelerator\cr
-\link[=globalaccelerator_create_endpoint_group]{create_endpoint_group} \tab Create an endpoint group for the specified listener\cr
-\link[=globalaccelerator_create_listener]{create_listener} \tab Create a listener to process inbound connections from clients to an accelerator\cr
-\link[=globalaccelerator_delete_accelerator]{delete_accelerator} \tab Delete an accelerator\cr
-\link[=globalaccelerator_delete_custom_routing_accelerator]{delete_custom_routing_accelerator} \tab Delete a custom routing accelerator\cr
-\link[=globalaccelerator_delete_custom_routing_endpoint_group]{delete_custom_routing_endpoint_group} \tab Delete an endpoint group from a listener for a custom routing accelerator\cr
-\link[=globalaccelerator_delete_custom_routing_listener]{delete_custom_routing_listener} \tab Delete a listener for a custom routing accelerator\cr
-\link[=globalaccelerator_delete_endpoint_group]{delete_endpoint_group} \tab Delete an endpoint group from a listener\cr
-\link[=globalaccelerator_delete_listener]{delete_listener} \tab Delete a listener from an accelerator\cr
-\link[=globalaccelerator_deny_custom_routing_traffic]{deny_custom_routing_traffic} \tab Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that cannot receive traffic for a custom routing accelerator\cr
-\link[=globalaccelerator_deprovision_byoip_cidr]{deprovision_byoip_cidr} \tab Releases the specified address range that you provisioned to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool\cr
-\link[=globalaccelerator_describe_accelerator]{describe_accelerator} \tab Describe an accelerator\cr
-\link[=globalaccelerator_describe_accelerator_attributes]{describe_accelerator_attributes} \tab Describe the attributes of an accelerator\cr
-\link[=globalaccelerator_describe_custom_routing_accelerator]{describe_custom_routing_accelerator} \tab Describe a custom routing accelerator\cr
-\link[=globalaccelerator_describe_custom_routing_accelerator_attributes]{describe_custom_routing_accelerator_attributes} \tab Describe the attributes of a custom routing accelerator\cr
-\link[=globalaccelerator_describe_custom_routing_endpoint_group]{describe_custom_routing_endpoint_group} \tab Describe an endpoint group for a custom routing accelerator\cr
-\link[=globalaccelerator_describe_custom_routing_listener]{describe_custom_routing_listener} \tab The description of a listener for a custom routing accelerator\cr
-\link[=globalaccelerator_describe_endpoint_group]{describe_endpoint_group} \tab Describe an endpoint group\cr
-\link[=globalaccelerator_describe_listener]{describe_listener} \tab Describe a listener\cr
-\link[=globalaccelerator_list_accelerators]{list_accelerators} \tab List the accelerators for an Amazon Web Services account\cr
-\link[=globalaccelerator_list_byoip_cidrs]{list_byoip_cidrs} \tab Lists the IP address ranges that were specified in calls to ProvisionByoipCidr, including the current state and a history of state changes\cr
-\link[=globalaccelerator_list_custom_routing_accelerators]{list_custom_routing_accelerators} \tab List the custom routing accelerators for an Amazon Web Services account\cr
-\link[=globalaccelerator_list_custom_routing_endpoint_groups]{list_custom_routing_endpoint_groups} \tab List the endpoint groups that are associated with a listener for a custom routing accelerator\cr
-\link[=globalaccelerator_list_custom_routing_listeners]{list_custom_routing_listeners} \tab List the listeners for a custom routing accelerator\cr
-\link[=globalaccelerator_list_custom_routing_port_mappings]{list_custom_routing_port_mappings} \tab Provides a complete mapping from the public accelerator IP address and port to destination EC2 instance IP addresses and ports in the virtual public cloud (VPC) subnet endpoint for a custom routing accelerator\cr
-\link[=globalaccelerator_list_custom_routing_port_mappings_by_destination]{list_custom_routing_port_mappings_by_destination} \tab List the port mappings for a specific EC2 instance (destination) in a VPC subnet endpoint\cr
-\link[=globalaccelerator_list_endpoint_groups]{list_endpoint_groups} \tab List the endpoint groups that are associated with a listener\cr
-\link[=globalaccelerator_list_listeners]{list_listeners} \tab List the listeners for an accelerator\cr
-\link[=globalaccelerator_list_tags_for_resource]{list_tags_for_resource} \tab List all tags for an accelerator\cr
-\link[=globalaccelerator_provision_byoip_cidr]{provision_byoip_cidr} \tab Provisions an IP address range to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool\cr
-\link[=globalaccelerator_remove_custom_routing_endpoints]{remove_custom_routing_endpoints} \tab Remove endpoints from a custom routing accelerator\cr
-\link[=globalaccelerator_tag_resource]{tag_resource} \tab Add tags to an accelerator resource\cr
-\link[=globalaccelerator_untag_resource]{untag_resource} \tab Remove tags from a Global Accelerator resource\cr
-\link[=globalaccelerator_update_accelerator]{update_accelerator} \tab Update an accelerator\cr
-\link[=globalaccelerator_update_accelerator_attributes]{update_accelerator_attributes} \tab Update the attributes for an accelerator\cr
-\link[=globalaccelerator_update_custom_routing_accelerator]{update_custom_routing_accelerator} \tab Update a custom routing accelerator\cr
-\link[=globalaccelerator_update_custom_routing_accelerator_attributes]{update_custom_routing_accelerator_attributes} \tab Update the attributes for a custom routing accelerator\cr
-\link[=globalaccelerator_update_custom_routing_listener]{update_custom_routing_listener} \tab Update a listener for a custom routing accelerator\cr
-\link[=globalaccelerator_update_endpoint_group]{update_endpoint_group} \tab Update an endpoint group\cr
-\link[=globalaccelerator_update_listener]{update_listener} \tab Update a listener\cr
-\link[=globalaccelerator_withdraw_byoip_cidr]{withdraw_byoip_cidr} \tab Stops advertising an address range that is provisioned as an address pool
+\link[paws.networking:globalaccelerator_add_custom_routing_endpoints]{add_custom_routing_endpoints} \tab Associate a virtual private cloud (VPC) subnet endpoint with your custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_advertise_byoip_cidr]{advertise_byoip_cidr} \tab Advertises an IPv4 address range that is provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP)\cr
+\link[paws.networking:globalaccelerator_allow_custom_routing_traffic]{allow_custom_routing_traffic} \tab Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that can receive traffic for a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_create_accelerator]{create_accelerator} \tab Create an accelerator\cr
+\link[paws.networking:globalaccelerator_create_custom_routing_accelerator]{create_custom_routing_accelerator} \tab Create a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_create_custom_routing_endpoint_group]{create_custom_routing_endpoint_group} \tab Create an endpoint group for the specified listener for a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_create_custom_routing_listener]{create_custom_routing_listener} \tab Create a listener to process inbound connections from clients to a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_create_endpoint_group]{create_endpoint_group} \tab Create an endpoint group for the specified listener\cr
+\link[paws.networking:globalaccelerator_create_listener]{create_listener} \tab Create a listener to process inbound connections from clients to an accelerator\cr
+\link[paws.networking:globalaccelerator_delete_accelerator]{delete_accelerator} \tab Delete an accelerator\cr
+\link[paws.networking:globalaccelerator_delete_custom_routing_accelerator]{delete_custom_routing_accelerator} \tab Delete a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_delete_custom_routing_endpoint_group]{delete_custom_routing_endpoint_group} \tab Delete an endpoint group from a listener for a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_delete_custom_routing_listener]{delete_custom_routing_listener} \tab Delete a listener for a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_delete_endpoint_group]{delete_endpoint_group} \tab Delete an endpoint group from a listener\cr
+\link[paws.networking:globalaccelerator_delete_listener]{delete_listener} \tab Delete a listener from an accelerator\cr
+\link[paws.networking:globalaccelerator_deny_custom_routing_traffic]{deny_custom_routing_traffic} \tab Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that cannot receive traffic for a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_deprovision_byoip_cidr]{deprovision_byoip_cidr} \tab Releases the specified address range that you provisioned to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool\cr
+\link[paws.networking:globalaccelerator_describe_accelerator]{describe_accelerator} \tab Describe an accelerator\cr
+\link[paws.networking:globalaccelerator_describe_accelerator_attributes]{describe_accelerator_attributes} \tab Describe the attributes of an accelerator\cr
+\link[paws.networking:globalaccelerator_describe_custom_routing_accelerator]{describe_custom_routing_accelerator} \tab Describe a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_describe_custom_routing_accelerator_attributes]{describe_custom_routing_accelerator_attributes} \tab Describe the attributes of a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_describe_custom_routing_endpoint_group]{describe_custom_routing_endpoint_group} \tab Describe an endpoint group for a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_describe_custom_routing_listener]{describe_custom_routing_listener} \tab The description of a listener for a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_describe_endpoint_group]{describe_endpoint_group} \tab Describe an endpoint group\cr
+\link[paws.networking:globalaccelerator_describe_listener]{describe_listener} \tab Describe a listener\cr
+\link[paws.networking:globalaccelerator_list_accelerators]{list_accelerators} \tab List the accelerators for an Amazon Web Services account\cr
+\link[paws.networking:globalaccelerator_list_byoip_cidrs]{list_byoip_cidrs} \tab Lists the IP address ranges that were specified in calls to ProvisionByoipCidr, including the current state and a history of state changes\cr
+\link[paws.networking:globalaccelerator_list_custom_routing_accelerators]{list_custom_routing_accelerators} \tab List the custom routing accelerators for an Amazon Web Services account\cr
+\link[paws.networking:globalaccelerator_list_custom_routing_endpoint_groups]{list_custom_routing_endpoint_groups} \tab List the endpoint groups that are associated with a listener for a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_list_custom_routing_listeners]{list_custom_routing_listeners} \tab List the listeners for a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_list_custom_routing_port_mappings]{list_custom_routing_port_mappings} \tab Provides a complete mapping from the public accelerator IP address and port to destination EC2 instance IP addresses and ports in the virtual public cloud (VPC) subnet endpoint for a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_list_custom_routing_port_mappings_by_destination]{list_custom_routing_port_mappings_by_destination} \tab List the port mappings for a specific EC2 instance (destination) in a VPC subnet endpoint\cr
+\link[paws.networking:globalaccelerator_list_endpoint_groups]{list_endpoint_groups} \tab List the endpoint groups that are associated with a listener\cr
+\link[paws.networking:globalaccelerator_list_listeners]{list_listeners} \tab List the listeners for an accelerator\cr
+\link[paws.networking:globalaccelerator_list_tags_for_resource]{list_tags_for_resource} \tab List all tags for an accelerator\cr
+\link[paws.networking:globalaccelerator_provision_byoip_cidr]{provision_byoip_cidr} \tab Provisions an IP address range to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool\cr
+\link[paws.networking:globalaccelerator_remove_custom_routing_endpoints]{remove_custom_routing_endpoints} \tab Remove endpoints from a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_tag_resource]{tag_resource} \tab Add tags to an accelerator resource\cr
+\link[paws.networking:globalaccelerator_untag_resource]{untag_resource} \tab Remove tags from a Global Accelerator resource\cr
+\link[paws.networking:globalaccelerator_update_accelerator]{update_accelerator} \tab Update an accelerator\cr
+\link[paws.networking:globalaccelerator_update_accelerator_attributes]{update_accelerator_attributes} \tab Update the attributes for an accelerator\cr
+\link[paws.networking:globalaccelerator_update_custom_routing_accelerator]{update_custom_routing_accelerator} \tab Update a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_update_custom_routing_accelerator_attributes]{update_custom_routing_accelerator_attributes} \tab Update the attributes for a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_update_custom_routing_listener]{update_custom_routing_listener} \tab Update a listener for a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_update_endpoint_group]{update_endpoint_group} \tab Update an endpoint group\cr
+\link[paws.networking:globalaccelerator_update_listener]{update_listener} \tab Update a listener\cr
+\link[paws.networking:globalaccelerator_withdraw_byoip_cidr]{withdraw_byoip_cidr} \tab Stops advertising an address range that is provisioned as an address pool
 }
 }
 

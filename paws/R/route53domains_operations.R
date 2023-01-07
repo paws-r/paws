@@ -13,9 +13,9 @@ NULL
 #' [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
 #' 
 #' If you use the CLI command at
-#' accept-domain-transfer-from-another-aws-account, use JSON format as
-#' input instead of text because otherwise CLI will throw an error from
-#' domain transfer input that includes single quotes.
+#' [accept-domain-transfer-from-another-aws-account](https://docs.aws.amazon.com/cli/latest/reference/route53domains/accept-domain-transfer-from-another-aws-account.html),
+#' use JSON format as input instead of text because otherwise CLI will
+#' throw an error from domain transfer input that includes single quotes.
 #' 
 #' Use either [`list_operations`][route53domains_list_operations] or
 #' [`get_operation_detail`][route53domains_get_operation_detail] to
@@ -145,8 +145,10 @@ route53domains_cancel_domain_transfer_to_another_aws_account <- function(DomainN
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to get availability for. The
 #' top-level domain (TLD), such as .com, must be a TLD that Route 53
-#' supports. For a list of supported TLDs, see Domains that You Can
-#' Register with Amazon Route 53 in the *Amazon Route 53 Developer Guide*.
+#' supports. For a list of supported TLDs, see [Domains that You Can
+#' Register with Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' The domain name can contain only the following characters:
 #' 
@@ -162,9 +164,11 @@ route53domains_cancel_domain_transfer_to_another_aws_account <- function(DomainN
 #' 
 #' Internationalized domain names are not supported for some top-level
 #' domains. To determine whether the TLD that you want to use supports
-#' internationalized domain names, see Domains that You Can Register with
-#' Amazon Route 53. For more information, see Formatting Internationalized
-#' Domain Names.
+#' internationalized domain names, see [Domains that You Can Register with
+#' Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html).
+#' For more information, see [Formatting Internationalized Domain
+#' Names](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns).
 #' @param IdnLangCode Reserved for future use.
 #'
 #' @return
@@ -213,8 +217,10 @@ route53domains_check_domain_availability <- function(DomainName, IdnLangCode = N
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to transfer to Route 53. The
 #' top-level domain (TLD), such as .com, must be a TLD that Route 53
-#' supports. For a list of supported TLDs, see Domains that You Can
-#' Register with Amazon Route 53 in the *Amazon Route 53 Developer Guide*.
+#' supports. For a list of supported TLDs, see [Domains that You Can
+#' Register with Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' The domain name can contain only the following characters:
 #' 
@@ -273,7 +279,8 @@ route53domains_check_domain_transferability <- function(DomainName, AuthCode = N
 #'
 #' @description
 #' This operation deletes the specified domain. This action is permanent.
-#' For more information, see Deleting a domain name registration.
+#' For more information, see [Deleting a domain name
+#' registration](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-delete.html).
 #' 
 #' To transfer the domain registration to another registrar, use the
 #' transfer process that’s provided by the registrar to which you want to
@@ -482,10 +489,12 @@ route53domains_disable_domain_transfer_lock <- function(DomainName) {
 #' account.
 #' 
 #' The period during which you can renew a domain name varies by TLD. For a
-#' list of TLDs and their renewal policies, see Domains That You Can
-#' Register with Amazon Route 53 in the *Amazon Route 53 Developer Guide*.
-#' Route 53 requires that you renew before the end of the renewal period so
-#' we can complete processing before the deadline.
+#' list of TLDs and their renewal policies, see [Domains That You Can
+#' Register with Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' in the *Amazon Route 53 Developer Guide*. Route 53 requires that you
+#' renew before the end of the renewal period so we can complete processing
+#' before the deadline.
 #'
 #' @usage
 #' route53domains_enable_domain_auto_renew(DomainName)
@@ -785,9 +794,10 @@ route53domains_get_domain_detail <- function(DomainName) {
 #'
 #' @param DomainName &#91;required&#93; A domain name that you want to use as the basis for a list of possible
 #' domain names. The top-level domain (TLD), such as .com, must be a TLD
-#' that Route 53 supports. For a list of supported TLDs, see Domains that
-#' You Can Register with Amazon Route 53 in the *Amazon Route 53 Developer
-#' Guide*.
+#' that Route 53 supports. For a list of supported TLDs, see [Domains that
+#' You Can Register with Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' The domain name can contain only the following characters:
 #' 
@@ -803,8 +813,9 @@ route53domains_get_domain_detail <- function(DomainName) {
 #' 
 #' Internationalized domain names are not supported for some top-level
 #' domains. To determine whether the TLD that you want to use supports
-#' internationalized domain names, see Domains that You Can Register with
-#' Amazon Route 53.
+#' internationalized domain names, see [Domains that You Can Register with
+#' Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html).
 #' @param SuggestionCount &#91;required&#93; The number of suggested domain names that you want Route 53 to return.
 #' Specify a value between 1 and 50.
 #' @param OnlyAvailable &#91;required&#93; If `OnlyAvailable` is `true`, Route 53 returns only domain names that
@@ -1269,7 +1280,8 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #'     notified by email.
 #' 
 #' -   Charges your Amazon Web Services account an amount based on the
-#'     top-level domain. For more information, see Amazon Route 53 Pricing.
+#'     top-level domain. For more information, see [Amazon Route 53
+#'     Pricing](https://aws.amazon.com/route53/pricing/).
 #'
 #' @usage
 #' route53domains_register_domain(DomainName, IdnLangCode, DurationInYears,
@@ -1279,7 +1291,8 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #'
 #' @param DomainName &#91;required&#93; The domain name that you want to register. The top-level domain (TLD),
 #' such as .com, must be a TLD that Route 53 supports. For a list of
-#' supported TLDs, see Domains that You Can Register with Amazon Route 53
+#' supported TLDs, see [Domains that You Can Register with Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
 #' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' The domain name can contain only the following characters:
@@ -1296,15 +1309,18 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' 
 #' Internationalized domain names are not supported for some top-level
 #' domains. To determine whether the TLD that you want to use supports
-#' internationalized domain names, see Domains that You Can Register with
-#' Amazon Route 53. For more information, see Formatting Internationalized
-#' Domain Names.
+#' internationalized domain names, see [Domains that You Can Register with
+#' Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html).
+#' For more information, see [Formatting Internationalized Domain
+#' Names](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns).
 #' @param IdnLangCode Reserved for future use.
 #' @param DurationInYears &#91;required&#93; The number of years that you want to register the domain for. Domains
 #' are registered for a minimum of one year. The maximum period depends on
 #' the top-level domain. For the range of valid values for your domain, see
-#' Domains that You Can Register with Amazon Route 53 in the *Amazon Route
-#' 53 Developer Guide*.
+#' [Domains that You Can Register with Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' Default: 1
 #' @param AutoRenew Indicates whether the domain will be automatically renewed (`true`) or
@@ -1313,11 +1329,14 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' 
 #' Default: `true`
 #' @param AdminContact &#91;required&#93; Provides detailed contact information. For information about the values
-#' that you specify for each element, see ContactDetail.
+#' that you specify for each element, see
+#' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
 #' @param RegistrantContact &#91;required&#93; Provides detailed contact information. For information about the values
-#' that you specify for each element, see ContactDetail.
+#' that you specify for each element, see
+#' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
 #' @param TechContact &#91;required&#93; Provides detailed contact information. For information about the values
-#' that you specify for each element, see ContactDetail.
+#' that you specify for each element, see
+#' [ContactDetail](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
 #' @param PrivacyProtectAdminContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
 #' either for Amazon Registrar (for .com, .net, and .org domains) or for
@@ -1526,8 +1545,10 @@ route53domains_reject_domain_transfer_from_another_aws_account <- function(Domai
 #' We recommend that you renew your domain several weeks before the
 #' expiration date. Some TLD registries delete domains before the
 #' expiration date if you haven't renewed far enough in advance. For more
-#' information about renewing domain registration, see Renewing
-#' Registration for a Domain in the *Amazon Route 53 Developer Guide*.
+#' information about renewing domain registration, see [Renewing
+#' Registration for a
+#' Domain](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #'
 #' @usage
 #' route53domains_renew_domain(DomainName, DurationInYears,
@@ -1536,8 +1557,10 @@ route53domains_reject_domain_transfer_from_another_aws_account <- function(Domai
 #' @param DomainName &#91;required&#93; The name of the domain that you want to renew.
 #' @param DurationInYears The number of years that you want to renew the domain for. The maximum
 #' number of years depends on the top-level domain. For the range of valid
-#' values for your domain, see Domains that You Can Register with Amazon
-#' Route 53 in the *Amazon Route 53 Developer Guide*.
+#' values for your domain, see [Domains that You Can Register with Amazon
+#' Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' Default: 1
 #' @param CurrentExpiryYear &#91;required&#93; The year when the registration for the domain is set to expire. This
@@ -1693,16 +1716,20 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' 
 #' -   For transfer requirements, a detailed procedure, and information
 #'     about viewing the status of a domain that you're transferring to
-#'     Route 53, see Transferring Registration for a Domain to Amazon Route
-#'     53 in the *Amazon Route 53 Developer Guide*.
+#'     Route 53, see [Transferring Registration for a Domain to Amazon
+#'     Route
+#'     53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html)
+#'     in the *Amazon Route 53 Developer Guide*.
 #' 
 #' -   For information about how to transfer a domain from one Amazon Web
 #'     Services account to another, see
 #'     [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
 #' 
 #' -   For information about how to transfer a domain to another domain
-#'     registrar, see Transferring a Domain from Amazon Route 53 to Another
-#'     Registrar in the *Amazon Route 53 Developer Guide*.
+#'     registrar, see [Transferring a Domain from Amazon Route 53 to
+#'     Another
+#'     Registrar](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-from-route-53.html)
+#'     in the *Amazon Route 53 Developer Guide*.
 #' 
 #' If the registrar for your domain is also the DNS service provider for
 #' the domain, we highly recommend that you transfer your DNS service to
@@ -1730,8 +1757,10 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to transfer to Route 53. The
 #' top-level domain (TLD), such as .com, must be a TLD that Route 53
-#' supports. For a list of supported TLDs, see Domains that You Can
-#' Register with Amazon Route 53 in the *Amazon Route 53 Developer Guide*.
+#' supports. For a list of supported TLDs, see [Domains that You Can
+#' Register with Amazon Route
+#' 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' The domain name can contain only the following characters:
 #' 
@@ -1930,9 +1959,10 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #' with the domain. DNS resolution isn't affected if the domain and the
 #' hosted zone are owned by separate accounts, so transferring the hosted
 #' zone is optional. For information about transferring the hosted zone to
-#' another Amazon Web Services account, see Migrating a Hosted Zone to a
-#' Different Amazon Web Services Account in the *Amazon Route 53 Developer
-#' Guide*.
+#' another Amazon Web Services account, see [Migrating a Hosted Zone to a
+#' Different Amazon Web Services
+#' Account](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-migrating.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' Use either [`list_operations`][route53domains_list_operations] or
 #' [`get_operation_detail`][route53domains_get_operation_detail] to
@@ -2134,7 +2164,7 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #' or the Route 53 console. Enabling privacy protection removes the contact
 #' information provided for this domain from the WHOIS database. For more
 #' information on our privacy practices, see
-#' https://aws.amazon.com/privacy/.
+#' <https://aws.amazon.com/privacy/>.
 #'
 #' @usage
 #' route53domains_update_domain_contact_privacy(DomainName, AdminPrivacy,

@@ -1877,7 +1877,7 @@ batch_describe_scheduling_policies <- function(arns) {
 #' results are sorted by the `createdAt` field, with the most recent jobs
 #' being first.
 #' 
-#' ### JOB_NAME
+#' **JOB_NAME**
 #' 
 #' The value of the filter is a case-insensitive match for the job name. If
 #' the value ends with an asterisk (*), the filter will match any job name
@@ -1886,7 +1886,7 @@ batch_describe_scheduling_policies <- function(arns) {
 #' and `test1*` matches both `test1` and `Test10`. When the `JOB_NAME`
 #' filter is used, the results are grouped by the job name and version.
 #' 
-#' ### JOB_DEFINITION
+#' **JOB_DEFINITION**
 #' 
 #' The value for the filter is the name or Amazon Resource Name (ARN) of
 #' the job definition. This corresponds to the `jobDefinition` value. The
@@ -1902,14 +1902,14 @@ batch_describe_scheduling_policies <- function(arns) {
 #' the results include jobs that used the specified revision of the job
 #' definition. Asterisk (*) is not supported when the ARN is used.
 #' 
-#' ### BEFORE_CREATED_AT
+#' **BEFORE_CREATED_AT**
 #' 
 #' The value for the filter is the time that's before the job was created.
 #' This corresponds to the `createdAt` value. The value is a string
 #' representation of the number of milliseconds since 00:00:00 UTC
 #' (midnight) on January 1, 1970.
 #' 
-#' ### AFTER_CREATED_AT
+#' **AFTER_CREATED_AT**
 #' 
 #' The value for the filter is the time that's after the job was created.
 #' This corresponds to the `createdAt` value. The value is a string
@@ -2154,8 +2154,8 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' (-), and underscores (_).
 #' @param type &#91;required&#93; The type of job definition. For more information about multi-node
 #' parallel jobs, see [Creating a multi-node parallel job
-#' definition](https://docs.aws.amazon.com/batch/latest/userguide/multi-node-job-def.html)
-#' in the *Batch User Guide*.
+#' definition](https://docs.aws.amazon.com/batch/latest/userguide/) in the
+#' *Batch User Guide*.
 #' 
 #' If the job is run on Fargate resources, then `multinode` isn't
 #' supported.

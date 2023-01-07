@@ -21,8 +21,8 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
-name. For more information about access point ARNs, see Using access
-points in the \emph{Amazon S3 User Guide}.}
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] The key of the object for which to get the ACL information.}
 
@@ -35,7 +35,7 @@ different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns the access control list (ACL) of an object. To use this operation, you must have \code{s3:GetObjectAcl} permissions or \code{READ_ACP} access to the object. For more information, see Mapping of ACL permissions and access policy permissions in the \emph{Amazon S3 User Guide}
+Returns the access control list (ACL) of an object. To use this operation, you must have \code{s3:GetObjectAcl} permissions or \code{READ_ACP} access to the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#acl-access-policy-permission-mapping}{Mapping of ACL permissions and access policy permissions} in the \emph{Amazon S3 User Guide}
 
 See \url{https://paws-r.github.io/docs/s3/get_object_acl.html} for full documentation.
 }

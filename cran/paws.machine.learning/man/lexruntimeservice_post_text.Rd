@@ -45,7 +45,7 @@ alias in the user ID to separate the two conversations.
 \item{sessionAttributes}{Application-specific information passed between Amazon Lex and a client
 application.
 
-For more information, see Setting Session Attributes.}
+For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs}{Setting Session Attributes}.}
 
 \item{requestAttributes}{Request-specific information passed between Amazon Lex and a client
 application.
@@ -53,7 +53,7 @@ application.
 The namespace \verb{x-amz-lex:} is reserved for special attributes. Don't
 create any request attributes with the prefix \verb{x-amz-lex:}.
 
-For more information, see Setting Request Attributes.}
+For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs}{Setting Request Attributes}.}
 
 \item{inputText}{[required] The text that the user entered (Amazon Lex interprets this text).}
 

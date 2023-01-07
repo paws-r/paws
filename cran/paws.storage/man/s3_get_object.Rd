@@ -36,8 +36,8 @@ the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
 When using this action with an access point through the Amazon Web
 Services SDKs, you provide the access point ARN in place of the bucket
-name. For more information about access point ARNs, see Using access
-points in the \emph{Amazon S3 User Guide}.
+name. For more information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html}{Using access points}
+in the \emph{Amazon S3 User Guide}.
 
 When using an Object Lambda access point the hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-object-lambda.\emph{Region}.amazonaws.com.
@@ -48,8 +48,8 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When using this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts bucket ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see Using
-Amazon S3 on Outposts in the \emph{Amazon S3 User Guide}.}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{IfMatch}{Return the object only if its entity tag (ETag) is the same as the one
 specified; otherwise, return a 412 (precondition failed) error.}
@@ -67,7 +67,7 @@ time; otherwise, return a 412 (precondition failed) error.}
 
 \item{Range}{Downloads the specified range bytes of an object. For more information
 about the HTTP Range header, see
-https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
+\url{https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35}.
 
 Amazon S3 doesn't support retrieving multiple ranges of data per \code{GET}
 request.}

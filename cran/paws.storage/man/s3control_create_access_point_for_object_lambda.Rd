@@ -15,7 +15,7 @@ Lambda Access Point.}
 \item{Configuration}{[required] Object Lambda Access Point configuration as a JSON document.}
 }
 \description{
-Creates an Object Lambda Access Point. For more information, see Transforming objects with Object Lambda Access Points in the \emph{Amazon S3 User Guide}.
+Creates an Object Lambda Access Point. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html}{Transforming objects with Object Lambda Access Points} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://paws-r.github.io/docs/s3control/create_access_point_for_object_lambda.html} for full documentation.
 }

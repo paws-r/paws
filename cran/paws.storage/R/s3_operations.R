@@ -17,8 +17,9 @@ NULL
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -26,8 +27,10 @@ NULL
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key of the object for which the multipart upload was initiated.
 #' @param UploadId &#91;required&#93; Upload ID that identifies the multipart upload.
 #' @param RequestPayer 
@@ -69,8 +72,9 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -78,47 +82,57 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
 #' @param MultipartUpload The container for the multipart upload request information.
 #' @param UploadId &#91;required&#93; ID for the initiated multipart upload.
 #' @param ChecksumCRC32 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
 #' specifies the base64-encoded, 32-bit CRC32 checksum of the object. For
-#' more information, see Checking object integrity in the *Amazon S3 User
-#' Guide*.
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ChecksumCRC32C This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
 #' specifies the base64-encoded, 32-bit CRC32C checksum of the object. For
-#' more information, see Checking object integrity in the *Amazon S3 User
-#' Guide*.
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA1 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
 #' specifies the base64-encoded, 160-bit SHA-1 digest of the object. For
-#' more information, see Checking object integrity in the *Amazon S3 User
-#' Guide*.
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA256 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
 #' specifies the base64-encoded, 256-bit SHA-256 digest of the object. For
-#' more information, see Checking object integrity in the *Amazon S3 User
-#' Guide*.
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param RequestPayer 
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
 #' @param SSECustomerAlgorithm The server-side encryption (SSE) algorithm used to encrypt the object.
 #' This parameter is needed only when the object was created using a
-#' checksum algorithm. For more information, see Protecting data using
-#' SSE-C keys in the *Amazon S3 User Guide*.
+#' checksum algorithm. For more information, see [Protecting data using
+#' SSE-C
+#' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
+#' in the *Amazon S3 User Guide*.
 #' @param SSECustomerKey The server-side encryption (SSE) customer managed key. This parameter is
 #' needed only when the object was created using a checksum algorithm. For
-#' more information, see Protecting data using SSE-C keys in the *Amazon S3
-#' User Guide*.
+#' more information, see [Protecting data using SSE-C
+#' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
+#' in the *Amazon S3 User Guide*.
 #' @param SSECustomerKeyMD5 The MD5 server-side encryption (SSE) customer managed key. This
 #' parameter is needed only when the object was created using a checksum
-#' algorithm. For more information, see Protecting data using SSE-C keys in
-#' the *Amazon S3 User Guide*.
+#' algorithm. For more information, see [Protecting data using SSE-C
+#' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
+#' in the *Amazon S3 User Guide*.
 #'
 #' @keywords internal
 #'
@@ -157,8 +171,9 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -166,12 +181,15 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param CacheControl Specifies caching behavior along the request/reply chain.
 #' @param ChecksumAlgorithm Indicates the algorithm you want Amazon S3 to use to create the checksum
-#' for the object. For more information, see Checking object integrity in
-#' the *Amazon S3 User Guide*.
+#' for the object. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ContentDisposition Specifies presentational information for the object.
 #' @param ContentEncoding Specifies what content encodings have been applied to the object and
 #' thus what decoding mechanisms must be applied to obtain the media-type
@@ -180,7 +198,8 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @param ContentType A standard MIME type describing the format of the object data.
 #' @param CopySource &#91;required&#93; Specifies the source object for the copy operation. You specify the
 #' value in one of two formats, depending on whether you want to access the
-#' source object through an access point:
+#' source object through an [access
+#' point](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html):
 #' 
 #' -   For objects not accessed through an access point, specify the name
 #'     of the source bucket and the key of the source object, separated by
@@ -248,8 +267,9 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
 #' different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-#' Storage Class. For more information, see Storage Classes in the *Amazon
-#' S3 User Guide*.
+#' Storage Class. For more information, see [Storage
+#' Classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
+#' in the *Amazon S3 User Guide*.
 #' @param WebsiteRedirectLocation If the bucket is configured as a website, redirects requests for this
 #' object to another object in the same bucket or to an external URL.
 #' Amazon S3 stores the value of this header in the object metadata.
@@ -267,9 +287,10 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' encryption. All GET and PUT requests for an object protected by Amazon
 #' Web Services KMS will fail if not made via SSL or using SigV4. For
 #' information about configuring using any of the officially supported
-#' Amazon Web Services SDKs and Amazon Web Services CLI, see Specifying the
-#' Signature Version in Request Authentication in the *Amazon S3 User
-#' Guide*.
+#' Amazon Web Services SDKs and Amazon Web Services CLI, see [Specifying
+#' the Signature Version in Request
+#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
+#' in the *Amazon S3 User Guide*.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
 #' object encryption. The value of this header is a base64-encoded UTF-8
 #' string holding JSON with the encryption context key-value pairs.
@@ -383,8 +404,9 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -392,8 +414,10 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param CacheControl Specifies caching behavior along the request/reply chain.
 #' @param ContentDisposition Specifies presentational information for the object.
 #' @param ContentEncoding Specifies what content encodings have been applied to the object and
@@ -423,8 +447,9 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
 #' different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-#' Storage Class. For more information, see Storage Classes in the *Amazon
-#' S3 User Guide*.
+#' Storage Class. For more information, see [Storage
+#' Classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
+#' in the *Amazon S3 User Guide*.
 #' @param WebsiteRedirectLocation If the bucket is configured as a website, redirects requests for this
 #' object to another object in the same bucket or to an external URL.
 #' Amazon S3 stores the value of this header in the object metadata.
@@ -442,9 +467,10 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' encryption. All GET and PUT requests for an object protected by Amazon
 #' Web Services KMS will fail if not made via SSL or using SigV4. For
 #' information about configuring using any of the officially supported
-#' Amazon Web Services SDKs and Amazon Web Services CLI, see Specifying the
-#' Signature Version in Request Authentication in the *Amazon S3 User
-#' Guide*.
+#' Amazon Web Services SDKs and Amazon Web Services CLI, see [Specifying
+#' the Signature Version in Request
+#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
+#' in the *Amazon S3 User Guide*.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
 #' object encryption. The value of this header is a base64-encoded UTF-8
 #' string holding JSON with the encryption context key-value pairs.
@@ -466,8 +492,9 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
 #' @param ChecksumAlgorithm Indicates the algorithm you want Amazon S3 to use to create the checksum
-#' for the object. For more information, see Checking object integrity in
-#' the *Amazon S3 User Guide*.
+#' for the object. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #'
 #' @keywords internal
 #'
@@ -591,7 +618,7 @@ s3_delete_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' the bucket
 #'
 #' @description
-#' This implementation of the DELETE action removes default encryption from the bucket. For information about the Amazon S3 default encryption feature, see Amazon S3 Default Bucket Encryption in the *Amazon S3 User Guide*.
+#' This implementation of the DELETE action removes default encryption from the bucket. For information about the Amazon S3 default encryption feature, see [Amazon S3 Default Bucket Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html) in the *Amazon S3 User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/s3/delete_bucket_encryption.html](https://paws-r.github.io/docs/s3/delete_bucket_encryption.html) for full documentation.
 #'
@@ -756,7 +783,7 @@ s3_delete_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwn
 #' Removes OwnershipControls for an Amazon S3 bucket
 #'
 #' @description
-#' Removes `OwnershipControls` for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketOwnershipControls` permission. For more information about Amazon S3 permissions, see Specifying Permissions in a Policy.
+#' Removes `OwnershipControls` for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketOwnershipControls` permission. For more information about Amazon S3 permissions, see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/delete_bucket_ownership_controls.html](https://paws-r.github.io/docs/s3/delete_bucket_ownership_controls.html) for full documentation.
 #'
@@ -929,8 +956,9 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -938,8 +966,10 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key name of the object to delete.
 #' @param MFA The concatenation of the authentication device's serial number, a space,
 #' and the value that is displayed on your authentication device. Required
@@ -977,7 +1007,7 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' Removes the entire tag set from the specified object
 #'
 #' @description
-#' Removes the entire tag set from the specified object. For more information about managing object tags, see Object Tagging.
+#' Removes the entire tag set from the specified object. For more information about managing object tags, see [Object Tagging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/delete_object_tagging.html](https://paws-r.github.io/docs/s3/delete_object_tagging.html) for full documentation.
 #'
@@ -988,8 +1018,9 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -997,8 +1028,10 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The key that identifies the object in the bucket from which to remove
 #' all tags.
 #' @param VersionId The versionId of the object that the tag-set will be removed from.
@@ -1041,8 +1074,9 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -1050,8 +1084,10 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Delete &#91;required&#93; Container for the request.
 #' @param MFA The concatenation of the authentication device's serial number, a space,
 #' and the value that is displayed on your authentication device. Required
@@ -1069,7 +1105,8 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -1102,7 +1139,7 @@ s3_delete_objects <- function(Bucket, Delete, MFA = NULL, RequestPayer = NULL, B
 #' Removes the PublicAccessBlock configuration for an Amazon S3 bucket
 #'
 #' @description
-#' Removes the `PublicAccessBlock` configuration for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketPublicAccessBlock` permission. For more information about permissions, see Permissions Related to Bucket Subresource Operations and Managing Access Permissions to Your Amazon S3 Resources.
+#' Removes the `PublicAccessBlock` configuration for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketPublicAccessBlock` permission. For more information about permissions, see [Permissions Related to Bucket Subresource Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources) and [Managing Access Permissions to Your Amazon S3 Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/delete_public_access_block.html](https://paws-r.github.io/docs/s3/delete_public_access_block.html) for full documentation.
 #'
@@ -1599,7 +1636,7 @@ s3_get_bucket_notification_configuration <- function(Bucket, ExpectedBucketOwner
 #' Retrieves OwnershipControls for an Amazon S3 bucket
 #'
 #' @description
-#' Retrieves `OwnershipControls` for an Amazon S3 bucket. To use this operation, you must have the `s3:GetBucketOwnershipControls` permission. For more information about Amazon S3 permissions, see Specifying permissions in a policy.
+#' Retrieves `OwnershipControls` for an Amazon S3 bucket. To use this operation, you must have the `s3:GetBucketOwnershipControls` permission. For more information about Amazon S3 permissions, see [Specifying permissions in a policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/get_bucket_ownership_controls.html](https://paws-r.github.io/docs/s3/get_bucket_ownership_controls.html) for full documentation.
 #'
@@ -1665,7 +1702,7 @@ s3_get_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' the bucket is public
 #'
 #' @description
-#' Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public. In order to use this operation, you must have the `s3:GetBucketPolicyStatus` permission. For more information about Amazon S3 permissions, see Specifying Permissions in a Policy.
+#' Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public. In order to use this operation, you must have the `s3:GetBucketPolicyStatus` permission. For more information about Amazon S3 permissions, see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/get_bucket_policy_status.html](https://paws-r.github.io/docs/s3/get_bucket_policy_status.html) for full documentation.
 #'
@@ -1730,7 +1767,7 @@ s3_get_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Returns the request payment configuration of a bucket
 #'
 #' @description
-#' Returns the request payment configuration of a bucket. To use this version of the operation, you must be the bucket owner. For more information, see Requester Pays Buckets.
+#' Returns the request payment configuration of a bucket. To use this version of the operation, you must be the bucket owner. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/get_bucket_request_payment.html](https://paws-r.github.io/docs/s3/get_bucket_request_payment.html) for full documentation.
 #'
@@ -1827,7 +1864,7 @@ s3_get_bucket_versioning <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Returns the website configuration for a bucket
 #'
 #' @description
-#' Returns the website configuration for a bucket. To host website on Amazon S3, you can configure a bucket as website by adding a website configuration. For more information about hosting websites, see Hosting Websites on Amazon S3.
+#' Returns the website configuration for a bucket. To host website on Amazon S3, you can configure a bucket as website by adding a website configuration. For more information about hosting websites, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/get_bucket_website.html](https://paws-r.github.io/docs/s3/get_bucket_website.html) for full documentation.
 #'
@@ -1870,8 +1907,9 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using an Object Lambda access point the hostname takes the form
 #' *AccessPointName*-*AccountId*.s3-object-lambda.*Region*.amazonaws.com.
@@ -1882,8 +1920,10 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
 #' specified; otherwise, return a 412 (precondition failed) error.
 #' @param IfModifiedSince Return the object only if it has been modified since the specified time;
@@ -1895,7 +1935,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @param Key &#91;required&#93; Key of the object to get.
 #' @param Range Downloads the specified range bytes of an object. For more information
 #' about the HTTP Range header, see
-#' https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
+#' <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35>.
 #' 
 #' Amazon S3 doesn't support retrieving multiple ranges of data per `GET`
 #' request.
@@ -1948,7 +1988,7 @@ s3_get_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNone
 #' Returns the access control list (ACL) of an object
 #'
 #' @description
-#' Returns the access control list (ACL) of an object. To use this operation, you must have `s3:GetObjectAcl` permissions or `READ_ACP` access to the object. For more information, see Mapping of ACL permissions and access policy permissions in the *Amazon S3 User Guide*
+#' Returns the access control list (ACL) of an object. To use this operation, you must have `s3:GetObjectAcl` permissions or `READ_ACP` access to the object. For more information, see [Mapping of ACL permissions and access policy permissions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#acl-access-policy-permission-mapping) in the *Amazon S3 User Guide*
 #'
 #' See [https://paws-r.github.io/docs/s3/get_object_acl.html](https://paws-r.github.io/docs/s3/get_object_acl.html) for full documentation.
 #'
@@ -1960,8 +2000,9 @@ s3_get_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNone
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The key of the object for which to get the ACL information.
 #' @param VersionId VersionId used to reference a specific version of the object.
 #' @param RequestPayer 
@@ -2004,8 +2045,9 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -2013,8 +2055,10 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The object key.
 #' @param VersionId The version ID used to reference a specific version of the object.
 #' @param MaxParts Sets the maximum number of parts to return.
@@ -2061,7 +2105,7 @@ s3_get_object_attributes <- function(Bucket, Key, VersionId = NULL, MaxParts = N
 #' Gets an object's current legal hold status
 #'
 #' @description
-#' Gets an object's current legal hold status. For more information, see Locking Objects.
+#' Gets an object's current legal hold status. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/get_object_legal_hold.html](https://paws-r.github.io/docs/s3/get_object_legal_hold.html) for full documentation.
 #'
@@ -2073,8 +2117,9 @@ s3_get_object_attributes <- function(Bucket, Key, VersionId = NULL, MaxParts = N
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The key name for the object whose legal hold status you want to
 #' retrieve.
 #' @param VersionId The version ID of the object whose legal hold status you want to
@@ -2107,7 +2152,7 @@ s3_get_object_legal_hold <- function(Bucket, Key, VersionId = NULL, RequestPayer
 #' Gets the Object Lock configuration for a bucket
 #'
 #' @description
-#' Gets the Object Lock configuration for a bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see Locking Objects.
+#' Gets the Object Lock configuration for a bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/get_object_lock_configuration.html](https://paws-r.github.io/docs/s3/get_object_lock_configuration.html) for full documentation.
 #'
@@ -2118,8 +2163,9 @@ s3_get_object_legal_hold <- function(Bucket, Key, VersionId = NULL, RequestPayer
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
@@ -2147,7 +2193,7 @@ s3_get_object_lock_configuration <- function(Bucket, ExpectedBucketOwner = NULL)
 #' Retrieves an object's retention settings
 #'
 #' @description
-#' Retrieves an object's retention settings. For more information, see Locking Objects.
+#' Retrieves an object's retention settings. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/get_object_retention.html](https://paws-r.github.io/docs/s3/get_object_retention.html) for full documentation.
 #'
@@ -2159,8 +2205,9 @@ s3_get_object_lock_configuration <- function(Bucket, ExpectedBucketOwner = NULL)
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The key name for the object whose retention settings you want to
 #' retrieve.
 #' @param VersionId The version ID for the object whose retention settings you want to
@@ -2205,8 +2252,9 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -2214,8 +2262,10 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which to get the tagging information.
 #' @param VersionId The versionId of the object for which to get the tagging information.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -2246,7 +2296,7 @@ s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBucketO
 #' Returns torrent files from a bucket
 #'
 #' @description
-#' Returns torrent files from a bucket. BitTorrent can save you bandwidth when you're distributing large files. For more information about BitTorrent, see Using BitTorrent with Amazon S3.
+#' Returns torrent files from a bucket. BitTorrent can save you bandwidth when you're distributing large files. For more information about BitTorrent, see [Using BitTorrent with Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/uploading-downloading-objects.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/get_object_torrent.html](https://paws-r.github.io/docs/s3/get_object_torrent.html) for full documentation.
 #'
@@ -2281,7 +2331,7 @@ s3_get_object_torrent <- function(Bucket, Key, RequestPayer = NULL, ExpectedBuck
 #' Retrieves the PublicAccessBlock configuration for an Amazon S3 bucket
 #'
 #' @description
-#' Retrieves the `PublicAccessBlock` configuration for an Amazon S3 bucket. To use this operation, you must have the `s3:GetBucketPublicAccessBlock` permission. For more information about Amazon S3 permissions, see Specifying Permissions in a Policy.
+#' Retrieves the `PublicAccessBlock` configuration for an Amazon S3 bucket. To use this operation, you must have the `s3:GetBucketPublicAccessBlock` permission. For more information about Amazon S3 permissions, see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/get_public_access_block.html](https://paws-r.github.io/docs/s3/get_public_access_block.html) for full documentation.
 #'
@@ -2326,8 +2376,9 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -2335,8 +2386,10 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
@@ -2376,8 +2429,9 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -2385,8 +2439,10 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
 #' specified; otherwise, return a 412 (precondition failed) error.
 #' @param IfModifiedSince Return the object only if it has been modified since the specified time;
@@ -2629,8 +2685,9 @@ s3_list_buckets <- function() {
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -2638,8 +2695,10 @@ s3_list_buckets <- function() {
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Delimiter Character you use to group keys.
 #' 
 #' All keys that contain the same string between the prefix, if specified,
@@ -2763,8 +2822,9 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -2772,8 +2832,10 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character you use to group keys.
 #' @param EncodingType 
 #' @param Marker Marker is where you want Amazon S3 to start listing from. Amazon S3
@@ -2814,7 +2876,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' request
 #'
 #' @description
-#' Returns some or all (up to 1,000) of the objects in a bucket with each request. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A `200 OK` response can contain valid or invalid XML. Make sure to design your application to parse the contents of the response and handle it appropriately. Objects are returned sorted in an ascending order of the respective key names in the list. For more information about listing objects, see Listing object keys programmatically
+#' Returns some or all (up to 1,000) of the objects in a bucket with each request. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A `200 OK` response can contain valid or invalid XML. Make sure to design your application to parse the contents of the response and handle it appropriately. Objects are returned sorted in an ascending order of the respective key names in the list. For more information about listing objects, see [Listing object keys programmatically](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html)
 #'
 #' See [https://paws-r.github.io/docs/s3/list_objects_v2.html](https://paws-r.github.io/docs/s3/list_objects_v2.html) for full documentation.
 #'
@@ -2825,8 +2887,9 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -2834,8 +2897,10 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character you use to group keys.
 #' @param EncodingType Encoding type used by Amazon S3 to encode object keys in the response.
 #' @param MaxKeys Sets the maximum number of keys returned in the response. By default the
@@ -2892,8 +2957,9 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -2901,8 +2967,10 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
 #' @param MaxParts Sets the maximum number of parts to return.
 #' @param PartNumberMarker Specifies the part after which listing should begin. Only parts with
@@ -2914,16 +2982,20 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' `403 Forbidden` (access denied).
 #' @param SSECustomerAlgorithm The server-side encryption (SSE) algorithm used to encrypt the object.
 #' This parameter is needed only when the object was created using a
-#' checksum algorithm. For more information, see Protecting data using
-#' SSE-C keys in the *Amazon S3 User Guide*.
+#' checksum algorithm. For more information, see [Protecting data using
+#' SSE-C
+#' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
+#' in the *Amazon S3 User Guide*.
 #' @param SSECustomerKey The server-side encryption (SSE) customer managed key. This parameter is
 #' needed only when the object was created using a checksum algorithm. For
-#' more information, see Protecting data using SSE-C keys in the *Amazon S3
-#' User Guide*.
+#' more information, see [Protecting data using SSE-C
+#' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
+#' in the *Amazon S3 User Guide*.
 #' @param SSECustomerKeyMD5 The MD5 server-side encryption (SSE) customer managed key. This
 #' parameter is needed only when the object was created using a checksum
-#' algorithm. For more information, see Protecting data using SSE-C keys in
-#' the *Amazon S3 User Guide*.
+#' algorithm. For more information, see [Protecting data using SSE-C
+#' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
+#' in the *Amazon S3 User Guide*.
 #'
 #' @keywords internal
 #'
@@ -2962,7 +3034,8 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -2992,7 +3065,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' (ACL)
 #'
 #' @description
-#' Sets the permissions on an existing bucket using access control lists (ACL). For more information, see Using ACLs. To set the ACL of a bucket, you must have `WRITE_ACP` permission.
+#' Sets the permissions on an existing bucket using access control lists (ACL). For more information, see [Using ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html). To set the ACL of a bucket, you must have `WRITE_ACP` permission.
 #'
 #' See [https://paws-r.github.io/docs/s3/put_bucket_acl.html](https://paws-r.github.io/docs/s3/put_bucket_acl.html) for full documentation.
 #'
@@ -3002,7 +3075,8 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' @param Bucket &#91;required&#93; The bucket to which to apply the ACL.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. This header must be
 #' used as a message integrity check to verify that the request body was
-#' not corrupted in transit. For more information, go to RFC 1864.
+#' not corrupted in transit. For more information, go to [RFC
+#' 1864.](https://www.ietf.org/rfc/rfc1864.txt)
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
@@ -3012,7 +3086,8 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3094,11 +3169,13 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #'
 #' @param Bucket &#91;required&#93; Specifies the bucket impacted by the `cors`configuration.
 #' @param CORSConfiguration &#91;required&#93; Describes the cross-origin access configuration for objects in an Amazon
-#' S3 bucket. For more information, see Enabling Cross-Origin Resource
-#' Sharing in the *Amazon S3 User Guide*.
+#' S3 bucket. For more information, see [Enabling Cross-Origin Resource
+#' Sharing](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. This header must be
 #' used as a message integrity check to verify that the request body was
-#' not corrupted in transit. For more information, go to RFC 1864.
+#' not corrupted in transit. For more information, go to [RFC
+#' 1864.](https://www.ietf.org/rfc/rfc1864.txt)
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
@@ -3108,7 +3185,8 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3148,7 +3226,9 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' @param Bucket &#91;required&#93; Specifies default encryption for a bucket using server-side encryption
 #' with Amazon S3-managed keys (SSE-S3) or customer managed keys (SSE-KMS).
 #' For information about the Amazon S3 default encryption feature, see
-#' Amazon S3 Default Bucket Encryption in the *Amazon S3 User Guide*.
+#' [Amazon S3 Default Bucket
+#' Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the server-side encryption
 #' configuration.
 #' 
@@ -3160,7 +3240,8 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3273,7 +3354,8 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3307,7 +3389,7 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' existing lifecycle configuration
 #'
 #' @description
-#' Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration. Keep in mind that this will overwrite an existing lifecycle configuration, so if you want to retain any configuration details, they must be included in the new lifecycle configuration. For information about lifecycle configuration, see Managing your storage lifecycle.
+#' Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration. Keep in mind that this will overwrite an existing lifecycle configuration, so if you want to retain any configuration details, they must be included in the new lifecycle configuration. For information about lifecycle configuration, see [Managing your storage lifecycle](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/put_bucket_lifecycle_configuration.html](https://paws-r.github.io/docs/s3/put_bucket_lifecycle_configuration.html) for full documentation.
 #'
@@ -3317,7 +3399,8 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3368,7 +3451,8 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NU
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3451,7 +3535,8 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3484,7 +3569,7 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' Enables notifications of specified events for a bucket
 #'
 #' @description
-#' Enables notifications of specified events for a bucket. For more information about event notifications, see Configuring Event Notifications.
+#' Enables notifications of specified events for a bucket. For more information about event notifications, see [Configuring Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/put_bucket_notification_configuration.html](https://paws-r.github.io/docs/s3/put_bucket_notification_configuration.html) for full documentation.
 #'
@@ -3519,7 +3604,7 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #' Creates or modifies OwnershipControls for an Amazon S3 bucket
 #'
 #' @description
-#' Creates or modifies `OwnershipControls` for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketOwnershipControls` permission. For more information about Amazon S3 permissions, see Specifying permissions in a policy.
+#' Creates or modifies `OwnershipControls` for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketOwnershipControls` permission. For more information about Amazon S3 permissions, see [Specifying permissions in a policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide//using-with-s3-actions.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/put_bucket_ownership_controls.html](https://paws-r.github.io/docs/s3/put_bucket_ownership_controls.html) for full documentation.
 #'
@@ -3574,7 +3659,8 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3609,14 +3695,15 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #' Creates a replication configuration or replaces an existing one
 #'
 #' @description
-#' Creates a replication configuration or replaces an existing one. For more information, see Replication in the *Amazon S3 User Guide*.
+#' Creates a replication configuration or replaces an existing one. For more information, see [Replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html) in the *Amazon S3 User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/s3/put_bucket_replication.html](https://paws-r.github.io/docs/s3/put_bucket_replication.html) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
-#' not corrupted in transit. For more information, see RFC 1864.
+#' not corrupted in transit. For more information, see [RFC
+#' 1864](https://www.ietf.org/rfc/rfc1864.txt).
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
@@ -3626,7 +3713,8 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3660,14 +3748,15 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 #' Sets the request payment configuration for a bucket
 #'
 #' @description
-#' Sets the request payment configuration for a bucket. By default, the bucket owner pays for downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify that the person requesting the download will be charged for the download. For more information, see Requester Pays Buckets.
+#' Sets the request payment configuration for a bucket. By default, the bucket owner pays for downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify that the person requesting the download will be charged for the download. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/put_bucket_request_payment.html](https://paws-r.github.io/docs/s3/put_bucket_request_payment.html) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
-#' not corrupted in transit. For more information, see RFC 1864.
+#' not corrupted in transit. For more information, see [RFC
+#' 1864](https://www.ietf.org/rfc/rfc1864.txt).
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
@@ -3677,7 +3766,8 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3717,7 +3807,8 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' @param Bucket &#91;required&#93; The bucket name.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
-#' not corrupted in transit. For more information, see RFC 1864.
+#' not corrupted in transit. For more information, see [RFC
+#' 1864](https://www.ietf.org/rfc/rfc1864.txt).
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
@@ -3727,7 +3818,8 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3767,7 +3859,8 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @param Bucket &#91;required&#93; The bucket name.
 #' @param ContentMD5 \>The base64-encoded 128-bit MD5 digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
-#' not corrupted in transit. For more information, see RFC 1864.
+#' not corrupted in transit. For more information, see [RFC
+#' 1864](https://www.ietf.org/rfc/rfc1864.txt).
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
@@ -3777,7 +3870,8 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3813,14 +3907,15 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' subresource
 #'
 #' @description
-#' Sets the configuration of the website that is specified in the `website` subresource. To configure a bucket as a website, you can add this subresource on the bucket with website configuration information such as the file name of the index document and any redirect rules. For more information, see Hosting Websites on Amazon S3.
+#' Sets the configuration of the website that is specified in the `website` subresource. To configure a bucket as a website, you can add this subresource on the bucket with website configuration information such as the file name of the index document and any redirect rules. For more information, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/put_bucket_website.html](https://paws-r.github.io/docs/s3/put_bucket_website.html) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. You must use this
 #' header as a message integrity check to verify that the request body was
-#' not corrupted in transit. For more information, see RFC 1864.
+#' not corrupted in transit. For more information, see [RFC
+#' 1864](https://www.ietf.org/rfc/rfc1864.txt).
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
@@ -3830,7 +3925,8 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3867,8 +3963,8 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'
 #' See [https://paws-r.github.io/docs/s3/put_object.html](https://paws-r.github.io/docs/s3/put_object.html) for full documentation.
 #'
-#' @param ACL The canned ACL to apply to the object. For more information, see Canned
-#' ACL.
+#' @param ACL The canned ACL to apply to the object. For more information, see [Canned
+#' ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL).
 #' 
 #' This action is not supported by Amazon S3 on Outposts.
 #' @param Body Object data.
@@ -3879,8 +3975,9 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -3888,37 +3985,41 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param CacheControl Can be used to specify caching behavior along the request/reply chain.
 #' For more information, see
-#' http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.
+#' [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9).
 #' @param ContentDisposition Specifies presentational information for the object. For more
 #' information, see
-#' http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1.
+#' [http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1).
 #' @param ContentEncoding Specifies what content encodings have been applied to the object and
 #' thus what decoding mechanisms must be applied to obtain the media-type
 #' referenced by the Content-Type header field. For more information, see
-#' http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11.
+#' [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11).
 #' @param ContentLanguage The language the content is in.
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
 #' body cannot be determined automatically. For more information, see
-#' http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13.
+#' [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.13).
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the message (without the
 #' headers) according to RFC 1864. This header can be used as a message
 #' integrity check to verify that the data is the same data that was
 #' originally sent. Although it is optional, we recommend using the
 #' Content-MD5 mechanism as an end-to-end integrity check. For more
-#' information about REST request authentication, see REST Authentication.
+#' information about REST request authentication, see [REST
+#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html).
 #' @param ContentType A standard MIME type describing the format of the contents. For more
 #' information, see
-#' http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17.
+#' [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17).
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
 #' using the SDK. This header will not provide any additional functionality
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -3926,26 +4027,30 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @param ChecksumCRC32 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
 #' specifies the base64-encoded, 32-bit CRC32 checksum of the object. For
-#' more information, see Checking object integrity in the *Amazon S3 User
-#' Guide*.
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ChecksumCRC32C This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
 #' specifies the base64-encoded, 32-bit CRC32C checksum of the object. For
-#' more information, see Checking object integrity in the *Amazon S3 User
-#' Guide*.
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA1 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
 #' specifies the base64-encoded, 160-bit SHA-1 digest of the object. For
-#' more information, see Checking object integrity in the *Amazon S3 User
-#' Guide*.
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA256 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
 #' specifies the base64-encoded, 256-bit SHA-256 digest of the object. For
-#' more information, see Checking object integrity in the *Amazon S3 User
-#' Guide*.
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Expires The date and time at which the object is no longer cacheable. For more
 #' information, see
-#' http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21.
+#' [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.21).
 #' @param GrantFullControl Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 #' object.
 #' 
@@ -3967,12 +4072,14 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
 #' different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-#' Storage Class. For more information, see Storage Classes in the *Amazon
-#' S3 User Guide*.
+#' Storage Class. For more information, see [Storage
+#' Classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
+#' in the *Amazon S3 User Guide*.
 #' @param WebsiteRedirectLocation If the bucket is configured as a website, redirects requests for this
 #' object to another object in the same bucket or to an external URL.
 #' Amazon S3 stores the value of this header in the object metadata. For
-#' information about object metadata, see Object Key and Metadata.
+#' information about object metadata, see [Object Key and
+#' Metadata](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingMetadata.html).
 #' 
 #' In the following example, the request header sets the redirect to an
 #' object (anotherPage.html) in the same bucket:
@@ -3984,8 +4091,11 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' 
 #' `x-amz-website-redirect-location: http://www.example.com/`
 #' 
-#' For more information about website hosting in Amazon S3, see Hosting
-#' Websites on Amazon S3 and How to Configure Website Page Redirects.
+#' For more information about website hosting in Amazon S3, see [Hosting
+#' Websites on Amazon
+#' S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html)
+#' and [How to Configure Website Page
+#' Redirects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html).
 #' @param SSECustomerAlgorithm Specifies the algorithm to use to when encrypting the object (for
 #' example, AES256).
 #' @param SSECustomerKey Specifies the customer-provided encryption key for Amazon S3 to use in
@@ -4022,7 +4132,8 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @param ObjectLockRetainUntilDate The date and time when you want this object's Object Lock to expire.
 #' Must be formatted as a timestamp parameter.
 #' @param ObjectLockLegalHoldStatus Specifies whether a legal hold will be applied to this object. For more
-#' information about S3 Object Lock, see Object Lock.
+#' information about S3 Object Lock, see [Object
+#' Lock](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
@@ -4051,12 +4162,12 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' permissions for a new or existing object in an S3 bucket
 #'
 #' @description
-#' Uses the `acl` subresource to set the access control list (ACL) permissions for a new or existing object in an S3 bucket. You must have `WRITE_ACP` permission to set the ACL of an object. For more information, see What permissions can I grant? in the *Amazon S3 User Guide*.
+#' Uses the `acl` subresource to set the access control list (ACL) permissions for a new or existing object in an S3 bucket. You must have `WRITE_ACP` permission to set the ACL of an object. For more information, see [What permissions can I grant?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#permissions) in the *Amazon S3 User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/s3/put_object_acl.html](https://paws-r.github.io/docs/s3/put_object_acl.html) for full documentation.
 #'
-#' @param ACL The canned ACL to apply to the object. For more information, see Canned
-#' ACL.
+#' @param ACL The canned ACL to apply to the object. For more information, see [Canned
+#' ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL).
 #' @param AccessControlPolicy Contains the elements that set the ACL permissions for an object per
 #' grantee.
 #' @param Bucket &#91;required&#93; The bucket name that contains the object to which you want to attach the
@@ -4067,11 +4178,13 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. This header must be
 #' used as a message integrity check to verify that the request body was
-#' not corrupted in transit. For more information, go to RFC 1864.\>
+#' not corrupted in transit. For more information, go to [RFC
+#' 1864.\>](https://www.ietf.org/rfc/rfc1864.txt)
 #' 
 #' For requests made using the Amazon Web Services Command Line Interface
 #' (CLI) or Amazon Web Services SDKs, this field is calculated
@@ -4081,7 +4194,8 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -4110,8 +4224,9 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -4119,8 +4234,10 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param RequestPayer 
 #' @param VersionId VersionId used to reference a specific version of the object.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -4150,7 +4267,7 @@ s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' Applies a legal hold configuration to the specified object
 #'
 #' @description
-#' Applies a legal hold configuration to the specified object. For more information, see Locking Objects.
+#' Applies a legal hold configuration to the specified object. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/put_object_legal_hold.html](https://paws-r.github.io/docs/s3/put_object_legal_hold.html) for full documentation.
 #'
@@ -4162,8 +4279,9 @@ s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The key name for the object that you want to place a legal hold on.
 #' @param LegalHold Container element for the legal hold configuration you want to apply to
 #' the specified object.
@@ -4179,7 +4297,8 @@ s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -4211,7 +4330,7 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 #' Places an Object Lock configuration on the specified bucket
 #'
 #' @description
-#' Places an Object Lock configuration on the specified bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see Locking Objects.
+#' Places an Object Lock configuration on the specified bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/put_object_lock_configuration.html](https://paws-r.github.io/docs/s3/put_object_lock_configuration.html) for full documentation.
 #'
@@ -4231,7 +4350,8 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -4263,7 +4383,7 @@ s3_put_object_lock_configuration <- function(Bucket, ObjectLockConfiguration = N
 #' Places an Object Retention configuration on an object
 #'
 #' @description
-#' Places an Object Retention configuration on an object. For more information, see Locking Objects. Users or accounts require the `s3:PutObjectRetention` permission in order to place an Object Retention configuration on objects. Bypassing a Governance Retention configuration requires the `s3:BypassGovernanceRetention` permission.
+#' Places an Object Retention configuration on an object. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html). Users or accounts require the `s3:PutObjectRetention` permission in order to place an Object Retention configuration on objects. Bypassing a Governance Retention configuration requires the `s3:BypassGovernanceRetention` permission.
 #'
 #' See [https://paws-r.github.io/docs/s3/put_object_retention.html](https://paws-r.github.io/docs/s3/put_object_retention.html) for full documentation.
 #'
@@ -4275,8 +4395,9 @@ s3_put_object_lock_configuration <- function(Bucket, ObjectLockConfiguration = N
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The key name for the object that you want to apply this Object Retention
 #' configuration to.
 #' @param Retention The container element for the Object Retention configuration.
@@ -4295,7 +4416,8 @@ s3_put_object_lock_configuration <- function(Bucket, ObjectLockConfiguration = N
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -4338,8 +4460,9 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -4347,8 +4470,10 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Name of the object key.
 #' @param VersionId The versionId of the object that the tag-set will be added to.
 #' @param ContentMD5 The MD5 hash for the request body.
@@ -4361,7 +4486,8 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -4396,7 +4522,7 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' bucket
 #'
 #' @description
-#' Creates or modifies the `PublicAccessBlock` configuration for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketPublicAccessBlock` permission. For more information about Amazon S3 permissions, see Specifying Permissions in a Policy.
+#' Creates or modifies the `PublicAccessBlock` configuration for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketPublicAccessBlock` permission. For more information about Amazon S3 permissions, see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
 #'
 #' See [https://paws-r.github.io/docs/s3/put_public_access_block.html](https://paws-r.github.io/docs/s3/put_public_access_block.html) for full documentation.
 #'
@@ -4413,7 +4539,8 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -4421,8 +4548,9 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' @param PublicAccessBlockConfiguration &#91;required&#93; The `PublicAccessBlock` configuration that you want to apply to this
 #' Amazon S3 bucket. You can enable the configuration options in any
 #' combination. For more information about when Amazon S3 considers a
-#' bucket or object public, see The Meaning of "Public" in the *Amazon S3
-#' User Guide*.
+#' bucket or object public, see [The Meaning of
+#' "Public"](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html#access-control-block-public-access-policy-status)
+#' in the *Amazon S3 User Guide*.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
@@ -4461,8 +4589,9 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -4470,8 +4599,10 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the action was initiated.
 #' @param VersionId VersionId used to reference a specific version of the object.
 #' @param RestoreRequest 
@@ -4481,7 +4612,8 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -4522,16 +4654,20 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' @param Key &#91;required&#93; The object key.
 #' @param SSECustomerAlgorithm The server-side encryption (SSE) algorithm used to encrypt the object.
 #' This parameter is needed only when the object was created using a
-#' checksum algorithm. For more information, see Protecting data using
-#' SSE-C keys in the *Amazon S3 User Guide*.
+#' checksum algorithm. For more information, see [Protecting data using
+#' SSE-C
+#' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
+#' in the *Amazon S3 User Guide*.
 #' @param SSECustomerKey The server-side encryption (SSE) customer managed key. This parameter is
 #' needed only when the object was created using a checksum algorithm. For
-#' more information, see Protecting data using SSE-C keys in the *Amazon S3
-#' User Guide*.
+#' more information, see [Protecting data using SSE-C
+#' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
+#' in the *Amazon S3 User Guide*.
 #' @param SSECustomerKeyMD5 The MD5 server-side encryption (SSE) customer managed key. This
 #' parameter is needed only when the object was created using a checksum
-#' algorithm. For more information, see Protecting data using SSE-C keys in
-#' the *Amazon S3 User Guide*.
+#' algorithm. For more information, see [Protecting data using SSE-C
+#' keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Expression &#91;required&#93; The expression that is used to query the object.
 #' @param ExpressionType &#91;required&#93; The type of the provided expression (for example, SQL).
 #' @param RequestProgress Specifies if periodic request progress information should be enabled.
@@ -4594,8 +4730,9 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -4603,8 +4740,10 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
 #' body cannot be determined automatically.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the part data. This parameter
@@ -4615,7 +4754,8 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' if not using the SDK. When sending this header, there must be a
 #' corresponding `x-amz-checksum` or `x-amz-trailer` header sent.
 #' Otherwise, Amazon S3 fails the request with the HTTP status code
-#' `400 Bad Request`. For more information, see Checking object integrity
+#' `400 Bad Request`. For more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided
@@ -4627,23 +4767,27 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' @param ChecksumCRC32 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
 #' specifies the base64-encoded, 32-bit CRC32 checksum of the object. For
-#' more information, see Checking object integrity in the *Amazon S3 User
-#' Guide*.
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ChecksumCRC32C This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
 #' specifies the base64-encoded, 32-bit CRC32C checksum of the object. For
-#' more information, see Checking object integrity in the *Amazon S3 User
-#' Guide*.
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA1 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
 #' specifies the base64-encoded, 160-bit SHA-1 digest of the object. For
-#' more information, see Checking object integrity in the *Amazon S3 User
-#' Guide*.
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param ChecksumSHA256 This header can be used as a data integrity check to verify that the
 #' data received is the same data that was originally sent. This header
 #' specifies the base64-encoded, 256-bit SHA-256 digest of the object. For
-#' more information, see Checking object integrity in the *Amazon S3 User
-#' Guide*.
+#' more information, see [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
 #' @param PartNumber &#91;required&#93; Part number of part being uploaded. This is a positive integer between 1
 #' and 10,000.
@@ -4699,8 +4843,9 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' *AccessPointName*-*AccountId*.s3-accesspoint.*Region*.amazonaws.com.
 #' When using this action with an access point through the Amazon Web
 #' Services SDKs, you provide the access point ARN in place of the bucket
-#' name. For more information about access point ARNs, see Using access
-#' points in the *Amazon S3 User Guide*.
+#' name. For more information about access point ARNs, see [Using access
+#' points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' When using this action with Amazon S3 on Outposts, you must direct
 #' requests to the S3 on Outposts hostname. The S3 on Outposts hostname
@@ -4708,11 +4853,14 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' ` AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com`.
 #' When using this action with S3 on Outposts through the Amazon Web
 #' Services SDKs, you provide the Outposts bucket ARN in place of the
-#' bucket name. For more information about S3 on Outposts ARNs, see Using
-#' Amazon S3 on Outposts in the *Amazon S3 User Guide*.
+#' bucket name. For more information about S3 on Outposts ARNs, see [Using
+#' Amazon S3 on
+#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' in the *Amazon S3 User Guide*.
 #' @param CopySource &#91;required&#93; Specifies the source object for the copy operation. You specify the
 #' value in one of two formats, depending on whether you want to access the
-#' source object through an access point:
+#' source object through an [access
+#' point](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html):
 #' 
 #' -   For objects not accessed through an access point, specify the name
 #'     of the source bucket and key of the source object, separated by a
@@ -4815,7 +4963,7 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' Lambda access points
 #'
 #' @description
-#' Passes transformed objects to a [`get_object`][s3_get_object] operation when using Object Lambda access points. For information about Object Lambda access points, see Transforming objects with Object Lambda access points in the *Amazon S3 User Guide*.
+#' Passes transformed objects to a [`get_object`][s3_get_object] operation when using Object Lambda access points. For information about Object Lambda access points, see [Transforming objects with Object Lambda access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html) in the *Amazon S3 User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/s3/write_get_object_response.html](https://paws-r.github.io/docs/s3/write_get_object_response.html) for full documentation.
 #'
@@ -4883,7 +5031,9 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' stored in Amazon S3. Amazon S3 will perform validation of the checksum
 #' values only when the original [`get_object`][s3_get_object] request
 #' required checksum validation. For more information about checksums, see
-#' Checking object integrity in the *Amazon S3 User Guide*.
+#' [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' Only one checksum header can be specified at a time. If you supply
 #' multiple checksum headers, this request will fail.
@@ -4894,7 +5044,9 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' stored in Amazon S3. Amazon S3 will perform validation of the checksum
 #' values only when the original [`get_object`][s3_get_object] request
 #' required checksum validation. For more information about checksums, see
-#' Checking object integrity in the *Amazon S3 User Guide*.
+#' [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' Only one checksum header can be specified at a time. If you supply
 #' multiple checksum headers, this request will fail.
@@ -4905,7 +5057,9 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' stored in Amazon S3. Amazon S3 will perform validation of the checksum
 #' values only when the original [`get_object`][s3_get_object] request
 #' required checksum validation. For more information about checksums, see
-#' Checking object integrity in the *Amazon S3 User Guide*.
+#' [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' Only one checksum header can be specified at a time. If you supply
 #' multiple checksum headers, this request will fail.
@@ -4916,7 +5070,9 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' stored in Amazon S3. Amazon S3 will perform validation of the checksum
 #' values only when the original [`get_object`][s3_get_object] request
 #' required checksum validation. For more information about checksums, see
-#' Checking object integrity in the *Amazon S3 User Guide*.
+#' [Checking object
+#' integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html)
+#' in the *Amazon S3 User Guide*.
 #' 
 #' Only one checksum header can be specified at a time. If you supply
 #' multiple checksum headers, this request will fail.
@@ -4937,14 +5093,16 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' headers.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ObjectLockMode Indicates whether an object stored in Amazon S3 has Object Lock enabled.
-#' For more information about S3 Object Lock, see Object Lock.
+#' For more information about S3 Object Lock, see [Object
+#' Lock](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
 #' @param ObjectLockLegalHoldStatus Indicates whether an object stored in Amazon S3 has an active legal
 #' hold.
 #' @param ObjectLockRetainUntilDate The date and time when Object Lock is configured to expire.
 #' @param PartsCount The count of parts this object has.
 #' @param ReplicationStatus Indicates if request involves bucket that is either a source or
 #' destination in a Replication rule. For more information about S3
-#' Replication, see Replication.
+#' Replication, see
+#' [Replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html).
 #' @param RequestCharged 
 #' @param Restore Provides information about object restoration operation and expiration
 #' time of the restored object copy.
@@ -4957,13 +5115,14 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' Service (Amazon Web Services KMS) symmetric customer managed key that
 #' was used for stored in Amazon S3 object.
 #' @param SSECustomerKeyMD5 128-bit MD5 digest of customer-provided encryption key used in Amazon S3
-#' to encrypt data stored in S3. For more information, see Protecting data
+#' to encrypt data stored in S3. For more information, see [Protecting data
 #' using server-side encryption with customer-provided encryption keys
-#' (SSE-C).
+#' (SSE-C)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html).
 #' @param StorageClass Provides storage class information of the object. Amazon S3 returns this
 #' header for all objects except for S3 Standard storage class objects.
 #' 
-#' For more information, see Storage Classes.
+#' For more information, see [Storage
+#' Classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html).
 #' @param TagCount The number of tags, if any, on the object.
 #' @param VersionId An ID used to reference a specific version of the object.
 #' @param BucketKeyEnabled Indicates whether the object stored in Amazon S3 uses an S3 bucket key

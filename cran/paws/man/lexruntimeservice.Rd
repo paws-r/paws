@@ -68,11 +68,11 @@ operations, see the build-time API, .
 \section{Operations}{
 
 \tabular{ll}{
-\link[=lexruntimeservice_delete_session]{delete_session} \tab Removes session information for a specified bot, alias, and user ID\cr
-\link[=lexruntimeservice_get_session]{get_session} \tab Returns session information for a specified bot, alias, and user ID\cr
-\link[=lexruntimeservice_post_content]{post_content} \tab Sends user input (text or speech) to Amazon Lex\cr
-\link[=lexruntimeservice_post_text]{post_text} \tab Sends user input to Amazon Lex\cr
-\link[=lexruntimeservice_put_session]{put_session} \tab Creates a new session or modifies an existing session with an Amazon Lex bot
+\link[paws.machine.learning:lexruntimeservice_delete_session]{delete_session} \tab Removes session information for a specified bot, alias, and user ID\cr
+\link[paws.machine.learning:lexruntimeservice_get_session]{get_session} \tab Returns session information for a specified bot, alias, and user ID\cr
+\link[paws.machine.learning:lexruntimeservice_post_content]{post_content} \tab Sends user input (text or speech) to Amazon Lex\cr
+\link[paws.machine.learning:lexruntimeservice_post_text]{post_text} \tab Sends user input to Amazon Lex\cr
+\link[paws.machine.learning:lexruntimeservice_put_session]{put_session} \tab Creates a new session or modifies an existing session with an Amazon Lex bot
 }
 }
 

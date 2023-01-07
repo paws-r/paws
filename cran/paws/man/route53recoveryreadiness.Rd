@@ -57,38 +57,38 @@ Recovery readiness
 \section{Operations}{
 
 \tabular{ll}{
-\link[=route53recoveryreadiness_create_cell]{create_cell} \tab Creates a cell in an account\cr
-\link[=route53recoveryreadiness_create_cross_account_authorization]{create_cross_account_authorization} \tab Creates a cross-account readiness authorization\cr
-\link[=route53recoveryreadiness_create_readiness_check]{create_readiness_check} \tab Creates a readiness check in an account\cr
-\link[=route53recoveryreadiness_create_recovery_group]{create_recovery_group} \tab Creates a recovery group in an account\cr
-\link[=route53recoveryreadiness_create_resource_set]{create_resource_set} \tab Creates a resource set\cr
-\link[=route53recoveryreadiness_delete_cell]{delete_cell} \tab Delete a cell\cr
-\link[=route53recoveryreadiness_delete_cross_account_authorization]{delete_cross_account_authorization} \tab Deletes cross account readiness authorization\cr
-\link[=route53recoveryreadiness_delete_readiness_check]{delete_readiness_check} \tab Deletes a readiness check\cr
-\link[=route53recoveryreadiness_delete_recovery_group]{delete_recovery_group} \tab Deletes a recovery group\cr
-\link[=route53recoveryreadiness_delete_resource_set]{delete_resource_set} \tab Deletes a resource set\cr
-\link[=route53recoveryreadiness_get_architecture_recommendations]{get_architecture_recommendations} \tab Gets recommendations about architecture designs for improving resiliency for an application, based on a recovery group\cr
-\link[=route53recoveryreadiness_get_cell]{get_cell} \tab Gets information about a cell including cell name, cell Amazon Resource Name (ARN), ARNs of nested cells for this cell, and a list of those cell ARNs with their associated recovery group ARNs\cr
-\link[=route53recoveryreadiness_get_cell_readiness_summary]{get_cell_readiness_summary} \tab Gets readiness for a cell\cr
-\link[=route53recoveryreadiness_get_readiness_check]{get_readiness_check} \tab Gets details about a readiness check\cr
-\link[=route53recoveryreadiness_get_readiness_check_resource_status]{get_readiness_check_resource_status} \tab Gets individual readiness status for a readiness check\cr
-\link[=route53recoveryreadiness_get_readiness_check_status]{get_readiness_check_status} \tab Gets the readiness status for an individual readiness check\cr
-\link[=route53recoveryreadiness_get_recovery_group]{get_recovery_group} \tab Gets details about a recovery group, including a list of the cells that are included in it\cr
-\link[=route53recoveryreadiness_get_recovery_group_readiness_summary]{get_recovery_group_readiness_summary} \tab Displays a summary of information about a recovery group's readiness status\cr
-\link[=route53recoveryreadiness_get_resource_set]{get_resource_set} \tab Displays the details about a resource set, including a list of the resources in the set\cr
-\link[=route53recoveryreadiness_list_cells]{list_cells} \tab Lists the cells for an account\cr
-\link[=route53recoveryreadiness_list_cross_account_authorizations]{list_cross_account_authorizations} \tab Lists the cross-account readiness authorizations that are in place for an account\cr
-\link[=route53recoveryreadiness_list_readiness_checks]{list_readiness_checks} \tab Lists the readiness checks for an account\cr
-\link[=route53recoveryreadiness_list_recovery_groups]{list_recovery_groups} \tab Lists the recovery groups in an account\cr
-\link[=route53recoveryreadiness_list_resource_sets]{list_resource_sets} \tab Lists the resource sets in an account\cr
-\link[=route53recoveryreadiness_list_rules]{list_rules} \tab Lists all readiness rules, or lists the readiness rules for a specific resource type\cr
-\link[=route53recoveryreadiness_list_tags_for_resources]{list_tags_for_resources} \tab Lists the tags for a resource\cr
-\link[=route53recoveryreadiness_tag_resource]{tag_resource} \tab Adds a tag to a resource\cr
-\link[=route53recoveryreadiness_untag_resource]{untag_resource} \tab Removes a tag from a resource\cr
-\link[=route53recoveryreadiness_update_cell]{update_cell} \tab Updates a cell to replace the list of nested cells with a new list of nested cells\cr
-\link[=route53recoveryreadiness_update_readiness_check]{update_readiness_check} \tab Updates a readiness check\cr
-\link[=route53recoveryreadiness_update_recovery_group]{update_recovery_group} \tab Updates a recovery group\cr
-\link[=route53recoveryreadiness_update_resource_set]{update_resource_set} \tab Updates a resource set
+\link[paws.networking:route53recoveryreadiness_create_cell]{create_cell} \tab Creates a cell in an account\cr
+\link[paws.networking:route53recoveryreadiness_create_cross_account_authorization]{create_cross_account_authorization} \tab Creates a cross-account readiness authorization\cr
+\link[paws.networking:route53recoveryreadiness_create_readiness_check]{create_readiness_check} \tab Creates a readiness check in an account\cr
+\link[paws.networking:route53recoveryreadiness_create_recovery_group]{create_recovery_group} \tab Creates a recovery group in an account\cr
+\link[paws.networking:route53recoveryreadiness_create_resource_set]{create_resource_set} \tab Creates a resource set\cr
+\link[paws.networking:route53recoveryreadiness_delete_cell]{delete_cell} \tab Delete a cell\cr
+\link[paws.networking:route53recoveryreadiness_delete_cross_account_authorization]{delete_cross_account_authorization} \tab Deletes cross account readiness authorization\cr
+\link[paws.networking:route53recoveryreadiness_delete_readiness_check]{delete_readiness_check} \tab Deletes a readiness check\cr
+\link[paws.networking:route53recoveryreadiness_delete_recovery_group]{delete_recovery_group} \tab Deletes a recovery group\cr
+\link[paws.networking:route53recoveryreadiness_delete_resource_set]{delete_resource_set} \tab Deletes a resource set\cr
+\link[paws.networking:route53recoveryreadiness_get_architecture_recommendations]{get_architecture_recommendations} \tab Gets recommendations about architecture designs for improving resiliency for an application, based on a recovery group\cr
+\link[paws.networking:route53recoveryreadiness_get_cell]{get_cell} \tab Gets information about a cell including cell name, cell Amazon Resource Name (ARN), ARNs of nested cells for this cell, and a list of those cell ARNs with their associated recovery group ARNs\cr
+\link[paws.networking:route53recoveryreadiness_get_cell_readiness_summary]{get_cell_readiness_summary} \tab Gets readiness for a cell\cr
+\link[paws.networking:route53recoveryreadiness_get_readiness_check]{get_readiness_check} \tab Gets details about a readiness check\cr
+\link[paws.networking:route53recoveryreadiness_get_readiness_check_resource_status]{get_readiness_check_resource_status} \tab Gets individual readiness status for a readiness check\cr
+\link[paws.networking:route53recoveryreadiness_get_readiness_check_status]{get_readiness_check_status} \tab Gets the readiness status for an individual readiness check\cr
+\link[paws.networking:route53recoveryreadiness_get_recovery_group]{get_recovery_group} \tab Gets details about a recovery group, including a list of the cells that are included in it\cr
+\link[paws.networking:route53recoveryreadiness_get_recovery_group_readiness_summary]{get_recovery_group_readiness_summary} \tab Displays a summary of information about a recovery group's readiness status\cr
+\link[paws.networking:route53recoveryreadiness_get_resource_set]{get_resource_set} \tab Displays the details about a resource set, including a list of the resources in the set\cr
+\link[paws.networking:route53recoveryreadiness_list_cells]{list_cells} \tab Lists the cells for an account\cr
+\link[paws.networking:route53recoveryreadiness_list_cross_account_authorizations]{list_cross_account_authorizations} \tab Lists the cross-account readiness authorizations that are in place for an account\cr
+\link[paws.networking:route53recoveryreadiness_list_readiness_checks]{list_readiness_checks} \tab Lists the readiness checks for an account\cr
+\link[paws.networking:route53recoveryreadiness_list_recovery_groups]{list_recovery_groups} \tab Lists the recovery groups in an account\cr
+\link[paws.networking:route53recoveryreadiness_list_resource_sets]{list_resource_sets} \tab Lists the resource sets in an account\cr
+\link[paws.networking:route53recoveryreadiness_list_rules]{list_rules} \tab Lists all readiness rules, or lists the readiness rules for a specific resource type\cr
+\link[paws.networking:route53recoveryreadiness_list_tags_for_resources]{list_tags_for_resources} \tab Lists the tags for a resource\cr
+\link[paws.networking:route53recoveryreadiness_tag_resource]{tag_resource} \tab Adds a tag to a resource\cr
+\link[paws.networking:route53recoveryreadiness_untag_resource]{untag_resource} \tab Removes a tag from a resource\cr
+\link[paws.networking:route53recoveryreadiness_update_cell]{update_cell} \tab Updates a cell to replace the list of nested cells with a new list of nested cells\cr
+\link[paws.networking:route53recoveryreadiness_update_readiness_check]{update_readiness_check} \tab Updates a readiness check\cr
+\link[paws.networking:route53recoveryreadiness_update_recovery_group]{update_recovery_group} \tab Updates a recovery group\cr
+\link[paws.networking:route53recoveryreadiness_update_resource_set]{update_resource_set} \tab Updates a resource set
 }
 }
 

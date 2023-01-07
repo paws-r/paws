@@ -59,16 +59,16 @@ Amazon Textract.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=textract_analyze_document]{analyze_document} \tab Analyzes an input document for relationships between detected items\cr
-\link[=textract_analyze_expense]{analyze_expense} \tab AnalyzeExpense synchronously analyzes an input document for financially related relationships between text\cr
-\link[=textract_analyze_id]{analyze_id} \tab Analyzes identity documents for relevant information\cr
-\link[=textract_detect_document_text]{detect_document_text} \tab Detects text in the input document\cr
-\link[=textract_get_document_analysis]{get_document_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes text in a document\cr
-\link[=textract_get_document_text_detection]{get_document_text_detection} \tab Gets the results for an Amazon Textract asynchronous operation that detects text in a document\cr
-\link[=textract_get_expense_analysis]{get_expense_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes invoices and receipts\cr
-\link[=textract_start_document_analysis]{start_document_analysis} \tab Starts the asynchronous analysis of an input document for relationships between detected items such as key-value pairs, tables, and selection elements\cr
-\link[=textract_start_document_text_detection]{start_document_text_detection} \tab Starts the asynchronous detection of text in a document\cr
-\link[=textract_start_expense_analysis]{start_expense_analysis} \tab Starts the asynchronous analysis of invoices or receipts for data like contact information, items purchased, and vendor names
+\link[paws.machine.learning:textract_analyze_document]{analyze_document} \tab Analyzes an input document for relationships between detected items\cr
+\link[paws.machine.learning:textract_analyze_expense]{analyze_expense} \tab AnalyzeExpense synchronously analyzes an input document for financially related relationships between text\cr
+\link[paws.machine.learning:textract_analyze_id]{analyze_id} \tab Analyzes identity documents for relevant information\cr
+\link[paws.machine.learning:textract_detect_document_text]{detect_document_text} \tab Detects text in the input document\cr
+\link[paws.machine.learning:textract_get_document_analysis]{get_document_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes text in a document\cr
+\link[paws.machine.learning:textract_get_document_text_detection]{get_document_text_detection} \tab Gets the results for an Amazon Textract asynchronous operation that detects text in a document\cr
+\link[paws.machine.learning:textract_get_expense_analysis]{get_expense_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes invoices and receipts\cr
+\link[paws.machine.learning:textract_start_document_analysis]{start_document_analysis} \tab Starts the asynchronous analysis of an input document for relationships between detected items such as key-value pairs, tables, and selection elements\cr
+\link[paws.machine.learning:textract_start_document_text_detection]{start_document_text_detection} \tab Starts the asynchronous detection of text in a document\cr
+\link[paws.machine.learning:textract_start_expense_analysis]{start_expense_analysis} \tab Starts the asynchronous analysis of invoices or receipts for data like contact information, items purchased, and vendor names
 }
 }
 

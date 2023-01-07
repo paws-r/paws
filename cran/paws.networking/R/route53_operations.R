@@ -366,19 +366,19 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' 
 #' You must configure the customer managed customer managed key as follows:
 #' 
-#' ### Status
+#' **Status**
 #' 
 #' Enabled
 #' 
-#' ### Key spec
+#' **Key spec**
 #' 
 #' ECC_NIST_P256
 #' 
-#' ### Key usage
+#' **Key usage**
 #' 
 #' Sign and verify
 #' 
-#' ### Key policy
+#' **Key policy**
 #' 
 #' The key policy must give permission for the following actions:
 #' 
@@ -394,7 +394,8 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' -   `"Service": "dnssec-route53.amazonaws.com"`
 #' 
 #' For more information about working with a customer managed key in KMS,
-#' see Key Management Service concepts.
+#' see [Key Management Service
+#' concepts](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html).
 #' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK). `Name` can include
 #' numbers, letters, and underscores (_). `Name` must be unique for each
 #' key-signing key in the same hosted zone.
@@ -436,8 +437,11 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' arn:aws:logs:*region*:*account-id*:log-group:*log_group_name*
 #' 
 #' To get the ARN for a log group, you can use the CloudWatch console, the
-#' DescribeLogGroups API action, the describe-log-groups command, or the
-#' applicable command in one of the Amazon Web Services SDKs.
+#' [DescribeLogGroups](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html)
+#' API action, the
+#' [describe-log-groups](https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html)
+#' command, or the applicable command in one of the Amazon Web Services
+#' SDKs.
 #'
 #' @keywords internal
 #'
@@ -509,7 +513,8 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
 #'
 #' @param Name &#91;required&#93; The name of the traffic policy.
 #' @param Document &#91;required&#93; The definition of this traffic policy in JSON format. For more
-#' information, see Traffic Policy Document Format.
+#' information, see [Traffic Policy Document
+#' Format](https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html).
 #' @param Comment (Optional) Any comments that you want to include about the traffic
 #' policy.
 #'
@@ -1208,7 +1213,8 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' 
 #' -   **SA**: South America
 #' @param CountryCode Amazon Route 53 uses the two-letter country codes that are specified in
-#' ISO standard 3166-1 alpha-2.
+#' [ISO standard 3166-1
+#' alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 #' @param SubdivisionCode The code for the subdivision, such as a particular state within the
 #' United States. For a list of US state abbreviations, see Appendix B:
 #' Two–Letter State and Possession Abbreviations on the United States
@@ -2031,8 +2037,9 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 #' @param MaxResults (Optional) The maximum number of query logging configurations that you
 #' want Amazon Route 53 to return in response to the current request. If
 #' the current Amazon Web Services account has more than `MaxResults`
-#' configurations, use the value of NextToken in the response to get the
-#' next page of results.
+#' configurations, use the value of
+#' [NextToken](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListQueryLoggingConfigs.html#API_ListQueryLoggingConfigs_RequestSyntax)
+#' in the response to get the next page of results.
 #' 
 #' If you don't specify a value for `MaxResults`, Route 53 returns up to
 #' 100 configurations.
@@ -2701,25 +2708,30 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #'     (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 #'     in the *Amazon EC2 User Guide for Linux Instances*
 #' 
-#' -   Windows: Elastic IP Addresses (EIP) in the *Amazon EC2 User Guide
-#'     for Windows Instances*
+#' -   Windows: [Elastic IP Addresses
+#'     (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html)
+#'     in the *Amazon EC2 User Guide for Windows Instances*
 #' 
 #' If a health check already has a value for `IPAddress`, you can change
 #' the value. However, you can't update an existing health check to add or
 #' remove the value of `IPAddress`.
 #' 
-#' For more information, see FullyQualifiedDomainName.
+#' For more information, see
+#' [FullyQualifiedDomainName](https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
 #' 
 #' Constraints: Route 53 can't check the health of endpoints for which the
 #' IP address is in local, private, non-routable, or multicast ranges. For
 #' more information about IP addresses for which you can't create health
 #' checks, see the following documents:
 #' 
-#' -   RFC 5735, Special Use IPv4 Addresses
+#' -   [RFC 5735, Special Use IPv4
+#'     Addresses](https://www.rfc-editor.org/rfc/rfc5735)
 #' 
-#' -   RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space
+#' -   [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
+#'     Space](https://www.rfc-editor.org/rfc/rfc6598)
 #' 
-#' -   RFC 5156, Special-Use IPv6 Addresses
+#' -   [RFC 5156, Special-Use IPv6
+#'     Addresses](https://www.rfc-editor.org/rfc/rfc5156)
 #' @param Port The port on the endpoint that you want Amazon Route 53 to perform health
 #' checks on.
 #' 
@@ -2806,9 +2818,10 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' `Type` when you update a health check.)
 #' @param FailureThreshold The number of consecutive health checks that an endpoint must pass or
 #' fail for Amazon Route 53 to change the current status of the endpoint
-#' from unhealthy to healthy or vice versa. For more information, see How
-#' Amazon Route 53 Determines Whether an Endpoint Is Healthy in the *Amazon
-#' Route 53 Developer Guide*.
+#' from unhealthy to healthy or vice versa. For more information, see [How
+#' Amazon Route 53 Determines Whether an Endpoint Is
+#' Healthy](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' If you don't specify a value for `FailureThreshold`, the default value
 #' is three health checks.
@@ -2831,10 +2844,11 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' health check to always be healthy. If you configured DNS failover, Route
 #' 53 continues to route traffic to the corresponding resources. If you
 #' want to stop routing traffic to a resource, change the value of
-#' Inverted.
+#' [Inverted](https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-Inverted).
 #' 
 #' Charges for a health check still apply when the health check is
-#' disabled. For more information, see Amazon Route 53 Pricing.
+#' disabled. For more information, see [Amazon Route 53
+#' Pricing](https://aws.amazon.com/route53/pricing/).
 #' @param HealthThreshold The number of child health checks that are associated with a
 #' `CALCULATED` health that Amazon Route 53 must consider healthy for the
 #' `CALCULATED` health check to be considered healthy. To specify the child
@@ -2895,16 +2909,21 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' each element that you want to reset to the default value. Valid values
 #' for `ResettableElementName` include the following:
 #' 
-#' -   `ChildHealthChecks`: Amazon Route 53 resets ChildHealthChecks to
-#'     null.
+#' -   `ChildHealthChecks`: Amazon Route 53 resets
+#'     [ChildHealthChecks](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ChildHealthChecks)
+#'     to null.
 #' 
 #' -   `FullyQualifiedDomainName`: Route 53 resets
-#'     FullyQualifiedDomainName. to null.
+#'     [FullyQualifiedDomainName](https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
+#'     to null.
 #' 
-#' -   `Regions`: Route 53 resets the Regions list to the default set of
-#'     regions.
+#' -   `Regions`: Route 53 resets the
+#'     [Regions](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-Regions)
+#'     list to the default set of regions.
 #' 
-#' -   `ResourcePath`: Route 53 resets ResourcePath to null.
+#' -   `ResourcePath`: Route 53 resets
+#'     [ResourcePath](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ResourcePath)
+#'     to null.
 #'
 #' @keywords internal
 #'

@@ -595,11 +595,11 @@ codebuild_delete_webhook <- function(projectName) {
 #' @param sortOrder Specifies if the results are sorted in ascending or descending order.
 #' @param sortBy Specifies how the results are sorted. Possible values are:
 #' 
-#' ### FILE_PATH
+#' **FILE_PATH**
 #' 
 #' The results are sorted by file path.
 #' 
-#' ### LINE_COVERAGE_PERCENTAGE
+#' **LINE_COVERAGE_PERCENTAGE**
 #' 
 #' The results are sorted by the percentage of lines that are covered.
 #' @param minLineCoveragePercentage The minimum line coverage percentage to report.
@@ -681,45 +681,45 @@ codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResult
 #' @param trendField &#91;required&#93; The test report value to accumulate. This must be one of the following
 #' values:
 #' 
-#' ### Test reports:
+#' **Test reports:**
 #' 
-#' ### DURATION
+#' **DURATION**
 #' 
 #' Accumulate the test run times for the specified reports.
 #' 
-#' ### PASS_RATE
+#' **PASS_RATE**
 #' 
 #' Accumulate the percentage of tests that passed for the specified test
 #' reports.
 #' 
-#' ### TOTAL
+#' **TOTAL**
 #' 
 #' Accumulate the total number of tests for the specified test reports.
 #' 
-#' ### Code coverage reports:
+#' **Code coverage reports:**
 #' 
-#' ### BRANCH_COVERAGE
+#' **BRANCH_COVERAGE**
 #' 
 #' Accumulate the branch coverage percentages for the specified test
 #' reports.
 #' 
-#' ### BRANCHES_COVERED
+#' **BRANCHES_COVERED**
 #' 
 #' Accumulate the branches covered values for the specified test reports.
 #' 
-#' ### BRANCHES_MISSED
+#' **BRANCHES_MISSED**
 #' 
 #' Accumulate the branches missed values for the specified test reports.
 #' 
-#' ### LINE_COVERAGE
+#' **LINE_COVERAGE**
 #' 
 #' Accumulate the line coverage percentages for the specified test reports.
 #' 
-#' ### LINES_COVERED
+#' **LINES_COVERED**
 #' 
 #' Accumulate the lines covered values for the specified test reports.
 #' 
-#' ### LINES_MISSED
+#' **LINES_MISSED**
 #' 
 #' Accumulate the lines not covered values for the specified test reports.
 #'
@@ -1489,11 +1489,11 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' specified, the latest version is used. If specified, the contents
 #' depends on the source provider:
 #' 
-#' ### CodeCommit
+#' **CodeCommit**
 #' 
 #' The commit ID, branch, or Git tag to use.
 #' 
-#' ### GitHub
+#' **GitHub**
 #' 
 #' The commit ID, pull request ID, branch name, or tag name that
 #' corresponds to the version of the source code you want to build. If a
@@ -1502,14 +1502,14 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' specified, the branch's HEAD commit ID is used. If not specified, the
 #' default branch's HEAD commit ID is used.
 #' 
-#' ### Bitbucket
+#' **Bitbucket**
 #' 
 #' The commit ID, branch name, or tag name that corresponds to the version
 #' of the source code you want to build. If a branch name is specified, the
 #' branch's HEAD commit ID is used. If not specified, the default branch's
 #' HEAD commit ID is used.
 #' 
-#' ### Amazon S3
+#' **Amazon S3**
 #' 
 #' The version ID of the object that represents the build input ZIP file to
 #' use.
@@ -1609,13 +1609,13 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @param imagePullCredentialsTypeOverride The type of credentials CodeBuild uses to pull images in your build.
 #' There are two valid values:
 #' 
-#' ### CODEBUILD
+#' **CODEBUILD**
 #' 
 #' Specifies that CodeBuild uses its own credentials. This requires that
 #' you modify your ECR repository policy to trust CodeBuild's service
 #' principal.
 #' 
-#' ### SERVICE_ROLE
+#' **SERVICE_ROLE**
 #' 
 #' Specifies that CodeBuild uses your build project's service role.
 #' 
@@ -1662,11 +1662,11 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' If not specified, the latest version is used. If specified, the contents
 #' depends on the source provider:
 #' 
-#' ### CodeCommit
+#' **CodeCommit**
 #' 
 #' The commit ID, branch, or Git tag to use.
 #' 
-#' ### GitHub
+#' **GitHub**
 #' 
 #' The commit ID, pull request ID, branch name, or tag name that
 #' corresponds to the version of the source code you want to build. If a
@@ -1675,14 +1675,14 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' specified, the branch's HEAD commit ID is used. If not specified, the
 #' default branch's HEAD commit ID is used.
 #' 
-#' ### Bitbucket
+#' **Bitbucket**
 #' 
 #' The commit ID, branch name, or tag name that corresponds to the version
 #' of the source code you want to build. If a branch name is specified, the
 #' branch's HEAD commit ID is used. If not specified, the default branch's
 #' HEAD commit ID is used.
 #' 
-#' ### Amazon S3
+#' **Amazon S3**
 #' 
 #' The version ID of the object that represents the build input ZIP file to
 #' use.
@@ -1774,13 +1774,13 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' @param imagePullCredentialsTypeOverride The type of credentials CodeBuild uses to pull images in your batch
 #' build. There are two valid values:
 #' 
-#' ### CODEBUILD
+#' **CODEBUILD**
 #' 
 #' Specifies that CodeBuild uses its own credentials. This requires that
 #' you modify your ECR repository policy to trust CodeBuild's service
 #' principal.
 #' 
-#' ### SERVICE_ROLE
+#' **SERVICE_ROLE**
 #' 
 #' Specifies that CodeBuild uses your build project's service role.
 #' 

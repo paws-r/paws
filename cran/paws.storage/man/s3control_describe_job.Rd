@@ -14,7 +14,7 @@ Operations job.}
 \item{JobId}{[required] The ID for the job whose information you want to retrieve.}
 }
 \description{
-Retrieves the configuration parameters and status for a Batch Operations job. For more information, see S3 Batch Operations in the \emph{Amazon S3 User Guide}.
+Retrieves the configuration parameters and status for a Batch Operations job. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html}{S3 Batch Operations} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://paws-r.github.io/docs/s3control/describe_job.html} for full documentation.
 }

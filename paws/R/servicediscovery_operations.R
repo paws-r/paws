@@ -677,19 +677,19 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 #' parameter is ignored for services that don't have a health check
 #' configured, and all instances are returned.
 #' 
-#' ### HEALTHY
+#' **HEALTHY**
 #' 
 #' Returns healthy instances.
 #' 
-#' ### UNHEALTHY
+#' **UNHEALTHY**
 #' 
 #' Returns unhealthy instances.
 #' 
-#' ### ALL
+#' **ALL**
 #' 
 #' Returns all instances.
 #' 
-#' ### HEALTHY_OR_ELSE_ALL
+#' **HEALTHY_OR_ELSE_ALL**
 #' 
 #' Returns healthy instances, unless none are reporting a healthy state. In
 #' that case, return all instances. This is also called failing open.
@@ -1690,7 +1690,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #' Supported attribute keys include the following:
 #' 
-#' ### AWS_ALIAS_DNS_NAME
+#' **AWS_ALIAS_DNS_NAME**
 #' 
 #' If you want Cloud Map to create an Amazon Route 53 alias record that
 #' routes traffic to an Elastic Load Balancing load balancer, specify the
@@ -1719,7 +1719,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' -   If you specify a value for `AWS_ALIAS_DNS_NAME`, don't specify
 #'     values for any of the `AWS_INSTANCE` attributes.
 #' 
-#' ### AWS_EC2_INSTANCE_ID
+#' **AWS_EC2_INSTANCE_ID**
 #' 
 #' *HTTP namespaces only.* The Amazon EC2 instance ID for the instance. If
 #' the `AWS_EC2_INSTANCE_ID` attribute is specified, then the only other
@@ -1728,14 +1728,14 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' `AWS_INSTANCE_IPV4` attribute will be filled out with the primary
 #' private IPv4 address.
 #' 
-#' ### AWS_INIT_HEALTH_STATUS
+#' **AWS_INIT_HEALTH_STATUS**
 #' 
 #' If the service configuration includes `HealthCheckCustomConfig`, you can
 #' optionally use `AWS_INIT_HEALTH_STATUS` to specify the initial status of
 #' the custom health check, `HEALTHY` or `UNHEALTHY`. If you don't specify
 #' a value for `AWS_INIT_HEALTH_STATUS`, the initial status is `HEALTHY`.
 #' 
-#' ### AWS_INSTANCE_CNAME
+#' **AWS_INSTANCE_CNAME**
 #' 
 #' If the service configuration includes a `CNAME` record, the domain name
 #' that you want Route 53 to return in response to DNS queries (for
@@ -1744,7 +1744,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' This value is required if the service specified by `ServiceId` includes
 #' settings for an `CNAME` record.
 #' 
-#' ### AWS_INSTANCE_IPV4
+#' **AWS_INSTANCE_IPV4**
 #' 
 #' If the service configuration includes an `A` record, the IPv4 address
 #' that you want Route 53 to return in response to DNS queries (for
@@ -1755,7 +1755,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' `SRV` record, you must specify a value for `AWS_INSTANCE_IPV4`,
 #' `AWS_INSTANCE_IPV6`, or both.
 #' 
-#' ### AWS_INSTANCE_IPV6
+#' **AWS_INSTANCE_IPV6**
 #' 
 #' If the service configuration includes an `AAAA` record, the IPv6 address
 #' that you want Route 53 to return in response to DNS queries (for
@@ -1766,7 +1766,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' `SRV` record, you must specify a value for `AWS_INSTANCE_IPV4`,
 #' `AWS_INSTANCE_IPV6`, or both.
 #' 
-#' ### AWS_INSTANCE_PORT
+#' **AWS_INSTANCE_PORT**
 #' 
 #' If the service includes an `SRV` record, the value that you want Route
 #' 53 to return for the port.
@@ -1777,7 +1777,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' This value is required if you specified settings for an `SRV` record or
 #' a Route 53 health check when you created the service.
 #' 
-#' ### Custom attributes
+#' **Custom attributes**
 #' 
 #' You can add up to 30 custom attributes. For each key-value pair, the
 #' maximum length of the attribute name is 255 characters, and the maximum

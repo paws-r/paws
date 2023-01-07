@@ -61,50 +61,50 @@ transformations, with no coding required.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=gluedatabrew_batch_delete_recipe_version]{batch_delete_recipe_version} \tab Deletes one or more versions of a recipe at a time\cr
-\link[=gluedatabrew_create_dataset]{create_dataset} \tab Creates a new DataBrew dataset\cr
-\link[=gluedatabrew_create_profile_job]{create_profile_job} \tab Creates a new job to analyze a dataset and create its data profile\cr
-\link[=gluedatabrew_create_project]{create_project} \tab Creates a new DataBrew project\cr
-\link[=gluedatabrew_create_recipe]{create_recipe} \tab Creates a new DataBrew recipe\cr
-\link[=gluedatabrew_create_recipe_job]{create_recipe_job} \tab Creates a new job to transform input data, using steps defined in an existing Glue DataBrew recipe\cr
-\link[=gluedatabrew_create_ruleset]{create_ruleset} \tab Creates a new ruleset that can be used in a profile job to validate the data quality of a dataset\cr
-\link[=gluedatabrew_create_schedule]{create_schedule} \tab Creates a new schedule for one or more DataBrew jobs\cr
-\link[=gluedatabrew_delete_dataset]{delete_dataset} \tab Deletes a dataset from DataBrew\cr
-\link[=gluedatabrew_delete_job]{delete_job} \tab Deletes the specified DataBrew job\cr
-\link[=gluedatabrew_delete_project]{delete_project} \tab Deletes an existing DataBrew project\cr
-\link[=gluedatabrew_delete_recipe_version]{delete_recipe_version} \tab Deletes a single version of a DataBrew recipe\cr
-\link[=gluedatabrew_delete_ruleset]{delete_ruleset} \tab Deletes a ruleset\cr
-\link[=gluedatabrew_delete_schedule]{delete_schedule} \tab Deletes the specified DataBrew schedule\cr
-\link[=gluedatabrew_describe_dataset]{describe_dataset} \tab Returns the definition of a specific DataBrew dataset\cr
-\link[=gluedatabrew_describe_job]{describe_job} \tab Returns the definition of a specific DataBrew job\cr
-\link[=gluedatabrew_describe_job_run]{describe_job_run} \tab Represents one run of a DataBrew job\cr
-\link[=gluedatabrew_describe_project]{describe_project} \tab Returns the definition of a specific DataBrew project\cr
-\link[=gluedatabrew_describe_recipe]{describe_recipe} \tab Returns the definition of a specific DataBrew recipe corresponding to a particular version\cr
-\link[=gluedatabrew_describe_ruleset]{describe_ruleset} \tab Retrieves detailed information about the ruleset\cr
-\link[=gluedatabrew_describe_schedule]{describe_schedule} \tab Returns the definition of a specific DataBrew schedule\cr
-\link[=gluedatabrew_list_datasets]{list_datasets} \tab Lists all of the DataBrew datasets\cr
-\link[=gluedatabrew_list_job_runs]{list_job_runs} \tab Lists all of the previous runs of a particular DataBrew job\cr
-\link[=gluedatabrew_list_jobs]{list_jobs} \tab Lists all of the DataBrew jobs that are defined\cr
-\link[=gluedatabrew_list_projects]{list_projects} \tab Lists all of the DataBrew projects that are defined\cr
-\link[=gluedatabrew_list_recipes]{list_recipes} \tab Lists all of the DataBrew recipes that are defined\cr
-\link[=gluedatabrew_list_recipe_versions]{list_recipe_versions} \tab Lists the versions of a particular DataBrew recipe, except for LATEST_WORKING\cr
-\link[=gluedatabrew_list_rulesets]{list_rulesets} \tab List all rulesets available in the current account or rulesets associated with a specific resource (dataset)\cr
-\link[=gluedatabrew_list_schedules]{list_schedules} \tab Lists the DataBrew schedules that are defined\cr
-\link[=gluedatabrew_list_tags_for_resource]{list_tags_for_resource} \tab Lists all the tags for a DataBrew resource\cr
-\link[=gluedatabrew_publish_recipe]{publish_recipe} \tab Publishes a new version of a DataBrew recipe\cr
-\link[=gluedatabrew_send_project_session_action]{send_project_session_action} \tab Performs a recipe step within an interactive DataBrew session that's currently open\cr
-\link[=gluedatabrew_start_job_run]{start_job_run} \tab Runs a DataBrew job\cr
-\link[=gluedatabrew_start_project_session]{start_project_session} \tab Creates an interactive session, enabling you to manipulate data in a DataBrew project\cr
-\link[=gluedatabrew_stop_job_run]{stop_job_run} \tab Stops a particular run of a job\cr
-\link[=gluedatabrew_tag_resource]{tag_resource} \tab Adds metadata tags to a DataBrew resource, such as a dataset, project, recipe, job, or schedule\cr
-\link[=gluedatabrew_untag_resource]{untag_resource} \tab Removes metadata tags from a DataBrew resource\cr
-\link[=gluedatabrew_update_dataset]{update_dataset} \tab Modifies the definition of an existing DataBrew dataset\cr
-\link[=gluedatabrew_update_profile_job]{update_profile_job} \tab Modifies the definition of an existing profile job\cr
-\link[=gluedatabrew_update_project]{update_project} \tab Modifies the definition of an existing DataBrew project\cr
-\link[=gluedatabrew_update_recipe]{update_recipe} \tab Modifies the definition of the LATEST_WORKING version of a DataBrew recipe\cr
-\link[=gluedatabrew_update_recipe_job]{update_recipe_job} \tab Modifies the definition of an existing DataBrew recipe job\cr
-\link[=gluedatabrew_update_ruleset]{update_ruleset} \tab Updates specified ruleset\cr
-\link[=gluedatabrew_update_schedule]{update_schedule} \tab Modifies the definition of an existing DataBrew schedule
+\link[paws.analytics:gluedatabrew_batch_delete_recipe_version]{batch_delete_recipe_version} \tab Deletes one or more versions of a recipe at a time\cr
+\link[paws.analytics:gluedatabrew_create_dataset]{create_dataset} \tab Creates a new DataBrew dataset\cr
+\link[paws.analytics:gluedatabrew_create_profile_job]{create_profile_job} \tab Creates a new job to analyze a dataset and create its data profile\cr
+\link[paws.analytics:gluedatabrew_create_project]{create_project} \tab Creates a new DataBrew project\cr
+\link[paws.analytics:gluedatabrew_create_recipe]{create_recipe} \tab Creates a new DataBrew recipe\cr
+\link[paws.analytics:gluedatabrew_create_recipe_job]{create_recipe_job} \tab Creates a new job to transform input data, using steps defined in an existing Glue DataBrew recipe\cr
+\link[paws.analytics:gluedatabrew_create_ruleset]{create_ruleset} \tab Creates a new ruleset that can be used in a profile job to validate the data quality of a dataset\cr
+\link[paws.analytics:gluedatabrew_create_schedule]{create_schedule} \tab Creates a new schedule for one or more DataBrew jobs\cr
+\link[paws.analytics:gluedatabrew_delete_dataset]{delete_dataset} \tab Deletes a dataset from DataBrew\cr
+\link[paws.analytics:gluedatabrew_delete_job]{delete_job} \tab Deletes the specified DataBrew job\cr
+\link[paws.analytics:gluedatabrew_delete_project]{delete_project} \tab Deletes an existing DataBrew project\cr
+\link[paws.analytics:gluedatabrew_delete_recipe_version]{delete_recipe_version} \tab Deletes a single version of a DataBrew recipe\cr
+\link[paws.analytics:gluedatabrew_delete_ruleset]{delete_ruleset} \tab Deletes a ruleset\cr
+\link[paws.analytics:gluedatabrew_delete_schedule]{delete_schedule} \tab Deletes the specified DataBrew schedule\cr
+\link[paws.analytics:gluedatabrew_describe_dataset]{describe_dataset} \tab Returns the definition of a specific DataBrew dataset\cr
+\link[paws.analytics:gluedatabrew_describe_job]{describe_job} \tab Returns the definition of a specific DataBrew job\cr
+\link[paws.analytics:gluedatabrew_describe_job_run]{describe_job_run} \tab Represents one run of a DataBrew job\cr
+\link[paws.analytics:gluedatabrew_describe_project]{describe_project} \tab Returns the definition of a specific DataBrew project\cr
+\link[paws.analytics:gluedatabrew_describe_recipe]{describe_recipe} \tab Returns the definition of a specific DataBrew recipe corresponding to a particular version\cr
+\link[paws.analytics:gluedatabrew_describe_ruleset]{describe_ruleset} \tab Retrieves detailed information about the ruleset\cr
+\link[paws.analytics:gluedatabrew_describe_schedule]{describe_schedule} \tab Returns the definition of a specific DataBrew schedule\cr
+\link[paws.analytics:gluedatabrew_list_datasets]{list_datasets} \tab Lists all of the DataBrew datasets\cr
+\link[paws.analytics:gluedatabrew_list_job_runs]{list_job_runs} \tab Lists all of the previous runs of a particular DataBrew job\cr
+\link[paws.analytics:gluedatabrew_list_jobs]{list_jobs} \tab Lists all of the DataBrew jobs that are defined\cr
+\link[paws.analytics:gluedatabrew_list_projects]{list_projects} \tab Lists all of the DataBrew projects that are defined\cr
+\link[paws.analytics:gluedatabrew_list_recipes]{list_recipes} \tab Lists all of the DataBrew recipes that are defined\cr
+\link[paws.analytics:gluedatabrew_list_recipe_versions]{list_recipe_versions} \tab Lists the versions of a particular DataBrew recipe, except for LATEST_WORKING\cr
+\link[paws.analytics:gluedatabrew_list_rulesets]{list_rulesets} \tab List all rulesets available in the current account or rulesets associated with a specific resource (dataset)\cr
+\link[paws.analytics:gluedatabrew_list_schedules]{list_schedules} \tab Lists the DataBrew schedules that are defined\cr
+\link[paws.analytics:gluedatabrew_list_tags_for_resource]{list_tags_for_resource} \tab Lists all the tags for a DataBrew resource\cr
+\link[paws.analytics:gluedatabrew_publish_recipe]{publish_recipe} \tab Publishes a new version of a DataBrew recipe\cr
+\link[paws.analytics:gluedatabrew_send_project_session_action]{send_project_session_action} \tab Performs a recipe step within an interactive DataBrew session that's currently open\cr
+\link[paws.analytics:gluedatabrew_start_job_run]{start_job_run} \tab Runs a DataBrew job\cr
+\link[paws.analytics:gluedatabrew_start_project_session]{start_project_session} \tab Creates an interactive session, enabling you to manipulate data in a DataBrew project\cr
+\link[paws.analytics:gluedatabrew_stop_job_run]{stop_job_run} \tab Stops a particular run of a job\cr
+\link[paws.analytics:gluedatabrew_tag_resource]{tag_resource} \tab Adds metadata tags to a DataBrew resource, such as a dataset, project, recipe, job, or schedule\cr
+\link[paws.analytics:gluedatabrew_untag_resource]{untag_resource} \tab Removes metadata tags from a DataBrew resource\cr
+\link[paws.analytics:gluedatabrew_update_dataset]{update_dataset} \tab Modifies the definition of an existing DataBrew dataset\cr
+\link[paws.analytics:gluedatabrew_update_profile_job]{update_profile_job} \tab Modifies the definition of an existing profile job\cr
+\link[paws.analytics:gluedatabrew_update_project]{update_project} \tab Modifies the definition of an existing DataBrew project\cr
+\link[paws.analytics:gluedatabrew_update_recipe]{update_recipe} \tab Modifies the definition of the LATEST_WORKING version of a DataBrew recipe\cr
+\link[paws.analytics:gluedatabrew_update_recipe_job]{update_recipe_job} \tab Modifies the definition of an existing DataBrew recipe job\cr
+\link[paws.analytics:gluedatabrew_update_ruleset]{update_ruleset} \tab Updates specified ruleset\cr
+\link[paws.analytics:gluedatabrew_update_schedule]{update_schedule} \tab Modifies the definition of an existing DataBrew schedule
 }
 }
 

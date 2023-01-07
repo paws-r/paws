@@ -77,24 +77,25 @@ documentation:
 \itemize{
 \item Linux: \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses (EIP)}
 in the \emph{Amazon EC2 User Guide for Linux Instances}
-\item Windows: Elastic IP Addresses (EIP) in the \emph{Amazon EC2 User Guide
-for Windows Instances}
+\item Windows: \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses (EIP)}
+in the \emph{Amazon EC2 User Guide for Windows Instances}
 }
 
 If a health check already has a value for \code{IPAddress}, you can change
 the value. However, you can't update an existing health check to add or
 remove the value of \code{IPAddress}.
 
-For more information, see FullyQualifiedDomainName.
+For more information, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName}{FullyQualifiedDomainName}.
 
 Constraints: Route 53 can't check the health of endpoints for which the
 IP address is in local, private, non-routable, or multicast ranges. For
 more information about IP addresses for which you can't create health
 checks, see the following documents:
 \itemize{
-\item RFC 5735, Special Use IPv4 Addresses
-\item RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space
-\item RFC 5156, Special-Use IPv6 Addresses
+\item \href{https://www.rfc-editor.org/rfc/rfc5735}{RFC 5735, Special Use IPv4 Addresses}
+\item \href{https://www.rfc-editor.org/rfc/rfc6598}{RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space}
+\item \href{https://www.rfc-editor.org/rfc/rfc5156}{RFC 5156, Special-Use IPv6 Addresses}
 }}
 
 \item{Port}{The port on the endpoint that you want Amazon Route 53 to perform health
@@ -186,9 +187,8 @@ Route 53 considers the resource healthy. (You can't change the value of
 
 \item{FailureThreshold}{The number of consecutive health checks that an endpoint must pass or
 fail for Amazon Route 53 to change the current status of the endpoint
-from unhealthy to healthy or vice versa. For more information, see How
-Amazon Route 53 Determines Whether an Endpoint Is Healthy in the \emph{Amazon
-Route 53 Developer Guide}.
+from unhealthy to healthy or vice versa. For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html}{How Amazon Route 53 Determines Whether an Endpoint Is Healthy}
+in the \emph{Amazon Route 53 Developer Guide}.
 
 If you don't specify a value for \code{FailureThreshold}, the default value
 is three health checks.}
@@ -212,10 +212,10 @@ After you disable a health check, Route 53 considers the status of the
 health check to always be healthy. If you configured DNS failover, Route
 53 continues to route traffic to the corresponding resources. If you
 want to stop routing traffic to a resource, change the value of
-Inverted.
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-Inverted}{Inverted}.
 
 Charges for a health check still apply when the health check is
-disabled. For more information, see Amazon Route 53 Pricing.}
+disabled. For more information, see \href{https://aws.amazon.com/route53/pricing/}{Amazon Route 53 Pricing}.}
 
 \item{HealthThreshold}{The number of child health checks that are associated with a
 \code{CALCULATED} health that Amazon Route 53 must consider healthy for the
@@ -282,13 +282,18 @@ known status, the status for the health check is healthy.
 each element that you want to reset to the default value. Valid values
 for \code{ResettableElementName} include the following:
 \itemize{
-\item \code{ChildHealthChecks}: Amazon Route 53 resets ChildHealthChecks to
-null.
+\item \code{ChildHealthChecks}: Amazon Route 53 resets
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ChildHealthChecks}{ChildHealthChecks}
+to null.
 \item \code{FullyQualifiedDomainName}: Route 53 resets
-FullyQualifiedDomainName. to null.
-\item \code{Regions}: Route 53 resets the Regions list to the default set of
-regions.
-\item \code{ResourcePath}: Route 53 resets ResourcePath to null.
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName}{FullyQualifiedDomainName}.
+to null.
+\item \code{Regions}: Route 53 resets the
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-Regions}{Regions}
+list to the default set of regions.
+\item \code{ResourcePath}: Route 53 resets
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ResourcePath}{ResourcePath}
+to null.
 }}
 }
 \description{

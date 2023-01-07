@@ -8,7 +8,7 @@ Web Services account in the current Region}
 emr_get_block_public_access_configuration()
 }
 \description{
-Returns the Amazon EMR block public access configuration for your Amazon Web Services account in the current Region. For more information see Configure Block Public Access for Amazon EMR in the \emph{Amazon EMR Management Guide}.
+Returns the Amazon EMR block public access configuration for your Amazon Web Services account in the current Region. For more information see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{Configure Block Public Access for Amazon EMR} in the \emph{Amazon EMR Management Guide}.
 
 See \url{https://paws-r.github.io/docs/emr/get_block_public_access_configuration.html} for full documentation.
 }

@@ -492,8 +492,8 @@ acm_get_certificate <- function(CertificateArn) {
 #' -   When you import a certificate by using the CLI, you must specify the
 #'     certificate, the certificate chain, and the private key by their
 #'     file names preceded by `fileb://`. For example, you can specify a
-#'     certificate saved in the `C:\temp` folder as
-#'     `fileb://C:\temp\certificate_to_import.pem`. If you are making an
+#'     certificate saved in the `C:\\temp` folder as
+#'     `fileb://C:\\temp\\certificate_to_import.pem`. If you are making an
 #'     HTTP or HTTPS Query request, include these arguments as BLOBs.
 #' 
 #' -   When you import a certificate by using an SDK, you must specify the

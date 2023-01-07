@@ -31,8 +31,7 @@ minimum number of rows required for the validation dataset.}
 needed to store artifacts from an AutoML job. Format(s) supported: CSV.}
 
 \item{ProblemType}{Defines the type of supervised learning available for the candidates.
-For more information, see Amazon SageMaker Autopilot problem types and
-algorithm support.}
+For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{Amazon SageMaker Autopilot problem types and algorithm support}.}
 
 \item{AutoMLJobObjective}{Defines the objective metric used to measure the predictive quality of
 an AutoML job. You provide an AutoMLJobObjective$MetricName and

@@ -32,9 +32,9 @@ You use the AmazonCloudSearch2013 API to upload documents to a search
 domain and search those documents.
 
 The endpoints for submitting
-\code{\link[=cloudsearchdomain_upload_documents]{upload_documents}},
-\code{\link[=cloudsearchdomain_search]{search}}, and
-\code{\link[=cloudsearchdomain_suggest]{suggest}} requests are domain-specific. To
+\code{upload_documents},
+\code{search}, and
+\code{suggest} requests are domain-specific. To
 get the endpoints for your domain, use the Amazon CloudSearch
 configuration service \code{DescribeDomains} action. The domain endpoints are
 also displayed on the domain dashboard in the Amazon CloudSearch
@@ -69,9 +69,9 @@ For more information, see the \href{https://docs.aws.amazon.com/cloudsearch/late
 \section{Operations}{
 
 \tabular{ll}{
-\link[=cloudsearchdomain_search]{search} \tab Retrieves a list of documents that match the specified search criteria\cr
-\link[=cloudsearchdomain_suggest]{suggest} \tab Retrieves autocomplete suggestions for a partial query string\cr
-\link[=cloudsearchdomain_upload_documents]{upload_documents} \tab Posts a batch of documents to a search domain for indexing
+\link[paws.analytics:cloudsearchdomain_search]{search} \tab Retrieves a list of documents that match the specified search criteria\cr
+\link[paws.analytics:cloudsearchdomain_suggest]{suggest} \tab Retrieves autocomplete suggestions for a partial query string\cr
+\link[paws.analytics:cloudsearchdomain_upload_documents]{upload_documents} \tab Posts a batch of documents to a search domain for indexing
 }
 }
 

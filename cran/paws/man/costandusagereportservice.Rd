@@ -71,10 +71,10 @@ The AWS Cost and Usage Report API provides the following endpoint:
 \section{Operations}{
 
 \tabular{ll}{
-\link[=costandusagereportservice_delete_report_definition]{delete_report_definition} \tab Deletes the specified report\cr
-\link[=costandusagereportservice_describe_report_definitions]{describe_report_definitions} \tab Lists the AWS Cost and Usage reports available to this account\cr
-\link[=costandusagereportservice_modify_report_definition]{modify_report_definition} \tab Allows you to programatically update your report preferences\cr
-\link[=costandusagereportservice_put_report_definition]{put_report_definition} \tab Creates a new report using the description that you provide
+\link[paws.cost.management:costandusagereportservice_delete_report_definition]{delete_report_definition} \tab Deletes the specified report\cr
+\link[paws.cost.management:costandusagereportservice_describe_report_definitions]{describe_report_definitions} \tab Lists the AWS Cost and Usage reports available to this account\cr
+\link[paws.cost.management:costandusagereportservice_modify_report_definition]{modify_report_definition} \tab Allows you to programatically update your report preferences\cr
+\link[paws.cost.management:costandusagereportservice_put_report_definition]{put_report_definition} \tab Creates a new report using the description that you provide
 }
 }
 

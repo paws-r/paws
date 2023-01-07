@@ -22,8 +22,9 @@ sagemaker_update_endpoint(
 \item{EndpointConfigName}{[required] The name of the new endpoint configuration.}
 
 \item{RetainAllVariantProperties}{When updating endpoint resources, enables or disables the retention of
-variant properties, such as the instance count or the variant weight. To
-retain the variant properties of an endpoint when updating it, set
+\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VariantProperty.html}{variant properties},
+such as the instance count or the variant weight. To retain the variant
+properties of an endpoint when updating it, set
 \code{RetainAllVariantProperties} to \code{true}. To use the variant properties
 specified in a new \code{EndpointConfig} call when updating an endpoint, set
 \code{RetainAllVariantProperties} to \code{false}. The default is \code{false}.}

@@ -57,28 +57,28 @@ Provide APIs to create and manage Amazon Connect Campaigns.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=connectcampaignservice_create_campaign]{create_campaign} \tab Creates a campaign for the specified Amazon Connect account\cr
-\link[=connectcampaignservice_delete_campaign]{delete_campaign} \tab Deletes a campaign from the specified Amazon Connect account\cr
-\link[=connectcampaignservice_delete_connect_instance_config]{delete_connect_instance_config} \tab Deletes a connect instance config from the specified AWS account\cr
-\link[=connectcampaignservice_delete_instance_onboarding_job]{delete_instance_onboarding_job} \tab Delete the Connect Campaigns onboarding job for the specified Amazon Connect instance\cr
-\link[=connectcampaignservice_describe_campaign]{describe_campaign} \tab Describes the specific campaign\cr
-\link[=connectcampaignservice_get_campaign_state]{get_campaign_state} \tab Get state of a campaign for the specified Amazon Connect account\cr
-\link[=connectcampaignservice_get_campaign_state_batch]{get_campaign_state_batch} \tab Get state of campaigns for the specified Amazon Connect account\cr
-\link[=connectcampaignservice_get_connect_instance_config]{get_connect_instance_config} \tab Get the specific Connect instance config\cr
-\link[=connectcampaignservice_get_instance_onboarding_job_status]{get_instance_onboarding_job_status} \tab Get the specific instance onboarding job status\cr
-\link[=connectcampaignservice_list_campaigns]{list_campaigns} \tab Provides summary information about the campaigns under the specified Amazon Connect account\cr
-\link[=connectcampaignservice_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a resource\cr
-\link[=connectcampaignservice_pause_campaign]{pause_campaign} \tab Pauses a campaign for the specified Amazon Connect account\cr
-\link[=connectcampaignservice_put_dial_request_batch]{put_dial_request_batch} \tab Creates dials requests for the specified campaign Amazon Connect account\cr
-\link[=connectcampaignservice_resume_campaign]{resume_campaign} \tab Stops a campaign for the specified Amazon Connect account\cr
-\link[=connectcampaignservice_start_campaign]{start_campaign} \tab Starts a campaign for the specified Amazon Connect account\cr
-\link[=connectcampaignservice_start_instance_onboarding_job]{start_instance_onboarding_job} \tab Onboard the specific Amazon Connect instance to Connect Campaigns\cr
-\link[=connectcampaignservice_stop_campaign]{stop_campaign} \tab Stops a campaign for the specified Amazon Connect account\cr
-\link[=connectcampaignservice_tag_resource]{tag_resource} \tab Tag a resource\cr
-\link[=connectcampaignservice_untag_resource]{untag_resource} \tab Untag a resource\cr
-\link[=connectcampaignservice_update_campaign_dialer_config]{update_campaign_dialer_config} \tab Updates the dialer config of a campaign\cr
-\link[=connectcampaignservice_update_campaign_name]{update_campaign_name} \tab Updates the name of a campaign\cr
-\link[=connectcampaignservice_update_campaign_outbound_call_config]{update_campaign_outbound_call_config} \tab Updates the outbound call config of a campaign
+\link[paws.customer.engagement:connectcampaignservice_create_campaign]{create_campaign} \tab Creates a campaign for the specified Amazon Connect account\cr
+\link[paws.customer.engagement:connectcampaignservice_delete_campaign]{delete_campaign} \tab Deletes a campaign from the specified Amazon Connect account\cr
+\link[paws.customer.engagement:connectcampaignservice_delete_connect_instance_config]{delete_connect_instance_config} \tab Deletes a connect instance config from the specified AWS account\cr
+\link[paws.customer.engagement:connectcampaignservice_delete_instance_onboarding_job]{delete_instance_onboarding_job} \tab Delete the Connect Campaigns onboarding job for the specified Amazon Connect instance\cr
+\link[paws.customer.engagement:connectcampaignservice_describe_campaign]{describe_campaign} \tab Describes the specific campaign\cr
+\link[paws.customer.engagement:connectcampaignservice_get_campaign_state]{get_campaign_state} \tab Get state of a campaign for the specified Amazon Connect account\cr
+\link[paws.customer.engagement:connectcampaignservice_get_campaign_state_batch]{get_campaign_state_batch} \tab Get state of campaigns for the specified Amazon Connect account\cr
+\link[paws.customer.engagement:connectcampaignservice_get_connect_instance_config]{get_connect_instance_config} \tab Get the specific Connect instance config\cr
+\link[paws.customer.engagement:connectcampaignservice_get_instance_onboarding_job_status]{get_instance_onboarding_job_status} \tab Get the specific instance onboarding job status\cr
+\link[paws.customer.engagement:connectcampaignservice_list_campaigns]{list_campaigns} \tab Provides summary information about the campaigns under the specified Amazon Connect account\cr
+\link[paws.customer.engagement:connectcampaignservice_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a resource\cr
+\link[paws.customer.engagement:connectcampaignservice_pause_campaign]{pause_campaign} \tab Pauses a campaign for the specified Amazon Connect account\cr
+\link[paws.customer.engagement:connectcampaignservice_put_dial_request_batch]{put_dial_request_batch} \tab Creates dials requests for the specified campaign Amazon Connect account\cr
+\link[paws.customer.engagement:connectcampaignservice_resume_campaign]{resume_campaign} \tab Stops a campaign for the specified Amazon Connect account\cr
+\link[paws.customer.engagement:connectcampaignservice_start_campaign]{start_campaign} \tab Starts a campaign for the specified Amazon Connect account\cr
+\link[paws.customer.engagement:connectcampaignservice_start_instance_onboarding_job]{start_instance_onboarding_job} \tab Onboard the specific Amazon Connect instance to Connect Campaigns\cr
+\link[paws.customer.engagement:connectcampaignservice_stop_campaign]{stop_campaign} \tab Stops a campaign for the specified Amazon Connect account\cr
+\link[paws.customer.engagement:connectcampaignservice_tag_resource]{tag_resource} \tab Tag a resource\cr
+\link[paws.customer.engagement:connectcampaignservice_untag_resource]{untag_resource} \tab Untag a resource\cr
+\link[paws.customer.engagement:connectcampaignservice_update_campaign_dialer_config]{update_campaign_dialer_config} \tab Updates the dialer config of a campaign\cr
+\link[paws.customer.engagement:connectcampaignservice_update_campaign_name]{update_campaign_name} \tab Updates the name of a campaign\cr
+\link[paws.customer.engagement:connectcampaignservice_update_campaign_outbound_call_config]{update_campaign_outbound_call_config} \tab Updates the outbound call config of a campaign
 }
 }
 

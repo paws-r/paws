@@ -405,7 +405,7 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #' 
 #' If the optional post-fulfillment response is specified, the messages are
 #' returned as follows. For more information, see
-#' PostFulfillmentStatusSpecification.
+#' [PostFulfillmentStatusSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_PostFulfillmentStatusSpecification.html).
 #' 
 #' -   **Success message** - Returned if the Lambda function completes
 #'     successfully and the intent state is fulfilled or ready fulfillment
@@ -420,7 +420,8 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #'     the timeout message is returned. If you configure a timeout, the
 #'     timeout message is returned when the period times out.
 #' 
-#' For more information, see Completion message.
+#' For more information, see [Completion
+#' message](https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-complete.html).
 #'
 #' @usage
 #' lexruntimev2_recognize_text(botId, botAliasId, localeId, sessionId,
@@ -683,7 +684,7 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
 #' 
 #' If the optional post-fulfillment response is specified, the messages are
 #' returned as follows. For more information, see
-#' PostFulfillmentStatusSpecification.
+#' [PostFulfillmentStatusSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_PostFulfillmentStatusSpecification.html).
 #' 
 #' -   **Success message** - Returned if the Lambda function completes
 #'     successfully and the intent state is fulfilled or ready fulfillment
@@ -698,7 +699,8 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
 #'     the timeout message is returned. If you configure a timeout, the
 #'     timeout message is returned when the period times out.
 #' 
-#' For more information, see Completion message.
+#' For more information, see [Completion
+#' message](https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-complete.html).
 #'
 #' @usage
 #' lexruntimev2_recognize_utterance(botId, botAliasId, localeId, sessionId,

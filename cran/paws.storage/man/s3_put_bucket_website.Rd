@@ -18,7 +18,7 @@ s3_put_bucket_website(
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. You must use this
 header as a message integrity check to verify that the request body was
-not corrupted in transit. For more information, see RFC 1864.
+not corrupted in transit. For more information, see \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.
 
 For requests made using the Amazon Web Services Command Line Interface
 (CLI) or Amazon Web Services SDKs, this field is calculated
@@ -29,7 +29,7 @@ using the SDK. This header will not provide any additional functionality
 if not using the SDK. When sending this header, there must be a
 corresponding \code{x-amz-checksum} or \code{x-amz-trailer} header sent.
 Otherwise, Amazon S3 fails the request with the HTTP status code
-\verb{400 Bad Request}. For more information, see Checking object integrity
+\verb{400 Bad Request}. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
 
 If you provide an individual checksum, Amazon S3 ignores any provided
@@ -42,7 +42,7 @@ different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 }
 \description{
-Sets the configuration of the website that is specified in the \code{website} subresource. To configure a bucket as a website, you can add this subresource on the bucket with website configuration information such as the file name of the index document and any redirect rules. For more information, see Hosting Websites on Amazon S3.
+Sets the configuration of the website that is specified in the \code{website} subresource. To configure a bucket as a website, you can add this subresource on the bucket with website configuration information such as the file name of the index document and any redirect rules. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
 
 See \url{https://paws-r.github.io/docs/s3/put_bucket_website.html} for full documentation.
 }

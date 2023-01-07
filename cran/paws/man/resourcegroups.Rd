@@ -87,22 +87,22 @@ search results
 \section{Operations}{
 
 \tabular{ll}{
-\link[=resourcegroups_create_group]{create_group} \tab Creates a resource group with the specified name and description\cr
-\link[=resourcegroups_delete_group]{delete_group} \tab Deletes the specified resource group\cr
-\link[=resourcegroups_get_group]{get_group} \tab Returns information about a specified resource group\cr
-\link[=resourcegroups_get_group_configuration]{get_group_configuration} \tab Returns the service configuration associated with the specified resource group\cr
-\link[=resourcegroups_get_group_query]{get_group_query} \tab Retrieves the resource query associated with the specified resource group\cr
-\link[=resourcegroups_get_tags]{get_tags} \tab Returns a list of tags that are associated with a resource group, specified by an ARN\cr
-\link[=resourcegroups_group_resources]{group_resources} \tab Adds the specified resources to the specified group\cr
-\link[=resourcegroups_list_group_resources]{list_group_resources} \tab Returns a list of ARNs of the resources that are members of a specified resource group\cr
-\link[=resourcegroups_list_groups]{list_groups} \tab Returns a list of existing resource groups in your account\cr
-\link[=resourcegroups_put_group_configuration]{put_group_configuration} \tab Attaches a service configuration to the specified group\cr
-\link[=resourcegroups_search_resources]{search_resources} \tab Returns a list of AWS resource identifiers that matches the specified query\cr
-\link[=resourcegroups_tag]{tag} \tab Adds tags to a resource group with the specified ARN\cr
-\link[=resourcegroups_ungroup_resources]{ungroup_resources} \tab Removes the specified resources from the specified group\cr
-\link[=resourcegroups_untag]{untag} \tab Deletes tags from a specified resource group\cr
-\link[=resourcegroups_update_group]{update_group} \tab Updates the description for an existing group\cr
-\link[=resourcegroups_update_group_query]{update_group_query} \tab Updates the resource query of a group
+\link[paws.management.p2:resourcegroups_create_group]{create_group} \tab Creates a resource group with the specified name and description\cr
+\link[paws.management.p2:resourcegroups_delete_group]{delete_group} \tab Deletes the specified resource group\cr
+\link[paws.management.p2:resourcegroups_get_group]{get_group} \tab Returns information about a specified resource group\cr
+\link[paws.management.p2:resourcegroups_get_group_configuration]{get_group_configuration} \tab Returns the service configuration associated with the specified resource group\cr
+\link[paws.management.p2:resourcegroups_get_group_query]{get_group_query} \tab Retrieves the resource query associated with the specified resource group\cr
+\link[paws.management.p2:resourcegroups_get_tags]{get_tags} \tab Returns a list of tags that are associated with a resource group, specified by an ARN\cr
+\link[paws.management.p2:resourcegroups_group_resources]{group_resources} \tab Adds the specified resources to the specified group\cr
+\link[paws.management.p2:resourcegroups_list_group_resources]{list_group_resources} \tab Returns a list of ARNs of the resources that are members of a specified resource group\cr
+\link[paws.management.p2:resourcegroups_list_groups]{list_groups} \tab Returns a list of existing resource groups in your account\cr
+\link[paws.management.p2:resourcegroups_put_group_configuration]{put_group_configuration} \tab Attaches a service configuration to the specified group\cr
+\link[paws.management.p2:resourcegroups_search_resources]{search_resources} \tab Returns a list of AWS resource identifiers that matches the specified query\cr
+\link[paws.management.p2:resourcegroups_tag]{tag} \tab Adds tags to a resource group with the specified ARN\cr
+\link[paws.management.p2:resourcegroups_ungroup_resources]{ungroup_resources} \tab Removes the specified resources from the specified group\cr
+\link[paws.management.p2:resourcegroups_untag]{untag} \tab Deletes tags from a specified resource group\cr
+\link[paws.management.p2:resourcegroups_update_group]{update_group} \tab Updates the description for an existing group\cr
+\link[paws.management.p2:resourcegroups_update_group_query]{update_group_query} \tab Updates the resource query of a group
 }
 }
 

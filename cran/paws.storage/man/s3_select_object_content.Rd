@@ -27,18 +27,18 @@ s3_select_object_content(
 
 \item{SSECustomerAlgorithm}{The server-side encryption (SSE) algorithm used to encrypt the object.
 This parameter is needed only when the object was created using a
-checksum algorithm. For more information, see Protecting data using
-SSE-C keys in the \emph{Amazon S3 User Guide}.}
+checksum algorithm. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{SSECustomerKey}{The server-side encryption (SSE) customer managed key. This parameter is
 needed only when the object was created using a checksum algorithm. For
-more information, see Protecting data using SSE-C keys in the \emph{Amazon S3
-User Guide}.}
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{SSECustomerKeyMD5}{The MD5 server-side encryption (SSE) customer managed key. This
 parameter is needed only when the object was created using a checksum
-algorithm. For more information, see Protecting data using SSE-C keys in
-the \emph{Amazon S3 User Guide}.}
+algorithm. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using SSE-C keys}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{Expression}{[required] The expression that is used to query the object.}
 

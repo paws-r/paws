@@ -59,35 +59,35 @@ introduction to the service with tutorials for getting started, visit
 \section{Operations}{
 
 \tabular{ll}{
-\link[=lookoutmetrics_activate_anomaly_detector]{activate_anomaly_detector} \tab Activates an anomaly detector\cr
-\link[=lookoutmetrics_back_test_anomaly_detector]{back_test_anomaly_detector} \tab Runs a backtest for anomaly detection for the specified resource\cr
-\link[=lookoutmetrics_create_alert]{create_alert} \tab Creates an alert for an anomaly detector\cr
-\link[=lookoutmetrics_create_anomaly_detector]{create_anomaly_detector} \tab Creates an anomaly detector\cr
-\link[=lookoutmetrics_create_metric_set]{create_metric_set} \tab Creates a dataset\cr
-\link[=lookoutmetrics_deactivate_anomaly_detector]{deactivate_anomaly_detector} \tab Deactivates an anomaly detector\cr
-\link[=lookoutmetrics_delete_alert]{delete_alert} \tab Deletes an alert\cr
-\link[=lookoutmetrics_delete_anomaly_detector]{delete_anomaly_detector} \tab Deletes a detector\cr
-\link[=lookoutmetrics_describe_alert]{describe_alert} \tab Describes an alert\cr
-\link[=lookoutmetrics_describe_anomaly_detection_executions]{describe_anomaly_detection_executions} \tab Returns information about the status of the specified anomaly detection jobs\cr
-\link[=lookoutmetrics_describe_anomaly_detector]{describe_anomaly_detector} \tab Describes a detector\cr
-\link[=lookoutmetrics_describe_metric_set]{describe_metric_set} \tab Describes a dataset\cr
-\link[=lookoutmetrics_detect_metric_set_config]{detect_metric_set_config} \tab Detects an Amazon S3 dataset's file format, interval, and offset\cr
-\link[=lookoutmetrics_get_anomaly_group]{get_anomaly_group} \tab Returns details about a group of anomalous metrics\cr
-\link[=lookoutmetrics_get_feedback]{get_feedback} \tab Get feedback for an anomaly group\cr
-\link[=lookoutmetrics_get_sample_data]{get_sample_data} \tab Returns a selection of sample records from an Amazon S3 datasource\cr
-\link[=lookoutmetrics_list_alerts]{list_alerts} \tab Lists the alerts attached to a detector\cr
-\link[=lookoutmetrics_list_anomaly_detectors]{list_anomaly_detectors} \tab Lists the detectors in the current AWS Region\cr
-\link[=lookoutmetrics_list_anomaly_group_related_metrics]{list_anomaly_group_related_metrics} \tab Returns a list of measures that are potential causes or effects of an anomaly group\cr
-\link[=lookoutmetrics_list_anomaly_group_summaries]{list_anomaly_group_summaries} \tab Returns a list of anomaly groups\cr
-\link[=lookoutmetrics_list_anomaly_group_time_series]{list_anomaly_group_time_series} \tab Gets a list of anomalous metrics for a measure in an anomaly group\cr
-\link[=lookoutmetrics_list_metric_sets]{list_metric_sets} \tab Lists the datasets in the current AWS Region\cr
-\link[=lookoutmetrics_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of tags for a detector, dataset, or alert\cr
-\link[=lookoutmetrics_put_feedback]{put_feedback} \tab Add feedback for an anomalous metric\cr
-\link[=lookoutmetrics_tag_resource]{tag_resource} \tab Adds tags to a detector, dataset, or alert\cr
-\link[=lookoutmetrics_untag_resource]{untag_resource} \tab Removes tags from a detector, dataset, or alert\cr
-\link[=lookoutmetrics_update_alert]{update_alert} \tab Make changes to an existing alert\cr
-\link[=lookoutmetrics_update_anomaly_detector]{update_anomaly_detector} \tab Updates a detector\cr
-\link[=lookoutmetrics_update_metric_set]{update_metric_set} \tab Updates a dataset
+\link[paws.machine.learning:lookoutmetrics_activate_anomaly_detector]{activate_anomaly_detector} \tab Activates an anomaly detector\cr
+\link[paws.machine.learning:lookoutmetrics_back_test_anomaly_detector]{back_test_anomaly_detector} \tab Runs a backtest for anomaly detection for the specified resource\cr
+\link[paws.machine.learning:lookoutmetrics_create_alert]{create_alert} \tab Creates an alert for an anomaly detector\cr
+\link[paws.machine.learning:lookoutmetrics_create_anomaly_detector]{create_anomaly_detector} \tab Creates an anomaly detector\cr
+\link[paws.machine.learning:lookoutmetrics_create_metric_set]{create_metric_set} \tab Creates a dataset\cr
+\link[paws.machine.learning:lookoutmetrics_deactivate_anomaly_detector]{deactivate_anomaly_detector} \tab Deactivates an anomaly detector\cr
+\link[paws.machine.learning:lookoutmetrics_delete_alert]{delete_alert} \tab Deletes an alert\cr
+\link[paws.machine.learning:lookoutmetrics_delete_anomaly_detector]{delete_anomaly_detector} \tab Deletes a detector\cr
+\link[paws.machine.learning:lookoutmetrics_describe_alert]{describe_alert} \tab Describes an alert\cr
+\link[paws.machine.learning:lookoutmetrics_describe_anomaly_detection_executions]{describe_anomaly_detection_executions} \tab Returns information about the status of the specified anomaly detection jobs\cr
+\link[paws.machine.learning:lookoutmetrics_describe_anomaly_detector]{describe_anomaly_detector} \tab Describes a detector\cr
+\link[paws.machine.learning:lookoutmetrics_describe_metric_set]{describe_metric_set} \tab Describes a dataset\cr
+\link[paws.machine.learning:lookoutmetrics_detect_metric_set_config]{detect_metric_set_config} \tab Detects an Amazon S3 dataset's file format, interval, and offset\cr
+\link[paws.machine.learning:lookoutmetrics_get_anomaly_group]{get_anomaly_group} \tab Returns details about a group of anomalous metrics\cr
+\link[paws.machine.learning:lookoutmetrics_get_feedback]{get_feedback} \tab Get feedback for an anomaly group\cr
+\link[paws.machine.learning:lookoutmetrics_get_sample_data]{get_sample_data} \tab Returns a selection of sample records from an Amazon S3 datasource\cr
+\link[paws.machine.learning:lookoutmetrics_list_alerts]{list_alerts} \tab Lists the alerts attached to a detector\cr
+\link[paws.machine.learning:lookoutmetrics_list_anomaly_detectors]{list_anomaly_detectors} \tab Lists the detectors in the current AWS Region\cr
+\link[paws.machine.learning:lookoutmetrics_list_anomaly_group_related_metrics]{list_anomaly_group_related_metrics} \tab Returns a list of measures that are potential causes or effects of an anomaly group\cr
+\link[paws.machine.learning:lookoutmetrics_list_anomaly_group_summaries]{list_anomaly_group_summaries} \tab Returns a list of anomaly groups\cr
+\link[paws.machine.learning:lookoutmetrics_list_anomaly_group_time_series]{list_anomaly_group_time_series} \tab Gets a list of anomalous metrics for a measure in an anomaly group\cr
+\link[paws.machine.learning:lookoutmetrics_list_metric_sets]{list_metric_sets} \tab Lists the datasets in the current AWS Region\cr
+\link[paws.machine.learning:lookoutmetrics_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of tags for a detector, dataset, or alert\cr
+\link[paws.machine.learning:lookoutmetrics_put_feedback]{put_feedback} \tab Add feedback for an anomalous metric\cr
+\link[paws.machine.learning:lookoutmetrics_tag_resource]{tag_resource} \tab Adds tags to a detector, dataset, or alert\cr
+\link[paws.machine.learning:lookoutmetrics_untag_resource]{untag_resource} \tab Removes tags from a detector, dataset, or alert\cr
+\link[paws.machine.learning:lookoutmetrics_update_alert]{update_alert} \tab Make changes to an existing alert\cr
+\link[paws.machine.learning:lookoutmetrics_update_anomaly_detector]{update_anomaly_detector} \tab Updates a detector\cr
+\link[paws.machine.learning:lookoutmetrics_update_metric_set]{update_metric_set} \tab Updates a dataset
 }
 }
 

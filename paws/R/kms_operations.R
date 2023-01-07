@@ -109,7 +109,7 @@ kms_cancel_key_deletion <- function(KeyId) {
 #' operation. To add HSMs to the cluster, use the
 #' [CreateHsm](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm.html)
 #' operation. Also, the [`kmsuser` crypto
-#' user](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser)
+#' user](https://docs.aws.amazon.com/kms/latest/developerguide/#concept-kmsuser)
 #' (CU) must not be logged into the cluster. This prevents KMS from using
 #' this account to log in.
 #' 
@@ -418,7 +418,7 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' [initialized the
 #' cluster](https://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html).
 #' @param KeyStorePassword Enter the password of the [`kmsuser` crypto user (CU)
-#' account](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser)
+#' account](https://docs.aws.amazon.com/kms/latest/developerguide/#concept-kmsuser)
 #' in the specified CloudHSM cluster. KMS logs into the cluster as this
 #' user to manage key material on your behalf.
 #' 
@@ -935,14 +935,14 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' 
 #' A key policy document can include only the following characters:
 #' 
-#' -   Printable ASCII characters from the space character (`\u0020`)
+#' -   Printable ASCII characters from the space character (``U+0020``)
 #'     through the end of the ASCII character range.
 #' 
 #' -   Printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`).
+#'     character set (through ``U+00FF``).
 #' 
-#' -   The tab (`\u0009`), line feed (`\u000A`), and carriage return
-#'     (`\u000D`) special characters
+#' -   The tab (``U+0009``), line feed (``U+000A``), and carriage return
+#'     (``U+000D``) special characters
 #' 
 #' For information about key policies, see [Key policies in
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
@@ -5391,14 +5391,14 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' 
 #' A key policy document can include only the following characters:
 #' 
-#' -   Printable ASCII characters from the space character (`\u0020`)
+#' -   Printable ASCII characters from the space character (``U+0020``)
 #'     through the end of the ASCII character range.
 #' 
 #' -   Printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`).
+#'     character set (through ``U+00FF``).
 #' 
-#' -   The tab (`\u0009`), line feed (`\u000A`), and carriage return
-#'     (`\u000D`) special characters
+#' -   The tab (``U+0009``), line feed (``U+000A``), and carriage return
+#'     (``U+000D``) special characters
 #' 
 #' For information about key policies, see [Key policies in
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
@@ -5942,14 +5942,14 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' 
 #' A key policy document can include only the following characters:
 #' 
-#' -   Printable ASCII characters from the space character (`\u0020`)
+#' -   Printable ASCII characters from the space character (``U+0020``)
 #'     through the end of the ASCII character range.
 #' 
 #' -   Printable characters in the Basic Latin and Latin-1 Supplement
-#'     character set (through `\u00FF`).
+#'     character set (through ``U+00FF``).
 #' 
-#' -   The tab (`\u0009`), line feed (`\u000A`), and carriage return
-#'     (`\u000D`) special characters
+#' -   The tab (``U+0009``), line feed (``U+000A``), and carriage return
+#'     (``U+000D``) special characters
 #' 
 #' For information about key policies, see [Key policies in
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
@@ -7051,7 +7051,7 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 #' 
 #' -   Use the `KeyStorePassword` parameter tell KMS the current password
 #'     of the [`kmsuser` crypto user
-#'     (CU)](https://docs.aws.amazon.com/kms/latest/developerguide/key-store-concepts.html#concept-kmsuser)
+#'     (CU)](https://docs.aws.amazon.com/kms/latest/developerguide/#concept-kmsuser)
 #'     in the associated CloudHSM cluster. You can use this parameter to
 #'     [fix connection
 #'     failures](https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-password)

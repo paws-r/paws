@@ -21,58 +21,48 @@ If this parameter is omitted, the most recent 100 reports are analyzed.}
 
 \item{trendField}{[required] The test report value to accumulate. This must be one of the following
 values:
-\subsection{Test reports:}{
-}
 
-\subsection{DURATION}{
+\strong{Test reports:}
+
+\strong{DURATION}
 
 Accumulate the test run times for the specified reports.
-}
 
-\subsection{PASS_RATE}{
+\strong{PASS_RATE}
 
 Accumulate the percentage of tests that passed for the specified test
 reports.
-}
 
-\subsection{TOTAL}{
+\strong{TOTAL}
 
 Accumulate the total number of tests for the specified test reports.
-}
 
-\subsection{Code coverage reports:}{
-}
+\strong{Code coverage reports:}
 
-\subsection{BRANCH_COVERAGE}{
+\strong{BRANCH_COVERAGE}
 
 Accumulate the branch coverage percentages for the specified test
 reports.
-}
 
-\subsection{BRANCHES_COVERED}{
+\strong{BRANCHES_COVERED}
 
 Accumulate the branches covered values for the specified test reports.
-}
 
-\subsection{BRANCHES_MISSED}{
+\strong{BRANCHES_MISSED}
 
 Accumulate the branches missed values for the specified test reports.
-}
 
-\subsection{LINE_COVERAGE}{
+\strong{LINE_COVERAGE}
 
 Accumulate the line coverage percentages for the specified test reports.
-}
 
-\subsection{LINES_COVERED}{
+\strong{LINES_COVERED}
 
 Accumulate the lines covered values for the specified test reports.
-}
 
-\subsection{LINES_MISSED}{
+\strong{LINES_MISSED}
 
-Accumulate the lines not covered values for the specified test reports.
-}}
+Accumulate the lines not covered values for the specified test reports.}
 }
 \description{
 Analyzes and accumulates test report values for the specified test reports.

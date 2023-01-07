@@ -20,14 +20,15 @@ sagemakerruntime_invoke_endpoint(
 }
 \arguments{
 \item{EndpointName}{[required] The name of the endpoint that you specified when you created the
-endpoint using the CreateEndpoint API.}
+endpoint using the
+\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html}{CreateEndpoint}
+API.}
 
 \item{Body}{[required] Provides input data, in the format specified in the \code{ContentType}
 request header. Amazon SageMaker passes all of the data in the body to
 the model.
 
-For information about the format of the request body, see Common Data
-Formats-Inference.}
+For information about the format of the request body, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html}{Common Data Formats-Inference}.}
 
 \item{ContentType}{The MIME type of the input data in the request body.}
 
@@ -39,8 +40,8 @@ information is an opaque value that is forwarded verbatim. You could use
 this value, for example, to provide an ID that you can use to track a
 request or to provide other metadata that a service endpoint was
 programmed to process. The value must consist of no more than 1024
-visible US-ASCII characters as specified in Section 3.3.6. Field Value
-Components of the Hypertext Transfer Protocol (HTTP/1.1).
+visible US-ASCII characters as specified in \href{https://www.rfc-editor.org/rfc/rfc7230#section-3.2.6}{Section 3.3.6. Field Value Components} of the
+Hypertext Transfer Protocol (HTTP/1.1).
 
 The code in your model is responsible for setting or updating any custom
 attributes in the response. If your code does not set this value in the
@@ -59,7 +60,7 @@ this parameter overrides the default behavior for the endpoint, which is
 to distribute the invocation traffic based on the variant weights.
 
 For information about how to use variant targeting to perform a/b
-testing, see Test models in production}
+testing, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html}{Test models in production}}
 
 \item{TargetContainerHostname}{If the endpoint hosts multiple containers and is configured to use
 direct invocation, this parameter specifies the host name of the
@@ -67,7 +68,7 @@ container to invoke.}
 
 \item{InferenceId}{If you provide a value, it is added to the captured data when you enable
 data capture on the endpoint. For information about data capture, see
-Capture Data.}
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html}{Capture Data}.}
 }
 \description{
 After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint.

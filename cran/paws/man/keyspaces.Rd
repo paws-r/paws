@@ -81,19 +81,19 @@ the \emph{General Reference}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=keyspaces_create_keyspace]{create_keyspace} \tab The CreateKeyspace operation adds a new keyspace to your account\cr
-\link[=keyspaces_create_table]{create_table} \tab The CreateTable operation adds a new table to the specified keyspace\cr
-\link[=keyspaces_delete_keyspace]{delete_keyspace} \tab The DeleteKeyspace operation deletes a keyspace and all of its tables\cr
-\link[=keyspaces_delete_table]{delete_table} \tab The DeleteTable operation deletes a table and all of its data\cr
-\link[=keyspaces_get_keyspace]{get_keyspace} \tab Returns the name and the Amazon Resource Name (ARN) of the specified table\cr
-\link[=keyspaces_get_table]{get_table} \tab Returns information about the table, including the table's name and current status, the keyspace name, configuration settings, and metadata\cr
-\link[=keyspaces_list_keyspaces]{list_keyspaces} \tab Returns a list of keyspaces\cr
-\link[=keyspaces_list_tables]{list_tables} \tab Returns a list of tables for a specified keyspace\cr
-\link[=keyspaces_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of all tags associated with the specified Amazon Keyspaces resource\cr
-\link[=keyspaces_restore_table]{restore_table} \tab Restores the specified table to the specified point in time within the earliest_restorable_timestamp and the current time\cr
-\link[=keyspaces_tag_resource]{tag_resource} \tab Associates a set of tags with a Amazon Keyspaces resource\cr
-\link[=keyspaces_untag_resource]{untag_resource} \tab Removes the association of tags from a Amazon Keyspaces resource\cr
-\link[=keyspaces_update_table]{update_table} \tab Adds new columns to the table or updates one of the table's settings, for example capacity mode, encryption, point-in-time recovery, or ttl settings
+\link[paws.database:keyspaces_create_keyspace]{create_keyspace} \tab The CreateKeyspace operation adds a new keyspace to your account\cr
+\link[paws.database:keyspaces_create_table]{create_table} \tab The CreateTable operation adds a new table to the specified keyspace\cr
+\link[paws.database:keyspaces_delete_keyspace]{delete_keyspace} \tab The DeleteKeyspace operation deletes a keyspace and all of its tables\cr
+\link[paws.database:keyspaces_delete_table]{delete_table} \tab The DeleteTable operation deletes a table and all of its data\cr
+\link[paws.database:keyspaces_get_keyspace]{get_keyspace} \tab Returns the name and the Amazon Resource Name (ARN) of the specified table\cr
+\link[paws.database:keyspaces_get_table]{get_table} \tab Returns information about the table, including the table's name and current status, the keyspace name, configuration settings, and metadata\cr
+\link[paws.database:keyspaces_list_keyspaces]{list_keyspaces} \tab Returns a list of keyspaces\cr
+\link[paws.database:keyspaces_list_tables]{list_tables} \tab Returns a list of tables for a specified keyspace\cr
+\link[paws.database:keyspaces_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of all tags associated with the specified Amazon Keyspaces resource\cr
+\link[paws.database:keyspaces_restore_table]{restore_table} \tab Restores the specified table to the specified point in time within the earliest_restorable_timestamp and the current time\cr
+\link[paws.database:keyspaces_tag_resource]{tag_resource} \tab Associates a set of tags with a Amazon Keyspaces resource\cr
+\link[paws.database:keyspaces_untag_resource]{untag_resource} \tab Removes the association of tags from a Amazon Keyspaces resource\cr
+\link[paws.database:keyspaces_update_table]{update_table} \tab Adds new columns to the table or updates one of the table's settings, for example capacity mode, encryption, point-in-time recovery, or ttl settings
 }
 }
 

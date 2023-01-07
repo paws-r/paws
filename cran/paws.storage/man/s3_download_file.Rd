@@ -82,6 +82,9 @@ appropriate for use with the algorithm specified in the
 1321. Amazon S3 uses this header for a message integrity check to ensure
 that the encryption key was transmitted without error.}
 
+\item{RequestPayer}{Confirms that the requester knows that they will be
+charged for the request. Bucket owners need not specify this parameter in their requests}
+
 \item{PartNumber}{Part number of the object being read. This is a positive integer between
 1 and 10,000. Effectively performs a 'ranged' GET request for the part
 specified. Useful for downloading just a part of an object.}

@@ -308,8 +308,10 @@ route53_change_cidr_collection <- function(Id, CollectionVersion = NULL, Changes
 #' with one or more domain names (such as example.com) or subdomain names
 #' (such as www.example.com), in the same hosted zone or in multiple hosted
 #' zones. You can roll back the updates if the new configuration isn't
-#' performing as expected. For more information, see Using Traffic Flow to
-#' Route DNS Traffic in the *Amazon Route 53 Developer Guide*.
+#' performing as expected. For more information, see [Using Traffic Flow to
+#' Route DNS
+#' Traffic](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/traffic-flow.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' **Create, Delete, and Upsert**
 #' 
@@ -354,7 +356,9 @@ route53_change_cidr_collection <- function(Id, CollectionVersion = NULL, Changes
 #' 
 #' For information about the limits on a
 #' [`change_resource_record_sets`][route53_change_resource_record_sets]
-#' request, see Limits in the *Amazon Route 53 Developer Guide*.
+#' request, see
+#' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #'
 #' @usage
 #' route53_change_resource_record_sets(HostedZoneId, ChangeBatch)
@@ -1068,8 +1072,8 @@ route53_create_cidr_collection <- function(Name, CallerReference) {
 #' Creates a new health check.
 #' 
 #' For information about adding health checks to resource record sets, see
-#' HealthCheckId in
-#' [`change_resource_record_sets`][route53_change_resource_record_sets].
+#' [HealthCheckId](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ResourceRecordSet.html#Route53-Type-ResourceRecordSet-HealthCheckId)
+#' in [`change_resource_record_sets`][route53_change_resource_record_sets].
 #' 
 #' **ELB Load Balancers**
 #' 
@@ -1098,8 +1102,9 @@ route53_create_cidr_collection <- function(Name, CallerReference) {
 #'     checks the status of the Amazon EC2 `StatusCheckFailed` metric, add
 #'     an alarm to the metric, and then create a health check that is based
 #'     on the state of the alarm. For information about creating CloudWatch
-#'     metrics and alarms by using the CloudWatch console, see the Amazon
-#'     CloudWatch User Guide.
+#'     metrics and alarms by using the CloudWatch console, see the [Amazon
+#'     CloudWatch User
+#'     Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html).
 #'
 #' @usage
 #' route53_create_health_check(CallerReference, HealthCheckConfig)
@@ -1257,8 +1262,8 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' versa. Instead, you must create a new hosted zone with the same name and
 #' create new resource record sets.
 #' 
-#' For more information about charges for hosted zones, see Amazon Route 53
-#' Pricing.
+#' For more information about charges for hosted zones, see [Amazon
+#' Route 53 Pricing](https://aws.amazon.com/route53/pricing/).
 #' 
 #' Note the following:
 #' 
@@ -1267,8 +1272,10 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' 
 #' -   For public hosted zones, Route 53 automatically creates a default
 #'     SOA record and four NS records for the zone. For more information
-#'     about SOA and NS records, see NS and SOA Records that Route 53
-#'     Creates for a Hosted Zone in the *Amazon Route 53 Developer Guide*.
+#'     about SOA and NS records, see [NS and SOA Records that Route 53
+#'     Creates for a Hosted
+#'     Zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html)
+#'     in the *Amazon Route 53 Developer Guide*.
 #' 
 #'     If you want to use the same name servers for multiple public hosted
 #'     zones, you can optionally associate a reusable delegation set with
@@ -1277,8 +1284,9 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' -   If your domain is registered with a registrar other than Route 53,
 #'     you must update the name servers with your registrar to make Route
 #'     53 the DNS service for the domain. For more information, see
-#'     Migrating DNS Service for an Existing Domain to Amazon Route 53 in
-#'     the *Amazon Route 53 Developer Guide*.
+#'     [Migrating DNS Service for an Existing Domain to Amazon
+#'     Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/MigratingDNS.html)
+#'     in the *Amazon Route 53 Developer Guide*.
 #' 
 #' When you submit a [`create_hosted_zone`][route53_create_hosted_zone]
 #' request, the initial status of the hosted zone is `PENDING`. For public
@@ -1451,19 +1459,19 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' 
 #' You must configure the customer managed customer managed key as follows:
 #' 
-#' ### Status
+#' **Status**
 #' 
 #' Enabled
 #' 
-#' ### Key spec
+#' **Key spec**
 #' 
 #' ECC_NIST_P256
 #' 
-#' ### Key usage
+#' **Key usage**
 #' 
 #' Sign and verify
 #' 
-#' ### Key policy
+#' **Key policy**
 #' 
 #' The key policy must give permission for the following actions:
 #' 
@@ -1479,7 +1487,8 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' -   `"Service": "dnssec-route53.amazonaws.com"`
 #' 
 #' For more information about working with a customer managed key in KMS,
-#' see Key Management Service concepts.
+#' see [Key Management Service
+#' concepts](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html).
 #' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK). `Name` can include
 #' numbers, letters, and underscores (_). `Name` must be unique for each
 #' key-signing key in the same hosted zone.
@@ -1628,8 +1637,9 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #'         that creates the query logging configuration. For example,
 #'         `aws:SourceAccount:111111111111`.
 #' 
-#'     For more information, see The confused deputy problem in the *Amazon
-#'     Web Services IAM User Guide*.
+#'     For more information, see [The confused deputy
+#'     problem](https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html)
+#'     in the *Amazon Web Services IAM User Guide*.
 #' 
 #'     You can't use the CloudWatch console to create or edit a resource
 #'     policy. You must use the CloudWatch API, one of the Amazon Web
@@ -1656,7 +1666,8 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' corresponds with the International Air Transport Association airport
 #' code for an airport near the edge location. (These abbreviations might
 #' change in the future.) For a list of edge locations, see "The Route 53
-#' Global Network" on the Route 53 Product Details page.
+#' Global Network" on the [Route 53 Product
+#' Details](https://aws.amazon.com/route53/features/) page.
 #' 
 #' ### Queries That Are Logged
 #' 
@@ -1669,13 +1680,17 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' resource record set, and depending on the TTL for that resource record
 #' set, query logs might contain information about only one query out of
 #' every several thousand queries that are submitted to DNS. For more
-#' information about how DNS works, see Routing Internet Traffic to Your
-#' Website or Web Application in the *Amazon Route 53 Developer Guide*.
+#' information about how DNS works, see [Routing Internet Traffic to Your
+#' Website or Web
+#' Application](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' ### Log File Format
 #' 
 #' For a list of the values in each query log and the format of each value,
-#' see Logging DNS Queries in the *Amazon Route 53 Developer Guide*.
+#' see [Logging DNS
+#' Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' ### Pricing
 #' 
@@ -1700,8 +1715,11 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' arn:aws:logs:*region*:*account-id*:log-group:*log_group_name*
 #' 
 #' To get the ARN for a log group, you can use the CloudWatch console, the
-#' DescribeLogGroups API action, the describe-log-groups command, or the
-#' applicable command in one of the Amazon Web Services SDKs.
+#' [DescribeLogGroups](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html)
+#' API action, the
+#' [describe-log-groups](https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html)
+#' command, or the applicable command in one of the Amazon Web Services
+#' SDKs.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1763,7 +1781,8 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
 #' zone.
 #' 
 #' For information about using a reusable delegation set to configure white
-#' label name servers, see Configuring White Label Name Servers.
+#' label name servers, see [Configuring White Label Name
+#' Servers](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html).
 #' 
 #' The process for migrating existing hosted zones to use a reusable
 #' delegation set is comparable to the process for configuring white label
@@ -1871,7 +1890,8 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
 #'
 #' @param Name &#91;required&#93; The name of the traffic policy.
 #' @param Document &#91;required&#93; The definition of this traffic policy in JSON format. For more
-#' information, see Traffic Policy Document Format.
+#' information, see [Traffic Policy Document
+#' Format](https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html).
 #' @param Comment (Optional) Any comments that you want to include about the traffic
 #' policy.
 #'
@@ -2250,8 +2270,10 @@ route53_delete_cidr_collection <- function(Id) {
 #' If you delete a health check and you don't update the associated
 #' resource record sets, the future status of the health check can't be
 #' predicted and may change. This will affect the routing of DNS queries
-#' for your DNS failover configuration. For more information, see Replacing
-#' and Deleting Health Checks in the *Amazon Route 53 Developer Guide*.
+#' for your DNS failover configuration. For more information, see
+#' [Replacing and Deleting Health
+#' Checks](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html#health-checks-deleting.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' If you're using Cloud Map and you configured Cloud Map to create a Route
 #' 53 health check when you register an instance, you can't use the Route
@@ -2301,8 +2323,9 @@ route53_delete_health_check <- function(HealthCheckId) {
 #' Deletes a hosted zone.
 #' 
 #' If the hosted zone was created by another service, such as Cloud Map,
-#' see Deleting Public Hosted Zones That Were Created by Another Service in
-#' the *Amazon Route 53 Developer Guide* for information about how to
+#' see [Deleting Public Hosted Zones That Were Created by Another
+#' Service](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html#delete-public-hosted-zone-created-by-another-service)
+#' in the *Amazon Route 53 Developer Guide* for information about how to
 #' delete it. (The process is the same for public and private hosted zones
 #' that were created by another service.)
 #' 
@@ -2324,11 +2347,12 @@ route53_delete_health_check <- function(HealthCheckId) {
 #' transfer DNS service for the domain to a free DNS service. When you
 #' transfer DNS service, you have to update the name servers for the domain
 #' registration. If the domain is registered with Route 53, see
-#' UpdateDomainNameservers for information about how to replace Route 53
-#' name servers with name servers for the new DNS service. If the domain is
-#' registered with another registrar, use the method provided by the
-#' registrar to update name servers for the domain registration. For more
-#' information, perform an internet search on "free DNS service."
+#' [UpdateDomainNameservers](https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_UpdateDomainNameservers.html)
+#' for information about how to replace Route 53 name servers with name
+#' servers for the new DNS service. If the domain is registered with
+#' another registrar, use the method provided by the registrar to update
+#' name servers for the domain registration. For more information, perform
+#' an internet search on "free DNS service."
 #' 
 #' You can delete a hosted zone only if it contains only the default SOA
 #' record and NS resource record sets. If the hosted zone contains other
@@ -2941,8 +2965,10 @@ route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' Gets the specified limit for the current account, for example, the
 #' maximum number of health checks that you can create using the account.
 #' 
-#' For the default limit, see Limits in the *Amazon Route 53 Developer
-#' Guide*. To request a higher limit, open a case.
+#' For the default limit, see
+#' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+#' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
+#' open a case.
 #' 
 #' You can also view account limits in Amazon Web Services Trusted Advisor.
 #' Sign in to the Amazon Web Services Management Console and open the
@@ -3085,8 +3111,9 @@ route53_get_change <- function(Id) {
 #' [`get_checker_ip_ranges`][route53_get_checker_ip_ranges] still works,
 #' but we recommend that you download ip-ranges.json, which includes IP
 #' address ranges for all Amazon Web Services services. For more
-#' information, see IP Address Ranges of Amazon Route 53 Servers in the
-#' *Amazon Route 53 Developer Guide*.
+#' information, see [IP Address Ranges of Amazon Route 53
+#' Servers](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #'
 #' @usage
 #' route53_get_checker_ip_ranges()
@@ -3246,7 +3273,8 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' 
 #' -   **SA**: South America
 #' @param CountryCode Amazon Route 53 uses the two-letter country codes that are specified in
-#' ISO standard 3166-1 alpha-2.
+#' [ISO standard 3166-1
+#' alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 #' @param SubdivisionCode The code for the subdivision, such as a particular state within the
 #' United States. For a list of US state abbreviations, see Appendix B:
 #' Two–Letter State and Possession Abbreviations on the United States
@@ -3703,8 +3731,10 @@ route53_get_hosted_zone_count <- function() {
 #' Gets the specified limit for a specified hosted zone, for example, the
 #' maximum number of records that you can create in the hosted zone.
 #' 
-#' For the default limit, see Limits in the *Amazon Route 53 Developer
-#' Guide*. To request a higher limit, open a case.
+#' For the default limit, see
+#' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+#' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
+#' open a case.
 #'
 #' @usage
 #' route53_get_hosted_zone_limit(Type, HostedZoneId)
@@ -3765,7 +3795,8 @@ route53_get_hosted_zone_limit <- function(Type, HostedZoneId) {
 #' 
 #' For more information about DNS query logs, see
 #' [`create_query_logging_config`][route53_create_query_logging_config] and
-#' Logging DNS Queries.
+#' [Logging DNS
+#' Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html).
 #'
 #' @usage
 #' route53_get_query_logging_config(Id)
@@ -3873,8 +3904,10 @@ route53_get_reusable_delegation_set <- function(Id) {
 #' Gets the maximum number of hosted zones that you can associate with the
 #' specified reusable delegation set.
 #' 
-#' For the default limit, see Limits in the *Amazon Route 53 Developer
-#' Guide*. To request a higher limit, open a case.
+#' For the default limit, see
+#' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+#' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
+#' open a case.
 #'
 #' @usage
 #' route53_get_reusable_delegation_set_limit(Type, DelegationSetId)
@@ -4287,8 +4320,9 @@ route53_list_cidr_locations <- function(CollectionId, NextToken = NULL, MaxResul
 #' Route 53 does not perform authorization for this API because it
 #' retrieves information that is already available to the public.
 #' 
-#' For a list of supported geolocation codes, see the GeoLocation data
-#' type.
+#' For a list of supported geolocation codes, see the
+#' [GeoLocation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_GeoLocation.html)
+#' data type.
 #'
 #' @usage
 #' route53_list_geo_locations(StartContinentCode, StartCountryCode,
@@ -4610,8 +4644,9 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' 
 #' The labels are reversed and alphabetized using the escaped value. For
 #' more information about valid domain name formats, including
-#' internationalized domain names, see DNS Domain Name Format in the
-#' *Amazon Route 53 Developer Guide*.
+#' internationalized domain names, see [DNS Domain Name
+#' Format](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' Route 53 returns up to 100 items in each response. If you have a lot of
 #' hosted zones, use the `MaxItems` parameter to list them in groups of up
@@ -4851,7 +4886,9 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 #' For more information about DNS query logs, see
 #' [`create_query_logging_config`][route53_create_query_logging_config].
 #' Additional information, including the format of DNS query logs, appears
-#' in Logging DNS Queries in the *Amazon Route 53 Developer Guide*.
+#' in [Logging DNS
+#' Queries](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #'
 #' @usage
 #' route53_list_query_logging_configs(HostedZoneId, NextToken, MaxResults)
@@ -4877,8 +4914,9 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 #' @param MaxResults (Optional) The maximum number of query logging configurations that you
 #' want Amazon Route 53 to return in response to the current request. If
 #' the current Amazon Web Services account has more than `MaxResults`
-#' configurations, use the value of NextToken in the response to get the
-#' next page of results.
+#' configurations, use the value of
+#' [NextToken](https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListQueryLoggingConfigs.html#API_ListQueryLoggingConfigs_RequestSyntax)
+#' in the response to get the next page of results.
 #' 
 #' If you don't specify a value for `MaxResults`, Route 53 returns up to
 #' 100 configurations.
@@ -6033,9 +6071,10 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' Updates an existing health check. Note that some values can't be
 #' updated.
 #' 
-#' For more information about updating health checks, see Creating,
-#' Updating, and Deleting Health Checks in the *Amazon Route 53 Developer
-#' Guide*.
+#' For more information about updating health checks, see [Creating,
+#' Updating, and Deleting Health
+#' Checks](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #'
 #' @usage
 #' route53_update_health_check(HealthCheckId, HealthCheckVersion,
@@ -6096,25 +6135,30 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #'     (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 #'     in the *Amazon EC2 User Guide for Linux Instances*
 #' 
-#' -   Windows: Elastic IP Addresses (EIP) in the *Amazon EC2 User Guide
-#'     for Windows Instances*
+#' -   Windows: [Elastic IP Addresses
+#'     (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html)
+#'     in the *Amazon EC2 User Guide for Windows Instances*
 #' 
 #' If a health check already has a value for `IPAddress`, you can change
 #' the value. However, you can't update an existing health check to add or
 #' remove the value of `IPAddress`.
 #' 
-#' For more information, see FullyQualifiedDomainName.
+#' For more information, see
+#' [FullyQualifiedDomainName](https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
 #' 
 #' Constraints: Route 53 can't check the health of endpoints for which the
 #' IP address is in local, private, non-routable, or multicast ranges. For
 #' more information about IP addresses for which you can't create health
 #' checks, see the following documents:
 #' 
-#' -   RFC 5735, Special Use IPv4 Addresses
+#' -   [RFC 5735, Special Use IPv4
+#'     Addresses](https://www.rfc-editor.org/rfc/rfc5735)
 #' 
-#' -   RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space
+#' -   [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
+#'     Space](https://www.rfc-editor.org/rfc/rfc6598)
 #' 
-#' -   RFC 5156, Special-Use IPv6 Addresses
+#' -   [RFC 5156, Special-Use IPv6
+#'     Addresses](https://www.rfc-editor.org/rfc/rfc5156)
 #' @param Port The port on the endpoint that you want Amazon Route 53 to perform health
 #' checks on.
 #' 
@@ -6201,9 +6245,10 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' `Type` when you update a health check.)
 #' @param FailureThreshold The number of consecutive health checks that an endpoint must pass or
 #' fail for Amazon Route 53 to change the current status of the endpoint
-#' from unhealthy to healthy or vice versa. For more information, see How
-#' Amazon Route 53 Determines Whether an Endpoint Is Healthy in the *Amazon
-#' Route 53 Developer Guide*.
+#' from unhealthy to healthy or vice versa. For more information, see [How
+#' Amazon Route 53 Determines Whether an Endpoint Is
+#' Healthy](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+#' in the *Amazon Route 53 Developer Guide*.
 #' 
 #' If you don't specify a value for `FailureThreshold`, the default value
 #' is three health checks.
@@ -6226,10 +6271,11 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' health check to always be healthy. If you configured DNS failover, Route
 #' 53 continues to route traffic to the corresponding resources. If you
 #' want to stop routing traffic to a resource, change the value of
-#' Inverted.
+#' [Inverted](https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-Inverted).
 #' 
 #' Charges for a health check still apply when the health check is
-#' disabled. For more information, see Amazon Route 53 Pricing.
+#' disabled. For more information, see [Amazon Route 53
+#' Pricing](https://aws.amazon.com/route53/pricing/).
 #' @param HealthThreshold The number of child health checks that are associated with a
 #' `CALCULATED` health that Amazon Route 53 must consider healthy for the
 #' `CALCULATED` health check to be considered healthy. To specify the child
@@ -6290,16 +6336,21 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' each element that you want to reset to the default value. Valid values
 #' for `ResettableElementName` include the following:
 #' 
-#' -   `ChildHealthChecks`: Amazon Route 53 resets ChildHealthChecks to
-#'     null.
+#' -   `ChildHealthChecks`: Amazon Route 53 resets
+#'     [ChildHealthChecks](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ChildHealthChecks)
+#'     to null.
 #' 
 #' -   `FullyQualifiedDomainName`: Route 53 resets
-#'     FullyQualifiedDomainName. to null.
+#'     [FullyQualifiedDomainName](https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
+#'     to null.
 #' 
-#' -   `Regions`: Route 53 resets the Regions list to the default set of
-#'     regions.
+#' -   `Regions`: Route 53 resets the
+#'     [Regions](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-Regions)
+#'     list to the default set of regions.
 #' 
-#' -   `ResourcePath`: Route 53 resets ResourcePath to null.
+#' -   `ResourcePath`: Route 53 resets
+#'     [ResourcePath](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ResourcePath)
+#'     to null.
 #'
 #' @return
 #' A list with the following syntax:

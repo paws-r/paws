@@ -742,7 +742,7 @@ swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nex
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param identity Identity of the worker making the request, recorded in the
 #' `ActivityTaskStarted` event in the workflow history. This enables
@@ -782,7 +782,7 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param identity Identity of the decider making the request, which is recorded in the
 #' DecisionTaskStarted event in the workflow history. This enables
@@ -883,7 +883,7 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param version &#91;required&#93; The version of the activity type.
 #' 
@@ -892,7 +892,7 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param description A textual description of the activity type.
 #' @param defaultTaskStartToCloseTimeout If set, specifies the default maximum duration that a worker can take to
@@ -972,7 +972,7 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param description A text description of the domain.
 #' @param workflowExecutionRetentionPeriodInDays &#91;required&#93; The duration (in days) that records and histories of workflow executions
@@ -1026,7 +1026,7 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param version &#91;required&#93; The version of the workflow type.
 #' 
@@ -1037,7 +1037,7 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param description Textual description of the workflow type.
 #' @param defaultTaskStartToCloseTimeout If set, specifies the default maximum duration of decision tasks for
@@ -1358,7 +1358,7 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param workflowType &#91;required&#93; The type of the workflow to start.
 #' @param taskList The task list to use for the decision tasks generated for this workflow
@@ -1372,7 +1372,7 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' 
 #' The specified string must not start or end with whitespace. It must not
 #' contain a `:` (colon), `/` (slash), `|` (vertical bar), or any control
-#' characters (`\u0000-\u001f` | `\u007f-\u009f`). Also, it must not *be*
+#' characters (``U+0000`-`U+001f`` | ``U+007f`-`U+009f``). Also, it must not *be*
 #' the literal string `arn`.
 #' @param taskPriority The task priority to use for this workflow execution. This overrides any
 #' default priority that was assigned when the workflow type was
