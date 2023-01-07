@@ -137,7 +137,7 @@ s3_download_file <- function(Bucket, Key, Filename, IfMatch = NULL, IfModifiedSi
 #' @title Generate a presigned url given a client, its method, and arguments
 #'
 #' @usage
-#' s3_generate_signed_url(client_method, params=list(), expires_in=3600,
+#' s3_generate_presigned_url(client_method, params=list(), expires_in=3600,
 #' http_method = NULL)
 #'
 #' @param client_method (character): The client method to presign for

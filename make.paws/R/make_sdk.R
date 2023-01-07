@@ -73,9 +73,6 @@ make_sdk <- function(
     for(cat in names(grp_sub_cats)){
       make_category_collection(temp_dir, out_sdk_dir, grp_sub_cats[[cat]], cat, api_names)
     }
-
-    # rebuild categories from sub-categories for paws
-    categories <- make_category_from_sub_category(categories)
   }
 
   make_collection(temp_dir, out_sdk_dir, categories, api_names)

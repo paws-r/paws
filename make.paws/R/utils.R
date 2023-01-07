@@ -21,7 +21,7 @@ parse_operations <- function(text) {
   operations <- list()
   for (op_text in split(text, ids)) {
     operation <- parse_operation(op_text)
-    if (is.null(operation$name) || operation$name == "NULL") {
+    if (is.null(operation)) {
       next
     }
     operations[[operation$name]] <- operation
@@ -35,6 +35,7 @@ parse_operation <- function(text) {
   comment_lines <- startsWith(text, "#'")
   comment <- text[comment_lines]
   code <- text[!comment_lines]
+  if (length(code) == 0 || all(code == "") || code[1] == "NULL") return(NULL)
   func <- strsplit(code[1], " ")[[1]][1]
   name <- substring(func, regexpr("_", func)+1)
   operation <- list(
