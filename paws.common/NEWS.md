@@ -1,3 +1,6 @@
+# paws.common 0.5.4
+* add support for s3 `generate_presigned_url` (#572)
+
 # paws.common 0.5.3
 
 * Fixed bugs introduced in`xml_build` in previous version (#569).
